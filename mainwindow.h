@@ -21,8 +21,13 @@ private:
     Ui::MainWindow *ui;
     void mygstr();
     QString VK_GStreamer_Version();
-    void VK_Start();
 
+    GstElement *pipeline, *source, *videoconvert, *x264enc, *matroskamux, *filesink;
+
+
+private slots:
+    void VK_Start();
+    void VK_Stop();
 
 
 };
