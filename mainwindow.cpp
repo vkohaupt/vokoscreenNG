@@ -64,8 +64,20 @@ void MainWindow::VK_Start()
 
     /* Create the elements */
     source = gst_element_factory_make ("ximagesrc", "source");
+    g_object_set (G_OBJECT (source), "show-pointer", true, NULL);
+
+    //videorate = gst_element_factory_make ("videorate", "aaaaaaaaaa");
+    //g_object_set (G_OBJECT (videorate), "new-pref", 0, NULL);
+
     videoconvert = gst_element_factory_make ("videoconvert", "videoconvert");
-    x264enc = gst_element_factory_make ("x264enc", "x264enc");
+
+    // Preset found with, gst-inspect-1.0 x264enc
+    enum x264preset { None, ultrafast, superfast, veryfast, faster, medium, slow, slower, veryslow, placebo };
+    VK_VideoEncoder = gst_element_factory_make ("x264enc", "x264enc");
+    g_object_set (G_OBJECT (VK_VideoEncoder), "speed-preset", x264preset::ultrafast , NULL);
+
+    VK_VideoQueue = gst_element_factory_make ("queue2", "videoq");
+
     matroskamux = gst_element_factory_make ("matroskamux", "matroskamux");
 
     filesink = gst_element_factory_make ("filesink",  "filesink");
@@ -74,16 +86,16 @@ void MainWindow::VK_Start()
     // Create the empty pipeline
     pipeline = gst_pipeline_new ("test-pipeline");
 
-    if (!pipeline || !source || !videoconvert || !x264enc || !matroskamux || !filesink)
+    if (!pipeline || !source || !videoconvert || !VK_VideoEncoder || !VK_VideoQueue || !matroskamux || !filesink)
     {
       g_printerr ("Not all elements could be created.\n");
       return;
     }
 
     // Build the pipeline
-    gst_bin_add_many (GST_BIN (pipeline), source, videoconvert, x264enc, matroskamux, filesink, NULL);
+    gst_bin_add_many (GST_BIN (pipeline), source, videoconvert, VK_VideoEncoder, VK_VideoQueue, matroskamux, filesink, NULL);
 
-    if (gst_element_link_many (source, videoconvert, x264enc, matroskamux, filesink, NULL ) != TRUE)
+    if (gst_element_link_many (source, videoconvert, VK_VideoEncoder, VK_VideoQueue, matroskamux, filesink, NULL ) != TRUE)
     {
       g_printerr ("Elements could not be linked.\n");
       gst_object_unref (pipeline);
@@ -93,6 +105,7 @@ void MainWindow::VK_Start()
     // Start playing
     GstStateChangeReturn ret;
     ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
+    qDebug() << ret;
     if (ret == GST_STATE_CHANGE_FAILURE) {
       g_printerr ("Unable to set the pipeline to the playing state.\n");
       gst_object_unref (pipeline);
@@ -107,9 +120,13 @@ void MainWindow::VK_Start()
 
 void MainWindow::VK_Stop()
 {
-    gst_element_set_state (pipeline, GST_STATE_PAUSED);
-    gst_element_set_state (pipeline, GST_STATE_READY);
-    gst_element_set_state (pipeline, GST_STATE_NULL);
+    GstStateChangeReturn ret ;
+    ret = gst_element_set_state (pipeline, GST_STATE_PAUSED);
+    qDebug() << ret;
+    ret = gst_element_set_state (pipeline, GST_STATE_READY);
+    qDebug() << ret;
+    ret = gst_element_set_state (pipeline, GST_STATE_NULL);
+    qDebug() << ret;
     gst_object_unref (pipeline);
 }
 

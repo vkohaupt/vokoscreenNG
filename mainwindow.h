@@ -22,8 +22,9 @@ private:
     void mygstr();
     QString VK_GStreamer_Version();
 
-    GstElement *pipeline, *source, *videoconvert, *x264enc, *matroskamux, *filesink;
-
+    GstElement *pipeline, *source, *videoconvert, *matroskamux, *filesink, *videorate;
+    GstElement *VK_VideoEncoder;
+    GstElement *VK_VideoQueue;
 
 private slots:
     void VK_Start();
