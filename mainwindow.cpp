@@ -4,9 +4,12 @@
 #include <QDebug>
 #include <gst/gst.h>
 
+static GMainLoop *loop;
+
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
 
     qDebug().noquote() << VK_GStreamer_Version();
 
@@ -49,6 +52,8 @@ QString MainWindow::VK_GStreamer_Version()
 // libgstinsertbin-1_0-0
 void MainWindow::VK_Start()
 {
+    //loop = g_main_loop_new (NULL, FALSE);
+
     GstElementFactory *factory = gst_element_factory_find( "ximagesrc" );
     if ( !factory )
     {
@@ -62,7 +67,6 @@ void MainWindow::VK_Start()
     videoconvert = gst_element_factory_make ("videoconvert", "videoconvert");
     x264enc = gst_element_factory_make ("x264enc", "x264enc");
     matroskamux = gst_element_factory_make ("matroskamux", "matroskamux");
-    filesink = gst_element_factory_make ("filesink", "filesink");
 
     filesink = gst_element_factory_make ("filesink",  "filesink");
     g_object_set (G_OBJECT (filesink), "location", "/home/vk/Videos/vokoscreen.mkv", NULL);
@@ -94,6 +98,10 @@ void MainWindow::VK_Start()
       gst_object_unref (pipeline);
       return;
     }
+
+    /* Iterate */
+    //g_print ("Running...\n");
+    //g_main_loop_run (loop);
 }
 
 
