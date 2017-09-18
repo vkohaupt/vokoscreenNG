@@ -10,7 +10,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
 
-
     qDebug().noquote() << VK_GStreamer_Version();
 
     qDebug() << gst_version_string ();
@@ -42,7 +41,6 @@ QString MainWindow::VK_GStreamer_Version()
                  .append( QString::number( minor)).append( "." )
                  .append( QString::number( micro))
                  .append( nano_str );
-
     return gstrVersion;
 }
 
@@ -62,19 +60,32 @@ void MainWindow::VK_Start()
     }
     gst_object_unref (GST_OBJECT (factory));
 
-    /* Create the elements */
+    //https://schneide.wordpress.com/tag/gstreamer/
+    //GError *error = NULL;
+    //GstPipeline *pipeline;
+    //pipeline = gst_parse_launch( "ximagesrc ! video/x-raw,framerate=30/1 ! videoconvert ! vp8enc ! webmmux ! filesink location=desktop.webm", &error );
+
+
+    // Create the elements
     source = gst_element_factory_make ("ximagesrc", "source");
     g_object_set (G_OBJECT (source), "show-pointer", true, NULL);
 
-    //videorate = gst_element_factory_make ("videorate", "aaaaaaaaaa");
-    //g_object_set (G_OBJECT (videorate), "new-pref", 0, NULL);
+    //https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/GstCaps.html
+    //http://comments.gmane.org/gmane.comp.video.gstreamer.devel/53765
+    GstCaps *caps = gst_caps_new_simple ("video/x-raw",
+                                         "format", G_TYPE_STRING, "I420",
+                                         "framerate", GST_TYPE_FRACTION, 25, 1,
+                                         "pixel-aspect-ratio", GST_TYPE_FRACTION, 1, 1,
+                                         "width", G_TYPE_INT, 320,
+                                         "height", G_TYPE_INT, 240,
+                                         NULL);
 
     videoconvert = gst_element_factory_make ("videoconvert", "videoconvert");
 
     // Preset found with, gst-inspect-1.0 x264enc
     enum x264preset { None, ultrafast, superfast, veryfast, faster, medium, slow, slower, veryslow, placebo };
     VK_VideoEncoder = gst_element_factory_make ("x264enc", "x264enc");
-    g_object_set (G_OBJECT (VK_VideoEncoder), "speed-preset", x264preset::ultrafast , NULL);
+    //g_object_set (G_OBJECT (VK_VideoEncoder), "speed-preset", x264preset::medium , NULL);
 
     VK_VideoQueue = gst_element_factory_make ("queue2", "videoq");
 
@@ -86,7 +97,7 @@ void MainWindow::VK_Start()
     // Create the empty pipeline
     pipeline = gst_pipeline_new ("test-pipeline");
 
-    if (!pipeline || !source || !videoconvert || !VK_VideoEncoder || !VK_VideoQueue || !matroskamux || !filesink)
+    if (!pipeline || !source || !caps || !videoconvert || !VK_VideoEncoder || !VK_VideoQueue || !matroskamux || !filesink)
     {
       g_printerr ("Not all elements could be created.\n");
       return;
