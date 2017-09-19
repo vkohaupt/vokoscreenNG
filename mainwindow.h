@@ -22,7 +22,11 @@ private:
     void mygstr();
     QString VK_GStreamer_Version();
 
-    GstElement *pipeline, *source, *videoconvert, *matroskamux, *filesink, *videorate;
+    GstElement *pipeline;
+    GError *error = NULL;
+
+    GstElement *source, *videoconvert, *matroskamux, *filesink, *videorate;
+
     GstElement *VK_VideoEncoder;
     GstElement *VK_VideoQueue;
 

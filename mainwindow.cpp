@@ -4,7 +4,7 @@
 #include <QDebug>
 #include <gst/gst.h>
 
-static GMainLoop *loop;
+//static GMainLoop *loop;
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -60,12 +60,15 @@ void MainWindow::VK_Start()
     }
     gst_object_unref (GST_OBJECT (factory));
 
-    //https://schneide.wordpress.com/tag/gstreamer/
-    //GError *error = NULL;
-    //GstPipeline *pipeline;
-    //pipeline = gst_parse_launch( "ximagesrc ! video/x-raw,framerate=30/1 ! videoconvert ! vp8enc ! webmmux ! filesink location=desktop.webm", &error );
+    // gst_parse_launch --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/gstreamer-GstParse.html#gst-parse-launch-full
+    // ximagesrc        --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good-plugins/html/gst-plugins-good-plugins-ximagesrc.html
+    // videoconvert     --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-plugins/html/gst-plugins-base-plugins-videoconvert.html
+    // x264enc          --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-ugly-plugins/html/gst-plugins-ugly-plugins-x264enc.html
+    // matroskamux      --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-matroskamux.html
+    // filesink         --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-plugins/html/gstreamer-plugins-filesink.html
+    pipeline = gst_parse_launch( "ximagesrc ! videoconvert ! x264enc ! matroskamux ! filesink location=/home/vk/Videos/desktop.mkv", &error );
 
-
+/*
     // Create the elements
     source = gst_element_factory_make ("ximagesrc", "source");
     g_object_set (G_OBJECT (source), "show-pointer", true, NULL);
@@ -85,7 +88,7 @@ void MainWindow::VK_Start()
     // Preset found with, gst-inspect-1.0 x264enc
     enum x264preset { None, ultrafast, superfast, veryfast, faster, medium, slow, slower, veryslow, placebo };
     VK_VideoEncoder = gst_element_factory_make ("x264enc", "x264enc");
-    //g_object_set (G_OBJECT (VK_VideoEncoder), "speed-preset", x264preset::medium , NULL);
+    g_object_set (G_OBJECT (VK_VideoEncoder), "speed-preset", x264preset::medium , NULL);
 
     VK_VideoQueue = gst_element_factory_make ("queue2", "videoq");
 
@@ -112,6 +115,9 @@ void MainWindow::VK_Start()
       gst_object_unref (pipeline);
       return;
     }
+*/
+
+    // https://gstreamer.freedesktop.org/documentation/application-development/basics/helloworld.html
 
     // Start playing
     GstStateChangeReturn ret;
