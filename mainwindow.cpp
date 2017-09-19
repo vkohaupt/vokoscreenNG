@@ -62,11 +62,14 @@ void MainWindow::VK_Start()
 
     // gst_parse_launch --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/gstreamer-GstParse.html#gst-parse-launch-full
     // ximagesrc        --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good-plugins/html/gst-plugins-good-plugins-ximagesrc.html
+    // ximagesrc        --> Element Pads --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good-plugins/html/gst-plugins-good-plugins-ximagesrc.html
     // videoconvert     --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-plugins/html/gst-plugins-base-plugins-videoconvert.html
     // x264enc          --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-ugly-plugins/html/gst-plugins-ugly-plugins-x264enc.html
     // matroskamux      --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-matroskamux.html
     // filesink         --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-plugins/html/gstreamer-plugins-filesink.html
-    pipeline = gst_parse_launch( "ximagesrc ! videoconvert ! x264enc ! matroskamux ! filesink location=/home/vk/Videos/desktop.mkv", &error );
+    pipeline = gst_parse_launch( "ximagesrc ! video/x-raw, framerate=50/1 ! videoconvert ! x264enc ! matroskamux ! filesink location=/home/vk/Videos/desktop.mkv", &error );
+
+
 
 /*
     // Create the elements
