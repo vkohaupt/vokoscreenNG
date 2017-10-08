@@ -67,6 +67,11 @@ void MainWindow::VK_Start()
     // x264enc          --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-ugly-plugins/html/gst-plugins-ugly-plugins-x264enc.html
     // matroskamux      --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-matroskamux.html
     // filesink         --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-plugins/html/gstreamer-plugins-filesink.html
+
+    // Option -e beendet die Aufnahme richtig
+    // Da kommt die Frage auf, welcher Befehl ist dafür notwendig.
+    // gst-launch-1.0 -e ximagesrc ! video/x-raw, framerate=25/1 ! videoconvert ! x264enc ! matroskamux ! filesink location=/home/vk/Videos/desktop.mkv
+
     pipeline = gst_parse_launch( "ximagesrc ! video/x-raw, framerate=50/1 ! videoconvert ! x264enc ! matroskamux ! filesink location=/home/vk/Videos/desktop.mkv", &error );
 
 
