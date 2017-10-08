@@ -145,6 +145,15 @@ void MainWindow::VK_Start()
 
 void MainWindow::VK_Stop()
 {
+    // http://gstreamer-devel.narkive.com/AMLXdRKP/how-can-i-tell-if-all-elements-received-the-eos
+    // wait for EOS
+    bool a = gst_element_send_event (pipeline, gst_event_new_eos());
+    qDebug() << a;
+    GstClockTime timeout = 10 * GST_SECOND;
+    GstMessage *msg;
+    msg = gst_bus_timed_pop_filtered (GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
+
+
     GstStateChangeReturn ret ;
     ret = gst_element_set_state (pipeline, GST_STATE_PAUSED);
     qDebug() << ret;
