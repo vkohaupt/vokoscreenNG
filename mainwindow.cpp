@@ -68,11 +68,8 @@ void MainWindow::VK_Start()
     // matroskamux      --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-matroskamux.html
     // filesink         --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-plugins/html/gstreamer-plugins-filesink.html
 
-    // Option -e beendet die Aufnahme richtig
-    // Da kommt die Frage auf, welcher Befehl ist dafür notwendig.
     // gst-launch-1.0 -e ximagesrc ! video/x-raw, framerate=25/1 ! videoconvert ! x264enc ! matroskamux ! filesink location=/home/vk/Videos/desktop.mkv
-
-    pipeline = gst_parse_launch( "ximagesrc ! video/x-raw, framerate=50/1 ! videoconvert ! x264enc ! matroskamux ! filesink location=/home/vk/Videos/desktop.mkv", &error );
+    pipeline = gst_parse_launch( "ximagesrc ! video/x-raw, framerate=25/1 ! videoconvert ! x264enc ! matroskamux ! filesink location=/home/vk/Videos/desktop.mkv", &error );
 
 
 
@@ -152,7 +149,6 @@ void MainWindow::VK_Stop()
     GstClockTime timeout = 10 * GST_SECOND;
     GstMessage *msg;
     msg = gst_bus_timed_pop_filtered (GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
-
 
     GstStateChangeReturn ret ;
     ret = gst_element_set_state (pipeline, GST_STATE_PAUSED);
