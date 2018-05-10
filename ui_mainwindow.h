@@ -17,6 +17,8 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -30,9 +32,17 @@ public:
     QVBoxLayout *verticalLayout;
     QTabWidget *tabWidget;
     QWidget *tab;
+    QHBoxLayout *horizontalLayout_2;
+    QVBoxLayout *verticalLayout_2;
+    QRadioButton *radioButtonFullscreen;
+    QRadioButton *radioButtonWindow;
+    QRadioButton *radioButtonArea;
+    QSpacerItem *verticalSpacer;
     QWidget *tab_2;
+    QWidget *tab_3;
     QHBoxLayout *horizontalLayout;
     QPushButton *pushButtonStart;
+    QPushButton *pushButtonPause;
     QPushButton *pushButtonStop;
 
     void setupUi(QMainWindow *MainWindow)
@@ -50,10 +60,43 @@ public:
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
         tab = new QWidget();
         tab->setObjectName(QStringLiteral("tab"));
+        horizontalLayout_2 = new QHBoxLayout(tab);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        radioButtonFullscreen = new QRadioButton(tab);
+        radioButtonFullscreen->setObjectName(QStringLiteral("radioButtonFullscreen"));
+        radioButtonFullscreen->setChecked(true);
+
+        verticalLayout_2->addWidget(radioButtonFullscreen);
+
+        radioButtonWindow = new QRadioButton(tab);
+        radioButtonWindow->setObjectName(QStringLiteral("radioButtonWindow"));
+
+        verticalLayout_2->addWidget(radioButtonWindow);
+
+        radioButtonArea = new QRadioButton(tab);
+        radioButtonArea->setObjectName(QStringLiteral("radioButtonArea"));
+
+        verticalLayout_2->addWidget(radioButtonArea);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_2->addItem(verticalSpacer);
+
+
+        horizontalLayout_2->addLayout(verticalLayout_2);
+
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
         tabWidget->addTab(tab_2, QString());
+        tab_3 = new QWidget();
+        tab_3->setObjectName(QStringLiteral("tab_3"));
+        tabWidget->addTab(tab_3, QString());
 
         verticalLayout->addWidget(tabWidget);
 
@@ -64,6 +107,11 @@ public:
         pushButtonStart->setObjectName(QStringLiteral("pushButtonStart"));
 
         horizontalLayout->addWidget(pushButtonStart);
+
+        pushButtonPause = new QPushButton(centralWidget);
+        pushButtonPause->setObjectName(QStringLiteral("pushButtonPause"));
+
+        horizontalLayout->addWidget(pushButtonPause);
 
         pushButtonStop = new QPushButton(centralWidget);
         pushButtonStop->setObjectName(QStringLiteral("pushButtonStop"));
@@ -77,15 +125,23 @@ public:
 
         retranslateUi(MainWindow);
 
+        tabWidget->setCurrentIndex(0);
+
+
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
 
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        radioButtonFullscreen->setText(QApplication::translate("MainWindow", "Fullscreen", 0));
+        radioButtonWindow->setText(QApplication::translate("MainWindow", "Window", 0));
+        radioButtonArea->setText(QApplication::translate("MainWindow", "Area", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Tab 1", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Tab 2", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("MainWindow", "Seite", 0));
         pushButtonStart->setText(QApplication::translate("MainWindow", "Start", 0));
+        pushButtonPause->setText(QApplication::translate("MainWindow", "Pause", 0));
         pushButtonStop->setText(QApplication::translate("MainWindow", "Stop", 0));
     } // retranslateUi
 

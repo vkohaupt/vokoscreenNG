@@ -19,8 +19,11 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QString VK_gstr_Separator = " ! ";
     void mygstr();
     QString VK_GStreamer_Version();
+    QString VK_getXimagesrc();
+    QString VK_getMuxer();
 
     GstElement *pipeline;
     GError *error = NULL;
@@ -33,6 +36,12 @@ private:
 private slots:
     void VK_Start();
     void VK_Stop();
+
+signals:
+    void close();
+
+protected:
+    void closeEvent( QCloseEvent * event );
 
 
 };

@@ -4,6 +4,8 @@
 #include <QDebug>
 #include <gst/gst.h>
 
+#include "QvkRegionController.h"
+
 //static GMainLoop *loop;
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -14,13 +16,23 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     qDebug() << gst_version_string ();
 
-    connect( ui->pushButtonStart, SIGNAL(clicked(bool)), this, SLOT(VK_Start() ) );
-    connect( ui->pushButtonStop, SIGNAL(clicked(bool)), this, SLOT(VK_Stop() ) );
+    QvkRegionController *regionController = new QvkRegionController();
+    regionController->hide();
+
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( VK_Start() ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), this, SLOT( VK_Stop() ) );
+    connect( ui->radioButtonArea, SIGNAL( toggled( bool ) ), regionController, SLOT( show( bool ) ) );
+    connect( this,                SIGNAL( close() ),         regionController, SLOT( close() ) );
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::closeEvent( QCloseEvent * event )
+{
+    emit close();
 }
 
 QString MainWindow::VK_GStreamer_Version()
@@ -45,9 +57,46 @@ QString MainWindow::VK_GStreamer_Version()
 }
 
 
+QString MainWindow::VK_getXimagesrc()
+{
+   if( ui->radioButtonFullscreen->isChecked() == true )
+   {
+       QString value = "ximagesrc" + VK_gstr_Separator;
+       return value;
+   }
+
+   if( ui->radioButtonWindow->isChecked() == true )
+   {
+
+   }
+
+   if ( ui->radioButtonArea->isChecked() == true )
+   {
+
+   }
+}
+
+
+QString MainWindow::VK_getMuxer()
+{
+    QString value = "matroskamux" + VK_gstr_Separator;
+    return value;
+}
+
+
 // gstreamer-plugins-bad-orig-addon
 // gstreamer-plugins-good-extra
 // libgstinsertbin-1_0-0
+// gst_parse_launch --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/gstreamer-GstParse.html#gst-parse-launch-full
+// ximagesrc        --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good-plugins/html/gst-plugins-good-plugins-ximagesrc.html
+// ximagesrc        --> Element Pads --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good-plugins/html/gst-plugins-good-plugins-ximagesrc.html
+// videoconvert     --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-plugins/html/gst-plugins-base-plugins-videoconvert.html
+// x264enc          --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-ugly-plugins/html/gst-plugins-ugly-plugins-x264enc.html
+// matroskamux      --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-matroskamux.html
+// filesink         --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-plugins/html/gstreamer-plugins-filesink.html
+
+// gst-launch-1.0 -e ximagesrc ! video/x-raw, framerate=25/1 ! videoconvert ! x264enc ! matroskamux ! filesink location=/home/vk/Videos/desktop.mkv
+//use-damage=false
 void MainWindow::VK_Start()
 {
     //loop = g_main_loop_new (NULL, FALSE);
@@ -60,23 +109,15 @@ void MainWindow::VK_Start()
     }
     gst_object_unref (GST_OBJECT (factory));
 
-    // gst_parse_launch --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/gstreamer-GstParse.html#gst-parse-launch-full
-    // ximagesrc        --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good-plugins/html/gst-plugins-good-plugins-ximagesrc.html
-    // ximagesrc        --> Element Pads --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good-plugins/html/gst-plugins-good-plugins-ximagesrc.html
-    // videoconvert     --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-plugins/html/gst-plugins-base-plugins-videoconvert.html
-    // x264enc          --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-ugly-plugins/html/gst-plugins-ugly-plugins-x264enc.html
-    // matroskamux      --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-matroskamux.html
-    // filesink         --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-plugins/html/gstreamer-plugins-filesink.html
 
-    // gst-launch-1.0 -e ximagesrc ! video/x-raw, framerate=25/1 ! videoconvert ! x264enc ! matroskamux ! filesink location=/home/vk/Videos/desktop.mkv
-    //use-damage=false 
-    pipeline = gst_parse_launch( "ximagesrc ! \
-                                  video/x-raw, framerate=25/1 ! \
-                                  videoconvert ! \
-                                  x264enc speed-preset=veryfast quantizer=21 pass=4 ! \
-                                  matroskamux ! \
-                                  filesink location=/home/vk/Videos/desktop.mkv",
-                                  &error );
+    QString VK_Pipeline = VK_getXimagesrc() +
+                         "video/x-raw, framerate=25/1 ! \
+                         videoconvert ! \
+                         x264enc speed-preset=veryfast quantizer=21 pass=4 ! " +
+                         VK_getMuxer() +
+                         "filesink location=/home/vk/Videos/desktop.mkv";
+
+    pipeline = gst_parse_launch( VK_Pipeline.toLatin1(), &error );
 
 //    pipeline = gst_parse_launch( "ximagesrc xid=0x4400004 ! video/x-raw, framerate=25/1 ! videoconvert ! x264enc ! matroskamux ! filesink location=/home/vk/Videos/desktop.mkv", &error );
 

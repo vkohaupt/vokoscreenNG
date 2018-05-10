@@ -4,9 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT += core gui widgets x11extras network testlib dbus multimedia multimediawidgets
 
 TARGET = mygstreamer
 TEMPLATE = app
@@ -35,3 +33,6 @@ FORMS += \
 
 CONFIG += link_pkgconfig
 PKGCONFIG += gstreamer-1.0
+
+# region
+include(region/regionselection.pri)
