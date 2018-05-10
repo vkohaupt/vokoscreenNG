@@ -69,8 +69,16 @@ void MainWindow::VK_Start()
     // filesink         --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-plugins/html/gstreamer-plugins-filesink.html
 
     // gst-launch-1.0 -e ximagesrc ! video/x-raw, framerate=25/1 ! videoconvert ! x264enc ! matroskamux ! filesink location=/home/vk/Videos/desktop.mkv
-    pipeline = gst_parse_launch( "ximagesrc ! video/x-raw, framerate=25/1 ! videoconvert ! x264enc ! matroskamux ! filesink location=/home/vk/Videos/desktop.mkv", &error );
+    //use-damage=false 
+    pipeline = gst_parse_launch( "ximagesrc ! \
+                                  video/x-raw, framerate=25/1 ! \
+                                  videoconvert ! \
+                                  x264enc speed-preset=veryfast quantizer=21 pass=4 ! \
+                                  matroskamux ! \
+                                  filesink location=/home/vk/Videos/desktop.mkv",
+                                  &error );
 
+//    pipeline = gst_parse_launch( "ximagesrc xid=0x4400004 ! video/x-raw, framerate=25/1 ! videoconvert ! x264enc ! matroskamux ! filesink location=/home/vk/Videos/desktop.mkv", &error );
 
 
 /*
