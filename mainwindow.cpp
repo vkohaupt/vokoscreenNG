@@ -57,7 +57,7 @@ QString MainWindow::VK_getXimagesrc()
 {
    if( ui->radioButtonFullscreen->isChecked() == true )
    {
-       QString value = "ximagesrc";
+       QString value = "ximagesrc use-damage=false";
        return value;
    }
 
@@ -70,6 +70,7 @@ QString MainWindow::VK_getXimagesrc()
    {
        QStringList stringList;
        stringList << "ximagesrc"
+                  << "use-damage=false"
                   << "startx=" + QString::number( regionController->getX() )
                   << "starty=" + QString::number( regionController->getY() )
                   << "endx="   + QString::number( regionController->getX() + regionController->getWidth() )
@@ -112,12 +113,12 @@ void MainWindow::VK_Start()
     VK_PipelineList << VK_getXimagesrc()
                     << "video/x-raw, framerate=25/1"
                     << "videoconvert"
-                    << "x264enc speed-preset=veryfast quantizer=21 pass=4"
+                    << "x264enc speed-preset=veryfast pass=quant threads=0"
                     << VK_getMuxer()
                     << "filesink location=/home/vk/Videos/desktop.mkv";
 
     QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Separator );
-qDebug() << VK_Pipeline;
+    qDebug() << VK_Pipeline;
     pipeline = gst_parse_launch( VK_Pipeline.toLatin1(), &error );
 
 
