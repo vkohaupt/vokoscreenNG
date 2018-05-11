@@ -4,10 +4,6 @@
 #include <QDebug>
 #include <gst/gst.h>
 
-#include "QvkRegionController.h"
-
-//static GMainLoop *loop;
-
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -16,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     qDebug() << gst_version_string ();
 
-    QvkRegionController *regionController = new QvkRegionController();
+    regionController = new QvkRegionController();
     regionController->hide();
 
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( VK_Start() ) );
@@ -61,7 +57,7 @@ QString MainWindow::VK_getXimagesrc()
 {
    if( ui->radioButtonFullscreen->isChecked() == true )
    {
-       QString value = "ximagesrc" + VK_gstr_Separator;
+       QString value = "ximagesrc";
        return value;
    }
 
@@ -72,14 +68,21 @@ QString MainWindow::VK_getXimagesrc()
 
    if ( ui->radioButtonArea->isChecked() == true )
    {
-
+       QStringList stringList;
+       stringList << "ximagesrc"
+                  << "startx=" + QString::number( regionController->getX() )
+                  << "starty=" + QString::number( regionController->getY() )
+                  << "endx="   + QString::number( regionController->getX() + regionController->getWidth() )
+                  << "endy="   + QString::number( regionController->getY() + regionController->getHeight() );
+       QString value = stringList.join( " " );
+       return value;
    }
 }
 
 
 QString MainWindow::VK_getMuxer()
 {
-    QString value = "matroskamux" + VK_gstr_Separator;
+    QString value = "matroskamux";
     return value;
 }
 
@@ -95,31 +98,27 @@ QString MainWindow::VK_getMuxer()
 // matroskamux      --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-matroskamux.html
 // filesink         --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-plugins/html/gstreamer-plugins-filesink.html
 
-// gst-launch-1.0 -e ximagesrc ! video/x-raw, framerate=25/1 ! videoconvert ! x264enc ! matroskamux ! filesink location=/home/vk/Videos/desktop.mkv
 //use-damage=false
 void MainWindow::VK_Start()
 {
-    //loop = g_main_loop_new (NULL, FALSE);
-
     GstElementFactory *factory = gst_element_factory_find( "ximagesrc" );
     if ( !factory )
     {
       qDebug() << "Failed to find factory of type ximagesrc";
       return;
     }
-    gst_object_unref (GST_OBJECT (factory));
 
+    QStringList VK_PipelineList;
+    VK_PipelineList << VK_getXimagesrc()
+                    << "video/x-raw, framerate=25/1"
+                    << "videoconvert"
+                    << "x264enc speed-preset=veryfast quantizer=21 pass=4"
+                    << VK_getMuxer()
+                    << "filesink location=/home/vk/Videos/desktop.mkv";
 
-    QString VK_Pipeline = VK_getXimagesrc() +
-                         "video/x-raw, framerate=25/1 ! \
-                         videoconvert ! \
-                         x264enc speed-preset=veryfast quantizer=21 pass=4 ! " +
-                         VK_getMuxer() +
-                         "filesink location=/home/vk/Videos/desktop.mkv";
-
+    QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Separator );
+qDebug() << VK_Pipeline;
     pipeline = gst_parse_launch( VK_Pipeline.toLatin1(), &error );
-
-//    pipeline = gst_parse_launch( "ximagesrc xid=0x4400004 ! video/x-raw, framerate=25/1 ! videoconvert ! x264enc ! matroskamux ! filesink location=/home/vk/Videos/desktop.mkv", &error );
 
 
 /*

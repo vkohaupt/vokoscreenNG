@@ -47,12 +47,12 @@ void QvkRegionController::close()
 
 int QvkRegionController::getX()
 {
-  return regionChoise->geometry().x(); 
+  return regionChoise->getXRecordArea();
 }
 
 int QvkRegionController::getY()
 {
-  return regionChoise->geometry().y();
+  return regionChoise->getYRecordArea();
 }
 
 int QvkRegionController::getWidth()

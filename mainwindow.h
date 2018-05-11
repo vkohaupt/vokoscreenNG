@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "QvkRegionController.h"
+
 #include <QMainWindow>
 
 #include <gst/gst.h>
@@ -19,7 +21,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QString VK_gstr_Separator = " ! ";
+    QvkRegionController *regionController;
+    const QString VK_Gstr_Separator = " ! ";
     void mygstr();
     QString VK_GStreamer_Version();
     QString VK_getXimagesrc();
