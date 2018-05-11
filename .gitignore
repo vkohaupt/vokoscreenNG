@@ -22,13 +22,14 @@
 *.out
 *.app
 
-# Qt-es
+# Qt
 *.pro.user
 *.pro.user.*
 moc_*.cpp
 qrc_*.cpp
 Makefile
 *-build-*
+ui_*.h
 
 # Linux/Unixes
 .*
@@ -40,6 +41,4 @@ Makefile
 language/*.qm
 vokoscreen
 
-# ffmpeg
-*.log
 
