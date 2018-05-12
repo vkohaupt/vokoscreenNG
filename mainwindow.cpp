@@ -2,7 +2,19 @@
 #include "ui_mainwindow.h"
 
 #include <QDebug>
+#include <QDateTime>
 #include <gst/gst.h>
+
+// gstreamer-plugins-bad-orig-addon
+// gstreamer-plugins-good-extra
+// libgstinsertbin-1_0-0
+// gst_parse_launch --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/gstreamer-GstParse.html#gst-parse-launch-full
+// ximagesrc        --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good-plugins/html/gst-plugins-good-plugins-ximagesrc.html
+// ximagesrc        --> Element Pads --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good-plugins/html/gst-plugins-good-plugins-ximagesrc.html
+// videoconvert     --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-plugins/html/gst-plugins-base-plugins-videoconvert.html
+// x264enc          --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-ugly-plugins/html/gst-plugins-ugly-plugins-x264enc.html
+// matroskamux      --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-matroskamux.html
+// filesink         --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-plugins/html/gstreamer-plugins-filesink.html
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -15,7 +27,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     regionController = new QvkRegionController();
     regionController->hide();
 
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( VK_Start() ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( VK_preStart() ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), this, SLOT( VK_Stop() ) );
     connect( ui->pushButtonPause, SIGNAL( clicked() ),       this, SLOT( VK_Pause() ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked() ),    this, SLOT( VK_Continue() ) );
@@ -71,7 +83,13 @@ QString MainWindow::VK_getXimagesrc()
 
    if( ui->radioButtonWindow->isChecked() == true )
    {
+       QStringList stringList;
+       stringList << "ximagesrc"
+                  << "use-damage=false"
+                  << "xid=" + QString::number( vkWinInfo->getWinID() );
 
+       QString value = stringList.join( " " );
+       return value;
    }
 
    if ( ui->radioButtonArea->isChecked() == true )
@@ -96,19 +114,18 @@ QString MainWindow::VK_getMuxer()
     return value;
 }
 
+void MainWindow::VK_preStart()
+{
+    if ( ui->radioButtonWindow->isChecked() == true )
+    {
+      vkWinInfo = new QvkWinInfo();
+      connect( vkWinInfo, SIGNAL( windowChanged() ), this, SLOT( VK_Start() ) );
+      return;
+    }
 
-// gstreamer-plugins-bad-orig-addon
-// gstreamer-plugins-good-extra
-// libgstinsertbin-1_0-0
-// gst_parse_launch --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/gstreamer-GstParse.html#gst-parse-launch-full
-// ximagesrc        --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good-plugins/html/gst-plugins-good-plugins-ximagesrc.html
-// ximagesrc        --> Element Pads --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good-plugins/html/gst-plugins-good-plugins-ximagesrc.html
-// videoconvert     --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-plugins/html/gst-plugins-base-plugins-videoconvert.html
-// x264enc          --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-ugly-plugins/html/gst-plugins-ugly-plugins-x264enc.html
-// matroskamux      --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-matroskamux.html
-// filesink         --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-plugins/html/gstreamer-plugins-filesink.html
+    VK_Start();
+}
 
-//use-damage=false
 void MainWindow::VK_Start()
 {
     GstElementFactory *factory = gst_element_factory_find( "ximagesrc" );
@@ -118,18 +135,104 @@ void MainWindow::VK_Start()
       return;
     }
 
+    QString Filename = "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + "mkv";
+
     QStringList VK_PipelineList;
     VK_PipelineList << VK_getXimagesrc()
                     << "video/x-raw, framerate=25/1"
                     << "videoconvert"
                     << "x264enc speed-preset=veryfast pass=quant threads=0"
                     << VK_getMuxer()
-                    << "filesink location=/home/vk/Videos/desktop.mkv";
+                    << "filesink location=/home/vk/Videos/" + Filename;
 
     QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Separator );
     qDebug() << VK_Pipeline;
     pipeline = gst_parse_launch( VK_Pipeline.toLatin1(), &error );
 
+    // Start playing
+    GstStateChangeReturn ret;
+    ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
+    qDebug() << ret;
+    if (ret == GST_STATE_CHANGE_FAILURE) {
+      g_printerr ("Unable to set the pipeline to the playing state.\n");
+      gst_object_unref (pipeline);
+      return;
+    }
+
+    ui->pushButtonStart->setEnabled( false );
+    ui->pushButtonPause->setEnabled( true );
+    ui->pushButtonStop->setEnabled( true );
+
+    if ( ui->radioButtonFullscreen->isChecked() == true )
+    {
+        ui->radioButtonWindow->setEnabled( false );
+        ui->radioButtonArea->setEnabled( false );
+    }
+
+    if ( ui->radioButtonWindow->isChecked() == true )
+    {
+        ui->radioButtonFullscreen->setEnabled( false );
+        ui->radioButtonArea->setEnabled( false );
+    }
+
+    if ( ui->radioButtonArea->isChecked() == true )
+    {
+        ui->radioButtonFullscreen->setEnabled( false );
+        ui->radioButtonWindow->setEnabled( false );
+    }
+
+}
+
+
+void MainWindow::VK_Stop()
+{
+    // http://gstreamer-devel.narkive.com/AMLXdRKP/how-can-i-tell-if-all-elements-received-the-eos
+    // wait for EOS
+    bool a = gst_element_send_event (pipeline, gst_event_new_eos());
+    qDebug() << a;
+    GstClockTime timeout = 10 * GST_SECOND;
+    GstMessage *msg = gst_bus_timed_pop_filtered (GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
+    qDebug() << msg->src->name;
+
+    GstStateChangeReturn ret ;
+    ret = gst_element_set_state (pipeline, GST_STATE_PAUSED);
+    qDebug() << ret;
+    ret = gst_element_set_state (pipeline, GST_STATE_READY);
+    qDebug() << ret;
+    ret = gst_element_set_state (pipeline, GST_STATE_NULL);
+    qDebug() << ret;
+    gst_object_unref (pipeline);
+
+    ui->pushButtonStart->setEnabled( true );
+    ui->pushButtonPause->setEnabled( false );
+    ui->pushButtonStop->setEnabled( false );
+
+    ui->radioButtonFullscreen->setEnabled( true );
+    ui->radioButtonWindow->setEnabled( true );
+    ui->radioButtonArea->setEnabled( true );
+}
+
+void MainWindow::VK_Pause()
+{
+    ui->pushButtonStart->setEnabled( false );
+    ui->pushButtonPause->hide();
+    ui->pushButtonContinue->show();
+    ui->pushButtonStop->setEnabled( false );
+
+    GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
+    qDebug() << ret;
+}
+
+
+void MainWindow::VK_Continue()
+{
+    ui->pushButtonContinue->hide();
+    ui->pushButtonPause->show();
+    ui->pushButtonStop->setEnabled( true );
+
+    GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
+    qDebug() << ret;
+}
 
 /*
     // Create the elements
@@ -178,68 +281,6 @@ void MainWindow::VK_Start()
       gst_object_unref (pipeline);
       return;
     }
+    // https://gstreamer.freedesktop.org/documentation/application-development/basics/helloworld.html
 */
 
-    // https://gstreamer.freedesktop.org/documentation/application-development/basics/helloworld.html
-
-    // Start playing
-    GstStateChangeReturn ret;
-    ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
-    qDebug() << ret;
-    if (ret == GST_STATE_CHANGE_FAILURE) {
-      g_printerr ("Unable to set the pipeline to the playing state.\n");
-      gst_object_unref (pipeline);
-      return;
-    }
-
-    ui->pushButtonStart->setEnabled( false );
-    ui->pushButtonPause->setEnabled( true );
-    ui->pushButtonStop->setEnabled( true );
-}
-
-
-void MainWindow::VK_Stop()
-{
-    // http://gstreamer-devel.narkive.com/AMLXdRKP/how-can-i-tell-if-all-elements-received-the-eos
-    // wait for EOS
-    bool a = gst_element_send_event (pipeline, gst_event_new_eos());
-    qDebug() << a;
-    GstClockTime timeout = 10 * GST_SECOND;
-    GstMessage *msg = gst_bus_timed_pop_filtered (GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
-    qDebug() << msg->src->name;
-
-    GstStateChangeReturn ret ;
-    ret = gst_element_set_state (pipeline, GST_STATE_PAUSED);
-    qDebug() << ret;
-    ret = gst_element_set_state (pipeline, GST_STATE_READY);
-    qDebug() << ret;
-    ret = gst_element_set_state (pipeline, GST_STATE_NULL);
-    qDebug() << ret;
-    gst_object_unref (pipeline);
-
-    ui->pushButtonStart->setEnabled( true );
-    ui->pushButtonPause->setEnabled( false );
-    ui->pushButtonStop->setEnabled( false );
-}
-
-void MainWindow::VK_Pause()
-{
-    ui->pushButtonStart->setEnabled( false );
-    ui->pushButtonPause->hide();
-    ui->pushButtonContinue->show();
-    ui->pushButtonStop->setEnabled( false );
-
-    GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
-    qDebug() << ret;
-}
-
-
-void MainWindow::VK_Continue()
-{
-    ui->pushButtonContinue->hide();
-    ui->pushButtonPause->show();
-    ui->pushButtonStop->setEnabled( true );
-
-    GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
-    qDebug() << ret;
-}

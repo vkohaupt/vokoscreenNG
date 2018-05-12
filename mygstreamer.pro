@@ -36,3 +36,9 @@ PKGCONFIG += gstreamer-1.0
 
 # region
 include(region/regionselection.pri)
+
+# winInfo
+include(winInfo/winInfo.pri)
+
+# libqxt
+include(libqxtQt5/libqxt.pri)

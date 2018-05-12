@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "QvkRegionController.h"
+#include "QvkWinInfo.h"
 
 #include <QMainWindow>
 
@@ -37,8 +38,10 @@ private:
     GstElement *VK_VideoEncoder;
     GstElement *VK_VideoQueue;
 
+    QvkWinInfo *vkWinInfo;
 
 private slots:
+    void VK_preStart();
     void VK_Start();
     void VK_Stop();
     void VK_Pause();

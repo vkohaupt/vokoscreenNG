@@ -51,7 +51,7 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
         platform = wayland;
 
     // Hint: Qt::WindowStaysOnTopHint is only for X11 on WayLand not do it
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
     setAttribute( Qt::WA_TranslucentBackground, true);
 
     setMouseTracking( true );
