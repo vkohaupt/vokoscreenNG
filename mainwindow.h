@@ -25,18 +25,13 @@ private:
     Ui::MainWindow *ui;
     QvkRegionController *regionController;
     const QString VK_Gstr_Separator = " ! ";
-    void mygstr();
+    QDesktopWidget *desk = QApplication::desktop();
     QString VK_GStreamer_Version();
     QString VK_getXimagesrc();
     QString VK_getMuxer();
 
     GstElement *pipeline;
     GError *error = NULL;
-
-    GstElement *source, *videoconvert, *matroskamux, *filesink, *videorate;
-
-    GstElement *VK_VideoEncoder;
-    GstElement *VK_VideoQueue;
 
     QvkWinInfo *vkWinInfo;
 
@@ -46,6 +41,7 @@ private slots:
     void VK_Stop();
     void VK_Pause();
     void VK_Continue();
+    void myScreenCountChanged( int newCount );
 
 
 signals:

@@ -5,6 +5,8 @@
 #include <QDateTime>
 #include <QStandardPaths>
 #include <QDir>
+#include <QScreen>
+#include <QDesktopWidget>
 
 #include <gst/gst.h>
 
@@ -30,17 +32,47 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     regionController = new QvkRegionController();
     regionController->hide();
 
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( VK_preStart() ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), this, SLOT( VK_Stop() ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked() ),       this, SLOT( VK_Pause() ) );
-    connect( ui->pushButtonContinue, SIGNAL( clicked() ),    this, SLOT( VK_Continue() ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( VK_preStart() ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonPause,       SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonFullscreen, SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonWindow,     SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonArea,       SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxScreen,        SLOT( setEnabled( bool ) ) );
 
-    connect( ui->radioButtonArea, SIGNAL( toggled( bool ) ), regionController, SLOT( show( bool ) ) );
-    connect( this,                SIGNAL( signal_close() ),  regionController, SLOT( close() ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( VK_Stop() ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonPause,       SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonFullscreen, SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonWindow,     SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonArea,       SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxScreen,        SLOT( setDisabled( bool ) ) );
+
+    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), this,                   SLOT( VK_Pause() ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonPause,    SLOT( hide() ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonContinue, SLOT( show() ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonStop,     SLOT( setEnabled( bool ) ) );
+
+    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), this,                   SLOT( VK_Continue() ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonContinue, SLOT( hide() ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonPause,    SLOT( show() ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonStop,     SLOT( setDisabled( bool ) ) );
+
+    connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), regionController,   SLOT( show( bool ) ) );
+    connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
+    connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
+
+    connect( this, SIGNAL( signal_close() ),  regionController, SLOT( close() ) );
 
     ui->pushButtonContinue->hide();
-    ui->pushButtonPause->setEnabled( false );
-    ui->pushButtonStop->setEnabled( false );
+
+    QDesktopWidget *desk = QApplication::desktop();
+    connect( desk, SIGNAL( screenCountChanged(int) ), SLOT( myScreenCountChanged( int ) ) );
+    connect( desk, SIGNAL( resized( int ) ),          SLOT( myScreenCountChanged( int ) ) );
+    emit desk->screenCountChanged(0);
+
 }
 
 MainWindow::~MainWindow()
@@ -160,35 +192,11 @@ void MainWindow::VK_Start()
       gst_object_unref (pipeline);
       return;
     }
-
-    ui->pushButtonStart->setEnabled( false );
-    ui->pushButtonPause->setEnabled( true );
-    ui->pushButtonStop->setEnabled( true );
-
-    if ( ui->radioButtonFullscreen->isChecked() == true )
-    {
-        ui->radioButtonWindow->setEnabled( false );
-        ui->radioButtonArea->setEnabled( false );
-    }
-
-    if ( ui->radioButtonWindow->isChecked() == true )
-    {
-        ui->radioButtonFullscreen->setEnabled( false );
-        ui->radioButtonArea->setEnabled( false );
-    }
-
-    if ( ui->radioButtonArea->isChecked() == true )
-    {
-        ui->radioButtonFullscreen->setEnabled( false );
-        ui->radioButtonWindow->setEnabled( false );
-    }
-
 }
 
 
 void MainWindow::VK_Stop()
 {
-    // http://gstreamer-devel.narkive.com/AMLXdRKP/how-can-i-tell-if-all-elements-received-the-eos
     // wait for EOS
     bool a = gst_element_send_event (pipeline, gst_event_new_eos());
     Q_UNUSED(a);
@@ -202,26 +210,11 @@ void MainWindow::VK_Stop()
     ret = gst_element_set_state( pipeline, GST_STATE_READY );
     ret = gst_element_set_state( pipeline, GST_STATE_NULL );
     gst_object_unref( pipeline );
-
-    ui->pushButtonStart->setEnabled( true );
-    ui->pushButtonPause->setEnabled( false );
-    ui->pushButtonStop->setEnabled( false );
-    ui->pushButtonContinue->hide();
-    ui->pushButtonPause->show();
-
-    ui->radioButtonFullscreen->setEnabled( true );
-    ui->radioButtonWindow->setEnabled( true );
-    ui->radioButtonArea->setEnabled( true );
 }
 
 
 void MainWindow::VK_Pause()
 {
-    ui->pushButtonStart->setEnabled( false );
-    ui->pushButtonStop->setEnabled( false );
-    ui->pushButtonPause->hide();
-    ui->pushButtonContinue->show();
-
     GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
     Q_UNUSED(ret);
 }
@@ -229,12 +222,37 @@ void MainWindow::VK_Pause()
 
 void MainWindow::VK_Continue()
 {
-    ui->pushButtonContinue->hide();
-    ui->pushButtonPause->show();
-    ui->pushButtonStop->setEnabled( true );
-
     GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
     Q_UNUSED(ret);
+}
+
+
+void MainWindow::myScreenCountChanged( int newCount )
+{
+    Q_UNUSED(newCount);
+    ui->comboBoxScreen->clear();
+    QDesktopWidget *desk = QApplication::desktop();
+    qDebug() << "[vokoscreen]" << "---Begin search Screen---";
+    qDebug() << "[vokoscreen]" << "Number of screens:" << desk->screenCount();
+    qDebug() << "[vokoscreen] Primary screen is: Display" << desk->primaryScreen()+1;
+    qDebug() << "[vokoscreen] VirtualDesktop:" << desk->isVirtualDesktop();
+
+    //QList < QScreen *> screens = QGuiApplication::screens();
+    QScreen *screen = QGuiApplication::primaryScreen();
+    qDebug() << "[vokoscreen] DevicePixelRatio:" << screen->devicePixelRatio() << " (Normal displays is 1, Retina display is 2)";
+
+    for ( int i = 1; i < desk->screenCount()+1; i++ )
+    {
+      QString ScreenGeometryX1 = QString::number( desk->screenGeometry( i-1 ).left() );
+      QString ScreenGeometryY1 = QString::number( desk->screenGeometry( i-1 ).top() );
+      QString ScreenGeometryX = QString::number( desk->screenGeometry( i-1 ).width() * screen->devicePixelRatio() ); // devicePixelRatio() for Retina Displays
+      QString ScreenGeometryY = QString::number( desk->screenGeometry( i-1 ).height() * screen->devicePixelRatio() );
+      ui->comboBoxScreen->addItem( tr( "Display" ) + " " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY, i-1 );
+      qDebug().noquote() << "[vokoscreen]" << "Display " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY;
+    }
+    ui->comboBoxScreen->addItem( tr( "All Displays" ), -1 );
+    qDebug() << "[vokoscreen]" << "---End search Screen---";
+    qDebug( " " );
 }
 
 /*

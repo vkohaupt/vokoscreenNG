@@ -90,6 +90,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="pushButtonStop">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="font">
          <font>
           <weight>75</weight>
@@ -103,6 +106,9 @@
       </item>
       <item>
        <widget class="QPushButton" name="pushButtonPause">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="font">
          <font>
           <weight>75</weight>
