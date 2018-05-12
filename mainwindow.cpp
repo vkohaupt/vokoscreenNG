@@ -3,6 +3,9 @@
 
 #include <QDebug>
 #include <QDateTime>
+#include <QStandardPaths>
+#include <QDir>
+
 #include <gst/gst.h>
 
 // gstreamer-plugins-bad-orig-addon
@@ -135,15 +138,15 @@ void MainWindow::VK_Start()
       return;
     }
 
-    QString Filename = "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + "mkv";
-
+    QString filename = "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + "mkv";
+    QString path = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
     QStringList VK_PipelineList;
     VK_PipelineList << VK_getXimagesrc()
                     << "video/x-raw, framerate=25/1"
                     << "videoconvert"
                     << "x264enc speed-preset=veryfast pass=quant threads=0"
                     << VK_getMuxer()
-                    << "filesink location=/home/vk/Videos/" + Filename;
+                    << "filesink location=" + path + QDir::separator() + filename;
 
     QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Separator );
     qDebug() << VK_Pipeline;
@@ -152,7 +155,6 @@ void MainWindow::VK_Start()
     // Start playing
     GstStateChangeReturn ret;
     ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
-    qDebug() << ret;
     if (ret == GST_STATE_CHANGE_FAILURE) {
       g_printerr ("Unable to set the pipeline to the playing state.\n");
       gst_object_unref (pipeline);
@@ -189,38 +191,39 @@ void MainWindow::VK_Stop()
     // http://gstreamer-devel.narkive.com/AMLXdRKP/how-can-i-tell-if-all-elements-received-the-eos
     // wait for EOS
     bool a = gst_element_send_event (pipeline, gst_event_new_eos());
-    qDebug() << a;
+    Q_UNUSED(a);
     GstClockTime timeout = 10 * GST_SECOND;
     GstMessage *msg = gst_bus_timed_pop_filtered (GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
-    qDebug() << msg->src->name;
+    Q_UNUSED(msg);
 
     GstStateChangeReturn ret ;
-    ret = gst_element_set_state (pipeline, GST_STATE_PAUSED);
-    qDebug() << ret;
-    ret = gst_element_set_state (pipeline, GST_STATE_READY);
-    qDebug() << ret;
-    ret = gst_element_set_state (pipeline, GST_STATE_NULL);
-    qDebug() << ret;
-    gst_object_unref (pipeline);
+    Q_UNUSED(ret);
+    ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
+    ret = gst_element_set_state( pipeline, GST_STATE_READY );
+    ret = gst_element_set_state( pipeline, GST_STATE_NULL );
+    gst_object_unref( pipeline );
 
     ui->pushButtonStart->setEnabled( true );
     ui->pushButtonPause->setEnabled( false );
     ui->pushButtonStop->setEnabled( false );
+    ui->pushButtonContinue->hide();
+    ui->pushButtonPause->show();
 
     ui->radioButtonFullscreen->setEnabled( true );
     ui->radioButtonWindow->setEnabled( true );
     ui->radioButtonArea->setEnabled( true );
 }
 
+
 void MainWindow::VK_Pause()
 {
     ui->pushButtonStart->setEnabled( false );
+    ui->pushButtonStop->setEnabled( false );
     ui->pushButtonPause->hide();
     ui->pushButtonContinue->show();
-    ui->pushButtonStop->setEnabled( false );
 
     GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
-    qDebug() << ret;
+    Q_UNUSED(ret);
 }
 
 
@@ -231,7 +234,7 @@ void MainWindow::VK_Continue()
     ui->pushButtonStop->setEnabled( true );
 
     GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
-    qDebug() << ret;
+    Q_UNUSED(ret);
 }
 
 /*
