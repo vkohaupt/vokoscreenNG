@@ -19,6 +19,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+
 private:
     Ui::MainWindow *ui;
     QvkRegionController *regionController;
@@ -36,12 +37,17 @@ private:
     GstElement *VK_VideoEncoder;
     GstElement *VK_VideoQueue;
 
+
 private slots:
     void VK_Start();
     void VK_Stop();
+    void VK_Pause();
+    void VK_Continue();
+
 
 signals:
-    void close();
+    void signal_close();
+
 
 protected:
     void closeEvent( QCloseEvent * event );

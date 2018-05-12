@@ -97,6 +97,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="pushButtonContinue">
+        <property name="text">
+         <string>Continue</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="pushButtonStop">
         <property name="text">
          <string>Stop</string>

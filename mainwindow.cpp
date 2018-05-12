@@ -17,8 +17,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( VK_Start() ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), this, SLOT( VK_Stop() ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked() ),       this, SLOT( VK_Pause() ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked() ),    this, SLOT( VK_Continue() ) );
+
     connect( ui->radioButtonArea, SIGNAL( toggled( bool ) ), regionController, SLOT( show( bool ) ) );
-    connect( this,                SIGNAL( close() ),         regionController, SLOT( close() ) );
+    connect( this,                SIGNAL( signal_close() ),  regionController, SLOT( close() ) );
+
+    ui->pushButtonContinue->hide();
+    ui->pushButtonPause->setEnabled( false );
+    ui->pushButtonStop->setEnabled( false );
 }
 
 MainWindow::~MainWindow()
@@ -28,7 +35,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::closeEvent( QCloseEvent * event )
 {
-    emit close();
+    (void)event;
+    emit signal_close();
 }
 
 QString MainWindow::VK_GStreamer_Version()
@@ -78,6 +86,7 @@ QString MainWindow::VK_getXimagesrc()
        QString value = stringList.join( " " );
        return value;
    }
+   return "";
 }
 
 
@@ -183,9 +192,9 @@ void MainWindow::VK_Start()
       return;
     }
 
-    /* Iterate */
-    //g_print ("Running...\n");
-    //g_main_loop_run (loop);
+    ui->pushButtonStart->setEnabled( false );
+    ui->pushButtonPause->setEnabled( true );
+    ui->pushButtonStop->setEnabled( true );
 }
 
 
@@ -196,8 +205,8 @@ void MainWindow::VK_Stop()
     bool a = gst_element_send_event (pipeline, gst_event_new_eos());
     qDebug() << a;
     GstClockTime timeout = 10 * GST_SECOND;
-    GstMessage *msg;
-    msg = gst_bus_timed_pop_filtered (GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
+    GstMessage *msg = gst_bus_timed_pop_filtered (GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
+    qDebug() << msg->src->name;
 
     GstStateChangeReturn ret ;
     ret = gst_element_set_state (pipeline, GST_STATE_PAUSED);
@@ -207,5 +216,30 @@ void MainWindow::VK_Stop()
     ret = gst_element_set_state (pipeline, GST_STATE_NULL);
     qDebug() << ret;
     gst_object_unref (pipeline);
+
+    ui->pushButtonStart->setEnabled( true );
+    ui->pushButtonPause->setEnabled( false );
+    ui->pushButtonStop->setEnabled( false );
 }
 
+void MainWindow::VK_Pause()
+{
+    ui->pushButtonStart->setEnabled( false );
+    ui->pushButtonPause->hide();
+    ui->pushButtonContinue->show();
+    ui->pushButtonStop->setEnabled( false );
+
+    GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
+    qDebug() << ret;
+}
+
+
+void MainWindow::VK_Continue()
+{
+    ui->pushButtonContinue->hide();
+    ui->pushButtonPause->show();
+    ui->pushButtonStop->setEnabled( true );
+
+    GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
+    qDebug() << ret;
+}
