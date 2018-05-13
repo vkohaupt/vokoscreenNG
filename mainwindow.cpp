@@ -15,7 +15,6 @@
 // libgstinsertbin-1_0-0
 // gst_parse_launch --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/gstreamer-GstParse.html#gst-parse-launch-full
 // ximagesrc        --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good-plugins/html/gst-plugins-good-plugins-ximagesrc.html
-// ximagesrc        --> Element Pads --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good-plugins/html/gst-plugins-good-plugins-ximagesrc.html
 // videoconvert     --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-plugins/html/gst-plugins-base-plugins-videoconvert.html
 // x264enc          --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-ugly-plugins/html/gst-plugins-ugly-plugins-x264enc.html
 // matroskamux      --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-matroskamux.html
@@ -72,7 +71,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( desk, SIGNAL( screenCountChanged(int) ), SLOT( myScreenCountChanged( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          SLOT( myScreenCountChanged( int ) ) );
     emit desk->screenCountChanged(0);
-
 }
 
 MainWindow::~MainWindow()
@@ -80,11 +78,13 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
 void MainWindow::closeEvent( QCloseEvent * event )
 {
     (void)event;
     emit signal_close();
 }
+
 
 QString MainWindow::VK_GStreamer_Version()
 {
@@ -110,36 +110,50 @@ QString MainWindow::VK_GStreamer_Version()
 
 QString MainWindow::VK_getXimagesrc()
 {
-   if( ui->radioButtonFullscreen->isChecked() == true )
-   {
-       QString value = "ximagesrc use-damage=false";
-       return value;
-   }
+    QString showPointer = "true";
+    if( ui->checkBoxMouseCursorOnOff->checkState() == Qt::Checked )
+    {
+        showPointer = "false";
+    }
 
-   if( ui->radioButtonWindow->isChecked() == true )
-   {
-       QStringList stringList;
-       stringList << "ximagesrc"
-                  << "use-damage=false"
-                  << "xid=" + QString::number( vkWinInfo->getWinID() );
+    if( ui->radioButtonFullscreen->isChecked() == true )
+    {
+        QStringList stringList;
+        stringList << "ximagesrc"
+                   << "use-damage=false"
+                   << "show-pointer=" + showPointer;
 
-       QString value = stringList.join( " " );
-       return value;
-   }
+        QString value = stringList.join( " " );
+        return value;
+    }
 
-   if ( ui->radioButtonArea->isChecked() == true )
-   {
-       QStringList stringList;
-       stringList << "ximagesrc"
-                  << "use-damage=false"
-                  << "startx=" + QString::number( regionController->getX() )
-                  << "starty=" + QString::number( regionController->getY() )
-                  << "endx="   + QString::number( regionController->getX() + regionController->getWidth() )
-                  << "endy="   + QString::number( regionController->getY() + regionController->getHeight() );
-       QString value = stringList.join( " " );
-       return value;
-   }
-   return "";
+    if( ui->radioButtonWindow->isChecked() == true )
+    {
+        QStringList stringList;
+        stringList << "ximagesrc"
+                   << "use-damage=false"
+                   << "show-pointer=" + showPointer
+                   << "xid=" + QString::number( vkWinInfo->getWinID() );
+
+        QString value = stringList.join( " " );
+        return value;
+    }
+
+    if ( ui->radioButtonArea->isChecked() == true )
+    {
+        QStringList stringList;
+        stringList << "ximagesrc"
+                   << "use-damage=false"
+                   << "show-pointer=" + showPointer
+                   << "startx=" + QString::number( regionController->getX() )
+                   << "starty=" + QString::number( regionController->getY() )
+                   << "endx="   + QString::number( regionController->getX() + regionController->getWidth() )
+                   << "endy="   + QString::number( regionController->getY() + regionController->getHeight() );
+        QString value = stringList.join( " " );
+        return value;
+    }
+
+    return "";
 }
 
 
@@ -148,6 +162,7 @@ QString MainWindow::VK_getMuxer()
     QString value = "matroskamux";
     return value;
 }
+
 
 void MainWindow::VK_preStart()
 {
@@ -160,6 +175,7 @@ void MainWindow::VK_preStart()
 
     VK_Start();
 }
+
 
 void MainWindow::VK_Start()
 {
@@ -227,7 +243,7 @@ void MainWindow::VK_Continue()
 }
 
 
-void MainWindow::myScreenCountChanged( int newCount )
+void MainWindow::myScreenCountChanged(int newCount )
 {
     Q_UNUSED(newCount);
     ui->comboBoxScreen->clear();
@@ -304,4 +320,3 @@ void MainWindow::myScreenCountChanged( int newCount )
     }
     // https://gstreamer.freedesktop.org/documentation/application-development/basics/helloworld.html
 */
-

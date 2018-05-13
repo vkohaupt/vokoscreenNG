@@ -25,7 +25,6 @@ private:
     Ui::MainWindow *ui;
     QvkRegionController *regionController;
     const QString VK_Gstr_Separator = " ! ";
-    QDesktopWidget *desk = QApplication::desktop();
     QString VK_GStreamer_Version();
     QString VK_getXimagesrc();
     QString VK_getMuxer();
@@ -35,13 +34,14 @@ private:
 
     QvkWinInfo *vkWinInfo;
 
+
 private slots:
     void VK_preStart();
     void VK_Start();
     void VK_Stop();
     void VK_Pause();
     void VK_Continue();
-    void myScreenCountChanged( int newCount );
+    void myScreenCountChanged(int newCount );
 
 
 signals:
