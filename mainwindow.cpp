@@ -157,6 +157,16 @@ QString MainWindow::VK_getXimagesrc()
 }
 
 
+QString MainWindow::VK_getFPS()
+{
+   QStringList stringList;
+   stringList << "video/x-raw"
+              << QString("framerate=") + ui->spinBoxFrames->text() + "/1";
+   QString value = stringList.join( "," );
+   return value;
+}
+
+
 QString MainWindow::VK_getMuxer()
 {
     QString value = "matroskamux";
@@ -190,7 +200,7 @@ void MainWindow::VK_Start()
     QString path = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
     QStringList VK_PipelineList;
     VK_PipelineList << VK_getXimagesrc()
-                    << "video/x-raw, framerate=25/1"
+                    << VK_getFPS()
                     << "videoconvert"
                     << "x264enc speed-preset=veryfast pass=quant threads=0"
                     << VK_getMuxer()

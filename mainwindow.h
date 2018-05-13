@@ -28,6 +28,7 @@ private:
     QString VK_GStreamer_Version();
     QString VK_getXimagesrc();
     QString VK_getMuxer();
+    QString VK_getFPS();
 
     GstElement *pipeline;
     GError *error = NULL;
