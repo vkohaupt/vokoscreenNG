@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>274</height>
+    <width>494</width>
+    <height>236</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,11 +18,17 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>4</number>
       </property>
-      <widget class="QWidget" name="tab">
+      <property name="iconSize">
+       <size>
+        <width>48</width>
+        <height>48</height>
+       </size>
+      </property>
+      <widget class="QWidget" name="tabScreen">
        <attribute name="title">
-        <string>Screen</string>
+        <string notr="true"/>
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
@@ -71,14 +77,14 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="QWidget" name="tabAudio">
        <attribute name="title">
-        <string>Audio</string>
+        <string notr="true"/>
        </attribute>
       </widget>
-      <widget class="QWidget" name="tab_3">
+      <widget class="QWidget" name="tabCodec">
        <attribute name="title">
-        <string>Codec</string>
+        <string notr="true"/>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
@@ -143,6 +149,16 @@
          </widget>
         </item>
        </layout>
+      </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string notr="true"/>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string notr="true"/>
+       </attribute>
       </widget>
      </widget>
     </item>

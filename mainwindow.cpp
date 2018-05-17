@@ -20,13 +20,87 @@
 // matroskamux      --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-matroskamux.html
 // filesink         --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-plugins/html/gstreamer-plugins-filesink.html
 
+#include <gst/gst.h>
+#include <gst/gstprotection.h>
+#include <glib.h>
+
+static gboolean my_bus_func (GstBus * bus, GstMessage * message, gpointer user_data)
+{
+   Q_UNUSED(bus);
+   Q_UNUSED(user_data);
+   GstDevice *device;
+   gchar *name;
+
+   switch (GST_MESSAGE_TYPE (message)) {
+     case GST_MESSAGE_DEVICE_ADDED:{
+       gst_message_parse_device_added (message, &device);
+       name = gst_device_get_display_name (device);
+       g_print("Device added: %s\n", name);
+       g_free (name);
+       gst_object_unref (device);
+       break; }
+     case GST_MESSAGE_DEVICE_REMOVED: {
+       gst_message_parse_device_removed (message, &device);
+       name = gst_device_get_display_name (device);
+       gchar *classes = gst_device_get_device_class (device); // Volker
+       g_print("Device removed: %s  %s\n", name, classes);       // Volker
+       g_free (name);
+       gst_object_unref (device);
+       break; }
+     default:
+       break;
+   }
+
+   return G_SOURCE_CONTINUE;
+}
+
+GstDeviceMonitor *setup_raw_video_source_device_monitor() // hier darf kein void als Paramter stehen wie im Beispiel vermerkt
+{
+   GstDeviceMonitor *monitor;
+   GstBus *bus;
+   GstCaps *caps;
+
+   monitor = gst_device_monitor_new ();
+
+   bus = gst_device_monitor_get_bus (monitor);
+   gst_bus_add_watch (bus, my_bus_func, NULL);
+   gst_object_unref (bus);
+
+   caps = gst_caps_new_empty_simple ("audio/x-raw");
+   gst_device_monitor_add_filter (monitor, "Audio/Source", caps);
+   gst_caps_unref (caps);
+
+   gst_device_monitor_start (monitor);
+
+   return monitor;
+}
+
+
+
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
+    setup_raw_video_source_device_monitor();
+
     ui->setupUi(this);
 
     qDebug().noquote() << VK_GStreamer_Version();
 
     qDebug() << gst_version_string ();
+
+    ui->tabWidget->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
+    makeAndSetValidIcon( 0 );
+
+    ui->tabWidget->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
+    makeAndSetValidIcon( 1 );
+
+    ui->tabWidget->setTabIcon( 2, QIcon::fromTheme( "applications-multimedia", QIcon( ":/pictures/videooptionen.png" ) ) );
+    makeAndSetValidIcon( 2 );
+
+    ui->tabWidget->setTabIcon( 3, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
+    makeAndSetValidIcon( 3 );
+
+    ui->tabWidget->setTabIcon( 4, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
+    makeAndSetValidIcon( 4 );
 
     regionController = new QvkRegionController();
     regionController->hide();
@@ -39,6 +113,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonWindow,     SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonArea,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxScreen,        SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabCodec,              SLOT( setEnabled( bool ) ) );
 
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( VK_Stop() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setEnabled( bool ) ) );
@@ -48,6 +123,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonWindow,     SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonArea,       SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxScreen,        SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabCodec,              SLOT( setDisabled( bool ) ) );
 
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), this,                   SLOT( VK_Pause() ) );
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonPause,    SLOT( hide() ) );
@@ -67,6 +143,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     ui->pushButtonContinue->hide();
 
+
+    // Tab Codec
+    ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
+    connect( ui->pushButtonFramesDefault, SIGNAL( clicked( bool ) ), this, SLOT( setFramesStandard( bool ) ) );
+
+
     QDesktopWidget *desk = QApplication::desktop();
     connect( desk, SIGNAL( screenCountChanged(int) ), SLOT( myScreenCountChanged( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          SLOT( myScreenCountChanged( int ) ) );
@@ -81,7 +163,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::closeEvent( QCloseEvent * event )
 {
-    (void)event;
+    Q_UNUSED(event);
     emit signal_close();
 }
 
@@ -105,6 +187,22 @@ QString MainWindow::VK_GStreamer_Version()
                  .append( QString::number( micro))
                  .append( nano_str );
     return gstrVersion;
+}
+
+
+void MainWindow::makeAndSetValidIcon( int index )
+{
+  QIcon myIcon = ui->tabWidget->tabIcon( index );
+  QSize size = ui->tabWidget->iconSize();
+  QPixmap workPixmap( myIcon.pixmap( size ) );
+  ui->tabWidget->setTabIcon( index, QIcon( workPixmap ) );
+}
+
+
+void MainWindow::setFramesStandard( bool value )
+{
+    Q_UNUSED(value);
+    ui->spinBoxFrames->setValue( 25 );
 }
 
 
@@ -166,9 +264,26 @@ QString MainWindow::VK_getFPS()
    return value;
 }
 
+/*
+void MainWindow::VK_Search_Video_Codecs()
+{
+    enum VideoCodecs{ x264enc, x265enc, mpeg2enc, theoraenc, vp8enc, vp9enc  }
+}
+
+
+void MainWindow::VK_Search_VideoFormats()
+{
+    enum VideoFormats{ matroskamux, webmmux, mp4mux, avimux, asfmux, flvmux }
+}
+*/
 
 QString MainWindow::VK_getMuxer()
 {
+    GstElementFactory *factory = gst_element_factory_find( "matroskamux" );
+    if ( !factory )
+    {
+      qDebug() << "Failed to find factory of type matroskamux";
+    }
     QString value = "matroskamux";
     return value;
 }
@@ -202,12 +317,14 @@ void MainWindow::VK_Start()
     VK_PipelineList << VK_getXimagesrc()
                     << VK_getFPS()
                     << "videoconvert"
+                    << "videorate" // Make a perfect stream? Relevant for screencasting?
                     << "x264enc speed-preset=veryfast pass=quant threads=0"
                     << VK_getMuxer()
                     << "filesink location=" + path + QDir::separator() + filename;
 
-    QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Separator );
-    qDebug() << VK_Pipeline;
+    QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Pipe );
+    qDebug() << "[vokoscreen]" << VK_Pipeline;
+    qDebug( " " );
     pipeline = gst_parse_launch( VK_Pipeline.toLatin1(), &error );
 
     // Start playing
@@ -330,3 +447,4 @@ void MainWindow::myScreenCountChanged(int newCount )
     }
     // https://gstreamer.freedesktop.org/documentation/application-development/basics/helloworld.html
 */
+

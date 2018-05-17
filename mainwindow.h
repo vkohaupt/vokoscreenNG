@@ -24,11 +24,12 @@ public:
 private:
     Ui::MainWindow *ui;
     QvkRegionController *regionController;
-    const QString VK_Gstr_Separator = " ! ";
+    const QString VK_Gstr_Pipe = " ! ";
     QString VK_GStreamer_Version();
     QString VK_getXimagesrc();
     QString VK_getMuxer();
     QString VK_getFPS();
+    void makeAndSetValidIcon( int index );
 
     GstElement *pipeline;
     GError *error = NULL;
@@ -43,6 +44,7 @@ private slots:
     void VK_Pause();
     void VK_Continue();
     void myScreenCountChanged(int newCount );
+    void setFramesStandard( bool value );
 
 
 signals:
