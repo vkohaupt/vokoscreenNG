@@ -218,6 +218,7 @@ QString MainWindow::VK_getXimagesrc()
     {
         QStringList stringList;
         stringList << "ximagesrc"
+                   << "display-name=" + qgetenv( "DISPLAY" )
                    << "use-damage=false"
                    << "show-pointer=" + showPointer;
 
@@ -229,6 +230,7 @@ QString MainWindow::VK_getXimagesrc()
     {
         QStringList stringList;
         stringList << "ximagesrc"
+                   << "display-name=" + qgetenv( "DISPLAY" )
                    << "use-damage=false"
                    << "show-pointer=" + showPointer
                    << "xid=" + QString::number( vkWinInfo->getWinID() );
@@ -241,6 +243,7 @@ QString MainWindow::VK_getXimagesrc()
     {
         QStringList stringList;
         stringList << "ximagesrc"
+                   << "display-name=" + qgetenv( "DISPLAY" )
                    << "use-damage=false"
                    << "show-pointer=" + showPointer
                    << "startx=" + QString::number( regionController->getX() )
