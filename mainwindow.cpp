@@ -258,12 +258,13 @@ QString MainWindow::VK_getXimagesrc()
 }
 
 
-QString MainWindow::VK_getFPS()
+QString MainWindow::VK_getCapsFilter()
 {
    QStringList stringList;
-   stringList << "video/x-raw"
+   stringList << "caps=video/x-raw"
               << QString("framerate=") + ui->spinBoxFrames->text() + "/1";
-   QString value = stringList.join( "," );
+   QString value = "capsfilter";
+           value = value + " " + stringList.join( "," );
    return value;
 }
 
@@ -318,7 +319,7 @@ void MainWindow::VK_Start()
     QString path = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
     QStringList VK_PipelineList;
     VK_PipelineList << VK_getXimagesrc()
-                    << VK_getFPS()
+                    << VK_getCapsFilter()
                     << "videoconvert"
                     << "videorate" // Make a perfect stream? Relevant for screencasting?
                     << "x264enc speed-preset=veryfast pass=quant threads=0"

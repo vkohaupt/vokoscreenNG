@@ -27,8 +27,8 @@ private:
     const QString VK_Gstr_Pipe = " ! ";
     QString VK_GStreamer_Version();
     QString VK_getXimagesrc();
+    QString VK_getCapsFilter();
     QString VK_getMuxer();
-    QString VK_getFPS();
     void makeAndSetValidIcon( int index );
 
     GstElement *pipeline;
