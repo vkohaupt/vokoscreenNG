@@ -113,6 +113,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonWindow,     SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonArea,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxScreen,        SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabAudio,              SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabCodec,              SLOT( setEnabled( bool ) ) );
 
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( VK_Stop() ) );
@@ -123,6 +124,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonWindow,     SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonArea,       SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxScreen,        SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabAudio,              SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabCodec,              SLOT( setDisabled( bool ) ) );
 
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), this,                   SLOT( VK_Pause() ) );
@@ -134,17 +136,20 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonContinue, SLOT( hide() ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonPause,    SLOT( show() ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonStop,     SLOT( setDisabled( bool ) ) );
+    ui->pushButtonContinue->hide();
 
+    connect( this, SIGNAL( signal_close() ),  regionController, SLOT( close() ) );
+
+    // Tab 1 Screen
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), regionController,   SLOT( show( bool ) ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
 
-    connect( this, SIGNAL( signal_close() ),  regionController, SLOT( close() ) );
+    // Tab 2 Audio
+    connect( ui->checkBoxAudioOnOff,SIGNAL( toggled( bool ) ), this, SLOT( AudioOff( bool ) ) );
+    AudioOff( Qt::Unchecked );
 
-    ui->pushButtonContinue->hide();
-
-
-    // Tab Codec
+    // Tab 3 Codec
     ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     connect( ui->pushButtonFramesDefault, SIGNAL( clicked( bool ) ), this, SLOT( setFramesStandard( bool ) ) );
 
@@ -196,6 +201,34 @@ void MainWindow::makeAndSetValidIcon( int index )
   QSize size = ui->tabWidget->iconSize();
   QPixmap workPixmap( myIcon.pixmap( size ) );
   ui->tabWidget->setTabIcon( index, QIcon( workPixmap ) );
+}
+
+
+/*
+ * Setzt neues Icon um aufzuzeigen das Audio abgeschaltet ist
+ */
+void MainWindow::AudioOff( bool state )
+{
+  if ( state == Qt::Unchecked )
+  {
+    QIcon myIcon = ui->tabWidget->tabIcon( 1 );
+    QSize size = ui->tabWidget->iconSize();
+    QPixmap workPixmap( myIcon.pixmap( size ) );
+    QPainter painter;
+    QPen pen;
+    painter.begin( &workPixmap );
+      pen.setColor( Qt::red );
+      pen.setWidth( 2 );
+      painter.setPen( pen );
+      painter.drawLine ( 5, 5, size.width()-5, size.height()-5 );
+      painter.drawLine ( 5, size.height()-5, size.width()-5, 5 );
+    painter.end();
+    ui->tabWidget->setTabIcon( 1, QIcon( workPixmap ) );
+  }
+  else{
+    ui->tabWidget->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
+    makeAndSetValidIcon( 1 );
+  }
 }
 
 

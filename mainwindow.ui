@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>494</width>
-    <height>236</height>
+    <width>530</width>
+    <height>235</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>4</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -81,6 +81,54 @@
        <attribute name="title">
         <string notr="true"/>
        </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QCheckBox" name="checkBoxAudioOnOff">
+            <property name="text">
+             <string>Audio</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton">
+            <property name="text">
+             <string>Pulse</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_2">
+            <property name="text">
+             <string>Alsa</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QScrollArea" name="scrollArea">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>488</width>
+             <height>99</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_3"/>
+          </widget>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tabCodec">
        <attribute name="title">
@@ -88,8 +136,38 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="3">
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="1" column="1">
+           <widget class="QComboBox" name="comboBox"/>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="labelFrames">
+            <property name="text">
+             <string>Frames</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Format</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="4">
+           <widget class="QCheckBox" name="checkBox_2">
+            <property name="text">
+             <string>Lossless</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="5">
            <widget class="QPushButton" name="pushButtonFramesDefault">
             <property name="text">
              <string/>
@@ -103,30 +181,48 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="labelFrames">
+          <item row="2" column="3">
+           <widget class="QComboBox" name="comboBox_3"/>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="label_2">
             <property name="text">
-             <string>Frames</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             <string>Videocodec</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="2">
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+          <item row="2" column="2">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Audiocodec</string>
             </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QComboBox" name="comboBox_2"/>
+          </item>
+          <item row="1" column="5">
+           <widget class="QPushButton" name="pushButton">
+            <property name="text">
+             <string/>
             </property>
-           </spacer>
+           </widget>
+          </item>
+          <item row="2" column="5">
+           <widget class="QPushButton" name="pushButton_2">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
+          <property name="text">
+           <string>Do not record mouse cursor</string>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer name="verticalSpacer_2">
@@ -140,13 +236,6 @@
            </size>
           </property>
          </spacer>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
-          <property name="text">
-           <string>Do not record mouse cursor</string>
-          </property>
-         </widget>
         </item>
        </layout>
       </widget>

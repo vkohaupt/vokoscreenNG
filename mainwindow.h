@@ -45,6 +45,7 @@ private slots:
     void VK_Continue();
     void myScreenCountChanged(int newCount );
     void setFramesStandard( bool value );
+    void AudioOff(bool state );
 
 
 signals:
