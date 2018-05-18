@@ -263,9 +263,7 @@ QString MainWindow::VK_getCapsFilter()
    QStringList stringList;
    stringList << "caps=video/x-raw"
               << QString("framerate=") + ui->spinBoxFrames->text() + "/1";
-   QString value = "capsfilter";
-           value = value + " " + stringList.join( "," );
-   return value;
+   return QString( "capsfilter" ) + " " + stringList.join( "," );;
 }
 
 /*
