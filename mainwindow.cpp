@@ -138,7 +138,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonStop,     SLOT( setDisabled( bool ) ) );
     ui->pushButtonContinue->hide();
 
-    connect( this, SIGNAL( signal_close() ),  this, SLOT( VK_Stop() ) );
+    connect( this, SIGNAL( signal_close() ),  ui->pushButtonContinue, SLOT( click() ) );
+    connect( this, SIGNAL( signal_close() ),  ui->pushButtonStop, SLOT( click() ) );
     connect( this, SIGNAL( signal_close() ),  regionController, SLOT( close() ) );
 
     // Tab 1 Screen
