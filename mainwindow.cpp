@@ -76,7 +76,7 @@ GstDeviceMonitor *setup_raw_video_source_device_monitor() // hier darf kein void
 }
 
 
-
+#include <QAudioDeviceInfo>
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     setup_raw_video_source_device_monitor();
@@ -158,6 +158,21 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( desk, SIGNAL( screenCountChanged(int) ), SLOT( myScreenCountChanged( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          SLOT( myScreenCountChanged( int ) ) );
     emit desk->screenCountChanged(0);
+
+
+    QStringList pulseDeviceStringList;
+    foreach (const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
+    {
+        if ( deviceInfo.deviceName().contains("alsa") )
+        {
+            pulseDeviceStringList << deviceInfo.deviceName();
+            QCheckBox *checkbox = new QCheckBox( deviceInfo.deviceName() );
+            checkbox->setObjectName( "CheckboxDescription" + deviceInfo.deviceName() );
+            ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkbox );
+        }
+    }
+    qDebug() << pulseDeviceStringList;
+
 }
 
 MainWindow::~MainWindow()
