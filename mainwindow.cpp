@@ -344,8 +344,18 @@ QString MainWindow::VK_getMuxer()
       qDebug() << "Failed to find factory of type matroskamux";
     }
 
+    QString device;
+    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContents->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listQCheckBox.count(); i++ )
+    {
+        if ( listQCheckBox.at(i)->checkState() == Qt::Checked )
+        {
+            device = listQCheckBox.at(i)->accessibleName();
+        }
+    }
+
     QString value = "matroskamux";
-    if ( ui->checkBoxAudioOnOff->isChecked() == true )
+    if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( device > "" ) )
     {
         value = "mux. matroskamux name=mux";
     }
@@ -386,18 +396,19 @@ void MainWindow::VK_Start()
                     << "videorate"
                     << "x264enc speed-preset=veryfast pass=quant threads=0";
 
-    if ( ui->checkBoxAudioOnOff->isChecked() == true )
-    {
-        QString device;
-        QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContents->findChildren<QCheckBox *>();
-        for ( int i = 0; i < listQCheckBox.count(); i++ )
-        {
-            if ( listQCheckBox.at(i)->checkState() == Qt::Checked )
-            {
-                device = listQCheckBox.at(i)->accessibleName();
-            }
-        }
 
+    QString device;
+    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContents->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listQCheckBox.count(); i++ )
+    {
+        if ( listQCheckBox.at(i)->checkState() == Qt::Checked )
+        {
+            device = listQCheckBox.at(i)->accessibleName();
+        }
+    }
+
+    if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( device > "" ) )
+    {
         VK_PipelineList << QString( "mux. pulsesrc device=" ).append( device );
         VK_PipelineList << "audioconvert";
         VK_PipelineList << "voaacenc";
