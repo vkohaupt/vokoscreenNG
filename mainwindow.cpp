@@ -396,7 +396,6 @@ void MainWindow::VK_Start()
                     << "videorate"
                     << "x264enc speed-preset=veryfast pass=quant threads=0";
 
-
     QString device;
     QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContents->findChildren<QCheckBox *>();
     for ( int i = 0; i < listQCheckBox.count(); i++ )
