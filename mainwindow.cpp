@@ -343,7 +343,13 @@ QString MainWindow::VK_getMuxer()
     {
       qDebug() << "Failed to find factory of type matroskamux";
     }
+
     QString value = "matroskamux";
+    if ( ui->checkBoxAudioOnOff->isChecked() == true )
+    {
+        value = "mux. matroskamux name=mux";
+    }
+
     return value;
 }
 
@@ -366,8 +372,8 @@ void MainWindow::VK_Start()
     GstElementFactory *factory = gst_element_factory_find( "ximagesrc" );
     if ( !factory )
     {
-      qDebug() << "Failed to find factory of type ximagesrc";
-      return;
+        qDebug() << "Failed to find factory of type ximagesrc";
+        return;
     }
 
     QString filename = "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + "mkv";
@@ -377,27 +383,29 @@ void MainWindow::VK_Start()
                     << VK_getCapsFilter()
                     << "queue flush-on-eos=true"
                     << "videoconvert"
-                    << "videorate" // Make a perfect stream? Relevant for screencasting?
-                    << "x264enc speed-preset=veryfast pass=quant threads=0"
-                    << VK_getMuxer();
-/*
+                    << "videorate"
+                    << "x264enc speed-preset=veryfast pass=quant threads=0";
+
     if ( ui->checkBoxAudioOnOff->isChecked() == true )
     {
+        QString device;
+        QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContents->findChildren<QCheckBox *>();
+        for ( int i = 0; i < listQCheckBox.count(); i++ )
+        {
+            if ( listQCheckBox.at(i)->checkState() == Qt::Checked )
+            {
+                device = listQCheckBox.at(i)->accessibleName();
+            }
+        }
 
+        VK_PipelineList << QString( "mux. pulsesrc device=" ).append( device );
+        VK_PipelineList << "audioconvert";
+        VK_PipelineList << "voaacenc";
+        VK_PipelineList << "queue flush-on-eos=true";
     }
-*/
 
-    VK_PipelineList.append( "filesink location=" + path + QDir::separator() + filename );
-
-
-/*
-    ! mux. pulsesrc device=alsa_input.usb-046d_0809_A6307261-02.analog-mono \
-    ! audioconvert \
-    ! voaacenc \
-    ! queue flush-on-eos=true \
-    ! mux. matroskamux name=mux
-    ! filesink location=/home/vk/Videos/desktop.mkv
-*/
+    VK_PipelineList << VK_getMuxer();
+    VK_PipelineList << "filesink location=" + path + QDir::separator() + filename;
 
     QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Pipe );
     qDebug() << "[vokoscreen] Start record with:" << VK_Pipeline;
@@ -407,9 +415,9 @@ void MainWindow::VK_Start()
     GstStateChangeReturn ret;
     ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
     if (ret == GST_STATE_CHANGE_FAILURE) {
-      g_printerr ("Unable to set the pipeline to the playing state.\n");
-      gst_object_unref (pipeline);
-      return;
+        g_printerr ("Unable to set the pipeline to the playing state.\n");
+        gst_object_unref (pipeline);
+        return;
     }
 }
 
