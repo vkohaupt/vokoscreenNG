@@ -138,6 +138,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonStop,     SLOT( setDisabled( bool ) ) );
     ui->pushButtonContinue->hide();
 
+    connect( this, SIGNAL( signal_close() ),  this, SLOT( VK_Stop() ) );
     connect( this, SIGNAL( signal_close() ),  regionController, SLOT( close() ) );
 
     // Tab 1 Screen
@@ -146,7 +147,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
 
     // Tab 2 Audio
-    connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), this, SLOT( AudioOff( bool ) ) );
+    connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), this, SLOT( AudioIconOnOff( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->radioButtonPulse, SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->radioButtonAlsa, SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
@@ -169,14 +170,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
         if ( deviceInfo.deviceName().contains("alsa") )
         {
             pulseDeviceStringList << deviceInfo.deviceName();
-            QCheckBox *checkbox = new QCheckBox();
-            checkbox->setText( deviceInfo.deviceName() );
-            checkbox->setObjectName( "CheckboxDescription" + deviceInfo.deviceName() );
-            ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkbox );
+            QCheckBox *checkboxAudioDevice = new QCheckBox();
+            checkboxAudioDevice->setText( deviceInfo.deviceName() );
+            checkboxAudioDevice->setAccessibleName( deviceInfo.deviceName() );
+            checkboxAudioDevice->setObjectName( "checkboxAudioDevice" + deviceInfo.deviceName() );
+            ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
         }
     }
-    qDebug() << pulseDeviceStringList;
-
 }
 
 MainWindow::~MainWindow()
@@ -226,7 +226,7 @@ void MainWindow::makeAndSetValidIcon( int index )
 /*
  * Setzt neues Icon um aufzuzeigen das Audio abgeschaltet ist
  */
-void MainWindow::AudioOff( bool state )
+void MainWindow::AudioIconOnOff( bool state )
 {
   if ( state == Qt::Unchecked )
   {
@@ -370,6 +370,7 @@ void MainWindow::VK_Start()
     QStringList VK_PipelineList;
     VK_PipelineList << VK_getXimagesrc()
                     << VK_getCapsFilter()
+                    << "queue flush-on-eos=true"
                     << "videoconvert"
                     << "videorate" // Make a perfect stream? Relevant for screencasting?
                     << "x264enc speed-preset=veryfast pass=quant threads=0"
@@ -377,8 +378,7 @@ void MainWindow::VK_Start()
                     << "filesink location=" + path + QDir::separator() + filename;
 
     QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Pipe );
-    qDebug() << "[vokoscreen]" << VK_Pipeline;
-    qDebug( " " );
+    qDebug() << "[vokoscreen] Start record with:" << VK_Pipeline;
     pipeline = gst_parse_launch( VK_Pipeline.toLatin1(), &error );
 
     // Start playing
@@ -407,6 +407,7 @@ void MainWindow::VK_Stop()
     ret = gst_element_set_state( pipeline, GST_STATE_READY );
     ret = gst_element_set_state( pipeline, GST_STATE_NULL );
     gst_object_unref( pipeline );
+    qDebug() << "[vokoscreen] Stop record";
 }
 
 
