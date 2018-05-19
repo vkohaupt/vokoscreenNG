@@ -115,6 +115,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxScreen,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabAudio,              SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabCodec,              SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonContinue,    SLOT( setDisabled( bool ) ) );
 
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( VK_Stop() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setEnabled( bool ) ) );
@@ -131,13 +132,16 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonPause,    SLOT( hide() ) );
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonContinue, SLOT( show() ) );
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonStop,     SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonContinue, SLOT( setDisabled( bool ) ) );
 
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), this,                   SLOT( VK_Continue() ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonContinue, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonContinue, SLOT( hide() ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonPause,    SLOT( show() ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonStop,     SLOT( setDisabled( bool ) ) );
     ui->pushButtonContinue->hide();
 
+    // Close
     connect( this, SIGNAL( signal_close() ),  ui->pushButtonContinue, SLOT( click() ) );
     connect( this, SIGNAL( signal_close() ),  ui->pushButtonStop, SLOT( click() ) );
     connect( this, SIGNAL( signal_close() ),  regionController, SLOT( close() ) );
@@ -186,7 +190,7 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::closeEvent( QCloseEvent * event )
+void MainWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
     emit signal_close();
@@ -375,8 +379,25 @@ void MainWindow::VK_Start()
                     << "videoconvert"
                     << "videorate" // Make a perfect stream? Relevant for screencasting?
                     << "x264enc speed-preset=veryfast pass=quant threads=0"
-                    << VK_getMuxer()
-                    << "filesink location=" + path + QDir::separator() + filename;
+                    << VK_getMuxer();
+/*
+    if ( ui->checkBoxAudioOnOff->isChecked() == true )
+    {
+
+    }
+*/
+
+    VK_PipelineList.append( "filesink location=" + path + QDir::separator() + filename );
+
+
+/*
+    ! mux. pulsesrc device=alsa_input.usb-046d_0809_A6307261-02.analog-mono \
+    ! audioconvert \
+    ! voaacenc \
+    ! queue flush-on-eos=true \
+    ! mux. matroskamux name=mux
+    ! filesink location=/home/vk/Videos/desktop.mkv
+*/
 
     QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Pipe );
     qDebug() << "[vokoscreen] Start record with:" << VK_Pipeline;
@@ -395,34 +416,45 @@ void MainWindow::VK_Start()
 
 void MainWindow::VK_Stop()
 {
-    // wait for EOS
-    bool a = gst_element_send_event (pipeline, gst_event_new_eos());
-    Q_UNUSED(a);
-    GstClockTime timeout = 10 * GST_SECOND;
-    GstMessage *msg = gst_bus_timed_pop_filtered (GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
-    Q_UNUSED(msg);
+    if ( ui->pushButtonStart->isEnabled() == false  )
+    {
+        // wait for EOS
+        bool a = gst_element_send_event (pipeline, gst_event_new_eos());
+        Q_UNUSED(a);
+        GstClockTime timeout = 10 * GST_SECOND;
+        GstMessage *msg = gst_bus_timed_pop_filtered (GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
+        Q_UNUSED(msg);
 
-    GstStateChangeReturn ret ;
-    Q_UNUSED(ret);
-    ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
-    ret = gst_element_set_state( pipeline, GST_STATE_READY );
-    ret = gst_element_set_state( pipeline, GST_STATE_NULL );
-    gst_object_unref( pipeline );
-    qDebug() << "[vokoscreen] Stop record";
+        GstStateChangeReturn ret ;
+        Q_UNUSED(ret);
+        ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
+        ret = gst_element_set_state( pipeline, GST_STATE_READY );
+        ret = gst_element_set_state( pipeline, GST_STATE_NULL );
+        gst_object_unref( pipeline );
+        qDebug() << "[vokoscreen] Stop record";
+    }
 }
 
 
 void MainWindow::VK_Pause()
 {
-    GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
-    Q_UNUSED(ret);
+    if ( ui->pushButtonStart->isEnabled() == false )
+    {
+        qDebug() << "[vokoscreen] Pause was clicked";
+        GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
+        Q_UNUSED(ret);
+    }
 }
 
 
 void MainWindow::VK_Continue()
 {
-    GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
-    Q_UNUSED(ret);
+    if ( ( ui->pushButtonStart->isEnabled() == false ) and ( ui->pushButtonContinue->isEnabled() == true ) )
+    {
+        qDebug() << "[vokoscreen] Continue was clicked";
+        GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
+        Q_UNUSED(ret);
+    }
 }
 
 
@@ -442,12 +474,12 @@ void MainWindow::myScreenCountChanged(int newCount )
 
     for ( int i = 1; i < desk->screenCount()+1; i++ )
     {
-      QString ScreenGeometryX1 = QString::number( desk->screenGeometry( i-1 ).left() );
-      QString ScreenGeometryY1 = QString::number( desk->screenGeometry( i-1 ).top() );
-      QString ScreenGeometryX = QString::number( desk->screenGeometry( i-1 ).width() * screen->devicePixelRatio() ); // devicePixelRatio() for Retina Displays
-      QString ScreenGeometryY = QString::number( desk->screenGeometry( i-1 ).height() * screen->devicePixelRatio() );
-      ui->comboBoxScreen->addItem( tr( "Display" ) + " " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY, i-1 );
-      qDebug().noquote() << "[vokoscreen]" << "Display " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY;
+        QString ScreenGeometryX1 = QString::number( desk->screenGeometry( i-1 ).left() );
+        QString ScreenGeometryY1 = QString::number( desk->screenGeometry( i-1 ).top() );
+        QString ScreenGeometryX = QString::number( desk->screenGeometry( i-1 ).width() * screen->devicePixelRatio() ); // devicePixelRatio() for Retina Displays
+        QString ScreenGeometryY = QString::number( desk->screenGeometry( i-1 ).height() * screen->devicePixelRatio() );
+        ui->comboBoxScreen->addItem( tr( "Display" ) + " " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY, i-1 );
+        qDebug().noquote() << "[vokoscreen]" << "Display " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY;
     }
     ui->comboBoxScreen->addItem( tr( "All Displays" ), -1 );
     qDebug() << "[vokoscreen]" << "---End search Screen---";
