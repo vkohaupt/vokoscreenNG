@@ -89,10 +89,13 @@
             <property name="text">
              <string>Audio</string>
             </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton">
+           <widget class="QRadioButton" name="radioButtonPulse">
             <property name="text">
              <string>Pulse</string>
             </property>
@@ -102,7 +105,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton_2">
+           <widget class="QRadioButton" name="radioButtonAlsa">
             <property name="text">
              <string>Alsa</string>
             </property>

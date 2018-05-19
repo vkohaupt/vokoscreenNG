@@ -146,8 +146,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
 
     // Tab 2 Audio
-    connect( ui->checkBoxAudioOnOff,SIGNAL( toggled( bool ) ), this, SLOT( AudioOff( bool ) ) );
-    AudioOff( Qt::Unchecked );
+    connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), this, SLOT( AudioOff( bool ) ) );
+    connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->radioButtonPulse, SLOT( setEnabled( bool ) ) );
+    connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->radioButtonAlsa, SLOT( setEnabled( bool ) ) );
+    connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
+    ui->checkBoxAudioOnOff->click();
 
     // Tab 3 Codec
     ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
@@ -166,7 +169,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
         if ( deviceInfo.deviceName().contains("alsa") )
         {
             pulseDeviceStringList << deviceInfo.deviceName();
-            QCheckBox *checkbox = new QCheckBox( deviceInfo.deviceName() );
+            QCheckBox *checkbox = new QCheckBox();
+            checkbox->setText( deviceInfo.deviceName() );
             checkbox->setObjectName( "CheckboxDescription" + deviceInfo.deviceName() );
             ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkbox );
         }
