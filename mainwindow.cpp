@@ -448,9 +448,19 @@ void MainWindow::slot_Start()
         }
     }
 
+    QString audioSystem;
+    if ( ui->radioButtonPulse->isChecked() )
+    {
+        audioSystem = ui->radioButtonPulse->accessibleName();
+    }
+    if ( ui->radioButtonAlsa->isChecked() )
+    {
+        audioSystem = ui->radioButtonAlsa->accessibleName();
+    }
+
     if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( device > "" ) )
     {
-        VK_PipelineList << QString( "mux. pulsesrc device=" ).append( device );
+        VK_PipelineList << QString( "mux. ").append( audioSystem ).append( " device=" ).append( device );
         VK_PipelineList << "audioconvert";
         VK_PipelineList << "voaacenc";
         VK_PipelineList << "queue flush-on-eos=true";
