@@ -38,14 +38,15 @@ private:
 
 
 private slots:
-    void VK_preStart();
-    void VK_Start();
-    void VK_Stop();
-    void VK_Pause();
-    void VK_Continue();
-    void myScreenCountChanged(int newCount );
-    void setFramesStandard( bool value );
-    void AudioIconOnOff(bool state );
+    void slot_preStart();
+    void slot_Start();
+    void slot_Stop();
+    void slot_Pause();
+    void slot_Continue();
+    void slot_screenCountChanged(int newCount );
+    void slot_setFramesStandard( bool value );
+    void slot_audioIconOnOff(bool state );
+    void slot_getPulsesDevices();
 
 
 signals:

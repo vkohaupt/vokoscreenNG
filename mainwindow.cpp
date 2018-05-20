@@ -105,7 +105,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     regionController = new QvkRegionController();
     regionController->hide();
 
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( VK_preStart() ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStart() ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonPause,       SLOT( setDisabled( bool ) ) );
@@ -117,7 +117,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabCodec,              SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonContinue,    SLOT( setEnabled( bool ) ) );
 
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( VK_Stop() ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_Stop() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonPause,       SLOT( setEnabled( bool ) ) );
@@ -128,13 +128,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabAudio,              SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabCodec,              SLOT( setDisabled( bool ) ) );
 
-    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), this,                   SLOT( VK_Pause() ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), this,                   SLOT( slot_Pause() ) );
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonPause,    SLOT( hide() ) );
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonContinue, SLOT( show() ) );
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonStop,     SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonContinue, SLOT( setDisabled( bool ) ) );
 
-    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), this,                   SLOT( VK_Continue() ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), this,                   SLOT( slot_Continue() ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonContinue, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonContinue, SLOT( hide() ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonPause,    SLOT( show() ) );
@@ -152,7 +152,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
 
     // Tab 2 Audio
-    connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), this, SLOT( AudioIconOnOff( bool ) ) );
+    ui->radioButtonPulse->setAccessibleName( "pulsesrc" );
+    ui->radioButtonAlsa->setAccessibleName( "alsasrc" );
+    connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), this, SLOT( slot_audioIconOnOff( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->radioButtonPulse, SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->radioButtonAlsa, SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
@@ -160,12 +162,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     // Tab 3 Codec
     ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
-    connect( ui->pushButtonFramesDefault, SIGNAL( clicked( bool ) ), this, SLOT( setFramesStandard( bool ) ) );
+    connect( ui->pushButtonFramesDefault, SIGNAL( clicked( bool ) ), this, SLOT( slot_setFramesStandard( bool ) ) );
 
 
     QDesktopWidget *desk = QApplication::desktop();
-    connect( desk, SIGNAL( screenCountChanged(int) ), SLOT( myScreenCountChanged( int ) ) );
-    connect( desk, SIGNAL( resized( int ) ),          SLOT( myScreenCountChanged( int ) ) );
+    connect( desk, SIGNAL( screenCountChanged(int) ), SLOT( slot_screenCountChanged( int ) ) );
+    connect( desk, SIGNAL( resized( int ) ),          SLOT( slot_screenCountChanged( int ) ) );
     emit desk->screenCountChanged(0);
 
 
@@ -231,7 +233,7 @@ void MainWindow::makeAndSetValidIcon( int index )
 /*
  * Setzt neues Icon um aufzuzeigen das Audio abgeschaltet ist
  */
-void MainWindow::AudioIconOnOff( bool state )
+void MainWindow::slot_audioIconOnOff( bool state )
 {
   if ( state == Qt::Unchecked )
   {
@@ -256,7 +258,25 @@ void MainWindow::AudioIconOnOff( bool state )
 }
 
 
-void MainWindow::setFramesStandard( bool value )
+void MainWindow::slot_getPulsesDevices()
+{
+    QStringList pulseDeviceStringList;
+    foreach (const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
+    {
+        if ( deviceInfo.deviceName().contains("alsa") )
+        {
+            pulseDeviceStringList << deviceInfo.deviceName();
+            QCheckBox *checkboxAudioDevice = new QCheckBox();
+            checkboxAudioDevice->setText( deviceInfo.deviceName() );
+            checkboxAudioDevice->setAccessibleName( deviceInfo.deviceName() );
+            checkboxAudioDevice->setObjectName( "checkboxAudioDevice" + deviceInfo.deviceName() );
+            ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
+        }
+    }
+}
+
+
+void MainWindow::slot_setFramesStandard( bool value )
 {
     Q_UNUSED(value);
     ui->spinBoxFrames->setValue( 25 );
@@ -364,7 +384,7 @@ QString MainWindow::VK_getMuxer()
 }
 
 
-void MainWindow::VK_preStart()
+void MainWindow::slot_preStart()
 {
     if ( ui->radioButtonWindow->isChecked() == true )
     {
@@ -373,11 +393,11 @@ void MainWindow::VK_preStart()
       return;
     }
 
-    VK_Start();
+    slot_Start();
 }
 
 
-void MainWindow::VK_Start()
+void MainWindow::slot_Start()
 {
     GstElementFactory *factory = gst_element_factory_find( "ximagesrc" );
     if ( !factory )
@@ -432,7 +452,7 @@ void MainWindow::VK_Start()
 }
 
 
-void MainWindow::VK_Stop()
+void MainWindow::slot_Stop()
 {
     if ( ui->pushButtonStart->isEnabled() == false  )
     {
@@ -454,7 +474,7 @@ void MainWindow::VK_Stop()
 }
 
 
-void MainWindow::VK_Pause()
+void MainWindow::slot_Pause()
 {
     if ( ui->pushButtonStart->isEnabled() == false )
     {
@@ -465,7 +485,7 @@ void MainWindow::VK_Pause()
 }
 
 
-void MainWindow::VK_Continue()
+void MainWindow::slot_Continue()
 {
     if ( ( ui->pushButtonStart->isEnabled() == false ) and ( ui->pushButtonContinue->isEnabled() == true ) )
     {
@@ -476,7 +496,7 @@ void MainWindow::VK_Continue()
 }
 
 
-void MainWindow::myScreenCountChanged(int newCount )
+void MainWindow::slot_screenCountChanged(int newCount )
 {
     Q_UNUSED(newCount);
     ui->comboBoxScreen->clear();
