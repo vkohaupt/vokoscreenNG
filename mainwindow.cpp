@@ -430,6 +430,7 @@ void MainWindow::slot_Start()
 
     QString filename = "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + "mkv";
     QString path = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
+
     QStringList VK_PipelineList;
     VK_PipelineList << VK_getXimagesrc()
                     << VK_getCapsFilter()
