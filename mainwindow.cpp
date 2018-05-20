@@ -160,7 +160,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
     ui->checkBoxAudioOnOff->click();
 
+    connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), this, SLOT( slot_clearVerticalLayoutAudioDevices( bool ) ) );
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), this, SLOT( slot_getPulsesDevices( bool ) ) );
+    connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), this, SLOT( slot_clearVerticalLayoutAudioDevices( bool ) ) );
+    connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), this, SLOT( slot_getAlsaDevices( bool ) ) );
 
     // Tab 3 Codec
     ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
@@ -245,12 +248,44 @@ void MainWindow::slot_audioIconOnOff( bool state )
 }
 
 
+void MainWindow::slot_clearVerticalLayoutAudioDevices( bool value )
+{
+    Q_UNUSED(value);
+    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContents->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listQCheckBox.count(); i++ )
+    {
+       ui->verticalLayoutAudioDevices->removeWidget( listQCheckBox.at(i) );
+       delete listQCheckBox.at(i);
+    }
+}
+
+
 void MainWindow::slot_getPulsesDevices( bool value )
 {
+    Q_UNUSED(value);
     QStringList pulseDeviceStringList;
     foreach (const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
     {
-        if ( deviceInfo.deviceName().contains("alsa") )
+        if ( deviceInfo.deviceName().contains("alsa") == true )
+        {
+            pulseDeviceStringList << deviceInfo.deviceName();
+            QCheckBox *checkboxAudioDevice = new QCheckBox();
+            checkboxAudioDevice->setText( deviceInfo.deviceName() );
+            checkboxAudioDevice->setAccessibleName( deviceInfo.deviceName() );
+            checkboxAudioDevice->setObjectName( "checkboxAudioDevice" + deviceInfo.deviceName() );
+            ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
+        }
+    }
+}
+
+
+void MainWindow::slot_getAlsaDevices( bool value )
+{
+    Q_UNUSED(value);
+    QStringList pulseDeviceStringList;
+    foreach (const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
+    {
+        if ( deviceInfo.deviceName().contains("alsa") == false)
         {
             pulseDeviceStringList << deviceInfo.deviceName();
             QCheckBox *checkboxAudioDevice = new QCheckBox();
