@@ -160,6 +160,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
     ui->checkBoxAudioOnOff->click();
 
+    connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), this, SLOT( slot_getPulsesDevices( bool ) ) );
+
     // Tab 3 Codec
     ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     connect( ui->pushButtonFramesDefault, SIGNAL( clicked( bool ) ), this, SLOT( slot_setFramesStandard( bool ) ) );
@@ -169,21 +171,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( desk, SIGNAL( screenCountChanged(int) ), SLOT( slot_screenCountChanged( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          SLOT( slot_screenCountChanged( int ) ) );
     emit desk->screenCountChanged(0);
-
-
-    QStringList pulseDeviceStringList;
-    foreach (const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
-    {
-        if ( deviceInfo.deviceName().contains("alsa") )
-        {
-            pulseDeviceStringList << deviceInfo.deviceName();
-            QCheckBox *checkboxAudioDevice = new QCheckBox();
-            checkboxAudioDevice->setText( deviceInfo.deviceName() );
-            checkboxAudioDevice->setAccessibleName( deviceInfo.deviceName() );
-            checkboxAudioDevice->setObjectName( "checkboxAudioDevice" + deviceInfo.deviceName() );
-            ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
-        }
-    }
 }
 
 MainWindow::~MainWindow()
@@ -258,7 +245,7 @@ void MainWindow::slot_audioIconOnOff( bool state )
 }
 
 
-void MainWindow::slot_getPulsesDevices()
+void MainWindow::slot_getPulsesDevices( bool value )
 {
     QStringList pulseDeviceStringList;
     foreach (const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )

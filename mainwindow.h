@@ -46,7 +46,7 @@ private slots:
     void slot_screenCountChanged(int newCount );
     void slot_setFramesStandard( bool value );
     void slot_audioIconOnOff(bool state );
-    void slot_getPulsesDevices();
+    void slot_getPulsesDevices(bool value);
 
 
 signals:
