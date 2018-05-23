@@ -8,6 +8,7 @@
 #include <QScreen>
 #include <QDesktopWidget>
 #include <QAudioDeviceInfo>
+#include <QFileDialog>
 
 #include <gst/gst.h>
 
@@ -186,6 +187,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     connect( ui->pushButtonFramesDefault, SIGNAL( clicked( bool ) ), this, SLOT( slot_setFramesStandard( bool ) ) );
 
+    // Tab 4 Misc
+    ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
+    connect( ui->PushButtonVideoPath, SIGNAL( clicked( bool ) ), this, SLOT( slot_VideoPath() ) );
 
     QDesktopWidget *desk = QApplication::desktop();
     connect( desk, SIGNAL( screenCountChanged(int) ), SLOT( slot_screenCountChanged( int ) ) );
@@ -311,6 +315,20 @@ void MainWindow::slot_getAlsaDevices( bool value )
             checkboxAudioDevice->setObjectName( "checkboxAudioDevice" + deviceInfo.deviceName() );
             ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
         }
+    }
+}
+
+
+void MainWindow::slot_VideoPath()
+{
+    QString dir = QFileDialog::getExistingDirectory( this,
+                                                     tr( "Open Directory" ),
+                                                     QStandardPaths::writableLocation( QStandardPaths::HomeLocation ),
+                                                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks );
+
+    if ( dir > "" )
+    {
+        ui->lineEditVideoPath->setText( dir );
     }
 }
 

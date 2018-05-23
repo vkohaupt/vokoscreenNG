@@ -42,3 +42,6 @@ include(winInfo/winInfo.pri)
 
 # libqxt
 include(libqxtQt5/libqxt.pri)
+
+
+

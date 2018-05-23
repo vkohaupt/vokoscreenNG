@@ -49,6 +49,7 @@ private slots:
     void slot_clearVerticalLayoutAudioDevices(bool value);
     void slot_getPulsesDevices(bool value);
     void slot_getAlsaDevices( bool value );
+    void slot_VideoPath();
 
 
 signals:
