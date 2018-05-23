@@ -1,0 +1,15 @@
+ 
+****** fpsdisplaysink ******
+
+gst-launch-1.0 v4l2src device=/dev/video0 ! fpsdisplaysink video-sink=xvimagesink text-overlay=true
+
+gst-launch-1.0 videotestsrc               ! fpsdisplaysink video-sink=xvimagesink text-overlay=true
+ 
+gst-launch-1.0 v4l2src device=/dev/video1 ! capsfilter caps=video/x-raw,width=640,height=480,framerate=15/1 ! fpsdisplaysink video-sink=xvimagesink text-overlay=true 
+
+gst-launch-1.0 filesrc location=/home/vk/Videos/vokoscreen.mkv ! decodebin ! queue ! fpsdisplaysink video-sink=xvimagesink
+
+gst-launch-1.0 filesrc location=/home/vk/Videos/vokoscreen.mkv ! decodebin ! queue ! fpsdisplaysink video-sink=xvimagesink -v
+
+export GST_DEBUG=fpsdisplaysink:6
+gst-launch-1.0 ximagesrc use-damage=false ! capsfilter caps=video/x-raw ! videoconvert ! queue ! fpsdisplaysink video-sink=fakesink signal-fps-measurements=true

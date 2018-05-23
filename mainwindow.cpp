@@ -7,6 +7,7 @@
 #include <QDir>
 #include <QScreen>
 #include <QDesktopWidget>
+#include <QAudioDeviceInfo>
 
 #include <gst/gst.h>
 
@@ -54,6 +55,7 @@ static gboolean my_bus_func (GstBus * bus, GstMessage * message, gpointer user_d
    return G_SOURCE_CONTINUE;
 }
 
+
 GstDeviceMonitor *setup_raw_video_source_device_monitor() // hier darf kein void als Paramter stehen wie im Beispiel vermerkt
 {
    GstDeviceMonitor *monitor;
@@ -76,7 +78,17 @@ GstDeviceMonitor *setup_raw_video_source_device_monitor() // hier darf kein void
 }
 
 
-#include <QAudioDeviceInfo>
+void cb_fps_measurements(GstElement *fpsdisplaysink,
+                         gdouble arg0,
+                         gdouble arg1,
+                         gdouble arg2,
+                         gpointer user_data)
+{
+    qDebug() << "11111111111111111111111111111111111111111111111111111111111";
+       g_print("dropped: %.0f, current: %.2f, average: %.2f\n", arg1, arg0, arg2);
+}
+
+
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     setup_raw_video_source_device_monitor();
@@ -432,12 +444,12 @@ void MainWindow::slot_Start()
     QString path = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
 
     QStringList VK_PipelineList;
-    VK_PipelineList << VK_getXimagesrc()
-                    << VK_getCapsFilter()
-                    << "queue flush-on-eos=true"
-                    << "videoconvert"
-                    << "videorate"
-                    << "x264enc speed-preset=veryfast pass=quant threads=0";
+    VK_PipelineList << VK_getXimagesrc();
+    VK_PipelineList << VK_getCapsFilter();
+    VK_PipelineList << "queue flush-on-eos=true";
+    VK_PipelineList << "videoconvert";
+    VK_PipelineList << "videorate";
+    VK_PipelineList << "x264enc speed-preset=veryfast pass=quant threads=0";
 
     QString device;
     QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContents->findChildren<QCheckBox *>();
@@ -473,12 +485,26 @@ void MainWindow::slot_Start()
     QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Pipe );
     qDebug() << "[vokoscreen] Start record with:" << VK_Pipeline;
     pipeline = gst_parse_launch( VK_Pipeline.toLatin1(), &error );
+/*
+    g_print( error->message );
+
+    GstElement *fpsdisplaysink;
+    //myPipeline = gst_parse_launch( "ximagesrc use-damage=false ! capsfilter caps=video/x-raw ! videoconvert ! fpsdisplaysink video-sink=fakesink signal-fps-measurements=true name=sink", &error );
+    fpsdisplaysink = gst_bin_get_by_name (GST_BIN(pipeline), "sink" );
+    if (fpsdisplaysink)
+    {
+        qDebug() << "*********************************************************************************";
+        g_object_set (G_OBJECT (fpsdisplaysink), "signal-fps-measurements", TRUE, NULL);
+        g_signal_connect (fpsdisplaysink, "fps-measurements", G_CALLBACK (cb_fps_measurements), NULL);
+        g_print("fps-measurements connected\n");
+    }
+*/
 
     // Start playing
     GstStateChangeReturn ret;
     ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
     if (ret == GST_STATE_CHANGE_FAILURE) {
-        g_printerr ("Unable to set the pipeline to the playing state.\n");
+        g_printerr ("[vokoscreen] Unable to set the pipeline to the playing state.\n");
         gst_object_unref (pipeline);
         return;
     }
@@ -492,15 +518,15 @@ void MainWindow::slot_Stop()
         // wait for EOS
         bool a = gst_element_send_event (pipeline, gst_event_new_eos());
         Q_UNUSED(a);
-        GstClockTime timeout = 10 * GST_SECOND;
+        GstClockTime timeout = 5 * GST_SECOND;
         GstMessage *msg = gst_bus_timed_pop_filtered (GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
         Q_UNUSED(msg);
 
         GstStateChangeReturn ret ;
         Q_UNUSED(ret);
-        ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
+        //ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
         ret = gst_element_set_state( pipeline, GST_STATE_READY );
-        ret = gst_element_set_state( pipeline, GST_STATE_NULL );
+        //ret = gst_element_set_state( pipeline, GST_STATE_NULL );
         gst_object_unref( pipeline );
         qDebug() << "[vokoscreen] Stop record";
     }
