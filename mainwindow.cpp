@@ -200,6 +200,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 }
 
 
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+
 void MainWindow::slot_newVideoPath()
 {
     QString dir = QFileDialog::getExistingDirectory( this,
@@ -236,12 +242,6 @@ void MainWindow::slot_videoFileSystemWatcherSetButtons()
   {
     ui->pushButtonPlay->setEnabled( true );
   }
-}
-
-
-MainWindow::~MainWindow()
-{
-    delete ui;
 }
 
 
