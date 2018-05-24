@@ -1,0 +1,10 @@
+[Desktop Entry]
+Comment=screencast
+Exec=vokoscreen
+Icon=vokoscreen
+Name=vokoscreen
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=AudioVideo;Recorder;
+Keywords=Audio;Video;Recorder;Screencast;

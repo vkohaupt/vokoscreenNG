@@ -46,5 +46,6 @@ include(winInfo/winInfo.pri)
 # libqxt
 include(libqxtQt5/libqxt.pri)
 
-
+# countdown
+include(countdown/countdown.pri)
 

@@ -1,4 +1,6 @@
 #include "mainwindow.h"
+#include "QvkCountdown.h"
+
 #include "ui_mainwindow.h"
 #include "ui_QvkNoPlayerDialog.h"
 
@@ -80,7 +82,6 @@ void cb_fps_measurements(GstElement *fpsdisplaysink,
                          gdouble arg2,
                          gpointer user_data)
 {
-    qDebug() << "11111111111111111111111111111111111111111111111111111111111";
        g_print("dropped: %.0f, current: %.2f, average: %.2f\n", arg1, arg0, arg2);
 }
 
@@ -473,9 +474,11 @@ void MainWindow::slot_preStart()
 {
     if ( ui->radioButtonWindow->isChecked() == true )
     {
-      vkWinInfo = new QvkWinInfo();
-      connect( vkWinInfo, SIGNAL( windowChanged() ), this, SLOT( slot_Start() ) );
-      return;
+        vkWinInfo = new QvkWinInfo();
+        ui->pushButtonStop->setEnabled( false );
+        ui->pushButtonPause->setEnabled( false );
+        connect( vkWinInfo, SIGNAL( windowChanged() ), this, SLOT( slot_Start() ) );
+        return;
     }
 
     slot_Start();
@@ -484,6 +487,12 @@ void MainWindow::slot_preStart()
 
 void MainWindow::slot_Start()
 {
+    if ( ui->spinBoxCountDown->value() > 0 )
+    {
+        ui->pushButtonStart->setEnabled( false );
+        QvkCountdown( ui->spinBoxCountDown->value() );
+    }
+
     GstElementFactory *factory = gst_element_factory_find( "ximagesrc" );
     if ( !factory )
     {
