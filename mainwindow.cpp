@@ -475,8 +475,6 @@ void MainWindow::slot_preStart()
     if ( ui->radioButtonWindow->isChecked() == true )
     {
         vkWinInfo = new QvkWinInfo();
-        ui->pushButtonStop->setEnabled( false );
-        ui->pushButtonPause->setEnabled( false );
         connect( vkWinInfo, SIGNAL( windowChanged() ), this, SLOT( slot_Start() ) );
         return;
     }
