@@ -209,7 +209,7 @@ MainWindow::~MainWindow()
 void MainWindow::slot_newVideoPath()
 {
     QString dir = QFileDialog::getExistingDirectory( this,
-                                                     tr( "Open Directory" ),
+                                                     "",
                                                      QStandardPaths::writableLocation( QStandardPaths::HomeLocation ),
                                                      QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks );
 

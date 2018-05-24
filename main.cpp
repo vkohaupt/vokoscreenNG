@@ -1,18 +1,23 @@
 #include "mainwindow.h"
 #include <QApplication>
+#include <QTranslator>
+#include <QLibraryInfo>
 
 #include <gst/gst.h>
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    QApplication app(argc, argv);
 
     // Initialize GStreamer
     gst_init (&argc, &argv);
 
-    MainWindow w;
+    QTranslator * qtTranslator = new QTranslator();
+    qtTranslator->load( "qt_" + QLocale::system().name(), QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
+    app.installTranslator( qtTranslator );
 
+    MainWindow w;
     w.show();
 
-    return a.exec();
+    return app.exec();
 }
