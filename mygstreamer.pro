@@ -29,7 +29,10 @@ HEADERS += \
         mainwindow.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+        QvkNoPlayerDialog.ui
+
+RESOURCES += screencast.qrc
 
 CONFIG += link_pkgconfig
 PKGCONFIG += gstreamer-1.0

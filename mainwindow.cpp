@@ -1,5 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "ui_QvkNoPlayerDialog.h"
+
+#include <gst/gst.h>
 
 #include <QDebug>
 #include <QDateTime>
@@ -9,22 +12,14 @@
 #include <QDesktopWidget>
 #include <QAudioDeviceInfo>
 #include <QFileDialog>
-
-#include <gst/gst.h>
+#include <QDesktopServices>
 
 // gstreamer-plugins-bad-orig-addon
 // gstreamer-plugins-good-extra
 // libgstinsertbin-1_0-0
-// gst_parse_launch --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/gstreamer-GstParse.html#gst-parse-launch-full
-// ximagesrc        --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good-plugins/html/gst-plugins-good-plugins-ximagesrc.html
-// videoconvert     --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-plugins/html/gst-plugins-base-plugins-videoconvert.html
-// x264enc          --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-ugly-plugins/html/gst-plugins-ugly-plugins-x264enc.html
-// matroskamux      --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-matroskamux.html
-// filesink         --> https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-plugins/html/gstreamer-plugins-filesink.html
 
-#include <gst/gst.h>
-#include <gst/gstprotection.h>
-#include <glib.h>
+//#include <gst/gstprotection.h>
+//#include <glib.h>
 
 static gboolean my_bus_func (GstBus * bus, GstMessage * message, gpointer user_data)
 {
@@ -158,6 +153,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonPause,    SLOT( show() ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonStop,     SLOT( setDisabled( bool ) ) );
     ui->pushButtonContinue->hide();
+
+    connect( ui->pushButtonPlay, SIGNAL( clicked( bool ) ), this, SLOT(slot_Play() ) );
 
     // Close
     connect( this, SIGNAL( signal_close() ),  ui->pushButtonContinue, SLOT( click() ) );
@@ -329,6 +326,32 @@ void MainWindow::slot_VideoPath()
     if ( dir > "" )
     {
         ui->lineEditVideoPath->setText( dir );
+    }
+}
+
+
+void MainWindow::slot_Play()
+{
+    qDebug() << "[vokoscreen] play video with standard system player";
+    QDir dir( ui->lineEditVideoPath->text() );
+    QStringList filters;
+    filters << "vokoscreen*";
+    QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
+
+    QString string;
+    string.append( "file://" );
+    string.append( ui->lineEditVideoPath->text() );
+    string.append( QDir::separator() );
+    string.append( videoFileList.at( 0 ) );
+    bool b = QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) );
+    if ( b == false )
+    {
+        QDialog *newDialog = new QDialog;
+        Ui_NoPlayerDialog myUiDialog;
+        myUiDialog.setupUi( newDialog );
+        newDialog->setModal( true );
+        newDialog->setWindowTitle( "vokoscreen" );
+        newDialog->show();
     }
 }
 
