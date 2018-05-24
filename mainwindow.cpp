@@ -185,14 +185,59 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonFramesDefault, SIGNAL( clicked( bool ) ), this, SLOT( slot_setFramesStandard( bool ) ) );
 
     // Tab 4 Misc
+    videoFileSystemWatcher = new QFileSystemWatcher();
+    connect( ui->PushButtonVideoPath, SIGNAL( clicked( bool ) ),        this, SLOT( slot_newVideoPath() ) );
+    connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetNewPath() ) );
+    connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
+    connect( videoFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
-    connect( ui->PushButtonVideoPath, SIGNAL( clicked( bool ) ), this, SLOT( slot_VideoPath() ) );
+
 
     QDesktopWidget *desk = QApplication::desktop();
     connect( desk, SIGNAL( screenCountChanged(int) ), SLOT( slot_screenCountChanged( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          SLOT( slot_screenCountChanged( int ) ) );
     emit desk->screenCountChanged(0);
 }
+
+
+void MainWindow::slot_newVideoPath()
+{
+    QString dir = QFileDialog::getExistingDirectory( this,
+                                                     tr( "Open Directory" ),
+                                                     QStandardPaths::writableLocation( QStandardPaths::HomeLocation ),
+                                                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks );
+
+    if ( dir > "" )
+    {
+        ui->lineEditVideoPath->setText( dir );
+    }
+}
+
+
+void MainWindow::slot_videoFileSystemWatcherSetNewPath()
+{
+    videoFileSystemWatcher->removePaths( videoFileSystemWatcher->files() );
+    videoFileSystemWatcher->addPath( ui->lineEditVideoPath->text() );
+}
+
+
+void MainWindow::slot_videoFileSystemWatcherSetButtons()
+{
+  QDir dir( ui->lineEditVideoPath->text() );
+  QStringList filters;
+  filters << "vokoscreen*";
+  QStringList List = dir.entryList( filters, QDir::Files, QDir::Time );
+
+  if ( List.isEmpty() || ( ui->pushButtonStart->isEnabled() == false ) )
+  {
+    ui->pushButtonPlay->setEnabled( false );
+  }
+  else
+  {
+    ui->pushButtonPlay->setEnabled( true );
+  }
+}
+
 
 MainWindow::~MainWindow()
 {
@@ -312,46 +357,6 @@ void MainWindow::slot_getAlsaDevices( bool value )
             checkboxAudioDevice->setObjectName( "checkboxAudioDevice" + deviceInfo.deviceName() );
             ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
         }
-    }
-}
-
-
-void MainWindow::slot_VideoPath()
-{
-    QString dir = QFileDialog::getExistingDirectory( this,
-                                                     tr( "Open Directory" ),
-                                                     QStandardPaths::writableLocation( QStandardPaths::HomeLocation ),
-                                                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks );
-
-    if ( dir > "" )
-    {
-        ui->lineEditVideoPath->setText( dir );
-    }
-}
-
-
-void MainWindow::slot_Play()
-{
-    qDebug() << "[vokoscreen] play video with standard system player";
-    QDir dir( ui->lineEditVideoPath->text() );
-    QStringList filters;
-    filters << "vokoscreen*";
-    QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
-
-    QString string;
-    string.append( "file://" );
-    string.append( ui->lineEditVideoPath->text() );
-    string.append( QDir::separator() );
-    string.append( videoFileList.at( 0 ) );
-    bool b = QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) );
-    if ( b == false )
-    {
-        QDialog *newDialog = new QDialog;
-        Ui_NoPlayerDialog myUiDialog;
-        myUiDialog.setupUi( newDialog );
-        newDialog->setModal( true );
-        newDialog->setWindowTitle( "vokoscreen" );
-        newDialog->show();
     }
 }
 
@@ -597,6 +602,32 @@ void MainWindow::slot_Continue()
         qDebug() << "[vokoscreen] Continue was clicked";
         GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
         Q_UNUSED(ret);
+    }
+}
+
+
+void MainWindow::slot_Play()
+{
+    qDebug() << "[vokoscreen] play video with standard system player";
+    QDir dir( ui->lineEditVideoPath->text() );
+    QStringList filters;
+    filters << "vokoscreen*";
+    QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
+
+    QString string;
+    string.append( "file://" );
+    string.append( ui->lineEditVideoPath->text() );
+    string.append( QDir::separator() );
+    string.append( videoFileList.at( 0 ) );
+    bool b = QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) );
+    if ( b == false )
+    {
+        QDialog *newDialog = new QDialog;
+        Ui_NoPlayerDialog myUiDialog;
+        myUiDialog.setupUi( newDialog );
+        newDialog->setModal( true );
+        newDialog->setWindowTitle( "vokoscreen" );
+        newDialog->show();
     }
 }
 

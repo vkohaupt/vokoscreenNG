@@ -5,6 +5,7 @@
 #include "QvkWinInfo.h"
 
 #include <QMainWindow>
+#include <QFileSystemWatcher>
 
 #include <gst/gst.h>
 
@@ -30,6 +31,7 @@ private:
     QString VK_getCapsFilter();
     QString VK_getMuxer();
     void makeAndSetValidIcon( int index );
+    QFileSystemWatcher *videoFileSystemWatcher;
 
     GstElement *pipeline;
     GError *error = NULL;
@@ -50,7 +52,9 @@ private slots:
     void slot_clearVerticalLayoutAudioDevices(bool value);
     void slot_getPulsesDevices(bool value);
     void slot_getAlsaDevices( bool value );
-    void slot_VideoPath();
+    void slot_newVideoPath();
+    void slot_videoFileSystemWatcherSetButtons();
+    void slot_videoFileSystemWatcherSetNewPath();
 
 
 signals:
