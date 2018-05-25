@@ -4,6 +4,11 @@ using namespace std;
 
 QvkWinInfo::QvkWinInfo()
 {
+}
+
+
+void QvkWinInfo::slot_start()
+{
   myX = 0;
   myY = 0;
   myWidth = 0;
@@ -68,6 +73,7 @@ QvkWinInfo::QvkWinInfo()
   mouseTimer->start( 20 );
 
   show();
+  emit signal_show( true );
 }
 
 
@@ -110,9 +116,8 @@ void QvkWinInfo::selectWindow()
     // Cursor resize does not show in video in the first Frames
     resize( 10, 10 );
     
-    emit windowChanged();
+    emit windowChanged( true );
     this->close();
-    delete this;
   }
 }
 

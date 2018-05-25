@@ -21,6 +21,7 @@ public slots:
   QString height();
   QString WinID();
   WId getWinID();
+  void slot_start();
 
   
 private slots: 
@@ -29,8 +30,8 @@ private slots:
 
    
 signals:
-  void windowChanged();
-  
+  void windowChanged( bool value );
+  void signal_show( bool value );
   
 protected:  
   

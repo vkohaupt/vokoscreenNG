@@ -114,8 +114,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     regionController = new QvkRegionController();
     regionController->hide();
 
+    vkWinInfo = new QvkWinInfo();
+
+
     // Bar for start, stop etc.
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStart() ) );
+//    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStart() ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonPause,       SLOT( setDisabled( bool ) ) );
@@ -128,6 +131,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabAudio,              SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabCodec,              SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabMisc,               SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStart() ) );
 
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_Stop() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setEnabled( bool ) ) );
@@ -156,6 +160,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->pushButtonContinue->hide();
 
     connect( ui->pushButtonPlay, SIGNAL( clicked( bool ) ), this, SLOT(slot_Play() ) );
+
+    connect( vkWinInfo, SIGNAL( signal_show( bool ) ),   ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
+    connect( vkWinInfo, SIGNAL( signal_show( bool ) ),   ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
+    connect( vkWinInfo, SIGNAL( windowChanged( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
+    connect( vkWinInfo, SIGNAL( windowChanged( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
+    connect( vkWinInfo, SIGNAL( windowChanged( bool ) ), this, SLOT( slot_Start() ) );
+
 
     // Close
     connect( this, SIGNAL( signal_close() ),  ui->pushButtonContinue, SLOT( click() ) );
@@ -474,8 +485,7 @@ void MainWindow::slot_preStart()
 {
     if ( ui->radioButtonWindow->isChecked() == true )
     {
-        vkWinInfo = new QvkWinInfo();
-        connect( vkWinInfo, SIGNAL( windowChanged() ), this, SLOT( slot_Start() ) );
+        vkWinInfo->slot_start();
         return;
     }
 
