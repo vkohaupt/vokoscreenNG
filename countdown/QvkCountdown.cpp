@@ -3,8 +3,43 @@
 #include <QTest>
 #include <QTimer>
 
-QvkCountdown::QvkCountdown( int value )
+QvkCountdown::QvkCountdown()
 {
+    QDesktopWidget *desk = QApplication::desktop();
+    Width = 300;
+    Height = 300;;
+    x = ( desk->screenGeometry().width() / 2 ) - ( Width / 2 );
+    y = ( desk->screenGeometry().height() / 2 ) -( Height / 2 );
+//qDebug() << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+    setGeometry( x, y, Width, Height );
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Tool );
+    setAttribute( Qt::WA_TranslucentBackground, true );
+
+    timer = new QTimer( this );
+    connect( timer, SIGNAL( timeout() ), this, SLOT( updateTimer() ) );
+
+    animationTimer = new QTimer( this );
+    connect( animationTimer, SIGNAL( timeout() ), this, SLOT( updateAnimationTimer() ) );
+
+    hide();
+}
+
+
+void QvkCountdown::startCountdown( int value )
+{
+    show();
+    emit signal_countdownBegin( true );
+    countValue = value;
+    gradValue = 0;
+
+    timer->start( 1000 );
+    animationTimer->start( 25 );
+}
+
+/*
+void QvkCountdown::startCountdown( int value )
+{
+    emit signal_countdownBegin( true );
     countValue = value;
     gradValue = 0;
   
@@ -34,7 +69,7 @@ QvkCountdown::QvkCountdown( int value )
         QCoreApplication::processEvents( QEventLoop::AllEvents );     
         QTest::qSleep( 50 );
     }
-    
+
     // Der Desktopanimation "Langsames ausblenden" entgegenwirken
     clearMask();
     QRegion RegionWidget( x, y, width(), height() );
@@ -44,7 +79,7 @@ QvkCountdown::QvkCountdown( int value )
     
     close();
 }
-
+*/
 QvkCountdown::~QvkCountdown()
 {
 }
@@ -57,9 +92,10 @@ void QvkCountdown::updateTimer()
 
   if ( countValue == 0 )
   {
+    hide();
     timer->stop();
     animationTimer->stop();
-    emit signal_countDownfinish();
+    emit signal_countDownfinish( true );
   }
 }
 

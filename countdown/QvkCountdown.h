@@ -8,8 +8,9 @@ class QvkCountdown: public QWidget
 {
     Q_OBJECT
 public:
-    QvkCountdown(int value );
+    QvkCountdown();
     virtual ~QvkCountdown();
+    void startCountdown(int value );
 
     
 public slots:
@@ -22,6 +23,10 @@ private:
     QTimer *timer;
     QTimer *animationTimer;
     QPainter painter;
+    int Width;
+    int Height;
+    int x;
+    int y;
 
     
 private slots:
@@ -34,8 +39,9 @@ protected:
   
   
 signals:
-    void signal_countDownfinish();
-  
+    void signal_countDownfinish( bool value );
+    void signal_countdownBegin( bool value );
+
 };
 
 #endif

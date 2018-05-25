@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "QvkCountdown.h"
 
 #include "ui_mainwindow.h"
 #include "ui_QvkNoPlayerDialog.h"
@@ -116,6 +115,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     vkWinInfo = new QvkWinInfo();
 
+    vkCountdown = new QvkCountdown();
+
     // Bar for start, stop etc.
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setDisabled( bool ) ) );
@@ -131,7 +132,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabMisc,               SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStart() ) );
 
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_Stop() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonPause,       SLOT( setEnabled( bool ) ) );
@@ -143,6 +143,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabAudio,              SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabCodec,              SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabMisc,               SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_Stop() ) );
 
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), this,                   SLOT( slot_Pause() ) );
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonPause,    SLOT( hide() ) );
@@ -157,15 +158,20 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonStop,     SLOT( setDisabled( bool ) ) );
     ui->pushButtonContinue->hide();
 
-    connect( ui->pushButtonPlay, SIGNAL( clicked( bool ) ), this, SLOT(slot_Play() ) );
+    connect( ui->pushButtonPlay, SIGNAL( clicked( bool ) ), this, SLOT( slot_Play() ) );
 
-    connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ),   ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
-    connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ),   ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
-    connect( vkWinInfo, SIGNAL( windowChanged( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
-    connect( vkWinInfo, SIGNAL( windowChanged( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
-    connect( vkWinInfo, SIGNAL( windowChanged( bool ) ), this, SLOT( slot_Start() ) );
+    connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ), ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
+    connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ), ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
+    connect( vkWinInfo, SIGNAL( windowChanged( bool ) ),     ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
+    connect( vkWinInfo, SIGNAL( windowChanged( bool ) ),     ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
+    connect( vkWinInfo, SIGNAL( windowChanged( bool ) ),     this,                SLOT( slot_Start() ) );
 
 
+    connect( vkCountdown, SIGNAL( signal_countdownBegin( bool )),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
+    connect( vkCountdown, SIGNAL( signal_countdownBegin( bool )),  ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
+    connect( vkCountdown, SIGNAL( signal_countDownfinish( bool )), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
+    connect( vkCountdown, SIGNAL( signal_countDownfinish( bool )), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
+    connect( vkCountdown, SIGNAL( signal_countDownfinish( bool )), this,                SLOT( slot_Start() ) );
 
 
     // Close
@@ -483,6 +489,21 @@ QString MainWindow::VK_getMuxer()
 
 void MainWindow::slot_preStart()
 {
+
+    if ( ( ui->spinBoxCountDown->value() > 0 ) and ( ui->radioButtonWindow->isChecked() == true )  )
+    {
+        vkWinInfo->slot_start();
+        vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
+
+        return;
+    }
+
+    if ( ui->spinBoxCountDown->value() > 0 )
+    {
+        vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
+        return;
+    }
+
     if ( ui->radioButtonWindow->isChecked() == true )
     {
         vkWinInfo->slot_start();
@@ -495,12 +516,6 @@ void MainWindow::slot_preStart()
 
 void MainWindow::slot_Start()
 {
-    if ( ui->spinBoxCountDown->value() > 0 )
-    {
-        ui->pushButtonStart->setEnabled( false );
-        QvkCountdown( ui->spinBoxCountDown->value() );
-    }
-
     GstElementFactory *factory = gst_element_factory_find( "ximagesrc" );
     if ( !factory )
     {
@@ -581,7 +596,7 @@ void MainWindow::slot_Start()
 
 void MainWindow::slot_Stop()
 {
-    if ( ui->pushButtonStart->isEnabled() == false  )
+//    if ( ui->pushButtonStart->isEnabled() == false  )
     {
         // wait for EOS
         bool a = gst_element_send_event (pipeline, gst_event_new_eos());

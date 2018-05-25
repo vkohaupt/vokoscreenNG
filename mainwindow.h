@@ -3,6 +3,7 @@
 
 #include "QvkRegionController.h"
 #include "QvkWinInfo.h"
+#include "QvkCountdown.h"
 
 #include <QMainWindow>
 #include <QFileSystemWatcher>
@@ -37,7 +38,7 @@ private:
     GError *error = NULL;
 
     QvkWinInfo *vkWinInfo;
-
+    QvkCountdown *vkCountdown;
 
 private slots:
     void slot_preStart();
