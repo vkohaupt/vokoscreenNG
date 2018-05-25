@@ -10,7 +10,7 @@ QvkCountdown::QvkCountdown()
     Height = 300;;
     x = ( desk->screenGeometry().width() / 2 ) - ( Width / 2 );
     y = ( desk->screenGeometry().height() / 2 ) -( Height / 2 );
-//qDebug() << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+
     setGeometry( x, y, Width, Height );
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Tool );
     setAttribute( Qt::WA_TranslucentBackground, true );
@@ -36,50 +36,7 @@ void QvkCountdown::startCountdown( int value )
     animationTimer->start( 25 );
 }
 
-/*
-void QvkCountdown::startCountdown( int value )
-{
-    emit signal_countdownBegin( true );
-    countValue = value;
-    gradValue = 0;
-  
-    QDesktopWidget *desk = QApplication::desktop();
-    int Width = 300;
-    int Height = 300;;
-    int x = ( desk->screenGeometry().width() / 2 ) - ( Width / 2 );
-    int y = ( desk->screenGeometry().height() / 2 ) -( Height / 2 );
-  
-    setGeometry( x, y, Width, Height );
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Tool );
-    setAttribute( Qt::WA_TranslucentBackground, true );
-    show();
-    
-    timer = new QTimer( this );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( updateTimer() ) ); 
-    timer->start( 1000 );
-    
-    animationTimer = new QTimer( this );
-    connect( animationTimer, SIGNAL( timeout() ), this, SLOT( updateAnimationTimer() ) ); 
-    animationTimer->start( 25 );
 
-    
-    // Mit screencast erst beginnen, also hier warten bis 0 erreicht ist 
-    while ( countValue > 0 )
-    {
-        QCoreApplication::processEvents( QEventLoop::AllEvents );     
-        QTest::qSleep( 50 );
-    }
-
-    // Der Desktopanimation "Langsames ausblenden" entgegenwirken
-    clearMask();
-    QRegion RegionWidget( x, y, width(), height() );
-    QRegion RegionSpace( x+1, y+1, width()-2, height()-2 );
-    QRegion RegionNeu = RegionWidget.subtracted( RegionSpace );
-    setMask( RegionNeu );
-    
-    close();
-}
-*/
 QvkCountdown::~QvkCountdown()
 {
 }
