@@ -159,11 +159,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     connect( ui->pushButtonPlay, SIGNAL( clicked( bool ) ), this, SLOT(slot_Play() ) );
 
-    connect( vkWinInfo, SIGNAL( signal_show( bool ) ),   ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
-    connect( vkWinInfo, SIGNAL( signal_show( bool ) ),   ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
+    connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ),   ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
+    connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ),   ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
     connect( vkWinInfo, SIGNAL( windowChanged( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
     connect( vkWinInfo, SIGNAL( windowChanged( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
     connect( vkWinInfo, SIGNAL( windowChanged( bool ) ), this, SLOT( slot_Start() ) );
+
+
 
 
     // Close

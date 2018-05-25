@@ -73,7 +73,7 @@ void QvkWinInfo::slot_start()
   mouseTimer->start( 20 );
 
   show();
-  emit signal_show( true );
+  emit signal_showCursor( true );
 }
 
 

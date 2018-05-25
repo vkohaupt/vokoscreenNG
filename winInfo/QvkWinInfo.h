@@ -31,7 +31,7 @@ private slots:
    
 signals:
   void windowChanged( bool value );
-  void signal_show( bool value );
+  void signal_showCursor( bool value );
   
 protected:  
   
