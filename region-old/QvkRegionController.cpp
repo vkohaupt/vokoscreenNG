@@ -2,7 +2,7 @@
 #include "QvkRegionController.h"
 
 #include <QDebug>
-
+#include <QMainWindow>
 
 QvkRegionController::QvkRegionController()
 {
@@ -31,9 +31,13 @@ void QvkRegionController::hide()
   regionChoise->hide();
 }
 
-void QvkRegionController::show()
+void QvkRegionController::show( bool value )
 {
-  regionChoise->show();
+    if ( value == true )
+       regionChoise->show();
+    else
+       regionChoise->hide();
+
 }
 
 void QvkRegionController::close()
@@ -43,12 +47,12 @@ void QvkRegionController::close()
 
 int QvkRegionController::getX()
 {
-  return regionChoise->geometry().x(); 
+  return regionChoise->getXRecordArea();
 }
 
 int QvkRegionController::getY()
 {
-  return regionChoise->geometry().y();
+  return regionChoise->getYRecordArea();
 }
 
 int QvkRegionController::getWidth()

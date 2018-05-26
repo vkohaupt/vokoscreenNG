@@ -2,7 +2,7 @@
 #define QvkRegionController_H
 
 #include <QObject>
-
+#include <QMainWindow>
 #include "QvkRegionChoise.h"
 //#include "QvkRegionRecord.h"
 
@@ -24,8 +24,6 @@ public:
    
    void lockFrame( bool status );
 
-   void show();
-   void close();
    void hide();
 
    QvkRegionChoise *regionChoise;
@@ -40,7 +38,9 @@ private slots:
 public slots:
    void myClicked();
    void Abbruch();
-  
+   void show(bool value);
+   void close();
+
   
 private:
   

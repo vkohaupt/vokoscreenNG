@@ -82,11 +82,11 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
     qDebug() << "[vokoscreen] Qt-PluginsPath:     " << QLibraryInfo::location( QLibraryInfo::PluginsPath );
     qDebug() << "[vokoscreen] Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
     qDebug() << "[vokoscreen] Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
-    qDebug() << "[vokoscreen] CompositingManager running:" << QX11Info::isCompositingManagerRunning();
+//    qDebug() << "[vokoscreen] CompositingManager running:" << QX11Info::isCompositingManagerRunning();
     qDebug() << "[vokoscreen] screen available desktop width :" << screen->availableSize().width();
     qDebug() << "[vokoscreen] screen available desktop height:" << screen->availableSize().height();
-    qDebug() << screen->name();
-    qDebug() << screen->model() << screen->refreshRate() << screen->primaryOrientation();
+//    qDebug() << screen->name();
+//    qDebug() << screen->model() << screen->refreshRate() << screen->primaryOrientation();
 /*
     areaSettingDialog = new QDialog(this);
     areaSettingDialog->setModal( true );
@@ -484,7 +484,7 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
             clearMask();
             update();
         }
-
+/*
         if ( platform == x11 )
         {
             if ( QX11Info::isCompositingManagerRunning() == true )
@@ -498,6 +498,7 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
                 update();
             }
         }
+*/
     }
 
     if ( handlePressed != NoHandle )
