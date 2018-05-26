@@ -30,7 +30,6 @@ QvkCountdown::QvkCountdown()
 void QvkCountdown::startCountdown( int value )
 {
     show();
-    qDebug() << isVisible();
     countValue = value;
     gradValue = 0;
 
