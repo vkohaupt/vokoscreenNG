@@ -56,6 +56,7 @@ private slots:
     void slot_newVideoPath();
     void slot_videoFileSystemWatcherSetButtons();
     void slot_videoFileSystemWatcherSetNewPath();
+    void slot_startCounter( bool value );
 
 
 signals:

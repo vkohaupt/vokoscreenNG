@@ -475,22 +475,25 @@ QString MainWindow::VK_getMuxer()
 
 void MainWindow::slot_preStart()
 {
-    // Das funktioniert noch nicht
     if ( ( ui->spinBoxCountDown->value() > 0 ) and ( ui->radioButtonWindow->isChecked() == true )  )
     {
+        connect( vkWinInfo,   SIGNAL( windowChanged( bool ) ),          this,                SLOT( slot_startCounter( bool ) ) );
+        connect( vkWinInfo,   SIGNAL( signal_showCursor( bool ) ),      ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
+        connect( vkWinInfo,   SIGNAL( signal_showCursor( bool ) ),      ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
         vkWinInfo->slot_start();
-        vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
-
         return;
     }
 
     if ( ui->spinBoxCountDown->value() > 0 )
     {
-        connect( vkCountdown, SIGNAL( signal_countdownBegin( bool )),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countdownBegin( bool )),  ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool )), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool )), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool )), this,                SLOT( slot_Start() ) );
+        connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
         vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
         return;
     }
@@ -507,6 +510,13 @@ void MainWindow::slot_preStart()
     }
 
     slot_Start();
+}
+
+
+void MainWindow::slot_startCounter( bool value )
+{
+    Q_UNUSED(value);
+    vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
 }
 
 
