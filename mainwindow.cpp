@@ -477,6 +477,8 @@ void MainWindow::slot_preStart()
 {
     if ( ( ui->spinBoxCountDown->value() > 0 ) and ( ui->radioButtonWindow->isChecked() == true )  )
     {
+        disconnect( vkWinInfo, 0, 0, 0 );
+        disconnect( vkCountdown, 0, 0, 0 );
         connect( vkWinInfo,   SIGNAL( windowChanged( bool ) ),          this,                SLOT( slot_startCounter( bool ) ) );
         connect( vkWinInfo,   SIGNAL( signal_showCursor( bool ) ),      ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
         connect( vkWinInfo,   SIGNAL( signal_showCursor( bool ) ),      ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
@@ -489,6 +491,7 @@ void MainWindow::slot_preStart()
 
     if ( ui->spinBoxCountDown->value() > 0 )
     {
+        disconnect( vkCountdown, 0, 0, 0 );
         connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
         connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
@@ -500,6 +503,7 @@ void MainWindow::slot_preStart()
 
     if ( ui->radioButtonWindow->isChecked() == true )
     {
+        disconnect( vkWinInfo, 0, 0, 0 );
         connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ), ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
         connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ), ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
         connect( vkWinInfo, SIGNAL( windowChanged( bool ) ),     ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );

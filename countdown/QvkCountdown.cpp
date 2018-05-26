@@ -12,7 +12,9 @@ QvkCountdown::QvkCountdown()
     y = ( desk->screenGeometry().height() / 2 ) -( Height / 2 );
 
     setGeometry( x, y, Width, Height );
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Tool );
+    // Die Optionen Qt::Tool sollte nicht angewendet werden da bei Auswahl eines Fenster der Countdown nicht angezeigt wird.
+    // Die Option Qt::ToolTip wäre eine möglichkeit, gefällt mir aber Optisch nicht da ein Rahmen angezeigt wird.
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
     setAttribute( Qt::WA_TranslucentBackground, true );
 
     timer = new QTimer( this );
@@ -28,12 +30,13 @@ QvkCountdown::QvkCountdown()
 void QvkCountdown::startCountdown( int value )
 {
     show();
-    emit signal_countdownBegin( true );
+    qDebug() << isVisible();
     countValue = value;
     gradValue = 0;
 
     timer->start( 1000 );
     animationTimer->start( 25 );
+    emit signal_countdownBegin( true );
 }
 
 
