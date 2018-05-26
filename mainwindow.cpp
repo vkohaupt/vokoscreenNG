@@ -516,7 +516,10 @@ void MainWindow::slot_preStart()
 void MainWindow::slot_startCounter( bool value )
 {
     Q_UNUSED(value);
-    vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
+    if ( ui->spinBoxCountDown->value() > 0 )
+    {
+        vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
+    }
 }
 
 
