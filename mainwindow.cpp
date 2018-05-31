@@ -212,6 +212,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     connect( ui->pushButtonFramesDefault, SIGNAL( clicked( bool ) ), this, SLOT( slot_setFramesStandard( bool ) ) );
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
+    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
 
     // Tab 4 Misc
     videoFileSystemWatcher = new QFileSystemWatcher();
@@ -468,20 +469,26 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
     QStringList MKV_QStringList = ( QStringList()
                                     << "muxer:matroskamux"
                                     << "suffix:mkv"
-                                    << "mimetype:video/x-matroska"
+                                    << "videomimetype:video/x-matroska"
+                                    << "audiomimetype:audio/x-matroska"
                                     << "videocodec:x264enc:x264"
                                     << "videocodec:x265enc:x265"
                                     << "videocodec:theoraenc:theora"
                                     << "videocodec:vp8enc:vp8"
                                     << "videocodec:vp9enc:vp9"
+                                    << "audiocodec:vorbisenc:vorbis"
+                                    << "audiocodec:flacenc:flac"
+                                    << "audiocodec:opusenc:opus"
                                    );
 
     QStringList WEBM_QStringList = ( QStringList()
                                      << "muxer:webmmux"
                                      << "suffix:webm"
-                                     << "mimetype:video/webm"
+                                     << "videomimetype:video/webm"
+                                     << "audiomimetype:audio/webm"
                                      << "videocodec:vp8enc:vp8"
                                      << "videocodec:vp9enc:vp9"
+                                     << "audiocodec:vorbisenc:vorbis"
                                    );
 
     videoFormatsList.clear();
@@ -550,6 +557,21 @@ void MainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
     {
         int y = QString( listKeyVideoCodec.at( i ) ).lastIndexOf( ":" );
         ui->comboBoxVideoCodec->addItem( QString( listKeyVideoCodec.at( i ) ).mid( y + 1 ) );// QString(listKeyVideoCodec.at(i)).mid(11) );
+    }
+}
+
+void MainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
+{
+    ui->comboBoxAudioCodec->clear();
+
+    QStringList listSuffix = videoFormatsList.filter( suffix );
+    QString stringSuffix = listSuffix.at( 0 );
+    QStringList listKeys = stringSuffix.split( "," );
+    QStringList listKeyVideoCodec = listKeys.filter( "audiocodec" );
+    for ( int i = 0; i < listKeyVideoCodec.count(); i++ )
+    {
+        int y = QString( listKeyVideoCodec.at( i ) ).lastIndexOf( ":" );
+        ui->comboBoxAudioCodec->addItem( QString( listKeyVideoCodec.at( i ) ).mid( y + 1 ) );// QString(listKeyVideoCodec.at(i)).mid(11) );
     }
 }
 
