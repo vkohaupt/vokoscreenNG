@@ -2,7 +2,7 @@
 
 * Vokoscreen 2.5.0 ist the last version with ffmpg.
 * vokoscreenGST is the devlopname for vokoscreen 3.0 and based of Qt and gstreamer.
-* It was written from scratch
+* It is written from scratch
 
 # progress
 * record fullscreen                       --> OK

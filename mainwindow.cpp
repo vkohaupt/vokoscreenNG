@@ -19,8 +19,11 @@
 // gstreamer-plugins-good-extra
 // libgstinsertbin-1_0-0
 
-//#include <gst/gstprotection.h>
-//#include <glib.h>
+#include <gst/gstprotection.h>
+#include <glib.h>
+
+
+
 
 static gboolean my_bus_func (GstBus * bus, GstMessage * message, gpointer user_data)
 {
@@ -28,6 +31,12 @@ static gboolean my_bus_func (GstBus * bus, GstMessage * message, gpointer user_d
    Q_UNUSED(user_data);
    GstDevice *device;
    gchar *name;
+
+   // https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/gstreamer-GstDeviceMonitor.html#gst-device-monitor-get-devices
+   // http://gstreamer-devel.966125.n4.nabble.com/Getting-names-and-description-of-the-quot-Source-quot-devices-td2293631.html
+   GstElement *pulsesrc;
+   g_object_set (G_OBJECT (pulsesrc), "device", device, NULL);
+   g_print("11111111111111111111111 %s\n", device);
 
    switch (GST_MESSAGE_TYPE (message)) {
      case GST_MESSAGE_DEVICE_ADDED:{
@@ -69,7 +78,22 @@ GstDeviceMonitor *setup_raw_video_source_device_monitor() // hier darf kein void
    gst_device_monitor_add_filter (monitor, "Audio/Source", caps);
    gst_caps_unref (caps);
 
+   // https://developer.gnome.org/programming-guidelines/stable/glist.html.en
+   GList *list = gst_device_monitor_get_devices(monitor); //VK
+   GList *l;
+   gchar *name;
+   GstDevice *device;
+
+   g_print( "222222222222222222222222222222\n");
+   for (l = list; l != NULL; l = l->next)
+     {
+       gpointer element_data = l->data;
+       //name = gst_device_get_display_name( element_data );
+       /* Do something with @element_data. */
+     }
+
    gst_device_monitor_start (monitor);
+   g_print( "44444444444444444444444444444444\n");
 
    return monitor;
 }
@@ -87,9 +111,13 @@ void cb_fps_measurements(GstElement *fpsdisplaysink,
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
-    setup_raw_video_source_device_monitor();
+//    setup_raw_video_source_device_monitor();
 
     ui->setupUi(this);
+
+    VK_Supported_Formats_And_Codecs();
+    VK_Check_is_Format_available();
+    VK_set_available_Formats_in_Combox();
 
     qDebug().noquote() << VK_GStreamer_Version();
 
@@ -196,11 +224,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( videoFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
 
-
+/*
     QDesktopWidget *desk = QApplication::desktop();
     connect( desk, SIGNAL( screenCountChanged(int) ), SLOT( slot_screenCountChanged( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          SLOT( slot_screenCountChanged( int ) ) );
     emit desk->screenCountChanged(0);
+*/
 }
 
 
@@ -432,18 +461,83 @@ QString MainWindow::VK_getCapsFilter()
    return QString( "capsfilter" ) + " " + stringList.join( "," );;
 }
 
-/*
-void MainWindow::VK_Search_Video_Codecs()
+
+void MainWindow::VK_Supported_Formats_And_Codecs()
 {
-    enum VideoCodecs{ x264enc, x265enc, mpeg2enc, theoraenc, vp8enc, vp9enc  }
+    QStringList MKV_QStringList = ( QStringList()
+                                    << "muxer:matroskamux"
+                                    << "suffix:mkv"
+                                    << "mimetype:video/x-matroska"
+                                    << "videocodec:x264enc:x264"
+                                    << "videocodec:x265enc:x265"
+                                    << "videocodec:theoraenc:theora"
+                                    << "videocodec:vp8enc:vp8"
+                                    << "videocodec:vp9enc:vp9"
+                                   );
+
+    QStringList WEBM_QStringList = ( QStringList()
+                                     << "muxer:webmmux"
+                                     << "suffix:webm"
+                                     << "mimetype:video/webm"
+                                     << "videocodec:vp8enc:vp8"
+                                     << "videocodec:vp9enc:vp9"
+                                   );
+
+    videoFormatsList.clear();
+    videoFormatsList.append( MKV_QStringList.join( ","  ) );
+    videoFormatsList.append( WEBM_QStringList.join( ","  ) );
+
+
+    /*
+        videoFormatsList.append( "mp4mux:mp4" );
+        videoFormatsList.append( "avimux:avi" );
+        videoFormatsList.append( "asfmux:asf" );
+        videoFormatsList.append( "flvmux:flv" );
+    */
+
 }
 
 
-void MainWindow::VK_Search_VideoFormats()
+void MainWindow::VK_Check_is_Format_available()
 {
-    enum VideoFormats{ matroskamux, webmmux, mp4mux, avimux, asfmux, flvmux }
+    QStringList tempList;
+    for ( int x = 0; x < videoFormatsList.count(); x++ )
+    {
+        QString stringAllKeys = videoFormatsList.at(x);
+        QStringList listKeys = stringAllKeys.split( "," );
+        QStringList listKey = listKeys.filter( "muxer");
+        GstElementFactory *factory = gst_element_factory_find( QString(listKey.at(0)).mid(6).toLatin1() );
+        if ( !factory )
+        {
+            qDebug() << "Failed to find factory of type:" << QString(listKey.at(0)).mid(6).toLatin1();
+        }
+        else
+        {
+           tempList <<  videoFormatsList.at(x);
+        }
+    }
+    videoFormatsList.clear();
+    videoFormatsList << tempList;
 }
-*/
+
+
+void MainWindow::VK_set_available_Formats_in_Combox()
+{
+    ui->comboBoxFormat->clear();
+
+    for ( int x = 0; x < videoFormatsList.count(); x++  )
+    {
+        QString stringAllKeys = videoFormatsList.at(x);
+        QStringList listKeys = stringAllKeys.split( "," );
+        QStringList listKeySuffix = listKeys.filter( "suffix");
+        QStringList listKeyMuxer = listKeys.filter( "muxer" );
+        ui->comboBoxFormat->addItem( QString(listKeySuffix.at(0)).mid(7),
+                                     QString(listKeyMuxer.at(0)).mid(6) );
+    }
+    for ( int x = 0; x < ui->comboBoxFormat->count(); x++ )
+        qDebug() << ui->comboBoxFormat->itemText(x) << ui->comboBoxFormat->itemData(x).toString();
+}
+
 
 QString MainWindow::VK_getMuxer()
 {
@@ -571,6 +665,7 @@ void MainWindow::slot_Start()
     {
         VK_PipelineList << QString( "mux. ").append( audioSystem ).append( " device=" ).append( device );
         VK_PipelineList << "audioconvert";
+        VK_PipelineList << "audiorate";
         VK_PipelineList << "voaacenc";
         VK_PipelineList << "queue flush-on-eos=true";
     }
@@ -599,7 +694,8 @@ void MainWindow::slot_Start()
     // Start playing
     GstStateChangeReturn ret;
     ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
-    if (ret == GST_STATE_CHANGE_FAILURE) {
+    if (ret == GST_STATE_CHANGE_FAILURE)
+    {
         g_printerr ("[vokoscreen] Unable to set the pipeline to the playing state.\n");
         gst_object_unref (pipeline);
         return;
@@ -609,12 +705,12 @@ void MainWindow::slot_Start()
 
 void MainWindow::slot_Stop()
 {
-//    if ( ui->pushButtonStart->isEnabled() == false  )
     {
         // wait for EOS
         bool a = gst_element_send_event (pipeline, gst_event_new_eos());
         Q_UNUSED(a);
-        GstClockTime timeout = 5 * GST_SECOND;
+
+        GstClockTime timeout = 10 * GST_SECOND;
         GstMessage *msg = gst_bus_timed_pop_filtered (GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
         Q_UNUSED(msg);
 

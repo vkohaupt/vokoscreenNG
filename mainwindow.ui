@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>530</width>
-    <height>233</height>
+    <height>252</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -36,7 +36,7 @@
           <item row="0" column="0">
            <widget class="QRadioButton" name="radioButtonFullscreen">
             <property name="text">
-             <string>Fullscreen</string>
+             <string>Fulls&amp;creen</string>
             </property>
             <property name="checked">
              <bool>true</bool>
@@ -150,8 +150,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>488</width>
-             <height>97</height>
+             <width>494</width>
+             <height>117</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -189,7 +189,7 @@
         <item>
          <layout class="QGridLayout" name="gridLayout_5">
           <item row="1" column="1">
-           <widget class="QComboBox" name="comboBox"/>
+           <widget class="QComboBox" name="comboBoxFormat"/>
           </item>
           <item row="0" column="0">
            <widget class="QLabel" name="labelFrames">
@@ -212,7 +212,7 @@
            </widget>
           </item>
           <item row="1" column="4">
-           <widget class="QCheckBox" name="checkBox_2">
+           <widget class="QCheckBox" name="checkBoxLossless">
             <property name="text">
              <string>Lossless</string>
             </property>
@@ -233,7 +233,7 @@
            </widget>
           </item>
           <item row="2" column="3">
-           <widget class="QComboBox" name="comboBox_3"/>
+           <widget class="QComboBox" name="comboBoxAudioCodec"/>
           </item>
           <item row="1" column="2">
            <widget class="QLabel" name="label_2">
@@ -250,7 +250,7 @@
            </widget>
           </item>
           <item row="1" column="3">
-           <widget class="QComboBox" name="comboBox_2"/>
+           <widget class="QComboBox" name="comboBoxVideoCodec"/>
           </item>
           <item row="1" column="5">
            <widget class="QPushButton" name="pushButton">

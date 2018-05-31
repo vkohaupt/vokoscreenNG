@@ -40,6 +40,12 @@ private:
     QvkWinInfo *vkWinInfo;
     QvkCountdown *vkCountdown;
 
+    QStringList videoFormatsList;
+    void VK_Supported_Formats_And_Codecs();
+    void VK_set_available_Formats_in_Combox();
+    void VK_Check_is_Format_available();
+
+
 private slots:
     void slot_preStart();
     void slot_Start();
