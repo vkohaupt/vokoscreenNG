@@ -115,10 +115,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     ui->setupUi(this);
 
-    VK_Supported_Formats_And_Codecs();
-    VK_Check_is_Format_available();
-    VK_set_available_Formats_in_Combox();
-
     qDebug().noquote() << VK_GStreamer_Version();
 
     qDebug() << gst_version_string ();
@@ -215,6 +211,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     // Tab 3 Codec
     ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     connect( ui->pushButtonFramesDefault, SIGNAL( clicked( bool ) ), this, SLOT( slot_setFramesStandard( bool ) ) );
+    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
 
     // Tab 4 Misc
     videoFileSystemWatcher = new QFileSystemWatcher();
@@ -223,6 +220,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     connect( videoFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
+
+    VK_Supported_Formats_And_Codecs();
+    VK_Check_is_Format_available();
+    VK_set_available_Formats_in_Combox();
 
 /*
     QDesktopWidget *desk = QApplication::desktop();
@@ -458,7 +459,7 @@ QString MainWindow::VK_getCapsFilter()
    QStringList stringList;
    stringList << "caps=video/x-raw"
               << QString("framerate=") + ui->spinBoxFrames->text() + "/1";
-   return QString( "capsfilter" ) + " " + stringList.join( "," );;
+   return QString( "capsfilter" ) + " " + stringList.join( "," );
 }
 
 
@@ -503,17 +504,17 @@ void MainWindow::VK_Check_is_Format_available()
     QStringList tempList;
     for ( int x = 0; x < videoFormatsList.count(); x++ )
     {
-        QString stringAllKeys = videoFormatsList.at(x);
+        QString stringAllKeys = videoFormatsList.at( x );
         QStringList listKeys = stringAllKeys.split( "," );
         QStringList listKey = listKeys.filter( "muxer");
-        GstElementFactory *factory = gst_element_factory_find( QString(listKey.at(0)).mid(6).toLatin1() );
+        GstElementFactory *factory = gst_element_factory_find( QString( listKey.at( 0 ) ).mid( 6 ).toLatin1() );
         if ( !factory )
         {
-            qDebug() << "Failed to find factory of type:" << QString(listKey.at(0)).mid(6).toLatin1();
+            qDebug() << "Failed to find factory of type:" << QString( listKey.at( 0 ) ).mid( 6 ).toLatin1();
         }
         else
         {
-           tempList <<  videoFormatsList.at(x);
+            tempList << videoFormatsList.at( x );
         }
     }
     videoFormatsList.clear();
@@ -531,11 +532,25 @@ void MainWindow::VK_set_available_Formats_in_Combox()
         QStringList listKeys = stringAllKeys.split( "," );
         QStringList listKeySuffix = listKeys.filter( "suffix");
         QStringList listKeyMuxer = listKeys.filter( "muxer" );
-        ui->comboBoxFormat->addItem( QString(listKeySuffix.at(0)).mid(7),
-                                     QString(listKeyMuxer.at(0)).mid(6) );
+        ui->comboBoxFormat->addItem( QString( listKeySuffix.at( 0 ) ).mid( 7 ),
+                                     QString( listKeyMuxer.at( 0 ) ).mid( 6 ) );
     }
-    for ( int x = 0; x < ui->comboBoxFormat->count(); x++ )
-        qDebug() << ui->comboBoxFormat->itemText(x) << ui->comboBoxFormat->itemData(x).toString();
+}
+
+
+void MainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
+{
+    ui->comboBoxVideoCodec->clear();
+
+    QStringList listSuffix = videoFormatsList.filter( suffix );
+    QString stringSuffix = listSuffix.at( 0 );
+    QStringList listKeys = stringSuffix.split( "," );
+    QStringList listKeyVideoCodec = listKeys.filter( "videocodec" );
+    for ( int i = 0; i < listKeyVideoCodec.count(); i++ )
+    {
+        int y = QString( listKeyVideoCodec.at( i ) ).lastIndexOf( ":" );
+        ui->comboBoxVideoCodec->addItem( QString( listKeyVideoCodec.at( i ) ).mid( y + 1 ) );// QString(listKeyVideoCodec.at(i)).mid(11) );
+    }
 }
 
 

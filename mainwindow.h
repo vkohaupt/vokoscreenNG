@@ -42,8 +42,8 @@ private:
 
     QStringList videoFormatsList;
     void VK_Supported_Formats_And_Codecs();
-    void VK_set_available_Formats_in_Combox();
     void VK_Check_is_Format_available();
+    void VK_set_available_Formats_in_Combox();
 
 
 private slots:
@@ -64,6 +64,7 @@ private slots:
     void slot_videoFileSystemWatcherSetNewPath();
     void slot_startCounter( bool value );
 
+    void slot_set_available_VideoCodecs_in_Combox(QString suffix);
 
 signals:
     void signal_close();
