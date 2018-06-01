@@ -14,6 +14,7 @@
 #include <QAudioDeviceInfo>
 #include <QFileDialog>
 #include <QDesktopServices>
+#include <QMimeDatabase>
 
 // gstreamer-plugins-bad-orig-addon
 // gstreamer-plugins-good-extra
@@ -21,9 +22,6 @@
 
 #include <gst/gstprotection.h>
 #include <glib.h>
-
-
-
 
 static gboolean my_bus_func (GstBus * bus, GstMessage * message, gpointer user_data)
 {
@@ -539,7 +537,15 @@ void MainWindow::VK_set_available_Formats_in_Combox()
         QStringList listKeys = stringAllKeys.split( "," );
         QStringList listKeySuffix = listKeys.filter( "suffix");
         QStringList listKeyMuxer = listKeys.filter( "muxer" );
-        ui->comboBoxFormat->addItem( QString( listKeySuffix.at( 0 ) ).mid( 7 ),
+
+        QMimeDatabase mimeDatabase;
+        QStringList listKeyVideoMimetype = listKeys.filter( "videomimetype" );
+        int y = QString( listKeyVideoMimetype.at(0) ).indexOf( ":" );
+        QMimeType mimetype = mimeDatabase.mimeTypeForName( listKeyVideoMimetype.at(0).mid(y+1) );
+        QIcon icon = QIcon::fromTheme( mimetype.iconName(), QIcon( ":/pictures/videooptionen.png" ) );
+
+        ui->comboBoxFormat->addItem( icon,
+                                     QString( listKeySuffix.at( 0 ) ).mid( 7 ),
                                      QString( listKeyMuxer.at( 0 ) ).mid( 6 ) );
     }
 }
@@ -555,10 +561,14 @@ void MainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
     QStringList listKeyVideoCodec = listKeys.filter( "videocodec" );
     for ( int i = 0; i < listKeyVideoCodec.count(); i++ )
     {
-        int y = QString( listKeyVideoCodec.at( i ) ).lastIndexOf( ":" );
-        ui->comboBoxVideoCodec->addItem( QString( listKeyVideoCodec.at( i ) ).mid( y + 1 ) );// QString(listKeyVideoCodec.at(i)).mid(11) );
+        int yfirst = QString( listKeyVideoCodec.at( i ) ).indexOf( ":" );
+        int ylast = QString( listKeyVideoCodec.at( i ) ).lastIndexOf( ":" );
+        QString encoder = QString(listKeyVideoCodec.at( i )).mid( yfirst + 1, ( ylast - 1 ) - yfirst );
+        QString name = QString( listKeyVideoCodec.at( i ) ).mid( ylast + 1 );
+        ui->comboBoxVideoCodec->addItem( name, encoder );
     }
 }
+
 
 void MainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
 {
