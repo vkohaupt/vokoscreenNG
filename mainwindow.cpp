@@ -609,12 +609,6 @@ void MainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
 
 QString MainWindow::VK_getMuxer()
 {
-    GstElementFactory *factory = gst_element_factory_find( "matroskamux" );
-    if ( !factory )
-    {
-      qDebug() << "Failed to find factory of type matroskamux";
-    }
-
     QString device;
     QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContents->findChildren<QCheckBox *>();
     for ( int i = 0; i < listQCheckBox.count(); i++ )
@@ -625,10 +619,23 @@ QString MainWindow::VK_getMuxer()
         }
     }
 
-    QString value = "matroskamux";
+    QString value = ui->comboBoxFormat->currentData().toString();
     if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( device > "" ) )
     {
-        value = "mux. matroskamux name=mux";
+        value = "mux. " + ui->comboBoxFormat->currentData().toString() + " name=mux";
+    }
+
+    return value;
+}
+
+
+QString MainWindow::Vk_get_Videocodec_Encoder()
+{
+    QString value;
+    QString encoder = ui->comboBoxVideoCodec->currentData().toString();
+    if ( encoder == "x264enc" )
+    {
+        value = "x264enc speed-preset=veryfast pass=quant threads=0";
     }
 
     return value;
@@ -698,7 +705,7 @@ void MainWindow::slot_Start()
         return;
     }
 
-    QString filename = "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + "mkv";
+    QString filename = "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
     QString path = ui->lineEditVideoPath->text();
 
     QStringList VK_PipelineList;
