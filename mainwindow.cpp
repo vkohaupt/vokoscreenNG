@@ -533,15 +533,15 @@ void MainWindow::VK_set_available_Formats_in_Combox()
 
     for ( int x = 0; x < videoFormatsList.count(); x++  )
     {
-        QString stringAllKeys = videoFormatsList.at(x);
+        QString stringAllKeys = videoFormatsList.at( x );
         QStringList listKeys = stringAllKeys.split( "," );
         QStringList listKeySuffix = listKeys.filter( "suffix");
         QStringList listKeyMuxer = listKeys.filter( "muxer" );
 
         QMimeDatabase mimeDatabase;
         QStringList listKeyVideoMimetype = listKeys.filter( "videomimetype" );
-        int y = QString( listKeyVideoMimetype.at(0) ).indexOf( ":" );
-        QMimeType mimetype = mimeDatabase.mimeTypeForName( listKeyVideoMimetype.at(0).mid(y+1) );
+        int y = QString( listKeyVideoMimetype.at( 0 ) ).indexOf( ":" );
+        QMimeType mimetype = mimeDatabase.mimeTypeForName( listKeyVideoMimetype.at( 0 ).mid( y + 1 ) );
         QIcon icon = QIcon::fromTheme( mimetype.iconName(), QIcon( ":/pictures/videooptionen.png" ) );
 
         ui->comboBoxFormat->addItem( icon,
@@ -565,7 +565,16 @@ void MainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
         int ylast = QString( listKeyVideoCodec.at( i ) ).lastIndexOf( ":" );
         QString encoder = QString(listKeyVideoCodec.at( i )).mid( yfirst + 1, ( ylast - 1 ) - yfirst );
         QString name = QString( listKeyVideoCodec.at( i ) ).mid( ylast + 1 );
-        ui->comboBoxVideoCodec->addItem( name, encoder );
+
+        GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
+        if ( !factory )
+        {
+            qDebug() << "Failed to find factory of type:" << encoder;
+        }
+        else
+        {
+            ui->comboBoxVideoCodec->addItem( name, encoder );
+        }
     }
 }
 
