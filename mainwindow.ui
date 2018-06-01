@@ -243,7 +243,7 @@
            </widget>
           </item>
           <item row="2" column="2">
-           <widget class="QLabel" name="label_3">
+           <widget class="QLabel" name="labelAudioCodec">
             <property name="text">
              <string>Audiocodec</string>
             </property>
