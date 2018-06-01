@@ -586,11 +586,23 @@ void MainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
     QStringList listSuffix = videoFormatsList.filter( suffix );
     QString stringSuffix = listSuffix.at( 0 );
     QStringList listKeys = stringSuffix.split( "," );
-    QStringList listKeyVideoCodec = listKeys.filter( "audiocodec" );
-    for ( int i = 0; i < listKeyVideoCodec.count(); i++ )
+    QStringList listKeyAudioCodec = listKeys.filter( "audiocodec" );
+    for ( int i = 0; i < listKeyAudioCodec.count(); i++ )
     {
-        int y = QString( listKeyVideoCodec.at( i ) ).lastIndexOf( ":" );
-        ui->comboBoxAudioCodec->addItem( QString( listKeyVideoCodec.at( i ) ).mid( y + 1 ) );// QString(listKeyVideoCodec.at(i)).mid(11) );
+        int yfirst = QString( listKeyAudioCodec.at( i ) ).indexOf( ":" );
+        int ylast = QString( listKeyAudioCodec.at( i ) ).lastIndexOf( ":" );
+        QString encoder = QString(listKeyAudioCodec.at( i )).mid( yfirst + 1, ( ylast - 1 ) - yfirst );
+        QString name = QString( listKeyAudioCodec.at( i ) ).mid( ylast + 1 );
+
+        GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
+        if ( !factory )
+        {
+            qDebug() << "Failed to find factory of type:" << encoder;
+        }
+        else
+        {
+            ui->comboBoxAudioCodec->addItem( name, encoder );
+        }
     }
 }
 
