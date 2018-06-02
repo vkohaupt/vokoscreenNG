@@ -493,6 +493,7 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
                                      << "suffix:avi"
                                      << "videomimetype:video/x-msvideo"
                                      << "audiomimetype:audio/x-msvideo"
+                                     << "videocodec:x264enc:x264"
                                      << "videocodec:vp8enc:vp8"
                                    );
 
