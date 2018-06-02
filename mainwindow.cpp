@@ -472,10 +472,7 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videomimetype:video/x-matroska"
                                     << "audiomimetype:audio/x-matroska"
                                     << "videocodec:x264enc:x264"
-              // funktioniert nicht << "videocodec:x265enc:x265"
-              // nicht getestet     << "videocodec:theoraenc:theora"
                                     << "videocodec:vp8enc:vp8"
-              // nicht getestet     << "videocodec:vp9enc:vp9"
                                     << "audiocodec:vorbisenc:vorbis"
                                     << "audiocodec:flacenc:flac"
                                     << "audiocodec:opusenc:opus"
@@ -487,19 +484,26 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
                                      << "videomimetype:video/webm"
                                      << "audiomimetype:audio/webm"
                                      << "videocodec:vp8enc:vp8"
-              // nicht getestet      << "videocodec:vp9enc:vp9"
                                      << "audiocodec:vorbisenc:vorbis"
                                      << "audiocodec:opusenc:opus"
+                                   );
+
+    QStringList AVI_QStringList = ( QStringList()
+                                     << "muxer:avimux"
+                                     << "suffix:avi"
+                                     << "videomimetype:video/x-msvideo"
+                                     << "audiomimetype:audio/x-msvideo"
+                                     << "videocodec:vp8enc:vp8"
                                    );
 
     videoFormatsList.clear();
     videoFormatsList.append( MKV_QStringList.join( ","  ) );
     videoFormatsList.append( WEBM_QStringList.join( ","  ) );
+    videoFormatsList.append( AVI_QStringList.join( "," ) );
 
 
     /*
         videoFormatsList.append( "mp4mux:mp4" );
-        videoFormatsList.append( "avimux:avi" );
         videoFormatsList.append( "asfmux:asf" );
         videoFormatsList.append( "flvmux:flv" );
     */
@@ -643,15 +647,10 @@ QString MainWindow::Vk_get_Videocodec_Encoder()
 
     if ( encoder == "vp8enc" )
     {
-/*        self.videnc.set_property("cpu-used", 2)
-        self.videnc.set_property("end-usage", "vbr")
-        self.videnc.set_property("target-bitrate", 800000000)
-        self.videnc.set_property("static-threshold", 1000)
-        self.videnc.set_property("token-partitions", 2)
-        self.videnc.set_property("max-quantizer", 30)
-        self.videnc.set_property("threads", self.cores)
-*/
-        value = "vp8enc cpu-used=2 end-usage=vbr target-bitrate=800000000 static-threshold=1000 token-partitions=2 max-quantizer=30 threads=4";
+//        value = "vp8enc cpu-used=8 end-usage=vbr target-bitrate=800000000 static-threshold=1000 token-partitions=1 min_quantizer=21 max-quantizer=21 threads=4";
+        //value = "vp8enc cpu-used=4 end-usage=vbr min_quantizer=10 max-quantizer=10 threads=4";
+        //value = "vp8enc min_quantizer=10 max_quantizer=10 cpu-used=2 deadline=1000000 threads=2";
+        value = "vp8enc min_quantizer=20 max_quantizer=20 cpu-used=4 deadline=1000000 threads=4";
     }
 
     return value;
@@ -732,16 +731,17 @@ void MainWindow::slot_Start()
     VK_PipelineList << "videorate";
     VK_PipelineList << Vk_get_Videocodec_Encoder();
 
-    QString device;
+    QString audioDevice;
     QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContents->findChildren<QCheckBox *>();
     for ( int i = 0; i < listQCheckBox.count(); i++ )
     {
         if ( listQCheckBox.at(i)->checkState() == Qt::Checked )
         {
-            device = listQCheckBox.at(i)->accessibleName();
+            audioDevice = listQCheckBox.at(i)->accessibleName();
         }
     }
 
+    // Audiosystem is Pulse, Alsa, etc.
     QString audioSystem;
     if ( ui->radioButtonPulse->isChecked() )
     {
@@ -752,12 +752,12 @@ void MainWindow::slot_Start()
         audioSystem = ui->radioButtonAlsa->accessibleName();
     }
 
-    if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( device > "" ) )
+    if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( !audioDevice.isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
     {
-        VK_PipelineList << QString( "mux. ").append( audioSystem ).append( " device=" ).append( device );
+        VK_PipelineList << QString( "mux. ").append( audioSystem ).append( " device=" ).append( audioDevice );
         VK_PipelineList << "audioconvert";
         VK_PipelineList << "audiorate";
-        VK_PipelineList << "voaacenc";
+        VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
         VK_PipelineList << "queue flush-on-eos=true";
     }
 
