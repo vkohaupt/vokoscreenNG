@@ -45,6 +45,8 @@ private:
     void VK_Supported_Formats_And_Codecs();
     void VK_Check_is_Format_available();
     void VK_set_available_Formats_in_Combox();
+    QString VK_get_AudioDevice();
+    QString VK_get_AudioSystem();
 
 
 private slots:

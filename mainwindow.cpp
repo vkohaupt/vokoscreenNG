@@ -614,28 +614,6 @@ void MainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
 }
 
 
-QString MainWindow::VK_getMuxer()
-{
-    QString device;
-    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContents->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listQCheckBox.count(); i++ )
-    {
-        if ( listQCheckBox.at(i)->checkState() == Qt::Checked )
-        {
-            device = listQCheckBox.at(i)->accessibleName();
-        }
-    }
-
-    QString value = ui->comboBoxFormat->currentData().toString();
-    if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( device > "" ) )
-    {
-        value = "mux. " + ui->comboBoxFormat->currentData().toString() + " name=mux";
-    }
-
-    return value;
-}
-
-
 QString MainWindow::Vk_get_Videocodec_Encoder()
 {
     QString value;
@@ -711,15 +689,51 @@ void MainWindow::slot_startCounter( bool value )
 }
 
 
-void MainWindow::slot_Start()
+QString MainWindow::VK_get_AudioDevice()
 {
-    GstElementFactory *factory = gst_element_factory_find( "ximagesrc" );
-    if ( !factory )
+    QString audioDevice;
+    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContents->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listQCheckBox.count(); i++ )
     {
-        qDebug() << "Failed to find factory of type ximagesrc";
-        return;
+        if ( listQCheckBox.at(i)->checkState() == Qt::Checked )
+        {
+            audioDevice = listQCheckBox.at(i)->accessibleName();
+        }
+    }
+    return audioDevice;
+}
+
+
+// Audiosystem is Pulse, Alsa, etc.
+QString MainWindow::VK_get_AudioSystem()
+{
+    QString audioSystem;
+    if ( ui->radioButtonPulse->isChecked() )
+    {
+        audioSystem = ui->radioButtonPulse->accessibleName();
+    }
+    if ( ui->radioButtonAlsa->isChecked() )
+    {
+        audioSystem = ui->radioButtonAlsa->accessibleName();
+    }
+    return audioSystem;
+}
+
+
+QString MainWindow::VK_getMuxer()
+{
+    QString value = ui->comboBoxFormat->currentData().toString();
+    if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( !VK_get_AudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
+    {
+        value = "mux. " + ui->comboBoxFormat->currentData().toString() + " name=mux";
     }
 
+    return value;
+}
+
+
+void MainWindow::slot_Start()
+{
     QString filename = "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
     QString path = ui->lineEditVideoPath->text();
 
@@ -731,30 +745,9 @@ void MainWindow::slot_Start()
     VK_PipelineList << "videorate";
     VK_PipelineList << Vk_get_Videocodec_Encoder();
 
-    QString audioDevice;
-    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContents->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listQCheckBox.count(); i++ )
+    if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( !VK_get_AudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
     {
-        if ( listQCheckBox.at(i)->checkState() == Qt::Checked )
-        {
-            audioDevice = listQCheckBox.at(i)->accessibleName();
-        }
-    }
-
-    // Audiosystem is Pulse, Alsa, etc.
-    QString audioSystem;
-    if ( ui->radioButtonPulse->isChecked() )
-    {
-        audioSystem = ui->radioButtonPulse->accessibleName();
-    }
-    if ( ui->radioButtonAlsa->isChecked() )
-    {
-        audioSystem = ui->radioButtonAlsa->accessibleName();
-    }
-
-    if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( !audioDevice.isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
-    {
-        VK_PipelineList << QString( "mux. ").append( audioSystem ).append( " device=" ).append( audioDevice );
+        VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device=" ).append( VK_get_AudioDevice() );
         VK_PipelineList << "audioconvert";
         VK_PipelineList << "audiorate";
         VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
