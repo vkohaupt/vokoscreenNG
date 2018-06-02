@@ -518,14 +518,16 @@ void MainWindow::VK_Check_is_Format_available()
     {
         QString stringAllKeys = videoFormatsList.at( x );
         QStringList listKeys = stringAllKeys.split( "," );
-        QStringList listKey = listKeys.filter( "muxer");
-        GstElementFactory *factory = gst_element_factory_find( QString( listKey.at( 0 ) ).mid( 6 ).toLatin1() );
+        QStringList listKey = listKeys.filter( "muxer" );
+        const gchar *muxer = QString( listKey.at( 0 ) ).section( ":", 1 ).toLatin1();
+        GstElementFactory *factory = gst_element_factory_find( muxer );
         if ( !factory )
         {
-            qDebug() << "Failed to find factory of type:" << QString( listKey.at( 0 ) ).mid( 6 ).toLatin1();
+            qDebug().noquote() << "[vokoscren] Fail Muxer not available:" << muxer;
         }
         else
         {
+            qDebug().noquote() << "[vokoscren] Muxer available:" << muxer;
             tempList << videoFormatsList.at( x );
         }
     }
@@ -625,9 +627,6 @@ QString MainWindow::Vk_get_Videocodec_Encoder()
 
     if ( encoder == "vp8enc" )
     {
-//        value = "vp8enc cpu-used=8 end-usage=vbr target-bitrate=800000000 static-threshold=1000 token-partitions=1 min_quantizer=21 max-quantizer=21 threads=4";
-        //value = "vp8enc cpu-used=4 end-usage=vbr min_quantizer=10 max-quantizer=10 threads=4";
-        //value = "vp8enc min_quantizer=10 max_quantizer=10 cpu-used=2 deadline=1000000 threads=2";
         value = "vp8enc min_quantizer=20 max_quantizer=20 cpu-used=4 deadline=1000000 threads=4";
     }
 
@@ -760,6 +759,18 @@ void MainWindow::slot_Start()
     QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Pipe );
     qDebug() << "[vokoscreen] Start record with:" << VK_Pipeline;
     pipeline = gst_parse_launch( VK_Pipeline.toLatin1(), &error );
+
+    // Start playing
+    GstStateChangeReturn ret;
+    ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
+    if ( ret == GST_STATE_CHANGE_FAILURE )
+    {
+        g_printerr("[vokoscreen] Unable to set the pipeline to the playing state.\n");
+        gst_object_unref( pipeline );
+        return;
+    }
+}
+
 /*
     g_print( error->message );
 
@@ -774,17 +785,6 @@ void MainWindow::slot_Start()
         g_print("fps-measurements connected\n");
     }
 */
-
-    // Start playing
-    GstStateChangeReturn ret;
-    ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
-    if (ret == GST_STATE_CHANGE_FAILURE)
-    {
-        g_printerr ("[vokoscreen] Unable to set the pipeline to the playing state.\n");
-        gst_object_unref (pipeline);
-        return;
-    }
-}
 
 
 void MainWindow::slot_Stop()
