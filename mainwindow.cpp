@@ -524,11 +524,11 @@ void MainWindow::VK_Check_is_Format_available()
         GstElementFactory *factory = gst_element_factory_find( muxer );
         if ( !factory )
         {
-            qDebug().noquote() << "[vokoscren] Fail Muxer not available:" << muxer;
+            qDebug().noquote() << "[vokoscreen] Fail Muxer not available:" << muxer;
         }
         else
         {
-            qDebug().noquote() << "[vokoscren] Muxer available:" << muxer;
+            qDebug().noquote() << "[vokoscreen] Muxer available:" << muxer;
             tempList << videoFormatsList.at( x );
         }
     }
@@ -550,13 +550,12 @@ void MainWindow::VK_set_available_Formats_in_Combox()
 
         QMimeDatabase mimeDatabase;
         QStringList listKeyVideoMimetype = listKeys.filter( "videomimetype" );
-        int y = QString( listKeyVideoMimetype.at( 0 ) ).indexOf( ":" );
-        QMimeType mimetype = mimeDatabase.mimeTypeForName( listKeyVideoMimetype.at( 0 ).mid( y + 1 ) );
+        QMimeType mimetype = mimeDatabase.mimeTypeForName( QString( listKeyVideoMimetype.at( 0 ) ).section( ":", 1 ) );
         QIcon icon = QIcon::fromTheme( mimetype.iconName(), QIcon( ":/pictures/videooptionen.png" ) );
 
-        ui->comboBoxFormat->addItem( icon,
-                                     QString( listKeySuffix.at( 0 ) ).mid( 7 ),
-                                     QString( listKeyMuxer.at( 0 ) ).mid( 6 ) );
+        ui->comboBoxFormat->addItem( QIcon::fromTheme( mimetype.iconName(), QIcon( ":/pictures/videooptionen.png" ) ),
+                                     QString( listKeySuffix.at( 0 ) ).section( ":", 1 ),
+                                     QString( listKeyMuxer.at( 0 ) ).section( ":", 1 ) );
     }
 }
 
@@ -571,18 +570,16 @@ void MainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
     QStringList listKeyVideoCodec = listKeys.filter( "videocodec" );
     for ( int i = 0; i < listKeyVideoCodec.count(); i++ )
     {
-        int yfirst = QString( listKeyVideoCodec.at( i ) ).indexOf( ":" );
-        int ylast = QString( listKeyVideoCodec.at( i ) ).lastIndexOf( ":" );
-        QString encoder = QString(listKeyVideoCodec.at( i )).mid( yfirst + 1, ( ylast - 1 ) - yfirst );
-        QString name = QString( listKeyVideoCodec.at( i ) ).mid( ylast + 1 );
-
+        QString encoder = QString( listKeyVideoCodec.at( i ) ).section( ":", 1, 1 );
+        QString name =    QString( listKeyVideoCodec.at( i ) ).section( ":", 2, 2 );
         GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
         if ( !factory )
         {
-            qDebug() << "Failed to find factory of type:" << encoder;
+            qDebug().noquote() << "[vokoscreen] Fail video encoder not available:" << encoder;
         }
         else
         {
+            qDebug().noquote() << "[vokoscreen] Video encoder avalaible:" << encoder;
             ui->comboBoxVideoCodec->addItem( name, encoder );
         }
     }
@@ -599,21 +596,20 @@ void MainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
     QStringList listKeyAudioCodec = listKeys.filter( "audiocodec" );
     for ( int i = 0; i < listKeyAudioCodec.count(); i++ )
     {
-        int yfirst = QString( listKeyAudioCodec.at( i ) ).indexOf( ":" );
-        int ylast = QString( listKeyAudioCodec.at( i ) ).lastIndexOf( ":" );
-        QString encoder = QString(listKeyAudioCodec.at( i )).mid( yfirst + 1, ( ylast - 1 ) - yfirst );
-        QString name = QString( listKeyAudioCodec.at( i ) ).mid( ylast + 1 );
-
+        QString encoder = QString( listKeyAudioCodec.at( i ) ).section( ":", 1, 1 );
+        QString name =    QString( listKeyAudioCodec.at( i ) ).section( ":", 2, 2 );
         GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
         if ( !factory )
         {
-            qDebug() << "Failed to find factory of type:" << encoder;
+            qDebug().noquote() << "[vokoscreen] Fail audio encoder not available:" << encoder;
         }
         else
         {
+            qDebug().noquote() << "[vokoscreen] Audio encoder avalaible:" << encoder;
             ui->comboBoxAudioCodec->addItem( name, encoder );
         }
     }
+    qDebug( " " );
 }
 
 
