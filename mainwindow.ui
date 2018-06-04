@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>530</width>
-    <height>252</height>
+    <width>554</width>
+    <height>246</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -58,7 +58,11 @@
            </widget>
           </item>
           <item row="0" column="2">
-           <widget class="QComboBox" name="comboBoxScreen"/>
+           <widget class="QComboBox" name="comboBoxScreen">
+            <property name="styleSheet">
+             <string notr="true">test123::url(:/pictures/novideoplayer.png)</string>
+            </property>
+           </widget>
           </item>
           <item row="3" column="0">
            <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -150,8 +154,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>494</width>
-             <height>117</height>
+             <width>518</width>
+             <height>111</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -275,19 +279,6 @@
           </property>
          </widget>
         </item>
-        <item>
-         <spacer name="verticalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="tabMisc">
@@ -297,16 +288,6 @@
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
          <layout class="QGridLayout" name="gridLayoutMisc">
-          <item row="0" column="2">
-           <widget class="QToolButton" name="PushButtonVideoPath">
-            <property name="text">
-             <string notr="true">...</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <layout class="QVBoxLayout" name="verticalLayout_6"/>
-          </item>
           <item row="0" column="0">
            <widget class="QLabel" name="LabelVideoPath">
             <property name="text">
@@ -321,6 +302,13 @@
             </property>
             <property name="readOnly">
              <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QToolButton" name="PushButtonVideoPath">
+            <property name="text">
+             <string notr="true">...</string>
             </property>
            </widget>
           </item>
@@ -345,6 +333,17 @@
        <attribute name="title">
         <string notr="true"/>
        </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <item>
+         <widget class="QWidget" name="widget_2" native="true">
+          <layout class="QVBoxLayout" name="verticalLayout_11">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_6"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>

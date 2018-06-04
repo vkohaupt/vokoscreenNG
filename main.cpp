@@ -2,6 +2,7 @@
 #include <QApplication>
 #include <QTranslator>
 #include <QLibraryInfo>
+#include <QStyleFactory>
 
 #include <gst/gst.h>
 

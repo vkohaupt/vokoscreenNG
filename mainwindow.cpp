@@ -116,7 +116,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     qDebug().noquote() << VK_GStreamer_Version();
 
     qDebug() << gst_version_string ();
+/*
+    QStringList list;
+    list.append( "/home/vk/Dokumente/vokoscreenGST/breeze-icons/" );
+    QIcon::setThemeSearchPaths( list );
 
+    ui->tabWidget->setTabIcon( 0, QIcon::fromTheme( "vi", QIcon( "/home/vk/Dokumente/vokoscreenGST/breeze-icons/icons/devices/64/camera-web.svg" ) ) );
+*/
     ui->tabWidget->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
     makeAndSetValidIcon( 0 );
 
@@ -226,12 +232,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     VK_Check_is_Format_available();
     VK_set_available_Formats_in_Combox();
 
-/*
+
     QDesktopWidget *desk = QApplication::desktop();
     connect( desk, SIGNAL( screenCountChanged(int) ), SLOT( slot_screenCountChanged( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          SLOT( slot_screenCountChanged( int ) ) );
     emit desk->screenCountChanged(0);
-*/
+
 }
 
 
