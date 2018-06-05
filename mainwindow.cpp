@@ -113,9 +113,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     ui->setupUi(this);
 
-    qDebug().noquote() << VK_GStreamer_Version();
-
-    qDebug() << gst_version_string ();
+    qDebug() << "[vokoscreen]" << gst_version_string ();
 /*
     QStringList list;
     list.append( "/home/vk/Dokumente/vokoscreenGST/breeze-icons/" );
@@ -290,28 +288,6 @@ void MainWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
     emit signal_close();
-}
-
-
-QString MainWindow::VK_GStreamer_Version()
-{
-    uint major, minor, micro, nano;
-    QString nano_str;
-
-    gst_version(&major, &minor, &micro, &nano);
-
-    if (nano == 1)
-      nano_str = "(CVS)";
-    else if (nano == 2)
-      nano_str = "(Prerelease)";
-    else
-      nano_str = "";
-
-    QString gstrVersion = QString::number( major ).append( "." )
-                 .append( QString::number( minor)).append( "." )
-                 .append( QString::number( micro))
-                 .append( nano_str );
-    return gstrVersion;
 }
 
 
