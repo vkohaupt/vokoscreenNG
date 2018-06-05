@@ -1,0 +1,52 @@
+<svg width="48" xmlns="http://www.w3.org/2000/svg" height="48">
+ <defs>
+  <linearGradient id="a" y1="543.8" x1="434.57" y2="503.8" gradientUnits="userSpaceOnUse" x2="384.57" gradientTransform="matrix(.6875 0 0 .9-253.35-430.33)">
+   <stop stop-color="#343b40"/>
+   <stop offset="1" stop-color="#555e63"/>
+  </linearGradient>
+  <linearGradient id="b" y1="-3.547" x1="52.47" y2="47.44" gradientUnits="userSpaceOnUse" x2="13.75" gradientTransform="matrix(.64568 0 0-.608 6.122 60.844)">
+   <stop stop-color="#efefef"/>
+   <stop offset="1" stop-color="#fbfbfb"/>
+  </linearGradient>
+  <linearGradient id="c" y1="42.995" x1="-3.01" y2="7.995" gradientUnits="userSpaceOnUse" x2="-29.01" gradientTransform="translate(40.02 17.01)">
+   <stop stop-color="#317ac2"/>
+   <stop offset="1" stop-color="#36a5e6"/>
+  </linearGradient>
+  <radialGradient cx="22.71" cy="41.662" id="d" r="14" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.14358-.95295.49336.59205-19.376 36.688)">
+   <stop stop-color="#ffffff"/>
+   <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+  </radialGradient>
+ </defs>
+ <g transform="translate(0-16)">
+  <g color="#000000">
+   <path fill="url(#c)" stroke-width=".2" d="m39.999 19l.001 42h-29.999l-.001-42z"/>
+   <path fill="#545772" d="m9 41h3v3h-3v-3"/>
+  </g>
+  <path fill="url(#b)" d="m12 59v-38h26v38z"/>
+  <g color="#000000">
+   <path opacity=".832" fill="url(#a)" d="m33 30.996l-8 .004-4.441 7.691-1.555-2.695-1.958.097v1h1.428l2.133 3.693.531-1.095 4.443-7.695 7.42.004zm-5 3c-1.662 0-3 1.338-3 3 0 1.662 1.338 3 3 3 .773 0 1.469-.298 2-.775v.775h1v-6h-1v.775c-.531-.477-1.227-.775-2-.775m0 1c1.108 0 2 .892 2 2 0 1.108-.892 2-2 2-1.108 0-2-.892-2-2 0-1.108.892-2 2-2m-10.945 6.087c-.006 0-.01.223-.01.5 0 .277.004.5.01.5l15.935-.097c.006 0 .01-.223.01-.5 0-.277-.004-.5-.01-.5zm5.945 1.913v1h4v-1z"/>
+   <g fill="#545772">
+    <path d="m9 26h2.999v3h-3l.001-3"/>
+    <path d="m9 31h2.999v3h-3l.001-3"/>
+    <path d="m9 36h3v3h-3v-3"/>
+    <path d="m12 46v3h-2.999l-.001-3"/>
+    <path d="m9 51h2.999l-.001 3h-2.999l.001-3"/>
+    <path d="m8.999 56h3v3h-3"/>
+    <path d="m9 21h2.999v3h-3l.001-3"/>
+   </g>
+   <path opacity=".28" fill="#333333" d="m38 21l2 2v38h-26l-2-2h26z"/>
+   <g fill="#545772">
+    <path d="m9 26h2v3h-2l.001-3"/>
+    <path d="m9 36h2v3h-2l.001-3"/>
+    <path d="m9 46h2v3h-2l.001-3"/>
+    <path d="m9 56h2v3h-2l.001-3"/>
+    <path d="m9 31h2v3h-2l.001-3"/>
+    <path d="m9 41h2v3h-2l.001-3"/>
+    <path d="m9 51h2v3h-2l.001-3"/>
+    <path d="m9 21h1v38h-1"/>
+    <path d="m9 21h2v3h-2l.001-3"/>
+   </g>
+   <path opacity=".742" fill="url(#d)" fill-rule="evenodd" stroke-width=".2" d="m40 19v5l-28 24v-29z"/>
+  </g>
+ </g>
+</svg>

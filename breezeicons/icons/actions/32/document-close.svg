@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+ <g fill="#da4453">
+  <path d="m6 4v24h11v-1h-10v-22h11v7h7v7h1v-8l-7-7h-1z"/>
+  <path color-rendering="auto" shape-rendering="auto" color-interpolation-filters="linearRGB" image-rendering="auto" fill-rule="evenodd" text-rendering="auto" color-interpolation="sRGB" color="#000" d="m18 20.707l3.293 3.293-3.293 3.293c.013.025.707.707.707.707l3.293-3.293 3.293 3.293.707-.707-3.293-3.293 3.293-3.293-.707-.707-3.293 3.293-3.293-3.293z"/>
+ </g>
+</svg>

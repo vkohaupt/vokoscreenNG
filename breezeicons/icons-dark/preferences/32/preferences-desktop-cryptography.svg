@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="32" version="1.1" xmlns="http://www.w3.org/2000/svg" height="32" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+ <defs id="defs5455">
+  <linearGradient inkscape:collect="always" id="linearGradient4303-2">
+   <stop style="stop-color:#c6cdd1" id="stop4305-6"/>
+   <stop offset="1" style="stop-color:#e0e5e7" id="stop4307-5"/>
+  </linearGradient>
+  <linearGradient inkscape:collect="always" id="linearGradient4903">
+   <stop style="stop-color:#eef1f2" id="stop4905"/>
+   <stop offset="1" style="stop-color:#f9fafb" id="stop4907"/>
+  </linearGradient>
+  <linearGradient inkscape:collect="always" id="linearGradient4227-9">
+   <stop style="stop-color:#292c2f" id="stop4229-5"/>
+   <stop offset="1" style="stop-opacity:0" id="stop4231-6"/>
+  </linearGradient>
+  <linearGradient inkscape:collect="always" xlink:href="#linearGradient4903" id="linearGradient4035" y1="38" y2="5" gradientUnits="userSpaceOnUse" x2="0" gradientTransform="matrix(0.7499999 0 0 0.78768837 382.57142 512.85956)"/>
+  <linearGradient inkscape:collect="always" xlink:href="#linearGradient4303-2" id="linearGradient4042" y1="543.79797" y2="503.798" gradientUnits="userSpaceOnUse" x2="0" gradientTransform="matrix(0.87499999 0 0 0.79999648 43.07149 112.76137)"/>
+  <linearGradient inkscape:collect="always" xlink:href="#linearGradient4227-9" id="linearGradient4363" y1="521.79803" x1="393.57144" y2="535.79797" x2="407.57144" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 -384.57143 -515.798)"/>
+ </defs>
+ <metadata id="metadata5458"/>
+ <g inkscape:label="Capa 1" inkscape:groupmode="layer" id="layer1" transform="matrix(1 0 0 1 -384.57143 -515.798)">
+  <flowRoot line-height="125%" style="letter-spacing:0;word-spacing:0;font-size:10;font-family:sans-serif" id="flowRoot4170" transform="matrix(1 0 0 1 389.57142 520.79805)">
+   <flowRegion id="flowRegion4172">
+    <rect width="27" x="22" y="3" height="15" id="rect4174"/>
+   </flowRegion>
+   <flowPara id="flowPara4176">Plasm</flowPara>
+  </flowRoot>
+  <rect width="27.999956" x="386.57147" y="515.79797" rx="0" height="31.999834" style="fill:url(#linearGradient4042)" id="rect4139"/>
+  <rect width="27.999956" x="386.57147" y="544.79797" height="2.999833" style="fill:#99a1a7" id="rect4188"/>
+  <rect width="27.999956" x="386.57147" y="546.79797" height="0.999835" style="fill:#737b81" id="rect4492"/>
+  <rect width="9.999992" x="394.57144" y="544.79797" height="2.999988" style="fill:#292c2e" id="rect4671"/>
+  <path inkscape:connector-curvature="0" style="fill:#292c2e" id="rect4673" d="m 407.57143,544.798 5,0 0,3 -5,0 z"/>
+  <path inkscape:connector-curvature="0" style="fill:url(#linearGradient4035)" id="rect4768" d="m 388.57143,516.798 0,4.72613 0,7.27387 c 1.53125,0 2,1.10767 2,2.5 0,1.39233 -0.57004,2.52725 -2,2.5 l 0,3 c 0,6.30151 12,5.99372 12,5.99372 l 7,0.006 5,-6 0,-3 -1,0 0,-5 1,0 0,-7.27387 0,-0.78769 0,-0.14307 0,-3.79537 -1.49999,0 -20.25001,0 z"/>
+  <path inkscape:connector-curvature="0" style="fill:#4c5154" id="rect4191" d="m 396.17142,545.798 0,1 6.48421,0 0,-1 -6.48421,0 z m 12.1579,0 0,1 2.43158,0 0,1 0.81053,0 0,-1 0,-1 -3.24211,0 z"/>
+  <rect width="9.999992" x="394.57144" y="546.79797" height="0.999814" style="fill:#202324" id="rect4194"/>
+  <rect width="5.00001" x="407.57144" y="546.79797" height="0.99996" style="fill:#202324" id="rect4196"/>
+  <path style="fill:url(#linearGradient4363);opacity:0.2;fill-rule:evenodd" id="path4355" d="M 16.800781 6.0996094 L 15 7 L 13 9 L 13 10 L 13 13 L 11 13 L 11 20 L 31 32 L 31 15 L 16.800781 6.0996094 z " transform="matrix(1 0 0 1 384.57143 515.798)"/>
+  <path inkscape:connector-curvature="0" style="fill:#4d4d4d" id="rect4119" d="m 390.57143,517.79797 c -0.1385,0 -0.25,0.1115 -0.25,0.25 0,0.1385 0.1115,0.25 0.25,0.25 0.1385,0 0.25,-0.1115 0.25,-0.25 0,-0.1385 -0.1115,-0.25 -0.25,-0.25 z m 1.75,0 -0.5,0.5 0.75,0.75 -0.25,0.25 -0.25,0.25 -0.25,0.25 0.5,0.5 0.25,-0.25 0.25,-0.25 0.25,-0.25 0.5,-0.5 z m -2.375,1.5 c -0.20775,0 -0.375,0.16725 -0.375,0.375 0,0.20775 0.16725,0.375 0.375,0.375 0.20775,0 0.375,-0.16725 0.375,-0.375 0,-0.20775 -0.16725,-0.375 -0.375,-0.375 z m 1.125,1.5 c -0.277,0 -0.5,0.223 -0.5,0.5 0,0.277 0.223,0.5 0.5,0.5 0.277,0 0.5,-0.223 0.5,-0.5 0,-0.277 -0.223,-0.5 -0.5,-0.5 z"/>
+  <rect width="6.00001" x="405.57144" y="517.79797" height="1" style="fill:#4d4d4d" id="rect4979"/>
+  <rect width="4.00002" x="407.57144" y="519.79797" height="1" style="fill:#4d4d4d" id="rect4981"/>
+  <path style="fill:#da4453" id="rect4136-1" d="M 16 6 C 14.338 6 13 7.338 13 9 L 13 10 L 13 13 L 12 13 L 11 13 L 11 13.75 L 11 20 L 21 20 L 21 13 L 19 13 L 19 9 C 19 7.338 17.662 6 16 6 z M 16 7 C 17.2465 7 18 7.5458 18 9 L 18 13 L 15 13 L 14 13 L 14 10 L 14 9 C 14 7.5458 14.75351 7 16 7 z M 12 14 L 20 14 L 20 19 L 12 19 L 12 14 z " transform="matrix(1 0 0 1 384.57143 515.798)"/>
+ </g>
+</svg>

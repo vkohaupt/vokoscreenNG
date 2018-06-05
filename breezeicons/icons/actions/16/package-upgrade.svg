@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs id="defs3051">
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#4d4d4d;
+      }
+      .ColorScheme-PositiveText {
+        color:#27ae60;
+      }
+      </style>
+  </defs>
+  <g transform="translate(-421.71-531.79)">
+ <path style="fill:currentColor;fill-opacity:1;stroke:none" 
+     d="m426.71 533.79c-.552 0-1 .448-1 1v2h-2v9h8v-1h-7v-7h10v2h1v-3h-2v-2c0-.552-.448-1-1-1zm0 1h6v2h-6z"
+     class="ColorScheme-Text"
+     />
+  <path d="m432.71 545.79v-3h1v1.5c.604-.455 1-1.181 1-2 0-1.385-1.115-1.5-2.5-1.5h-.5v-1h.5c1.939 0 3.5.561 3.5 2.5 0 .99-.405 1.868-1.063 2.5h1.063v1h-2z"   style="fill:currentColor;fill-opacity:1;stroke:none" 
+     class="ColorScheme-PositiveText"
+   />
+</g>
+</svg>

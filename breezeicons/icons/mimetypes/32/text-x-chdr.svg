@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="svg2"
+   height="32"
+   width="32"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="text-x-chdr.svg">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2560"
+     inkscape:window-height="1377"
+     id="namedview19"
+     showgrid="false"
+     inkscape:zoom="7.375"
+     inkscape:cx="16"
+     inkscape:cy="16"
+     inkscape:window-x="0"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <metadata
+     id="metadata39">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs4">
+    <path
+       d="m389.57 545.8v-28h15l7 7v21h-14z"
+       id="c" />
+  </defs>
+  <use
+     transform="translate(-384.57,-515.8)"
+     height="100%"
+     width="100%"
+     y="0"
+     x="0"
+     style="color:#000000;color-interpolation:sRGB;color-interpolation-filters:linearRGB;fill:#cf74e0;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;fill-opacity:1"
+     id="use21"
+     xlink:href="#c" />
+  <rect
+     transform="scale(1,-1)"
+     x="5.0000072"
+     y="-2.9999878"
+     width="15"
+     height="1"
+     id="rect25"
+     style="color:#000000;opacity:0.5;color-interpolation:sRGB;color-interpolation-filters:linearRGB;fill:#ffffff;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto" />
+  <rect
+     transform="scale(1,-1)"
+     x="5.0000072"
+     y="-29.999989"
+     width="22"
+     height="1"
+     id="rect27"
+     style="color:#000000;opacity:0.25;color-interpolation:sRGB;color-interpolation-filters:linearRGB;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto" />
+  <path
+     style="color:#000000;color-interpolation:sRGB;color-interpolation-filters:linearRGB;fill:#ffffff;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;fill-opacity:1;opacity:0.5"
+     id="path29"
+     d="M 27,9 20,2 20,9 Z" />
+  <path
+     d="m 20,9 7,7 0,-7 z"
+     id="path31"
+     style="opacity:0.1;fill:url(#b);fill-rule:evenodd" />
+  <use
+     transform="translate(-384.57,-515.8)"
+     xlink:href="#c"
+     id="use33"
+     style="fill:url(#a)"
+     x="0"
+     y="0"
+     width="100%"
+     height="100%" />
+  <path
+     d="m 13,10 0,12 1,0 0,-5 3,0 0,-1 -3,0 0,-6 z m 4,7 0,1 1,0 0,-1 z m 1,1 0,4 1,0 0,-4 z"
+     id="rect4139-2"
+     style="fill:#ffffff;fill-opacity:1" />
+</svg>

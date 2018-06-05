@@ -1,0 +1,64 @@
+<svg width="48" xmlns="http://www.w3.org/2000/svg" height="48" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="a" y1="540.42" x1="424.2" y2="508.44" x2="392.23" gradientUnits="userSpaceOnUse" gradientTransform="translate(-384.57-499.8)">
+   <stop stop-color="#eef1f2"/>
+   <stop offset="1" stop-color="#f9fafb"/>
+  </linearGradient>
+  <linearGradient xlink:href="#a" id="b" x1="392.57" x2="402.57" gradientUnits="userSpaceOnUse"/>
+  <linearGradient id="c" y1="518.8" y2="526.8" x2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(-484.55 133.21)">
+   <stop/>
+   <stop offset="1" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient xlink:href="#c" id="d" y1="518.8" y2="526.8" x2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(.70711-.70711.70711.70711-237.46 425.82)"/>
+  <linearGradient xlink:href="#c" id="e" y1="518.8" y2="526.8" x2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(.70711-.70711.70711.70711-226.44 425.82)"/>
+  <linearGradient xlink:href="#c" id="f" y1="518.8" y2="526.8" x2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(-484.55 148.76)"/>
+  <linearGradient xlink:href="#c" id="g" y1="518.8" y2="526.8" x2="0" gradientUnits="userSpaceOnUse" gradientTransform="translate(-492.33 140.99)"/>
+  <linearGradient id="h" y1="521.8" x1="406.57" y2="515.82" x2="400.6" gradientUnits="userSpaceOnUse" gradientTransform="translate(22-11)">
+   <stop stop-color="#197cf1"/>
+   <stop offset="1" stop-color="#21c9fb"/>
+  </linearGradient>
+  <linearGradient xlink:href="#h" id="i" y1="521.8" x1="406.57" y2="515.82" x2="400.6" gradientUnits="userSpaceOnUse" gradientTransform="translate(22)"/>
+  <linearGradient id="j" y1="521.8" x1="406.57" y2="515.82" x2="400.6" gradientUnits="userSpaceOnUse" gradientTransform="translate(11)">
+   <stop stop-color="#da4453"/>
+   <stop offset="1" stop-color="#ff7336"/>
+  </linearGradient>
+  <linearGradient xlink:href="#h" id="k" y1="521.8" x1="406.57" y2="515.82" x2="400.6" gradientUnits="userSpaceOnUse" gradientTransform="translate(11-11)"/>
+  <linearGradient xlink:href="#h" id="l" y1="521.8" x1="406.57" y2="515.82" x2="400.6" gradientUnits="userSpaceOnUse"/>
+  <linearGradient xlink:href="#h" id="m" y1="521.8" x1="406.57" y2="515.82" x2="400.6" gradientUnits="userSpaceOnUse" gradientTransform="translate(11 11)"/>
+  <linearGradient xlink:href="#j" id="n" y1="521.8" x1="406.57" y2="515.82" x2="400.6" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 11)"/>
+  <linearGradient xlink:href="#c" id="o" y1="806.11" y2="811.81" x1="137.98" x2="143.68" gradientUnits="userSpaceOnUse"/>
+ </defs>
+ <g stroke-linejoin="round" color="#000000" stroke-width="3" transform="translate(-384.57-499.8)">
+  <g stroke-linecap="round">
+   <rect width="34" x="391.57" y="506.8" fill="#eff0f1" height="34"/>
+   <rect width="10" x="392.57" y="529.8" fill="url(#b)" height="10"/>
+  </g>
+  <path fill="url(#a)" d="m8 8v10h10v-10zm11 0v10h10v-10zm11 0v10h10v-10zm-22 11v10h10v-10zm11 0v10h10v-10zm11.266 0c-.147 0-.266.119-.266.266v9.469c0 .147.119.266.266.266h9.469c.147 0 .266-.119.266-.266v-9.469c0-.147-.119-.266-.266-.266zm-11.266 11v10h10v-10zm11 0v10h10v-10zm-13.854.646l-8.484 8.484.707.707 8.484-8.484z" transform="translate(384.57 499.8)"/>
+  <path fill="#3daefd" d="m404.94 520.44l-.707.707 8.485 8.485.707-.707z"/>
+  <rect width="7" x="-84.98" opacity=".2" y="651.51" fill="url(#c)" height="9" stroke-linecap="round" transform="rotate(-45)"/>
+  <path opacity=".2" fill="url(#d)" d="m414.55 506.8l-2.975 2.975 6 6.03 5-4-5-5z"/>
+  <g fill="#3daefd" stroke-linecap="round">
+   <rect width="12" x="413.57" y="506.8" height="1"/>
+   <rect width="1" x="424.57" y="507.8" height="7"/>
+  </g>
+  <path opacity=".2" fill="url(#e)" d="m425.57 506.8l-2.975 2.975 2.975 2.975z"/>
+  <g stroke-linecap="round">
+   <rect width="7" x="-84.98" opacity=".2" y="667.06" fill="url(#f)" height="9" transform="rotate(-45)"/>
+   <rect width="7" x="-92.76" opacity=".2" y="659.28" fill="url(#g)" height="9" transform="rotate(-45)"/>
+   <circle fill="url(#h)" cx="425.07" cy="507.3" r="3.5"/>
+  </g>
+  <path opacity=".2" fill="url(#o)" d="m425.57 517.8l-3 3 3 3z"/>
+  <g stroke-linecap="round">
+   <circle fill="url(#i)" cx="425.07" cy="518.3" r="3.5"/>
+   <circle fill="url(#j)" cx="414.07" cy="518.3" r="3.5"/>
+  </g>
+  <path fill="#3daefd" d="m412.72 508.44l.707.707-8.485 8.485-.707-.707z"/>
+  <g stroke-linecap="round">
+   <circle fill="url(#k)" cx="414.07" cy="507.3" r="3.5"/>
+   <circle fill="url(#l)" cx="403.07" cy="518.3" r="3.5"/>
+   <circle fill="url(#m)" cx="414.07" cy="529.3" r="3.5"/>
+   <circle fill="url(#n)" cx="403.07" cy="529.3" r="3.5"/>
+  </g>
+  <path fill="#3daefd" d="m424.72 518.44l.707.707-8.485 8.485-.707-.707z"/>
+ </g>
+</svg>

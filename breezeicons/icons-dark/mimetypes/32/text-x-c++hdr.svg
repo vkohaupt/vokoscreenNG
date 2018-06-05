@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="32"
+   height="32"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="text-x-c++hdr.svg">
+  <metadata
+     id="metadata43">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2560"
+     inkscape:window-height="1377"
+     id="namedview41"
+     showgrid="false"
+     inkscape:zoom="10.429825"
+     inkscape:cx="13.34522"
+     inkscape:cy="5.8200212"
+     inkscape:window-x="0"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <defs
+     id="defs4">
+    <path
+       id="c"
+       d="m389.57 545.8v-28h15l7 7v21h-14z" />
+  </defs>
+  <use
+     xlink:href="#c"
+     id="use21"
+     style="color:#000000;color-interpolation:sRGB;color-interpolation-filters:linearRGB;fill:#913d88;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;fill-opacity:1"
+     x="0"
+     y="0"
+     width="100%"
+     height="100%"
+     transform="translate(-384.57,-515.8)" />
+  <rect
+     style="color:#000000;opacity:0.25;color-interpolation:sRGB;color-interpolation-filters:linearRGB;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto"
+     id="rect27"
+     height="1"
+     width="22"
+     y="-29.999989"
+     x="5.0000072"
+     transform="scale(1,-1)" />
+  <path
+     d="M 27,9 20,2 20,9 Z"
+     id="path29"
+     inkscape:connector-curvature="0"
+     style="color:#000000;color-interpolation:sRGB;color-interpolation-filters:linearRGB;fill:#ffffff;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;fill-opacity:1;opacity:0.5" />
+  <path
+     inkscape:connector-curvature="0"
+     style="opacity:0.1;fill:url(#a);fill-rule:evenodd"
+     id="path31"
+     d="m 20,9 7,7 0,-7 z" />
+  <path
+     style="color:#000000;color-interpolation:sRGB;color-interpolation-filters:linearRGB;fill:#ffffff;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;fill-opacity:1;opacity:0.75"
+     d="m 11,13 0,3 -3,0 0,1 3,0 0,3 1,0 0,-3 3,0 0,-1 -3,0 0,-3 z"
+     id="path35"
+     inkscape:connector-curvature="0" />
+  <path
+     style="color:#000000;color-interpolation:sRGB;color-interpolation-filters:linearRGB;fill:#ffffff;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;fill-opacity:1;opacity:0.75"
+     d="m 20,13 0,3 -3,0 0,1 3,0 0,3 1,0 0,-3 3,0 0,-1 -3,0 0,-3 z"
+     id="path37"
+     inkscape:connector-curvature="0" />
+  <use
+     height="100%"
+     width="100%"
+     y="0"
+     x="0"
+     style="fill:url(#b)"
+     id="use39"
+     xlink:href="#c"
+     transform="translate(-384.57,-515.8)" />
+  <rect
+     style="color:#000000;opacity:0.5;color-interpolation:sRGB;color-interpolation-filters:linearRGB;fill:#ffffff;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto"
+     id="rect25"
+     height="1"
+     width="15"
+     y="-2.9999878"
+     x="5.0000072"
+     transform="scale(1,-1)" />
+</svg>
