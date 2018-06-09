@@ -48,6 +48,9 @@ private:
     QString VK_get_AudioDevice();
     QString VK_get_AudioSystem();
 
+    QString get_AudioDeviceString( GstDevice * device );
+    QStringList get_all_Audio_devices();
+
 
 private slots:
     void slot_preStart();

@@ -3,8 +3,6 @@
 #include "ui_mainwindow.h"
 #include "ui_QvkNoPlayerDialog.h"
 
-#include <gst/gst.h>
-
 #include <QDebug>
 #include <QDateTime>
 #include <QStandardPaths>
@@ -20,106 +18,146 @@
 // gstreamer-plugins-good-extra
 // libgstinsertbin-1_0-0
 
-#include <gst/gstprotection.h>
-#include <glib.h>
+#include <gst/gst.h>
 
-static gboolean my_bus_func (GstBus * bus, GstMessage * message, gpointer user_data)
+QString MainWindow::get_AudioDeviceString( GstDevice * device )
 {
-   Q_UNUSED(bus);
-   Q_UNUSED(user_data);
-   GstDevice *device;
-   gchar *name;
+  static const char *const ignored_propnames[] = { "name", "parent", "direction", "template", "caps", NULL };
+  GString *launch_line;
+  GstElement *element;
+  GstElement *pureelement;
+  GParamSpec **properties, *property;
+  GValue value = G_VALUE_INIT;
+  GValue pvalue = G_VALUE_INIT;
+  guint i, number_of_properties;
+  GstElementFactory *factory;
 
-   // https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/gstreamer-GstDeviceMonitor.html#gst-device-monitor-get-devices
-   // http://gstreamer-devel.966125.n4.nabble.com/Getting-names-and-description-of-the-quot-Source-quot-devices-td2293631.html
-   GstElement *pulsesrc;
-   g_object_set (G_OBJECT (pulsesrc), "device", device, NULL);
-   g_print("11111111111111111111111 %s\n", device);
+  element = gst_device_create_element( device, NULL );
 
-   switch (GST_MESSAGE_TYPE (message)) {
-     case GST_MESSAGE_DEVICE_ADDED:{
-       gst_message_parse_device_added (message, &device);
-       name = gst_device_get_display_name (device);
-       g_print("Device added: %s\n", name);
-       g_free (name);
-       gst_object_unref (device);
-       break; }
-     case GST_MESSAGE_DEVICE_REMOVED: {
-       gst_message_parse_device_removed (message, &device);
-       name = gst_device_get_display_name (device);
-       gchar *classes = gst_device_get_device_class (device); // Volker
-       g_print("Device removed: %s  %s\n", name, classes);       // Volker
-       g_free (name);
-       gst_object_unref (device);
-       break; }
-     default:
-       break;
-   }
+  if ( !element )
+    return NULL;
 
-   return G_SOURCE_CONTINUE;
+  factory = gst_element_get_factory( element );
+  if ( !factory )
+  {
+    gst_object_unref( element );
+    return NULL;
+  }
+
+  if ( !gst_plugin_feature_get_name( factory ) )
+  {
+    gst_object_unref( element );
+    return NULL;
+  }
+
+  pureelement = gst_element_factory_create( factory, NULL );
+
+  properties = g_object_class_list_properties( G_OBJECT_GET_CLASS( element ), &number_of_properties );
+  if ( properties )
+  {
+    for ( i = 0; i < number_of_properties; i++ )
+    {
+      gint j;
+      gboolean ignore = FALSE;
+      property = properties[i];
+
+      if ( ( property->flags & G_PARAM_READWRITE ) != G_PARAM_READWRITE )
+        continue;
+
+      for ( j = 0; ignored_propnames[j]; j++ )
+        if ( !g_strcmp0( ignored_propnames[j], property->name ) )
+          ignore = TRUE;
+
+      if ( ignore )
+        continue;
+
+      g_value_init( &value, property->value_type );
+      g_value_init( &pvalue, property->value_type );
+      g_object_get_property( G_OBJECT( element ), property->name, &value );
+      g_object_get_property( G_OBJECT( pureelement ), property->name, &pvalue );
+      if (gst_value_compare( &value, &pvalue ) != GST_VALUE_EQUAL )
+      {
+        gchar *valuestr = gst_value_serialize( &value );
+        if ( !valuestr )
+        {
+          GST_WARNING( "Could not serialize property %s:%s", GST_OBJECT_NAME( element ), property->name );
+          g_free( valuestr );
+          goto next;
+        }
+
+        launch_line = g_string_new( valuestr );
+
+        g_free( valuestr );
+      }
+
+    next:
+      g_value_unset( &value );
+      g_value_unset( &pvalue );
+    }
+    g_free( properties );
+  }
+
+  gst_object_unref( element );
+  gst_object_unref( pureelement );
+
+  QString string = g_string_free( launch_line, FALSE );
+  return string;
 }
 
 
-GstDeviceMonitor *setup_raw_video_source_device_monitor() // hier darf kein void als Paramter stehen wie im Beispiel vermerkt
+QStringList MainWindow::get_all_Audio_devices()
 {
    GstDeviceMonitor *monitor;
-   GstBus *bus;
    GstCaps *caps;
-
-   monitor = gst_device_monitor_new ();
-
-   bus = gst_device_monitor_get_bus (monitor);
-   gst_bus_add_watch (bus, my_bus_func, NULL);
-   gst_object_unref (bus);
-
-   caps = gst_caps_new_empty_simple ("audio/x-raw");
-   gst_device_monitor_add_filter (monitor, "Audio/Source", caps);
-   gst_caps_unref (caps);
-
-   // https://developer.gnome.org/programming-guidelines/stable/glist.html.en
-   GList *list = gst_device_monitor_get_devices(monitor); //VK
-   GList *l;
-   gchar *name;
    GstDevice *device;
+   gchar *name;
+   GList *iterator = NULL;
+   GList *list = NULL;
+   QString stringDevice;
+   QStringList stringList;
 
-   g_print( "222222222222222222222222222222\n");
-   for (l = list; l != NULL; l = l->next)
-     {
-       gpointer element_data = l->data;
-       //name = gst_device_get_display_name( element_data );
-       /* Do something with @element_data. */
-     }
+   monitor = gst_device_monitor_new();
+   caps = gst_caps_new_empty_simple( "audio/x-raw" );
+   gst_device_monitor_add_filter( monitor, "Audio/Source", caps );
 
-   gst_device_monitor_start (monitor);
-   g_print( "44444444444444444444444444444444\n");
+   list = gst_device_monitor_get_devices( monitor );
+   for ( iterator = list; iterator; iterator = iterator->next )
+   {
+       device = (GstDevice*)iterator->data;
+       name = gst_device_get_display_name( device );
+       //g_print("%s   %s\n", get_launch_line( device ), name );
+       stringDevice = get_AudioDeviceString( device );
+       stringDevice.append( " ::: " ).append( name );
+       stringList.append( stringDevice );
+   }
 
-   return monitor;
+   return stringList;
 }
 
 
-void cb_fps_measurements(GstElement *fpsdisplaysink,
-                         gdouble arg0,
-                         gdouble arg1,
-                         gdouble arg2,
-                         gpointer user_data)
-{
-       g_print("dropped: %.0f, current: %.2f, average: %.2f\n", arg1, arg0, arg2);
-}
-
-
+#include <QStyleFactory>
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
-//    setup_raw_video_source_device_monitor();
+    qDebug() << get_all_Audio_devices();
 
     ui->setupUi(this);
 
     qDebug() << "[vokoscreen]" << gst_version_string ();
+
 /*
     QStringList list;
     list.append( "/home/vk/Dokumente/vokoscreenGST/breeze-icons/" );
     QIcon::setThemeSearchPaths( list );
 
     ui->tabWidget->setTabIcon( 0, QIcon::fromTheme( "vi", QIcon( "/home/vk/Dokumente/vokoscreenGST/breeze-icons/icons/devices/64/camera-web.svg" ) ) );
+
+    const QStringList styles = QStyleFactory::keys();
+    for(QString s : styles)
+    {
+        qDebug() << s;
+    }
+
+    ui->pushButtonStart->setIcon( ui->pushButtonStart->style()->standardIcon( QStyle::SP_MediaVolume ) );
 */
     ui->tabWidget->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
     makeAndSetValidIcon( 0 );
@@ -343,18 +381,13 @@ void MainWindow::slot_clearVerticalLayoutAudioDevices( bool value )
 void MainWindow::slot_getPulsesDevices( bool value )
 {
     Q_UNUSED(value);
-    QStringList pulseDeviceStringList;
-    foreach (const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
+    QStringList list = get_all_Audio_devices();
+    for ( int i = 0; i < list.count(); i++ )
     {
-        if ( deviceInfo.deviceName().contains("alsa") == true )
-        {
-            pulseDeviceStringList << deviceInfo.deviceName();
-            QCheckBox *checkboxAudioDevice = new QCheckBox();
-            checkboxAudioDevice->setText( deviceInfo.deviceName() );
-            checkboxAudioDevice->setAccessibleName( deviceInfo.deviceName() );
-            checkboxAudioDevice->setObjectName( "checkboxAudioDevice" + deviceInfo.deviceName() );
-            ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
-        }
+        QCheckBox *checkboxAudioDevice = new QCheckBox();
+        checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
+        checkboxAudioDevice->setAccessibleName( QString( list.at(i) ).section( " ::: ", 0, 0 ) );
+        ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
     }
 }
 
