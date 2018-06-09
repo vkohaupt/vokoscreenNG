@@ -138,8 +138,6 @@ QStringList MainWindow::get_all_Audio_devices()
 #include <QStyleFactory>
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
-    qDebug() << get_all_Audio_devices();
-
     ui->setupUi(this);
 
     qDebug() << "[vokoscreen]" << gst_version_string ();
