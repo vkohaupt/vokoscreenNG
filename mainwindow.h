@@ -73,6 +73,9 @@ private slots:
     void slot_set_available_VideoCodecs_in_Combox( QString suffix );
     void slot_set_available_AudioCodecs_in_Combox( QString suffix );
 
+    void slot_audioHelp();
+
+
 signals:
     void signal_close();
 

@@ -157,6 +157,19 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     ui->pushButtonStart->setIcon( ui->pushButtonStart->style()->standardIcon( QStyle::SP_MediaVolume ) );
 */
+
+    GstElementFactory *factory = gst_element_factory_find( "pulsesrc" );
+    if ( !factory )
+    {
+        qDebug().noquote() << "[vokoscreen] Fail audio encoder not available:";
+    }
+    else
+    {
+        qDebug().noquote() << "[vokoscreen] Audio encoder avalaible:";
+    }
+
+
+
     ui->tabWidget->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
     makeAndSetValidIcon( 0 );
 
@@ -233,6 +246,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
 
     // Tab 2 Audio
+    ui->toolButtonAudioHelp->setIcon( ui->pushButtonStart->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    connect( ui->toolButtonAudioHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioHelp() ) );;
     ui->radioButtonPulse->setAccessibleName( "pulsesrc" );
     ui->radioButtonAlsa->setAccessibleName( "alsasrc" );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), this,                      SLOT( slot_audioIconOnOff( bool ) ) );
@@ -241,12 +256,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->labelAudioCodec,       SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->comboBoxAudioCodec,    SLOT( setEnabled( bool ) ) );
-    ui->checkBoxAudioOnOff->click();
 
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), this, SLOT( slot_clearVerticalLayoutAudioDevices( bool ) ) );
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), this, SLOT( slot_getPulsesDevices( bool ) ) );
     connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), this, SLOT( slot_clearVerticalLayoutAudioDevices( bool ) ) );
     connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), this, SLOT( slot_getAlsaDevices( bool ) ) );
+
+    // Pulse is Standard. If no pulsedevice found change to alsa
+    ui->radioButtonPulse->click();
 
     // Tab 3 Codec
     ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
@@ -278,6 +295,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+
+void MainWindow::slot_audioHelp()
+{
+    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/3.0/audio.html", QUrl::TolerantMode ) );
 }
 
 
@@ -380,12 +403,20 @@ void MainWindow::slot_getPulsesDevices( bool value )
 {
     Q_UNUSED(value);
     QStringList list = get_all_Audio_devices();
-    for ( int i = 0; i < list.count(); i++ )
+    if ( !list.empty() )
     {
-        QCheckBox *checkboxAudioDevice = new QCheckBox();
-        checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
-        checkboxAudioDevice->setAccessibleName( QString( list.at(i) ).section( " ::: ", 0, 0 ) );
-        ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
+        for ( int i = 0; i < list.count(); i++ )
+        {
+            QCheckBox *checkboxAudioDevice = new QCheckBox();
+            checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
+            checkboxAudioDevice->setAccessibleName( QString( list.at(i) ).section( " ::: ", 0, 0 ) );
+            ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
+        }
+    }
+    else
+    {
+        ui->radioButtonPulse->setEnabled( false );
+        ui->radioButtonAlsa->click();
     }
 }
 

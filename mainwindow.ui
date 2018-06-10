@@ -18,7 +18,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -142,6 +142,13 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QToolButton" name="toolButtonAudioHelp">
+            <property name="text">
+             <string>Help</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </item>
         <item>
@@ -155,7 +162,7 @@
              <x>0</x>
              <y>0</y>
              <width>518</width>
-             <height>111</height>
+             <height>99</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
