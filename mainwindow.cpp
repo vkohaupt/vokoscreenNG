@@ -158,18 +158,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->pushButtonStart->setIcon( ui->pushButtonStart->style()->standardIcon( QStyle::SP_MediaVolume ) );
 */
 
-    GstElementFactory *factory = gst_element_factory_find( "pulsesrc" );
-    if ( !factory )
-    {
-        qDebug().noquote() << "[vokoscreen] Fail audio encoder not available:";
-    }
-    else
-    {
-        qDebug().noquote() << "[vokoscreen] Audio encoder avalaible:";
-    }
-
-
-
     ui->tabWidget->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
     makeAndSetValidIcon( 0 );
 
