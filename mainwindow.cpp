@@ -260,7 +260,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
 
     // Tab 4 Misc
-    videoFileSystemWatcher = new QFileSystemWatcher();
+    videoFileSystemWatcher = new QFileSystemWatcher( (QStringList)QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
     connect( ui->PushButtonVideoPath, SIGNAL( clicked( bool ) ),        this, SLOT( slot_newVideoPath() ) );
     connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetNewPath() ) );
     connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
@@ -308,7 +308,7 @@ void MainWindow::slot_newVideoPath()
 
 void MainWindow::slot_videoFileSystemWatcherSetNewPath()
 {
-    videoFileSystemWatcher->removePaths( videoFileSystemWatcher->files() );
+    videoFileSystemWatcher->removePaths( videoFileSystemWatcher->directories() );
     videoFileSystemWatcher->addPath( ui->lineEditVideoPath->text() );
 }
 
