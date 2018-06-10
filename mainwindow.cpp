@@ -398,7 +398,7 @@ void MainWindow::slot_getPulsesDevices( bool value )
             QCheckBox *checkboxAudioDevice = new QCheckBox();
             checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
             checkboxAudioDevice->setAccessibleName( QString( list.at(i) ).section( " ::: ", 0, 0 ) );
-            ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
+            ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-i-1, checkboxAudioDevice );
         }
     }
     else
