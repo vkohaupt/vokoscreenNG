@@ -202,7 +202,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonFullscreen, SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonWindow,     SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonArea,       SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxScreen,        SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_comboBoxScreenSetDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabAudio,              SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabCodec,              SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabMisc,               SLOT( setDisabled( bool ) ) );
@@ -289,6 +289,20 @@ MainWindow::~MainWindow()
 void MainWindow::slot_audioHelp()
 {
     QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/3.0/audio.html", QUrl::TolerantMode ) );
+}
+
+
+void MainWindow::slot_comboBoxScreenSetDisabled( bool value )
+{
+    Q_UNUSED(value);
+    if ( ui->radioButtonFullscreen->isChecked() == true )
+    {
+        ui->comboBoxScreen->setEnabled( true );
+    }
+    else
+    {
+        ui->comboBoxScreen->setEnabled( false );
+    }
 }
 
 
@@ -886,7 +900,7 @@ void MainWindow::slot_Play()
 }
 
 
-void MainWindow::slot_screenCountChanged(int newCount )
+void MainWindow::slot_screenCountChanged( int newCount )
 {
     Q_UNUSED(newCount);
     ui->comboBoxScreen->clear();
