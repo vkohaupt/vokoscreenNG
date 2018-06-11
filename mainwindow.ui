@@ -144,6 +144,9 @@
           </item>
           <item>
            <widget class="QToolButton" name="toolButtonAudioHelp">
+            <property name="toolTip">
+             <string>Help</string>
+            </property>
             <property name="text">
              <string>Help</string>
             </property>
