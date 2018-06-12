@@ -51,6 +51,11 @@ private:
     QString get_AudioDeviceString( GstDevice * device );
     QStringList get_all_Audio_devices();
 
+    QString get_x_From_Screen();
+    QString get_y_From_Screen();
+    QString get_width_From_Screen();
+    QString get_height_From_Screen();
+
 
 private slots:
     void slot_preStart();

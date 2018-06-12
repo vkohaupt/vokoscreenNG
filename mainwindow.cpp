@@ -278,12 +278,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     VK_Check_is_Format_available();
     VK_set_available_Formats_in_Combox();
 
-
     QDesktopWidget *desk = QApplication::desktop();
     connect( desk, SIGNAL( screenCountChanged(int) ), SLOT( slot_screenCountChanged( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          SLOT( slot_screenCountChanged( int ) ) );
     emit desk->screenCountChanged(0);
-
 }
 
 
@@ -464,7 +462,7 @@ QString MainWindow::VK_getXimagesrc()
         showPointer = "false";
     }
 
-    if( ui->radioButtonFullscreen->isChecked() == true )
+    if( ( ui->radioButtonFullscreen->isChecked() == true ) and ( ui->comboBoxScreen->currentData().toInt() == -1  ) )
     {
         QStringList stringList;
         stringList << "ximagesrc"
@@ -474,6 +472,21 @@ QString MainWindow::VK_getXimagesrc()
 
         QString value = stringList.join( " " );
         return value;
+    }
+
+    if ( ( ui->radioButtonFullscreen->isChecked() == true ) and ( ui->comboBoxScreen->currentIndex() <= ui->comboBoxScreen->count()-1 ) )
+    {
+          QStringList stringList;
+          stringList << "ximagesrc"
+                     << "display-name=" + qgetenv( "DISPLAY" )
+                     << "use-damage=false"
+                     << "show-pointer=" + showPointer
+                     << "startx=" + get_x_From_Screen()
+                     << "starty=" + get_y_From_Screen()
+                     << "endx="   + QString::number( get_x_From_Screen().toInt()-1 + get_width_From_Screen().toInt()-1 )
+                     << "endy="   + QString::number( get_height_From_Screen().toInt()-1 );
+          QString value = stringList.join( " " );
+          return value;
     }
 
     if( ui->radioButtonWindow->isChecked() == true )
@@ -504,7 +517,7 @@ QString MainWindow::VK_getXimagesrc()
         return value;
     }
 
-    return "";
+    //return "";
 }
 
 
@@ -906,6 +919,29 @@ void MainWindow::slot_Play()
     }
 }
 
+QString MainWindow::get_x_From_Screen()
+{
+    QString value = ui->comboBoxScreen->currentData().toString().section( " ", 0, 0 ).split( "=" ).at( 1 );
+    return value;
+}
+
+QString MainWindow::get_y_From_Screen()
+{
+    QString value = ui->comboBoxScreen->currentData().toString().section( " ", 1, 1 ).split( "=" ).at( 1 );
+    return value;
+}
+
+QString MainWindow::get_width_From_Screen()
+{
+    QString value = ui->comboBoxScreen->currentData().toString().section( " ", 2, 2 ).split( "=" ).at( 1 );
+    return value;
+}
+
+QString MainWindow::get_height_From_Screen()
+{
+    QString value = ui->comboBoxScreen->currentData().toString().section( " ", 3, 3 ).split( "=" ).at( 1 );
+    return value;
+}
 
 void MainWindow::slot_screenCountChanged( int newCount )
 {
@@ -923,13 +959,19 @@ void MainWindow::slot_screenCountChanged( int newCount )
 
     for ( int i = 1; i < desk->screenCount()+1; i++ )
     {
-        QString ScreenGeometryX1 = QString::number( desk->screenGeometry( i-1 ).left() );
-        QString ScreenGeometryY1 = QString::number( desk->screenGeometry( i-1 ).top() );
-        QString ScreenGeometryX = QString::number( desk->screenGeometry( i-1 ).width() * screen->devicePixelRatio() ); // devicePixelRatio() for Retina Displays
-        QString ScreenGeometryY = QString::number( desk->screenGeometry( i-1 ).height() * screen->devicePixelRatio() );
-        ui->comboBoxScreen->addItem( tr( "Display" ) + " " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY, i-1 );
-        qDebug().noquote() << "[vokoscreen]" << "Display " + QString::number( i ) + ":  " + ScreenGeometryX + " x " + ScreenGeometryY;
+        QString ScreenGeometryX = QString::number( desk->screenGeometry( i-1 ).left() * screen->devicePixelRatio() );
+        QString ScreenGeometryY = QString::number( desk->screenGeometry( i-1 ).top() * screen->devicePixelRatio() );
+        QString ScreenGeometryWidth = QString::number( desk->screenGeometry( i-1 ).width() * screen->devicePixelRatio() );
+        QString ScreenGeometryHeight = QString::number( desk->screenGeometry( i-1 ).height() * screen->devicePixelRatio() );
+        QString stringText = tr( "Display" ) + " " + QString::number( i ) + ":  " + ScreenGeometryWidth + " x " + ScreenGeometryHeight;
+        QString stringData = "x=" + ScreenGeometryX + " " +
+                             "y=" + ScreenGeometryY + " " +
+                             "with=" + ScreenGeometryWidth + " " +
+                             "height=" + ScreenGeometryHeight;
+        ui->comboBoxScreen->addItem( stringText, stringData );
+        qDebug().noquote() << "[vokoscreen]" <<  ui->comboBoxScreen->itemText(i-1) << "     " << ui->comboBoxScreen->itemData(i-1).toString();
     }
+
     ui->comboBoxScreen->addItem( tr( "All Displays" ), -1 );
     qDebug() << "[vokoscreen]" << "---End search Screen---";
     qDebug( " " );
