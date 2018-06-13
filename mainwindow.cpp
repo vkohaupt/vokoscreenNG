@@ -483,8 +483,8 @@ QString MainWindow::VK_getXimagesrc()
                      << "show-pointer=" + showPointer
                      << "startx=" + get_x_From_Screen()
                      << "starty=" + get_y_From_Screen()
-                     << "endx="   + QString::number( get_x_From_Screen().toInt()-1 + get_width_From_Screen().toInt()-1 )
-                     << "endy="   + QString::number( get_height_From_Screen().toInt()-1 );
+                     << "endx="   + QString::number( get_x_From_Screen().toInt() + get_width_From_Screen().toInt()-1 )
+                     << "endy="   + QString::number( get_y_From_Screen().toInt() + get_height_From_Screen().toInt()-1 );
           QString value = stringList.join( " " );
           return value;
     }
@@ -517,7 +517,7 @@ QString MainWindow::VK_getXimagesrc()
         return value;
     }
 
-    //return "";
+    return ""; // prophylactic no error at compiletime
 }
 
 
