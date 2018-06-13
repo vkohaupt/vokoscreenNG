@@ -17,8 +17,11 @@
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QTabWidget" name="tabWidget">
+      <property name="toolTip">
+       <string notr="true"/>
+      </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>5</number>
       </property>
       <property name="iconSize">
        <size>
@@ -234,8 +237,11 @@
           </item>
           <item row="0" column="5">
            <widget class="QPushButton" name="pushButtonFramesDefault">
+            <property name="toolTip">
+             <string>Standard</string>
+            </property>
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
            </widget>
           </item>
@@ -269,14 +275,14 @@
           <item row="1" column="5">
            <widget class="QPushButton" name="pushButton">
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
            </widget>
           </item>
           <item row="2" column="5">
            <widget class="QPushButton" name="pushButton_2">
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
            </widget>
           </item>
@@ -357,7 +363,7 @@
       </widget>
       <widget class="QWidget" name="tabAvailable">
        <attribute name="title">
-        <string/>
+        <string notr="true"/>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_8">
         <item>
