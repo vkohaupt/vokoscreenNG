@@ -589,11 +589,11 @@ void MainWindow::VK_Check_is_Format_available()
         GstElementFactory *factory = gst_element_factory_find( muxer );
         if ( !factory )
         {
-            qDebug().noquote() << "[vokoscreen] Fail Muxer not available:" << muxer;
+            g_print( "[vokoscreen] Fail Muxer not available: %s\n", muxer  );
         }
         else
         {
-            qDebug().noquote() << "[vokoscreen] Muxer available:" << muxer;
+            g_print( "[vokoscreen] Muxer available: %s\n", muxer  );
             tempList << videoFormatsList.at( x );
         }
     }
