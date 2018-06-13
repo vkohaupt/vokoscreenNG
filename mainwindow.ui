@@ -53,7 +53,7 @@
           <item row="1" column="0">
            <widget class="QRadioButton" name="radioButtonWindow">
             <property name="text">
-             <string>Window</string>
+             <string>Wi&amp;ndow</string>
             </property>
            </widget>
           </item>
@@ -159,7 +159,7 @@
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents">
+          <widget class="QWidget" name="scrollAreaWidgetContentsAudioDevices">
            <property name="geometry">
             <rect>
              <x>0</x>
@@ -351,6 +351,35 @@
             <layout class="QVBoxLayout" name="verticalLayout_6"/>
            </item>
           </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabAvailable">
+       <attribute name="title">
+        <string>Seite</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <item>
+         <widget class="QScrollArea" name="scrollAreaAvailable">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContentsAvailable">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>518</width>
+             <height>141</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_10">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayoutAvailable"/>
+            </item>
+           </layout>
+          </widget>
          </widget>
         </item>
        </layout>

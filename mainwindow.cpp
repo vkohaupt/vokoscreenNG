@@ -20,10 +20,10 @@
 
 #include <gst/gst.h>
 
-QString MainWindow::get_AudioDeviceString( GstDevice * device )
+QString MainWindow::get_AudioDeviceString( GstDevice *device )
 {
   static const char *const ignored_propnames[] = { "name", "parent", "direction", "template", "caps", NULL };
-  GString *launch_line;
+  GString *launch_line = NULL;
   GstElement *element;
   GstElement *pureelement;
   GParamSpec **properties, *property;
@@ -397,7 +397,7 @@ void MainWindow::slot_audioIconOnOff( bool state )
 void MainWindow::slot_clearVerticalLayoutAudioDevices( bool value )
 {
     Q_UNUSED(value);
-    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContents->findChildren<QCheckBox *>();
+    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
     for ( int i = 0; i < listQCheckBox.count(); i++ )
     {
        ui->verticalLayoutAudioDevices->removeWidget( listQCheckBox.at(i) );
@@ -469,7 +469,6 @@ QString MainWindow::VK_getXimagesrc()
                    << "display-name=" + qgetenv( "DISPLAY" )
                    << "use-damage=false"
                    << "show-pointer=" + showPointer;
-
         QString value = stringList.join( " " );
         return value;
     }
@@ -754,7 +753,7 @@ void MainWindow::slot_startCounter( bool value )
 QString MainWindow::VK_get_AudioDevice()
 {
     QString audioDevice;
-    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContents->findChildren<QCheckBox *>();
+    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
     for ( int i = 0; i < listQCheckBox.count(); i++ )
     {
         if ( listQCheckBox.at(i)->checkState() == Qt::Checked )
