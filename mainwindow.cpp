@@ -278,6 +278,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     VK_Check_is_Format_available();
     VK_set_available_Formats_in_Combox();
 
+    VK_gst_Elements_available();
+
     QDesktopWidget *desk = QApplication::desktop();
     connect( desk, SIGNAL( screenCountChanged(int) ), SLOT( slot_screenCountChanged( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          SLOT( slot_screenCountChanged( int ) ) );
@@ -529,6 +531,39 @@ QString MainWindow::VK_getCapsFilter()
 }
 
 
+void MainWindow::VK_gst_Elements_available()
+{
+    QStringList stringList = ( QStringList()
+                               << "ximagesrc:ximagesrc"
+                               << "matroskamux:mkv"
+                               << "webmux:web"
+                               << "avimux:avi"
+                               << "x264enc:x264"
+                               << "vp8enc:vp8"
+                               << "vorbisenc:vorbis"
+                               << "flacenc:flac"
+                               << "opusenc:opus"
+                               );
+
+    for ( int i = 0; i < stringList.count(); i++ )
+    {
+        QCheckBox *checkboxAudioDevice = new QCheckBox();
+        checkboxAudioDevice->setText( QString( stringList.at( i ) ).section( ":", 1 )  );
+        const gchar *element = QString( stringList.at( i ) ).section( ":", 0 ,0 ).toLatin1();
+        GstElementFactory *factory = gst_element_factory_find( element );
+        if ( !factory )
+        {
+            ui->verticalLayoutAvailableNotInstalled->insertWidget( ui->verticalLayoutAvailableNotInstalled->count()-1, checkboxAudioDevice );
+        }
+        else
+        {
+            ui->verticalLayoutAvailableInstalled->insertWidget( ui->verticalLayoutAvailableInstalled->count()-1, checkboxAudioDevice );
+            checkboxAudioDevice->setCheckState( Qt::Checked );
+        }
+    }
+}
+
+
 void MainWindow::VK_Supported_Formats_And_Codecs()
 {
     QStringList MKV_QStringList = ( QStringList()
@@ -589,11 +624,11 @@ void MainWindow::VK_Check_is_Format_available()
         GstElementFactory *factory = gst_element_factory_find( muxer );
         if ( !factory )
         {
-            g_print( "[vokoscreen] Fail Muxer not available: %s\n", muxer  );
+            g_print( "[vokoscreen] Fail Muxer not available: %s\n", muxer );
         }
         else
         {
-            g_print( "[vokoscreen] Muxer available: %s\n", muxer  );
+            g_print( "[vokoscreen] Muxer available: %s\n", muxer );
             tempList << videoFormatsList.at( x );
         }
     }

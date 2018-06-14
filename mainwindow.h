@@ -56,6 +56,8 @@ private:
     QString get_width_From_Screen();
     QString get_height_From_Screen();
 
+    void VK_gst_Elements_available();
+
 
 private slots:
     void slot_preStart();
