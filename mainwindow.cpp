@@ -557,19 +557,17 @@ void MainWindow::VK_gst_Elements_available()
 
     for ( int i = 0; i < stringList.count(); i++ )
     {
-//        QLineEdit *checkbox = new QLineEdit();
-        QLabel *checkbox = new QLabel();
-//        checkbox->setMinimumSize( 100, 14 );
-        checkbox->setText( QString( stringList.at( i ) ).section( ":", 1 )  );
+        QLabel *label = new QLabel();
+        label->setText( QString( stringList.at( i ) ).section( ":", 1 )  );
         const gchar *element = QString( stringList.at( i ) ).section( ":", 0 ,0 ).toLatin1();
         GstElementFactory *factory = gst_element_factory_find( element );
         if ( !factory )
         {
-            ui->verticalLayoutAvailableNotInstalled->insertWidget( ui->verticalLayoutAvailableNotInstalled->count()-2, checkbox );
+            ui->verticalLayoutAvailableNotInstalled->insertWidget( ui->verticalLayoutAvailableNotInstalled->count()-2, label );
         }
         else
         {
-            ui->verticalLayoutAvailableInstalled->insertWidget( ui->verticalLayoutAvailableInstalled->count()-2, checkbox );
+            ui->verticalLayoutAvailableInstalled->insertWidget( ui->verticalLayoutAvailableInstalled->count()-2, label );
         }
     }
 }
