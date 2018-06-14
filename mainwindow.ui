@@ -21,7 +21,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>5</number>
       </property>
       <property name="iconSize">
        <size>
@@ -56,7 +56,7 @@
           <item row="1" column="0">
            <widget class="QRadioButton" name="radioButtonWindow">
             <property name="text">
-             <string>Window</string>
+             <string>Wi&amp;ndow</string>
             </property>
            </widget>
           </item>
@@ -426,7 +426,10 @@
             </widget>
            </item>
            <item>
-            <widget class="QToolButton" name="toolButton">
+            <widget class="QToolButton" name="toolButtonAvalaibleHelp">
+             <property name="toolTip">
+              <string>Help</string>
+             </property>
              <property name="text">
               <string notr="true"/>
              </property>
@@ -455,6 +458,19 @@
               <item>
                <layout class="QVBoxLayout" name="verticalLayoutAvailableInstalled">
                 <item>
+                 <spacer name="horizontalSpacer_4">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
                  <spacer name="verticalSpacer">
                   <property name="orientation">
                    <enum>Qt::Vertical</enum>
@@ -478,6 +494,22 @@
               </item>
               <item>
                <layout class="QVBoxLayout" name="verticalLayoutAvailableNotInstalled">
+                <item>
+                 <spacer name="horizontalSpacer_3">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Expanding</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
                 <item>
                  <spacer name="verticalSpacer_2">
                   <property name="orientation">

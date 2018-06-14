@@ -173,6 +173,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->tabWidget->setTabIcon( 4, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
     makeAndSetValidIcon( 4 );
 
+    ui->tabWidget->setTabIcon( 5, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/webcam.png" ) ) );
+    makeAndSetValidIcon( 5 );
+
+
     regionController = new QvkRegionController();
     regionController->hide();
 
@@ -273,6 +277,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     connect( videoFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
+
+    // Tab 5 Camera
+
+    // Tab 6 Available muxer, encoder etc.
+    ui->toolButtonAvalaibleHelp->setIcon( ui->pushButtonStart->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+
 
     VK_Supported_Formats_And_Codecs();
     VK_Check_is_Format_available();
@@ -534,31 +544,32 @@ QString MainWindow::VK_getCapsFilter()
 void MainWindow::VK_gst_Elements_available()
 {
     QStringList stringList = ( QStringList()
-                               << "ximagesrc:ximagesrc"
                                << "matroskamux:mkv"
-                               << "webmux:web"
+                               << "webmmux:webm"
                                << "avimux:avi"
                                << "x264enc:x264"
                                << "vp8enc:vp8"
                                << "vorbisenc:vorbis"
                                << "flacenc:flac"
                                << "opusenc:opus"
+                               << "ximagesrc:ximagesrc"
                                );
 
     for ( int i = 0; i < stringList.count(); i++ )
     {
-        QCheckBox *checkboxAudioDevice = new QCheckBox();
+        //QCheckBox *checkboxAudioDevice = new QCheckBox();
+        QLabel *checkboxAudioDevice = new QLabel();
         checkboxAudioDevice->setText( QString( stringList.at( i ) ).section( ":", 1 )  );
         const gchar *element = QString( stringList.at( i ) ).section( ":", 0 ,0 ).toLatin1();
         GstElementFactory *factory = gst_element_factory_find( element );
         if ( !factory )
         {
-            ui->verticalLayoutAvailableNotInstalled->insertWidget( ui->verticalLayoutAvailableNotInstalled->count()-1, checkboxAudioDevice );
+            ui->verticalLayoutAvailableNotInstalled->insertWidget( ui->verticalLayoutAvailableNotInstalled->count()-2, checkboxAudioDevice );
         }
         else
         {
-            ui->verticalLayoutAvailableInstalled->insertWidget( ui->verticalLayoutAvailableInstalled->count()-1, checkboxAudioDevice );
-            checkboxAudioDevice->setCheckState( Qt::Checked );
+            ui->verticalLayoutAvailableInstalled->insertWidget( ui->verticalLayoutAvailableInstalled->count()-2, checkboxAudioDevice );
+            //checkboxAudioDevice->setCheckState( Qt::Checked );
         }
     }
 }
