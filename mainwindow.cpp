@@ -280,9 +280,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     // Tab 5 Camera
 
+
     // Tab 6 Available muxer, encoder etc.
     ui->toolButtonAvalaibleHelp->setIcon( ui->pushButtonStart->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-
 
     VK_Supported_Formats_And_Codecs();
     VK_Check_is_Format_available();
@@ -557,19 +557,19 @@ void MainWindow::VK_gst_Elements_available()
 
     for ( int i = 0; i < stringList.count(); i++ )
     {
-        //QCheckBox *checkboxAudioDevice = new QCheckBox();
-        QLabel *checkboxAudioDevice = new QLabel();
-        checkboxAudioDevice->setText( QString( stringList.at( i ) ).section( ":", 1 )  );
+//        QLineEdit *checkbox = new QLineEdit();
+        QLabel *checkbox = new QLabel();
+//        checkbox->setMinimumSize( 100, 14 );
+        checkbox->setText( QString( stringList.at( i ) ).section( ":", 1 )  );
         const gchar *element = QString( stringList.at( i ) ).section( ":", 0 ,0 ).toLatin1();
         GstElementFactory *factory = gst_element_factory_find( element );
         if ( !factory )
         {
-            ui->verticalLayoutAvailableNotInstalled->insertWidget( ui->verticalLayoutAvailableNotInstalled->count()-2, checkboxAudioDevice );
+            ui->verticalLayoutAvailableNotInstalled->insertWidget( ui->verticalLayoutAvailableNotInstalled->count()-2, checkbox );
         }
         else
         {
-            ui->verticalLayoutAvailableInstalled->insertWidget( ui->verticalLayoutAvailableInstalled->count()-2, checkboxAudioDevice );
-            //checkboxAudioDevice->setCheckState( Qt::Checked );
+            ui->verticalLayoutAvailableInstalled->insertWidget( ui->verticalLayoutAvailableInstalled->count()-2, checkbox );
         }
     }
 }
@@ -613,6 +613,7 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
     videoFormatsList.append( WEBM_QStringList.join( ","  ) );
     videoFormatsList.append( AVI_QStringList.join( "," ) );
 
+    globalFormatsList << videoFormatsList;
 
     /*
         videoFormatsList.append( "mp4mux:mp4" );
