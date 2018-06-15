@@ -547,43 +547,52 @@ QString MainWindow::VK_getCapsFilter()
 }
 
 
+// Check format, video and audoicodec on availability
 void MainWindow::VK_gst_Elements_available()
 {
-    QStringList stringList = ( QStringList()
-                               << "matroskamux:mkv"
-                               << "webmmux:webm"
-                               << "avimux:avi"
-                               << "x264enc:x264"
-                               << "vp8enc:vp8"
-                               << "vorbisenc:vorbis"
-                               << "flacenc:flac"
-                               << "opusenc:opus"
-                               << "ximagesrc:ximagesrc"
-                               );
+    QStringList finishList;
 
-    for ( int i = 0; i < stringList.count(); i++ )
+    for ( int i = 0; i < globalFormatsList.count(); i++ )
     {
-        QLabel *label = new QLabel();
-        label->setText( QString( stringList.at( i ) ).section( ":", 1 )  );
-        const gchar *element = QString( stringList.at( i ) ).section( ":", 0 ,0 ).toLatin1();
-        GstElementFactory *factory = gst_element_factory_find( element );
-        if ( !factory )
+        QString stringAllKeys = globalFormatsList.at( i );
+        QStringList listKeys = stringAllKeys.split( "," );
+        QStringList listKeymuxer = listKeys.filter( "muxer" );
+        QStringList listKeyAudio = listKeys.filter( "audiocodec" );
+        QStringList listKeyVideo = listKeys.filter( "videocodec" );
+
+        finishList << listKeymuxer << listKeyAudio << listKeyVideo;
+        finishList.removeDuplicates();
+    }
+
+    for ( int i = 0; i < finishList.count(); i++ )
+    {
+        if ( ( QString( finishList.at(i) ).section( ":", 0, 0 ) == "muxer" ) or
+             ( QString( finishList.at(i) ).section( ":", 0, 0 ) == "videocodec" ) or
+             ( QString( finishList.at(i) ).section( ":", 0, 0 ) == "audiocodec" ) )
         {
-            ui->verticalLayoutAvailableNotInstalled->insertWidget( ui->verticalLayoutAvailableNotInstalled->count()-2, label );
-        }
-        else
-        {
-            ui->verticalLayoutAvailableInstalled->insertWidget( ui->verticalLayoutAvailableInstalled->count()-2, label );
+            QLabel *label = new QLabel();
+            label->setText( QString( finishList.at( i ) ).section( ":", 2, 2 )  );
+            const gchar *element = QString( finishList.at( i ) ).section( ":", 1, 1 ).toLatin1();
+            GstElementFactory *factory = gst_element_factory_find( element );
+            if ( !factory )
+            {
+                ui->verticalLayoutAvailableNotInstalled->insertWidget( ui->verticalLayoutAvailableNotInstalled->count()-2, label );
+            }
+            else
+            {
+                ui->verticalLayoutAvailableInstalled->insertWidget( ui->verticalLayoutAvailableInstalled->count()-2, label );
+            }
         }
     }
+    qDebug() << finishList;
 }
 
 
+// This is the base for format, video and audiocodec
 void MainWindow::VK_Supported_Formats_And_Codecs()
 {
     QStringList MKV_QStringList = ( QStringList()
-                                    << "muxer:matroskamux"
-                                    << "suffix:mkv"
+                                    << "muxer:matroskamux:mkv"
                                     << "videomimetype:video/x-matroska"
                                     << "audiomimetype:audio/x-matroska"
                                     << "videocodec:x264enc:x264"
@@ -594,8 +603,7 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
                                    );
 
     QStringList WEBM_QStringList = ( QStringList()
-                                     << "muxer:webmmux"
-                                     << "suffix:webm"
+                                     << "muxer:webmmux:webm"
                                      << "videomimetype:video/webm"
                                      << "audiomimetype:audio/webm"
                                      << "videocodec:vp8enc:vp8"
@@ -604,8 +612,7 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
                                    );
 
     QStringList AVI_QStringList = ( QStringList()
-                                     << "muxer:avimux"
-                                     << "suffix:avi"
+                                     << "muxer:avimux:avi"
                                      << "videomimetype:video/x-msvideo"
                                      << "audiomimetype:audio/x-msvideo"
                                      << "videocodec:x264enc:x264"
@@ -636,7 +643,7 @@ void MainWindow::VK_Check_is_Format_available()
         QString stringAllKeys = videoFormatsList.at( x );
         QStringList listKeys = stringAllKeys.split( "," );
         QStringList listKey = listKeys.filter( "muxer" );
-        const gchar *muxer = QString( listKey.at( 0 ) ).section( ":", 1 ).toLatin1();
+        const gchar *muxer = QString( listKey.at( 0 ) ).section( ":", 1, 1 ).toLatin1();
         GstElementFactory *factory = gst_element_factory_find( muxer );
         if ( !factory )
         {
@@ -661,7 +668,6 @@ void MainWindow::VK_set_available_Formats_in_Combox()
     {
         QString stringAllKeys = videoFormatsList.at( x );
         QStringList listKeys = stringAllKeys.split( "," );
-        QStringList listKeySuffix = listKeys.filter( "suffix");
         QStringList listKeyMuxer = listKeys.filter( "muxer" );
 
         QMimeDatabase mimeDatabase;
@@ -669,9 +675,9 @@ void MainWindow::VK_set_available_Formats_in_Combox()
         QMimeType mimetype = mimeDatabase.mimeTypeForName( QString( listKeyVideoMimetype.at( 0 ) ).section( ":", 1 ) );
         QIcon icon = QIcon::fromTheme( mimetype.iconName(), QIcon( ":/pictures/videooptionen.png" ) );
 
-        ui->comboBoxFormat->addItem( QIcon::fromTheme( mimetype.iconName(), QIcon( ":/pictures/videooptionen.png" ) ),
-                                     QString( listKeySuffix.at( 0 ) ).section( ":", 1 ),
-                                     QString( listKeyMuxer.at( 0 ) ).section( ":", 1 ) );
+        ui->comboBoxFormat->addItem( QIcon::fromTheme( mimetype.iconName(), QIcon( ":/pictures/videooptionen.png" ) ), // Picture
+                                     QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ), // suffix
+                                     QString( listKeyMuxer.at( 0 ) ).section( ":", 1, 1 ) ); // muxer
     }
 }
 
