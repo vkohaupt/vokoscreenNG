@@ -550,7 +550,7 @@ QString MainWindow::VK_getCapsFilter()
 // Check format, video and audoicodec on availability
 void MainWindow::VK_gst_Elements_available()
 {
-    QStringList finishList;
+    QStringList muxerAudioVideoList;
 
     for ( int i = 0; i < globalFormatsList.count(); i++ )
     {
@@ -560,31 +560,25 @@ void MainWindow::VK_gst_Elements_available()
         QStringList listKeyAudio = listKeys.filter( "audiocodec" );
         QStringList listKeyVideo = listKeys.filter( "videocodec" );
 
-        finishList << listKeymuxer << listKeyAudio << listKeyVideo;
-        finishList.removeDuplicates();
+        muxerAudioVideoList << listKeymuxer << listKeyAudio << listKeyVideo;
+        muxerAudioVideoList.removeDuplicates();
     }
 
-    for ( int i = 0; i < finishList.count(); i++ )
+    for ( int i = 0; i < muxerAudioVideoList.count(); i++ )
     {
-        if ( ( QString( finishList.at(i) ).section( ":", 0, 0 ) == "muxer" ) or
-             ( QString( finishList.at(i) ).section( ":", 0, 0 ) == "videocodec" ) or
-             ( QString( finishList.at(i) ).section( ":", 0, 0 ) == "audiocodec" ) )
+        QLabel *label = new QLabel();
+        label->setText( QString( muxerAudioVideoList.at( i ) ).section( ":", 2, 2 )  );
+        const gchar *element = QString( muxerAudioVideoList.at( i ) ).section( ":", 1, 1 ).toLatin1();
+        GstElementFactory *factory = gst_element_factory_find( element );
+        if ( !factory )
         {
-            QLabel *label = new QLabel();
-            label->setText( QString( finishList.at( i ) ).section( ":", 2, 2 )  );
-            const gchar *element = QString( finishList.at( i ) ).section( ":", 1, 1 ).toLatin1();
-            GstElementFactory *factory = gst_element_factory_find( element );
-            if ( !factory )
-            {
-                ui->verticalLayoutAvailableNotInstalled->insertWidget( ui->verticalLayoutAvailableNotInstalled->count()-2, label );
-            }
-            else
-            {
-                ui->verticalLayoutAvailableInstalled->insertWidget( ui->verticalLayoutAvailableInstalled->count()-2, label );
-            }
+            ui->verticalLayoutAvailableNotInstalled->insertWidget( ui->verticalLayoutAvailableNotInstalled->count()-2, label );
+        }
+        else
+        {
+            ui->verticalLayoutAvailableInstalled->insertWidget( ui->verticalLayoutAvailableInstalled->count()-2, label );
         }
     }
-    qDebug() << finishList;
 }
 
 
