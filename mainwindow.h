@@ -84,6 +84,7 @@ private slots:
     void slot_set_available_AudioCodecs_in_Combox( QString suffix );
 
     void slot_audioHelp();
+    void slot_availableHelp();
 
 
 signals:

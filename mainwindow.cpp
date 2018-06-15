@@ -283,6 +283,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     // Tab 6 Available muxer, encoder etc.
     ui->toolButtonAvalaibleHelp->setIcon( ui->pushButtonStart->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    connect( ui->toolButtonAvalaibleHelp, SIGNAL( clicked( bool ) ), SLOT( slot_availableHelp() ) );
 
     VK_Supported_Formats_And_Codecs();
     VK_Check_is_Format_available();
@@ -306,6 +307,11 @@ MainWindow::~MainWindow()
 void MainWindow::slot_audioHelp()
 {
     QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/3.0/audio.html", QUrl::TolerantMode ) );
+}
+
+void MainWindow::slot_availableHelp()
+{
+    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/3.0/available.html", QUrl::TolerantMode ) );
 }
 
 
