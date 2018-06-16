@@ -13,6 +13,7 @@
 #include <QFileDialog>
 #include <QDesktopServices>
 #include <QMimeDatabase>
+#include <QStringList>
 
 // gstreamer-plugins-bad-orig-addon
 // gstreamer-plugins-good-extra
@@ -562,12 +563,29 @@ void MainWindow::VK_gst_Elements_available()
 
         muxerAudioVideoList << listKeymuxer << listKeyAudio << listKeyVideo;
         muxerAudioVideoList.removeDuplicates();
+        muxerAudioVideoList.sort();
     }
 
     for ( int i = 0; i < muxerAudioVideoList.count(); i++ )
     {
+        QString labelText;
+        if ( QString( muxerAudioVideoList.at(i) ).section( ":", 0, 0 )   == "muxer" )
+        {
+            labelText = "Format : ";
+        }
+
+        if ( QString( muxerAudioVideoList.at(i) ).section( ":", 0, 0 )   == "videocodec" )
+        {
+            labelText = "Videocodec : ";
+        }
+
+        if ( QString( muxerAudioVideoList.at(i) ).section( ":", 0, 0 )   == "audiocodec" )
+        {
+            labelText = "Audiocodec : ";
+        }
+
         QLabel *label = new QLabel();
-        label->setText( QString( muxerAudioVideoList.at( i ) ).section( ":", 2, 2 )  );
+        label->setText( QString( muxerAudioVideoList.at( i ) ).section( ":", 2, 2 ).prepend( labelText ) );
         const gchar *element = QString( muxerAudioVideoList.at( i ) ).section( ":", 1, 1 ).toLatin1();
         GstElementFactory *factory = gst_element_factory_find( element );
         if ( !factory )
