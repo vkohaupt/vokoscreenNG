@@ -156,10 +156,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
         qDebug() << s;
     }
 */
-    ui->pushButtonStart->setIcon( ui->pushButtonStart->style()->standardIcon( QStyle::SP_DialogApplyButton ) );
-    ui->pushButtonStop->setIcon( ui->pushButtonStop->style()->standardIcon( QStyle::SP_MessageBoxCritical ) );
-
-
     ui->tabWidget->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
     makeAndSetValidIcon( 0 );
 
