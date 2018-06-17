@@ -155,9 +155,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     {
         qDebug() << s;
     }
-
-    ui->pushButtonStart->setIcon( ui->pushButtonStart->style()->standardIcon( QStyle::SP_MediaVolume ) );
 */
+    ui->pushButtonStart->setIcon( ui->pushButtonStart->style()->standardIcon( QStyle::SP_DialogApplyButton ) );
+    ui->pushButtonStop->setIcon( ui->pushButtonStop->style()->standardIcon( QStyle::SP_MessageBoxCritical ) );
+
 
     ui->tabWidget->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
     makeAndSetValidIcon( 0 );
@@ -285,6 +286,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     // Tab 6 Available muxer, encoder etc.
     ui->toolButtonAvalaibleHelp->setIcon( ui->pushButtonStart->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->toolButtonAvalaibleHelp, SIGNAL( clicked( bool ) ), SLOT( slot_availableHelp() ) );
+
+    QIcon iconAvailable = ui->labelAvalible->style()->standardIcon( QStyle::SP_DialogApplyButton );
+    QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
+    ui->labelAvalible->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+
+    QIcon iconNotAvailable = ui->labelNotAvailable->style()->standardIcon( QStyle::SP_MessageBoxCritical );
+    ui->labelNotAvailable->setPixmap( iconNotAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+    // End Tabs
 
     VK_Supported_Formats_And_Codecs();
     VK_Check_is_Format_available();
@@ -548,54 +557,90 @@ QString MainWindow::VK_getCapsFilter()
 }
 
 
-// Check format, video and audoicodec on availability
+// Check format, video and audoicodec on tab availability
 void MainWindow::VK_gst_Elements_available()
 {
-    QStringList muxerAudioVideoList;
-
     for ( int i = 0; i < globalFormatsList.count(); i++ )
     {
-        QString stringAllKeys = globalFormatsList.at( i );
-        QStringList listKeys = stringAllKeys.split( "," );
-        QStringList listKeymuxer = listKeys.filter( "muxer" );
-        QStringList listKeyAudio = listKeys.filter( "audiocodec" );
-        QStringList listKeyVideo = listKeys.filter( "videocodec" );
-
-        muxerAudioVideoList << listKeymuxer << listKeyAudio << listKeyVideo;
-        muxerAudioVideoList.removeDuplicates();
-        muxerAudioVideoList.sort();
-    }
-
-    for ( int i = 0; i < muxerAudioVideoList.count(); i++ )
-    {
-        QString labelText;
-        if ( QString( muxerAudioVideoList.at(i) ).section( ":", 0, 0 )   == "muxer" )
+        QHBoxLayout *HBoxLayout_for_Format_and_Encoder_Layouts;
+        QVBoxLayout *VBoxLayout_for_Encoder;
+        QStringList listElements = QString( globalFormatsList.at(i) ).split( "," );
+        for ( int x = 0; x < listElements.count(); x++ )
         {
-            labelText = "Format : ";
-        }
+            bool available;
+            const gchar *element = QString( listElements.at( x ) ).section( ":", 1, 1 ).toLatin1();
+            GstElementFactory *factory = gst_element_factory_find( element );
+            if ( !factory )
+            {
+                //ui->verticalLayoutAvailableNotInstalled->insertWidget( ui->verticalLayoutAvailableNotInstalled->count()-2, label );
+                available = false;
+            }
+            else
+            {
+                available = true;
+            }
 
-        if ( QString( muxerAudioVideoList.at(i) ).section( ":", 0, 0 )   == "videocodec" )
-        {
-            labelText = "Videocodec : ";
-        }
+            if ( QString( listElements.at( x ) ).section( ":", 0, 0 ) == "muxer" )
+            {
+                HBoxLayout_for_Format_and_Encoder_Layouts = new QHBoxLayout();
 
-        if ( QString( muxerAudioVideoList.at(i) ).section( ":", 0, 0 )   == "audiocodec" )
-        {
-            labelText = "Audiocodec : ";
-        }
+                QHBoxLayout *HBoxLayout_for_Picture_and_Format = new QHBoxLayout();
+                QVBoxLayout *VBoxLayout_for_Format = new QVBoxLayout();
+                VBoxLayout_for_Format->addItem( HBoxLayout_for_Picture_and_Format );
 
-        QLabel *label = new QLabel();
-        label->setText( QString( muxerAudioVideoList.at( i ) ).section( ":", 2, 2 ).prepend( labelText ) );
-        const gchar *element = QString( muxerAudioVideoList.at( i ) ).section( ":", 1, 1 ).toLatin1();
-        GstElementFactory *factory = gst_element_factory_find( element );
-        if ( !factory )
-        {
-            ui->verticalLayoutAvailableNotInstalled->insertWidget( ui->verticalLayoutAvailableNotInstalled->count()-2, label );
+                VBoxLayout_for_Encoder = new QVBoxLayout();
+
+                HBoxLayout_for_Format_and_Encoder_Layouts->addItem( VBoxLayout_for_Format);
+                HBoxLayout_for_Format_and_Encoder_Layouts->addItem( VBoxLayout_for_Encoder);
+
+                QLabel *labelFormat = new QLabel();
+                labelFormat->show();
+                labelFormat->setText( QString( listElements.at( x ) ).section( ":", 2, 2 ).prepend( " " ) );
+                HBoxLayout_for_Picture_and_Format->addWidget( labelFormat );
+                VBoxLayout_for_Format->addItem( new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding ) );
+
+                QLabel *labelPicture = new QLabel();
+                QIcon icon;
+                if ( available == true )
+                    icon = labelPicture->style()->standardIcon( QStyle::SP_DialogApplyButton );
+                else
+                    icon = labelPicture->style()->standardIcon( QStyle::SP_MessageBoxCritical );
+                QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
+                labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
+                HBoxLayout_for_Picture_and_Format->insertWidget( 0, labelPicture );
+                HBoxLayout_for_Picture_and_Format->addItem( new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum ) );
+
+            }
+
+            if ( ( QString( listElements.at( x ) ).section( ":", 0, 0 ) == "videocodec" ) or
+                 ( QString( listElements.at( x ) ).section( ":", 0, 0 ) == "audiocodec" ) )
+            {
+                QHBoxLayout *HBoxLayout_for_Picture_and_Encoder = new QHBoxLayout();
+                VBoxLayout_for_Encoder->addItem( HBoxLayout_for_Picture_and_Encoder );
+
+                QLabel *labelPicture = new QLabel();
+                QIcon icon;
+                if ( available == true )
+                    icon = labelPicture->style()->standardIcon( QStyle::SP_DialogApplyButton );
+                else
+                    icon = labelPicture->style()->standardIcon( QStyle::SP_MessageBoxCritical );
+                QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
+                labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
+                HBoxLayout_for_Picture_and_Encoder->addWidget( labelPicture );
+
+                QLabel *labelEncoder = new QLabel();
+                labelEncoder->show();
+                labelEncoder->setText( QString( listElements.at(x) ).section( ":", 2, 2 ).prepend( " " ) );
+                HBoxLayout_for_Picture_and_Encoder->addWidget( labelEncoder );
+                HBoxLayout_for_Picture_and_Encoder->addItem( new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum ) );
+            }
         }
-        else
-        {
-            ui->verticalLayoutAvailableInstalled->insertWidget( ui->verticalLayoutAvailableInstalled->count()-2, label );
-        }
+        QFrame *line = new QFrame();
+        line->setObjectName( QStringLiteral("line") );
+        line->setFrameShape( QFrame::HLine );
+        line->setFrameShadow( QFrame::Sunken );
+        ui->verticalLayoutAvailableInstalled->insertWidget( ui->verticalLayoutAvailableInstalled->count() -1, line );
+        ui->verticalLayoutAvailableInstalled->insertLayout( ui->verticalLayoutAvailableInstalled->count() -2, HBoxLayout_for_Format_and_Encoder_Layouts );
     }
 }
 
