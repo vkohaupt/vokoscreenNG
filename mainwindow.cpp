@@ -232,12 +232,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     connect( ui->pushButtonPlay, SIGNAL( clicked( bool ) ), this, SLOT( slot_Play() ) );
 
-    // Close
-    connect( this, SIGNAL( signal_close() ),  ui->pushButtonContinue, SLOT( click() ) );
-    connect( this, SIGNAL( signal_close() ),  ui->pushButtonStop, SLOT( click() ) );
-    connect( this, SIGNAL( signal_close() ),  regionController, SLOT( close() ) );
-
     // Tab 1 Screen
+    connect( this,                  SIGNAL( signal_close()  ), regionController,   SLOT( slot_close() ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), regionController,   SLOT( show( bool ) ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
@@ -277,11 +273,19 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
 
     // Tab 5 Camera
+    webcamController = new QvkWebcamController( ui );
 
 
     // Tab 6 Available muxer, encoder etc.
     ui->toolButtonAvalaibleHelp->setIcon( ui->pushButtonStart->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->toolButtonAvalaibleHelp, SIGNAL( clicked( bool ) ), SLOT( slot_availableHelp() ) );
+
+    // Close
+    connect( this, SIGNAL( signal_close() ),  ui->pushButtonContinue, SLOT( click() ) );
+    connect( this, SIGNAL( signal_close() ),  ui->pushButtonStop, SLOT( click() ) );
+    connect( this, SIGNAL( signal_close() ),  regionController, SLOT( close() ) );
+    connect( this, SIGNAL( signal_close_webcam( bool ) ),  ui->CheckBoxCamera, SLOT( setChecked( bool ) ) );
+
 
     QIcon iconAvailable = ui->labelAvalible->style()->standardIcon( QStyle::SP_DialogApplyButton );
     QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
@@ -314,6 +318,7 @@ void MainWindow::slot_audioHelp()
 {
     QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/3.0/audio.html", QUrl::TolerantMode ) );
 }
+
 
 void MainWindow::slot_availableHelp()
 {
@@ -378,6 +383,7 @@ void MainWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
     emit signal_close();
+    emit signal_close_webcam( false );
 }
 
 

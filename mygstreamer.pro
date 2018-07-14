@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT += core gui widgets x11extras network testlib dbus multimedia multimediawidgets
+unix: QT += x11extras
+QT += core gui widgets network testlib dbus multimedia multimediawidgets
 
 TARGET = mygstreamer
 TEMPLATE = app
@@ -31,11 +32,18 @@ HEADERS += \
 FORMS += \
         mainwindow.ui \
         QvkNoPlayerDialog.ui
-
+        
 RESOURCES += screencast.qrc
+
+# Clean target
+QMAKE_CLEAN += $$TARGET */*~
 
 CONFIG += link_pkgconfig
 PKGCONFIG += gstreamer-1.0
+
+win32:INCLUDEPATH += C:\gstreamer\1.0\x86\include\gstreamer-1.0
+win32:INCLUDEPATH += C:\gstreamer\1.0\x86\include\glib-2.0
+win32:INCLUDEPATH += C:\gstreamer\1.0\x86\lib\glib-2.0\include
 
 # region
 include(region/regionselection.pri)
@@ -49,3 +57,5 @@ include(libqxtQt5/libqxt.pri)
 # countdown
 include(countdown/countdown.pri)
 
+# webcam
+include(webcam/webcam.pri)

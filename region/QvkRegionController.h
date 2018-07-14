@@ -24,8 +24,6 @@ public:
    
    void lockFrame( bool status );
 
-   void show();
-   void close();
    void hide();
 
    QvkRegionChoise *regionChoise;
@@ -38,6 +36,8 @@ private slots:
   
   
 public slots:
+   void show(bool value);
+   void slot_close();
    void myClicked();
    void Abbruch();
   

@@ -4,6 +4,7 @@
 #include "QvkRegionController.h"
 #include "QvkWinInfo.h"
 #include "QvkCountdown.h"
+#include "QvkWebcamController.h"
 
 #include <QMainWindow>
 #include <QFileSystemWatcher>
@@ -60,6 +61,8 @@ private:
 
     void VK_gst_Elements_available();
 
+    QvkWebcamController *webcamController;
+
 
 private slots:
     void slot_preStart();
@@ -89,6 +92,7 @@ private slots:
 
 signals:
     void signal_close();
+    void signal_close_webcam( bool value );
 
 
 protected:

@@ -1,5 +1,5 @@
 Requires:
-  - Qt5 >= 5.12.5
+  - Qt5 >= 5.9.4
   - gstreamer >= 1.12.5
   - gstreamer-plugins-bad
   - gstreamer-plugins-bad-orig-addon
@@ -11,9 +11,6 @@ BuildRequires:
   - libqt5-devel
   - libqt5-linguist
 
-  
-  - alsa-devel ????
-  - libX11-devel ????
   
 Compile:
   - get sources

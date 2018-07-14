@@ -21,7 +21,6 @@ void QvkRegionController::myClicked()
 
 void QvkRegionController::Abbruch()
 {
-  qDebug() << "QvkRegionController::Abbruch()";
   regionChoise->Abbruch();
 }
 
@@ -31,12 +30,16 @@ void QvkRegionController::hide()
   regionChoise->hide();
 }
 
-void QvkRegionController::show()
+
+void QvkRegionController::show( bool value )
 {
-  regionChoise->show();
+    if (  value == true )
+      regionChoise->show();
+    else
+      regionChoise->hide();
 }
 
-void QvkRegionController::close()
+void QvkRegionController::slot_close()
 {
   regionChoise->close();
 }
