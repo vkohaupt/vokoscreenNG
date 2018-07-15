@@ -53,7 +53,7 @@ unix:include(winInfo/linux/winInfoLinux.pri)
 win32:include(winInfo/windows/winInfoWindows.pri)
 
 # libqxt
-include(libqxtQt5/libqxt.pri)
+unix:include(libqxtQt5/libqxt.pri)
 
 # countdown
 include(countdown/countdown.pri)
