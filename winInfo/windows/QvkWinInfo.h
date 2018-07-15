@@ -16,6 +16,8 @@ public:
   
 
 public slots:
+  WId getWinID();
+  void slot_start();
 
   
 private slots: 

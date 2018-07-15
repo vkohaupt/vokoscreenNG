@@ -38,12 +38,16 @@ RESOURCES += screencast.qrc
 # Clean target
 QMAKE_CLEAN += $$TARGET */*~
 
-CONFIG += link_pkgconfig
-PKGCONFIG += gstreamer-1.0
+unix:CONFIG += link_pkgconfig
+unix:PKGCONFIG += gstreamer-1.0
 
 win32:INCLUDEPATH += C:\gstreamer\1.0\x86\include\gstreamer-1.0
 win32:INCLUDEPATH += C:\gstreamer\1.0\x86\include\glib-2.0
 win32:INCLUDEPATH += C:\gstreamer\1.0\x86\lib\glib-2.0\include
+
+win32:LIBS += -LC:\gstreamer\1.0\x86\bin -llibgstreamer-1.0-0
+win32:LIBS += -llibglib-2.0-0
+win32:LIBS += -llibgobject-2.0-0
 
 # region
 include(region/regionselection.pri)

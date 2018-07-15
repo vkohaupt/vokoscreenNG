@@ -6,6 +6,11 @@ using namespace std;
 
 QvkWinInfo::QvkWinInfo()
 {
+}
+
+
+void QvkWinInfo::slot_start()
+{
   setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
 
   resize ( 50, 50 );
@@ -109,3 +114,9 @@ void QvkWinInfo::selectWindow()
     delete this;
   }
 }
+
+WId QvkWinInfo::getWinID()
+{
+  return newWinID;
+}
+
