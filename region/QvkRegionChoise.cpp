@@ -27,7 +27,11 @@
 #include <QPaintEvent>
 #include <QLibraryInfo>
 #include <QIcon>
-#include <QX11Info>
+
+#ifdef Q_OS_LINUX
+  #include <QX11Info>
+#endif
+
 
 QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
                                    handleUnderMouse(NoHandle),
@@ -44,11 +48,13 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
                                    frame_min_width(250 + framePenWidth),
                                    frame_min_height(250+ framePenWidth)
 {
+#ifdef Q_OS_LINUX
     if ( QX11Info::isPlatformX11() == true )
         platform = x11;
 
     if ( QX11Info::isPlatformX11() == false )
         platform = wayland;
+#endif
 
     // Hint: Qt::WindowStaysOnTopHint is only for X11 on WayLand not do it
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
@@ -73,16 +79,21 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
     qDebug() << "[vokoscreen]" << "Qt version: " << qVersion();
     qDebug() << "[vokoscreen]" << "Operating system:" << QSysInfo::prettyProductName();
     qDebug() << "[vokoscreen]" << "vokoscreen running as:" << QGuiApplication::platformName() << "client";
+
+#ifdef Q_OS_LINUX
     if ( QX11Info::isPlatformX11() == true )
         qDebug() << "[vokoscreen]" << "vokoscreen running on X11";
     else
         qDebug() << "[vokoscreen]" << "vokoscreen running on Wayland";
+#endif
     qDebug() << "[vokoscreen]" << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
     qDebug() << "[vokoscreen] current icon-theme: " << QIcon::themeName();
     qDebug() << "[vokoscreen] Qt-PluginsPath:     " << QLibraryInfo::location( QLibraryInfo::PluginsPath );
     qDebug() << "[vokoscreen] Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
     qDebug() << "[vokoscreen] Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
+#ifdef Q_OS_LINUX
     qDebug() << "[vokoscreen] CompositingManager running:" << QX11Info::isCompositingManagerRunning();
+#endif
     qDebug() << "[vokoscreen] screen available desktop width :" << screen->availableSize().width();
     qDebug() << "[vokoscreen] screen available desktop height:" << screen->availableSize().height();
     qDebug() << screen->name();
@@ -210,6 +221,7 @@ void QvkRegionChoise::mousePressEvent(QMouseEvent *event)
     old_Frame_X2 = frame_X + frame_Width;
     old_Frame_Y2 = frame_Y + frame_height;
 
+#ifdef Q_OS_LINUX
     if ( platform == wayland )
     {
       clearMask();
@@ -221,6 +233,8 @@ void QvkRegionChoise::mousePressEvent(QMouseEvent *event)
       repaint();  // eingefügt für HandleTopLeftSize da ein update nicht genügt
       update();
     }
+#endif
+
 }
 
 
@@ -477,6 +491,7 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
 
     //QCoreApplication::processEvents( QEventLoop::AllEvents );
 
+#ifdef Q_OS_LINUX
     if ( handlePressed != NoHandle )
     {
         if ( platform == wayland )
@@ -499,6 +514,7 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
             }
         }
     }
+#endif
 
     if ( handlePressed != NoHandle )
         return;

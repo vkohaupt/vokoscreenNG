@@ -1,5 +1,7 @@
 #include "QvkWinInfo.h"
+
 #include <QCoreApplication>
+
 using namespace std;
 
 QvkWinInfo::QvkWinInfo()
