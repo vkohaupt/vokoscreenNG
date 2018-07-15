@@ -49,7 +49,8 @@ win32:INCLUDEPATH += C:\gstreamer\1.0\x86\lib\glib-2.0\include
 include(region/regionselection.pri)
 
 # winInfo
-include(winInfo/winInfo.pri)
+unix:include(winInfoLinux/winInfo.pri)
+win32:include(winInfoWindows/winInfo.pri)
 
 # libqxt
 include(libqxtQt5/libqxt.pri)
