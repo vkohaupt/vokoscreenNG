@@ -5,7 +5,8 @@
 #-------------------------------------------------
 
 unix: QT += x11extras
-QT += core gui widgets network testlib dbus multimedia multimediawidgets
+QT += core gui widgets testlib multimedia multimediawidgets
+# network dbus
 
 TARGET = mygstreamer
 TEMPLATE = app
@@ -41,11 +42,14 @@ QMAKE_CLEAN += $$TARGET */*~
 unix:CONFIG += link_pkgconfig
 unix:PKGCONFIG += gstreamer-1.0
 
-win32:INCLUDEPATH += C:\gstreamer\1.0\x86\include\gstreamer-1.0
-win32:INCLUDEPATH += C:\gstreamer\1.0\x86\include\glib-2.0
-win32:INCLUDEPATH += C:\gstreamer\1.0\x86\lib\glib-2.0\include
+win32:GStreamerDir=$$(GSTREAMER_1_0_ROOT_X86)
+win32:INCLUDEPATH += $${GStreamerDir}\include\gstreamer-1.0
+win32:INCLUDEPATH += $${GStreamerDir}\include\glib-2.0
+win32:INCLUDEPATH += $${GStreamerDir}\lib\glib-2.0\include
 
-win32:LIBS += -LC:\gstreamer\1.0\x86\bin -llibgstreamer-1.0-0
+win32:LIBS += -LC:\gstreamer\1.0\x86\bin
+win32:LIBS += -LC:\gstreamer\1.0\x86\lib\gstreamer-1.0
+win32:LIBS += -llibgstreamer-1.0-0
 win32:LIBS += -llibglib-2.0-0
 win32:LIBS += -llibgobject-2.0-0
 
