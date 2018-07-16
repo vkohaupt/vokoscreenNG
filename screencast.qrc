@@ -1,5 +1,20 @@
-<!DOCTYPE RCC><RCC version="1.0">
-<qresource>
-<file>pictures/novideoplayer.png</file>
-</qresource>
+<RCC>
+    <qresource prefix="/">
+        <file>VERSION</file>
+        <file>pictures/vokoscreen.png</file>
+        <file>pictures/monitor.png</file>
+        <file>pictures/micro.png</file>
+        <file>pictures/videooptionen.png</file>
+        <file>pictures/tools.png</file>
+        <file>pictures/webcam.png</file>
+        <file>pictures/undo.png</file>
+        <file>pictures/magnifier.png</file>
+        <file>pictures/systray-vokoscreen.png</file>
+        <file>pictures/systray-start.png</file>
+        <file>pictures/systray-stop.png</file>
+        <file>pictures/systray-pause.png</file>
+        <file>pictures/systray-record.png</file>
+        <file>pictures/systray-go.png</file>
+        <file>pictures/systray-exit.png</file>
+    </qresource>
 </RCC>
