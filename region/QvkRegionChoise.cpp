@@ -221,6 +221,8 @@ void QvkRegionChoise::mousePressEvent(QMouseEvent *event)
     old_Frame_X2 = frame_X + frame_Width;
     old_Frame_Y2 = frame_Y + frame_height;
 
+    repaint();
+
 #ifdef Q_OS_LINUX
     if ( platform == wayland )
     {
@@ -230,7 +232,7 @@ void QvkRegionChoise::mousePressEvent(QMouseEvent *event)
 
     if ( platform == x11 )
     {
-      repaint();  // eingefügt für HandleTopLeftSize da ein update nicht genügt
+      repaint();
       update();
     }
 #endif
