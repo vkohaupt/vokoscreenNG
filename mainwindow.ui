@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>549</width>
+    <width>638</width>
     <height>267</height>
    </rect>
   </property>
@@ -57,23 +57,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QComboBox" name="comboBoxScreenShotFormat">
-               <item>
-                <property name="text">
-                 <string>png</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>jpeg</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>tiff</string>
-                </property>
-               </item>
-              </widget>
+              <widget class="QComboBox" name="comboBoxScreenShotFormat"/>
              </item>
              <item>
               <spacer name="verticalSpacer_8">
@@ -240,7 +224,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>513</width>
+             <width>602</width>
              <height>120</height>
             </rect>
            </property>
@@ -724,7 +708,7 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>231</width>
+               <width>275</width>
                <height>160</height>
               </rect>
              </property>

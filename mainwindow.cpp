@@ -14,6 +14,7 @@
 #include <QDesktopServices>
 #include <QMimeDatabase>
 #include <QStringList>
+#include <QImageWriter>
 
 // gstreamer-plugins-bad-orig-addon
 // gstreamer-plugins-good-extra
@@ -257,6 +258,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonPause, SLOT( hide() ) );
     connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonShow, SLOT( show() ) );
     connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonPlay, SLOT( hide() ) );
+    connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), this, SLOT( slot_screenshotFormats() ) );
 
 
     // Tab 2 Audio
@@ -337,6 +339,22 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+
+void MainWindow::slot_screenshotFormats()
+{
+    ui->comboBoxScreenShotFormat->clear();
+    QImageWriter imageWriter;
+    QList<QByteArray> list = imageWriter.supportedImageFormats();
+
+    if ( !list.empty() )
+    {
+        for ( int i = 0; i < list.count(); i++ )
+        {
+            ui->comboBoxScreenShotFormat->addItem( list.at( i ) );
+        }
+    }
 }
 
 
