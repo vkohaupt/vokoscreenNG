@@ -199,6 +199,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->toolButtonAudioHelp,   SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabCodec,              SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabMisc,               SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencast, SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreenshot, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStart() ) );
 
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setEnabled( bool ) ) );
@@ -215,6 +217,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->scrollAreaAudioDevice, SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabCodec,              SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabMisc,               SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonScreencast, SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonScreenshot, SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_Stop() ) );
 
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), this,                   SLOT( slot_Pause() ) );
@@ -236,7 +240,19 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( this,                  SIGNAL( signal_close()  ), regionController,   SLOT( slot_close() ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), regionController,   SLOT( show( bool ) ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
+
     connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
+
+    connect( ui->radioButtonScreencast, SIGNAL( toggled( bool ) ), ui->comboBoxScreenShotFormat, SLOT( setDisabled( bool ) ) );
+    connect( ui->radioButtonScreencast, SIGNAL( toggled( bool ) ), ui->pushButtonShot, SLOT( hide() ) );
+    connect( ui->radioButtonScreencast, SIGNAL( toggled( bool ) ), ui->pushButtonStart, SLOT( show() ) );
+    connect( ui->radioButtonScreencast, SIGNAL( toggled( bool ) ), ui->pushButtonStop, SLOT( show() ) );
+    connect( ui->radioButtonScreencast, SIGNAL( toggled( bool ) ), ui->pushButtonPause, SLOT( show() ) );
+
+    connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonShot, SLOT( show() ) );
+    connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonStart, SLOT( hide() ) );
+    connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonStop, SLOT( hide() ) );
+    connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonPause, SLOT( hide() ) );
 
     // Tab 2 Audio
     ui->toolButtonAudioHelp->setIcon( ui->pushButtonStart->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
@@ -305,6 +321,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( desk, SIGNAL( screenCountChanged(int) ), SLOT( slot_screenCountChanged( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          SLOT( slot_screenCountChanged( int ) ) );
     emit desk->screenCountChanged(0);
+
+    // Checkable Widget sind in vokoscreen standardmäßig nicht gesetzt.
+    // Diese werden hier beziehungsweise wenn die Settings vorhanden sind dort gestzt.
+    ui->radioButtonScreencast->click();
+    ui->radioButtonFullscreen->click();
 }
 
 
