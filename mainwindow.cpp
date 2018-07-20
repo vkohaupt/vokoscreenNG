@@ -15,6 +15,8 @@
 #include <QMimeDatabase>
 #include <QStringList>
 #include <QImageWriter>
+#include <QScreen>
+#include <QTest>
 
 // gstreamer-plugins-bad-orig-addon
 // gstreamer-plugins-good-extra
@@ -235,6 +237,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonStop,     SLOT( setDisabled( bool ) ) );
     ui->pushButtonContinue->hide();
 
+    connect( ui->pushButtonShot, SIGNAL( clicked( bool ) ), this, SLOT( slot_shotScreenshot() ) );
+
+
     connect( ui->pushButtonPlay, SIGNAL( clicked( bool ) ), this, SLOT( slot_Play() ) );
 
     // Tab 1 Screen
@@ -355,6 +360,29 @@ void MainWindow::slot_screenshotFormats()
             ui->comboBoxScreenShotFormat->addItem( list.at( i ) );
         }
     }
+}
+
+
+void MainWindow::slot_shotScreenshot()
+{
+   if ( ui->radioButtonFullscreen )
+   {
+       this->hide();
+       QTest::qSleep( 1000 );
+       QApplication::beep();
+       QScreen *screen = QGuiApplication::primaryScreen();
+       QPixmap pixmap = screen->grabWindow( QApplication::desktop()->winId() );
+       bool ok = pixmap.save( "/home/vk/test." + ui->comboBoxScreenShotFormat->currentText() );
+       int height = ui->labelScreenShotPicture->height();
+       int width = ui->labelScreenShotPicture->width();
+       ui->labelScreenShotPicture->setMaximumHeight( height );
+       ui->labelScreenShotPicture->setMaximumWidth( width );
+       ui->labelScreenShotPicture->setScaledContents( true );
+       ui->labelScreenShotPicture->setAlignment( Qt::AlignCenter );
+       ui->labelScreenShotPicture->setStyleSheet( "background-color:black;" );
+       ui->labelScreenShotPicture->setPixmap( pixmap );
+       this->show();
+   }
 }
 
 

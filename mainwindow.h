@@ -90,6 +90,7 @@ private slots:
     void slot_availableHelp();
 
     void slot_screenshotFormats();
+    void slot_shotScreenshot();
 
 signals:
     void signal_close();

@@ -36,45 +36,6 @@
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <layout class="QGridLayout" name="gridLayout">
-          <item row="1" column="0">
-           <widget class="QFrame" name="frame">
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_13">
-             <item>
-              <widget class="QRadioButton" name="radioButtonScreencast">
-               <property name="text">
-                <string>Screencast</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="radioButtonScreenshot">
-               <property name="text">
-                <string>Screenshot</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QComboBox" name="comboBoxScreenShotFormat"/>
-             </item>
-             <item>
-              <spacer name="verticalSpacer_8">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>40</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-            </layout>
-           </widget>
-          </item>
           <item row="1" column="2">
            <widget class="QFrame" name="frame_3">
             <property name="frameShape">
@@ -100,6 +61,20 @@
                 </size>
                </property>
               </spacer>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="radioButtonScreencast">
+               <property name="text">
+                <string>Screencast</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="radioButtonScreenshot">
+               <property name="text">
+                <string>Screenshot</string>
+               </property>
+              </widget>
              </item>
             </layout>
            </widget>
@@ -163,6 +138,42 @@
                 <widget class="QSpinBox" name="spinBoxCountDown"/>
                </item>
               </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QFrame" name="frame">
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_13">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_15">
+               <item>
+                <widget class="QCheckBox" name="checkBoxScrenshot">
+                 <property name="text">
+                  <string>Screenshot</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="comboBoxScreenShotFormat"/>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QLabel" name="labelScreenShotPicture">
+               <property name="frameShape">
+                <enum>QFrame::Box</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <property name="text">
+                <string notr="true"/>
+               </property>
+              </widget>
              </item>
             </layout>
            </widget>
