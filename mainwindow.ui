@@ -968,6 +968,19 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonShow">
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Show</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>

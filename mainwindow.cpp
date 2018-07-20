@@ -248,11 +248,16 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->radioButtonScreencast, SIGNAL( toggled( bool ) ), ui->pushButtonStart, SLOT( show() ) );
     connect( ui->radioButtonScreencast, SIGNAL( toggled( bool ) ), ui->pushButtonStop, SLOT( show() ) );
     connect( ui->radioButtonScreencast, SIGNAL( toggled( bool ) ), ui->pushButtonPause, SLOT( show() ) );
+    connect( ui->radioButtonScreencast, SIGNAL( toggled( bool ) ), ui->pushButtonShow, SLOT( hide() ) );
+    connect( ui->radioButtonScreencast, SIGNAL( toggled( bool ) ), ui->pushButtonPlay, SLOT( show() ) );
 
     connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonShot, SLOT( show() ) );
     connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonStart, SLOT( hide() ) );
     connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonStop, SLOT( hide() ) );
     connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonPause, SLOT( hide() ) );
+    connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonShow, SLOT( show() ) );
+    connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonPlay, SLOT( hide() ) );
+
 
     // Tab 2 Audio
     ui->toolButtonAudioHelp->setIcon( ui->pushButtonStart->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
