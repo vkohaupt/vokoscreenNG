@@ -235,7 +235,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonStop,     SLOT( setDisabled( bool ) ) );
     ui->pushButtonContinue->hide();
 
-    connect( ui->pushButtonShot, SIGNAL( clicked( bool ) ), this, SLOT( slot_shot_Screenshot() ) );
+    connect( ui->pushButtonShot, SIGNAL( clicked( bool ) ), this, SLOT( slot_preshot_Screenshot() ) );
 
     connect( ui->pushButtonPlay, SIGNAL( clicked( bool ) ), this, SLOT( slot_Play() ) );
 
@@ -359,30 +359,57 @@ void MainWindow::slot_formats_Screenshot()
 }
 
 
+void MainWindow::slot_preshot_Screenshot()
+{
+    if ( ui->radioButtonFullscreen->isChecked() == true )
+    {
+        hide();
+        slot_shot_Screenshot();
+    }
+
+    if( ui->radioButtonWindow->isChecked() == true )
+    {
+        hide();
+        disconnect( vkWinInfo, 0, 0, 0 );
+        connect( vkWinInfo, SIGNAL( windowChanged( bool ) ), this, SLOT( slot_shot_Screenshot() ) );
+        vkWinInfo->slot_start();
+    }
+
+}
+
+
 void MainWindow::slot_shot_Screenshot()
 {
-   if ( ui->radioButtonFullscreen )
-   {
-       this->hide();
-       QTest::qSleep( 1000 );
-       QApplication::beep();
-       QScreen *screen = QGuiApplication::primaryScreen();
-       QPixmap pixmap = screen->grabWindow( QApplication::desktop()->winId() );
+    QTest::qSleep( 1000 );
+    QApplication::beep();
+    QPixmap pixmap;
 
-       QString path = ui->lineEditPicturePath->text();
-       QString filename = "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxScreenShotFormat->currentText();
+    if ( ui->radioButtonFullscreen->isChecked() == true )
+    {
+        QScreen *screen = QGuiApplication::primaryScreen();
+        pixmap = screen->grabWindow( QApplication::desktop()->winId() );
+    }
 
-       bool ok = pixmap.save( path + QDir::separator() + filename );
-       int height = ui->labelScreenShotPicture->height();
-       int width = ui->labelScreenShotPicture->width();
-       ui->labelScreenShotPicture->setMaximumHeight( height );
-       ui->labelScreenShotPicture->setMaximumWidth( width );
-       ui->labelScreenShotPicture->setScaledContents( true );
-       ui->labelScreenShotPicture->setAlignment( Qt::AlignCenter );
-       ui->labelScreenShotPicture->setStyleSheet( "background-color:black;" );
-       ui->labelScreenShotPicture->setPixmap( pixmap );
-       this->show();
-   }
+    if( ui->radioButtonWindow->isChecked() == true )
+    {
+        QScreen *screen = QGuiApplication::primaryScreen();
+        pixmap = screen->grabWindow( vkWinInfo->getWinID() );
+    }
+
+    QString path = ui->lineEditPicturePath->text();
+    QString filename = "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxScreenShotFormat->currentText();
+
+    bool ok = pixmap.save( path + QDir::separator() + filename );
+    Q_UNUSED(ok);
+    int height = ui->labelScreenShotPicture->height();
+    int width = ui->labelScreenShotPicture->width();
+    ui->labelScreenShotPicture->setMaximumHeight( height );
+    ui->labelScreenShotPicture->setMaximumWidth( width );
+    ui->labelScreenShotPicture->setScaledContents( true );
+    ui->labelScreenShotPicture->setAlignment( Qt::AlignCenter );
+    ui->labelScreenShotPicture->setStyleSheet( "background-color:black;" );
+    ui->labelScreenShotPicture->setPixmap( pixmap );
+    show();
 }
 
 

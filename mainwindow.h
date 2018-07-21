@@ -90,6 +90,7 @@ private slots:
     void slot_availableHelp();
 
     void slot_formats_Screenshot();
+    void slot_preshot_Screenshot();
     void slot_shot_Screenshot();
     void slot_show_Screenshoot();
 
