@@ -81,12 +81,6 @@ QPixmap QvkRegionButtonArrow::getPixmapHandle( Qt::GlobalColor color, degreeArro
       painter.drawPixmap( 0, 0, getArrow( degree ) );
     painter.end();
 
-    switch( degree )
-    {
-      case topMiddle   : pixmap.save( "testTopMiddle.png" );break;
-      case topRight    : pixmap.save( "testTopRight.png" );break;
-      case rightMiddle : pixmap.save( "testRightMiddle.png" );break;
-     }
     return pixmap;
 }
 
