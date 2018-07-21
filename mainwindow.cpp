@@ -375,6 +375,13 @@ void MainWindow::slot_preshot_Screenshot()
         vkWinInfo->slot_start();
     }
 
+    if ( ui->radioButtonArea->isChecked() == true )
+    {
+        hide();
+        regionController->hide();
+        slot_shot_Screenshot();
+        regionController->show( true );
+    }
 }
 
 
@@ -394,6 +401,16 @@ void MainWindow::slot_shot_Screenshot()
     {
         QScreen *screen = QGuiApplication::primaryScreen();
         pixmap = screen->grabWindow( vkWinInfo->getWinID() );
+    }
+
+    if ( ui->radioButtonArea->isChecked() == true )
+    {
+        int x = regionController->getXRecordArea();
+        int y = regionController->getYRecordArea();
+        int width = regionController->getWidth();
+        int height = regionController->getHeight();
+        QScreen *screen = QGuiApplication::primaryScreen();
+        pixmap = screen->grabWindow( QApplication::desktop()->winId(), x, y, width, height );
     }
 
     QString path = ui->lineEditPicturePath->text();
