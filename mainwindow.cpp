@@ -144,6 +144,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
 
+    move( 0, 0 );
+
     qDebug() << "[vokoscreen]" << gst_version_string ();
 
 /*
