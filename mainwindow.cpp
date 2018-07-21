@@ -202,8 +202,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->toolButtonAudioHelp,   SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabCodec,              SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabMisc,               SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencast, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreenshot, SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxScreenshot,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStart() ) );
 
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setEnabled( bool ) ) );
@@ -220,8 +219,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->scrollAreaAudioDevice, SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabCodec,              SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabMisc,               SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonScreencast, SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonScreenshot, SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxScreenshot,    SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_Stop() ) );
 
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), this,                   SLOT( slot_Pause() ) );
@@ -237,10 +235,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonStop,     SLOT( setDisabled( bool ) ) );
     ui->pushButtonContinue->hide();
 
-    connect( ui->pushButtonShot, SIGNAL( clicked( bool ) ), this, SLOT( slot_shotScreenshot() ) );
-
+    connect( ui->pushButtonShot, SIGNAL( clicked( bool ) ), this, SLOT( slot_shot_Screenshot() ) );
 
     connect( ui->pushButtonPlay, SIGNAL( clicked( bool ) ), this, SLOT( slot_Play() ) );
+
+    connect( ui->pushButtonShow, SIGNAL( clicked( bool ) ), this, SLOT( slot_show_Screenshoot() ) );
+
 
     // Tab 1 Screen
     connect( this,                  SIGNAL( signal_close()  ), regionController,   SLOT( slot_close() ) );
@@ -249,21 +249,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
 
-    connect( ui->radioButtonScreencast, SIGNAL( toggled( bool ) ), ui->comboBoxScreenShotFormat, SLOT( setDisabled( bool ) ) );
-    connect( ui->radioButtonScreencast, SIGNAL( toggled( bool ) ), ui->pushButtonShot, SLOT( hide() ) );
-    connect( ui->radioButtonScreencast, SIGNAL( toggled( bool ) ), ui->pushButtonStart, SLOT( show() ) );
-    connect( ui->radioButtonScreencast, SIGNAL( toggled( bool ) ), ui->pushButtonStop, SLOT( show() ) );
-    connect( ui->radioButtonScreencast, SIGNAL( toggled( bool ) ), ui->pushButtonPause, SLOT( show() ) );
-    connect( ui->radioButtonScreencast, SIGNAL( toggled( bool ) ), ui->pushButtonShow, SLOT( hide() ) );
-    connect( ui->radioButtonScreencast, SIGNAL( toggled( bool ) ), ui->pushButtonPlay, SLOT( show() ) );
-
-    connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonShot, SLOT( show() ) );
-    connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonStart, SLOT( hide() ) );
-    connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonStop, SLOT( hide() ) );
-    connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonPause, SLOT( hide() ) );
-    connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonShow, SLOT( show() ) );
-    connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonPlay, SLOT( hide() ) );
-    connect( ui->radioButtonScreenshot, SIGNAL( toggled( bool ) ), this, SLOT( slot_screenshotFormats() ) );
+    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->comboBoxScreenShotFormat, SLOT( setEnabled( bool ) ) );
+    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonShot,  SLOT( setVisible( bool ) ) );
+    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonStart, SLOT( setHidden( bool ) ) );
+    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonStop,  SLOT( setHidden( bool ) ) );
+    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonPause, SLOT( setHidden( bool ) ) );
+    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonShow,  SLOT( setVisible( bool ) ) );
+    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonPlay,  SLOT( setHidden( bool ) ) );
+    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), this, SLOT( slot_formats_Screenshot() ) );
 
 
     // Tab 2 Audio
@@ -300,6 +293,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( videoFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
 
+    ui->lineEditPicturePath->setText( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
+
     // Tab 5 Camera
     webcamController = new QvkWebcamController( ui );
 
@@ -335,8 +330,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     emit desk->screenCountChanged(0);
 
     // Checkable Widget sind in vokoscreen standardmäßig nicht gesetzt.
-    // Diese werden hier beziehungsweise wenn die Settings vorhanden sind dort gestzt.
-    ui->radioButtonScreencast->click();
+    // Diese werden hier beziehungsweise wenn die Settings vorhanden sind dort gesetzt.
+    ui->checkBoxScreenshot->click();
+    ui->checkBoxScreenshot->click();
     ui->radioButtonFullscreen->click();
 }
 
@@ -347,7 +343,7 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::slot_screenshotFormats()
+void MainWindow::slot_formats_Screenshot()
 {
     ui->comboBoxScreenShotFormat->clear();
     QImageWriter imageWriter;
@@ -363,7 +359,7 @@ void MainWindow::slot_screenshotFormats()
 }
 
 
-void MainWindow::slot_shotScreenshot()
+void MainWindow::slot_shot_Screenshot()
 {
    if ( ui->radioButtonFullscreen )
    {
@@ -372,7 +368,11 @@ void MainWindow::slot_shotScreenshot()
        QApplication::beep();
        QScreen *screen = QGuiApplication::primaryScreen();
        QPixmap pixmap = screen->grabWindow( QApplication::desktop()->winId() );
-       bool ok = pixmap.save( "/home/vk/test." + ui->comboBoxScreenShotFormat->currentText() );
+
+       QString path = ui->lineEditPicturePath->text();
+       QString filename = "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxScreenShotFormat->currentText();
+
+       bool ok = pixmap.save( path + QDir::separator() + filename );
        int height = ui->labelScreenShotPicture->height();
        int width = ui->labelScreenShotPicture->width();
        ui->labelScreenShotPicture->setMaximumHeight( height );
@@ -383,6 +383,32 @@ void MainWindow::slot_shotScreenshot()
        ui->labelScreenShotPicture->setPixmap( pixmap );
        this->show();
    }
+}
+
+
+void MainWindow::slot_show_Screenshoot()
+{
+    qDebug() << "[vokoscreen] show picture with standard system displayer";
+    QDir dir( ui->lineEditPicturePath->text() );
+    QStringList filters;
+    filters << "vokoscreen*";
+    QStringList pictureFileList = dir.entryList( filters, QDir::Files, QDir::Time );
+
+    QString string;
+    string.append( "file://" );
+    string.append( ui->lineEditPicturePath->text() );
+    string.append( QDir::separator() );
+    string.append( pictureFileList.at( 0 ) );
+    bool b = QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) );
+    if ( b == false )
+    {
+        QDialog *newDialog = new QDialog;
+        Ui_NoPlayerDialog myUiDialog;
+        myUiDialog.setupUi( newDialog );
+        newDialog->setModal( true );
+        newDialog->setWindowTitle( "vokoscreen" );
+        newDialog->show();
+    }
 }
 
 

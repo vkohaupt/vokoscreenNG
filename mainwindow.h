@@ -89,8 +89,9 @@ private slots:
     void slot_audioHelp();
     void slot_availableHelp();
 
-    void slot_screenshotFormats();
-    void slot_shotScreenshot();
+    void slot_formats_Screenshot();
+    void slot_shot_Screenshot();
+    void slot_show_Screenshoot();
 
 signals:
     void signal_close();
