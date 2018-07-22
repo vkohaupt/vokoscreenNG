@@ -94,6 +94,7 @@ private slots:
     void slot_shot_Screenshot();
     void slot_show_Screenshoot();
 
+
 signals:
     void signal_close();
     void signal_close_webcam( bool value );

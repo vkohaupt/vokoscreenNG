@@ -264,6 +264,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonShow,  SLOT( setVisible( bool ) ) );
     connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonPlay,  SLOT( setHidden( bool ) ) );
     connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), this, SLOT( slot_formats_Screenshot() ) );
+    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->labelScreenShotPicture, SLOT( setEnabled( bool ) ) );
+    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->tabAudio, SLOT( setDisabled( bool ) ) );
+    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->tabCodec, SLOT( setDisabled( bool ) ) );
+
 
     // Tab 2 Audio
     ui->toolButtonAudioHelp->setIcon( ui->pushButtonStart->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
@@ -411,19 +415,19 @@ void MainWindow::slot_shot_Screenshot()
 
     if ( ui->radioButtonArea->isChecked() == true )
     {
-        int x = regionController->getXRecordArea();
-        int y = regionController->getYRecordArea();
-        int width = regionController->getWidth();
-        int height = regionController->getHeight();
         QScreen *screen = QGuiApplication::primaryScreen();
-        pixmap = screen->grabWindow( QApplication::desktop()->winId(), x, y, width, height );
+        pixmap = screen->grabWindow( QApplication::desktop()->winId(),
+                                     regionController->getXRecordArea(),
+                                     regionController->getYRecordArea(),
+                                     regionController->getWidth(),
+                                     regionController->getHeight() );
     }
 
-    QString path = ui->lineEditPicturePath->text();
-    QString filename = "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxScreenShotFormat->currentText();
-
-    bool ok = pixmap.save( path + QDir::separator() + filename );
+    bool ok = pixmap.save( ui->lineEditPicturePath->text() + \
+                           QDir::separator() + \
+                           "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxScreenShotFormat->currentText() );
     Q_UNUSED(ok);
+
     int height = ui->labelScreenShotPicture->height();
     int width = ui->labelScreenShotPicture->width();
     ui->labelScreenShotPicture->setMaximumHeight( height );

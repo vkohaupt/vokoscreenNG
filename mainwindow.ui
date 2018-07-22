@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>529</width>
-    <height>280</height>
+    <height>267</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -132,10 +132,7 @@
            </widget>
           </item>
           <item row="1" column="3">
-           <widget class="QFrame" name="frame">
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
-            </property>
+           <widget class="QFrame" name="frameScreenshot">
             <layout class="QVBoxLayout" name="verticalLayout_13">
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_15">
@@ -156,14 +153,8 @@
                <property name="frameShape">
                 <enum>QFrame::Box</enum>
                </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
                <property name="text">
                 <string notr="true"/>
-               </property>
-               <property name="scaledContents">
-                <bool>false</bool>
                </property>
               </widget>
              </item>
@@ -228,7 +219,7 @@
              <x>0</x>
              <y>0</y>
              <width>493</width>
-             <height>133</height>
+             <height>120</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -729,7 +720,7 @@
                <x>0</x>
                <y>0</y>
                <width>216</width>
-               <height>173</height>
+               <height>160</height>
               </rect>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_7">
