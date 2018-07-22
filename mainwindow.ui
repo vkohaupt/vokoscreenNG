@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string notr="true">MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -85,15 +85,12 @@
                <property name="text">
                 <string>Fulls&amp;creen</string>
                </property>
-               <property name="checkable">
-                <bool>true</bool>
-               </property>
               </widget>
              </item>
              <item>
               <widget class="QRadioButton" name="radioButtonWindow">
                <property name="text">
-                <string>Wi&amp;ndow</string>
+                <string>Window</string>
                </property>
               </widget>
              </item>
@@ -161,7 +158,7 @@
                   <string>Help</string>
                  </property>
                  <property name="text">
-                  <string>Help</string>
+                  <string notr="true">Help</string>
                  </property>
                 </widget>
                </item>
@@ -224,7 +221,7 @@
              <string>Help</string>
             </property>
             <property name="text">
-             <string>Help</string>
+             <string notr="true">Help</string>
             </property>
            </widget>
           </item>
@@ -240,8 +237,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>491</width>
-             <height>120</height>
+             <width>64</width>
+             <height>16</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -400,7 +397,7 @@
           <item row="1" column="2">
            <widget class="QToolButton" name="toolButtonPicturePath">
             <property name="text">
-             <string>...</string>
+             <string notr="true">...</string>
             </property>
            </widget>
           </item>
@@ -741,8 +738,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>198</width>
-               <height>160</height>
+               <width>36</width>
+               <height>76</height>
               </rect>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -791,7 +788,7 @@
               <item>
                <widget class="QLabel" name="labelAvalible">
                 <property name="text">
-                 <string>Bild</string>
+                 <string notr="true">Bild</string>
                 </property>
                </widget>
               </item>
@@ -822,7 +819,7 @@
               <item>
                <widget class="QLabel" name="labelNotAvailable">
                 <property name="text">
-                 <string>Bild</string>
+                 <string notr="true">Bild</string>
                 </property>
                </widget>
               </item>
@@ -868,7 +865,7 @@
             <item>
              <widget class="QToolButton" name="toolButtonAvalaibleHelp">
               <property name="toolTip">
-               <string notr="true">Help</string>
+               <string>Help</string>
               </property>
               <property name="text">
                <string notr="true">Help</string>
@@ -896,7 +893,7 @@
       </widget>
       <widget class="QWidget" name="tabClipboard">
        <attribute name="title">
-        <string>Seite</string>
+        <string notr="true">Seite</string>
        </attribute>
        <widget class="QPushButton" name="pushButtonShot">
         <property name="geometry">
