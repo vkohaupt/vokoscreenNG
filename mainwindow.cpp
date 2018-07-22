@@ -179,6 +179,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->tabWidget->setTabIcon( 5, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/webcam.png" ) ) );
     makeAndSetValidIcon( 5 );
 
+    // Hide the last tab
+    ui->tabWidget->removeTab( ui->tabWidget->count() - 1 );
+
 
     regionController = new QvkRegionController();
     regionController->hide();
@@ -238,10 +241,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->pushButtonContinue->hide();
 
     connect( ui->pushButtonShot, SIGNAL( clicked( bool ) ), this, SLOT( slot_preshot_Screenshot() ) );
+    ui->horizontalLayout->addWidget( ui->pushButtonShot ); // move from tabClipboard
 
     connect( ui->pushButtonPlay, SIGNAL( clicked( bool ) ), this, SLOT( slot_Play() ) );
 
     connect( ui->pushButtonShow, SIGNAL( clicked( bool ) ), this, SLOT( slot_show_Screenshoot() ) );
+    ui->horizontalLayout->addWidget( ui->pushButtonShow ); // move from tabClipboard
 
 
     // Tab 1 Screen
@@ -259,7 +264,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonShow,  SLOT( setVisible( bool ) ) );
     connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonPlay,  SLOT( setHidden( bool ) ) );
     connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), this, SLOT( slot_formats_Screenshot() ) );
-
 
     // Tab 2 Audio
     ui->toolButtonAudioHelp->setIcon( ui->pushButtonStart->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>638</width>
-    <height>267</height>
+    <width>529</width>
+    <height>280</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -44,8 +44,11 @@
             <layout class="QVBoxLayout" name="verticalLayout_7">
              <item>
               <widget class="QComboBox" name="comboBoxScreen">
-               <property name="styleSheet">
-                <string notr="true">test123::url(:/pictures/novideoplayer.png)</string>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
                </property>
               </widget>
              </item>
@@ -116,28 +119,12 @@
                   <string>Countdown</string>
                  </property>
                  <property name="alignment">
-                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                  </property>
                 </widget>
                </item>
                <item>
                 <widget class="QSpinBox" name="spinBoxCountDown"/>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeType">
-                  <enum>QSizePolicy::Minimum</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
                </item>
               </layout>
              </item>
@@ -174,6 +161,9 @@
                </property>
                <property name="text">
                 <string notr="true"/>
+               </property>
+               <property name="scaledContents">
+                <bool>false</bool>
                </property>
               </widget>
              </item>
@@ -237,8 +227,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>602</width>
-             <height>120</height>
+             <width>493</width>
+             <height>133</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -738,8 +728,8 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>275</width>
-               <height>160</height>
+               <width>216</width>
+               <height>173</height>
               </rect>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -891,6 +881,49 @@
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="tabClipboard">
+       <attribute name="title">
+        <string>Seite</string>
+       </attribute>
+       <widget class="QPushButton" name="pushButtonShot">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>40</y>
+          <width>99</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Shot</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButtonShow">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>80</y>
+          <width>99</width>
+          <height>34</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Show</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </item>
     <item>
@@ -905,19 +938,6 @@
         </property>
         <property name="text">
          <string>Start</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonShot">
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Shot</string>
         </property>
        </widget>
       </item>
@@ -979,19 +999,6 @@
         </property>
         <property name="text">
          <string>Play</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButtonShow">
-        <property name="font">
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Show</string>
         </property>
        </widget>
       </item>
