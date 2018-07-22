@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>529</width>
+    <width>527</width>
     <height>267</height>
    </rect>
   </property>
@@ -42,6 +42,9 @@
              <enum>QFrame::NoFrame</enum>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_7">
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
              <item>
               <widget class="QComboBox" name="comboBoxScreen">
                <property name="sizePolicy">
@@ -74,6 +77,9 @@
              <enum>QFrame::NoFrame</enum>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_6">
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
              <item>
               <widget class="QRadioButton" name="radioButtonFullscreen">
                <property name="text">
@@ -134,6 +140,9 @@
           <item row="1" column="3">
            <widget class="QFrame" name="frameScreenshot">
             <layout class="QVBoxLayout" name="verticalLayout_13">
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_15">
                <item>
@@ -145,6 +154,16 @@
                </item>
                <item>
                 <widget class="QComboBox" name="comboBoxScreenShotFormat"/>
+               </item>
+               <item>
+                <widget class="QToolButton" name="toolButtonScreenHelp">
+                 <property name="toolTip">
+                  <string>Help</string>
+                 </property>
+                 <property name="text">
+                  <string>Help</string>
+                 </property>
+                </widget>
                </item>
               </layout>
              </item>
@@ -221,7 +240,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>493</width>
+             <width>491</width>
              <height>120</height>
             </rect>
            </property>
@@ -722,7 +741,7 @@
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>216</width>
+               <width>198</width>
                <height>160</height>
               </rect>
              </property>
@@ -849,10 +868,10 @@
             <item>
              <widget class="QToolButton" name="toolButtonAvalaibleHelp">
               <property name="toolTip">
-               <string>Help</string>
+               <string notr="true">Help</string>
               </property>
               <property name="text">
-               <string notr="true"/>
+               <string notr="true">Help</string>
               </property>
              </widget>
             </item>

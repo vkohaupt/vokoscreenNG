@@ -250,6 +250,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 
     // Tab 1 Screen
+    ui->toolButtonScreenHelp->setIcon( ui->toolButtonScreenHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( this,                  SIGNAL( signal_close()  ), regionController,   SLOT( slot_close() ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), regionController,   SLOT( show( bool ) ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
@@ -270,7 +271,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 
     // Tab 2 Audio
-    ui->toolButtonAudioHelp->setIcon( ui->pushButtonStart->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonAudioHelp->setIcon( ui->toolButtonAudioHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->toolButtonAudioHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioHelp() ) );;
     ui->radioButtonPulse->setAccessibleName( "pulsesrc" );
     ui->radioButtonAlsa->setAccessibleName( "alsasrc" );
@@ -310,15 +311,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 
     // Tab 6 Available muxer, encoder etc.
-    ui->toolButtonAvalaibleHelp->setIcon( ui->pushButtonStart->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonAvalaibleHelp->setIcon( ui->toolButtonAvalaibleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->toolButtonAvalaibleHelp, SIGNAL( clicked( bool ) ), SLOT( slot_availableHelp() ) );
-
-    // Close
-    connect( this, SIGNAL( signal_close() ),  ui->pushButtonContinue, SLOT( click() ) );
-    connect( this, SIGNAL( signal_close() ),  ui->pushButtonStop, SLOT( click() ) );
-    connect( this, SIGNAL( signal_close() ),  regionController, SLOT( close() ) );
-    connect( this, SIGNAL( signal_close_webcam( bool ) ),  ui->CheckBoxCamera, SLOT( setChecked( bool ) ) );
-
 
     QIcon iconAvailable = ui->labelAvalible->style()->standardIcon( QStyle::SP_DialogApplyButton );
     QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
@@ -327,6 +321,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     QIcon iconNotAvailable = ui->labelNotAvailable->style()->standardIcon( QStyle::SP_MessageBoxCritical );
     ui->labelNotAvailable->setPixmap( iconNotAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
     // End Tabs
+
+    // Close
+    connect( this, SIGNAL( signal_close() ),  ui->pushButtonContinue, SLOT( click() ) );
+    connect( this, SIGNAL( signal_close() ),  ui->pushButtonStop, SLOT( click() ) );
+    connect( this, SIGNAL( signal_close() ),  regionController, SLOT( close() ) );
+    connect( this, SIGNAL( signal_close_webcam( bool ) ),  ui->CheckBoxCamera, SLOT( setChecked( bool ) ) );
 
     VK_Supported_Formats_And_Codecs();
     VK_Check_is_Format_available();
