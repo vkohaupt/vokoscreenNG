@@ -98,6 +98,7 @@ private slots:
 signals:
     void signal_close();
     void signal_close_webcam( bool value );
+    void signal_finish_screenshot( bool );
 
 
 protected:

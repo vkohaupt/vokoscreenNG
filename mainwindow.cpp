@@ -371,10 +371,34 @@ void MainWindow::slot_formats_Screenshot()
 
 void MainWindow::slot_preshot_Screenshot()
 {
+    if ( ( ui->radioButtonFullscreen->isChecked() == true ) and ( ui->spinBoxCountDown->value() > 0 ) )
+    {
+        hide();
+        disconnect( vkCountdown, 0, 0, 0 );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this, SLOT( slot_shot_Screenshot() ) );
+        vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
+        return;
+    }
+
     if ( ui->radioButtonFullscreen->isChecked() == true )
     {
         hide();
         slot_shot_Screenshot();
+        return;
+    }
+
+    // ----------------------------------------------------------------------------------------------------------
+
+    if( ( ui->radioButtonWindow->isChecked() == true )  and ( ui->spinBoxCountDown->value() > 0 ) )
+    {
+
+        hide();
+        disconnect( vkCountdown, 0, 0, 0 );
+        disconnect( vkWinInfo, 0, 0, 0 );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), vkWinInfo, SLOT( slot_start() ) );
+        connect( vkWinInfo, SIGNAL( windowChanged( bool ) ), this, SLOT( slot_shot_Screenshot() ) );
+        vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
+        return;
     }
 
     if( ui->radioButtonWindow->isChecked() == true )
@@ -383,6 +407,20 @@ void MainWindow::slot_preshot_Screenshot()
         disconnect( vkWinInfo, 0, 0, 0 );
         connect( vkWinInfo, SIGNAL( windowChanged( bool ) ), this, SLOT( slot_shot_Screenshot() ) );
         vkWinInfo->slot_start();
+        return;
+    }
+
+    // -----------------------------------------------------------------------------------------------------------
+
+    if ( ( ui->radioButtonArea->isChecked() == true ) and ( ui->spinBoxCountDown->value() > 0 ) )
+    {
+        hide();
+        regionController->hide();
+        disconnect( vkCountdown, 0, 0, 0 );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ),   this,             SLOT( slot_shot_Screenshot() ) );
+        connect( this,        SIGNAL( signal_finish_screenshot( bool ) ), regionController, SLOT( show( bool ) ) );
+        vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
+        return;
     }
 
     if ( ui->radioButtonArea->isChecked() == true )
@@ -437,6 +475,7 @@ void MainWindow::slot_shot_Screenshot()
     ui->labelScreenShotPicture->setStyleSheet( "background-color:black;" );
     ui->labelScreenShotPicture->setPixmap( pixmap );
     show();
+    emit signal_finish_screenshot( true );
 }
 
 
