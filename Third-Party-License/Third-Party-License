@@ -16,9 +16,3 @@ GStreamer:
 License --> LGPL
 File    --> LGPL
 URL     --> https://gstreamer.freedesktop.org/
-
-
-libqxt:
-Licence --> Qxt
-File    --> Qxt
-URL     --> http://libqxt.org

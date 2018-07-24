@@ -58,10 +58,8 @@ include(region/regionselection.pri)
 
 # winInfo
 unix:include(winInfo/linux/winInfoLinux.pri)
+unix:LIBS += -lX11
 win32:include(winInfo/windows/winInfoWindows.pri)
-
-# libqxt
-unix:include(libqxtQt5/libqxt.pri)
 
 # countdown
 include(countdown/countdown.pri)

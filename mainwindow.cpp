@@ -161,6 +161,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
         qDebug() << s;
     }
 */
+
+    makeValidIconForSideBar( 0 );
+    makeValidIconForSideBar( 1 );
+    ui->tabWidgetSideBar->setTabIcon( 2, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
+    makeValidIconForSideBar( 2 );
+
+
     ui->tabWidget->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
     makeAndSetValidIcon( 0 );
 
@@ -173,15 +180,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->tabWidget->setTabIcon( 3, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
     makeAndSetValidIcon( 3 );
 
-    ui->tabWidget->setTabIcon( 4, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
+    ui->tabWidget->setTabIcon( 4, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/webcam.png" ) ) );
     makeAndSetValidIcon( 4 );
-
-    ui->tabWidget->setTabIcon( 5, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/webcam.png" ) ) );
-    makeAndSetValidIcon( 5 );
-
-    // Hide the last tab
-    ui->tabWidget->removeTab( ui->tabWidget->count() - 1 );
-
 
     regionController = new QvkRegionController();
     regionController->hide();
@@ -207,7 +207,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->toolButtonAudioHelp,   SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabCodec,              SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabMisc,               SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxScreenshot,    SLOT( setEnabled( bool ) ) );
+    //connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxScreenshot,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStart() ) );
 
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setEnabled( bool ) ) );
@@ -224,7 +224,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->scrollAreaAudioDevice, SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabCodec,              SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabMisc,               SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxScreenshot,    SLOT( setDisabled( bool ) ) );
+    //connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxScreenshot,    SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_Stop() ) );
 
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), this,                   SLOT( slot_Pause() ) );
@@ -240,34 +240,33 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonStop,     SLOT( setDisabled( bool ) ) );
     ui->pushButtonContinue->hide();
 
-    connect( ui->pushButtonShot, SIGNAL( clicked( bool ) ), this, SLOT( slot_preshot_Screenshot() ) );
-    ui->horizontalLayout->addWidget( ui->pushButtonShot ); // move from tabClipboard
+    connect( ui->pushButtonScreenshotShot, SIGNAL( clicked( bool ) ), this, SLOT( slot_preshot_Screenshot() ) );
+    //ui->horizontalLayout->addWidget( ui->pushButtonShot ); // move from tabClipboard
 
     connect( ui->pushButtonPlay, SIGNAL( clicked( bool ) ), this, SLOT( slot_Play() ) );
 
-    connect( ui->pushButtonShow, SIGNAL( clicked( bool ) ), this, SLOT( slot_show_Screenshoot() ) );
-    ui->horizontalLayout->addWidget( ui->pushButtonShow ); // move from tabClipboard
+    connect( ui->pushButtonScreenshotShow, SIGNAL( clicked( bool ) ), this, SLOT( slot_show_Screenshoot() ) );
+    //ui->horizontalLayout->addWidget( ui->pushButtonShow ); // move from tabClipboard
 
 
     // Tab 1 Screen
-    ui->toolButtonScreenHelp->setIcon( ui->toolButtonScreenHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( this,                  SIGNAL( signal_close()  ), regionController,   SLOT( slot_close() ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), regionController,   SLOT( show( bool ) ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
 
     connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
 
-    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->comboBoxScreenShotFormat, SLOT( setEnabled( bool ) ) );
-    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonShot,  SLOT( setVisible( bool ) ) );
-    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonStart, SLOT( setHidden( bool ) ) );
-    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonStop,  SLOT( setHidden( bool ) ) );
-    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonPause, SLOT( setHidden( bool ) ) );
-    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonShow,  SLOT( setVisible( bool ) ) );
-    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonPlay,  SLOT( setHidden( bool ) ) );
-    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), this, SLOT( slot_formats_Screenshot() ) );
-    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->labelScreenShotPicture, SLOT( setEnabled( bool ) ) );
-    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->tabAudio, SLOT( setDisabled( bool ) ) );
-    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->tabCodec, SLOT( setDisabled( bool ) ) );
+//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->comboBoxScreenShotFormat, SLOT( setEnabled( bool ) ) );
+//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonShot,  SLOT( setVisible( bool ) ) );
+//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonStart, SLOT( setHidden( bool ) ) );
+//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonStop,  SLOT( setHidden( bool ) ) );
+//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonPause, SLOT( setHidden( bool ) ) );
+//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonShow,  SLOT( setVisible( bool ) ) );
+//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonPlay,  SLOT( setHidden( bool ) ) );
+//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), this, SLOT( slot_formats_Screenshot() ) );
+//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->labelScreenShotPicture, SLOT( setEnabled( bool ) ) );
+//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->tabAudio, SLOT( setDisabled( bool ) ) );
+//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->tabCodec, SLOT( setDisabled( bool ) ) );
 
 
     // Tab 2 Audio
@@ -304,13 +303,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( videoFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
 
-    ui->lineEditPicturePath->setText( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
 
-    // Tab 5 Camera
-    webcamController = new QvkWebcamController( ui );
-
-
-    // Tab 6 Available muxer, encoder etc.
+    // Tab 5 Available muxer, encoder etc.
     ui->toolButtonAvalaibleHelp->setIcon( ui->toolButtonAvalaibleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->toolButtonAvalaibleHelp, SIGNAL( clicked( bool ) ), SLOT( slot_availableHelp() ) );
 
@@ -335,15 +329,46 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     VK_gst_Elements_available();
 
     QDesktopWidget *desk = QApplication::desktop();
-    connect( desk, SIGNAL( screenCountChanged(int) ), SLOT( slot_screenCountChanged( int ) ) );
-    connect( desk, SIGNAL( resized( int ) ),          SLOT( slot_screenCountChanged( int ) ) );
+    connect( desk, SIGNAL( screenCountChanged(int) ), this, SLOT( slot_screenCountChanged( int ) ) );
+    connect( desk, SIGNAL( resized( int ) ),          this, SLOT( slot_screenCountChanged( int ) ) );
     emit desk->screenCountChanged(0);
 
     // Checkable Widget sind in vokoscreen standardmäßig nicht gesetzt.
     // Diese werden hier beziehungsweise wenn die Settings vorhanden sind dort gesetzt.
-    ui->checkBoxScreenshot->click();
-    ui->checkBoxScreenshot->click();
     ui->radioButtonFullscreen->click();
+
+
+    // **************** Begin Screenshot *******************************
+    ui->toolButtonScreenshotHelp->setIcon( ui->toolButtonScreenshotHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+
+    ui->tabWidgetScreenshot->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
+    makeAndSetValidIcon( 0 );
+
+    ui->tabWidgetScreenshot->setTabIcon( 1, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
+    makeAndSetValidIcon( 1 );
+    ui->lineEditPicturePath->setText( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
+
+    connect( desk, SIGNAL( screenCountChanged(int) ), this, SLOT( slot_Screenshot_count_changed( int ) ) );
+    connect( desk, SIGNAL( resized( int ) ),          this, SLOT( slot_Screenshot_count_changed( int ) ) );
+    emit desk->screenCountChanged(0);
+    slot_formats_Screenshot();
+
+    // Checkable Widget sind in vokoscreen standardmäßig nicht gesetzt.
+    // Diese werden hier beziehungsweise wenn die Settings vorhanden sind dort gesetzt.
+    ui->radioButtonScreenshotFullscreen->click();
+
+    QTimer *timer = new QTimer(this);
+    connect(timer, SIGNAL( timeout() ), this, SLOT( preview_screenshot() ) );
+    timer->start( 500 );
+
+    // **************** End Screenshot *******************************
+
+
+    // ************************* Camera ****************************
+    // Tab 0 Camera
+    webcamController = new QvkWebcamController( ui );
+    ui->tabWidgetCamera->setTabIcon( 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
+    makeAndSetValidIcon( 0 );
 }
 
 
@@ -352,6 +377,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+// ----------------- Begin Screenshot ----------------------------------------------------------------------------
 
 void MainWindow::slot_formats_Screenshot()
 {
@@ -371,25 +397,23 @@ void MainWindow::slot_formats_Screenshot()
 
 void MainWindow::slot_preshot_Screenshot()
 {
-    if ( ( ui->radioButtonFullscreen->isChecked() == true ) and ( ui->spinBoxCountDown->value() > 0 ) )
+    if ( ( ui->radioButtonScreenshotFullscreen->isChecked() == true ) and ( ui->spinBoxScreenshotCountDown->value() > 0 ) )
     {
         hide();
         disconnect( vkCountdown, 0, 0, 0 );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this, SLOT( slot_shot_Screenshot() ) );
-        vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
+        vkCountdown->startCountdown( ui->spinBoxScreenshotCountDown->value() );
         return;
     }
 
-    if ( ui->radioButtonFullscreen->isChecked() == true )
+    if ( ui->radioButtonScreenshotFullscreen->isChecked() == true )
     {
         hide();
         slot_shot_Screenshot();
         return;
     }
 
-    // ----------------------------------------------------------------------------------------------------------
-
-    if( ( ui->radioButtonWindow->isChecked() == true )  and ( ui->spinBoxCountDown->value() > 0 ) )
+    if( ( ui->radioButtonScreenshotWindow->isChecked() == true )  and ( ui->spinBoxScreenshotCountDown->value() > 0 ) )
     {
 
         hide();
@@ -397,11 +421,11 @@ void MainWindow::slot_preshot_Screenshot()
         disconnect( vkWinInfo, 0, 0, 0 );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), vkWinInfo, SLOT( slot_start() ) );
         connect( vkWinInfo, SIGNAL( windowChanged( bool ) ), this, SLOT( slot_shot_Screenshot() ) );
-        vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
+        vkCountdown->startCountdown( ui->spinBoxScreenshotCountDown->value() );
         return;
     }
 
-    if( ui->radioButtonWindow->isChecked() == true )
+    if( ui->radioButtonScreenshotWindow->isChecked() == true )
     {
         hide();
         disconnect( vkWinInfo, 0, 0, 0 );
@@ -412,18 +436,18 @@ void MainWindow::slot_preshot_Screenshot()
 
     // -----------------------------------------------------------------------------------------------------------
 
-    if ( ( ui->radioButtonArea->isChecked() == true ) and ( ui->spinBoxCountDown->value() > 0 ) )
+    if ( ( ui->radioButtonScreenshotArea->isChecked() == true ) and ( ui->spinBoxScreenshotCountDown->value() > 0 ) )
     {
         hide();
         regionController->hide();
         disconnect( vkCountdown, 0, 0, 0 );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ),   this,             SLOT( slot_shot_Screenshot() ) );
         connect( this,        SIGNAL( signal_finish_screenshot( bool ) ), regionController, SLOT( show( bool ) ) );
-        vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
+        vkCountdown->startCountdown( ui->spinBoxScreenshotCountDown->value() );
         return;
     }
 
-    if ( ui->radioButtonArea->isChecked() == true )
+    if ( ui->radioButtonScreenshotArea->isChecked() == true )
     {
         hide();
         regionController->hide();
@@ -437,21 +461,20 @@ void MainWindow::slot_shot_Screenshot()
 {
     QTest::qSleep( 1000 );
     QApplication::beep();
-    QPixmap pixmap;
 
-    if ( ui->radioButtonFullscreen->isChecked() == true )
+    if ( ui->radioButtonScreenshotFullscreen->isChecked() == true )
     {
         QScreen *screen = QGuiApplication::primaryScreen();
         pixmap = screen->grabWindow( QApplication::desktop()->winId() );
     }
 
-    if( ui->radioButtonWindow->isChecked() == true )
+    if( ui->radioButtonScreenshotWindow->isChecked() == true )
     {
         QScreen *screen = QGuiApplication::primaryScreen();
         pixmap = screen->grabWindow( vkWinInfo->getWinID() );
     }
 
-    if ( ui->radioButtonArea->isChecked() == true )
+    if ( ui->radioButtonScreenshotArea->isChecked() == true )
     {
         QScreen *screen = QGuiApplication::primaryScreen();
         pixmap = screen->grabWindow( QApplication::desktop()->winId(),
@@ -466,14 +489,11 @@ void MainWindow::slot_shot_Screenshot()
                            "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxScreenShotFormat->currentText() );
     Q_UNUSED(ok);
 
-    int height = ui->labelScreenShotPicture->height();
-    int width = ui->labelScreenShotPicture->width();
-    ui->labelScreenShotPicture->setMaximumHeight( height );
-    ui->labelScreenShotPicture->setMaximumWidth( width );
-    ui->labelScreenShotPicture->setScaledContents( true );
     ui->labelScreenShotPicture->setAlignment( Qt::AlignCenter );
-    ui->labelScreenShotPicture->setStyleSheet( "background-color:black;" );
-    ui->labelScreenShotPicture->setPixmap( pixmap );
+    ui->labelScreenShotPicture->setPixmap( pixmap.scaled( ui->labelScreenShotPicture->width()-6,
+                                                          ui->labelScreenShotPicture->height()-6,
+                                                          Qt::KeepAspectRatio,
+                                                          Qt::SmoothTransformation ) );
     show();
     emit signal_finish_screenshot( true );
 }
@@ -503,6 +523,35 @@ void MainWindow::slot_show_Screenshoot()
         newDialog->show();
     }
 }
+
+
+void MainWindow::slot_Screenshot_count_changed( int newCount )
+{
+    Q_UNUSED(newCount);
+    ui->comboBoxScreenshotScreen->clear();
+    QDesktopWidget *desk = QApplication::desktop();
+
+    QScreen *screen = QGuiApplication::primaryScreen();
+
+    for ( int i = 1; i < desk->screenCount()+1; i++ )
+    {
+        QString ScreenGeometryX = QString::number( desk->screenGeometry( i-1 ).left() * screen->devicePixelRatio() );
+        QString ScreenGeometryY = QString::number( desk->screenGeometry( i-1 ).top() * screen->devicePixelRatio() );
+        QString ScreenGeometryWidth = QString::number( desk->screenGeometry( i-1 ).width() * screen->devicePixelRatio() );
+        QString ScreenGeometryHeight = QString::number( desk->screenGeometry( i-1 ).height() * screen->devicePixelRatio() );
+        QString stringText = tr( "Display" ) + " " + QString::number( i ) + ":  " + ScreenGeometryWidth + " x " + ScreenGeometryHeight;
+        QString stringData = "x=" + ScreenGeometryX + " " +
+                             "y=" + ScreenGeometryY + " " +
+                             "with=" + ScreenGeometryWidth + " " +
+                             "height=" + ScreenGeometryHeight;
+        ui->comboBoxScreenshotScreen->addItem( stringText, stringData );
+    }
+
+    ui->comboBoxScreenshotScreen->addItem( tr( "All Displays" ), -1 );
+}
+
+
+// ***************************** End Screenshot *****************************************************
 
 
 void MainWindow::slot_audioHelp()
@@ -578,6 +627,15 @@ void MainWindow::closeEvent( QCloseEvent *event )
 }
 
 
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    ui->labelScreenShotPicture->setPixmap( pixmap.scaled( ui->labelScreenShotPicture->width()-40,
+                                                          ui->labelScreenShotPicture->height()-40,
+                                                          Qt::KeepAspectRatio,
+                                                          Qt::SmoothTransformation ) );
+}
+
+
 void MainWindow::makeAndSetValidIcon( int index )
 {
   QIcon myIcon = ui->tabWidget->tabIcon( index );
@@ -586,6 +644,17 @@ void MainWindow::makeAndSetValidIcon( int index )
   ui->tabWidget->setTabIcon( index, QIcon( workPixmap ) );
 }
 
+
+void MainWindow::makeValidIconForSideBar( int index )
+{
+  QIcon myIcon = ui->tabWidgetSideBar->tabIcon( index );
+  QSize size = ui->tabWidgetSideBar->iconSize();
+  QPixmap workPixmap( myIcon.pixmap( size ) );
+  QTransform trans;
+  trans.rotate(90);
+  workPixmap = workPixmap.transformed(trans);
+  ui->tabWidgetSideBar->setTabIcon( index, QIcon( workPixmap ) );
+}
 
 /*
  * Setzt neues Icon um aufzuzeigen das Audio abgeschaltet ist

@@ -6,7 +6,6 @@
 #include <QPainter>
 #include <QDebug>
 #include <QMainWindow>
-#include "qxtwindowsystem.h"
 
 class QvkWinInfo: public QMainWindow
 { 
@@ -16,10 +15,6 @@ public:
   virtual ~QvkWinInfo();
   
 public slots:
-  QString x();
-  QString y();
-  QString width();
-  QString height();
   QString WinID();
   WId getWinID();
   void slot_start();
@@ -28,6 +23,7 @@ public slots:
 private slots: 
    void selectWindow();
    void mousePosition();
+   WId activeWindow();
 
    
 signals:
@@ -44,10 +40,6 @@ private:
   WId lastWinID;
   WId newWinID;
   
-  int myX;
-  int myY;
-  int myWidth;
-  int myHeight;
   void paintEvent(QPaintEvent *event);
   
 };

@@ -1,6 +1,8 @@
 #include "QvkWinInfo.h"
 
 #include <QCoreApplication>
+#include <QX11Info>
+#include <X11/Xutil.h>
 
 using namespace std;
 
@@ -11,11 +13,6 @@ QvkWinInfo::QvkWinInfo()
 
 void QvkWinInfo::slot_start()
 {
-  myX = 0;
-  myY = 0;
-  myWidth = 0;
-  myHeight = 0;
-
   setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
 
   resize ( 50, 50 );
@@ -101,19 +98,23 @@ void QvkWinInfo::mousePosition()
 }
 
 
+WId QvkWinInfo::activeWindow()
+{
+  Window id;
+  int dummy;
+  XGetInputFocus( QX11Info::display() , &id, &dummy);
+  return id;
+}
+
+
 void QvkWinInfo::selectWindow()
 {
-  newWinID = QxtWindowSystem::activeWindow();
+  newWinID = activeWindow();
 
   if ( lastWinID != newWinID )
   {
     windowTimer->stop();
     mouseTimer->stop();
-
-    myX = QxtWindowSystem::windowGeometryWithoutFrame( newWinID ).x();
-    myY = QxtWindowSystem::windowGeometryWithoutFrame( newWinID ).y();
-    myWidth = QxtWindowSystem::windowGeometryWithoutFrame( newWinID ).width();
-    myHeight = QxtWindowSystem::windowGeometryWithoutFrame( newWinID ).height();
 
     // Cursor resize does not show in video in the first Frames
     resize( 10, 10 );
@@ -121,30 +122,6 @@ void QvkWinInfo::selectWindow()
     emit windowChanged( true );
     this->close();
   }
-}
-
-
-QString QvkWinInfo::x()
-{
-  return QString::number( myX );
-}
-
-
-QString QvkWinInfo::y()
-{
-  return QString::number( myY );
-}
-
-
-QString QvkWinInfo::width()
-{
-  return QString::number( myWidth );
-}
-
-
-QString QvkWinInfo::height()
-{
-  return QString::number( myHeight );
 }
 
 

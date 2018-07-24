@@ -34,6 +34,8 @@ private:
     QString VK_getMuxer();
     QString Vk_get_Videocodec_Encoder();
     void makeAndSetValidIcon( int index );
+    void makeValidIconForSideBar( int index );
+
     QFileSystemWatcher *videoFileSystemWatcher;
 
     GstElement *pipeline;
@@ -63,6 +65,7 @@ private:
 
     QvkWebcamController *webcamController;
 
+    QPixmap pixmap;
 
 private slots:
     void slot_preStart();
@@ -93,6 +96,7 @@ private slots:
     void slot_preshot_Screenshot();
     void slot_shot_Screenshot();
     void slot_show_Screenshoot();
+    void slot_Screenshot_count_changed( int newCount );
 
 
 signals:
@@ -103,6 +107,7 @@ signals:
 
 protected:
     void closeEvent( QCloseEvent * event );
+    void resizeEvent( QResizeEvent *event );
 
 
 };
