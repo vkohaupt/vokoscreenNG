@@ -629,8 +629,9 @@ void MainWindow::closeEvent( QCloseEvent *event )
 
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
-    ui->labelScreenShotPicture->setPixmap( pixmap.scaled( ui->labelScreenShotPicture->width()-40,
-                                                          ui->labelScreenShotPicture->height()-40,
+    Q_UNUSED(event);
+    ui->labelScreenShotPicture->setPixmap( pixmap.scaled( ui->labelScreenShotPicture->width()-20,
+                                                          ui->labelScreenShotPicture->height()-20,
                                                           Qt::KeepAspectRatio,
                                                           Qt::SmoothTransformation ) );
 }
@@ -824,8 +825,8 @@ void MainWindow::VK_gst_Elements_available()
 {
     for ( int i = 0; i < globalFormatsList.count(); i++ )
     {
-        QHBoxLayout *HBoxLayout_for_Format_and_Encoder_Layouts;
-        QVBoxLayout *VBoxLayout_for_Encoder;
+        QHBoxLayout *HBoxLayout_for_Format_and_Encoder_Layouts = nullptr;
+        QVBoxLayout *VBoxLayout_for_Encoder = nullptr;
         QStringList listElements = QString( globalFormatsList.at(i) ).split( "," );
         for ( int x = 0; x < listElements.count(); x++ )
         {
@@ -879,7 +880,6 @@ void MainWindow::VK_gst_Elements_available()
             {
                 QHBoxLayout *HBoxLayout_for_Picture_and_Encoder = new QHBoxLayout();
                 VBoxLayout_for_Encoder->addItem( HBoxLayout_for_Picture_and_Encoder );
-
                 QLabel *labelPicture = new QLabel();
                 QIcon icon;
                 if ( available == true )
