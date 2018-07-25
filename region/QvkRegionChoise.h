@@ -94,7 +94,6 @@ private:
   void drawFrame( QPainter &painter );
   void printSize(QPainter &painter);
   void HandleTopLeft(QPainter &painter );
-
   void HandleTopLeftSize(QPainter &painter);
   void HandleTopMiddle(QPainter &painter);
   void HandleTopMiddleSize(QPainter &painter);
@@ -105,6 +104,7 @@ private:
   void HandleBottomRight(QPainter &painter);
   void HandleBottomRightSize(QPainter &painter);
   void HandleBottomMiddle(QPainter &painter);
+  void HandleBottomMiddleSize( QPainter &painter );
   void HandleBottomLeft(QPainter &painter);
   void HandleLeftMiddle(QPainter &painter);
 
