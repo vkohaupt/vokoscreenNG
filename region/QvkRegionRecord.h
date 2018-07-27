@@ -31,10 +31,10 @@
 
 #include <QLabel>
 
-#include "QvkSettings.h"
+//#include "QvkSettings.h"
 
 class QvkRegionRecord : public QLabel
-{ 
+{
 Q_OBJECT
 public:
   QvkRegionRecord();
@@ -49,21 +49,17 @@ public:
   int borderRight;
   int borderBottom;
   int frameWidth;
-  
+
 public slots:
-  int getX();
-  int getY();
   int getHeight();
   int getWidth();
   int getXRecordArea();
   int getYRecordArea();
 
-  void setRecordGeometry( int x, int y, int width, int height );
-  
-  
+
 private slots:
 
-  void HandleTopLeft();
+/*  void HandleTopLeft();
   void HandleTopMiddle();
   void HandleTopRight();
   void HandleRightMiddle();
@@ -71,7 +67,7 @@ private slots:
   void HandleBottomMiddle();
   void HandleBottomLeft();
   void HandleLeftMiddle();
-
+*/
 
 protected:
   QPainter * painter;
@@ -85,24 +81,9 @@ private:
   int penHalf;
   bool frameLocked;
   void handlingFrameLock();
-  
-  int currentMouseLocalX;
-  int currentMouseLocalY;
-  int currentMouseRightLocalX;
-  int currentMouseRightLocalY;
-  
-  int currentWidgetWidth;
-  int currentWidgetHeight;
-  int currentWidgetY;
-  int currentbottomY;
-  
+
   Handle handlePressed;
   Handle handleUnderMouse;
-  
-  QRect printSizeRectForMask;
-  QRect HandleMiddleForMask;
-  
-  QvkSettings vkSettings;
-  
+
 };
 #endif
