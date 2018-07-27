@@ -106,6 +106,7 @@ private:
   void HandleBottomMiddle(QPainter &painter);
   void HandleBottomMiddleSize( QPainter &painter );
   void HandleBottomLeft(QPainter &painter);
+  void HandleBottomLeftSize( QPainter &painter );
   void HandleLeftMiddle(QPainter &painter);
 
   void HandleMiddle(QPainter &painter);

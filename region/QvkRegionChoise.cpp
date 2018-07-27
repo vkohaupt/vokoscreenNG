@@ -173,7 +173,7 @@ void QvkRegionChoise::paintEvent( QPaintEvent *event )
           case RightMiddle : HandleRightMiddleSize( painterPixmap ); break;
           case BottomRight : HandleBottomRightSize( painterPixmap ); break;
           case BottomMiddle: HandleBottomMiddleSize( painterPixmap );break;
-          case BottomLeft  : break;
+          case BottomLeft  : HandleBottomLeftSize( painterPixmap );  break;
           case LeftMiddle  : break;
           case Middle      : HandleTopLeftSize( painterPixmap );     break;
         }
@@ -949,6 +949,33 @@ void QvkRegionChoise::HandleBottomLeft( QPainter &painter )
     painter.drawPixmap( frame_X - buttonArrow.getWithHalf(),
                         frame_Y + frame_height - buttonArrow.getWithHalf(),
                         buttonArrow.getPixmapHandle( color, buttonArrow.bottomLeft ) );
+}
+
+
+void QvkRegionChoise::HandleBottomLeftSize( QPainter &painter )
+{
+    QFont font;
+    font.setPointSize( 10 );
+    painter.setFont( font );
+
+    QString string;
+    string.append( "  " );
+    string.append( "x:" + QString::number( frame_X ) );
+    string.append( "  ");
+    QFontMetrics fontMetrics( font );
+    pixelWidth = fontMetrics.width( string );
+    pixelHeight = fontMetrics.height() * 2;
+    QRect rect( frame_X + radius,
+                frame_Y + frame_height - pixelHeight - radius - 5,
+                pixelWidth,
+                pixelHeight );
+
+    painter.setBrush( QBrush( Qt::yellow, Qt::SolidPattern ) );
+    painter.setPen( QPen( Qt::black, 2 ) );
+    painter.drawRoundedRect( rect, 5, 5 );
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf) +
+                                             "\n" +
+                                             "y:" + QString::number( frame_Y + framePenHalf ) );
 }
 
 
