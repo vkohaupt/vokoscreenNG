@@ -174,7 +174,7 @@ void QvkRegionChoise::paintEvent( QPaintEvent *event )
           case BottomRight : HandleBottomRightSize( painterPixmap ); break;
           case BottomMiddle: HandleBottomMiddleSize( painterPixmap );break;
           case BottomLeft  : HandleBottomLeftSize( painterPixmap );  break;
-          case LeftMiddle  : break;
+          case LeftMiddle  : HandleLeftMiddleSize( painterPixmap);   break;
           case Middle      : HandleTopLeftSize( painterPixmap );     break;
         }
 
@@ -695,7 +695,7 @@ void QvkRegionChoise::HandleTopLeftSize( QPainter &painter)
     painter.setBrush( QBrush( Qt::yellow, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf) +
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf ) +
                                              "\n" +
                                              "y:" + QString::number( frame_Y + framePenHalf ) );
 }
@@ -997,6 +997,33 @@ void QvkRegionChoise::HandleLeftMiddle( QPainter &painter )
                         frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
                         buttonArrow.getPixmapHandle( color, buttonArrow.leftMiddel ) );
 }
+
+
+void QvkRegionChoise::HandleLeftMiddleSize( QPainter &painter )
+{
+    QFont font;
+    font.setPointSize( 10 );
+    painter.setFont( font );
+
+    QString string;
+    string.append( "  " );
+    string.append( "x:" + QString::number( frame_X ) );
+    string.append( "  ");
+    QFontMetrics fontMetrics( font );
+    pixelWidth = fontMetrics.width( string );
+    pixelHeight = fontMetrics.height();
+    QRect rect( frame_X + radius + 5,
+                frame_Y + frame_height/2 - pixelHeight/2,
+                pixelWidth,
+                pixelHeight );
+
+    painter.setBrush( QBrush( Qt::yellow, Qt::SolidPattern ) );
+    painter.setPen( QPen( Qt::black, 2 ) );
+    painter.drawRoundedRect( rect, 5, 5 );
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf ) );
+
+}
+
 
 
 void QvkRegionChoise::HandleMiddle( QPainter &painter )
