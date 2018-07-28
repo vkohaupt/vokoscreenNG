@@ -46,7 +46,10 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
                                    frame_Width(250 + framePenWidth),
                                    frame_height(250 + framePenWidth),
                                    frame_min_width(250 + framePenWidth),
-                                   frame_min_height(250+ framePenWidth)
+                                   frame_min_height(250+ framePenWidth),
+                                   HandleColorBackground( Qt::green ),
+                                   HandleColorBackgroundSize( Qt::yellow ),
+                                   HandleColorByMousePressed( Qt::yellow )
 {
 #ifdef Q_OS_LINUX
     if ( QX11Info::isPlatformX11() == true )
@@ -114,6 +117,18 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
 
 QvkRegionChoise::~QvkRegionChoise()
 {
+}
+
+
+void QvkRegionChoise::setHandleColorBackground( QColor color )
+{
+    HandleColorBackground = color;
+}
+
+
+void QvkRegionChoise::setHandleColorByMousePressed( QColor color )
+{
+    HandleColorByMousePressed = color;
 }
 
 
@@ -657,15 +672,15 @@ void QvkRegionChoise::drawFrame(QPainter &painter)
 void QvkRegionChoise::HandleTopLeft( QPainter &painter )
 {
     QvkRegionButtonArrow buttonArrow;
-    Qt::GlobalColor color;
+    QColor color;
 
     if ( handlePressed == TopLeft )
     {
-        color = Qt::yellow;
+        color = HandleColorByMousePressed;
     }
     else
     {
-        color = Qt::green;
+        color = HandleColorBackground;
     }
 
     painter.drawPixmap( frame_X - radius,
@@ -692,7 +707,7 @@ void QvkRegionChoise::HandleTopLeftSize( QPainter &painter)
                 pixelWidth,
                 pixelHeight );
 
-    painter.setBrush( QBrush( Qt::yellow, Qt::SolidPattern ) );
+    painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
     painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf ) +
@@ -704,15 +719,15 @@ void QvkRegionChoise::HandleTopLeftSize( QPainter &painter)
 void QvkRegionChoise::HandleTopMiddle( QPainter &painter)
 {
     QvkRegionButtonArrow buttonArrow;
-    Qt::GlobalColor color;
+    QColor color;
 
     if ( handlePressed == TopMiddle )
     {
-        color = Qt::yellow;
+        color = HandleColorByMousePressed;
     }
     else
     {
-        color = Qt::green;
+        color = HandleColorBackground;
     }
 
     painter.drawPixmap( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
@@ -739,7 +754,7 @@ void QvkRegionChoise::HandleTopMiddleSize( QPainter &painter )
                 pixelWidth,
                 pixelHeight );
 
-    painter.setBrush( QBrush( Qt::yellow, Qt::SolidPattern ) );
+    painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
     painter.drawText( rect, Qt::AlignCenter, "y:" + QString::number( frame_Y + framePenHalf ) );
@@ -749,15 +764,15 @@ void QvkRegionChoise::HandleTopMiddleSize( QPainter &painter )
 void QvkRegionChoise::HandleTopRight(QPainter &painter)
 {
     QvkRegionButtonArrow buttonArrow;
-    Qt::GlobalColor color;
+    QColor color;
 
     if ( handlePressed == TopRight )
     {
-        color = Qt::yellow;
+        color = HandleColorByMousePressed;
     }
     else
     {
-        color = Qt::green;
+        color = HandleColorBackground;
     }
 
     painter.drawPixmap( frame_X + frame_Width - buttonArrow.getWithHalf(),
@@ -784,7 +799,7 @@ void QvkRegionChoise::HandleTopRightSize( QPainter &painter )
                 pixelWidth,
                 pixelHeight );
 
-    painter.setBrush( QBrush( Qt::yellow, Qt::SolidPattern ) );
+    painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
     painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + frame_Width - framePenHalf) +
@@ -796,15 +811,15 @@ void QvkRegionChoise::HandleTopRightSize( QPainter &painter )
 void QvkRegionChoise::HandleRightMiddle( QPainter &painter )
 {
     QvkRegionButtonArrow buttonArrow;
-    Qt::GlobalColor color;
+    QColor color;
 
     if ( handlePressed == RightMiddle )
     {
-        color = Qt::yellow;
+        color = HandleColorByMousePressed;
     }
     else
     {
-        color = Qt::green;
+        color = HandleColorBackground;
     }
 
     painter.drawPixmap( frame_X + frame_Width - buttonArrow.getWithHalf(),
@@ -831,7 +846,7 @@ void QvkRegionChoise::HandleRightMiddleSize( QPainter &painter )
                 pixelWidth,
                 pixelHeight );
 
-    painter.setBrush( QBrush( Qt::yellow, Qt::SolidPattern ) );
+    painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
     painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + frame_Width - framePenHalf) );
@@ -841,15 +856,15 @@ void QvkRegionChoise::HandleRightMiddleSize( QPainter &painter )
 void QvkRegionChoise::HandleBottomRight( QPainter &painter )
 {
     QvkRegionButtonArrow buttonArrow;
-    Qt::GlobalColor color;
+    QColor color;
 
     if ( handlePressed == BottomRight )
     {
-        color = Qt::yellow;
+        color = HandleColorByMousePressed;
     }
     else
     {
-        color = Qt::green;
+        color = HandleColorBackground;
     }
 
     painter.drawPixmap( frame_X + frame_Width - buttonArrow.getWithHalf(),
@@ -877,7 +892,7 @@ void QvkRegionChoise::HandleBottomRightSize( QPainter &painter )
                 pixelWidth,
                 pixelHeight );
 
-    painter.setBrush( QBrush( Qt::yellow, Qt::SolidPattern ) );
+    painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
     painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + frame_Width - framePenHalf ) +
@@ -890,15 +905,15 @@ void QvkRegionChoise::HandleBottomRightSize( QPainter &painter )
 void QvkRegionChoise::HandleBottomMiddle( QPainter &painter )
 {
     QvkRegionButtonArrow buttonArrow;
-    Qt::GlobalColor color;
+    QColor color;
 
     if ( handlePressed == BottomMiddle )
     {
-        color = Qt::yellow;
+        color = HandleColorByMousePressed;
     }
     else
     {
-        color = Qt::green;
+        color = HandleColorBackground;
     }
 
     painter.drawPixmap( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
@@ -925,7 +940,7 @@ void QvkRegionChoise::HandleBottomMiddleSize(QPainter &painter )
                 pixelWidth,
                 pixelHeight );
 
-    painter.setBrush( QBrush( Qt::yellow, Qt::SolidPattern ) );
+    painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
     painter.drawText( rect, Qt::AlignCenter, "y:" + QString::number( frame_Y + frame_height - framePenHalf ) );
@@ -935,15 +950,15 @@ void QvkRegionChoise::HandleBottomMiddleSize(QPainter &painter )
 void QvkRegionChoise::HandleBottomLeft( QPainter &painter )
 {
     QvkRegionButtonArrow buttonArrow;
-    Qt::GlobalColor color;
+    QColor color;
 
     if ( handlePressed == BottomLeft )
     {
-        color = Qt::yellow;
+        color = HandleColorByMousePressed;
     }
     else
     {
-        color = Qt::green;
+        color = HandleColorBackground;
     }
 
     painter.drawPixmap( frame_X - buttonArrow.getWithHalf(),
@@ -970,7 +985,7 @@ void QvkRegionChoise::HandleBottomLeftSize( QPainter &painter )
                 pixelWidth,
                 pixelHeight );
 
-    painter.setBrush( QBrush( Qt::yellow, Qt::SolidPattern ) );
+    painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
     painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf) +
@@ -982,15 +997,15 @@ void QvkRegionChoise::HandleBottomLeftSize( QPainter &painter )
 void QvkRegionChoise::HandleLeftMiddle( QPainter &painter )
 {
     QvkRegionButtonArrow buttonArrow;
-    Qt::GlobalColor color;
+    QColor color;
 
     if ( handlePressed == LeftMiddle )
     {
-        color = Qt::yellow;
+        color = HandleColorByMousePressed;
     }
     else
     {
-        color = Qt::green;
+        color = HandleColorBackground;
     }
 
     painter.drawPixmap( frame_X - buttonArrow.getWithHalf(),
@@ -1017,7 +1032,7 @@ void QvkRegionChoise::HandleLeftMiddleSize( QPainter &painter )
                 pixelWidth,
                 pixelHeight );
 
-    painter.setBrush( QBrush( Qt::yellow, Qt::SolidPattern ) );
+    painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
     painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf ) );
@@ -1029,15 +1044,15 @@ void QvkRegionChoise::HandleLeftMiddleSize( QPainter &painter )
 void QvkRegionChoise::HandleMiddle( QPainter &painter )
 {
     QvkRegionButtonArrow buttonArrow;
-    Qt::GlobalColor color;
+    QColor color;
 
     if ( handlePressed == Middle )
     {
-        color = Qt::yellow;
+        color = HandleColorByMousePressed;
     }
     else
     {
-        color = Qt::green;
+        color = HandleColorBackground;
     }
 
     painter.drawPixmap( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),

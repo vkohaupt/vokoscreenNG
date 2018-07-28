@@ -19,8 +19,8 @@ private:
   qreal diameter = 2.0 * radius;
 
 public slots:
-  QPixmap getPixmapHandle( Qt::GlobalColor color, degreeArrow degree );
-  QPixmap getButton( Qt::GlobalColor color );
+  QPixmap getPixmapHandle( QColor color, degreeArrow degree );
+  QPixmap getButton( QColor color );
   QPixmap getArrow( degreeArrow degree );
   int getWithHalf();
 

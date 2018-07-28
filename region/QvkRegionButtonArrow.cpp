@@ -10,7 +10,7 @@ QvkRegionButtonArrow::~QvkRegionButtonArrow()
 }
 
 
-QPixmap QvkRegionButtonArrow::getButton( Qt::GlobalColor color )
+QPixmap QvkRegionButtonArrow::getButton(QColor color )
 {
     QPixmap pixmap( diameter+penWidth, diameter+penWidth );
     pixmap.fill( Qt::transparent );
@@ -69,7 +69,7 @@ QPixmap QvkRegionButtonArrow::getArrow( degreeArrow degree )
 }
 
 
-QPixmap QvkRegionButtonArrow::getPixmapHandle( Qt::GlobalColor color, degreeArrow degree )
+QPixmap QvkRegionButtonArrow::getPixmapHandle(QColor color, degreeArrow degree )
 {
     QPixmap pixmap( diameter+penWidth, diameter+penWidth );
     pixmap.fill( Qt::transparent );

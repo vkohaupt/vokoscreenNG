@@ -59,6 +59,12 @@ private:
   Handle handlePressed;
   Handle handleUnderMouse;
 
+  QColor HandleColorBackground;
+  QColor HandleColorBackgroundSize;
+  QColor HandleColorByMousePressed;
+  void setHandleColorBackground( QColor color );
+  void setHandleColorByMousePressed( QColor color );
+
   int screenWidth;
   int screenHeight;
 
@@ -109,7 +115,6 @@ private:
   void HandleBottomLeftSize( QPainter &painter );
   void HandleLeftMiddle(QPainter &painter);
   void HandleLeftMiddleSize( QPainter &painter );
-
   void HandleMiddle(QPainter &painter);
 
   void vk_setGeometry( int x, int y, int with, int height );
