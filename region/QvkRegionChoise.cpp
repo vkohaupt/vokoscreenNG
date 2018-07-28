@@ -132,6 +132,12 @@ void QvkRegionChoise::setHandleColorByMousePressed( QColor color )
 }
 
 
+void QvkRegionChoise::setHandleColorBackgroundSize( QColor color )
+{
+    HandleColorBackgroundSize = color;
+}
+
+
 void QvkRegionChoise::Abbruch()
 {
     qDebug() << "QvkRegionChoise::Abbruch()";

@@ -64,6 +64,7 @@ private:
   QColor HandleColorByMousePressed;
   void setHandleColorBackground( QColor color );
   void setHandleColorByMousePressed( QColor color );
+  void setHandleColorBackgroundSize( QColor color );
 
   int screenWidth;
   int screenHeight;
