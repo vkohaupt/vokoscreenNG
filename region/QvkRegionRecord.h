@@ -41,8 +41,8 @@ public:
   QvkRegionRecord( QWidget *parent );
 
   virtual ~QvkRegionRecord();
-  void lockFrame( bool status = true );
-  bool isFrameLocked();
+  //void lockFrame( bool status = true );
+  //bool isFrameLocked();
 
   int borderLeft;
   int borderTop;
@@ -79,7 +79,7 @@ private:
   int radius;
   int penWidth;
   int penHalf;
-  bool frameLocked;
+  //bool frameLocked;
   void handlingFrameLock();
 
   Handle handlePressed;

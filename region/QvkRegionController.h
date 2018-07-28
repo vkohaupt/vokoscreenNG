@@ -4,7 +4,7 @@
 #include <QObject>
 
 #include "QvkRegionChoise.h"
-//#include "QvkRegionRecord.h"
+#include "QvkRegionRecord.h"
 
 class QvkRegionController: public QObject
 {
@@ -27,7 +27,7 @@ public:
    void hide();
 
    QvkRegionChoise *regionChoise;
-   //QvkRegionRecord *regionRecord;
+   QvkRegionRecord *regionRecord;
    
 signals:
 
@@ -38,10 +38,11 @@ private slots:
 public slots:
    void show(bool value);
    void slot_close();
-   void myClicked();
-   void Abbruch();
-  
-  
+
+   void slot_set_record_start_flag();
+   void slot_set_record_stop_flag();
+
+
 private:
   
   

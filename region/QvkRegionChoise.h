@@ -31,10 +31,8 @@ public:
   QvkRegionChoise();
   virtual ~QvkRegionChoise();
 
+
 public slots:
-    void myClicked();
-    void Abbruch();
-  
     int getX();
     int getY();
     int getHeight();

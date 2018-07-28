@@ -191,6 +191,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     vkCountdown = new QvkCountdown();
 
     // Bar for start, stop etc.
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), regionController,          SLOT( slot_set_record_start_flag() ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonPause,       SLOT( setDisabled( bool ) ) );
@@ -207,9 +208,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->toolButtonAudioHelp,   SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabCodec,              SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabMisc,               SLOT( setEnabled( bool ) ) );
-    //connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxScreenshot,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStart() ) );
 
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), regionController,          SLOT( slot_set_record_stop_flag() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonPause,       SLOT( setEnabled( bool ) ) );
@@ -224,7 +225,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->scrollAreaAudioDevice, SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabCodec,              SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabMisc,               SLOT( setDisabled( bool ) ) );
-    //connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxScreenshot,    SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_Stop() ) );
 
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), this,                   SLOT( slot_Pause() ) );
@@ -241,12 +241,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->pushButtonContinue->hide();
 
     connect( ui->pushButtonScreenshotShot, SIGNAL( clicked( bool ) ), this, SLOT( slot_preshot_Screenshot() ) );
-    //ui->horizontalLayout->addWidget( ui->pushButtonShot ); // move from tabClipboard
 
     connect( ui->pushButtonPlay, SIGNAL( clicked( bool ) ), this, SLOT( slot_Play() ) );
 
     connect( ui->pushButtonScreenshotShow, SIGNAL( clicked( bool ) ), this, SLOT( slot_show_Screenshoot() ) );
-    //ui->horizontalLayout->addWidget( ui->pushButtonShow ); // move from tabClipboard
 
 
     // Tab 1 Screen
@@ -255,18 +253,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
 
     connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
-
-//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->comboBoxScreenShotFormat, SLOT( setEnabled( bool ) ) );
-//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonShot,  SLOT( setVisible( bool ) ) );
-//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonStart, SLOT( setHidden( bool ) ) );
-//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonStop,  SLOT( setHidden( bool ) ) );
-//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonPause, SLOT( setHidden( bool ) ) );
-//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonShow,  SLOT( setVisible( bool ) ) );
-//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->pushButtonPlay,  SLOT( setHidden( bool ) ) );
-//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), this, SLOT( slot_formats_Screenshot() ) );
-//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->labelScreenShotPicture, SLOT( setEnabled( bool ) ) );
-//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->tabAudio, SLOT( setDisabled( bool ) ) );
-//    connect( ui->checkBoxScreenshot, SIGNAL( toggled( bool ) ), ui->tabCodec, SLOT( setDisabled( bool ) ) );
 
 
     // Tab 2 Audio

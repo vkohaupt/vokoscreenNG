@@ -23,9 +23,12 @@
 QvkRegionRecord::QvkRegionRecord()
 {
   
-  setAttribute ( Qt::WA_AlwaysShowToolTips );
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+    setAttribute( Qt::WA_TranslucentBackground, true);
 
-  show();
+    setMouseTracking( true );
+
+    hide();
 }
 
 
@@ -37,26 +40,6 @@ QvkRegionRecord::~QvkRegionRecord()
 
 void QvkRegionRecord::paintEvent(QPaintEvent *event) 
 {
-}
-
-
-void QvkRegionRecord::lockFrame( bool status )
-{
-//    frameLocked = status;
-//    handlingFrameLock();
-}
-
-
-bool QvkRegionRecord::isFrameLocked()
-{
-//    return frameLocked;
-}
-
-
-void QvkRegionRecord::handlingFrameLock()
-{
-//  repaint();
-//  update();
 }
 
 

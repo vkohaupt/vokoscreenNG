@@ -62,15 +62,12 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
     // Hint: Qt::WindowStaysOnTopHint is only for X11 on WayLand not do it
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
     setAttribute( Qt::WA_TranslucentBackground, true);
+    setWindowState( Qt::WindowFullScreen );
 
     setMouseTracking( true );
 
     QScreen *screen = QGuiApplication::primaryScreen();
     resize( screen->availableSize().width(), screen->availableSize().height() );
-//    screenWidth = screen->availableSize().width();
-//    screenHeight = screen->availableSize().height();
-
-    setWindowState( Qt::WindowFullScreen );
 
     qDebug() << screen->availableGeometry() << screen->size();
     screenWidth = screen->size().width();
@@ -138,18 +135,6 @@ void QvkRegionChoise::setHandleColorBackgroundSize( QColor color )
 }
 
 
-void QvkRegionChoise::Abbruch()
-{
-    qDebug() << "QvkRegionChoise::Abbruch()";
-    close();
-}
-
-
-void QvkRegionChoise::myClicked()
-{
-}
-
-
 /*
  * x, y is middle from blue frame
  */
@@ -203,10 +188,10 @@ void QvkRegionChoise::paintEvent( QPaintEvent *event )
 
     QPainter painter;
     painter.begin( this );
-      painter.drawPixmap( QPoint( 0, 0 ), pixmap );
+    painter.drawPixmap( QPoint( 0, 0 ), pixmap );
     painter.end();
 
-   setMask( pixmap.mask());
+    setMask( pixmap.mask());
 }
 
 
