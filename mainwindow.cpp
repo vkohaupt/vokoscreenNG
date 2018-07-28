@@ -338,7 +338,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     QDesktopWidget *desk = QApplication::desktop();
     connect( desk, SIGNAL( screenCountChanged(int) ), this, SLOT( slot_screenCountChanged( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          this, SLOT( slot_screenCountChanged( int ) ) );
-    emit desk->screenCountChanged(0);
+    //emit desk->screenCountChanged(0);
 
     // Checkable Widget sind in vokoscreen standardmäßig nicht gesetzt.
     // Diese werden hier beziehungsweise wenn die Settings vorhanden sind dort gesetzt.
@@ -358,6 +358,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( desk, SIGNAL( screenCountChanged(int) ), this, SLOT( slot_Screenshot_count_changed( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          this, SLOT( slot_Screenshot_count_changed( int ) ) );
     connect( ui->radioButtonScreenshotArea, SIGNAL( toggled( bool ) ), regionController, SLOT( show( bool ) ) );
+
     emit desk->screenCountChanged(0);
     slot_formats_Screenshot();
 
@@ -973,11 +974,11 @@ void MainWindow::VK_Check_is_Format_available()
         GstElementFactory *factory = gst_element_factory_find( muxer );
         if ( !factory )
         {
-            g_print( "[vokoscreen] Fail Muxer not available: %s\n", muxer );
+            qDebug() << "[vokoscreen] Fail Muxer not available:" << muxer;
         }
         else
         {
-            g_print( "[vokoscreen] Muxer available: %s\n", muxer );
+            qDebug() << "[vokoscreen] Muxer available:" << muxer;
             tempList << videoFormatsList.at( x );
         }
     }
