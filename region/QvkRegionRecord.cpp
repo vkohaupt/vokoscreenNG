@@ -19,14 +19,21 @@
 #include "QvkRegionRecord.h" 
 
 #include <QBitmap>
+#include <QScreen>
 
 QvkRegionRecord::QvkRegionRecord()
 {
   
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
     setAttribute( Qt::WA_TranslucentBackground, true);
-
     setMouseTracking( true );
+
+    QScreen *screen = QGuiApplication::primaryScreen();
+    resize( screen->availableSize().width(), screen->availableSize().height() );
+    screenWidth = screen->size().width();
+    screenHeight = screen->size().height();
+
+
 
     hide();
 }

@@ -21,14 +21,14 @@ public:
    
    int getXRecordArea();
    int getYRecordArea();
-   
+
    void lockFrame( bool status );
 
    void hide();
 
    QvkRegionChoise *regionChoise;
    QvkRegionRecord *regionRecord;
-   
+
 signals:
 
     

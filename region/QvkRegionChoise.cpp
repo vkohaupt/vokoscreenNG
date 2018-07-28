@@ -22,16 +22,14 @@
 #include <QDebug>
 #include <QPainter>
 #include <QGuiApplication>
-#include <QScreen>
 #include <QBitmap>
 #include <QPaintEvent>
-#include <QLibraryInfo>
 #include <QIcon>
+#include <QScreen>
 
 #ifdef Q_OS_LINUX
   #include <QX11Info>
 #endif
-
 
 QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
                                    handleUnderMouse(NoHandle),
@@ -51,6 +49,7 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
                                    HandleColorBackgroundSize( Qt::yellow ),
                                    HandleColorByMousePressed( Qt::yellow )
 {
+
 #ifdef Q_OS_LINUX
     if ( QX11Info::isPlatformX11() == true )
         platform = x11;
@@ -68,36 +67,8 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
 
     QScreen *screen = QGuiApplication::primaryScreen();
     resize( screen->availableSize().width(), screen->availableSize().height() );
-
-    qDebug() << screen->availableGeometry() << screen->size();
     screenWidth = screen->size().width();
     screenHeight = screen->size().height();
-
-    qDebug() << "[vokoscreen] Blauer Rahmen Breite :" << frame_Width;
-    qDebug() << "[vokoscreen] Blauer Rahmen Hoehe  :" << frame_height;
-    qDebug() << "[vokoscreen]" << "Locale:" << QLocale::system().name();
-    qDebug() << "[vokoscreen]" << "Qt version: " << qVersion();
-    qDebug() << "[vokoscreen]" << "Operating system:" << QSysInfo::prettyProductName();
-    qDebug() << "[vokoscreen]" << "vokoscreen running as:" << QGuiApplication::platformName() << "client";
-
-#ifdef Q_OS_LINUX
-    if ( QX11Info::isPlatformX11() == true )
-        qDebug() << "[vokoscreen]" << "vokoscreen running on X11";
-    else
-        qDebug() << "[vokoscreen]" << "vokoscreen running on Wayland";
-#endif
-    qDebug() << "[vokoscreen]" << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
-    qDebug() << "[vokoscreen] current icon-theme: " << QIcon::themeName();
-    qDebug() << "[vokoscreen] Qt-PluginsPath:     " << QLibraryInfo::location( QLibraryInfo::PluginsPath );
-    qDebug() << "[vokoscreen] Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
-    qDebug() << "[vokoscreen] Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
-#ifdef Q_OS_LINUX
-    qDebug() << "[vokoscreen] CompositingManager running:" << QX11Info::isCompositingManagerRunning();
-#endif
-    qDebug() << "[vokoscreen] screen available desktop width :" << screen->availableSize().width();
-    qDebug() << "[vokoscreen] screen available desktop height:" << screen->availableSize().height();
-    qDebug() << screen->name();
-    qDebug() << screen->model() << screen->refreshRate() << screen->primaryOrientation();
 /*
     areaSettingDialog = new QDialog(this);
     areaSettingDialog->setModal( true );

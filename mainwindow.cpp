@@ -17,6 +17,11 @@
 #include <QImageWriter>
 #include <QScreen>
 #include <QTest>
+#include <QLibraryInfo>
+
+#ifdef Q_OS_LINUX
+  #include <QX11Info>
+#endif
 
 // gstreamer-plugins-bad-orig-addon
 // gstreamer-plugins-good-extra
@@ -142,25 +147,43 @@ QStringList MainWindow::get_all_Audio_devices()
 #include <QStyleFactory>
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
+    QScreen *screen = QGuiApplication::primaryScreen();
+    qDebug().noquote() << "[vokoscreen]" << "Locale:" << QLocale::system().name();
+    qDebug().noquote() << "[vokoscreen]" << "Qt version: " << qVersion();
+    qDebug().noquote() << "[vokoscreen]" << "Operating system:" << QSysInfo::prettyProductName();
+    qDebug().noquote() << "[vokoscreen]" << "vokoscreen running as:" << QGuiApplication::platformName() << "client";
+
+#ifdef Q_OS_LINUX
+    if ( QX11Info::isPlatformX11() == true )
+        qDebug().noquote() << "[vokoscreen]" << "vokoscreen running on X11";
+    else
+        qDebug().noquote() << "[vokoscreen]" << "vokoscreen running on Wayland";
+#endif
+    qDebug().noquote() << "[vokoscreen]" << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
+    qDebug().noquote() << "[vokoscreen] current icon-theme: " << QIcon::themeName();
+    qDebug().noquote() << "[vokoscreen] Qt-PluginsPath:     " << QLibraryInfo::location( QLibraryInfo::PluginsPath );
+    qDebug().noquote() << "[vokoscreen] Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
+    qDebug().noquote() << "[vokoscreen] Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
+#ifdef Q_OS_LINUX
+    qDebug().noquote() << "[vokoscreen] CompositingManager running:" << QX11Info::isCompositingManagerRunning();
+#endif
+    qDebug().noquote() << "[vokoscreen] screen available desktop width :" << screen->availableSize().width();
+    qDebug().noquote() << "[vokoscreen] screen available desktop height:" << screen->availableSize().height();
+    qDebug().noquote() << "[vokoscreen] Name from screen: " << screen->name();
+    qDebug().noquote() << "[vokoscreen] Vertical refresh rate of the screen in Hz:" << screen->refreshRate();
+    qDebug().noquote() << "[vokoscreen] Screen orientation" << screen->orientation();
+    qDebug().noquote() << "[vokoscreen] Color depth of the screen: " << screen->depth();
+    qDebug().noquote() << "[vokoscreen] Model from screen: " << screen->model() ;
+    qDebug().noquote() << "[vokoscreen] Manufactur from screen: " << screen->manufacturer();
+    qDebug().noquote() << "[vokoscreen] SerialNumber from screen: " << screen->serialNumber();
+    qDebug( " " );
+
     ui->setupUi(this);
 
+    // need a move
     move( 0, 0 );
 
     qDebug() << "[vokoscreen]" << gst_version_string ();
-
-/*
-    QStringList list;
-    list.append( "/home/vk/Dokumente/vokoscreenGST/breeze-icons/" );
-    QIcon::setThemeSearchPaths( list );
-
-    ui->tabWidget->setTabIcon( 0, QIcon::fromTheme( "vi", QIcon( "/home/vk/Dokumente/vokoscreenGST/breeze-icons/icons/devices/64/camera-web.svg" ) ) );
-
-    const QStringList styles = QStyleFactory::keys();
-    for(QString s : styles)
-    {
-        qDebug() << s;
-    }
-*/
 
     makeValidIconForSideBar( 0 );
     makeValidIconForSideBar( 1 );
@@ -305,7 +328,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     // Close
     connect( this, SIGNAL( signal_close() ),  ui->pushButtonContinue, SLOT( click() ) );
     connect( this, SIGNAL( signal_close() ),  ui->pushButtonStop, SLOT( click() ) );
-    connect( this, SIGNAL( signal_close() ),  regionController, SLOT( close() ) );
     connect( this, SIGNAL( signal_close_webcam( bool ) ),  ui->CheckBoxCamera, SLOT( setChecked( bool ) ) );
 
     VK_Supported_Formats_And_Codecs();
@@ -336,16 +358,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     connect( desk, SIGNAL( screenCountChanged(int) ), this, SLOT( slot_Screenshot_count_changed( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          this, SLOT( slot_Screenshot_count_changed( int ) ) );
+    connect( ui->radioButtonScreenshotArea, SIGNAL( toggled( bool ) ), regionController, SLOT( show( bool ) ) );
     emit desk->screenCountChanged(0);
     slot_formats_Screenshot();
 
     // Checkable Widget sind in vokoscreen standardmäßig nicht gesetzt.
     // Diese werden hier beziehungsweise wenn die Settings vorhanden sind dort gesetzt.
     ui->radioButtonScreenshotFullscreen->click();
-
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL( timeout() ), this, SLOT( preview_screenshot() ) );
-    timer->start( 500 );
 
     // **************** End Screenshot *******************************
 
@@ -399,6 +418,7 @@ void MainWindow::slot_preshot_Screenshot()
         return;
     }
 
+
     if( ( ui->radioButtonScreenshotWindow->isChecked() == true )  and ( ui->spinBoxScreenshotCountDown->value() > 0 ) )
     {
 
@@ -420,7 +440,6 @@ void MainWindow::slot_preshot_Screenshot()
         return;
     }
 
-    // -----------------------------------------------------------------------------------------------------------
 
     if ( ( ui->radioButtonScreenshotArea->isChecked() == true ) and ( ui->spinBoxScreenshotCountDown->value() > 0 ) )
     {
@@ -1096,6 +1115,12 @@ void MainWindow::slot_preStart()
         connect( vkWinInfo, SIGNAL( windowChanged( bool ) ),     this,                SLOT( slot_Start() ) );
         vkWinInfo->slot_start();
         return;
+    }
+
+
+    if ( ui->radioButtonArea->isChecked() == true )
+    {
+
     }
 
     slot_Start();
