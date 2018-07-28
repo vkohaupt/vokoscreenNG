@@ -13,7 +13,6 @@ QvkWebcamController::QvkWebcamController( Ui_MainWindow *value )
 
     videoSurface = new QvkVideoSurface( this );
     connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ), this, SLOT( slot_newImage( QImage ) ) );
-
 }
 
 

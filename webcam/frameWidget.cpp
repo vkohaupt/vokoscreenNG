@@ -1,5 +1,6 @@
 #include "frameWidget.h"
 
+#include <QDebug>
 #include <QIcon>
 
 frameWidget::frameWidget( QWidget *parent ) : QWidget( parent )

@@ -144,7 +144,6 @@ QStringList MainWindow::get_all_Audio_devices()
 }
 
 
-#include <QStyleFactory>
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -635,10 +634,13 @@ void MainWindow::closeEvent( QCloseEvent *event )
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
     Q_UNUSED(event);
-    ui->labelScreenShotPicture->setPixmap( pixmap.scaled( ui->labelScreenShotPicture->width()-20,
-                                                          ui->labelScreenShotPicture->height()-20,
-                                                          Qt::KeepAspectRatio,
-                                                          Qt::SmoothTransformation ) );
+    if ( !pixmap.isNull() )
+    {
+        ui->labelScreenShotPicture->setPixmap( pixmap.scaled( ui->labelScreenShotPicture->width()-20,
+                                                              ui->labelScreenShotPicture->height()-20,
+                                                              Qt::KeepAspectRatio,
+                                                              Qt::SmoothTransformation ) );
+    }
 }
 
 
