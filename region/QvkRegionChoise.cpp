@@ -125,7 +125,7 @@ void QvkRegionChoise::paintEvent( QPaintEvent *event )
 
     QPixmap pixmap( screenWidth, screenHeight );
 
-    if ( fastHide == false )
+    if ( recordemode == false )
     {
         pixmap.fill( Qt::transparent );
         QPainter painterPixmap;
@@ -157,10 +157,13 @@ void QvkRegionChoise::paintEvent( QPaintEvent *event )
         }
         painterPixmap.end();
     }
-
     else
     {
         pixmap.fill( Qt::transparent );
+        QPainter painterPixmap;
+        painterPixmap.begin( &pixmap );
+        painterPixmap.setRenderHints( QPainter::Antialiasing, true );
+        drawFrame( painterPixmap );
     }
 
     QPainter painter;
@@ -238,6 +241,9 @@ void QvkRegionChoise::mouseReleaseEvent( QMouseEvent * event )
 
 void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
 {
+    if ( recordemode == true )
+        return;
+
     switch ( handlePressed )
     {
       case NoHandle    : break;
@@ -1047,17 +1053,20 @@ void QvkRegionChoise::HandleMiddle( QPainter &painter )
 
 // Fast hide from recordarea
 // Der Desktopanimation "Langsames ausblenden" entgegenwirken
-void QvkRegionChoise::subtractRecordArea( bool value )
+void QvkRegionChoise::recordMode( bool value )
 {
     if ( value == true )
     {
-        fastHide = true;
+        recordemode = true;
+        repaint();
+        update();
     }
     else
     {
-        fastHide = false;
+        recordemode = false;
+        repaint();
+        update();
     }
-    repaint();
 }
 
 /**

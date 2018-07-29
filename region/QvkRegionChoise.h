@@ -38,7 +38,7 @@ public:
   int getYRecordArea();
   void areaReset();
 
-  void subtractRecordArea(bool value);
+  void recordMode(bool value);
 
 
 public slots:
@@ -123,7 +123,7 @@ private:
   enum vk_platform { x11, wayland, windows };
   vk_platform platform;
 
-  bool fastHide = false;
+  bool recordemode = false;
 
   //Ui_AreaSettingsDialog myUiDialog;
   //QDialog *areaSettingDialog;

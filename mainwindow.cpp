@@ -1106,12 +1106,11 @@ void MainWindow::slot_preStart()
 
     if ( ui->radioButtonArea->isChecked() == true )
     {
-       regionChoise->subtractRecordArea( true );
+       regionChoise->recordMode( true );
+       QTest::qSleep(100);
        regionChoise->repaint();
        regionChoise->update();
-       regionChoise->hide();
     }
-
     slot_Start();
 }
 
@@ -1229,8 +1228,9 @@ void MainWindow::slot_preStop()
 {
     if ( ui->radioButtonArea->isChecked() == true )
     {
-        regionChoise->subtractRecordArea( false ); // Fast hide
-        regionChoise->show();
+        regionChoise->recordMode( false );
+        regionChoise->repaint();
+        regionChoise->update();
     }
 }
 
