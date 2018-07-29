@@ -30,16 +30,18 @@ Q_OBJECT
 public:
   QvkRegionChoise();
   virtual ~QvkRegionChoise();
+  int getX();
+  int getY();
+  int getHeight();
+  int getWidth();
+  int getXRecordArea();
+  int getYRecordArea();
+  void areaReset();
+
+  void subtractRecordArea(bool value);
 
 
 public slots:
-    int getX();
-    int getY();
-    int getHeight();
-    int getWidth();
-    int getXRecordArea();
-    int getYRecordArea();
-    void areaReset();
 
 
 private slots:
@@ -120,6 +122,8 @@ private:
 
   enum vk_platform { x11, wayland, windows };
   vk_platform platform;
+
+  bool fastHide = false;
 
   //Ui_AreaSettingsDialog myUiDialog;
   //QDialog *areaSettingDialog;

@@ -205,12 +205,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->tabWidget->setTabIcon( 4, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/webcam.png" ) ) );
     makeAndSetValidIcon( 4 );
 
-    regionController = new QvkRegionController();
-    regionController->hide();
+    //regionController = new QvkRegionController();
+    //regionController->hide();
 
     vkWinInfo = new QvkWinInfo();
-
     vkCountdown = new QvkCountdown();
+    regionChoise = new QvkRegionChoise();
+    regionChoise->hide();
+    regionRecord = new QvkRegionRecord();
 
     // Bar for start, stop etc.
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setEnabled( bool ) ) );
@@ -265,8 +267,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 
     // Tab 1 Screen
-    connect( this,                  SIGNAL( signal_close()  ), regionController,   SLOT( slot_close() ) );
-    connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), regionController,   SLOT( show( bool ) ) );
+    connect( this,                  SIGNAL( signal_close()  ), regionChoise,   SLOT( close() ) );
+    connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), regionChoise,   SLOT( setVisible( bool ) ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
 
     connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
@@ -352,7 +354,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     connect( desk, SIGNAL( screenCountChanged(int) ), this, SLOT( slot_Screenshot_count_changed( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          this, SLOT( slot_Screenshot_count_changed( int ) ) );
-    connect( ui->radioButtonScreenshotArea, SIGNAL( toggled( bool ) ), regionController, SLOT( show( bool ) ) );
+    connect( ui->radioButtonScreenshotArea, SIGNAL( toggled( bool ) ), regionChoise, SLOT( setVisible( bool ) ) );
 
     connect( ui->pushButtonScreenshotShot, SIGNAL( clicked( bool ) ), this, SLOT( slot_preshot_Screenshot() ) );
     connect( ui->pushButtonScreenshotShow, SIGNAL( clicked( bool ) ), this, SLOT( slot_show_Screenshoot() ) );
@@ -442,10 +444,10 @@ void MainWindow::slot_preshot_Screenshot()
     if ( ( ui->radioButtonScreenshotArea->isChecked() == true ) and ( ui->spinBoxScreenshotCountDown->value() > 0 ) )
     {
         hide();
-        regionController->hide();
+        regionChoise->hide();
         disconnect( vkCountdown, 0, 0, 0 );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ),   this,             SLOT( slot_shot_Screenshot() ) );
-        connect( this,        SIGNAL( signal_finish_screenshot( bool ) ), regionController, SLOT( show( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ),   this,         SLOT( slot_shot_Screenshot() ) );
+        connect( this,        SIGNAL( signal_finish_screenshot( bool ) ), regionChoise, SLOT( show( bool ) ) );
         vkCountdown->startCountdown( ui->spinBoxScreenshotCountDown->value() );
         return;
     }
@@ -453,9 +455,9 @@ void MainWindow::slot_preshot_Screenshot()
     if ( ui->radioButtonScreenshotArea->isChecked() == true )
     {
         hide();
-        regionController->hide();
+        regionChoise->hide();
         slot_shot_Screenshot();
-        regionController->show( true );
+        regionChoise->show();
     }
 }
 
@@ -481,10 +483,10 @@ void MainWindow::slot_shot_Screenshot()
     {
         QScreen *screen = QGuiApplication::primaryScreen();
         pixmap = screen->grabWindow( QApplication::desktop()->winId(),
-                                     regionController->getXRecordArea(),
-                                     regionController->getYRecordArea(),
-                                     regionController->getWidth(),
-                                     regionController->getHeight() );
+                                     regionChoise->getXRecordArea(),
+                                     regionChoise->getYRecordArea(),
+                                     regionChoise->getWidth(),
+                                     regionChoise->getHeight() );
     }
 
     bool ok = pixmap.save( ui->lineEditPicturePath->text() + \
@@ -791,10 +793,10 @@ QString MainWindow::VK_getXimagesrc()
                    << "display-name=" + qgetenv( "DISPLAY" )
                    << "use-damage=false"
                    << "show-pointer=" + showPointer
-                   << "startx=" + QString::number( regionController->getXRecordArea() )
-                   << "starty=" + QString::number( regionController->getYRecordArea() )
-                   << "endx="   + QString::number( regionController->getXRecordArea() + regionController->getWidth()-1 )
-                   << "endy="   + QString::number( regionController->getYRecordArea() + regionController->getHeight()-1 );
+                   << "startx=" + QString::number( regionChoise->getXRecordArea() )
+                   << "starty=" + QString::number( regionChoise->getYRecordArea() )
+                   << "endx="   + QString::number( regionChoise->getXRecordArea() + regionChoise->getWidth()-1 )
+                   << "endy="   + QString::number( regionChoise->getYRecordArea() + regionChoise->getHeight()-1 );
         QString value = stringList.join( " " );
         return value;
     }
@@ -1107,7 +1109,10 @@ void MainWindow::slot_preStart()
 
     if ( ui->radioButtonArea->isChecked() == true )
     {
-       regionController->hide();
+       regionChoise->subtractRecordArea( true );
+       regionChoise->repaint();
+       regionChoise->update();
+       regionChoise->hide();
     }
 
     slot_Start();
@@ -1225,11 +1230,10 @@ void MainWindow::slot_Start()
 
 void MainWindow::slot_preStop()
 {
-    //slot_Stop();
-
     if ( ui->radioButtonArea->isChecked() == true )
     {
-        regionController->show();
+        regionChoise->subtractRecordArea( false ); // Fast hide
+        regionChoise->show();
     }
 }
 

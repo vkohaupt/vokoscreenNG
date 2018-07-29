@@ -33,6 +33,9 @@
 
 QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
                                    handleUnderMouse(NoHandle),
+                                   HandleColorBackground( Qt::green ),
+                                   HandleColorBackgroundSize( Qt::yellow ),
+                                   HandleColorByMousePressed( Qt::yellow ),
                                    framePenWidth(4), // framePenWidth must be an even number
                                    framePenHalf(framePenWidth/2),
                                    radius(20),
@@ -44,10 +47,7 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
                                    frame_Width(250 + framePenWidth),
                                    frame_height(250 + framePenWidth),
                                    frame_min_width(250 + framePenWidth),
-                                   frame_min_height(250+ framePenWidth),
-                                   HandleColorBackground( Qt::green ),
-                                   HandleColorBackgroundSize( Qt::yellow ),
-                                   HandleColorByMousePressed( Qt::yellow )
+                                   frame_min_height(250 + framePenWidth)
 {
 
 #ifdef Q_OS_LINUX
@@ -124,10 +124,12 @@ void QvkRegionChoise::paintEvent( QPaintEvent *event )
     (void)event;
 
     QPixmap pixmap( screenWidth, screenHeight );
-    pixmap.fill( Qt::transparent );
 
-    QPainter painterPixmap;
-    painterPixmap.begin( &pixmap );
+    if ( fastHide == false )
+    {
+        pixmap.fill( Qt::transparent );
+        QPainter painterPixmap;
+        painterPixmap.begin( &pixmap );
         painterPixmap.setRenderHints( QPainter::Antialiasing, true );
         HandleTopLeft( painterPixmap );
         HandleTopMiddle( painterPixmap );
@@ -140,29 +142,33 @@ void QvkRegionChoise::paintEvent( QPaintEvent *event )
         HandleMiddle( painterPixmap );
         printSize( painterPixmap);
         drawFrame( painterPixmap );
-
         switch ( handlePressed )
         {
-          case NoHandle    : break;
-          case TopLeft     : HandleTopLeftSize( painterPixmap );     break;
-          case TopMiddle   : HandleTopMiddleSize( painterPixmap );   break;
-          case TopRight    : HandleTopRightSize( painterPixmap );    break;
-          case RightMiddle : HandleRightMiddleSize( painterPixmap ); break;
-          case BottomRight : HandleBottomRightSize( painterPixmap ); break;
-          case BottomMiddle: HandleBottomMiddleSize( painterPixmap );break;
-          case BottomLeft  : HandleBottomLeftSize( painterPixmap );  break;
-          case LeftMiddle  : HandleLeftMiddleSize( painterPixmap);   break;
-          case Middle      : HandleTopLeftSize( painterPixmap );     break;
+        case NoHandle    : break;
+        case TopLeft     : HandleTopLeftSize( painterPixmap );     break;
+        case TopMiddle   : HandleTopMiddleSize( painterPixmap );   break;
+        case TopRight    : HandleTopRightSize( painterPixmap );    break;
+        case RightMiddle : HandleRightMiddleSize( painterPixmap ); break;
+        case BottomRight : HandleBottomRightSize( painterPixmap ); break;
+        case BottomMiddle: HandleBottomMiddleSize( painterPixmap );break;
+        case BottomLeft  : HandleBottomLeftSize( painterPixmap );  break;
+        case LeftMiddle  : HandleLeftMiddleSize( painterPixmap);   break;
+        case Middle      : HandleTopLeftSize( painterPixmap );     break;
         }
+        painterPixmap.end();
+    }
 
-    painterPixmap.end();
+    else
+    {
+        pixmap.fill( Qt::transparent );
+    }
 
     QPainter painter;
     painter.begin( this );
     painter.drawPixmap( QPoint( 0, 0 ), pixmap );
     painter.end();
 
-    setMask( pixmap.mask());
+    setMask( pixmap.mask() );
 }
 
 
@@ -1036,9 +1042,23 @@ void QvkRegionChoise::HandleMiddle( QPainter &painter )
     painter.drawPixmap( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
                         frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
                         buttonArrow.getArrow( buttonArrow.degreeArrow::leftMiddel ) );
-
 }
 
+
+// Fast hide from recordarea
+// Der Desktopanimation "Langsames ausblenden" entgegenwirken
+void QvkRegionChoise::subtractRecordArea( bool value )
+{
+    if ( value == true )
+    {
+        fastHide = true;
+    }
+    else
+    {
+        fastHide = false;
+    }
+    repaint();
+}
 
 /**
  * Return x from window

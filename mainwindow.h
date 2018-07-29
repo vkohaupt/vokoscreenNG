@@ -1,10 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "QvkRegionController.h"
+//#include "QvkRegionController.h"
 #include "QvkWinInfo.h"
 #include "QvkCountdown.h"
 #include "QvkWebcamController.h"
+#include "QvkRegionChoise.h"
+#include "QvkRegionRecord.h"
 
 #include <QMainWindow>
 #include <QFileSystemWatcher>
@@ -26,7 +28,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QvkRegionController *regionController;
+    //QvkRegionController *regionController;
     const QString VK_Gstr_Pipe = " ! ";
     QString VK_GStreamer_Version();
     QString VK_getXimagesrc();
@@ -64,8 +66,12 @@ private:
     void VK_gst_Elements_available();
 
     QvkWebcamController *webcamController;
+    QvkRegionChoise *regionChoise;
+    QvkRegionRecord *regionRecord;
 
     QPixmap pixmap;
+
+
 
 private slots:
     void slot_preStart();
