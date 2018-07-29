@@ -213,7 +213,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     vkCountdown = new QvkCountdown();
 
     // Bar for start, stop etc.
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), regionController,          SLOT( slot_set_record_start_flag() ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonPause,       SLOT( setDisabled( bool ) ) );
@@ -232,7 +231,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabMisc,               SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStart() ) );
 
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), regionController,          SLOT( slot_set_record_stop_flag() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonPause,       SLOT( setEnabled( bool ) ) );
@@ -240,7 +238,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonFullscreen, SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonWindow,     SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonArea,       SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_comboBoxScreenSetDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxScreen,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxAudioOnOff,    SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonPulse,      SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonAlsa,       SLOT( setDisabled( bool ) ) );
@@ -262,11 +260,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonStop,     SLOT( setDisabled( bool ) ) );
     ui->pushButtonContinue->hide();
 
-    connect( ui->pushButtonScreenshotShot, SIGNAL( clicked( bool ) ), this, SLOT( slot_preshot_Screenshot() ) );
-
     connect( ui->pushButtonPlay, SIGNAL( clicked( bool ) ), this, SLOT( slot_Play() ) );
-
-    connect( ui->pushButtonScreenshotShow, SIGNAL( clicked( bool ) ), this, SLOT( slot_show_Screenshoot() ) );
 
 
     // Tab 1 Screen
@@ -358,6 +352,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( desk, SIGNAL( screenCountChanged(int) ), this, SLOT( slot_Screenshot_count_changed( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          this, SLOT( slot_Screenshot_count_changed( int ) ) );
     connect( ui->radioButtonScreenshotArea, SIGNAL( toggled( bool ) ), regionController, SLOT( show( bool ) ) );
+
+    connect( ui->pushButtonScreenshotShot, SIGNAL( clicked( bool ) ), this, SLOT( slot_preshot_Screenshot() ) );
+    connect( ui->pushButtonScreenshotShow, SIGNAL( clicked( bool ) ), this, SLOT( slot_show_Screenshoot() ) );
 
     emit desk->screenCountChanged(0);
     slot_formats_Screenshot();
@@ -568,20 +565,6 @@ void MainWindow::slot_audioHelp()
 void MainWindow::slot_availableHelp()
 {
     QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/3.0/available.html", QUrl::TolerantMode ) );
-}
-
-
-void MainWindow::slot_comboBoxScreenSetDisabled( bool value )
-{
-    Q_UNUSED(value);
-    if ( ui->radioButtonFullscreen->isChecked() == true )
-    {
-        ui->comboBoxScreen->setEnabled( true );
-    }
-    else
-    {
-        ui->comboBoxScreen->setEnabled( false );
-    }
 }
 
 
@@ -807,10 +790,10 @@ QString MainWindow::VK_getXimagesrc()
                    << "display-name=" + qgetenv( "DISPLAY" )
                    << "use-damage=false"
                    << "show-pointer=" + showPointer
-                   << "startx=" + QString::number( regionController->getX() )
-                   << "starty=" + QString::number( regionController->getY() )
-                   << "endx="   + QString::number( regionController->getX() + regionController->getWidth() )
-                   << "endy="   + QString::number( regionController->getY() + regionController->getHeight() );
+                   << "startx=" + QString::number( regionController->getXRecordArea() )
+                   << "starty=" + QString::number( regionController->getYRecordArea() )
+                   << "endx="   + QString::number( regionController->getXRecordArea() + regionController->getWidth()-1 )
+                   << "endy="   + QString::number( regionController->getYRecordArea() + regionController->getHeight()-1 );
         QString value = stringList.join( " " );
         return value;
     }
@@ -1123,7 +1106,7 @@ void MainWindow::slot_preStart()
 
     if ( ui->radioButtonArea->isChecked() == true )
     {
-
+       regionController->hide();
     }
 
     slot_Start();

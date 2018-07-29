@@ -28,7 +28,8 @@ void QvkRegionController::slot_set_record_stop_flag()
     //regionRecord->hide();
 }
 
-// Need by Screenshot
+
+// Need by Screenshot and Screencast
 void QvkRegionController::show( bool value )
 {
     if (  value == true )
@@ -37,6 +38,10 @@ void QvkRegionController::show( bool value )
         regionChoise->hide();
 }
 
+void QvkRegionController::show()
+{
+    regionChoise->show();
+}
 
 void QvkRegionController::hide()
 {

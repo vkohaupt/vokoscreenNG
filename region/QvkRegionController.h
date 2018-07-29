@@ -22,8 +22,6 @@ public:
    int getXRecordArea();
    int getYRecordArea();
 
-   void lockFrame( bool status );
-
    void hide();
 
    QvkRegionChoise *regionChoise;
@@ -36,6 +34,7 @@ private slots:
   
   
 public slots:
+   void show();
    void show(bool value);
    void slot_close();
 
