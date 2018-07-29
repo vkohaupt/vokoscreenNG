@@ -70,6 +70,7 @@ private:
 private slots:
     void slot_preStart();
     void slot_Start();
+    void slot_preStop();
     void slot_Stop();
     void slot_Pause();
     void slot_Continue();
