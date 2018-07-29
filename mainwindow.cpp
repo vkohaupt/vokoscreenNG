@@ -205,9 +205,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->tabWidget->setTabIcon( 4, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/webcam.png" ) ) );
     makeAndSetValidIcon( 4 );
 
-    //regionController = new QvkRegionController();
-    //regionController->hide();
-
     vkWinInfo = new QvkWinInfo();
     vkCountdown = new QvkCountdown();
     regionChoise = new QvkRegionChoise();

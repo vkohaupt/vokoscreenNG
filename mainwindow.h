@@ -1,7 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-//#include "QvkRegionController.h"
 #include "QvkWinInfo.h"
 #include "QvkCountdown.h"
 #include "QvkWebcamController.h"
@@ -28,7 +27,6 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    //QvkRegionController *regionController;
     const QString VK_Gstr_Pipe = " ! ";
     QString VK_GStreamer_Version();
     QString VK_getXimagesrc();
