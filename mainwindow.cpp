@@ -209,7 +209,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     vkCountdown = new QvkCountdown();
     regionChoise = new QvkRegionChoise();
     regionChoise->hide();
-    regionRecord = new QvkRegionRecord();
 
     // Bar for start, stop etc.
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setEnabled( bool ) ) );

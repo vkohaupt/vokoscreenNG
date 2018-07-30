@@ -5,7 +5,6 @@
 #include "QvkCountdown.h"
 #include "QvkWebcamController.h"
 #include "QvkRegionChoise.h"
-#include "QvkRegionRecord.h"
 
 #include <QMainWindow>
 #include <QFileSystemWatcher>
@@ -65,7 +64,6 @@ private:
 
     QvkWebcamController *webcamController;
     QvkRegionChoise *regionChoise;
-    QvkRegionRecord *regionRecord;
 
     QPixmap pixmap;
 
