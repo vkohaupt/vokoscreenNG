@@ -521,8 +521,6 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
                          }
     } // end switch
 
-    //QCoreApplication::processEvents( QEventLoop::AllEvents );
-
 #ifdef Q_OS_LINUX
     if ( handlePressed != NoHandle )
     {
@@ -1111,8 +1109,6 @@ void QvkRegionChoise::HandleMiddle( QPainter &painter )
 }
 
 
-// Fast hide from recordarea
-// Der Desktopanimation "Langsames ausblenden" entgegenwirken
 void QvkRegionChoise::recordMode( bool value )
 {
     if ( value == true )
