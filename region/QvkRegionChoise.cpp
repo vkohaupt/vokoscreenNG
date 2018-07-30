@@ -163,9 +163,46 @@ void QvkRegionChoise::paintEvent( QPaintEvent *event )
         QPainter painterPixmap;
         painterPixmap.begin( &pixmap );
         painterPixmap.setRenderHints( QPainter::Antialiasing, true );
-        HandleTopLeftRecord( painterPixmap );
-        HandleTopMiddleRecord( painterPixmap );
-
+        HandleRecord( painterPixmap,
+                      frame_X - radius + penHalf,
+                      frame_Y - radius + penHalf,
+                        0 * 16,
+                      270 * 16 );
+        HandleRecord( painterPixmap,
+                      frame_X + frame_Width/2 - radius + penHalf,
+                      frame_Y - radius + penHalf,
+                        0 * 16,
+                      180 * 16 );
+        HandleRecord( painterPixmap,
+                      frame_X + frame_Width - radius + penHalf,
+                      frame_Y - radius + penHalf,
+                      -90 * 16,
+                      270 * 16 );
+        HandleRecord( painterPixmap,
+                      frame_X + frame_Width - radius + penHalf,
+                      frame_Y + frame_height/2 - radius + penHalf,
+                      -90 * 16,
+                      180 * 16 );
+        HandleRecord( painterPixmap,
+                      frame_X + frame_Width - radius + penHalf,
+                      frame_Y + frame_height - radius + penHalf,
+                      -180 * 16,
+                       270 * 16 );
+        HandleRecord( painterPixmap,
+                      frame_X + frame_Width/2 - radius + penHalf,
+                      frame_Y + frame_height - radius + penHalf,
+                         0 * 16,
+                      -180 * 16 );
+        HandleRecord( painterPixmap,
+                      frame_X - radius + penHalf,
+                      frame_Y + frame_height - radius + penHalf,
+                         0 * 16,
+                      -270 * 16 );
+        HandleRecord( painterPixmap,
+                      frame_X - radius + penHalf,
+                      frame_Y + frame_height/2 - radius + penHalf,
+                      -90 * 16,
+                      -180 * 16 );
 
         drawFrame( painterPixmap );
     }
@@ -647,6 +684,25 @@ void QvkRegionChoise::drawFrame(QPainter &painter)
 }
 
 
+void QvkRegionChoise::HandleRecord( QPainter &painter, int x, int y, int startAngle, int spanAngle )
+{
+    QBrush brush;
+      brush.setColor( Qt::red );
+      brush.setStyle( Qt::SolidPattern );
+    painter.setBrush( brush );
+    QPen pen;
+      pen.setColor( Qt::black );
+      pen.setWidth( penWidth );
+    painter.setPen( pen );
+    QRectF rectangle = QRectF( x,
+                               y,
+                               diameter,
+                               diameter);
+
+    painter.drawPie( rectangle, startAngle, spanAngle );
+}
+
+
 void QvkRegionChoise::HandleTopLeft( QPainter &painter )
 {
     QvkRegionButtonArrow buttonArrow;
@@ -694,26 +750,6 @@ void QvkRegionChoise::HandleTopLeftSize( QPainter &painter)
 }
 
 
-void QvkRegionChoise::HandleTopLeftRecord( QPainter &painter )
-{
-    QBrush brush;
-      brush.setColor( Qt::red );
-      brush.setStyle( Qt::SolidPattern );
-    painter.setBrush( brush );
-    QPen pen;
-      pen.setColor( Qt::black );
-      pen.setWidth( penWidth );
-    painter.setPen( pen );
-    QRectF rectangle = QRectF( frame_X - radius + penHalf,
-                               frame_Y - radius + penHalf,
-                               diameter,
-                               diameter);
-    int startAngle = 0 * 16;
-    int spanAngle = 270 * 16;
-    painter.drawPie( rectangle, startAngle, spanAngle );
-}
-
-
 void QvkRegionChoise::HandleTopMiddle( QPainter &painter)
 {
     QvkRegionButtonArrow buttonArrow;
@@ -756,26 +792,6 @@ void QvkRegionChoise::HandleTopMiddleSize( QPainter &painter )
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
     painter.drawText( rect, Qt::AlignCenter, "y:" + QString::number( frame_Y + framePenHalf ) );
-}
-
-
-void QvkRegionChoise::HandleTopMiddleRecord( QPainter &painter )
-{
-    QBrush brush;
-      brush.setColor( Qt::red );
-      brush.setStyle( Qt::SolidPattern );
-    painter.setBrush( brush );
-    QPen pen;
-      pen.setColor( Qt::black );
-      pen.setWidth( penWidth );
-    painter.setPen( pen );
-    QRectF rectangle = QRectF( frame_X + frame_Width/2 - radius + penHalf,
-                               frame_Y - radius + penHalf,
-                               diameter,
-                               diameter);
-    int startAngle =  0 * 16;
-    int spanAngle = 180 * 16;
-    painter.drawPie( rectangle, startAngle, spanAngle );
 }
 
 

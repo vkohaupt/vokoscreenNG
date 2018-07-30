@@ -100,12 +100,13 @@ private:
 
   void drawFrame( QPainter &painter );
   void printSize(QPainter &painter);
+  void HandleRecord( QPainter &painter, int x, int y, int startAngle, int spanAngle );
   void HandleTopLeft(QPainter &painter );
   void HandleTopLeftSize(QPainter &painter);
-  void HandleTopLeftRecord( QPainter &painter );
+  //void HandleTopLeftRecord( QPainter &painter );
   void HandleTopMiddle(QPainter &painter);
   void HandleTopMiddleSize(QPainter &painter);
-  void HandleTopMiddleRecord( QPainter &painter );
+  //void HandleTopMiddleRecord( QPainter &painter );
   void HandleTopRight( QPainter &painter );
   void HandleTopRightSize(QPainter &painter);
   void HandleRightMiddle(QPainter &painter);
