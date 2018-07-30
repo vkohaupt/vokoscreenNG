@@ -39,7 +39,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -275,8 +275,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>64</width>
-                 <height>16</height>
+                 <width>423</width>
+                 <height>201</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -475,8 +475,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>36</width>
-                   <height>76</height>
+                   <width>130</width>
+                   <height>241</height>
                   </rect>
                  </property>
                  <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -743,7 +743,7 @@
         <item>
          <widget class="QTabWidget" name="tabWidgetScreenshot">
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
