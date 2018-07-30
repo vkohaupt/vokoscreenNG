@@ -105,6 +105,7 @@ private:
   void HandleTopLeftRecord( QPainter &painter );
   void HandleTopMiddle(QPainter &painter);
   void HandleTopMiddleSize(QPainter &painter);
+  void HandleTopMiddleRecord( QPainter &painter );
   void HandleTopRight( QPainter &painter );
   void HandleTopRightSize(QPainter &painter);
   void HandleRightMiddle(QPainter &painter);

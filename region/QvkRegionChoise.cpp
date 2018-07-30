@@ -164,6 +164,7 @@ void QvkRegionChoise::paintEvent( QPaintEvent *event )
         painterPixmap.begin( &pixmap );
         painterPixmap.setRenderHints( QPainter::Antialiasing, true );
         HandleTopLeftRecord( painterPixmap );
+        HandleTopMiddleRecord( painterPixmap );
 
 
         drawFrame( painterPixmap );
@@ -755,6 +756,26 @@ void QvkRegionChoise::HandleTopMiddleSize( QPainter &painter )
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
     painter.drawText( rect, Qt::AlignCenter, "y:" + QString::number( frame_Y + framePenHalf ) );
+}
+
+
+void QvkRegionChoise::HandleTopMiddleRecord( QPainter &painter )
+{
+    QBrush brush;
+      brush.setColor( Qt::red );
+      brush.setStyle( Qt::SolidPattern );
+    painter.setBrush( brush );
+    QPen pen;
+      pen.setColor( Qt::black );
+      pen.setWidth( penWidth );
+    painter.setPen( pen );
+    QRectF rectangle = QRectF( frame_X + frame_Width/2 - radius + penHalf,
+                               frame_Y - radius + penHalf,
+                               diameter,
+                               diameter);
+    int startAngle =  0 * 16;
+    int spanAngle = 180 * 16;
+    painter.drawPie( rectangle, startAngle, spanAngle );
 }
 
 
