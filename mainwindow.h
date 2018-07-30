@@ -36,6 +36,7 @@ private:
     void makeValidIconForSideBar( int index );
 
     QFileSystemWatcher *videoFileSystemWatcher;
+    QFileSystemWatcher *pictureFileSystemWatcher;
 
     GstElement *pipeline;
     GError *error = NULL;
@@ -99,6 +100,9 @@ private slots:
     void slot_shot_Screenshot();
     void slot_show_Screenshoot();
     void slot_Screenshot_count_changed( int newCount );
+    void slot_newPicturePath();
+    void slot_pictureFileSystemWatcherSetNewPath();
+    void slot_pictureFileSystemWatcherSetButtons();
 
 
 signals:

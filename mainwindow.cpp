@@ -297,7 +297,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
 
     // Tab 4 Misc
-    videoFileSystemWatcher = new QFileSystemWatcher( (QStringList)QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
+    videoFileSystemWatcher = new QFileSystemWatcher();
     connect( ui->PushButtonVideoPath, SIGNAL( clicked( bool ) ),        this, SLOT( slot_newVideoPath() ) );
     connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetNewPath() ) );
     connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
@@ -346,6 +346,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     ui->tabWidgetScreenshot->setTabIcon( 1, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
     makeAndSetValidIcon( 1 );
+
+    pictureFileSystemWatcher = new QFileSystemWatcher();
+    connect( ui->toolButtonPicturePath, SIGNAL( clicked( bool ) ),      this, SLOT( slot_newPicturePath() ) );
+    connect( ui->lineEditPicturePath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_pictureFileSystemWatcherSetNewPath() ) );
+    connect( ui->lineEditPicturePath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_pictureFileSystemWatcherSetButtons() ) );
+    connect( pictureFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_pictureFileSystemWatcherSetButtons() ) );
     ui->lineEditPicturePath->setText( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
 
     connect( desk, SIGNAL( screenCountChanged(int) ), this, SLOT( slot_Screenshot_count_changed( int ) ) );
@@ -552,6 +558,47 @@ void MainWindow::slot_Screenshot_count_changed( int newCount )
 }
 
 
+void MainWindow::slot_newPicturePath()
+{
+    QString dir = QFileDialog::getExistingDirectory( this,
+                                                     "",
+                                                     QStandardPaths::writableLocation( QStandardPaths::HomeLocation ),
+                                                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks );
+
+    if ( dir > "" )
+    {
+        ui->lineEditPicturePath->setText( dir );
+    }
+}
+
+
+void MainWindow::slot_pictureFileSystemWatcherSetNewPath()
+{
+    if ( !pictureFileSystemWatcher->directories().isEmpty() )
+    {
+       pictureFileSystemWatcher->removePaths( pictureFileSystemWatcher->directories() );
+    }
+    pictureFileSystemWatcher->addPath( ui->lineEditPicturePath->text() );
+}
+
+
+void MainWindow::slot_pictureFileSystemWatcherSetButtons()
+{
+  QDir dir( ui->lineEditPicturePath->text() );
+  QStringList filters;
+  filters << "vokoscreen*";
+  QStringList List = dir.entryList( filters, QDir::Files, QDir::Time );
+
+  if ( List.isEmpty() || ( ui->pushButtonScreenshotShot->isEnabled() == false ) )
+  {
+    ui->pushButtonScreenshotShow->setEnabled( false );
+  }
+  else
+  {
+    ui->pushButtonScreenshotShow->setEnabled( true );
+  }
+}
+
 // ***************************** End Screenshot *****************************************************
 
 
@@ -583,7 +630,10 @@ void MainWindow::slot_newVideoPath()
 
 void MainWindow::slot_videoFileSystemWatcherSetNewPath()
 {
-    videoFileSystemWatcher->removePaths( videoFileSystemWatcher->directories() );
+    if ( !videoFileSystemWatcher->directories().isEmpty() )
+    {
+       videoFileSystemWatcher->removePaths( videoFileSystemWatcher->directories() );
+    }
     videoFileSystemWatcher->addPath( ui->lineEditVideoPath->text() );
 }
 
