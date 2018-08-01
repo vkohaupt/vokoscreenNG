@@ -336,14 +336,7 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="4">
-               <widget class="QCheckBox" name="checkBoxLossless">
-                <property name="text">
-                 <string>Lossless</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="5">
+              <item row="0" column="4">
                <widget class="QPushButton" name="pushButtonFramesDefault">
                 <property name="toolTip">
                  <string>Standard</string>
