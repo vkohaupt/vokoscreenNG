@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>564</width>
-    <height>396</height>
+    <height>384</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -86,7 +86,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -228,7 +228,7 @@
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <item>
-             <layout class="QGridLayout" name="gridLayoutFormatCodecs">
+             <layout class="QGridLayout" name="gridLayout_5">
               <item row="0" column="1">
                <widget class="QSpinBox" name="spinBoxFrames">
                 <property name="value">
@@ -250,10 +250,7 @@
                <widget class="QComboBox" name="comboBoxVideoCodec"/>
               </item>
               <item row="0" column="7">
-               <widget class="QToolButton" name="toolButtonFramesHelp">
-                <property name="toolTip">
-                 <string>Help</string>
-                </property>
+               <widget class="QToolButton" name="toolButton">
                 <property name="text">
                  <string notr="true">Help</string>
                 </property>
@@ -270,14 +267,14 @@
                </widget>
               </item>
               <item row="1" column="2">
-               <widget class="QLabel" name="labelVideoCodec">
+               <widget class="QLabel" name="label_2">
                 <property name="text">
                  <string>Videocodec</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="0">
-               <widget class="QLabel" name="labelFormat">
+               <widget class="QLabel" name="label">
                 <property name="text">
                  <string>Format</string>
                 </property>
@@ -313,14 +310,14 @@
                </spacer>
               </item>
               <item row="1" column="5">
-               <widget class="QPushButton" name="pushButtonFormatStandard">
+               <widget class="QPushButton" name="pushButton">
                 <property name="text">
                  <string notr="true"/>
                 </property>
                </widget>
               </item>
               <item row="2" column="5">
-               <widget class="QPushButton" name="pushButtonAudiocodecStandard">
+               <widget class="QPushButton" name="pushButton_2">
                 <property name="text">
                  <string notr="true"/>
                 </property>
@@ -387,10 +384,10 @@
                  <x>0</x>
                  <y>0</y>
                  <width>427</width>
-                 <height>81</height>
+                 <height>80</height>
                 </rect>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
+               <layout class="QVBoxLayout" name="verticalLayout_3">
                 <property name="spacing">
                  <number>0</number>
                 </property>
@@ -406,6 +403,26 @@
                 <property name="bottomMargin">
                  <number>0</number>
                 </property>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <spacer name="verticalSpacer_3">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
                </layout>
               </widget>
              </widget>
@@ -427,16 +444,33 @@
                </widget>
               </item>
               <item>
-               <widget class="QToolButton" name="toolButtonNoMouseCursor">
-                <property name="toolTip">
-                 <string>Help</string>
-                </property>
+               <widget class="QToolButton" name="toolButton_2">
                 <property name="text">
                  <string notr="true">Help</string>
                 </property>
                </widget>
               </item>
              </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tabCodec">
+           <attribute name="title">
+            <string notr="true"/>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <spacer name="verticalSpacer_12">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
             </item>
            </layout>
           </widget>
@@ -512,7 +546,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>130</width>
-                   <height>299</height>
+                   <height>287</height>
                   </rect>
                  </property>
                  <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -798,10 +832,10 @@
             <item>
              <widget class="QLabel" name="labelScreenShotPicture">
               <property name="frameShape">
-               <enum>QFrame::Panel</enum>
+               <enum>QFrame::NoFrame</enum>
               </property>
               <property name="frameShadow">
-               <enum>QFrame::Plain</enum>
+               <enum>QFrame::Raised</enum>
               </property>
               <property name="text">
                <string notr="true"/>

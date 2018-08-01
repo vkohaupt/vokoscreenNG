@@ -5,6 +5,7 @@ Requires:
   - gstreamer-plugins-bad-orig-addon
   - gstreamer-plugins-good-extra
   - pulseaudio
+
   
 BuildRequires:
   - pkgconfig
