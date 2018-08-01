@@ -518,7 +518,7 @@ void MainWindow::slot_shot_Screenshot()
     }
 
     bool ok = pixmap.save( ui->lineEditPicturePath->text() + \
-                           QDir::separator() + \
+                           "/" + \
                            "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxScreenShotFormat->currentText() );
     Q_UNUSED(ok);
 
@@ -1266,7 +1266,7 @@ void MainWindow::slot_Start()
     }
 
     VK_PipelineList << VK_getMuxer();
-    VK_PipelineList << "filesink location=" + path + QDir::separator() + filename;
+    VK_PipelineList << "filesink location=" + path + "/" + filename;
 
     QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Pipe );
     qDebug() << "[vokoscreen] Start record with:" << VK_Pipeline;
