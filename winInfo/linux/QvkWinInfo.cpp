@@ -125,12 +125,7 @@ void QvkWinInfo::selectWindow()
 }
 
 
-QString QvkWinInfo::WinID()
-{
-  return QString().number( newWinID );
-}
-
-
+// Need for Screenshot
 WId QvkWinInfo::getWinID()
 {
   return newWinID;
