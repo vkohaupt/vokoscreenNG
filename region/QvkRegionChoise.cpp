@@ -546,6 +546,11 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
     }
 #endif
 
+#ifdef Q_OS_WIN
+    repaint();
+    update();
+#endif
+
     if ( handlePressed != NoHandle )
         return;
 

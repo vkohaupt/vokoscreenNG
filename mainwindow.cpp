@@ -286,6 +286,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 
     // Tab 1 Screen
+#ifdef Q_OS_WIN
+    ui->radioButtonWindow->hide();
+#endif
     connect( this,                  SIGNAL( signal_close()  ), regionChoise,   SLOT( close() ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), regionChoise,   SLOT( setVisible( bool ) ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
@@ -810,7 +813,7 @@ void MainWindow::slot_setFramesStandard( bool value )
     ui->spinBoxFrames->setValue( 25 );
 }
 
-
+#ifdef Q_OS_LINUX
 QString MainWindow::VK_getXimagesrc()
 {
     QString showPointer = "true";
@@ -875,6 +878,29 @@ QString MainWindow::VK_getXimagesrc()
 
     return ""; // prophylactic no error at compiletime
 }
+#endif
+
+
+#ifdef Q_OS_WIN
+QString MainWindow::VK_getXimagesrc()
+{
+    QString value;
+    QString showPointer = "true";
+    if( ui->checkBoxMouseCursorOnOff->checkState() == Qt::Checked )
+    {
+        showPointer = "false";
+    }
+
+    if( ui->radioButtonFullscreen->isChecked() == true )
+    {
+        QStringList stringList;
+        stringList << "gdiscreencapsrc"
+                   << "cursor=" + showPointer;
+        value = stringList.join( " " );
+    }
+    return value;
+}
+#endif
 
 
 QString MainWindow::VK_getCapsFilter()
@@ -1363,9 +1389,9 @@ void MainWindow::slot_Play()
     QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
 
     QString string;
-    string.append( "file://" );
+    string.append( "file:///" );
     string.append( ui->lineEditVideoPath->text() );
-    string.append( QDir::separator() );
+    string.append( "/" );
     string.append( videoFileList.at( 0 ) );
     bool b = QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) );
     if ( b == false )
