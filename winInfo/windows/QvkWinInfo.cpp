@@ -70,6 +70,7 @@ void QvkWinInfo::slot_start()
   mouseTimer->start( 20 );
 
   show();
+  emit signal_showCursor( true );
 }
 
 
@@ -97,8 +98,8 @@ void QvkWinInfo::mousePosition()
 
 void QvkWinInfo::selectWindow()
 {
-  WCHAR title[256];
-  GetWindowText( GetForegroundWindow(), title, sizeof( title ) );
+  //WCHAR title[256];
+  //GetWindowText( GetForegroundWindow(), title, sizeof( title ) );
   newWinID = (WId)GetForegroundWindow();
 
   if ( lastWinID != newWinID )
@@ -109,9 +110,10 @@ void QvkWinInfo::selectWindow()
     // Cursor resize does not show in video in the first Frames
     resize( 10, 10 );
     
-    emit windowChanged( QString::fromWCharArray( title ) );
+//    emit windowChanged( QString::fromWCharArray( title ) );
+    emit windowChanged( true );
     this->close();
-    delete this;
+//    delete this;
   }
 }
 

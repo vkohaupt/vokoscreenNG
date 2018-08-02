@@ -26,8 +26,9 @@ private slots:
 
    
 signals:
-  void windowChanged( QString );
-  
+  void windowChanged( bool );
+  void signal_showCursor( bool );
+
   
 protected:  
   void paintEvent(QPaintEvent *event);
