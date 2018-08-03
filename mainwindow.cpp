@@ -880,7 +880,7 @@ QString MainWindow::VK_getXimagesrc()
 }
 #endif
 
-
+// https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-multifilesrc.html
 #ifdef Q_OS_WIN
 QString MainWindow::VK_getXimagesrc()
 {
