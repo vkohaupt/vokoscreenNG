@@ -457,7 +457,7 @@ void MainWindow::slot_preshot_Screenshot()
         disconnect( vkCountdown, 0, 0, 0 );
         disconnect( vkWinInfo, 0, 0, 0 );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), vkWinInfo, SLOT( slot_start() ) );
-        connect( vkWinInfo, SIGNAL( windowChanged( bool ) ), this, SLOT( slot_shot_Screenshot() ) );
+        connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), this, SLOT( slot_shot_Screenshot() ) );
         vkCountdown->startCountdown( ui->spinBoxScreenshotCountDown->value() );
         return;
     }
@@ -466,7 +466,7 @@ void MainWindow::slot_preshot_Screenshot()
     {
         hide();
         disconnect( vkWinInfo, 0, 0, 0 );
-        connect( vkWinInfo, SIGNAL( windowChanged( bool ) ), this, SLOT( slot_shot_Screenshot() ) );
+        connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), this, SLOT( slot_shot_Screenshot() ) );
         vkWinInfo->slot_start();
         return;
     }
@@ -1170,7 +1170,7 @@ void MainWindow::slot_preStart()
     {
         disconnect( vkWinInfo, 0, 0, 0 );
         disconnect( vkCountdown, 0, 0, 0 );
-        connect( vkWinInfo,   SIGNAL( windowChanged( bool ) ),          this,                SLOT( slot_startCounter( bool ) ) );
+        connect( vkWinInfo,   SIGNAL( signal_windowChanged( bool ) ),   this,                SLOT( slot_startCounter( bool ) ) );
         connect( vkWinInfo,   SIGNAL( signal_showCursor( bool ) ),      ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
         connect( vkWinInfo,   SIGNAL( signal_showCursor( bool ) ),      ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
@@ -1197,9 +1197,9 @@ void MainWindow::slot_preStart()
         disconnect( vkWinInfo, 0, 0, 0 );
         connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ), ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
         connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ), ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
-        connect( vkWinInfo, SIGNAL( windowChanged( bool ) ),     ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
-        connect( vkWinInfo, SIGNAL( windowChanged( bool ) ),     ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
-        connect( vkWinInfo, SIGNAL( windowChanged( bool ) ),     this,                SLOT( slot_Start() ) );
+        connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ),     ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
+        connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ),     ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
+        connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ),     this,                SLOT( slot_Start() ) );
         vkWinInfo->slot_start();
         return;
     }

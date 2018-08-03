@@ -71,11 +71,11 @@ void QvkWinInfo::slot_start()
   lastWinID = this->winId();
   
   windowTimer = new QTimer( this );
-  connect( windowTimer, SIGNAL( timeout() ), this, SLOT( selectWindow() ) );
+  connect( windowTimer, SIGNAL( timeout() ), this, SLOT( slot_selectWindow() ) );
   windowTimer->start( 500 );
   
   mouseTimer = new QTimer( this );
-  connect( mouseTimer, SIGNAL( timeout() ), this, SLOT( mousePosition() ) );
+  connect( mouseTimer, SIGNAL( timeout() ), this, SLOT( slot_mousePosition() ) );
   mouseTimer->start( 20 );
 
   show();
@@ -98,7 +98,7 @@ void QvkWinInfo::paintEvent( QPaintEvent *event )
 }
 
 
-void QvkWinInfo::mousePosition()
+void QvkWinInfo::slot_mousePosition()
 {
   QCursor cursor;
   move( cursor.pos().x() - 25 , cursor.pos().y() - 25 );
@@ -123,7 +123,7 @@ WId QvkWinInfo::activeWindow()
 #endif
 
 
-void QvkWinInfo::selectWindow()
+void QvkWinInfo::slot_selectWindow()
 {
   newWinID = activeWindow();
 
@@ -135,7 +135,7 @@ void QvkWinInfo::selectWindow()
     // Cursor resize does not show in video in the first Frames
     resize( 10, 10 );
     
-    emit windowChanged( true );
+    emit signal_windowChanged( true );
     this->close();
   }
 }

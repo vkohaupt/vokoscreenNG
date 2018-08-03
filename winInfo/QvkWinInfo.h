@@ -13,27 +13,28 @@ Q_OBJECT
 public:
   QvkWinInfo();
   virtual ~QvkWinInfo();
-  
+  WId getWinID();
+
 
 public slots:
-  WId getWinID();
   void slot_start();
 
   
 private slots: 
-   void selectWindow();
-   void mousePosition();
-   WId activeWindow();
+   void slot_selectWindow();
+   void slot_mousePosition();
 
    
 signals:
-  void windowChanged( bool value );
+  void signal_windowChanged( bool value );
   void signal_showCursor( bool value );
   
 protected:  
   
   
 private:
+  WId activeWindow();
+
   QTimer *windowTimer;
   QTimer *mouseTimer;
   
