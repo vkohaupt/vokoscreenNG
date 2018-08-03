@@ -57,9 +57,8 @@ win32:LIBS += -llibgobject-2.0-0
 include(region/regionselection.pri)
 
 # winInfo
-unix:include(winInfo/linux/winInfoLinux.pri)
 unix:LIBS += -lX11
-win32:include(winInfo/windows/winInfoWindows.pri)
+include(winInfo/winInfo.pri)
 
 # countdown
 include(countdown/countdown.pri)

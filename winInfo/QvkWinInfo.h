@@ -14,6 +14,7 @@ public:
   QvkWinInfo();
   virtual ~QvkWinInfo();
   
+
 public slots:
   WId getWinID();
   void slot_start();

@@ -97,7 +97,7 @@ void QvkWinInfo::mousePosition()
   move( cursor.pos().x() - 25 , cursor.pos().y() - 25 );
 }
 
-
+#ifdef Q_OS_LINUX
 WId QvkWinInfo::activeWindow()
 {
   Window id;
@@ -105,6 +105,15 @@ WId QvkWinInfo::activeWindow()
   XGetInputFocus( QX11Info::display() , &id, &dummy);
   return id;
 }
+#endif
+
+
+#ifdef Q_OS_WIN
+WId QvkWinInfo::activeWindow()
+{
+  return (WId)GetForegroundWindow();
+}
+#endif
 
 
 void QvkWinInfo::selectWindow()
