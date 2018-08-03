@@ -1,10 +1,17 @@
 #include "QvkWinInfo.h"
 
 #include <QCoreApplication>
-#include <QX11Info>
-#include <X11/Xutil.h>
 
-using namespace std;
+#ifdef Q_OS_LINUX
+   #include <QX11Info>
+   #include <X11/Xutil.h>
+#endif
+
+#ifdef Q_OS_WIN
+   #include <windows.h>
+#endif
+
+//using namespace std;
 
 QvkWinInfo::QvkWinInfo()
 {
