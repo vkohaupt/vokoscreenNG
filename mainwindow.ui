@@ -90,8 +90,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>36</width>
-            <height>36</height>
+            <width>48</width>
+            <height>48</height>
            </size>
           </property>
           <widget class="QWidget" name="tabScreen">
@@ -783,8 +783,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>36</width>
-            <height>36</height>
+            <width>48</width>
+            <height>48</height>
            </size>
           </property>
           <widget class="QWidget" name="TAB_Screenshot_Screen">
@@ -1023,8 +1023,8 @@
           </property>
           <property name="iconSize">
            <size>
-            <width>36</width>
-            <height>36</height>
+            <width>48</width>
+            <height>48</height>
            </size>
           </property>
           <widget class="QWidget" name="widgetCamera">
