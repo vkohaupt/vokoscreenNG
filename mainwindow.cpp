@@ -886,6 +886,7 @@ QString MainWindow::VK_getXimagesrc()
 {
     QString value;
     QString showPointer = "true";
+
     if( ui->checkBoxMouseCursorOnOff->checkState() == Qt::Checked )
     {
         showPointer = "false";
@@ -898,6 +899,19 @@ QString MainWindow::VK_getXimagesrc()
                    << "cursor=" + showPointer;
         value = stringList.join( " " );
     }
+
+    if ( ui->radioButtonArea->isChecked() == true )
+    {
+        QStringList stringList;
+        stringList << "gdiscreencapsrc"
+                   << "cursor=" + showPointer
+                   << "x=" + QString::number( regionChoise->getXRecordArea() )
+                   << "y=" + QString::number( regionChoise->getYRecordArea() )
+                   << "width=" + QString::number( regionChoise->getWidth() )
+                   << "height=" + QString::number( regionChoise->getHeight() );
+        value = stringList.join( " " );
+    }
+
     return value;
 }
 #endif
