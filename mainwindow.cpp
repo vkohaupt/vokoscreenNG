@@ -1068,15 +1068,16 @@ void MainWindow::VK_Check_is_Format_available()
         QString stringAllKeys = videoFormatsList.at( x );
         QStringList listKeys = stringAllKeys.split( "," );
         QStringList listKey = listKeys.filter( "muxer" );
-        const gchar *muxer = QString( listKey.at( 0 ) ).section( ":", 1, 1 ).toLatin1();
-        GstElementFactory *factory = gst_element_factory_find( muxer );
+        QString muxer = QString( listKey.at( 0 ) ).section( ":", 1, 1 );
+
+        GstElementFactory *factory = gst_element_factory_find( muxer.toLatin1() );
         if ( !factory )
         {
-            qDebug().noquote() << "[vokoscreen] Fail Muxer not available:" << QString( listKey.at( 0 ) ).section( ":", 1, 1 ).toLatin1();
+            qDebug().noquote() << "[vokoscreen] Fail Muxer not available:" << muxer;
         }
         else
         {
-            qDebug().noquote() << "[vokoscreen] Muxer available:" << QString( listKey.at( 0 ) ).section( ":", 1, 1 ).toLatin1();
+            qDebug().noquote() << "[vokoscreen] Muxer available:" << muxer;
             tempList << videoFormatsList.at( x );
         }
     }
