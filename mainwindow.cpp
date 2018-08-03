@@ -1181,7 +1181,26 @@ QString MainWindow::Vk_get_Videocodec_Encoder()
 
 void MainWindow::slot_preStart()
 {
-    if ( ( ui->spinBoxCountDown->value() > 0 ) and ( ui->radioButtonWindow->isChecked() == true )  )
+    if ( ( ui->radioButtonFullscreen->isChecked() == true ) and  ( ui->spinBoxCountDown->value() > 0 ) )
+    {
+        disconnect( vkCountdown, 0, 0, 0 );
+        connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
+        vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
+        return;
+    }
+
+    if ( ui->radioButtonFullscreen->isChecked() == true )
+    {
+        slot_Start();
+        return;
+    }
+
+
+    if ( ( ui->radioButtonWindow->isChecked() == true ) and ( ui->spinBoxCountDown->value() > 0 ) )
     {
         disconnect( vkWinInfo, 0, 0, 0 );
         disconnect( vkCountdown, 0, 0, 0 );
@@ -1195,7 +1214,20 @@ void MainWindow::slot_preStart()
         return;
     }
 
-    if ( ui->spinBoxCountDown->value() > 0 )
+    if ( ui->radioButtonWindow->isChecked() == true )
+    {
+        disconnect( vkWinInfo, 0, 0, 0 );
+        connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ),    ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
+        connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ),    ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
+        connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
+        connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
+        connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), this,                SLOT( slot_Start() ) );
+        vkWinInfo->slot_start();
+        return;
+    }
+
+
+    if ( ( ui->radioButtonArea->isChecked() == true ) and ( ui->spinBoxCountDown->value() > 0 ) )
     {
         disconnect( vkCountdown, 0, 0, 0 );
         connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
@@ -1203,22 +1235,10 @@ void MainWindow::slot_preStart()
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
+        regionChoise->recordMode( true );
         vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
         return;
     }
-
-    if ( ui->radioButtonWindow->isChecked() == true )
-    {
-        disconnect( vkWinInfo, 0, 0, 0 );
-        connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ), ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
-        connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ), ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
-        connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ),     ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
-        connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ),     ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
-        connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ),     this,                SLOT( slot_Start() ) );
-        vkWinInfo->slot_start();
-        return;
-    }
-
 
     if ( ui->radioButtonArea->isChecked() == true )
     {
@@ -1226,8 +1246,9 @@ void MainWindow::slot_preStart()
        QTest::qSleep(100);
        regionChoise->repaint();
        regionChoise->update();
+       slot_Start();
+       return;
     }
-    slot_Start();
 }
 
 
