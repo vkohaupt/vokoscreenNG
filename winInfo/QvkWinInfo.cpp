@@ -1,7 +1,5 @@
 #include "QvkWinInfo.h"
 
-#include <QCoreApplication>
-
 #ifdef Q_OS_LINUX
    #include <QX11Info>
    #include <X11/Xutil.h>
@@ -11,7 +9,6 @@
    #include <windows.h>
 #endif
 
-//using namespace std;
 
 QvkWinInfo::QvkWinInfo()
 {
@@ -103,6 +100,7 @@ void QvkWinInfo::slot_mousePosition()
   QCursor cursor;
   move( cursor.pos().x() - 25 , cursor.pos().y() - 25 );
 }
+
 
 #ifdef Q_OS_LINUX
 WId QvkWinInfo::activeWindow()

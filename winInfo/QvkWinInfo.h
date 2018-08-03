@@ -1,10 +1,8 @@
 #ifndef QvkWinInfo_H 
 #define QvkWinInfo_H
 
-#include <QDialog>
 #include <QTimer>
 #include <QPainter>
-#include <QDebug>
 #include <QMainWindow>
 
 class QvkWinInfo: public QMainWindow
