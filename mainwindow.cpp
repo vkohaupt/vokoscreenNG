@@ -929,19 +929,33 @@ QString MainWindow::VK_getCapsFilter()
 // Check format, video and audoicodec on tab availability
 void MainWindow::VK_gst_Elements_available()
 {
+    QStringList stringList;
+    stringList << tr( "Format" ) << tr( "Video" ) << tr( "Audio" );
+    int step = 2;
+    for ( int x = 1; x <= 6; x += step )
+    {
+        QLabel *label = new QLabel( stringList.at( x/2 ) );
+        QFont font = label->font();
+        font.setBold( true );
+        label->setFont( font );
+        ui->gridLayoutAvailable->addWidget( label, 0, x );
+    }
+
+    int rowCount = 0;
+    qDebug() << globalFormatsList;
     for ( int i = 0; i < globalFormatsList.count(); i++ )
     {
-        QHBoxLayout *HBoxLayout_for_Format_and_Encoder_Layouts = nullptr;
-        QVBoxLayout *VBoxLayout_for_Encoder = nullptr;
-        QStringList listElements = QString( globalFormatsList.at(i) ).split( "," );
+        int rowMuxer = 1;
+        int rowVideo = 1;
+        int rowAudio = 1;
+        QStringList listElements = QString( globalFormatsList.at(i) ).split( "," ); // listElement beinhaltet muxer, Video und Audio
         for ( int x = 0; x < listElements.count(); x++ )
         {
             bool available;
-            const gchar *element = QString( listElements.at( x ) ).section( ":", 1, 1 ).toLatin1();
-            GstElementFactory *factory = gst_element_factory_find( element );
+            QString element = QString( listElements.at( x ) ).section( ":", 1, 1 );
+            GstElementFactory *factory = gst_element_factory_find( element.toLatin1() );
             if ( !factory )
             {
-                //ui->verticalLayoutAvailableNotInstalled->insertWidget( ui->verticalLayoutAvailableNotInstalled->count()-2, label );
                 available = false;
             }
             else
@@ -951,23 +965,6 @@ void MainWindow::VK_gst_Elements_available()
 
             if ( QString( listElements.at( x ) ).section( ":", 0, 0 ) == "muxer" )
             {
-                HBoxLayout_for_Format_and_Encoder_Layouts = new QHBoxLayout();
-
-                QHBoxLayout *HBoxLayout_for_Picture_and_Format = new QHBoxLayout();
-                QVBoxLayout *VBoxLayout_for_Format = new QVBoxLayout();
-                VBoxLayout_for_Format->addItem( HBoxLayout_for_Picture_and_Format );
-
-                VBoxLayout_for_Encoder = new QVBoxLayout();
-
-                HBoxLayout_for_Format_and_Encoder_Layouts->addItem( VBoxLayout_for_Format);
-                HBoxLayout_for_Format_and_Encoder_Layouts->addItem( VBoxLayout_for_Encoder);
-
-                QLabel *labelFormat = new QLabel();
-                labelFormat->show();
-                labelFormat->setText( QString( listElements.at( x ) ).section( ":", 2, 2 ).prepend( " " ) );
-                HBoxLayout_for_Picture_and_Format->addWidget( labelFormat );
-                VBoxLayout_for_Format->addItem( new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding ) );
-
                 QLabel *labelPicture = new QLabel();
                 QIcon icon;
                 if ( available == true )
@@ -976,16 +973,15 @@ void MainWindow::VK_gst_Elements_available()
                     icon = labelPicture->style()->standardIcon( QStyle::SP_MessageBoxCritical );
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
                 labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
-                HBoxLayout_for_Picture_and_Format->insertWidget( 0, labelPicture );
-                HBoxLayout_for_Picture_and_Format->addItem( new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum ) );
+                labelPicture->setAlignment( Qt::AlignRight );
+                ui->gridLayoutAvailable->addWidget( labelPicture, rowCount + rowMuxer, 0 );
 
+                ui->gridLayoutAvailable->addWidget( new QLabel( QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowMuxer, 1 );
+                rowMuxer++;
             }
 
-            if ( ( QString( listElements.at( x ) ).section( ":", 0, 0 ) == "videocodec" ) or
-                 ( QString( listElements.at( x ) ).section( ":", 0, 0 ) == "audiocodec" ) )
+            if ( QString( listElements.at( x ) ).section( ":", 0, 0 ) == "videocodec" )
             {
-                QHBoxLayout *HBoxLayout_for_Picture_and_Encoder = new QHBoxLayout();
-                VBoxLayout_for_Encoder->addItem( HBoxLayout_for_Picture_and_Encoder );
                 QLabel *labelPicture = new QLabel();
                 QIcon icon;
                 if ( available == true )
@@ -994,22 +990,40 @@ void MainWindow::VK_gst_Elements_available()
                     icon = labelPicture->style()->standardIcon( QStyle::SP_MessageBoxCritical );
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
                 labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
-                HBoxLayout_for_Picture_and_Encoder->addWidget( labelPicture );
+                labelPicture->setAlignment( Qt::AlignRight );
+                ui->gridLayoutAvailable->addWidget( labelPicture, rowCount + rowVideo, 2 );
 
-                QLabel *labelEncoder = new QLabel();
-                labelEncoder->show();
-                labelEncoder->setText( QString( listElements.at(x) ).section( ":", 2, 2 ).prepend( " " ) );
-                HBoxLayout_for_Picture_and_Encoder->addWidget( labelEncoder );
-                HBoxLayout_for_Picture_and_Encoder->addItem( new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum ) );
+                ui->gridLayoutAvailable->addWidget( new QLabel( QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowVideo, 3 );
+                rowVideo++;
             }
+
+            if ( QString( listElements.at( x ) ).section( ":", 0, 0 ) == "audiocodec" )
+            {
+                QLabel *labelPicture = new QLabel();
+                QIcon icon;
+                if ( available == true )
+                    icon = labelPicture->style()->standardIcon( QStyle::SP_DialogApplyButton );
+                else
+                    icon = labelPicture->style()->standardIcon( QStyle::SP_MessageBoxCritical );
+                QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
+                labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
+                labelPicture->setAlignment( Qt::AlignRight );
+                ui->gridLayoutAvailable->addWidget( labelPicture, rowCount + rowAudio, 4 );
+                ui->gridLayoutAvailable->addWidget( new QLabel( QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowAudio, 5 );
+                rowAudio++;
+            }
+
         }
-        QFrame *line = new QFrame();
-        line->setObjectName( QStringLiteral("line") );
-        line->setFrameShape( QFrame::HLine );
-        line->setFrameShadow( QFrame::Sunken );
-        ui->verticalLayoutAvailableInstalled->insertWidget( ui->verticalLayoutAvailableInstalled->count() -1, line );
-        ui->verticalLayoutAvailableInstalled->insertLayout( ui->verticalLayoutAvailableInstalled->count() -2, HBoxLayout_for_Format_and_Encoder_Layouts );
+
+        rowCount = ui->gridLayoutAvailable->rowCount();
+        for ( int x = 0; x <= 5; x++ )
+        {
+            ui->gridLayoutAvailable->addWidget( new QLabel(""), rowCount, x );
+        }
     }
+
+    ui->gridLayoutAvailable->addItem( new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding),
+                                      ui->gridLayoutAvailable->rowCount() + 1, 0 );
 }
 
 
