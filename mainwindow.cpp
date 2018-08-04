@@ -342,7 +342,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
     ui->labelAvalible->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
 
-    QIcon iconNotAvailable = ui->labelNotAvailable->style()->standardIcon( QStyle::SP_MessageBoxCritical );
+    QIcon iconNotAvailable = ui->labelNotAvailable->style()->standardIcon( QStyle::SP_DialogCancelButton );
     ui->labelNotAvailable->setPixmap( iconNotAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
     // End Tabs
 
@@ -970,7 +970,7 @@ void MainWindow::VK_gst_Elements_available()
                 if ( available == true )
                     icon = labelPicture->style()->standardIcon( QStyle::SP_DialogApplyButton );
                 else
-                    icon = labelPicture->style()->standardIcon( QStyle::SP_MessageBoxCritical );
+                    icon = labelPicture->style()->standardIcon( QStyle::SP_DialogCancelButton );
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
                 labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
                 labelPicture->setAlignment( Qt::AlignRight );
@@ -987,7 +987,7 @@ void MainWindow::VK_gst_Elements_available()
                 if ( available == true )
                     icon = labelPicture->style()->standardIcon( QStyle::SP_DialogApplyButton );
                 else
-                    icon = labelPicture->style()->standardIcon( QStyle::SP_MessageBoxCritical );
+                    icon = labelPicture->style()->standardIcon( QStyle::SP_DialogCancelButton );
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
                 labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
                 labelPicture->setAlignment( Qt::AlignRight );
@@ -1004,7 +1004,7 @@ void MainWindow::VK_gst_Elements_available()
                 if ( available == true )
                     icon = labelPicture->style()->standardIcon( QStyle::SP_DialogApplyButton );
                 else
-                    icon = labelPicture->style()->standardIcon( QStyle::SP_MessageBoxCritical );
+                    icon = labelPicture->style()->standardIcon( QStyle::SP_DialogCancelButton );
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
                 labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
                 labelPicture->setAlignment( Qt::AlignRight );
@@ -1018,6 +1018,13 @@ void MainWindow::VK_gst_Elements_available()
         rowCount = ui->gridLayoutAvailable->rowCount();
         for ( int x = 0; x <= 5; x++ )
         {
+            /*QFrame *line = new QFrame();
+            line->setObjectName( QStringLiteral("line") );
+            line->setFrameShape( QFrame::HLine );
+            line->setFrameShadow( QFrame::Sunken );
+            ui->gridLayoutAvailable->addWidget( line, rowCount, x );
+*/
+
             ui->gridLayoutAvailable->addWidget( new QLabel(""), rowCount, x );
         }
     }
