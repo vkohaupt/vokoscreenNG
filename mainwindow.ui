@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>649</width>
+    <width>628</width>
     <height>396</height>
    </rect>
   </property>
@@ -51,10 +51,6 @@
        <property name="toolTip">
         <string notr="true"/>
        </property>
-       <attribute name="icon">
-        <iconset resource="screencast.qrc">
-         <normaloff>:/pictures/videooptionen.png</normaloff>:/pictures/videooptionen.png</iconset>
-       </attribute>
        <attribute name="title">
         <string notr="true"/>
        </attribute>
@@ -383,7 +379,7 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>512</width>
+                 <width>567</width>
                  <height>81</height>
                 </rect>
                </property>
@@ -504,7 +500,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>215</width>
+                   <width>270</width>
                    <height>299</height>
                   </rect>
                  </property>
@@ -708,10 +704,6 @@
        <property name="toolTip">
         <string notr="true"/>
        </property>
-       <attribute name="icon">
-        <iconset resource="screencast.qrc">
-         <normaloff>:/pictures/monitor.png</normaloff>:/pictures/monitor.png</iconset>
-       </attribute>
        <attribute name="title">
         <string notr="true"/>
        </attribute>
@@ -945,10 +937,6 @@
        <property name="toolTip">
         <string notr="true"/>
        </property>
-       <attribute name="icon">
-        <iconset resource="screencast.qrc">
-         <normaloff>:/pictures/webcam.png</normaloff>:/pictures/webcam.png</iconset>
-       </attribute>
        <attribute name="title">
         <string notr="true"/>
        </attribute>
@@ -1284,8 +1272,6 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="screencast.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

@@ -188,7 +188,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     qDebug() << "[vokoscreen]" << gst_version_string ();
 
+    ui->tabWidgetSideBar->setTabIcon( 0, QIcon::fromTheme( "computer", QIcon( ":/pictures/webcam.png" ) ) );
     makeValidIconForSideBar( 0 );
+    ui->tabWidgetSideBar->setTabIcon( 1, QIcon::fromTheme( "image-loading", QIcon( ":/pictures/webcam.png" ) ) );
     makeValidIconForSideBar( 1 );
     ui->tabWidgetSideBar->setTabIcon( 2, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
     makeValidIconForSideBar( 2 );
