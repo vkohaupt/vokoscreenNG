@@ -146,6 +146,10 @@ QStringList MainWindow::get_all_Audio_devices()
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
+    QIcon icon;
+    icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
+    MainWindow::setWindowIcon( icon );
+
     QScreen *screen = QGuiApplication::primaryScreen();
     qDebug().noquote() << "[vokoscreen]" << "Locale:" << QLocale::system().name();
     qDebug().noquote() << "[vokoscreen]" << "Qt version: " << qVersion();
@@ -196,14 +200,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->tabWidget->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
     makeAndSetValidIcon( 1 );
 
-    ui->tabWidget->setTabIcon( 2, QIcon::fromTheme( "applications-multimedia", QIcon( ":/pictures/videooptionen.png" ) ) );
+    ui->tabWidget->setTabIcon( 2, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
     makeAndSetValidIcon( 2 );
 
-    ui->tabWidget->setTabIcon( 3, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
+    ui->tabWidget->setTabIcon( 3, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/webcam.png" ) ) );
     makeAndSetValidIcon( 3 );
-
-    ui->tabWidget->setTabIcon( 4, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/webcam.png" ) ) );
-    makeAndSetValidIcon( 4 );
 
     vkWinInfo = new QvkWinInfo();
     vkCountdown = new QvkCountdown();
