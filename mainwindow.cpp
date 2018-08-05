@@ -297,6 +297,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 #ifdef Q_OS_WIN
     ui->radioButtonWindow->hide();
 #endif
+    ui->toolButtonScreenHelp->setIcon( ui->toolButtonScreenHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( this,                  SIGNAL( signal_close()  ), regionChoise,   SLOT( close() ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), regionChoise,   SLOT( setVisible( bool ) ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
@@ -377,6 +378,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     // **************** Begin Screenshot *******************************
     ui->toolButtonScreenshotHelp->setIcon( ui->toolButtonScreenshotHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonScreenShotMiscHelp->setIcon( ui->toolButtonScreenShotMiscHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
     ui->tabWidgetScreenshot->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
     makeAndSetValidIcon( 0 );
@@ -410,6 +412,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     // ************************* Camera ****************************
     // Tab 0 Camera
+    ui->toolButtonCameraHelp->setIcon( ui->toolButtonCameraHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     webcamController = new QvkWebcamController( ui );
     ui->tabWidgetCamera->setTabIcon( 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
     makeAndSetValidIcon( 0 );
