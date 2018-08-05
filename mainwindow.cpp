@@ -144,7 +144,7 @@ QStringList MainWindow::get_all_Audio_devices()
     {
         tmpList <<  stringList.at( i );
     }
-qDebug() << tmpList;
+
     return tmpList;
 }
 
@@ -307,7 +307,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     // Tab 2 Audio
     ui->toolButtonFramesHelp->setIcon( ui->toolButtonFramesHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     ui->toolButtonAudioHelp->setIcon( ui->toolButtonAudioHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-    ui->toolButtonNoMouseCursor->setIcon( ui->toolButtonNoMouseCursor->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonNoMouseCursorHelp->setIcon( ui->toolButtonNoMouseCursorHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
     connect( ui->toolButtonAudioHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioHelp() ) );;
     ui->radioButtonPulse->setAccessibleName( "pulsesrc" );
@@ -937,20 +937,7 @@ QString MainWindow::VK_getCapsFilter()
 // Check format, video and audoicodec on tab availability
 void MainWindow::VK_gst_Elements_available()
 {
-    QStringList stringList;
-    stringList << tr( "Format" ) << tr( "Video" ) << tr( "Audio" );
-    int step = 2;
-    for ( int x = 1; x <= 6; x += step )
-    {
-        QLabel *label = new QLabel( stringList.at( x/2 ) );
-        QFont font = label->font();
-        font.setBold( true );
-        label->setFont( font );
-        ui->gridLayoutAvailable->addWidget( label, 0, x );
-    }
-
     int rowCount = 0;
-    qDebug() << globalFormatsList;
     for ( int i = 0; i < globalFormatsList.count(); i++ )
     {
         int rowMuxer = 1;
@@ -1026,13 +1013,6 @@ void MainWindow::VK_gst_Elements_available()
         rowCount = ui->gridLayoutAvailable->rowCount();
         for ( int x = 0; x <= 5; x++ )
         {
-            /*QFrame *line = new QFrame();
-            line->setObjectName( QStringLiteral("line") );
-            line->setFrameShape( QFrame::HLine );
-            line->setFrameShadow( QFrame::Sunken );
-            ui->gridLayoutAvailable->addWidget( line, rowCount, x );
-*/
-
             ui->gridLayoutAvailable->addWidget( new QLabel(""), rowCount, x );
         }
     }
