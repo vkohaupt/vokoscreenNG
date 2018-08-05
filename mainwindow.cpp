@@ -116,31 +116,36 @@ QString MainWindow::get_AudioDeviceString( GstDevice *device )
 
 QStringList MainWindow::get_all_Audio_devices()
 {
-   GstDeviceMonitor *monitor;
-   GstCaps *caps;
-   GstDevice *device;
-   gchar *name;
-   GList *iterator = NULL;
-   GList *list = NULL;
-   QString stringDevice;
-   QStringList stringList;
+    GstDeviceMonitor *monitor;
+    GstCaps *caps;
+    GstDevice *device;
+    gchar *name;
+    GList *iterator = NULL;
+    GList *list = NULL;
+    QString stringDevice;
+    QStringList stringList;
 
-   monitor = gst_device_monitor_new();
-   caps = gst_caps_new_empty_simple( "audio/x-raw" );
-   gst_device_monitor_add_filter( monitor, "Audio/Source", caps );
+    monitor = gst_device_monitor_new();
+    caps = gst_caps_new_empty_simple( "audio/x-raw" );
+    gst_device_monitor_add_filter( monitor, "Audio/Source", caps );
 
-   list = gst_device_monitor_get_devices( monitor );
-   for ( iterator = list; iterator; iterator = iterator->next )
-   {
-       device = (GstDevice*)iterator->data;
-       name = gst_device_get_display_name( device );
-       //g_print("%s   %s\n", get_launch_line( device ), name );
-       stringDevice = get_AudioDeviceString( device );
-       stringDevice.append( " ::: " ).append( name );
-       stringList.append( stringDevice );
-   }
+    list = gst_device_monitor_get_devices( monitor );
+    for ( iterator = list; iterator; iterator = iterator->next )
+    {
+        device = (GstDevice*)iterator->data;
+        name = gst_device_get_display_name( device );
+        stringDevice = get_AudioDeviceString( device );
+        stringDevice.append( " ::: " ).append( name );
+        stringList.append( stringDevice );
+    }
 
-   return stringList;
+    QStringList tmpList;
+    for( int i = stringList.count()-1; i >= 0; i-- )
+    {
+        tmpList <<  stringList.at( i );
+    }
+qDebug() << tmpList;
+    return tmpList;
 }
 
 
@@ -780,7 +785,7 @@ void MainWindow::slot_getPulsesDevices( bool value )
             QCheckBox *checkboxAudioDevice = new QCheckBox();
             checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
             checkboxAudioDevice->setAccessibleName( QString( list.at(i) ).section( " ::: ", 0, 0 ) );
-            ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-i-1, checkboxAudioDevice );
+            ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
         }
     }
     else
@@ -794,17 +799,17 @@ void MainWindow::slot_getPulsesDevices( bool value )
 void MainWindow::slot_getAlsaDevices( bool value )
 {
     Q_UNUSED(value);
-    QStringList pulseDeviceStringList;
+    QStringList alsaDeviceStringList;
     foreach (const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
     {
         if ( deviceInfo.deviceName().contains("alsa") == false)
         {
-            pulseDeviceStringList << deviceInfo.deviceName();
+            alsaDeviceStringList << deviceInfo.deviceName();
             QCheckBox *checkboxAudioDevice = new QCheckBox();
             checkboxAudioDevice->setText( deviceInfo.deviceName() );
             checkboxAudioDevice->setAccessibleName( deviceInfo.deviceName() );
             checkboxAudioDevice->setObjectName( "checkboxAudioDevice" + deviceInfo.deviceName() );
-            ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
+            ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
         }
     }
 }
