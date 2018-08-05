@@ -79,7 +79,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <property name="iconSize">
            <size>
@@ -104,7 +104,7 @@
               <item>
                <widget class="QRadioButton" name="radioButtonWindow">
                 <property name="text">
-                 <string>Window</string>
+                 <string>Wi&amp;ndow</string>
                 </property>
                </widget>
               </item>
@@ -380,8 +380,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>563</width>
-                 <height>81</height>
+                 <width>64</width>
+                 <height>16</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -562,6 +562,17 @@
             </item>
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_12">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_8">
+                <item>
+                 <widget class="QLabel" name="label_5">
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_6">
                 <item>
