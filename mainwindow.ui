@@ -79,7 +79,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -450,15 +450,11 @@
              </layout>
             </item>
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_20">
-              <item>
-               <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
-                <property name="text">
-                 <string>Do not record mouse cursor</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
+             <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
+              <property name="text">
+               <string>Do not record mouse cursor</string>
+              </property>
+             </widget>
             </item>
             <item>
              <spacer name="verticalSpacer_4">
@@ -783,7 +779,7 @@
         <item>
          <widget class="QTabWidget" name="tabWidgetScreenshot">
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
