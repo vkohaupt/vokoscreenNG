@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>628</width>
-    <height>295</height>
+    <height>349</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -97,14 +97,14 @@
               <item>
                <widget class="QRadioButton" name="radioButtonFullscreen">
                 <property name="text">
-                 <string>Fulls&amp;creen</string>
+                 <string notr="true">Fulls&amp;creen</string>
                 </property>
                </widget>
               </item>
               <item>
                <widget class="QRadioButton" name="radioButtonWindow">
                 <property name="text">
-                 <string>Wi&amp;ndow</string>
+                 <string>Window</string>
                 </property>
                </widget>
               </item>
@@ -380,8 +380,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>566</width>
-                 <height>70</height>
+                 <width>563</width>
+                 <height>81</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -540,8 +540,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>253</width>
-                   <height>189</height>
+                   <width>247</width>
+                   <height>232</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -848,7 +848,7 @@
               <item>
                <widget class="QRadioButton" name="radioButtonScreenshotFullscreen">
                 <property name="text">
-                 <string>Fulls&amp;creen</string>
+                 <string notr="true">Fulls&amp;creen</string>
                 </property>
                </widget>
               </item>
