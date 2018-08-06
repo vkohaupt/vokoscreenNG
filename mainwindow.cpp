@@ -149,8 +149,14 @@ QStringList MainWindow::get_all_Audio_devices()
 }
 
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
+                                          ui(new Ui::MainWindow),
+                                          vkWinInfo(new QvkWinInfo),
+                                          vkCountdown(new QvkCountdown),
+                                          regionChoise(new QvkRegionChoise)
 {
+    ui->setupUi(this);
+
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
     MainWindow::setWindowIcon( icon );
@@ -186,7 +192,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     qDebug().noquote() << "[vokoscreen] SerialNumber from screen: " << screen->serialNumber();
     qDebug( " " );
 
-    ui->setupUi(this);
 
     // need a move
     move( 0, 0 );
@@ -212,11 +217,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     ui->tabWidget->setTabIcon( 3, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/webcam.png" ) ) );
     makeAndSetValidIcon( 3 );
-
-    vkWinInfo = new QvkWinInfo();
-    vkCountdown = new QvkCountdown();
-    regionChoise = new QvkRegionChoise();
-    regionChoise->hide();
 
     // Bar for start, stop etc.
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setEnabled( bool ) ) );

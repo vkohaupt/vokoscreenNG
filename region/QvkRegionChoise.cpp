@@ -79,7 +79,8 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
     button->setGeometry(800, 400, 100, 100);
     button->show();
 */
-    show();
+    //show();
+    hide();
 }
 
 
