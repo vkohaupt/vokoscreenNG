@@ -299,6 +299,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
     ui->radioButtonFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
     ui->radioButtonWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
+    ui->toolButtonScreenHelp->setToolTip( tr( "Help") );
+
     ui->toolButtonScreenHelp->setIcon( ui->toolButtonScreenHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( this,                  SIGNAL( signal_close()  ), regionChoise,   SLOT( close() ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), regionChoise,   SLOT( setVisible( bool ) ) );

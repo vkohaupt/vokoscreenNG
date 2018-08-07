@@ -104,7 +104,7 @@
               <item>
                <widget class="QRadioButton" name="radioButtonWindow">
                 <property name="text">
-                 <string>Window</string>
+                 <string notr="true">Window</string>
                 </property>
                </widget>
               </item>
@@ -194,6 +194,9 @@
              <layout class="QVBoxLayout" name="verticalLayout_7">
               <item>
                <widget class="QToolButton" name="toolButtonScreenHelp">
+                <property name="toolTip">
+                 <string notr="true"/>
+                </property>
                 <property name="text">
                  <string notr="true">Help</string>
                 </property>
@@ -855,7 +858,7 @@
               <item>
                <widget class="QRadioButton" name="radioButtonScreenshotWindow">
                 <property name="text">
-                 <string>Wi&amp;ndow</string>
+                 <string notr="true">Wi&amp;ndow</string>
                 </property>
                </widget>
               </item>
@@ -1052,7 +1055,7 @@
               <item row="0" column="0">
                <widget class="QCheckBox" name="CheckBoxCamera">
                 <property name="toolTip">
-                 <string/>
+                 <string notr="true"/>
                 </property>
                 <property name="text">
                  <string>Camera</string>
