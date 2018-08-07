@@ -1,8 +1,9 @@
 # vokoscreenNG (New Generation)
 
-* vokoscreenNG is new name and based of Qt and GStreamer.
+* For **Linux** and **Windows**
+* vokoscreenNG is new name for vokoscreen and based of Qt and GStreamer.
 * It is written from scratch.
-* The old Vokoscreen 2.5.0 https://github.com/vkohaupt/vokoscreen is the last version with ffmpg and will not more continue developed.
+* The old vokoscreen 2.5.0 https://github.com/vkohaupt/vokoscreen is the last version with ffmpg and will not more continue developed.
 
 # Windows 10
 ### BuildRequires
