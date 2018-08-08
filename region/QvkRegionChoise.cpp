@@ -1185,7 +1185,6 @@ int QvkRegionChoise::getWidth()
 
 void QvkRegionChoise::slot_areaReset()
 {
-
     frame_X = 200 - framePenHalf;
     frame_Y = 200 - framePenHalf;
     frame_Width = 250 + framePenWidth;

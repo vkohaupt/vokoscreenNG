@@ -229,6 +229,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonFullscreen, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonWindow,     SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonArea,       SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->toolButtonAreaReset,   SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxScreen,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxAudioOnOff,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonPulse,      SLOT( setEnabled( bool ) ) );
@@ -257,6 +258,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonFullscreen, SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonWindow,     SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonArea,       SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->toolButtonAreaReset,   SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxScreen,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxAudioOnOff,    SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonPulse,      SLOT( setDisabled( bool ) ) );
@@ -305,13 +307,19 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->toolButtonScreenHelp->setIcon( ui->toolButtonScreenHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     ui->toolButtonAreaReset->setIcon( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
+
+    connect( ui->radioButtonFullscreen, SIGNAL( toggled( bool ) ), ui->toolButtonAreaReset, SLOT( setDisabled( bool ) ) );
+
+    connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
+    connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->toolButtonAreaReset, SLOT( setDisabled( bool ) ) );
+
     connect( this,                  SIGNAL( signal_close()  ), regionChoise,   SLOT( close() ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), regionChoise,   SLOT( setVisible( bool ) ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
+    connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->toolButtonAreaReset, SLOT( setEnabled( bool ) ) );
 
     connect( ui->toolButtonAreaReset, SIGNAL( clicked( bool ) ), regionChoise, SLOT( slot_areaReset() ) );
 
-    connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
 
 
     // Tab 2 Audio
