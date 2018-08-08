@@ -1183,11 +1183,13 @@ int QvkRegionChoise::getWidth()
   return frame_Width - framePenWidth;
 }
 
-void QvkRegionChoise::areaReset()
+void QvkRegionChoise::slot_areaReset()
 {
-  vk_setGeometry( 200,
-                  200,
-                  250 + framePenWidth,
-                  250 + framePenWidth
-                );
+
+    frame_X = 200 - framePenHalf;
+    frame_Y = 200 - framePenHalf;
+    frame_Width = 250 + framePenWidth;
+    frame_height = 250 + framePenWidth;
+    repaint();
+    update();
 }

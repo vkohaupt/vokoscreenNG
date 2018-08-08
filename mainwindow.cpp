@@ -161,6 +161,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
     MainWindow::setWindowIcon( icon );
 
+    setWindowTitle( "vokoscreenNG" );
+
     QScreen *screen = QGuiApplication::primaryScreen();
     qDebug().noquote() << "[vokoscreen]" << "Locale:" << QLocale::system().name();
     qDebug().noquote() << "[vokoscreen]" << "Qt version: " << qVersion();
@@ -302,9 +304,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->toolButtonScreenHelp->setToolTip( tr( "Help") );
 
     ui->toolButtonScreenHelp->setIcon( ui->toolButtonScreenHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonAreaReset->setIcon( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     connect( this,                  SIGNAL( signal_close()  ), regionChoise,   SLOT( close() ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), regionChoise,   SLOT( setVisible( bool ) ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
+
+    connect( ui->toolButtonAreaReset, SIGNAL( clicked( bool ) ), regionChoise, SLOT( slot_areaReset() ) );
 
     connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
 

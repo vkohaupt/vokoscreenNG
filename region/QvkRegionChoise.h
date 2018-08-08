@@ -36,12 +36,12 @@ public:
   int getWidth();
   int getXRecordArea();
   int getYRecordArea();
-  void areaReset();
 
   void recordMode(bool value);
 
 
 public slots:
+  void slot_areaReset();
 
 
 private slots:
