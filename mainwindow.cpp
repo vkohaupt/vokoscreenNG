@@ -161,7 +161,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
     MainWindow::setWindowIcon( icon );
 
-    setWindowTitle( "vokoscreenNG" );
+    setWindowTitle( "vokoscreen" );
 
     QScreen *screen = QGuiApplication::primaryScreen();
     qDebug().noquote() << "[vokoscreen]" << "Locale:" << QLocale::system().name();
@@ -244,10 +244,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxFormat,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelVideoCodec,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxVideoCodec,    SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonFormatStandard,SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonFormatDefault,SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelAudioCodec,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxAudioCodec,    SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonAudiocodecStandard,SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonAudiocodecDefault,SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStart() ) );
 
@@ -272,10 +272,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxFormat,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelVideoCodec,       SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxVideoCodec,    SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonFormatStandard,SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonFormatDefault,SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelAudioCodec,       SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxAudioCodec,    SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonAudiocodecStandard,SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonAudiocodecDefault,SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setDisabled( bool ) ) );
 
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStop() ) );
@@ -303,7 +303,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
     ui->radioButtonFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
     ui->radioButtonWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
-    ui->toolButtonScreenHelp->setToolTip( tr( "Help") );
 
     ui->toolButtonScreenHelp->setIcon( ui->toolButtonScreenHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     ui->toolButtonAreaReset->setIcon( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
@@ -347,6 +346,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     // Tab 3 Codec
     ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
+    ui->pushButtonFormatDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
+    ui->pushButtonAudiocodecDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
+
     connect( ui->pushButtonFramesDefault, SIGNAL( clicked( bool ) ), this, SLOT( slot_setFramesStandard( bool ) ) );
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
