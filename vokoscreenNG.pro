@@ -8,7 +8,7 @@ unix: QT += x11extras
 QT += core gui widgets testlib multimedia multimediawidgets
 # network dbus
 
-TARGET = vokoscreen
+TARGET = vokoscreenNG
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
