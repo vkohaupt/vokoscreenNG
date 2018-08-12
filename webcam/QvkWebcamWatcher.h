@@ -7,32 +7,34 @@
 
 class QvkWebcamWatcher: public QObject
 {
-  
-Q_OBJECT
+
+    Q_OBJECT
 
 public:
-  QvkWebcamWatcher();
-  virtual ~QvkWebcamWatcher();
+    QvkWebcamWatcher();
+    virtual ~QvkWebcamWatcher();
 
 
 public slots:
 
-  
-private slots:
-  void slot_detectCameras();
 
-  
+private slots:
+    void slot_detectCameras();
+
+
 signals:
-  void signal_new_list_a_camera_was_added( QList<QCameraInfo> );
-  void signal_new_list_a_camera_was_removed( QList<QCameraInfo> );
+    void signal_new_QCameraInfoList_a_camera_was_added( QList<QCameraInfo> );
+    void signal_new_QCameraInfoList_a_camera_was_removed( QList<QCameraInfo> );
+    void signal_cameras_available( bool );
+    void signal_no_camera_available();
 
 
 protected:  
 
-  
+
 private:
-  QTimer *timer;
-  int oldCount;
+    QTimer *timer;
+    int oldCount;
 
 
 };

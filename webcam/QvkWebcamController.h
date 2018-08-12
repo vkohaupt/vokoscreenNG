@@ -21,7 +21,7 @@ public slots:
 
 
 private slots:
-    void slot_setCamera();
+    void slot_loadCamera();
     void slot_Start_Stop_Camera(bool value);
     void slot_new_camera_list( QList<QCameraInfo> cameraInfoList );
     void slot_error( QCamera::Error error );
