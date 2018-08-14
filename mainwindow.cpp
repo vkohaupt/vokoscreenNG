@@ -434,7 +434,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // ************************* Camera ****************************
     // Tab 0 Camera
     ui->toolButtonCameraHelp->setIcon( ui->toolButtonCameraHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-    webcamController = new QvkWebcamController( ui );
+    cameraController = new QvkCameraController( ui );
     ui->tabWidgetCamera->setTabIcon( 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
     makeAndSetValidIcon( 0 );
 }

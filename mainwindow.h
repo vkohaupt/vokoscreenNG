@@ -3,7 +3,7 @@
 
 #include "QvkWinInfo.h"
 #include "QvkCountdown.h"
-#include "QvkWebcamController.h"
+#include "QvkCameraController.h"
 #include "QvkRegionChoise.h"
 
 #include <QMainWindow>
@@ -63,7 +63,7 @@ private:
 
     void VK_gst_Elements_available();
 
-    QvkWebcamController *webcamController;
+    QvkCameraController *cameraController;
     QvkRegionChoise *regionChoise;
 
     QPixmap pixmap;

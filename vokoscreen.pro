@@ -64,4 +64,4 @@ include(winInfo/winInfo.pri)
 include(countdown/countdown.pri)
 
 # webcam
-include(webcam/webcam.pri)
+include(camera/camera.pri)

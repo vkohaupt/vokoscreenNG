@@ -398,6 +398,9 @@
               <property name="widgetResizable">
                <bool>true</bool>
               </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+              </property>
               <widget class="QWidget" name="scrollAreaWidgetContentsAudioDevices">
                <property name="geometry">
                 <rect>
