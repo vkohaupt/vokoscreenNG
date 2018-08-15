@@ -576,7 +576,7 @@ void MainWindow::slot_show_Screenshoot()
     QStringList pictureFileList = dir.entryList( filters, QDir::Files, QDir::Time );
 
     QString string;
-    string.append( "file://" );
+    string.append( "file:///" );
     string.append( ui->lineEditPicturePath->text() );
     string.append( QDir::separator() );
     string.append( pictureFileList.at( 0 ) );
