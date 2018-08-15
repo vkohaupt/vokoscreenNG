@@ -66,8 +66,8 @@ private:
   void setHandleColorByMousePressed( QColor color );
   void setHandleColorBackgroundSize( QColor color );
 
-  int screenWidth;
-  int screenHeight;
+  int screenWidth = 400; //Must set a value. Under windows comes a QPainter message
+  int screenHeight = 400;
 
   int mous_delta_X_to_blueline;
   int mous_delta_Y_to_blueline;
