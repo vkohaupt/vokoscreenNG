@@ -256,7 +256,10 @@ void QvkRegionChoise::mousePressEvent(QMouseEvent *event)
     old_Frame_X2 = frame_X + frame_Width;
     old_Frame_Y2 = frame_Y + frame_height;
 
+#ifdef Q_OS_WIN
     repaint();
+    update();
+#endif
 
 #ifdef Q_OS_LINUX
     if ( platform == wayland )
