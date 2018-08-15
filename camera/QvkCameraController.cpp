@@ -87,7 +87,10 @@ void QvkCameraController::slot_statusChanged( QCamera::Status status )
       case QCamera::UnloadedStatus    : { qDebug() << "[vokoscreen]" << status; break; }// 1
       case QCamera::LoadingStatus     : { qDebug() << "[vokoscreen]" << status; break; }// 2
       case QCamera::UnloadingStatus   : { qDebug() << "[vokoscreen]" << status; break; }// 3
-      case QCamera::LoadedStatus      : { qDebug() << "[vokoscreen]" << status; camera->start(); break; }// 4
+      case QCamera::LoadedStatus      : { qDebug() << "[vokoscreen]" << status;
+                                          qDebug() << "********************** Camera Start";
+                                          camera->start(); break;
+                                        }// 4
       case QCamera::StandbyStatus     : { qDebug() << "[vokoscreen]" << status; break; }// 5
       case QCamera::StartingStatus    : { qDebug() << "[vokoscreen]" << status; break; }// 6
       case QCamera::StoppingStatus    : { qDebug() << "[vokoscreen]" << status; break; }// 7
