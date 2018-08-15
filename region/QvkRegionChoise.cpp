@@ -66,7 +66,15 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
     setMouseTracking( true );
 
     QScreen *screen = QGuiApplication::primaryScreen();
+
+#ifdef Q_OS_LINUX
     resize( screen->availableSize().width(), screen->availableSize().height() );
+#endif
+
+#ifdef Q_OS_WIN
+    showMaximized();
+#endif
+
     screenWidth = screen->size().width();
     screenHeight = screen->size().height();
 /*
