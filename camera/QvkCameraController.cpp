@@ -15,15 +15,23 @@ QvkCameraController::QvkCameraController(Ui_MainWindow *ui_surface )
 {
     ui_vokoscreen = ui_surface;
 
-    ui_vokoscreen->CheckBoxCamera->setEnabled( false );
-    ui_vokoscreen->ComboBoxCamera->setEnabled( false );
+    ui_vokoscreen->checkBoxCamera->setEnabled( false );
+    ui_vokoscreen->comboBoxCamera->setEnabled( false );
+    ui_vokoscreen->checkBoxGray->setEnabled( false );
+    ui_vokoscreen->checkBoxInvert->setEnabled( false );
+    ui_vokoscreen->checkBoxMirror->setEnabled( false );
+    ui_vokoscreen->radioButtonLeftMiddle->setEnabled( false );
+    ui_vokoscreen->radioButtonTopMiddle->setEnabled( false );
+    ui_vokoscreen->radioButtonRightMiddle->setEnabled( false );
+    ui_vokoscreen->radioButtonBottomMiddle->setEnabled( false );
+    ui_vokoscreen->dialRotate->setEnabled( false );
 
     cameraWatcher = new QvkCameraWatcher();
 
     connect( cameraWatcher, SIGNAL( signal_addedCamera( QString, QString ) ), this, SLOT( slot_addedCamera( QString, QString ) ) );
     connect( cameraWatcher, SIGNAL( signal_removedCamera( QString) ),         this, SLOT( slot_removedCamera( QString ) ) );
 
-    connect( ui_vokoscreen->CheckBoxCamera, SIGNAL( toggled( bool ) ),        this, SLOT( slot_startCamera( bool ) ) );
+    connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ),        this, SLOT( slot_startCamera( bool ) ) );
 }
 
 
@@ -32,23 +40,42 @@ QvkCameraController::~QvkCameraController()
 }
 
 
-void QvkCameraController::slot_addedCamera(QString description, QString device)
+void QvkCameraController::slot_addedCamera( QString description, QString device )
 {
-    ui_vokoscreen->CheckBoxCamera->setEnabled( true );
-    ui_vokoscreen->ComboBoxCamera->setEnabled( true );
-    ui_vokoscreen->ComboBoxCamera->addItem( description, device );
+    ui_vokoscreen->checkBoxCamera->setEnabled( true );
+    ui_vokoscreen->comboBoxCamera->setEnabled( true );
+    ui_vokoscreen->comboBoxCamera->addItem( description, device );
+
+    ui_vokoscreen->checkBoxGray->setEnabled( true );
+    ui_vokoscreen->checkBoxInvert->setEnabled( true );
+    ui_vokoscreen->checkBoxMirror->setEnabled( true );
+
+    ui_vokoscreen->radioButtonLeftMiddle->setEnabled( true );
+    ui_vokoscreen->radioButtonTopMiddle->setEnabled( true );
+    ui_vokoscreen->radioButtonRightMiddle->setEnabled( true );
+    ui_vokoscreen->radioButtonBottomMiddle->setEnabled( true );
+    ui_vokoscreen->dialRotate->setEnabled( true );
 }
 
 
-void QvkCameraController::slot_removedCamera(QString device)
+void QvkCameraController::slot_removedCamera( QString device )
 {
-    int x = ui_vokoscreen->ComboBoxCamera->findData( device.toLatin1() );
-    ui_vokoscreen->ComboBoxCamera->removeItem( x );
+    int x = ui_vokoscreen->comboBoxCamera->findData( device.toLatin1() );
+    ui_vokoscreen->comboBoxCamera->removeItem( x );
 
-    if ( ui_vokoscreen->ComboBoxCamera->count() == 0 )
+    if ( ui_vokoscreen->comboBoxCamera->count() == 0 )
     {
-        ui_vokoscreen->CheckBoxCamera->setEnabled( false );
-        ui_vokoscreen->ComboBoxCamera->setEnabled( false );
+        ui_vokoscreen->checkBoxCamera->setEnabled( false );
+        ui_vokoscreen->comboBoxCamera->setEnabled( false );
+        ui_vokoscreen->checkBoxGray->setEnabled( false );
+        ui_vokoscreen->checkBoxInvert->setEnabled( false );
+        ui_vokoscreen->checkBoxMirror->setEnabled( false );
+
+        ui_vokoscreen->radioButtonLeftMiddle->setEnabled( false );
+        ui_vokoscreen->radioButtonTopMiddle->setEnabled( false );
+        ui_vokoscreen->radioButtonRightMiddle->setEnabled( false );
+        ui_vokoscreen->radioButtonBottomMiddle->setEnabled( false );
+        ui_vokoscreen->dialRotate->setEnabled( false );
     }
 }
 
@@ -57,8 +84,10 @@ void QvkCameraController::slot_startCamera( bool value )
 {
     if ( value == true )
     {
-        QByteArray device = ui_vokoscreen->ComboBoxCamera->currentData().toByteArray();
+        QByteArray device = ui_vokoscreen->comboBoxCamera->currentData().toByteArray();
+        delete camera;
         camera = new QCamera( device );
+        disconnect( camera, 0, 0, 0 );
         connect( camera, SIGNAL( statusChanged( QCamera::Status ) ), this, SLOT( slot_statusChanged( QCamera::Status ) ) );
         connect( camera, SIGNAL( stateChanged( QCamera::State   ) ), this, SLOT( slot_stateChanged( QCamera::State ) )  );
 
@@ -68,11 +97,18 @@ void QvkCameraController::slot_startCamera( bool value )
         viewfinderSettings.setMaximumFrameRate( 0.0 );
         camera->setViewfinderSettings( viewfinderSettings );
 
+        delete videoWidget;
         videoWidget = new QVideoWidget();
         camera->setViewfinder( videoWidget );
         videoWidget->show();
-
         camera->load();
+    }
+    else
+    {
+        disconnect( camera, 0, 0, 0 );
+        camera->stop();
+        camera->unload();
+        videoWidget->close();
     }
 }
 

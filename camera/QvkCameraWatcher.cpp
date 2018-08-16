@@ -76,9 +76,9 @@ void QvkCameraWatcher::detectCameras()
         {
             newDeviceNameList << cameraDevice;
             newDescriptionList << cameras.at(i).description();
-            emit signal_addedCamera( cameras.at(i).description(), cameraDevice );
             newcount = newDeviceNameList.count();
             deviceAdded = true;
+            emit signal_addedCamera( cameras.at(i).description(), cameraDevice );
         }
     }
 

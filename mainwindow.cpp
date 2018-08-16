@@ -377,7 +377,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // Close
     connect( this, SIGNAL( signal_close() ),  ui->pushButtonContinue, SLOT( click() ) );
     connect( this, SIGNAL( signal_close() ),  ui->pushButtonStop, SLOT( click() ) );
-    connect( this, SIGNAL( signal_close_webcam( bool ) ),  ui->CheckBoxCamera, SLOT( setChecked( bool ) ) );
+    connect( this, SIGNAL( signal_close_webcam( bool ) ),  ui->checkBoxCamera, SLOT( setChecked( bool ) ) );
 
     VK_Supported_Formats_And_Codecs();
     VK_Check_is_Format_available();

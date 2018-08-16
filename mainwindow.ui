@@ -36,7 +36,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -406,8 +406,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>96</width>
-                 <height>26</height>
+                 <width>64</width>
+                 <height>16</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -566,7 +566,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>96</width>
+                   <width>20</width>
                    <height>96</height>
                   </rect>
                  </property>
@@ -1066,7 +1066,7 @@
             <item>
              <layout class="QGridLayout" name="gridLayout_4">
               <item row="0" column="0">
-               <widget class="QCheckBox" name="CheckBoxCamera">
+               <widget class="QCheckBox" name="checkBoxCamera">
                 <property name="toolTip">
                  <string notr="true"/>
                 </property>
@@ -1076,7 +1076,7 @@
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QComboBox" name="ComboBoxCamera">
+               <widget class="QComboBox" name="comboBoxCamera">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -1112,21 +1112,21 @@
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_21">
                 <item>
-                 <widget class="QCheckBox" name="mirrorCheckBox">
+                 <widget class="QCheckBox" name="checkBoxMirror">
                   <property name="text">
                    <string>Mirrored</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QCheckBox" name="invertCheckBox">
+                 <widget class="QCheckBox" name="checkBoxInvert">
                   <property name="text">
                    <string>Invert</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QCheckBox" name="grayCheckBox">
+                 <widget class="QCheckBox" name="checkBoxGray">
                   <property name="text">
                    <string>Gray</string>
                   </property>
@@ -1211,7 +1211,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QDial" name="rotateDial">
+                   <widget class="QDial" name="dialRotate">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                       <horstretch>0</horstretch>
