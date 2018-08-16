@@ -87,6 +87,7 @@ void QvkCameraController::slot_startCamera( bool value )
         QByteArray device = ui_vokoscreen->comboBoxCamera->currentData().toByteArray();
         delete camera;
         camera = new QCamera( device );
+        camera->setCaptureMode( QCamera::CaptureViewfinder );
         disconnect( camera, 0, 0, 0 );
         connect( camera, SIGNAL( statusChanged( QCamera::Status ) ), this, SLOT( slot_statusChanged( QCamera::Status ) ) );
         connect( camera, SIGNAL( stateChanged( QCamera::State   ) ), this, SLOT( slot_stateChanged( QCamera::State ) )  );
@@ -99,6 +100,7 @@ void QvkCameraController::slot_startCamera( bool value )
 
         delete videoWidget;
         videoWidget = new QVideoWidget();
+        videoWidget->resize( 320, 240 );
         camera->setViewfinder( videoWidget );
         videoWidget->show();
         camera->load();
