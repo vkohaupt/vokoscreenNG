@@ -414,6 +414,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( pictureFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_pictureFileSystemWatcherSetButtons() ) );
     ui->lineEditPicturePath->setText( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
 
+    connect( ui->radioButtonScreenshotWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreenshotScreen, SLOT( setDisabled( bool ) ) );
+    connect( ui->radioButtonScreenshotArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreenshotScreen, SLOT( setDisabled( bool ) ) );
+
     connect( desk, SIGNAL( screenCountChanged(int) ), this, SLOT( slot_Screenshot_count_changed( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          this, SLOT( slot_Screenshot_count_changed( int ) ) );
     connect( ui->radioButtonScreenshotArea, SIGNAL( toggled( bool ) ), regionChoise, SLOT( setVisible( bool ) ) );
