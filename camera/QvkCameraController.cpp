@@ -13,6 +13,8 @@
 
 QvkCameraController::QvkCameraController(Ui_MainWindow *ui_surface )
 {
+    vkSettings.readAll();
+
     ui_vokoscreen = ui_surface;
 
     ui_vokoscreen->checkBoxCamera->setEnabled( false );
@@ -100,6 +102,8 @@ void QvkCameraController::slot_startCamera( bool value )
 
         delete videoWidget;
         videoWidget = new QVideoWidget();
+//        videoWidget->setWindowTitle( vkSettings.getProgName() + " " + tr( "Camera" ) + " " + vkSettings.getVersion() );
+        videoWidget->setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() );
         videoWidget->resize( 320, 240 );
         camera->setViewfinder( videoWidget );
         videoWidget->show();
@@ -126,7 +130,6 @@ void QvkCameraController::slot_statusChanged( QCamera::Status status )
       case QCamera::LoadingStatus     : { qDebug() << "[vokoscreen]" << status; break; }// 2
       case QCamera::UnloadingStatus   : { qDebug() << "[vokoscreen]" << status; break; }// 3
       case QCamera::LoadedStatus      : { qDebug() << "[vokoscreen]" << status;
-                                          qDebug() << "********************** Camera Start";
                                           camera->start(); break;
                                         }// 4
       case QCamera::StandbyStatus     : { qDebug() << "[vokoscreen]" << status; break; }// 5

@@ -53,6 +53,9 @@ win32:LIBS += -llibgstreamer-1.0-0
 win32:LIBS += -llibglib-2.0-0
 win32:LIBS += -llibgobject-2.0-0
 
+# settings
+include(settings/settings.pri)
+
 # region
 include(region/regionselection.pri)
 

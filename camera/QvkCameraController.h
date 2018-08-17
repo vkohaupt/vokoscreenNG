@@ -4,9 +4,12 @@
 #include "ui_mainwindow.h"
 //#include "QvkMsgInWebcamWindow.h"
 #include "QvkCameraWatcher.h"
+#include "QvkSettings.h"
 
 #include <QCamera>
 #include <QComboBox>
+
+#include <QVideoWidget>
 
 class QvkCameraController : public QObject
 {
@@ -31,9 +34,11 @@ private slots:
 
 
 private:
+  QvkSettings vkSettings;
   Ui_MainWindow *ui_vokoscreen;
   QCamera *camera = nullptr;
   QVideoWidget *videoWidget = nullptr;
+//  QVideoWidget videoWidget;
   QvkCameraWatcher *cameraWatcher;
 
 

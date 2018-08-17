@@ -157,11 +157,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 {
     ui->setupUi(this);
 
+    vkSettings.readAll();
+
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
     MainWindow::setWindowIcon( icon );
 
-    setWindowTitle( "vokoscreen" );
+    setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() );
 
     QScreen *screen = QGuiApplication::primaryScreen();
     qDebug().noquote() << "[vokoscreen]" << "Locale:" << QLocale::system().name();

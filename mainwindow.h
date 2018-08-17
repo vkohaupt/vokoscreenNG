@@ -5,6 +5,7 @@
 #include "QvkCountdown.h"
 #include "QvkCameraController.h"
 #include "QvkRegionChoise.h"
+#include "QvkSettings.h"
 
 #include <QMainWindow>
 #include <QFileSystemWatcher>
@@ -25,6 +26,8 @@ public:
 
 
 private:
+    QvkSettings vkSettings;
+
     Ui::MainWindow *ui;
     const QString VK_Gstr_Pipe = " ! ";
     QString VK_GStreamer_Version();
