@@ -202,13 +202,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     qDebug() << "[vokoscreen]" << gst_version_string ();
 
-    ui->tabWidgetSideBar->setTabIcon( 0, QIcon::fromTheme( "computer", QIcon( ":/pictures/webcam.png" ) ) );
-    makeValidIconForSideBar( 0 );
-    ui->tabWidgetSideBar->setTabIcon( 1, QIcon::fromTheme( "image-loading", QIcon( ":/pictures/webcam.png" ) ) );
-    makeValidIconForSideBar( 1 );
-    ui->tabWidgetSideBar->setTabIcon( 2, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
-    makeValidIconForSideBar( 2 );
-
+    makeAndSetValidIconForSideBar( 0, QIcon::fromTheme( "computer", QIcon( ":/pictures/webcam.png" ) ) );
+    makeAndSetValidIconForSideBar( 1, QIcon::fromTheme( "image-loading", QIcon( ":/pictures/webcam.png" ) ) );
+    makeAndSetValidIconForSideBar( 2, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
 
     ui->tabWidget->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
     makeAndSetValidIcon( 0 );
@@ -752,15 +748,15 @@ void MainWindow::makeAndSetValidIcon( int index )
 }
 
 
-void MainWindow::makeValidIconForSideBar( int index )
+void MainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
 {
-  QIcon myIcon = ui->tabWidgetSideBar->tabIcon( index );
-  QSize size = ui->tabWidgetSideBar->iconSize();
-  QPixmap workPixmap( myIcon.pixmap( size ) );
-  QTransform trans;
-  trans.rotate(90);
-  workPixmap = workPixmap.transformed(trans);
-  ui->tabWidgetSideBar->setTabIcon( index, QIcon( workPixmap ) );
+    QSize size = ui->tabWidgetSideBar->iconSize();
+    QPixmap workPixmap( icon.pixmap( size ) );
+    workPixmap = workPixmap.scaled( size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    QTransform transform;
+    transform.rotate( 90 );
+    workPixmap = workPixmap.transformed( transform );
+    ui->tabWidgetSideBar->setTabIcon( index, QIcon( workPixmap ) );
 }
 
 /*

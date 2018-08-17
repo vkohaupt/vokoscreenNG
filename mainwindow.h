@@ -36,7 +36,7 @@ private:
     QString VK_getMuxer();
     QString Vk_get_Videocodec_Encoder();
     void makeAndSetValidIcon( int index );
-    void makeValidIconForSideBar( int index );
+    void makeAndSetValidIconForSideBar( int index, QIcon icon );
 
     QFileSystemWatcher *videoFileSystemWatcher;
     QFileSystemWatcher *pictureFileSystemWatcher;
