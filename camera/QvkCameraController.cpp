@@ -102,8 +102,7 @@ void QvkCameraController::slot_startCamera( bool value )
 
         delete videoWidget;
         videoWidget = new QVideoWidget();
-//        videoWidget->setWindowTitle( vkSettings.getProgName() + " " + tr( "Camera" ) + " " + vkSettings.getVersion() );
-        videoWidget->setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() );
+        videoWidget->setWindowTitle( vkSettings.getProgName() + " " + "camera"  + " " + vkSettings.getVersion() );
         videoWidget->resize( 320, 240 );
         camera->setViewfinder( videoWidget );
         videoWidget->show();
