@@ -206,17 +206,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     makeAndSetValidIconForSideBar( 1, QIcon::fromTheme( "image-loading", QIcon( ":/pictures/webcam.png" ) ) );
     makeAndSetValidIconForSideBar( 2, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
 
-    ui->tabWidgetScreencast->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
-    makeAndSetValidIcon(  0 );
-
-    ui->tabWidgetScreencast->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
-    makeAndSetValidIcon( 1 );
-
-    ui->tabWidgetScreencast->setTabIcon( 2, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
-    makeAndSetValidIcon( 2 );
-
-    ui->tabWidgetScreencast->setTabIcon( 3, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/webcam.png" ) ) );
-    makeAndSetValidIcon( 3 );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 2, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 3, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/webcam.png" ) ) );
 
     // Bar for start, stop etc.
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setEnabled( bool ) ) );
@@ -333,6 +326,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->labelAudioCodec,       SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->comboBoxAudioCodec,    SLOT( setEnabled( bool ) ) );
+    connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->pushButtonAudiocodecDefault, SLOT( setEnabled( bool ) ) );
 
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), this, SLOT( slot_clearVerticalLayoutAudioDevices( bool ) ) );
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), this, SLOT( slot_getPulsesDevices( bool ) ) );
@@ -748,13 +742,14 @@ void MainWindow::makeAndSetValidIcon( int index )
 }
 
 
-
-/*
-void MainWindow::makeAndSetValidIcon( QWidget widget, int index , QIcon icon )
+void MainWindow::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIcon icon )
 {
-
+    QSize size = tabWidget->iconSize();
+    QPixmap workPixmap( icon.pixmap( size ) );
+    workPixmap = workPixmap.scaled( size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    tabWidget->setTabIcon( index, QIcon( workPixmap ) );
 }
-*/
+
 
 void MainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
 {
