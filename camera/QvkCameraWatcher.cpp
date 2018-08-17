@@ -69,6 +69,7 @@ void QvkCameraWatcher::detectCameras()
     bool deviceAdded = false;
 
     QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
+    qDebug() << cameras;
     for ( int i = 0; i < QCameraInfo::availableCameras().count(); i++  )
     {
         QString cameraDevice = addedDeviceName( newDeviceNameList, cameras.at(i).deviceName() );

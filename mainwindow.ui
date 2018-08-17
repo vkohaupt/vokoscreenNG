@@ -36,7 +36,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -74,7 +74,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QTabWidget" name="tabWidget">
+         <widget class="QTabWidget" name="tabWidgetScreencast">
           <property name="toolTip">
            <string notr="true"/>
           </property>
@@ -406,8 +406,8 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>566</width>
-                 <height>124</height>
+                 <width>563</width>
+                 <height>81</height>
                 </rect>
                </property>
                <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -566,8 +566,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>253</width>
-                   <height>243</height>
+                   <width>247</width>
+                   <height>232</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">

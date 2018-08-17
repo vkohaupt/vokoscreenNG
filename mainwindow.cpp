@@ -206,16 +206,16 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     makeAndSetValidIconForSideBar( 1, QIcon::fromTheme( "image-loading", QIcon( ":/pictures/webcam.png" ) ) );
     makeAndSetValidIconForSideBar( 2, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
 
-    ui->tabWidget->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
-    makeAndSetValidIcon( 0 );
+    ui->tabWidgetScreencast->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
+    makeAndSetValidIcon(  0 );
 
-    ui->tabWidget->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
+    ui->tabWidgetScreencast->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
     makeAndSetValidIcon( 1 );
 
-    ui->tabWidget->setTabIcon( 2, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
+    ui->tabWidgetScreencast->setTabIcon( 2, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
     makeAndSetValidIcon( 2 );
 
-    ui->tabWidget->setTabIcon( 3, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/webcam.png" ) ) );
+    ui->tabWidgetScreencast->setTabIcon( 3, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/webcam.png" ) ) );
     makeAndSetValidIcon( 3 );
 
     // Bar for start, stop etc.
@@ -741,12 +741,20 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 
 void MainWindow::makeAndSetValidIcon( int index )
 {
-  QIcon myIcon = ui->tabWidget->tabIcon( index );
-  QSize size = ui->tabWidget->iconSize();
+  QIcon myIcon = ui->tabWidgetScreencast->tabIcon( index );
+  QSize size = ui->tabWidgetScreencast->iconSize();
   QPixmap workPixmap( myIcon.pixmap( size ) );
-  ui->tabWidget->setTabIcon( index, QIcon( workPixmap ) );
+  ui->tabWidgetScreencast->setTabIcon( index, QIcon( workPixmap ) );
 }
 
+
+
+/*
+void MainWindow::makeAndSetValidIcon( QWidget widget, int index , QIcon icon )
+{
+
+}
+*/
 
 void MainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
 {
@@ -766,8 +774,8 @@ void MainWindow::slot_audioIconOnOff( bool state )
 {
   if ( state == Qt::Unchecked )
   {
-    QIcon myIcon = ui->tabWidget->tabIcon( 1 );
-    QSize size = ui->tabWidget->iconSize();
+    QIcon myIcon = ui->tabWidgetScreencast->tabIcon( 1 );
+    QSize size = ui->tabWidgetScreencast->iconSize();
     QPixmap workPixmap( myIcon.pixmap( size ) );
     QPainter painter;
     QPen pen;
@@ -778,10 +786,10 @@ void MainWindow::slot_audioIconOnOff( bool state )
       painter.drawLine ( 5, 5, size.width()-5, size.height()-5 );
       painter.drawLine ( 5, size.height()-5, size.width()-5, 5 );
     painter.end();
-    ui->tabWidget->setTabIcon( 1, QIcon( workPixmap ) );
+    ui->tabWidgetScreencast->setTabIcon( 1, QIcon( workPixmap ) );
   }
   else{
-    ui->tabWidget->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
+    ui->tabWidgetScreencast->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
     makeAndSetValidIcon( 1 );
   }
 }
