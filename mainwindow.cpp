@@ -755,7 +755,7 @@ void MainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
     workPixmap = workPixmap.scaled( size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
     QTransform transform;
     transform.rotate( 90 );
-    workPixmap = workPixmap.transformed( transform );
+    workPixmap = workPixmap.transformed( transform, Qt::SmoothTransformation );
     ui->tabWidgetSideBar->setTabIcon( index, QIcon( workPixmap ) );
 }
 
