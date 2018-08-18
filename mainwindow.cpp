@@ -581,6 +581,7 @@ void MainWindow::slot_show_Screenshoot()
         QDialog *newDialog = new QDialog;
         Ui_NoPlayerDialog myUiDialog;
         myUiDialog.setupUi( newDialog );
+        myUiDialog.labelPleaseInstall->setText( tr( "Please install an image viewer" ) );
         newDialog->setModal( true );
         newDialog->setWindowTitle( "vokoscreen" );
         newDialog->show();
@@ -1472,6 +1473,7 @@ void MainWindow::slot_Play()
         QDialog *newDialog = new QDialog;
         Ui_NoPlayerDialog myUiDialog;
         myUiDialog.setupUi( newDialog );
+        myUiDialog.labelPleaseInstall->setText( tr( "Please install an video player" ) );
         newDialog->setModal( true );
         newDialog->setWindowTitle( "vokoscreen" );
         newDialog->show();

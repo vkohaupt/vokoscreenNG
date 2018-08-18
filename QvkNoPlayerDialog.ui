@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>298</width>
-    <height>127</height>
+    <width>270</width>
+    <height>129</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -38,9 +38,12 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="labelPleaseInstall">
          <property name="text">
-          <string>Please install a videoplayer</string>
+          <string notr="true"/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
