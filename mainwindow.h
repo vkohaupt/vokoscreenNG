@@ -35,7 +35,6 @@ private:
     QString VK_getCapsFilter();
     QString VK_getMuxer();
     QString Vk_get_Videocodec_Encoder();
-    void makeAndSetValidIcon( int index );
     void makeAndSetValidIcon(QTabWidget *widget, int index, QIcon icon );
     void makeAndSetValidIconForSideBar( int index, QIcon icon );
 

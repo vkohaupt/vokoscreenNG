@@ -393,11 +393,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->toolButtonScreenshotHelp->setIcon( ui->toolButtonScreenshotHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     ui->toolButtonScreenShotMiscHelp->setIcon( ui->toolButtonScreenShotMiscHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
-    ui->tabWidgetScreenshot->setTabIcon( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
-    makeAndSetValidIcon( 0 );
-
-    ui->tabWidgetScreenshot->setTabIcon( 1, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
-    makeAndSetValidIcon( 1 );
+    makeAndSetValidIcon( ui->tabWidgetScreenshot, 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreenshot, 1, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
 
     pictureFileSystemWatcher = new QFileSystemWatcher();
     connect( ui->toolButtonPicturePath, SIGNAL( clicked( bool ) ),      this, SLOT( slot_newPicturePath() ) );
@@ -430,8 +427,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // Tab 0 Camera
     ui->toolButtonCameraHelp->setIcon( ui->toolButtonCameraHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     cameraController = new QvkCameraController( ui );
-    ui->tabWidgetCamera->setTabIcon( 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
-    makeAndSetValidIcon( 0 );
+    makeAndSetValidIcon( ui->tabWidgetCamera, 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
 }
 
 
@@ -734,15 +730,6 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 }
 
 
-void MainWindow::makeAndSetValidIcon( int index )
-{
-  QIcon myIcon = ui->tabWidgetScreencast->tabIcon( index );
-  QSize size = ui->tabWidgetScreencast->iconSize();
-  QPixmap workPixmap( myIcon.pixmap( size ) );
-  ui->tabWidgetScreencast->setTabIcon( index, QIcon( workPixmap ) );
-}
-
-
 void MainWindow::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIcon icon )
 {
     QSize size = tabWidget->iconSize();
@@ -782,11 +769,10 @@ void MainWindow::slot_audioIconOnOff( bool state )
       painter.drawLine ( 5, 5, size.width()-5, size.height()-5 );
       painter.drawLine ( 5, size.height()-5, size.width()-5, 5 );
     painter.end();
-    ui->tabWidgetScreencast->setTabIcon( 1, QIcon( workPixmap ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon( workPixmap ) );
   }
   else{
-    ui->tabWidgetScreencast->setTabIcon( 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
-    makeAndSetValidIcon( 1 );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
   }
 }
 
