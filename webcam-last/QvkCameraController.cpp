@@ -1,50 +1,50 @@
-#include "QvkWebcamController.h"
-#include "QvkWebcamWatcher.h"
+#include "QvkCameraController.h"
+#include "QvkCameraWatcher.h"
 #include "QvkVideoSurface.h"
 
-QvkWebcamController::QvkWebcamController( Ui_MainWindow *value )
+QvkCameraController::QvkCameraController( Ui_MainWindow *value )
 {
     ui_vokoscreen = value;
-    QvkWebcamWatcher *vkWebcamWatcher = new QvkWebcamWatcher;
+    QvkCameraWatcher *vkCameraWatcher = new QvkCameraWatcher;
 
-    connect( vkWebcamWatcher, SIGNAL( signal_new_QCameraInfoList_a_camera_was_added( QList<QCameraInfo> ) ), this, SLOT( slot_new_camera_list( QList<QCameraInfo> ) ) );
-    connect( ui_vokoscreen->ComboBoxCamera, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_loadCamera() ) );
-    connect( ui_vokoscreen->CheckBoxCamera, SIGNAL( toggled( bool ) ), this, SLOT( slot_Start_Stop_Camera( bool ) )  );
+    connect( vkCameraWatcher, SIGNAL( signal_new_QCameraInfoList_a_camera_was_added( QList<QCameraInfo> ) ), this, SLOT( slot_new_camera_list( QList<QCameraInfo> ) ) );
+    connect( ui_vokoscreen->comboBoxCamera, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_loadCamera() ) );
+    connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), this, SLOT( slot_Start_Stop_Camera( bool ) )  );
 
-    connect( vkWebcamWatcher, SIGNAL( signal_cameras_available( bool ) ), ui_vokoscreen->CheckBoxCamera, SLOT( setEnabled( bool ) ) );
+    connect( vkCameraWatcher, SIGNAL( signal_cameras_available( bool ) ), ui_vokoscreen->checkBoxCamera, SLOT( setEnabled( bool ) ) );
 
-    connect( vkWebcamWatcher, SIGNAL( signal_cameras_available( bool ) ), ui_vokoscreen->ComboBoxCamera, SLOT( setEnabled( bool ) ) );
-    connect( vkWebcamWatcher, SIGNAL( signal_no_camera_available() ),     ui_vokoscreen->ComboBoxCamera, SLOT( clear() ) );
+    connect( vkCameraWatcher, SIGNAL( signal_cameras_available( bool ) ), ui_vokoscreen->comboBoxCamera, SLOT( setEnabled( bool ) ) );
+    connect( vkCameraWatcher, SIGNAL( signal_no_camera_available() ),     ui_vokoscreen->comboBoxCamera, SLOT( clear() ) );
 
     videoSurface = new QvkVideoSurface( this );
     connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ), this, SLOT( slot_newImage( QImage ) ) );
 }
 
 
-QvkWebcamController::~QvkWebcamController()
+QvkCameraController::~QvkCameraController()
 {
 }
 
 
-void QvkWebcamController::slot_new_camera_list( QList<QCameraInfo> cameraInfoList )
+void QvkCameraController::slot_new_camera_list( QList<QCameraInfo> cameraInfoList )
 {
     qDebug() << "***************************   slot_new_camera_list( QList<QCameraInfo> cameraInfoList )";
-    ui_vokoscreen->ComboBoxCamera->clear();
+    ui_vokoscreen->comboBoxCamera->clear();
     for ( int x = 0; x < cameraInfoList.count(); x++  )
     {
-        ui_vokoscreen->ComboBoxCamera->addItem( QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ),
+        ui_vokoscreen->comboBoxCamera->addItem( QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ),
                                                 cameraInfoList.at( x ).description(),
                                                 cameraInfoList.at( x ).deviceName() );
     }
 }
 
 
-void QvkWebcamController::slot_loadCamera()
+void QvkCameraController::slot_loadCamera()
 {
     qDebug() << "***************************  slot_loadCamera()";
-    if ( ui_vokoscreen->ComboBoxCamera->count() == 0 )
+    if ( ui_vokoscreen->comboBoxCamera->count() == 0 )
     {
-        if ( ui_vokoscreen->CheckBoxCamera->isChecked() == true )
+        if ( ui_vokoscreen->checkBoxCamera->isChecked() == true )
         {
           qDebug() << "11111111111111111111";
           //ui_vokoscreen->CheckBoxCamera->setChecked( false );
@@ -58,7 +58,7 @@ void QvkWebcamController::slot_loadCamera()
     delete camera;
     delete webcamWindow;
 
-    camera = new QCamera( ui_vokoscreen->ComboBoxCamera->currentData().toByteArray() );
+    camera = new QCamera( ui_vokoscreen->comboBoxCamera->currentData().toByteArray() );
     camera->setCaptureMode( QCamera::CaptureViewfinder );
     //connect( camera, SIGNAL( error( QCamera::Error ) ), this, SLOT( slot_error( QCamera::Error ) ) );
     //connect( camera, QOverload<QCamera::Error>::of(&QCamera::error), [=](QCamera::Error value){ qDebug() << value; });
@@ -74,12 +74,12 @@ void QvkWebcamController::slot_loadCamera()
     camera->setViewfinder( videoSurface );
 
     webcamWindow = new QvkWebcamWindow;
-    connect( webcamWindow, SIGNAL( signal_webcamwindow_close() ), ui_vokoscreen->CheckBoxCamera, SLOT( click() ) );
+    connect( webcamWindow, SIGNAL( signal_webcamwindow_close() ), ui_vokoscreen->checkBoxCamera, SLOT( click() ) );
     camera->load();
 }
 
 
-void QvkWebcamController::slot_Start_Stop_Camera( bool value )
+void QvkCameraController::slot_Start_Stop_Camera( bool value )
 {
     if ( value == true )
     {
@@ -97,7 +97,7 @@ void QvkWebcamController::slot_Start_Stop_Camera( bool value )
 }
 
 
-void QvkWebcamController::slot_newImage( QImage image )
+void QvkCameraController::slot_newImage( QImage image )
 {
     // Passt Bild beim resizen des Fensters an
     image = image.scaled( webcamWindow->width(), webcamWindow->height(), Qt::KeepAspectRatio, Qt::FastTransformation);
@@ -105,7 +105,7 @@ void QvkWebcamController::slot_newImage( QImage image )
 }
 
 
-void QvkWebcamController::slot_statusChanged( QCamera::Status status )
+void QvkCameraController::slot_statusChanged( QCamera::Status status )
 {
     switch ( status )
     {
@@ -122,7 +122,7 @@ void QvkWebcamController::slot_statusChanged( QCamera::Status status )
 }
 
 
-void QvkWebcamController::slot_stateChanged( QCamera::State state )
+void QvkCameraController::slot_stateChanged( QCamera::State state )
 {
     switch ( state )
     {
@@ -133,7 +133,7 @@ void QvkWebcamController::slot_stateChanged( QCamera::State state )
 }
 
 
-void QvkWebcamController::slot_error( QCamera::Error error )
+void QvkCameraController::slot_error( QCamera::Error error )
 {
     switch ( error )
     {

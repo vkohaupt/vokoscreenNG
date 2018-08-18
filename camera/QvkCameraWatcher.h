@@ -16,12 +16,11 @@ public:
 
 
 public slots:
+  void slot_startStopCameraTimer( bool value );
 
   
 private slots:
-  void detectCameras();
-  QString addedDeviceName( QStringList myNewDeviceNameList, QString device );
-  QString removedDeviceName( QStringList myNewDeviceNameList, QStringList myOldDeviceNameList );
+  void slot_detectCameras();
 
 
 signals:
@@ -39,6 +38,10 @@ private:
   QStringList oldDeviceNameList;
 
   QTimer *timer;
+
+  QString addedDeviceName( QStringList myNewDeviceNameList, QString device );
+  QString removedDeviceName( QStringList myNewDeviceNameList, QStringList myOldDeviceNameList );
+
 };
 
 #endif

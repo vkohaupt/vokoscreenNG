@@ -1,18 +1,18 @@
-#ifndef QvkWebcamWatcher_H 
-#define QvkWebcamWatcher_H
+#ifndef QvkCameraWatcher_H 
+#define QvkCameraWatcher_H
 
 #include <QObject>
 #include <QCameraInfo>
 #include <QTimer>
 
-class QvkWebcamWatcher: public QObject
+class QvkCameraWatcher: public QObject
 {
 
     Q_OBJECT
 
 public:
-    QvkWebcamWatcher();
-    virtual ~QvkWebcamWatcher();
+    QvkCameraWatcher();
+    virtual ~QvkCameraWatcher();
 
 
 public slots:

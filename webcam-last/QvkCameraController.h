@@ -1,5 +1,5 @@
-#ifndef QvkWebcamController_H 
-#define QvkWebcamController_H
+#ifndef QvkCameraController_H
+#define QvkCameraController_H
 
 #include "ui_mainwindow.h"
 #include "QvkVideoSurface.h"
@@ -8,13 +8,13 @@
 #include <QCamera>
 #include <QCameraInfo>
 
-class QvkWebcamController : public QObject
+class QvkCameraController : public QObject
 {
     Q_OBJECT
 
 public:
-    QvkWebcamController( Ui_MainWindow *value );
-    virtual ~QvkWebcamController();
+    QvkCameraController( Ui_MainWindow *value );
+    virtual ~QvkCameraController();
 
 
 public slots:

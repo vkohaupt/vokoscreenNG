@@ -1,8 +1,8 @@
 INCLUDEPATH += $$PWD
 DEPENDPATH  += $$PWD
  
-HEADERS += $$PWD/QvkWebcamController.h \
-           $$PWD/QvkWebcamWatcher.h \
+HEADERS += $$PWD/QvkCameraController.h \
+           $$PWD/QvkCameraWatcher.h \
            $$PWD/qvkwebcamwindow.h \
            $$PWD/QvkWidgetHelp.h \
            $$PWD/frameWidget.h \
@@ -11,8 +11,8 @@ HEADERS += $$PWD/QvkWebcamController.h \
            $$PWD/QvkWidgetMenueBackground.h \
            $$PWD/QvkWidgetExit.h
 
-SOURCES += $$PWD/QvkWebcamController.cpp \
-           $$PWD/QvkWebcamWatcher.cpp \
+SOURCES += $$PWD/QvkCameraController.cpp \
+           $$PWD/QvkCameraWatcher.cpp \
            $$PWD/qvkwebcamwindow.cpp \
            $$PWD/QvkWidgetHelp.cpp \
            $$PWD/frameWidget.cpp \

@@ -1,8 +1,8 @@
-#include "QvkWebcamWatcher.h" 
+#include "QvkCameraWatcher.h" 
 
 #include <QCameraInfo>
 
-QvkWebcamWatcher::QvkWebcamWatcher():oldCount(0)
+QvkCameraWatcher::QvkCameraWatcher():oldCount(0)
 {
     timer = new QTimer(this);
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_detectCameras() ) );
@@ -10,7 +10,7 @@ QvkWebcamWatcher::QvkWebcamWatcher():oldCount(0)
 }
 
 
-QvkWebcamWatcher::~QvkWebcamWatcher()
+QvkCameraWatcher::~QvkCameraWatcher()
 {
 }
 
@@ -18,12 +18,12 @@ QvkWebcamWatcher::~QvkWebcamWatcher()
 /*
  * Is called periodically by the timer
  */
-void QvkWebcamWatcher::slot_detectCameras()
+void QvkCameraWatcher::slot_detectCameras()
 {
     timer->stop();
     int newCount = QCameraInfo::availableCameras().count();
     QList<QCameraInfo> listCameraInfo = QCameraInfo::availableCameras();
-
+qDebug() << listCameraInfo;
     if ( newCount > oldCount )
     {
         oldCount = newCount;

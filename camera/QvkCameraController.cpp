@@ -33,6 +33,7 @@ QvkCameraController::QvkCameraController(Ui_MainWindow *ui_surface )
     connect( cameraWatcher, SIGNAL( signal_addedCamera( QString, QString ) ), this, SLOT( slot_addedCamera( QString, QString ) ) );
     connect( cameraWatcher, SIGNAL( signal_removedCamera( QString) ),         this, SLOT( slot_removedCamera( QString ) ) );
 
+    connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ),        cameraWatcher, SLOT( slot_startStopCameraTimer( bool ) ) );
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ),        this, SLOT( slot_startCamera( bool ) ) );
 }
 
