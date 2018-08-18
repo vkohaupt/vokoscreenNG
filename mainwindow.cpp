@@ -310,9 +310,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     connect( ui->toolButtonAreaReset, SIGNAL( clicked( bool ) ), regionChoise, SLOT( slot_areaReset() ) );
 
-
-
-    // Tab 2 Audio
+    // Tab 1 Audio
     ui->toolButtonFramesHelp->setIcon( ui->toolButtonFramesHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     ui->toolButtonAudioHelp->setIcon( ui->toolButtonAudioHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     ui->toolButtonNoMouseCursorHelp->setIcon( ui->toolButtonNoMouseCursorHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
@@ -336,7 +334,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // Pulse is Standard. If no pulsedevice found change to alsa
     ui->radioButtonPulse->click();
 
-    // Tab 3 Codec
+    // Tab 2 Codec
     ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     ui->pushButtonFormatDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
     ui->pushButtonAudiocodecDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/undo.png" ) ) );
@@ -345,7 +343,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
 
-    // Tab 4 Misc
+    // Tab 3 Misc
     videoFileSystemWatcher = new QFileSystemWatcher();
     connect( ui->PushButtonVideoPath, SIGNAL( clicked( bool ) ),        this, SLOT( slot_newVideoPath() ) );
     connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetNewPath() ) );
@@ -354,7 +352,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
 
 
-    // Tab 5 Available muxer, encoder etc.
+    // Tab 4 Available muxer, encoder etc.
     ui->toolButtonAvalaibleHelp->setIcon( ui->toolButtonAvalaibleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->toolButtonAvalaibleHelp, SIGNAL( clicked( bool ) ), SLOT( slot_availableHelp() ) );
 
@@ -366,7 +364,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->labelNotAvailable->setPixmap( iconNotAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
     // End Tabs
 
-    // Close
+    // Close vokoscreen GUI
     connect( this, SIGNAL( signal_close() ),  ui->pushButtonContinue, SLOT( click() ) );
     connect( this, SIGNAL( signal_close() ),  ui->pushButtonStop, SLOT( click() ) );
     connect( this, SIGNAL( signal_close_webcam( bool ) ),  ui->checkBoxCamera, SLOT( setChecked( bool ) ) );
@@ -428,6 +426,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->toolButtonCameraHelp->setIcon( ui->toolButtonCameraHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     cameraController = new QvkCameraController( ui );
     makeAndSetValidIcon( ui->tabWidgetCamera, 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
+    connect( ui->checkBoxCamera, SIGNAL( toggled( bool ) ), ui->comboBoxCamera, SLOT( setDisabled( bool ) ) );
 }
 
 
