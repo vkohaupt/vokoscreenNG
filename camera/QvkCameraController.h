@@ -36,6 +36,11 @@ private slots:
 
    void slot_setNewImage( QImage image );
 
+   void slot_radioButtonLeftMiddle();
+   void slot_radioButtonTopMiddle();
+   void slot_radioButtonRightMiddle();
+   void slot_radioButtonBottomMiddle();
+
 
 private:
   QvkSettings vkSettings;
