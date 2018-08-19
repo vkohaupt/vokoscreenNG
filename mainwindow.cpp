@@ -159,11 +159,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     vkSettings.readAll();
 
-    timerSidebarScreencast = new QTimer( this );
-    connect( timerSidebarScreencast, SIGNAL( timeout() ), this, SLOT( slot_startScreencastAnimation() ) );
-    timerSidebarScreencast->start( 40 );
-
-
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
     MainWindow::setWindowIcon( icon );
@@ -752,19 +747,6 @@ void MainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
     transform.rotate( 90 );
     workPixmap = workPixmap.transformed( transform, Qt::SmoothTransformation );
     ui->tabWidgetSideBar->setTabIcon( index, QIcon( workPixmap ) );
-}
-
-
-void MainWindow::slot_startScreencastAnimation()
-{
-    makeAndSetValidIconForSideBar( 0, QIcon::fromTheme( "computer", QIcon( ":/pictures/webcam.png" ) ) );
-    QSize size = ui->tabWidgetSideBar->iconSize();
-    QIcon icon = ui->tabWidgetSideBar->tabIcon( 0 );
-    QPixmap workPixmap( icon.pixmap( size ) );
-    QTransform transform;
-    transform.rotate( counter++ );
-    workPixmap = workPixmap.transformed( transform, Qt::SmoothTransformation );
-    ui->tabWidgetSideBar->setTabIcon( 0, QIcon( workPixmap ) );
 }
 
 

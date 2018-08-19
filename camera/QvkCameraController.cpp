@@ -1,4 +1,4 @@
-#include "QvkCameraController.h"
+﻿#include "QvkCameraController.h"
 
 #include <QCameraInfo>
 #include <QCameraViewfinder>
@@ -36,6 +36,8 @@ QvkCameraController::QvkCameraController(Ui_MainWindow *ui_surface )
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ),        this, SLOT( slot_startCamera( bool ) ) );
 
     connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ),             this, SLOT( slot_setNewImage( QImage ) ) );
+    connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ),             this, SLOT( slot_setNewImageSideBar( QImage ) ) );
+
 }
 
 
