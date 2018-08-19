@@ -71,7 +71,8 @@ private:
 
     QPixmap pixmap;
 
-
+    QTimer *timerSidebarScreencast;
+    int counter = 0;
 
 private slots:
     void slot_preStart();
@@ -91,6 +92,8 @@ private slots:
     void slot_videoFileSystemWatcherSetButtons();
     void slot_videoFileSystemWatcherSetNewPath();
     void slot_startCounter( bool value );
+
+    void slot_startScreencastAnimation();
 
     void slot_set_available_VideoCodecs_in_Combox( QString suffix );
     void slot_set_available_AudioCodecs_in_Combox( QString suffix );

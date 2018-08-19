@@ -2,28 +2,20 @@ INCLUDEPATH += $$PWD
 DEPENDPATH  += $$PWD
 
 HEADERS += $$PWD/QvkCameraController.h \
-           $$PWD/QvkCameraWatcher.h
-
+           $$PWD/QvkCameraWatcher.h \
+           $$PWD/QvkCameraWindow.h \
+           $$PWD/QvkVideoSurface.h \
+           $$PWD/QvkWidgetExit.h \
+           $$PWD/QvkWidgetFrame.h \
+           $$PWD/QvkWidgetHelp.h \
+           $$PWD/QvkWidgetMenueBackground.h \
+           $$PWD/QvkWidgetSettings.h
+           
 SOURCES += $$PWD/QvkCameraController.cpp \
-           $$PWD/QvkCameraWatcher.cpp
-
-
-
-#HEADERS += $$PWD/QvkWebcamController.h \
-#           $$PWD/QvkWebcamWindow.h \
-#           $$PWD/QvkWebcamWatcher.h \
-#           $$PWD/QvkVideoSurface.h \
-#           $$PWD/QvkMsgInWebcamWindow.h \
-#           $$PWD/QvkQCheckboxDescription.h \
-#           $$PWD/QvkQLabelDevice.h \
-#           $$PWD/QvkQComboboxResolution.h
-#           
-#SOURCES += $$PWD/QvkWebcamController.cpp \
-#           $$PWD/QvkWebcamWindow.cpp \
-#           $$PWD/QvkWebcamWatcher.cpp \
-#           $$PWD/QvkMsgInWebcamWindow.cpp \
-#           $$PWD/QvkQCheckBoxDescription.cpp \
-#           $$PWD/QvkQLabelDevice.cpp \
-#           $$PWD/QvkQComboboxResolution.cpp
-#
-#FORMS   += $$PWD/webcamTab.ui
+           $$PWD/QvkCameraWatcher.cpp \
+           $$PWD/QvkCameraWindow.cpp \
+           $$PWD/QvkWidgetExit.cpp \
+           $$PWD/QvkWidgetFrame.cpp \
+           $$PWD/QvkWidgetHelp.cpp \
+           $$PWD/QvkWidgetMenueBackground.cpp \
+           $$PWD/QvkWidgetSettings.cpp

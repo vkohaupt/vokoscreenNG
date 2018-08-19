@@ -1,7 +1,4 @@
 #include "QvkCameraController.h"
-//#include "QvkQCheckboxDescription.h"
-//#include "QvkQLabelDevice.h"
-//#include "QvkQComboboxResolution.h"
 
 #include <QCameraInfo>
 #include <QCameraViewfinder>
@@ -13,7 +10,7 @@
 
 QvkCameraController::QvkCameraController(Ui_MainWindow *ui_surface )
 {
-    vkSettings.readAll();
+//    vkSettings.readAll();
 
     ui_vokoscreen = ui_surface;
 
@@ -103,7 +100,7 @@ void QvkCameraController::slot_startCamera( bool value )
 
         delete videoWidget;
         videoWidget = new QVideoWidget();
-        videoWidget->setWindowTitle( vkSettings.getProgName() + " " + "camera"  + " " + vkSettings.getVersion() );
+//        videoWidget->setWindowTitle( vkSettings.getProgName() + " " + "camera"  + " " + vkSettings.getVersion() );
         videoWidget->resize( 320, 240 );
         camera->setViewfinder( videoWidget );
         videoWidget->show();

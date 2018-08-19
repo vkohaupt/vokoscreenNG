@@ -2,9 +2,9 @@
 #define QvkCameraController_H
 
 #include "ui_mainwindow.h"
-//#include "QvkMsgInWebcamWindow.h"
 #include "QvkCameraWatcher.h"
-#include "QvkSettings.h"
+#include "QvkCameraWindow.h"
+//#include "QvkWidgetSettings.h"
 
 #include <QCamera>
 #include <QComboBox>
@@ -34,11 +34,10 @@ private slots:
 
 
 private:
-  QvkSettings vkSettings;
+  //QvkWidgetSettings vkSettings;
   Ui_MainWindow *ui_vokoscreen;
   QCamera *camera = nullptr;
   QVideoWidget *videoWidget = nullptr;
-//  QVideoWidget videoWidget;
   QvkCameraWatcher *cameraWatcher;
 
 
