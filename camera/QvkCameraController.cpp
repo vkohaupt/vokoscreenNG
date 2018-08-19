@@ -35,7 +35,7 @@ QvkCameraController::QvkCameraController(Ui_MainWindow *ui_surface )
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ),        cameraWatcher, SLOT( slot_startStopCameraTimer( bool ) ) );
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ),        this, SLOT( slot_startCamera( bool ) ) );
 
-    connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ), this, SLOT( slot_setNewImage( QImage ) ) );
+    connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ),             this, SLOT( slot_setNewImage( QImage ) ) );
 }
 
 
@@ -112,28 +112,19 @@ void QvkCameraController::slot_startCamera( bool value )
 
         delete cameraWindow;
         cameraWindow = new QvkCameraWindow();
+        connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_vokoscreen->checkBoxCamera, SLOT( setChecked( bool ) ) );
         cameraWindow->setWindowTitle( vkSettings.getProgName() + " " + "camera"  + " " + vkSettings.getVersion() );
         cameraWindow->resize( 320, 240 );
         camera->setViewfinder( videoSurface );
         cameraWindow->show();
         camera->load();
-
-        /*
-        delete videoWidget;
-        videoWidget = new QVideoWidget();
-        videoWidget->setWindowTitle( vkSettings.getProgName() + " " + "camera"  + " " + vkSettings.getVersion() );
-        videoWidget->resize( 320, 240 );
-        camera->setViewfinder( videoWidget );
-        videoWidget->show();
-        camera->load();
-        */
     }
     else
     {
         disconnect( camera, 0, 0, 0 );
         camera->stop();
         camera->unload();
-        videoWidget->close();
+        cameraWindow->close();
     }
 }
 

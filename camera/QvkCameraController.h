@@ -36,11 +36,11 @@ private slots:
 
    void slot_setNewImage( QImage image );
 
+
 private:
   QvkSettings vkSettings;
   Ui_MainWindow *ui_vokoscreen;
   QCamera *camera = nullptr;
-  QVideoWidget *videoWidget = nullptr;
   QvkCameraWatcher *cameraWatcher;
   QvkCameraWindow *cameraWindow;
   QvkVideoSurface *videoSurface;

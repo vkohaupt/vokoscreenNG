@@ -35,7 +35,6 @@ private slots:
     void slot_set160x120();
     void slot_set320x240();
     void slot_set640x480();
-    void slot_closeWebcamWindow();
     void slot_frameOnOff( bool value );
 
 
@@ -47,7 +46,7 @@ protected:
 
 
 signals:
-    void signal_webcamwindow_close();
+    void signal_cameraWindow_close( bool );
 
 };
 

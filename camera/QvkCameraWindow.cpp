@@ -2,7 +2,6 @@
 
 QvkCameraWindow::QvkCameraWindow()
 {
-    setGeometry( 300, 300, 320, 240 );
     setAlignment( Qt::AlignCenter );
     setStyleSheet( "background-color:black;" );
 
@@ -33,7 +32,6 @@ QvkCameraWindow::QvkCameraWindow()
     myWidgetExit->setToolTip( tr( "Close" ) );
     myWidgetExit->setVisible( false );
     connect( myWidgetExit, SIGNAL( clicked() ), SLOT( close() ) );
-
 }
 
 
@@ -45,7 +43,7 @@ QvkCameraWindow::~QvkCameraWindow()
 void QvkCameraWindow::closeEvent(QCloseEvent *event)
 {
     Q_UNUSED(event);
-    emit signal_webcamwindow_close();
+    emit signal_cameraWindow_close( false );
 }
 
 
@@ -116,10 +114,4 @@ void QvkCameraWindow::slot_set320x240()
 void QvkCameraWindow::slot_set640x480()
 {
     resize( 640, 480 );
-}
-
-
-void QvkCameraWindow::slot_closeWebcamWindow()
-{
-    close();
 }
