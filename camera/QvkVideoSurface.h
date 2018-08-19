@@ -63,7 +63,7 @@ class QvkVideoSurface: public QAbstractVideoSurface
                                   );
 
                 cloneFrame.unmap();
-                emit ( signal_newPicture( image ) );
+                emit signal_newPicture( image );
                 return true;
         }
         return false;

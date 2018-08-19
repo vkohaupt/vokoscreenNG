@@ -10,7 +10,7 @@
 
 QvkCameraController::QvkCameraController(Ui_MainWindow *ui_surface )
 {
-//    vkSettings.readAll();
+    vkSettings.readAll();
 
     ui_vokoscreen = ui_surface;
 
@@ -26,17 +26,28 @@ QvkCameraController::QvkCameraController(Ui_MainWindow *ui_surface )
     ui_vokoscreen->dialRotate->setEnabled( false );
 
     cameraWatcher = new QvkCameraWatcher();
+    cameraWindow = new QvkCameraWindow();
+    videoSurface = new QvkVideoSurface( this );
 
     connect( cameraWatcher, SIGNAL( signal_addedCamera( QString, QString ) ), this, SLOT( slot_addedCamera( QString, QString ) ) );
     connect( cameraWatcher, SIGNAL( signal_removedCamera( QString) ),         this, SLOT( slot_removedCamera( QString ) ) );
 
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ),        cameraWatcher, SLOT( slot_startStopCameraTimer( bool ) ) );
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ),        this, SLOT( slot_startCamera( bool ) ) );
+
+    connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ), this, SLOT( slot_setNewImage( QImage ) ) );
 }
 
 
 QvkCameraController::~QvkCameraController()
 {
+}
+
+
+void QvkCameraController::slot_setNewImage( QImage image )
+{
+   image = image.scaled( cameraWindow->width(), cameraWindow->height(), Qt::KeepAspectRatio, Qt::FastTransformation);
+   cameraWindow->setPixmap( QPixmap::fromImage( image, Qt::AutoColor) );
 }
 
 
@@ -98,13 +109,24 @@ void QvkCameraController::slot_startCamera( bool value )
         viewfinderSettings.setMaximumFrameRate( 0.0 );
         camera->setViewfinderSettings( viewfinderSettings );
 
+
+        delete cameraWindow;
+        cameraWindow = new QvkCameraWindow();
+        cameraWindow->setWindowTitle( vkSettings.getProgName() + " " + "camera"  + " " + vkSettings.getVersion() );
+        cameraWindow->resize( 320, 240 );
+        camera->setViewfinder( videoSurface );
+        cameraWindow->show();
+        camera->load();
+
+        /*
         delete videoWidget;
         videoWidget = new QVideoWidget();
-//        videoWidget->setWindowTitle( vkSettings.getProgName() + " " + "camera"  + " " + vkSettings.getVersion() );
+        videoWidget->setWindowTitle( vkSettings.getProgName() + " " + "camera"  + " " + vkSettings.getVersion() );
         videoWidget->resize( 320, 240 );
         camera->setViewfinder( videoWidget );
         videoWidget->show();
         camera->load();
+        */
     }
     else
     {

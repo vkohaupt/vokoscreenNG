@@ -4,7 +4,9 @@
 #include "ui_mainwindow.h"
 #include "QvkCameraWatcher.h"
 #include "QvkCameraWindow.h"
-//#include "QvkWidgetSettings.h"
+#include "QvkSettings.h"
+#include <QvkCameraWindow.h>
+#include "QvkVideoSurface.h"
 
 #include <QCamera>
 #include <QComboBox>
@@ -32,13 +34,16 @@ private slots:
    void slot_stateChanged( QCamera::State state );
    void slot_error( QCamera::Error error );
 
+   void slot_setNewImage( QImage image );
 
 private:
-  //QvkWidgetSettings vkSettings;
+  QvkSettings vkSettings;
   Ui_MainWindow *ui_vokoscreen;
   QCamera *camera = nullptr;
   QVideoWidget *videoWidget = nullptr;
   QvkCameraWatcher *cameraWatcher;
+  QvkCameraWindow *cameraWindow;
+  QvkVideoSurface *videoSurface;
 
 
 protected:
