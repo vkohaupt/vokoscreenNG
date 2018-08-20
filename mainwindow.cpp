@@ -167,7 +167,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     QScreen *screen = QGuiApplication::primaryScreen();
     qDebug().noquote() << "[vokoscreen]" << "Locale:" << QLocale::system().name();
-    qDebug().noquote() << "[vokoscreen]" << "Qt version: " << qVersion();
+    qDebug().noquote() << "[vokoscreen]" << "Qt: " << qVersion();
+    qDebug().noquote() << "[vokoscreen]" << gst_version_string();
     qDebug().noquote() << "[vokoscreen]" << "Operating system:" << QSysInfo::prettyProductName();
     qDebug().noquote() << "[vokoscreen]" << "vokoscreen running as:" << QGuiApplication::platformName() << "client";
 
@@ -196,11 +197,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << "[vokoscreen] SerialNumber from screen: " << screen->serialNumber();
     qDebug( " " );
 
-
     // need a move
     move( 0, 0 );
-
-    qDebug() << "[vokoscreen]" << gst_version_string ();
 
     makeAndSetValidIconForSideBar( 0, QIcon::fromTheme( "computer", QIcon( ":/pictures/webcam.png" ) ) );
     makeAndSetValidIconForSideBar( 1, QIcon::fromTheme( "image-loading", QIcon( ":/pictures/webcam.png" ) ) );
@@ -1496,7 +1494,6 @@ void MainWindow::slot_screenCountChanged( int newCount )
     Q_UNUSED(newCount);
     ui->comboBoxScreen->clear();
     QDesktopWidget *desk = QApplication::desktop();
-    qDebug() << "[vokoscreen]" << "---Begin search Screen---";
     qDebug() << "[vokoscreen]" << "Number of screens:" << desk->screenCount();
     qDebug() << "[vokoscreen] Primary screen is: Display" << desk->primaryScreen()+1;
     qDebug() << "[vokoscreen] VirtualDesktop:" << desk->isVirtualDesktop();
@@ -1521,6 +1518,5 @@ void MainWindow::slot_screenCountChanged( int newCount )
     }
 
     ui->comboBoxScreen->addItem( tr( "All Displays" ), -1 );
-    qDebug() << "[vokoscreen]" << "---End search Screen---";
     qDebug( " " );
 }
