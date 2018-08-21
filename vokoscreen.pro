@@ -32,7 +32,8 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui \
-        QvkNoPlayerDialog.ui
+        QvkNoPlayerDialog.ui \
+        storage.ui
         
 RESOURCES += screencast.qrc
 
@@ -68,3 +69,4 @@ include(countdown/countdown.pri)
 
 # webcam
 include(camera/camera.pri)
+

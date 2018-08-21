@@ -18,6 +18,7 @@
 #include <QScreen>
 #include <QTest>
 #include <QLibraryInfo>
+#include <QStorageInfo>
 
 #ifdef Q_OS_LINUX
   #include <QX11Info>
@@ -196,6 +197,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << "[vokoscreen] Manufactur from screen: " << screen->manufacturer();
     qDebug().noquote() << "[vokoscreen] SerialNumber from screen: " << screen->serialNumber();
     qDebug( " " );
+
+
+    QTimer *timer = new QTimer(this);
+    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_systemInfo() ) );
+    timer->start( 500 );
+    QWidget *widget = new QWidget();
+    storageGUI.setupUi( widget );
+    ui->tabWidgetScreencast->setCornerWidget( widget, Qt::TopRightCorner);
+
 
     // need a move
     move( 0, 0 );
@@ -425,6 +435,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     cameraController = new QvkCameraController( ui );
     makeAndSetValidIcon( ui->tabWidgetCamera, 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
     connect( ui->checkBoxCamera, SIGNAL( toggled( bool ) ), ui->comboBoxCamera, SLOT( setDisabled( bool ) ) );
+
 }
 
 
@@ -650,6 +661,31 @@ void MainWindow::slot_pictureFileSystemWatcherSetButtons()
 }
 
 // ***************************** End Screenshot *****************************************************
+
+void MainWindow::slot_systemInfo()
+{
+    QStorageInfo storage = QStorageInfo::root();
+    storage.refresh();
+    storageGUI.labelFreeSize->setText( QString::number( storage.bytesAvailable()/1024/1024 ) );
+
+    QDir dir( ui->lineEditVideoPath->text() );
+    QStringList filters;
+    filters << "vokoscreen*";
+    QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
+
+    if ( !videoFileList.empty() )
+    {
+        QString string;
+        string.append( ui->lineEditVideoPath->text() );
+        string.append( "/" );
+        string.append( videoFileList.at( 0 ) );
+
+        QFileInfo file( string );
+        file.refresh();
+
+        storageGUI.labelVideoSize->setText( QString::number( file.size()/1024 ) );
+    }
+}
 
 
 void MainWindow::slot_audioHelp()
@@ -1048,6 +1084,7 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
                                     << "audiocodec:vorbisenc:vorbis"
                                     << "audiocodec:flacenc:flac"
                                     << "audiocodec:opusenc:opus"
+                                    << "audiocodec:lamemp3enc:mp3"
                                    );
 
     QStringList WEBM_QStringList = ( QStringList()

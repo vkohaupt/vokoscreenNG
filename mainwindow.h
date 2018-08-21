@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "ui_storage.h"
+
 #include "QvkWinInfo.h"
 #include "QvkCountdown.h"
 #include "QvkCameraController.h"
@@ -71,6 +73,7 @@ private:
 
     QPixmap pixmap;
 
+    Ui_Storage storageGUI;
 
 private slots:
     void slot_preStart();
@@ -105,6 +108,8 @@ private slots:
     void slot_newPicturePath();
     void slot_pictureFileSystemWatcherSetNewPath();
     void slot_pictureFileSystemWatcherSetButtons();
+
+    void slot_systemInfo();
 
 
 signals:
