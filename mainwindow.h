@@ -43,6 +43,8 @@ private:
     QFileSystemWatcher *videoFileSystemWatcher;
     QFileSystemWatcher *pictureFileSystemWatcher;
 
+    QString newVideoFilename = "";
+
     GstElement *pipeline;
     GError *error = NULL;
 

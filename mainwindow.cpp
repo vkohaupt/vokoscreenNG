@@ -204,7 +204,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     timer->start( 500 );
     QWidget *widget = new QWidget();
     storageGUI.setupUi( widget );
-    storageGUI.labelVideoSize->hide();
+    storageGUI.labelVideoSize->setText("");
     ui->tabWidgetScreencast->setCornerWidget( widget, Qt::TopRightCorner);
 
 
@@ -250,7 +250,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonAudiocodecDefault,SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStart() ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), storageGUI.labelVideoSize, SLOT( show() ) );
 
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setDisabled( bool ) ) );
@@ -668,7 +667,6 @@ void MainWindow::slot_systemInfo()
 {
     QStorageInfo storage = QStorageInfo(ui->lineEditVideoPath->text() );
     storage.refresh();
-    storageGUI.labelVideoSize->setText( "" );
 
     if ( storageGUI.comboBoxFreeSize->currentText() == " KB" )
        storageGUI.labelFreeSize->setText( QString::number( storage.bytesAvailable()/1024 ) );
@@ -679,10 +677,10 @@ void MainWindow::slot_systemInfo()
     if ( storageGUI.comboBoxFreeSize->currentText() == " GB" )
        storageGUI.labelFreeSize->setText( QString::number( storage.bytesAvailable()/1024/1024/1024 ) );
 
-
     QDir dir( ui->lineEditVideoPath->text() );
     QStringList filters;
-    filters << "vokoscreen*";
+    //filters << "vokoscreen*";
+    filters << newVideoFilename;
     QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
 
     if ( !videoFileList.empty() )
@@ -1386,7 +1384,7 @@ QString MainWindow::VK_getMuxer()
 
 void MainWindow::slot_Start()
 {
-    QString filename = "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
+    newVideoFilename = "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
     QString path = ui->lineEditVideoPath->text();
 
     QStringList VK_PipelineList;
@@ -1407,7 +1405,7 @@ void MainWindow::slot_Start()
     }
 
     VK_PipelineList << VK_getMuxer();
-    VK_PipelineList << "filesink location=" + path + "/" + filename;
+    VK_PipelineList << "filesink location=" + path + "/" + newVideoFilename;
 
     QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Pipe );
     qDebug() << "[vokoscreen] Start record with:" << VK_Pipeline;
