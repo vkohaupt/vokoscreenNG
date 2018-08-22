@@ -204,6 +204,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     timer->start( 500 );
     QWidget *widget = new QWidget();
     storageGUI.setupUi( widget );
+    storageGUI.labelVideoSize->hide();
     ui->tabWidgetScreencast->setCornerWidget( widget, Qt::TopRightCorner);
 
 
@@ -249,6 +250,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonAudiocodecDefault,SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStart() ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), storageGUI.labelVideoSize, SLOT( show() ) );
 
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setDisabled( bool ) ) );
