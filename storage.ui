@@ -53,17 +53,17 @@
      </property>
      <item>
       <property name="text">
-       <string> GB</string>
+       <string notr="true"> GB</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string> MB</string>
+       <string notr="true"> MB</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string> KB</string>
+       <string notr="true"> KB</string>
       </property>
      </item>
     </widget>
@@ -89,12 +89,12 @@
      </item>
      <item>
       <property name="text">
-       <string> MB</string>
+       <string notr="true"> MB</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string> KB</string>
+       <string notr="true"> KB</string>
       </property>
      </item>
     </widget>
