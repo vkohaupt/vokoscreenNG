@@ -38,7 +38,7 @@
     </widget>
    </item>
    <item row="0" column="2">
-    <widget class="QComboBox" name="comboBox">
+    <widget class="QComboBox" name="comboBoxFreeSize">
      <property name="sizePolicy">
       <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -46,30 +46,30 @@
       </sizepolicy>
      </property>
      <property name="currentText">
-      <string notr="true">MB</string>
+      <string notr="true"> MB</string>
      </property>
      <property name="currentIndex">
       <number>1</number>
      </property>
      <item>
       <property name="text">
-       <string>GB</string>
+       <string> GB</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>MB</string>
+       <string> MB</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>KB</string>
+       <string> KB</string>
       </property>
      </item>
     </widget>
    </item>
    <item row="1" column="2">
-    <widget class="QComboBox" name="comboBox_2">
+    <widget class="QComboBox" name="comboBoxVideoSize">
      <property name="sizePolicy">
       <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -77,24 +77,24 @@
       </sizepolicy>
      </property>
      <property name="currentText">
-      <string notr="true">KB</string>
+      <string notr="true"> KB</string>
      </property>
      <property name="currentIndex">
       <number>2</number>
      </property>
      <item>
       <property name="text">
-       <string notr="true">GB</string>
+       <string notr="true"> GB</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>MB</string>
+       <string> MB</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>KB</string>
+       <string> KB</string>
       </property>
      </item>
     </widget>

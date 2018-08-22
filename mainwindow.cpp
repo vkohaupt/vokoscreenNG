@@ -666,7 +666,18 @@ void MainWindow::slot_systemInfo()
 {
     QStorageInfo storage = QStorageInfo::root();
     storage.refresh();
-    storageGUI.labelFreeSize->setText( QString::number( storage.bytesAvailable()/1024/1024 ) );
+    //storageGUI.labelFreeSize->setText( QString::number( storage.bytesAvailable()/1024/1024 ) );
+    storageGUI.labelVideoSize->setText( "" );
+
+    if ( storageGUI.comboBoxFreeSize->currentText() == " KB" )
+       storageGUI.labelFreeSize->setText( QString::number( storage.bytesAvailable()/1024 ) );
+
+    if ( storageGUI.comboBoxFreeSize->currentText() == " MB" )
+       storageGUI.labelFreeSize->setText( QString::number( storage.bytesAvailable()/1024/1024 ) );
+
+    if ( storageGUI.comboBoxFreeSize->currentText() == " GB" )
+       storageGUI.labelFreeSize->setText( QString::number( storage.bytesAvailable()/1024/1024/1024 ) );
+
 
     QDir dir( ui->lineEditVideoPath->text() );
     QStringList filters;
@@ -683,7 +694,14 @@ void MainWindow::slot_systemInfo()
         QFileInfo file( string );
         file.refresh();
 
-        storageGUI.labelVideoSize->setText( QString::number( file.size()/1024 ) );
+        if ( storageGUI.comboBoxVideoSize->currentText() == " KB" )
+           storageGUI.labelVideoSize->setText( QString::number( file.size()/1024 ) );
+
+        if ( storageGUI.comboBoxVideoSize->currentText() == " MB" )
+           storageGUI.labelVideoSize->setText( QString::number( file.size()/1024/1024 ) );
+
+        if ( storageGUI.comboBoxVideoSize->currentText() == " GB" )
+           storageGUI.labelVideoSize->setText( QString::number( file.size()/1024/1024/1024 ) );
     }
 }
 
