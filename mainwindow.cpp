@@ -664,9 +664,8 @@ void MainWindow::slot_pictureFileSystemWatcherSetButtons()
 
 void MainWindow::slot_systemInfo()
 {
-    QStorageInfo storage = QStorageInfo::root();
+    QStorageInfo storage = QStorageInfo(ui->lineEditVideoPath->text() );
     storage.refresh();
-    //storageGUI.labelFreeSize->setText( QString::number( storage.bytesAvailable()/1024/1024 ) );
     storageGUI.labelVideoSize->setText( "" );
 
     if ( storageGUI.comboBoxFreeSize->currentText() == " KB" )
