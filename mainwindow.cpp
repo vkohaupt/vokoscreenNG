@@ -353,7 +353,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     connect( videoFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
-
+    connect( ui->checkBoxStopRecordingAfter, SIGNAL( toggled( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
+    ui->toolButtonStopRecordingAfterHelp->setIcon( ui->toolButtonStopRecordingAfterHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
     // Tab 4 Available muxer, encoder etc.
     ui->toolButtonAvalaibleHelp->setIcon( ui->toolButtonAvalaibleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
@@ -1211,6 +1212,15 @@ QString MainWindow::Vk_get_Videocodec_Encoder()
 
 void MainWindow::slot_preStart()
 {
+    if ( ui->checkBoxStopRecordingAfter->isChecked() == true )
+    {
+        int value = ui->spinBoxStopRecordingAfterHouers->value()*60*60*1000;
+        value = value + ui->spinBoxStopRecordingAfterMinutes->value()*60*1000;
+        value = value + ui->spinBoxStopRecordingAfterSeconds->value()*1000;
+        QTimer::singleShot( value, ui->pushButtonStop, SLOT( click() ) );
+    }
+
+
     if ( ( ui->radioButtonFullscreen->isChecked() == true ) and  ( ui->spinBoxCountDown->value() > 0 ) )
     {
         disconnect( vkCountdown, 0, 0, 0 );

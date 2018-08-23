@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>627</width>
-    <height>349</height>
+    <width>654</width>
+    <height>362</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -29,6 +29,12 @@
     </property>
     <item>
      <widget class="QTabWidget" name="tabWidgetSideBar">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="toolTip">
        <string notr="true"/>
       </property>
@@ -51,6 +57,10 @@
        <property name="toolTip">
         <string notr="true"/>
        </property>
+       <attribute name="icon">
+        <iconset>
+         <normaloff>pictures/tools.png</normaloff>pictures/tools.png</iconset>
+       </attribute>
        <attribute name="title">
         <string notr="true"/>
        </attribute>
@@ -75,11 +85,17 @@
         </property>
         <item>
          <widget class="QTabWidget" name="tabWidgetScreencast">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="toolTip">
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <property name="iconSize">
            <size>
@@ -195,9 +211,6 @@
              <spacer name="horizontalSpacer">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::MinimumExpanding</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -349,88 +362,115 @@
              </layout>
             </item>
             <item>
-             <widget class="Line" name="line">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_3">
-              <item>
-               <widget class="QCheckBox" name="checkBoxAudioOnOff">
-                <property name="text">
-                 <string>Audio</string>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="radioButtonPulse">
-                <property name="text">
-                 <string>Pulse</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QRadioButton" name="radioButtonAlsa">
-                <property name="text">
-                 <string>Alsa</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QToolButton" name="toolButtonAudioHelp">
-                <property name="toolTip">
-                 <string>Help</string>
-                </property>
-                <property name="text">
-                 <string notr="true">Help</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <widget class="QScrollArea" name="scrollAreaAudioDevice">
+             <widget class="QFrame" name="frame">
               <property name="frameShape">
                <enum>QFrame::StyledPanel</enum>
               </property>
-              <property name="widgetResizable">
-               <bool>true</bool>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
               </property>
-              <property name="alignment">
-               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-              </property>
-              <widget class="QWidget" name="scrollAreaWidgetContentsAudioDevices">
-               <property name="geometry">
-                <rect>
-                 <x>0</x>
-                 <y>0</y>
-                 <width>562</width>
-                 <height>81</height>
-                </rect>
+              <layout class="QVBoxLayout" name="verticalLayout_11">
+               <property name="spacing">
+                <number>0</number>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
-                <property name="spacing">
-                 <number>0</number>
-                </property>
-                <property name="leftMargin">
-                 <number>0</number>
-                </property>
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="rightMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-               </layout>
-              </widget>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_3">
+                 <item>
+                  <widget class="QCheckBox" name="checkBoxAudioOnOff">
+                   <property name="text">
+                    <string>Audio</string>
+                   </property>
+                   <property name="checked">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButtonPulse">
+                   <property name="text">
+                    <string>Pulse</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButtonAlsa">
+                   <property name="text">
+                    <string>Alsa</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QToolButton" name="toolButtonAudioHelp">
+                   <property name="toolTip">
+                    <string>Help</string>
+                   </property>
+                   <property name="text">
+                    <string notr="true">Help</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QScrollArea" name="scrollAreaAudioDevice">
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <property name="widgetResizable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                 </property>
+                 <widget class="QWidget" name="scrollAreaWidgetContentsAudioDevices">
+                  <property name="geometry">
+                   <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>513</width>
+                    <height>81</height>
+                   </rect>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                  </layout>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
+              <property name="text">
+               <string>Do not record mouse cursor</string>
+              </property>
              </widget>
             </item>
            </layout>
@@ -479,14 +519,89 @@
              </layout>
             </item>
             <item>
-             <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
-              <property name="text">
-               <string>Do not record mouse cursor</string>
-              </property>
-             </widget>
+             <layout class="QHBoxLayout" name="horizontalLayout_19">
+              <item>
+               <widget class="QCheckBox" name="checkBoxStopRecordingAfter">
+                <property name="text">
+                 <string>Stop recording after</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="frameStopRecordingAfter">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_16">
+                 <property name="spacing">
+                  <number>6</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QSpinBox" name="spinBoxStopRecordingAfterHouers"/>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_7">
+                   <property name="text">
+                    <string>Houers</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QSpinBox" name="spinBoxStopRecordingAfterMinutes"/>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_8">
+                   <property name="text">
+                    <string>Minutes</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QSpinBox" name="spinBoxStopRecordingAfterSeconds">
+                   <property name="value">
+                    <number>30</number>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_9">
+                   <property name="text">
+                    <string>Seconds</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="toolButtonStopRecordingAfterHelp">
+                <property name="text">
+                 <string>Help</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
             <item>
-             <spacer name="verticalSpacer_4">
+             <spacer name="verticalSpacer_3">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
@@ -569,8 +684,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>246</width>
-                   <height>232</height>
+                   <width>220</width>
+                   <height>245</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
