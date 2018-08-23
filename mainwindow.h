@@ -74,6 +74,9 @@ private:
 
     QvkStorageUI *vkStorageUI;
 
+    QTimer *timerStartTimer;
+
+
 private slots:
     void slot_preStart();
     void slot_Start();
@@ -108,6 +111,8 @@ private slots:
     void slot_pictureFileSystemWatcherSetNewPath();
     void slot_pictureFileSystemWatcherSetButtons();
 
+    void slot_StartTimer( bool value );
+    void slot_startTime();
 
 signals:
     void signal_close();

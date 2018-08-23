@@ -353,8 +353,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     connect( videoFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
+
     connect( ui->checkBoxStopRecordingAfter, SIGNAL( toggled( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
     ui->toolButtonStopRecordingAfterHelp->setIcon( ui->toolButtonStopRecordingAfterHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+
+    connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
+    ui->toolButtonStartTimeHelp->setIcon( ui->toolButtonStartTimeHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    timerStartTimer = new QTimer();
+    connect( timerStartTimer, SIGNAL( timeout() ), this, SLOT( slot_startTime() ) );
+
 
     // Tab 4 Available muxer, encoder etc.
     ui->toolButtonAvalaibleHelp->setIcon( ui->toolButtonAvalaibleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
@@ -438,6 +445,31 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+
+void MainWindow::slot_StartTimer( bool value )
+{
+    if ( value == true )
+    {
+        timerStartTimer->start( 1000 );
+    }
+    else
+    {
+        timerStartTimer->stop();
+    }
+}
+
+
+void MainWindow::slot_startTime()
+{
+    QTime time;
+    if ( ( time.currentTime().hour() == ui->timeEditStartTime->time().hour() ) and
+         ( time.currentTime().minute() == ui->timeEditStartTime->time().minute() ) )
+    {
+        ui->checkBoxStartTime->click();
+        ui->pushButtonStart->click();
+    }
 }
 
 // ----------------- Begin Screenshot ----------------------------------------------------------------------------

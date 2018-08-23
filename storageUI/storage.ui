@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>188</width>
+    <width>220</width>
     <height>82</height>
    </rect>
   </property>
@@ -20,10 +20,7 @@
    <item row="1" column="0">
     <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>Video:</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      <string>Video size:</string>
      </property>
     </widget>
    </item>
@@ -102,7 +99,7 @@
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Free:</string>
+      <string>Free disk space:</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
