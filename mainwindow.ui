@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>628</width>
+    <width>627</width>
     <height>349</height>
    </rect>
   </property>
@@ -79,13 +79,16 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
             <width>48</width>
             <height>48</height>
            </size>
+          </property>
+          <property name="usesScrollButtons">
+           <bool>false</bool>
           </property>
           <widget class="QWidget" name="tabScreen">
            <attribute name="title">
@@ -406,7 +409,7 @@
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>563</width>
+                 <width>562</width>
                  <height>81</height>
                 </rect>
                </property>
@@ -566,8 +569,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>247</width>
-                   <height>266</height>
+                   <width>246</width>
+                   <height>232</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">

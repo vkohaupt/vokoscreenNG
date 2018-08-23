@@ -18,7 +18,6 @@
 #include <QScreen>
 #include <QTest>
 #include <QLibraryInfo>
-#include <QStorageInfo>
 
 #ifdef Q_OS_LINUX
   #include <QX11Info>
@@ -199,14 +198,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug( " " );
 
 
-    QTimer *timer = new QTimer(this);
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_systemInfo() ) );
-    timer->start( 500 );
-    QWidget *widget = new QWidget();
-    storageGUI.setupUi( widget );
-    storageGUI.labelVideoSize->setText("");
-    ui->tabWidgetScreencast->setCornerWidget( widget, Qt::TopRightCorner);
-
+    QvkStorageUI *vkStorageUI = new QvkStorageUI( ui );
+    Q_UNUSED(vkStorageUI);
+    connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkStorageUI, SLOT( slot_newVideoFilename( QString ) ) );
 
     // need a move
     move( 0, 0 );
@@ -562,6 +556,7 @@ void MainWindow::slot_shot_Screenshot()
                                                           ui->labelScreenShotPicture->height()-6,
                                                           Qt::KeepAspectRatio,
                                                           Qt::SmoothTransformation ) );
+
     show();
     emit signal_finish_screenshot( true );
 }
@@ -662,48 +657,6 @@ void MainWindow::slot_pictureFileSystemWatcherSetButtons()
 }
 
 // ***************************** End Screenshot *****************************************************
-
-void MainWindow::slot_systemInfo()
-{
-    QStorageInfo storage = QStorageInfo(ui->lineEditVideoPath->text() );
-    storage.refresh();
-
-    if ( storageGUI.comboBoxFreeSize->currentText() == " KB" )
-       storageGUI.labelFreeSize->setText( QString::number( storage.bytesAvailable()/1024 ) );
-
-    if ( storageGUI.comboBoxFreeSize->currentText() == " MB" )
-       storageGUI.labelFreeSize->setText( QString::number( storage.bytesAvailable()/1024/1024 ) );
-
-    if ( storageGUI.comboBoxFreeSize->currentText() == " GB" )
-       storageGUI.labelFreeSize->setText( QString::number( storage.bytesAvailable()/1024/1024/1024 ) );
-
-    QDir dir( ui->lineEditVideoPath->text() );
-    QStringList filters;
-    //filters << "vokoscreen*";
-    filters << newVideoFilename;
-    QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
-
-    if ( !videoFileList.empty() )
-    {
-        QString string;
-        string.append( ui->lineEditVideoPath->text() );
-        string.append( "/" );
-        string.append( videoFileList.at( 0 ) );
-
-        QFileInfo file( string );
-        file.refresh();
-
-        if ( storageGUI.comboBoxVideoSize->currentText() == " KB" )
-           storageGUI.labelVideoSize->setText( QString::number( file.size()/1024 ) );
-
-        if ( storageGUI.comboBoxVideoSize->currentText() == " MB" )
-           storageGUI.labelVideoSize->setText( QString::number( file.size()/1024/1024 ) );
-
-        if ( storageGUI.comboBoxVideoSize->currentText() == " GB" )
-           storageGUI.labelVideoSize->setText( QString::number( file.size()/1024/1024/1024 ) );
-    }
-}
-
 
 void MainWindow::slot_audioHelp()
 {
@@ -1244,7 +1197,7 @@ QString MainWindow::Vk_get_Videocodec_Encoder()
     QString encoder = ui->comboBoxVideoCodec->currentData().toString();
     if ( encoder == "x264enc" )
     {
-        value = "x264enc speed-preset=veryfast pass=quant threads=0";
+        value = "x264enc speed-preset=veryfast pass=qual threads=0";
     }
 
     if ( encoder == "vp8enc" )
@@ -1384,7 +1337,7 @@ QString MainWindow::VK_getMuxer()
 
 void MainWindow::slot_Start()
 {
-    newVideoFilename = "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
+    QString newVideoFilename = "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
     QString path = ui->lineEditVideoPath->text();
 
     QStringList VK_PipelineList;
@@ -1420,6 +1373,8 @@ void MainWindow::slot_Start()
         gst_object_unref( pipeline );
         return;
     }
+
+    emit signal_newVideoFilename( newVideoFilename );
 }
 
 /*

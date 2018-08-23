@@ -1,13 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "ui_storage.h"
-
 #include "QvkWinInfo.h"
 #include "QvkCountdown.h"
 #include "QvkCameraController.h"
 #include "QvkRegionChoise.h"
 #include "QvkSettings.h"
+#include "QvkStorageUI.h"
 
 #include <QMainWindow>
 #include <QFileSystemWatcher>
@@ -43,8 +42,6 @@ private:
     QFileSystemWatcher *videoFileSystemWatcher;
     QFileSystemWatcher *pictureFileSystemWatcher;
 
-    QString newVideoFilename = "";
-
     GstElement *pipeline;
     GError *error = NULL;
 
@@ -75,7 +72,7 @@ private:
 
     QPixmap pixmap;
 
-    Ui_Storage storageGUI;
+    QvkStorageUI *vkStorageUI;
 
 private slots:
     void slot_preStart();
@@ -111,13 +108,12 @@ private slots:
     void slot_pictureFileSystemWatcherSetNewPath();
     void slot_pictureFileSystemWatcherSetButtons();
 
-    void slot_systemInfo();
-
 
 signals:
     void signal_close();
     void signal_close_webcam( bool value );
     void signal_finish_screenshot( bool );
+    void signal_newVideoFilename( QString );
 
 
 protected:
