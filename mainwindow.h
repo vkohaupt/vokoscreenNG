@@ -102,6 +102,9 @@ private slots:
 
     void slot_StartTimer( bool value );
     void slot_startTime();
+    void slot_setHour( int value );
+    void slot_setMinute( int value );
+
 
 signals:
     void signal_close();

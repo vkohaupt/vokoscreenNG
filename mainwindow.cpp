@@ -361,8 +361,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
     ui->toolButtonStartTimeHelp->setIcon( ui->toolButtonStartTimeHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     timerStartTimer = new QTimer();
-    connect( timerStartTimer, SIGNAL( timeout() ), this, SLOT( slot_startTime() ) );
-
+    connect( timerStartTimer,  SIGNAL( timeout() ),           this, SLOT( slot_startTime() ) );
+    connect( ui->SliderHouer,  SIGNAL( valueChanged( int ) ), this, SLOT( slot_setHour( int ) ) );
+    connect( ui->SliderMinute, SIGNAL( valueChanged( int ) ), this, SLOT( slot_setMinute( int ) ) );
 
     // Tab 4 Available muxer, encoder etc.
     ui->toolButtonAvalaibleHelp->setIcon( ui->toolButtonAvalaibleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
@@ -442,6 +443,22 @@ void MainWindow::slot_startTime()
         ui->checkBoxStartTime->click();
         ui->pushButtonStart->click();
     }
+}
+
+
+void MainWindow::slot_setHour( int value )
+{
+    QTime time;
+    time.setHMS( value, ui->timeEditStartTime->time().minute(), 0 );
+    ui->timeEditStartTime->setTime( time );
+}
+
+
+void MainWindow::slot_setMinute( int value )
+{
+    QTime time;
+    time.setHMS( ui->timeEditStartTime->time().hour(), value, 0 );
+    ui->timeEditStartTime->setTime( time );
 }
 
 
