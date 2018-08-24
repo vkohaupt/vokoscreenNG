@@ -142,7 +142,7 @@
                    <string>Reset</string>
                   </property>
                   <property name="text">
-                   <string>...</string>
+                   <string notr="true">Reset</string>
                   </property>
                  </widget>
                 </item>

@@ -2,6 +2,8 @@
 
 QvkCameraWindow::QvkCameraWindow()
 {
+    move( 0, 0 ); // We need a move
+
     setAlignment( Qt::AlignCenter );
     setStyleSheet( "background-color:black;" );
 
