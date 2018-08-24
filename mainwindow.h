@@ -99,23 +99,13 @@ private slots:
 
     void slot_audioHelp();
     void slot_availableHelp();
-/*
-    void slot_formats_Screenshot();
-    void slot_preshot_Screenshot();
-    void slot_shot_Screenshot();
-    void slot_show_Screenshoot();
-    void slot_Screenshot_count_changed( int newCount );
-    void slot_newPicturePath();
-    void slot_pictureFileSystemWatcherSetNewPath();
-    void slot_pictureFileSystemWatcherSetButtons();
-*/
+
     void slot_StartTimer( bool value );
     void slot_startTime();
 
 signals:
     void signal_close();
     void signal_close_webcam( bool value );
-    //void signal_finish_screenshot( bool );
     void signal_newVideoFilename( QString );
 
 

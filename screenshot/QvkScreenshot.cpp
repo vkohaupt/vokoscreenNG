@@ -32,6 +32,7 @@ QvkScreenshot::QvkScreenshot(MainWindow *value, Ui_MainWindow *ui_mainwindow ):v
 
     ui->radioButtonScreenshotFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
     ui->radioButtonScreenshotWindow->setText( tr( "Window") ); // QT Creator sets an ampersand, translation now here
+
     ui->toolButtonScreenshotHelp->setIcon( ui->toolButtonScreenshotHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     ui->toolButtonScreenShotMiscHelp->setIcon( ui->toolButtonScreenShotMiscHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
