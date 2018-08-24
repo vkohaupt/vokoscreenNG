@@ -71,3 +71,6 @@ include(camera/camera.pri)
 
 # storageui
 include(storageUI/storageui.pri)
+
+# screenshot
+include(screenshot/screenshot.pri)

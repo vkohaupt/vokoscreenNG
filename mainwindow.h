@@ -3,8 +3,8 @@
 
 #include "QvkWinInfo.h"
 #include "QvkCountdown.h"
-#include "QvkCameraController.h"
 #include "QvkRegionChoise.h"
+#include "QvkCameraController.h"
 #include "QvkSettings.h"
 #include "QvkStorageUI.h"
 
@@ -25,28 +25,29 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    Ui::MainWindow *ui;
+    QvkWinInfo *vkWinInfo;
+    QvkCountdown *vkCountdown;
+    QvkRegionChoise *regionChoise;
+
+    void makeAndSetValidIcon(QTabWidget *widget, int index, QIcon icon );
+    void makeAndSetValidIconForSideBar( int index, QIcon icon );
+
 
 private:
     QvkSettings vkSettings;
 
-    Ui::MainWindow *ui;
     const QString VK_Gstr_Pipe = " ! ";
     QString VK_GStreamer_Version();
     QString VK_getXimagesrc();
     QString VK_getCapsFilter();
     QString VK_getMuxer();
     QString Vk_get_Videocodec_Encoder();
-    void makeAndSetValidIcon(QTabWidget *widget, int index, QIcon icon );
-    void makeAndSetValidIconForSideBar( int index, QIcon icon );
 
     QFileSystemWatcher *videoFileSystemWatcher;
-    QFileSystemWatcher *pictureFileSystemWatcher;
 
     GstElement *pipeline;
     GError *error = NULL;
-
-    QvkWinInfo *vkWinInfo;
-    QvkCountdown *vkCountdown;
 
     QStringList videoFormatsList;
     QStringList globalFormatsList;
@@ -66,9 +67,6 @@ private:
     QString get_height_From_Screen();
 
     void VK_gst_Elements_available();
-
-    QvkCameraController *cameraController;
-    QvkRegionChoise *regionChoise;
 
     QPixmap pixmap;
 
@@ -101,7 +99,7 @@ private slots:
 
     void slot_audioHelp();
     void slot_availableHelp();
-
+/*
     void slot_formats_Screenshot();
     void slot_preshot_Screenshot();
     void slot_shot_Screenshot();
@@ -110,14 +108,14 @@ private slots:
     void slot_newPicturePath();
     void slot_pictureFileSystemWatcherSetNewPath();
     void slot_pictureFileSystemWatcherSetButtons();
-
+*/
     void slot_StartTimer( bool value );
     void slot_startTime();
 
 signals:
     void signal_close();
     void signal_close_webcam( bool value );
-    void signal_finish_screenshot( bool );
+    //void signal_finish_screenshot( bool );
     void signal_newVideoFilename( QString );
 
 

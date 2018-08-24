@@ -8,11 +8,15 @@
 
 // Hint: min. Qt 5.9.2
 
-QvkCameraController::QvkCameraController(Ui_MainWindow *ui_surface )
+QvkCameraController::QvkCameraController(Ui_MainWindow *ui_surface ):cameraWatcher(new QvkCameraWatcher()),
+                                                                     cameraWindow(new QvkCameraWindow()),
+                                                                     videoSurface(new QvkVideoSurface( this ))
 {
+    ui_vokoscreen = ui_surface;
+
     vkSettings.readAll();
 
-    ui_vokoscreen = ui_surface;
+    ui_vokoscreen->toolButtonCameraHelp->setIcon( ui_vokoscreen->toolButtonCameraHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
     ui_vokoscreen->dialRotate->setMinimum( 0 );
     ui_vokoscreen->dialRotate->setMaximum ( 360 );
@@ -29,13 +33,10 @@ QvkCameraController::QvkCameraController(Ui_MainWindow *ui_surface )
     ui_vokoscreen->radioButtonBottomMiddle->setEnabled( false );
     ui_vokoscreen->dialRotate->setEnabled( false );
 
-    cameraWatcher = new QvkCameraWatcher();
-    cameraWindow = new QvkCameraWindow();
-    videoSurface = new QvkVideoSurface( this );
-
     connect( cameraWatcher, SIGNAL( signal_addedCamera( QString, QString ) ), this, SLOT( slot_addedCamera( QString, QString ) ) );
     connect( cameraWatcher, SIGNAL( signal_removedCamera( QString) ),         this, SLOT( slot_removedCamera( QString ) ) );
 
+    connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), ui_vokoscreen->comboBoxCamera, SLOT( setDisabled( bool ) ) );
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), ui_vokoscreen->checkBoxMirror, SLOT( setEnabled( bool ) ) );
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), ui_vokoscreen->checkBoxInvert, SLOT( setEnabled( bool ) ) );
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), ui_vokoscreen->checkBoxGray,   SLOT( setEnabled( bool ) ) );
