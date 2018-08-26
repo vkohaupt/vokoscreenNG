@@ -1,0 +1,75 @@
+<svg width="48" xmlns="http://www.w3.org/2000/svg" height="48" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="a" y1="17.13" y2="43" x1="10.01" x2="38" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.0003 0 0 1.0048-.013 1004.15)">
+   <stop/>
+   <stop offset="1" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="b" y1="1048.36" y2="1008.36" x2="0" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#191915"/>
+   <stop offset="1" stop-color="#272822"/>
+  </linearGradient>
+  <linearGradient id="c" y1="12" y2="4" x2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1.125 0-.5)">
+   <stop/>
+   <stop offset="1" stop-opacity=".516"/>
+  </linearGradient>
+  <linearGradient id="d" y1="12" y2="5.778" gradientUnits="userSpaceOnUse" x2="0" gradientTransform="matrix(1 0 0 1.08793 0 1004.22)">
+   <stop stop-opacity="0"/>
+   <stop offset="1" stop-color="#ffffff" stop-opacity=".518"/>
+  </linearGradient>
+  <linearGradient id="e" xlink:href="#a" y1="7" y2="13" x1="40" x2="46" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 1004.36)"/>
+ </defs>
+ <g fill-rule="evenodd" transform="translate(0-1004.36)">
+  <rect width="40" x="4" y="1008.36" fill="url(#b)" rx="0" height="40"/>
+  <path opacity=".2" fill="url(#a)" d="m20 1022.36l-1-1v1h-9l1 1h4v1h-5l1 1h6v1h-7l1 1v7l1 1h-2v1l1 1h3v1h-4c3.079 3.138 7.03 6.868 10.122 10h23.878v-9c-5.02-5.03-12.98-12.966-18-18l-.069 1.019zm11 0h-4c0 0 11.868 11.813 17 17v-4.942c-4.1-4.103-8.864-8.962-12.964-13.06-.036-.001-.036.999-.036.999"/>
+  <g fill="#ffffff">
+   <rect width="2" x="7" opacity=".8" y="1021.36" rx="0" height="1"/>
+   <rect width="2" x="7" opacity=".8" y="1025.36" rx="0" height="1"/>
+   <rect width="2" x="7" opacity=".8" y="1023.36" rx="0" height="1"/>
+   <rect width="2" x="7" opacity=".8" y="1027.36" rx="0" height="1"/>
+   <rect width="2" x="7" opacity=".8" y="1031.36" rx="0" height="1"/>
+   <rect width="2" x="7" opacity=".8" y="1029.36" rx="0" height="1"/>
+   <rect width="2" x="7" opacity=".8" y="1033.36" rx="0" height="1"/>
+   <rect width="2" x="7" opacity=".8" y="1037.36" rx="0" height="1"/>
+   <rect width="2" x="7" opacity=".8" y="1035.36" rx="0" height="1"/>
+  </g>
+  <rect width="9" x="10" opacity=".8" y="1021.36" fill="#f92672" rx="0" height="1"/>
+  <g fill="#ffffff">
+   <rect width="6" x="20" opacity=".8" y="1021.36" rx="0" height="1"/>
+   <rect width="4" x="27" opacity=".8" y="1021.36" rx="0" height="1"/>
+  </g>
+  <rect width="5" x="10" opacity=".8" y="1023.36" fill="#fd971f" rx="0" height="1"/>
+  <rect width="2" x="16" opacity=".8" y="1023.36" fill="#ffffff" rx="0" height="1"/>
+  <rect width="9" x="19" opacity=".8" y="1023.36" fill="#a6e22e" rx="0" height="1"/>
+  <rect width="7" x="10" opacity=".8" y="1025.36" fill="#f92672" rx="0" height="1"/>
+  <rect width="5" x="18" opacity=".8" y="1025.36" fill="#fd971f" rx="0" height="1"/>
+  <rect width="2" x="24" opacity=".8" y="1025.36" fill="#ffffff" rx="0" height="1"/>
+  <rect width="4" x="12" opacity=".8" y="1027.36" fill="#f92672" rx="0" height="1"/>
+  <rect width="10" x="17" opacity=".8" y="1027.36" fill="#a6e22e" rx="0" height="1"/>
+  <rect width="4" x="28" opacity=".8" y="1027.36" fill="#ffffff" rx="0" height="1"/>
+  <rect width="6" x="12" opacity=".8" y="1029.36" fill="#f92672" rx="0" height="1"/>
+  <rect width="6" x="19" opacity=".8" y="1029.36" fill="#66d9ef" rx="0" height="1"/>
+  <rect width="4" x="26" opacity=".8" y="1029.36" fill="#a6e22e" rx="0" height="1"/>
+  <rect width="2" x="12" opacity=".8" y="1031.36" fill="#f92672" rx="0" height="1"/>
+  <rect width="13" x="15" opacity=".8" y="1031.36" fill="#66d9ef" rx="0" height="1"/>
+  <rect width="5.5" x="29" opacity=".8" y="1031.36" fill="#ffffff" rx="0" height="1"/>
+  <rect width="3" x="12" opacity=".8" y="1033.36" fill="#f92672" rx="0" height="1"/>
+  <rect width="11" x="16" opacity=".8" y="1033.36" fill="#66d9ef" rx="0" height="1"/>
+  <g fill="#ffffff">
+   <rect width="4" x="28" opacity=".8" y="1033.36" rx="0" height="1"/>
+   <rect width="2" x="10" opacity=".8" y="1035.36" rx="0" height="1"/>
+  </g>
+  <rect width="8" x="13" opacity=".8" y="1035.36" fill="#66d9ef" rx="0" height="1"/>
+  <rect width="3" x="22" opacity=".8" y="1035.36" fill="#fd971f" rx="0" height="1"/>
+  <rect width="4" x="10" opacity=".8" y="1037.36" fill="#f92672" rx="0" height="1"/>
+  <rect width="11" x="15" opacity=".8" y="1037.36" fill="#a6e22e" rx="0" height="1"/>
+  <rect width="2.5" x="27" opacity=".8" y="1037.36" fill="#ffffff" rx="0" height="1"/>
+  <path opacity=".5" fill="url(#c)" d="m4 4v8.906h.469c3.84 0 3.815-6.906 6.375-6.906h11.531c2.56 0 2.424 6.664 6.234 6.969l.391.031h15v-9z" transform="translate(0 1004.36)"/>
+  <path fill="#d0d0d0" d="m39 1011.36l1 2 1-2z"/>
+  <path opacity=".1" fill="url(#d)" d="m10.855 1010.36c-2.56 0-2.559 6.909-6.398 6.909h-.457v.091h25v-.091h-.227c-3.84 0-3.839-6.909-6.398-6.909z"/>
+  <path opacity=".5" d="m4 1044.36v4h40v-4z"/>
+  <path opacity=".1" fill="#ffffff" d="m4 1043.36v1h40v-1z"/>
+  <path opacity=".6" d="m4 1047.36v1h40v-1z"/>
+  <path opacity=".2" fill="url(#e)" d="m41 1011.36l3 3v3l-4-4z"/>
+  <rect width="1" x="10" opacity=".679" y="1027.36" fill="#31322e" rx="0" height="7"/>
+ </g>
+</svg>

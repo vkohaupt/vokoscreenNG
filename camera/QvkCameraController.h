@@ -4,8 +4,8 @@
 #include "ui_mainwindow.h"
 #include "QvkCameraWatcher.h"
 #include "QvkCameraWindow.h"
+
 #include "QvkSettings.h"
-#include <QvkCameraWindow.h>
 #include "QvkVideoSurface.h"
 
 #include <QCamera>
@@ -48,7 +48,9 @@ private:
   QCamera *camera = nullptr;
   QvkCameraWatcher *cameraWatcher;
   QvkCameraWindow *cameraWindow;
+  QVideoWidget *videoWidget = nullptr;
   QvkVideoSurface *videoSurface;
+
 
 
 protected:

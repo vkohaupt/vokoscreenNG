@@ -45,25 +45,29 @@ class QvkVideoSurface: public QAbstractVideoSurface
                                                  << QVideoFrame::Format_Y16
                                                  << QVideoFrame::Format_Jpeg
                                                  << QVideoFrame::Format_CameraRaw
-                                                 << QVideoFrame::Format_AdobeDng;;
+                                                 << QVideoFrame::Format_AdobeDng;
     }
 
     bool present(const QVideoFrame &frame)
     {
-        if (frame.isValid() )
+        if ( frame.isValid() )
         {
+                qDebug() << "11111111111" << frame.pixelFormat();
                 QVideoFrame cloneFrame(frame);
-
                 cloneFrame.map(QAbstractVideoBuffer::ReadOnly);
+
+                qDebug() << "2222222222" << QVideoFrame::imageFormatFromPixelFormat( cloneFrame.pixelFormat() );
 
                 const QImage image( cloneFrame.bits(),
                                     cloneFrame.width(),
                                     cloneFrame.height(),
-                                    QVideoFrame::imageFormatFromPixelFormat( cloneFrame.pixelFormat() )
+                                    QVideoFrame::imageFormatFromPixelFormat( QVideoFrame::Format_YUV420P )
                                   );
-
+                qDebug() << image.byteCount();
+                QImage copyImage = image.convertToFormat(QImage::Format_RGB888);
+                //QImage copyImage = image.copy();
                 cloneFrame.unmap();
-                emit signal_newPicture( image );
+                emit signal_newPicture( copyImage );
                 return true;
         }
         return false;

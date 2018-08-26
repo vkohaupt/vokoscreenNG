@@ -6,6 +6,8 @@
 #include <QStandardPaths>
 #include <QDir>
 
+#include <QPaintEngine>
+
 // Hint: min. Qt 5.9.2
 
 QvkCameraController::QvkCameraController(Ui_MainWindow *ui_surface ):cameraWatcher(new QvkCameraWatcher()),
@@ -154,8 +156,7 @@ void QvkCameraController::slot_startCamera( bool value )
         viewfinderSettings.setMinimumFrameRate( 0.0 );
         viewfinderSettings.setMaximumFrameRate( 0.0 );
         camera->setViewfinderSettings( viewfinderSettings );
-
-
+/*
         delete cameraWindow;
         cameraWindow = new QvkCameraWindow();
         connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_vokoscreen->checkBoxCamera, SLOT( setChecked( bool ) ) );
@@ -164,6 +165,20 @@ void QvkCameraController::slot_startCamera( bool value )
         camera->setViewfinder( videoSurface );
         cameraWindow->show();
         camera->load();
+*/
+
+
+        delete videoWidget;
+        videoWidget = new QVideoWidget();
+qDebug() << videoWidget->parent()-> << videoWidget->parentWidget();
+        QPaintEngine *paintEngine = videoWidget->paintEngine();
+
+
+        videoWidget->setWindowTitle( vkSettings.getProgName() + " " + "camera"  + " " + vkSettings.getVersion() );
+        videoWidget->resize( 320, 240 );
+        camera->setViewfinder( videoWidget );
+        videoWidget->show();
+        camera->load();
     }
     else
     {
@@ -171,6 +186,7 @@ void QvkCameraController::slot_startCamera( bool value )
         camera->stop();
         camera->unload();
         cameraWindow->close();
+        videoWidget->close();
     }
 }
 

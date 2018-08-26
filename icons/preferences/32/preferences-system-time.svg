@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="32" version="1.1" xmlns="http://www.w3.org/2000/svg" height="32" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+ <defs id="defs5455">
+  <linearGradient inkscape:collect="always" id="linearGradient4159">
+   <stop style="stop-color:#2a2c2f" id="stop4161"/>
+   <stop offset="1" style="stop-color:#424649" id="stop4163"/>
+  </linearGradient>
+  <linearGradient inkscape:collect="always" xlink:href="#linearGradient4159" id="linearGradient4274" y1="545.79797" y2="517.79797" x2="0" gradientUnits="userSpaceOnUse"/>
+  <linearGradient inkscape:collect="always" xlink:href="#linearGradient4227" id="linearGradient4305" y1="524.79797" x1="393.57144" y2="538.79797" x2="407.57144" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 1 -384.57143 -515.798)"/>
+  <linearGradient inkscape:collect="always" id="linearGradient4227">
+   <stop style="stop-color:#292c2f" id="stop4229"/>
+   <stop offset="1" style="stop-opacity:0" id="stop4231"/>
+  </linearGradient>
+  <linearGradient inkscape:collect="always" id="linearGradient4143">
+   <stop style="stop-color:#197cf1" id="stop4145"/>
+   <stop offset="1" style="stop-color:#20bcfa" id="stop4147"/>
+  </linearGradient>
+  <linearGradient inkscape:collect="always" xlink:href="#linearGradient4143" id="linearGradient4216" y1="18" y2="7" x2="0" gradientUnits="userSpaceOnUse"/>
+ </defs>
+ <metadata id="metadata5458"/>
+ <g inkscape:label="Capa 1" inkscape:groupmode="layer" id="layer1" transform="matrix(1 0 0 1 -384.57143 -515.798)">
+  <rect width="27.999973" x="386.57144" y="517.79797" rx="13.999987" height="27.999973" style="fill:url(#linearGradient4274)" id="rect4179"/>
+  <path style="fill:url(#linearGradient4305);opacity:0.2;fill-rule:evenodd" id="path4294" d="M 15 7 L 15 17.691406 L 24.283203 26.974609 C 26.559775 25.303697 28.302448 22.963365 29.234375 20.234375 L 16 7 L 15 7 z " transform="matrix(1 0 0 1 384.57143 515.798)"/>
+  <path style="fill:url(#linearGradient4216)" id="rect4276" d="M 15 7 L 15 17 L 15 18 L 23 18 L 23 17 L 16 17 L 16 7 L 15 7 z " transform="matrix(1 0 0 1 384.57143 515.798)"/>
+ </g>
+</svg>

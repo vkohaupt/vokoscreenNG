@@ -6,10 +6,10 @@ File    --> LGPL
 URL     --> https://www.qt.io/
 
 
-breeze-icon:
+breeze-icons:
 License --> LGPL
 File    --> LGPL
-URL     --> https://github.com/archderwelt/breeze-icons
+URL     --> https://github.com/KDE/breeze-icons
 
 
 GStreamer:
