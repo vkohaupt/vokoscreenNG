@@ -9,5 +9,7 @@
         <file>pictures/systemsettings.svg</file>
         <file>pictures/help-contents.svg</file>
         <file>pictures/computer.svg</file>
+        <file>pictures/video-display.svg</file>
+        <file>pictures/audio-input-microphone.svg</file>
     </qresource>
 </RCC>

@@ -210,8 +210,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     makeAndSetValidIconForSideBar( 1, QIcon::fromTheme( "computer", QIcon( ":/pictures/computer.svg" ) ) );
     makeAndSetValidIconForSideBar( 2, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/camera-web.svg" ) ) );
 
-    makeAndSetValidIcon( ui->tabWidgetScreencast, 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
-    makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/video-display.svg" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/audio-input-microphone.svg" ) ) );
     makeAndSetValidIcon( ui->tabWidgetScreencast, 2, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/systemsettings.svg" ) ) );
     makeAndSetValidIcon( ui->tabWidgetScreencast, 3, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/help-contents.svg" ) ) );
 
