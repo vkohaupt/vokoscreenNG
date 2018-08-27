@@ -206,14 +206,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // need a move
     move( 0, 0 );
 
-    makeAndSetValidIconForSideBar( 0, QIcon::fromTheme( "computer", QIcon( ":/pictures/webcam.png" ) ) );
-    makeAndSetValidIconForSideBar( 1, QIcon::fromTheme( "image-loading", QIcon( ":/pictures/webcam.png" ) ) );
-    makeAndSetValidIconForSideBar( 2, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
+    makeAndSetValidIconForSideBar( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/video-display.svg" ) ) );
+    makeAndSetValidIconForSideBar( 1, QIcon::fromTheme( "computer", QIcon( ":/pictures/computer.svg" ) ) );
+    makeAndSetValidIconForSideBar( 2, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/camera-web.svg" ) ) );
 
     makeAndSetValidIcon( ui->tabWidgetScreencast, 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
     makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
-    makeAndSetValidIcon( ui->tabWidgetScreencast, 2, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
-    makeAndSetValidIcon( ui->tabWidgetScreencast, 3, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/webcam.png" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 2, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/systemsettings.svg" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 3, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/help-contents.svg" ) ) );
 
     // Bar for start, stop etc.
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setEnabled( bool ) ) );
@@ -401,15 +401,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // **************** Begin Screenshot *****************************
     QvkScreenshot *vkScreenshot = new QvkScreenshot( this, ui );
     Q_UNUSED(vkScreenshot);
-    makeAndSetValidIcon( ui->tabWidgetScreenshot, 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/monitor.png" ) ) );
-    makeAndSetValidIcon( ui->tabWidgetScreenshot, 1, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/tools.png" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreenshot, 0, QIcon::fromTheme( "computer", QIcon( ":/pictures/computer.svg" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreenshot, 1, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/systemsettings.svg" ) ) );
     // **************** End Screenshot *******************************
 
 
     // *****************Begin Camera *********************************
     QvkCameraController *cameraController = new QvkCameraController( ui );
     Q_UNUSED(cameraController);
-    makeAndSetValidIcon( ui->tabWidgetCamera, 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/webcam.png" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetCamera, 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/camera-web.svg" ) ) );
     // *****************End Camera ***********************************
 
 }
