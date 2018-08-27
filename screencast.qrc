@@ -11,5 +11,6 @@
         <file>pictures/computer.svg</file>
         <file>pictures/video-display.svg</file>
         <file>pictures/audio-input-microphone.svg</file>
+        <file>pictures/edit-undo.svg</file>
     </qresource>
 </RCC>
