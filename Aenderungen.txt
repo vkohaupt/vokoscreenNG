@@ -1,0 +1,4 @@
+
+2.9.2 Beta
+[Windows] Icon Audio wurde nicht angezeigt beim umschalten von AudioOff zu AudioOn
+
