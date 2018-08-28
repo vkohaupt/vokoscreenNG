@@ -580,7 +580,7 @@ void MainWindow::slot_audioIconOnOff( bool state )
     makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon( workPixmap ) );
   }
   else{
-    makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/micro.png" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/audio-input-microphone.svg" ) ) );
   }
 }
 
