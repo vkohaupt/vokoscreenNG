@@ -22,7 +22,7 @@ QvkScreenshot::QvkScreenshot(MainWindow *value, Ui_MainWindow *ui_mainwindow ):v
                                                                                regionChoise(new QvkRegionChoise)
 
 {
-    parent = value;
+    parent = value; // Parent is vokoscreenGUI
     ui = ui_mainwindow;
 
     QDesktopWidget *desk = QApplication::desktop();
@@ -50,6 +50,8 @@ QvkScreenshot::QvkScreenshot(MainWindow *value, Ui_MainWindow *ui_mainwindow ):v
 
     connect( ui->pushButtonScreenshotShot, SIGNAL( clicked( bool ) ), this, SLOT( slot_preshot_Screenshot() ) );
     connect( ui->pushButtonScreenshotShow, SIGNAL( clicked( bool ) ), this, SLOT( slot_show_Screenshoot() ) );
+
+    connect( parent, SIGNAL( signal_close() ), regionChoise, SLOT( close() ) );
 
     slot_formats_Screenshot();
 

@@ -5,3 +5,5 @@
           [Änderung rückgänig gemacht da sie nicht greift.
 [All] Icon TAB-1 Sidebar in der GUI entfernt
 [Windows] Radiobutton Pulse und Alsa ausblenden
+[ALL] Bereichsanzeige Screenshot schloss sich nicht beim beenden von vokoscreen
+
