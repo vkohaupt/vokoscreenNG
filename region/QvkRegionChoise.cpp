@@ -50,6 +50,8 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
                                    frame_min_height(250 + framePenWidth)
 {
 
+    hide();
+
 #ifdef Q_OS_LINUX
     if ( QX11Info::isPlatformX11() == true )
         platform = x11;
@@ -87,7 +89,6 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
     button->setGeometry(800, 400, 100, 100);
     button->show();
 */
-    hide();
 }
 
 
