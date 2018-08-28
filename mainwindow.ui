@@ -57,10 +57,6 @@
        <property name="toolTip">
         <string notr="true"/>
        </property>
-       <attribute name="icon">
-        <iconset>
-         <normaloff>pictures/tools.png</normaloff>pictures/tools.png</iconset>
-       </attribute>
        <attribute name="title">
         <string notr="true"/>
        </attribute>
@@ -443,7 +439,7 @@
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>513</width>
+                    <width>589</width>
                     <height>81</height>
                    </rect>
                   </property>
@@ -762,7 +758,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>220</width>
+                   <width>260</width>
                    <height>245</height>
                   </rect>
                  </property>
