@@ -330,6 +330,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->comboBoxAudioCodec,    SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->pushButtonAudiocodecDefault, SLOT( setEnabled( bool ) ) );
 
+#ifdef Q_OS_LINUX
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), this, SLOT( slot_clearVerticalLayoutAudioDevices( bool ) ) );
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), this, SLOT( slot_getPulsesDevices( bool ) ) );
     connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), this, SLOT( slot_clearVerticalLayoutAudioDevices( bool ) ) );
@@ -337,6 +338,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     // Pulse is Standard. If no pulsedevice found change to alsa
     ui->radioButtonPulse->click();
+#endif
+
+#ifdef Q_OS_WIN
+    ui->radioButtonPulse->hide();
+    ui->radioButtonAlsa->hide();
+#endif
 
     // Tab 2 Codec
     ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
