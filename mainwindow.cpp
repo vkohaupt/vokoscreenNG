@@ -343,6 +343,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #ifdef Q_OS_WIN
     ui->radioButtonPulse->hide();
     ui->radioButtonAlsa->hide();
+    slot_getWindowsDevices();
 #endif
 
     // Tab 2 Codec
@@ -641,6 +642,21 @@ void MainWindow::slot_getAlsaDevices( bool value )
             checkboxAudioDevice->setObjectName( "checkboxAudioDevice" + deviceInfo.deviceName() );
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
         }
+    }
+}
+
+
+void MainWindow::slot_getWindowsDevices()
+{
+    QStringList audioDeviceStringList;
+    foreach (const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
+    {
+        audioDeviceStringList << deviceInfo.deviceName();
+        QCheckBox *checkboxAudioDevice = new QCheckBox();
+        checkboxAudioDevice->setText( deviceInfo.deviceName() );
+        checkboxAudioDevice->setAccessibleName( deviceInfo.deviceName() ); // ????????????????????????????????????????????
+        checkboxAudioDevice->setObjectName( "checkboxAudioDevice" + deviceInfo.deviceName() ); //???????????????????????????????????????????????????????????
+        ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
     }
 }
 

@@ -6,4 +6,4 @@
 [All] Icon TAB-1 Sidebar in der GUI entfernt
 [Windows] Radiobutton Pulse und Alsa ausblenden
 [ALL] Bereichsanzeige Screenshot schloss sich nicht beim beenden von vokoscreen
-
+[Windows] Audodevices ermitteln und hinzufügen( ging vorher über die ALSA Routine )
