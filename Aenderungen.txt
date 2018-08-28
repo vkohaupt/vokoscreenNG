@@ -2,5 +2,6 @@
 2.9.2 Beta
 [Windows] Icon Audio wurde nicht angezeigt beim umschalten von AudioOff zu AudioOn
 [Windows] Bereichsanzeige blitzte manchmal beim start von vokoscreen kurz auf.
-[All] Icon TAB-1 In Sidebar in der GUI entfernt
+          [Änderung rückgänig gemacht da sie nicht greift.
+[All] Icon TAB-1 Sidebar in der GUI entfernt
 [Windows] Radiobutton Pulse und Alsa ausblenden

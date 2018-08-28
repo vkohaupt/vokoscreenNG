@@ -49,9 +49,6 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
                                    frame_min_width(250 + framePenWidth),
                                    frame_min_height(250 + framePenWidth)
 {
-
-    hide();
-
 #ifdef Q_OS_LINUX
     if ( QX11Info::isPlatformX11() == true )
         platform = x11;
@@ -79,6 +76,9 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
 
     screenWidth = screen->size().width();
     screenHeight = screen->size().height();
+
+    hide();
+
 /*
     areaSettingDialog = new QDialog(this);
     areaSettingDialog->setModal( true );
