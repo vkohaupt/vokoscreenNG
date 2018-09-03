@@ -320,8 +320,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->toolButtonNoMouseCursorHelp->setIcon( ui->toolButtonNoMouseCursorHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
     connect( ui->toolButtonAudioHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioHelp() ) );;
-    ui->radioButtonPulse->setAccessibleName( "pulsesrc" );
-    ui->radioButtonAlsa->setAccessibleName( "alsasrc" );
+    //ui->radioButtonPulse->setAccessibleName( "pulsesrc" );
+    //ui->radioButtonAlsa->setAccessibleName( "alsasrc" );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), this,                      SLOT( slot_audioIconOnOff( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->radioButtonPulse,      SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->radioButtonAlsa,       SLOT( setEnabled( bool ) ) );
@@ -630,12 +630,10 @@ void MainWindow::slot_getPulsesDevices( bool value )
 void MainWindow::slot_getAlsaDevices( bool value )
 {
     Q_UNUSED(value);
-    QStringList alsaDeviceStringList;
     foreach (const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
     {
         if ( deviceInfo.deviceName().contains("alsa") == false)
         {
-            alsaDeviceStringList << deviceInfo.deviceName();
             QCheckBox *checkboxAudioDevice = new QCheckBox();
             checkboxAudioDevice->setText( deviceInfo.deviceName() );
             checkboxAudioDevice->setAccessibleName( deviceInfo.deviceName() );
@@ -648,14 +646,12 @@ void MainWindow::slot_getAlsaDevices( bool value )
 
 void MainWindow::slot_getWindowsDevices()
 {
-    QStringList audioDeviceStringList;
     foreach (const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
     {
-        audioDeviceStringList << deviceInfo.deviceName();
         QCheckBox *checkboxAudioDevice = new QCheckBox();
         checkboxAudioDevice->setText( deviceInfo.deviceName() );
-        checkboxAudioDevice->setAccessibleName( deviceInfo.deviceName() ); // ????????????????????????????????????????????
-        checkboxAudioDevice->setObjectName( "checkboxAudioDevice" + deviceInfo.deviceName() ); //???????????????????????????????????????????????????????????
+        checkboxAudioDevice->setAccessibleName( deviceInfo.deviceName() );
+        checkboxAudioDevice->setObjectName( "checkboxAudioDevice" + deviceInfo.deviceName() );
         ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
     }
 }
@@ -1143,20 +1139,32 @@ QString MainWindow::VK_get_AudioDevice()
 }
 
 
+#ifdef Q_OS_LINUX
 // Audiosystem is Pulse, Alsa, etc.
 QString MainWindow::VK_get_AudioSystem()
 {
     QString audioSystem;
     if ( ui->radioButtonPulse->isChecked() )
     {
-        audioSystem = ui->radioButtonPulse->accessibleName();
+        //audioSystem = ui->radioButtonPulse->accessibleName();
+        audioSystem = "pulsesrc";
     }
     if ( ui->radioButtonAlsa->isChecked() )
     {
-        audioSystem = ui->radioButtonAlsa->accessibleName();
+        //audioSystem = ui->radioButtonAlsa->accessibleName();
+        audioSystem = "alsasrc";
     }
     return audioSystem;
 }
+#endif
+
+
+#ifdef Q_OS_WIN
+QString MainWindow::VK_get_AudioSystem()
+{
+    return "directsoundsrc";
+}
+#endif
 
 
 QString MainWindow::VK_getMuxer()
@@ -1186,7 +1194,14 @@ void MainWindow::slot_Start()
 
     if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( !VK_get_AudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
     {
+        #ifdef Q_OS_LINUX
         VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device=" ).append( VK_get_AudioDevice() );
+        #endif
+
+        #ifdef Q_OS_WIN
+        VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device-name=" ).append( "'" + VK_get_AudioDevice() +"'" );
+        #endif
+
         VK_PipelineList << "audioconvert";
         VK_PipelineList << "audiorate";
         VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
