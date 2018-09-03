@@ -914,10 +914,19 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
                                      << "videocodec:vp8enc:vp8"
                                    );
 
+    QStringList MP4_QStringList = ( QStringList()
+                                    << "muxer:mp4mux:mp4"
+                                    << "videomimetype:video/mpeg"
+                                    << "audiomimetype:audio/mpeg"
+                                    << "videocodec:x264enc:x264"
+                                    << "audiocodec:opusenc:opus"
+                                  );
+
     videoFormatsList.clear();
     videoFormatsList.append( MKV_QStringList.join( ","  ) );
     videoFormatsList.append( WEBM_QStringList.join( ","  ) );
     videoFormatsList.append( AVI_QStringList.join( "," ) );
+    videoFormatsList.append( MP4_QStringList.join( ",") );
 
     globalFormatsList << videoFormatsList;
 
