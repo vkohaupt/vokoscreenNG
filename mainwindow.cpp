@@ -320,8 +320,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->toolButtonNoMouseCursorHelp->setIcon( ui->toolButtonNoMouseCursorHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
     connect( ui->toolButtonAudioHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioHelp() ) );;
-    //ui->radioButtonPulse->setAccessibleName( "pulsesrc" );
-    //ui->radioButtonAlsa->setAccessibleName( "alsasrc" );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), this,                      SLOT( slot_audioIconOnOff( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->radioButtonPulse,      SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->radioButtonAlsa,       SLOT( setEnabled( bool ) ) );
@@ -595,12 +593,22 @@ void MainWindow::slot_audioIconOnOff( bool state )
 
 void MainWindow::slot_clearVerticalLayoutAudioDevices( bool value )
 {
-    Q_UNUSED(value);
+    Q_UNUSED(value);   
     QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
     for ( int i = 0; i < listQCheckBox.count(); i++ )
     {
        ui->verticalLayoutAudioDevices->removeWidget( listQCheckBox.at(i) );
        delete listQCheckBox.at(i);
+    }
+
+    for ( int i = 0; i < ui->verticalLayoutAudioDevices->count(); ++i )
+    {
+        QLayoutItem *layoutItem = ui->verticalLayoutAudioDevices->itemAt(i);
+        if ( layoutItem->spacerItem() )
+        {
+            ui->verticalLayoutAudioDevices->removeItem( layoutItem );
+            delete layoutItem;
+        }
     }
 }
 
@@ -617,7 +625,10 @@ void MainWindow::slot_getPulsesDevices( bool value )
             checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
             checkboxAudioDevice->setAccessibleName( QString( list.at(i) ).section( " ::: ", 0, 0 ) );
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
+            checkboxAudioDevice->setAutoExclusive( true );
         }
+        QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
+        ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
     }
     else
     {
@@ -639,8 +650,11 @@ void MainWindow::slot_getAlsaDevices( bool value )
             checkboxAudioDevice->setAccessibleName( deviceInfo.deviceName() );
             checkboxAudioDevice->setObjectName( "checkboxAudioDevice" + deviceInfo.deviceName() );
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
+            checkboxAudioDevice->setAutoExclusive( true );
         }
     }
+    QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
 }
 
 
@@ -653,7 +667,10 @@ void MainWindow::slot_getWindowsDevices()
         checkboxAudioDevice->setAccessibleName( deviceInfo.deviceName() );
         checkboxAudioDevice->setObjectName( "checkboxAudioDevice" + deviceInfo.deviceName() );
         ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
+        checkboxAudioDevice->setAutoExclusive( true );
     }
+    QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
 }
 
 
@@ -1146,12 +1163,10 @@ QString MainWindow::VK_get_AudioSystem()
     QString audioSystem;
     if ( ui->radioButtonPulse->isChecked() )
     {
-        //audioSystem = ui->radioButtonPulse->accessibleName();
         audioSystem = "pulsesrc";
     }
     if ( ui->radioButtonAlsa->isChecked() )
     {
-        //audioSystem = ui->radioButtonAlsa->accessibleName();
         audioSystem = "alsasrc";
     }
     return audioSystem;
