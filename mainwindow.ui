@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>750</width>
+    <width>651</width>
     <height>371</height>
    </rect>
   </property>
@@ -91,7 +91,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -439,8 +439,8 @@
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>685</width>
-                    <height>81</height>
+                    <width>586</width>
+                    <height>71</height>
                    </rect>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -474,11 +474,35 @@
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
-              <property name="text">
-               <string>Do not record mouse cursor</string>
-              </property>
-             </widget>
+             <layout class="QHBoxLayout" name="horizontalLayout_22">
+              <item>
+               <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
+                <property name="text">
+                 <string>Do not record mouse cursor</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_6">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QToolButton" name="toolButtonNoMouseCursorHelp">
+                <property name="text">
+                 <string>Help</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>
@@ -514,7 +538,7 @@
                </widget>
               </item>
               <item row="0" column="3">
-               <widget class="QToolButton" name="toolButtonNoMouseCursorHelp">
+               <widget class="QToolButton" name="toolButtonVideoPathHelp">
                 <property name="toolTip">
                  <string>Help</string>
                 </property>
@@ -891,8 +915,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>308</width>
-                   <height>254</height>
+                   <width>20</width>
+                   <height>96</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">

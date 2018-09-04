@@ -33,9 +33,9 @@
 
 QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
                                    handleUnderMouse(NoHandle),
-                                   HandleColorBackground( Qt::green ),
-                                   HandleColorBackgroundSize( Qt::yellow ),
-                                   HandleColorByMousePressed( Qt::yellow ),
+                                   HandleColorBackground( Qt::lightGray ),
+                                   HandleColorBackgroundSize( Qt::lightGray ),
+                                   HandleColorByMousePressed( Qt::lightGray ),
                                    framePenWidth(4), // framePenWidth must be an even number
                                    framePenHalf(framePenWidth/2),
                                    radius(20),
@@ -676,7 +676,7 @@ void QvkRegionChoise::printSize( QPainter &painter )
               pixelWidth + 10,
               pixelHeight );
 
-  painter.setBrush( QBrush( Qt::yellow, Qt::SolidPattern ) );
+  painter.setBrush( QBrush( Qt::lightGray, Qt::SolidPattern ) );
   painter.setPen( QPen( Qt::black, 2 ) );
 
   painter.drawRoundedRect( rect, 7, 7 );
@@ -687,7 +687,7 @@ void QvkRegionChoise::printSize( QPainter &painter )
 
 void QvkRegionChoise::drawFrame(QPainter &painter)
 {
-    QPen pen( Qt::blue, framePenWidth );
+    QPen pen( Qt::darkGreen, framePenWidth );
     pen.setJoinStyle( Qt::MiterJoin );
     painter.setPen( pen );
     QBrush brush( Qt::transparent, Qt::SolidPattern);
@@ -702,7 +702,7 @@ void QvkRegionChoise::drawFrame(QPainter &painter)
 void QvkRegionChoise::HandleRecord( QPainter &painter, int x, int y, int startAngle, int spanAngle )
 {
     QBrush brush;
-      brush.setColor( Qt::red );
+      brush.setColor( Qt::darkGray );
       brush.setStyle( Qt::SolidPattern );
     painter.setBrush( brush );
     QPen pen;
