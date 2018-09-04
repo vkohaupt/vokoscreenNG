@@ -805,8 +805,8 @@ QString MainWindow::VK_getCapsFilter()
 QString MainWindow::VK_getVideoScale()
 {
     QString value = ui->comboBoxScale->currentText();
-    QStringList valuList = value.split( " x ");
-    value = "videoscale ! video/x-raw,width=" + valuList.at(0) + ",height=" + valuList.at(1);
+    QStringList valuList = value.split( " " );
+    value = "videoscale ! video/x-raw,width=" + valuList.at(0) + ",height=" + valuList.at(2);
     return value;
 }
 

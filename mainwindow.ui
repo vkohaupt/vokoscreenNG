@@ -710,37 +710,77 @@
                 </property>
                 <item>
                  <property name="text">
-                  <string notr="true">320 x 200</string>
+                  <string notr="true">320 x 200 CGA 16 : 10</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string notr="true">320 x 240</string>
+                  <string notr="true">320 x 240 QCGA 4 : 3</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string notr="true">640 x 480</string>
+                  <string notr="true">640 x 480 VGA 4 : 3</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string notr="true">800 x 600</string>
+                  <string notr="true">720 x 480 NTSC 3 : 2</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>1024 x 768</string>
+                  <string notr="true">854 x 450 WVGA 16 : 9</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>1280 x 1024</string>
+                  <string notr="true">800 x 480 WVGA 5 : 3</string>
                  </property>
                 </item>
                 <item>
                  <property name="text">
-                  <string>1920 x 1080</string>
+                  <string notr="true">768 x 567 PAL 4 : 3</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string notr="true">800 x 600 SVGA 4 : 3</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string notr="true">1024 x 768 XVGA 4 : 3</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string notr="true">1152 x 768 N/A 3 : 2</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string notr="true">1280 x 720  HD-720 16 : 9</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string notr="true">1280 x 800 WXGA 16 : 10</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string notr="true">1280 x 768 WXGA 5 : 3</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string notr="true">1280 x 1024 SXGA 5 : 4</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string notr="true">1920 x 1080 HD1080  16 : 9</string>
                  </property>
                 </item>
                </widget>
