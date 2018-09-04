@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>654</width>
-    <height>385</height>
+    <height>391</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -229,7 +229,7 @@
               <item>
                <widget class="QToolButton" name="toolButtonScreenHelp">
                 <property name="toolTip">
-                 <string>Help</string>
+                 <string notr="true"/>
                 </property>
                 <property name="text">
                  <string notr="true">Help</string>
@@ -283,7 +283,7 @@
               <item row="0" column="7">
                <widget class="QToolButton" name="toolButtonFramesHelp">
                 <property name="toolTip">
-                 <string>Help</string>
+                 <string notr="true">Help</string>
                 </property>
                 <property name="text">
                  <string notr="true">Help</string>
@@ -375,7 +375,7 @@
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_11">
                <property name="spacing">
-                <number>0</number>
+                <number>6</number>
                </property>
                <property name="leftMargin">
                 <number>0</number>
@@ -418,7 +418,7 @@
                  <item>
                   <widget class="QToolButton" name="toolButtonAudioHelp">
                    <property name="toolTip">
-                    <string>Help</string>
+                    <string notr="true">Help</string>
                    </property>
                    <property name="text">
                     <string notr="true">Help</string>
@@ -501,8 +501,11 @@
               </item>
               <item>
                <widget class="QToolButton" name="toolButtonNoMouseCursorHelp">
+                <property name="toolTip">
+                 <string notr="true"/>
+                </property>
                 <property name="text">
-                 <string>Help</string>
+                 <string notr="true">Help</string>
                 </property>
                </widget>
               </item>
@@ -562,7 +565,7 @@
               <item>
                <widget class="QToolButton" name="toolButtonVideoPathHelp">
                 <property name="toolTip">
-                 <string>Help</string>
+                 <string notr="true"/>
                 </property>
                 <property name="text">
                  <string notr="true">Help</string>
@@ -674,8 +677,11 @@
               </item>
               <item>
                <widget class="QToolButton" name="toolButtonStartTimeHelp">
+                <property name="toolTip">
+                 <string notr="true"/>
+                </property>
                 <property name="text">
-                 <string>Help</string>
+                 <string notr="true">Help</string>
                 </property>
                </widget>
               </item>
@@ -766,8 +772,11 @@
               </item>
               <item>
                <widget class="QToolButton" name="toolButtonStopRecordingAfterHelp">
+                <property name="toolTip">
+                 <string notr="true"/>
+                </property>
                 <property name="text">
-                 <string>Help</string>
+                 <string notr="true">Help</string>
                 </property>
                </widget>
               </item>
@@ -886,8 +895,11 @@
               </item>
               <item>
                <widget class="QToolButton" name="toolButtonScaleHelp">
+                <property name="toolTip">
+                 <string notr="true"/>
+                </property>
                 <property name="text">
-                 <string>Help</string>
+                 <string notr="true">Help</string>
                 </property>
                </widget>
               </item>
@@ -978,7 +990,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>222</width>
-                   <height>268</height>
+                   <height>274</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -1089,7 +1101,7 @@
               <item>
                <widget class="QToolButton" name="toolButtonAvalaibleHelp">
                 <property name="toolTip">
-                 <string>Help</string>
+                 <string notr="true"/>
                 </property>
                 <property name="text">
                  <string notr="true">Help</string>
@@ -1273,7 +1285,7 @@
                 <item>
                  <widget class="QToolButton" name="toolButtonScreenshotHelp">
                   <property name="toolTip">
-                   <string>Help</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string notr="true">Help</string>
@@ -1502,7 +1514,7 @@
               <item row="0" column="2">
                <widget class="QToolButton" name="toolButtonCameraHelp">
                 <property name="toolTip">
-                 <string>Help</string>
+                 <string notr="true"/>
                 </property>
                 <property name="text">
                  <string notr="true">Help</string>
