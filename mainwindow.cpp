@@ -243,6 +243,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxAudioCodec,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonAudiocodecDefault,SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoPath,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameStartTime,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxStopRecordingAfter, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStart() ) );
@@ -272,6 +273,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxAudioCodec,    SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonAudiocodecDefault,SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoPath,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameStartTime,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxStopRecordingAfter, SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStop() ) );

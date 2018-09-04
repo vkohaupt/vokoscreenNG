@@ -11,5 +11,9 @@
 
 [ALL]
 - Bereichsanzeige Screenshot schloss sich nicht beim beenden von vokoscreen
-- Sidebar, in TAB-1 Icon aus der GUI entfernt
 - Audiogeräte werden nun in der Liste nach oben hin ausgerichtet.
+- Tab Misc, Hilfebuttons wurden bei Aufnahme deaktiviert.
+- Bereichsanzeige farblich dezenter gestalltet.
+- Tab Misc, skalierfunktion eingebaut
+- mp3 eingebaut
+- mpeg4 eingebaut

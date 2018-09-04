@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>651</width>
+    <width>654</width>
     <height>385</height>
    </rect>
   </property>
@@ -57,6 +57,10 @@
        <property name="toolTip">
         <string notr="true"/>
        </property>
+       <attribute name="icon">
+        <iconset theme="computer">
+         <normaloff>.</normaloff>.</iconset>
+       </attribute>
        <attribute name="title">
         <string notr="true"/>
        </attribute>
@@ -91,7 +95,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -439,7 +443,7 @@
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>586</width>
+                    <width>513</width>
                     <height>81</height>
                    </rect>
                   </property>
@@ -512,32 +516,50 @@
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_2">
             <item>
-             <layout class="QGridLayout" name="gridLayout_3">
-              <item row="0" column="0">
-               <widget class="QLabel" name="LabelVideoPath">
-                <property name="text">
-                 <string>Videopath</string>
+             <layout class="QHBoxLayout" name="horizontalLayout_25">
+              <item>
+               <widget class="QFrame" name="frameVideoPath">
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
                 </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_20">
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="LabelVideoPath">
+                   <property name="text">
+                    <string>Videopath</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEditVideoPath">
+                   <property name="text">
+                    <string notr="true"/>
+                   </property>
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QToolButton" name="PushButtonVideoPath">
+                   <property name="text">
+                    <string notr="true">...</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
-              <item row="0" column="1">
-               <widget class="QLineEdit" name="lineEditVideoPath">
-                <property name="text">
-                 <string notr="true"/>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="QToolButton" name="PushButtonVideoPath">
-                <property name="text">
-                 <string notr="true">...</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="3">
+              <item>
                <widget class="QToolButton" name="toolButtonVideoPathHelp">
                 <property name="toolTip">
                  <string>Help</string>
@@ -548,6 +570,13 @@
                </widget>
               </item>
              </layout>
+            </item>
+            <item>
+             <widget class="Line" name="line_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_23">
@@ -948,7 +977,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>258</width>
+                   <width>222</width>
                    <height>268</height>
                   </rect>
                  </property>
