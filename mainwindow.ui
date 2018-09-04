@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>651</width>
-    <height>371</height>
+    <height>385</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -91,7 +91,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>2</number>
           </property>
           <property name="iconSize">
            <size>
@@ -440,7 +440,7 @@
                     <x>0</x>
                     <y>0</y>
                     <width>586</width>
-                    <height>71</height>
+                    <height>81</height>
                    </rect>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -550,68 +550,98 @@
              </layout>
             </item>
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_20">
+             <layout class="QHBoxLayout" name="horizontalLayout_23">
               <item>
-               <widget class="QCheckBox" name="checkBoxStartTime">
-                <property name="text">
-                 <string>Start time</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QTimeEdit" name="timeEditStartTime">
+               <widget class="QFrame" name="frameStartTime">
                 <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="readOnly">
                  <bool>true</bool>
                 </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::NoButtons</enum>
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
                 </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_24">
+                 <property name="spacing">
+                  <number>6</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QCheckBox" name="checkBoxStartTime">
+                   <property name="text">
+                    <string>Start time</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QTimeEdit" name="timeEditStartTime">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                   </property>
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::NoButtons</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_14">
+                   <item>
+                    <widget class="QSlider" name="SliderHouer">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="maximum">
+                      <number>23</number>
+                     </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="tickPosition">
+                      <enum>QSlider::NoTicks</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSlider" name="SliderMinute">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="maximum">
+                      <number>59</number>
+                     </property>
+                     <property name="pageStep">
+                      <number>20</number>
+                     </property>
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="tickPosition">
+                      <enum>QSlider::NoTicks</enum>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
                </widget>
-              </item>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_14">
-                <item>
-                 <widget class="QSlider" name="SliderHouer">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="maximum">
-                   <number>23</number>
-                  </property>
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="tickPosition">
-                   <enum>QSlider::NoTicks</enum>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QSlider" name="SliderMinute">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="maximum">
-                   <number>59</number>
-                  </property>
-                  <property name="pageStep">
-                   <number>20</number>
-                  </property>
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="tickPosition">
-                   <enum>QSlider::NoTicks</enum>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
               </item>
               <item>
                <widget class="QToolButton" name="toolButtonStartTimeHelp">
@@ -633,6 +663,9 @@
              <layout class="QHBoxLayout" name="horizontalLayout_19">
               <item>
                <widget class="QCheckBox" name="checkBoxStopRecordingAfter">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
                 <property name="text">
                  <string>Stop recording after</string>
                 </property>
@@ -915,8 +948,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>20</width>
-                   <height>96</height>
+                   <width>258</width>
+                   <height>268</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">

@@ -231,7 +231,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonAlsa,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->toolButtonAudioHelp,   SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabMisc,               SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelFrames,           SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->spinBoxFrames,         SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonFramesDefault,SLOT( setEnabled( bool ) ) );
@@ -244,6 +243,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxAudioCodec,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonAudiocodecDefault,SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameStartTime,        SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxStopRecordingAfter, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStart() ) );
 
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setEnabled( bool ) ) );
@@ -259,7 +260,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonPulse,      SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonAlsa,       SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->scrollAreaAudioDevice, SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->tabMisc,               SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelFrames,           SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->spinBoxFrames,         SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonFramesDefault,SLOT( setDisabled( bool ) ) );
@@ -272,7 +272,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxAudioCodec,    SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonAudiocodecDefault,SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setDisabled( bool ) ) );
-
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameStartTime,        SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxStopRecordingAfter, SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStop() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_Stop() ) );
 
@@ -344,7 +345,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     slot_getWindowsDevices();
 #endif
 
-    // Tab 2 Codec
+    // Tab 2 Codec and Audio
     ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
     ui->pushButtonFormatDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
     ui->pushButtonAudiocodecDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
@@ -353,7 +354,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
 
+
     // Tab 3 Misc
+    ui->toolButtonVideoPathHelp->setIcon( ui->toolButtonVideoPathHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     videoFileSystemWatcher = new QFileSystemWatcher();
     connect( ui->PushButtonVideoPath, SIGNAL( clicked( bool ) ),        this, SLOT( slot_newVideoPath() ) );
     connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetNewPath() ) );
@@ -361,18 +364,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( videoFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
 
-    connect( ui->checkBoxStopRecordingAfter, SIGNAL( toggled( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
-    ui->toolButtonStopRecordingAfterHelp->setIcon( ui->toolButtonStopRecordingAfterHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-
-    connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), ui->timeEditStartTime, SLOT( setEnabled( bool ) ) );
-    connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), ui->SliderHouer, SLOT( setEnabled( bool ) ) );
-    connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), ui->SliderMinute, SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
     ui->toolButtonStartTimeHelp->setIcon( ui->toolButtonStartTimeHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     timerStartTimer = new QTimer();
     connect( timerStartTimer,  SIGNAL( timeout() ),           this, SLOT( slot_startTime() ) );
     connect( ui->SliderHouer,  SIGNAL( valueChanged( int ) ), this, SLOT( slot_setHour( int ) ) );
     connect( ui->SliderMinute, SIGNAL( valueChanged( int ) ), this, SLOT( slot_setMinute( int ) ) );
+
+    ui->toolButtonStopRecordingAfterHelp->setIcon( ui->toolButtonStopRecordingAfterHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    connect( ui->checkBoxStopRecordingAfter, SIGNAL( toggled( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
 
     ui->toolButtonScaleHelp->setIcon( ui->toolButtonScaleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->checkBoxScale, SIGNAL( toggled( bool ) ), ui->comboBoxScale, SLOT( setEnabled( bool ) ) );
