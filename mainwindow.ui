@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>654</width>
-    <height>362</height>
+    <width>750</width>
+    <height>371</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -91,7 +91,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <property name="iconSize">
            <size>
@@ -439,7 +439,7 @@
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>589</width>
+                    <width>685</width>
                     <height>81</height>
                    </rect>
                   </property>
@@ -464,6 +464,13 @@
                 </widget>
                </item>
               </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
              </widget>
             </item>
             <item>
@@ -530,7 +537,7 @@
               <item>
                <widget class="QTimeEdit" name="timeEditStartTime">
                 <property name="enabled">
-                 <bool>true</bool>
+                 <bool>false</bool>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -547,6 +554,9 @@
                <layout class="QVBoxLayout" name="verticalLayout_14">
                 <item>
                  <widget class="QSlider" name="SliderHouer">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="maximum">
                    <number>23</number>
                   </property>
@@ -560,6 +570,9 @@
                 </item>
                 <item>
                  <widget class="QSlider" name="SliderMinute">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="maximum">
                    <number>59</number>
                   </property>
@@ -675,6 +688,86 @@
              </layout>
             </item>
             <item>
+             <widget class="Line" name="line_9">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_21">
+              <item>
+               <widget class="QCheckBox" name="checkBoxScale">
+                <property name="text">
+                 <string>Scale</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboBoxScale">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <item>
+                 <property name="text">
+                  <string notr="true">320 x 200</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string notr="true">320 x 240</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string notr="true">640 x 480</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string notr="true">800 x 600</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>1024 x 768</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>1280 x 1024</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>1920 x 1080</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_5">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QToolButton" name="toolButtonScaleHelp">
+                <property name="text">
+                 <string>Help</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
              <spacer name="verticalSpacer_3">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
@@ -758,8 +851,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>260</width>
-                   <height>245</height>
+                   <width>308</width>
+                   <height>254</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -831,7 +924,7 @@
                 <item>
                  <widget class="QLabel" name="label_6">
                   <property name="text">
-                   <string>Not available, please install</string>
+                   <string>Not available</string>
                   </property>
                  </widget>
                 </item>

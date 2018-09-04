@@ -364,12 +364,19 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxStopRecordingAfter, SIGNAL( toggled( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
     ui->toolButtonStopRecordingAfterHelp->setIcon( ui->toolButtonStopRecordingAfterHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
+    connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), ui->timeEditStartTime, SLOT( setEnabled( bool ) ) );
+    connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), ui->SliderHouer, SLOT( setEnabled( bool ) ) );
+    connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), ui->SliderMinute, SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
     ui->toolButtonStartTimeHelp->setIcon( ui->toolButtonStartTimeHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     timerStartTimer = new QTimer();
     connect( timerStartTimer,  SIGNAL( timeout() ),           this, SLOT( slot_startTime() ) );
     connect( ui->SliderHouer,  SIGNAL( valueChanged( int ) ), this, SLOT( slot_setHour( int ) ) );
     connect( ui->SliderMinute, SIGNAL( valueChanged( int ) ), this, SLOT( slot_setMinute( int ) ) );
+
+    ui->toolButtonScaleHelp->setIcon( ui->toolButtonScaleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    connect( ui->checkBoxScale, SIGNAL( toggled( bool ) ), ui->comboBoxScale, SLOT( setEnabled( bool ) ) );
+
 
     // Tab 4 Available muxer, encoder etc.
     ui->toolButtonAvalaibleHelp->setIcon( ui->toolButtonAvalaibleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
@@ -788,9 +795,19 @@ QString MainWindow::VK_getXimagesrc()
 QString MainWindow::VK_getCapsFilter()
 {
    QStringList stringList;
-   stringList << "caps=video/x-raw"
-              << QString("framerate=") + ui->spinBoxFrames->text() + "/1";
-   return QString( "capsfilter" ) + " " + stringList.join( "," );
+   stringList << "capsfilter caps=video/x-raw,framerate="
+              << ui->spinBoxFrames->text()
+              << "/1";
+   return QString( stringList.join( "" ) );
+}
+
+
+QString MainWindow::VK_getVideoScale()
+{
+    QString value = ui->comboBoxScale->currentText();
+    QStringList valuList = value.split( " x ");
+    value = "videoscale ! video/x-raw,width=" + valuList.at(0) + ",height=" + valuList.at(1);
+    return value;
 }
 
 
@@ -912,6 +929,7 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
                                      << "audiomimetype:audio/x-msvideo"
                                      << "videocodec:x264enc:x264"
                                      << "videocodec:vp8enc:vp8"
+                                     << "audiocodec:lamemp3enc:mp3"
                                    );
 
     QStringList MP4_QStringList = ( QStringList()
@@ -919,6 +937,7 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videomimetype:video/mpeg"
                                     << "audiomimetype:audio/mpeg"
                                     << "videocodec:x264enc:x264"
+                                    << "audiocodec:lamemp3enc:mp3"
                                     << "audiocodec:opusenc:opus"
                                   );
 
@@ -1213,6 +1232,10 @@ void MainWindow::slot_Start()
     VK_PipelineList << VK_getCapsFilter();
     VK_PipelineList << "queue flush-on-eos=true";
     VK_PipelineList << "videoconvert";
+    if ( ui->checkBoxScale->isChecked() )
+    {
+       VK_PipelineList << VK_getVideoScale();
+    }
     VK_PipelineList << "videorate";
     VK_PipelineList << Vk_get_Videocodec_Encoder();
 
