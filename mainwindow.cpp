@@ -246,6 +246,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoPath,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameStartTime,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxStopRecordingAfter, SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStart() ) );
 
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setEnabled( bool ) ) );
@@ -376,6 +377,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->toolButtonStopRecordingAfterHelp->setIcon( ui->toolButtonStopRecordingAfterHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->checkBoxStopRecordingAfter, SIGNAL( toggled( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
     connect( timerStopRecordingAfter, SIGNAL( timeout() ), ui->pushButtonStop, SLOT( click() ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxStopRecordingAfter, SLOT( setChecked( bool ) ) );
 
     ui->toolButtonScaleHelp->setIcon( ui->toolButtonScaleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->checkBoxScale, SIGNAL( toggled( bool ) ), ui->comboBoxScale, SLOT( setEnabled( bool ) ) );
@@ -1296,6 +1298,11 @@ void MainWindow::slot_Start()
 
 void MainWindow::slot_preStop()
 {
+    if ( timerStopRecordingAfter->isActive() )
+    {
+        timerStopRecordingAfter->stop();
+    }
+
     if ( ui->radioButtonArea->isChecked() == true )
     {
         regionChoise->recordMode( false );
@@ -1307,27 +1314,21 @@ void MainWindow::slot_preStop()
 
 void MainWindow::slot_Stop()
 {
-    if ( timerStopRecordingAfter->isActive() )
-    {
-        timerStopRecordingAfter->stop();
-    }
-    {
-        // wait for EOS
-        bool a = gst_element_send_event (pipeline, gst_event_new_eos());
-        Q_UNUSED(a);
+    // wait for EOS
+    bool a = gst_element_send_event (pipeline, gst_event_new_eos());
+    Q_UNUSED(a);
 
-        GstClockTime timeout = 10 * GST_SECOND;
-        GstMessage *msg = gst_bus_timed_pop_filtered (GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
-        Q_UNUSED(msg);
+    GstClockTime timeout = 10 * GST_SECOND;
+    GstMessage *msg = gst_bus_timed_pop_filtered (GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
+    Q_UNUSED(msg);
 
-        GstStateChangeReturn ret ;
-        Q_UNUSED(ret);
-        ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
-        ret = gst_element_set_state( pipeline, GST_STATE_READY );
-        ret = gst_element_set_state( pipeline, GST_STATE_NULL );
-        gst_object_unref( pipeline );
-        qDebug() << "[vokoscreen] Stop record";
-    }
+    GstStateChangeReturn ret ;
+    Q_UNUSED(ret);
+    ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
+    ret = gst_element_set_state( pipeline, GST_STATE_READY );
+    ret = gst_element_set_state( pipeline, GST_STATE_NULL );
+    gst_object_unref( pipeline );
+    qDebug() << "[vokoscreen] Stop record";
 }
 
 
