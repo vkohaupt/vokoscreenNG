@@ -74,6 +74,7 @@ private:
     QvkStorageUI *vkStorageUI;
 
     QTimer *timerStartTimer;
+    QTimer *timerStopRecordingAfter = new QTimer( this );
 
 
 private slots:

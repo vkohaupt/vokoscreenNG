@@ -375,6 +375,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->toolButtonStopRecordingAfterHelp->setIcon( ui->toolButtonStopRecordingAfterHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->checkBoxStopRecordingAfter, SIGNAL( toggled( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
+    connect( timerStopRecordingAfter, SIGNAL( timeout() ), ui->pushButtonStop, SLOT( click() ) );
 
     ui->toolButtonScaleHelp->setIcon( ui->toolButtonScaleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->checkBoxScale, SIGNAL( toggled( bool ) ), ui->comboBoxScale, SLOT( setEnabled( bool ) ) );
@@ -1086,7 +1087,7 @@ void MainWindow::slot_preStart()
         int value = ui->spinBoxStopRecordingAfterHouers->value()*60*60*1000;
         value = value + ui->spinBoxStopRecordingAfterMinutes->value()*60*1000;
         value = value + ui->spinBoxStopRecordingAfterSeconds->value()*1000;
-        QTimer::singleShot( value, ui->pushButtonStop, SLOT( click() ) );
+        timerStopRecordingAfter->start( value );
     }
 
 
@@ -1306,6 +1307,10 @@ void MainWindow::slot_preStop()
 
 void MainWindow::slot_Stop()
 {
+    if ( timerStopRecordingAfter->isActive() )
+    {
+        timerStopRecordingAfter->stop();
+    }
     {
         // wait for EOS
         bool a = gst_element_send_event (pipeline, gst_event_new_eos());
