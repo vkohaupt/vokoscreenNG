@@ -32,6 +32,12 @@ void QvkStorageUI::slot_systemInfo()
     QStorageInfo storage = QStorageInfo(ui->lineEditVideoPath->text() );
     storage.refresh();
 
+    // Stop or not start a record if disk space smaller 100MB(Default)
+    if ( storage.bytesAvailable() <= ui->spinBoxDiskFreeSpace->text().toInt() * 1024 * 1024 )
+    {
+        ui->pushButtonStop->click();
+    }
+
     if ( storageGUI.comboBoxFreeSize->currentText() == " KB" )
        storageGUI.labelFreeSize->setText( QString::number( storage.bytesAvailable()/1024 ) );
 

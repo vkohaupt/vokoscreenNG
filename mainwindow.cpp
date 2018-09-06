@@ -377,10 +377,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->toolButtonStopRecordingAfterHelp->setIcon( ui->toolButtonStopRecordingAfterHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->checkBoxStopRecordingAfter, SIGNAL( toggled( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
     connect( timerStopRecordingAfter, SIGNAL( timeout() ), ui->pushButtonStop, SLOT( click() ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxStopRecordingAfter, SLOT( setChecked( bool ) ) );
 
     ui->toolButtonScaleHelp->setIcon( ui->toolButtonScaleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-    connect( ui->checkBoxScale, SIGNAL( toggled( bool ) ), ui->comboBoxScale, SLOT( setEnabled( bool ) ) );
+    connect( ui->checkBoxScale,   SIGNAL( toggled( bool ) ), ui->comboBoxScale, SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setDisabled( bool ) ) );
 
 
     // Tab 4 Available muxer, encoder etc.
@@ -456,9 +457,9 @@ void MainWindow::slot_startTime()
 {
     QTime time;
     if ( ( time.currentTime().hour() == ui->timeEditStartTime->time().hour() ) and
-         ( time.currentTime().minute() == ui->timeEditStartTime->time().minute() ) )
+         ( time.currentTime().minute() == ui->timeEditStartTime->time().minute() ) and
+         ( time.currentTime().second() == ui->timeEditStartTime->time().second() ) )
     {
-        ui->checkBoxStartTime->click();
         ui->pushButtonStart->click();
     }
 }
@@ -1301,6 +1302,7 @@ void MainWindow::slot_preStop()
     if ( timerStopRecordingAfter->isActive() )
     {
         timerStopRecordingAfter->stop();
+        ui->frameStopRecordingAfter->setEnabled( true );
     }
 
     if ( ui->radioButtonArea->isChecked() == true )
