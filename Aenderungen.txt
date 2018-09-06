@@ -17,5 +17,7 @@
 - Tab Misc, skalierfunktion eingebaut
 - mp3 eingebaut
 - mpeg4 eingebaut
-- Select timerStopRecordingAfter 10 Sec. Start record and stop after 5 second.
-  Now start new record and the timer stop after 5 second.
+- [BUG] "Stop record after" eingestellt auf 10 Sek. Aufnahme gestartet und nach 5 Sekunden gestoppt.
+  Nun eine neue Aufnahme gestartet, nach 5 Sekunden wurde die Aufnahme gestoppt.
+- Skalieren eingebaut
+- "Limit of disk free space" eingebaut
