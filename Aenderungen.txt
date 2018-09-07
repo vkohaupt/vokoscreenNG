@@ -1,23 +1,26 @@
 
-2.9.2 Beta
+2.9.2 Beta Begonnen am 21.08.2018
 [Windows]
 - Icon Audio wurde nicht angezeigt beim umschalten von AudioOff zu AudioOn
-- Bereichsanzeige blitzte manchmal beim start von vokoscreen kurz auf.
-  Änderung rückgänig gemacht da sie nicht greift.
 - Radiobutton Pulse und Alsa ausblenden
 - Audodevices ermitteln und hinzufügen( ging vorher über die ALSA Routine )
 - vokoscreen.bat und vokoscreen-deploy.bat erarbeitet
 - Audio an GStreamer angepasst, Aufnahme funktioniert nun.
 
 [ALL]
+- Free disk space und Videosize eingebaut.
 - Bereichsanzeige Screenshot schloss sich nicht beim beenden von vokoscreen
 - Audiogeräte werden nun in der Liste nach oben hin ausgerichtet.
 - Tab Misc, Hilfebuttons wurden bei Aufnahme deaktiviert.
 - Bereichsanzeige farblich dezenter gestalltet.
 - Tab Misc, skalierfunktion eingebaut
-- mp3 eingebaut
-- mpeg4 eingebaut
+- Audio mp3 eingebaut
+- Video mpeg4 eingebaut
 - [BUG] "Stop record after" eingestellt auf 10 Sek. Aufnahme gestartet und nach 5 Sekunden gestoppt.
-  Nun eine neue Aufnahme gestartet, nach 5 Sekunden wurde die Aufnahme gestoppt.
+  Nun eine neue Aufnahme gestartet, nach 5 Sekunden wurde die Aufnahme gestoppt. Bug behoben.
 - Skalieren eingebaut
 - "Limit of disk free space" eingebaut
+- Pulseaudiocode ausgelagert in eigene Klasse
+
+[Bestehende Bugs]
+- [Windows] Bereichsanzeige blitzte manchmal beim start von vokoscreen kurz auf.
