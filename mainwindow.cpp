@@ -32,7 +32,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                                           ui(new Ui::MainWindow),
                                           vkWinInfo(new QvkWinInfo),
                                           vkCountdown(new QvkCountdown),
-                                          regionChoise(new QvkRegionChoise),
+                                          vkRegionChoise(new QvkRegionChoise),
                                           vkPulse(new QvkPulse(ui))
 {
     ui->setupUi(this);
@@ -190,12 +190,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->toolButtonAreaReset, SLOT( setDisabled( bool ) ) );
 
-    connect( this,                  SIGNAL( signal_close()  ), regionChoise,   SLOT( close() ) );
-    connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), regionChoise,   SLOT( setVisible( bool ) ) );
+    connect( this,                  SIGNAL( signal_close()  ), vkRegionChoise,   SLOT( close() ) );
+    connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), vkRegionChoise,   SLOT( setVisible( bool ) ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->toolButtonAreaReset, SLOT( setEnabled( bool ) ) );
 
-    connect( ui->toolButtonAreaReset, SIGNAL( clicked( bool ) ), regionChoise, SLOT( slot_areaReset() ) );
+    connect( ui->toolButtonAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
 
     // Tab 1 Audio
     ui->toolButtonFramesHelp->setIcon( ui->toolButtonFramesHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
@@ -615,10 +615,10 @@ QString MainWindow::VK_getXimagesrc()
                    << "display-name=" + qgetenv( "DISPLAY" )
                    << "use-damage=false"
                    << "show-pointer=" + showPointer
-                   << "startx=" + QString::number( regionChoise->getXRecordArea() )
-                   << "starty=" + QString::number( regionChoise->getYRecordArea() )
-                   << "endx="   + QString::number( regionChoise->getXRecordArea() + regionChoise->getWidth()-1 )
-                   << "endy="   + QString::number( regionChoise->getYRecordArea() + regionChoise->getHeight()-1 );
+                   << "startx=" + QString::number( vkRegionChoise->getXRecordArea() )
+                   << "starty=" + QString::number( vkRegionChoise->getYRecordArea() )
+                   << "endx="   + QString::number( vkRegionChoise->getXRecordArea() + vkRegionChoise->getWidth()-1 )
+                   << "endy="   + QString::number( vkRegionChoise->getYRecordArea() + vkRegionChoise->getHeight()-1 );
         QString value = stringList.join( " " );
         return value;
     }
@@ -652,10 +652,10 @@ QString MainWindow::VK_getXimagesrc()
         QStringList stringList;
         stringList << "gdiscreencapsrc"
                    << "cursor=" + showPointer
-                   << "x=" + QString::number( regionChoise->getXRecordArea() )
-                   << "y=" + QString::number( regionChoise->getYRecordArea() )
-                   << "width=" + QString::number( regionChoise->getWidth() )
-                   << "height=" + QString::number( regionChoise->getHeight() );
+                   << "x=" + QString::number( vkRegionChoise->getXRecordArea() )
+                   << "y=" + QString::number( vkRegionChoise->getYRecordArea() )
+                   << "width=" + QString::number( vkRegionChoise->getWidth() )
+                   << "height=" + QString::number( vkRegionChoise->getHeight() );
         value = stringList.join( " " );
     }
 
@@ -1014,17 +1014,17 @@ void MainWindow::slot_preStart()
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
-        regionChoise->recordMode( true );
+        vkRegionChoise->recordMode( true );
         vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
         return;
     }
 
     if ( ui->radioButtonArea->isChecked() == true )
     {
-       regionChoise->recordMode( true );
+       vkRegionChoise->recordMode( true );
        QTest::qSleep(100);
-       regionChoise->repaint();
-       regionChoise->update();
+       vkRegionChoise->repaint();
+       vkRegionChoise->update();
        slot_Start();
        return;
     }
@@ -1173,9 +1173,9 @@ void MainWindow::slot_preStop()
 
     if ( ui->radioButtonArea->isChecked() == true )
     {
-        regionChoise->recordMode( false );
-        regionChoise->repaint();
-        regionChoise->update();
+        vkRegionChoise->recordMode( false );
+        vkRegionChoise->repaint();
+        vkRegionChoise->update();
     }
 }
 

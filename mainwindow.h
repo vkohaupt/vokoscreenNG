@@ -29,7 +29,7 @@ public:
     Ui::MainWindow *ui;
     QvkWinInfo *vkWinInfo;
     QvkCountdown *vkCountdown;
-    QvkRegionChoise *regionChoise;
+    QvkRegionChoise *vkRegionChoise;
     QvkPulse *vkPulse;
 
     void makeAndSetValidIcon(QTabWidget *widget, int index, QIcon icon );
