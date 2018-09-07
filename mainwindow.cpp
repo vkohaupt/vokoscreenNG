@@ -323,7 +323,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->toolButtonAudioHelp->setIcon( ui->toolButtonAudioHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     ui->toolButtonNoMouseCursorHelp->setIcon( ui->toolButtonNoMouseCursorHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
-    connect( ui->toolButtonAudioHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioHelp() ) );;
+    connect( ui->toolButtonAudioHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioHelp() ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), this,                      SLOT( slot_audioIconOnOff( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->radioButtonPulse,      SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->radioButtonAlsa,       SLOT( setEnabled( bool ) ) );
@@ -360,6 +360,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     // Tab 3 Misc
     ui->toolButtonVideoPathHelp->setIcon( ui->toolButtonVideoPathHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    connect( ui->toolButtonVideoPathHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpVideoPath() ) );
     videoFileSystemWatcher = new QFileSystemWatcher();
     connect( ui->PushButtonVideoPath, SIGNAL( clicked( bool ) ),        this, SLOT( slot_newVideoPath() ) );
     connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetNewPath() ) );
@@ -369,6 +370,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
     ui->toolButtonStartTimeHelp->setIcon( ui->toolButtonStartTimeHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    connect( ui->toolButtonStartTimeHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpStartTime() ) );
     timerStartTimer = new QTimer();
     connect( timerStartTimer,  SIGNAL( timeout() ),           this, SLOT( slot_startTime() ) );
     connect( ui->SliderHouer,  SIGNAL( valueChanged( int ) ), this, SLOT( slot_setHour( int ) ) );
@@ -483,13 +485,23 @@ void MainWindow::slot_setMinute( int value )
 
 void MainWindow::slot_audioHelp()
 {
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/3.0/audio.html", QUrl::TolerantMode ) );
+    QDesktopServices::openUrl( QUrl( "linuxecke.volkoh.de/vokoscreen/help/3.0/audio.html", QUrl::TolerantMode ) );
 }
 
 
 void MainWindow::slot_availableHelp()
 {
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/3.0/available.html", QUrl::TolerantMode ) );
+    QDesktopServices::openUrl( QUrl( "linuxecke.volkoh.de/vokoscreen/help/3.0/available.html", QUrl::TolerantMode ) );
+}
+
+void MainWindow::slot_miscHelpVideoPath()
+{
+    QDesktopServices::openUrl( QUrl( "linuxecke.volkoh.de/vokoscreen/help/3.0/misc.html#videopath", QUrl::TolerantMode ) );
+}
+
+void MainWindow::slot_miscHelpStartTime()
+{
+    QDesktopServices::openUrl( QUrl( "linuxecke.volkoh.de/vokoscreen/help/3.0/misc.html#starttime", QUrl::TolerantMode ) );
 }
 
 

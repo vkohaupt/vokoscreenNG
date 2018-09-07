@@ -102,6 +102,8 @@ private slots:
 
     void slot_audioHelp();
     void slot_availableHelp();
+    void slot_miscHelpVideoPath();
+    void slot_miscHelpStartTime();
 
     void slot_StartTimer( bool value );
     void slot_startTime();
