@@ -61,9 +61,6 @@ private:
     QString VK_get_AudioDevice();
     QString VK_get_AudioSystem();
 
-    QString get_AudioDeviceString( GstDevice * device );
-    QStringList get_all_Audio_devices();
-
     QString get_x_From_Screen();
     QString get_y_From_Screen();
     QString get_width_From_Screen();
@@ -91,7 +88,6 @@ private slots:
     void slot_setFramesStandard( bool value );
     void slot_audioIconOnOff(bool state );
     void slot_clearVerticalLayoutAudioDevices(bool value);
-//    void slot_getPulsesDevices(bool value);
     void slot_getAlsaDevices( bool value );
     void slot_getWindowsDevices();
     void slot_newVideoPath();
