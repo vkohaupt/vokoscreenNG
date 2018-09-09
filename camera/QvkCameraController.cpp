@@ -164,10 +164,20 @@ void QvkCameraController::slot_startCamera( bool value )
         cameraWindow->resize( 320, 240 );
         camera->setViewfinder( videoSurface );
         cameraWindow->show();
+
+#ifdef Q_OS_LINUX
         camera->load();
+#endif
 
+#ifdef Q_OS_WIN
+        camera->start();
+#endif
 
-/*
+        // Bash: Show properties from camera
+        // uvcdynctrl -f -d /dev/video0
+
+        // Test with QVideoWidget, only for Linux.
+        /*
         delete videoWidget;
         videoWidget = new QVideoWidget();
         videoWidget->setWindowTitle( vkSettings.getProgName() + " " + "camera"  + " " + vkSettings.getVersion() );
@@ -175,7 +185,7 @@ void QvkCameraController::slot_startCamera( bool value )
         camera->setViewfinder( videoWidget );
         videoWidget->show();
         camera->load();
-*/
+        */
     }
     else
     {
@@ -188,8 +198,6 @@ void QvkCameraController::slot_startCamera( bool value )
 }
 
 
-// *************************************************************
-
 void QvkCameraController::slot_statusChanged( QCamera::Status status )
 {
     switch ( status )
@@ -199,7 +207,10 @@ void QvkCameraController::slot_statusChanged( QCamera::Status status )
       case QCamera::LoadingStatus     : { qDebug() << "[vokoscreen]" << status; break; }// 2
       case QCamera::UnloadingStatus   : { qDebug() << "[vokoscreen]" << status; break; }// 3
       case QCamera::LoadedStatus      : { qDebug() << "[vokoscreen]" << status;
-                                          camera->start(); break;
+                                          #ifdef Q_OS_LINUX
+                                             camera->start();
+                                          #endif
+                                          break;
                                         }// 4
       case QCamera::StandbyStatus     : { qDebug() << "[vokoscreen]" << status; break; }// 5
       case QCamera::StartingStatus    : { qDebug() << "[vokoscreen]" << status; break; }// 6
