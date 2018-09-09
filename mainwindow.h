@@ -8,6 +8,7 @@
 #include "QvkSettings.h"
 #include "QvkStorageUI.h"
 #include "QvkPulse.h"
+#include "QvkAlsa.h"
 
 #include <QMainWindow>
 #include <QFileSystemWatcher>
@@ -31,6 +32,7 @@ public:
     QvkCountdown *vkCountdown;
     QvkRegionChoise *vkRegionChoise;
     QvkPulse *vkPulse;
+    QvkAlsa *vkAlsa;
 
     void makeAndSetValidIcon(QTabWidget *widget, int index, QIcon icon );
     void makeAndSetValidIconForSideBar( int index, QIcon icon );
@@ -88,7 +90,6 @@ private slots:
     void slot_setFramesStandard( bool value );
     void slot_audioIconOnOff(bool state );
     void slot_clearVerticalLayoutAudioDevices(bool value);
-    void slot_getAlsaDevices( bool value );
     void slot_getWindowsDevices();
     void slot_newVideoPath();
     void slot_videoFileSystemWatcherSetButtons();

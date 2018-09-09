@@ -78,3 +78,5 @@ include(screenshot/screenshot.pri)
 # pulse
 include(audio/pulse/pulse.pri)
 
+# alsa
+include(audio/alsa/alsa.pri)

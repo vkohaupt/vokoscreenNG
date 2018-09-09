@@ -14,10 +14,9 @@ class QvkVideoSurface: public QAbstractVideoSurface
     QList<QVideoFrame::PixelFormat> supportedPixelFormats(QAbstractVideoBuffer::HandleType type) const
     {
         (void)type;
-        return QList<QVideoFrame::PixelFormat>() << QVideoFrame::Format_RGB32
-                                                 << QVideoFrame::Format_ARGB32_Premultiplied
+        return QList<QVideoFrame::PixelFormat>() << QVideoFrame::Format_RGB24
                                                  << QVideoFrame::Format_RGB32
-                                                 << QVideoFrame::Format_RGB24
+                                                 << QVideoFrame::Format_ARGB32_Premultiplied
                                                  << QVideoFrame::Format_RGB565
                                                  << QVideoFrame::Format_RGB555
                                                  << QVideoFrame::Format_ARGB8565_Premultiplied
@@ -52,22 +51,18 @@ class QvkVideoSurface: public QAbstractVideoSurface
     {
         if ( frame.isValid() )
         {
-                qDebug() << "11111111111" << frame.pixelFormat();
                 QVideoFrame cloneFrame(frame);
-                cloneFrame.map(QAbstractVideoBuffer::ReadOnly);
 
-                qDebug() << "2222222222" << QVideoFrame::imageFormatFromPixelFormat( cloneFrame.pixelFormat() );
+                cloneFrame.map( QAbstractVideoBuffer::ReadOnly );
 
                 const QImage image( cloneFrame.bits(),
                                     cloneFrame.width(),
                                     cloneFrame.height(),
-                                    QVideoFrame::imageFormatFromPixelFormat( QVideoFrame::Format_YUV420P )
+                                    QVideoFrame::imageFormatFromPixelFormat( cloneFrame.pixelFormat() )
                                   );
-                qDebug() << image.byteCount();
-                QImage copyImage = image.convertToFormat(QImage::Format_RGB888);
-                //QImage copyImage = image.copy();
+
                 cloneFrame.unmap();
-                emit signal_newPicture( copyImage );
+                emit ( signal_newPicture( image ) );
                 return true;
         }
         return false;

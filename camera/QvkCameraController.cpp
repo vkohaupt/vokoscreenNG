@@ -156,7 +156,7 @@ void QvkCameraController::slot_startCamera( bool value )
         viewfinderSettings.setMinimumFrameRate( 0.0 );
         viewfinderSettings.setMaximumFrameRate( 0.0 );
         camera->setViewfinderSettings( viewfinderSettings );
-/*
+
         delete cameraWindow;
         cameraWindow = new QvkCameraWindow();
         connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_vokoscreen->checkBoxCamera, SLOT( setChecked( bool ) ) );
@@ -165,9 +165,9 @@ void QvkCameraController::slot_startCamera( bool value )
         camera->setViewfinder( videoSurface );
         cameraWindow->show();
         camera->load();
-*/
 
 
+/*
         delete videoWidget;
         videoWidget = new QVideoWidget();
         videoWidget->setWindowTitle( vkSettings.getProgName() + " " + "camera"  + " " + vkSettings.getVersion() );
@@ -175,6 +175,7 @@ void QvkCameraController::slot_startCamera( bool value )
         camera->setViewfinder( videoWidget );
         videoWidget->show();
         camera->load();
+*/
     }
     else
     {
