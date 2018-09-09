@@ -12,7 +12,7 @@
 
 QvkCameraController::QvkCameraController(Ui_MainWindow *ui_surface ):cameraWatcher(new QvkCameraWatcher()),
                                                                      cameraWindow(new QvkCameraWindow()),
-                                                                     videoSurface(new QvkVideoSurface( this ))
+                                                                     videoSurface(new QvkVideoSurface())
 {
     ui_vokoscreen = ui_surface;
 
