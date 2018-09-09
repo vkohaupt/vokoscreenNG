@@ -48,7 +48,7 @@ private:
   QCamera *camera = nullptr;
   QvkCameraWatcher *cameraWatcher;
   QvkCameraWindow *cameraWindow;
-  QVideoWidget *videoWidget = nullptr;
+  //QVideoWidget *videoWidget = nullptr;
   QvkVideoSurface *videoSurface;
 
 

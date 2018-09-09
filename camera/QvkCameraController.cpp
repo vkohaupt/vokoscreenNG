@@ -183,7 +183,7 @@ void QvkCameraController::slot_startCamera( bool value )
         camera->stop();
         camera->unload();
         cameraWindow->close();
-        videoWidget->close();
+        //videoWidget->close();
     }
 }
 
