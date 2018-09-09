@@ -1,24 +1,24 @@
 Requires:
   - Qt5 >= 5.9.4
   - gstreamer >= 1.12.5
-  - gstreamer-plugins-bad
-  - gstreamer-plugins-bad-orig-addon
-  - gstreamer-plugins-good-extra
-  - pulseaudio
+  - gstreamer-plugins(bas, good, bad, ugly)
+  - pulseaudio(optional)
 
   
 BuildRequires:
   - pkgconfig
   - libqt5-devel
   - libqt5-linguist
+  - gstreamer-devel
+  - gstreamer-plugins-base-devel
 
   
 Compile:
   - get sources
     - extract vokoscren-<version>.tar.gz
      or
-    - clone git repository: "git clone https://github.com/vkohaupt/vokoscreenGST.git"
-  - change into the vokoscreenGST-<version> directory
+    - clone git repository: "git clone https://github.com/vkohaupt/vokoscreenNG.git"
+  - change into the vokoscreenNG-<version> directory
   - run "qmake"
   - run "make"
   
