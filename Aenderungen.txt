@@ -6,9 +6,13 @@
 - Audodevices ermitteln und hinzufügen( ging vorher über die ALSA Routine )
 - vokoscreen.bat und vokoscreen-deploy.bat erarbeitet
 - Audio an GStreamer angepasst, Aufnahme funktioniert nun.
+- Webcam funktioniert nun.
+
 
 [ALL]
 - Free disk space und Videosize eingebaut.
+- "Stop record after" eingebaut.
+- Screenshot ausgelagert in eigene Klasse
 - Bereichsanzeige Screenshot schloss sich nicht beim beenden von vokoscreen
 - Audiogeräte werden nun in der Liste nach oben hin ausgerichtet.
 - Tab Misc, Hilfebuttons wurden bei Aufnahme deaktiviert.
@@ -20,7 +24,11 @@
   Nun eine neue Aufnahme gestartet, nach 5 Sekunden wurde die Aufnahme gestoppt. Bug behoben.
 - Skalieren eingebaut
 - "Limit of disk free space" eingebaut
-- Pulseaudiocode ausgelagert in eigene Klasse
+- Pulseaudio ausgelagert in eigene Klasse
+- Alsa ausgelagert in eigene Klasse
+- Webcambild kann nun gespiegelt, gedreht etc. werden.
+
 
 [Bestehende Bugs]
 - [Windows] Bereichsanzeige blitzte manchmal beim start von vokoscreen kurz auf.
+- [Windows] Beim starten öffnet sich das Terminal

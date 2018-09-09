@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-begintime="2018-01-01"
+begintime="2018-08-20"
 
 echo "Commits seit dem:  "$begintime
 
