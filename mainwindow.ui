@@ -95,7 +95,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -443,8 +443,8 @@
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>513</width>
-                    <height>81</height>
+                    <width>64</width>
+                    <height>16</height>
                    </rect>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1081,8 +1081,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>222</width>
-                   <height>274</height>
+                   <width>20</width>
+                   <height>96</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
