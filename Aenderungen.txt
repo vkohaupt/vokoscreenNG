@@ -31,13 +31,14 @@
 
 [Bestehende Bugs]
 - [Windows] Bereichsanzeige blitzte manchmal beim start von vokoscreen kurz auf.
-- [Windows] Beim starten öffnet sich das Terminal
+- [Windows] Beim starten von vokoscreen öffnet sich das Terminal
 - [Windows] WARNING: no real random source present! erscheint in der Konsole
 - [Windows] Webcamwindow Icons für das eingebelndete Menü werden nicht angezeigt
-- [Windows] ShellExecute benötigt im Aufruf anscheinend zwingend ein vorangestelltes http://
+- [Windows] Hilfebutton: ShellExecute benötigt im Aufruf anscheinend zwingend ein vorangestelltes http://
 - [All] Bereichsanzeige wird beim Screenshot ausgeblendet
 - [All] "Limit of disk free space" fehlt der Hilfebutton
 - [All] Bei den meisten Hilfebuttons ist keine Hilfe hinterlegt.
 - [All] Systray fehlt
 - [All] Aufnahme über zwei und mehrere Audio Aufnamegeräten fehlt.
-- [All] Der String "Videopath" im dritten TAB ist nicht links ausgerichtet
+- [All] Menü Webcamfenster, es fehlt für die Settings der Dialog
+- [All] Menü Webcamfenster "NoBorder", das Bild ist beim ersten Aufruf nicht an der richtigen Position
