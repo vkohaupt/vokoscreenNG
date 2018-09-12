@@ -1113,7 +1113,10 @@ void MainWindow::slot_Start()
 
     QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Pipe );
     qDebug() << "[vokoscreen] Start record with:" << VK_Pipeline;
-    pipeline = gst_parse_launch( VK_Pipeline.toLatin1(), &error );
+
+    QByteArray byteArray = VK_Pipeline.toUtf8();
+    const gchar *line = byteArray.constData();
+    pipeline = gst_parse_launch( line, &error );
 
     // Start playing
     GstStateChangeReturn ret;
