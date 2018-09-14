@@ -105,7 +105,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
     image = image.transformed( transform );
 
     image = image.scaled( cameraWindow->width(), cameraWindow->height(), Qt::KeepAspectRatio, Qt::FastTransformation);
-//    cameraWindow->setPixmap( QPixmap::fromImage( image, Qt::AutoColor) );
+    cameraWindow->setPixmap( QPixmap::fromImage( image, Qt::AutoColor) );
 }
 
 

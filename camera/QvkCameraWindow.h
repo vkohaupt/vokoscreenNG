@@ -10,7 +10,7 @@
 #include <QLabel>
 #include <QWidget>
 
-class QvkCameraWindow : public QWidget//QLabel
+class QvkCameraWindow : public QLabel
 {
     Q_OBJECT
 
