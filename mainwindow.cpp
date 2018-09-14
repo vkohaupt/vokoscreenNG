@@ -1176,7 +1176,7 @@ void MainWindow::slot_Stop()
     bool a = gst_element_send_event (pipeline, gst_event_new_eos());
     Q_UNUSED(a);
 
-    GstClockTime timeout = 10 * GST_SECOND;
+    GstClockTime timeout = 5 * GST_SECOND;
     GstMessage *msg = gst_bus_timed_pop_filtered (GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
     Q_UNUSED(msg);
 
