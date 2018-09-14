@@ -8,8 +8,9 @@
 #include "QvkWidgetExit.h"
 
 #include <QLabel>
+#include <QWidget>
 
-class QvkCameraWindow : public QLabel
+class QvkCameraWindow : public QWidget//QLabel
 {
     Q_OBJECT
 

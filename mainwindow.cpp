@@ -265,6 +265,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setDisabled( bool ) ) );
 
+    ui->toolButtonLimitOfFreeDiskSpaceHelp->setIcon( ui->toolButtonLimitOfFreeDiskSpaceHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+
 
     // Tab 4 Available muxer, encoder etc.
     ui->toolButtonAvalaibleHelp->setIcon( ui->toolButtonAvalaibleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
