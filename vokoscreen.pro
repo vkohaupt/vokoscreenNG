@@ -6,8 +6,7 @@
 
 unix: QT += x11extras
 QT += core gui widgets multimedia multimediawidgets
-# network dbus
-# testlib // Achtung unter Windows wird die konsole geöffnet.
+# testlib // Achtung unter Windows öffnet sich damit die Konsole und qDebug() zeigt seine Ausgaben.
 
 
 TARGET = vokoscreen

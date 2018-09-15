@@ -10,9 +10,6 @@ PATH=%PATH%;C:\Qt\Qt5.9.2\Tools\mingw530_32\bin
 
 C:\Qt\Qt5.9.2\5.9.2\mingw53_32\bin\windeployqt.exe --release vokoscreen.exe
 
-copy C:\Qt\Qt5.9.2\Tools\mingw530_32\opt\bin\libgcc_s_dw2-1.dll
-copy "C:\Qt\Qt5.9.2\5.9.2\mingw53_32\bin\libstdc++-6.dll"
-copy C:\Qt\Qt5.9.2\5.9.2\mingw53_32\bin\opengl32sw.dll
 copy C:\gstreamer\1.0\x86\bin\libgobject-2.0-0.dll
 copy C:\gstreamer\1.0\x86\bin\libglib-2.0-0.dll
 copy C:\gstreamer\1.0\x86\bin\libgstreamer-1.0-0.dll
