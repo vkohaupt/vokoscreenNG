@@ -8,21 +8,22 @@
 - Aufnahme mit Audio funktionierte nur einmal https://github.com/vkohaupt/vokoscreenNG/commit/c3834467fde60f9d9f75b49d9d094a8180387cda
 - "Limit of disk free space" fehlte der Hilfebutton
 - QTest overall disabled -https://github.com/vkohaupt/vokoscreenNG/commit/5c28a27c16d2836192c0952d97ee38f8632856cb
+- Bereichsanzeige wwurde beim Screenshot ausgeblendet
 
 
 [Bestehende Bugs]
 - [Windows] Der Audiocode Opus führt zum Programmabsturtz, Opus für Windows wurde daher deaktiviert.
-- [windows] Fensteraufnahme zur Zeit nicht machbar.
+- [Windows] Fensteraufnahme zur Zeit nicht machbar.
 - [Windows] Bereichsanzeige blitzte manchmal beim start von vokoscreen kurz auf.
 - [Windows] Beim starten von vokoscreen öffnet sich das Terminal
 - [Windows] Webcamwindow Icons für das eingebelndete Menü werden nicht angezeigt
 - [Windows] Hilfebutton: ShellExecute benötigt im Aufruf anscheinend zwingend ein vorangestelltes http://
-- [All] Bereichsanzeige wird beim Screenshot ausgeblendet
 - [All] Bei den meisten Hilfebuttons ist keine Hilfe hinterlegt.
 - [All] Systray fehlt
 - [All] Aufnahme über zwei und mehrere Audio Aufnamegeräten fehlt.
 - [All] Menü Webcamfenster, es fehlt für die Settings der Dialog
 - [All] Menü Webcamfenster "NoBorder", das Bild ist beim ersten Aufruf nicht an der richtigen Position
+- [ALL] Audiogeräte plug and unplug muß noch eingebaut werden
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 

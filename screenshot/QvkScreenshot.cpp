@@ -6,7 +6,6 @@
 #include "QvkRegionChoise.h"
 
 #include <QImageWriter>
-//#include <QTest>
 #include <QApplication>
 #include <QScreen>
 #include <QGuiApplication>
@@ -20,7 +19,6 @@
 QvkScreenshot::QvkScreenshot(MainWindow *value, Ui_MainWindow *ui_mainwindow ):vkWinInfo(new QvkWinInfo),
                                                                                vkCountdown(new QvkCountdown),
                                                                                regionChoise(new QvkRegionChoise)
-
 {
     parent = value; // Parent is vokoscreenGUI
     ui = ui_mainwindow;
@@ -97,7 +95,6 @@ void QvkScreenshot::slot_preshot_Screenshot()
         slot_singleShot_Screenshot();
         return;
     }
-
 
     if( ( ui->radioButtonScreenshotWindow->isChecked() == true )  and ( ui->spinBoxScreenshotCountDown->value() > 0 ) )
     {
