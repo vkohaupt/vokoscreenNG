@@ -86,7 +86,7 @@ void QvkScreenshot::slot_preshot_Screenshot()
     {
         parent->hide();
         disconnect( vkCountdown, 0, 0, 0 );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this, SLOT( slot_shot_Screenshot() ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this, SLOT( slot_singleShot_Screenshot() ) );
         vkCountdown->startCountdown( ui->spinBoxScreenshotCountDown->value() );
         return;
     }
@@ -94,7 +94,7 @@ void QvkScreenshot::slot_preshot_Screenshot()
     if ( ui->radioButtonScreenshotFullscreen->isChecked() == true )
     {
         parent->hide();
-        slot_shot_Screenshot();
+        slot_singleShot_Screenshot();
         return;
     }
 
@@ -126,7 +126,7 @@ void QvkScreenshot::slot_preshot_Screenshot()
         parent->hide();
         regionChoise->recordMode( true );
         disconnect( vkCountdown, 0, 0, 0 );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this, SLOT( slot_pre_area_countDown_Screenshot() ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this, SLOT( slot_singleShot_Screenshot() ) );
         vkCountdown->startCountdown( ui->spinBoxScreenshotCountDown->value() );
         return;
     }
@@ -134,12 +134,12 @@ void QvkScreenshot::slot_preshot_Screenshot()
     if ( ui->radioButtonScreenshotArea->isChecked() == true )
     {
         regionChoise->recordMode( true );
-        QTimer::singleShot( 1000, this, SLOT( slot_shot_Screenshot() ) );
+        slot_singleShot_Screenshot();
     }
 }
 
 
-void QvkScreenshot::slot_pre_area_countDown_Screenshot()
+void QvkScreenshot::slot_singleShot_Screenshot()
 {
     QTimer::singleShot( 1000, this, SLOT( slot_shot_Screenshot() ) );
 }

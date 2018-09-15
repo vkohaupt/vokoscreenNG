@@ -20,7 +20,7 @@ public slots:
 private slots: 
     void slot_formats_Screenshot();
     void slot_preshot_Screenshot();
-    void slot_pre_area_countDown_Screenshot();
+    void slot_singleShot_Screenshot();
     void slot_shot_Screenshot();
     void slot_show_Screenshoot();
     void slot_Screenshot_count_changed( int newCount );
