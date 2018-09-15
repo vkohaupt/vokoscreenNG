@@ -124,27 +124,29 @@ void QvkScreenshot::slot_preshot_Screenshot()
     if ( ( ui->radioButtonScreenshotArea->isChecked() == true ) and ( ui->spinBoxScreenshotCountDown->value() > 0 ) )
     {
         parent->hide();
-        regionChoise->hide();
+        regionChoise->recordMode( true );
         disconnect( vkCountdown, 0, 0, 0 );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ),   this,         SLOT( slot_shot_Screenshot() ) );
-        connect( this,                SIGNAL( signal_finish_screenshot( bool ) ), regionChoise, SLOT( show( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this, SLOT( slot_pre_area_countDown_Screenshot() ) );
         vkCountdown->startCountdown( ui->spinBoxScreenshotCountDown->value() );
         return;
     }
 
     if ( ui->radioButtonScreenshotArea->isChecked() == true )
     {
-        parent->hide();
-        regionChoise->hide();
-        slot_shot_Screenshot();
-        regionChoise->show();
+        regionChoise->recordMode( true );
+        QTimer::singleShot( 1000, this, SLOT( slot_shot_Screenshot() ) );
     }
+}
+
+
+void QvkScreenshot::slot_pre_area_countDown_Screenshot()
+{
+    QTimer::singleShot( 1000, this, SLOT( slot_shot_Screenshot() ) );
 }
 
 
 void QvkScreenshot::slot_shot_Screenshot()
 {
-    //QTest::qSleep( 1000 );
     QApplication::beep();
 
     if ( ui->radioButtonScreenshotFullscreen->isChecked() == true )
@@ -167,6 +169,7 @@ void QvkScreenshot::slot_shot_Screenshot()
                                      regionChoise->getYRecordArea(),
                                      regionChoise->getWidth(),
                                      regionChoise->getHeight() );
+        regionChoise->recordMode( false );
     }
 
     bool ok = pixmap.save( ui->lineEditPicturePath->text() + \
