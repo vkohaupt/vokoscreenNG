@@ -6,7 +6,7 @@
 #include "QvkRegionChoise.h"
 
 #include <QImageWriter>
-#include <QTest>
+//#include <QTest>
 #include <QApplication>
 #include <QScreen>
 #include <QGuiApplication>
@@ -144,7 +144,7 @@ void QvkScreenshot::slot_preshot_Screenshot()
 
 void QvkScreenshot::slot_shot_Screenshot()
 {
-    QTest::qSleep( 1000 );
+    //QTest::qSleep( 1000 );
     QApplication::beep();
 
     if ( ui->radioButtonScreenshotFullscreen->isChecked() == true )

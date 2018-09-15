@@ -17,7 +17,7 @@
 #include <QStringList>
 #include <QImageWriter>
 #include <QScreen>
-#include <QTest>
+//#include <QTest>
 #include <QLibraryInfo>
 
 #ifdef Q_OS_LINUX
@@ -1011,7 +1011,7 @@ void MainWindow::slot_preStart()
     if ( ui->radioButtonArea->isChecked() == true )
     {
        vkRegionChoise->recordMode( true );
-       QTest::qSleep(100);
+       //QTest::qSleep(100);
        vkRegionChoise->repaint();
        vkRegionChoise->update();
        slot_Start();

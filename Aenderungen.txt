@@ -1,9 +1,8 @@
 2.9.2 Beta Begonnen am 12.09.2018
 
 [Windows]
-- Vokoscreen-deploy.bat neu erarbeitet.
-- Opus crash on windows. Unter Windows gibt es vorerst kein Opus bis eine Lösung gefunden wurde.
-
+- Vokoscreen-deploy.bat neu erarbeitet.[1]
+- WARNING: no real random source present! erscheint in der Konsole. Hat sich mit[1] in Luft aufgelöst :>)
 
 [All]
 - Aufnahme mit Audio funktionierte nur einmal https://github.com/vkohaupt/vokoscreenNG/commit/c3834467fde60f9d9f75b49d9d094a8180387cda
@@ -11,9 +10,10 @@
 
 
 [Bestehende Bugs]
+- [Windows] Der Audiocode Opus führt zum Programmabsturtz, Opus für Windows wurde daher deaktiviert.
+- [windows] Fensteraufnahme zur Zeit nicht machbar.
 - [Windows] Bereichsanzeige blitzte manchmal beim start von vokoscreen kurz auf.
 - [Windows] Beim starten von vokoscreen öffnet sich das Terminal
-- [Windows] WARNING: no real random source present! erscheint in der Konsole
 - [Windows] Webcamwindow Icons für das eingebelndete Menü werden nicht angezeigt
 - [Windows] Hilfebutton: ShellExecute benötigt im Aufruf anscheinend zwingend ein vorangestelltes http://
 - [All] Bereichsanzeige wird beim Screenshot ausgeblendet

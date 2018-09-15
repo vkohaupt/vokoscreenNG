@@ -5,8 +5,10 @@
 #-------------------------------------------------
 
 unix: QT += x11extras
-QT += core gui widgets testlib multimedia multimediawidgets
+QT += core gui widgets multimedia multimediawidgets
 # network dbus
+# testlib // Achtung unter Windows wird die konsole geöffnet.
+
 
 TARGET = vokoscreen
 TEMPLATE = app

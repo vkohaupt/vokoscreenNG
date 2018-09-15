@@ -1,7 +1,8 @@
 #include "QvkCountdown.h"
 #include <QDesktopWidget>
-#include <QTest>
+//#include <QTest>
 #include <QTimer>
+#include <QApplication>
 
 QvkCountdown::QvkCountdown()
 {
