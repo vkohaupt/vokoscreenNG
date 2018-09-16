@@ -7,13 +7,15 @@
 QvkStorageUI::QvkStorageUI(Ui_MainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
-    QTimer *timer = new QTimer(this);
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_systemInfo() ) );
-    timer->start( 500 );
     QWidget *widget = new QWidget();
     storageGUI.setupUi( widget );
     storageGUI.labelVideoSize->setText("");
+    storageGUI.labelFreeSize->setText("");
     ui->tabWidgetScreencast->setCornerWidget( widget, Qt::TopRightCorner);
+
+    QTimer *timer = new QTimer(this);
+    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_systemInfo() ) );
+    timer->start( 500 );
 }
 
 QvkStorageUI::~QvkStorageUI()
