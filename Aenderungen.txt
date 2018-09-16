@@ -8,7 +8,8 @@
 - Aufnahme mit Audio funktionierte nur einmal https://github.com/vkohaupt/vokoscreenNG/commit/c3834467fde60f9d9f75b49d9d094a8180387cda
 - "Limit of disk free space" fehlte der Hilfebutton
 - QTest overall disabled -https://github.com/vkohaupt/vokoscreenNG/commit/5c28a27c16d2836192c0952d97ee38f8632856cb
-- Bereichsanzeige wwurde beim Screenshot ausgeblendet
+- Bereichsanzeige wurde beim Screenshot ausgeblendet
+- Audio für Windows, Pulse und Alsa wurden jeweils in eine eigene Klasse ausgelagert.
 
 
 [Bestehende Bugs]
