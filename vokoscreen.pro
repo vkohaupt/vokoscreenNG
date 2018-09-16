@@ -77,7 +77,7 @@ include(storageUI/storageui.pri)
 include(screenshot/screenshot.pri)
 
 # pulse
-include(audio/pulse/pulse.pri)
+include(audio/pulse/audioPulse.pri)
 
 # alsa
 include(audio/alsa/audioAlsa.pri)

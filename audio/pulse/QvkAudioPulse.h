@@ -1,17 +1,17 @@
-#ifndef QvkPulse_H 
-#define QvkPulse_H
+#ifndef QvkAudioPulse_H
+#define QvkAudioPulse_H
 
 #include "ui_mainwindow.h"
 #include <QObject>
 #include <gst/gst.h>
 
-class QvkPulse: public QObject
+class QvkAudioPulse: public QObject
 {
     Q_OBJECT
 
 public:
-    QvkPulse(  Ui_MainWindow *ui_mainwindow );
-    virtual ~QvkPulse();
+    QvkAudioPulse(  Ui_MainWindow *ui_mainwindow );
+    virtual ~QvkAudioPulse();
 
     
 public slots:

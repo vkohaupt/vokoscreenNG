@@ -32,7 +32,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                                           vkWinInfo(new QvkWinInfo),
                                           vkCountdown(new QvkCountdown),
                                           vkRegionChoise(new QvkRegionChoise),
-                                          vkPulse(new QvkPulse(ui)),
+                                          vkAudioPulse(new QvkAudioPulse(ui)),
                                           vkAudioAlsa(new QvkAudioAlsa(ui)),
                                           vkAudioWindows(new QvkAudioWindows(ui))
 {
@@ -213,9 +213,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->pushButtonAudiocodecDefault, SLOT( setEnabled( bool ) ) );
 
 #ifdef Q_OS_LINUX
-    connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), this,    SLOT( slot_clearVerticalLayoutAudioDevices( bool ) ) );
-    connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkPulse, SLOT( slot_getPulsesDevices( bool ) ) );
-    connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), this,    SLOT( slot_clearVerticalLayoutAudioDevices( bool ) ) );
+    connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), this,         SLOT( slot_clearVerticalLayoutAudioDevices( bool ) ) );
+    connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkAudioPulse, SLOT( slot_getPulsesDevices( bool ) ) );
+    connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), this,         SLOT( slot_clearVerticalLayoutAudioDevices( bool ) ) );
     connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), vkAudioAlsa,  SLOT( slot_getAlsaDevices( bool ) ) );
 
     // Pulse is Standard. If no pulsedevice found change to alsa

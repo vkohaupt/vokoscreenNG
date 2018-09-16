@@ -1,17 +1,17 @@
-#include "QvkPulse.h"
+#include "QvkAudioPulse.h"
 
-QvkPulse::QvkPulse( Ui_MainWindow *ui_mainwindow )
+QvkAudioPulse::QvkAudioPulse( Ui_MainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
 }
 
 
-QvkPulse::~QvkPulse()
+QvkAudioPulse::~QvkAudioPulse()
 {
 }
 
 
-QString QvkPulse::get_AudioDeviceString( GstDevice *device )
+QString QvkAudioPulse::get_AudioDeviceString( GstDevice *device )
 {
   static const char *const ignored_propnames[] = { "name", "parent", "direction", "template", "caps", NULL };
   GString *launch_line = NULL;
@@ -96,7 +96,7 @@ QString QvkPulse::get_AudioDeviceString( GstDevice *device )
 }
 
 
-QStringList QvkPulse::get_all_Audio_devices()
+QStringList QvkAudioPulse::get_all_Audio_devices()
 {
     GstDeviceMonitor *monitor;
     GstCaps *caps;
@@ -131,7 +131,7 @@ QStringList QvkPulse::get_all_Audio_devices()
 }
 
 
-void QvkPulse::slot_getPulsesDevices( bool value )
+void QvkAudioPulse::slot_getPulsesDevices( bool value )
 {
     Q_UNUSED(value);
     QStringList list = get_all_Audio_devices();

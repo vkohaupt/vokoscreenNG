@@ -7,7 +7,7 @@
 #include "QvkCameraController.h"
 #include "QvkSettings.h"
 #include "QvkStorageUI.h"
-#include "QvkPulse.h"
+#include "QvkAudioPulse.h"
 #include "QvkAudioAlsa.h"
 #include "QvkAudioWindows.h"
 
@@ -32,7 +32,7 @@ public:
     QvkWinInfo *vkWinInfo;
     QvkCountdown *vkCountdown;
     QvkRegionChoise *vkRegionChoise;
-    QvkPulse *vkPulse;
+    QvkAudioPulse *vkAudioPulse;
     QvkAudioAlsa *vkAudioAlsa;
     QvkAudioWindows *vkAudioWindows;
 
