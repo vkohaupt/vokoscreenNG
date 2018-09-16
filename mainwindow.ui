@@ -375,7 +375,7 @@
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_11">
                <property name="spacing">
-                <number>6</number>
+                <number>0</number>
                </property>
                <property name="leftMargin">
                 <number>0</number>
@@ -387,7 +387,7 @@
                 <number>0</number>
                </property>
                <property name="bottomMargin">
-                <number>0</number>
+                <number>6</number>
                </property>
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -428,6 +428,13 @@
                 </layout>
                </item>
                <item>
+                <widget class="Line" name="line_6">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
                 <widget class="QScrollArea" name="scrollAreaAudioDevice">
                  <property name="frameShape">
                   <enum>QFrame::NoFrame</enum>
@@ -444,7 +451,7 @@
                     <x>0</x>
                     <y>0</y>
                     <width>513</width>
-                    <height>81</height>
+                    <height>87</height>
                    </rect>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -468,13 +475,6 @@
                 </widget>
                </item>
               </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="Line" name="line_3">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
              </widget>
             </item>
             <item>

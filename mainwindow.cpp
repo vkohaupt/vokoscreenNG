@@ -33,7 +33,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                                           vkCountdown(new QvkCountdown),
                                           vkRegionChoise(new QvkRegionChoise),
                                           vkPulse(new QvkPulse(ui)),
-                                          vkAlsa(new QvkAlsa(ui))
+                                          vkAlsa(new QvkAlsa(ui)),
+                                          vkAudioWindows(new QvkAudioWindows(ui))
 {
     ui->setupUi(this);
 
@@ -215,7 +216,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), this,    SLOT( slot_clearVerticalLayoutAudioDevices( bool ) ) );
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkPulse, SLOT( slot_getPulsesDevices( bool ) ) );
     connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), this,    SLOT( slot_clearVerticalLayoutAudioDevices( bool ) ) );
-    connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), vkAlsa,    SLOT( slot_getAlsaDevices( bool ) ) );
+    connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), vkAlsa,  SLOT( slot_getAlsaDevices( bool ) ) );
 
     // Pulse is Standard. If no pulsedevice found change to alsa
     ui->radioButtonPulse->click();
@@ -224,7 +225,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #ifdef Q_OS_WIN
     ui->radioButtonPulse->hide();
     ui->radioButtonAlsa->hide();
-    slot_getWindowsDevices();
+    vkAudioWindows->slot_getWindowsDevices();
 #endif
 
     // Tab 2 Codec and Audio
@@ -516,22 +517,6 @@ void MainWindow::slot_clearVerticalLayoutAudioDevices( bool value )
             delete layoutItem;
         }
     }
-}
-
-
-void MainWindow::slot_getWindowsDevices()
-{
-    foreach (const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
-    {
-        QCheckBox *checkboxAudioDevice = new QCheckBox();
-        checkboxAudioDevice->setText( deviceInfo.deviceName() );
-        checkboxAudioDevice->setAccessibleName( deviceInfo.deviceName() );
-        checkboxAudioDevice->setObjectName( "checkboxAudioDevice" + deviceInfo.deviceName() );
-        ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
-        checkboxAudioDevice->setAutoExclusive( true );
-    }
-    QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
-    ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
 }
 
 
