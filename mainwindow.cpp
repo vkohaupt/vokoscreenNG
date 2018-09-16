@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                                           vkCountdown(new QvkCountdown),
                                           vkRegionChoise(new QvkRegionChoise),
                                           vkPulse(new QvkPulse(ui)),
-                                          vkAlsa(new QvkAlsa(ui)),
+                                          vkAudioAlsa(new QvkAudioAlsa(ui)),
                                           vkAudioWindows(new QvkAudioWindows(ui))
 {
     ui->setupUi(this);
@@ -216,7 +216,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), this,    SLOT( slot_clearVerticalLayoutAudioDevices( bool ) ) );
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkPulse, SLOT( slot_getPulsesDevices( bool ) ) );
     connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), this,    SLOT( slot_clearVerticalLayoutAudioDevices( bool ) ) );
-    connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), vkAlsa,  SLOT( slot_getAlsaDevices( bool ) ) );
+    connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), vkAudioAlsa,  SLOT( slot_getAlsaDevices( bool ) ) );
 
     // Pulse is Standard. If no pulsedevice found change to alsa
     ui->radioButtonPulse->click();

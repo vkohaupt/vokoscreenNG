@@ -1,16 +1,16 @@
-#ifndef QvkAlsa_H 
-#define QvkAlsa_H
+#ifndef QvkAudioAlsa_H 
+#define QvkAudioAlsa_H
 
 #include "ui_mainwindow.h"
 #include <QObject>
 
-class QvkAlsa: public QObject
+class QvkAudioAlsa: public QObject
 {
     Q_OBJECT
     
 public:
-    QvkAlsa(  Ui_MainWindow *ui_mainwindow );
-    virtual ~QvkAlsa();
+    QvkAudioAlsa(  Ui_MainWindow *ui_mainwindow );
+    virtual ~QvkAudioAlsa();
 
     
 public slots:

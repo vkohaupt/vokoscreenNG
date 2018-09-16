@@ -8,7 +8,7 @@
 #include "QvkSettings.h"
 #include "QvkStorageUI.h"
 #include "QvkPulse.h"
-#include "QvkAlsa.h"
+#include "QvkAudioAlsa.h"
 #include "QvkAudioWindows.h"
 
 #include <QMainWindow>
@@ -33,7 +33,7 @@ public:
     QvkCountdown *vkCountdown;
     QvkRegionChoise *vkRegionChoise;
     QvkPulse *vkPulse;
-    QvkAlsa *vkAlsa;
+    QvkAudioAlsa *vkAudioAlsa;
     QvkAudioWindows *vkAudioWindows;
 
     void makeAndSetValidIcon(QTabWidget *widget, int index, QIcon icon );

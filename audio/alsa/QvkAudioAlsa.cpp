@@ -1,20 +1,20 @@
-#include "QvkAlsa.h"
+#include "QvkAudioAlsa.h"
 
 #include <QAudioDeviceInfo>
 #include <QDebug>
 
-QvkAlsa::QvkAlsa( Ui_MainWindow *ui_mainwindow )
+QvkAudioAlsa::QvkAudioAlsa( Ui_MainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
 }
 
 
-QvkAlsa::~QvkAlsa()
+QvkAudioAlsa::~QvkAudioAlsa()
 {
 }
 
 
-void QvkAlsa::slot_getAlsaDevices( bool value )
+void QvkAudioAlsa::slot_getAlsaDevices( bool value )
 {
     Q_UNUSED(value);
     foreach (const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )

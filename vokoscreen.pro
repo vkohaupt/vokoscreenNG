@@ -80,7 +80,7 @@ include(screenshot/screenshot.pri)
 include(audio/pulse/pulse.pri)
 
 # alsa
-include(audio/alsa/alsa.pri)
+include(audio/alsa/audioAlsa.pri)
 
 # windows
 include(audio/windows/audioWindows.pri)
