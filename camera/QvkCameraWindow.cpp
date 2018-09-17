@@ -4,6 +4,7 @@ QvkCameraWindow::QvkCameraWindow()
 {
     move( 0, 0 ); // Es wird ein move benötigt das das Fenster beim erneuten öffnen an der selben stelle erscheint
 
+    setWindowFlags( Qt::WindowStaysOnTopHint | Qt::Tool );
     setStyleSheet( "background-color:black;" );
 
     widgetSize = QSize( 30, 30 );
@@ -88,12 +89,12 @@ void QvkCameraWindow::slot_frameOnOff( bool value )
 {
   if ( value == true )
   {
-    this->setWindowFlags( Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+    this->setWindowFlags( Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Tool);
   }
 
   if ( value == false )
   {
-    this->setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint );
+    this->setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint | Qt::Tool );
   }
 
   show();
