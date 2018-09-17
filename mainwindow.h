@@ -109,6 +109,8 @@ private slots:
     void slot_startTime();
     void slot_setHour( int value );
     void slot_setMinute( int value );
+    void slot_areaSetResolution( QString value );
+    void slot_areaReset();
 
 
 signals:

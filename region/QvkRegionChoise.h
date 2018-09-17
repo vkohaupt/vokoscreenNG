@@ -38,6 +38,7 @@ public:
   int getYRecordArea();
 
   void recordMode(bool value);
+  void areaSetResolution(int width, int height);
 
 
 public slots:

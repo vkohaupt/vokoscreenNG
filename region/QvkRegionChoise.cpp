@@ -1195,12 +1195,22 @@ int QvkRegionChoise::getWidth()
   return frame_Width - framePenWidth;
 }
 
+
 void QvkRegionChoise::slot_areaReset()
 {
     frame_X = 200 - framePenHalf;
     frame_Y = 200 - framePenHalf;
     frame_Width = frame_min_width;
     frame_height = frame_min_height;
+    repaint();
+    update();
+}
+
+
+void QvkRegionChoise::areaSetResolution( int width, int height )
+{
+    frame_Width = width + framePenWidth;
+    frame_height = height + framePenWidth;
     repaint();
     update();
 }

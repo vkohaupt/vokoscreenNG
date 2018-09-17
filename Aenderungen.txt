@@ -10,6 +10,7 @@
 - QTest overall disabled -https://github.com/vkohaupt/vokoscreenNG/commit/5c28a27c16d2836192c0952d97ee38f8632856cb
 - Bereichsanzeige wurde beim Screenshot ausgeblendet
 - Audio für Windows, Pulse und Alsa wurden jeweils in eine eigene Klasse ausgelagert.
+- Für die Bereichsanzeige wurde eine Dropdownbutton eingeführt mit verschiedenen Auflösungen
 
 
 [Bestehende Bugs]

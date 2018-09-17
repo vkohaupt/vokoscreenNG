@@ -200,6 +200,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setEnabled( bool ) ) );
 
     connect( ui->toolButtonAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
+    connect( ui->toolButtonAreaReset, SIGNAL( clicked( bool ) ), this,           SLOT( slot_areaReset() ) );
 
     QStringList resolutionStringList;
     resolutionStringList << "320 x 200 CGA 16 : 10"
@@ -218,6 +219,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                          << "1280 x 1024 SXGA 5 : 4"
                          << "1920 x 1080 HD1080 16 : 9";
     ui->comboBoxAreaSize->addItems( resolutionStringList );
+    connect( ui->comboBoxAreaSize, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_areaSetResolution( QString ) ) );
+
 
     // Tab 1 Audio
     ui->toolButtonFramesHelp->setIcon( ui->toolButtonFramesHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
@@ -342,6 +345,20 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+
+void MainWindow::slot_areaSetResolution( QString value )
+{
+   QString width = value.section( " ", 0, 0 );
+   QString height = value.section( " ", 2, 2 );
+   vkRegionChoise->areaSetResolution( QString(width).toInt(), QString(height).toInt() );
+}
+
+
+void MainWindow::slot_areaReset()
+{
+    ui->comboBoxAreaSize->setCurrentIndex( 0 );
 }
 
 
