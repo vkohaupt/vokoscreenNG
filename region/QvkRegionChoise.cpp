@@ -44,10 +44,10 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
                                    penHalf(penWidth/2),
                                    frame_X(200-framePenHalf),
                                    frame_Y(200-framePenHalf),
-                                   frame_Width(250 + framePenWidth),
-                                   frame_height(250 + framePenWidth),
-                                   frame_min_width(250 + framePenWidth),
-                                   frame_min_height(250 + framePenWidth)
+                                   frame_Width(320 + framePenWidth),
+                                   frame_height(200 + framePenWidth),
+                                   frame_min_width(320 + framePenWidth),
+                                   frame_min_height(200 + framePenWidth)
 {
 #ifdef Q_OS_LINUX
     if ( QX11Info::isPlatformX11() == true )
@@ -1199,8 +1199,8 @@ void QvkRegionChoise::slot_areaReset()
 {
     frame_X = 200 - framePenHalf;
     frame_Y = 200 - framePenHalf;
-    frame_Width = 250 + framePenWidth;
-    frame_height = 250 + framePenWidth;
+    frame_Width = frame_min_width;
+    frame_height = frame_min_height;
     repaint();
     update();
 }

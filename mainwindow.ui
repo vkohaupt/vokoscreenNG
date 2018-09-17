@@ -146,6 +146,9 @@
                   </property>
                  </widget>
                 </item>
+                <item>
+                 <widget class="QComboBox" name="comboBoxAreaSize"/>
+                </item>
                </layout>
               </item>
               <item>

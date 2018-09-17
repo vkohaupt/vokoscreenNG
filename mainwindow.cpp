@@ -187,16 +187,37 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->toolButtonAreaReset->setIcon( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
 
     connect( ui->radioButtonFullscreen, SIGNAL( toggled( bool ) ), ui->toolButtonAreaReset, SLOT( setDisabled( bool ) ) );
+    connect( ui->radioButtonFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );//**
 
     connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->toolButtonAreaReset, SLOT( setDisabled( bool ) ) );
+    connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );
 
     connect( this,                  SIGNAL( signal_close()  ), vkRegionChoise,   SLOT( close() ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), vkRegionChoise,   SLOT( setVisible( bool ) ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->toolButtonAreaReset, SLOT( setEnabled( bool ) ) );
+    connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setEnabled( bool ) ) );
 
     connect( ui->toolButtonAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
+
+    QStringList resolutionStringList;
+    resolutionStringList << "320 x 200 CGA 16 : 10"
+                         << "320 x 240 QCGA 4 : 3"
+                         << "640 x 480 VGA 4 : 3"
+                         << "720 x 480 NTSC 3 : 2"
+                         << "854 x 450 WVGA 16 : 9"
+                         << "800 x 480 WVGA 5 : 3"
+                         << "768 x 567 PAL 4 :3"
+                         << "800 x 600 SVGA 4 : 3"
+                         << "1024 x 768 XVGA 4 : 3"
+                         << "1152 x 768 N/A 3 : 2"
+                         << "1280 x 720 HD-720 16 : 9"
+                         << "1280 x 800 WXGA 16 : 10"
+                         << "1280 x 768 WXGA 5 : 3"
+                         << "1280 x 1024 SXGA 5 : 4"
+                         << "1920 x 1080 HD1080 16 : 9";
+    ui->comboBoxAreaSize->addItems( resolutionStringList );
 
     // Tab 1 Audio
     ui->toolButtonFramesHelp->setIcon( ui->toolButtonFramesHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
