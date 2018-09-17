@@ -78,6 +78,21 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << "[vokoscreen] SerialNumber from screen: " << screen->serialNumber();
     qDebug( " " );
 
+    resolutionStringList << "320 x 200 CGA 16 : 10"
+                         << "320 x 240 QCGA 4 : 3"
+                         << "640 x 480 VGA 4 : 3"
+                         << "720 x 480 NTSC 3 : 2"
+                         << "800 x 480 WVGA 5 : 3"
+                         << "800 x 600 SVGA 4 : 3"
+                         << "854 x 450 WVGA 16 : 9"
+                         << "768 x 567 PAL 4 :3"
+                         << "1024 x 768 XVGA 4 : 3"
+                         << "1152 x 768 N/A 3 : 2"
+                         << "1280 x 720 HD-720 16 : 9"
+                         << "1280 x 768 WXGA 5 : 3"
+                         << "1280 x 800 WXGA 16 : 10"
+                         << "1280 x 1024 SXGA 5 : 4"
+                         << "1920 x 1080 HD1080 16 : 9";
 
     QvkStorageUI *vkStorageUI = new QvkStorageUI( ui );
     Q_UNUSED(vkStorageUI);
@@ -104,7 +119,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonFullscreen, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonWindow,     SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonArea,       SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->toolButtonAreaReset,   SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxScreen,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxAudioOnOff,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonPulse,      SLOT( setEnabled( bool ) ) );
@@ -136,7 +150,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonFullscreen, SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonWindow,     SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonArea,       SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->toolButtonAreaReset,   SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxScreen,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxAudioOnOff,    SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonPulse,      SLOT( setDisabled( bool ) ) );
@@ -201,23 +214,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     connect( ui->toolButtonAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
     connect( ui->toolButtonAreaReset, SIGNAL( clicked( bool ) ), this,           SLOT( slot_areaReset() ) );
+    connect( ui->pushButtonStart,     SIGNAL( clicked( bool ) ), this, SLOT( slot_disableAreaWidgets() ) );
+    connect( ui->pushButtonStop ,     SIGNAL( clicked( bool ) ), this, SLOT( slot_enableAreaWidgets() ) );
 
-    QStringList resolutionStringList;
-    resolutionStringList << "320 x 200 CGA 16 : 10"
-                         << "320 x 240 QCGA 4 : 3"
-                         << "640 x 480 VGA 4 : 3"
-                         << "720 x 480 NTSC 3 : 2"
-                         << "854 x 450 WVGA 16 : 9"
-                         << "800 x 480 WVGA 5 : 3"
-                         << "768 x 567 PAL 4 :3"
-                         << "800 x 600 SVGA 4 : 3"
-                         << "1024 x 768 XVGA 4 : 3"
-                         << "1152 x 768 N/A 3 : 2"
-                         << "1280 x 720 HD-720 16 : 9"
-                         << "1280 x 800 WXGA 16 : 10"
-                         << "1280 x 768 WXGA 5 : 3"
-                         << "1280 x 1024 SXGA 5 : 4"
-                         << "1920 x 1080 HD1080 16 : 9";
     ui->comboBoxAreaSize->addItems( resolutionStringList );
     connect( ui->comboBoxAreaSize, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_areaSetResolution( QString ) ) );
 
@@ -284,6 +283,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxStopRecordingAfter, SIGNAL( toggled( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
     connect( timerStopRecordingAfter, SIGNAL( timeout() ), ui->pushButtonStop, SLOT( click() ) );
 
+    ui->comboBoxScale->addItems( resolutionStringList );
     ui->toolButtonScaleHelp->setIcon( ui->toolButtonScaleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->checkBoxScale,   SIGNAL( toggled( bool ) ), ui->comboBoxScale, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setEnabled( bool ) ) );
@@ -359,6 +359,26 @@ void MainWindow::slot_areaSetResolution( QString value )
 void MainWindow::slot_areaReset()
 {
     ui->comboBoxAreaSize->setCurrentIndex( 0 );
+}
+
+
+void MainWindow::slot_disableAreaWidgets()
+{
+   if ( ui->radioButtonArea->isChecked() == true  )
+   {
+       ui->toolButtonAreaReset->setEnabled( false );
+       ui->comboBoxAreaSize->setEnabled( false );
+   }
+}
+
+
+void MainWindow::slot_enableAreaWidgets()
+{
+   if ( ui->radioButtonArea->isChecked() == true  )
+   {
+       ui->toolButtonAreaReset->setEnabled( true );
+       ui->comboBoxAreaSize->setEnabled( true );
+   }
 }
 
 

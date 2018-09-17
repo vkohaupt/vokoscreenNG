@@ -42,6 +42,7 @@ public:
 
 private:
     QvkSettings vkSettings;
+    QStringList resolutionStringList;
 
     const QString VK_Gstr_Pipe = " ! ";
     QString VK_GStreamer_Version();
@@ -111,7 +112,8 @@ private slots:
     void slot_setMinute( int value );
     void slot_areaSetResolution( QString value );
     void slot_areaReset();
-
+    void slot_disableAreaWidgets();
+    void slot_enableAreaWidgets();
 
 signals:
     void signal_close();
