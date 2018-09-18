@@ -425,7 +425,12 @@ void MainWindow::slot_setMinute( int value )
 
 void MainWindow::slot_audioHelp()
 {
-    QDesktopServices::openUrl( QUrl( "linuxecke.volkoh.de/vokoscreen/help/3.0/audio.html", QUrl::TolerantMode ) );
+#ifdef Q_OS_LINUX
+    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/3.0/audio.html", QUrl::TolerantMode ) );
+#endif
+#ifdef Q_OS_WIN
+    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/3.0/audio.html", QUrl::TolerantMode ) );
+#endif
 }
 
 

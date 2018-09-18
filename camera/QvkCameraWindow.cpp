@@ -4,7 +4,7 @@ QvkCameraWindow::QvkCameraWindow()
 {
     move( 0, 0 ); // Es wird ein move benötigt das das Fenster beim erneuten öffnen an der selben stelle erscheint
 
-    setWindowFlags( Qt::WindowStaysOnTopHint );
+    setWindowFlags( Qt::WindowStaysOnTopHint | Qt::Dialog);
     setStyleSheet( "background-color:black;" );
 
     widgetSize = QSize( 30, 30 );
