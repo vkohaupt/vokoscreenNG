@@ -12,7 +12,6 @@
 - Bereichsanzeige wurde beim Screenshot ausgeblendet.
 - Audio für Windows, Pulse und Alsa wurden jeweils in eine eigene Klasse ausgelagert.
 - Für die Bereichsanzeige wurde ein Dropdownbutton eingeführt mit verschiedenen Auflösungen.
-- Bereichsanzeige und Webcam erscheinen nun nicht mehr in der Fensterleiste.
 
 
 [Bestehende Bugs]
@@ -28,6 +27,7 @@
 - [All] Menü Webcamfenster, es fehlt für die Settings der Dialog
 - [All] Menü Webcamfenster "NoBorder", das Bild ist beim ersten Aufruf nicht an der richtigen Position
 - [ALL] Audiogeräte plug and unplug muß noch eingebaut werden
+- [All] Bereichsanzeige und Webcam erscheinen in der Fensterleiste. Qt::tool und Qt::tooltip funktionieren nur wenn vokoscreen den Fokus hat.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
