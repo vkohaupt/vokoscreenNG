@@ -10,6 +10,7 @@
 #include "QvkAudioPulse.h"
 #include "QvkAudioAlsa.h"
 #include "QvkAudioWindows.h"
+#include "QvkHelp.h"
 
 #include <QMainWindow>
 #include <QFileSystemWatcher>
@@ -35,6 +36,7 @@ public:
     QvkAudioPulse *vkAudioPulse;
     QvkAudioAlsa *vkAudioAlsa;
     QvkAudioWindows *vkAudioWindows;
+    QvkHelp *vkHelp;
 
     void makeAndSetValidIcon(QTabWidget *widget, int index, QIcon icon );
     void makeAndSetValidIconForSideBar( int index, QIcon icon );
@@ -100,11 +102,6 @@ private slots:
 
     void slot_set_available_VideoCodecs_in_Combox( QString suffix );
     void slot_set_available_AudioCodecs_in_Combox( QString suffix );
-
-    void slot_audioHelp();
-    void slot_availableHelp();
-    void slot_miscHelpVideoPath();
-    void slot_miscHelpStartTime();
 
     void slot_StartTimer( bool value );
     void slot_startTime();

@@ -84,3 +84,6 @@ include(audio/alsa/audioAlsa.pri)
 
 # windows
 include(audio/windows/audioWindows.pri)
+
+# help
+include(help/help.pri)
