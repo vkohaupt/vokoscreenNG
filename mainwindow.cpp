@@ -263,7 +263,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
 
     // Tab 3 Misc
-    ui->toolButtonVideoPathHelp->setIcon( ui->toolButtonVideoPathHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonHelpVideoPath->setIcon( ui->toolButtonHelpVideoPath->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     videoFileSystemWatcher = new QFileSystemWatcher();
     connect( ui->PushButtonVideoPath, SIGNAL( clicked( bool ) ),        this, SLOT( slot_newVideoPath() ) );
     connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetNewPath() ) );
@@ -272,23 +272,23 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
 
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
-    ui->toolButtonStartTimeHelp->setIcon( ui->toolButtonStartTimeHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonHelpStartTime->setIcon( ui->toolButtonHelpStartTime->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     timerStartTimer = new QTimer();
     connect( timerStartTimer,  SIGNAL( timeout() ),           this, SLOT( slot_startTime() ) );
     connect( ui->SliderHouer,  SIGNAL( valueChanged( int ) ), this, SLOT( slot_setHour( int ) ) );
     connect( ui->SliderMinute, SIGNAL( valueChanged( int ) ), this, SLOT( slot_setMinute( int ) ) );
 
-    ui->toolButtonStopRecordingAfterHelp->setIcon( ui->toolButtonStopRecordingAfterHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonHelpStopRecordingAfter->setIcon( ui->toolButtonHelpStopRecordingAfter->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->checkBoxStopRecordingAfter, SIGNAL( toggled( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
     connect( timerStopRecordingAfter, SIGNAL( timeout() ), ui->pushButtonStop, SLOT( click() ) );
 
     ui->comboBoxScale->addItems( resolutionStringList );
-    ui->toolButtonScaleHelp->setIcon( ui->toolButtonScaleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonHelpScale->setIcon( ui->toolButtonHelpScale->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->checkBoxScale,   SIGNAL( toggled( bool ) ), ui->comboBoxScale, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setDisabled( bool ) ) );
 
-    ui->toolButtonLimitOfFreeDiskSpaceHelp->setIcon( ui->toolButtonLimitOfFreeDiskSpaceHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonHelpLimitOfFreeDiskSpace->setIcon( ui->toolButtonHelpLimitOfFreeDiskSpace->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
 
     // Tab 4 Available muxer, encoder etc.

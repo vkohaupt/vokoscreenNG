@@ -26,6 +26,9 @@ private slots:
     void slot_availableHelp();
     void slot_miscHelpVideoPath();
     void slot_miscHelpStartTime();
+    void slot_miscHelpStopRecordingAfter();
+    void slot_miscHelpScal();
+    void slot_miscHelpLimitOfFreeDiskSpace();
 
 
 protected:

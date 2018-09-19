@@ -95,7 +95,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <property name="iconSize">
            <size>
@@ -573,7 +573,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QToolButton" name="toolButtonVideoPathHelp">
+               <widget class="QToolButton" name="toolButtonHelpVideoPath">
                 <property name="toolTip">
                  <string notr="true"/>
                 </property>
@@ -686,7 +686,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QToolButton" name="toolButtonStartTimeHelp">
+               <widget class="QToolButton" name="toolButtonHelpStartTime">
                 <property name="toolTip">
                  <string notr="true"/>
                 </property>
@@ -781,7 +781,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QToolButton" name="toolButtonStopRecordingAfterHelp">
+               <widget class="QToolButton" name="toolButtonHelpStopRecordingAfter">
                 <property name="toolTip">
                  <string notr="true"/>
                 </property>
@@ -853,7 +853,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QToolButton" name="toolButtonScaleHelp">
+               <widget class="QToolButton" name="toolButtonHelpScale">
                 <property name="toolTip">
                  <string notr="true"/>
                 </property>
@@ -935,7 +935,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QToolButton" name="toolButtonLimitOfFreeDiskSpaceHelp">
+               <widget class="QToolButton" name="toolButtonHelpLimitOfFreeDiskSpace">
                 <property name="text">
                  <string>Help</string>
                 </property>
