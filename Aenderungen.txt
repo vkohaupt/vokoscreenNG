@@ -12,6 +12,9 @@
 - Bereichsanzeige wurde beim Screenshot ausgeblendet.
 - Audio für Windows, Pulse und Alsa wurden jeweils in eine eigene Klasse ausgelagert.
 - Für die Bereichsanzeige wurde ein Dropdownbutton eingeführt mit verschiedenen Auflösungen.
+- Starttime: Vor den Schiebereglern für Stunde und Minuten wurde dementsprechender Text gesetzt
+- StopRecordingAfter: Text nun vor den Spinboxen gesetzt
+- Tab 3(Misc) Alle Hilfebutton für Linux nun funktionsfähig.
 
 
 [Bestehende Bugs]
@@ -28,6 +31,10 @@
 - [All] Menü Webcamfenster "NoBorder", das Bild ist beim ersten Aufruf nicht an der richtigen Position
 - [ALL] Audiogeräte plug and unplug muß noch eingebaut werden
 - [All] Bereichsanzeige und Webcam erscheinen in der Fensterleiste. Qt::tool und Qt::tooltip funktionieren nur wenn vokoscreen den Fokus hat.
+- [All] Für die Hilfebutton einen eigenen Browser bereitstellen
+
+
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
