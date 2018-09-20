@@ -95,7 +95,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -644,6 +644,27 @@
                   </widget>
                  </item>
                  <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_18">
+                   <item>
+                    <widget class="QLabel" name="labelMinutes">
+                     <property name="text">
+                      <string>Minutes</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="labelSeconds">
+                     <property name="midLineWidth">
+                      <number>8</number>
+                     </property>
+                     <property name="text">
+                      <string>Seconds</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
                   <layout class="QVBoxLayout" name="verticalLayout_14">
                    <item>
                     <widget class="QSlider" name="SliderHouer">
@@ -744,9 +765,6 @@
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QSpinBox" name="spinBoxStopRecordingAfterHouers"/>
-                 </item>
-                 <item>
                   <widget class="QLabel" name="label_7">
                    <property name="text">
                     <string>Houers</string>
@@ -754,7 +772,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QSpinBox" name="spinBoxStopRecordingAfterMinutes"/>
+                  <widget class="QSpinBox" name="spinBoxStopRecordingAfterHouers"/>
                  </item>
                  <item>
                   <widget class="QLabel" name="label_8">
@@ -764,16 +782,19 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QSpinBox" name="spinBoxStopRecordingAfterSeconds">
-                   <property name="value">
-                    <number>15</number>
-                   </property>
-                  </widget>
+                  <widget class="QSpinBox" name="spinBoxStopRecordingAfterMinutes"/>
                  </item>
                  <item>
                   <widget class="QLabel" name="label_9">
                    <property name="text">
                     <string>Seconds</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QSpinBox" name="spinBoxStopRecordingAfterSeconds">
+                   <property name="value">
+                    <number>15</number>
                    </property>
                   </widget>
                  </item>
