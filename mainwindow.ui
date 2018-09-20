@@ -646,19 +646,25 @@
                  <item>
                   <layout class="QVBoxLayout" name="verticalLayout_18">
                    <item>
-                    <widget class="QLabel" name="labelMinutes">
+                    <widget class="QLabel" name="labelHour">
                      <property name="text">
-                      <string>Minutes</string>
+                      <string>Hour</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="labelSeconds">
+                    <widget class="QLabel" name="labelMinute">
                      <property name="midLineWidth">
                       <number>8</number>
                      </property>
                      <property name="text">
-                      <string>Seconds</string>
+                      <string>Minute</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                      </property>
                     </widget>
                    </item>
@@ -769,6 +775,9 @@
                    <property name="text">
                     <string>Houers</string>
                    </property>
+                   <property name="alignment">
+                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                   </property>
                   </widget>
                  </item>
                  <item>
@@ -779,6 +788,9 @@
                    <property name="text">
                     <string>Minutes</string>
                    </property>
+                   <property name="alignment">
+                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                   </property>
                   </widget>
                  </item>
                  <item>
@@ -788,6 +800,9 @@
                   <widget class="QLabel" name="label_9">
                    <property name="text">
                     <string>Seconds</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                    </property>
                   </widget>
                  </item>
