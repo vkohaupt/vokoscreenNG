@@ -7,7 +7,7 @@
 unix: QT += x11extras
 QT += core gui widgets multimedia multimediawidgets
 # testlib // Achtung unter Windows öffnet sich damit die Konsole und qDebug() zeigt seine Ausgaben.
-
+QT += webenginewidgets
 
 TARGET = vokoscreen
 TEMPLATE = app
