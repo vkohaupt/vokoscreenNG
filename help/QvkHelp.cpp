@@ -2,7 +2,7 @@
 
 #include <QDesktopServices>
 #include <QUrl>
-#include <QWebEngineView>
+
 
 QvkHelp::QvkHelp( Ui_MainWindow *ui_mainwindow )
 {
@@ -25,12 +25,24 @@ void QvkHelp::initHelp()
     connect( ui->toolButtonHelpLimitOfFreeDiskSpace, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpLimitOfFreeDiskSpace() ) );
 
     connect( ui->toolButtonAvalaibleHelp, SIGNAL( clicked( bool ) ), SLOT( slot_availableHelp() ) );
+
+#ifdef Q_OS_LINUX
+    webEngineProfile = new QWebEngineProfile();
+    webEnginePage = new QWebEnginePage( webEngineProfile );
+    webEngineView = new QWebEngineView();
+
+    QIcon icon;
+    icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
+    webEngineView->setWindowIcon( icon );
+#endif
 }
 
 void QvkHelp::slot_audioHelp()
 {
 #ifdef Q_OS_LINUX
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/audio.html", QUrl::TolerantMode ) );
+    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/audio.html") );
+    webEngineView->setPage( webEnginePage );
+    webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
     QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/audio.html", QUrl::TolerantMode ) );
@@ -40,11 +52,9 @@ void QvkHelp::slot_audioHelp()
 void QvkHelp::slot_miscHelpVideoPath()
 {
 #ifdef Q_OS_LINUX
-//http://doc.qt.io/qt-5/qwebengineprofile.html#setCachePath
-    QWebEngineView *view = new QWebEngineView();
-    view->load(QUrl("http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/misc.html#miscHelpVideoPath"));
-    view->show();
-//    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/misc.html#miscHelpVideoPath", QUrl::TolerantMode ) );
+    webEnginePage->load( QUrl("http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/misc.html#miscHelpVideoPath") );
+    webEngineView->setPage( webEnginePage );
+    webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
     QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/misc.html#miscHelpVideoPath", QUrl::TolerantMode ) );
@@ -54,10 +64,9 @@ void QvkHelp::slot_miscHelpVideoPath()
 void QvkHelp::slot_miscHelpStartTime()
 {
 #ifdef Q_OS_LINUX
-    QWebEngineView *view = new QWebEngineView();
-    view->load(QUrl("http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/misc.html#miscHelpVideoPath"));
-    view->show();
-//    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/misc.html#miscHelpVideoPath", QUrl::TolerantMode ) );
+    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/misc.html#miscHelpStartTime" ) );
+    webEngineView->setPage( webEnginePage );
+    webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
     QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/misc.html#miscHelpStartTime", QUrl::TolerantMode ) );

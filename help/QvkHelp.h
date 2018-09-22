@@ -4,6 +4,12 @@
 #include "ui_mainwindow.h"
 #include <QObject>
 
+#ifdef Q_OS_LINUX
+#include <QWebEngineView>
+#include <QWebEnginePage>
+#include <QWebEngineProfile>
+#endif
+
 class QvkHelp: public QObject
 {
     Q_OBJECT
@@ -20,7 +26,13 @@ public slots:
 private:
     Ui_MainWindow *ui;
 
+#ifdef Q_OS_LINUX
+    QWebEngineProfile *webEngineProfile;
+    QWebEnginePage *webEnginePage;
+    QWebEngineView *webEngineView;
+#endif
     
+
 private slots:
     void slot_audioHelp();
     void slot_availableHelp();
