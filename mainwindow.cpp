@@ -222,6 +222,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->comboBoxAreaSize->addItems( resolutionStringList );
     connect( ui->comboBoxAreaSize, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_areaSetResolution( QString ) ) );
 
+    ui->toolButtonHelpCountdown->setIcon( ui->toolButtonHelpCountdown->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+
 
     // Tab 1 Audio
     ui->toolButtonFramesHelp->setIcon( ui->toolButtonFramesHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );

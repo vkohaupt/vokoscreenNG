@@ -25,6 +25,9 @@ void QvkHelp::slot_close()
 
 void QvkHelp::initHelp()
 {
+
+    connect( ui->toolButtonHelpCountdown, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenCountdown() ) );
+
     connect( ui->toolButtonAudioHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioHelp() ) );
 
     connect( ui->toolButtonHelpVideoPath, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpVideoPath() ) );
@@ -45,6 +48,20 @@ void QvkHelp::initHelp()
     webEngineView->setWindowIcon( icon );
 #endif
 }
+
+
+void QvkHelp::slot_screenCountdown()
+{
+#ifdef Q_OS_LINUX
+    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screenCountdown.html") );
+    webEngineView->setPage( webEnginePage );
+    webEngineView->show();
+#endif
+#ifdef Q_OS_WIN
+    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screenCountdown.html", QUrl::TolerantMode ) );
+#endif
+}
+
 
 void QvkHelp::slot_audioHelp()
 {

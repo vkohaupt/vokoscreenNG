@@ -35,6 +35,7 @@ private:
     
 
 private slots:
+    void slot_screenCountdown();
     void slot_audioHelp();
     void slot_availableHelp();
     void slot_miscHelpVideoPath();
