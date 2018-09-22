@@ -14,6 +14,13 @@ QvkHelp::~QvkHelp()
 {
 }
 
+
+void QvkHelp::slot_close()
+{
+    webEngineView->close();
+}
+
+
 void QvkHelp::initHelp()
 {
     connect( ui->toolButtonAudioHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioHelp() ) );
@@ -76,7 +83,9 @@ void QvkHelp::slot_miscHelpStartTime()
 void QvkHelp::slot_miscHelpStopRecordingAfter()
 {
 #ifdef Q_OS_LINUX
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/misc.html#miscHelpStopRecordingAfter", QUrl::TolerantMode ) );
+    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/misc.html#miscHelpStopRecordingAfter" ) );
+    webEngineView->setPage( webEnginePage );
+    webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
     QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/misc.html#miscHelpStopRecordingAfter", QUrl::TolerantMode ) );
@@ -86,7 +95,9 @@ void QvkHelp::slot_miscHelpStopRecordingAfter()
 void QvkHelp::slot_miscHelpScal()
 {
 #ifdef Q_OS_LINUX
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/misc.html#miscHelpScal", QUrl::TolerantMode ) );
+    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/misc.html#miscHelpScal" ) );
+    webEngineView->setPage( webEnginePage );
+    webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
     QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/misc.html#miscHelpScal", QUrl::TolerantMode ) );
@@ -96,7 +107,9 @@ void QvkHelp::slot_miscHelpScal()
 void QvkHelp::slot_miscHelpLimitOfFreeDiskSpace()
 {
 #ifdef Q_OS_LINUX
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/misc.html#miscHelpLimitOfFreeDiskSpace", QUrl::TolerantMode ) );
+    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/misc.html#miscHelpLimitOfFreeDiskSpace" ) );
+    webEngineView->setPage( webEnginePage );
+    webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
     QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/misc.html#miscHelpLimitOfFreeDiskSpace", QUrl::TolerantMode ) );
@@ -106,7 +119,9 @@ void QvkHelp::slot_miscHelpLimitOfFreeDiskSpace()
 void QvkHelp::slot_availableHelp()
 {
 #ifdef Q_OS_LINUX
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/available.html", QUrl::TolerantMode ) );
+    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/available.html" ) );
+    webEngineView->setPage( webEnginePage );
+    webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
     QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/available.html", QUrl::TolerantMode ) );

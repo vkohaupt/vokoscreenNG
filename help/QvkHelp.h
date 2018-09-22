@@ -21,6 +21,7 @@ public:
 
     
 public slots:
+    void slot_close();
 
   
 private:
