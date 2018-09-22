@@ -17,7 +17,9 @@ QvkHelp::~QvkHelp()
 
 void QvkHelp::slot_close()
 {
+#ifdef Q_OS_LINUX
     webEngineView->close();
+#endif
 }
 
 
