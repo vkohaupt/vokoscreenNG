@@ -125,7 +125,7 @@
                 <item>
                  <widget class="QToolButton" name="toolButton">
                   <property name="text">
-                   <string>...</string>
+                   <string>Help</string>
                   </property>
                  </widget>
                 </item>
@@ -143,7 +143,7 @@
                 <item>
                  <widget class="QToolButton" name="toolButton_2">
                   <property name="text">
-                   <string>...</string>
+                   <string>Help</string>
                   </property>
                  </widget>
                 </item>
@@ -178,7 +178,7 @@
                 <item>
                  <widget class="QToolButton" name="toolButton_3">
                   <property name="text">
-                   <string>...</string>
+                   <string>Help</string>
                   </property>
                  </widget>
                 </item>
@@ -215,38 +215,11 @@
                 <item>
                  <widget class="QToolButton" name="toolButtonHelpCountdown">
                   <property name="text">
-                   <string>...</string>
+                   <string>Help</string>
                   </property>
                  </widget>
                 </item>
                </layout>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_5">
-              <item>
-               <widget class="QComboBox" name="comboBoxScreen">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="verticalSpacer_10">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>40</height>
-                 </size>
-                </property>
-               </spacer>
               </item>
              </layout>
             </item>
@@ -268,19 +241,33 @@
              </layout>
             </item>
             <item>
-             <layout class="QVBoxLayout" name="verticalLayout_7">
+             <layout class="QVBoxLayout" name="verticalLayout_5">
               <item>
-               <widget class="QToolButton" name="toolButtonScreenHelp">
-                <property name="toolTip">
-                 <string notr="true"/>
-                </property>
-                <property name="text">
-                 <string notr="true">Help</string>
-                </property>
-               </widget>
+               <layout class="QHBoxLayout" name="horizontalLayout_32">
+                <item>
+                 <widget class="QComboBox" name="comboBoxScreen">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolButtonScreenHelp">
+                  <property name="toolTip">
+                   <string notr="true"/>
+                  </property>
+                  <property name="text">
+                   <string notr="true">Help</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
               <item>
-               <spacer name="verticalSpacer">
+               <spacer name="verticalSpacer_8">
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>
                 </property>
