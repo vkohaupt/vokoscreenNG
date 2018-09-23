@@ -25,6 +25,24 @@ void QvkHelp::slot_close()
 
 void QvkHelp::initHelp()
 {
+    QStringList helpStringList;
+#ifdef Q_OS_LINUX
+    helpStringList << "http:/"
+                   << "linuxecke.volkoh.de"
+                   << "vokoscreen"
+                   << "help"
+                   << "linux"
+                   << "3.0";
+#endif
+#ifdef Q_OS_WIN
+    helpStringList << "http:/"
+                   << "linuxecke.volkoh.de"
+                   << "vokoscreen"
+                   << "help"
+                   << "windows"
+                   << "3.0";
+#endif
+    vk_helpPath = helpStringList.join( "/" ).append( "/");
 
     connect( ui->toolButtonHelpFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenFullscreen() ) );
     connect( ui->toolButtonHelpWindow, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenWindow() ) );
@@ -55,51 +73,56 @@ void QvkHelp::initHelp()
 
 void QvkHelp::slot_screenFullscreen()
 {
+    QUrl url( vk_helpPath + "screencast/screenFullscreen.html", QUrl::TolerantMode );
 #ifdef Q_OS_LINUX
-    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/screenCountdown.html") );
+    webEnginePage->load( url );
     webEngineView->setPage( webEnginePage );
     webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screenCountdown.html", QUrl::TolerantMode ) );
+    QDesktopServices::openUrl( url );
 #endif
 }
 
 
 void QvkHelp::slot_screenWindow()
 {
+    QUrl url( vk_helpPath + "screencast/screenWindow.html", QUrl::TolerantMode );
 #ifdef Q_OS_LINUX
-    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/screenCountdown.html") );
+    webEnginePage->load( url );
     webEngineView->setPage( webEnginePage );
     webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screenCountdown.html", QUrl::TolerantMode ) );
+    QDesktopServices::openUrl( url );
 #endif
 }
 
 
 void QvkHelp::slot_screenArea()
 {
+    QUrl url( vk_helpPath + "screencast/screenArea.html", QUrl::TolerantMode );
 #ifdef Q_OS_LINUX
-    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/screenCountdown.html") );
+    webEnginePage->load( url );
     webEngineView->setPage( webEnginePage );
     webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screenCountdown.html", QUrl::TolerantMode ) );
+    QDesktopServices::openUrl( url );
 #endif
 }
 
+
 void QvkHelp::slot_screenCountdown()
 {
+    QUrl url( vk_helpPath + "screencast/screenCountdown.html", QUrl::TolerantMode );
 #ifdef Q_OS_LINUX
-    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/screenCountdown.html") );
+    webEnginePage->load( url );
     webEngineView->setPage( webEnginePage );
     webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screenCountdown.html", QUrl::TolerantMode ) );
+    QDesktopServices::openUrl( url );
 #endif
 }
 
@@ -112,7 +135,7 @@ void QvkHelp::slot_audioHelp()
     webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/audio.html", QUrl::TolerantMode ) );
+    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screencast/audio.html", QUrl::TolerantMode ) );
 #endif
 }
 
@@ -124,7 +147,7 @@ void QvkHelp::slot_miscHelpVideoPath()
     webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/misc.html#miscHelpVideoPath", QUrl::TolerantMode ) );
+    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screencast/misc.html#miscHelpVideoPath", QUrl::TolerantMode ) );
 #endif
 }
 
@@ -136,7 +159,7 @@ void QvkHelp::slot_miscHelpStartTime()
     webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/misc.html#miscHelpStartTime", QUrl::TolerantMode ) );
+    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screencast/misc.html#miscHelpStartTime", QUrl::TolerantMode ) );
 #endif
 }
 
@@ -148,7 +171,7 @@ void QvkHelp::slot_miscHelpStopRecordingAfter()
     webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/misc.html#miscHelpStopRecordingAfter", QUrl::TolerantMode ) );
+    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screencast/misc.html#miscHelpStopRecordingAfter", QUrl::TolerantMode ) );
 #endif
 }
 
@@ -160,7 +183,7 @@ void QvkHelp::slot_miscHelpScal()
     webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/misc.html#miscHelpScal", QUrl::TolerantMode ) );
+    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screencast/misc.html#miscHelpScal", QUrl::TolerantMode ) );
 #endif
 }
 
@@ -172,7 +195,7 @@ void QvkHelp::slot_miscHelpLimitOfFreeDiskSpace()
     webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/misc.html#miscHelpLimitOfFreeDiskSpace", QUrl::TolerantMode ) );
+    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screencast/misc.html#miscHelpLimitOfFreeDiskSpace", QUrl::TolerantMode ) );
 #endif
 }
 
@@ -184,7 +207,7 @@ void QvkHelp::slot_availableHelp()
     webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/available.html", QUrl::TolerantMode ) );
+    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screencast/available.html", QUrl::TolerantMode ) );
 #endif
 }
 

@@ -26,6 +26,8 @@ public slots:
   
 private:
     Ui_MainWindow *ui;
+    QString vk_helpPath;
+
 
 #ifdef Q_OS_LINUX
     QWebEngineProfile *webEngineProfile;
