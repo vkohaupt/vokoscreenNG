@@ -35,14 +35,20 @@ private:
     
 
 private slots:
+    void slot_screenFullscreen();
+    void slot_screenWindow();
+    void slot_screenArea();
     void slot_screenCountdown();
+
     void slot_audioHelp();
-    void slot_availableHelp();
+
     void slot_miscHelpVideoPath();
     void slot_miscHelpStartTime();
     void slot_miscHelpStopRecordingAfter();
     void slot_miscHelpScal();
     void slot_miscHelpLimitOfFreeDiskSpace();
+
+    void slot_availableHelp();
 
 
 protected:

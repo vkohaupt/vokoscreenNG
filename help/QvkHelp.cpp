@@ -26,6 +26,9 @@ void QvkHelp::slot_close()
 void QvkHelp::initHelp()
 {
 
+    connect( ui->toolButtonHelpFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenFullscreen() ) );
+    connect( ui->toolButtonHelpWindow, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenWindow() ) );
+    connect( ui->toolButtonHelpArea, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenArea() ) );
     connect( ui->toolButtonHelpCountdown, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenCountdown() ) );
 
     connect( ui->toolButtonAudioHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioHelp() ) );
@@ -50,10 +53,48 @@ void QvkHelp::initHelp()
 }
 
 
+void QvkHelp::slot_screenFullscreen()
+{
+#ifdef Q_OS_LINUX
+    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/screenCountdown.html") );
+    webEngineView->setPage( webEnginePage );
+    webEngineView->show();
+#endif
+#ifdef Q_OS_WIN
+    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screenCountdown.html", QUrl::TolerantMode ) );
+#endif
+}
+
+
+void QvkHelp::slot_screenWindow()
+{
+#ifdef Q_OS_LINUX
+    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/screenCountdown.html") );
+    webEngineView->setPage( webEnginePage );
+    webEngineView->show();
+#endif
+#ifdef Q_OS_WIN
+    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screenCountdown.html", QUrl::TolerantMode ) );
+#endif
+}
+
+
+void QvkHelp::slot_screenArea()
+{
+#ifdef Q_OS_LINUX
+    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/screenCountdown.html") );
+    webEngineView->setPage( webEnginePage );
+    webEngineView->show();
+#endif
+#ifdef Q_OS_WIN
+    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screenCountdown.html", QUrl::TolerantMode ) );
+#endif
+}
+
 void QvkHelp::slot_screenCountdown()
 {
 #ifdef Q_OS_LINUX
-    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screenCountdown.html") );
+    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/screenCountdown.html") );
     webEngineView->setPage( webEnginePage );
     webEngineView->show();
 #endif
@@ -66,7 +107,7 @@ void QvkHelp::slot_screenCountdown()
 void QvkHelp::slot_audioHelp()
 {
 #ifdef Q_OS_LINUX
-    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/audio.html") );
+    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/audio.html") );
     webEngineView->setPage( webEnginePage );
     webEngineView->show();
 #endif
@@ -78,7 +119,7 @@ void QvkHelp::slot_audioHelp()
 void QvkHelp::slot_miscHelpVideoPath()
 {
 #ifdef Q_OS_LINUX
-    webEnginePage->load( QUrl("http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/misc.html#miscHelpVideoPath") );
+    webEnginePage->load( QUrl("http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/misc.html#miscHelpVideoPath") );
     webEngineView->setPage( webEnginePage );
     webEngineView->show();
 #endif
@@ -90,7 +131,7 @@ void QvkHelp::slot_miscHelpVideoPath()
 void QvkHelp::slot_miscHelpStartTime()
 {
 #ifdef Q_OS_LINUX
-    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/misc.html#miscHelpStartTime" ) );
+    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/misc.html#miscHelpStartTime" ) );
     webEngineView->setPage( webEnginePage );
     webEngineView->show();
 #endif
@@ -102,7 +143,7 @@ void QvkHelp::slot_miscHelpStartTime()
 void QvkHelp::slot_miscHelpStopRecordingAfter()
 {
 #ifdef Q_OS_LINUX
-    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/misc.html#miscHelpStopRecordingAfter" ) );
+    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/misc.html#miscHelpStopRecordingAfter" ) );
     webEngineView->setPage( webEnginePage );
     webEngineView->show();
 #endif
@@ -114,7 +155,7 @@ void QvkHelp::slot_miscHelpStopRecordingAfter()
 void QvkHelp::slot_miscHelpScal()
 {
 #ifdef Q_OS_LINUX
-    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/misc.html#miscHelpScal" ) );
+    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/misc.html#miscHelpScal" ) );
     webEngineView->setPage( webEnginePage );
     webEngineView->show();
 #endif
@@ -126,7 +167,7 @@ void QvkHelp::slot_miscHelpScal()
 void QvkHelp::slot_miscHelpLimitOfFreeDiskSpace()
 {
 #ifdef Q_OS_LINUX
-    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/misc.html#miscHelpLimitOfFreeDiskSpace" ) );
+    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/misc.html#miscHelpLimitOfFreeDiskSpace" ) );
     webEngineView->setPage( webEnginePage );
     webEngineView->show();
 #endif
@@ -138,7 +179,7 @@ void QvkHelp::slot_miscHelpLimitOfFreeDiskSpace()
 void QvkHelp::slot_availableHelp()
 {
 #ifdef Q_OS_LINUX
-    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/available.html" ) );
+    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/available.html" ) );
     webEngineView->setPage( webEnginePage );
     webEngineView->show();
 #endif
