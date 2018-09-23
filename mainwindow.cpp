@@ -198,7 +198,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->radioButtonFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
     ui->radioButtonWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
 
-    ui->toolButtonScreenHelp->setIcon( ui->toolButtonScreenHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonHelpFullscreen->setIcon( ui->toolButtonHelpFullscreen->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonHelpWindow->setIcon( ui->toolButtonHelpWindow->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonHelpArea->setIcon( ui->toolButtonHelpArea->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     ui->toolButtonAreaReset->setIcon( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
 
     connect( ui->radioButtonFullscreen, SIGNAL( toggled( bool ) ), ui->toolButtonAreaReset, SLOT( setDisabled( bool ) ) );

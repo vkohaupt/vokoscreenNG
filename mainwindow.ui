@@ -123,7 +123,17 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="toolButton">
+                 <widget class="QComboBox" name="comboBoxScreen">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolButtonHelpFullscreen">
                   <property name="text">
                    <string>Help</string>
                   </property>
@@ -141,7 +151,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="toolButton_2">
+                 <widget class="QToolButton" name="toolButtonHelpWindow">
                   <property name="text">
                    <string>Help</string>
                   </property>
@@ -176,7 +186,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="toolButton_3">
+                 <widget class="QToolButton" name="toolButtonHelpArea">
                   <property name="text">
                    <string>Help</string>
                   </property>
@@ -234,47 +244,6 @@
                  <size>
                   <width>40</width>
                   <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_5">
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_32">
-                <item>
-                 <widget class="QComboBox" name="comboBoxScreen">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QToolButton" name="toolButtonScreenHelp">
-                  <property name="toolTip">
-                   <string notr="true"/>
-                  </property>
-                  <property name="text">
-                   <string notr="true">Help</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <spacer name="verticalSpacer_8">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>40</height>
                  </size>
                 </property>
                </spacer>
