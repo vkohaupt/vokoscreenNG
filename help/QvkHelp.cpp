@@ -217,13 +217,14 @@ void QvkHelp::slot_miscHelpLimitOfFreeDiskSpace()
 
 void QvkHelp::slot_availableHelp()
 {
+    QUrl url( vk_helpPath + "screencast/available.html", QUrl::TolerantMode );
 #ifdef Q_OS_LINUX
-    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/available.html" ) );
+    webEnginePage->load( url );
     webEngineView->setPage( webEnginePage );
     webEngineView->show();
 #endif
 #ifdef Q_OS_WIN
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screencast/available.html", QUrl::TolerantMode ) );
+    QDesktopServices::openUrl( url );
 #endif
 }
 
