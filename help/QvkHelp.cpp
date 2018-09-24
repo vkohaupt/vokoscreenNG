@@ -2,7 +2,7 @@
 
 #include <QDesktopServices>
 #include <QUrl>
-
+#include <QMenu>
 
 QvkHelp::QvkHelp( Ui_MainWindow *ui_mainwindow )
 {
@@ -63,6 +63,19 @@ void QvkHelp::initHelp()
     webEngineProfile = new QWebEngineProfile();
     webEnginePage = new QWebEnginePage( webEngineProfile );
     webEngineView = new QWebEngineView();
+
+    QAction *action = webEnginePage->action( QWebEnginePage::CopyImageUrlToClipboard );
+    action->setVisible( false );
+    action = webEnginePage->action( QWebEnginePage::DownloadImageToDisk );
+    action->setVisible( false );
+    action = webEnginePage->action( QWebEnginePage::CopyImageToClipboard );
+    action->setVisible( false );
+    action = webEnginePage->action( QWebEnginePage::DownloadLinkToDisk );
+    action->setVisible( false );
+    action = webEnginePage->action( QWebEnginePage::CopyLinkToClipboard );
+    action->setVisible( false );
+    action = webEnginePage->action( QWebEnginePage::OpenLinkInThisWindow );
+    action->setVisible( false );
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
