@@ -4,6 +4,9 @@
 #include <QUrl>
 #include <QMenu>
 
+// Windows build
+// https://chromium.googlesource.com/chromium/src/+/master/docs/windows_build_instructions.md
+
 QvkHelp::QvkHelp( Ui_MainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
