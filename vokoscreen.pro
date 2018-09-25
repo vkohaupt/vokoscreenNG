@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 unix: QT += x11extras webenginewidgets
-QT += core gui widgets multimedia multimediawidgets
+QT += core gui widgets multimedia multimediawidgets network
 # testlib // Achtung unter Windows öffnet sich damit die Konsole und qDebug() zeigt seine Ausgaben.
 
 TARGET = vokoscreen
@@ -86,3 +86,6 @@ include(audio/windows/audioWindows.pri)
 
 # help
 include(help/help.pri)
+
+# filedownloader
+include(filedownloader/helpController.pri)

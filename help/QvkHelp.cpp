@@ -227,4 +227,3 @@ void QvkHelp::slot_availableHelp()
     QDesktopServices::openUrl( url );
 #endif
 }
-
