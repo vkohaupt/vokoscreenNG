@@ -11,9 +11,10 @@ class QvkFileDownloader : public QObject
 {
     Q_OBJECT
 public:
-    QvkFileDownloader(QUrl url, QObject *parent = 0);
+    explicit QvkFileDownloader(QObject *parent = 0);
     virtual ~QvkFileDownloader();
     QByteArray downloadedData() const;
+    void setMyUrl( QUrl url );
 
 
 signals:

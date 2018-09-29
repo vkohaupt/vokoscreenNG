@@ -21,12 +21,14 @@ public slots:
   
 private:
     Ui_MainWindow *ui;
-    QvkFileDownloader *vkFileDownloader;
+    QvkFileDownloader *vkDownloaderTXT;
+    QvkFileDownloader *vkDownloaderFile;
     QString vk_helpPath;
 
 
 private slots:
-    void slot_loadImage();
+    void slot_loadTXT();
+    void slot_loadFile();
     void slot_screenFullscreen();
 
 
