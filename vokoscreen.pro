@@ -87,5 +87,3 @@ include(audio/windows/audioWindows.pri)
 # help
 include(help/help.pri)
 
-# filedownloader
-include(filedownloader/helpController.pri)
