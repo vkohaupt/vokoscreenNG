@@ -11,7 +11,6 @@
 #include "QvkAudioAlsa.h"
 #include "QvkAudioWindows.h"
 #include "QvkHelp.h"
-#include "QvkHelpController.h"
 
 #include <QMainWindow>
 #include <QFileSystemWatcher>
@@ -83,7 +82,6 @@ private:
     QTimer *timerStartTimer;
     QTimer *timerStopRecordingAfter = new QTimer( this );
 
-    QvkHelpController *vkHelpController;
 
 private slots:
     void slot_preStart();

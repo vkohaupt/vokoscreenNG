@@ -35,14 +35,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                                           vkAudioPulse(new QvkAudioPulse(ui)),
                                           vkAudioAlsa(new QvkAudioAlsa(ui)),
                                           vkAudioWindows(new QvkAudioWindows(ui)),
-                                          vkHelp(new QvkHelp(ui)),
-                                          vkHelpController( new QvkHelpController(ui))
+                                          vkHelp(new QvkHelp(ui))
 {
     ui->setupUi(this);
 
     vkHelp->initHelp();
     vkSettings.readAll();
-    vkHelpController->init();
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
