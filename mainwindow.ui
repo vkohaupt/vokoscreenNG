@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>654</width>
-    <height>391</height>
+    <height>499</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -450,7 +450,7 @@
                     <x>0</x>
                     <y>0</y>
                     <width>513</width>
-                    <height>87</height>
+                    <height>195</height>
                    </rect>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1056,7 +1056,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>222</width>
-                   <height>274</height>
+                   <height>382</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -1270,7 +1270,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="toolButtonBS">
+           <widget class="QToolButton" name="toolButtonBsScreencast">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -1516,6 +1516,25 @@
             </property>
             <property name="text">
              <string>Show</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="toolButtonBsScreenShot">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>icon</string>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>28</width>
+              <height>28</height>
+             </size>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -1810,7 +1829,7 @@
              </layout>
             </item>
             <item>
-             <spacer name="verticalSpacer_5">
+             <spacer name="verticalSpacer">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
@@ -1825,6 +1844,42 @@
            </layout>
           </widget>
          </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_32">
+          <item>
+           <spacer name="horizontalSpacer_15">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QToolButton" name="toolButtonBsCamera">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>icon</string>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>28</width>
+              <height>28</height>
+             </size>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>

@@ -197,10 +197,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 
 #ifdef Q_OS_LINUX
-    ui->toolButtonBS->setIcon( QIcon( ":/pictures/linux.png" ) );
+    ui->toolButtonBsScreencast->setIcon( QIcon( ":/pictures/linux.png" ) );
 #endif
 #ifdef Q_OS_WIN
-    ui->toolButtonBS->setIcon( QIcon( ":/pictures/windows.png" ) );
+    ui->toolButtonBsScreencast->setIcon( QIcon( ":/pictures/windows.png" ) );
 #endif
 
     ui->radioButtonFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
@@ -338,6 +338,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
 
     // **************** Begin Screenshot *****************************
+#ifdef Q_OS_LINUX
+    ui->toolButtonBsScreenShot->setIcon( QIcon( ":/pictures/linux.png" ) );
+#endif
+#ifdef Q_OS_WIN
+    ui->toolButtonBsScreenShot->setIcon( QIcon( ":/pictures/windows.png" ) );
+#endif
     QvkScreenshot *vkScreenshot = new QvkScreenshot( this, ui );
     Q_UNUSED(vkScreenshot);
     makeAndSetValidIcon( ui->tabWidgetScreenshot, 0, QIcon::fromTheme( "computer", QIcon( ":/pictures/computer.svg" ) ) );
@@ -346,6 +352,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
 
     // *****************Begin Camera *********************************
+#ifdef Q_OS_LINUX
+    ui->toolButtonBsCamera->setIcon( QIcon( ":/pictures/linux.png" ) );
+#endif
+#ifdef Q_OS_WIN
+    ui->toolButtonBsCamera->setIcon( QIcon( ":/pictures/windows.png" ) );
+#endif
     QvkCameraController *cameraController = new QvkCameraController( ui );
     Q_UNUSED(cameraController);
     makeAndSetValidIcon( ui->tabWidgetCamera, 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/camera-web.svg" ) ) );
