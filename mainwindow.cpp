@@ -195,6 +195,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #ifdef Q_OS_WIN
     ui->radioButtonWindow->hide();
 #endif
+
+#ifdef Q_OS_LINUX
+    ui->toolButtonBS->setIcon( QIcon( ":/pictures/linux.png" ) );
+#endif
+#ifdef Q_OS_WIN
+    ui->toolButtonBS->setIcon( QIcon( ":/pictures/windows.png" ) );
+#endif
+
     ui->radioButtonFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
     ui->radioButtonWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
 

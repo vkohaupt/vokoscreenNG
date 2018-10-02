@@ -46,6 +46,8 @@ void QvkHelp::initHelp()
                    << "3.0";
 #endif
     vk_helpPath = helpStringList.join( "/" ).append( "/");
+    QString language = "en";
+    vk_helpPath += language + "/";
 
     connect( ui->toolButtonHelpFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenFullscreen() ) );
     connect( ui->toolButtonHelpWindow, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenWindow() ) );
