@@ -17,9 +17,9 @@ QvkAudioAlsa::~QvkAudioAlsa()
 void QvkAudioAlsa::slot_getAlsaDevices( bool value )
 {
     Q_UNUSED(value);
-    foreach (const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
+    foreach ( const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
     {
-        if ( deviceInfo.deviceName().contains("alsa") == false)
+        if ( ( deviceInfo.deviceName().contains("alsa") == false ) and ( deviceInfo.deviceName() != "" ) )
         {
             QCheckBox *checkboxAudioDevice = new QCheckBox();
             checkboxAudioDevice->setText( deviceInfo.deviceName() );
@@ -31,4 +31,8 @@ void QvkAudioAlsa::slot_getAlsaDevices( bool value )
     }
     QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
     ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
+
+    // Select first device
+    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
+    listQCheckBox.at(0)->click();
 }
