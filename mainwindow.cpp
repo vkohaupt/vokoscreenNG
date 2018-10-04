@@ -131,7 +131,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelVideoCodec,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxVideoCodec,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonFormatDefault,SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( slot_IfStartAudioCodecWidgetsSetEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( slot_IfStartAudioCodecWidgetsSetEnabled() ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoPath,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameStartTime,        SLOT( setEnabled( bool ) ) );
@@ -156,7 +156,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelVideoCodec,       SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxVideoCodec,    SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonFormatDefault,SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this, SLOT( slot_IfStopAudioCodecWidgetsSetDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this, SLOT( slot_IfStopAudioCodecWidgetsSetDisabled() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoPath,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameStartTime,        SLOT( setDisabled( bool ) ) );
@@ -360,9 +360,9 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::slot_IfStartAudioCodecWidgetsSetEnabled( bool value )
+void MainWindow::slot_IfStartAudioCodecWidgetsSetEnabled()
 {
-    if ( ( ui->checkBoxAudioOnOff->checkState() == Qt::Checked ) and ( value == false )  )
+    if ( ui->checkBoxAudioOnOff->checkState() == Qt::Checked )
     {
         ui->labelAudioCodec->setEnabled( false );
         ui->comboBoxAudioCodec->setEnabled( false );
@@ -371,9 +371,9 @@ void MainWindow::slot_IfStartAudioCodecWidgetsSetEnabled( bool value )
 }
 
 
-void MainWindow::slot_IfStopAudioCodecWidgetsSetDisabled( bool value )
+void MainWindow::slot_IfStopAudioCodecWidgetsSetDisabled()
 {
-    if ( ( ui->checkBoxAudioOnOff->checkState() == Qt::Checked ) and ( value == false )  )
+    if ( ui->checkBoxAudioOnOff->checkState() == Qt::Checked )
     {
         ui->labelAudioCodec->setEnabled( true );
         ui->comboBoxAudioCodec->setEnabled( true );
