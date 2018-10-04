@@ -140,6 +140,7 @@ void QvkAudioPulse::slot_getPulsesDevices( bool value )
     QStringList list = get_all_Audio_devices();
     if ( !list.empty() )
     {
+        pulseAvailable = true;
         for ( int i = 0; i < list.count(); i++ )
         {
             QCheckBox *checkboxAudioDevice = new QCheckBox();
@@ -159,7 +160,14 @@ void QvkAudioPulse::slot_getPulsesDevices( bool value )
     }
     else
     {
+        pulseAvailable = false;
         ui->radioButtonPulse->setEnabled( false );
         ui->radioButtonAlsa->click();
     }
+}
+
+
+bool QvkAudioPulse::isPulseAvailable()
+{
+    return pulseAvailable;
 }

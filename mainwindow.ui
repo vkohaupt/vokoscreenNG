@@ -95,7 +95,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -259,38 +259,18 @@
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <item>
              <layout class="QGridLayout" name="gridLayoutFormatCodecs">
-              <item row="0" column="1">
-               <widget class="QSpinBox" name="spinBoxFrames">
-                <property name="value">
-                 <number>25</number>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QComboBox" name="comboBoxAudioCodec"/>
-              </item>
-              <item row="2" column="2">
-               <widget class="QLabel" name="labelAudioCodec">
+              <item row="0" column="0">
+               <widget class="QLabel" name="labelFrames">
                 <property name="text">
-                 <string>Audiocodec</string>
+                 <string>Frames</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                </widget>
               </item>
-              <item row="1" column="3">
-               <widget class="QComboBox" name="comboBoxVideoCodec"/>
-              </item>
-              <item row="0" column="7">
-               <widget class="QToolButton" name="toolButtonFramesHelp">
-                <property name="toolTip">
-                 <string notr="true">Help</string>
-                </property>
-                <property name="text">
-                 <string notr="true">Help</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="5">
-               <widget class="QPushButton" name="pushButtonFramesDefault">
+              <item row="2" column="5">
+               <widget class="QPushButton" name="pushButtonAudiocodecDefault">
                 <property name="toolTip">
                  <string>Default</string>
                 </property>
@@ -298,6 +278,9 @@
                  <string notr="true"/>
                 </property>
                </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QComboBox" name="comboBoxVideoCodec"/>
               </item>
               <item row="1" column="2">
                <widget class="QLabel" name="labelVideoCodec">
@@ -316,18 +299,22 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="labelFrames">
-                <property name="text">
-                 <string>Frames</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <item row="0" column="1">
+               <widget class="QSpinBox" name="spinBoxFrames">
+                <property name="value">
+                 <number>25</number>
                 </property>
                </widget>
               </item>
-              <item row="1" column="1">
-               <widget class="QComboBox" name="comboBoxFormat"/>
+              <item row="0" column="7">
+               <widget class="QToolButton" name="toolButtonFramesHelp">
+                <property name="toolTip">
+                 <string notr="true">Help</string>
+                </property>
+                <property name="text">
+                 <string notr="true">Help</string>
+                </property>
+               </widget>
               </item>
               <item row="0" column="6">
                <spacer name="horizontalSpacer_2">
@@ -352,8 +339,11 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="5">
-               <widget class="QPushButton" name="pushButtonAudiocodecDefault">
+              <item row="2" column="3">
+               <widget class="QComboBox" name="comboBoxAudioCodec"/>
+              </item>
+              <item row="0" column="5">
+               <widget class="QPushButton" name="pushButtonFramesDefault">
                 <property name="toolTip">
                  <string>Default</string>
                 </property>
@@ -362,182 +352,213 @@
                 </property>
                </widget>
               </item>
+              <item row="1" column="1">
+               <widget class="QComboBox" name="comboBoxFormat"/>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLabel" name="labelAudioCodec">
+                <property name="text">
+                 <string>Audiocodec</string>
+                </property>
+               </widget>
+              </item>
              </layout>
             </item>
             <item>
-             <widget class="QFrame" name="frame">
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_11">
-               <property name="spacing">
-                <number>0</number>
-               </property>
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>6</number>
-               </property>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0,0,0">
+             <layout class="QHBoxLayout" name="horizontalLayout_34">
+              <item>
+               <widget class="QFrame" name="frameAudio">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_11">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>6</number>
+                 </property>
                  <item>
-                  <widget class="QCheckBox" name="checkBoxAudioOnOff">
-                   <property name="text">
-                    <string>Audio</string>
-                   </property>
-                   <property name="checked">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
+                  <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0,0">
+                   <item>
+                    <widget class="QCheckBox" name="checkBoxAudioOnOff">
+                     <property name="text">
+                      <string>Audio</string>
+                     </property>
+                     <property name="checked">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QGroupBox" name="groupBoxPulseAlsa">
+                     <property name="flat">
+                      <bool>true</bool>
+                     </property>
+                     <layout class="QHBoxLayout" name="horizontalLayout_31">
+                      <property name="spacing">
+                       <number>0</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <item>
+                       <spacer name="horizontalSpacer_17">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QRadioButton" name="radioButtonPulse">
+                        <property name="text">
+                         <string>Pulse</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_16">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QRadioButton" name="radioButtonAlsa">
+                        <property name="text">
+                         <string>Alsa</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_14">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
                  </item>
                  <item>
-                  <widget class="QGroupBox" name="groupBox">
-                   <property name="flat">
-                    <bool>true</bool>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_31">
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                    <item>
-                     <spacer name="horizontalSpacer_17">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>40</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item>
-                     <widget class="QRadioButton" name="radioButtonPulse">
-                      <property name="text">
-                       <string>Pulse</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <spacer name="horizontalSpacer_16">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>40</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item>
-                     <widget class="QRadioButton" name="radioButtonAlsa">
-                      <property name="text">
-                       <string>Alsa</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <spacer name="horizontalSpacer_14">
+                  <widget class="Line" name="line_6">
                    <property name="orientation">
                     <enum>Qt::Horizontal</enum>
                    </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
+                  </widget>
                  </item>
                  <item>
-                  <widget class="QToolButton" name="toolButtonAudioHelp">
-                   <property name="toolTip">
-                    <string notr="true">Help</string>
+                  <widget class="QScrollArea" name="scrollAreaAudioDevice">
+                   <property name="frameShape">
+                    <enum>QFrame::NoFrame</enum>
                    </property>
-                   <property name="text">
-                    <string notr="true">Help</string>
+                   <property name="widgetResizable">
+                    <bool>true</bool>
                    </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                   </property>
+                   <widget class="QWidget" name="scrollAreaWidgetContentsAudioDevices">
+                    <property name="geometry">
+                     <rect>
+                      <x>0</x>
+                      <y>0</y>
+                      <width>455</width>
+                      <height>87</height>
+                     </rect>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                    </layout>
+                   </widget>
                   </widget>
                  </item>
                 </layout>
-               </item>
-               <item>
-                <widget class="Line" name="line_6">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QScrollArea" name="scrollAreaAudioDevice">
-                 <property name="frameShape">
-                  <enum>QFrame::NoFrame</enum>
-                 </property>
-                 <property name="widgetResizable">
-                  <bool>true</bool>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                 </property>
-                 <widget class="QWidget" name="scrollAreaWidgetContentsAudioDevices">
-                  <property name="geometry">
-                   <rect>
-                    <x>0</x>
-                    <y>0</y>
-                    <width>513</width>
-                    <height>81</height>
-                   </rect>
+               </widget>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <item>
+                 <widget class="QToolButton" name="toolButtonAudioHelp">
+                  <property name="toolTip">
+                   <string notr="true">Help</string>
                   </property>
-                  <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
-                   <property name="spacing">
-                    <number>0</number>
-                   </property>
-                   <property name="leftMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>0</number>
-                   </property>
-                  </layout>
+                  <property name="text">
+                   <string notr="true">Help</string>
+                  </property>
                  </widget>
-                </widget>
-               </item>
-              </layout>
-             </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_5">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_22">

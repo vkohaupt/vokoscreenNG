@@ -12,6 +12,7 @@ class QvkAudioPulse: public QObject
 public:
     QvkAudioPulse(  Ui_MainWindow *ui_mainwindow );
     virtual ~QvkAudioPulse();
+    bool isPulseAvailable();
 
     
 public slots:
@@ -22,6 +23,7 @@ private:
     Ui_MainWindow *ui;
     QString get_AudioDeviceString( GstDevice *device );
     QStringList get_all_Audio_devices();
+    bool pulseAvailable;
 
 
 private slots:
