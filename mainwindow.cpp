@@ -131,9 +131,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelVideoCodec,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxVideoCodec,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonFormatDefault,SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelAudioCodec,       SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxAudioCodec,    SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonAudiocodecDefault,SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( slot_IfStartAudioCodecWidgetsSetEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoPath,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameStartTime,        SLOT( setEnabled( bool ) ) );
@@ -158,9 +156,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelVideoCodec,       SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxVideoCodec,    SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonFormatDefault,SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelAudioCodec,       SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxAudioCodec,    SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonAudiocodecDefault,SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this, SLOT( slot_IfStopAudioCodecWidgetsSetDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoPath,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameStartTime,        SLOT( setDisabled( bool ) ) );
@@ -364,11 +360,33 @@ MainWindow::~MainWindow()
 }
 
 
+void MainWindow::slot_IfStartAudioCodecWidgetsSetEnabled( bool value )
+{
+    if ( ( ui->checkBoxAudioOnOff->checkState() == Qt::Checked ) and ( value == false )  )
+    {
+        ui->labelAudioCodec->setEnabled( false );
+        ui->comboBoxAudioCodec->setEnabled( false );
+        ui->pushButtonAudiocodecDefault->setEnabled( false );
+    }
+}
+
+
+void MainWindow::slot_IfStopAudioCodecWidgetsSetDisabled( bool value )
+{
+    if ( ( ui->checkBoxAudioOnOff->checkState() == Qt::Checked ) and ( value == false )  )
+    {
+        ui->labelAudioCodec->setEnabled( true );
+        ui->comboBoxAudioCodec->setEnabled( true );
+        ui->pushButtonAudiocodecDefault->setEnabled( true );
+    }
+}
+
+
 void MainWindow::slot_areaSetResolution( QString value )
 {
-   QString width = value.section( " ", 0, 0 );
-   QString height = value.section( " ", 2, 2 );
-   vkRegionChoise->areaSetResolution( QString(width).toInt(), QString(height).toInt() );
+    QString width = value.section( " ", 0, 0 );
+    QString height = value.section( " ", 2, 2 );
+    vkRegionChoise->areaSetResolution( QString(width).toInt(), QString(height).toInt() );
 }
 
 

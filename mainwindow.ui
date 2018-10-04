@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>654</width>
-    <height>385</height>
+    <width>701</width>
+    <height>379</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -259,18 +259,37 @@
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <item>
              <layout class="QGridLayout" name="gridLayoutFormatCodecs">
-              <item row="0" column="0">
-               <widget class="QLabel" name="labelFrames">
-                <property name="text">
-                 <string>Frames</string>
+              <item row="0" column="7">
+               <widget class="QToolButton" name="toolButtonFramesHelp">
+                <property name="toolTip">
+                 <string notr="true">Help</string>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                <property name="text">
+                 <string notr="true">Help</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="5">
-               <widget class="QPushButton" name="pushButtonAudiocodecDefault">
+              <item row="0" column="5">
+               <spacer name="horizontalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="2" column="3">
+               <widget class="QComboBox" name="comboBoxAudioCodec"/>
+              </item>
+              <item row="1" column="3">
+               <widget class="QComboBox" name="comboBoxVideoCodec"/>
+              </item>
+              <item row="1" column="4">
+               <widget class="QPushButton" name="pushButtonFormatDefault">
                 <property name="toolTip">
                  <string>Default</string>
                 </property>
@@ -278,9 +297,6 @@
                  <string notr="true"/>
                 </property>
                </widget>
-              </item>
-              <item row="1" column="3">
-               <widget class="QComboBox" name="comboBoxVideoCodec"/>
               </item>
               <item row="1" column="2">
                <widget class="QLabel" name="labelVideoCodec">
@@ -299,50 +315,10 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="1">
-               <widget class="QSpinBox" name="spinBoxFrames">
-                <property name="value">
-                 <number>25</number>
-                </property>
-               </widget>
+              <item row="1" column="1">
+               <widget class="QComboBox" name="comboBoxFormat"/>
               </item>
-              <item row="0" column="7">
-               <widget class="QToolButton" name="toolButtonFramesHelp">
-                <property name="toolTip">
-                 <string notr="true">Help</string>
-                </property>
-                <property name="text">
-                 <string notr="true">Help</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="6">
-               <spacer name="horizontalSpacer_2">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item row="1" column="5">
-               <widget class="QPushButton" name="pushButtonFormatDefault">
-                <property name="toolTip">
-                 <string>Default</string>
-                </property>
-                <property name="text">
-                 <string notr="true"/>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QComboBox" name="comboBoxAudioCodec"/>
-              </item>
-              <item row="0" column="5">
+              <item row="0" column="4">
                <widget class="QPushButton" name="pushButtonFramesDefault">
                 <property name="toolTip">
                  <string>Default</string>
@@ -352,13 +328,37 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="1">
-               <widget class="QComboBox" name="comboBoxFormat"/>
+              <item row="0" column="1">
+               <widget class="QSpinBox" name="spinBoxFrames">
+                <property name="value">
+                 <number>25</number>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="labelFrames">
+                <property name="text">
+                 <string>Frames</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
               </item>
               <item row="2" column="2">
                <widget class="QLabel" name="labelAudioCodec">
                 <property name="text">
                  <string>Audiocodec</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QPushButton" name="pushButtonAudiocodecDefault">
+                <property name="toolTip">
+                 <string>Default</string>
+                </property>
+                <property name="text">
+                 <string notr="true"/>
                 </property>
                </widget>
               </item>
@@ -504,8 +504,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>455</width>
-                      <height>87</height>
+                      <width>502</width>
+                      <height>81</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1139,8 +1139,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>222</width>
-                   <height>268</height>
+                   <width>245</width>
+                   <height>262</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">

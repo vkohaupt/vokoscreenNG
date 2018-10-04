@@ -112,6 +112,9 @@ private slots:
     void slot_disableAreaWidgets();
     void slot_enableAreaWidgets();
 
+    void slot_IfStartAudioCodecWidgetsSetEnabled( bool value );
+    void slot_IfStopAudioCodecWidgetsSetDisabled( bool value );
+
 
 signals:
     void signal_close();
