@@ -19,7 +19,6 @@ void QvkAudioAlsa::slot_getAlsaDevices( bool value )
     Q_UNUSED(value);
     foreach (const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
     {
-        qDebug() << deviceInfo.deviceName();
         if ( deviceInfo.deviceName().contains("alsa") == false)
         {
             QCheckBox *checkboxAudioDevice = new QCheckBox();

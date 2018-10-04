@@ -1,5 +1,8 @@
 #include "QvkAudioPulse.h"
 
+#include <QDebug>
+#include <QAudioDeviceInfo>
+
 QvkAudioPulse::QvkAudioPulse( Ui_MainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
@@ -117,7 +120,7 @@ QStringList QvkAudioPulse::get_all_Audio_devices()
         device = (GstDevice*)iterator->data;
         name = gst_device_get_display_name( device );
         stringDevice = get_AudioDeviceString( device );
-        stringDevice.append( " ::: " ).append( name );
+        stringDevice.append( ":::" ).append( name );
         stringList.append( stringDevice );
     }
 
@@ -141,9 +144,15 @@ void QvkAudioPulse::slot_getPulsesDevices( bool value )
         {
             QCheckBox *checkboxAudioDevice = new QCheckBox();
             checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
-            checkboxAudioDevice->setAccessibleName( QString( list.at(i) ).section( " ::: ", 0, 0 ) );
+            checkboxAudioDevice->setAccessibleName( QString( list.at(i) ).section( ":::", 0, 0 ) );
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
             checkboxAudioDevice->setAutoExclusive( true );
+
+            // Set default AudioDevice
+            if ( QString( list.at(i) ).section( ":::", 0, 0 ) == QAudioDeviceInfo::defaultInputDevice().deviceName() )
+            {
+                checkboxAudioDevice->click();
+            }
         }
         QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
         ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
