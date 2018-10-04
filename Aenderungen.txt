@@ -15,6 +15,12 @@
 - Starttime: Vor den Schiebereglern für Stunde und Minuten wurde dementsprechender Text gesetzt
 - StopRecordingAfter: Text nun vor den Spinboxen gesetzt
 - Tab 3(Misc) Alle Hilfebutton für Linux nun funktionsfähig.
+- Manpage eingebaut
+- Icon für Betriebsystem(Linux, Windows) unten rechts eingebaut
+- Für Pulse wird das Standard Gerät ausgewählt
+- Für Alsa wird das erste Verfügbare Gerät ausgewählt
+- Bei zweiten Klick auf Alsa oder Pulse wurde der Radiobutton deselektiert, Groupbox eingebaut.
+
 
 
 [Bestehende Bugs]
