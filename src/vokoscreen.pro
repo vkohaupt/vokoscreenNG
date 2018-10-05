@@ -81,9 +81,11 @@ include(audio/pulse/audioPulse.pri)
 # alsa
 include(audio/alsa/audioAlsa.pri)
 
-# windows
+# audio windows
 include(audio/windows/audioWindows.pri)
 
 # help
 include(help/help.pri)
 
+# systray
+include(systray/systray.pri)

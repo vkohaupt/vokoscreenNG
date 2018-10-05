@@ -3,6 +3,7 @@
         <file>VERSION</file>
         <file>pictures/linux.png</file>
         <file>pictures/windows.png</file>
+        <file>pictures/systray.png</file>
         <file>pictures/vokoscreen.png</file>
         <file>pictures/systray-vokoscreen.png</file>
         <file>pictures/novideoplayer.png</file>
