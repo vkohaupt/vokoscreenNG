@@ -19,6 +19,7 @@ Compile:
      or
     - clone git repository: "git clone https://github.com/vkohaupt/vokoscreenNG.git"
   - change into the vokoscreenNG-<version> directory
-  - run "qmake"
-  - run "make"
+  - cd src
+  - qmake
+  - make
   
