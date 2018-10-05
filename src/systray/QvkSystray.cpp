@@ -85,6 +85,7 @@ void QvkSystray::init()
     SystemTrayIcon->setContextMenu ( SystemTrayMenu );
     SystemTrayIcon->setToolTip( "vokoscreen" );
     SystemTrayIcon->show();
+    connect( exitAction, SIGNAL( triggered( bool ) ), SystemTrayIcon, SLOT( hide() ) );
 }
 
 
