@@ -1,5 +1,7 @@
 #include "QvkSystray.h"
 
+#include <QDebug>
+
 QvkSystray::QvkSystray( Ui_MainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
@@ -85,8 +87,18 @@ void QvkSystray::init()
     SystemTrayIcon->setContextMenu ( SystemTrayMenu );
     SystemTrayIcon->setToolTip( "vokoscreen" );
     SystemTrayIcon->show();
-    connect( exitAction, SIGNAL( triggered( bool ) ), SystemTrayIcon, SLOT( hide() ) );
+    connect( exitAction, SIGNAL( triggered( bool ) ), this, SLOT( slot_hide() ) );
 }
 
 
+void QvkSystray::slot_hide()
+{
+    SystemTrayIcon->hide();
+    emit signal_SystemtrayIsClose();
+}
 
+
+void QvkSystray::slot_closeSystray()
+{
+    SystemTrayIcon->hide();
+}

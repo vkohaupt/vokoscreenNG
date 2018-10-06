@@ -305,11 +305,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // End Tabs
 
     // Close vokoscreen GUI
-    connect( this, SIGNAL( signal_close() ), ui->pushButtonContinue, SLOT( click() ) );
-    connect( this, SIGNAL( signal_close() ), ui->pushButtonStop, SLOT( click() ) );
-    connect( this, SIGNAL( signal_close_webcam( bool ) ), ui->checkBoxCamera, SLOT( setChecked( bool ) ) );
-    connect( this, SIGNAL( signal_close() ), vkHelp, SLOT( slot_close() ) );
-
+    connect( this,      SIGNAL( signal_close() ),              vkSystray,              SLOT( slot_closeSystray() ) );
+    connect( this,      SIGNAL( signal_close() ),              ui->pushButtonContinue, SLOT( click() ) );
+    connect( this,      SIGNAL( signal_close() ),              ui->pushButtonStop,     SLOT( click() ) );
+    connect( this,      SIGNAL( signal_close_webcam( bool ) ), ui->checkBoxCamera,     SLOT( setChecked( bool ) ) );
+    connect( this,      SIGNAL( signal_close() ),              vkHelp,                 SLOT( slot_close() ) );
+    connect( vkSystray, SIGNAL( signal_SystemtrayIsClose() ),  this,                   SLOT( close() ) );
 
     VK_Supported_Formats_And_Codecs();
     VK_Check_is_Format_available();
@@ -359,6 +360,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+
+void MainWindow::closeEvent( QCloseEvent *event )
+{
+    Q_UNUSED(event);
+    emit signal_close();
+    emit signal_close_webcam( false );
 }
 
 
@@ -498,15 +507,6 @@ void MainWindow::slot_videoFileSystemWatcherSetButtons()
   {
     ui->pushButtonPlay->setEnabled( true );
   }
-}
-
-
-void MainWindow::closeEvent( QCloseEvent *event )
-{
-    Q_UNUSED(event);
-    QApplication::closeAllWindows();
-    //emit signal_close();
-    //emit signal_close_webcam( false );
 }
 
 

@@ -17,6 +17,7 @@ public:
 
     
 public slots:
+    void slot_closeSystray();
 
 
 private:
@@ -32,13 +33,14 @@ private:
 
 
 private slots:
+    void slot_hide();
 
 
 protected:
   
   
 signals:
-
+    void signal_SystemtrayIsClose();
     
 };
 
