@@ -117,6 +117,7 @@ private slots:
     void slot_IfStartAudioCodecWidgetsSetEnabled();
     void slot_IfStopAudioCodecWidgetsSetDisabled();
 
+    void slot_setVisibleSystray( bool value );
 
 signals:
     void signal_close();

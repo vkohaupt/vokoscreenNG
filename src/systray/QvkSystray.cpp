@@ -15,6 +15,10 @@ QvkSystray::~QvkSystray()
 
 void QvkSystray::init()
 {
+    QAction *vokoscreenTitleAction = new QAction( this );
+    vokoscreenTitleAction->setText( "vokoscreen" );
+    vokoscreenTitleAction->setEnabled( false );
+
     startAction = new QAction( this );
     startAction->setIcon( QIcon::fromTheme( "media-playback-start", ui->pushButtonStart->style()->standardIcon( QStyle::SP_MediaPlay ) ) );
     startAction->setText( tr( "Start" ) );
@@ -74,6 +78,8 @@ void QvkSystray::init()
     connect( continueAction, SIGNAL( triggered( bool ) ), ui->pushButtonContinue, SLOT( click() ) );
 
     SystemTrayMenu = new QMenu();
+    SystemTrayMenu->addAction( vokoscreenTitleAction );
+    SystemTrayMenu->addSeparator();
     SystemTrayMenu->addAction( startAction );
     SystemTrayMenu->addAction( stopAction );
     SystemTrayMenu->addAction( pauseAction );
@@ -83,22 +89,30 @@ void QvkSystray::init()
     SystemTrayMenu->addSeparator();
     SystemTrayMenu->addAction( exitAction );
 
-    SystemTrayIcon = new QSystemTrayIcon( QIcon( ":/pictures/systray.png" ) );
+/*    SystemTrayIcon = new QSystemTrayIcon( QIcon( ":/pictures/systray.png" ) );
     SystemTrayIcon->setContextMenu ( SystemTrayMenu );
     SystemTrayIcon->setToolTip( "vokoscreen" );
     SystemTrayIcon->show();
+*/
+    setIcon( QIcon( ":/pictures/systray.png" ) );
+    setContextMenu ( SystemTrayMenu );
+    setToolTip( "vokoscreen" );
+    show();
+
     connect( exitAction, SIGNAL( triggered( bool ) ), this, SLOT( slot_hide() ) );
 }
 
 
 void QvkSystray::slot_hide()
 {
-    SystemTrayIcon->hide();
+    //SystemTrayIcon->hide();
+    hide();
     emit signal_SystemtrayIsClose();
 }
 
 
 void QvkSystray::slot_closeSystray()
 {
-    SystemTrayIcon->hide();
+    //SystemTrayIcon->hide();
+    hide();
 }

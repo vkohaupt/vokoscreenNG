@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>701</width>
-    <height>379</height>
+    <height>389</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -95,7 +95,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -505,7 +505,7 @@
                       <x>0</x>
                       <y>0</y>
                       <width>502</width>
-                      <height>81</height>
+                      <height>91</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1056,6 +1056,23 @@
              </layout>
             </item>
             <item>
+             <widget class="Line" name="line_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBoxShowInSystray">
+              <property name="text">
+               <string>Show in systray</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
              <spacer name="verticalSpacer_3">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
@@ -1140,7 +1157,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>245</width>
-                   <height>262</height>
+                   <height>272</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">

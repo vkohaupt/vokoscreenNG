@@ -6,7 +6,7 @@
 #include <QSystemTrayIcon>
 #include <QMenu>
 
-class QvkSystray: public QObject
+class QvkSystray: public QSystemTrayIcon //QObject
 {
     Q_OBJECT
 
@@ -23,7 +23,7 @@ public slots:
 private:
     Ui_MainWindow *ui;
     QMenu *SystemTrayMenu;
-    QSystemTrayIcon *SystemTrayIcon;
+    //QSystemTrayIcon *SystemTrayIcon;
     QAction *startAction;
     QAction *stopAction;
     QAction *pauseAction;

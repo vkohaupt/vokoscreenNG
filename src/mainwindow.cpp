@@ -35,14 +35,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                                           vkAudioPulse(new QvkAudioPulse(ui)),
                                           vkAudioAlsa(new QvkAudioAlsa(ui)),
                                           vkAudioWindows(new QvkAudioWindows(ui)),
-                                          vkHelp(new QvkHelp(ui)),
-                                          vkSystray(new QvkSystray(ui))
+                                          vkHelp(new QvkHelp(ui))
 {
     ui->setupUi(this);
 
     vkHelp->initHelp();
     vkSettings.readAll();
-    vkSystray->init();
+    slot_setVisibleSystray( true );
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
@@ -292,6 +291,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->toolButtonHelpLimitOfFreeDiskSpace->setIcon( ui->toolButtonHelpLimitOfFreeDiskSpace->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
+    connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ), this, SLOT( slot_setVisibleSystray( bool ) ) );
+
 
     // Tab 4 Available muxer, encoder etc.
     ui->toolButtonAvalaibleHelp->setIcon( ui->toolButtonAvalaibleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
@@ -305,12 +306,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // End Tabs
 
     // Close vokoscreen GUI
-    connect( this,      SIGNAL( signal_close() ),              vkSystray,              SLOT( slot_closeSystray() ) );
     connect( this,      SIGNAL( signal_close() ),              ui->pushButtonContinue, SLOT( click() ) );
     connect( this,      SIGNAL( signal_close() ),              ui->pushButtonStop,     SLOT( click() ) );
     connect( this,      SIGNAL( signal_close_webcam( bool ) ), ui->checkBoxCamera,     SLOT( setChecked( bool ) ) );
     connect( this,      SIGNAL( signal_close() ),              vkHelp,                 SLOT( slot_close() ) );
-    connect( vkSystray, SIGNAL( signal_SystemtrayIsClose() ),  this,                   SLOT( close() ) );
 
     VK_Supported_Formats_And_Codecs();
     VK_Check_is_Format_available();
@@ -368,6 +367,26 @@ void MainWindow::closeEvent( QCloseEvent *event )
     Q_UNUSED(event);
     emit signal_close();
     emit signal_close_webcam( false );
+}
+
+
+void MainWindow::slot_setVisibleSystray( bool value )
+{
+    if ( value == false )
+    {
+        vkSystray->slot_closeSystray();
+        disconnect( vkSystray, 0, 0, 0 );
+        delete vkSystray;
+    }
+
+    if ( value == true )
+    {
+        vkSystray = new QvkSystray(ui);
+        vkSystray->init();
+        connect( vkSystray, SIGNAL( signal_SystemtrayIsClose() ), this,      SLOT( close() ) );
+        connect( this,      SIGNAL( signal_close() ),             vkSystray, SLOT( slot_closeSystray() ) );
+    }
+
 }
 
 
