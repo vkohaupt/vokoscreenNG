@@ -20,7 +20,7 @@
 - Für Pulse wird das Standard Gerät ausgewählt
 - Für Alsa wird das erste Verfügbare Gerät ausgewählt
 - Bei zweiten Klick auf Alsa oder Pulse wurde der Radiobutton deselektiert, Groupbox eingebaut.
-
+- Systray eingebaut
 
 
 [Bestehende Bugs]
@@ -31,14 +31,12 @@
 - [Windows] Webcamwindow Icons für das eingebelndete Menü werden nicht angezeigt
 - [Windows] Hilfebutton: ShellExecute benötigt im Aufruf anscheinend zwingend ein vorangestelltes http://
 - [All] Bei den meisten Hilfebuttons ist keine Hilfe hinterlegt.
-- [All] Systray fehlt
 - [All] Aufnahme über zwei und mehrere Audio Aufnamegeräten fehlt.
 - [All] Menü Webcamfenster, es fehlt für die Settings der Dialog
 - [All] Menü Webcamfenster "NoBorder", das Bild ist beim ersten Aufruf nicht an der richtigen Position
 - [ALL] Audiogeräte plug and unplug muß noch eingebaut werden
 - [All] Bereichsanzeige und Webcam erscheinen in der Fensterleiste. Qt::tool und Qt::tooltip funktionieren nur wenn vokoscreen den Fokus hat.
-- [All] Für die Hilfebutton einen eigenen Browser bereitstellen
-
+- [All] Siehe MainWindow::closeEvent alle selbst erstellten Signale löschen
 
 
 

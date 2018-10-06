@@ -504,8 +504,9 @@ void MainWindow::slot_videoFileSystemWatcherSetButtons()
 void MainWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
-    emit signal_close();
-    emit signal_close_webcam( false );
+    QApplication::closeAllWindows();
+    //emit signal_close();
+    //emit signal_close_webcam( false );
 }
 
 
