@@ -2,11 +2,12 @@
 #define QvkSystray_H
 
 #include "ui_mainwindow.h"
+
 #include <QObject>
 #include <QSystemTrayIcon>
 #include <QMenu>
 
-class QvkSystray: public QSystemTrayIcon //QObject
+class QvkSystray: public QSystemTrayIcon
 {
     Q_OBJECT
 
@@ -23,7 +24,6 @@ public slots:
 private:
     Ui_MainWindow *ui;
     QMenu *menu;
-    //QSystemTrayIcon *SystemTrayIcon;
     QAction *startAction;
     QAction *stopAction;
     QAction *pauseAction;
