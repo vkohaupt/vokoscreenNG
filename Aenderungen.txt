@@ -23,9 +23,7 @@
 - Systray eingebaut
 
 
-[Bestehende Bugs]
-- [Windows] Der Audiocode Opus führt zum Programmabsturtz, Opus für Windows wurde daher deaktiviert.
-- [Windows] Fensteraufnahme zur Zeit nicht machbar.
+[Bugs]
 - [Windows] Bereichsanzeige blitzte manchmal beim start von vokoscreen kurz auf.
 - [Windows] Beim starten von vokoscreen öffnet sich das Terminal
 - [Windows] Webcamwindow Icons für das eingebelndete Menü werden nicht angezeigt
@@ -36,8 +34,11 @@
 - [All] Menü Webcamfenster "NoBorder", das Bild ist beim ersten Aufruf nicht an der richtigen Position
 - [ALL] Audiogeräte plug and unplug muß noch eingebaut werden
 - [All] Bereichsanzeige und Webcam erscheinen in der Fensterleiste. Qt::tool und Qt::tooltip funktionieren nur wenn vokoscreen den Fokus hat.
-- [All] Siehe MainWindow::closeEvent alle selbst erstellten Signale löschen
 
+
+[Langfristig zu behebende Bugs ]
+- [Windows] Der Audiocode Opus führt zum Programmabsturtz, Opus für Windows wurde daher deaktiviert.
+- [Windows] Fensteraufnahme zur Zeit nicht machbar.
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------
