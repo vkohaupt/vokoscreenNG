@@ -22,7 +22,7 @@ public slots:
 
 private:
     Ui_MainWindow *ui;
-    QMenu *SystemTrayMenu;
+    QMenu *menu;
     //QSystemTrayIcon *SystemTrayIcon;
     QAction *startAction;
     QAction *stopAction;
