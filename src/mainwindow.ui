@@ -263,13 +263,13 @@
                        </property>
                       </widget>
                      </item>
-                     <item alignment="Qt::AlignHCenter">
+                     <item>
                       <widget class="QTimeEdit" name="timeEditStartTime">
                        <property name="enabled">
                         <bool>true</bool>
                        </property>
                        <property name="alignment">
-                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                        <set>Qt::AlignCenter</set>
                        </property>
                        <property name="readOnly">
                         <bool>true</bool>
@@ -619,7 +619,7 @@
                 <item row="0" column="2">
                  <widget class="QLabel" name="labelFreeSize">
                   <property name="text">
-                   <string>100</string>
+                   <string>0</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -643,7 +643,7 @@
                 <item row="1" column="2">
                  <widget class="QLabel" name="labelVideoSize">
                   <property name="text">
-                   <string>100</string>
+                   <string>0</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -680,14 +680,14 @@
                 <item row="0" column="3">
                  <widget class="QLabel" name="label_15">
                   <property name="text">
-                   <string>KB</string>
+                   <string>MB</string>
                   </property>
                  </widget>
                 </item>
                 <item row="1" column="3">
                  <widget class="QLabel" name="label_16">
                   <property name="text">
-                   <string>MB</string>
+                   <string>KB</string>
                   </property>
                  </widget>
                 </item>
