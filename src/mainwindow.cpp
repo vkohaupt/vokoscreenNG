@@ -196,6 +196,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // Tab 1 Screen
 #ifdef Q_OS_WIN
     ui->radioButtonWindow->hide();
+    ui->toolButtonHelpWindow->hide();
 #endif
 
     ui->radioButtonFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
