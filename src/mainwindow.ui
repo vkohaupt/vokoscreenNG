@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>710</width>
-    <height>493</height>
+    <height>481</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -200,19 +200,6 @@
                </layout>
               </item>
               <item>
-               <spacer name="verticalSpacer_8">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>40</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <widget class="Line" name="line_11">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
@@ -250,6 +237,9 @@
                    </property>
                    <item>
                     <layout class="QVBoxLayout" name="verticalLayout_22">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
                      <item>
                       <widget class="QLabel" name="label_19">
                        <property name="text">
@@ -957,7 +947,7 @@
                       <x>0</x>
                       <y>0</y>
                       <width>511</width>
-                      <height>144</height>
+                      <height>167</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1389,7 +1379,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>250</width>
-                   <height>376</height>
+                   <height>399</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
