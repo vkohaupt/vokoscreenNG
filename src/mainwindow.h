@@ -6,7 +6,6 @@
 #include "QvkRegionChoise.h"
 #include "QvkCameraController.h"
 #include "QvkSettings.h"
-#include "QvkStorageUI.h"
 #include "QvkAudioPulse.h"
 #include "QvkAudioAlsa.h"
 #include "QvkAudioWindows.h"
@@ -78,8 +77,6 @@ private:
     void VK_gst_Elements_available();
 
     QPixmap pixmap;
-
-    QvkStorageUI *vkStorageUI;
 
     QTimer *timerStartTimer;
     QTimer *timerStopRecordingAfter = new QTimer( this );

@@ -69,9 +69,6 @@ include(countdown/countdown.pri)
 # webcam
 include(camera/camera.pri)
 
-# storageui
-include(storageUI/storageui.pri)
-
 # screenshot
 include(screenshot/screenshot.pri)
 
@@ -89,3 +86,7 @@ include(help/help.pri)
 
 # systray
 include(systray/systray.pri)
+
+# information
+include(information/information.pri)
+

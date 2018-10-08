@@ -617,9 +617,12 @@
               <item row="1" column="0">
                <layout class="QGridLayout" name="gridLayout_5">
                 <item row="0" column="2">
-                 <widget class="QLabel" name="label_15">
+                 <widget class="QLabel" name="labelFreeSize">
                   <property name="text">
                    <string>100</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -638,9 +641,12 @@
                  </widget>
                 </item>
                 <item row="1" column="2">
-                 <widget class="QLabel" name="label_16">
+                 <widget class="QLabel" name="labelVideoSize">
                   <property name="text">
                    <string>100</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -668,6 +674,20 @@
                  <widget class="QLabel" name="label_18">
                   <property name="text">
                    <string>TextLabel</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="3">
+                 <widget class="QLabel" name="label_15">
+                  <property name="text">
+                   <string>KB</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="3">
+                 <widget class="QLabel" name="label_16">
+                  <property name="text">
+                   <string>MB</string>
                   </property>
                  </widget>
                 </item>
@@ -937,7 +957,7 @@
                       <x>0</x>
                       <y>0</y>
                       <width>511</width>
-                      <height>134</height>
+                      <height>144</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1369,7 +1389,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>250</width>
-                   <height>366</height>
+                   <height>376</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -1579,25 +1599,6 @@
             </property>
             <property name="text">
              <string>Play</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QToolButton" name="toolButtonBsScreencast">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="text">
-             <string>Icon</string>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>28</width>
-              <height>28</height>
-             </size>
-            </property>
-            <property name="autoRaise">
-             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -1829,25 +1830,6 @@
             </property>
             <property name="text">
              <string>Show</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QToolButton" name="toolButtonBsScreenShot">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="text">
-             <string>icon</string>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>28</width>
-              <height>28</height>
-             </size>
-            </property>
-            <property name="autoRaise">
-             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -2172,25 +2154,6 @@
              </size>
             </property>
            </spacer>
-          </item>
-          <item>
-           <widget class="QToolButton" name="toolButtonBsCamera">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="text">
-             <string>icon</string>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>28</width>
-              <height>28</height>
-             </size>
-            </property>
-            <property name="autoRaise">
-             <bool>true</bool>
-            </property>
-           </widget>
           </item>
          </layout>
         </item>

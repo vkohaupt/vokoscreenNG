@@ -3,6 +3,7 @@
 #include "ui_mainwindow.h"
 #include "ui_QvkNoPlayerDialog.h"
 #include "QvkScreenshot.h"
+#include "QvkInformation.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -97,9 +98,20 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                          << "1280 x 1024 SXGA 5 : 4"
                          << "1920 x 1080 HD1080 16 : 9";
 
-    QvkStorageUI *vkStorageUI = new QvkStorageUI( ui );
-    Q_UNUSED(vkStorageUI);
-    connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkStorageUI, SLOT( slot_newVideoFilename( QString ) ) );
+#ifdef Q_OS_LINUX
+    QPixmap pixmap( ":/pictures/linux.png" );
+#endif
+#ifdef Q_OS_WIN
+    QPixmap pixmap( ":/pictures/windows.png" );
+#endif
+    pixmap = pixmap.scaled( 42, 42 );
+    QLabel *label = new QLabel();
+    label->setPixmap( pixmap );
+    label->setEnabled( false );
+    ui->tabWidgetScreencast->setCornerWidget( label, Qt::TopRightCorner);
+
+    QvkInformation *vkInformation = new QvkInformation(ui);
+    connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
 
     // need a move
     move( 0, 0 );
@@ -184,13 +196,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // Tab 1 Screen
 #ifdef Q_OS_WIN
     ui->radioButtonWindow->hide();
-#endif
-
-#ifdef Q_OS_LINUX
-    ui->toolButtonBsScreencast->setIcon( QIcon( ":/pictures/linux.png" ) );
-#endif
-#ifdef Q_OS_WIN
-    ui->toolButtonBsScreencast->setIcon( QIcon( ":/pictures/windows.png" ) );
 #endif
 
     ui->radioButtonFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
@@ -328,12 +333,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
 
     // **************** Begin Screenshot *****************************
-#ifdef Q_OS_LINUX
-    ui->toolButtonBsScreenShot->setIcon( QIcon( ":/pictures/linux.png" ) );
-#endif
-#ifdef Q_OS_WIN
-    ui->toolButtonBsScreenShot->setIcon( QIcon( ":/pictures/windows.png" ) );
-#endif
     QvkScreenshot *vkScreenshot = new QvkScreenshot( this, ui );
     Q_UNUSED(vkScreenshot);
     makeAndSetValidIcon( ui->tabWidgetScreenshot, 0, QIcon::fromTheme( "computer", QIcon( ":/pictures/computer.svg" ) ) );
@@ -342,12 +341,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
 
     // *****************Begin Camera *********************************
-#ifdef Q_OS_LINUX
-    ui->toolButtonBsCamera->setIcon( QIcon( ":/pictures/linux.png" ) );
-#endif
-#ifdef Q_OS_WIN
-    ui->toolButtonBsCamera->setIcon( QIcon( ":/pictures/windows.png" ) );
-#endif
     QvkCameraController *cameraController = new QvkCameraController( ui );
     Q_UNUSED(cameraController);
     makeAndSetValidIcon( ui->tabWidgetCamera, 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/camera-web.svg" ) ) );
