@@ -10,10 +10,21 @@ QvkInformation::QvkInformation(Ui_MainWindow *ui_mainwindow )
 
     ui->labelVideoSize->setText("");
     ui->labelFreeSize->setText("");
+    ui->labelInfoRecordTime->setText("00:00:00");
 
     QTimer *timer = new QTimer(this);
+    timer->setInterval( 500 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_systemInfo() ) );
-    timer->start( 500 );
+    timer->start();
+
+    timerRecord = new QTimer(this);
+    timerRecord->setInterval( 1000 );
+    connect( ui->pushButtonStart,    SIGNAL( clicked( bool ) ), this,        SLOT( slot_recordTimeInit() ) );
+    connect( ui->pushButtonStart,    SIGNAL( clicked( bool ) ), timerRecord, SLOT( start() ) );
+    connect( timerRecord,            SIGNAL( timeout() ),       this,        SLOT( slot_recordTimeStart() ) );
+    connect( ui->pushButtonStop,     SIGNAL( clicked( bool ) ), timerRecord, SLOT( stop() ) );
+    connect( ui->pushButtonPause,    SIGNAL( clicked( bool ) ), timerRecord, SLOT( stop() ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), timerRecord, SLOT( start() ) );
 }
 
 QvkInformation::~QvkInformation()
@@ -55,4 +66,18 @@ void QvkInformation::slot_systemInfo()
         file.refresh();
         ui->labelVideoSize->setText( QString::number( file.size()/1024 ) );
     }
+}
+
+
+void QvkInformation::slot_recordTimeInit()
+{
+    recordCounter = 0;
+}
+
+
+void QvkInformation::slot_recordTimeStart()
+{
+   recordCounter++;
+   QTime time( 0, 0, 0, 0 );
+   ui->labelInfoRecordTime->setText( time.addSecs( recordCounter ).toString( "hh:mm:ss" ) );
 }

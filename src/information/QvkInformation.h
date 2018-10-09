@@ -19,8 +19,9 @@ public slots:
 private slots: 
   void slot_systemInfo();
   void slot_newVideoFilename( QString filename );
+  void slot_recordTimeStart();
+  void slot_recordTimeInit();
 
-   
 signals:
   
 
@@ -30,6 +31,8 @@ protected:
 private:
   Ui_MainWindow *ui;
   QString newVideoFilename = "";
+  QTimer *timerRecord;
+  int recordCounter = 0;
 
 };
 
