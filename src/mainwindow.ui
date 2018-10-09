@@ -95,7 +95,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -861,25 +861,16 @@
                     </widget>
                    </item>
                    <item>
-                    <widget class="QGroupBox" name="groupBoxPulseAlsa">
-                     <property name="flat">
-                      <bool>true</bool>
+                    <widget class="QFrame" name="framePulseAlsa">
+                     <property name="frameShape">
+                      <enum>QFrame::NoFrame</enum>
                      </property>
-                     <layout class="QHBoxLayout" name="horizontalLayout_31">
-                      <property name="spacing">
-                       <number>0</number>
-                      </property>
-                      <property name="leftMargin">
-                       <number>0</number>
-                      </property>
+                     <layout class="QHBoxLayout" name="horizontalLayout_7">
                       <property name="topMargin">
-                       <number>0</number>
-                      </property>
-                      <property name="rightMargin">
-                       <number>0</number>
+                       <number>3</number>
                       </property>
                       <property name="bottomMargin">
-                       <number>0</number>
+                       <number>3</number>
                       </property>
                       <item>
                        <spacer name="horizontalSpacer_17">
@@ -963,7 +954,7 @@
                       <x>0</x>
                       <y>0</y>
                       <width>507</width>
-                      <height>132</height>
+                      <height>130</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
