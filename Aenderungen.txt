@@ -34,6 +34,7 @@
 - [All] Menü Webcamfenster "NoBorder", das Bild ist beim ersten Aufruf nicht an der richtigen Position
 - [ALL] Audiogeräte plug and unplug muß noch eingebaut werden
 - [All] Bereichsanzeige und Webcam erscheinen in der Fensterleiste. Qt::tool und Qt::tooltip funktionieren nur wenn vokoscreen den Fokus hat.
+- [All] AM/PM für Timer
 
 
 [Langfristig zu behebende Bugs ]
