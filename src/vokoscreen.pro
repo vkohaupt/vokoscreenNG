@@ -90,3 +90,5 @@ include(systray/systray.pri)
 # information
 include(information/information.pri)
 
+# magnifier
+include(magnifier/magnifier.pri)

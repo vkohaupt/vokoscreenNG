@@ -11,6 +11,7 @@
 #include "QvkAudioWindows.h"
 #include "QvkHelp.h"
 #include "QvkSystray.h"
+#include "QvkMagnifier.h"
 
 #include <QMainWindow>
 #include <QFileSystemWatcher>
@@ -38,6 +39,8 @@ public:
     QvkAudioWindows *vkAudioWindows;
     QvkHelp *vkHelp;
     QvkSystray *vkSystray;
+    QvkMagnifier *magnifier;
+
 
     void makeAndSetValidIcon(QTabWidget *widget, int index, QIcon icon );
     void makeAndSetValidIconForSideBar( int index, QIcon icon );
