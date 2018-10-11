@@ -12,14 +12,18 @@ QvkInformation::QvkInformation(Ui_MainWindow *ui_mainwindow )
     ui->labelFreeSize->setText("");
     ui->labelInfoRecordTime->setText("00:00:00");
 
+    // VideoSize and FreeDiskSpace
     QTimer *timer = new QTimer(this);
-    timer->setInterval( 500 );
+    timer->setInterval( 1000 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_systemInfo() ) );
     timer->start();
 
+    summedTime = new QTime;
+    connect( ui->pushButtonStart,    SIGNAL( clicked( bool ) ), this, SLOT( slot_timeStart() ) );
+
     timerRecord = new QTimer(this);
+    timerRecord->setTimerType( Qt::PreciseTimer );
     timerRecord->setInterval( 1000 );
-    connect( ui->pushButtonStart,    SIGNAL( clicked( bool ) ), this,        SLOT( slot_recordTimeInit() ) );
     connect( ui->pushButtonStart,    SIGNAL( clicked( bool ) ), timerRecord, SLOT( start() ) );
     connect( timerRecord,            SIGNAL( timeout() ),       this,        SLOT( slot_recordTimeStart() ) );
     connect( ui->pushButtonStop,     SIGNAL( clicked( bool ) ), timerRecord, SLOT( stop() ) );
@@ -27,8 +31,15 @@ QvkInformation::QvkInformation(Ui_MainWindow *ui_mainwindow )
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), timerRecord, SLOT( start() ) );
 }
 
+
 QvkInformation::~QvkInformation()
 {
+}
+
+
+void QvkInformation::slot_timeStart()
+{
+    summedTime->restart();
 }
 
 
@@ -69,15 +80,9 @@ void QvkInformation::slot_systemInfo()
 }
 
 
-void QvkInformation::slot_recordTimeInit()
-{
-    recordCounter = 0;
-}
-
-
 void QvkInformation::slot_recordTimeStart()
 {
-   recordCounter++;
    QTime time( 0, 0, 0, 0 );
-   ui->labelInfoRecordTime->setText( time.addSecs( recordCounter ).toString( "hh:mm:ss" ) );
+   ui->labelInfoRecordTime->setText( time.addSecs( summedTime->elapsed()/1000 ).toString( "hh:mm:ss" ) );
 }
+

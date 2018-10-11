@@ -1013,8 +1013,9 @@ void MainWindow::slot_preStart()
     if ( ui->checkBoxStopRecordingAfter->isChecked() == true )
     {
         int value = ui->spinBoxStopRecordingAfterHouers->value()*60*60*1000;
-        value = value + ui->spinBoxStopRecordingAfterMinutes->value()*60*1000;
-        value = value + ui->spinBoxStopRecordingAfterSeconds->value()*1000;
+        value += ui->spinBoxStopRecordingAfterMinutes->value()*60*1000;
+        value += + ui->spinBoxStopRecordingAfterSeconds->value()*1000;
+        timerStopRecordingAfter->setTimerType( Qt::PreciseTimer );
         timerStopRecordingAfter->start( value );
     }
 
