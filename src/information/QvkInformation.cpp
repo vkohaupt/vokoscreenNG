@@ -18,9 +18,9 @@ QvkInformation::QvkInformation(Ui_MainWindow *ui_mainwindow )
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_systemInfo() ) );
     timer->start();
 
+    // Recorded time
     summedTime = new QTime;
     connect( ui->pushButtonStart,    SIGNAL( clicked( bool ) ), this, SLOT( slot_timeStart() ) );
-
     timerRecord = new QTimer(this);
     timerRecord->setTimerType( Qt::PreciseTimer );
     timerRecord->setInterval( 1000 );
@@ -40,6 +40,7 @@ QvkInformation::~QvkInformation()
 void QvkInformation::slot_timeStart()
 {
     summedTime->restart();
+    ui->labelInfoRecordTime->setText("00:00:00");
 }
 
 
