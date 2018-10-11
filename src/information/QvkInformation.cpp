@@ -28,7 +28,7 @@ QvkInformation::QvkInformation(Ui_MainWindow *ui_mainwindow )
     timerRecord->setTimerType( Qt::PreciseTimer );
     timerRecord->setInterval( 1000 );
     connect( ui->pushButtonStart,    SIGNAL( clicked( bool ) ), timerRecord, SLOT( start() ) );
-    connect( timerRecord,            SIGNAL( timeout() ),       this,        SLOT( slot_recordTimeStart() ) );
+    connect( timerRecord,            SIGNAL( timeout() ),       this,        SLOT( slot_displayRecordTime() ) );
     connect( ui->pushButtonStop,     SIGNAL( clicked( bool ) ), timerRecord, SLOT( stop() ) );
     connect( ui->pushButtonPause,    SIGNAL( clicked( bool ) ), timerRecord, SLOT( stop() ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), timerRecord, SLOT( start() ) );
@@ -96,7 +96,7 @@ void QvkInformation::slot_systemInfo()
 }
 
 
-void QvkInformation::slot_recordTimeStart()
+void QvkInformation::slot_displayRecordTime()
 {
    QTime time( 0, 0, 0, 0 );
    ui->labelInfoRecordTime->setText( time.addMSecs( elapsedTime->elapsed() + int_summed ).toString( "hh:mm:ss" ) );

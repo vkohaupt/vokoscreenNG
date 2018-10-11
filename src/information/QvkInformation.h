@@ -19,7 +19,7 @@ public slots:
 private slots: 
   void slot_systemInfo();
   void slot_newVideoFilename( QString filename );
-  void slot_recordTimeStart();
+  void slot_displayRecordTime();
 
   void slot_timeFirstStart();
   void slot_timeContinueStart();
