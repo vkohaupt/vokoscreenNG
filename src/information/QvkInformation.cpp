@@ -21,7 +21,7 @@ QvkInformation::QvkInformation(Ui_MainWindow *ui_mainwindow )
     // Recorded time
     elapsedTime = new QTime;
     connect( ui->pushButtonStart,    SIGNAL( clicked( bool ) ), this, SLOT( slot_timeFirstStart() ) );
-    connect( ui->pushButtonPause,    SIGNAL( clicked( bool ) ), this, SLOT( slot_summedTimePause() ) );
+    connect( ui->pushButtonPause,    SIGNAL( clicked( bool ) ), this, SLOT( slot_summedTimeAfterPause() ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), this, SLOT( slot_timeContinueStart() ) );
 
     timerRecord = new QTimer(this);
@@ -47,7 +47,7 @@ void QvkInformation::slot_timeFirstStart()
 }
 
 
-void QvkInformation::slot_summedTimePause()
+void QvkInformation::slot_summedTimeAfterPause()
 {
     int_summed += elapsedTime->elapsed();
 }

@@ -24,7 +24,7 @@ private slots:
   void slot_timeFirstStart();
   void slot_timeContinueStart();
 
-  void slot_summedTimePause();
+  void slot_summedTimeAfterPause();
 
 
 signals:
