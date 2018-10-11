@@ -9,18 +9,19 @@ QvkMagnifier::QvkMagnifier()
   faktor = 2;
   label = new QLabel( this );
 
-  switch( vkSettings.getMagnifierFormValue()){
+  switch( vkSettings.getMagnifierFormValue())
+  {
         case 1:  
-	        Magnifier200x200();
+            slot_magnifier200x200();
 		break;
         case 2:
-	        Magnifier400x200();
+            slot_magnifier400x200();
 		break;
         case 3:
-	        Magnifier600x200();
+            slot_magnifier600x200();
 		break;
-    }
-    
+  }
+
   resize( 2 * distanceX * faktor, 2 * distanceY * faktor );
   setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar
   border = 3;
@@ -31,6 +32,11 @@ QvkMagnifier::QvkMagnifier()
 
   timer = new QTimer( this );
   connect( timer, SIGNAL( timeout() ), this, SLOT( mytimer() ) );
+}
+
+
+QvkMagnifier::~QvkMagnifier()
+{
 }
 
 
@@ -59,29 +65,23 @@ void QvkMagnifier::showDialogMagnifier()
   myUiDialog.setupUi( newDialog );
   newDialog->show();  
 
-  connect( myUiDialog.radioButton1, SIGNAL( clicked() ), SLOT( Magnifier200x200() ) );
+  connect( myUiDialog.radioButton1, SIGNAL( clicked() ), this, SLOT( slot_magnifier200x200() ) );
   if ( formValue == 1 )
     myUiDialog.radioButton1->setChecked( true );
   
-  connect( myUiDialog.radioButton2, SIGNAL( clicked() ), SLOT( Magnifier400x200() ) );
+  connect( myUiDialog.radioButton2, SIGNAL( clicked() ), this, SLOT( slot_magnifier400x200() ) );
   if ( formValue == 2 )
     myUiDialog.radioButton2->setChecked( true );
   
-  connect( myUiDialog.radioButton3, SIGNAL( clicked() ), SLOT( Magnifier600x200() ) );
+  connect( myUiDialog.radioButton3, SIGNAL( clicked() ), this, SLOT( slot_magnifier600x200() ) );
   if ( formValue == 3 )
     myUiDialog.radioButton3->setChecked( true );
   
-  connect( myUiDialog.buttonBox, SIGNAL( accepted() ), SLOT( closeDialog() ) );
+  connect( myUiDialog.buttonBox, SIGNAL( accepted() ), newDialog, SLOT( close() ) );
 }
 
 
-void QvkMagnifier::closeDialog()
-{
-  newDialog->close();
-}
-
-
-void QvkMagnifier::Magnifier200x200()
+void QvkMagnifier::slot_magnifier200x200()
 {
   distanceX = 50;
   distanceY = 50;
@@ -91,7 +91,7 @@ void QvkMagnifier::Magnifier200x200()
 }
 
 
-void QvkMagnifier::Magnifier400x200()
+void QvkMagnifier::slot_magnifier400x200()
 {
   distanceX = 100;
   distanceY = 50;
@@ -101,7 +101,7 @@ void QvkMagnifier::Magnifier400x200()
 }
 
 
-void QvkMagnifier::Magnifier600x200()
+void QvkMagnifier::slot_magnifier600x200()
 {
   distanceX = 150;
   distanceY = 50;
@@ -110,7 +110,7 @@ void QvkMagnifier::Magnifier600x200()
   formValue = 3;
 }
 
-
+/*
 int QvkMagnifier::getFormValue()
 {
   return formValue; 
@@ -127,7 +127,7 @@ int QvkMagnifier::getDistanceY()
 {
   return distanceY;
 }
-
+*/
 
 int QvkMagnifier::NewDistanceXLeft()
 {
@@ -155,15 +155,10 @@ int QvkMagnifier::NewDistanceXRight()
 }
 
 
-QvkMagnifier::~QvkMagnifier()
-{
-}
-
 void QvkMagnifier::setMagnifier()
 {
   QCursor cursor;
   QDesktopWidget *desk = QApplication::desktop();
-
 
   // Lupe an oberen linke Ecke setzen
   if ( ( cursor.pos().x() < distanceX ) and ( cursor.pos().y() <  distanceY ) )
@@ -266,6 +261,7 @@ void QvkMagnifier::setMagnifier()
   if ( ( cursor.pos().x() > desk->screenGeometry().width() / 2 ) and ( cursor.pos().y() > desk->screenGeometry().height() / 10 * 8 ) )
     move( cursor.pos().x() - NewDistanceXRight() -width(), cursor.pos().y() - distanceY - width() );
 }
+
 
 void QvkMagnifier::mytimer()
 {

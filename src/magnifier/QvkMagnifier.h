@@ -1,21 +1,17 @@
 #ifndef QvkMagnifier_H 
 #define QvkMagnifier_H
 
+#include "ui_QvkMagnifierDialog.h"
+#include "QvkSettings.h"
+
 #include <QScreen>
 #include <QPixmap>
 #include <QDialog>
 #include <QLabel>
 #include <QDesktopWidget>
 #include <QDebug>
-#include <QApplication>
 #include <QTimer>
-#include <QObject>
 #include <QRadioButton>
-#include <QPropertyAnimation>
-#include <QPushButton>
-
-#include "ui_QvkMagnifierDialog.h"
-#include "QvkSettings.h"
 
 class QvkMagnifier: public QDialog
 { 
@@ -27,7 +23,7 @@ public:
 public slots:
   void showDialogMagnifier();
   void slot_magnifierShow( bool value );
-  int getFormValue();
+//  int getFormValue();
   
 
 private slots:
@@ -35,14 +31,14 @@ private slots:
   int NewDistanceXRight();
   void mytimer();  
   void setMagnifier();
-  void Magnifier200x200();
-  void Magnifier400x200();
-  void Magnifier600x200();
+  void slot_magnifier200x200();
+  void slot_magnifier400x200();
+  void slot_magnifier600x200();
   
-  int getDistanceX();
-  int getDistanceY();
+//  int getDistanceX();
+//  int getDistanceY();
 
-  void closeDialog();
+//  void slot_closeDialog();
   
 
 protected:  
