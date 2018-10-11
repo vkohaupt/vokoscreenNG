@@ -19,8 +19,11 @@ QvkInformation::QvkInformation(Ui_MainWindow *ui_mainwindow )
     timer->start();
 
     // Recorded time
-    summedTime = new QTime;
-    connect( ui->pushButtonStart,    SIGNAL( clicked( bool ) ), this, SLOT( slot_timeStart() ) );
+    elapsedTime = new QTime;
+    connect( ui->pushButtonStart,    SIGNAL( clicked( bool ) ), this, SLOT( slot_timeFirstStart() ) );
+    connect( ui->pushButtonPause,    SIGNAL( clicked( bool ) ), this, SLOT( slot_summedTimePause() ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), this, SLOT( slot_timeContinueStart() ) );
+
     timerRecord = new QTimer(this);
     timerRecord->setTimerType( Qt::PreciseTimer );
     timerRecord->setInterval( 1000 );
@@ -37,10 +40,22 @@ QvkInformation::~QvkInformation()
 }
 
 
-void QvkInformation::slot_timeStart()
+void QvkInformation::slot_timeFirstStart()
 {
-    summedTime->restart();
+    elapsedTime->restart();
     ui->labelInfoRecordTime->setText("00:00:00");
+}
+
+
+void QvkInformation::slot_summedTimePause()
+{
+    int_summed += elapsedTime->elapsed();
+}
+
+
+void QvkInformation::slot_timeContinueStart()
+{
+    elapsedTime->restart();
 }
 
 
@@ -84,6 +99,6 @@ void QvkInformation::slot_systemInfo()
 void QvkInformation::slot_recordTimeStart()
 {
    QTime time( 0, 0, 0, 0 );
-   ui->labelInfoRecordTime->setText( time.addSecs( summedTime->elapsed()/1000 ).toString( "hh:mm:ss" ) );
+   ui->labelInfoRecordTime->setText( time.addMSecs( elapsedTime->elapsed() + int_summed ).toString( "hh:mm:ss" ) );
 }
 

@@ -21,7 +21,10 @@ private slots:
   void slot_newVideoFilename( QString filename );
   void slot_recordTimeStart();
 
-  void slot_timeStart();
+  void slot_timeFirstStart();
+  void slot_timeContinueStart();
+
+  void slot_summedTimePause();
 
 
 signals:
@@ -34,8 +37,9 @@ private:
   Ui_MainWindow *ui;
   QString newVideoFilename = "";
   QTimer *timerRecord;
-  QTime *summedTime;
+  QTime *elapsedTime;
 
+  int int_summed = 0;
 };
 
 #endif
