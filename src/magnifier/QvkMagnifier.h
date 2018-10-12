@@ -9,9 +9,7 @@
 #include <QDialog>
 #include <QLabel>
 #include <QDesktopWidget>
-#include <QDebug>
 #include <QTimer>
-#include <QRadioButton>
 
 class QvkMagnifier: public QDialog
 { 
@@ -22,7 +20,6 @@ public:
   
 
 public slots:
-  void slot_showDialogMagnifier();
   void slot_magnifierShow( bool value );
   
 
@@ -47,12 +44,7 @@ private:
   int border;
   int distanceX;
   int distanceY;
-  QRadioButton *radioButton1;
-  QRadioButton *radioButton2;
-  QRadioButton *radioButton3;
   int faktor;
-  int formValue;
-  QDialog *newDialog;
   QTimer *timer;
   QvkSettings vkSettings;
   

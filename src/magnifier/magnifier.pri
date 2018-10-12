@@ -1,7 +1,9 @@
 INCLUDEPATH += $$PWD
 DEPENDPATH  += $$PWD
-HEADERS     += $$PWD/QvkMagnifier.h
+HEADERS     += $$PWD/QvkMagnifierController.h \
+               $$PWD/QvkMagnifier.h
                    
-SOURCES     += $$PWD/QvkMagnifier.cpp
+SOURCES     += $$PWD/QvkMagnifierController.cpp \
+               $$PWD/QvkMagnifier.cpp
 
 FORMS       += $$PWD/QvkMagnifierDialog.ui         

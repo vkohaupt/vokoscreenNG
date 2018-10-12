@@ -36,11 +36,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                                           vkAudioPulse(new QvkAudioPulse(ui)),
                                           vkAudioAlsa(new QvkAudioAlsa(ui)),
                                           vkAudioWindows(new QvkAudioWindows(ui)),
-                                          vkHelp(new QvkHelp(ui)),
-                                          magnifier(new QvkMagnifier())
+                                          vkHelp(new QvkHelp(ui))
 {
     ui->setupUi(this);
-
+    vkMagnifierController = new QvkMagnifierController(ui);
     vkHelp->initHelp();
     vkSettings.readAll();
     slot_setVisibleSystray( true );
@@ -230,10 +229,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->comboBoxAreaSize, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_areaSetResolution( QString ) ) );
 
     ui->toolButtonHelpCountdown->setIcon( ui->toolButtonHelpCountdown->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-
-    connect( ui->checkBoxMagnifier,         SIGNAL( clicked( bool ) ), magnifier, SLOT( slot_magnifierShow( bool ) ) );
-    connect( ui->toolButtonDialogMagnifier, SIGNAL( clicked() ),       magnifier, SLOT( slot_showDialogMagnifier() ) );
-
 
     // Tab 1 Audio
     ui->toolButtonFramesHelp->setIcon( ui->toolButtonFramesHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );

@@ -5,7 +5,7 @@
 QvkMagnifier::QvkMagnifier()
 {
   vkSettings.readAll();
-  
+
   faktor = 2;
   label = new QLabel( this );
 
@@ -32,7 +32,6 @@ QvkMagnifier::QvkMagnifier()
 
   timer = new QTimer( this );
   connect( timer, SIGNAL( timeout() ), this, SLOT( slot_mytimer() ) );
-
 }
 
 
@@ -57,43 +56,12 @@ void QvkMagnifier::slot_magnifierShow( bool value )
 }
 
 
-void QvkMagnifier::slot_showDialogMagnifier()
-{
-  newDialog = new QDialog;
-  newDialog->setModal( true );
-
-  Ui_MagnifierDialog myUiDialog;
-  myUiDialog.setupUi( newDialog );
-  newDialog->show();  
-
-  connect( myUiDialog.radioButton1, SIGNAL( clicked() ), this, SLOT( slot_magnifier200x200() ) );
-  if ( formValue == 1 )
-    myUiDialog.radioButton1->setChecked( true );
-  
-  connect( myUiDialog.radioButton2, SIGNAL( clicked() ), this, SLOT( slot_magnifier400x200() ) );
-  if ( formValue == 2 )
-    myUiDialog.radioButton2->setChecked( true );
-  
-  connect( myUiDialog.radioButton3, SIGNAL( clicked() ), this, SLOT( slot_magnifier600x200() ) );
-  if ( formValue == 3 )
-    myUiDialog.radioButton3->setChecked( true );
-  
-  disconnect( myUiDialog.buttonBox, 0, 0, 0 );
-  connect( myUiDialog.buttonBox, SIGNAL( accepted() ), newDialog, SLOT( close() ) );
-  connect( myUiDialog.buttonBox, SIGNAL( accepted() ), newDialog, SLOT( deleteLater() ) );
-}
-
-// Speicherlack wenn Dialog über den Titelbutton-Schließen geschlossen wird.
-// closeEvent einbauen.
-
-
 void QvkMagnifier::slot_magnifier200x200()
 {
   distanceX = 50;
   distanceY = 50;
   resize( 2 * distanceX * faktor, 2 * distanceY * faktor );
   label->setGeometry( QRect( 0 + border, 0 + border, this->width() - 2 * border, this->height() - 2 * border ) );
-  formValue = 1;
 }
 
 
@@ -103,7 +71,6 @@ void QvkMagnifier::slot_magnifier400x200()
   distanceY = 50;
   resize( 2 * distanceX * faktor, 2 * distanceY * faktor );
   label->setGeometry( QRect( 0 + border, 0 + border, this->width() - 2 * border, this->height() - 2 * border ) );
-  formValue = 2;
 }
 
 
@@ -113,7 +80,6 @@ void QvkMagnifier::slot_magnifier600x200()
   distanceY = 50;
   resize( 2 * distanceX * faktor, 2 * distanceY * faktor );
   label->setGeometry( QRect( 0 + border, 0 + border, this->width() - 2 * border, this->height() - 2 * border ) );
-  formValue = 3;
 }
 
 
