@@ -231,10 +231,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->toolButtonHelpCountdown->setIcon( ui->toolButtonHelpCountdown->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
-    connect( ui->checkBoxMagnifier, SIGNAL( clicked( bool ) ), magnifier, SLOT( slot_magnifierShow( bool ) ) );
-    //connect( magnifier,             SIGNAL( closeMagnifier( bool ) ), ui->checkBoxMagnifier, SLOT( setChecked( bool ) ) );
-    //connect( myUi.MagnifierDialogPushButton, SIGNAL( clicked() ), magnifier,  SLOT( showDialogMagnifier() ) );
-
+    connect( ui->checkBoxMagnifier,         SIGNAL( clicked( bool ) ), magnifier, SLOT( slot_magnifierShow( bool ) ) );
+    connect( ui->toolButtonDialogMagnifier, SIGNAL( clicked() ),       magnifier, SLOT( slot_showDialogMagnifier() ) );
 
 
     // Tab 1 Audio

@@ -31,7 +31,8 @@ QvkMagnifier::QvkMagnifier()
   label->setScaledContents( true );
 
   timer = new QTimer( this );
-  connect( timer, SIGNAL( timeout() ), this, SLOT( mytimer() ) );
+  connect( timer, SIGNAL( timeout() ), this, SLOT( slot_mytimer() ) );
+
 }
 
 
@@ -56,7 +57,7 @@ void QvkMagnifier::slot_magnifierShow( bool value )
 }
 
 
-void QvkMagnifier::showDialogMagnifier()
+void QvkMagnifier::slot_showDialogMagnifier()
 {
   newDialog = new QDialog;
   newDialog->setModal( true );
@@ -77,8 +78,13 @@ void QvkMagnifier::showDialogMagnifier()
   if ( formValue == 3 )
     myUiDialog.radioButton3->setChecked( true );
   
+  disconnect( myUiDialog.buttonBox, 0, 0, 0 );
   connect( myUiDialog.buttonBox, SIGNAL( accepted() ), newDialog, SLOT( close() ) );
+  connect( myUiDialog.buttonBox, SIGNAL( accepted() ), newDialog, SLOT( deleteLater() ) );
 }
+
+// Speicherlack wenn Dialog über den Titelbutton-Schließen geschlossen wird.
+// closeEvent einbauen.
 
 
 void QvkMagnifier::slot_magnifier200x200()
@@ -110,24 +116,6 @@ void QvkMagnifier::slot_magnifier600x200()
   formValue = 3;
 }
 
-/*
-int QvkMagnifier::getFormValue()
-{
-  return formValue; 
-}
-
-
-int QvkMagnifier::getDistanceX()
-{
-  return distanceX;
-}
-
-
-int QvkMagnifier::getDistanceY()
-{
-  return distanceY;
-}
-*/
 
 int QvkMagnifier::NewDistanceXLeft()
 {
@@ -263,7 +251,7 @@ void QvkMagnifier::setMagnifier()
 }
 
 
-void QvkMagnifier::mytimer()
+void QvkMagnifier::slot_mytimer()
 {
   QCursor cursor;
   QDesktopWidget *desk = QApplication::desktop();
