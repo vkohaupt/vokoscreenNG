@@ -269,12 +269,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->toolButtonShowKlick, SIGNAL( clicked() ), ShowClickDialog, SLOT( show() ) );
 
     QvkAnimateControl *animateControl = new QvkAnimateControl( (double) ShowClickDialog->myUiDialog.horizontalSliderShowtime->value()/10,
-                        ShowClickDialog->myUiDialog.horizontalSliderCircle->value(),
-                        ShowClickDialog->myUiDialog.checkBoxRadiant->checkState(),
-                        (double) ShowClickDialog->myUiDialog.horizontalSliderOpacity->value()/100,
-                        color );
+                                                               ShowClickDialog->myUiDialog.horizontalSliderCircle->value(),
+                                                               ShowClickDialog->myUiDialog.checkBoxRadiant->checkState(),
+                                                               (double) ShowClickDialog->myUiDialog.horizontalSliderOpacity->value()/100,
+                                                               color
+                                                             );
 
-    connect( ui->checkBoxShowClick, SIGNAL( clicked( bool ) ), animateControl, SLOT( pointerOnOff( bool ) ) );
+    connect( ui->checkBoxShowClick, SIGNAL( clicked( bool ) ),      animateControl, SLOT( pointerOnOff( bool ) ) );
+    connect( this,                  SIGNAL( signal_close( bool ) ), animateControl, SLOT( pointerOnOff( bool) ) );
 
     connect( ShowClickDialog, SIGNAL( newCircleWidgetValue( int, QColor ) ), animateControl, SLOT( setDiameterColor( int, QColor ) ) );
     connect( ShowClickDialog, SIGNAL( newShowtime( double ) ), animateControl, SLOT( setShowTime( double ) ) );
@@ -336,10 +338,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // End Tabs
 
     // Close vokoscreen GUI
-    connect( this,      SIGNAL( signal_close() ),              ui->pushButtonContinue, SLOT( click() ) );
-    connect( this,      SIGNAL( signal_close() ),              ui->pushButtonStop,     SLOT( click() ) );
-    connect( this,      SIGNAL( signal_close_webcam( bool ) ), ui->checkBoxCamera,     SLOT( setChecked( bool ) ) );
-    connect( this,      SIGNAL( signal_close() ),              vkHelp,                 SLOT( slot_close() ) );
+    connect( this,      SIGNAL( signal_close() ),       ui->pushButtonContinue, SLOT( click() ) );
+    connect( this,      SIGNAL( signal_close() ),       ui->pushButtonStop,     SLOT( click() ) );
+    connect( this,      SIGNAL( signal_close( bool ) ), ui->checkBoxCamera,     SLOT( setChecked( bool ) ) );
+    connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( slot_close() ) );
 
     VK_Supported_Formats_And_Codecs();
     VK_Check_is_Format_available();
@@ -384,7 +386,7 @@ void MainWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
     emit signal_close();
-    emit signal_close_webcam( false );
+    emit signal_close( false );
 }
 
 

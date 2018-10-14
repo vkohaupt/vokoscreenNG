@@ -121,7 +121,7 @@ private slots:
 
 signals:
     void signal_close();
-    void signal_close_webcam( bool value );
+    void signal_close( bool value );
     void signal_newVideoFilename( QString );
 
 
