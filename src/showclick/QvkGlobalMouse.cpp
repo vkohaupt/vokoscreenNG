@@ -33,23 +33,6 @@ void QvkGlobalMouse::setCursorOff()
   onOff = false;
 }
 
-/*
-int keyPressed(int key){
-    return (GetAsyncKeyState(key) & 0x8000 != 0);
-}
-
-int main(){
-    while(1){
-        if(keyPressed(VK_LBUTTON)){
-            printf("%s\n","Click izquierdo");
-        }
-        if(keyPressed(VK_RBUTTON)){
-            printf("%s\n","Click Derecho");
-        }
-    }
-    return 0;
-}
-*/
 
 #ifdef Q_OS_WIN
 int keyPressed(int key)
