@@ -15,5 +15,12 @@
         <file>pictures/video-display.svg</file>
         <file>pictures/audio-input-microphone.svg</file>
         <file>pictures/edit-undo.svg</file>
+        <file>pictures/farbeimer-gelb.png</file>
+        <file>pictures/farbeimer-gruen.png</file>
+        <file>pictures/farbeimer-rot.png</file>
+        <file>pictures/cursor.png</file>
+        <file>pictures/radiant.png</file>
+        <file>pictures/sandglass.png</file>
+        <file>pictures/transparenz.png</file>
     </qresource>
 </RCC>
