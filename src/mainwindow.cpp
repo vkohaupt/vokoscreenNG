@@ -232,6 +232,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->toolButtonHelpCountdown->setIcon( ui->toolButtonHelpCountdown->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
+
     // Tab 2 Audio
     ui->toolButtonFramesHelp->setIcon( ui->toolButtonFramesHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     ui->toolButtonAudioHelp->setIcon( ui->toolButtonAudioHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
@@ -284,6 +285,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ShowClickDialog, SIGNAL( newRadiant( bool ) ), animateControl, SLOT( setRadiant( bool ) ) );
     // End showclick
 
+
     // Tab 3 Codec and Audio
     ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
     ui->pushButtonFormatDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
@@ -293,18 +295,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
 
+
     // Tab 4 Time
-
-
-    // Tab 5 Misc
-    ui->toolButtonHelpVideoPath->setIcon( ui->toolButtonHelpVideoPath->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-    videoFileSystemWatcher = new QFileSystemWatcher();
-    connect( ui->PushButtonVideoPath, SIGNAL( clicked( bool ) ),        this, SLOT( slot_newVideoPath() ) );
-    connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetNewPath() ) );
-    connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
-    connect( videoFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
-    ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
-
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
     ui->toolButtonHelpStartTime->setIcon( ui->toolButtonHelpStartTime->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     timerStartTimer = new QTimer();
@@ -317,6 +309,16 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxStopRecordingAfter, SIGNAL( toggled( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
     connect( timerStopRecordingAfter, SIGNAL( timeout() ), ui->pushButtonStop, SLOT( click() ) );
 
+
+    // Tab 5 Misc
+    ui->toolButtonHelpVideoPath->setIcon( ui->toolButtonHelpVideoPath->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    videoFileSystemWatcher = new QFileSystemWatcher();
+    connect( ui->PushButtonVideoPath, SIGNAL( clicked( bool ) ),        this, SLOT( slot_newVideoPath() ) );
+    connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetNewPath() ) );
+    connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
+    connect( videoFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
+    ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
+
     ui->comboBoxScale->addItems( resolutionStringList );
     ui->toolButtonHelpScale->setIcon( ui->toolButtonHelpScale->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->checkBoxScale,   SIGNAL( toggled( bool ) ), ui->comboBoxScale, SLOT( setEnabled( bool ) ) );
@@ -328,7 +330,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ), this, SLOT( slot_setVisibleSystray( bool ) ) );
     ui->checkBoxShowInSystray->clicked( true );
 
-    // Tab 4 Available muxer, encoder etc.
+
+    // Tab 6 Available muxer, encoder etc.
     ui->toolButtonAvalaibleHelp->setIcon( ui->toolButtonAvalaibleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
     QIcon iconAvailable = ui->labelAvalible->style()->standardIcon( QStyle::SP_DialogApplyButton );
