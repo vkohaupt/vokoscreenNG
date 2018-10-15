@@ -232,6 +232,34 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->toolButtonHelpCountdown->setIcon( ui->toolButtonHelpCountdown->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
+    // Begin showclick
+    ui->toolButtonHelpShowclick->setIcon( ui->toolButtonHelpShowclick->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    QColor color   = vkSettings.getShowClickColor();
+    int radiant    = vkSettings.getShowClickRadiant();
+    double opacity = vkSettings.getShowClickOpacity();
+
+    QvkShowClickDialog *ShowClickDialog = new QvkShowClickDialog( color, radiant, opacity );
+    connect( ui->toolButtonShowKlick, SIGNAL( clicked() ), ShowClickDialog, SLOT( show() ) );
+
+    QvkAnimateControl *animateControl = new QvkAnimateControl( (double) ShowClickDialog->myUiDialog.horizontalSliderShowtime->value()/10,
+                                                               ShowClickDialog->myUiDialog.horizontalSliderCircle->value(),
+                                                               ShowClickDialog->myUiDialog.checkBoxRadiant->checkState(),
+                                                               (double) ShowClickDialog->myUiDialog.horizontalSliderOpacity->value()/100,
+                                                               color
+                                                             );
+
+    connect( ui->checkBoxShowClick, SIGNAL( clicked( bool ) ),      animateControl, SLOT( pointerOnOff( bool ) ) );
+    connect( this,                  SIGNAL( signal_close( bool ) ), animateControl, SLOT( pointerOnOff( bool ) ) );
+
+    connect( ShowClickDialog, SIGNAL( newCircleWidgetValue( int, QColor ) ), animateControl, SLOT( setDiameterColor( int, QColor ) ) );
+    connect( ShowClickDialog, SIGNAL( newShowtime( double ) ), animateControl, SLOT( setShowTime( double ) ) );
+    connect( ShowClickDialog, SIGNAL( newOpacity( double ) ), animateControl, SLOT( setOpacity( double ) ) );
+    connect( ShowClickDialog, SIGNAL( newRadiant( bool ) ), animateControl, SLOT( setRadiant( bool ) ) );
+    // End showclick
+
+    // Magnifier
+    ui->toolButtonHelpMagnifier->setIcon( ui->toolButtonHelpMagnifier->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+
 
     // Tab 2 Audio
     ui->toolButtonFramesHelp->setIcon( ui->toolButtonFramesHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
@@ -260,31 +288,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->radioButtonAlsa->hide();
     vkAudioWindows->slot_getWindowsDevices();
 #endif
-
-    // Begin showclick
-    QColor color   = vkSettings.getShowClickColor();
-    int radiant    = vkSettings.getShowClickRadiant();
-    double opacity = vkSettings.getShowClickOpacity();
-
-    QvkShowClickDialog *ShowClickDialog = new QvkShowClickDialog( color, radiant, opacity );
-    connect( ui->toolButtonShowKlick, SIGNAL( clicked() ), ShowClickDialog, SLOT( show() ) );
-
-    QvkAnimateControl *animateControl = new QvkAnimateControl( (double) ShowClickDialog->myUiDialog.horizontalSliderShowtime->value()/10,
-                                                               ShowClickDialog->myUiDialog.horizontalSliderCircle->value(),
-                                                               ShowClickDialog->myUiDialog.checkBoxRadiant->checkState(),
-                                                               (double) ShowClickDialog->myUiDialog.horizontalSliderOpacity->value()/100,
-                                                               color
-                                                             );
-
-    connect( ui->checkBoxShowClick, SIGNAL( clicked( bool ) ),      animateControl, SLOT( pointerOnOff( bool ) ) );
-    connect( this,                  SIGNAL( signal_close( bool ) ), animateControl, SLOT( pointerOnOff( bool ) ) );
-
-    connect( ShowClickDialog, SIGNAL( newCircleWidgetValue( int, QColor ) ), animateControl, SLOT( setDiameterColor( int, QColor ) ) );
-    connect( ShowClickDialog, SIGNAL( newShowtime( double ) ), animateControl, SLOT( setShowTime( double ) ) );
-    connect( ShowClickDialog, SIGNAL( newOpacity( double ) ), animateControl, SLOT( setOpacity( double ) ) );
-    connect( ShowClickDialog, SIGNAL( newRadiant( bool ) ), animateControl, SLOT( setRadiant( bool ) ) );
-    // End showclick
-
 
     // Tab 3 Codec and Audio
     ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
@@ -327,6 +330,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->toolButtonHelpLimitOfFreeDiskSpace->setIcon( ui->toolButtonHelpLimitOfFreeDiskSpace->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
+    ui->toolButtonHelpShowInSystray->setIcon( ui->toolButtonHelpShowInSystray->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ), this, SLOT( slot_setVisibleSystray( bool ) ) );
     ui->checkBoxShowInSystray->clicked( true );
 

@@ -95,7 +95,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <property name="iconSize">
            <size>
@@ -215,9 +215,9 @@
               <item>
                <layout class="QGridLayout" name="gridLayout_7">
                 <item row="0" column="3">
-                 <widget class="QToolButton" name="toolButton_2">
+                 <widget class="QToolButton" name="toolButtonHelpMagnifier">
                   <property name="text">
-                   <string/>
+                   <string notr="true">Help</string>
                   </property>
                  </widget>
                 </item>
@@ -236,9 +236,9 @@
                  </widget>
                 </item>
                 <item row="1" column="3">
-                 <widget class="QToolButton" name="toolButton_3">
+                 <widget class="QToolButton" name="toolButtonHelpShowclick">
                   <property name="text">
-                   <string/>
+                   <string notr="true">Help</string>
                   </property>
                  </widget>
                 </item>
@@ -1325,9 +1325,9 @@
                </spacer>
               </item>
               <item>
-               <widget class="QToolButton" name="toolButton">
+               <widget class="QToolButton" name="toolButtonHelpShowInSystray">
                 <property name="text">
-                 <string>...</string>
+                 <string notr="true">Help</string>
                 </property>
                </widget>
               </item>
