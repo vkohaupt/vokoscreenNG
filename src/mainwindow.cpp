@@ -123,8 +123,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     makeAndSetValidIcon( ui->tabWidgetScreencast, 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/video-display.svg" ) ) );
     makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/audio-input-microphone.svg" ) ) );
-    makeAndSetValidIcon( ui->tabWidgetScreencast, 2, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/systemsettings.svg" ) ) );
-    makeAndSetValidIcon( ui->tabWidgetScreencast, 3, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/help-contents.svg" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 2, QIcon::fromTheme( "appointment-new", QIcon( ":/pictures/audio-input-microphone.svg" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 3, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/systemsettings.svg" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 4, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/help-contents.svg" ) ) );
 
     // Bar for start, stop etc.
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setEnabled( bool ) ) );
@@ -231,7 +232,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->toolButtonHelpCountdown->setIcon( ui->toolButtonHelpCountdown->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
-    // Tab 1 Audio
+    // Tab 2 Audio
     ui->toolButtonFramesHelp->setIcon( ui->toolButtonFramesHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     ui->toolButtonAudioHelp->setIcon( ui->toolButtonAudioHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     ui->toolButtonNoMouseCursorHelp->setIcon( ui->toolButtonNoMouseCursorHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
@@ -283,7 +284,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ShowClickDialog, SIGNAL( newRadiant( bool ) ), animateControl, SLOT( setRadiant( bool ) ) );
     // End showclick
 
-    // Tab 2 Codec and Audio
+    // Tab 3 Codec and Audio
     ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
     ui->pushButtonFormatDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
     ui->pushButtonAudiocodecDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
@@ -292,8 +293,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
 
+    // Tab 4 Time
 
-    // Tab 3 Misc
+
+    // Tab 5 Misc
     ui->toolButtonHelpVideoPath->setIcon( ui->toolButtonHelpVideoPath->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     videoFileSystemWatcher = new QFileSystemWatcher();
     connect( ui->PushButtonVideoPath, SIGNAL( clicked( bool ) ),        this, SLOT( slot_newVideoPath() ) );
