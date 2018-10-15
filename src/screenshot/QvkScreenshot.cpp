@@ -20,7 +20,7 @@ QvkScreenshot::QvkScreenshot(MainWindow *value, Ui_MainWindow *ui_mainwindow ):v
                                                                                vkCountdown(new QvkCountdown),
                                                                                regionChoise(new QvkRegionChoise)
 {
-    parent = value; // Parent is vokoscreenGUI
+    parent = value;
     ui = ui_mainwindow;
 
     QDesktopWidget *desk = QApplication::desktop();
@@ -49,6 +49,8 @@ QvkScreenshot::QvkScreenshot(MainWindow *value, Ui_MainWindow *ui_mainwindow ):v
     connect( ui->pushButtonScreenshotShot, SIGNAL( clicked( bool ) ), this, SLOT( slot_preshot_Screenshot() ) );
     connect( ui->pushButtonScreenshotShow, SIGNAL( clicked( bool ) ), this, SLOT( slot_show_Screenshoot() ) );
 
+    connect( parent, SIGNAL( signal_resizeEvent( QResizeEvent*) ), this, SLOT( slot_resizeEvent( QResizeEvent* ) ) );
+
     connect( parent, SIGNAL( signal_close() ), regionChoise, SLOT( close() ) );
 
     slot_formats_Screenshot();
@@ -61,6 +63,21 @@ QvkScreenshot::QvkScreenshot(MainWindow *value, Ui_MainWindow *ui_mainwindow ):v
 QvkScreenshot::~QvkScreenshot()
 {
 }
+
+
+void QvkScreenshot::slot_resizeEvent( QResizeEvent *event )
+{
+    Q_UNUSED(event);
+    if ( !pixmap.isNull() )
+    {
+        ui->labelScreenShotPicture->setPixmap( pixmap.scaled( ui->labelScreenShotPicture->width()-20,
+                                                              ui->labelScreenShotPicture->height()-20,
+                                                              Qt::KeepAspectRatio,
+                                                              Qt::SmoothTransformation ) );
+    }
+
+}
+
 
 void QvkScreenshot::slot_formats_Screenshot()
 {

@@ -79,8 +79,6 @@ private:
 
     void VK_gst_Elements_available();
 
-    QPixmap pixmap;
-
     QTimer *timerStartTimer;
     QTimer *timerStopRecordingAfter = new QTimer( this );
 
@@ -123,10 +121,11 @@ signals:
     void signal_close();
     void signal_close( bool value );
     void signal_newVideoFilename( QString );
+    void signal_resizeEvent( QResizeEvent *event );
 
 
 protected:
-    void closeEvent( QCloseEvent * event );
+    void closeEvent( QCloseEvent *event );
     void resizeEvent( QResizeEvent *event );
 
 

@@ -276,7 +276,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                                                              );
 
     connect( ui->checkBoxShowClick, SIGNAL( clicked( bool ) ),      animateControl, SLOT( pointerOnOff( bool ) ) );
-    connect( this,                  SIGNAL( signal_close( bool ) ), animateControl, SLOT( pointerOnOff( bool) ) );
+    connect( this,                  SIGNAL( signal_close( bool ) ), animateControl, SLOT( pointerOnOff( bool ) ) );
 
     connect( ShowClickDialog, SIGNAL( newCircleWidgetValue( int, QColor ) ), animateControl, SLOT( setDiameterColor( int, QColor ) ) );
     connect( ShowClickDialog, SIGNAL( newShowtime( double ) ), animateControl, SLOT( setShowTime( double ) ) );
@@ -549,16 +549,9 @@ void MainWindow::slot_videoFileSystemWatcherSetButtons()
 }
 
 
-void MainWindow::resizeEvent(QResizeEvent *event)
+void MainWindow::resizeEvent( QResizeEvent *event )
 {
-    Q_UNUSED(event);
-    if ( !pixmap.isNull() )
-    {
-        ui->labelScreenShotPicture->setPixmap( pixmap.scaled( ui->labelScreenShotPicture->width()-20,
-                                                              ui->labelScreenShotPicture->height()-20,
-                                                              Qt::KeepAspectRatio,
-                                                              Qt::SmoothTransformation ) );
-    }
+    emit signal_resizeEvent( event );
 }
 
 

@@ -27,6 +27,7 @@ private slots:
     void slot_newPicturePath();
     void slot_pictureFileSystemWatcherSetNewPath();
     void slot_pictureFileSystemWatcherSetButtons();
+    void slot_resizeEvent( QResizeEvent *event );
 
 
 signals:
