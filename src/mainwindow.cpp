@@ -41,10 +41,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                                           vkHelp(new QvkHelp(ui))
 {
     ui->setupUi(this);
+    vkSettings.readAll();
     vkMagnifierController = new QvkMagnifierController(ui);
     vkHelp->initHelp();
-    vkSettings.readAll();
-    slot_setVisibleSystray( true );
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
@@ -324,7 +323,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->toolButtonHelpLimitOfFreeDiskSpace->setIcon( ui->toolButtonHelpLimitOfFreeDiskSpace->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
     connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ), this, SLOT( slot_setVisibleSystray( bool ) ) );
-
+    ui->checkBoxShowInSystray->clicked( true );
 
     // Tab 4 Available muxer, encoder etc.
     ui->toolButtonAvalaibleHelp->setIcon( ui->toolButtonAvalaibleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
