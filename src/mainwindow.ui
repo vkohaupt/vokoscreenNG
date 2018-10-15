@@ -95,7 +95,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -975,16 +975,20 @@
                   </layout>
                  </item>
                  <item>
-                  <widget class="QCheckBox" name="checkBoxStartTime">
-                   <property name="text">
-                    <string>Start the timer</string>
-                   </property>
-                  </widget>
+                  <layout class="QVBoxLayout" name="verticalLayout_24">
+                   <item>
+                    <widget class="QCheckBox" name="checkBoxStartTime">
+                     <property name="text">
+                      <string>Start the timer</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
                  </item>
                 </layout>
                </widget>
               </item>
-              <item>
+              <item alignment="Qt::AlignTop">
                <widget class="QToolButton" name="toolButtonHelpStartTime">
                 <property name="toolTip">
                  <string notr="true"/>
@@ -1122,7 +1126,7 @@
                 </property>
                </spacer>
               </item>
-              <item>
+              <item alignment="Qt::AlignTop">
                <widget class="QToolButton" name="toolButtonHelpStopRecordingAfter">
                 <property name="toolTip">
                  <string notr="true"/>
@@ -1201,7 +1205,7 @@
                 </layout>
                </widget>
               </item>
-              <item>
+              <item alignment="Qt::AlignTop">
                <widget class="QToolButton" name="toolButtonHelpVideoPath">
                 <property name="toolTip">
                  <string notr="true"/>
@@ -1283,7 +1287,7 @@
                 </layout>
                </widget>
               </item>
-              <item>
+              <item alignment="Qt::AlignTop">
                <widget class="QToolButton" name="toolButtonHelpLimitOfFreeDiskSpace">
                 <property name="text">
                  <string>Help</string>
@@ -1324,7 +1328,7 @@
                 </property>
                </spacer>
               </item>
-              <item>
+              <item alignment="Qt::AlignTop">
                <widget class="QToolButton" name="toolButtonHelpShowInSystray">
                 <property name="text">
                  <string notr="true">Help</string>
@@ -1417,8 +1421,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>248</width>
-                   <height>315</height>
+                   <width>20</width>
+                   <height>96</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
