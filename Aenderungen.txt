@@ -4,6 +4,11 @@
 - Vokoscreen-deploy.bat neu erarbeitet.[1]
 - WARNING: no real random source present! erscheint in der Konsole. Hat sich mit[1] in Luft aufgelöst :>)
 
+[Linux]
+- Für Pulse wird das Standard Gerät ausgewählt, für Alsa das erst gefundene.
+- Manpage eingebaut
+- Bei zweiten Klick auf Alsa oder Pulse wurde der Radiobutton deselektiert, Groupbox eingebaut.
+
 
 [All]
 - Aufnahme mit Audio funktionierte nur einmal https://github.com/vkohaupt/vokoscreenNG/commit/c3834467fde60f9d9f75b49d9d094a8180387cda
@@ -14,13 +19,10 @@
 - Für die Bereichsanzeige wurde ein Dropdownbutton eingeführt mit verschiedenen Auflösungen.
 - Starttime: Vor den Schiebereglern für Stunde und Minuten wurde dementsprechender Text gesetzt
 - StopRecordingAfter: Text nun vor den Spinboxen gesetzt
-- Tab 3(Misc) Alle Hilfebutton für Linux nun funktionsfähig.
-- Manpage eingebaut
-- Icon für Betriebsystem(Linux, Windows) unten rechts eingebaut
-- Für Pulse wird das Standard Gerät ausgewählt
-- Für Alsa wird das erste Verfügbare Gerät ausgewählt
-- Bei zweiten Klick auf Alsa oder Pulse wurde der Radiobutton deselektiert, Groupbox eingebaut.
+- Icon für Betriebsystem(Linux, Windows) oben rechts eingebaut
 - Systray eingebaut
+- Lupe eingebaut
+- Showclick eingebaut
 
 
 [Bugs]
