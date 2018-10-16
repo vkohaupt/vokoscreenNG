@@ -129,7 +129,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     makeAndSetValidIcon( ui->tabWidgetScreencast, 4, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/help-contents.svg" ) ) );
 
     // Bar for start, stop etc.
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_setWindowStateMinimized() ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonPause,       SLOT( setDisabled( bool ) ) );
@@ -399,15 +398,6 @@ void MainWindow::closeEvent( QCloseEvent *event )
     Q_UNUSED(event);
     emit signal_close();
     emit signal_close( false );
-}
-
-
-void MainWindow::slot_setWindowStateMinimized()
-{
-    if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true )
-    {
-        setWindowState( Qt::WindowMinimized );
-    }
 }
 
 
@@ -1050,12 +1040,6 @@ QString MainWindow::Vk_get_Videocodec_Encoder()
 
 void MainWindow::slot_preStart()
 {
-    if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  )
-    {
-        QThread::msleep( ui->spinBoxMinimizedWhenRecordingStarts->value() * 1000 );
-    }
-
-
     if ( ui->checkBoxStopRecordingAfter->isChecked() == true )
     {
         int value = ui->spinBoxStopRecordingAfterHouers->value()*60*60*1000;
@@ -1124,6 +1108,7 @@ void MainWindow::slot_preStart()
         vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
         return;
     }
+
 
     if ( ui->radioButtonArea->isChecked() == true )
     {
@@ -1201,6 +1186,11 @@ QString MainWindow::VK_getMuxer()
 
 void MainWindow::slot_Start()
 {
+    if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  )
+    {
+        setWindowState( Qt::WindowMinimized );
+        QThread::msleep( ui->spinBoxMinimizedWhenRecordingStarts->value() * 1000 );
+    }
     QString newVideoFilename = "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
     QString path = ui->lineEditVideoPath->text();
 

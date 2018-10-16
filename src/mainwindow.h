@@ -117,8 +117,6 @@ private slots:
 
     void slot_setVisibleSystray( bool value );
 
-    void slot_setWindowStateMinimized();
-
 
 signals:
     void signal_close();
