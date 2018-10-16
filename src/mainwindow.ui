@@ -95,7 +95,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>3</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1338,6 +1338,82 @@
              </layout>
             </item>
             <item>
+             <widget class="Line" name="line_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_23">
+              <item>
+               <widget class="QCheckBox" name="checkBoxMinimizedWhenRecordingStarts">
+                <property name="text">
+                 <string>Vokoscreen minimized when recording starts</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_21">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QToolButton" name="toolButtonHelpMinimizedWhenRecordingStarts">
+                <property name="text">
+                 <string>Help</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="Line" name="line_8">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_31">
+              <item>
+               <widget class="QCheckBox" name="checkBoxVokoscreenStartsMinimized">
+                <property name="text">
+                 <string>Vokoscreen starts minimized</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_22">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QToolButton" name="toolButtonHelpVokoscreenStartsMinimized">
+                <property name="text">
+                 <string>Help</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
              <spacer name="verticalSpacer_3">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
@@ -1421,8 +1497,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>20</width>
-                   <height>96</height>
+                   <width>248</width>
+                   <height>315</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
