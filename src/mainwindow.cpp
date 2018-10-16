@@ -21,6 +21,7 @@
 #include <QImageWriter>
 #include <QScreen>
 #include <QLibraryInfo>
+#include <QThread>
 
 #ifdef Q_OS_LINUX
   #include <QX11Info>
@@ -128,6 +129,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     makeAndSetValidIcon( ui->tabWidgetScreencast, 4, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/help-contents.svg" ) ) );
 
     // Bar for start, stop etc.
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_setWindowStateMinimized() ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonPause,       SLOT( setDisabled( bool ) ) );
@@ -334,6 +336,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ), this, SLOT( slot_setVisibleSystray( bool ) ) );
     ui->checkBoxShowInSystray->clicked( true );
 
+    connect( ui->checkBoxMinimizedWhenRecordingStarts, SIGNAL( clicked( bool ) ),    ui->frameWaitXSecondBeforRecording, SLOT( setEnabled( bool ) ) );
 
     // Tab 6 Available muxer, encoder etc.
     ui->toolButtonAvalaibleHelp->setIcon( ui->toolButtonAvalaibleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
@@ -396,6 +399,15 @@ void MainWindow::closeEvent( QCloseEvent *event )
     Q_UNUSED(event);
     emit signal_close();
     emit signal_close( false );
+}
+
+
+void MainWindow::slot_setWindowStateMinimized()
+{
+    if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true )
+    {
+        setWindowState( Qt::WindowMinimized );
+    }
 }
 
 
@@ -1038,6 +1050,12 @@ QString MainWindow::Vk_get_Videocodec_Encoder()
 
 void MainWindow::slot_preStart()
 {
+    if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  )
+    {
+        QThread::msleep( ui->spinBoxMinimizedWhenRecordingStarts->value() * 1000 );
+    }
+
+
     if ( ui->checkBoxStopRecordingAfter->isChecked() == true )
     {
         int value = ui->spinBoxStopRecordingAfterHouers->value()*60*60*1000;
