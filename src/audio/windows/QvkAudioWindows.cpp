@@ -25,6 +25,11 @@ void QvkAudioWindows::slot_getWindowsDevices()
         ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
         checkboxAudioDevice->setAutoExclusive( true );
     }
+
+    // The first audiodevice is the standard audiodevice. Tested under Windows 10
+    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
+    listQCheckBox.at(0)->click();
+
     QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
     ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
 }
