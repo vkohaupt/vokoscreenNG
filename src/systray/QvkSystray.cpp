@@ -40,11 +40,6 @@ void QvkSystray::init()
     continueAction->setData( "Continue" );
     continueAction->setEnabled( false );
 
-    hideAction = new QAction( this );
-    hideAction->setIcon( QIcon::fromTheme( "video-display", QIcon( ":/pictures/systray.png" ) ) );
-    hideAction->setText( tr( "Hide window" ) );
-    hideAction->setData( "Hide" );
-
     exitAction = new QAction( this );
     exitAction->setIcon( QIcon::fromTheme( "application-exit", ui->pushButtonStart->style()->standardIcon( QStyle::SP_DialogCloseButton ) ) );
     exitAction->setText( tr( "Exit" ) );
@@ -83,8 +78,6 @@ void QvkSystray::init()
     menu->addAction( pauseAction );
     menu->addAction( continueAction );
     menu->addSeparator();
-    menu->addAction( hideAction );
-    menu->addSeparator();
     menu->addAction( exitAction );
 
     setIcon( QIcon( ":/pictures/systray.png" ) );
@@ -95,14 +88,14 @@ void QvkSystray::init()
     connect( exitAction, SIGNAL( triggered( bool ) ), this, SLOT( slot_hide() ) );
 }
 
-
+// This slot need in this class
 void QvkSystray::slot_hide()
 {
     hide();
     emit signal_SystemtrayIsClose();
 }
 
-
+// This slot need in vokoscreen GUI
 void QvkSystray::slot_closeSystray()
 {
     hide();
