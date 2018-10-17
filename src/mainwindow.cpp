@@ -865,9 +865,7 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videocodec:vp8enc:vp8"
                                     << "audiocodec:vorbisenc:vorbis"
                                     << "audiocodec:flacenc:flac"
-                                #ifdef Q_OS_LINUX
                                     << "audiocodec:opusenc:opus"
-                                #endif
                                     << "audiocodec:lamemp3enc:mp3"
                                    );
 
@@ -877,9 +875,7 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
                                      << "audiomimetype:audio/webm"
                                      << "videocodec:vp8enc:vp8"
                                      << "audiocodec:vorbisenc:vorbis"
-                                 #ifdef Q_OS_LINUX
                                      << "audiocodec:opusenc:opus"
-                                 #endif
                                    );
 
     QStringList AVI_QStringList = ( QStringList()
@@ -897,9 +893,7 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
                                     << "audiomimetype:audio/mpeg"
                                     << "videocodec:x264enc:x264"
                                     << "audiocodec:lamemp3enc:mp3"
-                                #ifdef Q_OS_LINUX
                                     << "audiocodec:opusenc:opus"
-                                #endif
                                   );
 
     videoFormatsList.clear();

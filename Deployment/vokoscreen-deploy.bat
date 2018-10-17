@@ -1,14 +1,15 @@
 rem Install qt-opensource-windows-x86-5.9.2.exe
 rem Install gstreamer-1.0-x86-1.14.2.msi
 rem Install gstreamer-1.0-devel-x86-1.14.2.msi
-
-rem -Create a folder
-rem -copy vokoscreen.exe in this folder
+rem Create a folder
+rem Copy vokoscreen.exe in this folder
+rem Copy this file in this folder
+rem Start this file
 
 rem too find gcc
-PATH=%PATH%;C:\Qt\Qt5.9.2\Tools\mingw530_32\bin
+PATH=%PATH%;C:\Qt\Qt5.9.4\Tools\mingw530_32\bin
 
-C:\Qt\Qt5.9.2\5.9.2\mingw53_32\bin\windeployqt.exe --release vokoscreen.exe
+C:\Qt\Qt5.9.4\5.9.4\mingw53_32\bin\windeployqt.exe --release vokoscreen.exe
 
 copy C:\gstreamer\1.0\x86\bin\libgobject-2.0-0.dll
 copy C:\gstreamer\1.0\x86\bin\libglib-2.0-0.dll
