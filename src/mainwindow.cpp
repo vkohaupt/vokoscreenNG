@@ -335,7 +335,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ), this, SLOT( slot_setVisibleSystray( bool ) ) );
     ui->checkBoxShowInSystray->clicked( true );
 
+    ui->toolButtonHelpMinimizedWhenRecordingStarts->setIcon( ui->toolButtonHelpMinimizedWhenRecordingStarts->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->checkBoxMinimizedWhenRecordingStarts, SIGNAL( clicked( bool ) ),    ui->frameWaitXSecondBeforRecording, SLOT( setEnabled( bool ) ) );
+
+    ui->toolButtonHelpVokoscreenStartsMinimized->setIcon( ui->toolButtonHelpVokoscreenStartsMinimized->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+
 
     // Tab 6 Available muxer, encoder etc.
     ui->toolButtonAvalaibleHelp->setIcon( ui->toolButtonAvalaibleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );

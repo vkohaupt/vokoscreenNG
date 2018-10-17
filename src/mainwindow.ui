@@ -95,7 +95,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1378,7 +1378,7 @@
                  <item>
                   <widget class="QLabel" name="label_18">
                    <property name="text">
-                    <string>Second wait befor recording</string>
+                    <string>Second wait before recording</string>
                    </property>
                   </widget>
                  </item>
