@@ -11,6 +11,10 @@
 * https://gstreamer.freedesktop.org/pkg/windows/1.12.4/gstreamer-1.0-x86-1.12.4.msi
 * https://gstreamer.freedesktop.org/pkg/windows/1.12.4/gstreamer-1.0-devel-x86-1.12.4.msi
 
+### Environment
+* GST_PLUGIN_PATH=C:\gstreamer\1.0\x86\lib\gstreamer-1.0
+* GSTREAMER_1_0_ROOT_X86=C:\gstreamer\1.0\x86\
+
 ## Linux
 ### Requires:
 * Qt5 >= 5.9.4
