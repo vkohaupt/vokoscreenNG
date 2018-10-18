@@ -292,7 +292,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     vkAudioWindows->slot_getWindowsDevices();
 #endif
 
-    // Tab 3 Codec and Audio
+    // Tab 2 Codec and Audio
     ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
     ui->pushButtonFormatDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
     ui->pushButtonAudiocodecDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
@@ -302,12 +302,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
 
 
-    // Tab 4 Time
+    // Tab 3 Time
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
     ui->toolButtonHelpStartTime->setIcon( ui->toolButtonHelpStartTime->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     timerStartTimer = new QTimer();
     timerStartTimer->setTimerType( Qt::PreciseTimer );
     connect( timerStartTimer,  SIGNAL( timeout() ),           this, SLOT( slot_startTime() ) );
+    connect( ui->checkBoxStartTime,  SIGNAL( clicked( bool ) ), ui->pushButtonStart, SLOT( setHidden( bool ) ) );
     connect( ui->SliderHouer,  SIGNAL( valueChanged( int ) ), this, SLOT( slot_setHour( int ) ) );
     connect( ui->SliderMinute, SIGNAL( valueChanged( int ) ), this, SLOT( slot_setMinute( int ) ) );
 
@@ -316,7 +317,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( timerStopRecordingAfter, SIGNAL( timeout() ), ui->pushButtonStop, SLOT( click() ) );
 
 
-    // Tab 5 Misc
+    // Tab 4 Misc
     ui->toolButtonHelpVideoPath->setIcon( ui->toolButtonHelpVideoPath->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     videoFileSystemWatcher = new QFileSystemWatcher();
     connect( ui->PushButtonVideoPath, SIGNAL( clicked( bool ) ),        this, SLOT( slot_newVideoPath() ) );
@@ -343,7 +344,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->toolButtonHelpVokoscreenStartsMinimized->setIcon( ui->toolButtonHelpVokoscreenStartsMinimized->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
 
-    // Tab 6 Available muxer, encoder etc.
+    // Tab 5 Available muxer, encoder etc.
     ui->toolButtonAvalaibleHelp->setIcon( ui->toolButtonAvalaibleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
     QIcon iconAvailable = ui->labelAvalible->style()->standardIcon( QStyle::SP_DialogApplyButton );
@@ -503,7 +504,9 @@ void MainWindow::slot_startTime()
          ( time.currentTime().minute() == ui->timeEditStartTime->time().minute() ) and
          ( time.currentTime().second() == ui->timeEditStartTime->time().second() ) )
     {
+        ui->pushButtonStart->setVisible( true );
         ui->pushButtonStart->click();
+        ui->checkBoxStartTime->setChecked( false );
     }
 }
 
