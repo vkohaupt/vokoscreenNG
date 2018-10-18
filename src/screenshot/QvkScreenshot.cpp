@@ -92,6 +92,12 @@ void QvkScreenshot::slot_formats_Screenshot()
             ui->comboBoxScreenShotFormat->addItem( list.at( i ) );
         }
     }
+
+    if ( ui->comboBoxScreenShotFormat->findText( "png" ) > -1 )
+    {
+       ui->comboBoxScreenShotFormat->setCurrentIndex( ui->comboBoxScreenShotFormat->findText( "png" ) );
+    }
+
 }
 
 
