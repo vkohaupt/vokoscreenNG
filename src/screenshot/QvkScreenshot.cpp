@@ -48,6 +48,7 @@ QvkScreenshot::QvkScreenshot(MainWindow *value, Ui_MainWindow *ui_mainwindow ):v
 
     connect( ui->pushButtonScreenshotShot, SIGNAL( clicked( bool ) ), this, SLOT( slot_preshot_Screenshot() ) );
     connect( ui->pushButtonScreenshotShow, SIGNAL( clicked( bool ) ), this, SLOT( slot_show_Screenshoot() ) );
+    connect( ui->pushButtonScreenShotOpenFolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_Folder() ) );
 
     connect( parent, SIGNAL( signal_resizeEvent( QResizeEvent*) ), this, SLOT( slot_resizeEvent( QResizeEvent* ) ) );
 
@@ -75,7 +76,23 @@ void QvkScreenshot::slot_resizeEvent( QResizeEvent *event )
                                                               Qt::KeepAspectRatio,
                                                               Qt::SmoothTransformation ) );
     }
+}
 
+
+void QvkScreenshot::slot_Folder()
+{
+    QString path = ui->lineEditPicturePath->text();
+    bool b = QDesktopServices::openUrl( QUrl( path, QUrl::TolerantMode ) );
+    if ( b == false )
+    {
+        QDialog *newDialog = new QDialog;
+        Ui_NoPlayerDialog myUiDialog;
+        myUiDialog.setupUi( newDialog );
+        myUiDialog.labelPleaseInstall->setText( tr( "Please install an filemanager" ) );
+        newDialog->setModal( true );
+        newDialog->setWindowTitle( "vokoscreen" );
+        newDialog->show();
+    }
 }
 
 

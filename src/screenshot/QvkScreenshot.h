@@ -23,6 +23,7 @@ private slots:
     void slot_singleShot_Screenshot();
     void slot_shot_Screenshot();
     void slot_show_Screenshoot();
+    void slot_Folder();
     void slot_Screenshot_count_changed( int newCount );
     void slot_newPicturePath();
     void slot_pictureFileSystemWatcherSetNewPath();

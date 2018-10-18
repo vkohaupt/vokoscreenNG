@@ -195,6 +195,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     connect( ui->pushButtonPlay, SIGNAL( clicked( bool ) ), this, SLOT( slot_Play() ) );
 
+    connect( ui->pushButtonScreencastOpenfolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_Folder() ) );
+
 
     // Tab 1 Screen
 #ifdef Q_OS_WIN
@@ -1343,6 +1345,24 @@ void MainWindow::slot_Play()
         newDialog->show();
     }
 }
+
+
+void MainWindow::slot_Folder()
+{
+    QString path = ui->lineEditVideoPath->text();
+    bool b = QDesktopServices::openUrl( QUrl( path, QUrl::TolerantMode ) );
+    if ( b == false )
+    {
+        QDialog *newDialog = new QDialog;
+        Ui_NoPlayerDialog myUiDialog;
+        myUiDialog.setupUi( newDialog );
+        myUiDialog.labelPleaseInstall->setText( tr( "Please install an filemanager" ) );
+        newDialog->setModal( true );
+        newDialog->setWindowTitle( "vokoscreen" );
+        newDialog->show();
+    }
+}
+
 
 QString MainWindow::get_x_From_Screen()
 {

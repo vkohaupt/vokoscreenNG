@@ -91,6 +91,7 @@ private slots:
     void slot_Pause();
     void slot_Continue();
     void slot_Play();
+    void slot_Folder();
     void slot_screenCountChanged(int newCount );
     void slot_setFramesStandard( bool value );
     void slot_audioIconOnOff(bool state );
