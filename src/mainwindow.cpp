@@ -689,12 +689,22 @@ QString MainWindow::VK_getXimagesrc()
 
     if( ui->radioButtonWindow->isChecked() == true )
     {
+        QString xid;
+        if ( ui->checkBoxStartTime->isChecked() == true )
+        {
+            xid = QString::number( QvkWinInfo::activeWindow() );
+        }
+        else
+        {
+            xid = QString::number( vkWinInfo->getWinID() );
+        }
+
         QStringList stringList;
         stringList << "ximagesrc"
                    << "display-name=" + qgetenv( "DISPLAY" )
                    << "use-damage=false"
                    << "show-pointer=" + showPointer
-                   << "xid=" + QString::number( vkWinInfo->getWinID() );
+                   << "xid=" + xid;
 
         QString value = stringList.join( " " );
         return value;
@@ -1066,6 +1076,13 @@ void MainWindow::slot_preStart()
     }
 
     if ( ui->radioButtonFullscreen->isChecked() == true )
+    {
+        slot_Start();
+        return;
+    }
+
+
+    if ( ( ui->radioButtonWindow->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) )
     {
         slot_Start();
         return;

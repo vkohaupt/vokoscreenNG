@@ -16,6 +16,7 @@ public:
     QvkWinInfo();
     virtual ~QvkWinInfo();
     WId getWinID();
+    static WId activeWindow();
 
 
 public slots:
@@ -35,7 +36,6 @@ protected:
 
 
 private:
-    static WId activeWindow();
 
     QTimer *windowTimer;
     QTimer *mouseTimer;
