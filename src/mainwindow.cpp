@@ -508,7 +508,6 @@ void MainWindow::slot_startTime()
     {
         ui->pushButtonStart->setVisible( true );
         ui->pushButtonStart->click();
-//        ui->checkBoxStartTime->setChecked( false );    *******************************************************************
     }
 }
 
