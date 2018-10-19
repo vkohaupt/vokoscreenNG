@@ -311,6 +311,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxStartTime,  SIGNAL( clicked( bool ) ), ui->pushButtonStart, SLOT( setHidden( bool ) ) );
     connect( ui->SliderHouer,  SIGNAL( valueChanged( int ) ), this, SLOT( slot_setHour( int ) ) );
     connect( ui->SliderMinute, SIGNAL( valueChanged( int ) ), this, SLOT( slot_setMinute( int ) ) );
+    connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ), ui->labelCountdown, SLOT( setDisabled( bool ) ) );
+    connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ), ui->spinBoxCountDown, SLOT( setDisabled( bool ) ) );
 
     ui->toolButtonHelpStopRecordingAfter->setIcon( ui->toolButtonHelpStopRecordingAfter->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->checkBoxStopRecordingAfter, SIGNAL( toggled( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
@@ -506,7 +508,7 @@ void MainWindow::slot_startTime()
     {
         ui->pushButtonStart->setVisible( true );
         ui->pushButtonStart->click();
-        ui->checkBoxStartTime->setChecked( false );
+//        ui->checkBoxStartTime->setChecked( false );    *******************************************************************
     }
 }
 
@@ -1063,6 +1065,13 @@ void MainWindow::slot_preStart()
     }
 
 
+    if ( ( ui->radioButtonFullscreen->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) )
+    {
+        slot_Start();
+        return;
+    }
+
+
     if ( ( ui->radioButtonFullscreen->isChecked() == true ) and  ( ui->spinBoxCountDown->value() > 0 ) )
     {
         disconnect( vkCountdown, 0, 0, 0 );
@@ -1112,6 +1121,13 @@ void MainWindow::slot_preStart()
         connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
         connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), this,                SLOT( slot_Start() ) );
         vkWinInfo->slot_start();
+        return;
+    }
+
+
+    if ( ( ui->radioButtonArea->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) )
+    {
+        slot_Start();
         return;
     }
 
@@ -1283,6 +1299,11 @@ void MainWindow::slot_Start()
 
 void MainWindow::slot_preStop()
 {
+    if ( ui->checkBoxStartTime->isChecked() == true )
+    {
+         ui->checkBoxStartTime->click();
+    }
+
     if ( timerStopRecordingAfter->isActive() )
     {
         timerStopRecordingAfter->stop();
