@@ -925,7 +925,6 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
     globalFormatsList << videoFormatsList;
 
     /*
-        videoFormatsList.append( "mp4mux:mp4" );
         videoFormatsList.append( "asfmux:asf" );
         videoFormatsList.append( "flvmux:flv" );
     */
