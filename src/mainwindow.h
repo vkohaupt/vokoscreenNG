@@ -92,7 +92,7 @@ private slots:
     void slot_Continue();
     void slot_Play();
     void slot_Folder();
-    void slot_screenCountChanged(int newCount );
+    void slot_screenCountChanged(int value );
     void slot_setFramesStandard( bool value );
     void slot_audioIconOnOff(bool state );
     void slot_clearVerticalLayoutAudioDevices(bool value);
@@ -117,6 +117,8 @@ private slots:
     void slot_IfStopAudioCodecWidgetsSetDisabled();
 
     void slot_setVisibleSystray( bool value );
+
+    void slot_test();
 
 
 signals:

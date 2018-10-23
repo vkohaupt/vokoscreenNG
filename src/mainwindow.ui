@@ -95,7 +95,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -506,6 +506,9 @@
               </item>
               <item row="0" column="1">
                <widget class="QSpinBox" name="spinBoxFrames">
+                <property name="minimum">
+                 <number>1</number>
+                </property>
                 <property name="value">
                  <number>25</number>
                 </property>
@@ -1536,8 +1539,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>20</width>
-                   <height>96</height>
+                   <width>249</width>
+                   <height>315</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -1760,6 +1763,13 @@
             </property>
             <property name="text">
              <string>Folder</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonTest">
+            <property name="text">
+             <string>Test</string>
             </property>
            </widget>
           </item>

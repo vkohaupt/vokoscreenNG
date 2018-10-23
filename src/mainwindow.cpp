@@ -53,6 +53,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() );
 
     QScreen *screen = QGuiApplication::primaryScreen();
+    qDebug().noquote() << "[vokoscreen]" << "Version:" << vkSettings.getVersion();
     qDebug().noquote() << "[vokoscreen]" << "Locale:" << QLocale::system().name();
     qDebug().noquote() << "[vokoscreen]" << "Qt: " << qVersion();
     qDebug().noquote() << "[vokoscreen]" << gst_version_string();
@@ -196,6 +197,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonPlay, SIGNAL( clicked( bool ) ), this, SLOT( slot_Play() ) );
 
     connect( ui->pushButtonScreencastOpenfolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_Folder() ) );
+
+
+    connect( ui->pushButtonTest, SIGNAL( clicked( bool ) ), this, SLOT( slot_test() ) );
 
 
     // Tab 1 Screen
@@ -372,7 +376,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     QDesktopWidget *desk = QApplication::desktop();
     connect( desk, SIGNAL( screenCountChanged(int) ), this, SLOT( slot_screenCountChanged( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          this, SLOT( slot_screenCountChanged( int ) ) );
-    emit desk->screenCountChanged(0);
 
     // Checkable Widget sind in vokoscreen standardmäßig nicht gesetzt.
     // Diese werden hier beziehungsweise wenn die Settings vorhanden sind dort gesetzt.
@@ -392,7 +395,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     Q_UNUSED(cameraController);
     makeAndSetValidIcon( ui->tabWidgetCamera, 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/camera-web.svg" ) ) );
     // *****************End Camera ***********************************
-
 }
 
 
@@ -410,12 +412,27 @@ void MainWindow::closeEvent( QCloseEvent *event )
 }
 
 
+void MainWindow::slot_test()
+{
+        int time =250;
+        ui->pushButtonStart->click();
+        QThread::msleep( time );
+        for ( int x = 0; x < 1000; x++  )
+        {
+            qDebug() << x;
+            ui->pushButtonPause->click();
+            QThread::msleep( time );
+            ui->pushButtonContinue->click();
+            QThread::msleep( time );
+        }
+}
+
+
 void MainWindow::slot_setVisibleSystray( bool value )
 {
     if ( value == false )
     {
         vkSystray->slot_closeSystray();
-        disconnect( vkSystray, 0, 0, 0 );
         delete vkSystray;
     }
 
@@ -426,7 +443,6 @@ void MainWindow::slot_setVisibleSystray( bool value )
         connect( vkSystray, SIGNAL( signal_SystemtrayIsClose() ), this,      SLOT( close() ) );
         connect( this,      SIGNAL( signal_close() ),             vkSystray, SLOT( slot_closeSystray() ) );
     }
-
 }
 
 
@@ -1233,12 +1249,15 @@ void MainWindow::slot_Start()
     VK_PipelineList << VK_getCapsFilter();
     VK_PipelineList << "queue flush-on-eos=true";
     VK_PipelineList << "videoconvert";
+    VK_PipelineList << "queue flush-on-eos=true"; // Neu
     if ( ui->checkBoxScale->isChecked() )
     {
        VK_PipelineList << VK_getVideoScale();
     }
     VK_PipelineList << "videorate";
+    VK_PipelineList << "queue flush-on-eos=true"; // Neu
     VK_PipelineList << Vk_get_Videocodec_Encoder();
+    VK_PipelineList << "queue flush-on-eos=true"; // Neu
 
     if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( !VK_get_AudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
     {
@@ -1250,8 +1269,11 @@ void MainWindow::slot_Start()
         VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device-name=" ).append( "'" + VK_get_AudioDevice() +"'" );
         #endif
 
+        VK_PipelineList << "queue flush-on-eos=true"; // Neu
         VK_PipelineList << "audioconvert";
+        VK_PipelineList << "queue flush-on-eos=true"; // Neu
         VK_PipelineList << "audiorate";
+        VK_PipelineList << "queue flush-on-eos=true"; // Neu
         VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
         VK_PipelineList << "queue flush-on-eos=true";
     }
@@ -1336,14 +1358,26 @@ void MainWindow::slot_Stop()
     qDebug() << "[vokoscreen] Stop record";
 }
 
-
+// https://gstreamer.freedesktop.org/documentation/application-development/basics/elements.html
+// https://gstreamer.freedesktop.org/documentation/tutorials/basic/toolkit-integration.html
 void MainWindow::slot_Pause()
 {
     if ( ui->pushButtonStart->isEnabled() == false )
     {
         qDebug() << "[vokoscreen] Pause was clicked";
-        GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
-        Q_UNUSED(ret);
+        GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PAUSED ); // so wie es aussieht hängt er nur mit Audio
+        if ( ret == GST_STATE_CHANGE_FAILURE )   { qDebug() << "[vokoscreen] Pause was clicked" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
+        if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug() << "[vokoscreen] Pause was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
+        if ( ret == GST_STATE_CHANGE_ASYNC )     { qDebug() << "[vokoscreen] Pause was clicked" << "GST_STATE_CHANGE_ASYNC" << "Returncode =" << ret;   }   // 2
+        if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug() << "[vokoscreen] Pause was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
+
+
+        /* wait until it's up and running or failed */
+        if (gst_element_get_state (pipeline, NULL, NULL, -1) == GST_STATE_CHANGE_FAILURE)
+        {
+          g_error ("Failed to go into PAUSED state");
+        }
+
     }
 }
 
@@ -1354,7 +1388,20 @@ void MainWindow::slot_Continue()
     {
         qDebug() << "[vokoscreen] Continue was clicked";
         GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
-        Q_UNUSED(ret);
+        if ( ret == GST_STATE_CHANGE_FAILURE )   { qDebug() << "[vokoscreen] Continue was clicked" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
+        if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug() << "[vokoscreen] Continue was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
+        if ( ret == GST_STATE_CHANGE_ASYNC )     { qDebug() << "[vokoscreen] Continue was clicked" << "GST_STATE_CHANGE_ASYNC" << "Returncode =" << ret;   }   // 2
+        if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug() << "[vokoscreen] Continue was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
+
+        /* wait until it's up and running or failed */
+        if (gst_element_get_state (pipeline, NULL, NULL, -1) == GST_STATE_CHANGE_FAILURE)
+        {
+          g_error ("Failed to go into PLAYING state");
+        }
+        else
+        {
+            qDebug() << "***********************" << ret;
+        }
     }
 }
 
@@ -1427,6 +1474,7 @@ QString MainWindow::get_height_From_Screen()
     return value;
 }
 
+/*
 void MainWindow::slot_screenCountChanged( int newCount )
 {
     Q_UNUSED(newCount);
@@ -1458,3 +1506,41 @@ void MainWindow::slot_screenCountChanged( int newCount )
     ui->comboBoxScreen->addItem( tr( "All Displays" ), -1 );
     qDebug( " " );
 }
+*/
+
+void MainWindow::slot_screenCountChanged( int value )
+{
+    Q_UNUSED(value);
+    ui->comboBoxScreen->clear();
+    QList <QScreen *> screen = QGuiApplication::screens();
+    qDebug().noquote() << "[vokoscreen] Detect count screens:" << screen.count();
+    qDebug( " " );
+    for ( int x = 0 ; x <= screen.count()-1; x++ )
+    {
+        qDebug().noquote() << "[vokoscreen] Name from screen: " << screen.at(x)->name();
+        qDebug().noquote() << "[vokoscreen] Screen available desktop width :" << QString::number( screen.at(x)->geometry().width() * screen.at(x)->devicePixelRatio() );
+        qDebug().noquote() << "[vokoscreen] Screen available desktop height:" << QString::number( screen.at(x)->geometry().height() * screen.at(x)->devicePixelRatio() );
+        qDebug().noquote() << "[vokoscreen] DevicePixelRatio:" << screen.at(x)->devicePixelRatio() << " (Normal displays is 1, Retina display is 2)";
+        qDebug().noquote() << "[vokoscreen] Vertical refresh rate of the screen in Hz:" << screen.at(x)->refreshRate();
+        qDebug().noquote() << "[vokoscreen] Screen orientation" << screen.at(x)->orientation();
+        qDebug().noquote() << "[vokoscreen] Color depth of the screen: " << screen.at(x)->depth();
+        qDebug().noquote() << "[vokoscreen] Model from screen: " << screen.at(x)->model() ;
+        qDebug().noquote() << "[vokoscreen] Manufactur from screen: " << screen.at(x)->manufacturer();
+        qDebug().noquote() << "[vokoscreen] SerialNumber from screen: " << screen.at(x)->serialNumber();
+
+        QDesktopWidget *desk = QApplication::desktop();
+        QString X = QString::number( desk->screenGeometry( x ).left() * screen.at(x)->devicePixelRatio() );
+        QString Y = QString::number( desk->screenGeometry( x ).top() * screen.at(x)->devicePixelRatio() );
+        QString Width = QString::number( desk->screenGeometry( x ).width() * screen.at(x)->devicePixelRatio() );
+        QString Height = QString::number( desk->screenGeometry( x ).height() * screen.at(x)->devicePixelRatio() );
+        QString stringText = screen.at(x)->name() + ":  " + Width + " x " + Height;
+        QString stringData = "x=" + X + " " +
+                             "y=" + Y + " " +
+                             "with=" + Width + " " +
+                             "height=" + Height;
+        ui->comboBoxScreen->addItem( stringText, stringData );
+        qDebug().noquote() << "[vokoscreen]" <<  ui->comboBoxScreen->itemText(x) << "     " << ui->comboBoxScreen->itemData(x).toString();
+        qDebug( " " );
+    }
+}
+

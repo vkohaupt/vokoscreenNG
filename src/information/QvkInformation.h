@@ -17,7 +17,7 @@ public slots:
 
   
 private slots: 
-  void slot_systemInfo();
+  void slot_StorageInfo();
   void slot_newVideoFilename( QString filename );
   void slot_displayRecordTime();
 
@@ -36,6 +36,7 @@ protected:
 private:
   Ui_MainWindow *ui;
   QString newVideoFilename = "";
+  QTimer *timerStorageInfo;
   QTimer *timerRecord;
   QTime *elapsedTime;
 

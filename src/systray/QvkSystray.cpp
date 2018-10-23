@@ -52,33 +52,25 @@ void QvkSystray::init()
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), pauseAction,    SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), continueAction, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), continueAction, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, &QPushButton::clicked, [=]() {
-        setIcon( QIcon::fromTheme( "media-record", QIcon( ":/pictures/systray-record" ) ) );
-    });
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,           SLOT( slot_setRecordIcon( bool ) ) );
 
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), startAction,    SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), stopAction,     SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), pauseAction,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), continueAction, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStop, &QPushButton::clicked, [=]() {
-        setIcon( QIcon( ":/pictures/systray.png" ) );
-    });
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,           SLOT( slot_setSystrayIcon( bool ) ) );
 
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), startAction,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), stopAction,     SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), pauseAction,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), continueAction, SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonPause, &QPushButton::clicked, [=]() {
-        setIcon( QIcon::fromTheme( "media-playback-pause", QIcon( ":/pictures/pause.png" ) ) );
-    });
+    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), this,           SLOT( slot_setPauseIcon( bool ) ) );
 
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), startAction,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), stopAction,     SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), pauseAction,    SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), continueAction, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonContinue, &QPushButton::clicked, [=]() {
-        setIcon( QIcon::fromTheme( "media-record", QIcon( ":/pictures/systray-record" ) ) );
-    });
+    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), this,           SLOT( slot_setRecordIcon( bool ) ) );
 
     connect( startAction,    SIGNAL( triggered( bool ) ), ui->pushButtonStart,    SLOT( click() ) );
     connect( stopAction,     SIGNAL( triggered( bool ) ), ui->pushButtonStop,     SLOT( click() ) );
@@ -114,4 +106,22 @@ void QvkSystray::slot_hide()
 void QvkSystray::slot_closeSystray()
 {
     hide();
+}
+
+
+void QvkSystray::slot_setRecordIcon( bool )
+{
+    setIcon( QIcon::fromTheme( "media-record", QIcon( ":/pictures/systray-record" ) ) );
+}
+
+
+void QvkSystray::slot_setSystrayIcon( bool )
+{
+    setIcon( QIcon( ":/pictures/systray.png" ) );
+}
+
+
+void QvkSystray::slot_setPauseIcon( bool )
+{
+    setIcon( QIcon::fromTheme( "media-playback-pause", QIcon( ":/pictures/pause.png" ) ) );
 }

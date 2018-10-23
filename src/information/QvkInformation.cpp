@@ -13,10 +13,10 @@ QvkInformation::QvkInformation(Ui_MainWindow *ui_mainwindow )
     ui->labelInfoRecordTime->setText("00:00:00");
 
     // VideoSize and FreeDiskSpace
-    QTimer *timer = new QTimer(this);
-    timer->setInterval( 1000 );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_systemInfo() ) );
-    timer->start();
+    timerStorageInfo = new QTimer(this);
+    timerStorageInfo->setInterval( 1000 );
+    connect( timerStorageInfo, SIGNAL( timeout() ), this, SLOT( slot_StorageInfo() ) );
+    timerStorageInfo->start();
 
     // Recorded time
     elapsedTime = new QTime;
@@ -65,7 +65,7 @@ void QvkInformation::slot_newVideoFilename( QString filename )
 }
 
 
-void QvkInformation::slot_systemInfo()
+void QvkInformation::slot_StorageInfo()
 {
     QStorageInfo storage = QStorageInfo(ui->lineEditVideoPath->text() );
     storage.refresh();
