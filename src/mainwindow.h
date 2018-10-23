@@ -118,8 +118,6 @@ private slots:
 
     void slot_setVisibleSystray( bool value );
 
-    void slot_test();
-
 
 signals:
     void signal_close();

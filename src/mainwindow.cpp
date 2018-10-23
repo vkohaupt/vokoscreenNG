@@ -189,9 +189,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonScreencastOpenfolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_Folder() ) );
 
 
-    connect( ui->pushButtonTest, SIGNAL( clicked( bool ) ), this, SLOT( slot_test() ) );
-
-
     // Tab 1 Screen
 #ifdef Q_OS_WIN
     ui->radioButtonWindow->hide();
@@ -399,22 +396,6 @@ void MainWindow::closeEvent( QCloseEvent *event )
     Q_UNUSED(event);
     emit signal_close();
     emit signal_close( false );
-}
-
-
-void MainWindow::slot_test()
-{
-        int time =250;
-        ui->pushButtonStart->click();
-        QThread::msleep( time );
-        for ( int x = 0; x < 1000; x++  )
-        {
-            qDebug() << x;
-            ui->pushButtonPause->click();
-            QThread::msleep( time );
-            ui->pushButtonContinue->click();
-            QThread::msleep( time );
-        }
 }
 
 

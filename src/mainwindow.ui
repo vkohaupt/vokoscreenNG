@@ -674,7 +674,7 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>509</width>
+                      <width>545</width>
                       <height>81</height>
                      </rect>
                     </property>
@@ -1539,7 +1539,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>249</width>
+                   <width>267</width>
                    <height>315</height>
                   </rect>
                  </property>
@@ -1763,13 +1763,6 @@
             </property>
             <property name="text">
              <string>Folder</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButtonTest">
-            <property name="text">
-             <string>Test</string>
             </property>
            </widget>
           </item>
