@@ -52,7 +52,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() );
 
-    QScreen *screen = QGuiApplication::primaryScreen();
     qDebug().noquote() << "[vokoscreen]" << "Version:" << vkSettings.getVersion();
     qDebug().noquote() << "[vokoscreen]" << "Locale:" << QLocale::system().name();
     qDebug().noquote() << "[vokoscreen]" << "Qt: " << qVersion();
@@ -74,15 +73,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #ifdef Q_OS_LINUX
     qDebug().noquote() << "[vokoscreen] CompositingManager running:" << QX11Info::isCompositingManagerRunning();
 #endif
-    qDebug().noquote() << "[vokoscreen] screen available desktop width :" << screen->availableSize().width();
-    qDebug().noquote() << "[vokoscreen] screen available desktop height:" << screen->availableSize().height();
-    qDebug().noquote() << "[vokoscreen] Name from screen: " << screen->name();
-    qDebug().noquote() << "[vokoscreen] Vertical refresh rate of the screen in Hz:" << screen->refreshRate();
-    qDebug().noquote() << "[vokoscreen] Screen orientation" << screen->orientation();
-    qDebug().noquote() << "[vokoscreen] Color depth of the screen: " << screen->depth();
-    qDebug().noquote() << "[vokoscreen] Model from screen: " << screen->model() ;
-    qDebug().noquote() << "[vokoscreen] Manufactur from screen: " << screen->manufacturer();
-    qDebug().noquote() << "[vokoscreen] SerialNumber from screen: " << screen->serialNumber();
     qDebug( " " );
 
     resolutionStringList << "320 x 200 CGA 16 : 10"
@@ -1249,15 +1239,15 @@ void MainWindow::slot_Start()
     VK_PipelineList << VK_getCapsFilter();
     VK_PipelineList << "queue flush-on-eos=true";
     VK_PipelineList << "videoconvert";
-    VK_PipelineList << "queue flush-on-eos=true"; // Neu
+    VK_PipelineList << "queue flush-on-eos=true";
     if ( ui->checkBoxScale->isChecked() )
     {
        VK_PipelineList << VK_getVideoScale();
     }
     VK_PipelineList << "videorate";
-    VK_PipelineList << "queue flush-on-eos=true"; // Neu
+    VK_PipelineList << "queue flush-on-eos=true";
     VK_PipelineList << Vk_get_Videocodec_Encoder();
-    VK_PipelineList << "queue flush-on-eos=true"; // Neu
+    VK_PipelineList << "queue flush-on-eos=true";
 
     if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( !VK_get_AudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
     {
@@ -1269,11 +1259,11 @@ void MainWindow::slot_Start()
         VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device-name=" ).append( "'" + VK_get_AudioDevice() +"'" );
         #endif
 
-        VK_PipelineList << "queue flush-on-eos=true"; // Neu
+        VK_PipelineList << "queue flush-on-eos=true";
         VK_PipelineList << "audioconvert";
-        VK_PipelineList << "queue flush-on-eos=true"; // Neu
+        VK_PipelineList << "queue flush-on-eos=true";
         VK_PipelineList << "audiorate";
-        VK_PipelineList << "queue flush-on-eos=true"; // Neu
+        VK_PipelineList << "queue flush-on-eos=true";
         VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
         VK_PipelineList << "queue flush-on-eos=true";
     }
@@ -1474,46 +1464,13 @@ QString MainWindow::get_height_From_Screen()
     return value;
 }
 
-/*
-void MainWindow::slot_screenCountChanged( int newCount )
-{
-    Q_UNUSED(newCount);
-    ui->comboBoxScreen->clear();
-    QDesktopWidget *desk = QApplication::desktop();
-    qDebug() << "[vokoscreen]" << "Number of screens:" << desk->screenCount();
-    qDebug() << "[vokoscreen] Primary screen is: Display" << desk->primaryScreen()+1;
-    qDebug() << "[vokoscreen] VirtualDesktop:" << desk->isVirtualDesktop();
-
-    //QList < QScreen *> screens = QGuiApplication::screens();
-    QScreen *screen = QGuiApplication::primaryScreen();
-    qDebug() << "[vokoscreen] DevicePixelRatio:" << screen->devicePixelRatio() << " (Normal displays is 1, Retina display is 2)";
-
-    for ( int i = 1; i < desk->screenCount()+1; i++ )
-    {
-        QString ScreenGeometryX = QString::number( desk->screenGeometry( i-1 ).left() * screen->devicePixelRatio() );
-        QString ScreenGeometryY = QString::number( desk->screenGeometry( i-1 ).top() * screen->devicePixelRatio() );
-        QString ScreenGeometryWidth = QString::number( desk->screenGeometry( i-1 ).width() * screen->devicePixelRatio() );
-        QString ScreenGeometryHeight = QString::number( desk->screenGeometry( i-1 ).height() * screen->devicePixelRatio() );
-        QString stringText = tr( "Display" ) + " " + QString::number( i ) + ":  " + ScreenGeometryWidth + " x " + ScreenGeometryHeight;
-        QString stringData = "x=" + ScreenGeometryX + " " +
-                             "y=" + ScreenGeometryY + " " +
-                             "with=" + ScreenGeometryWidth + " " +
-                             "height=" + ScreenGeometryHeight;
-        ui->comboBoxScreen->addItem( stringText, stringData );
-        qDebug().noquote() << "[vokoscreen]" <<  ui->comboBoxScreen->itemText(i-1) << "     " << ui->comboBoxScreen->itemData(i-1).toString();
-    }
-
-    ui->comboBoxScreen->addItem( tr( "All Displays" ), -1 );
-    qDebug( " " );
-}
-*/
 
 void MainWindow::slot_screenCountChanged( int value )
 {
     Q_UNUSED(value);
     ui->comboBoxScreen->clear();
     QList <QScreen *> screen = QGuiApplication::screens();
-    qDebug().noquote() << "[vokoscreen] Detect count screens:" << screen.count();
+    qDebug().noquote() << "[vokoscreen] Detected count screens:" << screen.count();
     qDebug( " " );
     for ( int x = 0 ; x <= screen.count()-1; x++ )
     {
@@ -1539,7 +1496,8 @@ void MainWindow::slot_screenCountChanged( int value )
                              "with=" + Width + " " +
                              "height=" + Height;
         ui->comboBoxScreen->addItem( stringText, stringData );
-        qDebug().noquote() << "[vokoscreen]" <<  ui->comboBoxScreen->itemText(x) << "     " << ui->comboBoxScreen->itemData(x).toString();
+        qDebug().noquote() << "[vokoscreen] ItemText in Combobox:" << ui->comboBoxScreen->itemText(x);
+        qDebug().noquote() << "[vokoscreen] ItemData in Combobox:" << ui->comboBoxScreen->itemData(x).toString();
         qDebug( " " );
     }
 }
