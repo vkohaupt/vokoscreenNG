@@ -39,12 +39,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                                           vkAudioPulse(new QvkAudioPulse(ui)),
                                           vkAudioAlsa(new QvkAudioAlsa(ui)),
                                           vkAudioWindows(new QvkAudioWindows(ui)),
-                                          vkHelp(new QvkHelp(ui))
+                                          vkHelp(new QvkHelp())
 {
     ui->setupUi(this);
     vkSettings.readAll();
     vkMagnifierController = new QvkMagnifierController(ui);
-    vkHelp->initHelp();
+    vkHelp->initHelp( ui );
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
@@ -1205,6 +1205,22 @@ QString MainWindow::VK_getMuxer()
 }
 
 
+
+QStringList MainWindow::VK_getSelectedAudioDevice()
+{
+    QStringList list;
+    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listQCheckBox.count(); i++ )
+    {
+        if ( listQCheckBox.at(i)->checkState() == Qt::Checked )
+        {
+            list << listQCheckBox.at(i)->accessibleName();
+        }
+    }
+    return list;
+}
+
+
 void MainWindow::slot_Start()
 {
     if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  )
@@ -1229,7 +1245,7 @@ void MainWindow::slot_Start()
     VK_PipelineList << "queue flush-on-eos=true";
     VK_PipelineList << Vk_get_Videocodec_Encoder();
     VK_PipelineList << "queue flush-on-eos=true";
-
+/*
     if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( !VK_get_AudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
     {
         #ifdef Q_OS_LINUX
@@ -1247,6 +1263,52 @@ void MainWindow::slot_Start()
         VK_PipelineList << "queue flush-on-eos=true";
         VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
         VK_PipelineList << "queue flush-on-eos=true";
+    }
+
+    if ( VK_secondAudioDevice() > "" )
+    {
+        if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( !VK_secondAudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
+        {
+            #ifdef Q_OS_LINUX
+            VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device=" ).append( VK_secondAudioDevice() );
+            #endif
+
+            #ifdef Q_OS_WIN
+            VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device-name=" ).append( "'" + VK_secondAudioDevice() +"'" );
+            #endif
+
+            VK_PipelineList << "queue flush-on-eos=true";
+            VK_PipelineList << "audioconvert";
+            VK_PipelineList << "queue flush-on-eos=true";
+            VK_PipelineList << "audiorate";
+            VK_PipelineList << "queue flush-on-eos=true";
+            VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
+            VK_PipelineList << "queue flush-on-eos=true";
+        }
+    }
+*/
+
+
+    for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ )
+    {
+        if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( !VK_getSelectedAudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
+        {
+            #ifdef Q_OS_LINUX
+            VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device=" ).append( VK_getSelectedAudioDevice().at(x) );
+            #endif
+
+            #ifdef Q_OS_WIN
+            VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(x) +"'" );
+            #endif
+
+            VK_PipelineList << "queue flush-on-eos=true";
+            VK_PipelineList << "audioconvert";
+            VK_PipelineList << "queue flush-on-eos=true";
+            VK_PipelineList << "audiorate";
+            VK_PipelineList << "queue flush-on-eos=true";
+            VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
+            VK_PipelineList << "queue flush-on-eos=true";
+        }
     }
 
     VK_PipelineList << VK_getMuxer();

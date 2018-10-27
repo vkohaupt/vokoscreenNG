@@ -1,9 +1,8 @@
-#ifndef QVKHELP_H
-#define QVKHELP_H
+#ifndef QvkHelp_H 
+#define QvkHelp_H
 
 #include "ui_mainwindow.h"
-
-#include <QWidget>
+#include <QObject>
 
 #ifdef Q_OS_LINUX
 #include <QWebEngineView>
@@ -11,26 +10,31 @@
 #include <QWebEngineProfile>
 #endif
 
-namespace Ui {
-class QvkHelp;
-}
-
-class QvkHelp : public QWidget
+class QvkHelp: public QObject
 {
     Q_OBJECT
-
+    
 public:
-    explicit QvkHelp(QWidget *parent = 0);
-    ~QvkHelp();
-    void initHelp( Ui_MainWindow *ui_mainwindow );
+    QvkHelp(  Ui_MainWindow *ui_mainwindow );
+    virtual ~QvkHelp();
+    void initHelp();
 
-    QWebEngineProfile *webEngineProfile;
-    QWebEnginePage *webEnginePage;
-    QWebEngineView *webEngineView;
-
+    
 public slots:
     void slot_close();
 
+  
+private:
+    Ui_MainWindow *ui;
+    QString vk_helpPath;
+
+
+#ifdef Q_OS_LINUX
+    QWebEngineProfile *webEngineProfile;
+    QWebEnginePage *webEnginePage;
+    QWebEngineView *webEngineView;
+#endif
+    
 
 private slots:
     void slot_screenFullscreen();
@@ -48,12 +52,13 @@ private slots:
 
     void slot_availableHelp();
 
-    void slot_progress(int value);
 
-private:
-    Ui::QvkHelp *ui;
-    Ui_MainWindow *gui;
-    QString vk_helpPath;
+protected:
+
+  
+signals:
+
+    
 };
 
-#endif // QVKHELP_H
+#endif
