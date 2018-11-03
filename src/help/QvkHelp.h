@@ -39,7 +39,10 @@ private:
 private slots:
     void slot_screenFullscreen();
     void slot_screenWindow();
+    void slot_screenArea();
     void slot_screenCountdown();
+
+    void slot_audioHelp();
 
 
 

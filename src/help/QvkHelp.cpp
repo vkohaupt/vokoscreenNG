@@ -74,9 +74,27 @@ void QvkHelp::slot_screenWindow()
 /*
  * Helpbutton is pressed
  */
+void QvkHelp::slot_screenArea()
+{
+    loadHTML( vk_helpPath + "screencast/screenArea.html" );
+}
+
+
+/*
+ * Helpbutton is pressed
+ */
 void QvkHelp::slot_screenCountdown()
 {
     loadHTML( vk_helpPath + "screencast/screenCountdown.html" );
+}
+
+
+/*
+ * Helpbutton is pressed
+ */
+void QvkHelp::slot_audioHelp()
+{
+    loadHTML( vk_helpPath + "screencast/audio.html" );
 }
 
 
@@ -137,7 +155,7 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
 
     int countPNG = getCountPNG( tempPathFileName );
     qDebug() << "[vokoscreen] HTML file parsed, downloading" << countPNG << "picture";
-    int counter = 1;
+    int counter = 0;
     QTextStream textStream( &file );
     while( !textStream.atEnd() )
     {
