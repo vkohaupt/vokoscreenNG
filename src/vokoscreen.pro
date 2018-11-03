@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-unix: QT += x11extras webenginewidgets
+unix: QT += x11extras
 QT += core gui widgets multimedia multimediawidgets network
 # testlib // Achtung unter Windows öffnet sich damit die Konsole und qDebug() zeigt seine Ausgaben.
 
