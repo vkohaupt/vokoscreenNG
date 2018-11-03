@@ -1,59 +1,58 @@
-#ifndef QVKHELP_H
-#define QVKHELP_H
+#ifndef QvkHelp_H 
+#define QvkHelp_H
 
 #include "ui_mainwindow.h"
+#include "ui_formhelp.h"
+#include "QvkDownloader.h"
 
-#include <QWidget>
 
-#ifdef Q_OS_LINUX
-#include <QWebEngineView>
-#include <QWebEnginePage>
-#include <QWebEngineProfile>
-#endif
+#include <QObject>
 
-namespace Ui {
-class QvkHelp;
-}
-
-class QvkHelp : public QWidget
+class QvkHelp: public QWidget
 {
     Q_OBJECT
-
+    
 public:
-    explicit QvkHelp(QWidget *parent = 0);
-    ~QvkHelp();
-    void initHelp( Ui_MainWindow *ui_mainwindow );
+    QvkHelp(  Ui_MainWindow *ui_mainwindow );
+    virtual ~QvkHelp();
 
-    QWebEngineProfile *webEngineProfile;
-    QWebEnginePage *webEnginePage;
-    QWebEngineView *webEngineView;
-
+    
 public slots:
-    void slot_close();
+
+  
+private:
+    Ui_MainWindow *ui;
+    Ui_Form *uiForm;
+
+    QvkDownloader *vkDownloadHTML;
+    QvkDownloader *vkDownloadFiles;
+
+    void loadHTML(QString value );
+    QString remotePath;
+    QString remoteBasename;
+    int getCountPNG( QString tempPathFileName );
+    QStringList localFiles;
+    QString tempPath;
+    QString vk_helpPath;
 
 
 private slots:
     void slot_screenFullscreen();
     void slot_screenWindow();
-    void slot_screenArea();
     void slot_screenCountdown();
 
-    void slot_audioHelp();
 
-    void slot_miscHelpVideoPath();
-    void slot_miscHelpStartTime();
-    void slot_miscHelpStopRecordingAfter();
-    void slot_miscHelpScal();
-    void slot_miscHelpLimitOfFreeDiskSpace();
 
-    void slot_availableHelp();
+    void slot_parseHTML(QString tempPathFileName);
+    void slot_showHelp(QString tempPathFileName);
 
-    void slot_progress(int value);
 
-private:
-    Ui::QvkHelp *ui;
-    Ui_MainWindow *gui;
-    QString vk_helpPath;
+protected:
+
+  
+signals:
+
+    
 };
 
-#endif // QVKHELP_H
+#endif

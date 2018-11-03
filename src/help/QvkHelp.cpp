@@ -1,232 +1,197 @@
-#include "QvkHelp.h"
-#include "ui_QvkHelp.h"
+﻿#include "QvkHelp.h"
 
-QvkHelp::QvkHelp(QWidget *parent) : QWidget(parent),
-                                    ui(new Ui::QvkHelp)
+#include <QMessageBox>
+#include <QLabel>
+#include <QDir>
+#include <QTimer>
+#include <QTextDocument>
+
+QvkHelp::QvkHelp( Ui_MainWindow *ui_mainwindow ) : uiForm(new(Ui::Form))
 {
-    ui->setupUi(this);
-}
+    ui = ui_mainwindow;
+    uiForm->setupUi( this );
 
-
-void QvkHelp::initHelp(Ui_MainWindow *ui_mainwindow)
-{
-    gui = ui_mainwindow;
-
+    resize( 800, 600 );
     setWindowTitle( "vokoscreen help" );
-    resize( 800, 700 );
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
 
     QStringList helpStringList;
-#ifdef Q_OS_LINUX
     helpStringList << "http:/"
                    << "linuxecke.volkoh.de"
                    << "vokoscreen"
                    << "help"
-                   << "linux"
                    << "3.0";
-#endif
-#ifdef Q_OS_WIN
-    helpStringList << "http:/"
-                   << "linuxecke.volkoh.de"
-                   << "vokoscreen"
-                   << "help"
-                   << "windows"
-                   << "3.0";
-#endif
+
     vk_helpPath = helpStringList.join( "/" ).append( "/");
     QString language = "en";
     vk_helpPath = vk_helpPath + language + "/";
 
-    webEngineProfile = new QWebEngineProfile();
-    webEnginePage = new QWebEnginePage( webEngineProfile );
-    webEngineView = new QWebEngineView();
-    webEngineView->setPage( webEnginePage );
-    ui->verticalLayout->addWidget( webEngineView );
+    vkDownloadHTML = new QvkDownloader();
+    vkDownloadFiles = new QvkDownloader();
 
-    QAction *action = webEnginePage->action( QWebEnginePage::CopyImageUrlToClipboard );
-    action->setVisible( false );
-    action = webEnginePage->action( QWebEnginePage::DownloadImageToDisk );
-    action->setVisible( false );
-    action = webEnginePage->action( QWebEnginePage::CopyImageToClipboard );
-    action->setVisible( false );
-    action = webEnginePage->action( QWebEnginePage::DownloadLinkToDisk );
-    action->setVisible( false );
-    action = webEnginePage->action( QWebEnginePage::CopyLinkToClipboard );
-    action->setVisible( false );
-    action = webEnginePage->action( QWebEnginePage::OpenLinkInThisWindow );
-    action->setVisible( false );
+    connect( ui->toolButtonHelpFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenFullscreen() ) );
+    connect( ui->toolButtonHelpWindow, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenWindow() ) );
+    connect( ui->toolButtonHelpArea, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenArea() ) );
+    connect( ui->toolButtonHelpCountdown, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenCountdown() ) );
 
-    connect( webEnginePage, SIGNAL( loadProgress( int ) ), this, SLOT( slot_progress( int ) ) );
+    connect( ui->toolButtonAudioHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioHelp() ) );
 
-    connect( gui->toolButtonHelpFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenFullscreen() ) );
-    connect( gui->toolButtonHelpWindow, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenWindow() ) );
-    connect( gui->toolButtonHelpArea, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenArea() ) );
-    connect( gui->toolButtonHelpCountdown, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenCountdown() ) );
+    connect( ui->toolButtonHelpVideoPath, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpVideoPath() ) );
+    connect( ui->toolButtonHelpStartTime, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpStartTime() ) );
+    connect( ui->toolButtonHelpStopRecordingAfter, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpStopRecordingAfter() ) );
+    connect( ui->toolButtonHelpScale, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpScal() ) );
+    connect( ui->toolButtonHelpLimitOfFreeDiskSpace, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpLimitOfFreeDiskSpace() ) );
 
-    connect( gui->toolButtonAudioHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioHelp() ) );
-
-    connect( gui->toolButtonHelpVideoPath, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpVideoPath() ) );
-    connect( gui->toolButtonHelpStartTime, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpStartTime() ) );
-    connect( gui->toolButtonHelpStopRecordingAfter, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpStopRecordingAfter() ) );
-    connect( gui->toolButtonHelpScale, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpScal() ) );
-    connect( gui->toolButtonHelpLimitOfFreeDiskSpace, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpLimitOfFreeDiskSpace() ) );
-
-    connect( gui->toolButtonAvalaibleHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_availableHelp() ) );
+    connect( ui->toolButtonAvalaibleHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_availableHelp() ) );
 
 }
 
 
 QvkHelp::~QvkHelp()
 {
-    delete ui;
 }
 
-
-void QvkHelp::slot_close()
-{
-#ifdef Q_OS_LINUX
-    close();
-#endif
-}
-
-
-void QvkHelp::slot_progress( int value )
-{
-    qDebug() << value;
-    ui->progressBar->setValue( value );
-}
-
-
-
+/*
+ * Helpbutton is pressed
+ */
 void QvkHelp::slot_screenFullscreen()
 {
-    QUrl url( vk_helpPath + "screencast/screenFullscreen.html", QUrl::TolerantMode );
-#ifdef Q_OS_LINUX
-    webEnginePage->setUrl( url );
-    this->show();
-#endif
-#ifdef Q_OS_WIN
-    QDesktopServices::openUrl( url );
-#endif
+    loadHTML( vk_helpPath + "screencast/screenFullscreen.html" );
 }
 
 
+/*
+ * Helpbutton is pressed
+ */
 void QvkHelp::slot_screenWindow()
 {
-    QUrl url( vk_helpPath + "screencast/screenWindow.html", QUrl::TolerantMode );
-#ifdef Q_OS_LINUX
-    webEnginePage->setUrl( url );
-    this->show();
-#endif
-#ifdef Q_OS_WIN
-    QDesktopServices::openUrl( url );
-#endif
+    loadHTML( vk_helpPath + "screencast/screenWindow.html" );
 }
 
 
-void QvkHelp::slot_screenArea()
-{
-    QUrl url( vk_helpPath + "screencast/screenArea.html", QUrl::TolerantMode );
-#ifdef Q_OS_LINUX
-    webEnginePage->setUrl( url );
-    this->show();
-#endif
-#ifdef Q_OS_WIN
-    QDesktopServices::openUrl( url );
-#endif
-}
-
-
+/*
+ * Helpbutton is pressed
+ */
 void QvkHelp::slot_screenCountdown()
 {
-    QUrl url( vk_helpPath + "screencast/screenCountdown.html", QUrl::TolerantMode );
-#ifdef Q_OS_LINUX
-    webEnginePage->setUrl( url );
-    this->show();
-#endif
-#ifdef Q_OS_WIN
-    QDesktopServices::openUrl( url );
-#endif
+    loadHTML( vk_helpPath + "screencast/screenCountdown.html" );
 }
 
 
-void QvkHelp::slot_audioHelp()
+/*
+ * To first we load the html file ...
+ */
+void QvkHelp::loadHTML( QString value )
 {
-    QUrl url( vk_helpPath + "screencast/audio.html", QUrl::TolerantMode );
-#ifdef Q_OS_LINUX
-    webEnginePage->setUrl( url );
-    this->show();
-#endif
-#ifdef Q_OS_WIN
-    QDesktopServices::openUrl( url );
-#endif
+    QFileInfo fileInfo( value );
+    remotePath = fileInfo.path();
+    remoteBasename = fileInfo.baseName();
+    disconnect( vkDownloadHTML, 0, 0, 0 );
+    connect( vkDownloadHTML, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_parseHTML( QString ) ) );
+    vkDownloadHTML->doDownload( value );
 }
 
-void QvkHelp::slot_miscHelpVideoPath()
+
+int QvkHelp::getCountPNG( QString tempPathFileName )
 {
-#ifdef Q_OS_LINUX
-    webEnginePage->load( QUrl("http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/misc.html#miscHelpVideoPath") );
-    this->show();
-#endif
-#ifdef Q_OS_WIN
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screencast/misc.html#miscHelpVideoPath", QUrl::TolerantMode ) );
-#endif
+    QFile file( tempPathFileName );
+    if( !file.open( QIODevice::ReadOnly ) )
+    {
+        QMessageBox::information( 0, "Help error", file.errorString() );
+    }
+
+    int count = 0;
+    QTextStream textStream( &file );
+    while( !textStream.atEnd() )
+    {
+        QString line = textStream.readLine();
+        if ( line.contains( "png", Qt::CaseInsensitive ) == true )
+        {
+            count++;
+        }
+    }
+    file.close();
+    return count;
 }
 
-void QvkHelp::slot_miscHelpStartTime()
+
+/*
+ * ... then we parse *.html of png´s and download all files from remote Url and save local in tmp ...
+ */
+void QvkHelp::slot_parseHTML( QString tempPathFileName )
 {
-#ifdef Q_OS_LINUX
-    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/misc.html#miscHelpStartTime" ) );
-    this->show();
-#endif
-#ifdef Q_OS_WIN
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screencast/misc.html#miscHelpStartTime", QUrl::TolerantMode ) );
-#endif
+    localFiles.clear();
+    localFiles << tempPathFileName;
+
+    QFileInfo fileInfo( tempPathFileName );
+    QString tmpPath = fileInfo.absolutePath();
+
+
+    QFile file( tempPathFileName );
+    if( !file.open( QIODevice::ReadOnly ) )
+    {
+        QMessageBox::information( 0, "error", file.errorString() );
+    }
+
+    int countPNG = getCountPNG( tempPathFileName );
+    qDebug() << "[vokoscreen] HTML file parsed, downloading" << countPNG << "picture";
+    int counter = 1;
+    QTextStream textStream( &file );
+    while( !textStream.atEnd() )
+    {
+        QString line = textStream.readLine();
+        if ( line.contains( "png", Qt::CaseInsensitive ) == true )
+        {
+            counter++;
+            QString png = line.section( "\"", 1, 1 );
+            if ( counter == countPNG )
+            {
+                disconnect( vkDownloadFiles, 0, 0, 0 );
+                connect( vkDownloadFiles, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_showHelp( QString ) ) );
+            }
+            vkDownloadFiles->doDownload( remotePath + "/" + png );
+            localFiles << tmpPath + + "/" + png;
+        }
+    }
+    file.close();
 }
 
-void QvkHelp::slot_miscHelpStopRecordingAfter()
+/*
+ * ... then we show the html file
+ */
+void QvkHelp::slot_showHelp( QString tempPathFileName )
 {
-#ifdef Q_OS_LINUX
-    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/misc.html#miscHelpStopRecordingAfter" ) );
-    this->show();
-#endif
-#ifdef Q_OS_WIN
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screencast/misc.html#miscHelpStopRecordingAfter", QUrl::TolerantMode ) );
-#endif
+    QDir dir;
+    QString currentdir = dir.currentPath();
+
+    QFileInfo fileInfo( tempPathFileName );
+    QString tmpPath = fileInfo.absolutePath();
+    dir.setCurrent( tmpPath );
+
+    QString htmlFile = tmpPath + "/" + remoteBasename + ".html";
+    QFile file( htmlFile );
+    if( !file.open( QIODevice::ReadOnly ) )
+    {
+        QMessageBox::information( 0, "error", file.errorString() );
+    }
+
+    QTextStream textStream( &file );
+    QString value = textStream.readAll();
+    uiForm->textBrowser->setText( value );
+    file.close();
+
+    show();
+    qDebug() << "[vokoscreen] Show help";
+
+    dir.setCurrent( currentdir );
+
+    // remove all tmp files
+    for ( int i = 0; i < localFiles.count(); i++  )
+    {
+        QFile file( localFiles.at( i ) );
+        file.remove();
+    }
 }
 
-void QvkHelp::slot_miscHelpScal()
-{
-#ifdef Q_OS_LINUX
-    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/misc.html#miscHelpScal" ) );
-    this->show();
-#endif
-#ifdef Q_OS_WIN
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screencast/misc.html#miscHelpScal", QUrl::TolerantMode ) );
-#endif
-}
-
-void QvkHelp::slot_miscHelpLimitOfFreeDiskSpace()
-{
-#ifdef Q_OS_LINUX
-    webEnginePage->load( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/linux/3.0/screencast/misc.html#miscHelpLimitOfFreeDiskSpace" ) );
-    this->show();
-#endif
-#ifdef Q_OS_WIN
-    QDesktopServices::openUrl( QUrl( "http://linuxecke.volkoh.de/vokoscreen/help/windows/3.0/screencast/misc.html#miscHelpLimitOfFreeDiskSpace", QUrl::TolerantMode ) );
-#endif
-}
-
-void QvkHelp::slot_availableHelp()
-{
-    QUrl url( vk_helpPath + "screencast/available.html", QUrl::TolerantMode );
-#ifdef Q_OS_LINUX
-    webEnginePage->setUrl( url );
-    this->show();
-#endif
-#ifdef Q_OS_WIN
-    QDesktopServices::openUrl( url );
-#endif
-}

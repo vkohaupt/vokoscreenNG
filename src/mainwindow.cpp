@@ -38,13 +38,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                                           vkRegionChoise(new QvkRegionChoise),
                                           vkAudioPulse(new QvkAudioPulse(ui)),
                                           vkAudioAlsa(new QvkAudioAlsa(ui)),
-                                          vkAudioWindows(new QvkAudioWindows(ui)),
-                                          vkHelp(new QvkHelp())
+                                          vkAudioWindows(new QvkAudioWindows(ui))
 {
     ui->setupUi(this);
     vkSettings.readAll();
     vkMagnifierController = new QvkMagnifierController(ui);
-    vkHelp->initHelp( ui );
+    QvkHelp *vkHelp = new QvkHelp( ui );
+    Q_UNUSED( vkHelp );
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
@@ -352,7 +352,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( this,      SIGNAL( signal_close() ),       ui->pushButtonContinue, SLOT( click() ) );
     connect( this,      SIGNAL( signal_close() ),       ui->pushButtonStop,     SLOT( click() ) );
     connect( this,      SIGNAL( signal_close( bool ) ), ui->checkBoxCamera,     SLOT( setChecked( bool ) ) );
-    connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( slot_close() ) );
+    connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( close() ) );
 
     VK_Supported_Formats_And_Codecs();
     VK_Check_is_Format_available();
