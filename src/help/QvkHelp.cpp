@@ -159,17 +159,20 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
     while( !textStream.atEnd() )
     {
         QString line = textStream.readLine();
-        if ( line.contains( ".png", Qt::CaseInsensitive ) or line.contains( ".jpg", Qt::CaseInsensitive ) or line.contains( ".svg", Qt::CaseInsensitive ) )
+        if ( line.contains( ".png", Qt::CaseInsensitive ) or
+             line.contains( ".jpg", Qt::CaseInsensitive ) or
+             line.contains( ".svg", Qt::CaseInsensitive ) or
+             line.contains( ".css", Qt::CaseInsensitive ) )
         {
             counter++;
-            QString png = line.section( "\"", 1, 1 );
+            QString fileForHTML = line.section( "\"", 1, 1 );
             if ( counter == countPNG )
             {
                 disconnect( vkDownloadFiles, 0, 0, 0 );
                 connect( vkDownloadFiles, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_showHelp( QString ) ) );
             }
-            vkDownloadFiles->doDownload( remotePath + "/" + png );
-            localFiles << tmpPath + + "/" + png;
+            vkDownloadFiles->doDownload( remotePath + "/" + fileForHTML );
+            localFiles << tmpPath + + "/" + fileForHTML;
         }
     }
 
