@@ -34,6 +34,8 @@ QvkHelp::QvkHelp( Ui_MainWindow *ui_mainwindow ) : uiForm(new(Ui::Form))
     connect( ui->toolButtonHelpFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenFullscreen() ) );
     connect( ui->toolButtonHelpWindow, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenWindow() ) );
     connect( ui->toolButtonHelpArea, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenArea() ) );
+    connect( ui->toolButtonHelpMagnifier, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenMagnifier() ) );
+    connect( ui->toolButtonHelpShowclick, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenShowclick() ) );
     connect( ui->toolButtonHelpCountdown, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenCountdown() ) );
 
     connect( ui->toolButtonAudioHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioHelp() ) );
@@ -53,48 +55,45 @@ QvkHelp::~QvkHelp()
 {
 }
 
-/*
- * Helpbutton is pressed
- */
 void QvkHelp::slot_screenFullscreen()
 {
-    loadHTML( vk_helpPath + "screencast/screenFullscreen.html" );
+    loadHTML( vk_helpPath + "screencast/tab1-fullscreen.html" );
 }
 
 
-/*
- * Helpbutton is pressed
- */
 void QvkHelp::slot_screenWindow()
 {
-    loadHTML( vk_helpPath + "screencast/screenWindow.html" );
+    loadHTML( vk_helpPath + "screencast/tab1-window.html" );
 }
 
 
-/*
- * Helpbutton is pressed
- */
 void QvkHelp::slot_screenArea()
 {
-    loadHTML( vk_helpPath + "screencast/screenArea.html" );
+    loadHTML( vk_helpPath + "screencast/tab1-area.html" );
 }
 
 
-/*
- * Helpbutton is pressed
- */
+void QvkHelp::slot_screenMagnifier()
+{
+    loadHTML( vk_helpPath + "screencast/tab1-magnifier.html" );
+}
+
+
+void QvkHelp::slot_screenShowclick()
+{
+    loadHTML( vk_helpPath + "screencast/tab1-showclick.html" );
+}
+
+
 void QvkHelp::slot_screenCountdown()
 {
     loadHTML( vk_helpPath + "screencast/screenCountdown.html" );
 }
 
 
-/*
- * Helpbutton is pressed
- */
 void QvkHelp::slot_audioHelp()
 {
-    loadHTML( vk_helpPath + "screencast/audio.html" );
+    loadHTML( vk_helpPath + "screencast/tab2-audio.html" );
 }
 
 
@@ -160,7 +159,7 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
     while( !textStream.atEnd() )
     {
         QString line = textStream.readLine();
-        if ( line.contains( "png", Qt::CaseInsensitive ) == true )
+        if ( line.contains( ".png", Qt::CaseInsensitive ) or line.contains( ".jpg", Qt::CaseInsensitive ) or line.contains( ".svg", Qt::CaseInsensitive ) )
         {
             counter++;
             QString png = line.section( "\"", 1, 1 );
