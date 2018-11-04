@@ -172,6 +172,13 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
             localFiles << tmpPath + + "/" + png;
         }
     }
+
+    if ( counter == 0 )
+    {
+        // "dummy.png" is a fake, we need this if no picture is existing
+        slot_showHelp( tmpPath + "/" + "dummy.png");
+    }
+
     file.close();
 }
 
