@@ -111,7 +111,26 @@ void QvkHelp::loadHTML( QString value )
 }
 
 
-int QvkHelp::getCountPNG( QString tempPathFileName )
+bool QvkHelp::isFileInLine( QString line )
+{
+    bool value = false;
+    for ( int i = 0; i < toDownloadFiles.count(); i++ )
+    {
+        if ( line.contains( toDownloadFiles.at(i), Qt::CaseInsensitive ) )
+        {
+            value = true;
+            break;
+        }
+        else
+        {
+            value = false;
+        }
+    }
+    return value;
+}
+
+
+int QvkHelp::getCountFileToDownload( QString tempPathFileName )
 {
     QFile file( tempPathFileName );
     if( !file.open( QIODevice::ReadOnly ) )
@@ -124,7 +143,7 @@ int QvkHelp::getCountPNG( QString tempPathFileName )
     while( !textStream.atEnd() )
     {
         QString line = textStream.readLine();
-        if ( line.contains( "png", Qt::CaseInsensitive ) == true )
+        if ( isFileInLine( line ) )
         {
             count++;
         }
@@ -152,21 +171,18 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
         QMessageBox::information( 0, "error", file.errorString() );
     }
 
-    int countPNG = getCountPNG( tempPathFileName );
-    qDebug() << "[vokoscreen] HTML file parsed, downloading" << countPNG << "picture";
+    int countFiles = getCountFileToDownload( tempPathFileName );
+    qDebug() << "[vokoscreen] HTML file parsed, downloading" << countFiles << "files";
     int counter = 0;
     QTextStream textStream( &file );
     while( !textStream.atEnd() )
     {
         QString line = textStream.readLine();
-        if ( line.contains( ".png", Qt::CaseInsensitive ) or
-             line.contains( ".jpg", Qt::CaseInsensitive ) or
-             line.contains( ".svg", Qt::CaseInsensitive ) or
-             line.contains( ".css", Qt::CaseInsensitive ) )
+        if ( isFileInLine( line ) )
         {
-            counter++;
             QString fileForHTML = line.section( "\"", 1, 1 );
-            if ( counter == countPNG )
+            counter++;
+            if ( counter == countFiles )
             {
                 disconnect( vkDownloadFiles, 0, 0, 0 );
                 connect( vkDownloadFiles, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_showHelp( QString ) ) );
@@ -178,7 +194,7 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
 
     if ( counter == 0 )
     {
-        // "dummy.png" is a fake, we need this if no picture is existing
+        // "dummy.png" is a fake, we need this if no file is downlowded
         slot_showHelp( tmpPath + "/" + "dummy.png");
     }
 

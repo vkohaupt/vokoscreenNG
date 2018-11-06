@@ -24,13 +24,16 @@ private:
     Ui_MainWindow *ui;
     Ui_Form *uiForm;
 
+    QStringList toDownloadFiles = { ".png", ".svg", ".css", ".jpg" };
+    bool isFileInLine( QString line );
+
     QvkDownloader *vkDownloadHTML;
     QvkDownloader *vkDownloadFiles;
 
     void loadHTML(QString value );
     QString remotePath;
     QString remoteBasename;
-    int getCountPNG( QString tempPathFileName );
+    int getCountFileToDownload( QString tempPathFileName );
     QStringList localFiles;
     QString tempPath;
     QString vk_helpPath;
