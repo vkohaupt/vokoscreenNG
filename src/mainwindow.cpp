@@ -270,8 +270,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #ifdef Q_OS_LINUX
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), this,         SLOT( slot_clearVerticalLayoutAudioDevices( bool ) ) );
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkAudioPulse, SLOT( slot_getPulsesDevices( bool ) ) );
-    connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), this,         SLOT( slot_clearVerticalLayoutAudioDevices( bool ) ) );
-    connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), vkAudioAlsa,  SLOT( slot_getAlsaDevices( bool ) ) );
+    connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), vkAudioAlsa,  SLOT( slot_start( bool ) ) );
 
     // Pulse is Standard. If no pulsedevice found, change to alsa see QvkAudioPulse::slot_getPulsesDevices
     ui->radioButtonPulse->click();

@@ -154,7 +154,7 @@ int QvkHelp::getCountFileToDownload( QString tempPathFileName )
 
 
 /*
- * ... then we parse *.html of png´s and download all files from remote Url and save local in tmp ...
+ * ... then we parse *.html of files and download all files from remote Url and save local in tmp ...
  */
 void QvkHelp::slot_parseHTML( QString tempPathFileName )
 {

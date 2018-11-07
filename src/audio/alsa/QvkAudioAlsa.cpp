@@ -6,6 +6,10 @@
 QvkAudioAlsa::QvkAudioAlsa( Ui_MainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
+    timer = new QTimer( this );
+    timer->setTimerType( Qt::PreciseTimer );
+    timer->setInterval( 1000 );
+    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_update() ) );
 }
 
 
@@ -14,9 +18,8 @@ QvkAudioAlsa::~QvkAudioAlsa()
 }
 
 
-void QvkAudioAlsa::slot_getAlsaDevices( bool value )
+void QvkAudioAlsa::slot_getAlsaDevices()
 {
-    Q_UNUSED(value);
     foreach ( const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
     {
         if ( ( deviceInfo.deviceName().contains("alsa") == false ) and ( deviceInfo.deviceName() != "" ) )
@@ -35,4 +38,50 @@ void QvkAudioAlsa::slot_getAlsaDevices( bool value )
     // Select first device
     QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
     listQCheckBox.at(0)->click();
+}
+
+
+void QvkAudioAlsa::slot_clearVerticalLayoutAudioDevices()
+{
+    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listQCheckBox.count(); i++ )
+    {
+       ui->verticalLayoutAudioDevices->removeWidget( listQCheckBox.at(i) );
+       delete listQCheckBox.at(i);
+    }
+
+    for ( int i = 0; i < ui->verticalLayoutAudioDevices->count(); ++i )
+    {
+        QLayoutItem *layoutItem = ui->verticalLayoutAudioDevices->itemAt(i);
+        if ( layoutItem->spacerItem() )
+        {
+            ui->verticalLayoutAudioDevices->removeItem( layoutItem );
+            delete layoutItem;
+        }
+    }
+}
+
+
+void QvkAudioAlsa::slot_start( bool value )
+{
+    if ( value == true )
+    {
+        counter = 0;
+        timer->start();
+    }
+    else
+    {
+        timer->stop();
+    }
+}
+
+void QvkAudioAlsa::slot_update()
+{
+    int count = QAudioDeviceInfo::availableDevices( QAudio::AudioInput ).count();
+    if ( count != counter )
+    {
+        counter = count;
+        slot_clearVerticalLayoutAudioDevices();
+        slot_getAlsaDevices();
+    }
 }
