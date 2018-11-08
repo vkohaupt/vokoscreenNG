@@ -268,8 +268,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->pushButtonAudiocodecDefault, SLOT( setEnabled( bool ) ) );
 
 #ifdef Q_OS_LINUX
-    connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), this,         SLOT( slot_clearVerticalLayoutAudioDevices( bool ) ) );
-//    connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkAudioPulse, SLOT( slot_getPulseDevices( bool ) ) );
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkAudioPulse, SLOT( slot_start( bool ) ) );
     connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), vkAudioAlsa,  SLOT( slot_start( bool ) ) );
 
@@ -608,28 +606,6 @@ void MainWindow::slot_audioIconOnOff( bool state )
   else{
     makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/audio-input-microphone.svg" ) ) );
   }
-}
-
-
-void MainWindow::slot_clearVerticalLayoutAudioDevices( bool value )
-{
-    Q_UNUSED(value);
-    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listQCheckBox.count(); i++ )
-    {
-       ui->verticalLayoutAudioDevices->removeWidget( listQCheckBox.at(i) );
-       delete listQCheckBox.at(i);
-    }
-
-    for ( int i = 0; i < ui->verticalLayoutAudioDevices->count(); ++i )
-    {
-        QLayoutItem *layoutItem = ui->verticalLayoutAudioDevices->itemAt(i);
-        if ( layoutItem->spacerItem() )
-        {
-            ui->verticalLayoutAudioDevices->removeItem( layoutItem );
-            delete layoutItem;
-        }
-    }
 }
 
 

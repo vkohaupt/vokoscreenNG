@@ -97,7 +97,6 @@ private slots:
     void slot_screenCountChanged(int value );
     void slot_setFramesStandard( bool value );
     void slot_audioIconOnOff(bool state );
-    void slot_clearVerticalLayoutAudioDevices(bool value);
     void slot_newVideoPath();
     void slot_videoFileSystemWatcherSetButtons();
     void slot_videoFileSystemWatcherSetNewPath();
