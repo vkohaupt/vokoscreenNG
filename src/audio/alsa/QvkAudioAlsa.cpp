@@ -67,6 +67,8 @@ void QvkAudioAlsa::slot_start( bool value )
     if ( value == true )
     {
         counter = 0;
+        slot_clearVerticalLayoutAudioDevices();
+        slot_getAlsaDevices();
         timer->start();
     }
     else
@@ -74,6 +76,7 @@ void QvkAudioAlsa::slot_start( bool value )
         timer->stop();
     }
 }
+
 
 void QvkAudioAlsa::slot_update()
 {
