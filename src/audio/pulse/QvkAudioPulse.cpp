@@ -6,6 +6,10 @@
 QvkAudioPulse::QvkAudioPulse( Ui_MainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
+    timer = new QTimer( this );
+    timer->setTimerType( Qt::PreciseTimer );
+    timer->setInterval( 1000 );
+    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_update() ) );
 }
 
 
@@ -134,9 +138,8 @@ QStringList QvkAudioPulse::get_all_Audio_devices()
 }
 
 
-void QvkAudioPulse::slot_getPulsesDevices( bool value )
+void QvkAudioPulse::getPulseDevices()
 {
-    Q_UNUSED(value);
     QStringList list = get_all_Audio_devices();
     if ( !list.empty() )
     {
@@ -163,6 +166,55 @@ void QvkAudioPulse::slot_getPulsesDevices( bool value )
         pulseAvailable = false;
         ui->radioButtonPulse->setEnabled( false );
         ui->radioButtonAlsa->click();
+    }
+}
+
+
+void QvkAudioPulse::slot_clearVerticalLayoutAudioDevices()
+{
+    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listQCheckBox.count(); i++ )
+    {
+       ui->verticalLayoutAudioDevices->removeWidget( listQCheckBox.at(i) );
+       delete listQCheckBox.at(i);
+    }
+
+    for ( int i = 0; i < ui->verticalLayoutAudioDevices->count(); ++i )
+    {
+        QLayoutItem *layoutItem = ui->verticalLayoutAudioDevices->itemAt(i);
+        if ( layoutItem->spacerItem() )
+        {
+            ui->verticalLayoutAudioDevices->removeItem( layoutItem );
+            delete layoutItem;
+        }
+    }
+}
+
+
+void QvkAudioPulse::slot_start( bool value )
+{
+    if ( value == true )
+    {
+        counter = 0;
+        slot_clearVerticalLayoutAudioDevices();
+        getPulseDevices();
+        timer->start();
+    }
+    else
+    {
+        timer->stop();
+    }
+}
+
+
+void QvkAudioPulse::slot_update()
+{
+    int count = QAudioDeviceInfo::availableDevices( QAudio::AudioInput ).count();
+    if ( count != counter )
+    {
+        counter = count;
+        slot_clearVerticalLayoutAudioDevices();
+        getPulseDevices();
     }
 }
 

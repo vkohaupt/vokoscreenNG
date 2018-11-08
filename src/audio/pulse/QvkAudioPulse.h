@@ -3,7 +3,9 @@
 
 #include "ui_mainwindow.h"
 #include <QObject>
+#include <QTimer>
 #include <gst/gst.h>
+
 
 class QvkAudioPulse: public QObject
 {
@@ -16,7 +18,9 @@ public:
 
     
 public slots:
-    void slot_getPulsesDevices( bool value );
+    void slot_start( bool value );
+    void slot_clearVerticalLayoutAudioDevices();
+    void slot_update();
 
 
 private:
@@ -24,6 +28,9 @@ private:
     QString get_AudioDeviceString( GstDevice *device );
     QStringList get_all_Audio_devices();
     bool pulseAvailable;
+    QTimer *timer;
+    int counter;
+    void getPulseDevices();
 
 
 private slots:
@@ -33,7 +40,6 @@ protected:
   
   
 signals:
-    void signal_audioDeviceRemovedOrAdded();
 
     
 };
