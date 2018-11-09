@@ -73,13 +73,13 @@ include(camera/camera.pri)
 include(screenshot/screenshot.pri)
 
 # pulse
-include(audio/pulse/audioPulse.pri)
+unix:include(audio/pulse/audioPulse.pri)
 
 # alsa
-include(audio/alsa/audioAlsa.pri)
+unix:include(audio/alsa/audioAlsa.pri)
 
 # audio windows
-include(audio/windows/audioWindows.pri)
+win32:include(audio/windows/audioWindows.pri)
 
 # help
 include(help/help.pri)

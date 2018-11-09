@@ -6,12 +6,17 @@
 #include "QvkRegionChoise.h"
 #include "QvkCameraController.h"
 #include "QvkSettings.h"
-#include "QvkAudioPulse.h"
-#include "QvkAudioAlsa.h"
-#include "QvkAudioWindows.h"
 #include "QvkHelp.h"
 #include "QvkSystray.h"
 #include "QvkMagnifierController.h"
+
+#ifdef Q_OS_LINUX
+#include "QvkAudioPulse.h"
+#include "QvkAudioAlsa.h"
+#endif
+#ifdef Q_OS_WIN
+#include "QvkAudioWindows.h"
+#endif
 
 #include <QMainWindow>
 #include <QFileSystemWatcher>
@@ -34,9 +39,13 @@ public:
     QvkWinInfo *vkWinInfo;
     QvkCountdown *vkCountdown;
     QvkRegionChoise *vkRegionChoise;
+#ifdef Q_OS_LINUX
     QvkAudioPulse *vkAudioPulse;
     QvkAudioAlsa *vkAudioAlsa;
+#endif
+#ifdef Q_OS_WIN
     QvkAudioWindows *vkAudioWindows;
+#endif
     QvkHelp *vkHelp;
     QvkSystray *vkSystray;
     QvkMagnifierController *vkMagnifierController;

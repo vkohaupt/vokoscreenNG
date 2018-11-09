@@ -31,14 +31,24 @@
 // gstreamer-plugins-good-extra
 // libgstinsertbin-1_0-0
 
+#ifdef Q_OS_LINUX
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                                           ui(new Ui::MainWindow),
                                           vkWinInfo(new QvkWinInfo),
                                           vkCountdown(new QvkCountdown),
                                           vkRegionChoise(new QvkRegionChoise),
                                           vkAudioPulse(new QvkAudioPulse(ui)),
-                                          vkAudioAlsa(new QvkAudioAlsa(ui)),
+                                          vkAudioAlsa(new QvkAudioAlsa(ui))
+#endif
+
+#ifdef Q_OS_WIN
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
+                                          ui(new Ui::MainWindow),
+                                          vkWinInfo(new QvkWinInfo),
+                                          vkCountdown(new QvkCountdown),
+                                          vkRegionChoise(new QvkRegionChoise),
                                           vkAudioWindows(new QvkAudioWindows(ui))
+#endif
 {
     ui->setupUi(this);
     vkSettings.readAll();
