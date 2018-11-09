@@ -288,7 +288,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #ifdef Q_OS_WIN
     ui->radioButtonPulse->hide();
     ui->radioButtonAlsa->hide();
-    vkAudioWindows->slot_getWindowsDevices();
+    vkAudioWindows->slot_start( true );
 #endif
 
     // Tab 2 Codec and Audio
