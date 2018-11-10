@@ -1,9 +1,11 @@
 #ifndef QvkAudioPulse_H
 #define QvkAudioPulse_H
 
+#include "QvkThreadPulse.h"
+
 #include "ui_mainwindow.h"
 #include <QObject>
-#include <QTimer>
+
 #include <gst/gst.h>
 
 
@@ -14,20 +16,19 @@ class QvkAudioPulse: public QObject
 public:
     QvkAudioPulse(  Ui_MainWindow *ui_mainwindow );
     virtual ~QvkAudioPulse();
-    bool isPulseAvailable();
-
+    QvkThreadPulse *vkThreadPulse;
     
+
 public slots:
     void slot_start( bool value );
     void slot_clearVerticalLayoutAudioDevices();
-    void slot_update();
+    void slot_update(int count);
 
 
 private:
     Ui_MainWindow *ui;
     QString get_AudioDeviceString( GstDevice *device );
     QStringList get_all_Audio_devices();
-    bool pulseAvailable;
     QTimer *timer;
     int counter;
     void getPulseDevices();

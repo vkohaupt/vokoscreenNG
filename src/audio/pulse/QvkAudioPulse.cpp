@@ -6,10 +6,9 @@
 QvkAudioPulse::QvkAudioPulse( Ui_MainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
-    timer = new QTimer( this );
-    timer->setTimerType( Qt::PreciseTimer );
-    timer->setInterval( 1000 );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_update() ) );
+
+    vkThreadPulse = new QvkThreadPulse();
+    connect( vkThreadPulse, SIGNAL( signal_countAudioDevices( int ) ), this, SLOT( slot_update( int ) ) );
 }
 
 
@@ -143,7 +142,6 @@ void QvkAudioPulse::getPulseDevices()
     QStringList list = get_all_Audio_devices();
     if ( !list.empty() )
     {
-        pulseAvailable = true;
         for ( int i = 0; i < list.count(); i++ )
         {
             QCheckBox *checkboxAudioDevice = new QCheckBox();
@@ -163,7 +161,6 @@ void QvkAudioPulse::getPulseDevices()
     }
     else
     {
-        pulseAvailable = false;
         ui->radioButtonPulse->setEnabled( false );
         ui->radioButtonAlsa->click();
     }
@@ -198,28 +195,21 @@ void QvkAudioPulse::slot_start( bool value )
         counter = 0;
         slot_clearVerticalLayoutAudioDevices();
         getPulseDevices();
-        timer->start();
+        vkThreadPulse->slot_startThread( true );
     }
     else
     {
-        timer->stop();
+        vkThreadPulse->slot_startThread( false );
     }
 }
 
 
-void QvkAudioPulse::slot_update()
+void QvkAudioPulse::slot_update( int count )
 {
-    int count = QAudioDeviceInfo::availableDevices( QAudio::AudioInput ).count();
     if ( count != counter )
     {
         counter = count;
         slot_clearVerticalLayoutAudioDevices();
         getPulseDevices();
     }
-}
-
-
-bool QvkAudioPulse::isPulseAvailable()
-{
-    return pulseAvailable;
 }
