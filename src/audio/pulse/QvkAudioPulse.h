@@ -38,7 +38,7 @@ private slots:
 
 
 protected:
-  
+
   
 signals:
 

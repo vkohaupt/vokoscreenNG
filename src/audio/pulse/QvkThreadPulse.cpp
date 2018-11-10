@@ -17,7 +17,7 @@ void QvkThreadPulse::run()
 {
     while ( running == true )
     {
-        QThread::msleep( 2000 );
+        msleep( 5000 );
         emit signal_countAudioDevices( QAudioDeviceInfo::availableDevices( QAudio::AudioInput ).count() );
     }
 }
