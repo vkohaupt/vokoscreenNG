@@ -6,10 +6,9 @@
 QvkAudioAlsa::QvkAudioAlsa( Ui_MainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
-    timer = new QTimer( this );
-    timer->setTimerType( Qt::PreciseTimer );
-    timer->setInterval( 1000 );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_update() ) );
+
+    vkThreadAlsa = new QvkThreadAlsa();
+    connect( vkThreadAlsa, SIGNAL( signal_countAudioDevices( int ) ), this, SLOT( slot_update( int ) ) );
 }
 
 
@@ -69,18 +68,17 @@ void QvkAudioAlsa::slot_start( bool value )
         counter = 0;
         slot_clearVerticalLayoutAudioDevices();
         slot_getAlsaDevices();
-        timer->start();
+        vkThreadAlsa->slot_startThread( true );
     }
     else
     {
-        timer->stop();
+        vkThreadAlsa->slot_startThread( false );
     }
 }
 
 
-void QvkAudioAlsa::slot_update()
+void QvkAudioAlsa::slot_update( int count )
 {
-    int count = QAudioDeviceInfo::availableDevices( QAudio::AudioInput ).count();
     if ( count != counter )
     {
         counter = count;

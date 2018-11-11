@@ -2,15 +2,16 @@
 #define QvkAudioAlsa_H
 
 #include "ui_mainwindow.h"
+#include "QvkThreadAlsa.h"
+
 #include <QObject>
-#include <QTimer>
 
 class QvkAudioAlsa: public QObject
 {
     Q_OBJECT
     
 public:
-    QvkAudioAlsa(  Ui_MainWindow *ui_mainwindow );
+    QvkAudioAlsa( Ui_MainWindow *ui_mainwindow );
     virtual ~QvkAudioAlsa();
 
     
@@ -20,14 +21,14 @@ public slots:
   
 private:
     Ui_MainWindow *ui;
-    QTimer *timer;
     int counter;
+    QvkThreadAlsa *vkThreadAlsa;
 
 
 private slots:
     void slot_getAlsaDevices();
     void slot_clearVerticalLayoutAudioDevices();
-    void slot_update();
+    void slot_update(int count);
 
 
 protected:

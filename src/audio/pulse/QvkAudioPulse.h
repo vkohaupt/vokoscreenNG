@@ -16,25 +16,27 @@ class QvkAudioPulse: public QObject
 public:
     QvkAudioPulse(  Ui_MainWindow *ui_mainwindow );
     virtual ~QvkAudioPulse();
-    QvkThreadPulse *vkThreadPulse;
     
 
 public slots:
     void slot_start( bool value );
-    void slot_clearVerticalLayoutAudioDevices();
-    void slot_update(int count);
+    void slot_start();
+    void slot_stop();
 
 
 private:
     Ui_MainWindow *ui;
     QString get_AudioDeviceString( GstDevice *device );
     QStringList get_all_Audio_devices();
-    QTimer *timer;
+
+    QvkThreadPulse *vkThreadPulse;
     int counter;
     void getPulseDevices();
 
 
 private slots:
+    void slot_clearVerticalLayoutAudioDevices();
+    void slot_update(int count);
 
 
 protected:

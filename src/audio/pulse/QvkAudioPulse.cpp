@@ -192,16 +192,29 @@ void QvkAudioPulse::slot_start( bool value )
 {
     if ( value == true )
     {
-        counter = 0;
-        slot_clearVerticalLayoutAudioDevices();
-        getPulseDevices();
-        vkThreadPulse->slot_startThread( true );
+        slot_start();
     }
     else
     {
-        vkThreadPulse->slot_startThread( false );
+        slot_stop();
     }
 }
+
+
+void QvkAudioPulse::slot_start()
+{
+    counter = 0;
+    slot_clearVerticalLayoutAudioDevices();
+    getPulseDevices();
+    vkThreadPulse->slot_startThread( true );
+}
+
+
+void QvkAudioPulse::slot_stop()
+{
+    vkThreadPulse->slot_startThread( false );
+}
+
 
 
 void QvkAudioPulse::slot_update( int count )
