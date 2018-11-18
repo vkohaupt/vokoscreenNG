@@ -24,8 +24,6 @@ public slots:
 private:
     bool running = false;
     QTimer *timer;
-
-    int counter = 0;
     bool firstStart = true;
 
 

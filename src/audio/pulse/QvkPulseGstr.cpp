@@ -128,9 +128,5 @@ QStringList QvkPulseGstr::get_all_Audio_devices()
         tmpList <<  stringList.at( i );
     }
 
-    //gst_caps_unref (caps);
-    //g_free (name);
-    //gst_object_unref (GST_OBJECT ( device ) );
-
     return tmpList;
 }

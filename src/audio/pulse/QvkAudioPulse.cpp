@@ -27,10 +27,8 @@ QvkAudioPulse::~QvkAudioPulse()
 
 void QvkAudioPulse::getPulseDevices()
 {
-    qDebug() << "QvkAudioPulse::getPulseDevices()";
     QvkPulseGstr vkPulseGstr;
     QStringList list = vkPulseGstr.get_all_Audio_devices();
-    //qDebug() << "pulse StringList:" << list;
     if ( !list.empty() )
     {
         for ( int i = 0; i < list.count(); i++ )
@@ -52,7 +50,6 @@ void QvkAudioPulse::getPulseDevices()
     }
     else
     {
-        qDebug() << "QvkAudioPulse::getPulseDevices() --> else";
         ui->radioButtonPulse->setEnabled( false );
         ui->radioButtonAlsa->click();
     }

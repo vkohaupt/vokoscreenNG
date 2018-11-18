@@ -18,8 +18,6 @@ QvkThreadPulse::~QvkThreadPulse()
 
 void QvkThreadPulse::run()
 {
-    qDebug() << "QvkThreadPulse::run()" << zaehler++;
-
     int count = 0;
     foreach ( const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
     {
@@ -40,7 +38,6 @@ void QvkThreadPulse::slot_trigger_Thread()
 
 void QvkThreadPulse::slot_set_first_start( bool value )
 {
-    qDebug() << "QvkThreadPulse::slot_set_first_start" << value;
     firstStart = value;
 }
 
@@ -48,7 +45,7 @@ void QvkThreadPulse::slot_set_first_start( bool value )
 /*
  * Course:
  * -vokoscreen starts
- * -In QvkAudioPulse::QvkAudioPulse becomes radioButtonPulse a click and audiodevice shows immediately
+ * -In QvkAudioPulse::QvkAudioPulse becomes radioButtonPulse a click and audio devices shows immediately
  * -Then the timer starts and show to new or remove devices
  */
 void QvkThreadPulse::slot_start_stop_thread_timer( bool value )

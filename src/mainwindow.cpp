@@ -279,19 +279,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->comboBoxAudioCodec,    SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->pushButtonAudiocodecDefault, SLOT( setEnabled( bool ) ) );
 
-#ifdef Q_OS_LINUX
-    //connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkAudioPulse, SLOT( slot_start( bool ) ) );
-    //connect( ui->pushButtonStart,  SIGNAL( clicked() ),       vkAudioPulse, SLOT( slot_stop() ) );
-    //connect( ui->pushButtonStop,   SIGNAL( clicked() ),       vkAudioPulse, SLOT( slot_start() ) );
-
-    //connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), vkAudioAlsa,  SLOT( slot_start( bool ) ) );
-    //connect( ui->pushButtonStart,  SIGNAL( clicked() ),       vkAudioAlsa,  SLOT( slot_stop() ) );
-    //connect( ui->pushButtonStop,   SIGNAL( clicked() ),       vkAudioAlsa,  SLOT( slot_start() ) );
-
-    // Pulse is Standard. If no pulsedevice found, change to alsa see QvkAudioPulse::slot_getPulsesDevices
-    //ui->radioButtonPulse->click();
-#endif
-
 #ifdef Q_OS_WIN
     ui->radioButtonPulse->hide();
     ui->radioButtonAlsa->hide();

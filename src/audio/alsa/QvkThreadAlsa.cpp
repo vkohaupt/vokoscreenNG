@@ -18,7 +18,6 @@ QvkThreadAlsa::~QvkThreadAlsa()
 
 void QvkThreadAlsa::run()
 {
-    qDebug() << "Alsa run()" << counter++;
     emit signal_countAudioDevices( QAudioDeviceInfo::availableDevices( QAudio::AudioInput ).count() );
 }
 
@@ -31,7 +30,6 @@ void QvkThreadAlsa::slot_trigger_Thread()
 
 void QvkThreadAlsa::slot_set_first_start( bool value )
 {
-    qDebug() << "QvkThreadAlsa::slot_set_first_start" << value;
     firstStart = value;
 }
 
