@@ -22,6 +22,7 @@
 #include <QScreen>
 #include <QLibraryInfo>
 #include <QThread>
+#include <QtDebug>
 
 #ifdef Q_OS_LINUX
   #include <QX11Info>
@@ -49,6 +50,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 {
     ui->setupUi(this);
+    //qSetMessagePattern("%{file}(%{line}): %{message}");
 #ifdef Q_OS_LINUX
     vkAudioPulse = new QvkAudioPulse( ui );
     vkAudioAlsa = new QvkAudioAlsa( ui );
@@ -124,6 +126,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     makeAndSetValidIconForSideBar( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/video-display.svg" ) ) );
     makeAndSetValidIconForSideBar( 1, QIcon::fromTheme( "computer", QIcon( ":/pictures/computer.svg" ) ) );
     makeAndSetValidIconForSideBar( 2, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/camera-web.svg" ) ) );
+    makeAndSetValidIconForSideBar( 3, QIcon::fromTheme( "help-about", QIcon( ":/pictures/help-about.svg" ) ) );
 
     makeAndSetValidIcon( ui->tabWidgetScreencast, 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/video-display.svg" ) ) );
     makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/audio-input-microphone.svg" ) ) );
