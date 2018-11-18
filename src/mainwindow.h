@@ -53,8 +53,6 @@ public:
     void makeAndSetValidIcon(QTabWidget *widget, int index, QIcon icon );
     void makeAndSetValidIconForSideBar( int index, QIcon icon );
 
-    void myMessageOutput(QtMsgType type, const QMessageLogContext &context, const QString &msg);
-
 private:
     QvkSettings vkSettings;
     QStringList resolutionStringList;
@@ -129,6 +127,8 @@ private slots:
     void slot_IfStopAudioCodecWidgetsSetDisabled();
 
     void slot_setVisibleSystray( bool value );
+
+    void slot_addLogVokoscreen( QString value );
 
 
 signals:

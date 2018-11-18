@@ -32,6 +32,20 @@
 // gstreamer-plugins-good-extra
 // libgstinsertbin-1_0-0
 
+using namespace std;
+#include "log/QvkLog.h"
+#include <QPointer>
+#include <qapplication.h>
+#include <QMessageLogContext>
+#include <QtGlobal>
+
+QPointer<QvkLog> myLog;
+void myMessageOutput( QtMsgType type, const QMessageLogContext &context, const QString &msg )
+{
+    myLog->outputMessage( type, context, msg );
+}
+
+
 #ifdef Q_OS_LINUX
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                                           ui(new Ui::MainWindow),
@@ -50,7 +64,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 {
     ui->setupUi(this);
+
+    myLog = new QvkLog();
+    qInstallMessageHandler( myMessageOutput );
+    connect( myLog, SIGNAL( newLogText( QString ) ), this, SLOT( slot_addLogVokoscreen( QString ) ) );
     //qSetMessagePattern("%{file}(%{line}): %{message}");
+
 #ifdef Q_OS_LINUX
     vkAudioPulse = new QvkAudioPulse( ui );
     vkAudioAlsa = new QvkAudioAlsa( ui );
@@ -415,6 +434,12 @@ void MainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
     label->setPixmap( pixmap );
     label->setEnabled( false );
     tabWidget->setCornerWidget( label, Qt::TopRightCorner);
+}
+
+
+void MainWindow::slot_addLogVokoscreen( QString value )
+{
+    ui->textBrowserLog->append( value );
 }
 
 
