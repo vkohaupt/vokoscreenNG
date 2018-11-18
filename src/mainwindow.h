@@ -93,6 +93,8 @@ private:
     QTimer *timerStartTimer;
     QTimer *timerStopRecordingAfter = new QTimer( this );
 
+    void vk_setCornerWidget( QTabWidget *tabWidget );
+
 
 private slots:
     void slot_preStart();

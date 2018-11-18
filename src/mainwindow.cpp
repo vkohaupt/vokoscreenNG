@@ -105,17 +105,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                          << "1280 x 1024 SXGA 5 : 4"
                          << "1920 x 1080 HD1080 16 : 9";
 
-#ifdef Q_OS_LINUX
-    QPixmap pixmap( ":/pictures/linux.png" );
-#endif
-#ifdef Q_OS_WIN
-    QPixmap pixmap( ":/pictures/windows.png" );
-#endif
-    pixmap = pixmap.scaled( 42, 42 );
-    QLabel *label = new QLabel();
-    label->setPixmap( pixmap );
-    label->setEnabled( false );
-    ui->tabWidgetScreencast->setCornerWidget( label, Qt::TopRightCorner);
+    vk_setCornerWidget( ui->tabWidgetScreencast );
 
     QvkInformation *vkInformation = new QvkInformation(ui);
     connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
@@ -377,6 +367,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // **************** Begin Screenshot *****************************
     QvkScreenshot *vkScreenshot = new QvkScreenshot( this, ui );
     Q_UNUSED(vkScreenshot);
+    vk_setCornerWidget( ui->tabWidgetScreenshot );
     makeAndSetValidIcon( ui->tabWidgetScreenshot, 0, QIcon::fromTheme( "computer", QIcon( ":/pictures/computer.svg" ) ) );
     makeAndSetValidIcon( ui->tabWidgetScreenshot, 1, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/systemsettings.svg" ) ) );
     // **************** End Screenshot *******************************
@@ -385,8 +376,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // *****************Begin Camera *********************************
     QvkCameraController *cameraController = new QvkCameraController( ui );
     Q_UNUSED(cameraController);
+    vk_setCornerWidget( ui->tabWidgetCamera );
     makeAndSetValidIcon( ui->tabWidgetCamera, 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/camera-web.svg" ) ) );
     // *****************End Camera ***********************************
+
+
+    // *****************Begin Log *********************************
+    vk_setCornerWidget( ui->tabWidgetLog );
+    makeAndSetValidIcon( ui->tabWidgetLog, 0, QIcon::fromTheme( "help-about", QIcon( ":/pictures/help-about.svg" ) ) );
+    // *****************End Log ***********************************
 }
 
 
@@ -401,6 +399,22 @@ void MainWindow::closeEvent( QCloseEvent *event )
     Q_UNUSED(event);
     emit signal_close();
     emit signal_close( false );
+}
+
+
+void MainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
+{
+#ifdef Q_OS_LINUX
+    QPixmap pixmap( ":/pictures/linux.png" );
+#endif
+#ifdef Q_OS_WIN
+    QPixmap pixmap( ":/pictures/windows.png" );
+#endif
+    pixmap = pixmap.scaled( 42, 42 );
+    QLabel *label = new QLabel();
+    label->setPixmap( pixmap );
+    label->setEnabled( false );
+    tabWidget->setCornerWidget( label, Qt::TopRightCorner);
 }
 
 
