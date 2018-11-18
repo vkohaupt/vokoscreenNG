@@ -4,7 +4,7 @@
 #include "ui_mainwindow.h"
 #include <QObject>
 #include <QThread>
-
+#include <QTimer>
 
 class QvkThreadAlsa: public QThread
 {
@@ -15,16 +15,23 @@ class QvkThreadAlsa: public QThread
 public:
     QvkThreadAlsa();
     virtual ~QvkThreadAlsa();
-
     
+
 public slots:
-    void slot_startThread( bool value );
+    void slot_start_stop_thread_timer( bool value );
 
 
 private:
     bool running = false;
+    QTimer *timer;
+
+    int counter = 0;
+    bool firstStart = true;
+
 
 private slots:
+    void slot_trigger_Thread();
+    void slot_set_first_start( bool value );
 
 
 protected:

@@ -9,6 +9,9 @@ QvkAudioAlsa::QvkAudioAlsa( Ui_MainWindow *ui_mainwindow )
 
     vkThreadAlsa = new QvkThreadAlsa();
     connect( vkThreadAlsa, SIGNAL( signal_countAudioDevices( int ) ), this, SLOT( slot_update( int ) ) );
+    connect( ui->radioButtonAlsa, SIGNAL( toggled( bool ) ), this, SLOT( slot_set_counter() ) );
+    connect( ui->radioButtonAlsa, SIGNAL( toggled( bool ) ), vkThreadAlsa, SLOT( slot_set_first_start( bool ) ) );
+    connect( ui->radioButtonAlsa, SIGNAL( toggled( bool ) ), vkThreadAlsa, SLOT( slot_start_stop_thread_timer( bool ) ) );
 }
 
 
@@ -17,7 +20,7 @@ QvkAudioAlsa::~QvkAudioAlsa()
 }
 
 
-void QvkAudioAlsa::slot_getAlsaDevices()
+void QvkAudioAlsa::getAlsaDevices()
 {
     foreach ( const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
     {
@@ -40,7 +43,7 @@ void QvkAudioAlsa::slot_getAlsaDevices()
 }
 
 
-void QvkAudioAlsa::slot_clearVerticalLayoutAudioDevices()
+void QvkAudioAlsa::clearVerticalLayoutAudioDevices()
 {
     QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
     for ( int i = 0; i < listQCheckBox.count(); i++ )
@@ -61,19 +64,9 @@ void QvkAudioAlsa::slot_clearVerticalLayoutAudioDevices()
 }
 
 
-void QvkAudioAlsa::slot_start( bool value )
+void QvkAudioAlsa::slot_set_counter()
 {
-    if ( value == true )
-    {
-        counter = 0;
-        slot_clearVerticalLayoutAudioDevices();
-        slot_getAlsaDevices();
-        vkThreadAlsa->slot_startThread( true );
-    }
-    else
-    {
-        vkThreadAlsa->slot_startThread( false );
-    }
+    counter = 0;
 }
 
 
@@ -82,7 +75,7 @@ void QvkAudioAlsa::slot_update( int count )
     if ( count != counter )
     {
         counter = count;
-        slot_clearVerticalLayoutAudioDevices();
-        slot_getAlsaDevices();
+        clearVerticalLayoutAudioDevices();
+        getAlsaDevices();
     }
 }

@@ -16,19 +16,19 @@ public:
 
     
 public slots:
-    void slot_start( bool value );
 
   
 private:
     Ui_MainWindow *ui;
     int counter;
     QvkThreadAlsa *vkThreadAlsa;
+    void clearVerticalLayoutAudioDevices();
+    void getAlsaDevices();
 
 
 private slots:
-    void slot_getAlsaDevices();
-    void slot_clearVerticalLayoutAudioDevices();
     void slot_update(int count);
+    void slot_set_counter();
 
 
 protected:

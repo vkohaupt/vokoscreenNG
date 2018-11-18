@@ -1,42 +1,37 @@
 #ifndef QvkAudioPulse_H
 #define QvkAudioPulse_H
 
-#include "QvkThreadPulse.h"
-
 #include "ui_mainwindow.h"
+
+#include "QvkThreadPulse.h"
+#include "QvkPulseGstr.h"
+
 #include <QObject>
-
-#include <gst/gst.h>
-
 
 class QvkAudioPulse: public QObject
 {
     Q_OBJECT
 
 public:
-    QvkAudioPulse(  Ui_MainWindow *ui_mainwindow );
+    QvkAudioPulse();
+    QvkAudioPulse( Ui_MainWindow *ui_mainwindow );
     virtual ~QvkAudioPulse();
     
 
 public slots:
-    void slot_start( bool value );
-    void slot_start();
-    void slot_stop();
 
 
 private:
     Ui_MainWindow *ui;
-    QString get_AudioDeviceString( GstDevice *device );
-    QStringList get_all_Audio_devices();
-
     QvkThreadPulse *vkThreadPulse;
     int counter;
     void getPulseDevices();
+    void clearVerticalLayoutAudioDevices();
 
 
 private slots:
-    void slot_clearVerticalLayoutAudioDevices();
     void slot_update(int count);
+    void slot_set_counter_back();
 
 
 protected:

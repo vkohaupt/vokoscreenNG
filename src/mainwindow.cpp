@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 
 #include "ui_mainwindow.h"
 #include "ui_QvkNoPlayerDialog.h"
@@ -36,9 +36,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                                           ui(new Ui::MainWindow),
                                           vkWinInfo(new QvkWinInfo),
                                           vkCountdown(new QvkCountdown),
-                                          vkRegionChoise(new QvkRegionChoise),
-                                          vkAudioPulse(new QvkAudioPulse(ui)),
-                                          vkAudioAlsa(new QvkAudioAlsa(ui))
+                                          vkRegionChoise(new QvkRegionChoise)
 #endif
 
 #ifdef Q_OS_WIN
@@ -51,6 +49,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 {
     ui->setupUi(this);
+#ifdef Q_OS_LINUX
+    vkAudioPulse = new QvkAudioPulse( ui );
+    vkAudioAlsa = new QvkAudioAlsa( ui );
+#endif
     vkSettings.readAll();
     vkMagnifierController = new QvkMagnifierController(ui);
     QvkHelp *vkHelp = new QvkHelp( ui );
@@ -278,16 +280,16 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->pushButtonAudiocodecDefault, SLOT( setEnabled( bool ) ) );
 
 #ifdef Q_OS_LINUX
-    connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkAudioPulse, SLOT( slot_start( bool ) ) );
-    connect( ui->pushButtonStart,  SIGNAL( clicked() ),       vkAudioPulse, SLOT( slot_stop() ) );
-    connect( ui->pushButtonStop,   SIGNAL( clicked() ),       vkAudioPulse, SLOT( slot_start() ) );
+    //connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkAudioPulse, SLOT( slot_start( bool ) ) );
+    //connect( ui->pushButtonStart,  SIGNAL( clicked() ),       vkAudioPulse, SLOT( slot_stop() ) );
+    //connect( ui->pushButtonStop,   SIGNAL( clicked() ),       vkAudioPulse, SLOT( slot_start() ) );
 
-    connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), vkAudioAlsa,  SLOT( slot_start( bool ) ) );
-    connect( ui->pushButtonStart,  SIGNAL( clicked() ),       vkAudioAlsa,  SLOT( slot_stop() ) );
-    connect( ui->pushButtonStop,   SIGNAL( clicked() ),       vkAudioAlsa,  SLOT( slot_start() ) );
+    //connect( ui->radioButtonAlsa,  SIGNAL( toggled( bool ) ), vkAudioAlsa,  SLOT( slot_start( bool ) ) );
+    //connect( ui->pushButtonStart,  SIGNAL( clicked() ),       vkAudioAlsa,  SLOT( slot_stop() ) );
+    //connect( ui->pushButtonStop,   SIGNAL( clicked() ),       vkAudioAlsa,  SLOT( slot_start() ) );
 
     // Pulse is Standard. If no pulsedevice found, change to alsa see QvkAudioPulse::slot_getPulsesDevices
-    ui->radioButtonPulse->click();
+    //ui->radioButtonPulse->click();
 #endif
 
 #ifdef Q_OS_WIN
