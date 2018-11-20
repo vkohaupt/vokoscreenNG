@@ -106,7 +106,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #ifdef Q_OS_LINUX
     qDebug().noquote() << "[vokoscreen] CompositingManager running:" << QX11Info::isCompositingManagerRunning();
 #endif
-    qDebug( " " );
+    qDebug();
 
     resolutionStringList << "320 x 200 CGA 16 : 10"
                          << "320 x 240 QCGA 4 : 3"
@@ -403,6 +403,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // *****************Begin Log *********************************
     vk_setCornerWidget( ui->tabWidgetLog );
     makeAndSetValidIcon( ui->tabWidgetLog, 0, QIcon::fromTheme( "help-about", QIcon( ":/pictures/help-about.svg" ) ) );
+    connect( ui->pushButtonSendReport, SIGNAL( clicked( bool ) ), this, SLOT( slot_sendReport() ) );
     // *****************End Log ***********************************
 }
 
@@ -410,6 +411,27 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+
+void MainWindow::slot_sendReport()
+{
+    QStringList stringList;
+    stringList << "mailto:";
+    stringList << "vkohaupt@freenet.de";
+    stringList << "?";
+    stringList << "subject=";
+    stringList << QString( "vokoscreenNG" ) + QString( " " ) + QString( vkSettings.getVersion() );
+    stringList << "&";
+    stringList << "body=";
+    stringList << "Your comment";
+    stringList << "\n";
+    stringList << "\n";
+    stringList << "\n";
+    stringList << "Report:\n";
+    stringList << ui->textBrowserLog->toPlainText();
+    QString string = stringList.join( "" );
+    bool b = QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) );
 }
 
 
@@ -1038,7 +1060,7 @@ void MainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
             ui->comboBoxAudioCodec->addItem( name, encoder );
         }
     }
-    qDebug( " " );
+    qDebug();
 }
 
 
@@ -1536,7 +1558,7 @@ void MainWindow::slot_screenCountChanged( int value )
     ui->comboBoxScreen->clear();
     QList <QScreen *> screen = QGuiApplication::screens();
     qDebug().noquote() << "[vokoscreen] Detected count screens:" << screen.count();
-    qDebug( " " );
+    qDebug();
     for ( int x = 0 ; x <= screen.count()-1; x++ )
     {
         qDebug().noquote() << "[vokoscreen] Name from screen: " << screen.at(x)->name();
@@ -1546,7 +1568,7 @@ void MainWindow::slot_screenCountChanged( int value )
         qDebug().noquote() << "[vokoscreen] Vertical refresh rate of the screen in Hz:" << screen.at(x)->refreshRate();
         qDebug().noquote() << "[vokoscreen] Screen orientation" << screen.at(x)->orientation();
         qDebug().noquote() << "[vokoscreen] Color depth of the screen: " << screen.at(x)->depth();
-        qDebug().noquote() << "[vokoscreen] Model from screen: " << screen.at(x)->model() ;
+        qDebug().noquote() << "[vokoscreen] Model from screen: " << screen.at(x)->model();
         qDebug().noquote() << "[vokoscreen] Manufactur from screen: " << screen.at(x)->manufacturer();
         qDebug().noquote() << "[vokoscreen] SerialNumber from screen: " << screen.at(x)->serialNumber();
 
@@ -1563,7 +1585,7 @@ void MainWindow::slot_screenCountChanged( int value )
         ui->comboBoxScreen->addItem( stringText, stringData );
         qDebug().noquote() << "[vokoscreen] ItemText in Combobox:" << ui->comboBoxScreen->itemText(x);
         qDebug().noquote() << "[vokoscreen] ItemData in Combobox:" << ui->comboBoxScreen->itemData(x).toString();
-        qDebug( " " );
+        qDebug();
     }
 }
 
