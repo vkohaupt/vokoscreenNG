@@ -42,7 +42,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <property name="iconSize">
        <size>
@@ -2397,7 +2397,7 @@ p, li { white-space: pre-wrap; }
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="toolButtonReport">
+           <widget class="QToolButton" name="toolButtonHelpReport">
             <property name="text">
              <string>...</string>
             </property>

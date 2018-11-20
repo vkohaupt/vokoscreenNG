@@ -401,6 +401,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
 
     // *****************Begin Log *********************************
+    ui->toolButtonHelpReport->setIcon( ui->toolButtonHelpReport->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     vk_setCornerWidget( ui->tabWidgetLog );
     makeAndSetValidIcon( ui->tabWidgetLog, 0, QIcon::fromTheme( "help-about", QIcon( ":/pictures/help-about.svg" ) ) );
     connect( ui->pushButtonSendReport, SIGNAL( clicked( bool ) ), this, SLOT( slot_sendReport() ) );
