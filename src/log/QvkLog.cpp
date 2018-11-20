@@ -3,7 +3,7 @@
 
 #include <QFile>
 #include <QTextStream>
-
+#include <QTime>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,11 +20,10 @@ QvkLog::~QvkLog()
 void QvkLog::outputMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
     QString txt;
-
     QByteArray localMsg = msg.toLocal8Bit();
     switch (type) {
     case QtDebugMsg:
-        fprintf( stderr, "%s \n", localMsg.constData() );
+        fprintf( stderr, "%s\n", localMsg.constData() );
         txt += localMsg.constData();
         break;
     case QtInfoMsg:
