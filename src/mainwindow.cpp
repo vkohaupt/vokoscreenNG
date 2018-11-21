@@ -76,7 +76,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
     vkSettings.readAll();
     vkMagnifierController = new QvkMagnifierController(ui);
-    QvkHelp *vkHelp = new QvkHelp( ui );
+    QvkHelp *vkHelp = new QvkHelp( this, ui );
     Q_UNUSED( vkHelp );
 
     QIcon icon;

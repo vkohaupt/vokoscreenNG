@@ -6,8 +6,10 @@
 #include <QTimer>
 #include <QTextDocument>
 
-QvkHelp::QvkHelp( Ui_MainWindow *ui_mainwindow ) : uiForm(new(Ui::Form))
+QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_MainWindow *ui_mainwindow ) : uiForm(new(Ui::Form))
 {
+    connect( mainWindow, SIGNAL( destroyed( QObject*) ), this, SLOT( slot_close() ) );
+
     ui = ui_mainwindow;
     uiForm->setupUi( this );
 
@@ -28,8 +30,8 @@ QvkHelp::QvkHelp( Ui_MainWindow *ui_mainwindow ) : uiForm(new(Ui::Form))
     QString language = "en";
     vk_helpPath = vk_helpPath + language + "/";
 
-    vkDownloadHTML = new QvkDownloader();
-    vkDownloadFiles = new QvkDownloader();
+    vkDownloadHTML = new QvkDownloader( temporaryDirLocal.path() );
+    vkDownloadFiles = new QvkDownloader( temporaryDirLocal.path() );
 
     connect( ui->toolButtonHelpFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenFullscreen() ) );
     connect( ui->toolButtonHelpWindow, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenWindow() ) );
@@ -47,13 +49,19 @@ QvkHelp::QvkHelp( Ui_MainWindow *ui_mainwindow ) : uiForm(new(Ui::Form))
     //connect( ui->toolButtonHelpLimitOfFreeDiskSpace, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpLimitOfFreeDiskSpace() ) );
 
     //connect( ui->toolButtonAvalaibleHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_availableHelp() ) );
-
 }
 
 
 QvkHelp::~QvkHelp()
 {
 }
+
+
+void QvkHelp::slot_close()
+{
+    temporaryDirLocal.remove();
+}
+
 
 void QvkHelp::slot_screenFullscreen()
 {

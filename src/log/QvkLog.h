@@ -2,6 +2,8 @@
 #define QvkLog_H
 
 #include <QObject>
+#include <QFile>
+#include <QTemporaryDir>
 
 class QvkLog : public QObject
 {
@@ -24,8 +26,10 @@ private slots:
 
   
 private:
+    QFile logFile;
+    void writeToLog( QString string );
 
-  
+
 protected:
   
   

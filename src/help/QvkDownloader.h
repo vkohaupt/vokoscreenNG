@@ -21,7 +21,7 @@ class QvkDownloader : public QObject
 
 
 public:
-    explicit QvkDownloader( QObject *parent = nullptr );
+    explicit QvkDownloader( QString pathLocal, QObject *parent = nullptr);
     void doDownload( const QUrl &url );
 
 

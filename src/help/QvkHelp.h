@@ -5,15 +5,15 @@
 #include "ui_formhelp.h"
 #include "QvkDownloader.h"
 
-
 #include <QObject>
+#include <QTemporaryDir>
 
 class QvkHelp: public QWidget
 {
     Q_OBJECT
     
 public:
-    QvkHelp(  Ui_MainWindow *ui_mainwindow );
+    QvkHelp( QMainWindow *mainWindow, Ui_MainWindow *ui_mainwindow );
     virtual ~QvkHelp();
 
     
@@ -38,6 +38,7 @@ private:
     QString tempPath;
     QString vk_helpPath;
 
+    QTemporaryDir temporaryDirLocal;
 
 private slots:
     void slot_screenFullscreen();
@@ -49,14 +50,12 @@ private slots:
 
     void slot_audioHelp();
 
-
-
     void slot_parseHTML(QString tempPathFileName);
     void slot_showHelp(QString tempPathFileName);
 
+    void slot_close();
 
 protected:
-
   
 signals:
 

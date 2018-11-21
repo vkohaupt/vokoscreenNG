@@ -1,21 +1,42 @@
 
 #include "QvkLog.h" 
 
-#include <QFile>
 #include <QTextStream>
+#include <QDebug>
+#include <QStandardPaths>
 #include <QTime>
 
 #include <stdio.h>
-#include <stdlib.h>
 
 QvkLog::QvkLog()
 {
+    QDateTime dateTime = QDateTime::currentDateTime();
+    QString stringDateTime = dateTime.toString( "yyyy-MM-dd_hh:mm:ss" );
+
+    QString path = QStandardPaths::writableLocation( QStandardPaths::AppConfigLocation );
+    logFile.setFileName( path + "/" + stringDateTime + ".log");
 }
 
 
 QvkLog::~QvkLog()
 {
 }
+
+
+void QvkLog::writeToLog( QString string )
+{
+#ifdef Q_OS_LINUX
+    QString endLine = "\n";
+#endif
+#ifdef Q_OS_WIN
+    QString endLine = "\r\n";
+#endif
+    logFile.open( QIODevice::Append | QIODevice::Text | QIODevice::Unbuffered );
+    logFile.write( string.toUtf8() );
+    logFile.write( endLine.toUtf8() );
+    logFile.close();
+}
+
 
 void QvkLog::outputMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 {
@@ -43,5 +64,6 @@ void QvkLog::outputMessage(QtMsgType type, const QMessageLogContext &context, co
         txt += localMsg.constData();
         abort();
     }
+    writeToLog( txt );
     emit newLogText( txt );
 }
