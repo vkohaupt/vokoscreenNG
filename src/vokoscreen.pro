@@ -100,4 +100,8 @@ include(showclick/showclick.pri)
 include(log/log.pri)
 
 # QGlobalshortcut
-include(globalShortcut/globalshortcut.pri)
+include(QGlobalShortcut/qglobalshortcut.pri)
+include(QvkGlobalShortcut/QvkGlobalShortcut.pri)
+
+
+

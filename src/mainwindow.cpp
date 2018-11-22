@@ -7,6 +7,7 @@
 #include "QvkShowClickDialog.h"
 #include "QvkAnimateControl.h"
 #include "QvkLog.h"
+#include "QvkGlobalShortcut.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -71,6 +72,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     vkMagnifierController = new QvkMagnifierController(ui);
     QvkHelp *vkHelp = new QvkHelp( this, ui );
     Q_UNUSED( vkHelp );
+
+    QvkGlobalShortcut *vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
