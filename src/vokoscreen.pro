@@ -98,3 +98,6 @@ include(showclick/showclick.pri)
 
 # log
 include(log/log.pri)
+
+# QGlobalshortcut
+include(globalShortcut/globalshortcut.pri)

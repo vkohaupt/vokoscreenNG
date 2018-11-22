@@ -6,6 +6,7 @@
 #include "QvkInformation.h"
 #include "QvkShowClickDialog.h"
 #include "QvkAnimateControl.h"
+#include "QvkLog.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -31,13 +32,6 @@
 // gstreamer-plugins-bad-orig-addon
 // gstreamer-plugins-good-extra
 // libgstinsertbin-1_0-0
-
-using namespace std;
-#include "log/QvkLog.h"
-#include <QPointer>
-#include <qapplication.h>
-#include <QMessageLogContext>
-#include <QtGlobal>
 
 QPointer<QvkLog> myLog;
 void myMessageOutput( QtMsgType type, const QMessageLogContext &context, const QString &msg )
@@ -68,7 +62,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     myLog = new QvkLog();
     qInstallMessageHandler( myMessageOutput );
     connect( myLog, SIGNAL( newLogText( QString ) ), this, SLOT( slot_addLogVokoscreen( QString ) ) );
-    //qSetMessagePattern("%{file}(%{line}): %{message}");
 
 #ifdef Q_OS_LINUX
     vkAudioPulse = new QvkAudioPulse( ui );
@@ -115,7 +108,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                          << "800 x 480 WVGA 5 : 3"
                          << "800 x 600 SVGA 4 : 3"
                          << "854 x 450 WVGA 16 : 9"
-                         << "768 x 567 PAL 4 :3"
+                         << "768 x 567 PAL 4 : 3"
                          << "1024 x 768 XVGA 4 : 3"
                          << "1152 x 768 N/A 3 : 2"
                          << "1280 x 720 HD-720 16 : 9"
