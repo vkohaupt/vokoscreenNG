@@ -6,8 +6,8 @@
 #include "QvkInformation.h"
 #include "QvkShowClickDialog.h"
 #include "QvkAnimateControl.h"
-#include "QvkLog.h"
 #include "QvkGlobalShortcut.h"
+#include "QvkLogController.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -34,13 +34,6 @@
 // gstreamer-plugins-good-extra
 // libgstinsertbin-1_0-0
 
-QPointer<QvkLog> vklog;
-void myMessageOutput( QtMsgType type, const QMessageLogContext &context, const QString &msg )
-{
-    vklog->outputMessage( type, context, msg );
-}
-
-
 #ifdef Q_OS_LINUX
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                                           ui(new Ui::MainWindow),
@@ -60,8 +53,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 {
     ui->setupUi(this);
 
-    vklog = new QvkLog( ui );
-    qInstallMessageHandler( myMessageOutput );
+    QvkLogController *vklogController = new QvkLogController( ui );
+    Q_UNUSED(vklogController);
 
 #ifdef Q_OS_LINUX
     vkAudioPulse = new QvkAudioPulse( ui );
@@ -69,7 +62,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
     vkSettings.readAll();
 
-    vkMagnifierController = new QvkMagnifierController(ui);
+    QvkMagnifierController *vkMagnifierController = new QvkMagnifierController(ui);
+    Q_UNUSED(vkMagnifierController);
 
     QvkHelp *vkHelp = new QvkHelp( this, ui );
     Q_UNUSED( vkHelp );
@@ -1581,4 +1575,3 @@ void MainWindow::slot_screenCountChanged( int value )
         qDebug();
     }
 }
-

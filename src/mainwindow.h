@@ -48,7 +48,6 @@ public:
 #endif
     QvkHelp *vkHelp;
     QvkSystray *vkSystray;
-    QvkMagnifierController *vkMagnifierController;
 
     void makeAndSetValidIcon(QTabWidget *widget, int index, QIcon icon );
     void makeAndSetValidIconForSideBar( int index, QIcon icon );
