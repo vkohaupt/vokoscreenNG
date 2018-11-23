@@ -71,6 +71,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     QvkGlobalShortcut *vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
     Q_UNUSED(vkGlobalShortcut);
 
+    QvkInformation *vkInformation = new QvkInformation(ui);
+    connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
+
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
     MainWindow::setWindowIcon( icon );
@@ -117,9 +120,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
                          << "1920 x 1080 HD1080 16 : 9";
 
     vk_setCornerWidget( ui->tabWidgetScreencast );
-
-    QvkInformation *vkInformation = new QvkInformation(ui);
-    connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
 
     // need a move
     move( 0, 0 );
