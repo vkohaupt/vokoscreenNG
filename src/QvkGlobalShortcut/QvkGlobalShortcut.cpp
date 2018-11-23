@@ -21,12 +21,25 @@ QvkGlobalShortcut::QvkGlobalShortcut( QMainWindow *mainWindow, Ui_MainWindow *ui
     connect( shortcutStop, SIGNAL( activated() ), ui->pushButtonStop, SLOT( click() ) );
     shortcutStop->setShortcut( QKeySequence( "Ctrl+Shift+F11" ) );
 
-    QGlobalShortcut *shortcutPause = new QGlobalShortcut( this );
-    connect( shortcutPause, SIGNAL( activated() ), ui->pushButtonPause, SLOT( click() ) );
-    shortcutPause->setShortcut( QKeySequence( "Ctrl+Shift+F12" ) );
+    QGlobalShortcut *shortcutPauseContinue = new QGlobalShortcut( this );
+    connect( shortcutPauseContinue, SIGNAL( activated() ), this, SLOT( slot_pauseContinue() ) );
+    shortcutPauseContinue->setShortcut( QKeySequence( "Ctrl+Shift+F12" ) );
 }
 
 
 QvkGlobalShortcut::~QvkGlobalShortcut()
 {
+}
+
+
+void QvkGlobalShortcut::slot_pauseContinue()
+{
+    if ( ui->pushButtonContinue->isHidden() == true )
+    {
+        ui->pushButtonPause->click();
+    }
+    else
+    {
+        ui->pushButtonContinue->click();
+    }
 }

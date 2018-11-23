@@ -24,6 +24,7 @@ private:
 
 
 private slots:
+    void slot_pauseContinue();
 
     
 protected:
