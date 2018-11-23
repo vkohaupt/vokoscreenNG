@@ -1,4 +1,6 @@
 #include <QPointer>
+#include <QMessageLogContext>
+#include <QString>
 
 #include "QvkLogController.h" 
 #include "QvkLog.h"
@@ -12,8 +14,7 @@ void myMessageOutput( QtMsgType type, const QMessageLogContext &context, const Q
 
 QvkLogController::QvkLogController( Ui_MainWindow *ui_mainwindow )
 {
-    ui = ui_mainwindow;
-    vklog = new QvkLog( ui );
+    vklog = new QvkLog( ui_mainwindow );
     qInstallMessageHandler( myMessageOutput );
 }
 

@@ -24,7 +24,6 @@ private slots:
 
   
 private:
-    Ui_MainWindow *ui;
 
 
 protected:
