@@ -1,25 +1,27 @@
 #ifndef QvkLog_H 
 #define QvkLog_H
 
+#include "ui_mainwindow.h"
+
 #include <QObject>
 #include <QFile>
-#include <QTemporaryDir>
 
 class QvkLog : public QObject
 {
     Q_OBJECT
 
 public:
-  QvkLog();
+  QvkLog(Ui_MainWindow *ui_mainwindow);
   virtual ~QvkLog();
   
 
 public slots:
   void outputMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg);
+  void slot_addLogVokoscreen( QString value );
 
   
 signals:
-    void newLogText( QString txt );
+    void signal_newLogText( QString txt );
 
   
 private slots:
@@ -28,6 +30,7 @@ private slots:
 private:
     QFile logFile;
     void writeToLog( QString string );
+    Ui_MainWindow *ui;
 
 
 protected:

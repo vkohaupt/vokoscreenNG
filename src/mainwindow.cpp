@@ -34,10 +34,10 @@
 // gstreamer-plugins-good-extra
 // libgstinsertbin-1_0-0
 
-QPointer<QvkLog> myLog;
+QPointer<QvkLog> vklog;
 void myMessageOutput( QtMsgType type, const QMessageLogContext &context, const QString &msg )
 {
-    myLog->outputMessage( type, context, msg );
+    vklog->outputMessage( type, context, msg );
 }
 
 
@@ -60,20 +60,22 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 {
     ui->setupUi(this);
 
-    myLog = new QvkLog();
+    vklog = new QvkLog( ui );
     qInstallMessageHandler( myMessageOutput );
-    connect( myLog, SIGNAL( newLogText( QString ) ), this, SLOT( slot_addLogVokoscreen( QString ) ) );
 
 #ifdef Q_OS_LINUX
     vkAudioPulse = new QvkAudioPulse( ui );
     vkAudioAlsa = new QvkAudioAlsa( ui );
 #endif
     vkSettings.readAll();
+
     vkMagnifierController = new QvkMagnifierController(ui);
+
     QvkHelp *vkHelp = new QvkHelp( this, ui );
     Q_UNUSED( vkHelp );
 
     QvkGlobalShortcut *vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
+    Q_UNUSED(vkGlobalShortcut);
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
@@ -453,12 +455,6 @@ void MainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
     label->setPixmap( pixmap );
     label->setEnabled( false );
     tabWidget->setCornerWidget( label, Qt::TopRightCorner);
-}
-
-
-void MainWindow::slot_addLogVokoscreen( QString value )
-{
-    ui->textBrowserLog->append( value );
 }
 
 

@@ -1,4 +1,3 @@
-
 #include "QvkLog.h" 
 
 #include <QTextStream>
@@ -8,8 +7,12 @@
 
 #include <stdio.h>
 
-QvkLog::QvkLog()
+QvkLog::QvkLog( Ui_MainWindow *ui_mainwindow )
 {
+    ui = ui_mainwindow;
+
+    connect( this, SIGNAL( signal_newLogText( QString ) ), this, SLOT( slot_addLogVokoscreen( QString ) ) );
+
     QDateTime dateTime = QDateTime::currentDateTime();
     QString stringDateTime = dateTime.toString( "yyyy-MM-dd_hh:mm:ss" );
 
@@ -20,6 +23,12 @@ QvkLog::QvkLog()
 
 QvkLog::~QvkLog()
 {
+}
+
+
+void QvkLog::slot_addLogVokoscreen( QString value )
+{
+    ui->textBrowserLog->append( value );
 }
 
 
@@ -65,5 +74,5 @@ void QvkLog::outputMessage(QtMsgType type, const QMessageLogContext &context, co
         abort();
     }
     writeToLog( txt );
-    emit newLogText( txt );
+    emit signal_newLogText( txt );
 }

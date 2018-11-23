@@ -128,7 +128,6 @@ private slots:
 
     void slot_setVisibleSystray( bool value );
 
-    void slot_addLogVokoscreen( QString value );
     void slot_sendReport();
 
 
