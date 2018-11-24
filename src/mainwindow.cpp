@@ -933,12 +933,24 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
                                     << "audiocodec:lamemp3enc:mp3"
                                     << "audiocodec:opusenc:opus"
                                   );
-
+/*
+    QStringList OGG_QStringList = ( QStringList()
+                                    << "muxer:oggmux:ogg"
+                                    << "videomimetype:video/ogg"
+                                    << "audiomimetype:audio/ogg"
+                                    << "videocodec:vp8enc:vp8"
+                                    << "videocodec:theoraenc:theora"
+                                    << "audiocodec:vorbisenc:vorbis"
+                                    << "audiocodec:opusenc:opus"
+                                    << "audiocodec:flacenc:flac"
+                                   );
+*/
     videoFormatsList.clear();
     videoFormatsList.append( MKV_QStringList.join( ","  ) );
     videoFormatsList.append( WEBM_QStringList.join( ","  ) );
     videoFormatsList.append( AVI_QStringList.join( "," ) );
     videoFormatsList.append( MP4_QStringList.join( ",") );
+//    videoFormatsList.append( OGG_QStringList.join( ",") );
 
     globalFormatsList << videoFormatsList;
 
@@ -1059,7 +1071,12 @@ QString MainWindow::Vk_get_Videocodec_Encoder()
     {
         value = "x264enc speed-preset=veryfast pass=qual threads=0";
     }
-
+/*
+    if ( encoder == "theoraenc" )
+    {
+        value = "theoraenc drop-frames=false keyframe-freq=25"; // Das muß noch angepasst werden es humpelt :>)
+    }
+*/
     if ( encoder == "vp8enc" )
     {
         value = "vp8enc min_quantizer=20 max_quantizer=20 cpu-used=4 deadline=1000000 threads=4";
