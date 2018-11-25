@@ -122,7 +122,10 @@ void QvkScreenshot::slot_preshot_Screenshot()
 {
     if ( ( ui->radioButtonScreenshotFullscreen->isChecked() == true ) and ( ui->spinBoxScreenshotCountDown->value() > 0 ) )
     {
-        parent->hide();
+        if ( ui->checkBoxScreenshotHideThisWindow->checkState() == Qt::Checked )
+        {
+           parent->hide();
+        }
         disconnect( vkCountdown, 0, 0, 0 );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this, SLOT( slot_singleShot_Screenshot() ) );
         vkCountdown->startCountdown( ui->spinBoxScreenshotCountDown->value() );
@@ -131,15 +134,20 @@ void QvkScreenshot::slot_preshot_Screenshot()
 
     if ( ui->radioButtonScreenshotFullscreen->isChecked() == true )
     {
-        parent->hide();
+        if ( ui->checkBoxScreenshotHideThisWindow->checkState() == Qt::Checked )
+        {
+           parent->hide();
+        }
         slot_singleShot_Screenshot();
         return;
     }
 
     if( ( ui->radioButtonScreenshotWindow->isChecked() == true )  and ( ui->spinBoxScreenshotCountDown->value() > 0 ) )
     {
-
-        parent->hide();
+        if ( ui->checkBoxScreenshotHideThisWindow->checkState() == Qt::Checked )
+        {
+           parent->hide();
+        }
         disconnect( vkCountdown, 0, 0, 0 );
         disconnect( vkWinInfo, 0, 0, 0 );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), vkWinInfo, SLOT( slot_start() ) );
@@ -150,7 +158,10 @@ void QvkScreenshot::slot_preshot_Screenshot()
 
     if( ui->radioButtonScreenshotWindow->isChecked() == true )
     {
-        parent->hide();
+        if ( ui->checkBoxScreenshotHideThisWindow->checkState() == Qt::Checked )
+        {
+           parent->hide();
+        }
         disconnect( vkWinInfo, 0, 0, 0 );
         connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), this, SLOT( slot_shot_Screenshot() ) );
         vkWinInfo->slot_start();
@@ -160,7 +171,10 @@ void QvkScreenshot::slot_preshot_Screenshot()
 
     if ( ( ui->radioButtonScreenshotArea->isChecked() == true ) and ( ui->spinBoxScreenshotCountDown->value() > 0 ) )
     {
-        parent->hide();
+        if ( ui->checkBoxScreenshotHideThisWindow->checkState() == Qt::Checked )
+        {
+           parent->hide();
+        }
         regionChoise->recordMode( true );
         disconnect( vkCountdown, 0, 0, 0 );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this, SLOT( slot_singleShot_Screenshot() ) );

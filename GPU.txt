@@ -1,0 +1,3 @@
+ 
+GPU Unterstützung für gstreamer 1.12
+git clone -b "1.12" https://github.com/GStreamer/gstreamer-vaapi.git

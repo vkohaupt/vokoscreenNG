@@ -42,7 +42,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -125,7 +125,7 @@
                 <item row="1" column="0">
                  <widget class="QRadioButton" name="radioButtonWindow">
                   <property name="text">
-                   <string notr="true">&amp;Window</string>
+                   <string notr="true">Wi&amp;ndow</string>
                   </property>
                  </widget>
                 </item>
@@ -674,8 +674,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>509</width>
-                      <height>96</height>
+                      <width>16</width>
+                      <height>16</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1539,8 +1539,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>249</width>
-                   <height>330</height>
+                   <width>20</width>
+                   <height>96</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -1867,7 +1867,7 @@
               <item>
                <widget class="QRadioButton" name="radioButtonScreenshotWindow">
                 <property name="text">
-                 <string notr="true">&amp;Window</string>
+                 <string notr="true">Wi&amp;ndow</string>
                 </property>
                </widget>
               </item>
@@ -1910,6 +1910,16 @@
                  </size>
                 </property>
                </spacer>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="checkBoxScreenshotHideThisWindow">
+                <property name="text">
+                 <string>Hide this Window</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
