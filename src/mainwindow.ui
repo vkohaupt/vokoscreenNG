@@ -1488,7 +1488,7 @@
            <attribute name="title">
             <string notr="true"/>
            </attribute>
-           <layout class="QHBoxLayout" name="horizontalLayout_11">
+           <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="1,0,0">
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_6">
               <property name="spacing">
@@ -1553,7 +1553,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>249</width>
+                   <width>352</width>
                    <height>331</height>
                   </rect>
                  </property>
@@ -1592,7 +1592,7 @@
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item alignment="Qt::AlignLeft">
                  <widget class="QLabel" name="label_3">
                   <property name="text">
                    <string>Available</string>
@@ -1631,7 +1631,7 @@
                  </widget>
                 </item>
                 <item>
-                 <spacer name="horizontalSpacer_3">
+                 <spacer name="horizontalSpacer_23">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
@@ -1913,6 +1913,16 @@
                </layout>
               </item>
               <item>
+               <widget class="QCheckBox" name="checkBoxScreenshotHideThisWindow">
+                <property name="text">
+                 <string>Hide this Window</string>
+                </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
                <spacer name="verticalSpacer_11">
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>
@@ -1924,16 +1934,6 @@
                  </size>
                 </property>
                </spacer>
-              </item>
-              <item>
-               <widget class="QCheckBox" name="checkBoxScreenshotHideThisWindow">
-                <property name="text">
-                 <string>Hide this Window</string>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
-               </widget>
               </item>
              </layout>
             </item>
