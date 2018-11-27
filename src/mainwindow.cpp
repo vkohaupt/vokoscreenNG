@@ -900,7 +900,8 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videomimetype:video/x-matroska"
                                     << "audiomimetype:audio/x-matroska"
                                     << "videocodec:x264enc:x264"
-                                    << "videocodec:vaapih264enc:H.264 (Intel HW Encoder)"
+                                    //<< "videocodec:x265enc:x265"
+                                    << "videocodec:vaapih264enc:H.264 (Intel GPU)"
                                     << "videocodec:vp8enc:vp8"
                                     << "audiocodec:vorbisenc:vorbis"
                                     << "audiocodec:flacenc:flac"
@@ -1073,9 +1074,14 @@ QString MainWindow::Vk_get_Videocodec_Encoder()
         value = "x264enc speed-preset=veryfast pass=qual threads=0";
     }
 
+    if ( encoder == "x265enc" )
+    {
+        value = "x265enc";
+    }
+
     if ( encoder == "vaapih264enc" )
     {
-        value = "vaapih264enc tune=1 bitrate=1000";
+        value = "vaapih264enc tune=high-compression";
     }
 
 /*
