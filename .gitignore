@@ -30,16 +30,12 @@ qrc_*.cpp
 Makefile
 *build*
 ui_*.h
-
+*.qm
+vokoscreen
+main.ts
 
 # Linux/Unixes
 .*
 !.tx
 !.gitignore
 *~
-
-# vokoscreen
-language/*.qm
-vokoscreen
-
-
