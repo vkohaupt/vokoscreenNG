@@ -36,7 +36,8 @@ rm -r src/language
 echo ======================
 echo Download language pack
 echo ======================
-tx pull -a --minimum-perc=100
+tx pull -a
+#--minimum-perc=100
 
 echo =============================
 echo copy language to src/language
