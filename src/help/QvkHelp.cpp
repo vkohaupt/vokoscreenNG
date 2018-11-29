@@ -21,8 +21,7 @@ QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_MainWindow *ui_mainwindow ) : uiFo
 
     QStringList helpStringList;
     helpStringList << "http:/"
-                   << "linuxecke.volkoh.de"
-                   << "vokoscreen"
+                   << "vokoscreen.volkoh.de"
                    << "help"
                    << "3.0";
 
