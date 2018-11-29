@@ -11,8 +11,10 @@ QvkCameraWatcher::QvkCameraWatcher() : newcount(0)
     oldDeviceNameList.clear();
 
     timer = new QTimer(this);
+    timer->setTimerType( Qt::PreciseTimer );
+    timer->setInterval( 5000 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_detectCameras() ) );
-    timer->start( 1000 );
+    timer->start();
 }
 
 
@@ -30,7 +32,7 @@ void QvkCameraWatcher::slot_startStopCameraTimer( bool value )
 
     if ( value == false )
     {
-        timer->start(1000);
+        timer->start();
     }
 }
 
@@ -78,6 +80,7 @@ QString QvkCameraWatcher::addedDeviceName( QStringList myNewDeviceNameList, QStr
  */
 void QvkCameraWatcher::slot_detectCameras()
 {
+qDebug() << "void QvkCameraWatcher::slot_detectCameras()";
     timer->stop();
     bool deviceAdded = false;
 
@@ -98,7 +101,7 @@ void QvkCameraWatcher::slot_detectCameras()
     // Ein Device wurde hinzugefügt, Funktion wird dann hier abgebrochen
     if ( deviceAdded == true )
     {
-        timer->start(1000);
+        timer->start();
         return;
     }
 
@@ -121,6 +124,6 @@ void QvkCameraWatcher::slot_detectCameras()
         QString cameraDevice = removedDeviceName( newDeviceNameList , oldDeviceNameList );
         emit signal_removedCamera( cameraDevice );
     }
-    timer->start( 1000 );
+    timer->start();
 }
 

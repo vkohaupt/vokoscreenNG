@@ -18,6 +18,7 @@ QvkThreadAlsa::~QvkThreadAlsa()
 
 void QvkThreadAlsa::run()
 {
+    qDebug() << "void QvkThreadAlsa::run()";
     emit signal_countAudioDevices( QAudioDeviceInfo::availableDevices( QAudio::AudioInput ).count() );
 }
 

@@ -15,6 +15,10 @@ QvkAudioPulse::QvkAudioPulse( Ui_MainWindow *ui_mainwindow )
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), this, SLOT( slot_set_counter_back() ) );
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkThreadPulse, SLOT( slot_set_first_start( bool ) ) );
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkThreadPulse, SLOT( slot_start_stop_thread_timer( bool ) ) );
+
+    connect( ui->pushButtonStart,  SIGNAL( clicked( bool ) ), vkThreadPulse, SLOT( slot_stop_thread_timer() ) );
+    connect( ui->pushButtonStop,   SIGNAL( clicked( bool ) ), vkThreadPulse, SLOT( slot_start_thread_timer() ) );
+
     // Pulse is Standard. If no pulsedevice found, change to alsa see QvkAudioPulse::getPulsesDevices()
     ui->radioButtonPulse->click();
 }
