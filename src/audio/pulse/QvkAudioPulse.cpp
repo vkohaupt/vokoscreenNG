@@ -6,7 +6,7 @@
 QvkAudioPulse::QvkAudioPulse()
 {}
 
-QvkAudioPulse::QvkAudioPulse( Ui_MainWindow *ui_mainwindow )
+QvkAudioPulse::QvkAudioPulse(Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
 

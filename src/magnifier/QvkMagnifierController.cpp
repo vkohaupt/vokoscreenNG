@@ -1,6 +1,6 @@
 ﻿#include "QvkMagnifierController.h"
 
-QvkMagnifierController::QvkMagnifierController( Ui_MainWindow *ui_mainwindow ) : vkMagnifier(new QvkMagnifier)
+QvkMagnifierController::QvkMagnifierController(Ui_formMainWindow *ui_mainwindow ) : vkMagnifier(new QvkMagnifier)
 {
     ui_vokoscreen = ui_mainwindow;
     connect( ui_vokoscreen->checkBoxMagnifier, SIGNAL( clicked( bool ) ), vkMagnifier, SLOT( slot_magnifierShow( bool ) ) );

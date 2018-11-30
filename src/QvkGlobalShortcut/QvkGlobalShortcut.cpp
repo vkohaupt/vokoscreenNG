@@ -1,6 +1,6 @@
 ﻿#include "QvkGlobalShortcut.h"
 
-QvkGlobalShortcut::QvkGlobalShortcut( QMainWindow *mainWindow, Ui_MainWindow *ui_mainwindow )
+QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow )
 {
     Q_UNUSED(mainWindow);
     ui = ui_mainwindow;

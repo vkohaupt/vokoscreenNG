@@ -9,7 +9,7 @@ class QvkMagnifierController : public QObject
     Q_OBJECT
 
 public:
-   QvkMagnifierController( Ui_MainWindow *ui_mainwindow );
+   QvkMagnifierController( Ui_formMainWindow *ui_mainwindow );
    virtual ~QvkMagnifierController();
 
   
@@ -20,7 +20,7 @@ private slots:
 
 
 private:
-  Ui_MainWindow *ui_vokoscreen;
+  Ui_formMainWindow *ui_vokoscreen;
   QvkMagnifier *vkMagnifier;
 
 

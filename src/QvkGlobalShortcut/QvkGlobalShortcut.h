@@ -12,7 +12,7 @@ class QvkGlobalShortcut: public QObject
     Q_OBJECT
     
 public:
-    QvkGlobalShortcut( QMainWindow *mainWindow, Ui_MainWindow *ui_mainwindow );
+    QvkGlobalShortcut( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkGlobalShortcut();
 
 
@@ -20,7 +20,7 @@ public slots:
 
   
 private:
-    Ui_MainWindow *ui;
+    Ui_formMainWindow *ui;
 
 
 private slots:

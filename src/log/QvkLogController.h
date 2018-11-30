@@ -10,7 +10,7 @@ class QvkLogController : public QObject
     Q_OBJECT
 
 public:
-  QvkLogController(Ui_MainWindow *ui_mainwindow);
+  QvkLogController( Ui_formMainWindow *ui_mainwindow);
   virtual ~QvkLogController();
   
 

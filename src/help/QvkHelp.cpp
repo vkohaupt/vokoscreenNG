@@ -6,7 +6,7 @@
 #include <QTimer>
 #include <QTextDocument>
 
-QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_MainWindow *ui_mainwindow ) : uiFormHelp(new(Ui::formHelp))
+QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : uiFormHelp(new(Ui::formHelp))
 {
     connect( mainWindow, SIGNAL( destroyed( QObject*) ), this, SLOT( slot_close() ) );
 

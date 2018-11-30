@@ -12,7 +12,7 @@ void myMessageOutput( QtMsgType type, const QMessageLogContext &context, const Q
 }
 
 
-QvkLogController::QvkLogController( Ui_MainWindow *ui_mainwindow )
+QvkLogController::QvkLogController( Ui_formMainWindow *ui_mainwindow )
 {
     vklog = new QvkLog( ui_mainwindow );
     qInstallMessageHandler( myMessageOutput );

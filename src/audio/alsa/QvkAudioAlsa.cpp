@@ -3,7 +3,7 @@
 #include <QAudioDeviceInfo>
 #include <QDebug>
 
-QvkAudioAlsa::QvkAudioAlsa( Ui_MainWindow *ui_mainwindow )
+QvkAudioAlsa::QvkAudioAlsa( Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
 

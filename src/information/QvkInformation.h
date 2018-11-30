@@ -9,7 +9,7 @@ class QvkInformation: public QWidget
 { 
 Q_OBJECT
 public:
-  QvkInformation(Ui_MainWindow *ui_mainwindow);
+  QvkInformation( Ui_formMainWindow *ui_mainwindow);
   virtual ~QvkInformation();
 
 
@@ -34,7 +34,7 @@ protected:
   
   
 private:
-  Ui_MainWindow *ui;
+  Ui_formMainWindow *ui;
   QString newVideoFilename = "";
   QTimer *timerStorageInfo;
   QTimer *timerRecord;

@@ -10,7 +10,7 @@
 
 // Hint: min. Qt 5.9.2
 
-QvkCameraController::QvkCameraController(Ui_MainWindow *ui_surface ):cameraWatcher(new QvkCameraWatcher()),
+QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraWatcher(new QvkCameraWatcher()),
                                                                      cameraWindow(new QvkCameraWindow()),
                                                                      videoSurface(new QvkVideoSurface())
 {

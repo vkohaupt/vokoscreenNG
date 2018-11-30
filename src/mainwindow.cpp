@@ -36,7 +36,7 @@
 
 #ifdef Q_OS_LINUX
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
-                                          ui(new Ui::MainWindow),
+                                          ui(new Ui::formMainWindow),
                                           vkWinInfo(new QvkWinInfo),
                                           vkCountdown(new QvkCountdown),
                                           vkRegionChoise(new QvkRegionChoise)

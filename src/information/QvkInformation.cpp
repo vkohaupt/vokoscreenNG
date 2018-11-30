@@ -4,7 +4,7 @@
 #include <QTimer>
 #include <QStorageInfo>
 
-QvkInformation::QvkInformation(Ui_MainWindow *ui_mainwindow )
+QvkInformation::QvkInformation( Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
 

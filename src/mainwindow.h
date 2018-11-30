@@ -35,7 +35,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    Ui::MainWindow *ui;
+    Ui::formMainWindow *ui;
     QvkWinInfo *vkWinInfo;
     QvkCountdown *vkCountdown;
     QvkRegionChoise *vkRegionChoise;

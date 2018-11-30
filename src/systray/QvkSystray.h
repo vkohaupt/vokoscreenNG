@@ -12,7 +12,7 @@ class QvkSystray: public QSystemTrayIcon
     Q_OBJECT
 
 public:
-    QvkSystray(  Ui_MainWindow *ui_mainwindow );
+    QvkSystray( Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkSystray();
     void init();
 
@@ -22,7 +22,7 @@ public slots:
 
 
 private:
-    Ui_MainWindow *ui;
+    Ui_formMainWindow *ui;
     QMenu *menu;
     QAction *startAction;
     QAction *stopAction;

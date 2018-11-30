@@ -11,7 +11,7 @@ class QvkAudioAlsa: public QObject
     Q_OBJECT
     
 public:
-    QvkAudioAlsa( Ui_MainWindow *ui_mainwindow );
+    QvkAudioAlsa( Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkAudioAlsa();
 
     
@@ -19,7 +19,7 @@ public slots:
 
   
 private:
-    Ui_MainWindow *ui;
+    Ui_formMainWindow *ui;
     int counter;
     QvkThreadAlsa *vkThreadAlsa;
     void clearVerticalLayoutAudioDevices();

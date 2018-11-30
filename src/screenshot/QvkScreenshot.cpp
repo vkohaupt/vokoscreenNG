@@ -16,7 +16,7 @@
 #include <QStandardPaths>
 #include <QIcon>
 
-QvkScreenshot::QvkScreenshot(MainWindow *value, Ui_MainWindow *ui_mainwindow ):vkWinInfo(new QvkWinInfo),
+QvkScreenshot::QvkScreenshot(MainWindow *value, Ui_formMainWindow *ui_mainwindow ):vkWinInfo(new QvkWinInfo),
                                                                                vkCountdown(new QvkCountdown),
                                                                                regionChoise(new QvkRegionChoise)
 {

@@ -11,7 +11,7 @@ class QvkLog : public QObject
     Q_OBJECT
 
 public:
-  QvkLog(Ui_MainWindow *ui_mainwindow);
+  QvkLog( Ui_formMainWindow *ui_mainwindow);
   virtual ~QvkLog();
   
 
@@ -30,7 +30,7 @@ private slots:
 private:
     QFile logFile;
     void writeToLog( QString string );
-    Ui_MainWindow *ui;
+    Ui_formMainWindow *ui;
 
 
 protected:

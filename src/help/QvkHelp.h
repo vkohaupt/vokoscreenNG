@@ -13,7 +13,7 @@ class QvkHelp: public QWidget
     Q_OBJECT
     
 public:
-    QvkHelp( QMainWindow *mainWindow, Ui_MainWindow *ui_mainwindow );
+    QvkHelp( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkHelp();
 
     
@@ -21,7 +21,7 @@ public slots:
 
   
 private:
-    Ui_MainWindow *ui;
+    Ui_formMainWindow *ui;
     Ui_formHelp *uiFormHelp;
 
     QStringList toDownloadFiles = { ".png", ".svg", ".css", ".jpg" };

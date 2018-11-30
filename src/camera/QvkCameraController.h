@@ -18,7 +18,7 @@ class QvkCameraController : public QObject
     Q_OBJECT
 
 public:
-   QvkCameraController(Ui_MainWindow *ui_surface );
+   QvkCameraController(Ui_formMainWindow *ui_surface );
    virtual ~QvkCameraController();
 
   
@@ -44,7 +44,7 @@ private slots:
 
 private:
   QvkSettings vkSettings;
-  Ui_MainWindow *ui_vokoscreen;
+  Ui_formMainWindow *ui_vokoscreen;
   QCamera *camera = nullptr;
   QvkCameraWatcher *cameraWatcher;
   QvkCameraWindow *cameraWindow;

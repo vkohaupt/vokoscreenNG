@@ -14,7 +14,7 @@ class QvkAudioPulse: public QObject
 
 public:
     QvkAudioPulse();
-    QvkAudioPulse( Ui_MainWindow *ui_mainwindow );
+    QvkAudioPulse( Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkAudioPulse();
     
 
@@ -22,7 +22,7 @@ public slots:
 
 
 private:
-    Ui_MainWindow *ui;
+    Ui_formMainWindow *ui;
     QvkThreadPulse *vkThreadPulse;
     int counter;
     void getPulseDevices();
