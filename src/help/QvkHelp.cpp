@@ -6,12 +6,12 @@
 #include <QTimer>
 #include <QTextDocument>
 
-QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_MainWindow *ui_mainwindow ) : uiForm(new(Ui::Form))
+QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_MainWindow *ui_mainwindow ) : uiFormHelp(new(Ui::formHelp))
 {
     connect( mainWindow, SIGNAL( destroyed( QObject*) ), this, SLOT( slot_close() ) );
 
     ui = ui_mainwindow;
-    uiForm->setupUi( this );
+    uiFormHelp->setupUi( this );
 
     resize( 800, 600 );
     setWindowTitle( "vokoscreen help" );
@@ -229,7 +229,7 @@ void QvkHelp::slot_showHelp( QString tempPathFileName )
 
     QTextStream textStream( &file );
     QString value = textStream.readAll();
-    uiForm->textBrowser->setText( value );
+    uiFormHelp->textBrowser->setText( value );
     file.close();
 
     show();

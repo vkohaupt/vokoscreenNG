@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>295</width>
-    <height>198</height>
+    <height>204</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -65,14 +65,14 @@
        <item>
         <widget class="QRadioButton" name="radioButton1">
          <property name="text">
-          <string notr="true">200 x 200</string>
+          <string notr="true">&amp;200 x 200</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QRadioButton" name="radioButton2">
          <property name="text">
-          <string notr="true">400 x 200</string>
+          <string notr="true">&amp;400 x 200</string>
          </property>
          <property name="checked">
           <bool>true</bool>
@@ -82,7 +82,7 @@
        <item>
         <widget class="QRadioButton" name="radioButton3">
          <property name="text">
-          <string notr="true">600 x 200</string>
+          <string notr="true">&amp;600 x 200</string>
          </property>
         </widget>
        </item>

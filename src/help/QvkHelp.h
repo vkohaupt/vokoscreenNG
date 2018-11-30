@@ -22,7 +22,7 @@ public slots:
   
 private:
     Ui_MainWindow *ui;
-    Ui_Form *uiForm;
+    Ui_formHelp *uiFormHelp;
 
     QStringList toDownloadFiles = { ".png", ".svg", ".css", ".jpg" };
     bool isFileInLine( QString line );

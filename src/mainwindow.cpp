@@ -900,7 +900,7 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videomimetype:video/x-matroska"
                                     << "audiomimetype:audio/x-matroska"
                                     << "videocodec:x264enc:x264"
-                                    //<< "videocodec:x265enc:x265"
+                                    << "videocodec:x265enc:x265"
                                     << "videocodec:vaapih264enc:H.264 (Intel GPU)"
                                     << "videocodec:vp8enc:vp8"
                                     << "audiocodec:vorbisenc:vorbis"
