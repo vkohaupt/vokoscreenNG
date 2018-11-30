@@ -81,7 +81,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() );
 
     qDebug().noquote() << "[vokoscreen]" << "Version:" << vkSettings.getVersion();
-    qDebug().noquote() << "[vokoscreen]" << "Locale:" << QLocale::system().name();
+    qDebug().noquote() << "[vokoscreen]" << "Locale: " << QLocale::system().name();
+    QLocale locale;
+    qDebug().noquote() << "[vokoscreen}" << "Country:" << QLocale::countryToString( locale.country() );
     qDebug().noquote() << "[vokoscreen]" << "Qt: " << qVersion();
     qDebug().noquote() << "[vokoscreen]" << gst_version_string();
     qDebug().noquote() << "[vokoscreen]" << "Operating system:" << QSysInfo::prettyProductName();

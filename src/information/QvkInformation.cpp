@@ -44,6 +44,9 @@ void QvkInformation::slot_timeFirstStart()
 {
     elapsedTime->restart();
     ui->labelInfoRecordTime->setText("00:00:00");
+
+    QLocale locale;
+    qDebug() << "*****************************************************" << QLocale::countryToString( locale.country() );
 }
 
 
