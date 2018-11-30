@@ -88,7 +88,7 @@ void QvkScreenshot::slot_Folder()
         QDialog *newDialog = new QDialog;
         Ui_NoPlayerDialog myUiDialog;
         myUiDialog.setupUi( newDialog );
-        myUiDialog.labelPleaseInstall->setText( tr( "Please install an filemanager" ) );
+        myUiDialog.labelPleaseInstall->setText( tr( "Please install a filemanager" ) );
         newDialog->setModal( true );
         newDialog->setWindowTitle( "vokoscreen" );
         newDialog->show();
@@ -258,7 +258,7 @@ void QvkScreenshot::slot_show_Screenshoot()
         QDialog *newDialog = new QDialog;
         Ui_NoPlayerDialog myUiDialog;
         myUiDialog.setupUi( newDialog );
-        myUiDialog.labelPleaseInstall->setText( tr( "Please install an image viewer" ) );
+        myUiDialog.labelPleaseInstall->setText( tr( "Please install a imageviewer" ) );
         newDialog->setModal( true );
         newDialog->setWindowTitle( "vokoscreen" );
         newDialog->show();

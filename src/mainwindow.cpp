@@ -1519,7 +1519,7 @@ void MainWindow::slot_Play()
         QDialog *newDialog = new QDialog;
         Ui_NoPlayerDialog myUiDialog;
         myUiDialog.setupUi( newDialog );
-        myUiDialog.labelPleaseInstall->setText( tr( "Please install an videoplayer" ) );
+        myUiDialog.labelPleaseInstall->setText( tr( "Please install a videoplayer" ) );
         newDialog->setModal( true );
         newDialog->setWindowTitle( "vokoscreen" );
         newDialog->show();
@@ -1536,7 +1536,7 @@ void MainWindow::slot_Folder()
         QDialog *newDialog = new QDialog;
         Ui_NoPlayerDialog myUiDialog;
         myUiDialog.setupUi( newDialog );
-        myUiDialog.labelPleaseInstall->setText( tr( "Please install an filemanager" ) );
+        myUiDialog.labelPleaseInstall->setText( tr( "Please install a filemanager" ) );
         newDialog->setModal( true );
         newDialog->setWindowTitle( "vokoscreen" );
         newDialog->show();
