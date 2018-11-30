@@ -16,7 +16,7 @@ Q_OBJECT
 public:    
     QvkShowClickDialog( QColor color, bool radiant, double opacity );
     virtual ~QvkShowClickDialog();
-    Ui_Dialog myUiDialog;
+    Ui_formShowClick myUiDialog;
 
 
 public slots:

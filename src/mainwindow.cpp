@@ -1519,7 +1519,7 @@ void MainWindow::slot_Play()
         QDialog *newDialog = new QDialog;
         Ui_NoPlayerDialog myUiDialog;
         myUiDialog.setupUi( newDialog );
-        myUiDialog.labelPleaseInstall->setText( tr( "Please install an video player" ) );
+        myUiDialog.labelPleaseInstall->setText( tr( "Please install an videoplayer" ) );
         newDialog->setModal( true );
         newDialog->setWindowTitle( "vokoscreen" );
         newDialog->show();
