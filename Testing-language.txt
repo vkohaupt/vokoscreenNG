@@ -1,0 +1,15 @@
+
+Testing language in vokoscreen
+
+
+Step 1: switch to language
+vk@cvolker:~> export LANG=en_GB.UTF-8
+
+Step 2: check if language is set
+vk@cvolker:~> locale
+
+Step 3: start vokoscreen
+vk@cvolker:~> vokoscreen
+
+Step 4:
+check all words

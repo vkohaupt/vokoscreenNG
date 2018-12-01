@@ -150,7 +150,7 @@
     </message>
 </context>
 <context>
-    <name>screencast</name>
+    <name>formMainWindow</name>
     <message>
         <source>Fullscreen</source>
         <translation>Vollbild</translation>

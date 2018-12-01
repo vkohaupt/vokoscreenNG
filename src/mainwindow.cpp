@@ -902,8 +902,9 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videomimetype:video/x-matroska"
                                     << "audiomimetype:audio/x-matroska"
                                     << "videocodec:x264enc:x264"
-                                    << "videocodec:x265enc:x265"
+                                    //<< "videocodec:x265enc:x265"
                                     << "videocodec:vaapih264enc:H.264 (Intel GPU)"
+                                    << "videocodec:av1enc:av1"
                                     << "videocodec:vp8enc:vp8"
                                     << "audiocodec:vorbisenc:vorbis"
                                     << "audiocodec:flacenc:flac"
@@ -1086,6 +1087,10 @@ QString MainWindow::Vk_get_Videocodec_Encoder()
         value = "vaapih264enc tune=high-compression";
     }
 
+    if ( encoder == "av1enc" )
+    {
+        value = "av1enc";
+    }
 /*
     if ( encoder == "theoraenc" )
     {

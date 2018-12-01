@@ -5,8 +5,8 @@
 * It is written from scratch.
 * The old vokoscreen 2.5.0 https://github.com/vkohaupt/vokoscreen is the last version with ffmpg and will not more continue developed.
 
-## Translat
-Only 100% translate and reviewed languages come in vokoscreen. This means, you translate and at self time you reviewed your language. You have both finish translate and reviewed, the automated pull Process can now pull your translated language to me in the Sourcecode.
+## Translate
+Only **100% translate and reviewed** languages come in vokoscreen. This means, you translate and at self time you reviewed your language. You have both finish translate and reviewed, the automated pull Process can now pull your translated language to me in the Sourcecode.
 Please translate only at Transifex, it is very easy.
 https://www.transifex.com/vkohaupt/vokoscreen/
 

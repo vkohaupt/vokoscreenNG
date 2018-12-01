@@ -4,6 +4,7 @@
 
 QvkPulseGstr::QvkPulseGstr()
 {
+    print_plugin_info();
 }
 
 
@@ -129,4 +130,62 @@ QStringList QvkPulseGstr::get_all_Audio_devices()
     }
 
     return tmpList;
+}
+
+// new ****************************************************************************************** compile only no function
+
+
+
+
+
+void QvkPulseGstr::print_plugin_info ()
+{
+    const gchar *name;
+    name = "vp8enc";
+    GstPlugin *plugin = gst_registry_find_plugin (gst_registry_get (), name);
+
+
+//**********************
+
+//    const gchar *release_date = gst_plugin_get_release_date_string (plugin);
+//    const gchar *filename = gst_plugin_get_filename (plugin);
+
+//    n_print ("Plugin Details:\n");
+
+//    push_indent ();
+
+    qDebug() << "Name" << gst_plugin_get_name( plugin );
+    /*  n_print ("%-25s%s\n", "Name", gst_plugin_get_name (plugin));
+  n_print ("%-25s%s\n", "Description", gst_plugin_get_description (plugin));
+  n_print ("%-25s%s\n", "Filename", (filename != NULL) ? filename : "(null)");
+  n_print ("%-25s%s\n", "Version", gst_plugin_get_version (plugin));
+  n_print ("%-25s%s\n", "License", gst_plugin_get_license (plugin));
+  n_print ("%-25s%s\n", "Source module", gst_plugin_get_source (plugin));
+
+    if (release_date != NULL) {
+        const gchar *tz = "(UTC)";
+        gchar *str, *sep;
+
+        // may be: YYYY-MM-DD or YYYY-MM-DDTHH:MMZ
+        // YYYY-MM-DDTHH:MMZ => YYYY-MM-DD HH:MM (UTC)
+        str = g_strdup (release_date);
+        sep = strstr (str, "T");
+        if (sep != NULL) {
+            *sep = ' ';
+            sep = strstr (sep + 1, "Z");
+            if (sep != NULL)
+                *sep = ' ';
+        } else {
+            tz = "";
+        }
+//        n_print ("%-25s%s%s\n", "Source release date", str, tz);
+        g_free (str);
+    }
+*/
+//    n_print ("%-25s%s\n", "Binary package", gst_plugin_get_package (plugin));
+//    n_print ("%-25s%s\n", "Origin URL", gst_plugin_get_origin (plugin));
+
+//     pop_indent ();
+
+//    n_print ("\n");
 }
