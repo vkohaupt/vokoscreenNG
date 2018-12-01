@@ -722,7 +722,7 @@
                       <item>
                        <widget class="QRadioButton" name="radioButtonPulse">
                         <property name="text">
-                         <string>Pulse</string>
+                         <string>&amp;Pulse</string>
                         </property>
                        </widget>
                       </item>
@@ -742,7 +742,7 @@
                       <item>
                        <widget class="QRadioButton" name="radioButtonAlsa">
                         <property name="text">
-                         <string>Alsa</string>
+                         <string>A&amp;lsa</string>
                         </property>
                        </widget>
                       </item>
@@ -1553,8 +1553,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>352</width>
-                   <height>331</height>
+                   <width>96</width>
+                   <height>96</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">

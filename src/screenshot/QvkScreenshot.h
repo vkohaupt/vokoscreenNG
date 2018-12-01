@@ -1,7 +1,7 @@
 #ifndef QvkScreenshot_H
 #define QvkScreenshot_H
 
-#include "ui_mainwindow.h"
+#include "ui_formMainWindow.h"
 #include "mainwindow.h"
 
 class QvkScreenshot: public QObject

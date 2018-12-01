@@ -1,6 +1,6 @@
 ﻿#include "mainwindow.h"
 
-#include "ui_mainwindow.h"
+#include "ui_formMainWindow.h"
 #include "ui_QvkNoPlayerDialog.h"
 #include "QvkScreenshot.h"
 #include "QvkInformation.h"

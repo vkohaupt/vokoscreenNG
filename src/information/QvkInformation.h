@@ -1,7 +1,7 @@
 #ifndef QvkInformation_H
 #define QvkInformation_H
 
-#include "ui_mainwindow.h"
+#include "ui_formMainWindow.h"
 
 #include <QWidget>
 

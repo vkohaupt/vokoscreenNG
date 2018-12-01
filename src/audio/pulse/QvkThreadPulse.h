@@ -3,7 +3,7 @@
 
 #include "QvkPulseGstr.h"
 
-#include "ui_mainwindow.h"
+#include "ui_formMainWindow.h"
 #include <QThread>
 #include <QTimer>
 

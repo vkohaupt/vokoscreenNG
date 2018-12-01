@@ -1,7 +1,7 @@
 #ifndef QvkSystray_H
 #define QvkSystray_H
 
-#include "ui_mainwindow.h"
+#include "ui_formMainWindow.h"
 
 #include <QObject>
 #include <QSystemTrayIcon>

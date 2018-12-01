@@ -1,7 +1,7 @@
 #ifndef QvkHelp_H 
 #define QvkHelp_H
 
-#include "ui_mainwindow.h"
+#include "ui_formMainWindow.h"
 #include "ui_formhelp.h"
 #include "QvkDownloader.h"
 

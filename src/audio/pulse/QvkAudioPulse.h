@@ -1,7 +1,7 @@
 #ifndef QvkAudioPulse_H
 #define QvkAudioPulse_H
 
-#include "ui_mainwindow.h"
+#include "ui_formMainWindow.h"
 
 #include "QvkThreadPulse.h"
 #include "QvkPulseGstr.h"

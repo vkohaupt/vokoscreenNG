@@ -1,7 +1,7 @@
 #ifndef QvkCameraController_H
 #define QvkCameraController_H
 
-#include "ui_mainwindow.h"
+#include "ui_formMainWindow.h"
 #include "QvkCameraWatcher.h"
 #include "QvkCameraWindow.h"
 

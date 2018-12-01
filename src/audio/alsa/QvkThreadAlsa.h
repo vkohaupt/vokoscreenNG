@@ -1,7 +1,7 @@
 #ifndef QvkThreadAlsa_H
 #define QvkThreadAlsa_H
 
-#include "ui_mainwindow.h"
+#include "ui_formMainWindow.h"
 #include <QObject>
 #include <QThread>
 #include <QTimer>

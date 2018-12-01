@@ -1,7 +1,7 @@
 #ifndef QvkAudioAlsa_H 
 #define QvkAudioAlsa_H
 
-#include "ui_mainwindow.h"
+#include "ui_formMainWindow.h"
 #include "QvkThreadAlsa.h"
 
 #include <QObject>
