@@ -1,18 +1,8 @@
 #include "QvkDownloader.h"
 
-
-/*
-QvkDownloader::QvkDownloader(QObject *parent) : QObject(parent)
-{
-    connect( &networkAccessManager, SIGNAL( finished( QNetworkReply* ) ), SLOT( slot_downloadFinished( QNetworkReply* ) ) );
-    tempPath = QStandardPaths::writableLocation( QStandardPaths::TempLocation );
-}
-*/
-
 QvkDownloader::QvkDownloader( QString pathLocal , QObject *parent ) : QObject(parent)
 {
     connect( &networkAccessManager, SIGNAL( finished( QNetworkReply* ) ), SLOT( slot_downloadFinished( QNetworkReply* ) ) );
-    //tempPath = QStandardPaths::writableLocation( QStandardPaths::TempLocation );
     tempPath = pathLocal;
 }
 
