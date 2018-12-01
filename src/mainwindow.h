@@ -24,16 +24,16 @@
 #include <gst/gst.h>
 
 namespace Ui {
-class MainWindow;
+class QvkMainWindow;
 }
 
-class MainWindow : public QMainWindow
+class QvkMainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+    explicit QvkMainWindow(QWidget *parent = 0);
+    ~QvkMainWindow();
 
     Ui::formMainWindow *ui;
     QvkWinInfo *vkWinInfo;

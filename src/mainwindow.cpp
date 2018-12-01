@@ -35,7 +35,7 @@
 // libgstinsertbin-1_0-0
 
 #ifdef Q_OS_LINUX
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
+QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                           ui(new Ui::formMainWindow),
                                           vkWinInfo(new QvkWinInfo),
                                           vkCountdown(new QvkCountdown),
@@ -76,7 +76,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
-    MainWindow::setWindowIcon( icon );
+    QvkMainWindow::setWindowIcon( icon );
 
     setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() );
 
@@ -403,13 +403,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 }
 
 
-MainWindow::~MainWindow()
+QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
 }
 
 
-void MainWindow::slot_sendReport()
+void QvkMainWindow::slot_sendReport()
 {
     QStringList stringList;
     stringList << "mailto:";
@@ -430,7 +430,7 @@ void MainWindow::slot_sendReport()
 }
 
 
-void MainWindow::closeEvent( QCloseEvent *event )
+void QvkMainWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
     emit signal_close();
@@ -438,7 +438,7 @@ void MainWindow::closeEvent( QCloseEvent *event )
 }
 
 
-void MainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
+void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
 {
 #ifdef Q_OS_LINUX
     QPixmap pixmap( ":/pictures/linux.png" );
@@ -454,7 +454,7 @@ void MainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
 }
 
 
-void MainWindow::slot_setVisibleSystray( bool value )
+void QvkMainWindow::slot_setVisibleSystray( bool value )
 {
     if ( value == false )
     {
@@ -472,7 +472,7 @@ void MainWindow::slot_setVisibleSystray( bool value )
 }
 
 
-void MainWindow::slot_IfStartAudioCodecWidgetsSetEnabled()
+void QvkMainWindow::slot_IfStartAudioCodecWidgetsSetEnabled()
 {
     if ( ui->checkBoxAudioOnOff->checkState() == Qt::Checked )
     {
@@ -483,7 +483,7 @@ void MainWindow::slot_IfStartAudioCodecWidgetsSetEnabled()
 }
 
 
-void MainWindow::slot_IfStopAudioCodecWidgetsSetDisabled()
+void QvkMainWindow::slot_IfStopAudioCodecWidgetsSetDisabled()
 {
     if ( ui->checkBoxAudioOnOff->checkState() == Qt::Checked )
     {
@@ -494,7 +494,7 @@ void MainWindow::slot_IfStopAudioCodecWidgetsSetDisabled()
 }
 
 
-void MainWindow::slot_areaSetResolution( QString value )
+void QvkMainWindow::slot_areaSetResolution( QString value )
 {
     QString width = value.section( " ", 0, 0 );
     QString height = value.section( " ", 2, 2 );
@@ -502,13 +502,13 @@ void MainWindow::slot_areaSetResolution( QString value )
 }
 
 
-void MainWindow::slot_areaReset()
+void QvkMainWindow::slot_areaReset()
 {
     ui->comboBoxAreaSize->setCurrentIndex( 0 );
 }
 
 
-void MainWindow::slot_disableAreaWidgets()
+void QvkMainWindow::slot_disableAreaWidgets()
 {
    if ( ui->radioButtonArea->isChecked() == true  )
    {
@@ -518,7 +518,7 @@ void MainWindow::slot_disableAreaWidgets()
 }
 
 
-void MainWindow::slot_enableAreaWidgets()
+void QvkMainWindow::slot_enableAreaWidgets()
 {
    if ( ui->radioButtonArea->isChecked() == true  )
    {
@@ -528,7 +528,7 @@ void MainWindow::slot_enableAreaWidgets()
 }
 
 
-void MainWindow::slot_StartTimer( bool value )
+void QvkMainWindow::slot_StartTimer( bool value )
 {
     if ( value == true )
     {
@@ -541,7 +541,7 @@ void MainWindow::slot_StartTimer( bool value )
 }
 
 
-void MainWindow::slot_startTime()
+void QvkMainWindow::slot_startTime()
 {
     QTime time;
     if ( ( time.currentTime().hour() == ui->timeEditStartTime->time().hour() ) and
@@ -554,7 +554,7 @@ void MainWindow::slot_startTime()
 }
 
 
-void MainWindow::slot_setHour( int value )
+void QvkMainWindow::slot_setHour( int value )
 {
     QTime time;
     time.setHMS( value, ui->timeEditStartTime->time().minute(), 0 );
@@ -562,7 +562,7 @@ void MainWindow::slot_setHour( int value )
 }
 
 
-void MainWindow::slot_setMinute( int value )
+void QvkMainWindow::slot_setMinute( int value )
 {
     QTime time;
     time.setHMS( ui->timeEditStartTime->time().hour(), value, 0 );
@@ -570,7 +570,7 @@ void MainWindow::slot_setMinute( int value )
 }
 
 
-void MainWindow::slot_newVideoPath()
+void QvkMainWindow::slot_newVideoPath()
 {
     QString dir = QFileDialog::getExistingDirectory( this,
                                                      "",
@@ -584,7 +584,7 @@ void MainWindow::slot_newVideoPath()
 }
 
 
-void MainWindow::slot_videoFileSystemWatcherSetNewPath()
+void QvkMainWindow::slot_videoFileSystemWatcherSetNewPath()
 {
     if ( !videoFileSystemWatcher->directories().isEmpty() )
     {
@@ -594,7 +594,7 @@ void MainWindow::slot_videoFileSystemWatcherSetNewPath()
 }
 
 
-void MainWindow::slot_videoFileSystemWatcherSetButtons()
+void QvkMainWindow::slot_videoFileSystemWatcherSetButtons()
 {
   QDir dir( ui->lineEditVideoPath->text() );
   QStringList filters;
@@ -612,13 +612,13 @@ void MainWindow::slot_videoFileSystemWatcherSetButtons()
 }
 
 
-void MainWindow::resizeEvent( QResizeEvent *event )
+void QvkMainWindow::resizeEvent( QResizeEvent *event )
 {
     emit signal_resizeEvent( event );
 }
 
 
-void MainWindow::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIcon icon )
+void QvkMainWindow::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIcon icon )
 {
     QSize size = tabWidget->iconSize();
     QPixmap workPixmap( icon.pixmap( size ) );
@@ -627,7 +627,7 @@ void MainWindow::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIcon i
 }
 
 
-void MainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
+void QvkMainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
 {
     QSize size = ui->tabWidgetSideBar->iconSize();
     QPixmap workPixmap( icon.pixmap( size ) );
@@ -642,7 +642,7 @@ void MainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
 /*
  * Setzt neues Icon um aufzuzeigen das Audio abgeschaltet ist
  */
-void MainWindow::slot_audioIconOnOff( bool state )
+void QvkMainWindow::slot_audioIconOnOff( bool state )
 {
   if ( state == Qt::Unchecked )
   {
@@ -666,7 +666,7 @@ void MainWindow::slot_audioIconOnOff( bool state )
 }
 
 
-void MainWindow::slot_setFramesStandard( bool value )
+void QvkMainWindow::slot_setFramesStandard( bool value )
 {
     Q_UNUSED(value);
     ui->spinBoxFrames->setValue( 25 );
@@ -674,7 +674,7 @@ void MainWindow::slot_setFramesStandard( bool value )
 
 
 #ifdef Q_OS_LINUX
-QString MainWindow::VK_getXimagesrc()
+QString QvkMainWindow::VK_getXimagesrc()
 {
     QString showPointer = "true";
     if( ui->checkBoxMouseCursorOnOff->checkState() == Qt::Checked )
@@ -787,7 +787,7 @@ QString MainWindow::VK_getXimagesrc()
 #endif
 
 
-QString MainWindow::VK_getCapsFilter()
+QString QvkMainWindow::VK_getCapsFilter()
 {
    QStringList stringList;
    stringList << "capsfilter caps=video/x-raw,framerate="
@@ -797,7 +797,7 @@ QString MainWindow::VK_getCapsFilter()
 }
 
 
-QString MainWindow::VK_getVideoScale()
+QString QvkMainWindow::VK_getVideoScale()
 {
     QString value = ui->comboBoxScale->currentText();
     QStringList valuList = value.split( " " );
@@ -807,7 +807,7 @@ QString MainWindow::VK_getVideoScale()
 
 
 // Check format, video and audoicodec on tab availability
-void MainWindow::VK_gst_Elements_available()
+void QvkMainWindow::VK_gst_Elements_available()
 {
     int rowCount = 0;
     for ( int i = 0; i < globalFormatsList.count(); i++ )
@@ -895,7 +895,7 @@ void MainWindow::VK_gst_Elements_available()
 
 
 // This is the base for format, video and audiocodec
-void MainWindow::VK_Supported_Formats_And_Codecs()
+void QvkMainWindow::VK_Supported_Formats_And_Codecs()
 {
     QStringList MKV_QStringList = ( QStringList()
                                     << "muxer:matroskamux:mkv"
@@ -967,7 +967,7 @@ void MainWindow::VK_Supported_Formats_And_Codecs()
 }
 
 
-void MainWindow::VK_Check_is_Format_available()
+void QvkMainWindow::VK_Check_is_Format_available()
 {
     QStringList tempList;
     for ( int x = 0; x < videoFormatsList.count(); x++ )
@@ -993,7 +993,7 @@ void MainWindow::VK_Check_is_Format_available()
 }
 
 
-void MainWindow::VK_set_available_Formats_in_Combox()
+void QvkMainWindow::VK_set_available_Formats_in_Combox()
 {
     ui->comboBoxFormat->clear();
 
@@ -1015,7 +1015,7 @@ void MainWindow::VK_set_available_Formats_in_Combox()
 }
 
 
-void MainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
+void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
 {
     ui->comboBoxVideoCodec->clear();
 
@@ -1041,7 +1041,7 @@ void MainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
 }
 
 
-void MainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
+void QvkMainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
 {
     ui->comboBoxAudioCodec->clear();
 
@@ -1068,7 +1068,7 @@ void MainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
 }
 
 
-QString MainWindow::Vk_get_Videocodec_Encoder()
+QString QvkMainWindow::Vk_get_Videocodec_Encoder()
 {
     QString value;
     QString encoder = ui->comboBoxVideoCodec->currentData().toString();
@@ -1106,7 +1106,7 @@ QString MainWindow::Vk_get_Videocodec_Encoder()
 }
 
 
-void MainWindow::slot_preStart()
+void QvkMainWindow::slot_preStart()
 {
     if ( ui->checkBoxStopRecordingAfter->isChecked() == true )
     {
@@ -1210,7 +1210,7 @@ void MainWindow::slot_preStart()
 }
 
 
-void MainWindow::slot_startCounter( bool value )
+void QvkMainWindow::slot_startCounter( bool value )
 {
     Q_UNUSED(value);
     if ( ui->spinBoxCountDown->value() > 0 )
@@ -1220,7 +1220,7 @@ void MainWindow::slot_startCounter( bool value )
 }
 
 
-QString MainWindow::VK_get_AudioDevice()
+QString QvkMainWindow::VK_get_AudioDevice()
 {
     QString audioDevice;
     QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
@@ -1237,7 +1237,7 @@ QString MainWindow::VK_get_AudioDevice()
 
 #ifdef Q_OS_LINUX
 // Audiosystem is Pulse, Alsa, etc.
-QString MainWindow::VK_get_AudioSystem()
+QString QvkMainWindow::VK_get_AudioSystem()
 {
     QString audioSystem;
     if ( ui->radioButtonPulse->isChecked() )
@@ -1261,7 +1261,7 @@ QString MainWindow::VK_get_AudioSystem()
 #endif
 
 
-QString MainWindow::VK_getMuxer()
+QString QvkMainWindow::VK_getMuxer()
 {
     QString value = ui->comboBoxFormat->currentData().toString();
     if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( !VK_get_AudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
@@ -1274,7 +1274,7 @@ QString MainWindow::VK_getMuxer()
 
 
 
-QStringList MainWindow::VK_getSelectedAudioDevice()
+QStringList QvkMainWindow::VK_getSelectedAudioDevice()
 {
     QStringList list;
     QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
@@ -1289,7 +1289,7 @@ QStringList MainWindow::VK_getSelectedAudioDevice()
 }
 
 
-void MainWindow::slot_Start()
+void QvkMainWindow::slot_Start()
 {
     if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  )
     {
@@ -1418,7 +1418,7 @@ void MainWindow::slot_Start()
 */
 
 
-void MainWindow::slot_preStop()
+void QvkMainWindow::slot_preStop()
 {
     if ( ui->checkBoxStartTime->isChecked() == true )
     {
@@ -1440,7 +1440,7 @@ void MainWindow::slot_preStop()
 }
 
 
-void MainWindow::slot_Stop()
+void QvkMainWindow::slot_Stop()
 {
     // wait for EOS
     bool a = gst_element_send_event (pipeline, gst_event_new_eos());
@@ -1461,7 +1461,7 @@ void MainWindow::slot_Stop()
 
 // https://gstreamer.freedesktop.org/documentation/application-development/basics/elements.html
 // https://gstreamer.freedesktop.org/documentation/tutorials/basic/toolkit-integration.html
-void MainWindow::slot_Pause()
+void QvkMainWindow::slot_Pause()
 {
     if ( ui->pushButtonStart->isEnabled() == false )
     {
@@ -1483,7 +1483,7 @@ void MainWindow::slot_Pause()
 }
 
 
-void MainWindow::slot_Continue()
+void QvkMainWindow::slot_Continue()
 {
     if ( ( ui->pushButtonStart->isEnabled() == false ) and ( ui->pushButtonContinue->isEnabled() == true ) )
     {
@@ -1507,7 +1507,7 @@ void MainWindow::slot_Continue()
 }
 
 
-void MainWindow::slot_Play()
+void QvkMainWindow::slot_Play()
 {
     qDebug() << "[vokoscreen] play video with standard system player";
     QDir dir( ui->lineEditVideoPath->text() );
@@ -1534,7 +1534,7 @@ void MainWindow::slot_Play()
 }
 
 
-void MainWindow::slot_Folder()
+void QvkMainWindow::slot_Folder()
 {
     QString path = ui->lineEditVideoPath->text();
     bool b = QDesktopServices::openUrl( QUrl( path, QUrl::TolerantMode ) );
@@ -1551,32 +1551,32 @@ void MainWindow::slot_Folder()
 }
 
 
-QString MainWindow::get_x_From_Screen()
+QString QvkMainWindow::get_x_From_Screen()
 {
     QString value = ui->comboBoxScreen->currentData().toString().section( " ", 0, 0 ).split( "=" ).at( 1 );
     return value;
 }
 
-QString MainWindow::get_y_From_Screen()
+QString QvkMainWindow::get_y_From_Screen()
 {
     QString value = ui->comboBoxScreen->currentData().toString().section( " ", 1, 1 ).split( "=" ).at( 1 );
     return value;
 }
 
-QString MainWindow::get_width_From_Screen()
+QString QvkMainWindow::get_width_From_Screen()
 {
     QString value = ui->comboBoxScreen->currentData().toString().section( " ", 2, 2 ).split( "=" ).at( 1 );
     return value;
 }
 
-QString MainWindow::get_height_From_Screen()
+QString QvkMainWindow::get_height_From_Screen()
 {
     QString value = ui->comboBoxScreen->currentData().toString().section( " ", 3, 3 ).split( "=" ).at( 1 );
     return value;
 }
 
 
-void MainWindow::slot_screenCountChanged( int value )
+void QvkMainWindow::slot_screenCountChanged( int value )
 {
     Q_UNUSED(value);
     ui->comboBoxScreen->clear();

@@ -10,7 +10,7 @@ class QvkScreenshot: public QObject
     Q_OBJECT
 
 public:
-    QvkScreenshot(MainWindow *value, Ui_formMainWindow *ui_mainwindow);
+    QvkScreenshot( QvkMainWindow *value, Ui_formMainWindow *ui_mainwindow);
     virtual ~QvkScreenshot();
 
 
@@ -44,7 +44,7 @@ private:
     QvkCountdown *vkCountdown;
     QvkRegionChoise *regionChoise;
 
-    MainWindow *parent;
+    QvkMainWindow *parent;
     QPixmap pixmap;
     QFileSystemWatcher *pictureFileSystemWatcher;
 
