@@ -12,7 +12,7 @@ QvkCameraWatcher::QvkCameraWatcher() : newcount(0)
 
     timer = new QTimer(this);
     timer->setTimerType( Qt::PreciseTimer );
-    timer->setInterval( 5000 );
+    timer->setInterval( 2000 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_detectCameras() ) );
     timer->start();
 }
@@ -81,6 +81,11 @@ QString QvkCameraWatcher::addedDeviceName( QStringList myNewDeviceNameList, QStr
 void QvkCameraWatcher::slot_detectCameras()
 {
 qDebug() << "void QvkCameraWatcher::slot_detectCameras()";
+
+// Voll Krass, wenn Camera aktiv dann availableCameras().count() = 0;
+ QList<QCameraInfo> info = QCameraInfo::availableCameras();
+ qDebug() << info.count();
+
     timer->stop();
     bool deviceAdded = false;
 
@@ -122,6 +127,7 @@ qDebug() << "void QvkCameraWatcher::slot_detectCameras()";
 
         // detected which camera was removed
         QString cameraDevice = removedDeviceName( newDeviceNameList , oldDeviceNameList );
+        qDebug() << "Removed Camera" << cameraDevice;
         emit signal_removedCamera( cameraDevice );
     }
     timer->start();

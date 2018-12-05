@@ -47,7 +47,7 @@ QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraW
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), ui_vokoscreen->radioButtonBottomMiddle, SLOT( setEnabled( bool ) ) );
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), ui_vokoscreen->radioButtonLeftMiddle,   SLOT( setEnabled( bool ) ) );
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), ui_vokoscreen->dialRotate,              SLOT( setEnabled( bool ) ) );
-    connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), cameraWatcher, SLOT( slot_startStopCameraTimer( bool ) ) );
+    //connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), cameraWatcher, SLOT( slot_startStopCameraTimer( bool ) ) );
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), this,          SLOT( slot_startCamera( bool ) ) );
 
     connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ), this, SLOT( slot_setNewImage( QImage ) ) );
@@ -119,6 +119,7 @@ void QvkCameraController::slot_addedCamera( QString description, QString device 
 
 void QvkCameraController::slot_removedCamera( QString device )
 {
+qDebug() << "QvkCameraController::slot_removedCamera( QString device )";
     int x = ui_vokoscreen->comboBoxCamera->findData( device.toLatin1() );
     ui_vokoscreen->comboBoxCamera->removeItem( x );
 

@@ -42,7 +42,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -53,10 +53,10 @@
       <property name="usesScrollButtons">
        <bool>false</bool>
       </property>
+      <property name="movable">
+       <bool>true</bool>
+      </property>
       <widget class="QWidget" name="tabSidebarScreencast">
-       <property name="toolTip">
-        <string notr="true"/>
-       </property>
        <attribute name="icon">
         <iconset theme="computer">
          <normaloff>.</normaloff>.</iconset>
@@ -787,8 +787,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>509</width>
-                      <height>181</height>
+                      <width>100</width>
+                      <height>30</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -2360,9 +2360,12 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="QWidget" name="tabSidebarLog">
        <attribute name="title">
         <string notr="true"/>
+       </attribute>
+       <attribute name="toolTip">
+        <string>Log</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_25">
         <property name="spacing">

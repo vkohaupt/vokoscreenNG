@@ -132,18 +132,15 @@ QStringList QvkPulseGstr::get_all_Audio_devices()
     return tmpList;
 }
 
+
+
 // new ****************************************************************************************** compile only no function
-
-
-
-
 
 void QvkPulseGstr::print_plugin_info ()
 {
-    const gchar *name;
-    name = "vp8enc";
-    GstPlugin *plugin = gst_registry_find_plugin (gst_registry_get (), name);
-
+//    const gchar *name;
+//    name = "vp8enc";
+//    GstPlugin *plugin = gst_registry_find_plugin( gst_registry_get(), name );
 
 //**********************
 
@@ -154,7 +151,7 @@ void QvkPulseGstr::print_plugin_info ()
 
 //    push_indent ();
 
-    qDebug() << "Name" << gst_plugin_get_name( plugin );
+//    qDebug() << "Name" << gst_plugin_get_name( plugin );
     /*  n_print ("%-25s%s\n", "Name", gst_plugin_get_name (plugin));
   n_print ("%-25s%s\n", "Description", gst_plugin_get_description (plugin));
   n_print ("%-25s%s\n", "Filename", (filename != NULL) ? filename : "(null)");

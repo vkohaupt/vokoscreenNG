@@ -26,7 +26,6 @@ void QvkThreadPulse::run()
             count++;
         }
     }
-    qDebug() << "void QvkThreadPulse::run()";
     emit signal_countAudioDevices( count );
 }
 

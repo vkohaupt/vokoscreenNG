@@ -126,10 +126,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // need a move
     move( 0, 0 );
 
-    makeAndSetValidIconForSideBar( 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/video-display.svg" ) ) );
-    makeAndSetValidIconForSideBar( 1, QIcon::fromTheme( "computer", QIcon( ":/pictures/computer.svg" ) ) );
-    makeAndSetValidIconForSideBar( 2, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/camera-web.svg" ) ) );
-    makeAndSetValidIconForSideBar( 3, QIcon::fromTheme( "help-about", QIcon( ":/pictures/help-about.svg" ) ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreencast ), QIcon::fromTheme( "video-display", QIcon( ":/pictures/video-display.svg" ) ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreenshot ), QIcon::fromTheme( "computer",      QIcon( ":/pictures/computer.svg" ) ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarCamera ),     QIcon::fromTheme( "camera-web",    QIcon( ":/pictures/camera-web.svg" ) ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarLog ),        QIcon::fromTheme( "help-about",    QIcon( ":/pictures/help-about.svg" ) ) );
 
     makeAndSetValidIcon( ui->tabWidgetScreencast, 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/video-display.svg" ) ) );
     makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/audio-input-microphone.svg" ) ) );
@@ -626,12 +626,43 @@ void QvkMainWindow::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIco
     tabWidget->setTabIcon( index, QIcon( workPixmap ) );
 }
 
+/*
+QFont font;
+font.setPointSize( 14 );
+painter.setFont( font );
+
+QFontMetrics fontMetrics( font );
+pixelWidth = fontMetrics.width( widthHeigtSize );
+pixelHeight = fontMetrics.height();
+*/
 
 void QvkMainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
 {
     QSize size = ui->tabWidgetSideBar->iconSize();
-    QPixmap workPixmap( icon.pixmap( size ) );
-    workPixmap = workPixmap.scaled( size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+    QPixmap iconPixmap( icon.pixmap( size ) );
+    iconPixmap = iconPixmap.scaled( size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+
+    QFont font;
+    font.setPointSize( 12 );
+    QFontMetrics fontMetrics( font );
+    int textWidth = fontMetrics.width( ui->tabWidgetSideBar->tabToolTip( index ) );
+    int textHight = fontMetrics.height();
+
+    QPixmap workPixmap( size.width(), size.height() + textHight );
+    workPixmap.fill( Qt::transparent );
+
+    QPainter painter;
+    QPen pen;
+    painter.begin( &workPixmap );
+      painter.setRenderHints( QPainter::Antialiasing, true );
+      painter.setFont( font );
+      painter.drawPixmap( QPoint( 0, 0 ), iconPixmap );
+      pen.setColor( Qt::black );
+      painter.setPen( pen );
+      int x = ( iconPixmap.width() - textWidth ) / 2;
+      painter.drawText( x, workPixmap.height() - 4, ui->tabWidgetSideBar->tabToolTip( index ) );
+    painter.end();
+
     QTransform transform;
     transform.rotate( 90 );
     workPixmap = workPixmap.transformed( transform, Qt::SmoothTransformation );
