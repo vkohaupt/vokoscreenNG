@@ -1,6 +1,5 @@
 ﻿#include "QvkCameraController.h"
 
-#include <QCameraInfo>
 #include <QCameraViewfinder>
 #include <QSettings>
 #include <QStandardPaths>
@@ -120,6 +119,11 @@ void QvkCameraController::slot_addedCamera( QString description, QString device 
 
 void QvkCameraController::slot_removedCamera( QString device )
 {
+    if ( ( ui_vokoscreen->checkBoxCamera->isChecked() == true ) and ( ui_vokoscreen->comboBoxCamera->currentData() == device.toLatin1() ) )
+    {
+        cameraWindow->close();
+    }
+
     int x = ui_vokoscreen->comboBoxCamera->findData( device.toLatin1() );
     ui_vokoscreen->comboBoxCamera->removeItem( x );
 

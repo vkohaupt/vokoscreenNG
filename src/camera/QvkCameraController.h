@@ -11,13 +11,11 @@
 #endif
 
 #include "QvkCameraWindow.h"
-
 #include "QvkSettings.h"
 #include "QvkVideoSurface.h"
 
 #include <QCamera>
 #include <QComboBox>
-
 #include <QVideoWidget>
 
 class QvkCameraController : public QObject
