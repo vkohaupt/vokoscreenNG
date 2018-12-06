@@ -1,4 +1,4 @@
-#include "QvkCameraWatcher.h" 
+#include "QvkCameraWatcher.h"
 
 #include <QCameraInfo>
 

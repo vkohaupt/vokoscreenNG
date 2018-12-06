@@ -11,8 +11,8 @@
 // Hint: min. Qt 5.9.2
 
 QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraWatcher(new QvkCameraWatcher()),
-                                                                     cameraWindow(new QvkCameraWindow()),
-                                                                     videoSurface(new QvkVideoSurface())
+                                                                         cameraWindow(new QvkCameraWindow()),
+                                                                         videoSurface(new QvkVideoSurface())
 {
     ui_vokoscreen = ui_surface;
 
@@ -37,6 +37,7 @@ QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraW
 
     connect( cameraWatcher, SIGNAL( signal_addedCamera( QString, QString ) ), this, SLOT( slot_addedCamera( QString, QString ) ) );
     connect( cameraWatcher, SIGNAL( signal_removedCamera( QString) ),         this, SLOT( slot_removedCamera( QString ) ) );
+    cameraWatcher->cameraWatcherInit();
 
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), ui_vokoscreen->comboBoxCamera, SLOT( setDisabled( bool ) ) );
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), ui_vokoscreen->checkBoxMirror, SLOT( setEnabled( bool ) ) );
@@ -113,13 +114,12 @@ void QvkCameraController::slot_addedCamera( QString description, QString device 
 {
     ui_vokoscreen->checkBoxCamera->setEnabled( true );
     ui_vokoscreen->comboBoxCamera->setEnabled( true );
-    ui_vokoscreen->comboBoxCamera->addItem( description, device );
+    ui_vokoscreen->comboBoxCamera->addItem( description, device.toLatin1() );
 }
 
 
 void QvkCameraController::slot_removedCamera( QString device )
 {
-qDebug() << "QvkCameraController::slot_removedCamera( QString device )";
     int x = ui_vokoscreen->comboBoxCamera->findData( device.toLatin1() );
     ui_vokoscreen->comboBoxCamera->removeItem( x );
 

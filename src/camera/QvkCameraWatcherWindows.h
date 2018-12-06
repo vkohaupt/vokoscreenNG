@@ -7,7 +7,7 @@
 
 class QvkCameraWatcher: public QObject
 {
-  
+
 Q_OBJECT
 
 public:
@@ -18,7 +18,7 @@ public:
 public slots:
   void slot_startStopCameraTimer( bool value );
 
-  
+
 private slots:
   void slot_detectCameras();
 
@@ -28,9 +28,9 @@ signals:
   void signal_addedCamera( QString description, QString deviceName );
 
 
-protected:  
+protected:
 
-  
+
 private:
   int newcount;
   QStringList newDescriptionList;

@@ -2,7 +2,14 @@
 #define QvkCameraController_H
 
 #include "ui_formMainWindow.h"
-#include "QvkCameraWatcher.h"
+
+#ifdef Q_OS_LINUX
+#include "QvkCameraWatcherLinux.h"
+#endif
+#ifdef Q_OS_WIN
+#include "QvkCameraWatcherWindows.h"
+#endif
+
 #include "QvkCameraWindow.h"
 
 #include "QvkSettings.h"

@@ -1,9 +1,6 @@
 #include "mainwindow.h"
-//#include <QApplication>
 #include <QTranslator>
 #include <QLibraryInfo>
-//#include <QCoreApplication>
-#include <QGuiApplication>
 
 #include <gst/gst.h>
 
