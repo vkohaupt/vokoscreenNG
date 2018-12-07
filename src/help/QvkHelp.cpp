@@ -32,12 +32,12 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : u
     vkDownloadHTML = new QvkDownloader( temporaryDirLocal.path() );
     vkDownloadFiles = new QvkDownloader( temporaryDirLocal.path() );
 
-    connect( ui->toolButtonHelpFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenFullscreen() ) );
-    connect( ui->toolButtonHelpWindow, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenWindow() ) );
-    connect( ui->toolButtonHelpArea, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenArea() ) );
-    connect( ui->toolButtonHelpMagnifier, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenMagnifier() ) );
-    connect( ui->toolButtonHelpShowclick, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenShowclick() ) );
-    connect( ui->toolButtonHelpCountdown, SIGNAL( clicked( bool ) ), this, SLOT( slot_screenCountdown() ) );
+    connect( ui->toolButtonHelpFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpFullscreen() ) );
+    connect( ui->toolButtonHelpWindow, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpWindow() ) );
+    connect( ui->toolButtonHelpArea, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpArea() ) );
+    connect( ui->toolButtonHelpMagnifier, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpMagnifier() ) );
+    connect( ui->toolButtonHelpShowclick, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpShowclick() ) );
+    connect( ui->toolButtonHelpCountdown, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpCountdown() ) );
 
     connect( ui->toolButtonAudioHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioHelp() ) );
 
@@ -62,39 +62,39 @@ void QvkHelp::slot_close()
 }
 
 
-void QvkHelp::slot_screenFullscreen()
+void QvkHelp::slot_toolButtonHelpFullscreen()
 {
-    loadHTML( vk_helpPath + "screencast/tab1-fullscreen.html" );
+    loadHTML( vk_helpPath + "screencast/toolButtonHelpFullscreen.html" );
 }
 
 
-void QvkHelp::slot_screenWindow()
+void QvkHelp::slot_toolButtonHelpWindow()
 {
-    loadHTML( vk_helpPath + "screencast/tab1-window.html" );
+    loadHTML( vk_helpPath + "screencast/toolButtonHelpWindow.html" );
 }
 
 
-void QvkHelp::slot_screenArea()
+void QvkHelp::slot_toolButtonHelpArea()
 {
-    loadHTML( vk_helpPath + "screencast/tab1-area.html" );
+    loadHTML( vk_helpPath + "screencast/toolButtonHelpArea.html" );
 }
 
 
-void QvkHelp::slot_screenMagnifier()
+void QvkHelp::slot_toolButtonHelpMagnifier()
 {
-    loadHTML( vk_helpPath + "screencast/tab1-magnifier.html" );
+    loadHTML( vk_helpPath + "screencast/toolButtonHelpMagnifier.html" );
 }
 
 
-void QvkHelp::slot_screenShowclick()
+void QvkHelp::slot_toolButtonHelpShowclick()
 {
-    loadHTML( vk_helpPath + "screencast/tab1-showclick.html" );
+    loadHTML( vk_helpPath + "screencast/toolButtonHelpShowclick.html" );
 }
 
 
-void QvkHelp::slot_screenCountdown()
+void QvkHelp::slot_toolButtonHelpCountdown()
 {
-    loadHTML( vk_helpPath + "screencast/screenCountdown.html" );
+    loadHTML( vk_helpPath + "screencast/toolButtonHelpCountdown.html" );
 }
 
 

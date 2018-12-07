@@ -47,7 +47,9 @@ QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraW
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), ui_vokoscreen->radioButtonBottomMiddle, SLOT( setEnabled( bool ) ) );
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), ui_vokoscreen->radioButtonLeftMiddle,   SLOT( setEnabled( bool ) ) );
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), ui_vokoscreen->dialRotate,              SLOT( setEnabled( bool ) ) );
-    //connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), cameraWatcher, SLOT( slot_startStopCameraTimer( bool ) ) );
+#ifdef Q_OS_WIN
+    connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), cameraWatcher, SLOT( slot_startStopCameraTimer( bool ) ) );
+#endif
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), this,          SLOT( slot_startCamera( bool ) ) );
 
     connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ), this, SLOT( slot_setNewImage( QImage ) ) );
