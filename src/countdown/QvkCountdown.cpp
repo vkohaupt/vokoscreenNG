@@ -17,10 +17,10 @@ QvkCountdown::QvkCountdown()
     setAttribute( Qt::WA_TranslucentBackground, true );
 
     timer = new QTimer( this );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( updateTimer() ) );
+    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_updateTimer() ) );
 
     animationTimer = new QTimer( this );
-    connect( animationTimer, SIGNAL( timeout() ), this, SLOT( updateAnimationTimer() ) );
+    connect( animationTimer, SIGNAL( timeout() ), this, SLOT( slot_updateAnimationTimer() ) );
 
     hide();
 }
@@ -44,7 +44,7 @@ QvkCountdown::~QvkCountdown()
 }
 
 
-void QvkCountdown::updateTimer()
+void QvkCountdown::slot_updateTimer()
 {
   gradValue = 0;
   countValue--;
@@ -59,7 +59,7 @@ void QvkCountdown::updateTimer()
   }
 }
 
-void QvkCountdown::updateAnimationTimer()
+void QvkCountdown::slot_updateAnimationTimer()
 {
   gradValue = gradValue - 20;
   update();

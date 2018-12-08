@@ -30,8 +30,8 @@ private:
 
     
 private slots:
-   void updateTimer();
-   void updateAnimationTimer();
+   void slot_updateTimer();
+   void slot_updateAnimationTimer();
 
 
 protected:

@@ -56,7 +56,7 @@ private slots:
     void slot_parseHTML(QString tempPathFileName);
     void slot_showHelp(QString tempPathFileName);
 
-    void slot_close();
+    void slot_cleanUp();
 
 protected:
 

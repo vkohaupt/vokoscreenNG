@@ -7,7 +7,7 @@
 
 QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : uiFormHelp(new(Ui::formHelp))
 {
-    connect( mainWindow, SIGNAL( destroyed( QObject*) ), this, SLOT( slot_close() ) );
+    connect( mainWindow, SIGNAL( destroyed( QObject*) ), this, SLOT( slot_cleanUp() ) );
 
     ui = ui_mainwindow;
     uiFormHelp->setupUi( this );
@@ -58,7 +58,7 @@ QvkHelp::~QvkHelp()
 }
 
 
-void QvkHelp::slot_close()
+void QvkHelp::slot_cleanUp()
 {
     temporaryDirLocal.remove();
 }

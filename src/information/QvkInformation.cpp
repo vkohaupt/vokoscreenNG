@@ -1,9 +1,7 @@
 #include "QvkInformation.h"
 
-#include <QDebug>
 #include <QTimer>
 #include <QStorageInfo>
-#include <QCloseEvent>
 
 QvkInformation::QvkInformation( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow )
 {
