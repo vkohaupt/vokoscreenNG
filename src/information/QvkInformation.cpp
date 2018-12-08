@@ -3,10 +3,13 @@
 #include <QDebug>
 #include <QTimer>
 #include <QStorageInfo>
+#include <QCloseEvent>
 
-QvkInformation::QvkInformation( Ui_formMainWindow *ui_mainwindow )
+QvkInformation::QvkInformation( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
+
+    connect( mainWindow, SIGNAL( destroyed( QObject* ) ), this, SLOT( slot_cleanup() ) );
 
     ui->labelVideoSize->setText("");
     ui->labelFreeSize->setText("");
@@ -37,6 +40,13 @@ QvkInformation::QvkInformation( Ui_formMainWindow *ui_mainwindow )
 
 QvkInformation::~QvkInformation()
 {
+}
+
+
+void QvkInformation::slot_cleanup()
+{
+    timerStorageInfo->stop();
+    timerRecord->stop();
 }
 
 

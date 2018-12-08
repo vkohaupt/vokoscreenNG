@@ -3,7 +3,6 @@
 #include <QMessageBox>
 #include <QLabel>
 #include <QDir>
-#include <QTimer>
 #include <QTextDocument>
 
 QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : uiFormHelp(new(Ui::formHelp))

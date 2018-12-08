@@ -52,7 +52,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 {
     ui->setupUi(this);
-
     QvkLogController *vklogController = new QvkLogController( ui );
     Q_UNUSED(vklogController);
 
@@ -71,7 +70,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     QvkGlobalShortcut *vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
     Q_UNUSED(vkGlobalShortcut);
 
-    QvkInformation *vkInformation = new QvkInformation(ui);
+    QvkInformation *vkInformation = new QvkInformation( this, ui);
     connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
 
     QIcon icon;

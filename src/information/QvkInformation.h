@@ -9,7 +9,7 @@ class QvkInformation: public QWidget
 { 
 Q_OBJECT
 public:
-  QvkInformation( Ui_formMainWindow *ui_mainwindow);
+  QvkInformation( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow);
   virtual ~QvkInformation();
 
 
@@ -17,6 +17,7 @@ public slots:
 
   
 private slots: 
+  void slot_cleanup();
   void slot_StorageInfo();
   void slot_newVideoFilename( QString filename );
   void slot_displayRecordTime();
@@ -31,7 +32,7 @@ signals:
   
 
 protected:  
-  
+
   
 private:
   Ui_formMainWindow *ui;
