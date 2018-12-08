@@ -220,6 +220,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->toolButtonHelpWindow->setIcon( ui->toolButtonHelpWindow->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     ui->toolButtonHelpArea->setIcon( ui->toolButtonHelpArea->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     ui->toolButtonAreaReset->setIcon( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
+    ui->toolButtonHelpNoMouseCursor->setIcon( ui->toolButtonHelpNoMouseCursor->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonHelpScale->setIcon( ui->toolButtonHelpScale->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonHelpMagnifier->setIcon( ui->toolButtonHelpMagnifier->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonHelpShowclick->setIcon( ui->toolButtonHelpShowclick->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonHelpCountdown->setIcon( ui->toolButtonHelpCountdown->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonHelpExecute->setIcon( ui->toolButtonHelpExecute->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
     connect( ui->radioButtonFullscreen, SIGNAL( toggled( bool ) ), ui->toolButtonAreaReset, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );//**
@@ -242,10 +248,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->comboBoxAreaSize->addItems( resolutionStringList );
     connect( ui->comboBoxAreaSize, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_areaSetResolution( QString ) ) );
 
-    ui->toolButtonHelpCountdown->setIcon( ui->toolButtonHelpCountdown->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
     // Begin showclick
-    ui->toolButtonHelpShowclick->setIcon( ui->toolButtonHelpShowclick->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     QColor color   = vkSettings.getShowClickColor();
     int radiant    = vkSettings.getShowClickRadiant();
     double opacity = vkSettings.getShowClickOpacity();
@@ -270,13 +274,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // End showclick
 
     // Magnifier
-    ui->toolButtonHelpMagnifier->setIcon( ui->toolButtonHelpMagnifier->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
 
     // Tab 2 Audio
     ui->toolButtonFramesHelp->setIcon( ui->toolButtonFramesHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     ui->toolButtonAudioHelp->setIcon( ui->toolButtonAudioHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-    ui->toolButtonNoMouseCursorHelp->setIcon( ui->toolButtonNoMouseCursorHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), this,                      SLOT( slot_audioIconOnOff( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->framePulseAlsa,        SLOT( setEnabled( bool ) ) );
@@ -328,7 +330,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
 
     ui->comboBoxScale->addItems( resolutionStringList );
-    ui->toolButtonHelpScale->setIcon( ui->toolButtonHelpScale->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->checkBoxScale,   SIGNAL( toggled( bool ) ), ui->comboBoxScale, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setDisabled( bool ) ) );
@@ -427,6 +428,7 @@ void QvkMainWindow::slot_sendReport()
     stringList << ui->textBrowserLog->toPlainText();
     QString string = stringList.join( "" );
     bool b = QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) );
+    Q_UNUSED(b);
 }
 
 

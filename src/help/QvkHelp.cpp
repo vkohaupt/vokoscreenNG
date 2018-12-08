@@ -6,7 +6,7 @@
 #include <QTimer>
 #include <QTextDocument>
 
-QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : uiFormHelp(new(Ui::formHelp))
+QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : uiFormHelp(new(Ui::formHelp))
 {
     connect( mainWindow, SIGNAL( destroyed( QObject*) ), this, SLOT( slot_close() ) );
 
@@ -35,9 +35,12 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : u
     connect( ui->toolButtonHelpFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpFullscreen() ) );
     connect( ui->toolButtonHelpWindow, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpWindow() ) );
     connect( ui->toolButtonHelpArea, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpArea() ) );
+    connect( ui->toolButtonHelpNoMouseCursor, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpNoMouseCursor() ) );
+    connect( ui->toolButtonHelpScale, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpScale() ) );
     connect( ui->toolButtonHelpMagnifier, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpMagnifier() ) );
     connect( ui->toolButtonHelpShowclick, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpShowclick() ) );
     connect( ui->toolButtonHelpCountdown, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpCountdown() ) );
+    connect( ui->toolButtonHelpExecute, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpExecute() ) );
 
     connect( ui->toolButtonAudioHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioHelp() ) );
 
@@ -79,6 +82,17 @@ void QvkHelp::slot_toolButtonHelpArea()
     loadHTML( vk_helpPath + "screencast/toolButtonHelpArea.html" );
 }
 
+void QvkHelp::slot_toolButtonHelpNoMouseCursor()
+{
+    loadHTML( vk_helpPath + "screencast/toolButtonHelpNoMouseCursor.html" );
+}
+
+
+void QvkHelp::slot_toolButtonHelpScale()
+{
+    loadHTML( vk_helpPath + "screencast/toolButtonHelpScale.html" );
+}
+
 
 void QvkHelp::slot_toolButtonHelpMagnifier()
 {
@@ -95,6 +109,12 @@ void QvkHelp::slot_toolButtonHelpShowclick()
 void QvkHelp::slot_toolButtonHelpCountdown()
 {
     loadHTML( vk_helpPath + "screencast/toolButtonHelpCountdown.html" );
+}
+
+
+void QvkHelp::slot_toolButtonHelpExecute()
+{
+    loadHTML( vk_helpPath + "screencast/toolButtonHelpExecute.html" );
 }
 
 

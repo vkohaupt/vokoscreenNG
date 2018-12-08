@@ -44,9 +44,12 @@ private slots:
     void slot_toolButtonHelpFullscreen();
     void slot_toolButtonHelpWindow();
     void slot_toolButtonHelpArea();
+    void slot_toolButtonHelpNoMouseCursor();
+    void slot_toolButtonHelpScale();
     void slot_toolButtonHelpMagnifier();
     void slot_toolButtonHelpShowclick();
     void slot_toolButtonHelpCountdown();
+    void slot_toolButtonHelpExecute();
 
     void slot_audioHelp();
 

@@ -42,7 +42,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -242,7 +242,7 @@
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="toolButtonNoMouseCursorHelp">
+                 <widget class="QToolButton" name="toolButtonHelpNoMouseCursor">
                   <property name="toolTip">
                    <string notr="true"/>
                   </property>
@@ -787,8 +787,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>30</height>
+                      <width>509</width>
+                      <height>181</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1553,8 +1553,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>96</width>
-                   <height>96</height>
+                   <width>352</width>
+                   <height>331</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -1777,6 +1777,13 @@
             </property>
             <property name="text">
              <string>Folder</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="toolButtonHelpExecute">
+            <property name="text">
+             <string notr="true">Help</string>
             </property>
            </widget>
           </item>
