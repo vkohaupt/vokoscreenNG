@@ -31,6 +31,9 @@ private slots:
     void slot_trigger_Thread();
     void slot_set_first_start( bool value );
 
+    void slot_start_thread_timer();
+    void slot_stop_thread_timer();
+
 
 protected:
   

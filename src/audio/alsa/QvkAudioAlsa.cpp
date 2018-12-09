@@ -14,6 +14,9 @@ QvkAudioAlsa::QvkAudioAlsa( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainw
     connect( ui->radioButtonAlsa, SIGNAL( toggled( bool ) ), this, SLOT( slot_set_counter() ) );
     connect( ui->radioButtonAlsa, SIGNAL( toggled( bool ) ), vkThreadAlsa, SLOT( slot_set_first_start( bool ) ) );
     connect( ui->radioButtonAlsa, SIGNAL( toggled( bool ) ), vkThreadAlsa, SLOT( slot_start_stop_thread_timer( bool ) ) );
+
+    connect( ui->pushButtonStart,  SIGNAL( clicked( bool ) ), vkThreadAlsa, SLOT( slot_stop_thread_timer() ) );
+    connect( ui->pushButtonStop,   SIGNAL( clicked( bool ) ), vkThreadAlsa, SLOT( slot_start_thread_timer() ) );
 }
 
 

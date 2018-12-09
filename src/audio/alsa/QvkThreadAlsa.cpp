@@ -51,3 +51,18 @@ void QvkThreadAlsa::slot_start_stop_thread_timer( bool value )
         timer->stop();
   }
 }
+
+
+/*
+ *
+ */
+void QvkThreadAlsa::slot_start_thread_timer()
+{
+    timer->start();
+}
+
+
+void QvkThreadAlsa::slot_stop_thread_timer()
+{
+    timer->stop();
+}
