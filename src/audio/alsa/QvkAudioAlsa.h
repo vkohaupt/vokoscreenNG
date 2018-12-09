@@ -11,7 +11,6 @@ class QvkAudioAlsa: public QObject
     Q_OBJECT
     
 public:
-//    QvkAudioAlsa( Ui_formMainWindow *ui_mainwindow );
     QvkAudioAlsa( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkAudioAlsa();
 

@@ -248,6 +248,12 @@ void QvkHelp::slot_showHelp( QString tempPathFileName )
 
     QTextStream textStream( &file );
     QString value = textStream.readAll();
+
+    // Antialiasing for Font
+    QFont font = uiFormHelp->textBrowser->font();
+    font.setStyleStrategy( QFont::PreferAntialias );
+    uiFormHelp->textBrowser->setFont(font);
+
     uiFormHelp->textBrowser->setText( value );
     file.close();
 
