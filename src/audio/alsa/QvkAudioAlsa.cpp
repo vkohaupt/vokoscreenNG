@@ -3,8 +3,10 @@
 #include <QAudioDeviceInfo>
 #include <QDebug>
 
-QvkAudioAlsa::QvkAudioAlsa( Ui_formMainWindow *ui_mainwindow )
+QvkAudioAlsa::QvkAudioAlsa( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow )
 {
+    connect( mainWindow, SIGNAL( destroyed( QObject* ) ), this, SLOT( slot_cleanup() ) );
+
     ui = ui_mainwindow;
 
     vkThreadAlsa = new QvkThreadAlsa();
@@ -17,6 +19,12 @@ QvkAudioAlsa::QvkAudioAlsa( Ui_formMainWindow *ui_mainwindow )
 
 QvkAudioAlsa::~QvkAudioAlsa()
 {
+}
+
+
+void QvkAudioAlsa::slot_cleanup()
+{
+    vkThreadAlsa->timer->stop();
 }
 
 

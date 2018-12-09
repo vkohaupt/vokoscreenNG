@@ -6,8 +6,10 @@
 QvkAudioPulse::QvkAudioPulse()
 {}
 
-QvkAudioPulse::QvkAudioPulse(Ui_formMainWindow *ui_mainwindow )
+
+QvkAudioPulse::QvkAudioPulse( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow )
 {
+    connect( mainWindow, SIGNAL( destroyed( QObject* ) ), this, SLOT( slot_cleanup() ) );
     ui = ui_mainwindow;
 
     vkThreadPulse = new QvkThreadPulse();
@@ -26,6 +28,12 @@ QvkAudioPulse::QvkAudioPulse(Ui_formMainWindow *ui_mainwindow )
 
 QvkAudioPulse::~QvkAudioPulse()
 {
+}
+
+
+void QvkAudioPulse::slot_cleanup()
+{
+   vkThreadPulse->timer->stop();
 }
 
 

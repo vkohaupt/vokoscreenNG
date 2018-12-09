@@ -15,7 +15,8 @@ class QvkThreadAlsa: public QThread
 public:
     QvkThreadAlsa();
     virtual ~QvkThreadAlsa();
-    
+    QTimer *timer;
+
 
 public slots:
     void slot_start_stop_thread_timer( bool value );
@@ -23,7 +24,6 @@ public slots:
 
 private:
     bool running = false;
-    QTimer *timer;
     bool firstStart = true;
 
 

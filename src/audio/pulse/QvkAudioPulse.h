@@ -14,7 +14,7 @@ class QvkAudioPulse: public QObject
 
 public:
     QvkAudioPulse();
-    QvkAudioPulse( Ui_formMainWindow *ui_mainwindow );
+    QvkAudioPulse( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkAudioPulse();
     
 
@@ -32,6 +32,7 @@ private:
 private slots:
     void slot_update(int count);
     void slot_set_counter_back();
+    void slot_cleanup();
 
 
 protected:

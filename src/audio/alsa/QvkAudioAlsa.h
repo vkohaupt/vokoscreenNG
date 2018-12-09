@@ -11,7 +11,8 @@ class QvkAudioAlsa: public QObject
     Q_OBJECT
     
 public:
-    QvkAudioAlsa( Ui_formMainWindow *ui_mainwindow );
+//    QvkAudioAlsa( Ui_formMainWindow *ui_mainwindow );
+    QvkAudioAlsa( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkAudioAlsa();
 
     
@@ -29,6 +30,7 @@ private:
 private slots:
     void slot_update(int count);
     void slot_set_counter();
+    void slot_cleanup();
 
 
 protected:

@@ -17,6 +17,7 @@ class QvkThreadPulse: public QThread
 public:
     QvkThreadPulse();
     virtual ~QvkThreadPulse();
+    QTimer *timer;
 
     
 public slots:
@@ -25,16 +26,16 @@ public slots:
 
 private:
     bool running = false;
-    QTimer *timer;
     bool firstStart;
     int zaehler = 0;
+
 
 private slots:
     void slot_trigger_Thread();
     void slot_set_first_start( bool value );
-
     void slot_start_thread_timer();
     void slot_stop_thread_timer();
+
 
 protected:
   

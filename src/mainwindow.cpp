@@ -56,8 +56,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     Q_UNUSED(vklogController);
 
 #ifdef Q_OS_LINUX
-    vkAudioPulse = new QvkAudioPulse( ui );
-    vkAudioAlsa = new QvkAudioAlsa( ui );
+    vkAudioPulse = new QvkAudioPulse( this, ui );
+    vkAudioAlsa = new QvkAudioAlsa( this, ui );
 #endif
     vkSettings.readAll();
 
