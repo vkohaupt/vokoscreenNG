@@ -1879,28 +1879,72 @@
                </layout>
               </item>
               <item>
-               <widget class="QRadioButton" name="radioButtonScreenshotFullscreen">
-                <property name="text">
-                 <string notr="true">Fulls&amp;creen</string>
-                </property>
-               </widget>
+               <layout class="QHBoxLayout" name="horizontalLayout_37">
+                <item>
+                 <widget class="QRadioButton" name="radioButtonScreenshotFullscreen">
+                  <property name="text">
+                   <string notr="true">Fulls&amp;creen</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolButton">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
               <item>
-               <widget class="QRadioButton" name="radioButtonScreenshotWindow">
-                <property name="text">
-                 <string notr="true">Wi&amp;ndow</string>
-                </property>
-               </widget>
+               <layout class="QHBoxLayout" name="horizontalLayout_38">
+                <item>
+                 <widget class="QRadioButton" name="radioButtonScreenshotWindow">
+                  <property name="text">
+                   <string notr="true">Wi&amp;ndow</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolButton_2">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
               <item>
-               <widget class="QRadioButton" name="radioButtonScreenshotArea">
-                <property name="text">
-                 <string>Area</string>
-                </property>
-               </widget>
+               <layout class="QHBoxLayout" name="horizontalLayout_39">
+                <item>
+                 <widget class="QRadioButton" name="radioButtonScreenshotArea">
+                  <property name="text">
+                   <string>Area</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolButton_3">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
               <item>
-               <widget class="QComboBox" name="comboBoxScreenShotFormat"/>
+               <layout class="QHBoxLayout" name="horizontalLayout_40">
+                <item>
+                 <widget class="QComboBox" name="comboBoxScreenShotFormat"/>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolButton_4">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_18">
@@ -1917,17 +1961,35 @@
                 <item>
                  <widget class="QSpinBox" name="spinBoxScreenshotCountDown"/>
                 </item>
+                <item>
+                 <widget class="QToolButton" name="toolButtonHelpCountdown_2">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
                </layout>
               </item>
               <item>
-               <widget class="QCheckBox" name="checkBoxScreenshotHideThisWindow">
-                <property name="text">
-                 <string>Hide this Window</string>
-                </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
-               </widget>
+               <layout class="QHBoxLayout" name="horizontalLayout_41">
+                <item>
+                 <widget class="QCheckBox" name="checkBoxScreenshotHideThisWindow">
+                  <property name="text">
+                   <string>Hide this Window</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="toolButton_5">
+                  <property name="text">
+                   <string>...</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
               <item>
                <spacer name="verticalSpacer_11">
@@ -2038,6 +2100,13 @@
             </property>
             <property name="text">
              <string>Folder</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="toolButton_6">
+            <property name="text">
+             <string>...</string>
             </property>
            </widget>
           </item>
