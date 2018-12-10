@@ -19,7 +19,7 @@ QvkAudioPulse::QvkAudioPulse( QMainWindow *mainWindow, Ui_formMainWindow *ui_mai
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkThreadPulse, SLOT( slot_start_stop_thread_timer( bool ) ) );
 
     connect( ui->pushButtonStart,  SIGNAL( clicked( bool ) ), vkThreadPulse, SLOT( slot_stop_thread_timer() ) );
-    connect( ui->pushButtonStop,   SIGNAL( clicked( bool ) ), vkThreadPulse, SLOT( slot_start_thread_timer() ) );
+    connect( ui->pushButtonStop,   SIGNAL( clicked( bool ) ), this, SLOT( slot_start_thread_timer() ) );
 
     // Pulse is Standard. If no pulsedevice found, change to alsa see QvkAudioPulse::getPulsesDevices()
     ui->radioButtonPulse->click();
@@ -28,6 +28,15 @@ QvkAudioPulse::QvkAudioPulse( QMainWindow *mainWindow, Ui_formMainWindow *ui_mai
 
 QvkAudioPulse::~QvkAudioPulse()
 {
+}
+
+
+void QvkAudioPulse::slot_start_thread_timer()
+{
+    if ( ui->radioButtonPulse->isChecked() == true  )
+    {
+       vkThreadPulse->slot_start_thread_timer();
+    }
 }
 
 

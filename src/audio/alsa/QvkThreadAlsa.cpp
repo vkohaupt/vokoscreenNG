@@ -6,7 +6,7 @@
 QvkThreadAlsa::QvkThreadAlsa()
 {
     timer = new QTimer( this );
-    timer->setInterval( 5000 );
+    timer->setInterval( 2000 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_trigger_Thread() ) );
 }
 
@@ -18,7 +18,6 @@ QvkThreadAlsa::~QvkThreadAlsa()
 
 void QvkThreadAlsa::run()
 {
-    qDebug() << "void QvkThreadAlsa::run()";
     emit signal_countAudioDevices( QAudioDeviceInfo::availableDevices( QAudio::AudioInput ).count() );
 }
 

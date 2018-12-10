@@ -30,6 +30,7 @@ private slots:
     void slot_update(int count);
     void slot_set_counter();
     void slot_cleanup();
+    void slot_start_thread_timer();
 
 
 protected:

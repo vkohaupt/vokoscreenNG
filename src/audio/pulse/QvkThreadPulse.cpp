@@ -6,7 +6,7 @@
 QvkThreadPulse::QvkThreadPulse()
 {
     timer = new QTimer( this );
-    timer->setInterval( 5000 );
+    timer->setInterval( 2000 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_trigger_Thread() ) );
 }
 
