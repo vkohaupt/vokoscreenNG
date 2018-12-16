@@ -95,7 +95,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -132,7 +132,7 @@
                 <item row="0" column="0">
                  <widget class="QRadioButton" name="radioButtonFullscreen">
                   <property name="text">
-                   <string notr="true">Fulls&amp;creen</string>
+                   <string notr="true">Fu&amp;llscreen</string>
                   </property>
                  </widget>
                 </item>
@@ -548,42 +548,13 @@
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <item>
              <layout class="QGridLayout" name="gridLayoutFormatCodecs">
-              <item row="0" column="7">
-               <widget class="QToolButton" name="toolButtonFramesHelp">
-                <property name="toolTip">
-                 <string notr="true">Help</string>
-                </property>
+              <item row="0" column="0">
+               <widget class="QLabel" name="labelFrames">
                 <property name="text">
-                 <string notr="true">Help</string>
+                 <string>Frames</string>
                 </property>
-               </widget>
-              </item>
-              <item row="0" column="5">
-               <spacer name="horizontalSpacer_2">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item row="2" column="3">
-               <widget class="QComboBox" name="comboBoxAudioCodec"/>
-              </item>
-              <item row="1" column="3">
-               <widget class="QComboBox" name="comboBoxVideoCodec"/>
-              </item>
-              <item row="1" column="4">
-               <widget class="QPushButton" name="pushButtonFormatDefault">
-                <property name="toolTip">
-                 <string>Default</string>
-                </property>
-                <property name="text">
-                 <string notr="true"/>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                </widget>
               </item>
@@ -591,6 +562,29 @@
                <widget class="QLabel" name="labelVideoCodec">
                 <property name="text">
                  <string>Videocodec</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QToolButton" name="toolButtonVideoCodecHelp">
+                <property name="text">
+                 <string notr="true">Help</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QComboBox" name="comboBoxAudioCodec"/>
+              </item>
+              <item row="1" column="1">
+               <widget class="QComboBox" name="comboBoxFormat"/>
+              </item>
+              <item row="0" column="5">
+               <widget class="QToolButton" name="toolButtonFramesHelp">
+                <property name="toolTip">
+                 <string notr="true">Help</string>
+                </property>
+                <property name="text">
+                 <string notr="true">Help</string>
                 </property>
                </widget>
               </item>
@@ -604,16 +598,10 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="1">
-               <widget class="QComboBox" name="comboBoxFormat"/>
-              </item>
-              <item row="0" column="4">
-               <widget class="QPushButton" name="pushButtonFramesDefault">
-                <property name="toolTip">
-                 <string>Default</string>
-                </property>
+              <item row="2" column="2">
+               <widget class="QLabel" name="labelAudioCodec">
                 <property name="text">
-                 <string notr="true"/>
+                 <string>Audiocodec</string>
                 </property>
                </widget>
               </item>
@@ -627,32 +615,178 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="labelFrames">
-                <property name="text">
-                 <string>Frames</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <item row="1" column="3">
+               <widget class="QComboBox" name="comboBoxVideoCodec">
+                <property name="sizeAdjustPolicy">
+                 <enum>QComboBox::AdjustToMinimumContentsLength</enum>
                 </property>
                </widget>
               </item>
-              <item row="2" column="2">
-               <widget class="QLabel" name="labelAudioCodec">
-                <property name="text">
-                 <string>Audiocodec</string>
+              <item row="1" column="4">
+               <widget class="QFrame" name="frameVideoCodecQuality">
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
                 </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_27" stretch="0">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QFrame" name="frameVideoCodecx264">
+                   <property name="frameShape">
+                    <enum>QFrame::NoFrame</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_43">
+                    <property name="spacing">
+                     <number>6</number>
+                    </property>
+                    <property name="leftMargin">
+                     <number>6</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>6</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="label_21">
+                      <property name="text">
+                       <string>Quality</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QSlider" name="horizontalSliderx264">
+                      <property name="minimum">
+                       <number>0</number>
+                      </property>
+                      <property name="maximum">
+                       <number>50</number>
+                      </property>
+                      <property name="sliderPosition">
+                       <number>23</number>
+                      </property>
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="tickPosition">
+                       <enum>QSlider::NoTicks</enum>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_20">
+                      <property name="text">
+                       <string>23</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QComboBox" name="comboBoxx264Preset">
+                      <property name="currentText">
+                       <string notr="true">veryfast</string>
+                      </property>
+                      <property name="currentIndex">
+                       <number>2</number>
+                      </property>
+                      <item>
+                       <property name="text">
+                        <string>ultrafast</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>superfast</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>veryfast</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>faster</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>fast</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>medium</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>slow</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>slower</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>veryslow</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>placebo</string>
+                       </property>
+                      </item>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </item>
-              <item row="2" column="4">
-               <widget class="QPushButton" name="pushButtonAudiocodecDefault">
-                <property name="toolTip">
-                 <string>Default</string>
+              <item row="0" column="4">
+               <spacer name="horizontalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
                 </property>
-                <property name="text">
-                 <string notr="true"/>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Ignored</enum>
                 </property>
-               </widget>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
              </layout>
             </item>
@@ -788,7 +922,7 @@
                       <x>0</x>
                       <y>0</y>
                       <width>509</width>
-                      <height>181</height>
+                      <height>183</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1883,7 +2017,7 @@
                 <item>
                  <widget class="QRadioButton" name="radioButtonScreenshotFullscreen">
                   <property name="text">
-                   <string notr="true">Fulls&amp;creen</string>
+                   <string notr="true">Fu&amp;llscreen</string>
                   </property>
                  </widget>
                 </item>

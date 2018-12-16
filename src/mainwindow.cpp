@@ -149,12 +149,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameAudio,            SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelFrames,           SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->spinBoxFrames,         SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonFramesDefault,SLOT( setEnabled( bool ) ) );
+//    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonFramesDefault,SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelFormat,           SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxFormat,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelVideoCodec,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxVideoCodec,    SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonFormatDefault,SLOT( setEnabled( bool ) ) );
+//    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonFormatDefault,SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( slot_IfStartAudioCodecWidgetsSetEnabled() ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoPath,        SLOT( setEnabled( bool ) ) );
@@ -174,12 +174,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameAudio,            SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelFrames,           SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->spinBoxFrames,         SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonFramesDefault,SLOT( setDisabled( bool ) ) );
+//    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonFramesDefault,SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelFormat,           SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxFormat,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelVideoCodec,       SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxVideoCodec,    SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonFormatDefault,SLOT( setDisabled( bool ) ) );
+//    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonFormatDefault,SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this, SLOT( slot_IfStopAudioCodecWidgetsSetDisabled() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoPath,        SLOT( setDisabled( bool ) ) );
@@ -275,16 +275,17 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // Magnifier
 
 
-    // Tab 2 Audio
+    // Tab 2 Audio and Videocodec
     ui->toolButtonFramesHelp->setIcon( ui->toolButtonFramesHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     ui->toolButtonAudioHelp->setIcon( ui->toolButtonAudioHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
+    ui->toolButtonVideoCodecHelp->setIcon( ui->toolButtonVideoCodecHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), this,                      SLOT( slot_audioIconOnOff( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->framePulseAlsa,        SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->labelAudioCodec,       SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->comboBoxAudioCodec,    SLOT( setEnabled( bool ) ) );
-    connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->pushButtonAudiocodecDefault, SLOT( setEnabled( bool ) ) );
+//    connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->pushButtonAudiocodecDefault, SLOT( setEnabled( bool ) ) );
 
 #ifdef Q_OS_WIN
     ui->radioButtonPulse->hide();
@@ -292,15 +293,16 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     vkAudioWindows->slot_start( true );
 #endif
 
-    // Tab 2 Codec and Audio
-    ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
-    ui->pushButtonFormatDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
-    ui->pushButtonAudiocodecDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
+//    ui->pushButtonFramesDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
+//    ui->pushButtonFormatDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
+//    ui->pushButtonAudiocodecDefault->setIcon ( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
 
-    connect( ui->pushButtonFramesDefault, SIGNAL( clicked( bool ) ), this, SLOT( slot_setFramesStandard( bool ) ) );
+//    connect( ui->pushButtonFramesDefault, SIGNAL( clicked( bool ) ), this, SLOT( slot_setFramesStandard( bool ) ) );
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
 
+    connect( ui->comboBoxVideoCodec, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_videoCodecChanged( QString ) ) );
+    connect( ui->horizontalSliderx264, SIGNAL( sliderMoved( int ) ), ui->label_20, SLOT( setNum( int ) ) );
 
     // Tab 3 Time
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
@@ -409,6 +411,20 @@ QvkMainWindow::~QvkMainWindow()
 }
 
 
+void QvkMainWindow::slot_videoCodecChanged( QString codec )
+{
+  if ( codec == "x264"  )
+  {
+      ui->frameVideoCodecQuality->setVisible( true );
+  }
+  else
+  {
+      ui->frameVideoCodecQuality->setVisible( false );
+  }
+
+}
+
+
 void QvkMainWindow::slot_sendReport()
 {
     QStringList stringList;
@@ -479,7 +495,7 @@ void QvkMainWindow::slot_IfStartAudioCodecWidgetsSetEnabled()
     {
         ui->labelAudioCodec->setEnabled( false );
         ui->comboBoxAudioCodec->setEnabled( false );
-        ui->pushButtonAudiocodecDefault->setEnabled( false );
+//        ui->pushButtonAudiocodecDefault->setEnabled( false );
     }
 }
 
@@ -490,7 +506,7 @@ void QvkMainWindow::slot_IfStopAudioCodecWidgetsSetDisabled()
     {
         ui->labelAudioCodec->setEnabled( true );
         ui->comboBoxAudioCodec->setEnabled( true );
-        ui->pushButtonAudiocodecDefault->setEnabled( true );
+//        ui->pushButtonAudiocodecDefault->setEnabled( true );
     }
 }
 
@@ -627,15 +643,6 @@ void QvkMainWindow::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIco
     tabWidget->setTabIcon( index, QIcon( workPixmap ) );
 }
 
-/*
-QFont font;
-font.setPointSize( 14 );
-painter.setFont( font );
-
-QFontMetrics fontMetrics( font );
-pixelWidth = fontMetrics.width( widthHeigtSize );
-pixelHeight = fontMetrics.height();
-*/
 
 void QvkMainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
 {
@@ -1106,7 +1113,14 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
     QString encoder = ui->comboBoxVideoCodec->currentData().toString();
     if ( encoder == "x264enc" )
     {
-        value = "x264enc speed-preset=veryfast pass=qual threads=0";
+        // https://encodingwissen.de/codecs/x264/referenz/
+        QStringList list;
+        list << ui->comboBoxVideoCodec->currentData().toString();
+        list << "qp-min=" + QString::number( ui->horizontalSliderx264->value() );
+        list << "qp-max=" + QString::number( ui->horizontalSliderx264->value() );
+        list << "speed-preset=" + ui->comboBoxx264Preset->currentText();
+        list << "threads=0";
+        value = list.join( " " );
     }
 
     if ( encoder == "x265enc" )
