@@ -49,7 +49,9 @@ void QvkAudioPulse::slot_cleanup()
 void QvkAudioPulse::getPulseDevices()
 {
     QvkPulseGstr vkPulseGstr;
-    QStringList list = vkPulseGstr.get_all_Audio_devices();
+    QStringList list;
+    list << ":::pulsesrc";
+    list << vkPulseGstr.get_all_Audio_devices();
     if ( !list.empty() )
     {
         for ( int i = 0; i < list.count(); i++ )

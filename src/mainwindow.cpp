@@ -432,7 +432,7 @@ void QvkMainWindow::slot_sendReport()
     stringList << "vkohaupt@freenet.de";
     stringList << "?";
     stringList << "subject=";
-    stringList << QString( "vokoscreenNG" ) + QString( " " ) + QString( vkSettings.getVersion() );
+    stringList << QString( "vokoscreen" ) + QString( " " ) + QString( vkSettings.getVersion() );
     stringList << "&";
     stringList << "body=";
     stringList << "Your comment";
@@ -1310,7 +1310,7 @@ QString MainWindow::VK_get_AudioSystem()
 QString QvkMainWindow::VK_getMuxer()
 {
     QString value = ui->comboBoxFormat->currentData().toString();
-    if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( !VK_get_AudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
+//    if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( !VK_get_AudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
     {
         value = "mux. " + ui->comboBoxFormat->currentData().toString() + " name=mux";
     }
@@ -1359,56 +1359,16 @@ void QvkMainWindow::slot_Start()
     VK_PipelineList << "queue flush-on-eos=true";
     VK_PipelineList << Vk_get_Videocodec_Encoder();
     VK_PipelineList << "queue flush-on-eos=true";
-/*
-    if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( !VK_get_AudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
-    {
-        #ifdef Q_OS_LINUX
-        VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device=" ).append( VK_get_AudioDevice() );
-        #endif
-
-        #ifdef Q_OS_WIN
-        VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device-name=" ).append( "'" + VK_get_AudioDevice() +"'" );
-        #endif
-
-        VK_PipelineList << "queue flush-on-eos=true";
-        VK_PipelineList << "audioconvert";
-        VK_PipelineList << "queue flush-on-eos=true";
-        VK_PipelineList << "audiorate";
-        VK_PipelineList << "queue flush-on-eos=true";
-        VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
-        VK_PipelineList << "queue flush-on-eos=true";
-    }
-
-    if ( VK_secondAudioDevice() > "" )
-    {
-        if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( !VK_secondAudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
-        {
-            #ifdef Q_OS_LINUX
-            VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device=" ).append( VK_secondAudioDevice() );
-            #endif
-
-            #ifdef Q_OS_WIN
-            VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device-name=" ).append( "'" + VK_secondAudioDevice() +"'" );
-            #endif
-
-            VK_PipelineList << "queue flush-on-eos=true";
-            VK_PipelineList << "audioconvert";
-            VK_PipelineList << "queue flush-on-eos=true";
-            VK_PipelineList << "audiorate";
-            VK_PipelineList << "queue flush-on-eos=true";
-            VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
-            VK_PipelineList << "queue flush-on-eos=true";
-        }
-    }
-*/
-
 
     for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ )
     {
         if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( !VK_getSelectedAudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
         {
             #ifdef Q_OS_LINUX
-            VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device=" ).append( VK_getSelectedAudioDevice().at(x) );
+            if ( VK_getSelectedAudioDevice().at(x) == "" )
+                VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() );
+            else
+                VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device=" ).append( VK_getSelectedAudioDevice().at(x) );
             #endif
 
             #ifdef Q_OS_WIN
@@ -1429,7 +1389,7 @@ void QvkMainWindow::slot_Start()
     VK_PipelineList << "filesink location=" + path + "/" + newVideoFilename;
 
     QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Pipe );
-    qDebug() << "[vokoscreen] Start record with:" << VK_Pipeline;
+    qDebug().noquote() << "[vokoscreen] Start record with:" << VK_Pipeline;
 
     QByteArray byteArray = VK_Pipeline.toUtf8();
     const gchar *line = byteArray.constData();
