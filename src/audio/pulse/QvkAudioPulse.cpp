@@ -54,8 +54,10 @@ void QvkAudioPulse::getPulseDevices()
     list << vkPulseGstr.get_all_Audio_devices();
     for ( int i = 0; i < list.count(); i++ )
     {
-        qDebug().noquote() << "[vokoscreen] PulseAudio device" << list.at(i);
+        qDebug().noquote() << "[vokoscreen] PulseAudio device:" << list.at(i);
     }
+    qDebug().noquote();
+
     if ( !list.empty() )
     {
         for ( int i = 0; i < list.count(); i++ )

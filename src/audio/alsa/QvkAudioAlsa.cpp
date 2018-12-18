@@ -46,6 +46,7 @@ void QvkAudioAlsa::getAlsaDevices()
     {
         if ( ( deviceInfo.deviceName().contains("alsa") == false ) and ( deviceInfo.deviceName() != "" ) )
         {
+            qDebug().noquote() << "[vokoscreen] Alsa device:" << deviceInfo.deviceName();
             QCheckBox *checkboxAudioDevice = new QCheckBox();
             checkboxAudioDevice->setText( deviceInfo.deviceName() );
             checkboxAudioDevice->setAccessibleName( deviceInfo.deviceName() );
@@ -54,6 +55,7 @@ void QvkAudioAlsa::getAlsaDevices()
             checkboxAudioDevice->setAutoExclusive( true );
         }
     }
+    qDebug().noquote();
     QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
     ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
 
