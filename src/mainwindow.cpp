@@ -1493,7 +1493,6 @@ void QvkMainWindow::slot_Continue()
 {
     if ( ( ui->pushButtonStart->isEnabled() == false ) and ( ui->pushButtonContinue->isEnabled() == true ) )
     {
-        qDebug() << "[vokoscreen] Continue was clicked";
         GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
         if ( ret == GST_STATE_CHANGE_FAILURE )   { qDebug() << "[vokoscreen] Continue was clicked" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
         if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug() << "[vokoscreen] Continue was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
@@ -1507,7 +1506,7 @@ void QvkMainWindow::slot_Continue()
         }
         else
         {
-            qDebug() << "***********************" << ret;
+            qDebug() << "[vokoscreen] Continue was clicked";
         }
     }
 }

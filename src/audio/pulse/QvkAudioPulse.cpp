@@ -52,6 +52,10 @@ void QvkAudioPulse::getPulseDevices()
     QStringList list;
     list << ":::pulsesrc";
     list << vkPulseGstr.get_all_Audio_devices();
+    for ( int i = 0; i < list.count(); i++ )
+    {
+        qDebug().noquote() << "[vokoscreen] PulseAudio device" << list.at(i);
+    }
     if ( !list.empty() )
     {
         for ( int i = 0; i < list.count(); i++ )
@@ -60,7 +64,7 @@ void QvkAudioPulse::getPulseDevices()
             checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
             checkboxAudioDevice->setAccessibleName( QString( list.at(i) ).section( ":::", 0, 0 ) );
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
-            //checkboxAudioDevice->setAutoExclusive( true );
+            checkboxAudioDevice->setAutoExclusive( true );
 
             // Select default AudioDevice
             if ( QString( list.at(i) ).section( ":::", 0, 0 ) == QAudioDeviceInfo::defaultInputDevice().deviceName() )
