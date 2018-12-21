@@ -12,17 +12,17 @@ QvkAudioPulse::QvkAudioPulse( QMainWindow *mainWindow, Ui_formMainWindow *ui_mai
     connect( mainWindow, SIGNAL( destroyed( QObject* ) ), this, SLOT( slot_cleanup() ) );
     ui = ui_mainwindow;
 
-    vkThreadPulse = new QvkThreadPulse();
-    connect( vkThreadPulse, SIGNAL( signal_countAudioDevices( int ) ), this, SLOT( slot_update( int ) ) );
+    vkWatcherPulse = new QvkWatcherPulse();
+    connect( vkWatcherPulse, SIGNAL( signal_countAudioDevices( int ) ), this, SLOT( slot_update( int ) ) );
     connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), this, SLOT( slot_set_counter_back() ) );
-    connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkThreadPulse, SLOT( slot_set_first_start( bool ) ) );
-    connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkThreadPulse, SLOT( slot_start_stop_thread_timer( bool ) ) );
+    connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkWatcherPulse, SLOT( slot_set_first_start( bool ) ) );
+    connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkWatcherPulse, SLOT( slot_start_stop_thread_timer( bool ) ) );
 
-    connect( ui->pushButtonStart,  SIGNAL( clicked( bool ) ), vkThreadPulse, SLOT( slot_stop_thread_timer() ) );
+    connect( ui->pushButtonStart,  SIGNAL( clicked( bool ) ), vkWatcherPulse, SLOT( slot_stop_thread_timer() ) );
     connect( ui->pushButtonStop,   SIGNAL( clicked( bool ) ), this, SLOT( slot_start_thread_timer() ) );
 
-    // Pulse is Standard. If no pulsedevice found, change to alsa see QvkAudioPulse::getPulsesDevices()
     ui->radioButtonPulse->click();
+    ui->radioButtonPulse->hide();
 }
 
 
@@ -35,14 +35,14 @@ void QvkAudioPulse::slot_start_thread_timer()
 {
     if ( ui->radioButtonPulse->isChecked() == true  )
     {
-       vkThreadPulse->slot_start_thread_timer();
+       vkWatcherPulse->slot_start_thread_timer();
     }
 }
 
 
 void QvkAudioPulse::slot_cleanup()
 {
-   vkThreadPulse->timer->stop();
+   vkWatcherPulse->timer->stop();
 }
 
 
@@ -80,7 +80,6 @@ void QvkAudioPulse::getPulseDevices()
     else
     {
         ui->radioButtonPulse->setEnabled( false );
-        ui->radioButtonAlsa->click();
     }
 }
 

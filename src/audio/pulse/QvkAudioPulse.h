@@ -3,7 +3,7 @@
 
 #include "ui_formMainWindow.h"
 
-#include "QvkThreadPulse.h"
+#include "QvkWatcherPulse.h"
 #include "QvkPulseGstr.h"
 
 #include <QObject>
@@ -23,7 +23,7 @@ public slots:
 
 private:
     Ui_formMainWindow *ui;
-    QvkThreadPulse *vkThreadPulse;
+    QvkWatcherPulse *vkWatcherPulse;
     int counter;
     void getPulseDevices();
     void clearVerticalLayoutAudioDevices();

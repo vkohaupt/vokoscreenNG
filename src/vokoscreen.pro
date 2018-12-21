@@ -107,9 +107,6 @@ include(screenshot/screenshot.pri)
 # pulse
 unix:include(audio/pulse/audioPulse.pri)
 
-# alsa
-unix:include(audio/alsa/audioAlsa.pri)
-
 # audio windows
 win32:include(audio/windows/audioWindows.pri)
 

@@ -12,7 +12,6 @@
 
 #ifdef Q_OS_LINUX
 #include "QvkAudioPulse.h"
-#include "QvkAudioAlsa.h"
 #endif
 #ifdef Q_OS_WIN
 #include "QvkAudioWindows.h"
@@ -41,7 +40,6 @@ public:
     QvkRegionChoise *vkRegionChoise;
 #ifdef Q_OS_LINUX
     QvkAudioPulse *vkAudioPulse;
-    QvkAudioAlsa *vkAudioAlsa;
 #endif
 #ifdef Q_OS_WIN
     QvkAudioWindows *vkAudioWindows;

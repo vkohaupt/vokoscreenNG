@@ -1,22 +1,21 @@
-#ifndef QvkThreadPulse_H
-#define QvkThreadPulse_H
+#ifndef QvkWatcherPulse_H
+#define QvkWatcherPulse_H
 
 #include "QvkPulseGstr.h"
 
 #include "ui_formMainWindow.h"
-#include <QThread>
+#include <QObject>
 #include <QTimer>
 
 
-class QvkThreadPulse: public QThread
+class QvkWatcherPulse: public QObject
 {
     Q_OBJECT
-    void run() override;
 
 
 public:
-    QvkThreadPulse();
-    virtual ~QvkThreadPulse();
+    QvkWatcherPulse();
+    virtual ~QvkWatcherPulse();
     QTimer *timer;
 
     
@@ -32,7 +31,7 @@ private:
 
 
 private slots:
-    void slot_trigger_Thread();
+    void slot_trigger();
     void slot_set_first_start( bool value );
     void slot_stop_thread_timer();
 

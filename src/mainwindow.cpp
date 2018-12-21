@@ -57,7 +57,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
 #ifdef Q_OS_LINUX
     vkAudioPulse = new QvkAudioPulse( this, ui );
-    vkAudioAlsa = new QvkAudioAlsa( this, ui );
 #endif
     vkSettings.readAll();
 
@@ -1282,17 +1281,12 @@ QString QvkMainWindow::VK_get_AudioDevice()
 
 
 #ifdef Q_OS_LINUX
-// Audiosystem is Pulse, Alsa, etc.
 QString QvkMainWindow::VK_get_AudioSystem()
 {
     QString audioSystem;
     if ( ui->radioButtonPulse->isChecked() )
     {
         audioSystem = "pulsesrc";
-    }
-    if ( ui->radioButtonAlsa->isChecked() )
-    {
-        audioSystem = "alsasrc";
     }
     return audioSystem;
 }
@@ -1368,7 +1362,7 @@ void QvkMainWindow::slot_Start()
             if ( VK_getSelectedAudioDevice().at(x) == "" )
                 VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() );
             else
-                VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device=" ).append( VK_getSelectedAudioDevice().at(x) );
+                VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device=" ).append( VK_getSelectedAudioDevice().at(x));
             #endif
 
             #ifdef Q_OS_WIN
