@@ -1,11 +1,9 @@
 #include "QvkWatcherPulse.h"
-#include <QDebug>
 
 QvkWatcherPulse::QvkWatcherPulse()
 {
-    timer = new QTimer( this );
-    timer->setInterval( 2000 );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_trigger() ) );
+    setInterval( 2000 );
+    connect( this, SIGNAL( timeout() ), this, SLOT( slot_trigger() ) );
 }
 
 
@@ -40,25 +38,25 @@ void QvkWatcherPulse::slot_start_stop_thread_timer( bool value )
   {
       firstStart = false;
       slot_trigger();
-      timer->start();
+      start();
   }
   else
   {
     if ( value == true )
-        timer->start();
+        start();
     else
-        timer->stop();
+        stop();
   }
 }
 
 
 void QvkWatcherPulse::slot_start_thread_timer()
 {
-    timer->start();
+    start();
 }
 
 
 void QvkWatcherPulse::slot_stop_thread_timer()
 {
-    timer->stop();
+    stop();
 }

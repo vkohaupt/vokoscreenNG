@@ -42,7 +42,7 @@ void QvkAudioPulse::slot_start_thread_timer()
 
 void QvkAudioPulse::slot_cleanup()
 {
-   vkWatcherPulse->timer->stop();
+   vkWatcherPulse->stop();
 }
 
 

@@ -2,13 +2,10 @@
 #define QvkWatcherPulse_H
 
 #include "QvkPulseGstr.h"
-
 #include "ui_formMainWindow.h"
-#include <QObject>
 #include <QTimer>
 
-
-class QvkWatcherPulse: public QObject
+class QvkWatcherPulse: public QTimer
 {
     Q_OBJECT
 
@@ -16,7 +13,6 @@ class QvkWatcherPulse: public QObject
 public:
     QvkWatcherPulse();
     virtual ~QvkWatcherPulse();
-    QTimer *timer;
 
     
 public slots:
