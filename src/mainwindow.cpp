@@ -55,9 +55,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     QvkLogController *vklogController = new QvkLogController( ui );
     Q_UNUSED(vklogController);
 
-#ifdef Q_OS_LINUX
-    vkAudioPulse = new QvkAudioPulse( this, ui );
-#endif
     vkSettings.readAll();
 
     QvkMagnifierController *vkMagnifierController = new QvkMagnifierController(ui);
@@ -102,6 +99,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << "[vokoscreen] CompositingManager running:" << QX11Info::isCompositingManagerRunning();
 #endif
     qDebug();
+
+#ifdef Q_OS_LINUX
+    vkAudioPulse = new QvkAudioPulse( this, ui );
+#endif
 
     resolutionStringList << "320 x 200 CGA 16 : 10"
                          << "320 x 240 QCGA 4 : 3"
