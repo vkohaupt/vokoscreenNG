@@ -208,16 +208,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->radioButtonFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
     ui->radioButtonWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
 
-    ui->toolButtonHelpFullscreen->setIcon( ui->toolButtonHelpFullscreen->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-    ui->toolButtonHelpWindow->setIcon( ui->toolButtonHelpWindow->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-    ui->toolButtonHelpArea->setIcon( ui->toolButtonHelpArea->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     ui->toolButtonAreaReset->setIcon( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/edit-undo.svg" ) ) );
-    ui->toolButtonHelpNoMouseCursor->setIcon( ui->toolButtonHelpNoMouseCursor->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-    ui->toolButtonHelpScale->setIcon( ui->toolButtonHelpScale->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-    ui->toolButtonHelpMagnifier->setIcon( ui->toolButtonHelpMagnifier->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-    ui->toolButtonHelpShowclick->setIcon( ui->toolButtonHelpShowclick->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-    ui->toolButtonHelpCountdown->setIcon( ui->toolButtonHelpCountdown->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-    ui->toolButtonHelpExecute->setIcon( ui->toolButtonHelpExecute->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
     connect( ui->radioButtonFullscreen, SIGNAL( toggled( bool ) ), ui->toolButtonAreaReset, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );//**
@@ -266,10 +257,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // End showclick
 
     // Tab 2 Audio and Videocodec
-    ui->toolButtonFramesHelp->setIcon( ui->toolButtonFramesHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-    ui->toolButtonAudioHelp->setIcon( ui->toolButtonAudioHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-    ui->toolButtonVideoCodecHelp->setIcon( ui->toolButtonVideoCodecHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), this,                      SLOT( slot_audioIconOnOff( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->framePulseAlsa,        SLOT( setEnabled( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
@@ -290,7 +277,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     // Tab 3 Time
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
-    ui->toolButtonHelpStartTime->setIcon( ui->toolButtonHelpStartTime->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     timerStartTimer = new QTimer();
     timerStartTimer->setTimerType( Qt::PreciseTimer );
     connect( timerStartTimer,       SIGNAL( timeout() ),           this, SLOT( slot_startTime() ) );
@@ -300,13 +286,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     ui->labelCountdown, SLOT( setDisabled( bool ) ) );
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     ui->spinBoxCountDown, SLOT( setDisabled( bool ) ) );
 
-    ui->toolButtonHelpStopRecordingAfter->setIcon( ui->toolButtonHelpStopRecordingAfter->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->checkBoxStopRecordingAfter, SIGNAL( toggled( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
     connect( timerStopRecordingAfter,        SIGNAL( timeout() ),       ui->pushButtonStop, SLOT( click() ) );
 
 
     // Tab 4 Misc
-    ui->toolButtonHelpVideoPath->setIcon( ui->toolButtonHelpVideoPath->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     videoFileSystemWatcher = new QFileSystemWatcher();
     connect( ui->PushButtonVideoPath, SIGNAL( clicked( bool ) ),        this, SLOT( slot_newVideoPath() ) );
     connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetNewPath() ) );
@@ -319,21 +303,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setDisabled( bool ) ) );
 
-    ui->toolButtonHelpLimitOfFreeDiskSpace->setIcon( ui->toolButtonHelpLimitOfFreeDiskSpace->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-
-    ui->toolButtonHelpShowInSystray->setIcon( ui->toolButtonHelpShowInSystray->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ), this, SLOT( slot_setVisibleSystray( bool ) ) );
     ui->checkBoxShowInSystray->clicked( true );
 
-    ui->toolButtonHelpMinimizedWhenRecordingStarts->setIcon( ui->toolButtonHelpMinimizedWhenRecordingStarts->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     connect( ui->checkBoxMinimizedWhenRecordingStarts, SIGNAL( clicked( bool ) ),    ui->frameWaitXSecondBeforRecording, SLOT( setEnabled( bool ) ) );
 
-    ui->toolButtonHelpVokoscreenStartsMinimized->setIcon( ui->toolButtonHelpVokoscreenStartsMinimized->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-
-
     // Tab 5 Available muxer, encoder etc.
-    ui->toolButtonAvalaibleHelp->setIcon( ui->toolButtonAvalaibleHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-
     QIcon iconAvailable = ui->labelAvalible->style()->standardIcon( QStyle::SP_DialogApplyButton );
     QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
     ui->labelAvalible->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
@@ -381,7 +356,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
 
     // *****************Begin Log *********************************
-    ui->toolButtonHelpReport->setIcon( ui->toolButtonHelpReport->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
     vk_setCornerWidget( ui->tabWidgetLog );
     makeAndSetValidIcon( ui->tabWidgetLog, 0, QIcon::fromTheme( "help-about", QIcon( ":/pictures/help-about.svg" ) ) );
     connect( ui->pushButtonSendReport, SIGNAL( clicked( bool ) ), this, SLOT( slot_sendReport() ) );

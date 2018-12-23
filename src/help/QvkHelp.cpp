@@ -31,17 +31,61 @@ QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : 
     vkDownloadHTML = new QvkDownloader( temporaryDirLocal.path() );
     vkDownloadFiles = new QvkDownloader( temporaryDirLocal.path() );
 
+    QIcon iconHelp = ui->toolButtonHelpFullscreen->style()->standardIcon( QStyle::SP_MessageBoxInformation );
+
+    // Tab 1
     connect( ui->toolButtonHelpFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpFullscreen() ) );
+    ui->toolButtonHelpFullscreen->setIcon( iconHelp );
+
     connect( ui->toolButtonHelpWindow, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpWindow() ) );
+    ui->toolButtonHelpWindow->setIcon( iconHelp );
+
     connect( ui->toolButtonHelpArea, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpArea() ) );
+    ui->toolButtonHelpArea->setIcon( iconHelp );
+
     connect( ui->toolButtonHelpNoMouseCursor, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpNoMouseCursor() ) );
+    ui->toolButtonHelpNoMouseCursor->setIcon( iconHelp );
+
     connect( ui->toolButtonHelpScale, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpScale() ) );
+    ui->toolButtonHelpScale->setIcon( iconHelp );
+
     connect( ui->toolButtonHelpMagnifier, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpMagnifier() ) );
+    ui->toolButtonHelpMagnifier->setIcon( iconHelp );
+
     connect( ui->toolButtonHelpShowclick, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpShowclick() ) );
+    ui->toolButtonHelpShowclick->setIcon( iconHelp );
+
     connect( ui->toolButtonHelpCountdown, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpCountdown() ) );
+    ui->toolButtonHelpCountdown->setIcon( iconHelp );
+
     connect( ui->toolButtonHelpExecute, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpExecute() ) );
+    ui->toolButtonHelpExecute->setIcon( iconHelp );
 
     connect( ui->toolButtonAudioHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioHelp() ) );
+
+    // Tab 2 Audio and Videocodec
+    ui->toolButtonFramesHelp->setIcon( iconHelp );
+    ui->toolButtonAudioHelp->setIcon( iconHelp );
+    ui->toolButtonVideoCodecHelp->setIcon( iconHelp );
+
+    // Tab 3 Time
+    ui->toolButtonHelpStartTime->setIcon( iconHelp );
+    ui->toolButtonHelpStopRecordingAfter->setIcon( iconHelp );
+
+    // Tab 4 Misc
+    ui->toolButtonHelpVideoPath->setIcon( iconHelp );
+    ui->toolButtonHelpLimitOfFreeDiskSpace->setIcon( iconHelp );
+    ui->toolButtonHelpShowInSystray->setIcon( iconHelp );
+    ui->toolButtonHelpMinimizedWhenRecordingStarts->setIcon( iconHelp );
+    ui->toolButtonHelpVokoscreenStartsMinimized->setIcon( iconHelp );
+
+    // Tab 5 Available muxer, encoder etc.
+    ui->toolButtonAvalaibleHelp->setIcon( iconHelp );
+
+
+    // Log
+    ui->toolButtonHelpReport->setIcon( iconHelp );
+
 
     //connect( ui->toolButtonHelpVideoPath, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpVideoPath() ) );
     //connect( ui->toolButtonHelpStartTime, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpStartTime() ) );
