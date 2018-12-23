@@ -265,7 +265,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
 #ifdef Q_OS_WIN
     ui->radioButtonPulse->hide();
-    ui->radioButtonAlsa->hide();
     vkAudioWindows->slot_start( true );
 #endif
 
@@ -362,6 +361,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->radioButtonFullscreen->click();
     ui->radioButtonScreenshotFullscreen->click();
     ui->checkBoxShowInSystray->clicked( true );
+    ui->radioButtonBottomMiddle->clicked( true ); // funktioniert so nicht da Widget disabled sind
+    ui->checkBoxAudioOnOff->click();
 }
 
 
@@ -1311,8 +1312,8 @@ void QvkMainWindow::slot_Start()
         if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( !VK_getSelectedAudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
         {
             #ifdef Q_OS_LINUX
-            if ( VK_getSelectedAudioDevice().at(x) == "" )
-                VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() );
+            if ( VK_getSelectedAudioDevice().at(x) == "pulsesrc" )
+                VK_PipelineList << QString( "mux. pulsesrc");
             else
                 VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device=" ).append( VK_getSelectedAudioDevice().at(x));
             #endif

@@ -124,13 +124,7 @@ QStringList QvkPulseGstr::get_all_Audio_devices()
         stringList.append( stringDevice );
     }
 
-    QStringList tmpList;
-    for( int i = stringList.count()-1; i >= 0; i-- )
-    {
-        tmpList <<  stringList.at( i );
-    }
-
-    return tmpList;
+    return stringList;
 }
 
 

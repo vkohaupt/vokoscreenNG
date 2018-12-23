@@ -52,10 +52,6 @@ QvkScreenshot::QvkScreenshot( QvkMainWindow *value, Ui_formMainWindow *ui_mainwi
     connect( parent, SIGNAL( signal_close() ), regionChoise, SLOT( close() ) );
 
     slot_formats_Screenshot();
-
-    // Checkable Widget sind in vokoscreen standardmäßig nicht gesetzt.
-    // Diese werden hier beziehungsweise wenn die Settings vorhanden sind dort gesetzt.
-    //ui->radioButtonScreenshotFullscreen->click();
 }
 
 QvkScreenshot::~QvkScreenshot()

@@ -56,10 +56,6 @@ QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraW
     connect( ui_vokoscreen->radioButtonTopMiddle,   SIGNAL( clicked( bool ) ), this, SLOT( slot_radioButtonTopMiddle() ) );
     connect( ui_vokoscreen->radioButtonRightMiddle, SIGNAL( clicked( bool ) ), this, SLOT( slot_radioButtonRightMiddle() ) );
     connect( ui_vokoscreen->radioButtonBottomMiddle,SIGNAL( clicked( bool ) ), this, SLOT( slot_radioButtonBottomMiddle() ) );
-
-    // Checkable Widget sind in vokoscreen standardmäßig nicht gesetzt.
-    // Diese werden hier beziehungsweise wenn die Settings vorhanden sind dort gesetzt.
-    ui_vokoscreen->radioButtonBottomMiddle->clicked( true );
 }
 
 
