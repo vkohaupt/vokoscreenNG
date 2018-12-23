@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 
-QvkLog::QvkLog(Ui_formMainWindow *ui_mainwindow )
+QvkLog::QvkLog( Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
 

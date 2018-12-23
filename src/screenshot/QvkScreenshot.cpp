@@ -16,9 +16,9 @@
 #include <QStandardPaths>
 #include <QIcon>
 
-QvkScreenshot::QvkScreenshot(QvkMainWindow *value, Ui_formMainWindow *ui_mainwindow ):vkWinInfo(new QvkWinInfo),
-                                                                               vkCountdown(new QvkCountdown),
-                                                                               regionChoise(new QvkRegionChoise)
+QvkScreenshot::QvkScreenshot( QvkMainWindow *value, Ui_formMainWindow *ui_mainwindow ):vkWinInfo(new QvkWinInfo),
+                                                                                       vkCountdown(new QvkCountdown),
+                                                                                       regionChoise(new QvkRegionChoise)
 {
     parent = value;
     ui = ui_mainwindow;
@@ -30,9 +30,6 @@ QvkScreenshot::QvkScreenshot(QvkMainWindow *value, Ui_formMainWindow *ui_mainwin
 
     ui->radioButtonScreenshotFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
     ui->radioButtonScreenshotWindow->setText( tr( "Window") ); // QT Creator sets an ampersand, translation now here
-
-    ui->toolButtonScreenshotHelp->setIcon( ui->toolButtonScreenshotHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-    ui->toolButtonScreenShotMiscHelp->setIcon( ui->toolButtonScreenShotMiscHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
     pictureFileSystemWatcher = new QFileSystemWatcher();
     connect( ui->toolButtonPicturePath, SIGNAL( clicked( bool ) ),        this, SLOT( slot_newPicturePath() ) );
@@ -58,7 +55,7 @@ QvkScreenshot::QvkScreenshot(QvkMainWindow *value, Ui_formMainWindow *ui_mainwin
 
     // Checkable Widget sind in vokoscreen standardmäßig nicht gesetzt.
     // Diese werden hier beziehungsweise wenn die Settings vorhanden sind dort gesetzt.
-    ui->radioButtonScreenshotFullscreen->click();
+    //ui->radioButtonScreenshotFullscreen->click();
 }
 
 QvkScreenshot::~QvkScreenshot()

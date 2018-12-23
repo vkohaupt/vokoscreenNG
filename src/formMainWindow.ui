@@ -95,7 +95,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1106,7 +1106,7 @@
                 </layout>
                </widget>
               </item>
-              <item alignment="Qt::AlignVCenter">
+              <item alignment="Qt::AlignTop">
                <widget class="QToolButton" name="toolButtonHelpStartTime">
                 <property name="toolTip">
                  <string notr="true"/>
@@ -1244,7 +1244,7 @@
                 </property>
                </spacer>
               </item>
-              <item alignment="Qt::AlignVCenter">
+              <item alignment="Qt::AlignTop">
                <widget class="QToolButton" name="toolButtonHelpStopRecordingAfter">
                 <property name="toolTip">
                  <string notr="true"/>

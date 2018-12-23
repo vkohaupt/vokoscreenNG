@@ -17,8 +17,6 @@ QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraW
 
     vkSettings.readAll();
 
-    ui_vokoscreen->toolButtonCameraHelp->setIcon( ui_vokoscreen->toolButtonCameraHelp->style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-
     ui_vokoscreen->dialRotate->setMinimum( 0 );
     ui_vokoscreen->dialRotate->setMaximum ( 360 );
     ui_vokoscreen->dialRotate->setWrapping( true );

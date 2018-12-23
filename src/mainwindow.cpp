@@ -304,7 +304,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setDisabled( bool ) ) );
 
     connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ), this, SLOT( slot_setVisibleSystray( bool ) ) );
-    ui->checkBoxShowInSystray->clicked( true );
 
     connect( ui->checkBoxMinimizedWhenRecordingStarts, SIGNAL( clicked( bool ) ),    ui->frameWaitXSecondBeforRecording, SLOT( setEnabled( bool ) ) );
 
@@ -333,10 +332,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     connect( desk, SIGNAL( screenCountChanged(int) ), this, SLOT( slot_screenCountChanged( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          this, SLOT( slot_screenCountChanged( int ) ) );
 
-    // Checkable Widget sind in vokoscreen standardmäßig nicht gesetzt.
-    // Diese werden hier beziehungsweise wenn die Settings vorhanden sind dort gesetzt.
-    ui->radioButtonFullscreen->click();
-
 
     // **************** Begin Screenshot *****************************
     QvkScreenshot *vkScreenshot = new QvkScreenshot( this, ui );
@@ -360,6 +355,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     makeAndSetValidIcon( ui->tabWidgetLog, 0, QIcon::fromTheme( "help-about", QIcon( ":/pictures/help-about.svg" ) ) );
     connect( ui->pushButtonSendReport, SIGNAL( clicked( bool ) ), this, SLOT( slot_sendReport() ) );
     // *****************End Log ***********************************
+
+
+    // Checkable Widget sind in vokoscreen standardmäßig nicht gesetzt.
+    // Diese werden hier beziehungsweise wenn die Settings vorhanden sind dort gesetzt.
+    ui->radioButtonFullscreen->click();
+    ui->radioButtonScreenshotFullscreen->click();
+    ui->checkBoxShowInSystray->clicked( true );
 }
 
 

@@ -82,6 +82,13 @@ QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : 
     // Tab 5 Available muxer, encoder etc.
     ui->toolButtonAvalaibleHelp->setIcon( iconHelp );
 
+    // Screenshot
+    ui->toolButtonScreenshotHelp->setIcon( iconHelp );
+    ui->toolButtonScreenShotMiscHelp->setIcon( iconHelp );
+
+    // Camera
+    ui->toolButtonCameraHelp->setIcon( iconHelp );
+
 
     // Log
     ui->toolButtonHelpReport->setIcon( iconHelp );
