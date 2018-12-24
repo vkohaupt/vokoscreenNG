@@ -881,6 +881,10 @@ void QvkMainWindow::VK_gst_Elements_available()
             line->setFrameShape( QFrame::HLine );
             line->setFrameShadow( QFrame::Sunken );
             ui->gridLayoutAvailable->addWidget( line, rowCount, x );
+
+            QLabel *label = new QLabel;
+            label->setText( " " );
+            ui->gridLayoutAvailable->addWidget( label, rowCount, x );
         }
     }
 
