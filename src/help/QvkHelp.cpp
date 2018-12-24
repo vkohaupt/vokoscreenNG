@@ -83,11 +83,11 @@ QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : 
     ui->toolButtonAvalaibleHelp->setIcon( iconHelp );
 
     // Screenshot
-    ui->toolButtonScreenshotHelp->setIcon( iconHelp );
+    ui->toolButtonHelpScreenshotScreen->setIcon( iconHelp );
     ui->toolButtonScreenShotMiscHelp->setIcon( iconHelp );
 
     // Camera
-    ui->toolButtonCameraHelp->setIcon( iconHelp );
+    ui->toolButtonHelpCamera->setIcon( iconHelp );
 
 
     // Log

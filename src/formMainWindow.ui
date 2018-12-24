@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>708</width>
+    <width>770</width>
     <height>448</height>
    </rect>
   </property>
@@ -95,7 +95,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>4</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -888,8 +888,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>509</width>
-                      <height>192</height>
+                      <width>16</width>
+                      <height>16</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1647,7 +1647,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>335</width>
+                   <width>397</width>
                    <height>331</height>
                   </rect>
                  </property>
@@ -1961,7 +1961,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="toolButtonScreenshotHelp">
+                 <widget class="QToolButton" name="toolButtonHelpScreenshotScreen">
                   <property name="toolTip">
                    <string notr="true"/>
                   </property>
@@ -1977,12 +1977,12 @@
                 <item>
                  <widget class="QRadioButton" name="radioButtonScreenshotFullscreen">
                   <property name="text">
-                   <string notr="true">Fu&amp;llscreen</string>
+                   <string notr="true">Fulls&amp;creen</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="toolButton">
+                 <widget class="QToolButton" name="toolButtonHelpScreenshotFullscreen">
                   <property name="text">
                    <string notr="true">Help</string>
                   </property>
@@ -2000,7 +2000,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="toolButton_2">
+                 <widget class="QToolButton" name="toolButtonHelpScreenshotWindow">
                   <property name="text">
                    <string notr="true">Help</string>
                   </property>
@@ -2018,7 +2018,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="toolButton_3">
+                 <widget class="QToolButton" name="toolButtonHelpScreenshotArea">
                   <property name="text">
                    <string notr="true">Help</string>
                   </property>
@@ -2032,7 +2032,7 @@
                  <widget class="QComboBox" name="comboBoxScreenShotFormat"/>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="toolButton_4">
+                 <widget class="QToolButton" name="toolButtonHelpScreenshotSuffix">
                   <property name="text">
                    <string notr="true">Help</string>
                   </property>
@@ -2056,7 +2056,7 @@
                  <widget class="QSpinBox" name="spinBoxScreenshotCountDown"/>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="toolButtonHelpCountdown_2">
+                 <widget class="QToolButton" name="toolButtonHelpScreenshotCountdown">
                   <property name="text">
                    <string notr="true">Help</string>
                   </property>
@@ -2077,7 +2077,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="toolButton_5">
+                 <widget class="QToolButton" name="toolButtonHelpScreenshotHideThisWindow">
                   <property name="text">
                    <string notr="true">Help</string>
                   </property>
@@ -2198,7 +2198,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="toolButton_6">
+           <widget class="QToolButton" name="toolButtonHelpScreenshotExecute">
             <property name="text">
              <string>Help</string>
             </property>
@@ -2282,7 +2282,7 @@
                </widget>
               </item>
               <item row="0" column="2">
-               <widget class="QToolButton" name="toolButtonCameraHelp">
+               <widget class="QToolButton" name="toolButtonHelpCamera">
                 <property name="toolTip">
                  <string notr="true"/>
                 </property>
