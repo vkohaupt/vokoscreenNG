@@ -876,7 +876,11 @@ void QvkMainWindow::VK_gst_Elements_available()
         rowCount = ui->gridLayoutAvailable->rowCount();
         for ( int x = 0; x <= 5; x++ )
         {
-            ui->gridLayoutAvailable->addWidget( new QLabel(""), rowCount, x );
+            QFrame *line = new QFrame();
+            line->setObjectName( QStringLiteral( "line" ) );
+            line->setFrameShape( QFrame::HLine );
+            line->setFrameShadow( QFrame::Sunken );
+            ui->gridLayoutAvailable->addWidget( line, rowCount, x );
         }
     }
 

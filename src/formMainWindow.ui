@@ -95,7 +95,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>4</number>
           </property>
           <property name="iconSize">
            <size>
@@ -132,7 +132,7 @@
                 <item row="0" column="0">
                  <widget class="QRadioButton" name="radioButtonFullscreen">
                   <property name="text">
-                   <string notr="true">Fu&amp;llscreen</string>
+                   <string notr="true">Fulls&amp;creen</string>
                   </property>
                  </widget>
                 </item>
@@ -889,7 +889,7 @@
                       <x>0</x>
                       <y>0</y>
                       <width>509</width>
-                      <height>183</height>
+                      <height>192</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -943,13 +943,6 @@
                </layout>
               </item>
              </layout>
-            </item>
-            <item>
-             <widget class="Line" name="line_7">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
             </item>
            </layout>
           </widget>
@@ -1654,7 +1647,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>352</width>
+                   <width>335</width>
                    <height>331</height>
                   </rect>
                  </property>
@@ -1689,7 +1682,7 @@
                 <item>
                  <widget class="QLabel" name="labelAvalible">
                   <property name="text">
-                   <string notr="true">Bild</string>
+                   <string notr="true">Picture</string>
                   </property>
                  </widget>
                 </item>
@@ -1720,7 +1713,7 @@
                 <item>
                  <widget class="QLabel" name="labelNotAvailable">
                   <property name="text">
-                   <string notr="true">Bild</string>
+                   <string notr="true">Picture</string>
                   </property>
                  </widget>
                 </item>
@@ -1991,7 +1984,7 @@
                 <item>
                  <widget class="QToolButton" name="toolButton">
                   <property name="text">
-                   <string>...</string>
+                   <string notr="true">Help</string>
                   </property>
                  </widget>
                 </item>
@@ -2009,7 +2002,7 @@
                 <item>
                  <widget class="QToolButton" name="toolButton_2">
                   <property name="text">
-                   <string>...</string>
+                   <string notr="true">Help</string>
                   </property>
                  </widget>
                 </item>
@@ -2027,7 +2020,7 @@
                 <item>
                  <widget class="QToolButton" name="toolButton_3">
                   <property name="text">
-                   <string>...</string>
+                   <string notr="true">Help</string>
                   </property>
                  </widget>
                 </item>
@@ -2041,7 +2034,7 @@
                 <item>
                  <widget class="QToolButton" name="toolButton_4">
                   <property name="text">
-                   <string>...</string>
+                   <string notr="true">Help</string>
                   </property>
                  </widget>
                 </item>
@@ -2065,7 +2058,7 @@
                 <item>
                  <widget class="QToolButton" name="toolButtonHelpCountdown_2">
                   <property name="text">
-                   <string>...</string>
+                   <string notr="true">Help</string>
                   </property>
                  </widget>
                 </item>
@@ -2086,7 +2079,7 @@
                 <item>
                  <widget class="QToolButton" name="toolButton_5">
                   <property name="text">
-                   <string>...</string>
+                   <string notr="true">Help</string>
                   </property>
                  </widget>
                 </item>
@@ -2207,7 +2200,7 @@
           <item>
            <widget class="QToolButton" name="toolButton_6">
             <property name="text">
-             <string>...</string>
+             <string>Help</string>
             </property>
            </widget>
           </item>
@@ -2603,7 +2596,7 @@ p, li { white-space: pre-wrap; }
           <item>
            <widget class="QToolButton" name="toolButtonHelpReport">
             <property name="text">
-             <string notr="true">...</string>
+             <string notr="true">Help</string>
             </property>
            </widget>
           </item>
