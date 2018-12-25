@@ -48,6 +48,7 @@ private:
     QPixmap pixmap;
     QFileSystemWatcher *pictureFileSystemWatcher;
 
+    void makeScreenshotByStart();
 };
 
 #endif

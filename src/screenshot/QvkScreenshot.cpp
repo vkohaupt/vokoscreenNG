@@ -52,20 +52,38 @@ QvkScreenshot::QvkScreenshot( QvkMainWindow *value, Ui_formMainWindow *ui_mainwi
     connect( parent, SIGNAL( signal_close() ), regionChoise, SLOT( close() ) );
 
     slot_formats_Screenshot();
+
+    makeScreenshotByStart();
+
 }
 
 QvkScreenshot::~QvkScreenshot()
 {
 }
 
+void QvkScreenshot::makeScreenshotByStart()
+{
+    QScreen *screen = QGuiApplication::primaryScreen();
+    pixmap = screen->grabWindow( QApplication::desktop()->winId() );
+    ui->labelScreenShotPicture->setAlignment( Qt::AlignCenter );
+    ui->labelScreenShotPicture->setPixmap( pixmap.scaled( ui->labelScreenShotPicture->width(),
+                                                          ui->labelScreenShotPicture->height(),
+                                                          Qt::KeepAspectRatio,
+                                                          Qt::SmoothTransformation ) );
 
+}
+
+
+/*
+ * Hint:QLabel sizePolicy in GUI must be set to ignored
+ */
 void QvkScreenshot::slot_resizeEvent( QResizeEvent *event )
 {
     Q_UNUSED(event);
     if ( !pixmap.isNull() )
     {
-        ui->labelScreenShotPicture->setPixmap( pixmap.scaled( ui->labelScreenShotPicture->width()-20,
-                                                              ui->labelScreenShotPicture->height()-20,
+        ui->labelScreenShotPicture->setPixmap( pixmap.scaled( ui->labelScreenShotPicture->width(),
+                                                              ui->labelScreenShotPicture->height(),
                                                               Qt::KeepAspectRatio,
                                                               Qt::SmoothTransformation ) );
     }
@@ -222,8 +240,8 @@ void QvkScreenshot::slot_shot_Screenshot()
     Q_UNUSED(ok);
 
     ui->labelScreenShotPicture->setAlignment( Qt::AlignCenter );
-    ui->labelScreenShotPicture->setPixmap( pixmap.scaled( ui->labelScreenShotPicture->width()-6,
-                                                          ui->labelScreenShotPicture->height()-6,
+    ui->labelScreenShotPicture->setPixmap( pixmap.scaled( ui->labelScreenShotPicture->width(),
+                                                          ui->labelScreenShotPicture->height(),
                                                           Qt::KeepAspectRatio,
                                                           Qt::SmoothTransformation ) );
 

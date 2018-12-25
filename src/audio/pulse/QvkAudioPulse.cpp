@@ -22,7 +22,7 @@ QvkAudioPulse::QvkAudioPulse( QMainWindow *mainWindow, Ui_formMainWindow *ui_mai
     connect( ui->pushButtonStop,   SIGNAL( clicked( bool ) ), this, SLOT( slot_start_thread_timer() ) );
 
     ui->radioButtonPulse->click();
-    ui->radioButtonPulse->hide();
+    //ui->radioButtonPulse->hide();
 }
 
 
