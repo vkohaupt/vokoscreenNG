@@ -51,20 +51,11 @@ void QvkAudioPulse::getPulseDevices()
     QvkPulseGstr vkPulseGstr;
     QStringList list;
     list << vkPulseGstr.get_all_Audio_devices();
-    if ( !list.empty() == true )
-    {
-        QString string = tr( "Special device(See help)" );
-        list.prepend( "pulsesrc:::" + string );
-    }
-
-    for ( int i = 0; i < list.count(); i++ )
-    {
-        qDebug().noquote() << "[vokoscreen] PulseAudio device:" << list.at(i);
-    }
-    qDebug().noquote();
 
     if ( !list.empty() )
     {
+        QString string = tr( "Special device(See help)" );
+        list.prepend( "pulsesrc:::" + string );
         for ( int i = 0; i < list.count(); i++ )
         {
             QCheckBox *checkboxAudioDevice = new QCheckBox();
@@ -78,7 +69,11 @@ void QvkAudioPulse::getPulseDevices()
             {
                 checkboxAudioDevice->click();
             }
+
+            qDebug().noquote() << "[vokoscreen] PulseAudio device:" << list.at(i);
         }
+        qDebug().noquote();
+
         QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
         ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
     }
