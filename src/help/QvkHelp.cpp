@@ -182,7 +182,7 @@ void QvkHelp::loadHTML( QString value )
     QFileInfo fileInfo( value );
     remotePath = fileInfo.path();
     remoteBasename = fileInfo.baseName();
-    disconnect( vkDownloadHTML, 0, 0, 0 );
+    disconnect( vkDownloadHTML, nullptr, nullptr, nullptr );
     connect( vkDownloadHTML, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_parseHTML( QString ) ) );
     vkDownloadHTML->doDownload( value );
 }
@@ -212,7 +212,7 @@ int QvkHelp::getCountFileToDownload( QString tempPathFileName )
     QFile file( tempPathFileName );
     if( !file.open( QIODevice::ReadOnly ) )
     {
-        QMessageBox::information( 0, "Help error", file.errorString() );
+        QMessageBox::information( nullptr, "Help error", file.errorString() );
     }
 
     int count = 0;
@@ -245,7 +245,7 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
     QFile file( tempPathFileName );
     if( !file.open( QIODevice::ReadOnly ) )
     {
-        QMessageBox::information( 0, "error", file.errorString() );
+        QMessageBox::information( nullptr, "error", file.errorString() );
     }
 
     int countFiles = getCountFileToDownload( tempPathFileName );
@@ -261,7 +261,7 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
             counter++;
             if ( counter == countFiles )
             {
-                disconnect( vkDownloadFiles, 0, 0, 0 );
+                disconnect( vkDownloadFiles, nullptr, nullptr, nullptr );
                 connect( vkDownloadFiles, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_showHelp( QString ) ) );
             }
             vkDownloadFiles->doDownload( remotePath + "/" + fileForHTML );
@@ -294,7 +294,7 @@ void QvkHelp::slot_showHelp( QString tempPathFileName )
     QFile file( htmlFile );
     if( !file.open( QIODevice::ReadOnly ) )
     {
-        QMessageBox::information( 0, "error", file.errorString() );
+        QMessageBox::information( nullptr, "error", file.errorString() );
     }
 
     QTextStream textStream( &file );
