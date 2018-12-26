@@ -137,7 +137,7 @@ void QvkScreenshot::slot_preshot_Screenshot()
         {
            parent->hide();
         }
-        disconnect( vkCountdown, 0, 0, 0 );
+        disconnect( vkCountdown, nullptr, nullptr, nullptr );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this, SLOT( slot_singleShot_Screenshot() ) );
         vkCountdown->startCountdown( ui->spinBoxScreenshotCountDown->value() );
         return;
@@ -159,8 +159,8 @@ void QvkScreenshot::slot_preshot_Screenshot()
         {
            parent->hide();
         }
-        disconnect( vkCountdown, 0, 0, 0 );
-        disconnect( vkWinInfo, 0, 0, 0 );
+        disconnect( vkCountdown, nullptr, nullptr, nullptr );
+        disconnect( vkWinInfo, nullptr, nullptr, nullptr );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), vkWinInfo, SLOT( slot_start() ) );
         connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), this, SLOT( slot_shot_Screenshot() ) );
         vkCountdown->startCountdown( ui->spinBoxScreenshotCountDown->value() );
@@ -173,7 +173,7 @@ void QvkScreenshot::slot_preshot_Screenshot()
         {
            parent->hide();
         }
-        disconnect( vkWinInfo, 0, 0, 0 );
+        disconnect( vkWinInfo, nullptr, nullptr, nullptr );
         connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), this, SLOT( slot_shot_Screenshot() ) );
         vkWinInfo->slot_start();
         return;
@@ -187,7 +187,7 @@ void QvkScreenshot::slot_preshot_Screenshot()
            parent->hide();
         }
         regionChoise->recordMode( true );
-        disconnect( vkCountdown, 0, 0, 0 );
+        disconnect( vkCountdown, nullptr, nullptr, nullptr );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this, SLOT( slot_singleShot_Screenshot() ) );
         vkCountdown->startCountdown( ui->spinBoxScreenshotCountDown->value() );
         return;

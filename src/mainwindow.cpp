@@ -1137,7 +1137,7 @@ void QvkMainWindow::slot_preStart()
 
     if ( ( ui->radioButtonFullscreen->isChecked() == true ) and  ( ui->spinBoxCountDown->value() > 0 ) )
     {
-        disconnect( vkCountdown, 0, 0, 0 );
+        disconnect( vkCountdown, nullptr, nullptr, nullptr );
         connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
         connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
@@ -1163,8 +1163,8 @@ void QvkMainWindow::slot_preStart()
 
     if ( ( ui->radioButtonWindow->isChecked() == true ) and ( ui->spinBoxCountDown->value() > 0 ) )
     {
-        disconnect( vkWinInfo, 0, 0, 0 );
-        disconnect( vkCountdown, 0, 0, 0 );
+        disconnect( vkWinInfo, nullptr, nullptr, nullptr );
+        disconnect( vkCountdown, nullptr, nullptr, nullptr );
         connect( vkWinInfo,   SIGNAL( signal_windowChanged( bool ) ),   this,                SLOT( slot_startCounter( bool ) ) );
         connect( vkWinInfo,   SIGNAL( signal_showCursor( bool ) ),      ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
         connect( vkWinInfo,   SIGNAL( signal_showCursor( bool ) ),      ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
@@ -1177,7 +1177,7 @@ void QvkMainWindow::slot_preStart()
 
     if ( ui->radioButtonWindow->isChecked() == true )
     {
-        disconnect( vkWinInfo, 0, 0, 0 );
+        disconnect( vkWinInfo, nullptr, nullptr, nullptr );
         connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ),    ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
         connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ),    ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
         connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
@@ -1197,7 +1197,7 @@ void QvkMainWindow::slot_preStart()
 
     if ( ( ui->radioButtonArea->isChecked() == true ) and ( ui->spinBoxCountDown->value() > 0 ) )
     {
-        disconnect( vkCountdown, 0, 0, 0 );
+        disconnect( vkCountdown, nullptr, nullptr, nullptr );
         connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
         connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );

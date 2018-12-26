@@ -148,7 +148,7 @@ void QvkCameraController::slot_startCamera( bool value )
         delete camera;
         camera = new QCamera( device );
         camera->setCaptureMode( QCamera::CaptureViewfinder );
-        disconnect( camera, 0, 0, 0 );
+        disconnect( camera, nullptr, nullptr, nullptr );
         connect( camera, SIGNAL( statusChanged( QCamera::Status ) ), this, SLOT( slot_statusChanged( QCamera::Status ) ) );
         connect( camera, SIGNAL( stateChanged( QCamera::State   ) ), this, SLOT( slot_stateChanged( QCamera::State ) )  );
 
@@ -190,7 +190,7 @@ void QvkCameraController::slot_startCamera( bool value )
     }
     else
     {
-        disconnect( camera, 0, 0, 0 );
+        disconnect( camera, nullptr, nullptr, nullptr );
         camera->stop();
         camera->unload();
         cameraWindow->close();
