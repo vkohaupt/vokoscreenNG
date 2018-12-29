@@ -9,15 +9,14 @@ class QvkPulseGstr: public QObject
 {
     Q_OBJECT
 
-
 public:
     QvkPulseGstr();
     virtual ~QvkPulseGstr();
     QString get_AudioDeviceString( GstDevice *device );
-    QStringList get_all_Audio_devices();
 
     
 public slots:
+    QStringList get_all_Audio_devices();
 
 
 private:
@@ -30,7 +29,6 @@ protected:
   
   
 signals:
-
     
 };
 

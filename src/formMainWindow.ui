@@ -95,7 +95,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -817,7 +817,7 @@
                   <number>6</number>
                  </property>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0,0">
+                  <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0">
                    <item>
                     <widget class="QCheckBox" name="checkBoxAudioOnOff">
                      <property name="text">
@@ -826,28 +826,6 @@
                      <property name="checked">
                       <bool>false</bool>
                      </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QFrame" name="framePulseAlsa">
-                     <property name="frameShape">
-                      <enum>QFrame::NoFrame</enum>
-                     </property>
-                     <layout class="QHBoxLayout" name="horizontalLayout_7">
-                      <property name="topMargin">
-                       <number>3</number>
-                      </property>
-                      <property name="bottomMargin">
-                       <number>3</number>
-                      </property>
-                      <item>
-                       <widget class="QRadioButton" name="radioButtonPulse">
-                        <property name="text">
-                         <string>Pu&amp;lse</string>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
                     </widget>
                    </item>
                    <item>
@@ -889,7 +867,7 @@
                       <x>0</x>
                       <y>0</y>
                       <width>571</width>
-                      <height>192</height>
+                      <height>198</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">

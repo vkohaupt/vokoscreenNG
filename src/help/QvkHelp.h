@@ -30,7 +30,7 @@ private:
     QvkDownloader *vkDownloadHTML;
     QvkDownloader *vkDownloadFiles;
 
-    void loadHTML(QString value );
+    void loadHTML( QString value );
     QString remotePath;
     QString remoteBasename;
     int getCountFileToDownload( QString tempPathFileName );
@@ -53,8 +53,8 @@ private slots:
 
     void slot_audioHelp();
 
-    void slot_parseHTML(QString tempPathFileName);
-    void slot_showHelp(QString tempPathFileName);
+    void slot_parseHTML( QString tempPathFileName );
+    void slot_showHelp( QString tempPathFileName );
 
     void slot_cleanUp();
 

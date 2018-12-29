@@ -1,28 +1,38 @@
 #include "QvkAudioPulse.h"
+#include "QvkWatcherPlug.h"
 
 #include <QDebug>
 #include <QAudioDeviceInfo>
-
-QvkAudioPulse::QvkAudioPulse()
-{}
-
+#include <QFile>
+#include <QMessageBox>
+#include <QStandardPaths>
 
 QvkAudioPulse::QvkAudioPulse( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow )
 {
-    connect( mainWindow, SIGNAL( destroyed( QObject* ) ), this, SLOT( slot_cleanup() ) );
+    Q_UNUSED(mainWindow);
     ui = ui_mainwindow;
+}
 
-    vkWatcherPulse = new QvkWatcherPulse();
-    connect( vkWatcherPulse, SIGNAL( signal_countAudioDevices( int ) ), this, SLOT( slot_update( int ) ) );
-    connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), this, SLOT( slot_set_counter_back() ) );
-    connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkWatcherPulse, SLOT( slot_set_first_start( bool ) ) );
-    connect( ui->radioButtonPulse, SIGNAL( toggled( bool ) ), vkWatcherPulse, SLOT( slot_start_stop_thread_timer( bool ) ) );
 
-    connect( ui->pushButtonStart,  SIGNAL( clicked( bool ) ), vkWatcherPulse, SLOT( slot_stop_thread_timer() ) );
-    connect( ui->pushButtonStop,   SIGNAL( clicked( bool ) ), this, SLOT( slot_start_thread_timer() ) );
+void QvkAudioPulse::init()
+{
+    getPulseDevices();
 
-    ui->radioButtonPulse->click();
-    ui->radioButtonPulse->hide();
+    // QvkWatcherPlug monitoring only new or removed Audiodevices from the PulseAudio server.
+    // QvkWatcherPlug does not return any devices, if the PulseAudio server start or stop.
+    QvkWatcherPlug *vkWatcherPlug = new QvkWatcherPlug();
+    vkWatcherPlug->start_monitor();
+
+    // Before watching the file from QvkWatcherPlug, the watched file must be present.
+    // If the file not present or is removed, the fileSystemWatcher will not or not more monitoring.
+    // We create a empty file. If the file exists, it will be overwritten.
+    QString path = QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + "/vokoscreenAudioPlugFile.txt";
+    QFile file( path );
+    file.open( QIODevice::WriteOnly | QIODevice::Text );
+    file.close();
+    fileSystemWatcher = new QFileSystemWatcher();
+    fileSystemWatcher->addPath( path );
+    connect( fileSystemWatcher, SIGNAL( fileChanged( QString ) ), this, SLOT( slot_myfileSystemWatcher( QString ) ) );
 }
 
 
@@ -31,18 +41,47 @@ QvkAudioPulse::~QvkAudioPulse()
 }
 
 
-void QvkAudioPulse::slot_start_thread_timer()
+void QvkAudioPulse::slot_myfileSystemWatcher( QString string )
 {
-    if ( ui->radioButtonPulse->isChecked() == true  )
+    QFile file( string );
+    if( !file.open( QIODevice::ReadOnly ) )
     {
-       vkWatcherPulse->slot_start_thread_timer();
+        QString message = tr( "File can not be opened" );
+        QMessageBox::information( nullptr, "vokoscreen error ", message + ": " + string );
+        qDebug().noquote() << "[vokoscreen]" << "File can not be opened:" << string;
     }
-}
 
+    QTextStream in( &file );
 
-void QvkAudioPulse::slot_cleanup()
-{
-   vkWatcherPulse->stop();
+    while( !in.atEnd() )
+    {
+        QString header = in.readLine();
+        QString name = in.readLine();
+        QString device = in.readLine();
+
+        if ( header == "[Audio-device-added]" )
+        {
+            QCheckBox *checkboxAudioDevice = new QCheckBox();
+            checkboxAudioDevice->setText( name );
+            checkboxAudioDevice->setAccessibleName( device );
+            ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
+            checkboxAudioDevice->setAutoExclusive( true );
+        }
+
+        if ( header == "[Audio-device-removed]" )
+        {
+            QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
+            for ( int i = 0; i < listAudioDevices.count(); i++ )
+            {
+                if ( listAudioDevices.at(i)->accessibleName() == device )
+                {
+                    delete listAudioDevices.at(i);
+                }
+            }
+        }
+    }
+
+    file.close();
 }
 
 
@@ -79,7 +118,7 @@ void QvkAudioPulse::getPulseDevices()
     }
     else
     {
-        ui->radioButtonPulse->setEnabled( false );
+        emit signal_noAudioDevicesAvalaible( false );
     }
 }
 
@@ -104,20 +143,3 @@ void QvkAudioPulse::clearVerticalLayoutAudioDevices()
     }
 }
 
-
-void QvkAudioPulse::slot_set_counter_back()
-{
-    counter = -1;
-}
-
-
-void QvkAudioPulse::slot_update( int count )
-{
-
-    if ( count != counter )
-    {
-        counter = count;
-        clearVerticalLayoutAudioDevices();
-        getPulseDevices();
-    }
-}

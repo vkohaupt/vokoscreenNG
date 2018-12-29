@@ -100,10 +100,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
     qDebug();
 
-#ifdef Q_OS_LINUX
-    vkAudioPulse = new QvkAudioPulse( this, ui );
-#endif
-
     resolutionStringList << "320 x 200 CGA 16 : 10"
                          << "320 x 240 QCGA 4 : 3"
                          << "640 x 480 VGA 4 : 3"
@@ -261,14 +257,18 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     // End showclick
 
     // Tab 2 Audio and Videocodec
-    connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), this,                      SLOT( slot_audioIconOnOff( bool ) ) );
-    connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->framePulseAlsa,        SLOT( setEnabled( bool ) ) );
-    connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
-    connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->labelAudioCodec,       SLOT( setEnabled( bool ) ) );
-    connect( ui->checkBoxAudioOnOff, SIGNAL( toggled( bool ) ), ui->comboBoxAudioCodec,    SLOT( setEnabled( bool ) ) );
+    connect( ui->checkBoxAudioOnOff, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_audioIconOnOff( bool ) ) );
+    connect( ui->checkBoxAudioOnOff, SIGNAL( clicked( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
+    connect( ui->checkBoxAudioOnOff, SIGNAL( clicked( bool ) ), ui->labelAudioCodec,       SLOT( setEnabled( bool ) ) );
+    connect( ui->checkBoxAudioOnOff, SIGNAL( clicked( bool ) ), ui->comboBoxAudioCodec,    SLOT( setEnabled( bool ) ) );
+
+#ifdef Q_OS_LINUX
+    vkAudioPulse = new QvkAudioPulse( this, ui );
+    connect( vkAudioPulse, SIGNAL( signal_noAudioDevicesAvalaible( bool ) ), ui->checkBoxAudioOnOff, SLOT( setEnabled(bool) ) );
+    vkAudioPulse->init();
+#endif
 
 #ifdef Q_OS_WIN
-    ui->radioButtonPulse->hide();
     vkAudioWindows->slot_start( true );
 #endif
 
@@ -366,7 +366,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->radioButtonScreenshotFullscreen->click();
     ui->checkBoxShowInSystray->clicked( true );
     ui->radioButtonBottomMiddle->clicked( true ); // funktioniert so nicht da Widget disabled sind
+    ui->checkBoxAudioOnOff->clicked( false ); // sende Signal clicked mit value=false
     ui->checkBoxAudioOnOff->click();
+
 }
 
 
@@ -1248,12 +1250,7 @@ QString QvkMainWindow::VK_get_AudioDevice()
 #ifdef Q_OS_LINUX
 QString QvkMainWindow::VK_get_AudioSystem()
 {
-    QString audioSystem;
-    if ( ui->radioButtonPulse->isChecked() )
-    {
-        audioSystem = "pulsesrc";
-    }
-    return audioSystem;
+    return "pulsesrc";
 }
 #endif
 

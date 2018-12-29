@@ -7,16 +7,17 @@
 #include "QvkPulseGstr.h"
 
 #include <QObject>
+#include <QFileSystemWatcher>
 
 class QvkAudioPulse: public QObject
 {
     Q_OBJECT
 
 public:
-    QvkAudioPulse();
     QvkAudioPulse( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkAudioPulse();
-    
+    void init();
+
 
 public slots:
 
@@ -24,24 +25,20 @@ public slots:
 private:
     Ui_formMainWindow *ui;
     QvkWatcherPulse *vkWatcherPulse;
-    int counter;
-    void getPulseDevices();
     void clearVerticalLayoutAudioDevices();
-
+    void getPulseDevices();
+    QFileSystemWatcher *fileSystemWatcher;
 
 private slots:
-    void slot_update(int count);
-    void slot_set_counter_back();
-    void slot_cleanup();
-    void slot_start_thread_timer();
+    void slot_myfileSystemWatcher( QString string );
 
 
 protected:
 
   
 signals:
+    void signal_noAudioDevicesAvalaible( bool );
 
-    
 };
 
 #endif

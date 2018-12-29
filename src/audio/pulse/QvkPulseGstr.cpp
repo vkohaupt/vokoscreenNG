@@ -1,6 +1,7 @@
 #include "QvkPulseGstr.h"
 
 #include <QDebug>
+#include <QFile>
 
 QvkPulseGstr::QvkPulseGstr()
 {
@@ -125,7 +126,9 @@ QStringList QvkPulseGstr::get_all_Audio_devices()
     }
 
     if ( isMonitorStart == true )
+    {
        gst_device_monitor_stop( monitor );
+    }
 
     return stringList;
 }
@@ -165,7 +168,7 @@ void QvkPulseGstr::print_plugin_info ()
         str = g_strdup (release_date);
         sep = strstr (str, "T");
         if (sep != NULL) {
-            *sep = ' ';
+        *sep = ' ';
             sep = strstr (sep + 1, "Z");
             if (sep != NULL)
                 *sep = ' ';
