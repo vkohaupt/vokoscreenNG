@@ -24,9 +24,9 @@ fi
 
 
 echo ============
-echo Make main.ts
+echo Make main-3.ts
 echo ============
-lupdate-qt5 -locations none -recursive ./src -ts src/main.ts
+lupdate-qt5 -locations none -recursive ./src -ts src/main-3.ts
 
 echo =====================
 echo Remove language packs
@@ -36,8 +36,7 @@ rm -r src/language
 echo ======================
 echo Download language pack
 echo ======================
-tx pull -a
-#--minimum-perc=100
+tx pull -a --minimum-perc=100
 
 echo =============================
 echo copy language to src/language

@@ -138,9 +138,60 @@ QStringList QvkPulseGstr::get_all_Audio_devices()
 
 void QvkPulseGstr::print_plugin_info ()
 {
-//    const gchar *name;
-//    name = "vp8enc";
-//    GstPlugin *plugin = gst_registry_find_plugin( gst_registry_get(), name );
+/*   GList *list, *g;
+   GstRegistry *registry;
+   registry = gst_registry_get ();
+   list = gst_registry_get_plugin_list (registry);
+   for (g = list; g; g = g->next)
+   {
+     GstPlugin *plugin = GST_PLUGIN (g->data);
+     // one for the registry, one for the list
+     GST_DEBUG ("Plugin refcount %d %s", GST_OBJECT_REFCOUNT_VALUE (plugin), gst_plugin_get_name (plugin));
+//     ASSERT_OBJECT_REFCOUNT (plugin, "plugin in registry", 2);
+     gst_object_unref (plugin);
+   }
+   g_list_free (list);
+
+   list = gst_registry_feature_filter (registry, NULL, FALSE, NULL);
+   for (g = list; g; g = g->next)
+   {
+      GstPluginFeature *feature = GST_PLUGIN_FEATURE (g->data);
+
+       // one for the registry, one for the list
+       GST_DEBUG ("Feature refcount %d %s", GST_OBJECT_REFCOUNT_VALUE (feature),
+           GST_OBJECT_NAME (feature));
+       gst_object_unref (feature);
+   }
+   g_list_free (list);
+*/
+
+    GList *gList, *g;
+    GList *iterator;
+    GstRegistry *gstRegistry;
+    gList = gst_registry_get_plugin_list( gst_registry_get() );
+    for (int i = 0; i < g_list_length (gList); i++)
+    {
+        GstPlugin *plugin = GST_PLUGIN( gList->data );
+        qDebug() << gst_plugin_get_name( plugin );
+        gst_object_unref (plugin);
+        gList->next;
+    }
+
+/*
+    const gchar *name;
+    name = "vp8enc";
+    GstPlugin *plugin = gst_registry_find_plugin( gst_registry_get(), name );
+
+    GstElementFactory *factory = gst_element_factory_find( name );
+    if ( !factory )
+    {
+        qDebug().noquote() << "[vokoscreen] Fail Muxer not available:" << name;
+    }
+    else
+    {
+        qDebug().noquote() << "[vokoscreen] Muxer available:" << name;
+    }
+*/
 
 //**********************
 
@@ -151,7 +202,6 @@ void QvkPulseGstr::print_plugin_info ()
 
 //    push_indent ();
 
-//    qDebug() << "Name" << gst_plugin_get_name( plugin );
     /*  n_print ("%-25s%s\n", "Name", gst_plugin_get_name (plugin));
   n_print ("%-25s%s\n", "Description", gst_plugin_get_description (plugin));
   n_print ("%-25s%s\n", "Filename", (filename != NULL) ? filename : "(null)");
