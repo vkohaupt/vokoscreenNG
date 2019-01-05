@@ -63,8 +63,8 @@ void QvkPlayer::slot_play()
     if ( mediaPlayer->state() == QMediaPlayer::StoppedState )
     {
         show();
-        mediaPlayer->setMedia( QUrl::fromLocalFile( "/home/vk/Downloads/vokoscreen.mp4" ) );
-        //mediaPlayer->setMedia( QUrl::fromLocalFile( getMediaFile() ) );
+        //mediaPlayer->setMedia( QUrl::fromLocalFile( "/home/vk/Downloads/vokoscreen.mp4" ) );
+        mediaPlayer->setMedia( QUrl::fromLocalFile( getMediaFile() ) );
         mediaPlayer->play();
         ui->pushButtonPlay->setEnabled( false );
         ui->pushButtonPause->setEnabled( true);
