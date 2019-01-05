@@ -164,7 +164,7 @@ void QvkPulseGstr::print_plugin_info ()
    }
    g_list_free (list);
 */
-
+/* Hier ist dies letzte bearbeitung
     GList *gList, *g;
     GList *iterator;
     GstRegistry *gstRegistry;
@@ -176,7 +176,7 @@ void QvkPulseGstr::print_plugin_info ()
         gst_object_unref (plugin);
         gList->next;
     }
-
+*/
 /*
     const gchar *name;
     name = "vp8enc";

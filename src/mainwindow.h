@@ -9,6 +9,7 @@
 #include "QvkHelp.h"
 #include "QvkSystray.h"
 #include "QvkMagnifierController.h"
+#include "QvkPlayer.h"
 
 #ifdef Q_OS_LINUX
 #include "QvkAudioPulse.h"
@@ -90,6 +91,7 @@ private:
 
     void vk_setCornerWidget( QTabWidget *tabWidget );
 
+    QvkPlayer *vkPlayer;
 
 private slots:
     void slot_preStart();

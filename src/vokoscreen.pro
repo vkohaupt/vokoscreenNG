@@ -132,5 +132,6 @@ include(log/log.pri)
 include(QGlobalShortcut/qglobalshortcut.pri)
 include(QvkGlobalShortcut/QvkGlobalShortcut.pri)
 
-
+# player
+include(player/player.pri)
 

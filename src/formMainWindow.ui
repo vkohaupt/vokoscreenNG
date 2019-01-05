@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>770</width>
+    <width>814</width>
     <height>448</height>
    </rect>
   </property>
@@ -53,9 +53,6 @@
       <property name="usesScrollButtons">
        <bool>false</bool>
       </property>
-      <property name="movable">
-       <bool>true</bool>
-      </property>
       <widget class="QWidget" name="tabSidebarScreencast">
        <attribute name="icon">
         <iconset theme="computer">
@@ -95,7 +92,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -213,117 +210,17 @@
                </spacer>
               </item>
               <item>
-               <widget class="Line" name="line_10">
+               <spacer name="verticalSpacer_13">
                 <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+                 <enum>Qt::Vertical</enum>
                 </property>
-               </widget>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_22">
-                <item>
-                 <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
-                  <property name="text">
-                   <string>Do not record mouse cursor</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_6">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QToolButton" name="toolButtonHelpNoMouseCursor">
-                  <property name="toolTip">
-                   <string notr="true"/>
-                  </property>
-                  <property name="text">
-                   <string notr="true">Help</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_33">
-                <item>
-                 <widget class="QFrame" name="frameScale">
-                  <property name="frameShape">
-                   <enum>QFrame::NoFrame</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Raised</enum>
-                  </property>
-                  <layout class="QHBoxLayout" name="horizontalLayout_26">
-                   <property name="leftMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>0</number>
-                   </property>
-                   <item>
-                    <widget class="QCheckBox" name="checkBoxScale">
-                     <property name="text">
-                      <string>Scale</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QComboBox" name="comboBoxScale">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="sizeAdjustPolicy">
-                      <enum>QComboBox::AdjustToContents</enum>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_18">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QToolButton" name="toolButtonHelpScale">
-                  <property name="toolTip">
-                   <string notr="true"/>
-                  </property>
-                  <property name="text">
-                   <string notr="true">Help</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <widget class="Line" name="line_12">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
                 </property>
-               </widget>
+               </spacer>
               </item>
               <item>
                <layout class="QGridLayout" name="gridLayout_7">
@@ -791,6 +688,105 @@
              </layout>
             </item>
             <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_33">
+              <item>
+               <widget class="QFrame" name="frameScale">
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_26">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QCheckBox" name="checkBoxScale">
+                   <property name="text">
+                    <string>Scale</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="comboBoxScale">
+                   <property name="enabled">
+                    <bool>false</bool>
+                   </property>
+                   <property name="sizeAdjustPolicy">
+                    <enum>QComboBox::AdjustToContents</enum>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_18">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QToolButton" name="toolButtonHelpScale">
+                <property name="toolTip">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string notr="true">Help</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_22">
+              <item>
+               <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
+                <property name="text">
+                 <string>Do not record mouse cursor</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_6">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QToolButton" name="toolButtonHelpNoMouseCursor">
+                <property name="toolTip">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string notr="true">Help</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
              <layout class="QHBoxLayout" name="horizontalLayout_34">
               <item>
                <widget class="QFrame" name="frameAudio">
@@ -866,8 +862,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>571</width>
-                      <height>198</height>
+                      <width>615</width>
+                      <height>114</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1625,7 +1621,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>397</width>
+                   <width>441</width>
                    <height>331</height>
                   </rect>
                  </property>
@@ -2511,6 +2507,93 @@
            </spacer>
           </item>
          </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabSidebarPlayer">
+       <attribute name="title">
+        <string/>
+       </attribute>
+       <attribute name="toolTip">
+        <string>Player</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_28">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QTabWidget" name="tabWidget">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="tab_2">
+           <attribute name="title">
+            <string>Tab 1</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_29">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_42">
+              <item>
+               <widget class="QRadioButton" name="radioButtonVokoPlayer">
+                <property name="text">
+                 <string>vokoplayer</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="radioButtonSystemPlayer">
+                <property name="text">
+                 <string>S&amp;ystemplayer</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QToolButton" name="toolButtonPlayer">
+                <property name="text">
+                 <string>Help</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_12">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </widget>
         </item>
        </layout>
       </widget>

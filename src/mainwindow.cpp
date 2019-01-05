@@ -57,6 +57,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     vkSettings.readAll();
 
+    vkPlayer = new QvkPlayer();
+    Q_UNUSED(vkPlayer);
+
     QvkMagnifierController *vkMagnifierController = new QvkMagnifierController(ui);
     Q_UNUSED(vkMagnifierController);
 
@@ -118,10 +121,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 
     vk_setCornerWidget( ui->tabWidgetScreencast );
 
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreencast ), QIcon::fromTheme( "video-display", QIcon( ":/pictures/video-display.svg" ) ) );
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreenshot ), QIcon::fromTheme( "computer",      QIcon( ":/pictures/computer.svg" ) ) );
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarCamera ),     QIcon::fromTheme( "camera-web",    QIcon( ":/pictures/camera-web.svg" ) ) );
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarLog ),        QIcon::fromTheme( "help-about",    QIcon( ":/pictures/help-about.svg" ) ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreencast ), QIcon::fromTheme( "video-display",     QIcon( ":/pictures/video-display.svg" ) ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreenshot ), QIcon::fromTheme( "computer",          QIcon( ":/pictures/computer.svg" ) ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarCamera ),     QIcon::fromTheme( "camera-web",        QIcon( ":/pictures/camera-web.svg" ) ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ),     QIcon::fromTheme( "multimedia-player", QIcon( ":/pictures/help-about.svg" ) ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarLog ),        QIcon::fromTheme( "help-about",        QIcon( ":/pictures/help-about.svg" ) ) );
 
     makeAndSetValidIcon( ui->tabWidgetScreencast, 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/video-display.svg" ) ) );
     makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/audio-input-microphone.svg" ) ) );
@@ -368,6 +372,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->radioButtonBottomMiddle->clicked( true ); // funktioniert so nicht da Widget disabled sind
     ui->checkBoxAudioOnOff->clicked( false ); // sende Signal clicked mit value=false
     ui->checkBoxAudioOnOff->click();
+    ui->radioButtonVokoPlayer->click();
 
 }
 
@@ -1469,27 +1474,41 @@ void QvkMainWindow::slot_Continue()
 
 void QvkMainWindow::slot_Play()
 {
-    qDebug() << "[vokoscreen] play video with standard system player";
     QDir dir( ui->lineEditVideoPath->text() );
     QStringList filters;
     filters << "vokoscreen*";
     QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
 
-    QString string;
-    string.append( "file:///" );
-    string.append( ui->lineEditVideoPath->text() );
-    string.append( "/" );
-    string.append( videoFileList.at( 0 ) );
-    bool b = QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) );
-    if ( b == false )
+    if ( ui->radioButtonSystemPlayer->isChecked() == true )
     {
-        QDialog *newDialog = new QDialog;
-        Ui_NoPlayerDialog myUiDialog;
-        myUiDialog.setupUi( newDialog );
-        myUiDialog.labelPleaseInstall->setText( tr( "Please install a videoplayer" ) );
-        newDialog->setModal( true );
-        newDialog->setWindowTitle( "vokoscreen" );
-        newDialog->show();
+        qDebug() << "[vokoscreen] play video with standard system player";
+        QString string;
+        string.append( "file:///" );
+        string.append( ui->lineEditVideoPath->text() );
+        string.append( "/" );
+        string.append( videoFileList.at( 0 ) );
+        bool b = QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) );
+        if ( b == false )
+        {
+            QDialog *newDialog = new QDialog;
+            Ui_NoPlayerDialog myUiDialog;
+            myUiDialog.setupUi( newDialog );
+            myUiDialog.labelPleaseInstall->setText( tr( "Please install a videoplayer" ) );
+            newDialog->setModal( true );
+            newDialog->setWindowTitle( "vokoscreen" );
+            newDialog->show();
+        }
+    }
+
+    if ( ui->radioButtonVokoPlayer->isChecked() == true )
+    {
+        qDebug() << "[vokoscreen] play video with vokoplayer";
+        QString string;
+        string.append( ui->lineEditVideoPath->text() );
+        string.append( "/" );
+        string.append( videoFileList.at( 0 ) );
+        vkPlayer->setMediaFile( string );
+        vkPlayer->slot_play();
     }
 }
 
