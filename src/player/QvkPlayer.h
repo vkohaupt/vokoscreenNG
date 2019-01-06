@@ -18,14 +18,18 @@ public:
     explicit QvkPlayer(QWidget *parent = 0);
     ~QvkPlayer();
     void setMediaFile( QString string );
-    QString getMediaFile();
 
 
 public slots:
     void slot_play();
-    void slot_pause();
-    void slot_stop();
     void slot_mute();
+    void slot_durationChanged( qint64 value );
+    void slot_sliderMoved( int value );
+    void slot_positionChanged( qint64 value );
+
+    void slot_stateChanged( QMediaPlayer::State );
+    void slot_mutedChanged( bool muted );
+
 
 private slots:
     void slot_setNewImage( QImage image );
@@ -34,7 +38,7 @@ private slots:
 private:
     Ui::QvkPlayer *ui;
     QMediaPlayer *mediaPlayer;
-    QString mediaFile;
+
 
 protected:
     void mouseDoubleClickEvent( QMouseEvent *event );

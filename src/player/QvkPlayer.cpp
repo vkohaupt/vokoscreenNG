@@ -7,10 +7,8 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
 {
     ui->setupUi(this);
 
-
     setWindowTitle( "vokoplayer" );
-    QIcon icon;
-    icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
+    QIcon icon( QString::fromUtf8( ":/pictures/vokoscreen.png" ) );
     setWindowIcon( icon );
     ui->frame->setStyleSheet( "background-color: black;" );
     ui->pushButtonPlay->setIcon( QIcon::fromTheme( "media-playback-start" ) );
@@ -26,11 +24,29 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ), this, SLOT( slot_setNewImage( QImage ) ) );
     mediaPlayer->setVideoOutput( videoSurface );
 
-    connect( ui->pushButtonPlay,  SIGNAL( clicked( bool ) ),    this,        SLOT( slot_play() ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ),    this,        SLOT( slot_pause() ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ),    this,        SLOT( slot_stop() ) );
-    connect( ui->pushButtonMute,  SIGNAL( clicked( bool ) ),    this,        SLOT( slot_mute() ) );
-    connect( ui->sliderVolume,    SIGNAL( sliderMoved( int ) ), mediaPlayer, SLOT( setVolume( int ) ) );
+    connect( mediaPlayer,         SIGNAL( mutedChanged( bool ) ),      this,        SLOT( slot_mutedChanged( bool ) ) );
+    connect( ui->sliderVolume,    SIGNAL( sliderMoved( int ) ),        mediaPlayer, SLOT( setVolume( int ) ) );
+    connect( mediaPlayer,         SIGNAL( durationChanged( qint64 ) ), this,        SLOT( slot_durationChanged( qint64 ) ) );
+    connect( mediaPlayer,         SIGNAL( positionChanged( qint64 ) ), this,        SLOT( slot_positionChanged( qint64 ) ) );
+    connect( mediaPlayer,         SIGNAL( stateChanged( QMediaPlayer::State ) ), this, SLOT( slot_stateChanged( QMediaPlayer::State ) ) );
+    //connect( ui->sliderPosition,  SIGNAL( sliderMoved( int ) ),        this,        SLOT( slot_sliderMoved( int ) ) );
+
+    connect( ui->pushButtonPlay,  SIGNAL( clicked( bool ) ), this,                SLOT( slot_play() ) );
+
+    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), mediaPlayer,         SLOT( pause() ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonPlay,  SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonPlay,  SLOT( setFocus() ) );
+
+    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), mediaPlayer,         SLOT( stop() ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonPlay , SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonPlay,  SLOT( setFocus() ) );
+
+    connect( ui->pushButtonMute,  SIGNAL( clicked( bool ) ), this, SLOT( slot_mute() ) );
+
 }
 
 QvkPlayer::~QvkPlayer()
@@ -48,81 +64,90 @@ void QvkPlayer::closeEvent(QCloseEvent *event)
 
 void QvkPlayer::setMediaFile( QString string )
 {
-    mediaFile = string;
-}
-
-
-QString QvkPlayer::getMediaFile()
-{
-    return mediaFile;
+    mediaPlayer->setMedia( QUrl::fromLocalFile( "/home/vk/Downloads/vokoscreen.mp4" ) );
+//    mediaPlayer->setMedia( QUrl::fromLocalFile( string ) );
 }
 
 
 void QvkPlayer::slot_play()
 {
-    if ( mediaPlayer->state() == QMediaPlayer::StoppedState )
-    {
-        show();
-        //mediaPlayer->setMedia( QUrl::fromLocalFile( "/home/vk/Downloads/vokoscreen.mp4" ) );
-        mediaPlayer->setMedia( QUrl::fromLocalFile( getMediaFile() ) );
-        mediaPlayer->play();
-        ui->pushButtonPlay->setEnabled( false );
-        ui->pushButtonPause->setEnabled( true);
-        ui->pushButtonStop->setEnabled( true );
-        ui->pushButtonPause->setFocus();
-    }
-
-    if ( mediaPlayer->state() == QMediaPlayer::PausedState )
-    {
-        mediaPlayer->play();
-        ui->pushButtonPlay->setEnabled( false );
-        ui->pushButtonPause->setEnabled( true);
-        ui->pushButtonStop->setEnabled( true );
-        ui->pushButtonPause->setFocus();
-    }
-
-    qDebug() << "[vokoscreen}" << mediaPlayer->state();
-}
-
-
-void QvkPlayer::slot_pause()
-{
-    mediaPlayer->pause();
-    ui->pushButtonPlay->setEnabled( true );
-    ui->pushButtonPause->setEnabled( false );
+    show();
+    mediaPlayer->play();
+    ui->pushButtonPlay->setEnabled( false );
+    ui->pushButtonPause->setEnabled( true);
     ui->pushButtonStop->setEnabled( true );
-    ui->pushButtonPlay->setFocus();
-    qDebug() << "[vokoscreen}" << mediaPlayer->state();
-}
-
-
-void QvkPlayer::slot_stop()
-{
-    mediaPlayer->stop();
-    ui->pushButtonPlay->setEnabled( true );
-    ui->pushButtonPause->setEnabled( false );
-    ui->pushButtonStop->setEnabled( false );
-    ui->pushButtonPlay->setFocus();
+    ui->pushButtonPause->setFocus();
 }
 
 
 void QvkPlayer::slot_mute()
 {
-    if ( mediaPlayer->isMuted() == false )
+    ui->pushButtonMute->setEnabled( false );
+
+    if ( mediaPlayer->isMuted()== true )
     {
-        mediaPlayer->setMuted( true );
-        ui->pushButtonMute->setIcon( QIcon::fromTheme( "audio-volume-muted" ) );
-        ui->sliderVolume->setEnabled( false );
+        mediaPlayer->setMuted( false );
         return;
     }
 
-    if ( mediaPlayer->isMuted() == true )
+    if ( mediaPlayer->isMuted()== false )
     {
-        mediaPlayer->setMuted( false );
-        ui->pushButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high" ) );
-        ui->sliderVolume->setEnabled( true );
+        mediaPlayer->setMuted( true );
         return;
     }
+}
+
+
+void QvkPlayer::slot_mutedChanged( bool muted )
+{
+    if ( muted == true )
+    {
+        ui->pushButtonMute->setIcon( QIcon::fromTheme( "audio-volume-muted" ) );
+        ui->sliderVolume->setEnabled( false );
+        ui->pushButtonMute->setEnabled( true );
+        return;
+    }
+
+    if ( muted == false )
+    {
+        ui->pushButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high" ) );
+        ui->sliderVolume->setEnabled( true );
+        ui->pushButtonMute->setEnabled( true );
+        return;
+    }
+}
+
+/*
+ * Setzt den VideoSlider auf diw Maximale laenge des Videos
+ */
+void QvkPlayer::slot_durationChanged( qint64 value )
+{
+    ui->sliderPosition->setMaximum( value / 1000 );
+}
+
+/*
+ * deaktiviert
+ * Wenn User den Slider bewegt wird das Videobild nach vorne oder nach hinten gesetzt
+ */
+void QvkPlayer::slot_sliderMoved( int value )
+{
+    mediaPlayer->setPosition( value );
+}
+
+
+void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
+{
+    qDebug() << "[vokoscreen]" << state;
+}
+
+
+/*
+ * Wird von notyfier periodisch aufgerufen.
+ */
+void QvkPlayer::slot_positionChanged( qint64 value )
+{
+    ui->sliderPosition->setValue( value/1000 );
+    qDebug() << mediaPlayer->duration() << value;
 }
 
 
