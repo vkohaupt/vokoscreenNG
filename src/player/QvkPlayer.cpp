@@ -64,8 +64,8 @@ void QvkPlayer::closeEvent(QCloseEvent *event)
 
 void QvkPlayer::setMediaFile( QString string )
 {
-    mediaPlayer->setMedia( QUrl::fromLocalFile( "/home/vk/Downloads/vokoscreen.mp4" ) );
-//    mediaPlayer->setMedia( QUrl::fromLocalFile( string ) );
+//    mediaPlayer->setMedia( QUrl::fromLocalFile( "/home/vk/Downloads/vokoscreen.mp4" ) );
+    mediaPlayer->setMedia( QUrl::fromLocalFile( string ) );
 }
 
 

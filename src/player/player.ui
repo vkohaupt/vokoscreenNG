@@ -166,7 +166,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="toolButtonHelp">
+         <widget class="QToolButton" name="toolButtonHelpPlayer">
           <property name="text">
            <string>Help</string>
           </property>
