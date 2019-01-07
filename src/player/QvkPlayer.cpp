@@ -11,10 +11,10 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     QIcon icon( QString::fromUtf8( ":/pictures/vokoscreen.png" ) );
     setWindowIcon( icon );
     ui->frame->setStyleSheet( "background-color: black;" );
-    ui->pushButtonPlay->setIcon( QIcon::fromTheme( "media-playback-start" ) );
-    ui->pushButtonPause->setIcon( QIcon::fromTheme( "media-playback-pause" ) );
-    ui->pushButtonStop->setIcon( QIcon::fromTheme( "media-playback-stop" ) );
-    ui->pushButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high" ) );
+    ui->pushButtonPlay->setIcon( QIcon::fromTheme( "media-playback-start" , style()->standardIcon( QStyle::SP_MediaPlay ) ) );
+    ui->pushButtonPause->setIcon( QIcon::fromTheme( "media-playback-pause", style()->standardIcon( QStyle::SP_MediaPause ) ) );
+    ui->pushButtonStop->setIcon( QIcon::fromTheme( "media-playback-stop"  , style()->standardIcon( QStyle::SP_MediaStop ) ) );
+    ui->pushButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high"    , style()->standardIcon( QStyle::SP_MediaVolume ) ) );
 
     mediaPlayer = new QMediaPlayer;
     ui->sliderVolume->setValue( 70 );
@@ -102,7 +102,7 @@ void QvkPlayer::slot_mutedChanged( bool muted )
 {
     if ( muted == true )
     {
-        ui->pushButtonMute->setIcon( QIcon::fromTheme( "audio-volume-muted" ) );
+        ui->pushButtonMute->setIcon( QIcon::fromTheme( "audio-volume-muted", style()->standardIcon( QStyle::SP_MediaVolumeMuted ) ) );
         ui->sliderVolume->setEnabled( false );
         ui->pushButtonMute->setEnabled( true );
         return;
@@ -110,7 +110,7 @@ void QvkPlayer::slot_mutedChanged( bool muted )
 
     if ( muted == false )
     {
-        ui->pushButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high" ) );
+        ui->pushButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high", style()->standardIcon( QStyle::SP_MediaVolume ) ) );
         ui->sliderVolume->setEnabled( true );
         ui->pushButtonMute->setEnabled( true );
         return;
