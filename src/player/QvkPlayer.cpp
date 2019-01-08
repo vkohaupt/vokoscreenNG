@@ -25,11 +25,9 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     mediaPlayer->setVideoOutput( videoSurface );
 
     connect( mediaPlayer,         SIGNAL( mutedChanged( bool ) ),      this,        SLOT( slot_mutedChanged( bool ) ) );
-    connect( ui->sliderVolume,    SIGNAL( sliderMoved( int ) ),        mediaPlayer, SLOT( setVolume( int ) ) );
     connect( mediaPlayer,         SIGNAL( durationChanged( qint64 ) ), this,        SLOT( slot_durationChanged( qint64 ) ) );
     connect( mediaPlayer,         SIGNAL( positionChanged( qint64 ) ), this,        SLOT( slot_positionChanged( qint64 ) ) );
     connect( mediaPlayer,         SIGNAL( stateChanged( QMediaPlayer::State ) ), this, SLOT( slot_stateChanged( QMediaPlayer::State ) ) );
-    //connect( ui->sliderPosition,  SIGNAL( sliderMoved( int ) ),        this,        SLOT( slot_sliderMoved( int ) ) );
 
     connect( ui->pushButtonPlay,  SIGNAL( clicked( bool ) ), this,                SLOT( slot_play() ) );
 
@@ -44,6 +42,9 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonPlay , SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonPlay,  SLOT( setFocus() ) );
+
+    connect( ui->sliderVolume,    SIGNAL( sliderMoved( int ) ), mediaPlayer, SLOT( setVolume( int ) ) );
+    //connect( ui->sliderPosition,  SIGNAL( sliderMoved( int ) ),        this,        SLOT( slot_sliderMoved( int ) ) );
 
     connect( ui->pushButtonMute,  SIGNAL( clicked( bool ) ), this, SLOT( slot_mute() ) );
 
@@ -150,6 +151,8 @@ void QvkPlayer::slot_positionChanged( qint64 value )
 {
     ui->sliderPosition->setValue( value/1000 );
     qDebug() << mediaPlayer->duration() << value;
+
+    // If duration at end set click Button stop and set slider to zero
     if (  mediaPlayer->duration() == value )
     {
         ui->pushButtonStop->click();
