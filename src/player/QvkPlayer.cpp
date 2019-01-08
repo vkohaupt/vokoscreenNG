@@ -140,7 +140,7 @@ void QvkPlayer::slot_sliderMoved( int value )
 
 void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
 {
-    qDebug() << "[vokoscreen]" << state;
+    qDebug() << "[vokoplayer]" << state;
 
     if ( state == QMediaPlayer::StoppedState )
     {
