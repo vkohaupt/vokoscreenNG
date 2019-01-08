@@ -141,6 +141,15 @@ void QvkPlayer::slot_sliderMoved( int value )
 void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
 {
     qDebug() << "[vokoscreen]" << state;
+
+    if ( state == QMediaPlayer::StoppedState )
+    {
+        ui->pushButtonStop->setEnabled( false );
+        ui->pushButtonPause->setEnabled( false );
+        ui->pushButtonPlay->setEnabled( true );
+        ui->pushButtonPlay->setFocus();
+        ui->sliderVideo->setValue( 0 );
+    }
 }
 
 
@@ -149,15 +158,12 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
  */
 void QvkPlayer::slot_positionChanged( qint64 value )
 {
-    ui->sliderVideo->setValue( value/1000 );
-    qDebug() << mediaPlayer->duration() << value;
-
-    // If duration at end set click Button stop and set slider to zero
-    if (  mediaPlayer->duration() == value )
+    if ( mediaPlayer->state() == QMediaPlayer::PlayingState )
     {
-        ui->pushButtonStop->click();
-        ui->sliderVideo->setValue( 0 );
+       ui->sliderVideo->setValue( value/1000 );
     }
+
+    qDebug() << mediaPlayer->duration() << value;
 }
 
 
