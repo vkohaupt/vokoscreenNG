@@ -97,7 +97,7 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QProgressBar" name="sliderPosition">
+       <widget class="QProgressBar" name="sliderVideo">
         <property name="value">
          <number>24</number>
         </property>

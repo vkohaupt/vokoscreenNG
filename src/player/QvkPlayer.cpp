@@ -125,7 +125,7 @@ void QvkPlayer::slot_mutedChanged( bool muted )
  */
 void QvkPlayer::slot_durationChanged( qint64 value )
 {
-    ui->sliderPosition->setMaximum( value / 1000 );
+    ui->sliderVideo->setMaximum( value / 1000 );
 }
 
 /*
@@ -149,14 +149,14 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
  */
 void QvkPlayer::slot_positionChanged( qint64 value )
 {
-    ui->sliderPosition->setValue( value/1000 );
+    ui->sliderVideo->setValue( value/1000 );
     qDebug() << mediaPlayer->duration() << value;
 
     // If duration at end set click Button stop and set slider to zero
     if (  mediaPlayer->duration() == value )
     {
         ui->pushButtonStop->click();
-        ui->sliderPosition->setValue( 0 );
+        ui->sliderVideo->setValue( 0 );
     }
 }
 
