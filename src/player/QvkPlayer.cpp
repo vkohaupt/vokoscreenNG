@@ -87,12 +87,14 @@ void QvkPlayer::slot_mute()
     if ( mediaPlayer->isMuted()== true )
     {
         mediaPlayer->setMuted( false );
+        ui->pushButtonMute->setFocus();
         return;
     }
 
     if ( mediaPlayer->isMuted()== false )
     {
         mediaPlayer->setMuted( true );
+        ui->pushButtonMute->setFocus();
         return;
     }
 }
@@ -148,6 +150,11 @@ void QvkPlayer::slot_positionChanged( qint64 value )
 {
     ui->sliderPosition->setValue( value/1000 );
     qDebug() << mediaPlayer->duration() << value;
+    if (  mediaPlayer->duration() == value )
+    {
+        ui->pushButtonStop->click();
+        ui->sliderPosition->setValue( 0 );
+    }
 }
 
 
