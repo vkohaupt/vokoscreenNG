@@ -2,6 +2,8 @@
 #include "ui_player.h"
 #include "QvkPlayerVideoSurface.h"
 
+#include <QTime>
+
 QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
                                         ui(new Ui::QvkPlayer)
 {
@@ -120,12 +122,17 @@ void QvkPlayer::slot_mutedChanged( bool muted )
     }
 }
 
-/*
- * Setzt den VideoSlider auf diw Maximale laenge des Videos
- */
+
 void QvkPlayer::slot_durationChanged( qint64 value )
 {
+    // Set lenght from video on slider
     ui->sliderVideo->setMaximum( value / 1000 );
+
+    // Show lenght from video in label
+    QTime time( 0, 0, 0 );
+    QTime t;
+    t = time.addSecs( value / 1000 );
+    ui->labelVideoLenght->setText( t.toString( "HH:hh:ss") );
 }
 
 /*
@@ -161,9 +168,13 @@ void QvkPlayer::slot_positionChanged( qint64 value )
     if ( mediaPlayer->state() == QMediaPlayer::PlayingState )
     {
        ui->sliderVideo->setValue( value/1000 );
-    }
 
-    qDebug() << mediaPlayer->duration() << value;
+       // Show playing tim from video in label
+       QTime time( 0, 0, 0 );
+       QTime t;
+       t = time.addSecs( value / 1000 );
+       ui->labelDuration->setText( t.toString( "HH:hh:ss") );
+    }
 }
 
 
