@@ -123,16 +123,25 @@ void QvkPlayer::slot_mutedChanged( bool muted )
 }
 
 
+QString QvkPlayer::get_time( qint64 value )
+{
+    int sec = (value/1000) % 60;
+    int min = (value/1000/60) % 60;
+    int hour= (value/1000/60/60);
+
+    QTime time( 0, 0, 0 );
+    time.setHMS( hour, min, sec );
+    return time.toString( "HH:mm:ss" );
+}
+
+
 void QvkPlayer::slot_durationChanged( qint64 value )
 {
     // Set lenght from video on slider
     ui->sliderVideo->setMaximum( value / 1000 );
 
     // Show lenght from video in label
-    QTime time( 0, 0, 0 );
-    QTime t;
-    t = time.addSecs( value / 1000 );
-    ui->labelVideoLenght->setText( t.toString( "HH:hh:ss") );
+    ui->labelVideoLenght->setText( get_time( value ) );
 }
 
 /*
@@ -169,11 +178,8 @@ void QvkPlayer::slot_positionChanged( qint64 value )
     {
        ui->sliderVideo->setValue( value/1000 );
 
-       // Show playing tim from video in label
-       QTime time( 0, 0, 0 );
-       QTime t;
-       t = time.addSecs( value / 1000 );
-       ui->labelDuration->setText( t.toString( "HH:hh:ss") );
+       // Show playing time in label
+       ui->labelDuration->setText( get_time( value ) );
     }
 }
 

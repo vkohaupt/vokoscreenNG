@@ -38,6 +38,7 @@ private slots:
 private:
     Ui::QvkPlayer *ui;
     QMediaPlayer *mediaPlayer;
+    QString get_time( qint64 value );
 
 
 protected:
