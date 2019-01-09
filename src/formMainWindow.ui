@@ -343,7 +343,7 @@
                    </size>
                   </property>
                   <property name="text">
-                   <string>0</string>
+                   <string notr="true">0</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -367,7 +367,7 @@
                 <item row="1" column="2">
                  <widget class="QLabel" name="labelVideoSize">
                   <property name="text">
-                   <string>0</string>
+                   <string notr="true">0</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -390,14 +390,14 @@
                 <item row="0" column="3">
                  <widget class="QLabel" name="label_15">
                   <property name="text">
-                   <string>MB</string>
+                   <string notr="true">MB</string>
                   </property>
                  </widget>
                 </item>
                 <item row="1" column="3">
                  <widget class="QLabel" name="label_16">
                   <property name="text">
-                   <string>KB</string>
+                   <string notr="true">KB</string>
                   </property>
                  </widget>
                 </item>
@@ -425,7 +425,7 @@
                 <item>
                  <widget class="QLabel" name="labelInfoRecordTime">
                   <property name="text">
-                   <string>00:00:00</string>
+                   <string notr="true">00:00:00</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -599,7 +599,7 @@
                     <item>
                      <widget class="QLabel" name="label_20">
                       <property name="text">
-                       <string>23</string>
+                       <string notr="true">23</string>
                       </property>
                       <property name="alignment">
                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -609,59 +609,59 @@
                     <item>
                      <widget class="QComboBox" name="comboBoxx264Preset">
                       <property name="currentText">
-                       <string notr="true">veryfast</string>
+                       <string notr="true">ultrafast</string>
                       </property>
                       <property name="currentIndex">
-                       <number>2</number>
+                       <number>0</number>
                       </property>
                       <item>
                        <property name="text">
-                        <string>ultrafast</string>
+                        <string notr="true">ultrafast</string>
                        </property>
                       </item>
                       <item>
                        <property name="text">
-                        <string>superfast</string>
+                        <string notr="true">superfast</string>
                        </property>
                       </item>
                       <item>
                        <property name="text">
-                        <string>veryfast</string>
+                        <string notr="true">veryfast</string>
                        </property>
                       </item>
                       <item>
                        <property name="text">
-                        <string>faster</string>
+                        <string notr="true">faster</string>
                        </property>
                       </item>
                       <item>
                        <property name="text">
-                        <string>fast</string>
+                        <string notr="true">fast</string>
                        </property>
                       </item>
                       <item>
                        <property name="text">
-                        <string>medium</string>
+                        <string notr="true">medium</string>
                        </property>
                       </item>
                       <item>
                        <property name="text">
-                        <string>slow</string>
+                        <string notr="true">slow</string>
                        </property>
                       </item>
                       <item>
                        <property name="text">
-                        <string>slower</string>
+                        <string notr="true">slower</string>
                        </property>
                       </item>
                       <item>
                        <property name="text">
-                        <string>veryslow</string>
+                        <string notr="true">veryslow</string>
                        </property>
                       </item>
                       <item>
                        <property name="text">
-                        <string>placebo</string>
+                        <string notr="true">placebo</string>
                        </property>
                       </item>
                      </widget>
@@ -2180,7 +2180,7 @@
           <item>
            <widget class="QToolButton" name="toolButtonHelpScreenshotExecute">
             <property name="text">
-             <string>Help</string>
+             <string notr="true">Help</string>
             </property>
            </widget>
           </item>
@@ -2545,7 +2545,7 @@
               <item>
                <widget class="QRadioButton" name="radioButtonVokoPlayer">
                 <property name="text">
-                 <string>vokoplayer</string>
+                 <string notr="true">vokoplayer</string>
                 </property>
                </widget>
               </item>
@@ -2572,7 +2572,7 @@
               <item>
                <widget class="QToolButton" name="toolButtonPlayer">
                 <property name="text">
-                 <string>Help</string>
+                 <string notr="true">Help</string>
                 </property>
                </widget>
               </item>
