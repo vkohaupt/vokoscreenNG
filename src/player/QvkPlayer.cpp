@@ -17,6 +17,7 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     ui->pushButtonPause->setIcon( QIcon::fromTheme( "media-playback-pause", style()->standardIcon( QStyle::SP_MediaPause ) ) );
     ui->pushButtonStop->setIcon( QIcon::fromTheme( "media-playback-stop"  , style()->standardIcon( QStyle::SP_MediaStop ) ) );
     ui->pushButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high"    , style()->standardIcon( QStyle::SP_MediaVolume ) ) );
+    ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen" ) );
 
     mediaPlayer = new QMediaPlayer;
     ui->sliderVolume->setValue( 70 );
@@ -49,6 +50,10 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     //connect( ui->sliderPosition,  SIGNAL( sliderMoved( int ) ),        this,        SLOT( slot_sliderMoved( int ) ) );
 
     connect( ui->pushButtonMute,  SIGNAL( clicked( bool ) ), this, SLOT( slot_mute() ) );
+
+    connect( ui->toolButtonFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonFullscreen() ) );
+
+
 
 }
 
@@ -195,6 +200,22 @@ void QvkPlayer::slot_setNewImage( QImage image )
     ui->labelPlayer->setPixmap( QPixmap::fromImage( transformedImage, Qt::AutoColor) );
 
 //    ui->labelPlayer->setPixmap( QPixmap::fromImage( image.scaled( ui->frame->width(), ui->frame->height(), Qt::KeepAspectRatio, Qt::SmoothTransformation ), Qt::AutoColor) );
+
+}
+
+
+void QvkPlayer::slot_toolButtonFullscreen()
+{
+    if ( isFullScreen() == true )
+    {
+        ui->widgetMenue->show();
+        showNormal();
+    }
+    else
+    {
+        ui->widgetMenue->hide();
+        showFullScreen();
+    }
 
 }
 

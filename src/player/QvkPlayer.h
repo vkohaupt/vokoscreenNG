@@ -30,6 +30,7 @@ public slots:
     void slot_stateChanged( QMediaPlayer::State );
     void slot_mutedChanged( bool muted );
 
+    void slot_toolButtonFullscreen();
 
 private slots:
     void slot_setNewImage( QImage image );
