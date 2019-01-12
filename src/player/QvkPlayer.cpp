@@ -12,6 +12,11 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     setWindowTitle( "vokoplayer" );
     QIcon icon( QString::fromUtf8( ":/pictures/vokoscreen.png" ) );
     setWindowIcon( icon );
+
+    ui->toolButtonMove->hide();
+    connect( ui->toolButtonMove, SIGNAL( pressed() ), this, SLOT( slot_pressed() ) );
+
+
     ui->frame->setStyleSheet( "background-color: black;" );
     ui->pushButtonPlay->setIcon( QIcon::fromTheme( "media-playback-start" , style()->standardIcon( QStyle::SP_MediaPlay ) ) );
     ui->pushButtonPause->setIcon( QIcon::fromTheme( "media-playback-pause", style()->standardIcon( QStyle::SP_MediaPause ) ) );
@@ -225,12 +230,19 @@ void QvkPlayer::mouseDoubleClickEvent( QMouseEvent *event )
     (void) event;
     if ( isFullScreen() == true )
     {
+        ui->verticalLayout_4->addWidget( ui->widgetMenue );
+        ui->frame->setStyleSheet( "background-color: black;"  );
         ui->widgetMenue->show();
+        ui->toolButtonMove->hide();
         showNormal();
     }
     else
     {
-        ui->widgetMenue->hide();
+        ui->widgetMenue->setParent( ui->labelPlayer);
+       // ui->widgetMenue->move(0, 200);
+        ui->frame->setStyleSheet( "background-color: lightgray;"  );
+        ui->widgetMenue->show();
+        ui->toolButtonMove->show();
         showFullScreen();
     }
 }
@@ -258,5 +270,25 @@ void QvkPlayer::keyPressEvent( QKeyEvent *event )
             showFullScreen();
         }
         return;
+    }
+}
+
+
+void QvkPlayer::mousePressEvent(QMouseEvent *event)
+{
+}
+
+void QvkPlayer::slot_pressed()
+{
+}
+
+void QvkPlayer::mouseMoveEvent( QMouseEvent *event )
+{
+    if ( isFullScreen() == true )
+    {
+        if ( event->buttons() == Qt::LeftButton )
+        {
+            ui->widgetMenue->move( event->pos() );
+        }
     }
 }

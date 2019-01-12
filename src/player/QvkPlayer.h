@@ -1,10 +1,13 @@
 #ifndef QVKPLAYER_H
 #define QVKPLAYER_H
 
+//#include "ui_playermenuebar.h"
+
 #include <QWidget>
 #include <QMediaPlayer>
 #include <QMouseEvent>
 #include <QKeyEvent>
+#include <QMouseEvent>
 
 namespace Ui {
 class QvkPlayer;
@@ -34,10 +37,11 @@ public slots:
 
 private slots:
     void slot_setNewImage( QImage image );
-
+    void slot_pressed();
 
 private:
     Ui::QvkPlayer *ui;
+
     QMediaPlayer *mediaPlayer;
     QString get_time( qint64 value );
 
@@ -46,6 +50,8 @@ protected:
     void mouseDoubleClickEvent( QMouseEvent *event );
     void closeEvent(QCloseEvent *event);
     void keyPressEvent( QKeyEvent *event );
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
 
 
 };

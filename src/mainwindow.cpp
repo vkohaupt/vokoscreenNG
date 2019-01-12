@@ -65,8 +65,23 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     QvkHelp *vkHelp = new QvkHelp( this, ui );
     Q_UNUSED( vkHelp );
 
+    /*
+     * If running with "./vokoscreen -platform wayland" comes a Memory access error
+     * On Wayland we have to time no access
+     * We must disable this function for Wayland but not for X11 and Windows
+     */
+#ifdef Q_OS_LINUX
+    if ( QX11Info::isPlatformX11() == true )
+    {
+        QvkGlobalShortcut *vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
+        Q_UNUSED(vkGlobalShortcut);
+    }
+#endif
+
+#ifdef Q_OS_Win
     QvkGlobalShortcut *vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
     Q_UNUSED(vkGlobalShortcut);
+#endif
 
     QvkInformation *vkInformation = new QvkInformation( this, ui);
     connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
