@@ -35,9 +35,10 @@ public slots:
 
     void slot_toolButtonFullscreen();
 
+
 private slots:
     void slot_setNewImage( QImage image );
-    void slot_pressed();
+
 
 private:
     Ui::QvkPlayer *ui;
@@ -45,12 +46,17 @@ private:
     QMediaPlayer *mediaPlayer;
     QString get_time( qint64 value );
 
+    int mouseInWidgetX;
+    int mouseInWidgetY;
+    bool pressed = false;
+
 
 protected:
     void mouseDoubleClickEvent( QMouseEvent *event );
     void closeEvent(QCloseEvent *event);
     void keyPressEvent( QKeyEvent *event );
     void mousePressEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
 
 

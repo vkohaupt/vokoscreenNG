@@ -13,10 +13,6 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     QIcon icon( QString::fromUtf8( ":/pictures/vokoscreen.png" ) );
     setWindowIcon( icon );
 
-    ui->toolButtonMove->hide();
-    connect( ui->toolButtonMove, SIGNAL( pressed() ), this, SLOT( slot_pressed() ) );
-
-
     ui->frame->setStyleSheet( "background-color: black;" );
     ui->pushButtonPlay->setIcon( QIcon::fromTheme( "media-playback-start" , style()->standardIcon( QStyle::SP_MediaPlay ) ) );
     ui->pushButtonPause->setIcon( QIcon::fromTheme( "media-playback-pause", style()->standardIcon( QStyle::SP_MediaPause ) ) );
@@ -51,15 +47,12 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonPlay , SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonPlay,  SLOT( setFocus() ) );
 
+    connect( ui->toolButtonFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonFullscreen() ) );
+
     connect( ui->sliderVolume,    SIGNAL( sliderMoved( int ) ), mediaPlayer, SLOT( setVolume( int ) ) );
     //connect( ui->sliderPosition,  SIGNAL( sliderMoved( int ) ),        this,        SLOT( slot_sliderMoved( int ) ) );
 
     connect( ui->pushButtonMute,  SIGNAL( clicked( bool ) ), this, SLOT( slot_mute() ) );
-
-    connect( ui->toolButtonFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonFullscreen() ) );
-
-
-
 }
 
 QvkPlayer::~QvkPlayer()
@@ -233,16 +226,13 @@ void QvkPlayer::mouseDoubleClickEvent( QMouseEvent *event )
         ui->verticalLayout_4->addWidget( ui->widgetMenue );
         ui->frame->setStyleSheet( "background-color: black;"  );
         ui->widgetMenue->show();
-        ui->toolButtonMove->hide();
         showNormal();
     }
     else
     {
         ui->widgetMenue->setParent( ui->labelPlayer);
-       // ui->widgetMenue->move(0, 200);
         ui->frame->setStyleSheet( "background-color: lightgray;"  );
         ui->widgetMenue->show();
-        ui->toolButtonMove->show();
         showFullScreen();
     }
 }
@@ -276,19 +266,34 @@ void QvkPlayer::keyPressEvent( QKeyEvent *event )
 
 void QvkPlayer::mousePressEvent(QMouseEvent *event)
 {
+    if ( isFullScreen() == true )
+    {
+        if ( ui->widgetMenue->underMouse() )
+        {
+            mouseInWidgetX = event->pos().x() - ui->widgetMenue->pos().x();
+            mouseInWidgetY = event->pos().y() - ui->widgetMenue->pos().y();
+            setCursor( Qt::SizeAllCursor );
+            pressed = true;
+        }
+    }
 }
 
-void QvkPlayer::slot_pressed()
+
+void QvkPlayer::mouseReleaseEvent(QMouseEvent *event)
 {
+    Q_UNUSED(event);
+    unsetCursor();
+    pressed = false;
 }
+
 
 void QvkPlayer::mouseMoveEvent( QMouseEvent *event )
 {
     if ( isFullScreen() == true )
     {
-        if ( event->buttons() == Qt::LeftButton )
+        if ( ( event->buttons() == Qt::LeftButton ) and ( pressed == true ) )
         {
-            ui->widgetMenue->move( event->pos() );
+            ui->widgetMenue->move( QPoint( event->pos().x() - mouseInWidgetX, event->pos().y() - mouseInWidgetY ) );
         }
     }
 }

@@ -24,8 +24,9 @@
 #include <QScreen>
 #include <QLibraryInfo>
 #include <QThread>
-#include <QtDebug>
 #include <QMessageBox>
+#include <QFileSystemModel>
+
 
 #ifdef Q_OS_LINUX
   #include <QX11Info>
@@ -396,6 +397,7 @@ QvkMainWindow::~QvkMainWindow()
     delete ui;
 }
 
+
 #ifdef Q_OS_LINUX
 void QvkMainWindow::showEvent( QShowEvent *event )
 {
@@ -408,7 +410,7 @@ void QvkMainWindow::showEvent( QShowEvent *event )
         messageBox->setWindowIcon( icon );
         messageBox->setIcon( QMessageBox::Information );
         messageBox->setText( tr( "Detect a Wayland desktop session" ) );
-        messageBox->setInformativeText( tr( "Vokoscreen have to time no Wayland support. A screencast or a screenshot show a black screen. Please logout and start a X11 Desktop session" ) );
+        messageBox->setInformativeText( tr( "Vokoscreen has to time no Wayland support. A screencast or a screenshot show a black screen. Please logout and start a X11 Desktop session" ) );
         messageBox->exec();
     }
     else
@@ -417,6 +419,7 @@ void QvkMainWindow::showEvent( QShowEvent *event )
     }
 }
 #endif
+
 
 void QvkMainWindow::slot_videoCodecChanged( QString codec )
 {

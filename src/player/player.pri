@@ -5,5 +5,4 @@ HEADERS     += $$PWD/QvkPlayerVideoSurface.h \
   
 SOURCES     += $$PWD/QvkPlayer.cpp
 
-FORMS       += $$PWD/player.ui \
-    $$PWD/playermenuebar.ui
+FORMS       += $$PWD/player.ui
