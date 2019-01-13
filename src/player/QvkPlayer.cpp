@@ -3,6 +3,7 @@
 #include "QvkPlayerVideoSurface.h"
 
 #include <QTime>
+#include <QStyle>
 
 QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
                                         ui(new Ui::QvkPlayer)
