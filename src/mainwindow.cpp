@@ -25,6 +25,7 @@
 #include <QLibraryInfo>
 #include <QThread>
 #include <QtDebug>
+#include <QMessageBox>
 
 #ifdef Q_OS_LINUX
   #include <QX11Info>
@@ -52,6 +53,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 {
     ui->setupUi(this);
+
     QvkLogController *vklogController = new QvkLogController( ui );
     Q_UNUSED(vklogController);
 
@@ -65,9 +67,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     QvkHelp *vkHelp = new QvkHelp( this, ui );
     Q_UNUSED( vkHelp );
 
-    /*
-     * If running with "./vokoscreen -platform wayland" comes a Memory access error
-     * On Wayland we have to time no access
+    /* Wayland
+     * If start with "./vokoscreen -platform wayland" comes a Memory access error
+     * On Wayland we have to time no access to GlobalShortcuts
      * We must disable this function for Wayland but not for X11 and Windows
      */
 #ifdef Q_OS_LINUX
@@ -386,7 +388,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     ui->checkBoxAudioOnOff->clicked( false ); // sende Signal clicked mit value=false
     ui->checkBoxAudioOnOff->click();
     ui->radioButtonVokoPlayer->click();
-
 }
 
 
@@ -395,6 +396,27 @@ QvkMainWindow::~QvkMainWindow()
     delete ui;
 }
 
+#ifdef Q_OS_LINUX
+void QvkMainWindow::showEvent( QShowEvent *event )
+{
+    Q_UNUSED(event);
+    if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "wayland" )
+    {
+        qDebug().noquote() << tr( "[vokoscreen] Desktop session is a Wayland session" );
+        QMessageBox *messageBox = new QMessageBox();
+        QIcon icon( QString::fromUtf8( ":/pictures/vokoscreen.png" ) );
+        messageBox->setWindowIcon( icon );
+        messageBox->setIcon( QMessageBox::Information );
+        messageBox->setText( tr( "Detect a Wayland desktop session" ) );
+        messageBox->setInformativeText( tr( "Vokoscreen have to time no Wayland support. A screencast or a screenshot show a black screen. Please logout and start a X11 Desktop session" ) );
+        messageBox->exec();
+    }
+    else
+    {
+        qDebug().noquote() << tr( "[vokoscreen] Desktop session is a X11 session" );
+    }
+}
+#endif
 
 void QvkMainWindow::slot_videoCodecChanged( QString codec )
 {
