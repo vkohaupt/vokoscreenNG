@@ -28,9 +28,9 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ), this, SLOT( slot_setNewImage( QImage ) ) );
     mediaPlayer->setVideoOutput( videoSurface );
 
-    connect( mediaPlayer,         SIGNAL( mutedChanged( bool ) ),      this,        SLOT( slot_mutedChanged( bool ) ) );
-    connect( mediaPlayer,         SIGNAL( durationChanged( qint64 ) ), this,        SLOT( slot_durationChanged( qint64 ) ) );
-    connect( mediaPlayer,         SIGNAL( positionChanged( qint64 ) ), this,        SLOT( slot_positionChanged( qint64 ) ) );
+    connect( mediaPlayer,         SIGNAL( mutedChanged( bool ) ),                this, SLOT( slot_mutedChanged( bool ) ) );
+    connect( mediaPlayer,         SIGNAL( durationChanged( qint64 ) ),           this, SLOT( slot_durationChanged( qint64 ) ) );
+    connect( mediaPlayer,         SIGNAL( positionChanged( qint64 ) ),           this, SLOT( slot_positionChanged( qint64 ) ) );
     connect( mediaPlayer,         SIGNAL( stateChanged( QMediaPlayer::State ) ), this, SLOT( slot_stateChanged( QMediaPlayer::State ) ) );
 
     connect( ui->pushButtonPlay,  SIGNAL( clicked( bool ) ), this,                SLOT( slot_play() ) );
@@ -206,6 +206,7 @@ void QvkPlayer::vk_showFullscreen()
 {
     ui->widgetMenue->setParent( ui->labelPlayer);
     ui->frame->setStyleSheet( "background-color: lightgray;"  );
+    ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-restore" ) );
     ui->widgetMenue->show();
     showFullScreen();
 }
@@ -215,6 +216,7 @@ void QvkPlayer::vk_showNormal()
 {
     ui->verticalLayout_4->addWidget( ui->widgetMenue );
     ui->frame->setStyleSheet( "background-color: black;"  );
+    ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen" ) );
     ui->widgetMenue->show();
     showNormal();
 }
@@ -230,7 +232,6 @@ void QvkPlayer::slot_toolButtonFullscreen()
     {
         vk_showFullscreen();
     }
-
 }
 
 
@@ -300,5 +301,15 @@ void QvkPlayer::mouseMoveEvent( QMouseEvent *event )
         {
             ui->widgetMenue->move( QPoint( event->pos().x() - mouseInWidgetX, event->pos().y() - mouseInWidgetY ) );
         }
+    }
+}
+
+
+void QvkPlayer::resizeEvent(QResizeEvent *event)
+{
+    if ( isFullScreen() == true )
+    {
+        ui->widgetMenue->move( ui->frame->width()/2 - ui->widgetMenue->width()/2,
+                               ui->frame->height() - ui->widgetMenue->height() );
     }
 }

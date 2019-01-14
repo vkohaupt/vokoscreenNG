@@ -23,27 +23,23 @@ public:
 
 public slots:
     void slot_play();
-    void slot_mute();
-    void slot_durationChanged( qint64 value );
-    void slot_sliderMoved( int value );
-    void slot_positionChanged( qint64 value );
-
-    void slot_stateChanged( QMediaPlayer::State );
-    void slot_mutedChanged( bool muted );
-
-    void slot_toolButtonFullscreen();
 
 
 private slots:
     void slot_setNewImage( QImage image );
+    void slot_mute();
+    void slot_durationChanged( qint64 value );
+    void slot_sliderMoved( int value );
+    void slot_positionChanged( qint64 value );
+    void slot_stateChanged( QMediaPlayer::State );
+    void slot_mutedChanged( bool muted );
+    void slot_toolButtonFullscreen();
 
 
 private:
     Ui::QvkPlayer *ui;
-
     QMediaPlayer *mediaPlayer;
     QString get_time( qint64 value );
-
     int mouseInWidgetX;
     int mouseInWidgetY;
     bool pressed = false;
@@ -58,6 +54,7 @@ protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
+    void resizeEvent(QResizeEvent *event);
 
 
 };
