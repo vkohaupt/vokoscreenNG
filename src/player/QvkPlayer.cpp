@@ -202,17 +202,33 @@ void QvkPlayer::slot_setNewImage( QImage image )
 }
 
 
+void QvkPlayer::vk_showFullscreen()
+{
+    ui->widgetMenue->setParent( ui->labelPlayer);
+    ui->frame->setStyleSheet( "background-color: lightgray;"  );
+    ui->widgetMenue->show();
+    showFullScreen();
+}
+
+
+void QvkPlayer::vk_showNormal()
+{
+    ui->verticalLayout_4->addWidget( ui->widgetMenue );
+    ui->frame->setStyleSheet( "background-color: black;"  );
+    ui->widgetMenue->show();
+    showNormal();
+}
+
+
 void QvkPlayer::slot_toolButtonFullscreen()
 {
     if ( isFullScreen() == true )
     {
-        ui->widgetMenue->show();
-        showNormal();
+        vk_showNormal();
     }
     else
     {
-        ui->widgetMenue->hide();
-        showFullScreen();
+        vk_showFullscreen();
     }
 
 }
@@ -223,17 +239,11 @@ void QvkPlayer::mouseDoubleClickEvent( QMouseEvent *event )
     (void) event;
     if ( isFullScreen() == true )
     {
-        ui->verticalLayout_4->addWidget( ui->widgetMenue );
-        ui->frame->setStyleSheet( "background-color: black;"  );
-        ui->widgetMenue->show();
-        showNormal();
+        vk_showNormal();
     }
     else
     {
-        ui->widgetMenue->setParent( ui->labelPlayer);
-        ui->frame->setStyleSheet( "background-color: lightgray;"  );
-        ui->widgetMenue->show();
-        showFullScreen();
+        vk_showFullscreen();
     }
 }
 
@@ -242,24 +252,19 @@ void QvkPlayer::keyPressEvent( QKeyEvent *event )
 {
     if ( event->key() == Qt::Key_Escape )
     {
-        ui->widgetMenue->show();
-        showNormal();
-        return;
+        vk_showNormal();
     }
 
     if ( event->key() == Qt::Key_F11 )
     {
         if ( isFullScreen() == true )
         {
-            ui->widgetMenue->show();
-            showNormal();
+            vk_showNormal();
         }
         else
         {
-            ui->widgetMenue->hide();
-            showFullScreen();
+            vk_showFullscreen();
         }
-        return;
     }
 }
 

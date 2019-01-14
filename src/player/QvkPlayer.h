@@ -1,13 +1,11 @@
 #ifndef QVKPLAYER_H
 #define QVKPLAYER_H
 
-//#include "ui_playermenuebar.h"
-
 #include <QWidget>
 #include <QMediaPlayer>
 #include <QMouseEvent>
 #include <QKeyEvent>
-#include <QMouseEvent>
+#include <QStyle>
 
 namespace Ui {
 class QvkPlayer;
@@ -49,6 +47,8 @@ private:
     int mouseInWidgetX;
     int mouseInWidgetY;
     bool pressed = false;
+    void vk_showFullscreen();
+    void vk_showNormal();
 
 
 protected:
