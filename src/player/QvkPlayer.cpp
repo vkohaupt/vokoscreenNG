@@ -171,7 +171,14 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
 
         QIcon icon( QString::fromUtf8( ":/pictures/vokoscreen.png" ) );
         ui->labelPlayer->setPixmap( icon.pixmap( 200, 185 ) );
-        vk_showNormal();
+        if ( isFullScreen() == true )
+        {
+           showMaximized();
+        }
+        else
+        {
+           vk_showNormal();
+        }
     }
 }
 
@@ -255,6 +262,28 @@ void QvkPlayer::mouseDoubleClickEvent( QMouseEvent *event )
 
 void QvkPlayer::keyPressEvent( QKeyEvent *event )
 {
+    if ( event->key() == Qt::Key_Space )
+    {
+        switch ( mediaPlayer->state() )
+        {
+            case QMediaPlayer::PlayingState:
+            {
+                ui->pushButtonPause->click();
+                break;
+            }
+            case QMediaPlayer::PausedState:
+            {
+                ui->pushButtonPlay->click();
+                break;
+            }
+            case QMediaPlayer::StoppedState:
+            {
+                ui->pushButtonPlay->click();
+                break;
+            }
+        }
+    }
+
     if ( event->key() == Qt::Key_Escape )
     {
         vk_showNormal();
@@ -311,6 +340,7 @@ void QvkPlayer::mouseMoveEvent( QMouseEvent *event )
 
 void QvkPlayer::resizeEvent(QResizeEvent *event)
 {
+    Q_UNUSED(event);
     if ( isFullScreen() == true )
     {
         ui->widgetMenue->move( ui->frame->width()/2 - ui->widgetMenue->width()/2,
