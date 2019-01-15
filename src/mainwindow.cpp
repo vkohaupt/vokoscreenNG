@@ -54,6 +54,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 {
     ui->setupUi(this);
+    qDebug() << "1111111111111111111111111111" << palette().color(backgroundRole());
 
     QvkLogController *vklogController = new QvkLogController( ui );
     Q_UNUSED(vklogController);

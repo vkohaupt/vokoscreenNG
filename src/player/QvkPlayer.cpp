@@ -3,6 +3,7 @@
 #include "QvkPlayerVideoSurface.h"
 
 #include <QTime>
+#include <QColor>
 
 QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
                                         ui(new Ui::QvkPlayer)
@@ -171,14 +172,7 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
 
         QIcon icon( QString::fromUtf8( ":/pictures/vokoscreen.png" ) );
         ui->labelPlayer->setPixmap( icon.pixmap( 200, 185 ) );
-        if ( isFullScreen() == true )
-        {
-           showMaximized();
-        }
-        else
-        {
-           vk_showNormal();
-        }
+        vk_showNormal();
     }
 }
 
@@ -216,7 +210,8 @@ void QvkPlayer::slot_setNewImage( QImage image )
 void QvkPlayer::vk_showFullscreen()
 {
     ui->widgetMenue->setParent( ui->labelPlayer);
-    ui->frame->setStyleSheet( "background-color: lightgray;"  );
+    ui->frame->setStyleSheet( "background-color: black;"  );
+    ui->widgetMenue->setStyleSheet( "background-color: lightgray;"  );
     ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-restore" ) );
     ui->widgetMenue->show();
     showFullScreen();
@@ -227,6 +222,8 @@ void QvkPlayer::vk_showNormal()
 {
     ui->verticalLayout_4->addWidget( ui->widgetMenue );
     ui->frame->setStyleSheet( "background-color: black;"  );
+    // An empty string set color to back
+    ui->widgetMenue->setStyleSheet( "" );
     ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen" ) );
     ui->widgetMenue->show();
     showNormal();

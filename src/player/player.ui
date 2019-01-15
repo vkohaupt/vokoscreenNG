@@ -83,6 +83,9 @@
    </item>
    <item>
     <widget class="QFrame" name="frame_2">
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
      </property>
