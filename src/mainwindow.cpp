@@ -370,6 +370,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
     Q_UNUSED(cameraController);
     vk_setCornerWidget( ui->tabWidgetCamera );
     makeAndSetValidIcon( ui->tabWidgetCamera, 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/camera-web.svg" ) ) );
+    connect( ui->pushButtonShowPlayer, SIGNAL( clicked( bool ) ), this, SLOT( slot_vokoPlayer() ) );
     // *****************End Camera ***********************************
 
 
@@ -395,6 +396,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
 QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
+}
+
+
+void QvkMainWindow::slot_vokoPlayer()
+{
+    vkPlayer->show();
 }
 
 
@@ -655,11 +662,15 @@ void QvkMainWindow::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIco
 void QvkMainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
 {
     QSize size = ui->tabWidgetSideBar->iconSize();
+
+    QTabBar *tabBar = ui->tabWidgetSideBar->tabBar();
+    tabBar->rect();
+
     QPixmap iconPixmap( icon.pixmap( size ) );
     iconPixmap = iconPixmap.scaled( size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
 
     QFont font;
-    font.setPointSize( 12 );
+    font.setPointSize( 10 );
     QFontMetrics fontMetrics( font );
     int textWidth = fontMetrics.width( ui->tabWidgetSideBar->tabToolTip( index ) );
     int textHight = fontMetrics.height();

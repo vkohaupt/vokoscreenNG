@@ -1,8 +1,9 @@
 #include "QvkPlayer.h"
-#include "ui_player.h"
 #include "QvkPlayerVideoSurface.h"
 
 #include <QTime>
+#include <QStandardPaths>
+#include <QFileDialog>
 
 QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
                                         ui(new Ui::QvkPlayer)
@@ -14,6 +15,9 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     setWindowIcon( icon );
 
     ui->frame->setStyleSheet( "background-color: black;" );
+
+    ui->toolButtonOpenFile->setIcon( QIcon::fromTheme( "document-open" , style()->standardIcon( QStyle::SP_MediaPlay ) ) );
+
     ui->pushButtonPlay->setIcon( QIcon::fromTheme( "media-playback-start" , style()->standardIcon( QStyle::SP_MediaPlay ) ) );
     ui->pushButtonPause->setIcon( QIcon::fromTheme( "media-playback-pause", style()->standardIcon( QStyle::SP_MediaPause ) ) );
     ui->pushButtonStop->setIcon( QIcon::fromTheme( "media-playback-stop"  , style()->standardIcon( QStyle::SP_MediaStop ) ) );
@@ -32,6 +36,8 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     connect( mediaPlayer,         SIGNAL( durationChanged( qint64 ) ),           this, SLOT( slot_durationChanged( qint64 ) ) );
     connect( mediaPlayer,         SIGNAL( positionChanged( qint64 ) ),           this, SLOT( slot_positionChanged( qint64 ) ) );
     connect( mediaPlayer,         SIGNAL( stateChanged( QMediaPlayer::State ) ), this, SLOT( slot_stateChanged( QMediaPlayer::State ) ) );
+
+    connect( ui->toolButtonOpenFile, SIGNAL( clicked( bool ) ), this, SLOT( slot_openFile() ) );
 
     connect( ui->pushButtonPlay,  SIGNAL( clicked( bool ) ), this,                SLOT( slot_play() ) );
 
@@ -72,6 +78,22 @@ void QvkPlayer::setMediaFile( QString string )
 {
 //    mediaPlayer->setMedia( QUrl::fromLocalFile( "/home/vk/Downloads/vokoscreen.mp4" ) );
     mediaPlayer->setMedia( QUrl::fromLocalFile( string ) );
+}
+
+
+void QvkPlayer::slot_openFile()
+{
+
+    QString file = QFileDialog::getOpenFileName( this,
+                                                 tr( "Open File" ),
+                                                 QStandardPaths::writableLocation( QStandardPaths::HomeLocation ),
+                                                 "*.*" );
+
+    if ( file > "" )
+    {
+        setMediaFile( file );
+        slot_play();
+    }
 }
 
 
@@ -208,23 +230,25 @@ void QvkPlayer::slot_setNewImage( QImage image )
 
 void QvkPlayer::vk_showFullscreen()
 {
-    ui->widgetMenue->setParent( ui->labelPlayer);
+    ui->widgetToolBar->setHidden( true );
+    ui->widgetMenueBar->setParent( ui->labelPlayer);
     ui->frame->setStyleSheet( "background-color: black;"  );
-    ui->widgetMenue->setStyleSheet( "background-color: lightgray;"  );
+    ui->widgetMenueBar->setStyleSheet( "background-color: lightgray;"  );
     ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-restore" ) );
-    ui->widgetMenue->show();
+    ui->widgetMenueBar->show();
     showFullScreen();
 }
 
 
 void QvkPlayer::vk_showNormal()
 {
-    ui->verticalLayout_4->addWidget( ui->widgetMenue );
+    ui->widgetToolBar->setHidden( false );
+    ui->verticalLayout_4->addWidget( ui->widgetMenueBar );
     ui->frame->setStyleSheet( "background-color: black;"  );
-    // An empty string set color to back
-    ui->widgetMenue->setStyleSheet( "" );
+    // An empty string resets the color
+    ui->widgetMenueBar->setStyleSheet( "" );
     ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen" ) );
-    ui->widgetMenue->show();
+    ui->widgetMenueBar->show();
     showNormal();
 }
 
@@ -303,10 +327,10 @@ void QvkPlayer::mousePressEvent(QMouseEvent *event)
 {
     if ( isFullScreen() == true )
     {
-        if ( ui->widgetMenue->underMouse() )
+        if ( ui->widgetMenueBar->underMouse() )
         {
-            mouseInWidgetX = event->pos().x() - ui->widgetMenue->pos().x();
-            mouseInWidgetY = event->pos().y() - ui->widgetMenue->pos().y();
+            mouseInWidgetX = event->pos().x() - ui->widgetMenueBar->pos().x();
+            mouseInWidgetY = event->pos().y() - ui->widgetMenueBar->pos().y();
             setCursor( Qt::SizeAllCursor );
             pressed = true;
         }
@@ -328,7 +352,7 @@ void QvkPlayer::mouseMoveEvent( QMouseEvent *event )
     {
         if ( ( event->buttons() == Qt::LeftButton ) and ( pressed == true ) )
         {
-            ui->widgetMenue->move( QPoint( event->pos().x() - mouseInWidgetX, event->pos().y() - mouseInWidgetY ) );
+            ui->widgetMenueBar->move( QPoint( event->pos().x() - mouseInWidgetX, event->pos().y() - mouseInWidgetY ) );
         }
     }
 }
@@ -339,7 +363,7 @@ void QvkPlayer::resizeEvent(QResizeEvent *event)
     Q_UNUSED(event);
     if ( isFullScreen() == true )
     {
-        ui->widgetMenue->move( ui->frame->width()/2 - ui->widgetMenue->width()/2,
-                               ui->frame->height() - ui->widgetMenue->height() );
+        ui->widgetMenueBar->move( ui->frame->width()/2 - ui->widgetMenueBar->width()/2,
+                               ui->frame->height() - ui->widgetMenueBar->height() );
     }
 }

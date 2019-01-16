@@ -129,6 +129,8 @@ private slots:
 
     void slot_sendReport();
 
+    void slot_vokoPlayer();
+
 
 signals:
     void signal_close();

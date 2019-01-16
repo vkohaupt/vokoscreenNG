@@ -1,6 +1,8 @@
 #ifndef QVKPLAYER_H
 #define QVKPLAYER_H
 
+#include "ui_player.h"
+
 #include <QWidget>
 #include <QMediaPlayer>
 #include <QMouseEvent>
@@ -34,6 +36,7 @@ private slots:
     void slot_stateChanged( QMediaPlayer::State );
     void slot_mutedChanged( bool muted );
     void slot_toolButtonFullscreen();
+    void slot_openFile();
 
 
 private:
