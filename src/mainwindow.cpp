@@ -662,10 +662,6 @@ void QvkMainWindow::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIco
 void QvkMainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
 {
     QSize size = ui->tabWidgetSideBar->iconSize();
-
-    QTabBar *tabBar = ui->tabWidgetSideBar->tabBar();
-    tabBar->rect();
-
     QPixmap iconPixmap( icon.pixmap( size ) );
     iconPixmap = iconPixmap.scaled( size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
 
