@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>814</width>
-    <height>448</height>
+    <width>710</width>
+    <height>416</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -92,7 +92,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -571,42 +571,6 @@
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QLabel" name="label_21">
-                      <property name="text">
-                       <string>Quality</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QSlider" name="horizontalSliderx264">
-                      <property name="minimum">
-                       <number>0</number>
-                      </property>
-                      <property name="maximum">
-                       <number>50</number>
-                      </property>
-                      <property name="sliderPosition">
-                       <number>23</number>
-                      </property>
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="tickPosition">
-                       <enum>QSlider::NoTicks</enum>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_20">
-                      <property name="text">
-                       <string notr="true">23</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
                      <widget class="QComboBox" name="comboBoxx264Preset">
                       <property name="currentText">
                        <string notr="true">ultrafast</string>
@@ -664,6 +628,48 @@
                         <string notr="true">placebo</string>
                        </property>
                       </item>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_21">
+                      <property name="text">
+                       <string>Quality</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QSlider" name="horizontalSliderx264">
+                      <property name="minimumSize">
+                       <size>
+                        <width>50</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="minimum">
+                       <number>0</number>
+                      </property>
+                      <property name="maximum">
+                       <number>50</number>
+                      </property>
+                      <property name="sliderPosition">
+                       <number>23</number>
+                      </property>
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="tickPosition">
+                       <enum>QSlider::NoTicks</enum>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_20">
+                      <property name="text">
+                       <string notr="true">23</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
                      </widget>
                     </item>
                    </layout>
@@ -862,8 +868,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>639</width>
-                      <height>114</height>
+                      <width>535</width>
+                      <height>82</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1621,8 +1627,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>465</width>
-                   <height>331</height>
+                   <width>361</width>
+                   <height>299</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
