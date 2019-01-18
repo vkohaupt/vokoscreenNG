@@ -19,6 +19,7 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
    QIcon::setThemeName( "VKTheme" );
    qDebug() << "*******************" << QIcon::hasThemeIcon( "media-playback-start" );
 
+
 /*
  * End Test
  */

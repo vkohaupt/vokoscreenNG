@@ -41,4 +41,8 @@ https://www.transifex.com/vkohaupt/vokoscreen/
 
 
 ![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-tab-1.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-tab-2.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-tab-3.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-tab-4.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-tab-5.png)
 
