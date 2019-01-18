@@ -38,3 +38,7 @@ https://www.transifex.com/vkohaupt/vokoscreen/
 * libqt5-linguist
 * libX11-devel
 * gstreamer-devel
+
+
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-tab-1.png)
+
