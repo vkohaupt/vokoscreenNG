@@ -92,7 +92,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -2501,7 +2501,7 @@
       </widget>
       <widget class="QWidget" name="tabSidebarPlayer">
        <attribute name="title">
-        <string/>
+        <string notr="true"/>
        </attribute>
        <attribute name="toolTip">
         <string>Player</string>
@@ -2526,7 +2526,7 @@
           </property>
           <widget class="QWidget" name="tab_2">
            <attribute name="title">
-            <string>Tab 1</string>
+            <string notr="true"/>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_29">
             <item>

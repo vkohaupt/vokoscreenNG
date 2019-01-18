@@ -14,6 +14,8 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     QIcon icon( QString::fromUtf8( ":/pictures/vokoscreen.png" ) );
     setWindowIcon( icon );
 
+    ui->labelPlayer->setPixmap( icon.pixmap( 200, 185 ) );
+
     ui->frame->setStyleSheet( "background-color: black;" );
 
     ui->toolButtonOpenFile->setIcon( QIcon::fromTheme( "document-open" , style()->standardIcon( QStyle::SP_MediaPlay ) ) );
