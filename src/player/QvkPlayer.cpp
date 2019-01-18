@@ -8,6 +8,20 @@
 QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
                                         ui(new Ui::QvkPlayer)
 {
+
+/*
+ *Test Theme
+ */
+
+   QStringList list;
+   list << "/home/vk/Programmieren/vokoscreenNG/src/icons/";
+   QIcon::setThemeSearchPaths( list );
+   QIcon::setThemeName( "VKTheme" );
+   qDebug() << "*******************" << QIcon::hasThemeIcon( "media-playback-start" );
+
+/*
+ * End Test
+ */
     ui->setupUi(this);
 
     setWindowTitle( "vokoplayer" );

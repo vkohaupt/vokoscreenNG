@@ -21,8 +21,8 @@ QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : 
     QStringList helpStringList;
     helpStringList << "https:/"
                    << "vokoscreen.volkoh.de"
-                   << "help"
-                   << "3.0";
+                   << "3.0"
+                   << "help";
 
     vk_helpPath = helpStringList.join( "/" ).append( "/");
     QString language = "en";
