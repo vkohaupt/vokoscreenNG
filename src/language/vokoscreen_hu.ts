@@ -26,7 +26,7 @@
     <name>AreaSettingsDialog</name>
     <message>
         <source>Area Settings</source>
-        <translation>Területi beállítások</translation>
+        <translation>Terület beállításai</translation>
     </message>
     <message>
         <source>OK</source>
@@ -41,18 +41,18 @@
     <name>Dialog</name>
     <message>
         <source>Show Click Settings</source>
-        <translation>Kattintson a beállítások megjelenítéséhez</translation>
+        <translation>Kattintási beállítások megjelenítése</translation>
     </message>
 </context>
 <context>
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
-        <translation>Utolsó videó levélként</translation>
+        <translation>Utolsó videó küldése levélként</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>Egy vagy több kiválasztott videó levélként</translation>
+        <translation>Egy vagy több kiválasztott videó küldése levélként</translation>
     </message>
     <message>
         <source>Send</source>
@@ -74,7 +74,7 @@
     <name>QObject</name>
     <message>
         <source>Info</source>
-        <translation>Info</translation>
+        <translation>Információ</translation>
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
@@ -85,7 +85,7 @@
     <name>QvkMail</name>
     <message>
         <source>You find the Video as attachment</source>
-        <translation>A videó csatolva</translation>
+        <translation>A videót megtalálhatja mellékletként</translation>
     </message>
     <message>
         <source>Select one or more files</source>
@@ -96,41 +96,41 @@
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation>kattintson duplán maximalizáláshoz</translation>
+        <translation>kattintson duplán a maximalizáláshoz</translation>
     </message>
     <message>
         <source>Area Settings</source>
-        <translation>Területi beállítások</translation>
+        <translation>Terület beállításai</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamController</name>
     <message>
         <source>Camera is loading</source>
-        <translation>A kamera betöltődik</translation>
+        <translation>A kamera betöltés alatt</translation>
     </message>
     <message>
         <source>Camera is loaded</source>
-        <translation>A kamera betöltődött</translation>
+        <translation>A kamera betöltve</translation>
     </message>
     <message>
         <source>Wait a second or Camera is busy?</source>
-        <translation>Türelmet, a kamera foglalt?</translation>
+        <translation>Várjon egy másodpercet vagy a kamera foglalt?</translation>
     </message>
 </context>
 <context>
     <name>QvkWebcamWindow</name>
     <message>
         <source>Close</source>
-        <translation>Bezár</translation>
+        <translation>Bezárás</translation>
     </message>
     <message>
         <source>Right click for menu</source>
-        <translation>Jobb klikk a menühöz</translation>
+        <translation>Jobb kattintás a menühöz</translation>
     </message>
     <message>
         <source>User-defined</source>
-        <translation>Felhasználó által definiált</translation>
+        <translation>Felhasználó által meghatározott</translation>
     </message>
     <message>
         <source>Windowsize</source>
@@ -138,15 +138,15 @@
     </message>
     <message>
         <source>Options</source>
-        <translation>Lehetőségek</translation>
+        <translation>Beállítások</translation>
     </message>
     <message>
         <source>Border</source>
-        <translation>Kerettel</translation>
+        <translation>Szegély</translation>
     </message>
     <message>
         <source>Show over fullscreen</source>
-        <translation>Teljes képernyő</translation>
+        <translation>Megjelenítés a teljes képernyő fölött</translation>
     </message>
 </context>
 <context>
@@ -169,7 +169,7 @@
     </message>
     <message>
         <source>Audio</source>
-        <translation>Hangrendszer</translation>
+        <translation>Hang</translation>
     </message>
     <message>
         <source>Alsa</source>
@@ -189,11 +189,11 @@
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Egérmutató elrejtése</translation>
+        <translation>Ne rögzítse az egérmutatót</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videó mentés helye</translation>
+        <translation>Videó útvonala</translation>
     </message>
     <message>
         <source>Player</source>
@@ -201,15 +201,15 @@
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>Vokoscreen minimalizálása a felvétel megkezdésekor</translation>
+        <translation>A Vokoscreen minimalizálása a rögzítés megkezdésekor</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Indítás</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Leállítás</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -225,7 +225,7 @@
     </message>
     <message>
         <source>Recording time</source>
-        <translation>Felvétel ideje</translation>
+        <translation>Rögzítés ideje</translation>
     </message>
     <message>
         <source>Size in KB</source>
@@ -233,7 +233,7 @@
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>Felvétel képernyőmérete</translation>
+        <translation>Rögzítés képernyőmérete</translation>
     </message>
     <message>
         <source>Format</source>
@@ -241,7 +241,7 @@
     </message>
     <message>
         <source>Settings fps</source>
-        <translation>Fps beállítás</translation>
+        <translation>Fps beállítása</translation>
     </message>
     <message>
         <source>Open Directory</source>
@@ -265,11 +265,11 @@
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>Képkockák száma másodpercenként</translation>
+        <translation>Tényleges képkockák száma másodpercenként</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Weboldal</translation>
+        <translation>Honlap</translation>
     </message>
     <message>
         <source>Frames</source>
@@ -301,7 +301,7 @@
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Audiokodek</translation>
+        <translation>Hangkodek</translation>
     </message>
     <message>
         <source>Select webcam</source>
@@ -313,11 +313,11 @@
     </message>
     <message>
         <source>Display</source>
-        <translation>Képernyő</translation>
+        <translation>Kijelző</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation>Összes képernyő</translation>
+        <translation>Összes kijelző</translation>
     </message>
     <message>
         <source>Recorder</source>
@@ -325,7 +325,7 @@
     </message>
     <message>
         <source>Select recorder</source>
-        <translation>Válassz felvevőt</translation>
+        <translation>Válasszon felvevőt</translation>
     </message>
     <message>
         <source>Hide window</source>
@@ -345,7 +345,7 @@
     </message>
     <message>
         <source>Vokoscreen starts minimized</source>
-        <translation>Vokoscreen indítása minimalizálva</translation>
+        <translation>A Vokoscreen minimalizálva indul</translation>
     </message>
     <message>
         <source>Reset all settings at next start</source>
@@ -353,7 +353,7 @@
     </message>
     <message>
         <source>Continue</source>
-        <translation>Tovább</translation>
+        <translation>Folytatás</translation>
     </message>
     <message>
         <source>Extensions</source>
@@ -361,7 +361,7 @@
     </message>
     <message>
         <source>No extensions installed</source>
-        <translation>Nincs telepített bővítmény</translation>
+        <translation>Nincsenek telepített bővítmények</translation>
     </message>
     <message>
         <source>Load</source>
@@ -373,7 +373,7 @@
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invert</translation>
+        <translation>Megfordítás</translation>
     </message>
     <message>
         <source>Camera</source>

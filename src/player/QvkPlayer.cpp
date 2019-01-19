@@ -24,7 +24,7 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     ui->pushButtonPause->setIcon( QIcon::fromTheme( "media-playback-pause", style()->standardIcon( QStyle::SP_MediaPause ) ) );
     ui->pushButtonStop->setIcon( QIcon::fromTheme( "media-playback-stop"  , style()->standardIcon( QStyle::SP_MediaStop ) ) );
     ui->pushButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high"    , style()->standardIcon( QStyle::SP_MediaVolume ) ) );
-    ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen" ) );
+    ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen", QIcon( ":/pictures/view-fullscreen.svg" ) ) );
 
     mediaPlayer = new QMediaPlayer;
     ui->sliderVolume->setValue( 70 );
@@ -235,7 +235,7 @@ void QvkPlayer::vk_showFullscreen()
     ui->widgetMenueBar->setParent( ui->labelPlayer);
     ui->frame->setStyleSheet( "background-color: black;"  );
     ui->widgetMenueBar->setStyleSheet( "background-color: lightgray;"  );
-    ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-restore" ) );
+    ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-restore", QIcon( ":/pictures/view-restore.svg" ) ) );
     ui->widgetMenueBar->show();
     showFullScreen();
 }
@@ -248,7 +248,7 @@ void QvkPlayer::vk_showNormal()
     ui->frame->setStyleSheet( "background-color: black;"  );
     // An empty string resets the color
     ui->widgetMenueBar->setStyleSheet( "" );
-    ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen" ) );
+    ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen", QIcon( ":/pictures/view-fullscreen.svg" ) ) );
     ui->widgetMenueBar->show();
     showNormal();
 }

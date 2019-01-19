@@ -78,7 +78,7 @@
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation>vokoscreen kan maar een keer gestart worden</translation>
+        <translation>vokoscreen kan maar één keer gestart worden</translation>
     </message>
 </context>
 <context>
@@ -205,7 +205,7 @@
     </message>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Starten</translation>
     </message>
     <message>
         <source>Stop</source>
@@ -233,7 +233,7 @@
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>Grootte van scherm opname</translation>
+        <translation>Grootte van schermopname</translation>
     </message>
     <message>
         <source>Format</source>

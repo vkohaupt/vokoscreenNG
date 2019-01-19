@@ -48,11 +48,11 @@
     <name>MailDialog</name>
     <message>
         <source>Mail last Video</source>
-        <translation>Mail seneste video</translation>
+        <translation>Send seneste video med mail</translation>
     </message>
     <message>
         <source>Mail one or more selected Video</source>
-        <translation>Mail en eller flere af de valgte videoer</translation>
+        <translation>Send en eller flere af de valgte videoer med mail</translation>
     </message>
     <message>
         <source>Send</source>
@@ -67,7 +67,7 @@
     <name>NoPlayerDialog</name>
     <message>
         <source>Please install a videoplayer</source>
-        <translation>Venligst installér en videoafspiller</translation>
+        <translation>Installér venligst en videoafspiller</translation>
     </message>
 </context>
 <context>
@@ -78,7 +78,7 @@
     </message>
     <message>
         <source>vokoscreen can be started only once</source>
-        <translation>vokoscreen kan kun startes en gang</translation>
+        <translation>vokoscreen kan kun startes én gang</translation>
     </message>
 </context>
 <context>
@@ -96,7 +96,7 @@
     <name>QvkRegionChoise</name>
     <message>
         <source>double-click to maximize</source>
-        <translation>dobbelt-klik for at maksimere</translation>
+        <translation>dobbeltklik for at maksimere</translation>
     </message>
     <message>
         <source>Area Settings</source>
@@ -107,15 +107,15 @@
     <name>QvkWebcamController</name>
     <message>
         <source>Camera is loading</source>
-        <translation type="unfinished"/>
+        <translation>Kameraet indlæses</translation>
     </message>
     <message>
         <source>Camera is loaded</source>
-        <translation type="unfinished"/>
+        <translation>Kameraet er indlæst</translation>
     </message>
     <message>
         <source>Wait a second or Camera is busy?</source>
-        <translation type="unfinished"/>
+        <translation>Vent et sekund eller er kameraet optaget?</translation>
     </message>
 </context>
 <context>
@@ -134,11 +134,11 @@
     </message>
     <message>
         <source>Windowsize</source>
-        <translation type="unfinished"/>
+        <translation>Vinduesstørrelse</translation>
     </message>
     <message>
         <source>Options</source>
-        <translation type="unfinished"/>
+        <translation>Valgmuligheder</translation>
     </message>
     <message>
         <source>Border</source>
@@ -165,7 +165,7 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lup</translation>
+        <translation>Forstørrelse</translation>
     </message>
     <message>
         <source>Audio</source>
@@ -201,7 +201,7 @@
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>Vokoscreen bliver minimeret når optagelsen starter</translation>
+        <translation>Vokoscreen minimeres når optagelsen starter</translation>
     </message>
     <message>
         <source>Start</source>
@@ -225,7 +225,7 @@
     </message>
     <message>
         <source>Recording time</source>
-        <translation>Optagetid</translation>
+        <translation>Optagelsestid</translation>
     </message>
     <message>
         <source>Size in KB</source>
@@ -233,7 +233,7 @@
     </message>
     <message>
         <source>Recording screensize</source>
-        <translation>Optager skærmstørrelse</translation>
+        <translation>Skærmstørrelse for optagelse</translation>
     </message>
     <message>
         <source>Format</source>
@@ -245,7 +245,7 @@
     </message>
     <message>
         <source>Open Directory</source>
-        <translation>Åben mappe</translation>
+        <translation>Åbn mappe</translation>
     </message>
     <message>
         <source>Countdown</source>
@@ -265,7 +265,7 @@
     </message>
     <message>
         <source>Actual frames per second</source>
-        <translation>Aktuelle billeder pr. sekund</translation>
+        <translation>Rigtige billeder pr. sekund</translation>
     </message>
     <message>
         <source>Homepage</source>
@@ -289,11 +289,11 @@
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Vis i systray</translation>
+        <translation>Vis i systembakke</translation>
     </message>
     <message>
         <source>New version available</source>
-        <translation>Ny version tilgængelig</translation>
+        <translation>Der findes en ny version</translation>
     </message>
     <message>
         <source>Videocodec</source>
@@ -301,7 +301,7 @@
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Audio-codec</translation>
+        <translation>Lyd-codec</translation>
     </message>
     <message>
         <source>Select webcam</source>
@@ -313,7 +313,7 @@
     </message>
     <message>
         <source>Display</source>
-        <translation>Skærme</translation>
+        <translation>Skærm</translation>
     </message>
     <message>
         <source>All Displays</source>
@@ -369,19 +369,19 @@
     </message>
     <message>
         <source>Gray</source>
-        <translation type="unfinished"/>
+        <translation>Grå</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation type="unfinished"/>
+        <translation>Negativ</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation type="unfinished"/>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Resolution</source>
-        <translation type="unfinished"/>
+        <translation>Opløsning</translation>
     </message>
 </context>
 </TS>
