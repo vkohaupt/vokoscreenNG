@@ -987,7 +987,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
 
     QStringList MP4_QStringList = ( QStringList()
                                     << "muxer:mp4mux:mp4"
-                                    << "videomimetype:video/mpeg"
+                                    << "videomimetype:video/mp4"
                                     << "audiomimetype:audio/mpeg"
                                     << "videocodec:x264enc:x264"
                                     << "audiocodec:lamemp3enc:mp3"
