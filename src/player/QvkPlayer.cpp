@@ -90,7 +90,7 @@ void QvkPlayer::slot_openFile()
                                                  QStandardPaths::writableLocation( QStandardPaths::HomeLocation ),
                                                  "*.mkv *.webm *.avi *.mp4(*.mkv *.webm *.avi *.mp4)" );
 
-    if ( file > "" )
+    if ( !file.isEmpty() )
     {
         setMediaFile( file );
         slot_play();
