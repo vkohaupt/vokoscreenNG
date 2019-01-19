@@ -8,21 +8,6 @@
 QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
                                         ui(new Ui::QvkPlayer)
 {
-
-/*
- *Test Theme
- */
-
-   QStringList list;
-   list << "/home/vk/Programmieren/vokoscreenNG/src/icons/";
-   QIcon::setThemeSearchPaths( list );
-   QIcon::setThemeName( "VKTheme" );
-   qDebug() << "*******************" << QIcon::hasThemeIcon( "media-playback-start" );
-
-
-/*
- * End Test
- */
     ui->setupUi(this);
 
     setWindowTitle( "vokoplayer" );
@@ -93,7 +78,6 @@ void QvkPlayer::closeEvent(QCloseEvent *event)
 
 void QvkPlayer::setMediaFile( QString string )
 {
-//    mediaPlayer->setMedia( QUrl::fromLocalFile( "/home/vk/Downloads/vokoscreen.mp4" ) );
     mediaPlayer->setMedia( QUrl::fromLocalFile( string ) );
 }
 
@@ -104,7 +88,7 @@ void QvkPlayer::slot_openFile()
     QString file = QFileDialog::getOpenFileName( this,
                                                  tr( "Open File" ),
                                                  QStandardPaths::writableLocation( QStandardPaths::HomeLocation ),
-                                                 "*.*" );
+                                                 "*.mkv *.webm *.avi *.mp4(*.mkv *.webm *.avi *.mp4)" );
 
     if ( file > "" )
     {

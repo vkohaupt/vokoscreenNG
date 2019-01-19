@@ -196,6 +196,9 @@
           <layout class="QHBoxLayout" name="horizontalLayout">
            <item>
             <widget class="QPushButton" name="pushButtonPlay">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="text">
               <string>Play</string>
              </property>
