@@ -18,6 +18,7 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
 
     ui->frame->setStyleSheet( "background-color: black;" );
 
+
     ui->toolButtonOpenFile->setIcon( QIcon::fromTheme( "document-open" , style()->standardIcon( QStyle::SP_MediaPlay ) ) );
 
     ui->pushButtonPlay->setIcon( QIcon::fromTheme( "media-playback-start" , style()->standardIcon( QStyle::SP_MediaPlay ) ) );
@@ -41,6 +42,9 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
 
     connect( ui->toolButtonOpenFile, SIGNAL( clicked( bool ) ), this, SLOT( slot_openFile() ) );
 
+    connect( ui->sliderVideo, SIGNAL( sliderPressed() ),  this, SLOT( slot_sliderVideoPressed() ) );
+    connect( ui->sliderVideo, SIGNAL( sliderReleased() ), this, SLOT( slot_sliderVideoReleased() ) );
+
     connect( ui->pushButtonPlay,  SIGNAL( clicked( bool ) ), this,                SLOT( slot_play() ) );
 
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
@@ -58,7 +62,7 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     connect( ui->toolButtonFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonFullscreen() ) );
 
     connect( ui->sliderVolume,    SIGNAL( sliderMoved( int ) ), mediaPlayer, SLOT( setVolume( int ) ) );
-    //connect( ui->sliderPosition,  SIGNAL( sliderMoved( int ) ),        this,        SLOT( slot_sliderMoved( int ) ) );
+    //connect( ui->sliderVideo,  SIGNAL( sliderMoved( int ) ),        this,        SLOT( slot_sliderMoved( int ) ) );
 
     connect( ui->pushButtonMute,  SIGNAL( clicked( bool ) ), this, SLOT( slot_mute() ) );
 }
@@ -95,6 +99,19 @@ void QvkPlayer::slot_openFile()
         setMediaFile( file );
         slot_play();
     }
+}
+
+
+void QvkPlayer::slot_sliderVideoPressed()
+{
+    mediaPlayer->pause();
+}
+
+
+void QvkPlayer::slot_sliderVideoReleased()
+{
+    mediaPlayer->setPosition( ui->sliderVideo->value()*1000 );
+    mediaPlayer->play();
 }
 
 

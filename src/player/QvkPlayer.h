@@ -37,6 +37,8 @@ private slots:
     void slot_mutedChanged( bool muted );
     void slot_toolButtonFullscreen();
     void slot_openFile();
+    void slot_sliderVideoPressed();
+    void slot_sliderVideoReleased();
 
 
 private:
