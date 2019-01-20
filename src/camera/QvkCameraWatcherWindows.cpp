@@ -80,11 +80,7 @@ QString QvkCameraWatcher::addedDeviceName( QStringList myNewDeviceNameList, QStr
  */
 void QvkCameraWatcher::slot_detectCameras()
 {
-qDebug() << "void QvkCameraWatcher::slot_detectCameras()";
-
-// Voll Krass, wenn Camera aktiv dann availableCameras().count() = 0;
- QList<QCameraInfo> info = QCameraInfo::availableCameras();
- qDebug() << info.count();
+    QList<QCameraInfo> info = QCameraInfo::availableCameras();
 
     timer->stop();
     bool deviceAdded = false;
