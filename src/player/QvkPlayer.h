@@ -50,7 +50,6 @@ private:
     bool pressed = false;
     void vk_showFullscreen();
     void vk_showNormal();
-    int sliderVideoTime = 40;
 
 protected:
     void mouseDoubleClickEvent( QMouseEvent *event );

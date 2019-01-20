@@ -30,6 +30,7 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     mediaPlayer = new QMediaPlayer;
     ui->sliderVolume->setValue( 70 );
     mediaPlayer->setVolume( 70 );
+    mediaPlayer->setNotifyInterval( 40 );
 
     QvkPlayerVideoSurface *videoSurface = new QvkPlayerVideoSurface( this );
     connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ), this, SLOT( slot_setNewImage( QImage ) ) );
@@ -42,7 +43,6 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
 
     connect( ui->toolButtonOpenFile, SIGNAL( clicked( bool ) ), this, SLOT( slot_openFile() ) );
 
-    mediaPlayer->setNotifyInterval( sliderVideoTime );
     connect( ui->sliderVideo, SIGNAL( sliderPressed() ),  this, SLOT( slot_sliderVideoPressed() ) );
     connect( ui->sliderVideo, SIGNAL( sliderReleased() ), this, SLOT( slot_sliderVideoReleased() ) );
 
@@ -110,7 +110,7 @@ void QvkPlayer::slot_sliderVideoPressed()
 
 void QvkPlayer::slot_sliderVideoReleased()
 {
-    mediaPlayer->setPosition( ui->sliderVideo->value()*sliderVideoTime );
+    mediaPlayer->setPosition( ui->sliderVideo->value()*mediaPlayer->notifyInterval() );
     mediaPlayer->play();
 }
 
@@ -181,7 +181,7 @@ QString QvkPlayer::get_time( qint64 value )
 void QvkPlayer::slot_durationChanged( qint64 value )
 {
     // Set lenght from video on slider
-    ui->sliderVideo->setMaximum( value / sliderVideoTime );
+    ui->sliderVideo->setMaximum( value / mediaPlayer->notifyInterval() );
 
     // Show lenght from video in label
     ui->labelVideoLenght->setText( get_time( value ) );
@@ -223,7 +223,7 @@ void QvkPlayer::slot_positionChanged( qint64 value )
 {
     if ( mediaPlayer->state() == QMediaPlayer::PlayingState )
     {
-       ui->sliderVideo->setValue( value/sliderVideoTime );
+       ui->sliderVideo->setValue( value/mediaPlayer->notifyInterval() );
 
        // Show playing time in label
        ui->labelDuration->setText( get_time( value ) );
