@@ -1,7 +1,7 @@
 #ifndef QvkAudioWindows_H 
 #define QvkAudioWindows_H
 
-#include "ui_mainwindow.h"
+#include "ui_formMainwindow.h"
 #include <QObject>
 #include <QTimer>
 

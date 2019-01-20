@@ -55,6 +55,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QToolButton" name="toolButtonHelpPlayer">
+        <property name="text">
+         <string notr="true">Help</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer_4">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -306,13 +313,6 @@
              <widget class="QPushButton" name="pushButtonMute">
               <property name="text">
                <string>Mute</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QToolButton" name="toolButtonHelpPlayer">
-              <property name="text">
-               <string notr="true">Help</string>
               </property>
              </widget>
             </item>

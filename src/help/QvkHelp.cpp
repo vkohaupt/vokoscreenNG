@@ -31,7 +31,7 @@ QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : 
     vkDownloadHTML = new QvkDownloader( temporaryDirLocal.path() );
     vkDownloadFiles = new QvkDownloader( temporaryDirLocal.path() );
 
-    QIcon iconHelp = ui->toolButtonHelpFullscreen->style()->standardIcon( QStyle::SP_MessageBoxInformation );
+    QIcon iconHelp = style()->standardIcon( QStyle::SP_MessageBoxInformation );
 
     // Tab 1
     connect( ui->toolButtonHelpFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpFullscreen() ) );

@@ -45,8 +45,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 
 #ifdef Q_OS_WIN
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent),
-                                          ui(new Ui::MainWindow),
+QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
+                                          ui(new Ui::formMainWindow),
                                           vkWinInfo(new QvkWinInfo),
                                           vkCountdown(new QvkCountdown),
                                           vkRegionChoise(new QvkRegionChoise),
@@ -799,7 +799,7 @@ QString QvkMainWindow::VK_getXimagesrc()
 
 // https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-multifilesrc.html
 #ifdef Q_OS_WIN
-QString MainWindow::VK_getXimagesrc()
+QString QvkMainWindow::VK_getXimagesrc()
 {
     QString value;
     QString showPointer = "true";
@@ -1306,7 +1306,7 @@ QString QvkMainWindow::VK_get_AudioSystem()
 
 
 #ifdef Q_OS_WIN
-QString MainWindow::VK_get_AudioSystem()
+QString QvkMainWindow::VK_get_AudioSystem()
 {
     return "directsoundsrc";
 }
