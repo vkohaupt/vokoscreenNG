@@ -10,7 +10,7 @@ class QvkAudioWindows: public QObject
     Q_OBJECT
     
 public:
-    QvkAudioWindows(  Ui_MainWindow *ui_mainwindow );
+    QvkAudioWindows(  Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkAudioWindows();
 
     
@@ -19,7 +19,7 @@ public slots:
 
   
 private:
-    Ui_MainWindow *ui;
+    Ui_formMainWindow *ui;
     QTimer *timer;
     int counter;
 

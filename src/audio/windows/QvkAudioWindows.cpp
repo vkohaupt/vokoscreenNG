@@ -3,7 +3,7 @@
 #include <QAudioDeviceInfo>
 #include <QDebug>
 
-QvkAudioWindows::QvkAudioWindows( Ui_MainWindow *ui_mainwindow )
+QvkAudioWindows::QvkAudioWindows(Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
     timer = new QTimer( this );
