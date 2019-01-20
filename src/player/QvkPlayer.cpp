@@ -208,6 +208,7 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
         ui->pushButtonPlay->setEnabled( true );
         ui->pushButtonPlay->setFocus();
         ui->sliderVideo->setValue( 0 );
+        ui->labelDuration->setText( "00:00:00" );
 
         QIcon icon( QString::fromUtf8( ":/pictures/vokoscreen.png" ) );
         ui->labelPlayer->setPixmap( icon.pixmap( 200, 185 ) );
