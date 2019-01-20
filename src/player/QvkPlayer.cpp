@@ -36,10 +36,10 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ), this, SLOT( slot_setNewImage( QImage ) ) );
     mediaPlayer->setVideoOutput( videoSurface );
 
-    connect( mediaPlayer,         SIGNAL( mutedChanged( bool ) ),                this, SLOT( slot_mutedChanged( bool ) ) );
-    connect( mediaPlayer,         SIGNAL( durationChanged( qint64 ) ),           this, SLOT( slot_durationChanged( qint64 ) ) );
-    connect( mediaPlayer,         SIGNAL( positionChanged( qint64 ) ),           this, SLOT( slot_positionChanged( qint64 ) ) );
-    connect( mediaPlayer,         SIGNAL( stateChanged( QMediaPlayer::State ) ), this, SLOT( slot_stateChanged( QMediaPlayer::State ) ) );
+    connect( mediaPlayer, SIGNAL( mutedChanged( bool ) ),                this, SLOT( slot_mutedChanged( bool ) ) );
+    connect( mediaPlayer, SIGNAL( durationChanged( qint64 ) ),           this, SLOT( slot_durationChanged( qint64 ) ) );
+    connect( mediaPlayer, SIGNAL( positionChanged( qint64 ) ),           this, SLOT( slot_positionChanged( qint64 ) ) );
+    connect( mediaPlayer, SIGNAL( stateChanged( QMediaPlayer::State ) ), this, SLOT( slot_stateChanged( QMediaPlayer::State ) ) );
 
     connect( ui->toolButtonOpenFile, SIGNAL( clicked( bool ) ), this, SLOT( slot_openFile() ) );
 
@@ -84,6 +84,10 @@ void QvkPlayer::closeEvent(QCloseEvent *event)
 void QvkPlayer::setMediaFile( QString string )
 {
     mediaPlayer->setMedia( QUrl::fromLocalFile( string ) );
+    ui->labelDuration->setEnabled( true );
+    ui->labelSeparator->setEnabled( true );
+    ui->labelVideoLenght->setEnabled( true );
+    ui->sliderVideo->setEnabled( true );
 }
 
 
