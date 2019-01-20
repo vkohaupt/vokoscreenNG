@@ -43,8 +43,9 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
 
     connect( ui->toolButtonOpenFile, SIGNAL( clicked( bool ) ), this, SLOT( slot_openFile() ) );
 
-    connect( ui->sliderVideo, SIGNAL( sliderPressed() ),  this, SLOT( slot_sliderVideoPressed() ) );
-    connect( ui->sliderVideo, SIGNAL( sliderReleased() ), this, SLOT( slot_sliderVideoReleased() ) );
+    connect( ui->sliderVideo, SIGNAL( sliderPressed() ),   this, SLOT( slot_sliderVideoPressed() ) );
+    connect( ui->sliderVideo, SIGNAL( sliderReleased() ),  this, SLOT( slot_sliderVideoReleased() ) );
+    connect( ui->sliderVideo, SIGNAL( sliderMoved( int) ), this, SLOT( slot_sliderVideoMoved( int ) ) );
 
     connect( ui->pushButtonPlay,  SIGNAL( clicked( bool ) ), this,                SLOT( slot_play() ) );
 
@@ -110,8 +111,15 @@ void QvkPlayer::slot_sliderVideoPressed()
 
 void QvkPlayer::slot_sliderVideoReleased()
 {
-    mediaPlayer->setPosition( ui->sliderVideo->value()*mediaPlayer->notifyInterval() );
+    mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
     mediaPlayer->play();
+}
+
+
+void QvkPlayer::slot_sliderVideoMoved( int value )
+{
+    mediaPlayer->setPosition( ui->sliderVideo->value()*mediaPlayer->notifyInterval() );
+    ui->labelDuration->setText( get_time( value * mediaPlayer->notifyInterval() ) );
 }
 
 
@@ -187,15 +195,6 @@ void QvkPlayer::slot_durationChanged( qint64 value )
     ui->labelVideoLenght->setText( get_time( value ) );
 }
 
-/*
- * deaktiviert
- * Wenn User den Slider bewegt wird das Videobild nach vorne oder nach hinten gesetzt
- */
-void QvkPlayer::slot_sliderMoved( int value )
-{
-    mediaPlayer->setPosition( value );
-}
-
 
 void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
 {
@@ -218,7 +217,7 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
 
 
 /*
- * Wird von notyfier periodisch aufgerufen.
+ * Wird von mediplayer-notyfier periodisch aufgerufen.
  */
 void QvkPlayer::slot_positionChanged( qint64 value )
 {

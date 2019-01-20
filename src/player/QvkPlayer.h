@@ -31,7 +31,6 @@ private slots:
     void slot_setNewImage( QImage image );
     void slot_mute();
     void slot_durationChanged( qint64 value );
-    void slot_sliderMoved( int value );
     void slot_positionChanged( qint64 value );
     void slot_stateChanged( QMediaPlayer::State );
     void slot_mutedChanged( bool muted );
@@ -39,6 +38,7 @@ private slots:
     void slot_openFile();
     void slot_sliderVideoPressed();
     void slot_sliderVideoReleased();
+    void slot_sliderVideoMoved( int value );
 
 
 private:
