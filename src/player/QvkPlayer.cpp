@@ -118,7 +118,7 @@ void QvkPlayer::slot_sliderVideoReleased()
 
 void QvkPlayer::slot_sliderVideoMoved( int value )
 {
-    mediaPlayer->setPosition( ui->sliderVideo->value()*mediaPlayer->notifyInterval() );
+    mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
     ui->labelDuration->setText( get_time( value * mediaPlayer->notifyInterval() ) );
 }
 
@@ -223,7 +223,7 @@ void QvkPlayer::slot_positionChanged( qint64 value )
 {
     if ( mediaPlayer->state() == QMediaPlayer::PlayingState )
     {
-       ui->sliderVideo->setValue( value/mediaPlayer->notifyInterval() );
+       ui->sliderVideo->setValue( value / mediaPlayer->notifyInterval() );
 
        // Show playing time in label
        ui->labelDuration->setText( get_time( value ) );
