@@ -34,8 +34,9 @@ QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraW
 
     connect( cameraWatcher, SIGNAL( signal_addedCamera( QString, QString ) ), this, SLOT( slot_addedCamera( QString, QString ) ) );
     connect( cameraWatcher, SIGNAL( signal_removedCamera( QString) ),         this, SLOT( slot_removedCamera( QString ) ) );
+#ifdef Q_OS_LINUX
     cameraWatcher->cameraWatcherInit();
-
+#endif
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), ui_vokoscreen->comboBoxCamera, SLOT( setDisabled( bool ) ) );
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), ui_vokoscreen->checkBoxMirror, SLOT( setEnabled( bool ) ) );
     connect( ui_vokoscreen->checkBoxCamera, SIGNAL( toggled( bool ) ), ui_vokoscreen->checkBoxInvert, SLOT( setEnabled( bool ) ) );
