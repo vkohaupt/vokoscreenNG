@@ -10,7 +10,9 @@ QvkDownloader::QvkDownloader( QString pathLocal , QObject *parent ) : QObject(pa
 
 void QvkDownloader::doDownload( const QUrl &url )
 {
-    QNetworkRequest request( url );
+    QNetworkRequest request;
+    request.setSslConfiguration(QSslConfiguration::defaultConfiguration());
+    request.setUrl( url );
     QNetworkReply *reply = networkAccessManager.get( request );
     listDownloads.append( reply );
 }
