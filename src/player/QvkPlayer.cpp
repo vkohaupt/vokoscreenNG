@@ -42,6 +42,7 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
 
     connect( ui->toolButtonOpenFile, SIGNAL( clicked( bool ) ), this, SLOT( slot_openFile() ) );
 
+    mediaPlayer->setNotifyInterval( sliderVideoTime );
     connect( ui->sliderVideo, SIGNAL( sliderPressed() ),  this, SLOT( slot_sliderVideoPressed() ) );
     connect( ui->sliderVideo, SIGNAL( sliderReleased() ), this, SLOT( slot_sliderVideoReleased() ) );
 
@@ -62,7 +63,6 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     connect( ui->toolButtonFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonFullscreen() ) );
 
     connect( ui->sliderVolume,    SIGNAL( sliderMoved( int ) ), mediaPlayer, SLOT( setVolume( int ) ) );
-    //connect( ui->sliderVideo,  SIGNAL( sliderMoved( int ) ),        this,        SLOT( slot_sliderMoved( int ) ) );
 
     connect( ui->pushButtonMute,  SIGNAL( clicked( bool ) ), this, SLOT( slot_mute() ) );
 }
@@ -110,7 +110,7 @@ void QvkPlayer::slot_sliderVideoPressed()
 
 void QvkPlayer::slot_sliderVideoReleased()
 {
-    mediaPlayer->setPosition( ui->sliderVideo->value()*1000 );
+    mediaPlayer->setPosition( ui->sliderVideo->value()*sliderVideoTime );
     mediaPlayer->play();
 }
 
@@ -181,7 +181,7 @@ QString QvkPlayer::get_time( qint64 value )
 void QvkPlayer::slot_durationChanged( qint64 value )
 {
     // Set lenght from video on slider
-    ui->sliderVideo->setMaximum( value / 1000 );
+    ui->sliderVideo->setMaximum( value / sliderVideoTime );
 
     // Show lenght from video in label
     ui->labelVideoLenght->setText( get_time( value ) );
@@ -223,7 +223,7 @@ void QvkPlayer::slot_positionChanged( qint64 value )
 {
     if ( mediaPlayer->state() == QMediaPlayer::PlayingState )
     {
-       ui->sliderVideo->setValue( value/1000 );
+       ui->sliderVideo->setValue( value/sliderVideoTime );
 
        // Show playing time in label
        ui->labelDuration->setText( get_time( value ) );
