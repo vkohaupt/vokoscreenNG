@@ -269,7 +269,7 @@ void QvkPlayer::vk_showNormal()
     ui->frame->setStyleSheet( "background-color: black;"  );
     // An empty string resets the color
     ui->widgetMenueBar->setStyleSheet( "" );
-    ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen111", QIcon( ":/pictures/player/fullscreen.png" ) ) );
+    ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen", QIcon( ":/pictures/player/fullscreen.png" ) ) );
     ui->widgetMenueBar->show();
     showNormal();
 }

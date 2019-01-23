@@ -14,7 +14,6 @@
 <file>pictures/systray/systray.png</file>
 <file>pictures/systray/record.png</file>
 <file>pictures/transparenz.png</file>
-<file>pictures/view-fullscreen.png</file>
 <file>pictures/vokoscreen.png</file>
 <file>pictures/windows.png</file>
 <file>pictures/appointment-new.svg</file>
@@ -26,7 +25,6 @@
 <file>pictures/help-contents.svg</file>
 <file>pictures/systemsettings.svg</file>
 <file>pictures/video-display.svg</file>
-<file>pictures/view-fullscreen.svg</file>
 <file>pictures/view-restore.svg</file>
 <file>language/vokoscreen_az_AZ.qm</file>
 <file>language/vokoscreen_ca.qm</file>
