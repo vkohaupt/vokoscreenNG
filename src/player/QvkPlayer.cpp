@@ -18,7 +18,7 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
 
     ui->frame->setStyleSheet( "background-color: black;" );
 
-    ui->toolButtonOpenFile->setIcon( QIcon::fromTheme( "document-open" , style()->standardIcon( QStyle::SP_MediaPlay ) ) );
+    ui->toolButtonOpenFile->setIcon( QIcon::fromTheme( "document-open", style()->standardIcon( QStyle::SP_FileIcon ) ) );
     ui->toolButtonHelpPlayer->setIcon( style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
     ui->pushButtonPlay->setIcon( QIcon::fromTheme( "media-playback-start" , style()->standardIcon( QStyle::SP_MediaPlay ) ) );

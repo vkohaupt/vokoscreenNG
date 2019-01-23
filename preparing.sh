@@ -66,8 +66,13 @@ echo =====================
 ##########
 echo '<!DOCTYPE RCC><RCC version="1.0">' > screencast.qrc
 echo "<qresource>" >> screencast.qrc
-array="<file>"$( ls pictures/*.* )"</file>"
+#array="<file>"$( ls pictures/*.* )"</file>"
+array="<file>"$( find ./pictures/* -name *.png | cut -c 3- )"</file>"
 echo $array | sed "s/ /<\/file>\n<file>/g" >> screencast.qrc
+array="<file>"$( find ./pictures/* -name *.svg | cut -c 3- )"</file>"
+echo $array | sed "s/ /<\/file>\n<file>/g" >> screencast.qrc
+
+
 
 ################
 # language packs

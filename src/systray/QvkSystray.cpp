@@ -87,7 +87,7 @@ void QvkSystray::init()
     menu->addSeparator();
     menu->addAction( exitAction );
 
-    setIcon( QIcon( ":/pictures/systray.png" ) );
+    setIcon( QIcon( ":/pictures/systray/systray.png" ) );
     setContextMenu ( menu );
     setToolTip( "vokoscreen" );
     show();
@@ -111,17 +111,17 @@ void QvkSystray::slot_closeSystray()
 
 void QvkSystray::slot_setRecordIcon( bool )
 {
-    setIcon( QIcon::fromTheme( "media-record", QIcon( ":/pictures/systray-record" ) ) );
+    setIcon( QIcon::fromTheme( "media-record", QIcon( ":/pictures/systray/record.png" ) ) );
 }
 
 
 void QvkSystray::slot_setSystrayIcon( bool )
 {
-    setIcon( QIcon( ":/pictures/systray.png" ) );
+    setIcon( QIcon( ":/pictures/systray/systray.png" ) );
 }
 
 
 void QvkSystray::slot_setPauseIcon( bool )
 {
-    setIcon( QIcon::fromTheme( "media-playback-pause", QIcon( ":/pictures/pause.png" ) ) );
+    setIcon( QIcon::fromTheme( "media-playback-pause", ui->pushButtonStart->style()->standardIcon( QStyle::SP_MediaPause ) ) );
 }
