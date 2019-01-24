@@ -28,7 +28,7 @@
         <string notr="true"/>
        </property>
        <property name="pixmap">
-        <pixmap resource="screencast.qrc">:/pictures/novideoplayer.png</pixmap>
+        <pixmap resource="screencast.qrc">:/pictures/player/novideoplayer.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
