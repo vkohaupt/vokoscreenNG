@@ -1,7 +1,7 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
 <file>pictures/linux.png</file>
-<file>pictures/magnifier.png</file>
+<file>pictures/magnifier/magnifier.png</file>
 <file>pictures/novideoplayer.png</file>
 <file>pictures/player/vokoscreen.png</file>
 <file>pictures/player/fullscreen.png</file>
@@ -26,7 +26,6 @@
 <file>pictures/help-contents.svg</file>
 <file>pictures/systemsettings.svg</file>
 <file>pictures/video-display.svg</file>
-<file>pictures/view-restore.svg</file>
 <file>language/vokoscreen_az_AZ.qm</file>
 <file>language/vokoscreen_ca.qm</file>
 <file>language/vokoscreen_da_DK.qm</file>

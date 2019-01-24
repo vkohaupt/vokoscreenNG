@@ -9,6 +9,7 @@ QvkMagnifierController::QvkMagnifierController(Ui_formMainWindow *ui_mainwindow 
     newDialog->setModal( true );
     Ui_MagnifierDialog ui_Dialog;
     ui_Dialog.setupUi( newDialog );
+    newDialog->setWindowTitle( "Magnifier" );
     connect( ui_vokoscreen->toolButtonDialogMagnifier, SIGNAL( clicked() ),       newDialog,   SLOT( show() ) );
     connect( ui_Dialog.buttonBox,                      SIGNAL( accepted() ),      newDialog,   SLOT( close() ) );
     connect( ui_Dialog.radioButton1,                   SIGNAL( clicked (bool ) ), vkMagnifier, SLOT( slot_magnifier200x200() ) );
