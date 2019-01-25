@@ -89,7 +89,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkInformation *vkInformation = new QvkInformation( this, ui);
     connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
 
-    QIcon icon( QString::fromUtf8( ":/pictures/vokoscreen.png" ) );
+    QIcon icon( QString::fromUtf8( ":/pictures/screencast/vokoscreen.png" ) );
     setWindowIcon( icon );
 
     setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() );
