@@ -137,17 +137,17 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vk_setCornerWidget( ui->tabWidgetScreencast );
 
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreencast ), QIcon::fromTheme( "video-display",     QIcon( ":/pictures/video-display.svg" ) ) );
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreenshot ), QIcon::fromTheme( "computer",          QIcon( ":/pictures/computer.svg" ) ) );
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarCamera ),     QIcon::fromTheme( "camera-web",        QIcon( ":/pictures/camera-web.svg" ) ) );
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ),     QIcon::fromTheme( "multimedia-player", QIcon( ":/pictures/help-about.svg" ) ) );
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarLog ),        QIcon::fromTheme( "help-about",        QIcon( ":/pictures/help-about.svg" ) ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreencast ), QIcon::fromTheme( "1video-display1",     QIcon( ":/pictures/screencast/vokoscreen.png" ) ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreenshot ), QIcon::fromTheme( "1computer1",          QIcon( ":/pictures/screenshot/screenshot.svg" ) ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarCamera ),     QIcon::fromTheme( "1camera-web1",        QIcon( ":/pictures/camera/camera.svg" ) ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ),     QIcon::fromTheme( "1multimedia-player1", QIcon( ":/pictures/player/player.svg" ) ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarLog ),        QIcon::fromTheme( "1help-about1",        QIcon( ":/pictures/log/log.svg" ) ) );
 
-    makeAndSetValidIcon( ui->tabWidgetScreencast, 0, QIcon::fromTheme( "video-display", QIcon( ":/pictures/video-display.svg" ) ) );
-    makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/audio-input-microphone.svg" ) ) );
-    makeAndSetValidIcon( ui->tabWidgetScreencast, 2, QIcon::fromTheme( "appointment-new", QIcon( ":/pictures/appointment-new.svg" ) ) );
-    makeAndSetValidIcon( ui->tabWidgetScreencast, 3, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/systemsettings.svg" ) ) );
-    makeAndSetValidIcon( ui->tabWidgetScreencast, 4, QIcon::fromTheme( "help-contents", QIcon( ":/pictures/help-contents.svg" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 0, QIcon::fromTheme( "1video-display1", QIcon( ":/pictures/screencast/monitor.png" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon::fromTheme( "1audio-input-microphone1", QIcon( ":/pictures/screencast/microphone.png" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 2, QIcon::fromTheme( "1appointment-new1", QIcon( ":/pictures/screencast/appointment-new.svg" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 3, QIcon::fromTheme( "1preferences-system1", QIcon( ":/pictures/screencast/preferences-system.svg" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 4, QIcon::fromTheme( "1help-contents1", QIcon( ":/pictures/screencast/supported-formats.png" ) ) );
 
     // Bar for start, stop etc.
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setEnabled( bool ) ) );
@@ -360,8 +360,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkScreenshot *vkScreenshot = new QvkScreenshot( this, ui );
     Q_UNUSED(vkScreenshot);
     vk_setCornerWidget( ui->tabWidgetScreenshot );
-    makeAndSetValidIcon( ui->tabWidgetScreenshot, 0, QIcon::fromTheme( "computer", QIcon( ":/pictures/computer.svg" ) ) );
-    makeAndSetValidIcon( ui->tabWidgetScreenshot, 1, QIcon::fromTheme( "preferences-system", QIcon( ":/pictures/systemsettings.svg" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreenshot, 0, QIcon::fromTheme( "1computer1", QIcon( ":/pictures/screenshot/monitor.png" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreenshot, 1, QIcon::fromTheme( "1preferences-system1", QIcon( ":/pictures/screenshot/preferences-system.svg" ) ) );
     // **************** End Screenshot *******************************
 
 
@@ -369,14 +369,20 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkCameraController *cameraController = new QvkCameraController( ui );
     Q_UNUSED(cameraController);
     vk_setCornerWidget( ui->tabWidgetCamera );
-    makeAndSetValidIcon( ui->tabWidgetCamera, 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/camera-web.svg" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetCamera, 0, QIcon::fromTheme( "1camera-web1", QIcon( ":/pictures/camera/camera.svg" ) ) );
     connect( ui->pushButtonShowPlayer, SIGNAL( clicked( bool ) ), this, SLOT( slot_vokoPlayer() ) );
     // *****************End Camera ***********************************
 
 
+    // *****************Begin Player *********************************
+    makeAndSetValidIcon( ui->tabWidgetPlayer, 0, QIcon::fromTheme( "1multimedia-player1", QIcon( ":/pictures/player/player.svg" ) ) );
+
+    // *****************End Player ***********************************
+
+
     // *****************Begin Log *********************************
     vk_setCornerWidget( ui->tabWidgetLog );
-    makeAndSetValidIcon( ui->tabWidgetLog, 0, QIcon::fromTheme( "help-about", QIcon( ":/pictures/help-about.svg" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetLog, 0, QIcon::fromTheme( "1help-about1", QIcon( ":/pictures/log/log.svg" ) ) );
     connect( ui->pushButtonSendReport, SIGNAL( clicked( bool ) ), this, SLOT( slot_sendReport() ) );
     // *****************End Log ***********************************
 
@@ -715,7 +721,7 @@ void QvkMainWindow::slot_audioIconOnOff( bool state )
     makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon( workPixmap ) );
   }
   else{
-    makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon::fromTheme( "audio-input-microphone", QIcon( ":/pictures/audio-input-microphone.svg" ) ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 1, QIcon::fromTheme( "1audio-input-microphone1", QIcon( ":/pictures/screencast/microphone.png" ) ) );
   }
 }
 
