@@ -137,10 +137,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vk_setCornerWidget( ui->tabWidgetScreencast );
 
-    VK_showOnlyFallbackIcons = true;
-
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreencast ), VK_getIcon( "video-display",     ":/pictures/screencast/vokoscreen.png" ) );
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreenshot ), VK_getIcon( "computer",          ":/pictures/screenshot/screenshot.svg" ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreencast ), VK_getIcon( "video-display",     ":/pictures/screencast/monitor.png" ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreenshot ), VK_getIcon( "computer",          ":/pictures/screenshot/screenshot.png" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarCamera ),     VK_getIcon( "camera-web",        ":/pictures/camera/camera.svg" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ),     VK_getIcon( "multimedia-player", ":/pictures/player/player.svg" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarLog ),        VK_getIcon( "help-about",        ":/pictures/log/log.svg" ) );
@@ -361,7 +359,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkScreenshot *vkScreenshot = new QvkScreenshot( this, ui );
     Q_UNUSED(vkScreenshot);
     vk_setCornerWidget( ui->tabWidgetScreenshot );
-    makeAndSetValidIcon( ui->tabWidgetScreenshot, 0, VK_getIcon( "computer", ":/pictures/screenshot/monitor.png" ) );
+    makeAndSetValidIcon( ui->tabWidgetScreenshot, 0, VK_getIcon( "computer", ":/pictures/screenshot/screenshot.png" ) );
     makeAndSetValidIcon( ui->tabWidgetScreenshot, 1, VK_getIcon( "preferences-system", ":/pictures/screenshot/preferences-system.svg" ) );
     // **************** End Screenshot *******************************
 
