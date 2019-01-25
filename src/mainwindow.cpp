@@ -137,7 +137,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vk_setCornerWidget( ui->tabWidgetScreencast );
 
-    VK_showOnlyFallbackIcons = false;
+    VK_showOnlyFallbackIcons = true;
 
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreencast ), VK_getIcon( "video-display",     ":/pictures/screencast/vokoscreen.png" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreenshot ), VK_getIcon( "computer",          ":/pictures/screenshot/screenshot.svg" ) );
@@ -230,7 +230,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->radioButtonFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
     ui->radioButtonWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
 
-    ui->toolButtonAreaReset->setIcon( QIcon::fromTheme( "edit-undo", QIcon( ":/pictures/screencast/undo.svg" ) ) );
+    ui->toolButtonAreaReset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.svg" ) );
 
     connect( ui->radioButtonFullscreen, SIGNAL( toggled( bool ) ), ui->toolButtonAreaReset, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );//**
@@ -313,7 +313,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     connect( ui->checkBoxStopRecordingAfter, SIGNAL( toggled( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
     connect( timerStopRecordingAfter,        SIGNAL( timeout() ),       ui->pushButtonStop, SLOT( click() ) );
-
 
     // Tab 4 Misc
     videoFileSystemWatcher = new QFileSystemWatcher();
@@ -416,7 +415,6 @@ QIcon QvkMainWindow::VK_getIcon( QString iconName, QString iconNameFallback )
         icon = tmpIcon;
         return icon;
     }
-
 
     if ( QIcon::hasThemeIcon( iconName ) == true )
     {
@@ -1094,7 +1092,7 @@ void QvkMainWindow::VK_set_available_Formats_in_Combox()
         QMimeDatabase mimeDatabase;
         QStringList listKeyVideoMimetype = listKeys.filter( "videomimetype" );
         QMimeType mimetype = mimeDatabase.mimeTypeForName( QString( listKeyVideoMimetype.at( 0 ) ).section( ":", 1 ) );
-        QIcon icon = QIcon::fromTheme( mimetype.iconName(), QIcon( ":/pictures/videooptionen.png" ) );
+        QIcon icon = VK_getIcon( mimetype.iconName(), ":/pictures/screencast/strip.svg" );
 
         ui->comboBoxFormat->addItem( icon, // Picture
                                      QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ), // suffix
