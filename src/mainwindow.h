@@ -93,6 +93,10 @@ private:
 
     QvkPlayer *vkPlayer;
 
+    bool VK_showOnlyFallbackIcons = false;
+    QIcon VK_getIcon(QString stringIcon, QString iconNameFallback );
+
+
 private slots:
     void slot_preStart();
     void slot_Start();
