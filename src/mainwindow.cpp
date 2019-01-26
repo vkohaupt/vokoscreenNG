@@ -145,8 +145,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     makeAndSetValidIcon( ui->tabWidgetScreencast, 0, VK_getIcon( "video-display",          ":/pictures/screencast/monitor.png" ) );
     makeAndSetValidIcon( ui->tabWidgetScreencast, 1, VK_getIcon( "audio-input-microphone", ":/pictures/screencast/microphone.png" ) );
-    makeAndSetValidIcon( ui->tabWidgetScreencast, 2, VK_getIcon( "appointment-new",        ":/pictures/screencast/appointment-new.svg" ) );
-    makeAndSetValidIcon( ui->tabWidgetScreencast, 3, VK_getIcon( "preferences-system",     ":/pictures/screencast/preferences-system.svg" ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 2, VK_getIcon( "appointment-new",        ":/pictures/screencast/timer.png" ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, 3, VK_getIcon( "preferences-system",     ":/pictures/screencast/preferences-system.png" ) );
     makeAndSetValidIcon( ui->tabWidgetScreencast, 4, VK_getIcon( "help-contents",          ":/pictures/screencast/supported-formats.png" ) );
 
     // Bar for start, stop etc.
@@ -228,7 +228,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->radioButtonFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
     ui->radioButtonWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
 
-    ui->toolButtonAreaReset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.svg" ) );
+    ui->toolButtonAreaReset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
 
     connect( ui->radioButtonFullscreen, SIGNAL( toggled( bool ) ), ui->toolButtonAreaReset, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );//**
@@ -360,7 +360,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     Q_UNUSED(vkScreenshot);
     vk_setCornerWidget( ui->tabWidgetScreenshot );
     makeAndSetValidIcon( ui->tabWidgetScreenshot, 0, VK_getIcon( "computer", ":/pictures/screenshot/screenshot.png" ) );
-    makeAndSetValidIcon( ui->tabWidgetScreenshot, 1, VK_getIcon( "preferences-system", ":/pictures/screenshot/preferences-system.svg" ) );
+    makeAndSetValidIcon( ui->tabWidgetScreenshot, 1, VK_getIcon( "preferences-system", ":/pictures/screenshot/preferences-system.png" ) );
     // **************** End Screenshot *******************************
 
 
@@ -1090,7 +1090,7 @@ void QvkMainWindow::VK_set_available_Formats_in_Combox()
         QMimeDatabase mimeDatabase;
         QStringList listKeyVideoMimetype = listKeys.filter( "videomimetype" );
         QMimeType mimetype = mimeDatabase.mimeTypeForName( QString( listKeyVideoMimetype.at( 0 ) ).section( ":", 1 ) );
-        QIcon icon = VK_getIcon( mimetype.iconName(), ":/pictures/screencast/strip.svg" );
+        QIcon icon = VK_getIcon( mimetype.iconName(), ":/pictures/screencast/strip.png" );
 
         ui->comboBoxFormat->addItem( icon, // Picture
                                      QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ), // suffix
