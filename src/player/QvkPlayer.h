@@ -39,6 +39,7 @@ private slots:
     void slot_sliderVideoPressed();
     void slot_sliderVideoReleased();
     void slot_sliderVideoMoved( int value );
+    void slot_volumeChanged( int ); // Funktioniert nicht mit Pulse
 
 
 private:

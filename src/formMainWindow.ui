@@ -2130,7 +2130,7 @@
                </widget>
               </item>
               <item row="0" column="3">
-               <widget class="QToolButton" name="toolButtonScreenShotMiscHelp">
+               <widget class="QToolButton" name="toolButtonHelpScreenShotMiscPath">
                 <property name="text">
                  <string notr="true">Help</string>
                 </property>
@@ -2578,7 +2578,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="QToolButton" name="toolButtonPlayer">
+               <widget class="QToolButton" name="toolButtonHelpPlayer">
                 <property name="text">
                  <string notr="true">Help</string>
                 </property>

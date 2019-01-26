@@ -84,11 +84,20 @@ QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : 
 
     // Screenshot
     ui->toolButtonHelpScreenshotScreen->setIcon( iconHelp );
-    ui->toolButtonScreenShotMiscHelp->setIcon( iconHelp );
+    ui->toolButtonHelpScreenshotFullscreen->setIcon( iconHelp  );
+    ui->toolButtonHelpScreenshotWindow->setIcon( iconHelp );
+    ui->toolButtonHelpScreenshotArea->setIcon( iconHelp );
+    ui->toolButtonHelpScreenshotSuffix->setIcon( iconHelp );
+    ui->toolButtonHelpScreenshotCountdown->setIcon( iconHelp );
+    ui->toolButtonHelpScreenshotHideThisWindow->setIcon( iconHelp );
+    ui->toolButtonHelpScreenshotExecute->setIcon( iconHelp );
+    ui->toolButtonHelpScreenShotMiscPath->setIcon( iconHelp );
 
     // Camera
     ui->toolButtonHelpCamera->setIcon( iconHelp );
 
+    // Player
+    ui->toolButtonHelpPlayer->setIcon( iconHelp );
 
     // Log
     ui->toolButtonHelpReport->setIcon( iconHelp );

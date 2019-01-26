@@ -11,7 +11,7 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     ui->setupUi(this);
 
     setWindowTitle( "vokoplayer" );
-    QIcon icon( QString::fromUtf8( ":/pictures/vokoscreen.png" ) );
+    QIcon icon( QString::fromUtf8( ":/pictures/player/vokoscreen.png" ) );
     setWindowIcon( icon );
 
     ui->labelPlayer->setPixmap( icon.pixmap( 200, 185 ) );
@@ -40,6 +40,7 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     connect( mediaPlayer, SIGNAL( durationChanged( qint64 ) ),           this, SLOT( slot_durationChanged( qint64 ) ) );
     connect( mediaPlayer, SIGNAL( positionChanged( qint64 ) ),           this, SLOT( slot_positionChanged( qint64 ) ) );
     connect( mediaPlayer, SIGNAL( stateChanged( QMediaPlayer::State ) ), this, SLOT( slot_stateChanged( QMediaPlayer::State ) ) );
+    connect( mediaPlayer, SIGNAL( volumeChanged( int ) ),                this, SLOT( slot_volumeChanged( int ) ) ); // Funktioniert nicht mit Pulse
 
     connect( ui->toolButtonOpenFile, SIGNAL( clicked( bool ) ), this, SLOT( slot_openFile() ) );
 
@@ -71,6 +72,12 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
 QvkPlayer::~QvkPlayer()
 {
     delete ui;
+}
+
+// Funktioniert nicht mit Pulse
+void QvkPlayer::slot_volumeChanged( int )
+{
+    qDebug() << "666666666666666666666666666666666666666666666666666666";
 }
 
 
