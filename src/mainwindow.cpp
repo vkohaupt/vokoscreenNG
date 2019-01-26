@@ -140,7 +140,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreencast ), VK_getIcon( "video-display",     ":/pictures/screencast/monitor.png" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreenshot ), VK_getIcon( "computer",          ":/pictures/screenshot/screenshot.png" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarCamera ),     VK_getIcon( "camera-web",        ":/pictures/camera/camera.svg" ) );
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ),     VK_getIcon( "multimedia-player", ":/pictures/player/player.svg" ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ),     VK_getIcon( "multimedia-player", ":/pictures/player/player.png" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarLog ),        VK_getIcon( "help-about",        ":/pictures/log/log.svg" ) );
 
     makeAndSetValidIcon( ui->tabWidgetScreencast, 0, VK_getIcon( "video-display",          ":/pictures/screencast/monitor.png" ) );
@@ -374,7 +374,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 
     // *****************Begin Player *********************************
-    makeAndSetValidIcon( ui->tabWidgetPlayer, 0, VK_getIcon( "multimedia-player", ":/pictures/player/player.svg" ) );
+    makeAndSetValidIcon( ui->tabWidgetPlayer, 0, VK_getIcon( "multimedia-player", ":/pictures/player/player.png" ) );
     // *****************End Player ***********************************
 
 
