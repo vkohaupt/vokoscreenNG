@@ -139,7 +139,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreencast ), VK_getIcon( "video-display",     ":/pictures/screencast/monitor.png" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreenshot ), VK_getIcon( "computer",          ":/pictures/screenshot/screenshot.png" ) );
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarCamera ),     VK_getIcon( "camera-web",        ":/pictures/camera/camera.svg" ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarCamera ),     VK_getIcon( "camera-web",        ":/pictures/camera/camera.png" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ),     VK_getIcon( "multimedia-player", ":/pictures/player/player.png" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarLog ),        VK_getIcon( "help-about",        ":/pictures/log/log.svg" ) );
 
@@ -368,7 +368,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkCameraController *cameraController = new QvkCameraController( ui );
     Q_UNUSED(cameraController);
     vk_setCornerWidget( ui->tabWidgetCamera );
-    makeAndSetValidIcon( ui->tabWidgetCamera, 0, VK_getIcon( "camera-web", ":/pictures/camera/camera.svg" ) );
+    makeAndSetValidIcon( ui->tabWidgetCamera, 0, VK_getIcon( "camera-web", ":/pictures/camera/camera.png" ) );
     connect( ui->pushButtonShowPlayer, SIGNAL( clicked( bool ) ), this, SLOT( slot_vokoPlayer() ) );
     // *****************End Camera ***********************************
 

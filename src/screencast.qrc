@@ -1,5 +1,6 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
+<file>pictures/camera/camera.png</file>
 <file>pictures/linux.png</file>
 <file>pictures/magnifier/magnifier.png</file>
 <file>pictures/player/player.png</file>
@@ -23,7 +24,6 @@
 <file>pictures/systray/systray.png</file>
 <file>pictures/systray/record.png</file>
 <file>pictures/windows.png</file>
-<file>pictures/camera/camera.svg</file>
 <file>pictures/log/log.svg</file>
 <file>pictures/screencast/preferences-system.svg</file>
 <file>pictures/screencast/undo.svg</file>
