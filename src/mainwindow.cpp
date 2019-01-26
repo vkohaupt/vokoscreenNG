@@ -141,7 +141,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreenshot ), VK_getIcon( "computer",          ":/pictures/screenshot/screenshot.png" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarCamera ),     VK_getIcon( "camera-web",        ":/pictures/camera/camera.png" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ),     VK_getIcon( "multimedia-player", ":/pictures/player/player.png" ) );
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarLog ),        VK_getIcon( "help-about",        ":/pictures/log/log.svg" ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarLog ),        VK_getIcon( "help-about",        ":/pictures/log/log.png" ) );
 
     makeAndSetValidIcon( ui->tabWidgetScreencast, 0, VK_getIcon( "video-display",          ":/pictures/screencast/monitor.png" ) );
     makeAndSetValidIcon( ui->tabWidgetScreencast, 1, VK_getIcon( "audio-input-microphone", ":/pictures/screencast/microphone.png" ) );
@@ -380,7 +380,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // *****************Begin Log *********************************
     vk_setCornerWidget( ui->tabWidgetLog );
-    makeAndSetValidIcon( ui->tabWidgetLog, 0, VK_getIcon( "help-about", ":/pictures/log/log.svg" ) );
+    makeAndSetValidIcon( ui->tabWidgetLog, 0, VK_getIcon( "help-about", ":/pictures/log/log.png" ) );
     connect( ui->pushButtonSendReport, SIGNAL( clicked( bool ) ), this, SLOT( slot_sendReport() ) );
     // *****************End Log ***********************************
 
