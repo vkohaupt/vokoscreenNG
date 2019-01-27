@@ -4,6 +4,8 @@
 #include <QTime>
 #include <QStandardPaths>
 #include <QFileDialog>
+#include <QTimer>
+#include <QMouseEvent>
 
 QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
                                         ui(new Ui::QvkPlayer)
@@ -67,7 +69,13 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
     connect( ui->sliderVolume,    SIGNAL( sliderMoved( int ) ), mediaPlayer, SLOT( setVolume( int ) ) );
 
     connect( ui->pushButtonMute,  SIGNAL( clicked( bool ) ), this, SLOT( slot_mute() ) );
+
+    QTimer *timer = new QTimer( this );
+    connect(timer, SIGNAL( timeout() ), this, SLOT( slot_hideMouse() ) );
+    timer->start( 3000 );
+
 }
+
 
 QvkPlayer::~QvkPlayer()
 {
@@ -77,7 +85,19 @@ QvkPlayer::~QvkPlayer()
 // Funktioniert nicht mit Pulse
 void QvkPlayer::slot_volumeChanged( int )
 {
-    qDebug() << "666666666666666666666666666666666666666666666666666666";
+}
+
+
+void QvkPlayer::slot_hideMouse()
+{
+    if ( underMouse() )
+    {
+        qApp->setOverrideCursor( Qt::BlankCursor );
+        if ( isFullScreen() == true )
+        {
+            ui->widgetMenueBar->hide();
+        }
+    }
 }
 
 
@@ -377,8 +397,11 @@ void QvkPlayer::mouseReleaseEvent(QMouseEvent *event)
 
 void QvkPlayer::mouseMoveEvent( QMouseEvent *event )
 {
+    qApp->restoreOverrideCursor();
+
     if ( isFullScreen() == true )
     {
+        ui->widgetMenueBar->show();
         if ( ( event->buttons() == Qt::LeftButton ) and ( pressed == true ) )
         {
             ui->widgetMenueBar->move( QPoint( event->pos().x() - mouseInWidgetX, event->pos().y() - mouseInWidgetY ) );

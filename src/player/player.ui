@@ -10,6 +10,9 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="mouseTracking">
+   <bool>true</bool>
+  </property>
   <property name="windowTitle">
    <string notr="true"/>
   </property>
@@ -85,6 +88,9 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
      </property>
@@ -117,6 +123,9 @@
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
         </property>
         <property name="text">
          <string notr="true">TextLabel</string>
