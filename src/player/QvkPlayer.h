@@ -52,6 +52,7 @@ private:
     bool pressed = false;
     void vk_showFullscreen();
     void vk_showNormal();
+    QTimer *timerHideMouse;
 
 
 protected:
@@ -62,6 +63,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void resizeEvent(QResizeEvent *event);
+    void leaveEvent(QEvent *event);
 
 
 };

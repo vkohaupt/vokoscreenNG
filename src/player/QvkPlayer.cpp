@@ -11,6 +11,10 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
 {
     ui->setupUi(this);
 
+    this->setMouseTracking( true );
+    ui->frame->setMouseTracking( true );
+    ui->labelPlayer->setMouseTracking( true );
+
     setWindowTitle( "vokoplayer" );
     QIcon icon( QString::fromUtf8( ":/pictures/player/vokoscreen.png" ) );
     setWindowIcon( icon );
@@ -69,9 +73,9 @@ QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
 
     connect( ui->pushButtonMute,  SIGNAL( clicked( bool ) ), this, SLOT( slot_mute() ) );
 
-    QTimer *timer = new QTimer( this );
-    connect(timer, SIGNAL( timeout() ), this, SLOT( slot_hideMouse() ) );
-    timer->start( 3000 );
+    timerHideMouse = new QTimer( this );
+    connect( timerHideMouse, SIGNAL( timeout() ), this, SLOT( slot_hideMouse() ) );
+    timerHideMouse->start( 3000 );
 
 }
 
@@ -89,10 +93,13 @@ void QvkPlayer::slot_volumeChanged( int )
 
 void QvkPlayer::slot_hideMouse()
 {
-    qApp->setOverrideCursor( Qt::BlankCursor );
-    if ( isFullScreen() == true )
+    if ( ui->labelPlayer->underMouse() == true )
     {
-        ui->widgetMenueBar->hide();
+        qApp->setOverrideCursor( Qt::BlankCursor );
+        if ( isFullScreen() == true )
+        {
+            ui->widgetMenueBar->hide();
+        }
     }
 }
 
@@ -368,7 +375,7 @@ void QvkPlayer::keyPressEvent( QKeyEvent *event )
 }
 
 
-void QvkPlayer::mousePressEvent(QMouseEvent *event)
+void QvkPlayer::mousePressEvent( QMouseEvent *event )
 {
     if ( isFullScreen() == true )
     {
@@ -383,7 +390,7 @@ void QvkPlayer::mousePressEvent(QMouseEvent *event)
 }
 
 
-void QvkPlayer::mouseReleaseEvent(QMouseEvent *event)
+void QvkPlayer::mouseReleaseEvent( QMouseEvent *event )
 {
     Q_UNUSED(event);
     unsetCursor();
@@ -393,7 +400,9 @@ void QvkPlayer::mouseReleaseEvent(QMouseEvent *event)
 
 void QvkPlayer::mouseMoveEvent( QMouseEvent *event )
 {
-    qApp->restoreOverrideCursor();
+     timerHideMouse->stop();
+     timerHideMouse->start();
+     qApp->restoreOverrideCursor();
 
     if ( isFullScreen() == true )
     {
@@ -406,7 +415,14 @@ void QvkPlayer::mouseMoveEvent( QMouseEvent *event )
 }
 
 
-void QvkPlayer::resizeEvent(QResizeEvent *event)
+void QvkPlayer::leaveEvent( QEvent *event )
+{
+    Q_UNUSED(event);
+    qApp->restoreOverrideCursor();
+}
+
+
+void QvkPlayer::resizeEvent( QResizeEvent *event )
 {
     Q_UNUSED(event);
     if ( isFullScreen() == true )
