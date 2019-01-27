@@ -5,7 +5,6 @@
 #include <QStandardPaths>
 #include <QFileDialog>
 #include <QTimer>
-#include <QMouseEvent>
 
 QvkPlayer::QvkPlayer(QWidget *parent) : QWidget(parent),
                                         ui(new Ui::QvkPlayer)
@@ -90,13 +89,10 @@ void QvkPlayer::slot_volumeChanged( int )
 
 void QvkPlayer::slot_hideMouse()
 {
-    if ( underMouse() )
+    qApp->setOverrideCursor( Qt::BlankCursor );
+    if ( isFullScreen() == true )
     {
-        qApp->setOverrideCursor( Qt::BlankCursor );
-        if ( isFullScreen() == true )
-        {
-            ui->widgetMenueBar->hide();
-        }
+        ui->widgetMenueBar->hide();
     }
 }
 

@@ -52,8 +52,7 @@ private:
     bool pressed = false;
     void vk_showFullscreen();
     void vk_showNormal();
-    QPoint newMousePos;
-    QPoint oldMousePos;
+
 
 protected:
     void mouseDoubleClickEvent( QMouseEvent *event );
