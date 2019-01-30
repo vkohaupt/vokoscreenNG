@@ -163,6 +163,9 @@ void QvkCameraController::slot_startCamera( bool value )
         cameraWindow = new QvkCameraWindow();
         connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_vokoscreen->checkBoxCamera, SLOT( setChecked( bool ) ) );
         cameraWindow->setWindowTitle( vkSettings.getProgName() + " " + "camera"  + " " + vkSettings.getVersion() );
+        QIcon icon( QString::fromUtf8( ":/pictures/player/vokoscreen.png" ) );
+        cameraWindow->setWindowIcon( icon );
+
         cameraWindow->resize( 320, 240 );
         camera->setViewfinder( videoSurface );
         cameraWindow->show();

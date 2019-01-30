@@ -22,7 +22,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     QIcon icon( QString::fromUtf8( ":/pictures/player/vokoscreen.png" ) );
     setWindowIcon( icon );
 
-    ui->labelPlayer->setPixmap( icon.pixmap( 200, 185 ) );
+    ui->labelPlayer->setPixmap( icon.pixmap( 108, 100 ) );
 
     ui->framePlayer->setStyleSheet( "background-color: black;" );
 

@@ -330,11 +330,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxMinimizedWhenRecordingStarts, SIGNAL( clicked( bool ) ),    ui->frameWaitXSecondBeforRecording, SLOT( setEnabled( bool ) ) );
 
     // Tab 5 Available muxer, encoder etc.
-    QIcon iconAvailable = ui->labelAvalible->style()->standardIcon( QStyle::SP_DialogApplyButton );
+    QIcon iconAvailable = style()->standardIcon( QStyle::SP_DialogApplyButton );
     QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
     ui->labelAvalible->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
 
-    QIcon iconNotAvailable = ui->labelNotAvailable->style()->standardIcon( QStyle::SP_DialogCancelButton );
+    QIcon iconNotAvailable = style()->standardIcon( QStyle::SP_DialogCancelButton );
     ui->labelNotAvailable->setPixmap( iconNotAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
     // End Tabs
 
@@ -910,9 +910,9 @@ void QvkMainWindow::VK_gst_Elements_available()
                 QLabel *labelPicture = new QLabel();
                 QIcon icon;
                 if ( available == true )
-                    icon = labelPicture->style()->standardIcon( QStyle::SP_DialogApplyButton );
+                    icon = style()->standardIcon( QStyle::SP_DialogApplyButton );
                 else
-                    icon = labelPicture->style()->standardIcon( QStyle::SP_DialogCancelButton );
+                    icon = style()->standardIcon( QStyle::SP_DialogCancelButton );
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
                 labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
                 labelPicture->setAlignment( Qt::AlignRight );
@@ -927,9 +927,9 @@ void QvkMainWindow::VK_gst_Elements_available()
                 QLabel *labelPicture = new QLabel();
                 QIcon icon;
                 if ( available == true )
-                    icon = labelPicture->style()->standardIcon( QStyle::SP_DialogApplyButton );
+                    icon = style()->standardIcon( QStyle::SP_DialogApplyButton );
                 else
-                    icon = labelPicture->style()->standardIcon( QStyle::SP_DialogCancelButton );
+                    icon = style()->standardIcon( QStyle::SP_DialogCancelButton );
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
                 labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
                 labelPicture->setAlignment( Qt::AlignRight );
@@ -944,9 +944,9 @@ void QvkMainWindow::VK_gst_Elements_available()
                 QLabel *labelPicture = new QLabel();
                 QIcon icon;
                 if ( available == true )
-                    icon = labelPicture->style()->standardIcon( QStyle::SP_DialogApplyButton );
+                    icon = style()->standardIcon( QStyle::SP_DialogApplyButton );
                 else
-                    icon = labelPicture->style()->standardIcon( QStyle::SP_DialogCancelButton );
+                    icon = style()->standardIcon( QStyle::SP_DialogCancelButton );
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
                 labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
                 labelPicture->setAlignment( Qt::AlignRight );
