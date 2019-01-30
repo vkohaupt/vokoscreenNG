@@ -369,7 +369,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     Q_UNUSED(cameraController);
     vk_setCornerWidget( ui->tabWidgetCamera );
     makeAndSetValidIcon( ui->tabWidgetCamera, 0, VK_getIcon( "camera-web", ":/pictures/camera/camera.png" ) );
-    connect( ui->pushButtonShowPlayer, SIGNAL( clicked( bool ) ), this, SLOT( slot_vokoPlayer() ) );
+    //connect( ui->pushButtonShowPlayer, SIGNAL( clicked( bool ) ), this, SLOT( slot_vokoPlayer() ) ); //----------------------------------------------------------------------------
     // *****************End Camera ***********************************
 
 

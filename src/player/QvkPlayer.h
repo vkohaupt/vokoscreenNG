@@ -47,9 +47,8 @@ private slots:
 
 
 private:
-//    Ui::QvkPlayer *ui;
-    QMainWindow *parentMainWindow; // neu
-    Ui_formMainWindow *uiMainWindow; // neu
+    QMainWindow *parentMainWindow;
+    Ui_formMainWindow *uiMainWindow;
     QMediaPlayer *mediaPlayer;
     QString get_time( qint64 value );
     int mouseInWidgetX;

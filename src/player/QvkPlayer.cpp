@@ -11,8 +11,6 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     parentMainWindow = parent;
     uiMainWindow = ui_mainwindow;
     uiMainWindow->widgetToolBar->hide();
-    uiMainWindow->labelPlayer->hide();
-    uiMainWindow->widgetMenueBar->hide();
     uiMainWindow->verticalLayoutTabSidebarPlayer->addWidget( this );
 
 
