@@ -97,7 +97,7 @@ QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : 
     ui->toolButtonHelpCamera->setIcon( iconHelp );
 
     // Player
-    ui->toolButtonHelpPlayer->setIcon( iconHelp );
+    //ui->toolButtonHelpPlayer->setIcon( iconHelp );
 
     // Log
     ui->toolButtonHelpReport->setIcon( iconHelp );

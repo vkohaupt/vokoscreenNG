@@ -8,14 +8,11 @@
 
 QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : ui(new Ui::QvkPlayer)
 {
+    ui->setupUi(this);
+
     parentMainWindow = parent;
     uiMainWindow = ui_mainwindow;
-    uiMainWindow->widgetToolBar->hide();
     uiMainWindow->verticalLayoutTabSidebarPlayer->addWidget( this );
-
-
-
-    ui->setupUi(this);
 
     this->setMouseTracking( true );
     ui->framePlayer->setMouseTracking( true );
@@ -292,7 +289,7 @@ void QvkPlayer::vk_showFullscreen()
     uiMainWindow->verticalLayoutCentralWidget->addWidget( this );
     parentMainWindow->showFullScreen();
 
-    ui->widgetToolBar->setHidden( true );
+//    ui->widgetToolBar->setHidden( true );
     ui->widgetMenueBar->setParent( ui->labelPlayer);
     ui->framePlayer->setStyleSheet( "background-color: black;"  );
     ui->widgetMenueBar->setStyleSheet( "background-color: lightgray;"  );
@@ -308,7 +305,7 @@ void QvkPlayer::vk_showNormal()
     uiMainWindow->verticalLayoutTabSidebarPlayer->addWidget( this );
     parentMainWindow->showNormal();
 
-    ui->widgetToolBar->setHidden( false );
+//    ui->widgetToolBar->setHidden( false );
     ui->verticalLayout_4->addWidget( ui->widgetMenueBar );
     ui->framePlayer->setStyleSheet( "background-color: black;"  );
     // An empty string resets the color
