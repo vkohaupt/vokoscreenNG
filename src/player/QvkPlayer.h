@@ -2,12 +2,14 @@
 #define QVKPLAYER_H
 
 #include "ui_player.h"
+#include "ui_formMainWindow.h"
 
 #include <QWidget>
 #include <QMediaPlayer>
 #include <QMouseEvent>
 #include <QKeyEvent>
 #include <QStyle>
+#include <QMainWindow>
 
 namespace Ui {
 class QvkPlayer;
@@ -18,9 +20,10 @@ class QvkPlayer : public QWidget
     Q_OBJECT
 
 public:
-    explicit QvkPlayer(QWidget *parent = 0);
+    explicit QvkPlayer(QMainWindow *parent, Ui_formMainWindow *ui_mainwindow);
     ~QvkPlayer();
     void setMediaFile( QString string );
+    Ui::QvkPlayer *ui;
 
 
 public slots:
@@ -44,7 +47,9 @@ private slots:
 
 
 private:
-    Ui::QvkPlayer *ui;
+//    Ui::QvkPlayer *ui;
+    QMainWindow *parentMainWindow; // neu
+    Ui_formMainWindow *uiMainWindow; // neu
     QMediaPlayer *mediaPlayer;
     QString get_time( qint64 value );
     int mouseInWidgetX;

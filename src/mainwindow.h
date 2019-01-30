@@ -150,6 +150,7 @@ protected:
     void showEvent( QShowEvent *event );
 #endif
 
+
 };
 
 #endif // MAINWINDOW_H

@@ -60,7 +60,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vkSettings.readAll();
 
-    vkPlayer = new QvkPlayer();
+    vkPlayer = new QvkPlayer( this, ui );
 
     QvkMagnifierController *vkMagnifierController = new QvkMagnifierController(ui);
     Q_UNUSED(vkMagnifierController);
@@ -374,7 +374,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 
     // *****************Begin Player *********************************
-    makeAndSetValidIcon( ui->tabWidgetPlayer, 0, VK_getIcon( "multimedia-player", ":/pictures/player/player.png" ) );
+   // makeAndSetValidIcon( ui->tabWidgetPlayer, 0, VK_getIcon( "multimedia-player", ":/pictures/player/player.png" ) );
     // *****************End Player ***********************************
 
 
