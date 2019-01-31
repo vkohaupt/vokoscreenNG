@@ -22,7 +22,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     QIcon icon( QString::fromUtf8( ":/pictures/player/vokoscreen.png" ) );
     setWindowIcon( icon );
 
-    ui->labelPlayer->setPixmap( icon.pixmap( 108, 100 ) );
+    ui->labelPlayer->setPixmap( icon.pixmap( 200, 185 ) );
 
     ui->framePlayer->setStyleSheet( "background-color: black;" );
 
@@ -77,9 +77,13 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     connect( ui->pushButtonMute,  SIGNAL( clicked( bool ) ), this, SLOT( slot_mute() ) );
 
     timerHideMouse = new QTimer( this );
+    timerHideMouse->setTimerType( Qt::PreciseTimer );
     connect( timerHideMouse, SIGNAL( timeout() ), this, SLOT( slot_hideMouse() ) );
-    timerHideMouse->start( 3000 );
+    timerHideMouse->start( 2000 );
 
+    QPixmap pixmap( ":/pictures/player/move.png" );
+    QPixmap map = pixmap.scaled( ui->labelMovePicture->size().height()-5, ui->labelMovePicture->size().height()-5 );
+    ui->labelMovePicture->setPixmap( map );
 }
 
 
@@ -98,7 +102,8 @@ void QvkPlayer::slot_hideMouse()
 {
     if ( ui->labelPlayer->underMouse() == true )
     {
-        qApp->setOverrideCursor( Qt::BlankCursor );
+        ui->labelPlayer->setCursor( Qt::BlankCursor );
+
         if ( parentMainWindow->isFullScreen() == true )
         {
             ui->widgetMenueBar->hide();
@@ -289,7 +294,6 @@ void QvkPlayer::vk_showFullscreen()
     uiMainWindow->verticalLayoutCentralWidget->addWidget( this );
     parentMainWindow->showFullScreen();
 
-//    ui->widgetToolBar->setHidden( true );
     ui->widgetMenueBar->setParent( ui->labelPlayer);
     ui->framePlayer->setStyleSheet( "background-color: black;"  );
     ui->widgetMenueBar->setStyleSheet( "background-color: lightgray;"  );
@@ -305,7 +309,6 @@ void QvkPlayer::vk_showNormal()
     uiMainWindow->verticalLayoutTabSidebarPlayer->addWidget( this );
     parentMainWindow->showNormal();
 
-//    ui->widgetToolBar->setHidden( false );
     ui->verticalLayout_4->addWidget( ui->widgetMenueBar );
     ui->framePlayer->setStyleSheet( "background-color: black;"  );
     // An empty string resets the color
@@ -385,7 +388,6 @@ void QvkPlayer::keyPressEvent( QKeyEvent *event )
     }
 }
 
-
 void QvkPlayer::mousePressEvent( QMouseEvent *event )
 {
     if ( parentMainWindow->isFullScreen() == true )
@@ -394,7 +396,7 @@ void QvkPlayer::mousePressEvent( QMouseEvent *event )
         {
             mouseInWidgetX = event->pos().x() - ui->widgetMenueBar->pos().x();
             mouseInWidgetY = event->pos().y() - ui->widgetMenueBar->pos().y();
-            setCursor( Qt::SizeAllCursor );
+            ui->labelMovePicture->setCursor( Qt::SizeAllCursor );
             pressed = true;
         }
     }
@@ -404,7 +406,7 @@ void QvkPlayer::mousePressEvent( QMouseEvent *event )
 void QvkPlayer::mouseReleaseEvent( QMouseEvent *event )
 {
     Q_UNUSED(event);
-    unsetCursor();
+    ui->labelMovePicture->setCursor( Qt::ArrowCursor );
     pressed = false;
 }
 
@@ -413,7 +415,7 @@ void QvkPlayer::mouseMoveEvent( QMouseEvent *event )
 {
      timerHideMouse->stop();
      timerHideMouse->start();
-     qApp->restoreOverrideCursor();
+     ui->labelPlayer->setCursor( Qt::ArrowCursor );
 
     if ( parentMainWindow->isFullScreen() == true )
     {
@@ -429,7 +431,7 @@ void QvkPlayer::mouseMoveEvent( QMouseEvent *event )
 void QvkPlayer::leaveEvent( QEvent *event )
 {
     Q_UNUSED(event);
-    qApp->restoreOverrideCursor();
+    ui->labelPlayer->setCursor( Qt::ArrowCursor );
 }
 
 

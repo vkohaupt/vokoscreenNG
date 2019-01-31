@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>648</width>
+    <height>477</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -248,6 +248,13 @@
              <widget class="QToolButton" name="toolButtonFullscreen">
               <property name="text">
                <string notr="true">Fullscreen</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="labelMovePicture">
+              <property name="text">
+               <string notr="true">Move</string>
               </property>
              </widget>
             </item>

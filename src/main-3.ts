@@ -73,10 +73,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Please install a videoplayer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Please install a filemanager</source>
         <translation type="unfinished"></translation>
     </message>
@@ -101,6 +97,10 @@
     </message>
     <message>
         <source>Mute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -361,14 +361,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Syste&amp;mplayer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show Player</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Log</source>
         <translation type="unfinished"></translation>
     </message>
@@ -381,33 +373,6 @@
     <name>formShowClick</name>
     <message>
         <source>Showclick Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>playerMenueBar</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Play</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mute</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
