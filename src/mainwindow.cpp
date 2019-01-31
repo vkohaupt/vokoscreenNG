@@ -1550,48 +1550,24 @@ void QvkMainWindow::slot_Play()
     QStringList filters;
     filters << "vokoscreen*";
     QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
-/*
-    if ( ui->radioButtonSystemPlayer->isChecked() == true )
-    {
-        qDebug() << "[vokoscreen] play video with standard system player";
-        QString string;
-        string.append( "file:///" );
-        string.append( ui->lineEditVideoPath->text() );
-        string.append( "/" );
-        string.append( videoFileList.at( 0 ) );
-        bool b = QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) );
-        if ( b == false )
-        {
-            QDialog *newDialog = new QDialog;
-            Ui_NoPlayerDialog myUiDialog;
-            myUiDialog.setupUi( newDialog );
-            myUiDialog.labelPleaseInstall->setText( tr( "Please install a videoplayer" ) );
-            newDialog->setModal( true );
-            newDialog->setWindowTitle( "vokoscreen" );
-            newDialog->show();
-        }
-    }
-*/
-//    if ( ui->radioButtonVokoPlayer->isChecked() == true )
-//    {
-        qDebug() << "[vokoscreen] play video with vokoplayer";
-        ui->tabWidgetSideBar->setCurrentIndex( 1 );
-        QString string;
-        string.append( ui->lineEditVideoPath->text() );
-        string.append( "/" );
-        string.append( videoFileList.at( 0 ) );
-        vkPlayer->setMediaFile( string );
-        vkPlayer->slot_play();
-//    }
+
+    qDebug() << "[vokoscreen] play video with vokoplayer";
+    ui->tabWidgetSideBar->setCurrentIndex( 1 );
+    QString string;
+    string.append( ui->lineEditVideoPath->text() );
+    string.append( "/" );
+    string.append( videoFileList.at( 0 ) );
+    vkPlayer->setMediaFile( string );
+    vkPlayer->slot_play();
 }
 
 
 void QvkMainWindow::slot_Folder()
 {
-    if ( !QDesktopServices::openUrl( QUrl( ui->lineEditVideoPath->text(), QUrl::TolerantMode ) ) == false )
+    if ( QDesktopServices::openUrl( QUrl( ui->lineEditVideoPath->text(), QUrl::TolerantMode ) ) == false )
     {
-        QMessageBox msgBox;
-        msgBox.setText( tr( "No filemanger found." ) + "\n" + tr( "Please install a filemanager." ) );
+        QMessageBox msgBox( this );
+        msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
         msgBox.setWindowTitle( "vokoscreen" );
         msgBox.setIcon( QMessageBox::Information );
         msgBox.exec();

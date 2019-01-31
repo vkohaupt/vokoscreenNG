@@ -73,7 +73,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Please install a filemanager</source>
+        <source>No filemanager found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -97,10 +101,6 @@
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
