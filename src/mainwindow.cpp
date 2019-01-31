@@ -391,7 +391,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->checkBoxShowInSystray->clicked( true );
     ui->radioButtonBottomMiddle->clicked( true ); // funktioniert so nicht da Widget disabled sind
     ui->checkBoxAudioOnOff->clicked( false ); // sende Signal clicked mit value=false
-    ui->checkBoxAudioOnOff->click();
+    //ui->checkBoxAudioOnOff->click();
 }
 
 
@@ -1552,7 +1552,7 @@ void QvkMainWindow::slot_Play()
     QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
 
     qDebug() << "[vokoscreen] play video with vokoplayer";
-    ui->tabWidgetSideBar->setCurrentIndex( 1 );
+    ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
     QString string;
     string.append( ui->lineEditVideoPath->text() );
     string.append( "/" );
