@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 
 #include "ui_formMainWindow.h"
-#include "ui_QvkNoPlayerDialog.h"
 #include "QvkScreenshot.h"
 #include "QvkInformation.h"
 #include "QvkShowClickDialog.h"
@@ -1589,17 +1588,13 @@ void QvkMainWindow::slot_Play()
 
 void QvkMainWindow::slot_Folder()
 {
-    QString path = ui->lineEditVideoPath->text();
-    bool b = QDesktopServices::openUrl( QUrl( path, QUrl::TolerantMode ) );
-    if ( b == false )
+    if ( !QDesktopServices::openUrl( QUrl( ui->lineEditVideoPath->text(), QUrl::TolerantMode ) ) == false )
     {
-        QDialog *newDialog = new QDialog;
-        Ui_NoPlayerDialog myUiDialog;
-        myUiDialog.setupUi( newDialog );
-        myUiDialog.labelPleaseInstall->setText( tr( "Please install a filemanager" ) );
-        newDialog->setModal( true );
-        newDialog->setWindowTitle( "vokoscreen" );
-        newDialog->show();
+        QMessageBox msgBox;
+        msgBox.setText( tr( "No filemanger found." ) + "\n" + tr( "Please install a filemanager." ) );
+        msgBox.setWindowTitle( "vokoscreen" );
+        msgBox.setIcon( QMessageBox::Information );
+        msgBox.exec();
     }
 }
 

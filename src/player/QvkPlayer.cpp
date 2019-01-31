@@ -82,7 +82,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     timerHideMouse->start( 2000 );
 
     QPixmap pixmap( ":/pictures/player/move.png" );
-    QPixmap map = pixmap.scaled( ui->labelMovePicture->size().height()-5, ui->labelMovePicture->size().height()-5 );
+    QPixmap map = pixmap.scaled( ui->labelMovePicture->size().height()-7, ui->labelMovePicture->size().height()-7 );
     ui->labelMovePicture->setPixmap( map );
 }
 

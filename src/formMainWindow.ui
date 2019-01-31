@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>726</width>
+    <width>708</width>
     <height>416</height>
    </rect>
   </property>
@@ -881,7 +881,7 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>551</width>
+                      <width>533</width>
                       <height>82</height>
                      </rect>
                     </property>
@@ -1640,7 +1640,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>377</width>
+                   <width>359</width>
                    <height>299</height>
                   </rect>
                  </property>
@@ -1885,7 +1885,7 @@
        <attribute name="toolTip">
         <string>Player</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayoutTabSidebarPlayer" stretch="">
+       <layout class="QVBoxLayout" name="verticalLayoutTabSidebarPlayer">
         <property name="spacing">
          <number>9</number>
         </property>

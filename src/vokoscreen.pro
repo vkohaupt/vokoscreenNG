@@ -31,8 +31,7 @@ HEADERS += \
         mainwindow.h
 
 FORMS += \
-        formMainWindow.ui \
-        QvkNoPlayerDialog.ui
+        formMainWindow.ui
         
 RESOURCES += screencast.qrc
 
