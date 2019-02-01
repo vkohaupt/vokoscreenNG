@@ -17,6 +17,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     this->setMouseTracking( true );
     ui->framePlayer->setMouseTracking( true );
     ui->labelPlayer->setMouseTracking( true );
+    ui->labelPlayer->setFocus(); // Need Focus for F11
 
     setWindowTitle( "vokoplayer" );
     QIcon icon( QString::fromUtf8( ":/pictures/player/vokoscreen.png" ) );
@@ -79,11 +80,13 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     timerHideMouse = new QTimer( this );
     timerHideMouse->setTimerType( Qt::PreciseTimer );
     connect( timerHideMouse, SIGNAL( timeout() ), this, SLOT( slot_hideMouse() ) );
-    timerHideMouse->start( 2000 );
+    timerHideMouse->setInterval( 3000 );
+    timerHideMouse->start();
 
     QPixmap pixmap( ":/pictures/player/move.png" );
     QPixmap map = pixmap.scaled( ui->labelMovePicture->size().height()-7, ui->labelMovePicture->size().height()-7 );
     ui->labelMovePicture->setPixmap( map );
+    ui->labelMovePicture->hide();
 }
 
 
@@ -100,14 +103,39 @@ void QvkPlayer::slot_volumeChanged( int )
 
 void QvkPlayer::slot_hideMouse()
 {
-    if ( ui->labelPlayer->underMouse() == true )
-    {
-        ui->labelPlayer->setCursor( Qt::BlankCursor );
+   if ( parentMainWindow->isFullScreen() == false )
+   {
+       ui->labelPlayer->setCursor( Qt::BlankCursor );
+       return;
+   }
 
-        if ( parentMainWindow->isFullScreen() == true )
-        {
-            ui->widgetMenueBar->hide();
-        }
+   if ( parentMainWindow->isFullScreen() == true )
+   {
+       ui->labelPlayer->setCursor( Qt::BlankCursor );
+       if ( ui->widgetMenueBar->isHidden() == false )
+       {
+           ui->widgetMenueBar->hide();
+       }
+   }
+}
+
+
+void QvkPlayer::mouseMoveEvent( QMouseEvent *event )
+{
+    Q_UNUSED(event);
+    timerHideMouse->stop();
+    if ( parentMainWindow->isFullScreen() == false )
+    {
+        ui->labelPlayer->unsetCursor();
+        timerHideMouse->start();
+        return;
+    }
+
+    if ( parentMainWindow->isFullScreen() == true )
+    {
+        ui->labelPlayer->unsetCursor();
+        ui->widgetMenueBar->show();
+        timerHideMouse->start();
     }
 }
 
@@ -131,7 +159,6 @@ void QvkPlayer::setMediaFile( QString string )
 
 void QvkPlayer::slot_openFile()
 {
-
     QString file = QFileDialog::getOpenFileName( this,
                                                  tr( "Open File" ),
                                                  QStandardPaths::writableLocation( QStandardPaths::HomeLocation ),
@@ -298,8 +325,9 @@ void QvkPlayer::vk_showFullscreen()
     ui->framePlayer->setStyleSheet( "background-color: black;"  );
     ui->widgetMenueBar->setStyleSheet( "background-color: lightgray;"  );
     ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-restore", QIcon( ":/pictures/player/restore.png" ) ) );
+    ui->labelMovePicture->show();
     ui->widgetMenueBar->show();
-    ui->widgetMenueBar->setFocus();
+    ui->labelPlayer->setFocus();
 }
 
 
@@ -314,8 +342,9 @@ void QvkPlayer::vk_showNormal()
     // An empty string resets the color
     ui->widgetMenueBar->setStyleSheet( "" );
     ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen", QIcon( ":/pictures/player/fullscreen.png" ) ) );
+    ui->labelMovePicture->hide();
     ui->widgetMenueBar->show();
-    ui->widgetMenueBar->setFocus();
+    ui->labelPlayer->setFocus();
 }
 
 
@@ -388,6 +417,7 @@ void QvkPlayer::keyPressEvent( QKeyEvent *event )
     }
 }
 
+
 void QvkPlayer::mousePressEvent( QMouseEvent *event )
 {
     if ( parentMainWindow->isFullScreen() == true )
@@ -411,23 +441,6 @@ void QvkPlayer::mouseReleaseEvent( QMouseEvent *event )
 }
 
 
-void QvkPlayer::mouseMoveEvent( QMouseEvent *event )
-{
-     timerHideMouse->stop();
-     timerHideMouse->start();
-     ui->labelPlayer->setCursor( Qt::ArrowCursor );
-
-    if ( parentMainWindow->isFullScreen() == true )
-    {
-        ui->widgetMenueBar->show();
-        if ( ( event->buttons() == Qt::LeftButton ) and ( pressed == true ) )
-        {
-            ui->widgetMenueBar->move( QPoint( event->pos().x() - mouseInWidgetX, event->pos().y() - mouseInWidgetY ) );
-        }
-    }
-}
-
-
 void QvkPlayer::leaveEvent( QEvent *event )
 {
     Q_UNUSED(event);
@@ -441,6 +454,6 @@ void QvkPlayer::resizeEvent( QResizeEvent *event )
     if ( parentMainWindow->isFullScreen() == true )
     {
         ui->widgetMenueBar->move( ui->framePlayer->width()/2 - ui->widgetMenueBar->width()/2,
-                               ui->framePlayer->height() - ui->widgetMenueBar->height() );
+                                  ui->framePlayer->height() - ui->widgetMenueBar->height() );
     }
 }

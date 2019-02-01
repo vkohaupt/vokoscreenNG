@@ -253,6 +253,9 @@
             </item>
             <item>
              <widget class="QLabel" name="labelMovePicture">
+              <property name="toolTip">
+               <string>Move menue</string>
+              </property>
               <property name="text">
                <string notr="true">Move</string>
               </property>
