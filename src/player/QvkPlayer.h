@@ -57,7 +57,6 @@ private:
     void vk_showFullscreen();
     void vk_showNormal();
     QTimer *timerHideMouse;
-    bool flag = false;
 
 
 protected:

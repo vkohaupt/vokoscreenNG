@@ -17,7 +17,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     this->setMouseTracking( true );
     ui->framePlayer->setMouseTracking( true );
     ui->labelPlayer->setMouseTracking( true );
-    ui->labelPlayer->setFocus(); // Need Focus for F11
+    ui->labelPlayer->setFocus(); // Need Focus for F11 in windowmode(GUI)
 
     setWindowTitle( "vokoplayer" );
     QIcon icon( QString::fromUtf8( ":/pictures/player/vokoscreen.png" ) );
