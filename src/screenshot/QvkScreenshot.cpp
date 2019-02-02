@@ -95,7 +95,7 @@ void QvkScreenshot::slot_Folder()
     if ( QDesktopServices::openUrl( QUrl( path, QUrl::TolerantMode ) ) == false )
     {
         QMessageBox msgBox( parent );
-        msgBox.setText( tr( "No filemanger found." ) + "\n" + tr( "Please install a filemanager." ) );
+        msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
         msgBox.setWindowTitle( "vokoscreen" );
         msgBox.setIcon( QMessageBox::Information );
         msgBox.exec();
