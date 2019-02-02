@@ -1,5 +1,3 @@
-#include "ui_QvkNoPlayerDialog.h"
-
 #include "QvkScreenshot.h"
 #include "QvkWinInfo.h"
 #include "QvkCountdown.h"
@@ -15,6 +13,7 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 #include <QIcon>
+#include <QMessageBox>
 
 QvkScreenshot::QvkScreenshot( QvkMainWindow *value, Ui_formMainWindow *ui_mainwindow ):vkWinInfo(new QvkWinInfo),
                                                                                        vkCountdown(new QvkCountdown),
@@ -93,17 +92,16 @@ void QvkScreenshot::slot_resizeEvent( QResizeEvent *event )
 void QvkScreenshot::slot_Folder()
 {
     QString path = ui->lineEditPicturePath->text();
-    bool b = QDesktopServices::openUrl( QUrl( path, QUrl::TolerantMode ) );
-    if ( b == false )
+    if ( QDesktopServices::openUrl( QUrl( path, QUrl::TolerantMode ) ) == false )
     {
-        QDialog *newDialog = new QDialog;
-        Ui_NoPlayerDialog myUiDialog;
-        myUiDialog.setupUi( newDialog );
-        myUiDialog.labelPleaseInstall->setText( tr( "Please install a filemanager" ) );
-        newDialog->setModal( true );
-        newDialog->setWindowTitle( "vokoscreen" );
-        newDialog->show();
+        QMessageBox msgBox( parent );
+        msgBox.setText( tr( "No filemanger found." ) + "\n" + tr( "Please install a filemanager." ) );
+        msgBox.setWindowTitle( "vokoscreen" );
+        msgBox.setIcon( QMessageBox::Information );
+        msgBox.exec();
     }
+
+
 }
 
 
@@ -263,16 +261,13 @@ void QvkScreenshot::slot_show_Screenshoot()
     string.append( ui->lineEditPicturePath->text() );
     string.append( QDir::separator() );
     string.append( pictureFileList.at( 0 ) );
-    bool b = QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) );
-    if ( b == false )
+    if ( QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) ) == false )
     {
-        QDialog *newDialog = new QDialog;
-        Ui_NoPlayerDialog myUiDialog;
-        myUiDialog.setupUi( newDialog );
-        myUiDialog.labelPleaseInstall->setText( tr( "Please install a imageviewer" ) );
-        newDialog->setModal( true );
-        newDialog->setWindowTitle( "vokoscreen" );
-        newDialog->show();
+        QMessageBox msgBox( parent );
+        msgBox.setText( tr( "No imageviewer found." ) + "\n" + tr( "Please install a imageviewer." ) );
+        msgBox.setWindowTitle( "vokoscreen" );
+        msgBox.setIcon( QMessageBox::Information );
+        msgBox.exec();
     }
 }
 
