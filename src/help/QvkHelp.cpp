@@ -15,7 +15,7 @@ QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : 
     resize( 800, 600 );
     setWindowTitle( "vokoscreen help" );
     QIcon icon;
-    icon.addFile( QString::fromUtf8( ":/pictures/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
+    icon.addFile( QString::fromUtf8( ":/pictures/screencast/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
 
     QStringList helpStringList;
