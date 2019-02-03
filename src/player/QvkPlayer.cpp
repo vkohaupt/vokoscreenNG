@@ -159,15 +159,23 @@ void QvkPlayer::setMediaFile( QString string )
 
 void QvkPlayer::slot_openFile()
 {
+
+    if ( pathOpenFile == "" )
+    {
+       pathOpenFile = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
+    }
+
+
     QString file = QFileDialog::getOpenFileName( this,
                                                  tr( "Open File" ),
-                                                 QStandardPaths::writableLocation( QStandardPaths::HomeLocation ),
-                                                 "*.mkv *.webm *.avi *.mp4(*.mkv *.webm *.avi *.mp4)" );
+                                                 pathOpenFile,
+                                                 "" );
 
     if ( !file.isEmpty() )
     {
         setMediaFile( file );
         slot_play();
+        pathOpenFile = QDir( file ).absolutePath();
     }
 }
 

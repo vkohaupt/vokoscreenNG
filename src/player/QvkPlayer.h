@@ -57,7 +57,7 @@ private:
     void vk_showFullscreen();
     void vk_showNormal();
     QTimer *timerHideMouse;
-
+    QString pathOpenFile;
 
 protected:
     void mouseDoubleClickEvent( QMouseEvent *event );
