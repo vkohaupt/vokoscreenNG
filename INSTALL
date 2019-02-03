@@ -12,7 +12,6 @@ BuildRequires:
   - libqt5-devel
   - libqt5-linguist
   - gstreamer-devel
-  - gstreamer-plugins-base-devel
 
   
 Compile:

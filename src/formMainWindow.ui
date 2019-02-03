@@ -92,7 +92,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1674,8 +1674,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>359</width>
-                   <height>299</height>
+                   <width>20</width>
+                   <height>96</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
