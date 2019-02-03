@@ -2,7 +2,9 @@ Requires:
   - Qt5 >= 5.9.4
   - gstreamer >= 1.12.5
   - gstreamer-plugins(bas, good, bad, ugly)
-  - pulseaudio(optional)
+  - gstreamer-plugins-libav
+  - gstreamer-plugins-vaapi
+  - pulseaudio
 
   
 BuildRequires:
