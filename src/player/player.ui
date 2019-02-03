@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>648</width>
-    <height>477</height>
+    <width>615</width>
+    <height>384</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -246,6 +246,9 @@
             </item>
             <item>
              <widget class="QToolButton" name="toolButtonFullscreen">
+              <property name="toolTip">
+               <string>Fullscreen</string>
+              </property>
               <property name="text">
                <string notr="true">Fullscreen</string>
               </property>
@@ -282,9 +285,9 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButtonMute">
+             <widget class="QToolButton" name="toolButtonMute">
               <property name="text">
-               <string>Mute</string>
+               <string notr="true">Mute</string>
               </property>
              </widget>
             </item>

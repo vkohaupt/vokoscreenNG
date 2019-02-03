@@ -33,7 +33,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     ui->pushButtonPlay->setIcon( QIcon::fromTheme( "media-playback-start" , style()->standardIcon( QStyle::SP_MediaPlay ) ) );
     ui->pushButtonPause->setIcon( QIcon::fromTheme( "media-playback-pause", style()->standardIcon( QStyle::SP_MediaPause ) ) );
     ui->pushButtonStop->setIcon( QIcon::fromTheme( "media-playback-stop"  , style()->standardIcon( QStyle::SP_MediaStop ) ) );
-    ui->pushButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high"    , style()->standardIcon( QStyle::SP_MediaVolume ) ) );
+    ui->toolButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high"    , style()->standardIcon( QStyle::SP_MediaVolume ) ) );
     ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen", QIcon( ":/pictures/player/fullscreen.png" ) ) );
 
     mediaPlayer = new QMediaPlayer;
@@ -75,7 +75,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
 
     connect( ui->sliderVolume,    SIGNAL( sliderMoved( int ) ), mediaPlayer, SLOT( setVolume( int ) ) );
 
-    connect( ui->pushButtonMute,  SIGNAL( clicked( bool ) ), this, SLOT( slot_mute() ) );
+    connect( ui->toolButtonMute,  SIGNAL( clicked( bool ) ), this, SLOT( slot_mute() ) );
 
     timerHideMouse = new QTimer( this );
     timerHideMouse->setTimerType( Qt::PreciseTimer );
@@ -213,19 +213,19 @@ void QvkPlayer::slot_play()
 
 void QvkPlayer::slot_mute()
 {
-    ui->pushButtonMute->setEnabled( false );
+    ui->toolButtonMute->setEnabled( false );
 
     if ( mediaPlayer->isMuted()== true )
     {
         mediaPlayer->setMuted( false );
-        ui->pushButtonMute->setFocus();
+        ui->toolButtonMute->setFocus();
         return;
     }
 
     if ( mediaPlayer->isMuted()== false )
     {
         mediaPlayer->setMuted( true );
-        ui->pushButtonMute->setFocus();
+        ui->toolButtonMute->setFocus();
         return;
     }
 }
@@ -235,17 +235,17 @@ void QvkPlayer::slot_mutedChanged( bool muted )
 {
     if ( muted == true )
     {
-        ui->pushButtonMute->setIcon( QIcon::fromTheme( "audio-volume-muted", style()->standardIcon( QStyle::SP_MediaVolumeMuted ) ) );
+        ui->toolButtonMute->setIcon( QIcon::fromTheme( "audio-volume-muted", style()->standardIcon( QStyle::SP_MediaVolumeMuted ) ) );
         ui->sliderVolume->setEnabled( false );
-        ui->pushButtonMute->setEnabled( true );
+        ui->toolButtonMute->setEnabled( true );
         return;
     }
 
     if ( muted == false )
     {
-        ui->pushButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high", style()->standardIcon( QStyle::SP_MediaVolume ) ) );
+        ui->toolButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high", style()->standardIcon( QStyle::SP_MediaVolume ) ) );
         ui->sliderVolume->setEnabled( true );
-        ui->pushButtonMute->setEnabled( true );
+        ui->toolButtonMute->setEnabled( true );
         return;
     }
 }
