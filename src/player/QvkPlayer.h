@@ -1,8 +1,8 @@
 #ifndef QVKPLAYER_H
 #define QVKPLAYER_H
 
-#include "ui_player.h"
 #include "ui_formMainWindow.h"
+#include "ui_player.h"
 
 #include <QWidget>
 #include <QMediaPlayer>
@@ -10,10 +10,6 @@
 #include <QKeyEvent>
 #include <QStyle>
 #include <QMainWindow>
-
-namespace Ui {
-class QvkPlayer;
-}
 
 class QvkPlayer : public QWidget
 {
@@ -23,7 +19,7 @@ public:
     explicit QvkPlayer(QMainWindow *parent, Ui_formMainWindow *ui_mainwindow);
     ~QvkPlayer();
     void setMediaFile( QString string );
-    Ui::player *ui;
+    Ui_player *ui;
 
 
 public slots:
