@@ -23,7 +23,7 @@ public:
     explicit QvkPlayer(QMainWindow *parent, Ui_formMainWindow *ui_mainwindow);
     ~QvkPlayer();
     void setMediaFile( QString string );
-    Ui::QvkPlayer *ui;
+    Ui::player *ui;
 
 
 public slots:

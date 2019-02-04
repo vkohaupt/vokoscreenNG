@@ -2,7 +2,7 @@
 #define QvkHelp_H
 
 #include "ui_formMainWindow.h"
-#include "ui_formhelp.h"
+#include "ui_help.h"
 #include "QvkDownloader.h"
 
 #include <QObject>
@@ -22,7 +22,7 @@ public slots:
   
 private:
     Ui_formMainWindow *ui;
-    Ui_formHelp *uiFormHelp;
+    Ui_help *uiHelp;
 
     QStringList toDownloadFiles = { ".png", ".svg", ".css", ".jpg" };
     bool isFileInLine( QString line );

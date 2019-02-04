@@ -6,4 +6,4 @@ HEADERS     += $$PWD/QvkHelp.h \
 SOURCES     += $$PWD/QvkHelp.cpp \
                $$PWD/QvkDownloader.cpp
 
-FORMS       += $$PWD/formhelp.ui
+FORMS       += $$PWD/help.ui

@@ -6,7 +6,7 @@
 #include <QFileDialog>
 #include <QTimer>
 
-QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : ui(new Ui::QvkPlayer)
+QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : ui(new Ui::player)
 {
     ui->setupUi(this);
 

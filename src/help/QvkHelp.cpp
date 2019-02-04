@@ -5,12 +5,12 @@
 #include <QDir>
 #include <QTextDocument>
 
-QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : uiFormHelp(new(Ui::formHelp))
+QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : uiHelp(new(Ui::help))
 {
     connect( mainWindow, SIGNAL( destroyed( QObject*) ), this, SLOT( slot_cleanUp() ) );
 
     ui = ui_mainwindow;
-    uiFormHelp->setupUi( this );
+    uiHelp->setupUi( this );
 
     resize( 800, 600 );
     setWindowTitle( "vokoscreen help" );
@@ -315,11 +315,11 @@ void QvkHelp::slot_showHelp( QString tempPathFileName )
     QString value = textStream.readAll();
 
     // Antialiasing for Font
-    QFont font = uiFormHelp->textBrowser->font();
+    QFont font = uiHelp->textBrowser->font();
     font.setStyleStrategy( QFont::PreferAntialias );
-    uiFormHelp->textBrowser->setFont(font);
+    uiHelp->textBrowser->setFont(font);
 
-    uiFormHelp->textBrowser->setText( value );
+    uiHelp->textBrowser->setText( value );
     file.close();
 
     show();
