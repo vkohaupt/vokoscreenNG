@@ -22,6 +22,7 @@ public:
     Ui_player *ui;
 
 
+
 public slots:
     void slot_play();
 

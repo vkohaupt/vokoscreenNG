@@ -64,7 +64,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkMagnifierController *vkMagnifierController = new QvkMagnifierController(ui);
     Q_UNUSED(vkMagnifierController);
 
-    QvkHelp *vkHelp = new QvkHelp( this, ui );
+    QvkHelp *vkHelp = new QvkHelp( this, ui, vkPlayer->ui );
     Q_UNUSED( vkHelp );
 
     /* Wayland

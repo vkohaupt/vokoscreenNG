@@ -5,11 +5,12 @@
 #include <QDir>
 #include <QTextDocument>
 
-QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : uiHelp(new(Ui::help))
+QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, Ui_player *ui_player) : uiHelp(new(Ui::help))
 {
     connect( mainWindow, SIGNAL( destroyed( QObject*) ), this, SLOT( slot_cleanUp() ) );
 
     ui = ui_mainwindow;
+    uiPlayer = ui_player;
     uiHelp->setupUi( this );
 
     resize( 800, 600 );
@@ -62,7 +63,7 @@ QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : 
     ui->toolButtonHelpExecute->setIcon( iconHelp );
 
     // Player
-    //connect( ui->toolButtonHelpPlayer, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpExecute() ) );
+    connect( uiPlayer->toolButtonHelpPlayer, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpPlayer() ) );
 
 
 
@@ -185,6 +186,11 @@ void QvkHelp::slot_toolButtonHelpExecute()
 void QvkHelp::slot_audioHelp()
 {
     loadHTML( vk_helpPath + "screencast/tab2-audio.html" );
+}
+
+void QvkHelp::slot_toolButtonHelpPlayer()
+{
+    loadHTML( vk_helpPath + "player/toolButtonHelpPlayer.html" );
 }
 
 
