@@ -942,7 +942,7 @@
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="tab">
+          <widget class="QWidget" name="tabTimer">
            <attribute name="title">
             <string notr="true"/>
            </attribute>
@@ -1674,8 +1674,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>20</width>
-                   <height>96</height>
+                   <width>359</width>
+                   <height>299</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -1971,7 +1971,7 @@
             <height>48</height>
            </size>
           </property>
-          <widget class="QWidget" name="TAB_Screenshot_Screen">
+          <widget class="QWidget" name="tabScreenshotScreen">
            <attribute name="title">
             <string notr="true"/>
            </attribute>
@@ -2157,7 +2157,7 @@
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="TAB_Screenshot_Misc">
+          <widget class="QWidget" name="tabScreenshotMisc">
            <attribute name="title">
             <string notr="true"/>
            </attribute>
@@ -2303,7 +2303,7 @@
             <height>48</height>
            </size>
           </property>
-          <widget class="QWidget" name="widgetCamera">
+          <widget class="QWidget" name="tabCamera">
            <property name="toolTip">
             <string notr="true"/>
            </property>
@@ -2596,7 +2596,7 @@
             <height>48</height>
            </size>
           </property>
-          <widget class="QWidget" name="tab_3">
+          <widget class="QWidget" name="tabLog">
            <attribute name="title">
             <string notr="true"/>
            </attribute>

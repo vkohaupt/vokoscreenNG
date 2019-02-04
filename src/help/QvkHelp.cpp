@@ -61,6 +61,11 @@ QvkHelp::QvkHelp( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : 
     connect( ui->toolButtonHelpExecute, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpExecute() ) );
     ui->toolButtonHelpExecute->setIcon( iconHelp );
 
+    // Player
+    //connect( ui->toolButtonHelpPlayer, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpExecute() ) );
+
+
+
     connect( ui->toolButtonAudioHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioHelp() ) );
 
     // Tab 2 Audio and Videocodec
