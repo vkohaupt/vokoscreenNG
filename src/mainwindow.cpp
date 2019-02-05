@@ -60,6 +60,14 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSettings.readAll();
 
     vkPlayer = new QvkPlayer( this, ui );
+    QStringList arguments = QApplication::instance()->arguments();
+    qDebug() << arguments;
+    if ( arguments.count() > 1  )
+    {
+        vkPlayer->setMediaFile( arguments.at(1) );
+        vkPlayer->slot_play();
+        ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
+    }
 
     QvkMagnifierController *vkMagnifierController = new QvkMagnifierController(ui);
     Q_UNUSED(vkMagnifierController);
