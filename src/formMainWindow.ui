@@ -134,14 +134,14 @@
                  </widget>
                 </item>
                 <item row="0" column="4">
-                 <widget class="QToolButton" name="toolButtonHelpFullscreen">
+                 <widget class="QToolButton" name="help_screencast_fullscreen">
                   <property name="text">
                    <string notr="true">Help</string>
                   </property>
                  </widget>
                 </item>
                 <item row="2" column="4">
-                 <widget class="QToolButton" name="toolButtonHelpArea">
+                 <widget class="QToolButton" name="help_screencast_area">
                   <property name="text">
                    <string notr="true">Help</string>
                   </property>
@@ -175,7 +175,7 @@
                  </widget>
                 </item>
                 <item row="1" column="4">
-                 <widget class="QToolButton" name="toolButtonHelpWindow">
+                 <widget class="QToolButton" name="help_screencast_window">
                   <property name="text">
                    <string notr="true">Help</string>
                   </property>
@@ -225,7 +225,7 @@
               <item>
                <layout class="QGridLayout" name="gridLayout_7">
                 <item row="0" column="3">
-                 <widget class="QToolButton" name="toolButtonHelpMagnifier">
+                 <widget class="QToolButton" name="help_screencast_magnifier">
                   <property name="text">
                    <string notr="true">Help</string>
                   </property>
@@ -246,7 +246,7 @@
                  </widget>
                 </item>
                 <item row="1" column="3">
-                 <widget class="QToolButton" name="toolButtonHelpShowclick">
+                 <widget class="QToolButton" name="help_screencast_showclick">
                   <property name="text">
                    <string notr="true">Help</string>
                   </property>
@@ -323,7 +323,7 @@
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QToolButton" name="toolButtonHelpCountdown">
+                 <widget class="QToolButton" name="help_screencast_countdown">
                   <property name="text">
                    <string notr="true">Help</string>
                   </property>
@@ -1902,7 +1902,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="toolButtonHelpExecute">
+           <widget class="QToolButton" name="help_screencast_execute">
             <property name="text">
              <string notr="true">Help</string>
             </property>

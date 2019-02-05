@@ -5,6 +5,20 @@
 #include <QDir>
 #include <QTextDocument>
 
+/*
+ * The remote HTML-file and the toolbutton have the same name.
+ *
+ * Example:
+ * QToolbutton -> help_screencast_fullscreen
+ * Remote file -> help_screencast_fullscreen.html
+ *
+ * The first section is help, this we need for set for icon and installEventFilter, see constructor.
+ * The second section is the tab in the sidebar and the subdir on remote.
+ * The third section is the name from the function that we want help.
+ * We write as snake_case, so the underline character is the seperator.
+ * See also QvkHelp::eventFilter(QObject *object, QEvent *event)
+ */
+
 QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, Ui_player *ui_player) : uiHelp(new(Ui::help))
 {
     connect( mainWindow, SIGNAL( destroyed( QObject*) ), this, SLOT( slot_cleanUp() ) );
@@ -33,89 +47,15 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, Ui_p
     vkDownloadFiles = new QvkDownloader( temporaryDirLocal.path() );
 
     QIcon iconHelp = style()->standardIcon( QStyle::SP_MessageBoxInformation );
-
-    // Tab 1
-    connect( ui->toolButtonHelpFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpFullscreen() ) );
-    ui->toolButtonHelpFullscreen->setIcon( iconHelp );
-
-    connect( ui->toolButtonHelpWindow, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpWindow() ) );
-    ui->toolButtonHelpWindow->setIcon( iconHelp );
-
-    connect( ui->toolButtonHelpArea, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpArea() ) );
-    ui->toolButtonHelpArea->setIcon( iconHelp );
-
-    connect( ui->toolButtonHelpNoMouseCursor, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpNoMouseCursor() ) );
-    ui->toolButtonHelpNoMouseCursor->setIcon( iconHelp );
-
-    connect( ui->toolButtonHelpScale, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpScale() ) );
-    ui->toolButtonHelpScale->setIcon( iconHelp );
-
-    connect( ui->toolButtonHelpMagnifier, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpMagnifier() ) );
-    ui->toolButtonHelpMagnifier->setIcon( iconHelp );
-
-    connect( ui->toolButtonHelpShowclick, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpShowclick() ) );
-    ui->toolButtonHelpShowclick->setIcon( iconHelp );
-
-    connect( ui->toolButtonHelpCountdown, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpCountdown() ) );
-    ui->toolButtonHelpCountdown->setIcon( iconHelp );
-
-    connect( ui->toolButtonHelpExecute, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpExecute() ) );
-    ui->toolButtonHelpExecute->setIcon( iconHelp );
-
-    // Player
-    connect( uiPlayer->toolButtonHelpPlayer, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonHelpPlayer() ) );
-
-
-
-    connect( ui->toolButtonAudioHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioHelp() ) );
-
-    // Tab 2 Audio and Videocodec
-    ui->toolButtonFramesHelp->setIcon( iconHelp );
-    ui->toolButtonAudioHelp->setIcon( iconHelp );
-    ui->toolButtonVideoCodecHelp->setIcon( iconHelp );
-
-    // Tab 3 Time
-    ui->toolButtonHelpStartTime->setIcon( iconHelp );
-    ui->toolButtonHelpStopRecordingAfter->setIcon( iconHelp );
-
-    // Tab 4 Misc
-    ui->toolButtonHelpVideoPath->setIcon( iconHelp );
-    ui->toolButtonHelpLimitOfFreeDiskSpace->setIcon( iconHelp );
-    ui->toolButtonHelpShowInSystray->setIcon( iconHelp );
-    ui->toolButtonHelpMinimizedWhenRecordingStarts->setIcon( iconHelp );
-    ui->toolButtonHelpVokoscreenStartsMinimized->setIcon( iconHelp );
-
-    // Tab 5 Available muxer, encoder etc.
-    ui->toolButtonAvalaibleHelp->setIcon( iconHelp );
-
-    // Screenshot
-    ui->toolButtonHelpScreenshotScreen->setIcon( iconHelp );
-    ui->toolButtonHelpScreenshotFullscreen->setIcon( iconHelp  );
-    ui->toolButtonHelpScreenshotWindow->setIcon( iconHelp );
-    ui->toolButtonHelpScreenshotArea->setIcon( iconHelp );
-    ui->toolButtonHelpScreenshotSuffix->setIcon( iconHelp );
-    ui->toolButtonHelpScreenshotCountdown->setIcon( iconHelp );
-    ui->toolButtonHelpScreenshotHideThisWindow->setIcon( iconHelp );
-    ui->toolButtonHelpScreenshotExecute->setIcon( iconHelp );
-    ui->toolButtonHelpScreenShotMiscPath->setIcon( iconHelp );
-
-    // Camera
-    ui->toolButtonHelpCamera->setIcon( iconHelp );
-
-    // Player
-    //ui->toolButtonHelpPlayer->setIcon( iconHelp );
-
-    // Log
-    ui->toolButtonHelpReport->setIcon( iconHelp );
-
-
-    //connect( ui->toolButtonHelpVideoPath, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpVideoPath() ) );
-    //connect( ui->toolButtonHelpStartTime, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpStartTime() ) );
-    //connect( ui->toolButtonHelpStopRecordingAfter, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpStopRecordingAfter() ) );
-    //connect( ui->toolButtonHelpScale, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpScal() ) );
-    //connect( ui->toolButtonHelpLimitOfFreeDiskSpace, SIGNAL( clicked( bool ) ), this, SLOT( slot_miscHelpLimitOfFreeDiskSpace() ) );
-
-    //connect( ui->toolButtonAvalaibleHelp, SIGNAL( clicked( bool ) ), this, SLOT( slot_availableHelp() ) );
+    QList<QToolButton *> listToolButton = ui->centralWidget->findChildren<QToolButton *>();
+    for ( int i = 0; i < listToolButton.count(); i++ )
+    {
+        if ( listToolButton.at(i)->objectName().contains( QRegExp( "^help_") ) )
+        {
+            listToolButton.at(i)->setIcon( iconHelp );
+            listToolButton.at(i)->installEventFilter( this );
+        }
+    }
 }
 
 
@@ -124,73 +64,23 @@ QvkHelp::~QvkHelp()
 }
 
 
+bool QvkHelp::eventFilter(QObject *object, QEvent *event)
+{
+    if ( event->type() == QEvent::MouseButtonRelease )
+    {
+       loadHTML( vk_helpPath + object->objectName().section( "_", 1, 1 ) + "/" + object->objectName() + ".html" );
+       return false;
+    }
+    else
+    {
+        return QObject::eventFilter( object, event );
+    }
+}
+
+
 void QvkHelp::slot_cleanUp()
 {
     temporaryDirLocal.remove();
-}
-
-
-void QvkHelp::slot_toolButtonHelpFullscreen()
-{
-    loadHTML( vk_helpPath + "screencast/toolButtonHelpFullscreen.html" );
-}
-
-
-void QvkHelp::slot_toolButtonHelpWindow()
-{
-    loadHTML( vk_helpPath + "screencast/toolButtonHelpWindow.html" );
-}
-
-
-void QvkHelp::slot_toolButtonHelpArea()
-{
-    loadHTML( vk_helpPath + "screencast/toolButtonHelpArea.html" );
-}
-
-void QvkHelp::slot_toolButtonHelpNoMouseCursor()
-{
-    loadHTML( vk_helpPath + "screencast/toolButtonHelpNoMouseCursor.html" );
-}
-
-
-void QvkHelp::slot_toolButtonHelpScale()
-{
-    loadHTML( vk_helpPath + "screencast/toolButtonHelpScale.html" );
-}
-
-
-void QvkHelp::slot_toolButtonHelpMagnifier()
-{
-    loadHTML( vk_helpPath + "screencast/toolButtonHelpMagnifier.html" );
-}
-
-
-void QvkHelp::slot_toolButtonHelpShowclick()
-{
-    loadHTML( vk_helpPath + "screencast/toolButtonHelpShowclick.html" );
-}
-
-
-void QvkHelp::slot_toolButtonHelpCountdown()
-{
-    loadHTML( vk_helpPath + "screencast/toolButtonHelpCountdown.html" );
-}
-
-
-void QvkHelp::slot_toolButtonHelpExecute()
-{
-    loadHTML( vk_helpPath + "screencast/toolButtonHelpExecute.html" );
-}
-
-
-void QvkHelp::slot_audioHelp()
-{
-    loadHTML( vk_helpPath + "screencast/tab2-audio.html" );
-}
-
-void QvkHelp::slot_toolButtonHelpPlayer()
-{
-    loadHTML( vk_helpPath + "player/toolButtonHelpPlayer.html" );
 }
 
 
@@ -340,4 +230,3 @@ void QvkHelp::slot_showHelp( QString tempPathFileName )
         file.remove();
     }
 }
-

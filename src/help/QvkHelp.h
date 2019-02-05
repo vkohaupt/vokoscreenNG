@@ -9,6 +9,10 @@
 #include <QObject>
 #include <QTemporaryDir>
 
+#include <QMouseEvent>
+#include <QEvent>
+
+
 class QvkHelp: public QWidget
 {
     Q_OBJECT
@@ -16,8 +20,8 @@ class QvkHelp: public QWidget
 public:
     QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, Ui_player *ui_player);
     virtual ~QvkHelp();
-
     
+
 public slots:
 
   
@@ -42,27 +46,17 @@ private:
 
     QTemporaryDir temporaryDirLocal;
 
+
 private slots:
-    void slot_toolButtonHelpFullscreen();
-    void slot_toolButtonHelpWindow();
-    void slot_toolButtonHelpArea();
-    void slot_toolButtonHelpNoMouseCursor();
-    void slot_toolButtonHelpScale();
-    void slot_toolButtonHelpMagnifier();
-    void slot_toolButtonHelpShowclick();
-    void slot_toolButtonHelpCountdown();
-    void slot_toolButtonHelpExecute();
-
-    void slot_audioHelp();
-
-    void slot_toolButtonHelpPlayer();
-
     void slot_parseHTML( QString tempPathFileName );
     void slot_showHelp( QString tempPathFileName );
 
     void slot_cleanUp();
 
+
 protected:
+    bool eventFilter(QObject *object, QEvent *ev) override;
+
 
 signals:
 

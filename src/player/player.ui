@@ -292,7 +292,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QToolButton" name="toolButtonHelpPlayer">
+             <widget class="QToolButton" name="help_player_player">
               <property name="text">
                <string notr="true">Help</string>
               </property>
