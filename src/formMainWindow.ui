@@ -92,7 +92,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -655,6 +655,9 @@
                 <property name="minimum">
                  <number>1</number>
                 </property>
+                <property name="maximum">
+                 <number>200</number>
+                </property>
                 <property name="value">
                  <number>25</number>
                 </property>
@@ -721,10 +724,10 @@
                     <item>
                      <widget class="QComboBox" name="comboBoxx264Preset">
                       <property name="currentText">
-                       <string notr="true">ultrafast</string>
+                       <string notr="true">superfast</string>
                       </property>
                       <property name="currentIndex">
-                       <number>0</number>
+                       <number>1</number>
                       </property>
                       <item>
                        <property name="text">

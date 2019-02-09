@@ -2,6 +2,7 @@
 #define QvkPlayerVideoSurface_H
 
 #include <QAbstractVideoSurface>
+#include <QDebug>
 
 class QvkPlayerVideoSurface: public QAbstractVideoSurface
 {
