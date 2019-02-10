@@ -87,20 +87,11 @@
         <source>Open File</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>QvkRegionChoise</name>
     <message>
-        <source>Play</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mute</source>
+        <source>Area</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -115,11 +106,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Please install a filemanager</source>
+        <source>No filemanager found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Please install a imageviewer</source>
+        <source>Please install a filemanager.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No imageviewer found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please install a imageviewer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -197,6 +196,10 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Frames</source>
         <translation type="unfinished"></translation>
     </message>
@@ -222,10 +225,6 @@
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Audio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -285,6 +284,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Look for updates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Video</source>
         <translation type="unfinished"></translation>
     </message>
@@ -318,6 +325,10 @@
     </message>
     <message>
         <source>Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Player</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -357,10 +368,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Player</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Log</source>
         <translation type="unfinished"></translation>
     </message>
@@ -373,6 +380,33 @@
     <name>formShowClick</name>
     <message>
         <source>Showclick Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>player</name>
+    <message>
+        <source>Play</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fullscreen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move menue</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

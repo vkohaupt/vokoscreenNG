@@ -395,6 +395,40 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->radioButtonBottomMiddle->clicked( true ); // funktioniert so nicht da Widget disabled sind
     ui->checkBoxAudioOnOff->clicked( false ); // sende Signal clicked mit value=false
     //ui->checkBoxAudioOnOff->click();
+
+
+    QStringList list;
+#ifdef Q_OS_WIN
+    list << "gdiscreencapsrc";
+#endif
+#ifdef Q_OS_LINUX
+    list << "ximagesrc";
+    list << "pulsesrc";
+#endif
+    list << "queue";
+    list << "capsfilter";
+    list << "videoconvert";
+    list << "videorate";
+    list << "audioconvert";
+    list << "audiorate";
+    list << "filesink";
+    list << "videoscale";
+
+    qDebug() << "[vokoscreen] Definition: + available, - not available";
+
+    for ( int i = 0; i < list.count(); i++ )
+    {
+        GstElementFactory *factory = gst_element_factory_find( QString( list.at(i) ).toLatin1() );
+        if ( !factory )
+        {
+            qDebug() << "[vokoscreen] -" << list.at(i);
+        }
+        else
+        {
+            qDebug() << "[vokoscreen] +" << list.at(i);
+        }
+    }
+    qDebug();
 }
 
 
@@ -987,7 +1021,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videomimetype:video/x-matroska"
                                     << "audiomimetype:audio/x-matroska"
                                     << "videocodec:x264enc:x264"
-                                    //<< "videocodec:x265enc:x265"
+                                    << "videocodec:x265enc:x265"
                                     << "videocodec:vaapih264enc:H.264 (Intel GPU)"
                                     << "videocodec:av1enc:av1"
                                     << "videocodec:vp8enc:vp8"
@@ -1065,11 +1099,11 @@ void QvkMainWindow::VK_Check_is_Format_available()
         GstElementFactory *factory = gst_element_factory_find( muxer.toLatin1() );
         if ( !factory )
         {
-            qDebug().noquote() << "[vokoscreen] Fail Muxer not available:" << muxer;
+            qDebug().noquote() << "[vokoscreen] -" << muxer << "muxer not available";
         }
         else
         {
-            qDebug().noquote() << "[vokoscreen] Muxer available:" << muxer;
+            qDebug().noquote() << "[vokoscreen] +" << muxer << "muxer available";
             tempList << videoFormatsList.at( x );
         }
     }
@@ -1115,11 +1149,11 @@ void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
         GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
         if ( !factory )
         {
-            qDebug().noquote() << "[vokoscreen] Fail video encoder not available:" << encoder;
+            qDebug().noquote() << "[vokoscreen] -" << encoder << "video encoder not available";
         }
         else
         {
-            qDebug().noquote() << "[vokoscreen] Video encoder avalaible:" << encoder;
+            qDebug().noquote() << "[vokoscreen] +" << encoder << "video encoder avalaible";
             ui->comboBoxVideoCodec->addItem( name, encoder );
         }
     }
@@ -1141,11 +1175,11 @@ void QvkMainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
         GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
         if ( !factory )
         {
-            qDebug().noquote() << "[vokoscreen] Fail audio encoder not available:" << encoder;
+            qDebug().noquote() << "[vokoscreen] -" << encoder << "audio encoder not available";
         }
         else
         {
-            qDebug().noquote() << "[vokoscreen] Audio encoder avalaible:" << encoder;
+            qDebug().noquote() << "[vokoscreen] +" << encoder << "audio encoder avalaible";
             ui->comboBoxAudioCodec->addItem( name, encoder );
         }
     }

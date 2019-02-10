@@ -1,28 +1,5 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="tr_TR" version="2.1">
 <context>
-    <name>AlsaBusyDialog</name>
-    <message>
-        <source>Device is busy</source>
-        <translation>Maalesef Aygıt Meşgul</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>Ad</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Bilinmeyen</translation>
-    </message>
-    <message>
-        <source>Device</source>
-        <translation>Aygıt</translation>
-    </message>
-    <message>
-        <source>Used by</source>
-        <translation>Kullanan</translation>
-    </message>
-</context>
-<context>
     <name>AreaSettingsDialog</name>
     <message>
         <source>Area Settings</source>
@@ -34,123 +11,41 @@
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Vazgeç Ağabey</translation>
-    </message>
-</context>
-<context>
-    <name>Dialog</name>
-    <message>
-        <source>Show Click Settings</source>
-        <translation>Ayarları Göstereyim.</translation>
-    </message>
-</context>
-<context>
-    <name>MailDialog</name>
-    <message>
-        <source>Mail last Video</source>
-        <translation>Son videoyu postala gitsin.</translation>
-    </message>
-    <message>
-        <source>Mail one or more selected Video</source>
-        <translation>Bir veya daha fazla seçili videoyu postala</translation>
-    </message>
-    <message>
-        <source>Send</source>
-        <translation>Gönder</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
         <translation>İptal Edeyim.</translation>
     </message>
 </context>
 <context>
-    <name>NoPlayerDialog</name>
+    <name>QvkAudioPulse</name>
     <message>
-        <source>Please install a videoplayer</source>
-        <translation>Lütfen video oynatıcısı kurun</translation>
+        <source>File can not be opened</source>
+        <translation>Dosya açılamıyor</translation>
+    </message>
+    <message>
+        <source>Special device(See help)</source>
+        <translation>Özel cihaz (Yardıma bakın)</translation>
     </message>
 </context>
 <context>
-    <name>QObject</name>
+    <name>QvkCameraWindow</name>
     <message>
-        <source>Info</source>
-        <translation>Bilgi</translation>
-    </message>
-    <message>
-        <source>vokoscreen can be started only once</source>
-        <translation>Maalesef!vokoscreen aynı anda bir kez çalışır</translation>
-    </message>
-</context>
-<context>
-    <name>QvkMail</name>
-    <message>
-        <source>You find the Video as attachment</source>
-        <translation>Video gibi eklenti bul</translation>
-    </message>
-    <message>
-        <source>Select one or more files</source>
-        <translation>Bir veya daha fazla dosya seçin</translation>
-    </message>
-</context>
-<context>
-    <name>QvkRegionChoise</name>
-    <message>
-        <source>double-click to maximize</source>
-        <translation>çift-tıkla büyüt</translation>
-    </message>
-    <message>
-        <source>Area Settings</source>
-        <translation>Alan Ayarları</translation>
-    </message>
-</context>
-<context>
-    <name>QvkWebcamController</name>
-    <message>
-        <source>Camera is loading</source>
-        <translation>Kamera yükleniyor</translation>
-    </message>
-    <message>
-        <source>Camera is loaded</source>
-        <translation>Kamera yüklendi</translation>
-    </message>
-    <message>
-        <source>Wait a second or Camera is busy?</source>
-        <translation>Birkaç saniye beklemek gerekli ya da Kamera meşgul?</translation>
-    </message>
-</context>
-<context>
-    <name>QvkWebcamWindow</name>
-    <message>
-        <source>Close</source>
-        <translation>Kapat</translation>
-    </message>
-    <message>
-        <source>Right click for menu</source>
-        <translation>Menü için sağ tıklayın</translation>
-    </message>
-    <message>
-        <source>User-defined</source>
-        <translation>Kullanıcı tanımlı</translation>
-    </message>
-    <message>
-        <source>Windowsize</source>
-        <translation>PencereBoyutu</translation>
-    </message>
-    <message>
-        <source>Options</source>
-        <translation>Seçenekler</translation>
+        <source>Help</source>
+        <translation>Yardım</translation>
     </message>
     <message>
         <source>Border</source>
         <translation>Çerçeve</translation>
     </message>
     <message>
-        <source>Show over fullscreen</source>
-        <translation>Tam ekran üzerinde göster</translation>
+        <source>Settings</source>
+        <translation>Ayarlar</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Kapat</translation>
     </message>
 </context>
 <context>
-    <name>screencast</name>
+    <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
         <translation>Tam Ekran</translation>
@@ -160,48 +55,265 @@
         <translation>Pencere</translation>
     </message>
     <message>
+        <source>Please install a videoplayer</source>
+        <translation>Lütfen video oynatıcısı kurun</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager</source>
+        <translation>Lütfen bir dosya yöneticisi yükleyin</translation>
+    </message>
+</context>
+<context>
+    <name>QvkScreenshot</name>
+    <message>
+        <source>Fullscreen</source>
+        <translation>Tam Ekran</translation>
+    </message>
+    <message>
+        <source>Window</source>
+        <translation>Pencere</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager</source>
+        <translation>Lütfen bir dosya yöneticisi yükleyin</translation>
+    </message>
+    <message>
+        <source>Please install a imageviewer</source>
+        <translation>Lütfen bir resim görüntüleyici yükleyin</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>Görüntü</translation>
+    </message>
+    <message>
+        <source>All Displays</source>
+        <translation>Tüm Görüntüler</translation>
+    </message>
+</context>
+<context>
+    <name>QvkSystray</name>
+    <message>
+        <source>Start</source>
+        <translation>Başlat</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Durdur</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Duraklat</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Devam</translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation>Çıkış</translation>
+    </message>
+</context>
+<context>
+    <name>formMainWindow</name>
+    <message>
+        <source>Screencast</source>
+        <translation>Ekran alıntılama</translation>
+    </message>
+    <message>
         <source>Area</source>
         <translation>Bölge</translation>
     </message>
     <message>
-        <source>Magnification</source>
-        <translation>Büyütme</translation>
-    </message>
-    <message>
-        <source>Audio</source>
-        <translation>Ses</translation>
-    </message>
-    <message>
-        <source>Alsa</source>
-        <translation>Alsa</translation>
-    </message>
-    <message>
-        <source>Pulse</source>
-        <translation>Pulse</translation>
-    </message>
-    <message>
-        <source>Default</source>
-        <translation>Varsayılan</translation>
-    </message>
-    <message>
-        <source>Codec</source>
-        <translation>Kodek</translation>
+        <source>Reset</source>
+        <translation>Sıfırla</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
         <translation>Fare imlecini kaydetme</translation>
     </message>
     <message>
+        <source>Scale</source>
+        <translation>Ölçek</translation>
+    </message>
+    <message>
+        <source>Magnification</source>
+        <translation>Büyütme</translation>
+    </message>
+    <message>
+        <source>Showclick</source>
+        <translation>Tıklamayı göster</translation>
+    </message>
+    <message>
+        <source>Countdown</source>
+        <translation>Geri sayım</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Video size:</source>
+        <translation>Video boyutu:</translation>
+    </message>
+    <message>
+        <source>Free disk space:</source>
+        <translation>Boş disk alanı:</translation>
+    </message>
+    <message>
+        <source>MB</source>
+        <translation>MB</translation>
+    </message>
+    <message>
+        <source>KB</source>
+        <translation>KB</translation>
+    </message>
+    <message>
+        <source>Information</source>
+        <translation>Bilgilendirme</translation>
+    </message>
+    <message>
+        <source>Record Time:</source>
+        <translation>Kayıt Süresi:</translation>
+    </message>
+    <message>
+        <source>00:00:00</source>
+        <translation>00:00:00</translation>
+    </message>
+    <message>
+        <source>Frames</source>
+        <translation>Çerçeveler</translation>
+    </message>
+    <message>
+        <source>Videocodec</source>
+        <translation>Videocodec</translation>
+    </message>
+    <message>
+        <source>Format</source>
+        <translation>Biçim</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Audiocodec</translation>
+    </message>
+    <message>
+        <source>Quality</source>
+        <translation>Kalite</translation>
+    </message>
+    <message>
+        <source>23</source>
+        <translation>23</translation>
+    </message>
+    <message>
+        <source>ultrafast</source>
+        <translation>ultra hızlı</translation>
+    </message>
+    <message>
+        <source>superfast</source>
+        <translation>süper hızlı</translation>
+    </message>
+    <message>
+        <source>veryfast</source>
+        <translation>çok hızlı</translation>
+    </message>
+    <message>
+        <source>faster</source>
+        <translation>daha hızlı</translation>
+    </message>
+    <message>
+        <source>fast</source>
+        <translation>hızlı</translation>
+    </message>
+    <message>
+        <source>medium</source>
+        <translation>orta</translation>
+    </message>
+    <message>
+        <source>slow</source>
+        <translation>yavaş</translation>
+    </message>
+    <message>
+        <source>slower</source>
+        <translation>daha yavaş</translation>
+    </message>
+    <message>
+        <source>veryslow</source>
+        <translation>çok yavaş</translation>
+    </message>
+    <message>
+        <source>placebo</source>
+        <translation>iyileştir</translation>
+    </message>
+    <message>
+        <source>Audio</source>
+        <translation>Ses</translation>
+    </message>
+    <message>
+        <source>Start recording at</source>
+        <translation>Kayda başla</translation>
+    </message>
+    <message>
+        <source>Hour</source>
+        <translation>Saat</translation>
+    </message>
+    <message>
+        <source>Minute</source>
+        <translation>Dakika</translation>
+    </message>
+    <message>
+        <source>Start the timer</source>
+        <translation>Zamanlayıcıyı başlat</translation>
+    </message>
+    <message>
+        <source>Stop recording after</source>
+        <translation>Sonra kaydı durdur</translation>
+    </message>
+    <message>
+        <source>Hours</source>
+        <translation>Saat</translation>
+    </message>
+    <message>
+        <source>Minutes</source>
+        <translation>Dakika</translation>
+    </message>
+    <message>
+        <source>Seconds</source>
+        <translation>Saniye</translation>
+    </message>
+    <message>
         <source>Videopath</source>
         <translation>Video yolu</translation>
     </message>
     <message>
-        <source>Player</source>
-        <translation>Oynatıcı</translation>
+        <source>Limit of free disk space</source>
+        <translation>Boş disk alanı sınırı</translation>
+    </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Sistem tepsisinde göster</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
         <translation>Kayıt başladığında Vokoscreen programını küçült</translation>
+    </message>
+    <message>
+        <source>Second wait before recording</source>
+        <translation>Kayıttan önce az bekleyin</translation>
+    </message>
+    <message>
+        <source>Vokoscreen starts minimized</source>
+        <translation>Vokoscreen sistem çubuğunda başlasın</translation>
+    </message>
+    <message>
+        <source>Video</source>
+        <translation>Video</translation>
+    </message>
+    <message>
+        <source>Available</source>
+        <translation>Mevcut</translation>
+    </message>
+    <message>
+        <source>Not available</source>
+        <translation>Mevcut değil</translation>
     </message>
     <message>
         <source>Start</source>
@@ -216,172 +328,71 @@
         <translation>Duraklat</translation>
     </message>
     <message>
-        <source>Play</source>
-        <translation>Oynat</translation>
-    </message>
-    <message>
-        <source>Send</source>
-        <translation>Gönder</translation>
-    </message>
-    <message>
-        <source>Recording time</source>
-        <translation>Kayıt süresi</translation>
-    </message>
-    <message>
-        <source>Size in KB</source>
-        <translation>KB olarak boyut</translation>
-    </message>
-    <message>
-        <source>Recording screensize</source>
-        <translation>Kayıt ekran boyutu</translation>
-    </message>
-    <message>
-        <source>Format</source>
-        <translation>Biçim</translation>
-    </message>
-    <message>
-        <source>Settings fps</source>
-        <translation>fps ayarı</translation>
-    </message>
-    <message>
-        <source>Open Directory</source>
-        <translation>Dizin Aç</translation>
-    </message>
-    <message>
-        <source>Countdown</source>
-        <translation>Geri sayım</translation>
-    </message>
-    <message>
-        <source>Play last Video</source>
-        <translation>Son videoyu oynat</translation>
-    </message>
-    <message>
-        <source>Send Video</source>
-        <translation>Video Gönder</translation>
-    </message>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>Bir veya daha fazla aygıt seçin</translation>
-    </message>
-    <message>
-        <source>Actual frames per second</source>
-        <translation>Saniye başına fiili kare</translation>
-    </message>
-    <message>
-        <source>Homepage</source>
-        <translation>Ana Sayfa</translation>
-    </message>
-    <message>
-        <source>Frames</source>
-        <translation>Çerçeveler</translation>
-    </message>
-    <message>
-        <source>Donate</source>
-        <translation>Yardım et</translation>
-    </message>
-    <message>
-        <source>Translations</source>
-        <translation>Çeviriler</translation>
-    </message>
-    <message>
-        <source>Sourcecode</source>
-        <translation>Kaynak kodunu göster reyiz.</translation>
-    </message>
-    <message>
-        <source>Show in systray</source>
-        <translation>Sistem tepsisinde göster</translation>
-    </message>
-    <message>
-        <source>New version available</source>
-        <translation>Yeni sürüm mevcut</translation>
-    </message>
-    <message>
-        <source>Videocodec</source>
-        <translation>Videocodec</translation>
-    </message>
-    <message>
-        <source>Audiocodec</source>
-        <translation>Audiocodec</translation>
-    </message>
-    <message>
-        <source>Select webcam</source>
-        <translation>Web kamera seç</translation>
-    </message>
-    <message>
-        <source>Mirrored</source>
-        <translation>Yansıtılmış</translation>
-    </message>
-    <message>
-        <source>Display</source>
-        <translation>Görüntü</translation>
-    </message>
-    <message>
-        <source>All Displays</source>
-        <translation>Tüm Görüntüler</translation>
-    </message>
-    <message>
-        <source>Recorder</source>
-        <translation>Kaydedici</translation>
-    </message>
-    <message>
-        <source>Select recorder</source>
-        <translation>Kaydedici seçin</translation>
-    </message>
-    <message>
-        <source>Hide window</source>
-        <translation>Pencereyi gizle</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>Çıkış</translation>
-    </message>
-    <message>
-        <source>Show window</source>
-        <translation>Pencereyi Göster</translation>
-    </message>
-    <message>
-        <source>Lossless</source>
-        <translation>Kayıpsız</translation>
-    </message>
-    <message>
-        <source>Vokoscreen starts minimized</source>
-        <translation>Vokoscreen sistem çubuğunda başlasın</translation>
-    </message>
-    <message>
-        <source>Reset all settings at next start</source>
-        <translation>Sonraki başlatmada tüm ayarları sıfırla</translation>
-    </message>
-    <message>
         <source>Continue</source>
         <translation>Devam</translation>
     </message>
     <message>
-        <source>Extensions</source>
-        <translation>Eklentiler</translation>
+        <source>Play</source>
+        <translation>Oynat</translation>
     </message>
     <message>
-        <source>No extensions installed</source>
-        <translation>Yüklü eklenti yok</translation>
+        <source>Folder</source>
+        <translation>Dizin</translation>
     </message>
     <message>
-        <source>Load</source>
-        <translation>Yükle</translation>
+        <source>Screenshot</source>
+        <translation>Ekran çıktısı</translation>
     </message>
     <message>
-        <source>Gray</source>
-        <translation>Gri</translation>
+        <source>Hide this Window</source>
+        <translation>Bu Pencereyi Gizle</translation>
     </message>
     <message>
-        <source>Invert</source>
-        <translation>Ters çevir</translation>
+        <source>Picturepath</source>
+        <translation>Resim yolu</translation>
+    </message>
+    <message>
+        <source>Shot</source>
+        <translation>Çıktı</translation>
+    </message>
+    <message>
+        <source>Show</source>
+        <translation>Göster</translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation>Yardım</translation>
     </message>
     <message>
         <source>Camera</source>
         <translation>Kamera</translation>
     </message>
     <message>
-        <source>Resolution</source>
-        <translation>Çözünürlük</translation>
+        <source>Mirrored</source>
+        <translation>Yansıtılmış</translation>
+    </message>
+    <message>
+        <source>Invert</source>
+        <translation>Ters çevir</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Gri</translation>
+    </message>
+    <message>
+        <source>Log</source>
+        <translation>Log</translation>
+    </message>
+    <message>
+        <source>Send Report</source>
+        <translation>Rapor Gönder</translation>
+    </message>
+</context>
+<context>
+    <name>formShowClick</name>
+    <message>
+        <source>Showclick Settings</source>
+        <translation>Tıklama Ayarları</translation>
     </message>
 </context>
 </TS>

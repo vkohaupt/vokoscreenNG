@@ -26,7 +26,7 @@ fi
 echo ============
 echo Make main-3.ts
 echo ============
-lupdate-qt5 -locations none -recursive ./src -ts src/main-3.ts
+lupdate-qt5 -locations none -recursive ./src -ts src/vokoscreen-version-3.ts
 
 echo =====================
 echo Remove language packs
@@ -36,7 +36,7 @@ rm -r src/language
 echo ======================
 echo Download language pack
 echo ======================
-tx pull -a --minimum-perc=100
+tx pull -a
 
 echo =============================
 echo copy language to src/language

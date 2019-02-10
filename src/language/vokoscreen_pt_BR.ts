@@ -1,32 +1,9 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="pt_BR" version="2.1">
 <context>
-    <name>AlsaBusyDialog</name>
-    <message>
-        <source>Device is busy</source>
-        <translation>Dispositivo está ocupado</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>Nome</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>Desconhecido</translation>
-    </message>
-    <message>
-        <source>Device</source>
-        <translation>Dispositivo</translation>
-    </message>
-    <message>
-        <source>Used by</source>
-        <translation>Usado por</translation>
-    </message>
-</context>
-<context>
     <name>AreaSettingsDialog</name>
     <message>
         <source>Area Settings</source>
-        <translation>Configuracoes de area</translation>
+        <translation>Configurações de área</translation>
     </message>
     <message>
         <source>OK</source>
@@ -38,119 +15,37 @@
     </message>
 </context>
 <context>
-    <name>Dialog</name>
+    <name>QvkAudioPulse</name>
     <message>
-        <source>Show Click Settings</source>
-        <translation>Mostrar as configurações do clique</translation>
+        <source>File can not be opened</source>
+        <translation>Arquivo não pode ser aberto</translation>
+    </message>
+    <message>
+        <source>Special device(See help)</source>
+        <translation>Dispositivo especial (veja ajuda)</translation>
     </message>
 </context>
 <context>
-    <name>MailDialog</name>
+    <name>QvkCameraWindow</name>
     <message>
-        <source>Mail last Video</source>
-        <translation>Enviar último vídeo</translation>
-    </message>
-    <message>
-        <source>Mail one or more selected Video</source>
-        <translation>Enviar um ou mais Vídeos selecionados</translation>
-    </message>
-    <message>
-        <source>Send</source>
-        <translation>Enviar</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Cancelar</translation>
-    </message>
-</context>
-<context>
-    <name>NoPlayerDialog</name>
-    <message>
-        <source>Please install a videoplayer</source>
-        <translation>Favor instalar um reprodutor de vídeo</translation>
-    </message>
-</context>
-<context>
-    <name>QObject</name>
-    <message>
-        <source>Info</source>
-        <translation>Informações</translation>
-    </message>
-    <message>
-        <source>vokoscreen can be started only once</source>
-        <translation>Vokoscreen só pode ser iniciado uma única vez</translation>
-    </message>
-</context>
-<context>
-    <name>QvkMail</name>
-    <message>
-        <source>You find the Video as attachment</source>
-        <translation>Você encontra o Vídeo como anexo</translation>
-    </message>
-    <message>
-        <source>Select one or more files</source>
-        <translation>Selecione um ou mais arquivos</translation>
-    </message>
-</context>
-<context>
-    <name>QvkRegionChoise</name>
-    <message>
-        <source>double-click to maximize</source>
-        <translation>clique duplo para maximizar</translation>
-    </message>
-    <message>
-        <source>Area Settings</source>
-        <translation>Configurações de área</translation>
-    </message>
-</context>
-<context>
-    <name>QvkWebcamController</name>
-    <message>
-        <source>Camera is loading</source>
-        <translation>Camera está lendo</translation>
-    </message>
-    <message>
-        <source>Camera is loaded</source>
-        <translation>Camera está lida</translation>
-    </message>
-    <message>
-        <source>Wait a second or Camera is busy?</source>
-        <translation>Espere um segundo ou Camera esta ocupada</translation>
-    </message>
-</context>
-<context>
-    <name>QvkWebcamWindow</name>
-    <message>
-        <source>Close</source>
-        <translation>Fechar</translation>
-    </message>
-    <message>
-        <source>Right click for menu</source>
-        <translation>Clique com o botão direito para abrir o menu</translation>
-    </message>
-    <message>
-        <source>User-defined</source>
-        <translation>Definido pelo usuário</translation>
-    </message>
-    <message>
-        <source>Windowsize</source>
-        <translation>Tamanho da janela</translation>
-    </message>
-    <message>
-        <source>Options</source>
-        <translation>Opções</translation>
+        <source>Help</source>
+        <translation>Ajuda</translation>
     </message>
     <message>
         <source>Border</source>
         <translation>Borda</translation>
     </message>
     <message>
-        <source>Show over fullscreen</source>
-        <translation>Mostrar em tela cheia</translation>
+        <source>Settings</source>
+        <translation>Configurações</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>Fechar</translation>
     </message>
 </context>
 <context>
-    <name>screencast</name>
+    <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
         <translation>Tela cheia</translation>
@@ -160,48 +55,265 @@
         <translation>Janela</translation>
     </message>
     <message>
+        <source>Please install a videoplayer</source>
+        <translation>Favor instalar um reprodutor de vídeo</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager</source>
+        <translation>Por favor instale um gerenciador de arquivos</translation>
+    </message>
+</context>
+<context>
+    <name>QvkScreenshot</name>
+    <message>
+        <source>Fullscreen</source>
+        <translation>Tela cheia</translation>
+    </message>
+    <message>
+        <source>Window</source>
+        <translation>Janela</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager</source>
+        <translation>Por favor instale um gerenciador de arquivos</translation>
+    </message>
+    <message>
+        <source>Please install a imageviewer</source>
+        <translation>Por favor instale um visualizador de imagens</translation>
+    </message>
+    <message>
+        <source>Display</source>
+        <translation>Tela</translation>
+    </message>
+    <message>
+        <source>All Displays</source>
+        <translation>Todas as telas</translation>
+    </message>
+</context>
+<context>
+    <name>QvkSystray</name>
+    <message>
+        <source>Start</source>
+        <translation>Iniciar</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Parar</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pausar</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Continuar</translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation>Sair</translation>
+    </message>
+</context>
+<context>
+    <name>formMainWindow</name>
+    <message>
+        <source>Screencast</source>
+        <translation>Screencast</translation>
+    </message>
+    <message>
         <source>Area</source>
         <translation>Área</translation>
     </message>
     <message>
-        <source>Magnification</source>
-        <translation>Zoom</translation>
-    </message>
-    <message>
-        <source>Audio</source>
-        <translation>Áudio</translation>
-    </message>
-    <message>
-        <source>Alsa</source>
-        <translation>Alsa</translation>
-    </message>
-    <message>
-        <source>Pulse</source>
-        <translation>Pulse</translation>
-    </message>
-    <message>
-        <source>Default</source>
-        <translation>Padrão</translation>
-    </message>
-    <message>
-        <source>Codec</source>
-        <translation>Codec</translation>
+        <source>Reset</source>
+        <translation>Repor</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
         <translation>Não gravar o cursor do mouse</translation>
     </message>
     <message>
+        <source>Scale</source>
+        <translation>Escala</translation>
+    </message>
+    <message>
+        <source>Magnification</source>
+        <translation>Zoom</translation>
+    </message>
+    <message>
+        <source>Showclick</source>
+        <translation>Mostrar clique</translation>
+    </message>
+    <message>
+        <source>Countdown</source>
+        <translation>Contagem Regressiva</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    <message>
+        <source>Video size:</source>
+        <translation>Tamanho do vídeo:</translation>
+    </message>
+    <message>
+        <source>Free disk space:</source>
+        <translation>Espaço disponível no disco</translation>
+    </message>
+    <message>
+        <source>MB</source>
+        <translation>MB</translation>
+    </message>
+    <message>
+        <source>KB</source>
+        <translation>KB</translation>
+    </message>
+    <message>
+        <source>Information</source>
+        <translation>Informação</translation>
+    </message>
+    <message>
+        <source>Record Time:</source>
+        <translation>Tempo de gravação:</translation>
+    </message>
+    <message>
+        <source>00:00:00</source>
+        <translation>00:00:00</translation>
+    </message>
+    <message>
+        <source>Frames</source>
+        <translation>Frames</translation>
+    </message>
+    <message>
+        <source>Videocodec</source>
+        <translation>Codec de vídeo </translation>
+    </message>
+    <message>
+        <source>Format</source>
+        <translation>Formato</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Codec de áudio</translation>
+    </message>
+    <message>
+        <source>Quality</source>
+        <translation>Qualidade</translation>
+    </message>
+    <message>
+        <source>23</source>
+        <translation>23</translation>
+    </message>
+    <message>
+        <source>ultrafast</source>
+        <translation>ultrarapido</translation>
+    </message>
+    <message>
+        <source>superfast</source>
+        <translation>superrapido</translation>
+    </message>
+    <message>
+        <source>veryfast</source>
+        <translation>muitorapido</translation>
+    </message>
+    <message>
+        <source>faster</source>
+        <translation>maisrapido</translation>
+    </message>
+    <message>
+        <source>fast</source>
+        <translation>rapido</translation>
+    </message>
+    <message>
+        <source>medium</source>
+        <translation>medio</translation>
+    </message>
+    <message>
+        <source>slow</source>
+        <translation>lento</translation>
+    </message>
+    <message>
+        <source>slower</source>
+        <translation>maislento</translation>
+    </message>
+    <message>
+        <source>veryslow</source>
+        <translation>muitolento</translation>
+    </message>
+    <message>
+        <source>placebo</source>
+        <translation>placebo</translation>
+    </message>
+    <message>
+        <source>Audio</source>
+        <translation>Áudio</translation>
+    </message>
+    <message>
+        <source>Start recording at</source>
+        <translation>Iniciar gravação em</translation>
+    </message>
+    <message>
+        <source>Hour</source>
+        <translation>Hora</translation>
+    </message>
+    <message>
+        <source>Minute</source>
+        <translation>Minuto</translation>
+    </message>
+    <message>
+        <source>Start the timer</source>
+        <translation>Iniciar o cronômetro</translation>
+    </message>
+    <message>
+        <source>Stop recording after</source>
+        <translation>Para gravação após</translation>
+    </message>
+    <message>
+        <source>Hours</source>
+        <translation>Horas</translation>
+    </message>
+    <message>
+        <source>Minutes</source>
+        <translation>Minutos</translation>
+    </message>
+    <message>
+        <source>Seconds</source>
+        <translation>Segundos</translation>
+    </message>
+    <message>
         <source>Videopath</source>
         <translation>Caminho do vídeo</translation>
     </message>
     <message>
-        <source>Player</source>
-        <translation>Player</translation>
+        <source>Limit of free disk space</source>
+        <translation>Limite de espaço livre no disco</translation>
+    </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Mostrar na área de notificação</translation>
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
         <translation>Minimizar o Vokoscreen ao iniciar a gravação</translation>
+    </message>
+    <message>
+        <source>Second wait before recording</source>
+        <translation>Espera em segundos antes de começar gravando</translation>
+    </message>
+    <message>
+        <source>Vokoscreen starts minimized</source>
+        <translation>O Vokoscreen inicia minimizado</translation>
+    </message>
+    <message>
+        <source>Video</source>
+        <translation>Vídeo</translation>
+    </message>
+    <message>
+        <source>Available</source>
+        <translation>Disponível</translation>
+    </message>
+    <message>
+        <source>Not available</source>
+        <translation>Não disponível</translation>
     </message>
     <message>
         <source>Start</source>
@@ -216,172 +328,71 @@
         <translation>Pausar</translation>
     </message>
     <message>
+        <source>Continue</source>
+        <translation>Continuar</translation>
+    </message>
+    <message>
         <source>Play</source>
         <translation>Reproduzir</translation>
     </message>
     <message>
-        <source>Send</source>
-        <translation>Enviar</translation>
+        <source>Folder</source>
+        <translation>Pasta</translation>
     </message>
     <message>
-        <source>Recording time</source>
-        <translation>Tempo de Gravação</translation>
+        <source>Screenshot</source>
+        <translation>Descarga de tela</translation>
     </message>
     <message>
-        <source>Size in KB</source>
-        <translation>Tamanho em KB</translation>
+        <source>Hide this Window</source>
+        <translation>Ocultar esta janela</translation>
     </message>
     <message>
-        <source>Recording screensize</source>
-        <translation>Tamanho da tela de Gravação</translation>
+        <source>Picturepath</source>
+        <translation>Caminho da imagem</translation>
     </message>
     <message>
-        <source>Format</source>
-        <translation>Formato</translation>
+        <source>Shot</source>
+        <translation>Instantâneo</translation>
     </message>
     <message>
-        <source>Settings fps</source>
-        <translation>Configurações de FPS</translation>
+        <source>Show</source>
+        <translation>Mostrar</translation>
     </message>
     <message>
-        <source>Open Directory</source>
-        <translation>Abrir diretório</translation>
+        <source>Help</source>
+        <translation>Ajuda</translation>
     </message>
     <message>
-        <source>Countdown</source>
-        <translation>Contagem Regressiva</translation>
-    </message>
-    <message>
-        <source>Play last Video</source>
-        <translation>Reproduzir último Vídeo</translation>
-    </message>
-    <message>
-        <source>Send Video</source>
-        <translation>Enviar Vídeo</translation>
-    </message>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>Selecione um ou mais dispositivos</translation>
-    </message>
-    <message>
-        <source>Actual frames per second</source>
-        <translation>Frames por segundo</translation>
-    </message>
-    <message>
-        <source>Homepage</source>
-        <translation>Homepage</translation>
-    </message>
-    <message>
-        <source>Frames</source>
-        <translation>Frames</translation>
-    </message>
-    <message>
-        <source>Donate</source>
-        <translation>Doações</translation>
-    </message>
-    <message>
-        <source>Translations</source>
-        <translation>Traduções</translation>
-    </message>
-    <message>
-        <source>Sourcecode</source>
-        <translation>Código-Fonte</translation>
-    </message>
-    <message>
-        <source>Show in systray</source>
-        <translation>Mostrar na área de notificação</translation>
-    </message>
-    <message>
-        <source>New version available</source>
-        <translation>Nova versão disponível</translation>
-    </message>
-    <message>
-        <source>Videocodec</source>
-        <translation>Codec de video </translation>
-    </message>
-    <message>
-        <source>Audiocodec</source>
-        <translation>Codec de audio</translation>
-    </message>
-    <message>
-        <source>Select webcam</source>
-        <translation>Selecione a webcam</translation>
+        <source>Camera</source>
+        <translation>Câmera</translation>
     </message>
     <message>
         <source>Mirrored</source>
         <translation>Espelhado</translation>
     </message>
     <message>
-        <source>Display</source>
-        <translation>Tela</translation>
-    </message>
-    <message>
-        <source>All Displays</source>
-        <translation>Todas as telas</translation>
-    </message>
-    <message>
-        <source>Recorder</source>
-        <translation>Gravador</translation>
-    </message>
-    <message>
-        <source>Select recorder</source>
-        <translation>Selecionar gravador</translation>
-    </message>
-    <message>
-        <source>Hide window</source>
-        <translation>Ocultar janela</translation>
-    </message>
-    <message>
-        <source>Exit</source>
-        <translation>Sair</translation>
-    </message>
-    <message>
-        <source>Show window</source>
-        <translation>Mostrar janela</translation>
-    </message>
-    <message>
-        <source>Lossless</source>
-        <translation>Sem perda</translation>
-    </message>
-    <message>
-        <source>Vokoscreen starts minimized</source>
-        <translation>O Vokoscreen inicia minimizado</translation>
-    </message>
-    <message>
-        <source>Reset all settings at next start</source>
-        <translation>Restaura todas as configurações na próxima vez que for iniciado</translation>
-    </message>
-    <message>
-        <source>Continue</source>
-        <translation>Continuar</translation>
-    </message>
-    <message>
-        <source>Extensions</source>
-        <translation>Extensões</translation>
-    </message>
-    <message>
-        <source>No extensions installed</source>
-        <translation>Sem extensões instaladas</translation>
-    </message>
-    <message>
-        <source>Load</source>
-        <translation>Carregar</translation>
+        <source>Invert</source>
+        <translation>Invertido</translation>
     </message>
     <message>
         <source>Gray</source>
         <translation>Cinzento</translation>
     </message>
     <message>
-        <source>Invert</source>
-        <translation>Invertido</translation>
+        <source>Log</source>
+        <translation>Log</translation>
     </message>
     <message>
-        <source>Camera</source>
-        <translation>Camera</translation>
+        <source>Send Report</source>
+        <translation>Enviar relatório</translation>
     </message>
+</context>
+<context>
+    <name>formShowClick</name>
     <message>
-        <source>Resolution</source>
-        <translation>Resolução</translation>
+        <source>Showclick Settings</source>
+        <translation>Configurações de mostrar clique</translation>
     </message>
 </context>
 </TS>
