@@ -84,6 +84,7 @@ private:
     QString get_width_From_Screen();
     QString get_height_From_Screen();
 
+    void VK_gst_formatVideoAudoicodec_available();
     void VK_gst_Elements_available();
 
     QTimer *timerStartTimer;

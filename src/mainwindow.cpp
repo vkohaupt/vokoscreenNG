@@ -355,6 +355,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     VK_Check_is_Format_available();
     VK_set_available_Formats_in_Combox();
 
+    VK_gst_formatVideoAudoicodec_available();
     VK_gst_Elements_available();
 
     QDesktopWidget *desk = QApplication::desktop();
@@ -397,38 +398,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     //ui->checkBoxAudioOnOff->click();
 
 
-    QStringList list;
-#ifdef Q_OS_WIN
-    list << "gdiscreencapsrc";
-#endif
-#ifdef Q_OS_LINUX
-    list << "ximagesrc";
-    list << "pulsesrc";
-#endif
-    list << "queue";
-    list << "capsfilter";
-    list << "videoconvert";
-    list << "videorate";
-    list << "audioconvert";
-    list << "audiorate";
-    list << "filesink";
-    list << "videoscale";
-
-    qDebug() << "[vokoscreen] Definition: + available, - not available";
-
-    for ( int i = 0; i < list.count(); i++ )
-    {
-        GstElementFactory *factory = gst_element_factory_find( QString( list.at(i) ).toLatin1() );
-        if ( !factory )
-        {
-            qDebug() << "[vokoscreen] -" << list.at(i);
-        }
-        else
-        {
-            qDebug() << "[vokoscreen] +" << list.at(i);
-        }
-    }
-    qDebug();
 }
 
 
@@ -917,8 +886,43 @@ QString QvkMainWindow::VK_getVideoScale()
 }
 
 
-// Check format, video and audoicodec on tab availability
 void QvkMainWindow::VK_gst_Elements_available()
+{
+    QStringList list;
+#ifdef Q_OS_WIN
+    list << "gdiscreencapsrc";
+#endif
+#ifdef Q_OS_LINUX
+    list << "ximagesrc";
+    list << "pulsesrc";
+#endif
+    list << "queue";
+    list << "capsfilter";
+    list << "videoconvert";
+    list << "videorate";
+    list << "audioconvert";
+    list << "audiorate";
+    list << "filesink";
+    list << "videoscale";
+
+    for ( int i = 0; i < list.count(); i++ )
+    {
+        GstElementFactory *factory = gst_element_factory_find( QString( list.at(i) ).toLatin1() );
+        if ( !factory )
+        {
+            qDebug().noquote() << "[vokoscreen] -" << list.at(i);
+        }
+        else
+        {
+            qDebug().noquote() << "[vokoscreen] +" << list.at(i);
+        }
+    }
+    qDebug();
+}
+
+
+// Check format, video and audoicodec on tab availability
+void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
 {
     int rowCount = 0;
     for ( int i = 0; i < globalFormatsList.count(); i++ )
@@ -1088,6 +1092,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
 
 void QvkMainWindow::VK_Check_is_Format_available()
 {
+    qDebug() << "[vokoscreen] Symbols: + available, - not available";
     QStringList tempList;
     for ( int x = 0; x < videoFormatsList.count(); x++ )
     {
@@ -1099,11 +1104,11 @@ void QvkMainWindow::VK_Check_is_Format_available()
         GstElementFactory *factory = gst_element_factory_find( muxer.toLatin1() );
         if ( !factory )
         {
-            qDebug().noquote() << "[vokoscreen] -" << muxer << "muxer not available";
+            qDebug().noquote() << "[vokoscreen] -" << muxer;
         }
         else
         {
-            qDebug().noquote() << "[vokoscreen] +" << muxer << "muxer available";
+            qDebug().noquote() << "[vokoscreen] +" << muxer;
             tempList << videoFormatsList.at( x );
         }
     }
@@ -1149,11 +1154,11 @@ void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
         GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
         if ( !factory )
         {
-            qDebug().noquote() << "[vokoscreen] -" << encoder << "video encoder not available";
+            qDebug().noquote() << "[vokoscreen] -" << encoder;
         }
         else
         {
-            qDebug().noquote() << "[vokoscreen] +" << encoder << "video encoder avalaible";
+            qDebug().noquote() << "[vokoscreen] +" << encoder;
             ui->comboBoxVideoCodec->addItem( name, encoder );
         }
     }
@@ -1175,11 +1180,11 @@ void QvkMainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
         GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
         if ( !factory )
         {
-            qDebug().noquote() << "[vokoscreen] -" << encoder << "audio encoder not available";
+            qDebug().noquote() << "[vokoscreen] -" << encoder;
         }
         else
         {
-            qDebug().noquote() << "[vokoscreen] +" << encoder << "audio encoder avalaible";
+            qDebug().noquote() << "[vokoscreen] +" << encoder;
             ui->comboBoxAudioCodec->addItem( name, encoder );
         }
     }
