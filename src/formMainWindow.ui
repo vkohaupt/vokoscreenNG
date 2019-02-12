@@ -92,7 +92,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>4</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -535,8 +535,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>533</width>
-                      <height>82</height>
+                      <width>16</width>
+                      <height>16</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1612,7 +1612,7 @@
            <attribute name="title">
             <string notr="true"/>
            </attribute>
-           <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="1,0,0,0">
+           <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="1,0,0">
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_6">
               <property name="spacing">
@@ -1677,7 +1677,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>267</width>
+                   <width>359</width>
                    <height>299</height>
                   </rect>
                  </property>
@@ -1689,48 +1689,6 @@
                    <number>0</number>
                   </property>
                  </layout>
-                </widget>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_28">
-              <property name="spacing">
-               <number>0</number>
-              </property>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_8">
-                <item alignment="Qt::AlignHCenter">
-                 <widget class="QLabel" name="label_23">
-                  <property name="font">
-                   <font>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Elements</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
-               <widget class="QScrollArea" name="scrollAreaElements">
-                <property name="widgetResizable">
-                 <bool>true</bool>
-                </property>
-                <widget class="QWidget" name="scrollAreaWidgetContentsElements">
-                 <property name="geometry">
-                  <rect>
-                   <x>0</x>
-                   <y>0</y>
-                   <width>80</width>
-                   <height>299</height>
-                  </rect>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout_8"/>
                 </widget>
                </widget>
               </item>
