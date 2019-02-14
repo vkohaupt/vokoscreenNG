@@ -1,9 +1,23 @@
 Requires:
   - Qt5 >= 5.9.4
+  
   - gstreamer >= 1.12.5
-  - gstreamer-plugins(bas, good, bad, ugly)
-  - gstreamer-plugins-libav
-  - gstreamer-plugins-vaapi
+
+  - gstreamer-plugins-bas   --> Audio:vorbis,opus 
+
+  - gstreamer-plugins-good  --> Format:mkv,avi,webm,mp4
+                                Video:vp8
+                                Audio:flac
+                                
+  - gstreamer-plugins-bad   --> Video:x265,av1,camera
+  
+  - gstreamer-plugins-ugly  --> Video:x264
+                                Audio:mp3lame
+                                
+  - gstreamer-plugins-libav --> Player:x264
+
+  - gstreamer-plugins-vaapi --> Intel Hardwareenconding
+
   - pulseaudio
 
   
