@@ -26,7 +26,6 @@
 #include <QMessageBox>
 #include <QFileSystemModel>
 
-
 #ifdef Q_OS_LINUX
   #include <QX11Info>
 #endif
