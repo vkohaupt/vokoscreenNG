@@ -27,12 +27,21 @@ https://www.transifex.com/vkohaupt/vokoscreen/
 ### Requires:
 * Qt5 >= 5.9.4
 * gstreamer >= 1.12.5
-* gstreamer-plugins-bas______**Audio: ** vorbis, opus
-* gstreamer-plugins-good_____**Format: **mkv, avi, webm, mp4 &nbsp;&nbsp; **Video: **vp8 &nbsp;&nbsp; **Audio: **flac
-* gstreamer-plugins-bad______**Video: **x265, av1, camera
-* gstreamer-plugins-ugly______**Video: **x264 **Audio: **mp3lame
-* gstreamer-plugins-libav____**Player: **x264
-* gstreamer-plugins-vaapi____Intel Hardwareenconding
+* gstreamer-plugins-bas
+  - Audio: vorbis, opus
+* gstreamer-plugins-good
+  - Format: mkv, avi, webm, mp4
+  - Video: vp8
+  - Audio: flac
+* gstreamer-plugins-bad
+  - Video: x265, av1, camera
+* gstreamer-plugins-ugly
+  - Video: x264
+  - Audio: mp3lame
+* gstreamer-plugins-libav
+  - Player: x264
+* gstreamer-plugins-vaapi
+  - Intel Hardwareenconding
 * pulseaudio
 
 ### BuildRequires:
