@@ -110,10 +110,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << "[vokoscreen]" << "vokoscreen running as:" << QGuiApplication::platformName() << "client";
 
 #ifdef Q_OS_LINUX
-    if ( QX11Info::isPlatformX11() == true )
-        qDebug().noquote() << "[vokoscreen]" << "vokoscreen running on X11";
-    else
-        qDebug().noquote() << "[vokoscreen]" << "vokoscreen running on Wayland";
+    qDebug().noquote() << "[vokoscreen]" << "vokoscreen running on:" << qgetenv( "XDG_SESSION_TYPE" ).toLower();
 #endif
     qDebug().noquote() << "[vokoscreen]" << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
     qDebug().noquote() << "[vokoscreen] current icon-theme: " << QIcon::themeName();
@@ -1024,7 +1021,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videomimetype:video/x-matroska"
                                     << "audiomimetype:audio/x-matroska"
                                     << "videocodec:x264enc:x264"
-                                    << "videocodec:x265enc:x265"
+                                    //<< "videocodec:x265enc:x265"
                                     << "videocodec:vaapih264enc:H.264 (Intel GPU)"
                                     << "videocodec:av1enc:av1"
                                     << "videocodec:vp8enc:vp8"
