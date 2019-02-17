@@ -55,6 +55,8 @@ private:
     void vk_showNormal();
     QTimer *timerHideMouse;
     QString pathOpenFile;
+    QString oldWindowTitel;
+
 
 protected:
     void mouseDoubleClickEvent( QMouseEvent *event );

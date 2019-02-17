@@ -58,6 +58,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vkSettings.readAll();
 
+    setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() );
+
     vkPlayer = new QvkPlayer( this, ui );
     QStringList arguments = QApplication::instance()->arguments();
     if ( arguments.count() > 1  )
@@ -97,8 +99,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     QIcon icon( QString::fromUtf8( ":/pictures/screencast/vokoscreen.png" ) );
     setWindowIcon( icon );
-
-    setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() );
 
     qDebug().noquote() << "[vokoscreen]" << "Version:" << vkSettings.getVersion();
     qDebug().noquote() << "[vokoscreen]" << "Locale: " << QLocale::system().name();

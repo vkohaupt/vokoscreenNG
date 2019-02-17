@@ -11,6 +11,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     ui->setupUi(this);
 
     parentMainWindow = parent;
+    oldWindowTitel = parentMainWindow->windowTitle();
     uiMainWindow = ui_mainwindow;
     uiMainWindow->verticalLayoutTabSidebarPlayer->addWidget( this );
 
@@ -159,7 +160,7 @@ void QvkPlayer::slot_openFile()
 
     if ( pathOpenFile == "" )
     {
-       pathOpenFile = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
+        pathOpenFile = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
     }
 
 
@@ -201,6 +202,7 @@ void QvkPlayer::slot_play()
 {
     show();
     mediaPlayer->play();
+    parentMainWindow->setWindowTitle( mediaPlayer->currentMedia().canonicalUrl().fileName() + " - " + oldWindowTitel );
     ui->pushButtonPlay->setEnabled( false );
     ui->pushButtonPause->setEnabled( true);
     ui->pushButtonStop->setEnabled( true );
@@ -285,6 +287,7 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
 
         QIcon icon( QString::fromUtf8( ":/pictures/player/vokoscreen.png" ) );
         ui->labelPlayer->setPixmap( icon.pixmap( 200, 185 ) );
+        parentMainWindow->setWindowTitle( oldWindowTitel );
         vk_showNormal();
     }
 }
@@ -312,11 +315,7 @@ void QvkPlayer::slot_setNewImage( QImage image )
 
     // Passt Bild am Fensters an
     transformedImage = transformedImage.scaled( ui->framePlayer->width(), ui->framePlayer->height(), Qt::KeepAspectRatio, Qt::SmoothTransformation );
-
     ui->labelPlayer->setPixmap( QPixmap::fromImage( transformedImage, Qt::AutoColor) );
-
-//    ui->labelPlayer->setPixmap( QPixmap::fromImage( image.scaled( ui->frame->width(), ui->frame->height(), Qt::KeepAspectRatio, Qt::SmoothTransformation ), Qt::AutoColor) );
-
 }
 
 
