@@ -310,12 +310,11 @@ void QvkPlayer::slot_positionChanged( qint64 value )
 
 void QvkPlayer::slot_setNewImage( QImage image )
 {
-    QTransform transform;
-    QImage transformedImage = image.transformed( transform, Qt::SmoothTransformation );
-
-    // Passt Bild am Fensters an
-    transformedImage = transformedImage.scaled( ui->framePlayer->width(), ui->framePlayer->height(), Qt::KeepAspectRatio, Qt::SmoothTransformation );
-    ui->labelPlayer->setPixmap( QPixmap::fromImage( transformedImage, Qt::AutoColor) );
+    ui->labelPlayer->setPixmap( QPixmap::fromImage( image.scaled( ui->framePlayer->width(),
+                                                    ui->framePlayer->height(),
+                                                    Qt::KeepAspectRatio,
+                                                    Qt::SmoothTransformation ),
+                                Qt::AutoColor) );
 }
 
 
