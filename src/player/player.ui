@@ -135,7 +135,7 @@
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
-            <widget class="QSlider" name="sliderVideo">
+            <widget class="slidervideo" name="sliderVideo">
              <property name="enabled">
               <bool>false</bool>
              </property>
@@ -309,6 +309,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>slidervideo</class>
+   <extends>QSlider</extends>
+   <header>slidervideo.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

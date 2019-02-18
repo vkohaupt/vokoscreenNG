@@ -1,10 +1,15 @@
 #include "QvkPlayer.h"
 #include "QvkPlayerVideoSurface.h"
+#include "slidervideo.h"
 
 #include <QTime>
 #include <QStandardPaths>
 #include <QFileDialog>
 #include <QTimer>
+
+// Player slider
+// https://stackoverflow.com/questions/11132597/qslider-mouse-direct-jump
+// https://qtvon0auf100.wordpress.com/2012/06/14/platzhalter-oder-mein-custom-widget/
 
 QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : ui(new Ui::player)
 {
@@ -53,7 +58,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
 
     connect( ui->sliderVideo, SIGNAL( sliderPressed() ),   this, SLOT( slot_sliderVideoPressed() ) );
     connect( ui->sliderVideo, SIGNAL( sliderReleased() ),  this, SLOT( slot_sliderVideoReleased() ) );
-    connect( ui->sliderVideo, SIGNAL( sliderMoved( int) ), this, SLOT( slot_sliderVideoMoved( int ) ) );
+    connect( ui->sliderVideo, SIGNAL( sliderMoved( int )), this, SLOT( slot_sliderVideoMoved( int ) ) );
 
     connect( ui->pushButtonPlay,  SIGNAL( clicked( bool ) ), this,                SLOT( slot_play() ) );
 
