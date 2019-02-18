@@ -299,7 +299,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
 
     connect( ui->comboBoxVideoCodec, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_videoCodecChanged( QString ) ) );
-    connect( ui->horizontalSliderx264, SIGNAL( sliderMoved( int ) ), ui->label_20, SLOT( setNum( int ) ) );
+    connect( ui->horizontalSliderx264, SIGNAL( valueChanged( int ) ), ui->labelSliderX264, SLOT( setNum( int ) ) );
 
     // Tab 3 Time
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
@@ -1211,7 +1211,7 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
 
     if ( encoder == "vaapih264enc" )
     {
-        value = "vaapih264enc tune=high-compression";
+        value = "vaapih264enc";
     }
 
     if ( encoder == "av1enc" )
