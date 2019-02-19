@@ -7,10 +7,6 @@
 #include <QFileDialog>
 #include <QTimer>
 
-// Player slider
-// https://stackoverflow.com/questions/11132597/qslider-mouse-direct-jump
-// https://qtvon0auf100.wordpress.com/2012/06/14/platzhalter-oder-mein-custom-widget/
-
 QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : ui(new Ui::player)
 {
     ui->setupUi(this);
@@ -54,25 +50,15 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     connect( mediaPlayer, SIGNAL( stateChanged( QMediaPlayer::State ) ), this, SLOT( slot_stateChanged( QMediaPlayer::State ) ) );
     connect( mediaPlayer, SIGNAL( volumeChanged( int ) ),                this, SLOT( slot_volumeChanged( int ) ) ); // Funktioniert nicht mit Pulse
 
-    connect( ui->toolButtonOpenFile, SIGNAL( clicked( bool ) ), this, SLOT( slot_openFile() ) );
-
     connect( ui->sliderVideo, SIGNAL( sliderPressed() ),   this, SLOT( slot_sliderVideoPressed() ) );
     connect( ui->sliderVideo, SIGNAL( sliderReleased() ),  this, SLOT( slot_sliderVideoReleased() ) );
     connect( ui->sliderVideo, SIGNAL( sliderMoved( int )), this, SLOT( slot_sliderVideoMoved( int ) ) );
 
     connect( ui->pushButtonPlay,  SIGNAL( clicked( bool ) ), this,                SLOT( slot_play() ) );
-
-    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), mediaPlayer,         SLOT( pause() ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonPlay,  SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonPlay,  SLOT( setFocus() ) );
-
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), mediaPlayer,         SLOT( stop() ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonPlay , SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonPlay,  SLOT( setFocus() ) );
+
+    connect( ui->toolButtonOpenFile, SIGNAL( clicked( bool ) ), this, SLOT( slot_openFile() ) );
 
     connect( ui->toolButtonFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonFullscreen() ) );
 
@@ -208,10 +194,6 @@ void QvkPlayer::slot_play()
     show();
     mediaPlayer->play();
     parentMainWindow->setWindowTitle( mediaPlayer->currentMedia().canonicalUrl().fileName() + " - " + oldWindowTitel );
-    ui->pushButtonPlay->setEnabled( false );
-    ui->pushButtonPause->setEnabled( true);
-    ui->pushButtonStop->setEnabled( true );
-    ui->pushButtonPause->setFocus();
 }
 
 
@@ -286,7 +268,6 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
         ui->pushButtonStop->setEnabled( false );
         ui->pushButtonPause->setEnabled( false );
         ui->pushButtonPlay->setEnabled( true );
-        ui->pushButtonPlay->setFocus();
         ui->sliderVideo->setValue( 0 );
         ui->labelDuration->setText( "00:00:00" );
 
@@ -294,6 +275,23 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
         ui->labelPlayer->setPixmap( icon.pixmap( 200, 185 ) );
         parentMainWindow->setWindowTitle( oldWindowTitel );
         vk_showNormal();
+        ui->pushButtonPlay->setFocus();
+    }
+
+    if ( state == QMediaPlayer::PlayingState )
+    {
+        ui->pushButtonPlay->setEnabled( false );
+        ui->pushButtonPause->setEnabled( true);
+        ui->pushButtonStop->setEnabled( true );
+        ui->pushButtonPause->setFocus();
+    }
+
+    if ( state == QMediaPlayer::PausedState )
+    {
+        ui->pushButtonPause->setEnabled( false );
+        ui->pushButtonStop->setEnabled( true );
+        ui->pushButtonPlay->setEnabled( true );
+        ui->pushButtonPlay->setFocus();
     }
 }
 
