@@ -56,6 +56,7 @@ private:
     QTimer *timerHideMouse;
     QString pathOpenFile;
     QString oldWindowTitel;
+    bool playingFlag = false;
 
 
 protected:

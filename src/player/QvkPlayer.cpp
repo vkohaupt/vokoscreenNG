@@ -171,12 +171,32 @@ void QvkPlayer::slot_openFile()
 
 void QvkPlayer::slot_sliderVideoPressed()
 {
+    if ( mediaPlayer->state() == QMediaPlayer::PlayingState )
+    {
+        playingFlag = true;
+    }
+
     mediaPlayer->pause();
 }
 
 
 void QvkPlayer::slot_sliderVideoReleased()
 {
+    // if pause und video not playing
+    if ( ( mediaPlayer->state() == QMediaPlayer::PausedState ) and ( playingFlag == false ) )
+    {
+        mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
+        return;
+    }
+
+    // If pause and video playing
+    if ( ( mediaPlayer->state() == QMediaPlayer::PausedState ) and ( playingFlag == true ) )
+    {
+        mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
+        playingFlag = false;
+    }
+
+
     mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
     mediaPlayer->play();
 }
