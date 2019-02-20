@@ -144,19 +144,25 @@ void QvkPlayer::closeEvent(QCloseEvent *event)
 
 void QvkPlayer::slot_toolButtonFrameForward()
 {
-    ui->labelDuration->setText( get_time( (ui->sliderVideo->value() + 1) * mediaPlayer->notifyInterval() ) );
-    ui->sliderVideo->setValue( ui->sliderVideo->value() + 1 );
-    mediaPlayer->pause();
-    mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
+    if ( mediaPlayer->media().isNull() == false   )
+    {
+        ui->labelDuration->setText( get_time( ( ui->sliderVideo->value() + 1 ) * mediaPlayer->notifyInterval() ) );
+        ui->sliderVideo->setValue( ui->sliderVideo->value() + 1 );
+        mediaPlayer->pause();
+        mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
+    }
 }
 
 
 void QvkPlayer::slot_toolButtonFrameBackward()
 {
-    ui->labelDuration->setText( get_time( (ui->sliderVideo->value() - 1) * mediaPlayer->notifyInterval() ) );
-    ui->sliderVideo->setValue( ui->sliderVideo->value() - 1 );
-    mediaPlayer->pause();
-    mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
+    if ( mediaPlayer->media().isNull() == false   )
+    {
+        ui->labelDuration->setText( get_time( ( ui->sliderVideo->value() - 1 ) * mediaPlayer->notifyInterval() ) );
+        ui->sliderVideo->setValue( ui->sliderVideo->value() - 1 );
+        mediaPlayer->pause();
+        mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
+    }
 }
 
 
@@ -326,6 +332,8 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
         ui->labelPlayer->setPixmap( icon.pixmap( 200, 185 ) );
         parentMainWindow->setWindowTitle( oldWindowTitel );
         vk_showNormal();
+        ui->toolButtonFrameBackward->setEnabled( true );
+        ui->toolButtonFrameForward->setEnabled( true );
         ui->pushButtonPlay->setFocus();
     }
 
@@ -335,6 +343,8 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
         ui->pushButtonPause->setEnabled( true);
         ui->pushButtonStop->setEnabled( true );
         ui->pushButtonPause->setFocus();
+        ui->toolButtonFrameBackward->setEnabled( true );
+        ui->toolButtonFrameForward->setEnabled( true );
     }
 
     if ( state == QMediaPlayer::PausedState )
@@ -343,6 +353,8 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
         ui->pushButtonStop->setEnabled( true );
         ui->pushButtonPlay->setEnabled( true );
         ui->pushButtonPlay->setFocus();
+        ui->toolButtonFrameBackward->setEnabled( true );
+        ui->toolButtonFrameForward->setEnabled( true );
     }
 }
 
