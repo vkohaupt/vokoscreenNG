@@ -27,14 +27,15 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
 
     ui->framePlayer->setStyleSheet( "background-color: black;" );
 
-    ui->toolButtonOpenFile->setIcon( QIcon::fromTheme( "document-open", style()->standardIcon( QStyle::SP_FileIcon ) ) );
-    //ui->toolButtonHelpPlayer->setIcon( style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
-
     ui->pushButtonPlay->setIcon( QIcon::fromTheme( "media-playback-start" , style()->standardIcon( QStyle::SP_MediaPlay ) ) );
     ui->pushButtonPause->setIcon( QIcon::fromTheme( "media-playback-pause", style()->standardIcon( QStyle::SP_MediaPause ) ) );
     ui->pushButtonStop->setIcon( QIcon::fromTheme( "media-playback-stop"  , style()->standardIcon( QStyle::SP_MediaStop ) ) );
+    ui->toolButtonFrameBackward->setIcon( QIcon::fromTheme( "go-previous",  style()->standardIcon( QStyle::SP_MediaSkipBackward ) ) );
+    ui->toolButtonFrameForward->setIcon( QIcon::fromTheme( "go-next",       style()->standardIcon( QStyle::SP_MediaSkipForward ) ) );
+    ui->toolButtonOpenFile->setIcon( QIcon::fromTheme( "document-open",     style()->standardIcon( QStyle::SP_FileIcon ) ) );
     ui->toolButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high"    , style()->standardIcon( QStyle::SP_MediaVolume ) ) );
     ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen", QIcon( ":/pictures/player/fullscreen.png" ) ) );
+    //ui->toolButtonHelpPlayer->setIcon( style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
     mediaPlayer = new QMediaPlayer;
     ui->sliderVolume->setValue( 70 );
@@ -59,6 +60,9 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     connect( ui->pushButtonPlay,  SIGNAL( clicked( bool ) ), this,                SLOT( slot_play() ) );
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), mediaPlayer,         SLOT( pause() ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), mediaPlayer,         SLOT( stop() ) );
+
+    connect( ui->toolButtonFrameBackward, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonFrameBackward() ) );
+    connect( ui->toolButtonFrameForward, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonFrameForward() ) );
 
     connect( ui->toolButtonOpenFile, SIGNAL( clicked( bool ) ), this, SLOT( slot_openFile() ) );
 
@@ -135,6 +139,24 @@ void QvkPlayer::closeEvent(QCloseEvent *event)
 {
     Q_UNUSED(event);
     mediaPlayer->stop();
+}
+
+
+void QvkPlayer::slot_toolButtonFrameForward()
+{
+    ui->labelDuration->setText( get_time( (ui->sliderVideo->value() + 1) * mediaPlayer->notifyInterval() ) );
+    ui->sliderVideo->setValue( ui->sliderVideo->value() + 1 );
+    mediaPlayer->pause();
+    mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
+}
+
+
+void QvkPlayer::slot_toolButtonFrameBackward()
+{
+    ui->labelDuration->setText( get_time( (ui->sliderVideo->value() - 1) * mediaPlayer->notifyInterval() ) );
+    ui->sliderVideo->setValue( ui->sliderVideo->value() - 1 );
+    mediaPlayer->pause();
+    mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
 }
 
 

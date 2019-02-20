@@ -42,6 +42,8 @@ private slots:
     void slot_volumeChanged( int ); // Funktioniert nicht mit Pulse
     void slot_hideMouse();
     void slot_sliderVideo_KeyRight_KeyLeft( int value );
+    void slot_toolButtonFrameForward();
+    void slot_toolButtonFrameBackward();
 
 
 private:
