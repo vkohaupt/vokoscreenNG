@@ -6,6 +6,7 @@
 #include <QStandardPaths>
 #include <QFileDialog>
 #include <QTimer>
+#include <QMediaPlayer>
 
 QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : ui(new Ui::player)
 {
@@ -53,6 +54,8 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     connect( ui->sliderVideo, SIGNAL( sliderPressed() ),   this, SLOT( slot_sliderVideoPressed() ) );
     connect( ui->sliderVideo, SIGNAL( sliderReleased() ),  this, SLOT( slot_sliderVideoReleased() ) );
     connect( ui->sliderVideo, SIGNAL( sliderMoved( int )), this, SLOT( slot_sliderVideoMoved( int ) ) );
+    connect( ui->sliderVideo, SIGNAL( signal_sliderVideo_KeyRight_KeyLeft( int ) ), this, SLOT( slot_sliderVideo_KeyRight_KeyLeft( int ) ) );
+    connect( ui->sliderVideo, SIGNAL( signal_sliderVideo_KeyLeft( int ) ), this, SLOT( slot_sliderVideo_KeyLeft( int ) ) );
 
     connect( ui->pushButtonPlay,  SIGNAL( clicked( bool ) ), this,                SLOT( slot_play() ) );
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), mediaPlayer,         SLOT( pause() ) );
@@ -206,6 +209,13 @@ void QvkPlayer::slot_sliderVideoMoved( int value )
 {
     mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
     ui->labelDuration->setText( get_time( value * mediaPlayer->notifyInterval() ) );
+}
+
+
+void QvkPlayer::slot_sliderVideo_KeyRight_KeyLeft( int value )
+{
+    Q_UNUSED(value);
+    mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
 }
 
 

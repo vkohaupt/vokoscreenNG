@@ -4,6 +4,7 @@
 #include <QSlider>
 #include <QWidget>
 #include <QMouseEvent>
+#include <QDebug>
 
 // Hint: Defined in GUI as placeholder
 
@@ -38,6 +39,22 @@ protected:
         }
         QSlider::mousePressEvent(event);
     }
+
+
+    void keyPressEvent( QKeyEvent *event )
+    {
+        if ( ( event->key() == Qt::Key_Right ) or ( event->key() == Qt::Key_Left  ) )
+        {
+            emit signal_sliderVideo_KeyRight_KeyLeft( value() );
+            event->accept();
+        }
+        QSlider::keyPressEvent( event );
+    }
+
+
+signals:
+    void signal_sliderVideo_KeyRight_KeyLeft( int value );
+
 
 };
 #endif // SLIDERVIDEO_H
