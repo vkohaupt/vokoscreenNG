@@ -47,7 +47,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow )
         showClickOpacity  = settings.value( "Opacity", 0.5 ).toDouble();
     settings.endGroup();
 
-    // Dient nur zum anlegen des Profils damit das log erstellt werden kann
+    // create a profil
     settings.beginGroup("vokoscreen");
       settings.setValue("Version", getVersion());
     settings.endGroup();
@@ -65,19 +65,31 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow )
     QList<QCheckBox *> listCheckBox = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ )
     {
-        // We have no settings-file but this object we wont set as Standard.
+        // We have no settings-file(first start) but this object we want set as Standard.
         if ( ( listCheckBox.at(i)->objectName() == "checkBoxShowInSystray" ) and ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) )
         {
             listCheckBox.at(i)->click();
             continue;
         }
 
-        // We found a setting, then set or not.
+        // We found a setting, then we want set or not.
         if ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true )
         {
             listCheckBox.at(i)->click();
         }
     }
+
+    QList<QSpinBox *> listSpinBox = ui_mainwindow->centralWidget->findChildren<QSpinBox *>();
+    for ( int i = 0; i < listSpinBox.count(); i++ )
+    {
+        int value = settings.value( listSpinBox.at(i)->objectName(), 0 ).toInt();
+        if ( value > 0  )
+        {
+           listSpinBox.at(i)->setValue( value );
+        }
+    }
+
+
 }
 
 
@@ -95,7 +107,15 @@ void QvkSettings::saveAll( Ui_formMainWindow *ui_mainwindow )
     QList<QCheckBox *> listCheckBox = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ )
     {
-        settings.setValue( listCheckBox.at(i)->objectName(), listCheckBox.at(i)->isChecked() );
+        if ( ( listCheckBox.at(i)->objectName() == "checkBoxStopRecordingAfter" ) or
+             ( listCheckBox.at(i)->objectName() == "checkBoxStartTime" ) )
+        {
+            // We do not save
+        }
+        else
+        {
+            settings.setValue( listCheckBox.at(i)->objectName(), listCheckBox.at(i)->isChecked() );
+        }
     }
 
     QList<QSpinBox *> listSpinBox = ui_mainwindow->centralWidget->findChildren<QSpinBox *>();
