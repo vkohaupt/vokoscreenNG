@@ -1828,6 +1828,9 @@
               <bold>true</bold>
              </font>
             </property>
+            <property name="toolTip">
+             <string>CTRL+SHIFT+F10</string>
+            </property>
             <property name="text">
              <string>Start</string>
             </property>
@@ -1844,6 +1847,9 @@
               <bold>true</bold>
              </font>
             </property>
+            <property name="toolTip">
+             <string>CTRL+SHIFT+F11</string>
+            </property>
             <property name="text">
              <string>Stop</string>
             </property>
@@ -1859,6 +1865,9 @@
               <weight>75</weight>
               <bold>true</bold>
              </font>
+            </property>
+            <property name="toolTip">
+             <string>CTRL+SHIFT+F12</string>
             </property>
             <property name="text">
              <string>Pause</string>
@@ -1889,6 +1898,9 @@
               <bold>true</bold>
              </font>
             </property>
+            <property name="toolTip">
+             <string>Play last record</string>
+            </property>
             <property name="text">
              <string>Play</string>
             </property>
@@ -1901,6 +1913,9 @@
               <weight>75</weight>
               <bold>true</bold>
              </font>
+            </property>
+            <property name="toolTip">
+             <string>Open folder</string>
             </property>
             <property name="text">
              <string>Folder</string>
@@ -2322,7 +2337,7 @@
               <item row="0" column="0">
                <widget class="QCheckBox" name="checkBoxCamera">
                 <property name="toolTip">
-                 <string notr="true"/>
+                 <string>CTRL+SHIFT+F8</string>
                 </property>
                 <property name="text">
                  <string>Camera</string>
