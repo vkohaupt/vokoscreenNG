@@ -15,7 +15,7 @@ QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraW
 {
     ui_vokoscreen = ui_surface;
 
-    vkSettings.readAll();
+//    vkSettings.readAll();
 
     ui_vokoscreen->dialRotate->setMinimum( 0 );
     ui_vokoscreen->dialRotate->setMaximum ( 360 );

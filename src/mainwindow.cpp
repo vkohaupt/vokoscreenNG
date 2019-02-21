@@ -56,7 +56,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkLogController *vklogController = new QvkLogController( ui );
     Q_UNUSED(vklogController);
 
-    vkSettings.readAll();
+//    vkSettings.readAll( ui );
 
     setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() );
 
@@ -388,10 +388,17 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // Diese werden hier beziehungsweise wenn die Settings vorhanden sind dort gesetzt.
     ui->radioButtonFullscreen->click();
     ui->radioButtonScreenshotFullscreen->click();
-    ui->checkBoxShowInSystray->clicked( true );
+
+//    ui->checkBoxShowInSystray->clicked( true ); // Original
+//    ui->checkBoxShowInSystray->click();
+
     ui->radioButtonBottomMiddle->clicked( true ); // funktioniert so nicht da Widget disabled sind
     ui->checkBoxAudioOnOff->clicked( false ); // sende Signal clicked mit value=false
     //ui->checkBoxAudioOnOff->click();
+
+    vkSettings.readAll( ui );
+
+
 }
 
 

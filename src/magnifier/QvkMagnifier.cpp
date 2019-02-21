@@ -4,7 +4,7 @@
 
 QvkMagnifier::QvkMagnifier()
 {
-  vkSettings.readAll();
+//  vkSettings.readAll();
 
   faktor = 2;
   label = new QLabel( this );

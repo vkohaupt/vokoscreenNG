@@ -6,8 +6,80 @@
 #include <QColor>
 #include <QRadioButton>
 
-QvkSettings::QvkSettings(){}
+QvkSettings::QvkSettings()
+{
+    // Read from file VERSION progname and versionsnumber
+    QSettings versionSettings(":/VERSION", QSettings::IniFormat );
+    versionSettings.beginGroup("Info");
+      bool beta = versionSettings.value( "Beta" ).toBool();
+      QString Beta;
+      if ( beta )
+        Beta = "Beta";
+      else
+        Beta = "";
+
+      ProgName = versionSettings.value( "Progname" ).toString();
+      Version = versionSettings.value( "Version" ).toString() + " " + Beta;
+    versionSettings.endGroup();
+
+    // Einstellungen aus .conf einlesen
+    QSettings settings( getProgName(), getProgName() );
+
+    // Dient nur zum anlegen des Profils damit das log erstellt werden kann
+    settings.beginGroup("vokoscreen");
+      settings.setValue("Version", getVersion());
+    settings.endGroup();
+
+}
+
 QvkSettings::~QvkSettings(){}
+
+void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow )
+{
+    // Einstellungen aus .conf einlesen
+    QSettings settings( getProgName(), getProgName() );
+
+    settings.beginGroup( "ShowClick" );
+        showClickTime     = settings.value( "Showtime", 5 ).toDouble();
+        showClickCircle   = settings.value( "Circle", 70 ).toInt();
+        showClickRadiant  = settings.value( "Radiant", false ).toBool();
+        showClickColor    = settings.value( "Color", QColor( Qt::red ) ).value<QColor>();
+        showClickOpacity  = settings.value( "Opacity", 0.5 ).toDouble();
+    settings.endGroup();
+
+    // Dient nur zum anlegen des Profils damit das log erstellt werden kann
+    settings.beginGroup("vokoscreen");
+      settings.setValue("Version", getVersion());
+    settings.endGroup();
+
+    QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralWidget->findChildren<QRadioButton *>();
+    for ( int i = 0; i < listRadiobuttons.count(); i++ )
+    {
+        bool value = settings.value( listRadiobuttons.at(i)->objectName(), false ).toBool();
+        if ( value == true )
+        {
+           listRadiobuttons.at(i)->click();
+        }
+    }
+
+    QList<QCheckBox *> listCheckBox = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ )
+    {
+        // We have no settings-file but this object we wont set as Standard.
+        if ( ( listCheckBox.at(i)->objectName() == "checkBoxShowInSystray" ) and ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) )
+        {
+            listCheckBox.at(i)->click();
+            continue;
+        }
+
+        // We found a setting, then set or not.
+        if ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true )
+        {
+            listCheckBox.at(i)->click();
+        }
+    }
+}
+
 
 void QvkSettings::saveAll( Ui_formMainWindow *ui_mainwindow )
 {
@@ -54,48 +126,6 @@ void QvkSettings::saveAll( Ui_formMainWindow *ui_mainwindow )
     }
 }
 
-
-void QvkSettings::readAll()
-{
-    // Read from file VERSION progname and versionsnumber
-    QSettings versionSettings(":/VERSION", QSettings::IniFormat );
-    versionSettings.beginGroup("Info");
-      bool beta = versionSettings.value( "Beta" ).toBool();
-      QString Beta;
-      if ( beta )
-        Beta = "Beta";
-      else
-        Beta = "";
-      
-      ProgName = versionSettings.value( "Progname" ).toString();
-      Version = versionSettings.value( "Version" ).toString() + " " + Beta;
-    versionSettings.endGroup();
-    
-    // Einstellungen aus .conf einlesen
-    QSettings settings( getProgName(), getProgName() );
-    
-    // Reset all settings at next start from vokoscreen
-    settings.beginGroup( "Miscellaneous" );
-      int reset = settings.value( "Reset", 0 ).toUInt();
-      if ( reset == 2 )
-      {
-        settings.clear();
-      }
-    settings.endGroup();
-    
-    // Dient nur zum anlegen des Profils damit ffmpeglog erstellt werden kann
-    settings.beginGroup("vokoscreen");
-      settings.setValue("Version", getVersion());
-    settings.endGroup();
-  
-    settings.beginGroup( "ShowClick" );
-        showClickTime     = settings.value( "Showtime", 5 ).toDouble();
-        showClickCircle   = settings.value( "Circle", 70 ).toInt();
-        showClickRadiant  = settings.value( "Radiant", false ).toBool();
-        showClickColor    = settings.value( "Color", QColor( Qt::red ) ).value<QColor>();
-        showClickOpacity  = settings.value( "Opacity", 0.5 ).toDouble();
-    settings.endGroup();
-}
 
 QString QvkSettings::getVersion()
 {

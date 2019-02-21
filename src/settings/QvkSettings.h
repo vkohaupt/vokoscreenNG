@@ -15,7 +15,7 @@ public:
     QvkSettings();
     virtual ~QvkSettings();
     void saveAll(Ui_formMainWindow *ui_mainwindow);
-    void readAll();
+    void readAll(Ui_formMainWindow *ui_mainwindow);
 
     QString getVersion();
     QString getProgName();

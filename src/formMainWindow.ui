@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>3</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1420,9 +1420,6 @@
                 <property name="text">
                  <string>Show in systray</string>
                 </property>
-                <property name="checked">
-                 <bool>true</bool>
-                </property>
                </widget>
               </item>
               <item>
@@ -2146,9 +2143,6 @@
                  <widget class="QCheckBox" name="checkBoxScreenshotHideThisWindow">
                   <property name="text">
                    <string>Hide this Window</string>
-                  </property>
-                  <property name="checked">
-                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>

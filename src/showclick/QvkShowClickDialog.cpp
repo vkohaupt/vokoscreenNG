@@ -4,7 +4,7 @@
 
 QvkShowClickDialog::QvkShowClickDialog( QColor color, bool radiant, double opacity )
 {
-    vkSettings.readAll();
+//    vkSettings.readAll();
     
     newDialog = new QDialog;
     newDialog->setModal( true );
