@@ -242,8 +242,17 @@
               <property name="enabled">
                <bool>false</bool>
               </property>
+              <property name="toolTip">
+               <string>Previous frame</string>
+              </property>
               <property name="text">
-               <string>...</string>
+               <string notr="true">&lt;</string>
+              </property>
+              <property name="autoRepeat">
+               <bool>true</bool>
+              </property>
+              <property name="autoRepeatInterval">
+               <number>40</number>
               </property>
              </widget>
             </item>
@@ -252,11 +261,17 @@
               <property name="enabled">
                <bool>false</bool>
               </property>
+              <property name="toolTip">
+               <string>Next frame</string>
+              </property>
               <property name="text">
-               <string>...</string>
+               <string notr="true">&gt;</string>
               </property>
               <property name="autoRepeat">
                <bool>true</bool>
+              </property>
+              <property name="autoRepeatInterval">
+               <number>40</number>
               </property>
              </widget>
             </item>
@@ -318,6 +333,9 @@
             </item>
             <item>
              <widget class="QSlider" name="sliderVolume">
+              <property name="toolTip">
+               <string>Volume</string>
+              </property>
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -325,6 +343,9 @@
             </item>
             <item>
              <widget class="QToolButton" name="toolButtonMute">
+              <property name="toolTip">
+               <string>Mute</string>
+              </property>
               <property name="text">
                <string notr="true">Mute</string>
               </property>
