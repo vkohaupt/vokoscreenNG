@@ -100,6 +100,7 @@ void QvkAudioPulse::getPulseDevices()
             QCheckBox *checkboxAudioDevice = new QCheckBox();
             checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
             checkboxAudioDevice->setAccessibleName( QString( list.at(i) ).section( ":::", 0, 0 ) );
+            checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( i ) );
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
             checkboxAudioDevice->setAutoExclusive( true );
 

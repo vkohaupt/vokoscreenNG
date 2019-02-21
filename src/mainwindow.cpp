@@ -299,7 +299,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
 
     connect( ui->comboBoxVideoCodec, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_videoCodecChanged( QString ) ) );
-    connect( ui->horizontalSliderx264, SIGNAL( valueChanged( int ) ), ui->labelSliderX264, SLOT( setNum( int ) ) );
+    connect( ui->sliderX264, SIGNAL( valueChanged( int ) ), ui->labelSliderX264, SLOT( setNum( int ) ) );
 
     // Tab 3 Time
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
@@ -307,8 +307,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     timerStartTimer->setTimerType( Qt::PreciseTimer );
     connect( timerStartTimer,       SIGNAL( timeout() ),           this, SLOT( slot_startTime() ) );
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     ui->pushButtonStart, SLOT( setHidden( bool ) ) );
-    connect( ui->SliderHouer,       SIGNAL( valueChanged( int ) ), this, SLOT( slot_setHour( int ) ) );
-    connect( ui->SliderMinute,      SIGNAL( valueChanged( int ) ), this, SLOT( slot_setMinute( int ) ) );
+    connect( ui->sliderHour,       SIGNAL( valueChanged( int ) ), this, SLOT( slot_setHour( int ) ) );
+    connect( ui->sliderMinute,      SIGNAL( valueChanged( int ) ), this, SLOT( slot_setMinute( int ) ) );
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     ui->labelCountdown, SLOT( setDisabled( bool ) ) );
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     ui->spinBoxCountDown, SLOT( setDisabled( bool ) ) );
 
@@ -392,8 +392,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->radioButtonBottomMiddle->clicked( true ); // funktioniert so nicht da Widget disabled sind
     ui->checkBoxAudioOnOff->clicked( false ); // sende Signal clicked mit value=false
     //ui->checkBoxAudioOnOff->click();
-
-
 }
 
 
@@ -496,6 +494,7 @@ void QvkMainWindow::slot_sendReport()
 void QvkMainWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
+    vkSettings.saveAll( ui );
     emit signal_close();
     emit signal_close( false );
 }
@@ -1197,8 +1196,8 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         // https://encodingwissen.de/codecs/x264/referenz/
         QStringList list;
         list << ui->comboBoxVideoCodec->currentData().toString();
-        list << "qp-min=" + QString::number( ui->horizontalSliderx264->value() );
-        list << "qp-max=" + QString::number( ui->horizontalSliderx264->value() );
+        list << "qp-min=" + QString::number( ui->sliderX264->value() );
+        list << "qp-max=" + QString::number( ui->sliderX264->value() );
         list << "speed-preset=" + ui->comboBoxx264Preset->currentText();
         list << "threads=0";
         value = list.join( " " );

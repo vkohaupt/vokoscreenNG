@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -786,7 +786,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QSlider" name="horizontalSliderx264">
+                     <widget class="QSlider" name="sliderX264">
                       <property name="minimumSize">
                        <size>
                         <width>50</width>
@@ -1042,7 +1042,7 @@
                  <item>
                   <layout class="QVBoxLayout" name="verticalLayout_14">
                    <item>
-                    <widget class="QSlider" name="SliderHouer">
+                    <widget class="QSlider" name="sliderHour">
                      <property name="enabled">
                       <bool>true</bool>
                      </property>
@@ -1064,7 +1064,7 @@
                     </widget>
                    </item>
                    <item>
-                    <widget class="QSlider" name="SliderMinute">
+                    <widget class="QSlider" name="sliderMinute">
                      <property name="enabled">
                       <bool>true</bool>
                      </property>
@@ -2704,7 +2704,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>comboBoxFormat</tabstop>
   <tabstop>comboBoxVideoCodec</tabstop>
   <tabstop>comboBoxx264Preset</tabstop>
-  <tabstop>horizontalSliderx264</tabstop>
+  <tabstop>sliderX264</tabstop>
   <tabstop>toolButtonVideoCodecHelp</tabstop>
   <tabstop>comboBoxAudioCodec</tabstop>
   <tabstop>checkBoxScale</tabstop>
@@ -2713,8 +2713,8 @@ p, li { white-space: pre-wrap; }
   <tabstop>checkBoxMouseCursorOnOff</tabstop>
   <tabstop>toolButtonHelpNoMouseCursor</tabstop>
   <tabstop>timeEditStartTime</tabstop>
-  <tabstop>SliderHouer</tabstop>
-  <tabstop>SliderMinute</tabstop>
+  <tabstop>sliderHour</tabstop>
+  <tabstop>sliderMinute</tabstop>
   <tabstop>checkBoxStartTime</tabstop>
   <tabstop>toolButtonHelpStartTime</tabstop>
   <tabstop>checkBoxStopRecordingAfter</tabstop>
