@@ -89,7 +89,39 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow )
         }
     }
 
+    QList<QComboBox *> listComboBox = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
+    for ( int i = 0; i < listComboBox.count(); i++ )
+    {
+        QString valueText = settings.value( listComboBox.at(i)->objectName(), "" ).toString();
+        int valueInt = listComboBox.at(i)->findText( valueText );
+        if ( valueInt > -1 )
+        {
+            listComboBox.at(i)->setCurrentIndex( valueInt );
+        }
+    }
 
+    QList<QSlider *> listSlider = ui_mainwindow->centralWidget->findChildren<QSlider *>();
+    for ( int i = 0; i < listSlider.count(); i++ )
+    {
+        int value = settings.value( listSlider.at(i)->objectName() ).toInt();
+        if ( value >= 0 )
+        {
+            listSlider.at(i)->setValue( value );
+        }
+    }
+
+    QList<QLineEdit *> listLineEdit = ui_mainwindow->centralWidget->findChildren<QLineEdit *>();
+    for ( int i = 0; i < listLineEdit.count(); i++ )
+    {
+        if ( listLineEdit.at(i)->objectName().contains( "lineEdit" ) )
+        {
+            QString value = settings.value( listLineEdit.at(i)->objectName() ).toString();
+            if ( !value.isEmpty() )
+            {
+               listLineEdit.at(i)->setText( value );
+            }
+        }
+    }
 }
 
 

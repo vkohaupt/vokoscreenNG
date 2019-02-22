@@ -385,13 +385,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 
     // Checkable Widget sind in vokoscreen standardmäßig nicht gesetzt.
-    // Diese werden hier beziehungsweise wenn die Settings vorhanden sind dort gesetzt.
+    // Diese werden hier beziehungsweise in den Settings gesetzt.
     ui->radioButtonFullscreen->click();
     ui->radioButtonScreenshotFullscreen->click();
-
-//    ui->checkBoxShowInSystray->clicked( true ); // Original
-//    ui->checkBoxShowInSystray->click();
-
     ui->radioButtonBottomMiddle->clicked( true ); // funktioniert so nicht da Widget disabled sind
     ui->checkBoxAudioOnOff->clicked( false ); // sende Signal clicked mit value=false
     //ui->checkBoxAudioOnOff->click();
