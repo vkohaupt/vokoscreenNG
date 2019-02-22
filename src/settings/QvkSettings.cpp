@@ -103,10 +103,10 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow )
     QList<QSlider *> listSlider = ui_mainwindow->centralWidget->findChildren<QSlider *>();
     for ( int i = 0; i < listSlider.count(); i++ )
     {
-        int value = settings.value( listSlider.at(i)->objectName() ).toInt();
-        if ( value >= 0 )
+        QVariant variant = settings.value( listSlider.at(i)->objectName() );
+        if ( variant.isValid() )
         {
-            listSlider.at(i)->setValue( value );
+            listSlider.at(i)->setValue( variant.toInt() );
         }
     }
 
