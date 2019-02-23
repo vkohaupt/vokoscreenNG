@@ -17,10 +17,10 @@ public slots:
 
 
 private slots:
+   void slot_valueChanged( int value );
 
 
 private:
-  Ui_formMainWindow *ui_vokoscreen;
   QvkMagnifier *vkMagnifier;
 
 

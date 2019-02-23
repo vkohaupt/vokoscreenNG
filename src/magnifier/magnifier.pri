@@ -5,5 +5,3 @@ HEADERS     += $$PWD/QvkMagnifierController.h \
                    
 SOURCES     += $$PWD/QvkMagnifierController.cpp \
                $$PWD/QvkMagnifier.cpp
-
-FORMS       += $$PWD/QvkMagnifierDialog.ui         

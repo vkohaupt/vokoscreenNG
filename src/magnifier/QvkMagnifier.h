@@ -1,8 +1,6 @@
 #ifndef QvkMagnifier_H 
 #define QvkMagnifier_H
 
-#include "ui_QvkMagnifierDialog.h"
-
 #include <QScreen>
 #include <QPixmap>
 #include <QDialog>
@@ -20,13 +18,13 @@ public:
 
 public slots:
   void slot_magnifierShow( bool value );
-  
-
-private slots:
-  void slot_mytimer();
   void slot_magnifier200x200();
   void slot_magnifier400x200();
   void slot_magnifier600x200();
+
+
+private slots:
+  void slot_mytimer();
   
 
 protected:  

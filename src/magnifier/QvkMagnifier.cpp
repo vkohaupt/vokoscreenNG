@@ -1,5 +1,7 @@
 #include "QvkMagnifier.h"
 
+#include <QApplication>
+
 // Lupe Rund, Qadratisch, Oval
 
 QvkMagnifier::QvkMagnifier()
@@ -8,7 +10,7 @@ QvkMagnifier::QvkMagnifier()
   faktor = 2;
   label = new QLabel( this );
 
-  slot_magnifier400x200();
+  slot_magnifier200x200();
 
   resize( 2 * distanceX * faktor, 2 * distanceY * faktor );
   setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar

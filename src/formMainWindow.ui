@@ -220,29 +220,72 @@
                </spacer>
               </item>
               <item>
-               <layout class="QGridLayout" name="gridLayout_7">
-                <item row="0" column="3">
-                 <widget class="QToolButton" name="help_screencast_magnifier">
-                  <property name="text">
-                   <string notr="true">Help</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0">
+               <widget class="Line" name="line_7">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_8">
+                <item>
                  <widget class="QCheckBox" name="checkBoxMagnifier">
                   <property name="text">
                    <string>Magnification</string>
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="1">
-                 <widget class="QToolButton" name="toolButtonDialogMagnifier">
-                  <property name="text">
-                   <string notr="true">...</string>
+                <item>
+                 <widget class="QSlider" name="sliderMagnification">
+                  <property name="minimum">
+                   <number>1</number>
+                  </property>
+                  <property name="maximum">
+                   <number>3</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="tickPosition">
+                   <enum>QSlider::TicksBelow</enum>
+                  </property>
+                  <property name="tickInterval">
+                   <number>1</number>
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="3">
+                <item>
+                 <spacer name="horizontalSpacer_15">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="help_screencast_magnifier">
+                  <property name="text">
+                   <string notr="true">Help</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="Line" name="line_10">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QGridLayout" name="gridLayout_7">
+                <item row="0" column="5">
                  <widget class="QToolButton" name="help_screencast_showclick">
                   <property name="enabled">
                    <bool>false</bool>
@@ -252,7 +295,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="0">
+                <item row="0" column="0">
                  <widget class="QCheckBox" name="checkBoxShowClick">
                   <property name="enabled">
                    <bool>false</bool>
@@ -262,7 +305,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="1">
+                <item row="0" column="2">
                  <widget class="QToolButton" name="toolButtonShowKlick">
                   <property name="enabled">
                    <bool>false</bool>
@@ -272,8 +315,8 @@
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="2">
-                 <spacer name="horizontalSpacer_20">
+                <item row="0" column="3">
+                 <spacer name="horizontalSpacer_17">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
@@ -2684,11 +2727,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>toolButtonAreaReset</tabstop>
   <tabstop>comboBoxAreaSize</tabstop>
   <tabstop>help_screencast_area</tabstop>
-  <tabstop>checkBoxMagnifier</tabstop>
-  <tabstop>toolButtonDialogMagnifier</tabstop>
-  <tabstop>help_screencast_magnifier</tabstop>
   <tabstop>checkBoxShowClick</tabstop>
-  <tabstop>toolButtonShowKlick</tabstop>
   <tabstop>help_screencast_showclick</tabstop>
   <tabstop>spinBoxCountDown</tabstop>
   <tabstop>help_screencast_countdown</tabstop>

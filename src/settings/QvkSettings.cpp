@@ -71,7 +71,6 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow )
             listCheckBox.at(i)->click();
             continue;
         }
-        qDebug() << "" << listCheckBox.at(i)->objectName();
 
         // We found a setting, then we want set or not.
         if ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true )
