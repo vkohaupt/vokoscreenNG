@@ -4,23 +4,11 @@
 
 QvkMagnifier::QvkMagnifier()
 {
-//  vkSettings.readAll();
 
   faktor = 2;
   label = new QLabel( this );
 
-  switch( vkSettings.getMagnifierFormValue())
-  {
-        case 1:  
-            slot_magnifier200x200();
-		break;
-        case 2:
-            slot_magnifier400x200();
-		break;
-        case 3:
-            slot_magnifier600x200();
-		break;
-  }
+  slot_magnifier400x200();
 
   resize( 2 * distanceX * faktor, 2 * distanceY * faktor );
   setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar

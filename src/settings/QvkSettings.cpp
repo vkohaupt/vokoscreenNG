@@ -25,6 +25,14 @@ QvkSettings::QvkSettings()
     // Einstellungen aus .conf einlesen
     QSettings settings( getProgName(), getProgName() );
 
+    settings.beginGroup( "ShowClick" );
+        showClickTime     = settings.value( "Showtime", 5 ).toDouble();
+        showClickCircle   = settings.value( "Circle", 70 ).toInt();
+        showClickRadiant  = settings.value( "Radiant", false ).toBool();
+        showClickColor    = settings.value( "Color", QColor( Qt::red ) ).value<QColor>();
+        showClickOpacity  = settings.value( "Opacity", 0.5 ).toDouble();
+    settings.endGroup();
+
     // Dient nur zum anlegen des Profils damit das log erstellt werden kann
     settings.beginGroup("vokoscreen");
       settings.setValue("Version", getVersion());
@@ -38,14 +46,6 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow )
 {
     // Einstellungen aus .conf einlesen
     QSettings settings( getProgName(), getProgName() );
-
-    settings.beginGroup( "ShowClick" );
-        showClickTime     = settings.value( "Showtime", 5 ).toDouble();
-        showClickCircle   = settings.value( "Circle", 70 ).toInt();
-        showClickRadiant  = settings.value( "Radiant", false ).toBool();
-        showClickColor    = settings.value( "Color", QColor( Qt::red ) ).value<QColor>();
-        showClickOpacity  = settings.value( "Opacity", 0.5 ).toDouble();
-    settings.endGroup();
 
     // create a profil
     settings.beginGroup("vokoscreen");
@@ -71,6 +71,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow )
             listCheckBox.at(i)->click();
             continue;
         }
+        qDebug() << "" << listCheckBox.at(i)->objectName();
 
         // We found a setting, then we want set or not.
         if ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true )

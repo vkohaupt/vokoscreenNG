@@ -56,8 +56,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkLogController *vklogController = new QvkLogController( ui );
     Q_UNUSED(vklogController);
 
-//    vkSettings.readAll( ui );
-
     setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() );
 
     vkPlayer = new QvkPlayer( this, ui );

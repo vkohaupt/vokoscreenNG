@@ -1562,7 +1562,7 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_7">
               <item>
-               <widget class="QCheckBox" name="checkBox">
+               <widget class="QCheckBox" name="checkBoxLookForUpdates">
                 <property name="text">
                  <string>Look for updates</string>
                 </property>
@@ -2728,7 +2728,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>toolButtonHelpMinimizedWhenRecordingStarts</tabstop>
   <tabstop>checkBoxVokoscreenStartsMinimized</tabstop>
   <tabstop>toolButtonHelpVokoscreenStartsMinimized</tabstop>
-  <tabstop>checkBox</tabstop>
+  <tabstop>checkBoxLookForUpdates</tabstop>
   <tabstop>toolButtonLookForUpdates</tabstop>
   <tabstop>scrollAreaAvailable</tabstop>
   <tabstop>toolButtonAvalaibleHelp</tabstop>

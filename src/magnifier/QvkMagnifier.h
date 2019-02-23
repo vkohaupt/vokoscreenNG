@@ -2,7 +2,6 @@
 #define QvkMagnifier_H
 
 #include "ui_QvkMagnifierDialog.h"
-#include "QvkSettings.h"
 
 #include <QScreen>
 #include <QPixmap>
@@ -46,7 +45,6 @@ private:
   int distanceY;
   int faktor;
   QTimer *timer;
-  QvkSettings vkSettings;
   
 };
 
