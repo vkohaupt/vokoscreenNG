@@ -156,10 +156,6 @@
 <context>
     <name>formMainWindow</name>
     <message>
-        <source>Screencast</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Area</source>
         <translation type="unfinished"></translation>
     </message>
@@ -328,14 +324,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Player</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Screenshot</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Hide this Window</source>
         <translation type="unfinished"></translation>
     </message>
@@ -368,11 +356,31 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Log</source>
+        <source>Send Report</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Send Report</source>
+        <source>CTRL+SHIFT+F10</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CTRL+SHIFT+F11</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CTRL+SHIFT+F12</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Play last record</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CTRL+SHIFT+F8</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -407,6 +415,22 @@
     </message>
     <message>
         <source>Move menue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Previous frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Next frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mute</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
