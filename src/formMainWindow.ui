@@ -244,6 +244,9 @@
                 </item>
                 <item row="1" column="3">
                  <widget class="QToolButton" name="help_screencast_showclick">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="text">
                    <string notr="true">Help</string>
                   </property>
@@ -251,6 +254,9 @@
                 </item>
                 <item row="1" column="0">
                  <widget class="QCheckBox" name="checkBoxShowClick">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="text">
                    <string>Showclick</string>
                   </property>
@@ -258,6 +264,9 @@
                 </item>
                 <item row="1" column="1">
                  <widget class="QToolButton" name="toolButtonShowKlick">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="text">
                    <string notr="true">...</string>
                   </property>
