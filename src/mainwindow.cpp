@@ -3,7 +3,7 @@
 #include "ui_formMainWindow.h"
 #include "QvkScreenshot.h"
 #include "QvkInformation.h"
-#include "QvkShowClickDialog.h"
+//#include "QvkShowClickDialog.h"
 #include "QvkAnimateControl.h"
 #include "QvkGlobalShortcut.h"
 #include "QvkLogController.h"
@@ -252,7 +252,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->comboBoxAreaSize->addItems( resolutionStringList );
     connect( ui->comboBoxAreaSize, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_areaSetResolution( QString ) ) );
 
-
+    connect( ui->spinBoxCountDown, SIGNAL( valueChanged( int ) ), ui->labelCountDown, SLOT( setNum( int ) ) );
+/*
     // Begin showclick
     QColor color   = vkSettings.getShowClickColor();
     int radiant    = vkSettings.getShowClickRadiant();
@@ -276,7 +277,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ShowClickDialog, SIGNAL( newOpacity( double ) ), animateControl, SLOT( setOpacity( double ) ) );
     connect( ShowClickDialog, SIGNAL( newRadiant( bool ) ), animateControl, SLOT( setRadiant( bool ) ) );
     // End showclick
-
+*/
     // Tab 2 Audio and Videocodec
     connect( ui->checkBoxAudioOnOff, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_audioIconOnOff( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( clicked( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );

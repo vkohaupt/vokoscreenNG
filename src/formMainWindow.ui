@@ -108,6 +108,19 @@
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_7">
               <item>
+               <spacer name="verticalSpacer_10">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
                <layout class="QGridLayout" name="gridLayout_3">
                 <item row="2" column="2">
                  <widget class="QComboBox" name="comboBoxAreaSize">
@@ -194,19 +207,6 @@
                </layout>
               </item>
               <item>
-               <spacer name="verticalSpacer_10">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>40</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
                <spacer name="verticalSpacer_13">
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>
@@ -220,103 +220,100 @@
                </spacer>
               </item>
               <item>
-               <widget class="Line" name="line_7">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+               <layout class="QGridLayout" name="gridLayout_9" rowstretch="0,0" columnstretch="0,1,0,0">
+                <property name="verticalSpacing">
+                 <number>0</number>
                 </property>
-               </widget>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_8">
-                <item>
+                <item row="0" column="0">
                  <widget class="QCheckBox" name="checkBoxMagnifier">
                   <property name="text">
                    <string>Magnification</string>
                   </property>
                  </widget>
                 </item>
-                <item>
-                 <widget class="QSlider" name="sliderMagnification">
-                  <property name="minimum">
-                   <number>1</number>
-                  </property>
-                  <property name="maximum">
-                   <number>3</number>
-                  </property>
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="tickPosition">
-                   <enum>QSlider::TicksBelow</enum>
-                  </property>
-                  <property name="tickInterval">
-                   <number>1</number>
-                  </property>
-                 </widget>
+                <item row="1" column="1">
+                 <layout class="QHBoxLayout" name="horizontalLayout_32">
+                  <item>
+                   <widget class="QLabel" name="label_20">
+                    <property name="text">
+                     <string>200x200</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_22">
+                    <property name="text">
+                     <string>400x200</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="label_23">
+                    <property name="text">
+                     <string>600x200</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </item>
-                <item>
-                 <spacer name="horizontalSpacer_15">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
+                <item row="0" column="3">
                  <widget class="QToolButton" name="help_screencast_magnifier">
                   <property name="text">
                    <string notr="true">Help</string>
                   </property>
                  </widget>
                 </item>
-               </layout>
-              </item>
-              <item>
-               <widget class="Line" name="line_10">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <layout class="QGridLayout" name="gridLayout_7">
-                <item row="0" column="5">
-                 <widget class="QToolButton" name="help_screencast_showclick">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="text">
-                   <string notr="true">Help</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0">
-                 <widget class="QCheckBox" name="checkBoxShowClick">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="text">
-                   <string>Showclick</string>
-                  </property>
-                 </widget>
+                <item row="0" column="1">
+                 <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="0,1,0">
+                  <item>
+                   <widget class="QFrame" name="frame_3">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QSlider" name="sliderMagnification">
+                    <property name="minimum">
+                     <number>1</number>
+                    </property>
+                    <property name="maximum">
+                     <number>3</number>
+                    </property>
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="tickPosition">
+                     <enum>QSlider::TicksBelow</enum>
+                    </property>
+                    <property name="tickInterval">
+                     <number>1</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="frame">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </item>
                 <item row="0" column="2">
-                 <widget class="QToolButton" name="toolButtonShowKlick">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="text">
-                   <string notr="true">...</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="3">
-                 <spacer name="horizontalSpacer_17">
+                 <spacer name="horizontalSpacer_16">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
@@ -344,7 +341,7 @@
                </spacer>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_30">
+               <layout class="QHBoxLayout" name="horizontalLayout_30" stretch="0,7,1,0,0">
                 <item>
                  <widget class="QLabel" name="labelCountdown">
                   <property name="text">
@@ -356,10 +353,42 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QSpinBox" name="spinBoxCountDown"/>
+                 <widget class="QSlider" name="spinBoxCountDown">
+                  <property name="toolTip">
+                   <string>11111111</string>
+                  </property>
+                  <property name="maximum">
+                   <number>30</number>
+                  </property>
+                  <property name="pageStep">
+                   <number>4</number>
+                  </property>
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="tickPosition">
+                   <enum>QSlider::TicksBelow</enum>
+                  </property>
+                 </widget>
                 </item>
                 <item>
-                 <spacer name="horizontalSpacer_16">
+                 <widget class="QLabel" name="labelCountDown">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <property name="text">
+                   <string notr="true">0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_15">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
@@ -2727,9 +2756,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>toolButtonAreaReset</tabstop>
   <tabstop>comboBoxAreaSize</tabstop>
   <tabstop>help_screencast_area</tabstop>
-  <tabstop>checkBoxShowClick</tabstop>
-  <tabstop>help_screencast_showclick</tabstop>
-  <tabstop>spinBoxCountDown</tabstop>
   <tabstop>help_screencast_countdown</tabstop>
   <tabstop>pushButtonStart</tabstop>
   <tabstop>pushButtonStop</tabstop>
