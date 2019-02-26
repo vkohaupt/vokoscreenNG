@@ -1022,9 +1022,9 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videomimetype:video/x-matroska"
                                     << "audiomimetype:audio/x-matroska"
                                     << "videocodec:x264enc:x264"
-                                    //<< "videocodec:x265enc:x265"
+                                    //<< "videocodec:x265enc:x265" // Not work under Leap 15
                                     << "videocodec:vaapih264enc:H.264 (Intel GPU)"
-                                    << "videocodec:av1enc:av1"
+                                    //<< "videocodec:av1enc:av1" // Not work under Tumbelweed
                                     << "videocodec:vp8enc:vp8"
                                     << "audiocodec:vorbisenc:vorbis"
                                     << "audiocodec:flacenc:flac"
