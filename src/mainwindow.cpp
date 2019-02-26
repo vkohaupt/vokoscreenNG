@@ -391,7 +391,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->checkBoxAudioOnOff->clicked( false ); // sende Signal clicked mit value=false
     //ui->checkBoxAudioOnOff->click();
 
-    vkSettings.readAll( ui );
+    vkSettings.readAll( ui, this );
 
 
 }
@@ -496,7 +496,7 @@ void QvkMainWindow::slot_sendReport()
 void QvkMainWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
-    vkSettings.saveAll( ui );
+    vkSettings.saveAll( ui, this );
     emit signal_close();
     emit signal_close( false );
 }

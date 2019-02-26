@@ -7,6 +7,7 @@
 #include <QSettings>
 #include <QDebug>
 #include <QColor>
+#include <QMainWindow>
 
 class QvkSettings: public QObject
 { 
@@ -14,8 +15,8 @@ class QvkSettings: public QObject
 public:
     QvkSettings();
     virtual ~QvkSettings();
-    void saveAll(Ui_formMainWindow *ui_mainwindow);
-    void readAll(Ui_formMainWindow *ui_mainwindow);
+    void saveAll(Ui_formMainWindow *ui_mainwindow, QMainWindow *parent );
+    void readAll(Ui_formMainWindow *ui_mainwindow, QMainWindow *parent);
 
     QString getVersion();
     QString getProgName();

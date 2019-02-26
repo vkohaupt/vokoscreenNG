@@ -42,7 +42,7 @@ QvkSettings::QvkSettings()
 
 QvkSettings::~QvkSettings(){}
 
-void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow )
+void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent )
 {
     // Einstellungen aus .conf einlesen
     QSettings settings( getProgName(), getProgName() );
@@ -51,6 +51,8 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow )
     settings.beginGroup("vokoscreen");
       settings.setValue("Version", getVersion());
     settings.endGroup();
+
+    parent->restoreGeometry( settings.value( "geometryMainWindow").toByteArray() );
 
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralWidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadiobuttons.count(); i++ )
@@ -125,10 +127,12 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow )
 }
 
 
-void QvkSettings::saveAll( Ui_formMainWindow *ui_mainwindow )
+void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent)
 {
     QSettings settings( getProgName(), getProgName() );
     settings.clear();
+
+    settings.setValue( "geometryMainWindow", parent->saveGeometry() );
 
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralWidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadiobuttons.count(); i++ )
