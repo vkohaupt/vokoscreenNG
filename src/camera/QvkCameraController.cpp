@@ -19,31 +19,13 @@ QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraW
     ui_vokoscreen->dialRotateCamera->setMaximum ( 360 );
     ui_vokoscreen->dialRotateCamera->setWrapping( true );
 
-    ui_vokoscreen->checkBoxCameraOnOff->setEnabled( false );
-    ui_vokoscreen->comboBoxCamera->setEnabled( false );
-    ui_vokoscreen->checkBoxCameraGray->setEnabled( false );
-    ui_vokoscreen->checkBoxCameraInvert->setEnabled( false );
-    ui_vokoscreen->checkBoxCameraMirror->setEnabled( false );
-    ui_vokoscreen->radioButtonCameraLeft->setEnabled( false );
-    ui_vokoscreen->radioButtonCameraTop->setEnabled( false );
-    ui_vokoscreen->radioButtonCameraRight->setEnabled( false );
-    ui_vokoscreen->radioButtonCameraBottom->setEnabled( false );
-    ui_vokoscreen->dialRotateCamera->setEnabled( false );
-
     connect( cameraWatcher, SIGNAL( signal_addedCamera( QString, QString ) ), this, SLOT( slot_addedCamera( QString, QString ) ) );
     connect( cameraWatcher, SIGNAL( signal_removedCamera( QString) ),         this, SLOT( slot_removedCamera( QString ) ) );
 #ifdef Q_OS_LINUX
     cameraWatcher->cameraWatcherInit();
 #endif
     connect( ui_vokoscreen->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_vokoscreen->comboBoxCamera,          SLOT( setDisabled( bool ) ) );
-    connect( ui_vokoscreen->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_vokoscreen->checkBoxCameraMirror,    SLOT( setEnabled( bool ) ) );
-    connect( ui_vokoscreen->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_vokoscreen->checkBoxCameraInvert,    SLOT( setEnabled( bool ) ) );
-    connect( ui_vokoscreen->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_vokoscreen->checkBoxCameraGray,      SLOT( setEnabled( bool ) ) );
-    connect( ui_vokoscreen->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_vokoscreen->radioButtonCameraTop,    SLOT( setEnabled( bool ) ) );
-    connect( ui_vokoscreen->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_vokoscreen->radioButtonCameraRight,  SLOT( setEnabled( bool ) ) );
-    connect( ui_vokoscreen->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_vokoscreen->radioButtonCameraBottom, SLOT( setEnabled( bool ) ) );
-    connect( ui_vokoscreen->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_vokoscreen->radioButtonCameraLeft,   SLOT( setEnabled( bool ) ) );
-    connect( ui_vokoscreen->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_vokoscreen->dialRotateCamera,        SLOT( setEnabled( bool ) ) );
+
 #ifdef Q_OS_WIN
     connect( ui_vokoscreen->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), cameraWatcher, SLOT( slot_startStopCameraTimer( bool ) ) );
 #endif
@@ -109,6 +91,18 @@ void QvkCameraController::slot_addedCamera( QString description, QString device 
     ui_vokoscreen->checkBoxCameraOnOff->setEnabled( true );
     ui_vokoscreen->comboBoxCamera->setEnabled( true );
     ui_vokoscreen->comboBoxCamera->addItem( description, device.toLatin1() );
+
+    ui_vokoscreen->checkBoxCameraOnOff->setEnabled( true );
+    ui_vokoscreen->comboBoxCamera->setEnabled( true );
+    ui_vokoscreen->checkBoxCameraGray->setEnabled( true );
+    ui_vokoscreen->checkBoxCameraInvert->setEnabled( true );
+    ui_vokoscreen->checkBoxCameraMirror->setEnabled( true );
+
+    ui_vokoscreen->radioButtonCameraLeft->setEnabled( true );
+    ui_vokoscreen->radioButtonCameraTop->setEnabled( true );
+    ui_vokoscreen->radioButtonCameraRight->setEnabled( true );
+    ui_vokoscreen->radioButtonCameraBottom->setEnabled( true );
+    ui_vokoscreen->dialRotateCamera->setEnabled( true );
 }
 
 

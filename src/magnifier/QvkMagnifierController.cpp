@@ -4,6 +4,7 @@ QvkMagnifierController::QvkMagnifierController(Ui_formMainWindow *ui_mainwindow 
 {
     connect( ui_mainwindow->checkBoxMagnifier,   SIGNAL( clicked( bool ) ),     vkMagnifier, SLOT( slot_magnifierShow( bool ) ) );
     connect( ui_mainwindow->sliderMagnification, SIGNAL( valueChanged( int ) ), this,        SLOT( slot_valueChanged( int ) ) );
+    ui_mainwindow->sliderMagnification->setValue( 2 );
 }
 
 
