@@ -39,7 +39,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <property name="iconSize">
        <size>
@@ -130,14 +130,14 @@
                  </widget>
                 </item>
                 <item row="1" column="0">
-                 <widget class="QRadioButton" name="radioButtonWindow">
+                 <widget class="QRadioButton" name="radioButtonScreencastWindow">
                   <property name="text">
                    <string notr="true">Wi&amp;ndow</string>
                   </property>
                  </widget>
                 </item>
                 <item row="0" column="0">
-                 <widget class="QRadioButton" name="radioButtonFullscreen">
+                 <widget class="QRadioButton" name="radioButtonScreencastFullscreen">
                   <property name="text">
                    <string notr="true">Fulls&amp;creen</string>
                   </property>
@@ -158,14 +158,14 @@
                  </widget>
                 </item>
                 <item row="2" column="0">
-                 <widget class="QRadioButton" name="radioButtonArea">
+                 <widget class="QRadioButton" name="radioButtonScreencastArea">
                   <property name="text">
                    <string>Area</string>
                   </property>
                  </widget>
                 </item>
                 <item row="2" column="1">
-                 <widget class="QToolButton" name="toolButtonAreaReset">
+                 <widget class="QToolButton" name="toolButtonScreencastAreaReset">
                   <property name="toolTip">
                    <string>Reset</string>
                   </property>
@@ -175,7 +175,7 @@
                  </widget>
                 </item>
                 <item row="0" column="2">
-                 <widget class="QComboBox" name="comboBoxScreen">
+                 <widget class="QComboBox" name="comboBoxScreencastScreen">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -643,7 +643,7 @@
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_5">
                 <item>
-                 <widget class="QToolButton" name="toolButtonAudioHelp">
+                 <widget class="QToolButton" name="help_screencast_audio">
                   <property name="toolTip">
                    <string notr="true">Help</string>
                   </property>
@@ -2183,7 +2183,7 @@
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_40">
                 <item>
-                 <widget class="QComboBox" name="comboBoxScreenShotFormat"/>
+                 <widget class="QComboBox" name="comboBoxScreenshotFormat"/>
                 </item>
                 <item>
                  <widget class="QToolButton" name="toolButtonHelpScreenshotSuffix">
@@ -2410,7 +2410,7 @@
             <item>
              <layout class="QGridLayout" name="gridLayout_4">
               <item row="0" column="0">
-               <widget class="QCheckBox" name="checkBoxCamera">
+               <widget class="QCheckBox" name="checkBoxCameraOnOff">
                 <property name="toolTip">
                  <string>CTRL+SHIFT+F8</string>
                 </property>
@@ -2456,21 +2456,21 @@
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_21">
                 <item>
-                 <widget class="QCheckBox" name="checkBoxMirror">
+                 <widget class="QCheckBox" name="checkBoxCameraMirror">
                   <property name="text">
                    <string>Mirrored</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QCheckBox" name="checkBoxInvert">
+                 <widget class="QCheckBox" name="checkBoxCameraInvert">
                   <property name="text">
                    <string>Invert</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QCheckBox" name="checkBoxGray">
+                 <widget class="QCheckBox" name="checkBoxCameraGray">
                   <property name="text">
                    <string>Gray</string>
                   </property>
@@ -2508,7 +2508,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QRadioButton" name="radioButtonTopMiddle">
+                   <widget class="QRadioButton" name="radioButtonCameraTop">
                     <property name="text">
                      <string notr="true"/>
                     </property>
@@ -2548,14 +2548,14 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QRadioButton" name="radioButtonLeftMiddle">
+                   <widget class="QRadioButton" name="radioButtonCameraLeft">
                     <property name="text">
                      <string notr="true"/>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QDial" name="dialRotate">
+                   <widget class="QDial" name="dialRotateCamera">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                       <horstretch>0</horstretch>
@@ -2580,7 +2580,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QRadioButton" name="radioButtonRightMiddle">
+                   <widget class="QRadioButton" name="radioButtonCameraRight">
                     <property name="text">
                      <string notr="true"/>
                     </property>
@@ -2620,7 +2620,7 @@
                    </spacer>
                   </item>
                   <item>
-                   <widget class="QRadioButton" name="radioButtonBottomMiddle">
+                   <widget class="QRadioButton" name="radioButtonCameraBottom">
                     <property name="text">
                      <string notr="true"/>
                     </property>
@@ -2747,13 +2747,13 @@ p, li { white-space: pre-wrap; }
  <tabstops>
   <tabstop>tabWidgetSideBar</tabstop>
   <tabstop>tabWidgetScreencast</tabstop>
-  <tabstop>radioButtonFullscreen</tabstop>
-  <tabstop>comboBoxScreen</tabstop>
+  <tabstop>radioButtonScreencastFullscreen</tabstop>
+  <tabstop>comboBoxScreencastScreen</tabstop>
   <tabstop>help_screencast_fullscreen</tabstop>
-  <tabstop>radioButtonWindow</tabstop>
+  <tabstop>radioButtonScreencastWindow</tabstop>
   <tabstop>help_screencast_window</tabstop>
-  <tabstop>radioButtonArea</tabstop>
-  <tabstop>toolButtonAreaReset</tabstop>
+  <tabstop>radioButtonScreencastArea</tabstop>
+  <tabstop>toolButtonScreencastAreaReset</tabstop>
   <tabstop>comboBoxAreaSize</tabstop>
   <tabstop>help_screencast_area</tabstop>
   <tabstop>help_screencast_countdown</tabstop>
@@ -2765,7 +2765,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>pushButtonScreencastOpenfolder</tabstop>
   <tabstop>help_screencast_execute</tabstop>
   <tabstop>checkBoxAudioOnOff</tabstop>
-  <tabstop>toolButtonAudioHelp</tabstop>
+  <tabstop>help_screencast_audio</tabstop>
   <tabstop>scrollAreaAudioDevice</tabstop>
   <tabstop>spinBoxFrames</tabstop>
   <tabstop>toolButtonFramesHelp</tabstop>
@@ -2815,7 +2815,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>toolButtonHelpScreenshotWindow</tabstop>
   <tabstop>radioButtonScreenshotArea</tabstop>
   <tabstop>toolButtonHelpScreenshotArea</tabstop>
-  <tabstop>comboBoxScreenShotFormat</tabstop>
+  <tabstop>comboBoxScreenshotFormat</tabstop>
   <tabstop>toolButtonHelpScreenshotSuffix</tabstop>
   <tabstop>spinBoxScreenshotCountDown</tabstop>
   <tabstop>toolButtonHelpScreenshotCountdown</tabstop>
@@ -2829,17 +2829,17 @@ p, li { white-space: pre-wrap; }
   <tabstop>pushButtonScreenShotOpenFolder</tabstop>
   <tabstop>toolButtonHelpScreenshotExecute</tabstop>
   <tabstop>tabWidgetCamera</tabstop>
-  <tabstop>checkBoxCamera</tabstop>
+  <tabstop>checkBoxCameraOnOff</tabstop>
   <tabstop>comboBoxCamera</tabstop>
   <tabstop>toolButtonHelpCamera</tabstop>
-  <tabstop>checkBoxMirror</tabstop>
-  <tabstop>checkBoxInvert</tabstop>
-  <tabstop>checkBoxGray</tabstop>
-  <tabstop>radioButtonTopMiddle</tabstop>
-  <tabstop>radioButtonLeftMiddle</tabstop>
-  <tabstop>dialRotate</tabstop>
-  <tabstop>radioButtonRightMiddle</tabstop>
-  <tabstop>radioButtonBottomMiddle</tabstop>
+  <tabstop>checkBoxCameraMirror</tabstop>
+  <tabstop>checkBoxCameraInvert</tabstop>
+  <tabstop>checkBoxCameraGray</tabstop>
+  <tabstop>radioButtonCameraTop</tabstop>
+  <tabstop>radioButtonCameraLeft</tabstop>
+  <tabstop>dialRotateCamera</tabstop>
+  <tabstop>radioButtonCameraRight</tabstop>
+  <tabstop>radioButtonCameraBottom</tabstop>
   <tabstop>tabWidgetLog</tabstop>
   <tabstop>textBrowserLog</tabstop>
   <tabstop>pushButtonSendReport</tabstop>

@@ -1,10 +1,10 @@
-#include "QvkSettings.h" 
+#include "QvkSettings.h"
 #include "ui_formMainWindow.h"
 
 #include <QFile>
 #include <QApplication>
 #include <QColor>
-#include <QRadioButton>
+//#include <QRadioButton>
 
 QvkSettings::QvkSettings()
 {
@@ -25,14 +25,6 @@ QvkSettings::QvkSettings()
     // Einstellungen aus .conf einlesen
     QSettings settings( getProgName(), getProgName() );
 
-    settings.beginGroup( "ShowClick" );
-        showClickTime     = settings.value( "Showtime", 5 ).toDouble();
-        showClickCircle   = settings.value( "Circle", 70 ).toInt();
-        showClickRadiant  = settings.value( "Radiant", false ).toBool();
-        showClickColor    = settings.value( "Color", QColor( Qt::red ) ).value<QColor>();
-        showClickOpacity  = settings.value( "Opacity", 0.5 ).toDouble();
-    settings.endGroup();
-
     // Dient nur zum anlegen des Profils damit das log erstellt werden kann
     settings.beginGroup("vokoscreen");
       settings.setValue("Version", getVersion());
@@ -47,7 +39,6 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     // Einstellungen aus .conf einlesen
     QSettings settings( getProgName(), getProgName() );
 
-    // create a profil
     settings.beginGroup("vokoscreen");
       settings.setValue("Version", getVersion());
     settings.endGroup();
@@ -131,6 +122,10 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
 {
     QSettings settings( getProgName(), getProgName() );
     settings.clear();
+
+    settings.beginGroup("vokoscreen");
+      settings.setValue("Version", getVersion());
+    settings.endGroup();
 
     settings.setValue( "geometryMainWindow", parent->saveGeometry() );
 

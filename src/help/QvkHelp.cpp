@@ -1,4 +1,5 @@
 ﻿#include "QvkHelp.h"
+#include "QvkSettings.h"
 
 #include <QMessageBox>
 #include <QLabel>
@@ -21,6 +22,9 @@
 
 QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, Ui_player *ui_player) : uiHelp(new(Ui::help))
 {
+    // Einstellungen aus .conf einlesen
+    QvkSettings settings;
+
     connect( mainWindow, SIGNAL( destroyed( QObject*) ), this, SLOT( slot_cleanUp() ) );
 
     ui = ui_mainwindow;
@@ -28,7 +32,7 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, Ui_p
     uiHelp->setupUi( this );
 
     resize( 800, 600 );
-    setWindowTitle( "vokoscreen help" );
+    setWindowTitle( settings.getProgName() + " " + settings.getVersion() + " " + "help" );
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/screencast/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
@@ -63,7 +67,7 @@ QvkHelp::~QvkHelp()
 {
 }
 
-
+#include <QMetaObject>
 bool QvkHelp::eventFilter(QObject *object, QEvent *event)
 {
     if ( event->type() == QEvent::MouseButtonRelease )

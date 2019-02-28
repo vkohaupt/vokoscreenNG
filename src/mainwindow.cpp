@@ -156,10 +156,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonPause,       SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonContinue,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonPlay,        SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonFullscreen, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonWindow,     SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonArea,       SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxScreen,        SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastFullscreen, SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastWindow,     SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastArea,       SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxScreencastScreen,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameAudio,            SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelFrames,           SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->spinBoxFrames,         SLOT( setEnabled( bool ) ) );
@@ -181,10 +181,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonPause,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonPlay,        SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonFullscreen, SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonWindow,     SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonArea,       SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxScreen,        SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastFullscreen, SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastWindow,     SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastArea,       SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxScreencastScreen,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameAudio,            SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelFrames,           SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->spinBoxFrames,         SLOT( setDisabled( bool ) ) );
@@ -222,30 +222,30 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // Tab 1 Screen
 #ifdef Q_OS_WIN
-    ui->radioButtonWindow->hide();
+    ui->radioButtonScreencastWindow->hide();
     ui->toolButtonHelpWindow->hide();
 #endif
 
-    ui->radioButtonFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
-    ui->radioButtonWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
+    ui->radioButtonScreencastFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
+    ui->radioButtonScreencastWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
 
-    ui->toolButtonAreaReset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
+    ui->toolButtonScreencastAreaReset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
 
-    connect( ui->radioButtonFullscreen, SIGNAL( toggled( bool ) ), ui->toolButtonAreaReset, SLOT( setDisabled( bool ) ) );
-    connect( ui->radioButtonFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );//**
+    connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
+    connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );//**
 
-    connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
-    connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->toolButtonAreaReset, SLOT( setDisabled( bool ) ) );
-    connect( ui->radioButtonWindow, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );
+    connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreen, SLOT( setDisabled( bool ) ) );
+    connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
+    connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );
 
     connect( this,                  SIGNAL( signal_close()  ), vkRegionChoise,   SLOT( close() ) );
-    connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), vkRegionChoise,   SLOT( setVisible( bool ) ) );
-    connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreen, SLOT( setDisabled( bool ) ) );
-    connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->toolButtonAreaReset, SLOT( setEnabled( bool ) ) );
-    connect( ui->radioButtonArea,   SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setEnabled( bool ) ) );
+    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), vkRegionChoise,   SLOT( setVisible( bool ) ) );
+    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreen, SLOT( setDisabled( bool ) ) );
+    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setEnabled( bool ) ) );
+    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setEnabled( bool ) ) );
 
-    connect( ui->toolButtonAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
-    connect( ui->toolButtonAreaReset, SIGNAL( clicked( bool ) ), this,           SLOT( slot_areaReset() ) );
+    connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
+    connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), this,           SLOT( slot_areaReset() ) );
     connect( ui->pushButtonStart,     SIGNAL( clicked( bool ) ), this, SLOT( slot_disableAreaWidgets() ) );
     connect( ui->pushButtonStop ,     SIGNAL( clicked( bool ) ), this, SLOT( slot_enableAreaWidgets() ) );
 
@@ -343,7 +343,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // Close vokoscreen GUI
     connect( this,      SIGNAL( signal_close() ),       ui->pushButtonContinue, SLOT( click() ) );
     connect( this,      SIGNAL( signal_close() ),       ui->pushButtonStop,     SLOT( click() ) );
-    connect( this,      SIGNAL( signal_close( bool ) ), ui->checkBoxCamera,     SLOT( setChecked( bool ) ) );
+    connect( this,      SIGNAL( signal_close( bool ) ), ui->checkBoxCameraOnOff,SLOT( setChecked( bool ) ) );
     connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( close() ) );
 
     VK_Supported_Formats_And_Codecs();
@@ -385,9 +385,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // Checkable Widget sind in vokoscreen standardmäßig nicht gesetzt.
     // Diese werden hier beziehungsweise in den Settings gesetzt.
-    ui->radioButtonFullscreen->click();
+    ui->radioButtonScreencastFullscreen->click();
     ui->radioButtonScreenshotFullscreen->click();
-    ui->radioButtonBottomMiddle->clicked( true ); // funktioniert so nicht da Widget disabled sind
+    //ui->radioButtonCameraBottom->clicked( true ); // funktioniert so nicht da Widget disabled sind
     ui->checkBoxAudioOnOff->clicked( false ); // sende Signal clicked mit value=false
     //ui->checkBoxAudioOnOff->click();
 
@@ -572,9 +572,9 @@ void QvkMainWindow::slot_areaReset()
 
 void QvkMainWindow::slot_disableAreaWidgets()
 {
-   if ( ui->radioButtonArea->isChecked() == true  )
+   if ( ui->radioButtonScreencastArea->isChecked() == true  )
    {
-       ui->toolButtonAreaReset->setEnabled( false );
+       ui->toolButtonScreencastAreaReset->setEnabled( false );
        ui->comboBoxAreaSize->setEnabled( false );
    }
 }
@@ -582,9 +582,9 @@ void QvkMainWindow::slot_disableAreaWidgets()
 
 void QvkMainWindow::slot_enableAreaWidgets()
 {
-   if ( ui->radioButtonArea->isChecked() == true  )
+   if ( ui->radioButtonScreencastArea->isChecked() == true  )
    {
-       ui->toolButtonAreaReset->setEnabled( true );
+       ui->toolButtonScreencastAreaReset->setEnabled( true );
        ui->comboBoxAreaSize->setEnabled( true );
    }
 }
@@ -759,7 +759,7 @@ QString QvkMainWindow::VK_getXimagesrc()
         showPointer = "false";
     }
 
-    if( ( ui->radioButtonFullscreen->isChecked() == true ) and ( ui->comboBoxScreen->currentData().toInt() == -1  ) )
+    if( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and ( ui->comboBoxScreencastScreen->currentData().toInt() == -1  ) )
     {
         QStringList stringList;
         stringList << "ximagesrc"
@@ -770,7 +770,7 @@ QString QvkMainWindow::VK_getXimagesrc()
         return value;
     }
 
-    if ( ( ui->radioButtonFullscreen->isChecked() == true ) and ( ui->comboBoxScreen->currentIndex() <= ui->comboBoxScreen->count()-1 ) )
+    if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and ( ui->comboBoxScreencastScreen->currentIndex() <= ui->comboBoxScreencastScreen->count()-1 ) )
     {
           QStringList stringList;
           stringList << "ximagesrc"
@@ -785,7 +785,7 @@ QString QvkMainWindow::VK_getXimagesrc()
           return value;
     }
 
-    if( ui->radioButtonWindow->isChecked() == true )
+    if( ui->radioButtonScreencastWindow->isChecked() == true )
     {
         QString xid;
         if ( ui->checkBoxStartTime->isChecked() == true )
@@ -808,7 +808,7 @@ QString QvkMainWindow::VK_getXimagesrc()
         return value;
     }
 
-    if ( ui->radioButtonArea->isChecked() == true )
+    if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
         QStringList stringList;
         stringList << "ximagesrc"
@@ -839,7 +839,7 @@ QString QvkMainWindow::VK_getXimagesrc()
         showPointer = "false";
     }
 
-    if( ui->radioButtonFullscreen->isChecked() == true )
+    if( ui->radioButtonScreencastFullscreen->isChecked() == true )
     {
         QStringList stringList;
         stringList << "gdiscreencapsrc"
@@ -847,7 +847,7 @@ QString QvkMainWindow::VK_getXimagesrc()
         value = stringList.join( " " );
     }
 
-    if ( ui->radioButtonArea->isChecked() == true )
+    if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
         QStringList stringList;
         stringList << "gdiscreencapsrc"
@@ -1246,14 +1246,14 @@ void QvkMainWindow::slot_preStart()
     }
 
 
-    if ( ( ui->radioButtonFullscreen->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) )
+    if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) )
     {
         slot_Start();
         return;
     }
 
 
-    if ( ( ui->radioButtonFullscreen->isChecked() == true ) and  ( ui->spinBoxCountDown->value() > 0 ) )
+    if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and  ( ui->spinBoxCountDown->value() > 0 ) )
     {
         disconnect( vkCountdown, nullptr, nullptr, nullptr );
         connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
@@ -1265,21 +1265,21 @@ void QvkMainWindow::slot_preStart()
         return;
     }
 
-    if ( ui->radioButtonFullscreen->isChecked() == true )
+    if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
     {
         slot_Start();
         return;
     }
 
 
-    if ( ( ui->radioButtonWindow->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) )
+    if ( ( ui->radioButtonScreencastWindow->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) )
     {
         slot_Start();
         return;
     }
 
 
-    if ( ( ui->radioButtonWindow->isChecked() == true ) and ( ui->spinBoxCountDown->value() > 0 ) )
+    if ( ( ui->radioButtonScreencastWindow->isChecked() == true ) and ( ui->spinBoxCountDown->value() > 0 ) )
     {
         disconnect( vkWinInfo, nullptr, nullptr, nullptr );
         disconnect( vkCountdown, nullptr, nullptr, nullptr );
@@ -1293,7 +1293,7 @@ void QvkMainWindow::slot_preStart()
         return;
     }
 
-    if ( ui->radioButtonWindow->isChecked() == true )
+    if ( ui->radioButtonScreencastWindow->isChecked() == true )
     {
         disconnect( vkWinInfo, nullptr, nullptr, nullptr );
         connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ),    ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
@@ -1306,14 +1306,14 @@ void QvkMainWindow::slot_preStart()
     }
 
 
-    if ( ( ui->radioButtonArea->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) )
+    if ( ( ui->radioButtonScreencastArea->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) )
     {
         slot_Start();
         return;
     }
 
 
-    if ( ( ui->radioButtonArea->isChecked() == true ) and ( ui->spinBoxCountDown->value() > 0 ) )
+    if ( ( ui->radioButtonScreencastArea->isChecked() == true ) and ( ui->spinBoxCountDown->value() > 0 ) )
     {
         disconnect( vkCountdown, nullptr, nullptr, nullptr );
         connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
@@ -1327,7 +1327,7 @@ void QvkMainWindow::slot_preStart()
     }
 
 
-    if ( ui->radioButtonArea->isChecked() == true )
+    if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
        vkRegionChoise->recordMode( true );
        vkRegionChoise->repaint();
@@ -1509,7 +1509,7 @@ void QvkMainWindow::slot_preStop()
         ui->frameStopRecordingAfter->setEnabled( true );
     }
 
-    if ( ui->radioButtonArea->isChecked() == true )
+    if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
         vkRegionChoise->recordMode( false );
         vkRegionChoise->repaint();
@@ -1616,25 +1616,25 @@ void QvkMainWindow::slot_Folder()
 
 QString QvkMainWindow::get_x_From_Screen()
 {
-    QString value = ui->comboBoxScreen->currentData().toString().section( " ", 0, 0 ).split( "=" ).at( 1 );
+    QString value = ui->comboBoxScreencastScreen->currentData().toString().section( " ", 0, 0 ).split( "=" ).at( 1 );
     return value;
 }
 
 QString QvkMainWindow::get_y_From_Screen()
 {
-    QString value = ui->comboBoxScreen->currentData().toString().section( " ", 1, 1 ).split( "=" ).at( 1 );
+    QString value = ui->comboBoxScreencastScreen->currentData().toString().section( " ", 1, 1 ).split( "=" ).at( 1 );
     return value;
 }
 
 QString QvkMainWindow::get_width_From_Screen()
 {
-    QString value = ui->comboBoxScreen->currentData().toString().section( " ", 2, 2 ).split( "=" ).at( 1 );
+    QString value = ui->comboBoxScreencastScreen->currentData().toString().section( " ", 2, 2 ).split( "=" ).at( 1 );
     return value;
 }
 
 QString QvkMainWindow::get_height_From_Screen()
 {
-    QString value = ui->comboBoxScreen->currentData().toString().section( " ", 3, 3 ).split( "=" ).at( 1 );
+    QString value = ui->comboBoxScreencastScreen->currentData().toString().section( " ", 3, 3 ).split( "=" ).at( 1 );
     return value;
 }
 
@@ -1642,7 +1642,7 @@ QString QvkMainWindow::get_height_From_Screen()
 void QvkMainWindow::slot_screenCountChanged( int value )
 {
     Q_UNUSED(value);
-    ui->comboBoxScreen->clear();
+    ui->comboBoxScreencastScreen->clear();
     QList <QScreen *> screen = QGuiApplication::screens();
     qDebug().noquote() << "[vokoscreen] Detected count screens:" << screen.count();
     qDebug();
@@ -1669,9 +1669,9 @@ void QvkMainWindow::slot_screenCountChanged( int value )
                              "y=" + Y + " " +
                              "with=" + Width + " " +
                              "height=" + Height;
-        ui->comboBoxScreen->addItem( stringText, stringData );
-        qDebug().noquote() << "[vokoscreen] ItemText in Combobox:" << ui->comboBoxScreen->itemText(x);
-        qDebug().noquote() << "[vokoscreen] ItemData in Combobox:" << ui->comboBoxScreen->itemData(x).toString();
+        ui->comboBoxScreencastScreen->addItem( stringText, stringData );
+        qDebug().noquote() << "[vokoscreen] ItemText in Combobox:" << ui->comboBoxScreencastScreen->itemText(x);
+        qDebug().noquote() << "[vokoscreen] ItemData in Combobox:" << ui->comboBoxScreencastScreen->itemData(x).toString();
         qDebug();
     }
 }

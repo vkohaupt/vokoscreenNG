@@ -107,7 +107,7 @@ void QvkScreenshot::slot_Folder()
 
 void QvkScreenshot::slot_formats_Screenshot()
 {
-    ui->comboBoxScreenShotFormat->clear();
+    ui->comboBoxScreenshotFormat->clear();
     QImageWriter imageWriter;
     QList<QByteArray> list = imageWriter.supportedImageFormats();
 
@@ -115,13 +115,13 @@ void QvkScreenshot::slot_formats_Screenshot()
     {
         for ( int i = 0; i < list.count(); i++ )
         {
-            ui->comboBoxScreenShotFormat->addItem( list.at( i ) );
+            ui->comboBoxScreenshotFormat->addItem( list.at( i ) );
         }
     }
 
-    if ( ui->comboBoxScreenShotFormat->findText( "png" ) > -1 )
+    if ( ui->comboBoxScreenshotFormat->findText( "png" ) > -1 )
     {
-       ui->comboBoxScreenShotFormat->setCurrentIndex( ui->comboBoxScreenShotFormat->findText( "png" ) );
+       ui->comboBoxScreenshotFormat->setCurrentIndex( ui->comboBoxScreenshotFormat->findText( "png" ) );
     }
 
 }
@@ -234,7 +234,7 @@ void QvkScreenshot::slot_shot_Screenshot()
 
     bool ok = pixmap.save( ui->lineEditPicturePath->text() + \
                            "/" + \
-                           "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxScreenShotFormat->currentText() );
+                           "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxScreenshotFormat->currentText() );
     Q_UNUSED(ok);
 
     ui->labelScreenShotPicture->setAlignment( Qt::AlignCenter );

@@ -6,7 +6,7 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     ui = ui_mainwindow;
 
     QGlobalShortcut *shortcutWebcam = new QGlobalShortcut( this );
-    connect( shortcutWebcam, SIGNAL( activated() ), ui->checkBoxCamera, SLOT( click() ) );
+    connect( shortcutWebcam, SIGNAL( activated() ), ui->checkBoxCameraOnOff, SLOT( click() ) );
     shortcutWebcam->setShortcut( QKeySequence( "Ctrl+Shift+F8" ) );
 
     QGlobalShortcut *shortcutMagnifier = new QGlobalShortcut( this );
