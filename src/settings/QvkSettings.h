@@ -20,6 +20,7 @@ public:
 
     QString getVersion();
     QString getProgName();
+    QString getFileName();
 
 
 public slots:

@@ -188,6 +188,12 @@ QString QvkSettings::getProgName()
   return ProgName; 
 }
 
+QString QvkSettings::getFileName()
+{
+    QSettings settings( getProgName(), getProgName() );
+    return settings.fileName();
+}
+
 bool QvkSettings::getShowClickRadiant()
 {
   return showClickRadiant;

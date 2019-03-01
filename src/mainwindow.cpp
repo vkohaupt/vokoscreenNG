@@ -473,6 +473,12 @@ void QvkMainWindow::slot_videoCodecChanged( QString codec )
 
 void QvkMainWindow::slot_sendReport()
 {
+#ifdef Q_OS_WIN
+    QString eol = "\r\n";
+#endif
+#ifdef Q_OS_LINUX
+    QString eol = "\n";
+#endif
     QStringList stringList;
     stringList << "mailto:";
     stringList << "vkohaupt@freenet.de";
@@ -482,11 +488,34 @@ void QvkMainWindow::slot_sendReport()
     stringList << "&";
     stringList << "body=";
     stringList << "Your comment";
-    stringList << "\n";
-    stringList << "\n";
-    stringList << "\n";
-    stringList << "Report:\n";
+    stringList << eol;
+    stringList << eol;
+    stringList << eol;
+    stringList << "Report:";
+    stringList << eol;
     stringList << ui->textBrowserLog->toPlainText();
+    stringList << eol;
+    stringList << "--------------------------------";
+    stringList << eol;
+    stringList << "Settings:";
+    stringList << eol;
+    stringList << vkSettings.getFileName();
+    stringList << eol;
+
+    // read conf
+    QFile file( vkSettings.getFileName() );
+    if( !file.open( QIODevice::ReadOnly) )
+    {
+        QMessageBox::information( 0, "error", file.errorString() );
+    }
+    QTextStream in( &file );
+    while( !in.atEnd() )
+    {
+        QString line = in.readLine() + eol;
+        stringList << line;
+    }
+    file.close();
+
     QString string = stringList.join( "" );
     bool b = QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) );
     Q_UNUSED(b);
