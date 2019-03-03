@@ -82,8 +82,18 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     QPixmap map = pixmap.scaled( ui->labelMovePicture->size().height()-7, ui->labelMovePicture->size().height()-7 );
     ui->labelMovePicture->setPixmap( map );
     ui->labelMovePicture->hide();
+
+//    connect( mediaPlayer, SIGNAL(metaDataChanged(QString,QVariant)), this, SLOT( my_metaDataChanged(QString,QVariant)  ));
+//    if ( mediaPlayer->isMetaDataAvailable()  )
+//       qDebug() << mediaPlayer->availableMetaData();
+
 }
 
+
+void QvkPlayer::my_metaDataChanged(QString value, QVariant value1)
+{
+    qDebug() << value << "*******" <<  value1;
+}
 
 QvkPlayer::~QvkPlayer()
 {
@@ -432,14 +442,16 @@ void QvkPlayer::slot_toolButtonFullscreen()
 
 void QvkPlayer::mouseDoubleClickEvent( QMouseEvent *event )
 {
-    (void) event;
-    if ( parentMainWindow->isFullScreen() == true )
+    if ( event->button() == Qt::LeftButton )
     {
-        vk_showNormal();
-    }
-    else
-    {
-        vk_showFullscreen();
+        if ( parentMainWindow->isFullScreen() == true )
+        {
+            vk_showNormal();
+        }
+        else
+        {
+            vk_showFullscreen();
+        }
     }
 }
 
@@ -526,3 +538,4 @@ void QvkPlayer::resizeEvent( QResizeEvent *event )
                                   ui->framePlayer->height() - ui->widgetMenueBar->height() );
     }
 }
+

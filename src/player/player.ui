@@ -299,6 +299,13 @@
              </widget>
             </item>
             <item>
+             <widget class="QPushButton" name="pushButtonVideoInfo">
+              <property name="text">
+               <string>VideoInfo</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QToolButton" name="toolButtonFullscreen">
               <property name="toolTip">
                <string>Fullscreen</string>
