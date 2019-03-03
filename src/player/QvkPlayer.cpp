@@ -190,7 +190,6 @@ void QvkPlayer::setMediaFile( QString string )
 
 void QvkPlayer::slot_openFile()
 {
-
     if ( pathOpenFile == "" )
     {
         pathOpenFile = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
@@ -528,6 +527,22 @@ void QvkPlayer::mousePressEvent( QMouseEvent *event )
             stringList.sort();
             for ( int i = 0; i < stringList.count(); i++ )
             {
+                if ( stringList.at(i) == "Resolution" )
+                {
+                    QString width = QString::number( mediaPlayer->metaData( stringList.at(i) ).toSize().width() );
+                    QString heigth = QString::number( mediaPlayer->metaData( stringList.at(i) ).toSize().height() );
+                    metaString += stringList.at(i) + " :   " + width + "x" + heigth + "\n";
+                    continue;
+                }
+
+                if ( stringList.at(i) == "PixelAspectRatio" )
+                {
+                    QString width = QString::number( mediaPlayer->metaData( stringList.at(i) ).toSize().width() );
+                    QString heigth = QString::number( mediaPlayer->metaData( stringList.at(i) ).toSize().height() );
+                    metaString += stringList.at(i) + " :   " + width + "x" + heigth + "\n";
+                    continue;
+                }
+
                 metaString += stringList.at(i) + " :   "
                            + mediaPlayer->metaData( stringList.at(i) ).toString()
                            + "\n";
