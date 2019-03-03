@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>697</width>
+    <width>744</width>
     <height>400</height>
    </rect>
   </property>
@@ -295,13 +295,6 @@
               </property>
               <property name="text">
                <string notr="true">Open File</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButtonVideoInfo">
-              <property name="text">
-               <string>VideoInfo</string>
               </property>
              </widget>
             </item>

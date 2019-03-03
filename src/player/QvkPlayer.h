@@ -62,6 +62,7 @@ private:
     QString pathOpenFile;
     QString oldWindowTitel;
     bool playingFlag = false;
+    QLabel *metaLabel;
 
 
 protected:

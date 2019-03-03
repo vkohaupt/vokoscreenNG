@@ -7,6 +7,7 @@
 #include <QFileDialog>
 #include <QTimer>
 #include <QMediaPlayer>
+#include <QStringList>
 
 QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : ui(new Ui::player)
 {
@@ -83,10 +84,9 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     ui->labelMovePicture->setPixmap( map );
     ui->labelMovePicture->hide();
 
-//    connect( mediaPlayer, SIGNAL(metaDataChanged(QString,QVariant)), this, SLOT( my_metaDataChanged(QString,QVariant)  ));
-//    if ( mediaPlayer->isMetaDataAvailable()  )
-//       qDebug() << mediaPlayer->availableMetaData();
-
+    metaLabel = new QLabel( ui->labelPlayer );
+    metaLabel->setStyleSheet( "QLabel { background-color : white; color : blue; }" );
+    metaLabel->hide();
 }
 
 
@@ -510,6 +510,35 @@ void QvkPlayer::mousePressEvent( QMouseEvent *event )
             ui->labelMovePicture->setCursor( Qt::SizeAllCursor );
             pressed = true;
         }
+    }
+
+    if ( event->button() == Qt::RightButton )
+    {
+        if ( mediaPlayer->isMetaDataAvailable() == true )
+        {
+            QString metaString;
+            QStringList stringList = mediaPlayer->availableMetaData();
+            stringList.removeAt( stringList.indexOf( "AudioBitRate" ) );
+            stringList.removeAt( stringList.indexOf( "maximum-bitrate" ) );
+            stringList.removeAt( stringList.indexOf( "minimum-bitrate" ) );
+            stringList.sort();
+            for ( int i = 0; i < stringList.count(); i++ )
+            {
+                metaString += "     "
+                           + stringList.at(i) + " :   "
+                           + mediaPlayer->metaData( stringList.at(i) ).toString()
+                           + "     "
+                           + "\n";
+            }
+            metaLabel->setTextFormat( Qt::PlainText );
+            metaLabel->setText( metaString.toHtmlEscaped() );
+            metaLabel->show();
+        }
+    }
+
+    if ( event->button() == Qt::LeftButton )
+    {
+        metaLabel->hide();
     }
 }
 
