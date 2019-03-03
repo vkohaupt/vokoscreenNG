@@ -7,8 +7,6 @@
 #include <QFileDialog>
 #include <QTimer>
 #include <QMediaPlayer>
-#include <QStringList>
-#include <QMouseEvent>
 
 QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : ui(new Ui::player)
 {
