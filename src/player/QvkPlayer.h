@@ -63,7 +63,7 @@ private:
     QString oldWindowTitel;
     bool playingFlag = false;
     QLabel *metaLabel;
-
+    QFrame *metaFrame;
 
 protected:
     void mouseDoubleClickEvent( QMouseEvent *event );

@@ -8,6 +8,7 @@
 #include <QTimer>
 #include <QMediaPlayer>
 #include <QStringList>
+#include <QMouseEvent>
 
 QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : ui(new Ui::player)
 {
@@ -84,8 +85,11 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     ui->labelMovePicture->setPixmap( map );
     ui->labelMovePicture->hide();
 
-    metaLabel = new QLabel( ui->labelPlayer );
+    metaFrame = new QFrame( ui->labelPlayer );
+    metaLabel = new QLabel( metaFrame );
     metaLabel->setStyleSheet( "QLabel { background-color : white; color : blue; }" );
+    metaFrame->setStyleSheet( "QFrame { background-color : white; color : blue; }" );
+    metaFrame->hide();
     metaLabel->hide();
 }
 
@@ -345,6 +349,8 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
         ui->toolButtonFrameBackward->setEnabled( true );
         ui->toolButtonFrameForward->setEnabled( true );
         ui->pushButtonPlay->setFocus();
+        metaFrame->hide();
+        metaLabel->hide();
     }
 
     if ( state == QMediaPlayer::PlayingState )
@@ -524,20 +530,23 @@ void QvkPlayer::mousePressEvent( QMouseEvent *event )
             stringList.sort();
             for ( int i = 0; i < stringList.count(); i++ )
             {
-                metaString += "     "
-                           + stringList.at(i) + " :   "
+                metaString += stringList.at(i) + " :   "
                            + mediaPlayer->metaData( stringList.at(i) ).toString()
-                           + "     "
                            + "\n";
             }
-            metaLabel->setTextFormat( Qt::PlainText );
-            metaLabel->setText( metaString.toHtmlEscaped() );
+            metaLabel->setText( metaString );
+            metaLabel->move( 10, 10 );
+            metaFrame->hide();
+            metaLabel->hide();
             metaLabel->show();
+            metaFrame->show();
+            metaFrame->resize( QSize( metaLabel->size().width() + 20, metaLabel->size().height() ) );
         }
     }
 
     if ( event->button() == Qt::LeftButton )
     {
+        metaFrame->hide();
         metaLabel->hide();
     }
 }
