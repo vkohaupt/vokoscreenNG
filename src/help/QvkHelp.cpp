@@ -67,7 +67,7 @@ QvkHelp::~QvkHelp()
 {
 }
 
-#include <QMetaObject>
+
 bool QvkHelp::eventFilter(QObject *object, QEvent *event)
 {
     if ( event->type() == QEvent::MouseButtonRelease )

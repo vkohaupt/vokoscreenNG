@@ -617,7 +617,7 @@
                       <x>0</x>
                       <y>0</y>
                       <width>533</width>
-                      <height>221</height>
+                      <height>82</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1759,7 +1759,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>359</width>
-                   <height>438</height>
+                   <height>299</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">

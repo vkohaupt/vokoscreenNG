@@ -4,7 +4,6 @@
 #include <QFile>
 #include <QApplication>
 #include <QColor>
-//#include <QRadioButton>
 
 QvkSettings::QvkSettings()
 {
