@@ -883,11 +883,14 @@
                       <property name="maximum">
                        <number>50</number>
                       </property>
+                      <property name="pageStep">
+                       <number>1</number>
+                      </property>
                       <property name="value">
-                       <number>18</number>
+                       <number>17</number>
                       </property>
                       <property name="sliderPosition">
-                       <number>18</number>
+                       <number>17</number>
                       </property>
                       <property name="orientation">
                        <enum>Qt::Horizontal</enum>
@@ -900,7 +903,7 @@
                     <item>
                      <widget class="QLabel" name="labelSliderX264">
                       <property name="text">
-                       <string notr="true">18</string>
+                       <string notr="true">17</string>
                       </property>
                       <property name="alignment">
                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

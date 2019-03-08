@@ -1087,6 +1087,18 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "audiocodec:lamemp3enc:mp3"
                                     << "audiocodec:opusenc:opus"
                                   );
+
+    QStringList MOV_QStringList = ( QStringList()
+                                    << "muxer:qtmux:mov"
+                                    << "videomimetype:video/mp4"
+                                    << "audiomimetype:audio/mpeg"
+                                    << "videocodec:x264enc:x264"
+                                    << "videocodec:vp8enc:vp8"
+                                    << "videocodec:vp9enc:vp9"
+                                    << "audiocodec:lamemp3enc:mp3"
+                                    << "audiocodec:opusenc:opus"
+                                  );
+
 /*
     QStringList OGG_QStringList = ( QStringList()
                                     << "muxer:oggmux:ogg"
@@ -1104,6 +1116,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
     videoFormatsList.append( WEBM_QStringList.join( ","  ) );
     videoFormatsList.append( AVI_QStringList.join( "," ) );
     videoFormatsList.append( MP4_QStringList.join( ",") );
+    videoFormatsList.append( MOV_QStringList.join( ",") );
 //    videoFormatsList.append( OGG_QStringList.join( ",") );
 
     globalFormatsList << videoFormatsList;
@@ -1229,6 +1242,7 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << ui->comboBoxVideoCodec->currentData().toString();
         list << "qp-min=" + QString::number( ui->sliderX264->value() );
         list << "qp-max=" + QString::number( ui->sliderX264->value() );
+        list << "subme=6";
         list << "speed-preset=" + ui->comboBoxx264Preset->currentText();
         list << "threads=0";
         value = list.join( " " );
@@ -1254,10 +1268,17 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         value = "theoraenc drop-frames=false keyframe-freq=25"; // Das muß noch angepasst werden es humpelt :>)
     }
 */
+    // https://www.webmproject.org/docs/encoder-parameters/
     if ( encoder == "vp8enc" )
     {
         value = "vp8enc min_quantizer=20 max_quantizer=20 cpu-used=4 deadline=1000000 threads=4";
     }
+
+    if ( encoder == "vp9enc" )
+    {
+        value = "vp9enc";
+    }
+
 
     return value;
 }
