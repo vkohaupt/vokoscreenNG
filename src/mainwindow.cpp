@@ -58,6 +58,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() );
 
+    QvkMagnifierController *vkMagnifierController = new QvkMagnifierController(ui);
+    Q_UNUSED(vkMagnifierController);
+
     QvkHelp *vkHelp = new QvkHelp( this, ui, vkPlayer->ui );
     Q_UNUSED( vkHelp );
 
