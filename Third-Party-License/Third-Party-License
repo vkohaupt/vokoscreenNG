@@ -1,0 +1,19 @@
+3rd party licenses used in vokoscreen
+
+Qt:
+License --> LGPL
+File    --> LGPL
+URL     --> https://www.qt.io/
+
+
+GStreamer:
+License --> LGPL
+File    --> LGPL
+URL     --> https://gstreamer.freedesktop.org/
+
+
+Global QGlobalShortcut:
+Licence --> LGPL
+File    --> LGPL
+URL     --> https://github.com/Legotckoi/QGlobalShortcut
+
