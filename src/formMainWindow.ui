@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -333,7 +333,7 @@
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_30" stretch="0,7,1,0,0">
                 <item>
-                 <widget class="QLabel" name="labelCountdown">
+                 <widget class="QLabel" name="labelScreencastCountdownText">
                   <property name="text">
                    <string>Countdown</string>
                   </property>
@@ -343,7 +343,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QSlider" name="spinBoxCountDown">
+                 <widget class="QSlider" name="sliderScreencastCountDown">
                   <property name="toolTip">
                    <string>11111111</string>
                   </property>
@@ -362,7 +362,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="labelCountDown">
+                 <widget class="QLabel" name="labelScreencastCountDownValue">
                   <property name="frameShape">
                    <enum>QFrame::StyledPanel</enum>
                   </property>

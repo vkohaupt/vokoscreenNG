@@ -242,7 +242,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->comboBoxAreaSize->addItems( resolutionStringList );
     connect( ui->comboBoxAreaSize, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_areaSetResolution( QString ) ) );
 
-    connect( ui->spinBoxCountDown, SIGNAL( valueChanged( int ) ), ui->labelCountDown, SLOT( setNum( int ) ) );
+    connect( ui->sliderScreencastCountDown, SIGNAL( valueChanged( int ) ), ui->labelScreencastCountDownValue, SLOT( setNum( int ) ) );
 /*
     // Begin showclick
     QColor color   = vkSettings.getShowClickColor();
@@ -296,10 +296,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     timerStartTimer->setTimerType( Qt::PreciseTimer );
     connect( timerStartTimer,       SIGNAL( timeout() ),           this, SLOT( slot_startTime() ) );
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     ui->pushButtonStart, SLOT( setHidden( bool ) ) );
-    connect( ui->sliderHour,       SIGNAL( valueChanged( int ) ), this, SLOT( slot_setHour( int ) ) );
+    connect( ui->sliderHour,        SIGNAL( valueChanged( int ) ), this, SLOT( slot_setHour( int ) ) );
     connect( ui->sliderMinute,      SIGNAL( valueChanged( int ) ), this, SLOT( slot_setMinute( int ) ) );
-    connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     ui->labelCountdown, SLOT( setDisabled( bool ) ) );
-    connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     ui->spinBoxCountDown, SLOT( setDisabled( bool ) ) );
+    connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     ui->labelScreencastCountdownText,  SLOT( setDisabled( bool ) ) );
+    connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     ui->sliderScreencastCountDown,     SLOT( setDisabled( bool ) ) );
+    connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     ui->labelScreencastCountDownValue, SLOT( setDisabled( bool ) ) );
 
     connect( ui->checkBoxStopRecordingAfter, SIGNAL( toggled( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
     connect( timerStopRecordingAfter,        SIGNAL( timeout() ),       ui->pushButtonStop, SLOT( click() ) );
@@ -1303,7 +1304,7 @@ void QvkMainWindow::slot_preStart()
     }
 
 
-    if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and  ( ui->spinBoxCountDown->value() > 0 ) )
+    if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and  ( ui->sliderScreencastCountDown->value() > 0 ) )
     {
         disconnect( vkCountdown, nullptr, nullptr, nullptr );
         connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
@@ -1311,7 +1312,7 @@ void QvkMainWindow::slot_preStart()
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
-        vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
+        vkCountdown->startCountdown( ui->sliderScreencastCountDown->value() );
         return;
     }
 
@@ -1329,7 +1330,7 @@ void QvkMainWindow::slot_preStart()
     }
 
 
-    if ( ( ui->radioButtonScreencastWindow->isChecked() == true ) and ( ui->spinBoxCountDown->value() > 0 ) )
+    if ( ( ui->radioButtonScreencastWindow->isChecked() == true ) and ( ui->sliderScreencastCountDown->value() > 0 ) )
     {
         disconnect( vkWinInfo, nullptr, nullptr, nullptr );
         disconnect( vkCountdown, nullptr, nullptr, nullptr );
@@ -1363,7 +1364,7 @@ void QvkMainWindow::slot_preStart()
     }
 
 
-    if ( ( ui->radioButtonScreencastArea->isChecked() == true ) and ( ui->spinBoxCountDown->value() > 0 ) )
+    if ( ( ui->radioButtonScreencastArea->isChecked() == true ) and ( ui->sliderScreencastCountDown->value() > 0 ) )
     {
         disconnect( vkCountdown, nullptr, nullptr, nullptr );
         connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
@@ -1372,7 +1373,7 @@ void QvkMainWindow::slot_preStart()
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
         vkRegionChoise->recordMode( true );
-        vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
+        vkCountdown->startCountdown( ui->sliderScreencastCountDown->value() );
         return;
     }
 
@@ -1391,9 +1392,9 @@ void QvkMainWindow::slot_preStart()
 void QvkMainWindow::slot_startCounter( bool value )
 {
     Q_UNUSED(value);
-    if ( ui->spinBoxCountDown->value() > 0 )
+    if ( ui->sliderScreencastCountDown->value() > 0 )
     {
-        vkCountdown->startCountdown( ui->spinBoxCountDown->value() );
+        vkCountdown->startCountdown( ui->sliderScreencastCountDown->value() );
     }
 }
 
