@@ -35,14 +35,14 @@ void QvkLog::slot_addLogVokoscreen( QString value )
 void QvkLog::writeToLog( QString string )
 {
 #ifdef Q_OS_LINUX
-    QString endLine = "\n";
+    QString eol = "\n";
 #endif
 #ifdef Q_OS_WIN
-    QString endLine = "\r\n";
+    QString eol = "\r\n";
 #endif
     logFile.open( QIODevice::Append | QIODevice::Text | QIODevice::Unbuffered );
     logFile.write( string.toUtf8() );
-    logFile.write( endLine.toUtf8() );
+    logFile.write( eol.toUtf8() );
     logFile.close();
 }
 
