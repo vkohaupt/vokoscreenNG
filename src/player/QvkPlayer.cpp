@@ -89,6 +89,12 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     metaFrame->setStyleSheet( "QFrame { background-color : white; color : blue; }" );
     metaFrame->hide();
     metaLabel->hide();
+
+    QList<QWidget *> listWidget = ui->frameMenueBar->findChildren<QWidget *>();
+    for ( int i = 0; i < listWidget.count(); i++ )
+    {
+        listWidget.at(i)->setStyleSheet( "QToolTip { background-color: black; color: white }" );
+    }
 }
 
 
