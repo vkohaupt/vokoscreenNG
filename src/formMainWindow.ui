@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1648,6 +1648,33 @@
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <item>
+               <widget class="QCheckBox" name="checkBox">
+                <property name="text">
+                 <string>Reset all settings at next start</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QToolButton" name="toolButton">
+                <property name="text">
+                 <string>Help</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_17">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
               <item>
                <widget class="QCheckBox" name="checkBoxLookForUpdates">
                 <property name="text">
