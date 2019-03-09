@@ -184,13 +184,6 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
             settings.setValue( listLineEdit.at(i)->objectName(), listLineEdit.at(i)->text() );
         }
     }
-/*
-    QList<QTabWidget *> listTabWidget = ui_mainwindow->centralWidget->findChildren<QTabWidget *>();
-    for ( int i = 0; i < listTabWidget.count(); i++ )
-    {
-        settings.setValue( listTabWidget.at(i)->objectName(), listTabWidget.at(i)->currentIndex() );
-    }
-*/
 }
 
 
