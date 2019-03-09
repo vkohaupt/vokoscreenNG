@@ -1094,7 +1094,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "audiomimetype:audio/mpeg"
                                     << "videocodec:x264enc:x264"
                                     << "videocodec:vp8enc:vp8"
-                                    //<< "videocodec:vp9enc:vp9" not work under Leap 15
+                                    //<< "videocodec:vp9enc:vp9" //not work under Leap 15
                                     << "audiocodec:lamemp3enc:mp3"
                                     << "audiocodec:opusenc:opus"
                                   );
