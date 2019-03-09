@@ -55,6 +55,7 @@ private:
     QString get_time( qint64 value );
     int mouseInWidgetX;
     int mouseInWidgetY;
+    QPoint mousePosInWidget;
     bool pressed = false;
     void vk_showFullscreen();
     void vk_showNormal();

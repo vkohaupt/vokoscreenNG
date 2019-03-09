@@ -138,12 +138,19 @@ void QvkPlayer::mouseMoveEvent( QMouseEvent *event )
         return;
     }
 
+    if ( ( ui->widgetMenueBar->underMouse() == true ) and ( pressed == true ) )
+    {
+        ui->widgetMenueBar->move( event->pos().x() - mouseInWidgetX , event->pos().y() - mouseInWidgetY );
+        return;
+    }
+
     if ( parentMainWindow->isFullScreen() == true )
     {
         ui->labelPlayer->unsetCursor();
         ui->widgetMenueBar->show();
         timerHideMouse->start();
     }
+
 }
 
 
@@ -506,7 +513,7 @@ void QvkPlayer::mousePressEvent( QMouseEvent *event )
 {
     if ( parentMainWindow->isFullScreen() == true )
     {
-        if ( ui->widgetMenueBar->underMouse() )
+        if ( ui->widgetMenueBar->underMouse() and ( pressed == false  ) )
         {
             mouseInWidgetX = event->pos().x() - ui->widgetMenueBar->pos().x();
             mouseInWidgetY = event->pos().y() - ui->widgetMenueBar->pos().y();
