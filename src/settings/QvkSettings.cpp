@@ -114,14 +114,15 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             }
         }
     }
-/*
+
+    // All TabWidget start with value=0, also if in Qt-Creator is the value an other
     QList<QTabWidget *> listTabWidget = ui_mainwindow->centralWidget->findChildren<QTabWidget *>();
     for ( int i = 0; i < listTabWidget.count(); i++ )
     {
         int value = settings.value( listTabWidget.at(i)->objectName(), 0 ).toInt();
-        listTabWidget.at(i)->setCurrentIndex( value );
+        listTabWidget.at(i)->setCurrentIndex( 0 );
     }
-*/
+
 }
 
 
