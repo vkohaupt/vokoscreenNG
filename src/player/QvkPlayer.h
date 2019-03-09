@@ -45,8 +45,6 @@ private slots:
     void slot_toolButtonFrameForward();
     void slot_toolButtonFrameBackward();
 
-    void my_metaDataChanged(QString value, QVariant value1);
-
 
 private:
     QMainWindow *parentMainWindow;

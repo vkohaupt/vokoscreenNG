@@ -92,11 +92,6 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
 }
 
 
-void QvkPlayer::my_metaDataChanged(QString value, QVariant value1)
-{
-    qDebug() << value << "*******" <<  value1;
-}
-
 QvkPlayer::~QvkPlayer()
 {
     delete ui;
