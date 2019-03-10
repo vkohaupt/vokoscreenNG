@@ -11,6 +11,14 @@ QvkAudioPulse::QvkAudioPulse( QMainWindow *mainWindow, Ui_formMainWindow *ui_mai
 {
     Q_UNUSED(mainWindow);
     ui = ui_mainwindow;
+    connect( mainWindow, SIGNAL( destroyed( QObject* ) ), this, SLOT( slot_deletePlugFile() ) );
+}
+
+
+void QvkAudioPulse::slot_deletePlugFile()
+{
+    QFile file( QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + "/vokoscreenAudioPlugFile.txt" );
+    file.remove();
 }
 
 
