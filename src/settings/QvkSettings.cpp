@@ -42,8 +42,6 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
       settings.setValue("Version", getVersion());
     settings.endGroup();
 
-    parent->move( settings.value( "MainWindow_X" ).toInt(), settings.value( "MainWindow_Y" ).toInt() );
-
     // Clear all settings
     QList<QCheckBox *> listCheckBoxReset = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBoxReset.count(); i++ )
@@ -54,6 +52,8 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
            settings.clear();
        }
     }
+
+    parent->move( settings.value( "MainWindow_X" ).toInt(), settings.value( "MainWindow_Y" ).toInt() );
 
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralWidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadiobuttons.count(); i++ )
