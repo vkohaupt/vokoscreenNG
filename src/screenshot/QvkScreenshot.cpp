@@ -22,6 +22,8 @@ QvkScreenshot::QvkScreenshot( QvkMainWindow *value, Ui_formMainWindow *ui_mainwi
     parent = value;
     ui = ui_mainwindow;
 
+    regionChoise->setFrameColor( Qt::black );
+
     QDesktopWidget *desk = QApplication::desktop();
     connect( desk, SIGNAL( screenCountChanged(int) ), this, SLOT( slot_Screenshot_count_changed( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          this, SLOT( slot_Screenshot_count_changed( int ) ) );

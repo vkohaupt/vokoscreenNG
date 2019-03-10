@@ -53,6 +53,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 {
     ui->setupUi(this);
 
+    vkRegionChoise->setFrameColor( Qt::darkGreen );
+
     QvkLogController *vklogController = new QvkLogController( ui );
     Q_UNUSED(vklogController);
 

@@ -22,6 +22,7 @@ public:
   void recordMode(bool value);
   void areaSetResolution(int width, int height);
 
+  void setFrameColor( Qt::GlobalColor color );
 
 public slots:
   void slot_areaReset();
@@ -108,6 +109,9 @@ private:
   vk_platform platform;
 
   bool recordemode = false;
+
+  Qt::GlobalColor getFrameColor();
+  Qt::GlobalColor frameColor;
 
   //Ui_AreaSettingsDialog myUiDialog;
   //QDialog *areaSettingDialog;

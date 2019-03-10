@@ -23,6 +23,7 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
                                    radius(20),
                                    diameter(radius*2),
                                    penWidth(2),
+                                   frameColor(Qt::lightGray),
                                    penHalf(penWidth/2),
                                    frame_X(200-framePenHalf),
                                    frame_Y(200-framePenHalf),
@@ -671,7 +672,7 @@ void QvkRegionChoise::printSize( QPainter &painter )
 
 void QvkRegionChoise::drawFrame(QPainter &painter)
 {
-    QPen pen( Qt::darkGreen, framePenWidth );
+    QPen pen( getFrameColor(), framePenWidth );
     pen.setJoinStyle( Qt::MiterJoin );
     painter.setPen( pen );
     QBrush brush( Qt::transparent, Qt::SolidPattern);
@@ -680,6 +681,18 @@ void QvkRegionChoise::drawFrame(QPainter &painter)
                       frame_Y,
                       frame_Width,
                       frame_height);
+}
+
+
+void QvkRegionChoise::setFrameColor( Qt::GlobalColor color )
+{
+    frameColor = color;
+}
+
+
+Qt::GlobalColor QvkRegionChoise::getFrameColor()
+{
+    return frameColor;
 }
 
 
