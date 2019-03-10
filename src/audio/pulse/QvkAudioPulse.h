@@ -2,8 +2,6 @@
 #define QvkAudioPulse_H
 
 #include "ui_formMainWindow.h"
-
-#include "QvkWatcherPulse.h"
 #include "QvkPulseGstr.h"
 
 #include <QObject>
@@ -24,7 +22,6 @@ public slots:
 
 private:
     Ui_formMainWindow *ui;
-    QvkWatcherPulse *vkWatcherPulse;
     void clearVerticalLayoutAudioDevices();
     void getPulseDevices();
     QFileSystemWatcher *fileSystemWatcher;
