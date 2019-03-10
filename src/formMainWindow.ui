@@ -1649,9 +1649,9 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_7">
               <item>
-               <widget class="QCheckBox" name="checkBox">
+               <widget class="QCheckBox" name="checkBoxResetAtNextStart">
                 <property name="text">
-                 <string>Reset all settings at next start</string>
+                 <string>Delete all settings at the next start</string>
                 </property>
                </widget>
               </item>

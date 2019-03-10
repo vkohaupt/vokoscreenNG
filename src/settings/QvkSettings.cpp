@@ -44,6 +44,17 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
 
     parent->move( settings.value( "MainWindow_X" ).toInt(), settings.value( "MainWindow_Y" ).toInt() );
 
+    // Clear all settings
+    QList<QCheckBox *> listCheckBoxReset = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBoxReset.count(); i++ )
+    {
+       if ( ( listCheckBoxReset.at(i)->objectName() == "checkBoxResetAtNextStart" ) and
+            ( settings.value( listCheckBoxReset.at(i)->objectName(), true ).toBool() == true ) )
+       {
+           settings.clear();
+       }
+    }
+
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralWidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadiobuttons.count(); i++ )
     {
@@ -58,7 +69,8 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     for ( int i = 0; i < listCheckBox.count(); i++ )
     {
         // We have no settings-file(first start after install) but this object we want set as Standard.
-        if ( ( listCheckBox.at(i)->objectName() == "checkBoxShowInSystray" ) and ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) )
+        if ( ( listCheckBox.at(i)->objectName() == "checkBoxShowInSystray" ) and
+             ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) )
         {
             listCheckBox.at(i)->click();
             continue;
