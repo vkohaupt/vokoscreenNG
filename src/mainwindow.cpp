@@ -1054,10 +1054,11 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videomimetype:video/x-matroska"
                                     << "audiomimetype:audio/x-matroska"
                                     << "videocodec:x264enc:x264"
-                                    //<< "videocodec:x265enc:x265" // Not work under Leap 15
                                     << "videocodec:vaapih264enc:H.264 (Intel GPU)"
-                                    //<< "videocodec:av1enc:av1" // Not work under Tumbelweed
-                                    << "videocodec:vp8enc:vp8"
+                                    << "videocodec:vaapimpeg2enc:MPEG-2 (Intel GPU)"
+                                    //<< "videocodec:x265enc:x265" // Not work under Leap 15
+                                    //<< "videocodec:av1enc:AV1" // Not work under Tumbelweed
+                                    << "videocodec:vp8enc:VP8"
                                     << "audiocodec:vorbisenc:vorbis"
                                     << "audiocodec:flacenc:flac"
                                     << "audiocodec:opusenc:opus"
@@ -1068,7 +1069,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                      << "muxer:webmmux:webm"
                                      << "videomimetype:video/webm"
                                      << "audiomimetype:audio/webm"
-                                     << "videocodec:vp8enc:vp8"
+                                     << "videocodec:vp8enc:VP8"
                                      << "audiocodec:vorbisenc:vorbis"
                                      << "audiocodec:opusenc:opus"
                                    );
@@ -1078,7 +1079,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                      << "videomimetype:video/x-msvideo"
                                      << "audiomimetype:audio/x-msvideo"
                                      << "videocodec:x264enc:x264"
-                                     << "videocodec:vp8enc:vp8"
+                                     << "videocodec:vp8enc:VP8"
                                      << "audiocodec:lamemp3enc:mp3"
                                    );
 
@@ -1096,8 +1097,8 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videomimetype:video/mp4"
                                     << "audiomimetype:audio/mpeg"
                                     << "videocodec:x264enc:x264"
-                                    << "videocodec:vp8enc:vp8"
-                                    //<< "videocodec:vp9enc:vp9" //not work under Leap 15
+                                    << "videocodec:vp8enc:VP8"
+                                    //<< "videocodec:vp9enc:VP9" //not work under Leap 15
                                     << "audiocodec:lamemp3enc:mp3"
                                     << "audiocodec:opusenc:opus"
                                   );
@@ -1259,6 +1260,11 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
     if ( encoder == "vaapih264enc" )
     {
         value = "vaapih264enc";
+    }
+
+    if ( encoder == "vaapimpeg2enc" )
+    {
+        value = "vaapimpeg2enc";
     }
 
     if ( encoder == "av1enc" )
