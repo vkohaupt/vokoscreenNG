@@ -40,8 +40,8 @@ https://www.transifex.com/vkohaupt/vokoscreen/
   - Audio: mp3lame
 * gstreamer-plugins-libav
   - Player: x264
-* gstreamer-plugins-vaapi
-  - Intel Hardwareenconding
+* gstreamer-plugins-vaapi and intel-vaapi-driver
+  - Intel Hardwareenconding H.264 and MPEG2
 * pulseaudio
 
 ### BuildRequires:

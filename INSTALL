@@ -17,6 +17,7 @@ Requires:
   - gstreamer-plugins-libav --> Player:x264
 
   - gstreamer-plugins-vaapi --> Intel Hardwareenconding
+  - intel-vaapi-driver      --> Intel Hardwareenconding
 
   - pulseaudio
 
