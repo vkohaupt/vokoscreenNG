@@ -63,6 +63,16 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkMagnifierController *vkMagnifierController = new QvkMagnifierController(ui);
     Q_UNUSED(vkMagnifierController);
 
+    vkPlayer = new QvkPlayer( this, ui );
+    QStringList arguments = QApplication::instance()->arguments();
+    if ( arguments.count() > 1  )
+    {
+        qDebug() << "[vokoscreen] started from file:" << arguments.at(1);
+        vkPlayer->setMediaFile( arguments.at(1) );
+        vkPlayer->slot_play();
+        ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
+    }
+
     QvkHelp *vkHelp = new QvkHelp( this, ui, vkPlayer->ui );
     Q_UNUSED( vkHelp );
 
@@ -385,17 +395,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     //ui->checkBoxAudioOnOff->click();
 
     vkSettings.readAll( ui, this );
-
-    // vkPlayer after vkSettings!
-    vkPlayer = new QvkPlayer( this, ui );
-    QStringList arguments = QApplication::instance()->arguments();
-    if ( arguments.count() > 1  )
-    {
-        qDebug() << "[vokoscreen] started from file:" << arguments.at(1);
-        vkPlayer->setMediaFile( arguments.at(1) );
-        vkPlayer->slot_play();
-        ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
-    }
 
 }
 
