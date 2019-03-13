@@ -1440,11 +1440,14 @@ QString QvkMainWindow::VK_get_AudioSystem()
 QString QvkMainWindow::VK_getMuxer()
 {
     QString value = ui->comboBoxFormat->currentData().toString();
-//    if ( ( ui->checkBoxAudioOnOff->isChecked() == true ) and ( !VK_get_AudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
+    if ( ui->comboBoxFormat->currentData().toString() == "matroskamux" )
+    {
+        value = "mux. " + ui->comboBoxFormat->currentData().toString() + " name=mux writing-app=" + vkSettings.getProgName() + "_" + vkSettings.getVersion().replace( " ", "_" );
+    }
+    else
     {
         value = "mux. " + ui->comboBoxFormat->currentData().toString() + " name=mux";
     }
-
     return value;
 }
 
