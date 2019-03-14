@@ -131,7 +131,6 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     QList<QTabWidget *> listTabWidget = ui_mainwindow->centralWidget->findChildren<QTabWidget *>();
     for ( int i = 0; i < listTabWidget.count(); i++ )
     {
-        int value = settings.value( listTabWidget.at(i)->objectName(), 0 ).toInt();
         listTabWidget.at(i)->setCurrentIndex( 0 );
     }
 

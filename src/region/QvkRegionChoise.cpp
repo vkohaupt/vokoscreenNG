@@ -23,14 +23,14 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
                                    radius(20),
                                    diameter(radius*2),
                                    penWidth(2),
-                                   frameColor(Qt::lightGray),
                                    penHalf(penWidth/2),
                                    frame_X(200-framePenHalf),
                                    frame_Y(200-framePenHalf),
                                    frame_Width(320 + framePenWidth),
                                    frame_height(200 + framePenWidth),
                                    frame_min_width(320 + framePenWidth),
-                                   frame_min_height(200 + framePenWidth)
+                                   frame_min_height(200 + framePenWidth),
+                                   frameColor(Qt::lightGray)
 {
 #ifdef Q_OS_LINUX
     if ( QX11Info::isPlatformX11() == true )
