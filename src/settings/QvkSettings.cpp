@@ -42,7 +42,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
       settings.setValue("Version", getVersion());
     settings.endGroup();
 
-    // Clear all settings
+    // Clear all settings if checkBoxResetAtNextStart is set
     QList<QCheckBox *> listCheckBoxReset = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBoxReset.count(); i++ )
     {
@@ -58,6 +58,22 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralWidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadiobuttons.count(); i++ )
     {
+        // We have no settings-file(first start after install) but this object we want set as Standard.
+        if ( ( listRadiobuttons.at(i)->objectName() == "radioButtonScreencastFullscreen" ) and
+             ( settings.value( listRadiobuttons.at(i)->objectName(), true ).toBool() == true ) )
+        {
+            listRadiobuttons.at(i)->click();
+            continue;
+        }
+
+        // We have no settings-file(first start after install) but this object we want set as Standard.
+        if ( ( listRadiobuttons.at(i)->objectName() == "radioButtonScreenshotFullscreen" ) and
+             ( settings.value( listRadiobuttons.at(i)->objectName(), true ).toBool() == true ) )
+        {
+            listRadiobuttons.at(i)->click();
+            continue;
+        }
+
         bool value = settings.value( listRadiobuttons.at(i)->objectName(), false ).toBool();
         if ( value == true )
         {

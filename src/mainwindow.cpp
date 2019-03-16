@@ -385,17 +385,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonSendReport, SIGNAL( clicked( bool ) ), this, SLOT( slot_sendReport() ) );
     // *****************End Log ***********************************
 
-
-    // Checkable Widget sind in vokoscreen standardmäßig nicht gesetzt.
-    // Diese werden hier beziehungsweise in den Settings gesetzt.
-    ui->radioButtonScreencastFullscreen->click();
-    ui->radioButtonScreenshotFullscreen->click();
-    //ui->radioButtonCameraBottom->clicked( true ); // funktioniert so nicht da Widget disabled sind
-    ui->checkBoxAudioOnOff->clicked( false ); // sende Signal clicked mit value=false
-    //ui->checkBoxAudioOnOff->click();
-
+    // Hint:
     vkSettings.readAll( ui, this );
-
 }
 
 
