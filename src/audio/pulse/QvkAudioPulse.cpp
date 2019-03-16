@@ -101,8 +101,6 @@ void QvkAudioPulse::getPulseDevices()
 
     if ( !list.empty() )
     {
-        QString string = tr( "Special device(See help)" );
-        list.prepend( "pulsesrc:::" + string );
         for ( int i = 0; i < list.count(); i++ )
         {
             QCheckBox *checkboxAudioDevice = new QCheckBox();
