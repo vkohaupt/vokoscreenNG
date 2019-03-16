@@ -378,7 +378,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // *****************End Camera ***********************************
 
 
-
     // *****************Begin Log *********************************
     vk_setCornerWidget( ui->tabWidgetLog );
     makeAndSetValidIcon( ui->tabWidgetLog, ui->tabWidgetLog->indexOf( ui->tabLog ), VK_getIcon( "help-about", ":/pictures/log/log.png" ) );

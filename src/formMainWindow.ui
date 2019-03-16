@@ -344,9 +344,6 @@
                 </item>
                 <item>
                  <widget class="QSlider" name="sliderScreencastCountDown">
-                  <property name="toolTip">
-                   <string>11111111</string>
-                  </property>
                   <property name="maximum">
                    <number>30</number>
                   </property>
