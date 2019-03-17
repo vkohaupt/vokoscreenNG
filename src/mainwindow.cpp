@@ -288,7 +288,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 #ifdef Q_OS_LINUX
     vkAudioPulse = new QvkAudioPulse( this, ui );
-    connect( vkAudioPulse, SIGNAL( signal_noAudioDevicesAvalaible( bool ) ), ui->checkBoxAudioOnOff, SLOT( setEnabled(bool) ) );
+    connect( vkAudioPulse, SIGNAL( signal_noAudioDevicesAvalaible( bool ) ), ui->checkBoxAudioOnOff, SLOT( setEnabled( bool ) ) );
+    connect( vkAudioPulse, SIGNAL( signal_noAudioDevicesAvalaible( bool ) ), this,                   SLOT( slot_audioIconOnOff( bool )  ) );
     vkAudioPulse->init();
 #endif
 
