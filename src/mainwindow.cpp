@@ -7,6 +7,7 @@
 #include "QvkAnimateControl.h"
 #include "QvkGlobalShortcut.h"
 #include "QvkLogController.h"
+#include "global.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -67,7 +68,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QStringList arguments = QApplication::instance()->arguments();
     if ( arguments.count() > 1  )
     {
-        qDebug() << "[vokoscreen] started from file:" << arguments.at(1);
+        qDebug() << global::nameOutput << "started from file:" << arguments.at(1);
         vkPlayer->setMediaFile( arguments.at(1) );
         vkPlayer->slot_play();
         ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
@@ -77,7 +78,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     Q_UNUSED( vkHelp );
 
     /* Wayland
-     * If start with "./vokoscreen -platform wayland" comes a Memory access error
+     * If start with "./name -platform wayland" comes a Memory access error
      * On Wayland we have to time no access to GlobalShortcuts
      * We must disable this function for Wayland but not for X11 and Windows
      */
@@ -100,25 +101,25 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QIcon icon( QString::fromUtf8( ":/pictures/screencast/vokoscreen.png" ) );
     setWindowIcon( icon );
 
-    qDebug().noquote() << "[vokoscreen]" << "Version:" << vkSettings.getVersion();
-    qDebug().noquote() << "[vokoscreen]" << "Locale: " << QLocale::system().name();
+    qDebug().noquote() << global::nameOutput << "Version:" << global::version;
+    qDebug().noquote() << global::nameOutput << "Locale: " << QLocale::system().name();
     QLocale locale;
-    qDebug().noquote() << "[vokoscreen}" << "Country:" << QLocale::countryToString( locale.country() );
-    qDebug().noquote() << "[vokoscreen]" << "Qt: " << qVersion();
-    qDebug().noquote() << "[vokoscreen]" << gst_version_string();
-    qDebug().noquote() << "[vokoscreen]" << "Operating system:" << QSysInfo::prettyProductName();
-    qDebug().noquote() << "[vokoscreen]" << "vokoscreen running as:" << QGuiApplication::platformName() << "client";
+    qDebug().noquote() << global::nameOutput << "Country:" << QLocale::countryToString( locale.country() );
+    qDebug().noquote() << global::nameOutput << "Qt: " << qVersion();
+    qDebug().noquote() << global::nameOutput << gst_version_string();
+    qDebug().noquote() << global::nameOutput << "Operating system:" << QSysInfo::prettyProductName();
+    qDebug().noquote() << global::nameOutput << global::name << "running as:" << QGuiApplication::platformName() << "client";
 
 #ifdef Q_OS_LINUX
-    qDebug().noquote() << "[vokoscreen]" << "vokoscreen running on:" << qgetenv( "XDG_SESSION_TYPE" ).toLower();
+    qDebug().noquote() << global::nameOutput << global::name << "running on:" << qgetenv( "XDG_SESSION_TYPE" ).toLower();
 #endif
-    qDebug().noquote() << "[vokoscreen]" << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
-    qDebug().noquote() << "[vokoscreen] current icon-theme: " << QIcon::themeName();
-    qDebug().noquote() << "[vokoscreen] Qt-PluginsPath:     " << QLibraryInfo::location( QLibraryInfo::PluginsPath );
-    qDebug().noquote() << "[vokoscreen] Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
-    qDebug().noquote() << "[vokoscreen] Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
+    qDebug().noquote() << global::nameOutput << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
+    qDebug().noquote() << global::nameOutput << "current icon-theme: " << QIcon::themeName();
+    qDebug().noquote() << global::nameOutput << "Qt-PluginsPath:     " << QLibraryInfo::location( QLibraryInfo::PluginsPath );
+    qDebug().noquote() << global::nameOutput << "Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
+    qDebug().noquote() << global::nameOutput << "Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
 #ifdef Q_OS_LINUX
-    qDebug().noquote() << "[vokoscreen] CompositingManager running:" << QX11Info::isCompositingManagerRunning();
+    qDebug().noquote() << global::nameOutput << "CompositingManager running:" << QX11Info::isCompositingManagerRunning();
 #endif
     qDebug();
 
@@ -433,18 +434,18 @@ void QvkMainWindow::showEvent( QShowEvent *event )
     Q_UNUSED(event);
     if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "wayland" )
     {
-        qDebug().noquote() << tr( "[vokoscreen] Desktop session is a Wayland session" );
+        qDebug().noquote() << global::nameOutput << tr( "Desktop session is a Wayland session" );
         QMessageBox *messageBox = new QMessageBox();
         QIcon icon( QString::fromUtf8( ":/pictures/vokoscreen.png" ) );
         messageBox->setWindowIcon( icon );
         messageBox->setIcon( QMessageBox::Information );
         messageBox->setText( tr( "Detect a Wayland desktop session" ) );
-        messageBox->setInformativeText( tr( "Vokoscreen has to time no Wayland support. A screencast or a screenshot show a black screen. Please logout and start a X11 Desktop session" ) );
+        messageBox->setInformativeText( tr( "To time no Wayland supported. A screencast or a screenshot show a black screen. Please logout and start a X11 Desktop session" ) );
         messageBox->exec();
     }
     else
     {
-        qDebug().noquote() << tr( "[vokoscreen] Desktop session is a X11 session" );
+        qDebug().noquote() << global::nameOutput << "Desktop session is a X11 session";
     }
 }
 #endif
@@ -929,11 +930,11 @@ void QvkMainWindow::VK_gst_Elements_available()
         GstElementFactory *factory = gst_element_factory_find( QString( list.at(i) ).toLatin1() );
         if ( !factory )
         {
-            qDebug().noquote() << "[vokoscreen] -" << list.at(i);
+            qDebug().noquote() << global::nameOutput << "-" << list.at(i);
         }
         else
         {
-            qDebug().noquote() << "[vokoscreen] +" << list.at(i);
+            qDebug().noquote() << global::nameOutput << "+" << list.at(i);
         }
     }
     qDebug();
@@ -1125,7 +1126,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
 
 void QvkMainWindow::VK_Check_is_Format_available()
 {
-    qDebug() << "[vokoscreen] Symbols: + available, - not available";
+    qDebug().noquote() << global::nameOutput << "Symbols: + available, - not available";
     QStringList tempList;
     for ( int x = 0; x < videoFormatsList.count(); x++ )
     {
@@ -1137,11 +1138,11 @@ void QvkMainWindow::VK_Check_is_Format_available()
         GstElementFactory *factory = gst_element_factory_find( muxer.toLatin1() );
         if ( !factory )
         {
-            qDebug().noquote() << "[vokoscreen] -" << muxer;
+            qDebug().noquote() << global::nameOutput << "-" << muxer;
         }
         else
         {
-            qDebug().noquote() << "[vokoscreen] +" << muxer;
+            qDebug().noquote() << global::nameOutput << "+" << muxer;
             tempList << videoFormatsList.at( x );
         }
     }
@@ -1187,11 +1188,11 @@ void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
         GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
         if ( !factory )
         {
-            qDebug().noquote() << "[vokoscreen] -" << encoder;
+            qDebug().noquote() << global::nameOutput << "-" << encoder;
         }
         else
         {
-            qDebug().noquote() << "[vokoscreen] +" << encoder;
+            qDebug().noquote() << global::nameOutput << "+" << encoder;
             ui->comboBoxVideoCodec->addItem( name, encoder );
         }
     }
@@ -1213,11 +1214,11 @@ void QvkMainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
         GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
         if ( !factory )
         {
-            qDebug().noquote() << "[vokoscreen] -" << encoder;
+            qDebug().noquote() << global::nameOutput << "-" << encoder;
         }
         else
         {
-            qDebug().noquote() << "[vokoscreen] +" << encoder;
+            qDebug().noquote() << global::nameOutput << "+" << encoder;
             ui->comboBoxAudioCodec->addItem( name, encoder );
         }
     }
@@ -1513,7 +1514,7 @@ void QvkMainWindow::slot_Start()
     VK_PipelineList << "filesink location=" + path + "/" + newVideoFilename;
 
     QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Pipe );
-    qDebug().noquote() << "[vokoscreen] Start record with:" << VK_Pipeline;
+    qDebug().noquote() << global::nameOutput << "Start record with:" << VK_Pipeline;
 
     QByteArray byteArray = VK_Pipeline.toUtf8();
     const gchar *line = byteArray.constData();
@@ -1586,7 +1587,7 @@ void QvkMainWindow::slot_Stop()
     ret = gst_element_set_state( pipeline, GST_STATE_READY );
     ret = gst_element_set_state( pipeline, GST_STATE_NULL );
     gst_object_unref( pipeline );
-    qDebug() << "[vokoscreen] Stop record";
+    qDebug().noquote() << global::nameOutput << "Stop record";
 }
 
 
@@ -1594,12 +1595,12 @@ void QvkMainWindow::slot_Pause()
 {
     if ( ui->pushButtonStart->isEnabled() == false )
     {
-        qDebug() << "[vokoscreen] Pause was clicked";
+        qDebug().noquote() << global::nameOutput << "Pause was clicked";
         GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PAUSED ); // so wie es aussieht hängt er nur mit Audio
-        if ( ret == GST_STATE_CHANGE_FAILURE )   { qDebug() << "[vokoscreen] Pause was clicked" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
-        if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug() << "[vokoscreen] Pause was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
-        if ( ret == GST_STATE_CHANGE_ASYNC )     { qDebug() << "[vokoscreen] Pause was clicked" << "GST_STATE_CHANGE_ASYNC" << "Returncode =" << ret;   }   // 2
-        if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug() << "[vokoscreen] Pause was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
+        if ( ret == GST_STATE_CHANGE_FAILURE )   { qDebug().noquote() << global::nameOutput << "Pause was clicked" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
+        if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug().noquote() << global::nameOutput << "Pause was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
+        if ( ret == GST_STATE_CHANGE_ASYNC )     { qDebug().noquote() << global::nameOutput << "Pause was clicked" << "GST_STATE_CHANGE_ASYNC" << "Returncode =" << ret;   }   // 2
+        if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "Pause was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
 
 
         /* wait until it's up and running or failed */
@@ -1617,10 +1618,10 @@ void QvkMainWindow::slot_Continue()
     if ( ( ui->pushButtonStart->isEnabled() == false ) and ( ui->pushButtonContinue->isEnabled() == true ) )
     {
         GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
-        if ( ret == GST_STATE_CHANGE_FAILURE )   { qDebug() << "[vokoscreen] Continue was clicked" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
-        if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug() << "[vokoscreen] Continue was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
-        if ( ret == GST_STATE_CHANGE_ASYNC )     { qDebug() << "[vokoscreen] Continue was clicked" << "GST_STATE_CHANGE_ASYNC" << "Returncode =" << ret;   }   // 2
-        if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug() << "[vokoscreen] Continue was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
+        if ( ret == GST_STATE_CHANGE_FAILURE )   { qDebug().noquote() << global::nameOutput << "Continue was clicked" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
+        if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug().noquote() << global::nameOutput << "Continue was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
+        if ( ret == GST_STATE_CHANGE_ASYNC )     { qDebug().noquote() << global::nameOutput << "Continue was clicked" << "GST_STATE_CHANGE_ASYNC" << "Returncode =" << ret;   }   // 2
+        if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "Continue was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
 
         /* wait until it's up and running or failed */
         if (gst_element_get_state (pipeline, NULL, NULL, -1) == GST_STATE_CHANGE_FAILURE)
@@ -1629,7 +1630,7 @@ void QvkMainWindow::slot_Continue()
         }
         else
         {
-            qDebug() << "[vokoscreen] Continue was clicked";
+            qDebug().noquote() << global::nameOutput << "Continue was clicked";
         }
     }
 }
@@ -1642,7 +1643,7 @@ void QvkMainWindow::slot_Play()
     filters << "vokoscreen*";
     QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
 
-    qDebug() << "[vokoscreen] play video with vokoplayer";
+    qDebug().noquote() << global::nameOutput << "play video with vokoplayer";
     ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
     QString string;
     string.append( ui->lineEditVideoPath->text() );
@@ -1659,7 +1660,7 @@ void QvkMainWindow::slot_Folder()
     {
         QMessageBox msgBox( this );
         msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
-        msgBox.setWindowTitle( "vokoscreen" );
+        msgBox.setWindowTitle( global::name + " " + global::version );
         msgBox.setIcon( QMessageBox::Information );
         msgBox.exec();
     }
@@ -1696,20 +1697,20 @@ void QvkMainWindow::slot_screenCountChanged( int value )
     Q_UNUSED(value);
     ui->comboBoxScreencastScreen->clear();
     QList <QScreen *> screen = QGuiApplication::screens();
-    qDebug().noquote() << "[vokoscreen] Detected count screens:" << screen.count();
+    qDebug().noquote() << global::nameOutput << "Detected count screens:" << screen.count();
     qDebug();
     for ( int x = 0 ; x <= screen.count()-1; x++ )
     {
-        qDebug().noquote() << "[vokoscreen] Name from screen: " << screen.at(x)->name();
-        qDebug().noquote() << "[vokoscreen] Screen available desktop width :" << QString::number( screen.at(x)->geometry().width() * screen.at(x)->devicePixelRatio() );
-        qDebug().noquote() << "[vokoscreen] Screen available desktop height:" << QString::number( screen.at(x)->geometry().height() * screen.at(x)->devicePixelRatio() );
-        qDebug().noquote() << "[vokoscreen] DevicePixelRatio:" << screen.at(x)->devicePixelRatio() << " (Normal displays is 1, Retina display is 2)";
-        qDebug().noquote() << "[vokoscreen] Vertical refresh rate of the screen in Hz:" << screen.at(x)->refreshRate();
-        qDebug().noquote() << "[vokoscreen] Screen orientation" << screen.at(x)->orientation();
-        qDebug().noquote() << "[vokoscreen] Color depth of the screen: " << screen.at(x)->depth();
-        qDebug().noquote() << "[vokoscreen] Model from screen: " << screen.at(x)->model();
-        qDebug().noquote() << "[vokoscreen] Manufactur from screen: " << screen.at(x)->manufacturer();
-        qDebug().noquote() << "[vokoscreen] SerialNumber from screen: " << screen.at(x)->serialNumber();
+        qDebug().noquote() << global::nameOutput << "Name from screen: " << screen.at(x)->name();
+        qDebug().noquote() << global::nameOutput << "Screen available desktop width :" << QString::number( screen.at(x)->geometry().width() * screen.at(x)->devicePixelRatio() );
+        qDebug().noquote() << global::nameOutput << "Screen available desktop height:" << QString::number( screen.at(x)->geometry().height() * screen.at(x)->devicePixelRatio() );
+        qDebug().noquote() << global::nameOutput << "DevicePixelRatio:" << screen.at(x)->devicePixelRatio() << " (Normal displays is 1, Retina display is 2)";
+        qDebug().noquote() << global::nameOutput << "Vertical refresh rate of the screen in Hz:" << screen.at(x)->refreshRate();
+        qDebug().noquote() << global::nameOutput << "Screen orientation" << screen.at(x)->orientation();
+        qDebug().noquote() << global::nameOutput << "Color depth of the screen: " << screen.at(x)->depth();
+        qDebug().noquote() << global::nameOutput << "Model from screen: " << screen.at(x)->model();
+        qDebug().noquote() << global::nameOutput << "Manufactur from screen: " << screen.at(x)->manufacturer();
+        qDebug().noquote() << global::nameOutput << "SerialNumber from screen: " << screen.at(x)->serialNumber();
 
         QDesktopWidget *desk = QApplication::desktop();
         QString X = QString::number( desk->screenGeometry( x ).left() * screen.at(x)->devicePixelRatio() );
@@ -1722,8 +1723,8 @@ void QvkMainWindow::slot_screenCountChanged( int value )
                              "with=" + Width + " " +
                              "height=" + Height;
         ui->comboBoxScreencastScreen->addItem( stringText, stringData );
-        qDebug().noquote() << "[vokoscreen] ItemText in Combobox:" << ui->comboBoxScreencastScreen->itemText(x);
-        qDebug().noquote() << "[vokoscreen] ItemData in Combobox:" << ui->comboBoxScreencastScreen->itemData(x).toString();
+        qDebug().noquote() << global::nameOutput << "ItemText in Combobox:" << ui->comboBoxScreencastScreen->itemText(x);
+        qDebug().noquote() << global::nameOutput << "ItemData in Combobox:" << ui->comboBoxScreencastScreen->itemData(x).toString();
         qDebug();
     }
 }
