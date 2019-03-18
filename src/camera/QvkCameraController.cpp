@@ -153,7 +153,7 @@ void QvkCameraController::slot_startCamera( bool value )
         delete cameraWindow;
         cameraWindow = new QvkCameraWindow();
         connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_formMainWindow->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
-        cameraWindow->setWindowTitle( vkSettings.getProgName() + " " + "camera"  + " " + vkSettings.getVersion() );
+        cameraWindow->setWindowTitle( global::name + " " + global::version );
         QIcon icon( QString::fromUtf8( ":/pictures/player/logo.png" ) );
         cameraWindow->setWindowIcon( icon );
 

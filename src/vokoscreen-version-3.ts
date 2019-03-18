@@ -22,10 +22,6 @@
         <source>File can not be opened</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Special device(See help)</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
@@ -57,19 +53,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>[vokoscreen] Desktop session is a Wayland session</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Detect a Wayland desktop session</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Vokoscreen has to time no Wayland support. A screencast or a screenshot show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>[vokoscreen] Desktop session is a X11 session</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -78,6 +62,14 @@
     </message>
     <message>
         <source>Please install a filemanager.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Desktop session is a Wayland session</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>To time no Wayland supported. A screencast or a screenshot show a black screen. Please logout and start a X11 Desktop session</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -165,10 +157,6 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Showclick</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -381,6 +369,22 @@
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>200x200</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>400x200</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>600x200</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete all settings at the next start</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

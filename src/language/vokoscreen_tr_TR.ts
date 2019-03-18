@@ -7,11 +7,11 @@
     </message>
     <message>
         <source>OK</source>
-        <translation>TAMAM</translation>
+        <translation>Tamam</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>İptal Edeyim.</translation>
+        <translation>İptal</translation>
     </message>
 </context>
 <context>
@@ -22,7 +22,7 @@
     </message>
     <message>
         <source>Special device(See help)</source>
-        <translation>Özel cihaz (Yardıma bakın)</translation>
+        <translation>Özel aygıt (Yardıma bakın)</translation>
     </message>
 </context>
 <context>
@@ -56,11 +56,11 @@
     </message>
     <message>
         <source>Please install a videoplayer</source>
-        <translation>Lütfen video oynatıcısı kurun</translation>
+        <translation>Lütfen video oynatıcısı yükleyin</translation>
     </message>
     <message>
         <source>Please install a filemanager</source>
-        <translation>Lütfen bir dosya yöneticisi yükleyin</translation>
+        <translation>Lütfen dosya yöneticisi yükleyin</translation>
     </message>
 </context>
 <context>
@@ -75,19 +75,19 @@
     </message>
     <message>
         <source>Please install a filemanager</source>
-        <translation>Lütfen bir dosya yöneticisi yükleyin</translation>
+        <translation>Lütfen dosya yöneticisi yükleyin</translation>
     </message>
     <message>
         <source>Please install a imageviewer</source>
-        <translation>Lütfen bir resim görüntüleyici yükleyin</translation>
+        <translation>Lütfen resim görüntüleyici yükleyin</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation>Görüntü</translation>
+        <translation>Ekran</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation>Tüm Görüntüler</translation>
+        <translation>Tüm Ekranlar</translation>
     </message>
 </context>
 <context>
@@ -185,7 +185,7 @@
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videocodec</translation>
+        <translation>Video çözücü</translation>
     </message>
     <message>
         <source>Format</source>
@@ -193,7 +193,7 @@
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Audiocodec</translation>
+        <translation>Ses çözücü</translation>
     </message>
     <message>
         <source>Quality</source>
@@ -205,7 +205,7 @@
     </message>
     <message>
         <source>ultrafast</source>
-        <translation>ultra hızlı</translation>
+        <translation>aşırı hızlı</translation>
     </message>
     <message>
         <source>superfast</source>
@@ -293,7 +293,7 @@
     </message>
     <message>
         <source>Vokoscreen minimized when recording starts</source>
-        <translation>Kayıt başladığında Vokoscreen programını küçült</translation>
+        <translation>Kayıt başladığında Vokoscreen uygulamasını küçült</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
@@ -301,7 +301,7 @@
     </message>
     <message>
         <source>Vokoscreen starts minimized</source>
-        <translation>Vokoscreen sistem çubuğunda başlasın</translation>
+        <translation>Vokoscreen sistem tepsisinde başlasın</translation>
     </message>
     <message>
         <source>Video</source>
@@ -341,7 +341,7 @@
     </message>
     <message>
         <source>Screenshot</source>
-        <translation>Ekran çıktısı</translation>
+        <translation>Ekran alıntısı</translation>
     </message>
     <message>
         <source>Hide this Window</source>

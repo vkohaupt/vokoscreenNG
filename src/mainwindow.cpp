@@ -59,7 +59,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkLogController *vklogController = new QvkLogController( ui );
     Q_UNUSED(vklogController);
 
-    setWindowTitle( vkSettings.getProgName() + " " + vkSettings.getVersion() );
+    setWindowTitle( global::name + " " + global::version );
 
     QvkMagnifierController *vkMagnifierController = new QvkMagnifierController(ui);
     Q_UNUSED(vkMagnifierController);
