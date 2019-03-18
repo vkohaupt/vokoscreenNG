@@ -49,7 +49,7 @@ private slots:
 
 private:
   QvkSettings vkSettings;
-  Ui_formMainWindow *ui_vokoscreen;
+  Ui_formMainWindow *ui_formMainWindow;
   QCamera *camera = nullptr;
   QvkCameraWatcher *cameraWatcher;
   QvkCameraWindow *cameraWindow;

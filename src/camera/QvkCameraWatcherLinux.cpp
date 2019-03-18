@@ -1,4 +1,6 @@
 #include "QvkCameraWatcherLinux.h"
+#include "global.h"
+
 #include <QCameraInfo>
 #include <QThread>
 
@@ -77,7 +79,7 @@ void QvkCameraWatcher::myfileSystemWatcher( QString path )
             }
         }
 
-        qDebug() << "[vokoscreen] added device" << addedDevice;
+        qDebug().noquote() << global::nameOutput << "added device" << addedDevice;
     }
 
     // remove plugout device
@@ -94,7 +96,7 @@ void QvkCameraWatcher::myfileSystemWatcher( QString path )
 
         cameraCount = newDeviceList.count();
         emit signal_removedCamera( path + removedDevice );
-        qDebug() << "[vokoscreen] removed device" << removedDevice;
+        qDebug().noquote() << global::nameOutput << "removed device" << removedDevice;
     }
 
     if ( oldDeviceList.count() != newDeviceList.count() )

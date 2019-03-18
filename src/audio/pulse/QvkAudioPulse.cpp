@@ -1,5 +1,6 @@
 #include "QvkAudioPulse.h"
 #include "QvkWatcherPlug.h"
+#include "global.h"
 
 #include <QDebug>
 #include <QAudioDeviceInfo>
@@ -17,7 +18,7 @@ QvkAudioPulse::QvkAudioPulse( QMainWindow *mainWindow, Ui_formMainWindow *ui_mai
 
 void QvkAudioPulse::slot_deletePlugFile()
 {
-    QFile file( QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + "/vokoscreenAudioPlugFile.txt" );
+    QFile file( QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + "/" + global::name + "AudioPlugFile.txt" );
     file.remove();
 }
 
@@ -34,7 +35,7 @@ void QvkAudioPulse::init()
     // Before watching the file from QvkWatcherPlug, the watched file must be present.
     // If the file not present or is removed, the fileSystemWatcher will not or not more monitoring.
     // We create a empty file. If the file exists, it will be overwritten.
-    QString path = QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + "/vokoscreenAudioPlugFile.txt";
+    QString path = QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + "/" + global::name + "AudioPlugFile.txt";
     QFile file( path );
     file.open( QIODevice::WriteOnly | QIODevice::Text );
     file.close();
@@ -55,8 +56,8 @@ void QvkAudioPulse::slot_myfileSystemWatcher( QString string )
     if( !file.open( QIODevice::ReadOnly ) )
     {
         QString message = tr( "File can not be opened" );
-        QMessageBox::information( nullptr, "vokoscreen error ", message + ": " + string );
-        qDebug().noquote() << "[vokoscreen]" << "File can not be opened:" << string;
+        QMessageBox::information( nullptr, global::name + " error ", message + ": " + string );
+        qDebug().noquote() << global::nameOutput << "File can not be opened:" << string;
     }
 
     QTextStream in( &file );
@@ -116,7 +117,7 @@ void QvkAudioPulse::getPulseDevices()
                 checkboxAudioDevice->click();
             }
 
-            qDebug().noquote() << "[vokoscreen] PulseAudio device:" << list.at(i);
+            qDebug().noquote() << global::nameOutput << "PulseAudio device:" << list.at(i);
         }
         qDebug().noquote();
 

@@ -25,7 +25,7 @@ bool QvkDownloader::saveLocal( const QString &filename, QIODevice *data )
     QFile file( fileInTempPath );
     if ( !file.open( QIODevice::WriteOnly ) )
     {
-        qDebug() << global::nameOutput << "Could not open" << filename << "for writing:" << file.errorString();
+        qDebug().noquote() << global::nameOutput << "Could not open" << filename << "for writing:" << file.errorString();
         return false;
     }
     file.write( data->readAll() );
@@ -39,7 +39,7 @@ void QvkDownloader::slot_downloadFinished( QNetworkReply *reply )
     QString filename = QFileInfo( reply->url().path() ).fileName();
     if ( reply->error() )
     {
-        qDebug() << global::nameOutput << "Download of" << reply->url().toString() << "failed:" << reply->errorString();
+        qDebug().noquote() << global::nameOutput << "Download of" << reply->url().toString() << "failed:" << reply->errorString();
     }
     else
     {

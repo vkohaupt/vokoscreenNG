@@ -185,11 +185,11 @@ void QvkPulseGstr::print_plugin_info ()
     GstElementFactory *factory = gst_element_factory_find( name );
     if ( !factory )
     {
-        qDebug().noquote() << "[vokoscreen] Fail Muxer not available:" << name;
+        qDebug().noquote() << global::nameOutput << "Fail Muxer not available:" << name;
     }
     else
     {
-        qDebug().noquote() << "[vokoscreen] Muxer available:" << name;
+        qDebug().noquote() << global::nameOutput << "Muxer available:" << name;
     }
 */
 

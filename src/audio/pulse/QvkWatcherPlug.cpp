@@ -1,7 +1,10 @@
 #include "QvkWatcherPlug.h"
+#include "global.h"
 
 #include <QFile>
 #include <QStandardPaths>
+#include <QDebug>
+
 /*
  * QvkWatcherPlug monitoring only new or removed Audiodevices from the PulseAudio server.
  * QvkWatcherPlug does not return any devices, if the PulseAudio server start or stop.
@@ -100,7 +103,7 @@ static gboolean func( GstBus *bus, GstMessage *message, gpointer user_data )
    Q_UNUSED(user_data);
 
    QFile file;
-   QString filename = QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + "/vokoscreenAudioPlugFile.txt";
+   QString filename = QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + "/" + global::name +"AudioPlugFile.txt";
    file.setFileName( filename );
    file.open( QIODevice::WriteOnly | QIODevice::Text );
 
@@ -113,9 +116,9 @@ static gboolean func( GstBus *bus, GstMessage *message, gpointer user_data )
      case GST_MESSAGE_DEVICE_ADDED:
        gst_message_parse_device_added( message, &gstDevice );
        name = gst_device_get_display_name( gstDevice );
-       qDebug( "[vokoscreen][Audio] device added: %s", name );
+       qDebug().noquote() << global::nameOutput << "[Audio] device added:" << name;
        device = get_launch_line( gstDevice );
-       qDebug( "[vokoscreen][Audio] device added: %s", device );
+       qDebug().noquote() << global::nameOutput << "[Audio] device added:" << device;
        file.write( "[Audio-device-added]\n" );
        file.write( name );
        file.write( "\n" );
@@ -129,9 +132,9 @@ static gboolean func( GstBus *bus, GstMessage *message, gpointer user_data )
      case GST_MESSAGE_DEVICE_REMOVED:
        gst_message_parse_device_removed( message, &gstDevice );
        name = gst_device_get_display_name( gstDevice );
-       qDebug( "[vokoscreen][Audio] device removed: %s", name );
+       qDebug().noquote() << global::nameOutput << "[Audio] device removed:" << name;
        device = get_launch_line( gstDevice );
-       qDebug( "[vokoscreen][Audio] device removed: %s", device );
+       qDebug().noquote() << global::nameOutput << "[Audio] device removed:" << device;
        file.write( "[Audio-device-removed]\n" );
        file.write( name );
        file.write( "\n" );

@@ -253,7 +253,7 @@ void QvkScreenshot::slot_shot_Screenshot()
 
 void QvkScreenshot::slot_show_Screenshoot()
 {
-    qDebug() << global::name << "show picture with standard system displayer";
+    qDebug().noquote() << global::nameOutput << "show picture with standard system displayer";
     QDir dir( ui->lineEditPicturePath->text() );
     QStringList filters;
     filters << global::name + "*";
