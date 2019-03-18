@@ -1,0 +1,21 @@
+[Desktop Entry]
+Categories=AudioVideo;Recorder;
+Comment[de_DE]=screencast
+Comment=screencast
+Exec=vokoscreenNG
+GenericName[de_DE]=
+GenericName=
+Icon=vokoscreenNG
+Keywords=Audio;Video;Recorder;Screencast;
+MimeType=
+Name[de_DE]=vokoscreenNG
+Name=vokoscreenNG
+Path=
+StartupNotify=false
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
