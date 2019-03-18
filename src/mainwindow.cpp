@@ -98,7 +98,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkInformation *vkInformation = new QvkInformation( this, ui);
     connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
 
-    QIcon icon( QString::fromUtf8( ":/pictures/screencast/vokoscreen.png" ) );
+    QIcon icon( QString::fromUtf8( ":/pictures/screencast/logo.png" ) );
     setWindowIcon( icon );
 
     qDebug().noquote() << global::nameOutput << "Version:" << global::version;
@@ -345,7 +345,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->labelNotAvailable->setPixmap( iconNotAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
     // End Tabs
 
-    // Close vokoscreen GUI
+    // Close GUI
     connect( this,      SIGNAL( signal_close() ),       ui->pushButtonContinue, SLOT( click() ) );
     connect( this,      SIGNAL( signal_close() ),       ui->pushButtonStop,     SLOT( click() ) );
     connect( this,      SIGNAL( signal_close( bool ) ), ui->checkBoxCameraOnOff,SLOT( setChecked( bool ) ) );
@@ -436,7 +436,7 @@ void QvkMainWindow::showEvent( QShowEvent *event )
     {
         qDebug().noquote() << global::nameOutput << tr( "Desktop session is a Wayland session" );
         QMessageBox *messageBox = new QMessageBox();
-        QIcon icon( QString::fromUtf8( ":/pictures/vokoscreen.png" ) );
+        QIcon icon( QString::fromUtf8( ":/pictures/screencast/logo.png" ) );
         messageBox->setWindowIcon( icon );
         messageBox->setIcon( QMessageBox::Information );
         messageBox->setText( tr( "Detect a Wayland desktop session" ) );
@@ -478,7 +478,7 @@ void QvkMainWindow::slot_sendReport()
     stringList << "vkohaupt@freenet.de";
     stringList << "?";
     stringList << "subject=";
-    stringList << QString( "vokoscreen" ) + QString( " " ) + QString( vkSettings.getVersion() );
+    stringList << QString( global::name + QString( " " ) +  global::version );
     stringList << "&";
     stringList << "body=";
     stringList << "Your comment";
@@ -683,7 +683,7 @@ void QvkMainWindow::slot_videoFileSystemWatcherSetButtons()
 {
   QDir dir( ui->lineEditVideoPath->text() );
   QStringList filters;
-  filters << "vokoscreen*";
+  filters << global::name +"*";
   QStringList List = dir.entryList( filters, QDir::Files, QDir::Time );
 
   if ( List.isEmpty() || ( ui->pushButtonStart->isEnabled() == false ) )
@@ -1467,7 +1467,7 @@ void QvkMainWindow::slot_Start()
         setWindowState( Qt::WindowMinimized );
         QThread::msleep( ui->spinBoxMinimizedWhenRecordingStarts->value() * 1000 );
     }
-    QString newVideoFilename = "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
+    QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
     QString path = ui->lineEditVideoPath->text();
 
     QStringList VK_PipelineList;
@@ -1525,7 +1525,8 @@ void QvkMainWindow::slot_Start()
     ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
     if ( ret == GST_STATE_CHANGE_FAILURE )
     {
-        g_printerr("[vokoscreen] Unable to set the pipeline to the playing state.\n");
+        //g_printerr( global::name + "Unable to set the pipeline to the playing state.\n");
+        qDebug().noquote() << global::name << "Unable to set the pipeline to the playing state.";
         gst_object_unref( pipeline );
         return;
     }
@@ -1640,7 +1641,7 @@ void QvkMainWindow::slot_Play()
 {
     QDir dir( ui->lineEditVideoPath->text() );
     QStringList filters;
-    filters << "vokoscreen*";
+    filters << global::name + "*";
     QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
 
     qDebug().noquote() << global::nameOutput << "play video with vokoplayer";
