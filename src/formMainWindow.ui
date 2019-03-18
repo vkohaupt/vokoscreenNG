@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1608,7 +1608,7 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_31">
               <item>
-               <widget class="QCheckBox" name="checkBoxVokoscreenStartsMinimized">
+               <widget class="QCheckBox" name="checkBoxStartsMinimized">
                 <property name="text">
                  <string>Starts minimized</string>
                 </property>
@@ -1628,7 +1628,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="QToolButton" name="toolButtonHelpVokoscreenStartsMinimized">
+               <widget class="QToolButton" name="toolButtonHelpStartsMinimized">
                 <property name="text">
                  <string notr="true">Help</string>
                 </property>
@@ -2829,8 +2829,8 @@ p, li { white-space: pre-wrap; }
   <tabstop>checkBoxMinimizedWhenRecordingStarts</tabstop>
   <tabstop>spinBoxMinimizedWhenRecordingStarts</tabstop>
   <tabstop>toolButtonHelpMinimizedWhenRecordingStarts</tabstop>
-  <tabstop>checkBoxVokoscreenStartsMinimized</tabstop>
-  <tabstop>toolButtonHelpVokoscreenStartsMinimized</tabstop>
+  <tabstop>checkBoxStartsMinimized</tabstop>
+  <tabstop>toolButtonHelpStartsMinimized</tabstop>
   <tabstop>checkBoxLookForUpdates</tabstop>
   <tabstop>toolButtonLookForUpdates</tabstop>
   <tabstop>scrollAreaAvailable</tabstop>
