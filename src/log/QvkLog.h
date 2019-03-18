@@ -17,7 +17,6 @@ public:
 
 
 public slots:
-  void slot_addLogVokoscreen( QString value );
 
   
 signals:
@@ -25,6 +24,7 @@ signals:
 
   
 private slots:
+    void slot_addLog( QString value );
 
   
 private:

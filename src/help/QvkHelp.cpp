@@ -1,5 +1,6 @@
 ﻿#include "QvkHelp.h"
 #include "QvkSettings.h"
+#include "global.h"
 
 #include <QMessageBox>
 #include <QLabel>
@@ -34,7 +35,7 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, Ui_p
     resize( 800, 600 );
     setWindowTitle( settings.getProgName() + " " + settings.getVersion() + " " + "help" );
     QIcon icon;
-    icon.addFile( QString::fromUtf8( ":/pictures/screencast/vokoscreen.png" ), QSize(), QIcon::Normal, QIcon::Off );
+    icon.addFile( QString::fromUtf8( ":/pictures/screencast/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
 
     QStringList helpStringList;
@@ -163,7 +164,7 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
     }
 
     int countFiles = getCountFileToDownload( tempPathFileName );
-    qDebug() << "[vokoscreen] HTML file parsed, downloading" << countFiles << "files";
+    qDebug().noquote() << global::nameOutput << "HTML file parsed, downloading" << countFiles << "files";
     int counter = 0;
     QTextStream textStream( &file );
     while( !textStream.atEnd() )
@@ -223,7 +224,7 @@ void QvkHelp::slot_showHelp( QString tempPathFileName )
     file.close();
 
     show();
-    qDebug() << "[vokoscreen] Show help";
+    qDebug().noquote() << global::nameOutput << "Show help";
 
     dir.setCurrent( currentdir );
 

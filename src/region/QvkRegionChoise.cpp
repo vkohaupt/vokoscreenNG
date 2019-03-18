@@ -1,5 +1,6 @@
 #include "QvkRegionChoise.h"
 #include "QvkRegionButtonArrow.h"
+#include "global.h"
 
 #include <QDebug>
 #include <QPainter>
@@ -40,7 +41,7 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
         platform = wayland;
 #endif
 
-    setWindowTitle( QString( "vokoscreen") + QString( " " ) + QString( tr( "Area") ) );
+    setWindowTitle( QString( global::name ) + QString( " " ) + QString( tr( "Area") ) );
 
     // Hint: Qt::WindowStaysOnTopHint is only for X11 and Windows on WayLand not do it
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );

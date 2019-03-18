@@ -1,4 +1,5 @@
 #include "QvkDownloader.h"
+#include "global.h"
 
 QvkDownloader::QvkDownloader( QString pathLocal , QObject *parent ) : QObject(parent)
 {
@@ -24,7 +25,7 @@ bool QvkDownloader::saveLocal( const QString &filename, QIODevice *data )
     QFile file( fileInTempPath );
     if ( !file.open( QIODevice::WriteOnly ) )
     {
-        qDebug( "[vokoscreen] Could not open %s for writing: %s\n", qPrintable( filename ), qPrintable( file.errorString() ) );
+        qDebug() << global::nameOutput << "Could not open" << filename << "for writing:" << file.errorString();
         return false;
     }
     file.write( data->readAll() );
@@ -38,13 +39,13 @@ void QvkDownloader::slot_downloadFinished( QNetworkReply *reply )
     QString filename = QFileInfo( reply->url().path() ).fileName();
     if ( reply->error() )
     {
-        qDebug( "[vokoscreen] Download of %s failed: %s\n", reply->url().toEncoded().constData(), qPrintable(reply->errorString() ) );
+        qDebug() << global::nameOutput << "Download of" << reply->url().toString() << "failed:" << reply->errorString();
     }
     else
     {
         if ( saveLocal( filename, reply ) )
         {
-            qDebug( "[vokoscreen] Download of %s succeeded (saved to %s)", reply->url().toEncoded().constData(), qPrintable( tempPath + "/" + filename) );
+            qDebug().noquote() << "**" << global::nameOutput << "Download of" << reply->url().toString() << "succeeded (saved to" << tempPath + "/" + filename + ")";
         }
     }
 

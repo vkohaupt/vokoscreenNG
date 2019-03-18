@@ -1,4 +1,5 @@
 #include "QvkSystray.h"
+#include "global.h"
 
 #include <QDebug>
 
@@ -16,7 +17,7 @@ QvkSystray::~QvkSystray()
 void QvkSystray::init()
 {
     QAction *titleAction = new QAction( this );
-    titleAction->setText( "vokoscreen" );
+    titleAction->setText( global::name );
     titleAction->setEnabled( false );
 
     startAction = new QAction( this );
@@ -89,7 +90,7 @@ void QvkSystray::init()
 
     setIcon( QIcon( ":/pictures/systray/systray.png" ) );
     setContextMenu ( menu );
-    setToolTip( "vokoscreen" );
+    setToolTip( global::name );
     show();
 
     connect( exitAction, SIGNAL( triggered( bool ) ), this, SLOT( slot_hide() ) );
@@ -102,7 +103,7 @@ void QvkSystray::slot_hide()
     emit signal_SystemtrayIsClose();
 }
 
-// This slot need in vokoscreen GUI
+// This slot need in Main GUI
 void QvkSystray::slot_closeSystray()
 {
     hide();

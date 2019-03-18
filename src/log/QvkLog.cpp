@@ -11,7 +11,7 @@ QvkLog::QvkLog( Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
 
-    connect( this, SIGNAL( signal_newLogText( QString ) ), this, SLOT( slot_addLogVokoscreen( QString ) ) );
+    connect( this, SIGNAL( signal_newLogText( QString ) ), this, SLOT( slot_addLog( QString ) ) );
 
     QDateTime dateTime = QDateTime::currentDateTime();
     QString stringDateTime = dateTime.toString( "yyyy-MM-dd_hh:mm:ss" );
@@ -26,7 +26,7 @@ QvkLog::~QvkLog()
 }
 
 
-void QvkLog::slot_addLogVokoscreen( QString value )
+void QvkLog::slot_addLog( QString value )
 {
     ui->textBrowserLog->append( value );
 }

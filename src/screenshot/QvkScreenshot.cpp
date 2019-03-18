@@ -2,6 +2,7 @@
 #include "QvkWinInfo.h"
 #include "QvkCountdown.h"
 #include "QvkRegionChoise.h"
+#include "global.h"
 
 #include <QImageWriter>
 #include <QApplication>
@@ -98,7 +99,7 @@ void QvkScreenshot::slot_Folder()
     {
         QMessageBox msgBox( parent );
         msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
-        msgBox.setWindowTitle( "vokoscreen" );
+        msgBox.setWindowTitle( global::name);
         msgBox.setIcon( QMessageBox::Information );
         msgBox.exec();
     }
@@ -236,7 +237,7 @@ void QvkScreenshot::slot_shot_Screenshot()
 
     bool ok = pixmap.save( ui->lineEditPicturePath->text() + \
                            "/" + \
-                           "vokoscreen-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxScreenshotFormat->currentText() );
+                           global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxScreenshotFormat->currentText() );
     Q_UNUSED(ok);
 
     ui->labelScreenShotPicture->setAlignment( Qt::AlignCenter );
@@ -252,10 +253,10 @@ void QvkScreenshot::slot_shot_Screenshot()
 
 void QvkScreenshot::slot_show_Screenshoot()
 {
-    qDebug() << "[vokoscreen] show picture with standard system displayer";
+    qDebug() << global::name << "show picture with standard system displayer";
     QDir dir( ui->lineEditPicturePath->text() );
     QStringList filters;
-    filters << "vokoscreen*";
+    filters << global::name + "*";
     QStringList pictureFileList = dir.entryList( filters, QDir::Files, QDir::Time );
 
     QString string;
@@ -267,7 +268,7 @@ void QvkScreenshot::slot_show_Screenshoot()
     {
         QMessageBox msgBox( parent );
         msgBox.setText( tr( "No imageviewer found." ) + "\n" + tr( "Please install a imageviewer." ) );
-        msgBox.setWindowTitle( "vokoscreen" );
+        msgBox.setWindowTitle( global::name );
         msgBox.setIcon( QMessageBox::Information );
         msgBox.exec();
     }
@@ -328,7 +329,7 @@ void QvkScreenshot::slot_pictureFileSystemWatcherSetButtons()
 {
   QDir dir( ui->lineEditPicturePath->text() );
   QStringList filters;
-  filters << "vokoscreen*";
+  filters << global::name + "*";
   QStringList List = dir.entryList( filters, QDir::Files, QDir::Time );
 
   if ( List.isEmpty() || ( ui->pushButtonScreenshotShot->isEnabled() == false ) )
