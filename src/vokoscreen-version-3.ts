@@ -256,15 +256,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Vokoscreen minimized when recording starts</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Vokoscreen starts minimized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -385,6 +377,14 @@
     </message>
     <message>
         <source>Delete all settings at the next start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Starts minimized</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

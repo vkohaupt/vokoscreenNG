@@ -1540,7 +1540,7 @@
               <item>
                <widget class="QCheckBox" name="checkBoxMinimizedWhenRecordingStarts">
                 <property name="text">
-                 <string>Vokoscreen minimized when recording starts</string>
+                 <string>Minimized when recording starts</string>
                 </property>
                </widget>
               </item>
@@ -1610,7 +1610,7 @@
               <item>
                <widget class="QCheckBox" name="checkBoxVokoscreenStartsMinimized">
                 <property name="text">
-                 <string>Vokoscreen starts minimized</string>
+                 <string>Starts minimized</string>
                 </property>
                </widget>
               </item>
