@@ -1,5 +1,4 @@
 ﻿#include "QvkHelp.h"
-#include "QvkSettings.h"
 #include "global.h"
 
 #include <QMessageBox>
@@ -23,9 +22,6 @@
 
 QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, Ui_player *ui_player) : uiHelp(new(Ui::help))
 {
-    // Einstellungen aus .conf einlesen
-    QvkSettings settings;
-
     connect( mainWindow, SIGNAL( destroyed( QObject*) ), this, SLOT( slot_cleanUp() ) );
 
     ui = ui_mainwindow;
@@ -33,7 +29,8 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, Ui_p
     uiHelp->setupUi( this );
 
     resize( 800, 600 );
-    setWindowTitle( settings.getProgName() + " " + settings.getVersion() + " " + "help" );
+    setWindowTitle( global::name + " " + global::version + " " + "help" );
+
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/screencast/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
