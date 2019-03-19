@@ -78,10 +78,6 @@ array='<file>'$( ls language/*.ts )'</file>'
 echo $array | sed "s/ /<\/file>\n<file>/g" >> screencast.qrc
 sed -i 's/\.ts/.qm/g' screencast.qrc
 
-#########
-# VERSION
-#########
-echo '<file>VERSION</file>' >> screencast.qrc
 echo '</qresource>' >> screencast.qrc
 echo '</RCC>'  >> screencast.qrc
 

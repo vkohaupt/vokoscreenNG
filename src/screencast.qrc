@@ -39,6 +39,5 @@
 <file>language/vokoscreen_pt_BR.qm</file>
 <file>language/vokoscreen_pt.qm</file>
 <file>language/vokoscreen_tr_TR.qm</file>
-<file>VERSION</file>
 </qresource>
 </RCC>

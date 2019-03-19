@@ -389,13 +389,6 @@
     </message>
 </context>
 <context>
-    <name>formShowClick</name>
-    <message>
-        <source>Showclick Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>player</name>
     <message>
         <source>Play</source>
