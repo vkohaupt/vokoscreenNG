@@ -48,9 +48,9 @@ isEmpty(QMAKE_LRELEASE) {
   }
 }    
 
-system($$QMAKE_LRELEASE language/vokoscreen_*.ts)
+system($$QMAKE_LRELEASE language/*.ts)
 
-TRANSLATIONS = $$files(language/vokoscreen_*.ts)
+TRANSLATIONS = $$files(language/*.ts)
 
 # language packages
 !isEmpty(TRANSLATIONS) {

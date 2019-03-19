@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     app.installTranslator( qtTranslator );
 
     QTranslator translator;
-    translator.load( "vokoscreen_" + QLocale::system().name(), ":/language" );
+    translator.load( QLocale::system().name(), ":/language" );
     app.installTranslator( &translator );
 
     QvkMainWindow w;

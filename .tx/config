@@ -5,7 +5,8 @@ minimum_perc = 100
 
 # Die Resource muß übereinstimmen mit dem Slug Name
 [vokoscreen.vokoscreen-version-3]
-file_filter = language/vokoscreen_<lang>.ts
+#file_filter = language/vokoscreen_<lang>.ts
+file_filter = language/<lang>.ts
 source_lang = en
 
 # Für den Downlad genügt dann ein
