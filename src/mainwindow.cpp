@@ -3,8 +3,6 @@
 #include "ui_formMainWindow.h"
 #include "QvkScreenshot.h"
 #include "QvkInformation.h"
-//#include "QvkShowClickDialog.h"
-#include "QvkAnimateControl.h"
 #include "QvkGlobalShortcut.h"
 #include "QvkLogController.h"
 #include "global.h"
@@ -31,10 +29,6 @@
   #include <QX11Info>
 #endif
 
-// gstreamer-plugins-bad-orig-addon
-// gstreamer-plugins-good-extra
-// libgstinsertbin-1_0-0
-
 #ifdef Q_OS_LINUX
 QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                           ui(new Ui::formMainWindow),
@@ -54,10 +48,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 {
     ui->setupUi(this);
 
-    vkRegionChoise->setFrameColor( Qt::darkGreen );
-
     QvkLogController *vklogController = new QvkLogController( ui );
     Q_UNUSED(vklogController);
+
+    vkRegionChoise->setFrameColor( Qt::darkGreen );
 
     setWindowTitle( global::name + " " + global::version );
 
@@ -256,31 +250,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->comboBoxAreaSize, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_areaSetResolution( QString ) ) );
 
     connect( ui->sliderScreencastCountDown, SIGNAL( valueChanged( int ) ), ui->labelScreencastCountDownValue, SLOT( setNum( int ) ) );
-/*
-    // Begin showclick
-    QColor color   = vkSettings.getShowClickColor();
-    int radiant    = vkSettings.getShowClickRadiant();
-    double opacity = vkSettings.getShowClickOpacity();
 
-    QvkShowClickDialog *ShowClickDialog = new QvkShowClickDialog( color, radiant, opacity );
-    connect( ui->toolButtonShowKlick, SIGNAL( clicked() ), ShowClickDialog, SLOT( show() ) );
 
-    QvkAnimateControl *animateControl = new QvkAnimateControl( (double) ShowClickDialog->myUiDialog.horizontalSliderShowtime->value()/10,
-                                                               ShowClickDialog->myUiDialog.horizontalSliderCircle->value(),
-                                                               ShowClickDialog->myUiDialog.checkBoxRadiant->checkState(),
-                                                               (double) ShowClickDialog->myUiDialog.horizontalSliderOpacity->value()/100,
-                                                               color
-                                                             );
-
-    connect( ui->checkBoxShowClick, SIGNAL( clicked( bool ) ),      animateControl, SLOT( pointerOnOff( bool ) ) );
-    connect( this,                  SIGNAL( signal_close( bool ) ), animateControl, SLOT( pointerOnOff( bool ) ) );
-
-    connect( ShowClickDialog, SIGNAL( newCircleWidgetValue( int, QColor ) ), animateControl, SLOT( setDiameterColor( int, QColor ) ) );
-    connect( ShowClickDialog, SIGNAL( newShowtime( double ) ), animateControl, SLOT( setShowTime( double ) ) );
-    connect( ShowClickDialog, SIGNAL( newOpacity( double ) ), animateControl, SLOT( setOpacity( double ) ) );
-    connect( ShowClickDialog, SIGNAL( newRadiant( bool ) ), animateControl, SLOT( setRadiant( bool ) ) );
-    // End showclick
-*/
     // Tab 2 Audio and Videocodec
     connect( ui->checkBoxAudioOnOff, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_audioIconOnOff( bool ) ) );
     connect( ui->checkBoxAudioOnOff, SIGNAL( clicked( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
@@ -1434,7 +1405,8 @@ QString QvkMainWindow::VK_getMuxer()
     QString value = ui->comboBoxFormat->currentData().toString();
     if ( ui->comboBoxFormat->currentData().toString() == "matroskamux" )
     {
-        value = "mux. " + ui->comboBoxFormat->currentData().toString() + " name=mux writing-app=" + vkSettings.getProgName() + "_" + vkSettings.getVersion().replace( " ", "_" );
+//        value = "mux. " + ui->comboBoxFormat->currentData().toString() + " name=mux writing-app=" + vkSettings.getProgName() + "_" + vkSettings.getVersion().replace( " ", "_" );
+        value = "mux. " + ui->comboBoxFormat->currentData().toString() + " name=mux";
     }
     else
     {

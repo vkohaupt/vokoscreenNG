@@ -3,7 +3,7 @@
 
 namespace global
 {
-    QString name = "vokosreenNG";
+    QString name = "vokoscreenNG";
     QString nameOutput = "[" + name + "]";
     QString version = "2.9.5 Beta";
 }

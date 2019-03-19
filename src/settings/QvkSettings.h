@@ -6,7 +6,6 @@
 #include <QObject>
 #include <QSettings>
 #include <QDebug>
-#include <QColor>
 #include <QMainWindow>
 
 class QvkSettings: public QObject
@@ -18,21 +17,10 @@ public:
     void saveAll(Ui_formMainWindow *ui_mainwindow, QMainWindow *parent );
     void readAll(Ui_formMainWindow *ui_mainwindow, QMainWindow *parent);
 
-    QString getVersion();
-    QString getProgName();
     QString getFileName();
 
 
 public slots:
-    // ShowClick
-    int    getShowClickCircle();
-    bool   getShowClickRadiant();
-    QColor getShowClickColor();
-    double getShowClickOpacity();
-    double getShowClickTime();
-
-    // Magnifier
-    int getMagnifierFormValue();
 
 
 private slots:
@@ -45,18 +33,7 @@ protected:
 
 
 private:
-    QString ProgName;
-    QString Version;
 
-    // ShowClick
-    int showClickCircle;
-    bool showClickRadiant;
-    QColor showClickColor;
-    double showClickOpacity;
-    double showClickTime;
-
-    // Magnifier
-    int magnifierFormValue;
 };
 
 #endif

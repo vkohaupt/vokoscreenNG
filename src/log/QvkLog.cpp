@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <QStandardPaths>
 #include <QTime>
+#include <QDir>
 
 #include <stdio.h>
 

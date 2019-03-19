@@ -120,9 +120,6 @@ include(information/information.pri)
 # magnifier
 include(magnifier/magnifier.pri)
 
-# showclick
-include(showclick/showclick.pri)
-
 # log
 include(log/log.pri)
 

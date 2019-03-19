@@ -1,53 +1,29 @@
 #include "QvkSettings.h"
+#include "global.h"
 #include "ui_formMainWindow.h"
-
-#include <QFile>
-#include <QApplication>
-#include <QColor>
 
 QvkSettings::QvkSettings()
 {
-    // Read from file VERSION progname and versionsnumber
-    QSettings versionSettings(":/VERSION", QSettings::IniFormat );
-    versionSettings.beginGroup("Info");
-      bool beta = versionSettings.value( "Beta" ).toBool();
-      QString Beta;
-      if ( beta )
-        Beta = "Beta";
-      else
-        Beta = "";
-
-      ProgName = versionSettings.value( "Progname" ).toString();
-      Version = versionSettings.value( "Version" ).toString() + " " + Beta;
-    versionSettings.endGroup();
-
-    // Einstellungen aus .conf einlesen
-    QSettings settings( getProgName(), getProgName() );
+    QSettings settings( global::name, global::name);
 
     // Dient nur zum anlegen des Profils damit das log erstellt werden kann
-    settings.beginGroup("vokoscreen");
-      settings.setValue("Version", getVersion());
+    settings.beginGroup( global::name );
+      settings.setValue( "Version", global::version );
     settings.endGroup();
-
 }
 
 QvkSettings::~QvkSettings(){}
 
 void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent )
 {
-    // Einstellungen aus .conf einlesen
-    QSettings settings( getProgName(), getProgName() );
-
-    settings.beginGroup("vokoscreen");
-      settings.setValue("Version", getVersion());
-    settings.endGroup();
+    QSettings settings( global::name, global::name );
 
     // Clear all settings if checkBoxResetAtNextStart is set
     QList<QCheckBox *> listCheckBoxReset = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBoxReset.count(); i++ )
     {
        if ( ( listCheckBoxReset.at(i)->objectName() == "checkBoxResetAtNextStart" ) and
-            ( settings.value( listCheckBoxReset.at(i)->objectName(), true ).toBool() == true ) )
+            ( settings.value( listCheckBoxReset.at(i)->objectName(), false ).toBool() == true ) )
        {
            settings.clear();
        }
@@ -155,11 +131,11 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
 
 void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent)
 {
-    QSettings settings( getProgName(), getProgName() );
+    QSettings settings( global::name, global::name );
     settings.clear();
 
-    settings.beginGroup("vokoscreen");
-      settings.setValue("Version", getVersion());
+    settings.beginGroup( global::name );
+       settings.setValue( "Version", global::version );
     settings.endGroup();
 
     settings.setValue( "MainWindow_X", parent->pos().x() );
@@ -213,49 +189,9 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
     }
 }
 
-
-QString QvkSettings::getVersion()
-{
-  return Version; 
-}
-
-QString QvkSettings::getProgName()
-{
-  return ProgName; 
-}
-
 QString QvkSettings::getFileName()
 {
-    QSettings settings( getProgName(), getProgName() );
+    QSettings settings( global::name, global::name );
     return settings.fileName();
 }
 
-bool QvkSettings::getShowClickRadiant()
-{
-  return showClickRadiant;
-}
-
-QColor QvkSettings::getShowClickColor()
-{
-  return showClickColor;
-}
-
-double QvkSettings::getShowClickOpacity()
-{
-  return showClickOpacity;
-}
-
-int QvkSettings::getShowClickCircle()
-{
-  return showClickCircle;
-}
-
-double QvkSettings::getShowClickTime()
-{
-  return showClickTime;
-}
-
-int QvkSettings::getMagnifierFormValue()
-{
-  return magnifierFormValue;
-}
