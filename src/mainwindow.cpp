@@ -1405,8 +1405,7 @@ QString QvkMainWindow::VK_getMuxer()
     QString value = ui->comboBoxFormat->currentData().toString();
     if ( ui->comboBoxFormat->currentData().toString() == "matroskamux" )
     {
-//        value = "mux. " + ui->comboBoxFormat->currentData().toString() + " name=mux writing-app=" + vkSettings.getProgName() + "_" + vkSettings.getVersion().replace( " ", "_" );
-        value = "mux. " + ui->comboBoxFormat->currentData().toString() + " name=mux";
+        value = "mux. " + ui->comboBoxFormat->currentData().toString() + " name=mux writing-app=" + global::name + "_" + QString( global::version ).replace( " ", "_" );
     }
     else
     {

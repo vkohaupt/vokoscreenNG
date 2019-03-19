@@ -1,12 +1,8 @@
 #include "QvkLog.h" 
 
-#include <QTextStream>
 #include <QDebug>
 #include <QStandardPaths>
 #include <QTime>
-#include <QDir>
-
-#include <stdio.h>
 
 QvkLog::QvkLog( Ui_formMainWindow *ui_mainwindow )
 {
