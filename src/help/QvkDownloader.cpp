@@ -45,7 +45,7 @@ void QvkDownloader::slot_downloadFinished( QNetworkReply *reply )
     {
         if ( saveLocal( filename, reply ) )
         {
-            qDebug().noquote() << "**" << global::nameOutput << "Download of" << reply->url().toString() << "succeeded (saved to" << tempPath + "/" + filename + ")";
+            qDebug().noquote() << global::nameOutput << "Download of" << reply->url().toString() << "succeeded (saved to" << tempPath + "/" + filename + ")";
         }
     }
 
