@@ -228,10 +228,10 @@ void QvkSettings::readArea( QvkRegionChoise *vkRegionChoise )
 {
     QSettings settings( global::name, global::name );
     settings.beginGroup( "AreaScreencast" );
-      vkRegionChoise->setX( settings.value( "X" ).toInt() );
-      vkRegionChoise->setY( settings.value( "Y" ).toInt() );
-      vkRegionChoise->setWidth( settings.value( "Width" ).toInt() );
-      vkRegionChoise->setHeight( settings.value( "Height" ).toInt() );
+      vkRegionChoise->setX( settings.value( "X", 200 ).toInt() );
+      vkRegionChoise->setY( settings.value( "Y", 200 ).toInt() );
+      vkRegionChoise->setWidth( settings.value( "Width", 320 ).toInt() );
+      vkRegionChoise->setHeight( settings.value( "Height", 200 ).toInt() );
     settings.endGroup();
 }
 

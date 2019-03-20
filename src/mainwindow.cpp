@@ -556,7 +556,6 @@ void QvkMainWindow::slot_areaSetResolution( QString value )
 {
     QString width = value.section( " ", 0, 0 );
     QString height = value.section( " ", 2, 2 );
-    //vkRegionChoise->areaSetResolution( QString(width).toInt(), QString(height).toInt() );
     vkRegionChoise->setWidth( QString(width).toInt() );
     vkRegionChoise->setHeight( QString(height).toInt() );
 }
