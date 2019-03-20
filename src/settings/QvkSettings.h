@@ -17,8 +17,8 @@ public:
     virtual ~QvkSettings();
     void saveAll(Ui_formMainWindow *ui_mainwindow, QMainWindow *parent );
     void readAll(Ui_formMainWindow *ui_mainwindow, QMainWindow *parent);
-    void saveArea(int x, int y, int width, int height);
-    void readArea(QvkRegionChoise *vkRegionChoise);
+    void saveAreaScreencast(int x, int y, int width, int height);
+    void readAreaScreencast(QvkRegionChoise *vkRegionChoise);
 
     QString getFileName();
 

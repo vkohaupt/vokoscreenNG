@@ -359,7 +359,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // Hint:
     vkSettings.readAll( ui, this );
-    vkSettings.readArea( vkRegionChoise );
+    vkSettings.readAreaScreencast( vkRegionChoise );
 }
 
 
@@ -373,7 +373,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
     vkSettings.saveAll( ui, this );
-    vkSettings.saveArea( vkRegionChoise->getXRecordArea(), vkRegionChoise->getYRecordArea(), vkRegionChoise->getWidth(), vkRegionChoise->getHeight() );
+    vkSettings.saveAreaScreencast( vkRegionChoise->getXRecordArea(), vkRegionChoise->getYRecordArea(), vkRegionChoise->getWidth(), vkRegionChoise->getHeight() );
     emit signal_close();
     emit signal_close( false );
 }
