@@ -212,3 +212,26 @@ QString QvkSettings::getFileName()
     return settings.fileName();
 }
 
+
+void QvkSettings::saveArea( int x, int y, int width, int height  )
+{
+    QSettings settings( global::name, global::name );
+    settings.beginGroup( "AreaScreencast" );
+      settings.setValue( "X", x );
+      settings.setValue( "Y", y );
+      settings.setValue( "Width", width );
+      settings.setValue( "Height", height );
+    settings.endGroup();
+}
+
+void QvkSettings::readArea( QvkRegionChoise *vkRegionChoise )
+{
+    QSettings settings( global::name, global::name );
+    settings.beginGroup( "AreaScreencast" );
+      vkRegionChoise->setX( settings.value( "X" ).toInt() );
+      vkRegionChoise->setY( settings.value( "Y" ).toInt() );
+      vkRegionChoise->setWidth( settings.value( "Width" ).toInt() );
+      vkRegionChoise->setHeight( settings.value( "Height" ).toInt() );
+    settings.endGroup();
+}
+

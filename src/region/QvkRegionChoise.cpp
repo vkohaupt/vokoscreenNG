@@ -1204,11 +1204,32 @@ void QvkRegionChoise::slot_areaReset()
     update();
 }
 
+void QvkRegionChoise::setX( int x )
+{
+    frame_X = x - framePenHalf;
+    repaint();
+    update();
+}
 
-void QvkRegionChoise::areaSetResolution( int width, int height )
+void QvkRegionChoise::setY( int y )
+{
+    frame_Y = y - framePenHalf;
+    repaint();
+    update();
+}
+
+
+void QvkRegionChoise::setWidth( int width )
 {
     frame_Width = width + framePenWidth;
+    repaint();
+    update();
+}
+
+void QvkRegionChoise::setHeight( int height )
+{
     frame_height = height + framePenWidth;
     repaint();
     update();
 }
+

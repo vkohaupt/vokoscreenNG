@@ -235,7 +235,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );
 
-    connect( this,                  SIGNAL( signal_close()  ), vkRegionChoise,   SLOT( close() ) );
+    connect( this,                            SIGNAL( signal_close()  ), vkRegionChoise,   SLOT( close() ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), vkRegionChoise,   SLOT( setVisible( bool ) ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreen, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setEnabled( bool ) ) );
@@ -359,12 +359,23 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // Hint:
     vkSettings.readAll( ui, this );
+    vkSettings.readArea( vkRegionChoise );
 }
 
 
 QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
+}
+
+
+void QvkMainWindow::closeEvent( QCloseEvent *event )
+{
+    Q_UNUSED(event);
+    vkSettings.saveAll( ui, this );
+    vkSettings.saveArea( vkRegionChoise->getXRecordArea(), vkRegionChoise->getYRecordArea(), vkRegionChoise->getWidth(), vkRegionChoise->getHeight() );
+    emit signal_close();
+    emit signal_close( false );
 }
 
 
@@ -487,15 +498,6 @@ void QvkMainWindow::slot_sendReport()
 }
 
 
-void QvkMainWindow::closeEvent( QCloseEvent *event )
-{
-    Q_UNUSED(event);
-    vkSettings.saveAll( ui, this );
-    emit signal_close();
-    emit signal_close( false );
-}
-
-
 void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
 {
 #ifdef Q_OS_LINUX
@@ -554,7 +556,9 @@ void QvkMainWindow::slot_areaSetResolution( QString value )
 {
     QString width = value.section( " ", 0, 0 );
     QString height = value.section( " ", 2, 2 );
-    vkRegionChoise->areaSetResolution( QString(width).toInt(), QString(height).toInt() );
+    //vkRegionChoise->areaSetResolution( QString(width).toInt(), QString(height).toInt() );
+    vkRegionChoise->setWidth( QString(width).toInt() );
+    vkRegionChoise->setHeight( QString(height).toInt() );
 }
 
 

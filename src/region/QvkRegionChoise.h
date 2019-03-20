@@ -20,7 +20,10 @@ public:
   int getYRecordArea();
 
   void recordMode(bool value);
-  void areaSetResolution(int width, int height);
+  void setX( int x );
+  void setY( int y );
+  void setWidth( int width );
+  void setHeight( int height );
 
   void setFrameColor( Qt::GlobalColor color );
 

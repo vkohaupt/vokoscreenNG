@@ -2,6 +2,7 @@
 #define QVKSETTINGS_H
 
 #include "ui_formMainWindow.h"
+#include "QvkRegionChoise.h"
 
 #include <QObject>
 #include <QSettings>
@@ -16,6 +17,8 @@ public:
     virtual ~QvkSettings();
     void saveAll(Ui_formMainWindow *ui_mainwindow, QMainWindow *parent );
     void readAll(Ui_formMainWindow *ui_mainwindow, QMainWindow *parent);
+    void saveArea(int x, int y, int width, int height);
+    void readArea(QvkRegionChoise *vkRegionChoise);
 
     QString getFileName();
 
