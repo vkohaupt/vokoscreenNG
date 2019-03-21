@@ -11,12 +11,10 @@
 #endif
 
 #include "QvkCameraWindow.h"
-#include "QvkSettings.h"
 #include "QvkVideoSurface.h"
 
 #include <QCamera>
 #include <QComboBox>
-#include <QVideoWidget>
 
 class QvkCameraController : public QObject
 {
@@ -46,16 +44,16 @@ private slots:
    void slot_radioButtonRightMiddle();
    void slot_radioButtonBottomMiddle();
 
+   void slot_frameOnOff( bool value );
+   void slot_sliderMoved( int value );
+
 
 private:
-  QvkSettings vkSettings;
   Ui_formMainWindow *ui_formMainWindow;
   QCamera *camera = nullptr;
   QvkCameraWatcher *cameraWatcher;
   QvkCameraWindow *cameraWindow;
-  //QVideoWidget *videoWidget = nullptr;
   QvkVideoSurface *videoSurface;
-
 
 
 protected:

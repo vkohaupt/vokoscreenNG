@@ -1,17 +1,14 @@
-﻿#include "QvkCameraController.h"
+#include "QvkCameraController.h"
 #include "global.h"
 
 #include <QCameraViewfinder>
-#include <QSettings>
-#include <QStandardPaths>
-#include <QDir>
-
-#include <QPaintEngine>
 
 QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraWatcher(new QvkCameraWatcher()),
-                                                                         cameraWindow(new QvkCameraWindow()),
                                                                          videoSurface(new QvkVideoSurface())
 {
+    cameraWindow = new QvkCameraWindow();
+    cameraWindow->hide();
+
     ui_formMainWindow = ui_surface;
 
     ui_formMainWindow->dialRotateCamera->setMinimum( 0 );
@@ -23,12 +20,13 @@ QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraW
 #ifdef Q_OS_LINUX
     cameraWatcher->cameraWatcherInit();
 #endif
-    connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_formMainWindow->comboBoxCamera,          SLOT( setDisabled( bool ) ) );
+    connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_formMainWindow->comboBoxCamera, SLOT( setDisabled( bool ) ) );
 
 #ifdef Q_OS_WIN
     connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), cameraWatcher, SLOT( slot_startStopCameraTimer( bool ) ) );
 #endif
-    connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), this,          SLOT( slot_startCamera( bool ) ) );
+    connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), this, SLOT( slot_startCamera( bool ) ) );
+    connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraWindowFrame, SLOT( setEnabled(bool ) ) );
 
     connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ), this, SLOT( slot_setNewImage( QImage ) ) );
 
@@ -36,11 +34,53 @@ QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraW
     connect( ui_formMainWindow->radioButtonCameraTop,   SIGNAL( clicked( bool ) ), this, SLOT( slot_radioButtonTopMiddle() ) );
     connect( ui_formMainWindow->radioButtonCameraRight, SIGNAL( clicked( bool ) ), this, SLOT( slot_radioButtonRightMiddle() ) );
     connect( ui_formMainWindow->radioButtonCameraBottom,SIGNAL( clicked( bool ) ), this, SLOT( slot_radioButtonBottomMiddle() ) );
+
+    connect( ui_formMainWindow->checkBoxCameraWindowFrame, SIGNAL( toggled( bool ) ), this, SLOT( slot_frameOnOff( bool ) ) );
+
+    connect( ui_formMainWindow->sliderCameraWindowSize, SIGNAL( valueChanged( int ) ), this, SLOT( slot_sliderMoved( int ) ) );
 }
 
 
 QvkCameraController::~QvkCameraController()
 {
+}
+
+
+void QvkCameraController::slot_frameOnOff( bool value )
+{
+    if ( cameraWindow->isVisible() == true )
+    {
+        if ( value == true )
+        {
+            cameraWindow->setWindowFlags( Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+        }
+
+        if ( value == false )
+        {
+            cameraWindow->setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint );
+        }
+
+        cameraWindow->show();
+    }
+}
+
+
+void QvkCameraController::slot_sliderMoved( int value )
+{
+    if ( value == 1 )
+    {
+        cameraWindow->resize( 160, 120 );
+    }
+
+    if ( value == 2 )
+    {
+        cameraWindow->resize( 320, 240 );
+    }
+
+    if ( value == 3 )
+    {
+        cameraWindow->resize( 640, 480 );
+    }
 }
 
 
@@ -153,35 +193,20 @@ void QvkCameraController::slot_startCamera( bool value )
         delete cameraWindow;
         cameraWindow = new QvkCameraWindow();
         connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_formMainWindow->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
-        cameraWindow->setWindowTitle( global::name + " " + global::version );
+        cameraWindow->setWindowTitle( global::name + " " + global::version + " " + "Camera");
         QIcon icon( QString::fromUtf8( ":/pictures/player/logo.png" ) );
         cameraWindow->setWindowIcon( icon );
 
-        cameraWindow->resize( 320, 240 );
+        slot_sliderMoved( ui_formMainWindow->sliderCameraWindowSize->value() );
+
         camera->setViewfinder( videoSurface );
         cameraWindow->show();
-
 #ifdef Q_OS_LINUX
         camera->load();
 #endif
-
 #ifdef Q_OS_WIN
         camera->start();
 #endif
-
-        // Bash: Show properties from camera
-        // uvcdynctrl -f -d /dev/video0
-
-        // Test with QVideoWidget, only for Linux.
-        /*
-        delete videoWidget;
-        videoWidget = new QVideoWidget();
-        videoWidget->setWindowTitle( vkSettings.getProgName() + " " + "camera"  + " " + vkSettings.getVersion() );
-        videoWidget->resize( 320, 240 );
-        camera->setViewfinder( videoWidget );
-        videoWidget->show();
-        camera->load();
-        */
     }
     else
     {
@@ -189,7 +214,6 @@ void QvkCameraController::slot_startCamera( bool value )
         camera->stop();
         camera->unload();
         cameraWindow->close();
-        //videoWidget->close();
     }
 }
 

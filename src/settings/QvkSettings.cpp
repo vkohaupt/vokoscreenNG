@@ -117,6 +117,23 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     for ( int i = 0; i < listSlider.count(); i++ )
     {
         QVariant variant = settings.value( listSlider.at(i)->objectName() );
+
+        if ( listSlider.at(i)->objectName() == "sliderCameraWindowSize" )
+        {
+            if ( variant.isValid() )
+            {
+                listSlider.at(i)->setValue( variant.toInt() );
+                listSlider.at(i)->setMinimum(1);
+                continue;
+            }
+            else
+            {
+                listSlider.at(i)->setValue(1);
+                listSlider.at(i)->setMinimum(1);
+                continue;
+            }
+        }
+
         if ( variant.isValid() )
         {
             listSlider.at(i)->setValue( variant.toInt() );
