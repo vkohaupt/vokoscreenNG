@@ -128,7 +128,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             }
             else
             {
-                listSlider.at(i)->setValue(1);
+                listSlider.at(i)->setValue(2);
                 listSlider.at(i)->setMinimum(1);
                 continue;
             }
