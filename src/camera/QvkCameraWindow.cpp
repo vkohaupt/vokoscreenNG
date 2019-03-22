@@ -6,6 +6,7 @@ QvkCameraWindow::QvkCameraWindow()
 {
     setWindowFlags( Qt::WindowStaysOnTopHint );
     setStyleSheet( "background-color:black;" );
+    setMinimumSize( QSize( 160, 120 ) );
 }
 
 

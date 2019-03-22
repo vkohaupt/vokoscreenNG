@@ -38,12 +38,7 @@ private slots:
    void slot_error( QCamera::Error error );
 
    void slot_setNewImage( QImage image );
-/*
-   void slot_radioButtonLeftMiddle();
-   void slot_radioButtonTopMiddle();
-   void slot_radioButtonRightMiddle();
-   void slot_radioButtonBottomMiddle();
-*/
+
    void slot_frameOnOff( bool value );
    void slot_sliderMoved( int value );
 
