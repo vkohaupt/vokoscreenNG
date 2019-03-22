@@ -11,10 +11,6 @@ QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraW
 
     ui_formMainWindow = ui_surface;
 
-    ui_formMainWindow->dialRotateCamera->setMinimum( 0 );
-    ui_formMainWindow->dialRotateCamera->setMaximum ( 360 );
-    ui_formMainWindow->dialRotateCamera->setWrapping( true );
-
     connect( cameraWatcher, SIGNAL( signal_addedCamera( QString, QString ) ), this, SLOT( slot_addedCamera( QString, QString ) ) );
     connect( cameraWatcher, SIGNAL( signal_removedCamera( QString) ),         this, SLOT( slot_removedCamera( QString ) ) );
 #ifdef Q_OS_LINUX
@@ -29,11 +25,6 @@ QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraW
     connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraWindowFrame, SLOT( setEnabled(bool ) ) );
 
     connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ), this, SLOT( slot_setNewImage( QImage ) ) );
-
-    connect( ui_formMainWindow->radioButtonCameraLeft,  SIGNAL( clicked( bool ) ), this, SLOT( slot_radioButtonLeftMiddle() ) );
-    connect( ui_formMainWindow->radioButtonCameraTop,   SIGNAL( clicked( bool ) ), this, SLOT( slot_radioButtonTopMiddle() ) );
-    connect( ui_formMainWindow->radioButtonCameraRight, SIGNAL( clicked( bool ) ), this, SLOT( slot_radioButtonRightMiddle() ) );
-    connect( ui_formMainWindow->radioButtonCameraBottom,SIGNAL( clicked( bool ) ), this, SLOT( slot_radioButtonBottomMiddle() ) );
 
     connect( ui_formMainWindow->checkBoxCameraWindowFrame, SIGNAL( toggled( bool ) ), this, SLOT( slot_frameOnOff( bool ) ) );
 
@@ -84,41 +75,19 @@ void QvkCameraController::slot_sliderMoved( int value )
 }
 
 
-void QvkCameraController::slot_radioButtonLeftMiddle()
-{
-    ui_formMainWindow->dialRotateCamera->setValue( 90 );
-}
-
-void QvkCameraController::slot_radioButtonTopMiddle()
-{
-    ui_formMainWindow->dialRotateCamera->setValue( 180 );
-}
-
-void QvkCameraController::slot_radioButtonRightMiddle()
-{
-    ui_formMainWindow->dialRotateCamera->setValue( 270 );
-}
-
-void QvkCameraController::slot_radioButtonBottomMiddle()
-{
-    ui_formMainWindow->dialRotateCamera->setValue( 360 );
-}
-
-
 void QvkCameraController::slot_setNewImage( QImage image )
 {
-    if ( ui_formMainWindow->checkBoxCameraMirror->isChecked() == true )
-        image = image.mirrored ( true, false );
+    if ( ui_formMainWindow->checkBoxCameraMirrorHorizontal->isChecked() == true )
+        image = image.mirrored( true, false );
+
+    if ( ui_formMainWindow->checkBoxCameraMirrorVertical->isChecked() == true  )
+        image = image.mirrored( false, true );
 
     if ( ui_formMainWindow->checkBoxCameraInvert->isChecked() == true )
         image.invertPixels( QImage::InvertRgb );
 
     if ( ui_formMainWindow->checkBoxCameraGray->isChecked() == true )
         image = image.convertToFormat( QImage::Format_Grayscale8 );
-
-    QTransform transform;
-    transform.rotate( ui_formMainWindow->dialRotateCamera->value() );
-    image = image.transformed( transform );
 
     image = image.scaled( cameraWindow->width(), cameraWindow->height(), Qt::KeepAspectRatio, Qt::FastTransformation);
     cameraWindow->setPixmap( QPixmap::fromImage( image, Qt::AutoColor) );
@@ -135,13 +104,7 @@ void QvkCameraController::slot_addedCamera( QString description, QString device 
     ui_formMainWindow->comboBoxCamera->setEnabled( true );
     ui_formMainWindow->checkBoxCameraGray->setEnabled( true );
     ui_formMainWindow->checkBoxCameraInvert->setEnabled( true );
-    ui_formMainWindow->checkBoxCameraMirror->setEnabled( true );
-
-    ui_formMainWindow->radioButtonCameraLeft->setEnabled( true );
-    ui_formMainWindow->radioButtonCameraTop->setEnabled( true );
-    ui_formMainWindow->radioButtonCameraRight->setEnabled( true );
-    ui_formMainWindow->radioButtonCameraBottom->setEnabled( true );
-    ui_formMainWindow->dialRotateCamera->setEnabled( true );
+    ui_formMainWindow->checkBoxCameraMirrorHorizontal->setEnabled( true );
 }
 
 
@@ -161,13 +124,7 @@ void QvkCameraController::slot_removedCamera( QString device )
         ui_formMainWindow->comboBoxCamera->setEnabled( false );
         ui_formMainWindow->checkBoxCameraGray->setEnabled( false );
         ui_formMainWindow->checkBoxCameraInvert->setEnabled( false );
-        ui_formMainWindow->checkBoxCameraMirror->setEnabled( false );
-
-        ui_formMainWindow->radioButtonCameraLeft->setEnabled( false );
-        ui_formMainWindow->radioButtonCameraTop->setEnabled( false );
-        ui_formMainWindow->radioButtonCameraRight->setEnabled( false );
-        ui_formMainWindow->radioButtonCameraBottom->setEnabled( false );
-        ui_formMainWindow->dialRotateCamera->setEnabled( false );
+        ui_formMainWindow->checkBoxCameraMirrorHorizontal->setEnabled( false );
     }
 }
 
