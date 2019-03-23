@@ -89,6 +89,9 @@ void QvkCameraController::slot_setNewImage( QImage image )
     if ( ui_formMainWindow->checkBoxCameraGray->isChecked() == true )
         image = image.convertToFormat( QImage::Format_Grayscale8 );
 
+    if ( ui_formMainWindow->checkBoxCameraMono->isChecked() == true )
+        image = image.convertToFormat( QImage::Format_Mono );
+
     image = image.scaled( cameraWindow->width(), cameraWindow->height(), Qt::KeepAspectRatio, Qt::FastTransformation);
     cameraWindow->setPixmap( QPixmap::fromImage( image, Qt::AutoColor) );
 }
