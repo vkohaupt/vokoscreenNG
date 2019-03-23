@@ -1,6 +1,7 @@
 #include "QvkCameraWindow.h"
 #include <QPoint>
 #include <QDebug>
+#include <QMouseEvent>
 
 QvkCameraWindow::QvkCameraWindow()
 {
@@ -20,4 +21,20 @@ void QvkCameraWindow::closeEvent(QCloseEvent *event)
 {
     Q_UNUSED(event);
     emit signal_cameraWindow_close( false );
+}
+
+
+void QvkCameraWindow::mouseDoubleClickEvent( QMouseEvent *event )
+{
+    if ( event->button() == Qt::LeftButton )
+    {
+        if ( isFullScreen() == true )
+        {
+            showNormal();
+        }
+        else
+        {
+            setWindowState( Qt::WindowFullScreen );
+        }
+    }
 }
