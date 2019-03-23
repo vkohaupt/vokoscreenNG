@@ -51,6 +51,7 @@ public:
     void makeAndSetValidIcon(QTabWidget *widget, int index, QIcon icon );
     void makeAndSetValidIconForSideBar( int index, QIcon icon );
 
+
 private:
     QvkSettings vkSettings;
     QStringList resolutionStringList;
@@ -96,6 +97,8 @@ private:
 
     bool VK_showOnlyFallbackIcons = false;
     QIcon VK_getIcon(QString stringIcon, QString iconNameFallback );
+
+    QvkCameraController *vkCameraController;
 
 
 private slots:

@@ -3,6 +3,7 @@
 
 #include "ui_formMainWindow.h"
 #include "QvkRegionChoise.h"
+#include "QvkCameraController.h"
 
 #include <QObject>
 #include <QSettings>
@@ -19,6 +20,8 @@ public:
     void readAll(Ui_formMainWindow *ui_mainwindow, QMainWindow *parent);
     void saveAreaScreencast(int x, int y, int width, int height);
     void readAreaScreencast(QvkRegionChoise *vkRegionChoise);
+    void saveCamera( int x, int y );
+    void readCamera( QvkCameraController *vkCameraController );
 
     QString getFileName();
 

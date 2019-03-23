@@ -252,3 +252,19 @@ void QvkSettings::readAreaScreencast( QvkRegionChoise *vkRegionChoise )
     settings.endGroup();
 }
 
+void QvkSettings::saveCamera( int x, int y )
+{
+    QSettings settings( global::name, global::name );
+    settings.beginGroup( "Camera" );
+    settings.setValue( "X", x );
+    settings.setValue( "Y", y );
+    settings.endGroup();
+}
+
+void QvkSettings::readCamera( QvkCameraController *vkCameraController )
+{
+    QSettings settings( global::name, global::name );
+    settings.beginGroup( "Camera" );
+      vkCameraController->cameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
+    settings.endGroup();
+}

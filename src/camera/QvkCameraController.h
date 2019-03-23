@@ -24,6 +24,8 @@ public:
    QvkCameraController(Ui_formMainWindow *ui_surface );
    virtual ~QvkCameraController();
 
+   QvkCameraWindow *cameraWindow;
+
   
 public slots:
 
@@ -47,7 +49,6 @@ private:
   Ui_formMainWindow *ui_formMainWindow;
   QCamera *camera = nullptr;
   QvkCameraWatcher *cameraWatcher;
-  QvkCameraWindow *cameraWindow;
   QvkVideoSurface *videoSurface;
 
 
