@@ -25,6 +25,7 @@ private slots:
 protected:
     void closeEvent(QCloseEvent *event);
     void mouseDoubleClickEvent( QMouseEvent *event );
+    void keyPressEvent( QKeyEvent *event );
 
 
 signals:

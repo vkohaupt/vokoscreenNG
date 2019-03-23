@@ -38,3 +38,23 @@ void QvkCameraWindow::mouseDoubleClickEvent( QMouseEvent *event )
         }
     }
 }
+
+void QvkCameraWindow::keyPressEvent( QKeyEvent *event )
+{
+    if ( event->key() == Qt::Key_Escape )
+    {
+        showNormal();
+    }
+
+    if ( event->key() == Qt::Key_F11 )
+    {
+        if ( isFullScreen() == true )
+        {
+            showNormal();
+        }
+        else
+        {
+            setWindowState( Qt::WindowFullScreen );
+        }
+    }
+}
