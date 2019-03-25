@@ -6,10 +6,14 @@
 QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraWatcher(new QvkCameraWatcher()),
                                                                          videoSurface(new QvkVideoSurface())
 {
-    cameraWindow = new QvkCameraWindow();
-    cameraWindow->hide();
-
     ui_formMainWindow = ui_surface;
+
+    cameraWindow = new QvkCameraWindow( ui_surface );
+    cameraWindow->hide();
+    connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_formMainWindow->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
+    cameraWindow->setWindowTitle( global::name + " " + global::version + " " + "Camera");
+    QIcon icon( QString::fromUtf8( ":/pictures/player/logo.png" ) );
+    cameraWindow->setWindowIcon( icon );
 
     connect( cameraWatcher, SIGNAL( signal_addedCamera( QString, QString ) ), this, SLOT( slot_addedCamera( QString, QString ) ) );
     connect( cameraWatcher, SIGNAL( signal_removedCamera( QString) ),         this, SLOT( slot_removedCamera( QString ) ) );
@@ -150,12 +154,12 @@ void QvkCameraController::slot_startCamera( bool value )
         viewfinderSettings.setMaximumFrameRate( 0.0 );
         camera->setViewfinderSettings( viewfinderSettings );
 
-        delete cameraWindow;
-        cameraWindow = new QvkCameraWindow();
-        connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_formMainWindow->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
-        cameraWindow->setWindowTitle( global::name + " " + global::version + " " + "Camera");
-        QIcon icon( QString::fromUtf8( ":/pictures/player/logo.png" ) );
-        cameraWindow->setWindowIcon( icon );
+        //delete cameraWindow;
+        //cameraWindow = new QvkCameraWindow();
+//        connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_formMainWindow->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
+//        cameraWindow->setWindowTitle( global::name + " " + global::version + " " + "Camera");
+//        QIcon icon( QString::fromUtf8( ":/pictures/player/logo.png" ) );
+//        cameraWindow->setWindowIcon( icon );
 
         slot_sliderMoved( ui_formMainWindow->sliderCameraWindowSize->value() );
 
@@ -171,7 +175,7 @@ void QvkCameraController::slot_startCamera( bool value )
     else
     {
         disconnect( camera, nullptr, nullptr, nullptr );
-        disconnect( cameraWindow, nullptr, nullptr, nullptr );
+        //disconnect( cameraWindow, nullptr, nullptr, nullptr );
         camera->stop();
         camera->unload();
         cameraWindow->close();

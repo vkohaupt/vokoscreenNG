@@ -18,3 +18,12 @@ win32:HEADERS += $$PWD/QvkCameraController.h \
 win32:SOURCES += $$PWD/QvkCameraController.cpp \
                  $$PWD/QvkCameraWatcherWindows.cpp \
                  $$PWD/QvkCameraWindow.cpp
+
+FORMS += \
+    $$PWD/camerasettingsdialog.ui
+
+HEADERS += \
+    $$PWD/camerasettingsdialog.h
+
+SOURCES += \
+    $$PWD/camerasettingsdialog.cpp
