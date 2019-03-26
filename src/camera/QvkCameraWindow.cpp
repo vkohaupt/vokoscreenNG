@@ -15,6 +15,7 @@ QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface )
     setAlignment( Qt::AlignHCenter | Qt::AlignVCenter );
 
     vkCameraSettingsDialog = new cameraSettingsDialog;
+
     connect( this, SIGNAL( signal_cameraWindow_close( bool ) ), vkCameraSettingsDialog, SLOT( close() ) );
 
     connect( ui_formMainWindow->checkBoxCameraMirrorHorizontal, SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraMirrorHorizontal, SLOT( setChecked( bool ) ) );
