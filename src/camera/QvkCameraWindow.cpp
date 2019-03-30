@@ -55,10 +55,12 @@ void QvkCameraWindow::slot_switchToFullscreen()
     if ( isFullScreen() == true )
     {
         showNormal();
+        vkCameraSettingsDialog->close();
     }
     else
     {
         setWindowState( Qt::WindowFullScreen );
+        vkCameraSettingsDialog->close();
     }
 }
 
@@ -88,6 +90,7 @@ void QvkCameraWindow::mouseDoubleClickEvent( QMouseEvent *event )
         else
         {
             setWindowState( Qt::WindowFullScreen );
+            vkCameraSettingsDialog->close();
         }
     }
 }
@@ -139,5 +142,11 @@ void QvkCameraWindow::mousePressEvent(QMouseEvent *event)
                vkCameraSettingsDialog->ui->line_3->show();
            }
        }
+       return;
+    }
+
+    if ( isFullScreen() == true )
+    {
+        vkCameraSettingsDialog->close();
     }
 }
