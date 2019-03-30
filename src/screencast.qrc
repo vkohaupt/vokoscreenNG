@@ -3,6 +3,7 @@
 <file>pictures/camera/camera.png</file>
 <file>pictures/linux.png</file>
 <file>pictures/log/log.png</file>
+<file>pictures/logo.png</file>
 <file>pictures/player/move.png</file>
 <file>pictures/player/player.png</file>
 <file>pictures/player/logo.png</file>
@@ -28,6 +29,7 @@
 <file>pictures/showclick/transparenz.png</file>
 <file>pictures/systray/systray.png</file>
 <file>pictures/systray/record.png</file>
+<file>pictures/test.png</file>
 <file>pictures/windows.png</file>
 <file></file>
 <file>language/ca.qm</file>

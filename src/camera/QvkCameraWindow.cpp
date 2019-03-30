@@ -93,10 +93,11 @@ void QvkCameraWindow::mousePressEvent(QMouseEvent *event)
        }
        else
        {
+           vkCameraSettingsDialog->move( event->globalX(), event->globalY() );
            vkCameraSettingsDialog->show();
        }
-       event->accept();
     }
+    event->accept();
 }
 
 

@@ -24,21 +24,45 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraWindow</name>
+    <name>QvkCameraController</name>
     <message>
-        <source>Help</source>
+        <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Border</source>
+        <source>Flip horizontal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Settings</source>
+        <source>Flip vertical</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Close</source>
+        <source>Invert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove window frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>160x120</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>320x240</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>600x480</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -142,6 +166,57 @@
     </message>
     <message>
         <source>Exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>cameraSettingsDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove window frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>160x120</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>320x240</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>600x480</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Camera settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -324,10 +399,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Mirrored</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Invert</source>
         <translation type="unfinished"></translation>
     </message>
@@ -385,6 +456,34 @@
     </message>
     <message>
         <source>Starts minimized</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove window frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>160x120</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>320x240</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>600x480</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

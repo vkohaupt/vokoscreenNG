@@ -7,7 +7,7 @@ cameraSettingsDialog::cameraSettingsDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::cameraSettingsDialog)
 {
-    setWindowFlags( Qt::Window ); // Besser ein QWidget statt ein QDialog
+    setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint );
     ui->setupUi(this);
     ui->tabWidget->setTabIcon( 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/camera/camera.png" ) ) );
     setWindowIcon( QIcon( ":/pictures/logo.png" ) );
