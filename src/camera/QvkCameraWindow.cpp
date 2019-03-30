@@ -93,8 +93,18 @@ void QvkCameraWindow::mousePressEvent(QMouseEvent *event)
        }
        else
        {
-           vkCameraSettingsDialog->move( event->globalX(), event->globalY() );
+           vkCameraSettingsDialog->move( event->globalX() + 30, event->globalY() + 30 );
            vkCameraSettingsDialog->show();
+           if ( isFullScreen() == true )
+           {
+               vkCameraSettingsDialog->ui->widgetCameraWindowSize->setEnabled( false );
+               vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame->setEnabled( false );
+           }
+           else
+           {
+               vkCameraSettingsDialog->ui->widgetCameraWindowSize->setEnabled( true );
+               vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame->setEnabled( true );
+           }
        }
     }
     event->accept();
