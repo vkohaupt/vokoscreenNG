@@ -1,7 +1,5 @@
 #include "QvkCameraWindow.h"
-#include "camerasettingsdialog.h"
 
-#include <QPoint>
 #include <QDebug>
 #include <QMouseEvent>
 
@@ -13,6 +11,7 @@ QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface )
     setStyleSheet( "background-color:black;" );
     setMinimumSize( QSize( 160, 120 ) );
     setAlignment( Qt::AlignHCenter | Qt::AlignVCenter );
+    setMouseTracking( true ); // No function, why?
 
     vkCameraSettingsDialog = new cameraSettingsDialog;
 
@@ -33,6 +32,9 @@ QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface )
     connect( vkCameraSettingsDialog->ui->checkBoxCameraMono,             SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraMono,             SLOT( setChecked( bool ) ) );
     connect( vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame,      SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraWindowFrame,      SLOT( setChecked( bool ) ) );
     connect( vkCameraSettingsDialog->ui->sliderCameraWindowSize,         SIGNAL( valueChanged( int ) ), ui_formMainWindow->sliderCameraWindowSize,     SLOT( setValue( int ) ) );
+
+    connect( vkCameraSettingsDialog->ui->buttonBox, SIGNAL( accepted() ), vkCameraSettingsDialog, SLOT( close() ) );
+    connect( vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_switchToFullscreen() ) );
 }
 
 
@@ -45,6 +47,33 @@ void QvkCameraWindow::closeEvent(QCloseEvent *event)
 {
     Q_UNUSED(event);
     emit signal_cameraWindow_close( false );
+}
+
+
+void QvkCameraWindow::slot_switchToFullscreen()
+{
+    if ( isFullScreen() == true )
+    {
+        showNormal();
+    }
+    else
+    {
+        setWindowState( Qt::WindowFullScreen );
+    }
+}
+
+
+void QvkCameraWindow::resizeEvent(QResizeEvent *event)
+{
+    Q_UNUSED(event);
+    if ( isFullScreen() == true )
+    {
+        vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setText( tr( "Switch to Window" ) );
+    }
+    else
+    {
+        vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setText( tr( "Switch to Fullscreen" ) );
+    }
 }
 
 
@@ -97,19 +126,18 @@ void QvkCameraWindow::mousePressEvent(QMouseEvent *event)
            vkCameraSettingsDialog->show();
            if ( isFullScreen() == true )
            {
-               vkCameraSettingsDialog->ui->widgetCameraWindowSize->setEnabled( false );
-               vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame->setEnabled( false );
+               vkCameraSettingsDialog->ui->widgetCameraWindowSize->hide();
+               vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame->hide();
+               vkCameraSettingsDialog->ui->line_2->hide();
+               vkCameraSettingsDialog->ui->line_3->hide();
            }
            else
            {
-               vkCameraSettingsDialog->ui->widgetCameraWindowSize->setEnabled( true );
-               vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame->setEnabled( true );
+               vkCameraSettingsDialog->ui->widgetCameraWindowSize->show();
+               vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame->show();
+               vkCameraSettingsDialog->ui->line_2->show();
+               vkCameraSettingsDialog->ui->line_3->show();
            }
        }
     }
-    event->accept();
 }
-
-
-
-

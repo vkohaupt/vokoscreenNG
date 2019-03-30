@@ -39,7 +39,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -610,8 +610,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>16</width>
-                      <height>16</height>
+                      <width>535</width>
+                      <height>82</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1782,8 +1782,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>20</width>
-                   <height>96</height>
+                   <width>361</width>
+                   <height>299</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -2639,14 +2639,14 @@
                 <item>
                  <widget class="QLabel" name="label_24">
                   <property name="text">
-                   <string>160x120</string>
+                   <string notr="true">160x120</string>
                   </property>
                  </widget>
                 </item>
                 <item>
                  <widget class="QLabel" name="label_25">
                   <property name="text">
-                   <string>320x240</string>
+                   <string notr="true">320x240</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -2656,7 +2656,7 @@
                 <item>
                  <widget class="QLabel" name="label_26">
                   <property name="text">
-                   <string>600x480</string>
+                   <string notr="true">640x480</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

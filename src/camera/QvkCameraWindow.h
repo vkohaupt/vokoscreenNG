@@ -28,6 +28,7 @@ public slots:
 
 
 private slots:
+   void slot_switchToFullscreen();
 
 
 protected:
@@ -36,7 +37,7 @@ protected:
     void keyPressEvent( QKeyEvent *event );
 
     void mousePressEvent(QMouseEvent *event);
-
+    void resizeEvent(QResizeEvent *event);
 
 signals:
     void signal_cameraWindow_close( bool );
