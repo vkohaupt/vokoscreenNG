@@ -251,7 +251,7 @@ void QvkSettings::readAreaScreencast( QvkRegionChoise *vkRegionChoise )
       vkRegionChoise->setHeight( settings.value( "Height", 200 ).toInt() );
     settings.endGroup();
 }
-/*
+
 void QvkSettings::saveCamera( int x, int y )
 {
     QSettings settings( global::name, global::name );
@@ -268,4 +268,4 @@ void QvkSettings::readCamera( QvkCameraController *vkCameraController )
       vkCameraController->cameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
     settings.endGroup();
 }
-*/
+

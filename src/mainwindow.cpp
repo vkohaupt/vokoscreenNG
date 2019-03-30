@@ -360,7 +360,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // Hint:
     vkSettings.readAll( ui, this );
     vkSettings.readAreaScreencast( vkRegionChoise );
-    //vkSettings.readCamera( vkCameraController );
+    vkSettings.readCamera( vkCameraController );
 }
 
 
@@ -375,7 +375,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
     Q_UNUSED(event);
     vkSettings.saveAll( ui, this );
     vkSettings.saveAreaScreencast( vkRegionChoise->getXRecordArea(), vkRegionChoise->getYRecordArea(), vkRegionChoise->getWidth(), vkRegionChoise->getHeight() );
-    //vkSettings.saveCamera( vkCameraController->cameraWindow->geometry().x(), vkCameraController->cameraWindow->geometry().y() );
+    vkSettings.saveCamera( vkCameraController->cameraWindow->geometry().x(), vkCameraController->cameraWindow->geometry().y() );
     emit signal_close();
     emit signal_close( false );
 }
