@@ -725,7 +725,7 @@ void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
     QSize size = QSize( a, a );
     QPixmap iconPixmap( icon.pixmap( size ) );
 
-    iconPixmap = iconPixmap.scaled( QSize( 60, 60 ), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+    iconPixmap = iconPixmap.scaled( QSize( 48, 48 ), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
     QLabel *label = new QLabel();
     label->setPixmap( iconPixmap );
     label->setEnabled( false );
