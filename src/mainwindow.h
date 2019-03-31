@@ -95,7 +95,7 @@ private:
 
     QvkPlayer *vkPlayer;
 
-    bool VK_showOnlyFallbackIcons = true;
+    bool VK_showOnlyFallbackIcons = false;
     QIcon VK_getIcon(QString stringIcon, QString iconNameFallback );
 
     QvkCameraController *vkCameraController;

@@ -678,7 +678,7 @@ void QvkMainWindow::resizeEvent( QResizeEvent *event )
     emit signal_resizeEvent( event );
 }
 
-// https://doc.qt.io/qt-5/highdpi.html
+
 void QvkMainWindow::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIcon icon )
 {
     int a = 128;
@@ -686,6 +686,7 @@ void QvkMainWindow::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIco
     QPixmap iconPixmap = icon.pixmap( a, a );
     tabWidget->setTabIcon( index, QIcon( iconPixmap ) );
 }
+
 
 void QvkMainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
 {
@@ -723,41 +724,6 @@ void QvkMainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
     ui->tabWidgetSideBar->setTabIcon( index, QIcon( workPixmap ) );
 }
 
-
-/*
-void QvkMainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
-{
-    QSize size = ui->tabWidgetSideBar->iconSize();
-    QPixmap iconPixmap( icon.pixmap( size ) );
-    iconPixmap = iconPixmap.scaled( size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-
-    QFont font;
-    font.setPointSize( 10 );
-    QFontMetrics fontMetrics( font );
-    int textWidth = fontMetrics.width( ui->tabWidgetSideBar->tabToolTip( index ) );
-    int textHight = fontMetrics.height();
-
-    QPixmap workPixmap( size.width(), size.height() + textHight );
-    workPixmap.fill( Qt::transparent );
-
-    QPainter painter;
-    QPen pen;
-    painter.begin( &workPixmap );
-      painter.setRenderHints( QPainter::Antialiasing, true );
-      painter.setFont( font );
-      painter.drawPixmap( QPoint( 0, 0 ), iconPixmap );
-      pen.setColor( Qt::black );
-      painter.setPen( pen );
-      int x = ( iconPixmap.width() - textWidth ) / 2;
-      painter.drawText( x, workPixmap.height() - 4, ui->tabWidgetSideBar->tabToolTip( index ) );
-    painter.end();
-
-    QTransform transform;
-    transform.rotate( 90 );
-    workPixmap = workPixmap.transformed( transform, Qt::SmoothTransformation );
-    ui->tabWidgetSideBar->setTabIcon( index, QIcon( workPixmap ) );
-}
-*/
 
 /*
  * Setzt neues Icon um aufzuzeigen das Audio abgeschaltet ist
