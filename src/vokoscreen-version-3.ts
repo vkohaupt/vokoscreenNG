@@ -67,6 +67,17 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraWindow</name>
+    <message>
+        <source>Switch to Window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch to Fullscreen</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
@@ -176,10 +187,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Flip horizontal</source>
         <translation type="unfinished"></translation>
     </message>
@@ -212,11 +219,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>600x480</source>
+        <source>Camera settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Camera settings</source>
+        <source>640x480</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -472,18 +479,6 @@
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>160x120</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>320x240</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>600x480</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

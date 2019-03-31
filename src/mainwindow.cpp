@@ -678,16 +678,53 @@ void QvkMainWindow::resizeEvent( QResizeEvent *event )
     emit signal_resizeEvent( event );
 }
 
-
+// https://doc.qt.io/qt-5/highdpi.html
 void QvkMainWindow::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIcon icon )
 {
-    QSize size = tabWidget->iconSize();
-    QPixmap workPixmap( icon.pixmap( size ) );
-    workPixmap = workPixmap.scaled( size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-    tabWidget->setTabIcon( index, QIcon( workPixmap ) );
+    int a = 128;
+    QCoreApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
+    QPixmap iconPixmap = icon.pixmap( a, a );
+    tabWidget->setTabIcon( index, QIcon( iconPixmap ) );
+}
+
+void QvkMainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
+{
+    QCoreApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
+
+    int a = 256;
+    QSize size = QSize( a, a );
+
+    QPixmap iconPixmap( icon.pixmap( size ) );
+
+    QFont font;
+    font.setPointSize( 40 );
+    QFontMetrics fontMetrics( font );
+    int textWidth = fontMetrics.width( ui->tabWidgetSideBar->tabToolTip( index ) );
+    int textHight = fontMetrics.height();
+
+    QPixmap workPixmap( size.width() + textHight, size.height() + textHight );
+    workPixmap.fill( Qt::transparent );
+
+    QPainter painter;
+    QPen pen;
+    painter.begin( &workPixmap );
+      painter.setRenderHints( QPainter::Antialiasing, true );
+      painter.setFont( font );
+      painter.drawPixmap( QPoint( textHight/2, 0 ), iconPixmap );
+      pen.setColor( Qt::black );
+      painter.setPen( pen );
+      int x = ( workPixmap.width() - textWidth ) / 2;
+      painter.drawText( x, workPixmap.height() - fontMetrics.descent(), ui->tabWidgetSideBar->tabToolTip( index ) );
+    painter.end();
+
+    QTransform transform;
+    transform.rotate( 90 );
+    workPixmap = workPixmap.transformed( transform, Qt::SmoothTransformation );
+    ui->tabWidgetSideBar->setTabIcon( index, QIcon( workPixmap ) );
 }
 
 
+/*
 void QvkMainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
 {
     QSize size = ui->tabWidgetSideBar->iconSize();
@@ -720,7 +757,7 @@ void QvkMainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
     workPixmap = workPixmap.transformed( transform, Qt::SmoothTransformation );
     ui->tabWidgetSideBar->setTabIcon( index, QIcon( workPixmap ) );
 }
-
+*/
 
 /*
  * Setzt neues Icon um aufzuzeigen das Audio abgeschaltet ist
