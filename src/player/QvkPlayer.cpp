@@ -22,8 +22,9 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     ui->labelPlayer->setMouseTracking( true );
     ui->labelPlayer->setFocus(); // Need Focus for F11 in windowmode(GUI)
 
+    QCoreApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
     QIcon icon( QString::fromUtf8( ":/pictures/player/logo.png" ) );
-    ui->labelPlayer->setPixmap( icon.pixmap( 200, 185 ) );
+    ui->labelPlayer->setPixmap( icon.pixmap( 128, 128 ) );
 
     ui->framePlayer->setStyleSheet( "background-color: black;" );
 
@@ -348,7 +349,7 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
         ui->labelDuration->setText( "00:00:00" );
 
         QIcon icon( QString::fromUtf8( ":/pictures/player/logo.png" ) );
-        ui->labelPlayer->setPixmap( icon.pixmap( 200, 185 ) );
+        ui->labelPlayer->setPixmap( icon.pixmap( 128, 128 ) );
         parentMainWindow->setWindowTitle( oldWindowTitel );
         vk_showNormal();
         ui->toolButtonFrameBackward->setEnabled( true );
