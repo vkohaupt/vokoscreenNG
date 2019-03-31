@@ -381,31 +381,6 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 }
 
 
-QIcon QvkMainWindow::VK_getIcon( QString iconName, QString iconNameFallback )
-{
-    QIcon icon;
-
-    if ( VK_showOnlyFallbackIcons == true )
-    {
-        QIcon tmpIcon( iconNameFallback );
-        icon = tmpIcon;
-        return icon;
-    }
-
-    if ( QIcon::hasThemeIcon( iconName ) == true )
-    {
-        icon = QIcon::fromTheme( iconName );
-    }
-    else
-    {
-        QIcon tmpIcon( iconNameFallback );
-        icon = tmpIcon;
-    }
-
-    return icon;
-}
-
-
 void QvkMainWindow::slot_vokoPlayer()
 {
     vkPlayer->show();
@@ -497,22 +472,6 @@ void QvkMainWindow::slot_sendReport()
     QString string = stringList.join( "" );
     bool b = QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) );
     Q_UNUSED(b);
-}
-
-
-void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
-{
-#ifdef Q_OS_LINUX
-    QPixmap pixmap( ":/pictures/linux.png" );
-#endif
-#ifdef Q_OS_WIN
-    QPixmap pixmap( ":/pictures/windows.png" );
-#endif
-    pixmap = pixmap.scaled( 42, 42 );
-    QLabel *label = new QLabel();
-    label->setPixmap( pixmap );
-    label->setEnabled( false );
-    tabWidget->setCornerWidget( label, Qt::TopRightCorner);
 }
 
 
@@ -679,10 +638,36 @@ void QvkMainWindow::resizeEvent( QResizeEvent *event )
 }
 
 
+QIcon QvkMainWindow::VK_getIcon( QString iconName, QString iconNameFallback )
+{
+    QIcon icon;
+
+    if ( VK_showOnlyFallbackIcons == true )
+    {
+        QIcon tmpIcon( iconNameFallback );
+        icon = tmpIcon;
+        return icon;
+    }
+
+    if ( QIcon::hasThemeIcon( iconName ) == true )
+    {
+        icon = QIcon::fromTheme( iconName );
+    }
+    else
+    {
+        QIcon tmpIcon( iconNameFallback );
+        icon = tmpIcon;
+    }
+
+    return icon;
+}
+
+
 void QvkMainWindow::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIcon icon )
 {
-    int a = 128;
     QCoreApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
+
+    int a = 128;
     QPixmap iconPixmap = icon.pixmap( a, a );
     tabWidget->setTabIcon( index, QIcon( iconPixmap ) );
 }
@@ -724,6 +709,28 @@ void QvkMainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
     ui->tabWidgetSideBar->setTabIcon( index, QIcon( workPixmap ) );
 }
 
+
+void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
+{
+    QCoreApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
+
+#ifdef Q_OS_LINUX
+    QIcon icon = VK_getIcon( "linux", ":/pictures/linux.png" );
+#endif
+#ifdef Q_OS_WIN
+    QIcon icon = VK_getIcon( "linux", ":/pictures/windows.png" );
+#endif
+
+    int a = 256;
+    QSize size = QSize( a, a );
+    QPixmap iconPixmap( icon.pixmap( size ) );
+
+    iconPixmap = iconPixmap.scaled( QSize( 60, 60 ), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+    QLabel *label = new QLabel();
+    label->setPixmap( iconPixmap );
+    label->setEnabled( false );
+    tabWidget->setCornerWidget( label, Qt::TopRightCorner);
+}
 
 /*
  * Setzt neues Icon um aufzuzeigen das Audio abgeschaltet ist
