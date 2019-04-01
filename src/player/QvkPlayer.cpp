@@ -36,7 +36,6 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     ui->toolButtonOpenFile->setIcon( QIcon::fromTheme( "document-open",     style()->standardIcon( QStyle::SP_FileIcon ) ) );
     ui->toolButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high"    , style()->standardIcon( QStyle::SP_MediaVolume ) ) );
     ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen", QIcon( ":/pictures/player/fullscreen.png" ) ) );
-    //ui->toolButtonHelpPlayer->setIcon( style()->standardIcon( QStyle::SP_MessageBoxInformation ) );
 
     mediaPlayer = new QMediaPlayer;
     ui->sliderVolume->setValue( 70 );

@@ -48,6 +48,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 {
     ui->setupUi(this);
 
+    QvkTheme *vkTheme = new QvkTheme( ui );
+    Q_UNUSED(vkTheme);
+
     QvkLogController *vklogController = new QvkLogController( ui );
     Q_UNUSED(vklogController);
 
@@ -134,7 +137,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                          << "1920 x 1080 HD1080 16 : 9";
 
     vk_setCornerWidget( ui->tabWidgetScreencast );
-
+/*
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreencast ), VK_getIcon( "video-display",     ":/pictures/screencast/monitor.png" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreenshot ), VK_getIcon( "computer",          ":/pictures/screenshot/screenshot.png" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarCamera ),     VK_getIcon( "camera-web",        ":/pictures/camera/camera.png" ) );
@@ -146,7 +149,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabTimer ),     VK_getIcon( "appointment-new",        ":/pictures/screencast/timer.png" ) );
     makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabMisc ),      VK_getIcon( "preferences-system",     ":/pictures/screencast/preferences-system.png" ) );
     makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAvailable ), VK_getIcon( "help-contents",          ":/pictures/screencast/supported-formats.png" ) );
-
+*/
     // Bar for start, stop etc.
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setDisabled( bool ) ) );
@@ -226,7 +229,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->radioButtonScreencastFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
     ui->radioButtonScreencastWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
 
-    ui->toolButtonScreencastAreaReset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
+    // ui->toolButtonScreencastAreaReset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
 
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );//**
@@ -253,10 +256,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 
     // Tab 2 Audio and Videocodec
-    connect( ui->checkBoxAudioOnOff, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_audioIconOnOff( bool ) ) );
-    connect( ui->checkBoxAudioOnOff, SIGNAL( clicked( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
-    connect( ui->checkBoxAudioOnOff, SIGNAL( clicked( bool ) ), ui->labelAudioCodec,       SLOT( setEnabled( bool ) ) );
-    connect( ui->checkBoxAudioOnOff, SIGNAL( clicked( bool ) ), ui->comboBoxAudioCodec,    SLOT( setEnabled( bool ) ) );
+    connect( ui->checkBoxAudioOnOff, SIGNAL( clicked( bool ) ),   this,                      SLOT( slot_audioIconOnOff( bool ) ) );
+    connect( vkTheme,                SIGNAL( signal_newTheme() ), this,                      SLOT( slot_audioRedCross() ) );
+    connect( ui->checkBoxAudioOnOff, SIGNAL( clicked( bool ) ),   ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
+    connect( ui->checkBoxAudioOnOff, SIGNAL( clicked( bool ) ),   ui->labelAudioCodec,       SLOT( setEnabled( bool ) ) );
+    connect( ui->checkBoxAudioOnOff, SIGNAL( clicked( bool ) ),   ui->comboBoxAudioCodec,    SLOT( setEnabled( bool ) ) );
 
 #ifdef Q_OS_LINUX
     vkAudioPulse = new QvkAudioPulse( this, ui );
@@ -338,8 +342,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkScreenshot *vkScreenshot = new QvkScreenshot( this, ui );
     Q_UNUSED(vkScreenshot);
     vk_setCornerWidget( ui->tabWidgetScreenshot );
-    makeAndSetValidIcon( ui->tabWidgetScreenshot, ui->tabWidgetScreenshot->indexOf( ui->tabScreenshotScreen ), VK_getIcon( "computer", ":/pictures/screenshot/screenshot.png" ) );
-    makeAndSetValidIcon( ui->tabWidgetScreenshot, ui->tabWidgetScreenshot->indexOf( ui->tabScreenshotMisc ),   VK_getIcon( "preferences-system", ":/pictures/screenshot/preferences-system.png" ) );
     // **************** End Screenshot *******************************
 
 
@@ -347,13 +349,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkCameraController = new QvkCameraController(ui);
     Q_UNUSED(vkCameraController);
     vk_setCornerWidget( ui->tabWidgetCamera );
-    makeAndSetValidIcon( ui->tabWidgetCamera, ui->tabWidgetCamera->indexOf( ui->tabCamera ), VK_getIcon( "camera-web", ":/pictures/camera/camera.png" ) );
     // *****************End Camera ***********************************
 
 
     // *****************Begin Log *********************************
     vk_setCornerWidget( ui->tabWidgetLog );
-    makeAndSetValidIcon( ui->tabWidgetLog, ui->tabWidgetLog->indexOf( ui->tabLog ), VK_getIcon( "help-about", ":/pictures/log/log.png" ) );
     connect( ui->pushButtonSendReport, SIGNAL( clicked( bool ) ), this, SLOT( slot_sendReport() ) );
     // *****************End Log ***********************************
 
@@ -642,7 +642,7 @@ QIcon QvkMainWindow::VK_getIcon( QString iconName, QString iconNameFallback )
 {
     QIcon icon;
 
-    if ( VK_showOnlyFallbackIcons == true )
+    if ( global::VK_showOnlyFallbackIcons == true )
     {
         QIcon tmpIcon( iconNameFallback );
         icon = tmpIcon;
@@ -663,62 +663,15 @@ QIcon QvkMainWindow::VK_getIcon( QString iconName, QString iconNameFallback )
 }
 
 
-void QvkMainWindow::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIcon icon )
-{
-    QCoreApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
-
-    int a = 128;
-    QPixmap iconPixmap = icon.pixmap( a, a );
-    tabWidget->setTabIcon( index, QIcon( iconPixmap ) );
-}
-
-
-void QvkMainWindow::makeAndSetValidIconForSideBar( int index, QIcon icon )
-{
-    QCoreApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
-
-    int a = 256;
-    QSize size = QSize( a, a );
-
-    QPixmap iconPixmap( icon.pixmap( size ) );
-
-    QFont font;
-    font.setPointSize( 40 );
-    QFontMetrics fontMetrics( font );
-    int textWidth = fontMetrics.width( ui->tabWidgetSideBar->tabToolTip( index ) );
-    int textHight = fontMetrics.height();
-
-    QPixmap workPixmap( size.width() + textHight, size.height() + textHight );
-    workPixmap.fill( Qt::transparent );
-
-    QPainter painter;
-    QPen pen;
-    painter.begin( &workPixmap );
-      painter.setRenderHints( QPainter::Antialiasing, true );
-      painter.setFont( font );
-      painter.drawPixmap( QPoint( textHight/2, 0 ), iconPixmap );
-      pen.setColor( Qt::black );
-      painter.setPen( pen );
-      int x = ( workPixmap.width() - textWidth ) / 2;
-      painter.drawText( x, workPixmap.height() - fontMetrics.descent(), ui->tabWidgetSideBar->tabToolTip( index ) );
-    painter.end();
-
-    QTransform transform;
-    transform.rotate( 90 );
-    workPixmap = workPixmap.transformed( transform, Qt::SmoothTransformation );
-    ui->tabWidgetSideBar->setTabIcon( index, QIcon( workPixmap ) );
-}
-
-
 void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
 {
     QCoreApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
 
 #ifdef Q_OS_LINUX
-    QIcon icon = VK_getIcon( "linux", ":/pictures/linux.png" );
+    QIcon icon = VK_getIcon( "pillepalle", ":/pictures/linux.png" );
 #endif
 #ifdef Q_OS_WIN
-    QIcon icon = VK_getIcon( "linux", ":/pictures/windows.png" );
+    QIcon icon = VK_getIcon( "pillepalle", ":/pictures/windows.png" );
 #endif
 
     int a = 256;
@@ -730,6 +683,19 @@ void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
     label->setPixmap( iconPixmap );
     label->setEnabled( false );
     tabWidget->setCornerWidget( label, Qt::TopRightCorner);
+}
+
+// If new Theme set or nor set red cross
+void QvkMainWindow::slot_audioRedCross()
+{
+    if ( ui->checkBoxAudioOnOff->isChecked() == true )
+    {
+        slot_audioIconOnOff( true );
+    }
+    else
+    {
+        slot_audioIconOnOff( false );
+    }
 }
 
 /*
@@ -751,10 +717,14 @@ void QvkMainWindow::slot_audioIconOnOff( bool state )
       painter.drawLine ( 5, 5, size.width()-5, size.height()-5 );
       painter.drawLine ( 5, size.height()-5, size.width()-5, 5 );
     painter.end();
-    makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAudio ), QIcon( workPixmap ) );
+    vkTheme->makeAndSetValidIcon( ui->tabWidgetScreencast,
+                                  ui->tabWidgetScreencast->indexOf( ui->tabAudio ),
+                                  QIcon( workPixmap ) );
   }
   else{
-    makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAudio ), VK_getIcon( "audio-input-microphone", ":/pictures/screencast/microphone.png" ) );
+    vkTheme->makeAndSetValidIcon( ui->tabWidgetScreencast,
+                                  ui->tabWidgetScreencast->indexOf( ui->tabAudio ),
+                                  VK_getIcon( "audio-input-microphone", ":/pictures/screencast/microphone.png" ) );
   }
 }
 
@@ -1150,7 +1120,7 @@ void QvkMainWindow::VK_set_available_Formats_in_Combox()
         QMimeDatabase mimeDatabase;
         QStringList listKeyVideoMimetype = listKeys.filter( "videomimetype" );
         QMimeType mimetype = mimeDatabase.mimeTypeForName( QString( listKeyVideoMimetype.at( 0 ) ).section( ":", 1 ) );
-        QIcon icon = VK_getIcon( mimetype.iconName(), ":/pictures/screencast/strip.png" );
+        QIcon icon = vkTheme->VK_getIcon( mimetype.iconName(), ":/pictures/screencast/strip.png" );
 
         ui->comboBoxFormat->addItem( icon, // Picture
                                      QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ), // suffix

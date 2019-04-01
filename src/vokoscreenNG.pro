@@ -130,3 +130,6 @@ include(QvkGlobalShortcut/QvkGlobalShortcut.pri)
 # player
 include(player/player.pri)
 
+# theme
+include(theme/theme.pri)
+

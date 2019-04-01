@@ -10,6 +10,7 @@
 #include "QvkSystray.h"
 #include "QvkMagnifierController.h"
 #include "QvkPlayer.h"
+#include "QvkTheme.h"
 
 #ifdef Q_OS_LINUX
 #include "QvkAudioPulse.h"
@@ -95,8 +96,8 @@ private:
 
     QvkPlayer *vkPlayer;
 
-    bool VK_showOnlyFallbackIcons = false;
     QIcon VK_getIcon(QString stringIcon, QString iconNameFallback );
+    QvkTheme *vkTheme;
 
     QvkCameraController *vkCameraController;
 
@@ -112,6 +113,7 @@ private slots:
     void slot_Folder();
     void slot_screenCountChanged(int value );
     void slot_audioIconOnOff(bool state );
+    void slot_audioRedCross();
     void slot_newVideoPath();
     void slot_videoFileSystemWatcherSetButtons();
     void slot_videoFileSystemWatcherSetNewPath();
