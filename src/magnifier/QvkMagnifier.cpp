@@ -2,8 +2,6 @@
 
 #include <QApplication>
 
-// Lupe Rund, Qadratisch, Oval
-
 QvkMagnifier::QvkMagnifier()
 {
 
