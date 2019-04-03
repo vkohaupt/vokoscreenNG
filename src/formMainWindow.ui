@@ -1152,9 +1152,6 @@
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
                      </property>
-                     <property name="tickPosition">
-                      <enum>QSlider::NoTicks</enum>
-                     </property>
                     </widget>
                    </item>
                    <item>
@@ -1165,14 +1162,8 @@
                      <property name="maximum">
                       <number>59</number>
                      </property>
-                     <property name="pageStep">
-                      <number>20</number>
-                     </property>
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="tickPosition">
-                      <enum>QSlider::NoTicks</enum>
                      </property>
                     </widget>
                    </item>

@@ -294,10 +294,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Start recording at</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Hour</source>
         <translation type="unfinished"></translation>
     </message>
@@ -479,6 +475,10 @@
     </message>
     <message>
         <source>Remove window frame</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Time</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

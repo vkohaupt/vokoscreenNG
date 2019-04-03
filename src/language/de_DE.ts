@@ -297,7 +297,7 @@
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Sekunden vor der Aufnahme warteb</translation>
+        <translation>Sekunden vor der Aufnahme warten</translation>
     </message>
     <message>
         <source>Vokoscreen starts minimized</source>

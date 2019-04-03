@@ -5,7 +5,8 @@
 #include <QPixmap>
 #include <QDialog>
 #include <QLabel>
-#include <QDesktopWidget>
+//#include <QDesktopWidget>
+#include <QApplication>
 #include <QTimer>
 
 class QvkMagnifier: public QDialog
