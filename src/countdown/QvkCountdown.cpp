@@ -1,5 +1,4 @@
 #include "QvkCountdown.h"
-#include <QDesktopWidget>
 #include <QTimer>
 #include <QGuiApplication>
 #include <QScreen>
