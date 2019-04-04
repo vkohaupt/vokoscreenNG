@@ -5,10 +5,9 @@
 #include "global.h"
 
 #include <QImageWriter>
-#include <QApplication>
+#include <QGuiApplication>
 #include <QScreen>
 #include <QGuiApplication>
-#include <QDesktopWidget>
 #include <QDesktopServices>
 #include <QDialog>
 #include <QFileDialog>
@@ -25,10 +24,9 @@ QvkScreenshot::QvkScreenshot( QvkMainWindow *value, Ui_formMainWindow *ui_mainwi
 
     regionChoise->setFrameColor( Qt::black );
 
-    QDesktopWidget *desk = QApplication::desktop();
-    connect( desk, SIGNAL( screenCountChanged(int) ), this, SLOT( slot_Screenshot_count_changed( int ) ) );
-    connect( desk, SIGNAL( resized( int ) ),          this, SLOT( slot_Screenshot_count_changed( int ) ) );
-    emit desk->screenCountChanged(0);
+    connect( qApp, SIGNAL( screenAdded( QScreen* ) ),   this, SLOT( slot_screen_count_changed() ) );
+    connect( qApp, SIGNAL( screenRemoved( QScreen* ) ), this, SLOT( slot_screen_count_changed() ) );
+    emit qApp->screenAdded(0);
 
     ui->radioButtonScreenshotFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
     ui->radioButtonScreenshotWindow->setText( tr( "Window") ); // QT Creator sets an ampersand, translation now here
@@ -66,7 +64,7 @@ QvkScreenshot::~QvkScreenshot()
 void QvkScreenshot::makeScreenshotByStart()
 {
     QScreen *screen = QGuiApplication::primaryScreen();
-    pixmap = screen->grabWindow( QApplication::desktop()->winId() );
+    pixmap = screen->grabWindow( 0 );
     ui->labelScreenShotPicture->setAlignment( Qt::AlignCenter );
     ui->labelScreenShotPicture->setPixmap( pixmap.scaled( ui->labelScreenShotPicture->width(),
                                                           ui->labelScreenShotPicture->height(),
@@ -215,7 +213,7 @@ void QvkScreenshot::slot_shot_Screenshot()
     if ( ui->radioButtonScreenshotFullscreen->isChecked() == true )
     {
         QScreen *screen = QGuiApplication::primaryScreen();
-        pixmap = screen->grabWindow( QApplication::desktop()->winId() );
+        pixmap = screen->grabWindow( 0 );
     }
 
     if( ui->radioButtonScreenshotWindow->isChecked() == true )
@@ -227,7 +225,7 @@ void QvkScreenshot::slot_shot_Screenshot()
     if ( ui->radioButtonScreenshotArea->isChecked() == true )
     {
         QScreen *screen = QGuiApplication::primaryScreen();
-        pixmap = screen->grabWindow( QApplication::desktop()->winId(),
+        pixmap = screen->grabWindow( 0,
                                      regionChoise->getXRecordArea(),
                                      regionChoise->getYRecordArea(),
                                      regionChoise->getWidth(),
@@ -275,25 +273,22 @@ void QvkScreenshot::slot_show_Screenshoot()
 }
 
 
-void QvkScreenshot::slot_Screenshot_count_changed( int newCount )
+void QvkScreenshot::slot_screen_count_changed()
 {
-    Q_UNUSED(newCount);
     ui->comboBoxScreenshotScreen->clear();
-    QDesktopWidget *desk = QApplication::desktop();
 
-    QScreen *screen = QGuiApplication::primaryScreen();
-
-    for ( int i = 1; i < desk->screenCount()+1; i++ )
+    QList<QScreen *> screen = QGuiApplication::screens();
+    for ( int i = 0; i < screen.size(); i++ )
     {
-        QString ScreenGeometryX = QString::number( desk->screenGeometry( i-1 ).left() * screen->devicePixelRatio() );
-        QString ScreenGeometryY = QString::number( desk->screenGeometry( i-1 ).top() * screen->devicePixelRatio() );
-        QString ScreenGeometryWidth = QString::number( desk->screenGeometry( i-1 ).width() * screen->devicePixelRatio() );
-        QString ScreenGeometryHeight = QString::number( desk->screenGeometry( i-1 ).height() * screen->devicePixelRatio() );
-        QString stringText = tr( "Display" ) + " " + QString::number( i ) + ":  " + ScreenGeometryWidth + " x " + ScreenGeometryHeight;
-        QString stringData = "x=" + ScreenGeometryX + " " +
-                             "y=" + ScreenGeometryY + " " +
-                             "with=" + ScreenGeometryWidth + " " +
-                             "height=" + ScreenGeometryHeight;
+        QString X = QString::number( screen.at(i)->geometry().left() * screen.at(i)->devicePixelRatio() );
+        QString Y = QString::number( screen.at(i)->geometry().top() * screen.at(i)->devicePixelRatio() );
+        QString Width = QString::number( screen.at(i)->geometry().width() * screen.at(i)->devicePixelRatio() );
+        QString Height = QString::number( screen.at(i)->geometry().height() * screen.at(i)->devicePixelRatio() );
+        QString stringText = screen.at(i)->name() + " " + ":  " + Width + " x " + Height;
+        QString stringData = "x=" + X + " " +
+                             "y=" + Y + " " +
+                             "with=" + Width + " " +
+                             "height=" + Height;
         ui->comboBoxScreenshotScreen->addItem( stringText, stringData );
     }
 
