@@ -336,7 +336,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QDesktopWidget *desk = QApplication::desktop();
     connect( desk, SIGNAL( screenCountChanged(int) ), this, SLOT( slot_screenCountChanged( int ) ) );
     connect( desk, SIGNAL( resized( int ) ),          this, SLOT( slot_screenCountChanged( int ) ) );
-
+    emit desk->screenCountChanged(0);
 
     // **************** Begin Screenshot *****************************
     QvkScreenshot *vkScreenshot = new QvkScreenshot( this, ui );
