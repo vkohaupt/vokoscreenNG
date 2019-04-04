@@ -1,15 +1,17 @@
 #include "QvkCountdown.h"
 #include <QDesktopWidget>
 #include <QTimer>
-#include <QApplication>
+#include <QGuiApplication>
+#include <QScreen>
 
 QvkCountdown::QvkCountdown()
 {
-    QDesktopWidget *desk = QApplication::desktop();
+    QScreen *screen = QGuiApplication::primaryScreen();
+
     Width = 300;
     Height = 300;;
-    x = ( desk->screenGeometry().width() / 2 ) - ( Width / 2 );
-    y = ( desk->screenGeometry().height() / 2 ) -( Height / 2 );
+    x = ( screen->geometry().width() / 2 ) - ( Width / 2 );
+    y = ( screen->geometry().height() / 2 ) -( Height / 2 );
 
     // Die Optionen Qt::Tool sollte nicht angewendet werden da bei Auswahl eines Fenster der Countdown nicht angezeigt wird.
     // Die Option Qt::ToolTip wäre eine möglichkeit, gefällt mir aber Optisch nicht da ein Rahmen angezeigt wird.
