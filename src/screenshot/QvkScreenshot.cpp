@@ -24,10 +24,6 @@ QvkScreenshot::QvkScreenshot( QvkMainWindow *value, Ui_formMainWindow *ui_mainwi
 
     regionChoise->setFrameColor( Qt::black );
 
-    connect( qApp, SIGNAL( screenAdded( QScreen* ) ),   this, SLOT( slot_screen_count_changed() ) );
-    connect( qApp, SIGNAL( screenRemoved( QScreen* ) ), this, SLOT( slot_screen_count_changed() ) );
-    emit qApp->screenAdded(Q_NULLPTR);
-
     ui->radioButtonScreenshotFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
     ui->radioButtonScreenshotWindow->setText( tr( "Window") ); // QT Creator sets an ampersand, translation now here
 
@@ -270,29 +266,6 @@ void QvkScreenshot::slot_show_Screenshoot()
         msgBox.setIcon( QMessageBox::Information );
         msgBox.exec();
     }
-}
-
-
-void QvkScreenshot::slot_screen_count_changed()
-{
-    ui->comboBoxScreenshotScreen->clear();
-
-    QList<QScreen *> screen = QGuiApplication::screens();
-    for ( int i = 0; i < screen.size(); i++ )
-    {
-        QString X = QString::number( screen.at(i)->geometry().left() * screen.at(i)->devicePixelRatio() );
-        QString Y = QString::number( screen.at(i)->geometry().top() * screen.at(i)->devicePixelRatio() );
-        QString Width = QString::number( screen.at(i)->geometry().width() * screen.at(i)->devicePixelRatio() );
-        QString Height = QString::number( screen.at(i)->geometry().height() * screen.at(i)->devicePixelRatio() );
-        QString stringText = screen.at(i)->name() + " " + ":  " + Width + " x " + Height;
-        QString stringData = "x=" + X + " " +
-                             "y=" + Y + " " +
-                             "with=" + Width + " " +
-                             "height=" + Height;
-        ui->comboBoxScreenshotScreen->addItem( stringText, stringData );
-    }
-
-    ui->comboBoxScreenshotScreen->addItem( tr( "All Displays" ), -1 );
 }
 
 

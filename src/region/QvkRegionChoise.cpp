@@ -8,7 +8,6 @@
 #include <QBitmap>
 #include <QPaintEvent>
 #include <QIcon>
-#include <QScreen>
 
 #ifdef Q_OS_LINUX
   #include <QX11Info>
@@ -50,7 +49,7 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
 
     setMouseTracking( true );
 
-    QScreen *screen = QGuiApplication::primaryScreen();
+    screen = QGuiApplication::primaryScreen();
 
 #ifdef Q_OS_LINUX
     resize( screen->availableSize().width(), screen->availableSize().height() );
@@ -1163,7 +1162,7 @@ int QvkRegionChoise::getY()
  */
 int QvkRegionChoise::getXRecordArea()
 {
-  return frame_X + framePenWidth/2;
+  return (frame_X + framePenWidth/2 ) * screen->devicePixelRatio();
 }
 
 
@@ -1172,7 +1171,7 @@ int QvkRegionChoise::getXRecordArea()
  */
 int QvkRegionChoise::getYRecordArea()
 {
-  return  frame_Y + framePenWidth/2;
+  return  ( frame_Y + framePenWidth/2 ) * screen->devicePixelRatio();
 }
 
 
@@ -1181,7 +1180,7 @@ int QvkRegionChoise::getYRecordArea()
  */
 int QvkRegionChoise::getHeight()
 {
-  return frame_height - framePenWidth;
+  return ( frame_height - framePenWidth ) * screen->devicePixelRatio();
 }
 
 
@@ -1190,7 +1189,7 @@ int QvkRegionChoise::getHeight()
  */
 int QvkRegionChoise::getWidth()
 {
-  return frame_Width - framePenWidth;
+  return ( frame_Width - framePenWidth ) * screen->devicePixelRatio();
 }
 
 

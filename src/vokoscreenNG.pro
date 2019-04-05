@@ -133,3 +133,5 @@ include(player/player.pri)
 # theme
 include(theme/theme.pri)
 
+# screenManager
+include(screenManager/screenManager.pri)

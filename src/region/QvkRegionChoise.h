@@ -5,6 +5,7 @@
 #include "ui_settings.h"
 
 #include <QWidget>
+#include <QScreen>
 
 class QvkRegionChoise : public QWidget
 { 
@@ -42,6 +43,8 @@ protected:
 
 
 private:
+  QScreen *screen;
+
   enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle, Settings };
   Handle handlePressed;
   Handle handleUnderMouse;

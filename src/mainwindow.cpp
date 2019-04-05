@@ -6,6 +6,7 @@
 #include "QvkGlobalShortcut.h"
 #include "QvkLogController.h"
 #include "global.h"
+#include "QvkScreenManager.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -333,10 +334,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     VK_gst_formatVideoAudoicodec_available();
     VK_gst_Elements_available();
 
-    QDesktopWidget *desk = QApplication::desktop();
-    connect( desk, SIGNAL( screenCountChanged(int) ), this, SLOT( slot_screenCountChanged( int ) ) );
-    connect( desk, SIGNAL( resized( int ) ),          this, SLOT( slot_screenCountChanged( int ) ) );
-    emit desk->screenCountChanged(0);
+    QvkScreenManager *screenManager = new QvkScreenManager;
+    connect( screenManager, SIGNAL( signal_clear_widget() ),                          this, SLOT( slot_clearWidgets() ) );
+    connect( screenManager, SIGNAL( signal_screen_count_changed( QString, QString) ), this, SLOT( slot_screenCountChanged( QString, QString ) ) );
+    emit qApp->screenAdded(Q_NULLPTR);
+
 
     // **************** Begin Screenshot *****************************
     QvkScreenshot *vkScreenshot = new QvkScreenshot( this, ui );
@@ -1649,39 +1651,18 @@ QString QvkMainWindow::get_height_From_Screen()
 }
 
 
-void QvkMainWindow::slot_screenCountChanged( int value )
+void QvkMainWindow::slot_clearWidgets()
 {
-    Q_UNUSED(value);
     ui->comboBoxScreencastScreen->clear();
-    QList <QScreen *> screen = QGuiApplication::screens();
-    qDebug().noquote() << global::nameOutput << "Detected count screens:" << screen.count();
-    qDebug();
-    for ( int x = 0 ; x <= screen.count()-1; x++ )
-    {
-        qDebug().noquote() << global::nameOutput << "Name from screen: " << screen.at(x)->name();
-        qDebug().noquote() << global::nameOutput << "Screen available desktop width :" << QString::number( screen.at(x)->geometry().width() * screen.at(x)->devicePixelRatio() );
-        qDebug().noquote() << global::nameOutput << "Screen available desktop height:" << QString::number( screen.at(x)->geometry().height() * screen.at(x)->devicePixelRatio() );
-        qDebug().noquote() << global::nameOutput << "DevicePixelRatio:" << screen.at(x)->devicePixelRatio() << " (Normal displays is 1, Retina display is 2)";
-        qDebug().noquote() << global::nameOutput << "Vertical refresh rate of the screen in Hz:" << screen.at(x)->refreshRate();
-        qDebug().noquote() << global::nameOutput << "Screen orientation" << screen.at(x)->orientation();
-        qDebug().noquote() << global::nameOutput << "Color depth of the screen: " << screen.at(x)->depth();
-        qDebug().noquote() << global::nameOutput << "Model from screen: " << screen.at(x)->model();
-        qDebug().noquote() << global::nameOutput << "Manufactur from screen: " << screen.at(x)->manufacturer();
-        qDebug().noquote() << global::nameOutput << "SerialNumber from screen: " << screen.at(x)->serialNumber();
+    ui->comboBoxScreenshotScreen->clear();
+}
 
-        QDesktopWidget *desk = QApplication::desktop();
-        QString X = QString::number( desk->screenGeometry( x ).left() * screen.at(x)->devicePixelRatio() );
-        QString Y = QString::number( desk->screenGeometry( x ).top() * screen.at(x)->devicePixelRatio() );
-        QString Width = QString::number( desk->screenGeometry( x ).width() * screen.at(x)->devicePixelRatio() );
-        QString Height = QString::number( desk->screenGeometry( x ).height() * screen.at(x)->devicePixelRatio() );
-        QString stringText = screen.at(x)->name() + ":  " + Width + " x " + Height;
-        QString stringData = "x=" + X + " " +
-                             "y=" + Y + " " +
-                             "with=" + Width + " " +
-                             "height=" + Height;
-        ui->comboBoxScreencastScreen->addItem( stringText, stringData );
-        qDebug().noquote() << global::nameOutput << "ItemText in Combobox:" << ui->comboBoxScreencastScreen->itemText(x);
-        qDebug().noquote() << global::nameOutput << "ItemData in Combobox:" << ui->comboBoxScreencastScreen->itemData(x).toString();
-        qDebug();
-    }
+
+void QvkMainWindow::slot_screenCountChanged( QString stringText, QString stringData )
+{
+    ui->comboBoxScreencastScreen->addItem( stringText, stringData );
+    ui->comboBoxScreenshotScreen->addItem( stringText, stringData );
+    qDebug().noquote() << global::nameOutput << "ItemText in Combobox:" << stringText;
+    qDebug().noquote() << global::nameOutput << "ItemData in Combobox:" << stringData;
+    qDebug();
 }
