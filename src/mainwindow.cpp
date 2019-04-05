@@ -32,19 +32,19 @@
 
 #ifdef Q_OS_LINUX
 QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
-                                          ui(new Ui::formMainWindow),
-                                          vkWinInfo(new QvkWinInfo),
-                                          vkCountdown(new QvkCountdown),
-                                          vkRegionChoise(new QvkRegionChoise)
+                                                ui(new Ui::formMainWindow),
+                                                vkWinInfo(new QvkWinInfo),
+                                                vkCountdown(new QvkCountdown),
+                                                vkRegionChoise(new QvkRegionChoise)
 #endif
 
 #ifdef Q_OS_WIN
 QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
-                                          ui(new Ui::formMainWindow),
-                                          vkWinInfo(new QvkWinInfo),
-                                          vkCountdown(new QvkCountdown),
-                                          vkRegionChoise(new QvkRegionChoise),
-                                          vkAudioWindows(new QvkAudioWindows(ui))
+                                                ui(new Ui::formMainWindow),
+                                                vkWinInfo(new QvkWinInfo),
+                                                vkCountdown(new QvkCountdown),
+                                                vkRegionChoise(new QvkRegionChoise),
+                                                vkAudioWindows(new QvkAudioWindows(ui))
 #endif
 {
     ui->setupUi(this);
