@@ -15,7 +15,7 @@ QvkTheme::QvkTheme( Ui_formMainWindow *ui_formMainWindow )
 
     connect( this, SIGNAL( signal_newTheme() ), this, SLOT( slot_setNewTheme() ) );
 
-    slot_searchNewTheme();
+    slot_setNewTheme();
 }
 
 

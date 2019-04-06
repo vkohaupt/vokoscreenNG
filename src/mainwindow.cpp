@@ -49,6 +49,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 {
     ui->setupUi(this);
 
+    ui->tabWidgetSideBar->removeTab(2);
+
     QvkTheme *vkTheme = new QvkTheme( ui );
     Q_UNUSED(vkTheme);
 
