@@ -686,7 +686,7 @@
                </widget>
               </item>
               <item row="1" column="5">
-               <widget class="QToolButton" name="toolButtonVideoCodecHelp">
+               <widget class="QToolButton" name="help_screencast_codec">
                 <property name="text">
                  <string notr="true">Help</string>
                 </property>
@@ -696,7 +696,7 @@
                <widget class="QComboBox" name="comboBoxAudioCodec"/>
               </item>
               <item row="0" column="5">
-               <widget class="QToolButton" name="toolButtonFramesHelp">
+               <widget class="QToolButton" name="help_screencast_frames">
                 <property name="toolTip">
                  <string notr="true">Help</string>
                 </property>
@@ -979,7 +979,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="QToolButton" name="toolButtonHelpScale">
+               <widget class="QToolButton" name="help_screencast_scale">
                 <property name="toolTip">
                  <string notr="true"/>
                 </property>
@@ -1013,7 +1013,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="QToolButton" name="toolButtonHelpNoMouseCursor">
+               <widget class="QToolButton" name="help_screencast_nomousecursor">
                 <property name="toolTip">
                  <string notr="true"/>
                 </property>
@@ -2477,10 +2477,7 @@
                </widget>
               </item>
               <item row="0" column="2">
-               <widget class="QToolButton" name="toolButtonHelpCamera">
-                <property name="toolTip">
-                 <string notr="true"/>
-                </property>
+               <widget class="QToolButton" name="help_camera_camera">
                 <property name="text">
                  <string notr="true">Help</string>
                 </property>
@@ -2591,7 +2588,7 @@
              </widget>
             </item>
             <item>
-             <layout class="QGridLayout" name="gridLayout_10" rowstretch="0,0" columnstretch="0,0,0">
+             <layout class="QGridLayout" name="gridLayout_10" rowstretch="0,0" columnstretch="0,0">
               <property name="verticalSpacing">
                <number>0</number>
               </property>
@@ -2643,13 +2640,6 @@
                  </widget>
                 </item>
                </layout>
-              </item>
-              <item row="0" column="2">
-               <widget class="QToolButton" name="help_camera_windowsize">
-                <property name="text">
-                 <string notr="true">Help</string>
-                </property>
-               </widget>
               </item>
               <item row="1" column="0">
                <layout class="QHBoxLayout" name="horizontalLayout_44">
@@ -2820,17 +2810,17 @@ p, li { white-space: pre-wrap; }
   <tabstop>help_screencast_audio</tabstop>
   <tabstop>scrollAreaAudioDevice</tabstop>
   <tabstop>spinBoxFrames</tabstop>
-  <tabstop>toolButtonFramesHelp</tabstop>
+  <tabstop>help_screencast_frames</tabstop>
   <tabstop>comboBoxVideoCodec</tabstop>
   <tabstop>comboBoxx264Preset</tabstop>
   <tabstop>sliderX264</tabstop>
-  <tabstop>toolButtonVideoCodecHelp</tabstop>
+  <tabstop>help_screencast_codec</tabstop>
   <tabstop>comboBoxAudioCodec</tabstop>
   <tabstop>checkBoxScale</tabstop>
   <tabstop>comboBoxScale</tabstop>
-  <tabstop>toolButtonHelpScale</tabstop>
+  <tabstop>help_screencast_scale</tabstop>
   <tabstop>checkBoxMouseCursorOnOff</tabstop>
-  <tabstop>toolButtonHelpNoMouseCursor</tabstop>
+  <tabstop>help_screencast_nomousecursor</tabstop>
   <tabstop>timeEditStartTime</tabstop>
   <tabstop>sliderHour</tabstop>
   <tabstop>sliderMinute</tabstop>
@@ -2882,7 +2872,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>tabWidgetCamera</tabstop>
   <tabstop>checkBoxCameraOnOff</tabstop>
   <tabstop>comboBoxCamera</tabstop>
-  <tabstop>toolButtonHelpCamera</tabstop>
   <tabstop>tabWidgetLog</tabstop>
   <tabstop>textBrowserLog</tabstop>
   <tabstop>pushButtonSendReport</tabstop>
