@@ -161,7 +161,7 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
     }
 
     int countFiles = getCountFileToDownload( tempPathFileName );
-    qDebug().noquote() << global::nameOutput << "HTML file parsed, downloading" << countFiles << "files";
+    //qDebug().noquote() << global::nameOutput << "HTML file parsed, downloading" << countFiles << "files";
     int counter = 0;
     QTextStream textStream( &file );
     while( !textStream.atEnd() )
@@ -221,7 +221,7 @@ void QvkHelp::slot_showHelp( QString tempPathFileName )
     file.close();
 
     show();
-    qDebug().noquote() << global::nameOutput << "Show help";
+    //qDebug().noquote() << global::nameOutput << "Show help";
 
     dir.setCurrent( currentdir );
 
