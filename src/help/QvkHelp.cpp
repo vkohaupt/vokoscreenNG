@@ -13,10 +13,10 @@
  * QToolbutton -> help_screencast_fullscreen
  * Remote file -> help_screencast_fullscreen.html
  *
+ * We write as snake_case, so the underline character is the seperator.
  * The first section is help, this we need for set for icon and installEventFilter, see constructor.
  * The second section is the tab in the sidebar and the subdir on remote.
  * The third section is the name from the function that we want help.
- * We write as snake_case, so the underline character is the seperator.
  * See also QvkHelp::eventFilter(QObject *object, QEvent *event)
  */
 
