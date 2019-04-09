@@ -613,8 +613,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>16</width>
-                      <height>16</height>
+                      <width>535</width>
+                      <height>82</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1200,7 +1200,7 @@
                </widget>
               </item>
               <item alignment="Qt::AlignTop">
-               <widget class="QToolButton" name="toolButtonHelpStartTime">
+               <widget class="QToolButton" name="help_screencast_starttimer">
                 <property name="toolTip">
                  <string notr="true"/>
                 </property>
@@ -1338,7 +1338,7 @@
                </spacer>
               </item>
               <item alignment="Qt::AlignTop">
-               <widget class="QToolButton" name="toolButtonHelpStopRecordingAfter">
+               <widget class="QToolButton" name="help_screencast_stoptimer">
                 <property name="toolTip">
                  <string notr="true"/>
                 </property>
@@ -1417,7 +1417,7 @@
                </widget>
               </item>
               <item alignment="Qt::AlignTop">
-               <widget class="QToolButton" name="toolButtonHelpVideoPath">
+               <widget class="QToolButton" name="help_screencast_videopath">
                 <property name="toolTip">
                  <string notr="true"/>
                 </property>
@@ -1499,7 +1499,7 @@
                </widget>
               </item>
               <item alignment="Qt::AlignTop">
-               <widget class="QToolButton" name="toolButtonHelpLimitOfFreeDiskSpace">
+               <widget class="QToolButton" name="help_screencast_limitoffreediskspace">
                 <property name="text">
                  <string notr="true">Help</string>
                 </property>
@@ -1537,7 +1537,7 @@
                </spacer>
               </item>
               <item alignment="Qt::AlignTop">
-               <widget class="QToolButton" name="toolButtonHelpShowInSystray">
+               <widget class="QToolButton" name="help_screencast_showinsystray">
                 <property name="text">
                  <string notr="true">Help</string>
                 </property>
@@ -1607,7 +1607,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="QToolButton" name="toolButtonHelpMinimizedWhenRecordingStarts">
+               <widget class="QToolButton" name="help_screencast_minimizedwhenrecordingstarts">
                 <property name="text">
                  <string notr="true">Help</string>
                 </property>
@@ -1645,7 +1645,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="QToolButton" name="toolButtonHelpStartsMinimized">
+               <widget class="QToolButton" name="help_screencast_startsminimized">
                 <property name="text">
                  <string notr="true">Help</string>
                 </property>
@@ -1670,7 +1670,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QToolButton" name="toolButton">
+               <widget class="QToolButton" name="help_screencast_deleteallsettings">
                 <property name="text">
                  <string>Help</string>
                 </property>
@@ -1710,7 +1710,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="QToolButton" name="toolButtonLookForUpdates">
+               <widget class="QToolButton" name="help_screencast_lookforupdates">
                 <property name="text">
                  <string>Help</string>
                 </property>
@@ -1802,8 +1802,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>20</width>
-                   <height>96</height>
+                   <width>361</width>
+                   <height>299</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -1915,7 +1915,7 @@
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_10">
               <item>
-               <widget class="QToolButton" name="toolButtonAvalaibleHelp">
+               <widget class="QToolButton" name="help_screencast_avalaible">
                 <property name="toolTip">
                  <string notr="true"/>
                 </property>
@@ -2831,28 +2831,28 @@ p, li { white-space: pre-wrap; }
   <tabstop>sliderHour</tabstop>
   <tabstop>sliderMinute</tabstop>
   <tabstop>checkBoxStartTime</tabstop>
-  <tabstop>toolButtonHelpStartTime</tabstop>
+  <tabstop>help_screencast_starttimer</tabstop>
   <tabstop>checkBoxStopRecordingAfter</tabstop>
   <tabstop>spinBoxStopRecordingAfterHouers</tabstop>
   <tabstop>spinBoxStopRecordingAfterMinutes</tabstop>
   <tabstop>spinBoxStopRecordingAfterSeconds</tabstop>
-  <tabstop>toolButtonHelpStopRecordingAfter</tabstop>
+  <tabstop>help_screencast_stoptimer</tabstop>
   <tabstop>lineEditVideoPath</tabstop>
   <tabstop>PushButtonVideoPath</tabstop>
-  <tabstop>toolButtonHelpVideoPath</tabstop>
+  <tabstop>help_screencast_videopath</tabstop>
   <tabstop>spinBoxDiskFreeSpace</tabstop>
-  <tabstop>toolButtonHelpLimitOfFreeDiskSpace</tabstop>
+  <tabstop>help_screencast_limitoffreediskspace</tabstop>
   <tabstop>checkBoxShowInSystray</tabstop>
-  <tabstop>toolButtonHelpShowInSystray</tabstop>
+  <tabstop>help_screencast_showinsystray</tabstop>
   <tabstop>checkBoxMinimizedWhenRecordingStarts</tabstop>
   <tabstop>spinBoxMinimizedWhenRecordingStarts</tabstop>
-  <tabstop>toolButtonHelpMinimizedWhenRecordingStarts</tabstop>
+  <tabstop>help_screencast_minimizedwhenrecordingstarts</tabstop>
   <tabstop>checkBoxStartsMinimized</tabstop>
-  <tabstop>toolButtonHelpStartsMinimized</tabstop>
+  <tabstop>help_screencast_startsminimized</tabstop>
   <tabstop>checkBoxLookForUpdates</tabstop>
-  <tabstop>toolButtonLookForUpdates</tabstop>
+  <tabstop>help_screencast_lookforupdates</tabstop>
   <tabstop>scrollAreaAvailable</tabstop>
-  <tabstop>toolButtonAvalaibleHelp</tabstop>
+  <tabstop>help_screencast_avalaible</tabstop>
   <tabstop>tabWidgetScreenshot</tabstop>
   <tabstop>comboBoxScreenshotScreen</tabstop>
   <tabstop>toolButtonHelpScreenshotScreen</tabstop>
