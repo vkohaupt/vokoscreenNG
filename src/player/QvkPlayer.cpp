@@ -523,6 +523,13 @@ void QvkPlayer::mousePressEvent( QMouseEvent *event )
         }
     }
 
+    if ( ( event->button() == Qt::RightButton ) and ( metaFrame->isVisible() == true ) )
+    {
+        metaFrame->hide();
+        metaLabel->hide();
+        return;
+    }
+
     if ( event->button() == Qt::RightButton )
     {
         if ( mediaPlayer->isMetaDataAvailable() == true )
@@ -563,12 +570,6 @@ void QvkPlayer::mousePressEvent( QMouseEvent *event )
             metaFrame->show();
             metaFrame->resize( QSize( metaLabel->size().width() + 20, metaLabel->size().height() ) );
         }
-    }
-
-    if ( event->button() == Qt::LeftButton )
-    {
-        metaFrame->hide();
-        metaLabel->hide();
     }
 }
 
