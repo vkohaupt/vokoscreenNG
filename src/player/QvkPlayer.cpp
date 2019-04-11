@@ -397,11 +397,15 @@ void QvkPlayer::slot_positionChanged( qint64 value )
 
 void QvkPlayer::slot_setNewImage( QImage image )
 {
-    ui->labelPlayer->setPixmap( QPixmap::fromImage( image.scaled( ui->framePlayer->width(),
+//    QCoreApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
+/*    ui->labelPlayer->setPixmap( QPixmap::fromImage( image.scaled( ui->framePlayer->width(),
                                                     ui->framePlayer->height(),
                                                     Qt::KeepAspectRatio,
                                                     Qt::SmoothTransformation ),
                                 Qt::AutoColor) );
+*/
+    QIcon icon( QPixmap::fromImage( image ) );
+    ui->labelPlayer->setPixmap( icon.pixmap( ui->framePlayer->width(), ui->framePlayer->height() ) );
 }
 
 
