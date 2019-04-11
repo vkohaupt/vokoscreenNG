@@ -148,14 +148,6 @@
         <source>Please install a imageviewer.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Display</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>All Displays</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>QvkSystray</name>

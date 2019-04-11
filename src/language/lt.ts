@@ -1,55 +1,55 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="tr_TR" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="lt" version="2.1">
 <context>
     <name>AreaSettingsDialog</name>
     <message>
         <source>Area Settings</source>
-        <translation>Alan Ayarları</translation>
+        <translation>Srities nustatymai</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation>Tamam</translation>
+        <translation>Gerai</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>İptal</translation>
+        <translation>Atsisakyti</translation>
     </message>
 </context>
 <context>
     <name>QvkAudioPulse</name>
     <message>
         <source>File can not be opened</source>
-        <translation>Dosya açılamıyor</translation>
+        <translation>Failas negali būti atvertas</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraController</name>
     <message>
         <source>Form</source>
-        <translation>Biçim</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Yatay çevir</translation>
+        <translation>Apversti horizontaliai</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Dikey çevir</translation>
+        <translation>Apversti vertikaliai</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Ters çevir</translation>
+        <translation>Invertuoti</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Gri</translation>
+        <translation>Pilka</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Siyah-ve-beyaz</translation>
+        <translation>Juoda ir balta</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Pencere çerçevesini kaldır</translation>
+        <translation>Šalinti lango rėmelį</translation>
     </message>
     <message>
         <source>160x120</source>
@@ -68,145 +68,145 @@
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Pencereye Geç</translation>
+        <translation>Perjungti į langą</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Tam Ekrana Geç</translation>
+        <translation>Perjungti į visą ekraną</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Tam Ekran</translation>
+        <translation>Visas ekranas</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Pencere</translation>
+        <translation>Langas</translation>
     </message>
     <message>
         <source>Detect a Wayland desktop session</source>
-        <translation>Wayland masaüstü oturumu algıla</translation>
+        <translation>Aptikti Wayland darbalaukio seansą</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Dosya yöneticisi bulunamadı</translation>
+        <translation>Nerasta jokios failų tvarkytuvės.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Lütfen bir dosya yöneticisi yükleyin.</translation>
+        <translation>Įdiekite failų tvarkytuvę.</translation>
     </message>
     <message>
         <source>Desktop session is a Wayland session</source>
-        <translation>Masaüstü oturumu bir Wayland oturumu</translation>
+        <translation>Darbalaukio seansas yra Wayland seansas</translation>
     </message>
     <message>
         <source>To time no Wayland supported. A screencast or a screenshot show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Zaman zaman Wayland desteklenmedi. Bir ekran görüntüsü veya siyah bir ekran gösterilir. Lütfen çıkış yapın ve bir X11 Masaüstü oturumu başlatın</translation>
+        <translation>Šiuo metu Wayland nėra palaikomas. Ekrano įrašas ar ekrano kopija rodys juodą ekraną. Atsijunkite ir paleiskite X11 darbalaukio seansą</translation>
     </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
-        <translation>Dosya Aç</translation>
+        <translation>Atverti failą</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Bölge</translation>
+        <translation>Sritis</translation>
     </message>
 </context>
 <context>
     <name>QvkScreenshot</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Tam Ekran</translation>
+        <translation>Visas ekranas</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Pencere</translation>
+        <translation>Langas</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Dosya yöneticisi bulunamadı</translation>
+        <translation>Nerasta jokios failų tvarkytuvės.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Lütfen bir dosya yöneticisi yükleyin.</translation>
+        <translation>Įdiekite failų tvarkytuvę.</translation>
     </message>
     <message>
         <source>No imageviewer found.</source>
-        <translation>Resim gösterici bulunamadı.</translation>
+        <translation>Nerasta jokios paveikslų žiūryklės.</translation>
     </message>
     <message>
         <source>Please install a imageviewer.</source>
-        <translation>Lütfen bir resim gösterici yükleyin.</translation>
+        <translation>Įdiekite paveikslų žiūryklę.</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation>Ekran</translation>
+        <translation>Ekranas</translation>
     </message>
     <message>
         <source>All Displays</source>
-        <translation>Tüm Ekranlar</translation>
+        <translation>Visi ekranai</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Başlat</translation>
+        <translation>Pradėti</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Durdur</translation>
+        <translation>Stabdyti</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Duraklat</translation>
+        <translation>Pristabdyti</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Devam</translation>
+        <translation>Tęsti</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Çıkış</translation>
+        <translation>Išeiti</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Konuşma</translation>
+        <translation>Dialogas</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Yatay çevir</translation>
+        <translation>Apversti horizontaliai</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Dikey çevir</translation>
+        <translation>Apversti vertikaliai</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Ters çevir</translation>
+        <translation>Invertuoti</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Gri</translation>
+        <translation>Pilka</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Siyah-ve-beyaz</translation>
+        <translation>Juoda ir balta</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Pencere çerçevesini kaldır</translation>
+        <translation>Šalinti lango rėmelį</translation>
     </message>
     <message>
         <source>160x120</source>
@@ -218,7 +218,7 @@
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Kamera ayarları</translation>
+        <translation>Kameros nustatymai</translation>
     </message>
     <message>
         <source>640x480</source>
@@ -229,171 +229,171 @@
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Bölge</translation>
+        <translation>Sritis</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Sıfırla</translation>
+        <translation>Atstatyti</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Büyütme</translation>
+        <translation>Didinimas</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Geri sayım</translation>
+        <translation>Atvirkštinis skaičiavimas</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Video boyutu:</translation>
+        <translation>Vaizdo dydis:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Boş disk alanı:</translation>
+        <translation>Laisva vieta diske:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Bilgilendirme</translation>
+        <translation>Informacija</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Kayıt Süresi:</translation>
+        <translation>Įrašinėjimo laikas:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Ses</translation>
+        <translation>Garsas</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Çerçeveler</translation>
+        <translation>Kadrai</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Video çözücü</translation>
+        <translation>Vaizdo kodekas</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Biçim</translation>
+        <translation>Formatas</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Ses çözücü</translation>
+        <translation>Garso kodekas</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>Kalite</translation>
+        <translation>Kokybė</translation>
     </message>
     <message>
         <source>Scale</source>
-        <translation>Ölçek</translation>
+        <translation>Mastelis</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Fare imlecini kaydetme</translation>
+        <translation>Neįrašinėti pelės žymeklio</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Saat</translation>
+        <translation>Val.</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Dakika</translation>
+        <translation>Min.</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Zamanlayıcıyı başlat</translation>
+        <translation>Paleisti laikmatį</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Sonra kaydı durdur</translation>
+        <translation>Stabdyti įrašinėjimą po</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Saat</translation>
+        <translation>Val.</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Dakika</translation>
+        <translation>Min.</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Saniye</translation>
+        <translation>Sek.</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Video yolu</translation>
+        <translation>Vaizdo įrašo kelias</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Boş disk alanı sınırı</translation>
+        <translation>Laisvos vietos diske apribojimas</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Sistem tepsisinde göster</translation>
+        <translation>Rodyti sistemos dėkle</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Kayıttan önce az bekleyin</translation>
+        <translation>Luktelėti sekundėlę prieš įrašinėjant</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Güncellemelere bak</translation>
+        <translation>Tikrinti ar yra atnaujinimų</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Yardım</translation>
+        <translation>Žinynas</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Video</translation>
+        <translation>Vaizdas</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Mevcut</translation>
+        <translation>Prieinama</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Mevcut değil</translation>
+        <translation>Neprieinama</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Başlat</translation>
+        <translation>Pradėti</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Durdur</translation>
+        <translation>Stabdyti</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Duraklat</translation>
+        <translation>Pristabdyti</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Devam</translation>
+        <translation>Tęsti</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Oynat</translation>
+        <translation>Groti</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Dizin</translation>
+        <translation>Aplankas</translation>
     </message>
     <message>
         <source>Hide this Window</source>
-        <translation>Bu Pencereyi Gizle</translation>
+        <translation>Slėpti šį langą</translation>
     </message>
     <message>
         <source>Picturepath</source>
-        <translation>Resim yolu</translation>
+        <translation>Paveikslo kelias</translation>
     </message>
     <message>
         <source>Shot</source>
-        <translation>Çıktı</translation>
+        <translation>Fotografuoti</translation>
     </message>
     <message>
         <source>Show</source>
-        <translation>Göster</translation>
+        <translation>Rodyti</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -401,39 +401,39 @@
     </message>
     <message>
         <source>Invert</source>
-        <translation>Ters çevir</translation>
+        <translation>Invertuoti</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Gri</translation>
+        <translation>Pilka</translation>
     </message>
     <message>
         <source>Send Report</source>
-        <translation>Rapor Gönder</translation>
+        <translation>Siųsti ataskaitą</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
-        <translation>CTRL+SHIFT+F10</translation>
+        <translation>VALD+LYG2+F10</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F11</source>
-        <translation>CTRL+SHIFT+F11</translation>
+        <translation>VALD+LYG2+F11</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F12</source>
-        <translation>CTRL+SHIFT+F12</translation>
+        <translation>VALD+LYG2+F12</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Son kaydı oynat</translation>
+        <translation>Groti paskiausią įrašą</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Dosya aç</translation>
+        <translation>Atverti aplanką</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation>CTRL+SHIFT+F8</translation>
+        <translation>VALD+LYG2+F8</translation>
     </message>
     <message>
         <source>200x200</source>
@@ -449,78 +449,78 @@
     </message>
     <message>
         <source>Delete all settings at the next start</source>
-        <translation>Bir sonraki başlangıçta tüm ayarları sil</translation>
+        <translation>Kito paleidimo metu ištrinti visus nustatymus</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Kayıt başladığında simge durumuna küçült</translation>
+        <translation>Prasidėjus įrašinėjimui, suskleisti</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Küçültülmüş başlat</translation>
+        <translation>Pasileidžia suskleista</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Yatay çevir</translation>
+        <translation>Apversti horizontaliai</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Dikey çevir</translation>
+        <translation>Apversti vertikaliai</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Siyah-ve-beyaz</translation>
+        <translation>Juoda ir balta</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Pencere çerçevesini kaldır</translation>
+        <translation>Šalinti lango rėmelį</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation>Zaman</translation>
+        <translation>Laikas</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Oynat</translation>
+        <translation>Groti</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Duraklat</translation>
+        <translation>Pristabdyti</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Durdur</translation>
+        <translation>Stabdyti</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Dosya Aç</translation>
+        <translation>Atverti failą</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Tam Ekran</translation>
+        <translation>Visas ekranas</translation>
     </message>
     <message>
         <source>Move menue</source>
-        <translation>Menüyü taşı</translation>
+        <translation>Perkelti meniu</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Önceki çerçeve</translation>
+        <translation>Ankstesnis kadras</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Sonraki çerçeve</translation>
+        <translation>Kitas kadras</translation>
     </message>
     <message>
         <source>Volume</source>
-        <translation>Ses</translation>
+        <translation>Garsis</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Sessiz</translation>
+        <translation>Nutildyti</translation>
     </message>
 </context>
 </TS>

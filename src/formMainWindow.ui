@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <property name="iconSize">
            <size>
@@ -2776,7 +2776,7 @@ p, li { white-space: pre-wrap; }
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="toolButtonHelpReport">
+           <widget class="QToolButton" name="help_log_sendreport">
             <property name="text">
              <string notr="true">Help</string>
             </property>
@@ -2881,7 +2881,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>tabWidgetLog</tabstop>
   <tabstop>textBrowserLog</tabstop>
   <tabstop>pushButtonSendReport</tabstop>
-  <tabstop>toolButtonHelpReport</tabstop>
+  <tabstop>help_log_sendreport</tabstop>
  </tabstops>
  <resources/>
  <connections/>
