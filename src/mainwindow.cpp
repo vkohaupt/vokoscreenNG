@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 
 #include "ui_formMainWindow.h"
-#include "QvkScreenshot.h"
 #include "QvkInformation.h"
 #include "QvkGlobalShortcut.h"
 #include "QvkLogController.h"
@@ -49,8 +48,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 {
     ui->setupUi(this);
 
-    ui->tabWidgetSideBar->removeTab(2);
-
     QvkTheme *vkTheme = new QvkTheme( ui );
     Q_UNUSED(vkTheme);
 
@@ -65,14 +62,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     Q_UNUSED(vkMagnifierController);
 
     vkPlayer = new QvkPlayer( this, ui );
-    QStringList arguments = QApplication::instance()->arguments();
-    if ( arguments.count() > 1  )
-    {
-        qDebug() << global::nameOutput << "started from file:" << arguments.at(1);
-        vkPlayer->setMediaFile( arguments.at(1) );
-        vkPlayer->slot_play();
-        ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
-    }
 
     QvkHelp *vkHelp = new QvkHelp( this, ui, vkPlayer->ui );
     Q_UNUSED( vkHelp );
@@ -342,13 +331,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     emit qApp->screenAdded(Q_NULLPTR);
 
 
-    // **************** Begin Screenshot *****************************
-    QvkScreenshot *vkScreenshot = new QvkScreenshot( this, ui );
-    Q_UNUSED(vkScreenshot);
-    vk_setCornerWidget( ui->tabWidgetScreenshot );
-    // **************** End Screenshot *******************************
-
-
     // *****************Begin Camera *********************************
     vkCameraController = new QvkCameraController(ui);
     Q_UNUSED(vkCameraController);
@@ -365,6 +347,17 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSettings.readAll( ui, this );
     vkSettings.readAreaScreencast( vkRegionChoise );
     vkSettings.readCamera( vkCameraController );
+
+    // After reading the settings, we read the arguments and run
+    QStringList arguments = QApplication::instance()->arguments();
+    if ( arguments.count() > 1  )
+    {
+        qDebug() << global::nameOutput << "started from file:" << arguments.at(1);
+        vkPlayer->setMediaFile( arguments.at(1) );
+        vkPlayer->slot_play();
+        ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
+    }
+
 }
 
 
@@ -1656,14 +1649,12 @@ QString QvkMainWindow::get_height_From_Screen()
 void QvkMainWindow::slot_clearWidgets()
 {
     ui->comboBoxScreencastScreen->clear();
-    ui->comboBoxScreenshotScreen->clear();
 }
 
 
 void QvkMainWindow::slot_screenCountChanged( QString stringText, QString stringData )
 {
     ui->comboBoxScreencastScreen->addItem( stringText, stringData );
-    ui->comboBoxScreenshotScreen->addItem( stringText, stringData );
     qDebug().noquote() << global::nameOutput << "ItemText in Combobox:" << stringText;
     qDebug().noquote() << global::nameOutput << "ItemData in Combobox:" << stringData;
     qDebug();

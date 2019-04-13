@@ -37,9 +37,8 @@ void QvkTheme::slot_searchNewTheme()
 void QvkTheme::slot_setNewTheme()
 {
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreencast ), VK_getIcon( "video-display",     ":/pictures/screencast/monitor.png" ) );
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreenshot ), VK_getIcon( "computer",          ":/pictures/screenshot/screenshot.png" ) );
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarCamera ),     VK_getIcon( "camera-web",        ":/pictures/camera/camera.png" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ),     VK_getIcon( "multimedia-player", ":/pictures/player/player.png" ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarCamera ),     VK_getIcon( "camera-web",        ":/pictures/camera/camera.png" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarLog ),        VK_getIcon( "help-about",        ":/pictures/log/log.png" ) );
 
     makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabScreen ),    VK_getIcon( "video-display",          ":/pictures/screencast/monitor.png" ) );
@@ -49,13 +48,9 @@ void QvkTheme::slot_setNewTheme()
     makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAvailable ), VK_getIcon( "help-contents",          ":/pictures/screencast/supported-formats.png" ) );
     ui->toolButtonScreencastAreaReset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
 
-    makeAndSetValidIcon( ui->tabWidgetScreenshot, ui->tabWidgetScreenshot->indexOf( ui->tabScreenshotScreen ), VK_getIcon( "computer", ":/pictures/screenshot/screenshot.png" ) );
-    makeAndSetValidIcon( ui->tabWidgetScreenshot, ui->tabWidgetScreenshot->indexOf( ui->tabScreenshotMisc ),   VK_getIcon( "preferences-system", ":/pictures/screenshot/preferences-system.png" ) );
-
     makeAndSetValidIcon( ui->tabWidgetCamera, ui->tabWidgetCamera->indexOf( ui->tabCamera ), VK_getIcon( "camera-web", ":/pictures/camera/camera.png" ) );
 
     makeAndSetValidIcon( ui->tabWidgetLog, ui->tabWidgetLog->indexOf( ui->tabLog ), VK_getIcon( "help-about", ":/pictures/log/log.png" ) );
-
 }
 
 

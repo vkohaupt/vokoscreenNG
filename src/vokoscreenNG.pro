@@ -99,9 +99,6 @@ include(countdown/countdown.pri)
 # webcam
 include(camera/camera.pri)
 
-# screenshot
-include(screenshot/screenshot.pri)
-
 # pulse
 unix:include(audio/pulse/audioPulse.pri)
 
