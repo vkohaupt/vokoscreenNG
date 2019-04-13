@@ -24,49 +24,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Flip vertical</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Invert</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Gray</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Black-and-white</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Remove window frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>160x120</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>320x240</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>600x480</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
@@ -497,10 +454,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Move menue</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Previous frame</source>
         <translation type="unfinished"></translation>
     </message>
@@ -514,6 +467,10 @@
     </message>
     <message>
         <source>Mute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move menu</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

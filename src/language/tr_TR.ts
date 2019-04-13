@@ -146,14 +146,6 @@
         <source>Please install a imageviewer.</source>
         <translation>Lütfen bir resim gösterici yükleyin.</translation>
     </message>
-    <message>
-        <source>Display</source>
-        <translation>Ekran</translation>
-    </message>
-    <message>
-        <source>All Displays</source>
-        <translation>Tüm Ekranlar</translation>
-    </message>
 </context>
 <context>
     <name>QvkSystray</name>
@@ -377,7 +369,7 @@
     </message>
     <message>
         <source>Folder</source>
-        <translation>Dizin</translation>
+        <translation>Klasör</translation>
     </message>
     <message>
         <source>Hide this Window</source>
@@ -429,7 +421,7 @@
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Dosya aç</translation>
+        <translation>Klasörü aç</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>

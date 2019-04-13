@@ -146,14 +146,6 @@
         <source>Please install a imageviewer.</source>
         <translation>Įdiekite paveikslų žiūryklę.</translation>
     </message>
-    <message>
-        <source>Display</source>
-        <translation>Ekranas</translation>
-    </message>
-    <message>
-        <source>All Displays</source>
-        <translation>Visi ekranai</translation>
-    </message>
 </context>
 <context>
     <name>QvkSystray</name>
