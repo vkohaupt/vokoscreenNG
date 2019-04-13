@@ -80,33 +80,6 @@
     </message>
 </context>
 <context>
-    <name>QvkScreenshot</name>
-    <message>
-        <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No filemanager found.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Please install a filemanager.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No imageviewer found.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Please install a imageviewer.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
@@ -328,22 +301,6 @@
     </message>
     <message>
         <source>Folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Hide this Window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Picturepath</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Shot</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

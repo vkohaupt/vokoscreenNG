@@ -1,3 +1,6 @@
+Log:
+Logdateien in Unterordner speichern.
+
 Bereichsanzeige:
 Monitor skalieren z.b 1.5, dann ist die Bereichsanzeige um den Faktor devicePixelRatio() breiter und höher.
 
