@@ -188,7 +188,7 @@ void QvkMagnifier::setMagnifier()
   }
 
   // Linke obere Hälfte
-  if ( ( cursor.pos().x() < screen->geometry().width() / 2 ) and ( cursor.pos().y() < screen->geometry().height() / 10 * 8 ) ) // div 2
+  if ( ( cursor.pos().x() < screen->geometry().width() / 2 ) and ( cursor.pos().y() < screen->geometry().height() / 10 * 8 ) )
     move( cursor.pos().x() + NewDistanceXLeft(), cursor.pos().y() + distanceY );
 
   // Rechte obere Hälfte
@@ -201,7 +201,7 @@ void QvkMagnifier::setMagnifier()
 
   // Rechte untere Hälfte
   if ( ( cursor.pos().x() > screen->geometry().width() / 2 ) and ( cursor.pos().y() > screen->geometry().height() / 10 * 8 ) )
-    move( cursor.pos().x() - NewDistanceXRight() -width(), cursor.pos().y() - distanceY - width() );
+    move( cursor.pos().x() - NewDistanceXRight() -width(), cursor.pos().y() - distanceY - height() );
 }
 
 
