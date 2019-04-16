@@ -5,8 +5,5 @@ Player:
 --Monitor skalieren z.b 1.5. Siehe Testvideo Mission-Impossible.mp4 1:44 das weiße Hemd hat Treppenabstufungen.
 --Von Wechsel Gui-mode zu Fullscreen Bild wird nicht resized
 
-Codecs:
-Wenn keine Video-Codecs installiert sind sollte der StartButton disabled sein.
-
 Lizenz:
 Lizenz-Header in *.cpp und *.h Dateien einbauen.

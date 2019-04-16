@@ -1136,6 +1136,11 @@ void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
             ui->comboBoxVideoCodec->addItem( name, encoder );
         }
     }
+
+    if ( ui->comboBoxVideoCodec->count() == 0  )
+        ui->pushButtonStart->setEnabled( false);
+    else
+        ui->pushButtonStart->setEnabled( true );
 }
 
 
