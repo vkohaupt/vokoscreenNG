@@ -22,49 +22,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Form</source>
-        <translation>Forma</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Apversti horizontaliai</translation>
-    </message>
-    <message>
-        <source>Flip vertical</source>
-        <translation>Apversti vertikaliai</translation>
-    </message>
-    <message>
-        <source>Invert</source>
-        <translation>Invertuoti</translation>
-    </message>
-    <message>
-        <source>Gray</source>
-        <translation>Pilka</translation>
-    </message>
-    <message>
-        <source>Black-and-white</source>
-        <translation>Juoda ir balta</translation>
-    </message>
-    <message>
-        <source>Remove window frame</source>
-        <translation>Šalinti lango rėmelį</translation>
-    </message>
-    <message>
-        <source>160x120</source>
-        <translation>160x120</translation>
-    </message>
-    <message>
-        <source>320x240</source>
-        <translation>320x240</translation>
-    </message>
-    <message>
-        <source>600x480</source>
-        <translation>600x480</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
@@ -118,33 +75,6 @@
     <message>
         <source>Area</source>
         <translation>Sritis</translation>
-    </message>
-</context>
-<context>
-    <name>QvkScreenshot</name>
-    <message>
-        <source>Fullscreen</source>
-        <translation>Visas ekranas</translation>
-    </message>
-    <message>
-        <source>Window</source>
-        <translation>Langas</translation>
-    </message>
-    <message>
-        <source>No filemanager found.</source>
-        <translation>Nerasta jokios failų tvarkytuvės.</translation>
-    </message>
-    <message>
-        <source>Please install a filemanager.</source>
-        <translation>Įdiekite failų tvarkytuvę.</translation>
-    </message>
-    <message>
-        <source>No imageviewer found.</source>
-        <translation>Nerasta jokios paveikslų žiūryklės.</translation>
-    </message>
-    <message>
-        <source>Please install a imageviewer.</source>
-        <translation>Įdiekite paveikslų žiūryklę.</translation>
     </message>
 </context>
 <context>
@@ -372,22 +302,6 @@
         <translation>Aplankas</translation>
     </message>
     <message>
-        <source>Hide this Window</source>
-        <translation>Slėpti šį langą</translation>
-    </message>
-    <message>
-        <source>Picturepath</source>
-        <translation>Paveikslo kelias</translation>
-    </message>
-    <message>
-        <source>Shot</source>
-        <translation>Fotografuoti</translation>
-    </message>
-    <message>
-        <source>Show</source>
-        <translation>Rodyti</translation>
-    </message>
-    <message>
         <source>Camera</source>
         <translation>Kamera</translation>
     </message>
@@ -495,10 +409,6 @@
         <translation>Visas ekranas</translation>
     </message>
     <message>
-        <source>Move menue</source>
-        <translation>Perkelti meniu</translation>
-    </message>
-    <message>
         <source>Previous frame</source>
         <translation>Ankstesnis kadras</translation>
     </message>
@@ -513,6 +423,10 @@
     <message>
         <source>Mute</source>
         <translation>Nutildyti</translation>
+    </message>
+    <message>
+        <source>Move menu</source>
+        <translation>Perkelti meniu</translation>
     </message>
 </context>
 </TS>

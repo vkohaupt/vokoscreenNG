@@ -345,7 +345,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         vkPlayer->slot_play();
         ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
     }
-
 }
 
 
@@ -384,7 +383,7 @@ void QvkMainWindow::showEvent( QShowEvent *event )
         messageBox->setWindowIcon( icon );
         messageBox->setIcon( QMessageBox::Information );
         messageBox->setText( tr( "Detect a Wayland desktop session" ) );
-        messageBox->setInformativeText( tr( "To time no Wayland supported. A screencast or a screenshot show a black screen. Please logout and start a X11 Desktop session" ) );
+        messageBox->setInformativeText( tr( "To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session" ) );
         messageBox->exec();
     }
     else
