@@ -4,6 +4,8 @@
 #include <QStandardPaths>
 #include <QTime>
 
+#include <QDir>
+
 QvkLog::QvkLog( Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
@@ -12,9 +14,15 @@ QvkLog::QvkLog( Ui_formMainWindow *ui_mainwindow )
 
     QDateTime dateTime = QDateTime::currentDateTime();
     QString stringDateTime = dateTime.toString( "yyyy-MM-dd_hh:mm:ss" );
-
     QString path = QStandardPaths::writableLocation( QStandardPaths::AppConfigLocation );
-    logFile.setFileName( path + "/" + stringDateTime + ".log");
+
+    QString logFolderName = path + "/" + "log";
+    if( !QDir( logFolderName ).exists() )
+    {
+        QDir().mkdir( logFolderName );
+    }
+
+    logFile.setFileName( path + "/" + "log" + "/" + stringDateTime + ".log" );
 }
 
 
