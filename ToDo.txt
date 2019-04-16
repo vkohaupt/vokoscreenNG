@@ -5,7 +5,8 @@ Bereichsanzeige:
 Monitor skalieren z.b 1.5, dann ist die Bereichsanzeige um den Faktor devicePixelRatio() breiter und höher.
 
 Player:
-Monitor skalieren z.b 1.5. Siehe Testvideo Mission-Impossible.mp4 1:44 das weiße Hemd hat Treppenabstufungen.
+--Monitor skalieren z.b 1.5. Siehe Testvideo Mission-Impossible.mp4 1:44 das weiße Hemd hat Treppenabstufungen.
+--Von Wechsel Gui-mode zu Fullscreen Bild wird nicht resized
 
 Lupe:
 Betrifft 400*200 und 600*200 in der rechten Bildschirmhälfte.
@@ -13,3 +14,6 @@ Beim bewegen der Maus an den unteren Bildschirmrand erscheint die Lupe zu weit o
 
 Codecs:
 Wenn keine Video-Codecs installiert sind sollte der StartButton disabled sein.
+
+Lizenz:
+Lizenz-Header in *.cpp und *.h Dateien einbauen.
