@@ -11,7 +11,6 @@
 #include <QDateTime>
 #include <QStandardPaths>
 #include <QDir>
-#include <QScreen>
 #include <QDesktopWidget>
 #include <QAudioDeviceInfo>
 #include <QFileDialog>
@@ -19,7 +18,6 @@
 #include <QMimeDatabase>
 #include <QStringList>
 #include <QImageWriter>
-#include <QScreen>
 #include <QLibraryInfo>
 #include <QThread>
 #include <QMessageBox>
