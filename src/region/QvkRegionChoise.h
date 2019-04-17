@@ -119,8 +119,5 @@ private:
   Qt::GlobalColor getFrameColor();
   Qt::GlobalColor frameColor;
 
-  //Ui_AreaSettingsDialog myUiDialog;
-  //QDialog *areaSettingDialog;
-
 };
 #endif

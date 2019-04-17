@@ -63,17 +63,6 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
     screenHeight = screen->size().height();
 
     hide();
-
-/*
-    areaSettingDialog = new QDialog(this);
-    areaSettingDialog->setModal( true );
-    myUiDialog.setupUi( areaSettingDialog );
-    areaSettingDialog->show();
-
-    QPushButton *button = new QPushButton( this );
-    button->setGeometry(800, 400, 100, 100);
-    button->show();
-*/
 }
 
 
@@ -647,7 +636,7 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
 
 void QvkRegionChoise::printSize( QPainter &painter )
 {
-  QString widthHeigtSize = QString::number( (int)(getWidth()/screen->devicePixelRatio() ) ) +
+  QString widthHeigtSize = QString::number( (int)( getWidth()/screen->devicePixelRatio() ) ) +
                            " x " +
                            QString::number( (int)( getHeight()/screen->devicePixelRatio() ) );
 
