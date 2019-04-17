@@ -398,6 +398,7 @@ void QvkPlayer::slot_positionChanged( qint64 value )
 
 void QvkPlayer::slot_setNewImage( QImage image )
 {
+    // Sehr gutes Bild wenn devicepixelratio gleich 1 ist
     if ( parentMainWindow->isFullScreen() )
     {
         ui->labelPlayer->setPixmap( QPixmap::fromImage( image.scaled( parentMainWindow->width(),
@@ -408,6 +409,7 @@ void QvkPlayer::slot_setNewImage( QImage image )
         return;
     }
 
+    // Sehr gutes Bild wenn devicepixelratio gleich 1 ist
     QIcon icon( QPixmap::fromImage( image ) );
     ui->labelPlayer->setPixmap( icon.pixmap( ui->framePlayer->width(), ui->framePlayer->height() ) );
 }
