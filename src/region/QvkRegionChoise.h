@@ -28,6 +28,9 @@ public:
 
   void setFrameColor( Qt::GlobalColor color );
 
+  QScreen *screen;
+
+
 public slots:
   void slot_areaReset();
 
@@ -43,7 +46,6 @@ protected:
 
 
 private:
-  QScreen *screen;
 
   enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle };
   Handle handlePressed;

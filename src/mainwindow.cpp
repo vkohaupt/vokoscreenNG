@@ -356,7 +356,10 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
     vkSettings.saveAll( ui, this );
-    vkSettings.saveAreaScreencast( vkRegionChoise->getXRecordArea(), vkRegionChoise->getYRecordArea(), vkRegionChoise->getWidth(), vkRegionChoise->getHeight() );
+    vkSettings.saveAreaScreencast( vkRegionChoise->getXRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
+                                   vkRegionChoise->getYRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
+                                   vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
+                                   vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
     vkSettings.saveCamera( vkCameraController->cameraWindow->geometry().x(), vkCameraController->cameraWindow->geometry().y() );
     emit signal_close();
     emit signal_close( false );
