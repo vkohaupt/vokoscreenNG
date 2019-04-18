@@ -318,7 +318,7 @@ QString QvkPlayer::get_time( qint64 value )
 {
     int sec = (value/1000) % 60;
     int min = (value/1000/60) % 60;
-    int hour= (value/1000/60/60);
+    int hour= static_cast<int>(value/1000/60/60);
 
     QTime time( 0, 0, 0 );
     time.setHMS( hour, min, sec );
@@ -329,7 +329,7 @@ QString QvkPlayer::get_time( qint64 value )
 void QvkPlayer::slot_durationChanged( qint64 value )
 {
     // Set lenght from video on slider
-    ui->sliderVideo->setMaximum( value / mediaPlayer->notifyInterval() );
+    ui->sliderVideo->setMaximum( static_cast<int>( value / mediaPlayer->notifyInterval() ) );
 
     // Show lenght from video in label
     ui->labelVideoLenght->setText( get_time( value ) );
@@ -388,7 +388,7 @@ void QvkPlayer::slot_positionChanged( qint64 value )
 {
     if ( mediaPlayer->state() == QMediaPlayer::PlayingState )
     {
-       ui->sliderVideo->setValue( value / mediaPlayer->notifyInterval() );
+       ui->sliderVideo->setValue( static_cast<int>( value / mediaPlayer->notifyInterval() ) );
 
        // Show playing time in label
        ui->labelDuration->setText( get_time( value ) );

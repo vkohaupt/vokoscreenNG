@@ -636,9 +636,9 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
 
 void QvkRegionChoise::printSize( QPainter &painter )
 {
-  QString widthHeigtSize = QString::number( (int)( getWidth()/screen->devicePixelRatio() ) ) +
+  QString widthHeigtSize = QString::number( static_cast<int>( getWidth()/screen->devicePixelRatio() ) ) +
                            " x " +
-                           QString::number( (int)( getHeight()/screen->devicePixelRatio() ) );
+                           QString::number( static_cast<int>( getHeight()/screen->devicePixelRatio() ) );
 
   QFont font;
   font.setPointSize( 14 );
