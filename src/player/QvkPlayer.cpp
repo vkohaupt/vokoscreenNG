@@ -450,6 +450,14 @@ void QvkPlayer::vk_showFullscreen()
     ui->labelMovePicture->show();
     ui->widgetMenueBar->show();
     ui->labelPlayer->setFocus();
+
+    if ( mediaPlayer->state() == QMediaPlayer::PausedState )
+    {
+        ui->toolButtonFrameBackward->click();
+        qApp->processEvents();
+        ui->toolButtonFrameForward->click();
+        qApp->processEvents();
+    }
 }
 
 
@@ -467,6 +475,14 @@ void QvkPlayer::vk_showNormal()
     ui->labelMovePicture->hide();
     ui->widgetMenueBar->show();
     ui->labelPlayer->setFocus();
+
+    if ( mediaPlayer->state() == QMediaPlayer::PausedState )
+    {
+        ui->toolButtonFrameBackward->click();
+        qApp->processEvents();
+        ui->toolButtonFrameForward->click();
+        qApp->processEvents();
+    }
 }
 
 
