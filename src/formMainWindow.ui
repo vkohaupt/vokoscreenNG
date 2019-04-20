@@ -2010,6 +2010,9 @@
               <bold>true</bold>
              </font>
             </property>
+            <property name="toolTip">
+             <string>CTRL+SHIFT+F12</string>
+            </property>
             <property name="text">
              <string>Continue</string>
             </property>
