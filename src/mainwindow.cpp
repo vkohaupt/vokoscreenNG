@@ -1196,6 +1196,16 @@ void QvkMainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
 
 QString QvkMainWindow::Vk_get_Videocodec_Encoder()
 {
+    QString vk_idealThreadCount;
+    if ( QThread::idealThreadCount() == -1 )
+    {
+        vk_idealThreadCount = "0";
+    }
+    else
+    {
+        vk_idealThreadCount = QString::number( QThread::idealThreadCount() );
+    }
+
     QString value;
     QString encoder = ui->comboBoxVideoCodec->currentData().toString();
     if ( encoder == "x264enc" )
@@ -1207,7 +1217,7 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << "qp-max=" + QString::number( ui->sliderX264->value() );
         list << "subme=6";
         list << "speed-preset=" + ui->comboBoxx264Preset->currentText();
-        list << "threads=0";
+        list << "threads=" + vk_idealThreadCount;
         value = list.join( " " );
     }
 
@@ -1239,7 +1249,14 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
     // https://www.webmproject.org/docs/encoder-parameters/
     if ( encoder == "vp8enc" )
     {
-        value = "vp8enc min_quantizer=20 max_quantizer=20 cpu-used=4 deadline=1000000 threads=4";
+        QStringList list;
+        list << "vp8enc";
+        list << "min_quantizer=20";
+        list << "max_quantizer=20";
+        list << "cpu-used=" + vk_idealThreadCount;
+        list << "deadline=1000000";
+        list << "threads=" + vk_idealThreadCount;
+        value = list.join( " " );
     }
 
     if ( encoder == "vp9enc" )
