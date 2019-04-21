@@ -24,5 +24,6 @@
 <file>language/ca.qm</file>
 <file>language/lt.qm</file>
 <file>language/pt.qm</file>
+<file>language/tr_TR.qm</file>
 </qresource>
 </RCC>

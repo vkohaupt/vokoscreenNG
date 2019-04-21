@@ -1,134 +1,134 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="tr_TR" version="2.1">
 <context>
     <name>AreaSettingsDialog</name>
     <message>
         <source>Area Settings</source>
-        <translation>Configurações de área</translation>
+        <translation>Alan Ayarları</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation>Tamam</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation>Cancelar</translation>
+        <translation>İptal</translation>
     </message>
 </context>
 <context>
     <name>QvkAudioPulse</name>
     <message>
         <source>File can not be opened</source>
-        <translation>Não se consegue abrir o ficheiro</translation>
+        <translation>Dosya açılamıyor</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Mudar para janela</translation>
+        <translation>Pencereye Geç</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Mudar para ecrã inteiro</translation>
+        <translation>Tam Ekrana Geç</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Ecrã inteiro</translation>
+        <translation>Tam Ekran</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Janela</translation>
+        <translation>Pencere</translation>
     </message>
     <message>
         <source>Detect a Wayland desktop session</source>
-        <translation>Detetar uma sessão de secretária Wayland</translation>
+        <translation>Wayland masaüstü oturumu algıla</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Não foi encontrado nenhum gestor de ficheiros.</translation>
+        <translation>Dosya yöneticisi bulunamadı</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Por favor instale um gestor de ficheiros.</translation>
+        <translation>Lütfen bir dosya yöneticisi yükleyin.</translation>
     </message>
     <message>
         <source>Desktop session is a Wayland session</source>
-        <translation>A sessão de secretária é uma sessão Wayland</translation>
+        <translation>Masaüstü oturumu bir Wayland oturumu</translation>
     </message>
     <message>
         <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Neste momento o Wayland não é suportado. Uma transmissão de ecrã mostra um ecrã a negro. Por favor saia da conta e inicie uma sessão X11 Desktop</translation>
+        <translation>Zaman zaman Wayland desteklenmedi. Ekran görüntüsünde siyah bir ekran gösterilir. Lütfen çıkış yapın ve bir X11 Masaüstü oturumu başlatın</translation>
     </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
-        <translation>Abrir ficheiro</translation>
+        <translation>Dosya Aç</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>Bölge</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Começar</translation>
+        <translation>Başlat</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Parar</translation>
+        <translation>Durdur</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Duraklat</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>Devam</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Sair</translation>
+        <translation>Çıkış</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Diálogo</translation>
+        <translation>Konuşma</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Espelhar horizontal</translation>
+        <translation>Yatay çevir</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Espelhar vertical</translation>
+        <translation>Dikey çevir</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Inverter</translation>
+        <translation>Ters çevir</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Cinzento</translation>
+        <translation>Gri</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Preto e branco</translation>
+        <translation>Siyah-ve-beyaz</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Remover moldura da janela</translation>
+        <translation>Pencere çerçevesini kaldır</translation>
     </message>
     <message>
         <source>160x120</source>
@@ -140,7 +140,7 @@
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Configurações da câmara</translation>
+        <translation>Kamera ayarları</translation>
     </message>
     <message>
         <source>640x480</source>
@@ -151,171 +151,171 @@
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>Bölge</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Restabelecer</translation>
+        <translation>Sıfırla</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliação</translation>
+        <translation>Büyütme</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Contagem descrescente</translation>
+        <translation>Geri sayım</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Tamanho do vídeo:</translation>
+        <translation>Video boyutu:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Espaço de disco disponível:</translation>
+        <translation>Boş disk alanı:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informação</translation>
+        <translation>Bilgilendirme</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Tempo de gravação:</translation>
+        <translation>Kayıt Süresi:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Áudio</translation>
+        <translation>Ses</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>Çerçeveler</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Codec de vídeo</translation>
+        <translation>Video çözücü</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formato</translation>
+        <translation>Biçim</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Codec de áudio</translation>
+        <translation>Ses çözücü</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>Qualidade</translation>
+        <translation>Kalite</translation>
     </message>
     <message>
         <source>Scale</source>
-        <translation>Escala</translation>
+        <translation>Ölçek</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Não gravar o cursor do rato</translation>
+        <translation>Fare imlecini kaydetme</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Hora</translation>
+        <translation>Saat</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minuto</translation>
+        <translation>Dakika</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Iniciar o cronómetro</translation>
+        <translation>Zamanlayıcıyı başlat</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Parar a gravação após</translation>
+        <translation>Sonra kaydı durdur</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Horas</translation>
+        <translation>Saat</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minutos</translation>
+        <translation>Dakika</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Segundos</translation>
+        <translation>Saniye</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Caminho do vídeo </translation>
+        <translation>Video yolu</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Limite do espaço em disco disponível</translation>
+        <translation>Boş disk alanı sınırı</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Mostrar na barra de tarefas</translation>
+        <translation>Sistem tepsisinde göster</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Espera em segundos antes de começar a gravar</translation>
+        <translation>Kayıttan önce az bekleyin</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Procurar atualizações</translation>
+        <translation>Güncellemelere bak</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Ajuda</translation>
+        <translation>Yardım</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Vídeo</translation>
+        <translation>Video</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Disponível</translation>
+        <translation>Mevcut</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Indisponível</translation>
+        <translation>Mevcut değil</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Começar</translation>
+        <translation>Başlat</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Parar</translation>
+        <translation>Durdur</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Duraklat</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>Devam</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Reproduzir</translation>
+        <translation>Oynat</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Pasta</translation>
+        <translation>Klasör</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Câmara</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Inverter</translation>
+        <translation>Ters çevir</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Cinzento</translation>
+        <translation>Gri</translation>
     </message>
     <message>
         <source>Send Report</source>
-        <translation>Enviar relatório</translation>
+        <translation>Rapor Gönder</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -331,11 +331,11 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Reproduzir a última gravação</translation>
+        <translation>Son kaydı oynat</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Abrir pasta</translation>
+        <translation>Klasörü aç</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
@@ -355,78 +355,78 @@
     </message>
     <message>
         <source>Delete all settings at the next start</source>
-        <translation>Eliminar todas as configurações no próximo início</translation>
+        <translation>Bir sonraki başlangıçta tüm ayarları sil</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimizado quando a gravação começar</translation>
+        <translation>Kayıt başladığında simge durumuna küçült</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Iniciar minimizado</translation>
+        <translation>Küçültülmüş başlat</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Espelhar horizontal</translation>
+        <translation>Yatay çevir</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Espelhar vertical</translation>
+        <translation>Dikey çevir</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Preto e branco</translation>
+        <translation>Siyah-ve-beyaz</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Remover moldura da janela</translation>
+        <translation>Pencere çerçevesini kaldır</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation>Tempo</translation>
+        <translation>Zaman</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Reproduzir</translation>
+        <translation>Oynat</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Duraklat</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Parar</translation>
+        <translation>Durdur</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Abrir ficheiro</translation>
+        <translation>Dosya Aç</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Ecrã inteiro</translation>
+        <translation>Tam Ekran</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Fotograma anterior</translation>
+        <translation>Önceki çerçeve</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Fotograma seguinte</translation>
+        <translation>Sonraki çerçeve</translation>
     </message>
     <message>
         <source>Volume</source>
-        <translation>Volume</translation>
+        <translation>Ses</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Sem som</translation>
+        <translation>Sessiz</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Mover menu</translation>
+        <translation>Menüyü taşı</translation>
     </message>
 </context>
 </TS>

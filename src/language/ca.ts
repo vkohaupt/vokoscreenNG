@@ -59,8 +59,8 @@
         <translation>La sessió d’escriptori és una sessió de Wayland</translation>
     </message>
     <message>
-        <source>To time no Wayland supported. A screencast or a screenshot show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Fins al moment no s&apos;admet el Wayland. Una captura de pantalla en vídeo o en imatge mostrarà una pantalla en negre. Si us plau, tanqueu la sessió i iniceu una sessió d&apos;escriptori amb X11.</translation>
+        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
+        <translation>Fins al moment no s&apos;admet el Wayland. Una captura en vídeo mostrarà una pantalla en negre. Si us plau, tanqueu la sessió i iniceu una sessió d&apos;escriptori amb X11.</translation>
     </message>
 </context>
 <context>

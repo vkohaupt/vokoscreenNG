@@ -59,8 +59,8 @@
         <translation>Darbalaukio seansas yra Wayland seansas</translation>
     </message>
     <message>
-        <source>To time no Wayland supported. A screencast or a screenshot show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Šiuo metu Wayland nėra palaikomas. Ekrano įrašas ar ekrano kopija rodys juodą ekraną. Atsijunkite ir paleiskite X11 darbalaukio seansą</translation>
+        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
+        <translation>Šiuo metu Wayland nėra palaikomas. Ekrano įrašas rodys juodą ekraną. Atsijunkite ir paleiskite X11 darbalaukio seansą</translation>
     </message>
 </context>
 <context>
