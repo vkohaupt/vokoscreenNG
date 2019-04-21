@@ -5,5 +5,3 @@ HEADERS     += $$PWD/QvkRegionChoise.h \
                      
 SOURCES     += $$PWD/QvkRegionChoise.cpp \
                $$PWD/QvkRegionButtonArrow.cpp
-
-FORMS       += $$PWD/settings.ui

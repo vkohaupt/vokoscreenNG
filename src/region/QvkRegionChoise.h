@@ -24,7 +24,6 @@
 #define regionChoise_H
 
 #include "QvkRegionButtonArrow.h"
-#include "ui_settings.h"
 
 #include <QWidget>
 #include <QScreen>
