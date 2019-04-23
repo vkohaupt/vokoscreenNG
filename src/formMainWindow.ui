@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>5</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1940,6 +1940,11 @@
              </layout>
             </item>
            </layout>
+          </widget>
+          <widget class="QWidget" name="tabAbout">
+           <attribute name="title">
+            <string notr="true"/>
+           </attribute>
           </widget>
          </widget>
         </item>
