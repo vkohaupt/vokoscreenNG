@@ -1951,7 +1951,7 @@
               <item row="0" column="0" alignment="Qt::AlignRight|Qt::AlignBottom">
                <widget class="QLabel" name="labelSourcecodeUrl">
                 <property name="text">
-                 <string>Sourcecode</string>
+                 <string notr="true">Sourcecode</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -1964,7 +1964,7 @@
               <item row="2" column="0" alignment="Qt::AlignRight|Qt::AlignTop">
                <widget class="QLabel" name="labelWebSiteUrl">
                 <property name="text">
-                 <string>Website</string>
+                 <string notr="true">Website</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -1996,7 +1996,7 @@
               <item row="0" column="2" alignment="Qt::AlignLeft|Qt::AlignBottom">
                <widget class="QLabel" name="labelLanguageUrl">
                 <property name="text">
-                 <string>Translation</string>
+                 <string notr="true">Translation</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>

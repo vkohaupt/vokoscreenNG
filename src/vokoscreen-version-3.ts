@@ -384,18 +384,6 @@
         <source>Time</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Website</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Translation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Sourcecode</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>player</name>
