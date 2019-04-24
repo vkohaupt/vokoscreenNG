@@ -1945,10 +1945,23 @@
            <attribute name="title">
             <string notr="true"/>
            </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_15">
+           <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="0">
             <item>
-             <layout class="QGridLayout" name="gridLayout_2">
-              <item row="0" column="2">
+             <layout class="QGridLayout" name="gridLayout_7">
+              <item row="0" column="0" alignment="Qt::AlignRight|Qt::AlignBottom">
+               <widget class="QLabel" name="labelSourcecodeUrl">
+                <property name="text">
+                 <string>Sourcecode</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="openExternalLinks">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0" alignment="Qt::AlignRight|Qt::AlignTop">
                <widget class="QLabel" name="labelWebSiteUrl">
                 <property name="text">
                  <string>Website</string>
@@ -1962,6 +1975,25 @@
                </widget>
               </item>
               <item row="1" column="1">
+               <widget class="QLabel" name="labelAutorPicture">
+                <property name="maximumSize">
+                 <size>
+                  <width>200</width>
+                  <height>200</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string notr="true">labelAutorPicture</string>
+                </property>
+                <property name="scaledContents">
+                 <bool>true</bool>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2" alignment="Qt::AlignLeft|Qt::AlignBottom">
                <widget class="QLabel" name="labelLanguageUrl">
                 <property name="text">
                  <string>Translation</string>
@@ -1971,39 +2003,6 @@
                 </property>
                 <property name="openExternalLinks">
                  <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2">
-               <widget class="QLabel" name="label_30">
-                <property name="text">
-                 <string notr="true">TextLabel</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QLabel" name="labelSourcecodeUrl">
-                <property name="text">
-                 <string>Sourcecode</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="openExternalLinks">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="labelAutorPicture">
-                <property name="text">
-                 <string notr="true">labelAutorPicture</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>

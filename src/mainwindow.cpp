@@ -319,7 +319,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // End Tabs
 
     // Tab 6 About
-    ui->labelAutorPicture->setPixmap( QPixmap( ":/pictures/screencast/author.jpeg" ) );
+    QPixmap pixmap( ":/pictures/screencast/author.png" );
+    ui->labelAutorPicture->setPixmap( pixmap );
     ui->labelSourcecodeUrl->setText( "<a href='https://github.com/vkohaupt/vokoscreenNG'>" + tr( "Sourcecode" ) + "</a>" );
     ui->labelWebSiteUrl->setText( "<a href='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Homepage" ) + "</a>" );
     ui->labelLanguageUrl->setText( "<a href='https://www.transifex.com/projects/p/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
