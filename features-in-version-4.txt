@@ -2,5 +2,6 @@
 ***** possible new features in version 4 *****
 
 - Touchscreen GUI
-- Support Network Camera 
+- Very simple support for Network Cameras 
 - Reading out the features FPS and resolution from USB cameras
+- Recording only audio
