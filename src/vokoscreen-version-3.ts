@@ -7,6 +7,10 @@
         <source>File can not be opened</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Select one or more devices</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
@@ -27,10 +31,6 @@
     </message>
     <message>
         <source>Window</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Detect a Wayland desktop session</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -59,6 +59,14 @@
     </message>
     <message>
         <source>Translations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wayland desktop session detected</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -382,6 +390,10 @@
     </message>
     <message>
         <source>Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Donate</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
