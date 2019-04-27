@@ -1,20 +1,5 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="tr_TR" version="2.1">
 <context>
-    <name>AreaSettingsDialog</name>
-    <message>
-        <source>Area Settings</source>
-        <translation>Alan Ayarları</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation>Tamam</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>İptal</translation>
-    </message>
-</context>
-<context>
     <name>QvkAudioPulse</name>
     <message>
         <source>File can not be opened</source>
@@ -61,6 +46,18 @@
     <message>
         <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
         <translation>Zaman zaman Wayland desteklenmedi. Ekran görüntüsünde siyah bir ekran gösterilir. Lütfen çıkış yapın ve bir X11 Masaüstü oturumu başlatın</translation>
+    </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>Kaynak kodu</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>Ana Sayfa</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Çeviriler</translation>
     </message>
 </context>
 <context>

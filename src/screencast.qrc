@@ -19,13 +19,16 @@
 <file>pictures/screencast/help-about.png</file>
 <file>pictures/screencast/undo.png</file>
 <file>pictures/screencast/author.png</file>
+<file>pictures/screencast/suse_logo.png</file>
 <file>pictures/systray/systray.png</file>
 <file>pictures/systray/record.png</file>
 <file>pictures/windows.png</file>
 <file></file>
 <file>language/ca.qm</file>
+<file>language/de_DE.qm</file>
 <file>language/lt.qm</file>
 <file>language/pt.qm</file>
+<file>language/ru.qm</file>
 <file>language/tr_TR.qm</file>
 </qresource>
 </RCC>

@@ -1,20 +1,5 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="ca" version="2.1">
 <context>
-    <name>AreaSettingsDialog</name>
-    <message>
-        <source>Area Settings</source>
-        <translation>Àrea d&apos;ajustaments</translation>
-    </message>
-    <message>
-        <source>OK</source>
-        <translation>D&apos;acord</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>Cancel·la</translation>
-    </message>
-</context>
-<context>
     <name>QvkAudioPulse</name>
     <message>
         <source>File can not be opened</source>
@@ -61,6 +46,18 @@
     <message>
         <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
         <translation>Fins al moment no s&apos;admet el Wayland. Una captura en vídeo mostrarà una pantalla en negre. Si us plau, tanqueu la sessió i iniceu una sessió d&apos;escriptori amb X11.</translation>
+    </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>Codi font</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>Lloc web</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Traduccions</translation>
     </message>
 </context>
 <context>
