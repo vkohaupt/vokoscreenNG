@@ -134,12 +134,6 @@ void QvkAudioPulse::getPulseDevices()
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
             checkboxAudioDevice->setAutoExclusive( false );
 
-            // Select default AudioDevice
-            if ( QString( list.at(i) ).section( ":::", 0, 0 ) == QAudioDeviceInfo::defaultInputDevice().deviceName() )
-            {
-                checkboxAudioDevice->click();
-            }
-
             qDebug().noquote() << global::nameOutput << "PulseAudio device:" << list.at(i);
         }
         qDebug().noquote();
