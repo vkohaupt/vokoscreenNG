@@ -410,6 +410,7 @@ void QvkMainWindow::showEvent( QShowEvent *event )
         QMessageBox *messageBox = new QMessageBox();
         QIcon icon( QString::fromUtf8( ":/pictures/screencast/logo.png" ) );
         messageBox->setWindowIcon( icon );
+        messageBox->setWindowTitle( global::name + " " + global::version );
         messageBox->setIcon( QMessageBox::Information );
         messageBox->setText( tr( "Wayland desktop session detected" ) );
         messageBox->setInformativeText( tr( "To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session" ) );
