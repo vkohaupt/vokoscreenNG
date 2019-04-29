@@ -50,7 +50,6 @@ private:
 
 private slots:
     void slot_myfileSystemWatcher( QString string );
-
     void slot_deletePlugFile();
 
 

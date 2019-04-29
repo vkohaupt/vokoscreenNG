@@ -125,8 +125,7 @@ static gboolean func( GstBus *bus, GstMessage *message, gpointer user_data )
    Q_UNUSED(user_data);
 
    QFile file;
-   QString filename = QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + "/" + global::name +"AudioPlugFile.txt";
-   file.setFileName( filename );
+   file.setFileName( global::plugFileAudio );
    file.open( QIODevice::WriteOnly | QIODevice::Text );
 
    GstDevice *gstDevice;

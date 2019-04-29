@@ -29,6 +29,8 @@
 #include <QFile>
 #include <QMessageBox>
 #include <QStandardPaths>
+#include <QTemporaryFile>
+#include <QDir>
 
 QvkAudioPulse::QvkAudioPulse( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow )
 {
@@ -40,13 +42,21 @@ QvkAudioPulse::QvkAudioPulse( QMainWindow *mainWindow, Ui_formMainWindow *ui_mai
 
 void QvkAudioPulse::slot_deletePlugFile()
 {
-    QFile file( QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + "/" + global::name + "AudioPlugFile.txt" );
+    QFile file( global::plugFileAudio );
     file.remove();
 }
 
-
 void QvkAudioPulse::init()
 {
+    QTemporaryFile audioTempFile( QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + "/" + global::name + "AudioPlugXXXXXX" );
+    audioTempFile.setAutoRemove( false );
+    if ( audioTempFile.open() )
+    {
+        global::plugFileAudio = audioTempFile.fileName();
+        qDebug().noquote() << global::nameOutput << "AudioPlugInOutFile:" << global::plugFileAudio;
+    }
+    audioTempFile.close();
+
     getPulseDevices();
 
     // QvkWatcherPlug monitoring only new or removed Audiodevices from the PulseAudio server.
@@ -54,15 +64,8 @@ void QvkAudioPulse::init()
     QvkWatcherPlug *vkWatcherPlug = new QvkWatcherPlug();
     vkWatcherPlug->start_monitor();
 
-    // Before watching the file from QvkWatcherPlug, the watched file must be present.
-    // If the file not present or is removed, the fileSystemWatcher will not or not more monitoring.
-    // We create a empty file. If the file exists, it will be overwritten.
-    QString path = QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + "/" + global::name + "AudioPlugFile.txt";
-    QFile file( path );
-    file.open( QIODevice::WriteOnly | QIODevice::Text );
-    file.close();
     fileSystemWatcher = new QFileSystemWatcher();
-    fileSystemWatcher->addPath( path );
+    fileSystemWatcher->addPath( global::plugFileAudio );
     connect( fileSystemWatcher, SIGNAL( fileChanged( QString ) ), this, SLOT( slot_myfileSystemWatcher( QString ) ) );
 }
 

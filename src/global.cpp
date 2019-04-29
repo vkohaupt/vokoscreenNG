@@ -22,6 +22,7 @@
 
 #include "global.h"
 #include <QString>
+#include <QStringListModel>
 
 namespace global
 {
@@ -29,4 +30,6 @@ namespace global
     QString nameOutput = "[" + name + "]";
     QString version = "2.9.6 Beta";
     bool VK_showOnlyFallbackIcons = false;
+
+    QString plugFileAudio = "";
 }
