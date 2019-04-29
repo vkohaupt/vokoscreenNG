@@ -1,9 +1,4 @@
 
-Audio:
---/tmp/vokoscreenNGAudioPlugFile.txt ersetzen durch globale Variable oder einem anderen Mechanismus.
-  Bei mehreren Instanzen von vokoscreenNG funktioniert das Plugin/Plugoff nach dem schließen
-  einer Instanz nicht mehr, dies wird durch ein Dialog angezeigt, und ist zudem total verwirrend.
-
 Player:
 --Monitor skalieren z.b 1.5. Siehe Testvideo Mission-Impossible.mp4 1:44 das weiße Hemd hat Treppenabstufungen.
 --Wenn Pause skaliert das Bild nicht.
