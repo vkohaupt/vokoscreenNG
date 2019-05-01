@@ -270,6 +270,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #ifdef Q_OS_WIN
     vkAudioWindows->slot_start( true );
 #endif
+   connect( ui->spinBoxFrames, SIGNAL( valueChanged( int ) ), ui->labelFramesRates, SLOT( setNum(int) ) );
 
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
@@ -861,7 +862,7 @@ QString QvkMainWindow::VK_getCapsFilter()
 {
    QStringList stringList;
    stringList << "capsfilter caps=video/x-raw,framerate="
-              << ui->spinBoxFrames->text()
+              << QString::number( ui->spinBoxFrames->value() )
               << "/1";
    return QString( stringList.join( "" ) );
 }
