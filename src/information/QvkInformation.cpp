@@ -101,7 +101,7 @@ void QvkInformation::slot_StorageInfo()
     storage.refresh();
 
     // Stop or not start a record if disk space smaller 100MB(Default) 1GB(Max)
-    if ( storage.bytesAvailable() <= ui->spinBoxDiskFreeSpace->text().toInt() * 1024 * 1024 )
+    if ( storage.bytesAvailable() <= ( ui->sliderLimitOfFreeDiskSpace->value() * 1024 * 1024 ) )
     {
         ui->pushButtonStop->click();
     }
