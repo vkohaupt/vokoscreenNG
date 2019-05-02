@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>710</width>
-    <height>416</height>
+    <height>420</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -614,7 +614,7 @@
                       <x>0</x>
                       <y>0</y>
                       <width>535</width>
-                      <height>80</height>
+                      <height>81</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -868,7 +868,26 @@
               <item row="0" column="2" colspan="2">
                <layout class="QHBoxLayout" name="horizontalLayout_5">
                 <item>
-                 <widget class="QSlider" name="spinBoxFrames">
+                 <widget class="QLabel" name="labelFramesRates">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <property name="text">
+                   <string>25</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="margin">
+                   <number>5</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSlider" name="sliderFrames">
                   <property name="minimum">
                    <number>1</number>
                   </property>
@@ -882,7 +901,7 @@
                    <enum>Qt::Horizontal</enum>
                   </property>
                   <property name="tickPosition">
-                   <enum>QSlider::TicksBelow</enum>
+                   <enum>QSlider::NoTicks</enum>
                   </property>
                  </widget>
                 </item>
@@ -902,25 +921,6 @@
                <widget class="QToolButton" name="help_screencast_codec">
                 <property name="text">
                  <string notr="true">Help</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="4">
-               <widget class="QLabel" name="labelFramesRates">
-                <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
-                </property>
-                <property name="text">
-                 <string>0</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="margin">
-                 <number>5</number>
                 </property>
                </widget>
               </item>
@@ -1828,7 +1828,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>361</width>
-                   <height>299</height>
+                   <height>303</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
