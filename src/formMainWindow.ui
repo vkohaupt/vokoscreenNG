@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -613,8 +613,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>535</width>
-                      <height>81</height>
+                      <width>16</width>
+                      <height>16</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1710,7 +1710,7 @@
               <item>
                <widget class="QCheckBox" name="checkBoxResetAtNextStart">
                 <property name="text">
-                 <string>Delete all settings at the next start</string>
+                 <string>Reset all settings at the next start</string>
                 </property>
                </widget>
               </item>
@@ -1847,8 +1847,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>361</width>
-                   <height>305</height>
+                   <width>20</width>
+                   <height>96</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
