@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>710</width>
-    <height>420</height>
+    <height>422</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -694,7 +694,7 @@
                   <property name="frameShadow">
                    <enum>QFrame::Raised</enum>
                   </property>
-                  <layout class="QVBoxLayout" name="verticalLayout_27" stretch="0">
+                  <layout class="QHBoxLayout" name="horizontalLayout_15" stretch="0">
                    <property name="spacing">
                     <number>0</number>
                    </property>
@@ -719,9 +719,6 @@
                       <enum>QFrame::Raised</enum>
                      </property>
                      <layout class="QHBoxLayout" name="horizontalLayout_43">
-                      <property name="spacing">
-                       <number>6</number>
-                      </property>
                       <property name="leftMargin">
                        <number>6</number>
                       </property>
@@ -857,6 +854,16 @@
                         </property>
                        </widget>
                       </item>
+                      <item>
+                       <widget class="QToolButton" name="toolButtonScreencastx264Reset">
+                        <property name="toolTip">
+                         <string>Reset</string>
+                        </property>
+                        <property name="text">
+                         <string notr="true">Reset</string>
+                        </property>
+                       </widget>
+                      </item>
                      </layout>
                     </widget>
                    </item>
@@ -907,7 +914,7 @@
                 </item>
                </layout>
               </item>
-              <item row="0" column="5">
+              <item row="0" column="4">
                <widget class="QToolButton" name="help_screencast_frames">
                 <property name="toolTip">
                  <string notr="true">Help</string>
@@ -917,7 +924,7 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="5">
+              <item row="3" column="4">
                <widget class="QToolButton" name="help_screencast_codec">
                 <property name="text">
                  <string notr="true">Help</string>
@@ -1841,7 +1848,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>361</width>
-                   <height>303</height>
+                   <height>305</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">

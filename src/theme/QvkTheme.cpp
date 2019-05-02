@@ -71,6 +71,7 @@ void QvkTheme::slot_setNewTheme()
     makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAbout ),     VK_getIcon( "help-about",             ":/pictures/screencast/help-about.png" ) );
 
     ui->toolButtonScreencastAreaReset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
+    ui->toolButtonScreencastx264Reset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
 
     makeAndSetValidIcon( ui->tabWidgetCamera, ui->tabWidgetCamera->indexOf( ui->tabCamera ), VK_getIcon( "camera-web", ":/pictures/camera/camera.png" ) );
 

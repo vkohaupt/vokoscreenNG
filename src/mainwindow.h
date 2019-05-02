@@ -145,6 +145,7 @@ private slots:
     void slot_set_available_VideoCodecs_in_Combox( QString suffix );
     void slot_set_available_AudioCodecs_in_Combox( QString suffix );
     void slot_videoCodecChanged( QString codec );
+    void slot_x264Reset();
 
     void slot_StartTimer( bool value );
     void slot_startTime();

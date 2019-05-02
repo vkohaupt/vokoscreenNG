@@ -277,6 +277,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     connect( ui->comboBoxVideoCodec, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_videoCodecChanged( QString ) ) );
     connect( ui->sliderX264, SIGNAL( valueChanged( int ) ), ui->labelSliderX264, SLOT( setNum( int ) ) );
+    connect( ui->toolButtonScreencastx264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_x264Reset() ) );
 
     // Tab 3 Time
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
@@ -423,6 +424,13 @@ void QvkMainWindow::showEvent( QShowEvent *event )
     }
 }
 #endif
+
+
+void QvkMainWindow::slot_x264Reset()
+{
+  ui->comboBoxx264Preset->setCurrentIndex( 1 );
+  ui->sliderX264->setValue( 17 );
+}
 
 
 void QvkMainWindow::slot_videoCodecChanged( QString codec )
