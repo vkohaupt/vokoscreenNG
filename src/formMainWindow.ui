@@ -832,6 +832,31 @@
                         </property>
                        </widget>
                       </item>
+                      <item>
+                       <widget class="QLabel" name="labelSliderX264">
+                        <property name="font">
+                         <font>
+                          <weight>50</weight>
+                          <bold>false</bold>
+                         </font>
+                        </property>
+                        <property name="frameShape">
+                         <enum>QFrame::StyledPanel</enum>
+                        </property>
+                        <property name="frameShadow">
+                         <enum>QFrame::Raised</enum>
+                        </property>
+                        <property name="text">
+                         <string notr="true">17</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <property name="margin">
+                         <number>5</number>
+                        </property>
+                       </widget>
+                      </item>
                      </layout>
                     </widget>
                    </item>
@@ -839,31 +864,6 @@
                  </widget>
                 </item>
                </layout>
-              </item>
-              <item row="3" column="4">
-               <widget class="QLabel" name="labelSliderX264">
-                <property name="font">
-                 <font>
-                  <weight>50</weight>
-                  <bold>false</bold>
-                 </font>
-                </property>
-                <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
-                </property>
-                <property name="text">
-                 <string notr="true">17</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="margin">
-                 <number>5</number>
-                </property>
-               </widget>
               </item>
               <item row="0" column="2" colspan="2">
                <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -960,6 +960,19 @@
                  <string>Videocodec</string>
                 </property>
                </widget>
+              </item>
+              <item row="1" column="3">
+               <spacer name="horizontalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
              </layout>
             </item>
