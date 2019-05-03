@@ -6,5 +6,3 @@ Player:
 Webcam:
 --In einen Thread auslagern
 
-Player:
---Play, Pause nur ein Schalter anzeigen "Usability"
