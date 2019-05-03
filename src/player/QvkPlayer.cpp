@@ -80,6 +80,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     connect( ui->sliderVideo, SIGNAL( sliderMoved( int )), this, SLOT( slot_sliderVideoMoved( int ) ) );
     connect( ui->sliderVideo, SIGNAL( signal_sliderVideo_KeyRight_KeyLeft( int ) ), this, SLOT( slot_sliderVideo_KeyRight_KeyLeft( int ) ) );
 
+    ui->pushButtonPause->hide();
     connect( ui->pushButtonPlay,  SIGNAL( clicked( bool ) ), this,                SLOT( slot_play() ) );
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), mediaPlayer,         SLOT( pause() ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), mediaPlayer,         SLOT( stop() ) );
@@ -365,7 +366,8 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
     if ( state == QMediaPlayer::StoppedState )
     {
         ui->pushButtonStop->setEnabled( false );
-        ui->pushButtonPause->setEnabled( false );
+        ui->pushButtonPause->setVisible( false );
+        ui->pushButtonPlay->setVisible( true );
         ui->pushButtonPlay->setEnabled( true );
         ui->sliderVideo->setValue( 0 );
         ui->labelDuration->setText( "00:00:00" );
@@ -383,18 +385,20 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
 
     if ( state == QMediaPlayer::PlayingState )
     {
-        ui->pushButtonPlay->setEnabled( false );
-        ui->pushButtonPause->setEnabled( true);
-        ui->pushButtonStop->setEnabled( true );
+        ui->pushButtonPlay->setVisible( false );
+        ui->pushButtonPause->setVisible( true );
+        ui->pushButtonPause->setEnabled( true );
         ui->pushButtonPause->setFocus();
+        ui->pushButtonStop->setEnabled( true );
         ui->toolButtonFrameBackward->setEnabled( true );
         ui->toolButtonFrameForward->setEnabled( true );
     }
 
     if ( state == QMediaPlayer::PausedState )
     {
-        ui->pushButtonPause->setEnabled( false );
+        ui->pushButtonPause->setVisible( false );
         ui->pushButtonStop->setEnabled( true );
+        ui->pushButtonPlay->setVisible( true );
         ui->pushButtonPlay->setEnabled( true );
         ui->pushButtonPlay->setFocus();
         ui->toolButtonFrameBackward->setEnabled( true );
