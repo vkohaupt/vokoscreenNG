@@ -4,4 +4,7 @@ Player:
 --Wenn Pause skaliert das Bild nicht.
 
 Webcam:
---In a Thread
+--In einen Thread auslagern
+
+Player:
+--Play, Pause nur ein Schalter anzeigen "Usability"
