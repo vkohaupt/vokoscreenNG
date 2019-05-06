@@ -5,6 +5,10 @@
         <source>File can not be opened</source>
         <translation>Failas negali būti atvertas</translation>
     </message>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Pasirinkite vieną ar daugiau įrenginių</translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
@@ -26,10 +30,6 @@
     <message>
         <source>Window</source>
         <translation>Langas</translation>
-    </message>
-    <message>
-        <source>Detect a Wayland desktop session</source>
-        <translation>Aptikti Wayland darbalaukio seansą</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
@@ -58,6 +58,14 @@
     <message>
         <source>Translations</source>
         <translation>Vertimai</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Paaukoti</translation>
+    </message>
+    <message>
+        <source>Wayland desktop session detected</source>
+        <translation>Aptiktas Wayland darbalaukio seansas</translation>
     </message>
 </context>
 <context>
@@ -381,6 +389,10 @@
     <message>
         <source>Time</source>
         <translation>Laikas</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Paaukoti</translation>
     </message>
 </context>
 <context>

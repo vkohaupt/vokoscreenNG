@@ -5,6 +5,10 @@
         <source>File can not be opened</source>
         <translation>Datei kann nicht geöffnet werden</translation>
     </message>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Ein oder mehrere Geräte auswählen</translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
@@ -26,10 +30,6 @@
     <message>
         <source>Window</source>
         <translation>Fenster</translation>
-    </message>
-    <message>
-        <source>Detect a Wayland desktop session</source>
-        <translation>Erkennen einer Wayland Desktop-Sitzung</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
@@ -58,6 +58,14 @@
     <message>
         <source>Translations</source>
         <translation>Übersetzungen</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Spenden</translation>
+    </message>
+    <message>
+        <source>Wayland desktop session detected</source>
+        <translation>Wayland-Desktop-Sitzung erkannt</translation>
     </message>
 </context>
 <context>
@@ -381,6 +389,10 @@
     <message>
         <source>Time</source>
         <translation>Zeit</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Spenden</translation>
     </message>
 </context>
 <context>

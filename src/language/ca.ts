@@ -5,6 +5,10 @@
         <source>File can not be opened</source>
         <translation>El fitxer no s&apos;ha pogut obrir</translation>
     </message>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Seleccioneu un o més dispositius</translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
@@ -26,10 +30,6 @@
     <message>
         <source>Window</source>
         <translation>Finestra</translation>
-    </message>
-    <message>
-        <source>Detect a Wayland desktop session</source>
-        <translation>Detecta una sessió d&apos;escriptori de Wayland</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
@@ -58,6 +58,14 @@
     <message>
         <source>Translations</source>
         <translation>Traduccions</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Feu una donació</translation>
+    </message>
+    <message>
+        <source>Wayland desktop session detected</source>
+        <translation>S&apos;ha detectat una sessió d&apos;escriptori de Wayland</translation>
     </message>
 </context>
 <context>
@@ -381,6 +389,10 @@
     <message>
         <source>Time</source>
         <translation>Temps</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Feu una donació</translation>
     </message>
 </context>
 <context>

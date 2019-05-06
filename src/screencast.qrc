@@ -10,6 +10,7 @@
 <file>pictures/player/fullscreen.png</file>
 <file>pictures/player/restore.png</file>
 <file>pictures/screencast/supported-formats.png</file>
+<file>pictures/screencast/opensuse.png</file>
 <file>pictures/screencast/preferences-system.png</file>
 <file>pictures/screencast/microphone.png</file>
 <file>pictures/screencast/monitor.png</file>
@@ -17,6 +18,7 @@
 <file>pictures/screencast/strip.png</file>
 <file>pictures/screencast/logo.png</file>
 <file>pictures/screencast/help-about.png</file>
+<file>pictures/screencast/qt.png</file>
 <file>pictures/screencast/undo.png</file>
 <file>pictures/screencast/author.png</file>
 <file>pictures/screencast/suse_logo.png</file>

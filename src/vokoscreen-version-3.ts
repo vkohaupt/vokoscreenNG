@@ -361,10 +361,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Delete all settings at the next start</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Minimized when recording starts</source>
         <translation type="unfinished"></translation>
     </message>
@@ -394,6 +390,14 @@
     </message>
     <message>
         <source>Donate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>25</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset all settings at the next start</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

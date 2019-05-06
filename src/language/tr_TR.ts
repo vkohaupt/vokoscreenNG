@@ -5,6 +5,10 @@
         <source>File can not be opened</source>
         <translation>Dosya açılamıyor</translation>
     </message>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Bir veya daha fazla aygıt seç</translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
@@ -26,10 +30,6 @@
     <message>
         <source>Window</source>
         <translation>Pencere</translation>
-    </message>
-    <message>
-        <source>Detect a Wayland desktop session</source>
-        <translation>Wayland masaüstü oturumu algıla</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
@@ -58,6 +58,14 @@
     <message>
         <source>Translations</source>
         <translation>Çeviriler</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Bağış</translation>
+    </message>
+    <message>
+        <source>Wayland desktop session detected</source>
+        <translation>Wayland masaüstü oturumu algılandı</translation>
     </message>
 </context>
 <context>
@@ -381,6 +389,10 @@
     <message>
         <source>Time</source>
         <translation>Zaman</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Bağış</translation>
     </message>
 </context>
 <context>
