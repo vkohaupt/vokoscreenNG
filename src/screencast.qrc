@@ -26,11 +26,9 @@
 <file>pictures/systray/record.png</file>
 <file>pictures/windows.png</file>
 <file></file>
-<file>language/ca.qm</file>
-<file>language/de_DE.qm</file>
-<file>language/lt.qm</file>
+<file>pictures/camera/camera.license</file>
+<file>pictures/linux.license</file>
+<file>pictures/screencast/help-about.license</file>
 <file>language/pt.qm</file>
-<file>language/ru.qm</file>
-<file>language/tr_TR.qm</file>
 </qresource>
 </RCC>

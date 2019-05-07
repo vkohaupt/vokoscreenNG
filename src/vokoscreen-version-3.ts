@@ -400,6 +400,14 @@
         <source>Reset all settings at the next start</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Developed under openSUSE Leap and Qt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copyright and license from pictures</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>player</name>

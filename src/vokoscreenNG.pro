@@ -132,3 +132,6 @@ include(theme/theme.pri)
 
 # screenManager
 include(screenManager/screenManager.pri)
+
+# licenes
+include(licenses/licenses.pri)

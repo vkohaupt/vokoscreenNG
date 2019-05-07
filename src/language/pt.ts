@@ -359,10 +359,6 @@
         <translation>600x200</translation>
     </message>
     <message>
-        <source>Delete all settings at the next start</source>
-        <translation>Eliminar todas as configurações no próximo início</translation>
-    </message>
-    <message>
         <source>Minimized when recording starts</source>
         <translation>Minimizado quando a gravação começar</translation>
     </message>
@@ -393,6 +389,14 @@
     <message>
         <source>Donate</source>
         <translation>Doar</translation>
+    </message>
+    <message>
+        <source>25</source>
+        <translation>25</translation>
+    </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Repor todas as configurações no próximo início</translation>
     </message>
 </context>
 <context>

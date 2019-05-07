@@ -1,15 +1,21 @@
 3rd party licenses used in vokoscreenNG
 
 Qt:
-License --> LGPL
+License --> LGPL 2.1 LGPL 3.0
 File    --> LGPL
 URL     --> https://www.qt.io/
 
 
 GStreamer:
-License --> LGPL
+License --> LGPL 
 File    --> LGPL
 URL     --> https://gstreamer.freedesktop.org/
+
+
+PulseAudio:
+License --> LGPL 2.1
+File    --> LGPL
+URL     --> https://www.freedesktop.org/wiki/Software/PulseAudio/
 
 
 Global QGlobalShortcut:

@@ -1,4 +1,4 @@
-/* vokoscreen - A desktop recorder
+﻿/* vokoscreen - A desktop recorder
  * Copyright (C) 2017-2019 Volker Kohaupt
  * 
  * Author:
@@ -28,6 +28,7 @@
 #include "QvkLogController.h"
 #include "global.h"
 #include "QvkScreenManager.h"
+#include "QvkLicenses.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -85,6 +86,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     QvkHelp *vkHelp = new QvkHelp( this, ui, vkPlayer->ui );
     Q_UNUSED( vkHelp );
+
+    QvkLicenses *vkLicenses = new QvkLicenses();
 
     /* Wayland
      * If start with "./name -platform wayland" comes a Memory access error

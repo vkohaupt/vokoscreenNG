@@ -70,6 +70,8 @@ array="<file>"$( find ./pictures/* -name *.png | cut -c 3- )"</file>"
 echo $array | sed "s/ /<\/file>\n<file>/g" >> screencast.qrc
 array="<file>"$( find ./pictures/* -name *.svg | cut -c 3- )"</file>"
 echo $array | sed "s/ /<\/file>\n<file>/g" >> screencast.qrc
+array="<file>"$( find ./pictures/* -name *.license | cut -c 3- )"</file>"
+echo $array | sed "s/ /<\/file>\n<file>/g" >> screencast.qrc
 
 ################
 # language packs
