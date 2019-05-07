@@ -1,4 +1,4 @@
-/* vokoscreen - A desktop recorder
+/* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2019 Volker Kohaupt
  * 
  * Author:
