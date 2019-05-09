@@ -410,6 +410,13 @@
     </message>
 </context>
 <context>
+    <name>license</name>
+    <message>
+        <source>Copyright and license from pictures</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>player</name>
     <message>
         <source>Play</source>
