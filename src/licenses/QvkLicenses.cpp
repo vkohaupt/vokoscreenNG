@@ -34,6 +34,10 @@ QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::licen
 
     ui->setupUi( this );
 
+    QIcon icon;
+    icon.addFile( QString::fromUtf8( ":/pictures/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
+    setWindowIcon( icon );
+
     connect( ui_mainwindow->pushButtonLicense, SIGNAL( clicked( bool ) ), this, SLOT( show() ) );
 
     const QFont fixedFont = QFontDatabase::systemFont( QFontDatabase::FixedFont );
@@ -50,8 +54,11 @@ QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::licen
             QSettings settings( dirIterator.filePath(), QSettings::IniFormat );
             settings.beginGroup( "license" );
                 ui->textBrowser->insertPlainText( "Author : (C) " + settings.value( "author" ).toString() + "\n" );
-                ui->textBrowser->insertPlainText( "URL    : " + settings.value( "url" ).toString() + "\n" );
-                ui->textBrowser->insertPlainText( "License: " + settings.value( "license" ).toString() + "\n" );
+                ui->textBrowser->insertPlainText( "Source : " + settings.value( "url" ).toString() + "\n" );
+                if ( settings.value( "license" ).toString() > "" )
+                {
+                   ui->textBrowser->insertPlainText( "License: " + settings.value( "license" ).toString() + "\n" );
+                }
                 ui->textBrowser->insertPlainText( "\n" );
             settings.endGroup();
         }

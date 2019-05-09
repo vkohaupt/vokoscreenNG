@@ -54,7 +54,7 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, Ui_p
     setWindowTitle( global::name + " " + global::version + " " + "help" );
 
     QIcon icon;
-    icon.addFile( QString::fromUtf8( ":/pictures/screencast/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
+    icon.addFile( QString::fromUtf8( ":/pictures/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
 
     QStringList helpStringList;
