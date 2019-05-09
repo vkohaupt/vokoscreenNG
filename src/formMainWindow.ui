@@ -2189,7 +2189,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButton_2">
+               <widget class="QPushButton" name="pushButtonLicense">
                 <property name="text">
                  <string>Copyright and license from pictures</string>
                 </property>

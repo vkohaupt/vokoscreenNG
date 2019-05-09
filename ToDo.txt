@@ -1,3 +1,6 @@
 
+Manpage:
+--Manpage entfernen
+
 Player:
 --Monitor skalieren z.b 1.5. Siehe Testvideo Mission-Impossible.mp4 1:44 das weiße Hemd hat Treppenabstufungen.

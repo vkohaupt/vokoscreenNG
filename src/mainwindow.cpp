@@ -85,9 +85,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkPlayer = new QvkPlayer( this, ui );
 
     QvkHelp *vkHelp = new QvkHelp( this, ui, vkPlayer->ui );
-    Q_UNUSED( vkHelp );
 
-    QvkLicenses *vkLicenses = new QvkLicenses();
+    QvkLicenses *vkLicenses = new QvkLicenses( ui );
 
     /* Wayland
      * If start with "./name -platform wayland" comes a Memory access error
@@ -338,6 +337,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( this,      SIGNAL( signal_close() ),       ui->pushButtonStop,     SLOT( click() ) );
     connect( this,      SIGNAL( signal_close( bool ) ), ui->checkBoxCameraOnOff,SLOT( setChecked( bool ) ) );
     connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( close() ) );
+    connect( this,      SIGNAL( signal_close() ),       vkLicenses,             SLOT( close() ) );
 
     VK_Supported_Formats_And_Codecs();
     VK_Check_is_Format_available();

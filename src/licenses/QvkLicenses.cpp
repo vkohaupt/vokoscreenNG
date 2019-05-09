@@ -26,22 +26,33 @@
 #include <QDir>
 #include <QStringList>
 #include <QDirIterator>
+#include <QFontDatabase>
+#include <QFont>
 
-QvkLicenses::QvkLicenses()
+QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::license )
 {
+
+    ui->setupUi( this );
+
+    connect( ui_mainwindow->pushButtonLicense, SIGNAL( clicked( bool ) ), this, SLOT( show() ) );
+
+    const QFont fixedFont = QFontDatabase::systemFont( QFontDatabase::FixedFont );
+    ui->textBrowser->setFont( fixedFont );
+    ui->textBrowser->setContextMenuPolicy( Qt::NoContextMenu );
+    ui->textBrowser->setTextInteractionFlags( Qt::NoTextInteraction );
+
     QDirIterator dirIterator( ":/pictures/", QDir::Files, QDirIterator::Subdirectories );
     while ( dirIterator.hasNext() )
     {
-        if ( dirIterator.next().contains( ".license" ) == true )
+        QString string = dirIterator.next();
+        if ( ( string.contains( ".license" ) == true ) and ( string.contains( "template" ) == false ) )
         {
-            QSettings::setPath( QSettings::IniFormat, QSettings::UserScope, "/:");
-            QSettings settings( dirIterator.filePath(), QSettings::IniFormat);
-
+            QSettings settings( dirIterator.filePath(), QSettings::IniFormat );
             settings.beginGroup( "license" );
-                qDebug() << "Author :" << settings.value( "author" ).toString();
-                qDebug() << "URL    :" << settings.value( "url" ).toString();
-                qDebug() << "License:" << settings.value( "license" ).toString();
-                qDebug() << "--------------------------------------";
+                ui->textBrowser->insertPlainText( "Author : (C) " + settings.value( "author" ).toString() + "\n" );
+                ui->textBrowser->insertPlainText( "URL    : " + settings.value( "url" ).toString() + "\n" );
+                ui->textBrowser->insertPlainText( "License: " + settings.value( "license" ).toString() + "\n" );
+                ui->textBrowser->insertPlainText( "\n" );
             settings.endGroup();
         }
     }

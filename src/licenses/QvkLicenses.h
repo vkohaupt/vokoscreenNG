@@ -23,15 +23,19 @@
 #ifndef QVKLICENSES_H
 #define QVKLICENSES_H
 
-#include <QObject>
+#include "ui_licenses.h"
+#include "ui_formMainWindow.h"
+
+#include <QWidget>
 #include <QDebug>
 
-class QvkLicenses: public QObject
+class QvkLicenses: public QWidget
 { 
     Q_OBJECT
 public:
-    QvkLicenses();
+    QvkLicenses(Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkLicenses();
+    Ui_license *ui;
 
 
 public slots:

@@ -28,7 +28,13 @@
 <file></file>
 <file>pictures/camera/camera.license</file>
 <file>pictures/linux.license</file>
+<file>pictures/player/logo-3.license</file>
+<file>pictures/player/logo-2.license</file>
+<file>pictures/player/logo-1.license</file>
 <file>pictures/screencast/help-about.license</file>
+<file>pictures/template.license</file>
+<file>language/de_DE.qm</file>
+<file>language/lt.qm</file>
 <file>language/pt.qm</file>
 </qresource>
 </RCC>
