@@ -408,6 +408,13 @@
     </message>
 </context>
 <context>
+    <name>license</name>
+    <message>
+        <source>Copyright and license from pictures</source>
+        <translation>Copyright und Lizenz von Bildern</translation>
+    </message>
+</context>
+<context>
     <name>player</name>
     <message>
         <source>Play</source>

@@ -1,139 +1,139 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ar" version="2.1">
 <context>
     <name>QvkAudioPulse</name>
     <message>
         <source>File can not be opened</source>
-        <translation>Não se consegue abrir o ficheiro</translation>
+        <translation>الملف لايمكن فتحه</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecione um ou mais dispositivos</translation>
+        <translation>اِختر جهازاً أو أكثر</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Mudar para janela</translation>
+        <translation> أظهر النافذة</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Mudar para ecrã inteiro</translation>
+        <translation>تغيير لملء الشاشة</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Ecrã inteiro</translation>
+        <translation>شاشة كاملة</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Janela</translation>
+        <translation>نافذة</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Não foi encontrado nenhum gestor de ficheiros.</translation>
+        <translation>لايمكن ايجاد اداراه الملفات </translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Por favor instale um gestor de ficheiros.</translation>
+        <translation> الرجاء تنصيب اداره الملفات</translation>
     </message>
     <message>
         <source>Desktop session is a Wayland session</source>
-        <translation>A sessão de secretária é uma sessão Wayland</translation>
+        <translation> سطح المكتب هو Wayland</translation>
     </message>
     <message>
         <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Neste momento o Wayland não é suportado. Uma transmissão de ecrã mostra um ecrã a negro. Por favor saia da conta e inicie uma sessão X11 Desktop</translation>
+        <translation>للان ويلان لايوجد دعم لويلاند التسجيل يظهر  شاشة سوداء. يرجى تسجيل الخروج وبدء جلسة سطح المكتب X11</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Código-fonte</translation>
+        <translation>الملف المصدري</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Página inicial</translation>
+        <translation>صفحة البرنامج</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Traduções</translation>
+        <translation>الترجمات</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Doar</translation>
+        <translation>تبرع</translation>
     </message>
     <message>
         <source>Wayland desktop session detected</source>
-        <translation>Detetada sessão de secretária Wayland</translation>
+        <translation>تم اكتشاف اتصال سطح مكتب ويلاند </translation>
     </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
-        <translation>Abrir ficheiro</translation>
+        <translation>افتح الملف</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>منطقة</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Começar</translation>
+        <translation>اِبدأ</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Parar</translation>
+        <translation>أوقِف</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>ألبِث</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>واصل</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Sair</translation>
+        <translation>اُخرج</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Diálogo</translation>
+        <translation>الحوار</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Espelhar horizontal</translation>
+        <translation>تغيير الوجه الأفقي</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Espelhar vertical</translation>
+        <translation>تغيير الوجه الرأسي</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Inverter</translation>
+        <translation>عكس</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Cinzento</translation>
+        <translation>رمادي</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Preto e branco</translation>
+        <translation>ابيض واسود</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Remover moldura da janela</translation>
+        <translation>إزالة إطار النافذة</translation>
     </message>
     <message>
         <source>160x120</source>
@@ -145,7 +145,7 @@
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Configurações da câmara</translation>
+        <translation>اعدادات الكاميرا</translation>
     </message>
     <message>
         <source>640x480</source>
@@ -156,171 +156,171 @@
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>منطقة</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Restabelecer</translation>
+        <translation>أعاده للوضع </translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliação</translation>
+        <translation>المكبّرة</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Contagem descrescente</translation>
+        <translation>عدّ تنازلي</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Tamanho do vídeo:</translation>
+        <translation>حجم ملف الفيديو</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Espaço de disco disponível:</translation>
+        <translation>مساحه التخزين المتاحه:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informação</translation>
+        <translation>معلومه</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Tempo de gravação:</translation>
+        <translation>مده التسجيل</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Áudio</translation>
+        <translation>الصوت</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>المشاهد</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Codec de vídeo</translation>
+        <translation>ترميز الفيديو</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formato</translation>
+        <translation>الصيغة</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Codec de áudio</translation>
+        <translation>ترميز الصوت</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>Qualidade</translation>
+        <translation>جوده</translation>
     </message>
     <message>
         <source>Scale</source>
-        <translation>Escala</translation>
+        <translation>مقياس</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Não gravar o cursor do rato</translation>
+        <translation>لا تسجل مؤشر الفأرة</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Hora</translation>
+        <translation>ساعه</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minuto</translation>
+        <translation>دقيقه</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Iniciar o cronómetro</translation>
+        <translation>بدأ الموقت</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Parar a gravação após</translation>
+        <translation>اوقف التسجيل بعد</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Horas</translation>
+        <translation>ساعات</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minutos</translation>
+        <translation>دقائق</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Segundos</translation>
+        <translation>ثواني</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Caminho do vídeo </translation>
+        <translation>مسار الفيديو</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Limite do espaço em disco disponível</translation>
+        <translation> مساحه التخزين المتاحه: </translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Mostrar na barra de tarefas</translation>
+        <translation>أظهِر البرنامج في مساحة التبليغ</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Espera em segundos antes de começar a gravar</translation>
+        <translation>الانتظار الثاني قبل التسجيل</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Procurar atualizações</translation>
+        <translation>ابحث عن التحديثات</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Ajuda</translation>
+        <translation>مساعده</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Vídeo</translation>
+        <translation>قيديو</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Disponível</translation>
+        <translation>المتاح</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Indisponível</translation>
+        <translation>غير متاح</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Começar</translation>
+        <translation>اِبدأ</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Parar</translation>
+        <translation>أوقِف</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>ألبِث</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>واصل</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Reproduzir</translation>
+        <translation>شغّل</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Pasta</translation>
+        <translation>دليل</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Câmara</translation>
+        <translation>الكاميرا</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Inverter</translation>
+        <translation>عكس</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Cinzento</translation>
+        <translation>رمادي</translation>
     </message>
     <message>
         <source>Send Report</source>
-        <translation>Enviar relatório</translation>
+        <translation>ارسل التقرير</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -336,11 +336,11 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Reproduzir a última gravação</translation>
+        <translation>شغل اخر تسجيل</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Abrir pasta</translation>
+        <translation>افتح الدليل</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
@@ -360,35 +360,35 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimizado quando a gravação começar</translation>
+        <translation> تصغير البرنامج عند بدأ التسجيل </translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Iniciar minimizado</translation>
+        <translation> البدء  بوضع التصغير </translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Espelhar horizontal</translation>
+        <translation>تغيير الوجه الأفقي</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Espelhar vertical</translation>
+        <translation>تغيير الوجه الرأسي</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Preto e branco</translation>
+        <translation>ابيض واسود</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Remover moldura da janela</translation>
+        <translation>إزالة إطار النافذة</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation>Tempo</translation>
+        <translation>الوقت</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Doar</translation>
+        <translation>تبرع</translation>
     </message>
     <message>
         <source>25</source>
@@ -396,65 +396,65 @@
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Repor todas as configurações no próximo início</translation>
+        <translation>إعادة ضبط جميع الإعدادات في التشغيل القادم</translation>
     </message>
     <message>
         <source>Developed under openSUSE Leap and Qt</source>
-        <translation>Desenvolvido em openSUSE Leap e Qt</translation>
+        <translation>تم تطويرها علي اوبن سوسي ليب و كيو تي </translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Direitos de autor e licença das imagens</translation>
+        <translation>حقوق الطبع والنشر والترخيص من الصور</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Direitos de autor e licença das imagens</translation>
+        <translation>حقوق الطبع والنشر والترخيص من الصور</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Reproduzir</translation>
+        <translation>شغّل</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>ألبِث</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Parar</translation>
+        <translation>أوقِف</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Abrir ficheiro</translation>
+        <translation>افتح الملف</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Ecrã inteiro</translation>
+        <translation>شاشة كاملة</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Fotograma anterior</translation>
+        <translation>الإطار السابق</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Fotograma seguinte</translation>
+        <translation>الإطار التالي</translation>
     </message>
     <message>
         <source>Volume</source>
-        <translation>Volume</translation>
+        <translation>الصوت</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Sem som</translation>
+        <translation>صامت</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Mover menu</translation>
+        <translation>حرك قائمه الخيارات</translation>
     </message>
 </context>
 </TS>
