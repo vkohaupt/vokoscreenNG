@@ -54,14 +54,9 @@ QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::licen
             QSettings settings( dirIterator.filePath(), QSettings::IniFormat );
             settings.beginGroup( "license" );
 
+            ui->textBrowser->insertHtml( "<img src='" + dirIterator.filePath().replace( "license", "png" ) + "' width=50 height=50><br>" );
 
-            ui->textBrowser->insertHtml( "<table><tr><td rowspan='3'>" );
-            ui->textBrowser->insertHtml( "<img src='" + dirIterator.filePath().replace( "license", "png" ) + "' width=40 height=40" );
-            ui->textBrowser->insertHtml( "</td>" );
-
-            ui->textBrowser->insertHtml( "<td><" );
-            ui->textBrowser->insertHtml( "Author : (C) " + settings.value( "author" ).toString() );
-            ui->textBrowser->insertHtml( "</td></tr>" );
+            ui->textBrowser->insertHtml( "Author : (C) " + settings.value( "author" ).toString() + "<br>");
 
             if ( settings.value( "license" ).toString() > "" )
             {
@@ -77,28 +72,12 @@ QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::licen
                 ui->textBrowser->insertHtml( "Source : " + settings.value( "url" ).toString() + "<br>" );
             }
 
-            ui->textBrowser->insertHtml( "</table>" );
-            ui->textBrowser->insertHtml( "<br><br>" );
+            ui->textBrowser->insertHtml( "<br><br><br>" );
             settings.endGroup();
         }
     }
     ui->textBrowser->moveCursor( QTextCursor::Start );
 }
-
-/*
-<table>
-  <tr>
-    <td rowspan="3">Bild</td>
-    <td>1</td>
-  </tr>
-  <tr>
-    <td>2</td>
-  </tr>
-  <tr>
-    <td>3</td>
-  </tr>
-</table>
-*/
 
 
 QvkLicenses::~QvkLicenses(){}
