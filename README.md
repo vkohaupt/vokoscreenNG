@@ -38,6 +38,8 @@ https://www.transifex.com/vkohaupt/vokoscreen/
 * gstreamer-plugins-ugly
   - Video: x264
   - Audio: mp3lame
+* gstreamer-plugins-ugly-orig-addon (opensuse packmann)
+  - Video: x264
 * gstreamer-plugins-libav
   - Player: x264
 * gstreamer-plugins-vaapi and intel-vaapi-driver
