@@ -15,7 +15,11 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <widget class="QTextBrowser" name="textBrowser"/>
+    <widget class="QTextBrowser" name="textBrowser">
+     <property name="openExternalLinks">
+      <bool>true</bool>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

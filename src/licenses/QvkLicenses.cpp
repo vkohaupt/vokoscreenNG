@@ -43,7 +43,7 @@ QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::licen
     const QFont fixedFont = QFontDatabase::systemFont( QFontDatabase::FixedFont );
     ui->textBrowser->setFont( fixedFont );
     ui->textBrowser->setContextMenuPolicy( Qt::NoContextMenu );
-    ui->textBrowser->setTextInteractionFlags( Qt::NoTextInteraction );
+    //ui->textBrowser->setTextInteractionFlags( Qt::NoTextInteraction );
 
     QDirIterator dirIterator( ":/pictures/", QDir::Files, QDirIterator::Subdirectories );
     while ( dirIterator.hasNext() )
@@ -53,13 +53,13 @@ QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::licen
         {
             QSettings settings( dirIterator.filePath(), QSettings::IniFormat );
             settings.beginGroup( "license" );
-                ui->textBrowser->insertPlainText( "Author : (C) " + settings.value( "author" ).toString() + "\n" );
-                ui->textBrowser->insertPlainText( "Source : " + settings.value( "url" ).toString() + "\n" );
+                ui->textBrowser->insertHtml( "Author : (C) " + settings.value( "author" ).toString() + "<br>" );
+                ui->textBrowser->insertHtml( "Source : <a href='" + settings.value( "url" ).toString() + "'>" + settings.value( "url" ).toString() + "</a>" + "<br>" );
                 if ( settings.value( "license" ).toString() > "" )
                 {
-                   ui->textBrowser->insertPlainText( "License: " + settings.value( "license" ).toString() + "\n" );
+                    ui->textBrowser->insertHtml( "License: " + settings.value( "license" ).toString() + "<br>" );
                 }
-                ui->textBrowser->insertPlainText( "\n" );
+            ui->textBrowser->insertHtml( "<br>" );
             settings.endGroup();
         }
     }
