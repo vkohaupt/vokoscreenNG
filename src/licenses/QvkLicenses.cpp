@@ -23,14 +23,9 @@
 #include "QvkLicenses.h"
 
 #include <QSettings>
-#include <QDir>
-#include <QStringList>
 #include <QDirIterator>
 #include <QFontDatabase>
 #include <QFont>
-
-#include <QTextDocumentFragment>
-
 
 QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::license )
 {
@@ -86,55 +81,5 @@ QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::licen
     ui->textBrowser->moveCursor( QTextCursor::Start );
 }
 
-/*
-QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::license )
-{
-    ui->setupUi( this );
-
-    QIcon icon;
-    icon.addFile( QString::fromUtf8( ":/pictures/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
-    setWindowIcon( icon );
-
-    connect( ui_mainwindow->pushButtonLicense, SIGNAL( clicked( bool ) ), this, SLOT( show() ) );
-
-    const QFont fixedFont = QFontDatabase::systemFont( QFontDatabase::FixedFont );
-    ui->textBrowser->setFont( fixedFont );
-    ui->textBrowser->setContextMenuPolicy( Qt::NoContextMenu );
-
-    QDirIterator dirIterator( ":/pictures/", QDir::Files, QDirIterator::Subdirectories );
-    while ( dirIterator.hasNext() )
-    {
-        QString string = dirIterator.next();
-        if ( ( string.contains( ".license" ) == true ) and ( string.contains( "template" ) == false ) )
-        {
-            QSettings settings( dirIterator.filePath(), QSettings::IniFormat );
-            settings.beginGroup( "license" );
-
-            ui->textBrowser->insertHtml( "<img src='" + dirIterator.filePath().replace( "license", "png" ) + "' width=50 height=50><br>" );
-
-            ui->textBrowser->insertHtml( "Author : (C) " + settings.value( "author" ).toString() + "<br>");
-
-            if ( settings.value( "license" ).toString() > "" )
-            {
-                ui->textBrowser->insertHtml( "License: " + settings.value( "license" ).toString() + "<br>" );
-            }
-
-            if ( settings.value( "url" ).toString().contains( "http" ) )
-            {
-                ui->textBrowser->insertHtml( "Source : <a href='" + settings.value( "url" ).toString() + "'>" + settings.value( "url" ).toString() + "</a>" + "<br>" );
-            }
-            else
-            {
-                ui->textBrowser->insertHtml( "Source : " + settings.value( "url" ).toString() + "<br>" );
-            }
-
-            ui->textBrowser->insertHtml( "<br><br><br>" );
-            settings.endGroup();
-        }
-    }
-    ui->textBrowser->moveCursor( QTextCursor::Start );
-}
-
-*/
 
 QvkLicenses::~QvkLicenses(){}
