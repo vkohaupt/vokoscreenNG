@@ -32,7 +32,7 @@ QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::licen
     ui->setupUi( this );
 
     QIcon icon;
-    icon.addFile( QString::fromUtf8( ":/pictures/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
+    icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
 
     connect( ui_mainwindow->pushButtonLicense, SIGNAL( clicked( bool ) ), this, SLOT( show() ) );

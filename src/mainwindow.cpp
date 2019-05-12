@@ -109,7 +109,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkInformation *vkInformation = new QvkInformation( this, ui);
     connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
 
-    QIcon icon( QString::fromUtf8( ":/pictures/logo.png" ) );
+    QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     setWindowIcon( icon );
 
     qDebug().noquote() << global::nameOutput << "Version:" << global::version;
@@ -415,7 +415,7 @@ void QvkMainWindow::showEvent( QShowEvent *event )
     {
         qDebug().noquote() << global::nameOutput << tr( "Desktop session is a Wayland session" );
         QMessageBox *messageBox = new QMessageBox();
-        QIcon icon( QString::fromUtf8( ":/pictures/logo.png" ) );
+        QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
         messageBox->setWindowIcon( icon );
         messageBox->setWindowTitle( global::name + " " + global::version );
         messageBox->setIcon( QMessageBox::Information );

@@ -34,7 +34,7 @@ QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraW
     cameraWindow->hide();
     connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_formMainWindow->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
     cameraWindow->setWindowTitle( global::name + " " + global::version + " " + "Camera");
-    QIcon icon( QString::fromUtf8( ":/pictures/player/logo.png" ) );
+    QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     cameraWindow->setWindowIcon( icon );
 
     connect( cameraWatcher, SIGNAL( signal_addedCamera( QString, QString ) ), this, SLOT( slot_addedCamera( QString, QString ) ) );
