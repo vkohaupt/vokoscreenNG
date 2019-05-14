@@ -40,7 +40,7 @@ public:
     virtual ~QvkSettings();
     void saveAll(Ui_formMainWindow *ui_mainwindow, QMainWindow *parent );
     void readAll(Ui_formMainWindow *ui_mainwindow, QMainWindow *parent);
-    void saveAreaScreencast(int x, int y, int width, int height);
+    void saveAreaScreencast(qreal x, qreal y, qreal width, qreal height);
     void readAreaScreencast(QvkRegionChoise *vkRegionChoise);
     void saveCamera( int x, int y );
     void readCamera( QvkCameraController *vkCameraController );

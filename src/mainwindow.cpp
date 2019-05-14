@@ -487,7 +487,7 @@ void QvkMainWindow::slot_sendReport()
     QFile file( vkSettings.getFileName() );
     if( !file.open( QIODevice::ReadOnly) )
     {
-        QMessageBox::information( 0, "error", file.errorString() );
+        QMessageBox::information( Q_NULLPTR, "error", file.errorString() );
     }
     QTextStream in( &file );
     while( !in.atEnd() )
@@ -1471,7 +1471,7 @@ void QvkMainWindow::slot_Start()
     if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  )
     {
         setWindowState( Qt::WindowMinimized );
-        QThread::msleep( ui->spinBoxMinimizedWhenRecordingStarts->value() * 1000 );
+        QThread::msleep( static_cast<unsigned long>(ui->spinBoxMinimizedWhenRecordingStarts->value()) * 1000 );
     }
     QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
     QString path = ui->lineEditVideoPath->text();

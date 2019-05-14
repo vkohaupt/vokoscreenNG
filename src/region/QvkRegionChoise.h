@@ -36,10 +36,10 @@ public:
   virtual ~QvkRegionChoise();
   int getX();
   int getY();
-  int getHeight();
-  int getWidth();
-  int getXRecordArea();
-  int getYRecordArea();
+  qreal getHeight();
+  qreal getWidth();
+  qreal getXRecordArea();
+  qreal getYRecordArea();
 
   void recordMode(bool value);
   void setX( int x );

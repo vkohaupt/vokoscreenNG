@@ -35,10 +35,10 @@ public:
                      bottomMiddel=180, bottomLeft=225, leftMiddel=270, topLeft=315 };
 
 private:
-  qreal penWidth = 2.0;
-  qreal penWidthHalf = penWidth/2.0;
-  qreal radius = 20.0;
-  qreal diameter = 2.0 * radius;
+  int penWidth = 2;
+  int penWidthHalf = penWidth/2;
+  int radius = 20;
+  int diameter = 2 * radius;
 
 public slots:
   QPixmap getPixmapHandle( QColor color, degreeArrow degree );

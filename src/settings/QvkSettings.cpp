@@ -259,7 +259,7 @@ QString QvkSettings::getFileName()
 }
 
 
-void QvkSettings::saveAreaScreencast( int x, int y, int width, int height  )
+void QvkSettings::saveAreaScreencast( qreal x, qreal y, qreal width, qreal height  )
 {
     QSettings settings( global::name, global::name );
     settings.beginGroup( "AreaScreencast" );

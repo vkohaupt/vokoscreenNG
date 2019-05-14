@@ -2013,8 +2013,8 @@
                <widget class="QLabel" name="labelAutorPicture">
                 <property name="maximumSize">
                  <size>
-                  <width>150</width>
-                  <height>150</height>
+                  <width>100</width>
+                  <height>100</height>
                  </size>
                 </property>
                 <property name="text">
@@ -2198,6 +2198,19 @@
             </item>
             <item>
              <layout class="QGridLayout" name="gridLayout_2">
+              <item row="0" column="1">
+               <spacer name="horizontalSpacer_11">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
               <item row="0" column="0">
                <widget class="QLabel" name="label_27">
                 <property name="text">
@@ -2211,7 +2224,7 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="1">
+              <item row="0" column="2">
                <widget class="QLabel" name="label_28">
                 <property name="text">
                  <string>Developed under openSUSE Leap and Qt</string>
@@ -2221,7 +2234,7 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="2">
+              <item row="0" column="4">
                <widget class="QLabel" name="label_29">
                 <property name="text">
                  <string notr="true"/>
@@ -2233,6 +2246,19 @@
                  <set>Qt::AlignCenter</set>
                 </property>
                </widget>
+              </item>
+              <item row="0" column="3">
+               <spacer name="horizontalSpacer_12">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
              </layout>
             </item>

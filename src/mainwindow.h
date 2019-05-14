@@ -55,7 +55,7 @@ class QvkMainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit QvkMainWindow(QWidget *parent = 0);
+    explicit QvkMainWindow(QWidget *parent = Q_NULLPTR);
     ~QvkMainWindow();
 
     Ui::formMainWindow *ui;
@@ -90,7 +90,7 @@ private:
     QFileSystemWatcher *videoFileSystemWatcher;
 
     GstElement *pipeline;
-    GError *error = NULL;
+    GError *error = Q_NULLPTR;
 
     QStringList videoFormatsList;
     QStringList globalFormatsList;
