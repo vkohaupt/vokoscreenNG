@@ -55,7 +55,7 @@ class QvkMainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit QvkMainWindow(QWidget *parent = Q_NULLPTR);
+    explicit QvkMainWindow( QWidget *parent = Q_NULLPTR );
     ~QvkMainWindow();
 
     Ui::formMainWindow *ui;
@@ -71,7 +71,7 @@ public:
     QvkHelp *vkHelp;
     QvkSystray *vkSystray;
 
-    void makeAndSetValidIcon(QTabWidget *widget, int index, QIcon icon );
+    void makeAndSetValidIcon( QTabWidget *widget, int index, QIcon icon );
     void makeAndSetValidIconForSideBar( int index, QIcon icon );
 
 

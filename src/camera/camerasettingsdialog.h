@@ -34,7 +34,7 @@ class cameraSettingsDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit cameraSettingsDialog(QWidget *parent = 0);
+    explicit cameraSettingsDialog( QWidget *parent = Q_NULLPTR );
     ~cameraSettingsDialog();
     Ui::cameraSettingsDialog *ui;
 

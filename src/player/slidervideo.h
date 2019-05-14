@@ -35,7 +35,7 @@ class slidervideo:public QSlider
     Q_OBJECT
 
 public:
-    slidervideo(QWidget *parent=0)
+    slidervideo( QWidget *parent = Q_NULLPTR )
     {
         Q_UNUSED(parent);
     }

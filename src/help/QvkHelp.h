@@ -41,7 +41,7 @@ class QvkHelp: public QWidget
     
 public:
     QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, Ui_player *ui_player);
-    virtual ~QvkHelp();
+    virtual ~QvkHelp() override;
     
 
 public slots:

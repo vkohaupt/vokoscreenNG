@@ -30,7 +30,7 @@ class QvkPlayerVideoSurface: public QAbstractVideoSurface
 {
   Q_OBJECT
   public:
-    QvkPlayerVideoSurface(QObject * parent=NULL) : QAbstractVideoSurface(parent)
+    QvkPlayerVideoSurface(QObject * parent = Q_NULLPTR ) : QAbstractVideoSurface(parent)
     {}
 
     QList<QVideoFrame::PixelFormat> supportedPixelFormats(QAbstractVideoBuffer::HandleType type) const

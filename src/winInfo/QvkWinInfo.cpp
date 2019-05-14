@@ -109,7 +109,7 @@ QvkWinInfo::~QvkWinInfo()
 
 void QvkWinInfo::paintEvent( QPaintEvent *event ) 
 {
-    (void)event;
+    Q_UNUSED(event);
     QPainter painter( this );
     painter.setPen( QPen( Qt::blue, 4 ) );
     painter.drawLine( 50/2, 0, 50/2, 50);
@@ -123,35 +123,37 @@ void QvkWinInfo::slot_mousePosition()
     move( cursor.pos().x() - 25 , cursor.pos().y() - 25 );
 }
 
+
 #ifdef Q_OS_LINUX
-static WindowList qxt_getWindows(Atom prop)
+static WindowList getWindow( Atom prop )
 {
     WindowList res;
     Atom type = 0;
     int format = 0;
-    uchar* data = 0;
+    uchar* data = Q_NULLPTR;
     ulong count, after;
     Display* display = QX11Info::display();
     Window window = QX11Info::appRootWindow();
-    if (XGetWindowProperty(display, window, prop, 0, 1024 * sizeof(Window) / 4, False, AnyPropertyType,
-                           &type, &format, &count, &after, &data) == Success)
+    if ( XGetWindowProperty( display, window, prop, 0, 1024 * sizeof(Window) / 4, False, AnyPropertyType,
+                             &type, &format, &count, &after, &data ) == Success)
     {
-        Window* list = reinterpret_cast<Window*>(data);
-        for (uint i = 0; i < count; ++i)
+        Window* list = reinterpret_cast<Window*>( data ) ;
+        for ( uint i = 0; i < count; ++i )
             res += list[i];
         if (data)
-            XFree(data);
+            XFree( data );
     }
     return res;
 }
 
+
 WId QvkWinInfo::activeWindow()
 {
     static Atom net_active = 0;
-    if (!net_active)
-        net_active = XInternAtom(QX11Info::display(), "_NET_ACTIVE_WINDOW", True);
+    if ( !net_active )
+        net_active = XInternAtom( QX11Info::display(), "_NET_ACTIVE_WINDOW", True );
 
-    return qxt_getWindows(net_active).value(0);
+    return getWindow( net_active ).value(0);
 }
 #endif
 
@@ -182,7 +184,6 @@ void QvkWinInfo::slot_selectWindow()
 }
 
 
-// Need for Screenshot
 WId QvkWinInfo::getWinID()
 {
     return newWinID;
