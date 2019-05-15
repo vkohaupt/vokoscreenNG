@@ -5,3 +5,7 @@ Player:
 Area:
 --Monitor skalieren 1.3 Buttons haben transparente Linien.
 
+Area:
+--vokoscreen stürtzt bei zweiter Aufnahme ab wenn Bildschirm skaliert wurde. z.b 1.4
+  das kommt daher das die Areawerte Kommawerte besitzen.
+  
