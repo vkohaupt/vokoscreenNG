@@ -22,7 +22,6 @@
 
 #include "global.h"
 #include <QString>
-#include <QStringListModel>
 
 namespace global
 {

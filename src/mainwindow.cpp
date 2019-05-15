@@ -1476,6 +1476,14 @@ void QvkMainWindow::slot_Start()
     QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
     QString path = ui->lineEditVideoPath->text();
 
+    // Create Folder if not exists
+    QDir dir( path );
+    if ( !dir.exists() )
+    {
+        bool myBool = dir.mkpath( path );
+        Q_UNUSED(myBool);
+    }
+
     QStringList VK_PipelineList;
     VK_PipelineList << VK_getXimagesrc();
     VK_PipelineList << VK_getCapsFilter();
