@@ -1175,7 +1175,24 @@ int QvkRegionChoise::getY()
  */
 qreal QvkRegionChoise::getXRecordArea()
 {
-  return ( frame_X + framePenWidth/2 ) * screen->devicePixelRatio();
+/*
+    // Test
+    // Linker Rahmen wird aufgenommen
+    // scale: 1.3
+    // x: 503
+    qreal a = static_cast<int>( ( frame_X + framePenWidth/2 ) * screen->devicePixelRatio() );
+    qreal b = a;
+    return b;
+*/
+    qreal xReal = ( frame_X + framePenWidth/2 ) * screen->devicePixelRatio();
+    int xInt = static_cast<int>( ( frame_X + framePenWidth/2 ) * screen->devicePixelRatio() );
+
+    if ( xReal > xInt )
+    {
+        xReal = xInt + 1;
+    }
+
+    return xReal;
 }
 
 
@@ -1184,7 +1201,20 @@ qreal QvkRegionChoise::getXRecordArea()
  */
 qreal QvkRegionChoise::getYRecordArea()
 {
-  return  ( frame_Y + framePenWidth/2 ) * screen->devicePixelRatio();
+/*    int a = static_cast<int>( ( frame_Y + framePenWidth/2 ) * screen->devicePixelRatio() );
+    qreal b = a;
+    return b;
+*/
+
+   qreal xReal = ( frame_Y + framePenWidth/2 ) * screen->devicePixelRatio();
+   int xInt = static_cast<int>( ( frame_Y + framePenWidth/2 ) * screen->devicePixelRatio() );
+
+   if ( xReal > xInt )
+   {
+       xReal = xInt + 1;
+   }
+
+   return xReal;
 }
 
 
@@ -1193,7 +1223,27 @@ qreal QvkRegionChoise::getYRecordArea()
  */
 qreal QvkRegionChoise::getHeight()
 {
-  return ( frame_height - framePenWidth ) * screen->devicePixelRatio();
+/*
+    // Test
+    // Unterer Rahmen wird aufgenommen
+    // height: 168
+    int a = static_cast<int>( ( frame_height - framePenWidth ) * screen->devicePixelRatio() );
+    qreal b = a;
+    return b;
+*/
+    qreal xReal =   ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * screen->devicePixelRatio();
+    int xInt = static_cast<int>( ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * screen->devicePixelRatio() );
+
+    if ( xReal > xInt )
+    {
+        xReal = static_cast<int>( ( frame_height - framePenWidth ) * screen->devicePixelRatio() ) - 1;
+    }
+    else
+    {
+        xReal = static_cast<int>( ( frame_height - framePenWidth ) * screen->devicePixelRatio() );
+    }
+
+    return xReal;
 }
 
 
@@ -1202,7 +1252,28 @@ qreal QvkRegionChoise::getHeight()
  */
 qreal QvkRegionChoise::getWidth()
 {
-  return ( frame_Width - framePenWidth ) * screen->devicePixelRatio();
+/*    // Test
+    // Rechter Rahmen wird aufgenommen
+    // scale: 1.3
+    // x: 437
+    // width: 320
+    int a = static_cast<int>( ( frame_Width - framePenWidth ) * screen->devicePixelRatio() );
+    qreal b = a;
+    return b;
+*/
+    qreal xReal = ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * screen->devicePixelRatio();
+    int xInt = static_cast<int>( ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * screen->devicePixelRatio() );
+
+    if ( xReal > xInt )
+    {
+        xReal = static_cast<int>( ( frame_Width - framePenWidth ) * screen->devicePixelRatio() ) - 1;
+    }
+    else
+    {
+        xReal = static_cast<int>( ( frame_Width - framePenWidth ) * screen->devicePixelRatio() );
+    }
+
+    return xReal;
 }
 
 

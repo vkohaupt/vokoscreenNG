@@ -1,6 +1,7 @@
 
 Player:
 --Monitor skalieren z.b 1.5. Siehe Testvideo Mission-Impossible.mp4 1:44 das weiße Hemd hat Treppenabstufungen.
+  Bild muß um den Skalierungsfactor geteilt werden.
 
 Area:
 --Monitor skalieren 1.3 Buttons haben transparente Linien.
