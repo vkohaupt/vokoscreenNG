@@ -56,10 +56,10 @@ void QvkScreenManager::slot_screen_count_changed()
             qDebug().noquote() << global::nameOutput << "Manufactur from screen: " << screen.at(i)->manufacturer();
             qDebug().noquote() << global::nameOutput << "SerialNumber from screen: " << screen.at(i)->serialNumber();
 
-            QString X = QString::number( screen.at(i)->geometry().left() * screen.at(i)->devicePixelRatio() );
-            QString Y = QString::number( screen.at(i)->geometry().top() * screen.at(i)->devicePixelRatio() );
-            QString Width = QString::number( screen.at(i)->geometry().width() * screen.at(i)->devicePixelRatio() );
-            QString Height = QString::number( screen.at(i)->geometry().height() * screen.at(i)->devicePixelRatio() );
+            QString X = QString::number( static_cast<int>( screen.at(i)->geometry().left() * screen.at(i)->devicePixelRatio() ) );
+            QString Y = QString::number( static_cast<int>( screen.at(i)->geometry().top() * screen.at(i)->devicePixelRatio() ) );
+            QString Width = QString::number( static_cast<int>( screen.at(i)->geometry().width() * screen.at(i)->devicePixelRatio() ) );
+            QString Height = QString::number( static_cast<int>( screen.at(i)->geometry().height() * screen.at(i)->devicePixelRatio() ) );
             QString stringText = screen.at(i)->name() + " " + ":  " + Width + " x " + Height;
             QString stringData = "x=" + X + " " +
                                  "y=" + Y + " " +

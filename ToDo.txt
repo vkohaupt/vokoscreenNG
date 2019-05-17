@@ -1,7 +1,4 @@
 
-Fullscreen:
---Skalieren 1.3 Werte sind Kommazahlen
-
 Area:
 --Monitor skalieren 1.3 Buttons haben transparente Linien.
 
