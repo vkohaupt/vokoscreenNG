@@ -1,481 +1,460 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fi_FI" version="2.1">
 <context>
     <name>QvkAudioPulse</name>
     <message>
         <source>File can not be opened</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiedostoa ei voi avata</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse yksi tai useampi laite</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaihda ikkunaan</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QvkInformation</name>
-    <message>
-        <source>Warning</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The recording was stopped.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Recording is stopped when the free disk space limit is reached.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Limit of free disk space</source>
-        <translation type="unfinished"></translation>
+        <translation>Vaihda koko näyttöön</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Koko näyttö</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Ikkuna</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ei tiedostohallintaa.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Asenna tiedostonhallinta. </translation>
     </message>
     <message>
         <source>Desktop session is a Wayland session</source>
-        <translation type="unfinished"></translation>
+        <translation>Työpöytä on Wayland-istunnossa</translation>
     </message>
     <message>
         <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation type="unfinished"></translation>
+        <translation>Tällä hetkellä Waylandia ei tueta ja tallennus näyttää mustan näytön. Kirjaudu ulos ja aloita X11-työpöytäistunto</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"></translation>
+        <translation>Lähdekoodi</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"></translation>
+        <translation>Kotisivu</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Käännökset</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"></translation>
+        <translation>Lahjoita</translation>
     </message>
     <message>
         <source>Wayland desktop session detected</source>
-        <translation type="unfinished"></translation>
+        <translation>Wayland-työpöytäistunto havaittiin</translation>
     </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa tiedosto</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation type="unfinished"></translation>
+        <translation>Alue</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Aloita</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Lopeta</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Tauko</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Jatka</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Poistu</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Valintaikkuna</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Käännä vaakasuunnassa</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Käännä pystysuunnassa</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation type="unfinished"></translation>
+        <translation>Käänteinen</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation type="unfinished"></translation>
+        <translation>Harmaa</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation type="unfinished"></translation>
+        <translation>Mustavalkoinen</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Poista ikkunakehys</translation>
     </message>
     <message>
         <source>160x120</source>
-        <translation type="unfinished"></translation>
+        <translation>160x120</translation>
     </message>
     <message>
         <source>320x240</source>
-        <translation type="unfinished"></translation>
+        <translation>320x240</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Kameran asetukset</translation>
     </message>
     <message>
         <source>640x480</source>
-        <translation type="unfinished"></translation>
+        <translation>640x480</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation type="unfinished"></translation>
+        <translation>Alue</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Nollaa</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation type="unfinished"></translation>
+        <translation>Suurennus</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Lähtölaskenta</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Videon koko:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vapaa levytila:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Tietoja</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tallennusaika:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Ääni</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruutuja</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation type="unfinished"></translation>
+        <translation>Videokoodekki</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Tallennusmuoto</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation type="unfinished"></translation>
+        <translation>Audiokoodekki</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation type="unfinished"></translation>
+        <translation>Laatu</translation>
     </message>
     <message>
         <source>Scale</source>
-        <translation type="unfinished"></translation>
+        <translation>Skaalaa</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>Älä tallenna hiiren osoitinta</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation type="unfinished"></translation>
+        <translation>Tunti</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation type="unfinished"></translation>
+        <translation>Minuutti</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation type="unfinished"></translation>
+        <translation>Käynnistä ajastin</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation type="unfinished"></translation>
+        <translation>Pysäytä tallennus tämän jälkeen</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuntia</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>Minuuttia</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekuntia</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation type="unfinished"></translation>
+        <translation>Videon polku</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation type="unfinished"></translation>
+        <translation>Vapaan levytilan raja</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä ilmoitusalueella</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekuntia odotusta ennen tallennusta</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Tarkista päivitykset</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Ohje</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Video</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation type="unfinished"></translation>
+        <translation>Käytettävissä</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation type="unfinished"></translation>
+        <translation>Ei käytettävissä</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Aloita</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Lopeta</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Tauko</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Jatka</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Toista</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Kansio</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation type="unfinished"></translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation type="unfinished"></translation>
+        <translation>Käänteinen</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation type="unfinished"></translation>
+        <translation>Harmaa</translation>
     </message>
     <message>
         <source>Send Report</source>
-        <translation type="unfinished"></translation>
+        <translation>Lähetä raportti</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+SHIFT+F10</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F11</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+SHIFT+F11</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F12</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+SHIFT+F12</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation type="unfinished"></translation>
+        <translation>Toista viimeisin tallennus</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa kansio</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+SHIFT+F8</translation>
     </message>
     <message>
         <source>200x200</source>
-        <translation type="unfinished"></translation>
+        <translation>200x200</translation>
     </message>
     <message>
         <source>400x200</source>
-        <translation type="unfinished"></translation>
+        <translation>400x200</translation>
     </message>
     <message>
         <source>600x200</source>
-        <translation type="unfinished"></translation>
+        <translation>600x200</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation type="unfinished"></translation>
+        <translation>Pienennä kun tallennus alkaa</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation type="unfinished"></translation>
+        <translation>Käynnistä pienennettynä</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Käännä vaakasuunnassa</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Käännä pystysuunnassa</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation type="unfinished"></translation>
+        <translation>Mustavalkoinen</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Poista ikkunakehys</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Aika</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"></translation>
+        <translation>Lahjoita</translation>
     </message>
     <message>
         <source>25</source>
-        <translation type="unfinished"></translation>
+        <translation>25</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation type="unfinished"></translation>
+        <translation>Nollaa kaikki asetukset seuraavalla käynnistyksellä</translation>
     </message>
     <message>
         <source>Developed under openSUSE Leap and Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>Kehitystyö openSUSE Leap ja Qt</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekijänoikeudet ja lisenssit kuvista</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekijänoikeudet ja lisenssit kuvista</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Toista</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Tauko</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Lopeta</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa tiedosto</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Koko näyttö</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Edellinen kehys</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Seuraava kehys</translation>
     </message>
     <message>
         <source>Volume</source>
-        <translation type="unfinished"></translation>
+        <translation>Äänenvoimakkuus</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Mykistä</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Siirrä valikko</translation>
     </message>
 </context>
 </TS>

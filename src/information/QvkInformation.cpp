@@ -21,6 +21,7 @@
  */
 
 #include "QvkInformation.h"
+#include "global.h"
 
 #include <QTimer>
 #include <QStorageInfo>
@@ -94,16 +95,28 @@ void QvkInformation::slot_newVideoFilename( QString filename )
     newVideoFilename = filename;
 }
 
-
+#include <QMessageBox>
+#include <QIcon>
 void QvkInformation::slot_StorageInfo()
 {
     QStorageInfo storage = QStorageInfo(ui->lineEditVideoPath->text() );
     storage.refresh();
 
-    // Stop or not start a record if disk space smaller 100MB(Default) 1GB(Max)
+    // Stop a record if disk space smaller 250MB(Default) 1GB(Max)
     if ( storage.bytesAvailable() <= ( ui->sliderLimitOfFreeDiskSpace->value() * 1024 * 1024 ) )
     {
         ui->pushButtonStop->click();
+        QMessageBox *messageBox = new QMessageBox();
+        messageBox->setWindowIcon( QIcon::fromTheme( ":/pictures/logo/logo.png" ) );
+        messageBox->setWindowTitle( tr( "Warning" ) );
+        messageBox->setText( tr( "The recording was stopped." ) );
+        messageBox->setInformativeText( tr( "Recording is stopped when the free disk space limit is reached." ) + "\n"
+                                        + "\n"
+                                        + tr( "Limit of free disk space" ) + " " + QString::number( ui->sliderLimitOfFreeDiskSpace->value() )
+                                        + " MB" );
+        messageBox->setStandardButtons( QMessageBox::Ok );
+        messageBox->setIcon( QMessageBox::Warning );
+        messageBox->exec();
     }
 
     ui->labelFreeSize->setText( QString::number( storage.bytesAvailable()/1024/1024 ) );
