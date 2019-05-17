@@ -194,15 +194,13 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
 
 void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent)
 {
+    Q_UNUSED(parent);
     QSettings settings( global::name, global::name );
     settings.clear();
 
     settings.beginGroup( global::name );
        settings.setValue( "Version", global::version );
     settings.endGroup();
-
-    settings.setValue( "MainWindow_X", parent->pos().x() );
-    settings.setValue( "MainWindow_Y", parent->pos().y() );
 
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralWidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadiobuttons.count(); i++ )
