@@ -85,7 +85,6 @@ private:
     QLabel *metaLabel;
     QFrame *metaFrame;
 
-
 protected:
     void mouseDoubleClickEvent( QMouseEvent *event );
     void closeEvent(QCloseEvent *event);

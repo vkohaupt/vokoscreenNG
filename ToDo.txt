@@ -5,5 +5,3 @@ Fullscreen:
 Area:
 --Monitor skalieren 1.3 Buttons haben transparente Linien.
 
-Player:
---Einzelbild wenn resized Bild anpassen

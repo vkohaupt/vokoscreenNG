@@ -641,6 +641,14 @@ void QvkPlayer::resizeEvent( QResizeEvent *event )
     {
         ui->widgetMenueBar->move( ui->framePlayer->width()/2 - ui->widgetMenueBar->width()/2,
                                   ui->framePlayer->height() - ui->widgetMenueBar->height() );
+        return;
+    }
+
+
+    if ( mediaPlayer->state() == QMediaPlayer::PausedState )
+    {
+        ui->toolButtonFrameForward->click();
+        ui->toolButtonFrameBackward->click();
     }
 }
 
