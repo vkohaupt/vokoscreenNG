@@ -1,6 +1,3 @@
 
 Area:
 --Monitor skalieren 1.3 Buttons haben transparente Linien.
-
-StorageInfo:
---Dialog einbauen das Speicher zu knapp.
