@@ -421,7 +421,7 @@ void QvkPlayer::slot_positionChanged( qint64 value )
     }
 }
 
-
+// https://stackoverflow.com/questions/22353080/efficient-way-of-displaying-a-continuous-stream-of-qimages
 void QvkPlayer::slot_setNewImage( QImage image )
 {
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -430,9 +430,7 @@ void QvkPlayer::slot_setNewImage( QImage image )
                           static_cast<int>( ui->framePlayer->height()*screen->devicePixelRatio() ),
                           Qt::KeepAspectRatio,
                           Qt::SmoothTransformation );
-    QPixmap pixmap;
-    pixmap.convertFromImage( image, Qt::ColorOnly );
-    ui->labelPlayer->setPixmap( pixmap );
+    ui->labelPlayer->setPixmap( QPixmap::fromImage( image ) );
 }
 
 

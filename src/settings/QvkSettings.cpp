@@ -263,10 +263,10 @@ void QvkSettings::saveAreaScreencast( qreal x, qreal y, qreal width, qreal heigh
 {
     QSettings settings( global::name, global::name );
     settings.beginGroup( "AreaScreencast" );
-      settings.setValue( "X", x );
-      settings.setValue( "Y", y );
-      settings.setValue( "Width", width );
-      settings.setValue( "Height", height );
+      settings.setValue( "X", QVariant(x).toInt() );
+      settings.setValue( "Y", QVariant(y).toInt() );
+      settings.setValue( "Width", QVariant(width).toInt() );
+      settings.setValue( "Height", QVariant(height).toInt() );
     settings.endGroup();
 }
 
