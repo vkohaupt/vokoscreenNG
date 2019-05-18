@@ -25,6 +25,7 @@
 
 #include <QTimer>
 #include <QStorageInfo>
+#include <QMessageBox>
 
 QvkInformation::QvkInformation( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow )
 {
@@ -95,8 +96,7 @@ void QvkInformation::slot_newVideoFilename( QString filename )
     newVideoFilename = filename;
 }
 
-#include <QMessageBox>
-#include <QIcon>
+
 void QvkInformation::slot_StorageInfo()
 {
     QStorageInfo storage = QStorageInfo(ui->lineEditVideoPath->text() );

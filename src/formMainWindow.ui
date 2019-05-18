@@ -613,8 +613,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>544</width>
-                      <height>116</height>
+                      <width>535</width>
+                      <height>81</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1474,13 +1474,6 @@
              </layout>
             </item>
             <item>
-             <widget class="Line" name="line_9">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item>
              <layout class="QHBoxLayout" name="horizontalLayout_28">
               <item>
                <widget class="QFrame" name="frame_2">
@@ -1556,13 +1549,6 @@
              </layout>
             </item>
             <item>
-             <widget class="Line" name="line_3">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item>
              <layout class="QHBoxLayout" name="horizontalLayout_21">
               <item>
                <widget class="QCheckBox" name="checkBoxShowInSystray">
@@ -1592,13 +1578,6 @@
                </widget>
               </item>
              </layout>
-            </item>
-            <item>
-             <widget class="Line" name="line_4">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_23">
@@ -1664,13 +1643,6 @@
              </layout>
             </item>
             <item>
-             <widget class="Line" name="line_8">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item>
              <layout class="QHBoxLayout" name="horizontalLayout_31">
               <item>
                <widget class="QCheckBox" name="checkBoxStartsMinimized">
@@ -1702,25 +1674,11 @@
              </layout>
             </item>
             <item>
-             <widget class="Line" name="line_11">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item>
              <layout class="QHBoxLayout" name="horizontalLayout_7">
               <item>
                <widget class="QCheckBox" name="checkBoxResetAtNextStart">
                 <property name="text">
                  <string>Reset all settings at the next start</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QToolButton" name="help_screencast_deleteallsettings">
-                <property name="text">
-                 <string>Help</string>
                 </property>
                </widget>
               </item>
@@ -1737,6 +1695,17 @@
                 </property>
                </spacer>
               </item>
+              <item>
+               <widget class="QToolButton" name="help_screencast_deleteallsettings">
+                <property name="text">
+                 <string>Help</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_17">
               <item>
                <widget class="QCheckBox" name="checkBoxLookForUpdates">
                 <property name="text">
@@ -1767,7 +1736,7 @@
              </layout>
             </item>
             <item>
-             <spacer name="verticalSpacer_3">
+             <spacer name="verticalSpacer_16">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
@@ -1850,8 +1819,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>370</width>
-                   <height>316</height>
+                   <width>361</width>
+                   <height>305</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -2839,8 +2808,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>help_screencast_minimizedwhenrecordingstarts</tabstop>
   <tabstop>checkBoxStartsMinimized</tabstop>
   <tabstop>help_screencast_startsminimized</tabstop>
-  <tabstop>checkBoxLookForUpdates</tabstop>
-  <tabstop>help_screencast_lookforupdates</tabstop>
   <tabstop>scrollAreaAvailable</tabstop>
   <tabstop>help_screencast_avalaible</tabstop>
   <tabstop>tabWidgetCamera</tabstop>
