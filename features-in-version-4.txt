@@ -5,3 +5,6 @@
 - Very simple support for Network Cameras 
 - Reading out the features FPS and resolution from USB cameras
 - Recording only audio
+- Area on all screens
+- Magnifier on all screens
+- Counter on all screens
