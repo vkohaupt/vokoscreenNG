@@ -45,6 +45,7 @@
 #include <QThread>
 #include <QMessageBox>
 #include <QFileSystemModel>
+#include <QStyleFactory>
 
 #ifdef Q_OS_LINUX
   #include <QX11Info>
@@ -126,6 +127,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
     qDebug().noquote() << global::nameOutput << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
     qDebug().noquote() << global::nameOutput << "current icon-theme: " << QIcon::themeName();
+    qDebug().noquote() << global::nameOutput << "Styles: " << QStyleFactory::keys();
     qDebug().noquote() << global::nameOutput << "Qt-PluginsPath:     " << QLibraryInfo::location( QLibraryInfo::PluginsPath );
     qDebug().noquote() << global::nameOutput << "Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
     qDebug().noquote() << global::nameOutput << "Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
