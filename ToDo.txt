@@ -1,3 +1,22 @@
 
-Area:
+Windows Player:
+--h264 decoder fehlt.
+
+Windows Area:
+--Wenn die Bereichsanzeige an den unteneren Rand geschoben wird, wird der ganze Bildschirm aufgenommen.
+
+Windows Hilfe:
+-- wird nicht angezeigt. SSL fehlt?.
+
+Windows Logo:
+--Das Logo ist zu weit an den Rand gedrückt.
+
+Windows Camera:
+--Wenn keine Camera vorhanden sollte die Checkbox deaktiviert sein.
+
+
+
+
+
+Linux Area:
 --Monitor skalieren 1.3 Buttons haben transparente Linien.
