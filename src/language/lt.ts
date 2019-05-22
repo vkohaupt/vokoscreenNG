@@ -22,6 +22,25 @@
     </message>
 </context>
 <context>
+    <name>QvkInformation</name>
+    <message>
+        <source>Warning</source>
+        <translation>Įspėjimas</translation>
+    </message>
+    <message>
+        <source>The recording was stopped.</source>
+        <translation>Įrašinėjimas buvo sustabdytas.</translation>
+    </message>
+    <message>
+        <source>Recording is stopped when the free disk space limit is reached.</source>
+        <translation>Įrašinėjimas yra sustabdomas, kai yra pasiekiama laisvos vietos diske riba.</translation>
+    </message>
+    <message>
+        <source>Limit of free disk space</source>
+        <translation>Laisvos vietos diske apribojimas</translation>
+    </message>
+</context>
+<context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>

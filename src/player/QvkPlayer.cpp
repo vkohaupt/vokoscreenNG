@@ -421,7 +421,7 @@ void QvkPlayer::slot_positionChanged( qint64 value )
     }
 }
 
-// https://stackoverflow.com/questions/22353080/efficient-way-of-displaying-a-continuous-stream-of-qimages
+
 void QvkPlayer::slot_setNewImage( QImage image )
 {
     QScreen *screen = QGuiApplication::primaryScreen();

@@ -22,6 +22,25 @@
     </message>
 </context>
 <context>
+    <name>QvkInformation</name>
+    <message>
+        <source>Warning</source>
+        <translation>Aviso</translation>
+    </message>
+    <message>
+        <source>The recording was stopped.</source>
+        <translation>A gravação parou.</translation>
+    </message>
+    <message>
+        <source>Recording is stopped when the free disk space limit is reached.</source>
+        <translation>A gravação é parada quando é atingido o limite de espaço de armazenamento livre.</translation>
+    </message>
+    <message>
+        <source>Limit of free disk space</source>
+        <translation>Limite do espaço em disco disponível</translation>
+    </message>
+</context>
+<context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>

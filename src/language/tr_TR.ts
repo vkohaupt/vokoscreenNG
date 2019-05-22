@@ -22,6 +22,25 @@
     </message>
 </context>
 <context>
+    <name>QvkInformation</name>
+    <message>
+        <source>Warning</source>
+        <translation>Uyarı</translation>
+    </message>
+    <message>
+        <source>The recording was stopped.</source>
+        <translation>Kayıt durduruldu.</translation>
+    </message>
+    <message>
+        <source>Recording is stopped when the free disk space limit is reached.</source>
+        <translation>Boş disk alanı sınırına ulaşıldığında kayıt durdurulur.</translation>
+    </message>
+    <message>
+        <source>Limit of free disk space</source>
+        <translation>Boş disk alanı sınırı</translation>
+    </message>
+</context>
+<context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>

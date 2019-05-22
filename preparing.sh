@@ -23,9 +23,9 @@ else
 fi
 
 
-echo ============
-echo Make main-3.ts
-echo ============
+echo ==============================
+echo Create vokoscreen-version-3.ts
+echo ==============================
 lupdate-qt5 -locations none -recursive ./src -ts src/vokoscreen-version-3.ts
 
 echo =====================

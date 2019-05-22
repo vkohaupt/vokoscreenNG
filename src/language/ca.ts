@@ -1,139 +1,158 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ar" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ca" version="2.1">
 <context>
     <name>QvkAudioPulse</name>
     <message>
         <source>File can not be opened</source>
-        <translation>الملف لايمكن فتحه</translation>
+        <translation>El fitxer no s&apos;ha pogut obrir</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>اِختر جهازاً أو أكثر</translation>
+        <translation>Seleccioneu un o més dispositius</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation> أظهر النافذة</translation>
+        <translation>Alterna a finestra</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>تغيير لملء الشاشة</translation>
+        <translation>Alterna a pantalla completa</translation>
+    </message>
+</context>
+<context>
+    <name>QvkInformation</name>
+    <message>
+        <source>Warning</source>
+        <translation>Avís</translation>
+    </message>
+    <message>
+        <source>The recording was stopped.</source>
+        <translation>L&apos;enregistrament s&apos;ha aturat.</translation>
+    </message>
+    <message>
+        <source>Recording is stopped when the free disk space limit is reached.</source>
+        <translation>L&apos;enregistrament s&apos;aturarà quan s’abasti el límit d’espai lliure al disc.</translation>
+    </message>
+    <message>
+        <source>Limit of free disk space</source>
+        <translation>Límit d&apos;espai lliure al disc</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>شاشة كاملة</translation>
+        <translation>Pantalla completa</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>نافذة</translation>
+        <translation>Finestra</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>لايمكن ايجاد اداراه الملفات </translation>
+        <translation>No s’ha trobat cap gestor de fitxers.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation> الرجاء تنصيب اداره الملفات</translation>
+        <translation>Instal·leu un gestor de fitxers.</translation>
     </message>
     <message>
         <source>Desktop session is a Wayland session</source>
-        <translation> سطح المكتب هو Wayland</translation>
+        <translation>La sessió d’escriptori és una sessió de Wayland</translation>
     </message>
     <message>
         <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>للان ويلان لايوجد دعم لويلاند التسجيل يظهر  شاشة سوداء. يرجى تسجيل الخروج وبدء جلسة سطح المكتب X11</translation>
+        <translation>Fins al moment no s&apos;admet el Wayland. Una captura en vídeo mostrarà una pantalla en negre. Si us plau, tanqueu la sessió i iniceu una sessió d&apos;escriptori amb X11.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>الملف المصدري</translation>
+        <translation>Codi font</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>صفحة البرنامج</translation>
+        <translation>Lloc web</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>الترجمات</translation>
+        <translation>Traduccions</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>تبرع</translation>
+        <translation>Feu una donació</translation>
     </message>
     <message>
         <source>Wayland desktop session detected</source>
-        <translation>تم اكتشاف اتصال سطح مكتب ويلاند </translation>
+        <translation>S&apos;ha detectat una sessió d&apos;escriptori de Wayland</translation>
     </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
-        <translation>افتح الملف</translation>
+        <translation>Obre el fitxer</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>منطقة</translation>
+        <translation>Àrea</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>اِبدأ</translation>
+        <translation>Inicia</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>أوقِف</translation>
+        <translation>Atura</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>ألبِث</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>واصل</translation>
+        <translation>Continua</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>اُخرج</translation>
+        <translation>Surt</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>الحوار</translation>
+        <translation>Diàleg</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>تغيير الوجه الأفقي</translation>
+        <translation>Gir horitzontal</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>تغيير الوجه الرأسي</translation>
+        <translation>Gir vertical</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>عكس</translation>
+        <translation>Invertida</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>رمادي</translation>
+        <translation>Gris</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>ابيض واسود</translation>
+        <translation>Blanc i negre</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>إزالة إطار النافذة</translation>
+        <translation>Elimina el marc de la finestra</translation>
     </message>
     <message>
         <source>160x120</source>
@@ -145,7 +164,7 @@
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>اعدادات الكاميرا</translation>
+        <translation>Ajustaments de la càmera</translation>
     </message>
     <message>
         <source>640x480</source>
@@ -156,195 +175,195 @@
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>منطقة</translation>
+        <translation>Àrea</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>أعاده للوضع </translation>
+        <translation>Reinicia</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>المكبّرة</translation>
+        <translation>Ampliació</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>عدّ تنازلي</translation>
+        <translation>Compte enrere </translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>حجم ملف الفيديو</translation>
+        <translation>Mida del vídeo:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>مساحه التخزين المتاحه:</translation>
+        <translation>Espai lliure al disc:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>معلومه</translation>
+        <translation>Informació</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>مده التسجيل</translation>
+        <translation>Temps enregistrat:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>الصوت</translation>
+        <translation>Àudio</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>المشاهد</translation>
+        <translation>Fotogrames</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>ترميز الفيديو</translation>
+        <translation>Còdec del vídeo </translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>الصيغة</translation>
+        <translation>Format</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>ترميز الصوت</translation>
+        <translation>Còdec de l&apos;àudio</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>جوده</translation>
+        <translation>Qualitat</translation>
     </message>
     <message>
         <source>Scale</source>
-        <translation>مقياس</translation>
+        <translation>Escala</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>لا تسجل مؤشر الفأرة</translation>
+        <translation>No enregistris el cursor del ratolí</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>ساعه</translation>
+        <translation>Hora</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>دقيقه</translation>
+        <translation>Minut</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>بدأ الموقت</translation>
+        <translation>Inicia el temporitzador</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>اوقف التسجيل بعد</translation>
+        <translation>Atura l&apos;enregistrament després de</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>ساعات</translation>
+        <translation>Hores</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>دقائق</translation>
+        <translation>Minuts</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>ثواني</translation>
+        <translation>Segons</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>مسار الفيديو</translation>
+        <translation>Camí del vídeo</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation> مساحه التخزين المتاحه: </translation>
+        <translation>Límit d&apos;espai lliure al disc</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>أظهِر البرنامج في مساحة التبليغ</translation>
+        <translation>Mostra a la safata del sistema</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>الانتظار الثاني قبل التسجيل</translation>
+        <translation>Segona espera abans d&apos;enregistrar</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>ابحث عن التحديثات</translation>
+        <translation>Cerca actualitzacions</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>مساعده</translation>
+        <translation>Ajuda</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>قيديو</translation>
+        <translation>Vídeo</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>المتاح</translation>
+        <translation>Disponible</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>غير متاح</translation>
+        <translation>No disponible</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>اِبدأ</translation>
+        <translation>Inicia</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>أوقِف</translation>
+        <translation>Atura</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>ألبِث</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>واصل</translation>
+        <translation>Continua</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>شغّل</translation>
+        <translation>Reprodueix</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>دليل</translation>
+        <translation>Carpeta</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>الكاميرا</translation>
+        <translation>Càmera</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>عكس</translation>
+        <translation>Invertida</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>رمادي</translation>
+        <translation>Gris</translation>
     </message>
     <message>
         <source>Send Report</source>
-        <translation>ارسل التقرير</translation>
+        <translation>Envia el registre</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
-        <translation>CTRL+SHIFT+F10</translation>
+        <translation>Ctrl+Majús.+F10</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F11</source>
-        <translation>CTRL+SHIFT+F11</translation>
+        <translation>Ctrl+Majús.+F11</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F12</source>
-        <translation>CTRL+SHIFT+F12</translation>
+        <translation>Ctrl+Majús.+F12</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation>شغل اخر تسجيل</translation>
+        <translation>Reprodueix el darrer enregistrament</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>افتح الدليل</translation>
+        <translation>Obre una carpeta</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation>CTRL+SHIFT+F8</translation>
+        <translation>Ctrl+Majús.+F8</translation>
     </message>
     <message>
         <source>200x200</source>
@@ -360,35 +379,35 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation> تصغير البرنامج عند بدأ التسجيل </translation>
+        <translation>Minimitza en iniciar l&apos;enregistrament</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation> البدء  بوضع التصغير </translation>
+        <translation>Inicia minimitzat</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>تغيير الوجه الأفقي</translation>
+        <translation>Gir horizontal</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>تغيير الوجه الرأسي</translation>
+        <translation>Gir vertical</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>ابيض واسود</translation>
+        <translation>Blanc i negre</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>إزالة إطار النافذة</translation>
+        <translation>Elimina el marc de la finestra</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation>الوقت</translation>
+        <translation>Temps</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>تبرع</translation>
+        <translation>Feu una donació</translation>
     </message>
     <message>
         <source>25</source>
@@ -396,65 +415,65 @@
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>إعادة ضبط جميع الإعدادات في التشغيل القادم</translation>
+        <translation>Restableix tots els ajustament al següent inici</translation>
     </message>
     <message>
         <source>Developed under openSUSE Leap and Qt</source>
-        <translation>تم تطويرها علي اوبن سوسي ليب و كيو تي </translation>
+        <translation>Desenvolupat sota openSUSE Leap i les Qt</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>حقوق الطبع والنشر والترخيص من الصور</translation>
+        <translation>Drets d&apos;autor i llicència de les imatges</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>حقوق الطبع والنشر والترخيص من الصور</translation>
+        <translation>Drets d&apos;autor i llicència de les imatges</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>شغّل</translation>
+        <translation>Reprodueix</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>ألبِث</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>أوقِف</translation>
+        <translation>Atura</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>افتح الملف</translation>
+        <translation>Obre un fitxer</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>شاشة كاملة</translation>
+        <translation>Pantalla completa</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>الإطار السابق</translation>
+        <translation>Fotograma anterior</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>الإطار التالي</translation>
+        <translation>Fotograma següent</translation>
     </message>
     <message>
         <source>Volume</source>
-        <translation>الصوت</translation>
+        <translation>Volum</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>صامت</translation>
+        <translation>Silenci</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>حرك قائمه الخيارات</translation>
+        <translation>Mou el menú</translation>
     </message>
 </context>
 </TS>

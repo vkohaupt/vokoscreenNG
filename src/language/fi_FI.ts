@@ -22,6 +22,25 @@
     </message>
 </context>
 <context>
+    <name>QvkInformation</name>
+    <message>
+        <source>Warning</source>
+        <translation>Varoitus</translation>
+    </message>
+    <message>
+        <source>The recording was stopped.</source>
+        <translation>Tallennus pysäytettiin.</translation>
+    </message>
+    <message>
+        <source>Recording is stopped when the free disk space limit is reached.</source>
+        <translation>Tallennus pysäytetään, kun raja vapaasta levytilasta on saavutettu.</translation>
+    </message>
+    <message>
+        <source>Limit of free disk space</source>
+        <translation>Vapaan levytilan raja</translation>
+    </message>
+</context>
+<context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
