@@ -1,19 +1,18 @@
 
 Windows Player:
---h264 decoder fehlt.
+--Videos werden nicht abgespielt.
 
 Windows Area:
---Wenn die Bereichsanzeige an den unteneren Rand geschoben wird, wird der ganze Bildschirm aufgenommen.
+--Wenn die Bereichsanzeige an den unteren Bildschirmrand gesetzt, wird der ganze Bildschirm aufgenommen.
 
 Windows Hilfe:
--- wird nicht angezeigt. SSL fehlt?.
+--Hilfe wird nicht angezeigt. SSL fehlt?
 
 Windows Logo:
---Das Logo ist zu weit an den Rand gedrückt.
+--Das Logo ist zu weit an den rechten und unteren Rand gedrückt.
 
 Windows Camera:
---Wenn keine Camera vorhanden sollte die Checkbox deaktiviert sein.
-
+--Ist keine Camera beim start von vokoscreenNG vorhanden muß die Checkbox deaktiviert sein.
 
 
 
