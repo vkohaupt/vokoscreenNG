@@ -58,7 +58,7 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, Ui_p
     setWindowIcon( icon );
 
     QStringList helpStringList;
-    helpStringList << "https:/"
+    helpStringList << "http:/"
                    << "vokoscreen.volkoh.de"
                    << "3.0"
                    << "help";
