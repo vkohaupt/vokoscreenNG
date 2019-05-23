@@ -698,7 +698,7 @@ void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
     QCoreApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
 
 #ifdef Q_OS_LINUX
-    QIcon icon = VK_getIcon( "pillepalle", ":/pictures/windows.png" );
+    QIcon icon = VK_getIcon( "pillepalle", ":/pictures/linux.png" );
 #endif
 #ifdef Q_OS_WIN
     QIcon icon = VK_getIcon( "pillepalle", ":/pictures/windows.png" );
