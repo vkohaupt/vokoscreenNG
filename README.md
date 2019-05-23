@@ -6,8 +6,8 @@
 * The old vokoscreen 2.5.0 https://github.com/vkohaupt/vokoscreen is the last version with ffmpg and will not more continue developed.
 
 ## Translate
-Only **100% translate** languages come in vokoscreenNG.
-You can translate to anytime, in the next bugfix release your translation will be included.
+Only **100% translated** languages come in vokoscreenNG.
+If vokoscreenNG released, you can translate to anytime, in a bugfix release your translation will be included.
 Please translate only at Transifex, it is very easy.
 https://www.transifex.com/vkohaupt/vokoscreen/
 
