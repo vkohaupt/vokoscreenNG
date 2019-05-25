@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1031,7 +1031,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QToolButton" name="help_screencast_nomousecursor">
+               <widget class="QToolButton" name="help_screencast_scale">
                 <property name="toolTip">
                  <string notr="true"/>
                 </property>
@@ -1061,7 +1061,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QToolButton" name="help_screencast_scale">
+               <widget class="QToolButton" name="help_screencast_nomousecursor">
                 <property name="toolTip">
                  <string notr="true"/>
                 </property>
@@ -2786,7 +2786,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>help_screencast_codec</tabstop>
   <tabstop>checkBoxScale</tabstop>
   <tabstop>comboBoxScale</tabstop>
-  <tabstop>help_screencast_scale</tabstop>
   <tabstop>timeEditStartTime</tabstop>
   <tabstop>sliderHour</tabstop>
   <tabstop>sliderMinute</tabstop>
