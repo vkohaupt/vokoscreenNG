@@ -15,6 +15,13 @@ https://www.transifex.com/vkohaupt/vokoscreen/
 
 
 ## Windows 10
+### Requires:
+* The vokoscreenNG Player need a codec pack.
+* I test with this codec pack
+* windows.10.codec.pack.v2.1.5.setup.exe
+* https://www.softpedia.com/dyn-postdownload.php/7c82c1583a3d5511eafca92c63b45aab/5ce92518/3ed5d/0/1
+
+
 ### BuildRequires
 * https://download.qt.io/official_releases/qt/5.9/5.9.4/qt-opensource-windows-x86-5.9.4.exe
 * https://gstreamer.freedesktop.org/pkg/windows/1.14.4/gstreamer-1.0-x86-1.14.4.msi
