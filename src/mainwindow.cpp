@@ -836,7 +836,7 @@ QString QvkMainWindow::VK_getXimagesrc()
 }
 #endif
 
-// https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-good/html/gst-plugins-good-plugins-multifilesrc.html
+
 #ifdef Q_OS_WIN
 QString QvkMainWindow::VK_getXimagesrc()
 {
@@ -852,6 +852,7 @@ QString QvkMainWindow::VK_getXimagesrc()
     {
         QStringList stringList;
         stringList << "gdiscreencapsrc"
+                   << "monitor=" + QString::number( ui->comboBoxScreencastScreen->currentIndex() )
                    << "cursor=" + showPointer;
         value = stringList.join( " " );
     }
