@@ -1,4 +1,7 @@
 
+Help:
+--Wenn nicht online, kommen zu viele Dialoge hoch.
+
 Windows Area:
 --Wenn die Bereichsanzeige an den unteren Bildschirmrand gesetzt, wird der ganze Bildschirm aufgenommen.
 
