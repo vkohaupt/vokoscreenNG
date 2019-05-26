@@ -134,6 +134,12 @@ void QvkCameraController::slot_addedCamera( QString description, QString device 
     ui_formMainWindow->checkBoxCameraGray->setEnabled( true );
     ui_formMainWindow->checkBoxCameraInvert->setEnabled( true );
     ui_formMainWindow->checkBoxCameraMirrorHorizontal->setEnabled( true );
+    ui_formMainWindow->checkBoxCameraMirrorVertical->setEnabled( true );
+    ui_formMainWindow->checkBoxCameraMono->setEnabled( true );
+    ui_formMainWindow->sliderCameraWindowSize->setEnabled( true );
+    ui_formMainWindow->labelCameraWindowSize160_120->setEnabled( true );
+    ui_formMainWindow->labelCameraWindowSize320_240->setEnabled( true );
+    ui_formMainWindow->labelCameraWindowSize640_480->setEnabled( true );
 }
 
 
@@ -154,6 +160,12 @@ void QvkCameraController::slot_removedCamera( QString device )
         ui_formMainWindow->checkBoxCameraGray->setEnabled( false );
         ui_formMainWindow->checkBoxCameraInvert->setEnabled( false );
         ui_formMainWindow->checkBoxCameraMirrorHorizontal->setEnabled( false );
+        ui_formMainWindow->checkBoxCameraMirrorVertical->setEnabled( false );
+        ui_formMainWindow->checkBoxCameraMono->setEnabled( false );
+        ui_formMainWindow->sliderCameraWindowSize->setEnabled( false );
+        ui_formMainWindow->labelCameraWindowSize160_120->setEnabled( false );
+        ui_formMainWindow->labelCameraWindowSize320_240->setEnabled( false );
+        ui_formMainWindow->labelCameraWindowSize640_480->setEnabled( false );
     }
 }
 
