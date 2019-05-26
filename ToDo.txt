@@ -2,9 +2,6 @@
 Windows Area:
 --Wenn die Bereichsanzeige an den unteren Bildschirmrand gesetzt, wird der ganze Bildschirm aufgenommen.
 
-Windows Camera:
---Ist keine Camera beim start von vokoscreenNG vorhanden muß die Checkbox deaktiviert sein.
-
 
 Linux Area:
 --Monitor skalieren 1.3 Buttons haben transparente Linien.
