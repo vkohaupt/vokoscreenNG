@@ -59,7 +59,7 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, Ui_p
 
     QStringList helpStringList;
     helpStringList << "http:/"
-                   << "vokoscreen.volkoh.de111111111111"
+                   << "vokoscreen.volkoh.de"
                    << "3.0"
                    << "help";
 
