@@ -2,6 +2,11 @@
 Help:
 --QvkInformation::slot_StorageInfo() überprüfen.
 
+
+Windows Scale:
+--nicht verfügbar siehe Log.
+
+
 Windows Area:
 --Wenn die Bereichsanzeige an den unteren Bildschirmrand gesetzt, wird der ganze Bildschirm aufgenommen.
 
