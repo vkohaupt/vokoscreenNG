@@ -1,6 +1,9 @@
 
-Help:
---QvkInformation::slot_StorageInfo() überprüfen.
+LimitOfFreeDiskSpace:
+--Auslagern in eigene Klasse
+--Bei Klick auf Start überprüfen ob genug Speicherplatz vorhanden.
+  Wenn Grenze erreicht darauf achten das keine Aufnahme stattfindet.
+--Während der Aufnahme Speicherplatz überprüfen.
 
 
 Windows Scale:
