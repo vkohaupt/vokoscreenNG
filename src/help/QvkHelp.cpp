@@ -59,7 +59,7 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, Ui_p
 
     QStringList helpStringList;
     helpStringList << "http:/"
-                   << "vokoscreen.volkoh.de"
+                   << "vokoscreen.volkoh.de111111111111"
                    << "3.0"
                    << "help";
 
@@ -146,7 +146,7 @@ int QvkHelp::getCountFileToDownload( QString tempPathFileName )
     QFile file( tempPathFileName );
     if( !file.open( QIODevice::ReadOnly ) )
     {
-        QMessageBox::information( nullptr, "Help error", file.errorString() );
+        QMessageBox::information( nullptr, "Help error", "QvkHelp::getCountFileToDownload\n" + tempPathFileName + "\n" + file.errorString() );
     }
 
     int count = 0;
@@ -175,11 +175,11 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
     QFileInfo fileInfo( tempPathFileName );
     QString tmpPath = fileInfo.absolutePath();
 
-
     QFile file( tempPathFileName );
     if( !file.open( QIODevice::ReadOnly ) )
     {
-        QMessageBox::information( nullptr, "error", file.errorString() );
+        QMessageBox::information( nullptr, "Help error", "No network connection\nQvkHelp::slot_parseHTML\n" + tempPathFileName + "\n" + file.errorString() );
+        return;
     }
 
     int countFiles = getCountFileToDownload( tempPathFileName );
@@ -228,7 +228,7 @@ void QvkHelp::slot_showHelp( QString tempPathFileName )
     QFile file( htmlFile );
     if( !file.open( QIODevice::ReadOnly ) )
     {
-        QMessageBox::information( nullptr, "error", file.errorString() );
+        QMessageBox::information( nullptr, "Help error", "QvkHelp::slot_showHelp\n" + tempPathFileName + "\n" + file.errorString() );
     }
 
     QTextStream textStream( &file );
