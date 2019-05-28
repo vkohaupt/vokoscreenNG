@@ -24,21 +24,29 @@
     </message>
 </context>
 <context>
-    <name>QvkInformation</name>
+    <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The recording was stopped.</source>
+        <source>The recording is not started, not enough free disk space.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Recording is stopped when the free disk space limit is reached.</source>
+        <source>The free disk space limit is reached.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Megabyte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The recording was stopped, not enough free disk space.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -425,6 +433,10 @@
     </message>
     <message>
         <source>Copyright and license from pictures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Megabyte</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
