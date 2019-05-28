@@ -8,4 +8,4 @@
 - Area on all screens
 - Magnifier on all screens
 - Counter on all screens
-- QRegion ersetzen durch QRect
+- Replace QRegion with QRect
