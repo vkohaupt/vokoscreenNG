@@ -69,7 +69,7 @@ bool QvkLimitDiskFreeSpace::isStorageOKMessagBoxByStart()
     {
         QMessageBox *messageBox = new QMessageBox();
         messageBox->setWindowIcon( QIcon::fromTheme( ":/pictures/logo/logo.png" ) );
-        messageBox->setWindowTitle( tr( "Warning" ) );
+        messageBox->setWindowTitle( tr( "Warning" ) + " " + global::name + " " + global::version );
         messageBox->setText( tr( "The recording is not started, not enough free disk space." ) );
         messageBox->setInformativeText( tr( "The free disk space limit is reached." )
                                         + "\n"
@@ -101,7 +101,7 @@ void QvkLimitDiskFreeSpace::slot_storageMessagBoxByRecord()
 
         QMessageBox *messageBox = new QMessageBox();
         messageBox->setWindowIcon( QIcon::fromTheme( ":/pictures/logo/logo.png" ) );
-        messageBox->setWindowTitle( tr( "Warning" ) );
+        messageBox->setWindowTitle( tr( "Warning" ) + " " + global::name + " " + global::version );
         messageBox->setText( tr( "The recording was stopped, not enough free disk space." ) );
         messageBox->setInformativeText( tr( "The free disk space limit is reached." )
                                         + "\n"
