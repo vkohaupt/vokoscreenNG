@@ -33,6 +33,7 @@
 #include "QvkMagnifierController.h"
 #include "QvkPlayer.h"
 #include "QvkTheme.h"
+#include "QvkLimitDiskFreeSpace.h"
 
 #ifdef Q_OS_LINUX
 #include "QvkAudioPulse.h"
@@ -122,6 +123,9 @@ private:
     QvkTheme *vkTheme;
 
     QvkCameraController *vkCameraController;
+
+    QvkLimitDiskFreeSpace *vkLimitDiskFreeSpace;
+    bool wantRecording = true;
 
 
 private slots:

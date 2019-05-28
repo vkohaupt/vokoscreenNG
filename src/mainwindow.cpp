@@ -110,6 +110,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkInformation *vkInformation = new QvkInformation( this, ui);
     connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
 
+    vkLimitDiskFreeSpace = new QvkLimitDiskFreeSpace( this, ui );
+
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     setWindowIcon( icon );
 
@@ -1295,6 +1297,14 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
 
 void QvkMainWindow::slot_preStart()
 {
+
+    if ( vkLimitDiskFreeSpace->isStorageOKMessagBoxByStart() == false )
+    {
+        wantRecording = false;
+        ui->pushButtonStop->click();
+        return;
+    }
+
     if ( ui->checkBoxStopRecordingAfter->isChecked() == true )
     {
         int value = ui->spinBoxStopRecordingAfterHouers->value()*60*60*1000;
@@ -1591,21 +1601,33 @@ void QvkMainWindow::slot_preStop()
 
 void QvkMainWindow::slot_Stop()
 {
-    // wait for EOS
-    bool a = gst_element_send_event (pipeline, gst_event_new_eos());
-    Q_UNUSED(a);
+    if ( vkLimitDiskFreeSpace->isStorageOK() == false )
+    {
+        ui->checkBoxShowInSystray->click();
+        ui->checkBoxShowInSystray->click();
+    }
 
-    GstClockTime timeout = 5 * GST_SECOND;
-    GstMessage *msg = gst_bus_timed_pop_filtered (GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
-    Q_UNUSED(msg);
+    if ( wantRecording == true )
+    {
+        // wait for EOS
+        bool a = gst_element_send_event( pipeline, gst_event_new_eos() );
+        Q_UNUSED(a);
 
-    GstStateChangeReturn ret ;
-    Q_UNUSED(ret);
-    ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
-    ret = gst_element_set_state( pipeline, GST_STATE_READY );
-    ret = gst_element_set_state( pipeline, GST_STATE_NULL );
-    gst_object_unref( pipeline );
-    qDebug().noquote() << global::nameOutput << "Stop record";
+        GstClockTime timeout = 5 * GST_SECOND;
+        GstMessage *msg = gst_bus_timed_pop_filtered( GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
+        Q_UNUSED(msg);
+
+        GstStateChangeReturn ret ;
+        Q_UNUSED(ret);
+        ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
+        ret = gst_element_set_state( pipeline, GST_STATE_READY );
+        ret = gst_element_set_state( pipeline, GST_STATE_NULL );
+        gst_object_unref( pipeline );
+        qDebug().noquote() << global::nameOutput << "Stop record";
+    }
+
+    wantRecording = true;
+
 }
 
 

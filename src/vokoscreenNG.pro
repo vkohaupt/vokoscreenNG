@@ -135,3 +135,7 @@ include(screenManager/screenManager.pri)
 
 # licenses
 include(licenses/licenses.pri)
+
+# limitDiskFreeSpace
+include(limitDiskFreeSpace/limitDiskFreeSpace.pri)
+

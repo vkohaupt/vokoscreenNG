@@ -101,7 +101,7 @@ void QvkInformation::slot_StorageInfo()
 {
     QStorageInfo storage = QStorageInfo(ui->lineEditVideoPath->text() );
     storage.refresh();
-
+/*
     // Stop a record if disk space smaller 250MB(Default) 1GB(Max)
     if ( storage.bytesAvailable() <= ( ui->sliderLimitOfFreeDiskSpace->value() * 1024 * 1024 ) )
     {
@@ -118,7 +118,7 @@ void QvkInformation::slot_StorageInfo()
         messageBox->setIcon( QMessageBox::Warning );
         messageBox->exec();
     }
-
+*/
     ui->labelFreeSize->setText( QString::number( storage.bytesAvailable()/1024/1024 ) );
 
     QDir dir( ui->lineEditVideoPath->text() );
