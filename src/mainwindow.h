@@ -127,6 +127,7 @@ private:
     QvkLimitDiskFreeSpace *vkLimitDiskFreeSpace;
     bool wantRecording = true;
 
+    void checkVideoPath();
 
 private slots:
     void slot_preStart();

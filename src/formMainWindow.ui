@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1476,7 +1476,7 @@
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_28">
               <item>
-               <widget class="QFrame" name="frame_2">
+               <widget class="QFrame" name="frameLimitOfFreeDiskSpace">
                 <property name="frameShape">
                  <enum>QFrame::NoFrame</enum>
                 </property>

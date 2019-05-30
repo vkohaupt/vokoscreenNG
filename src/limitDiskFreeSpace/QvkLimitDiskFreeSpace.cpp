@@ -37,6 +37,8 @@ QvkLimitDiskFreeSpace::QvkLimitDiskFreeSpace( QMainWindow *mainWindow, Ui_formMa
     timerStorageSize->setTimerType( Qt::PreciseTimer );
     timerStorageSize->setInterval( 1000 );
     connect( timerStorageSize, SIGNAL( timeout() ), this, SLOT( slot_storageMessagBoxByRecord() ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), timerStorageSize, SLOT( start() ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), timerStorageSize, SLOT( stop() ) );
 }
 
 
@@ -67,6 +69,8 @@ bool QvkLimitDiskFreeSpace::isStorageOKMessagBoxByStart()
     // Stop a record if disk space smaller 250MB(Default) 999MB(Max)
     if ( storage.bytesAvailable() <= ( ui->sliderLimitOfFreeDiskSpace->value() * 1024 * 1024 ) )
     {
+        timerStorageSize->stop();
+
         QMessageBox *messageBox = new QMessageBox();
         messageBox->setWindowIcon( QIcon::fromTheme( ":/pictures/logo/logo.png" ) );
         messageBox->setWindowTitle( tr( "Warning" ) + " " + global::name + " " + global::version );
@@ -83,7 +87,6 @@ bool QvkLimitDiskFreeSpace::isStorageOKMessagBoxByStart()
         return false;
     }
 
-    timerStorageSize->start();
     return true;
 }
 
