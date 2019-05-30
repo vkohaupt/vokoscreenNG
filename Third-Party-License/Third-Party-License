@@ -2,7 +2,7 @@
 
 Qt:
 License --> LGPL 2.1 LGPL 3.0
-File    --> LGPL-3.0
+File    --> LGPL-2.1 LGPL-3.0
 URL     --> https://www.qt.io/
 
 
@@ -14,7 +14,7 @@ URL     --> https://gstreamer.freedesktop.org/
 
 PulseAudio:
 License --> LGPL 2.1
-File    --> LGPL
+File    --> LGPL-2.1
 URL     --> https://www.freedesktop.org/wiki/Software/PulseAudio/
 
 
