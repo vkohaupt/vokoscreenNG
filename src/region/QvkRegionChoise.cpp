@@ -562,7 +562,7 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
     if ( handlePressed != NoHandle )
         return;
 
-    QRegion regionTopLeft( frame_X - radius - 1, frame_Y - radius - 1, diameter + 2, diameter + 2, QRegion::Ellipse );
+    QRect regionTopLeft( frame_X - radius - 1, frame_Y - radius - 1, diameter + 2, diameter + 2 );
     if ( regionTopLeft.contains( event->pos() ) )
     {
         setCursor( Qt::SizeFDiagCursor );
@@ -570,7 +570,7 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
         return;
     }
 
-    QRegion regionTopMiddle( frame_X + frame_Width/2 - radius - 1, frame_Y - radius - 1, diameter + 2, diameter + 2, QRegion::Ellipse );
+    QRect regionTopMiddle( frame_X + frame_Width/2 - radius - 1, frame_Y - radius - 1, diameter + 2, diameter + 2 );
     if ( regionTopMiddle.contains( event->pos() )  )
     {
         setCursor( Qt::SizeVerCursor );
@@ -578,7 +578,7 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
         return;
     }
 
-    QRegion regionTopRight( frame_X + frame_Width - radius - 1, frame_Y - radius - 1, diameter + 2, diameter + 2, QRegion::Ellipse );
+    QRect regionTopRight( frame_X + frame_Width - radius - 1, frame_Y - radius - 1, diameter + 2, diameter + 2 );
     if ( regionTopRight.contains( event->pos() )  )
     {
         setCursor( Qt::SizeBDiagCursor );
@@ -586,7 +586,7 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
         return;
     }
 
-    QRegion regionRightMiddle( frame_X + frame_Width - radius - 1, frame_Y + frame_height/2 - radius - 1, diameter + 2, diameter + 2, QRegion::Ellipse );
+    QRect regionRightMiddle( frame_X + frame_Width - radius - 1, frame_Y + frame_height/2 - radius - 1, diameter + 2, diameter + 2 );
     if ( regionRightMiddle.contains( event->pos() )  )
     {
         handleUnderMouse = RightMiddle;
@@ -594,7 +594,7 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
         return;
     }
 
-    QRegion regionMiddle( frame_X + frame_Width/2 - radius - penHalf, frame_Y + frame_height/2 - radius - penHalf, 2 * radius + penWidth, 2 * radius + penWidth);
+    QRect regionMiddle( frame_X + frame_Width/2 - radius - penHalf, frame_Y + frame_height/2 - radius - penHalf, 2 * radius + penWidth, 2 * radius + penWidth);
     if ( regionMiddle.contains( event->pos() )  )
     {
         setCursor( Qt::SizeAllCursor );
@@ -603,7 +603,7 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
     }
 
     QvkRegionButtonArrow buttonArrow;
-    QRegion regionBottomRight( frame_X + frame_Width - buttonArrow.getWithHalf(),
+    QRect regionBottomRight( frame_X + frame_Width - buttonArrow.getWithHalf(),
                                frame_Y + frame_height - buttonArrow.getWithHalf(),
                                buttonArrow.getWithHalf()*2,
                                buttonArrow.getWithHalf()*2
@@ -615,7 +615,7 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
         return;
     }
 
-    QRegion regionBottomMiddle( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
+    QRect regionBottomMiddle( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
                                 frame_Y + frame_height - buttonArrow.getWithHalf(),
                                 buttonArrow.getWithHalf()*2,
                                 buttonArrow.getWithHalf()*2
@@ -627,7 +627,7 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
         return;
     }
 
-    QRegion regionBottomLeft( frame_X - buttonArrow.getWithHalf(),
+    QRect regionBottomLeft( frame_X - buttonArrow.getWithHalf(),
                               frame_Y + frame_height - buttonArrow.getWithHalf(),
                               buttonArrow.getWithHalf()*2,
                               buttonArrow.getWithHalf()*2
@@ -639,7 +639,7 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
         return;
     }
 
-    QRegion regionLeftMiddle( frame_X - buttonArrow.getWithHalf(),
+    QRect regionLeftMiddle( frame_X - buttonArrow.getWithHalf(),
                               frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
                               buttonArrow.getWithHalf()*2,
                               buttonArrow.getWithHalf()*2

@@ -106,8 +106,6 @@ private:
   int frame_min_width;
   int frame_min_height;
 
-  QRegion regionSet;
-
   int pixelWidth;
   int pixelHeight;
 
