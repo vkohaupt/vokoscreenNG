@@ -22,6 +22,8 @@
 
 #include "QvkWinInfo.h"
 
+#include <QBitmap>
+
 #ifdef Q_OS_LINUX
 #include <QX11Info>
 #include <X11/Xutil.h>
@@ -40,52 +42,9 @@ QvkWinInfo::QvkWinInfo()
 void QvkWinInfo::slot_start()
 {
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+    setAttribute( Qt::WA_TranslucentBackground, true );
 
     resize ( 50, 50 );
-
-    QRegion Fenster( 0,
-                     0,
-                     50,
-                     50,
-                     QRegion::Rectangle );
-
-    QRegion mouseHole( 21,
-                       21,
-                       8,
-                       8,
-                       QRegion::Rectangle );
-
-    QRegion Rechteck_LO( 0,
-                         0,
-                         23,
-                         23,
-                         QRegion::Rectangle );
-
-    QRegion Rechteck_RO( 27,
-                         0,
-                         23,
-                         23,
-                         QRegion::Rectangle );
-
-    QRegion Rechteck_LU( 0,
-                         27,
-                         23,
-                         23,
-                         QRegion::Rectangle );
-
-    QRegion Rechteck_RU( 27,
-                         27,
-                         23,
-                         23,
-                         QRegion::Rectangle );
-
-    QRegion r1 = Fenster.QRegion::subtracted( mouseHole );
-    QRegion r2 = r1.QRegion::subtracted( Rechteck_LO );
-    QRegion r3 = r2.QRegion::subtracted( Rechteck_RO );
-    QRegion r4 = r3.QRegion::subtracted( Rechteck_LU );
-    QRegion r5 = r4.QRegion::subtracted( Rechteck_RU );
-
-    this->setMask( r5 );
 
     lastWinID = this->winId();
 
@@ -110,10 +69,24 @@ QvkWinInfo::~QvkWinInfo()
 void QvkWinInfo::paintEvent( QPaintEvent *event ) 
 {
     Q_UNUSED(event);
-    QPainter painter( this );
+
+    QPixmap pixmap( 50, 50 );
+    pixmap.fill( Qt::transparent );
+    QPainter painter;
+    painter.begin( &pixmap );
     painter.setPen( QPen( Qt::blue, 4 ) );
-    painter.drawLine( 50/2, 0, 50/2, 50);
-    painter.drawLine( 0, 50/2, 50, 50/2);
+    painter.drawLine( 50/2, 0, 50/2, 21);
+    painter.drawLine( 50/2, 50/2+4, 50/2, 50 );
+    painter.drawLine( 0, 50/2, 50/2-4, 50/2 );
+    painter.drawLine( 50/2+4, 50/2, 50, 50/2 );
+    painter.end();
+
+    QPainter painter_1;
+    painter_1.begin( this );
+    painter_1.drawPixmap( QPoint( 0, 0 ), pixmap );
+    painter_1.end();
+
+    setMask( pixmap.mask() );
 }
 
 
@@ -135,7 +108,7 @@ static WindowList getWindow( Atom prop )
     Display* display = QX11Info::display();
     Window window = QX11Info::appRootWindow();
     if ( XGetWindowProperty( display, window, prop, 0, 1024 * sizeof(Window) / 4, False, AnyPropertyType,
-                             &type, &format, &count, &after, &data ) == Success)
+                             &type, &format, &count, &after, &data ) == Success )
     {
         Window* list = reinterpret_cast<Window*>( data ) ;
         for ( uint i = 0; i < count; ++i )

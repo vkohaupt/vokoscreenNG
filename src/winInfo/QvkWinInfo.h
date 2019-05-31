@@ -25,13 +25,13 @@
 
 #include <QTimer>
 #include <QPainter>
-#include <QMainWindow>
+#include <QWidget>
 
 #ifdef Q_OS_LINUX
 typedef QList<WId> WindowList;
 #endif
 
-class QvkWinInfo: public QMainWindow
+class QvkWinInfo: public QWidget
 { 
     Q_OBJECT
 public:
@@ -54,19 +54,17 @@ signals:
     void signal_windowChanged( bool value );
     void signal_showCursor( bool value );
 
+
 protected:  
+    void paintEvent( QPaintEvent *event );
 
 
 private:
-
     QTimer *windowTimer;
     QTimer *mouseTimer;
 
     WId lastWinID;
     WId newWinID;
-
-    void paintEvent(QPaintEvent *event);
-
 };
 
 #endif
