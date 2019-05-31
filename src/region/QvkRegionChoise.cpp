@@ -29,7 +29,7 @@
 #include <QGuiApplication>
 #include <QBitmap>
 #include <QPaintEvent>
-#include <QIcon>
+//#include <QIcon>
 
 #ifdef Q_OS_LINUX
   #include <QX11Info>
@@ -285,6 +285,13 @@ void QvkRegionChoise::mouseReleaseEvent( QMouseEvent * event )
   handlePressed = NoHandle;
 
   update();
+}
+
+
+void QvkRegionChoise::leaveEvent(QEvent *event)
+{
+    Q_UNUSED(event);
+    unsetCursor();
 }
 
 
