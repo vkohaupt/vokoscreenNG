@@ -22,22 +22,30 @@
     </message>
 </context>
 <context>
-    <name>QvkInformation</name>
+    <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
         <translation>Įspėjimas</translation>
     </message>
     <message>
-        <source>The recording was stopped.</source>
-        <translation>Įrašinėjimas buvo sustabdytas.</translation>
+        <source>The recording is not started, not enough free disk space.</source>
+        <translation>Įrašinėjimas nepradėtas, trūksta laisvos vietos diske.</translation>
     </message>
     <message>
-        <source>Recording is stopped when the free disk space limit is reached.</source>
-        <translation>Įrašinėjimas yra sustabdomas, kai yra pasiekiama laisvos vietos diske riba.</translation>
+        <source>The free disk space limit is reached.</source>
+        <translation>Yra pasiekta laisvos vietos diske riba.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
         <translation>Laisvos vietos diske apribojimas</translation>
+    </message>
+    <message>
+        <source>Megabyte</source>
+        <translation>Megabaitų</translation>
+    </message>
+    <message>
+        <source>The recording was stopped, not enough free disk space.</source>
+        <translation>Įrašinėjimas buvo sustabdytas, trūksta laisvos vietos diske.</translation>
     </message>
 </context>
 <context>
@@ -424,6 +432,10 @@
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Autorių teisės ir licencijos iš paveikslų</translation>
+    </message>
+    <message>
+        <source>Megabyte</source>
+        <translation>Megabaitų</translation>
     </message>
 </context>
 <context>

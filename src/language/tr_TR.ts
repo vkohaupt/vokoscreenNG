@@ -22,22 +22,30 @@
     </message>
 </context>
 <context>
-    <name>QvkInformation</name>
+    <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
         <translation>Uyarı</translation>
     </message>
     <message>
-        <source>The recording was stopped.</source>
-        <translation>Kayıt durduruldu.</translation>
+        <source>The recording is not started, not enough free disk space.</source>
+        <translation>Kayıt başlatılmadı, yeterli boş disk alanı yok.</translation>
     </message>
     <message>
-        <source>Recording is stopped when the free disk space limit is reached.</source>
-        <translation>Boş disk alanı sınırına ulaşıldığında kayıt durdurulur.</translation>
+        <source>The free disk space limit is reached.</source>
+        <translation>Boş disk alanı sınırına ulaşıldı.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
         <translation>Boş disk alanı sınırı</translation>
+    </message>
+    <message>
+        <source>Megabyte</source>
+        <translation>Megabayt</translation>
+    </message>
+    <message>
+        <source>The recording was stopped, not enough free disk space.</source>
+        <translation>Kayıt durduruldu, yeterli boş disk alanı yok.</translation>
     </message>
 </context>
 <context>
@@ -424,6 +432,10 @@
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Resimlerin telif hakkı ve lisans</translation>
+    </message>
+    <message>
+        <source>Megabyte</source>
+        <translation>Megabayt</translation>
     </message>
 </context>
 <context>

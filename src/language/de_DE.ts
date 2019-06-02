@@ -1,158 +1,166 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="ca" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="de_DE" version="2.1">
 <context>
     <name>QvkAudioPulse</name>
     <message>
         <source>File can not be opened</source>
-        <translation>El fitxer no s&apos;ha pogut obrir</translation>
+        <translation>Datei kann nicht geöffnet werden</translation>
     </message>
     <message>
         <source>Select one or more devices</source>
-        <translation>Seleccioneu un o més dispositius</translation>
+        <translation>Ein oder mehrere Geräte auswählen</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Alterna a finestra</translation>
+        <translation>Auf Fenster umschalten</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Alterna a pantalla completa</translation>
+        <translation>Auf Vollbild umschalten</translation>
     </message>
 </context>
 <context>
-    <name>QvkInformation</name>
+    <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Avís</translation>
+        <translation>Warnung</translation>
     </message>
     <message>
-        <source>The recording was stopped.</source>
-        <translation>L&apos;enregistrament s&apos;ha aturat.</translation>
+        <source>The recording is not started, not enough free disk space.</source>
+        <translation>Die Aufnahme wird nicht gestartet, nicht genügend freier Speicherplatz.</translation>
     </message>
     <message>
-        <source>Recording is stopped when the free disk space limit is reached.</source>
-        <translation>L&apos;enregistrament s&apos;aturarà quan s’abasti el límit d’espai lliure al disc.</translation>
+        <source>The free disk space limit is reached.</source>
+        <translation>Das Limit für den freien Speicherplatz ist erreicht.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Límit d&apos;espai lliure al disc</translation>
+        <translation>Grenze für freien Plattenplatz</translation>
+    </message>
+    <message>
+        <source>Megabyte</source>
+        <translation>Megabyte</translation>
+    </message>
+    <message>
+        <source>The recording was stopped, not enough free disk space.</source>
+        <translation>Die Aufnahme wurde gestoppt, nicht genügend freier Speicherplatz.</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Pantalla completa</translation>
+        <translation>Vollbild</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Finestra</translation>
+        <translation>Fenster</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>No s’ha trobat cap gestor de fitxers.</translation>
+        <translation>Kein Dateimanager gefunden.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Instal·leu un gestor de fitxers.</translation>
+        <translation>Bitte installieren Sie einen Dateimanager.</translation>
     </message>
     <message>
         <source>Desktop session is a Wayland session</source>
-        <translation>La sessió d’escriptori és una sessió de Wayland</translation>
+        <translation>Desktop-Sitzung ist eine Wayland-Sitzung</translation>
     </message>
     <message>
         <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Fins al moment no s&apos;admet el Wayland. Una captura en vídeo mostrarà una pantalla en negre. Si us plau, tanqueu la sessió i iniceu una sessió d&apos;escriptori amb X11.</translation>
+        <translation>Zur Zeit wird Wayland nicht unterstützt. Ein Screencast zeigt einen schwarzen Bildschirm. Bitte melden Sie sich ab und starten Sie eine X11 Desktop-Sitzung</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Codi font</translation>
+        <translation>Quellcode</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Lloc web</translation>
+        <translation>Webseite</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Traduccions</translation>
+        <translation>Übersetzungen</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Feu una donació</translation>
+        <translation>Spenden</translation>
     </message>
     <message>
         <source>Wayland desktop session detected</source>
-        <translation>S&apos;ha detectat una sessió d&apos;escriptori de Wayland</translation>
+        <translation>Wayland-Desktop-Sitzung erkannt</translation>
     </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
-        <translation>Obre el fitxer</translation>
+        <translation>Datei öffnen</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Àrea</translation>
+        <translation>Bereich</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Inicia</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Atura</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continua</translation>
+        <translation>Weiter</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Surt</translation>
+        <translation>Beenden</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Diàleg</translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Gir horitzontal</translation>
+        <translation>Horizontal spiegeln</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Gir vertical</translation>
+        <translation>Vertikal spiegeln</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertida</translation>
+        <translation>invertiert</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Gris</translation>
+        <translation>grau</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Blanc i negre</translation>
+        <translation>Schwarzweiß</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Elimina el marc de la finestra</translation>
+        <translation>Fensterrahmen entfernen</translation>
     </message>
     <message>
         <source>160x120</source>
@@ -164,7 +172,7 @@
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Ajustaments de la càmera</translation>
+        <translation>Kameraeinstellungen</translation>
     </message>
     <message>
         <source>640x480</source>
@@ -175,47 +183,47 @@
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Àrea</translation>
+        <translation>Bereich</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Reinicia</translation>
+        <translation>Zurücksetzen</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliació</translation>
+        <translation>Lupe</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Compte enrere </translation>
+        <translation>Countdown</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Mida del vídeo:</translation>
+        <translation>Videogröße:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Espai lliure al disc:</translation>
+        <translation>Freier Plattenplatz:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informació</translation>
+        <translation>Information</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Temps enregistrat:</translation>
+        <translation>Aufnahmezeit:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Àudio</translation>
+        <translation>Audio</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Fotogrames</translation>
+        <translation>Bilder</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Còdec del vídeo </translation>
+        <translation>Videocodec</translation>
     </message>
     <message>
         <source>Format</source>
@@ -223,147 +231,147 @@
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Còdec de l&apos;àudio</translation>
+        <translation>Audiocodec</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>Qualitat</translation>
+        <translation>Qualität</translation>
     </message>
     <message>
         <source>Scale</source>
-        <translation>Escala</translation>
+        <translation>Skalieren</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>No enregistris el cursor del ratolí</translation>
+        <translation>Mauszeiger nicht aufnehmen</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Hora</translation>
+        <translation>Stunde</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minut</translation>
+        <translation>Minute</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Inicia el temporitzador</translation>
+        <translation>Timer starten</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Atura l&apos;enregistrament després de</translation>
+        <translation>Aufnahme stoppen nach</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Hores</translation>
+        <translation>Stunden</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minuts</translation>
+        <translation>Minuten</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Segons</translation>
+        <translation>Sekunden</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Camí del vídeo</translation>
+        <translation>Videopfad</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Límit d&apos;espai lliure al disc</translation>
+        <translation>Grenze für freien Plattenplatz</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Mostra a la safata del sistema</translation>
+        <translation>Im Benachrichtigungsfeld anzeigen</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Segona espera abans d&apos;enregistrar</translation>
+        <translation>Sekunden vor der Aufnahme warten</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Cerca actualitzacions</translation>
+        <translation>Nach Aktualisierungen suchen</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Ajuda</translation>
+        <translation>Hilfe</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Vídeo</translation>
+        <translation>Video</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Disponible</translation>
+        <translation>Verfügbar</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>No disponible</translation>
+        <translation>Nicht verfügbar</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Inicia</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Atura</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continua</translation>
+        <translation>Weiter</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Reprodueix</translation>
+        <translation>Play</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Carpeta</translation>
+        <translation>Ordner</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Càmera</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertida</translation>
+        <translation>invertiert</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Gris</translation>
+        <translation>grau</translation>
     </message>
     <message>
         <source>Send Report</source>
-        <translation>Envia el registre</translation>
+        <translation>Bericht senden</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
-        <translation>Ctrl+Majús.+F10</translation>
+        <translation>STRG+UMSCHALT+F10</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F11</source>
-        <translation>Ctrl+Majús.+F11</translation>
+        <translation>STRG+UMSCHALT+F11</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F12</source>
-        <translation>Ctrl+Majús.+F12</translation>
+        <translation>STRG+UMSCHALT+F12</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Reprodueix el darrer enregistrament</translation>
+        <translation>Letzte Aufnahme abspielen</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Obre una carpeta</translation>
+        <translation>Ordner öffnen</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation>Ctrl+Majús.+F8</translation>
+        <translation>STRG+UMSCHALT+F8</translation>
     </message>
     <message>
         <source>200x200</source>
@@ -379,35 +387,35 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimitza en iniciar l&apos;enregistrament</translation>
+        <translation>Minimiert beim Start der Aufzeichnung</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Inicia minimitzat</translation>
+        <translation>Startet minimiert</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Gir horizontal</translation>
+        <translation>Horizontal spiegeln</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Gir vertical</translation>
+        <translation>Vertikal spiegeln</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Blanc i negre</translation>
+        <translation>Schwarzweiß</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Elimina el marc de la finestra</translation>
+        <translation>Fensterrahmen entfernen</translation>
     </message>
     <message>
         <source>Time</source>
-        <translation>Temps</translation>
+        <translation>Zeit</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Feu una donació</translation>
+        <translation>Spenden</translation>
     </message>
     <message>
         <source>25</source>
@@ -415,65 +423,69 @@
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Restableix tots els ajustament al següent inici</translation>
+        <translation>Alle Einstellungen beim nächsten Start zurücksetzen</translation>
     </message>
     <message>
         <source>Developed under openSUSE Leap and Qt</source>
-        <translation>Desenvolupat sota openSUSE Leap i les Qt</translation>
+        <translation>Entwickelt unter OpenSuse Leap und QT</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Drets d&apos;autor i llicència de les imatges</translation>
+        <translation>Copyright und Lizenz von Bildern</translation>
+    </message>
+    <message>
+        <source>Megabyte</source>
+        <translation>Megabyte</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Drets d&apos;autor i llicència de les imatges</translation>
+        <translation>Copyright und Lizenz von Bildern</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Reprodueix</translation>
+        <translation>Play</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Atura</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Obre un fitxer</translation>
+        <translation>Datei öffnen</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Pantalla completa</translation>
+        <translation>Vollbild</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Fotograma anterior</translation>
+        <translation>Vorheriges Bild</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Fotograma següent</translation>
+        <translation>Nächstes Bild</translation>
     </message>
     <message>
         <source>Volume</source>
-        <translation>Volum</translation>
+        <translation>Lautstärke</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Silenci</translation>
+        <translation>Stummschaltung</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Mou el menú</translation>
+        <translation>Menü verschieben</translation>
     </message>
 </context>
 </TS>

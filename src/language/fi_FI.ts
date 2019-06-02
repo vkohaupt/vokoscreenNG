@@ -22,22 +22,30 @@
     </message>
 </context>
 <context>
-    <name>QvkInformation</name>
+    <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
         <translation>Varoitus</translation>
     </message>
     <message>
-        <source>The recording was stopped.</source>
-        <translation>Tallennus pysäytettiin.</translation>
+        <source>The recording is not started, not enough free disk space.</source>
+        <translation>Tallennusta ei käynnistetä, ei ole riittävästi vapaata levytilaa.</translation>
     </message>
     <message>
-        <source>Recording is stopped when the free disk space limit is reached.</source>
-        <translation>Tallennus pysäytetään, kun raja vapaasta levytilasta on saavutettu.</translation>
+        <source>The free disk space limit is reached.</source>
+        <translation>Vapaan levytilan raja on saavutettu.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
         <translation>Vapaan levytilan raja</translation>
+    </message>
+    <message>
+        <source>Megabyte</source>
+        <translation>Megatavu</translation>
+    </message>
+    <message>
+        <source>The recording was stopped, not enough free disk space.</source>
+        <translation>Tallennus pysäytettiin, ei tarpeeksi vapaata levytilaa.</translation>
     </message>
 </context>
 <context>
@@ -424,6 +432,10 @@
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Tekijänoikeudet ja lisenssit kuvista</translation>
+    </message>
+    <message>
+        <source>Megabyte</source>
+        <translation>Megatavu</translation>
     </message>
 </context>
 <context>
