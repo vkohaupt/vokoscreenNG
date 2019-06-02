@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="de_DE" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="de_AT" version="2.1">
 <context>
     <name>QvkAudioPulse</name>
     <message>
@@ -60,15 +60,15 @@
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Kein Dateimanager gefunden.</translation>
+        <translation>Kein Dateimanager gefunden</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Bitte installieren Sie einen Dateimanager.</translation>
+        <translation>Bitte installiere einen Dateimanager</translation>
     </message>
     <message>
         <source>Desktop session is a Wayland session</source>
-        <translation>Desktop-Sitzung ist eine Wayland-Sitzung</translation>
+        <translation>Desktopsitzung ist eine Waylandsitzung</translation>
     </message>
     <message>
         <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
@@ -88,18 +88,18 @@
     </message>
     <message>
         <source>Donate</source>
-        <translation>Spenden</translation>
+        <translation>Spende</translation>
     </message>
     <message>
         <source>Wayland desktop session detected</source>
-        <translation>Wayland-Desktop-Sitzung erkannt</translation>
+        <translation>Wayland Desktopsitzung erkannt</translation>
     </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
-        <translation>Datei öffnen</translation>
+        <translation>Öffne Datei</translation>
     </message>
 </context>
 <context>
@@ -129,7 +129,7 @@
     </message>
     <message>
         <source>Exit</source>
-        <translation>Beenden</translation>
+        <translation>Verlassen</translation>
     </message>
 </context>
 <context>
@@ -156,11 +156,11 @@
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Schwarzweiß</translation>
+        <translation>Schwarz-weiß</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Fensterrahmen entfernen</translation>
+        <translation>Entferne Fensterrahmen</translation>
     </message>
     <message>
         <source>160x120</source>
@@ -168,7 +168,7 @@
     </message>
     <message>
         <source>320x240</source>
-        <translation>320x240</translation>
+        <translation>320*240</translation>
     </message>
     <message>
         <source>Camera settings</source>
@@ -211,7 +211,7 @@
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Aufnahmezeit:</translation>
+        <translation>Aufnahmezeit</translation>
     </message>
     <message>
         <source>Audio</source>
@@ -219,7 +219,7 @@
     </message>
     <message>
         <source>Frames</source>
-        <translation>Bilder</translation>
+        <translation>Frames</translation>
     </message>
     <message>
         <source>Videocodec</source>
@@ -239,11 +239,11 @@
     </message>
     <message>
         <source>Scale</source>
-        <translation>Skalieren</translation>
+        <translation>Scalieren</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Mauszeiger nicht aufnehmen</translation>
+        <translation>Mauscursor nicht aufnehmen</translation>
     </message>
     <message>
         <source>Hour</source>
@@ -255,11 +255,11 @@
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Timer starten</translation>
+        <translation>Starte den Timer</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Aufnahme stoppen nach</translation>
+        <translation>Stoppe Aufnahme nach</translation>
     </message>
     <message>
         <source>Hours</source>
@@ -283,7 +283,7 @@
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Im Benachrichtigungsfeld anzeigen</translation>
+        <translation>Im Systray anzeigen</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
@@ -347,19 +347,19 @@
     </message>
     <message>
         <source>Send Report</source>
-        <translation>Bericht senden</translation>
+        <translation>Sende Report</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
-        <translation>STRG+UMSCHALT+F10</translation>
+        <translation>CTRL+SHIFT+F10</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F11</source>
-        <translation>STRG+UMSCHALT+F11</translation>
+        <translation>CTRL+SHIFT+F11</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F12</source>
-        <translation>STRG+UMSCHALT+F12</translation>
+        <translation>CTRL+SHIFT+F12</translation>
     </message>
     <message>
         <source>Play last record</source>
@@ -371,7 +371,7 @@
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation>STRG+UMSCHALT+F8</translation>
+        <translation>CTRL+SHIFT+F8</translation>
     </message>
     <message>
         <source>200x200</source>
@@ -403,11 +403,11 @@
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Schwarzweiß</translation>
+        <translation>Schwarz-weiß</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Fensterrahmen entfernen</translation>
+        <translation>Entferne Fensterrahmen</translation>
     </message>
     <message>
         <source>Time</source>
@@ -415,7 +415,7 @@
     </message>
     <message>
         <source>Donate</source>
-        <translation>Spenden</translation>
+        <translation>Spende</translation>
     </message>
     <message>
         <source>25</source>
@@ -461,7 +461,7 @@
     </message>
     <message>
         <source>Open File</source>
-        <translation>Datei öffnen</translation>
+        <translation>Öffne Datei</translation>
     </message>
     <message>
         <source>Fullscreen</source>
