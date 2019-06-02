@@ -7,7 +7,7 @@
 
 ## Translate
 Only **100% translated** languages come in vokoscreenNG.
-If vokoscreenNG released, you can translate to anytime, in a bugfix release your translation will be included.
+You can translate to anytime, in a bugfix release your translation will be included.
 Please translate only at Transifex, it is very easy.
 https://www.transifex.com/vkohaupt/vokoscreen/
 
