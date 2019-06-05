@@ -1,9 +1,5 @@
 
 
-Area:
---Wird die Bereichsanzeige kompelett über den ganzen Bildschirm aufgezogen kann nicht mehr mit der Maus klicken.
-
-
 Windows Scale:
 --nicht verfügbar siehe Log.
 
