@@ -30,6 +30,9 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
+    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+
     // Initialize GStreamer
     gst_init (&argc, &argv);
 

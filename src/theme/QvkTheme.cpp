@@ -106,8 +106,6 @@ QIcon QvkTheme::VK_getIcon( QString iconName, QString iconNameFallback )
 
 void QvkTheme::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIcon icon )
 {
-    QCoreApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
-
     int a = 128;
     QPixmap iconPixmap = icon.pixmap( a, a );
     tabWidget->setTabIcon( index, QIcon( iconPixmap ) );
@@ -116,8 +114,6 @@ void QvkTheme::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIcon ico
 
 void QvkTheme::makeAndSetValidIconForSideBar( int index, QIcon icon )
 {
-    QCoreApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
-
     int a = 256;
     QSize size = QSize( a, a );
 

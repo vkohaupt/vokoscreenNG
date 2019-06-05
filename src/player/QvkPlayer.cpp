@@ -45,7 +45,6 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     ui->labelPlayer->setMouseTracking( true );
     ui->labelPlayer->setFocus(); // Need Focus for F11 in windowmode(GUI)
 
-    QCoreApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     ui->labelPlayer->setPixmap( icon.pixmap( 128, 128 ) );
 
