@@ -1,4 +1,8 @@
 
+Windows webcam:
+--Einstellungen werden nicht gesichert und geladen.
+--Wird das Fenster mit dem Slider vergrößert auf 640x480 stürtzt vokoscreenNG ab.
+
 
 Windows Scale:
 --nicht verfügbar siehe Log.
