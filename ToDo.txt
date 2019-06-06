@@ -1,6 +1,9 @@
 
 Windows webcam:
---Einstellungen werden nicht gesichert und geladen.
+--Einstellungen werden gesichert aber nicht geladen. Das laden funktioniert nicht weil die webcam zu spät erkannt wird und die Widget deaktiviert sind.
+
+
+Windows webcam:
 --Wird das Fenster mit dem Slider vergrößert auf 640x480 stürtzt vokoscreenNG ab.
 
 
