@@ -35,6 +35,7 @@ Q_OBJECT
 public:
   QvkCameraWatcher();
   virtual ~QvkCameraWatcher();
+  void cameraWatcherInit();
 
 
 public slots:

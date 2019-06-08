@@ -28,6 +28,16 @@ using namespace std;
 
 QvkCameraWatcher::QvkCameraWatcher() : newcount(0)
 {
+}
+
+
+QvkCameraWatcher::~QvkCameraWatcher()
+{
+}
+
+
+void QvkCameraWatcher::cameraWatcherInit()
+{
     newDescriptionList.clear();
     newDeviceNameList.clear();
     oldDeviceNameList.clear();
@@ -36,12 +46,8 @@ QvkCameraWatcher::QvkCameraWatcher() : newcount(0)
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( 2000 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_detectCameras() ) );
-    timer->start();
-}
-
-
-QvkCameraWatcher::~QvkCameraWatcher()
-{
+//    timer->start();
+slot_detectCameras();
 }
 
 
