@@ -46,8 +46,8 @@ void QvkCameraWatcher::cameraWatcherInit()
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( 2000 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_detectCameras() ) );
-//    timer->start();
-slot_detectCameras();
+
+    slot_detectCameras();
 }
 
 
