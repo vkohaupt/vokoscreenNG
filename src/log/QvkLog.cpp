@@ -35,13 +35,13 @@ QvkLog::QvkLog( Ui_formMainWindow *ui_mainwindow )
     connect( this, SIGNAL( signal_newLogText( QString ) ), this, SLOT( slot_addLog( QString ) ) );
 
     QDateTime dateTime = QDateTime::currentDateTime();
-    QString stringDateTime = dateTime.toString( "yyyy-MM-dd_hh:mm:ss" );
+    QString stringDateTime = dateTime.toString( "yyyy_MM_dd_hh_mm_ss" );
     path = QStandardPaths::writableLocation( QStandardPaths::AppConfigLocation );
 
     QString logFolderName = path + "/" + "log";
     if( !QDir( logFolderName ).exists() )
     {
-        QDir().mkdir( logFolderName );
+        QDir().mkpath( logFolderName );
     }
 
     logFile.setFileName( path + "/" + "log" + "/" + stringDateTime + ".log" );
