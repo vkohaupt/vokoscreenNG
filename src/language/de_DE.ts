@@ -156,7 +156,7 @@
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Schwarzweiß</translation>
+        <translation>Schwarz-Weiß</translation>
     </message>
     <message>
         <source>Remove window frame</source>

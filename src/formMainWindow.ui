@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1962,7 +1962,7 @@
            <attribute name="title">
             <string notr="true"/>
            </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0,0,0,0,0,0,0">
+           <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0,0,0,0">
             <item>
              <spacer name="verticalSpacer_7">
               <property name="orientation">
@@ -1978,6 +1978,9 @@
             </item>
             <item>
              <layout class="QGridLayout" name="gridLayout_7">
+              <item row="1" column="2">
+               <layout class="QVBoxLayout" name="verticalLayout_15"/>
+              </item>
               <item row="1" column="1">
                <widget class="QLabel" name="labelAutorPicture">
                 <property name="maximumSize">
@@ -1997,68 +2000,63 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="2">
-               <layout class="QVBoxLayout" name="verticalLayout_15">
-                <item>
-                 <widget class="QLabel" name="labelLanguageUrl">
-                  <property name="text">
-                   <string notr="true">Translation</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                  </property>
-                  <property name="openExternalLinks">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="labelDonateUrl">
-                  <property name="text">
-                   <string>Donate</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-                  </property>
-                  <property name="openExternalLinks">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
               <item row="1" column="0">
-               <layout class="QVBoxLayout" name="verticalLayout_20">
-                <item>
-                 <widget class="QLabel" name="labelSourcecodeUrl">
-                  <property name="autoFillBackground">
-                   <bool>true</bool>
-                  </property>
-                  <property name="text">
-                   <string notr="true">Sourcecode</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
-                  </property>
-                  <property name="openExternalLinks">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="labelWebSiteUrl">
-                  <property name="text">
-                   <string notr="true">Website</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
-                  </property>
-                  <property name="openExternalLinks">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+               <layout class="QVBoxLayout" name="verticalLayout_20"/>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLabel" name="labelDonateUrl">
+                <property name="text">
+                 <string>Donate</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="openExternalLinks">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QLabel" name="labelLanguageUrl">
+                <property name="text">
+                 <string notr="true">Translation</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="openExternalLinks">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="labelSourcecodeUrl">
+                <property name="autoFillBackground">
+                 <bool>true</bool>
+                </property>
+                <property name="text">
+                 <string notr="true">Sourcecode</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="openExternalLinks">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="labelWebSiteUrl">
+                <property name="text">
+                 <string notr="true">Website</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="openExternalLinks">
+                 <bool>true</bool>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -2144,92 +2142,6 @@
                </size>
               </property>
              </spacer>
-            </item>
-            <item>
-             <widget class="Line" name="line_15">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="verticalSpacer_15">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <layout class="QGridLayout" name="gridLayout_2">
-              <item row="0" column="1">
-               <spacer name="horizontalSpacer_11">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_27">
-                <property name="text">
-                 <string notr="true"/>
-                </property>
-                <property name="pixmap">
-                 <pixmap resource="screencast.qrc">:/pictures/screencast/suse_logo.png</pixmap>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="QLabel" name="label_28">
-                <property name="text">
-                 <string>Developed under openSUSE Leap and Qt</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="4">
-               <widget class="QLabel" name="label_29">
-                <property name="text">
-                 <string notr="true"/>
-                </property>
-                <property name="pixmap">
-                 <pixmap resource="screencast.qrc">:/pictures/screencast/qt.png</pixmap>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="3">
-               <spacer name="horizontalSpacer_12">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-             </layout>
             </item>
            </layout>
           </widget>
@@ -2850,8 +2762,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>pushButtonSendReport</tabstop>
   <tabstop>help_log_sendreport</tabstop>
  </tabstops>
- <resources>
-  <include location="screencast.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
