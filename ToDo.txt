@@ -1,5 +1,9 @@
 
 
+Lizenz von Bilder:
+--Bilder sind verpixelt. Komplett neuschreiben mit QLabel.
+
+
 Windows Scale:
 --nicht verfügbar siehe Log.
 
