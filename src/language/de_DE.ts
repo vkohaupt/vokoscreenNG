@@ -426,10 +426,6 @@
         <translation>Alle Einstellungen beim nächsten Start zurücksetzen</translation>
     </message>
     <message>
-        <source>Developed under openSUSE Leap and Qt</source>
-        <translation>Entwickelt unter OpenSuse Leap und Qt</translation>
-    </message>
-    <message>
         <source>Copyright and license from pictures</source>
         <translation>Copyright und Lizenz von Bildern</translation>
     </message>

@@ -426,10 +426,6 @@
         <translation>Repor todas as configurações no próximo início</translation>
     </message>
     <message>
-        <source>Developed under openSUSE Leap and Qt</source>
-        <translation>Desenvolvido em openSUSE Leap e Qt</translation>
-    </message>
-    <message>
         <source>Copyright and license from pictures</source>
         <translation>Direitos de autor e licença das imagens</translation>
     </message>

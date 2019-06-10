@@ -426,10 +426,6 @@
         <translation>Bir sonraki başlangıçta tüm ayarları sıfırla</translation>
     </message>
     <message>
-        <source>Developed under openSUSE Leap and Qt</source>
-        <translation>OpenSUSE ve Qt ortamında geliştirildi</translation>
-    </message>
-    <message>
         <source>Copyright and license from pictures</source>
         <translation>Resimlerin telif hakkı ve lisans</translation>
     </message>

@@ -426,10 +426,6 @@
         <translation>Nollaa kaikki asetukset seuraavalla käynnistyksellä</translation>
     </message>
     <message>
-        <source>Developed under openSUSE Leap and Qt</source>
-        <translation>Kehitystyö openSUSE Leap ja Qt</translation>
-    </message>
-    <message>
         <source>Copyright and license from pictures</source>
         <translation>Tekijänoikeudet ja lisenssit kuvista</translation>
     </message>

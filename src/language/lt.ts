@@ -426,10 +426,6 @@
         <translation>Kito paleidimo metu atstatyti visus nustatymus</translation>
     </message>
     <message>
-        <source>Developed under openSUSE Leap and Qt</source>
-        <translation>Sukurta naudojant openSUSE Leap ir Qt</translation>
-    </message>
-    <message>
         <source>Copyright and license from pictures</source>
         <translation>Autorių teisės ir licencijos iš paveikslų</translation>
     </message>

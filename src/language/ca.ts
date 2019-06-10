@@ -426,10 +426,6 @@
         <translation>Restableix tots els ajustament al següent inici</translation>
     </message>
     <message>
-        <source>Developed under openSUSE Leap and Qt</source>
-        <translation>Desenvolupat sota openSUSE Leap i les Qt</translation>
-    </message>
-    <message>
         <source>Copyright and license from pictures</source>
         <translation>Drets d&apos;autor i llicència de les imatges</translation>
     </message>
