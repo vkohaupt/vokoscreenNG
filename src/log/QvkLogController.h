@@ -34,7 +34,8 @@ class QvkLogController : public QObject
 public:
   QvkLogController( Ui_formMainWindow *ui_mainwindow);
   virtual ~QvkLogController();
-  
+  QString get_logPath();
+
 
 public slots:
 

@@ -36,7 +36,7 @@ QvkLog::QvkLog( Ui_formMainWindow *ui_mainwindow )
 
     QDateTime dateTime = QDateTime::currentDateTime();
     QString stringDateTime = dateTime.toString( "yyyy-MM-dd_hh:mm:ss" );
-    QString path = QStandardPaths::writableLocation( QStandardPaths::AppConfigLocation );
+    path = QStandardPaths::writableLocation( QStandardPaths::AppConfigLocation );
 
     QString logFolderName = path + "/" + "log";
     if( !QDir( logFolderName ).exists() )

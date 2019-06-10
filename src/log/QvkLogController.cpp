@@ -44,3 +44,9 @@ QvkLogController::QvkLogController( Ui_formMainWindow *ui_mainwindow )
 QvkLogController::~QvkLogController()
 {
 }
+
+
+QString QvkLogController::get_logPath()
+{
+    return vklog->path;
+}

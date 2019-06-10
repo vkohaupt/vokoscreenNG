@@ -36,6 +36,7 @@ public:
   QvkLog( Ui_formMainWindow *ui_mainwindow);
   virtual ~QvkLog();
   void outputMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg);
+  QString path;
 
 
 public slots:
