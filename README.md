@@ -46,7 +46,7 @@ The License-header find you here. https://github.com/vkohaupt/vokoscreenNG/blob/
   - Video: vp8
   - Audio: flac
 * gstreamer-plugins-bad
-  - Video: x265, av1, camera
+  - Video: camera
 * gstreamer-plugins-ugly
   - Video: x264
   - Audio: mp3lame
