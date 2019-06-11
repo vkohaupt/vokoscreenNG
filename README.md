@@ -42,7 +42,7 @@ The License-header find you here. https://github.com/vkohaupt/vokoscreenNG/blob/
 * gstreamer-plugins-bas
   - Audio: vorbis, opus
 * gstreamer-plugins-good
-  - Format: mkv, avi, webm, mp4
+  - Format: mkv, avi, webm, mp4, mov
   - Video: vp8
   - Audio: flac
 * gstreamer-plugins-bad
