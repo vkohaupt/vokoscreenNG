@@ -442,10 +442,6 @@
         <source>Copyright and license from pictures</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>player</name>
