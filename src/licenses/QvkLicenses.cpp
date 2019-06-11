@@ -38,9 +38,12 @@ QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::licen
     connect( ui_mainwindow->pushButtonLicense, SIGNAL( clicked( bool ) ), this, SLOT( show() ) );
 
     const QFont fixedFont = QFontDatabase::systemFont( QFontDatabase::FixedFont );
-    ui->textBrowser->setFont( fixedFont );
-    ui->textBrowser->setContextMenuPolicy( Qt::NoContextMenu );
 
+    ui->label_dummy_1->hide();
+    ui->label_dummy_2->hide();
+    ui->label_dummy_3->hide();
+    ui->label_dummy_4->hide();
+    int row = 0;
     QDirIterator dirIterator( ":/pictures/", QDir::Files, QDirIterator::Subdirectories );
     while ( dirIterator.hasNext() )
     {
@@ -50,35 +53,37 @@ QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::licen
             QSettings settings( dirIterator.filePath(), QSettings::IniFormat );
             settings.beginGroup( "license" );
 
-            ui->textBrowser->insertHtml( "<img src='" + QString(":/pictures/space.png") + "' width=10 height=50 align=left>" );
-            ui->textBrowser->insertHtml( "<img src='" + dirIterator.filePath().replace( "license", "png" ) + "' width=50 height=50 align=left>" );
-            ui->textBrowser->insertHtml( "<img src='" + QString(":/pictures/space.png") + "' width=30 height=50 align=left>" );
+            QPixmap pixmap( dirIterator.filePath().replace( "license", "png" ) );
+            pixmap = pixmap.scaled( 50, 50, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            QLabel *label = new QLabel;
+            label->setPixmap( pixmap );
+            ui->gridLayout->addWidget( label, row, 1 );
 
-            ui->textBrowser->insertHtml( "Author : (C) " + settings.value( "author" ).toString() + "<br>");
+            QPixmap pixmapSpace( ":/pictures/space.png" );
+            pixmapSpace = pixmapSpace.scaled( 10, 50, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            QLabel *labelSpace = new QLabel;
+            labelSpace->setPixmap( pixmapSpace );
+            ui->gridLayout->addWidget( labelSpace, row, 2 );
 
-            if ( settings.value( "license" ).toString() > "" )
-            {
-                ui->textBrowser->insertHtml( "License: " + settings.value( "license" ).toString() + "<br>" );
-            }
-            else
-            {
-                ui->textBrowser->insertHtml( "<br>" );
-            }
+            QLabel *labelAuthor = new QLabel;
+            labelAuthor->setText( "Author : (C) " + settings.value( "author" ).toString() +
+                                  "\n" +
+                                  "License: " + settings.value( "license" ).toString() +
+                                  "\n" +
+                                  "Source : " + settings.value( "url" ).toString() );
+            ui->gridLayout->addWidget( labelAuthor, row, 3 );
 
-            if ( settings.value( "url" ).toString().contains( "http" ) )
-            {
-                ui->textBrowser->insertHtml( "Source : <a href='" + settings.value( "url" ).toString() + "'>" + settings.value( "url" ).toString() + "</a>" + "<br>" );
-            }
-            else
-            {
-                ui->textBrowser->insertHtml( "Source : " + settings.value( "url" ).toString() + "<br>" );
-            }
+            QPixmap pixmap1( ":/pictures/space.png" );
+            pixmap1 = pixmap1.scaled( 50, 10, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            QLabel *label1 = new QLabel;
+            label1->setPixmap( pixmap1 );
+            row++;
+            ui->gridLayout->addWidget( label1, row, 1 );
+            row++;
 
-            ui->textBrowser->insertHtml( "<br><br><br>" );
             settings.endGroup();
         }
     }
-    ui->textBrowser->moveCursor( QTextCursor::Start );
 }
 
 
