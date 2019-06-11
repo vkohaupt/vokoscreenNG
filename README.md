@@ -12,6 +12,9 @@ Please translate only at Transifex, it is very easy.
 https://www.transifex.com/vkohaupt/vokoscreen/
 
 
+## Source code posts
+If you want write code, then can you do this. Your source code must be in separate files and published under the MIT-License.
+Every file must include the License-header. The License-header find you here.
 
 
 ## Windows 10
