@@ -1,8 +1,4 @@
 
-Log:
---Dateien auf 20 begrenzen.
-
-
 Windows:
 --GDI oder DX9, Farbraum.
 
