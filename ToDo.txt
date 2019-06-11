@@ -4,6 +4,10 @@ Lizenz von Bilder:
 --Bilder sind verpixelt. Komplett neuschreiben mit QLabel.
 
 
+Windows:
+--GDI oder DX9, Farbraum.
+
+
 Windows Scale:
 --nicht verfügbar siehe Log.
 
