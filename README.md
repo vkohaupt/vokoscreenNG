@@ -23,7 +23,7 @@ The License-header find you here. https://github.com/vkohaupt/vokoscreenNG/blob/
 * The vokoscreenNG Player need a codec pack.
 * I test with this codec pack
 * windows.10.codec.pack.v2.1.5.setup.exe
-* https://www.softpedia.com/dyn-postdownload.php/7c82c1583a3d5511eafca92c63b45aab/5ce92518/3ed5d/0/1
+* https://www.windows10codecpack.com/
 
 
 ### BuildRequires
