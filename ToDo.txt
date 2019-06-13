@@ -5,7 +5,7 @@ Windows:
 
 Windows:
 --Installer wird benötigt.
-
+  Inno Setup
 
 Windows Scale:
 --nicht verfügbar siehe Log.
