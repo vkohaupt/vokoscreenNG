@@ -3,6 +3,10 @@ Windows:
 --GDI oder DX9, Farbraum.
 
 
+Windows:
+--Installer wird benötigt.
+
+
 Windows Scale:
 --nicht verfügbar siehe Log.
 
