@@ -40,7 +40,6 @@
 #include <QDesktopServices>
 #include <QMimeDatabase>
 #include <QStringList>
-#include <QImageWriter>
 #include <QLibraryInfo>
 #include <QThread>
 #include <QMessageBox>
