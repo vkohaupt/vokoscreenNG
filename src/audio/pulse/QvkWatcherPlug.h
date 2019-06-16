@@ -35,13 +35,14 @@ class QvkWatcherPlug: public QObject
 public:
     QvkWatcherPlug();
     virtual ~QvkWatcherPlug();
+    GstDeviceMonitor *start_monitor();
 
     
 public slots:
-    GstDeviceMonitor *start_monitor();
 
 
 private:
+    static gboolean func( GstBus *bus, GstMessage *message, gpointer user_data );
 
 
 private slots:

@@ -119,7 +119,7 @@ static gchar *get_launch_line (GstDevice * device)
 }
 
 
-static gboolean func( GstBus *bus, GstMessage *message, gpointer user_data )
+gboolean QvkWatcherPlug::func( GstBus *bus, GstMessage *message, gpointer user_data )
 {
    Q_UNUSED(bus);
    Q_UNUSED(user_data);
@@ -182,7 +182,7 @@ GstDeviceMonitor *QvkWatcherPlug::start_monitor()
 
    gstDeviceMonitor = gst_device_monitor_new();
    gstBus = gst_device_monitor_get_bus( gstDeviceMonitor );
-   gst_bus_add_watch( gstBus, func, nullptr );
+   gst_bus_add_watch( gstBus, QvkWatcherPlug::func, nullptr );
    gst_object_unref( gstBus );
 
    gstCaps = gst_caps_new_empty_simple( "audio/x-raw" );
