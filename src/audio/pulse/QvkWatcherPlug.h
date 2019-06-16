@@ -51,7 +51,7 @@ protected:
   
   
 signals:
-    
+
 };
 
 #endif

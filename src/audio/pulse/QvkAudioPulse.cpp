@@ -25,12 +25,10 @@
 #include "global.h"
 
 #include <QDebug>
-#include <QAudioDeviceInfo>
 #include <QFile>
 #include <QMessageBox>
 #include <QStandardPaths>
 #include <QTemporaryFile>
-#include <QDir>
 
 QvkAudioPulse::QvkAudioPulse( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow )
 {
