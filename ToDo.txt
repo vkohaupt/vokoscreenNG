@@ -1,6 +1,11 @@
 
 
 Windows:
+--SettingsPath: \HKEY_CURRENT_USER\Software\vokoscreenNG\vokoscreenNG
+  Hinweis: Ein vokoscreenNG zuviel
+
+
+Windows:
 --GDI oder DX9, Farbraum.
 
 
