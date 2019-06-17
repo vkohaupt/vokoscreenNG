@@ -38,8 +38,8 @@ QvkPulseGstr::~QvkPulseGstr()
 
 QString QvkPulseGstr::get_AudioDeviceString( GstDevice *device )
 {
-  static const char *const ignored_propnames[] = { "name", "parent", "direction", "template", "caps", NULL };
-  GString *launch_line = NULL;
+  static const char *const ignored_propnames[] = { "name", "parent", "direction", "template", "caps", Q_NULLPTR };
+  GString *launch_line = Q_NULLPTR;
   GstElement *element;
   GstElement *pureelement;
   GParamSpec **properties, *property;
@@ -48,25 +48,25 @@ QString QvkPulseGstr::get_AudioDeviceString( GstDevice *device )
   guint i, number_of_properties;
   GstElementFactory *factory;
 
-  element = gst_device_create_element( device, NULL );
+  element = gst_device_create_element( device, Q_NULLPTR );
 
   if ( !element )
-    return NULL;
+    return Q_NULLPTR;
 
   factory = gst_element_get_factory( element );
   if ( !factory )
   {
     gst_object_unref( element );
-    return NULL;
+    return Q_NULLPTR;
   }
 
   if ( !gst_plugin_feature_get_name( factory ) )
   {
     gst_object_unref( element );
-    return NULL;
+    return Q_NULLPTR;
   }
 
-  pureelement = gst_element_factory_create( factory, NULL );
+  pureelement = gst_element_factory_create( factory, Q_NULLPTR );
 
   properties = g_object_class_list_properties( G_OBJECT_GET_CLASS( element ), &number_of_properties );
   if ( properties )
@@ -127,8 +127,8 @@ QStringList QvkPulseGstr::get_all_Audio_devices()
     GstCaps *caps;
     GstDevice *device;
     gchar *name;
-    GList *iterator = NULL;
-    GList *list = NULL;
+    GList *iterator = Q_NULLPTR;
+    GList *list = Q_NULLPTR;
     QString stringDevice;
     QStringList stringList;
 

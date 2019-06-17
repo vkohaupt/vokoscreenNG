@@ -22,6 +22,7 @@
 
 #include "global.h"
 #include <QString>
+#include <QLineEdit>
 
 namespace global
 {
@@ -29,6 +30,5 @@ namespace global
     QString nameOutput = "[" + name + "]";
     QString version = "2.9.8 Beta";
     bool VK_showOnlyFallbackIcons = false;
-
-    QString plugFileAudio = "";
+    QLineEdit *lineEdit;;
 }

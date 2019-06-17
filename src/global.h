@@ -21,6 +21,7 @@
  */
 
 #include <QString>
+#include <QLineEdit>
 
 namespace global
 {
@@ -30,4 +31,7 @@ namespace global
     extern bool VK_showOnlyFallbackIcons;
 
     extern QString plugFileAudio;
+
+    extern QLineEdit *lineEdit;
+
 }

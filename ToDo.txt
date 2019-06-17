@@ -1,4 +1,5 @@
 
+
 Windows:
 --GDI oder DX9, Farbraum.
 
@@ -8,6 +9,7 @@ Windows:
   https://doc.qt.io/qtinstallerframework/ifw-tutorial.html
   Inno Setup
 
+  
 Windows Scale:
 --nicht verfügbar siehe Log.
 

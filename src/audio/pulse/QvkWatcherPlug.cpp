@@ -23,8 +23,8 @@
 #include "QvkWatcherPlug.h"
 #include "global.h"
 
-#include <QFile>
-#include <QStandardPaths>
+//#include <QFile>
+//#include <QStandardPaths>
 #include <QDebug>
 
 /*
@@ -32,13 +32,18 @@
  * QvkWatcherPlug does not return any devices, if the PulseAudio server start or stop.
  */
 
-QvkWatcherPlug::QvkWatcherPlug(){}
-QvkWatcherPlug::~QvkWatcherPlug(){}
+QvkWatcherPlug::QvkWatcherPlug()
+{
+    global::lineEdit = new QLineEdit;
+}
+
+QvkWatcherPlug::~QvkWatcherPlug()
+{}
 
 static gchar *get_launch_line (GstDevice * device)
 {
-  static const char *const ignored_propnames[] = { "name", "parent", "direction", "template", "caps", NULL };
-  GString *launch_line = NULL;
+  static const char *const ignored_propnames[] = { "name", "parent", "direction", "template", "caps", Q_NULLPTR };
+  GString *launch_line = Q_NULLPTR;
   GstElement *element;
   GstElement *pureelement;
   GParamSpec **properties, *property;
@@ -47,25 +52,25 @@ static gchar *get_launch_line (GstDevice * device)
   guint i, number_of_properties;
   GstElementFactory *factory;
 
-  element = gst_device_create_element( device, NULL );
+  element = gst_device_create_element( device, Q_NULLPTR );
 
   if ( !element )
-    return NULL;
+    return Q_NULLPTR;
 
   factory = gst_element_get_factory( element );
   if ( !factory )
   {
     gst_object_unref( element );
-    return NULL;
+    return Q_NULLPTR;
   }
 
   if ( !gst_plugin_feature_get_name( factory ) )
   {
     gst_object_unref( element );
-    return NULL;
+    return Q_NULLPTR;
   }
 
-  pureelement = gst_element_factory_create( factory, NULL );
+  pureelement = gst_element_factory_create( factory, Q_NULLPTR );
 
   properties = g_object_class_list_properties( G_OBJECT_GET_CLASS( element ), &number_of_properties );
   if ( properties )
@@ -124,13 +129,15 @@ gboolean QvkWatcherPlug::func( GstBus *bus, GstMessage *message, gpointer user_d
    Q_UNUSED(bus);
    Q_UNUSED(user_data);
 
-   QFile file;
-   file.setFileName( global::plugFileAudio );
-   file.open( QIODevice::WriteOnly | QIODevice::Text );
+//   QFile file;
+//   file.setFileName( global::plugFileAudio );
+//   file.open( QIODevice::WriteOnly | QIODevice::Text );
 
    GstDevice *gstDevice;
    gchar *name;
    gchar *device;
+
+   QString audioDevicePlug = "";
 
    switch ( GST_MESSAGE_TYPE( message ) )
    {
@@ -140,12 +147,17 @@ gboolean QvkWatcherPlug::func( GstBus *bus, GstMessage *message, gpointer user_d
        qDebug().noquote() << global::nameOutput << "[Audio] device added:" << name;
        device = get_launch_line( gstDevice );
        qDebug().noquote() << global::nameOutput << "[Audio] device added:" << device;
-       file.write( "[Audio-device-added]\n" );
-       file.write( name );
-       file.write( "\n" );
-       file.write( device );
-       file.flush();
-       file.close();
+//       file.write( "[Audio-device-added]\n" );
+//       file.write( name );
+//       file.write( "\n" );
+//       file.write( device );
+//       file.flush();
+//       file.close();
+       audioDevicePlug.append( "[Audio-device-added]" );
+       audioDevicePlug.append( ":");
+       audioDevicePlug.append( name );
+       audioDevicePlug.append( ":");
+       audioDevicePlug.append( device );
        g_free( name );
        g_free( device );
        gst_object_unref( gstDevice );
@@ -156,12 +168,17 @@ gboolean QvkWatcherPlug::func( GstBus *bus, GstMessage *message, gpointer user_d
        qDebug().noquote() << global::nameOutput << "[Audio] device removed:" << name;
        device = get_launch_line( gstDevice );
        qDebug().noquote() << global::nameOutput << "[Audio] device removed:" << device;
-       file.write( "[Audio-device-removed]\n" );
-       file.write( name );
-       file.write( "\n" );
-       file.write( device );
-       file.flush();
-       file.close();
+//       file.write( "[Audio-device-removed]\n" );
+//       file.write( name );
+//       file.write( "\n" );
+//       file.write( device );
+//       file.flush();
+//       file.close();
+       audioDevicePlug.append( "[Audio-device-removed]" );
+       audioDevicePlug.append( ":");
+       audioDevicePlug.append( name );
+       audioDevicePlug.append( ":");
+       audioDevicePlug.append( device );
        g_free( name );
        g_free( device );
        gst_object_unref( gstDevice );
@@ -169,7 +186,7 @@ gboolean QvkWatcherPlug::func( GstBus *bus, GstMessage *message, gpointer user_d
      default:
        break;
    }
-
+   global::lineEdit->setText( audioDevicePlug );
    return G_SOURCE_CONTINUE;
 }
 
@@ -182,7 +199,7 @@ GstDeviceMonitor *QvkWatcherPlug::start_monitor()
 
    gstDeviceMonitor = gst_device_monitor_new();
    gstBus = gst_device_monitor_get_bus( gstDeviceMonitor );
-   gst_bus_add_watch( gstBus, QvkWatcherPlug::func, nullptr );
+   gst_bus_add_watch( gstBus, QvkWatcherPlug::func, Q_NULLPTR );
    gst_object_unref( gstBus );
 
    gstCaps = gst_caps_new_empty_simple( "audio/x-raw" );

@@ -27,7 +27,7 @@
 #include "QvkPulseGstr.h"
 
 #include <QObject>
-#include <QFileSystemWatcher>
+//#include <QFileSystemWatcher>
 
 class QvkAudioPulse: public QObject
 {
@@ -46,11 +46,12 @@ private:
     Ui_formMainWindow *ui;
     void clearVerticalLayoutAudioDevices();
     void getPulseDevices();
-    QFileSystemWatcher *fileSystemWatcher;
+//    QFileSystemWatcher *fileSystemWatcher;
 
 private slots:
-    void slot_myfileSystemWatcher( QString string );
-    void slot_deletePlugFile();
+    //void slot_myfileSystemWatcher( QString string );
+    //void slot_deletePlugFile();
+    void slot_setDevice( QString string );
 
 
 protected:

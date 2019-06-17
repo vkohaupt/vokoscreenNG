@@ -218,7 +218,7 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
         }
         else
         {
-            settings.setValue( listCheckBox.at(i)->objectName(), listCheckBox.at(i)->isChecked() );
+            settings.setValue( listCheckBox.at(i)->objectName(), listCheckBox.at(i)->isChecked() ); // Hier liegt der Fehler
         }
     }
 

@@ -25,6 +25,8 @@
 
 #include <gst/gst.h>
 
+#include "ui_formMainWindow.h"
+
 #include <QObject>
 
 class QvkWatcherPlug: public QObject
@@ -36,14 +38,14 @@ public:
     QvkWatcherPlug();
     virtual ~QvkWatcherPlug();
     GstDeviceMonitor *start_monitor();
+    static gboolean func( GstBus *bus, GstMessage *message, gpointer user_data );
 
     
 public slots:
 
 
 private:
-    static gboolean func( GstBus *bus, GstMessage *message, gpointer user_data );
-
+    Ui_formMainWindow *ui;
 
 private slots:
 
@@ -52,6 +54,7 @@ protected:
   
   
 signals:
+//    void signal_devicePluged( bool );
 
 };
 

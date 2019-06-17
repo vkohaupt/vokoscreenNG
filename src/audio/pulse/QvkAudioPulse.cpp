@@ -25,28 +25,29 @@
 #include "global.h"
 
 #include <QDebug>
-#include <QFile>
-#include <QMessageBox>
-#include <QStandardPaths>
-#include <QTemporaryFile>
+//#include <QFile>
+//#include <QMessageBox>
+//#include <QStandardPaths>
+//#include <QTemporaryFile>
 
 QvkAudioPulse::QvkAudioPulse( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow )
 {
     Q_UNUSED(mainWindow);
     ui = ui_mainwindow;
-    connect( mainWindow, SIGNAL( destroyed( QObject* ) ), this, SLOT( slot_deletePlugFile() ) );
+//    connect( mainWindow, SIGNAL( destroyed( QObject* ) ), this, SLOT( slot_deletePlugFile() ) );
 }
 
-
+/*
 void QvkAudioPulse::slot_deletePlugFile()
 {
     QFile file( global::plugFileAudio );
     file.remove();
 }
+*/
 
 void QvkAudioPulse::init()
 {
-    QTemporaryFile audioTempFile( QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + "/" + global::name + "AudioPlugXXXXXX" );
+/*    QTemporaryFile audioTempFile( QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + "/" + global::name + "AudioPlugXXXXXX" );
     audioTempFile.setAutoRemove( false );
     if ( audioTempFile.open() )
     {
@@ -54,17 +55,19 @@ void QvkAudioPulse::init()
         qDebug().noquote() << global::nameOutput << "AudioPlugInOutFile:" << global::plugFileAudio;
     }
     audioTempFile.close();
-
+*/
     getPulseDevices();
 
     // QvkWatcherPlug monitoring only new or removed Audiodevices from the PulseAudio server.
     // QvkWatcherPlug does not return any devices, if the PulseAudio server start or stop.
     QvkWatcherPlug *vkWatcherPlug = new QvkWatcherPlug();
     vkWatcherPlug->start_monitor();
-
+/*
     fileSystemWatcher = new QFileSystemWatcher();
     fileSystemWatcher->addPath( global::plugFileAudio );
     connect( fileSystemWatcher, SIGNAL( fileChanged( QString ) ), this, SLOT( slot_myfileSystemWatcher( QString ) ) );
+*/
+    connect( global::lineEdit, SIGNAL( textChanged( QString ) ), this, SLOT( slot_setDevice( QString ) ) );
 }
 
 
@@ -72,7 +75,36 @@ QvkAudioPulse::~QvkAudioPulse()
 {
 }
 
+void QvkAudioPulse::slot_setDevice( QString string )
+{
+    QString header = string.section( ":", 0, 0 );
+    QString name   = string.section( ":", 1, 1 );
+    QString device = string.section( ":", 2, 2 );
 
+    if ( header == "[Audio-device-added]" )
+    {
+        QCheckBox *checkboxAudioDevice = new QCheckBox();
+        checkboxAudioDevice->setText( name );
+        checkboxAudioDevice->setAccessibleName( device );
+        ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
+        checkboxAudioDevice->setAutoExclusive( true );
+    }
+
+    if ( header == "[Audio-device-removed]" )
+    {
+        QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
+        for ( int i = 0; i < listAudioDevices.count(); i++ )
+        {
+            if ( listAudioDevices.at(i)->accessibleName() == device )
+            {
+                delete listAudioDevices.at(i);
+            }
+        }
+    }
+}
+
+
+/*
 void QvkAudioPulse::slot_myfileSystemWatcher( QString string )
 {
     QFile file( string );
@@ -115,7 +147,7 @@ void QvkAudioPulse::slot_myfileSystemWatcher( QString string )
 
     file.close();
 }
-
+*/
 
 void QvkAudioPulse::getPulseDevices()
 {
