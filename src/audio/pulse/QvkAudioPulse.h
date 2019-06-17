@@ -27,7 +27,6 @@
 #include "QvkPulseGstr.h"
 
 #include <QObject>
-//#include <QFileSystemWatcher>
 
 class QvkAudioPulse: public QObject
 {
