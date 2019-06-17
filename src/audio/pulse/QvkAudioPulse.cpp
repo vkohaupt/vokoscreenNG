@@ -25,48 +25,23 @@
 #include "global.h"
 
 #include <QDebug>
-//#include <QFile>
-//#include <QMessageBox>
-//#include <QStandardPaths>
-//#include <QTemporaryFile>
 
 QvkAudioPulse::QvkAudioPulse( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow )
 {
     Q_UNUSED(mainWindow);
     ui = ui_mainwindow;
-//    connect( mainWindow, SIGNAL( destroyed( QObject* ) ), this, SLOT( slot_deletePlugFile() ) );
 }
 
-/*
-void QvkAudioPulse::slot_deletePlugFile()
-{
-    QFile file( global::plugFileAudio );
-    file.remove();
-}
-*/
 
 void QvkAudioPulse::init()
 {
-/*    QTemporaryFile audioTempFile( QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + "/" + global::name + "AudioPlugXXXXXX" );
-    audioTempFile.setAutoRemove( false );
-    if ( audioTempFile.open() )
-    {
-        global::plugFileAudio = audioTempFile.fileName();
-        qDebug().noquote() << global::nameOutput << "AudioPlugInOutFile:" << global::plugFileAudio;
-    }
-    audioTempFile.close();
-*/
     getPulseDevices();
 
     // QvkWatcherPlug monitoring only new or removed Audiodevices from the PulseAudio server.
     // QvkWatcherPlug does not return any devices, if the PulseAudio server start or stop.
     QvkWatcherPlug *vkWatcherPlug = new QvkWatcherPlug();
     vkWatcherPlug->start_monitor();
-/*
-    fileSystemWatcher = new QFileSystemWatcher();
-    fileSystemWatcher->addPath( global::plugFileAudio );
-    connect( fileSystemWatcher, SIGNAL( fileChanged( QString ) ), this, SLOT( slot_myfileSystemWatcher( QString ) ) );
-*/
+
     connect( global::lineEdit, SIGNAL( textChanged( QString ) ), this, SLOT( slot_setDevice( QString ) ) );
 }
 
@@ -103,51 +78,6 @@ void QvkAudioPulse::slot_setDevice( QString string )
     }
 }
 
-
-/*
-void QvkAudioPulse::slot_myfileSystemWatcher( QString string )
-{
-    QFile file( string );
-    if( !file.open( QIODevice::ReadOnly ) )
-    {
-        QString message = tr( "File can not be opened" );
-        QMessageBox::information( nullptr, global::name + " error ", message + ": " + string );
-        qDebug().noquote() << global::nameOutput << "File can not be opened:" << string;
-    }
-
-    QTextStream in( &file );
-
-    while( !in.atEnd() )
-    {
-        QString header = in.readLine();
-        QString name = in.readLine();
-        QString device = in.readLine();
-
-        if ( header == "[Audio-device-added]" )
-        {
-            QCheckBox *checkboxAudioDevice = new QCheckBox();
-            checkboxAudioDevice->setText( name );
-            checkboxAudioDevice->setAccessibleName( device );
-            ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
-            checkboxAudioDevice->setAutoExclusive( true );
-        }
-
-        if ( header == "[Audio-device-removed]" )
-        {
-            QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-            for ( int i = 0; i < listAudioDevices.count(); i++ )
-            {
-                if ( listAudioDevices.at(i)->accessibleName() == device )
-                {
-                    delete listAudioDevices.at(i);
-                }
-            }
-        }
-    }
-
-    file.close();
-}
-*/
 
 void QvkAudioPulse::getPulseDevices()
 {
@@ -200,4 +130,3 @@ void QvkAudioPulse::clearVerticalLayoutAudioDevices()
         }
     }
 }
-

@@ -23,7 +23,6 @@
 #include "QvkPulseGstr.h"
 
 #include <QDebug>
-#include <QFile>
 
 QvkPulseGstr::QvkPulseGstr()
 {

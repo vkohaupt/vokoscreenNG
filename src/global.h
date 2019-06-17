@@ -29,9 +29,5 @@ namespace global
     extern QString nameOutput;
     extern QString version;
     extern bool VK_showOnlyFallbackIcons;
-
-    extern QString plugFileAudio;
-
     extern QLineEdit *lineEdit;
-
 }

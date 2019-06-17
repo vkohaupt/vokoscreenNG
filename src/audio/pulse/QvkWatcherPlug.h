@@ -54,7 +54,7 @@ protected:
   
   
 signals:
-//    void signal_devicePluged( bool );
+
 
 };
 

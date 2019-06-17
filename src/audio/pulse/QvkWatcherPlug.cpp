@@ -23,8 +23,6 @@
 #include "QvkWatcherPlug.h"
 #include "global.h"
 
-//#include <QFile>
-//#include <QStandardPaths>
 #include <QDebug>
 
 /*
@@ -129,10 +127,6 @@ gboolean QvkWatcherPlug::func( GstBus *bus, GstMessage *message, gpointer user_d
    Q_UNUSED(bus);
    Q_UNUSED(user_data);
 
-//   QFile file;
-//   file.setFileName( global::plugFileAudio );
-//   file.open( QIODevice::WriteOnly | QIODevice::Text );
-
    GstDevice *gstDevice;
    gchar *name;
    gchar *device;
@@ -147,17 +141,12 @@ gboolean QvkWatcherPlug::func( GstBus *bus, GstMessage *message, gpointer user_d
        qDebug().noquote() << global::nameOutput << "[Audio] device added:" << name;
        device = get_launch_line( gstDevice );
        qDebug().noquote() << global::nameOutput << "[Audio] device added:" << device;
-//       file.write( "[Audio-device-added]\n" );
-//       file.write( name );
-//       file.write( "\n" );
-//       file.write( device );
-//       file.flush();
-//       file.close();
        audioDevicePlug.append( "[Audio-device-added]" );
        audioDevicePlug.append( ":");
        audioDevicePlug.append( name );
        audioDevicePlug.append( ":");
        audioDevicePlug.append( device );
+       global::lineEdit->setText( audioDevicePlug );
        g_free( name );
        g_free( device );
        gst_object_unref( gstDevice );
@@ -168,17 +157,12 @@ gboolean QvkWatcherPlug::func( GstBus *bus, GstMessage *message, gpointer user_d
        qDebug().noquote() << global::nameOutput << "[Audio] device removed:" << name;
        device = get_launch_line( gstDevice );
        qDebug().noquote() << global::nameOutput << "[Audio] device removed:" << device;
-//       file.write( "[Audio-device-removed]\n" );
-//       file.write( name );
-//       file.write( "\n" );
-//       file.write( device );
-//       file.flush();
-//       file.close();
        audioDevicePlug.append( "[Audio-device-removed]" );
        audioDevicePlug.append( ":");
        audioDevicePlug.append( name );
        audioDevicePlug.append( ":");
        audioDevicePlug.append( device );
+       global::lineEdit->setText( audioDevicePlug );
        g_free( name );
        g_free( device );
        gst_object_unref( gstDevice );
@@ -186,7 +170,7 @@ gboolean QvkWatcherPlug::func( GstBus *bus, GstMessage *message, gpointer user_d
      default:
        break;
    }
-   global::lineEdit->setText( audioDevicePlug );
+
    return G_SOURCE_CONTINUE;
 }
 

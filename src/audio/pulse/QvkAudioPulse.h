@@ -46,11 +46,9 @@ private:
     Ui_formMainWindow *ui;
     void clearVerticalLayoutAudioDevices();
     void getPulseDevices();
-//    QFileSystemWatcher *fileSystemWatcher;
+
 
 private slots:
-    //void slot_myfileSystemWatcher( QString string );
-    //void slot_deletePlugFile();
     void slot_setDevice( QString string );
 
 
