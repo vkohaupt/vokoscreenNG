@@ -27,5 +27,10 @@ Windows Codec:
 --libgstvaapi nicht verfügbar.
 
 
+Bugs aber nicht wirklich relevant:
+==================================
+Windows:
+--Letzte Aufnahme kann nicht gelöscht werden solange vokoscreenNG nicht geschloßen wurde.
+
 Linux Area:
 --Monitor skalieren 1.3 Buttons haben transparente Linien.
