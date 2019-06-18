@@ -52,8 +52,8 @@ void QvkAudioWindows::slot_getWindowsDevices()
         ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
         checkboxAudioDevice->setAutoExclusive( true );
         qDebug().noquote() << global::nameOutput << "Audio device:" << deviceInfo.deviceName();
-
     }
+    qDebug();
 
     // The first audiodevice is the standard audiodevice. Tested under Windows 10
     QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();

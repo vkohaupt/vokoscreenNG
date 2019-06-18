@@ -113,9 +113,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vkLimitDiskFreeSpace = new QvkLimitDiskFreeSpace( this, ui );
 
-//    QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
-//    setWindowIcon( icon );
-
     qDebug().noquote() << global::nameOutput << "Version:" << global::version;
     qDebug().noquote() << global::nameOutput << "Locale: " << QLocale::system().name();
     QLocale locale;
