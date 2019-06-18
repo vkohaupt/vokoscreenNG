@@ -43,7 +43,7 @@ QvkAudioWindows::~QvkAudioWindows()
 
 void QvkAudioWindows::slot_getWindowsDevices()
 {
-    foreach (const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
+    foreach ( const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
     {
         QCheckBox *checkboxAudioDevice = new QCheckBox();
         checkboxAudioDevice->setText( deviceInfo.deviceName() );
@@ -90,8 +90,7 @@ void QvkAudioWindows::slot_start( bool value )
     if ( value == true )
     {
         counter = 0;
-        slot_clearVerticalLayoutAudioDevices();
-        slot_getWindowsDevices();
+        slot_update();
         timer->start();
     }
     else
