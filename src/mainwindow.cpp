@@ -122,6 +122,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << "Qt: " << qVersion();
     qDebug().noquote() << global::nameOutput << gst_version_string();
     qDebug().noquote() << global::nameOutput << "Operating system:" << QSysInfo::prettyProductName();
+    qDebug().noquote() << global::nameOutput << "CPU Architecture:" << QSysInfo::currentCpuArchitecture();
     qDebug().noquote() << global::nameOutput << global::name << "running as:" << QGuiApplication::platformName() << "client";
 
 #ifdef Q_OS_LINUX
