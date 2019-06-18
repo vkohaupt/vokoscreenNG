@@ -115,6 +115,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     qDebug().noquote() << global::nameOutput << "Version:" << global::version;
     qDebug().noquote() << global::nameOutput << "Locale: " << QLocale::system().name();
+    QDateTime dateTime = QDateTime::currentDateTime();
+    qDebug().noquote() << global::nameOutput << "Log from:" << dateTime.toString( "yyyy-MM-dd hh:mm:ss" );
     QLocale locale;
     qDebug().noquote() << global::nameOutput << "Country:" << QLocale::countryToString( locale.country() );
     qDebug().noquote() << global::nameOutput << "Qt: " << qVersion();
