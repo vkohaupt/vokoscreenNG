@@ -21,11 +21,12 @@
  */
 
 #include "QvkAudioWindows.h"
+#include "global.h"
 
 #include <QAudioDeviceInfo>
 #include <QDebug>
 
-QvkAudioWindows::QvkAudioWindows(Ui_formMainWindow *ui_mainwindow )
+QvkAudioWindows::QvkAudioWindows( Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
     timer = new QTimer( this );
@@ -50,6 +51,8 @@ void QvkAudioWindows::slot_getWindowsDevices()
         checkboxAudioDevice->setObjectName( "checkboxAudioDevice" + deviceInfo.deviceName() );
         ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
         checkboxAudioDevice->setAutoExclusive( true );
+        qDebug().noquote() << global::nameOutput << "Audio device:" << deviceInfo.deviceName();
+
     }
 
     // The first audiodevice is the standard audiodevice. Tested under Windows 10

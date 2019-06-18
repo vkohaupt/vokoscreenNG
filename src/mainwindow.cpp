@@ -78,6 +78,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkRegionChoise->setFrameColor( Qt::darkGreen );
 
     setWindowTitle( global::name + " " + global::version );
+    QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
+    setWindowIcon( icon );
 
     QvkMagnifierController *vkMagnifierController = new QvkMagnifierController(ui);
     Q_UNUSED(vkMagnifierController);
@@ -111,8 +113,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vkLimitDiskFreeSpace = new QvkLimitDiskFreeSpace( this, ui );
 
-    QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
-    setWindowIcon( icon );
+//    QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
+//    setWindowIcon( icon );
 
     qDebug().noquote() << global::nameOutput << "Version:" << global::version;
     qDebug().noquote() << global::nameOutput << "Locale: " << QLocale::system().name();
