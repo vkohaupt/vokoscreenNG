@@ -30,5 +30,5 @@ namespace global
     QString nameOutput = "[" + name + "]";
     QString version = "2.9.8 Beta";
     bool VK_showOnlyFallbackIcons = false;
-    QLineEdit *lineEdit;;
+    QLineEdit *lineEditAudioPlug;
 }

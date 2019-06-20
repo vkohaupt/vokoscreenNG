@@ -32,7 +32,7 @@
 
 QvkWatcherPlug::QvkWatcherPlug()
 {
-    global::lineEdit = new QLineEdit;
+    global::lineEditAudioPlug = new QLineEdit;
 }
 
 QvkWatcherPlug::~QvkWatcherPlug()
@@ -146,7 +146,7 @@ gboolean QvkWatcherPlug::func( GstBus *bus, GstMessage *message, gpointer user_d
        audioDevicePlug.append( name );
        audioDevicePlug.append( ":");
        audioDevicePlug.append( device );
-       global::lineEdit->setText( audioDevicePlug );
+       global::lineEditAudioPlug->setText( audioDevicePlug );
        g_free( name );
        g_free( device );
        gst_object_unref( gstDevice );
@@ -162,7 +162,7 @@ gboolean QvkWatcherPlug::func( GstBus *bus, GstMessage *message, gpointer user_d
        audioDevicePlug.append( name );
        audioDevicePlug.append( ":");
        audioDevicePlug.append( device );
-       global::lineEdit->setText( audioDevicePlug );
+       global::lineEditAudioPlug->setText( audioDevicePlug );
        g_free( name );
        g_free( device );
        gst_object_unref( gstDevice );

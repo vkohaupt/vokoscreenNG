@@ -42,7 +42,7 @@ void QvkAudioPulse::init()
     QvkWatcherPlug *vkWatcherPlug = new QvkWatcherPlug();
     vkWatcherPlug->start_monitor();
 
-    connect( global::lineEdit, SIGNAL( textChanged( QString ) ), this, SLOT( slot_setDevice( QString ) ) );
+    connect( global::lineEditAudioPlug, SIGNAL( textChanged( QString ) ), this, SLOT( slot_setDevice( QString ) ) );
 }
 
 
