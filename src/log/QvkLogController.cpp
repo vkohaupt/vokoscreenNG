@@ -48,5 +48,5 @@ QvkLogController::~QvkLogController()
 
 QString QvkLogController::get_logPath()
 {
-    return vklog->path;
+    return vklog->logFile.fileName();
 }

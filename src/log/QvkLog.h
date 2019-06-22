@@ -37,6 +37,7 @@ public:
   virtual ~QvkLog();
   void outputMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg);
   QString path;
+  QFile logFile;
 
 
 public slots:
@@ -51,7 +52,6 @@ private slots:
 
   
 private:
-    QFile logFile;
     void writeToLog( QString string );
     Ui_formMainWindow *ui;
 

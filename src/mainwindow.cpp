@@ -134,8 +134,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << "Qt-PluginsPath:     " << QLibraryInfo::location( QLibraryInfo::PluginsPath );
     qDebug().noquote() << global::nameOutput << "Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
     qDebug().noquote() << global::nameOutput << "Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
-    qDebug().noquote() << global::nameOutput << "SettingsPath:" << vkSettings.getFileName();
-    qDebug().noquote() << global::nameOutput << "LogPath:" << vklogController->get_logPath();
+    qDebug().noquote() << global::nameOutput << "Settings:" << vkSettings.getFileName();
+    qDebug().noquote() << global::nameOutput << "Log:" << vklogController->get_logPath();
 #ifdef Q_OS_LINUX
     qDebug().noquote() << global::nameOutput << "CompositingManager running:" << QX11Info::isCompositingManagerRunning();
 #endif
