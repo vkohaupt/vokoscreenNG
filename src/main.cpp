@@ -24,10 +24,24 @@
 #include <QTranslator>
 #include <QLibraryInfo>
 
+#include <QDir>
+#include <QtGlobal>
+
 #include <gst/gst.h>
 
 int main(int argc, char *argv[])
 {
+/*    QByteArray env = qgetenv( "LD_LIBRARY_PATH" );
+    qDebug() << "env:" << env;
+    QString libraryInfo = QLibraryInfo::location( QLibraryInfo::LibrariesPath );
+    qDebug() << "libraryInfo:" << libraryInfo;
+
+    QByteArray appDir = QDir::currentPath().toLatin1();
+    bool a = qputenv( "LD_LIBRARY_PATH", appDir + "/lib" + ":" + libraryInfo.toLatin1() );
+
+    QByteArray env = qgetenv( "LD_LIBRARY_PATH" );
+    qDebug() << env;
+*/
     QApplication app(argc, argv);
 
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);

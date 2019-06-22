@@ -26,7 +26,7 @@
 
 QvkSettings::QvkSettings()
 {
-    QSettings settings( global::name, global::name);
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
 
     // Dient nur zum anlegen des Profils damit das log erstellt werden kann
     settings.beginGroup( global::name );
@@ -38,7 +38,8 @@ QvkSettings::~QvkSettings(){}
 
 void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent )
 {
-    QSettings settings( global::name, global::name );
+//    QSettings settings( global::name, global::name );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
 
     // Clear all settings if checkBoxResetAtNextStart is set
     QList<QCheckBox *> listCheckBoxReset = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
@@ -195,7 +196,8 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
 void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent)
 {
     Q_UNUSED(parent);
-    QSettings settings( global::name, global::name );
+//    QSettings settings( global::name, global::name );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.clear();
 
     settings.beginGroup( global::name );
@@ -252,14 +254,16 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
 
 QString QvkSettings::getFileName()
 {
-    QSettings settings( global::name, global::name );
+//    QSettings settings( global::name, global::name );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     return settings.fileName();
 }
 
 
 void QvkSettings::saveAreaScreencast( qreal x, qreal y, qreal width, qreal height  )
 {
-    QSettings settings( global::name, global::name );
+//    QSettings settings( global::name, global::name );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.beginGroup( "AreaScreencast" );
       settings.setValue( "X", QVariant(x).toInt() );
       settings.setValue( "Y", QVariant(y).toInt() );
@@ -270,7 +274,8 @@ void QvkSettings::saveAreaScreencast( qreal x, qreal y, qreal width, qreal heigh
 
 void QvkSettings::readAreaScreencast( QvkRegionChoise *vkRegionChoise )
 {
-    QSettings settings( global::name, global::name );
+//    QSettings settings( global::name, global::name );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.beginGroup( "AreaScreencast" );
       vkRegionChoise->setX( settings.value( "X", 200 ).toInt() );
       vkRegionChoise->setY( settings.value( "Y", 200 ).toInt() );
@@ -281,7 +286,8 @@ void QvkSettings::readAreaScreencast( QvkRegionChoise *vkRegionChoise )
 
 void QvkSettings::saveCamera( int x, int y )
 {
-    QSettings settings( global::name, global::name );
+//    QSettings settings( global::name, global::name );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.beginGroup( "Camera" );
     settings.setValue( "X", x );
     settings.setValue( "Y", y );
@@ -290,7 +296,8 @@ void QvkSettings::saveCamera( int x, int y )
 
 void QvkSettings::readCamera( QvkCameraController *vkCameraController )
 {
-    QSettings settings( global::name, global::name );
+//    QSettings settings( global::name, global::name );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.beginGroup( "Camera" );
       vkCameraController->cameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
     settings.endGroup();
