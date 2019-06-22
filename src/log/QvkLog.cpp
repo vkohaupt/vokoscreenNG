@@ -85,15 +85,17 @@ void QvkLog::writeToLog( QString string )
 }
 
 
-void QvkLog::outputMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg)
+void QvkLog::outputMessage( QtMsgType type, const QMessageLogContext &context, const QString &msg )
 {
+    QByteArray time = QDateTime::currentDateTime().toString( "hh:mm:ss" ).toLocal8Bit();
+
     QString txt;
     QByteArray localMsg = msg.toLocal8Bit();
     switch (type) {
     case QtDebugMsg:
-        fprintf( stderr, "%s\n", localMsg.constData() );
+        fprintf( stderr, "%s %s\n", time.constData(), localMsg.constData() );
         //fprintf( stderr, "Debug: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function );
-        txt += localMsg.constData();
+        txt += time + " " + localMsg.constData();
         break;
     case QtInfoMsg:
         fprintf( stderr, "Info: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function );
