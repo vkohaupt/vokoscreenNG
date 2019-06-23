@@ -52,3 +52,4 @@ copy C:\gstreamer\1.0\x86\lib\gstreamer-1.0\libgstisomp4.dll
 copy C:\gstreamer\1.0\x86\lib\gstreamer-1.0\libgstflac.dll
 copy C:\gstreamer\1.0\x86\bin\libFLAC-8.dll
 copy C:\gstreamer\1.0\x86\bin\libgstrtp-1.0-0.dll
+copy C:\gstreamer\1.0\x86\lib\gstreamer-1.0\libgstvideoscale.dll
