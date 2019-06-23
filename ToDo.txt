@@ -14,10 +14,6 @@ Windows Area:
 --Wenn die Bereichsanzeige an den unteren Bildschirmrand gesetzt, wird der ganze Bildschirm aufgenommen.
 
 
-Windows Codec:
---libgstvaapi nicht verfügbar.
-
-
 Bugs aber nicht wirklich relevant:
 ==================================
 Linux Area:
