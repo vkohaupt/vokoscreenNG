@@ -5,9 +5,11 @@ Windows:
   https://doc.qt.io/qtinstallerframework/ifw-tutorial.html
   Inno Setup
 
+Video:
+--Im log müßen auch die Einstellungen gespeichert werden um einen eindeutigen Bezug zum Video herstellen zu können.
 
 Windows Area:
---Wenn die Bereichsanzeige an den unteren Bildschirmrand gesetzt, wird der ganze Bildschirm aufgenommen.
+--Wird die Bereichsanzeige an den unteren Bildschirmrand gesetzt, wird der ganze Bildschirm aufgenommen.
 
 
 Bugs aber nicht wirklich relevant:
