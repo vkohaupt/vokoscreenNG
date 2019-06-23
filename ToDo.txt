@@ -1,5 +1,9 @@
 
 
+Bereichsanzeige:
+--In QvkRegionChoise::getWidth() steht noch ein Hinweis das der rechte Rand aufgenommen wird.
+  Hinweise kontrollieren
+
 Windows:
 --Installer wird benötigt.
   https://doc.qt.io/qtinstallerframework/ifw-tutorial.html
