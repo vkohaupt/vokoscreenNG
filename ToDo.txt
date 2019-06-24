@@ -1,16 +1,23 @@
 
+Player:
+--1. Hinweis einbauen wenn keine Codecs installiert sind.
+--2. Evtl. Codec mitliefern?
+
 
 Bereichsanzeige:
 --In QvkRegionChoise::getWidth() steht noch ein Hinweis das der rechte Rand aufgenommen wird.
   Hinweise kontrollieren
 
+  
 Windows:
 --Installer wird benötigt.
   https://doc.qt.io/qtinstallerframework/ifw-tutorial.html
   Inno Setup
 
+  
 Video:
 --Im log müßen auch die Einstellungen gespeichert werden um einen eindeutigen Bezug zum Video herstellen zu können.
+
 
 Windows Area:
 --Wird die Bereichsanzeige an den unteren Bildschirmrand gesetzt, wird der ganze Bildschirm aufgenommen.
