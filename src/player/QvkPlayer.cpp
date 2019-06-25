@@ -23,6 +23,7 @@
 #include "QvkPlayer.h"
 #include "QvkPlayerVideoSurface.h"
 #include "slidervideo.h"
+#include "global.h"
 
 #include <QTime>
 #include <QStandardPaths>
@@ -30,6 +31,7 @@
 #include <QTimer>
 #include <QMediaPlayer>
 #include <QScreen>
+#include <QMessageBox>
 
 QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : ui(new Ui::player)
 {
@@ -73,6 +75,15 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     connect( mediaPlayer, SIGNAL( positionChanged( qint64 ) ),           this, SLOT( slot_positionChanged( qint64 ) ) );
     connect( mediaPlayer, SIGNAL( stateChanged( QMediaPlayer::State ) ), this, SLOT( slot_stateChanged( QMediaPlayer::State ) ) );
     connect( mediaPlayer, SIGNAL( volumeChanged( int ) ),                this, SLOT( slot_volumeChanged( int ) ) ); // Funktioniert nicht mit Pulse
+    connect( mediaPlayer, QOverload<QMediaPlayer::Error>::of(&QMediaPlayer::error),
+        [=](QMediaPlayer::Error error){
+                                        Q_UNUSED(error);
+                                        QMessageBox msgBox( this );
+                                        msgBox.setText( "An error has occurred. \n Please install a codec pack." );
+                                        msgBox.setWindowTitle( global::name + " " + global::version );
+                                        msgBox.setIcon( QMessageBox::Information );
+                                        msgBox.exec();
+                                      });
 
     connect( ui->sliderVideo, SIGNAL( sliderPressed() ),   this, SLOT( slot_sliderVideoPressed() ) );
     connect( ui->sliderVideo, SIGNAL( sliderReleased() ),  this, SLOT( slot_sliderVideoReleased() ) );
