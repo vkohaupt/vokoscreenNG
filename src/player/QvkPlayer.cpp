@@ -80,6 +80,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
                                         Q_UNUSED(error);
                                         QMessageBox msgBox( this );
                                         msgBox.setText( "An error has occurred. \n Please install a codec pack." );
+                                        msgBox.setText( "To play this video a codec is needed. \n Please install a codec pack." );
                                         msgBox.setWindowTitle( global::name + " " + global::version );
                                         msgBox.setIcon( QMessageBox::Information );
                                         msgBox.exec();
