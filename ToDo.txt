@@ -3,13 +3,6 @@ CountDown:
 --Aufnahmezeit beginnt schon mit dem CountDown.
 
 
-Screencast FPS:
---Mit h264 und 1FPS erscheinen Fehlfarben. Mindest FPS in der GUI erhöhen?
---Abstand zum nächsten I-Frame verkleinern? Bei einem 1FPS wäre jeder Frame ein I-FRame.
---Abstand der I-Frames den FPS gleichstellen?
---Buffer einbauen?
-
-
 Bereichsanzeige:
 --In QvkRegionChoise::getWidth() steht noch ein Hinweis das der rechte Rand aufgenommen wird.
   Hinweis kontrollieren
@@ -33,3 +26,9 @@ Bugs aber nicht wirklich relevant:
 ==================================
 Linux Area:
 --Monitor skalieren auf 1.3 Buttons haben transparente Linien.
+
+Screencast FPS: Mindest FPS in der GUI erhöht auf 10.
+--Mit h264 und 1FPS erscheinen Fehlfarben. Mindest FPS in der GUI erhöhen?
+--Abstand zum nächsten I-Frame verkleinern? Bei einem 1FPS wäre jeder Frame ein I-FRame.
+--Abstand der I-Frames den FPS gleichstellen?
+--Buffer einbauen?
