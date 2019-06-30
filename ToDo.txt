@@ -6,14 +6,9 @@ Screencast FPS:
 --Buffer einbauen?
 
 
-Player:
---1. Hinweis einbauen wenn keine Codecs installiert sind.
---2. Evtl. Codec mitliefern?
-
-
 Bereichsanzeige:
 --In QvkRegionChoise::getWidth() steht noch ein Hinweis das der rechte Rand aufgenommen wird.
-  Hinweise kontrollieren
+  Hinweis kontrollieren
 
   
 Windows:
@@ -33,4 +28,4 @@ Windows Area:
 Bugs aber nicht wirklich relevant:
 ==================================
 Linux Area:
---Monitor skalieren 1.3 Buttons haben transparente Linien.
+--Monitor skalieren auf 1.3 Buttons haben transparente Linien.
