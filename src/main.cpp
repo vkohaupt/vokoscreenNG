@@ -31,7 +31,8 @@
 
 int main(int argc, char *argv[])
 {
-/*    QByteArray env = qgetenv( "LD_LIBRARY_PATH" );
+/*
+    QByteArray env = qgetenv( "LD_LIBRARY_PATH" );
     qDebug() << "env:" << env;
     QString libraryInfo = QLibraryInfo::location( QLibraryInfo::LibrariesPath );
     qDebug() << "libraryInfo:" << libraryInfo;
@@ -39,7 +40,7 @@ int main(int argc, char *argv[])
     QByteArray appDir = QDir::currentPath().toLatin1();
     bool a = qputenv( "LD_LIBRARY_PATH", appDir + "/lib" + ":" + libraryInfo.toLatin1() );
 
-    QByteArray env = qgetenv( "LD_LIBRARY_PATH" );
+    env = qgetenv( "LD_LIBRARY_PATH" );
     qDebug() << env;
 */
     QApplication app(argc, argv);

@@ -1,4 +1,9 @@
 
+Screencast FPS:
+--Mit h264 und 1FPS erscheinen Fehlfarben, mindest FPS erhöhen?
+--Abstand zum nächsten I-Frames verkleinern?
+
+
 Player:
 --1. Hinweis einbauen wenn keine Codecs installiert sind.
 --2. Evtl. Codec mitliefern?
