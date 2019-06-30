@@ -1,4 +1,8 @@
 
+CountDown:
+--Aufnahmezeit beginnt schon mit dem CountDown.
+
+
 Screencast FPS:
 --Mit h264 und 1FPS erscheinen Fehlfarben. Mindest FPS in der GUI erhöhen?
 --Abstand zum nächsten I-Frame verkleinern? Bei einem 1FPS wäre jeder Frame ein I-FRame.
