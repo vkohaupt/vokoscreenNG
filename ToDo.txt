@@ -1,7 +1,9 @@
 
 Screencast FPS:
---Mit h264 und 1FPS erscheinen Fehlfarben, mindest FPS erhöhen?
---Abstand zum nächsten I-Frames verkleinern?
+--Mit h264 und 1FPS erscheinen Fehlfarben. Mindest FPS in der GUI erhöhen?
+--Abstand zum nächsten I-Frame verkleinern? Bei einem 1FPS wäre jeder Frame ein I-FRame.
+--Abstand der I-Frames den FPS gleichstellen?
+--Buffer einbauen?
 
 
 Player:
