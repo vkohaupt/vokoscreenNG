@@ -34,6 +34,7 @@
 #include "QvkPlayer.h"
 #include "QvkTheme.h"
 #include "QvkLimitDiskFreeSpace.h"
+#include "QvkSpezialSlider.h"
 
 #ifdef Q_OS_LINUX
 #include "QvkAudioPulse.h"
@@ -58,7 +59,7 @@ class QvkMainWindow : public QMainWindow
 public:
     explicit QvkMainWindow( QWidget *parent = Q_NULLPTR );
     ~QvkMainWindow();
-
+    QvkSpezialSlider *sliderScreencastCountDown;
     Ui::formMainWindow *ui;
     QvkWinInfo *vkWinInfo;
     QvkCountdown *vkCountdown;

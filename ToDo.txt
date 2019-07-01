@@ -3,17 +3,21 @@ CountDown:
 --Aufnahmezeit beginnt schon mit dem CountDown.
 
 
+Timer:
+--Timer beginnt schon mit dem CountDown.
+
+
 Bereichsanzeige:
 --In QvkRegionChoise::getWidth() steht noch ein Hinweis das der rechte Rand aufgenommen wird.
   Hinweis kontrollieren
 
-  
+
 Windows:
 --Installer wird benötigt.
   https://doc.qt.io/qtinstallerframework/ifw-tutorial.html
   Inno Setup
 
-  
+
 Video:
 --Im log müßen auch die Einstellungen gespeichert werden um einen eindeutigen Bezug zum Video herstellen zu können.
 

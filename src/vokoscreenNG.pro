@@ -139,3 +139,6 @@ include(licenses/licenses.pri)
 # limitDiskFreeSpace
 include(limitDiskFreeSpace/limitDiskFreeSpace.pri)
 
+# spezialSlider
+include(spezialSlider/spezialSlider.pri)
+

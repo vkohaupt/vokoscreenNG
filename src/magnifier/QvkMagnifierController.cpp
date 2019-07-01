@@ -21,12 +21,22 @@
  */
 
 #include "QvkMagnifierController.h"
+#include "QvkSpezialSlider.h"
 
 QvkMagnifierController::QvkMagnifierController(Ui_formMainWindow *ui_mainwindow ) : vkMagnifier(new QvkMagnifier)
 {
-    connect( ui_mainwindow->checkBoxMagnifier,   SIGNAL( clicked( bool ) ),     vkMagnifier, SLOT( slot_magnifierShow( bool ) ) );
-    connect( ui_mainwindow->sliderMagnification, SIGNAL( valueChanged( int ) ), this,        SLOT( slot_valueChanged( int ) ) );
-    ui_mainwindow->sliderMagnification->setValue( 2 );
+    QvkSpezialSlider *sliderMagnification = new QvkSpezialSlider( Qt::Horizontal );
+    ui_mainwindow->horizontalLayout_8->addWidget( sliderMagnification );
+    sliderMagnification->setObjectName("sliderMagnification");
+    sliderMagnification->setTracking( true );
+    sliderMagnification->setMinimum( 1 );
+    sliderMagnification->setMaximum( 3 );
+    sliderMagnification->setValue( 2 );
+    sliderMagnification->show();
+
+    connect( ui_mainwindow->checkBoxMagnifier, SIGNAL( clicked( bool ) ),     vkMagnifier, SLOT( slot_magnifierShow( bool ) ) );
+    connect( sliderMagnification,              SIGNAL( valueChanged( int ) ), this,        SLOT( slot_valueChanged( int ) ) );
+    sliderMagnification->setValue( 2 );
 }
 
 
