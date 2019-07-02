@@ -20,32 +20,21 @@ QvkSpezialSlider::~QvkSpezialSlider()
 }
 
 
-QColor QvkSpezialSlider::vk_get_color_highlight()
+QColor QvkSpezialSlider::vk_get_color( enum QPalette::ColorRole colorRole )
 {
-    QPalette palette = QGuiApplication::palette();
-    QColor color( palette.highlight().color().red(),
-                  palette.highlight().color().green(),
-                  palette.highlight().color().blue() );
-    return color;
-}
+    QColor color;
+    if ( isEnabled() == true )
+    {
+       QPalette palette = QGuiApplication::palette();
+       color = palette.color( QPalette::Active, colorRole );
+    }
 
+    if ( isEnabled() == false )
+    {
+       QPalette palette = QGuiApplication::palette();
+       color = palette.color( QPalette::Inactive, colorRole );
+    }
 
-QColor QvkSpezialSlider::vk_get_color_windowtext()
-{
-    QPalette palette = QGuiApplication::palette();
-    QColor color( palette.windowText().color().red(),
-                  palette.windowText().color().green(),
-                  palette.windowText().color().blue() );
-    return color;
-}
-
-
-QColor QvkSpezialSlider::vk_get_color_button()
-{
-    QPalette palette = QGuiApplication::palette();
-    QColor color( palette.button().color().red(),
-                  palette.button().color().green(),
-                  palette.button().color().blue() );
     return color;
 }
 
@@ -67,7 +56,7 @@ void QvkSpezialSlider::paintEvent(QPaintEvent *event)
     brush.setStyle( Qt::SolidPattern );
 
     // Background from line
-    brush.setColor( Qt::lightGray );
+    brush.setColor( Qt::lightGray ); ////////////////////////////////////////////////////////////////////////////////////////////
     painter.setBrush( brush );
     painter.drawRoundedRect( 0,
                              distance,
@@ -78,7 +67,7 @@ void QvkSpezialSlider::paintEvent(QPaintEvent *event)
                              Qt::AbsoluteSize );
 
     // Foreground from line
-    brush.setColor( vk_get_color_highlight() );
+    brush.setColor( vk_get_color( QPalette::Highlight) );
     painter.setBrush( brush );
     painter.drawRoundedRect( 0,
                              distance,
@@ -90,7 +79,7 @@ void QvkSpezialSlider::paintEvent(QPaintEvent *event)
 
     // Handle
     pen.setStyle( Qt::SolidLine );
-    pen.setColor( vk_get_color_highlight() );
+    pen.setColor( vk_get_color( QPalette::Highlight ) );
     pen.setWidthF( 2.0 );
     painter.setPen( pen );
 
@@ -103,7 +92,7 @@ void QvkSpezialSlider::paintEvent(QPaintEvent *event)
     {
         onePixel = -1;
     }
-    brush.setColor( vk_get_color_button() );
+    brush.setColor( vk_get_color( QPalette::Button ) );
     painter.setBrush( brush );
     handleRadius = handleRadius - pen.widthF()/2;
     painter.drawEllipse( QRectF( (qreal)(width() - 2*handleRadius) / (qreal)( maximum() - minimum() ) * (qreal)( value() - minimum() ) + onePixel,
@@ -117,7 +106,7 @@ void QvkSpezialSlider::paintEvent(QPaintEvent *event)
     QFontMetrics fontMetrics( font );
     qreal pixelWidth = fontMetrics.width( QString::number( value() ) );
     painter.setFont( font );
-    painter.setPen( vk_get_color_windowtext() );
+    painter.setPen( vk_get_color( QPalette::WindowText ) );
     painter.drawText( (qreal)(width() - 2*handleRadius) / ( (qreal)maximum() - (qreal)minimum() ) * ( (qreal)value() - minimum() ) + ( handleRadius - pixelWidth/2 ) + onePixel,
                       handleRadius * 1.5,
                       QString::number( value() ) );

@@ -15,7 +15,6 @@ public:
     ~QvkSpezialSlider();
 
 
-
 private:
     QPen pen;
     qreal radius;
@@ -23,9 +22,7 @@ private:
     qreal distance;
     qreal handleRadius;
     bool mousePressed = false;
-    QColor vk_get_color_highlight();
-    QColor vk_get_color_windowtext();
-    QColor vk_get_color_button();
+    QColor vk_get_color(QPalette::ColorRole colorRole);
 
 
 public slots:

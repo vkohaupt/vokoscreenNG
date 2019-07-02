@@ -59,7 +59,6 @@ class QvkMainWindow : public QMainWindow
 public:
     explicit QvkMainWindow( QWidget *parent = Q_NULLPTR );
     ~QvkMainWindow();
-    QvkSpezialSlider *sliderScreencastCountDown;
     Ui::formMainWindow *ui;
     QvkWinInfo *vkWinInfo;
     QvkCountdown *vkCountdown;
@@ -78,6 +77,10 @@ public:
 
 
 private:
+    QvkSpezialSlider *sliderScreencastCountDown;
+    QvkSpezialSlider *sliderFrames;
+    QvkSpezialSlider *sliderX264;
+
     QvkSettings vkSettings;
     QStringList resolutionStringList;
 

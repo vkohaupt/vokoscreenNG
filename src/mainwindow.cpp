@@ -76,7 +76,22 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderScreencastCountDown->setMinimum( 0 );
     sliderScreencastCountDown->setMaximum( 30 );
     sliderScreencastCountDown->setValue( 0 );
-    sliderScreencastCountDown->show();
+
+    sliderFrames = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_5->addWidget( sliderFrames );
+    sliderFrames->setObjectName("sliderFrames");
+    sliderFrames->setTracking( true );
+    sliderFrames->setMinimum( 10 );
+    sliderFrames->setMaximum( 99 );
+    sliderFrames->setValue( 25 );
+
+    sliderX264 = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_x264->insertWidget( 2, sliderX264 );
+    sliderX264->setObjectName("sliderX264");
+    sliderX264->setTracking( true );
+    sliderX264->setMinimum( 0 );
+    sliderX264->setMaximum( 50 );
+    sliderX264->setValue( 17 );
 
     QvkTheme *vkTheme = new QvkTheme( ui );
     Q_UNUSED(vkTheme);
@@ -180,8 +195,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxScreencastScreen,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameAudio,            SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelFrames,           SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelFramesRates,      SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->sliderFrames,          SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), sliderFrames,              SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelFormat,           SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxFormat,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelVideoCodec,       SLOT( setEnabled( bool ) ) );
@@ -207,8 +221,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxScreencastScreen,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameAudio,            SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelFrames,           SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelFramesRates,      SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->sliderFrames,          SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), sliderFrames,              SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelFormat,           SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxFormat,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelVideoCodec,       SLOT( setDisabled( bool ) ) );
@@ -292,13 +305,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #ifdef Q_OS_WIN
     vkAudioWindows->slot_start( true );
 #endif
-    connect( ui->sliderFrames, SIGNAL( valueChanged( int ) ), ui->labelFramesRates, SLOT( setNum(int) ) );
-
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
 
     connect( ui->comboBoxVideoCodec, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_videoCodecChanged( QString ) ) );
-    connect( ui->sliderX264, SIGNAL( valueChanged( int ) ), ui->labelSliderX264, SLOT( setNum( int ) ) );
     connect( ui->toolButtonScreencastx264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_x264Reset() ) );
 
     // Tab 3 Time
@@ -454,7 +464,7 @@ void QvkMainWindow::showEvent( QShowEvent *event )
 void QvkMainWindow::slot_x264Reset()
 {
   ui->comboBoxx264Preset->setCurrentIndex( 1 );
-  ui->sliderX264->setValue( 17 );
+  sliderX264->setValue( 17 );
 }
 
 
@@ -894,7 +904,7 @@ QString QvkMainWindow::VK_getCapsFilter()
 {
    QStringList stringList;
    stringList << "capsfilter caps=video/x-raw,framerate="
-              << QString::number( ui->sliderFrames->value() )
+              << QString::number( sliderFrames->value() )
               << "/1";
    return QString( stringList.join( "" ) );
 }
@@ -1255,8 +1265,8 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         // https://encodingwissen.de/codecs/x264/referenz/
         QStringList list;
         list << ui->comboBoxVideoCodec->currentData().toString();
-        list << "qp-min=" + QString::number( ui->sliderX264->value() );
-        list << "qp-max=" + QString::number( ui->sliderX264->value() );
+        list << "qp-min=" + QString::number( sliderX264->value() );
+        list << "qp-max=" + QString::number( sliderX264->value() );
         list << "subme=6";
         list << "speed-preset=" + ui->comboBoxx264Preset->currentText();
         list << "threads=" + vk_idealThreadCount;
