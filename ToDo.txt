@@ -1,4 +1,9 @@
 
+Onlinehilfe:
+--Abfragen ob Onlinehilfe verfügbar.
+--Windowsversion, abfragen ob neue Version verfügbar.
+
+
 CountDown:
 --Aufnahmezeit beginnt schon mit dem CountDown.
 
