@@ -32,7 +32,7 @@ QColor QvkSpezialSlider::vk_get_color( enum QPalette::ColorRole colorRole )
     if ( isEnabled() == false )
     {
        QPalette palette = QGuiApplication::palette();
-       color = palette.color( QPalette::Inactive, colorRole );
+       color = palette.color( QPalette::Disabled, colorRole );
     }
 
     return color;
@@ -49,15 +49,15 @@ void QvkSpezialSlider::paintEvent(QPaintEvent *event)
     painter.begin( this );
     painter.setRenderHints( QPainter::Antialiasing, true );
 
+    // Background from line
     pen.setStyle( Qt::NoPen );
     painter.setPen( pen );
 
     QBrush brush;
     brush.setStyle( Qt::SolidPattern );
-
-    // Background from line
-    brush.setColor( Qt::lightGray ); ////////////////////////////////////////////////////////////////////////////////////////////
+    brush.setColor( vk_get_color( QPalette::Mid ) ); ////////////////////////////////////////////////////////////////////////////////////////////
     painter.setBrush( brush );
+
     painter.drawRoundedRect( 0,
                              distance,
                              width(),
@@ -83,6 +83,9 @@ void QvkSpezialSlider::paintEvent(QPaintEvent *event)
     pen.setWidthF( 2.0 );
     painter.setPen( pen );
 
+    brush.setColor( vk_get_color( QPalette::Button ) );
+    painter.setBrush( brush );
+
     qreal onePixel = 0;
     if ( value() == minimum() )
     {
@@ -92,8 +95,7 @@ void QvkSpezialSlider::paintEvent(QPaintEvent *event)
     {
         onePixel = -1;
     }
-    brush.setColor( vk_get_color( QPalette::Button ) );
-    painter.setBrush( brush );
+
     handleRadius = handleRadius - pen.widthF()/2;
     painter.drawEllipse( QRectF( (qreal)(width() - 2*handleRadius) / (qreal)( maximum() - minimum() ) * (qreal)( value() - minimum() ) + onePixel,
                                  pen.widthF()/2,
@@ -103,16 +105,20 @@ void QvkSpezialSlider::paintEvent(QPaintEvent *event)
     // Handletext
     QFont font;
     font.setPointSizeF( handleRadius - pen.widthF() );
+    painter.setFont( font );
+
     QFontMetrics fontMetrics( font );
     qreal pixelWidth = fontMetrics.width( QString::number( value() ) );
-    painter.setFont( font );
-    painter.setPen( vk_get_color( QPalette::WindowText ) );
+
+    painter.setPen( vk_get_color( QPalette::ButtonText ) );
+
     painter.drawText( (qreal)(width() - 2*handleRadius) / ( (qreal)maximum() - (qreal)minimum() ) * ( (qreal)value() - minimum() ) + ( handleRadius - pixelWidth/2 ) + onePixel,
-                      handleRadius * 1.5,
+                      (int)(handleRadius * 1.5),
                       QString::number( value() ) );
 
     painter.end();
 }
+
 
 void QvkSpezialSlider::mousePressEvent( QMouseEvent *event )
 {
@@ -122,10 +128,10 @@ void QvkSpezialSlider::mousePressEvent( QMouseEvent *event )
     }
 
     // Press on Handle
-    QRect rectHandle( (qreal)(width() - 2*handleRadius) / ( (qreal)maximum() - (qreal)minimum() ) * ( (qreal)value() - minimum() ) + (qreal)( pen.widthF() / 2.0 ),
-                      pen.widthF()/2.0,
-                      2*handleRadius,
-                      2*handleRadius );
+    QRectF rectHandle( (qreal)(width() - 2*handleRadius) / ( (qreal)maximum() - (qreal)minimum() ) * ( (qreal)value() - minimum() ) + (qreal)( pen.widthF() / 2.0 ),
+                       pen.widthF()/2.0,
+                       2*handleRadius,
+                       2*handleRadius );
 
     if ( rectHandle.contains( event->pos() ) )
     {
@@ -144,15 +150,15 @@ void QvkSpezialSlider::mouseMoveEvent( QMouseEvent *event )
 
         if ( event->localPos().x() > ( stepCurrent * stepSizeInPixels ) + (qreal)( stepSizeInPixels / 2 ) )
         {
-            int couldValue = ( event->localPos().x() / stepSizeInPixels ) + minimum() + 1;
-            setValue( couldValue );
+            qreal couldValue = ( event->localPos().x() / stepSizeInPixels ) + minimum() + 1;
+            setValue( static_cast<int>(couldValue) );
             return;
         }
 
         if ( event->localPos().x() < ( stepCurrent * stepSizeInPixels ) - (qreal)( stepSizeInPixels / 2 ) )
         {
-            int couldValue = ( event->localPos().x() / stepSizeInPixels ) + minimum();
-            setValue( couldValue );
+            qreal couldValue = ( event->localPos().x() / stepSizeInPixels ) + minimum();
+            setValue( static_cast<int>(couldValue) );
             return;
         }
     }
