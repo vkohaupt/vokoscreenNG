@@ -1,7 +1,6 @@
 
-Onlinehilfe:
---Abfragen ob Onlinehilfe verfügbar.
---Windowsversion, abfragen ob neue Version verfügbar.
+Versionsabfrage:
+--Im Stiel von Webcamoid
 
 
 CountDown:
