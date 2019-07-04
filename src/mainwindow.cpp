@@ -285,8 +285,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->comboBoxAreaSize->addItems( resolutionStringList );
     connect( ui->comboBoxAreaSize, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_areaSetResolution( QString ) ) );
 
-    //connect( sliderScreencastCountDown, SIGNAL( valueChanged( int ) ), ui->labelScreencastCountDownValue, SLOT( setNum( int ) ) );
-
 
     // Tab 2 Audio and Videocodec
     connect( ui->checkBoxAudioOnOff, SIGNAL( clicked( bool ) ),   this,                      SLOT( slot_audioIconOnOff( bool ) ) );
@@ -759,7 +757,7 @@ void QvkMainWindow::slot_audioRedCross()
  */
 void QvkMainWindow::slot_audioIconOnOff( bool state )
 {
-  if ( state == Qt::Unchecked )
+  if ( state == false )
   {
     QIcon myIcon = ui->tabWidgetScreencast->tabIcon( 1 );
     QSize size = ui->tabWidgetScreencast->iconSize();
