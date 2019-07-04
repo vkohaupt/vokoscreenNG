@@ -1,6 +1,6 @@
 
-Versionsabfrage:
---Im Stiel von Webcamoid
+Audio:
+--Wenn kein Gerät ausgewählt wurde, sollte ebenfalls das rote Kreuz erscheinen.
 
 
 CountDown:
@@ -14,6 +14,10 @@ Timer:
 Bereichsanzeige:
 --In QvkRegionChoise::getWidth() steht noch ein Hinweis das der rechte Rand aufgenommen wird.
   Hinweis kontrollieren
+
+
+Versionsabfrage:
+--Im Stiel von Webcamoid
 
 
 Windows:
@@ -35,7 +39,7 @@ Bugs aber nicht wirklich relevant:
 Linux Area:
 --Monitor skalieren auf 1.3 Buttons haben transparente Linien.
 
-Screencast FPS: Mindest FPS in der GUI erhöht auf 10.
+Screencast FPS: Mindest FPS wurde in der GUI auf 10 erhöht. Folgendes könnte noch in betracht gezogen werden.
 --Mit h264 und 1FPS erscheinen Fehlfarben. Mindest FPS in der GUI erhöhen?
 --Abstand zum nächsten I-Frame verkleinern? Bei einem 1FPS wäre jeder Frame ein I-FRame.
 --Abstand der I-Frames den FPS gleichstellen?
