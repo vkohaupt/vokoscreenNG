@@ -739,7 +739,7 @@ void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
     tabWidget->setCornerWidget( label, Qt::TopRightCorner);
 }
 
-// If new Theme set or nor set red cross
+// If new Theme, set or not set red cross
 void QvkMainWindow::slot_audioRedCross()
 {
     if ( ui->checkBoxAudioOnOff->isChecked() == true )
@@ -753,7 +753,7 @@ void QvkMainWindow::slot_audioRedCross()
 }
 
 /*
- * Setzt neues Icon um aufzuzeigen das Audio abgeschaltet ist
+ * Set a new icon with a red cross
  */
 void QvkMainWindow::slot_audioIconOnOff( bool state )
 {
