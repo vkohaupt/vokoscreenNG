@@ -1,6 +1,6 @@
 
-Audio:
---Wenn kein Gerät ausgewählt wurde, sollte ebenfalls das rote Kreuz erscheinen.
+Systray:
+--Menüanzeige ändern auf Linksklick.
 
 
 CountDown:
