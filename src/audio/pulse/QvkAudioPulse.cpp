@@ -90,7 +90,7 @@ void QvkAudioPulse::getPulseDevices()
         for ( int i = 0; i < list.count(); i++ )
         {
             QCheckBox *checkboxAudioDevice = new QCheckBox();
-            connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( test123() ) );
+            connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
             checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
             checkboxAudioDevice->setAccessibleName( QString( list.at(i) ).section( ":::", 0, 0 ) );
             checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( i ) );
@@ -112,7 +112,7 @@ void QvkAudioPulse::getPulseDevices()
 }
 
 
-void QvkAudioPulse::test123()
+void QvkAudioPulse::slot_audioDeviceSelected()
 {
     bool value = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();

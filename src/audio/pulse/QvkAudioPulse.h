@@ -49,8 +49,8 @@ private:
 
 private slots:
     void slot_setDevice( QString string );
+    void slot_audioDeviceSelected();
 
-    void test123();
 
 protected:
 
