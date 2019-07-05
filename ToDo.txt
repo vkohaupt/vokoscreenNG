@@ -1,6 +1,7 @@
 
 Systray:
 --Menüanzeige ändern auf Linksklick.
+--KDE Icon wird erst angezeigt wenn von Automatisch auf Angezeigt umgeschaltet wird. API anschauen ob es evtl. durch eine Messsage möglich ist das Icon grundsätzlich anzuzeigen.
 
 
 CountDown:
