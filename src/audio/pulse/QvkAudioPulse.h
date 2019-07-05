@@ -50,12 +50,14 @@ private:
 private slots:
     void slot_setDevice( QString string );
 
+    void test123();
 
 protected:
 
   
 signals:
     void signal_noAudioDevicesAvalaible( bool );
+    void signal_haveAudioDeviceSelected( bool );
 
 };
 

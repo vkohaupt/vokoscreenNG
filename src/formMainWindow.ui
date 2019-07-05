@@ -444,40 +444,6 @@
                   <number>6</number>
                  </property>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0">
-                   <item>
-                    <widget class="QCheckBox" name="checkBoxAudioOnOff">
-                     <property name="text">
-                      <string>Audio</string>
-                     </property>
-                     <property name="checked">
-                      <bool>false</bool>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_14">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <widget class="Line" name="line_6">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
                   <widget class="QScrollArea" name="scrollAreaAudioDevice">
                    <property name="frameShape">
                     <enum>QFrame::NoFrame</enum>
@@ -494,7 +460,7 @@
                       <x>0</x>
                       <y>0</y>
                       <width>535</width>
-                      <height>81</height>
+                      <height>108</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -737,10 +703,17 @@
                </widget>
               </item>
               <item row="4" column="2">
-               <widget class="QComboBox" name="comboBoxAudioCodec"/>
+               <widget class="QComboBox" name="comboBoxAudioCodec">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+               </widget>
               </item>
               <item row="4" column="1">
                <widget class="QLabel" name="labelAudioCodec">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="text">
                  <string>Audiocodec</string>
                 </property>
@@ -2507,7 +2480,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>pushButtonPlay</tabstop>
   <tabstop>pushButtonScreencastOpenfolder</tabstop>
   <tabstop>help_screencast_execute</tabstop>
-  <tabstop>checkBoxAudioOnOff</tabstop>
   <tabstop>help_screencast_audio</tabstop>
   <tabstop>scrollAreaAudioDevice</tabstop>
   <tabstop>comboBoxx264Preset</tabstop>

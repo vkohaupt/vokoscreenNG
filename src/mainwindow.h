@@ -133,6 +133,9 @@ private:
 
     void checkVideoPath();
 
+    bool isAudioDeviceSelected();
+
+
 private slots:
     void slot_preStart();
     void slot_Start();
