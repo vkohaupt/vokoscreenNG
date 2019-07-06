@@ -1,4 +1,8 @@
 
+GUI:
+--Frames, Format, Videocodec in extra TAB
+
+
 Tumbelweed Audio:
 --Rotes Kreuz wird nach dem Start von vokoscreenNG nicht angezeigt wenn keine Geräte gesetzt sind.
 
