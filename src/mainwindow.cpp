@@ -418,7 +418,7 @@ QvkMainWindow::~QvkMainWindow()
 void QvkMainWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
-    vkSettings.saveAll( ui, this );
+    vkSettings.saveAll( ui, this, false );
     vkSettings.saveAreaScreencast( vkRegionChoise->getXRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
                                    vkRegionChoise->getYRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
                                    vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
@@ -1587,6 +1587,9 @@ void QvkMainWindow::slot_Start()
 
     QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
     VK_PipelineList << "filesink location=" + ui->lineEditVideoPath->text() + "/" + newVideoFilename;
+
+    // Write settings to log
+    vkSettings.saveAll( ui, this, true );
 
     QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Pipe );
     qDebug().noquote() << global::nameOutput << "Start record with:" << VK_Pipeline;

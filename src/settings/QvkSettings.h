@@ -38,7 +38,7 @@ class QvkSettings: public QObject
 public:
     QvkSettings();
     virtual ~QvkSettings();
-    void saveAll(Ui_formMainWindow *ui_mainwindow, QMainWindow *parent );
+    void saveAll(Ui_formMainWindow *ui_mainwindow, QMainWindow *parent, bool log);
     void readAll(Ui_formMainWindow *ui_mainwindow, QMainWindow *parent);
     void saveAreaScreencast(qreal x, qreal y, qreal width, qreal height);
     void readAreaScreencast(QvkRegionChoise *vkRegionChoise);

@@ -29,7 +29,7 @@ QvkSettings::QvkSettings()
     // Dient nur zum anlegen des Profils damit das log erstellt werden kann
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.beginGroup( global::name );
-      settings.setValue( "Version", global::version );
+    settings.setValue( "Version", global::version );
     settings.endGroup();
 }
 
@@ -43,11 +43,11 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     QList<QCheckBox *> listCheckBoxReset = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBoxReset.count(); i++ )
     {
-       if ( ( listCheckBoxReset.at(i)->objectName() == "checkBoxResetAtNextStart" ) and
-            ( settings.value( listCheckBoxReset.at(i)->objectName(), false ).toBool() == true ) )
-       {
-           settings.clear();
-       }
+        if ( ( listCheckBoxReset.at(i)->objectName() == "checkBoxResetAtNextStart" ) and
+             ( settings.value( listCheckBoxReset.at(i)->objectName(), false ).toBool() == true ) )
+        {
+            settings.clear();
+        }
     }
 
     parent->move( settings.value( "MainWindow_X" ).toInt(), settings.value( "MainWindow_Y" ).toInt() );
@@ -85,7 +85,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         bool value = settings.value( listRadiobuttons.at(i)->objectName(), false ).toBool();
         if ( value == true )
         {
-           listRadiobuttons.at(i)->click();
+            listRadiobuttons.at(i)->click();
         }
     }
 
@@ -137,7 +137,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         int value = settings.value( listSpinBox.at(i)->objectName(), 0 ).toInt();
         if ( value > 0  )
         {
-           listSpinBox.at(i)->setValue( value );
+            listSpinBox.at(i)->setValue( value );
         }
     }
 
@@ -176,7 +176,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             QString value = settings.value( listLineEdit.at(i)->objectName() ).toString();
             if ( !value.isEmpty() )
             {
-               listLineEdit.at(i)->setText( value );
+                listLineEdit.at(i)->setText( value );
             }
         }
     }
@@ -190,21 +190,36 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
 
 }
 
-
-void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent)
+/*
+ *
+ */
+void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent, bool log )
 {
     Q_UNUSED(parent);
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
-    settings.clear();
+    if ( log == true )
+    {
+        // do nothing
+    }
+    else
+        settings.clear();
 
     settings.beginGroup( global::name );
-       settings.setValue( "Version", global::version );
+    if ( log == true )
+    {
+        // do nothing
+    }
+    else
+        settings.setValue( "Version", global::version );
     settings.endGroup();
 
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralWidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadiobuttons.count(); i++ )
     {
-        settings.setValue( listRadiobuttons.at(i)->objectName(), listRadiobuttons.at(i)->isChecked() );
+        if ( log == true )
+            qDebug().noquote().nospace() <<  listRadiobuttons.at(i)->objectName() << "=" << listRadiobuttons.at(i)->isChecked();
+        else
+            settings.setValue( listRadiobuttons.at(i)->objectName(), listRadiobuttons.at(i)->isChecked() );
     }
 
     QList<QCheckBox *> listCheckBox = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
@@ -217,26 +232,38 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
         }
         else
         {
-            settings.setValue( listCheckBox.at(i)->objectName(), listCheckBox.at(i)->isChecked() ); // Hier liegt der Fehler
+            if ( log == true )
+                qDebug().noquote().nospace() << listCheckBox.at(i)->objectName() << "=" << listCheckBox.at(i)->isChecked();
+            else
+                settings.setValue( listCheckBox.at(i)->objectName(), listCheckBox.at(i)->isChecked() );
         }
     }
 
     QList<QSpinBox *> listSpinBox = ui_mainwindow->centralWidget->findChildren<QSpinBox *>();
     for ( int i = 0; i < listSpinBox.count(); i++ )
     {
-        settings.setValue( listSpinBox.at(i)->objectName(), listSpinBox.at(i)->value() );
+        if ( log == true )
+            qDebug().noquote().nospace() << listSpinBox.at(i)->objectName() << "=" << listSpinBox.at(i)->value();
+        else
+            settings.setValue( listSpinBox.at(i)->objectName(), listSpinBox.at(i)->value() );
     }
 
     QList<QComboBox *> listComboBox = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
     for ( int i = 0; i < listComboBox.count(); i++ )
     {
-        settings.setValue( listComboBox.at(i)->objectName(), listComboBox.at(i)->currentText() );
+        if ( log == true )
+            qDebug().noquote().nospace() << listComboBox.at(i)->objectName() << "=" << listComboBox.at(i)->currentText();
+        else
+            settings.setValue( listComboBox.at(i)->objectName(), listComboBox.at(i)->currentText() );
     }
 
     QList<QSlider *> listSlider = ui_mainwindow->centralWidget->findChildren<QSlider *>();
     for ( int i = 0; i < listSlider.count(); i++ )
     {
-        settings.setValue( listSlider.at(i)->objectName(), listSlider.at(i)->value() );
+        if ( log == true )
+            qDebug().noquote().nospace() << listSlider.at(i)->objectName() << "=" << listSlider.at(i)->value();
+        else
+            settings.setValue( listSlider.at(i)->objectName(), listSlider.at(i)->value() );
     }
 
     QList<QLineEdit *> listLineEdit = ui_mainwindow->centralWidget->findChildren<QLineEdit *>();
@@ -244,7 +271,10 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
     {
         if ( listLineEdit.at(i)->objectName().contains( "lineEdit" ) )
         {
-            settings.setValue( listLineEdit.at(i)->objectName(), listLineEdit.at(i)->text() );
+            if ( log == true )
+                qDebug().noquote().nospace() << listLineEdit.at(i)->objectName() << "=" << listLineEdit.at(i)->text();
+            else
+                settings.setValue( listLineEdit.at(i)->objectName(), listLineEdit.at(i)->text() );
         }
     }
 }
@@ -260,10 +290,10 @@ void QvkSettings::saveAreaScreencast( qreal x, qreal y, qreal width, qreal heigh
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.beginGroup( "AreaScreencast" );
-      settings.setValue( "X", QVariant(x).toInt() );
-      settings.setValue( "Y", QVariant(y).toInt() );
-      settings.setValue( "Width", QVariant(width).toInt() );
-      settings.setValue( "Height", QVariant(height).toInt() );
+    settings.setValue( "X", QVariant(x).toInt() );
+    settings.setValue( "Y", QVariant(y).toInt() );
+    settings.setValue( "Width", QVariant(width).toInt() );
+    settings.setValue( "Height", QVariant(height).toInt() );
     settings.endGroup();
 }
 
@@ -271,10 +301,10 @@ void QvkSettings::readAreaScreencast( QvkRegionChoise *vkRegionChoise )
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.beginGroup( "AreaScreencast" );
-      vkRegionChoise->setX( settings.value( "X", 200 ).toInt() );
-      vkRegionChoise->setY( settings.value( "Y", 200 ).toInt() );
-      vkRegionChoise->setWidth( settings.value( "Width", 320 ).toInt() );
-      vkRegionChoise->setHeight( settings.value( "Height", 200 ).toInt() );
+    vkRegionChoise->setX( settings.value( "X", 200 ).toInt() );
+    vkRegionChoise->setY( settings.value( "Y", 200 ).toInt() );
+    vkRegionChoise->setWidth( settings.value( "Width", 320 ).toInt() );
+    vkRegionChoise->setHeight( settings.value( "Height", 200 ).toInt() );
     settings.endGroup();
 }
 
@@ -291,7 +321,7 @@ void QvkSettings::readCamera( QvkCameraController *vkCameraController )
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.beginGroup( "Camera" );
-      vkCameraController->cameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
+    vkCameraController->cameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
     settings.endGroup();
 }
 
