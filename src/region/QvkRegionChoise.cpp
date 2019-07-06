@@ -29,7 +29,6 @@
 #include <QGuiApplication>
 #include <QBitmap>
 #include <QPaintEvent>
-//#include <QIcon>
 
 #ifdef Q_OS_LINUX
   #include <QX11Info>
@@ -1110,7 +1109,6 @@ void QvkRegionChoise::HandleLeftMiddleSize( QPainter &painter )
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
     painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf ) );
-
 }
 
 
@@ -1190,15 +1188,6 @@ int QvkRegionChoise::getY()
  */
 qreal QvkRegionChoise::getXRecordArea()
 {
-/*
-    // Test
-    // Linker Rahmen wird aufgenommen
-    // scale: 1.3
-    // x: 503
-    qreal a = static_cast<int>( ( frame_X + framePenWidth/2 ) * screen->devicePixelRatio() );
-    qreal b = a;
-    return b;
-*/
     qreal xReal = ( frame_X + framePenWidth/2 ) * screen->devicePixelRatio();
     int xInt = static_cast<int>( ( frame_X + framePenWidth/2 ) * screen->devicePixelRatio() );
 
@@ -1216,11 +1205,6 @@ qreal QvkRegionChoise::getXRecordArea()
  */
 qreal QvkRegionChoise::getYRecordArea()
 {
-/*    int a = static_cast<int>( ( frame_Y + framePenWidth/2 ) * screen->devicePixelRatio() );
-    qreal b = a;
-    return b;
-*/
-
    qreal xReal = ( frame_Y + framePenWidth/2 ) * screen->devicePixelRatio();
    int xInt = static_cast<int>( ( frame_Y + framePenWidth/2 ) * screen->devicePixelRatio() );
 
@@ -1238,14 +1222,6 @@ qreal QvkRegionChoise::getYRecordArea()
  */
 qreal QvkRegionChoise::getHeight()
 {
-/*
-    // Test
-    // Unterer Rahmen wird aufgenommen
-    // height: 168
-    int a = static_cast<int>( ( frame_height - framePenWidth ) * screen->devicePixelRatio() );
-    qreal b = a;
-    return b;
-*/
     qreal xReal =   ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * screen->devicePixelRatio();
     int xInt = static_cast<int>( ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * screen->devicePixelRatio() );
 
@@ -1267,15 +1243,6 @@ qreal QvkRegionChoise::getHeight()
  */
 qreal QvkRegionChoise::getWidth()
 {
-/*    // Test
-    // Rechter Rahmen wird aufgenommen
-    // scale: 1.3
-    // x: 437
-    // width: 320
-    int a = static_cast<int>( ( frame_Width - framePenWidth ) * screen->devicePixelRatio() );
-    qreal b = a;
-    return b;
-*/
     qreal xReal = ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * screen->devicePixelRatio();
     int xInt = static_cast<int>( ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * screen->devicePixelRatio() );
 
