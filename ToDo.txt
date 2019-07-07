@@ -34,6 +34,11 @@ Windows Area:
 --Wird die Bereichsanzeige an den unteren Bildschirmrand gesetzt, wird der ganze Bildschirm aufgenommen.
 
 
+Icons:
+--Wechsel zu Tango http://tango.freedesktop.org/Tango_Desktop_Project
+--Alle Icons von SVG zu 128x128.png
+
+
 Bugs aber nicht wirklich relevant:
 ==================================
 Linux Area:
