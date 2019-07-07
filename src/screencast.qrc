@@ -13,6 +13,7 @@
 <file>pictures/player/restore.png</file>
 <file>pictures/screencast/supported-formats.png</file>
 <file>pictures/screencast/preferences-system.png</file>
+<file>pictures/screencast/format-codec.png</file>
 <file>pictures/screencast/microphone.png</file>
 <file>pictures/screencast/monitor.png</file>
 <file>pictures/screencast/timer.png</file>
@@ -36,6 +37,7 @@
 <file>pictures/player/player.license</file>
 <file>pictures/screencast/monitor.license</file>
 <file>pictures/screencast/preferences-system.license</file>
+<file>pictures/screencast/format-codec.license</file>
 <file>pictures/screencast/microphone.license</file>
 <file>pictures/screencast/undo.license</file>
 <file>pictures/screencast/supported-formats.license</file>

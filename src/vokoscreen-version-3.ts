@@ -4,10 +4,6 @@
 <context>
     <name>QvkAudioPulse</name>
     <message>
-        <source>File can not be opened</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select one or more devices</source>
         <translation type="unfinished"></translation>
     </message>
@@ -376,18 +372,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>200x200</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>400x200</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>600x200</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Minimized when recording starts</source>
         <translation type="unfinished"></translation>
     </message>
@@ -417,10 +401,6 @@
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>25</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
