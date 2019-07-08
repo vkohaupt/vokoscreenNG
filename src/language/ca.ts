@@ -2,10 +2,6 @@
 <context>
     <name>QvkAudioPulse</name>
     <message>
-        <source>File can not be opened</source>
-        <translation>El fitxer no s&apos;ha pogut obrir</translation>
-    </message>
-    <message>
         <source>Select one or more devices</source>
         <translation>Seleccioneu un o més dispositius</translation>
     </message>
@@ -374,18 +370,6 @@
         <translation>Ctrl+Majús.+F8</translation>
     </message>
     <message>
-        <source>200x200</source>
-        <translation>200x200</translation>
-    </message>
-    <message>
-        <source>400x200</source>
-        <translation>400x200</translation>
-    </message>
-    <message>
-        <source>600x200</source>
-        <translation>600x200</translation>
-    </message>
-    <message>
         <source>Minimized when recording starts</source>
         <translation>Minimitza en iniciar l&apos;enregistrament</translation>
     </message>
@@ -416,10 +400,6 @@
     <message>
         <source>Donate</source>
         <translation>Feu una donació</translation>
-    </message>
-    <message>
-        <source>25</source>
-        <translation>25</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>

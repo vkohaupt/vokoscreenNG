@@ -2,10 +2,6 @@
 <context>
     <name>QvkAudioPulse</name>
     <message>
-        <source>File can not be opened</source>
-        <translation>A fájlt nem lehet megnyitni</translation>
-    </message>
-    <message>
         <source>Select one or more devices</source>
         <translation>Válasszon ki egy vagy több eszközt</translation>
     </message>
@@ -374,18 +370,6 @@
         <translation>CTRL+SHIFT+F8</translation>
     </message>
     <message>
-        <source>200x200</source>
-        <translation>200x200</translation>
-    </message>
-    <message>
-        <source>400x200</source>
-        <translation>400x200</translation>
-    </message>
-    <message>
-        <source>600x200</source>
-        <translation>600x200</translation>
-    </message>
-    <message>
         <source>Minimized when recording starts</source>
         <translation>A felvétel indulásakor tegye le tálcára.</translation>
     </message>
@@ -416,10 +400,6 @@
     <message>
         <source>Donate</source>
         <translation>Adományozás</translation>
-    </message>
-    <message>
-        <source>25</source>
-        <translation>25</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>

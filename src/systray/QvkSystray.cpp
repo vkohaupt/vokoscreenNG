@@ -134,7 +134,14 @@ void QvkSystray::slot_closeSystray()
 
 void QvkSystray::slot_setRecordIcon( bool )
 {
-    setIcon( QIcon::fromTheme( "media-record", QIcon( ":/pictures/systray/record.png" ) ) );
+    if ( global::VK_showOnlyFallbackIcons == true )
+    {
+        setIcon( QIcon( ":/pictures/systray/record.png" ) );
+    }
+    else
+    {
+        setIcon( QIcon::fromTheme( "media-record", QIcon( ":/pictures/systray/record.png" ) ) );
+    }
 }
 
 
