@@ -65,7 +65,7 @@ void QvkTheme::slot_setNewTheme()
 
     makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabScreen ),    VK_getIcon( "video-display",          ":/pictures/screencast/monitor.png" ) );
     makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAudio ),     VK_getIcon( "audio-input-microphone", ":/pictures/screencast/microphone.png" ) );
-    makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabVideo ),     VK_getIcon( "applications-multimedia", ":/pictures/screencast/format-codec.png" ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabVideo ),     VK_getIcon( "applications-multimedia",":/pictures/screencast/format-codec.png" ) );
     makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabMisc ),      VK_getIcon( "preferences-system",     ":/pictures/screencast/preferences-system.png" ) );
     makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabTimer ),     VK_getIcon( "appointment-new",        ":/pictures/screencast/timer.png" ) );
     makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAvailable ), VK_getIcon( "dialog-information",     ":/pictures/screencast/supported-formats.png" ) );
