@@ -4,9 +4,9 @@ Lizenzen:
 --In QGlobalShortcut wird fälschlicherweise der Lizenzheader durch mein Tool eingefügt.
 --QGlobalShortcut sollte als lib und nicht statisch erstellt werden.
 Erledigt:
---#include <QCameraViewfinder> removed from QvkCameraController -> show hint from Eriberto mail from 2019.07.01
---multimediawidgets removed from vokoscreenNG.Tango_Desktop_Project -> show hint from Eriberto mail from 2019.07.01
 --Removed entry Pulseaudio Licence in file Third-Party-License.
+--#include <QCameraViewfinder> removed from QvkCameraController -> show hint from Eriberto mail from 2019.07.01
+--multimediawidgets removed from vokoscreenNG.pro -> show hint from Eriberto mail from 2019.07.01
 
 
 
