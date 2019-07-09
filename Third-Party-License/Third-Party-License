@@ -12,12 +12,6 @@ File    --> LGPL
 URL     --> https://gstreamer.freedesktop.org/
 
 
-PulseAudio:
-License --> LGPL 2.1
-File    --> LGPL-2.1
-URL     --> https://www.freedesktop.org/wiki/Software/PulseAudio/
-
-
 Global QGlobalShortcut:
 Licence --> LGPL
 File    --> LGPL

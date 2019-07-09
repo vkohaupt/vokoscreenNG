@@ -23,8 +23,6 @@
 #include "QvkCameraController.h"
 #include "global.h"
 
-#include <QCameraViewfinder>
-
 QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraWatcher(new QvkCameraWatcher()),
                                                                          videoSurface(new QvkVideoSurface())
 {

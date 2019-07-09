@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 unix: QT += x11extras
-QT += core gui widgets multimedia multimediawidgets network
+QT += core gui widgets multimedia network
 # testlib // Achtung unter Windows öffnet sich damit die Konsole und qDebug() zeigt seine Ausgaben.
 
 TARGET = vokoscreenNG
