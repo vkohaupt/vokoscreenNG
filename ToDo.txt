@@ -1,4 +1,9 @@
 
+Lizenzen:
+--Wird die Pulseaudio Lizenz benötigt?
+--In QGlobalShortcut wird fälschlicherweise der Lizenzheader durch mein Tool eingefügt.
+--QGlobalShortcut sollte als lib und nicht statisch erstellt werden.
+
 
 Tumbelweed Audio:
 --Rotes Kreuz wird nach dem Start von vokoscreenNG nicht angezeigt wenn keine Geräte gesetzt sind.
