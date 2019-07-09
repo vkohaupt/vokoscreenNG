@@ -21,6 +21,8 @@
  */
 
 #include "mainwindow.h"
+#include "global.h"
+
 #include <QTranslator>
 #include <QLibraryInfo>
 
@@ -44,6 +46,16 @@ int main(int argc, char *argv[])
     qDebug() << env;
 */
     QApplication app(argc, argv);
+
+    QStringList arguments = QApplication::instance()->arguments();
+    if ( !arguments.empty() and ( arguments.count() == 2 ) )
+    {
+        if ( arguments.at(1) == "--version" )
+        {
+            qDebug().noquote() << global::name << global::version;
+            return 0;
+        }
+    }
 
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
