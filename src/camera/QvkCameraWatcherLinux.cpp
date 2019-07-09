@@ -24,7 +24,6 @@
 #include "global.h"
 
 #include <QCameraInfo>
-#include <QThread>
 
 QvkCameraWatcher::QvkCameraWatcher()
 {

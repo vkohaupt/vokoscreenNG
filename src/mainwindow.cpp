@@ -35,7 +35,6 @@
 #include <QStandardPaths>
 #include <QDir>
 #include <QDesktopWidget>
-#include <QAudioDeviceInfo>
 #include <QFileDialog>
 #include <QDesktopServices>
 #include <QMimeDatabase>
@@ -43,7 +42,6 @@
 #include <QLibraryInfo>
 #include <QThread>
 #include <QMessageBox>
-#include <QFileSystemModel>
 #include <QStyleFactory>
 
 #ifdef Q_OS_LINUX
