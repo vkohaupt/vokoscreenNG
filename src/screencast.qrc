@@ -3,10 +3,7 @@
 <file>pictures/camera/camera.png</file>
 <file>pictures/linux.png</file>
 <file>pictures/log/log.png</file>
-<file>pictures/logo/logo-3.png</file>
 <file>pictures/logo/logo.png</file>
-<file>pictures/logo/logo-1.png</file>
-<file>pictures/logo/logo-2.png</file>
 <file>pictures/player/move.png</file>
 <file>pictures/player/player.png</file>
 <file>pictures/player/fullscreen.png</file>
@@ -28,9 +25,6 @@
 <file>pictures/camera/camera.license</file>
 <file>pictures/linux.license</file>
 <file>pictures/log/log.license</file>
-<file>pictures/logo/logo-3.license</file>
-<file>pictures/logo/logo-2.license</file>
-<file>pictures/logo/logo-1.license</file>
 <file>pictures/player/move.license</file>
 <file>pictures/player/fullscreen.license</file>
 <file>pictures/player/restore.license</file>
