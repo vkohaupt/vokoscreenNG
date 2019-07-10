@@ -174,7 +174,6 @@ void QvkCameraController::slot_startCamera( bool value )
         delete camera;
         camera = new QCamera( device );
         camera->setCaptureMode( QCamera::CaptureViewfinder );
-        //disconnect( camera, nullptr, nullptr, nullptr );
         connect( camera, SIGNAL( statusChanged( QCamera::Status ) ), this, SLOT( slot_statusChanged( QCamera::Status ) ) );
         connect( camera, SIGNAL( stateChanged( QCamera::State   ) ), this, SLOT( slot_stateChanged( QCamera::State ) )  );
 
@@ -183,13 +182,6 @@ void QvkCameraController::slot_startCamera( bool value )
         viewfinderSettings.setMinimumFrameRate( 0.0 );
         viewfinderSettings.setMaximumFrameRate( 0.0 );
         camera->setViewfinderSettings( viewfinderSettings );
-
-        //delete cameraWindow;
-        //cameraWindow = new QvkCameraWindow();
-//        connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_formMainWindow->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
-//        cameraWindow->setWindowTitle( global::name + " " + global::version + " " + "Camera");
-//        QIcon icon( QString::fromUtf8( ":/pictures/player/logo.png" ) );
-//        cameraWindow->setWindowIcon( icon );
 
         slot_sliderMoved( ui_formMainWindow->sliderCameraWindowSize->value() );
 
@@ -205,7 +197,6 @@ void QvkCameraController::slot_startCamera( bool value )
     else
     {
         disconnect( camera, nullptr, nullptr, nullptr );
-        //disconnect( cameraWindow, nullptr, nullptr, nullptr );
         camera->stop();
         camera->unload();
         cameraWindow->close();
