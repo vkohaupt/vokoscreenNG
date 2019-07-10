@@ -1,14 +1,4 @@
 
-Lizenzen:
---Wird die Pulseaudio Lizenz benötigt?
---In QGlobalShortcut wird fälschlicherweise der Lizenzheader durch mein Tool eingefügt.
---QGlobalShortcut sollte als lib und nicht statisch erstellt werden.
-Erledigt:
---Removed entry Pulseaudio Licence in file Third-Party-License.
---#include <QCameraViewfinder> removed from QvkCameraController -> show hint from Eriberto mail from 2019.07.01
---multimediawidgets removed from vokoscreenNG.pro -> show hint from Eriberto mail from 2019.07.01
-
-
 Tumbelweed Audio:
 --Rotes Kreuz wird nach dem Start von vokoscreenNG nicht angezeigt wenn keine Geräte gesetzt sind.
 
@@ -38,11 +28,6 @@ Windows:
 
 Windows Area:
 --Wird die Bereichsanzeige an den unteren Bildschirmrand gesetzt, wird der ganze Bildschirm aufgenommen.
-
-
-Icons:
---Wechsel zu Tango http://tango.freedesktop.org/Tango_Desktop_Project
---Alle Icons von SVG zu 128x128.png
 
 
 Bugs aber nicht wirklich relevant:
