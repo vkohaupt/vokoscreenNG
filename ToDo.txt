@@ -9,7 +9,6 @@ Erledigt:
 --multimediawidgets removed from vokoscreenNG.pro -> show hint from Eriberto mail from 2019.07.01
 
 
-
 Tumbelweed Audio:
 --Rotes Kreuz wird nach dem Start von vokoscreenNG nicht angezeigt wenn keine Geräte gesetzt sind.
 
