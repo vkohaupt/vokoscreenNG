@@ -1,4 +1,7 @@
 
+Lizenz-Header:
+--QGlobalShortcut must excluded
+
 
 LDFLAGS:
 To LDFLAGS, if needed only. If you fix all above warnings, it is not
@@ -29,7 +32,7 @@ Timer:
 
 
 Versionsabfrage:
---Im Stiel von Webcamoid
+--Im Stiel von Webcamoid.
 
 
 Windows:
