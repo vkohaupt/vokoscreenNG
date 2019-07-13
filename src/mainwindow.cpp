@@ -97,7 +97,20 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderLimitOfFreeDiskSpace->setMinimum( 100 );
     sliderLimitOfFreeDiskSpace->setMaximum( 999 );
     sliderLimitOfFreeDiskSpace->setValue( 250 );
-    sliderLimitOfFreeDiskSpace->show();
+
+    sliderHour = new QvkSpezialSlider( Qt::Horizontal );
+    ui->verticalLayout_14->addWidget( sliderHour );
+    sliderHour->setObjectName( "sliderHour" );
+    sliderHour->setMinimum( 0 );
+    sliderHour->setMaximum( 23 );
+    sliderHour->setValue( 0 );
+
+    sliderMinute = new QvkSpezialSlider( Qt::Horizontal );
+    ui->verticalLayout_14->addWidget( sliderMinute );
+    sliderMinute->setObjectName( "sliderMinute" );
+    sliderMinute->setMinimum( 0 );
+    sliderMinute->setMaximum( 59 );
+    sliderMinute->setValue( 0 );
 
     QvkTheme *vkTheme = new QvkTheme( ui );
     Q_UNUSED(vkTheme);
@@ -321,15 +334,16 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->toolButtonScreencastx264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_x264Reset() ) );
 
     // Tab 3 Time
+    ui->timeEditStartTime->hide(); // This Widget is only for manage time
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
     timerStartTimer = new QTimer();
     timerStartTimer->setTimerType( Qt::PreciseTimer );
-    connect( timerStartTimer,       SIGNAL( timeout() ),           this, SLOT( slot_startTime() ) );
+    connect( timerStartTimer,       SIGNAL( timeout() ),           this,                SLOT( slot_startTime() ) );
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     ui->pushButtonStart, SLOT( setHidden( bool ) ) );
-    connect( ui->sliderHour,        SIGNAL( valueChanged( int ) ), this, SLOT( slot_setHour( int ) ) );
-    connect( ui->sliderMinute,      SIGNAL( valueChanged( int ) ), this, SLOT( slot_setMinute( int ) ) );
+    connect( sliderHour,            SIGNAL( valueChanged( int ) ), this,                SLOT( slot_setHour( int ) ) );
+    connect( sliderMinute,          SIGNAL( valueChanged( int ) ), this,                SLOT( slot_setMinute( int ) ) );
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     ui->labelScreencastCountdownText,  SLOT( setDisabled( bool ) ) );
-    connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     sliderScreencastCountDown,     SLOT( setDisabled( bool ) ) );
+    connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     sliderScreencastCountDown,         SLOT( setDisabled( bool ) ) );
 
     connect( ui->checkBoxStopRecordingAfter, SIGNAL( toggled( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
     connect( timerStopRecordingAfter,        SIGNAL( timeout() ),       ui->pushButtonStop, SLOT( click() ) );

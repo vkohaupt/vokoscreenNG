@@ -81,6 +81,8 @@ private:
     QvkSpezialSlider *sliderFrames;
     QvkSpezialSlider *sliderX264;
     QvkSpezialSlider *sliderLimitOfFreeDiskSpace;
+    QvkSpezialSlider *sliderHour;
+    QvkSpezialSlider *sliderMinute;
 
     QvkSettings vkSettings;
     QStringList resolutionStringList;
