@@ -80,6 +80,7 @@ private:
     QvkSpezialSlider *sliderScreencastCountDown;
     QvkSpezialSlider *sliderFrames;
     QvkSpezialSlider *sliderX264;
+    QvkSpezialSlider *sliderLimitOfFreeDiskSpace;
 
     QvkSettings vkSettings;
     QStringList resolutionStringList;

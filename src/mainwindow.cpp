@@ -91,6 +91,14 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderX264->setMaximum( 50 );
     sliderX264->setValue( 17 );
 
+    sliderLimitOfFreeDiskSpace = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_27->insertWidget( 3, sliderLimitOfFreeDiskSpace );
+    sliderLimitOfFreeDiskSpace->setObjectName( "sliderLimitOfFreeDiskSpace" );
+    sliderLimitOfFreeDiskSpace->setMinimum( 100 );
+    sliderLimitOfFreeDiskSpace->setMaximum( 999 );
+    sliderLimitOfFreeDiskSpace->setValue( 250 );
+    sliderLimitOfFreeDiskSpace->show();
+
     QvkTheme *vkTheme = new QvkTheme( ui );
     Q_UNUSED(vkTheme);
 
@@ -133,7 +141,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkInformation *vkInformation = new QvkInformation( this, ui);
     connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
 
-    vkLimitDiskFreeSpace = new QvkLimitDiskFreeSpace( this, ui );
+    vkLimitDiskFreeSpace = new QvkLimitDiskFreeSpace( ui, sliderLimitOfFreeDiskSpace );
 
     qDebug().noquote() << global::nameOutput << "Version:" << global::version;
     qDebug().noquote() << global::nameOutput << "Locale: " << QLocale::system().name();
@@ -334,7 +342,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( videoFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
 
-    connect( ui->sliderLimitOfFreeDiskSpace, SIGNAL( valueChanged( int ) ), ui->labelLimitOfFreeDiskSpace, SLOT( setNum( int ) ) );
+    //connect( ui->sliderLimitOfFreeDiskSpace, SIGNAL( valueChanged( int ) ), ui->labelLimitOfFreeDiskSpace, SLOT( setNum( int ) ) );
 
     ui->comboBoxScale->addItems( resolutionStringList );
     connect( ui->checkBoxScale,   SIGNAL( toggled( bool ) ), ui->comboBoxScale, SLOT( setEnabled( bool ) ) );

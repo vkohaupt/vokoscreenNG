@@ -24,6 +24,7 @@
 #define QvkLimitDiskFreeSpace_H
 
 #include "ui_formMainWindow.h"
+#include "QvkSpezialSlider.h"
 
 #include <QWidget>
 
@@ -31,7 +32,7 @@ class QvkLimitDiskFreeSpace: public QWidget
 { 
 Q_OBJECT
 public:
-  QvkLimitDiskFreeSpace( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow );
+  QvkLimitDiskFreeSpace( Ui_formMainWindow *ui_mainwindow, QvkSpezialSlider *vkSpezialSlider );
   virtual ~QvkLimitDiskFreeSpace();
   bool isStorageOK();
   bool isStorageOKMessagBoxByStart();
@@ -53,7 +54,7 @@ protected:
 private:
   Ui_formMainWindow *ui;
   QTimer *timerStorageSize;
-
+  QvkSpezialSlider *sliderLimitOfFreeDiskSpace;
 
 };
 

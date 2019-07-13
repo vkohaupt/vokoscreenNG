@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1016,38 +1016,9 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="labelLimitOfFreeDiskSpace">
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Sunken</enum>
-                   </property>
-                   <property name="text">
-                    <string notr="true">250</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
                   <widget class="QLabel" name="label_11">
                    <property name="text">
                     <string>Megabyte</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QSlider" name="sliderLimitOfFreeDiskSpace">
-                   <property name="minimum">
-                    <number>100</number>
-                   </property>
-                   <property name="maximum">
-                    <number>999</number>
-                   </property>
-                   <property name="value">
-                    <number>250</number>
-                   </property>
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
                    </property>
                   </widget>
                  </item>

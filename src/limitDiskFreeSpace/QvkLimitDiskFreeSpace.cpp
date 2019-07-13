@@ -28,10 +28,10 @@
 #include <QStorageInfo>
 #include <QMessageBox>
 
-QvkLimitDiskFreeSpace::QvkLimitDiskFreeSpace( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow )
+QvkLimitDiskFreeSpace::QvkLimitDiskFreeSpace( Ui_formMainWindow *ui_mainwindow, QvkSpezialSlider *vkSpezialSlider )
 {
-    Q_UNUSED(mainWindow);
     ui = ui_mainwindow;
+    sliderLimitOfFreeDiskSpace = vkSpezialSlider;
 
     timerStorageSize = new QTimer(this);
     timerStorageSize->setTimerType( Qt::PreciseTimer );
@@ -53,7 +53,7 @@ bool QvkLimitDiskFreeSpace::isStorageOK()
     storage.refresh();
 
     // Stop a record if disk space smaller 250MB(Default) 999MB(Max)
-    if ( storage.bytesAvailable() <= ( ui->sliderLimitOfFreeDiskSpace->value() * 1024 * 1024 ) )
+    if ( storage.bytesAvailable() <= ( sliderLimitOfFreeDiskSpace->value() * 1024 * 1024 ) )
     {
         return false;
     }
@@ -67,7 +67,7 @@ bool QvkLimitDiskFreeSpace::isStorageOKMessagBoxByStart()
     storage.refresh();
 
     // Stop a record if disk space smaller 250MB(Default) 999MB(Max)
-    if ( storage.bytesAvailable() <= ( ui->sliderLimitOfFreeDiskSpace->value() * 1024 * 1024 ) )
+    if ( storage.bytesAvailable() <= ( sliderLimitOfFreeDiskSpace->value() * 1024 * 1024 ) )
     {
         timerStorageSize->stop();
 
@@ -78,7 +78,7 @@ bool QvkLimitDiskFreeSpace::isStorageOKMessagBoxByStart()
         messageBox->setInformativeText( tr( "The free disk space limit is reached." )
                                         + "\n"
                                         + "\n"
-                                        + tr( "Limit of free disk space" ) + " " + QString::number( ui->sliderLimitOfFreeDiskSpace->value() ) + " " + tr( "Megabyte" )
+                                        + tr( "Limit of free disk space" ) + " " + QString::number( sliderLimitOfFreeDiskSpace->value() ) + " " + tr( "Megabyte" )
                                       );
         messageBox->setStandardButtons( QMessageBox::Ok );
         messageBox->setIcon( QMessageBox::Warning );
@@ -97,7 +97,7 @@ void QvkLimitDiskFreeSpace::slot_storageMessagBoxByRecord()
     storage.refresh();
 
     // Stop a record if disk space smaller 250MB(Default) 999MB(Max)
-    if ( storage.bytesAvailable() <= ( ui->sliderLimitOfFreeDiskSpace->value() * 1024 * 1024 ) )
+    if ( storage.bytesAvailable() <= ( sliderLimitOfFreeDiskSpace->value() * 1024 * 1024 ) )
     {
         timerStorageSize->stop();
         ui->pushButtonStop->click();
@@ -109,7 +109,7 @@ void QvkLimitDiskFreeSpace::slot_storageMessagBoxByRecord()
         messageBox->setInformativeText( tr( "The free disk space limit is reached." )
                                         + "\n"
                                         + "\n"
-                                        + tr( "Limit of free disk space" ) + " " + QString::number( ui->sliderLimitOfFreeDiskSpace->value() ) + " " + tr( "Megabyte" )
+                                        + tr( "Limit of free disk space" ) + " " + QString::number( sliderLimitOfFreeDiskSpace->value() ) + " " + tr( "Megabyte" )
                                       );
         messageBox->setStandardButtons( QMessageBox::Ok );
         messageBox->setIcon( QMessageBox::Warning );
