@@ -55,7 +55,7 @@ void QvkSpezialSlider::paintEvent(QPaintEvent *event)
 
     QBrush brush;
     brush.setStyle( Qt::SolidPattern );
-    brush.setColor( vk_get_color( QPalette::Mid ) ); ////////////////////////////////////////////////////////////////////////////////////////////
+    brush.setColor( vk_get_color( QPalette::Mid ) );
     painter.setBrush( brush );
 
     painter.drawRoundedRect( 0,
@@ -103,12 +103,12 @@ void QvkSpezialSlider::paintEvent(QPaintEvent *event)
                                  2*handleRadius ) );
 
     // Handletext
-    QFont font;
-    font.setPointSizeF( handleRadius - pen.widthF() );
+    QFont font = qApp->font();
     painter.setFont( font );
-
     QFontMetrics fontMetrics( font );
     qreal pixelWidth = fontMetrics.width( QString::number( value() ) );
+
+    setMinimumHeight( fontMetrics.width( "5555" ) );
 
     painter.setPen( vk_get_color( QPalette::ButtonText ) );
 
