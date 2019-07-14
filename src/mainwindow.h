@@ -83,6 +83,7 @@ private:
     QvkSpezialSlider *sliderLimitOfFreeDiskSpace;
     QvkSpezialSlider *sliderHour;
     QvkSpezialSlider *sliderMinute;
+    QvkSpezialSlider *sliderMinimizedRecordingStarts;
 
     QvkSettings vkSettings;
     QStringList resolutionStringList;

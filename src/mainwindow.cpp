@@ -112,6 +112,13 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderMinute->setMaximum( 59 );
     sliderMinute->setValue( 0 );
 
+    sliderMinimizedRecordingStarts = new QvkSpezialSlider( Qt::Horizontal );
+    ui->verticalLayout_27->insertWidget(0, sliderMinimizedRecordingStarts );
+    sliderMinimizedRecordingStarts->setObjectName( "sliderMinimizedRecordingStarts" );
+    sliderMinimizedRecordingStarts->setMinimum( 0 );
+    sliderMinimizedRecordingStarts->setMaximum( 4 );
+    sliderMinimizedRecordingStarts->setValue( 0 );
+
     QvkTheme *vkTheme = new QvkTheme( ui );
     Q_UNUSED(vkTheme);
 
@@ -317,7 +324,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkAudioPulse = new QvkAudioPulse( this, ui );
     connect( vkAudioPulse, SIGNAL( signal_noAudioDevicesAvalaible( bool ) ), this,                   SLOT( slot_audioIconOnOff( bool )  ) );
 
-    connect( vkAudioPulse, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this,                   SLOT( slot_audioIconOnOff( bool ) ) ); //-----------------------------------------------
+    connect( vkAudioPulse, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this,                   SLOT( slot_audioIconOnOff( bool ) ) );
     connect( vkAudioPulse, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
     connect( vkAudioPulse, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
 
@@ -1562,7 +1569,7 @@ void QvkMainWindow::slot_Start()
     if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  )
     {
         setWindowState( Qt::WindowMinimized );
-        QThread::msleep( static_cast<unsigned long>(ui->spinBoxMinimizedWhenRecordingStarts->value()) * 1000 );
+        QThread::msleep( static_cast<unsigned long>( sliderMinimizedRecordingStarts->value()) * 1000 );
     }
 
     QStringList VK_PipelineList;

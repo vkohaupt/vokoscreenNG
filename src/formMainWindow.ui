@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>4</number>
+           <number>3</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1084,24 +1084,15 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_35">
                  <item>
-                  <widget class="QSpinBox" name="spinBoxMinimizedWhenRecordingStarts">
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                   </property>
-                   <property name="maximum">
-                    <number>4</number>
-                   </property>
-                   <property name="value">
-                    <number>1</number>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="label_18">
-                   <property name="text">
-                    <string>Second wait before recording</string>
-                   </property>
-                  </widget>
+                  <layout class="QVBoxLayout" name="verticalLayout_27">
+                   <item>
+                    <widget class="QLabel" name="label_18">
+                     <property name="text">
+                      <string>Second wait before recording</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
                  </item>
                 </layout>
                </widget>
@@ -2505,7 +2496,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>checkBoxShowInSystray</tabstop>
   <tabstop>help_screencast_showinsystray</tabstop>
   <tabstop>checkBoxMinimizedWhenRecordingStarts</tabstop>
-  <tabstop>spinBoxMinimizedWhenRecordingStarts</tabstop>
   <tabstop>help_screencast_minimizedwhenrecordingstarts</tabstop>
   <tabstop>checkBoxStartsMinimized</tabstop>
   <tabstop>help_screencast_startsminimized</tabstop>
