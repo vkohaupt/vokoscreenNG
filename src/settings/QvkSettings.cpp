@@ -130,7 +130,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             listCheckBox.at(i)->click();
         }
     }
-
+/*
     QList<QSpinBox *> listSpinBox = ui_mainwindow->centralWidget->findChildren<QSpinBox *>();
     for ( int i = 0; i < listSpinBox.count(); i++ )
     {
@@ -140,7 +140,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             listSpinBox.at(i)->setValue( value );
         }
     }
-
+*/
     QList<QSlider *> listSlider = ui_mainwindow->centralWidget->findChildren<QSlider *>();
     for ( int i = 0; i < listSlider.count(); i++ )
     {
@@ -238,7 +238,7 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
                 settings.setValue( listCheckBox.at(i)->objectName(), listCheckBox.at(i)->isChecked() );
         }
     }
-
+/*
     QList<QSpinBox *> listSpinBox = ui_mainwindow->centralWidget->findChildren<QSpinBox *>();
     for ( int i = 0; i < listSpinBox.count(); i++ )
     {
@@ -247,7 +247,7 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
         else
             settings.setValue( listSpinBox.at(i)->objectName(), listSpinBox.at(i)->value() );
     }
-
+*/
     QList<QComboBox *> listComboBox = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
     for ( int i = 0; i < listComboBox.count(); i++ )
     {

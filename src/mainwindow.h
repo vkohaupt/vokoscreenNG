@@ -84,6 +84,9 @@ private:
     QvkSpezialSlider *sliderHour;
     QvkSpezialSlider *sliderMinute;
     QvkSpezialSlider *sliderMinimizedRecordingStarts;
+    QvkSpezialSlider *sliderStopRecordingAfterHouers;
+    QvkSpezialSlider *sliderStopRecordingAfterMinutes;
+    QvkSpezialSlider *sliderStopRecordingAfterSeconds;
 
     QvkSettings vkSettings;
     QStringList resolutionStringList;

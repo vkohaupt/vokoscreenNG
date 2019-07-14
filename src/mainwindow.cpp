@@ -119,6 +119,27 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderMinimizedRecordingStarts->setMaximum( 4 );
     sliderMinimizedRecordingStarts->setValue( 0 );
 
+    sliderStopRecordingAfterHouers = new QvkSpezialSlider( Qt::Horizontal );
+    ui->verticalLayout_29->addWidget( sliderStopRecordingAfterHouers );
+    sliderStopRecordingAfterHouers->setObjectName( "sliderStopRecordingAfterHouers" );
+    sliderStopRecordingAfterHouers->setMinimum( 0 );
+    sliderStopRecordingAfterHouers->setMaximum( 99 );
+    sliderStopRecordingAfterHouers->setValue( 0 );
+
+    sliderStopRecordingAfterMinutes = new QvkSpezialSlider( Qt::Horizontal );
+    ui->verticalLayout_29->addWidget( sliderStopRecordingAfterMinutes );
+    sliderStopRecordingAfterMinutes->setObjectName( "sliderStopRecordingAfterMinutes" );
+    sliderStopRecordingAfterMinutes->setMinimum( 0 );
+    sliderStopRecordingAfterMinutes->setMaximum( 99 );
+    sliderStopRecordingAfterMinutes->setValue( 0 );
+
+    sliderStopRecordingAfterSeconds = new QvkSpezialSlider( Qt::Horizontal );
+    ui->verticalLayout_29->addWidget( sliderStopRecordingAfterSeconds );
+    sliderStopRecordingAfterSeconds->setObjectName( "sliderStopRecordingAfterSeconds" );
+    sliderStopRecordingAfterSeconds->setMinimum( 0 );
+    sliderStopRecordingAfterSeconds->setMaximum( 99 );
+    sliderStopRecordingAfterSeconds->setValue( 15 );
+
     QvkTheme *vkTheme = new QvkTheme( ui );
     Q_UNUSED(vkTheme);
 
@@ -1392,9 +1413,9 @@ void QvkMainWindow::slot_preStart()
 
     if ( ui->checkBoxStopRecordingAfter->isChecked() == true )
     {
-        int value = ui->spinBoxStopRecordingAfterHouers->value()*60*60*1000;
-        value += ui->spinBoxStopRecordingAfterMinutes->value()*60*1000;
-        value += + ui->spinBoxStopRecordingAfterSeconds->value()*1000;
+        int value = sliderStopRecordingAfterHouers->value()*60*60*1000;
+        value += sliderStopRecordingAfterMinutes->value()*60*1000;
+        value += sliderStopRecordingAfterSeconds->value()*1000;
         timerStopRecordingAfter->setTimerType( Qt::PreciseTimer );
         timerStopRecordingAfter->start( value );
     }
