@@ -18,11 +18,6 @@ Tumbelweed Audio:
 --Rotes Kreuz wird nach dem Start von vokoscreenNG nicht angezeigt wenn keine Geräte gesetzt sind.
 
 
-Systray:
---Menüanzeige ändern auf Linksklick.
---KDE Icon wird erst angezeigt wenn von Automatisch auf Angezeigt umgeschaltet wird. API anschauen ob es evtl. durch eine Messsage möglich ist das Icon grundsätzlich anzuzeigen.
-
-
 CountDown:
 --Aufnahmezeit beginnt schon mit dem CountDown.
 
@@ -55,3 +50,9 @@ Screencast FPS: Mindest FPS wurde in der GUI auf 10 erhöht. Folgendes könnte n
 --Abstand zum nächsten I-Frame verkleinern? Bei einem 1FPS wäre jeder Frame ein I-FRame.
 --Abstand der I-Frames den FPS gleichstellen?
 --Buffer einbauen?
+
+Systray:
+--Menüanzeige ändern auf Linksklick.
+--KDE Icon wird erst angezeigt wenn von Automatisch auf Angezeigt umgeschaltet wird.
+--API anschauen ob es evtl. durch eine Messsage möglich ist das Icon grundsätzlich anzuzeigen.
+
