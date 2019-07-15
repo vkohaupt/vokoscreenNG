@@ -61,8 +61,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                                 ui(new Ui::formMainWindow),
                                                 vkWinInfo(new QvkWinInfo),
                                                 vkCountdown(new QvkCountdown),
-                                                vkRegionChoise(new QvkRegionChoise),
-                                                vkAudioWindows(new QvkAudioWindows(ui))
+                                                vkRegionChoise(new QvkRegionChoise)
 #endif
 {
     ui->setupUi(this);
@@ -353,8 +352,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 #ifdef Q_OS_LINUX
     vkAudioPulse = new QvkAudioPulse( this, ui );
-    connect( vkAudioPulse, SIGNAL( signal_noAudioDevicesAvalaible( bool ) ), this,                   SLOT( slot_audioIconOnOff( bool )  ) );
-
+    connect( vkAudioPulse, SIGNAL( signal_noAudioDevicesAvalaible( bool ) ), this,                   SLOT( slot_audioIconOnOff( bool ) ) );
     connect( vkAudioPulse, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this,                   SLOT( slot_audioIconOnOff( bool ) ) );
     connect( vkAudioPulse, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
     connect( vkAudioPulse, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
@@ -363,8 +361,15 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 
 #ifdef Q_OS_WIN
-    vkAudioWindows->slot_start( true );
+    vkAudioWindows = new QvkAudioWindows( ui );
+    connect( vkAudioWindows, SIGNAL( signal_audioDevicesAvalaible( bool ) )  , this,                   SLOT( slot_audioIconOnOff( bool ) ) );
+    connect( vkAudioWindows, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this,                   SLOT( slot_audioIconOnOff( bool ) ) );
+    connect( vkAudioWindows, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
+    connect( vkAudioWindows, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
+    vkAudioWindows->init();
+//    vkAudioWindows->slot_start( true );
 #endif
+
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
 

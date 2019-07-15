@@ -34,6 +34,7 @@ class QvkAudioWindows: public QObject
 public:
     QvkAudioWindows(  Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkAudioWindows();
+    void init();
 
     
 public slots:
@@ -48,6 +49,7 @@ private:
     
 private slots:
     void slot_getWindowsDevices();
+    void slot_audioDeviceSelected();
     void slot_clearVerticalLayoutAudioDevices();
     void slot_update();
 
@@ -56,6 +58,8 @@ protected:
   
   
 signals:
+    void signal_audioDevicesAvalaible( bool );
+    void signal_haveAudioDeviceSelected( bool );
 
     
 };

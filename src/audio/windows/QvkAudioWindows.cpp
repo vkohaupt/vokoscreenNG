@@ -40,27 +40,54 @@ QvkAudioWindows::~QvkAudioWindows()
 {
 }
 
+void QvkAudioWindows::init()
+{
+    slot_getWindowsDevices();
+}
 
 void QvkAudioWindows::slot_getWindowsDevices()
 {
-    foreach ( const QAudioDeviceInfo &deviceInfo, QAudioDeviceInfo::availableDevices( QAudio::AudioInput ) )
+    QList<QAudioDeviceInfo> list = QAudioDeviceInfo::availableDevices( QAudio::AudioInput );
+    if ( !list.empty() )
     {
-        QCheckBox *checkboxAudioDevice = new QCheckBox();
-        checkboxAudioDevice->setText( deviceInfo.deviceName() );
-        checkboxAudioDevice->setAccessibleName( deviceInfo.deviceName() );
-        checkboxAudioDevice->setObjectName( "checkboxAudioDevice" + deviceInfo.deviceName() );
-        ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
-        checkboxAudioDevice->setAutoExclusive( false );
-        qDebug().noquote() << global::nameOutput << "Audio device:" << deviceInfo.deviceName();
+        for ( int i = 0; i < list.count(); i++ )
+        {
+            QCheckBox *checkboxAudioDevice = new QCheckBox();
+            connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
+            checkboxAudioDevice->setText( list.at(i).deviceName() );
+            checkboxAudioDevice->setAccessibleName( list.at(i).deviceName() );
+            checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( i ) );
+            ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
+            qDebug().noquote() << global::nameOutput << "Audio device:" << list.at(i).deviceName();
+        }
+        qDebug();
+        QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
+        ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
+
+        // The first audiodevice is the standard audiodevice. Tested under Windows 10
+        //QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
+        //listQCheckBox.at(0)->click();
     }
-    qDebug();
+    else
+    {
+        emit signal_audioDevicesAvalaible( false );
+    }
+}
 
-    // The first audiodevice is the standard audiodevice. Tested under Windows 10
-    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
-    listQCheckBox.at(0)->click();
 
-    QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
-    ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
+void QvkAudioWindows::slot_audioDeviceSelected()
+{
+    bool value = false;
+    QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ )
+    {
+        if ( listCheckBox.at(i)->checkState() == Qt::Checked )
+        {
+            value = true;
+            break;
+        }
+    }
+    emit signal_haveAudioDeviceSelected( value );
 }
 
 
