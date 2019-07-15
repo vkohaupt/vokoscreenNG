@@ -74,6 +74,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderScreencastCountDown->setMinimum( 0 );
     sliderScreencastCountDown->setMaximum( 30 );
     sliderScreencastCountDown->setValue( 0 );
+    sliderScreencastCountDown->show();
 
     sliderFrames = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_5->addWidget( sliderFrames );
@@ -82,6 +83,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderFrames->setMinimum( 10 );
     sliderFrames->setMaximum( 99 );
     sliderFrames->setValue( 25 );
+    sliderFrames->show();
 
     sliderX264 = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_x264->insertWidget( 2, sliderX264 );
@@ -90,6 +92,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderX264->setMinimum( 0 );
     sliderX264->setMaximum( 50 );
     sliderX264->setValue( 17 );
+    sliderX264->show();
 
     sliderLimitOfFreeDiskSpace = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_27->insertWidget( 3, sliderLimitOfFreeDiskSpace );
@@ -97,6 +100,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderLimitOfFreeDiskSpace->setMinimum( 100 );
     sliderLimitOfFreeDiskSpace->setMaximum( 999 );
     sliderLimitOfFreeDiskSpace->setValue( 250 );
+    sliderLimitOfFreeDiskSpace->show();
 
     sliderHour = new QvkSpezialSlider( Qt::Horizontal );
     ui->verticalLayout_14->addWidget( sliderHour );
@@ -104,6 +108,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderHour->setMinimum( 0 );
     sliderHour->setMaximum( 23 );
     sliderHour->setValue( 0 );
+    sliderHour->show();
 
     sliderMinute = new QvkSpezialSlider( Qt::Horizontal );
     ui->verticalLayout_14->addWidget( sliderMinute );
@@ -111,6 +116,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderMinute->setMinimum( 0 );
     sliderMinute->setMaximum( 59 );
     sliderMinute->setValue( 0 );
+    sliderMinute->show();
 
     sliderMinimizedRecordingStarts = new QvkSpezialSlider( Qt::Horizontal );
     ui->verticalLayout_27->insertWidget(0, sliderMinimizedRecordingStarts );
@@ -118,6 +124,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderMinimizedRecordingStarts->setMinimum( 0 );
     sliderMinimizedRecordingStarts->setMaximum( 4 );
     sliderMinimizedRecordingStarts->setValue( 0 );
+    sliderMinimizedRecordingStarts->show();
 
     sliderStopRecordingAfterHouers = new QvkSpezialSlider( Qt::Horizontal );
     ui->verticalLayout_29->addWidget( sliderStopRecordingAfterHouers );
@@ -125,6 +132,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderStopRecordingAfterHouers->setMinimum( 0 );
     sliderStopRecordingAfterHouers->setMaximum( 99 );
     sliderStopRecordingAfterHouers->setValue( 0 );
+    sliderStopRecordingAfterHouers->show();
 
     sliderStopRecordingAfterMinutes = new QvkSpezialSlider( Qt::Horizontal );
     ui->verticalLayout_29->addWidget( sliderStopRecordingAfterMinutes );
@@ -132,6 +140,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderStopRecordingAfterMinutes->setMinimum( 0 );
     sliderStopRecordingAfterMinutes->setMaximum( 99 );
     sliderStopRecordingAfterMinutes->setValue( 0 );
+    sliderStopRecordingAfterMinutes->show();
 
     sliderStopRecordingAfterSeconds = new QvkSpezialSlider( Qt::Horizontal );
     ui->verticalLayout_29->addWidget( sliderStopRecordingAfterSeconds );
@@ -139,6 +148,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderStopRecordingAfterSeconds->setMinimum( 0 );
     sliderStopRecordingAfterSeconds->setMaximum( 99 );
     sliderStopRecordingAfterSeconds->setValue( 15 );
+    sliderStopRecordingAfterSeconds->show();
 
     QvkTheme *vkTheme = new QvkTheme( ui );
     Q_UNUSED(vkTheme);

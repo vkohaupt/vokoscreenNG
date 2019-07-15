@@ -31,10 +31,8 @@
 QvkSpezialSlider::QvkSpezialSlider( Qt::Orientation orientation)
 {
     setOrientation( orientation );
-    setMinimumHeight( 26 ); // Sliderhöhe
     radius = 4.0; // Radius from begin and end off line
     lineHight = 6.0;
-    show();
 }
 
 QvkSpezialSlider::~QvkSpezialSlider()
