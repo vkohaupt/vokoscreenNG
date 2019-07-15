@@ -62,7 +62,6 @@ void QvkAudioPulse::slot_setDevice( QString string )
         checkboxAudioDevice->setText( name );
         checkboxAudioDevice->setAccessibleName( device );
         ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
-        checkboxAudioDevice->setAutoExclusive( true );
     }
 
     if ( header == "[Audio-device-removed]" )
@@ -96,8 +95,6 @@ void QvkAudioPulse::getPulseDevices()
             checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( i ) );
             checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
-            checkboxAudioDevice->setAutoExclusive( false );
-
             qDebug().noquote() << global::nameOutput << "PulseAudio device:" << list.at(i);
         }
         qDebug().noquote();
