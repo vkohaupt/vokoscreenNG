@@ -1,4 +1,8 @@
 
+Linux Audio:
+--Geräte die währen der Laufzeit hinzugefügt werden zeigen nicht das rote Kreuz an wenn sie unchecked sind.
+
+
 LDFLAGS:
 To LDFLAGS, if needed only. If you fix all above warnings, it is not
 needed. Now we have only these:

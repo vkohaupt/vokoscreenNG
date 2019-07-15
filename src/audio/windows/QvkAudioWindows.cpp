@@ -50,7 +50,7 @@ void QvkAudioWindows::slot_getWindowsDevices()
         checkboxAudioDevice->setAccessibleName( deviceInfo.deviceName() );
         checkboxAudioDevice->setObjectName( "checkboxAudioDevice" + deviceInfo.deviceName() );
         ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
-        checkboxAudioDevice->setAutoExclusive( true );
+        checkboxAudioDevice->setAutoExclusive( false );
         qDebug().noquote() << global::nameOutput << "Audio device:" << deviceInfo.deviceName();
     }
     qDebug();
