@@ -50,7 +50,7 @@ protected:
 
 
 private:
-    // If a Desktop ha no Icon-Theme as Windows or a broken Linux Desktop then QIcon::themeName() return "" therefore we need pillepalle :>)
+    // If a Desktop has no Icon-Theme as Windows or a broken Linux Desktop then QIcon::themeName() return "" therefore we need pillepalle :>)
     QString oldThemeName = "pillepalle";
     Ui_formMainWindow *ui;
 

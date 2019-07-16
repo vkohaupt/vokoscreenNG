@@ -1,6 +1,6 @@
 
-Linux Audio:
---Geräte die währen der Laufzeit hinzugefügt werden zeigen nicht das rote Kreuz an wenn sie unchecked sind.
+Windows Audio:
+--Viele Dinge sind noch nicht fertig
 
 
 LDFLAGS:
@@ -12,10 +12,6 @@ libpthread.so.0 (it uses none of the library's symbols)
 dpkg-shlibdeps: warning: package could avoid a useless dependency if
 debian/vokoscreen-ng/usr/bin/vokoscreenNG was not linked against
 libGL.so.1 (it uses none of the library's symbols)
-
-
-Tumbelweed Audio:
---Rotes Kreuz wird nach dem Start von vokoscreenNG nicht angezeigt wenn keine Geräte gesetzt sind.
 
 
 CountDown:
