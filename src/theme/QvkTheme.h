@@ -50,7 +50,8 @@ protected:
 
 
 private:
-    QString oldThemeName = "";
+    // If Desktop no Theme set QIcon::themeName()=="" therefore need we need pillepalle :>)
+    QString oldThemeName = "pillepalle";
     Ui_formMainWindow *ui;
 
     QTimer *timer;
