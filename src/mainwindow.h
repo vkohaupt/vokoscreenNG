@@ -130,7 +130,6 @@ private:
 
     QvkPlayer *vkPlayer;
 
-    QIcon VK_getIcon(QString stringIcon, QString iconNameFallback );
     QvkTheme *vkTheme;
 
     QvkCameraController *vkCameraController;

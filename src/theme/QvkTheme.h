@@ -40,13 +40,11 @@ public slots:
 
 
 private slots: 
-    void slot_searchNewTheme();
-    void slot_setNewTheme();
+    void slot_setTheme();
 
 
 signals:
     void signal_newTheme();
-
 
 protected:  
 

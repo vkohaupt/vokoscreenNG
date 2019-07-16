@@ -59,8 +59,11 @@ void QvkAudioPulse::slot_setDevice( QString string )
     if ( header == "[Audio-device-added]" )
     {
         QCheckBox *checkboxAudioDevice = new QCheckBox();
+        connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
         checkboxAudioDevice->setText( name );
         checkboxAudioDevice->setAccessibleName( device );
+        QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
+        checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( listAudioDevices.count() ) );
         ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
     }
 
@@ -74,6 +77,7 @@ void QvkAudioPulse::slot_setDevice( QString string )
                 delete listAudioDevices.at(i);
             }
         }
+        slot_audioDeviceSelected();
     }
 }
 
@@ -101,10 +105,11 @@ void QvkAudioPulse::getPulseDevices()
 
         QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
         ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
+        slot_audioDeviceSelected();
     }
     else
     {
-        emit signal_noAudioDevicesAvalaible( false );
+        emit signal_haveAudioDeviceSelected( false );
     }
 }
 

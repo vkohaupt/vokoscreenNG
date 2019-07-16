@@ -149,7 +149,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderStopRecordingAfterSeconds->setValue( 15 );
     sliderStopRecordingAfterSeconds->show();
 
-    QvkTheme *vkTheme = new QvkTheme( ui );
+    vkTheme = new QvkTheme( ui );
     Q_UNUSED(vkTheme);
 
     QvkLogController *vklogController = new QvkLogController( ui );
@@ -347,28 +347,25 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 
     // Tab 2 Audio and Videocodec
-    connect( vkTheme,                SIGNAL( signal_newTheme() ), this,                      SLOT( slot_audioRedCross() ) );
+    //connect( vkTheme,                SIGNAL( signal_newTheme() ), this,                      SLOT( slot_audioRedCross() ) );
 
 
 #ifdef Q_OS_LINUX
     vkAudioPulse = new QvkAudioPulse( this, ui );
-    connect( vkAudioPulse, SIGNAL( signal_noAudioDevicesAvalaible( bool ) ), this,                   SLOT( slot_audioIconOnOff( bool ) ) );
     connect( vkAudioPulse, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this,                   SLOT( slot_audioIconOnOff( bool ) ) );
     connect( vkAudioPulse, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
     connect( vkAudioPulse, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
-
     vkAudioPulse->init();
 #endif
 
 #ifdef Q_OS_WIN
     vkAudioWindows = new QvkAudioWindows( ui );
-    connect( vkAudioWindows, SIGNAL( signal_audioDevicesAvalaible( bool ) )  , this,                   SLOT( slot_audioIconOnOff( bool ) ) );
     connect( vkAudioWindows, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this,                   SLOT( slot_audioIconOnOff( bool ) ) );
     connect( vkAudioWindows, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
     connect( vkAudioWindows, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
     vkAudioWindows->init();
-//    vkAudioWindows->slot_start( true );
 #endif
+    connect( vkTheme,                SIGNAL( signal_newTheme() ), this,                      SLOT( slot_audioRedCross() ) );
 
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
@@ -759,38 +756,13 @@ void QvkMainWindow::resizeEvent( QResizeEvent *event )
 }
 
 
-QIcon QvkMainWindow::VK_getIcon( QString iconName, QString iconNameFallback )
-{
-    QIcon icon;
-
-    if ( global::VK_showOnlyFallbackIcons == true )
-    {
-        QIcon tmpIcon( iconNameFallback );
-        icon = tmpIcon;
-        return icon;
-    }
-
-    if ( QIcon::hasThemeIcon( iconName ) == true )
-    {
-        icon = QIcon::fromTheme( iconName );
-    }
-    else
-    {
-        QIcon tmpIcon( iconNameFallback );
-        icon = tmpIcon;
-    }
-
-    return icon;
-}
-
-
 void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
 {
 #ifdef Q_OS_LINUX
-    QIcon icon = VK_getIcon( "pillepalle", ":/pictures/linux.png" );
+    QIcon icon = vkTheme->VK_getIcon( "pillepalle", ":/pictures/linux.png" );
 #endif
 #ifdef Q_OS_WIN
-    QIcon icon = VK_getIcon( "pillepalle", ":/pictures/windows.png" );
+    QIcon icon = vkTheme->VK_getIcon( "pillepalle", ":/pictures/windows.png" );
 #endif
 
     int a = 256;
@@ -817,7 +789,6 @@ void QvkMainWindow::slot_audioRedCross()
     }
 }
 
-
 bool QvkMainWindow::isAudioDeviceSelected()
 {
     bool value = false;
@@ -833,7 +804,6 @@ bool QvkMainWindow::isAudioDeviceSelected()
     return value;
 }
 
-
 /*
  * Set a new icon with a red cross
  */
@@ -843,7 +813,7 @@ void QvkMainWindow::slot_audioIconOnOff( bool state )
          ( ( isAudioDeviceSelected() == false ) and ( state == true ) ) or
          ( ( isAudioDeviceSelected() == true )  and ( state == false ) ) )
     {
-        QIcon myIcon = VK_getIcon( "audio-input-microphone", ":/pictures/screencast/microphone.png" );
+        QIcon myIcon = vkTheme->VK_getIcon( "audio-input-microphone", ":/pictures/screencast/microphone.png" );
         QSize size = ui->tabWidgetScreencast->iconSize();
         QPixmap workPixmap( myIcon.pixmap( size ) );
         QPainter painter;
@@ -862,7 +832,7 @@ void QvkMainWindow::slot_audioIconOnOff( bool state )
     else{
         vkTheme->makeAndSetValidIcon( ui->tabWidgetScreencast,
                                       ui->tabWidgetScreencast->indexOf( ui->tabAudio ),
-                                      VK_getIcon( "audio-input-microphone", ":/pictures/screencast/microphone.png" ) );
+                                      vkTheme->VK_getIcon( "audio-input-microphone", ":/pictures/screencast/microphone.png" ) );
     }
 }
 
