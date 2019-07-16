@@ -100,15 +100,6 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             continue;
         }
 
-        // We have no settings-file(first start after install), audio is off and the tab have a red cross
-        if ( ( listCheckBox.at(i)->objectName() == "checkBoxAudioOnOff" ) and
-             ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == false ) )
-        {
-            listCheckBox.at(i)->click();
-            listCheckBox.at(i)->click();
-            continue;
-        }
-
         if ( ( listCheckBox.at(i)->objectName() == "checkBoxStartsMinimized" ) and
              ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true ) )
         {
