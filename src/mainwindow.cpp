@@ -1508,21 +1508,6 @@ void QvkMainWindow::slot_startCounter( bool value )
 }
 
 
-QString QvkMainWindow::VK_get_AudioDevice()
-{
-    QString audioDevice;
-    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listQCheckBox.count(); i++ )
-    {
-        if ( listQCheckBox.at(i)->checkState() == Qt::Checked )
-        {
-            audioDevice = listQCheckBox.at(i)->accessibleName();
-        }
-    }
-    return audioDevice;
-}
-
-
 #ifdef Q_OS_LINUX
 QString QvkMainWindow::VK_get_AudioSystem()
 {
