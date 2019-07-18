@@ -1678,9 +1678,6 @@
             </item>
             <item>
              <layout class="QGridLayout" name="gridLayout_7">
-              <item row="1" column="2">
-               <layout class="QVBoxLayout" name="verticalLayout_15"/>
-              </item>
               <item row="1" column="1">
                <widget class="QLabel" name="labelAutorPicture">
                 <property name="maximumSize">
@@ -1699,9 +1696,6 @@
                  <set>Qt::AlignCenter</set>
                 </property>
                </widget>
-              </item>
-              <item row="1" column="0">
-               <layout class="QVBoxLayout" name="verticalLayout_20"/>
               </item>
               <item row="2" column="2">
                <widget class="QLabel" name="labelDonateUrl">
@@ -1729,13 +1723,10 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="labelSourcecodeUrl">
-                <property name="autoFillBackground">
-                 <bool>true</bool>
-                </property>
+              <item row="2" column="0">
+               <widget class="QLabel" name="labelWebSiteUrl">
                 <property name="text">
-                 <string notr="true">Sourcecode</string>
+                 <string notr="true">Website</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -1745,10 +1736,10 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="labelWebSiteUrl">
+              <item row="0" column="0">
+               <widget class="QLabel" name="labelSourcecodeUrl">
                 <property name="text">
-                 <string notr="true">Website</string>
+                 <string notr="true">Sourcecode</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
