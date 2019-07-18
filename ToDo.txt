@@ -1,6 +1,18 @@
 
+Windows spezialslider:
+--Zahlen sind nicht mittig. Siehe spezialslider.png
+
+
+Windows About:
+--Im About-tab grauer hintergrund. Siehe Bild about.png
+
+
+Windows Kamera:
+--siehe vokoscreen 2.5.0 if ( !descript.contains( "@device:pnp" ) ) // Geräte mit dieser Beschreibung aussortieren
+
+
 Windows Audio:
---Viele Dinge sind noch nicht fertig
+--Viele Dinge sind noch nicht fertig.
 
 
 LDFLAGS:
