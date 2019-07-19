@@ -40,10 +40,6 @@ Windows:
   Inno Setup
 
 
-Windows Area:
---Wird die Bereichsanzeige an den unteren Bildschirmrand gesetzt, wird der ganze Bildschirm aufgenommen.
-
-
 Bugs aber nicht wirklich relevant:
 ==================================
 Linux Area:

@@ -1228,6 +1228,13 @@ qreal QvkRegionChoise::getHeight()
         xReal = static_cast<int>( ( frame_height - framePenWidth ) * screen->devicePixelRatio() );
     }
 
+#ifdef Q_OS_WIN
+    if ( ( xReal + getYRecordArea() ) == screen->size().height() )
+    {
+      xReal-=2;
+    }
+#endif
+
     return xReal;
 }
 
@@ -1248,6 +1255,13 @@ qreal QvkRegionChoise::getWidth()
     {
         xReal = static_cast<int>( ( frame_Width - framePenWidth ) * screen->devicePixelRatio() );
     }
+
+#ifdef Q_OS_WIN
+    if ( ( xReal + getXRecordArea() ) == screen->size().width() )
+    {
+      xReal-=2;
+    }
+#endif
 
     return xReal;
 }
