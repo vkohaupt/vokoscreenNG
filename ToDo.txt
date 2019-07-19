@@ -1,4 +1,8 @@
 
+Spezialslider:
+--Mauscursornicht stimmig mit Handle.
+
+
 Windows spezialslider:
 --Zahlen sind nicht mittig. Siehe spezialslider.png
 
