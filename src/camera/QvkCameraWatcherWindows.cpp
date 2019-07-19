@@ -117,7 +117,7 @@ void QvkCameraWatcher::slot_detectCameras()
     for ( int i = 0; i < QCameraInfo::availableCameras().count(); i++  )
     {
         QString cameraDevice = addedDeviceName( newDeviceNameList, cameras.at(i).deviceName() );
-        if ( cameraDevice > "" )
+        if ( ( cameraDevice > "" ) and ( !cameras.at(i).description().contains( "@device:pnp" ) ) )
         {
             newDeviceNameList << cameraDevice;
             newDescriptionList << cameras.at(i).description();
