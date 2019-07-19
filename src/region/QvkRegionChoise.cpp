@@ -72,13 +72,7 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
 
     screen = QGuiApplication::primaryScreen();
 
-#ifdef Q_OS_LINUX
-    resize( screen->availableSize().width(), screen->availableSize().height() );
-#endif
-
-#ifdef Q_OS_WIN
-    showMaximized();
-#endif
+    resize( screen->size().width(), screen->size().height() );
 
     screenWidth = screen->size().width();
     screenHeight = screen->size().height();
