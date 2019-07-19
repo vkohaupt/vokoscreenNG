@@ -1,4 +1,8 @@
 
+Windows Area:
+--Bereichsanzeige zeigt sich ab und an beim starten von vokoscreenNG.
+
+
 Spezialslider:
 --Mauscursor nicht stimmig mit Handle.
 
