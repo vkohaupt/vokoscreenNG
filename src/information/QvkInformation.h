@@ -24,6 +24,7 @@
 #define QvkInformation_H
 
 #include "ui_formMainWindow.h"
+#include "QvkSpezialSlider.h"
 
 #include <QWidget>
 
@@ -31,7 +32,7 @@ class QvkInformation: public QWidget
 { 
 Q_OBJECT
 public:
-  QvkInformation( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow);
+  QvkInformation(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, QvkSpezialSlider *slider);
   virtual ~QvkInformation();
 
 
@@ -64,6 +65,8 @@ private:
   QTime *elapsedTime;
 
   int int_summed = 0;
+
+  QvkSpezialSlider *sliderCountDown;
 };
 
 #endif

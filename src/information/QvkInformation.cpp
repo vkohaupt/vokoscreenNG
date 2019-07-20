@@ -27,10 +27,12 @@
 #include <QTime>
 #include <QStorageInfo>
 #include <QMessageBox>
+#include <QDebug>
 
-QvkInformation::QvkInformation( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow )
+QvkInformation::QvkInformation( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, QvkSpezialSlider *slider )
 {
     ui = ui_mainwindow;
+    sliderCountDown = slider;
 
     connect( mainWindow, SIGNAL( destroyed( QObject* ) ), this, SLOT( slot_cleanup() ) );
 
@@ -124,7 +126,18 @@ void QvkInformation::slot_StorageInfo()
 
 void QvkInformation::slot_displayRecordTime()
 {
-   QTime time( 0, 0, 0, 0 );
-   ui->labelInfoRecordTime->setText( time.addMSecs( elapsedTime->elapsed() + int_summed ).toString( "hh:mm:ss" ) );
+
+   if ( ( ui->pushButtonStop->isEnabled() == true ) and ( ui->checkBoxStartTime->checkState() == Qt::Checked ) )
+   {
+       QTime time( 0, 0, 0, 0 );
+       ui->labelInfoRecordTime->setText( time.addMSecs( elapsedTime->elapsed() + int_summed ).toString( "hh:mm:ss" ) );
+       return;
+   }
+
+   if ( ui->pushButtonStop->isEnabled() == true )
+   {
+      QTime time( 0, 0, 0, 0 );
+      ui->labelInfoRecordTime->setText( time.addMSecs( elapsedTime->elapsed() + int_summed - sliderCountDown->value()*1000 ).toString( "hh:mm:ss" ) );
+   }
 }
 

@@ -188,7 +188,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     Q_UNUSED(vkGlobalShortcut);
 #endif
 
-    QvkInformation *vkInformation = new QvkInformation( this, ui);
+    QvkInformation *vkInformation = new QvkInformation( this, ui, sliderScreencastCountDown );
     connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
 
     vkLimitDiskFreeSpace = new QvkLimitDiskFreeSpace( ui, sliderLimitOfFreeDiskSpace );
