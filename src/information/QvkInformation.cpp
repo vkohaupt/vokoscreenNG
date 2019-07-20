@@ -24,6 +24,7 @@
 #include "global.h"
 
 #include <QTimer>
+#include <QTime>
 #include <QStorageInfo>
 #include <QMessageBox>
 

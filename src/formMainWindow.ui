@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>4</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1232,7 +1232,7 @@
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_24" stretch="0,0,1,0,0">
+                <layout class="QHBoxLayout" name="horizontalLayout_24" stretch="0,1,0,0">
                  <property name="spacing">
                   <number>6</number>
                  </property>
@@ -1248,29 +1248,6 @@
                  <property name="bottomMargin">
                   <number>0</number>
                  </property>
-                 <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_22">
-                   <property name="spacing">
-                    <number>0</number>
-                   </property>
-                   <item>
-                    <widget class="QTimeEdit" name="timeEditStartTime">
-                     <property name="enabled">
-                      <bool>true</bool>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                     </property>
-                     <property name="readOnly">
-                      <bool>true</bool>
-                     </property>
-                     <property name="buttonSymbols">
-                      <enum>QAbstractSpinBox::NoButtons</enum>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
                  <item>
                   <layout class="QVBoxLayout" name="verticalLayout_18">
                    <item alignment="Qt::AlignRight">
@@ -2419,7 +2396,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>help_screencast_codec</tabstop>
   <tabstop>checkBoxScale</tabstop>
   <tabstop>comboBoxScale</tabstop>
-  <tabstop>timeEditStartTime</tabstop>
   <tabstop>checkBoxStartTime</tabstop>
   <tabstop>help_screencast_starttimer</tabstop>
   <tabstop>checkBoxStopRecordingAfter</tabstop>

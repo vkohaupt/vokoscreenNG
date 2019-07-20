@@ -374,14 +374,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->toolButtonScreencastx264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_x264Reset() ) );
 
     // Tab 3 Time
-    ui->timeEditStartTime->hide(); // This Widget is only for manage time
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
     timerStartTimer = new QTimer();
     timerStartTimer->setTimerType( Qt::PreciseTimer );
     connect( timerStartTimer,       SIGNAL( timeout() ),           this,                SLOT( slot_startTime() ) );
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     ui->pushButtonStart, SLOT( setHidden( bool ) ) );
-    connect( sliderHour,            SIGNAL( valueChanged( int ) ), this,                SLOT( slot_setHour( int ) ) );
-    connect( sliderMinute,          SIGNAL( valueChanged( int ) ), this,                SLOT( slot_setMinute( int ) ) );
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     ui->labelScreencastCountdownText,  SLOT( setDisabled( bool ) ) );
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     sliderScreencastCountDown,         SLOT( setDisabled( bool ) ) );
 
@@ -682,29 +679,13 @@ void QvkMainWindow::slot_StartTimer( bool value )
 void QvkMainWindow::slot_startTime()
 {
     QTime time;
-    if ( ( time.currentTime().hour() == ui->timeEditStartTime->time().hour() ) and
-         ( time.currentTime().minute() == ui->timeEditStartTime->time().minute() ) and
-         ( time.currentTime().second() == ui->timeEditStartTime->time().second() ) )
+    if ( ( time.currentTime().hour() == sliderHour->value() ) and
+         ( time.currentTime().minute() == sliderMinute->value() ) and
+         ( time.currentTime().second() == 0 ) )
     {
         ui->pushButtonStart->setVisible( true );
         ui->pushButtonStart->click();
     }
-}
-
-
-void QvkMainWindow::slot_setHour( int value )
-{
-    QTime time;
-    time.setHMS( value, ui->timeEditStartTime->time().minute(), 0 );
-    ui->timeEditStartTime->setTime( time );
-}
-
-
-void QvkMainWindow::slot_setMinute( int value )
-{
-    QTime time;
-    time.setHMS( ui->timeEditStartTime->time().hour(), value, 0 );
-    ui->timeEditStartTime->setTime( time );
 }
 
 
