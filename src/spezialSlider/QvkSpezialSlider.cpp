@@ -1,26 +1,4 @@
-/* vokoscreenNG - A desktop recorder
- * Copyright (C) 2017-2019 Volker Kohaupt
- * 
- * Author:
- *      Volker Kohaupt <vkohaupt@freenet.de>
- *
- * This file is free software; you can redistribute it and/or modify
- * it under the terms of version 2 of the GNU General Public License
- * as published by the Free Software Foundation.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
- *
- * --End_License--
- */
-
-#include "QvkSpezialSlider.h"
+﻿#include "QvkSpezialSlider.h"
 
 #include <QPaintEvent>
 #include <QDebug>
@@ -126,15 +104,16 @@ void QvkSpezialSlider::paintEvent(QPaintEvent *event)
     QFont font = qApp->font();
     painter.setFont( font );
     QFontMetrics fontMetrics( font );
-    qreal pixelWidth = fontMetrics.width( QString::number( value() ) );
-
     setMinimumHeight( fontMetrics.width( "5555" ) );
 
     painter.setPen( vk_get_color( QPalette::ButtonText ) );
 
-    painter.drawText( (qreal)(width() - 2*handleRadius) / ( (qreal)maximum() - (qreal)minimum() ) * ( (qreal)value() - minimum() ) + ( handleRadius - pixelWidth/2 ) + onePixel,
-                      (int)(handleRadius * 1.5),
-                      QString::number( value() ) );
+    QRectF qRectF( (qreal)(width() - 2*handleRadius) / (qreal)( maximum() - minimum() ) * (qreal)( value() - minimum() ) + onePixel,
+                   pen.widthF()/2,
+                   2*handleRadius,
+                   2*handleRadius );
+
+    painter.drawText( qRectF, Qt::AlignCenter, QString::number( value() ) );
 
     painter.end();
 }
