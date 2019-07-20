@@ -3,10 +3,6 @@ Spezialslider:
 --Mauscursor nicht stimmig mit Handle.
 
 
-Windows spezialslider:
---Zahlen sind nicht mittig. Siehe spezialslider.png
-
-
 Windows Audio:
 --Viele Dinge sind noch nicht fertig.
 
