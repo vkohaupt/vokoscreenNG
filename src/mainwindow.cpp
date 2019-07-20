@@ -194,12 +194,12 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkLimitDiskFreeSpace = new QvkLimitDiskFreeSpace( ui, sliderLimitOfFreeDiskSpace );
 
     qDebug().noquote() << global::nameOutput << "Version:" << global::version;
-    qDebug().noquote() << global::nameOutput << "Locale: " << QLocale::system().name();
+    qDebug().noquote() << global::nameOutput << "Locale:" << QLocale::system().name();
     QDateTime dateTime = QDateTime::currentDateTime();
     qDebug().noquote() << global::nameOutput << "Log from:" << dateTime.toString( "yyyy-MM-dd hh:mm:ss" );
     QLocale locale;
     qDebug().noquote() << global::nameOutput << "Country:" << QLocale::countryToString( locale.country() );
-    qDebug().noquote() << global::nameOutput << "Qt: " << qVersion();
+    qDebug().noquote() << global::nameOutput << "Qt:" << qVersion();
     qDebug().noquote() << global::nameOutput << gst_version_string();
     qDebug().noquote() << global::nameOutput << "Operating system:" << QSysInfo::prettyProductName();
     qDebug().noquote() << global::nameOutput << "CPU Architecture:" << QSysInfo::currentCpuArchitecture();
@@ -209,8 +209,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << global::name << "running on:" << qgetenv( "XDG_SESSION_TYPE" ).toLower();
 #endif
     qDebug().noquote() << global::nameOutput << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
-    qDebug().noquote() << global::nameOutput << "current icon-theme: " << QIcon::themeName();
-    qDebug().noquote() << global::nameOutput << "Styles: " << QStyleFactory::keys();
+    qDebug().noquote() << global::nameOutput << "Icon-Theme:" << QIcon::themeName();
+    qDebug().noquote() << global::nameOutput << "Styles:" << QStyleFactory::keys();
     qDebug().noquote() << global::nameOutput << "Qt-PluginsPath:     " << QLibraryInfo::location( QLibraryInfo::PluginsPath );
     qDebug().noquote() << global::nameOutput << "Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
     qDebug().noquote() << global::nameOutput << "Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
