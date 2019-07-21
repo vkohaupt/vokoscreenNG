@@ -138,9 +138,8 @@ gboolean QvkWatcherPlug::func( GstBus *bus, GstMessage *message, gpointer user_d
      case GST_MESSAGE_DEVICE_ADDED:
        gst_message_parse_device_added( message, &gstDevice );
        name = gst_device_get_display_name( gstDevice );
-       qDebug().noquote() << global::nameOutput << "[Audio] device added:" << name;
        device = get_launch_line( gstDevice );
-       qDebug().noquote() << global::nameOutput << "[Audio] device added:" << device;
+       qDebug().noquote() << global::nameOutput << "[PulseAudio] Added:" << name << "Device:" << device;
        audioDevicePlug.append( "[Audio-device-added]" );
        audioDevicePlug.append( ":");
        audioDevicePlug.append( name );
@@ -154,9 +153,8 @@ gboolean QvkWatcherPlug::func( GstBus *bus, GstMessage *message, gpointer user_d
      case GST_MESSAGE_DEVICE_REMOVED:
        gst_message_parse_device_removed( message, &gstDevice );
        name = gst_device_get_display_name( gstDevice );
-       qDebug().noquote() << global::nameOutput << "[Audio] device removed:" << name;
        device = get_launch_line( gstDevice );
-       qDebug().noquote() << global::nameOutput << "[Audio] device removed:" << device;
+       qDebug().noquote() << global::nameOutput << "[PulseAudio] Removed:" << name << "Device:" << device;
        audioDevicePlug.append( "[Audio-device-removed]" );
        audioDevicePlug.append( ":");
        audioDevicePlug.append( name );
