@@ -53,8 +53,10 @@ void QvkCameraWatcher::cameraWatcherInit()
     for ( int x = 0; x < deviceList.count(); x++ )
     {
         QCameraInfo cameraInfo( QString( path + deviceList.at(x) ).toLatin1() );
+        qDebug().noquote() << global::nameOutput << "[Camera] Found:" << cameraInfo.description() << "on device:" << deviceList.at(x);
         emit signal_addedCamera( cameraInfo.description() , path + deviceList.at(x) );
     }
+    qDebug();
 }
 
 
@@ -96,11 +98,10 @@ void QvkCameraWatcher::myfileSystemWatcher( QString path )
             if ( cameraInfo.isNull() == false )
             {
                 b = true;
+                qDebug().noquote() << global::nameOutput << "[Camera] Added:" << cameraInfo.description() << "on device:" << addedDevice;
                 emit signal_addedCamera( cameraInfo.description() , path + addedDevice );
             }
         }
-
-        qDebug().noquote() << global::nameOutput << "added device" << addedDevice;
     }
 
     // remove plugout device
@@ -117,7 +118,7 @@ void QvkCameraWatcher::myfileSystemWatcher( QString path )
 
         cameraCount = newDeviceList.count();
         emit signal_removedCamera( path + removedDevice );
-        qDebug().noquote() << global::nameOutput << "removed device" << removedDevice;
+        qDebug().noquote() << global::nameOutput << "[Camera] Removed:" << removedDevice;
     }
 
     if ( oldDeviceList.count() != newDeviceList.count() )
