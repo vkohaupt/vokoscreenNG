@@ -1,4 +1,12 @@
 
+Tumbelweed Kamera:
+--Ein leerer Eintrag wird angezeigt.
+
+
+Kamera:
+--Erkannte Kameras sollten in der Konsolenausgabe angezeigt werden.
+
+
 Spezialslider:
 --Mauscursor nicht stimmig mit Handle.
 
