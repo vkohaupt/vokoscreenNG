@@ -399,6 +399,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setDisabled( bool ) ) );
 
     connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ), this, SLOT( slot_setVisibleSystray( bool ) ) );
+    if ( QSystemTrayIcon::isSystemTrayAvailable() == false )
+    {
+        ui->checkBoxShowInSystray->setCheckState( Qt::Unchecked );
+        ui->checkBoxShowInSystray->setEnabled( false );
+    }
 
     connect( ui->checkBoxMinimizedWhenRecordingStarts, SIGNAL( clicked( bool ) ),    ui->frameWaitXSecondBeforRecording, SLOT( setEnabled( bool ) ) );
 

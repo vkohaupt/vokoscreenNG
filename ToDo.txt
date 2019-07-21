@@ -1,9 +1,5 @@
 
 Suse Leap 15.0 Ubuntu:
---Ein Systray gibt es nicht. Abfragen ob Systray vorhanden, wenn nicht vorhanden in der GUI die Checkbox deaktivieren.
-
-
-Suse Leap 15.0 Ubuntu:
 --Log-Icon auf Seitenleiste wird sehr stark verkleinert dargestellt.
 
 
