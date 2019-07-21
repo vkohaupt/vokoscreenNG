@@ -1,5 +1,9 @@
 
 Suse Leap 15.0 Ubuntu:
+--Camerafenster wandert beim entfernen und hinzufügen des Rahmen nach oben.
+
+
+Suse Leap 15.0 Ubuntu:
 --Ein Systray gibt es nicht. Abfragen ob Systray vorhanden, wenn nicht vorhanden in der GUI die Checkbox deaktivieren.
 
 
