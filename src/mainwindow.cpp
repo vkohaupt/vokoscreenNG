@@ -317,8 +317,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // Tab 1 Screen
 #ifdef Q_OS_WIN
-    ui->radioButtonScreencastWindow->hide();
-    ui->help_screencast_window->hide();
+    ui->radioButtonScreencastWindow->setEnabled( false );
 #endif
 
     ui->radioButtonScreencastFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
@@ -347,9 +346,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 
     // Tab 2 Audio and Videocodec
-    //connect( vkTheme,                SIGNAL( signal_newTheme() ), this,                      SLOT( slot_audioRedCross() ) );
-
-
 #ifdef Q_OS_LINUX
     vkAudioPulse = new QvkAudioPulse( this, ui );
     connect( vkAudioPulse, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this,                   SLOT( slot_audioIconOnOff( bool ) ) );
@@ -365,7 +361,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( vkAudioWindows, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
     vkAudioWindows->init();
 #endif
-    connect( vkTheme,                SIGNAL( signal_newTheme() ), this,                      SLOT( slot_audioRedCross() ) );
+    connect( vkTheme, SIGNAL( signal_newTheme() ), this, SLOT( slot_audioRedCross() ) );
 
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
