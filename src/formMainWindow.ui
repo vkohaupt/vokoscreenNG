@@ -42,7 +42,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -59,7 +59,7 @@
         <string notr="true"/>
        </attribute>
        <attribute name="toolTip">
-        <string notr="true">Screencast</string>
+        <string>Screencast</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout">
         <property name="spacing">
@@ -1938,7 +1938,7 @@
         <string notr="true"/>
        </attribute>
        <attribute name="toolTip">
-        <string notr="true">Player</string>
+        <string>Player</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayoutTabSidebarPlayer">
         <property name="spacing">
@@ -1960,7 +1960,7 @@
         <string notr="true"/>
        </attribute>
        <attribute name="toolTip">
-        <string notr="true">Camera</string>
+        <string>Camera</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_17">
         <property name="spacing">
@@ -2296,7 +2296,7 @@
         <string notr="true"/>
        </attribute>
        <attribute name="toolTip">
-        <string notr="true">Log</string>
+        <string>Log</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_25">
         <property name="spacing">
