@@ -1,8 +1,4 @@
 
-Suse Leap 15.0 Ubuntu:
---Log-Icon auf Seitenleiste wird sehr stark verkleinert dargestellt.
-
-
 Tumbelweed Kamera:
 --Ein leerer Eintrag wird angezeigt.
 
