@@ -108,34 +108,11 @@ void QvkTheme::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIcon ico
 
 void QvkTheme::makeAndSetValidIconForSideBar( int index, QIcon icon )
 {
-    int a = 256;
-    QSize size = QSize( a, a );
-
-    QPixmap iconPixmap( icon.pixmap( size ) );
-
-    QFont font;
-    font.setPointSize( 40 );
-    QFontMetrics fontMetrics( font );
-    int textWidth = fontMetrics.width( ui->tabWidgetSideBar->tabToolTip( index ) );
-    int textHight = fontMetrics.height();
-
-    QPixmap workPixmap( size.width() + textHight, size.height() + textHight );
-    workPixmap.fill( Qt::transparent );
-
-    QPainter painter;
-    QPen pen;
-    painter.begin( &workPixmap );
-      painter.setRenderHints( QPainter::Antialiasing, true );
-      painter.setFont( font );
-      painter.drawPixmap( QPoint( textHight/2, 0 ), iconPixmap );
-      pen.setColor( Qt::black );
-      painter.setPen( pen );
-      int x = ( workPixmap.width() - textWidth ) / 2;
-      painter.drawText( x, workPixmap.height() - fontMetrics.descent(), ui->tabWidgetSideBar->tabToolTip( index ) );
-    painter.end();
+    int a = 128;
+    QPixmap workPixmap(icon.pixmap( a, a ) );
 
     QTransform transform;
     transform.rotate( 90 );
     workPixmap = workPixmap.transformed( transform, Qt::SmoothTransformation );
-    ui->tabWidgetSideBar->setTabIcon( index, QIcon( workPixmap ) );
+    ui->tabWidgetSideBar->setTabIcon( index, workPixmap );
 }
