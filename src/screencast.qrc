@@ -25,6 +25,7 @@
 <file>pictures/camera/camera.license</file>
 <file>pictures/linux.license</file>
 <file>pictures/log/log.license</file>
+<file>pictures/logo/logo.license</file>
 <file>pictures/player/move.license</file>
 <file>pictures/player/fullscreen.license</file>
 <file>pictures/player/restore.license</file>
@@ -48,6 +49,7 @@
 <file>language/de_DE.qm</file>
 <file>language/fi_FI.qm</file>
 <file>language/hu.qm</file>
+<file>language/id.qm</file>
 <file>language/lt.qm</file>
 <file>language/pt.qm</file>
 <file>language/tr_TR.qm</file>
