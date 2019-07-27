@@ -54,3 +54,11 @@ copy C:\gstreamer\1.0\x86\lib\gstreamer-1.0\libgstflac.dll
 copy C:\gstreamer\1.0\x86\bin\libFLAC-8.dll
 copy C:\gstreamer\1.0\x86\bin\libgstrtp-1.0-0.dll
 copy C:\gstreamer\1.0\x86\lib\gstreamer-1.0\libgstvideoscale.dll
+
+set curentdir=%CD%
+git clone https://github.com/KDE/breeze-icons
+rmdir /s /Q icons
+timeout 10
+mkdir icons
+xcopy %curentdir%\breeze-icons\icons %curentdir%\icons\ /e
+rmdir /s /Q C:\Users\vk\2\breeze-icons
