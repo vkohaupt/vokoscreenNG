@@ -3,7 +3,8 @@ rem Install gstreamer-1.0-x86-1.14.4.msi
 rem Install gstreamer-1.0-devel-x86-1.14.4.msi
 rem Create a folder
 rem Copy vokoscreenNG.exe in this folder
-rem Copy this file in this folder
+rem Copy vokoscreenNG-deploy.bat in this folder
+rem Copy vokoscreenNG.vbs in this folder
 rem Start this file
 
 rem too find gcc
