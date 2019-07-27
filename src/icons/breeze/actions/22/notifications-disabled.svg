@@ -1,0 +1,12 @@
+<svg width="22" height="22" xmlns="http://www.w3.org/2000/svg">
+    <style type="text/css" id="current-color-scheme">
+        .ColorScheme-Text {
+            color:#232629;
+        }
+        .ColorScheme-NegativeText {
+            color:#da4453;
+        }
+    </style>
+    <path id="bell" d="m11 3a1 1 0 0 0 -1 1 1 1 0 0 0 .009766.128906 3.9999999 3.9999999 0 0 0 -2.2402348 1.519532l9.3515628 9.351562h.878906v-1c-2-2-3-3-3-6a3.9999999 3.9999999 0 0 0 -3.009766-3.871094 1 1 0 0 0 .009766-.128906 1 1 0 0 0 -1-1zm-4.0527344 6.068359c-.2253625 2.204726-1.2061347 3.19051-2.9472656 4.931641v1h7 1.878906zm4.3222654 6.931641a2 2 0 0 0 -.269531 1 2 2 0 0 0 2 2 2 2 0 0 0 1.996094-1.882812l-1.117188-1.117188z" class="ColorScheme-Text" fill="currentColor"/>
+        <path id="strikethrough" d="m3 3.707031 15.292969 15.292969.707031-.707031-15.2929688-15.292969z" class="ColorScheme-NegativeText" fill="currentColor"/>
+</svg>

@@ -57,6 +57,10 @@ int main(int argc, char *argv[])
         }
     }
 
+#ifdef Q_OS_WIN
+    QIcon::setThemeName( "breeze" );
+#endif
+
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 
