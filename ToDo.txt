@@ -1,8 +1,4 @@
 
-Player:
---Stummschaltung wird nicht in den Settings gespeichert.
-
-
 Tumbelweed Kamera:
 --Ein leerer Eintrag wird angezeigt.
 
