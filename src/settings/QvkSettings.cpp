@@ -169,6 +169,19 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         listTabWidget.at(i)->setCurrentIndex( 0 );
     }
 
+    QList<QToolButton *> listToolButton = ui_mainwindow->centralWidget->findChildren<QToolButton *>();
+    for ( int i = 0; i < listToolButton.count(); i++ )
+    {
+        if ( listToolButton.at(i)->objectName().contains( "toolButtonMute" ) )
+        {
+            QString value = settings.value( listToolButton.at(i)->objectName() ).toString();
+            if ( value == "audio-volume-muted")
+            {
+                listToolButton.at(i)->click();
+                break;
+            }
+        }
+    }
 }
 
 /*
@@ -247,6 +260,15 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
                 qDebug().noquote().nospace() << listLineEdit.at(i)->objectName() << "=" << listLineEdit.at(i)->text();
             else
                 settings.setValue( listLineEdit.at(i)->objectName(), listLineEdit.at(i)->text() );
+        }
+    }
+
+    QList<QToolButton *> listToolButton = ui_mainwindow->centralWidget->findChildren<QToolButton *>();
+    for ( int i = 0; i < listToolButton.count(); i++ )
+    {
+        if ( listToolButton.at(i)->objectName().contains( "toolButtonMute" ) )
+        {
+            settings.setValue( listToolButton.at(i)->objectName(), listToolButton.at(i)->icon().name() );
         }
     }
 }
