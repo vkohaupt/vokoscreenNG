@@ -33,16 +33,16 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_12">
          <item>
-          <widget class="QCheckBox" name="checkBoxCameraMirrorHorizontal">
+          <widget class="QCheckBox" name="checkBoxCameraMirrorVertical">
            <property name="text">
-            <string>Flip horizontal</string>
+            <string>Flip vertical</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QCheckBox" name="checkBoxCameraMirrorVertical">
+          <widget class="QCheckBox" name="checkBoxCameraMirrorHorizontal">
            <property name="text">
-            <string>Flip vertical</string>
+            <string>Flip horizontal</string>
            </property>
           </widget>
          </item>
