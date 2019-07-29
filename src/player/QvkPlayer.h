@@ -25,6 +25,7 @@
 
 #include "ui_formMainWindow.h"
 #include "ui_player.h"
+#include "QvkSpezialSlider.h"
 
 #include <QWidget>
 #include <QMediaPlayer>
@@ -84,6 +85,7 @@ private:
     bool playingFlag = false;
     QLabel *metaLabel;
     QFrame *metaFrame;
+    QvkSpezialSlider *sliderVolume;
 
 protected:
     void mouseDoubleClickEvent( QMouseEvent *event );

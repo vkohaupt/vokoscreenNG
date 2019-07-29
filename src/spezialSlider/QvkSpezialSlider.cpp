@@ -151,6 +151,7 @@ void QvkSpezialSlider::mouseMoveEvent( QMouseEvent *event )
         {
             qreal couldValue = ( event->localPos().x() / stepSizeInPixels ) + minimum() + 1;
             setValue( static_cast<int>(couldValue) );
+            emit sliderMoved( static_cast<int>(couldValue) );
             return;
         }
 
@@ -158,6 +159,7 @@ void QvkSpezialSlider::mouseMoveEvent( QMouseEvent *event )
         {
             qreal couldValue = ( event->localPos().x() / stepSizeInPixels ) + minimum();
             setValue( static_cast<int>(couldValue) );
+            emit sliderMoved( static_cast<int>(couldValue) );
             return;
         }
     }

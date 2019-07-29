@@ -22,6 +22,7 @@
 
 #include "QvkPlayer.h"
 #include "QvkPlayerVideoSurface.h"
+#include "QvkSpezialSlider.h"
 #include "slidervideo.h"
 #include "global.h"
 
@@ -36,6 +37,15 @@
 QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : ui(new Ui::player)
 {
     ui->setupUi(this);
+
+    sliderVolume = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_3->insertWidget( 10, sliderVolume );
+    ui->horizontalLayout_3->setStretch( 10, 1 );
+    sliderVolume->setObjectName( "sliderVolume" );
+    sliderVolume->setTracking( true );
+    sliderVolume->setMinimum( 0 );
+    sliderVolume->setMaximum( 100 );
+    sliderVolume->show();
 
     parentMainWindow = parent;
     oldWindowTitel = parentMainWindow->windowTitle();
@@ -62,7 +72,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen", QIcon( ":/pictures/player/fullscreen.png" ) ) );
 
     mediaPlayer = new QMediaPlayer;
-    ui->sliderVolume->setValue( 70 );
+    sliderVolume->setValue( 70 );
     mediaPlayer->setVolume( 70 );
     mediaPlayer->setNotifyInterval( 40 );
 
@@ -102,7 +112,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
 
     connect( ui->toolButtonFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonFullscreen() ) );
 
-    connect( ui->sliderVolume,    SIGNAL( sliderMoved( int ) ), mediaPlayer, SLOT( setVolume( int ) ) );
+    connect( sliderVolume, SIGNAL( sliderMoved( int ) ), mediaPlayer, SLOT( setVolume( int ) ) );
 
     connect( ui->toolButtonMute,  SIGNAL( clicked( bool ) ), this, SLOT( slot_mute() ) );
 
@@ -332,7 +342,7 @@ void QvkPlayer::slot_mutedChanged( bool muted )
     if ( muted == true )
     {
         ui->toolButtonMute->setIcon( QIcon::fromTheme( "audio-volume-muted", style()->standardIcon( QStyle::SP_MediaVolumeMuted ) ) );
-        ui->sliderVolume->setEnabled( false );
+        sliderVolume->setEnabled( false );
         ui->toolButtonMute->setEnabled( true );
         return;
     }
@@ -340,7 +350,7 @@ void QvkPlayer::slot_mutedChanged( bool muted )
     if ( muted == false )
     {
         ui->toolButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high", style()->standardIcon( QStyle::SP_MediaVolume ) ) );
-        ui->sliderVolume->setEnabled( true );
+        sliderVolume->setEnabled( true );
         ui->toolButtonMute->setEnabled( true );
         return;
     }
