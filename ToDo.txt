@@ -8,7 +8,7 @@ Spezialslider:
 
 
 Windows Audio:
---Viele Dinge sind noch nicht fertig.
+--hinzufügen/entfernen von Geräten wird noch nicht erkannt
 
 
 LDFLAGS:
