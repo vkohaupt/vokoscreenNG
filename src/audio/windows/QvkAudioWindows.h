@@ -45,12 +45,11 @@ private:
     Ui_formMainWindow *ui;
     QTimer *timer;
     int counter;
+    void getAllDevices();
 
     
 private slots:
-    void slot_getWindowsDevices();
     void slot_audioDeviceSelected();
-    void slot_clearVerticalLayoutAudioDevices();
     void slot_update();
 
 
@@ -58,7 +57,6 @@ protected:
   
   
 signals:
-    void signal_audioDevicesAvalaible( bool );
     void signal_haveAudioDeviceSelected( bool );
 
     

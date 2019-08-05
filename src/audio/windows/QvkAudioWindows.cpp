@@ -31,7 +31,7 @@ QvkAudioWindows::QvkAudioWindows( Ui_formMainWindow *ui_mainwindow )
     ui = ui_mainwindow;
     timer = new QTimer( this );
     timer->setTimerType( Qt::PreciseTimer );
-    timer->setInterval( 1000 );
+    timer->setInterval( 3000 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_update() ) );
 }
 
@@ -40,12 +40,14 @@ QvkAudioWindows::~QvkAudioWindows()
 {
 }
 
+
 void QvkAudioWindows::init()
 {
-    slot_getWindowsDevices();
+    getAllDevices();
 }
 
-void QvkAudioWindows::slot_getWindowsDevices()
+
+void QvkAudioWindows::getAllDevices()
 {
     QList<QAudioDeviceInfo> list = QAudioDeviceInfo::availableDevices( QAudio::AudioInput );
     if ( !list.empty() )
@@ -57,6 +59,7 @@ void QvkAudioWindows::slot_getWindowsDevices()
             checkboxAudioDevice->setText( list.at(i).deviceName() );
             checkboxAudioDevice->setAccessibleName( list.at(i).deviceName() );
             checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( i ) );
+            checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
             qDebug().noquote() << global::nameOutput << "Audio device:" << list.at(i).deviceName();
         }
@@ -68,7 +71,7 @@ void QvkAudioWindows::slot_getWindowsDevices()
     }
     else
     {
-        emit signal_audioDevicesAvalaible( false );
+        emit signal_haveAudioDeviceSelected( false );
     }
 }
 
@@ -89,33 +92,11 @@ void QvkAudioWindows::slot_audioDeviceSelected()
 }
 
 
-void QvkAudioWindows::slot_clearVerticalLayoutAudioDevices()
-{
-    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listQCheckBox.count(); i++ )
-    {
-       ui->verticalLayoutAudioDevices->removeWidget( listQCheckBox.at(i) );
-       delete listQCheckBox.at(i);
-    }
-
-    for ( int i = 0; i < ui->verticalLayoutAudioDevices->count(); ++i )
-    {
-        QLayoutItem *layoutItem = ui->verticalLayoutAudioDevices->itemAt(i);
-        if ( layoutItem->spacerItem() )
-        {
-            ui->verticalLayoutAudioDevices->removeItem( layoutItem );
-            delete layoutItem;
-        }
-    }
-}
-
-
 void QvkAudioWindows::slot_start( bool value )
 {
     if ( value == true )
     {
         counter = 0;
-        slot_update();
         timer->start();
     }
     else
@@ -131,7 +112,5 @@ void QvkAudioWindows::slot_update()
     if ( count != counter )
     {
         counter = count;
-        slot_clearVerticalLayoutAudioDevices();
-        slot_getWindowsDevices();
     }
 }
