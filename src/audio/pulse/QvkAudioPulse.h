@@ -43,12 +43,11 @@ public slots:
 
 private:
     Ui_formMainWindow *ui;
-    void clearVerticalLayoutAudioDevices();
-    void getPulseDevices();
+    void getAllDevices();
 
 
 private slots:
-    void slot_setDevice( QString string );
+    void slot_pluggedInOutDevice( QString string );
     void slot_audioDeviceSelected();
 
 
@@ -56,7 +55,6 @@ protected:
 
   
 signals:
-    void signal_noAudioDevicesAvalaible( bool );
     void signal_haveAudioDeviceSelected( bool );
 
 };

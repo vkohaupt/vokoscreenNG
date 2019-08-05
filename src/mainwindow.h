@@ -63,12 +63,6 @@ public:
     QvkWinInfo *vkWinInfo;
     QvkCountdown *vkCountdown;
     QvkRegionChoise *vkRegionChoise;
-#ifdef Q_OS_LINUX
-    QvkAudioPulse *vkAudioPulse;
-#endif
-#ifdef Q_OS_WIN
-    QvkAudioWindows *vkAudioWindows;
-#endif
     QvkHelp *vkHelp;
     QvkSystray *vkSystray;
 

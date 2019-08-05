@@ -35,14 +35,14 @@ QvkAudioPulse::QvkAudioPulse( QMainWindow *mainWindow, Ui_formMainWindow *ui_mai
 
 void QvkAudioPulse::init()
 {
-    getPulseDevices();
+    getAllDevices();
 
     // QvkWatcherPlug monitoring only new or removed Audiodevices from the PulseAudio server.
     // QvkWatcherPlug does not return any devices, if the PulseAudio server start or stop.
     QvkWatcherPlug *vkWatcherPlug = new QvkWatcherPlug();
     vkWatcherPlug->start_monitor();
 
-    connect( global::lineEditAudioPlug, SIGNAL( textChanged( QString ) ), this, SLOT( slot_setDevice( QString ) ) );
+    connect( global::lineEditAudioPlug, SIGNAL( textChanged( QString ) ), this, SLOT( slot_pluggedInOutDevice( QString ) ) );
 }
 
 
@@ -50,7 +50,7 @@ QvkAudioPulse::~QvkAudioPulse()
 {
 }
 
-void QvkAudioPulse::slot_setDevice( QString string )
+void QvkAudioPulse::slot_pluggedInOutDevice( QString string )
 {
     QString header = string.section( ":", 0, 0 );
     QString name   = string.section( ":", 1, 1 );
@@ -82,7 +82,7 @@ void QvkAudioPulse::slot_setDevice( QString string )
 }
 
 
-void QvkAudioPulse::getPulseDevices()
+void QvkAudioPulse::getAllDevices()
 {
     QvkPulseGstr vkPulseGstr;
     QStringList list;
@@ -127,25 +127,4 @@ void QvkAudioPulse::slot_audioDeviceSelected()
         }
     }
     emit signal_haveAudioDeviceSelected( value );
-}
-
-
-void QvkAudioPulse::clearVerticalLayoutAudioDevices()
-{
-    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listQCheckBox.count(); i++ )
-    {
-       ui->verticalLayoutAudioDevices->removeWidget( listQCheckBox.at(i) );
-       delete listQCheckBox.at(i);
-    }
-
-    for ( int i = 0; i < ui->verticalLayoutAudioDevices->count(); ++i )
-    {
-        QLayoutItem *layoutItem = ui->verticalLayoutAudioDevices->itemAt(i);
-        if ( layoutItem->spacerItem() )
-        {
-            ui->verticalLayoutAudioDevices->removeItem( layoutItem );
-            delete layoutItem;
-        }
-    }
 }
