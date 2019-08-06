@@ -27,6 +27,7 @@
 #include "ui_formMainWindow.h"
 
 #include <QObject>
+#include <QTimer>
 
 class QvkWatcherPlug: public QObject
 {

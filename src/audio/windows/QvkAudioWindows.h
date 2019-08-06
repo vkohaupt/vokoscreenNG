@@ -25,7 +25,6 @@
 
 #include "ui_formMainwindow.h"
 #include <QObject>
-#include <QTimer>
 
 class QvkAudioWindows: public QObject
 {
@@ -38,7 +37,6 @@ public:
 
     
 public slots:
-    void slot_start( bool value );
 
   
 private:

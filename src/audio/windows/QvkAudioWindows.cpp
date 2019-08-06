@@ -43,7 +43,7 @@ void QvkAudioWindows::init()
     getAllDevices();
 
     QvkWatcherPlug *vkWatcherPlug = new QvkWatcherPlug();
-    vkWatcherPlug->start_monitor();
+    // vkWatcherPlug->start_monitor();
 
     connect( global::lineEditAudioPlug, SIGNAL( textChanged( QString ) ), this, SLOT( slot_pluggedInOutDevice( QString ) ) );
 }
