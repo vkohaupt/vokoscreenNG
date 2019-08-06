@@ -33,7 +33,7 @@ class QvkAudioPulse: public QObject
     Q_OBJECT
 
 public:
-    QvkAudioPulse( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow );
+    QvkAudioPulse(Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkAudioPulse();
     void init();
 

@@ -26,10 +26,14 @@
 
 #include <QDebug>
 
-QvkAudioPulse::QvkAudioPulse( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow )
+QvkAudioPulse::QvkAudioPulse( Ui_formMainWindow *ui_mainwindow )
 {
-    Q_UNUSED(mainWindow);
     ui = ui_mainwindow;
+}
+
+
+QvkAudioPulse::~QvkAudioPulse()
+{
 }
 
 
@@ -43,42 +47,6 @@ void QvkAudioPulse::init()
     vkWatcherPlug->start_monitor();
 
     connect( global::lineEditAudioPlug, SIGNAL( textChanged( QString ) ), this, SLOT( slot_pluggedInOutDevice( QString ) ) );
-}
-
-
-QvkAudioPulse::~QvkAudioPulse()
-{
-}
-
-void QvkAudioPulse::slot_pluggedInOutDevice( QString string )
-{
-    QString header = string.section( ":", 0, 0 );
-    QString name   = string.section( ":", 1, 1 );
-    QString device = string.section( ":", 2, 2 );
-
-    if ( header == "[Audio-device-added]" )
-    {
-        QCheckBox *checkboxAudioDevice = new QCheckBox();
-        connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
-        checkboxAudioDevice->setText( name );
-        checkboxAudioDevice->setAccessibleName( device );
-        QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-        checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( listAudioDevices.count() ) );
-        ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
-    }
-
-    if ( header == "[Audio-device-removed]" )
-    {
-        QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-        for ( int i = 0; i < listAudioDevices.count(); i++ )
-        {
-            if ( listAudioDevices.at(i)->accessibleName() == device )
-            {
-                delete listAudioDevices.at(i);
-            }
-        }
-        slot_audioDeviceSelected();
-    }
 }
 
 
@@ -128,3 +96,36 @@ void QvkAudioPulse::slot_audioDeviceSelected()
     }
     emit signal_haveAudioDeviceSelected( value );
 }
+
+
+void QvkAudioPulse::slot_pluggedInOutDevice( QString string )
+{
+    QString header = string.section( ":", 0, 0 );
+    QString name   = string.section( ":", 1, 1 );
+    QString device = string.section( ":", 2, 2 );
+
+    if ( header == "[Audio-device-added]" )
+    {
+        QCheckBox *checkboxAudioDevice = new QCheckBox();
+        connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
+        checkboxAudioDevice->setText( name );
+        checkboxAudioDevice->setAccessibleName( device );
+        QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
+        checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( listAudioDevices.count() ) );
+        ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
+    }
+
+    if ( header == "[Audio-device-removed]" )
+    {
+        QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
+        for ( int i = 0; i < listAudioDevices.count(); i++ )
+        {
+            if ( listAudioDevices.at(i)->accessibleName() == device )
+            {
+                delete listAudioDevices.at(i);
+            }
+        }
+        slot_audioDeviceSelected();
+    }
+}
+

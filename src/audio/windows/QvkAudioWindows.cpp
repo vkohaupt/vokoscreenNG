@@ -22,6 +22,7 @@
 
 #include "QvkAudioWindows.h"
 #include "global.h"
+#include "QvkWatcherPlug.h"
 
 #include <QAudioDeviceInfo>
 #include <QDebug>
@@ -29,10 +30,6 @@
 QvkAudioWindows::QvkAudioWindows( Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
-    timer = new QTimer( this );
-    timer->setTimerType( Qt::PreciseTimer );
-    timer->setInterval( 3000 );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_update() ) );
 }
 
 
@@ -44,6 +41,11 @@ QvkAudioWindows::~QvkAudioWindows()
 void QvkAudioWindows::init()
 {
     getAllDevices();
+
+    QvkWatcherPlug *vkWatcherPlug = new QvkWatcherPlug();
+    vkWatcherPlug->start_monitor();
+
+    connect( global::lineEditAudioPlug, SIGNAL( textChanged( QString ) ), this, SLOT( slot_pluggedInOutDevice( QString ) ) );
 }
 
 
@@ -92,25 +94,33 @@ void QvkAudioWindows::slot_audioDeviceSelected()
 }
 
 
-void QvkAudioWindows::slot_start( bool value )
+void QvkAudioWindows::slot_pluggedInOutDevice( QString string )
 {
-    if ( value == true )
-    {
-        counter = 0;
-        timer->start();
-    }
-    else
-    {
-        timer->stop();
-    }
-}
+    QString header = string.section( ":", 0, 0 );
+    QString name   = string.section( ":", 1, 1 );
+    QString device = string.section( ":", 2, 2 );
 
-
-void QvkAudioWindows::slot_update()
-{
-    int count = QAudioDeviceInfo::availableDevices( QAudio::AudioInput ).count();
-    if ( count != counter )
+    if ( header == "[Audio-device-added]" )
     {
-        counter = count;
+        QCheckBox *checkboxAudioDevice = new QCheckBox();
+        connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
+        checkboxAudioDevice->setText( name );
+        checkboxAudioDevice->setAccessibleName( device );
+        QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
+        checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( listAudioDevices.count() ) );
+        ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
+    }
+
+    if ( header == "[Audio-device-removed]" )
+    {
+        QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
+        for ( int i = 0; i < listAudioDevices.count(); i++ )
+        {
+            if ( listAudioDevices.at(i)->accessibleName() == device )
+            {
+                delete listAudioDevices.at(i);
+            }
+        }
+        slot_audioDeviceSelected();
     }
 }

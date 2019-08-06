@@ -29,6 +29,11 @@
 QvkWatcherPlug::QvkWatcherPlug()
 {
     global::lineEditAudioPlug = new QLineEdit;
+
+    timer = new QTimer( this );
+    timer->setTimerType( Qt::PreciseTimer );
+    timer->setInterval( 3000 );
+    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_update() ) );
 }
 
 

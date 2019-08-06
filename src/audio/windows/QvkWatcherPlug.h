@@ -43,6 +43,8 @@ public slots:
 
 private:
     Ui_formMainWindow *ui;
+    QTimer *timer;
+    int counter;
 
 
 private slots:

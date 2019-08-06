@@ -32,7 +32,7 @@ class QvkAudioWindows: public QObject
     Q_OBJECT
     
 public:
-    QvkAudioWindows(  Ui_formMainWindow *ui_mainwindow );
+    QvkAudioWindows( Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkAudioWindows();
     void init();
 
@@ -43,14 +43,12 @@ public slots:
   
 private:
     Ui_formMainWindow *ui;
-    QTimer *timer;
-    int counter;
     void getAllDevices();
 
     
 private slots:
+    void slot_pluggedInOutDevice( QString string );
     void slot_audioDeviceSelected();
-    void slot_update();
 
 
 protected:

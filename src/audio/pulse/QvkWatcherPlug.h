@@ -25,8 +25,6 @@
 
 #include <gst/gst.h>
 
-#include "ui_formMainWindow.h"
-
 #include <QObject>
 
 class QvkWatcherPlug: public QObject
@@ -45,7 +43,7 @@ public slots:
 
 
 private:
-    Ui_formMainWindow *ui;
+
 
 private slots:
 
