@@ -27,6 +27,8 @@
 #include <QGuiApplication>
 #include <QDebug>
 
+#include <QApplication>
+
 QvkScreenManager::QvkScreenManager()
 {
     connect( qApp, SIGNAL( screenAdded( QScreen* ) ),   this, SLOT( slot_screen_count_changed() ) );
@@ -65,7 +67,18 @@ void QvkScreenManager::slot_screen_count_changed()
                                  "y=" + Y + " " +
                                  "with=" + Width + " " +
                                  "height=" + Height;
+
+            disconnect( screen.at(i), 0, 0, 0 );
+            connect( screen.at(i), SIGNAL( geometryChanged( const QRect ) ), this, SLOT( slot_geometryChanged( const QRect ) ) );
+
             emit signal_screen_count_changed( stringText, stringData );
         }
     }
 }
+
+void QvkScreenManager::slot_geometryChanged( const QRect &rect )
+{
+    Q_UNUSED(rect);
+    slot_screen_count_changed();
+}
+

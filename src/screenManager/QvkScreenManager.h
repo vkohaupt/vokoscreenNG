@@ -39,7 +39,7 @@ public slots:
 
 private slots:
     void slot_screen_count_changed();
-
+    void slot_geometryChanged(const QRect &rect);
 
 signals:
     void signal_clear_widget();
