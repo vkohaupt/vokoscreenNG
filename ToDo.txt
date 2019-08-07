@@ -1,9 +1,4 @@
 
-Screen:
---Automatische erkennung der Bildschirmauflösung scheint kaputt zu sein.
-  --vokoscreenNg starten, Bildschirmauflösung ändern --> es wird immer noch die alte Auflösung angezeigt.
-
-
 Tumbelweed Kamera:
 --Ein leerer Eintrag wird angezeigt.
 
