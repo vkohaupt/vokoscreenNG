@@ -37,6 +37,7 @@ class QvkWatcherPlug: public QObject
 public:
     QvkWatcherPlug();
     virtual ~QvkWatcherPlug();
+    void start_monitor();
 
 
 public slots:
@@ -49,6 +50,7 @@ private:
 
 
 private slots:
+    void slot_update();
 
 
 protected:

@@ -25,7 +25,10 @@
 
 #include <QDebug>
 
-
+/*
+ * QvkWatcherPlug monitoring only new or removed Audiodevices.
+ * It has the same behavior as Linux.
+ */
 QvkWatcherPlug::QvkWatcherPlug()
 {
     global::lineEditAudioPlug = new QLineEdit;
@@ -41,3 +44,13 @@ QvkWatcherPlug::~QvkWatcherPlug()
 {}
 
 
+void QvkWatcherPlug::start_monitor()
+{
+    timer->start();
+}
+
+
+void QvkWatcherPlug::slot_update()
+{
+
+}
