@@ -27,11 +27,12 @@
 
 /*
  * QvkWatcherPlug monitoring only new or removed Audiodevices.
- * It has the same behavior as Linux.
+ * It has the same behavior as under Linux.
  */
-QvkWatcherPlug::QvkWatcherPlug()
+QvkWatcherPlug::QvkWatcherPlug( Ui_formMainWindow *ui_mainwindow )
 {
     global::lineEditAudioPlug = new QLineEdit;
+    ui = ui_mainwindow;
 
     timer = new QTimer( this );
     timer->setTimerType( Qt::PreciseTimer );

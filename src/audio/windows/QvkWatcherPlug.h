@@ -35,7 +35,7 @@ class QvkWatcherPlug: public QObject
 
 
 public:
-    QvkWatcherPlug();
+    QvkWatcherPlug( Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkWatcherPlug();
     void start_monitor();
 
