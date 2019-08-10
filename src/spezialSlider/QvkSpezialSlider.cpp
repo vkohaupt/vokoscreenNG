@@ -101,19 +101,22 @@ void QvkSpezialSlider::paintEvent(QPaintEvent *event)
                                  2*handleRadius ) );
 
     // Handletext
-    QFont font = qApp->font();
-    painter.setFont( font );
-    QFontMetrics fontMetrics( font );
-    setMinimumHeight( fontMetrics.width( "5555" ) );
+    if ( printText == true )
+    {
+        QFont font = qApp->font();
+        painter.setFont( font );
+        QFontMetrics fontMetrics( font );
+        setMinimumHeight( fontMetrics.width( "5555" ) );
 
-    painter.setPen( vk_get_color( QPalette::ButtonText ) );
+        painter.setPen( vk_get_color( QPalette::ButtonText ) );
 
-    QRectF qRectF( (qreal)(width() - 2*handleRadius) / (qreal)( maximum() - minimum() ) * (qreal)( value() - minimum() ) + onePixel,
-                   pen.widthF()/2,
-                   2*handleRadius,
-                   2*handleRadius );
+        QRectF qRectF( (qreal)(width() - 2*handleRadius) / (qreal)( maximum() - minimum() ) * (qreal)( value() - minimum() ) + onePixel,
+                       pen.widthF()/2,
+                       2*handleRadius,
+                       2*handleRadius );
 
-    painter.drawText( qRectF, Qt::AlignCenter, QString::number( value() ) );
+        painter.drawText( qRectF, Qt::AlignCenter, QString::number( value() ) );
+    }
 
     painter.end();
 }
@@ -170,4 +173,10 @@ void QvkSpezialSlider::mouseReleaseEvent( QMouseEvent *event )
 {
     Q_UNUSED(event);
     mousePressed = false;
+}
+
+
+void QvkSpezialSlider::setPrintText( bool value )
+{
+    printText = value;
 }

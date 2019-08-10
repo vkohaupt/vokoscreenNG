@@ -39,6 +39,7 @@ cameraSettingsDialog::cameraSettingsDialog(QWidget *parent) :
     dialog_sliderCameraWindowSize->setMaximum( 3 );
     dialog_sliderCameraWindowSize->setValue( 2 );
     dialog_sliderCameraWindowSize->show();
+    dialog_sliderCameraWindowSize->setPrintText( false );
 
     ui->tabWidget->setTabIcon( 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/camera/camera.png" ) ) );
     setWindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
