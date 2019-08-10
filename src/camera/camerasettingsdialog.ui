@@ -108,31 +108,9 @@
        <item>
         <widget class="QWidget" name="widgetCameraWindowSize" native="true">
          <layout class="QVBoxLayout" name="verticalLayout_3">
-          <item>
-           <widget class="QSlider" name="sliderCameraWindowSize">
-            <property name="minimum">
-             <number>1</number>
-            </property>
-            <property name="maximum">
-             <number>3</number>
-            </property>
-            <property name="pageStep">
-             <number>1</number>
-            </property>
-            <property name="value">
-             <number>1</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="tickPosition">
-             <enum>QSlider::TicksBelow</enum>
-            </property>
-            <property name="tickInterval">
-             <number>1</number>
-            </property>
-           </widget>
-          </item>
+          <property name="spacing">
+           <number>0</number>
+          </property>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_44">
             <item>
@@ -168,11 +146,31 @@
         </widget>
        </item>
        <item>
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="pushButtonSwitchToFullscreen">
          <property name="text">
           <string notr="true">Switch to Fullscreen</string>
          </property>
         </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>

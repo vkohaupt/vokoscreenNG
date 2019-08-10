@@ -31,6 +31,15 @@ cameraSettingsDialog::cameraSettingsDialog(QWidget *parent) :
 {
     setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint );
     ui->setupUi(this);
+
+    dialog_sliderCameraWindowSize = new QvkSpezialSlider( Qt::Horizontal );
+    ui->verticalLayout_3->insertWidget( 0, dialog_sliderCameraWindowSize );
+    dialog_sliderCameraWindowSize->setObjectName( "sliderCameraWindowSize" );
+    dialog_sliderCameraWindowSize->setMinimum( 1 );
+    dialog_sliderCameraWindowSize->setMaximum( 3 );
+    dialog_sliderCameraWindowSize->setValue( 2 );
+    dialog_sliderCameraWindowSize->show();
+
     ui->tabWidget->setTabIcon( 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/camera/camera.png" ) ) );
     setWindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
     setWindowTitle( global::name + " " + tr( "Camera settings" ) );
@@ -40,3 +49,5 @@ cameraSettingsDialog::~cameraSettingsDialog()
 {
     delete ui;
 }
+
+

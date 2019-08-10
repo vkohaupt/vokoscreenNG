@@ -23,6 +23,8 @@
 #ifndef CAMERASETTINGSDIALOG_H
 #define CAMERASETTINGSDIALOG_H
 
+#include "QvkSpezialSlider.h"
+
 #include <QDialog>
 
 namespace Ui {
@@ -37,6 +39,7 @@ public:
     explicit cameraSettingsDialog( QWidget *parent = Q_NULLPTR );
     ~cameraSettingsDialog();
     Ui::cameraSettingsDialog *ui;
+    QvkSpezialSlider *dialog_sliderCameraWindowSize;
 
 private:
 
