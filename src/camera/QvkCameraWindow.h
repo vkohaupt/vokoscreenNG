@@ -27,6 +27,7 @@
 #include "ui_camerasettingsdialog.h"
 
 #include "camerasettingsdialog.h"
+#include "QvkSpezialSlider.h"
 
 #include <QLabel>
 #include <QWidget>
@@ -36,7 +37,7 @@ class QvkCameraWindow : public QLabel
     Q_OBJECT
 
 public:
-    QvkCameraWindow(Ui_formMainWindow *ui_surface);
+    QvkCameraWindow( Ui_formMainWindow *ui_surface, QvkSpezialSlider *sliderCameraWindowSize );
     virtual ~QvkCameraWindow();
     Ui_cameraSettingsDialog *uiCameraSettingsDialog;
     cameraSettingsDialog *vkCameraSettingsDialog;

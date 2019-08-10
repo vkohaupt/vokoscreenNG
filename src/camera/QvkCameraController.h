@@ -34,6 +34,7 @@
 
 #include "QvkCameraWindow.h"
 #include "QvkVideoSurface.h"
+#include "QvkSpezialSlider.h"
 
 #include <QCamera>
 #include <QComboBox>
@@ -43,7 +44,7 @@ class QvkCameraController : public QObject
     Q_OBJECT
 
 public:
-   QvkCameraController(Ui_formMainWindow *ui_surface );
+   QvkCameraController( Ui_formMainWindow *ui_surface );
    virtual ~QvkCameraController();
 
    QvkCameraWindow *cameraWindow;
@@ -72,7 +73,7 @@ private:
   QCamera *camera = nullptr;
   QvkCameraWatcher *cameraWatcher;
   QvkVideoSurface *videoSurface;
-
+  QvkSpezialSlider *sliderCameraWindowSize;
 
 protected:
 

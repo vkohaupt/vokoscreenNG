@@ -25,7 +25,7 @@
 #include <QDebug>
 #include <QMouseEvent>
 
-QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface )
+QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, QvkSpezialSlider *sliderCameraWindowSize)
 {
     ui_formMainWindow = ui_surface;
 
@@ -45,7 +45,7 @@ QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface )
     connect( ui_formMainWindow->checkBoxCameraGray,             SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraGray,             SLOT( setChecked( bool ) ) );
     connect( ui_formMainWindow->checkBoxCameraMono,             SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraMono,             SLOT( setChecked( bool ) ) );
     connect( ui_formMainWindow->checkBoxCameraWindowFrame,      SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame,      SLOT( setChecked( bool ) ) );
-    connect( ui_formMainWindow->sliderCameraWindowSize,         SIGNAL( valueChanged( int ) ), vkCameraSettingsDialog->ui->sliderCameraWindowSize,     SLOT( setValue( int ) ) );
+    connect( sliderCameraWindowSize,         SIGNAL( valueChanged( int ) ), vkCameraSettingsDialog->ui->sliderCameraWindowSize,     SLOT( setValue( int ) ) );
 
     connect( vkCameraSettingsDialog->ui->checkBoxCameraMirrorHorizontal, SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraMirrorHorizontal, SLOT( setChecked( bool ) ) );
     connect( vkCameraSettingsDialog->ui->checkBoxCameraMirrorVertical,   SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraMirrorVertical,   SLOT( setChecked( bool ) ) );
@@ -53,7 +53,7 @@ QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface )
     connect( vkCameraSettingsDialog->ui->checkBoxCameraGray,             SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraGray,             SLOT( setChecked( bool ) ) );
     connect( vkCameraSettingsDialog->ui->checkBoxCameraMono,             SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraMono,             SLOT( setChecked( bool ) ) );
     connect( vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame,      SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraWindowFrame,      SLOT( setChecked( bool ) ) );
-    connect( vkCameraSettingsDialog->ui->sliderCameraWindowSize,         SIGNAL( valueChanged( int ) ), ui_formMainWindow->sliderCameraWindowSize,     SLOT( setValue( int ) ) );
+    connect( vkCameraSettingsDialog->ui->sliderCameraWindowSize,         SIGNAL( valueChanged( int ) ), sliderCameraWindowSize,     SLOT( setValue( int ) ) );
 
     connect( vkCameraSettingsDialog->ui->buttonBox, SIGNAL( accepted() ), vkCameraSettingsDialog, SLOT( close() ) );
     connect( vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_switchToFullscreen() ) );

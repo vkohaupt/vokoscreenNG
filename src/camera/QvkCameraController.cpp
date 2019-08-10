@@ -23,12 +23,20 @@
 #include "QvkCameraController.h"
 #include "global.h"
 
-QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraWatcher(new QvkCameraWatcher()),
-                                                                         videoSurface(new QvkVideoSurface())
+QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):cameraWatcher(new QvkCameraWatcher()),
+                                                                          videoSurface(new QvkVideoSurface())
 {
     ui_formMainWindow = ui_surface;
 
-    cameraWindow = new QvkCameraWindow( ui_surface );
+    sliderCameraWindowSize = new QvkSpezialSlider( Qt::Horizontal );
+    ui_formMainWindow->horizontalLayout_45->insertWidget( 1, sliderCameraWindowSize );
+    sliderCameraWindowSize->setObjectName( "sliderCameraWindowSize" );
+    sliderCameraWindowSize->setMinimum( 1 );
+    sliderCameraWindowSize->setMaximum( 3 );
+    sliderCameraWindowSize->setValue( 2 );
+    sliderCameraWindowSize->show();
+
+    cameraWindow = new QvkCameraWindow( ui_surface, sliderCameraWindowSize );
     cameraWindow->hide();
     connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_formMainWindow->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
     cameraWindow->setWindowTitle( global::name + " " + global::version + " " + "Camera");
@@ -50,7 +58,7 @@ QvkCameraController::QvkCameraController(Ui_formMainWindow *ui_surface ):cameraW
 
     connect( ui_formMainWindow->checkBoxCameraWindowFrame, SIGNAL( toggled( bool ) ), this, SLOT( slot_frameOnOff( bool ) ) );
 
-    connect( ui_formMainWindow->sliderCameraWindowSize, SIGNAL( valueChanged( int ) ), this, SLOT( slot_sliderMoved( int ) ) );
+    connect( sliderCameraWindowSize, SIGNAL( valueChanged( int ) ), this, SLOT( slot_sliderMoved( int ) ) );
 }
 
 
@@ -132,7 +140,7 @@ void QvkCameraController::slot_addedCamera( QString description, QString device 
     ui_formMainWindow->checkBoxCameraMirrorHorizontal->setEnabled( true );
     ui_formMainWindow->checkBoxCameraMirrorVertical->setEnabled( true );
     ui_formMainWindow->checkBoxCameraMono->setEnabled( true );
-    ui_formMainWindow->sliderCameraWindowSize->setEnabled( true );
+    sliderCameraWindowSize->setEnabled( true );
     ui_formMainWindow->labelCameraWindowSize160_120->setEnabled( true );
     ui_formMainWindow->labelCameraWindowSize320_240->setEnabled( true );
     ui_formMainWindow->labelCameraWindowSize640_480->setEnabled( true );
@@ -158,7 +166,7 @@ void QvkCameraController::slot_removedCamera( QString device )
         ui_formMainWindow->checkBoxCameraMirrorHorizontal->setEnabled( false );
         ui_formMainWindow->checkBoxCameraMirrorVertical->setEnabled( false );
         ui_formMainWindow->checkBoxCameraMono->setEnabled( false );
-        ui_formMainWindow->sliderCameraWindowSize->setEnabled( false );
+        sliderCameraWindowSize->setEnabled( false );
         ui_formMainWindow->labelCameraWindowSize160_120->setEnabled( false );
         ui_formMainWindow->labelCameraWindowSize320_240->setEnabled( false );
         ui_formMainWindow->labelCameraWindowSize640_480->setEnabled( false );
@@ -183,7 +191,7 @@ void QvkCameraController::slot_startCamera( bool value )
         viewfinderSettings.setMaximumFrameRate( 0.0 );
         camera->setViewfinderSettings( viewfinderSettings );
 
-        slot_sliderMoved( ui_formMainWindow->sliderCameraWindowSize->value() );
+        slot_sliderMoved( sliderCameraWindowSize->value() );
 
         camera->setViewfinder( videoSurface );
         cameraWindow->show();
