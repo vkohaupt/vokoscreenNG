@@ -33,6 +33,6 @@ Systray:
 --KDE Icon wird erst angezeigt wenn von Automatisch auf Angezeigt umgeschaltet wird.
 --API anschauen ob es evtl. durch eine Messsage möglich ist das Icon grundsätzlich anzuzeigen.
 
-Suse Leap 15.0 Ubuntu:
+Suse Leap 15.0 Gnome:
 --Camerafenster wandert beim entfernen und hinzufügen des Rahmen nach oben.
 --Keine Lösung in Sicht.
