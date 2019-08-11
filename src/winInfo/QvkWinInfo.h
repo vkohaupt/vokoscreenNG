@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkWinInfo_H 
-#define QvkWinInfo_H
+#ifndef QVKWININFO_H
+#define QVKWININFO_H
 
 #include <QTimer>
 #include <QPainter>

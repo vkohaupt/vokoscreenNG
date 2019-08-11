@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkPulseGstr_H
-#define QvkPulseGstr_H
+#ifndef QVKPULSEGSTR_H
+#define QVKPULSEGSTR_H
 
 #include <gst/gst.h>
 

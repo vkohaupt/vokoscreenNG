@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkInformation_H
-#define QvkInformation_H
+#ifndef QVKINFORMATION_H
+#define QVKINFORMATION_H
 
 #include "ui_formMainWindow.h"
 #include "QvkSpezialSlider.h"

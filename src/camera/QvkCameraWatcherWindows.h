@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkCameraWatcher_H 
-#define QvkCameraWatcher_H
+#ifndef QVKCAMERAWATCHER_H
+#define QVKCAMERAWATCHER_H
 
 #include <QStringList>
 #include <QObject>

@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkLog_H 
-#define QvkLog_H
+#ifndef QVKLOG_H
+#define QVKLOG_H
 
 #include "ui_formMainWindow.h"
 

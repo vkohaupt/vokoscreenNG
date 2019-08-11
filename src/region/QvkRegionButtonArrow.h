@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef regionButtonArrow_H
-#define regionButtonArrow_H
+#ifndef REGIONBUTTONARROW_H
+#define REGIONBUTTONARROW_H
 
 #include <QPainter>
 

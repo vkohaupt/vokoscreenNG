@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkSystray_H
-#define QvkSystray_H
+#ifndef QVKSYSTRAY_H
+#define QVKSYSTRAY_H
 
 #include "ui_formMainWindow.h"
 

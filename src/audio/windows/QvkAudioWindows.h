@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkAudioWindows_H 
-#define QvkAudioWindows_H
+#ifndef QVKAUDIOWINDOWS_H
+#define QVKAUDIOWINDOWS_H
 
 #include "ui_formMainwindow.h"
 #include <QObject>

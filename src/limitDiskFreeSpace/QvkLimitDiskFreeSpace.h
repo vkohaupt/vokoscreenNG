@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkLimitDiskFreeSpace_H
-#define QvkLimitDiskFreeSpace_H
+#ifndef QVKLIMITDISKFREESPACE_H
+#define QVKLIMITDISKFREESPACE_H
 
 #include "ui_formMainWindow.h"
 #include "QvkSpezialSlider.h"

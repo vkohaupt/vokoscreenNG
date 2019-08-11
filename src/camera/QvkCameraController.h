@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkCameraController_H
-#define QvkCameraController_H
+#ifndef QVKCAMERACONTROLLER_H
+#define QVKCAMERACONTROLLER_H
 
 #include "ui_formMainWindow.h"
 

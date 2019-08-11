@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkPlayerVideoSurface_H
-#define QvkPlayerVideoSurface_H
+#ifndef QVKPLAYERVIDEOSURFACE_H
+#define QVKPLAYERVIDEOSURFACE_H
 
 #include <QAbstractVideoSurface>
 #include <QDebug>

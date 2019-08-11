@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkMagnifier_H 
-#define QvkMagnifier_H
+#ifndef QVKMAGNIFIER_H
+#define QVKMAGNIFIER_H
 
 #include <QScreen>
 #include <QPixmap>

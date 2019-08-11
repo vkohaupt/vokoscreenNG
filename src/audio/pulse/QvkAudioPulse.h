@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkAudioPulse_H
-#define QvkAudioPulse_H
+#ifndef QVKAUDIOPULSE_H
+#define QVKAUDIOPULSE_H
 
 #include "ui_formMainWindow.h"
 #include "QvkPulseGstr.h"

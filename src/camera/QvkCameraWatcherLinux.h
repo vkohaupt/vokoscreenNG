@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkWebcamWatcher_H
-#define QvkWebcamWatcher_H
+#ifndef QVKWEBCAMWATCHER_H
+#define QVKWEBCAMWATCHER_H
 
 #include <QStringList>
 #include <QDir>

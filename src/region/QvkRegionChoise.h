@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef regionChoise_H 
-#define regionChoise_H
+#ifndef REGIONCHOISE_H
+#define REGIONCHOISE_H
 
 #include "QvkRegionButtonArrow.h"
 

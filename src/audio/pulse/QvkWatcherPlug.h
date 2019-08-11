@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkWatcherPlug_H
-#define QvkWatcherPlug_H
+#ifndef QVKWATCHERPLUG_H
+#define QVKWATCHERPLUG_H
 
 #include <gst/gst.h>
 

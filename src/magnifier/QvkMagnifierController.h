@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkMagnifierController_H
-#define QvkMagnifierController_H
+#ifndef QVKMAGNIFIERCONTROLLER_H
+#define QVKMAGNIFIERCONTROLLER_H
 
 #include "ui_formMainWindow.h"
 #include "QvkMagnifier.h"

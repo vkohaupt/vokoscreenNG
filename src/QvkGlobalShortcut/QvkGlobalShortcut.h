@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkGlobalShortcut_H
-#define QvkGlobalShortcut_H
+#ifndef QVKGLOBALSHORTCUT_H
+#define QVKGLOBALSHORTCUT_H
 
 #include "ui_formMainWindow.h"
 #include "qglobalshortcut.h"

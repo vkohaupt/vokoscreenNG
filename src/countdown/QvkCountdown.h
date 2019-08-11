@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkCountdown_H 
-#define QvkCountdown_H
+#ifndef QVKCOUNTDOWN_H
+#define QVKCOUNTDOWN_H
 
 #include <QWidget>
 #include <QPainter>

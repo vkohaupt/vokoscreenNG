@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkDownloader_H
-#define QvkDownloader_H
+#ifndef QVKDOWNLOADER_H
+#define QVKDOWNLOADER_H
 
 #include <QObject>
 #include <QNetworkAccessManager>

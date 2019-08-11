@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkHelp_H 
-#define QvkHelp_H
+#ifndef QVKHELP_H
+#define QVKHELP_H
 
 #include "ui_formMainWindow.h"
 #include "ui_help.h"
