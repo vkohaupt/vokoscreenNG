@@ -69,6 +69,8 @@ TRANSLATIONS = $$files(language/*.ts)
 # Clean target
 QMAKE_CLEAN += $$TARGET */*~
 
+QMAKE_LFLAGS+=-Wl,--as-needed
+
 unix:CONFIG += link_pkgconfig
 unix:PKGCONFIG += gstreamer-1.0
 
