@@ -166,7 +166,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vkPlayer = new QvkPlayer( this, ui );
 
-    QvkHelp *vkHelp = new QvkHelp( this, ui, vkPlayer->ui );
+    QvkHelp *vkHelp = new QvkHelp( this, ui );
 
     QvkLicenses *vkLicenses = new QvkLicenses( ui );
 

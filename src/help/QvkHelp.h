@@ -25,7 +25,6 @@
 
 #include "ui_formMainWindow.h"
 #include "ui_help.h"
-#include "ui_player.h"
 #include "QvkDownloader.h"
 
 #include <QObject>
@@ -40,7 +39,7 @@ class QvkHelp: public QWidget
     Q_OBJECT
     
 public:
-    QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, Ui_player *ui_player);
+    QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow);
     virtual ~QvkHelp() override;
     
 
@@ -50,7 +49,6 @@ public slots:
 private:
     Ui_formMainWindow *ui;
     Ui_help *uiHelp;
-    Ui_player *uiPlayer;
 
     QStringList toDownloadFiles = { ".png", ".svg", ".css", ".jpg" };
     bool isFileInLine( QString line );

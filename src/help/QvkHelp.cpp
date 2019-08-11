@@ -42,12 +42,11 @@
  * See also QvkHelp::eventFilter(QObject *object, QEvent *event)
  */
 
-QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, Ui_player *ui_player) : uiHelp(new(Ui::help))
+QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : uiHelp(new(Ui::help))
 {
     connect( mainWindow, SIGNAL( destroyed( QObject*) ), this, SLOT( slot_cleanUp() ) );
 
     ui = ui_mainwindow;
-    uiPlayer = ui_player;
     uiHelp->setupUi( this );
 
     resize( 800, 600 );
