@@ -1,8 +1,4 @@
 
-Tumbelweed Kamera:
---Ein leerer Eintrag wird angezeigt.
-
-
 Spezialslider:
 --Mauscursor nicht stimmig mit Handle.
 
@@ -36,3 +32,7 @@ Systray:
 Suse Leap 15.0 Gnome:
 --Camerafenster wandert beim entfernen und hinzufügen des Rahmen nach oben.
 --Keine Lösung in Sicht.
+
+Tumbelweed Kamera:
+--Beim einstecken einer UVC Kamera werden immer zwei Geräte /dev/video0 und /dev/video1 angelegt.
+--Dies ist ein Problem von Tumbelwwed nicht von vokoscreenNG
