@@ -7,17 +7,6 @@ Spezialslider:
 --Mauscursor nicht stimmig mit Handle.
 
 
-LDFLAGS:
-To LDFLAGS, if needed only. If you fix all above warnings, it is not
-needed. Now we have only these:
-dpkg-shlibdeps: warning: package could avoid a useless dependency if
-debian/vokoscreen-ng/usr/bin/vokoscreenNG was not linked against
-libpthread.so.0 (it uses none of the library's symbols)
-dpkg-shlibdeps: warning: package could avoid a useless dependency if
-debian/vokoscreen-ng/usr/bin/vokoscreenNG was not linked against
-libGL.so.1 (it uses none of the library's symbols)
-
-
 Versionsabfrage:
 --Im Stiel von Webcamoid.
 
