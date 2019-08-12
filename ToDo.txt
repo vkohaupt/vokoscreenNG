@@ -1,4 +1,12 @@
 
+Player:
+--als seperates Fenster
+--Einstellungen in dem vorhanden Tab
+
+Kamera:
+--Ein Tab nach oben
+
+
 Spezialslider:
 --Mauscursor nicht stimmig mit Handle.
 
