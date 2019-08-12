@@ -86,6 +86,7 @@ private:
     QLabel *metaLabel;
     QFrame *metaFrame;
     QvkSpezialSlider *sliderVolume;
+    QvkSpezialSlider *sliderVideo;
 
 protected:
     void mouseDoubleClickEvent( QMouseEvent *event );

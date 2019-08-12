@@ -125,6 +125,11 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     QList<QSlider *> listSlider = ui_mainwindow->centralWidget->findChildren<QSlider *>();
     for ( int i = 0; i < listSlider.count(); i++ )
     {
+        if ( listSlider.at(i)->objectName() == "sliderVideo" )
+        {
+            continue;
+        }
+
         QVariant variant = settings.value( listSlider.at(i)->objectName() );
 
         if ( listSlider.at(i)->objectName() == "sliderCameraWindowSize" )

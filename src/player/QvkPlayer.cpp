@@ -23,7 +23,6 @@
 #include "QvkPlayer.h"
 #include "QvkPlayerVideoSurface.h"
 #include "QvkSpezialSlider.h"
-#include "slidervideo.h"
 #include "global.h"
 
 #include <QTime>
@@ -37,6 +36,15 @@
 QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : ui(new Ui::player)
 {
     ui->setupUi(this);
+
+    sliderVideo = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_2->insertWidget( 0, sliderVideo );
+    ui->horizontalLayout_2->setStretch( 0, 1 );
+    sliderVideo->setObjectName( "sliderVideo" );
+    sliderVideo->setTracking( true );
+    sliderVideo->setPrintText( false );
+    sliderVideo->setEnabled( false );
+    sliderVideo->show();
 
     sliderVolume = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_3->insertWidget( 11, sliderVolume );
@@ -95,10 +103,9 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
                                         msgBox.exec();
                                       });
 
-    connect( ui->sliderVideo, SIGNAL( sliderPressed() ),   this, SLOT( slot_sliderVideoPressed() ) );
-    connect( ui->sliderVideo, SIGNAL( sliderReleased() ),  this, SLOT( slot_sliderVideoReleased() ) );
-    connect( ui->sliderVideo, SIGNAL( sliderMoved( int )), this, SLOT( slot_sliderVideoMoved( int ) ) );
-    connect( ui->sliderVideo, SIGNAL( signal_sliderVideo_KeyRight_KeyLeft( int ) ), this, SLOT( slot_sliderVideo_KeyRight_KeyLeft( int ) ) );
+    connect( sliderVideo, SIGNAL( sliderPressed() ),   this, SLOT( slot_sliderVideoPressed() ) );
+    connect( sliderVideo, SIGNAL( sliderReleased() ),  this, SLOT( slot_sliderVideoReleased() ) );
+    connect( sliderVideo, SIGNAL( sliderMoved( int )), this, SLOT( slot_sliderVideoMoved( int ) ) );
 
     ui->pushButtonPause->hide();
     connect( ui->pushButtonPlay,  SIGNAL( clicked( bool ) ), this,                SLOT( slot_play() ) );
@@ -210,10 +217,10 @@ void QvkPlayer::slot_toolButtonFrameForward()
 {
     if ( mediaPlayer->media().isNull() == false   )
     {
-        ui->labelDuration->setText( get_time( ( ui->sliderVideo->value() + 1 ) * mediaPlayer->notifyInterval() ) );
-        ui->sliderVideo->setValue( ui->sliderVideo->value() + 1 );
+        ui->labelDuration->setText( get_time( ( sliderVideo->value() + 1 ) * mediaPlayer->notifyInterval() ) );
+        sliderVideo->setValue( sliderVideo->value() + 1 );
         mediaPlayer->pause();
-        mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
+        mediaPlayer->setPosition( sliderVideo->value() * mediaPlayer->notifyInterval() );
     }
 }
 
@@ -222,10 +229,10 @@ void QvkPlayer::slot_toolButtonFrameBackward()
 {
     if ( mediaPlayer->media().isNull() == false   )
     {
-        ui->labelDuration->setText( get_time( ( ui->sliderVideo->value() - 1 ) * mediaPlayer->notifyInterval() ) );
-        ui->sliderVideo->setValue( ui->sliderVideo->value() - 1 );
+        ui->labelDuration->setText( get_time( ( sliderVideo->value() - 1 ) * mediaPlayer->notifyInterval() ) );
+        sliderVideo->setValue( sliderVideo->value() - 1 );
         mediaPlayer->pause();
-        mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
+        mediaPlayer->setPosition( sliderVideo->value() * mediaPlayer->notifyInterval() );
     }
 }
 
@@ -236,7 +243,7 @@ void QvkPlayer::setMediaFile( QString string )
     ui->labelDuration->setEnabled( true );
     ui->labelSeparator->setEnabled( true );
     ui->labelVideoLenght->setEnabled( true );
-    ui->sliderVideo->setEnabled( true );
+    sliderVideo->setEnabled( true );
 }
 
 
@@ -278,26 +285,26 @@ void QvkPlayer::slot_sliderVideoReleased()
     // if pause und video not playing
     if ( ( mediaPlayer->state() == QMediaPlayer::PausedState ) and ( playingFlag == false ) )
     {
-        mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
+        mediaPlayer->setPosition( sliderVideo->value() * mediaPlayer->notifyInterval() );
         return;
     }
 
     // If pause and video playing
     if ( ( mediaPlayer->state() == QMediaPlayer::PausedState ) and ( playingFlag == true ) )
     {
-        mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
+        mediaPlayer->setPosition( sliderVideo->value() * mediaPlayer->notifyInterval() );
         playingFlag = false;
     }
 
 
-    mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
+    mediaPlayer->setPosition( sliderVideo->value() * mediaPlayer->notifyInterval() );
     mediaPlayer->play();
 }
 
 
 void QvkPlayer::slot_sliderVideoMoved( int value )
 {
-    mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
+    mediaPlayer->setPosition( sliderVideo->value() * mediaPlayer->notifyInterval() );
     ui->labelDuration->setText( get_time( value * mediaPlayer->notifyInterval() ) );
 }
 
@@ -305,7 +312,7 @@ void QvkPlayer::slot_sliderVideoMoved( int value )
 void QvkPlayer::slot_sliderVideo_KeyRight_KeyLeft( int value )
 {
     Q_UNUSED(value);
-    mediaPlayer->setPosition( ui->sliderVideo->value() * mediaPlayer->notifyInterval() );
+    mediaPlayer->setPosition( sliderVideo->value() * mediaPlayer->notifyInterval() );
 }
 
 
@@ -372,7 +379,7 @@ QString QvkPlayer::get_time( qint64 value )
 void QvkPlayer::slot_durationChanged( qint64 value )
 {
     // Set lenght from video on slider
-    ui->sliderVideo->setMaximum( static_cast<int>( value / mediaPlayer->notifyInterval() ) );
+    sliderVideo->setMaximum( static_cast<int>( value / mediaPlayer->notifyInterval() ) );
 
     // Show lenght from video in label
     ui->labelVideoLenght->setText( get_time( value ) );
@@ -389,7 +396,7 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
         ui->pushButtonPause->setVisible( false );
         ui->pushButtonPlay->setVisible( true );
         ui->pushButtonPlay->setEnabled( true );
-        ui->sliderVideo->setValue( 0 );
+        sliderVideo->setValue( 0 );
         ui->labelDuration->setText( "00:00:00" );
 
         QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
@@ -434,7 +441,7 @@ void QvkPlayer::slot_positionChanged( qint64 value )
 {
     if ( mediaPlayer->state() == QMediaPlayer::PlayingState )
     {
-       ui->sliderVideo->setValue( static_cast<int>( value / mediaPlayer->notifyInterval() ) );
+       sliderVideo->setValue( static_cast<int>( value / mediaPlayer->notifyInterval() ) );
 
        // Show playing time in label
        ui->labelDuration->setText( get_time( value ) );
