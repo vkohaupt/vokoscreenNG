@@ -4,10 +4,6 @@ Player:
 --Einstellungen in dem vorhanden Tab
 
 
-Spezialslider:
---Mauscursor nicht stimmig mit Handle.
-
-
 Versionsabfrage:
 --Im Stiel von Webcamoid.
 
@@ -41,3 +37,6 @@ Suse Leap 15.0 Gnome:
 Tumbelweed Kamera:
 --Beim einstecken einer UVC Kamera werden immer zwei Geräte /dev/video0 und /dev/video1 angelegt.
 --Dies ist ein Problem von Tumbelwwed nicht von vokoscreenNG
+
+Spezialslider:
+--Mauscursor nicht stimmig mit Handle.

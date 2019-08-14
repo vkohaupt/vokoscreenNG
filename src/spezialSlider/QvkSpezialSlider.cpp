@@ -95,26 +95,21 @@ void QvkSpezialSlider::paintEvent(QPaintEvent *event)
     }
 
     handleRadius = handleRadius - pen.widthF()/2;
-    painter.drawEllipse( QRectF( (qreal)(width() - 2*handleRadius) / (qreal)( maximum() - minimum() ) * (qreal)( value() - minimum() ) + onePixel,
-                                 pen.widthF()/2,
-                                 2*handleRadius,
-                                 2*handleRadius ) );
+    QRectF qRectF( (qreal)(width() - 2*handleRadius) / (qreal)( maximum() - minimum() ) * (qreal)( value() - minimum() ) + onePixel,
+                   pen.widthF()/2,
+                   2*handleRadius,
+                   2*handleRadius );
+
+    painter.drawEllipse( qRectF );
 
     // Handletext
-    if ( printText == true )
+    if ( showValue == true )
     {
         QFont font = qApp->font();
         painter.setFont( font );
         QFontMetrics fontMetrics( font );
         setMinimumHeight( fontMetrics.width( "5555" ) );
-
         painter.setPen( vk_get_color( QPalette::ButtonText ) );
-
-        QRectF qRectF( (qreal)(width() - 2*handleRadius) / (qreal)( maximum() - minimum() ) * (qreal)( value() - minimum() ) + onePixel,
-                       pen.widthF()/2,
-                       2*handleRadius,
-                       2*handleRadius );
-
         painter.drawText( qRectF, Qt::AlignCenter, QString::number( value() ) );
     }
 
@@ -175,8 +170,11 @@ void QvkSpezialSlider::mouseReleaseEvent( QMouseEvent *event )
     mousePressed = false;
 }
 
-
-void QvkSpezialSlider::setPrintText( bool value )
+/*
+ * Show value on handle.
+ * The value default is true.
+ */
+void QvkSpezialSlider::setShowValue( bool value )
 {
-    printText = value;
+    showValue = value;
 }

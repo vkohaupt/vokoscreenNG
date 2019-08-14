@@ -42,7 +42,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     ui->horizontalLayout_2->setStretch( 0, 1 );
     sliderVideo->setObjectName( "sliderVideo" );
     sliderVideo->setTracking( true );
-    sliderVideo->setPrintText( false );
+    sliderVideo->setShowValue( false );
     sliderVideo->setEnabled( false );
     sliderVideo->show();
 

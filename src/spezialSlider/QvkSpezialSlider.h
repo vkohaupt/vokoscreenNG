@@ -23,11 +23,11 @@ private:
     qreal handleRadius;
     bool mousePressed = false;
     QColor vk_get_color(QPalette::ColorRole colorRole);
-    bool printText = true;
+    bool showValue = true;
 
 
 public slots:
-    void setPrintText( bool value );
+    void setShowValue( bool value );
 
 
 protected:

@@ -89,7 +89,9 @@ QvkHelp::~QvkHelp()
 
 bool QvkHelp::eventFilter(QObject *object, QEvent *event)
 {
-    if ( event->type() == QEvent::MouseButtonRelease )
+    QToolButton *toolButton = qobject_cast<QToolButton *>(object);
+
+    if ( ( event->type() == QEvent::MouseButtonRelease ) and ( toolButton->isEnabled() == true ) )
     {
        loadHTML( vk_helpPath + object->objectName().section( "_", 1, 1 ) + "/" + object->objectName() + ".html" );
        return false;
