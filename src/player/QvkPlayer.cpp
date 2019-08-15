@@ -47,8 +47,8 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     sliderVideo->show();
 
     sliderVolume = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_3->insertWidget( 11, sliderVolume );
-    ui->horizontalLayout_3->setStretch( 11, 1 );
+    ui->horizontalLayout_3->insertWidget( 12, sliderVolume );
+    ui->horizontalLayout_3->setStretch( 12, 1 );
     sliderVolume->setObjectName( "sliderVolume" );
     sliderVolume->setTracking( true );
     sliderVolume->setMinimum( 0 );
