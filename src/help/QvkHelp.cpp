@@ -49,6 +49,10 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : u
     ui = ui_mainwindow;
     uiHelp->setupUi( this );
 
+    slot_NetworkAccessibility( networkAccessManager.networkAccessible() );
+    connect( &networkAccessManager, SIGNAL( networkAccessibleChanged( QNetworkAccessManager::NetworkAccessibility ) ),
+                                    SLOT( slot_NetworkAccessibility( QNetworkAccessManager::NetworkAccessibility ) ) );
+
     resize( 800, 600 );
     setWindowTitle( global::name + " " + global::version + " " + "help" );
 
@@ -84,6 +88,27 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : u
 
 QvkHelp::~QvkHelp()
 {
+}
+
+
+void QvkHelp::slot_NetworkAccessibility( QNetworkAccessManager::NetworkAccessibility accessible )
+{
+    QList<QToolButton *> listToolButton = ui->centralWidget->findChildren<QToolButton *>();
+    for ( int i = 0; i < listToolButton.count(); i++ )
+    {
+        if ( listToolButton.at(i)->objectName().contains( QRegExp( "^help_") ) )
+        {
+            if ( accessible == QNetworkAccessManager::Accessible )
+            {
+               listToolButton.at(i)->setEnabled( true );
+            }
+
+            if ( accessible == QNetworkAccessManager::NotAccessible )
+            {
+               listToolButton.at(i)->setEnabled( false );
+            }
+        }
+    }
 }
 
 

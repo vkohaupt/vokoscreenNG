@@ -30,7 +30,6 @@ QvkDownloader::QvkDownloader( QString pathLocal , QObject *parent ) : QObject(pa
 }
 
 
-
 void QvkDownloader::doDownload( const QUrl &url )
 {
     QNetworkRequest request;

@@ -65,6 +65,7 @@ private:
     QString vk_helpPath;
 
     QTemporaryDir temporaryDirLocal;
+    QNetworkAccessManager networkAccessManager;
 
 
 private slots:
@@ -72,6 +73,7 @@ private slots:
     void slot_showHelp( QString tempPathFileName );
 
     void slot_cleanUp();
+    void slot_NetworkAccessibility( QNetworkAccessManager::NetworkAccessibility accessible );
 
 
 protected:
