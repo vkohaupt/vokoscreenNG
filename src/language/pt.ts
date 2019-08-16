@@ -394,10 +394,6 @@
         <translation>Remover moldura da janela</translation>
     </message>
     <message>
-        <source>Time</source>
-        <translation>Tempo</translation>
-    </message>
-    <message>
         <source>Donate</source>
         <translation>Doar</translation>
     </message>
@@ -412,6 +408,18 @@
     <message>
         <source>Megabyte</source>
         <translation>Megabyte</translation>
+    </message>
+    <message>
+        <source>Screencast</source>
+        <translation>Screencast</translation>
+    </message>
+    <message>
+        <source>Player</source>
+        <translation>Leitor</translation>
+    </message>
+    <message>
+        <source>Log</source>
+        <translation>Registos</translation>
     </message>
 </context>
 <context>

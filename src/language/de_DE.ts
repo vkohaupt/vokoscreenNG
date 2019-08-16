@@ -394,10 +394,6 @@
         <translation>Fensterrahmen entfernen</translation>
     </message>
     <message>
-        <source>Time</source>
-        <translation>Zeit</translation>
-    </message>
-    <message>
         <source>Donate</source>
         <translation>Spenden</translation>
     </message>
@@ -412,6 +408,18 @@
     <message>
         <source>Megabyte</source>
         <translation>Megabyte</translation>
+    </message>
+    <message>
+        <source>Screencast</source>
+        <translation>Bildschirmmitschnitt</translation>
+    </message>
+    <message>
+        <source>Player</source>
+        <translation>Player</translation>
+    </message>
+    <message>
+        <source>Log</source>
+        <translation>Protokoll</translation>
     </message>
 </context>
 <context>

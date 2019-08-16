@@ -394,10 +394,6 @@
         <translation>Elimina el marc de la finestra</translation>
     </message>
     <message>
-        <source>Time</source>
-        <translation>Temps</translation>
-    </message>
-    <message>
         <source>Donate</source>
         <translation>Feu una donació</translation>
     </message>
@@ -412,6 +408,18 @@
     <message>
         <source>Megabyte</source>
         <translation>Megabyte</translation>
+    </message>
+    <message>
+        <source>Screencast</source>
+        <translation>Emissió de la pantalla</translation>
+    </message>
+    <message>
+        <source>Player</source>
+        <translation>Reproductor</translation>
+    </message>
+    <message>
+        <source>Log</source>
+        <translation>Registre</translation>
     </message>
 </context>
 <context>

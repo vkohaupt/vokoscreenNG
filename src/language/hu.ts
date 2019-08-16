@@ -394,10 +394,6 @@
         <translation>Szedje le a keretet az ablakról!</translation>
     </message>
     <message>
-        <source>Time</source>
-        <translation>Idő</translation>
-    </message>
-    <message>
         <source>Donate</source>
         <translation>Adományozás</translation>
     </message>
@@ -412,6 +408,18 @@
     <message>
         <source>Megabyte</source>
         <translation>Megabyte</translation>
+    </message>
+    <message>
+        <source>Screencast</source>
+        <translation>Képernyőrögzítés</translation>
+    </message>
+    <message>
+        <source>Player</source>
+        <translation>Lejátszó</translation>
+    </message>
+    <message>
+        <source>Log</source>
+        <translation>Napló</translation>
     </message>
 </context>
 <context>

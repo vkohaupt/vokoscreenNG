@@ -9,6 +9,13 @@
     </message>
 </context>
 <context>
+    <name>QvkAudioWindows</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
@@ -459,10 +466,6 @@
     </message>
     <message>
         <source>Next frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Volume</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

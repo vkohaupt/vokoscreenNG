@@ -394,10 +394,6 @@
         <translation>Šalinti lango rėmelį</translation>
     </message>
     <message>
-        <source>Time</source>
-        <translation>Laikas</translation>
-    </message>
-    <message>
         <source>Donate</source>
         <translation>Paaukoti</translation>
     </message>
@@ -412,6 +408,18 @@
     <message>
         <source>Megabyte</source>
         <translation>Megabaitų</translation>
+    </message>
+    <message>
+        <source>Screencast</source>
+        <translation>Ekrano įrašas</translation>
+    </message>
+    <message>
+        <source>Player</source>
+        <translation>Grotuvas</translation>
+    </message>
+    <message>
+        <source>Log</source>
+        <translation>Žurnalas</translation>
     </message>
 </context>
 <context>

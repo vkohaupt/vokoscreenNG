@@ -394,10 +394,6 @@
         <translation>Poista ikkunakehys</translation>
     </message>
     <message>
-        <source>Time</source>
-        <translation>Aika</translation>
-    </message>
-    <message>
         <source>Donate</source>
         <translation>Lahjoita</translation>
     </message>
@@ -412,6 +408,18 @@
     <message>
         <source>Megabyte</source>
         <translation>Megatavu</translation>
+    </message>
+    <message>
+        <source>Screencast</source>
+        <translation>Näyttötallenne</translation>
+    </message>
+    <message>
+        <source>Player</source>
+        <translation>Toistin</translation>
+    </message>
+    <message>
+        <source>Log</source>
+        <translation>Loki</translation>
     </message>
 </context>
 <context>

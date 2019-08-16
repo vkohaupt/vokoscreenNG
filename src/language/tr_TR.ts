@@ -394,10 +394,6 @@
         <translation>Pencere çerçevesini kaldır</translation>
     </message>
     <message>
-        <source>Time</source>
-        <translation>Zaman</translation>
-    </message>
-    <message>
         <source>Donate</source>
         <translation>Bağış</translation>
     </message>
@@ -412,6 +408,18 @@
     <message>
         <source>Megabyte</source>
         <translation>Megabayt</translation>
+    </message>
+    <message>
+        <source>Screencast</source>
+        <translation>Ekran alıntılama</translation>
+    </message>
+    <message>
+        <source>Player</source>
+        <translation>Oynatıcı</translation>
+    </message>
+    <message>
+        <source>Log</source>
+        <translation>Log</translation>
     </message>
 </context>
 <context>
