@@ -1301,7 +1301,6 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << ui->comboBoxVideoCodec->currentData().toString();
         list << "qp-min=" + QString::number( sliderX264->value() );
         list << "qp-max=" + QString::number( sliderX264->value() );
-        list << "subme=6";
         list << "speed-preset=" + ui->comboBoxx264Preset->currentText();
         list << "threads=" + vk_idealThreadCount;
         value = list.join( " " );
