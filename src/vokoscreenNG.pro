@@ -144,3 +144,7 @@ include(limitDiskFreeSpace/limitDiskFreeSpace.pri)
 # spezialSlider
 include(spezialSlider/spezialSlider.pri)
 
+# version
+include(version/version.pri)
+
+

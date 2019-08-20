@@ -1,4 +1,5 @@
 #include "QvkVersion.h"
+#include "global.h"
 
 QvkVersion::QvkVersion()
 {
@@ -8,89 +9,33 @@ QvkVersion::QvkVersion()
 
 void QvkVersion::doDownload()
 {
-    QNetworkRequest request( QUrl( "http://linuxecke.volkoh.de/vokoscreen/version/VERSION260BETA" ) );
-
+    QNetworkRequest request( QUrl( "http://vokoscreen.volkoh.de/3.0/version/linux/VERSION" ) );
     QNetworkReply *reply = manager.get( request );
     currentDownloadsQList.append( reply );
 }
 
 
-bool QvkVersion::saveToDisk( const QString &remoteFilename, QIODevice *data )
-{
-    QFile remoteFile( QStandardPaths::writableLocation( QStandardPaths::TempLocation ) +
-		      QDir::separator() +
-		      remoteFilename );
-
-    if ( !remoteFile.open( QIODevice::WriteOnly ) )
-    {
-        fprintf( stderr, "Could not open %s for writing: %s\n", qPrintable( remoteFilename ), qPrintable( remoteFile.errorString() ) );
-        return false;
-    }
-
-    remoteFile.write( data->readAll() );
-    remoteFile.close();
-    return true;
-}
-
-
 void QvkVersion::downloadFinished( QNetworkReply *reply )
 {
-    QString localVersionFilename = "vokoscreenVERSION";
-  
     QUrl url = reply->url();
     if ( reply->error() )
     {
-        fprintf( stderr, "[vokoscreen] Download of %s failed: %s\n", url.toEncoded().constData(), qPrintable( reply->errorString() ) );
+        fprintf( stderr, "[vokoscreenNG] Download of %s failed: %s\n", url.toEncoded().constData(), qPrintable( reply->errorString() ) );
     }
     else
     {
-       if ( saveToDisk( localVersionFilename, reply ) )
+       QString string = QString( reply->readAll() );
+       QStringList stringList = string.split( "\n" );
+       if ( !stringList.empty() )
        {
-          // printf( "[vokoscreen] File VERSION available\n" );
-	      // qDebug( " " );
+           int i = stringList.indexOf( QRegExp( "Version*", Qt::CaseInsensitive, QRegExp::Wildcard ) );
+           QString newVersion = stringList.at(i).section( "=", 1, 1 );
+           QString currentVersion = global::version.section( " ", 0, 0 );
+
+           if ( newVersion > currentVersion )
+           {
+               emit newVersionAvailable( newVersion );
+           }
        }
     }
-
-    readVersionTempFile( localVersionFilename );
-
-    emit versionDownloadFinish();
-}
-
-
-void QvkVersion::readVersionTempFile( QString localVersionFilename )
-{
-    QSettings settings( QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + 
-                        QDir::separator() +
-			localVersionFilename, QSettings::IniFormat );
-
-    settings.beginGroup( "Info" );
-       setRemoteVersion( settings.value( "Version" ).toString() );
-    settings.endGroup();
-    
-    QFile file( QStandardPaths::writableLocation( QStandardPaths::TempLocation ) + QDir::separator() + localVersionFilename  );
-    if ( file.exists() == true )
-    {
-      file.remove(); 
-    }
-}
-
-
-void QvkVersion::setRemoteVersion( QString version )
-{
-    remoteVersion = version;
-}
-
-
-QString QvkVersion::getRemoteVersion()
-{
-    return remoteVersion; 
-}
-
-
-bool QvkVersion::isNewVersionAvailable( QString localVersion, QString remoteVersion )
-{
-  if ( remoteVersion > localVersion )
-    return true;
-  else
-    return false;
 }

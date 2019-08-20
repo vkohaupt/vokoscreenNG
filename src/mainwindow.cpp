@@ -466,6 +466,13 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         vkPlayer->slot_play();
         ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
     }
+
+    QTimer::singleShot( 5000, &version, SLOT( doDownload() ) );
+    //connect( &version, SIGNAL( versionDownloadFinish() ), SLOT( buttonVersion() ) );
+    //myUi.updateButton->setIcon( QIcon( ":/pictures/system-software-update.png" ) );
+    //myUi.updateButton->setToolTip( tr( "New version available" ) );
+    //connect( myUi.updateButton, SIGNAL( clicked() ), SLOT( showHomepage() ) );
+
 }
 
 

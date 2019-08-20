@@ -35,6 +35,7 @@
 #include "QvkTheme.h"
 #include "QvkLimitDiskFreeSpace.h"
 #include "QvkSpezialSlider.h"
+#include "QvkVersion.h"
 
 #ifdef Q_OS_LINUX
 #include "QvkAudioPulse.h"
@@ -133,6 +134,7 @@ private:
     void checkVideoPath();
 
     bool isAudioDeviceSelected();
+    QvkVersion version;
 
 
 private slots:
