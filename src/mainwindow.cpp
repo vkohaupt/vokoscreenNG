@@ -469,7 +469,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     if ( ui->checkBoxLookForUpdates->isChecked() == true )
     {
-        QTimer::singleShot( 5000, &version, SLOT( doDownload() ) );
+        ui->label_newUpate->setText( "" );
+        QTimer::singleShot( 5000, &version, SLOT( slot_doDownload() ) );
+        connect( &version, SIGNAL( signal_newVersionAvailable( QString ) ), this, SLOT( slot_newVersionAvailable( QString ) ) );
     }
 }
 
@@ -493,6 +495,11 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
     emit signal_close( false );
 }
 
+
+void QvkMainWindow::slot_newVersionAvailable( QString version )
+{
+    ui->label_newUpate->setText( "New version avalaible: " + version  );
+}
 
 void QvkMainWindow::slot_vokoPlayer()
 {

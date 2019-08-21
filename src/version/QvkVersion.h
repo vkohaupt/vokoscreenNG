@@ -23,13 +23,14 @@ private:
     QList<QNetworkReply *> currentDownloadsQList;
     QString remoteVersion;
 
+
 private slots:
-    void doDownload();
-    void downloadFinished( QNetworkReply *reply );
+    void slot_doDownload();
+    void slot_downloadFinished( QNetworkReply *reply );
 
     
 signals:
-    void newVersionAvailable( QString version );
+    void signal_newVersionAvailable( QString version );
 
 };
 

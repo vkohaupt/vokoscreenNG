@@ -3,11 +3,11 @@
 
 QvkVersion::QvkVersion()
 {
-    connect( &manager, SIGNAL( finished( QNetworkReply* ) ), SLOT( downloadFinished( QNetworkReply* ) ) );
+    connect( &manager, SIGNAL( finished( QNetworkReply* ) ), SLOT( slot_downloadFinished( QNetworkReply* ) ) );
 }
 
 
-void QvkVersion::doDownload()
+void QvkVersion::slot_doDownload()
 {
     // Man sollte evtl. unterscheiden ob ein update z.b 3.0.1 oder eine neue Version 4.0.0 verfügbar ist.
 #ifdef Q_OS_LINUX
@@ -20,7 +20,7 @@ void QvkVersion::doDownload()
 }
 
 
-void QvkVersion::downloadFinished( QNetworkReply *reply )
+void QvkVersion::slot_downloadFinished( QNetworkReply *reply )
 {
     QUrl url = reply->url();
     if ( reply->error() )
@@ -39,7 +39,7 @@ void QvkVersion::downloadFinished( QNetworkReply *reply )
 
            if ( newVersion > currentVersion )
            {
-               emit newVersionAvailable( newVersion );
+               emit signal_newVersionAvailable( newVersion );
            }
        }
     }
