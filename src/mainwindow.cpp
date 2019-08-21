@@ -454,7 +454,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->label_newUpate->clear();
     connect( &version, SIGNAL( signal_newVersionAvailable( QString ) ), this, SLOT( slot_newVersionAvailable( QString ) ) );
-    connect( ui->checkBoxLookForUpdates, SIGNAL( clicked() ), &version, SLOT( slot_doDownload() ) );
+    connect( ui->checkBoxLookForUpdates, SIGNAL( toggled( bool ) ), &version, SLOT( slot_doDownload( bool ) ) );
 
     // Hint:
     vkSettings.readAll( ui, this );
@@ -497,7 +497,14 @@ void QvkMainWindow::slot_newVersionAvailable( QString version )
 {
     if ( ui->checkBoxLookForUpdates->isChecked() == true )
     {
-        ui->label_newUpate->setText( "New version available: " + version  );
+        if ( global::version < version )
+        {
+            ui->label_newUpate->setText( "New version available: " + version  );
+        }
+        else
+        {
+            ui->label_newUpate->setText( "No update available" );
+        }
     }
     else
     {

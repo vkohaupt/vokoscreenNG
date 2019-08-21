@@ -25,7 +25,7 @@ private:
 
 
 private slots:
-    void slot_doDownload();
+    void slot_doDownload( bool checked );
     void slot_downloadFinished( QNetworkReply *reply );
 
     

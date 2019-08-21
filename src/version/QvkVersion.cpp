@@ -7,9 +7,14 @@ QvkVersion::QvkVersion()
 }
 
 
-void QvkVersion::slot_doDownload()
+void QvkVersion::slot_doDownload( bool checked )
 {
-    // Man sollte evtl. unterscheiden ob ein update z.b 3.0.1 oder eine neue Version 4.0.0 verfügbar ist.
+    if ( checked == false )
+    {
+        emit signal_newVersionAvailable( "" );
+        return;
+    }
+
 #ifdef Q_OS_LINUX
     QNetworkRequest request( QUrl( "http://vokoscreen.volkoh.de/3.0/version/linux/VERSION" ) );
 #endif
