@@ -497,7 +497,7 @@ void QvkMainWindow::slot_newVersionAvailable( QString version )
 {
     if ( ui->checkBoxLookForUpdates->isChecked() == true )
     {
-       ui->label_newUpate->setText( "New version available: " + version  );
+        ui->label_newUpate->setText( "New version available: " + version  );
     }
     else
     {
