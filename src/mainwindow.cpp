@@ -467,12 +467,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
     }
 
-    QTimer::singleShot( 5000, &version, SLOT( doDownload() ) );
-    //connect( &version, SIGNAL( versionDownloadFinish() ), SLOT( buttonVersion() ) );
-    //myUi.updateButton->setIcon( QIcon( ":/pictures/system-software-update.png" ) );
-    //myUi.updateButton->setToolTip( tr( "New version available" ) );
-    //connect( myUi.updateButton, SIGNAL( clicked() ), SLOT( showHomepage() ) );
-
+    if ( ui->checkBoxLookForUpdates->isChecked() == true )
+    {
+        QTimer::singleShot( 5000, &version, SLOT( doDownload() ) );
+    }
 }
 
 

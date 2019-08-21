@@ -9,9 +9,14 @@ QvkVersion::QvkVersion()
 
 void QvkVersion::doDownload()
 {
+    // Man sollte evtl. unterscheiden ob ein update z.b 3.0.1 oder eine neue Version 4.0.0 verfügbar ist.
+#ifdef Q_OS_LINUX
     QNetworkRequest request( QUrl( "http://vokoscreen.volkoh.de/3.0/version/linux/VERSION" ) );
-    QNetworkReply *reply = manager.get( request );
-    currentDownloadsQList.append( reply );
+#endif
+#ifdef Q_OS_WIN
+    QNetworkRequest request( QUrl( "http://vokoscreen.volkoh.de/3.0/version/windows/VERSION" ) );
+#endif
+    manager.get( request );
 }
 
 
