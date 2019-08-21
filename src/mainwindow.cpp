@@ -467,9 +467,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
     }
 
+    ui->label_newUpate->setText( "" );
     if ( ui->checkBoxLookForUpdates->isChecked() == true )
     {
-        ui->label_newUpate->setText( "" );
         QTimer::singleShot( 5000, &version, SLOT( slot_doDownload() ) );
         connect( &version, SIGNAL( signal_newVersionAvailable( QString ) ), this, SLOT( slot_newVersionAvailable( QString ) ) );
     }
@@ -498,8 +498,9 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 
 void QvkMainWindow::slot_newVersionAvailable( QString version )
 {
-    ui->label_newUpate->setText( "New version avalaible: " + version  );
+    ui->label_newUpate->setText( "New version available: " + version  );
 }
+
 
 void QvkMainWindow::slot_vokoPlayer()
 {
