@@ -452,6 +452,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonSendReport, SIGNAL( clicked( bool ) ), this, SLOT( slot_sendReport() ) );
     // *****************End Log ***********************************
 
+    ui->label_newUpate->clear();
+    connect( &version, SIGNAL( signal_newVersionAvailable( QString ) ), this, SLOT( slot_newVersionAvailable( QString ) ) );
+    connect( ui->checkBoxLookForUpdates, SIGNAL( clicked() ), &version, SLOT( slot_doDownload() ) );
+
     // Hint:
     vkSettings.readAll( ui, this );
     vkSettings.readAreaScreencast( vkRegionChoise );
@@ -465,13 +469,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         vkPlayer->setMediaFile( arguments.at(1) );
         vkPlayer->slot_play();
         ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
-    }
-
-    ui->label_newUpate->setText( "" );
-    if ( ui->checkBoxLookForUpdates->isChecked() == true )
-    {
-        QTimer::singleShot( 5000, &version, SLOT( slot_doDownload() ) );
-        connect( &version, SIGNAL( signal_newVersionAvailable( QString ) ), this, SLOT( slot_newVersionAvailable( QString ) ) );
     }
 }
 
@@ -498,7 +495,14 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 
 void QvkMainWindow::slot_newVersionAvailable( QString version )
 {
-    ui->label_newUpate->setText( "New version available: " + version  );
+    if ( ui->checkBoxLookForUpdates->isChecked() == true )
+    {
+       ui->label_newUpate->setText( "New version available: " + version  );
+    }
+    else
+    {
+        ui->label_newUpate->clear();
+    }
 }
 
 
