@@ -976,7 +976,7 @@
                 </layout>
                </widget>
               </item>
-              <item alignment="Qt::AlignTop">
+              <item alignment="Qt::AlignVCenter">
                <widget class="QToolButton" name="help_screencast_videopath">
                 <property name="toolTip">
                  <string notr="true"/>
@@ -1129,6 +1129,13 @@
                </widget>
               </item>
               <item>
+               <widget class="QToolButton" name="help_screencast_startsminimized">
+                <property name="text">
+                 <string notr="true">Help</string>
+                </property>
+               </widget>
+              </item>
+              <item>
                <spacer name="horizontalSpacer_22">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
@@ -1142,35 +1149,11 @@
                </spacer>
               </item>
               <item>
-               <widget class="QToolButton" name="help_screencast_startsminimized">
-                <property name="text">
-                 <string notr="true">Help</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_7">
-              <item>
                <widget class="QCheckBox" name="checkBoxResetAtNextStart">
                 <property name="text">
                  <string>Reset all settings at the next start</string>
                 </property>
                </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_17">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
               </item>
               <item>
                <widget class="QToolButton" name="help_screencast_deleteallsettings">
