@@ -453,6 +453,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // *****************End Log ***********************************
 
     ui->label_newUpate->clear();
+    QPalette pal = QPalette( ui->label_newUpate->palette() );
+    pal.setColor( pal.WindowText, QColor( Qt::magenta ) );
+    ui->label_newUpate->setPalette( pal );
     connect( &version, SIGNAL( signal_newVersionAvailable( QString ) ), this, SLOT( slot_newVersionAvailable( QString ) ) );
     connect( ui->checkBoxLookForUpdates, SIGNAL( toggled( bool ) ), &version, SLOT( slot_doDownload( bool ) ) );
 
