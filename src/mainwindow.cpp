@@ -498,6 +498,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 
 void QvkMainWindow::slot_newVersionAvailable( QString version )
 {
+    qDebug() << "1111111111111111111111111" << version;
     if ( ui->checkBoxLookForUpdates->isChecked() == true )
     {
         if ( global::version < version )

@@ -41,11 +41,7 @@ void QvkVersion::slot_downloadFinished( QNetworkReply *reply )
            int i = stringList.indexOf( QRegExp( "Version*", Qt::CaseInsensitive, QRegExp::Wildcard ) );
            QString newVersion = stringList.at(i).section( "=", 1, 1 );
            QString currentVersion = global::version.section( " ", 0, 0 );
-
-           if ( newVersion > currentVersion )
-           {
-               emit signal_newVersionAvailable( newVersion );
-           }
+           emit signal_newVersionAvailable( newVersion );
        }
     }
 }
