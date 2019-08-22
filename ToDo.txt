@@ -14,7 +14,7 @@ Player:
 
 
 Versionsabfrage:
---Im Stiel von Webcamoid.
+--Unterscheiden zwischen Update und Upgrade
 
 
 Windows:
