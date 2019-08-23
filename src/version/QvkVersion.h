@@ -30,7 +30,7 @@ private slots:
 
     
 signals:
-    void signal_newVersionAvailable( QString update, QString upgrade );
+    void signal_newVersionAvailable( QString update );
 
 };
 

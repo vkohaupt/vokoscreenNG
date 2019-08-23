@@ -456,7 +456,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QPalette palette = QPalette( ui->label_Upate->palette() );
     palette.setColor( palette.WindowText, QColor( Qt::magenta ) );
     ui->label_Upate->setPalette( palette );
-    connect( &version, SIGNAL( signal_newVersionAvailable( QString, QString ) ), this, SLOT( slot_newVersionAvailable( QString, QString ) ) );
+    connect( &version, SIGNAL( signal_newVersionAvailable( QString ) ), this, SLOT( slot_newVersionAvailable( QString ) ) );
     connect( ui->checkBoxLookForUpdates, SIGNAL( toggled( bool ) ), &version, SLOT( slot_doDownload( bool ) ) );
 
     // Hint:
@@ -496,14 +496,13 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 }
 
 
-void QvkMainWindow::slot_newVersionAvailable( QString update, QString upgrade )
+void QvkMainWindow::slot_newVersionAvailable( QString update )
 {
-    Q_UNUSED(upgrade);
     if ( ui->checkBoxLookForUpdates->isChecked() == true )
     {
         if ( global::version < update )
         {
-            ui->label_Upate->setText( "Update available: " + update  );
+            ui->label_Upate->setText( "New Version available: " + update  );
         }
         else
         {

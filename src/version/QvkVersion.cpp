@@ -11,7 +11,7 @@ void QvkVersion::slot_doDownload( bool checked )
 {
     if ( checked == false )
     {
-        emit signal_newVersionAvailable( "", "" );
+        emit signal_newVersionAvailable( "" );
         return;
     }
 
@@ -39,20 +39,12 @@ void QvkVersion::slot_downloadFinished( QNetworkReply *reply )
        if ( !stringList.empty() )
        {
            QString update;
-           QString upgrade;
            int i = stringList.indexOf( QRegExp( "Update*", Qt::CaseInsensitive, QRegExp::Wildcard ) );
            if ( i > -1 )
            {
               update = stringList.at(i).section( "=", 1, 1 );
            }
-
-           i = stringList.indexOf( QRegExp( "UpGrade*", Qt::CaseInsensitive, QRegExp::Wildcard ) );
-           if ( i > -1 )
-           {
-              upgrade = stringList.at(i).section( "=", 1, 1 );
-           }
-
-           emit signal_newVersionAvailable( update, upgrade );
+           emit signal_newVersionAvailable( update );
        }
     }
 }
