@@ -13,14 +13,9 @@ Player:
 --Einstellungen in dem vorhanden Tab
 
 
-Versionsabfrage:
---Unterscheiden zwischen Update und Upgrade
-
-
 Windows:
 --Installer wird benötigt.
   https://doc.qt.io/qtinstallerframework/ifw-tutorial.html
-  Inno Setup
 
 
 Bugs aber nicht wirklich relevant:
