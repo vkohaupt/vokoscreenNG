@@ -176,7 +176,7 @@ private slots:
 
     void slot_vokoPlayer();
 
-    void slot_newVersionAvailable( QString );
+    void slot_newVersionAvailable(QString update, QString upgrade);
 
 
 signals:

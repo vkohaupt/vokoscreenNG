@@ -452,11 +452,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonSendReport, SIGNAL( clicked( bool ) ), this, SLOT( slot_sendReport() ) );
     // *****************End Log ***********************************
 
-    ui->label_newUpate->clear();
-    QPalette palette = QPalette( ui->label_newUpate->palette() );
+    ui->label_Upate->clear();
+    QPalette palette = QPalette( ui->label_Upate->palette() );
     palette.setColor( palette.WindowText, QColor( Qt::magenta ) );
-    ui->label_newUpate->setPalette( palette );
-    connect( &version, SIGNAL( signal_newVersionAvailable( QString ) ), this, SLOT( slot_newVersionAvailable( QString ) ) );
+    ui->label_Upate->setPalette( palette );
+    connect( &version, SIGNAL( signal_newVersionAvailable( QString, QString ) ), this, SLOT( slot_newVersionAvailable( QString, QString ) ) );
     connect( ui->checkBoxLookForUpdates, SIGNAL( toggled( bool ) ), &version, SLOT( slot_doDownload( bool ) ) );
 
     // Hint:
@@ -496,22 +496,23 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 }
 
 
-void QvkMainWindow::slot_newVersionAvailable( QString version )
+void QvkMainWindow::slot_newVersionAvailable( QString update, QString upgrade )
 {
+    Q_UNUSED(upgrade);
     if ( ui->checkBoxLookForUpdates->isChecked() == true )
     {
-        if ( global::version < version )
+        if ( global::version < update )
         {
-            ui->label_newUpate->setText( "New version available: " + version  );
+            ui->label_Upate->setText( "Update available: " + update  );
         }
         else
         {
-            ui->label_newUpate->setText( "No update available" );
+            ui->label_Upate->setText( "No update available" );
         }
     }
     else
     {
-        ui->label_newUpate->clear();
+        ui->label_Upate->clear();
     }
 }
 

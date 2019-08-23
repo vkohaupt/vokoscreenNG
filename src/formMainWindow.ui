@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1187,7 +1187,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QLabel" name="label_newUpate">
+               <widget class="QLabel" name="label_Upate">
                 <property name="text">
                  <string>TextLabel</string>
                 </property>
