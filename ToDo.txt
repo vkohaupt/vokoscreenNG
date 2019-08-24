@@ -3,6 +3,10 @@ Kamera:
 --Wird beim starten von vokoscreenNG keine Kamera gefunden sollte der Schieberegeler ebenfalls wie alle anderen Widgets deaktiviert sein.
 
 
+vaapih264enc:
+--Terminal: vainfo zeigt die unterstützten Profile an. Damit testen um ein besseres Ergebnis zu erzielen.
+
+
 Terminal:
 -- ./vokoscreenNG --version --> OK
 -- ./vokoscreenNG Datei --> Wenn Datei nicht vorhanden kommt der Hinweise Codecs nicht installiert.
