@@ -36,6 +36,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):camera
     sliderCameraWindowSize->setValue( 2 );
     sliderCameraWindowSize->show();
     sliderCameraWindowSize->setShowValue( false );
+    sliderCameraWindowSize->setEnabled( false );
 
     cameraWindow = new QvkCameraWindow( ui_surface, sliderCameraWindowSize );
     cameraWindow->hide();
