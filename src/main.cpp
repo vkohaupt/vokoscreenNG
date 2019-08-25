@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
              ( arguments.at(1) == "-h"     ) )
             {
                 qDebug(" ");
-                qDebug().noquote() << "Usage:" << global::name << "[Option] [File]";
+                qDebug().noquote() << "Usage:" << global::name << "[Option] [File or URL]";
                 qDebug(" ");
                 qDebug().noquote() << "Options:";
                 qDebug().noquote() << "  -h or --help        Print this message";
@@ -54,8 +54,11 @@ int main(int argc, char *argv[])
             return 0;
         }
 
+        // If call from terminal and local file not exists
         QFile file( arguments.at(1) );
-        if ( file.exists() == false )
+        if ( ( file.exists() == false ) and
+             ( arguments.at(1).contains( "http://" ) == false ) and
+             ( arguments.at(1).contains( "https://" ) == false ) )
         {
             qDebug().noquote() << global::nameOutput << arguments.at(1) << "file not exists";
             return 1;

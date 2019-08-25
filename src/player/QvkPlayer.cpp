@@ -239,7 +239,16 @@ void QvkPlayer::slot_toolButtonFrameBackward()
 
 void QvkPlayer::setMediaFile( QString string )
 {
-    mediaPlayer->setMedia( QUrl::fromLocalFile( string ) );
+    if ( string.contains( "http://" ) or string.contains( "https://" ) )
+    {
+       QMediaContent mediaContent = QMediaContent( QUrl( string ) );
+       mediaPlayer->setMedia( mediaContent );
+    }
+    else
+    {
+       mediaPlayer->setMedia( QUrl::fromLocalFile( string ) );
+    }
+
     ui->labelDuration->setEnabled( true );
     ui->labelSeparator->setEnabled( true );
     ui->labelVideoLenght->setEnabled( true );
