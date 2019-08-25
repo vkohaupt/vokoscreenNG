@@ -50,7 +50,20 @@ int main(int argc, char *argv[])
     QStringList arguments = QApplication::instance()->arguments();
     if ( !arguments.empty() and ( arguments.count() == 2 ) )
     {
-        if ( arguments.at(1) == "--version" )
+        QStringList arguments = QApplication::instance()->arguments();
+        if ( ( arguments.at(1) == "--help" ) or
+             ( arguments.at(1) == "-h"     ) )
+            {
+                qDebug(" ");
+                qDebug().noquote() << "Usage:" << global::name << "[Option] [File]";
+                qDebug(" ");
+                qDebug().noquote() << "Options:";
+                qDebug().noquote() << "  -h or --help        Print this message";
+                qDebug().noquote() << "  -v or --version     Print" << global::name << "version";
+                return 0;
+            }
+
+        if ( ( arguments.at(1) == "--version" ) or ( arguments.at(1) == "-v" ) )
         {
             qDebug().noquote() << global::name << global::version;
             return 0;

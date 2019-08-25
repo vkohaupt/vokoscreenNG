@@ -3,10 +3,6 @@ vaapih264enc:
 --Terminal: vainfo zeigt die unterstützten Profile an. Damit testen um ein besseres Ergebnis zu erzielen.
 
 
-Terminal:
---https://github.com/vkohaupt/vokoscreen/blob/master/main.cpp
-
-
 Player:
 --als seperates Fenster
 --Einstellungen in dem vorhanden Tab
