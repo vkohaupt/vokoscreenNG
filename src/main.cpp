@@ -26,25 +26,10 @@
 #include <QTranslator>
 #include <QLibraryInfo>
 
-#include <QDir>
-#include <QtGlobal>
-
 #include <gst/gst.h>
 
 int main(int argc, char *argv[])
 {
-/*
-    QByteArray env = qgetenv( "LD_LIBRARY_PATH" );
-    qDebug() << "env:" << env;
-    QString libraryInfo = QLibraryInfo::location( QLibraryInfo::LibrariesPath );
-    qDebug() << "libraryInfo:" << libraryInfo;
-
-    QByteArray appDir = QDir::currentPath().toLatin1();
-    bool a = qputenv( "LD_LIBRARY_PATH", appDir + "/lib" + ":" + libraryInfo.toLatin1() );
-
-    env = qgetenv( "LD_LIBRARY_PATH" );
-    qDebug() << env;
-*/
     QApplication app(argc, argv);
 
     QStringList arguments = QApplication::instance()->arguments();
@@ -79,7 +64,7 @@ int main(int argc, char *argv[])
 
 /*
  * Under Windows the icon theme breeze is used https://github.com/KDE/breeze-icons.
- * The subfolder icons will be renamed to breez and copied to the windows distribution folder.
+ * The subfolder icons will be renamed to breeze and copied to the windows distribution folder.
  * That's all to display the icons.
 */
 #ifdef Q_OS_WIN
