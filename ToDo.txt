@@ -4,11 +4,6 @@ vaapih264enc:
 
 
 Terminal:
--- ./vokoscreenNG --version --> OK
--- ./vokoscreenNG Datei --> Wenn Datei nicht vorhanden kommt der Hinweise Codecs nicht installiert.
-
-
-Terminal:
 --https://github.com/vkohaupt/vokoscreen/blob/master/main.cpp
 
 

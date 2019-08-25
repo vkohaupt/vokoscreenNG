@@ -468,7 +468,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QStringList arguments = QApplication::instance()->arguments();
     if ( arguments.count() > 1  )
     {
-        qDebug() << global::nameOutput << "started from file:" << arguments.at(1);
+        qDebug().noquote() << global::nameOutput << "started from file:" << arguments.at(1);
         vkPlayer->setMediaFile( arguments.at(1) );
         vkPlayer->slot_play();
         ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );

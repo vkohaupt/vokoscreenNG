@@ -55,6 +55,13 @@ int main(int argc, char *argv[])
             qDebug().noquote() << global::name << global::version;
             return 0;
         }
+
+        QFile file( arguments.at(1) );
+        if ( file.exists() == false )
+        {
+            qDebug().noquote() << global::nameOutput << arguments.at(1) << "file not exists";
+            return 1;
+        }
     }
 
 /*
