@@ -1,6 +1,6 @@
 
 vaapih264enc:
---Terminal: vainfo zeigt die unterstützten Profile an. Damit testen um ein besseres Ergebnis zu erzielen.
+--Player spielt Video zu hell ab, mit dem VLC wird das Video richtig angezeigt.
 
 
 Player:
