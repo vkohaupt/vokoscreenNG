@@ -1,0 +1,3 @@
+
+vaapih264enc --> linux only
+msdkh264enc  --> linux and windows
