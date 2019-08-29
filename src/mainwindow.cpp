@@ -1009,8 +1009,8 @@ void QvkMainWindow::VK_gst_Elements_available()
         else
         {
             qDebug().noquote() << global::nameOutput << "+" << list.at(i);
+            gst_object_unref( factory );
         }
-        gst_object_unref( factory );
     }
     qDebug();
 }
@@ -1038,8 +1038,8 @@ void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
             else
             {
                 available = true;
+                gst_object_unref( factory );
             }
-            gst_object_unref( factory );
 
             if ( QString( listElements.at( x ) ).section( ":", 0, 0 ) == "muxer" )
             {
@@ -1222,8 +1222,8 @@ void QvkMainWindow::VK_Check_is_Format_available()
         {
             qDebug().noquote() << global::nameOutput << "+" << muxer;
             tempList << videoFormatsList.at( x );
+            gst_object_unref( factory );
         }
-        gst_object_unref( factory );
     }
     videoFormatsList.clear();
     videoFormatsList << tempList;
@@ -1273,8 +1273,8 @@ void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
         {
             qDebug().noquote() << global::nameOutput << "+" << encoder;
             ui->comboBoxVideoCodec->addItem( name, encoder );
+            gst_object_unref( factory );
         }
-        gst_object_unref( factory );
     }
 
     if ( ui->comboBoxVideoCodec->count() == 0  )
@@ -1305,8 +1305,8 @@ void QvkMainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
         {
             qDebug().noquote() << global::nameOutput << "+" << encoder;
             ui->comboBoxAudioCodec->addItem( name, encoder );
+            gst_object_unref( factory );
         }
-        gst_object_unref( factory );
     }
     qDebug();
 }
