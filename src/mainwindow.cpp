@@ -1624,7 +1624,7 @@ void QvkMainWindow::slot_Start()
 
     QByteArray byteArray = VK_Pipeline.toUtf8();
     const gchar *line = byteArray.constData();
-    GError *error = NULL;
+    GError *error = Q_NULLPTR;
     pipeline = gst_parse_launch( line, &error );
 
     // Start playing
