@@ -1624,14 +1624,13 @@ void QvkMainWindow::slot_Start()
 
     QByteArray byteArray = VK_Pipeline.toUtf8();
     const gchar *line = byteArray.constData();
+    GError *error = NULL;
     pipeline = gst_parse_launch( line, &error );
 
     // Start playing
-    GstStateChangeReturn ret;
-    ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
+    GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
     if ( ret == GST_STATE_CHANGE_FAILURE )
     {
-        //g_printerr( global::name + "Unable to set the pipeline to the playing state.\n");
         qDebug().noquote() << global::name << "Unable to set the pipeline to the playing state.";
         gst_object_unref( pipeline );
         return;
