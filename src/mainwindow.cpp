@@ -1026,8 +1026,15 @@ void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
         int rowVideo = 1;
         int rowAudio = 1;
         QStringList listElements = QString( globalFormatsList.at(i) ).split( "," ); // listElement beinhaltet muxer, Video und Audio
+
         for ( int x = 0; x < listElements.count(); x++ )
         {
+            // Mimetype is not needed
+            if ( listElements.at(x).contains( QRegExp( "*mimetype*", Qt::CaseInsensitive, QRegExp::Wildcard ) ) )
+            {
+                continue;
+            }
+
             bool available;
             QString element = QString( listElements.at( x ) ).section( ":", 1, 1 );
             GstElementFactory *factory = gst_element_factory_find( element.toLatin1() );
