@@ -260,6 +260,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxVideoCodec,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( slot_IfStartAudioCodecWidgetsSetEnabled() ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoCodecx264,   SLOT( setEnabled( bool ) )   );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoCodecVaapih264,   SLOT( setEnabled( bool ) )   );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoPath,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameLimitOfFreeDiskSpace, SLOT( setEnabled( bool ) ) );
@@ -288,6 +289,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxVideoCodec,    SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this, SLOT( slot_IfStopAudioCodecWidgetsSetDisabled() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoCodecx264,   SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoCodecVaapih264,   SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoPath,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameLimitOfFreeDiskSpace, SLOT( setDisabled( bool ) ) );
@@ -555,15 +557,18 @@ void QvkMainWindow::slot_x264Reset()
 
 void QvkMainWindow::slot_videoCodecChanged( QString codec )
 {
+  ui->frameVideoCodecx264->setVisible( false );
+  ui->frameVideoCodecVaapih264->setVisible( false );
+
   if ( codec == "x264"  )
   {
-      ui->frameVideoCodecQuality->setVisible( true );
-  }
-  else
-  {
-      ui->frameVideoCodecQuality->setVisible( false );
+      ui->frameVideoCodecx264->setVisible( true );
   }
 
+  if ( codec == "H.264 (Intel GPU)" )
+  {
+      ui->frameVideoCodecVaapih264->setVisible( true );
+  }
 }
 
 
@@ -1352,12 +1357,19 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
 
     if ( encoder == "vaapih264enc" )
     {
-        value = "vaapih264enc";
+        if ( ui->checkBoxVaapiPostProc->isChecked() == true )
+        {
+            value = "vaapipostproc ! vaapih264enc";
+        }
+        else
+        {
+            value = "vaapih264enc";
+        }
     }
 
     if ( encoder == "vaapimpeg2enc" )
     {
-        value = "vaapimpeg2enc";
+            value = "vaapimpeg2enc";
     }
 
     if ( encoder == "av1enc" )
