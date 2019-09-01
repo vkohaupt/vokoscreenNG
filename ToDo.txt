@@ -1,4 +1,8 @@
 
+Tab CodecAnzeige:
+--Hinweis: Only for recording.
+
+
 vaapih264enc:
 --Player spielt Video zu hell ab, mit dem VLC wird das Video richtig angezeigt.
 
