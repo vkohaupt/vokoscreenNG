@@ -994,6 +994,7 @@ void QvkMainWindow::VK_gst_Elements_available()
 #ifdef Q_OS_LINUX
     list << "ximagesrc";
     list << "pulsesrc";
+    list << "vaapipostproc";
 #endif
     list << "queue";
     list << "capsfilter";
