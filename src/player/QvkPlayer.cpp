@@ -37,7 +37,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
 {
     ui->setupUi(this);
 
-    // Augenscheinlich hat die Angabe des Mimetypes keine Auswirkung
+    // Augenscheinlich hat die Angabe des Mimetypes keinen Einfluß.
     qDebug() << "h264" << QMediaPlayer::hasSupport( "video/h264", (QStringList)"h264" );
     qDebug() << "vp8"  << QMediaPlayer::hasSupport( "video/webm", (QStringList)"vp8" );
 

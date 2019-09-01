@@ -1,4 +1,8 @@
 
+BUG:
+--https://github.com/vkohaupt/vokoscreenNG/issues/13
+
+
 Player:
 --Abfragen ob codec vorhanden
 --https://doc.qt.io/qt-5/qmediaplayer.html#hasSupport
