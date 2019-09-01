@@ -46,7 +46,6 @@ bool QvkDownloader::saveLocal( const QString &filename, QIODevice *data )
     QFile file( fileInTempPath );
     if ( !file.open( QIODevice::WriteOnly ) )
     {
-        // qDebug().noquote() << global::nameOutput << "Could not open" << filename << "for writing:" << file.errorString();
         return false;
     }
     file.write( data->readAll() );

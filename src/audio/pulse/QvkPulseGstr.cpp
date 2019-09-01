@@ -26,7 +26,6 @@
 
 QvkPulseGstr::QvkPulseGstr()
 {
-    print_plugin_info();
 }
 
 
@@ -152,108 +151,4 @@ QStringList QvkPulseGstr::get_all_Audio_devices()
     }
 
     return stringList;
-}
-
-
-// new ****************************************************************************************** compile only no function
-
-void QvkPulseGstr::print_plugin_info ()
-{
-/*   GList *list, *g;
-   GstRegistry *registry;
-   registry = gst_registry_get ();
-   list = gst_registry_get_plugin_list (registry);
-   for (g = list; g; g = g->next)
-   {
-     GstPlugin *plugin = GST_PLUGIN (g->data);
-     // one for the registry, one for the list
-     GST_DEBUG ("Plugin refcount %d %s", GST_OBJECT_REFCOUNT_VALUE (plugin), gst_plugin_get_name (plugin));
-//     ASSERT_OBJECT_REFCOUNT (plugin, "plugin in registry", 2);
-     gst_object_unref (plugin);
-   }
-   g_list_free (list);
-
-   list = gst_registry_feature_filter (registry, NULL, FALSE, NULL);
-   for (g = list; g; g = g->next)
-   {
-      GstPluginFeature *feature = GST_PLUGIN_FEATURE (g->data);
-
-       // one for the registry, one for the list
-       GST_DEBUG ("Feature refcount %d %s", GST_OBJECT_REFCOUNT_VALUE (feature),
-           GST_OBJECT_NAME (feature));
-       gst_object_unref (feature);
-   }
-   g_list_free (list);
-*/
-/* Hier ist dies letzte bearbeitung
-    GList *gList, *g;
-    GList *iterator;
-    GstRegistry *gstRegistry;
-    gList = gst_registry_get_plugin_list( gst_registry_get() );
-    for (int i = 0; i < g_list_length (gList); i++)
-    {
-        GstPlugin *plugin = GST_PLUGIN( gList->data );
-        qDebug() << gst_plugin_get_name( plugin );
-        gst_object_unref (plugin);
-        gList->next;
-    }
-*/
-/*
-    const gchar *name;
-    name = "vp8enc";
-    GstPlugin *plugin = gst_registry_find_plugin( gst_registry_get(), name );
-
-    GstElementFactory *factory = gst_element_factory_find( name );
-    if ( !factory )
-    {
-        qDebug().noquote() << global::nameOutput << "Fail Muxer not available:" << name;
-    }
-    else
-    {
-        qDebug().noquote() << global::nameOutput << "Muxer available:" << name;
-    }
-*/
-
-//**********************
-
-//    const gchar *release_date = gst_plugin_get_release_date_string (plugin);
-//    const gchar *filename = gst_plugin_get_filename (plugin);
-
-//    n_print ("Plugin Details:\n");
-
-//    push_indent ();
-
-    /*  n_print ("%-25s%s\n", "Name", gst_plugin_get_name (plugin));
-  n_print ("%-25s%s\n", "Description", gst_plugin_get_description (plugin));
-  n_print ("%-25s%s\n", "Filename", (filename != NULL) ? filename : "(null)");
-  n_print ("%-25s%s\n", "Version", gst_plugin_get_version (plugin));
-  n_print ("%-25s%s\n", "License", gst_plugin_get_license (plugin));
-  n_print ("%-25s%s\n", "Source module", gst_plugin_get_source (plugin));
-
-    if (release_date != NULL) {
-        const gchar *tz = "(UTC)";
-        gchar *str, *sep;
-
-        // may be: YYYY-MM-DD or YYYY-MM-DDTHH:MMZ
-        // YYYY-MM-DDTHH:MMZ => YYYY-MM-DD HH:MM (UTC)
-        str = g_strdup (release_date);
-        sep = strstr (str, "T");
-        if (sep != NULL) {
-        *sep = ' ';
-            sep = strstr (sep + 1, "Z");
-            if (sep != NULL)
-                *sep = ' ';
-        } else {
-            tz = "";
-        }
-//        n_print ("%-25s%s%s\n", "Source release date", str, tz);
-        g_free (str);
-    }
-*/
-//    n_print ("%-25s%s\n", "Binary package", gst_plugin_get_package (plugin));
-//    n_print ("%-25s%s\n", "Origin URL", gst_plugin_get_origin (plugin));
-
-//     pop_indent ();
-
-//    n_print ("\n");
 }

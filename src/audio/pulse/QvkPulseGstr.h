@@ -42,7 +42,7 @@ public slots:
 
 
 private:
-    void print_plugin_info ();
+
 
 private slots:
 
