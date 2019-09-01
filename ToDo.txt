@@ -1,4 +1,9 @@
 
+Player:
+--Abfragen ob codec vorhanden
+--https://doc.qt.io/qt-5/qmediaplayer.html#hasSupport
+
+
 Tab CodecAnzeige:
 --Hinweis: Only for recording.
 
