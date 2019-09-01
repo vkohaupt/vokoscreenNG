@@ -1134,11 +1134,9 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "audiomimetype:audio/x-matroska"
                                     << "videocodec:x264enc:x264"
                                 #ifdef Q_OS_LINUX
-                                    << "videocodec:vaapih264enc:H.264 (Intel GPU)" // Terminal: vainfo zeigt die unterstützten Profile an
+                                    << "videocodec:vaapih264enc:H.264 (Intel GPU)"
                                     << "videocodec:vaapimpeg2enc:MPEG-2 (Intel GPU)"
                                 #endif
-                                    //<< "videocodec:x265enc:x265" // Not work under Leap 15
-                                    //<< "videocodec:av1enc:AV1" // Not work under Tumbelweed
                                     << "videocodec:vp8enc:VP8"
                                     << "audiocodec:vorbisenc:vorbis"
                                     << "audiocodec:flacenc:flac"
@@ -1179,38 +1177,18 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "audiomimetype:audio/mpeg"
                                     << "videocodec:x264enc:x264"
                                     << "videocodec:vp8enc:VP8"
-                                    //<< "videocodec:vp9enc:VP9" //not work under Leap 15
                                     << "audiocodec:lamemp3enc:mp3"
                                     << "audiocodec:opusenc:opus"
                                   );
 
-/*
-    QStringList OGG_QStringList = ( QStringList()
-                                    << "muxer:oggmux:ogg"
-                                    << "videomimetype:video/ogg"
-                                    << "audiomimetype:audio/ogg"
-                                    << "videocodec:vp8enc:vp8"
-                                    << "videocodec:theoraenc:theora"
-                                    << "audiocodec:vorbisenc:vorbis"
-                                    << "audiocodec:opusenc:opus"
-                                    << "audiocodec:flacenc:flac"
-                                   );
-*/
     videoFormatsList.clear();
     videoFormatsList.append( MKV_QStringList.join( ","  ) );
     videoFormatsList.append( WEBM_QStringList.join( ","  ) );
     videoFormatsList.append( AVI_QStringList.join( "," ) );
     videoFormatsList.append( MP4_QStringList.join( ",") );
     videoFormatsList.append( MOV_QStringList.join( ",") );
-//    videoFormatsList.append( OGG_QStringList.join( ",") );
 
     globalFormatsList << videoFormatsList;
-
-    /*
-        videoFormatsList.append( "asfmux:asf" );
-        videoFormatsList.append( "flvmux:flv" );
-    */
-
 }
 
 
@@ -1340,7 +1318,6 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
     QString encoder = ui->comboBoxVideoCodec->currentData().toString();
     if ( encoder == "x264enc" )
     {
-        // https://encodingwissen.de/codecs/x264/referenz/
         QStringList list;
         list << ui->comboBoxVideoCodec->currentData().toString();
         list << "qp-min=" + QString::number( sliderX264->value() );
@@ -1372,17 +1349,6 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
             value = "vaapimpeg2enc";
     }
 
-    if ( encoder == "av1enc" )
-    {
-        value = "av1enc";
-    }
-/*
-    if ( encoder == "theoraenc" )
-    {
-        value = "theoraenc drop-frames=false keyframe-freq=25"; // Das muß noch angepasst werden es humpelt :>)
-    }
-*/
-    // https://www.webmproject.org/docs/encoder-parameters/
     if ( encoder == "vp8enc" )
     {
         QStringList list;
@@ -1394,12 +1360,6 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << "threads=" + vk_idealThreadCount;
         value = list.join( " " );
     }
-
-    if ( encoder == "vp9enc" )
-    {
-        value = "vp9enc";
-    }
-
 
     return value;
 }
@@ -1662,21 +1622,6 @@ void QvkMainWindow::slot_Start()
 
     emit signal_newVideoFilename( newVideoFilename );
 }
-
-/*
-    g_print( error->message );
-
-    GstElement *fpsdisplaysink;
-    //myPipeline = gst_parse_launch( "ximagesrc use-damage=false ! capsfilter caps=video/x-raw ! videoconvert ! fpsdisplaysink video-sink=fakesink signal-fps-measurements=true name=sink", &error );
-    fpsdisplaysink = gst_bin_get_by_name (GST_BIN(pipeline), "sink" );
-    if (fpsdisplaysink)
-    {
-        qDebug() << "*********************************************************************************";
-        g_object_set (G_OBJECT (fpsdisplaysink), "signal-fps-measurements", TRUE, NULL);
-        g_signal_connect (fpsdisplaysink, "fps-measurements", G_CALLBACK (cb_fps_measurements), NULL);
-        g_print("fps-measurements connected\n");
-    }
-*/
 
 
 void QvkMainWindow::slot_preStop()
