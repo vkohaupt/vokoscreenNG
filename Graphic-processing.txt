@@ -1,0 +1,7 @@
+ 
+1. export GST_DEBUG_DUMP_DOT_DIR=.
+
+2. gst-launch-1.0 pipeline
+
+3. dot -Grankdir=BTRL -Tpdf *.PLAYING_PAUSED.dot > pipeline.pdf
+
