@@ -65,7 +65,8 @@ void QvkAudioPulse::getAllDevices()
             checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
             checkboxAudioDevice->setAccessibleName( QString( list.at(i) ).section( ":::", 0, 0 ) );
             checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( i ) );
-            checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
+            //checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
+            checkboxAudioDevice->setAutoExclusive( global::audioAutoExclusive );
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
             qDebug().noquote() << global::nameOutput << "[PulseAudio] Found:" << QString( list.at(i) ).section( ":::", 1, 1 ) << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 );
         }
@@ -112,6 +113,8 @@ void QvkAudioPulse::slot_pluggedInOutDevice( QString string )
         checkboxAudioDevice->setAccessibleName( device );
         QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
         checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( listAudioDevices.count() ) );
+        //checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
+        checkboxAudioDevice->setAutoExclusive( global::audioAutoExclusive );
         ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
     }
 

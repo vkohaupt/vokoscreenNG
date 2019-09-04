@@ -30,4 +30,6 @@ namespace global
     extern QString version;
     extern bool VK_showOnlyFallbackIcons;
     extern QLineEdit *lineEditAudioPlug;
+
+    extern bool audioAutoExclusive;
 }
