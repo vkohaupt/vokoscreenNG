@@ -1522,11 +1522,11 @@ QString QvkMainWindow::VK_getMuxer()
     QString value = ui->comboBoxFormat->currentData().toString();
     if ( ui->comboBoxFormat->currentData().toString() == "matroskamux" )
     {
-        value = "mux. " + ui->comboBoxFormat->currentData().toString() + " name=mux writing-app=" + global::name + "_" + QString( global::version ).replace( " ", "_" );
+        value = ui->comboBoxFormat->currentData().toString() + " name=mux writing-app=" + global::name + "_" + QString( global::version ).replace( " ", "_" );
     }
     else
     {
-        value = "mux. " + ui->comboBoxFormat->currentData().toString() + " name=mux";
+        value = ui->comboBoxFormat->currentData().toString() + " name=mux";
     }
     return value;
 }
@@ -1559,41 +1559,46 @@ void QvkMainWindow::slot_Start()
     QStringList VK_PipelineList;
     VK_PipelineList << VK_getXimagesrc();
     VK_PipelineList << VK_getCapsFilter();
-    VK_PipelineList << "queue flush-on-eos=true";
+    //VK_PipelineList << "queue flush-on-eos=true";
     VK_PipelineList << "videoconvert";
-    VK_PipelineList << "queue flush-on-eos=true";
+    //VK_PipelineList << "queue flush-on-eos=true";
     if ( ui->checkBoxScale->isChecked() )
     {
        VK_PipelineList << VK_getVideoScale();
     }
     VK_PipelineList << "videorate";
-    VK_PipelineList << "queue flush-on-eos=true";
+    //VK_PipelineList << "queue flush-on-eos=true";
     VK_PipelineList << Vk_get_Videocodec_Encoder();
-    VK_PipelineList << "queue flush-on-eos=true";
+    //VK_PipelineList << "queue flush-on-eos=true";
+    VK_PipelineList << "mux.";
 
     for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ )
     {
         if ( ( !VK_getSelectedAudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
         {
             #ifdef Q_OS_LINUX
-            if ( VK_getSelectedAudioDevice().at(x) == "pulsesrc" )
-                VK_PipelineList << QString( "mux. pulsesrc");
-            else
-                VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device=" ).append( VK_getSelectedAudioDevice().at(x));
+                VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(x) );
+                VK_PipelineList << "queue";
+                VK_PipelineList << "mix.";
             #endif
 
             #ifdef Q_OS_WIN
-            VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(x) +"'" );
+                VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(x) +"'" );
+                VK_PipelineList << "queue";
+                VK_PipelineList << "mix.";
             #endif
-
-            VK_PipelineList << "queue flush-on-eos=true";
-            VK_PipelineList << "audioconvert";
-            VK_PipelineList << "queue flush-on-eos=true";
-            VK_PipelineList << "audiorate";
-            VK_PipelineList << "queue flush-on-eos=true";
-            VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
-            VK_PipelineList << "queue flush-on-eos=true";
         }
+    }
+
+    if ( ( !VK_getSelectedAudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
+    {
+        VK_PipelineList << "adder name=mix";
+        VK_PipelineList << "audiorate";
+        VK_PipelineList << "queue";
+        VK_PipelineList << "audioresample";
+        VK_PipelineList << "queue";
+        VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
+        VK_PipelineList << "queue";
     }
 
     VK_PipelineList << VK_getMuxer();
@@ -1605,6 +1610,9 @@ void QvkMainWindow::slot_Start()
     vkSettings.saveAll( ui, this, true );
 
     QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Pipe );
+    VK_Pipeline = VK_Pipeline.replace( "mix. !", "mix." );
+    VK_Pipeline = VK_Pipeline.replace( "mux. !", "mux." );
+
     qDebug().noquote() << global::nameOutput << "Start record with:" << VK_Pipeline;
 
     QByteArray byteArray = VK_Pipeline.toUtf8();

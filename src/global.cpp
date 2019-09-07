@@ -34,5 +34,5 @@ namespace global
 
     // One Audiosource = true
     // More Audiosource = false
-    bool audioAutoExclusive = true;
+    bool audioAutoExclusive = false;
 }
