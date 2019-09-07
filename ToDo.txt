@@ -1,10 +1,7 @@
 
 Player:
 --Tumbbelweed Buttons sind schwarz.
-
-
-BUG:
---https://github.com/vkohaupt/vokoscreenNG/issues/13
+--Slidervideo.h einbinden, liegt im payer Ordner
 
 
 Player:
