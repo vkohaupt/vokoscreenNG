@@ -1,8 +1,6 @@
 INCLUDEPATH += $$PWD
 DEPENDPATH  += $$PWD
-HEADERS     += $$PWD/QvkSpezialSlider.h \
-            += $$PWD/slidervideo.h
-            
+HEADERS     += $$PWD/QvkSpezialSlider.h
 SOURCES     += $$PWD/QvkSpezialSlider.cpp
 
 FORMS +=

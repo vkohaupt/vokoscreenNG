@@ -6,8 +6,6 @@
 #include <QSlider>
 #include <QMouseEvent>
 
-#include "slidervideo.h"
-
 class QvkSpezialSlider : public QSlider
 {
     Q_OBJECT
