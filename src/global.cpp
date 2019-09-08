@@ -31,8 +31,4 @@ namespace global
     QString version = "2.9.8 Beta";
     bool VK_showOnlyFallbackIcons = false;
     QLineEdit *lineEditAudioPlug;
-
-    // One Audiosource = true
-    // More Audiosource = false
-    bool audioAutoExclusive = false;
 }
