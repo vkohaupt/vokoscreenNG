@@ -106,6 +106,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     connect( sliderVideo, SIGNAL( sliderPressed() ),   this, SLOT( slot_sliderVideoPressed() ) );
     connect( sliderVideo, SIGNAL( sliderReleased() ),  this, SLOT( slot_sliderVideoReleased() ) );
     connect( sliderVideo, SIGNAL( sliderMoved( int )), this, SLOT( slot_sliderVideoMoved( int ) ) );
+    connect( sliderVideo, SIGNAL( signal_sliderVideo_KeyRight_KeyLeft( int ) ), this, SLOT( slot_sliderVideo_KeyRight_KeyLeft( int ) ) );
 
     ui->pushButtonPause->hide();
     connect( ui->pushButtonPlay,  SIGNAL( clicked( bool ) ), this,                SLOT( slot_play() ) );

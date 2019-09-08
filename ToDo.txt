@@ -1,12 +1,8 @@
 
 Player:
 --Tumbbelweed Buttons sind schwarz.
---Slidervideo.h einbinden, liegt im payer Ordner
-
-
-Player:
---Abfragen ob codec vorhanden
---https://doc.qt.io/qt-5/qmediaplayer.html#hasSupport
+--signal_sliderVideo_KeyRight_KeyLeft greift nur wenn der Slider den Fokus hat,
+  sollte aber immer funktionieren.
 
 
 vaapih264enc:
