@@ -37,11 +37,6 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
 {
     ui->setupUi(this);
 
-    // Augenscheinlich hat die Angabe des Mimetypes keinen Einfluß.
-    qDebug().noquote() << global::nameOutput << "[Player]" << "h264" << QMediaPlayer::hasSupport( "video/h264", (QStringList)"h264" );
-    qDebug().noquote() << global::nameOutput << "[Player]" << "vp8"  << QMediaPlayer::hasSupport( "video/webm", (QStringList)"vp8" );
-    qDebug();
-
     sliderVideo = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_2->insertWidget( 0, sliderVideo );
     ui->horizontalLayout_2->setStretch( 0, 1 );
