@@ -164,6 +164,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkMagnifierController *vkMagnifierController = new QvkMagnifierController(ui);
     Q_UNUSED(vkMagnifierController);
 
+    vkPlayer = new QvkPlayer( this, ui );
+
     QvkHelp *vkHelp = new QvkHelp( this, ui );
 
     QvkLicenses *vkLicenses = new QvkLicenses( ui );
@@ -446,9 +448,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vk_setCornerWidget( ui->tabWidgetCamera );
     // *****************End Camera ***********************************
 
-    // *****************Begin Player *********************************
-    vkPlayer = new QvkPlayer( this, ui );
-    // *****************End Player ***********************************
 
     // *****************Begin Log *********************************
     vk_setCornerWidget( ui->tabWidgetLog );
