@@ -3,6 +3,7 @@ Player:
 --Tumbbelweed Buttons sind schwarz.
 --signal_sliderVideo_KeyRight_KeyLeft greift nur wenn der Slider den Fokus hat,
   sollte aber immer funktionieren.
+--Vollbild, Cursor ist im Menü, Buttons bekommen alle 3 Sekunden bedingt durch hidecurser den Fokus.
 
 
 vaapih264enc:
