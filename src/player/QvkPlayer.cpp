@@ -60,6 +60,12 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     uiMainWindow = ui_mainwindow;
     uiMainWindow->verticalLayoutTabSidebarPlayer->addWidget( this );
 
+    QList<QWidget *> listToolButton = ui->frameMenueBar->findChildren<QWidget *>();
+    for ( int i = 0; i < listToolButton.count(); i++ )
+    {
+        listToolButton.at(i)->setMouseTracking( true );
+    }
+
     this->setMouseTracking( true );
     ui->framePlayer->setMouseTracking( true );
     ui->labelPlayer->setMouseTracking( true );
@@ -199,11 +205,13 @@ void QvkPlayer::mouseMoveEvent( QMouseEvent *event )
 
     if ( parentMainWindow->isFullScreen() == true )
     {
-        ui->labelPlayer->unsetCursor();
-        ui->widgetMenueBar->show();
-        timerHideMouse->start();
+        if ( ui->widgetMenueBar->underMouse() == false )
+        {
+            ui->labelPlayer->unsetCursor();
+            ui->widgetMenueBar->show();
+            timerHideMouse->start();
+        }
     }
-
 }
 
 
