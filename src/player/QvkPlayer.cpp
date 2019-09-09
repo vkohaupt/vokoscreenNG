@@ -323,6 +323,7 @@ void QvkPlayer::slot_sliderVideo_KeyRight_KeyLeft( int value )
 {
     Q_UNUSED(value);
     mediaPlayer->setPosition( sliderVideo->value() * mediaPlayer->notifyInterval() );
+    ui->labelDuration->setText( get_time( sliderVideo->value() * mediaPlayer->notifyInterval() ) );
 }
 
 
