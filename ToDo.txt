@@ -1,4 +1,8 @@
 
+Spezialslider:
+--Mausklick ganz am Ende der Line und dann den Slider verschieben, Slider zappelt.
+
+
 Player:
 --Tumbbelweed Buttons sind schwarz.
 --signal_sliderVideo_KeyRight_KeyLeft greift nur wenn der Slider den Fokus hat,
