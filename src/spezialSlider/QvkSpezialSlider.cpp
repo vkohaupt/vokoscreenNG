@@ -155,7 +155,7 @@ void QvkSpezialSlider::mousePressEvent( QMouseEvent *event )
     QSlider::mousePressEvent(event);
 }
 
-
+/*
 void QvkSpezialSlider::keyPressEvent( QKeyEvent *event )
 {
     if ( ( event->key() == Qt::Key_Right ) or ( event->key() == Qt::Key_Left  ) )
@@ -165,7 +165,7 @@ void QvkSpezialSlider::keyPressEvent( QKeyEvent *event )
     }
     QSlider::keyPressEvent( event );
 }
-
+*/
 
 void QvkSpezialSlider::mouseMoveEvent( QMouseEvent *event )
 {
