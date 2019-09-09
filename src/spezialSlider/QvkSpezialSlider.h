@@ -35,11 +35,10 @@ protected:
     void mousePressEvent( QMouseEvent *event );
     void mouseMoveEvent( QMouseEvent *event );
     void mouseReleaseEvent( QMouseEvent *event );
-    //void keyPressEvent( QKeyEvent *event );
+
 
 signals:
     void sliderMoved( int );
-    //void signal_sliderVideo_KeyRight_KeyLeft( int value );
 
 };
 

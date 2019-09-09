@@ -155,17 +155,6 @@ void QvkSpezialSlider::mousePressEvent( QMouseEvent *event )
     QSlider::mousePressEvent(event);
 }
 
-/*
-void QvkSpezialSlider::keyPressEvent( QKeyEvent *event )
-{
-    if ( ( event->key() == Qt::Key_Right ) or ( event->key() == Qt::Key_Left  ) )
-    {
-        emit signal_sliderVideo_KeyRight_KeyLeft( value() );
-        event->accept();
-    }
-    QSlider::keyPressEvent( event );
-}
-*/
 
 void QvkSpezialSlider::mouseMoveEvent( QMouseEvent *event )
 {
