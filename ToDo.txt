@@ -29,6 +29,13 @@ Windows:
   https://doc.qt.io/qtinstallerframework/ifw-tutorial.html
 
 
+Erweiterungen:
+==============
+Mediainfo:
+--https://mediaarea.net/en/MediaInfo zum Beispiel zum auslesen der FPS und weiteren Infos.
+
+  
+  
 Bugs aber nicht wirklich relevant:
 ==================================
 KDE Area:
