@@ -12,6 +12,7 @@ Player:
 --Tumbbelweed Buttons sind schwarz.
 --signal_sliderVideo_KeyRight_KeyLeft greift nur wenn der Slider den Fokus hat,
   sollte aber immer funktionieren.
+--Klick auf Sliderline funktioniert nicht.
 
 
 vaapih264enc:
