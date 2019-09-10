@@ -1,4 +1,8 @@
 
+Einstellungen beim Neustart zurücksetzen:
+--Dies muß Augenblicklich mit Rückfrage erfolgen.
+
+
 Windows:
 --Für den User wird eine sehr einfache Update Funktion benötigt.
   Ein Klick und das update muß installiert werden.
