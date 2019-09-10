@@ -1,4 +1,9 @@
 
+Windows:
+--Für den User wird eine sehr einfache Update Funktion benötigt.
+  Ein Klick und das update muß installiert werden.
+
+
 Spezialslider:
 --Mausklick ganz am Ende der Line und dann den Slider verschieben, Slider zappelt.
 
