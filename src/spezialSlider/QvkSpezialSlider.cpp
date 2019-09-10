@@ -136,23 +136,36 @@ void QvkSpezialSlider::mousePressEvent( QMouseEvent *event )
         return;
     }
 
+    // Click on line
     if ( rectHandle.contains( event->pos() ) == false )
     {
+        qreal myValue = 0;
+        qreal myX = event->x();
+        qreal myWidth = width();
+        qreal myMinimum = minimum();
+        qreal myMaximum = maximum();
+        qreal distancePixel = myWidth / ( myMaximum - myMinimum );
         if ( event->button() == Qt::LeftButton )
         {
-            if ( orientation() == Qt::Vertical )
+            if ( myX <= distancePixel / 2 )
             {
-                setValue( minimum() + ( ( maximum()-minimum() ) * ( height()-event->y() ) ) / height() ) ;
+                myValue = myMinimum;
             }
-            else
+
+            if ( myX >= ( distancePixel * ( myMaximum - myMinimum ) - distancePixel / 2 ) )
             {
-                setValue( minimum() + ( ( maximum()-minimum() ) * event->x() ) / width() ) ;
+                myValue = myMaximum;
             }
-            emit sliderMoved( value() );
-            event->accept();
+
+            if ( ( myX >= distancePixel / 2 ) and ( myX <= ( distancePixel * ( myMaximum - myMinimum ) - distancePixel / 2 ) ) )
+            {
+                myValue = qRound( myMinimum + ( myX / distancePixel ) );
+            }
+
+            setValue( myValue );
         }
+        event->accept();
     }
-    QSlider::mousePressEvent(event);
 }
 
 

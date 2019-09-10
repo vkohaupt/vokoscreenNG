@@ -38,7 +38,7 @@ protected:
 
 
 signals:
-    void sliderMoved( int );
+    //void sliderMoved( int );
 
 };
 
