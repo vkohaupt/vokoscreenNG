@@ -163,6 +163,7 @@ void QvkSpezialSlider::mousePressEvent( QMouseEvent *event )
             }
 
             setValue( myValue );
+            emit sliderMoved( myValue );
         }
         event->accept();
     }
