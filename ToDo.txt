@@ -18,6 +18,9 @@ Player:
 vaapih264enc:
 --Player spielt Video zu hell ab, mit dem VLC wird das Video richtig angezeigt.
 
+Fallback-Icon:
+--replace all icons from https://openclipart.org/
+
 
 Player:
 --als seperates Fenster
