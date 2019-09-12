@@ -1559,17 +1559,13 @@ void QvkMainWindow::slot_Start()
     QStringList VK_PipelineList;
     VK_PipelineList << VK_getXimagesrc();
     VK_PipelineList << VK_getCapsFilter();
-    //VK_PipelineList << "queue flush-on-eos=true";
     VK_PipelineList << "videoconvert";
-    //VK_PipelineList << "queue flush-on-eos=true";
     if ( ui->checkBoxScale->isChecked() )
     {
        VK_PipelineList << VK_getVideoScale();
     }
     VK_PipelineList << "videorate";
-    //VK_PipelineList << "queue flush-on-eos=true";
     VK_PipelineList << Vk_get_Videocodec_Encoder();
-    //VK_PipelineList << "queue flush-on-eos=true";
     VK_PipelineList << "mux.";
 
     for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ )
