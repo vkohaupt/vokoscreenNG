@@ -15,6 +15,16 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string notr="true">Fallback and own icons</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QScrollArea" name="scrollArea">
      <property name="widgetResizable">
       <bool>true</bool>
@@ -25,7 +35,7 @@
         <x>0</x>
         <y>0</y>
         <width>784</width>
-        <height>584</height>
+        <height>560</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
