@@ -1,7 +1,7 @@
 3rd party licenses used in vokoscreenNG
 
 Qt:
-License --> LGPL 2.1 LGPL 3.0
+License --> LGPL-2.1 LGPL-3.0
 File    --> LGPL-2.1 LGPL-3.0
 URL     --> https://www.qt.io/
 
@@ -16,4 +16,17 @@ Global QGlobalShortcut:
 Licence --> LGPL
 File    --> LGPL
 URL     --> https://github.com/Legotckoi/QGlobalShortcut
+
+
+Fallback icons:
+Licence --> Public Domain
+URL     --> http://tango.freedesktop.org
+
+
+Only Windows
+============
+Breeze-icons:
+Licence --> LGPL-3.0
+File    --> LGPL-3.0
+URL     --> https://github.com/KDE/breeze-icons
 
