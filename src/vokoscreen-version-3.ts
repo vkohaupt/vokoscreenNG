@@ -430,10 +430,6 @@
         <source>Log</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>license</name>
