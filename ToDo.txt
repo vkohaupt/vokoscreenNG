@@ -8,7 +8,6 @@ Player:
 --Tumbbelweed Buttons sind schwarz.
 --signal_sliderVideo_KeyRight_KeyLeft greift nur wenn der Slider den Fokus hat,
   sollte aber immer funktionieren.
---Tonregler ist nicht mit KDE-Regler verbunden
 
 
 vaapih264enc:
@@ -34,8 +33,10 @@ Erweiterungen:
 Mediainfo:
 --https://mediaarea.net/en/MediaInfo zum Beispiel zum auslesen der FPS und weiteren Infos.
 
-  
-  
+Player:
+--Tonregler ist nicht mit Pulseaudio-Regler z.b in KDE verbunden.
+
+
 Bugs aber nicht wirklich relevant:
 ==================================
 KDE Area:
