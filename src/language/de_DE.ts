@@ -7,6 +7,13 @@
     </message>
 </context>
 <context>
+    <name>QvkAudioWindows</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Ein oder mehrere Geräte auswählen</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
@@ -458,10 +465,6 @@
     <message>
         <source>Next frame</source>
         <translation>Nächstes Bild</translation>
-    </message>
-    <message>
-        <source>Volume</source>
-        <translation>Lautstärke</translation>
     </message>
     <message>
         <source>Mute</source>

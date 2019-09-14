@@ -1,169 +1,169 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="zh_TW" version="2.1">
 <context>
     <name>QvkAudioPulse</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecione um ou mais dispositivos</translation>
+        <translation>選取一個或多個裝置</translation>
     </message>
 </context>
 <context>
     <name>QvkAudioWindows</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecione um ou mais dispositivos</translation>
+        <translation>選取一個或多個裝置</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Mudar para janela</translation>
+        <translation>切換至視窗</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Mudar para ecrã inteiro</translation>
+        <translation>切換至全螢幕</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Aviso</translation>
+        <translation>警告</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>A gravação não é iniciada, sem espaço em disco disponível.</translation>
+        <translation>錄影無法開始，磁碟空間不足</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>É alcançado o limite de espaço em disco disponível.</translation>
+        <translation>已到達磁碟空間上限</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Limite do espaço em disco disponível</translation>
+        <translation>磁碟空間上限</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>MB</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>A gravação foi parada, sem espaço em disco disponível.</translation>
+        <translation>錄影已經停止，磁碟空間不足</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Ecrã inteiro</translation>
+        <translation>全螢幕</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Janela</translation>
+        <translation>視窗</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Não foi encontrado nenhum gestor de ficheiros.</translation>
+        <translation>找不到檔案管理員程式</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Por favor instale um gestor de ficheiros.</translation>
+        <translation>請安裝檔案管理員程式</translation>
     </message>
     <message>
         <source>Desktop session is a Wayland session</source>
-        <translation>A sessão de secretária é uma sessão Wayland</translation>
+        <translation>桌面工作階段是 Wayland 工作階段</translation>
     </message>
     <message>
         <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Neste momento o Wayland não é suportado. Uma transmissão de ecrã mostra um ecrã a negro. Por favor saia da conta e inicie uma sessão X11 Desktop</translation>
+        <translation>尚未支援 Wayland。螢幕將會空白一片。請登出並啟動 X11 桌面工作階段</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Código-fonte</translation>
+        <translation>來源程式碼</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Página inicial</translation>
+        <translation>官方網頁</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Traduções</translation>
+        <translation>軟體介面翻譯</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Doar</translation>
+        <translation>捐款支持</translation>
     </message>
     <message>
         <source>Wayland desktop session detected</source>
-        <translation>Detetada sessão de secretária Wayland</translation>
+        <translation>偵測到是 Wayland 桌面工作階段</translation>
     </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
-        <translation>Abrir ficheiro</translation>
+        <translation>開啟檔案</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>區域</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Começar</translation>
+        <translation>開始</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Parar</translation>
+        <translation>停止</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>暫停</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>繼續</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Sair</translation>
+        <translation>結束</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Diálogo</translation>
+        <translation>對話匣</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Espelhar horizontal</translation>
+        <translation>水平翻轉</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Espelhar vertical</translation>
+        <translation>垂直翻轉</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Inverter</translation>
+        <translation>色彩反轉</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Cinzento</translation>
+        <translation>灰色</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Preto e branco</translation>
+        <translation>黑白</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Remover moldura da janela</translation>
+        <translation>移除視窗外框</translation>
     </message>
     <message>
         <source>160x120</source>
@@ -175,7 +175,7 @@
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Configurações da câmara</translation>
+        <translation>攝影機設定</translation>
     </message>
     <message>
         <source>640x480</source>
@@ -186,171 +186,171 @@
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>區域</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Restabelecer</translation>
+        <translation>重設</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliação</translation>
+        <translation>縮放</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Contagem descrescente</translation>
+        <translation>倒數計時</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Tamanho do vídeo:</translation>
+        <translation>視訊尺寸：</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Espaço de disco disponível:</translation>
+        <translation>磁碟空間：</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informação</translation>
+        <translation>資訊</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Tempo de gravação:</translation>
+        <translation>錄製時間：</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Áudio</translation>
+        <translation>音訊</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>影格率</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Codec de vídeo</translation>
+        <translation>影像編碼</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formato</translation>
+        <translation>格式</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Codec de áudio</translation>
+        <translation>音訊編碼</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>Qualidade</translation>
+        <translation>品質</translation>
     </message>
     <message>
         <source>Scale</source>
-        <translation>Escala</translation>
+        <translation>縮放</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Não gravar o cursor do rato</translation>
+        <translation>不要錄製滑鼠游標</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Hora</translation>
+        <translation>小時</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minuto</translation>
+        <translation>分鐘</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Iniciar o cronómetro</translation>
+        <translation>開始倒數</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Parar a gravação após</translation>
+        <translation>此時間後停止錄製：</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Horas</translation>
+        <translation>小時</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minutos</translation>
+        <translation>分鐘</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Segundos</translation>
+        <translation>秒</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Caminho do vídeo </translation>
+        <translation>影片路徑</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Limite do espaço em disco disponível</translation>
+        <translation>磁碟空間上限</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Mostrar na barra de tarefas</translation>
+        <translation>顯示在系統匣</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Espera em segundos antes de começar a gravar</translation>
+        <translation>開始錄製前等待秒數</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Procurar atualizações</translation>
+        <translation>檢查有否更新</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Ajuda</translation>
+        <translation>求助</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Vídeo</translation>
+        <translation>視訊</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Disponível</translation>
+        <translation>可提供</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Indisponível</translation>
+        <translation>沒有</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Começar</translation>
+        <translation>開始</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Parar</translation>
+        <translation>停止</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>暫停</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>繼續</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Reproduzir</translation>
+        <translation>播放</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Pasta</translation>
+        <translation>資料夾</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Câmara</translation>
+        <translation>攝影機</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Inverter</translation>
+        <translation>色彩反轉</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Cinzento</translation>
+        <translation>灰色</translation>
     </message>
     <message>
         <source>Send Report</source>
-        <translation>Enviar relatório</translation>
+        <translation>發送報告</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -366,11 +366,11 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Reproduzir a última gravação</translation>
+        <translation>播放上一條影片</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Abrir pasta</translation>
+        <translation>開啟資料夾</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
@@ -378,101 +378,101 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimizado quando a gravação começar</translation>
+        <translation>開始錄製時最小化</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Iniciar minimizado</translation>
+        <translation>開啟時最小化</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Espelhar horizontal</translation>
+        <translation>水平翻轉</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Espelhar vertical</translation>
+        <translation>垂直翻轉</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Preto e branco</translation>
+        <translation>黑白</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Remover moldura da janela</translation>
+        <translation>移除視窗外框</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Doar</translation>
+        <translation>捐款支持</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Repor todas as configurações no próximo início</translation>
+        <translation>下次開啟時，重設所有設定</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Direitos de autor e licença das imagens</translation>
+        <translation>圖片的版權及授權條款</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>MB</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Screencast</translation>
+        <translation>螢幕播放</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Leitor</translation>
+        <translation>播放器</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Registos</translation>
+        <translation>日誌</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Direitos de autor e licença das imagens</translation>
+        <translation>圖片的版權及授權條款</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Reproduzir</translation>
+        <translation>播放</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>暫停</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Parar</translation>
+        <translation>停止</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Abrir ficheiro</translation>
+        <translation>開啟檔案</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Ecrã inteiro</translation>
+        <translation>全螢幕</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Fotograma anterior</translation>
+        <translation>上一個影格</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Fotograma seguinte</translation>
+        <translation>上一個影格</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Sem som</translation>
+        <translation>靜音</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Mover menu</translation>
+        <translation>移動選單</translation>
     </message>
 </context>
 </TS>

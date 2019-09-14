@@ -161,6 +161,7 @@ QvkPlayer::~QvkPlayer()
     delete ui;
 }
 
+
 // Funktioniert nicht mit Pulse
 void QvkPlayer::slot_volumeChanged( int )
 {

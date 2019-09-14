@@ -7,6 +7,13 @@
     </message>
 </context>
 <context>
+    <name>QvkAudioWindows</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Bir veya daha fazla aygıt seç</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
@@ -132,7 +139,7 @@
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Konuşma</translation>
+        <translation>Diyalog</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
@@ -287,7 +294,7 @@
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Güncellemelere bak</translation>
+        <translation>Güncellemeleri ara</translation>
     </message>
     <message>
         <source>Help</source>
@@ -419,7 +426,7 @@
     </message>
     <message>
         <source>Log</source>
-        <translation>Log</translation>
+        <translation>Günlük</translation>
     </message>
 </context>
 <context>
@@ -458,10 +465,6 @@
     <message>
         <source>Next frame</source>
         <translation>Sonraki çerçeve</translation>
-    </message>
-    <message>
-        <source>Volume</source>
-        <translation>Ses</translation>
     </message>
     <message>
         <source>Mute</source>
