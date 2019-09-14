@@ -18,23 +18,20 @@ Fallback-Icon:
 --replace all icons from https://openclipart.org/
 
 
-Player:
---als seperates Fenster
---Einstellungen in dem vorhanden Tab
-
-
 Windows:
 --Installer wird benötigt.
   https://doc.qt.io/qtinstallerframework/ifw-tutorial.html
 
 
-Bugs und Hinweise aber nicht wirklich relevant:
-===============================================
+Bugs, Features und Hinweise aber nicht wirklich wichtig
+=======================================================
 Mediainfo:
 --https://mediaarea.net/en/MediaInfo zum Beispiel zum auslesen der FPS und weiteren Infos.
 
 Player:
 --Tonregler ist nicht mit Pulseaudio-Regler z.b in KDE verbunden.
+--als seperates Fenster
+--Einstellungen in dem vorhanden Tab
 
 KDE Area:
 --Monitor ungerade skalieren auf 1.1, 1.3 1.5 etc. Buttons haben transparente Linien.
