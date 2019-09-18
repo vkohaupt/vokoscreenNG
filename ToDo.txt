@@ -1,4 +1,8 @@
 
+Ubuntu 19.04:
+--Countdown, letzte Sekunde wird aufgenommen. Hint: opensuse-leap ok.
+
+
 Windows:
 --Für den User wird eine sehr einfache Update Funktion benötigt.
   Ein Klick und das update muß installiert werden.
