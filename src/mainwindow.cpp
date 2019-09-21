@@ -122,7 +122,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderSecondWaitBeforeRecording->setObjectName( "sliderSecondWaitBeforeRecording" );
     sliderSecondWaitBeforeRecording->setMinimum( 0 );
     sliderSecondWaitBeforeRecording->setMaximum( 3 );
-    sliderSecondWaitBeforeRecording->setValue( 0 );
+    sliderSecondWaitBeforeRecording->setValue( 1 );
     sliderSecondWaitBeforeRecording->show();
 
     sliderStopRecordingAfterHouers = new QvkSpezialSlider( Qt::Horizontal );
