@@ -29,10 +29,11 @@
 #include <QMessageBox>
 #include <QDebug>
 
-QvkInformation::QvkInformation( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, QvkSpezialSlider *slider )
+QvkInformation::QvkInformation( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, QvkSpezialSlider *slider_count_down, QvkSpezialSlider *slider_Second_Wait_Before_Recording )
 {
     ui = ui_mainwindow;
-    sliderCountDown = slider;
+    sliderCountDown = slider_count_down;
+    sliderSecondWaitBeforeRecording = slider_Second_Wait_Before_Recording;
 
     connect( mainWindow, SIGNAL( destroyed( QObject* ) ), this, SLOT( slot_cleanup() ) );
 
@@ -42,12 +43,13 @@ QvkInformation::QvkInformation( QMainWindow *mainWindow, Ui_formMainWindow *ui_m
 
     // VideoSize and FreeDiskSpace
     timerStorageInfo = new QTimer(this);
+    timerStorageInfo->setTimerType( Qt::PreciseTimer );
     timerStorageInfo->setInterval( 1000 );
     connect( timerStorageInfo, SIGNAL( timeout() ), this, SLOT( slot_StorageInfo() ) );
     timerStorageInfo->start();
 
     // Recorded time
-    elapsedTime = new QTime;
+    elapsedTime = new QTime( 0, 0, 0, 0 );
     connect( ui->pushButtonStart,    SIGNAL( clicked( bool ) ), this, SLOT( slot_timeFirstStart() ) );
     connect( ui->pushButtonPause,    SIGNAL( clicked( bool ) ), this, SLOT( slot_summedTimeAfterPause() ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), this, SLOT( slot_timeContinueStart() ) );
@@ -137,7 +139,7 @@ void QvkInformation::slot_displayRecordTime()
    if ( ui->pushButtonStop->isEnabled() == true )
    {
       QTime time( 0, 0, 0, 0 );
-      ui->labelInfoRecordTime->setText( time.addMSecs( elapsedTime->elapsed() + int_summed - sliderCountDown->value()*1000 ).toString( "hh:mm:ss" ) );
+      ui->labelInfoRecordTime->setText( time.addMSecs( elapsedTime->elapsed() + int_summed - sliderCountDown->value()*1000 - sliderSecondWaitBeforeRecording->value()*1000 ).toString( "hh:mm:ss" ) );
    }
 }
 

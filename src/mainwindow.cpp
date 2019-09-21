@@ -117,13 +117,13 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderMinute->setValue( 0 );
     sliderMinute->show();
 
-    sliderMinimizedRecordingStarts = new QvkSpezialSlider( Qt::Horizontal );
-    ui->verticalLayout_27->insertWidget(0, sliderMinimizedRecordingStarts );
-    sliderMinimizedRecordingStarts->setObjectName( "sliderMinimizedRecordingStarts" );
-    sliderMinimizedRecordingStarts->setMinimum( 0 );
-    sliderMinimizedRecordingStarts->setMaximum( 4 );
-    sliderMinimizedRecordingStarts->setValue( 0 );
-    sliderMinimizedRecordingStarts->show();
+    sliderSecondWaitBeforeRecording = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_7->insertWidget( 1, sliderSecondWaitBeforeRecording );
+    sliderSecondWaitBeforeRecording->setObjectName( "sliderSecondWaitBeforeRecording" );
+    sliderSecondWaitBeforeRecording->setMinimum( 0 );
+    sliderSecondWaitBeforeRecording->setMaximum( 3 );
+    sliderSecondWaitBeforeRecording->setValue( 0 );
+    sliderSecondWaitBeforeRecording->show();
 
     sliderStopRecordingAfterHouers = new QvkSpezialSlider( Qt::Horizontal );
     ui->verticalLayout_29->addWidget( sliderStopRecordingAfterHouers );
@@ -188,7 +188,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     Q_UNUSED(vkGlobalShortcut);
 #endif
 
-    QvkInformation *vkInformation = new QvkInformation( this, ui, sliderScreencastCountDown );
+    QvkInformation *vkInformation = new QvkInformation( this, ui, sliderScreencastCountDown, sliderSecondWaitBeforeRecording );
     connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
 
     vkLimitDiskFreeSpace = new QvkLimitDiskFreeSpace( ui, sliderLimitOfFreeDiskSpace );
@@ -403,7 +403,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->checkBoxShowInSystray->setEnabled( false );
     }
 
-    connect( ui->checkBoxMinimizedWhenRecordingStarts, SIGNAL( clicked( bool ) ),    ui->frameWaitXSecondBeforRecording, SLOT( setEnabled( bool ) ) );
+//    connect( ui->checkBoxMinimizedWhenRecordingStarts, SIGNAL( clicked( bool ) ),    ui->frameWaitXSecondBeforRecording, SLOT( setEnabled( bool ) ) );
 
     // Tab 5 Available muxer, encoder etc.
     QIcon iconAvailable = style()->standardIcon( QStyle::SP_DialogApplyButton );
@@ -1394,6 +1394,8 @@ void QvkMainWindow::slot_preStart()
         int value = sliderStopRecordingAfterHouers->value()*60*60*1000;
         value += sliderStopRecordingAfterMinutes->value()*60*1000;
         value += sliderStopRecordingAfterSeconds->value()*1000;
+        value += sliderSecondWaitBeforeRecording->value()*1000;
+        value += sliderScreencastCountDown->value()*1000;
         timerStopRecordingAfter->setTimerType( Qt::PreciseTimer );
         timerStopRecordingAfter->start( value );
     }
@@ -1553,8 +1555,9 @@ void QvkMainWindow::slot_Start()
     if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  )
     {
         setWindowState( Qt::WindowMinimized );
-        QThread::msleep( static_cast<unsigned long>( sliderMinimizedRecordingStarts->value()) * 1000 );
     }
+
+    QThread::msleep( static_cast<unsigned long>( sliderSecondWaitBeforeRecording->value()) * 1000 );
 
     QStringList VK_PipelineList;
     VK_PipelineList << VK_getXimagesrc();

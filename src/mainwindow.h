@@ -78,7 +78,7 @@ private:
     QvkSpezialSlider *sliderLimitOfFreeDiskSpace;
     QvkSpezialSlider *sliderHour;
     QvkSpezialSlider *sliderMinute;
-    QvkSpezialSlider *sliderMinimizedRecordingStarts;
+    QvkSpezialSlider *sliderSecondWaitBeforeRecording;
     QvkSpezialSlider *sliderStopRecordingAfterHouers;
     QvkSpezialSlider *sliderStopRecordingAfterMinutes;
     QvkSpezialSlider *sliderStopRecordingAfterSeconds;

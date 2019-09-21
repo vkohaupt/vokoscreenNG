@@ -40,9 +40,11 @@ QvkCountdown::QvkCountdown()
     setAttribute( Qt::WA_TranslucentBackground, true );
 
     timer = new QTimer( this );
+    timer->setTimerType( Qt::PreciseTimer );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_updateTimer() ) );
 
     animationTimer = new QTimer( this );
+    animationTimer->setTimerType( Qt::PreciseTimer );
     connect( animationTimer, SIGNAL( timeout() ), this, SLOT( slot_updateAnimationTimer() ) );
 
     hide();

@@ -32,7 +32,7 @@ class QvkInformation: public QWidget
 { 
 Q_OBJECT
 public:
-  QvkInformation(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, QvkSpezialSlider *slider);
+  QvkInformation(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, QvkSpezialSlider *slider_count_down, QvkSpezialSlider *slider_Second_Wait_Before_Recording );
   virtual ~QvkInformation();
 
 
@@ -67,6 +67,7 @@ private:
   int int_summed = 0;
 
   QvkSpezialSlider *sliderCountDown;
+  QvkSpezialSlider *sliderSecondWaitBeforeRecording;
 };
 
 #endif
