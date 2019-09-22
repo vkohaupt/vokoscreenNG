@@ -1,4 +1,8 @@
 
+Hilfe:
+--Vervollständigen
+
+
 Windows:
 --Für den User wird eine sehr einfache Update Funktion benötigt.
   Ein Klick und das update muß installiert werden.
@@ -6,8 +10,6 @@ Windows:
 
 Player:
 --Tumbbelweed Buttons sind schwarz.
---signal_sliderVideo_KeyRight_KeyLeft greift nur wenn der Slider den Fokus hat,
-  sollte aber immer funktionieren.
 
 
 Fallback-Icon:
