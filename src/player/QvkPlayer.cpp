@@ -44,6 +44,8 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     sliderVideo->setTracking( true );
     sliderVideo->setShowValue( false );
     sliderVideo->setEnabled( false );
+    sliderVideo->setMaximum(0);
+    sliderVideo->setMaximum(0);
     sliderVideo->show();
 
     sliderVolume = new QvkSpezialSlider( Qt::Horizontal );
@@ -152,6 +154,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     for ( int i = 0; i < listWidget.count(); i++ )
     {
         listWidget.at(i)->setStyleSheet( "QToolTip { background-color: black; color: white }" );
+        listWidget.at(i)->setFocusPolicy( Qt::NoFocus );
     }
 }
 
@@ -351,14 +354,12 @@ void QvkPlayer::slot_mute()
     if ( mediaPlayer->isMuted()== true )
     {
         mediaPlayer->setMuted( false );
-        ui->toolButtonMute->setFocus();
         return;
     }
 
     if ( mediaPlayer->isMuted()== false )
     {
         mediaPlayer->setMuted( true );
-        ui->toolButtonMute->setFocus();
         return;
     }
 }
@@ -425,7 +426,6 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
         vk_showNormal();
         ui->toolButtonFrameBackward->setEnabled( true );
         ui->toolButtonFrameForward->setEnabled( true );
-        ui->pushButtonPlay->setFocus();
         metaFrame->hide();
         metaLabel->hide();
     }
@@ -435,7 +435,6 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
         ui->pushButtonPlay->setVisible( false );
         ui->pushButtonPause->setVisible( true );
         ui->pushButtonPause->setEnabled( true );
-        ui->pushButtonPause->setFocus();
         ui->pushButtonStop->setEnabled( true );
         ui->toolButtonFrameBackward->setEnabled( true );
         ui->toolButtonFrameForward->setEnabled( true );
@@ -447,7 +446,6 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
         ui->pushButtonStop->setEnabled( true );
         ui->pushButtonPlay->setVisible( true );
         ui->pushButtonPlay->setEnabled( true );
-        ui->pushButtonPlay->setFocus();
         ui->toolButtonFrameBackward->setEnabled( true );
         ui->toolButtonFrameForward->setEnabled( true );
     }
@@ -561,6 +559,25 @@ void QvkPlayer::mouseDoubleClickEvent( QMouseEvent *event )
 
 void QvkPlayer::keyPressEvent( QKeyEvent *event )
 {
+    int stepSize = 25;
+    if ( ( mediaPlayer->state() == QMediaPlayer::PlayingState ) or ( mediaPlayer->state() == QMediaPlayer::PausedState ) )
+    {
+        if ( event->key() == Qt::Key_Right )
+        {
+            ui->labelDuration->setText( get_time( ( sliderVideo->value() + stepSize ) * mediaPlayer->notifyInterval() ) );
+            sliderVideo->setValue( sliderVideo->value() + stepSize );
+            mediaPlayer->setPosition( sliderVideo->value() * mediaPlayer->notifyInterval() );
+            return;
+        }
+
+        if ( event->key() == Qt::Key_Left )
+        {
+            ui->labelDuration->setText( get_time( ( sliderVideo->value() - stepSize ) * mediaPlayer->notifyInterval() ) );
+            sliderVideo->setValue( sliderVideo->value() - stepSize );
+            mediaPlayer->setPosition( sliderVideo->value() * mediaPlayer->notifyInterval() );
+        }
+    }
+
     if ( event->key() == Qt::Key_Space )
     {
         switch ( mediaPlayer->state() )
@@ -588,7 +605,7 @@ void QvkPlayer::keyPressEvent( QKeyEvent *event )
         vk_showNormal();
     }
 
-    if ( event->key() == Qt::Key_F11 )
+    if ( ( event->key() == Qt::Key_F11 ) or ( event->key() == Qt::Key_F ) )
     {
         if ( parentMainWindow->isFullScreen() == true )
         {
