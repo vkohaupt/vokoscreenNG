@@ -8,8 +8,8 @@ Windows:
   Ein Klick und das update muß installiert werden.
 
 
-Fallback-Icon:
---replace all icons from https://openclipart.org/
+Interface:
+--Schnittstelle für Erweiterungen erstellen
 
 
 Windows:
