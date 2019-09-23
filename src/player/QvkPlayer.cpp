@@ -44,8 +44,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     sliderVideo->setTracking( true );
     sliderVideo->setShowValue( false );
     sliderVideo->setEnabled( false );
-    sliderVideo->setMaximum(0);
-    sliderVideo->setMaximum(0);
+    sliderVideo->setMaximum(1);
     sliderVideo->show();
 
     sliderVolume = new QvkSpezialSlider( Qt::Horizontal );
