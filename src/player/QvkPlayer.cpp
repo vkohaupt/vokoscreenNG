@@ -76,7 +76,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     ui->labelPlayer->setPixmap( icon.pixmap( 128, 128 ) );
 
-    ui->framePlayer->setStyleSheet( "background-color: black;" );
+    ui->framePlayer->setStyleSheet( "QFrame { background-color: black; }" );
 
     ui->pushButtonPlay->setIcon( QIcon::fromTheme( "media-playback-start" , style()->standardIcon( QStyle::SP_MediaPlay ) ) );
     ui->pushButtonPause->setIcon( QIcon::fromTheme( "media-playback-pause", style()->standardIcon( QStyle::SP_MediaPause ) ) );
@@ -486,8 +486,8 @@ void QvkPlayer::vk_showFullscreen()
     parentMainWindow->showFullScreen();
 
     ui->widgetMenueBar->setParent( ui->labelPlayer);
-    ui->framePlayer->setStyleSheet( "background-color: black;"  );
-    ui->widgetMenueBar->setStyleSheet( "background-color: lightgray;"  );
+    ui->framePlayer->setStyleSheet( "QFrame { background-color: black; }"  );
+    ui->widgetMenueBar->setStyleSheet( "QWidget { background-color: lightgray; }" );
     ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-restore", QIcon( ":/pictures/player/restore.png" ) ) );
     ui->labelMovePicture->show();
     ui->widgetMenueBar->show();
@@ -510,7 +510,7 @@ void QvkPlayer::vk_showNormal()
     parentMainWindow->showNormal();
 
     ui->verticalLayout_4->addWidget( ui->widgetMenueBar );
-    ui->framePlayer->setStyleSheet( "background-color: black;"  );
+    ui->framePlayer->setStyleSheet( "QFrame { background-color: black; }"  );
     // An empty string resets the color
     ui->widgetMenueBar->setStyleSheet( "" );
     ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen", QIcon( ":/pictures/player/fullscreen.png" ) ) );
