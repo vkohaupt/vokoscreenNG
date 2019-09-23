@@ -8,10 +8,6 @@ Windows:
   Ein Klick und das update muß installiert werden.
 
 
-Player:
---Tumbbelweed Buttons sind schwarz.
-
-
 Fallback-Icon:
 --replace all icons from https://openclipart.org/
 

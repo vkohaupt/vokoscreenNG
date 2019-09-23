@@ -488,6 +488,7 @@ void QvkPlayer::vk_showFullscreen()
     ui->widgetMenueBar->setParent( ui->labelPlayer);
     ui->framePlayer->setStyleSheet( "QFrame { background-color: black; }"  );
     ui->widgetMenueBar->setStyleSheet( "QWidget { background-color: lightgray; }" );
+    ui->labelMovePicture->setStyleSheet( "QLabel { background-color: lightgray; }" );
     ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-restore", QIcon( ":/pictures/player/restore.png" ) ) );
     ui->labelMovePicture->show();
     ui->widgetMenueBar->show();
