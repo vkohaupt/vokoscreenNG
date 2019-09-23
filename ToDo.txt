@@ -1,4 +1,9 @@
 
+Player:
+--Warnung besteitigen
+  Warning: QPainterPath::arcTo: Adding arc where a parameter is NaN, results are undefined ((null):0, (null))
+
+
 Hilfe:
 --Vervollständigen
 
