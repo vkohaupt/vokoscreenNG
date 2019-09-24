@@ -29,6 +29,7 @@
 #include "global.h"
 #include "QvkScreenManager.h"
 #include "QvkLicenses.h"
+#include "QvkLoadExtension.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -460,6 +461,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->label_Upate->setPalette( palette );
     connect( &version, SIGNAL( signal_newVersionAvailable( QString ) ), this, SLOT( slot_newVersionAvailable( QString ) ) );
     connect( ui->checkBoxLookForUpdates, SIGNAL( toggled( bool ) ), &version, SLOT( slot_doDownload( bool ) ) );
+
+
+    QvkLoadExtension *loadExtension = new QvkLoadExtension( ui );
+    loadExtension->loadExtension();
 
     // Hint:
     vkSettings.readAll( ui, this );
