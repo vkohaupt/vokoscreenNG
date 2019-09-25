@@ -2,6 +2,7 @@
 
 Hilfe:
 --Vervollständigen
+--https
 
 
 Windows:
