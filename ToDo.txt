@@ -1,4 +1,7 @@
 
+Codec:
+--openh264
+
 
 Hilfe:
 --Vervollständigen
