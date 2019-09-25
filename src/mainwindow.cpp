@@ -463,7 +463,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxLookForUpdates, SIGNAL( toggled( bool ) ), &version, SLOT( slot_doDownload( bool ) ) );
 
 
-    QvkLoadExtension *loadExtension = new QvkLoadExtension( ui );
+    QvkLoadExtension *loadExtension = new QvkLoadExtension( this, ui );
     loadExtension->loadExtension();
 
     // Hint:

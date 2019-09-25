@@ -24,6 +24,7 @@
 #define QVKLOADEXTENSION_H
 
 #include "ui_formMainWindow.h"
+#include "mainwindow.h"
 
 #include <QObject>
 
@@ -32,11 +33,11 @@ class QvkLoadExtension : public QObject
     Q_OBJECT
 
 public:
-    explicit QvkLoadExtension( Ui_formMainWindow *GUI );
+    explicit QvkLoadExtension(QvkMainWindow *parent, Ui_formMainWindow *GUI );
     ~QvkLoadExtension();
     void loadExtension();
     Ui_formMainWindow *ui;
-
+    QvkMainWindow *parent;
 
 private:
 

@@ -28,9 +28,10 @@
 #include <QDebug>
 #include <QLibrary>
 
-QvkLoadExtension::QvkLoadExtension( Ui_formMainWindow *GUI )
+QvkLoadExtension::QvkLoadExtension( QvkMainWindow *mainWindow, Ui_formMainWindow *GUI )
 {
    ui = GUI;
+   parent = mainWindow;
 }
 
 QvkLoadExtension::~QvkLoadExtension()
