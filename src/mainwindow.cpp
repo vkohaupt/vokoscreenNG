@@ -1009,6 +1009,7 @@ void QvkMainWindow::VK_gst_Elements_available()
     list << "audiorate";
     list << "filesink";
     list << "videoscale";
+    list << "h264parse";
 
     for ( int i = 0; i < list.count(); i++ )
     {
@@ -1139,6 +1140,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videomimetype:video/x-matroska"
                                     << "audiomimetype:audio/x-matroska"
                                     << "videocodec:x264enc:x264"
+                                    << "videocodec:openh264enc:openh264"
                                 #ifdef Q_OS_LINUX
                                     << "videocodec:vaapih264enc:H.264 (Intel GPU)"
                                     << "videocodec:vaapimpeg2enc:MPEG-2 (Intel GPU)"
@@ -1331,6 +1333,19 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << "speed-preset=" + ui->comboBoxx264Preset->currentText();
         list << "threads=" + vk_idealThreadCount;
         value = list.join( " " );
+    }
+
+    if ( encoder == "openh264enc" )
+    {
+        QStringList list;
+        list << ui->comboBoxVideoCodec->currentData().toString();
+        list << "qp-min=23";
+        list << "qp-max=23";
+        list << "usage-type=screen";
+        list << "complexity=low";
+        list << "multi-thread=" + vk_idealThreadCount;
+        value = list.join( " " );
+        value.append( " ! h264parse" );
     }
 
     if ( encoder == "x265enc" )
