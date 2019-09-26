@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>710</width>
-    <height>422</height>
+    <height>428</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>2</number>
           </property>
           <property name="iconSize">
            <size>
@@ -460,7 +460,7 @@
                       <x>0</x>
                       <y>0</y>
                       <width>535</width>
-                      <height>187</height>
+                      <height>193</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -671,7 +671,7 @@
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_9" stretch="0,0">
+                <layout class="QVBoxLayout" name="verticalLayout_9" stretch="0,0,0">
                  <property name="spacing">
                   <number>0</number>
                  </property>
@@ -776,7 +776,7 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QToolButton" name="toolButtonScreencastx264Reset">
+                     <widget class="QToolButton" name="toolButtonx264Reset">
                       <property name="toolTip">
                        <string>Reset</string>
                       </property>
@@ -807,6 +807,38 @@
                      <widget class="QCheckBox" name="checkBoxVaapiPostProc">
                       <property name="text">
                        <string notr="true">Post processing</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frameVideoCodecOpenh264">
+                   <property name="frameShape">
+                    <enum>QFrame::NoFrame</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_openh264">
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="label_19">
+                      <property name="text">
+                       <string>Quality</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QToolButton" name="toolButtonOpenh264Reset">
+                      <property name="text">
+                       <string notr="true">Reset</string>
                       </property>
                      </widget>
                     </item>
@@ -1507,7 +1539,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>361</width>
-                   <height>305</height>
+                   <height>311</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">

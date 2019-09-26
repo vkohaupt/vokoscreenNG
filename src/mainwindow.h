@@ -75,6 +75,7 @@ private:
     QvkSpezialSlider *sliderScreencastCountDown;
     QvkSpezialSlider *sliderFrames;
     QvkSpezialSlider *sliderX264;
+    QvkSpezialSlider *sliderOpenh264;
     QvkSpezialSlider *sliderLimitOfFreeDiskSpace;
     QvkSpezialSlider *sliderHour;
     QvkSpezialSlider *sliderMinute;
@@ -159,6 +160,7 @@ private slots:
     void slot_set_available_AudioCodecs_in_Combox( QString suffix );
     void slot_videoCodecChanged( QString codec );
     void slot_x264Reset();
+    void slot_openh264Reset();
 
     void slot_StartTimer( bool value );
     void slot_startTime();

@@ -94,6 +94,15 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderX264->setValue( 17 );
     sliderX264->show();
 
+    sliderOpenh264 = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_openh264->insertWidget( 1, sliderOpenh264 );
+    sliderOpenh264->setObjectName("sliderOpenh264");
+    sliderOpenh264->setTracking( true );
+    sliderOpenh264->setMinimum( 0 );
+    sliderOpenh264->setMaximum( 50 );
+    sliderOpenh264->setValue( 23 );
+    sliderOpenh264->show();
+
     sliderLimitOfFreeDiskSpace = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_27->insertWidget( 3, sliderLimitOfFreeDiskSpace );
     sliderLimitOfFreeDiskSpace->setObjectName( "sliderLimitOfFreeDiskSpace" );
@@ -370,7 +379,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
 
     connect( ui->comboBoxVideoCodec, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_videoCodecChanged( QString ) ) );
-    connect( ui->toolButtonScreencastx264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_x264Reset() ) );
+    connect( ui->toolButtonx264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_x264Reset() ) );
+    connect( ui->toolButtonOpenh264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_openh264Reset() ) );
 
     // Tab 3 Time
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
@@ -555,25 +565,37 @@ void QvkMainWindow::showEvent( QShowEvent *event )
 
 void QvkMainWindow::slot_x264Reset()
 {
-  ui->comboBoxx264Preset->setCurrentIndex( 1 );
-  sliderX264->setValue( 17 );
+    ui->comboBoxx264Preset->setCurrentIndex( 1 );
+    sliderX264->setValue( 17 );
+}
+
+
+void QvkMainWindow::slot_openh264Reset()
+{
+    sliderOpenh264->setValue( 23 );
 }
 
 
 void QvkMainWindow::slot_videoCodecChanged( QString codec )
 {
-  ui->frameVideoCodecx264->setVisible( false );
-  ui->frameVideoCodecVaapih264->setVisible( false );
+    ui->frameVideoCodecx264->setVisible( false );
+    ui->frameVideoCodecVaapih264->setVisible( false );
+    ui->frameVideoCodecOpenh264->setVisible( false );
 
-  if ( codec == "x264"  )
-  {
-      ui->frameVideoCodecx264->setVisible( true );
-  }
+    if ( codec == "x264"  )
+    {
+        ui->frameVideoCodecx264->setVisible( true );
+    }
 
-  if ( codec == "H.264 (Intel GPU)" )
-  {
-      ui->frameVideoCodecVaapih264->setVisible( true );
-  }
+    if ( codec == "H.264 (Intel GPU)" )
+    {
+        ui->frameVideoCodecVaapih264->setVisible( true );
+    }
+
+    if ( codec == "openh264" )
+    {
+        ui->frameVideoCodecOpenh264->setVisible( true );
+    }
 }
 
 
