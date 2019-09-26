@@ -1376,8 +1376,8 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
     {
         QStringList list;
         list << ui->comboBoxVideoCodec->currentData().toString();
-        list << "qp-min=23";
-        list << "qp-max=23";
+        list << "qp-min=" + QString::number( sliderOpenh264->value() );
+        list << "qp-max=" + QString::number( sliderOpenh264->value() );
         list << "usage-type=screen";
         list << "complexity=low";
         list << "multi-thread=" + vk_idealThreadCount;

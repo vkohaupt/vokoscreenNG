@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -837,6 +837,9 @@
                     </item>
                     <item>
                      <widget class="QToolButton" name="toolButtonOpenh264Reset">
+                      <property name="toolTip">
+                       <string>Reset</string>
+                      </property>
                       <property name="text">
                        <string notr="true">Reset</string>
                       </property>
