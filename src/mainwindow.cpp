@@ -1650,12 +1650,9 @@ void QvkMainWindow::slot_Start()
     if ( ( !VK_getSelectedAudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
     {
         VK_PipelineList << "adder name=mix";
+        VK_PipelineList << "audioconvert";
         VK_PipelineList << "audiorate";
-        VK_PipelineList << "queue";
-        VK_PipelineList << "audioresample";
-        VK_PipelineList << "queue";
         VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
-        VK_PipelineList << "queue";
     }
 
     VK_PipelineList << VK_getMuxer();
