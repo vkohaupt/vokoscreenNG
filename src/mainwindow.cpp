@@ -1032,6 +1032,7 @@ void QvkMainWindow::VK_gst_Elements_available()
     list << "filesink";
     list << "videoscale";
     list << "h264parse";
+    list << "adder";
 
     for ( int i = 0; i < list.count(); i++ )
     {
