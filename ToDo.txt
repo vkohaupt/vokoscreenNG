@@ -1,6 +1,6 @@
 
 Audio Windows:
---mux. mux. ist doppelt
+--Sound funktioniert nicht in VBox, nativ testen.
 
 
 Hilfe:

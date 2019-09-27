@@ -1639,7 +1639,7 @@ void QvkMainWindow::slot_Start()
             #endif
 
             #ifdef Q_OS_WIN
-                VK_PipelineList << QString( "mux. ").append( VK_get_AudioSystem() ).append( " device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(x) +"'" );
+                VK_PipelineList << VK_get_AudioSystem().append( " device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(x) +"'" );
                 VK_PipelineList << "queue";
                 VK_PipelineList << "mix.";
             #endif
