@@ -1627,16 +1627,18 @@ void QvkMainWindow::slot_Start()
     }
     VK_PipelineList << "videorate";
     VK_PipelineList << Vk_get_Videocodec_Encoder();
-//    VK_PipelineList << "queue";
-//    VK_PipelineList << "mux.";
+
+    // Only if one or more audiodevice is selected
+    if ( ( VK_getSelectedAudioDevice().count() > 0 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
+    {
+        VK_PipelineList << "queue";
+        VK_PipelineList << "mux.";
+    }
 
     // Pipeline for one selected audiodevice
     // 2019-09-28 tested and ok on opensuse 15.0 und nativ Windows 10 from USB-Stick
     if ( ( VK_getSelectedAudioDevice().count() == 1 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
     {
-        VK_PipelineList << "queue";
-        VK_PipelineList << "mux.";
-
         #ifdef Q_OS_LINUX
             VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(0) );
         #endif
@@ -1655,8 +1657,6 @@ void QvkMainWindow::slot_Start()
     // Pipeline for more as one audiodevice
     if ( ( VK_getSelectedAudioDevice().count() > 1 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
     {
-        VK_PipelineList << "queue";
-        VK_PipelineList << "mux.";
         for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ )
         {
             #ifdef Q_OS_LINUX
