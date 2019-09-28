@@ -1652,10 +1652,12 @@ void QvkMainWindow::slot_Start()
         VK_PipelineList << "mux.";
     }
 
-/*
-    for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ )
+    // Pipeline for more as one audiodevice
+    if ( ( VK_getSelectedAudioDevice().count() > 1 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
     {
-        if ( ( !VK_getSelectedAudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
+        VK_PipelineList << "queue";
+        VK_PipelineList << "mux.";
+        for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ )
         {
             #ifdef Q_OS_LINUX
                 VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(x) );
@@ -1669,16 +1671,12 @@ void QvkMainWindow::slot_Start()
                 VK_PipelineList << "mix.";
             #endif
         }
-    }
-
-    if ( ( !VK_getSelectedAudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
-    {
         VK_PipelineList << "adder name=mix";
         VK_PipelineList << "audioconvert";
         VK_PipelineList << "audiorate";
         VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
     }
-*/
+
     VK_PipelineList << VK_getMuxer();
 
     QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
