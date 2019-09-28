@@ -1627,8 +1627,32 @@ void QvkMainWindow::slot_Start()
     }
     VK_PipelineList << "videorate";
     VK_PipelineList << Vk_get_Videocodec_Encoder();
-    VK_PipelineList << "mux.";
+//    VK_PipelineList << "queue";
+//    VK_PipelineList << "mux.";
 
+    // Pipeline for one selected audiodevice
+    // 2019-09-28 tested and ok on opensuse 15.0 und nativ Windows 10 from USB-Stick
+    if ( ( VK_getSelectedAudioDevice().count() == 1 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
+    {
+        VK_PipelineList << "queue";
+        VK_PipelineList << "mux.";
+
+        #ifdef Q_OS_LINUX
+            VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(0) );
+        #endif
+
+        #ifdef Q_OS_WIN
+            VK_PipelineList << VK_get_AudioSystem().append( " device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(0) +"'" );
+        #endif
+
+        VK_PipelineList << "audioconvert";
+        VK_PipelineList << "audiorate";
+        VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
+        VK_PipelineList << "queue";
+        VK_PipelineList << "mux.";
+    }
+
+/*
     for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ )
     {
         if ( ( !VK_getSelectedAudioDevice().isEmpty() ) and ( ui->comboBoxAudioCodec->count() > 0  ) )
@@ -1654,7 +1678,7 @@ void QvkMainWindow::slot_Start()
         VK_PipelineList << "audiorate";
         VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
     }
-
+*/
     VK_PipelineList << VK_getMuxer();
 
     QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
