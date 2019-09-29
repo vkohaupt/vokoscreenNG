@@ -1,4 +1,8 @@
 
+Windows:
+--Im vierten Tab wird kein Icon angezeigt.
+
+
 Audio Windows:
 --Sound funktioniert nicht in VBox, nativ testen.
 

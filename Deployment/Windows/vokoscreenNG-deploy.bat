@@ -36,10 +36,12 @@ copy C:\gstreamer\1.0\x86\bin\libvorbisenc-2.dll
 copy C:\gstreamer\1.0\x86\bin\libwinpthread-1.dll
 copy C:\gstreamer\1.0\x86\bin\libx264-148.dll
 copy C:\gstreamer\1.0\x86\bin\libz.dll
-copy C:\gstreamer\1.0\x86\bin\LIBGCC_S_SJLJ-1.DLL
-copy C:\gstreamer\1.0\x86\bin\LIBGSTOPENH264.DLL
-copy C:\gstreamer\1.0\x86\bin\LIBSTDC++-6.DLL
-copy C:\gstreamer\1.0\x86\bin\LIBOPENH264.DLL
+
+rem Error with openh264 dll "__gxx_personality_sj0" --> What can i do?
+rem copy C:\gstreamer\1.0\x86\lib\gstreamer-1.0\libgstopenh264.dll
+rem copy C:\gstreamer\1.0\x86\bin\libopenh264.dll
+rem copy C:\gstreamer\1.0\x86\bin\libgcc_s_sjlj-1.dll
+rem copy C:\gstreamer\1.0\x86\bin\libstdc++-6.dll
 
 copy C:\gstreamer\1.0\x86\lib\gstreamer-1.0\libgstadder.dll
 copy C:\gstreamer\1.0\x86\lib\gstreamer-1.0\libgstaudioconvert.dll
@@ -67,4 +69,3 @@ rmdir /s /Q icons
 timeout 10
 mkdir icons
 xcopy %curentdir%\breeze-icons\icons %curentdir%\icons\ /e
-rmdir /s /Q C:\Users\vk\2\breeze-icons
