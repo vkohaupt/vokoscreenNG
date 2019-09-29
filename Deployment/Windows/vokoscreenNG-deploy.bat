@@ -36,6 +36,11 @@ copy C:\gstreamer\1.0\x86\bin\libvorbisenc-2.dll
 copy C:\gstreamer\1.0\x86\bin\libwinpthread-1.dll
 copy C:\gstreamer\1.0\x86\bin\libx264-148.dll
 copy C:\gstreamer\1.0\x86\bin\libz.dll
+copy C:\gstreamer\1.0\x86\bin\LIBGCC_S_SJLJ-1.DLL
+copy C:\gstreamer\1.0\x86\bin\LIBGSTOPENH264.DLL
+copy C:\gstreamer\1.0\x86\bin\LIBSTDC++-6.DLL
+copy C:\gstreamer\1.0\x86\bin\LIBOPENH264.DLL
+
 copy C:\gstreamer\1.0\x86\lib\gstreamer-1.0\libgstadder.dll
 copy C:\gstreamer\1.0\x86\lib\gstreamer-1.0\libgstaudioconvert.dll
 copy C:\gstreamer\1.0\x86\lib\gstreamer-1.0\libgstaudiorate.dll
