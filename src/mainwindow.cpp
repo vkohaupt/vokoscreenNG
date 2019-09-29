@@ -1675,6 +1675,8 @@ void QvkMainWindow::slot_Start()
         VK_PipelineList << "audioconvert";
         VK_PipelineList << "audiorate";
         VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
+        VK_PipelineList << "queue";
+        VK_PipelineList << "mux.";
     }
 
     VK_PipelineList << VK_getMuxer();
