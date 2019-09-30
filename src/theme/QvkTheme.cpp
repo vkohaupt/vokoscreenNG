@@ -48,7 +48,6 @@ void QvkTheme::slot_setTheme()
 {
     if ( QIcon::themeName() != oldThemeName )
     {
-        qDebug() << "*****************************************slot_setTheme";
         oldThemeName = QIcon::themeName();
         makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreencast ), VK_getIcon( "video-display",     ":/pictures/screencast/monitor.png" ) );
         makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ),     VK_getIcon( "multimedia-player", ":/pictures/player/player.png" ) );
