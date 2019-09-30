@@ -67,9 +67,6 @@ public:
     QvkHelp *vkHelp;
     QvkSystray *vkSystray;
 
-    void makeAndSetValidIcon( QTabWidget *widget, int index, QIcon icon );
-    void makeAndSetValidIconForSideBar( int index, QIcon icon );
-
 
 private:
     QvkSpezialSlider *sliderScreencastCountDown;
