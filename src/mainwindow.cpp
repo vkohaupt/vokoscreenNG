@@ -1007,7 +1007,7 @@ QString QvkMainWindow::VK_getVideoScale()
 {
     QString value = ui->comboBoxScale->currentText();
     QStringList valuList = value.split( " " );
-    value = "videoscale ! video/x-raw,width=" + valuList.at(0) + ",height=" + valuList.at(2);
+    value = "videoscale ! capsfilter caps=video/x-raw,width=" + valuList.at(0) + ",height=" + valuList.at(2);
     return value;
 }
 
@@ -1611,7 +1611,12 @@ QStringList QvkMainWindow::VK_getSelectedAudioDevice()
 QString QvkMainWindow::Pipeline_structured_output( QString pipeline )
 {
     QString string;
+#ifdef Q_OS_LINUX
     string = pipeline.prepend( "gst-launch-1.0 -e \\\n    " );
+#endif
+#ifdef Q_OS_WIN
+    string = pipeline.prepend( "gst-launch-1.0.exe -e \\\n    " );
+#endif
     string = pipeline.replace( "mux.", "mux. \\\n   " );
     string = pipeline.replace( "mix.", "mix. \\\n   " );
     string = pipeline.replace( "!", "\\\n        !" );
