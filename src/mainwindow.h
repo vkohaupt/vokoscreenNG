@@ -137,6 +137,8 @@ private:
     bool isAudioDeviceSelected();
     QvkVersion version;
 
+    QString Pipeline_structured_output( QString pipeline );
+
 
 private slots:
     void slot_preStart();

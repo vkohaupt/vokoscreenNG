@@ -3,11 +3,6 @@ Windows:
 --Im vierten Tab wird kein Icon angezeigt.
 
 
-Pipeline:
---Strukturiert ausgeben
-  https://www.linuxtv.org/wiki/index.php/GStreamer#Add_buffers
-
-
 Hilfe:
 --Vervollständigen
 --https

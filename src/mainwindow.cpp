@@ -1608,6 +1608,18 @@ QStringList QvkMainWindow::VK_getSelectedAudioDevice()
 }
 
 
+QString QvkMainWindow::Pipeline_structured_output( QString pipeline )
+{
+    QString string;
+    string = pipeline.prepend( "gst-launch-1.0 -e \\\n    " );
+    string = pipeline.replace( "mux.", "mux. \\\n   " );
+    string = pipeline.replace( "mix.", "mix. \\\n   " );
+    string = pipeline.replace( "!", "\\\n        !" );
+    string.append( "\n" );
+    return string;
+}
+
+
 void QvkMainWindow::slot_Start()
 {
     if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  )
@@ -1692,6 +1704,8 @@ void QvkMainWindow::slot_Start()
     VK_Pipeline = VK_Pipeline.replace( "mux. !", "mux." );
 
     qDebug().noquote() << global::nameOutput << "Start record with:" << VK_Pipeline;
+    qDebug( " " );
+    qDebug().noquote() << Pipeline_structured_output( VK_Pipeline );
 
     QByteArray byteArray = VK_Pipeline.toUtf8();
     const gchar *line = byteArray.constData();
