@@ -799,20 +799,16 @@ void QvkMainWindow::resizeEvent( QResizeEvent *event )
 
 void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
 {
+    QPixmap pixmap;
 #ifdef Q_OS_LINUX
-    QIcon icon = vkTheme->VK_getIcon( "pillepalle", ":/pictures/linux.png" );
+    pixmap.load( ":/pictures/linux.png" );
 #endif
 #ifdef Q_OS_WIN
-    QIcon icon = vkTheme->VK_getIcon( "pillepalle", ":/pictures/windows.png" );
+    pixmap.load( ":/pictures/windows.png" );
 #endif
-
-    int a = 256;
-    QSize size = QSize( a, a );
-    QPixmap iconPixmap( icon.pixmap( size ) );
-
-    iconPixmap = iconPixmap.scaled( QSize( 48, 48 ), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+    pixmap = pixmap.scaled( QSize( 48, 48 ), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
     QLabel *label = new QLabel();
-    label->setPixmap( iconPixmap );
+    label->setPixmap( pixmap );
     label->setEnabled( false );
     tabWidget->setCornerWidget( label, Qt::TopRightCorner);
 }
