@@ -1,8 +1,4 @@
 
-Windows:
---Im vierten Tab wird kein Icon angezeigt.
-
-
 Hilfe:
 --Vervollständigen
 --https
