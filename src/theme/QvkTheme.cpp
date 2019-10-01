@@ -25,7 +25,6 @@
 
 #include <QDebug>
 #include <QTimer>
-#include <QPainter>
 
 QvkTheme::QvkTheme( Ui_formMainWindow *ui_formMainWindow )
 {

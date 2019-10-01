@@ -799,12 +799,11 @@ void QvkMainWindow::resizeEvent( QResizeEvent *event )
 
 void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
 {
-    QPixmap pixmap;
 #ifdef Q_OS_LINUX
-    pixmap.load( ":/pictures/linux.png" );
+    QPixmap pixmap( ":/pictures/linux.png" );
 #endif
 #ifdef Q_OS_WIN
-    pixmap.load( ":/pictures/windows.png" );
+    QPixmap pixmap( ":/pictures/windows.png" );
 #endif
     pixmap = pixmap.scaled( QSize( 48, 48 ), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
     QLabel *label = new QLabel();
