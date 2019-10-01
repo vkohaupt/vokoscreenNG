@@ -65,15 +65,6 @@ int main(int argc, char *argv[])
         }
     }
 
-/*
- * Under Windows the icon theme breeze is used https://github.com/KDE/breeze-icons.
- * The subfolder icons will be renamed to breeze and copied to the windows distribution folder.
- * That's all to display the icons.
-*/
-#ifdef Q_OS_WIN
-    QIcon::setThemeName( "breeze" );
-#endif
-
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 

@@ -33,7 +33,6 @@ public:
     virtual ~QvkTheme();
     QIcon VK_getIcon( QString iconName, QString iconNameFallback );
     void makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIcon icon );
-    void vk_setCornerWidget( QTabWidget *tabWidget );
 
 
 public slots:
