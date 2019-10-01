@@ -62,10 +62,3 @@ copy C:\gstreamer\1.0\x86\lib\gstreamer-1.0\libgstvorbis.dll
 copy C:\gstreamer\1.0\x86\lib\gstreamer-1.0\libgstvpx.dll
 copy C:\gstreamer\1.0\x86\lib\gstreamer-1.0\libgstwinscreencap.dll
 copy C:\gstreamer\1.0\x86\lib\gstreamer-1.0\libgstx264.dll
-
-set curentdir=%CD%
-git clone https://github.com/KDE/breeze-icons
-rmdir /s /Q icons
-timeout 10
-mkdir icons
-xcopy %curentdir%\breeze-icons\icons %curentdir%\icons\ /e
