@@ -1,4 +1,8 @@
 
+Timer:
+--Stop recording after in Verbindung mit Pause funktioniert nicht korrekt.
+
+
 Hilfe:
 --Vervollständigen
 --https
