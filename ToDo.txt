@@ -1,7 +1,7 @@
 
 Timer:
 --Stop recording after in Verbindung mit Pause funktioniert nicht korrekt.
-
+--AM/PM
 
 Hilfe:
 --Vervollständigen
