@@ -3,10 +3,6 @@ Timer:
 --Stop recording after in Verbindung mit Pause funktioniert nicht korrekt.
 --AM/PM
 
-Hilfe:
---Vervollständigen
---https
-
 
 Windows:
 --Für den User wird eine sehr einfache Update Funktion benötigt.
@@ -58,3 +54,7 @@ Tumbelweed Kamera:
 
 Spezialslider:
 --Mauscursor nicht stimmig mit Handle.
+
+Hilfe:
+--https
+
