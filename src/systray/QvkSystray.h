@@ -37,6 +37,7 @@ public:
     QvkSystray( Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkSystray();
     void init();
+    QAction *startAction;
 
     
 public slots:
@@ -46,7 +47,6 @@ public slots:
 private:
     Ui_formMainWindow *ui;
     QMenu *menu;
-    QAction *startAction;
     QAction *stopAction;
     QAction *pauseAction;
     QAction *continueAction;

@@ -43,11 +43,12 @@ public slots:
   
 private:
     Ui_formMainWindow *ui;
+    QGlobalShortcut *shortcutStart;
 
 
 private slots:
     void slot_pauseContinue();
-
+    void slot_setOrUnsetShortcut( bool value );
     
 protected:
   

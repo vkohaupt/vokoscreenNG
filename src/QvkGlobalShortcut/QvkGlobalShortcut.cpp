@@ -22,6 +22,8 @@
 
 #include "QvkGlobalShortcut.h"
 
+#include <QDebug>
+
 QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow )
 {
     Q_UNUSED(mainWindow);
@@ -35,7 +37,7 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( shortcutMagnifier, SIGNAL( activated() ), ui->checkBoxMagnifier, SLOT( click() ) );
     shortcutMagnifier->setShortcut( QKeySequence( "Ctrl+Shift+F9" ) );
 
-    QGlobalShortcut *shortcutStart = new QGlobalShortcut( this );
+    shortcutStart = new QGlobalShortcut( this );
     connect( shortcutStart, SIGNAL( activated() ), ui->pushButtonStart, SLOT( click() ) );
     shortcutStart->setShortcut( QKeySequence( "Ctrl+Shift+F10" ) );
 
@@ -46,6 +48,9 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     QGlobalShortcut *shortcutPauseContinue = new QGlobalShortcut( this );
     connect( shortcutPauseContinue, SIGNAL( activated() ), this, SLOT( slot_pauseContinue() ) );
     shortcutPauseContinue->setShortcut( QKeySequence( "Ctrl+Shift+F12" ) );
+
+    connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ), this, SLOT( slot_setOrUnsetShortcut( bool ) ) );
+
 }
 
 
@@ -64,4 +69,18 @@ void QvkGlobalShortcut::slot_pauseContinue()
     {
         ui->pushButtonContinue->click();
     }
+}
+
+void QvkGlobalShortcut::slot_setOrUnsetShortcut( bool value )
+{
+   if ( value == true )
+   {
+       shortcutStart->setEnabled( false );
+   }
+   else
+   {
+       shortcutStart->setEnabled( true );
+   }
+
+
 }
