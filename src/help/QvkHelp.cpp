@@ -67,7 +67,16 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : u
                    << "help";
 
     vk_helpPath = helpStringList.join( "/" ).append( "/");
-    QString language = "en";
+
+    QString language;
+    if ( QLocale::system().name() == "de_DE"  )
+    {
+        language = "de_DE";
+    }
+    else
+    {
+       language = "en";
+    }
     vk_helpPath = vk_helpPath + language + "/";
 
     vkDownloadHTML = new QvkDownloader( temporaryDirLocal.path() );
