@@ -21,6 +21,7 @@
  */
 
 #include "QvkHelp.h"
+#include "QvkLocale.h"
 #include "global.h"
 
 #include <QMessageBox>
@@ -68,16 +69,8 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : u
 
     vk_helpPath = helpStringList.join( "/" ).append( "/");
 
-    QString language;
-    if ( QLocale::system().name() == "de_DE"  )
-    {
-        language = "de_DE";
-    }
-    else
-    {
-       language = "en";
-    }
-    vk_helpPath = vk_helpPath + language + "/";
+    QvkLocale *vkLocale = new QvkLocale( mainWindow );
+    connect( vkLocale, SIGNAL( signal_locale( QStringList) ), this, SLOT( slot_parse_locale( QStringList ) ) );
 
     vkDownloadHTML = new QvkDownloader( temporaryDirLocal.path() );
     vkDownloadFiles = new QvkDownloader( temporaryDirLocal.path() );
@@ -97,6 +90,21 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : u
 
 QvkHelp::~QvkHelp()
 {
+}
+
+
+void QvkHelp::slot_parse_locale( QStringList list )
+{
+    QString language;
+    if ( list.contains( QLocale::system().name() ) )
+    {
+        language = QLocale::system().name();
+    }
+    else
+    {
+        language = "en";
+    }
+    vk_helpPath = vk_helpPath + language + "/";
 }
 
 

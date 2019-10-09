@@ -75,6 +75,8 @@ private slots:
     void slot_cleanUp();
     void slot_NetworkAccessibility( QNetworkAccessManager::NetworkAccessibility accessible );
 
+    void slot_parse_locale( QStringList list );
+
 
 protected:
     bool eventFilter(QObject *object, QEvent *ev) override;
