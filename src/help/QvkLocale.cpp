@@ -26,7 +26,7 @@
 #include <QMessageBox>
 
 
-QvkLocale::QvkLocale( QMainWindow *mainWindow )
+QvkLocale::QvkLocale()
 {
     vkDownload = new QvkDownloader( temporaryDirLocal.path() );
     connect( vkDownload, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_parse( QString ) ) );

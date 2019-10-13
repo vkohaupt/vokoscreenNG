@@ -35,7 +35,7 @@ class QvkLocale: public QObject
     Q_OBJECT
 
 public:
-    QvkLocale(QMainWindow *mainWindow);
+    QvkLocale();
     virtual ~QvkLocale() override;
 
 

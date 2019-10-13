@@ -69,7 +69,7 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : u
 
     vk_helpPath = helpStringList.join( "/" ).append( "/");
 
-    QvkLocale *vkLocale = new QvkLocale( mainWindow );
+    QvkLocale *vkLocale = new QvkLocale();
     connect( vkLocale, SIGNAL( signal_locale( QStringList) ), this, SLOT( slot_parse_locale( QStringList ) ) );
 
     vkDownloadHTML = new QvkDownloader( temporaryDirLocal.path() );
