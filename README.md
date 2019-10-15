@@ -48,10 +48,12 @@ The License-header find you here. https://github.com/vkohaupt/vokoscreenNG/blob/
   - Audio: flac
 * gstreamer-plugins-bad
   - Video: camera
+* gstreamer-plugins-bad-orig-addon (openSUSE Packman)
+  - Video: openh264
 * gstreamer-plugins-ugly
   - Video: x264
   - Audio: mp3lame
-* gstreamer-plugins-ugly-orig-addon (opensuse packmann)
+* gstreamer-plugins-ugly-orig-addon (openSUSE Packmann)
   - Video: x264
 * gstreamer-plugins-libav
   - Player: x264
