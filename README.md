@@ -53,7 +53,7 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 * gstreamer-plugins-ugly
   - Video: x264
   - Audio: mp3lame
-* gstreamer-plugins-ugly-orig-addon (openSUSE Packmann)
+* gstreamer-plugins-ugly-orig-addon (openSUSE Packman)
   - Video: x264
 * gstreamer-plugins-libav
   - Player: x264
