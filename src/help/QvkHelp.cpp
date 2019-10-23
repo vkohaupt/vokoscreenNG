@@ -136,6 +136,7 @@ bool QvkHelp::eventFilter(QObject *object, QEvent *event)
     if ( ( event->type() == QEvent::MouseButtonRelease ) and ( toolButton->isEnabled() == true ) )
     {
        loadHTML( vk_helpPath + object->objectName().section( "_", 1, 1 ) + "/" + object->objectName() + ".html" );
+       uiHelp->labelURL->setText( vk_helpPath + object->objectName().section( "_", 1, 1 ) + "/" + object->objectName() + ".html" );
        return false;
     }
     else

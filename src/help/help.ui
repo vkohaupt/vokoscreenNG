@@ -20,6 +20,16 @@
    <item>
     <widget class="QTextBrowser" name="textBrowser"/>
    </item>
+   <item>
+    <widget class="QLabel" name="labelURL">
+     <property name="toolTip">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string notr="true">TextLabel</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>
