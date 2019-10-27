@@ -1,0 +1,19 @@
+
+
+http://jgrulich.cz/2018/03/06/screen-sharing-in-plasma-wayland-session/
+http://jgrulich.cz/category/kde/
+
+
+Es wird benötigt:
+--xdg-desktop-portal
+--xdg-desktop-portal-kde
+--pipewire
+
+
+Entwicklungsumgebung:
+--opensuse Tumbelweed, Leap scheidet aus da zu alt.
+
+
+Wie Anfangen?
+Siehe http://jgrulich.cz/2018/03/06/screen-sharing-in-plasma-wayland-session/
+Wenn ich es richtig verstanden habe wird der angezeigte Dialog mittels DBus über xdg-desktop-portal aufgerufen.
