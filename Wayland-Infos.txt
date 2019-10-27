@@ -17,3 +17,10 @@ Entwicklungsumgebung:
 Wie Anfangen?
 Siehe http://jgrulich.cz/2018/03/06/screen-sharing-in-plasma-wayland-session/
 Wenn ich es richtig verstanden habe wird der angezeigte Dialog mittels DBus über xdg-desktop-portal aufgerufen.
+
+
+GStreamer, was hat es mit pipewiresrc auf sich?
+vk@cvolker:~> gst-inspect-1.0 | grep pipewire
+pipewire:  pipewiredeviceprovider (GstDeviceProviderFactory)
+pipewire:  pipewiresink: PipeWire sink
+pipewire:  pipewiresrc: PipeWire source
