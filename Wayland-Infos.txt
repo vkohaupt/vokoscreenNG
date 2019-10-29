@@ -19,6 +19,10 @@ Siehe http://jgrulich.cz/2018/03/06/screen-sharing-in-plasma-wayland-session/
 Wenn ich es richtig verstanden habe wird der angezeigte Dialog mittels DBus über xdg-desktop-portal aufgerufen.
 
 
+xgd-portal-test --> Dateien downloaden, testen und lernen.
+https://cgit.kde.org/xdg-portal-test-kde.git/tree/src
+
+
 GStreamer, was hat es mit pipewiresrc auf sich?
 vk@cvolker:~> gst-inspect-1.0 | grep pipewire
 pipewire:  pipewiredeviceprovider (GstDeviceProviderFactory)
