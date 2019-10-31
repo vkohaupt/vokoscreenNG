@@ -31,9 +31,14 @@ pipewire:  pipewiredeviceprovider (GstDeviceProviderFactory)
 pipewire:  pipewiresink: PipeWire sink
 pipewire:  pipewiresrc: PipeWire source
 
-
 Webcam:
 1. echo $XDG_SESSION_TYPE                   --> Kontrolle ob Wayland läuft
-2. systemctl --user start pipewire          --> pipwire starten
+2. systemctl --user start pipewire          --> pipewire starten
 3. systemctl --user status pipewire.service --> Status von pipewire anzeigen
-4. gst-launch-1.0 pipewiresrc path=5 ! videoconvert ! ximagesink
+4. gst-launch-1.0 pipewiresrc path=5 ! videoconvert ! ximagesink --> webcam starten
+
+Erkenntnis:
+Mit pipewiresrc kann man ein und die selbe Webcam mehrmals am Bildschirm anzeigen.
+
+Frage:
+Wie ermittle ich den Wert von path?
