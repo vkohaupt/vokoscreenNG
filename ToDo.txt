@@ -20,6 +20,10 @@ Windows:
 
 Bugs, Features und Hinweise aber nicht wirklich wichtig
 =======================================================
+Übersetzung:
+ui->radioButtonScreencastFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
+ui->radioButtonScreencastWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
+
 Mediainfo:
 --https://mediaarea.net/en/MediaInfo zum Beispiel zum auslesen der FPS und weiteren Infos.
 
