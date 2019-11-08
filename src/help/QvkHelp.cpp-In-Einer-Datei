@@ -135,7 +135,11 @@ bool QvkHelp::eventFilter(QObject *object, QEvent *event)
 
     if ( ( event->type() == QEvent::MouseButtonRelease ) and ( toolButton->isEnabled() == true ) )
     {
-       loadHTML( vk_helpPath + object->objectName().section( "_", 1, 1 ) + "/" + object->objectName() + ".html" );
+//       loadHTML( vk_helpPath + object->objectName().section( "_", 1, 1 ) + "/" + object->objectName() + ".html" );
+       loadHTML( vk_helpPath + object->objectName().section( "_", 1, 1 ) + "/" + "vokoscreen-version-3-help.xhtml" ); //---------------------- new
+       anchor = object->objectName(); // ----------------- new
+
+
        uiHelp->labelURL->setText( vk_helpPath + object->objectName().section( "_", 1, 1 ) + "/" + object->objectName() + ".html" );
        return false;
     }
@@ -267,7 +271,7 @@ void QvkHelp::slot_showHelp( QString tempPathFileName )
     QString tmpPath = fileInfo.absolutePath();
     dir.setCurrent( tmpPath );
 
-    QString htmlFile = tmpPath + "/" + remoteBasename + ".html";
+    QString htmlFile = tmpPath + "/" + remoteBasename + ".xhtml";
     QFile file( htmlFile );
     if( !file.open( QIODevice::ReadOnly ) )
     {
@@ -275,7 +279,36 @@ void QvkHelp::slot_showHelp( QString tempPathFileName )
     }
 
     QTextStream textStream( &file );
-    QString value = textStream.readAll();
+    QString value;
+    while ( !textStream.atEnd() )
+    {
+        QString line = textStream.readLine();
+        value.append( line );
+        if ( line.contains( "<body>" ) )
+        {
+            break;
+        }
+    }
+
+    while ( !textStream.atEnd() )
+    {
+        QString line = textStream.readLine();
+        if ( line.contains( anchor ) )
+        {
+            value.append( line );
+            break;
+        }
+    }
+
+    while ( !textStream.atEnd() )
+    {
+        QString line = textStream.readLine();
+        value.append( line );
+        if ( line.contains( "<!-- -->" ) )
+        {
+            break;
+        }
+    }
 
     // Antialiasing for Font
     QFont font = uiHelp->textBrowser->font();
@@ -294,6 +327,6 @@ void QvkHelp::slot_showHelp( QString tempPathFileName )
     for ( int i = 0; i < localFiles.count(); i++  )
     {
         QFile file( localFiles.at( i ) );
-        file.remove();
+        //file.remove();
     }
 }

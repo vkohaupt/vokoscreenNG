@@ -67,6 +67,8 @@ private:
     QTemporaryDir temporaryDirLocal;
     QNetworkAccessManager networkAccessManager;
 
+    QString anchor;
+
 
 private slots:
     void slot_parseHTML( QString tempPathFileName );
