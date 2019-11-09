@@ -124,7 +124,7 @@ void QvkCameraWindow::keyPressEvent( QKeyEvent *event )
         showNormal();
     }
 
-    if ( event->key() == Qt::Key_F11 )
+    if ( ( event->key() == Qt::Key_F11 ) or ( event->key() == Qt::Key_F ) )
     {
         if ( isFullScreen() == true )
         {
