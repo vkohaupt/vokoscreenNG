@@ -1,8 +1,6 @@
 
 Hilfe:
-Testen ob es besser ist alles in eine HTML zu packen statt in viele HTML Dateien.
-Hintergrund: Auf Transifex wird es durch diese vielen HTML Dateien und die Handhabung beim späteren ausrollen zu unübersichtlich.
-
+--QvkHelp::slot_showHelp im Fehlerfall Ausgabe auch auf Konsole.
 
 Timer:
 --Stop recording after in Verbindung mit Pause funktioniert nicht korrekt.
