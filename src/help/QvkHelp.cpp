@@ -222,7 +222,8 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
     QFile file( tempPathFileName );
     if( !file.open( QIODevice::ReadOnly ) )
     {
-        QMessageBox::information( nullptr, "Help error", "No network connection\nQvkHelp::slot_parseHTML\n" + tempPathFileName + "\n" + file.errorString() );
+        qDebug().noquote() << global::nameOutput << "QvkHelp::slot_parseHTML" << tempPathFileName  << file.errorString();
+        QMessageBox::information( nullptr, "Help error", "QvkHelp::slot_parseHTML\n" + tempPathFileName + "\n" + file.errorString() );
         return;
     }
 
