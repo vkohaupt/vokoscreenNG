@@ -460,7 +460,7 @@
                       <x>0</x>
                       <y>0</y>
                       <width>535</width>
-                      <height>193</height>
+                      <height>191</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -562,6 +562,13 @@
                  </size>
                 </property>
                </spacer>
+              </item>
+              <item>
+               <widget class="QToolButton" name="help_screencast_audiocodec">
+                <property name="text">
+                 <string notr="true">Help</string>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
