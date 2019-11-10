@@ -223,7 +223,7 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
     if( !file.open( QIODevice::ReadOnly ) )
     {
         qDebug().noquote() << global::nameOutput << "QvkHelp::slot_parseHTML" << tempPathFileName  << file.errorString();
-        QMessageBox::information( nullptr, "Help error", "QvkHelp::slot_parseHTML\n" + tempPathFileName + "\n" + file.errorString() );
+        QMessageBox::information( nullptr, global::name + " " + global::version, "QvkHelp::slot_parseHTML\n" + tempPathFileName + "\n" + file.errorString() );
         return;
     }
 
