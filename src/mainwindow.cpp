@@ -1016,7 +1016,6 @@ void QvkMainWindow::VK_gst_Elements_available()
 #ifdef Q_OS_LINUX
     list << "ximagesrc";
     list << "pulsesrc";
-    list << "vaapipostproc";
 #endif
     list << "queue";
     list << "capsfilter";
@@ -1388,14 +1387,7 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
 
     if ( encoder == "vaapih264enc" )
     {
-        if ( ui->checkBoxVaapiPostProc->isChecked() == true )
-        {
-            value = "vaapipostproc ! vaapih264enc";
-        }
-        else
-        {
-            value = "vaapih264enc";
-        }
+        value = "vaapih264enc";
     }
 
     if ( encoder == "vaapimpeg2enc" )
