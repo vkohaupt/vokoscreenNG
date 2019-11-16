@@ -1,6 +1,7 @@
 
-Hilfe:
---QvkHelp::slot_showHelp im Fehlerfall Ausgabe auch auf Konsole.
+Systray:
+--Ein Dummy-Systray für Desktops wie z.b. Gnome die keinen Eintrag zulassen.
+
 
 Timer:
 --Stop recording after in Verbindung mit Pause funktioniert nicht korrekt.
