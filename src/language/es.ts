@@ -1,46 +1,47 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="hu" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="es" version="2.1">
 <context>
     <name>QvkAudioPulse</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Válasszon ki egy vagy több eszközt</translation>
+        <translation>Seleccione uno o más dispositivos</translation>
     </message>
 </context>
 <context>
     <name>QvkAudioWindows</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Válasszon ki egy vagy több eszközt</translation>
+        <translation>Seleccione uno o más dispositivos</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Váltás ablakra</translation>
+        <translation>Cambiar a ventana</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Váltás teljes képernyőre</translation>
+        <translation>Ir a pantalla completa</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Figyelmeztetés</translation>
+        <translation>Atención</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>A rögzítés nem indult el, nincs elég szabad lemezterület.</translation>
+        <translation>La grabación no empieza por insuficiencia de espacio en disco</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>A szabad lemezterület korlátja elérve.</translation>
+        <translation>No queda espacio libre en disco</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Szabad lemezterület korlátja</translation>
+        <translation>Límite de espacio libre en disco
+ </translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -48,369 +49,370 @@
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>A rögzítés leállt, nincs elég szabad lemezterület.</translation>
+        <translation>Paró la grabación, no queda espacio en disco</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Teljes képernyő</translation>
+        <translation>Pantalla completa</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Ablak</translation>
+        <translation>Ventana</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Nem található fájlkezelő.</translation>
+        <translation>No se encontró ningún gestor de archivos.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Telepítsen egy fájlkezelőt.</translation>
+        <translation>Instale un gestor de archivos.</translation>
     </message>
     <message>
         <source>Desktop session is a Wayland session</source>
-        <translation>Az asztali munkamenet egy Wayland munkamenet</translation>
+        <translation>La sesión de escritorio es Wayland</translation>
     </message>
     <message>
         <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Az időhöz a Wayland nem támogatott. A képernyőrögzítés fekete képernyőt jelenít meg. Jelentkezzen ki, és indítson egy X11 asztali munkamenetet.</translation>
+        <translation>En este momento no se admite Wayland. Las grabaciones no mostrarán más que una pantalla negra. Finalice la sesión y acceda a una sesión de X11.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Forráskód</translation>
+        <translation>Código fuente</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Honlap</translation>
+        <translation>Sitio web</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Fordítások</translation>
+        <translation>Traducciones</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Adományozás</translation>
+        <translation>Donar</translation>
     </message>
     <message>
         <source>Wayland desktop session detected</source>
-        <translation>Wayland asztali munkamenet észlelhető</translation>
+        <translation>Sesión de escritorio Wayland detectada</translation>
     </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
-        <translation>Fájl megnyitása</translation>
+        <translation>Abrir archivo</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Terület</translation>
+        <translation>Área</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Indítás</translation>
+        <translation>Iniciar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Leállítás</translation>
+        <translation>Detener</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Szüneteltetés</translation>
+        <translation>Pausar</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Folytatás</translation>
+        <translation>Continuar</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Kilépés</translation>
+        <translation>Salir</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Párbeszédablak</translation>
+        <translation>Cuadro de diálogo</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Vízszintes tükrözés</translation>
+        <translation>Voltear horizontalmente</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Függőleges tükrözés</translation>
+        <translation>Voltear verticalmente</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Megfordítás</translation>
+        <translation>Invertir</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Szürke</translation>
+        <translation>Gris</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Fekete-fehér</translation>
+        <translation>Blanco y negro</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Ablakkeret eltávolítása</translation>
+        <translation>Quitar marco de ventana</translation>
     </message>
     <message>
         <source>160x120</source>
-        <translation>160x120</translation>
+        <translation>160 × 120</translation>
     </message>
     <message>
         <source>320x240</source>
-        <translation>320x240</translation>
+        <translation>320 × 240</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Kamera beállításai</translation>
+        <translation>Configuración de cámara</translation>
     </message>
     <message>
         <source>640x480</source>
-        <translation>640x480</translation>
+        <translation>640 × 480</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Terület</translation>
+        <translation>Área</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Visszaállítás</translation>
+        <translation>Restablecer</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Nagyítás</translation>
+        <translation>Ampliación</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Visszaszámlálás</translation>
+        <translation>Cuenta regresiva</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videóméret:</translation>
+        <translation>Tamaño de vídeo:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Szabad lemezterület:</translation>
+        <translation>Espacio en disco disponible:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Információ</translation>
+        <translation>Información</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Rögzítés ideje:</translation>
+        <translation>Tiempo de grabación:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Hang</translation>
+        <translation>Sonido</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Képkockák</translation>
+        <translation>Fotogramas</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videokodek</translation>
+        <translation>Códec de vídeo</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formátum</translation>
+        <translation>Formato</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Hangkodek</translation>
+        <translation>Códec de audio</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>Minőség</translation>
+        <translation>Calidad</translation>
     </message>
     <message>
         <source>Scale</source>
-        <translation>Méretezés</translation>
+        <translation>Escala</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Ne rögzítse az egérmutatót</translation>
+        <translation>No grabar el puntero del ratón</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Óra</translation>
+        <translation>Hora</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Perc</translation>
+        <translation>Minuto</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Az időzítő indítása</translation>
+        <translation>Iniciar temporizador</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Rögzítés leállítása ez után:</translation>
+        <translation>Dejar de grabar tras</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Óra</translation>
+        <translation>Horas</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Perc</translation>
+        <translation>Minutos</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Másodperc</translation>
+        <translation>Segundos</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videó útvonala</translation>
+        <translation>Ruta del vídeo</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Szabad lemezterület korlátja</translation>
+        <translation>Límite de espacio libre en disco
+ </translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Megjelenítés a tálcán</translation>
+        <translation>Mostrar en bandeja del sistema</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Másodperc várakozás a rögzítés előtt</translation>
+        <translation>Segunda espera antes de grabar</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Frissítések keresése</translation>
+        <translation>Buscar actualizaciones</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Súgó</translation>
+        <translation>Ayuda</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Videó</translation>
+        <translation>Vídeos</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Elérhető</translation>
+        <translation>Disponible</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Nem érhető el</translation>
+        <translation>No disponible</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Indítás</translation>
+        <translation>Iniciar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Leállítás</translation>
+        <translation>Detener</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Szüneteltetés</translation>
+        <translation>Pausar</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Folytatás</translation>
+        <translation>Continuar</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Lejátszás</translation>
+        <translation>Reproducir</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Mappa</translation>
+        <translation>Carpeta</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>Cámara</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Megfordítás</translation>
+        <translation>Invertir</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Szürke</translation>
+        <translation>Gris</translation>
     </message>
     <message>
         <source>Send Report</source>
-        <translation>Jelentés küldése</translation>
+        <translation>Enviar informe</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
-        <translation>CTRL+SHIFT+F10</translation>
+        <translation>Ctrl + Mayús + F10</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F11</source>
-        <translation>CTRL+SHIFT+F11</translation>
+        <translation>Ctrl + Mayús + F11</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F12</source>
-        <translation>CTRL+SHIFT+F12</translation>
+        <translation>Ctrl + Mayús + F12</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Utolsó rögzítés lejátszása</translation>
+        <translation>Reproducir última grabación</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Mappa megnyitása</translation>
+        <translation>Abrir carpeta</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation>CTRL+SHIFT+F8</translation>
+        <translation>Ctrl + Mayús + F8</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimalizálás a rögzítés indulásakor</translation>
+        <translation>Minimizar al empezar grabación</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Indítás minimalizálva</translation>
+        <translation>Empezar aplicación minimizada</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Vízszintes tükrözés</translation>
+        <translation>Voltear horizontalmente</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Függőleges tükrözés</translation>
+        <translation>Voltear verticalmente</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Fekete-fehér</translation>
+        <translation>Blanco y negro</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Ablakkeret eltávolítása</translation>
+        <translation>Quitar marco de ventana</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Adományozás</translation>
+        <translation>Donar</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Összes beállítás visszaállítása a következő indításnál</translation>
+        <translation>Restablecer todas las preferencias en el próximo inicio</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Fényképek szerzői joga és engedélye</translation>
+        <translation>Derechos de autor y licencia desde imágenes</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -418,61 +420,61 @@
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Képernyőrögzítés</translation>
+        <translation>Grabación de pantalla</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Lejátszó</translation>
+        <translation>Reproductor</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Napló</translation>
+        <translation>Registro</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Fényképek szerzői joga és engedélye</translation>
+        <translation>Derechos de autor y licencia desde imágenes</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Lejátszás</translation>
+        <translation>Reproducir</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Szüneteltetés</translation>
+        <translation>Pausar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Leállítás</translation>
+        <translation>Detener</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Fájl megnyitása</translation>
+        <translation>Abrir archivo</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Teljes képernyő</translation>
+        <translation>Pantalla completa</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Előző képkocka</translation>
+        <translation>Fotograma anterior</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Következő képkocka</translation>
+        <translation>Fotograma siguiente</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Némítás</translation>
+        <translation>Silenciar</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Menü áthelyezése</translation>
+        <translation>Mover el menú</translation>
     </message>
 </context>
 </TS>

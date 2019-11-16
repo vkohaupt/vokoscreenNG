@@ -71,11 +71,11 @@
     </message>
     <message>
         <source>Desktop session is a Wayland session</source>
-        <translation>A sessão de secretária é uma sessão Wayland</translation>
+        <translation>A sessão de área de trabalho é uma sessão de Wayland</translation>
     </message>
     <message>
         <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Neste momento o Wayland não é suportado. Uma transmissão de ecrã mostra um ecrã a negro. Por favor saia da conta e inicie uma sessão X11 Desktop</translation>
+        <translation>Neste momento o Wayland não é suportado. Uma transmissão mostra um ecrã a negro. Por favor saia da conta e inicie uma sessão de Área de trabalho X11</translation>
     </message>
     <message>
         <source>Sourcecode</source>
@@ -95,7 +95,7 @@
     </message>
     <message>
         <source>Wayland desktop session detected</source>
-        <translation>Detetada sessão de secretária Wayland</translation>
+        <translation>Detetada sessão de área de trabalho Wayland</translation>
     </message>
 </context>
 <context>
@@ -143,11 +143,11 @@
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Espelhar horizontal</translation>
+        <translation>Girar horizontal</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Espelhar vertical</translation>
+        <translation>Girar vertical</translation>
     </message>
     <message>
         <source>Invert</source>
@@ -222,7 +222,7 @@
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>Imagens</translation>
     </message>
     <message>
         <source>Videocodec</source>
@@ -294,7 +294,7 @@
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Procurar atualizações</translation>
+        <translation>Procurar por atualizações</translation>
     </message>
     <message>
         <source>Help</source>
@@ -386,11 +386,11 @@
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Espelhar horizontal</translation>
+        <translation>Girar horizontal</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Espelhar vertical</translation>
+        <translation>Girar vertical</translation>
     </message>
     <message>
         <source>Black-and-white</source>
@@ -418,7 +418,7 @@
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Screencast</translation>
+        <translation>Captura de ecrã em vídeo</translation>
     </message>
     <message>
         <source>Player</source>
@@ -460,19 +460,19 @@
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Fotograma anterior</translation>
+        <translation>Imagem anterior</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Fotograma seguinte</translation>
+        <translation>Imagem seguinte</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Sem som</translation>
+        <translation>Mudo</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Mover menu</translation>
+        <translation>Mover o menu</translation>
     </message>
 </context>
 </TS>

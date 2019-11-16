@@ -294,7 +294,7 @@
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Cerca actualitzacions</translation>
+        <translation>Comprova si hi ha actualitzacions</translation>
     </message>
     <message>
         <source>Help</source>

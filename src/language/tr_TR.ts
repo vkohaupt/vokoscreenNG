@@ -194,7 +194,7 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Büyütme</translation>
+        <translation>Büyüt</translation>
     </message>
     <message>
         <source>Countdown</source>
@@ -290,7 +290,7 @@
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Kayıttan önce az bekleyin</translation>
+        <translation>Kayıttan önce biraz bekle</translation>
     </message>
     <message>
         <source>Look for updates</source>
