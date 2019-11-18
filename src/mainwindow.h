@@ -36,6 +36,7 @@
 #include "QvkLimitDiskFreeSpace.h"
 #include "QvkSpezialSlider.h"
 #include "QvkVersion.h"
+#include "QvkSystrayAlternative.h"
 
 #ifdef Q_OS_LINUX
 #include "QvkAudioPulse.h"
@@ -74,6 +75,7 @@ private:
     QvkSpezialSlider *sliderX264;
     QvkSpezialSlider *sliderOpenh264;
     QvkSpezialSlider *sliderLimitOfFreeDiskSpace;
+    QvkSpezialSlider *sliderShowInSystrayAlternative;
     QvkSpezialSlider *sliderHour;
     QvkSpezialSlider *sliderMinute;
     QvkSpezialSlider *sliderSecondWaitBeforeRecording;

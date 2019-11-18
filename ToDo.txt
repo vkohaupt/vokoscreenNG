@@ -1,6 +1,7 @@
 
-Systray:
---Ein Dummy-Systray für Desktops wie z.b. Gnome die keinen Eintrag zulassen.
+Player:
+--Propotionen stimmen nicht.
+--Beispiel: Aufnahme 1929x1050 skaliert auf 1280x1024 Anzeige im Player ist nicht korrekt.
 
 
 Timer:

@@ -149,3 +149,6 @@ include(version/version.pri)
 
 # loadExtensions
 include(loadExtensions/loadExtensions.pri)
+
+# systrayAlternative
+unix:include(systrayAlternative/systrayAlternative.pri)

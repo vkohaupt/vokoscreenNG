@@ -111,6 +111,14 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderLimitOfFreeDiskSpace->setValue( 250 );
     sliderLimitOfFreeDiskSpace->show();
 
+    sliderShowInSystrayAlternative = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_18->insertWidget( 1, sliderShowInSystrayAlternative );
+    sliderShowInSystrayAlternative->setObjectName( "sliderShowInSystrayAlternative" );
+    sliderShowInSystrayAlternative->setMinimum( 24 );
+    sliderShowInSystrayAlternative->setMaximum( 64 );
+    sliderShowInSystrayAlternative->setValue( 32 );
+    sliderShowInSystrayAlternative->show();
+
     sliderHour = new QvkSpezialSlider( Qt::Horizontal );
     ui->verticalLayout_14->addWidget( sliderHour );
     sliderHour->setObjectName( "sliderHour" );
@@ -407,14 +415,16 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setDisabled( bool ) ) );
 
-    connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ), this, SLOT( slot_setVisibleSystray( bool ) ) );
-    if ( QSystemTrayIcon::isSystemTrayAvailable() == false )
+    QvkSystrayAlternative *vkSystrayAlternative = new QvkSystrayAlternative( this, ui, sliderShowInSystrayAlternative );
+    if ( QSystemTrayIcon::isSystemTrayAvailable() == true )
     {
-        ui->checkBoxShowInSystray->setCheckState( Qt::Unchecked );
-        ui->checkBoxShowInSystray->setEnabled( false );
+        connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ), this, SLOT( slot_setVisibleSystray( bool ) ) );
+        ui->frameShowInSystrayAlternative->hide();
+    } else
+    {
+        connect( ui->checkBoxShowInSystrayAlternative, SIGNAL( clicked( bool ) ), vkSystrayAlternative, SLOT( setVisible( bool ) ) );
+        ui->frameShowInSystray->hide();
     }
-
-//    connect( ui->checkBoxMinimizedWhenRecordingStarts, SIGNAL( clicked( bool ) ),    ui->frameWaitXSecondBeforRecording, SLOT( setEnabled( bool ) ) );
 
     // Tab 5 Available muxer, encoder etc.
     QIcon iconAvailable = style()->standardIcon( QStyle::SP_DialogApplyButton );
@@ -439,6 +449,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( this,      SIGNAL( signal_close( bool ) ), ui->checkBoxCameraOnOff,SLOT( setChecked( bool ) ) );
     connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkLicenses,             SLOT( close() ) );
+    connect( this,      SIGNAL( signal_close() ),       vkSystrayAlternative,   SLOT( close() ) );
 
     VK_Supported_Formats_And_Codecs();
     VK_Check_is_Format_available();
@@ -1836,6 +1847,15 @@ void QvkMainWindow::slot_Play()
 
 void QvkMainWindow::slot_Folder()
 {
+/*
+    QDialog *dialog = new QDialog( this );
+    dialog->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Dialog );
+//    dialog->setAttribute( Qt::WA_TranslucentBackground, true );
+    dialog->setMinimumSize( 100, 100 );
+    dialog->setMaximumSize( 100, 100 );
+    dialog->resize( 100, 100 );
+    dialog->show();
+*/
     if ( QDesktopServices::openUrl( QUrl( ui->lineEditVideoPath->text(), QUrl::TolerantMode ) ) == false )
     {
         QMessageBox msgBox( this );
