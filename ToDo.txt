@@ -1,7 +1,16 @@
 
+SystrayAlternative:
+--Icon für Titel fehlt.
+--Evtl. als QDialog implentieren.
+
+
+Bereich:
+--Icon für Titel fehlt.
+
+
 Player:
---Propotionen stimmen nicht.
---Beispiel: Aufnahme 1929x1050 skaliert auf 1280x1024 Anzeige im Player ist nicht korrekt.
+--Proportionen stimmen nicht.
+  Beispiel: Aufnahme 1929x1050 skaliert auf 1280x1024 Anzeige im Player ist nicht korrekt.
 
 
 Timer:
