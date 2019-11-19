@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1157,6 +1157,16 @@
                   <widget class="QCheckBox" name="checkBoxShowInSystrayAlternative">
                    <property name="text">
                     <string>Show in systray</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QToolButton" name="toolButtonShowInSystrayAlternativeReset">
+                   <property name="toolTip">
+                    <string>Reset</string>
+                   </property>
+                   <property name="text">
+                    <string notr="true">Reset</string>
                    </property>
                   </widget>
                  </item>

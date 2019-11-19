@@ -28,13 +28,14 @@ private:
     QAction *exitAction;
     QSize size;
     QPoint point;
-
+    QvkSpezialSlider *sliderShowInSystrayAlternative;
 
 private slots:
     void slot_setRecordIcon( bool );
     void slot_setSystrayIcon( bool );
     void slot_setPauseIcon( bool );
     void slot_resizeWindow( int );
+    void slot_ShowInSystrayAlternativeReset( bool );
 
 
 protected:

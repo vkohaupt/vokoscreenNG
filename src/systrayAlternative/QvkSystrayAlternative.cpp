@@ -20,19 +20,25 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     dialog->show();
 */
 
-
     ui = ui_mainwindow;
+    sliderShowInSystrayAlternative = gui_sliderShowInSystrayAlternative;
 
-    connect( gui_sliderShowInSystrayAlternative, SIGNAL( valueChanged( int ) ), this, SLOT( slot_resizeWindow( int ) ) );
-    size = QSize( gui_sliderShowInSystrayAlternative->value(), gui_sliderShowInSystrayAlternative->value() );
+    connect( sliderShowInSystrayAlternative, SIGNAL( valueChanged( int ) ), this, SLOT( slot_resizeWindow( int ) ) );
+    connect( ui->toolButtonShowInSystrayAlternativeReset, SIGNAL( clicked( bool ) ), this, SLOT( slot_ShowInSystrayAlternativeReset( bool ) ) );
+    size = QSize( sliderShowInSystrayAlternative->value(), sliderShowInSystrayAlternative->value() );
 
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
     setAttribute( Qt::WA_TranslucentBackground, true );
     setScaledContents( true );
     resize( size );
+
     QPixmap pixmap( ":/pictures/systray/systray.png" );
     pixmap = pixmap.scaled( size , Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
     setPixmap( pixmap );
+
+    setWindowTitle( global::name + " " + global::version );
+    QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
+    setWindowIcon( icon );
 
     QAction *titleAction = new QAction( this );
     titleAction->setIcon( QIcon( ":pictures/systray/systray.png" ) );
@@ -188,4 +194,10 @@ void QvkSystrayAlternative::slot_setPauseIcon( bool )
     QIcon icon = QIcon::fromTheme( "media-playback-pause", style()->standardIcon( QStyle::SP_MediaPause ) );
     QPixmap pixmap( icon.pixmap( size ) );
     setPixmap( pixmap );
+}
+
+void QvkSystrayAlternative::slot_ShowInSystrayAlternativeReset( bool )
+{
+    move( 0, 0 );
+    sliderShowInSystrayAlternative->setValue( 32 );
 }
