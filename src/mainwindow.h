@@ -127,6 +127,7 @@ private:
     QvkTheme *vkTheme;
 
     QvkCameraController *vkCameraController;
+    QvkSystrayAlternative *vkSystrayAlternative;
 
     QvkLimitDiskFreeSpace *vkLimitDiskFreeSpace;
     bool wantRecording = true;

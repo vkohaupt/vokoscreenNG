@@ -415,7 +415,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setDisabled( bool ) ) );
 
-    QvkSystrayAlternative *vkSystrayAlternative = new QvkSystrayAlternative( this, ui, sliderShowInSystrayAlternative );
+    vkSystrayAlternative = new QvkSystrayAlternative( this, ui, sliderShowInSystrayAlternative );
     if ( QSystemTrayIcon::isSystemTrayAvailable() == true )
     {
         connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ), this, SLOT( slot_setVisibleSystray( bool ) ) );
@@ -491,6 +491,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSettings.readAll( ui, this );
     vkSettings.readAreaScreencast( vkRegionChoise );
     vkSettings.readCamera( vkCameraController );
+    vkSettings.readSystrayAlternative( vkSystrayAlternative );
 
     // After reading the settings, we read the arguments and run
     QStringList arguments = QApplication::instance()->arguments();
@@ -519,6 +520,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
                                    vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
                                    vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
     vkSettings.saveCamera( vkCameraController->cameraWindow->geometry().x(), vkCameraController->cameraWindow->geometry().y() );
+    vkSettings.saveSystrayAlternative( vkSystrayAlternative->x(), vkSystrayAlternative->y() );
     emit signal_close();
     emit signal_close( false );
 }

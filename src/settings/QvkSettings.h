@@ -26,6 +26,7 @@
 #include "ui_formMainWindow.h"
 #include "QvkRegionChoise.h"
 #include "QvkCameraController.h"
+#include "QvkSystrayAlternative.h"
 
 #include <QObject>
 #include <QSettings>
@@ -44,6 +45,8 @@ public:
     void readAreaScreencast(QvkRegionChoise *vkRegionChoise);
     void saveCamera( int x, int y );
     void readCamera( QvkCameraController *vkCameraController );
+    void saveSystrayAlternative( int x, int y );
+    void readSystrayAlternative( QvkSystrayAlternative *vkSystrayAlternative );
 
     QString getFileName();
 

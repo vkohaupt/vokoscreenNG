@@ -338,3 +338,19 @@ void QvkSettings::readCamera( QvkCameraController *vkCameraController )
     settings.endGroup();
 }
 
+void QvkSettings::saveSystrayAlternative( int x, int y )
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    settings.beginGroup( "SystrayAlternative" );
+    settings.setValue( "X", x );
+    settings.setValue( "Y", y );
+    settings.endGroup();
+}
+
+void QvkSettings::readSystrayAlternative( QvkSystrayAlternative *vkSystrayAlternative )
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    settings.beginGroup( "SystrayAlternative" );
+    vkSystrayAlternative->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
+    settings.endGroup();
+}
