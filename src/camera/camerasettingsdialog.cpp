@@ -43,7 +43,7 @@ cameraSettingsDialog::cameraSettingsDialog(QWidget *parent) :
 
     ui->tabWidget->setTabIcon( 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/camera/camera.png" ) ) );
     setWindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
-    setWindowTitle( global::name + " " + tr( "Camera settings" ) );
+    setWindowTitle( tr( "Camera settings" ) );
 }
 
 cameraSettingsDialog::~cameraSettingsDialog()

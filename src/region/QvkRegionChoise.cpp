@@ -62,7 +62,7 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
         platform = wayland;
 #endif
 
-    setWindowTitle( QString( global::name ) + QString( " " ) + QString( tr( "Area") ) );
+    setWindowTitle( QString( tr( "Area") ) );
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );

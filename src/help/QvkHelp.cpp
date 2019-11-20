@@ -55,7 +55,7 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : u
                                     SLOT( slot_NetworkAccessibility( QNetworkAccessManager::NetworkAccessibility ) ) );
 
     resize( 800, 600 );
-    setWindowTitle( global::name + " " + global::version + " " + "help" );
+    setWindowTitle( QString( tr( "Help") ) );
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
