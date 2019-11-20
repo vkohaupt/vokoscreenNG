@@ -29,6 +29,7 @@
 #include <QGuiApplication>
 #include <QBitmap>
 #include <QPaintEvent>
+#include <QIcon>
 
 #ifdef Q_OS_LINUX
   #include <QX11Info>
@@ -62,6 +63,10 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
 #endif
 
     setWindowTitle( QString( global::name ) + QString( " " ) + QString( tr( "Area") ) );
+
+    QIcon icon;
+    icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
+    setWindowIcon( icon );
 
     // Hint: Qt::WindowStaysOnTopHint is only for X11 and Windows on WayLand not do it
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );

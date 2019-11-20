@@ -1,13 +1,4 @@
 
-Fensterleiste:
---Der Dialog Lizenz und Camerasettings sind die einzige Dialoge der beim minimieren der GUI nicht minimieren und bei denen kein Eintrag in der Fensterleiste vorgenommen wird.
-  Dies ist das gewünschte verhalten für alle Dialoge. Analysieren warum das bei den anderen Dialogen nicht so ist.
-
-
-Bereich:
---Icon für Titel fehlt.
-
-
 Player:
 --Proportionen stimmen nicht.
   Beispiel: Aufnahme 1929x1050 skaliert auf 1280x1024 Anzeige im Player ist nicht korrekt.

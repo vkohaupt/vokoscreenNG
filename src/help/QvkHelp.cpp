@@ -50,8 +50,6 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : u
     ui = ui_mainwindow;
     uiHelp->setupUi( this );
 
-    setWindowFlags( windowFlags() | Qt::Tool );
-
     slot_NetworkAccessibility( networkAccessManager.networkAccessible() );
     connect( &networkAccessManager, SIGNAL( networkAccessibleChanged( QNetworkAccessManager::NetworkAccessibility ) ),
                                     SLOT( slot_NetworkAccessibility( QNetworkAccessManager::NetworkAccessibility ) ) );

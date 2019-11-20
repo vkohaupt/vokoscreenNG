@@ -24,6 +24,7 @@
 #include <QTimer>
 #include <QGuiApplication>
 #include <QScreen>
+#include <QIcon>
 
 QvkCountdown::QvkCountdown()
 {
@@ -38,6 +39,10 @@ QvkCountdown::QvkCountdown()
     // Die Option Qt::ToolTip wäre eine möglichkeit, gefällt mir aber Optisch nicht da ein Rahmen angezeigt wird.
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
     setAttribute( Qt::WA_TranslucentBackground, true );
+
+    QIcon icon;
+    icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
+    setWindowIcon( icon );
 
     timer = new QTimer( this );
     timer->setTimerType( Qt::PreciseTimer );
