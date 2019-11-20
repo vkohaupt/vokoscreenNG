@@ -1,6 +1,6 @@
 
 Fensterleiste:
---Der Dialog Lizenz ist der einzige Dialog der beim minimieren der GUI nicht minimiert und bei dem kein Eintrag in der Fensterleiste vorgenommen wird.
+--Der Dialog Lizenz und Camerasettings sind die einzige Dialoge der beim minimieren der GUI nicht minimieren und bei denen kein Eintrag in der Fensterleiste vorgenommen wird.
   Dies ist das gewünschte verhalten für alle Dialoge. Analysieren warum das bei den anderen Dialogen nicht so ist.
 
 
