@@ -416,7 +416,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setDisabled( bool ) ) );
 
     vkSystrayAlternative = new QvkSystrayAlternative( this, ui, sliderShowInSystrayAlternative );
-    if ( QSystemTrayIcon::isSystemTrayAvailable() == false )
+    if ( QSystemTrayIcon::isSystemTrayAvailable() == true )
     {
         connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ), this, SLOT( slot_setVisibleSystray( bool ) ) );
         ui->frameShowInSystrayAlternative->hide();
@@ -1846,7 +1846,6 @@ void QvkMainWindow::slot_Play()
     vkPlayer->slot_play();
 }
 
-#include "QvkTestDialog.h"
 void QvkMainWindow::slot_Folder()
 {
     if ( QDesktopServices::openUrl( QUrl( ui->lineEditVideoPath->text(), QUrl::TolerantMode ) ) == false )
