@@ -152,3 +152,6 @@ include(loadExtensions/loadExtensions.pri)
 
 # systrayAlternative
 unix:include(systrayAlternative/systrayAlternative.pri)
+
+#testDialog
+include (testDialog/testDialog.pri)

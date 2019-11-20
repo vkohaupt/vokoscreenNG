@@ -5,21 +5,9 @@
 #include <QAction>
 #include <QMenu>
 #include <QContextMenuEvent>
-#include <QDialog>
 
 QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, QvkSpezialSlider *gui_sliderShowInSystrayAlternative )
 {
-/*
-    // Wenn mit Folder aufgerufen dann ohne Fensterleisteneintrag
-    QDialog *dialog = new QDialog( this );
-    dialog->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Dialog );
-//    dialog->setAttribute( Qt::WA_TranslucentBackground, true );
-    dialog->setMinimumSize( 100, 100 );
-    dialog->setMaximumSize( 100, 100 );
-    dialog->resize( 100, 100 );
-    dialog->show();
-*/
-
     ui = ui_mainwindow;
     sliderShowInSystrayAlternative = gui_sliderShowInSystrayAlternative;
 
@@ -27,7 +15,7 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     connect( ui->toolButtonShowInSystrayAlternativeReset, SIGNAL( clicked( bool ) ), this, SLOT( slot_ShowInSystrayAlternativeReset( bool ) ) );
     size = QSize( sliderShowInSystrayAlternative->value(), sliderShowInSystrayAlternative->value() );
 
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Tool );
     setAttribute( Qt::WA_TranslucentBackground, true );
     setScaledContents( true );
     resize( size );

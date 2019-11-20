@@ -416,7 +416,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setDisabled( bool ) ) );
 
     vkSystrayAlternative = new QvkSystrayAlternative( this, ui, sliderShowInSystrayAlternative );
-    if ( QSystemTrayIcon::isSystemTrayAvailable() == true )
+    if ( QSystemTrayIcon::isSystemTrayAvailable() == false )
     {
         connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ), this, SLOT( slot_setVisibleSystray( bool ) ) );
         ui->frameShowInSystrayAlternative->hide();
@@ -1846,18 +1846,9 @@ void QvkMainWindow::slot_Play()
     vkPlayer->slot_play();
 }
 
-
+#include "QvkTestDialog.h"
 void QvkMainWindow::slot_Folder()
 {
-/*
-    QDialog *dialog = new QDialog( this );
-    dialog->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Dialog );
-//    dialog->setAttribute( Qt::WA_TranslucentBackground, true );
-    dialog->setMinimumSize( 100, 100 );
-    dialog->setMaximumSize( 100, 100 );
-    dialog->resize( 100, 100 );
-    dialog->show();
-*/
     if ( QDesktopServices::openUrl( QUrl( ui->lineEditVideoPath->text(), QUrl::TolerantMode ) ) == false )
     {
         QMessageBox msgBox( this );

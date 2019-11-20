@@ -30,6 +30,7 @@
 QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::license )
 {
     ui->setupUi( this );
+    setWindowFlags( windowFlags() | Qt::Tool );
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );

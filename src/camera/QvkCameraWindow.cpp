@@ -29,7 +29,7 @@ QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, QvkSpezialSlide
 {
     ui_formMainWindow = ui_surface;
 
-    setWindowFlags( Qt::WindowStaysOnTopHint );
+    setWindowFlags( windowFlags() | Qt::WindowStaysOnTopHint | Qt::Tool );
     setStyleSheet( "background-color:black;" );
     setMinimumSize( QSize( 160, 120 ) );
     setAlignment( Qt::AlignHCenter | Qt::AlignVCenter );
