@@ -14,6 +14,13 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraController</name>
+    <message>
+        <source>Camera</source>
+        <translation>Kamera</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
@@ -22,6 +29,20 @@
     <message>
         <source>Switch to Fullscreen</source>
         <translation>Vaihda koko näyttöön</translation>
+    </message>
+</context>
+<context>
+    <name>QvkCountdown</name>
+    <message>
+        <source>Countdown</source>
+        <translation>Lähtölaskenta</translation>
+    </message>
+</context>
+<context>
+    <name>QvkHelp</name>
+    <message>
+        <source>Help</source>
+        <translation>Ohje</translation>
     </message>
 </context>
 <context>
@@ -114,6 +135,29 @@
 </context>
 <context>
     <name>QvkSystray</name>
+    <message>
+        <source>Start</source>
+        <translation>Aloita</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Lopeta</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Tauko</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Jatka</translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation>Poistu</translation>
+    </message>
+</context>
+<context>
+    <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
         <translation>Aloita</translation>

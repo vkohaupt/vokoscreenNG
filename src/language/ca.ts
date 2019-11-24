@@ -14,6 +14,13 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraController</name>
+    <message>
+        <source>Camera</source>
+        <translation>Càmera</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
@@ -22,6 +29,20 @@
     <message>
         <source>Switch to Fullscreen</source>
         <translation>Alterna a pantalla completa</translation>
+    </message>
+</context>
+<context>
+    <name>QvkCountdown</name>
+    <message>
+        <source>Countdown</source>
+        <translation>Compte enrere </translation>
+    </message>
+</context>
+<context>
+    <name>QvkHelp</name>
+    <message>
+        <source>Help</source>
+        <translation>Ajuda</translation>
     </message>
 </context>
 <context>
@@ -114,6 +135,29 @@
 </context>
 <context>
     <name>QvkSystray</name>
+    <message>
+        <source>Start</source>
+        <translation>Inicia</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Atura</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pausa</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Continua</translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation>Surt</translation>
+    </message>
+</context>
+<context>
+    <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
         <translation>Inicia</translation>

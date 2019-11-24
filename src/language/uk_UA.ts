@@ -14,6 +14,13 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraController</name>
+    <message>
+        <source>Camera</source>
+        <translation>Камера</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
@@ -22,6 +29,20 @@
     <message>
         <source>Switch to Fullscreen</source>
         <translation>Перемикнутися на повний екран</translation>
+    </message>
+</context>
+<context>
+    <name>QvkCountdown</name>
+    <message>
+        <source>Countdown</source>
+        <translation>Зворотній відлік</translation>
+    </message>
+</context>
+<context>
+    <name>QvkHelp</name>
+    <message>
+        <source>Help</source>
+        <translation>Допомога</translation>
     </message>
 </context>
 <context>
@@ -114,6 +135,29 @@
 </context>
 <context>
     <name>QvkSystray</name>
+    <message>
+        <source>Start</source>
+        <translation>Почати</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Зупинити</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Призупинити</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Продовжити</translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation>Вийти</translation>
+    </message>
+</context>
+<context>
+    <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
         <translation>Почати</translation>

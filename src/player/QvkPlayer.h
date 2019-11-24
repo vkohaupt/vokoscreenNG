@@ -87,6 +87,8 @@ private:
     QFrame *metaFrame;
     QvkSpezialSlider *sliderVolume;
     QvkSpezialSlider *sliderVideo;
+    QSize getPixelaspectRatio();
+
 
 protected:
     void mouseDoubleClickEvent( QMouseEvent *event );
