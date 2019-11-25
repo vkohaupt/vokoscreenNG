@@ -478,7 +478,6 @@ void QvkPlayer::slot_setNewImage( QImage image )
                               static_cast<int>( ui->framePlayer->height()*screen->devicePixelRatio() ),
                               Qt::KeepAspectRatio,
                               Qt::SmoothTransformation );
-        ui->labelPlayer->setPixmap( QPixmap::fromImage( image ) );
     } else {
         // Example:
         // Area:320x800 scale:1280*720
@@ -496,8 +495,8 @@ void QvkPlayer::slot_setNewImage( QImage image )
                                   Qt::IgnoreAspectRatio,
                                   Qt::SmoothTransformation );
         }
-        ui->labelPlayer->setPixmap( QPixmap::fromImage( image ) );
     }
+    ui->labelPlayer->setPixmap( QPixmap::fromImage( image ) );
 }
 
 
