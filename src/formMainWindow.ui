@@ -109,20 +109,6 @@
              <layout class="QVBoxLayout" name="verticalLayout_7">
               <item>
                <layout class="QGridLayout" name="gridLayout_3">
-                <item row="2" column="2">
-                 <widget class="QComboBox" name="comboBoxAreaSize">
-                  <property name="sizeAdjustPolicy">
-                   <enum>QComboBox::AdjustToContents</enum>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QRadioButton" name="radioButtonScreencastWindow">
-                  <property name="text">
-                   <string notr="true">Wi&amp;ndow</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="0" column="0">
                  <widget class="QRadioButton" name="radioButtonScreencastFullscreen">
                   <property name="text">
@@ -130,8 +116,21 @@
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="4">
-                 <widget class="QToolButton" name="help_screencast_fullscreen">
+                <item row="2" column="2">
+                 <widget class="QToolButton" name="toolButtonScreencastAreaReset">
+                  <property name="toolTip">
+                   <string>Reset</string>
+                  </property>
+                  <property name="text">
+                   <string notr="true">Reset</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="4">
+                 <widget class="QToolButton" name="help_screencast_scale">
+                  <property name="toolTip">
+                   <string notr="true"/>
+                  </property>
                   <property name="text">
                    <string notr="true">Help</string>
                   </property>
@@ -144,24 +143,14 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0">
-                 <widget class="QRadioButton" name="radioButtonScreencastArea">
-                  <property name="text">
-                   <string>Area</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="2" column="1">
-                 <widget class="QToolButton" name="toolButtonScreencastAreaReset">
-                  <property name="toolTip">
-                   <string>Reset</string>
-                  </property>
-                  <property name="text">
-                   <string notr="true">Reset</string>
+                 <widget class="QComboBox" name="comboBoxAreaSize">
+                  <property name="sizeAdjustPolicy">
+                   <enum>QComboBox::AdjustToContents</enum>
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="2">
+                <item row="0" column="1">
                  <widget class="QComboBox" name="comboBoxScreencastScreen">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -171,10 +160,72 @@
                   </property>
                  </widget>
                 </item>
+                <item row="1" column="0">
+                 <widget class="QRadioButton" name="radioButtonScreencastWindow">
+                  <property name="text">
+                   <string notr="true">Wi&amp;ndow</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="4">
+                 <widget class="QToolButton" name="help_screencast_fullscreen">
+                  <property name="text">
+                   <string notr="true">Help</string>
+                  </property>
+                 </widget>
+                </item>
                 <item row="1" column="4">
                  <widget class="QToolButton" name="help_screencast_window">
                   <property name="text">
                    <string notr="true">Help</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0" colspan="2">
+                 <widget class="QFrame" name="frameScale">
+                  <property name="frameShape">
+                   <enum>QFrame::NoFrame</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_26">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QCheckBox" name="checkBoxScale">
+                     <property name="text">
+                      <string>Scale</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="comboBoxScale">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
+                     <property name="sizeAdjustPolicy">
+                      <enum>QComboBox::AdjustToContents</enum>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QRadioButton" name="radioButtonScreencastArea">
+                  <property name="text">
+                   <string>Area</string>
                   </property>
                  </widget>
                 </item>
@@ -187,6 +238,19 @@
                    <size>
                     <width>40</width>
                     <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="3" column="3">
+                 <spacer name="verticalSpacer_20">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
                    </size>
                   </property>
                  </spacer>
@@ -855,71 +919,6 @@
                </size>
               </property>
              </spacer>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_33">
-              <item>
-               <widget class="QFrame" name="frameScale">
-                <property name="frameShape">
-                 <enum>QFrame::NoFrame</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_26">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                 <item>
-                  <widget class="QCheckBox" name="checkBoxScale">
-                   <property name="text">
-                    <string>Scale</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="comboBoxScale">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizeAdjustPolicy">
-                    <enum>QComboBox::AdjustToContents</enum>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <spacer name="horizontalSpacer_12">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QToolButton" name="help_screencast_scale">
-                <property name="toolTip">
-                 <string notr="true"/>
-                </property>
-                <property name="text">
-                 <string notr="true">Help</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_22">
@@ -2458,7 +2457,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>radioButtonScreencastWindow</tabstop>
   <tabstop>help_screencast_window</tabstop>
   <tabstop>radioButtonScreencastArea</tabstop>
-  <tabstop>toolButtonScreencastAreaReset</tabstop>
   <tabstop>comboBoxAreaSize</tabstop>
   <tabstop>help_screencast_area</tabstop>
   <tabstop>pushButtonStart</tabstop>

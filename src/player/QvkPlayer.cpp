@@ -501,6 +501,7 @@ void QvkPlayer::slot_setNewImage( QImage image )
         // Adapt to the frame
         if ( ui->framePlayer->height() < (int)( (qreal)ui->framePlayer->width() * ( (qreal)image.height() / (qreal)image.width() / ratio ) * screen->devicePixelRatio() ) )
         {
+            qDebug() << "1111111111111";
             image = image.scaled( (int)( (qreal)ui->framePlayer->height() * ( (qreal)image.width() / (qreal)image.height() * ratio ) * screen->devicePixelRatio() ),
                                   static_cast<int>( ui->framePlayer->height() * screen->devicePixelRatio() ),
                                   Qt::IgnoreAspectRatio,
@@ -512,6 +513,7 @@ void QvkPlayer::slot_setNewImage( QImage image )
         // Adapt to the frame
         if ( ui->framePlayer->height() > (int)( (qreal)ui->framePlayer->width() * ( (qreal)image.height() / (qreal)image.width() / ratio ) * screen->devicePixelRatio() ) )
         {
+            qDebug() << "2222222222222222";
             image = image.scaled( static_cast<int>( ui->framePlayer->width() * screen->devicePixelRatio() ),
                                   (int)( (qreal)ui->framePlayer->width() * (qreal)image.height() / (qreal)image.width() / ratio * screen->devicePixelRatio() ),
                                   Qt::IgnoreAspectRatio,
