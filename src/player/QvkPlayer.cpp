@@ -498,12 +498,27 @@ void QvkPlayer::slot_setNewImage( QImage image )
     // Area:800x320 scale:1280*720
     if ( ( ratio != 1 ) and ( ratioSize.width() > ratioSize.height() ) )
     {
-        image = image.scaled( static_cast<int>( ui->framePlayer->width() * screen->devicePixelRatio() ),
-                              (int)( (qreal)ui->framePlayer->width() * ( (qreal)image.height() / (qreal)image.width() / ratio ) * screen->devicePixelRatio() ),
-                              Qt::IgnoreAspectRatio,
-                              Qt::SmoothTransformation );
-        ui->labelPlayer->setPixmap( QPixmap::fromImage( image ) );
-        return;
+        // Adapt to the frame
+        if ( ui->framePlayer->height() < (int)( (qreal)ui->framePlayer->width() * ( (qreal)image.height() / (qreal)image.width() / ratio ) * screen->devicePixelRatio() ) )
+        {
+            image = image.scaled( (int)( (qreal)ui->framePlayer->height() * ( (qreal)image.width() / (qreal)image.height() * ratio ) * screen->devicePixelRatio() ),
+                                  static_cast<int>( ui->framePlayer->height() * screen->devicePixelRatio() ),
+                                  Qt::IgnoreAspectRatio,
+                                  Qt::SmoothTransformation );
+            ui->labelPlayer->setPixmap( QPixmap::fromImage( image ) );
+            return;
+        }
+
+        // Adapt to the frame
+        if ( ui->framePlayer->height() > (int)( (qreal)ui->framePlayer->width() * ( (qreal)image.height() / (qreal)image.width() / ratio ) * screen->devicePixelRatio() ) )
+        {
+            image = image.scaled( static_cast<int>( ui->framePlayer->width() * screen->devicePixelRatio() ),
+                                  (int)( (qreal)ui->framePlayer->width() * (qreal)image.height() / (qreal)image.width() / ratio * screen->devicePixelRatio() ),
+                                  Qt::IgnoreAspectRatio,
+                                  Qt::SmoothTransformation );
+            ui->labelPlayer->setPixmap( QPixmap::fromImage( image ) );
+            return;
+        }
     }
 }
 
