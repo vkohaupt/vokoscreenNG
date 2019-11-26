@@ -35,7 +35,6 @@
 #include <QDateTime>
 #include <QStandardPaths>
 #include <QDir>
-#include <QDesktopWidget>
 #include <QFileDialog>
 #include <QDesktopServices>
 #include <QMimeDatabase>
