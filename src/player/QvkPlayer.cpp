@@ -519,24 +519,6 @@ void QvkPlayer::slot_setNewImage( QImage image )
             ui->labelPlayer->setPixmap( QPixmap::fromImage( image ) );
             return;
         }
-
-        // Fullscreen not tested
-/*        image = image.scaled( static_cast<int>( ui->framePlayer->width() * screen->devicePixelRatio() ),
-                              (int)( (qreal)ui->framePlayer->width() * (qreal)image.height() / (qreal)image.width() / ratio * screen->devicePixelRatio() ),
-                              Qt::IgnoreAspectRatio,
-                              Qt::SmoothTransformation );
-        ui->labelPlayer->setPixmap( QPixmap::fromImage( image ) );*/
-
-        qDebug() << "111111111111111111111111";
-        image.setDevicePixelRatio( screen->devicePixelRatio() );
-        image = image.scaled( static_cast<int>( ui->framePlayer->width()*screen->devicePixelRatio() ),
-                              static_cast<int>( ui->framePlayer->height()*screen->devicePixelRatio() ),
-                              Qt::KeepAspectRatio,
-                              Qt::SmoothTransformation );
-        ui->labelPlayer->setPixmap( QPixmap::fromImage( image ) );
-        return;
-
-
     }
 }
 
