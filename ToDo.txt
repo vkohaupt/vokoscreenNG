@@ -1,5 +1,9 @@
 
 Player:
+--Lezter Ordner wird nicht gespeichert in den Settings.
+
+
+Player:
 --Proportionen stimmen nicht.
   Beispiel: Aufnahme 1929x1050 skaliert auf 1280x1024 Anzeige im Player ist nicht korrekt.
 
