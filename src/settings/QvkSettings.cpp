@@ -354,3 +354,23 @@ void QvkSettings::readSystrayAlternative( QvkSystrayAlternative *vkSystrayAltern
     vkSystrayAlternative->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
     settings.endGroup();
 }
+
+void QvkSettings::savePlayerPathOpenFile( QString pathFile )
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    settings.beginGroup( "Player" );
+    QFileInfo fileInfo( pathFile );
+    QString file = fileInfo.fileName();
+    QString path = pathFile.replace( file, "" );
+    settings.setValue( "Path", path );
+    settings.endGroup();
+}
+
+void QvkSettings::readPlayerPathOpenFile( QvkPlayer *vkplayer )
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    settings.beginGroup( "Player" );
+    vkplayer->pathOpenFile = settings.value( "Path", "" ).toString();
+    settings.endGroup();
+}
+

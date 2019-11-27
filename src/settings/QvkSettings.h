@@ -27,6 +27,7 @@
 #include "QvkRegionChoise.h"
 #include "QvkCameraController.h"
 #include "QvkSystrayAlternative.h"
+#include "QvkPlayer.h"
 
 #include <QObject>
 #include <QSettings>
@@ -47,7 +48,8 @@ public:
     void readCamera( QvkCameraController *vkCameraController );
     void saveSystrayAlternative( int x, int y );
     void readSystrayAlternative( QvkSystrayAlternative *vkSystrayAlternative );
-
+    void savePlayerPathOpenFile(QString pathFile );
+    void readPlayerPathOpenFile(QvkPlayer *vkplayer);
     QString getFileName();
 
 

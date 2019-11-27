@@ -43,6 +43,7 @@ public:
     ~QvkPlayer();
     void setMediaFile( QString string );
     Ui_player *ui;
+    QString pathOpenFile;
 
 
 
@@ -80,7 +81,6 @@ private:
     void vk_showFullscreen();
     void vk_showNormal();
     QTimer *timerHideMouse;
-    QString pathOpenFile;
     QString oldWindowTitel;
     bool playingFlag = false;
     QLabel *metaLabel;

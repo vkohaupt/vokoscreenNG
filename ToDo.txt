@@ -3,10 +3,6 @@ Skalieren:
 --In der Combobox fehlt Benutzerdefiniert.
 
 
-Player:
---Lezter Ordner wird nicht gespeichert in den Settings.
-
-
 Timer:
 --Stop recording after in Verbindung mit Pause funktioniert nicht korrekt.
 --AM/PM

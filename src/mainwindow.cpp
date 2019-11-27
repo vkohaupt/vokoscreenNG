@@ -491,6 +491,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSettings.readAreaScreencast( vkRegionChoise );
     vkSettings.readCamera( vkCameraController );
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
+    vkSettings.readPlayerPathOpenFile( vkPlayer );
 
     // After reading the settings, we read the arguments and run
     QStringList arguments = QApplication::instance()->arguments();
@@ -520,6 +521,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
                                    vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
     vkSettings.saveCamera( vkCameraController->cameraWindow->geometry().x(), vkCameraController->cameraWindow->geometry().y() );
     vkSettings.saveSystrayAlternative( vkSystrayAlternative->x(), vkSystrayAlternative->y() );
+    vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile );
     emit signal_close();
     emit signal_close( false );
 }
