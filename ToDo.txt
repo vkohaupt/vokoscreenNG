@@ -1,4 +1,8 @@
 
+Skalieren:
+--In der Combobox fehlt Benutzerdefiniert.
+
+
 Player:
 --Lezter Ordner wird nicht gespeichert in den Settings.
 
