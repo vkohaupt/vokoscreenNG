@@ -704,10 +704,8 @@ void QvkMainWindow::slot_IfStopAudioCodecWidgetsSetDisabled()
 
 void QvkMainWindow::slot_areaSetResolution( QString value )
 {
-    QString width = value.section( " ", 0, 0 );
-    QString height = value.section( " ", 2, 2 );
-    vkRegionChoise->setWidth( QString(width).toInt() );
-    vkRegionChoise->setHeight( QString(height).toInt() );
+    vkRegionChoise->setWidth( value.section( " ", 0, 0 ).toInt() );
+    vkRegionChoise->setHeight( value.section( " ", 2, 2 ).toInt() );
 }
 
 
