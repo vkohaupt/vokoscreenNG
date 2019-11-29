@@ -237,15 +237,15 @@ void QvkRegionChoise::mousePressEvent(QMouseEvent *event)
     switch ( handleUnderMouse )
     {
       case NoHandle    : handlePressed = NoHandle;     break;
-      case TopLeft     : handlePressed = TopLeft;      break;
-      case TopMiddle   : handlePressed = TopMiddle;    break;
-      case TopRight    : handlePressed = TopRight;     break;
-      case RightMiddle : handlePressed = RightMiddle;  break;
-      case BottomRight : handlePressed = BottomRight;  break;
-      case BottomMiddle: handlePressed = BottomMiddle; break;
-      case BottomLeft  : handlePressed = BottomLeft;   break;
-      case LeftMiddle  : handlePressed = LeftMiddle;   break;
-      case Middle      : handlePressed = Middle;       break;
+      case TopLeft     : { handlePressed = TopLeft;      handleKeyPressed = TopLeft;      break; }
+      case TopMiddle   : { handlePressed = TopMiddle;    handleKeyPressed = TopMiddle;    break; }
+      case TopRight    : { handlePressed = TopRight;     handleKeyPressed = TopRight;     break; }
+      case RightMiddle : { handlePressed = RightMiddle;  handleKeyPressed = RightMiddle;  break; }
+      case BottomRight : { handlePressed = BottomRight;  handleKeyPressed = BottomRight;  break; }
+      case BottomMiddle: { handlePressed = BottomMiddle; handleKeyPressed = BottomMiddle; break; }
+      case BottomLeft  : { handlePressed = BottomLeft;   handleKeyPressed = BottomLeft;   break; }
+      case LeftMiddle  : { handlePressed = LeftMiddle;   handleKeyPressed = LeftMiddle;   break; }
+      case Middle      : { handlePressed = Middle;       handleKeyPressed = Middle;       break; }
     }
 
     mous_delta_X_to_blueline = event->x() - frame_X;
@@ -298,6 +298,200 @@ void QvkRegionChoise::leaveEvent(QEvent *event)
 {
     Q_UNUSED(event);
     unsetCursor();
+}
+
+
+void QvkRegionChoise::keyPressEvent( QKeyEvent * event )
+{
+    if ( handleKeyPressed == TopLeft )
+    {
+        switch ( event->key() )
+        {
+            case Qt::Key_Up   :  {
+                                    frame_Y = frame_Y - 1;
+                                    frame_height = frame_height + 1;
+                                    break;
+                                 }
+            case Qt::Key_Down :  {
+                                    frame_Y = frame_Y + 1;
+                                    frame_height = frame_height - 1;
+                                    break;
+                                 }
+            case Qt::Key_Left  : {
+                                    frame_X = frame_X - 1;
+                                    frame_Width = frame_Width + 1;
+                                    break;
+                                 }
+            case Qt::Key_Right : {
+                                    frame_X = frame_X + 1;
+                                    frame_Width = frame_Width - 1;
+                                    break;
+                                 }
+        }
+    }
+
+    if ( handleKeyPressed == TopMiddle )
+    {
+        switch ( event->key() )
+        {
+            case Qt::Key_Up   : {
+                                   frame_Y = frame_Y - 1;
+                                   frame_height = frame_height + 1;
+                                   break;
+                                }
+            case Qt::Key_Down : {
+                                   frame_Y = frame_Y + 1;
+                                   frame_height = frame_height - 1;
+                                   break;
+                                }
+        }
+    }
+
+    if ( handleKeyPressed == TopRight )
+    {
+        switch ( event->key() )
+        {
+            case Qt::Key_Up   : {
+                                   frame_Y = frame_Y - 1;
+                                   frame_height = frame_height + 1;
+                                   break;
+                                }
+            case Qt::Key_Down : {
+                                   frame_Y = frame_Y + 1;
+                                   frame_height = frame_height - 1;
+                                   break;
+                                }
+            case Qt::Key_Left : {
+                                   frame_Width = frame_Width - 1;
+                                   break;
+                                }
+            case Qt::Key_Right :{
+                                   frame_Width = frame_Width + 1;
+                                   break;
+                                }
+        }
+    }
+
+    if ( handleKeyPressed == RightMiddle )
+    {
+        switch ( event->key() )
+        {
+            case Qt::Key_Left : {
+                                   frame_Width = frame_Width - 1;
+                                   break;
+                                }
+            case Qt::Key_Right :{
+                                   frame_Width = frame_Width + 1;
+                                   break;
+                                }
+        }
+    }
+
+    if ( handleKeyPressed == BottomRight )
+    {
+        switch ( event->key() )
+        {
+            case Qt::Key_Up   : {
+                                   frame_height = frame_height - 1;
+                                   break;
+                                }
+            case Qt::Key_Down : {
+                                   frame_height = frame_height + 1;
+                                   break;
+                                }
+            case Qt::Key_Left : {
+                                   frame_Width = frame_Width - 1;
+                                   break;
+                                }
+            case Qt::Key_Right :{
+                                   frame_Width = frame_Width + 1;
+                                   break;
+                                }
+        }
+    }
+
+    if ( handleKeyPressed == BottomMiddle )
+    {
+        switch ( event->key() )
+        {
+            case Qt::Key_Up   : {
+                                   frame_height = frame_height - 1;
+                                   break;
+                                }
+            case Qt::Key_Down : {
+                                   frame_height = frame_height + 1;
+                                   break;
+                                }
+        }
+     }
+
+    if ( handleKeyPressed == BottomLeft )
+    {
+        switch ( event->key() )
+        {
+            case Qt::Key_Up   :  {
+                                    frame_height = frame_height - 1;
+                                    break;
+                                 }
+            case Qt::Key_Down :  {
+                                    frame_height = frame_height + 1;
+                                    break;
+                                 }
+            case Qt::Key_Left  : {
+                                    frame_X = frame_X - 1;
+                                    frame_Width = frame_Width + 1;
+                                    break;
+                                 }
+            case Qt::Key_Right : {
+                                    frame_X = frame_X + 1;
+                                    frame_Width = frame_Width - 1;
+                                    break;
+                                 }
+        }
+    }
+
+    if ( handleKeyPressed == LeftMiddle )
+    {
+        switch ( event->key() )
+        {
+            case Qt::Key_Left  : {
+                                    frame_X = frame_X - 1;
+                                    frame_Width = frame_Width + 1;
+                                    break;
+                                 }
+            case Qt::Key_Right : {
+                                    frame_X = frame_X + 1;
+                                    frame_Width = frame_Width - 1;
+                                    break;
+                                 }
+        }
+    }
+
+    if ( handleKeyPressed == Middle )
+    {
+        switch ( event->key() )
+        {
+            case Qt::Key_Left  : {
+                                    frame_X = frame_X - 1;
+                                    break;
+                                 }
+            case Qt::Key_Right : {
+                                    frame_X = frame_X + 1;
+                                    break;
+                                 }
+            case Qt::Key_Up    : {
+                                    frame_Y = frame_Y - 1;
+                                    break;
+                                 }
+            case Qt::Key_Down  : {
+                                    frame_Y = frame_Y + 1;
+                                    break;
+                                 }
+        }
+    }
+
+    repaint();
+    update();
 }
 
 

@@ -61,16 +61,19 @@ private slots:
     
 protected:
   void paintEvent( QPaintEvent *event );
-  void mouseMoveEvent(QMouseEvent *event);
-  void mousePressEvent(QMouseEvent *event);
+  void mouseMoveEvent( QMouseEvent *event );
+  void mousePressEvent( QMouseEvent *event );
   void mouseReleaseEvent( QMouseEvent * event );
-  void leaveEvent(QEvent *event);
+  void leaveEvent( QEvent *event );
+  void keyPressEvent( QKeyEvent * event );
 
 private:
 
   enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle };
   Handle handlePressed;
   Handle handleUnderMouse;
+  Handle handleKeyPressed;
+
 
   QColor HandleColorBackground;
   QColor HandleColorBackgroundSize;
