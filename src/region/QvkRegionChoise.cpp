@@ -365,11 +365,25 @@ void QvkRegionChoise::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Up   : {
                                    frame_Y = frame_Y - 1;
                                    frame_height = frame_height + 1;
+
+                                   if ( frame_Y < 0 - framePenHalf )
+                                   {
+                                     frame_Y = frame_Y + 1;
+                                     frame_height = frame_height - 1;
+                                   }
+
                                    break;
                                 }
             case Qt::Key_Down : {
                                    frame_Y = frame_Y + 1;
                                    frame_height = frame_height - 1;
+
+                                   if ( frame_height < frame_min_height )
+                                   {
+                                       frame_Y = frame_Y - 1;
+                                       frame_height = frame_height + 1;
+                                   }
+
                                    break;
                                 }
         }
