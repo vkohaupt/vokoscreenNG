@@ -1,6 +1,12 @@
 
-Skalieren:
---In der Combobox fehlt Benutzerdefiniert.
+Area:
+--Ungereimheiten x=0 x=1920 siehe Klick auf Anfasser
+--Für den User muß die Anzeige x=1 x=1920 darstellen
+--Berechnungen übrprüfen
+--Aufnahme x=0 x=1919 ist ok.
+
+Area:
+--in der Aufnahme erscheint ab und an am unteren und rechten Rand eine grüne Linie.
 
 
 Timer:
@@ -24,6 +30,9 @@ Windows:
 
 Bugs, Features und Hinweise aber nicht wirklich wichtig
 =======================================================
+Skalieren:
+--In der Combobox fehlt Benutzerdefiniert.
+
 Übersetzung:
 ui->radioButtonScreencastFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
 ui->radioButtonScreencastWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here

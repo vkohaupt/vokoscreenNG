@@ -473,18 +473,42 @@ void QvkRegionChoise::keyPressEvent( QKeyEvent * event )
         {
             case Qt::Key_Up   : {
                                    frame_height = frame_height - 1;
+
+                                   if ( frame_height < frame_min_height )
+                                   {
+                                       frame_height = frame_height + 1;
+                                   }
+
                                    break;
                                 }
             case Qt::Key_Down : {
                                    frame_height = frame_height + 1;
+
+                                   if ( frame_Y + frame_height - framePenHalf > screenHeight )
+                                   {
+                                       frame_height = frame_height - 1;
+                                   }
+
                                    break;
                                 }
             case Qt::Key_Left : {
                                    frame_Width = frame_Width - 1;
+
+                                   if ( frame_Width < frame_min_width )
+                                   {
+                                       frame_Width = frame_Width + 1;
+                                   }
+
                                    break;
                                 }
             case Qt::Key_Right :{
                                    frame_Width = frame_Width + 1;
+
+                                   if ( frame_X + frame_Width - framePenHalf > screenWidth )
+                                   {
+                                       frame_Width = frame_Width - 1;
+                                   }
+
                                    break;
                                 }
         }
