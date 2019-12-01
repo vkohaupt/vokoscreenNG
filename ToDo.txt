@@ -10,7 +10,8 @@ Area:
 --Aufnahme x=0 x=1919 ist ok.
 
 Area:
---in der Aufnahme erscheint ab und an am unteren und rechten Rand eine grüne Linie.
+--In der Aufnahme erscheint ab und an am unteren und rechten Rand eine grüne Linie.
+--Dies ist beim Videocodec vaapih264enc und vaapimpeg2enc der Fall wenn die Bereichsauswahl eine ungerade Größe enthält.
 
 
 Timer:
