@@ -1,4 +1,9 @@
 
+SystrayAlternative:
+--Fenstertitel ändern in "Systray alternative"
+--Icon größe ändern, Standard 48 Pixel.
+
+
 Aera:
 --bottomLeft hat verkehrten Y-Wert.
 
@@ -12,6 +17,7 @@ Area:
 --Für den User muß die Anzeige x=1 x=1920 darstellen
 --Berechnungen überprüfen
 --Aufnahme x=0 x=1919 ist ok.
+
 
 Area:
 --In der Aufnahme erscheint ab und an am unteren und rechten Rand eine grüne Linie.
