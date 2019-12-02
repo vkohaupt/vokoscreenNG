@@ -1,6 +1,10 @@
 
+Aera:
+--bottomLeft hat verkehrten Y-Wert.
+
+
 Area:
---Selektierter Anfasser markieren in dem mann dem Pfeil eine andere Farbe gibt.
+--Selektierter Anfasser markieren in dem man dem Pfeil eine andere Farbe gibt.
 
 
 Area:
