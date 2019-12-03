@@ -1439,9 +1439,9 @@ void QvkRegionChoise::HandleBottomLeftSize( QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf) +
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf ) +
                                              "\n" +
-                                             "y:" + QString::number( frame_Y + framePenHalf ) );
+                                             "y:" + QString::number( frame_Y + frame_height - framePenHalf ) );
 }
 
 

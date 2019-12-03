@@ -1,11 +1,6 @@
 
 SystrayAlternative:
 --Fenstertitel ändern in "Systray alternative"
---Icon größe ändern, Standard 48 Pixel.
-
-
-Aera:
---bottomLeft hat verkehrten Y-Wert.
 
 
 Area:

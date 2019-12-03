@@ -115,7 +115,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderShowInSystrayAlternative->setObjectName( "sliderShowInSystrayAlternative" );
     sliderShowInSystrayAlternative->setMinimum( 24 );
     sliderShowInSystrayAlternative->setMaximum( 64 );
-    sliderShowInSystrayAlternative->setValue( 32 );
+    sliderShowInSystrayAlternative->setValue( 48 );
     sliderShowInSystrayAlternative->show();
 
     sliderHour = new QvkSpezialSlider( Qt::Horizontal );
