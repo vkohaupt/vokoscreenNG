@@ -1161,9 +1161,9 @@ void QvkRegionChoise::HandleTopLeftSize( QPainter &painter)
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf ) +
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf + 1 ) +
                                              "\n" +
-                                             "y:" + QString::number( frame_Y + framePenHalf ) );
+                                             "y:" + QString::number( frame_Y + framePenHalf + 1 ) );
 }
 
 
@@ -1208,7 +1208,7 @@ void QvkRegionChoise::HandleTopMiddleSize( QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "y:" + QString::number( frame_Y + framePenHalf ) );
+    painter.drawText( rect, Qt::AlignCenter, "y:" + QString::number( frame_Y + framePenHalf + 1 ) );
 }
 
 
@@ -1253,9 +1253,9 @@ void QvkRegionChoise::HandleTopRightSize( QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + frame_Width - framePenHalf) +
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + frame_Width - framePenHalf ) +
                                              "\n" +
-                                             "y:" + QString::number( frame_Y + framePenHalf ) );
+                                             "y:" + QString::number( frame_Y + framePenHalf + 1 ) );
 }
 
 
@@ -1439,7 +1439,7 @@ void QvkRegionChoise::HandleBottomLeftSize( QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf ) +
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf + 1 ) +
                                              "\n" +
                                              "y:" + QString::number( frame_Y + frame_height - framePenHalf ) );
 }
@@ -1486,7 +1486,7 @@ void QvkRegionChoise::HandleLeftMiddleSize( QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf ) );
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf + 1 ) );
 }
 
 

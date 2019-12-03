@@ -8,13 +8,6 @@ Area:
 
 
 Area:
---Ungereimheiten x=0 x=1920 siehe Klick auf Anfasser
---Für den User muß die Anzeige x=1 x=1920 darstellen
---Berechnungen überprüfen
---Aufnahme x=0 x=1919 ist ok.
-
-
-Area:
 --In der Aufnahme erscheint ab und an am unteren und rechten Rand eine grüne Linie.
 --Dies ist beim Videocodec vaapih264enc und vaapimpeg2enc der Fall wenn die Bereichsauswahl eine ungerade Größe enthält.
 
