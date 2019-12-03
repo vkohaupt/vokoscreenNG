@@ -303,6 +303,11 @@ void QvkRegionChoise::leaveEvent(QEvent *event)
 
 void QvkRegionChoise::keyPressEvent( QKeyEvent * event )
 {
+    if ( recordemode == true )
+    {
+        return;
+    }
+
     if ( handleKeyPressed == TopLeft )
     {
         switch ( event->key() )
