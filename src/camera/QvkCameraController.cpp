@@ -41,7 +41,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):camera
     cameraWindow = new QvkCameraWindow( ui_surface, sliderCameraWindowSize );
     cameraWindow->hide();
     connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_formMainWindow->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
-    cameraWindow->setWindowTitle( global::name + " " + global::version + " " + QString( tr( "Camera") ) );
+    cameraWindow->setWindowTitle( QString( tr( "Camera") ) );
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     cameraWindow->setWindowIcon( icon );
 

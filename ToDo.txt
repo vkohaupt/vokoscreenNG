@@ -3,9 +3,6 @@ SystrayAlternative:
 --Fenstertitel ändern in "Systray alternative"
 --Icon größe ändern, Standard 48 Pixel.
 
-Kamera:
---Fenstertitel nur "Kamera"
-
 
 Aera:
 --bottomLeft hat verkehrten Y-Wert.
