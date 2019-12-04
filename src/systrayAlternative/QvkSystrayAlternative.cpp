@@ -15,7 +15,7 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     connect( ui->toolButtonShowInSystrayAlternativeReset, SIGNAL( clicked( bool ) ), this, SLOT( slot_ShowInSystrayAlternativeReset( bool ) ) );
     size = QSize( sliderShowInSystrayAlternative->value(), sliderShowInSystrayAlternative->value() );
 
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );//| Qt::Tool );
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
     setAttribute( Qt::WA_TranslucentBackground, true );
     setScaledContents( true );
     resize( size );
