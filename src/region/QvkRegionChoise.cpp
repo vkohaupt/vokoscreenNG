@@ -1589,7 +1589,7 @@ void QvkRegionChoise::HandleMiddle( QPainter &painter )
     QColor colorSelected;
     if ( HandleSelected == Middle )
     {
-        colorSelected = Qt::darkYellow;
+        colorSelected = colorSelectedArrow;
     }
     else
     {
