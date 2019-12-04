@@ -1,10 +1,6 @@
 
-SystrayAlternative:
---Fenstertitel ändern in "Systray alternative"
-
-
 Area:
---Selektierter Anfasser markieren in dem man dem Pfeil eine andere Farbe gibt.
+--Selektierter Anfasser markieren in dem man dem Pfeil oder dem Anfasser eine andere Farbe gibt.
 
 
 Area:

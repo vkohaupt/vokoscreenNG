@@ -15,7 +15,7 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     connect( ui->toolButtonShowInSystrayAlternativeReset, SIGNAL( clicked( bool ) ), this, SLOT( slot_ShowInSystrayAlternativeReset( bool ) ) );
     size = QSize( sliderShowInSystrayAlternative->value(), sliderShowInSystrayAlternative->value() );
 
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Tool );
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );//| Qt::Tool );
     setAttribute( Qt::WA_TranslucentBackground, true );
     setScaledContents( true );
     resize( size );
@@ -25,6 +25,7 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     setPixmap( pixmap );
 
     setWindowTitle( global::name + " " + global::version );
+    setWindowTitle( tr( "Start" ) + " " + tr( "Stop" ) + " " + tr( "Pause" ) );
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     setWindowIcon( icon );
 
