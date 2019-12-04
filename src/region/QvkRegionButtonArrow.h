@@ -41,9 +41,9 @@ private:
   int diameter = 2 * radius;
 
 public slots:
-  QPixmap getPixmapHandle( QColor color, degreeArrow degree );
+  QPixmap getPixmapHandle(QColor color, QColor colorSelected, degreeArrow degree );
   QPixmap getButton( QColor color );
-  QPixmap getArrow( degreeArrow degree );
+  QPixmap getArrow(degreeArrow degree , QColor colorSelected);
   int getWithHalf();
 
 

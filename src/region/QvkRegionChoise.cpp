@@ -40,6 +40,7 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
                                    HandleColorBackground( Qt::lightGray ),
                                    HandleColorBackgroundSize( Qt::lightGray ),
                                    HandleColorByMousePressed( Qt::lightGray ),
+                                   colorSelectedArrow( Qt::darkYellow ),
                                    framePenWidth(4), // framePenWidth must be an even number
                                    framePenHalf(framePenWidth/2),
                                    radius(20),
@@ -237,15 +238,15 @@ void QvkRegionChoise::mousePressEvent(QMouseEvent *event)
     switch ( handleUnderMouse )
     {
       case NoHandle    : handlePressed = NoHandle;     break;
-      case TopLeft     : { handlePressed = TopLeft;      handleKeyPressed = TopLeft;      break; }
-      case TopMiddle   : { handlePressed = TopMiddle;    handleKeyPressed = TopMiddle;    break; }
-      case TopRight    : { handlePressed = TopRight;     handleKeyPressed = TopRight;     break; }
-      case RightMiddle : { handlePressed = RightMiddle;  handleKeyPressed = RightMiddle;  break; }
-      case BottomRight : { handlePressed = BottomRight;  handleKeyPressed = BottomRight;  break; }
-      case BottomMiddle: { handlePressed = BottomMiddle; handleKeyPressed = BottomMiddle; break; }
-      case BottomLeft  : { handlePressed = BottomLeft;   handleKeyPressed = BottomLeft;   break; }
-      case LeftMiddle  : { handlePressed = LeftMiddle;   handleKeyPressed = LeftMiddle;   break; }
-      case Middle      : { handlePressed = Middle;       handleKeyPressed = Middle;       break; }
+      case TopLeft     : { handlePressed = TopLeft;      handleKeyPressed = TopLeft;      HandleSelected = TopLeft;      break; }
+      case TopMiddle   : { handlePressed = TopMiddle;    handleKeyPressed = TopMiddle;    HandleSelected = TopMiddle;    break; }
+      case TopRight    : { handlePressed = TopRight;     handleKeyPressed = TopRight;     HandleSelected = TopRight;     break; }
+      case RightMiddle : { handlePressed = RightMiddle;  handleKeyPressed = RightMiddle;  HandleSelected = RightMiddle;  break; }
+      case BottomRight : { handlePressed = BottomRight;  handleKeyPressed = BottomRight;  HandleSelected = BottomRight;  break; }
+      case BottomMiddle: { handlePressed = BottomMiddle; handleKeyPressed = BottomMiddle; HandleSelected = BottomMiddle; break; }
+      case BottomLeft  : { handlePressed = BottomLeft;   handleKeyPressed = BottomLeft;   HandleSelected = BottomLeft;   break; }
+      case LeftMiddle  : { handlePressed = LeftMiddle;   handleKeyPressed = LeftMiddle;   HandleSelected = LeftMiddle;   break; }
+      case Middle      : { handlePressed = Middle;       handleKeyPressed = Middle;       HandleSelected = Middle;       break; }
     }
 
     mous_delta_X_to_blueline = event->x() - frame_X;
@@ -1134,9 +1135,19 @@ void QvkRegionChoise::HandleTopLeft( QPainter &painter )
         color = HandleColorBackground;
     }
 
+    QColor colorSelected;
+    if ( HandleSelected == TopLeft )
+    {
+        colorSelected = colorSelectedArrow;
+    }
+    else
+    {
+        colorSelected = Qt::black;
+    }
+
     painter.drawPixmap( frame_X - radius,
                         frame_Y - radius,
-                        buttonArrow.getPixmapHandle( color, buttonArrow.topLeft ) );
+                        buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.topLeft ) );
 }
 
 
@@ -1181,9 +1192,19 @@ void QvkRegionChoise::HandleTopMiddle( QPainter &painter)
         color = HandleColorBackground;
     }
 
+    QColor colorSelected;
+    if ( HandleSelected == TopMiddle )
+    {
+        colorSelected = colorSelectedArrow;
+    }
+    else
+    {
+        colorSelected = Qt::black;
+    }
+
     painter.drawPixmap( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
                         frame_Y - buttonArrow.getWithHalf(),
-                        buttonArrow.getPixmapHandle( color, buttonArrow.topMiddle ) );
+                        buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.topMiddle ) );
 }
 
 
@@ -1226,9 +1247,19 @@ void QvkRegionChoise::HandleTopRight(QPainter &painter)
         color = HandleColorBackground;
     }
 
+    QColor colorSelected;
+    if ( HandleSelected == TopRight )
+    {
+        colorSelected = colorSelectedArrow;
+    }
+    else
+    {
+        colorSelected = Qt::black;
+    }
+
     painter.drawPixmap( frame_X + frame_Width - buttonArrow.getWithHalf(),
                         frame_Y - buttonArrow.getWithHalf(),
-                        buttonArrow.getPixmapHandle( color, buttonArrow.topRight ) );
+                        buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.topRight ) );
 }
 
 
@@ -1273,9 +1304,19 @@ void QvkRegionChoise::HandleRightMiddle( QPainter &painter )
         color = HandleColorBackground;
     }
 
+    QColor colorSelected;
+    if ( HandleSelected == RightMiddle )
+    {
+        colorSelected = colorSelectedArrow;
+    }
+    else
+    {
+        colorSelected = Qt::black;
+    }
+
     painter.drawPixmap( frame_X + frame_Width - buttonArrow.getWithHalf(),
                         frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
-                        buttonArrow.getPixmapHandle( color, buttonArrow.rightMiddle ) );
+                        buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.rightMiddle ) );
 }
 
 
@@ -1318,9 +1359,19 @@ void QvkRegionChoise::HandleBottomRight( QPainter &painter )
         color = HandleColorBackground;
     }
 
+    QColor colorSelected;
+    if ( HandleSelected == BottomRight )
+    {
+        colorSelected = colorSelectedArrow;
+    }
+    else
+    {
+        colorSelected = Qt::black;
+    }
+
     painter.drawPixmap( frame_X + frame_Width - buttonArrow.getWithHalf(),
                         frame_Y + frame_height - buttonArrow.getWithHalf(),
-                        buttonArrow.getPixmapHandle( color, buttonArrow.bottomRight ) );
+                        buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.bottomRight ) );
 }
 
 
@@ -1367,9 +1418,19 @@ void QvkRegionChoise::HandleBottomMiddle( QPainter &painter )
         color = HandleColorBackground;
     }
 
+    QColor colorSelected;
+    if ( HandleSelected == BottomMiddle )
+    {
+        colorSelected = colorSelectedArrow;
+    }
+    else
+    {
+        colorSelected = Qt::black;
+    }
+
     painter.drawPixmap( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
                         frame_Y + frame_height - buttonArrow.getWithHalf(),
-                        buttonArrow.getPixmapHandle( color, buttonArrow.bottomMiddel ) );
+                        buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.bottomMiddel ) );
 }
 
 
@@ -1412,9 +1473,19 @@ void QvkRegionChoise::HandleBottomLeft( QPainter &painter )
         color = HandleColorBackground;
     }
 
+    QColor colorSelected;
+    if ( HandleSelected == BottomLeft )
+    {
+        colorSelected = colorSelectedArrow;
+    }
+    else
+    {
+        colorSelected = Qt::black;
+    }
+
     painter.drawPixmap( frame_X - buttonArrow.getWithHalf(),
                         frame_Y + frame_height - buttonArrow.getWithHalf(),
-                        buttonArrow.getPixmapHandle( color, buttonArrow.bottomLeft ) );
+                        buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.bottomLeft ) );
 }
 
 
@@ -1459,9 +1530,19 @@ void QvkRegionChoise::HandleLeftMiddle( QPainter &painter )
         color = HandleColorBackground;
     }
 
+    QColor colorSelected;
+    if ( HandleSelected == LeftMiddle )
+    {
+        colorSelected = colorSelectedArrow;
+    }
+    else
+    {
+        colorSelected = Qt::black;
+    }
+
     painter.drawPixmap( frame_X - buttonArrow.getWithHalf(),
                         frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
-                        buttonArrow.getPixmapHandle( color, buttonArrow.leftMiddel ) );
+                        buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.leftMiddel ) );
 }
 
 
@@ -1505,25 +1586,35 @@ void QvkRegionChoise::HandleMiddle( QPainter &painter )
         color = HandleColorBackground;
     }
 
+    QColor colorSelected;
+    if ( HandleSelected == Middle )
+    {
+        colorSelected = Qt::darkYellow;
+    }
+    else
+    {
+        colorSelected = Qt::black;
+    }
+
     painter.drawPixmap( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
                         frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
                         buttonArrow.getButton( color) );
 
     painter.drawPixmap( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
                         frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
-                        buttonArrow.getArrow( buttonArrow.degreeArrow::topMiddle ) );
+                        buttonArrow.getArrow( buttonArrow.degreeArrow::topMiddle, colorSelected ) );
 
     painter.drawPixmap( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
                         frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
-                        buttonArrow.getArrow( buttonArrow.degreeArrow::rightMiddle ) );
+                        buttonArrow.getArrow( buttonArrow.degreeArrow::rightMiddle, colorSelected ) );
 
     painter.drawPixmap( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
                         frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
-                        buttonArrow.getArrow( buttonArrow.degreeArrow::bottomMiddel ) );
+                        buttonArrow.getArrow( buttonArrow.degreeArrow::bottomMiddel, colorSelected ) );
 
     painter.drawPixmap( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
                         frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
-                        buttonArrow.getArrow( buttonArrow.degreeArrow::leftMiddel ) );
+                        buttonArrow.getArrow( buttonArrow.degreeArrow::leftMiddel, colorSelected ) );
 }
 
 

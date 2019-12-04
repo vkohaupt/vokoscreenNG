@@ -58,7 +58,7 @@ QPixmap QvkRegionButtonArrow::getButton( QColor color )
 }
 
 
-QPixmap QvkRegionButtonArrow::getArrow( degreeArrow degree )
+QPixmap QvkRegionButtonArrow::getArrow( degreeArrow degree, QColor colorSelected )
 {
     QPixmap pixmap( diameter+penWidth, diameter+penWidth );
     pixmap.fill( Qt::transparent );
@@ -70,7 +70,7 @@ QPixmap QvkRegionButtonArrow::getArrow( degreeArrow degree )
         painter.rotate( degree );
         QPen pen;
             pen.setCapStyle( Qt::RoundCap );
-            pen.setColor( Qt::black );
+            pen.setColor( colorSelected );
             pen.setWidthF( penWidth );
             pen.setJoinStyle( Qt::RoundJoin );
         painter.setPen( pen );
@@ -91,7 +91,7 @@ QPixmap QvkRegionButtonArrow::getArrow( degreeArrow degree )
 }
 
 
-QPixmap QvkRegionButtonArrow::getPixmapHandle( QColor color, degreeArrow degree )
+QPixmap QvkRegionButtonArrow::getPixmapHandle( QColor color, QColor colorSelected ,degreeArrow degree )
 {
     QPixmap pixmap( diameter+penWidth, diameter+penWidth );
     pixmap.fill( Qt::transparent );
@@ -100,7 +100,7 @@ QPixmap QvkRegionButtonArrow::getPixmapHandle( QColor color, degreeArrow degree 
     painter.begin( &pixmap );
       painter.setRenderHints( QPainter::Antialiasing, true );
       painter.drawPixmap( 0, 0, getButton( color ) );
-      painter.drawPixmap( 0, 0, getArrow( degree ) );
+      painter.drawPixmap( 0, 0, getArrow( degree , colorSelected ) );
     painter.end();
 
     return pixmap;

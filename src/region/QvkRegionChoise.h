@@ -73,11 +73,12 @@ private:
   Handle handlePressed;
   Handle handleUnderMouse;
   Handle handleKeyPressed;
-
+  Handle HandleSelected;
 
   QColor HandleColorBackground;
   QColor HandleColorBackgroundSize;
   QColor HandleColorByMousePressed;
+  QColor colorSelectedArrow;
   void setHandleColorBackground( QColor color );
   void setHandleColorByMousePressed( QColor color );
   void setHandleColorBackgroundSize( QColor color );
