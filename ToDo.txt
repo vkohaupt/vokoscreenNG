@@ -1,9 +1,4 @@
 
-Area:
---In der Aufnahme erscheint ab und an am unteren und rechten Rand eine grüne Linie.
---Dies ist beim Videocodec vaapih264enc und vaapimpeg2enc der Fall wenn die Bereichsauswahl eine ungerade Größe enthält.
-
-
 Timer:
 --Stop recording after in Verbindung mit Pause funktioniert nicht korrekt.
 --AM/PM

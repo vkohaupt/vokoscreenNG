@@ -945,6 +945,23 @@ QString QvkMainWindow::VK_getXimagesrc()
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
+        int compensation_x = 0;
+        int compensation_y = 0;
+
+        // Number of pixels must be divisible by two
+        int width = vkRegionChoise->getWidth();
+        if ( ( width % 2 ) == 1 )
+        {
+            compensation_x = 1;
+        }
+
+        // Number of pixels must be divisible by two
+        int height = vkRegionChoise->getHeight();
+        if ( ( height % 2 ) == 1 )
+        {
+            compensation_y = 1;
+        }
+
         QStringList stringList;
         stringList << "ximagesrc"
                    << "display-name=" + qgetenv( "DISPLAY" )
@@ -952,8 +969,8 @@ QString QvkMainWindow::VK_getXimagesrc()
                    << "show-pointer=" + showPointer
                    << "startx=" + QString::number( vkRegionChoise->getXRecordArea() )
                    << "starty=" + QString::number( vkRegionChoise->getYRecordArea() )
-                   << "endx="   + QString::number( vkRegionChoise->getXRecordArea() + vkRegionChoise->getWidth()-1 )
-                   << "endy="   + QString::number( vkRegionChoise->getYRecordArea() + vkRegionChoise->getHeight()-1 );
+                   << "endx="   + QString::number( vkRegionChoise->getXRecordArea() + vkRegionChoise->getWidth() - 1 - compensation_x)
+                   << "endy="   + QString::number( vkRegionChoise->getYRecordArea() + vkRegionChoise->getHeight() - 1 - compensation_y);
         QString value = stringList.join( " " );
         return value;
     }
