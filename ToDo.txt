@@ -1,9 +1,5 @@
 
 Area:
---Selektierter Anfasser markieren in dem man dem Pfeil oder dem Anfasser eine andere Farbe gibt.
-
-
-Area:
 --In der Aufnahme erscheint ab und an am unteren und rechten Rand eine grüne Linie.
 --Dies ist beim Videocodec vaapih264enc und vaapimpeg2enc der Fall wenn die Bereichsauswahl eine ungerade Größe enthält.
 
