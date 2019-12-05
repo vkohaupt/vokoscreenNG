@@ -182,6 +182,8 @@ private slots:
 
     void slot_newVersionAvailable(QString update);
 
+    void afterWindowShown();
+
 
 signals:
     void signal_close();

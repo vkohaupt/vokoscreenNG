@@ -557,6 +557,13 @@ void QvkMainWindow::slot_vokoPlayer()
 void QvkMainWindow::showEvent( QShowEvent *event )
 {
     Q_UNUSED(event);
+    // Call slot "afterWindowShown" after the window has been shown
+    QMetaObject::invokeMethod( this, "afterWindowShown", Qt::ConnectionType::QueuedConnection );
+
+}
+
+void QvkMainWindow::afterWindowShown()
+{
     if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "wayland" )
     {
         qDebug().noquote() << global::nameOutput << tr( "Desktop session is a Wayland session" );
