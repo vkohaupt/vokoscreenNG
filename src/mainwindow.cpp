@@ -558,11 +558,11 @@ void QvkMainWindow::showEvent( QShowEvent *event )
 {
     Q_UNUSED(event);
     // Call slot "afterWindowShown" after the window has been shown
-    QMetaObject::invokeMethod( this, "afterWindowShown", Qt::ConnectionType::QueuedConnection );
+    QMetaObject::invokeMethod( this, "slot_afterWindowShown", Qt::ConnectionType::QueuedConnection );
 
 }
 
-void QvkMainWindow::afterWindowShown()
+void QvkMainWindow::slot_afterWindowShown()
 {
     if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "wayland" )
     {
