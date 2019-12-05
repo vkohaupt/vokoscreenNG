@@ -1,9 +1,4 @@
 
-Timer:
---Stop recording after in Verbindung mit Pause funktioniert nicht korrekt.
---AM/PM
-
-
 Windows:
 --Für den User wird eine sehr einfache Update Funktion benötigt.
   Ein Klick und das update muß installiert werden.
@@ -20,6 +15,10 @@ Windows:
 
 Bugs, Features und Hinweise aber nicht wirklich wichtig
 =======================================================
+
+Timer:
+----AM/PM
+
 Skalieren:
 --In der Combobox fehlt Benutzerdefiniert.
 

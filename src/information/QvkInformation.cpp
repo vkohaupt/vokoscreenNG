@@ -80,6 +80,7 @@ void QvkInformation::slot_cleanup()
 void QvkInformation::slot_timeFirstStart()
 {
     elapsedTime->restart();
+    int_summed = 0;
     ui->labelInfoRecordTime->setText("00:00:00");
 }
 
