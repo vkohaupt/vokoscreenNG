@@ -139,6 +139,8 @@ private:
 
     QString Pipeline_structured_output( QString pipeline );
 
+    bool onlyOnce = false;
+
 
 private slots:
     void slot_preStart();

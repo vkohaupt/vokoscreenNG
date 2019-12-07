@@ -564,21 +564,52 @@ void QvkMainWindow::showEvent( QShowEvent *event )
 
 void QvkMainWindow::slot_afterWindowShown()
 {
-    if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "wayland" )
+    if ( onlyOnce == false )
     {
-        qDebug().noquote() << global::nameOutput << tr( "Desktop session is a Wayland session" );
-        QMessageBox *messageBox = new QMessageBox();
-        QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
-        messageBox->setWindowIcon( icon );
-        messageBox->setWindowTitle( global::name + " " + global::version );
-        messageBox->setIcon( QMessageBox::Information );
-        messageBox->setText( tr( "Wayland desktop session detected" ) );
-        messageBox->setInformativeText( tr( "To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session" ) );
-        messageBox->exec();
-    }
-    else
-    {
-        qDebug().noquote() << global::nameOutput << "Desktop session is a X11 session";
+
+        if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "wayland" )
+        {
+            qDebug().noquote() << global::nameOutput << tr( "Desktop session is a Wayland session" );
+            QMessageBox *messageBox = new QMessageBox();
+            QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
+            messageBox->setWindowIcon( icon );
+            messageBox->setWindowTitle( global::name + " " + global::version );
+            messageBox->setIcon( QMessageBox::Information );
+            messageBox->setText( tr( "Wayland desktop session detected" ) );
+            messageBox->setInformativeText( tr( "To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session" ) );
+            messageBox->exec();
+        }
+        else
+        {
+            qDebug().noquote() << global::nameOutput << "Desktop session is a X11 session";
+        }
+
+        onlyOnce = true;
+
+        // This is a hack for gnome
+        // Problem: At the first start of area, the Gnome menu hide.
+        // Hack begin
+        if ( ui->radioButtonScreencastArea->isChecked() == true )
+        {
+            ui->radioButtonScreencastFullscreen->click();
+            ui->radioButtonScreencastArea->click();
+            return;
+        }
+
+        if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
+        {
+            ui->radioButtonScreencastArea->click();
+            ui->radioButtonScreencastFullscreen->click();
+            return;
+        }
+
+        if ( ui->radioButtonScreencastWindow->isChecked() == true )
+        {
+            ui->radioButtonScreencastArea->click();
+            ui->radioButtonScreencastWindow->click();
+            return;
+        }
+        // Hack end
     }
 }
 #endif
