@@ -6,6 +6,10 @@ Aufnahme 1920x1050 --> 1280x1024
 Abspielen im Player im Vollbildmodus.
 
 
+Bereichsanzeige:
+--Unter Gnome kann man die Bereichsanzeige nach unten über die Bildschirmgrenze verschieben.
+
+
 Windows:
 --Für den User wird eine sehr einfache Update Funktion benötigt.
   Ein Klick und das update muß installiert werden.
