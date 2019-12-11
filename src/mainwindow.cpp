@@ -566,6 +566,7 @@ void QvkMainWindow::slot_afterWindowShown()
 {
     if ( onlyOnce == false )
     {
+        onlyOnce = true;
 
         if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "wayland" )
         {
@@ -584,32 +585,33 @@ void QvkMainWindow::slot_afterWindowShown()
             qDebug().noquote() << global::nameOutput << "Desktop session is a X11 session";
         }
 
-        onlyOnce = true;
-
         // This is a hack for gnome
         // Problem: At the first start of area, the Gnome menu hide.
         // Hack begin
-        if ( ui->radioButtonScreencastArea->isChecked() == true )
+        if ( qgetenv( "XDG_CURRENT_DESKTOP" ) == "GNOME" )
         {
-            ui->radioButtonScreencastFullscreen->click();
-            ui->radioButtonScreencastArea->click();
-            return;
-        }
+            if ( ui->radioButtonScreencastArea->isChecked() == true )
+            {
+                ui->radioButtonScreencastFullscreen->click();
+                ui->radioButtonScreencastArea->click();
+                return;
+            }
 
-        if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
-        {
-            ui->radioButtonScreencastArea->click();
-            ui->radioButtonScreencastFullscreen->click();
-            return;
-        }
+            if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
+            {
+                ui->radioButtonScreencastArea->click();
+                ui->radioButtonScreencastFullscreen->click();
+                return;
+            }
 
-        if ( ui->radioButtonScreencastWindow->isChecked() == true )
-        {
-            ui->radioButtonScreencastArea->click();
-            ui->radioButtonScreencastWindow->click();
-            return;
+            if ( ui->radioButtonScreencastWindow->isChecked() == true )
+            {
+                ui->radioButtonScreencastArea->click();
+                ui->radioButtonScreencastWindow->click();
+                return;
+            }
         }
-        // Hack end
+        // Hack end */
     }
 }
 #endif
