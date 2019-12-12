@@ -588,7 +588,7 @@ void QvkMainWindow::slot_afterWindowShown()
         // This is a hack for gnome
         // Problem: At the first start of area, the Gnome menu hide.
         // Hack begin
-        if ( qgetenv( "XDG_CURRENT_DESKTOP" ) == "GNOME" )
+        if ( qgetenv( "XDG_CURRENT_DESKTOP" ).toLower() == "gnome" )
         {
             if ( ui->radioButtonScreencastArea->isChecked() == true )
             {
