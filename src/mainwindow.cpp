@@ -562,6 +562,7 @@ void QvkMainWindow::showEvent( QShowEvent *event )
 
 }
 
+
 void QvkMainWindow::slot_afterWindowShown()
 {
     if ( onlyOnce == false )
@@ -585,11 +586,15 @@ void QvkMainWindow::slot_afterWindowShown()
             qDebug().noquote() << global::nameOutput << "Desktop session is a X11 session";
         }
 
-        // This is a hack for gnome
-        // Problem: At the first start of area, the Gnome menu hide.
-        // Hack begin
+        // This is only for GNOME
         if ( qgetenv( "XDG_CURRENT_DESKTOP" ).toLower() == "gnome" )
         {
+            // Problem 1. Limit the availableSize without the top Menue
+            QScreen *screen = QGuiApplication::primaryScreen();
+            vkRegionChoise->screenWidth  = screen->availableSize().width();
+            vkRegionChoise->screenHeight = screen->availableSize().height();
+
+            // Problem 2. At the first start of area, the Gnome menu hide.
             if ( ui->radioButtonScreencastArea->isChecked() == true )
             {
                 ui->radioButtonScreencastFullscreen->click();
@@ -611,7 +616,6 @@ void QvkMainWindow::slot_afterWindowShown()
                 return;
             }
         }
-        // Hack end */
     }
 }
 #endif
