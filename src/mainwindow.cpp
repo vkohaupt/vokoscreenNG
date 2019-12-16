@@ -1021,7 +1021,7 @@ QString QvkMainWindow::VK_getXimagesrc()
                    << "startx=" + QString::number( vkRegionChoise->getXRecordArea() )
                    << "starty=" + QString::number( vkRegionChoise->getYRecordArea() + gnomehack )
                    << "endx="   + QString::number( vkRegionChoise->getXRecordArea() + vkRegionChoise->getWidth() - 1 - compensation_x)
-                   << "endy="   + QString::number( vkRegionChoise->getYRecordArea() + vkRegionChoise->getHeight() - 1 - compensation_y);
+                   << "endy="   + QString::number( vkRegionChoise->getYRecordArea() + gnomehack + vkRegionChoise->getHeight() - 1 - compensation_y);
         QString value = stringList.join( " " );
         return value;
     }
