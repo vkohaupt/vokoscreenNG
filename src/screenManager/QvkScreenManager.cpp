@@ -33,6 +33,7 @@ QvkScreenManager::QvkScreenManager()
 {
     connect( qApp, SIGNAL( screenAdded( QScreen* ) ),   this, SLOT( slot_screen_count_changed() ) );
     connect( qApp, SIGNAL( screenRemoved( QScreen* ) ), this, SLOT( slot_screen_count_changed() ) );
+    connect( qApp, SIGNAL( primaryScreenChanged( QScreen* ) ), this, SLOT( slot_screen_count_changed() ) );
 }
 
 

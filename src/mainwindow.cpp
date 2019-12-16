@@ -458,8 +458,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     VK_gst_Elements_available();
 
     QvkScreenManager *screenManager = new QvkScreenManager;
-    connect( screenManager, SIGNAL( signal_clear_widget() ),                          this, SLOT( slot_clearWidgets() ) );
-    connect( screenManager, SIGNAL( signal_screen_count_changed( QString, QString) ), this, SLOT( slot_screenCountChanged( QString, QString ) ) );
+    connect( screenManager, SIGNAL( signal_clear_widget() ),                          ui->comboBoxScreencastScreen, SLOT( clear() ) );
+    connect( screenManager, SIGNAL( signal_screen_count_changed( QString, QString) ), this,                         SLOT( slot_screenCountChanged( QString, QString ) ) );
     emit qApp->screenAdded(Q_NULLPTR);
 
 
@@ -1941,12 +1941,6 @@ QString QvkMainWindow::get_height_From_Screen()
 {
     QString value = ui->comboBoxScreencastScreen->currentData().toString().section( " ", 3, 3 ).split( "=" ).at( 1 );
     return value;
-}
-
-
-void QvkMainWindow::slot_clearWidgets()
-{
-    ui->comboBoxScreencastScreen->clear();
 }
 
 

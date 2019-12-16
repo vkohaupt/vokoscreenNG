@@ -151,7 +151,6 @@ private slots:
     void slot_Continue();
     void slot_Play();
     void slot_Folder();
-    void slot_clearWidgets();
     void slot_screenCountChanged( QString, QString );
     void slot_audioIconOnOff(bool state );
     void slot_audioRedCross();
