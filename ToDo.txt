@@ -1,8 +1,4 @@
 
-Bereichsanzeige:
---Unter Gnome zeichnet die Bereichsanzeige nach oben hin zuviel auf.
-
-
 Player:
 --Skaliert das Video nicht im Vollbildmodus, wenn eine Aufnahme von einer hohe Auflösung zu einer kleine Auflösung skaliert wurde.
 Beispiel:
