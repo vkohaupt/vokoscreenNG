@@ -1006,13 +1006,20 @@ QString QvkMainWindow::VK_getXimagesrc()
             compensation_y = 1;
         }
 
+        qreal gnomehack = 0;
+        if ( qgetenv( "XDG_CURRENT_DESKTOP" ).toLower() == "gnome" )
+        {
+            QList<QScreen *> screen = QGuiApplication::screens();
+            gnomehack = screen.at( ui->comboBoxScreencastScreen->currentIndex() )->availableGeometry().top();
+        }
+
         QStringList stringList;
         stringList << "ximagesrc"
                    << "display-name=" + qgetenv( "DISPLAY" )
                    << "use-damage=false"
                    << "show-pointer=" + showPointer
                    << "startx=" + QString::number( vkRegionChoise->getXRecordArea() )
-                   << "starty=" + QString::number( vkRegionChoise->getYRecordArea() )
+                   << "starty=" + QString::number( vkRegionChoise->getYRecordArea() + gnomehack )
                    << "endx="   + QString::number( vkRegionChoise->getXRecordArea() + vkRegionChoise->getWidth() - 1 - compensation_x)
                    << "endy="   + QString::number( vkRegionChoise->getYRecordArea() + vkRegionChoise->getHeight() - 1 - compensation_y);
         QString value = stringList.join( " " );
