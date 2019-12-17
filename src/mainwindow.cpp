@@ -80,7 +80,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderFrames->setObjectName("sliderFrames");
     sliderFrames->setTracking( true );
     sliderFrames->setMinimum( 10 );
-    sliderFrames->setMaximum( 99 );
+    sliderFrames->setMaximum( 144 );
     sliderFrames->setValue( 25 );
     sliderFrames->show();
 
