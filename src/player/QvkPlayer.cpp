@@ -482,6 +482,7 @@ void QvkPlayer::slot_setNewImage( QImage image )
         return;
     }
 
+    // Testvideos find in source code under /vokoscreenNG/Videos-to-test-the-player/
     // Example:
     // Area:450x800 scale:1280*720
     if ( ( ratio != 1 ) and ( ratioSize.width() < ratioSize.height() ) )
