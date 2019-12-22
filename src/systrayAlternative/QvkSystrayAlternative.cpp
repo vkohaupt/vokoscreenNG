@@ -188,5 +188,5 @@ void QvkSystrayAlternative::slot_setPauseIcon( bool )
 void QvkSystrayAlternative::slot_ShowInSystrayAlternativeReset( bool )
 {
     move( 0, 0 );
-    sliderShowInSystrayAlternative->setValue( 32 );
+    sliderShowInSystrayAlternative->setValue( 48 );
 }
