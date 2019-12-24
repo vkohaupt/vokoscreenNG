@@ -1,18 +1,18 @@
 
-Player:
---Skaliert das Video nicht im Vollbildmodus, wenn eine Aufnahme von einer hohe Auflösung zu einer kleine Auflösung skaliert wurde.
-Beispiel:
-Aufnahme 1920x1050 --> 1280x1024
-Abspielen im Player im Vollbildmodus.
+Release Linux:
+--Onlinehilfe Deutsch
+--Onlinehilfe Englisch
+--In Global.cpp Version ändern auf 3.0.0
+--Auf dem Server Inhalt der Datei Version ändern in 3.0.0
+
+
+Release Windows:
+--Nach Linux Release
 
 
 Windows:
 --Für den User wird eine sehr einfache Update Funktion benötigt.
   Ein Klick und das update muß installiert werden.
-
-
-Interface:
---Schnittstelle für Erweiterungen erstellen
 
 
 Windows:
@@ -25,6 +25,15 @@ Bugs, Features und Hinweise aber nicht wirklich wichtig
 
 Timer:
 ----AM/PM
+
+Interface:
+--Schnittstelle für Erweiterungen nochmals testen
+
+Player:
+--Skaliert das Video nicht im Vollbildmodus, wenn eine Aufnahme von einer hohe Auflösung zu einer kleine Auflösung skaliert wurde.
+Beispiel:
+Aufnahme 1920x1050 --> 1280x1024
+Abspielen im Player im Vollbildmodus.
 
 Skalieren:
 --In der Combobox fehlt Benutzerdefiniert.
