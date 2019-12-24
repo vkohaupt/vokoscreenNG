@@ -35,7 +35,7 @@
     <name>QvkCountdown</name>
     <message>
         <source>Countdown</source>
-        <translation>Compte enrere </translation>
+        <translation>Compte enrere</translation>
     </message>
 </context>
 <context>
@@ -242,7 +242,7 @@
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Compte enrere </translation>
+        <translation>Compte enrere</translation>
     </message>
     <message>
         <source>Video size:</source>
@@ -270,7 +270,7 @@
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Còdec del vídeo </translation>
+        <translation>Còdec del vídeo</translation>
     </message>
     <message>
         <source>Format</source>
