@@ -2,6 +2,7 @@
 Release Linux:
 --Onlinehilfe Deutsch
 --Onlinehilfe Englisch
+--Mit Transifex abgleichen
 --In Global.cpp Version ändern auf 3.0.0
 --Auf dem Server Inhalt der Datei Version ändern in 3.0.0
 
