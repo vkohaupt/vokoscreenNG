@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
 
     QTranslator translator;
     translator.load( QLocale::system().name(), ":/language" );
-    //app.installTranslator( &translator );
+    app.installTranslator( &translator );
 
     QvkMainWindow w;
     w.show();
