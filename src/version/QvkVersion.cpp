@@ -39,7 +39,7 @@ void QvkVersion::slot_downloadFinished( QNetworkReply *reply )
        if ( !stringList.empty() )
        {
            QString update;
-           int i = stringList.indexOf( QRegExp( "Update*", Qt::CaseInsensitive, QRegExp::Wildcard ) );
+           int i = stringList.indexOf( QRegExp( "Version*", Qt::CaseInsensitive, QRegExp::Wildcard ) );
            if ( i > -1 )
            {
               update = stringList.at(i).section( "=", 1, 1 );
