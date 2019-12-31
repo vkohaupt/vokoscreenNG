@@ -1,12 +1,4 @@
 
-Release Linux:
---Onlinehilfe Deutsch
---Onlinehilfe Englisch
---Mit Transifex abgleichen
---In Global.cpp Version ändern auf 3.0.0
---Auf dem Server Inhalt der Datei Version ändern in 3.0.0
-
-
 Release Windows:
 --Nach Linux Release
 
@@ -19,6 +11,15 @@ Windows:
 Windows:
 --Installer wird benötigt.
   https://doc.qt.io/qtinstallerframework/ifw-tutorial.html
+
+
+Für ein zukünftige Release muß zuvor folgendes abgearbeitet werden
+==================================================================
+--Onlinehilfe Deutsch
+--Onlinehilfe Englisch
+--Mit Transifex abgleichen
+--In Global.cpp Version ändern.
+--Auf dem Server Inhalt der Datei Version ändern
 
 
 Bugs, Features und Hinweise aber nicht wirklich wichtig
