@@ -67,10 +67,12 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 * libX11-devel
 * gstreamer-devel
 
-
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-tab-1.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-tab-2.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-tab-3.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-tab-4.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-tab-5.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-tab-6.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-0.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-1.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-2.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-3.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-4.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-5.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-6.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-7.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-8.png)
