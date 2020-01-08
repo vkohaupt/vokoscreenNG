@@ -182,8 +182,9 @@ private slots:
     void slot_vokoPlayer();
 
     void slot_newVersionAvailable(QString update);
-
+#ifdef Q_OS_LINUX
     void slot_afterWindowShown();
+#endif
 
 
 signals:
