@@ -275,8 +275,7 @@ void QvkHelp::slot_showHelp( QString tempPathFileName )
         QMessageBox::information( nullptr, "Help error", "QvkHelp::slot_showHelp\n" + tempPathFileName + "\n" + file.errorString() );
     }
 
-    QTextStream textStream( &file );
-    QString value = textStream.readAll();
+    QString value = QString::fromUtf8( file.readAll() );
 
     // Antialiasing for Font
     QFont font = uiHelp->textBrowser->font();
