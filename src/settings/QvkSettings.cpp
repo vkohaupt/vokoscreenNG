@@ -24,6 +24,8 @@
 #include "global.h"
 #include "ui_formMainWindow.h"
 
+#include <QFileInfo>
+
 QvkSettings::QvkSettings()
 {
     // Dient nur zum anlegen des Profils damit das log erstellt werden kann
