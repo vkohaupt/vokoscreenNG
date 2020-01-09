@@ -67,6 +67,9 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 * libX11-devel
 * gstreamer-devel
 
+## Packaging status
+* [Fedora](https://src.fedoraproject.org/rpms/vokoscreenNG): `sudo dnf install vokoscreenNG`
+
 ![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-0.png)
 ![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-1.png)
 ![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-2.png)
