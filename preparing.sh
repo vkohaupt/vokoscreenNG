@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This file is only for the main developer, you can nothing do with it.
+
 # Testen ob lupdate auf dem System vorhanden ist.
 progname=$(which lupdate-qt5)
 if [ $? = 0 ]; then
