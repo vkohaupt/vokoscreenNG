@@ -1,23 +1,30 @@
 # vokoscreenNG (New Generation)
 
-* For **Linux** and **Windows**
-* vokoscreenNG is based of Qt and GStreamer and was rewritten from scratch.
-* The old vokoscreen 2.5.0 https://github.com/vkohaupt/vokoscreen is the last version with ffmpeg and will receive no further updates.
+Screencasting tool for Windows and Linux, with user-friendly GUI.
 
-## Translate
-Only **100% translated** languages will be added to vokoscreenNG.
-You can translate to anytime, your translation will be included in the next bugfix release.
-Please translate only at Transifex, it is very easy.
-https://www.transifex.com/vkohaupt/vokoscreen/
+## History
+VokoscreenNG is based on Qt and GStreamer and was rewritten from scratch. The [old vokoscreen](https://github.com/vkohaupt/vokoscreen) is no longer developed. 2.5.0 is the last version, based on ffmpeg.
 
+## Translations
+
+You can translate any time [at Transifex](https://www.transifex.com/vkohaupt/vokoscreen/). Your translation will be included in the next bugfix release. Only **100% translated** languages will be added to vokoscreenNG.
 
 ## Code Contributions
-If you want to contribute code, you are free to do so. Your source code must be in separate files and published under the MIT-License.
-Every file must include the License-header.
-The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/blob/3.0/Third-Party-License/MIT-License
+If you want to contribute code, you are free to do so. Your source code must be in separate files and published under the MIT license. Every file must include [the License header](https://github.com/vkohaupt/vokoscreenNG/blob/3.0/Third-Party-License/MIT-License).
 
+## Screenshots
 
-## Windows 10
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-0.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-1.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-2.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-3.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-4.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-5.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-6.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-7.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-8.png)
+
+## Building on Windows 10
 ### Requirements:
 * The vokoscreenNG Player needs a codec pack.
 * I test with this codec pack:
@@ -35,7 +42,7 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 * GST_PLUGIN_PATH=C:\gstreamer\1.0\x86\lib\gstreamer-1.0
 * GSTREAMER_1_0_ROOT_X86=C:\gstreamer\1.0\x86\
 
-## Linux
+## Building on Linux
 ### Requirements:
 * Qt5 >= 5.9.4
 * pulseaudio
@@ -66,13 +73,3 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 * libqt5-linguist
 * libX11-devel
 * gstreamer-devel
-
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-0.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-1.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-2.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-3.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-4.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-5.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-6.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-7.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-8.png)
