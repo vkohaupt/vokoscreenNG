@@ -1,6 +1,15 @@
 #!/bin/bash
 
-# This file is only for the main developer, you can nothing do with it.
+# This file is only for the main developer and has no use for other.
+# What does preparing.sh?
+# Part 1
+# preparing.s looks for new words to be translated and writes them to
+# the file vokoscreen-version-3.ts for later translation on transifex.
+# Part 2
+# Completed translations are then downloaded from Transifex and
+# written to screencast.qrc.
+
+# Hint: This file contains a mixture of German and English
 
 # Testen ob lupdate auf dem System vorhanden ist.
 progname=$(which lupdate-qt5)
