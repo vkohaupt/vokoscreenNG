@@ -1,4 +1,6 @@
 
+The ToDo list is only for the main developer and can change daily.
+
 Allgemein:
 --Nachschauen inwiefern der Ordner Deployment benötigt wird, da dies ja im Repro vokoscreenIFW enthalten ist.
 
