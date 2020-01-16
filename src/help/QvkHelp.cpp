@@ -61,21 +61,11 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : u
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
 
-#ifdef Q_OS_LINUX
     QStringList helpStringList;
     helpStringList << "https:/"
                    << "vokoscreen.volkoh.de"
                    << "3.0"
                    << "help";
-#endif
-
-#ifdef Q_OS_WIN
-    QStringList helpStringList;
-    helpStringList << "http:/"
-                   << "vokoscreen.volkoh.de"
-                   << "3.0"
-                   << "help";
-#endif
 
     vk_helpPath = helpStringList.join( "/" ).append( "/");
 

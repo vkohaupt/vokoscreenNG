@@ -12,6 +12,9 @@ PATH=%PATH%;C:\Qt\Qt5.9.4\Tools\mingw530_32\bin
 
 C:\Qt\Qt5.9.4\5.9.4\mingw53_32\bin\windeployqt.exe --release vokoscreenNG.exe
 
+copy C:\Qt\Qt5.9.4\Tools\mingw530_32\opt\bin\ssleay32.dll
+copy C:\Qt\Qt5.9.4\Tools\mingw530_32\opt\bin\libeay32.dll
+
 copy C:\gstreamer\1.0\x86\bin\libbz2.dll
 copy C:\gstreamer\1.0\x86\bin\libffi-7.dll
 copy C:\gstreamer\1.0\x86\bin\libFLAC-8.dll
