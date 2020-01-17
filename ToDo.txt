@@ -2,6 +2,10 @@
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
 Allgemein:
+--Temporäre Ordner in /tmp sollten nach gebrauch entfernt werden nicht erst beim schließen von vokoscreeenNG.
+
+
+Allgemein:
 --Nachschauen inwiefern der Ordner Deployment benötigt wird, da dies ja im Repro vokoscreenIFW enthalten ist.
 
 
