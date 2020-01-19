@@ -18,10 +18,6 @@ Allgemein:
 --Temporäre Ordner in /tmp sollten nach gebrauch entfernt werden nicht erst beim schließen von vokoscreeenNG.
 
 
-Allgemein:
---Nachschauen inwiefern der Ordner Deployment benötigt wird, da dies ja im Repro vokoscreenIFW enthalten ist.
-
-
 Windows:
 --Für den User wird eine sehr einfache Update Funktion benötigt.
   Ein Klick und das update muß installiert werden.
