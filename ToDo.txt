@@ -1,6 +1,10 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
+Homepage:
+--Einen Menüpunkt Features erstellen
+
+
 Allgemein:
 --Temporäre Ordner in /tmp sollten nach gebrauch entfernt werden nicht erst beim schließen von vokoscreeenNG.
 
@@ -9,18 +13,9 @@ Allgemein:
 --Nachschauen inwiefern der Ordner Deployment benötigt wird, da dies ja im Repro vokoscreenIFW enthalten ist.
 
 
-Release Windows:
---Nach Linux Release
-
-
 Windows:
 --Für den User wird eine sehr einfache Update Funktion benötigt.
   Ein Klick und das update muß installiert werden.
-
-
-Windows:
---Installer wird benötigt.
-  https://doc.qt.io/qtinstallerframework/ifw-tutorial.html
 
 
 Für ein zukünftige Release muß zuvor folgendes abgearbeitet werden
