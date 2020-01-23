@@ -6,6 +6,12 @@ Release 3.0.1:
 --Nach der https Weiterleitung wird die 3.0.0 nicht mehr auf die Onlinehilfe zugreifen können.
 
 
+MP4 I420:
+--funktioniert mit videoscale
+  ! videoscale \
+  ! capsfilter caps=video/x-raw,width=1920,height=1080,format=I420 \
+
+
 Linux:
 --Installer erstellen
 
