@@ -100,15 +100,81 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     connect( mediaPlayer, SIGNAL( positionChanged( qint64 ) ),           this, SLOT( slot_positionChanged( qint64 ) ) );
     connect( mediaPlayer, SIGNAL( stateChanged( QMediaPlayer::State ) ), this, SLOT( slot_stateChanged( QMediaPlayer::State ) ) );
     connect( mediaPlayer, SIGNAL( volumeChanged( int ) ),                this, SLOT( slot_volumeChanged( int ) ) ); // Funktioniert nicht mit Pulse
-    connect( mediaPlayer, QOverload<QMediaPlayer::Error>::of(&QMediaPlayer::error),
-        [=](QMediaPlayer::Error error){
-                                        Q_UNUSED(error);
-                                        QMessageBox msgBox( this );
-                                        msgBox.setText( "To play this video a codec is needed. \n Please install a codec pack." );
-                                        msgBox.setWindowTitle( global::name + " " + global::version );
-                                        msgBox.setIcon( QMessageBox::Information );
-                                        msgBox.exec();
-                                      });
+    connect( mediaPlayer, QOverload<QMediaPlayer::Error>::of(&QMediaPlayer::error), [=](QMediaPlayer::Error error)
+    {
+        switch ( error )
+        {
+            case QMediaPlayer::NoError:
+            {
+               qDebug() << global::nameOutput + " " + "[Player]" + " " + "No error has occurred.";
+               break;
+            }
+            case QMediaPlayer::ResourceError:
+            {
+               qDebug() << global::nameOutput + " " + "[Player]" + " " + "To play this video a codec is needed. "
+                                                                         "Please install a codec pack.";
+               QMessageBox msgBox( this );
+               msgBox.setText( "To play this video a codec is needed.\n"
+                               "Please install a codec pack." );
+               msgBox.setWindowTitle( global::name + " " + global::version );
+               msgBox.setIcon( QMessageBox::Information );
+               msgBox.exec();
+
+               break;
+            }
+            case QMediaPlayer::FormatError:
+            {
+               qDebug() << global::nameOutput + " " + "[Player]" + " " + "The format of a media resource isn't (fully) supported. Playback may still be possible, but without an audio or video component.";
+               QMessageBox msgBox( this );
+               msgBox.setText( "The format of a media resource isn't (fully) supported.\n"
+                               "Playback may still be possible, but without an audio or video component." );
+               msgBox.setWindowTitle( global::name + " " + global::version );
+               msgBox.setIcon( QMessageBox::Information );
+               msgBox.exec();
+               break;
+            }
+            case QMediaPlayer::NetworkError:
+            {
+               qDebug() << global::nameOutput + " " + "[Player]" + " " + "A network error occurred.";
+               QMessageBox msgBox( this );
+               msgBox.setText( "A network error occurred." );
+               msgBox.setWindowTitle( global::name + " " + global::version );
+               msgBox.setIcon( QMessageBox::Information );
+               msgBox.exec();
+               break;
+            }
+            case QMediaPlayer::AccessDeniedError:
+            {
+               qDebug() << global::nameOutput + " " + "[Player]" + " " + "There are not the appropriate permissions to play a media resource.";
+               QMessageBox msgBox( this );
+               msgBox.setText( "There are not the appropriate permissions to play a media resource." );
+               msgBox.setWindowTitle( global::name + " " + global::version );
+               msgBox.setIcon( QMessageBox::Information );
+               msgBox.exec();
+               break;
+            }
+            case QMediaPlayer::ServiceMissingError:
+            {
+               qDebug() << global::nameOutput + " " + "[Player]" + " " + "A valid playback service was not found, playback cannot proceed.";
+               QMessageBox msgBox( this );
+               msgBox.setText( "A valid playback service was not found, playback cannot proceed." );
+               msgBox.setWindowTitle( global::name + " " + global::version );
+               msgBox.setIcon( QMessageBox::Information );
+               msgBox.exec();
+               break;
+            }
+            case QMediaPlayer::MediaIsPlaylist:
+            {
+               qDebug() << global::nameOutput + " " + "[Player]" + " " + "QMediaPlayer::MediaIsPlaylist";
+               QMessageBox msgBox( this );
+               msgBox.setText( "QMediaPlayer::MediaIsPlaylist" );
+               msgBox.setWindowTitle( global::name + " " + global::version );
+               msgBox.setIcon( QMessageBox::Information );
+               msgBox.exec();
+               break;
+            }
+        }
+    } );
 
     connect( sliderVideo, SIGNAL( sliderPressed() ),   this, SLOT( slot_sliderVideoPressed() ) );
     connect( sliderVideo, SIGNAL( sliderReleased() ),  this, SLOT( slot_sliderVideoReleased() ) );
