@@ -50,7 +50,7 @@ void QvkLocale::slot_parse( QString tempPathFileName )
     QFile file( tempPathFileName );
     if( !file.open( QIODevice::ReadOnly ) )
     {
-        QMessageBox::information( nullptr, "Locale error", "QvkLocale::slot_parse\n" + tempPathFileName + "\n" + file.errorString() );
+        return;
     }
 
     QTextStream textStream( &file );
