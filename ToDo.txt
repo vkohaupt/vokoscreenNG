@@ -8,9 +8,6 @@ Release 3.0.1:
 Linux:
 --Bei dunklen Themes ist das Icon auf Tab Timer schlecht sichtbar
 
-GUI:
---Schalter einbauen der zwischen Englisch und Deutsch wechseln kann
-
 Update Meldung:
 --Notification over Systray
 
