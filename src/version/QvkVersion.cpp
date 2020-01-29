@@ -16,10 +16,10 @@ void QvkVersion::slot_doDownload( bool checked )
     }
 
 #ifdef Q_OS_LINUX
-    QNetworkRequest request( QUrl( "http://vokoscreen.volkoh.de/3.0/version/linux/VERSION" ) );
+    QNetworkRequest request( QUrl( "https://vokoscreen.volkoh.de/3.0/version/linux/VERSION" ) );
 #endif
 #ifdef Q_OS_WIN
-    QNetworkRequest request( QUrl( "http://vokoscreen.volkoh.de/3.0/version/windows/VERSION" ) );
+    QNetworkRequest request( QUrl( "https://vokoscreen.volkoh.de/3.0/version/windows/VERSION" ) );
 #endif
     manager.get( request );
 }
