@@ -99,6 +99,7 @@ void QvkHelp::slot_parse_locale( QStringList list )
     if ( list.contains( QLocale::system().name() ) )
     {
         language = QLocale::system().name();
+        //language = "en"; //****************************************** Muß wieder entfrnt werden
     }
     else
     {

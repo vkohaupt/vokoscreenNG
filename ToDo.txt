@@ -5,6 +5,14 @@ Release 3.0.1:
 --Eine oder zwei Wochen nach dem Release die https Weiterleitung aktivieren
 --Nach der https Weiterleitung wird die 3.0.0 nicht mehr auf die Onlinehilfe zugreifen können.
 
+Linux:
+--Bei dunklen Themes ist das Icon auf Tab Timer schlecht sichtbar
+
+GUI:
+--Schalter einbauen der zwischen Englisch und Deutsch wechseln kann
+
+Update Meldung:
+--Notification over Systray
 
 Linux:
 --Installer erstellen
