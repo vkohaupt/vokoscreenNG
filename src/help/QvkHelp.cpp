@@ -145,7 +145,6 @@ bool QvkHelp::eventFilter(QObject *object, QEvent *event)
 
         QString language;
         if ( ui->comboBoxOnlineHelp->findText( "(" + QLocale::system().name() + ")", Qt::MatchEndsWith ) > -1 )
-//        if ( ui->comboBoxOnlineHelp->findText( "(" + QLocale::system().name() + ")" ) )
         {
             language = QLocale::system().name();
         }
