@@ -69,6 +69,7 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 
 ## Packaging status
 * [Fedora](https://src.fedoraproject.org/rpms/vokoscreenNG): `sudo dnf install vokoscreenNG`
+* [openSUSE](https://software.opensuse.org/package/vokoscreenNG) (Tumbleweed and Leap 15.2): `sudo zypper install vokoscreenNG`
 
 ![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-0.png)
 ![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-1.png)
