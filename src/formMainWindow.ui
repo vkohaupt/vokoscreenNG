@@ -1884,7 +1884,7 @@
               <item>
                <widget class="QLabel" name="label_20">
                 <property name="text">
-                 <string notr="true">Online help</string>
+                 <string notr="true">Online-Help</string>
                 </property>
                </widget>
               </item>
