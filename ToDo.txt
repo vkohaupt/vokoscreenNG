@@ -10,6 +10,7 @@ Linux:
 
 Update Meldung:
 --Notification over Systray
+--Realisierbar mit QSystemTrayIcon::showMessage
 
 Linux:
 --Installer erstellen
@@ -21,6 +22,7 @@ Homepage:
 
 Allgemein:
 --Temporäre Ordner in /tmp sollten nach gebrauch entfernt werden nicht erst beim schließen von vokoscreeenNG.
+--Betrifft nur die Hilfe.
 
 
 Windows:
