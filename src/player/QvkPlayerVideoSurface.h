@@ -36,7 +36,13 @@ class QvkPlayerVideoSurface: public QAbstractVideoSurface
     QList<QVideoFrame::PixelFormat> supportedPixelFormats(QAbstractVideoBuffer::HandleType type) const
     {
        (void)type;
+#ifdef Q_OS_LINUX
        return QList<QVideoFrame::PixelFormat>() << QVideoFrame::Format_RGB24;
+#endif
+
+#ifdef Q_OS_WIN
+       return QList<QVideoFrame::PixelFormat>() << QVideoFrame::Format_RGB32;
+#endif
     }
 
     bool present(const QVideoFrame &frame)
