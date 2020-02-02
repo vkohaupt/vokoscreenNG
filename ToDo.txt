@@ -5,6 +5,9 @@ Release 3.0.1:
 --Eine oder zwei Wochen nach dem Release die https Weiterleitung aktivieren
 --Nach der https Weiterleitung wird die 3.0.0 nicht mehr auf die Onlinehilfe zugreifen können.
 
+Windows:
+--Der Radiobutton Fenster wird nach einer Aufnahme aktiviert, das muß unterbunden werden.
+
 Vollbild:
 --In einer Virtuelbox Sitzung kann die Auflösung auch ungerade sein, x264 mag aber keine ungeraden Größen.
 
