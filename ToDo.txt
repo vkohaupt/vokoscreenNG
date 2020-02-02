@@ -5,8 +5,14 @@ Release 3.0.1:
 --Eine oder zwei Wochen nach dem Release die https Weiterleitung aktivieren
 --Nach der https Weiterleitung wird die 3.0.0 nicht mehr auf die Onlinehilfe zugreifen können.
 
+Vollbild:
+--In einer Virtuelbox Sitzung kann die Auflösung auch ungerade sein, x264 mag aber keine ungeraden Größen.
+
 Audio:
---In der Aufnahme wird nur ein Kanal angelegt.
+--In der Aufnahme wird nur ein Kanal angelegt. --> In Bearbeitung: Unter Linux wird nun mit 2 Kanälen aufgezeichnet. Windows test steht noch aus.
+
+Windows Systray:
+--Icon für "Weiter" ist sehr schlecht zu erkennen.
 
 Linux:
 --Bei dunklen Themes ist das Icon auf Tab Timer schlecht sichtbar
