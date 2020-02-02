@@ -1731,7 +1731,7 @@ void QvkMainWindow::slot_Start()
         #ifdef Q_OS_WIN
             VK_PipelineList << VK_get_AudioSystem().append( " device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(0) +"'" );
         #endif
-VK_PipelineList << "audio/x-raw, channels=2";
+        VK_PipelineList << "audio/x-raw, channels=2";
         VK_PipelineList << "audioconvert";
         VK_PipelineList << "audiorate";
         VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
@@ -1746,14 +1746,14 @@ VK_PipelineList << "audio/x-raw, channels=2";
         {
             #ifdef Q_OS_LINUX
                 VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(x) );
-VK_PipelineList << "audio/x-raw, channels=2";
+                VK_PipelineList << "audio/x-raw, channels=2";
                 VK_PipelineList << "queue";
                 VK_PipelineList << "mix.";
             #endif
 
             #ifdef Q_OS_WIN
                 VK_PipelineList << VK_get_AudioSystem().append( " device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(x) +"'" );
-VK_PipelineList << "audio/x-raw, channels=2";
+                VK_PipelineList << "audio/x-raw, channels=2";
                 VK_PipelineList << "queue";
                 VK_PipelineList << "mix.";
             #endif
