@@ -7,7 +7,9 @@ Release 3.0.1:
 
 Windows:
 --Player: Schrift in Tooltip kann man nicht lesen, Weise Schrift auf Weißem Grund.
---Icon für Einzelbild ist nicht das richtige.
+
+Player:
+--Im Player sollten ebenfalls die tango icons benutzt werden.
 
 Vollbild:
 --In einer Virtuelbox Sitzung kann die Auflösung auch ungerade sein, x264 mag aber keine ungeraden Größen.
