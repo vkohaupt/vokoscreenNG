@@ -80,8 +80,8 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     ui->pushButtonPlay->setIcon( QIcon::fromTheme( "media-playback-start" , style()->standardIcon( QStyle::SP_MediaPlay ) ) );
     ui->pushButtonPause->setIcon( QIcon::fromTheme( "media-playback-pause", style()->standardIcon( QStyle::SP_MediaPause ) ) );
     ui->pushButtonStop->setIcon( QIcon::fromTheme( "media-playback-stop"  , style()->standardIcon( QStyle::SP_MediaStop ) ) );
-    ui->toolButtonFrameBackward->setIcon( QIcon::fromTheme( "go-previous",  style()->standardIcon( QStyle::SP_MediaSkipBackward ) ) );
-    ui->toolButtonFrameForward->setIcon( QIcon::fromTheme( "go-next",       style()->standardIcon( QStyle::SP_MediaSkipForward ) ) );
+    ui->toolButtonFrameBackward->setIcon( QIcon::fromTheme( "go-previous",  style()->standardIcon( QStyle::SP_MediaSeekBackward ) ) );
+    ui->toolButtonFrameForward->setIcon( QIcon::fromTheme( "go-next",       style()->standardIcon( QStyle::SP_MediaSeekForward ) ) );
     ui->toolButtonOpenFile->setIcon( QIcon::fromTheme( "document-open",     style()->standardIcon( QStyle::SP_FileIcon ) ) );
     ui->toolButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high"    , style()->standardIcon( QStyle::SP_MediaVolume ) ) );
     ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen", QIcon( ":/pictures/player/fullscreen.png" ) ) );
