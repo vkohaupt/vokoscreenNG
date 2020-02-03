@@ -1084,9 +1084,13 @@ QString QvkMainWindow::VK_getCapsFilter()
 
 QString QvkMainWindow::VK_getVideoScale()
 {
-    QString value = ui->comboBoxScale->currentText();
-    QStringList valuList = value.split( " " );
-    value = "videoscale ! capsfilter caps=video/x-raw,width=" + valuList.at(0) + ",height=" + valuList.at(2);
+    QString value = "";
+    if ( ui->checkBoxScale->isChecked() == true )
+    {
+        value = ui->comboBoxScale->currentText();
+        QStringList valuList = value.split( " " );
+        value = "videoscale ! capsfilter caps=video/x-raw,width=" + valuList.at(0) + ",height=" + valuList.at(2);
+    }
     return value;
 }
 
@@ -1710,10 +1714,7 @@ void QvkMainWindow::slot_Start()
     VK_PipelineList << VK_getXimagesrc();
     VK_PipelineList << VK_getCapsFilter();
     VK_PipelineList << "videoconvert";
-    if ( ui->checkBoxScale->isChecked() )
-    {
-       VK_PipelineList << VK_getVideoScale();
-    }
+    VK_PipelineList << VK_getVideoScale();
     VK_PipelineList << "videorate";
     VK_PipelineList << Vk_get_Videocodec_Encoder();
 
@@ -1771,6 +1772,7 @@ void QvkMainWindow::slot_Start()
     }
 
     VK_PipelineList << VK_getMuxer();
+    VK_PipelineList.removeAll( "" );
 
     QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
     VK_PipelineList << "filesink location=" + ui->lineEditVideoPath->text() + "/" + newVideoFilename;
