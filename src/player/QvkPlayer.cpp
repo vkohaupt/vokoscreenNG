@@ -537,7 +537,7 @@ void QvkPlayer::slot_setNewImage( QImage image )
     QSize ratioSize = getPixelaspectRatio();
     qreal ratio = (qreal)ratioSize.width() / (qreal)ratioSize.height();
     QScreen *screen = QGuiApplication::primaryScreen();
-    if ( ratio == 1 )
+    if ( ratio == 1.0 )
     {
         image.setDevicePixelRatio( screen->devicePixelRatio() );
         image = image.scaled( static_cast<int>( ui->framePlayer->width()*screen->devicePixelRatio() ),
@@ -551,7 +551,7 @@ void QvkPlayer::slot_setNewImage( QImage image )
     // Testvideos find in source code under /vokoscreenNG/Videos-to-test-the-player/
     // Example:
     // Area:450x800 scale:1280*720
-    if ( ( ratio != 1 ) and ( ratioSize.width() < ratioSize.height() ) )
+    if ( ( ratio != 1.0 ) and ( ratioSize.width() < ratioSize.height() ) )
     {
         // Adapt to the frame
         if ( ui->framePlayer->width() < (int)( (qreal)ui->framePlayer->height() * ( (qreal)image.width() / (qreal)image.height() * ratio ) * screen->devicePixelRatio() ) )
@@ -578,7 +578,7 @@ void QvkPlayer::slot_setNewImage( QImage image )
 
     // Example:
     // Area:800x320 scale:1280*720
-    if ( ( ratio != 1 ) and ( ratioSize.width() > ratioSize.height() ) )
+    if ( ( ratio != 1.0 ) and ( ratioSize.width() > ratioSize.height() ) )
     {
         // Adapt to the frame
         if ( ui->framePlayer->height() < (int)( (qreal)ui->framePlayer->width() * ( (qreal)image.height() / (qreal)image.width() / ratio ) * screen->devicePixelRatio() ) )
