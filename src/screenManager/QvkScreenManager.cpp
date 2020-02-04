@@ -69,7 +69,7 @@ void QvkScreenManager::slot_screen_count_changed()
                                  "with=" + Width + " " +
                                  "height=" + Height;
 
-            disconnect( screen.at(i), 0, 0, 0 );
+            disconnect( screen.at(i), nullptr, nullptr, nullptr );
             connect( screen.at(i), SIGNAL( geometryChanged( const QRect ) ), this, SLOT( slot_geometryChanged( const QRect ) ) );
 
             emit signal_screen_count_changed( stringText, stringData );
