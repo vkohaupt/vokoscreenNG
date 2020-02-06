@@ -1056,7 +1056,7 @@ QString QvkMainWindow::VK_getXimagesrc()
 QString QvkMainWindow::VK_getCapsFilter()
 {
    QStringList stringList;
-   stringList << "capsfilter caps=video/x-raw,framerate="
+   stringList << "capsfilter caps=video/x-raw, framerate="
               << QString::number( sliderFrames->value() )
               << "/1";
    return QString( stringList.join( "" ) );
@@ -1431,7 +1431,7 @@ QString QvkMainWindow::VK_scale()
           height = get_height_From_Screen().toInt() - ( get_height_From_Screen().toInt() % modulo ) + modulo;
         }
 
-        value = "videoscale ! capsfilter caps=video/x-raw, width=" + QString::number( width ) + ", height=" + QString::number( height );
+        value = "videoscale ! video/x-raw, width=" + QString::number( width ) + ", height=" + QString::number( height );
     }
 
     return value;
