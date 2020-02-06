@@ -1462,7 +1462,7 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << "speed-preset=" + ui->comboBoxx264Preset->currentText();
         list << "threads=" + vk_idealThreadCount;
         value = list.join( " " );
-        value.append( " ! capsfilter caps=video/x-h264, profile=baseline" );
+        value.append( " ! video/x-h264, profile=baseline" );
     }
 
     if ( encoder == "openh264enc" )
