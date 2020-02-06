@@ -126,16 +126,6 @@
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="4">
-                 <widget class="QToolButton" name="help_screencast_scale">
-                  <property name="toolTip">
-                   <string notr="true"/>
-                  </property>
-                  <property name="text">
-                   <string notr="true">Help</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="2" column="4">
                  <widget class="QToolButton" name="help_screencast_area">
                   <property name="text">
@@ -192,23 +182,6 @@
                    <property name="bottomMargin">
                     <number>0</number>
                    </property>
-                   <item>
-                    <widget class="QCheckBox" name="checkBoxScale">
-                     <property name="text">
-                      <string>Scale</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QComboBox" name="comboBoxScale">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="sizeAdjustPolicy">
-                      <enum>QComboBox::AdjustToContents</enum>
-                     </property>
-                    </widget>
-                   </item>
                   </layout>
                  </widget>
                 </item>
@@ -2532,8 +2505,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>scrollAreaAudioDevice</tabstop>
   <tabstop>comboBoxx264Preset</tabstop>
   <tabstop>help_screencast_videocodec</tabstop>
-  <tabstop>checkBoxScale</tabstop>
-  <tabstop>comboBoxScale</tabstop>
   <tabstop>checkBoxStartTime</tabstop>
   <tabstop>help_screencast_starttimer</tabstop>
   <tabstop>checkBoxStopRecordingAfter</tabstop>

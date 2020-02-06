@@ -412,8 +412,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( videoFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
 
-    ui->comboBoxScale->addItems( resolutionStringList );
-    connect( ui->checkBoxScale,   SIGNAL( toggled( bool ) ), ui->comboBoxScale, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->frameScale, SLOT( setDisabled( bool ) ) );
 
@@ -980,17 +978,6 @@ QString QvkMainWindow::VK_getXimagesrc()
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
-        int compensation_x = 0;
-        int compensation_y = 0;
-
-        // Number of pixels must be divisible by two
-        int width = vkRegionChoise->getWidth();
-        if ( ( width % 2 ) == 1 ) { compensation_x = 1; }
-
-        // Number of pixels must be divisible by two
-        int height = vkRegionChoise->getHeight();
-        if ( ( height % 2 ) == 1 ) { compensation_y = 1; }
-
         qreal gnomehack = 0;
         if ( qgetenv( "XDG_CURRENT_DESKTOP" ).toLower() == "gnome" )
         {
@@ -1005,8 +992,8 @@ QString QvkMainWindow::VK_getXimagesrc()
                    << "show-pointer=" + showPointer
                    << "startx=" + QString::number( vkRegionChoise->getXRecordArea() )
                    << "starty=" + QString::number( vkRegionChoise->getYRecordArea() + gnomehack )
-                   << "endx="   + QString::number( vkRegionChoise->getXRecordArea() + vkRegionChoise->getWidth() - 1 - compensation_x)
-                   << "endy="   + QString::number( vkRegionChoise->getYRecordArea() + gnomehack + vkRegionChoise->getHeight() - 1 - compensation_y);
+                   << "endx="   + QString::number( vkRegionChoise->getXRecordArea() + vkRegionChoise->getWidth() - 1 )
+                   << "endy="   + QString::number( vkRegionChoise->getYRecordArea() + gnomehack + vkRegionChoise->getHeight() - 1 );
         value = stringList.join( " " );
     }
 
@@ -1059,26 +1046,6 @@ QString QvkMainWindow::VK_getCapsFilter()
               << QString::number( sliderFrames->value() )
               << "/1";
    return QString( stringList.join( "" ) );
-}
-
-
-QString QvkMainWindow::VK_getVideoScale()
-{
-    QString value = "";
-    if ( ui->checkBoxScale->isChecked() == true )
-    {
-        value = ui->comboBoxScale->currentText();
-        QStringList valuList = value.split( " " );
-        value = "videoscale ! video/x-raw, width=" + valuList.at(0) + ", height=" + valuList.at(2);
-    }
-
-    QString encoder = ui->comboBoxVideoCodec->currentData().toString();
-    if ( ( encoder == "x264enc" ) and ( ui->checkBoxScale->isChecked() == false ) )
-    {
-        value = VK_scale();
-    }
-
-    return value;
 }
 
 
@@ -1461,6 +1428,7 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
     if ( encoder == "x264enc" )
     {
         QStringList list;
+        list << VK_scale() + " !";
         list << ui->comboBoxVideoCodec->currentData().toString();
         list << "qp-min=" + QString::number( sliderX264->value() );
         list << "qp-max=" + QString::number( sliderX264->value() );
@@ -1728,7 +1696,7 @@ void QvkMainWindow::slot_Start()
     VK_PipelineList << VK_getXimagesrc();
     VK_PipelineList << VK_getCapsFilter();
     VK_PipelineList << "videoconvert";
-    VK_PipelineList << VK_getVideoScale();
+    //VK_PipelineList << VK_getVideoScale();
     VK_PipelineList << "videorate";
     VK_PipelineList << Vk_get_Videocodec_Encoder();
 
