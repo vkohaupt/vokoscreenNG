@@ -1070,8 +1070,42 @@ QString QvkMainWindow::VK_getVideoScale()
     {
         value = ui->comboBoxScale->currentText();
         QStringList valuList = value.split( " " );
-        value = "videoscale ! capsfilter caps=video/x-raw,width=" + valuList.at(0) + ",height=" + valuList.at(2);
+        value = "videoscale ! video/x-raw, width=" + valuList.at(0) + ", height=" + valuList.at(2);
     }
+
+    QString encoder = ui->comboBoxVideoCodec->currentData().toString();
+    if ( ( encoder == "x264enc" ) and ( ui->checkBoxScale->isChecked() == false ) )
+    {
+        value = VK_scale();
+    }
+
+    return value;
+}
+
+
+QString QvkMainWindow::VK_scale()
+{
+    QString value = "";
+    int modulo = 4;
+
+    if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
+    {
+        int width = get_width_From_Screen().toInt();
+        int height = get_height_From_Screen().toInt();
+
+        if ( ( get_width_From_Screen().toInt() % modulo ) > 0 )
+        {
+          width = get_width_From_Screen().toInt() - ( get_width_From_Screen().toInt() % modulo ) + modulo;
+        }
+
+        if ( ( get_height_From_Screen().toInt() % modulo ) > 0 )
+        {
+          height = get_height_From_Screen().toInt() - ( get_height_From_Screen().toInt() % modulo ) + modulo;
+        }
+
+        value = "videoscale ! video/x-raw, width=" + QString::number( width ) + ", height=" + QString::number( height );
+    }
+
     return value;
 }
 
@@ -1411,33 +1445,6 @@ void QvkMainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
 }
 
 
-QString QvkMainWindow::VK_scale()
-{
-    QString value = "";
-    int modulo = 4;
-
-    if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
-    {
-        int width = get_width_From_Screen().toInt();
-        int height = get_height_From_Screen().toInt();
-
-        if ( ( get_width_From_Screen().toInt() % modulo ) > 0 )
-        {
-          width = get_width_From_Screen().toInt() - ( get_width_From_Screen().toInt() % modulo ) + modulo;
-        }
-
-        if ( ( get_height_From_Screen().toInt() % modulo ) > 0 )
-        {
-          height = get_height_From_Screen().toInt() - ( get_height_From_Screen().toInt() % modulo ) + modulo;
-        }
-
-        value = "videoscale ! video/x-raw, width=" + QString::number( width ) + ", height=" + QString::number( height );
-    }
-
-    return value;
-}
-
-
 QString QvkMainWindow::Vk_get_Videocodec_Encoder()
 {
     QString vk_idealThreadCount;
@@ -1455,7 +1462,6 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
     if ( encoder == "x264enc" )
     {
         QStringList list;
-        list << VK_scale() + " !";
         list << ui->comboBoxVideoCodec->currentData().toString();
         list << "qp-min=" + QString::number( sliderX264->value() );
         list << "qp-max=" + QString::number( sliderX264->value() );
