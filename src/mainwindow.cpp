@@ -942,18 +942,7 @@ QString QvkMainWindow::VK_getXimagesrc()
         showPointer = "false";
     }
 
-    if( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and ( ui->comboBoxScreencastScreen->currentData().toInt() == -1  ) )
-    {
-        QStringList stringList;
-        stringList << "ximagesrc"
-                   << "display-name=" + qgetenv( "DISPLAY" )
-                   << "use-damage=false"
-                   << "show-pointer=" + showPointer;
-        QString value = stringList.join( " " );
-        return value;
-    }
-
-    if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and ( ui->comboBoxScreencastScreen->currentIndex() <= ui->comboBoxScreencastScreen->count()-1 ) )
+    if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
     {
           QStringList stringList;
           stringList << "ximagesrc"
