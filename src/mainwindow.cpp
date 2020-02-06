@@ -936,6 +936,8 @@ void QvkMainWindow::slot_audioIconOnOff( bool state )
 #ifdef Q_OS_LINUX
 QString QvkMainWindow::VK_getXimagesrc()
 {
+    QString value = "";
+
     QString showPointer = "true";
     if( ui->checkBoxMouseCursorOnOff->checkState() == Qt::Checked )
     {
@@ -953,8 +955,7 @@ QString QvkMainWindow::VK_getXimagesrc()
                      << "starty=" + get_y_From_Screen()
                      << "endx="   + QString::number( get_x_From_Screen().toInt() + get_width_From_Screen().toInt()-1 )
                      << "endy="   + QString::number( get_y_From_Screen().toInt() + get_height_From_Screen().toInt()-1 );
-          QString value = stringList.join( " " );
-          return value;
+          value = stringList.join( " " );
     }
 
     if( ui->radioButtonScreencastWindow->isChecked() == true )
@@ -975,9 +976,7 @@ QString QvkMainWindow::VK_getXimagesrc()
                    << "use-damage=false"
                    << "show-pointer=" + showPointer
                    << "xid=" + xid;
-
-        QString value = stringList.join( " " );
-        return value;
+        value = stringList.join( " " );
     }
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
@@ -987,17 +986,11 @@ QString QvkMainWindow::VK_getXimagesrc()
 
         // Number of pixels must be divisible by two
         int width = vkRegionChoise->getWidth();
-        if ( ( width % 2 ) == 1 )
-        {
-            compensation_x = 1;
-        }
+        if ( ( width % 2 ) == 1 ) { compensation_x = 1; }
 
         // Number of pixels must be divisible by two
         int height = vkRegionChoise->getHeight();
-        if ( ( height % 2 ) == 1 )
-        {
-            compensation_y = 1;
-        }
+        if ( ( height % 2 ) == 1 ) { compensation_y = 1; }
 
         qreal gnomehack = 0;
         if ( qgetenv( "XDG_CURRENT_DESKTOP" ).toLower() == "gnome" )
@@ -1015,11 +1008,10 @@ QString QvkMainWindow::VK_getXimagesrc()
                    << "starty=" + QString::number( vkRegionChoise->getYRecordArea() + gnomehack )
                    << "endx="   + QString::number( vkRegionChoise->getXRecordArea() + vkRegionChoise->getWidth() - 1 - compensation_x)
                    << "endy="   + QString::number( vkRegionChoise->getYRecordArea() + gnomehack + vkRegionChoise->getHeight() - 1 - compensation_y);
-        QString value = stringList.join( " " );
-        return value;
+        value = stringList.join( " " );
     }
 
-    return ""; // prophylactic no error at compiletime
+    return value;
 }
 #endif
 
