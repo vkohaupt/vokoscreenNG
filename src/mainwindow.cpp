@@ -1411,6 +1411,33 @@ void QvkMainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
 }
 
 
+QString QvkMainWindow::VK_scale()
+{
+    QString value = "";
+    int modulo = 4;
+
+    if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
+    {
+        int width = get_width_From_Screen().toInt();
+        int height = get_height_From_Screen().toInt();
+
+        if ( ( get_width_From_Screen().toInt() % modulo ) > 0 )
+        {
+          width = get_width_From_Screen().toInt() - ( get_width_From_Screen().toInt() % modulo ) + modulo;
+        }
+
+        if ( ( get_height_From_Screen().toInt() % modulo ) > 0 )
+        {
+          height = get_height_From_Screen().toInt() - ( get_height_From_Screen().toInt() % modulo ) + modulo;
+        }
+
+        value = "videoscale ! capsfilter caps=video/x-raw, width=" + QString::number( width ) + ", height=" + QString::number( height );
+    }
+
+    return value;
+}
+
+
 QString QvkMainWindow::Vk_get_Videocodec_Encoder()
 {
     QString vk_idealThreadCount;
@@ -1428,13 +1455,14 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
     if ( encoder == "x264enc" )
     {
         QStringList list;
+        list << VK_scale() + " !";
         list << ui->comboBoxVideoCodec->currentData().toString();
         list << "qp-min=" + QString::number( sliderX264->value() );
         list << "qp-max=" + QString::number( sliderX264->value() );
         list << "speed-preset=" + ui->comboBoxx264Preset->currentText();
         list << "threads=" + vk_idealThreadCount;
         value = list.join( " " );
-        value.append( " ! video/x-h264, profile=baseline" );
+        value.append( " ! capsfilter caps=video/x-h264, profile=baseline" );
     }
 
     if ( encoder == "openh264enc" )
