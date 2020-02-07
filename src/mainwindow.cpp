@@ -1042,7 +1042,7 @@ QString QvkMainWindow::VK_getXimagesrc()
 QString QvkMainWindow::VK_getCapsFilter()
 {
    QStringList stringList;
-   stringList << "capsfilter caps=video/x-raw, framerate="
+   stringList << "video/x-raw, framerate="
               << QString::number( sliderFrames->value() )
               << "/1";
    return QString( stringList.join( "" ) );
@@ -1090,6 +1090,7 @@ QString QvkMainWindow::VK_scale()
         value = "videoscale ! video/x-raw, width=" + QString::number( width ) + ", height=" + QString::number( height )  + " !";
     }
 
+#ifdef Q_OS_LINUX
     if ( ui->radioButtonScreencastWindow->isChecked() == true )
     {
         int modulo = 2;
@@ -1110,6 +1111,7 @@ QString QvkMainWindow::VK_scale()
 
         value = "videoscale ! video/x-raw, width=" + QString::number( width ) + ", height=" + QString::number( height )  + " !";
     }
+#endif
 
     return value;
 }
