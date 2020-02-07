@@ -1093,10 +1093,10 @@ QString QvkMainWindow::VK_scale()
     if ( ui->radioButtonScreencastWindow->isChecked() == true )
     {
         int modulo = 2;
-        QRect rect = vkWinInfo->windowGeometryWithoutFrame( vkWinInfo->getWinID() );
+        QRectF rect = vkWinInfo->windowGeometryWithoutFrame( vkWinInfo->getWinID() );
 
-        int width = rect.width();
-        int height = rect.height();
+        int width = (int)rect.width();
+        int height = (int)rect.height();
 
         if ( ( width % modulo ) > 0 )
         {
