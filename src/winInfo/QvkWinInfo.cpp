@@ -162,3 +162,37 @@ WId QvkWinInfo::getWinID()
     return newWinID;
 }
 
+
+QRect QvkWinInfo::windowGeometryWithoutFrame( WId child)
+{
+    int x, y;
+    Window root;
+    uint w, h, border, depth;
+
+    XGetGeometry( QX11Info::display(), child, &root, &x, &y, &w, &h, &border, &depth );
+
+    Window parent;
+    Window* children;
+    unsigned int nchildren;
+
+    if( XQueryTree( QX11Info::display(), child, &root, &parent, &children, &nchildren ) != 0 )
+    {
+        if( children != NULL )
+        {
+            XFree( children );
+        }
+
+        int newx, newy;
+        Window dummy;
+
+        if( XTranslateCoordinates( QX11Info::display(), parent, QX11Info::appRootWindow(), x, y, &newx, &newy, &dummy ))
+        {
+            x = newx;
+            y = newy;
+        }
+    }
+
+    QRect rect( x, y, w, h );
+
+    return rect;
+}

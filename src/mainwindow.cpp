@@ -1061,15 +1061,54 @@ QString QvkMainWindow::VK_scale()
 
         if ( ( get_width_From_Screen().toInt() % modulo ) > 0 )
         {
-          width = get_width_From_Screen().toInt() - ( get_width_From_Screen().toInt() % modulo ) + modulo;
+            width = get_width_From_Screen().toInt() - ( get_width_From_Screen().toInt() % modulo ) + modulo;
         }
 
         if ( ( get_height_From_Screen().toInt() % modulo ) > 0 )
         {
-          height = get_height_From_Screen().toInt() - ( get_height_From_Screen().toInt() % modulo ) + modulo;
+            height = get_height_From_Screen().toInt() - ( get_height_From_Screen().toInt() % modulo ) + modulo;
         }
 
-        value = "videoscale ! video/x-raw, width=" + QString::number( width ) + ", height=" + QString::number( height );
+        value = "videoscale ! video/x-raw, width=" + QString::number( width ) + ", height=" + QString::number( height ) + " !";
+    }
+
+    if ( ui->radioButtonScreencastArea->isChecked() == true )
+    {
+        int width = (int)vkRegionChoise->getWidth();
+        int height = (int)vkRegionChoise->getHeight();
+
+        if ( ( (int)vkRegionChoise->getWidth() % modulo ) > 0 )
+        {
+            width = (int)vkRegionChoise->getWidth() - ( (int)vkRegionChoise->getWidth() % modulo ) + modulo;
+        }
+
+        if ( ( (int)vkRegionChoise->getHeight() % modulo ) > 0 )
+        {
+            height = (int)vkRegionChoise->getHeight() - ( (int)vkRegionChoise->getHeight() % modulo ) + modulo;
+        }
+
+        value = "videoscale ! video/x-raw, width=" + QString::number( width ) + ", height=" + QString::number( height )  + " !";
+    }
+
+    if ( ui->radioButtonScreencastWindow->isChecked() == true )
+    {
+        int modulo = 2;
+        QRect rect = vkWinInfo->windowGeometryWithoutFrame( vkWinInfo->getWinID() );
+
+        int width = rect.width();
+        int height = rect.height();
+
+        if ( ( width % modulo ) > 0 )
+        {
+            width = width - ( width % modulo );
+        }
+
+        if ( ( height % modulo ) > 0 )
+        {
+            height = height - ( height % modulo );
+        }
+
+        value = "videoscale ! video/x-raw, width=" + QString::number( width ) + ", height=" + QString::number( height )  + " !";
     }
 
     return value;
@@ -1428,12 +1467,13 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
     if ( encoder == "x264enc" )
     {
         QStringList list;
-        list << VK_scale() + " !";
+        list << VK_scale();
         list << ui->comboBoxVideoCodec->currentData().toString();
         list << "qp-min=" + QString::number( sliderX264->value() );
         list << "qp-max=" + QString::number( sliderX264->value() );
         list << "speed-preset=" + ui->comboBoxx264Preset->currentText();
         list << "threads=" + vk_idealThreadCount;
+        list.removeAll( "" );
         value = list.join( " " );
         value.append( " ! video/x-h264, profile=baseline" );
     }
@@ -1696,7 +1736,6 @@ void QvkMainWindow::slot_Start()
     VK_PipelineList << VK_getXimagesrc();
     VK_PipelineList << VK_getCapsFilter();
     VK_PipelineList << "videoconvert";
-    //VK_PipelineList << VK_getVideoScale();
     VK_PipelineList << "videorate";
     VK_PipelineList << Vk_get_Videocodec_Encoder();
 
