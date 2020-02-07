@@ -69,6 +69,13 @@ int main(int argc, char *argv[])
     }
 
     // Initialize GStreamer
+#ifdef Q_OS_WIN
+    QString pathString = QDir::currentPath();
+    QByteArray pathByteArray;
+    pathByteArray.append( pathString );
+    qputenv( "GSTREAMER_1_0_ROOT_X86", pathByteArray );
+    qputenv( "GST_PLUGIN_PATH", pathByteArray );
+#endif
     gst_init (&argc, &argv);
 
     QTranslator * qtTranslator = new QTranslator();
