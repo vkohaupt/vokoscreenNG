@@ -6,12 +6,8 @@ Release 3.0.1:
 --Nach der https Weiterleitung wird die 3.0.0 nicht mehr auf die Onlinehilfe zugreifen können.
 
 Windows Webcam:
---Bild steht grundsätzlich Kopf.
-
-Windows Webcam:
 --VokoscreenNG stürtzt ab wenn Fenstergröße geändert wird auf 640x480.
   Fenstergröße ändern --> Webcam starten --> Absturtz
-
 
 Windows Installer:
 --Installationsordner sollte unter "Programme" abgelegt werden. Erledigt aber nochmal gründlich testen.

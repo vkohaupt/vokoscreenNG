@@ -109,11 +109,21 @@ void QvkCameraController::slot_sliderMoved( int value )
 
 void QvkCameraController::slot_setNewImage( QImage image )
 {
+#ifdef Q_OS_LINUX
     if ( ui_formMainWindow->checkBoxCameraMirrorHorizontal->isChecked() == true )
         image = image.mirrored( true, false );
 
-    if ( ui_formMainWindow->checkBoxCameraMirrorVertical->isChecked() == true  )
+    if ( ui_formMainWindow->checkBoxCameraMirrorVertical->isChecked() == true )
         image = image.mirrored( false, true );
+#endif
+
+#ifdef Q_OS_WIN
+    if ( ui_formMainWindow->checkBoxCameraMirrorHorizontal->isChecked() == true )
+        image = image.mirrored( true, false );
+
+    if ( ui_formMainWindow->checkBoxCameraMirrorVertical->isChecked() == false )
+        image = image.mirrored( false, true );
+#endif
 
     if ( ui_formMainWindow->checkBoxCameraInvert->isChecked() == true )
         image.invertPixels( QImage::InvertRgb );
