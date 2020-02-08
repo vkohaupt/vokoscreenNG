@@ -340,6 +340,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // Tab 1 Screen
 #ifdef Q_OS_WIN
     ui->radioButtonScreencastWindow->setEnabled( false );
+    ui->radioButtonScreencastWindow->setVisible( false );
+    ui->help_screencast_window->setVisible( false );
 #endif
 
     ui->radioButtonScreencastFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
