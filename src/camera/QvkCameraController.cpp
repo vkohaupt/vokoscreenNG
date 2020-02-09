@@ -102,7 +102,7 @@ void QvkCameraController::slot_sliderMoved( int value )
 
     if ( value == 3 )
     {
-        cameraWindow->resize( 640, 480 );
+        cameraWindow->resize( 639, 479 );
     }
 }
 
