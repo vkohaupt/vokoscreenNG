@@ -36,7 +36,7 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 * GSTREAMER_1_0_ROOT_X86=C:\gstreamer\1.0\x86\
 
 ## Linux
-### Requirements:
+### Run-time requirements:
 * Qt5 >= 5.9.4
 * pulseaudio
 * gstreamer >= 1.12.5
@@ -60,12 +60,15 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 * gstreamer-plugins-vaapi and intel-vaapi-driver
   - Intel Hardwareenconding H.264 and MPEG2
 
-### BuildRequires:
+
+### Build requirements
 * pkgconfig
 * libqt5-devel
 * libqt5-linguist
 * libX11-devel
 * gstreamer-devel
+
+On Ubuntu these requirements can be satisfied by running `sudo apt install libgstreamer1.0-dev qt5-default qttools5-dev-tools libqt5x11extras5-dev qtmultimedia5-dev`
 
 ## Packaging status
 * [Fedora](https://src.fedoraproject.org/rpms/vokoscreenNG): `sudo dnf install vokoscreenNG`
