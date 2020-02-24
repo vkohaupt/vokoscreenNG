@@ -250,9 +250,9 @@ void QvkCameraController::slot_stateChanged( QCamera::State state )
 {
     switch ( state )
     {
-      case QCamera::UnloadedState : { qDebug().noquote() << global::nameOutput << state; break;  };// 0
-      case QCamera::LoadedState   : { qDebug().noquote() << global::nameOutput << state; break;  };// 1
-      case QCamera::ActiveState   : { qDebug().noquote() << global::nameOutput << state; break;  };// 2
+      case QCamera::UnloadedState : { qDebug().noquote() << global::nameOutput << state; break;  }// 0
+      case QCamera::LoadedState   : { qDebug().noquote() << global::nameOutput << state; break;  }// 1
+      case QCamera::ActiveState   : { qDebug().noquote() << global::nameOutput << state; break;  }// 2
     }
 }
 
@@ -285,5 +285,5 @@ void QvkCameraController::slot_error( QCamera::Error error )
         qDebug() << "QCamera" << "Camera not supported error";
         break;
     }
-    };
+    }
 }
