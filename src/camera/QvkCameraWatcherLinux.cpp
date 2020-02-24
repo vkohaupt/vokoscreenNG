@@ -53,8 +53,11 @@ void QvkCameraWatcher::cameraWatcherInit()
     for ( int x = 0; x < deviceList.count(); x++ )
     {
         QCameraInfo cameraInfo( QString( path + deviceList.at(x) ).toLatin1() );
-        qDebug().noquote() << global::nameOutput << "[Camera] Found:" << cameraInfo.description() << "Device:" << deviceList.at(x);
-        emit signal_addedCamera( cameraInfo.description() , path + deviceList.at(x) );
+        if ( cameraInfo.description().trimmed() > "" )
+        {
+            qDebug().noquote() << global::nameOutput << "[Camera] Found:" << cameraInfo.description() << "Device:" << deviceList.at(x);
+            emit signal_addedCamera( cameraInfo.description() , path + deviceList.at(x) );
+        }
     }
     qDebug();
 }
