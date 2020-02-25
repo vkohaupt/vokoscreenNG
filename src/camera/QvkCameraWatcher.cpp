@@ -20,7 +20,7 @@
  * --End_License--
  */
 
-#include "QvkCameraWatcherWindows.h"
+#include "QvkCameraWatcher.h"
 
 #include <QCameraInfo>
 

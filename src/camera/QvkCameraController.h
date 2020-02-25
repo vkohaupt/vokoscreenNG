@@ -25,13 +25,7 @@
 
 #include "ui_formMainWindow.h"
 
-#ifdef Q_OS_LINUX
-#include "QvkCameraWatcherLinux.h"
-#endif
-#ifdef Q_OS_WIN
-#include "QvkCameraWatcherWindows.h"
-#endif
-
+#include "QvkCameraWatcher.h"
 #include "QvkCameraWindow.h"
 #include "QvkVideoSurface.h"
 #include "QvkSpezialSlider.h"
