@@ -4,6 +4,9 @@
 * vokoscreenNG is based of Qt and GStreamer and was rewritten from scratch.
 * The old vokoscreen 2.5.0 https://github.com/vkohaupt/vokoscreen is the last version with ffmpeg and will receive no further updates.
 
+## Download
+* Windows https://linuxecke.volkoh.de/vokoscreen/vokoscreen-download.html
+
 ## Translate
 Only **100% translated** languages will be added to vokoscreenNG.
 You can translate to anytime, your translation will be included in the next bugfix release.
@@ -19,10 +22,8 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 
 ## Windows 10
 ### Requirements:
-* The vokoscreenNG Player needs a codec pack.
-* I test with this codec pack:
-  - windows.10.codec.pack.v2.1.5.setup.exe
-  - https://www.windows10codecpack.com/
+* The integrated vokoscreenNG Player needs a codec pack.
+* I test with this codec pack: https://www.windows10codecpack.com/
 
 
 ### BuildRequires
