@@ -74,6 +74,7 @@ On Ubuntu these requirements can be satisfied by running `sudo apt install libgs
 ## Install packages
 * [Fedora](https://src.fedoraproject.org/rpms/vokoscreenNG): `sudo dnf install vokoscreenNG`
 * [openSUSE](https://software.opensuse.org/package/vokoscreenNG) (Tumbleweed and Leap 15.2): `sudo zypper install vokoscreenNG`
+* [Snap](https://snapcraft.io/vokoscreen-ng): `sudo snap install vokoscreen-ng`
 
 ![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-0.png)
 ![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-1.png)
