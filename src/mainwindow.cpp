@@ -1297,10 +1297,10 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                      << "videomimetype:video/x-msvideo"
                                      << "audiomimetype:audio/x-msvideo"
                                      << "videocodec:x264enc:x264"
+                                     << "videocodec:openh264enc:openh264"
                                 #ifdef Q_OS_LINUX
-                                    << "videocodec:openh264enc:openh264"
-                                    << "videocodec:vaapih264enc:H.264 (Intel GPU)"
-                                    << "videocodec:vaapimpeg2enc:MPEG-2 (Intel GPU)"
+                                     << "videocodec:vaapih264enc:H.264 (Intel GPU)"
+                                     << "videocodec:vaapimpeg2enc:MPEG-2 (Intel GPU)"
                                 #endif
                                      << "videocodec:vp8enc:VP8"
                                      << "audiocodec:lamemp3enc:mp3"
@@ -1311,8 +1311,8 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videomimetype:video/mp4"
                                     << "audiomimetype:audio/mpeg"
                                     << "videocodec:x264enc:x264"
-                                #ifdef Q_OS_LINUX
                                     << "videocodec:openh264enc:openh264"
+                                #ifdef Q_OS_LINUX
                                     << "videocodec:vaapih264enc:H.264 (Intel GPU)"
                                     << "videocodec:vaapimpeg2enc:MPEG-2 (Intel GPU)"
                                 #endif
@@ -1325,8 +1325,8 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videomimetype:video/mp4"
                                     << "audiomimetype:audio/mpeg"
                                     << "videocodec:x264enc:x264"
-                                #ifdef Q_OS_LINUX
                                     << "videocodec:openh264enc:openh264"
+                                #ifdef Q_OS_LINUX
                                     << "videocodec:vaapih264enc:H.264 (Intel GPU)"
                                     << "videocodec:vaapimpeg2enc:MPEG-2 (Intel GPU)"
                                 #endif
