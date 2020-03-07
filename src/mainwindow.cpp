@@ -1271,8 +1271,8 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videomimetype:video/x-matroska"
                                     << "audiomimetype:audio/x-matroska"
                                     << "videocodec:x264enc:x264"
-                                #ifdef Q_OS_LINUX
                                     << "videocodec:openh264enc:openh264"
+                                #ifdef Q_OS_LINUX
                                     << "videocodec:vaapih264enc:H.264 (Intel GPU)"
                                     << "videocodec:vaapimpeg2enc:MPEG-2 (Intel GPU)"
                                 #endif

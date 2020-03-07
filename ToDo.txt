@@ -21,21 +21,15 @@ Update Meldung:
 Linux:
 --Installer erstellen
 
-
-Homepage:
---Einen Menüpunkt Features erstellen
-
-
 Allgemein:
 --Temporäre Ordner in /tmp sollten nach gebrauch entfernt werden nicht erst beim schließen von vokoscreeenNG.
 --Betrifft nur die Hilfe.
-
 
 Windows:
 --Für den User wird eine sehr einfache Update Funktion benötigt.
   Ein Klick und das update muß installiert werden.
 
-
+  
 Für ein zukünftige Release muß zuvor folgendes abgearbeitet werden
 ==================================================================
 --Onlinehilfe Deutsch
