@@ -14,10 +14,6 @@ Windows Systray:
 Linux:
 --Bei dunklen Themes ist das Icon auf Tab Timer schlecht sichtbar
 
-Update Meldung:
---Notification over Systray
---Realisierbar mit QSystemTrayIcon::showMessage
-
 Linux:
 --Installer erstellen
 
