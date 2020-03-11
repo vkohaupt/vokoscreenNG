@@ -478,14 +478,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonSendReport, SIGNAL( clicked( bool ) ), this, SLOT( slot_sendReport() ) );
     // *****************End Log ***********************************
 
-    ui->label_Upate->clear();
-    QPalette palette = QPalette( ui->label_Upate->palette() );
-    palette.setColor( palette.WindowText, QColor( Qt::magenta ) );
-    ui->label_Upate->setPalette( palette );
-    connect( &version, SIGNAL( signal_newVersionAvailable( QString ) ), this, SLOT( slot_newVersionAvailable( QString ) ) );
-    connect( ui->checkBoxLookForUpdates, SIGNAL( toggled( bool ) ), &version, SLOT( slot_doDownload( bool ) ) );
-
-
     QvkLoadExtension *loadExtension = new QvkLoadExtension( this, ui );
     loadExtension->loadExtension();
 
@@ -527,26 +519,6 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
     vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile );
     emit signal_close();
     emit signal_close( false );
-}
-
-
-void QvkMainWindow::slot_newVersionAvailable( QString update )
-{
-    if ( ui->checkBoxLookForUpdates->isChecked() == true )
-    {
-        if ( global::version < update )
-        {
-            ui->label_Upate->setText( "New Version available: " + update  );
-        }
-        else
-        {
-            ui->label_Upate->setText( "No update available" );
-        }
-    }
-    else
-    {
-        ui->label_Upate->clear();
-    }
 }
 
 

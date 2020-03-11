@@ -25,6 +25,8 @@
 
 #include "ui_formMainWindow.h"
 
+#include "QvkVersion.h"
+
 #include <QObject>
 #include <QSystemTrayIcon>
 #include <QMenu>
@@ -52,6 +54,7 @@ private:
     QAction *continueAction;
     QAction *hideAction;
     QAction *exitAction;
+    QvkVersion version;
 
 
 private slots:
@@ -59,6 +62,8 @@ private slots:
     void slot_setRecordIcon( bool );
     void slot_setSystrayIcon( bool );
     void slot_setPauseIcon( bool );
+    void slot_newVersionAvailable( QString update );
+    void slot_showHomepage();
 
 
 protected:

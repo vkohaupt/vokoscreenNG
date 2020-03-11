@@ -35,7 +35,6 @@
 #include "QvkTheme.h"
 #include "QvkLimitDiskFreeSpace.h"
 #include "QvkSpezialSlider.h"
-#include "QvkVersion.h"
 #include "QvkSystrayAlternative.h"
 
 #ifdef Q_OS_LINUX
@@ -135,7 +134,6 @@ private:
     void checkVideoPath();
 
     bool isAudioDeviceSelected();
-    QvkVersion version;
 
     QString Pipeline_structured_output( QString pipeline );
 
@@ -181,7 +179,6 @@ private slots:
 
     void slot_vokoPlayer();
 
-    void slot_newVersionAvailable(QString update);
 #ifdef Q_OS_LINUX
     void slot_afterWindowShown();
 #endif

@@ -119,7 +119,47 @@ void QvkSystray::init()
     show();
 
     connect( exitAction, SIGNAL( triggered( bool ) ), this, SLOT( slot_hide() ) );
+
+    ui->label_Upate->clear();
+    QPalette palette = QPalette( ui->label_Upate->palette() );
+    palette.setColor( palette.WindowText, QColor( Qt::magenta ) );
+    ui->label_Upate->setPalette( palette );
+    connect( &version, SIGNAL( signal_newVersionAvailable( QString ) ), this, SLOT( slot_newVersionAvailable( QString ) ) );
+    connect( ui->checkBoxLookForUpdates, SIGNAL( toggled( bool ) ), &version, SLOT( slot_doDownload( bool ) ) );
 }
+
+
+void QvkSystray::slot_newVersionAvailable( QString update )
+{
+    if ( ui->checkBoxLookForUpdates->isChecked() == true )
+    {
+        if ( global::version < update )
+        {
+            ui->label_Upate->setText( "New Version available: " + update  );
+
+            if ( QSystemTrayIcon::supportsMessages() == true )
+            {
+                connect( this, SIGNAL( messageClicked() ), this, SLOT( slot_showHomepage() ) );
+                showMessage( global::name, "New Version available: " + update, QSystemTrayIcon::Information, 5000 );
+            }
+        }
+        else
+        {
+            ui->label_Upate->setText( "No update available" );
+        }
+    }
+    else
+    {
+        ui->label_Upate->clear();
+    }
+}
+
+
+void QvkSystray::slot_showHomepage()
+{
+   QDesktopServices::openUrl(QUrl("https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html", QUrl::TolerantMode));
+}
+
 
 // This slot need in this class
 void QvkSystray::slot_hide()
