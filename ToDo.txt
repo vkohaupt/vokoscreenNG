@@ -50,9 +50,6 @@ Beispiel:
 Aufnahme 1920x1050 --> 1280x1024
 Abspielen im Player im Vollbildmodus.
 
-Skalieren:
---In der Combobox fehlt Benutzerdefiniert.
-
 Übersetzung:
 ui->radioButtonScreencastFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
 ui->radioButtonScreencastWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
@@ -64,11 +61,6 @@ Player:
 --Tonregler ist nicht mit Pulseaudio-Regler z.b in KDE verbunden.
 --als seperates Fenster
 --Einstellungen in dem vorhanden Tab
-
-KDE Area:
---Monitor ungerade skalieren auf 1.1, 1.3 1.5 etc. Buttons haben transparente Linien.
---Der Fehler tritt auch in anderen Programmen auf wie zum Beispiel in Kate.
---Dies ist ein KDE Problem nicht von vokoscreenNG
 
 Systray:
 --Menüanzeige ändern auf Linksklick.
