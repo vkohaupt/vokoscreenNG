@@ -1,6 +1,9 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
+Pulseaudio:
+--Version abfragen
+
 Kamera:
 --Wenn zwei Kameras angeschloßen sind und die zweite ausgewählt und aktiviert wird schließt sich das Fenster nach ca. 5 Sekunden.
 --Lösung: Wenn Kamera aktiviert ist sollte das Watching abgeschaltet werden.
