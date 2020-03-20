@@ -23,10 +23,13 @@
 #include "QvkCameraController.h"
 #include "global.h"
 
-QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):cameraWatcher(new QvkCameraWatcher()),
-                                                                          videoSurface(new QvkVideoSurface())
+#include <QCameraInfo>
+
+QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoSurface(new QvkVideoSurface())
 {
     ui_formMainWindow = ui_surface;
+
+//    getAllDevices();
 
     sliderCameraWindowSize = new QvkSpezialSlider( Qt::Horizontal );
     ui_formMainWindow->horizontalLayout_45->insertWidget( 1, sliderCameraWindowSize );
@@ -37,6 +40,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):camera
     sliderCameraWindowSize->show();
     sliderCameraWindowSize->setShowValue( false );
     sliderCameraWindowSize->setEnabled( false );
+    getAllDevices();
 
     cameraWindow = new QvkCameraWindow( ui_surface, sliderCameraWindowSize );
     cameraWindow->hide();
@@ -45,14 +49,12 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):camera
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     cameraWindow->setWindowIcon( icon );
 
-    connect( cameraWatcher, SIGNAL( signal_addedCamera( QString, QString ) ), this, SLOT( slot_addedCamera( QString, QString ) ) );
-    connect( cameraWatcher, SIGNAL( signal_removedCamera( QString) ),         this, SLOT( slot_removedCamera( QString ) ) );
-    cameraWatcher->cameraWatcherInit();
-    connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_formMainWindow->comboBoxCamera, SLOT( setDisabled( bool ) ) );
+    QvkCameraWatcher *cameraWatcher = new QvkCameraWatcher( ui_formMainWindow );
 
-#ifdef Q_OS_WIN
-    connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), cameraWatcher, SLOT( slot_startStopCameraTimer( bool ) ) );
-#endif
+    connect( cameraWatcher, SIGNAL( signal_addedCamera(   QString, QString ) ), this, SLOT( slot_addedCamera( QString, QString ) ) );
+    connect( cameraWatcher, SIGNAL( signal_removedCamera( QString ) ),          this, SLOT( slot_removedCamera( QString ) ) );
+
+    connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_formMainWindow->comboBoxCamera, SLOT( setDisabled( bool ) ) );
     connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), this, SLOT( slot_startCamera( bool ) ) );
     connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraWindowFrame, SLOT( setEnabled(bool ) ) );
 
@@ -66,6 +68,23 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):camera
 
 QvkCameraController::~QvkCameraController()
 {
+}
+
+
+void QvkCameraController::getAllDevices()
+{
+    QList<QCameraInfo> camerasInfoList = QCameraInfo::availableCameras();
+    if ( !camerasInfoList.empty() )
+    {
+        for ( int i = 0; i < camerasInfoList.count(); i++ )
+        {
+            if ( ( camerasInfoList.at(i).description() > "" ) and ( !camerasInfoList.at(i).description().contains( "@device:pnp" ) ) )
+            {
+               slot_addedCamera( camerasInfoList.at(i).description(), camerasInfoList.at(i).deviceName() );
+               qDebug().noquote() << global::nameOutput << "[Camera} Found:" << camerasInfoList.at(i).description() << camerasInfoList.at(i).deviceName();
+            }
+        }
+    }
 }
 
 
@@ -161,7 +180,7 @@ void QvkCameraController::slot_addedCamera( QString description, QString device 
 
 void QvkCameraController::slot_removedCamera( QString device )
 {
-    if ( ( ui_formMainWindow->checkBoxCameraOnOff->isChecked() == true ) and ( ui_formMainWindow->comboBoxCamera->currentData() == device.toLatin1() ) )
+    if ( ( ui_formMainWindow->checkBoxCameraOnOff->isChecked() == true ) and ( ui_formMainWindow->comboBoxCamera->currentData().toString() == device ) )
     {
         cameraWindow->close();
     }

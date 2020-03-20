@@ -42,6 +42,7 @@ public:
    virtual ~QvkCameraController();
 
    QvkCameraWindow *cameraWindow;
+   void getAllDevices();
 
   
 public slots:

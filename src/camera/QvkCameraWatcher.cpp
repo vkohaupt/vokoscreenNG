@@ -21,12 +21,17 @@
  */
 
 #include "QvkCameraWatcher.h"
+#include "global.h"
 
+#include <QDebug>
+#include <QAudioDeviceInfo>
 #include <QCameraInfo>
 
-using namespace std;
+/*
+ * QvkWatcherPlug monitoring only new or removed Audiodevices.
+ */
 
-QvkCameraWatcher::QvkCameraWatcher() : newcount(0)
+QvkCameraWatcher::QvkCameraWatcher()
 {
 }
 
@@ -36,124 +41,68 @@ QvkCameraWatcher::~QvkCameraWatcher()
 }
 
 
-void QvkCameraWatcher::cameraWatcherInit()
+QvkCameraWatcher::QvkCameraWatcher( Ui_formMainWindow *ui_mainwindow )
 {
-    newDescriptionList.clear();
-    newDeviceNameList.clear();
-    oldDeviceNameList.clear();
+    ui = ui_mainwindow;
 
-    timer = new QTimer(this);
+    timer = new QTimer( this );
     timer->setTimerType( Qt::PreciseTimer );
-    timer->setInterval( 2000 );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_detectCameras() ) );
-
-    slot_detectCameras();
-}
-
-
-void QvkCameraWatcher::slot_startStopCameraTimer( bool value )
-{
-    if ( value == true )
-    {
-        timer->stop();
-    }
-
-    if ( value == false )
-    {
-        timer->start();
-    }
-}
-
-/*
- * Return removed device
- */
-QString QvkCameraWatcher::removedDeviceName(QStringList myNewDeviceNameList, QStringList myOldDeviceNameList )
-{
-    QStringList removedList;
-    int x;
-    for ( x = 0; x < myOldDeviceNameList.count(); x++ )
-    {
-        removedList = myNewDeviceNameList.filter( myOldDeviceNameList[ x ] );
-        if ( removedList.empty() )
-            break;
-    }
-    return myOldDeviceNameList[ x ];
-}
-
-
-/*
- * Return added device
- * Wenn myNewDeviceNameList das Device nicht beinhaltet wird es hinzugefügt
- */
-QString QvkCameraWatcher::addedDeviceName( QStringList myNewDeviceNameList, QString device )
-{
-    QString newDevice;
-    if ( !myNewDeviceNameList.empty() )
-    {
-        if ( myNewDeviceNameList.contains( device ) == false )
-        {
-            newDevice = device;
-        }
-    }
-    else
-    {
-        newDevice = device;
-    }
-    return newDevice;
-}
-
-
-/*
- * Is called periodically by the timer
- */
-void QvkCameraWatcher::slot_detectCameras()
-{
-    QList<QCameraInfo> info = QCameraInfo::availableCameras();
-
-    timer->stop();
-    bool deviceAdded = false;
-
-    QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
-    for ( int i = 0; i < QCameraInfo::availableCameras().count(); i++  )
-    {
-        QString cameraDevice = addedDeviceName( newDeviceNameList, cameras.at(i).deviceName() );
-        if ( ( cameraDevice > "" ) and ( !cameras.at(i).description().contains( "@device:pnp" ) ) )
-        {
-            newDeviceNameList << cameraDevice;
-            newDescriptionList << cameras.at(i).description();
-            newcount = newDeviceNameList.count();
-            deviceAdded = true;
-            emit signal_addedCamera( cameras.at(i).description(), cameraDevice );
-        }
-    }
-
-    // Ein Device wurde hinzugefügt, Funktion wird dann hier abgebrochen
-    if ( deviceAdded == true )
-    {
-        timer->start();
-        return;
-    }
-
-    if ( QCameraInfo::availableCameras().count() < newcount )
-    {
-        oldDeviceNameList = newDeviceNameList;
-        newDescriptionList.clear();
-        newDeviceNameList.clear();
-
-        QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
-        foreach ( const QCameraInfo &cameraInfo, cameras )
-        {
-            newDescriptionList << cameraInfo.description();
-            newDeviceNameList << cameraInfo.deviceName();
-        }
-
-        newcount = newDeviceNameList.count();
-
-        // detected which camera was removed
-        QString cameraDevice = removedDeviceName( newDeviceNameList , oldDeviceNameList );
-        qDebug() << "Removed Camera" << cameraDevice;
-        emit signal_removedCamera( cameraDevice );
-    }
+    timer->setInterval( 3000 );
+    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_update() ) );
     timer->start();
 }
 
+
+void QvkCameraWatcher::slot_update()
+{
+// QT-Bug. Wenn eine Kamera aktiv ist wird diese Kamera nicht mehr in QCameraInfo aufgeführt.
+// Das heißt, die aktivierte Camera wird nach ca. 3 Sekunden siehe Timer deaktiviert.
+// Dieses #ifdef kann man entfernen sobald der Qt Bug unter Linux beseitigt ist.
+#ifdef Q_OS_LINUX
+    if ( ui->checkBoxCameraOnOff->checkState() == Qt::Checked )
+    {
+        return;
+    }
+#endif
+
+    QList<QCameraInfo> camerasInfoList = QCameraInfo::availableCameras();
+
+    // Add new Device
+    if ( camerasInfoList.count() > ui->comboBoxCamera->count() )
+    {
+        for ( int i = 0; i < camerasInfoList.count(); i++ )
+        {
+            if ( ui->comboBoxCamera->findData( camerasInfoList.at(i).deviceName() ) == -1 )
+            {
+                if ( ( camerasInfoList.at(i).description() > "" ) and ( !camerasInfoList.at(i).description().contains( "@device:pnp" ) ) )
+                {
+                    qDebug().noquote() << global::nameOutput << "[Camera] Added:" << camerasInfoList.at(i).description() << "Device:" << camerasInfoList.at(i).deviceName();
+                    emit signal_addedCamera( camerasInfoList.at(i).description(), camerasInfoList.at(i).deviceName() );
+                }
+            }
+        }
+        return;
+    }
+
+    QStringList cameraInfoStringList;
+    for ( int i = 0; i < camerasInfoList.count(); i++ )
+    {
+        cameraInfoStringList << camerasInfoList.at(i).deviceName();
+    }
+
+    int cameraCountCombobox = ui->comboBoxCamera->count();
+
+    // Remove device
+    if ( camerasInfoList.count() < cameraCountCombobox )
+    {
+        for ( int i = 1; i <= cameraCountCombobox; i++ )
+        {
+            if ( cameraInfoStringList.contains( QString( ui->comboBoxCamera->itemData(i-1).toString() ) ) == false )
+            {
+                qDebug().noquote() << global::nameOutput << "[Camera] Removed:" << ui->comboBoxCamera->itemText(i-1) << "Device:" << ui->comboBoxCamera->itemData(i-1).toString();
+                emit signal_removedCamera( ui->comboBoxCamera->itemData(i-1).toString() );
+                break;
+            }
+        }
+    }
+}

@@ -30,6 +30,7 @@ namespace global
     QString nameOutput = "[" + name + "]";
     bool VK_showOnlyFallbackIcons = false;
     QLineEdit *lineEditAudioPlug;
+    QLineEdit *lineEditCameraPlug;
 
 #ifdef Q_OS_LINUX
     QString version = "3.0.2";

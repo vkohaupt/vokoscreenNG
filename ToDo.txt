@@ -45,6 +45,17 @@ Für ein zukünftige Release muß zuvor folgendes abgearbeitet werden
 Bugs, Features und Hinweise aber nicht wirklich wichtig
 =======================================================
 
+Camera Linux:
+// QT-Bug. Wenn eine Kamera aktiv ist wird diese Kamera nicht mehr in QCameraInfo aufgeführt.
+// Das heißt, die aktivierte Camera wird nach ca. 3 Sekunden siehe Timer deaktiviert.
+// Dieses #ifdef kann man entfernen sobald der Qt Bug unter Linux beseitigt ist.
+#ifdef Q_OS_LINUX
+    if ( ui->checkBoxCameraOnOff->checkState() == Qt::Checked )
+    {
+        return;
+    }
+#endif
+
 Timer:
 ----AM/PM
 

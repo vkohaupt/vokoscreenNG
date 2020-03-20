@@ -23,47 +23,41 @@
 #ifndef QVKCAMERAWATCHER_H
 #define QVKCAMERAWATCHER_H
 
-#include <QStringList>
+#include "ui_formMainWindow.h"
+
 #include <QObject>
 #include <QTimer>
 
 class QvkCameraWatcher: public QObject
 {
+    Q_OBJECT
 
-Q_OBJECT
 
 public:
-  QvkCameraWatcher();
-  virtual ~QvkCameraWatcher();
-  void cameraWatcherInit();
+    QvkCameraWatcher();
+    QvkCameraWatcher( Ui_formMainWindow *ui_mainwindow );
+    virtual ~QvkCameraWatcher();
 
 
 public slots:
-  void slot_startStopCameraTimer( bool value );
+
+
+private:
+    Ui_formMainWindow *ui;
+    QTimer *timer;
+    int counter;
 
 
 private slots:
-  void slot_detectCameras();
-
-
-signals:
-  void signal_removedCamera( QString value );
-  void signal_addedCamera( QString description, QString deviceName );
+    void slot_update();
 
 
 protected:
 
 
-private:
-  int newcount;
-  QStringList newDescriptionList;
-  QStringList newDeviceNameList;
-  QStringList oldDeviceNameList;
-
-  QTimer *timer;
-
-  QString addedDeviceName( QStringList myNewDeviceNameList, QString device );
-  QString removedDeviceName( QStringList myNewDeviceNameList, QStringList myOldDeviceNameList );
+signals:
+    void signal_addedCamera( QString, QString );
+    void signal_removedCamera( QString );
 
 };
 
