@@ -1,12 +1,8 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
-Pulseaudio:
---Version abfragen
-
-Kamera:
---Wenn zwei Kameras angeschloßen sind und die zweite ausgewählt und aktiviert wird schließt sich das Fenster nach ca. 5 Sekunden.
---Lösung: Wenn Kamera aktiviert ist sollte das Watching abgeschaltet werden.
+Bereichsanzeige:
+--Unter Ubuntu ist die Bereichsanzeige unvorteilhaft. Es sollte nach einer besseren Lösung gesucht werden.
 
 Windows Audio:
 --Aufnahme Lautsprecher
@@ -27,6 +23,7 @@ Linux:
 Allgemein:
 --Temporäre Ordner in /tmp sollten nach gebrauch entfernt werden nicht erst beim schließen von vokoscreeenNG.
 --Betrifft nur die Hilfe.
+--Lösung könnte sein, mit einer globalen Variabeln zu arbeiten.
 
 Windows:
 --Für den User wird eine sehr einfache Update Funktion benötigt.
