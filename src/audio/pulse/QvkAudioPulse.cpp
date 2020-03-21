@@ -78,6 +78,11 @@ void QvkAudioPulse::getAllDevices()
     else
     {
         emit signal_haveAudioDeviceSelected( false );
+        QLabel *label = new QLabel();
+        label->setText( "No audio recording device found, please read the online help." );
+        ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter);
+        ui->verticalLayoutAudioDevices->addWidget( label );
+
     }
 }
 
