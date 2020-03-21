@@ -1,9 +1,6 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
-Audio:
---Wenn keine Aufnahmegeräte angezeigt werden muß ein Hinweis erscheinen das dies oder das installiert werden muß.
-
 Bereichsanzeige:
 --Unter Ubuntu ist die Bereichsanzeige unvorteilhaft. Es sollte nach einer besseren Lösung gesucht werden.
 
