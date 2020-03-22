@@ -559,7 +559,7 @@ void QvkMainWindow::slot_afterWindowShown()
         }
 
         // This is only for GNOME
-        if ( qgetenv( "XDG_CURRENT_DESKTOP" ).toLower() == "gnome" )
+        if ( qgetenv( "XDG_CURRENT_DESKTOP" ).toLower().contains( "gnome" ) == true )
         {
             // Problem 1. Limit the availableSize without the top Menue
             QScreen *screen = QGuiApplication::primaryScreen();
