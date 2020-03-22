@@ -1,520 +1,522 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="es_MX" version="2.1">
 <context>
     <name>QvkAudioPulse</name>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Elige uno o más dispositivos</translation>
     </message>
 </context>
 <context>
     <name>QvkAudioWindows</name>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Elige uno o más dispositivos</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
-        <translation type="unfinished"></translation>
+        <translation>Cámara</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasa a la Ventana</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Pasa a Pantalla Completa</translation>
     </message>
 </context>
 <context>
     <name>QvkCountdown</name>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuenta regresiva</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Ayuda</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Advertencia</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation type="unfinished"></translation>
+        <translation>La grabación no ha comenzado porque no hay suficiente espacio libre en el disco. </translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation type="unfinished"></translation>
+        <translation>El espacio libre del disco se agotó. </translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation type="unfinished"></translation>
+        <translation>Espacio libre del disco</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation type="unfinished"></translation>
+        <translation>Megabyte</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation type="unfinished"></translation>
+        <translation>La grabación se detuvo porque no hay espacio libre en el disco.</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Pantalla Completa</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Ventana</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation type="unfinished"></translation>
+        <translation>No se encontró el manejador de archivos.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Por favor, instale un manejador de archivos.</translation>
     </message>
     <message>
         <source>Desktop session is a Wayland session</source>
-        <translation type="unfinished"></translation>
+        <translation>La sesión del escritorio es una sesión Wayland</translation>
     </message>
     <message>
         <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation type="unfinished"></translation>
+        <translation>A la fecha, no se soporta el Wayland. La pantalla de grabación se ve negra. Por favor, cierre la sesión e inicie una sesión gráfica con X11.    </translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"></translation>
+        <translation>Código fuente</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"></translation>
+        <translation>Página de inicio</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Traducciones</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"></translation>
+        <translation>Donar</translation>
     </message>
     <message>
         <source>Wayland desktop session detected</source>
-        <translation type="unfinished"></translation>
+        <translation>Se ha detectado una sesión gráfica Wayland </translation>
     </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir Archivo</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation type="unfinished"></translation>
+        <translation>Área</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Comenzar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Detener</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Pausar</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Continuar</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Salir</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Comenzar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Detener</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Pausar</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Continuar</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Salir</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Diálogo</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Distribuir en dos ventanas horizontales</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Distribuir en dos ventanas verticales</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation type="unfinished"></translation>
+        <translation>Invertir</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation type="unfinished"></translation>
+        <translation>Tonos de Gris</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation type="unfinished"></translation>
+        <translation>Blanco y Negro</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Remover el marco de la ventana</translation>
     </message>
     <message>
         <source>160x120</source>
-        <translation type="unfinished"></translation>
+        <translation>160x120</translation>
     </message>
     <message>
         <source>320x240</source>
-        <translation type="unfinished"></translation>
+        <translation>320x240</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuración de la cámara</translation>
     </message>
     <message>
         <source>640x480</source>
-        <translation type="unfinished"></translation>
+        <translation>640x480</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation type="unfinished"></translation>
+        <translation>Área</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Redefinir</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation type="unfinished"></translation>
+        <translation>Ampliación</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuenta regresiva</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamaño del video:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation type="unfinished"></translation>
+        <translation>Espacio libre del disco:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Información</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiempo de grabación:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Audio</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuadros</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation type="unfinished"></translation>
+        <translation>Codec de video</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Formato</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation type="unfinished"></translation>
+        <translation>Codec de audio</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation type="unfinished"></translation>
+        <translation>Calidad</translation>
+    </message>
+    <message>
+        <source>Scale</source>
+        <translation>Escala</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>No grabar el cursor del ratón</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation type="unfinished"></translation>
+        <translation>Hora</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation type="unfinished"></translation>
+        <translation>Minuto</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation type="unfinished"></translation>
+        <translation>Iniciar el cronómetro</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation type="unfinished"></translation>
+        <translation>Detener la grabación después de </translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation type="unfinished"></translation>
+        <translation>Horas</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>Minutos</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Segundos</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation type="unfinished"></translation>
+        <translation>Ruta al video</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation type="unfinished"></translation>
+        <translation>Espacio libre del disco</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar en systray</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Segundos a esperar antes de la grabación</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar actualizaciones</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Ayuda</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Video</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation type="unfinished"></translation>
+        <translation>Disponible</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation type="unfinished"></translation>
+        <translation>No disponible</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Comenzar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Detener</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Pausar</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Continuar</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Reproducir</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Carpeta</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation type="unfinished"></translation>
+        <translation>Cámara</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation type="unfinished"></translation>
+        <translation>Invertir</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation type="unfinished"></translation>
+        <translation>Tonos de Gris</translation>
     </message>
     <message>
         <source>Send Report</source>
-        <translation type="unfinished"></translation>
+        <translation>Enviar el Reporte</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+MAYUS+F10</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F11</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+MAYUS+F11</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F12</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+MAYUS+F12</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation type="unfinished"></translation>
+        <translation>Reproducir la última grabación</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir carpeta</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+MAYUS+F8</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation type="unfinished"></translation>
+        <translation>Minimizada cuando comience la grabación</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation type="unfinished"></translation>
+        <translation>Comienza minimizada</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Distribuir en dos ventanas horizontales</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Distribuir en dos ventanas verticales</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation type="unfinished"></translation>
+        <translation>Blanco y Negro</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Remover el marco de la ventana</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"></translation>
+        <translation>Donar</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation type="unfinished"></translation>
+        <translation>Redefinir la configuración en la siguiente grabación</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>Derechos de autor y licencia sobre la grabación</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation type="unfinished"></translation>
+        <translation>Megabyte</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation type="unfinished"></translation>
+        <translation>Pantalla de grabación</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Reproductor</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitácora</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>Derechos de autor y licencia sobre la grabación</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Reproducir</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Pausar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Detener</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir Archivo</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Pantalla Completa</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuadro anterior</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Siguiente cuadro</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Apagar el micrófono</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover el menú</translation>
     </message>
 </context>
 </TS>
