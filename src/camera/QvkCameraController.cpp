@@ -29,8 +29,6 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
 {
     ui_formMainWindow = ui_surface;
 
-//    getAllDevices();
-
     sliderCameraWindowSize = new QvkSpezialSlider( Qt::Horizontal );
     ui_formMainWindow->horizontalLayout_45->insertWidget( 1, sliderCameraWindowSize );
     sliderCameraWindowSize->setObjectName( "sliderCameraWindowSize" );
@@ -40,6 +38,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     sliderCameraWindowSize->show();
     sliderCameraWindowSize->setShowValue( false );
     sliderCameraWindowSize->setEnabled( false );
+
     getAllDevices();
 
     cameraWindow = new QvkCameraWindow( ui_surface, sliderCameraWindowSize );
@@ -80,8 +79,8 @@ void QvkCameraController::getAllDevices()
         {
             if ( ( camerasInfoList.at(i).description() > "" ) and ( !camerasInfoList.at(i).description().contains( "@device:pnp" ) ) )
             {
-               slot_addedCamera( camerasInfoList.at(i).description(), camerasInfoList.at(i).deviceName() );
                qDebug().noquote() << global::nameOutput << "[Camera} Found:" << camerasInfoList.at(i).description() << camerasInfoList.at(i).deviceName();
+               slot_addedCamera( camerasInfoList.at(i).description(), camerasInfoList.at(i).deviceName() );
             }
         }
     }
