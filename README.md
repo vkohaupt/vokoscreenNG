@@ -27,8 +27,8 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 
 ### BuildRequires
 * https://download.qt.io/official_releases/qt/5.9/5.9.4/qt-opensource-windows-x86-5.9.4.exe
-* https://gstreamer.freedesktop.org/pkg/windows/1.16.2/gstreamer-1.0-x86-1.16.2.msi
-* https://gstreamer.freedesktop.org/pkg/windows/1.16.2/gstreamer-1.0-devel-x86-1.16.2.msi
+* https://gstreamer.freedesktop.org/pkg/windows/1.16.2/gstreamer-1.0-mingw-x86-1.16.2.msi
+* https://gstreamer.freedesktop.org/pkg/windows/1.16.2/gstreamer-1.0-devel-mingw-x86-1.16.2.msi
 
 
 ### Environment
