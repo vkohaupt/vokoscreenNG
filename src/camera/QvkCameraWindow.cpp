@@ -30,7 +30,6 @@ QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, QvkSpezialSlide
     ui_formMainWindow = ui_surface;
 
     setWindowFlags( windowFlags() | Qt::WindowStaysOnTopHint );
-    setStyleSheet( "background-color:black;" );
     setMinimumSize( QSize( 160, 120 ) );
     setAlignment( Qt::AlignHCenter | Qt::AlignVCenter );
     setMouseTracking( true ); // No function, why?
@@ -172,10 +171,3 @@ void QvkCameraWindow::mousePressEvent(QMouseEvent *event)
         vkCameraSettingsDialog->close();
     }
 }
-
-void QvkCameraWindow::showError()
-{
-    clear();
-    setText( "Camera is busy " );
-}
-

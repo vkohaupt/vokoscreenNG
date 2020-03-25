@@ -225,6 +225,7 @@ void QvkCameraController::slot_startCamera( bool value )
         slot_sliderMoved( sliderCameraWindowSize->value() );
 
         camera->setViewfinder( videoSurface );
+        cameraWindow->setStyleSheet( "background-color:black;" );
         cameraWindow->show();
 #ifdef Q_OS_LINUX
         camera->load();
@@ -287,7 +288,9 @@ void QvkCameraController::slot_error( QCamera::Error error )
     case QCamera::CameraError:
     {
         qDebug().noquote() << global::nameOutput << "General Camera error";
-        cameraWindow->showError();
+        cameraWindow->clear();
+        cameraWindow->setStyleSheet( "background-color:white;" );
+        cameraWindow->setText( "Camera is busy " );
         break;
     }
     case QCamera::InvalidRequestError:
