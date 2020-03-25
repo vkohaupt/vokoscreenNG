@@ -172,3 +172,10 @@ void QvkCameraWindow::mousePressEvent(QMouseEvent *event)
         vkCameraSettingsDialog->close();
     }
 }
+
+void QvkCameraWindow::showError()
+{
+    clear();
+    setText( "Camera is busy " );
+}
+

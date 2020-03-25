@@ -41,6 +41,7 @@ public:
     virtual ~QvkCameraWindow();
     Ui_cameraSettingsDialog *uiCameraSettingsDialog;
     cameraSettingsDialog *vkCameraSettingsDialog;
+    void showError();
 
 
 private:

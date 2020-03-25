@@ -214,6 +214,7 @@ void QvkCameraController::slot_startCamera( bool value )
         camera->setCaptureMode( QCamera::CaptureViewfinder );
         connect( camera, SIGNAL( statusChanged( QCamera::Status ) ), this, SLOT( slot_statusChanged( QCamera::Status ) ) );
         connect( camera, SIGNAL( stateChanged( QCamera::State   ) ), this, SLOT( slot_stateChanged( QCamera::State ) )  );
+        connect( camera, QOverload<QCamera::Error>::of( &QCamera::error ), this, [=]( QCamera::Error value ){ slot_error( value ); });
 
         QCameraViewfinderSettings viewfinderSettings;
         viewfinderSettings.setResolution( 640, 480 );
@@ -285,22 +286,23 @@ void QvkCameraController::slot_error( QCamera::Error error )
     }
     case QCamera::CameraError:
     {
-        qDebug() <<  "QCamera" << "General Camera error";
+        qDebug().noquote() << global::nameOutput << "General Camera error";
+        cameraWindow->showError();
         break;
     }
     case QCamera::InvalidRequestError:
     {
-        qDebug() <<  "QCamera" << "Camera invalid request error";
+        qDebug().noquote() << global::nameOutput << "Camera invalid request error";
         break;
     }
     case QCamera::ServiceMissingError:
     {
-        qDebug() << "QCamera" <<  "Camera service missing error";
+        qDebug().noquote() << global::nameOutput << "Camera service missing error";
         break;
     }
     case QCamera::NotSupportedFeatureError :
     {
-        qDebug() << "QCamera" << "Camera not supported error";
+        qDebug().noquote() << global::nameOutput << "Camera not supported error";
         break;
     }
     }
