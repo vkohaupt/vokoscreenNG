@@ -200,7 +200,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     }
 #endif
 
-#ifdef Q_OS_Win
+#ifdef Q_OS_WIN
     QvkGlobalShortcut *vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
     Q_UNUSED(vkGlobalShortcut);
 #endif
