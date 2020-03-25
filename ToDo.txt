@@ -1,6 +1,10 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
+Camera:
+--Wenn belegt sollte eine Hinweis kommen.
+
+
 Windows Audio:
 --Aufnahme Lautsprecher
 --https://gstreamer.freedesktop.org/documentation/wasapi/wasapisrc.html?gi-language=c
