@@ -1,9 +1,6 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
-Framerate:
---Standard Button fehlt.
-
 Windows Audio:
 --Aufnahme Lautsprecher
 --https://gstreamer.freedesktop.org/documentation/wasapi/wasapisrc.html?gi-language=c
