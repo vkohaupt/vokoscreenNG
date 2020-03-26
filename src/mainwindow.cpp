@@ -76,7 +76,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderScreencastCountDown->show();
 
     sliderFrames = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_5->addWidget( sliderFrames );
+    ui->horizontalLayout_33->insertWidget( 0, sliderFrames );
     sliderFrames->setObjectName("sliderFrames");
     sliderFrames->setTracking( true );
     sliderFrames->setMinimum( 10 );
@@ -387,6 +387,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
     connect( vkTheme, SIGNAL( signal_newTheme() ), this, SLOT( slot_audioRedCross() ) );
 
+    connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this, SLOT( slot_framesReset() ) );
+
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
 
@@ -591,6 +593,12 @@ void QvkMainWindow::slot_afterWindowShown()
     }
 }
 #endif
+
+
+void QvkMainWindow::slot_framesReset()
+{
+    sliderFrames->setValue( 25 );
+}
 
 
 void QvkMainWindow::slot_x264Reset()

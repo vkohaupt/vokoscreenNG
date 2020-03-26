@@ -61,6 +61,7 @@ void QvkTheme::slot_setTheme()
         makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAvailable ), VK_getIcon( "dialog-information",     ":/pictures/screencast/supported-formats.png" ) );
         makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAbout ),     VK_getIcon( "help-about",             ":/pictures/screencast/help-about.png" ) );
 
+        ui->toolButtonFramesReset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
         ui->toolButtonScreencastAreaReset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
         ui->toolButtonx264Reset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
         ui->toolButtonOpenh264Reset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
