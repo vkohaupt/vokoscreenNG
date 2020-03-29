@@ -51,6 +51,8 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
 
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ), this, SLOT( slot_setOrUnsetShortcut( bool ) ) );
 
+    connect(ui->checkBoxDeactivateShortcuts, SIGNAL(clicked(bool)), this, SLOT(slot_setOrUnsetShortcut(bool)));
+
 }
 
 
