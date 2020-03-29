@@ -8,9 +8,6 @@ Windows Audio:
 Player:
 --Im Player sollten ebenfalls die tango icons benutzt werden.
 
-Windows Systray:
---Icon für "Weiter" ist sehr schlecht zu erkennen.
-
 Linux:
 --Bei dunklen Themes ist das Icon auf Tab Timer schlecht sichtbar
 
