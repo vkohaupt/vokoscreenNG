@@ -285,10 +285,6 @@
         <translation>Якість</translation>
     </message>
     <message>
-        <source>Scale</source>
-        <translation>Збільшити</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Не записувати курсор миші</translation>
     </message>

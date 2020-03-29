@@ -177,14 +177,7 @@ void QvkSystray::slot_closeSystray()
 
 void QvkSystray::slot_setRecordIcon( bool )
 {
-    if ( global::VK_showOnlyFallbackIcons == true )
-    {
-        setIcon( QIcon( ":/pictures/systray/record.png" ) );
-    }
-    else
-    {
-        setIcon( QIcon::fromTheme( "media-record", QIcon( ":/pictures/systray/record.png" ) ) );
-    }
+    setIcon( QIcon( ":/pictures/systray/record.png" ) );
 }
 
 
@@ -196,5 +189,5 @@ void QvkSystray::slot_setSystrayIcon( bool )
 
 void QvkSystray::slot_setPauseIcon( bool )
 {
-    setIcon( QIcon::fromTheme( "media-playback-pause", ui->pushButtonStart->style()->standardIcon( QStyle::SP_MediaPause ) ) );
+    setIcon( QIcon( ":/pictures/systray/pause.png" ) );
 }

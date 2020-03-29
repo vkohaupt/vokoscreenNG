@@ -285,10 +285,6 @@
         <translation>Качество</translation>
     </message>
     <message>
-        <source>Scale</source>
-        <translation>Приблизить</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Не записывать указатель мыши</translation>
     </message>

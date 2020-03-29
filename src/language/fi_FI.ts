@@ -285,10 +285,6 @@
         <translation>Laatu</translation>
     </message>
     <message>
-        <source>Scale</source>
-        <translation>Skaalaa</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Älä tallenna hiiren osoitinta</translation>
     </message>

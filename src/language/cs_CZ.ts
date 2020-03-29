@@ -285,10 +285,6 @@
         <translation>Kvalita</translation>
     </message>
     <message>
-        <source>Scale</source>
-        <translation>Zvětšení</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Nenahrávat kurzor myši</translation>
     </message>

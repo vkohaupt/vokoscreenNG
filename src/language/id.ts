@@ -285,10 +285,6 @@
         <translation>Kualitas</translation>
     </message>
     <message>
-        <source>Scale</source>
-        <translation>Skala</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Jangan rekam kursor tetikus</translation>
     </message>

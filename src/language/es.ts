@@ -286,10 +286,6 @@
         <translation>Calidad</translation>
     </message>
     <message>
-        <source>Scale</source>
-        <translation>Escala</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>No grabar el puntero del ratón</translation>
     </message>

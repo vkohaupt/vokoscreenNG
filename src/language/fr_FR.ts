@@ -285,10 +285,6 @@
         <translation>Qualité</translation>
     </message>
     <message>
-        <source>Scale</source>
-        <translation>Échelle</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Ne pas enregistrer le curseur de la souris</translation>
     </message>

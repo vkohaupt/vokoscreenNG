@@ -285,10 +285,6 @@
         <translation>Kalite</translation>
     </message>
     <message>
-        <source>Scale</source>
-        <translation>Ölçek</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Fare imlecini kaydetme</translation>
     </message>

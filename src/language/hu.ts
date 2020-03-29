@@ -285,10 +285,6 @@
         <translation>Minőség</translation>
     </message>
     <message>
-        <source>Scale</source>
-        <translation>Méretezés</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Ne rögzítse az egérmutatót</translation>
     </message>

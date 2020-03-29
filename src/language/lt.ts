@@ -285,10 +285,6 @@
         <translation>Kokybė</translation>
     </message>
     <message>
-        <source>Scale</source>
-        <translation>Mastelis</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Neįrašinėti pelės žymeklio</translation>
     </message>

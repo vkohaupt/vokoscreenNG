@@ -285,10 +285,6 @@
         <translation>质量</translation>
     </message>
     <message>
-        <source>Scale</source>
-        <translation>缩放</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>不要录制鼠标</translation>
     </message>
