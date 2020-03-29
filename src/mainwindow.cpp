@@ -477,8 +477,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonSendReport, SIGNAL( clicked( bool ) ), this, SLOT( slot_sendReport() ) );
     // *****************End Log ***********************************
 
-    QvkLoadExtension *loadExtension = new QvkLoadExtension( this, ui );
-    loadExtension->loadExtension();
+
+    // Deaktivat loader for Extension. Currently no need.
+    // QvkLoadExtension *loadExtension = new QvkLoadExtension( this, ui );
+    // loadExtension->loadExtension();
 
     // Hint:
     vkSettings.readAll( ui, this );
