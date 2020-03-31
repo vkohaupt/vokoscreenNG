@@ -223,7 +223,8 @@ int QvkHelp::getCountFileToDownload( QString tempPathFileName )
     QFile file( tempPathFileName );
     if( !file.open( QIODevice::ReadOnly ) )
     {
-        QMessageBox::information( nullptr, "Help error", "QvkHelp::getCountFileToDownload\n" + tempPathFileName + "\n" + file.errorString() );
+        qDebug().noquote() << global::nameOutput << "QvkHelp::getCountFileToDownload" << tempPathFileName  << file.errorString();
+        //QMessageBox::information( nullptr, "Help error", "QvkHelp::getCountFileToDownload\n" + tempPathFileName + "\n" + file.errorString() );
     }
 
     int count = 0;
@@ -256,7 +257,7 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
     if( !file.open( QIODevice::ReadOnly ) )
     {
         qDebug().noquote() << global::nameOutput << "QvkHelp::slot_parseHTML" << tempPathFileName  << file.errorString();
-        QMessageBox::information( nullptr, global::name + " " + global::version, "QvkHelp::slot_parseHTML\n" + tempPathFileName + "\n" + file.errorString() );
+        //QMessageBox::information( nullptr, global::name + " " + global::version, "QvkHelp::slot_parseHTML\n" + tempPathFileName + "\n" + file.errorString() );
         return;
     }
 
@@ -305,7 +306,8 @@ void QvkHelp::slot_showHelp( QString tempPathFileName )
     QFile file( htmlFile );
     if( !file.open( QIODevice::ReadOnly ) )
     {
-        QMessageBox::information( nullptr, "Help error", "QvkHelp::slot_showHelp\n" + tempPathFileName + "\n" + file.errorString() );
+        qDebug().noquote() << global::nameOutput << "QvkHelp::slot_showHelp" << tempPathFileName  << file.errorString();
+        //QMessageBox::information( nullptr, "Help error", "QvkHelp::slot_showHelp\n" + tempPathFileName + "\n" + file.errorString() );
     }
 
     QString value = QString::fromUtf8( file.readAll() );
