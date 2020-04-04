@@ -570,7 +570,7 @@
             <item>
              <layout class="QGridLayout" name="gridLayoutFormatCodecs">
               <item row="0" column="2" colspan="2">
-               <widget class="QFrame" name="frame">
+               <widget class="QFrame" name="frameFrames">
                 <property name="frameShape">
                  <enum>QFrame::NoFrame</enum>
                 </property>
