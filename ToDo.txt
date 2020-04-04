@@ -1,6 +1,9 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
+Area:
+--https://stackoverflow.com/questions/3203095/display-window-full-screen-on-secondary-monitor-using-qt
+
 Windows Audio:
 --Aufnahme Lautsprecher
 --https://gstreamer.freedesktop.org/documentation/wasapi/wasapisrc.html?gi-language=c
