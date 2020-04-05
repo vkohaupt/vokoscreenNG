@@ -35,21 +35,34 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
 
+    QString help;
+    help.append( "\n" );
+    help.append( "Usage: " + global::name + " [Option] [File or URL]" + "\n" );
+    help.append( "\n" );
+    help.append( "Options: \n" );
+    help.append( "  -h or --help        Print this message\n" );
+    help.append( "  -v or --version     Print version \n" );
+    help.append( "\n" );
+    help.append( "File or Url:\n" );
+    help.append( "  Play a video\n" );
+    help.append( "    Example file:\n" );
+    help.append( "      vokoscreenNG /path/video\n" );
+    help.append( "\n" );
+    help.append( "    Exsample URL:\n");
+    help.append( "      vokoscreenNG http://www.rapconverter.com/SampleDownload/Sample320.mp4\n");
+    help.append( "      vokoscreenNG http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_60fps_normal.mp4" );
+    help.append( "\n" );
+
     QStringList arguments = QApplication::instance()->arguments();
     if ( !arguments.empty() and ( arguments.count() == 2 ) )
     {
         QStringList arguments = QApplication::instance()->arguments();
         if ( ( arguments.at(1) == "--help" ) or
              ( arguments.at(1) == "-h"     ) )
-            {
-                qDebug(" ");
-                qDebug().noquote() << "Usage:" << global::name << "[Option] [File or URL]";
-                qDebug(" ");
-                qDebug().noquote() << "Options:";
-                qDebug().noquote() << "  -h or --help        Print this message";
-                qDebug().noquote() << "  -v or --version     Print" << global::name << "version";
-                return 0;
-            }
+        {
+            qDebug().resetFormat().noquote() << help;
+            return 0;
+        }
 
         if ( ( arguments.at(1) == "--version" ) or ( arguments.at(1) == "-v" ) )
         {
@@ -57,13 +70,15 @@ int main(int argc, char *argv[])
             return 0;
         }
 
-        // If call from terminal and local file not exists
+        // If call from terminal and local file or remote file not exists
         QFile file( arguments.at(1) );
         if ( ( file.exists() == false ) and
              ( arguments.at(1).contains( "http://" ) == false ) and
              ( arguments.at(1).contains( "https://" ) == false ) )
         {
             qDebug().noquote() << global::nameOutput << arguments.at(1) << "file not exists";
+            qDebug().resetFormat().noquote() << help;
+            qDebug( " " );
             return 1;
         }
     }
