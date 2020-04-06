@@ -1742,6 +1742,7 @@ void QvkMainWindow::slot_Start()
         #ifdef Q_OS_WIN
             VK_PipelineList << VK_get_AudioSystem().append( " device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(0) +"'" );
         #endif
+        // We need more queue with enough buffers, then we have no dropaouts.
         VK_PipelineList << "queue max-size-buffers=1000000";
         VK_PipelineList << "audio/x-raw, channels=2";
         VK_PipelineList << "queue max-size-buffers=1000000";
@@ -1781,7 +1782,6 @@ void QvkMainWindow::slot_Start()
         VK_PipelineList << "mux.";
     }
 
-    //VK_PipelineList << "! queue max-size-buffers=100000";
     VK_PipelineList << VK_getMuxer();
     VK_PipelineList.removeAll( "" );
 
