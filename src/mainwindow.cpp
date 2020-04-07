@@ -959,11 +959,13 @@ QString QvkMainWindow::VK_getXimagesrc()
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
-        qreal gnomehack = 0;
-        if ( qgetenv( "XDG_CURRENT_DESKTOP" ).toLower() == "gnome" )
+        qreal gnomeTop = 0;
+        qreal gnomeLeft = 0;
+        if ( qgetenv( "XDG_CURRENT_DESKTOP" ).toLower().contains( "gnome" ) == true )
         {
             QList<QScreen *> screen = QGuiApplication::screens();
-            gnomehack = screen.at( ui->comboBoxScreencastScreen->currentIndex() )->availableGeometry().top();
+            gnomeTop = screen.at( ui->comboBoxScreencastScreen->currentIndex() )->availableGeometry().top();
+            gnomeLeft = screen.at( ui->comboBoxScreencastScreen->currentIndex() )->availableGeometry().left();
         }
 
         QStringList stringList;
@@ -971,10 +973,10 @@ QString QvkMainWindow::VK_getXimagesrc()
                    << "display-name=" + qgetenv( "DISPLAY" )
                    << "use-damage=false"
                    << "show-pointer=" + showPointer
-                   << "startx=" + QString::number( vkRegionChoise->getXRecordArea() )
-                   << "starty=" + QString::number( vkRegionChoise->getYRecordArea() + gnomehack )
-                   << "endx="   + QString::number( vkRegionChoise->getXRecordArea() + vkRegionChoise->getWidth() - 1 )
-                   << "endy="   + QString::number( vkRegionChoise->getYRecordArea() + gnomehack + vkRegionChoise->getHeight() - 1 );
+                   << "startx=" + QString::number( vkRegionChoise->getXRecordArea() + gnomeLeft )
+                   << "starty=" + QString::number( vkRegionChoise->getYRecordArea() + gnomeTop )
+                   << "endx="   + QString::number( vkRegionChoise->getXRecordArea() + gnomeLeft + vkRegionChoise->getWidth() - 1 )
+                   << "endy="   + QString::number( vkRegionChoise->getYRecordArea() + gnomeTop + vkRegionChoise->getHeight() - 1 );
         value = stringList.join( " " );
     }
 
