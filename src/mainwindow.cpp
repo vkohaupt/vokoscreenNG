@@ -1031,7 +1031,14 @@ QString QvkMainWindow::VK_getCapsFilter()
    return QString( stringList.join( "" ) );
 }
 
-
+/*
+ * For my better understanding is this comment in german.
+ *
+ * Einige encoder, wie z.b x264, benötigen zum encodieren gerade Werte.
+ * Laut Dokumentation wird videoscale nur angewandt wenn die quellauflösung zur Zielauflösung sich unterscheidet.
+ * Wird ein Bereich oder ein Fenster aufgenommen das ungerade Werte enthält wird diese mittels videoscale korrigiert.
+ * Für das Aufnehmen in einer Virtuellen Maschine die in einem Fenster läuft, wird die Vollbildaufnahme ebenfalls korigiert.
+ */
 QString QvkMainWindow::VK_scale()
 {
     QString value = "";
