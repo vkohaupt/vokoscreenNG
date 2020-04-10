@@ -603,6 +603,7 @@ void QvkMainWindow::slot_afterWindowShown()
 void QvkMainWindow::slot_comboBoxScreencastScreen( bool )
 {
     int index = ui->comboBoxScreencastScreen->currentIndex();
+
     if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
     {
         QList<QScreen *> screen = QGuiApplication::screens();
@@ -611,6 +612,20 @@ void QvkMainWindow::slot_comboBoxScreencastScreen( bool )
 
         vkCountdown->x = left + screen.at( index )->geometry().width() / 2 - ( vkCountdown->Width / 2 );
         vkCountdown->y = top + screen.at( index )->geometry().height() / 2 - ( vkCountdown->Height / 2 );
+    }
+
+    if ( ui->radioButtonScreencastWindow->isChecked() == true )
+    {
+        QScreen *screen = QGuiApplication::primaryScreen();
+        vkCountdown->x = ( screen->geometry().width() / 2 ) - ( vkCountdown->Width / 2 );
+        vkCountdown->y = ( screen->geometry().height() / 2 ) - ( vkCountdown->Height / 2 );
+    }
+
+    if ( ui->radioButtonScreencastArea->isChecked() == true )
+    {
+        QScreen *screen = QGuiApplication::primaryScreen();
+        vkCountdown->x = ( screen->geometry().width() / 2 ) - ( vkCountdown->Width / 2 );
+        vkCountdown->y = ( screen->geometry().height() / 2 ) - ( vkCountdown->Height / 2 );
     }
 }
 
