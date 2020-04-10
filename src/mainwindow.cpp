@@ -262,6 +262,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonContinue,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonPlay,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastFullscreen, SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( slot_comboBoxScreencastScreen( bool ) ) );
 #ifdef Q_OS_LINUX
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastWindow,     SLOT( setEnabled( bool ) ) );
 #endif
@@ -346,6 +347,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->radioButtonScreencastFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
     ui->radioButtonScreencastWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
+
+//    connect( ui->comboBoxScreencastScreen, SIGNAL( 	currentIndexChanged( int ) ), this, SLOT( slot_comboBoxScreencastScreen( int ) ) );
 
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );//**
@@ -595,6 +598,22 @@ void QvkMainWindow::slot_afterWindowShown()
     }
 }
 #endif
+
+
+void QvkMainWindow::slot_comboBoxScreencastScreen( bool )
+{
+    int index = ui->comboBoxScreencastScreen->currentIndex();
+    if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
+    {
+        QList<QScreen *> screen = QGuiApplication::screens();
+        int left = static_cast<int>( screen.at( index )->geometry().left() * screen.at( index )->devicePixelRatio() );
+        int top = static_cast<int>( screen.at( index )->geometry().top() * screen.at( index )->devicePixelRatio() );
+
+        vkCountdown->x = left + screen.at( index )->geometry().width() / 2 - ( vkCountdown->Width / 2 );
+        vkCountdown->y = top + screen.at( index )->geometry().height() / 2 - ( vkCountdown->Height / 2 );
+    }
+}
+
 
 
 void QvkMainWindow::slot_framesReset()

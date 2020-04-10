@@ -33,6 +33,10 @@ public:
     QvkCountdown();
     virtual ~QvkCountdown();
     void startCountdown(int value );
+    int x;
+    int y;
+    int Width;
+    int Height;
 
     
 public slots:
@@ -45,10 +49,6 @@ private:
     QTimer *timer;
     QTimer *animationTimer;
     QPainter painter;
-    int Width;
-    int Height;
-    int x;
-    int y;
 
     
 private slots:
