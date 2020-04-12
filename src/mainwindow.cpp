@@ -53,7 +53,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                                 ui(new Ui::formMainWindow),
                                                 vkWinInfo(new QvkWinInfo),
                                                 vkCountdown(new QvkCountdown)
-                                                //vkRegionChoise(new QvkRegionChoise)
 #endif
 
 #ifdef Q_OS_WIN
@@ -61,7 +60,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                                 ui(new Ui::formMainWindow),
                                                 vkWinInfo(new QvkWinInfo),
                                                 vkCountdown(new QvkCountdown)
-                                                //vkRegionChoise(new QvkRegionChoise)
 #endif
 {
     ui->setupUi(this);
@@ -2034,6 +2032,5 @@ void QvkMainWindow::slot_screenCountChanged( QString stringText, QString stringD
 void QvkMainWindow::slot_screenCountChangedArea( QString stringText, QString stringData )
 {
     ui->comboBoxScreencastScreenArea->addItem( stringText, stringData );
-    //it( ui );
 }
 
