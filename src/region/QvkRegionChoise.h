@@ -23,6 +23,8 @@
 #ifndef REGIONCHOISE_H
 #define REGIONCHOISE_H
 
+#include "ui_formMainWindow.h"
+
 #include "QvkRegionButtonArrow.h"
 
 #include <QWidget>
@@ -32,7 +34,7 @@ class QvkRegionChoise : public QWidget
 { 
 Q_OBJECT
 public:
-  QvkRegionChoise();
+  QvkRegionChoise( Ui_formMainWindow *ui );
   virtual ~QvkRegionChoise();
   int getX();
   int getY();
@@ -56,6 +58,7 @@ public:
 
 public slots:
   void slot_areaReset();
+  void slot_init();
 
 
 private slots:
@@ -70,6 +73,7 @@ protected:
   void keyPressEvent( QKeyEvent * event );
 
 private:
+  Ui_formMainWindow *ui;
 
   enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle };
   Handle handlePressed;

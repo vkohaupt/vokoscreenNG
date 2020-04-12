@@ -35,7 +35,7 @@
   #include <QX11Info>
 #endif
 
-QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
+QvkRegionChoise::QvkRegionChoise( Ui_formMainWindow *ui_formMainWindow ):handlePressed(NoHandle),
                                    handleUnderMouse(NoHandle),
                                    HandleColorBackground( Qt::lightGray ),
                                    HandleColorBackgroundSize( Qt::lightGray ),
@@ -62,6 +62,7 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
     if ( QX11Info::isPlatformX11() == false )
         platform = wayland;
 #endif
+    ui = ui_formMainWindow;
 
     setWindowTitle( QString( tr( "Area") ) );
 
@@ -72,18 +73,22 @@ QvkRegionChoise::QvkRegionChoise():handlePressed(NoHandle),
     // Hint: Qt::WindowStaysOnTopHint is only for X11 and Windows on WayLand not do it
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
     setAttribute( Qt::WA_TranslucentBackground, true);
-    setWindowState( Qt::WindowFullScreen );
-
     setMouseTracking( true );
+    setFrameColor( Qt::darkGreen );
+    hide();
+}
 
-    screen = QGuiApplication::primaryScreen();
+
+void QvkRegionChoise::slot_init()
+{
+    int index = ui->comboBoxScreencastScreenArea->currentIndex();
+    QList<QScreen *> screenList = QGuiApplication::screens();
+    screen = screenList.at( index );
 
     resize( screen->size().width(), screen->size().height() );
-
     screenWidth = screen->size().width();
     screenHeight = screen->size().height();
-
-    hide();
+    move( screen->geometry().x(), screen->geometry().y() );
 }
 
 

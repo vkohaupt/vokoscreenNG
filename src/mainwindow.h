@@ -150,13 +150,14 @@ private slots:
     void slot_Play();
     void slot_Folder();
     void slot_screenCountChanged( QString, QString );
+    void slot_screenCountChangedArea( QString stringText, QString stringData );
     void slot_audioIconOnOff(bool state );
     void slot_audioRedCross();
     void slot_newVideoPath();
     void slot_videoFileSystemWatcherSetButtons();
     void slot_videoFileSystemWatcherSetNewPath();
     void slot_startCounter( bool value );
-    void slot_comboBoxScreencastScreen( bool );
+    void slot_comboBoxScreencastScreenCountdown( bool );
 
     void slot_set_available_VideoCodecs_in_Combox( QString suffix );
     void slot_set_available_AudioCodecs_in_Combox( QString suffix );

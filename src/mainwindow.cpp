@@ -52,16 +52,16 @@
 QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                                 ui(new Ui::formMainWindow),
                                                 vkWinInfo(new QvkWinInfo),
-                                                vkCountdown(new QvkCountdown),
-                                                vkRegionChoise(new QvkRegionChoise)
+                                                vkCountdown(new QvkCountdown)
+                                                //vkRegionChoise(new QvkRegionChoise)
 #endif
 
 #ifdef Q_OS_WIN
 QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                                 ui(new Ui::formMainWindow),
                                                 vkWinInfo(new QvkWinInfo),
-                                                vkCountdown(new QvkCountdown),
-                                                vkRegionChoise(new QvkRegionChoise)
+                                                vkCountdown(new QvkCountdown)
+                                                //vkRegionChoise(new QvkRegionChoise)
 #endif
 {
     ui->setupUi(this);
@@ -172,8 +172,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkLogController *vklogController = new QvkLogController( ui );
     Q_UNUSED(vklogController);
 
-    vkRegionChoise->setFrameColor( Qt::darkGreen );
-
     setWindowTitle( global::name + " " + global::version );
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     setWindowIcon( icon );
@@ -186,6 +184,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkHelp *vkHelp = new QvkHelp( this, ui );
 
     QvkLicenses *vkLicenses = new QvkLicenses( ui );
+
+    vkRegionChoise = new QvkRegionChoise( ui );
 
     /* Wayland
      * If start with "./name -platform wayland" comes a Memory access error
@@ -262,7 +262,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonContinue,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonPlay,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastFullscreen, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( slot_comboBoxScreencastScreen( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( slot_comboBoxScreencastScreenCountdown( bool ) ) );
 #ifdef Q_OS_LINUX
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastWindow,     SLOT( setEnabled( bool ) ) );
 #endif
@@ -348,20 +348,24 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->radioButtonScreencastFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
     ui->radioButtonScreencastWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
 
-//    connect( ui->comboBoxScreencastScreen, SIGNAL( 	currentIndexChanged( int ) ), this, SLOT( slot_comboBoxScreencastScreen( int ) ) );
-
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );//**
+    connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled( bool ) ) );
 
     connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreen, SLOT( setDisabled( bool ) ) );
+    connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );
 
-    connect( this,                            SIGNAL( signal_close()  ), vkRegionChoise,   SLOT( close() ) );
-    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), vkRegionChoise,   SLOT( setVisible( bool ) ) );
+    connect( this,                            SIGNAL( signal_close()  ), vkRegionChoise, SLOT( close() ) );
+    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( slot_init() ) );
+    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( setVisible( bool ) ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreen, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setEnabled( bool ) ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setEnabled( bool ) ) );
+    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setEnabled( bool ) ) );
+
+    connect( ui->comboBoxScreencastScreenArea,SIGNAL( currentIndexChanged(int) ),  vkRegionChoise, SLOT( slot_init() ) );
 
     connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
     connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), this,           SLOT( slot_areaReset() ) );
@@ -463,10 +467,13 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     VK_gst_Elements_available();
 
     QvkScreenManager *screenManager = new QvkScreenManager;
+    // Fullscreen
     connect( screenManager, SIGNAL( signal_clear_widget() ),                          ui->comboBoxScreencastScreen, SLOT( clear() ) );
     connect( screenManager, SIGNAL( signal_screen_count_changed( QString, QString) ), this,                         SLOT( slot_screenCountChanged( QString, QString ) ) );
+    // Area
+    connect( screenManager, SIGNAL( signal_clear_widget() ),                          ui->comboBoxScreencastScreenArea, SLOT( clear() ) );
+    connect( screenManager, SIGNAL( signal_screen_count_changed( QString, QString) ), this,                             SLOT( slot_screenCountChangedArea( QString, QString ) ) );
     emit qApp->screenAdded(Q_NULLPTR);
-
 
     // *****************Begin Camera *********************************
     vkCameraController = new QvkCameraController(ui);
@@ -599,8 +606,10 @@ void QvkMainWindow::slot_afterWindowShown()
 }
 #endif
 
-
-void QvkMainWindow::slot_comboBoxScreencastScreen( bool )
+/*
+ * CountDown
+ */
+void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
 {
     int index = ui->comboBoxScreencastScreen->currentIndex();
 
@@ -1007,10 +1016,10 @@ QString QvkMainWindow::VK_getXimagesrc()
                    << "display-name=" + qgetenv( "DISPLAY" )
                    << "use-damage=false"
                    << "show-pointer=" + showPointer
-                   << "startx=" + QString::number( vkRegionChoise->getXRecordArea() + gnomeLeft )
-                   << "starty=" + QString::number( vkRegionChoise->getYRecordArea() + gnomeTop )
-                   << "endx="   + QString::number( vkRegionChoise->getXRecordArea() + gnomeLeft + vkRegionChoise->getWidth() - 1 )
-                   << "endy="   + QString::number( vkRegionChoise->getYRecordArea() + gnomeTop + vkRegionChoise->getHeight() - 1 );
+                   << "startx=" + QString::number( vkRegionChoise->screen->geometry().x() + vkRegionChoise->getXRecordArea() + gnomeLeft )
+                   << "starty=" + QString::number( vkRegionChoise->screen->geometry().y() + vkRegionChoise->getYRecordArea() + gnomeTop )
+                   << "endx="   + QString::number( vkRegionChoise->screen->geometry().x() + vkRegionChoise->getXRecordArea() + gnomeLeft + vkRegionChoise->getWidth() - 1 )
+                   << "endy="   + QString::number( vkRegionChoise->screen->geometry().y() + vkRegionChoise->getYRecordArea() + gnomeTop + vkRegionChoise->getHeight() - 1 );
         value = stringList.join( " " );
     }
 
@@ -2020,3 +2029,11 @@ void QvkMainWindow::slot_screenCountChanged( QString stringText, QString stringD
     qDebug().noquote() << global::nameOutput << "ItemData in Combobox:" << stringData;
     qDebug();
 }
+
+
+void QvkMainWindow::slot_screenCountChangedArea( QString stringText, QString stringData )
+{
+    ui->comboBoxScreencastScreenArea->addItem( stringText, stringData );
+    //it( ui );
+}
+
