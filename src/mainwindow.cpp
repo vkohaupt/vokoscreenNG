@@ -1050,6 +1050,7 @@ QString QvkMainWindow::VK_getXimagesrc()
     {
         QStringList stringList;
         stringList << "gdiscreencapsrc"
+                   << "monitor=" + QString::number( ui->comboBoxScreencastScreenArea->currentIndex() )
                    << "cursor=" + showPointer
                    << "x=" + QString::number( vkRegionChoise->getXRecordArea() )
                    << "y=" + QString::number( vkRegionChoise->getYRecordArea() )
