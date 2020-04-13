@@ -1005,8 +1005,8 @@ QString QvkMainWindow::VK_getXimagesrc()
         if ( qgetenv( "XDG_CURRENT_DESKTOP" ).toLower().contains( "gnome" ) == true )
         {
             QList<QScreen *> screen = QGuiApplication::screens();
-            gnomeTop = screen.at( ui->comboBoxScreencastScreen->currentIndex() )->availableGeometry().top();
-            gnomeLeft = screen.at( ui->comboBoxScreencastScreen->currentIndex() )->availableGeometry().left();
+            gnomeTop = screen.at( ui->comboBoxScreencastScreenArea->currentIndex() )->availableGeometry().top();
+            gnomeLeft = screen.at( ui->comboBoxScreencastScreenArea->currentIndex() )->availableGeometry().left();
         }
 
         QStringList stringList;
