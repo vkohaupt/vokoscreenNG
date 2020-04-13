@@ -569,37 +569,6 @@ void QvkMainWindow::slot_afterWindowShown()
         {
             qDebug().noquote() << global::nameOutput << "Desktop session is a X11 session";
         }
-
-        // This is only for GNOME
-        if ( qgetenv( "XDG_CURRENT_DESKTOP" ).toLower().contains( "gnome" ) == true )
-        {
-            // Problem 1. Limit the availableSize without the top Menue
-            QScreen *screen = QGuiApplication::primaryScreen();
-            vkRegionChoise->screenWidth  = screen->availableSize().width();
-            vkRegionChoise->screenHeight = screen->availableSize().height();
-
-            // Problem 2. At the first start of area, the Gnome menu hide.
-            if ( ui->radioButtonScreencastArea->isChecked() == true )
-            {
-                ui->radioButtonScreencastFullscreen->click();
-                ui->radioButtonScreencastArea->click();
-                return;
-            }
-
-            if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
-            {
-                ui->radioButtonScreencastArea->click();
-                ui->radioButtonScreencastFullscreen->click();
-                return;
-            }
-
-            if ( ui->radioButtonScreencastWindow->isChecked() == true )
-            {
-                ui->radioButtonScreencastArea->click();
-                ui->radioButtonScreencastWindow->click();
-                return;
-            }
-        }
     }
 }
 #endif
@@ -1000,24 +969,15 @@ QString QvkMainWindow::VK_getXimagesrc()
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
-        qreal gnomeTop = 0;
-        qreal gnomeLeft = 0;
-        if ( qgetenv( "XDG_CURRENT_DESKTOP" ).toLower().contains( "gnome" ) == true )
-        {
-            QList<QScreen *> screen = QGuiApplication::screens();
-            gnomeTop = screen.at( ui->comboBoxScreencastScreenArea->currentIndex() )->availableGeometry().top();
-            gnomeLeft = screen.at( ui->comboBoxScreencastScreenArea->currentIndex() )->availableGeometry().left();
-        }
-
         QStringList stringList;
         stringList << "ximagesrc"
                    << "display-name=" + qgetenv( "DISPLAY" )
                    << "use-damage=false"
                    << "show-pointer=" + showPointer
-                   << "startx=" + QString::number( vkRegionChoise->screen->geometry().x() + vkRegionChoise->getXRecordArea() + gnomeLeft )
-                   << "starty=" + QString::number( vkRegionChoise->screen->geometry().y() + vkRegionChoise->getYRecordArea() + gnomeTop )
-                   << "endx="   + QString::number( vkRegionChoise->screen->geometry().x() + vkRegionChoise->getXRecordArea() + gnomeLeft + vkRegionChoise->getWidth() - 1 )
-                   << "endy="   + QString::number( vkRegionChoise->screen->geometry().y() + vkRegionChoise->getYRecordArea() + gnomeTop + vkRegionChoise->getHeight() - 1 );
+                   << "startx=" + QString::number( vkRegionChoise->x() + vkRegionChoise->getXRecordArea() )
+                   << "starty=" + QString::number( vkRegionChoise->y() + vkRegionChoise->getYRecordArea() )
+                   << "endx="   + QString::number( vkRegionChoise->x() + vkRegionChoise->getXRecordArea() + vkRegionChoise->getWidth() - 1 )
+                   << "endy="   + QString::number( vkRegionChoise->y() + vkRegionChoise->getYRecordArea() + vkRegionChoise->getHeight() - 1 );
         value = stringList.join( " " );
     }
 
