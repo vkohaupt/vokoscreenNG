@@ -14,8 +14,8 @@ https://www.transifex.com/vkohaupt/vokoscreen/
 
 
 ## Code Contributions
-If you want to contribute code, you are free to do so. Your source code must be in separate files and published under the MIT-License.
-Every file must include the License-header. And please ask beforehand whether your idea finds harmony.
+If you want to contribute code, please ask beforehand whether your idea finds harmony. Your source code must be in separate files and published under the MIT-License.
+Every file must include the License-header.
 The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/blob/3.0/Third-Party-License/MIT-License
 
 
