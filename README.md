@@ -15,7 +15,7 @@ https://www.transifex.com/vkohaupt/vokoscreen/
 
 ## Code Contributions
 If you want to contribute code, you are free to do so. Your source code must be in separate files and published under the MIT-License.
-Every file must include the License-header.
+Every file must include the License-header. And please ask beforehand whether your idea finds harmony.
 The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/blob/3.0/Third-Party-License/MIT-License
 
 
@@ -26,9 +26,10 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 
 
 ### BuildRequires
+* Required from version 3.0.0 to 3.0.4
 * https://download.qt.io/official_releases/qt/5.9/5.9.4/qt-opensource-windows-x86-5.9.4.exe
-* https://gstreamer.freedesktop.org/pkg/windows/1.16.2/gstreamer-1.0-mingw-x86-1.16.2.msi
-* https://gstreamer.freedesktop.org/pkg/windows/1.16.2/gstreamer-1.0-devel-mingw-x86-1.16.2.msi
+* https://gstreamer.freedesktop.org/pkg/windows/1.14.4/gstreamer-1.0-x86_64-1.14.4.msi
+* https://gstreamer.freedesktop.org/pkg/windows/1.14.4/gstreamer-1.0-devel-x86_64-1.14.4.msi
 
 
 ### Environment
