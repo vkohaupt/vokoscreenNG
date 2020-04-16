@@ -72,14 +72,12 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 On Ubuntu these requirements can be satisfied by running `sudo apt install libgstreamer1.0-dev qt5-default qttools5-dev-tools libqt5x11extras5-dev qtmultimedia5-dev`
 
 ## Install packages
-* Ubuntu(unofficial backport)
-  - sudo add-apt-repository ppa:ubuntuhandbook1/apps
-  - sudo apt update && sudo apt install vokoscreen-ng
-  - sudo apt install ubuntu-restricted-extras
 
+* [Debian](https://tracker.debian.org/pkg/vokoscreen-ng): `sudo apt install vokoscreen-ng`
 * [Fedora](https://src.fedoraproject.org/rpms/vokoscreenNG): `sudo dnf install vokoscreenNG`
 * [openSUSE](https://software.opensuse.org/package/vokoscreenNG) (Tumbleweed and Leap 15.2): `sudo zypper install vokoscreenNG`
 * [Snap](https://snapcraft.io/vokoscreen-ng): `sudo snap install vokoscreen-ng`
+* [Ubuntu](https://launchpad.net/ubuntu/+source/vokoscreen-ng): `sudo apt install vokoscreen-ng`
 
 ![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-0.png)
 ![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-1.png)
