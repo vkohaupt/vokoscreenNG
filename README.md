@@ -22,7 +22,6 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 ## Windows 10
 ### Requirements:
 * The integrated vokoscreenNG Player needs a codec pack.
-* I test with this codec pack: https://www.windows10codecpack.com/
 
 
 ### BuildRequires
