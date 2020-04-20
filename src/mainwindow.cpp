@@ -1271,6 +1271,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "audiocodec:flacenc:flac"
                                     << "audiocodec:opusenc:opus"
                                     << "audiocodec:lamemp3enc:mp3"
+                                    << "audiocodec:faac:aac"
                                    );
 
     QStringList WEBM_QStringList = ( QStringList()
@@ -1294,6 +1295,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                 #endif
                                      << "videocodec:vp8enc:VP8"
                                      << "audiocodec:lamemp3enc:mp3"
+                                     << "audiocodec:faac:aac"
                                    );
 
     QStringList MP4_QStringList = ( QStringList()
@@ -1308,6 +1310,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                 #endif
                                     << "audiocodec:lamemp3enc:mp3"
                                     << "audiocodec:opusenc:opus"
+                                    << "audiocodec:faac:aac"
                                   );
 
     QStringList MOV_QStringList = ( QStringList()
@@ -1323,6 +1326,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videocodec:vp8enc:VP8"
                                     << "audiocodec:lamemp3enc:mp3"
                                     << "audiocodec:opusenc:opus"
+                                    << "audiocodec:faac:aac"
                                   );
 
     videoFormatsList.clear();
@@ -1755,13 +1759,10 @@ void QvkMainWindow::slot_Start()
         #endif
         // We need more queue with enough buffers, then we have no dropaouts.
         VK_PipelineList << "audio/x-raw, channels=2";
-        VK_PipelineList << "queue max-size-buffers=10000000";
         VK_PipelineList << "audioconvert";
-        VK_PipelineList << "queue max-size-buffers=10000000";
         VK_PipelineList << "audiorate";
-        VK_PipelineList << "queue max-size-buffers=10000000";
         VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
-        VK_PipelineList << "queue max-size-buffers=10000000";
+        VK_PipelineList << "queue";
         VK_PipelineList << "mux.";
     }
 
