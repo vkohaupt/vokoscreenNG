@@ -48,6 +48,7 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
   - Audio: flac
 * gstreamer-plugins-bad
   - Video: camera
+  - Audio: faac (since 3.0.4)
 * gstreamer-plugins-bad-orig-addon (openSUSE Packman)
   - Video: openh264
 * gstreamer-plugins-ugly
@@ -57,9 +58,10 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
   - Video: x264
 * gstreamer-plugins-libav
   - Player: x264
-* gstreamer-plugins-vaapi and intel-vaapi-driver
+* gstreamer-plugins-vaapi
   - Intel Hardwareenconding H.264 and MPEG2
-
+* intel-vaapi-driver
+  - Intel Hardwareenconding H.264 and MPEG2
 
 ### Build requirements
 * pkgconfig
