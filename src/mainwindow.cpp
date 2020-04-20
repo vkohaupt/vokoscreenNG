@@ -1945,7 +1945,7 @@ void QvkMainWindow::slot_Play()
 
 void QvkMainWindow::slot_Folder()
 {
-    if ( QDesktopServices::openUrl( QUrl( ui->lineEditVideoPath->text(), QUrl::TolerantMode ) ) == false )
+    if ( QDesktopServices::openUrl( QUrl( "file:///" + ui->lineEditVideoPath->text(), QUrl::TolerantMode ) ) == false )
     {
         QMessageBox msgBox( this );
         msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
