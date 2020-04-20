@@ -1796,7 +1796,7 @@ void QvkMainWindow::slot_Start()
     VK_PipelineList.removeAll( "" );
 
     QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
-    VK_PipelineList << "filesink location=" + ui->lineEditVideoPath->text() + "/" + newVideoFilename;
+    VK_PipelineList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
 
     // Write settings to log
     vkSettings.saveAll( ui, this, true );
