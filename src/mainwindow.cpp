@@ -1044,7 +1044,7 @@ QString QvkMainWindow::VK_getCapsFilter()
 QString QvkMainWindow::VK_scale()
 {
     QString value = "";
-    int modulo = 4;
+    int modulo = 2;
 
     if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
     {
