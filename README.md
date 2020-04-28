@@ -70,7 +70,7 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 * libX11-devel
 * gstreamer-devel
 
-On Ubuntu these requirements can be satisfied by running `sudo apt install libgstreamer1.0-dev qt5-default qttools5-dev-tools libqt5x11extras5-dev qtmultimedia5-dev`
+On Ubuntu these requirements can be satisfied by running `sudo apt install libgstreamer1.0-dev qt5-default qttools5-dev-tools libqt5x11extras5-dev qtmultimedia5-dev libqt5multimedia5-plugins`
 
 ## Install packages
 
