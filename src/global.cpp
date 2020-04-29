@@ -32,10 +32,10 @@ namespace global
     QLineEdit *lineEditAudioPlug;
 
 #ifdef Q_OS_LINUX
-    QString version = "3.0.3";
+    QString version = "3.0.4";
 #endif
 
 #ifdef Q_OS_WIN
-    QString version = "3.0.3";
+    QString version = "3.0.4";
 #endif
 }
