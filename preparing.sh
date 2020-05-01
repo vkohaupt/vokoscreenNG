@@ -5,7 +5,7 @@
 #
 # 1. Looks for new words to be translated and writes them to the file
 # vokoscreen-version-3.ts for later translation on Transifex.
-# 2. Downloads cmpleted translations from Transifex and writes them to
+# 2. Downloads completed translations from Transifex and writes them to
 # screencast.qrc.
 
 # Testen ob lupdate auf dem System vorhanden ist.

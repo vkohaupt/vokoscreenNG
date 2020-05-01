@@ -1,6 +1,12 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
+Help:
+--Hilfe funktioniert nicht im Kameradialog
+
+Aktualisierung:
+--Wird nicht ausgeführt wenn das Icon im Systray daktiviert ist
+
 Area:
 --https://stackoverflow.com/questions/3203095/display-window-full-screen-on-secondary-monitor-using-qt
 
