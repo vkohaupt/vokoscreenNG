@@ -45,6 +45,8 @@ public:
 
 private:
    Ui_formMainWindow *ui_formMainWindow;
+   bool hasNoFrame;
+   QByteArray position;
 
 
 public slots:
@@ -65,6 +67,11 @@ protected:
 signals:
     void signal_cameraWindow_close( bool );
 
+private:
+    void toggleFullScreen();
+public:
+    void setCameraWindowSize(int value);
+    void setNoframe(bool);
 };
 
 #endif // QVKWEBCAMWINDOW_H

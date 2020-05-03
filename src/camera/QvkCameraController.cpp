@@ -91,16 +91,8 @@ void QvkCameraController::slot_frameOnOff( bool value )
 {
     if ( cameraWindow->isVisible() == true )
     {
-        if ( value == true )
-        {
-            cameraWindow->setWindowFlags( Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
-        }
-
-        if ( value == false )
-        {
-            cameraWindow->setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint );
-        }
-
+//        cameraWindow->hide();
+        cameraWindow->setNoframe( value );
         cameraWindow->show();
     }
 }
@@ -108,20 +100,7 @@ void QvkCameraController::slot_frameOnOff( bool value )
 
 void QvkCameraController::slot_sliderMoved( int value )
 {
-    if ( value == 1 )
-    {
-        cameraWindow->resize( 160, 120 );
-    }
-
-    if ( value == 2 )
-    {
-        cameraWindow->resize( 320, 240 );
-    }
-
-    if ( value == 3 )
-    {
-        cameraWindow->resize( 639, 479 );
-    }
+    cameraWindow->setCameraWindowSize(value);
 }
 
 

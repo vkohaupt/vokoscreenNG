@@ -29,7 +29,7 @@ cameraSettingsDialog::cameraSettingsDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::cameraSettingsDialog)
 {
-    setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint | Qt::Tool );
+    setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint);
     ui->setupUi(this);
 
     dialog_sliderCameraWindowSize = new QvkSpezialSlider( Qt::Horizontal );

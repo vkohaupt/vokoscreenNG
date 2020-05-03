@@ -19,17 +19,18 @@
  *
  * --End_License--
  */
-
 #include "QvkCameraWindow.h"
 
 #include <QDebug>
 #include <QMouseEvent>
+#include <QtCore/QEventLoop>
+#include <QtCore/QTimer>
 
 QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, QvkSpezialSlider *gui_sliderCameraWindowSize )
 {
     ui_formMainWindow = ui_surface;
 
-    setWindowFlags( windowFlags() | Qt::WindowStaysOnTopHint );
+    setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint );
     setMinimumSize( QSize( 160, 120 ) );
     setAlignment( Qt::AlignHCenter | Qt::AlignVCenter );
     setMouseTracking( true ); // No function, why?
@@ -70,19 +71,16 @@ void QvkCameraWindow::closeEvent(QCloseEvent *event)
     emit signal_cameraWindow_close( false );
 }
 
+void sleep(int msec)
+{
+    QEventLoop loop;
+    QTimer::singleShot(msec, &loop, SLOT( quit() ));
+    loop.exec();
+}
 
 void QvkCameraWindow::slot_switchToFullscreen()
 {
-    if ( isFullScreen() == true )
-    {
-        showNormal();
-        vkCameraSettingsDialog->close();
-    }
-    else
-    {
-        setWindowState( Qt::WindowFullScreen );
-        vkCameraSettingsDialog->close();
-    }
+    toggleFullScreen();
 }
 
 
@@ -104,15 +102,8 @@ void QvkCameraWindow::mouseDoubleClickEvent( QMouseEvent *event )
 {
     if ( event->button() == Qt::LeftButton )
     {
-        if ( isFullScreen() == true )
-        {
-            showNormal();
-        }
-        else
-        {
-            setWindowState( Qt::WindowFullScreen );
-            vkCameraSettingsDialog->close();
-        }
+        toggleFullScreen();
+        vkCameraSettingsDialog->close();
     }
 }
 
@@ -125,14 +116,7 @@ void QvkCameraWindow::keyPressEvent( QKeyEvent *event )
 
     if ( ( event->key() == Qt::Key_F11 ) or ( event->key() == Qt::Key_F ) )
     {
-        if ( isFullScreen() == true )
-        {
-            showNormal();
-        }
-        else
-        {
-            setWindowState( Qt::WindowFullScreen );
-        }
+        toggleFullScreen();
     }
 }
 
@@ -171,3 +155,48 @@ void QvkCameraWindow::mousePressEvent(QMouseEvent *event)
         vkCameraSettingsDialog->close();
     }
 }
+
+void QvkCameraWindow::toggleFullScreen()
+{
+    hide();
+    if( isFullScreen() )
+    {
+        setNoframe(hasNoFrame);
+        setWindowState(Qt::WindowNoState);
+        restoreGeometry(position);
+        sleep(100);
+    }
+    else
+    {
+        position = saveGeometry();
+        setWindowFlags(Qt::Window | Qt::WindowStaysOnTopHint);
+        setWindowState(Qt::WindowFullScreen);
+    }
+    show();
+}
+
+void QvkCameraWindow::setCameraWindowSize(int value)
+{
+    switch(value)
+    {
+    case 1: resize(160, 120); break;
+    case 2: resize(320, 240); break;
+    case 3: resize(639, 479); break;
+    }
+}
+
+void QvkCameraWindow::setNoframe(bool value)
+{
+    hasNoFrame = value;
+
+    if(hasNoFrame)
+    {
+        setWindowFlags( Qt::Window | Qt::FramelessWindowHint | Qt::BypassWindowManagerHint | Qt::X11BypassWindowManagerHint);
+    }
+    else
+    {
+        setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint);
+    }
+    sleep(100);
+}
+

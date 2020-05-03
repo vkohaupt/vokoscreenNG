@@ -44,7 +44,7 @@ public:
     void readAll(Ui_formMainWindow *ui_mainwindow, QMainWindow *parent);
     void saveAreaScreencast(qreal x, qreal y, qreal width, qreal height);
     void readAreaScreencast(QvkRegionChoise *vkRegionChoise);
-    void saveCamera( int x, int y );
+    void saveCamera( QByteArray geometry );
     void readCamera( QvkCameraController *vkCameraController );
     void saveSystrayAlternative( int x, int y );
     void readSystrayAlternative( QvkSystrayAlternative *vkSystrayAlternative );

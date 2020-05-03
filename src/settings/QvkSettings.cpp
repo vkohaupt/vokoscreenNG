@@ -323,12 +323,11 @@ void QvkSettings::readAreaScreencast( QvkRegionChoise *vkRegionChoise )
     settings.endGroup();
 }
 
-void QvkSettings::saveCamera( int x, int y )
+void QvkSettings::saveCamera(QByteArray geometry)
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.beginGroup( "Camera" );
-    settings.setValue( "X", x );
-    settings.setValue( "Y", y );
+    settings.setValue("geometry", geometry);
     settings.endGroup();
 }
 
@@ -336,7 +335,7 @@ void QvkSettings::readCamera( QvkCameraController *vkCameraController )
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.beginGroup( "Camera" );
-    vkCameraController->cameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
+    vkCameraController->cameraWindow->restoreGeometry(settings.value("geometry").toByteArray());
     settings.endGroup();
 }
 

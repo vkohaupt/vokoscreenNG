@@ -523,7 +523,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
                                    vkRegionChoise->getYRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
                                    vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
                                    vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
-    vkSettings.saveCamera( vkCameraController->cameraWindow->geometry().x(), vkCameraController->cameraWindow->geometry().y() );
+    vkSettings.saveCamera( vkCameraController->cameraWindow->saveGeometry() );
     vkSettings.saveSystrayAlternative( vkSystrayAlternative->x(), vkSystrayAlternative->y() );
     vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile );
     emit signal_close();
