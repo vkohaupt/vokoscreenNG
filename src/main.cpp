@@ -90,6 +90,10 @@ int main(int argc, char *argv[])
     pathByteArray.append( pathString );
     qputenv( "GSTREAMER_1_0_ROOT_X86", pathByteArray );
     qputenv( "GST_PLUGIN_PATH", pathByteArray );
+    
+    //Environment variables for debugging
+    //qputenv( "GST_DEBUG", "2");
+    //qputenv( "GST_DEBUG_FILE", "C:\\Users\\vk\\Documents\\VK_Error.txt" );
 #endif
     gst_init (&argc, &argv);
 
