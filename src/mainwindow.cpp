@@ -170,6 +170,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkLogController *vklogController = new QvkLogController( ui );
     Q_UNUSED(vklogController);
 
+#ifdef Q_OS_LINUX
+    ui->pushButtonSendReport->setHidden( true );
+    ui->help_log_sendreport->setHidden( true );
+#endif
+
     setWindowTitle( global::name + " " + global::version );
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     setWindowIcon( icon );
