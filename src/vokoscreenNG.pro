@@ -102,7 +102,7 @@ include(countdown/countdown.pri)
 include(camera/camera.pri)
 
 # pulse
-unix:include(audio/pulse/audioPulse.pri)
+unix:include(audio/linux/audioLinux.pri)
 
 # audio windows
 win32:include(audio/windows/audioWindows.pri)

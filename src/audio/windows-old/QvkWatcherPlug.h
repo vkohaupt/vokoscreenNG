@@ -23,9 +23,11 @@
 #ifndef QVKWATCHERPLUG_H
 #define QVKWATCHERPLUG_H
 
-#include <gst/gst.h>
+
+#include "ui_formMainWindow.h"
 
 #include <QObject>
+#include <QTimer>
 
 class QvkWatcherPlug: public QObject
 {
@@ -33,24 +35,27 @@ class QvkWatcherPlug: public QObject
 
 
 public:
-    QvkWatcherPlug();
+    QvkWatcherPlug( Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkWatcherPlug();
-    GstDeviceMonitor *start_monitor();
-    static gboolean func( GstBus *bus, GstMessage *message, gpointer user_data );
+    void start_monitor();
 
-    
+
 public slots:
 
 
 private:
+    Ui_formMainWindow *ui;
+    QTimer *timer;
+    int counter;
 
 
 private slots:
+    void slot_update();
 
 
 protected:
-  
-  
+
+
 signals:
 
 

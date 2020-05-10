@@ -20,25 +20,21 @@
  * --End_License--
  */
 
-#include "QvkWatcherPlug.h"
-#include "global.h"
+#include "QvkPulseGstr.h"
 
 #include <QDebug>
 
-/*
- * QvkWatcherPlug monitoring only new or removed Audiodevices from the PulseAudio server.
- * QvkWatcherPlug does not return any devices, if the PulseAudio server start or stop.
- */
-
-QvkWatcherPlug::QvkWatcherPlug()
+QvkPulseGstr::QvkPulseGstr()
 {
-    global::lineEditAudioPlug = new QLineEdit;
 }
 
-QvkWatcherPlug::~QvkWatcherPlug()
-{}
 
-static gchar *get_launch_line (GstDevice * device)
+QvkPulseGstr::~QvkPulseGstr()
+{
+}
+
+
+QString QvkPulseGstr::get_AudioDeviceString( GstDevice *device )
 {
   static const char *const ignored_propnames[] = { "name", "parent", "direction", "template", "caps", Q_NULLPTR };
   GString *launch_line = Q_NULLPTR;
@@ -118,78 +114,41 @@ static gchar *get_launch_line (GstDevice * device)
   gst_object_unref( GST_OBJECT( element ) );
   gst_object_unref( GST_OBJECT( pureelement ) );
 
-  return g_string_free (launch_line, FALSE);
+  QString string = g_string_free( launch_line, FALSE );
+  return string;
 }
 
 
-gboolean QvkWatcherPlug::func( GstBus *bus, GstMessage *message, gpointer user_data )
+QStringList QvkPulseGstr::get_all_Audio_devices()
 {
-   Q_UNUSED(bus);
-   Q_UNUSED(user_data);
+    GstDeviceMonitor *monitor;
+    GstCaps *caps;
+    GstDevice *device;
+    gchar *name;
+    GList *iterator = Q_NULLPTR;
+    GList *list = Q_NULLPTR;
+    QString stringDevice;
+    QStringList stringList;
 
-   GstDevice *gstDevice;
-   gchar *name;
-   gchar *device;
+    monitor = gst_device_monitor_new();
+    caps = gst_caps_new_empty_simple( "audio/x-raw" );
+    gst_device_monitor_add_filter( monitor, "Audio/Source", caps );
+    bool isMonitorStart =  gst_device_monitor_start( monitor );
 
-   QString audioDevicePlug = "";
+    list = gst_device_monitor_get_devices( monitor );
+    for ( iterator = list; iterator; iterator = iterator->next )
+    {
+        device = (GstDevice*)iterator->data;
+        name = gst_device_get_display_name( device );
+        stringDevice = get_AudioDeviceString( device );
+        stringDevice.append( ":::" ).append( name );
+        stringList.append( stringDevice );
+    }
 
-   switch ( GST_MESSAGE_TYPE( message ) )
-   {
-     case GST_MESSAGE_DEVICE_ADDED:
-       gst_message_parse_device_added( message, &gstDevice );
-       name = gst_device_get_display_name( gstDevice );
-       device = get_launch_line( gstDevice );
-       qDebug().noquote() << global::nameOutput << "[PulseAudio] Added:" << name << "Device:" << device;
-       audioDevicePlug.append( "[Audio-device-added]" );
-       audioDevicePlug.append( ":");
-       audioDevicePlug.append( name );
-       audioDevicePlug.append( ":");
-       audioDevicePlug.append( device );
-       global::lineEditAudioPlug->setText( audioDevicePlug );
-       g_free( name );
-       g_free( device );
-       gst_object_unref( gstDevice );
-       break;
-     case GST_MESSAGE_DEVICE_REMOVED:
-       gst_message_parse_device_removed( message, &gstDevice );
-       name = gst_device_get_display_name( gstDevice );
-       device = get_launch_line( gstDevice );
-       qDebug().noquote() << global::nameOutput << "[PulseAudio] Removed:" << name << "Device:" << device;
-       audioDevicePlug.append( "[Audio-device-removed]" );
-       audioDevicePlug.append( ":");
-       audioDevicePlug.append( name );
-       audioDevicePlug.append( ":");
-       audioDevicePlug.append( device );
-       global::lineEditAudioPlug->setText( audioDevicePlug );
-       g_free( name );
-       g_free( device );
-       gst_object_unref( gstDevice );
-       break;
-     default:
-       break;
-   }
+    if ( isMonitorStart == true )
+    {
+       gst_device_monitor_stop( monitor );
+    }
 
-   return G_SOURCE_CONTINUE;
+    return stringList;
 }
-
-
-GstDeviceMonitor *QvkWatcherPlug::start_monitor()
-{
-   GstDeviceMonitor *gstDeviceMonitor;
-   GstBus *gstBus;
-   GstCaps *gstCaps;
-
-   gstDeviceMonitor = gst_device_monitor_new();
-   gstBus = gst_device_monitor_get_bus( gstDeviceMonitor );
-   gst_bus_add_watch( gstBus, QvkWatcherPlug::func, Q_NULLPTR );
-   gst_object_unref( gstBus );
-
-   gstCaps = gst_caps_new_empty_simple( "audio/x-raw" );
-   gst_device_monitor_add_filter( gstDeviceMonitor, "Audio/Source", gstCaps );
-   gst_caps_unref( gstCaps );
-
-   gst_device_monitor_start( gstDeviceMonitor );
-
-   return gstDeviceMonitor;
-}
-

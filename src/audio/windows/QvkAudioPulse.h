@@ -20,39 +20,42 @@
  * --End_License--
  */
 
-#ifndef QVKWATCHERPLUG_H
-#define QVKWATCHERPLUG_H
+#ifndef QVKAUDIOPULSE_H
+#define QVKAUDIOPULSE_H
 
-#include <gst/gst.h>
+#include "ui_formMainWindow.h"
+#include "QvkPulseGstr.h"
 
 #include <QObject>
 
-class QvkWatcherPlug: public QObject
+class QvkAudioPulse: public QObject
 {
     Q_OBJECT
 
-
 public:
-    QvkWatcherPlug();
-    virtual ~QvkWatcherPlug();
-    GstDeviceMonitor *start_monitor();
-    static gboolean func( GstBus *bus, GstMessage *message, gpointer user_data );
+    QvkAudioPulse(Ui_formMainWindow *ui_mainwindow );
+    virtual ~QvkAudioPulse();
+    void init();
 
-    
+
 public slots:
 
 
 private:
+    Ui_formMainWindow *ui;
+    void getAllDevices();
 
 
 private slots:
+    void slot_pluggedInOutDevice( QString string );
+    void slot_audioDeviceSelected();
 
 
 protected:
-  
+
   
 signals:
-
+    void signal_haveAudioDeviceSelected( bool );
 
 };
 
