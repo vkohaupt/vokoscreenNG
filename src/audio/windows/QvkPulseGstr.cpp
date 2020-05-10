@@ -142,7 +142,10 @@ QStringList QvkPulseGstr::get_all_Audio_devices()
         name = gst_device_get_display_name( device );
         stringDevice = get_AudioDeviceString( device );
         stringDevice.append( ":::" ).append( name );
-        stringList.append( stringDevice );
+        if ( stringDevice.contains( ".") )
+        {
+          stringList.append( stringDevice );
+        }
     }
 
     if ( isMonitorStart == true )

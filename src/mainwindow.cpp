@@ -1743,18 +1743,17 @@ void QvkMainWindow::slot_Start()
     }
 
     // Pipeline for one selected audiodevice
-    // 2019-09-28 tested and ok on opensuse 15.0 und nativ Windows 10 from USB-Stick
     if ( ( VK_getSelectedAudioDevice().count() == 1 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
     {
         #ifdef Q_OS_LINUX
             VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(0) );
+            VK_PipelineList << "audio/x-raw, channels=2";
         #endif
 
         #ifdef Q_OS_WIN
             VK_PipelineList << VK_get_AudioSystem().append( " device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(0) +"'" );
         #endif
-        // We need more queue with enough buffers, then we have no dropaouts.
-        VK_PipelineList << "audio/x-raw, channels=2";
+
         VK_PipelineList << "audioconvert";
         VK_PipelineList << "audiorate";
         VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
@@ -1776,7 +1775,6 @@ void QvkMainWindow::slot_Start()
 
             #ifdef Q_OS_WIN
                 VK_PipelineList << VK_get_AudioSystem().append( " device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(x) +"'" );
-                VK_PipelineList << "audio/x-raw, channels=2";
                 VK_PipelineList << "queue";
                 VK_PipelineList << "mix.";
             #endif
