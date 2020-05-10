@@ -133,6 +133,7 @@ QStringList QvkPulseGstr::get_all_Audio_devices()
     monitor = gst_device_monitor_new();
     caps = gst_caps_new_empty_simple( "audio/x-raw" );
     gst_device_monitor_add_filter( monitor, "Audio/Source", caps );
+    gst_device_monitor_add_filter( monitor, "Audio/Sink", caps );
     bool isMonitorStart =  gst_device_monitor_start( monitor );
 
     list = gst_device_monitor_get_devices( monitor );
