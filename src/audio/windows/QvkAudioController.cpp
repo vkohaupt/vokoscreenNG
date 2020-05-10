@@ -20,24 +20,24 @@
  * --End_License--
  */
 
-#include "QvkAudioPulse.h"
+#include "QvkAudioController.h"
 #include "QvkWatcherPlug.h"
 #include "global.h"
 
 #include <QDebug>
 
-QvkAudioPulse::QvkAudioPulse( Ui_formMainWindow *ui_mainwindow )
+QvkAudioController::QvkAudioController( Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
 }
 
 
-QvkAudioPulse::~QvkAudioPulse()
+QvkAudioController::~QvkAudioController()
 {
 }
 
 
-void QvkAudioPulse::init()
+void QvkAudioController::init()
 {
     getAllDevices();
 
@@ -50,7 +50,7 @@ void QvkAudioPulse::init()
 }
 
 
-void QvkAudioPulse::getAllDevices()
+void QvkAudioController::getAllDevices()
 {
     QvkPulseGstr vkPulseGstr;
     QStringList list;
@@ -87,7 +87,7 @@ void QvkAudioPulse::getAllDevices()
 }
 
 
-void QvkAudioPulse::slot_audioDeviceSelected()
+void QvkAudioController::slot_audioDeviceSelected()
 {
     bool value = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
@@ -103,7 +103,7 @@ void QvkAudioPulse::slot_audioDeviceSelected()
 }
 
 
-void QvkAudioPulse::slot_pluggedInOutDevice( QString string )
+void QvkAudioController::slot_pluggedInOutDevice( QString string )
 {
     QString header = string.section( ":", 0, 0 );
     QString name   = string.section( ":", 1, 1 );

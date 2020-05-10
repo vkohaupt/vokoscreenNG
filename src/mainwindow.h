@@ -36,14 +36,7 @@
 #include "QvkLimitDiskFreeSpace.h"
 #include "QvkSpezialSlider.h"
 #include "QvkSystrayAlternative.h"
-
-#ifdef Q_OS_LINUX
-#include "QvkAudioPulse.h"
-#endif
-#ifdef Q_OS_WIN
-#include "QvkAudioWindows.h"
-#endif
-
+#include "QvkAudioController.h"
 #include <QMainWindow>
 #include <QFileSystemWatcher>
 

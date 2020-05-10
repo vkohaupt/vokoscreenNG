@@ -28,13 +28,13 @@
 
 #include <QObject>
 
-class QvkAudioPulse: public QObject
+class QvkAudioController: public QObject
 {
     Q_OBJECT
 
 public:
-    QvkAudioPulse(Ui_formMainWindow *ui_mainwindow );
-    virtual ~QvkAudioPulse();
+    QvkAudioController(Ui_formMainWindow *ui_mainwindow );
+    virtual ~QvkAudioController();
     void init();
 
 
