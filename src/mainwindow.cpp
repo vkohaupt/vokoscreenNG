@@ -380,11 +380,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 
     // Tab 2 Audio and Videocodec
-    QvkAudioController *vkAudio = new QvkAudioController( ui );
-    connect( vkAudio, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this,                   SLOT( slot_audioIconOnOff( bool ) ) );
-    connect( vkAudio, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
-    connect( vkAudio, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
-    vkAudio->init();
+    QvkAudioController *vkAudioController = new QvkAudioController( ui );
+    connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this,                   SLOT( slot_audioIconOnOff( bool ) ) );
+    connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
+    connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
+    vkAudioController->init();
 
     connect( vkTheme, SIGNAL( signal_newTheme() ), this, SLOT( slot_audioRedCross() ) );
 

@@ -79,7 +79,7 @@ void QvkCameraController::getAllDevices()
         {
             if ( ( camerasInfoList.at(i).description() > "" ) and ( !camerasInfoList.at(i).description().contains( "@device:pnp" ) ) )
             {
-               qDebug().noquote() << global::nameOutput << "[Camera} Found:" << camerasInfoList.at(i).description() << camerasInfoList.at(i).deviceName();
+               qDebug().noquote() << global::nameOutput << "[Camera] Found:" << camerasInfoList.at(i).description() << camerasInfoList.at(i).deviceName();
                slot_addedCamera( camerasInfoList.at(i).description(), camerasInfoList.at(i).deviceName() );
             }
         }
