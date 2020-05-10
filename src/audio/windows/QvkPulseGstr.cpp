@@ -119,7 +119,7 @@ QString QvkPulseGstr::get_AudioDeviceString( GstDevice *device )
 }
 
 
-QStringList QvkPulseGstr::get_all_Audio_devices()
+QStringList QvkPulseGstr::get_all_Audio_Source_devices()
 {
     GstDeviceMonitor *monitor;
     GstCaps *caps;
@@ -133,7 +133,7 @@ QStringList QvkPulseGstr::get_all_Audio_devices()
     monitor = gst_device_monitor_new();
     caps = gst_caps_new_empty_simple( "audio/x-raw" );
     gst_device_monitor_add_filter( monitor, "Audio/Source", caps );
-    gst_device_monitor_add_filter( monitor, "Audio/Sink", caps );
+    //gst_device_monitor_add_filter( monitor, "Audio/Sink", caps );
     bool isMonitorStart =  gst_device_monitor_start( monitor );
 
     list = gst_device_monitor_get_devices( monitor );
@@ -142,7 +142,7 @@ QStringList QvkPulseGstr::get_all_Audio_devices()
         device = (GstDevice*)iterator->data;
         name = gst_device_get_display_name( device );
         stringDevice = get_AudioDeviceString( device );
-        stringDevice.append( ":::" ).append( name );
+        stringDevice.append( ":::" ).append( name ).append( ":::" ).append( "Source" );
         if ( stringDevice.contains( ".") )
         {
           stringList.append( stringDevice );
@@ -156,3 +156,41 @@ QStringList QvkPulseGstr::get_all_Audio_devices()
 
     return stringList;
 }
+
+QStringList QvkPulseGstr::get_all_Audio_Playback_devices()
+{
+    GstDeviceMonitor *monitor;
+    GstCaps *caps;
+    GstDevice *device;
+    gchar *name;
+    GList *iterator = Q_NULLPTR;
+    GList *list = Q_NULLPTR;
+    QString stringDevice;
+    QStringList stringList;
+
+    monitor = gst_device_monitor_new();
+    caps = gst_caps_new_empty_simple( "audio/x-raw" );
+    gst_device_monitor_add_filter( monitor, "Audio/Sink", caps );
+    bool isMonitorStart =  gst_device_monitor_start( monitor );
+
+    list = gst_device_monitor_get_devices( monitor );
+    for ( iterator = list; iterator; iterator = iterator->next )
+    {
+        device = (GstDevice*)iterator->data;
+        name = gst_device_get_display_name( device );
+        stringDevice = get_AudioDeviceString( device );
+        stringDevice.append( ":::" ).append( name ).append( ":::" ).append( "Playback" );
+        if ( stringDevice.contains( ".") )
+        {
+          stringList.append( stringDevice );
+        }
+    }
+
+    if ( isMonitorStart == true )
+    {
+       gst_device_monitor_stop( monitor );
+    }
+
+    return stringList;
+}
+

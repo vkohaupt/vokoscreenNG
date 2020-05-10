@@ -54,7 +54,8 @@ void QvkAudioController::getAllDevices()
 {
     QvkPulseGstr vkPulseGstr;
     QStringList list;
-    list << vkPulseGstr.get_all_Audio_devices();
+    list << vkPulseGstr.get_all_Audio_Source_devices();
+    list << vkPulseGstr.get_all_Audio_Playback_devices();
 
     if ( !list.empty() )
     {
@@ -67,7 +68,9 @@ void QvkAudioController::getAllDevices()
             checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( i ) );
             checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
-            qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( list.at(i) ).section( ":::", 1, 1 ) << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 );
+            qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( list.at(i) ).section( ":::", 1, 1 )
+                                                                         << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 )
+                                                                         << "Input/Output:" << QString( list.at(i) ).section( ":::", 2, 2 );
         }
         qDebug().noquote();
 

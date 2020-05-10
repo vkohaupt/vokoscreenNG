@@ -38,7 +38,8 @@ public:
 
     
 public slots:
-    QStringList get_all_Audio_devices();
+    QStringList get_all_Audio_Source_devices();
+    QStringList get_all_Audio_Playback_devices();
 
 
 private:
