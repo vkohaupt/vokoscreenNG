@@ -1110,7 +1110,7 @@ void QvkMainWindow::VK_gst_Elements_available()
     QStringList list;
 #ifdef Q_OS_WIN
     list << "gdiscreencapsrc";
-    list << "directsoundsrc";
+    list << "wasapisrc"
 #endif
 #ifdef Q_OS_LINUX
     list << "ximagesrc";
@@ -1666,7 +1666,7 @@ QString QvkMainWindow::VK_get_AudioSystem()
 #ifdef Q_OS_WIN
 QString QvkMainWindow::VK_get_AudioSystem()
 {
-    return "directsoundsrc";
+    return "wasapisrc";
 }
 #endif
 
