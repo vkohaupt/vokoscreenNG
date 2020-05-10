@@ -1110,7 +1110,7 @@ void QvkMainWindow::VK_gst_Elements_available()
     QStringList list;
 #ifdef Q_OS_WIN
     list << "gdiscreencapsrc";
-    list << "wasapisrc"
+    list << "wasapisrc";
 #endif
 #ifdef Q_OS_LINUX
     list << "ximagesrc";
@@ -1751,7 +1751,7 @@ void QvkMainWindow::slot_Start()
         #endif
 
         #ifdef Q_OS_WIN
-            VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( "'" + VK_getSelectedAudioDevice().at(0) +"'" );
+            VK_PipelineList << VK_get_AudioSystem().append( " low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0) );
         #endif
 
         VK_PipelineList << "audioconvert";
@@ -1774,7 +1774,7 @@ void QvkMainWindow::slot_Start()
             #endif
 
             #ifdef Q_OS_WIN
-                VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( "'" + VK_getSelectedAudioDevice().at(x) +"'" );
+                VK_PipelineList << VK_get_AudioSystem().append( " low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(x) );
                 VK_PipelineList << "queue";
                 VK_PipelineList << "mix.";
             #endif
