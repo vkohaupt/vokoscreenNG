@@ -1751,8 +1751,15 @@ void QvkMainWindow::slot_Start()
         #endif
 
         #ifdef Q_OS_WIN
-            VK_PipelineList << VK_get_AudioSystem().append( " low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0) );
-        #endif
+            if ( VK_getSelectedAudioDevice().at(0).section( ":::", 1, 1 ) == "Playback" )
+            {
+                VK_PipelineList << VK_get_AudioSystem().append( " loopback=true low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
+            }
+            else
+            {
+                VK_PipelineList << VK_get_AudioSystem().append( " low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).at(0).section( ":::", 0, 0 ) );
+            }
+       #endif
 
         VK_PipelineList << "audioconvert";
         VK_PipelineList << "audiorate";
