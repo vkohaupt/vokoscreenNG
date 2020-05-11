@@ -5,17 +5,7 @@ Help:
 --Hilfe funktioniert nicht im Kameradialog
 
 Aktualisierung:
---Wird nicht ausgeführt wenn das Icon im Systray daktiviert ist
-
-Area:
---https://stackoverflow.com/questions/3203095/display-window-full-screen-on-secondary-monitor-using-qt
-
-Windows Audio:
---Aufnahme Lautsprecher
---https://gstreamer.freedesktop.org/documentation/wasapi/wasapisrc.html?gi-language=c
-
-Player:
---Im Player sollten ebenfalls die tango icons benutzt werden.
+--Wird nicht ausgeführt wenn das Icon im Systray deaktiviert ist
 
 Linux:
 --Bei dunklen Themes ist das Icon auf Tab Timer schlecht sichtbar
