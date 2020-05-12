@@ -1757,7 +1757,7 @@ void QvkMainWindow::slot_Start()
             }
             else
             {
-                VK_PipelineList << VK_get_AudioSystem().append( " low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).at(0).section( ":::", 0, 0 ) );
+                VK_PipelineList << VK_get_AudioSystem().append( " low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
             }
        #endif
 
