@@ -1322,7 +1322,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videocodec:vp8enc:VP8"
                                     << "audiocodec:lamemp3enc:mp3"
                                     << "audiocodec:opusenc:opus"
-                                    << "audiocodec:voaacencc:aac"
+                                    << "audiocodec:voaacenc:aac"
                                   );
 
     videoFormatsList.clear();

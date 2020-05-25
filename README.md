@@ -23,17 +23,21 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 ### Requirements:
 * The integrated vokoscreenNG Player needs a codec pack.
 
-
 ### BuildRequires
+* Required from version 3.0.5
+* https://download.qt.io/official_releases/qt/5.9/5.9.4/qt-opensource-windows-x86-5.9.4.exe
+* https://gstreamer.freedesktop.org/pkg/windows/1.16.1/gstreamer-1.0-devel-mingw-x86-1.16.1.msi
+* https://gstreamer.freedesktop.org/pkg/windows/1.16.1/gstreamer-1.0-mingw-x86-1.16.1.msi
+
 * Required from version 3.0.0 to 3.0.4
 * https://download.qt.io/official_releases/qt/5.9/5.9.4/qt-opensource-windows-x86-5.9.4.exe
 * https://gstreamer.freedesktop.org/pkg/windows/1.14.4/gstreamer-1.0-x86_64-1.14.4.msi
 * https://gstreamer.freedesktop.org/pkg/windows/1.14.4/gstreamer-1.0-devel-x86_64-1.14.4.msi
 
-
 ### Environment
 * GST_PLUGIN_PATH=C:\gstreamer\1.0\x86\lib\gstreamer-1.0
 * GSTREAMER_1_0_ROOT_X86=C:\gstreamer\1.0\x86\
+
 
 ## Linux
 ### Run-time requirements:
@@ -48,12 +52,12 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
   - Audio: flac
 * gstreamer-plugins-bad
   - Video: camera
-  - Audio: faac (since 3.0.4)
+  - Audio: AAC (since 3.0.5)
 * gstreamer-plugins-bad-orig-addon (openSUSE Packman)
   - Video: openh264
 * gstreamer-plugins-ugly
   - Video: x264
-  - Audio: mp3lame
+  - Audio: mp3
 * gstreamer-plugins-ugly-orig-addon (openSUSE Packman)
   - Video: x264
 * gstreamer-plugins-libav
