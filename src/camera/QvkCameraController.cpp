@@ -238,7 +238,7 @@ void QvkCameraController::slot_startCamera( bool value )
     {
         disconnect( camera, nullptr, nullptr, nullptr );
         camera->stop();
-        //camera->unload();
+        camera->unload();
         cameraWindow->close();
     }
 }
