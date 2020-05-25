@@ -1267,7 +1267,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "audiocodec:flacenc:flac"
                                     << "audiocodec:opusenc:opus"
                                     << "audiocodec:lamemp3enc:mp3"
-                                    << "audiocodec:faac:aac"
+                                    << "audiocodec:voaacenc:aac"
                                    );
 
     QStringList WEBM_QStringList = ( QStringList()
@@ -1291,7 +1291,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                 #endif
                                      << "videocodec:vp8enc:VP8"
                                      << "audiocodec:lamemp3enc:mp3"
-                                     << "audiocodec:faac:aac"
+                                     << "audiocodec:voaacenc:aac"
                                    );
 
     QStringList MP4_QStringList = ( QStringList()
@@ -1306,7 +1306,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                 #endif
                                     << "audiocodec:lamemp3enc:mp3"
                                     << "audiocodec:opusenc:opus"
-                                    << "audiocodec:faac:aac"
+                                    << "audiocodec:voaacenc:aac"
                                   );
 
     QStringList MOV_QStringList = ( QStringList()
@@ -1322,7 +1322,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videocodec:vp8enc:VP8"
                                     << "audiocodec:lamemp3enc:mp3"
                                     << "audiocodec:opusenc:opus"
-                                    << "audiocodec:faac:aac"
+                                    << "audiocodec:voaacencc:aac"
                                   );
 
     videoFormatsList.clear();
