@@ -68,7 +68,7 @@ void QvkAudioController::getAllDevices()
             device.append( ":::" );
             device.append( QString( list.at(i).section( ":::", 2, 2 ) ) );
             checkboxAudioDevice->setAccessibleName( device );
-            checkboxAudioDevice->autoExclusive();
+            checkboxAudioDevice->setAutoExclusive( true );
             checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( i ) );
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
             qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( list.at(i) ).section( ":::", 1, 1 )
