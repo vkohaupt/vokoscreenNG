@@ -84,7 +84,7 @@
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ei tiedostohallintaa.</translation>
+        <translation>Tiedostonhallintaa ei löytynyt.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
@@ -458,7 +458,7 @@
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Näyttötallenne</translation>
+        <translation>Näytön tallennin</translation>
     </message>
     <message>
         <source>Player</source>

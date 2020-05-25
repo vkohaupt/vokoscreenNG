@@ -17,7 +17,7 @@
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
-        <translation>Câmera</translation>
+        <translation>Camera</translation>
     </message>
 </context>
 <context>
@@ -61,7 +61,7 @@
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Limite do espaço em disco disponível</translation>
+        <translation>Limite de espaço em disco disponível</translation>
     </message>
     <message>
         <source>Megabyte</source>
