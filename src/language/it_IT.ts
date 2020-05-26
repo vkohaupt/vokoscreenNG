@@ -1,6 +1,6 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="it_IT" version="2.1">
 <context>
-    <name>QvkAudioPulse</name>
+    <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
         <translation>Seleziona uno o più dispositivi</translation>
