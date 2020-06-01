@@ -380,11 +380,18 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 
     // Tab 2 Audio and Videocodec
-    QvkAudioController *vkAudioController = new QvkAudioController( ui );
+#ifdef Q_OS_WIN
+    vkAudioController = new QvkAudioController( ui );
+    vkAudioController->init();
+#endif
+
+#ifdef Q_OS_LINUX
+    vkAudioController = new QvkAudioController( ui );
     connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this,                   SLOT( slot_audioIconOnOff( bool ) ) );
     connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
     connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
     vkAudioController->init();
+#endif
 
     connect( vkTheme, SIGNAL( signal_newTheme() ), this, SLOT( slot_audioRedCross() ) );
 
@@ -1748,9 +1755,16 @@ void QvkMainWindow::slot_Start()
         #ifdef Q_OS_LINUX
             VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(0) );
             VK_PipelineList << "audio/x-raw, channels=2";
+            VK_PipelineList << "audioconvert";
+            VK_PipelineList << "audiorate";
+            VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
+            VK_PipelineList << "queue";
+            VK_PipelineList << "mux.";
         #endif
 
         #ifdef Q_OS_WIN
+          if ( vkAudioController->checkboxAudioOnOff->isChecked() )
+          {
             if ( VK_getSelectedAudioDevice().at(0).section( ":::", 1, 1 ) == "Playback" )
             {
                 VK_PipelineList << VK_get_AudioSystem().append( " loopback=true low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
@@ -1759,13 +1773,14 @@ void QvkMainWindow::slot_Start()
             {
                 VK_PipelineList << VK_get_AudioSystem().append( " low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
             }
+            VK_PipelineList << "audioconvert";
+            VK_PipelineList << "audiorate";
+            VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
+            VK_PipelineList << "queue";
+            VK_PipelineList << "mux.";
+          }
        #endif
 
-        VK_PipelineList << "audioconvert";
-        VK_PipelineList << "audiorate";
-        VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
-        VK_PipelineList << "queue";
-        VK_PipelineList << "mux.";
     }
 
     // Pipeline for more as one audiodevice

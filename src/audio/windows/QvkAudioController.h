@@ -33,10 +33,10 @@ class QvkAudioController: public QObject
     Q_OBJECT
 
 public:
-    QvkAudioController(Ui_formMainWindow *ui_mainwindow );
+    QvkAudioController(Ui_formMainWindow *ui_mainwindow);
     virtual ~QvkAudioController();
     void init();
-
+    QCheckBox *checkboxAudioOnOff;
 
 public slots:
 
@@ -49,6 +49,7 @@ private:
 private slots:
     void slot_pluggedInOutDevice( QString string );
     void slot_audioDeviceSelected();
+    void slot_audioIconOnOff( bool state );
 
 
 protected:

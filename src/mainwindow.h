@@ -59,7 +59,7 @@ public:
     QvkRegionChoise *vkRegionChoise;
     QvkHelp *vkHelp;
     QvkSystray *vkSystray;
-
+    QvkAudioController *vkAudioController;
 
 private:
     QvkSpezialSlider *sliderScreencastCountDown;

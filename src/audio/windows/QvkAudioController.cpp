@@ -24,11 +24,26 @@
 #include "QvkWatcherPlug.h"
 #include "global.h"
 
+#include "mainwindow.h"
+
 #include <QDebug>
 
-QvkAudioController::QvkAudioController( Ui_formMainWindow *ui_mainwindow )
+QvkAudioController::QvkAudioController(Ui_formMainWindow *ui_mainwindow)
 {
     ui = ui_mainwindow;
+
+    checkboxAudioOnOff = new QCheckBox();
+    checkboxAudioOnOff->setObjectName( "checkboxAudioOnOff" );
+    checkboxAudioOnOff->setText( "Audio" );
+    ui->verticalLayout_4->insertWidget( 0, checkboxAudioOnOff );
+    connect( checkboxAudioOnOff, SIGNAL( clicked( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
+    connect( checkboxAudioOnOff, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioIconOnOff( bool ) ) );
+    slot_audioIconOnOff( false );
+
+    QLabel *labelImportant = new QLabel();
+    ui->verticalLayout_4->insertWidget( 2, labelImportant );
+    labelImportant->setWordWrap( true );
+    labelImportant->setText( "Important:\nThe recording from a loudspeaker requires a stream for start and stop, otherwise vokoscreenNG does nothings or hangs." );
 }
 
 
@@ -36,6 +51,32 @@ QvkAudioController::~QvkAudioController()
 {
 }
 
+/*
+ * Set a new icon with a red cross
+ */
+void QvkAudioController::slot_audioIconOnOff( bool state )
+{
+    QIcon myIcon( ":/pictures/screencast/microphone.png" );
+    if ( state == false  )
+    {
+        QSize size = ui->tabWidgetScreencast->iconSize();
+        QPixmap workPixmap( myIcon.pixmap( size ) );
+        QPainter painter;
+        QPen pen;
+        painter.begin( &workPixmap );
+        pen.setColor( Qt::red );
+        pen.setWidth( 2 );
+        painter.setPen( pen );
+        painter.drawLine ( 5, 5, size.width()-5, size.height()-5 );
+        painter.drawLine ( 5, size.height()-5, size.width()-5, 5 );
+        painter.end();
+        int index = ui->tabWidgetScreencast->indexOf( ui->tabAudio );
+        ui->tabWidgetScreencast->setTabIcon( index, workPixmap );
+    } else {
+        int index = ui->tabWidgetScreencast->indexOf( ui->tabAudio );
+        ui->tabWidgetScreencast->setTabIcon( index, myIcon );
+    }
+}
 
 void QvkAudioController::init()
 {
@@ -74,6 +115,8 @@ void QvkAudioController::getAllDevices()
             qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( list.at(i) ).section( ":::", 1, 1 )
                                                                          << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 )
                                                                          << "Input/Output:" << QString( list.at(i) ).section( ":::", 2, 2 );
+            if ( i == 0 )
+                checkboxAudioDevice->setChecked( true );
         }
         qDebug().noquote();
 
