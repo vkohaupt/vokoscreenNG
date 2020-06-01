@@ -1728,7 +1728,6 @@ QString QvkMainWindow::Pipeline_structured_output( QString pipeline )
 
 void QvkMainWindow::slot_Start()
 {
-    qDebug() << "**************************************************";
     if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  )
     {
         setWindowState( Qt::WindowMinimized );
