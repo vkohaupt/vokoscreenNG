@@ -1712,15 +1712,18 @@ QStringList QvkMainWindow::VK_getSelectedAudioDevice()
 QString QvkMainWindow::Pipeline_structured_output( QString pipeline )
 {
     QString string;
+    QString nl;
 #ifdef Q_OS_LINUX
-    string = pipeline.prepend( "gst-launch-1.0 -e \\\n    " );
+    nl = "\\";
+    string = pipeline.prepend( "gst-launch-1.0 -e " + nl + "\n    " );
 #endif
 #ifdef Q_OS_WIN
-    string = pipeline.prepend( "gst-launch-1.0.exe -e \\\n    " );
+    nl = "^";
+    string = pipeline.prepend( "gst-launch-1.0.exe -e " + nl + "\n    " );
 #endif
-    string = pipeline.replace( "mux.", "mux. \\\n   " );
-    string = pipeline.replace( "mix.", "mix. \\\n   " );
-    string = pipeline.replace( "!", "\\\n        !" );
+    string = pipeline.replace( "mux.", "mux. " + nl + "\n   " );
+    string = pipeline.replace( "mix.", "mix. " + nl + "\n   " );
+    string = pipeline.replace( "!", nl + "\n        !" );
     string.append( "\n" );
     return string;
 }
