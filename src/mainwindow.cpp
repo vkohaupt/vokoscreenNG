@@ -63,6 +63,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 {
     ui->setupUi(this);
+    soundEffect = new QSoundEffect();
 
     sliderScreencastCountDown = new QvkSpezialSlider( Qt::Horizontal );
     ui->gridLayout_9->addWidget( sliderScreencastCountDown, 2, 1 );
@@ -1770,6 +1771,10 @@ void QvkMainWindow::slot_Start()
           {
             if ( VK_getSelectedAudioDevice().at(0).section( ":::", 1, 1 ) == "Playback" )
             {
+                soundEffect->setSource( QUrl::fromLocalFile( ":/sound/wasapi.wav" ) );
+                soundEffect->setLoopCount( QSoundEffect::Infinite );
+                soundEffect->setVolume( 0.0 );
+                soundEffect->play();
                 VK_PipelineList << VK_get_AudioSystem().append( " loopback=true low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
             }
             else
@@ -1905,6 +1910,10 @@ void QvkMainWindow::slot_Stop()
         qDebug().noquote() << global::nameOutput << "Stop record";
     }
 
+    #ifdef Q_OS_WIN
+       soundEffect->stop();
+    #endif
+
     wantRecording = true;
 
 }
@@ -1915,7 +1924,7 @@ void QvkMainWindow::slot_Pause()
     if ( ui->pushButtonStart->isEnabled() == false )
     {
         qDebug().noquote() << global::nameOutput << "Pause was clicked";
-        GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PAUSED ); // so wie es aussieht hängt er nur mit Audio
+        GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
         if ( ret == GST_STATE_CHANGE_FAILURE )   { qDebug().noquote() << global::nameOutput << "Pause was clicked" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
         if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug().noquote() << global::nameOutput << "Pause was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
         if ( ret == GST_STATE_CHANGE_ASYNC )     { qDebug().noquote() << global::nameOutput << "Pause was clicked" << "GST_STATE_CHANGE_ASYNC" << "Returncode =" << ret;   }   // 2

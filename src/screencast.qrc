@@ -72,5 +72,6 @@
 <file>language/uk_UA.qm</file>
 <file>language/zh_CN.qm</file>
 <file>language/zh_TW.qm</file>
+<file>sound/wasapi.wav</file>
 </qresource>
 </RCC>

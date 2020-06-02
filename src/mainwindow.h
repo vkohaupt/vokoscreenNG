@@ -39,6 +39,7 @@
 #include "QvkAudioController.h"
 #include <QMainWindow>
 #include <QFileSystemWatcher>
+#include <QSoundEffect>
 
 #include <gst/gst.h>
 
@@ -132,6 +133,7 @@ private:
 
     bool onlyOnce = false;
 
+    QSoundEffect *soundEffect;
 
 private slots:
     void slot_preStart();

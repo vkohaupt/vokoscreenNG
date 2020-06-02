@@ -39,11 +39,6 @@ QvkAudioController::QvkAudioController(Ui_formMainWindow *ui_mainwindow)
     connect( checkboxAudioOnOff, SIGNAL( clicked( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
     connect( checkboxAudioOnOff, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioIconOnOff( bool ) ) );
     slot_audioIconOnOff( false );
-
-    QLabel *labelImportant = new QLabel();
-    ui->verticalLayout_4->insertWidget( 2, labelImportant );
-    labelImportant->setWordWrap( true );
-    labelImportant->setText( "Important:\nThe recording from a loudspeaker requires a stream for start and stop, otherwise vokoscreenNG does nothings or hangs." );
 }
 
 
