@@ -36,7 +36,7 @@ public:
     QvkAudioController(Ui_formMainWindow *ui_mainwindow);
     virtual ~QvkAudioController();
     void init();
-    QCheckBox *checkboxAudioOnOff;
+    QCheckBox *checkBoxAudioOnOff;
 
 public slots:
 

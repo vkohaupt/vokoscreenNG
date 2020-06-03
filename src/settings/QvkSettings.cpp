@@ -131,6 +131,13 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             continue;
         }
 
+        if ( ( listCheckBox.at(i)->objectName().contains( "checkBoxAudioOnOff" ) ) and
+             ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == false ) )
+        {
+            ui_mainwindow->scrollAreaAudioDevice->setEnabled( false );
+            continue;
+        }
+
         // We found a setting, then we want set or not.
         if ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true )
         {

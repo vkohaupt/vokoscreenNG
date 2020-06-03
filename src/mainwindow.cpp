@@ -1767,7 +1767,7 @@ void QvkMainWindow::slot_Start()
         #endif
 
         #ifdef Q_OS_WIN
-          if ( vkAudioController->checkboxAudioOnOff->isChecked() )
+          if ( vkAudioController->checkBoxAudioOnOff->isChecked() )
           {
             if ( VK_getSelectedAudioDevice().at(0).section( ":::", 1, 1 ) == "Playback" )
             {

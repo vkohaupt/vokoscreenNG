@@ -32,12 +32,12 @@ QvkAudioController::QvkAudioController(Ui_formMainWindow *ui_mainwindow)
 {
     ui = ui_mainwindow;
 
-    checkboxAudioOnOff = new QCheckBox();
-    checkboxAudioOnOff->setObjectName( "checkboxAudioOnOff" );
-    checkboxAudioOnOff->setText( "Audio" );
-    ui->verticalLayout_4->insertWidget( 0, checkboxAudioOnOff );
-    connect( checkboxAudioOnOff, SIGNAL( clicked( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
-    connect( checkboxAudioOnOff, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioIconOnOff( bool ) ) );
+    checkBoxAudioOnOff = new QCheckBox();
+    checkBoxAudioOnOff->setObjectName( "checkBoxAudioOnOff" );
+    checkBoxAudioOnOff->setText( "Audio" );
+    ui->verticalLayout_4->insertWidget( 0, checkBoxAudioOnOff );
+    connect( checkBoxAudioOnOff, SIGNAL( clicked( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
+    connect( checkBoxAudioOnOff, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioIconOnOff( bool ) ) );
     slot_audioIconOnOff( false );
 }
 
