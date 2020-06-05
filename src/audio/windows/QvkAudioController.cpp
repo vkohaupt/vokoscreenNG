@@ -23,11 +23,9 @@
 #include "QvkAudioController.h"
 #include "QvkWatcherPlug.h"
 #include "global.h"
-#include "QvkSpezialSlider.h"
-
-#include "mainwindow.h"
 
 #include <QDebug>
+#include <QPainter>
 
 QvkAudioController::QvkAudioController(Ui_formMainWindow *ui_mainwindow)
 {
@@ -35,7 +33,6 @@ QvkAudioController::QvkAudioController(Ui_formMainWindow *ui_mainwindow)
 
     checkBoxAudioOnOff = new QCheckBox();
     checkBoxAudioOnOff->setObjectName( "checkBoxAudioOnOff" );
-    //checkBoxAudioOnOff->setText( "Audio" );
 
     QPixmap pixmapMic( ":/pictures/screencast/microphone.png" );
     QIcon icon;
