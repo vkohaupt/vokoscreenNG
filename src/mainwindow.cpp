@@ -382,6 +382,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // Tab 2 Audio and Videocodec
 #ifdef Q_OS_WIN
+    // Alle Functionen werden innerhalb dieser Klasse aufgerufen
     vkAudioController = new QvkAudioController( ui );
     vkAudioController->init();
 #endif
@@ -500,6 +501,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSettings.readCamera( vkCameraController );
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
     vkSettings.readPlayerPathOpenFile( vkPlayer );
+#ifdef Q_OS_WIN
+    vkAudioController->slot_audioDeviceSelected();
+#endif
 
     // After reading the settings, we read the arguments and run
     QStringList arguments = QApplication::instance()->arguments();
@@ -1767,8 +1771,8 @@ void QvkMainWindow::slot_Start()
         #endif
 
         #ifdef Q_OS_WIN
-          if ( vkAudioController->checkBoxAudioOnOff->isChecked() )
-          {
+//          if ( vkAudioController->checkBoxAudioOnOff->isChecked() )
+//          {
             if ( VK_getSelectedAudioDevice().at(0).section( ":::", 1, 1 ) == "Playback" )
             {
                 soundEffect->setSource( QUrl::fromLocalFile( ":/sound/wasapi.wav" ) );
@@ -1786,7 +1790,7 @@ void QvkMainWindow::slot_Start()
             VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
             VK_PipelineList << "queue";
             VK_PipelineList << "mux.";
-          }
+//          }
        #endif
 
     }

@@ -74,16 +74,33 @@ QMAKE_LFLAGS += -Wl,--as-needed
 unix:CONFIG += link_pkgconfig
 unix:PKGCONFIG += gstreamer-1.0
 
-win32:GStreamerDir=$$(GSTREAMER_1_0_ROOT_X86)
-win32:INCLUDEPATH += $${GStreamerDir}\include\gstreamer-1.0
-win32:INCLUDEPATH += $${GStreamerDir}\include\glib-2.0
-win32:INCLUDEPATH += $${GStreamerDir}\lib\glib-2.0\include
+#win32:GStreamerDir=$$(GSTREAMER_1_0_ROOT_X86)
+#win32:INCLUDEPATH += $${GStreamerDir}\include\gstreamer-1.0
+#win32:INCLUDEPATH += $${GStreamerDir}\include\glib-2.0
+#win32:INCLUDEPATH += $${GStreamerDir}\lib\glib-2.0\include
 
-win32:LIBS += -LC:\gstreamer\1.0\x86\bin
-win32:LIBS += -LC:\gstreamer\1.0\x86\lib\gstreamer-1.0
-win32:LIBS += -llibgstreamer-1.0-0
-win32:LIBS += -llibglib-2.0-0
-win32:LIBS += -llibgobject-2.0-0
+#win32:LIBS += -LC:\gstreamer\1.0\x86\bin
+#win32:LIBS += -LC:\gstreamer\1.0\x86\lib\gstreamer-1.0
+#win32:LIBS += -llibgstreamer-1.0-0
+#win32:LIBS += -llibglib-2.0-0
+#win32:LIBS += -llibgobject-2.0-0
+
+win32 {
+    INCLUDEPATH += \
+                   c:\gstreamer\1.0\x86\include \
+                   c:\gstreamer\1.0\x86\lib\gstreamer-1.0\include \
+                   c:\gstreamer\1.0\x86\include\gstreamer-1.0 \
+                   c:\gstreamer\1.0\x86\include\glib-2.0 \
+                   c:\gstreamer\1.0\x86\include\glib-2.0\glib \
+                   c:\gstreamer\1.0\x86\include\glib-2.0\include \
+                   C:\gstreamer\1.0\x86\lib\glib-2.0\include
+
+    LIBS += -Lc:\gstreamer\1.0\x86\bin
+    LIBS += -lglib-2.0-0 -lwinpthread -lgstreamer-1.0-0 -lgobject-2.0-0 -lgmodule-2.0-0 -lgthread-2.0-0
+    LIBS += -lgstvideo-1.0-0
+
+    CONFIG += c:\gstreamer\1.0\x86\lib\pkgconfig
+}
 
 # settings
 include(settings/settings.pri)

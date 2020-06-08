@@ -36,24 +36,22 @@ public:
     QvkAudioController(Ui_formMainWindow *ui_mainwindow);
     virtual ~QvkAudioController();
     void init();
-    QCheckBox *checkBoxAudioOnOff;
 
 public slots:
-
+    void slot_audioDeviceSelected();
 
 private:
     Ui_formMainWindow *ui;
     void getAllDevices();
-
+    QString nameCheckBox = "";
 
 private slots:
     void slot_pluggedInOutDevice( QString string );
-    void slot_audioDeviceSelected();
     void slot_audioIconOnOff( bool state );
-
+    void slot_checkBox(bool);
 
 protected:
-
+    bool eventFilter(QObject *object, QEvent *ev) override;
   
 signals:
     void signal_haveAudioDeviceSelected( bool );

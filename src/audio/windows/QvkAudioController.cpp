@@ -26,23 +26,11 @@
 
 #include <QDebug>
 #include <QPainter>
+#include <QCheckBox>
 
 QvkAudioController::QvkAudioController(Ui_formMainWindow *ui_mainwindow)
 {
     ui = ui_mainwindow;
-
-    checkBoxAudioOnOff = new QCheckBox();
-    checkBoxAudioOnOff->setObjectName( "checkBoxAudioOnOff" );
-
-    QPixmap pixmapMic( ":/pictures/screencast/microphone.png" );
-    QIcon icon;
-    icon.addPixmap( pixmapMic );
-    checkBoxAudioOnOff->setIcon( icon );
-
-    ui->verticalLayout_4->insertWidget( 0, checkBoxAudioOnOff );
-    connect( checkBoxAudioOnOff, SIGNAL( clicked( bool ) ), ui->scrollAreaAudioDevice, SLOT( setEnabled( bool ) ) );
-    connect( checkBoxAudioOnOff, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioIconOnOff( bool ) ) );
-    slot_audioIconOnOff( false );
 }
 
 
@@ -102,38 +90,71 @@ void QvkAudioController::getAllDevices()
         for ( int i = 0; i < list.count(); i++ )
         {
             QCheckBox *checkboxAudioDevice = new QCheckBox();
-            connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
             checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
             QString device = QString( list.at(i).section( ":::", 0, 0 ) );
             device.append( ":::" );
             device.append( QString( list.at(i).section( ":::", 2, 2 ) ) );
             checkboxAudioDevice->setAccessibleName( device );
-            checkboxAudioDevice->setAutoExclusive( true );
             checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( i ) );
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
             qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( list.at(i) ).section( ":::", 1, 1 )
                                                                          << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 )
                                                                          << "Input/Output:" << QString( list.at(i) ).section( ":::", 2, 2 );
-            if ( i == 0 )
-                checkboxAudioDevice->setChecked( true );
+
+            checkboxAudioDevice->installEventFilter( this );
+            connect( checkboxAudioDevice, SIGNAL(clicked( bool ) ),this,SLOT(slot_audioDeviceSelected() ) );
+            connect( checkboxAudioDevice, SIGNAL(clicked( bool ) ),this,SLOT(slot_checkBox( bool ) ) );
         }
         qDebug().noquote();
 
         QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
         ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
-        slot_audioDeviceSelected();
     }
     else
     {
-        emit signal_haveAudioDeviceSelected( false );
         QLabel *label = new QLabel();
         label->setText( "No audio recording device found, please read the online help." );
         ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter);
         ui->verticalLayoutAudioDevices->addWidget( label );
-
     }
 }
 
+bool QvkAudioController::eventFilter( QObject *object, QEvent *event )
+{
+    QCheckBox *checkBox = qobject_cast<QCheckBox *>(object);
+    if ( ( checkBox->objectName().contains( "checkboxAudioDevice-" ) )
+         and ( event->type() == QEvent::MouseButtonRelease )
+         and ( checkBox->isChecked() == false ) )
+    {
+        nameCheckBox = checkBox->objectName();
+        qDebug() << "eventFilter" << checkBox->objectName();
+    }
+
+    // Der Name der checkBox wurde ausgelesen und der event wird nun weitergegeben
+    return QObject::eventFilter( object, event );
+}
+
+void QvkAudioController::slot_checkBox( bool value )
+{
+    QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ )
+    {
+        if ( listCheckBox.at(i)->isChecked() )
+        {
+            qDebug() << "slot_checkBox 111111111111111" << nameCheckBox;
+            listCheckBox.at(i)->setChecked( false );
+        }
+    }
+
+    for ( int i = 0; i < listCheckBox.count(); i++ )
+    {
+        if ( listCheckBox.at(i)->objectName() == nameCheckBox )
+        {
+            qDebug() << "slot_checkBox 2222222222222222" << nameCheckBox << value;
+            listCheckBox.at(i)->setChecked( value );
+        }
+    }
+}
 
 void QvkAudioController::slot_audioDeviceSelected()
 {
@@ -147,7 +168,7 @@ void QvkAudioController::slot_audioDeviceSelected()
             break;
         }
     }
-    emit signal_haveAudioDeviceSelected( value );
+    slot_audioIconOnOff( value );
 }
 
 

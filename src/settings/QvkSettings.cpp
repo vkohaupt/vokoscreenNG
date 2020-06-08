@@ -25,6 +25,7 @@
 #include "ui_formMainWindow.h"
 
 #include <QFileInfo>
+#include <QMouseEvent>
 
 QvkSettings::QvkSettings()
 {
@@ -110,13 +111,6 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             continue;
         }
 
-        if ( ( listCheckBox.at(i)->objectName().contains( "checkboxAudioDevice" ) ) and
-             ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true ) )
-        {
-            listCheckBox.at(i)->click();
-            continue;
-        }
-
         if ( ( listCheckBox.at(i)->objectName().contains( "checkBoxLookForUpdates" ) ) and
              ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) )
         {
@@ -131,10 +125,16 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             continue;
         }
 
-        if ( ( listCheckBox.at(i)->objectName().contains( "checkBoxAudioOnOff" ) ) and
-             ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == false ) )
+        if ( ( listCheckBox.at(i)->objectName().contains( "checkboxAudioDevice-" ) ) and
+             ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true ) )
         {
-            ui_mainwindow->scrollAreaAudioDevice->setEnabled( false );
+            #ifdef Q_OS_LINUX
+               listCheckBox.at(i)->click());
+            #endif
+
+            #ifdef Q_OS_WIN
+               listCheckBox.at(i)->setChecked( true );
+            #endif
             continue;
         }
 
