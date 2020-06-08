@@ -1771,8 +1771,6 @@ void QvkMainWindow::slot_Start()
         #endif
 
         #ifdef Q_OS_WIN
-//          if ( vkAudioController->checkBoxAudioOnOff->isChecked() )
-//          {
             if ( VK_getSelectedAudioDevice().at(0).section( ":::", 1, 1 ) == "Playback" )
             {
                 soundEffect->setSource( QUrl::fromLocalFile( ":/sound/wasapi.wav" ) );
@@ -1790,9 +1788,7 @@ void QvkMainWindow::slot_Start()
             VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
             VK_PipelineList << "queue";
             VK_PipelineList << "mux.";
-//          }
        #endif
-
     }
 
     // Pipeline for more as one audiodevice
