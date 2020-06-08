@@ -129,7 +129,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
              ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true ) )
         {
             #ifdef Q_OS_LINUX
-               listCheckBox.at(i)->click());
+               listCheckBox.at(i)->click();
             #endif
 
             #ifdef Q_OS_WIN

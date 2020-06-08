@@ -22,6 +22,8 @@
 
 #include "QvkRegionButtonArrow.h"
 
+#include <QPainterPath>
+
 QvkRegionButtonArrow::QvkRegionButtonArrow()
 {
 }
