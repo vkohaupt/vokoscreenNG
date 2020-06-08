@@ -141,7 +141,6 @@ void QvkAudioController::slot_checkBox( bool value )
     {
         if ( listCheckBox.at(i)->isChecked() )
         {
-            qDebug() << "slot_checkBox 111111111111111" << nameCheckBox;
             listCheckBox.at(i)->setChecked( false );
         }
     }
@@ -150,7 +149,6 @@ void QvkAudioController::slot_checkBox( bool value )
     {
         if ( listCheckBox.at(i)->objectName() == nameCheckBox )
         {
-            qDebug() << "slot_checkBox 2222222222222222" << nameCheckBox << value;
             listCheckBox.at(i)->setChecked( value );
         }
     }
