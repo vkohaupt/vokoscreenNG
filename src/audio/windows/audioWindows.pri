@@ -1,10 +1,10 @@
 INCLUDEPATH += $$PWD
 DEPENDPATH  += $$PWD
 HEADERS     += $$PWD/QvkAudioController.h \
-               $$PWD/QvkPulseGstr.h \
+               $$PWD/QvkGstreamer.h \
                $$PWD/QvkWatcherPlug.h
                    
 SOURCES     += $$PWD/QvkAudioController.cpp \
-               $$PWD/QvkPulseGstr.cpp \
+               $$PWD/QvkGstreamer.cpp \
                $$PWD/QvkWatcherPlug.cpp
                

@@ -20,20 +20,20 @@
  * --End_License--
  */
 
-#ifndef QVKPULSEGSTR_H
-#define QVKPULSEGSTR_H
+#ifndef QVKGSTREAMER_H
+#define QVKGSTREAMER_H
 
 #include <gst/gst.h>
 
 #include <QObject>
 
-class QvkPulseGstr: public QObject
+class QvkGstreamer: public QObject
 {
     Q_OBJECT
 
 public:
-    QvkPulseGstr();
-    virtual ~QvkPulseGstr();
+    QvkGstreamer();
+    virtual ~QvkGstreamer();
     QString get_AudioDeviceString( GstDevice *device );
 
     

@@ -80,10 +80,10 @@ void QvkAudioController::init()
 
 void QvkAudioController::getAllDevices()
 {
-    QvkPulseGstr vkPulseGstr;
+    QvkGstreamer vkGstreamer;
     QStringList list;
-    list << vkPulseGstr.get_all_Audio_Source_devices();
-    list << vkPulseGstr.get_all_Audio_Playback_devices();
+    list << vkGstreamer.get_all_Audio_Source_devices();
+    list << vkGstreamer.get_all_Audio_Playback_devices();
 
     if ( !list.empty() )
     {

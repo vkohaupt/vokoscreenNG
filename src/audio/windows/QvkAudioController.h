@@ -20,11 +20,11 @@
  * --End_License--
  */
 
-#ifndef QVKAUDIOPULSE_H
-#define QVKAUDIOPULSE_H
+#ifndef QVKAUDIOCONTROLLER_H
+#define QVKAUDIOCONTROLLER_H
 
 #include "ui_formMainWindow.h"
-#include "QvkPulseGstr.h"
+#include "QvkGstreamer.h"
 
 #include <QObject>
 
