@@ -74,6 +74,9 @@ void QvkAudioController::init()
     QvkWatcherPlug *vkWatcherPlug = new QvkWatcherPlug();
     vkWatcherPlug->start_monitor();
 
+    connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
+    connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
+
     connect( global::lineEditAudioPlug, SIGNAL( textChanged( QString ) ), this, SLOT( slot_pluggedInOutDevice( QString ) ) );
 }
 
@@ -167,6 +170,7 @@ void QvkAudioController::slot_audioDeviceSelected()
         }
     }
     slot_audioIconOnOff( value );
+    signal_haveAudioDeviceSelected( value );
 }
 
 
