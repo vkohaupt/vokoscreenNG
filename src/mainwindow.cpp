@@ -1321,6 +1321,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "audiocodec:voaacenc:aac"
                                   );
 
+    // https://de.wikipedia.org/wiki/QuickTime
     QStringList MOV_QStringList = ( QStringList()
                                     << "muxer:qtmux:mov"
                                     << "videomimetype:video/mp4"
@@ -1333,7 +1334,6 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                 #endif
                                     << "videocodec:vp8enc:VP8"
                                     << "audiocodec:lamemp3enc:mp3"
-                                    << "audiocodec:opusenc:opus"
                                     << "audiocodec:voaacenc:aac"
                                   );
 
