@@ -115,7 +115,6 @@ void QvkWASAPIController::getAllDevices()
                                                                          << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 )
                                                                          << "Input/Output:" << QString( list.at(i) ).section( ":::", 2, 2 );
 
-            //checkboxAudioDevice->installEventFilter( this );
             connect( checkboxAudioDevice, SIGNAL(clicked( bool ) ),this,SLOT(slot_audioDeviceSelected() ) );
             connect( checkboxAudioDevice, SIGNAL(clicked( bool ) ),this,SLOT(slot_checkBox( bool ) ) );
         }

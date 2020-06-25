@@ -69,9 +69,17 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralWidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadiobuttons.count(); i++ )
     {
-        // We have no settings-file(first start after install) but this object we want set as Standard.
+        // We have no settings-file(first start after install) but this object we want set as default.
         if ( ( listRadiobuttons.at(i)->objectName() == "radioButtonScreencastFullscreen" ) and
              ( settings.value( listRadiobuttons.at(i)->objectName(), true ).toBool() == true ) )
+        {
+            listRadiobuttons.at(i)->click();
+            continue;
+        }
+
+        // We set WASAPI as default
+        if ( ( listRadiobuttons.at(i)->objectName() == "radioButtonWASAPI" ) and
+             ( settings.value( listRadiobuttons.at(i)->objectName(), false ).toBool() == false ) )
         {
             listRadiobuttons.at(i)->click();
             continue;
@@ -87,7 +95,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     QList<QCheckBox *> listCheckBox = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ )
     {
-        // We have no settings-file(first start after install) but this object we want set as Standard.
+        // We have no settings-file(first start after install) but this object we want set as default.
         if ( ( listCheckBox.at(i)->objectName() == "checkBoxShowInSystray" ) and
              ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) )
         {
