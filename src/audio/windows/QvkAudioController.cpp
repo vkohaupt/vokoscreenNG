@@ -52,10 +52,10 @@ QvkAudioController::~QvkAudioController()
 
 void QvkAudioController::slot_WASAPI( bool value )
 {
+    Q_UNUSED(value);
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ )
     {
-//        listCheckBox.at(i)->removeEventFilter( listCheckBox.at(i) );
         ui->verticalLayoutAudioDevices->removeWidget( listCheckBox.at(i) );
         delete listCheckBox.at(i);
     }
@@ -65,14 +65,13 @@ void QvkAudioController::slot_WASAPI( bool value )
 
 void QvkAudioController::slot_DirectSound( bool value )
 {
+    Q_UNUSED(value);
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ )
     {
-        listCheckBox.at(i)->removeEventFilter( listCheckBox.at(i) );
         ui->verticalLayoutAudioDevices->removeWidget( listCheckBox.at(i) );
         delete listCheckBox.at(i);
     }
 
     vkDirectSoundController->getAllDevices();
-
 }

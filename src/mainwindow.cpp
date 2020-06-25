@@ -1676,22 +1676,6 @@ QString QvkMainWindow::VK_get_AudioSystem()
 }
 #endif
 
-/*
-#ifdef Q_OS_WIN
-QString QvkMainWindow::VK_get_AudioSystem()
-{
-    if ( vkAudioController->radioButtonWASAPI->isChecked() )
-    {
-       return "wasapisrc";
-    }
-
-    if ( vkAudioController->radioButtonDirectSound->isChecked() )
-    {
-       return "directsoundsrc";
-    }
-}
-#endif
-*/
 
 QString QvkMainWindow::VK_getMuxer()
 {
@@ -1706,7 +1690,6 @@ QString QvkMainWindow::VK_getMuxer()
     }
     return value;
 }
-
 
 
 QStringList QvkMainWindow::VK_getSelectedAudioDevice()

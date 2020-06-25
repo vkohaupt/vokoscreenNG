@@ -43,8 +43,6 @@ public slots:
 
 private:
     Ui_formMainWindow *ui;
-//    void getAllDevices();
-//    QString nameCheckBox = "";
 
 private slots:
     void slot_pluggedInOutDevice( QString string );
@@ -52,7 +50,6 @@ private slots:
     void slot_checkBox(bool);
 
 protected:
-//    bool eventFilter(QObject *object, QEvent *ev) override;
   
 signals:
     void signal_haveAudioDeviceSelected( bool );

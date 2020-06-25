@@ -132,22 +132,8 @@ void QvkWASAPIController::getAllDevices()
         ui->verticalLayoutAudioDevices->addWidget( label );
     }
 }
-/*
-bool QvkWASAPIController::eventFilter( QObject *object, QEvent *event )
-{
-    QCheckBox *checkBox = qobject_cast<QCheckBox *>(object);
-    if ( ( checkBox->objectName().contains( "checkboxAudioDevice-" ) )
-         and ( event->type() == QEvent::MouseButtonRelease )
-         and ( checkBox->isChecked() == false ) )
-    {
-        nameCheckBox = checkBox->objectName();
-        qDebug() << "eventFilter" << checkBox->objectName();
-    }
 
-    // Der Name der checkBox wurde ausgelesen und der event wird nun weitergegeben
-    return QObject::eventFilter( object, event );
-}
-*/
+
 void QvkWASAPIController::slot_checkBox( bool value )
 {
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
@@ -167,6 +153,7 @@ void QvkWASAPIController::slot_checkBox( bool value )
         }
     }
 }
+
 
 void QvkWASAPIController::slot_audioDeviceSelected()
 {
