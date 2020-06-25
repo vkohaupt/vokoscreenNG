@@ -20,26 +20,26 @@
  * --End_License--
  */
 
-#ifndef QVKWATCHERPLUG_H
-#define QVKWATCHERPLUG_H
+#ifndef QVKWASAPIGSTREAMER_H
+#define QVKWASAPIGSTREAMER_H
 
 #include <gst/gst.h>
 
 #include <QObject>
 
-class QvkWatcherPlug: public QObject
+class QvkWASAPIGstreamer: public QObject
 {
     Q_OBJECT
 
-
 public:
-    QvkWatcherPlug();
-    virtual ~QvkWatcherPlug();
-    GstDeviceMonitor *start_monitor();
-    static gboolean func( GstBus *bus, GstMessage *message, gpointer user_data );
+    QvkWASAPIGstreamer();
+    virtual ~QvkWASAPIGstreamer();
+    QString get_AudioDeviceString( GstDevice *device );
 
     
 public slots:
+    QStringList get_all_Audio_Source_devices();
+    QStringList get_all_Audio_Playback_devices();
 
 
 private:
@@ -52,8 +52,7 @@ protected:
   
   
 signals:
-
-
+    
 };
 
 #endif

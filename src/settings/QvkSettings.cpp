@@ -77,14 +77,6 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             continue;
         }
 
-        // We have no settings-file(first start after install) but this object we want set as Standard.
-        if ( ( listRadiobuttons.at(i)->objectName() == "radioButtonScreenshotFullscreen" ) and
-             ( settings.value( listRadiobuttons.at(i)->objectName(), true ).toBool() == true ) )
-        {
-            listRadiobuttons.at(i)->click();
-            continue;
-        }
-
         bool value = settings.value( listRadiobuttons.at(i)->objectName(), false ).toBool();
         if ( value == true )
         {

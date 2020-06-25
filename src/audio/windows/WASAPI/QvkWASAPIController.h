@@ -20,39 +20,43 @@
  * --End_License--
  */
 
-#ifndef QVKGSTREAMER_H
-#define QVKGSTREAMER_H
+#ifndef QVKWASAPICONTROLLER_H
+#define QVKWASAPICONTROLLER_H
 
-#include <gst/gst.h>
+#include "ui_formMainWindow.h"
+#include "QvkWASAPIGstreamer.h"
 
 #include <QObject>
 
-class QvkGstreamer: public QObject
+class QvkWASAPIController: public QObject
 {
     Q_OBJECT
 
 public:
-    QvkGstreamer();
-    virtual ~QvkGstreamer();
-    QString get_AudioDeviceString( GstDevice *device );
+    QvkWASAPIController(Ui_formMainWindow *ui_mainwindow);
+    virtual ~QvkWASAPIController();
+    void init();
+    void getAllDevices();
 
-    
 public slots:
-    QStringList get_all_Audio_Source_devices();
-    QStringList get_all_Audio_Playback_devices();
-
+    void slot_audioDeviceSelected();
 
 private:
-
+    Ui_formMainWindow *ui;
+//    void getAllDevices();
+//    QString nameCheckBox = "";
 
 private slots:
-
+    void slot_pluggedInOutDevice( QString string );
+    void slot_audioIconOnOff( bool state );
+    void slot_checkBox(bool);
 
 protected:
-  
+//    bool eventFilter(QObject *object, QEvent *ev) override;
   
 signals:
-    
+    void signal_haveAudioDeviceSelected( bool );
+
 };
 
 #endif

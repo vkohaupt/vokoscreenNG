@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -173,9 +173,6 @@
                  <widget class="QRadioButton" name="radioButtonScreencastFullscreen">
                   <property name="text">
                    <string notr="true">Fulls&amp;creen</string>
-                  </property>
-                  <property name="checked">
-                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>

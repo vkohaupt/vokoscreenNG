@@ -20,7 +20,7 @@
  * --End_License--
  */
 
-#include "QvkWatcherPlug.h"
+#include "QvkDirectSoundWatcher.h"
 #include "global.h"
 
 #include <QDebug>
@@ -30,7 +30,7 @@
  * QvkWatcherPlug monitoring only new or removed Audiodevices.
  * It has the same behavior as under Linux.
  */
-QvkWatcherPlug::QvkWatcherPlug( Ui_formMainWindow *ui_mainwindow )
+QvkDirectSoundWatcher::QvkDirectSoundWatcher( Ui_formMainWindow *ui_mainwindow )
 {
     global::lineEditAudioPlug = new QLineEdit;
     ui = ui_mainwindow;
@@ -42,17 +42,17 @@ QvkWatcherPlug::QvkWatcherPlug( Ui_formMainWindow *ui_mainwindow )
 }
 
 
-QvkWatcherPlug::~QvkWatcherPlug()
+QvkDirectSoundWatcher::~QvkDirectSoundWatcher()
 {}
 
 
-void QvkWatcherPlug::start_monitor()
+void QvkDirectSoundWatcher::start_monitor()
 {
     timer->start();
 }
 
 
-void QvkWatcherPlug::slot_update()
+void QvkDirectSoundWatcher::slot_update()
 {
     QList<QCheckBox *> listCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
     QList<QAudioDeviceInfo> listAudioDeviceInfo = QAudioDeviceInfo::availableDevices( QAudio::AudioInput );

@@ -20,21 +20,21 @@
  * --End_License--
  */
 
-#include "QvkGstreamer.h"
+#include "QvkWASAPIGstreamer.h"
 
 #include <QDebug>
 
-QvkGstreamer::QvkGstreamer()
+QvkWASAPIGstreamer::QvkWASAPIGstreamer()
 {
 }
 
 
-QvkGstreamer::~QvkGstreamer()
+QvkWASAPIGstreamer::~QvkWASAPIGstreamer()
 {
 }
 
 
-QString QvkGstreamer::get_AudioDeviceString( GstDevice *device )
+QString QvkWASAPIGstreamer::get_AudioDeviceString( GstDevice *device )
 {
   static const char *const ignored_propnames[] = { "name", "parent", "direction", "template", "caps", Q_NULLPTR };
   GString *launch_line = Q_NULLPTR;
@@ -119,7 +119,7 @@ QString QvkGstreamer::get_AudioDeviceString( GstDevice *device )
 }
 
 
-QStringList QvkGstreamer::get_all_Audio_Source_devices()
+QStringList QvkWASAPIGstreamer::get_all_Audio_Source_devices()
 {
     GstDeviceMonitor *monitor;
     GstCaps *caps;
@@ -157,7 +157,7 @@ QStringList QvkGstreamer::get_all_Audio_Source_devices()
     return stringList;
 }
 
-QStringList QvkGstreamer::get_all_Audio_Playback_devices()
+QStringList QvkWASAPIGstreamer::get_all_Audio_Playback_devices()
 {
     GstDeviceMonitor *monitor;
     GstCaps *caps;

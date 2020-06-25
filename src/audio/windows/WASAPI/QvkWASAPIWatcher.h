@@ -20,41 +20,39 @@
  * --End_License--
  */
 
-#ifndef QVKAUDIOCONTROLLER_H
-#define QVKAUDIOCONTROLLER_H
+#ifndef QVKWASAPIWATCHER_H
+#define QVKWASAPIWATCHER_H
 
-#include "ui_formMainWindow.h"
-#include "QvkGstreamer.h"
+#include <gst/gst.h>
 
 #include <QObject>
 
-class QvkAudioController: public QObject
+class QvkWASAPIWatcher: public QObject
 {
     Q_OBJECT
 
-public:
-    QvkAudioController(Ui_formMainWindow *ui_mainwindow);
-    virtual ~QvkAudioController();
-    void init();
 
+public:
+    QvkWASAPIWatcher();
+    virtual ~QvkWASAPIWatcher();
+    GstDeviceMonitor *start_monitor();
+    static gboolean func( GstBus *bus, GstMessage *message, gpointer user_data );
+
+    
 public slots:
-    void slot_audioDeviceSelected();
+
 
 private:
-    Ui_formMainWindow *ui;
-    void getAllDevices();
-    QString nameCheckBox = "";
+
 
 private slots:
-    void slot_pluggedInOutDevice( QString string );
-    void slot_audioIconOnOff( bool state );
-    void slot_checkBox(bool);
+
 
 protected:
-    bool eventFilter(QObject *object, QEvent *ev) override;
+  
   
 signals:
-    void signal_haveAudioDeviceSelected( bool );
+
 
 };
 

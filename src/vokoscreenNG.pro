@@ -105,7 +105,7 @@ include(camera/camera.pri)
 unix:include(audio/linux/audioLinux.pri)
 
 # audio windows
-win32:include(audio/windowsWASAPI/audioWindowsWASAPI.pri)
+win32:include(audio/windows/audioWindows.pri)
 
 # help
 include(help/help.pri)

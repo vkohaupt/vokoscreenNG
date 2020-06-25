@@ -20,28 +20,28 @@
  * --End_License--
  */
 
-#include "QvkAudioController.h"
-#include "QvkWatcherPlug.h"
+#include "QvkWASAPIController.h"
+#include "QvkWASAPIWatcher.h"
 #include "global.h"
 
 #include <QDebug>
 #include <QPainter>
 #include <QCheckBox>
 
-QvkAudioController::QvkAudioController(Ui_formMainWindow *ui_mainwindow)
+QvkWASAPIController::QvkWASAPIController(Ui_formMainWindow *ui_mainwindow)
 {
     ui = ui_mainwindow;
 }
 
 
-QvkAudioController::~QvkAudioController()
+QvkWASAPIController::~QvkWASAPIController()
 {
 }
 
 /*
  * Set a new icon with a red cross
  */
-void QvkAudioController::slot_audioIconOnOff( bool state )
+void QvkWASAPIController::slot_audioIconOnOff( bool state )
 {
     QIcon myIcon( ":/pictures/screencast/microphone.png" );
     if ( state == false  )
@@ -65,14 +65,14 @@ void QvkAudioController::slot_audioIconOnOff( bool state )
     }
 }
 
-void QvkAudioController::init()
+void QvkWASAPIController::init()
 {
     getAllDevices();
 
     // QvkWatcherPlug monitoring only new or removed Audiodevices from the PulseAudio server.
     // QvkWatcherPlug does not return any devices, if the PulseAudio server start or stop.
-    QvkWatcherPlug *vkWatcherPlug = new QvkWatcherPlug();
-    vkWatcherPlug->start_monitor();
+    QvkWASAPIWatcher *vkWASAPIWatcher = new QvkWASAPIWatcher();
+    vkWASAPIWatcher->start_monitor();
 
     connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
     connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
@@ -81,12 +81,23 @@ void QvkAudioController::init()
 }
 
 
-void QvkAudioController::getAllDevices()
+void QvkWASAPIController::getAllDevices()
 {
-    QvkGstreamer vkGstreamer;
+    int count = ui->verticalLayoutAudioDevices->count();
+    for ( int i = 0; i < count; ++i )
+    {
+        QLayoutItem *layoutItem = ui->verticalLayoutAudioDevices->itemAt(i);
+        if ( layoutItem->spacerItem() )
+        {
+            ui->verticalLayoutAudioDevices->removeItem( layoutItem );
+            delete layoutItem;
+        }
+    }
+
+    QvkWASAPIGstreamer vkWASAPIGstreamer;
     QStringList list;
-    list << vkGstreamer.get_all_Audio_Source_devices();
-    list << vkGstreamer.get_all_Audio_Playback_devices();
+    list << vkWASAPIGstreamer.get_all_Audio_Source_devices();
+    list << vkWASAPIGstreamer.get_all_Audio_Playback_devices();
 
     if ( !list.empty() )
     {
@@ -104,7 +115,7 @@ void QvkAudioController::getAllDevices()
                                                                          << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 )
                                                                          << "Input/Output:" << QString( list.at(i) ).section( ":::", 2, 2 );
 
-            checkboxAudioDevice->installEventFilter( this );
+            //checkboxAudioDevice->installEventFilter( this );
             connect( checkboxAudioDevice, SIGNAL(clicked( bool ) ),this,SLOT(slot_audioDeviceSelected() ) );
             connect( checkboxAudioDevice, SIGNAL(clicked( bool ) ),this,SLOT(slot_checkBox( bool ) ) );
         }
@@ -121,8 +132,8 @@ void QvkAudioController::getAllDevices()
         ui->verticalLayoutAudioDevices->addWidget( label );
     }
 }
-
-bool QvkAudioController::eventFilter( QObject *object, QEvent *event )
+/*
+bool QvkWASAPIController::eventFilter( QObject *object, QEvent *event )
 {
     QCheckBox *checkBox = qobject_cast<QCheckBox *>(object);
     if ( ( checkBox->objectName().contains( "checkboxAudioDevice-" ) )
@@ -136,8 +147,8 @@ bool QvkAudioController::eventFilter( QObject *object, QEvent *event )
     // Der Name der checkBox wurde ausgelesen und der event wird nun weitergegeben
     return QObject::eventFilter( object, event );
 }
-
-void QvkAudioController::slot_checkBox( bool value )
+*/
+void QvkWASAPIController::slot_checkBox( bool value )
 {
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ )
@@ -150,14 +161,14 @@ void QvkAudioController::slot_checkBox( bool value )
 
     for ( int i = 0; i < listCheckBox.count(); i++ )
     {
-        if ( listCheckBox.at(i)->objectName() == nameCheckBox )
+        if ( listCheckBox.at(i)->underMouse() )
         {
             listCheckBox.at(i)->setChecked( value );
         }
     }
 }
 
-void QvkAudioController::slot_audioDeviceSelected()
+void QvkWASAPIController::slot_audioDeviceSelected()
 {
     bool value = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
@@ -174,7 +185,7 @@ void QvkAudioController::slot_audioDeviceSelected()
 }
 
 
-void QvkAudioController::slot_pluggedInOutDevice( QString string )
+void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
 {
     QString header = string.section( ":", 0, 0 );
     QString name   = string.section( ":", 1, 1 );

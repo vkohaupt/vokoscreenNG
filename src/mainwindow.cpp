@@ -384,7 +384,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #ifdef Q_OS_WIN
     // Alle Functionen werden innerhalb dieser Klasse aufgerufen
     vkAudioController = new QvkAudioController( ui );
-    vkAudioController->init();
+    //vkAudioController->init();
 #endif
 
 #ifdef Q_OS_LINUX
@@ -502,7 +502,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
     vkSettings.readPlayerPathOpenFile( vkPlayer );
 #ifdef Q_OS_WIN
-    vkAudioController->slot_audioDeviceSelected();
+//    vkAudioController->slot_audioDeviceSelected();
 #endif
 
     // After reading the settings, we read the arguments and run
@@ -1123,6 +1123,7 @@ void QvkMainWindow::VK_gst_Elements_available()
 #ifdef Q_OS_WIN
     list << "gdiscreencapsrc";
     list << "wasapisrc";
+    list << "directsoundsrc";
 #endif
 #ifdef Q_OS_LINUX
     list << "ximagesrc";
@@ -1139,6 +1140,7 @@ void QvkMainWindow::VK_gst_Elements_available()
     list << "videoscale";
     list << "h264parse";
     list << "audiomixer";
+    list << "adder";
 
     for ( int i = 0; i < list.count(); i++ )
     {
@@ -1674,14 +1676,22 @@ QString QvkMainWindow::VK_get_AudioSystem()
 }
 #endif
 
-
+/*
 #ifdef Q_OS_WIN
 QString QvkMainWindow::VK_get_AudioSystem()
 {
-    return "wasapisrc";
+    if ( vkAudioController->radioButtonWASAPI->isChecked() )
+    {
+       return "wasapisrc";
+    }
+
+    if ( vkAudioController->radioButtonDirectSound->isChecked() )
+    {
+       return "directsoundsrc";
+    }
 }
 #endif
-
+*/
 
 QString QvkMainWindow::VK_getMuxer()
 {
@@ -1771,24 +1781,38 @@ void QvkMainWindow::slot_Start()
         #endif
 
         #ifdef Q_OS_WIN
-            if ( VK_getSelectedAudioDevice().at(0).section( ":::", 1, 1 ) == "Playback" )
+            if ( vkAudioController->radioButtonWASAPI->isChecked() )
             {
-                soundEffect->setSource( QUrl::fromLocalFile( ":/sound/wasapi.wav" ) );
-                soundEffect->setLoopCount( QSoundEffect::Infinite );
-                soundEffect->setVolume( 0.0 );
-                soundEffect->play();
-                VK_PipelineList << VK_get_AudioSystem().append( " loopback=true low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
+                if ( VK_getSelectedAudioDevice().at(0).section( ":::", 1, 1 ) == "Playback" )
+                {
+                    soundEffect->setSource( QUrl::fromLocalFile( ":/sound/wasapi.wav" ) );
+                    soundEffect->setLoopCount( QSoundEffect::Infinite );
+                    soundEffect->setVolume( 0.0 );
+                    soundEffect->play();
+                    VK_PipelineList << QString( "wasapisrc loopback=true low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
+                }
+                else
+                {
+                    VK_PipelineList << QString( "wasapisrc low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
+                }
+                VK_PipelineList << "audioconvert";
+                VK_PipelineList << "audiorate";
+                VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
+                VK_PipelineList << "queue";
+                VK_PipelineList << "mux.";
             }
-            else
+
+            if ( vkAudioController->radioButtonDirectSound->isChecked() )
             {
-                VK_PipelineList << VK_get_AudioSystem().append( " low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
+                VK_PipelineList << QString( "directsoundsrc device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(0) + "'" );
+                VK_PipelineList << "audio/x-raw, channels=2";
+                VK_PipelineList << "audioconvert";
+                VK_PipelineList << "audiorate";
+                VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
+                VK_PipelineList << "queue";
+                VK_PipelineList << "mux.";
             }
-            VK_PipelineList << "audioconvert";
-            VK_PipelineList << "audiorate";
-            VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
-            VK_PipelineList << "queue";
-            VK_PipelineList << "mux.";
-       #endif
+        #endif
     }
 
     // Pipeline for more as one audiodevice
@@ -1804,15 +1828,10 @@ void QvkMainWindow::slot_Start()
             #endif
 
             #ifdef Q_OS_WIN
-                if ( VK_getSelectedAudioDevice().at(0).section( ":::", 1, 1 ) == "Playback" )
+                if ( vkAudioController->radioButtonDirectSound->isCheckable() )
                 {
-                    VK_PipelineList << VK_get_AudioSystem().append( " loopback=true low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(x).section( ":::", 0, 0 ) );
-                    VK_PipelineList << "queue";
-                    VK_PipelineList << "mix.";
-                }
-                else
-                {
-                    VK_PipelineList << VK_get_AudioSystem().append( " low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(x).section( ":::", 0, 0 ) );
+                    VK_PipelineList << QString( "directsoundsrc device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(x) + "'" );
+                    VK_PipelineList << "audio/x-raw, channels=2";
                     VK_PipelineList << "queue";
                     VK_PipelineList << "mix.";
                 }

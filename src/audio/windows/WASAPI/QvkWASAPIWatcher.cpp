@@ -20,22 +20,22 @@
  * --End_License--
  */
 
-#include "QvkWatcherPlug.h"
+#include "QvkWASAPIWatcher.h"
 #include "global.h"
 
 #include <QDebug>
 
 /*
- * QvkWatcherPlug monitoring only new or removed Audiodevices from the PulseAudio server.
- * QvkWatcherPlug does not return any devices, if the PulseAudio server start or stop.
+ * QvkWASAPIWatcher monitoring only new or removed Audiodevices from the PulseAudio server.
+ * QvkWASAPIWatcher does not return any devices, if the PulseAudio server start or stop.
  */
 
-QvkWatcherPlug::QvkWatcherPlug()
+QvkWASAPIWatcher::QvkWASAPIWatcher()
 {
     global::lineEditAudioPlug = new QLineEdit;
 }
 
-QvkWatcherPlug::~QvkWatcherPlug()
+QvkWASAPIWatcher::~QvkWASAPIWatcher()
 {}
 
 static gchar *get_launch_line (GstDevice * device)
@@ -122,7 +122,7 @@ static gchar *get_launch_line (GstDevice * device)
 }
 
 
-gboolean QvkWatcherPlug::func( GstBus *bus, GstMessage *message, gpointer user_data )
+gboolean QvkWASAPIWatcher::func( GstBus *bus, GstMessage *message, gpointer user_data )
 {
    Q_UNUSED(bus);
    Q_UNUSED(user_data);
@@ -173,7 +173,7 @@ gboolean QvkWatcherPlug::func( GstBus *bus, GstMessage *message, gpointer user_d
 }
 
 
-GstDeviceMonitor *QvkWatcherPlug::start_monitor()
+GstDeviceMonitor *QvkWASAPIWatcher::start_monitor()
 {
    GstDeviceMonitor *gstDeviceMonitor;
    GstBus *gstBus;
@@ -181,7 +181,7 @@ GstDeviceMonitor *QvkWatcherPlug::start_monitor()
 
    gstDeviceMonitor = gst_device_monitor_new();
    gstBus = gst_device_monitor_get_bus( gstDeviceMonitor );
-   gst_bus_add_watch( gstBus, QvkWatcherPlug::func, Q_NULLPTR );
+   gst_bus_add_watch( gstBus, QvkWASAPIWatcher::func, Q_NULLPTR );
    gst_object_unref( gstBus );
 
    gstCaps = gst_caps_new_empty_simple( "audio/x-raw" );
