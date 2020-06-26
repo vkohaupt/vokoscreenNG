@@ -38,6 +38,7 @@ public:
 
     
 public slots:
+    void slot_audioDeviceSelected();
 
   
 private:
@@ -46,7 +47,6 @@ private:
     
 private slots:
     void slot_pluggedInOutDevice( QString string );
-    void slot_audioDeviceSelected();
 
 
 protected:

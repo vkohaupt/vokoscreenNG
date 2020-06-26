@@ -61,6 +61,7 @@ void QvkAudioController::slot_WASAPI( bool value )
     }
 
     vkWASAPIController->getAllDevices();
+    vkWASAPIController->slot_audioDeviceSelected();
 }
 
 void QvkAudioController::slot_DirectSound( bool value )
@@ -74,4 +75,5 @@ void QvkAudioController::slot_DirectSound( bool value )
     }
 
     vkDirectSoundController->getAllDevices();
+    vkDirectSoundController->slot_audioDeviceSelected();
 }

@@ -128,13 +128,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         if ( ( listCheckBox.at(i)->objectName().contains( "checkboxAudioDevice-" ) ) and
              ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true ) )
         {
-            #ifdef Q_OS_LINUX
-               listCheckBox.at(i)->click();
-            #endif
-
-            #ifdef Q_OS_WIN
-               listCheckBox.at(i)->setChecked( true );
-            #endif
+            listCheckBox.at(i)->click();
             continue;
         }
 
