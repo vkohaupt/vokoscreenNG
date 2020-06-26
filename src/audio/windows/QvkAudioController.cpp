@@ -43,6 +43,8 @@ QvkAudioController::QvkAudioController( Ui_formMainWindow *ui_mainwindow )
 
     connect( radioButtonWASAPI,      SIGNAL( clicked( bool ) ), this, SLOT( slot_WASAPI( bool ) ) );
     connect( radioButtonDirectSound, SIGNAL( clicked( bool ) ), this, SLOT( slot_DirectSound( bool ) ) );
+
+    vkWASAPIController->init();
 }
 
 

@@ -67,8 +67,6 @@ void QvkWASAPIController::slot_audioIconOnOff( bool state )
 
 void QvkWASAPIController::init()
 {
-    getAllDevices();
-
     // QvkWatcherPlug monitoring only new or removed Audiodevices from the PulseAudio server.
     // QvkWatcherPlug does not return any devices, if the PulseAudio server start or stop.
     QvkWASAPIWatcher *vkWASAPIWatcher = new QvkWASAPIWatcher();
@@ -166,6 +164,7 @@ void QvkWASAPIController::slot_audioDeviceSelected()
         }
     }
     slot_audioIconOnOff( value );
+qDebug() << "signal_haveAudioDeviceSelected( value )" << value;
     emit signal_haveAudioDeviceSelected( value );
 }
 

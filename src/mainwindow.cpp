@@ -382,9 +382,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // Tab 2 Audio and Videocodec
 #ifdef Q_OS_WIN
-    // Alle Functionen werden innerhalb dieser Klasse aufgerufen
+    // Alle Funktionen werden innerhalb dieser Klasse aufgerufen
     vkAudioController = new QvkAudioController( ui );
-    //vkAudioController->init();
 #endif
 
 #ifdef Q_OS_LINUX
