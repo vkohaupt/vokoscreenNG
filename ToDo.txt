@@ -1,6 +1,14 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
+Audio Windows:
+--Zur Zeit werden die Audiogeräte in Form checkboxAudioDeviece-0=true abgespeichert.
+Um eine Unterscheidung zwischen Directsound und WASAPI zu haben sollte es evtl. so aussehen
+checkboxAudioDeviceWASAPI="\{0.0.1.00000000\}.\{7f54fad8-4040-418d-8ded-5879feca9d72\}"
+
+Audio Windows:
+--Bei erneuten Click auf den Radiobutton WASAPI oder DirectSound werden die Geräte erneut eingelesen, das sollte nicht der Fall sein.
+
 Help:
 --Hilfe funktioniert nicht im Kameradialog
 
