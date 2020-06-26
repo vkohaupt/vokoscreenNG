@@ -164,7 +164,6 @@ void QvkWASAPIController::slot_audioDeviceSelected()
         }
     }
     slot_audioIconOnOff( value );
-qDebug() << "signal_haveAudioDeviceSelected( value )" << value;
     emit signal_haveAudioDeviceSelected( value );
 }
 
