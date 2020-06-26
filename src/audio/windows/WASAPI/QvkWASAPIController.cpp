@@ -117,7 +117,6 @@ void QvkWASAPIController::getAllDevices()
             connect( checkboxAudioDevice, SIGNAL(clicked(bool)),this,SLOT(slot_checkBox( bool ) ) );
         }
         qDebug().noquote();
-
         QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
         ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
     }

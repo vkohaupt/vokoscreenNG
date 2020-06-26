@@ -45,6 +45,7 @@ QvkAudioController::QvkAudioController( Ui_formMainWindow *ui_mainwindow )
     connect( radioButtonDirectSound, SIGNAL( toggled( bool ) ), this, SLOT( slot_DirectSound( bool ) ) );
 
     vkWASAPIController->init();
+    vkDirectSoundController->init();
 }
 
 

@@ -26,6 +26,7 @@
 
 #include <QAudioDeviceInfo>
 #include <QSpacerItem>
+#include <QPainter>
 #include <QDebug>
 
 QvkDirectSoundController::QvkDirectSoundController( Ui_formMainWindow *ui_mainwindow )
@@ -38,13 +39,41 @@ QvkDirectSoundController::~QvkDirectSoundController()
 {
 }
 
+/*
+ * Set a new icon with a red cross
+ */
+void QvkDirectSoundController::slot_audioIconOnOff( bool state )
+{
+    QIcon myIcon( ":/pictures/screencast/microphone.png" );
+    if ( state == false  )
+    {
+        QSize size = ui->tabWidgetScreencast->iconSize();
+        QPixmap workPixmap( myIcon.pixmap( size ) );
+        QPainter painter;
+        QPen pen;
+        painter.begin( &workPixmap );
+        pen.setColor( Qt::red );
+        pen.setWidth( 2 );
+        painter.setPen( pen );
+        painter.drawLine ( 5, 5, size.width()-5, size.height()-5 );
+        painter.drawLine ( 5, size.height()-5, size.width()-5, 5 );
+        painter.end();
+        int index = ui->tabWidgetScreencast->indexOf( ui->tabAudio );
+        ui->tabWidgetScreencast->setTabIcon( index, workPixmap );
+    } else {
+        int index = ui->tabWidgetScreencast->indexOf( ui->tabAudio );
+        ui->tabWidgetScreencast->setTabIcon( index, myIcon );
+    }
+}
+
 
 void QvkDirectSoundController::init()
 {
-    getAllDevices();
-
     QvkDirectSoundWatcher *vkDirectSoundWatcher = new QvkDirectSoundWatcher( ui );
     vkDirectSoundWatcher->start_monitor();
+
+    connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
+    connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
 
     connect( global::lineEditAudioPlug, SIGNAL( textChanged( QString ) ), this, SLOT( slot_pluggedInOutDevice( QString ) ) );
 }
@@ -69,7 +98,6 @@ void QvkDirectSoundController::getAllDevices()
         for ( int i = 0; i < list.count(); i++ )
         {
             QCheckBox *checkboxAudioDevice = new QCheckBox();
-            connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
             checkboxAudioDevice->setText( list.at(i).deviceName() );
             checkboxAudioDevice->setAccessibleName( list.at(i).deviceName() );
             checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( i ) );
@@ -77,12 +105,12 @@ void QvkDirectSoundController::getAllDevices()
             checkboxAudioDevice->setAutoExclusive( false );
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
             qDebug().noquote() << global::nameOutput << "Audio device:" << list.at(i).deviceName();
+
+            connect( checkboxAudioDevice, SIGNAL(clicked(bool)),this,SLOT(slot_audioDeviceSelected() ) );
         }
         qDebug();
         QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
         ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
-
-        slot_audioDeviceSelected();
     }
     else
     {
@@ -103,6 +131,7 @@ void QvkDirectSoundController::slot_audioDeviceSelected()
             break;
         }
     }
+    slot_audioIconOnOff( value );
     emit signal_haveAudioDeviceSelected( value );
 }
 
