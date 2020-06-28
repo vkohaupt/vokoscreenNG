@@ -22,7 +22,6 @@
 
 #include "global.h"
 #include "QvkDirectSoundController.h"
-#include "QvkDirectSoundWatcher.h"
 
 #include <QAudioDeviceInfo>
 #include <QSpacerItem>
@@ -69,13 +68,13 @@ void QvkDirectSoundController::slot_audioIconOnOff( bool state )
 
 void QvkDirectSoundController::init()
 {
-    QvkDirectSoundWatcher *vkDirectSoundWatcher = new QvkDirectSoundWatcher( ui );
+    vkDirectSoundWatcher = new QvkDirectSoundWatcher( ui );
     vkDirectSoundWatcher->start_monitor();
 
     connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
     connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
 
-    connect( global::lineEditAudioPlug, SIGNAL( textChanged( QString ) ), this, SLOT( slot_pluggedInOutDevice( QString ) ) );
+    connect( vkDirectSoundWatcher->lineEditDiretSoundAudioPlug, SIGNAL( textChanged( QString ) ), this, SLOT( slot_pluggedInOutDevice( QString ) ) );
 }
 
 

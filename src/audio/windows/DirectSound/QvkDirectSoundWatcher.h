@@ -38,14 +38,14 @@ public:
     QvkDirectSoundWatcher( Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkDirectSoundWatcher();
     void start_monitor();
-
+    QLineEdit *lineEditDiretSoundAudioPlug;
+    QTimer *timer;
 
 public slots:
 
 
 private:
     Ui_formMainWindow *ui;
-    QTimer *timer;
     int counter;
 
 

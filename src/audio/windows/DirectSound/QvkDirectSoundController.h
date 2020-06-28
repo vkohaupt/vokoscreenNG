@@ -25,6 +25,7 @@
 
 #include "ui_formMainwindow.h"
 #include <QObject>
+#include "QvkDirectSoundWatcher.h"
 
 class QvkDirectSoundController: public QObject
 {
@@ -35,7 +36,7 @@ public:
     virtual ~QvkDirectSoundController();
     void init();
     void getAllDevices();
-
+    QvkDirectSoundWatcher *vkDirectSoundWatcher;
     
 public slots:
     void slot_audioDeviceSelected();

@@ -28,11 +28,10 @@
 
 /*
  * QvkWatcherPlug monitoring only new or removed Audiodevices.
- * It has the same behavior as under Linux.
  */
 QvkDirectSoundWatcher::QvkDirectSoundWatcher( Ui_formMainWindow *ui_mainwindow )
 {
-    global::lineEditAudioPlug = new QLineEdit;
+    lineEditDiretSoundAudioPlug = new QLineEdit;
     ui = ui_mainwindow;
 
     timer = new QTimer( this );
@@ -85,7 +84,7 @@ void QvkDirectSoundWatcher::slot_update()
                 audioDevicePlug.append( name );
                 audioDevicePlug.append( ":");
                 audioDevicePlug.append( device );
-                global::lineEditAudioPlug->setText( audioDevicePlug );
+                lineEditDiretSoundAudioPlug->setText( audioDevicePlug );
             }
         }
     }
@@ -106,7 +105,7 @@ void QvkDirectSoundWatcher::slot_update()
                 audioDevicePlug.append( name );
                 audioDevicePlug.append( ":");
                 audioDevicePlug.append( device );
-                global::lineEditAudioPlug->setText( audioDevicePlug );
+                lineEditDiretSoundAudioPlug->setText( audioDevicePlug );
             }
         }
     }
