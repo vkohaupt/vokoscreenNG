@@ -68,11 +68,15 @@ void QvkAudioController::slot_WASAPI( bool value )
 
     vkWASAPIController->getAllDevices();
     vkWASAPIController->slot_audioDeviceSelected();
+    vkWASAPIController->vkWASAPIWatcher->timer->start();
 }
 
 void QvkAudioController::slot_DirectSound( bool value )
 {
     Q_UNUSED(value);
+
+    vkWASAPIController->vkWASAPIWatcher->timer->stop();
+
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ )
     {

@@ -21,175 +21,98 @@
  */
 
 #include "QvkWASAPIWatcher.h"
+#include "QvkWASAPIGstreamer.h"
 #include "global.h"
 
 #include <QDebug>
+#include <QCheckBox>
+#include <QStringList>
 
-/*
- * QvkWASAPIWatcher monitoring only new or removed Audiodevices from the PulseAudio server.
- * QvkWASAPIWatcher does not return any devices, if the PulseAudio server start or stop.
- */
-
-QvkWASAPIWatcher::QvkWASAPIWatcher()
+QvkWASAPIWatcher::QvkWASAPIWatcher( Ui_formMainWindow *ui_mainwindow )
 {
     global::lineEditAudioPlug = new QLineEdit;
+    ui = ui_mainwindow;
+
+    timer = new QTimer( this );
+    timer->setTimerType( Qt::PreciseTimer );
+    timer->setInterval( 3000 );
+    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_update() ) );
 }
 
 QvkWASAPIWatcher::~QvkWASAPIWatcher()
 {}
 
-static gchar *get_launch_line (GstDevice * device)
+
+void QvkWASAPIWatcher::slot_update()
 {
-  static const char *const ignored_propnames[] = { "name", "parent", "direction", "template", "caps", Q_NULLPTR };
-  GString *launch_line = Q_NULLPTR;
-  GstElement *element;
-  GstElement *pureelement;
-  GParamSpec **properties, *property;
-  GValue value = G_VALUE_INIT;
-  GValue pvalue = G_VALUE_INIT;
-  guint i, number_of_properties;
-  GstElementFactory *factory;
+    QvkWASAPIGstreamer vkWASAPIGstreamer;
+    QStringList listDevices;
+    listDevices << vkWASAPIGstreamer.get_all_Audio_Source_devices();
+    listDevices << vkWASAPIGstreamer.get_all_Audio_Playback_devices();
 
-  element = gst_device_create_element( device, Q_NULLPTR );
-
-  if ( !element )
-    return Q_NULLPTR;
-
-  factory = gst_element_get_factory( element );
-  if ( !factory )
-  {
-    gst_object_unref( element );
-    return Q_NULLPTR;
-  }
-
-  if ( !gst_plugin_feature_get_name( factory ) )
-  {
-    gst_object_unref( element );
-    return Q_NULLPTR;
-  }
-
-  pureelement = gst_element_factory_create( factory, Q_NULLPTR );
-
-  properties = g_object_class_list_properties( G_OBJECT_GET_CLASS( element ), &number_of_properties );
-  if ( properties )
-  {
-    for ( i = 0; i < number_of_properties; i++ )
+    QList<QCheckBox *> listCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
+    QStringList stringListCheckBox;
+    for ( int i = 0; i < listCheckBox.count(); i++ )
     {
-      gint j;
-      gboolean ignore = FALSE;
-      property = properties[i];
-
-      if ( ( property->flags & G_PARAM_READWRITE ) != G_PARAM_READWRITE )
-        continue;
-
-      for ( j = 0; ignored_propnames[j]; j++ )
-        if ( !g_strcmp0( ignored_propnames[j], property->name ) )
-          ignore = TRUE;
-
-      if ( ignore )
-        continue;
-
-      g_value_init( &value, property->value_type );
-      g_value_init( &pvalue, property->value_type );
-      g_object_get_property( G_OBJECT( element ), property->name, &value );
-      g_object_get_property( G_OBJECT( pureelement ), property->name, &pvalue );
-      if (gst_value_compare( &value, &pvalue ) != GST_VALUE_EQUAL )
-      {
-        gchar *valuestr = gst_value_serialize( &value );
-        if ( !valuestr )
-        {
-          GST_WARNING( "Could not serialize property %s:%s", GST_OBJECT_NAME( element ), property->name );
-          g_free( valuestr );
-          goto next;
-        }
-
-        launch_line = g_string_new( valuestr );
-
-        g_free( valuestr );
-      }
-
-    next:
-      g_value_unset( &value );
-      g_value_unset( &pvalue );
+        stringListCheckBox << listCheckBox.at(i)->accessibleName();
     }
-    g_free( properties );
-  }
 
-  gst_object_unref( GST_OBJECT( element ) );
-  gst_object_unref( GST_OBJECT( pureelement ) );
+    // Add new Device
+    if ( listDevices.count() > listCheckBox.count() )
+    {
+        for ( int i = 0; i < listDevices.count(); i++ )
+        {
+            QString device = QString( listDevices.at(i) ).section( ":::", 0, 0 )
+                           + ":::"
+                           + QString( listDevices.at(i) ).section( ":::", 2, 2 ) ;
+            if ( stringListCheckBox.contains( device ) == false )
+            {
+                QString name = QString( listDevices.at(i) ).section( ":::", 1, 1 );
+                qDebug().noquote() << global::nameOutput << "[Audio] Added:" << name << "Device:" << device;
+                QString audioDevicePlug = "";
+                audioDevicePlug.append( "[Audio-device-added]" );
+                audioDevicePlug.append( "---");
+                audioDevicePlug.append( name );
+                audioDevicePlug.append( "---");
+                audioDevicePlug.append( device );
+                global::lineEditAudioPlug->setText( audioDevicePlug );
+            }
+        }        
+    }
 
-  return g_string_free (launch_line, FALSE);
+
+    // listDevices   --> Device ::: Name ::: Typ
+    // listDeviceTyp --> Device ::: Typ
+    // listCheckbox  --> Device ::: Typ
+
+    QStringList listDeviceTyp;
+    for ( int i = 0; i < listDevices.count(); i++ )
+    {
+        listDeviceTyp << QString( listDevices.at(i) ).section( ":::", 0, 0 )
+                       + ":::"
+                       + QString( listDevices.at(i) ).section( ":::", 2, 2 );
+    }
+
+    // Remove device
+    if ( listDevices.count() < listCheckBox.count() )
+    {
+        for ( int i = 0; i < listCheckBox.count(); i++ )
+        {
+            QString string = QString( listCheckBox.at(i)->accessibleName() );
+            if ( listDeviceTyp.contains( string ) == false )
+            {
+                QString name = listCheckBox.at(i)->text();
+                QString device = listCheckBox.at(i)->accessibleName();
+                qDebug().noquote() << global::nameOutput << "[Audio] Removed:" << name << "Device:" << device;
+                qDebug().noquote();
+                QString audioDevicePlug = "";
+                audioDevicePlug.append( "[Audio-device-removed]" );
+                audioDevicePlug.append( "---");
+                audioDevicePlug.append( name );
+                audioDevicePlug.append( "---");
+                audioDevicePlug.append( device );
+                global::lineEditAudioPlug->setText( audioDevicePlug );
+            }
+        }
+    }
 }
-
-
-gboolean QvkWASAPIWatcher::func( GstBus *bus, GstMessage *message, gpointer user_data )
-{
-   Q_UNUSED(bus);
-   Q_UNUSED(user_data);
-
-   GstDevice *gstDevice;
-   gchar *name;
-   gchar *device;
-
-   QString audioDevicePlug = "";
-
-   switch ( GST_MESSAGE_TYPE( message ) )
-   {
-     case GST_MESSAGE_DEVICE_ADDED:
-       gst_message_parse_device_added( message, &gstDevice );
-       name = gst_device_get_display_name( gstDevice );
-       device = get_launch_line( gstDevice );
-       qDebug().noquote() << global::nameOutput << "[Audio] Added:" << name << "Device:" << device;
-       audioDevicePlug.append( "[Audio-device-added]" );
-       audioDevicePlug.append( ":");
-       audioDevicePlug.append( name );
-       audioDevicePlug.append( ":");
-       audioDevicePlug.append( device );
-       global::lineEditAudioPlug->setText( audioDevicePlug );
-       g_free( name );
-       g_free( device );
-       gst_object_unref( gstDevice );
-       break;
-     case GST_MESSAGE_DEVICE_REMOVED:
-       gst_message_parse_device_removed( message, &gstDevice );
-       name = gst_device_get_display_name( gstDevice );
-       device = get_launch_line( gstDevice );
-       qDebug().noquote() << global::nameOutput << "[Audio] Removed:" << name << "Device:" << device;
-       audioDevicePlug.append( "[Audio-device-removed]" );
-       audioDevicePlug.append( ":");
-       audioDevicePlug.append( name );
-       audioDevicePlug.append( ":");
-       audioDevicePlug.append( device );
-       global::lineEditAudioPlug->setText( audioDevicePlug );
-       g_free( name );
-       g_free( device );
-       gst_object_unref( gstDevice );
-       break;
-     default:
-       break;
-   }
-
-   return G_SOURCE_CONTINUE;
-}
-
-
-GstDeviceMonitor *QvkWASAPIWatcher::start_monitor()
-{
-   GstDeviceMonitor *gstDeviceMonitor;
-   GstBus *gstBus;
-   GstCaps *gstCaps;
-
-   gstDeviceMonitor = gst_device_monitor_new();
-   gstBus = gst_device_monitor_get_bus( gstDeviceMonitor );
-   gst_bus_add_watch( gstBus, QvkWASAPIWatcher::func, Q_NULLPTR );
-   gst_object_unref( gstBus );
-
-   gstCaps = gst_caps_new_empty_simple( "audio/x-raw" );
-   gst_device_monitor_add_filter( gstDeviceMonitor, "Audio/Source", gstCaps );
-   gst_caps_unref( gstCaps );
-
-   gst_device_monitor_start( gstDeviceMonitor );
-
-   return gstDeviceMonitor;
-}
-

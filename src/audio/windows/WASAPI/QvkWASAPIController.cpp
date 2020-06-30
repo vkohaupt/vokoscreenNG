@@ -21,7 +21,6 @@
  */
 
 #include "QvkWASAPIController.h"
-#include "QvkWASAPIWatcher.h"
 #include "global.h"
 
 #include <QDebug>
@@ -67,10 +66,7 @@ void QvkWASAPIController::slot_audioIconOnOff( bool state )
 
 void QvkWASAPIController::init()
 {
-    // QvkWatcherPlug monitoring only new or removed Audiodevices from the PulseAudio server.
-    // QvkWatcherPlug does not return any devices, if the PulseAudio server start or stop.
-    QvkWASAPIWatcher *vkWASAPIWatcher = new QvkWASAPIWatcher();
-    vkWASAPIWatcher->start_monitor();
+    vkWASAPIWatcher = new QvkWASAPIWatcher( ui );
 
     connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
     connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
@@ -169,9 +165,9 @@ void QvkWASAPIController::slot_audioDeviceSelected()
 
 void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
 {
-    QString header = string.section( ":", 0, 0 );
-    QString name   = string.section( ":", 1, 1 );
-    QString device = string.section( ":", 2, 2 );
+    QString header = string.section( "---", 0, 0 );
+    QString name   = string.section( "---", 1, 1 );
+    QString device = string.section( "---", 2, 2 );
 
     if ( header == "[Audio-device-added]" )
     {
@@ -181,7 +177,6 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
         checkboxAudioDevice->setAccessibleName( device );
         QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
         checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( listAudioDevices.count() ) );
-        checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
         ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
     }
 

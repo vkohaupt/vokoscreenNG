@@ -25,6 +25,7 @@
 
 #include "ui_formMainWindow.h"
 #include "QvkWASAPIGstreamer.h"
+#include "QvkWASAPIWatcher.h"
 
 #include <QObject>
 
@@ -37,6 +38,7 @@ public:
     virtual ~QvkWASAPIController();
     void init();
     void getAllDevices();
+    QvkWASAPIWatcher *vkWASAPIWatcher;
 
 public slots:
     void slot_audioDeviceSelected();

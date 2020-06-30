@@ -24,8 +24,9 @@
 #define QVKWASAPIWATCHER_H
 
 #include <gst/gst.h>
-
+#include "ui_formMainWindow.h"
 #include <QObject>
+#include <QTimer>
 
 class QvkWASAPIWatcher: public QObject
 {
@@ -33,19 +34,18 @@ class QvkWASAPIWatcher: public QObject
 
 
 public:
-    QvkWASAPIWatcher();
+    QvkWASAPIWatcher(Ui_formMainWindow *ui_mainwindow);
     virtual ~QvkWASAPIWatcher();
-    GstDeviceMonitor *start_monitor();
-    static gboolean func( GstBus *bus, GstMessage *message, gpointer user_data );
-
+    QTimer *timer;
     
 public slots:
 
 
 private:
-
+    Ui_formMainWindow *ui;
 
 private slots:
+    void slot_update();
 
 
 protected:
