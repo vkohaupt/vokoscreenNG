@@ -29,7 +29,6 @@ namespace global
     QString name = "vokoscreenNG";
     QString nameOutput = "[" + name + "]";
     bool VK_showOnlyFallbackIcons = false;
-    //QLineEdit *lineEditAudioPlug;
 
 #ifdef Q_OS_LINUX
     QString version = "3.0.5 pre Alpha";
