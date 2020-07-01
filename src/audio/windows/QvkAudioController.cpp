@@ -41,6 +41,11 @@ QvkAudioController::QvkAudioController( Ui_formMainWindow *ui_mainwindow )
     vkWASAPIController = new QvkWASAPIController( ui );
     vkDirectSoundController = new QvkDirectSoundController( ui );
 
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), radioButtonDirectSound, SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), radioButtonWASAPI,      SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), radioButtonDirectSound, SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), radioButtonWASAPI,      SLOT( setDisabled( bool ) ) );
+
     connect( radioButtonWASAPI,      SIGNAL( toggled( bool ) ), this, SLOT( slot_WASAPI( bool ) ) );
     connect( radioButtonDirectSound, SIGNAL( toggled( bool ) ), this, SLOT( slot_DirectSound( bool ) ) );
 
