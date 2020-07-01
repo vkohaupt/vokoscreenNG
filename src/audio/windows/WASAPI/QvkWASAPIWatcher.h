@@ -37,12 +37,15 @@ public:
     QvkWASAPIWatcher(Ui_formMainWindow *ui_mainwindow);
     virtual ~QvkWASAPIWatcher();
     QTimer *timer;
-    
+    QLineEdit *lineEditWASAPIAudioPlug;
+
+
 public slots:
 
 
 private:
     Ui_formMainWindow *ui;
+
 
 private slots:
     void slot_update();

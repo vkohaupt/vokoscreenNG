@@ -30,7 +30,8 @@
 
 QvkWASAPIWatcher::QvkWASAPIWatcher( Ui_formMainWindow *ui_mainwindow )
 {
-    global::lineEditAudioPlug = new QLineEdit;
+    lineEditWASAPIAudioPlug = new QLineEdit;
+
     ui = ui_mainwindow;
 
     timer = new QTimer( this );
@@ -75,7 +76,7 @@ void QvkWASAPIWatcher::slot_update()
                 audioDevicePlug.append( name );
                 audioDevicePlug.append( "---");
                 audioDevicePlug.append( device );
-                global::lineEditAudioPlug->setText( audioDevicePlug );
+                lineEditWASAPIAudioPlug->setText( audioDevicePlug );
             }
         }        
     }
@@ -111,7 +112,7 @@ void QvkWASAPIWatcher::slot_update()
                 audioDevicePlug.append( name );
                 audioDevicePlug.append( "---");
                 audioDevicePlug.append( device );
-                global::lineEditAudioPlug->setText( audioDevicePlug );
+                lineEditWASAPIAudioPlug->setText( audioDevicePlug );
             }
         }
     }
