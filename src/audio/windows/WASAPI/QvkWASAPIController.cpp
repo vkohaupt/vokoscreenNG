@@ -109,8 +109,8 @@ void QvkWASAPIController::getAllDevices()
                                                                          << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 )
                                                                          << "Input/Output:" << QString( list.at(i) ).section( ":::", 2, 2 );
 
-            connect( checkboxAudioDevice, SIGNAL(clicked(bool)),this,SLOT(slot_audioDeviceSelected() ) );
-            connect( checkboxAudioDevice, SIGNAL(clicked(bool)),this,SLOT(slot_checkBox( bool ) ) );
+            connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
+            connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkBox( bool ) ) );
         }
         qDebug().noquote();
         QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
@@ -173,6 +173,8 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
     {
         QCheckBox *checkboxAudioDevice = new QCheckBox();
         connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
+        connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkBox( bool ) ) );
+
         checkboxAudioDevice->setText( name );
         checkboxAudioDevice->setAccessibleName( device );
         QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();

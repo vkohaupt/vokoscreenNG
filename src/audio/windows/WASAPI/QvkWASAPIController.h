@@ -40,19 +40,24 @@ public:
     void getAllDevices();
     QvkWASAPIWatcher *vkWASAPIWatcher;
 
+
 public slots:
     void slot_audioDeviceSelected();
+    void slot_checkBox(bool);
+
 
 private:
     Ui_formMainWindow *ui;
 
+
 private slots:
     void slot_pluggedInOutDevice( QString string );
     void slot_audioIconOnOff( bool state );
-    void slot_checkBox(bool);
+
 
 protected:
-  
+
+
 signals:
     void signal_haveAudioDeviceSelected( bool );
 
