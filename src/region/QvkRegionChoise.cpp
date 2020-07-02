@@ -81,14 +81,17 @@ QvkRegionChoise::QvkRegionChoise( Ui_formMainWindow *ui_formMainWindow ):handleP
 
 void QvkRegionChoise::slot_init()
 {
-    int index = ui->comboBoxScreencastScreenArea->currentIndex();
-    QList<QScreen *> screenList = QGuiApplication::screens();
-    screen = screenList.at( index );
+    if ( ui->comboBoxScreencastScreenArea->currentIndex() > -1 )
+    {
+        int index = ui->comboBoxScreencastScreenArea->currentIndex();
+        QList<QScreen *> screenList = QGuiApplication::screens();
+        screen = screenList.at( index );
 
-    resize( screen->size().width(), screen->size().height() );
-    screenWidth = screen->size().width();
-    screenHeight = screen->size().height();
-    move( screen->geometry().x(), screen->geometry().y() );
+        resize( screen->size().width(), screen->size().height() );
+        screenWidth = screen->size().width();
+        screenHeight = screen->size().height();
+        move( screen->geometry().x(), screen->geometry().y() );
+    }
 }
 
 
