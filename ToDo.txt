@@ -6,9 +6,6 @@ Audio Windows:
 Um eine Unterscheidung zwischen Directsound und WASAPI zu haben sollte es evtl. so aussehen
 checkboxAudioDeviceWASAPI="\{0.0.1.00000000\}.\{7f54fad8-4040-418d-8ded-5879feca9d72\}"
 
-Audio Windows:
---Unter WASAPI funktioniert der Watcher nicht richtig es wird fortlaufend im log ein remove der Geräte angezeigt
-
 Help:
 --Hilfe funktioniert nicht im Kameradialog
 
