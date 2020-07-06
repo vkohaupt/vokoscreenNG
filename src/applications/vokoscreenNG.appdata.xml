@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>vokoscreenNG.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0</project_license>
+  <name>vokoscreenNG</name>
+  <summary>Easy to use desktop recorder</summary>
+  <description>
+    <p>vokoscreenNG is an easy to use screencast creator to record educational videos,
+       live recordings of browser, installation, videoconferences, etc.</p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://vokoscreen.volkoh.de/3.0/picture/screencast-0.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/screencast-1.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/screencast-2.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/screencast-3.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/screencast-4.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/screencast-5.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/screencast-6.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/screencast-7.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/screencast-8.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html</url>
+  <url type="bugtracker">https://github.com/vkohaupt/vokoscreenNG/issues</url>
+  <url type="donation">https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html</url>
+  <developer_name>Volker Kohaupt</developer_name>
+</component>

@@ -152,3 +152,28 @@ include(loadExtensions/loadExtensions.pri)
 
 # systrayAlternative
 include(systrayAlternative/systrayAlternative.pri)
+
+unix:!macx {
+  isEmpty(PREFIX) {
+    PREFIX = /usr/local
+  }
+  isEmpty(BINDIR) {
+    BINDIR = $$PREFIX/bin
+  }
+  isEmpty(DATADIR) {
+    DATADIR = $$PREFIX/share
+  }
+
+  target.path = $$BINDIR
+
+  icon.files = applications/vokoscreenNG.png
+  icon.path = $$DATADIR/icons/hicolor/256x256/apps/
+
+  desktop.files = applications/vokoscreenNG.desktop
+  desktop.path = $$DATADIR/applications/
+
+  appdata.files = applications/vokoscreenNG.appdata.xml
+  appdata.path = $$DATADIR/metainfo/
+
+  INSTALLS += target icon desktop appdata
+}
