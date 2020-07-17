@@ -62,6 +62,7 @@
 <file>language/lt.qm</file>
 <file>language/nl_NL.qm</file>
 <file>language/no.qm</file>
+<file>language/pl_PL.qm</file>
 <file>language/pt_BR.qm</file>
 <file>language/pt.qm</file>
 <file>language/ru.qm</file>
@@ -72,6 +73,5 @@
 <file>language/uk_UA.qm</file>
 <file>language/zh_CN.qm</file>
 <file>language/zh_TW.qm</file>
-<file>sound/wasapi.wav</file>
 </qresource>
 </RCC>
