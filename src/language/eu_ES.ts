@@ -1,9 +1,9 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sl" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="eu_ES" version="2.1">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Izbor ene ali več naprav</translation>
+        <translation>Hautatu gailu bat edo gehiago</translation>
     </message>
 </context>
 <context>
@@ -17,197 +17,197 @@
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Preklopi na okno</translation>
+        <translation>Aldatu leihora</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Preklopi na celozaslonski način</translation>
+        <translation>Aldatu pantaila osora</translation>
     </message>
 </context>
 <context>
     <name>QvkCountdown</name>
     <message>
         <source>Countdown</source>
-        <translation>Odštevalnik</translation>
+        <translation>Atzera-kontua</translation>
     </message>
 </context>
 <context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Izbor ene ali več naprav</translation>
+        <translation>Hautatu gailu bat edo gehiago</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Pomoč</translation>
+        <translation>Laguntza</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Opozorilo</translation>
+        <translation>Abisua</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>Snemanje ni začeto, ker ni dovolj prostora na disku.</translation>
+        <translation>Grabazioa ez da hasi, ez dago nahiko tokirik diskoan.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Dosežena je omejitev prostora na disku.</translation>
+        <translation>Diskoaren espazio librea bukatu da.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Omejitev prostora na disku</translation>
+        <translation>Diskoaren espazio librearen muga</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabajt</translation>
+        <translation>Megabyte</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Snemanje je zaustavljeno, ker ni dovolj prostora na disku.</translation>
+        <translation>Grabazioa gelditu da, ez dago espazio libre nahikorik.</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Celozaslonski način</translation>
+        <translation>Pantaila osoa</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Okno</translation>
+        <translation>Leihoa</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Ni najdenega upravljalnika datotek.</translation>
+        <translation>Ez da fitxategi arakatzailerik aurkitu</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Program za urejanje datotek je treba namestiti.</translation>
+        <translation>Instalatu fitxategi arakatzaile bat.</translation>
     </message>
     <message>
         <source>Desktop session is a Wayland session</source>
-        <translation>Namizna seja je seja Wayland</translation>
+        <translation>Mahaigaineko saioa Wayland saioa da</translation>
     </message>
     <message>
         <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Merjenje časa v okolju Wayland ni podprto. Zaslonski posnetek pokaže črn zaslon. Odjavite se in  začnite namizno sejo X11.</translation>
+        <translation>Wayland oraindik ez da onartzen. Pantaila-grabazioak pantaila beltza erakusten du. Amaitu saioa eta hasi X11 mahaigaineko saioa</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Izvorna koda</translation>
+        <translation>Iturburu-kodea</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Spletna stran</translation>
+        <translation>Hasiera-orria</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Prevodi</translation>
+        <translation>Itzulpenak</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Doniraj</translation>
+        <translation>Dohaintza egin</translation>
     </message>
     <message>
         <source>Wayland desktop session detected</source>
-        <translation>Zaznana je namizna seja Wayland</translation>
+        <translation>Wayland mahaigaineko saioa hauteman da</translation>
     </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
-        <translation>Odpri datoteko</translation>
+        <translation>Ireki fitxategia</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Območje</translation>
+        <translation>Eremua</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Začni</translation>
+        <translation>Hasi</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Zaustavi</translation>
+        <translation>Gelditu</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Premor</translation>
+        <translation>Pausatu</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Nadaljuj</translation>
+        <translation>Jarraitu</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Končaj</translation>
+        <translation>irten</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Začni</translation>
+        <translation>Hasi</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Zaustavi</translation>
+        <translation>Gelditu</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Premor</translation>
+        <translation>Pausatu</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Nadaljuj</translation>
+        <translation>jarraitu</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Končaj</translation>
+        <translation>irten</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Pogovorno okno</translation>
+        <translation>Elkarrizketa</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Zrcali vodoravno</translation>
+        <translation>irauli horizontalean</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Zrcali navpično</translation>
+        <translation>Irauli bertikalean</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Obrni</translation>
+        <translation>Alderantzizkatu</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Sivo</translation>
+        <translation>Grisa</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Črnobelo</translation>
+        <translation>Zuri-beltza</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Odstrani okvir okna</translation>
+        <translation>Kendu leihoaren markoa</translation>
     </message>
     <message>
         <source>160x120</source>
@@ -219,7 +219,7 @@
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Nastavitve kamere</translation>
+        <translation>Kameraren ezarpenak</translation>
     </message>
     <message>
         <source>640x480</source>
@@ -230,151 +230,151 @@
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Območje</translation>
+        <translation>Eremua</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Ponastavi</translation>
+        <translation>Berrezarri</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Povečava</translation>
+        <translation>Lupa</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Odštevalnik</translation>
+        <translation>Atzera-kontua</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Velikost videa:</translation>
+        <translation>Bideoaren tamaina:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Prostor na disku:</translation>
+        <translation>Diskoko leku librea:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Podrobnosti</translation>
+        <translation>Informazioa</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Čas snemanja</translation>
+        <translation>Grabazio denbora:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Zvok</translation>
+        <translation>Audioa</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Sličice</translation>
+        <translation>Fotogramak</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Video kodek</translation>
+        <translation>Bideo-kodeka</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Zapis</translation>
+        <translation>Formatua</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Zvokovni kodek</translation>
+        <translation>Audio-kodeka</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>Kakovost</translation>
+        <translation>Kalitatea</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Ne snemaj kazalke miške</translation>
+        <translation>Ez grabatu saguaren erakuslea</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Ura</translation>
+        <translation>Ordu</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minuta</translation>
+        <translation>Minutu</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Začni časomer</translation>
+        <translation>Abiatu tenporizadorea</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Zaustavi snemanje po</translation>
+        <translation>Gelditu grabazioa denbora honen ondoren</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>H</translation>
+        <translation>Ordu</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>M</translation>
+        <translation>Minutu</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>S</translation>
+        <translation>Segundo</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Pot do videa</translation>
+        <translation>Bideoaren bidea</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Omejitev prostora na disku</translation>
+        <translation>Diskoaren espazio librearen muga</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Pokaži v sistemski vrstici</translation>
+        <translation>Erakutsi erretiluan</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Čas čakanja pred začetkom snemanja</translation>
+        <translation>Segundoren ondoren hasi grabatzen</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Poišči posodobitve</translation>
+        <translation>Begiratu eguneraketak</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Pomoč</translation>
+        <translation>Laguntza</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Video</translation>
+        <translation>Bideoa</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Na voljo</translation>
+        <translation>Eskuragarria</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Ni na voljo</translation>
+        <translation>Ez eskuragarria</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Začni</translation>
+        <translation>Hasi</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Zaustavi</translation>
+        <translation>Gelditu</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Premor</translation>
+        <translation>Pausatu</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Nadaljuj</translation>
+        <translation>jarraitu</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Predvajaj</translation>
+        <translation>Erreproduzitu</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Mapa</translation>
+        <translation>Karpeta</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -382,137 +382,137 @@
     </message>
     <message>
         <source>Invert</source>
-        <translation>Obrni</translation>
+        <translation>Alderantzizkatu</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Sivo</translation>
+        <translation>Grisa</translation>
     </message>
     <message>
         <source>Send Report</source>
-        <translation>Pošlji poročilo</translation>
+        <translation>Bidali txostena</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
-        <translation>CTRL+SHIFT+F10</translation>
+        <translation>CTRL+MAIUS+F10</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F11</source>
-        <translation>CTRL+SHIFT+F11</translation>
+        <translation>CTRL+MAIUS+F11</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F12</source>
-        <translation>CTRL+SHIFT+F12</translation>
+        <translation>CTRL+MAIUS+F12</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Predvajaj zadnji posnetek</translation>
+        <translation>Erreproduzitu grabatutako azkena</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Odpri mapo</translation>
+        <translation>Ireki karpeta</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation>CTRL+SHIFT+F8</translation>
+        <translation>CTRL+MAIUS+F8</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Pomanjšaj, ko se snemanje začne</translation>
+        <translation>Minimizatu grabazioa hastean</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Začni pomanjšano</translation>
+        <translation>Abiatu minimizatuta</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Zrcali vodoravno</translation>
+        <translation>irauli horizontalean</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Zrcali navpično</translation>
+        <translation>Irauli bertikalean</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Črnobelo</translation>
+        <translation>Zuri-beltza</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Odstrani okvir okna</translation>
+        <translation>Kendu leihoaren markoa</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Doniraj</translation>
+        <translation>Dohaintza egin</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Ponastavi nastavitve ob naslednjem zagonu</translation>
+        <translation>Leheneratu ezarpen guztiak abiatzen den hurrengoan</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Avtorske pravice in dovoljenja slik</translation>
+        <translation>Irudien gaineko copyrighta eta lizentzia</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabajt</translation>
+        <translation>Megabyte</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Zaslonski posnetek</translation>
+        <translation>Pantaila-grabazioa</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Predvajalnik</translation>
+        <translation>Erreproduzigailua</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Dnevnik</translation>
+        <translation>Erregistroa</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Avtorske pravice in dovoljenja slik</translation>
+        <translation>Irudien gaineko copyrighta eta lizentzia</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Predvajaj</translation>
+        <translation>Erreproduzitu</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Premor</translation>
+        <translation>Pausatu</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Zaustavi</translation>
+        <translation>Gelditu</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Odpri datoteko</translation>
+        <translation>Ireki fitxategia</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Celozaslonski način</translation>
+        <translation>Pantaila osoa</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Predhodna sličica</translation>
+        <translation>Aurreko fotograma</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Naslednja sličica</translation>
+        <translation>Hurrengo fotograma</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Utišaj</translation>
+        <translation>Mutu</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Premakni meni</translation>
+        <translation>Mugitu menua</translation>
     </message>
 </context>
 </TS>
