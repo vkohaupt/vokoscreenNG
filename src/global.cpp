@@ -28,7 +28,7 @@ namespace global
 {
     QString name = "vokoscreenNG";
     QString nameOutput = "[" + name + "]";
-    bool VK_showOnlyFallbackIcons = false;
+    bool VK_showOnlyFallbackIcons = true; // From 3.0.5 have windows and linux the same icons
     QLineEdit *lineEditAudioPlug;
 
 #ifdef Q_OS_LINUX
