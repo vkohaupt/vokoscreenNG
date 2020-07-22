@@ -53,7 +53,7 @@
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>Grabazioa ez da hasi, ez dago nahiko tokirik diskoan.</translation>
+        <translation>Grabazioa ez da hasi, ez dago nahikoa tokirik diskoan.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
@@ -172,11 +172,11 @@
     </message>
     <message>
         <source>Continue</source>
-        <translation>jarraitu</translation>
+        <translation>Jarraitu</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>irten</translation>
+        <translation>Irten</translation>
     </message>
 </context>
 <context>
@@ -187,7 +187,7 @@
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>irauli horizontalean</translation>
+        <translation>Irauli horizontalean</translation>
     </message>
     <message>
         <source>Flip vertical</source>
@@ -330,7 +330,7 @@
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Segundoren ondoren hasi grabatzen</translation>
+        <translation>Segundo hauen ondoren hasi grabatzen</translation>
     </message>
     <message>
         <source>Look for updates</source>
@@ -366,7 +366,7 @@
     </message>
     <message>
         <source>Continue</source>
-        <translation>jarraitu</translation>
+        <translation>Jarraitu</translation>
     </message>
     <message>
         <source>Play</source>
@@ -426,7 +426,7 @@
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>irauli horizontalean</translation>
+        <translation>Irauli horizontalean</translation>
     </message>
     <message>
         <source>Flip vertical</source>
