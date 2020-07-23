@@ -78,7 +78,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         }
 
         // We set WASAPI as default
-        if ( ( listRadiobuttons.at(i)->objectName() == "radioButtonWASAPI" ) and
+        if ( ( listRadiobuttons.at(i)->objectName() == "radioButtonDirectSound" ) and
              ( settings.value( listRadiobuttons.at(i)->objectName(), false ).toBool() == false ) )
         {
             listRadiobuttons.at(i)->click();

@@ -28,15 +28,22 @@ QvkAudioController::QvkAudioController( Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
 
-    radioButtonWASAPI = new QRadioButton();
-    radioButtonWASAPI->setObjectName( "radioButtonWASAPI" );
-    radioButtonWASAPI->setText( "WASAPI" );
-    ui->verticalLayout_4->insertWidget( 0, radioButtonWASAPI );
-
     radioButtonDirectSound = new QRadioButton();
     radioButtonDirectSound->setObjectName( "radioButtonDirectSound" );
     radioButtonDirectSound->setText( "DirectSound" );
-    ui->verticalLayout_4->insertWidget( 1, radioButtonDirectSound );
+    //ui->verticalLayout_4->insertWidget( 0, radioButtonDirectSound );
+
+    radioButtonWASAPI = new QRadioButton();
+    radioButtonWASAPI->setObjectName( "radioButtonWASAPI" );
+    radioButtonWASAPI->setText( "WASAPI" );
+    //ui->verticalLayout_4->insertWidget( 1, radioButtonWASAPI );
+
+    QHBoxLayout *hBoxLayout = new QHBoxLayout;
+    ui->verticalLayout_4->insertLayout( 0, hBoxLayout );
+    hBoxLayout->addWidget( radioButtonDirectSound );
+    hBoxLayout->addWidget( radioButtonWASAPI );
+    QSpacerItem *spacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+    hBoxLayout->addSpacerItem( spacer );
 
     vkWASAPIController = new QvkWASAPIController( ui );
     vkDirectSoundController = new QvkDirectSoundController( ui );
