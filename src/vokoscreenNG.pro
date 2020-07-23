@@ -74,6 +74,8 @@ QMAKE_LFLAGS += -Wl,--as-needed
 unix:CONFIG += link_pkgconfig
 unix:PKGCONFIG += gstreamer-1.0
 
+win32:RC_ICONS = vokoscreenNG.ico
+
 win32:GStreamerDir=$$(GSTREAMER_1_0_ROOT_X86)
 win32:INCLUDEPATH += $${GStreamerDir}\include\gstreamer-1.0
 win32:INCLUDEPATH += $${GStreamerDir}\include\glib-2.0
