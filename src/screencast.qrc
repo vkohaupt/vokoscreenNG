@@ -1,6 +1,7 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
 <file>pictures/camera/camera.png</file>
+<file>pictures/help/information.png</file>
 <file>pictures/linux.png</file>
 <file>pictures/log/log.png</file>
 <file>pictures/logo/logo.png</file>
@@ -24,6 +25,7 @@
 <file>pictures/systray/pause.png</file>
 <file>pictures/windows.png</file>
 <file>pictures/camera/camera.license</file>
+<file>pictures/help/information.license</file>
 <file>pictures/linux.license</file>
 <file>pictures/log/log.license</file>
 <file>pictures/logo/logo.license</file>

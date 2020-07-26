@@ -76,7 +76,7 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : u
     vkDownloadHTML = new QvkDownloader( temporaryDirLocal.path() );
     vkDownloadFiles = new QvkDownloader( temporaryDirLocal.path() );
 
-    QIcon iconHelp = style()->standardIcon( QStyle::SP_MessageBoxInformation );
+    QIcon iconHelp( ":/pictures/help/information.png" );
     QList<QToolButton *> listToolButton = ui->centralWidget->findChildren<QToolButton *>();
     for ( int i = 0; i < listToolButton.count(); i++ )
     {
