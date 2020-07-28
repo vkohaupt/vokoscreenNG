@@ -77,7 +77,7 @@ void QvkDirectSoundWatcher::slot_update()
             {
                 QString name = listAudioDeviceInfo.at(i).deviceName();
                 QString device = listAudioDeviceInfo.at(i).deviceName();
-                qDebug().noquote() << global::nameOutput << "[Audio] Added:" << name << "Device:" << device;
+                qDebug().noquote() << global::nameOutput << "[Audio DirectSound] Added:" << name << "Device:" << device;
                 QString audioDevicePlug = "";
                 audioDevicePlug.append( "[Audio-device-added]" );
                 audioDevicePlug.append( ":");
@@ -98,7 +98,7 @@ void QvkDirectSoundWatcher::slot_update()
             {
                 QString name = stringListCheckBox.at(i);
                 QString device = stringListCheckBox.at(i);
-                qDebug().noquote() << global::nameOutput << "[Audio] Removed:" << name << "Device:" << device;
+                qDebug().noquote() << global::nameOutput << "[Audio DirectSound] Removed:" << name << "Device:" << device;
                 QString audioDevicePlug = "";
                 audioDevicePlug.append( "[Audio-device-removed]" );
                 audioDevicePlug.append( ":");

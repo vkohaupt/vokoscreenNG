@@ -103,7 +103,7 @@ void QvkDirectSoundController::getAllDevices()
             checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
             checkboxAudioDevice->setAutoExclusive( false );
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
-            qDebug().noquote() << global::nameOutput << "Audio device:" << list.at(i).deviceName();
+            qDebug().noquote() << global::nameOutput << "[Audio DirectSound] found device:" << list.at(i).deviceName();
 
             connect( checkboxAudioDevice, SIGNAL(clicked(bool)),this,SLOT(slot_audioDeviceSelected() ) );
         }
