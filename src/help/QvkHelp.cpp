@@ -82,7 +82,6 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : u
     {
         if ( listToolButton.at(i)->objectName().contains( QRegExp( "^help_") ) )
         {
-            qDebug() << listToolButton.at(i)->objectName();
             listToolButton.at(i)->setIcon( iconHelp );
             listToolButton.at(i)->installEventFilter( this );
         }
