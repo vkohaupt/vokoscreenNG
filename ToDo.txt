@@ -13,9 +13,6 @@ Aktualisierung:
 --Wird nicht ausgeführt wenn das Icon im Systray deaktiviert ist
 
 Linux:
---Bei dunklen Themes ist das Icon auf Tab Timer schlecht sichtbar
-
-Linux:
 --Installer erstellen
 
 Allgemein:
