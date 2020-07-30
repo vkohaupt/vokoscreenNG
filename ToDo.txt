@@ -5,7 +5,9 @@ GUI:
 --openh264 der Schieberegler und der Resetbutton werden nicht deaktiviert beim Start einer Aufnahme.
 
 openh264:
---Das Binäry sollte von cisco direkt heruntergeladen werden.
+--Das Binäry sollte in Zukunft vom cisco Server direkt heruntergeladen werden.
+--Desweiteren muß der User das Binäry aktivieren und deaktivieren können.
+--Die Funktionsweise sollte wie im Firefox sein.
 
 GUI:
 --Die Buttons im Player auf Tango umstellen 
