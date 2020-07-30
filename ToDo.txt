@@ -1,6 +1,15 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
+GUI:
+--openh264 der Schieberegler und der Resetbutton werden nicht deaktiviert beim Start einer Aufnahme.
+
+openh264:
+--Das Binäry sollte von cisco direkt heruntergeladen werden.
+
+GUI:
+--Die Buttons im Player auf Tango umstellen 
+
 Audio Windows:
 --Zur Zeit werden die Audiogeräte in Form checkboxAudioDeviece-0=true abgespeichert.
 Um eine Unterscheidung zwischen Directsound und WASAPI zu haben sollte es evtl. so aussehen
