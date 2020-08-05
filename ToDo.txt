@@ -1,8 +1,8 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
-GUI:
---openh264 der Schieberegler und der Resetbutton werden nicht deaktiviert beim Start einer Aufnahme.
+openh264:
+--Standard für Qualität von 23 auf evtl. ca. 17 setzen
 
 openh264:
 --Das Binäry sollte in Zukunft vom cisco Server direkt heruntergeladen werden.
