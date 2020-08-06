@@ -96,8 +96,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->horizontalLayout_openh264->insertWidget( 1, sliderOpenh264 );
     sliderOpenh264->setObjectName("sliderOpenh264");
     sliderOpenh264->setTracking( true );
-    sliderOpenh264->setMinimum( 0 );
-    sliderOpenh264->setMaximum( 50 );
+    sliderOpenh264->setMinimum( 1 );
+    sliderOpenh264->setMaximum( 51 );
     sliderOpenh264->setValue( 23 );
     sliderOpenh264->show();
 
