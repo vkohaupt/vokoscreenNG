@@ -101,6 +101,15 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderOpenh264->setValue( 23 );
     sliderOpenh264->show();
 
+    sliderVaapih264 = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_vaapih264->insertWidget( 1, sliderVaapih264 );
+    sliderVaapih264->setObjectName("sliderVaapih264");
+    sliderVaapih264->setTracking( true );
+    sliderVaapih264->setMinimum( 1 );
+    sliderVaapih264->setMaximum( 51 );
+    sliderVaapih264->setValue( 17 );
+    sliderVaapih264->show();
+
     sliderLimitOfFreeDiskSpace = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_27->insertWidget( 3, sliderLimitOfFreeDiskSpace );
     sliderLimitOfFreeDiskSpace->setObjectName( "sliderLimitOfFreeDiskSpace" );
@@ -404,6 +413,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->comboBoxVideoCodec, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_videoCodecChanged( QString ) ) );
     connect( ui->toolButtonx264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_x264Reset() ) );
     connect( ui->toolButtonOpenh264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_openh264Reset() ) );
+    connect( ui->toolButtonVaapih264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_Vaapih264Reset() ) );
 
     // Tab 3 Time
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
@@ -631,6 +641,12 @@ void QvkMainWindow::slot_x264Reset()
 void QvkMainWindow::slot_openh264Reset()
 {
     sliderOpenh264->setValue( 23 );
+}
+
+
+void QvkMainWindow::slot_Vaapih264Reset()
+{
+    sliderVaapih264->setValue( 17 );
 }
 
 
@@ -1508,12 +1524,15 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
 
     if ( encoder == "vaapih264enc" )
     {
-        value = "vaapih264enc";
+        QStringList list;
+        list << "vaapih264enc";
+        list << "init-qp=" + QString::number( sliderVaapih264->value() );
+        value = list.join( " " );
     }
 
     if ( encoder == "vaapimpeg2enc" )
     {
-            value = "vaapimpeg2enc";
+        value = "vaapimpeg2enc";
     }
 
     if ( encoder == "vp8enc" )
