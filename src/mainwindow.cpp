@@ -1226,7 +1226,7 @@ void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
                 labelPicture->setAlignment( Qt::AlignRight );
                 ui->gridLayoutAvailable->addWidget( labelPicture, rowCount + rowMuxer, 0 );
 
-                ui->gridLayoutAvailable->addWidget( new QLabel( QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowMuxer, 1 );
+                ui->gridLayoutAvailable->addWidget( new QLabel( "  " + QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowMuxer, 1 );
                 rowMuxer++;
             }
 
@@ -1249,7 +1249,7 @@ void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
                 labelPicture->setAlignment( Qt::AlignRight );
                 ui->gridLayoutAvailable->addWidget( labelPicture, rowCount + rowVideo, 2 );
 
-                ui->gridLayoutAvailable->addWidget( new QLabel( QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowVideo, 3 );
+                ui->gridLayoutAvailable->addWidget( new QLabel( "  " + QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowVideo, 3 );
                 rowVideo++;
             }
 
@@ -1272,7 +1272,7 @@ void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
                 labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
                 labelPicture->setAlignment( Qt::AlignRight );
                 ui->gridLayoutAvailable->addWidget( labelPicture, rowCount + rowAudio, 4 );
-                ui->gridLayoutAvailable->addWidget( new QLabel( QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowAudio, 5 );
+                ui->gridLayoutAvailable->addWidget( new QLabel( "  " + QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowAudio, 5 );
                 rowAudio++;
             }
         }
