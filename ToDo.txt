@@ -1,6 +1,11 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
+Webcam:
+--siehe Mail vom 09.08.2020 16:51
+--Kamera unterstützt die 640x480 Auflösung nicht
+--Kameradaten müßen ausgelesen werden, keine Fixwerte.
+
 openh264:
 --Standard für Qualität von 23 auf evtl. ca. 17 setzen
 
