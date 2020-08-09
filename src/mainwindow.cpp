@@ -445,13 +445,14 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         connect( ui->checkBoxShowInSystrayAlternative, SIGNAL( clicked( bool ) ), vkSystrayAlternative, SLOT( setVisible( bool ) ) );
         ui->frameShowInSystray->hide();
     }
+    QIcon picture( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
 
     // Tab 5 Available muxer, encoder etc.
-    QIcon iconAvailable = style()->standardIcon( QStyle::SP_DialogApplyButton );
+    QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
     QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
     ui->labelAvalible->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
 
-    QIcon iconNotAvailable = style()->standardIcon( QStyle::SP_DialogCancelButton );
+    QIcon iconNotAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
     ui->labelNotAvailable->setPixmap( iconNotAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
     // End Tabs
 
@@ -1212,9 +1213,15 @@ void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
                 QLabel *labelPicture = new QLabel();
                 QIcon icon;
                 if ( available == true )
-                    icon = style()->standardIcon( QStyle::SP_DialogApplyButton );
+                {
+                    QIcon picture( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
+                    icon = picture;
+                }
                 else
-                    icon = style()->standardIcon( QStyle::SP_DialogCancelButton );
+                {
+                    QIcon picture( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
+                    icon = picture;
+                }
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
                 labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
                 labelPicture->setAlignment( Qt::AlignRight );
@@ -1229,9 +1236,15 @@ void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
                 QLabel *labelPicture = new QLabel();
                 QIcon icon;
                 if ( available == true )
-                    icon = style()->standardIcon( QStyle::SP_DialogApplyButton );
+                {
+                    QIcon picture( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
+                    icon = picture;
+                }
                 else
-                    icon = style()->standardIcon( QStyle::SP_DialogCancelButton );
+                {
+                    QIcon picture( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
+                    icon = picture;
+                }
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
                 labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
                 labelPicture->setAlignment( Qt::AlignRight );
@@ -1246,9 +1259,16 @@ void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
                 QLabel *labelPicture = new QLabel();
                 QIcon icon;
                 if ( available == true )
-                    icon = style()->standardIcon( QStyle::SP_DialogApplyButton );
+                {
+                    QIcon picture( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
+                    icon = picture;
+                }
                 else
-                    icon = style()->standardIcon( QStyle::SP_DialogCancelButton );
+                {
+                    QIcon picture( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
+                    icon = picture;
+                }
+
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
                 labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
                 labelPicture->setAlignment( Qt::AlignRight );
@@ -1256,7 +1276,6 @@ void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
                 ui->gridLayoutAvailable->addWidget( new QLabel( QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowAudio, 5 );
                 rowAudio++;
             }
-
         }
 
         rowCount = ui->gridLayoutAvailable->rowCount();
