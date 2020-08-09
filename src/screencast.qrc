@@ -17,6 +17,8 @@
 <file>pictures/screencast/timer.png</file>
 <file>pictures/screencast/strip.png</file>
 <file>pictures/screencast/help-about.png</file>
+<file>pictures/screencast/missing.png</file>
+<file>pictures/screencast/accept.png</file>
 <file>pictures/screencast/undo.png</file>
 <file>pictures/screencast/author.png</file>
 <file>pictures/space.png</file>
@@ -34,6 +36,7 @@
 <file>pictures/player/restore.license</file>
 <file>pictures/player/player.license</file>
 <file>pictures/screencast/monitor.license</file>
+<file>pictures/screencast/accept.license</file>
 <file>pictures/screencast/preferences-system.license</file>
 <file>pictures/screencast/format-codec.license</file>
 <file>pictures/screencast/microphone.license</file>
@@ -41,6 +44,7 @@
 <file>pictures/screencast/supported-formats.license</file>
 <file>pictures/screencast/timer.license</file>
 <file>pictures/screencast/strip.license</file>
+<file>pictures/screencast/missing.license</file>
 <file>pictures/screencast/help-about.license</file>
 <file>pictures/systray/systray.license</file>
 <file>pictures/systray/record.license</file>

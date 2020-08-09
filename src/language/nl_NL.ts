@@ -17,18 +17,18 @@
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Wissel naar vensterweergave</translation>
+        <translation>Vensterweergave</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Wissel naar volledig scherm</translation>
+        <translation>Beeldvullende weergave</translation>
     </message>
 </context>
 <context>
     <name>QvkCountdown</name>
     <message>
         <source>Countdown</source>
-        <translation>Countdown</translation>
+        <translation>Aftellen</translation>
     </message>
 </context>
 <context>
@@ -42,7 +42,7 @@
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Help</translation>
+        <translation>Hulp</translation>
     </message>
 </context>
 <context>
@@ -53,11 +53,11 @@
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>De opname is niet begonnen omdat er niet genoeg schijfruimte beschikbaar is.</translation>
+        <translation>De opname is niet begonnen omdat er onvoldoende vrije schijfruimte is.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>De  vrijeschijfruimtelimiet is bereikt.</translation>
+        <translation>Het vrijeschijfruimtelimiet is bereikt.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
@@ -69,14 +69,14 @@
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>De opname is gestopt omdat er niet genoeg schijfruimte beschikbaar is.</translation>
+        <translation>De opname is gestopt omdat er onvoldoende vrije schijfruimte is.</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Volledig scherm</translation>
+        <translation>Beeldvullend</translation>
     </message>
     <message>
         <source>Window</source>
@@ -96,7 +96,7 @@
     </message>
     <message>
         <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Op dit moment is Wayland niet ondersteund. Screencasts zullen een zwart scherm tonen. Log uit en start een X11-bureaubladsessie.</translation>
+        <translation>Wayland wordt momenteel niet ondersteund - screencasts zullen een zwart scherm tonen. Log uit en start een X11-bureaubladsessie.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
@@ -104,7 +104,7 @@
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Startpagina</translation>
+        <translation>Website</translation>
     </message>
     <message>
         <source>Translations</source>
@@ -116,14 +116,14 @@
     </message>
     <message>
         <source>Wayland desktop session detected</source>
-        <translation>Wayland bureaubladsessie gedetecteerd.</translation>
+        <translation>Wayland-bureaubladsessie gedetecteerd</translation>
     </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
-        <translation>Open bestand</translation>
+        <translation>Bestand openen</translation>
     </message>
 </context>
 <context>
@@ -145,15 +145,15 @@
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pauzeren</translation>
+        <translation>Onderbreken</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Doorgaan</translation>
+        <translation>Hervatten</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Einde</translation>
+        <translation>Afsluiten</translation>
     </message>
 </context>
 <context>
@@ -168,30 +168,30 @@
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pauzeren</translation>
+        <translation>Onderbreken</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Doorgaan</translation>
+        <translation>Hervatten</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Einde</translation>
+        <translation>Afsluiten</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialoog</translation>
+        <translation>Dialoogvenster</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Flip horizontaal</translation>
+        <translation>Horizontaal spiegelen</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Flip verticaal</translation>
+        <translation>Verticaal spiegelen</translation>
     </message>
     <message>
         <source>Invert</source>
@@ -207,7 +207,7 @@
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Verwijder schermkader</translation>
+        <translation>Vensterrand verwijderen</translation>
     </message>
     <message>
         <source>160x120</source>
@@ -234,7 +234,7 @@
     </message>
     <message>
         <source>Reset</source>
-        <translation>Reset</translation>
+        <translation>Standaardwaarden</translation>
     </message>
     <message>
         <source>Magnification</source>
@@ -242,7 +242,7 @@
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Countdown</translation>
+        <translation>Aftellen</translation>
     </message>
     <message>
         <source>Video size:</source>
@@ -286,7 +286,7 @@
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Muiscursor niet opnemen</translation>
+        <translation>Cursor niet vastleggen</translation>
     </message>
     <message>
         <source>Hour</source>
@@ -298,15 +298,15 @@
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Start de timer</translation>
+        <translation>Tijdklok starten</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Stop opname na</translation>
+        <translation>Opname stoppen na</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Uren</translation>
+        <translation>Uur</translation>
     </message>
     <message>
         <source>Minutes</source>
@@ -318,7 +318,7 @@
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Video map</translation>
+        <translation>Videomap</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
@@ -326,19 +326,19 @@
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Tonen in systray</translation>
+        <translation>Tonen in systeemvak</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Secondes wachten voor opname</translation>
+        <translation>Aantal seconden voordat opname start</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Zoek naar updates</translation>
+        <translation>Controleren op updates</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Help</translation>
+        <translation>Hulp</translation>
     </message>
     <message>
         <source>Video</source>
@@ -362,11 +362,11 @@
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pauzeren</translation>
+        <translation>Onderbreken</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Doorgaan</translation>
+        <translation>Hervatten</translation>
     </message>
     <message>
         <source>Play</source>
@@ -390,7 +390,7 @@
     </message>
     <message>
         <source>Send Report</source>
-        <translation>Stuur rapportage</translation>
+        <translation>Rapportage versturen</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -406,11 +406,11 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Speel laatste opname af</translation>
+        <translation>Recentste opname afspelen</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Open map</translation>
+        <translation>Map openen</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
@@ -418,19 +418,19 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Geminimaliseerd wanneer de opname start</translation>
+        <translation>Minimaliseren als opname start</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Start geminimaliseerd</translation>
+        <translation>Geminimaliseerd starten</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Flip horizontaal</translation>
+        <translation>Horizontaal spiegelen</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Flip verticaal</translation>
+        <translation>Verticaal spiegelen</translation>
     </message>
     <message>
         <source>Black-and-white</source>
@@ -438,7 +438,7 @@
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Verwijder schermkader</translation>
+        <translation>Vensterrand verwijderen</translation>
     </message>
     <message>
         <source>Donate</source>
@@ -466,7 +466,7 @@
     </message>
     <message>
         <source>Log</source>
-        <translation>Log</translation>
+        <translation>Logboek</translation>
     </message>
 </context>
 <context>
@@ -492,27 +492,27 @@
     </message>
     <message>
         <source>Open File</source>
-        <translation>Open bestand</translation>
+        <translation>Bestand openen</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Volledig scherm</translation>
+        <translation>Beeldvullend</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Vorige frame</translation>
+        <translation>Vorig frame</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Volgende frame</translation>
+        <translation>Volgend frame</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Demp</translation>
+        <translation>Dempen</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Verplaats menu</translation>
+        <translation>Menu verplaatsen</translation>
     </message>
 </context>
 </TS>
