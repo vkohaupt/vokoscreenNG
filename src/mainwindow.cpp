@@ -445,7 +445,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         connect( ui->checkBoxShowInSystrayAlternative, SIGNAL( clicked( bool ) ), vkSystrayAlternative, SLOT( setVisible( bool ) ) );
         ui->frameShowInSystray->hide();
     }
-    QIcon picture( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
 
     // Tab 5 Available muxer, encoder etc.
     QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
