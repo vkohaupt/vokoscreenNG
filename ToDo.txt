@@ -14,9 +14,6 @@ openh264:
 --Desweiteren muß der User das Binäry aktivieren und deaktivieren können.
 --Die Funktionsweise sollte wie im Firefox sein.
 
-GUI:
---Die Buttons im Player auf Tango umstellen 
-
 Audio Windows:
 --Zur Zeit werden die Audiogeräte in Form checkboxAudioDeviece-0=true abgespeichert.
 Um eine Unterscheidung zwischen Directsound und WASAPI zu haben sollte es evtl. so aussehen
