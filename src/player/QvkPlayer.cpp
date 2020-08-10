@@ -95,7 +95,9 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     QIcon iconDocumentOpen( QString::fromUtf8( ":/pictures/player/document-open.png" ) );
     ui->toolButtonOpenFile->setIcon( iconDocumentOpen );
 
-    ui->toolButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high"    , style()->standardIcon( QStyle::SP_MediaVolume ) ) );
+    QIcon iconAudioVolumeHigh( QString::fromUtf8( ":/pictures/player/audio-volume-high.png" ) );
+    ui->toolButtonMute->setIcon( iconAudioVolumeHigh );
+
     ui->toolButtonFullscreen->setIcon( QIcon( ":/pictures/player/fullscreen.png" ) );
 
     mediaPlayer = new QMediaPlayer;
@@ -439,7 +441,8 @@ void QvkPlayer::slot_mutedChanged( bool muted )
 {
     if ( muted == true )
     {
-        ui->toolButtonMute->setIcon( QIcon::fromTheme( "audio-volume-muted", style()->standardIcon( QStyle::SP_MediaVolumeMuted ) ) );
+        QIcon iconAudioVolumeMuted( QString::fromUtf8( ":/pictures/player/audio-volume-muted.png" ) );
+        ui->toolButtonMute->setIcon( iconAudioVolumeMuted );
         sliderVolume->setEnabled( false );
         ui->toolButtonMute->setEnabled( true );
         return;
@@ -447,7 +450,8 @@ void QvkPlayer::slot_mutedChanged( bool muted )
 
     if ( muted == false )
     {
-        ui->toolButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high", style()->standardIcon( QStyle::SP_MediaVolume ) ) );
+        QIcon iconAudioVolumeHigh( QString::fromUtf8( ":/pictures/player/audio-volume-high.png" ) );
+        ui->toolButtonMute->setIcon( iconAudioVolumeHigh);
         sliderVolume->setEnabled( true );
         ui->toolButtonMute->setEnabled( true );
         return;

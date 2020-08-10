@@ -11,7 +11,9 @@
 <file>pictures/player/stop.png</file>
 <file>pictures/player/start.png</file>
 <file>pictures/player/fullscreen.png</file>
+<file>pictures/player/audio-volume-muted.png</file>
 <file>pictures/player/go-previous.png</file>
+<file>pictures/player/audio-volume-high.png</file>
 <file>pictures/player/restore.png</file>
 <file>pictures/player/pause.png</file>
 <file>pictures/player/document-open.png</file>
@@ -41,11 +43,13 @@
 <file>pictures/player/fullscreen.license</file>
 <file>pictures/player/go-next.license</file>
 <file>pictures/player/restore.license</file>
+<file>pictures/player/audio-volume-high.license</file>
 <file>pictures/player/stop.license</file>
 <file>pictures/player/player.license</file>
 <file>pictures/player/pause.license</file>
 <file>pictures/player/start.license</file>
 <file>pictures/player/document-open.license</file>
+<file>pictures/player/audio-volume-muted.license</file>
 <file>pictures/player/go-previous.license</file>
 <file>pictures/screencast/monitor.license</file>
 <file>pictures/screencast/accept.license</file>

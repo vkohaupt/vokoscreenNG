@@ -290,7 +290,14 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
     {
         if ( listToolButton.at(i)->objectName().contains( "toolButtonMute" ) )
         {
-            settings.setValue( listToolButton.at(i)->objectName(), listToolButton.at(i)->icon().name() );
+            if ( listToolButton.at(i)->isChecked() == true )
+            {
+                settings.setValue( listToolButton.at(i)->objectName(), "audio-volume-muted" );
+            }
+            else
+            {
+                settings.setValue( listToolButton.at(i)->objectName(), "audio-volume-high" );
+            }
         }
     }
 }
