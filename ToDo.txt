@@ -85,6 +85,3 @@ Player:
 Suse Leap 15.0 Gnome:
 --Camerafenster wandert beim entfernen und hinzufügen des Rahmen nach oben.
 --Keine Lösung in Sicht.
-
-Spezialslider:
---Mauscursor nicht stimmig mit Handle.
