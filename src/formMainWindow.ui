@@ -825,8 +825,11 @@
                     </item>
                     <item>
                      <widget class="QToolButton" name="toolButtonVaapih264Reset">
-                      <property name="text">
+                      <property name="toolTip">
                        <string>Reset</string>
+                      </property>
+                      <property name="text">
+                       <string notr="true">Reset</string>
                       </property>
                      </widget>
                     </item>
