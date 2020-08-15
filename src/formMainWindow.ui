@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <property name="iconSize">
            <size>
@@ -572,6 +572,73 @@
            <layout class="QVBoxLayout" name="verticalLayout_21">
             <item>
              <layout class="QGridLayout" name="gridLayoutFormatCodecs">
+              <item row="1" column="4">
+               <widget class="QToolButton" name="help_screencast_format">
+                <property name="text">
+                 <string notr="true">Help</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="labelFormat">
+                <property name="text">
+                 <string>Format</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="labelFrames">
+                <property name="text">
+                 <string>Frames</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QComboBox" name="comboBoxFormat"/>
+              </item>
+              <item row="3" column="2">
+               <widget class="QComboBox" name="comboBoxAudioCodec">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4" alignment="Qt::AlignTop">
+               <widget class="QToolButton" name="help_screencast_videocodec">
+                <property name="text">
+                 <string notr="true">Help</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <spacer name="horizontalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLabel" name="labelAudioCodec">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="text">
+                 <string>Audiocodec</string>
+                </property>
+               </widget>
+              </item>
               <item row="0" column="2" colspan="2">
                <widget class="QFrame" name="frameFrames">
                 <property name="frameShape">
@@ -606,30 +673,20 @@
                 </layout>
                </widget>
               </item>
-              <item row="1" column="3">
-               <spacer name="horizontalSpacer_2">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+              <item row="0" column="4">
+               <widget class="QToolButton" name="help_screencast_frames">
+                <property name="toolTip">
+                 <string notr="true">Help</string>
                 </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item row="1" column="4">
-               <widget class="QToolButton" name="help_screencast_format">
                 <property name="text">
                  <string notr="true">Help</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="1">
-               <widget class="QLabel" name="labelVideoCodec">
+              <item row="3" column="4">
+               <widget class="QToolButton" name="help_screencast_audiocodec">
                 <property name="text">
-                 <string>Videocodec</string>
+                 <string notr="true">Help</string>
                 </property>
                </widget>
               </item>
@@ -658,105 +715,148 @@
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QFrame" name="frameVideoCodecx264">
-                   <property name="frameShape">
-                    <enum>QFrame::NoFrame</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_x264">
-                    <property name="leftMargin">
-                     <number>6</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>6</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                    <item>
-                     <widget class="QComboBox" name="comboBoxx264Preset">
-                      <property name="currentText">
-                       <string notr="true">superfast</string>
+                  <layout class="QVBoxLayout" name="verticalLayout_15">
+                   <item>
+                    <widget class="QFrame" name="frameVideoCodecx264">
+                     <property name="frameShape">
+                      <enum>QFrame::NoFrame</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                     <layout class="QHBoxLayout" name="horizontalLayout_x264">
+                      <property name="leftMargin">
+                       <number>6</number>
                       </property>
-                      <property name="currentIndex">
-                       <number>1</number>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>6</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
                       </property>
                       <item>
-                       <property name="text">
-                        <string notr="true">ultrafast</string>
-                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_19">
+                        <item>
+                         <layout class="QHBoxLayout" name="horizontalLayout_3">
+                          <item>
+                           <widget class="QComboBox" name="comboBoxx264Preset">
+                            <property name="currentText">
+                             <string notr="true">superfast</string>
+                            </property>
+                            <property name="currentIndex">
+                             <number>1</number>
+                            </property>
+                            <item>
+                             <property name="text">
+                              <string notr="true">ultrafast</string>
+                             </property>
+                            </item>
+                            <item>
+                             <property name="text">
+                              <string notr="true">superfast</string>
+                             </property>
+                            </item>
+                            <item>
+                             <property name="text">
+                              <string notr="true">veryfast</string>
+                             </property>
+                            </item>
+                            <item>
+                             <property name="text">
+                              <string notr="true">faster</string>
+                             </property>
+                            </item>
+                            <item>
+                             <property name="text">
+                              <string notr="true">fast</string>
+                             </property>
+                            </item>
+                            <item>
+                             <property name="text">
+                              <string notr="true">medium</string>
+                             </property>
+                            </item>
+                            <item>
+                             <property name="text">
+                              <string notr="true">slow</string>
+                             </property>
+                            </item>
+                            <item>
+                             <property name="text">
+                              <string notr="true">slower</string>
+                             </property>
+                            </item>
+                            <item>
+                             <property name="text">
+                              <string notr="true">veryslow</string>
+                             </property>
+                            </item>
+                            <item>
+                             <property name="text">
+                              <string notr="true">placebo</string>
+                             </property>
+                            </item>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLabel" name="label_21">
+                            <property name="text">
+                             <string>Quality</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QToolButton" name="toolButtonx264Reset">
+                            <property name="toolTip">
+                             <string>Reset</string>
+                            </property>
+                            <property name="text">
+                             <string notr="true">Reset</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <layout class="QHBoxLayout" name="horizontalLayout_5">
+                          <item>
+                           <widget class="QComboBox" name="comboBoxx264Profile">
+                            <item>
+                             <property name="text">
+                              <string notr="true">high-4:4:4</string>
+                             </property>
+                            </item>
+                            <item>
+                             <property name="text">
+                              <string notr="true">baseline</string>
+                             </property>
+                            </item>
+                           </widget>
+                          </item>
+                          <item>
+                           <spacer name="horizontalSpacer_13">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                         </layout>
+                        </item>
+                       </layout>
                       </item>
-                      <item>
-                       <property name="text">
-                        <string notr="true">superfast</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string notr="true">veryfast</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string notr="true">faster</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string notr="true">fast</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string notr="true">medium</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string notr="true">slow</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string notr="true">slower</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string notr="true">veryslow</string>
-                       </property>
-                      </item>
-                      <item>
-                       <property name="text">
-                        <string notr="true">placebo</string>
-                       </property>
-                      </item>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_21">
-                      <property name="text">
-                       <string>Quality</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QToolButton" name="toolButtonx264Reset">
-                      <property name="toolTip">
-                       <string>Reset</string>
-                      </property>
-                      <property name="text">
-                       <string notr="true">Reset</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
                  </item>
                  <item>
                   <widget class="QFrame" name="frameVideoCodecVaapih264">
@@ -828,54 +928,7 @@
                 </layout>
                </widget>
               </item>
-              <item row="3" column="2">
-               <widget class="QComboBox" name="comboBoxAudioCodec">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2">
-               <widget class="QComboBox" name="comboBoxFormat"/>
-              </item>
-              <item row="2" column="4">
-               <widget class="QToolButton" name="help_screencast_videocodec">
-                <property name="text">
-                 <string notr="true">Help</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="4">
-               <widget class="QToolButton" name="help_screencast_frames">
-                <property name="toolTip">
-                 <string notr="true">Help</string>
-                </property>
-                <property name="text">
-                 <string notr="true">Help</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QLabel" name="labelFrames">
-                <property name="text">
-                 <string>Frames</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1">
-               <widget class="QLabel" name="labelAudioCodec">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="text">
-                 <string>Audiocodec</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
+              <item row="2" column="2" alignment="Qt::AlignTop">
                <widget class="QComboBox" name="comboBoxVideoCodec">
                 <property name="sizeAdjustPolicy">
                  <enum>QComboBox::AdjustToMinimumContentsLength</enum>
@@ -885,22 +938,19 @@
                 </property>
                </widget>
               </item>
-              <item row="3" column="4">
-               <widget class="QToolButton" name="help_screencast_audiocodec">
-                <property name="text">
-                 <string notr="true">Help</string>
+              <item row="2" column="1">
+               <layout class="QVBoxLayout" name="verticalLayout_22">
+                <property name="topMargin">
+                 <number>6</number>
                 </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QLabel" name="labelFormat">
-                <property name="text">
-                 <string>Format</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
+                <item alignment="Qt::AlignTop">
+                 <widget class="QLabel" name="labelVideoCodec">
+                  <property name="text">
+                   <string>Videocodec</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
              </layout>
             </item>
@@ -2526,7 +2576,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>help_screencast_execute</tabstop>
   <tabstop>help_screencast_audio</tabstop>
   <tabstop>scrollAreaAudioDevice</tabstop>
-  <tabstop>comboBoxx264Preset</tabstop>
   <tabstop>help_screencast_videocodec</tabstop>
   <tabstop>checkBoxStartTime</tabstop>
   <tabstop>help_screencast_starttimer</tabstop>

@@ -84,7 +84,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderFrames->show();
 
     sliderX264 = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_x264->insertWidget( 2, sliderX264 );
+    ui->horizontalLayout_3->insertWidget( 2, sliderX264 );
     sliderX264->setObjectName("sliderX264");
     sliderX264->setTracking( true );
     sliderX264->setMinimum( 0 );
@@ -635,6 +635,7 @@ void QvkMainWindow::slot_x264Reset()
 {
     ui->comboBoxx264Preset->setCurrentIndex( 1 );
     sliderX264->setValue( 17 );
+    ui->comboBoxx264Profile->setCurrentIndex( 0 );
 }
 
 
@@ -1519,7 +1520,7 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << "threads=" + vk_idealThreadCount;
         list.removeAll( "" );
         value = list.join( " " );
-        value.append( " ! video/x-h264, profile=baseline" );
+        value.append( " ! video/x-h264, profile=" + ui->comboBoxx264Profile->currentText() );
     }
 
     if ( encoder == "openh264enc" )
