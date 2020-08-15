@@ -579,57 +579,7 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="1">
-               <widget class="QLabel" name="labelFormat">
-                <property name="text">
-                 <string>Format</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QLabel" name="labelFrames">
-                <property name="text">
-                 <string>Frames</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2">
-               <widget class="QComboBox" name="comboBoxFormat"/>
-              </item>
-              <item row="3" column="2">
-               <widget class="QComboBox" name="comboBoxAudioCodec">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="4" alignment="Qt::AlignTop">
-               <widget class="QToolButton" name="help_screencast_videocodec">
-                <property name="text">
-                 <string notr="true">Help</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="3">
-               <spacer name="horizontalSpacer_2">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item row="3" column="1">
+              <item row="4" column="1">
                <widget class="QLabel" name="labelAudioCodec">
                 <property name="enabled">
                  <bool>false</bool>
@@ -673,22 +623,8 @@
                 </layout>
                </widget>
               </item>
-              <item row="0" column="4">
-               <widget class="QToolButton" name="help_screencast_frames">
-                <property name="toolTip">
-                 <string notr="true">Help</string>
-                </property>
-                <property name="text">
-                 <string notr="true">Help</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="4">
-               <widget class="QToolButton" name="help_screencast_audiocodec">
-                <property name="text">
-                 <string notr="true">Help</string>
-                </property>
-               </widget>
+              <item row="1" column="2">
+               <widget class="QComboBox" name="comboBoxFormat"/>
               </item>
               <item row="2" column="3">
                <widget class="QFrame" name="frameVideoCodecQuality">
@@ -801,29 +737,15 @@
                             </item>
                            </widget>
                           </item>
-                          <item>
-                           <widget class="QLabel" name="label_21">
-                            <property name="text">
-                             <string>Quality</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QToolButton" name="toolButtonx264Reset">
-                            <property name="toolTip">
-                             <string>Reset</string>
-                            </property>
-                            <property name="text">
-                             <string notr="true">Reset</string>
-                            </property>
-                           </widget>
-                          </item>
                          </layout>
                         </item>
                         <item>
                          <layout class="QHBoxLayout" name="horizontalLayout_5">
                           <item>
                            <widget class="QComboBox" name="comboBoxx264Profile">
+                            <property name="currentText">
+                             <string notr="true">high-4:4:4</string>
+                            </property>
                             <item>
                              <property name="text">
                               <string notr="true">high-4:4:4</string>
@@ -851,7 +773,28 @@
                           </item>
                          </layout>
                         </item>
+                        <item>
+                         <layout class="QHBoxLayout" name="horizontalLayout_26">
+                          <item>
+                           <widget class="QLabel" name="label_21">
+                            <property name="text">
+                             <string>Quality</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
                        </layout>
+                      </item>
+                      <item alignment="Qt::AlignTop">
+                       <widget class="QToolButton" name="toolButtonx264Reset">
+                        <property name="toolTip">
+                         <string>Reset</string>
+                        </property>
+                        <property name="text">
+                         <string notr="true">Reset</string>
+                        </property>
+                       </widget>
                       </item>
                      </layout>
                     </widget>
@@ -928,15 +871,35 @@
                 </layout>
                </widget>
               </item>
-              <item row="2" column="2" alignment="Qt::AlignTop">
-               <widget class="QComboBox" name="comboBoxVideoCodec">
-                <property name="sizeAdjustPolicy">
-                 <enum>QComboBox::AdjustToMinimumContentsLength</enum>
+              <item row="1" column="1">
+               <widget class="QLabel" name="labelFormat">
+                <property name="text">
+                 <string>Format</string>
                 </property>
-                <property name="minimumContentsLength">
-                 <number>14</number>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                 </property>
                </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QComboBox" name="comboBoxAudioCodec">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <spacer name="horizontalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
               <item row="2" column="1">
                <layout class="QVBoxLayout" name="verticalLayout_22">
@@ -951,6 +914,63 @@
                  </widget>
                 </item>
                </layout>
+              </item>
+              <item row="2" column="2" alignment="Qt::AlignTop">
+               <widget class="QComboBox" name="comboBoxVideoCodec">
+                <property name="sizeAdjustPolicy">
+                 <enum>QComboBox::AdjustToMinimumContentsLength</enum>
+                </property>
+                <property name="minimumContentsLength">
+                 <number>14</number>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="4">
+               <widget class="QToolButton" name="help_screencast_frames">
+                <property name="toolTip">
+                 <string notr="true">Help</string>
+                </property>
+                <property name="text">
+                 <string notr="true">Help</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="labelFrames">
+                <property name="text">
+                 <string>Frames</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4" alignment="Qt::AlignTop">
+               <widget class="QToolButton" name="help_screencast_videocodec">
+                <property name="text">
+                 <string notr="true">Help</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="4">
+               <widget class="QToolButton" name="help_screencast_audiocodec">
+                <property name="text">
+                 <string notr="true">Help</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <spacer name="verticalSpacer_19">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
              </layout>
             </item>

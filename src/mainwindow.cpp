@@ -84,7 +84,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderFrames->show();
 
     sliderX264 = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_3->insertWidget( 2, sliderX264 );
+    ui->horizontalLayout_26->insertWidget( 2, sliderX264 );
     sliderX264->setObjectName("sliderX264");
     sliderX264->setTracking( true );
     sliderX264->setMinimum( 0 );
