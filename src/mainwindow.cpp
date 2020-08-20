@@ -1532,6 +1532,9 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << "usage-type=screen";
         list << "complexity=low";
         list << "multi-thread=" + vk_idealThreadCount;
+        list << "max-slice-size=10000000";
+        list << "num-slices=1000000";
+        list << "slice-mode=auto";
         value = list.join( " " );
         value.append( " ! h264parse" );
     }
@@ -1779,6 +1782,7 @@ void QvkMainWindow::slot_Start()
     VK_PipelineList << VK_getCapsFilter();
     VK_PipelineList << "videoconvert";
     VK_PipelineList << "videorate";
+    VK_PipelineList << "queue max-size-bytes=1073741824 max-size-time=10000000000 max-size-buffers=1000";
     VK_PipelineList << Vk_get_Videocodec_Encoder();
 
     // Only if one or more audiodevice is selected
