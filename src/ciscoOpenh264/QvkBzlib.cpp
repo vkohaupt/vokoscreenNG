@@ -21,6 +21,7 @@
  */
 
 #include "QvkBzlib.h"
+#include "global.h"
 
 #include <QDebug>
 #include <bzlib.h>
@@ -49,7 +50,7 @@ void QvkBzlib::deCompress( QString fileWithPath )
     if ( !inFile )
     {
         /* handle error */
-        qDebug() << "[vokoscreen] can not open file " << strIN;
+        qDebug() << global::name << "can not open file " << strIN;
         return;
     }
 
@@ -58,7 +59,7 @@ void QvkBzlib::deCompress( QString fileWithPath )
     {
         /* handle error */
         BZ2_bzReadClose ( &bzerror, bzFile );
-        qDebug() << "[vokoscreen] can not read file " << strIN;
+        qDebug() << global::name << "can not read file " << strIN;
         return;
     }
 
