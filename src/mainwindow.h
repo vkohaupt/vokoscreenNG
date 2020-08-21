@@ -136,7 +136,6 @@ private:
 
     QSoundEffect *soundEffect;
 
-    void myBZ2();
 
 private slots:
     void slot_preStart();
