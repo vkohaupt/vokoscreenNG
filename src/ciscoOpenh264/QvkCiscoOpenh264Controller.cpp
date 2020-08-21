@@ -21,6 +21,7 @@
  */
 
 #include "QvkCiscoOpenh264Controller.h"
+#include "QvkCiscoOpenh264Downloader.h"
 
 
 QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller()
