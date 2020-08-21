@@ -59,13 +59,13 @@ void QvkCiscoOpenh264Downloader::slot_downloadFinished( QNetworkReply *reply )
     QString filename = QFileInfo( reply->url().path() ).fileName();
     if ( reply->error() )
     {
-        //qDebug().noquote() << global::nameOutput << "Download of" << reply->url().toString() << "failed:" << reply->errorString();
+        qDebug().noquote() << global::nameOutput << "Download of" << reply->url().toString() << "failed:" << reply->errorString();
     }
     else
     {
         if ( saveLocal( filename, reply ) )
         {
-            //qDebug().noquote() << global::nameOutput << "Download of" << reply->url().toString() << "succeeded (saved to" << tempPath + "/" + filename + ")";
+            qDebug().noquote() << global::nameOutput << "Download of" << reply->url().toString() << "succeeded (saved to" << tempPath + "/" + filename + ")";
         }
     }
 

@@ -41,7 +41,7 @@ private:
 
     
 private slots:
-
+    void slot_deCompress( QString string );
 
 protected:
   

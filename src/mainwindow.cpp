@@ -30,6 +30,7 @@
 #include "QvkScreenManager.h"
 #include "QvkLicenses.h"
 #include "QvkLoadExtension.h"
+#include "QvkCiscoOpenh264Controller.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -524,6 +525,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         vkPlayer->slot_play();
         ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
     }
+
+    QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller();
+
 }
 
 

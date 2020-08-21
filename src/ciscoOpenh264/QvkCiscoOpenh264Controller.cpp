@@ -22,13 +22,26 @@
 
 #include "QvkCiscoOpenh264Controller.h"
 #include "QvkCiscoOpenh264Downloader.h"
+#include "QvkBzlib.h"
 
 
 QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller()
 {
+    QvkCiscoOpenh264Downloader *vkCiscoOpenh264Downloader = new QvkCiscoOpenh264Downloader( "/tmp" );
+    connect( vkCiscoOpenh264Downloader, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_deCompress( QString ) ) );
+
+    QString downloadFile = "http://ciscobinary.openh264.org/openh264-2.1.1-win64.dll.bz2";
+    vkCiscoOpenh264Downloader->doDownload( downloadFile );
 }
 
 
 QvkCiscoOpenh264Controller::~QvkCiscoOpenh264Controller()
 {
+}
+
+
+void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithFile )
+{
+    QvkBzlib *vkBzlib = new QvkBzlib();
+    vkBzlib->deCompress( pathWithFile );
 }

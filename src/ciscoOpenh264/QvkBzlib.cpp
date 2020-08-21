@@ -36,18 +36,21 @@ QvkBzlib::~QvkBzlib()
 }
 
 
-void QvkBzlib::deCompress()
+void QvkBzlib::deCompress( QString fileWithPath )
 {
+    char *strIN = fileWithPath.toLatin1().data();
+
     FILE* inFile;
     BZFILE* bzFile;
     char buf[ 1024 ];
     int bzerror;
 
-    inFile = fopen ( "/home/vk/Downloads/libopenh264-2.1.1-linux64.6.so.bz2", "r" );
+    inFile = fopen ( strIN, "r" );
     if ( !inFile )
     {
         /* handle error */
-        qDebug() << "[vokoscreen] can not open file libopenh264-2.1.1-linux64.6.so.bz2";
+        qDebug() << "[vokoscreen] can not open file " << strIN;
+        return;
     }
 
     bzFile = BZ2_bzReadOpen ( &bzerror, inFile, 0, 0, NULL, 0 );
@@ -55,12 +58,15 @@ void QvkBzlib::deCompress()
     {
         /* handle error */
         BZ2_bzReadClose ( &bzerror, bzFile );
-        qDebug() << "[vokoscreen] can not read file libopenh264-2.1.1-linux64.6.so.bz2";
+        qDebug() << "[vokoscreen] can not read file " << strIN;
+        return;
     }
 
     // https://stackoverflow.com/questions/3912157/how-do-i-extract-all-the-data-from-a-bzip2-archive-with-c
+    fileWithPath = fileWithPath.replace( ".bz2", "" );
+    char *strOut = fileWithPath.toLatin1().data();
     FILE *outFile;
-    outFile = fopen ("/home/vk/Downloads/libopenh264-2.1.1-linux64.6.so", "wb");
+    outFile = fopen ( strOut, "wb");
     while ( bzerror == BZ_OK )
     {
         int nread = BZ2_bzRead( &bzerror, bzFile, buf, sizeof buf );

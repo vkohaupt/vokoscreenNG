@@ -34,10 +34,10 @@ public:
 
     
 public slots:
+    void deCompress( QString fileWithPath  );
 
   
 private:
-    void deCompress();
 
     
 private slots:
