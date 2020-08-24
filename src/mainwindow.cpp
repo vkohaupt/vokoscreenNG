@@ -1804,6 +1804,7 @@ void QvkMainWindow::slot_Start()
             VK_PipelineList << "audio/x-raw, channels=2";
             VK_PipelineList << "audioconvert";
             VK_PipelineList << "audiorate";
+            VK_PipelineList << "queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000";
             VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
             VK_PipelineList << "queue";
             VK_PipelineList << "mux.";
@@ -1826,6 +1827,7 @@ void QvkMainWindow::slot_Start()
                 }
                 VK_PipelineList << "audioconvert";
                 VK_PipelineList << "audiorate";
+                VK_PipelineList << "queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000";
                 VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
                 VK_PipelineList << "queue";
                 VK_PipelineList << "mux.";
@@ -1837,6 +1839,7 @@ void QvkMainWindow::slot_Start()
                 VK_PipelineList << "audio/x-raw, channels=2";
                 VK_PipelineList << "audioconvert";
                 VK_PipelineList << "audiorate";
+                VK_PipelineList << "queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000";
                 VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
                 VK_PipelineList << "queue";
                 VK_PipelineList << "mux.";
@@ -1869,6 +1872,7 @@ void QvkMainWindow::slot_Start()
         VK_PipelineList << "audiomixer name=mix";
         VK_PipelineList << "audioconvert";
         VK_PipelineList << "audiorate";
+        VK_PipelineList << "queue";
         VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
         VK_PipelineList << "queue";
         VK_PipelineList << "mux.";
