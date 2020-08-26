@@ -73,7 +73,7 @@ QMAKE_LFLAGS += -Wl,--as-needed
 
 unix:CONFIG += link_pkgconfig
 unix:PKGCONFIG += gstreamer-1.0
-unix:PKGCONFIG += bzip2
+#unix:PKGCONFIG += bzip2
 
 win32:RC_ICONS = vokoscreenNG.ico
 
@@ -157,4 +157,4 @@ include(loadExtensions/loadExtensions.pri)
 include(systrayAlternative/systrayAlternative.pri)
 
 # ciscoOpenh264
-include( ciscoOpenh264/ciscoOpenh264.pri)
+# include( ciscoOpenh264/ciscoOpenh264.pri)
