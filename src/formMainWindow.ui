@@ -744,16 +744,16 @@
                           <item>
                            <widget class="QComboBox" name="comboBoxx264Profile">
                             <property name="currentText">
-                             <string notr="true">high-4:4:4</string>
+                             <string notr="true">baseline</string>
                             </property>
                             <item>
                              <property name="text">
-                              <string notr="true">high-4:4:4</string>
+                              <string notr="true">baseline</string>
                              </property>
                             </item>
                             <item>
                              <property name="text">
-                              <string notr="true">baseline</string>
+                              <string notr="true">high-4:4:4</string>
                              </property>
                             </item>
                            </widget>
