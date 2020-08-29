@@ -24,13 +24,12 @@
 #include "global.h"
 
 #include <QDebug>
-#include <QTimer>
 
 QvkTheme::QvkTheme( Ui_formMainWindow *ui_formMainWindow )
 {
     ui = ui_formMainWindow;
 
-    slot_setTheme();
+    setTheme();
 }
 
 
@@ -39,9 +38,8 @@ QvkTheme::~QvkTheme()
 }
 
 
-void QvkTheme::slot_setTheme()
+void QvkTheme::setTheme()
 {
-    oldThemeName = QIcon::themeName();
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreencast ), VK_getIcon( "video-display",     ":/pictures/screencast/monitor.png" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ),     VK_getIcon( "multimedia-player", ":/pictures/player/player.png" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarCamera ),     VK_getIcon( "camera-web",        ":/pictures/camera/camera.png" ) );

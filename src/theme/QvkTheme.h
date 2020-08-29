@@ -34,12 +34,10 @@ public:
     QIcon VK_getIcon( QString iconName, QString iconNameFallback );
     void makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIcon icon );
 
-
 public slots:
 
 
 private slots: 
-    void slot_setTheme();
 
 
 signals:
@@ -49,13 +47,9 @@ protected:
 
 
 private:
-    // If a Desktop has no Icon-Theme as Windows or a broken Linux Desktop then QIcon::themeName() return "" therefore we need pillepalle :>)
-    QString oldThemeName = "pillepalle";
     Ui_formMainWindow *ui;
-
-    QTimer *timer;
-
     void makeAndSetValidIconForSideBar( int index, QIcon icon );
+    void setTheme();
 
 
 };
