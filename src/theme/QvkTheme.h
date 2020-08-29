@@ -43,7 +43,7 @@ private slots:
 
 
 signals:
-    void signal_newTheme();
+
 
 protected:  
 

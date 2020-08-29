@@ -404,8 +404,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkAudioController->init();
 #endif
 
-    connect( vkTheme, SIGNAL( signal_newTheme() ), this, SLOT( slot_audioRedCross() ) );
-
     connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this, SLOT( slot_framesReset() ) );
 
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
@@ -512,9 +510,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSettings.readCamera( vkCameraController );
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
     vkSettings.readPlayerPathOpenFile( vkPlayer );
-#ifdef Q_OS_WIN
-//    vkAudioController->slot_audioDeviceSelected();
-#endif
 
     // After reading the settings, we read the arguments and run
     QStringList arguments = QApplication::instance()->arguments();
@@ -889,18 +884,6 @@ void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
     tabWidget->setCornerWidget( label, Qt::TopRightCorner);
 }
 
-// If new Theme, set or not set red cross
-void QvkMainWindow::slot_audioRedCross()
-{
-    if ( isAudioDeviceSelected() == true )
-    {
-        slot_audioIconOnOff( true );
-    }
-    else
-    {
-        slot_audioIconOnOff( false );
-    }
-}
 
 bool QvkMainWindow::isAudioDeviceSelected()
 {
