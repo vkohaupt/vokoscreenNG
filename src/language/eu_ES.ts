@@ -112,7 +112,7 @@
     </message>
     <message>
         <source>Donate</source>
-        <translation>Dohaintza egin</translation>
+        <translation>Eman dirua</translation>
     </message>
     <message>
         <source>Wayland desktop session detected</source>
@@ -442,7 +442,7 @@
     </message>
     <message>
         <source>Donate</source>
-        <translation>Dohaintza egin</translation>
+        <translation>Eman dirua</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
