@@ -133,7 +133,8 @@ QStringList QvkPulseGstr::get_all_Audio_devices()
     monitor = gst_device_monitor_new();
     caps = gst_caps_new_empty_simple( "audio/x-raw" );
     gst_device_monitor_add_filter( monitor, "Audio/Source", caps );
-    bool isMonitorStart =  gst_device_monitor_start( monitor );
+    gboolean isMonitorStart;
+    isMonitorStart =  gst_device_monitor_start( monitor );
 
     list = gst_device_monitor_get_devices( monitor );
     for ( iterator = list; iterator; iterator = iterator->next )
@@ -145,9 +146,10 @@ QStringList QvkPulseGstr::get_all_Audio_devices()
         stringList.append( stringDevice );
     }
 
-    if ( isMonitorStart == true )
+    if ( isMonitorStart )
     {
-       gst_device_monitor_stop( monitor );
+       // 31.08.2020 Deaktiviert da dies ab und zu beim starten von vokoscreenNG einen Absturz verursacht.
+       // gst_device_monitor_stop( monitor );
     }
 
     return stringList;
