@@ -247,6 +247,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << "Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
     qDebug().noquote() << global::nameOutput << "Settings:" << vkSettings.getFileName();
     qDebug().noquote() << global::nameOutput << "Log:" << vklogController->get_logPath();
+    qDebug().noquote() << global::nameOutput << "Default Videopath:" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
+    qDebug().noquote() << global::nameOutput << "User Videopath:" << vkSettings.getVideoPath();
 #ifdef Q_OS_LINUX
     qDebug().noquote() << global::nameOutput << "CompositingManager running:" << QX11Info::isCompositingManagerRunning();
 #endif

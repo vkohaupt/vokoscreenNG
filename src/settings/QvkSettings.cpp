@@ -308,6 +308,11 @@ QString QvkSettings::getFileName()
     return settings.fileName();
 }
 
+QString QvkSettings::getVideoPath()
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    return settings.value( "lineEditVideoPath" ).toString();
+}
 
 void QvkSettings::saveAreaScreencast( qreal x, qreal y, qreal width, qreal height  )
 {

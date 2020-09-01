@@ -51,6 +51,8 @@ public:
     void savePlayerPathOpenFile(QString pathFile );
     void readPlayerPathOpenFile(QvkPlayer *vkplayer);
     QString getFileName();
+    QString getVideoPath();
+
 
 
 public slots:
