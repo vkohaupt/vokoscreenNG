@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -2237,19 +2237,6 @@
            <layout class="QVBoxLayout" name="verticalLayout_16">
             <item>
              <layout class="QGridLayout" name="gridLayout_4">
-              <item row="0" column="0">
-               <widget class="QCheckBox" name="checkBoxCameraOnOff">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="toolTip">
-                 <string>CTRL+SHIFT+F8</string>
-                </property>
-                <property name="text">
-                 <string>Camera</string>
-                </property>
-               </widget>
-              </item>
               <item row="0" column="1">
                <widget class="QComboBox" name="comboBoxCamera">
                 <property name="enabled">
@@ -2267,6 +2254,26 @@
                </widget>
               </item>
               <item row="0" column="2">
+               <widget class="QComboBox" name="comboBoxCameraResolution">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QCheckBox" name="checkBoxCameraOnOff">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="toolTip">
+                 <string>CTRL+SHIFT+F8</string>
+                </property>
+                <property name="text">
+                 <string>Camera</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="4">
                <widget class="QToolButton" name="help_camera_camera">
                 <property name="toolTip">
                  <string notr="true"/>

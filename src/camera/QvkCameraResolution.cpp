@@ -1,0 +1,89 @@
+/* vokoscreenNG - A desktop recorder
+ * Copyright (C) 2017-2019 Volker Kohaupt
+ * 
+ * Author:
+ *      Volker Kohaupt <vkohaupt@freenet.de>
+ *
+ * This file is free software; you can redistribute it and/or modify
+ * it under the terms of version 2 of the GNU General Public License
+ * as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+ *
+ * --End_License--
+ */
+
+#include "QvkCameraResolution.h"
+#include "global.h"
+#include <QSettings>
+
+#include <QCameraInfo>
+
+QvkCameraResolution::QvkCameraResolution( Ui_formMainWindow *ui )
+{
+    ui_formMainWindow = ui;
+}
+
+
+QvkCameraResolution::~QvkCameraResolution()
+{
+}
+
+
+void QvkCameraResolution::slot_resolution( int value )
+{
+    Q_UNUSED(value);
+    QByteArray device = ui_formMainWindow->comboBoxCamera->currentData().toByteArray();
+    delete camera;
+    camera = new QCamera( device );
+    connect( camera, SIGNAL( statusChanged( QCamera::Status ) ), this, SLOT( slot_statusChanged( QCamera::Status ) ) );
+    camera->load();
+}
+
+
+void QvkCameraResolution::slot_statusChanged( QCamera::Status status )
+{
+    switch ( status )
+    {
+    case QCamera::UnavailableStatus : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 0
+    case QCamera::UnloadedStatus    : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 1
+    case QCamera::LoadingStatus     : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 2
+    case QCamera::UnloadingStatus   : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 3
+    case QCamera::LoadedStatus      : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status;
+        ui_formMainWindow->comboBoxCameraResolution->clear();
+        QCameraViewfinderSettings cameraViewfinderSettings;
+        QList<QSize> resolution = camera->supportedViewfinderResolutions( cameraViewfinderSettings );
+        for ( int x = 0; x < resolution.count(); x++ )
+        {
+            QString width = QString::number( resolution.at(x).width() );
+            QString height = QString::number( resolution.at(x).height() );
+            ui_formMainWindow->comboBoxCameraResolution->addItem( width + "x" + height );
+        }
+        qDebug().noquote() << global::nameOutput << "Camera resolutions for:"
+                           << ui_formMainWindow->comboBoxCamera->currentText()
+                           << ui_formMainWindow->comboBoxCamera->currentData().toByteArray();
+        qDebug() << resolution;
+        camera->unload();
+        disconnect( camera, nullptr, nullptr, nullptr );
+
+        QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+        QString valueText = settings.value( "comboBoxCameraResolution", "640x480" ).toString();
+        int index = ui_formMainWindow->comboBoxCameraResolution->findText( valueText );
+        if ( index == -1 ) { index = 0; }
+        ui_formMainWindow->comboBoxCameraResolution->setCurrentIndex( index );
+
+        break;
+    }// 4
+    case QCamera::StandbyStatus     : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 5
+    case QCamera::StartingStatus    : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 6
+    case QCamera::StoppingStatus    : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 7
+    case QCamera::ActiveStatus      : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 8
+    }
+}

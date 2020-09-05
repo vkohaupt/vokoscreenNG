@@ -4,11 +4,6 @@ The ToDo list is only for the main developer and serves me as a reminder and can
 Timer:
 --Die Usability ist nicht gut, Timer starten kann als "starte in" und "starte um" interpretiert werden.
 
-Webcam:
---siehe Mail vom 09.08.2020 16:51
---Kamera unterstützt die 640x480 Auflösung nicht
---Kameradaten müßen ausgelesen werden, keine Fixwerte.
-
 openh264:
 --Das Binäry sollte in Zukunft vom cisco Server direkt heruntergeladen werden.
 --Desweiteren muß der User das Binäry aktivieren und deaktivieren können.
