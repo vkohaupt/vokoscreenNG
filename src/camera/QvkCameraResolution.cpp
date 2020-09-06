@@ -44,6 +44,7 @@ void QvkCameraResolution::slot_resolution( int value )
     delete camera;
     camera = new QCamera( device );
     connect( camera, SIGNAL( statusChanged( QCamera::Status ) ), this, SLOT( slot_statusChanged( QCamera::Status ) ) );
+    connect( camera, SIGNAL( stateChanged( QCamera::State   ) ), this, SLOT( slot_stateChanged( QCamera::State ) )  );
     camera->load();
 }
 
@@ -85,5 +86,16 @@ void QvkCameraResolution::slot_statusChanged( QCamera::Status status )
     case QCamera::StartingStatus    : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 6
     case QCamera::StoppingStatus    : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 7
     case QCamera::ActiveStatus      : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 8
+    }
+}
+
+
+void QvkCameraResolution::slot_stateChanged( QCamera::State state )
+{
+    switch ( state )
+    {
+      case QCamera::UnloadedState : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << state; break;  }// 0
+      case QCamera::LoadedState   : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << state; break;  }// 1
+      case QCamera::ActiveState   : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << state; break;  }// 2
     }
 }

@@ -43,6 +43,7 @@ public slots:
 
 private slots:
    void slot_statusChanged( QCamera::Status status );
+   void slot_stateChanged( QCamera::State state );
 
 
 private:
