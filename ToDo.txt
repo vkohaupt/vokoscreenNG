@@ -20,11 +20,6 @@ Aktualisierung:
 Linux:
 --Installer erstellen
 
-Allgemein:
---Temporäre Ordner in /tmp sollten nach gebrauch entfernt werden nicht erst beim schließen von vokoscreeenNG.
---Betrifft nur die Hilfe.
---Lösung könnte sein, mit einer globalen Variabeln zu arbeiten.
-
 Windows:
 --Für den User wird eine sehr einfache Update Funktion benötigt.
   Ein Klick und das update muß installiert werden.
