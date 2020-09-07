@@ -1,6 +1,9 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
+Kamera:
+--Onlinehilfe anpassen
+
 Timer:
 --Die Usability ist nicht gut, Timer starten kann als "starte in" und "starte um" interpretiert werden.
 
