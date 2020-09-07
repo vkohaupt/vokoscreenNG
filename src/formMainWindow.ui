@@ -1407,7 +1407,7 @@
               <item>
                <widget class="QLabel" name="label_Upate_tab_4">
                 <property name="text">
-                 <string>TextLabel</string>
+                 <string notr="true">TextLabel</string>
                 </property>
                 <property name="openExternalLinks">
                  <bool>true</bool>
