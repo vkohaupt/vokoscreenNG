@@ -1,4 +1,5 @@
 /* vokoscreenNG - A desktop recorder
+ *
  * Copyright (C) 2017-2019 Volker Kohaupt
  * 
  * Author:
@@ -20,23 +21,43 @@
  * --End_License--
  */
 
-#include "global.h"
-#include <QString>
-#include <QLineEdit>
+#ifndef QVKSYSTRAYBALLONNEWVERSION_H
+#define QVKSYSTRAYBALLONNEWVERSION_H
 
-namespace global
+#include "ui_formMainWindow.h"
+
+#include "QvkVersion.h"
+
+#include <QObject>
+#include <QSystemTrayIcon>
+
+class QvkSystrayBallonNewVersion: public QSystemTrayIcon
 {
-    QString name = "vokoscreenNG";
-    QString nameOutput = "[" + name + "]";
-    bool VK_showOnlyFallbackIcons = true; // From 3.0.5 have windows and linux the same icons
-    QLineEdit *lineEditAudioPlug;
+    Q_OBJECT
 
-#ifdef Q_OS_LINUX
-    QString version = "3.0.7 pre alpha";
+public:
+    QvkSystrayBallonNewVersion( Ui_formMainWindow *ui_mainwindow );
+    virtual ~QvkSystrayBallonNewVersion();
+    void init();
+
+    
+public slots:
+
+
+private:
+    Ui_formMainWindow *ui;
+    QvkVersion version;
+
+
+private slots:
+    void slot_newVersionAvailable( QString update );
+
+
+protected:
+  
+  
+signals:
+    
+};
 
 #endif
-
-#ifdef Q_OS_WIN
-    QString version = "3.0.7 pre alpha";
-#endif
-}

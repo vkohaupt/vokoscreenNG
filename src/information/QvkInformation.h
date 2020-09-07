@@ -25,6 +25,7 @@
 
 #include "ui_formMainWindow.h"
 #include "QvkSpezialSlider.h"
+#include "QvkVersion.h"
 
 #include <QWidget>
 
@@ -50,6 +51,8 @@ private slots:
 
   void slot_summedTimeAfterPause();
 
+  void slot_newVersionAvailable( QString update );
+
 
 signals:
   
@@ -68,6 +71,9 @@ private:
 
   QvkSpezialSlider *sliderCountDown;
   QvkSpezialSlider *sliderSecondWaitBeforeRecording;
+
+  QvkVersion version;
+
 };
 
 #endif
