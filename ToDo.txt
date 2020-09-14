@@ -1,6 +1,11 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
+Audio Linux:
+--Hinzufügen bzw. das Entfernen der Audiogeräte wird nicht erkannt.
+--Problem liegt bei GStreamer, das monitoring funktionert nicht.
+--Das Erkennen über polling realsieren.
+
 Kamera:
 --Onlinehilfe anpassen
 
