@@ -29,6 +29,7 @@ cameraSettingsDialog::cameraSettingsDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::cameraSettingsDialog)
 {
+    setModal( true );
     setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint | Qt::Tool );
     ui->setupUi(this);
 
