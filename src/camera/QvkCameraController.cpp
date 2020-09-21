@@ -97,14 +97,18 @@ void QvkCameraController::slot_frameOnOff( bool value )
 {
     if ( cameraWindow->isVisible() == true )
     {
+        Qt::WindowFlags flags = 0;
+
         if ( value == true )
         {
-            cameraWindow->setWindowFlags( Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+            flags = Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
+            cameraWindow->setWindowFlags( flags );
         }
 
         if ( value == false )
         {
-            cameraWindow->setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint );
+            flags = Qt::Window | Qt::WindowStaysOnTopHint;
+            cameraWindow->setWindowFlags( flags );
         }
 
         cameraWindow->show();

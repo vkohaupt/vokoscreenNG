@@ -41,7 +41,7 @@ cameraSettingsDialog::cameraSettingsDialog(QWidget *parent) :
     dialog_sliderCameraWindowSize->show();
     dialog_sliderCameraWindowSize->setShowValue( false );
 
-    ui->tabWidget->setTabIcon( 0, QIcon::fromTheme( "camera-web", QIcon( ":/pictures/camera/camera.png" ) ) );
+    ui->tabWidget->setTabIcon( 0, QIcon( ":/pictures/camera/camera.png" ) );
     setWindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
     setWindowTitle( tr( "Camera settings" ) );
 }
