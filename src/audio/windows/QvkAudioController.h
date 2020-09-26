@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2019 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@freenet.de>
  *
@@ -20,39 +20,38 @@
  * --End_License--
  */
 
-#ifndef QVKPULSEAUDIOWATCHER_H
-#define QVKPULSEAUDIOWATCHER_H
-
+#ifndef QVKAUDIOCONTROLLER_H
+#define QVKAUDIOCONTROLLER_H
 
 #include "ui_formMainWindow.h"
+#include "WASAPI/QvkWASAPIController.h"
+#include "DirectSound/QvkDirectSoundController.h"
 
 #include <QObject>
-#include <QTimer>
 
-class QvkPulseAudioWatcher: public QObject
+class QvkAudioController: public QObject
 {
     Q_OBJECT
 
 
 public:
-    QvkPulseAudioWatcher( Ui_formMainWindow *ui_mainwindow );
-    virtual ~QvkPulseAudioWatcher();
-    void start_monitor();
+    QvkAudioController( Ui_formMainWindow *ui_mainwindow );
+    virtual ~QvkAudioController();
+    Ui_formMainWindow *ui;
+    QRadioButton *radioButtonWASAPI;
+    QRadioButton *radioButtonDirectSound;
 
 public slots:
 
 
 private:
-    Ui_formMainWindow *ui;
-    QTimer *timer;
-    bool isAudioDeviceSelected();
-    void audioIconOnOff(bool state);
+    QvkWASAPIController *vkWASAPIController;
+    QvkDirectSoundController *vkDirectSoundController;
 
 
 private slots:
-    void slot_update();
-    void slot_audioDeviceSelected();
-
+    void slot_WASAPI( bool value );
+    void slot_DirectSound( bool value );
 
 protected:
 

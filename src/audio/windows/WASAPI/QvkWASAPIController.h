@@ -20,45 +20,46 @@
  * --End_License--
  */
 
-#ifndef QVKPULSEAUDIOWATCHER_H
-#define QVKPULSEAUDIOWATCHER_H
-
+#ifndef QVKWASAPICONTROLLER_H
+#define QVKWASAPICONTROLLER_H
 
 #include "ui_formMainWindow.h"
+#include "QvkWASAPIGstreamer.h"
+#include "QvkWASAPIWatcher.h"
 
 #include <QObject>
-#include <QTimer>
 
-class QvkPulseAudioWatcher: public QObject
+class QvkWASAPIController: public QObject
 {
     Q_OBJECT
 
-
 public:
-    QvkPulseAudioWatcher( Ui_formMainWindow *ui_mainwindow );
-    virtual ~QvkPulseAudioWatcher();
-    void start_monitor();
+    QvkWASAPIController(Ui_formMainWindow *ui_mainwindow);
+    virtual ~QvkWASAPIController();
+    void init();
+    void getAllDevices();
+    QvkWASAPIWatcher *vkWASAPIWatcher;
+
 
 public slots:
+    void slot_audioDeviceSelected();
+    void slot_checkBox(bool);
 
 
 private:
     Ui_formMainWindow *ui;
-    QTimer *timer;
-    bool isAudioDeviceSelected();
-    void audioIconOnOff(bool state);
 
 
 private slots:
-    void slot_update();
-    void slot_audioDeviceSelected();
+    void slot_pluggedInOutDevice( QString string );
+    void slot_audioIconOnOff( bool state );
 
 
 protected:
 
 
 signals:
-
+    void signal_haveAudioDeviceSelected( bool );
 
 };
 

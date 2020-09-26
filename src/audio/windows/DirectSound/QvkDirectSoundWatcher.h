@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QVKPULSEAUDIOWATCHER_H
-#define QVKPULSEAUDIOWATCHER_H
+#ifndef QVKDIRECTSOUNDWATCHER_H
+#define QVKDIRECTSOUNDWATCHER_H
 
 
 #include "ui_formMainWindow.h"
@@ -29,29 +29,28 @@
 #include <QObject>
 #include <QTimer>
 
-class QvkPulseAudioWatcher: public QObject
+class QvkDirectSoundWatcher: public QObject
 {
     Q_OBJECT
 
 
 public:
-    QvkPulseAudioWatcher( Ui_formMainWindow *ui_mainwindow );
-    virtual ~QvkPulseAudioWatcher();
+    QvkDirectSoundWatcher( Ui_formMainWindow *ui_mainwindow );
+    virtual ~QvkDirectSoundWatcher();
     void start_monitor();
+    QLineEdit *lineEditDiretSoundAudioPlug;
+    QTimer *timer;
 
 public slots:
 
 
 private:
     Ui_formMainWindow *ui;
-    QTimer *timer;
-    bool isAudioDeviceSelected();
-    void audioIconOnOff(bool state);
+    int counter;
 
 
 private slots:
     void slot_update();
-    void slot_audioDeviceSelected();
 
 
 protected:

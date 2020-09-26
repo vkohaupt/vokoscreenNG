@@ -30,6 +30,7 @@
 #include "QvkPulseAudioWatcher.h"
 #include "QvkPulseAudioServer.h"
 #include "QvkPulseAudioDevices.h"
+#include "global.h"
 
 QvkPulseAudioController::QvkPulseAudioController( Ui_formMainWindow *ui_mainwindow )
 {
@@ -69,13 +70,13 @@ void QvkPulseAudioController::getAllDevices()
             checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( i ) );
             checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
-//            qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( list.at(i) ).section( ":::", 1, 1 ) << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 );
+            qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( list.at(i) ).section( ":::", 1, 1 ) << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 );
         }
         qDebug().noquote();
 
         QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
         ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
-//        slot_audioDeviceSelected();
+        slot_audioDeviceSelected();
     }
     else
     {
@@ -88,10 +89,32 @@ void QvkPulseAudioController::getAllDevices()
 }
 
 
+void QvkPulseAudioController::slot_audioDeviceSelected()
+{
+    audioIconOnOff( isAudioDeviceSelected() );
+}
+
+
+bool QvkPulseAudioController::isAudioDeviceSelected()
+{
+    bool value = false;
+    QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ )
+    {
+        if ( listCheckBox.at(i)->checkState() == Qt::Checked )
+        {
+            value = true;
+            break;
+        }
+    }
+    return value;
+}
+
+
 /*
  * Set a new icon with a red cross
  */
-void QvkPulseAudioController::slot_audioIconOnOff( bool state )
+void QvkPulseAudioController::audioIconOnOff( bool state )
 {
     QIcon myIcon( ":/pictures/screencast/microphone.png" );
     if ( state == false  )

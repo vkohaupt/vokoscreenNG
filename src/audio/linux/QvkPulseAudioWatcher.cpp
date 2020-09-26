@@ -1,4 +1,4 @@
-﻿/* vokoscreenNG - A desktop recorder
+/* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2019 Volker Kohaupt
  *
  * Author:
@@ -22,12 +22,13 @@
 
 #include "QvkPulseAudioWatcher.h"
 #include "QvkPulseAudioDevices.h"
-//#include "global.h"
+#include "global.h"
 
 #include <QDebug>
 #include <QCheckBox>
 #include <QLabel>
 #include <QSpacerItem>
+#include <QPainter>
 
 /*
  * QvkWatcherPlug monitoring only new or removed Audiodevices.
@@ -153,5 +154,55 @@ void QvkPulseAudioWatcher::slot_update()
         label->setText( "No audio recording device found." );
         ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter);
         ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, label );
+    }
+}
+
+
+void QvkPulseAudioWatcher::slot_audioDeviceSelected()
+{
+    audioIconOnOff( isAudioDeviceSelected() );
+}
+
+
+bool QvkPulseAudioWatcher::isAudioDeviceSelected()
+{
+    bool value = false;
+    QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ )
+    {
+        if ( listCheckBox.at(i)->checkState() == Qt::Checked )
+        {
+            value = true;
+            break;
+        }
+    }
+    return value;
+}
+
+
+/*
+ * Set a new icon with a red cross
+ */
+void QvkPulseAudioWatcher::audioIconOnOff( bool state )
+{
+    QIcon myIcon( ":/pictures/screencast/microphone.png" );
+    if ( state == false  )
+    {
+        QSize size = ui->tabWidgetScreencast->iconSize();
+        QPixmap workPixmap( myIcon.pixmap( size ) );
+        QPainter painter;
+        QPen pen;
+        painter.begin( &workPixmap );
+        pen.setColor( Qt::red );
+        pen.setWidth( 2 );
+        painter.setPen( pen );
+        painter.drawLine ( 5, 5, size.width()-5, size.height()-5 );
+        painter.drawLine ( 5, size.height()-5, size.width()-5, 5 );
+        painter.end();
+        int index = ui->tabWidgetScreencast->indexOf( ui->tabAudio );
+        ui->tabWidgetScreencast->setTabIcon( index, workPixmap );
+    } else {
+        int index = ui->tabWidgetScreencast->indexOf( ui->tabAudio );
+        ui->tabWidgetScreencast->setTabIcon( index, myIcon );
     }
 }
