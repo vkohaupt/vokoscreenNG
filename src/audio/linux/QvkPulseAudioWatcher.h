@@ -58,6 +58,7 @@ protected:
 
 
 signals:
+    void signal_haveAudioDeviceSelected( bool );
 
 
 };

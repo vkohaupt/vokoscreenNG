@@ -41,6 +41,8 @@ QvkPulseAudioWatcher::QvkPulseAudioWatcher( Ui_formMainWindow *ui_mainwindow )
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( 3000 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_update() ) );
+    connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
+    connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
 }
 
 
@@ -106,7 +108,7 @@ void QvkPulseAudioWatcher::slot_update()
                 connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
                 checkboxAudioDevice->setText( name );
                 checkboxAudioDevice->setAccessibleName( device );
-                QList<QCheckBox *> listAudioDevices = ui->verticalLayoutAudioDevices->findChildren<QCheckBox *>();
+                QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
                 checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( listAudioDevices.count() ) );
                 checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
                 ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
@@ -155,6 +157,8 @@ void QvkPulseAudioWatcher::slot_update()
         ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter);
         ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, label );
     }
+
+    slot_audioDeviceSelected();
 }
 
 
@@ -201,8 +205,10 @@ void QvkPulseAudioWatcher::audioIconOnOff( bool state )
         painter.end();
         int index = ui->tabWidgetScreencast->indexOf( ui->tabAudio );
         ui->tabWidgetScreencast->setTabIcon( index, workPixmap );
+        emit signal_haveAudioDeviceSelected( false );
     } else {
         int index = ui->tabWidgetScreencast->indexOf( ui->tabAudio );
         ui->tabWidgetScreencast->setTabIcon( index, myIcon );
+        emit signal_haveAudioDeviceSelected( true );
     }
 }

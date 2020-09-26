@@ -45,6 +45,8 @@ QvkPulseAudioController::~QvkPulseAudioController()
 
 void QvkPulseAudioController::init()
 {
+    connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
+    connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
     getAllDevices();
     QvkPulseAudioWatcher *vkPulseAudioWatcher = new QvkPulseAudioWatcher( ui );
     vkPulseAudioWatcher->start_monitor();
@@ -76,16 +78,16 @@ void QvkPulseAudioController::getAllDevices()
 
         QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
         ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
-        slot_audioDeviceSelected();
     }
     else
     {
-//        emit signal_haveAudioDeviceSelected( false );
         QLabel *label = new QLabel();
         label->setText( "No audio recording device found." );
         ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter );
         ui->verticalLayoutAudioDevices->addWidget( label );
     }
+
+    slot_audioDeviceSelected();
 }
 
 
@@ -132,9 +134,12 @@ void QvkPulseAudioController::audioIconOnOff( bool state )
         painter.end();
         int index = ui->tabWidgetScreencast->indexOf( ui->tabAudio );
         ui->tabWidgetScreencast->setTabIcon( index, workPixmap );
+        emit signal_haveAudioDeviceSelected( false );
+
     } else {
         int index = ui->tabWidgetScreencast->indexOf( ui->tabAudio );
         ui->tabWidgetScreencast->setTabIcon( index, myIcon );
+        emit signal_haveAudioDeviceSelected( true );
     }
 }
 
