@@ -117,6 +117,7 @@ void QvkPulseAudioWatcher::slot_update()
 
         QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
         ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
+        slot_audioDeviceSelected();
     }
 
     // Remove device
@@ -130,6 +131,7 @@ void QvkPulseAudioWatcher::slot_update()
                 delete listCheckBox.at(i);
             }
         }
+        slot_audioDeviceSelected();
     }
 
     if ( list.empty() )
@@ -156,9 +158,8 @@ void QvkPulseAudioWatcher::slot_update()
         label->setText( "No audio recording device found." );
         ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter);
         ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, label );
+        slot_audioDeviceSelected();
     }
-
-    slot_audioDeviceSelected();
 }
 
 

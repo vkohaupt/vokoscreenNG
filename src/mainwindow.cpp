@@ -400,9 +400,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 #ifdef Q_OS_LINUX
     vkAudioController = new QvkPulseAudioController( ui );
-    //connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this,                   SLOT( slot_audioIconOnOff( bool ) ) );
-    //connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
-    //connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
     vkAudioController->init();
 #endif
 
@@ -902,9 +899,10 @@ bool QvkMainWindow::isAudioDeviceSelected()
     return value;
 }
 
+//
+// Set a new icon with a red cross
+//
 /*
- * Set a new icon with a red cross
- */
 void QvkMainWindow::slot_audioIconOnOff( bool state )
 {
     if ( ( ( isAudioDeviceSelected() == false ) and ( state == false ) ) or
@@ -933,7 +931,7 @@ void QvkMainWindow::slot_audioIconOnOff( bool state )
                                       vkTheme->VK_getIcon( "audio-input-microphone", ":/pictures/screencast/microphone.png" ) );
     }
 }
-
+*/
 
 #ifdef Q_OS_LINUX
 QString QvkMainWindow::VK_getXimagesrc()
