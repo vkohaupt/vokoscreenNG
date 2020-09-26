@@ -76,8 +76,6 @@ unix:PKGCONFIG += gstreamer-1.0 libpulse
 unix:LIBS += -lpulse-simple
 #unix:PKGCONFIG += bzip2
 
-
-
 win32:RC_ICONS = vokoscreenNG.ico
 
 win32:GStreamerDir=$$(GSTREAMER_1_0_ROOT_X86)

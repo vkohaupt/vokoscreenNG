@@ -48,8 +48,6 @@ bool QvkPulseAudioServer::isAvailable()
 
     int error = 0;
 
-    printf( "Compiled with PulseAudio libray version: %s\n", pa_get_library_version() );
-
     paConnection = pa_simple_new(
                 NULL, // default PA server
                 "Test libpulse", // app name
