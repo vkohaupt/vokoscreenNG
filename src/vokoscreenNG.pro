@@ -72,8 +72,11 @@ QMAKE_CLEAN += $$TARGET */*~
 QMAKE_LFLAGS += -Wl,--as-needed
 
 unix:CONFIG += link_pkgconfig
-unix:PKGCONFIG += gstreamer-1.0
+unix:PKGCONFIG += gstreamer-1.0 libpulse
+unix:LIBS += -lpulse-simple
 #unix:PKGCONFIG += bzip2
+
+
 
 win32:RC_ICONS = vokoscreenNG.ico
 

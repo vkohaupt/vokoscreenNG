@@ -36,7 +36,7 @@
 #include "QvkLimitDiskFreeSpace.h"
 #include "QvkSpezialSlider.h"
 #include "QvkSystrayAlternative.h"
-#include "QvkAudioController.h"
+#include "QvkPulseAudioController.h"
 #include <QMainWindow>
 #include <QFileSystemWatcher>
 #include <QSoundEffect>
@@ -60,7 +60,7 @@ public:
     QvkRegionChoise *vkRegionChoise;
     QvkHelp *vkHelp;
     QvkSystray *vkSystray;
-    QvkAudioController *vkAudioController;
+    QvkPulseAudioController *vkAudioController;
 
 private:
     QvkSpezialSlider *sliderScreencastCountDown;
