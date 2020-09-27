@@ -5,11 +5,6 @@ Audio Windows 7 WASAPI:
 --Aufnahme Lautsprecher funktioniert nicht. Datei ist 0 Byte groß.
 --Analyse mit GST_DEBUG siehe main.cpp
 
-Audio Linux:
---Hinzufügen bzw. das Entfernen der Audiogeräte wird nicht erkannt.
---Problem liegt bei GStreamer, das monitoring funktionert nicht.
---Das Erkennen über polling realisieren.
-
 Kamera:
 --Onlinehilfe anpassen
 
