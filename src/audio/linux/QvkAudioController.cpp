@@ -32,18 +32,18 @@
 #include "QvkPulseAudioDevices.h"
 #include "global.h"
 
-QvkPulseAudioController::QvkPulseAudioController( Ui_formMainWindow *ui_mainwindow )
+QvkAudioController::QvkAudioController( Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
 }
 
 
-QvkPulseAudioController::~QvkPulseAudioController()
+QvkAudioController::~QvkAudioController()
 {
 }
 
 
-void QvkPulseAudioController::init()
+void QvkAudioController::init()
 {
     connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
     connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
@@ -53,7 +53,7 @@ void QvkPulseAudioController::init()
 }
 
 
-void QvkPulseAudioController::getAllDevices()
+void QvkAudioController::getAllDevices()
 {
     QStringList list;
     if ( QvkPulseAudioServer::isAvailable() )
@@ -91,13 +91,13 @@ void QvkPulseAudioController::getAllDevices()
 }
 
 
-void QvkPulseAudioController::slot_audioDeviceSelected()
+void QvkAudioController::slot_audioDeviceSelected()
 {
     audioIconOnOff( isAudioDeviceSelected() );
 }
 
 
-bool QvkPulseAudioController::isAudioDeviceSelected()
+bool QvkAudioController::isAudioDeviceSelected()
 {
     bool value = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
@@ -116,7 +116,7 @@ bool QvkPulseAudioController::isAudioDeviceSelected()
 /*
  * Set a new icon with a red cross
  */
-void QvkPulseAudioController::audioIconOnOff( bool state )
+void QvkAudioController::audioIconOnOff( bool state )
 {
     QIcon myIcon( ":/pictures/screencast/microphone.png" );
     if ( state == false  )

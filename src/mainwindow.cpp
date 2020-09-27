@@ -399,7 +399,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 
 #ifdef Q_OS_LINUX
-    vkAudioController = new QvkPulseAudioController( ui );
+    vkAudioController = new QvkAudioController( ui );
     vkAudioController->init();
 #endif
 

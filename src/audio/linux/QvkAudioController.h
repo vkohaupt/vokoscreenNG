@@ -20,20 +20,20 @@
  * --End_License--
  */
 
-#ifndef QVKPULSEAUDIOCONTROLLER_H
-#define QVKPULSEAUDIOCONTROLLER_H
+#ifndef QVKAUDIOCONTROLLER_H
+#define QVKAUDIOCONTROLLER_H
 
 #include <QObject>
 
 #include "ui_formMainWindow.h"
 
-class QvkPulseAudioController: public QObject
+class QvkAudioController: public QObject
 {
     Q_OBJECT
 
 public:
-    QvkPulseAudioController( Ui_formMainWindow *ui_mainwindow );
-    virtual ~QvkPulseAudioController();
+    QvkAudioController( Ui_formMainWindow *ui_mainwindow );
+    virtual ~QvkAudioController();
     void init();
 
 
