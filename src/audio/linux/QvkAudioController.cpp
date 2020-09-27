@@ -26,7 +26,7 @@
 #include <QCheckBox>
 #include <QLabel>
 
-#include "QvkPulseAudioController.h"
+#include "QvkAudioController.h"
 #include "QvkPulseAudioWatcher.h"
 #include "QvkPulseAudioServer.h"
 #include "QvkPulseAudioDevices.h"
