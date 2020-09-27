@@ -102,7 +102,7 @@ void QvkPulseAudioWatcher::slot_update()
             {
                 QString name = list.at(i).section( ":::", 1, 1 );
                 QString device = list.at(i).section( ":::", 0, 0 );
-                qDebug().noquote() << "[PulseAudio] Added:" << name << "Device:" << device;
+                qDebug().noquote() << global::nameOutput << "[PulseAudio] Added:" << name << "Device:" << device;
 
                 QCheckBox *checkboxAudioDevice = new QCheckBox();
                 connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
@@ -127,7 +127,7 @@ void QvkPulseAudioWatcher::slot_update()
         {
             if ( stringListAudio_Device.contains( listCheckBox.at(i)->accessibleName() ) == false )
             {
-                qDebug().noquote() << "[PulseAudio] Removed:" << listCheckBox.at(i)->text() << "Device:" << listCheckBox.at(i)->accessibleName();
+                qDebug().noquote() << global::nameOutput << "[PulseAudio] Removed:" << listCheckBox.at(i)->text() << "Device:" << listCheckBox.at(i)->accessibleName();
                 delete listCheckBox.at(i);
             }
         }
