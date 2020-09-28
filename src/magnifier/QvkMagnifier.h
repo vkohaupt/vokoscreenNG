@@ -65,7 +65,7 @@ private:
   int distanceY;
   int faktor;
   QTimer *timer;
-  
+  QRect rectVirtualScreen;
 };
 
 
