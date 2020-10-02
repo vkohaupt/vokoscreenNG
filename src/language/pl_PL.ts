@@ -127,6 +127,13 @@
     </message>
 </context>
 <context>
+    <name>QvkPulseAudioWatcher</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Wybierz jedno lub wiele urządzeń</translation>
+    </message>
+</context>
+<context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>

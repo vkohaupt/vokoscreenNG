@@ -899,39 +899,6 @@ bool QvkMainWindow::isAudioDeviceSelected()
     return value;
 }
 
-//
-// Set a new icon with a red cross
-//
-/*
-void QvkMainWindow::slot_audioIconOnOff( bool state )
-{
-    if ( ( ( isAudioDeviceSelected() == false ) and ( state == false ) ) or
-         ( ( isAudioDeviceSelected() == false ) and ( state == true ) ) or
-         ( ( isAudioDeviceSelected() == true )  and ( state == false ) ) )
-    {
-        QIcon myIcon = vkTheme->VK_getIcon( "audio-input-microphone", ":/pictures/screencast/microphone.png" );
-        QSize size = ui->tabWidgetScreencast->iconSize();
-        QPixmap workPixmap( myIcon.pixmap( size ) );
-        QPainter painter;
-        QPen pen;
-        painter.begin( &workPixmap );
-        pen.setColor( Qt::red );
-        pen.setWidth( 2 );
-        painter.setPen( pen );
-        painter.drawLine ( 5, 5, size.width()-5, size.height()-5 );
-        painter.drawLine ( 5, size.height()-5, size.width()-5, 5 );
-        painter.end();
-        vkTheme->makeAndSetValidIcon( ui->tabWidgetScreencast,
-                                      ui->tabWidgetScreencast->indexOf( ui->tabAudio ),
-                                      QIcon( workPixmap ) );
-    }
-    else{
-        vkTheme->makeAndSetValidIcon( ui->tabWidgetScreencast,
-                                      ui->tabWidgetScreencast->indexOf( ui->tabAudio ),
-                                      vkTheme->VK_getIcon( "audio-input-microphone", ":/pictures/screencast/microphone.png" ) );
-    }
-}
-*/
 
 #ifdef Q_OS_LINUX
 QString QvkMainWindow::VK_getXimagesrc()

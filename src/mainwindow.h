@@ -148,7 +148,6 @@ private slots:
     void slot_Folder();
     void slot_screenCountChanged( QString, QString );
     void slot_screenCountChangedArea( QString stringText, QString stringData );
-//    void slot_audioIconOnOff(bool state );
     void slot_newVideoPath();
     void slot_videoFileSystemWatcherSetButtons();
     void slot_videoFileSystemWatcherSetNewPath();

@@ -128,6 +128,13 @@ Odhláste sa a naštartujte X11 desktopové sedenie</translation>
     </message>
 </context>
 <context>
+    <name>QvkPulseAudioWatcher</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Vyberte jedno alebo viac zariadení</translation>
+    </message>
+</context>
+<context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
