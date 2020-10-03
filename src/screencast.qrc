@@ -67,6 +67,7 @@
 <file>pictures/template.license</file>
 <file>pictures/windows.license</file>
 <file>sound/wasapi.wav</file>
+<file>language/ar.qm</file>
 <file>language/ca.qm</file>
 <file>language/cs_CZ.qm</file>
 <file>language/de_AT.qm</file>
