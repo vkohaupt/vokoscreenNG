@@ -84,6 +84,7 @@ int main(int argc, char *argv[])
     }
 
     // Initialize GStreamer
+    // https://developer.gnome.org/gstreamer/stable/gst-running.html
 #ifdef Q_OS_WIN
     QString pathString = QDir::currentPath();
     QByteArray pathByteArray;

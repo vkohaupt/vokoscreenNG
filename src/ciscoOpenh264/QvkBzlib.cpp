@@ -39,6 +39,7 @@ QvkBzlib::~QvkBzlib()
 
 void QvkBzlib::deCompress( QString fileWithPath )
 {
+    QString unCompresseFileName = fileWithPath;
     char *strIN = fileWithPath.toLatin1().data();
 
     FILE* inFile;
@@ -50,7 +51,7 @@ void QvkBzlib::deCompress( QString fileWithPath )
     if ( !inFile )
     {
         /* handle error */
-        qDebug() << global::name << "can not open file " << strIN;
+        qDebug().noquote() << global::nameOutput << "[h264] can not open file " << strIN;
         return;
     }
 
@@ -59,7 +60,7 @@ void QvkBzlib::deCompress( QString fileWithPath )
     {
         /* handle error */
         BZ2_bzReadClose ( &bzerror, bzFile );
-        qDebug() << global::name << "can not read file " << strIN;
+        qDebug().noquote() << global::nameOutput << "[h264] can not read file " << strIN;
         return;
     }
 
@@ -93,4 +94,7 @@ void QvkBzlib::deCompress( QString fileWithPath )
         BZ2_bzReadClose ( &bzerror, bzFile );
     }
     
+    qDebug().noquote() << global::nameOutput << "[h264] Decompress" << unCompresseFileName << "to" << fileWithPath;
+
+    emit signal_deCompressed( fileWithPath );
 }

@@ -25,12 +25,14 @@
 
 #include <QObject>
 
+#include "QvkBzlib.h"
+
 class QvkCiscoOpenh264Controller: public QObject
 {
     Q_OBJECT
 
 public:
-    QvkCiscoOpenh264Controller();
+    QvkCiscoOpenh264Controller( QString pathWithSettingsFilename );
     virtual ~QvkCiscoOpenh264Controller();
 
     
@@ -38,10 +40,12 @@ public slots:
 
   
 private:
-
+    QvkBzlib *vkBzlib;
     
 private slots:
     void slot_deCompress( QString string );
+    void slot_rename( QString pathWithFile );
+
 
 protected:
   

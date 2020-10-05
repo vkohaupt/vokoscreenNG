@@ -47,6 +47,7 @@ protected:
   
   
 signals:
+    void signal_deCompressed( QString );
 
 };
 
