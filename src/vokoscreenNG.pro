@@ -84,8 +84,8 @@ win32:INCLUDEPATH += $${GStreamerDir}\include\glib-2.0
 win32:INCLUDEPATH += $${GStreamerDir}\lib\glib-2.0\include
 win32:INCLUDEPATH += $${GStreamerDir}\include
 
-win32:LIBS += -LC:\gstreamer\1.0\x86\bin
-win32:LIBS += -LC:\gstreamer\1.0\x86\lib\gstreamer-1.0
+win32:LIBS += -L$${GStreamerDir}\bin
+win32:LIBS += -L$${GStreamerDir}\lib\gstreamer-1.0
 win32:LIBS += -LC:\Qt\Qt5.9.4\Tools\mingw530_32\bin
 win32:LIBS += -LC:\Qt\Qt5.9.4\Tools\mingw530_32\opt\bin
 win32:LIBS += -llibgstreamer-1.0-0
