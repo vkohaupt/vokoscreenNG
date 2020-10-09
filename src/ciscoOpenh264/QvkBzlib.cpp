@@ -39,6 +39,7 @@ QvkBzlib::~QvkBzlib()
 
 void QvkBzlib::deCompress( QString fileWithPath )
 {
+    qDebug().noquote() << global::nameOutput << "[h264] bzlibVersion:" << BZ2_bzlibVersion();
     QString unCompresseFileName = fileWithPath;
     char *strIN = fileWithPath.toLatin1().data();
 

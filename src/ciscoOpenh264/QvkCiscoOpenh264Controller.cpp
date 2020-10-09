@@ -34,7 +34,7 @@ QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller( QString pathWithSettings
     QvkCiscoOpenh264Downloader *vkCiscoOpenh264Downloader = new QvkCiscoOpenh264Downloader( fileInfo.path() );
     connect( vkCiscoOpenh264Downloader, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_deCompress( QString ) ) );
 
-    connect( vkBzlib, SIGNAL( signal_deCompressed( QString ) ), this, SLOT( slot_rename( QString ) ) );
+//    connect( vkBzlib, SIGNAL( signal_deCompressed( QString ) ), this, SLOT( slot_rename( QString ) ) );
 
     QString downloadFile = "http://ciscobinary.openh264.org/openh264-2.1.1-win32.dll.bz2";
     vkCiscoOpenh264Downloader->doDownload( downloadFile );

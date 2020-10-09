@@ -62,6 +62,8 @@ private slots:
    void slot_frameOnOff( bool value );
    void slot_sliderMoved( int value );
 
+   void slot_resolutionChanged();
+
 
 private:
   Ui_formMainWindow *ui_formMainWindow;

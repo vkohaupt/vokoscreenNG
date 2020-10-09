@@ -42,6 +42,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
 
     QvkCameraResolution *vkCameraResolution = new QvkCameraResolution( ui_formMainWindow );
     connect( ui_formMainWindow->comboBoxCamera, SIGNAL( currentIndexChanged( int ) ), vkCameraResolution, SLOT( slot_resolution( int ) ) );
+    connect( ui_formMainWindow->comboBoxCameraResolution, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_resolutionChanged() ) );
 
     getAllDevices();
 
@@ -59,8 +60,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
 
     connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_formMainWindow->comboBoxCamera, SLOT( setDisabled( bool ) ) );
     connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), this, SLOT( slot_startCamera( bool ) ) );
-    connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraWindowFrame, SLOT( setEnabled(bool ) ) );
-    connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_formMainWindow->comboBoxCameraResolution, SLOT( setDisabled(bool ) ) );
+    connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraWindowFrame, SLOT( setEnabled( bool ) ) );
 
     connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ), this, SLOT( slot_setNewImage( QImage ) ) );
 
@@ -73,6 +73,16 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
 
 QvkCameraController::~QvkCameraController()
 {
+}
+
+
+void QvkCameraController::slot_resolutionChanged()
+{
+    if ( ui_formMainWindow->checkBoxCameraOnOff->checkState() == Qt::Checked )
+    {
+        ui_formMainWindow->checkBoxCameraOnOff->click();
+        ui_formMainWindow->checkBoxCameraOnOff->click();
+    }
 }
 
 
@@ -170,7 +180,6 @@ void QvkCameraController::slot_setNewImage( QImage image )
 void QvkCameraController::slot_addedCamera( QString description, QString device )
 {
     ui_formMainWindow->checkBoxCameraOnOff->setEnabled( true );
-    ui_formMainWindow->comboBoxCameraResolution->setEnabled( true );
     ui_formMainWindow->comboBoxCamera->setEnabled( true );
     ui_formMainWindow->comboBoxCamera->addItem( description, device.toLatin1() );
     ui_formMainWindow->checkBoxCameraGray->setEnabled( true );
@@ -199,7 +208,6 @@ void QvkCameraController::slot_removedCamera( QString device )
     {
         ui_formMainWindow->checkBoxCameraOnOff->setEnabled( false );
         ui_formMainWindow->comboBoxCamera->setEnabled( false );
-        ui_formMainWindow->comboBoxCameraResolution->setEnabled( false );
         ui_formMainWindow->comboBoxCameraResolution->clear();
         ui_formMainWindow->checkBoxCameraGray->setEnabled( false );
         ui_formMainWindow->checkBoxCameraInvert->setEnabled( false );
