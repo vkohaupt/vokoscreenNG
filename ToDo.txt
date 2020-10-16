@@ -1,6 +1,9 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
+Shortcuts:
+-https://doc.qt.io/qt-5/stylesheet-reference.html#spacing-prop
+
 Windows Log:
 -In der Ausgabe sind Sonderzeichen wenn das Log zum Mailprogramm geschickt wird.
 -Zu dem wird die Ausgabe doppelt erstellt. Siehe Linux dort läuft es richtig.
