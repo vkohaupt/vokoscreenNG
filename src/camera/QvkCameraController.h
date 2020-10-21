@@ -72,11 +72,12 @@ private:
   QvkVideoSurface *videoSurface;
   QvkSpezialSlider *sliderCameraWindowSize;
 
+
 protected:
 
 
 signals:
-
+  void signal_resolutionChanged( bool );
 
 };
 
