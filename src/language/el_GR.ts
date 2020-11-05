@@ -1,220 +1,220 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="el_GR" version="2.1">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Seleccione um ou mais dispositivos</translation>
+        <translation>Επιλογή μιας ή περισσότερων συσκευών</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Κάμερα</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Mudar para janela</translation>
+        <translation>Εναλλαγή σε Παράθυρο</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Mudar para ecrã inteiro</translation>
+        <translation>Εναλλαγή σε Πλήρη οθόνη</translation>
     </message>
 </context>
 <context>
     <name>QvkCountdown</name>
     <message>
         <source>Countdown</source>
-        <translation>Contagem decrescente</translation>
+        <translation>Αντίστροφη μέτρηση</translation>
     </message>
 </context>
 <context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Seleccione um ou mais dispositivos</translation>
+        <translation>Επιλογή μιας ή περισσότερων συσκευών</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Ajuda</translation>
+        <translation>Βοήθεια</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Aviso</translation>
+        <translation>Προειδοποίηση</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>A gravação não é iniciada, sem espaço em disco disponível.</translation>
+        <translation>Η εγγραφή δε ξεκίνησε, μη επαρκής ελεύθερος χώρος στο δίσκο.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>É alcançado o limite de espaço em disco.</translation>
+        <translation>Φτάσατε το όριο ελεύθερου χώρου στο δίσκο.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Limite de espaço livre em disco</translation>
+        <translation>Όριο ελεύθερου χώρου στο δίσκο.</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>Μεγαμπάιτ</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>A gravação foi parada, sem espaço em disco disponível.</translation>
+        <translation>Η εγγραφή σταμάτησε, μη επαρκής ελεύθερος χώρος στο δίσκο.</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Ecrã inteiro</translation>
+        <translation>Πλήρης οθόνη</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Janela</translation>
+        <translation>Παράθυρο</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Não foi encontrado nenhum gestor de ficheiros.</translation>
+        <translation>Δε βρέθηκε διαχειριστής αρχείων.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Por favor instale um gestor de ficheiros.</translation>
+        <translation>Παρακαλώ εγκαταστήστε ένα διαχειριστή αρχείων.</translation>
     </message>
     <message>
         <source>Desktop session is a Wayland session</source>
-        <translation>A sessão de área de trabalho é uma sessão de Wayland</translation>
+        <translation>Η συνεδρία είναι Wayland</translation>
     </message>
     <message>
         <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Por enquanto o Wayland não é suportado. Uma transmissão mostra um ecrã a negro. Por favor saia da conta e inicie uma sessão de Área de trabalho X11</translation>
+        <translation>Έως τώρα η Wayland δεν υποστηρίζεται. Η μετάδοση οθόνης δείχνει μαύρη εικόνα. Παρακαλώ αποσυνδεθείτε και ξεκινήστε μία συνεδρία X11 </translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Código-fonte</translation>
+        <translation>Πηγαίος κώδικας</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Página inicial</translation>
+        <translation>Αρχική</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Traduções</translation>
+        <translation>Μεταφράσεις</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Doar</translation>
+        <translation>Δωρεά</translation>
     </message>
     <message>
         <source>Wayland desktop session detected</source>
-        <translation>Detectada sessão de área de trabalho Wayland</translation>
+        <translation>Ανιχνεύθηκε συνεδρία Wayland</translation>
     </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
-        <translation>Abrir ficheiro</translation>
+        <translation>Άνοιγμα αρχείου</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Seleccione um ou mais dispositivos</translation>
+        <translation>Επιλογή μιας ή περισσότερων συσκευών</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>Περιοχή</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Começar</translation>
+        <translation>Έναρξη</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Parar</translation>
+        <translation>Διακοπή</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Παύση</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>Συνέχιση</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Sair</translation>
+        <translation>Έξοδος</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Começar</translation>
+        <translation>Έναρξη</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Parar</translation>
+        <translation>Διακοπή</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Παύση</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>Συνέχιση</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Sair</translation>
+        <translation>Έξοδος</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Diálogo</translation>
+        <translation>Διάλογος</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Girar horizontal</translation>
+        <translation>Οριζόντια περιστροφή</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Girar vertical</translation>
+        <translation>Κάθετη περιστροφή</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Inverter</translation>
+        <translation>Αντιστροφή</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Cinzento</translation>
+        <translation>Γκρι</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Preto e branco</translation>
+        <translation>Ασπρόμαυρη</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Remover a moldura da janela</translation>
+        <translation>Αφαίρεσε το πλαίσιο παραθύρου</translation>
     </message>
     <message>
         <source>160x120</source>
@@ -226,7 +226,7 @@
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Configurações da câmara</translation>
+        <translation>Ρυθμίσεις Κάμερας</translation>
     </message>
     <message>
         <source>640x480</source>
@@ -237,167 +237,167 @@
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>Περιοχή</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Restabelecer</translation>
+        <translation>Επαναφορά</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliação</translation>
+        <translation>Μεγένθυση</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Contagem decrescente</translation>
+        <translation>Αντίστροφη μέτρηση</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Tamanho do vídeo:</translation>
+        <translation>Μέγεθος βίντεο:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Espaço de disco disponível:</translation>
+        <translation>Ελεύθερος χώρος στο δίσκο:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informação</translation>
+        <translation>Πληροφορίες</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Tempo de gravação:</translation>
+        <translation>Χρόνος Εγγραφής:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Áudio</translation>
+        <translation>&apos;Ηχος</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Imagens</translation>
+        <translation>Στιγμιότυπα</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Codec de vídeo</translation>
+        <translation>Κωδικοποιητής βίντεο</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formato</translation>
+        <translation>Τύπος αρχείου</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Codec de áudio</translation>
+        <translation>Κωδικοποιητής ήχου</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>Qualidade</translation>
+        <translation>Ποιότητα</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Não gravar o cursor do rato</translation>
+        <translation>Μην καταγράφεις τον κέρσορα</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Hora</translation>
+        <translation>Ώρα</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minuto</translation>
+        <translation>Λεπτό</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Iniciar o cronómetro</translation>
+        <translation>Ενεργοποίηση του χρονοδιακόπτη</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Parar a gravação após</translation>
+        <translation>Διακοπή εγγραφής μετά από</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Horas</translation>
+        <translation>Ώρες</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minutos</translation>
+        <translation>Λεπτά</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Segundos</translation>
+        <translation>Δευτερόλεπτα</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Caminho do vídeo </translation>
+        <translation>Τοποθεσία αρχείου</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Limite do espaço em disco disponível</translation>
+        <translation>Όριο ελεύθερου χώρου στο δίσκο.</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Mostrar na barra de tarefas</translation>
+        <translation>Εμφάνιση στην περιοχή ενημέρωσης</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Esperar em segundos antes de começar a gravar</translation>
+        <translation>Δευτερόλεπτα αναμονής πριν την εγγραφή</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Procurar por atualizações</translation>
+        <translation>Έλεγχος για ενημερώσεις</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Ajuda</translation>
+        <translation>Βοήθεια</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Vídeo</translation>
+        <translation>Βίντεο</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Disponível</translation>
+        <translation>Διαθέσιμο</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Indisponível</translation>
+        <translation>Μη διαθέσιμο</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Começar</translation>
+        <translation>Έναρξη</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Parar</translation>
+        <translation>Διακοπή</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Παύση</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>Συνέχιση</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Reproduzir</translation>
+        <translation>Αναπαραγωγή</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Pasta</translation>
+        <translation>Φάκελος</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Câmara</translation>
+        <translation>Κάμερα</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Inverter</translation>
+        <translation>Αντιστροφή</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Cinzento</translation>
+        <translation>Γκρι</translation>
     </message>
     <message>
         <source>Send Report</source>
-        <translation>Enviar relatório</translation>
+        <translation>Αποστολή Αναφοράς</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -413,11 +413,11 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Reproduzir a última gravação</translation>
+        <translation>Αναπαραγωγή τελευταίας εγγραφής</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Abrir pasta</translation>
+        <translation>Άνοιγμα φακέλου</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
@@ -425,101 +425,101 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimizar quando a gravação começar</translation>
+        <translation>Ελαχιστοποίηση όταν ξεκινά η εγγραφή</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Iniciar minimizado</translation>
+        <translation>Ανοίγει σε ελαχιστοποίηση</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Girar horizontal</translation>
+        <translation>Οριζόντια περιστροφή</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Girar vertical</translation>
+        <translation>Κάθετη περιστροφή</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Preto e branco</translation>
+        <translation>Ασπρόμαυρη</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Remover moldura da janela</translation>
+        <translation>Αφαίρεσε το πλαίσιο παραθύρου</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Doar</translation>
+        <translation>Δωρεά</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Repor todas as configurações no próximo início</translation>
+        <translation>Επαναφορά όλων των ρυθμίσεων στην επόμενη εκκίνηση</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Direitos de autor e licença das imagens</translation>
+        <translation>Πνευματικά δικαιώματα και άδεια από τις φωτογραφίες</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>Μεγαμπάιτ</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Captura de ecrã em vídeo</translation>
+        <translation>Αναμετάδοση οθόνης</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Leitor</translation>
+        <translation>Αναπαραγωγή με</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Registos</translation>
+        <translation>Αρχείο καταγραφής</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Direitos de autor e licença das imagens</translation>
+        <translation>Πνευματικά δικαιώματα και άδεια από τις φωτογραφίες</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Reproduzir</translation>
+        <translation>Αναπαραγωγή</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausa</translation>
+        <translation>Παύση</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Parar</translation>
+        <translation>Διακοπή</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Abrir ficheiro</translation>
+        <translation>Άνοιγμα αρχείου</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Ecrã inteiro</translation>
+        <translation>Πλήρης οθόνη</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Imagem anterior</translation>
+        <translation>Προηγούμενο στιγμιότυπο</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Imagem seguinte</translation>
+        <translation>Επόμενο στιγμιότυπο</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Mudo</translation>
+        <translation>Σίγαση</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Mover o menu</translation>
+        <translation>Μετακίνησε το μενού</translation>
     </message>
 </context>
 </TS>
