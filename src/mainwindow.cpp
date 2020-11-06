@@ -1456,16 +1456,6 @@ void QvkMainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
 
 QString QvkMainWindow::Vk_get_Videocodec_Encoder()
 {
-    QString vk_idealThreadCount;
-    if ( QThread::idealThreadCount() == -1 )
-    {
-        vk_idealThreadCount = "0";
-    }
-    else
-    {
-        vk_idealThreadCount = QString::number( QThread::idealThreadCount() );
-    }
-
     QString value;
     QString encoder = ui->comboBoxVideoCodec->currentData().toString();
     if ( encoder == "x264enc" )
@@ -1476,7 +1466,7 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << "qp-min=" + QString::number( sliderX264->value() );
         list << "qp-max=" + QString::number( sliderX264->value() );
         list << "speed-preset=" + ui->comboBoxx264Preset->currentText();
-        list << "threads=" + vk_idealThreadCount;
+        list << "threads=" + QString::number( QThread::idealThreadCount() );
         list.removeAll( "" );
         value = list.join( " " );
         value.append( " ! video/x-h264, profile=" + ui->comboBoxx264Profile->currentText() );
@@ -1490,7 +1480,7 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << "qp-max=" + QString::number( sliderOpenh264->value() );
         list << "usage-type=screen";
         list << "complexity=low";
-        list << "multi-thread=" + vk_idealThreadCount;
+        list << "multi-thread=" + QString::number( QThread::idealThreadCount() );
         list << "max-slice-size=10000000";
         list << "num-slices=1000000";
         list << "slice-mode=auto";
@@ -1522,9 +1512,9 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << "vp8enc";
         list << "min_quantizer=20";
         list << "max_quantizer=20";
-        list << "cpu-used=" + vk_idealThreadCount;
+        list << "cpu-used=" + QString::number( QThread::idealThreadCount() );
         list << "deadline=1000000";
-        list << "threads=" + vk_idealThreadCount;
+        list << "threads=" + QString::number( QThread::idealThreadCount() );
         value = list.join( " " );
     }
 
