@@ -13,7 +13,9 @@ Audio Windows 7 WASAPI:
 --Analyse mit GST_DEBUG siehe main.cpp
 
 Kamera:
+--Im Dialog fehlt die Combobox für die Auflösung
 --Onlinehilfe anpassen
+--Damit ersichtlich wird das hinter dem Kamerafenster ein Dialog steckt, sollte ein Button auftauchen wenn mit der Maus ins Fenster gefahren wird.
 
 Timer:
 --Die Usability ist nicht gut, Timer starten kann als "starte in" und "starte um" interpretiert werden.
