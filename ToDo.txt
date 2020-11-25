@@ -1,6 +1,9 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
+FPS:
+-Begrenzen auf die Vertikale refresh Rate
+
 Shortcuts:
 -https://doc.qt.io/qt-5/stylesheet-reference.html#spacing-prop
 
