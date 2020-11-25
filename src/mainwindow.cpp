@@ -394,6 +394,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->comboBoxAreaSize->addItems( resolutionStringList );
     connect( ui->comboBoxAreaSize, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_areaSetResolution( QString ) ) );
 
+    connect( ui->comboBoxScreencastScreen, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_setMaxFPS( int ) ) );
 
     // Tab 2 Audio and Videocodec
 #ifdef Q_OS_WIN
@@ -533,6 +534,16 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
+}
+
+
+void QvkMainWindow::slot_setMaxFPS( int index )
+{
+    if ( index > -1 )
+    {
+        QList<QScreen *> screen = QGuiApplication::screens();
+        sliderFrames->setMaximum( screen.at( index )->refreshRate() );
+    }
 }
 
 

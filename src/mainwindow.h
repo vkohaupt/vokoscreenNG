@@ -178,6 +178,9 @@ private slots:
 
     void slot_vokoPlayer();
 
+    void slot_setMaxFPS( int );
+
+
 #ifdef Q_OS_LINUX
     void slot_afterWindowShown();
 #endif
