@@ -36,8 +36,6 @@ QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, QvkSpezialSlide
 
     vkCameraSettingsDialog = new cameraSettingsDialog;
 
-    connect( this, SIGNAL( signal_cameraWindow_close( bool ) ), vkCameraSettingsDialog, SLOT( close() ) );
-
     connect( ui_formMainWindow->checkBoxCameraMirrorHorizontal, SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraMirrorHorizontal, SLOT( setChecked( bool ) ) );
     connect( ui_formMainWindow->checkBoxCameraMirrorVertical,   SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraMirrorVertical,   SLOT( setChecked( bool ) ) );
     connect( ui_formMainWindow->checkBoxCameraInvert,           SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraInvert,           SLOT( setChecked( bool ) ) );
