@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>278</width>
-    <height>320</height>
+    <height>344</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,6 +30,9 @@
        <string notr="true"/>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QComboBox" name="comboBoxCameraResolution"/>
+       </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_12">
          <item>

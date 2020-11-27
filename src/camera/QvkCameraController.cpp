@@ -23,6 +23,7 @@
 #include "QvkCameraController.h"
 #include "QvkCameraResolution.h"
 #include "global.h"
+#include "camerasettingsdialog.h"
 
 #include <QCameraInfo>
 
@@ -40,13 +41,15 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     sliderCameraWindowSize->setShowValue( false );
     sliderCameraWindowSize->setEnabled( false );
 
-    QvkCameraResolution *vkCameraResolution = new QvkCameraResolution( ui_formMainWindow );
+    vkCameraSettingsDialog = new cameraSettingsDialog;
+
+    QvkCameraResolution *vkCameraResolution = new QvkCameraResolution( ui_formMainWindow, vkCameraSettingsDialog );
     connect( ui_formMainWindow->comboBoxCamera, SIGNAL( currentIndexChanged( int ) ), vkCameraResolution, SLOT( slot_resolution( int ) ) );
     connect( ui_formMainWindow->comboBoxCameraResolution, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_resolutionChanged() ) );
 
     getAllDevices();
 
-    cameraWindow = new QvkCameraWindow( ui_surface, sliderCameraWindowSize );
+    cameraWindow = new QvkCameraWindow( ui_surface, sliderCameraWindowSize, vkCameraSettingsDialog );
     cameraWindow->hide();
     connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_formMainWindow->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
     cameraWindow->setWindowTitle( QString( tr( "Camera") ) );
@@ -67,7 +70,6 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     connect( ui_formMainWindow->checkBoxCameraWindowFrame, SIGNAL( toggled( bool ) ), this, SLOT( slot_frameOnOff( bool ) ) );
 
     connect( sliderCameraWindowSize, SIGNAL( valueChanged( int ) ), this, SLOT( slot_sliderMoved( int ) ) );
-
 }
 
 
@@ -82,6 +84,12 @@ void QvkCameraController::slot_resolutionChanged()
     {
         ui_formMainWindow->checkBoxCameraOnOff->click();
         ui_formMainWindow->checkBoxCameraOnOff->click();
+
+        if ( vkCameraSettingsDialog->isVisible() == true )
+        {
+            vkCameraSettingsDialog->close();
+            vkCameraSettingsDialog->show();
+        }
     }
 }
 

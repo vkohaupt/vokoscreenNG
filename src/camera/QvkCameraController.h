@@ -43,6 +43,8 @@ public:
 
     QvkCameraWindow *cameraWindow;
     void getAllDevices();
+    cameraSettingsDialog *vkCameraSettingsDialog;
+    Ui_cameraSettingsDialog *uiCameraSettingsDialog;
 
 
 public slots:

@@ -22,13 +22,14 @@
 
 #include "QvkCameraResolution.h"
 #include "global.h"
-#include <QSettings>
 
+#include <QSettings>
 #include <QCameraInfo>
 
-QvkCameraResolution::QvkCameraResolution( Ui_formMainWindow *ui )
+QvkCameraResolution::QvkCameraResolution( Ui_formMainWindow *ui, cameraSettingsDialog *settingsDialog )
 {
     ui_formMainWindow = ui;
+    vkCameraSettingsDialog = settingsDialog;
 }
 
 
@@ -59,6 +60,7 @@ void QvkCameraResolution::slot_statusChanged( QCamera::Status status )
     case QCamera::UnloadingStatus   : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 3
     case QCamera::LoadedStatus      : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status;
         ui_formMainWindow->comboBoxCameraResolution->clear();
+        vkCameraSettingsDialog->ui->comboBoxCameraResolution->clear();
         QCameraViewfinderSettings cameraViewfinderSettings;
         QList<QSize> resolution = camera->supportedViewfinderResolutions( cameraViewfinderSettings );
         for ( int x = 0; x < resolution.count(); x++ )
@@ -66,6 +68,7 @@ void QvkCameraResolution::slot_statusChanged( QCamera::Status status )
             QString width = QString::number( resolution.at(x).width() );
             QString height = QString::number( resolution.at(x).height() );
             ui_formMainWindow->comboBoxCameraResolution->addItem( width + "x" + height );
+            vkCameraSettingsDialog->ui->comboBoxCameraResolution->addItem( width + "x" + height );
         }
         qDebug().noquote() << global::nameOutput << "Camera resolutions for:"
                            << ui_formMainWindow->comboBoxCamera->currentText()
@@ -79,6 +82,7 @@ void QvkCameraResolution::slot_statusChanged( QCamera::Status status )
         int index = ui_formMainWindow->comboBoxCameraResolution->findText( valueText );
         if ( index == -1 ) { index = 0; }
         ui_formMainWindow->comboBoxCameraResolution->setCurrentIndex( index );
+        vkCameraSettingsDialog->ui->comboBoxCameraResolution->setCurrentIndex( index );
 
         break;
     }// 4

@@ -37,7 +37,7 @@ class QvkCameraWindow : public QLabel
     Q_OBJECT
 
 public:
-    QvkCameraWindow( Ui_formMainWindow *ui_surface, QvkSpezialSlider *gui_sliderCameraWindowSize );
+    QvkCameraWindow( Ui_formMainWindow *ui_surface, QvkSpezialSlider *gui_sliderCameraWindowSize, cameraSettingsDialog *settingsDialog);
     virtual ~QvkCameraWindow();
     Ui_cameraSettingsDialog *uiCameraSettingsDialog;
     cameraSettingsDialog *vkCameraSettingsDialog;
