@@ -333,7 +333,7 @@
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Εμφάνιση στην περιοχή ενημέρωσης</translation>
+        <translation>Εμφάνιση στην περιοχή ειδοποιήσεων</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
