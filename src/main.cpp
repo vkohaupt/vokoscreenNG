@@ -25,6 +25,11 @@
 
 #include <QTranslator>
 #include <QLibraryInfo>
+#include <QtGlobal>
+
+#ifdef Q_OS_LINUX
+#include <QX11Info>
+#endif
 
 #include <gst/gst.h>
 
@@ -106,8 +111,29 @@ int main(int argc, char *argv[])
     translator.load( QLocale::system().name(), ":/language" );
     app.installTranslator( &translator );
 
-    QvkMainWindow w;
-    w.show();
+    QvkMainWindow *w;
+
+#ifdef Q_OS_LINUX
+    if ( QX11Info::isPlatformX11() == true )
+    {
+        if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "x11" )
+        {
+            w = new QvkMainWindow;
+            w->show();
+        }
+
+        if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "wayland" )
+        {
+            w = new QvkMainWindow;
+            w->show();
+        }
+    }
+#endif
+
+#ifdef Q_OS_WIN
+    w = new QvkMainWindow;
+    w->show();
+#endif
 
     return app.exec();
 }
