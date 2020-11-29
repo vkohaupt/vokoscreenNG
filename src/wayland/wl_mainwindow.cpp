@@ -39,9 +39,9 @@ Qvk_wl_MainWindow::Qvk_wl_MainWindow(QWidget *parent) : QMainWindow(parent),
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     messageBox->setWindowIcon( icon );
     messageBox->setWindowTitle( global::name + " " + global::version );
-    messageBox->setIcon( QMessageBox::Information );
+    messageBox->setIcon( QMessageBox::Critical );
     messageBox->setText( tr( "Wayland desktop session detected" ) );
-    messageBox->setInformativeText( tr( "To time Wayland is not supported. Please logout and start a X11 Desktop session" ) );
+    messageBox->setInformativeText( tr( "To time Wayland is not supported. Please close vokoscreenNG, logout from your Desktop and start a X11 Desktop session" ) );
     messageBox->exec();
 
 }
