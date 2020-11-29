@@ -21,6 +21,7 @@
  */
 
 #include "mainwindow.h"
+#include "wl_mainwindow.h"
 #include "global.h"
 
 #include <QTranslator>
@@ -112,6 +113,7 @@ int main(int argc, char *argv[])
     app.installTranslator( &translator );
 
     QvkMainWindow *w;
+    Qvk_wl_MainWindow *wl;
 
 #ifdef Q_OS_LINUX
     if ( QX11Info::isPlatformX11() == true )
@@ -124,8 +126,8 @@ int main(int argc, char *argv[])
 
         if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "wayland" )
         {
-            w = new QvkMainWindow;
-            w->show();
+            wl = new Qvk_wl_MainWindow;
+            wl->show();
         }
     }
 #endif
