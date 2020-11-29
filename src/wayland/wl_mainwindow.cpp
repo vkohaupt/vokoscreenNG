@@ -33,17 +33,16 @@ Qvk_wl_MainWindow::Qvk_wl_MainWindow(QWidget *parent) : QMainWindow(parent),
 {
     ui->setupUi(this);
 
-    qDebug().noquote() << global::nameOutput << tr( "Desktop session is a Wayland session" );
+    qDebug().noquote() << global::nameOutput << "Desktop session is a Wayland session";
 
     QMessageBox *messageBox = new QMessageBox();
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     messageBox->setWindowIcon( icon );
     messageBox->setWindowTitle( global::name + " " + global::version );
     messageBox->setIcon( QMessageBox::Critical );
-    messageBox->setText( tr( "Wayland desktop session detected" ) );
-    messageBox->setInformativeText( tr( "To time Wayland is not supported. Please close vokoscreenNG, logout from your Desktop and start a X11 Desktop session and then start vokoscreenNG" ) );
+    messageBox->setText( "Wayland desktop session detected" );
+    messageBox->setInformativeText( "To time Wayland is not supported. Please close vokoscreenNG, logout from your Desktop and start a X11 Desktop session and then start vokoscreenNG" );
     messageBox->exec();
-
 }
 
 Qvk_wl_MainWindow::~Qvk_wl_MainWindow()
