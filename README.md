@@ -40,6 +40,12 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 
 
 ## Linux
+
+### Note:
+Since every distribution has its own characteristics, a make install is not supported.
+The integration into the distribution must be carried out by each distribution itself.
+The same applies to metadata.
+
 ### Run-time requirements:
 * Qt5 >= 5.9.4
 * pulseaudio
