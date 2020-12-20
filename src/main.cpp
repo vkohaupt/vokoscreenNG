@@ -116,19 +116,16 @@ int main(int argc, char *argv[])
     Qvk_wl_MainWindow *wl;
 
 #ifdef Q_OS_LINUX
-    if ( QX11Info::isPlatformX11() == true )
+    if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "x11" )
     {
-        if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "x11" )
-        {
-            w = new QvkMainWindow;
-            w->show();
-        }
-
-        if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "wayland" )
-        {
-            wl = new Qvk_wl_MainWindow;
-            wl->show();
-        }
+        w = new QvkMainWindow;
+        w->show();
+    }
+    
+    if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "wayland" )
+    {
+        wl = new Qvk_wl_MainWindow;
+        wl->show();
     }
 #endif
 

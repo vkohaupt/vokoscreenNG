@@ -569,42 +569,6 @@ void QvkMainWindow::slot_vokoPlayer()
 }
 
 
-#ifdef Q_OS_LINUX
-void QvkMainWindow::showEvent( QShowEvent *event )
-{
-    Q_UNUSED(event);
-    // Call slot "afterWindowShown" after the window has been shown
-    QMetaObject::invokeMethod( this, "slot_afterWindowShown", Qt::ConnectionType::QueuedConnection );
-
-}
-
-
-void QvkMainWindow::slot_afterWindowShown()
-{
-    if ( onlyOnce == false )
-    {
-        onlyOnce = true;
-
-        if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "wayland" )
-        {
-            qDebug().noquote() << global::nameOutput << tr( "Desktop session is a Wayland session" );
-            QMessageBox *messageBox = new QMessageBox();
-            QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
-            messageBox->setWindowIcon( icon );
-            messageBox->setWindowTitle( global::name + " " + global::version );
-            messageBox->setIcon( QMessageBox::Information );
-            messageBox->setText( tr( "Wayland desktop session detected" ) );
-            messageBox->setInformativeText( tr( "To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session" ) );
-            messageBox->exec();
-        }
-        else
-        {
-            qDebug().noquote() << global::nameOutput << "Desktop session is a X11 session";
-        }
-    }
-}
-#endif
-
 /*
  * CountDown
  */

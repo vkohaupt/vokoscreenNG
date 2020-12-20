@@ -132,8 +132,6 @@ private:
 
     QString Pipeline_structured_output( QString pipeline );
 
-    bool onlyOnce = false;
-
     QSoundEffect *soundEffect;
 
 
@@ -181,11 +179,6 @@ private slots:
     void slot_setMaxFPS( int );
 
 
-#ifdef Q_OS_LINUX
-    void slot_afterWindowShown();
-#endif
-
-
 signals:
     void signal_close();
     void signal_close( bool value );
@@ -196,9 +189,6 @@ signals:
 protected:
     void closeEvent( QCloseEvent *event );
     void resizeEvent( QResizeEvent *event );
-#ifdef Q_OS_LINUX
-    void showEvent( QShowEvent *event );
-#endif
 
 
 };
