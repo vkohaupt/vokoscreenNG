@@ -183,7 +183,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>To time Wayland is not supported. Please logout and start a X11 Desktop session</source>
+        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

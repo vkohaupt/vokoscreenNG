@@ -41,7 +41,7 @@ Qvk_wl_MainWindow::Qvk_wl_MainWindow(QWidget *parent) : QMainWindow(parent),
     messageBox->setWindowTitle( global::name + " " + global::version );
     messageBox->setIcon( QMessageBox::Critical );
     messageBox->setText( tr( "Wayland desktop session detected" ) );
-    messageBox->setInformativeText( tr( "To time Wayland is not supported. Please logout and start a X11 Desktop session" ) );
+    messageBox->setInformativeText( tr( "To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session" ) );
     messageBox->exec();
 }
 
