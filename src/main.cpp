@@ -21,8 +21,10 @@
  */
 
 #include "mainwindow.h"
-#include "wl_mainwindow.h"
 #include "global.h"
+#ifdef Q_OS_LINUX
+#include "wl_mainwindow.h"
+#endif
 
 #include <QTranslator>
 #include <QLibraryInfo>
@@ -113,9 +115,10 @@ int main(int argc, char *argv[])
     app.installTranslator( &translator );
 
     QvkMainWindow *w;
-    Qvk_wl_MainWindow *wl;
 
 #ifdef Q_OS_LINUX
+    Qvk_wl_MainWindow *wl;
+
     if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "x11" )
     {
         w = new QvkMainWindow;
