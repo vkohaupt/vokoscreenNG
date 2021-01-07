@@ -1,6 +1,13 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
+Gstreamer:
+-Ausfindig machen wie nur die Module geladen werden die auch benötigt werden.
+
+Qt:
+-Ausfindig machen wie nur die Module geladen werden die auch benötigt werden.
+
+
 Shortcuts:
 -https://doc.qt.io/qt-5/stylesheet-reference.html#spacing-prop
 
