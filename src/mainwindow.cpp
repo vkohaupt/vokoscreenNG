@@ -1474,6 +1474,7 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << "vaapih264enc";
         list << "init-qp=" + QString::number( sliderVaapih264->value() );
         value = list.join( " " );
+        value.append( " ! h264parse" );
     }
 
     if ( encoder == "vaapimpeg2enc" )
