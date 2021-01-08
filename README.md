@@ -91,6 +91,7 @@ On Ubuntu these requirements can be satisfied by running `sudo apt install libgs
 * [Snap](https://snapcraft.io/vokoscreen-ng): `sudo snap install vokoscreen-ng`
 * [Ubuntu](https://launchpad.net/ubuntu/+source/vokoscreen-ng): `sudo apt install vokoscreen-ng`
 * [Arch linux](https://www.archlinux.org/packages/community/x86_64/vokoscreen/): `sudo pacman -S vokoscreen`
+* [NixOS](https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/video/vokoscreen-ng/default.nix): `nix-env -iA nixos.vokoscreen-ng`
 
 ![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-0.png)
 ![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-1.png)
