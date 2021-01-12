@@ -370,29 +370,23 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->radioButtonScreencastWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
 
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
-    connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );//**
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled( bool ) ) );
 
     connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreen, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
-    connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );
 
     connect( this,                            SIGNAL( signal_close()  ), vkRegionChoise, SLOT( close() ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( slot_init() ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( setVisible( bool ) ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreen, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setEnabled( bool ) ) );
-    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setEnabled( bool ) ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setEnabled( bool ) ) );
 
     connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
     connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), this,           SLOT( slot_areaReset() ) );
     connect( ui->pushButtonStart,     SIGNAL( clicked( bool ) ), this, SLOT( slot_disableAreaWidgets() ) );
     connect( ui->pushButtonStop ,     SIGNAL( clicked( bool ) ), this, SLOT( slot_enableAreaWidgets() ) );
-
-    ui->comboBoxAreaSize->addItems( resolutionStringList );
-    connect( ui->comboBoxAreaSize, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_areaSetResolution( QString ) ) );
 
     connect( ui->comboBoxScreencastScreen, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_setMaxFPS( int ) ) );
 
@@ -745,32 +739,6 @@ void QvkMainWindow::slot_areaSetResolution( QString value )
 {
     vkRegionChoise->setWidth( value.section( " ", 0, 0 ).toInt() );
     vkRegionChoise->setHeight( value.section( " ", 2, 2 ).toInt() );
-}
-
-
-void QvkMainWindow::slot_areaReset()
-{
-    ui->comboBoxAreaSize->setCurrentIndex( 0 );
-}
-
-
-void QvkMainWindow::slot_disableAreaWidgets()
-{
-   if ( ui->radioButtonScreencastArea->isChecked() == true  )
-   {
-       ui->toolButtonScreencastAreaReset->setEnabled( false );
-       ui->comboBoxAreaSize->setEnabled( false );
-   }
-}
-
-
-void QvkMainWindow::slot_enableAreaWidgets()
-{
-   if ( ui->radioButtonScreencastArea->isChecked() == true  )
-   {
-       ui->toolButtonScreencastAreaReset->setEnabled( true );
-       ui->comboBoxAreaSize->setEnabled( true );
-   }
 }
 
 

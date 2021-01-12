@@ -163,9 +163,6 @@ private slots:
     void slot_StartTimer( bool value );
     void slot_startTime();
     void slot_areaSetResolution( QString value );
-    void slot_areaReset();
-    void slot_disableAreaWidgets();
-    void slot_enableAreaWidgets();
 
     void slot_IfStartAudioCodecWidgetsSetEnabled();
     void slot_IfStopAudioCodecWidgetsSetDisabled();

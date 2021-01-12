@@ -42,7 +42,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -109,25 +109,49 @@
              <layout class="QVBoxLayout" name="verticalLayout_7">
               <item>
                <layout class="QGridLayout" name="gridLayout_3">
-                <item row="0" column="1">
-                 <widget class="QComboBox" name="comboBoxScreencastScreen">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
+                <item row="0" column="4">
+                 <widget class="QToolButton" name="help_screencast_fullscreen">
+                  <property name="text">
+                   <string notr="true">Help</string>
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="1">
-                 <widget class="QComboBox" name="comboBoxAreaSize">
-                  <property name="sizeAdjustPolicy">
-                   <enum>QComboBox::AdjustToContents</enum>
+                <item row="2" column="1">
+                 <widget class="QComboBox" name="comboBoxScreencastScreenArea"/>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QToolButton" name="toolButtonScreencastAreaReset">
+                  <property name="toolTip">
+                   <string>Reset</string>
+                  </property>
+                  <property name="text">
+                   <string notr="true">Reset</string>
                   </property>
                  </widget>
                 </item>
                 <item row="1" column="4">
                  <widget class="QToolButton" name="help_screencast_window">
+                  <property name="text">
+                   <string notr="true">Help</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QRadioButton" name="radioButtonScreencastWindow">
+                  <property name="text">
+                   <string notr="true">Wi&amp;ndow</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QRadioButton" name="radioButtonScreencastFullscreen">
+                  <property name="text">
+                   <string notr="true">Fulls&amp;creen</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="4">
+                 <widget class="QToolButton" name="help_screencast_area">
                   <property name="text">
                    <string notr="true">Help</string>
                   </property>
@@ -146,50 +170,6 @@
                   </property>
                  </spacer>
                 </item>
-                <item row="3" column="3">
-                 <spacer name="verticalSpacer_20">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item row="3" column="2">
-                 <widget class="QToolButton" name="toolButtonScreencastAreaReset">
-                  <property name="toolTip">
-                   <string>Reset</string>
-                  </property>
-                  <property name="text">
-                   <string notr="true">Reset</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0">
-                 <widget class="QRadioButton" name="radioButtonScreencastFullscreen">
-                  <property name="text">
-                   <string notr="true">Fulls&amp;creen</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="4">
-                 <widget class="QToolButton" name="help_screencast_area">
-                  <property name="text">
-                   <string notr="true">Help</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="4">
-                 <widget class="QToolButton" name="help_screencast_fullscreen">
-                  <property name="text">
-                   <string notr="true">Help</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="2" column="0">
                  <widget class="QRadioButton" name="radioButtonScreencastArea">
                   <property name="text">
@@ -197,13 +177,13 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="1">
-                 <widget class="QComboBox" name="comboBoxScreencastScreenArea"/>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QRadioButton" name="radioButtonScreencastWindow">
-                  <property name="text">
-                   <string notr="true">Wi&amp;ndow</string>
+                <item row="0" column="1">
+                 <widget class="QComboBox" name="comboBoxScreencastScreen">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
                   </property>
                  </widget>
                 </item>
@@ -504,8 +484,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>544</width>
-                      <height>199</height>
+                      <width>535</width>
+                      <height>180</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1720,8 +1700,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>370</width>
-                   <height>322</height>
+                   <width>361</width>
+                   <height>311</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
