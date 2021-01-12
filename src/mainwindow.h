@@ -78,7 +78,6 @@ private:
     QvkSpezialSlider *sliderStopRecordingAfterSeconds;
 
     QvkSettings vkSettings;
-    QStringList resolutionStringList;
 
     const QString VK_Gstr_Pipe = " ! ";
     QString VK_GStreamer_Version();
