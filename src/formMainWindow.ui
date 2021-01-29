@@ -720,10 +720,10 @@
                           <item>
                            <widget class="QComboBox" name="comboBoxx264Preset">
                             <property name="currentText">
-                             <string notr="true">superfast</string>
+                             <string notr="true">ultrafast</string>
                             </property>
                             <property name="currentIndex">
-                             <number>1</number>
+                             <number>0</number>
                             </property>
                             <item>
                              <property name="text">
@@ -753,26 +753,6 @@
                             <item>
                              <property name="text">
                               <string notr="true">medium</string>
-                             </property>
-                            </item>
-                            <item>
-                             <property name="text">
-                              <string notr="true">slow</string>
-                             </property>
-                            </item>
-                            <item>
-                             <property name="text">
-                              <string notr="true">slower</string>
-                             </property>
-                            </item>
-                            <item>
-                             <property name="text">
-                              <string notr="true">veryslow</string>
-                             </property>
-                            </item>
-                            <item>
-                             <property name="text">
-                              <string notr="true">placebo</string>
                              </property>
                             </item>
                            </widget>
