@@ -57,7 +57,7 @@
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>É alcançado o limite de espaço em disco.</translation>
+        <translation>Foi alcançado o limite de espaço em disco.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
@@ -111,7 +111,7 @@
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
-        <translation>Abrir ficheiro</translation>
+        <translation>Abrir Ficheiro</translation>
     </message>
 </context>
 <context>
@@ -178,11 +178,11 @@
     <name>Qvk_wl_MainWindow</name>
     <message>
         <source>Wayland desktop session detected</source>
-        <translation>Detectada sessão de área de trabalho Wayland</translation>
+        <translation>Foi detectada uma sessão de área de trabalho Wayland</translation>
     </message>
     <message>
         <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Por enquanto o Wayland não é suportado. Uma transmissão mostra um ecrã a negro. Por favor saia da conta e inicie uma sessão de Área de trabalho X11</translation>
+        <translation>Por enquanto o Wayland não é suportado. Uma transmissão mostra um ecrã a negro. Por favor, saia da sessão e inicie uma sessão de Área de trabalho X11</translation>
     </message>
 </context>
 <context>
@@ -336,7 +336,7 @@
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Esperar em segundos antes de começar a gravar</translation>
+        <translation>Esperar em segundos antes de iniciar a gravar</translation>
     </message>
     <message>
         <source>Look for updates</source>
@@ -360,7 +360,7 @@
     </message>
     <message>
         <source>Start</source>
-        <translation>Começar</translation>
+        <translation>Iniciar</translation>
     </message>
     <message>
         <source>Stop</source>
@@ -396,7 +396,7 @@
     </message>
     <message>
         <source>Send Report</source>
-        <translation>Enviar relatório</translation>
+        <translation>Enviar Relatório</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -424,7 +424,7 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimizar quando a gravação começar</translation>
+        <translation>Minimizar quando a gravação Iniciar</translation>
     </message>
     <message>
         <source>Starts minimized</source>
@@ -444,7 +444,7 @@
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Remover moldura da janela</translation>
+        <translation>Remover a moldura da janela</translation>
     </message>
     <message>
         <source>Donate</source>
@@ -498,7 +498,7 @@
     </message>
     <message>
         <source>Open File</source>
-        <translation>Abrir ficheiro</translation>
+        <translation>Abrir Ficheiro</translation>
     </message>
     <message>
         <source>Fullscreen</source>
@@ -613,7 +613,7 @@
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Esperar em segundos antes de começar a gravar</translation>
+        <translation>Esperar em segundos antes de iniciar a gravar</translation>
     </message>
     <message>
         <source>Look for updates</source>
@@ -761,7 +761,7 @@
     </message>
     <message>
         <source>Send Report</source>
-        <translation>Enviar relatório</translation>
+        <translation>Enviar Relatório</translation>
     </message>
 </context>
 </TS>
