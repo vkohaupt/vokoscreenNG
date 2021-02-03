@@ -1,6 +1,6 @@
 # vokoscreenNG (New Generation)
 
-* For **Linux** and **Windows**
+* For **Linux(X11)** and **Windows**
 * vokoscreenNG is based of Qt and GStreamer.
 
 ## Download
