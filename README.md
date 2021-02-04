@@ -68,10 +68,13 @@ The same applies to metadata.
   - Video: x264
 * gstreamer-plugins-libav
   - Player: x264
+  
+**VAAPI only supported in vokoscreenNG 3.0.0 - 3.0.8**
+
 * gstreamer-plugins-vaapi
   - Intel Hardwareenconding H.264 and MPEG2
-* intel-vaapi-driver
-  - Intel Hardwareenconding H.264 and MPEG2
+* intel-vaapi-driver  
+  - Intel Hardwareenconding H.264 and MPEG2  
 
 ### Build requirements
 * pkgconfig
