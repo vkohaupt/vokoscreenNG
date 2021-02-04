@@ -58,7 +58,6 @@ void QvkTheme::setTheme()
     ui->toolButtonx264Reset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
     ui->toolButtonOpenh264Reset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
     ui->toolButtonShowInSystrayAlternativeReset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
-    ui->toolButtonVaapih264Reset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
 
     makeAndSetValidIcon( ui->tabWidgetCamera, ui->tabWidgetCamera->indexOf( ui->tabCamera ), VK_getIcon( "camera-web", ":/pictures/camera/camera.png" ) );
 

@@ -104,15 +104,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderOpenh264->setValue( 23 );
     sliderOpenh264->show();
 
-    sliderVaapih264 = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_vaapih264->insertWidget( 1, sliderVaapih264 );
-    sliderVaapih264->setObjectName("sliderVaapih264");
-    sliderVaapih264->setTracking( true );
-    sliderVaapih264->setMinimum( 1 );
-    sliderVaapih264->setMaximum( 51 );
-    sliderVaapih264->setValue( 17 );
-    sliderVaapih264->show();
-
     sliderLimitOfFreeDiskSpace = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_27->insertWidget( 3, sliderLimitOfFreeDiskSpace );
     sliderLimitOfFreeDiskSpace->setObjectName( "sliderLimitOfFreeDiskSpace" );
@@ -283,7 +274,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxVideoCodec,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( slot_IfStartAudioCodecWidgetsSetEnabled() ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoCodecx264,       SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoCodecVaapih264,  SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoCodecOpenh264,   SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoPath,        SLOT( setEnabled( bool ) ) );
@@ -317,7 +307,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxVideoCodec,    SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this, SLOT( slot_IfStopAudioCodecWidgetsSetDisabled() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoCodecx264,      SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoCodecVaapih264, SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoCodecOpenh264,  SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoPath,        SLOT( setDisabled( bool ) ) );
@@ -395,7 +384,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->comboBoxVideoCodec, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_videoCodecChanged( QString ) ) );
     connect( ui->toolButtonx264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_x264Reset() ) );
     connect( ui->toolButtonOpenh264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_openh264Reset() ) );
-    connect( ui->toolButtonVaapih264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_Vaapih264Reset() ) );
 
     // Tab 3 Time
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
@@ -605,26 +593,14 @@ void QvkMainWindow::slot_openh264Reset()
 }
 
 
-void QvkMainWindow::slot_Vaapih264Reset()
-{
-    sliderVaapih264->setValue( 17 );
-}
-
-
 void QvkMainWindow::slot_videoCodecChanged( QString codec )
 {
     ui->frameVideoCodecx264->setVisible( false );
-    ui->frameVideoCodecVaapih264->setVisible( false );
     ui->frameVideoCodecOpenh264->setVisible( false );
 
     if ( codec == "x264"  )
     {
         ui->frameVideoCodecx264->setVisible( true );
-    }
-
-    if ( codec == "H.264 (Intel GPU)" )
-    {
-        ui->frameVideoCodecVaapih264->setVisible( true );
     }
 
     if ( codec == "openh264" )
@@ -1197,10 +1173,6 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "audiomimetype:audio/x-matroska"
                                     << "videocodec:x264enc:x264"
                                     << "videocodec:openh264enc:openh264"
-                                #ifdef Q_OS_LINUX
-                                    << "videocodec:vaapih264enc:H.264 (Intel GPU)"
-                                    << "videocodec:vaapimpeg2enc:MPEG-2 (Intel GPU)"
-                                #endif
                                     << "videocodec:vp8enc:VP8"
                                     << "audiocodec:vorbisenc:vorbis"
                                     << "audiocodec:flacenc:flac"
@@ -1224,10 +1196,6 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                      << "audiomimetype:audio/x-msvideo"
                                      << "videocodec:x264enc:x264"
                                      << "videocodec:openh264enc:openh264"
-                                #ifdef Q_OS_LINUX
-                                     << "videocodec:vaapih264enc:H.264 (Intel GPU)"
-                                     << "videocodec:vaapimpeg2enc:MPEG-2 (Intel GPU)"
-                                #endif
                                      << "videocodec:vp8enc:VP8"
                                      << "audiocodec:lamemp3enc:mp3"
                                      << "audiocodec:voaacenc:aac"
@@ -1239,10 +1207,6 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "audiomimetype:audio/mpeg"
                                     << "videocodec:x264enc:x264"
                                     << "videocodec:openh264enc:openh264"
-                                #ifdef Q_OS_LINUX
-                                    << "videocodec:vaapih264enc:H.264 (Intel GPU)"
-                                    << "videocodec:vaapimpeg2enc:MPEG-2 (Intel GPU)"
-                                #endif
                                     << "audiocodec:lamemp3enc:mp3"
                                     << "audiocodec:opusenc:opus"
                                     << "audiocodec:voaacenc:aac"
@@ -1255,10 +1219,6 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "audiomimetype:audio/mpeg"
                                     << "videocodec:x264enc:x264"
                                     << "videocodec:openh264enc:openh264"
-                                #ifdef Q_OS_LINUX
-                                    << "videocodec:vaapih264enc:H.264 (Intel GPU)"
-                                    << "videocodec:vaapimpeg2enc:MPEG-2 (Intel GPU)"
-                                #endif
                                     << "videocodec:vp8enc:VP8"
                                     << "audiocodec:lamemp3enc:mp3"
                                     << "audiocodec:voaacenc:aac"
@@ -1422,20 +1382,6 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
     if ( encoder == "x265enc" )
     {
         value = "x265enc";
-    }
-
-    if ( encoder == "vaapih264enc" )
-    {
-        QStringList list;
-        list << "vaapih264enc";
-        list << "init-qp=" + QString::number( sliderVaapih264->value() );
-        value = list.join( " " );
-        value.append( " ! h264parse" );
-    }
-
-    if ( encoder == "vaapimpeg2enc" )
-    {
-        value = "vaapimpeg2enc";
     }
 
     if ( encoder == "vp8enc" )
