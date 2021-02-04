@@ -1011,7 +1011,6 @@ void QvkMainWindow::VK_gst_Elements_available()
 #ifdef Q_OS_LINUX
     list << "ximagesrc";
     list << "pulsesrc";
-    list << "pipewiresrc";
 #endif
     list << "queue";
     list << "capsfilter";
@@ -1023,7 +1022,6 @@ void QvkMainWindow::VK_gst_Elements_available()
     list << "videoscale";
     list << "h264parse";
     list << "audiomixer";
-    list << "adder";
 
     for ( int i = 0; i < list.count(); i++ )
     {
