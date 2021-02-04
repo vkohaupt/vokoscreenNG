@@ -28,7 +28,6 @@
 
 #include <QTranslator>
 #include <QLibraryInfo>
-#include <QtGlobal>
 
 #ifdef Q_OS_LINUX
 #include <QX11Info>
