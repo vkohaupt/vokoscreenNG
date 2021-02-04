@@ -37,6 +37,7 @@
 #include "QvkSpezialSlider.h"
 #include "QvkSystrayAlternative.h"
 #include "QvkAudioController.h"
+
 #include <QMainWindow>
 #include <QFileSystemWatcher>
 #include <QSoundEffect>

@@ -29,7 +29,6 @@
 #include "global.h"
 #include "QvkScreenManager.h"
 #include "QvkLicenses.h"
-#include "QvkLoadExtension.h"
 #ifdef Q_OS_WIN
   #include "QvkCiscoOpenh264Controller.h"
 #endif
@@ -472,11 +471,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // *****************End Log ***********************************
 
 
-    // Deaktivat loader for Extension. Currently no need.
-    // QvkLoadExtension *loadExtension = new QvkLoadExtension( this, ui );
-    // loadExtension->loadExtension();
-
-    // Hint:
     vkSettings.readAll( ui, this );
     vkSettings.readAreaScreencast( vkRegionChoise );
     vkSettings.readCamera( vkCameraController );

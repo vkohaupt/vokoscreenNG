@@ -154,9 +154,6 @@ include(spezialSlider/spezialSlider.pri)
 # version
 include(version/version.pri)
 
-# loadExtensions
-include(loadExtensions/loadExtensions.pri)
-
 # systrayAlternative
 include(systrayAlternative/systrayAlternative.pri)
 
