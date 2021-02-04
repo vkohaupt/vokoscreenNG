@@ -23,11 +23,8 @@
 #ifndef WL_MAINWINDOW_H
 #define WL_MAINWINDOW_H
 
-#include "ui_wl_formMainWindow.h"
-
 #include <QMainWindow>
 
-#include <gst/gst.h>
 
 namespace Ui {
 class Qvk_wl_MainWindow;
@@ -40,7 +37,7 @@ class Qvk_wl_MainWindow : public QMainWindow
 public:
     Qvk_wl_MainWindow( QWidget *parent = Q_NULLPTR );
     ~Qvk_wl_MainWindow();
-    Ui::wl_formMainWindow *ui;
+
 
 private:
 

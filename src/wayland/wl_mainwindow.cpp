@@ -20,7 +20,6 @@
  * --End_License--
  */
 
-#include "ui_wl_formMainWindow.h"
 #include "wl_mainwindow.h"
 #include "global.h"
 
@@ -28,11 +27,8 @@
 #include <QMessageBox>
 
 
-Qvk_wl_MainWindow::Qvk_wl_MainWindow(QWidget *parent) : QMainWindow(parent),
-                                                        ui(new Ui::wl_formMainWindow)
+Qvk_wl_MainWindow::Qvk_wl_MainWindow(QWidget *parent) : QMainWindow(parent)
 {
-    ui->setupUi(this);
-
     qDebug().noquote() << global::nameOutput << "Desktop session is a Wayland session";
 
     QMessageBox *messageBox = new QMessageBox();
@@ -43,6 +39,8 @@ Qvk_wl_MainWindow::Qvk_wl_MainWindow(QWidget *parent) : QMainWindow(parent),
     messageBox->setText( tr( "Wayland desktop session detected" ) );
     messageBox->setInformativeText( tr( "To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session" ) );
     messageBox->exec();
+
+    exit(0);
 }
 
 Qvk_wl_MainWindow::~Qvk_wl_MainWindow()
