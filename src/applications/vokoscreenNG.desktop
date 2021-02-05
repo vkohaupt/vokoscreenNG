@@ -3,6 +3,7 @@ Name=vokoscreenNG
 GenericName=Screencast Creator
 GenericName[de]=Screencast-Erstellung
 Comment=Easy to use desktop recorder
+Comment[de]=Einfach zu bedienender Desktop-Recorder
 Exec=/usr/bin/vokoscreenNG
 Icon=vokoscreenNG
 Terminal=false
