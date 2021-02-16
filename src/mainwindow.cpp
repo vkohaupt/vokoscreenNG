@@ -1170,7 +1170,12 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "audiocodec:flacenc:flac"
                                     << "audiocodec:opusenc:opus"
                                     << "audiocodec:lamemp3enc:mp3"
+#ifdef Q_OS_WIN
                                     << "audiocodec:voaacenc:aac"
+#endif
+#ifdef Q_OS_LINUX
+                                    << "audiocodec:faac:aac"
+#endif
                                    );
 
     QStringList WEBM_QStringList = ( QStringList()
@@ -1190,7 +1195,12 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                      << "videocodec:openh264enc:openh264"
                                      << "videocodec:vp8enc:VP8"
                                      << "audiocodec:lamemp3enc:mp3"
+#ifdef Q_OS_WIN
                                      << "audiocodec:voaacenc:aac"
+#endif
+#ifdef Q_OS_LINUX
+                                     << "audiocodec:faac:aac"
+#endif
                                    );
 
     QStringList MP4_QStringList = ( QStringList()
@@ -1201,8 +1211,13 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videocodec:openh264enc:openh264"
                                     << "audiocodec:lamemp3enc:mp3"
                                     << "audiocodec:opusenc:opus"
+#ifdef Q_OS_WIN
                                     << "audiocodec:voaacenc:aac"
-                                  );
+#endif
+#ifdef Q_OS_LINUX
+                                    << "audiocodec:faac:aac"
+#endif
+                                    );
 
     // https://de.wikipedia.org/wiki/QuickTime
     QStringList MOV_QStringList = ( QStringList()
@@ -1213,7 +1228,12 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videocodec:openh264enc:openh264"
                                     << "videocodec:vp8enc:VP8"
                                     << "audiocodec:lamemp3enc:mp3"
+#ifdef Q_OS_WIN
                                     << "audiocodec:voaacenc:aac"
+#endif
+#ifdef Q_OS_LINUX
+                                    << "audiocodec:faac:aac"
+#endif
                                   );
 
     videoFormatsList.clear();
