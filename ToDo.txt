@@ -1,6 +1,11 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
+Area:
+Wenn der zweite Monitor der Primäre ist wird vom ersten Augenommen.
+Siehe Mail vom 21.02.2021 im Ordner vokoscreen
+
+
 Gstreamer:
 -Ausfindig machen wie nur die Module geladen werden die auch benötigt werden.
 
