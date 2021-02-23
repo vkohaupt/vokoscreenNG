@@ -538,10 +538,9 @@ void QvkMainWindow::slot_vokoPlayer()
  */
 void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
 {
-    int index = ui->comboBoxScreencastScreen->currentIndex();
-
     if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
     {
+        int index = ui->comboBoxScreencastScreen->currentIndex();
         QList<QScreen *> screen = QGuiApplication::screens();
         int left = static_cast<int>( screen.at( index )->geometry().left() * screen.at( index )->devicePixelRatio() );
         int top = static_cast<int>( screen.at( index )->geometry().top() * screen.at( index )->devicePixelRatio() );
@@ -559,9 +558,17 @@ void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
-        QScreen *screen = QGuiApplication::primaryScreen();
+/*        QScreen *screen = QGuiApplication::primaryScreen();
         vkCountdown->x = ( screen->geometry().width() / 2 ) - ( vkCountdown->Width / 2 );
         vkCountdown->y = ( screen->geometry().height() / 2 ) - ( vkCountdown->Height / 2 );
+*/
+        int index = ui->comboBoxScreencastScreenArea->currentIndex();
+        QList<QScreen *> screen = QGuiApplication::screens();
+        int left = static_cast<int>( screen.at( index )->geometry().left() * screen.at( index )->devicePixelRatio() );
+        int top = static_cast<int>( screen.at( index )->geometry().top() * screen.at( index )->devicePixelRatio() );
+
+        vkCountdown->x = left + screen.at( index )->geometry().width() / 2 - ( vkCountdown->Width / 2 );
+        vkCountdown->y = top + screen.at( index )->geometry().height() / 2 - ( vkCountdown->Height / 2 );
     }
 }
 
