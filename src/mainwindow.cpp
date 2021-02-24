@@ -50,19 +50,10 @@
   #include <QX11Info>
 #endif
 
-#ifdef Q_OS_LINUX
 QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                                 ui(new Ui::formMainWindow),
                                                 vkWinInfo(new QvkWinInfo),
                                                 vkCountdown(new QvkCountdown)
-#endif
-
-#ifdef Q_OS_WIN
-QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
-                                                ui(new Ui::formMainWindow),
-                                                vkWinInfo(new QvkWinInfo),
-                                                vkCountdown(new QvkCountdown)
-#endif
 {
     ui->setupUi(this);
     soundEffect = new QSoundEffect();
