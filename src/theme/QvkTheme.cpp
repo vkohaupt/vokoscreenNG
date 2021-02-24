@@ -40,54 +40,30 @@ QvkTheme::~QvkTheme()
 
 void QvkTheme::setTheme()
 {
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreencast ), VK_getIcon( "video-display",     ":/pictures/screencast/monitor.png" ) );
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ),     VK_getIcon( "multimedia-player", ":/pictures/player/player.png" ) );
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarCamera ),     VK_getIcon( "camera-web",        ":/pictures/camera/camera.png" ) );
-    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarLog ),        VK_getIcon( "help-about",        ":/pictures/log/log.png" ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreencast ), QIcon( ":/pictures/screencast/monitor.png" ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ),     QIcon( ":/pictures/player/player.png" ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarCamera ),     QIcon( ":/pictures/camera/camera.png" ) );
+    makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarLog ),        QIcon( ":/pictures/log/log.png" ) );
 
-    makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabScreen ),    VK_getIcon( "video-display",          ":/pictures/screencast/monitor.png" ) );
-    makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAudio ),     VK_getIcon( "audio-input-microphone", ":/pictures/screencast/microphone.png" ) );
-    makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabVideo ),     VK_getIcon( "applications-multimedia",":/pictures/screencast/format-codec.png" ) );
-    makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabMisc ),      VK_getIcon( "preferences-system",     ":/pictures/screencast/preferences-system.png" ) );
-    makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabTimer ),     VK_getIcon( "appointment-new",        ":/pictures/screencast/timer.png" ) );
-    makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAvailable ), VK_getIcon( "dialog-information",     ":/pictures/screencast/supported-formats.png" ) );
-    makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAbout ),     VK_getIcon( "help-about",             ":/pictures/screencast/help-about.png" ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabScreen ),    QIcon( ":/pictures/screencast/monitor.png" ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAudio ),     QIcon( ":/pictures/screencast/microphone.png" ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabVideo ),     QIcon( ":/pictures/screencast/format-codec.png" ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabMisc ),      QIcon( ":/pictures/screencast/preferences-system.png" ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabTimer ),     QIcon( ":/pictures/screencast/timer.png" ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAvailable ), QIcon( ":/pictures/screencast/supported-formats.png" ) );
+    makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAbout ),     QIcon( ":/pictures/screencast/help-about.png" ) );
 
-    ui->toolButtonFramesReset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
-    ui->toolButtonScreencastAreaReset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
-    ui->toolButtonx264Reset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
-    ui->toolButtonOpenh264Reset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
-    ui->toolButtonShowInSystrayAlternativeReset->setIcon( VK_getIcon( "edit-undo", ":/pictures/screencast/undo.png" ) );
+    ui->toolButtonFramesReset->setIcon( QIcon( ":/pictures/screencast/undo.png" ) );
+    ui->toolButtonScreencastAreaReset->setIcon( QIcon( ":/pictures/screencast/undo.png" ) );
+    ui->toolButtonx264Reset->setIcon( QIcon( ":/pictures/screencast/undo.png" ) );
+    ui->toolButtonOpenh264Reset->setIcon( QIcon( ":/pictures/screencast/undo.png" ) );
+    ui->toolButtonShowInSystrayAlternativeReset->setIcon( QIcon( ":/pictures/screencast/undo.png" ) );
 
-    makeAndSetValidIcon( ui->tabWidgetCamera, ui->tabWidgetCamera->indexOf( ui->tabCamera ), VK_getIcon( "camera-web", ":/pictures/camera/camera.png" ) );
+    makeAndSetValidIcon( ui->tabWidgetCamera, ui->tabWidgetCamera->indexOf( ui->tabCamera ), QIcon( ":/pictures/camera/camera.png" ) );
 
-    makeAndSetValidIcon( ui->tabWidgetLog, ui->tabWidgetLog->indexOf( ui->tabLog ), VK_getIcon( "help-about", ":/pictures/log/log.png" ) );
+    makeAndSetValidIcon( ui->tabWidgetLog, ui->tabWidgetLog->indexOf( ui->tabLog ), QIcon( ":/pictures/log/log.png" ) );
 }
 
-
-QIcon QvkTheme::VK_getIcon( QString iconName, QString iconNameFallback )
-{
-    QIcon icon;
-
-    if ( global::VK_showOnlyFallbackIcons == true )
-    {
-        QIcon tmpIcon( iconNameFallback );
-        icon = tmpIcon;
-        return icon;
-    }
-
-    if ( QIcon::hasThemeIcon( iconName ) == true )
-    {
-        icon = QIcon::fromTheme( iconName );
-    }
-    else
-    {
-        QIcon tmpIcon( iconNameFallback );
-        icon = tmpIcon;
-    }
-
-    return icon;
-}
 
 
 void QvkTheme::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIcon icon )

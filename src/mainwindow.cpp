@@ -1288,7 +1288,7 @@ void QvkMainWindow::VK_set_available_Formats_in_Combox()
         QMimeDatabase mimeDatabase;
         QStringList listKeyVideoMimetype = listKeys.filter( "videomimetype" );
         QMimeType mimetype = mimeDatabase.mimeTypeForName( QString( listKeyVideoMimetype.at( 0 ) ).section( ":", 1 ) );
-        QIcon icon = vkTheme->VK_getIcon( mimetype.iconName(), ":/pictures/screencast/strip.png" );
+        QIcon icon = QIcon( ":/pictures/screencast/strip.png" );
 
         ui->comboBoxFormat->addItem( icon, // Picture
                                      QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ), // suffix

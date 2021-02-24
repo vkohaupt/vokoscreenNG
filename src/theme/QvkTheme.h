@@ -31,7 +31,6 @@ class QvkTheme: public QObject
 public:
     QvkTheme(Ui_formMainWindow *ui_formMainWindow );
     virtual ~QvkTheme();
-    QIcon VK_getIcon( QString iconName, QString iconNameFallback );
     void makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIcon icon );
 
 public slots:
