@@ -549,10 +549,6 @@ void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
-/*        QScreen *screen = QGuiApplication::primaryScreen();
-        vkCountdown->x = ( screen->geometry().width() / 2 ) - ( vkCountdown->Width / 2 );
-        vkCountdown->y = ( screen->geometry().height() / 2 ) - ( vkCountdown->Height / 2 );
-*/
         int index = ui->comboBoxScreencastScreenArea->currentIndex();
         QList<QScreen *> screen = QGuiApplication::screens();
         int left = static_cast<int>( screen.at( index )->geometry().left() * screen.at( index )->devicePixelRatio() );
