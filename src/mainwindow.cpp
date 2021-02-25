@@ -1759,13 +1759,6 @@ void QvkMainWindow::slot_preStop()
         timerStopRecordingAfter->stop();
         ui->frameStopRecordingAfter->setEnabled( true );
     }
-
-    if ( ui->radioButtonScreencastArea->isChecked() == true )
-    {
-        vkRegionChoise->recordMode( false );
-        vkRegionChoise->repaint();
-        vkRegionChoise->update();
-    }
 }
 
 
@@ -1803,6 +1796,16 @@ void QvkMainWindow::slot_Stop()
     wantRecording = true;
 
     qDebug().noquote() << global::nameOutput << "Free disk space at the end of the recording:" << ui->labelFreeSize->text() << "MB";
+
+    if ( ui->radioButtonScreencastArea->isChecked() == true )
+    {
+        // We wait one second and then show the button inside the frame.
+        QThread::msleep( 1000 );
+        vkRegionChoise->recordMode( false );
+        vkRegionChoise->repaint();
+        vkRegionChoise->update();
+    }
+
 }
 
 
