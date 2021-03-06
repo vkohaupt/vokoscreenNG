@@ -25,7 +25,6 @@
 
 #include <QObject>
 
-#include "QvkBzlib.h"
 
 class QvkCiscoOpenh264Controller: public QObject
 {
@@ -40,11 +39,9 @@ public slots:
 
   
 private:
-    QvkBzlib *vkBzlib;
     
 private slots:
     void slot_deCompress( QString string );
-    void slot_rename( QString pathWithFile );
 
 
 protected:
