@@ -64,7 +64,7 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
     GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
     if ( ret == GST_STATE_CHANGE_FAILURE )
     {
-        qDebug().noquote() << global::nameOutput << "h264" << "Unable to set the pipeline to the playing state.";
+        qDebug().noquote() << global::nameOutput << "[h264]" << "Unable to set the pipeline to the playing state.";
         gst_object_unref( pipeline );
         return;
     }
