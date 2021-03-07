@@ -51,8 +51,9 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
     QStringList stringList;
     stringList << "filesrc location=" + pathWithDownloadedFile;
     stringList << "bz2dec";
-    stringList << "filesink location=" + fileInfoDownloadedFile.path() + QDir::separator() + "libopenh264.dll";
+    stringList << "filesink location=" + fileInfoDownloadedFile.path() + "/" + "libopenh264.dll";
     QString string = stringList.join( " ! " );
+    qDebug().noquote() << global::nameOutput << "[h264]" << string;
 
     QByteArray byteArray = string.toUtf8();
     const gchar *line = byteArray.constData();
@@ -63,7 +64,7 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
     GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
     if ( ret == GST_STATE_CHANGE_FAILURE )
     {
-        qDebug().noquote() << global::name << "Unable to set the pipeline to the playing state.";
+        qDebug().noquote() << global::nameOutput << "h264" << "Unable to set the pipeline to the playing state.";
         gst_object_unref( pipeline );
         return;
     }
