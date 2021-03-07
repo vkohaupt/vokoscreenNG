@@ -997,6 +997,7 @@ void QvkMainWindow::VK_gst_Elements_available()
     list << "gdiscreencapsrc";
     list << "wasapisrc";
     list << "directsoundsrc";
+    list << "bz2enc";
 #endif
 #ifdef Q_OS_LINUX
     list << "ximagesrc";
