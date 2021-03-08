@@ -44,6 +44,7 @@ QvkCiscoOpenh264Controller::~QvkCiscoOpenh264Controller()
 }
 
 
+#include <QThread>
 void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile )
 {
     QFileInfo fileInfoDownloadedFile( pathWithDownloadedFile );
@@ -68,4 +69,10 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
         gst_object_unref( pipeline );
         return;
     }
+
+    QThread::msleep(5000);
+    ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
+    ret = gst_element_set_state( pipeline, GST_STATE_READY );
+    ret = gst_element_set_state( pipeline, GST_STATE_NULL );
+    gst_object_unref( pipeline );
 }
