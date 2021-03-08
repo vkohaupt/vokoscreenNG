@@ -43,12 +43,12 @@ class QvkCiscoOpenh264Downloader : public QObject
 
 
 public:
-    explicit QvkCiscoOpenh264Downloader( QString pathLocal, QObject *parent = nullptr);
+    explicit QvkCiscoOpenh264Downloader( QString vk_pathLocal, QObject *parent = nullptr);
     void doDownload( const QUrl &url );
 
 
 private:
-    QString tempPath;
+    QString pathLocal;
     bool saveLocal(const QString &filename, QIODevice *data );
     void execute();
 

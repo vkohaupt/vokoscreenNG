@@ -23,10 +23,10 @@
 #include "QvkCiscoOpenh264Downloader.h"
 #include "global.h"
 
-QvkCiscoOpenh264Downloader::QvkCiscoOpenh264Downloader( QString pathLocal , QObject *parent ) : QObject(parent)
+QvkCiscoOpenh264Downloader::QvkCiscoOpenh264Downloader( QString vk_pathLocal , QObject *parent ) : QObject(parent)
 {
     connect( &networkAccessManager, SIGNAL( finished( QNetworkReply* ) ), SLOT( slot_downloadFinished( QNetworkReply* ) ) );
-    tempPath = pathLocal;
+    pathLocal = vk_pathLocal;
 }
 
 
@@ -42,7 +42,7 @@ void QvkCiscoOpenh264Downloader::doDownload( const QUrl &url )
 
 bool QvkCiscoOpenh264Downloader::saveLocal( const QString &filename, QIODevice *data )
 {
-    QString fileInTempPath = tempPath + "/" + filename;
+    QString fileInTempPath = pathLocal + "/" + filename;
     QFile file( fileInTempPath );
     if ( !file.open( QIODevice::WriteOnly ) )
     {
@@ -65,7 +65,7 @@ void QvkCiscoOpenh264Downloader::slot_downloadFinished( QNetworkReply *reply )
     {
         if ( saveLocal( filename, reply ) )
         {
-            qDebug().noquote() << global::nameOutput << "[h264] Download of" << reply->url().toString() << "succeeded (saved to" << tempPath + "/" + filename + ")";
+            qDebug().noquote() << global::nameOutput << "[h264] Download of" << reply->url().toString() << "succeeded (saved to" << pathLocal + "/" + filename + ")";
         }
     }
 
@@ -75,6 +75,6 @@ void QvkCiscoOpenh264Downloader::slot_downloadFinished( QNetworkReply *reply )
     if ( listDownloads.isEmpty() )
     {
         // all downloads finished
-        emit signal_fileDownloaded( tempPath + "/" + filename );
+        emit signal_fileDownloaded( pathLocal + "/" + filename );
     }
 }
