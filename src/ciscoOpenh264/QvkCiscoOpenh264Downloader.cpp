@@ -57,24 +57,30 @@ bool QvkCiscoOpenh264Downloader::saveLocal( const QString &filename, QIODevice *
 void QvkCiscoOpenh264Downloader::slot_downloadFinished( QNetworkReply *reply )
 {
     QString filename = QFileInfo( reply->url().path() ).fileName();
+    bool downloadOK = false;
     if ( reply->error() )
     {
         qDebug().noquote() << global::nameOutput << "[h264] Download of" << reply->url().toString() << "failed:" << reply->errorString();
     }
     else
     {
-        if ( saveLocal( filename, reply ) )
+        if ( saveLocal( filename, reply ) == true )
         {
             qDebug().noquote() << global::nameOutput << "[h264] Download of" << reply->url().toString() << "succeeded (saved to" << pathLocal + "/" + filename + ")";
+            downloadOK = true;
+        }
+        else
+        {
+            qDebug().noquote() << global::nameOutput << "[h264] Download of" << reply->url().toString() << "can not save" << pathLocal + "/" + filename + ")";
+            downloadOK = false;
         }
     }
 
     listDownloads.removeAll( reply );
     reply->deleteLater();
 
-    if ( listDownloads.isEmpty() )
+    if ( downloadOK == true )
     {
-        // all downloads finished
         emit signal_fileDownloaded( pathLocal + "/" + filename );
     }
 }
