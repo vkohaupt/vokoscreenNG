@@ -45,6 +45,7 @@ QvkCiscoOpenh264Controller::~QvkCiscoOpenh264Controller()
 
 
 #include <QThread>
+#include <QCoreApplication>
 void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile )
 {
     QFileInfo fileInfoDownloadedFile( pathWithDownloadedFile );
@@ -70,7 +71,15 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
         return;
     }
 
-    QThread::msleep(5000);
+    // The rest of this code is a, speed workaround. We do this later better.
+    int i = 0;
+    while ( i < 3000 )
+    {
+        i = i + 50;
+        QCoreApplication::processEvents( QEventLoop::AllEvents );
+        QThread::msleep( 100 );
+    }
+
     ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
     ret = gst_element_set_state( pipeline, GST_STATE_READY );
     ret = gst_element_set_state( pipeline, GST_STATE_NULL );
