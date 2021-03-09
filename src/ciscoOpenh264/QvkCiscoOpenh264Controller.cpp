@@ -51,9 +51,9 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
     QFileInfo fileInfoDownloadedFile( pathWithDownloadedFile );
 
     QStringList stringList;
-    stringList << "filesrc location=" + pathWithDownloadedFile;
+    stringList << "filesrc location=\"" + pathWithDownloadedFile + "\"";
     stringList << "bz2dec";
-    stringList << "filesink location=" + fileInfoDownloadedFile.path() + "/" + "libopenh264.dll";
+    stringList << "filesink location=\"" + fileInfoDownloadedFile.path() + "/" + "libopenh264.dll" + "\"";
     QString string = stringList.join( " ! " );
     qDebug().noquote() << global::nameOutput << "[h264]" << string;
 
