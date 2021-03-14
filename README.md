@@ -20,7 +20,7 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 
 
 ## Windows 10
-### Requirements:
+### Requirements
 * The integrated vokoscreenNG Player needs a codec pack.
 
 ### BuildRequires
@@ -41,12 +41,12 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 
 ## Linux
 
-### Note:
+### Note
 Since every distribution has its own characteristics, a make install is not supported.
 The integration into the distribution must be carried out by each distribution itself.
 The same applies to metadata.
 
-### Run-time requirements:
+### Run-time requirements
 * Qt5 >= 5.9.4
 * pulseaudio
 * gstreamer >= 1.12.5
@@ -84,7 +84,12 @@ The same applies to metadata.
 * gstreamer-devel
 * libpulse-devel (since 3.0.7)
 
-On Ubuntu these requirements can be satisfied by running `sudo apt install libgstreamer1.0-dev qt5-default qttools5-dev-tools libqt5x11extras5-dev qtmultimedia5-dev libqt5multimedia5-plugins`
+On Ubuntu these requirements can be satisfied by running `sudo apt install libgstreamer1.0-dev qt5-default qttools5-dev-tools libqt5x11extras5-dev qtmultimedia5-dev libqt5multimedia5-plugins libpulse-dev`
+
+### Build instructions
+1. Download the source / clone the repo and `cd` into its directory
+2. `cd src`
+3. `qmake`
 
 ## Install packages
 
