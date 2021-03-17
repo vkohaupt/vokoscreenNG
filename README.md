@@ -50,7 +50,7 @@ The same applies to metadata.
 * Qt5 >= 5.9.4
 * pulseaudio
 * gstreamer >= 1.12.5
-* gstreamer-plugins-bas
+* gstreamer-plugins-base
   - Audio: vorbis, opus
 * gstreamer-plugins-good
   - Format: mkv, avi, webm, mp4, mov
