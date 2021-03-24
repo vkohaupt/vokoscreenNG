@@ -93,15 +93,35 @@ int main(int argc, char *argv[])
     // Initialize GStreamer
     // https://developer.gnome.org/gstreamer/stable/gst-running.html
 #ifdef Q_OS_WIN
-    QString pathString = QDir::currentPath();
-    QByteArray pathByteArray;
-    pathByteArray.append( pathString );
-    qputenv( "GSTREAMER_1_0_ROOT_X86", pathByteArray );
-    qputenv( "GST_PLUGIN_PATH", pathByteArray );
-    
+    QDir pathProfile( QString ( "C:\\Users\\vk\\AppData\\Roaming\\vokoscreenNG" ) );
+    QString programPath = QDir::currentPath();
+
+    QByteArray programPathByteArray;
+    programPathByteArray.append( programPath );
+    programPathByteArray.append( ";" );
+    programPathByteArray.append( pathProfile.path() );
+    qputenv( "GSTREAMER_1_0_ROOT_X86", programPathByteArray );
+
+    QByteArray pluginPathByteArray;
+    pluginPathByteArray.append( programPath );
+    pluginPathByteArray.append( ";" );
+    pluginPathByteArray.append( pathProfile.path() );
+    qputenv( "GST_PLUGIN_PATH_1_0", pluginPathByteArray );
+
+    QByteArray pathPathByteArray;
+    pathPathByteArray.append( programPath );
+    pathPathByteArray.append( ";" );
+    pathPathByteArray.append( pathProfile.path() );
+    qputenv( "PATH", pathPathByteArray );
+
+/*
     //Environment variables for debugging
-    //qputenv( "GST_DEBUG", "2");
-    //qputenv( "GST_DEBUG_FILE", "C:\\Users\\vk\\Documents\\VK_Error.txt" );
+    qputenv( "GST_DEBUG", "4");
+    QByteArray envPathProfile;
+    envPathProfile.append( pathProfile.path() + "/GST_Error.txt" );
+    qputenv( "GST_DEBUG_FILE", envPathProfile );
+*/
+    
 #endif
     gst_init (&argc, &argv);
 
