@@ -32,6 +32,8 @@
 #ifdef Q_OS_WIN
   #include "QvkCiscoOpenh264Controller.h"
 #endif
+#include "QvkSpezialCheckbox.h"
+
 
 #include <QDebug>
 #include <QDateTime>
@@ -157,6 +159,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderStopRecordingAfterSeconds->setMaximum( 99 );
     sliderStopRecordingAfterSeconds->setValue( 15 );
     sliderStopRecordingAfterSeconds->show();
+
+    QvkSpezialCheckbox *vkSpezialCheckboxCiscoOnOff = new QvkSpezialCheckbox;
+    ui->horizontalLayout_35->insertWidget( 1, vkSpezialCheckboxCiscoOnOff );
+
 
     vkTheme = new QvkTheme( ui );
     Q_UNUSED(vkTheme);

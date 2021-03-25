@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>710</width>
-    <height>514</height>
+    <height>479</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -485,7 +485,7 @@
                       <x>0</x>
                       <y>0</y>
                       <width>535</width>
-                      <height>266</height>
+                      <height>231</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -979,13 +979,6 @@
                 </property>
                </spacer>
               </item>
-              <item row="9" column="1" colspan="3" alignment="Qt::AlignHCenter">
-               <widget class="QCheckBox" name="checkBox">
-                <property name="text">
-                 <string>CheckBox</string>
-                </property>
-               </widget>
-              </item>
               <item row="0" column="4">
                <widget class="QToolButton" name="help_screencast_frames">
                 <property name="toolTip">
@@ -1073,6 +1066,36 @@
                  <enum>Qt::Horizontal</enum>
                 </property>
                </widget>
+              </item>
+              <item row="9" column="1" colspan="3">
+               <layout class="QHBoxLayout" name="horizontalLayout_35">
+                <item>
+                 <spacer name="horizontalSpacer_21">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_20">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
               </item>
              </layout>
             </item>
@@ -1705,7 +1728,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>361</width>
-                   <height>397</height>
+                   <height>362</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">

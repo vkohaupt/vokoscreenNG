@@ -34,6 +34,8 @@
 <file>pictures/systray/record.png</file>
 <file>pictures/systray/pause.png</file>
 <file>pictures/windows.png</file>
+<file>spezialCheckBox/on.png</file>
+<file>spezialCheckBox/off.png</file>
 <file>pictures/camera/camera.license</file>
 <file>pictures/help/information.license</file>
 <file>pictures/linux.license</file>
