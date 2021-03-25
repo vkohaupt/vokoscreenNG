@@ -51,6 +51,7 @@ protected:
 
 
 private:
+    int readLicences(QString path , int row);
 
 };
 

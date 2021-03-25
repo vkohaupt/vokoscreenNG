@@ -68,6 +68,8 @@
 <file>pictures/systray/record.license</file>
 <file>pictures/template.license</file>
 <file>pictures/windows.license</file>
+<file>spezialCheckBox/on.license</file>
+<file>spezialCheckBox/off.license</file>
 <file>sound/wasapi.wav</file>
 <file>language/ar.qm</file>
 <file>language/ca.qm</file>
