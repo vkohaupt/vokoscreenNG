@@ -52,7 +52,6 @@ QvkLicenses::~QvkLicenses(){}
 
 int QvkLicenses::readLicences( QString path, int row )
 {
-//    int row = 0;
     QDirIterator dirIterator( path, QDir::Files, QDirIterator::Subdirectories );
     while ( dirIterator.hasNext() )
     {

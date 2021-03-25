@@ -35,7 +35,6 @@ class QvkLicenses: public QWidget
 public:
     QvkLicenses(Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkLicenses();
-    Ui_license *ui;
 
 
 public slots:
@@ -51,6 +50,7 @@ protected:
 
 
 private:
+    Ui_license *ui;
     int readLicences(QString path , int row);
 
 };
