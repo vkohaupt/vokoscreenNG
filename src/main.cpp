@@ -97,25 +97,26 @@ int main(int argc, char *argv[])
     // https://developer.gnome.org/gstreamer/stable/gst-running.html
 #ifdef Q_OS_WIN
     QvkSettings vkSettings;
-    QDir pathProfile( vkSettings.getFileName() );
+    QFileInfo dirPathProfile( vkSettings.getFileName() );
+    QString pathProfile = dirPathProfile.absolutePath();
     QString programPath = QDir::currentPath();
 
     QByteArray programPathByteArray;
     programPathByteArray.append( programPath );
     programPathByteArray.append( ";" );
-    programPathByteArray.append( pathProfile.path() );
+    programPathByteArray.append( pathProfile );
     qputenv( "GSTREAMER_1_0_ROOT_X86", programPathByteArray );
 
     QByteArray pluginPathByteArray;
     pluginPathByteArray.append( programPath );
     pluginPathByteArray.append( ";" );
-    pluginPathByteArray.append( pathProfile.path() );
+    pluginPathByteArray.append( pathProfile );
     qputenv( "GST_PLUGIN_PATH_1_0", pluginPathByteArray );
 
     QByteArray pathPathByteArray;
     pathPathByteArray.append( programPath );
     pathPathByteArray.append( ";" );
-    pathPathByteArray.append( pathProfile.path() );
+    pathPathByteArray.append( pathProfile );
     qputenv( "PATH", pathPathByteArray );
 
 /*
