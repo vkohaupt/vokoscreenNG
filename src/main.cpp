@@ -22,16 +22,19 @@
 
 #include "mainwindow.h"
 #include "global.h"
+
 #ifdef Q_OS_LINUX
 #include "wl_mainwindow.h"
+#include <QX11Info>
 #endif
+
+#ifdef Q_OS_WIN
+#include "QvkSettings.h"
+#endif
+
 
 #include <QTranslator>
 #include <QLibraryInfo>
-
-#ifdef Q_OS_LINUX
-#include <QX11Info>
-#endif
 
 #include <gst/gst.h>
 
@@ -93,7 +96,8 @@ int main(int argc, char *argv[])
     // Initialize GStreamer
     // https://developer.gnome.org/gstreamer/stable/gst-running.html
 #ifdef Q_OS_WIN
-    QDir pathProfile( QString ( "C:\\Users\\vk\\AppData\\Roaming\\vokoscreenNG" ) );
+    QvkSettings vkSettings;
+    QDir pathProfile( vkSettings.getFileName() );
     QString programPath = QDir::currentPath();
 
     QByteArray programPathByteArray;
