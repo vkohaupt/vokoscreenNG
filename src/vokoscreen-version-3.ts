@@ -476,18 +476,6 @@
         <source>Log</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>OpenH264 Video Codec provided by Cisco Systems, Inc.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>License information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://www.openh264.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;https://www.openh264.org&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>license</name>
