@@ -672,7 +672,7 @@
                        </widget>
                       </item>
                       <item alignment="Qt::AlignHCenter">
-                       <widget class="QPushButton" name="pushButton">
+                       <widget class="QPushButton" name="pushButtonCiscoLicense">
                         <property name="text">
                          <string>License information</string>
                         </property>

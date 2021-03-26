@@ -381,6 +381,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->toolButtonx264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_x264Reset() ) );
     connect( ui->toolButtonOpenh264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_openh264Reset() ) );
 
+    connect( ui->pushButtonCiscoLicense, SIGNAL( clicked( bool ) ), this, SLOT( slot_pushButtonCiscoLicense() ) );
+
     // Tab 3 Time
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
     timerStartTimer = new QTimer();
@@ -585,6 +587,25 @@ void QvkMainWindow::slot_x264Reset()
 void QvkMainWindow::slot_openh264Reset()
 {
     sliderOpenh264->setValue( 23 );
+}
+
+
+void QvkMainWindow::slot_pushButtonCiscoLicense()
+{
+   QFile file( ":/ciscoOpenh264/BINARY_LICENSE.txt" );
+   file.open( QIODevice::ReadOnly );
+   QTextStream textStream( &file );
+
+   QDialog *dialog = new QDialog();
+   dialog->setWindowTitle( "Cisco licence" );
+   QTextBrowser *textBrowser = new QTextBrowser( dialog );
+   textBrowser->setContextMenuPolicy( Qt::NoContextMenu );
+   textBrowser->setTextInteractionFlags( Qt::NoTextInteraction );
+   textBrowser->resize( 600, 600 );
+   textBrowser->append( textStream.readAll() );
+   textBrowser->moveCursor( QTextCursor::Start );
+   textBrowser->show();
+   dialog->exec();
 }
 
 
