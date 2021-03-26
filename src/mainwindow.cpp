@@ -160,9 +160,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderStopRecordingAfterSeconds->setValue( 15 );
     sliderStopRecordingAfterSeconds->show();
 
-    QvkSpezialCheckbox *vkSpezialCheckboxCiscoOnOff = new QvkSpezialCheckbox;
+/*    QvkSpezialCheckbox *vkSpezialCheckboxCiscoOnOff = new QvkSpezialCheckbox;
     ui->horizontalLayout_35->insertWidget( 1, vkSpezialCheckboxCiscoOnOff );
-
+*/
 
     vkTheme = new QvkTheme( ui );
     Q_UNUSED(vkTheme);
