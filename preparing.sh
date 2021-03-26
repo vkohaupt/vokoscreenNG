@@ -85,6 +85,12 @@ echo $array | sed "s/ /<\/file>\n<file>/g" >> screencast.qrc
 array="<file>"$( find ./sound/* -name *.wav | cut -c 3- )"</file>"
 echo $array | sed "s/ /<\/file>\n<file>/g" >> screencast.qrc
 
+###############################
+# cisco openh264 binray license
+###############################
+array="<file>"$( find ./ciscoOpenh264/* -name *.txt | cut -c 3- )"</file>"
+echo $array | sed "s/ /<\/file>\n<file>/g" >> screencast.qrc
+
 ################
 # language packs
 ################

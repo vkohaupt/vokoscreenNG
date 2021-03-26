@@ -34,8 +34,6 @@
 <file>pictures/systray/record.png</file>
 <file>pictures/systray/pause.png</file>
 <file>pictures/windows.png</file>
-<file>spezialCheckBox/on.png</file>
-<file>spezialCheckBox/off.png</file>
 <file>pictures/camera/camera.license</file>
 <file>pictures/help/information.license</file>
 <file>pictures/linux.license</file>
@@ -68,9 +66,8 @@
 <file>pictures/systray/record.license</file>
 <file>pictures/template.license</file>
 <file>pictures/windows.license</file>
-<file>spezialCheckBox/on.license</file>
-<file>spezialCheckBox/off.license</file>
 <file>sound/wasapi.wav</file>
+<file>ciscoOpenh264/BINARY_LICENSE.txt</file>
 <file>language/ar.qm</file>
 <file>language/ca.qm</file>
 <file>language/cs_CZ.qm</file>
@@ -83,6 +80,7 @@
 <file>language/es_MX.qm</file>
 <file>language/es.qm</file>
 <file>language/eu_ES.qm</file>
+<file>language/fa_IR.qm</file>
 <file>language/fi_FI.qm</file>
 <file>language/fr_FR.qm</file>
 <file>language/hu.qm</file>
@@ -94,6 +92,7 @@
 <file>language/no.qm</file>
 <file>language/pl_PL.qm</file>
 <file>language/pt_BR.qm</file>
+<file>language/pt_PT.qm</file>
 <file>language/pt.qm</file>
 <file>language/ru.qm</file>
 <file>language/sk_SK.qm</file>
