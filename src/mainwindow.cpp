@@ -597,14 +597,21 @@ void QvkMainWindow::slot_pushButtonCiscoLicense()
    QTextStream textStream( &file );
 
    QDialog *dialog = new QDialog();
+   dialog->resize( 600, 600 );
    dialog->setWindowTitle( "Cisco licence" );
-   QTextBrowser *textBrowser = new QTextBrowser( dialog );
+
+   QBoxLayout *boxLayout = new QBoxLayout( QBoxLayout::TopToBottom );
+   dialog->setLayout( boxLayout );
+
+   QTextBrowser *textBrowser = new QTextBrowser( );//dialog );
    textBrowser->setContextMenuPolicy( Qt::NoContextMenu );
    textBrowser->setTextInteractionFlags( Qt::NoTextInteraction );
-   textBrowser->resize( 600, 600 );
    textBrowser->append( textStream.readAll() );
    textBrowser->moveCursor( QTextCursor::Start );
    textBrowser->show();
+
+   boxLayout->addWidget( textBrowser );
+
    dialog->exec();
 }
 
