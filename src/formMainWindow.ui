@@ -485,7 +485,7 @@
                       <x>0</x>
                       <y>0</y>
                       <width>535</width>
-                      <height>288</height>
+                      <height>229</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -706,14 +706,14 @@
                         <item>
                          <widget class="QRadioButton" name="radioButton">
                           <property name="text">
-                           <string>ON</string>
+                           <string notr="true">ON</string>
                           </property>
                          </widget>
                         </item>
                         <item>
                          <widget class="QRadioButton" name="radioButton_2">
                           <property name="text">
-                           <string>OFF</string>
+                           <string notr="true">OFF</string>
                           </property>
                          </widget>
                         </item>
@@ -1719,7 +1719,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>361</width>
-                   <height>419</height>
+                   <height>360</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
