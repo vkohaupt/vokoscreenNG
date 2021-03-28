@@ -1127,14 +1127,27 @@ void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
                 QIcon icon;
                 if ( available == true )
                 {
-                    QIcon picture( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
-                    icon = picture;
+                    // Prüft ob der dazugehörende Codec vorhanden ist
+                    GstElement *source;
+                    source = gst_element_factory_create( factory, "source" );
+                    if ( !source )
+                    {
+                        qDebug().noquote() << global::nameOutput << "Codec for" << QString( listElements.at( x ) ).section( ":", 1, 1 ) << "is not available.";
+                        QIcon picture( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
+                        icon = picture;
+                    }
+                    else
+                    {
+                        QIcon picture( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
+                        icon = picture;
+                    }
                 }
                 else
                 {
                     QIcon picture( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
                     icon = picture;
                 }
+
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
                 labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
                 labelPicture->setAlignment( Qt::AlignRight );
