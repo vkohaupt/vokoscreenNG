@@ -1129,7 +1129,6 @@ void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
                 // If elemement available then check video codec
                 if ( available == true )
                 {
-                    // Check video codec is available
                     GstElement *source;
                     source = gst_element_factory_create( factory, "source" );
                     if ( !source )
