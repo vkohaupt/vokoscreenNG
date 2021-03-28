@@ -1125,9 +1125,11 @@ void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
             {
                 QLabel *labelPicture = new QLabel();
                 QIcon icon;
+
+                // If elemement available then check video codec
                 if ( available == true )
                 {
-                    // Prüft ob der dazugehörende Codec vorhanden ist
+                    // Check video codec is available
                     GstElement *source;
                     source = gst_element_factory_create( factory, "source" );
                     if ( !source )
