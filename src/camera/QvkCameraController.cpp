@@ -180,7 +180,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
     if ( ui_formMainWindow->checkBoxCameraMono->isChecked() == true )
         image = image.convertToFormat( QImage::Format_Mono );
 
-    image = image.scaled( cameraWindow->width(), cameraWindow->height(), Qt::KeepAspectRatio, Qt::FastTransformation);
+    image = image.scaled( cameraWindow->width(), cameraWindow->height(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
     cameraWindow->setPixmap( QPixmap::fromImage( image, Qt::AutoColor) );
 }
 

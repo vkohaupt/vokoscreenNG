@@ -1330,7 +1330,6 @@ void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
         QString encoder = QString( listKeyVideoCodec.at( i ) ).section( ":", 1, 1 );
         QString name =    QString( listKeyVideoCodec.at( i ) ).section( ":", 2, 2 );
         GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
-        GstElement *source = gst_element_factory_create( factory, "source" );
 
         if ( !factory )
         {
@@ -1339,6 +1338,7 @@ void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
         else
         {
             QString message = global::nameOutput + " + " + encoder;
+            GstElement *source = gst_element_factory_create( factory, "source" );
             if ( !source )
             {
                 message = global::nameOutput + " - " + encoder + " available but codec is missing";
@@ -1350,8 +1350,8 @@ void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
             }
 
             qDebug().noquote() << message;
+            gst_object_unref( factory );
         }
-        gst_object_unref( factory );
     }
 
     if ( ui->comboBoxVideoCodec->count() == 0  )
