@@ -1129,8 +1129,7 @@ void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
                 // If elemement available then check video codec
                 if ( available == true )
                 {
-                    GstElement *source;
-                    source = gst_element_factory_create( factory, "source" );
+                    GstElement *source = gst_element_factory_create( factory, "source" );
                     if ( !source )
                     {
                         qDebug().noquote() << global::nameOutput << "Codec for" << QString( listElements.at( x ) ).section( ":", 1, 1 ) << "is not available.";
