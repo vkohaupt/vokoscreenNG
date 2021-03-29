@@ -1132,7 +1132,6 @@ void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
                     GstElement *source = gst_element_factory_create( factory, "source" );
                     if ( !source )
                     {
-                        qDebug().noquote() << global::nameOutput << "Codec for" << QString( listElements.at( x ) ).section( ":", 1, 1 ) << "is not available.";
                         QIcon picture( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
                         icon = picture;
                     }
@@ -1331,16 +1330,28 @@ void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
         QString encoder = QString( listKeyVideoCodec.at( i ) ).section( ":", 1, 1 );
         QString name =    QString( listKeyVideoCodec.at( i ) ).section( ":", 2, 2 );
         GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
+        GstElement *source = gst_element_factory_create( factory, "source" );
+
         if ( !factory )
         {
             qDebug().noquote() << global::nameOutput << "-" << encoder;
         }
         else
         {
-            qDebug().noquote() << global::nameOutput << "+" << encoder;
-            ui->comboBoxVideoCodec->addItem( name, encoder );
-            gst_object_unref( factory );
+            QString message = global::nameOutput + " + " + encoder;
+            if ( !source )
+            {
+                message = global::nameOutput + " - " + encoder + " available but codec is missing";
+            }
+            else
+            {
+                ui->comboBoxVideoCodec->addItem( name, encoder );
+                gst_object_unref( source );
+            }
+
+            qDebug().noquote() << message;
         }
+        gst_object_unref( factory );
     }
 
     if ( ui->comboBoxVideoCodec->count() == 0  )
