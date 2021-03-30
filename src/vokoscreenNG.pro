@@ -162,6 +162,3 @@ win32:include(ciscoOpenh264/ciscoOpenh264.pri)
 
 # wayland
 unix:include(wayland/wayland.pri)
-
-# spezialCheckBox
-include(spezialCheckBox/spezialCheckBox.pri)
