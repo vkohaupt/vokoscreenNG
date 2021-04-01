@@ -89,7 +89,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->horizontalLayout_openh264->insertWidget( 1, sliderOpenh264 );
     sliderOpenh264->setObjectName("sliderOpenh264");
     sliderOpenh264->setTracking( true );
-    sliderOpenh264->setMinimum( 0 );
+    sliderOpenh264->setMinimum( 1 ); // we need minimum 1, with 0 we get wrong colors.
     sliderOpenh264->setMaximum( 51 );
     sliderOpenh264->setValue( 23 );
     sliderOpenh264->show();
@@ -1407,12 +1407,10 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << ui->comboBoxVideoCodec->currentData().toString();
         list << "qp-min=" + QString::number( sliderOpenh264->value() );
         list << "qp-max=" + QString::number( sliderOpenh264->value() );
-        list << "usage-type=screen";
+        list << "usage-type=camera"; // We need camera not screen. With screen and a fast sequence of images the video jerks.
         list << "complexity=low";
         list << "multi-thread=" + QString::number( QThread::idealThreadCount() );
-        list << "max-slice-size=10000000";
-        list << "num-slices=1000000";
-        list << "slice-mode=auto";
+        list << "slice-mode=auto"; // Number of slices equal to number of threads
         value = list.join( " " );
         value.append( " ! h264parse" );
     }
