@@ -42,9 +42,13 @@ public slots:
 private:
     Ui_formMainWindow *ui;
     QString libopenh264_filename;
+    QString pathWithSettingsFilename;
+
 
 private slots:
     void slot_deCompress( QString string );
+    void slot_cisco_on( bool );
+    void slot_cisco_off( bool );
 
 
 protected:
