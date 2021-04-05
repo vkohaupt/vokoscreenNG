@@ -42,6 +42,7 @@ public slots:
 private:
     Ui_formMainWindow *ui;
 
+
 private slots:
     void slot_deCompress( QString string );
 
