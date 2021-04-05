@@ -1,5 +1,5 @@
 /* vokoscreenNG - A desktop recorder
- * Copyright (C) 2017-2019 Volker Kohaupt
+ * Copyright (C) 2017-2021 Volker Kohaupt
  * 
  * Author:
  *      Volker Kohaupt <vkohaupt@freenet.de>
@@ -28,13 +28,21 @@
 #include <gst/gst.h>
 
 
-QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller( QString pathWithSettingsFilename )
+QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller( QString pathWithSettingsFilename, Ui_formMainWindow *ui_mainwindow )
 {
+    ui = ui_mainwindow;
+
     QFileInfo fileInfo( pathWithSettingsFilename );
     QvkCiscoOpenh264Downloader *vkCiscoOpenh264Downloader = new QvkCiscoOpenh264Downloader( fileInfo.path() );
     connect( vkCiscoOpenh264Downloader, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_deCompress( QString ) ) );
 
+#ifdef Q_OS_WIN
     QString downloadFile = "http://ciscobinary.openh264.org/openh264-2.1.1-win32.dll.bz2";
+#endif
+#ifdef Q_OS_LINUX
+    QString downloadFile = "http://ciscobinary.openh264.org/libopenh264-2.1.1-linux64.6.so.bz2";
+#endif
+
     vkCiscoOpenh264Downloader->doDownload( downloadFile );
 }
 
@@ -53,7 +61,12 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
     QStringList stringList;
     stringList << "filesrc location=\"" + pathWithDownloadedFile + "\"";
     stringList << "bz2dec";
+#ifdef Q_OS_WIN
     stringList << "filesink location=\"" + fileInfoDownloadedFile.path() + "/" + "libopenh264.dll" + "\"";
+#endif
+#ifdef Q_OS_LINUX
+    stringList << "filesink location=\"" + fileInfoDownloadedFile.path() + "/" + "libopenh264.so" + "\"";
+#endif
     QString string = stringList.join( " ! " );
     qDebug().noquote() << global::nameOutput << "[h264]" << string;
 

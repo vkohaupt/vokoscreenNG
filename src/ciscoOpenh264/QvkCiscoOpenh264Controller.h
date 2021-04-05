@@ -1,5 +1,5 @@
 /* vokoscreenNG - A desktop recorder
- * Copyright (C) 2017-2019 Volker Kohaupt
+ * Copyright (C) 2017-2021 Volker Kohaupt
  * 
  * Author:
  *      Volker Kohaupt <vkohaupt@freenet.de>
@@ -25,13 +25,14 @@
 
 #include <QObject>
 
+#include "ui_formMainWindow.h"
 
 class QvkCiscoOpenh264Controller: public QObject
 {
     Q_OBJECT
 
 public:
-    QvkCiscoOpenh264Controller( QString pathWithSettingsFilename );
+    QvkCiscoOpenh264Controller( QString pathWithSettingsFilename , Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkCiscoOpenh264Controller();
 
     
@@ -39,7 +40,8 @@ public slots:
 
   
 private:
-    
+    Ui_formMainWindow *ui;
+
 private slots:
     void slot_deCompress( QString string );
 
