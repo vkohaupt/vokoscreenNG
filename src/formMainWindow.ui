@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <property name="iconSize">
            <size>
@@ -659,7 +659,7 @@
                      </property>
                      <layout class="QVBoxLayout" name="verticalLayout_20">
                       <item alignment="Qt::AlignHCenter">
-                       <widget class="QLabel" name="label_22">
+                       <widget class="QLabel" name="label_cisco_hint">
                         <property name="font">
                          <font>
                           <weight>75</weight>
@@ -679,7 +679,7 @@
                        </widget>
                       </item>
                       <item alignment="Qt::AlignHCenter">
-                       <widget class="QLabel" name="label_23">
+                       <widget class="QLabel" name="label_openh264_homepage">
                         <property name="text">
                          <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://www.openh264.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;https://www.openh264.org&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                         </property>
@@ -704,14 +704,14 @@
                          </spacer>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="radioButton">
+                         <widget class="QRadioButton" name="radioButton_cisco_on">
                           <property name="text">
                            <string notr="true">ON</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QRadioButton" name="radioButton_2">
+                         <widget class="QRadioButton" name="radioButton_cisco_off">
                           <property name="text">
                            <string notr="true">OFF</string>
                           </property>
