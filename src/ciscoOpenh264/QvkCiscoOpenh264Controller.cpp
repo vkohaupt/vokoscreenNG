@@ -33,17 +33,17 @@ QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller( QString pathWithSettings
     ui = ui_mainwindow;
 
 #ifdef Q_OS_WIN
-    QString libopenh264_file_name = "libopenh264.dll";
+    QString libopenh264_filename = "libopenh264.dll";
     QString downloadFile = "http://ciscobinary.openh264.org/openh264-2.1.1-win32.dll.bz2";
 #endif
 #ifdef Q_OS_LINUX
-    QString libopenh264_file_name = "libopenh264.so";
+    QString libopenh264_filename = "libopenh264.so";
     QString downloadFile = "http://ciscobinary.openh264.org/libopenh264-2.1.1-linux64.6.so.bz2";
 #endif
 
     QFileInfo fileInfo( pathWithSettingsFilename );
-    QFileInfo openh264file( fileInfo.path() + "/" + libopenh264_file_name );
-    if ( !openh264file.exists() )
+    QFileInfo fileInfo_libopenh264( fileInfo.path() + "/" + libopenh264_filename );
+    if ( !fileInfo_libopenh264.exists() )
     {
         QvkCiscoOpenh264Downloader *vkCiscoOpenh264Downloader = new QvkCiscoOpenh264Downloader( fileInfo.path() );
         connect( vkCiscoOpenh264Downloader, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_deCompress( QString ) ) );
