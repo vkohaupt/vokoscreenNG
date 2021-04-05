@@ -41,7 +41,7 @@ public slots:
   
 private:
     Ui_formMainWindow *ui;
-
+    QString libopenh264_filename;
 
 private slots:
     void slot_deCompress( QString string );

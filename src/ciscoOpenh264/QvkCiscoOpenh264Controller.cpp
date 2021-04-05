@@ -33,11 +33,11 @@ QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller( QString pathWithSettings
     ui = ui_mainwindow;
 
 #ifdef Q_OS_WIN
-    QString libopenh264_filename = "libopenh264.dll";
+    libopenh264_filename = "libopenh264.dll";
     QString downloadFile = "http://ciscobinary.openh264.org/openh264-2.1.1-win32.dll.bz2";
 #endif
 #ifdef Q_OS_LINUX
-    QString libopenh264_filename = "libopenh264.so";
+    libopenh264_filename = "libopenh264.so";
     QString downloadFile = "http://ciscobinary.openh264.org/libopenh264-2.1.1-linux64.6.so.bz2";
 #endif
 
@@ -66,12 +66,7 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
     QStringList stringList;
     stringList << "filesrc location=\"" + pathWithDownloadedFile + "\"";
     stringList << "bz2dec";
-#ifdef Q_OS_WIN
-    stringList << "filesink location=\"" + fileInfoDownloadedFile.path() + "/" + "libopenh264.dll" + "\"";
-#endif
-#ifdef Q_OS_LINUX
-    stringList << "filesink location=\"" + fileInfoDownloadedFile.path() + "/" + "libopenh264.so" + "\"";
-#endif
+    stringList << "filesink location=\"" + fileInfoDownloadedFile.path() + "/" + libopenh264_filename + "\"";
     QString string = stringList.join( " ! " );
     qDebug().noquote() << global::nameOutput << "[h264]" << string;
 
