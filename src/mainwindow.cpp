@@ -464,6 +464,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // *****************End Log ***********************************
 
 
+    //#ifdef Q_OS_WIN
+        QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller( vkSettings.getFileName(), ui );
+        Q_UNUSED(vkCiscoOpenh264Controller);
+    //#endif
+
     vkSettings.readAll( ui, this );
     vkSettings.readAreaScreencast( vkRegionChoise );
     vkSettings.readCamera( vkCameraController );
@@ -479,13 +484,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         vkPlayer->slot_play();
         ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
     }
-
-
-//#ifdef Q_OS_WIN
-    QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller( vkSettings.getFileName(), ui );
-    Q_UNUSED(vkCiscoOpenh264Controller);
-//#endif
-
 }
 
 

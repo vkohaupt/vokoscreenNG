@@ -83,6 +83,15 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             continue;
         }
 
+
+        if ( ( listRadiobuttons.at(i)->objectName() == "radioButton_cisco_on" ) and
+             ( settings.value( listRadiobuttons.at(i)->objectName(), true ).toBool() == true ) )
+        {
+            listRadiobuttons.at(i)->click();
+            continue;
+        }
+
+
         bool value = settings.value( listRadiobuttons.at(i)->objectName(), false ).toBool();
         if ( value == true )
         {
