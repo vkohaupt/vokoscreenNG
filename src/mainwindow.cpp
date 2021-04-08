@@ -29,9 +29,9 @@
 #include "global.h"
 #include "QvkScreenManager.h"
 #include "QvkLicenses.h"
-//#ifdef Q_OS_WIN
+#ifdef Q_OS_WIN
   #include "QvkCiscoOpenh264Controller.h"
-//#endif
+#endif
 
 #include <QDebug>
 #include <QDateTime>
@@ -464,10 +464,13 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // *****************End Log ***********************************
 
 
-    //#ifdef Q_OS_WIN
-        QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller( vkSettings.getFileName(), ui );
-        Q_UNUSED(vkCiscoOpenh264Controller);
-    //#endif
+#ifdef Q_OS_WIN
+    QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller( vkSettings.getFileName(), ui );
+    Q_UNUSED(vkCiscoOpenh264Controller);
+#endif
+#ifdef Q_OS_LINUX
+    ui->frame_cisco->hide();
+#endif
 
     vkSettings.readAll( ui, this );
     vkSettings.readAreaScreencast( vkRegionChoise );

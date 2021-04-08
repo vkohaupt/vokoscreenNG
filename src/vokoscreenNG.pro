@@ -158,8 +158,7 @@ include(version/version.pri)
 include(systrayAlternative/systrayAlternative.pri)
 
 # ciscoOpenh264
-#win32:include(ciscoOpenh264/ciscoOpenh264.pri)
-include(ciscoOpenh264/ciscoOpenh264.pri)
+win32:include(ciscoOpenh264/ciscoOpenh264.pri)
 
 # wayland
 unix:include(wayland/wayland.pri)
