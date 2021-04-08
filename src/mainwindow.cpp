@@ -48,6 +48,7 @@
 
 #ifdef Q_OS_LINUX
   #include <QX11Info>
+  #include <pulse/pulseaudio.h>
 #endif
 
 QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
@@ -215,6 +216,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << "Country:" << QLocale::countryToString( locale.country() );
     qDebug().noquote() << global::nameOutput << "Qt:" << qVersion();
     qDebug().noquote() << global::nameOutput << gst_version_string();
+#ifdef Q_OS_LINUX
+    qDebug().noquote() << global::nameOutput << "PulseAudio library version:" << pa_get_library_version();
+#endif
     qDebug().noquote() << global::nameOutput << "Operating system:" << QSysInfo::prettyProductName();
     qDebug().noquote() << global::nameOutput << "CPU Architecture:" << QSysInfo::currentCpuArchitecture();
     qDebug().noquote() << global::nameOutput << "Count CPU:" << QThread::idealThreadCount();
