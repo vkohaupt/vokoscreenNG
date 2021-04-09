@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>6</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -148,10 +148,17 @@
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
+                  <property name="sizeAdjustPolicy">
+                   <enum>QComboBox::AdjustToContents</enum>
+                  </property>
                  </widget>
                 </item>
                 <item row="2" column="1">
-                 <widget class="QComboBox" name="comboBoxScreencastScreenArea"/>
+                 <widget class="QComboBox" name="comboBoxScreencastScreenArea">
+                  <property name="sizeAdjustPolicy">
+                   <enum>QComboBox::AdjustToContents</enum>
+                  </property>
+                 </widget>
                 </item>
                 <item row="1" column="0">
                  <widget class="QRadioButton" name="radioButtonScreencastWindow">
@@ -557,6 +564,9 @@
                 <property name="enabled">
                  <bool>false</bool>
                 </property>
+                <property name="sizeAdjustPolicy">
+                 <enum>QComboBox::AdjustToContents</enum>
+                </property>
                </widget>
               </item>
               <item>
@@ -667,7 +677,11 @@
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QComboBox" name="comboBoxFormat"/>
+               <widget class="QComboBox" name="comboBoxFormat">
+                <property name="sizeAdjustPolicy">
+                 <enum>QComboBox::AdjustToContents</enum>
+                </property>
+               </widget>
               </item>
               <item row="5" column="0" colspan="4">
                <layout class="QHBoxLayout" name="horizontalLayout_22">
@@ -775,6 +789,9 @@
                             <property name="currentIndex">
                              <number>1</number>
                             </property>
+                            <property name="sizeAdjustPolicy">
+                             <enum>QComboBox::AdjustToContents</enum>
+                            </property>
                             <item>
                              <property name="text">
                               <string notr="true">ultrafast</string>
@@ -811,6 +828,9 @@
                            <widget class="QComboBox" name="comboBoxx264Profile">
                             <property name="currentText">
                              <string notr="true">baseline</string>
+                            </property>
+                            <property name="sizeAdjustPolicy">
+                             <enum>QComboBox::AdjustToContents</enum>
                             </property>
                             <item>
                              <property name="text">
@@ -928,7 +948,7 @@
               <item row="2" column="1" alignment="Qt::AlignTop">
                <widget class="QComboBox" name="comboBoxVideoCodec">
                 <property name="sizeAdjustPolicy">
-                 <enum>QComboBox::AdjustToMinimumContentsLength</enum>
+                 <enum>QComboBox::AdjustToContents</enum>
                 </property>
                 <property name="minimumContentsLength">
                  <number>14</number>
@@ -1900,6 +1920,9 @@
                 <property name="currentText">
                  <string notr="true">Automatically</string>
                 </property>
+                <property name="sizeAdjustPolicy">
+                 <enum>QComboBox::AdjustToContents</enum>
+                </property>
                 <item>
                  <property name="text">
                   <string notr="true">Automatically</string>
@@ -2250,10 +2273,17 @@
                 <property name="currentText">
                  <string notr="true"/>
                 </property>
+                <property name="sizeAdjustPolicy">
+                 <enum>QComboBox::AdjustToContents</enum>
+                </property>
                </widget>
               </item>
               <item row="0" column="2">
-               <widget class="QComboBox" name="comboBoxCameraResolution"/>
+               <widget class="QComboBox" name="comboBoxCameraResolution">
+                <property name="sizeAdjustPolicy">
+                 <enum>QComboBox::AdjustToContents</enum>
+                </property>
+               </widget>
               </item>
               <item row="0" column="0">
                <widget class="QCheckBox" name="checkBoxCameraOnOff">
