@@ -77,7 +77,7 @@ QPixmap QvkRegionButtonArrow::getArrow( degreeArrow degree, QColor colorSelected
             pen.setJoinStyle( Qt::RoundJoin );
         painter.setPen( pen );
         QBrush brush;
-            brush.setColor( Qt::black );
+            brush.setColor( colorSelected );
             brush.setStyle( Qt::SolidPattern );
         painter.setBrush( brush );
         QPainterPath painterPath;
