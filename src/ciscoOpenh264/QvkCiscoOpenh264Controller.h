@@ -47,6 +47,7 @@ private:
 
 private slots:
     void slot_deCompress( QString string );
+    void slot_pushButtonCiscoLicense();
     void slot_cisco_on( bool );
     void slot_cisco_off( bool );
 

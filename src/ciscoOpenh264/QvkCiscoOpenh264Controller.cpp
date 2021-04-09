@@ -43,6 +43,8 @@ QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller( QString vk_pathWithSetti
     QString downloadFile = "http://ciscobinary.openh264.org/libopenh264-2.1.1-linux64.6.so.bz2";
 #endif
 
+    connect( ui->pushButtonCiscoLicense, SIGNAL( clicked( bool ) ), this, SLOT( slot_pushButtonCiscoLicense() ) );
+
     connect( ui->radioButton_cisco_on,  SIGNAL( clicked( bool ) ), this, SLOT( slot_cisco_on( bool ) ) );
     connect( ui->radioButton_cisco_off, SIGNAL( clicked( bool ) ), this, SLOT( slot_cisco_off( bool ) ) );
 
@@ -128,3 +130,30 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
     ret = gst_element_set_state( pipeline, GST_STATE_NULL );
     gst_object_unref( pipeline );
 }
+
+
+void QvkCiscoOpenh264Controller::slot_pushButtonCiscoLicense()
+{
+   QFile file( ":/ciscoOpenh264/BINARY_LICENSE.txt" );
+   file.open( QIODevice::ReadOnly );
+   QTextStream textStream( &file );
+
+   QDialog *dialog = new QDialog();
+   dialog->resize( 600, 600 );
+   dialog->setWindowTitle( "Cisco licence" );
+
+   QBoxLayout *boxLayout = new QBoxLayout( QBoxLayout::TopToBottom );
+   dialog->setLayout( boxLayout );
+
+   QTextBrowser *textBrowser = new QTextBrowser( );//dialog );
+   textBrowser->setContextMenuPolicy( Qt::NoContextMenu );
+   textBrowser->setTextInteractionFlags( Qt::NoTextInteraction );
+   textBrowser->append( textStream.readAll() );
+   textBrowser->moveCursor( QTextCursor::Start );
+   textBrowser->show();
+
+   boxLayout->addWidget( textBrowser );
+
+   dialog->exec();
+}
+

@@ -379,7 +379,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->toolButtonx264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_x264Reset() ) );
     connect( ui->toolButtonOpenh264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_openh264Reset() ) );
 
-    connect( ui->pushButtonCiscoLicense, SIGNAL( clicked( bool ) ), this, SLOT( slot_pushButtonCiscoLicense() ) );
+//    connect( ui->pushButtonCiscoLicense, SIGNAL( clicked( bool ) ), this, SLOT( slot_pushButtonCiscoLicense() ) );
 
     // Tab 3 Time
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
@@ -588,7 +588,7 @@ void QvkMainWindow::slot_openh264Reset()
     sliderOpenh264->setValue( 23 );
 }
 
-
+/*
 void QvkMainWindow::slot_pushButtonCiscoLicense()
 {
    QFile file( ":/ciscoOpenh264/BINARY_LICENSE.txt" );
@@ -613,7 +613,7 @@ void QvkMainWindow::slot_pushButtonCiscoLicense()
 
    dialog->exec();
 }
-
+*/
 
 void QvkMainWindow::slot_videoCodecChanged( QString codec )
 {
