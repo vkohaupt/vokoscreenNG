@@ -157,7 +157,6 @@ private slots:
     void slot_framesReset();
     void slot_x264Reset();
     void slot_openh264Reset();
-//    void slot_pushButtonCiscoLicense();
 
     void slot_StartTimer( bool value );
     void slot_startTime();

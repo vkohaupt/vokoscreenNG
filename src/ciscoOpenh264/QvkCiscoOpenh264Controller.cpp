@@ -21,6 +21,7 @@
  */
 
 #include <QDir>
+#include <QDialog>
 
 #include "QvkCiscoOpenh264Controller.h"
 #include "QvkCiscoOpenh264Downloader.h"
@@ -145,7 +146,7 @@ void QvkCiscoOpenh264Controller::slot_pushButtonCiscoLicense()
    QBoxLayout *boxLayout = new QBoxLayout( QBoxLayout::TopToBottom );
    dialog->setLayout( boxLayout );
 
-   QTextBrowser *textBrowser = new QTextBrowser( );//dialog );
+   QTextBrowser *textBrowser = new QTextBrowser( dialog );
    textBrowser->setContextMenuPolicy( Qt::NoContextMenu );
    textBrowser->setTextInteractionFlags( Qt::NoTextInteraction );
    textBrowser->append( textStream.readAll() );
