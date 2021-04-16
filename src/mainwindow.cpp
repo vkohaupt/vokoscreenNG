@@ -1811,6 +1811,10 @@ void QvkMainWindow::slot_Stop()
         vkRegionChoise->update();
     }
 
+    if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  )
+    {
+        showNormal();
+    }
 }
 
 
