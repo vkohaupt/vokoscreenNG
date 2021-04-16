@@ -37,13 +37,19 @@ QvkScreenManager::QvkScreenManager()
 }
 
 
+void QvkScreenManager::init()
+{
+    slot_screen_count_changed();
+}
+
+
 QvkScreenManager::~QvkScreenManager()
 {}
 
 void QvkScreenManager::slot_screen_count_changed()
 {
     QList<QScreen *> screen = QGuiApplication::screens();
-    if ( screen.empty() == false )
+    if ( !screen.empty() )
     {
         emit signal_clear_widget();
         for ( int i = 0; i < screen.size(); i++ )

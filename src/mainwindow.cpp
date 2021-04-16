@@ -443,7 +443,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     VK_gst_formatVideoAudoicodec_available();
     VK_gst_Elements_available();
 
-    QvkScreenManager *screenManager = new QvkScreenManager;
+    QvkScreenManager *screenManager = new QvkScreenManager();
     // Fullscreen
     connect( screenManager, SIGNAL( signal_clear_widget() ),                          ui->comboBoxScreencastScreen, SLOT( clear() ) );
     connect( screenManager, SIGNAL( signal_screen_count_changed( QString, QString) ), this,                         SLOT( slot_screenCountChanged( QString, QString ) ) );
@@ -451,7 +451,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( screenManager, SIGNAL( signal_clear_widget() ),                          ui->comboBoxScreencastScreenArea, SLOT( clear() ) );
     connect( screenManager, SIGNAL( signal_screen_count_changed( QString, QString) ), this,                             SLOT( slot_screenCountChangedArea( QString, QString ) ) );
     connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged( int) ),  vkRegionChoise, SLOT( slot_init() ) );
-    emit qApp->screenAdded(Q_NULLPTR);
+    screenManager->init();
 
     // *****************Begin Camera *********************************
     vkCameraController = new QvkCameraController(ui);

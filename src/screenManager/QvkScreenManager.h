@@ -32,6 +32,7 @@ class QvkScreenManager : public QObject
 public:
     QvkScreenManager();
     virtual ~QvkScreenManager();
+    void init();
 
 
 public slots:
