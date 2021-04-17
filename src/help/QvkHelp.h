@@ -39,11 +39,12 @@ class QvkHelp: public QWidget
     Q_OBJECT
     
 public:
-    QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow);
+    QvkHelp( Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkHelp() override;
     
 
 public slots:
+    void slot_cleanUp();
 
   
 private:
@@ -72,7 +73,6 @@ private slots:
     void slot_parseHTML( QString tempPathFileName );
     void slot_showHelp( QString tempPathFileName );
 
-    void slot_cleanUp();
     void slot_NetworkAccessibility( QNetworkAccessManager::NetworkAccessibility accessible );
 
     void slot_parse_locale( QStringList list );

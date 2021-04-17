@@ -179,7 +179,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vkPlayer = new QvkPlayer( this, ui );
 
-    QvkHelp *vkHelp = new QvkHelp( this, ui );
+    QvkHelp *vkHelp = new QvkHelp( ui );
 
     QvkLicenses *vkLicenses = new QvkLicenses( ui );
 
@@ -434,6 +434,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( this,      SIGNAL( signal_close() ),       ui->pushButtonContinue, SLOT( click() ) );
     connect( this,      SIGNAL( signal_close() ),       ui->pushButtonStop,     SLOT( click() ) );
     connect( this,      SIGNAL( signal_close( bool ) ), ui->checkBoxCameraOnOff,SLOT( setChecked( bool ) ) );
+    connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( slot_cleanUp() ) );
     connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkLicenses,             SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkSystrayAlternative,   SLOT( close() ) );
