@@ -64,7 +64,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         }
     }
 
-    // Diese Settings müßen in dieser Reihenfolge gesetzt werden: Format, Videocodec, Audiocodec
+    // These settings must be set in this order: Format, Videocodec, Audiocodec
     // 1. Format
     QList<QComboBox *> listComboBoxFormat = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
     for ( int i = 0; i < listComboBoxFormat.count(); i++ )
