@@ -58,7 +58,7 @@ The same applies to metadata.
   - Audio: flac
 * gstreamer-plugins-bad
   - Video: camera
-  - Audio: AAC (since 3.0.5)
+  - Audio: **AAC only supported in vokoscreenNG 3.0.5 - 3.0.8**
 * gstreamer-plugins-bad-orig-addon (openSUSE Packman)
   - Video: openh264
 * gstreamer-plugins-ugly
