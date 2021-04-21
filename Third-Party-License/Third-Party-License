@@ -12,12 +12,18 @@ File    --> LGPL
 URL     --> https://gstreamer.freedesktop.org/
 
 
-Global QGlobalShortcut:
+QGlobalShortcut:
 Licence --> LGPL
 File    --> LGPL
 URL     --> https://github.com/Legotckoi/QGlobalShortcut
 
 
-Fallback icons:
+Icons:
 Licence --> Public Domain
 URL     --> http://tango.freedesktop.org
+
+
+PulseAudio:
+Licence --> LGPL
+File    --> LGPL
+URL     --> https://www.freedesktop.org/wiki/Software/PulseAudio/
