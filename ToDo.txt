@@ -1,9 +1,6 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
-3rd party licenses anpassen
-
-
 Shortcuts:
 -https://doc.qt.io/qt-5/stylesheet-reference.html#spacing-prop
 
