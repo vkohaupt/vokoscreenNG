@@ -1395,11 +1395,6 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         value.append( " ! h264parse" );
     }
 
-    if ( encoder == "x265enc" )
-    {
-        value = "x265enc";
-    }
-
     if ( encoder == "vp8enc" )
     {
         QStringList list;
