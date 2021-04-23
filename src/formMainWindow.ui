@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>6</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1756,7 +1756,7 @@
            <attribute name="title">
             <string notr="true"/>
            </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0,0,0,0,0">
+           <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0,0,0,0,0,0">
             <item>
              <spacer name="verticalSpacer_3">
               <property name="orientation">
@@ -1957,6 +1957,13 @@
                </spacer>
               </item>
              </layout>
+            </item>
+            <item>
+             <widget class="Line" name="line_cisco">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QFrame" name="frame_cisco">

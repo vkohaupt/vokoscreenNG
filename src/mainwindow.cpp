@@ -474,6 +474,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     Q_UNUSED(vkCiscoOpenh264Controller);
 #endif
 #ifdef Q_OS_LINUX
+    ui->line_cisco->hide();
     ui->frame_cisco->hide();
 #endif
 
