@@ -1,6 +1,8 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
+Wenn kein Netz dann im Tab About "Onlinehilfe" deaktivieren.
+
 Shortcuts:
 -https://doc.qt.io/qt-5/stylesheet-reference.html#spacing-prop
 
