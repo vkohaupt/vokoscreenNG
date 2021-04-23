@@ -1756,7 +1756,7 @@
            <attribute name="title">
             <string notr="true"/>
            </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0,0,0,0,0,0">
+           <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0,0,0,0,0,0,0">
             <item>
              <spacer name="verticalSpacer_3">
               <property name="orientation">
@@ -1959,6 +1959,19 @@
              </layout>
             </item>
             <item>
+             <spacer name="verticalSpacer_14">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="Line" name="line_cisco">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
@@ -1974,6 +1987,9 @@
                <enum>QFrame::Raised</enum>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_13">
+               <property name="topMargin">
+                <number>0</number>
+               </property>
                <property name="bottomMargin">
                 <number>0</number>
                </property>
