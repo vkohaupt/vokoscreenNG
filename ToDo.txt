@@ -3,6 +3,9 @@ The ToDo list is only for the main developer and serves me as a reminder and can
 
 Wenn kein Netz dann im Tab About "Onlinehilfe" deaktivieren.
 
+Fedora 34 Beta:
+- In der Onlinefilfe wird das Windows Logo nicht angezeigt.
+
 Shortcuts:
 -https://doc.qt.io/qt-5/stylesheet-reference.html#spacing-prop
 
