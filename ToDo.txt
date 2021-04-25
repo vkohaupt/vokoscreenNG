@@ -1,6 +1,9 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
+Aera:
+--Beim betätigen der Buttons per Tastatur Positionsangabe anzeigen.
+
 Onlinehilfe:
 --Wenn kein Netz dann im Tab About "Onlinehilfe" deaktivieren.
 
