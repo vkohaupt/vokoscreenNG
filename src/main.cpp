@@ -24,6 +24,7 @@
 #include "global.h"
 
 #ifdef Q_OS_LINUX
+#include "QvkWaylandRoutines.h"
 #include "wl_mainwindow.h"
 #endif
 
@@ -137,6 +138,20 @@ int main(int argc, char *argv[])
     app.installTranslator( &translator );
 
 #ifdef Q_OS_LINUX
+    if ( QvkWaylandRoutines::is_Wayland_Display_Available() == false )
+    {
+        QvkMainWindow *w = new QvkMainWindow;
+        w->show();
+    }
+    else
+    {
+        Qvk_wl_MainWindow *wl = new Qvk_wl_MainWindow;
+        wl->show();
+    }
+#endif
+
+/*
+#ifdef Q_OS_LINUX
     if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "x11" )
     {
         QvkMainWindow *w = new QvkMainWindow;
@@ -149,6 +164,7 @@ int main(int argc, char *argv[])
         wl->show();
     }
 #endif
+*/
 
 #ifdef Q_OS_WIN
     QvkMainWindow *w = new QvkMainWindow;

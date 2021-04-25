@@ -72,7 +72,7 @@ QMAKE_CLEAN += $$TARGET */*~
 QMAKE_LFLAGS += -Wl,--as-needed
 
 unix:CONFIG += link_pkgconfig
-unix:PKGCONFIG += gstreamer-1.0 libpulse
+unix:PKGCONFIG += gstreamer-1.0 libpulse wayland-client
 unix:LIBS += -lpulse-simple
 
 win32:RC_ICONS = vokoscreenNG.ico
@@ -162,3 +162,4 @@ win32:include(ciscoOpenh264/ciscoOpenh264.pri)
 
 # wayland
 unix:include(wayland/wayland.pri)
+unix:include(waylandRoutines/waylandRoutines.pri)

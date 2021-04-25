@@ -20,26 +20,32 @@
  * --End_License--
  */
 
-#include "wl_mainwindow.h"
+#include "QvkWaylandRoutines.h"
 #include "global.h"
+#include "wayland/wayland-client.h"
 
 #include <QDebug>
-#include <QMessageBox>
 
-
-Qvk_wl_MainWindow::Qvk_wl_MainWindow(QWidget *parent) : QMainWindow(parent)
+QvkWaylandRoutines::QvkWaylandRoutines( QWidget *parent )
 {
-    QMessageBox *messageBox = new QMessageBox();
-    QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
-    messageBox->setWindowIcon( icon );
-    messageBox->setWindowTitle( global::name + " " + global::version );
-    messageBox->setIcon( QMessageBox::Critical );
-    messageBox->setText( tr( "Wayland desktop session detected" ) );
-    messageBox->setInformativeText( tr( "To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session" ) );
-    messageBox->exec();
-
-    exit(0);
+    Q_UNUSED(parent)
 }
 
-Qvk_wl_MainWindow::~Qvk_wl_MainWindow()
+
+QvkWaylandRoutines::~QvkWaylandRoutines()
 {}
+
+
+bool QvkWaylandRoutines::is_Wayland_Display_Available()
+{
+    wl_display *display = wl_display_connect( Q_NULLPTR );
+    if ( display == Q_NULLPTR )
+    {
+        qDebug().noquote() << global::nameOutput << "Desktop session is a X11 session";
+        return false;
+    }
+
+    qDebug().noquote() << global::nameOutput << "Desktop session is a Wayland session";
+    wl_display_disconnect( display );
+    return true;
+}
