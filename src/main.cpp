@@ -25,13 +25,11 @@
 
 #ifdef Q_OS_LINUX
 #include "wl_mainwindow.h"
-#include <QX11Info>
 #endif
 
 #ifdef Q_OS_WIN
 #include "QvkSettings.h"
 #endif
-
 
 #include <QTranslator>
 #include <QLibraryInfo>
@@ -126,8 +124,8 @@ int main(int argc, char *argv[])
     envPathProfile.append( pathProfile.path() + "/GST_Error.txt" );
     qputenv( "GST_DEBUG_FILE", envPathProfile );
 */
-    
 #endif
+
     gst_init (&argc, &argv);
 
     QTranslator * qtTranslator = new QTranslator();
