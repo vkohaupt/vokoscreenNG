@@ -1,17 +1,21 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
-Wenn kein Netz dann im Tab About "Onlinehilfe" deaktivieren.
+Onlinehilfe:
+--Wenn kein Netz dann im Tab About "Onlinehilfe" deaktivieren.
 
-Fedora 34 Beta:
-- In der Onlinefilfe wird das Windows Logo nicht angezeigt.
+LOG:
+--Log sollte schon in der main greifen.
+
+Onlinehilfe
+--Das windowslogo von svg ändern in png. In einigen Distributionen wird svg nicht angezeigt.
 
 Shortcuts:
--https://doc.qt.io/qt-5/stylesheet-reference.html#spacing-prop
+--https://doc.qt.io/qt-5/stylesheet-reference.html#spacing-prop
 
 Windows Log:
--In der Ausgabe sind Sonderzeichen wenn das Log zum Mailprogramm geschickt wird.
--Zu dem wird die Ausgabe doppelt erstellt. Siehe Linux dort läuft es richtig.
+--In der Ausgabe sind Sonderzeichen wenn das Log zum Mailprogramm geschickt wird.
+--Zu dem wird die Ausgabe doppelt erstellt. Siehe Linux dort läuft es richtig.
 
 Audio Windows 7 WASAPI:
 --Aufnahme Lautsprecher funktioniert nicht. Datei ist 0 Byte groß.

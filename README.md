@@ -49,6 +49,7 @@ The same applies to metadata.
 ### Run-time requirements
 * Qt5 >= 5.9.4
 * pulseaudio
+* libwayland-client0 (since 3.0.9)
 * gstreamer >= 1.12.5
 * gstreamer-plugins-base
   - Audio: vorbis, opus
@@ -83,6 +84,7 @@ The same applies to metadata.
 * libX11-devel
 * gstreamer-devel
 * libpulse-devel (since 3.0.7)
+* wayland-devel (since 3.0.9)
 
 On Ubuntu these requirements can be satisfied by running `sudo apt install libgstreamer1.0-dev qt5-default qttools5-dev-tools libqt5x11extras5-dev qtmultimedia5-dev libqt5multimedia5-plugins libpulse-dev`
 
