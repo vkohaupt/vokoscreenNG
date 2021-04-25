@@ -138,26 +138,22 @@ int main(int argc, char *argv[])
     translator.load( QLocale::system().name(), ":/language" );
     app.installTranslator( &translator );
 
-    QvkMainWindow *w;
-
 #ifdef Q_OS_LINUX
-    Qvk_wl_MainWindow *wl;
-
     if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "x11" )
     {
-        w = new QvkMainWindow;
+        QvkMainWindow *w = new QvkMainWindow;
         w->show();
     }
     
     if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "wayland" )
     {
-        wl = new Qvk_wl_MainWindow;
+        Qvk_wl_MainWindow *wl = new Qvk_wl_MainWindow;
         wl->show();
     }
 #endif
 
 #ifdef Q_OS_WIN
-    w = new QvkMainWindow;
+    QvkMainWindow *w = new QvkMainWindow;
     w->show();
 #endif
 
