@@ -10,9 +10,6 @@ Onlinehilfe:
 LOG:
 --Log sollte schon in der main greifen.
 
-Onlinehilfe
---Das windowslogo von svg ändern in png. In einigen Distributionen wird svg nicht angezeigt.
-
 Shortcuts:
 --https://doc.qt.io/qt-5/stylesheet-reference.html#spacing-prop
 
