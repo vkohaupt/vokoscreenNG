@@ -128,6 +128,16 @@ void QvkHelp::slot_NetworkAccessibility( QNetworkAccessManager::NetworkAccessibi
             }
         }
     }
+
+    if ( accessible == QNetworkAccessManager::Accessible )
+    {
+        ui->comboBoxOnlineHelp->setEnabled( true );
+    }
+
+    if ( accessible == QNetworkAccessManager::NotAccessible )
+    {
+        ui->comboBoxOnlineHelp->setEnabled( false );
+    }
 }
 
 
