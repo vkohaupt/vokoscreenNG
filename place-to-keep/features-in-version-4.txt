@@ -1,0 +1,11 @@
+
+***** possible new features in version 4 *****
+
+- Recording Camera in a file and hide the camera window
+- ShowClick
+- Volume meter
+- Keyboard shortcut
+- Touchscreen GUI
+- Very simple support for Network Cameras 
+- Reading out the features FPS
+- Recording only audio

@@ -37,17 +37,27 @@ QvkScreenManager::QvkScreenManager()
 }
 
 
+void QvkScreenManager::init()
+{
+    slot_screen_count_changed();
+}
+
+
 QvkScreenManager::~QvkScreenManager()
 {}
 
 void QvkScreenManager::slot_screen_count_changed()
 {
     QList<QScreen *> screen = QGuiApplication::screens();
-    if ( screen.empty() == false )
+    if ( !screen.empty() )
     {
         emit signal_clear_widget();
         for ( int i = 0; i < screen.size(); i++ )
         {
+            if ( screen.at(i)->name() == QGuiApplication::primaryScreen()->name() )
+            {
+                qDebug().noquote() << global::nameOutput << "This screen is the primary screen: " << QGuiApplication::primaryScreen()->name();
+            }
             qDebug().noquote() << global::nameOutput << "Name from screen: " << screen.at(i)->name();
             qDebug().noquote() << global::nameOutput << "Screen available desktop width :" << QString::number( screen.at(i)->geometry().width() * screen.at(i)->devicePixelRatio() );
             qDebug().noquote() << global::nameOutput << "Screen available desktop height:" << QString::number( screen.at(i)->geometry().height() * screen.at(i)->devicePixelRatio() );

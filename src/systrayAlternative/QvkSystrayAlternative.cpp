@@ -149,24 +149,15 @@ void QvkSystrayAlternative::mousePressEvent( QMouseEvent *event )
 
 void QvkSystrayAlternative::contextMenuEvent( QContextMenuEvent *event )
 {
-   menu->exec( event->globalPos() );
+    menu->exec( event->globalPos() );
 }
 
 
 void QvkSystrayAlternative::slot_setRecordIcon( bool )
 {
-    if ( global::VK_showOnlyFallbackIcons == true )
-    {
-        QPixmap pixmap( ":/pictures/systray/record.png" );
-        pixmap = pixmap.scaled( size , Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-        setPixmap( pixmap );
-    }
-    else
-    {
-        QIcon icon = QIcon::fromTheme( "media-record", QIcon( ":/pictures/systray/record.png" ) );
-        QPixmap pixmap( icon.pixmap( size ) );
-        setPixmap( pixmap );
-    }
+    QPixmap pixmap( ":/pictures/systray/record.png" );
+    pixmap = pixmap.scaled( size , Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+    setPixmap( pixmap );
 }
 
 

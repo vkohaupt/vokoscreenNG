@@ -1,27 +1,42 @@
 
 The ToDo list is only for the main developer and serves me as a reminder and can change daily.
 
+Aera:
+--Beim betätigen der Buttons per Tastatur Positionsangabe anzeigen.
+
+LOG:
+--Log sollte schon in der main greifen.
+
+Shortcuts:
+--https://doc.qt.io/qt-5/stylesheet-reference.html#spacing-prop
+
+Windows Log:
+--In der Ausgabe sind Sonderzeichen wenn das Log zum Mailprogramm geschickt wird.
+--Zu dem wird die Ausgabe doppelt erstellt. Siehe Linux dort läuft es richtig.
+
+Audio Windows 7 WASAPI:
+--Aufnahme Lautsprecher funktioniert nicht. Datei ist 0 Byte groß.
+--Analyse mit GST_DEBUG siehe main.cpp
+
+Kamera:
+--Onlinehilfe anpassen
+--Damit ersichtlich wird das hinter dem Kamerafenster ein Dialog steckt, sollte ein Button auftauchen wenn mit der Maus ins Fenster gefahren wird.
+
+Timer:
+--Die Usability ist nicht gut, Timer starten kann als "starte in" und "starte um" interpretiert werden.
+
+openh264:
+--Das Binäry sollte in Zukunft vom cisco Server direkt heruntergeladen werden.
+--Desweiteren muß der User das Binäry aktivieren und deaktivieren können.
+--Die Funktionsweise sollte wie im Firefox sein.
+
 Audio Windows:
 --Zur Zeit werden die Audiogeräte in Form checkboxAudioDeviece-0=true abgespeichert.
 Um eine Unterscheidung zwischen Directsound und WASAPI zu haben sollte es evtl. so aussehen
 checkboxAudioDeviceWASAPI="\{0.0.1.00000000\}.\{7f54fad8-4040-418d-8ded-5879feca9d72\}"
 
-Help:
---Hilfe funktioniert nicht im Kameradialog
-
-Aktualisierung:
---Wird nicht ausgeführt wenn das Icon im Systray deaktiviert ist
-
-Linux:
---Bei dunklen Themes ist das Icon auf Tab Timer schlecht sichtbar
-
 Linux:
 --Installer erstellen
-
-Allgemein:
---Temporäre Ordner in /tmp sollten nach gebrauch entfernt werden nicht erst beim schließen von vokoscreeenNG.
---Betrifft nur die Hilfe.
---Lösung könnte sein, mit einer globalen Variabeln zu arbeiten.
 
 Windows:
 --Für den User wird eine sehr einfache Update Funktion benötigt.
@@ -78,6 +93,3 @@ Player:
 Suse Leap 15.0 Gnome:
 --Camerafenster wandert beim entfernen und hinzufügen des Rahmen nach oben.
 --Keine Lösung in Sicht.
-
-Spezialslider:
---Mauscursor nicht stimmig mit Handle.

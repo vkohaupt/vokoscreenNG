@@ -7,13 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkAudioWindows</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>Velg én til flere enheter</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
@@ -36,6 +29,13 @@
     <message>
         <source>Countdown</source>
         <translation>Nedtelling</translation>
+    </message>
+</context>
+<context>
+    <name>QvkDirectSoundController</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Velg én til flere enheter</translation>
     </message>
 </context>
 <context>
@@ -91,14 +91,6 @@
         <translation>Vennligst installere en filutforsker.</translation>
     </message>
     <message>
-        <source>Desktop session is a Wayland session</source>
-        <translation>Skrivebordsøkt er en Wayland økt.</translation>
-    </message>
-    <message>
-        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Wayland er ikke supportert. Et skjermopptak viser en svart skjerm. Vennligst logg ut og start en X11 Desktop økt.</translation>
-    </message>
-    <message>
         <source>Sourcecode</source>
         <translation>Kildekode</translation>
     </message>
@@ -114,16 +106,19 @@
         <source>Donate</source>
         <translation>Donere</translation>
     </message>
-    <message>
-        <source>Wayland desktop session detected</source>
-        <translation>Wayland skrivebordsøkt oppdaget</translation>
-    </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
         <translation>Åpne Fil</translation>
+    </message>
+</context>
+<context>
+    <name>QvkPulseAudioWatcher</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Velg én til flere enheter</translation>
     </message>
 </context>
 <context>
@@ -177,6 +172,17 @@
     <message>
         <source>Exit</source>
         <translation>Avslutt</translation>
+    </message>
+</context>
+<context>
+    <name>Qvk_wl_MainWindow</name>
+    <message>
+        <source>Wayland desktop session detected</source>
+        <translation>Wayland skrivebordsøkt oppdaget</translation>
+    </message>
+    <message>
+        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
+        <translation>Wayland er ikke supportert. Et skjermopptak viser en svart skjerm. Vennligst logg ut og start en X11 Desktop økt.</translation>
     </message>
 </context>
 <context>

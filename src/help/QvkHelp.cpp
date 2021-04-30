@@ -44,10 +44,8 @@
  * See also QvkHelp::eventFilter(QObject *object, QEvent *event)
  */
 
-QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : uiHelp(new(Ui::help))
+QvkHelp::QvkHelp( Ui_formMainWindow *ui_mainwindow ) : uiHelp(new(Ui::help))
 {
-    connect( mainWindow, SIGNAL( destroyed( QObject*) ), this, SLOT( slot_cleanUp() ) );
-
     ui = ui_mainwindow;
     uiHelp->setupUi( this );
 
@@ -76,7 +74,7 @@ QvkHelp::QvkHelp(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow ) : u
     vkDownloadHTML = new QvkDownloader( temporaryDirLocal.path() );
     vkDownloadFiles = new QvkDownloader( temporaryDirLocal.path() );
 
-    QIcon iconHelp = style()->standardIcon( QStyle::SP_MessageBoxInformation );
+    QIcon iconHelp( ":/pictures/help/information.png" );
     QList<QToolButton *> listToolButton = ui->centralWidget->findChildren<QToolButton *>();
     for ( int i = 0; i < listToolButton.count(); i++ )
     {
@@ -129,6 +127,16 @@ void QvkHelp::slot_NetworkAccessibility( QNetworkAccessManager::NetworkAccessibi
                listToolButton.at(i)->setEnabled( false );
             }
         }
+    }
+
+    if ( accessible == QNetworkAccessManager::Accessible )
+    {
+        ui->comboBoxOnlineHelp->setEnabled( true );
+    }
+
+    if ( accessible == QNetworkAccessManager::NotAccessible )
+    {
+        ui->comboBoxOnlineHelp->setEnabled( false );
     }
 }
 

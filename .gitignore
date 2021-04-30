@@ -32,8 +32,6 @@ Makefile
 *build*
 ui_*.h
 *.qm
-vokoscreen*
-main.ts
 
 # Linux/Unixes
 .*

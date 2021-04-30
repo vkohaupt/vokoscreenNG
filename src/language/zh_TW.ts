@@ -7,13 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkAudioWindows</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>選取一個或多個裝置</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
@@ -36,6 +29,13 @@
     <message>
         <source>Countdown</source>
         <translation>倒數計時</translation>
+    </message>
+</context>
+<context>
+    <name>QvkDirectSoundController</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>選取一個或多個裝置</translation>
     </message>
 </context>
 <context>
@@ -91,14 +91,6 @@
         <translation>請安裝檔案管理員程式</translation>
     </message>
     <message>
-        <source>Desktop session is a Wayland session</source>
-        <translation>桌面工作階段是 Wayland 工作階段</translation>
-    </message>
-    <message>
-        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>尚未支援 Wayland。螢幕將會空白一片。請登出並啟動 X11 桌面工作階段</translation>
-    </message>
-    <message>
         <source>Sourcecode</source>
         <translation>來源程式碼</translation>
     </message>
@@ -114,16 +106,19 @@
         <source>Donate</source>
         <translation>捐款支持</translation>
     </message>
-    <message>
-        <source>Wayland desktop session detected</source>
-        <translation>偵測到是 Wayland 桌面工作階段</translation>
-    </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
         <translation>開啟檔案</translation>
+    </message>
+</context>
+<context>
+    <name>QvkPulseAudioWatcher</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>選取一個或多個裝置</translation>
     </message>
 </context>
 <context>
@@ -177,6 +172,17 @@
     <message>
         <source>Exit</source>
         <translation>結束</translation>
+    </message>
+</context>
+<context>
+    <name>Qvk_wl_MainWindow</name>
+    <message>
+        <source>Wayland desktop session detected</source>
+        <translation>偵測到是 Wayland 桌面工作階段</translation>
+    </message>
+    <message>
+        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
+        <translation>尚未支援 Wayland。螢幕將會空白一片。請登出並啟動 X11 桌面工作階段</translation>
     </message>
 </context>
 <context>

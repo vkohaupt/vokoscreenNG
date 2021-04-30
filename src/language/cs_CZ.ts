@@ -7,13 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkAudioWindows</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>Vyberte jedno nebo více zařízení</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
@@ -36,6 +29,13 @@
     <message>
         <source>Countdown</source>
         <translation>Odpočítávání</translation>
+    </message>
+</context>
+<context>
+    <name>QvkDirectSoundController</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Vyberte jedno nebo více zařízení</translation>
     </message>
 </context>
 <context>
@@ -91,14 +91,6 @@
         <translation>Prosím o instalaci správce souborů.</translation>
     </message>
     <message>
-        <source>Desktop session is a Wayland session</source>
-        <translation>Desktop session je relace Wayland</translation>
-    </message>
-    <message>
-        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Wayland zatím není podporován. Nahrávka ukazuje černou obrazovku. Odhlaste se a spusťte relaci plochy X11</translation>
-    </message>
-    <message>
         <source>Sourcecode</source>
         <translation>Zdrojový kód</translation>
     </message>
@@ -114,16 +106,19 @@
         <source>Donate</source>
         <translation>Podpořit</translation>
     </message>
-    <message>
-        <source>Wayland desktop session detected</source>
-        <translation>Byla zjištěna relace plochy Wayland</translation>
-    </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
         <translation>Otevřít soubor</translation>
+    </message>
+</context>
+<context>
+    <name>QvkPulseAudioWatcher</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Vyberte jedno nebo více zařízení</translation>
     </message>
 </context>
 <context>
@@ -177,6 +172,17 @@
     <message>
         <source>Exit</source>
         <translation>Odejít</translation>
+    </message>
+</context>
+<context>
+    <name>Qvk_wl_MainWindow</name>
+    <message>
+        <source>Wayland desktop session detected</source>
+        <translation>Byla zjištěna relace plochy Wayland</translation>
+    </message>
+    <message>
+        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
+        <translation>Wayland zatím není podporován. Nahrávka ukazuje černou obrazovku. Odhlaste se a spusťte relaci plochy X11</translation>
     </message>
 </context>
 <context>

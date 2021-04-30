@@ -25,18 +25,15 @@
 #include <QDebug>
 #include <QMouseEvent>
 
-QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, QvkSpezialSlider *gui_sliderCameraWindowSize )
+QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, QvkSpezialSlider *gui_sliderCameraWindowSize, cameraSettingsDialog *settingsDialog )
 {
     ui_formMainWindow = ui_surface;
+    vkCameraSettingsDialog = settingsDialog;
 
     setWindowFlags( windowFlags() | Qt::WindowStaysOnTopHint );
     setMinimumSize( QSize( 160, 120 ) );
     setAlignment( Qt::AlignHCenter | Qt::AlignVCenter );
     setMouseTracking( true ); // No function, why?
-
-    vkCameraSettingsDialog = new cameraSettingsDialog;
-
-    connect( this, SIGNAL( signal_cameraWindow_close( bool ) ), vkCameraSettingsDialog, SLOT( close() ) );
 
     connect( ui_formMainWindow->checkBoxCameraMirrorHorizontal, SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraMirrorHorizontal, SLOT( setChecked( bool ) ) );
     connect( ui_formMainWindow->checkBoxCameraMirrorVertical,   SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraMirrorVertical,   SLOT( setChecked( bool ) ) );
@@ -45,6 +42,7 @@ QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, QvkSpezialSlide
     connect( ui_formMainWindow->checkBoxCameraMono,             SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraMono,             SLOT( setChecked( bool ) ) );
     connect( ui_formMainWindow->checkBoxCameraWindowFrame,      SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame,      SLOT( setChecked( bool ) ) );
     connect( gui_sliderCameraWindowSize,                        SIGNAL( valueChanged( int ) ), vkCameraSettingsDialog->dialog_sliderCameraWindowSize,  SLOT( setValue( int ) ) );
+    connect( ui_formMainWindow->comboBoxCameraResolution, SIGNAL( currentIndexChanged( int ) ), vkCameraSettingsDialog->ui->comboBoxCameraResolution,  SLOT( setCurrentIndex( int ) ) );
 
     connect( vkCameraSettingsDialog->ui->checkBoxCameraMirrorHorizontal, SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraMirrorHorizontal, SLOT( setChecked( bool ) ) );
     connect( vkCameraSettingsDialog->ui->checkBoxCameraMirrorVertical,   SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraMirrorVertical,   SLOT( setChecked( bool ) ) );
@@ -52,7 +50,9 @@ QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, QvkSpezialSlide
     connect( vkCameraSettingsDialog->ui->checkBoxCameraGray,             SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraGray,             SLOT( setChecked( bool ) ) );
     connect( vkCameraSettingsDialog->ui->checkBoxCameraMono,             SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraMono,             SLOT( setChecked( bool ) ) );
     connect( vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame,      SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraWindowFrame,      SLOT( setChecked( bool ) ) );
-    connect( vkCameraSettingsDialog->dialog_sliderCameraWindowSize,         SIGNAL( valueChanged( int ) ), gui_sliderCameraWindowSize,                    SLOT( setValue( int ) ) );
+    connect( vkCameraSettingsDialog->dialog_sliderCameraWindowSize,      SIGNAL( valueChanged( int ) ), gui_sliderCameraWindowSize,                    SLOT( setValue( int ) ) );
+    connect( vkCameraSettingsDialog->ui->comboBoxCameraResolution,  SIGNAL( currentIndexChanged( int ) ), ui_formMainWindow->comboBoxCameraResolution, SLOT( setCurrentIndex( int ) ) );
+
 
     connect( vkCameraSettingsDialog->ui->buttonBox, SIGNAL( accepted() ), vkCameraSettingsDialog, SLOT( close() ) );
     connect( vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_switchToFullscreen() ) );

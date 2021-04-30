@@ -45,17 +45,6 @@ QvkLog::QvkLog( Ui_formMainWindow *ui_mainwindow )
     }
 
     logFile.setFileName( path + "/" + "log" + "/" + stringDateTime + ".log" );
-
-    // If more 30 files, remove the last.
-    QDir dir( logFolderName );
-    dir.setFilter( QDir::Files );
-    dir.setSorting( QDir::Name );
-    QList<QFileInfo> list = dir.entryInfoList();
-    if ( list.count() > 30 )
-    {
-        QFile file( list.at(0).absoluteFilePath() );
-        file.remove();
-    }
 }
 
 

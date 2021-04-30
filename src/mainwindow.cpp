@@ -29,7 +29,9 @@
 #include "global.h"
 #include "QvkScreenManager.h"
 #include "QvkLicenses.h"
-#include "QvkLoadExtension.h"
+#ifdef Q_OS_WIN
+  #include "QvkCiscoOpenh264Controller.h"
+#endif
 
 #include <QDebug>
 #include <QDateTime>
@@ -46,21 +48,13 @@
 
 #ifdef Q_OS_LINUX
   #include <QX11Info>
+  #include <pulse/pulseaudio.h>
 #endif
 
-#ifdef Q_OS_LINUX
 QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                                 ui(new Ui::formMainWindow),
                                                 vkWinInfo(new QvkWinInfo),
                                                 vkCountdown(new QvkCountdown)
-#endif
-
-#ifdef Q_OS_WIN
-QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
-                                                ui(new Ui::formMainWindow),
-                                                vkWinInfo(new QvkWinInfo),
-                                                vkCountdown(new QvkCountdown)
-#endif
 {
     ui->setupUi(this);
     soundEffect = new QSoundEffect();
@@ -84,7 +78,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderFrames->show();
 
     sliderX264 = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_x264->insertWidget( 2, sliderX264 );
+    ui->horizontalLayout_26->insertWidget( 2, sliderX264 );
     sliderX264->setObjectName("sliderX264");
     sliderX264->setTracking( true );
     sliderX264->setMinimum( 0 );
@@ -96,8 +90,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->horizontalLayout_openh264->insertWidget( 1, sliderOpenh264 );
     sliderOpenh264->setObjectName("sliderOpenh264");
     sliderOpenh264->setTracking( true );
-    sliderOpenh264->setMinimum( 0 );
-    sliderOpenh264->setMaximum( 50 );
+    sliderOpenh264->setMinimum( 1 ); // we need minimum 1, with 0 we get wrong colors.
+    sliderOpenh264->setMaximum( 51 );
     sliderOpenh264->setValue( 23 );
     sliderOpenh264->show();
 
@@ -185,7 +179,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vkPlayer = new QvkPlayer( this, ui );
 
-    QvkHelp *vkHelp = new QvkHelp( this, ui );
+    QvkHelp *vkHelp = new QvkHelp( ui );
 
     QvkLicenses *vkLicenses = new QvkLicenses( ui );
 
@@ -222,8 +216,12 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << "Country:" << QLocale::countryToString( locale.country() );
     qDebug().noquote() << global::nameOutput << "Qt:" << qVersion();
     qDebug().noquote() << global::nameOutput << gst_version_string();
+#ifdef Q_OS_LINUX
+    qDebug().noquote() << global::nameOutput << "PulseAudio library version:" << pa_get_library_version();
+#endif
     qDebug().noquote() << global::nameOutput << "Operating system:" << QSysInfo::prettyProductName();
     qDebug().noquote() << global::nameOutput << "CPU Architecture:" << QSysInfo::currentCpuArchitecture();
+    qDebug().noquote() << global::nameOutput << "Count CPU:" << QThread::idealThreadCount();
     qDebug().noquote() << global::nameOutput << global::name << "running as:" << QGuiApplication::platformName() << "client";
 
 #ifdef Q_OS_LINUX
@@ -237,25 +235,12 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << "Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
     qDebug().noquote() << global::nameOutput << "Settings:" << vkSettings.getFileName();
     qDebug().noquote() << global::nameOutput << "Log:" << vklogController->get_logPath();
+    qDebug().noquote() << global::nameOutput << "Default Videopath:" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
+    qDebug().noquote() << global::nameOutput << "User Videopath:" << vkSettings.getVideoPath();
 #ifdef Q_OS_LINUX
     qDebug().noquote() << global::nameOutput << "CompositingManager running:" << QX11Info::isCompositingManagerRunning();
 #endif
     qDebug();
-
-    // only values with modulo 4 == 0
-    resolutionStringList << "320 x 200 CGA 16 : 10"
-                         << "320 x 240 QCGA 4 : 3"
-                         << "640 x 480 VGA 4 : 3"
-                         << "720 x 480 NTSC 3 : 2"
-                         << "800 x 480 WVGA 5 : 3"
-                         << "800 x 600 SVGA 4 : 3"
-                         << "1024 x 768 XVGA 4 : 3"
-                         << "1152 x 768 N/A 3 : 2"
-                         << "1280 x 720 HD-720 16 : 9"
-                         << "1280 x 768 WXGA 5 : 3"
-                         << "1280 x 800 WXGA 16 : 10"
-                         << "1280 x 1024 SXGA 5 : 4"
-                         << "1920 x 1080 HD1080 16 : 9";
 
     vk_setCornerWidget( ui->tabWidgetScreencast );
 
@@ -282,8 +267,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelVideoCodec,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxVideoCodec,    SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( slot_IfStartAudioCodecWidgetsSetEnabled() ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoCodecx264,   SLOT( setEnabled( bool ) )   );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoCodecVaapih264,   SLOT( setEnabled( bool ) )   );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoCodecx264,       SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoCodecOpenh264,   SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoPath,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameLimitOfFreeDiskSpace, SLOT( setEnabled( bool ) ) );
@@ -291,7 +276,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxStopRecordingAfter, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxMinimizedWhenRecordingStarts, SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxShowInSystray, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStart() ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setEnabled( bool ) ) );
 
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setDisabled( bool ) ) );
@@ -313,16 +301,19 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelVideoCodec,       SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxVideoCodec,    SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this, SLOT( slot_IfStopAudioCodecWidgetsSetDisabled() ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoCodecx264,   SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoCodecVaapih264,   SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoCodecx264,      SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoCodecOpenh264,  SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoPath,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameLimitOfFreeDiskSpace, SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameStartTime,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxStopRecordingAfter, SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxMinimizedWhenRecordingStarts, SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxShowInSystray, SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStop() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_Stop() ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
 
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), this,                   SLOT( slot_Pause() ) );
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonPause,    SLOT( hide() ) );
@@ -353,30 +344,22 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->radioButtonScreencastWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
 
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
-    connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );//**
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled( bool ) ) );
 
     connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreen, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
-    connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setDisabled( bool ) ) );
 
     connect( this,                            SIGNAL( signal_close()  ), vkRegionChoise, SLOT( close() ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( slot_init() ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( setVisible( bool ) ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreen, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setEnabled( bool ) ) );
-    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->comboBoxAreaSize, SLOT( setEnabled( bool ) ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setEnabled( bool ) ) );
 
     connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
-    connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), this,           SLOT( slot_areaReset() ) );
-    connect( ui->pushButtonStart,     SIGNAL( clicked( bool ) ), this, SLOT( slot_disableAreaWidgets() ) );
-    connect( ui->pushButtonStop ,     SIGNAL( clicked( bool ) ), this, SLOT( slot_enableAreaWidgets() ) );
 
-    ui->comboBoxAreaSize->addItems( resolutionStringList );
-    connect( ui->comboBoxAreaSize, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_areaSetResolution( QString ) ) );
-
+    connect( ui->comboBoxScreencastScreen, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_setMaxFPS( int ) ) );
 
     // Tab 2 Audio and Videocodec
 #ifdef Q_OS_WIN
@@ -386,13 +369,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 #ifdef Q_OS_LINUX
     vkAudioController = new QvkAudioController( ui );
-    connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this,                   SLOT( slot_audioIconOnOff( bool ) ) );
-    connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
-    connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
     vkAudioController->init();
 #endif
-
-    connect( vkTheme, SIGNAL( signal_newTheme() ), this, SLOT( slot_audioRedCross() ) );
 
     connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this, SLOT( slot_framesReset() ) );
 
@@ -428,6 +406,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     {
         connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ), this, SLOT( slot_setVisibleSystray( bool ) ) );
         ui->frameShowInSystrayAlternative->hide();
+        ui->toolButtonShowInSystrayAlternativeReset->hide();
     } else
     {
         connect( ui->checkBoxShowInSystrayAlternative, SIGNAL( clicked( bool ) ), vkSystrayAlternative, SLOT( setVisible( bool ) ) );
@@ -435,11 +414,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     }
 
     // Tab 5 Available muxer, encoder etc.
-    QIcon iconAvailable = style()->standardIcon( QStyle::SP_DialogApplyButton );
+    QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
     QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
     ui->labelAvalible->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
 
-    QIcon iconNotAvailable = style()->standardIcon( QStyle::SP_DialogCancelButton );
+    QIcon iconNotAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
     ui->labelNotAvailable->setPixmap( iconNotAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
     // End Tabs
 
@@ -455,6 +434,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( this,      SIGNAL( signal_close() ),       ui->pushButtonContinue, SLOT( click() ) );
     connect( this,      SIGNAL( signal_close() ),       ui->pushButtonStop,     SLOT( click() ) );
     connect( this,      SIGNAL( signal_close( bool ) ), ui->checkBoxCameraOnOff,SLOT( setChecked( bool ) ) );
+    connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( slot_cleanUp() ) );
     connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkLicenses,             SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkSystrayAlternative,   SLOT( close() ) );
@@ -466,7 +446,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     VK_gst_formatVideoAudoicodec_available();
     VK_gst_Elements_available();
 
-    QvkScreenManager *screenManager = new QvkScreenManager;
+    QvkScreenManager *screenManager = new QvkScreenManager();
     // Fullscreen
     connect( screenManager, SIGNAL( signal_clear_widget() ),                          ui->comboBoxScreencastScreen, SLOT( clear() ) );
     connect( screenManager, SIGNAL( signal_screen_count_changed( QString, QString) ), this,                         SLOT( slot_screenCountChanged( QString, QString ) ) );
@@ -474,7 +454,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( screenManager, SIGNAL( signal_clear_widget() ),                          ui->comboBoxScreencastScreenArea, SLOT( clear() ) );
     connect( screenManager, SIGNAL( signal_screen_count_changed( QString, QString) ), this,                             SLOT( slot_screenCountChangedArea( QString, QString ) ) );
     connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged( int) ),  vkRegionChoise, SLOT( slot_init() ) );
-    emit qApp->screenAdded(Q_NULLPTR);
+    screenManager->init();
 
     // *****************Begin Camera *********************************
     vkCameraController = new QvkCameraController(ui);
@@ -489,19 +469,20 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // *****************End Log ***********************************
 
 
-    // Deaktivat loader for Extension. Currently no need.
-    // QvkLoadExtension *loadExtension = new QvkLoadExtension( this, ui );
-    // loadExtension->loadExtension();
+#ifdef Q_OS_WIN
+    QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller( vkSettings.getFileName(), ui );
+    Q_UNUSED(vkCiscoOpenh264Controller);
+#endif
+#ifdef Q_OS_LINUX
+    ui->line_cisco->hide();
+    ui->frame_cisco->hide();
+#endif
 
-    // Hint:
     vkSettings.readAll( ui, this );
     vkSettings.readAreaScreencast( vkRegionChoise );
     vkSettings.readCamera( vkCameraController );
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
     vkSettings.readPlayerPathOpenFile( vkPlayer );
-#ifdef Q_OS_WIN
-//    vkAudioController->slot_audioDeviceSelected();
-#endif
 
     // After reading the settings, we read the arguments and run
     QStringList arguments = QApplication::instance()->arguments();
@@ -518,6 +499,16 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
+}
+
+
+void QvkMainWindow::slot_setMaxFPS( int index )
+{
+    if ( index > -1 )
+    {
+        QList<QScreen *> screen = QGuiApplication::screens();
+        sliderFrames->setMaximum( screen.at( index )->refreshRate() );
+    }
 }
 
 
@@ -543,51 +534,14 @@ void QvkMainWindow::slot_vokoPlayer()
 }
 
 
-#ifdef Q_OS_LINUX
-void QvkMainWindow::showEvent( QShowEvent *event )
-{
-    Q_UNUSED(event);
-    // Call slot "afterWindowShown" after the window has been shown
-    QMetaObject::invokeMethod( this, "slot_afterWindowShown", Qt::ConnectionType::QueuedConnection );
-
-}
-
-
-void QvkMainWindow::slot_afterWindowShown()
-{
-    if ( onlyOnce == false )
-    {
-        onlyOnce = true;
-
-        if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "wayland" )
-        {
-            qDebug().noquote() << global::nameOutput << tr( "Desktop session is a Wayland session" );
-            QMessageBox *messageBox = new QMessageBox();
-            QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
-            messageBox->setWindowIcon( icon );
-            messageBox->setWindowTitle( global::name + " " + global::version );
-            messageBox->setIcon( QMessageBox::Information );
-            messageBox->setText( tr( "Wayland desktop session detected" ) );
-            messageBox->setInformativeText( tr( "To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session" ) );
-            messageBox->exec();
-        }
-        else
-        {
-            qDebug().noquote() << global::nameOutput << "Desktop session is a X11 session";
-        }
-    }
-}
-#endif
-
 /*
  * CountDown
  */
 void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
 {
-    int index = ui->comboBoxScreencastScreen->currentIndex();
-
     if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
     {
+        int index = ui->comboBoxScreencastScreen->currentIndex();
         QList<QScreen *> screen = QGuiApplication::screens();
         int left = static_cast<int>( screen.at( index )->geometry().left() * screen.at( index )->devicePixelRatio() );
         int top = static_cast<int>( screen.at( index )->geometry().top() * screen.at( index )->devicePixelRatio() );
@@ -605,9 +559,13 @@ void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
-        QScreen *screen = QGuiApplication::primaryScreen();
-        vkCountdown->x = ( screen->geometry().width() / 2 ) - ( vkCountdown->Width / 2 );
-        vkCountdown->y = ( screen->geometry().height() / 2 ) - ( vkCountdown->Height / 2 );
+        int index = ui->comboBoxScreencastScreenArea->currentIndex();
+        QList<QScreen *> screen = QGuiApplication::screens();
+        int left = static_cast<int>( screen.at( index )->geometry().left() * screen.at( index )->devicePixelRatio() );
+        int top = static_cast<int>( screen.at( index )->geometry().top() * screen.at( index )->devicePixelRatio() );
+
+        vkCountdown->x = left + screen.at( index )->geometry().width() / 2 - ( vkCountdown->Width / 2 );
+        vkCountdown->y = top + screen.at( index )->geometry().height() / 2 - ( vkCountdown->Height / 2 );
     }
 }
 
@@ -623,6 +581,7 @@ void QvkMainWindow::slot_x264Reset()
 {
     ui->comboBoxx264Preset->setCurrentIndex( 1 );
     sliderX264->setValue( 17 );
+    ui->comboBoxx264Profile->setCurrentIndex( 0 );
 }
 
 
@@ -635,17 +594,11 @@ void QvkMainWindow::slot_openh264Reset()
 void QvkMainWindow::slot_videoCodecChanged( QString codec )
 {
     ui->frameVideoCodecx264->setVisible( false );
-    ui->frameVideoCodecVaapih264->setVisible( false );
     ui->frameVideoCodecOpenh264->setVisible( false );
 
     if ( codec == "x264"  )
     {
         ui->frameVideoCodecx264->setVisible( true );
-    }
-
-    if ( codec == "H.264 (Intel GPU)" )
-    {
-        ui->frameVideoCodecVaapih264->setVisible( true );
     }
 
     if ( codec == "openh264" )
@@ -751,32 +704,6 @@ void QvkMainWindow::slot_areaSetResolution( QString value )
 }
 
 
-void QvkMainWindow::slot_areaReset()
-{
-    ui->comboBoxAreaSize->setCurrentIndex( 0 );
-}
-
-
-void QvkMainWindow::slot_disableAreaWidgets()
-{
-   if ( ui->radioButtonScreencastArea->isChecked() == true  )
-   {
-       ui->toolButtonScreencastAreaReset->setEnabled( false );
-       ui->comboBoxAreaSize->setEnabled( false );
-   }
-}
-
-
-void QvkMainWindow::slot_enableAreaWidgets()
-{
-   if ( ui->radioButtonScreencastArea->isChecked() == true  )
-   {
-       ui->toolButtonScreencastAreaReset->setEnabled( true );
-       ui->comboBoxAreaSize->setEnabled( true );
-   }
-}
-
-
 void QvkMainWindow::slot_StartTimer( bool value )
 {
     if ( value == true )
@@ -866,18 +793,6 @@ void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
     tabWidget->setCornerWidget( label, Qt::TopRightCorner);
 }
 
-// If new Theme, set or not set red cross
-void QvkMainWindow::slot_audioRedCross()
-{
-    if ( isAudioDeviceSelected() == true )
-    {
-        slot_audioIconOnOff( true );
-    }
-    else
-    {
-        slot_audioIconOnOff( false );
-    }
-}
 
 bool QvkMainWindow::isAudioDeviceSelected()
 {
@@ -892,38 +807,6 @@ bool QvkMainWindow::isAudioDeviceSelected()
         }
     }
     return value;
-}
-
-/*
- * Set a new icon with a red cross
- */
-void QvkMainWindow::slot_audioIconOnOff( bool state )
-{
-    if ( ( ( isAudioDeviceSelected() == false ) and ( state == false ) ) or
-         ( ( isAudioDeviceSelected() == false ) and ( state == true ) ) or
-         ( ( isAudioDeviceSelected() == true )  and ( state == false ) ) )
-    {
-        QIcon myIcon = vkTheme->VK_getIcon( "audio-input-microphone", ":/pictures/screencast/microphone.png" );
-        QSize size = ui->tabWidgetScreencast->iconSize();
-        QPixmap workPixmap( myIcon.pixmap( size ) );
-        QPainter painter;
-        QPen pen;
-        painter.begin( &workPixmap );
-        pen.setColor( Qt::red );
-        pen.setWidth( 2 );
-        painter.setPen( pen );
-        painter.drawLine ( 5, 5, size.width()-5, size.height()-5 );
-        painter.drawLine ( 5, size.height()-5, size.width()-5, 5 );
-        painter.end();
-        vkTheme->makeAndSetValidIcon( ui->tabWidgetScreencast,
-                                      ui->tabWidgetScreencast->indexOf( ui->tabAudio ),
-                                      QIcon( workPixmap ) );
-    }
-    else{
-        vkTheme->makeAndSetValidIcon( ui->tabWidgetScreencast,
-                                      ui->tabWidgetScreencast->indexOf( ui->tabAudio ),
-                                      vkTheme->VK_getIcon( "audio-input-microphone", ":/pictures/screencast/microphone.png" ) );
-    }
 }
 
 
@@ -1005,18 +888,20 @@ QString QvkMainWindow::VK_getXimagesrc()
 
     if( ui->radioButtonScreencastFullscreen->isChecked() == true )
     {
+        int screenNumber = ( ui->comboBoxScreencastScreen->currentText().section( ":", 0, 0 ).trimmed().right(1) ).toInt() - 1;
         QStringList stringList;
         stringList << "gdiscreencapsrc"
-                   << "monitor=" + QString::number( ui->comboBoxScreencastScreen->currentIndex() )
+                   << "monitor=" + QString::number( screenNumber )
                    << "cursor=" + showPointer;
         value = stringList.join( " " );
     }
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
+        int screenNumber = ( ui->comboBoxScreencastScreenArea->currentText().section( ":", 0, 0 ).trimmed().right(1) ).toInt() - 1;
         QStringList stringList;
         stringList << "gdiscreencapsrc"
-                   << "monitor=" + QString::number( ui->comboBoxScreencastScreenArea->currentIndex() )
+                   << "monitor=" + QString::number( screenNumber )
                    << "cursor=" + showPointer
                    << "x=" + QString::number( vkRegionChoise->getXRecordArea() )
                    << "y=" + QString::number( vkRegionChoise->getYRecordArea() )
@@ -1122,11 +1007,11 @@ void QvkMainWindow::VK_gst_Elements_available()
     list << "gdiscreencapsrc";
     list << "wasapisrc";
     list << "directsoundsrc";
+    list << "bz2dec";
 #endif
 #ifdef Q_OS_LINUX
     list << "ximagesrc";
     list << "pulsesrc";
-    list << "pipewiresrc";
 #endif
     list << "queue";
     list << "capsfilter";
@@ -1138,7 +1023,6 @@ void QvkMainWindow::VK_gst_Elements_available()
     list << "videoscale";
     list << "h264parse";
     list << "audiomixer";
-    list << "adder";
 
     for ( int i = 0; i < list.count(); i++ )
     {
@@ -1194,15 +1078,21 @@ void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
                 QLabel *labelPicture = new QLabel();
                 QIcon icon;
                 if ( available == true )
-                    icon = style()->standardIcon( QStyle::SP_DialogApplyButton );
+                {
+                    QIcon picture( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
+                    icon = picture;
+                }
                 else
-                    icon = style()->standardIcon( QStyle::SP_DialogCancelButton );
+                {
+                    QIcon picture( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
+                    icon = picture;
+                }
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
                 labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
                 labelPicture->setAlignment( Qt::AlignRight );
                 ui->gridLayoutAvailable->addWidget( labelPicture, rowCount + rowMuxer, 0 );
 
-                ui->gridLayoutAvailable->addWidget( new QLabel( QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowMuxer, 1 );
+                ui->gridLayoutAvailable->addWidget( new QLabel( "  " + QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowMuxer, 1 );
                 rowMuxer++;
             }
 
@@ -1210,16 +1100,34 @@ void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
             {
                 QLabel *labelPicture = new QLabel();
                 QIcon icon;
+
+                // If element available then check video codec
                 if ( available == true )
-                    icon = style()->standardIcon( QStyle::SP_DialogApplyButton );
+                {
+                    GstElement *source = gst_element_factory_create( factory, "source" );
+                    if ( !source )
+                    {
+                        QIcon picture( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
+                        icon = picture;
+                    }
+                    else
+                    {
+                        QIcon picture( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
+                        icon = picture;
+                    }
+                }
                 else
-                    icon = style()->standardIcon( QStyle::SP_DialogCancelButton );
+                {
+                    QIcon picture( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
+                    icon = picture;
+                }
+
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
                 labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
                 labelPicture->setAlignment( Qt::AlignRight );
                 ui->gridLayoutAvailable->addWidget( labelPicture, rowCount + rowVideo, 2 );
 
-                ui->gridLayoutAvailable->addWidget( new QLabel( QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowVideo, 3 );
+                ui->gridLayoutAvailable->addWidget( new QLabel( "  " + QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowVideo, 3 );
                 rowVideo++;
             }
 
@@ -1228,17 +1136,23 @@ void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
                 QLabel *labelPicture = new QLabel();
                 QIcon icon;
                 if ( available == true )
-                    icon = style()->standardIcon( QStyle::SP_DialogApplyButton );
+                {
+                    QIcon picture( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
+                    icon = picture;
+                }
                 else
-                    icon = style()->standardIcon( QStyle::SP_DialogCancelButton );
+                {
+                    QIcon picture( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
+                    icon = picture;
+                }
+
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
                 labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
                 labelPicture->setAlignment( Qt::AlignRight );
                 ui->gridLayoutAvailable->addWidget( labelPicture, rowCount + rowAudio, 4 );
-                ui->gridLayoutAvailable->addWidget( new QLabel( QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowAudio, 5 );
+                ui->gridLayoutAvailable->addWidget( new QLabel( "  " + QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowAudio, 5 );
                 rowAudio++;
             }
-
         }
 
         rowCount = ui->gridLayoutAvailable->rowCount();
@@ -1270,16 +1184,11 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "audiomimetype:audio/x-matroska"
                                     << "videocodec:x264enc:x264"
                                     << "videocodec:openh264enc:openh264"
-                                #ifdef Q_OS_LINUX
-                                    << "videocodec:vaapih264enc:H.264 (Intel GPU)"
-                                    << "videocodec:vaapimpeg2enc:MPEG-2 (Intel GPU)"
-                                #endif
                                     << "videocodec:vp8enc:VP8"
                                     << "audiocodec:vorbisenc:vorbis"
                                     << "audiocodec:flacenc:flac"
                                     << "audiocodec:opusenc:opus"
                                     << "audiocodec:lamemp3enc:mp3"
-                                    << "audiocodec:voaacenc:aac"
                                    );
 
     QStringList WEBM_QStringList = ( QStringList()
@@ -1297,13 +1206,8 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                      << "audiomimetype:audio/x-msvideo"
                                      << "videocodec:x264enc:x264"
                                      << "videocodec:openh264enc:openh264"
-                                #ifdef Q_OS_LINUX
-                                     << "videocodec:vaapih264enc:H.264 (Intel GPU)"
-                                     << "videocodec:vaapimpeg2enc:MPEG-2 (Intel GPU)"
-                                #endif
                                      << "videocodec:vp8enc:VP8"
                                      << "audiocodec:lamemp3enc:mp3"
-                                     << "audiocodec:voaacenc:aac"
                                    );
 
     QStringList MP4_QStringList = ( QStringList()
@@ -1312,14 +1216,9 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "audiomimetype:audio/mpeg"
                                     << "videocodec:x264enc:x264"
                                     << "videocodec:openh264enc:openh264"
-                                #ifdef Q_OS_LINUX
-                                    << "videocodec:vaapih264enc:H.264 (Intel GPU)"
-                                    << "videocodec:vaapimpeg2enc:MPEG-2 (Intel GPU)"
-                                #endif
                                     << "audiocodec:lamemp3enc:mp3"
                                     << "audiocodec:opusenc:opus"
-                                    << "audiocodec:voaacenc:aac"
-                                  );
+                                    );
 
     // https://de.wikipedia.org/wiki/QuickTime
     QStringList MOV_QStringList = ( QStringList()
@@ -1328,13 +1227,8 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "audiomimetype:audio/mpeg"
                                     << "videocodec:x264enc:x264"
                                     << "videocodec:openh264enc:openh264"
-                                #ifdef Q_OS_LINUX
-                                    << "videocodec:vaapih264enc:H.264 (Intel GPU)"
-                                    << "videocodec:vaapimpeg2enc:MPEG-2 (Intel GPU)"
-                                #endif
                                     << "videocodec:vp8enc:VP8"
                                     << "audiocodec:lamemp3enc:mp3"
-                                    << "audiocodec:voaacenc:aac"
                                   );
 
     videoFormatsList.clear();
@@ -1389,7 +1283,7 @@ void QvkMainWindow::VK_set_available_Formats_in_Combox()
         QMimeDatabase mimeDatabase;
         QStringList listKeyVideoMimetype = listKeys.filter( "videomimetype" );
         QMimeType mimetype = mimeDatabase.mimeTypeForName( QString( listKeyVideoMimetype.at( 0 ) ).section( ":", 1 ) );
-        QIcon icon = vkTheme->VK_getIcon( mimetype.iconName(), ":/pictures/screencast/strip.png" );
+        QIcon icon = QIcon( ":/pictures/screencast/strip.png" );
 
         ui->comboBoxFormat->addItem( icon, // Picture
                                      QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ), // suffix
@@ -1411,14 +1305,26 @@ void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
         QString encoder = QString( listKeyVideoCodec.at( i ) ).section( ":", 1, 1 );
         QString name =    QString( listKeyVideoCodec.at( i ) ).section( ":", 2, 2 );
         GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
+
         if ( !factory )
         {
             qDebug().noquote() << global::nameOutput << "-" << encoder;
         }
         else
         {
-            qDebug().noquote() << global::nameOutput << "+" << encoder;
-            ui->comboBoxVideoCodec->addItem( name, encoder );
+            QString message = global::nameOutput + " + " + encoder;
+            GstElement *source = gst_element_factory_create( factory, "source" );
+            if ( !source )
+            {
+                message = global::nameOutput + " - " + encoder + " available but codec is missing";
+            }
+            else
+            {
+                ui->comboBoxVideoCodec->addItem( name, encoder );
+                gst_object_unref( source );
+            }
+
+            qDebug().noquote() << message;
             gst_object_unref( factory );
         }
     }
@@ -1460,16 +1366,6 @@ void QvkMainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
 
 QString QvkMainWindow::Vk_get_Videocodec_Encoder()
 {
-    QString vk_idealThreadCount;
-    if ( QThread::idealThreadCount() == -1 )
-    {
-        vk_idealThreadCount = "0";
-    }
-    else
-    {
-        vk_idealThreadCount = QString::number( QThread::idealThreadCount() );
-    }
-
     QString value;
     QString encoder = ui->comboBoxVideoCodec->currentData().toString();
     if ( encoder == "x264enc" )
@@ -1480,10 +1376,10 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << "qp-min=" + QString::number( sliderX264->value() );
         list << "qp-max=" + QString::number( sliderX264->value() );
         list << "speed-preset=" + ui->comboBoxx264Preset->currentText();
-        list << "threads=" + vk_idealThreadCount;
+        list << "threads=" + QString::number( QThread::idealThreadCount() );
         list.removeAll( "" );
         value = list.join( " " );
-        value.append( " ! video/x-h264, profile=baseline" );
+        value.append( " ! video/x-h264, profile=" + ui->comboBoxx264Profile->currentText() );
     }
 
     if ( encoder == "openh264enc" )
@@ -1492,26 +1388,12 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << ui->comboBoxVideoCodec->currentData().toString();
         list << "qp-min=" + QString::number( sliderOpenh264->value() );
         list << "qp-max=" + QString::number( sliderOpenh264->value() );
-        list << "usage-type=screen";
+        list << "usage-type=camera"; // We need camera not screen. With screen and a fast sequence of images the video jerks.
         list << "complexity=low";
-        list << "multi-thread=" + vk_idealThreadCount;
+        list << "multi-thread=" + QString::number( QThread::idealThreadCount() );
+        list << "slice-mode=auto"; // Number of slices equal to number of threads
         value = list.join( " " );
         value.append( " ! h264parse" );
-    }
-
-    if ( encoder == "x265enc" )
-    {
-        value = "x265enc";
-    }
-
-    if ( encoder == "vaapih264enc" )
-    {
-        value = "vaapih264enc";
-    }
-
-    if ( encoder == "vaapimpeg2enc" )
-    {
-            value = "vaapimpeg2enc";
     }
 
     if ( encoder == "vp8enc" )
@@ -1520,9 +1402,9 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << "vp8enc";
         list << "min_quantizer=20";
         list << "max_quantizer=20";
-        list << "cpu-used=" + vk_idealThreadCount;
+        list << "cpu-used=" + QString::number( QThread::idealThreadCount() );
         list << "deadline=1000000";
-        list << "threads=" + vk_idealThreadCount;
+        list << "threads=" + QString::number( QThread::idealThreadCount() );
         value = list.join( " " );
     }
 
@@ -1739,6 +1621,7 @@ void QvkMainWindow::slot_Start()
     VK_PipelineList << VK_getCapsFilter();
     VK_PipelineList << "videoconvert";
     VK_PipelineList << "videorate";
+    VK_PipelineList << "queue max-size-bytes=1073741824 max-size-time=10000000000 max-size-buffers=1000";
     VK_PipelineList << Vk_get_Videocodec_Encoder();
 
     // Only if one or more audiodevice is selected
@@ -1756,6 +1639,7 @@ void QvkMainWindow::slot_Start()
             VK_PipelineList << "audio/x-raw, channels=2";
             VK_PipelineList << "audioconvert";
             VK_PipelineList << "audiorate";
+            VK_PipelineList << "queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000";
             VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
             VK_PipelineList << "queue";
             VK_PipelineList << "mux.";
@@ -1778,6 +1662,7 @@ void QvkMainWindow::slot_Start()
                 }
                 VK_PipelineList << "audioconvert";
                 VK_PipelineList << "audiorate";
+                VK_PipelineList << "queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000";
                 VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
                 VK_PipelineList << "queue";
                 VK_PipelineList << "mux.";
@@ -1789,6 +1674,7 @@ void QvkMainWindow::slot_Start()
                 VK_PipelineList << "audio/x-raw, channels=2";
                 VK_PipelineList << "audioconvert";
                 VK_PipelineList << "audiorate";
+                VK_PipelineList << "queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000";
                 VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
                 VK_PipelineList << "queue";
                 VK_PipelineList << "mux.";
@@ -1821,6 +1707,7 @@ void QvkMainWindow::slot_Start()
         VK_PipelineList << "audiomixer name=mix";
         VK_PipelineList << "audioconvert";
         VK_PipelineList << "audiorate";
+        VK_PipelineList << "queue";
         VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
         VK_PipelineList << "queue";
         VK_PipelineList << "mux.";
@@ -1839,6 +1726,9 @@ void QvkMainWindow::slot_Start()
     VK_Pipeline = VK_Pipeline.replace( "mix. !", "mix." );
     VK_Pipeline = VK_Pipeline.replace( "mux. !", "mux." );
 
+    qDebug( " " );
+    qDebug().noquote() << global::nameOutput << "Free disk space at the beginning of the recording:" << ui->labelFreeSize->text() << "MB";
+    qDebug( " " );
     qDebug().noquote() << global::nameOutput << "Start record with:" << VK_Pipeline;
     qDebug( " " );
     qDebug().noquote() << Pipeline_structured_output( VK_Pipeline );
@@ -1872,13 +1762,6 @@ void QvkMainWindow::slot_preStop()
     {
         timerStopRecordingAfter->stop();
         ui->frameStopRecordingAfter->setEnabled( true );
-    }
-
-    if ( ui->radioButtonScreencastArea->isChecked() == true )
-    {
-        vkRegionChoise->recordMode( false );
-        vkRegionChoise->repaint();
-        vkRegionChoise->update();
     }
 }
 
@@ -1916,6 +1799,21 @@ void QvkMainWindow::slot_Stop()
 
     wantRecording = true;
 
+    qDebug().noquote() << global::nameOutput << "Free disk space at the end of the recording:" << ui->labelFreeSize->text() << "MB";
+
+    if ( ui->radioButtonScreencastArea->isChecked() == true )
+    {
+        // We wait one second and then show the button inside the frame.
+        QThread::msleep( 1000 );
+        vkRegionChoise->recordMode( false );
+        vkRegionChoise->repaint();
+        vkRegionChoise->update();
+    }
+
+    if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  )
+    {
+        showNormal();
+    }
 }
 
 

@@ -3,14 +3,7 @@
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecione um ou mais dispositivos</translation>
-    </message>
-</context>
-<context>
-    <name>QvkAudioWindows</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>Selecione um ou mais dispositivos</translation>
+        <translation>Seleccione um ou mais dispositivos</translation>
     </message>
 </context>
 <context>
@@ -39,6 +32,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirectSoundController</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Seleccione um ou mais dispositivos</translation>
+    </message>
+</context>
+<context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
@@ -57,11 +57,11 @@
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>É alcançado o limite de espaço em disco disponível.</translation>
+        <translation>Foi alcançado o limite de espaço em disco.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Limite de espaço em disco disponível</translation>
+        <translation>Limite de espaço livre em disco</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -91,14 +91,6 @@
         <translation>Por favor instale um gestor de ficheiros.</translation>
     </message>
     <message>
-        <source>Desktop session is a Wayland session</source>
-        <translation>A sessão de área de trabalho é uma sessão de Wayland</translation>
-    </message>
-    <message>
-        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Neste momento o Wayland não é suportado. Uma transmissão mostra um ecrã a negro. Por favor saia da conta e inicie uma sessão de Área de trabalho X11</translation>
-    </message>
-    <message>
         <source>Sourcecode</source>
         <translation>Código-fonte</translation>
     </message>
@@ -114,16 +106,19 @@
         <source>Donate</source>
         <translation>Doar</translation>
     </message>
-    <message>
-        <source>Wayland desktop session detected</source>
-        <translation>Detetada sessão de área de trabalho Wayland</translation>
-    </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
-        <translation>Abrir ficheiro</translation>
+        <translation>Abrir Ficheiro</translation>
+    </message>
+</context>
+<context>
+    <name>QvkPulseAudioWatcher</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Seleccione um ou mais dispositivos</translation>
     </message>
 </context>
 <context>
@@ -180,6 +175,17 @@
     </message>
 </context>
 <context>
+    <name>Qvk_wl_MainWindow</name>
+    <message>
+        <source>Wayland desktop session detected</source>
+        <translation>Foi detectada uma sessão de área de trabalho Wayland</translation>
+    </message>
+    <message>
+        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
+        <translation>Por enquanto o Wayland não é suportado. Uma transmissão mostra um ecrã a negro. Por favor, saia da sessão e inicie uma sessão de Área de trabalho X11</translation>
+    </message>
+</context>
+<context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
@@ -207,7 +213,7 @@
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Remover moldura da janela</translation>
+        <translation>Remover a moldura da janela</translation>
     </message>
     <message>
         <source>160x120</source>
@@ -242,7 +248,7 @@
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Contagem descrescente</translation>
+        <translation>Contagem decrescente</translation>
     </message>
     <message>
         <source>Video size:</source>
@@ -330,7 +336,7 @@
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Espera em segundos antes de começar a gravar</translation>
+        <translation>Esperar em segundos antes de iniciar a gravar</translation>
     </message>
     <message>
         <source>Look for updates</source>
@@ -354,7 +360,7 @@
     </message>
     <message>
         <source>Start</source>
-        <translation>Começar</translation>
+        <translation>Iniciar</translation>
     </message>
     <message>
         <source>Stop</source>
@@ -390,7 +396,7 @@
     </message>
     <message>
         <source>Send Report</source>
-        <translation>Enviar relatório</translation>
+        <translation>Enviar Relatório</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -418,7 +424,7 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimizado quando a gravação começar</translation>
+        <translation>Minimizar quando a gravação Iniciar</translation>
     </message>
     <message>
         <source>Starts minimized</source>
@@ -438,7 +444,7 @@
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Remover moldura da janela</translation>
+        <translation>Remover a moldura da janela</translation>
     </message>
     <message>
         <source>Donate</source>
@@ -492,7 +498,7 @@
     </message>
     <message>
         <source>Open File</source>
-        <translation>Abrir ficheiro</translation>
+        <translation>Abrir Ficheiro</translation>
     </message>
     <message>
         <source>Fullscreen</source>

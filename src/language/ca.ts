@@ -7,13 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkAudioWindows</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>Seleccioneu un o més dispositius</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
@@ -36,6 +29,13 @@
     <message>
         <source>Countdown</source>
         <translation>Compte enrere</translation>
+    </message>
+</context>
+<context>
+    <name>QvkDirectSoundController</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Seleccioneu un o més dispositius</translation>
     </message>
 </context>
 <context>
@@ -91,14 +91,6 @@
         <translation>Instal·leu un gestor de fitxers.</translation>
     </message>
     <message>
-        <source>Desktop session is a Wayland session</source>
-        <translation>La sessió d’escriptori és una sessió de Wayland</translation>
-    </message>
-    <message>
-        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Fins al moment no s&apos;admet el Wayland. Una captura en vídeo mostrarà una pantalla en negre. Si us plau, tanqueu la sessió i iniceu una sessió d&apos;escriptori amb X11.</translation>
-    </message>
-    <message>
         <source>Sourcecode</source>
         <translation>Codi font</translation>
     </message>
@@ -114,16 +106,19 @@
         <source>Donate</source>
         <translation>Feu una donació</translation>
     </message>
-    <message>
-        <source>Wayland desktop session detected</source>
-        <translation>S&apos;ha detectat una sessió d&apos;escriptori de Wayland</translation>
-    </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
         <translation>Obre el fitxer</translation>
+    </message>
+</context>
+<context>
+    <name>QvkPulseAudioWatcher</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Seleccioneu un o més dispositius</translation>
     </message>
 </context>
 <context>
@@ -177,6 +172,17 @@
     <message>
         <source>Exit</source>
         <translation>Surt</translation>
+    </message>
+</context>
+<context>
+    <name>Qvk_wl_MainWindow</name>
+    <message>
+        <source>Wayland desktop session detected</source>
+        <translation>S&apos;ha detectat una sessió d&apos;escriptori de Wayland</translation>
+    </message>
+    <message>
+        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
+        <translation>Fins al moment no s&apos;admet el Wayland. Una captura en vídeo mostrarà una pantalla en negre. Si us plau, tanqueu la sessió i iniceu una sessió d&apos;escriptori amb X11.</translation>
     </message>
 </context>
 <context>

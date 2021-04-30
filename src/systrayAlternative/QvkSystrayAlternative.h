@@ -40,8 +40,8 @@ private slots:
 
 protected:
     void contextMenuEvent(QContextMenuEvent *event) override;
-    void mouseMoveEvent(QMouseEvent *event);
-    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
 
 };
 

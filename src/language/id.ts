@@ -7,13 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkAudioWindows</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>Pilih satu atau lebih perangkat</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
@@ -36,6 +29,13 @@
     <message>
         <source>Countdown</source>
         <translation>Hitung mundur</translation>
+    </message>
+</context>
+<context>
+    <name>QvkDirectSoundController</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Pilih satu atau lebih perangkat</translation>
     </message>
 </context>
 <context>
@@ -91,14 +91,6 @@
         <translation>Mohon pasang sebuah manajer berkas</translation>
     </message>
     <message>
-        <source>Desktop session is a Wayland session</source>
-        <translation>Sesi desktop adalah sebuah sesi Wayland</translation>
-    </message>
-    <message>
-        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>To time Wayland tidak didukung. Sebuah layar akan menampilkan layar hitam. Mohon keluar dan jalankan sesi Dekstop X11.</translation>
-    </message>
-    <message>
         <source>Sourcecode</source>
         <translation>Kode sumber</translation>
     </message>
@@ -114,16 +106,19 @@
         <source>Donate</source>
         <translation>Donasi</translation>
     </message>
-    <message>
-        <source>Wayland desktop session detected</source>
-        <translation>Sesi desktop Wayland terdeteksi</translation>
-    </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
         <translation>Buka Berkas</translation>
+    </message>
+</context>
+<context>
+    <name>QvkPulseAudioWatcher</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Pilih satu atau lebih perangkat</translation>
     </message>
 </context>
 <context>
@@ -177,6 +172,17 @@
     <message>
         <source>Exit</source>
         <translation>Keluar</translation>
+    </message>
+</context>
+<context>
+    <name>Qvk_wl_MainWindow</name>
+    <message>
+        <source>Wayland desktop session detected</source>
+        <translation>Sesi desktop Wayland terdeteksi</translation>
+    </message>
+    <message>
+        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
+        <translation>To time Wayland tidak didukung. Sebuah layar akan menampilkan layar hitam. Mohon keluar dan jalankan sesi Dekstop X11.</translation>
     </message>
 </context>
 <context>

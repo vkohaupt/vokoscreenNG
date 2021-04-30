@@ -7,13 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkAudioWindows</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>一つ以上のデバイスを選択</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
@@ -36,6 +29,13 @@
     <message>
         <source>Countdown</source>
         <translation>カウントダウン</translation>
+    </message>
+</context>
+<context>
+    <name>QvkDirectSoundController</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>一つ以上のデバイスを選択</translation>
     </message>
 </context>
 <context>
@@ -91,14 +91,6 @@
         <translation>ファイルマネージャーをインストールしてください</translation>
     </message>
     <message>
-        <source>Desktop session is a Wayland session</source>
-        <translation>デスクトップセッションは、Waylandセッションです</translation>
-    </message>
-    <message>
-        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Waylandはサポートされていません。スクリーンキャストは、黒い画面を表示します。ログアウトしてX11デスクトップセッションを開始してください。</translation>
-    </message>
-    <message>
         <source>Sourcecode</source>
         <translation>ソースコード</translation>
     </message>
@@ -114,16 +106,19 @@
         <source>Donate</source>
         <translation>寄付</translation>
     </message>
-    <message>
-        <source>Wayland desktop session detected</source>
-        <translation>Waylandデスクトップセッションを検出</translation>
-    </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
         <translation>ファイルを開く</translation>
+    </message>
+</context>
+<context>
+    <name>QvkPulseAudioWatcher</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>一つ以上のデバイスを選択</translation>
     </message>
 </context>
 <context>
@@ -177,6 +172,17 @@
     <message>
         <source>Exit</source>
         <translation>終了する</translation>
+    </message>
+</context>
+<context>
+    <name>Qvk_wl_MainWindow</name>
+    <message>
+        <source>Wayland desktop session detected</source>
+        <translation>Waylandデスクトップセッションを検出</translation>
+    </message>
+    <message>
+        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
+        <translation>Waylandはサポートされていません。スクリーンキャストは、黒い画面を表示します。ログアウトしてX11デスクトップセッションを開始してください。</translation>
     </message>
 </context>
 <context>

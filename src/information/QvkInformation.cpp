@@ -62,11 +62,39 @@ QvkInformation::QvkInformation( QMainWindow *mainWindow, Ui_formMainWindow *ui_m
     connect( ui->pushButtonStop,     SIGNAL( clicked( bool ) ), timerRecord, SLOT( stop() ) );
     connect( ui->pushButtonPause,    SIGNAL( clicked( bool ) ), timerRecord, SLOT( stop() ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), timerRecord, SLOT( start() ) );
+
+    ui->label_Upate_tab_1->clear();
+    ui->label_Upate_tab_4->clear();
+    connect( &version, SIGNAL( signal_newVersionAvailable( QString ) ), this, SLOT( slot_newVersionAvailable( QString ) ) );
+    connect( ui->checkBoxLookForUpdates, SIGNAL( toggled( bool ) ), &version, SLOT( slot_doDownload( bool ) ) );
 }
 
 
 QvkInformation::~QvkInformation()
 {
+}
+
+
+void QvkInformation::slot_newVersionAvailable( QString update )
+{
+    if ( ui->checkBoxLookForUpdates->isChecked() == true )
+    {
+        if ( global::version < update )
+        {
+            QString string = "New Version available: " + update;
+            ui->label_Upate_tab_1->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + string + "</a>" );
+            ui->label_Upate_tab_4->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + string + "</a>" );
+        }
+        else
+        {
+            ui->label_Upate_tab_4->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>No update available</a>" );
+        }
+    }
+    else
+    {
+        ui->label_Upate_tab_1->clear();
+        ui->label_Upate_tab_4->clear();
+    }
 }
 
 

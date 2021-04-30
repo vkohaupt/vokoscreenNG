@@ -72,18 +72,25 @@ QMAKE_CLEAN += $$TARGET */*~
 QMAKE_LFLAGS += -Wl,--as-needed
 
 unix:CONFIG += link_pkgconfig
-unix:PKGCONFIG += gstreamer-1.0
+unix:PKGCONFIG += gstreamer-1.0 libpulse wayland-client
+unix:LIBS += -lpulse-simple
+
+win32:RC_ICONS = vokoscreenNG.ico
 
 win32:GStreamerDir=$$(GSTREAMER_1_0_ROOT_X86)
 win32:INCLUDEPATH += $${GStreamerDir}\include\gstreamer-1.0
 win32:INCLUDEPATH += $${GStreamerDir}\include\glib-2.0
 win32:INCLUDEPATH += $${GStreamerDir}\lib\glib-2.0\include
+win32:INCLUDEPATH += $${GStreamerDir}\include
 
-win32:LIBS += -LC:\gstreamer\1.0\x86\bin
-win32:LIBS += -LC:\gstreamer\1.0\x86\lib\gstreamer-1.0
+win32:LIBS += -L$${GStreamerDir}\bin
+win32:LIBS += -L$${GStreamerDir}\lib\gstreamer-1.0
+win32:LIBS += -LC:\Qt\Qt5.9.4\Tools\mingw530_32\bin
+win32:LIBS += -LC:\Qt\Qt5.9.4\Tools\mingw530_32\opt\bin
 win32:LIBS += -llibgstreamer-1.0-0
 win32:LIBS += -llibglib-2.0-0
 win32:LIBS += -llibgobject-2.0-0
+win32:LIBS += -llibbz2
 
 # settings
 include(settings/settings.pri)
@@ -147,11 +154,15 @@ include(spezialSlider/spezialSlider.pri)
 # version
 include(version/version.pri)
 
-# loadExtensions
-include(loadExtensions/loadExtensions.pri)
-
 # systrayAlternative
 include(systrayAlternative/systrayAlternative.pri)
+
+# ciscoOpenh264
+win32:include(ciscoOpenh264/ciscoOpenh264.pri)
+
+# wayland
+unix:include(wayland/wayland.pri)
+unix:include(waylandRoutines/waylandRoutines.pri)
 
 unix:!macx {
   isEmpty(PREFIX) {

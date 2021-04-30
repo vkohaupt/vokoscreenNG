@@ -77,14 +77,28 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
 
     ui->framePlayer->setStyleSheet( "QFrame { background-color: black; }" );
 
-    ui->pushButtonPlay->setIcon( QIcon::fromTheme( "media-playback-start" , style()->standardIcon( QStyle::SP_MediaPlay ) ) );
-    ui->pushButtonPause->setIcon( QIcon::fromTheme( "media-playback-pause", style()->standardIcon( QStyle::SP_MediaPause ) ) );
-    ui->pushButtonStop->setIcon( QIcon::fromTheme( "media-playback-stop"  , style()->standardIcon( QStyle::SP_MediaStop ) ) );
-    ui->toolButtonFrameBackward->setIcon( QIcon::fromTheme( "go-previous",  style()->standardIcon( QStyle::SP_MediaSeekBackward ) ) );
-    ui->toolButtonFrameForward->setIcon( QIcon::fromTheme( "go-next",       style()->standardIcon( QStyle::SP_MediaSeekForward ) ) );
-    ui->toolButtonOpenFile->setIcon( QIcon::fromTheme( "document-open",     style()->standardIcon( QStyle::SP_FileIcon ) ) );
-    ui->toolButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high"    , style()->standardIcon( QStyle::SP_MediaVolume ) ) );
-    ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen", QIcon( ":/pictures/player/fullscreen.png" ) ) );
+    QIcon iconStart( QString::fromUtf8( ":/pictures/player/start.png" ) );
+    ui->pushButtonPlay->setIcon( iconStart );
+
+    QIcon iconPause( QString::fromUtf8( ":/pictures/player/pause.png" ) );
+    ui->pushButtonPause->setIcon( iconPause );
+
+    QIcon iconStop( QString::fromUtf8( ":/pictures/player/stop.png" ) );
+    ui->pushButtonStop->setIcon( iconStop );
+
+    QIcon iconGoPrevios( QString::fromUtf8( ":/pictures/player/go-previous.png" ) );
+    ui->toolButtonFrameBackward->setIcon( iconGoPrevios );
+
+    QIcon iconGoNext( QString::fromUtf8( ":/pictures/player/go-next.png" ) );
+    ui->toolButtonFrameForward->setIcon( iconGoNext );
+
+    QIcon iconDocumentOpen( QString::fromUtf8( ":/pictures/player/document-open.png" ) );
+    ui->toolButtonOpenFile->setIcon( iconDocumentOpen );
+
+    QIcon iconAudioVolumeHigh( QString::fromUtf8( ":/pictures/player/audio-volume-high.png" ) );
+    ui->toolButtonMute->setIcon( iconAudioVolumeHigh );
+
+    ui->toolButtonFullscreen->setIcon( QIcon( ":/pictures/player/fullscreen.png" ) );
 
     mediaPlayer = new QMediaPlayer;
     sliderVolume->setValue( 70 );
@@ -427,7 +441,8 @@ void QvkPlayer::slot_mutedChanged( bool muted )
 {
     if ( muted == true )
     {
-        ui->toolButtonMute->setIcon( QIcon::fromTheme( "audio-volume-muted", style()->standardIcon( QStyle::SP_MediaVolumeMuted ) ) );
+        QIcon iconAudioVolumeMuted( QString::fromUtf8( ":/pictures/player/audio-volume-muted.png" ) );
+        ui->toolButtonMute->setIcon( iconAudioVolumeMuted );
         sliderVolume->setEnabled( false );
         ui->toolButtonMute->setEnabled( true );
         return;
@@ -435,7 +450,8 @@ void QvkPlayer::slot_mutedChanged( bool muted )
 
     if ( muted == false )
     {
-        ui->toolButtonMute->setIcon( QIcon::fromTheme( "audio-volume-high", style()->standardIcon( QStyle::SP_MediaVolume ) ) );
+        QIcon iconAudioVolumeHigh( QString::fromUtf8( ":/pictures/player/audio-volume-high.png" ) );
+        ui->toolButtonMute->setIcon( iconAudioVolumeHigh);
         sliderVolume->setEnabled( true );
         ui->toolButtonMute->setEnabled( true );
         return;
@@ -629,7 +645,7 @@ void QvkPlayer::vk_showFullscreen()
     ui->framePlayer->setStyleSheet( "QFrame { background-color: black; }"  );
     ui->widgetMenueBar->setStyleSheet( "QWidget { background-color: lightgray; }" );
     ui->labelMovePicture->setStyleSheet( "QLabel { background-color: lightgray; }" );
-    ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-restore", QIcon( ":/pictures/player/restore.png" ) ) );
+    ui->toolButtonFullscreen->setIcon( QIcon( ":/pictures/player/restore.png" ) );
     ui->labelMovePicture->show();
     ui->widgetMenueBar->show();
     ui->labelPlayer->setFocus();
@@ -654,7 +670,7 @@ void QvkPlayer::vk_showNormal()
     ui->framePlayer->setStyleSheet( "QFrame { background-color: black; }"  );
     // An empty string resets the color
     ui->widgetMenueBar->setStyleSheet( "" );
-    ui->toolButtonFullscreen->setIcon( QIcon::fromTheme( "view-fullscreen", QIcon( ":/pictures/player/fullscreen.png" ) ) );
+    ui->toolButtonFullscreen->setIcon( QIcon( ":/pictures/player/fullscreen.png" ) );
     ui->labelMovePicture->hide();
     ui->widgetMenueBar->show();
     ui->labelPlayer->setFocus();

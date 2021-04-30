@@ -53,8 +53,6 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         }
     }
 
-    parent->move( settings.value( "MainWindow_X" ).toInt(), settings.value( "MainWindow_Y" ).toInt() );
-
     QList<QComboBox *> listComboBox = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
     for ( int i = 0; i < listComboBox.count(); i++ )
     {
@@ -63,6 +61,52 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         if ( valueInt > -1 )
         {
             listComboBox.at(i)->setCurrentIndex( valueInt );
+        }
+    }
+
+    // These settings must be set in this order: Format, Videocodec, Audiocodec
+    // 1. Format
+    QList<QComboBox *> listComboBoxFormat = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
+    for ( int i = 0; i < listComboBoxFormat.count(); i++ )
+    {
+        if ( listComboBoxFormat.at(i)->objectName() == "comboBoxFormat" )
+        {
+            QString valueText = settings.value( listComboBoxFormat.at(i)->objectName(), "" ).toString();
+            int valueInt = listComboBoxFormat.at(i)->findText( valueText );
+            if ( valueInt > -1 )
+            {
+                listComboBoxFormat.at(i)->setCurrentIndex( valueInt );
+            }
+        }
+    }
+
+    // 2. Videocodec
+    QList<QComboBox *> listComboBoxVideo = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
+    for ( int i = 0; i < listComboBoxVideo.count(); i++ )
+    {
+        if ( listComboBoxVideo.at(i)->objectName() == "comboBoxVideoCodec" )
+        {
+            QString valueText = settings.value( listComboBoxVideo.at(i)->objectName(), "" ).toString();
+            int valueInt = listComboBoxVideo.at(i)->findText( valueText );
+            if ( valueInt > -1 )
+            {
+                listComboBoxVideo.at(i)->setCurrentIndex( valueInt );
+            }
+        }
+    }
+
+    // 3. Audiocodec
+    QList<QComboBox *> listComboBoxAudio = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
+    for ( int i = 0; i < listComboBoxAudio.count(); i++ )
+    {
+        if ( listComboBoxAudio.at(i)->objectName() == "comboBoxAudioCodec" )
+        {
+            QString valueText = settings.value( listComboBoxAudio.at(i)->objectName(), "" ).toString();
+            int valueInt = listComboBoxAudio.at(i)->findText( valueText );
+            if ( valueInt > -1 )
+            {
+                listComboBoxAudio.at(i)->setCurrentIndex( valueInt );
+            }
         }
     }
 
@@ -78,12 +122,21 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         }
 
         // We set WASAPI as default
-        if ( ( listRadiobuttons.at(i)->objectName() == "radioButtonWASAPI" ) and
+        if ( ( listRadiobuttons.at(i)->objectName() == "radioButtonDirectSound" ) and
              ( settings.value( listRadiobuttons.at(i)->objectName(), false ).toBool() == false ) )
         {
             listRadiobuttons.at(i)->click();
             continue;
         }
+
+
+        if ( ( listRadiobuttons.at(i)->objectName() == "radioButton_cisco_on" ) and
+             ( settings.value( listRadiobuttons.at(i)->objectName(), true ).toBool() == true ) )
+        {
+            listRadiobuttons.at(i)->click();
+            continue;
+        }
+
 
         bool value = settings.value( listRadiobuttons.at(i)->objectName(), false ).toBool();
         if ( value == true )
@@ -290,7 +343,14 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
     {
         if ( listToolButton.at(i)->objectName().contains( "toolButtonMute" ) )
         {
-            settings.setValue( listToolButton.at(i)->objectName(), listToolButton.at(i)->icon().name() );
+            if ( listToolButton.at(i)->isChecked() == true )
+            {
+                settings.setValue( listToolButton.at(i)->objectName(), "audio-volume-muted" );
+            }
+            else
+            {
+                settings.setValue( listToolButton.at(i)->objectName(), "audio-volume-high" );
+            }
         }
     }
 }
@@ -301,6 +361,11 @@ QString QvkSettings::getFileName()
     return settings.fileName();
 }
 
+QString QvkSettings::getVideoPath()
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    return settings.value( "lineEditVideoPath" ).toString();
+}
 
 void QvkSettings::saveAreaScreencast( qreal x, qreal y, qreal width, qreal height  )
 {

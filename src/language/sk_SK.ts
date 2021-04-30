@@ -7,13 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkAudioWindows</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>Vyberte jedno alebo viac zariadení</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
@@ -24,11 +17,11 @@
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Prepnutie na jedno okno</translation>
+        <translation>Zobraziť v okne</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Prepnutie na celú obrazovku</translation>
+        <translation>Zobraziť na celú obrazovku</translation>
     </message>
 </context>
 <context>
@@ -36,6 +29,13 @@
     <message>
         <source>Countdown</source>
         <translation>Odpočítavanie</translation>
+    </message>
+</context>
+<context>
+    <name>QvkDirectSoundController</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Vyberte jedno alebo viac zariadení</translation>
     </message>
 </context>
 <context>
@@ -65,7 +65,7 @@
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>Megabajt</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
@@ -91,15 +91,6 @@
         <translation>Inštalujte súborový manažér.</translation>
     </message>
     <message>
-        <source>Desktop session is a Wayland session</source>
-        <translation>Desktopové sedenie je typu Wayland</translation>
-    </message>
-    <message>
-        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Momentálne Wayland nie je podporovaný. Namiesto nahrávky je čierna obrazovka.
-Odhláste sa a naštartujte X11 desktopové sedenie</translation>
-    </message>
-    <message>
         <source>Sourcecode</source>
         <translation>Zdrojový kód</translation>
     </message>
@@ -115,16 +106,19 @@ Odhláste sa a naštartujte X11 desktopové sedenie</translation>
         <source>Donate</source>
         <translation>Podporiť</translation>
     </message>
-    <message>
-        <source>Wayland desktop session detected</source>
-        <translation>Detekované Wayland desktopové sedenie</translation>
-    </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
         <translation>Otvoriť súbor</translation>
+    </message>
+</context>
+<context>
+    <name>QvkPulseAudioWatcher</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Vyberte jedno alebo viac zariadení</translation>
     </message>
 </context>
 <context>
@@ -181,6 +175,18 @@ Odhláste sa a naštartujte X11 desktopové sedenie</translation>
     </message>
 </context>
 <context>
+    <name>Qvk_wl_MainWindow</name>
+    <message>
+        <source>Wayland desktop session detected</source>
+        <translation>Detekované Wayland desktopové sedenie</translation>
+    </message>
+    <message>
+        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
+        <translation>Momentálne Wayland nie je podporovaný. Namiesto nahrávky je čierna obrazovka.
+Odhláste sa a naštartujte X11 desktopové sedenie</translation>
+    </message>
+</context>
+<context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
@@ -200,7 +206,7 @@ Odhláste sa a naštartujte X11 desktopové sedenie</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Stupne šedi</translation>
+        <translation>Stupne sivej</translation>
     </message>
     <message>
         <source>Black-and-white</source>
@@ -299,11 +305,11 @@ Odhláste sa a naštartujte X11 desktopové sedenie</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Naštartovať stopky</translation>
+        <translation>Spustiť stopky</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Stopnúť nahrávanie po</translation>
+        <translation>Zastaviť nahrávanie po</translation>
     </message>
     <message>
         <source>Hours</source>
@@ -327,7 +333,7 @@ Odhláste sa a naštartujte X11 desktopové sedenie</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Zobraziť v systémovej lište</translation>
+        <translation>Zobraziť v systémovom paneli</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
@@ -335,7 +341,7 @@ Odhláste sa a naštartujte X11 desktopové sedenie</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Skontrolovať novšie verzie</translation>
+        <translation>Kontrola aktualizácií</translation>
     </message>
     <message>
         <source>Help</source>
@@ -387,11 +393,11 @@ Odhláste sa a naštartujte X11 desktopové sedenie</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Stupne šedi</translation>
+        <translation>Stupne sivej</translation>
     </message>
     <message>
         <source>Send Report</source>
-        <translation>Poslať hlásenie</translation>
+        <translation>Odoslať hlásenie</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -423,7 +429,7 @@ Odhláste sa a naštartujte X11 desktopové sedenie</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Naštartovať minimalizované okno</translation>
+        <translation>Spustiť minimalizované</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
@@ -451,11 +457,11 @@ Odhláste sa a naštartujte X11 desktopové sedenie</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright a licencia z obrázkov</translation>
+        <translation>Copyright a licencie obrázkov</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>Megabajt</translation>
     </message>
     <message>
         <source>Screencast</source>
@@ -474,7 +480,7 @@ Odhláste sa a naštartujte X11 desktopové sedenie</translation>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright a licencia z obrázkov</translation>
+        <translation>Copyright a licencie obrázkov</translation>
     </message>
 </context>
 <context>
@@ -501,15 +507,15 @@ Odhláste sa a naštartujte X11 desktopové sedenie</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Predchádzajúci snímok</translation>
+        <translation>Predchádzajúce políčko</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Nasledujúci snímok</translation>
+        <translation>Nasledujúce políčko</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Umlčať</translation>
+        <translation>Stíšiť</translation>
     </message>
     <message>
         <source>Move menu</source>

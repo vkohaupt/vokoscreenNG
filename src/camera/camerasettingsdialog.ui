@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>278</width>
-    <height>320</height>
+    <height>344</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,6 +30,9 @@
        <string notr="true"/>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QComboBox" name="comboBoxCameraResolution"/>
+       </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_12">
          <item>
@@ -178,13 +181,6 @@
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QToolButton" name="help_camera_windowsize">
-       <property name="text">
-        <string notr="true">Help</string>
-       </property>
-      </widget>
-     </item>
      <item>
       <widget class="QDialogButtonBox" name="buttonBox">
        <property name="standardButtons">

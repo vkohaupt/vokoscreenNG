@@ -37,6 +37,7 @@
 #include "QvkSpezialSlider.h"
 #include "QvkSystrayAlternative.h"
 #include "QvkAudioController.h"
+
 #include <QMainWindow>
 #include <QFileSystemWatcher>
 #include <QSoundEffect>
@@ -77,7 +78,6 @@ private:
     QvkSpezialSlider *sliderStopRecordingAfterSeconds;
 
     QvkSettings vkSettings;
-    QStringList resolutionStringList;
 
     const QString VK_Gstr_Pipe = " ! ";
     QString VK_GStreamer_Version();
@@ -131,9 +131,8 @@ private:
 
     QString Pipeline_structured_output( QString pipeline );
 
-    bool onlyOnce = false;
-
     QSoundEffect *soundEffect;
+
 
 private slots:
     void slot_preStart();
@@ -146,8 +145,6 @@ private slots:
     void slot_Folder();
     void slot_screenCountChanged( QString, QString );
     void slot_screenCountChangedArea( QString stringText, QString stringData );
-    void slot_audioIconOnOff(bool state );
-    void slot_audioRedCross();
     void slot_newVideoPath();
     void slot_videoFileSystemWatcherSetButtons();
     void slot_videoFileSystemWatcherSetNewPath();
@@ -164,9 +161,6 @@ private slots:
     void slot_StartTimer( bool value );
     void slot_startTime();
     void slot_areaSetResolution( QString value );
-    void slot_areaReset();
-    void slot_disableAreaWidgets();
-    void slot_enableAreaWidgets();
 
     void slot_IfStartAudioCodecWidgetsSetEnabled();
     void slot_IfStopAudioCodecWidgetsSetDisabled();
@@ -177,9 +171,7 @@ private slots:
 
     void slot_vokoPlayer();
 
-#ifdef Q_OS_LINUX
-    void slot_afterWindowShown();
-#endif
+    void slot_setMaxFPS( int );
 
 
 signals:
@@ -192,9 +184,6 @@ signals:
 protected:
     void closeEvent( QCloseEvent *event );
     void resizeEvent( QResizeEvent *event );
-#ifdef Q_OS_LINUX
-    void showEvent( QShowEvent *event );
-#endif
 
 
 };

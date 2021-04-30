@@ -40,7 +40,7 @@ QvkRegionChoise::QvkRegionChoise( Ui_formMainWindow *ui_formMainWindow ):handleP
                                    HandleColorBackground( Qt::lightGray ),
                                    HandleColorBackgroundSize( Qt::lightGray ),
                                    HandleColorByMousePressed( Qt::lightGray ),
-                                   colorSelectedArrow( Qt::darkYellow ),
+                                   colorSelectedArrow( Qt::green ),
                                    framePenWidth(4), // framePenWidth must be an even number
                                    framePenHalf(framePenWidth/2),
                                    radius(20),

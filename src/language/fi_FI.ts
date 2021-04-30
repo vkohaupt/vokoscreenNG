@@ -7,13 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkAudioWindows</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>Valitse yksi tai useampi laite</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
@@ -36,6 +29,13 @@
     <message>
         <source>Countdown</source>
         <translation>Lähtölaskenta</translation>
+    </message>
+</context>
+<context>
+    <name>QvkDirectSoundController</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Valitse yksi tai useampi laite</translation>
     </message>
 </context>
 <context>
@@ -91,14 +91,6 @@
         <translation>Asenna tiedostonhallinta. </translation>
     </message>
     <message>
-        <source>Desktop session is a Wayland session</source>
-        <translation>Työpöytä on Wayland-istunnossa</translation>
-    </message>
-    <message>
-        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Tällä hetkellä Waylandia ei tueta ja tallennus näyttää mustan näytön. Kirjaudu ulos ja aloita X11-työpöytäistunto</translation>
-    </message>
-    <message>
         <source>Sourcecode</source>
         <translation>Lähdekoodi</translation>
     </message>
@@ -114,16 +106,19 @@
         <source>Donate</source>
         <translation>Lahjoita</translation>
     </message>
-    <message>
-        <source>Wayland desktop session detected</source>
-        <translation>Wayland-työpöytäistunto havaittiin</translation>
-    </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
         <translation>Avaa tiedosto</translation>
+    </message>
+</context>
+<context>
+    <name>QvkPulseAudioWatcher</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Valitse yksi tai useampi laite</translation>
     </message>
 </context>
 <context>
@@ -177,6 +172,17 @@
     <message>
         <source>Exit</source>
         <translation>Poistu</translation>
+    </message>
+</context>
+<context>
+    <name>Qvk_wl_MainWindow</name>
+    <message>
+        <source>Wayland desktop session detected</source>
+        <translation>Wayland-työpöytäistunto havaittiin</translation>
+    </message>
+    <message>
+        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
+        <translation>Tällä hetkellä Waylandia ei tueta ja tallennus näyttää mustan näytön. Kirjaudu ulos ja aloita X11-työpöytäistunto</translation>
     </message>
 </context>
 <context>

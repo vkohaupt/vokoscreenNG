@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2019 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@freenet.de>
  *
@@ -20,11 +20,17 @@
  * --End_License--
  */
 
-#include "QvkAudioController.h"
-#include "QvkWatcherPlug.h"
-#include "global.h"
-
 #include <QDebug>
+#include <QIcon>
+#include <QPainter>
+#include <QCheckBox>
+#include <QLabel>
+
+#include "QvkAudioController.h"
+#include "QvkPulseAudioWatcher.h"
+#include "QvkPulseAudioServer.h"
+#include "QvkPulseAudioDevices.h"
+#include "global.h"
 
 QvkAudioController::QvkAudioController( Ui_formMainWindow *ui_mainwindow )
 {
@@ -39,22 +45,21 @@ QvkAudioController::~QvkAudioController()
 
 void QvkAudioController::init()
 {
+    connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
+    connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
     getAllDevices();
-
-    // QvkWatcherPlug monitoring only new or removed Audiodevices from the PulseAudio server.
-    // QvkWatcherPlug does not return any devices, if the PulseAudio server start or stop.
-    QvkWatcherPlug *vkWatcherPlug = new QvkWatcherPlug();
-    vkWatcherPlug->start_monitor();
-
-    connect( global::lineEditAudioPlug, SIGNAL( textChanged( QString ) ), this, SLOT( slot_pluggedInOutDevice( QString ) ) );
+    QvkPulseAudioWatcher *vkPulseAudioWatcher = new QvkPulseAudioWatcher( ui );
+    vkPulseAudioWatcher->start_monitor();
 }
 
 
 void QvkAudioController::getAllDevices()
 {
-    QvkPulseGstr vkPulseGstr;
     QStringList list;
-    list << vkPulseGstr.get_all_Audio_devices();
+    if ( QvkPulseAudioServer::isAvailable() )
+    {
+        list << QvkPulseAudioDevices::getAllDevices();
+    }
 
     if ( !list.empty() )
     {
@@ -73,21 +78,26 @@ void QvkAudioController::getAllDevices()
 
         QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
         ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
-        slot_audioDeviceSelected();
     }
     else
     {
-        emit signal_haveAudioDeviceSelected( false );
         QLabel *label = new QLabel();
-        label->setText( "No audio recording device found, please read the online help." );
-        ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter);
+        label->setText( "No audio recording device found." );
+        ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter );
         ui->verticalLayoutAudioDevices->addWidget( label );
-
     }
+
+    slot_audioDeviceSelected();
 }
 
 
 void QvkAudioController::slot_audioDeviceSelected()
+{
+    audioIconOnOff( isAudioDeviceSelected() );
+}
+
+
+bool QvkAudioController::isAudioDeviceSelected()
 {
     bool value = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
@@ -99,39 +109,37 @@ void QvkAudioController::slot_audioDeviceSelected()
             break;
         }
     }
-    emit signal_haveAudioDeviceSelected( value );
+    return value;
 }
 
 
-void QvkAudioController::slot_pluggedInOutDevice( QString string )
+/*
+ * Set a new icon with a red cross
+ */
+void QvkAudioController::audioIconOnOff( bool state )
 {
-    QString header = string.section( ":", 0, 0 );
-    QString name   = string.section( ":", 1, 1 );
-    QString device = string.section( ":", 2, 2 );
-
-    if ( header == "[Audio-device-added]" )
+    QIcon myIcon( ":/pictures/screencast/microphone.png" );
+    if ( state == false  )
     {
-        QCheckBox *checkboxAudioDevice = new QCheckBox();
-        connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
-        checkboxAudioDevice->setText( name );
-        checkboxAudioDevice->setAccessibleName( device );
-        QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-        checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( listAudioDevices.count() ) );
-        checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
-        ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
-    }
+        QSize size = ui->tabWidgetScreencast->iconSize();
+        QPixmap workPixmap( myIcon.pixmap( size ) );
+        QPainter painter;
+        QPen pen;
+        painter.begin( &workPixmap );
+        pen.setColor( Qt::red );
+        pen.setWidth( 2 );
+        painter.setPen( pen );
+        painter.drawLine ( 5, 5, size.width()-5, size.height()-5 );
+        painter.drawLine ( 5, size.height()-5, size.width()-5, 5 );
+        painter.end();
+        int index = ui->tabWidgetScreencast->indexOf( ui->tabAudio );
+        ui->tabWidgetScreencast->setTabIcon( index, workPixmap );
+        emit signal_haveAudioDeviceSelected( false );
 
-    if ( header == "[Audio-device-removed]" )
-    {
-        QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-        for ( int i = 0; i < listAudioDevices.count(); i++ )
-        {
-            if ( listAudioDevices.at(i)->accessibleName() == device )
-            {
-                delete listAudioDevices.at(i);
-            }
-        }
-        slot_audioDeviceSelected();
+    } else {
+        int index = ui->tabWidgetScreencast->indexOf( ui->tabAudio );
+        ui->tabWidgetScreencast->setTabIcon( index, myIcon );
+        emit signal_haveAudioDeviceSelected( true );
     }
 }
 

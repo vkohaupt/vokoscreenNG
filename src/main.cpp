@@ -23,6 +23,15 @@
 #include "mainwindow.h"
 #include "global.h"
 
+#ifdef Q_OS_LINUX
+#include "QvkWaylandRoutines.h"
+#include "wl_mainwindow.h"
+#endif
+
+#ifdef Q_OS_WIN
+#include "QvkSettings.h"
+#endif
+
 #include <QTranslator>
 #include <QLibraryInfo>
 
@@ -84,17 +93,40 @@ int main(int argc, char *argv[])
     }
 
     // Initialize GStreamer
+    // https://developer.gnome.org/gstreamer/stable/gst-running.html
 #ifdef Q_OS_WIN
-    QString pathString = QDir::currentPath();
-    QByteArray pathByteArray;
-    pathByteArray.append( pathString );
-    qputenv( "GSTREAMER_1_0_ROOT_X86", pathByteArray );
-    qputenv( "GST_PLUGIN_PATH", pathByteArray );
-    
+    QvkSettings vkSettings;
+    QFileInfo dirPathProfile( vkSettings.getFileName() );
+    QString pathProfile = dirPathProfile.absolutePath();
+    QString programPath = QDir::currentPath();
+
+    QByteArray programPathByteArray;
+    programPathByteArray.append( programPath );
+    programPathByteArray.append( ";" );
+    programPathByteArray.append( pathProfile );
+    qputenv( "GSTREAMER_1_0_ROOT_X86", programPathByteArray );
+
+    QByteArray pluginPathByteArray;
+    pluginPathByteArray.append( programPath );
+    pluginPathByteArray.append( ";" );
+    pluginPathByteArray.append( pathProfile );
+    qputenv( "GST_PLUGIN_PATH_1_0", pluginPathByteArray );
+
+    QByteArray pathPathByteArray;
+    pathPathByteArray.append( programPath );
+    pathPathByteArray.append( ";" );
+    pathPathByteArray.append( pathProfile );
+    qputenv( "PATH", pathPathByteArray );
+
+/*
     //Environment variables for debugging
-    //qputenv( "GST_DEBUG", "2");
-    //qputenv( "GST_DEBUG_FILE", "C:\\Users\\vk\\Documents\\VK_Error.txt" );
+    qputenv( "GST_DEBUG", "4");
+    QByteArray envPathProfile;
+    envPathProfile.append( pathProfile.path() + "/GST_Error.txt" );
+    qputenv( "GST_DEBUG_FILE", envPathProfile );
+*/
 #endif
+
     gst_init (&argc, &argv);
 
     QTranslator * qtTranslator = new QTranslator();
@@ -105,8 +137,39 @@ int main(int argc, char *argv[])
     translator.load( QLocale::system().name(), ":/language" );
     app.installTranslator( &translator );
 
-    QvkMainWindow w;
-    w.show();
+#ifdef Q_OS_LINUX
+    if ( QvkWaylandRoutines::is_Wayland_Display_Available() == false )
+    {
+        QvkMainWindow *w = new QvkMainWindow;
+        w->show();
+    }
+    else
+    {
+        Qvk_wl_MainWindow *wl = new Qvk_wl_MainWindow;
+        wl->show();
+    }
+#endif
+
+/*
+#ifdef Q_OS_LINUX
+    if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "x11" )
+    {
+        QvkMainWindow *w = new QvkMainWindow;
+        w->show();
+    }
+    
+    if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "wayland" )
+    {
+        Qvk_wl_MainWindow *wl = new Qvk_wl_MainWindow;
+        wl->show();
+    }
+#endif
+*/
+
+#ifdef Q_OS_WIN
+    QvkMainWindow *w = new QvkMainWindow;
+    w->show();
+#endif
 
     return app.exec();
 }

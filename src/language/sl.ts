@@ -7,13 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkAudioWindows</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>Izbor ene ali več naprav</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
@@ -36,6 +29,13 @@
     <message>
         <source>Countdown</source>
         <translation>Odštevalnik</translation>
+    </message>
+</context>
+<context>
+    <name>QvkDirectSoundController</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Izbor ene ali več naprav</translation>
     </message>
 </context>
 <context>
@@ -91,14 +91,6 @@
         <translation>Program za urejanje datotek je treba namestiti.</translation>
     </message>
     <message>
-        <source>Desktop session is a Wayland session</source>
-        <translation>Namizna seja je seja Wayland</translation>
-    </message>
-    <message>
-        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Merjenje časa v okolju Wayland ni podprto. Zaslonski posnetek pokaže črn zaslon. Odjavite se in  začnite namizno sejo X11.</translation>
-    </message>
-    <message>
         <source>Sourcecode</source>
         <translation>Izvorna koda</translation>
     </message>
@@ -114,16 +106,19 @@
         <source>Donate</source>
         <translation>Doniraj</translation>
     </message>
-    <message>
-        <source>Wayland desktop session detected</source>
-        <translation>Zaznana je namizna seja Wayland</translation>
-    </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
         <translation>Odpri datoteko</translation>
+    </message>
+</context>
+<context>
+    <name>QvkPulseAudioWatcher</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Izbor ene ali več naprav</translation>
     </message>
 </context>
 <context>
@@ -177,6 +172,17 @@
     <message>
         <source>Exit</source>
         <translation>Končaj</translation>
+    </message>
+</context>
+<context>
+    <name>Qvk_wl_MainWindow</name>
+    <message>
+        <source>Wayland desktop session detected</source>
+        <translation>Zaznana je namizna seja Wayland</translation>
+    </message>
+    <message>
+        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
+        <translation>Merjenje časa v okolju Wayland ni podprto. Zaslonski posnetek pokaže črn zaslon. Odjavite se in  začnite namizno sejo X11.</translation>
     </message>
 </context>
 <context>

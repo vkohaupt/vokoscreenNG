@@ -7,13 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkAudioWindows</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>Bir veya daha fazla aygıt seç</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
@@ -36,6 +29,13 @@
     <message>
         <source>Countdown</source>
         <translation>Geri sayım</translation>
+    </message>
+</context>
+<context>
+    <name>QvkDirectSoundController</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Bir veya daha fazla aygıt seç</translation>
     </message>
 </context>
 <context>
@@ -91,14 +91,6 @@
         <translation>Lütfen bir dosya yöneticisi yükleyin.</translation>
     </message>
     <message>
-        <source>Desktop session is a Wayland session</source>
-        <translation>Masaüstü oturumu bir Wayland oturumu</translation>
-    </message>
-    <message>
-        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Zaman zaman Wayland desteklenmedi. Ekran görüntüsünde siyah bir ekran gösterilir. Lütfen çıkış yapın ve bir X11 Masaüstü oturumu başlatın</translation>
-    </message>
-    <message>
         <source>Sourcecode</source>
         <translation>Kaynak kodu</translation>
     </message>
@@ -114,16 +106,19 @@
         <source>Donate</source>
         <translation>Bağış</translation>
     </message>
-    <message>
-        <source>Wayland desktop session detected</source>
-        <translation>Wayland masaüstü oturumu algılandı</translation>
-    </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
         <translation>Dosya Aç</translation>
+    </message>
+</context>
+<context>
+    <name>QvkPulseAudioWatcher</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Bir veya daha fazla aygıt seç</translation>
     </message>
 </context>
 <context>
@@ -177,6 +172,17 @@
     <message>
         <source>Exit</source>
         <translation>Çıkış</translation>
+    </message>
+</context>
+<context>
+    <name>Qvk_wl_MainWindow</name>
+    <message>
+        <source>Wayland desktop session detected</source>
+        <translation>Wayland masaüstü oturumu algılandı</translation>
+    </message>
+    <message>
+        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
+        <translation>Zaman zaman Wayland desteklenmedi. Ekran görüntüsünde siyah bir ekran gösterilir. Lütfen çıkış yapın ve bir X11 Masaüstü oturumu başlatın</translation>
     </message>
 </context>
 <context>

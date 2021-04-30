@@ -37,14 +37,22 @@ QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::licen
 
     connect( ui_mainwindow->pushButtonLicense, SIGNAL( clicked( bool ) ), this, SLOT( show() ) );
 
-    const QFont fixedFont = QFontDatabase::systemFont( QFontDatabase::FixedFont );
-
     ui->label_dummy_1->hide();
     ui->label_dummy_2->hide();
     ui->label_dummy_3->hide();
     ui->label_dummy_4->hide();
-    int row = 0;
-    QDirIterator dirIterator( ":/pictures/", QDir::Files, QDirIterator::Subdirectories );
+
+    int row = readLicences( ":/pictures/", 0 );
+    readLicences( ":/spezialCheckBox/", row );
+}
+
+
+QvkLicenses::~QvkLicenses(){}
+
+
+int QvkLicenses::readLicences( QString path, int row )
+{
+    QDirIterator dirIterator( path, QDir::Files, QDirIterator::Subdirectories );
     while ( dirIterator.hasNext() )
     {
         QString string = dirIterator.next();
@@ -84,7 +92,5 @@ QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::licen
             settings.endGroup();
         }
     }
+    return row;
 }
-
-
-QvkLicenses::~QvkLicenses(){}

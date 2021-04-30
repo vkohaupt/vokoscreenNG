@@ -20,25 +20,23 @@
  * --End_License--
  */
 
-#ifndef QVKPULSEGSTR_H
-#define QVKPULSEGSTR_H
+#ifndef WL_MAINWINDOW_H
+#define WL_MAINWINDOW_H
 
-#include <gst/gst.h>
+#include <QMainWindow>
 
-#include <QObject>
 
-class QvkPulseGstr: public QObject
+namespace Ui {
+class Qvk_wl_MainWindow;
+}
+
+class Qvk_wl_MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    QvkPulseGstr();
-    virtual ~QvkPulseGstr();
-    QString get_AudioDeviceString( GstDevice *device );
-
-    
-public slots:
-    QStringList get_all_Audio_devices();
+    Qvk_wl_MainWindow( QWidget *parent = Q_NULLPTR );
+    ~Qvk_wl_MainWindow();
 
 
 private:
@@ -47,11 +45,12 @@ private:
 private slots:
 
 
-protected:
-  
-  
 signals:
-    
+
+
+protected:
+
+
 };
 
 #endif

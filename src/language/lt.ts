@@ -7,13 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkAudioWindows</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>Pasirinkite vieną ar daugiau įrenginių</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
@@ -36,6 +29,13 @@
     <message>
         <source>Countdown</source>
         <translation>Atvirkštinis skaičiavimas</translation>
+    </message>
+</context>
+<context>
+    <name>QvkDirectSoundController</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Pasirinkite vieną ar daugiau įrenginių</translation>
     </message>
 </context>
 <context>
@@ -91,14 +91,6 @@
         <translation>Įdiekite failų tvarkytuvę.</translation>
     </message>
     <message>
-        <source>Desktop session is a Wayland session</source>
-        <translation>Darbalaukio seansas yra Wayland seansas</translation>
-    </message>
-    <message>
-        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Šiuo metu Wayland nėra palaikomas. Ekrano įrašas rodys juodą ekraną. Atsijunkite ir paleiskite X11 darbalaukio seansą</translation>
-    </message>
-    <message>
         <source>Sourcecode</source>
         <translation>Pirminis kodas</translation>
     </message>
@@ -114,16 +106,19 @@
         <source>Donate</source>
         <translation>Paaukoti</translation>
     </message>
-    <message>
-        <source>Wayland desktop session detected</source>
-        <translation>Aptiktas Wayland darbalaukio seansas</translation>
-    </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
         <translation>Atverti failą</translation>
+    </message>
+</context>
+<context>
+    <name>QvkPulseAudioWatcher</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Pasirinkite vieną ar daugiau įrenginių</translation>
     </message>
 </context>
 <context>
@@ -177,6 +172,17 @@
     <message>
         <source>Exit</source>
         <translation>Išeiti</translation>
+    </message>
+</context>
+<context>
+    <name>Qvk_wl_MainWindow</name>
+    <message>
+        <source>Wayland desktop session detected</source>
+        <translation>Aptiktas Wayland darbalaukio seansas</translation>
+    </message>
+    <message>
+        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
+        <translation>Šiuo metu Wayland nėra palaikomas. Ekrano įrašas rodys juodą ekraną. Atsijunkite ir paleiskite X11 darbalaukio seansą</translation>
     </message>
 </context>
 <context>

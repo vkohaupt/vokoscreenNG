@@ -7,13 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkAudioWindows</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>Sélectionnez un ou plusieurs fichiers</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
@@ -36,6 +29,13 @@
     <message>
         <source>Countdown</source>
         <translation>Compte à rebours</translation>
+    </message>
+</context>
+<context>
+    <name>QvkDirectSoundController</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Sélectionnez un ou plusieurs fichiers</translation>
     </message>
 </context>
 <context>
@@ -91,14 +91,6 @@
         <translation>Veuillez installer un gestionnaire de fichiers.</translation>
     </message>
     <message>
-        <source>Desktop session is a Wayland session</source>
-        <translation>La session en cours est une session Wayland</translation>
-    </message>
-    <message>
-        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Wayland n&apos;est pas encore pris en charge. Un screencast montre un écran noir. Veuillez vous déconnecter et démarrer une session X11.</translation>
-    </message>
-    <message>
         <source>Sourcecode</source>
         <translation>Code source</translation>
     </message>
@@ -114,16 +106,19 @@
         <source>Donate</source>
         <translation>Faire un don</translation>
     </message>
-    <message>
-        <source>Wayland desktop session detected</source>
-        <translation>Session Wayland detectée</translation>
-    </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
         <translation>Ouvrir fichier</translation>
+    </message>
+</context>
+<context>
+    <name>QvkPulseAudioWatcher</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Sélectionnez un ou plusieurs fichiers</translation>
     </message>
 </context>
 <context>
@@ -177,6 +172,17 @@
     <message>
         <source>Exit</source>
         <translation>Sortir</translation>
+    </message>
+</context>
+<context>
+    <name>Qvk_wl_MainWindow</name>
+    <message>
+        <source>Wayland desktop session detected</source>
+        <translation>Session Wayland detectée</translation>
+    </message>
+    <message>
+        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
+        <translation>Wayland n&apos;est pas encore pris en charge. Un screencast montre un écran noir. Veuillez vous déconnecter et démarrer une session X11.</translation>
     </message>
 </context>
 <context>

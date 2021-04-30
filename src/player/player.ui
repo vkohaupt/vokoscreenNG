@@ -339,6 +339,9 @@
               <property name="text">
                <string notr="true">Mute</string>
               </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
             <item>

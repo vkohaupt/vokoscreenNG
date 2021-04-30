@@ -7,13 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkAudioWindows</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>Välj en eller flera enheter</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
@@ -39,6 +32,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirectSoundController</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Välj en eller flera enheter</translation>
+    </message>
+</context>
+<context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
@@ -61,7 +61,7 @@
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Gräns för ledigt dikutrymme</translation>
+        <translation>Gräns för ledigt diskutrymme</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -91,14 +91,6 @@
         <translation>Installera en filhanterare.</translation>
     </message>
     <message>
-        <source>Desktop session is a Wayland session</source>
-        <translation>Skrivbordsessionen är en Wayland-session</translation>
-    </message>
-    <message>
-        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Wayland stöds inte. En skärminspelning visar bara en svart skärm. Logga ut och starta en X11 skrivbordssession.</translation>
-    </message>
-    <message>
         <source>Sourcecode</source>
         <translation>Källkod</translation>
     </message>
@@ -114,16 +106,19 @@
         <source>Donate</source>
         <translation>Donera</translation>
     </message>
-    <message>
-        <source>Wayland desktop session detected</source>
-        <translation>Wayland skrivbordssession identifierad</translation>
-    </message>
 </context>
 <context>
     <name>QvkPlayer</name>
     <message>
         <source>Open File</source>
         <translation>Öppna fil</translation>
+    </message>
+</context>
+<context>
+    <name>QvkPulseAudioWatcher</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Välj en eller flera enheter</translation>
     </message>
 </context>
 <context>
@@ -177,6 +172,17 @@
     <message>
         <source>Exit</source>
         <translation>Avsluta</translation>
+    </message>
+</context>
+<context>
+    <name>Qvk_wl_MainWindow</name>
+    <message>
+        <source>Wayland desktop session detected</source>
+        <translation>Wayland skrivbordssession identifierad</translation>
+    </message>
+    <message>
+        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
+        <translation>Wayland stöds inte. En skärminspelning visar bara en svart skärm. Logga ut och starta en X11 skrivbordssession.</translation>
     </message>
 </context>
 <context>

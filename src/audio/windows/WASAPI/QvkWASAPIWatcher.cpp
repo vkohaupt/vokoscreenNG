@@ -69,7 +69,7 @@ void QvkWASAPIWatcher::slot_update()
             if ( stringListCheckBox.contains( device ) == false )
             {
                 QString name = QString( listDevices.at(i) ).section( ":::", 1, 1 );
-                qDebug().noquote() << global::nameOutput << "[Audio] Added:" << name << "Device:" << device;
+                qDebug().noquote() << global::nameOutput << "[Audio WASAPI] Added:" << name << "Device:" << device;
                 QString audioDevicePlug = "";
                 audioDevicePlug.append( "[Audio-device-added]" );
                 audioDevicePlug.append( "---");
@@ -104,7 +104,7 @@ void QvkWASAPIWatcher::slot_update()
             {
                 QString name = listCheckBox.at(i)->text();
                 QString device = listCheckBox.at(i)->accessibleName();
-                qDebug().noquote() << global::nameOutput << "[Audio] Removed:" << name << "Device:" << device;
+                qDebug().noquote() << global::nameOutput << "[Audio WASAPI] Removed:" << name << "Device:" << device;
                 qDebug().noquote();
                 QString audioDevicePlug = "";
                 audioDevicePlug.append( "[Audio-device-removed]" );
