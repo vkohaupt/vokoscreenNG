@@ -22,8 +22,8 @@
 
 #include "QvkWaylandRoutines.h"
 #include "global.h"
-#include "wayland/wayland-client.h"
 
+#include <wayland-client.h>
 #include <QDebug>
 
 QvkWaylandRoutines::QvkWaylandRoutines( QWidget *parent )
