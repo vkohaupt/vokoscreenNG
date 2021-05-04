@@ -61,7 +61,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     sliderScreencastCountDown = new QvkSpezialSlider( Qt::Horizontal );
     ui->gridLayout_9->addWidget( sliderScreencastCountDown, 2, 1 );
-    sliderScreencastCountDown->setObjectName("sliderScreencastCountDown");
+    sliderScreencastCountDown->setObjectName( "sliderScreencastCountDown" );
     sliderScreencastCountDown->setTracking( true );
     sliderScreencastCountDown->setMinimum( 0 );
     sliderScreencastCountDown->setMaximum( 30 );
@@ -70,7 +70,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     sliderFrames = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_33->insertWidget( 0, sliderFrames );
-    sliderFrames->setObjectName("sliderFrames");
+    sliderFrames->setObjectName( "sliderFrames" );
     sliderFrames->setTracking( true );
     sliderFrames->setMinimum( 10 );
     sliderFrames->setMaximum( 144 );
@@ -79,7 +79,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     sliderX264 = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_26->insertWidget( 2, sliderX264 );
-    sliderX264->setObjectName("sliderX264");
+    sliderX264->setObjectName( "sliderX264" );
     sliderX264->setTracking( true );
     sliderX264->setMinimum( 0 );
     sliderX264->setMaximum( 50 );
@@ -88,7 +88,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     sliderOpenh264 = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_openh264->insertWidget( 1, sliderOpenh264 );
-    sliderOpenh264->setObjectName("sliderOpenh264");
+    sliderOpenh264->setObjectName( "sliderOpenh264" );
     sliderOpenh264->setTracking( true );
     sliderOpenh264->setMinimum( 1 ); // we need minimum 1, with 0 we get wrong colors.
     sliderOpenh264->setMaximum( 51 );
@@ -103,7 +103,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderVp8->setMaximum( 63 );
     sliderVp8->setValue( 20 );
     sliderVp8->show();
-// -------------------------------------------------------------------------------------------------
 
     sliderLimitOfFreeDiskSpace = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_27->insertWidget( 3, sliderLimitOfFreeDiskSpace );
