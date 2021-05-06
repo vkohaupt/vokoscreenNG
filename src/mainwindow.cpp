@@ -1319,7 +1319,7 @@ void QvkMainWindow::VK_set_available_Formats_in_Combox()
 void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
 {
     ui->comboBoxVideoCodec->clear();
-
+    
     QStringList listSuffix = videoFormatsList.filter( suffix );
     QString stringSuffix = listSuffix.at( 0 );
     QStringList listKeys = stringSuffix.split( "," );
@@ -1327,9 +1327,17 @@ void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
     for ( int i = 0; i < listKeyVideoCodec.count(); i++ )
     {
         QString encoder = QString( listKeyVideoCodec.at( i ) ).section( ":", 1, 1 );
-        QString name =    QString( listKeyVideoCodec.at( i ) ).section( ":", 2, 2 );
-        GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
 
+#ifdef Q_OS_WIN
+        if ( ui->radioButton_cisco_off->isChecked() and ( encoder == "openh264enc" ) )
+        {
+            continue;
+        }
+#endif
+
+        QString name = QString( listKeyVideoCodec.at( i ) ).section( ":", 2, 2 );
+        GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
+        
         if ( !factory )
         {
             qDebug().noquote() << global::nameOutput << "-" << encoder;
@@ -1347,16 +1355,20 @@ void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
                 ui->comboBoxVideoCodec->addItem( name, encoder );
                 gst_object_unref( source );
             }
-
+            
             qDebug().noquote() << message;
             gst_object_unref( factory );
         }
     }
-
-    if ( ui->comboBoxVideoCodec->count() == 0  )
-        ui->pushButtonStart->setEnabled( false);
+    
+    if ( ui->comboBoxVideoCodec->count() == 0 )
+    {
+        ui->pushButtonStart->setEnabled( false );
+    }
     else
+    {
         ui->pushButtonStart->setEnabled( true );
+    }
 }
 
 
