@@ -1242,10 +1242,10 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "muxer:mp4mux:mp4"
                                     << "videomimetype:video/mp4"
                                     << "audiomimetype:audio/mpeg"
-                                #ifdef Q_OS_LINUX
                                     << "videocodec:openh264enc:openh264"
-                                #endif
+                                #ifdef Q_OS_LINUX
                                     << "videocodec:x264enc:x264"
+                                #endif
                                     << "audiocodec:lamemp3enc:mp3"
                                     << "audiocodec:opusenc:opus"
                                     );
@@ -1255,10 +1255,10 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "muxer:qtmux:mov"
                                     << "videomimetype:video/mp4"
                                     << "audiomimetype:audio/mpeg"
-                                #ifdef Q_OS_LINUX
                                     << "videocodec:openh264enc:openh264"
-                                #endif
+                                #ifdef Q_OS_LINUX
                                     << "videocodec:x264enc:x264"
+                                #endif
                                     << "videocodec:vp8enc:VP8"
                                     << "audiocodec:lamemp3enc:mp3"
                                   );
