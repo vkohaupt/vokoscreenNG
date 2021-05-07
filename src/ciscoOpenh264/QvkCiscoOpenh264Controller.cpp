@@ -74,7 +74,7 @@ void QvkCiscoOpenh264Controller::slot_cisco_on( bool )
         QFileInfo file_libopenh264( fileInfo.path() + "/" + libopenh264_filename );
         if ( file_libopenh264.exists( ) )
         {
-            ui->comboBoxVideoCodec->addItem( "openh264", "openh264enc" );
+            ui->comboBoxVideoCodec->insertItem( 0, "openh264", "openh264enc" );
         }
     }
 }
