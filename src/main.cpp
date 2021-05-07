@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
     help.append( "    Example file:\n" );
     help.append( "      vokoscreenNG /path/video\n" );
     help.append( "\n" );
-    help.append( "    Exsample URL:\n");
+    help.append( "    Example URL:\n");
     help.append( "      vokoscreenNG http://www.rapconverter.com/SampleDownload/Sample320.mp4\n");
     help.append( "      vokoscreenNG http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_60fps_normal.mp4" );
     help.append( "\n" );
