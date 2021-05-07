@@ -56,7 +56,7 @@ protected:
   
   
 signals:
-
+    void signal_read_in_available_codecs();
 };
 
 #endif

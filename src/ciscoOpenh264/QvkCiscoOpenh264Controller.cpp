@@ -75,6 +75,7 @@ void QvkCiscoOpenh264Controller::slot_cisco_on( bool )
         if ( file_libopenh264.exists( ) )
         {
             ui->comboBoxVideoCodec->insertItem( 0, "openh264", "openh264enc" );
+            emit signal_read_in_available_codecs();
         }
     }
 }
@@ -86,6 +87,7 @@ void QvkCiscoOpenh264Controller::slot_cisco_off( bool )
     if ( index > -1 )
     {
         ui->comboBoxVideoCodec->removeItem( index );
+        emit signal_read_in_available_codecs();
     }
 }
 

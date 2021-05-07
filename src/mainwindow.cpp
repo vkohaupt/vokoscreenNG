@@ -483,6 +483,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 #ifdef Q_OS_WIN
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller( vkSettings.getFileName(), ui );
+    connect( vkCiscoOpenh264Controller,SIGNAL( signal_read_in_available_codecs ), this, SLOT( VK_gst_formatVideoAudoicodec_available ) );
     Q_UNUSED(vkCiscoOpenh264Controller);
 #endif
 #ifdef Q_OS_LINUX
@@ -1068,6 +1069,33 @@ void QvkMainWindow::VK_gst_Elements_available()
 // Check format, video and audoicodec on tab availability
 void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
 {
+    // Delete all QLabel
+    QList<QLabel *> listLabel = ui->scrollAreaWidgetContentsAvailable->findChildren<QLabel *>();
+    for( int i = 0; i < listLabel.count(); i++ )
+    {
+        delete listLabel.at( i );
+    }
+
+    // Delete spacerItem
+    for ( int i = 0; i < ui->gridLayoutAvailable->count(); ++i )
+    {
+        QLayoutItem *layoutItem = ui->gridLayoutAvailable->itemAt(i);
+        if ( layoutItem->spacerItem() )
+        {
+            ui->gridLayoutAvailable->removeItem(layoutItem);
+            delete layoutItem;
+            --i;
+        }
+    }
+
+    // Delete line
+    QList<QFrame *> listFrame = ui->scrollAreaWidgetContentsAvailable->findChildren<QFrame *>();
+    for( int i = 0; i < listFrame.count(); i++ )
+    {
+        delete listFrame.at( i );
+    }
+
+    // Adding all informations
     int rowCount = 0;
     for ( int i = 0; i < globalFormatsList.count(); i++ )
     {
