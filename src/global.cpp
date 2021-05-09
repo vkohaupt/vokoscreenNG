@@ -29,6 +29,7 @@ namespace global
     QString name = "vokoscreenNG";
     QString nameOutput = "[" + name + "]";
     QLineEdit *lineEditAudioPlug;
+    QLineEdit *lineEditCiscoOpenh264;
 
 #ifdef Q_OS_LINUX
     QString version = "3.0.9 pre alpha";
