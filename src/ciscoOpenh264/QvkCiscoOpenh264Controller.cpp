@@ -25,6 +25,7 @@
 
 #include "QvkCiscoOpenh264Controller.h"
 #include "QvkCiscoOpenh264Downloader.h"
+#include "QvkBz2Decode.h"
 #include "global.h"
 #include <gst/gst.h>
 
@@ -92,10 +93,20 @@ void QvkCiscoOpenh264Controller::slot_cisco_off( bool )
 }
 
 
-#include <QThread>
-#include <QCoreApplication>
 void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile )
 {
+    QFileInfo fileInfoDownloadedFile( pathWithDownloadedFile );
+    
+    QvkBz2Decode *vkBz2Decode = new QvkBz2Decode;
+    connect( global::lineEditCiscoOpenh264, SIGNAL( textChanged( QString ) ), this, SLOT( slot_pluggedInOutDevice( QString ) ) );
+
+    QString inputFile  = pathWithDownloadedFile;
+    QString outputFile = fileInfoDownloadedFile.path() + "/" + libopenh264_filename;;
+    vkBz2Decode->start_encoding( inputFile, outputFile );
+    
+    
+    
+/*    
     QFileInfo fileInfoDownloadedFile( pathWithDownloadedFile );
 
     QStringList stringList;
@@ -132,6 +143,7 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
     ret = gst_element_set_state( pipeline, GST_STATE_READY );
     ret = gst_element_set_state( pipeline, GST_STATE_NULL );
     gst_object_unref( pipeline );
+*/    
 }
 
 
