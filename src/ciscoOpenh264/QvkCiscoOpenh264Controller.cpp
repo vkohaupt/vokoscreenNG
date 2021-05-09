@@ -98,7 +98,7 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
     QFileInfo fileInfoDownloadedFile( pathWithDownloadedFile );
     
     QvkBz2Decode *vkBz2Decode = new QvkBz2Decode;
-    connect( global::lineEditCiscoOpenh264, SIGNAL( textChanged( QString ) ), this, SLOT( slot_pluggedInOutDevice( QString ) ) );
+    connect( global::lineEditCiscoOpenh264, SIGNAL( textChanged( QString ) ), this, SLOT( slot_showAvalaibleCodecs( QString ) ) );
 
     QString inputFile  = pathWithDownloadedFile;
     QString outputFile = fileInfoDownloadedFile.path() + "/" + libopenh264_filename;;
@@ -146,6 +146,11 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
 */    
 }
 
+
+void QvkCiscoOpenh264Controller::slot_showAvalaibleCodecs( QString value )
+{
+    qDebug() << "End of stream 2";
+}
 
 void QvkCiscoOpenh264Controller::slot_pushButtonCiscoLicense()
 {
