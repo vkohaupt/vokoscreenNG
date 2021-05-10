@@ -484,7 +484,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #ifdef Q_OS_WIN
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller( vkSettings.getFileName(), ui );
     connect( vkCiscoOpenh264Controller,SIGNAL( signal_read_in_available_codecs() ), this, SLOT( VK_gst_formatVideoAudoicodec_available() ) );
-    Q_UNUSED(vkCiscoOpenh264Controller);
+    vkCiscoOpenh264Controller->init();
 #endif
 #ifdef Q_OS_LINUX
     ui->line_cisco->hide();

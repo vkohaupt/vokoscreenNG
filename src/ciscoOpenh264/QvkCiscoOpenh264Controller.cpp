@@ -29,13 +29,20 @@
 #include "global.h"
 #include <gst/gst.h>
 
-
 QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller( QString vk_pathWithSettingsFilename, Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
-
     pathWithSettingsFilename = vk_pathWithSettingsFilename;
+}
 
+
+QvkCiscoOpenh264Controller::~QvkCiscoOpenh264Controller()
+{
+}
+
+
+void QvkCiscoOpenh264Controller::init()
+{
 #ifdef Q_OS_WIN
     libopenh264_filename = "libopenh264.dll";
     QString downloadFile = "http://ciscobinary.openh264.org/openh264-2.1.1-win32.dll.bz2";
@@ -58,11 +65,6 @@ QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller( QString vk_pathWithSetti
         connect( vkCiscoOpenh264Downloader, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_deCompress( QString ) ) );
         vkCiscoOpenh264Downloader->doDownload( downloadFile );
     }
-}
-
-
-QvkCiscoOpenh264Controller::~QvkCiscoOpenh264Controller()
-{
 }
 
 

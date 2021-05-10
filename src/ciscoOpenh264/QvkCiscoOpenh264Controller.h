@@ -34,6 +34,7 @@ class QvkCiscoOpenh264Controller: public QObject
 public:
     QvkCiscoOpenh264Controller( QString pathWithSettingsFilename , Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkCiscoOpenh264Controller();
+    void init();
 
     
 public slots:
