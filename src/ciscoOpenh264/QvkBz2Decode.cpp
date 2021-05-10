@@ -122,7 +122,7 @@ void QvkBz2Decode::start_encoding( QString inputFile, QString outpuFile )
     g_main_loop_run( loop );
 
     // Out of the main loop, clean up nicely
-    qDebug().noquote() << global::nameOutput << "[void QvkBz2Decode::start_encoding]" << "Returned from loop, Gstreamer go in state GST_STATE_NULL";
+    qDebug().noquote() << global::nameOutput << "[QvkBz2Decode::start_encoding]" << "Returned from loop, Gstreamer go in state GST_STATE_NULL";
     gst_element_set_state( pipeline, GST_STATE_NULL );
 
     qDebug().noquote() << global::nameOutput << "[QvkBz2Decode::start_encoding]" << "Deleting pipeline";
