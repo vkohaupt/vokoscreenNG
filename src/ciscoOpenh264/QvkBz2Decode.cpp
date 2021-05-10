@@ -44,7 +44,6 @@ gboolean QvkBz2Decode::func( GstBus *bus, GstMessage *msg, gpointer data )
     {
     case GST_MESSAGE_EOS:
         qDebug().noquote() << global::nameOutput << "[QvkBz2Decode::func]" << "End of stream";
-        global::lineEditCiscoOpenh264->setText( "End of stream die zweite" );
         g_main_loop_quit (loop);
         break;
 
@@ -130,5 +129,7 @@ void QvkBz2Decode::start_encoding( QString inputFile, QString outpuFile )
     gst_object_unref( GST_OBJECT ( pipeline ) );
     g_source_remove( bus_watch_id );
     g_main_loop_unref( loop );
+
+    global::lineEditCiscoOpenh264->setText( "End of stream die zweite" );
 }
 
