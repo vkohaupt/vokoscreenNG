@@ -152,6 +152,7 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
 void QvkCiscoOpenh264Controller::slot_showAvalaibleCodecs( QString value )
 {
     qDebug() << "End of stream 2";
+    emit signal_read_in_available_codecs();
 }
 
 void QvkCiscoOpenh264Controller::slot_pushButtonCiscoLicense()

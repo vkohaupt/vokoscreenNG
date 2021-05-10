@@ -43,7 +43,7 @@ gboolean QvkBz2Decode::func( GstBus *bus, GstMessage *msg, gpointer data )
     switch ( GST_MESSAGE_TYPE( msg ) )
     {
     case GST_MESSAGE_EOS:
-        qDebug() << "End of stream";
+        qDebug() << "gboolean QvkBz2Decode::func" << "End of stream";
         global::lineEditCiscoOpenh264->setText( "End of stream die zweite" );
         g_main_loop_quit (loop);
         break;
@@ -93,8 +93,8 @@ void QvkBz2Decode::start_encoding( QString inputFile, QString outpuFile )
 
     if ( !pipeline || !source || !decoder || !sink )
     {
-        g_printerr( "One element could not be created. Exiting.\n" );
-        //return -1;
+        qDebug() << "[void QvkBz2Decode::start_encoding]" << "One element could not be created. Exiting.";
+        return;
     }
 
     // we set the input filename to the source element
@@ -115,18 +115,18 @@ void QvkBz2Decode::start_encoding( QString inputFile, QString outpuFile )
     gst_element_link_many( source, decoder, sink, NULL );
 
     // Set the pipeline to "playing" state
-    qDebug() << "Now decode file:" << inFile;;
+    qDebug() << "[void QvkBz2Decode::start_encoding]" << "Now decode file:" << inFile;;
     gst_element_set_state( pipeline, GST_STATE_PLAYING );
 
     // Start loop
-    qDebug() << "Running loop";
+    qDebug() << "[void QvkBz2Decode::start_encoding]" << "Running loop";
     g_main_loop_run( loop );
 
     // Out of the main loop, clean up nicely
-    qDebug() << "Returned from loop, Gstreamer go in state GST_STATE_NULL";
+    qDebug() << "[void QvkBz2Decode::start_encoding]" << "Returned from loop, Gstreamer go in state GST_STATE_NULL";
     gst_element_set_state( pipeline, GST_STATE_NULL );
 
-    qDebug() << "Deleting pipeline";
+    qDebug() << "[void QvkBz2Decode::start_encoding]" << "Deleting pipeline";
     gst_object_unref( GST_OBJECT ( pipeline ) );
     g_source_remove( bus_watch_id );
     g_main_loop_unref( loop );
