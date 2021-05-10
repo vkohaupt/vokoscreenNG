@@ -455,7 +455,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     VK_Check_is_Format_available();
     VK_set_available_Formats_in_Combox();
 
-    VK_gst_formatVideoAudoicodec_available();
+    slot_gst_formatVideoAudoicodec_available();
     VK_gst_Elements_available();
 
     QvkScreenManager *screenManager = new QvkScreenManager();
@@ -483,7 +483,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 #ifdef Q_OS_WIN
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller( vkSettings.getFileName(), ui );
-    connect( vkCiscoOpenh264Controller,SIGNAL( signal_read_in_available_codecs() ), this, SLOT( VK_gst_formatVideoAudoicodec_available() ) );
+    connect( vkCiscoOpenh264Controller,SIGNAL( signal_read_in_available_codecs() ), this, SLOT( slot_gst_formatVideoAudoicodec_available() ) );
     vkCiscoOpenh264Controller->init();
 #endif
 #ifdef Q_OS_LINUX
@@ -1067,7 +1067,7 @@ void QvkMainWindow::VK_gst_Elements_available()
 
 
 // Check format, video and audoicodec on tab availability
-void QvkMainWindow::VK_gst_formatVideoAudoicodec_available()
+void QvkMainWindow::slot_gst_formatVideoAudoicodec_available()
 {
     // Delete all QLabel
     QList<QLabel *> listLabel = ui->scrollAreaWidgetContentsAvailable->findChildren<QLabel *>();
