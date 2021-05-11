@@ -119,11 +119,8 @@ int main(int argc, char *argv[])
     qputenv( "PATH", pathPathByteArray );
 
     QByteArray pathRegistryByteArray;
-    pathPathByteArray.append( programPath );
-    pathPathByteArray.append( ";" );
-    pathPathByteArray.append( pathProfile );
+    pathRegistryByteArray.append( pathProfile );
     qputenv( "GST_REGISTRY_1_0", pathRegistryByteArray );
-
 /*
     //Environment variables for debugging
     qputenv( "GST_DEBUG", "4");

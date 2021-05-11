@@ -250,6 +250,20 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << "CompositingManager running:" << QX11Info::isCompositingManagerRunning();
 #endif
     qDebug();
+#ifdef Q_OS_WIN
+    QByteArray GSTREAMER_1_0_ROOT_X86 = qgetenv( "GSTREAMER_1_0_ROOT_X86" );
+    qDebug().noquote() << global::nameOutput << "GSTREAMER_1_0_ROOT_X86:"<< GSTREAMER_1_0_ROOT_X86;
+
+    QByteArray GST_PLUGIN_PATH_1_0 = qgetenv( "GST_PLUGIN_PATH_1_0" );
+    qDebug().noquote() << global::nameOutput << "GST_PLUGIN_PATH_1_0:"<< GST_PLUGIN_PATH_1_0;
+
+    QByteArray PATH = qgetenv( "PATH" );
+    qDebug().noquote() << global::nameOutput << "PATH:"<< PATH;
+
+    QByteArray GST_REGISTRY_1_0 = qgetenv( "GST_REGISTRY_1_0" );
+    qDebug().noquote() << global::nameOutput << "GST_REGISTRY_1_0:"<< GST_REGISTRY_1_0;
+    qDebug();
+#endif
 
     vk_setCornerWidget( ui->tabWidgetScreencast );
 
