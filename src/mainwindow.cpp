@@ -1124,7 +1124,6 @@ void QvkMainWindow::slot_gst_formatVideoAudoicodec_available()
             else
             {
                 available = true;
-                gst_object_unref( factory );
             }
 
             if ( QString( listElements.at( x ) ).section( ":", 0, 0 ) == "muxer" )
@@ -1168,6 +1167,8 @@ void QvkMainWindow::slot_gst_formatVideoAudoicodec_available()
                     {
                         QIcon picture( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
                         icon = picture;
+                        gst_object_unref( source );
+                        gst_object_unref( factory );
                     }
                 }
                 else
