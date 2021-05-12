@@ -100,56 +100,15 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
     QFileInfo fileInfoDownloadedFile( pathWithDownloadedFile );
     
     QvkBz2Decode *vkBz2Decode = new QvkBz2Decode;
-    connect( global::lineEditCiscoOpenh264, SIGNAL( textChanged( QString ) ), this, SLOT( slot_showAvalaibleCodecs( QString ) ) );
+    connect( vkBz2Decode, SIGNAL( signal_file_is_unzipped() ), this, SLOT( slot_showAvalaibleCodecs() ) );
 
     QString inputFile  = pathWithDownloadedFile;
     QString outputFile = fileInfoDownloadedFile.path() + "/" + libopenh264_filename;;
     vkBz2Decode->start_encoding( inputFile, outputFile );
-    
-    
-    
-/*    
-    QFileInfo fileInfoDownloadedFile( pathWithDownloadedFile );
-
-    QStringList stringList;
-    stringList << "filesrc location=\"" + pathWithDownloadedFile + "\"";
-    stringList << "bz2dec";
-    stringList << "filesink location=\"" + fileInfoDownloadedFile.path() + "/" + libopenh264_filename + "\"";
-    QString string = stringList.join( " ! " );
-    qDebug().noquote() << global::nameOutput << "[h264]" << string;
-
-    QByteArray byteArray = string.toUtf8();
-    const gchar *line = byteArray.constData();
-    GError *error = Q_NULLPTR;
-    GstElement *pipeline = gst_parse_launch( line, &error );
-
-    // Start playing
-    GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
-    if ( ret == GST_STATE_CHANGE_FAILURE )
-    {
-        qDebug().noquote() << global::nameOutput << "[h264]" << "Unable to set the pipeline to the playing state.";
-        gst_object_unref( pipeline );
-        return;
-    }
-
-    // The rest of this code is a, speed workaround. We do this later better.
-    int i = 0;
-    while ( i < 3000 )
-    {
-        i = i + 50;
-        QCoreApplication::processEvents( QEventLoop::AllEvents );
-        QThread::msleep( 100 );
-    }
-
-    ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
-    ret = gst_element_set_state( pipeline, GST_STATE_READY );
-    ret = gst_element_set_state( pipeline, GST_STATE_NULL );
-    gst_object_unref( pipeline );
-*/    
 }
 
 
-void QvkCiscoOpenh264Controller::slot_showAvalaibleCodecs( QString value )
+void QvkCiscoOpenh264Controller::slot_showAvalaibleCodecs()
 {
     qDebug().noquote() << global::nameOutput << "[QvkCiscoOpenh264Controller::slot_showAvalaibleCodecs]" << "emit signal_read_in_available_codecs";
     emit signal_read_in_available_codecs();

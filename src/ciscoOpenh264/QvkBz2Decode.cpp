@@ -130,6 +130,6 @@ void QvkBz2Decode::start_encoding( QString inputFile, QString outpuFile )
     g_source_remove( bus_watch_id );
     g_main_loop_unref( loop );
 
-    global::lineEditCiscoOpenh264->setText( "End of stream die zweite" );
+    emit signal_file_is_unzipped();
 }
 

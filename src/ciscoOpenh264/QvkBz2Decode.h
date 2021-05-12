@@ -52,6 +52,8 @@ protected:
   
   
 signals:
+    void signal_file_is_unzipped();
+
 
 };
 

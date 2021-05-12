@@ -29,5 +29,4 @@ namespace global
     extern QString nameOutput;
     extern QString version;
     extern QLineEdit *lineEditAudioPlug;
-    extern QLineEdit *lineEditCiscoOpenh264;
 }
