@@ -154,22 +154,6 @@ int main(int argc, char *argv[])
     }
 #endif
 
-/*
-#ifdef Q_OS_LINUX
-    if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "x11" )
-    {
-        QvkMainWindow *w = new QvkMainWindow;
-        w->show();
-    }
-    
-    if ( qgetenv( "XDG_SESSION_TYPE" ).toLower() == "wayland" )
-    {
-        Qvk_wl_MainWindow *wl = new Qvk_wl_MainWindow;
-        wl->show();
-    }
-#endif
-*/
-
 #ifdef Q_OS_WIN
     QvkMainWindow *w = new QvkMainWindow;
     w->show();
