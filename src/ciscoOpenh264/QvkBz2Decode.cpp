@@ -27,7 +27,6 @@
 
 QvkBz2Decode::QvkBz2Decode()
 {
-    global::lineEditCiscoOpenh264 = new QLineEdit;
 }
 
 QvkBz2Decode::~QvkBz2Decode()
