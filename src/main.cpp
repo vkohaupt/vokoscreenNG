@@ -120,6 +120,7 @@ int main(int argc, char *argv[])
 
     QByteArray pathRegistryByteArray;
     pathRegistryByteArray.append( pathProfile );
+    pathRegistryByteArray.append( "/gstreamer.registry" );
     qputenv( "GST_REGISTRY_1_0", pathRegistryByteArray );
 /*
     //Environment variables for debugging
