@@ -55,6 +55,7 @@ class QvkMainWindow : public QMainWindow
 public:
     explicit QvkMainWindow( QWidget *parent = Q_NULLPTR );
     ~QvkMainWindow();
+    static int const EXIT_CODE_REBOOT;
     Ui::formMainWindow *ui;
     QvkWinInfo *vkWinInfo;
     QvkCountdown *vkCountdown;

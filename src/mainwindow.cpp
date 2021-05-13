@@ -51,6 +51,8 @@
   #include <pulse/pulseaudio.h>
 #endif
 
+int const QvkMainWindow::EXIT_CODE_REBOOT = -123456789;
+
 QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                                 ui(new Ui::formMainWindow),
                                                 vkWinInfo(new QvkWinInfo),
