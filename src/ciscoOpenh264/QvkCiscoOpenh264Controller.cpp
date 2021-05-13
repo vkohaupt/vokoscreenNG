@@ -78,7 +78,6 @@ void QvkCiscoOpenh264Controller::slot_cisco_on( bool )
         if ( file_libopenh264.exists( ) )
         {
             ui->comboBoxVideoCodec->insertItem( 0, "openh264", "openh264enc" );
-            emit signal_read_in_available_codecs();
         }
     }
 }
@@ -90,7 +89,6 @@ void QvkCiscoOpenh264Controller::slot_cisco_off( bool )
     if ( index > -1 )
     {
         ui->comboBoxVideoCodec->removeItem( index );
-        emit signal_read_in_available_codecs();
     }
 }
 
@@ -100,7 +98,7 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
     QFileInfo fileInfoDownloadedFile( pathWithDownloadedFile );
     
     QvkBz2Decode *vkBz2Decode = new QvkBz2Decode;
-    connect( vkBz2Decode, SIGNAL( signal_file_is_unzipped() ), this, SLOT( slot_showAvalaibleCodecs() ) );
+    connect( vkBz2Decode, SIGNAL( signal_file_is_unzipped() ), this, SLOT( slot_reboot() ) );
 
     QString inputFile  = pathWithDownloadedFile;
     QString outputFile = fileInfoDownloadedFile.path() + "/" + libopenh264_filename;;
@@ -108,10 +106,10 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
 }
 
 
-void QvkCiscoOpenh264Controller::slot_showAvalaibleCodecs()
+void QvkCiscoOpenh264Controller::slot_reboot()
 {
     qDebug().noquote() << global::nameOutput << "[QvkCiscoOpenh264Controller::slot_showAvalaibleCodecs]" << "emit signal_read_in_available_codecs";
-    emit signal_read_in_available_codecs();
+    emit signal_reboot();
 }
 
 

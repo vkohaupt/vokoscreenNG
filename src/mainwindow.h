@@ -136,6 +136,7 @@ private:
 
 
 private slots:
+    void slot_reboot();
     void slot_preStart();
     void slot_Start();
     void slot_preStop();

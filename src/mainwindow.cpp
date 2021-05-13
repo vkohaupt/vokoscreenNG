@@ -499,7 +499,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 #ifdef Q_OS_WIN
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller( vkSettings.getFileName(), ui );
-    connect( vkCiscoOpenh264Controller,SIGNAL( signal_read_in_available_codecs() ), this, SLOT( slot_gst_formatVideoAudoicodec_available() ) );
+    connect( vkCiscoOpenh264Controller, SIGNAL( signal_read_in_available_codecs() ), this, SLOT( slot_gst_formatVideoAudoicodec_available() ) );
+    connect( vkCiscoOpenh264Controller, SIGNAL( signal_reboot() ), this, SLOT( slot_reboot() ) );
     vkCiscoOpenh264Controller->init();
 #endif
 #ifdef Q_OS_LINUX
@@ -528,6 +529,12 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
+}
+
+
+void QvkMainWindow::slot_reboot()
+{
+    qApp->exit( EXIT_CODE_REBOOT );
 }
 
 

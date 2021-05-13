@@ -48,7 +48,7 @@ private:
 
 private slots:
     void slot_deCompress( QString string );
-    void slot_showAvalaibleCodecs();
+    void slot_reboot();
     void slot_pushButtonCiscoLicense();
     void slot_cisco_on( bool );
     void slot_cisco_off( bool );
@@ -58,7 +58,7 @@ protected:
   
   
 signals:
-    void signal_read_in_available_codecs();
+    void signal_reboot();
 
 };
 
