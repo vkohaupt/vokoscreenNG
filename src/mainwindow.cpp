@@ -29,9 +29,6 @@
 #include "global.h"
 #include "QvkScreenManager.h"
 #include "QvkLicenses.h"
-#ifdef Q_OS_WIN
-  #include "QvkCiscoOpenh264Controller.h"
-#endif
 
 #include <QDebug>
 #include <QDateTime>
@@ -498,9 +495,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 
 #ifdef Q_OS_WIN
-    QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller( vkSettings.getFileName(), ui );
-    connect( vkCiscoOpenh264Controller, SIGNAL( signal_read_in_available_codecs() ), this, SLOT( slot_gst_formatVideoAudoicodec_available() ) );
-    connect( vkCiscoOpenh264Controller, SIGNAL( signal_reboot() ), this, SLOT( slot_reboot() ) );
+    vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller( vkSettings.getFileName(), ui );
     vkCiscoOpenh264Controller->init();
 #endif
 #ifdef Q_OS_LINUX
@@ -551,14 +546,21 @@ void QvkMainWindow::slot_setMaxFPS( int index )
 void QvkMainWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
-    vkSettings.saveAll( ui, this, false );
-    vkSettings.saveAreaScreencast( vkRegionChoise->getXRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
-                                   vkRegionChoise->getYRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
-                                   vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
-                                   vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
-    vkSettings.saveCamera( vkCameraController->cameraWindow->geometry().x(), vkCameraController->cameraWindow->geometry().y() );
-    vkSettings.saveSystrayAlternative( vkSystrayAlternative->x(), vkSystrayAlternative->y() );
-    vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile );
+#ifdef Q_OS_WIN
+    if ( vkCiscoOpenh264Controller->isShowCiscoFinishDialog == false )
+    {
+#endif
+        vkSettings.saveAll( ui, this, false );
+        vkSettings.saveAreaScreencast( vkRegionChoise->getXRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
+                                       vkRegionChoise->getYRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
+                                       vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
+                                       vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
+        vkSettings.saveCamera( vkCameraController->cameraWindow->geometry().x(), vkCameraController->cameraWindow->geometry().y() );
+        vkSettings.saveSystrayAlternative( vkSystrayAlternative->x(), vkSystrayAlternative->y() );
+        vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile );
+#ifdef Q_OS_WIN
+    }
+#endif
     emit signal_close();
     emit signal_close( false );
 }

@@ -35,6 +35,7 @@ public:
     QvkCiscoOpenh264Controller( QString pathWithSettingsFilename , Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkCiscoOpenh264Controller();
     void init();
+    bool isShowCiscoFinishDialog = false;
 
     
 public slots:
@@ -48,7 +49,7 @@ private:
 
 private slots:
     void slot_deCompress( QString string );
-    void slot_reboot();
+    void slot_showCiscoFinishDialog();
     void slot_pushButtonCiscoLicense();
     void slot_cisco_on( bool );
     void slot_cisco_off( bool );
@@ -59,6 +60,7 @@ protected:
   
 signals:
     void signal_reboot();
+    void signal_ciscofile_now_downloded( bool );
 
 };
 

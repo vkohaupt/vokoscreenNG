@@ -37,6 +37,9 @@
 #include "QvkSpezialSlider.h"
 #include "QvkSystrayAlternative.h"
 #include "QvkAudioController.h"
+#ifdef Q_OS_WIN
+  #include "QvkCiscoOpenh264Controller.h"
+#endif
 
 #include <QMainWindow>
 #include <QFileSystemWatcher>
@@ -133,6 +136,10 @@ private:
     QString Pipeline_structured_output( QString pipeline );
 
     QSoundEffect *soundEffect;
+
+#ifdef Q_OS_WIN
+    QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller;
+#endif
 
 
 private slots:

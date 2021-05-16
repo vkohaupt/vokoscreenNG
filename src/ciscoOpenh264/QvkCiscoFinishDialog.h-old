@@ -1,0 +1,22 @@
+#ifndef QVKCISCOFINISHDIALOG_H
+#define QVKCISCOFINISHDIALOG_H
+
+#include <QDialog>
+
+namespace Ui {
+class QvkCiscoFinishDialog;
+}
+
+class QvkCiscoFinishDialog : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit QvkCiscoFinishDialog(QWidget *parent = nullptr);
+    ~QvkCiscoFinishDialog();
+
+private:
+    Ui::QvkCiscoFinishDialog *ui;
+};
+
+#endif // QVKCISCOFINISHDIALOG_H

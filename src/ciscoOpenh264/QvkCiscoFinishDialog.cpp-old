@@ -1,0 +1,15 @@
+#include "QvkCiscoFinishDialog.h"
+#include "ui_QvkCiscoFinishDialog.h"
+#include "global.h"
+
+QvkCiscoFinishDialog::QvkCiscoFinishDialog(QWidget *parent) : QDialog(parent), ui(new Ui::QvkCiscoFinishDialog)
+{
+    ui->setupUi(this);
+
+    setWindowTitle( global::name + " " + global::version );
+}
+
+QvkCiscoFinishDialog::~QvkCiscoFinishDialog()
+{
+    delete ui;
+}

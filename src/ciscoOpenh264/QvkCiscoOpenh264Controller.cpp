@@ -27,6 +27,7 @@
 #include "QvkCiscoOpenh264Downloader.h"
 #include "QvkBz2Decode.h"
 #include "global.h"
+#include "QvkCiscoFinishDialog.h"
 #include <gst/gst.h>
 
 QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller( QString vk_pathWithSettingsFilename, Ui_formMainWindow *ui_mainwindow )
@@ -98,7 +99,7 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
     QFileInfo fileInfoDownloadedFile( pathWithDownloadedFile );
     
     QvkBz2Decode *vkBz2Decode = new QvkBz2Decode;
-    connect( vkBz2Decode, SIGNAL( signal_file_is_unzipped() ), this, SLOT( slot_reboot() ) );
+    connect( vkBz2Decode, SIGNAL( signal_file_is_unzipped() ), this, SLOT( slot_showCiscoFinishDialog() ) );
 
     QString inputFile  = pathWithDownloadedFile;
     QString outputFile = fileInfoDownloadedFile.path() + "/" + libopenh264_filename;;
@@ -106,10 +107,12 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
 }
 
 
-void QvkCiscoOpenh264Controller::slot_reboot()
+void QvkCiscoOpenh264Controller::slot_showCiscoFinishDialog()
 {
-    qDebug().noquote() << global::nameOutput << "[QvkCiscoOpenh264Controller::slot_showAvalaibleCodecs]" << "emit signal_read_in_available_codecs";
-    emit signal_reboot();
+    QvkCiscoFinishDialog *vkCiscoFinishDialog = new QvkCiscoFinishDialog;
+    ui->tabWidgetSideBar->hide();
+    ui->verticalLayoutCentralWidget->insertWidget( 0, vkCiscoFinishDialog );
+    isShowCiscoFinishDialog = true;
 }
 
 
@@ -120,7 +123,7 @@ void QvkCiscoOpenh264Controller::slot_pushButtonCiscoLicense()
    QTextStream textStream( &file );
 
    QDialog *dialog = new QDialog();
-   // dialog->setWindowState( Qt::WindowContextHelpButtonHint ); // Entfernt das Fragezeichen in der Titelzeile aber erst ab QT 5.10
+   // dialog->setWindowState( Qt::WindowContextHelpButtonHint ); // Entfernt das Fragezeichen in der Titelzeile aber erst ab Qt 5.10
    dialog->resize( 600, 600 );
    dialog->setWindowTitle( "Cisco licence" );
 
