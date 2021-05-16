@@ -121,6 +121,7 @@ void QvkCiscoOpenh264Controller::slot_pushButtonCiscoLicense()
    QFile file( ":/ciscoOpenh264/BINARY_LICENSE.txt" );
    file.open( QIODevice::ReadOnly );
    QTextStream textStream( &file );
+   textStream.setCodec( "UTF-8" );
 
    QDialog *dialog = new QDialog();
    // dialog->setWindowState( Qt::WindowContextHelpButtonHint ); // Entfernt das Fragezeichen in der Titelzeile aber erst ab Qt 5.10
