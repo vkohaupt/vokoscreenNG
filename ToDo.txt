@@ -25,11 +25,6 @@ Kamera:
 Timer:
 --Die Usability ist nicht gut, Timer starten kann als "starte in" und "starte um" interpretiert werden.
 
-openh264:
---Das Binäry sollte in Zukunft vom cisco Server direkt heruntergeladen werden.
---Desweiteren muß der User das Binäry aktivieren und deaktivieren können.
---Die Funktionsweise sollte wie im Firefox sein.
-
 Audio Windows:
 --Zur Zeit werden die Audiogeräte in Form checkboxAudioDeviece-0=true abgespeichert.
 Um eine Unterscheidung zwischen Directsound und WASAPI zu haben sollte es evtl. so aussehen
