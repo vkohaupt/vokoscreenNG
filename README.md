@@ -12,6 +12,8 @@ You can translate to anytime, your translation will be included in the next bugf
 Please translate only at Transifex, it is very easy.
 https://www.transifex.com/vkohaupt/vokoscreen/
 
+### Installer
+Windows and Linux installation routines are not provided, because each platform, installer and package manager has its own special features. That means make-install, metadata, desktop files, icons, manpage, logo must be create and provided itself. All the images and logos that come with vokoscreenNG are free. You can be change in size itself be used for your own installer or package manager.
 
 ## Code Contributions
 If you want to contribute code, please ask beforehand whether your idea finds harmony. Your source code must be in separate files and published under the MIT-License.
@@ -40,12 +42,6 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 
 
 ## Linux
-
-### Note
-Since every distribution has its own characteristics, a make install is not supported.
-The integration into the distribution must be carried out by each distribution itself.
-The same applies to metadata.
-
 ### Run-time requirements
 * Qt5 >= 5.9.4
 * pulseaudio
