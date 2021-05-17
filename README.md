@@ -12,7 +12,7 @@ You can translate to anytime, your translation will be included in the next bugf
 Please translate only at Transifex, it is very easy.
 https://www.transifex.com/vkohaupt/vokoscreen/
 
-### Installer
+## Installer
 Windows and Linux installation routines are not provided, because each platform, installer and package manager has its own special features. That means make-install, metadata, desktop files, icons, manpage, logo must be create and provided itself. All the images and logos that come with vokoscreenNG are free. You can be change in size itself be used for your own installer or package manager.
 
 ## Code Contributions
