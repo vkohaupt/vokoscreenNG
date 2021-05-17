@@ -29,8 +29,12 @@
 #include <QMessageBox>
 #include <QDebug>
 
-QvkInformation::QvkInformation( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, QvkSpezialSlider *slider_count_down, QvkSpezialSlider *slider_Second_Wait_Before_Recording )
+QvkInformation::QvkInformation( QvkMainWindow *vkMainWindow,
+                                Ui_formMainWindow *ui_mainwindow,
+                                QvkSpezialSlider *slider_count_down,
+                                QvkSpezialSlider *slider_Second_Wait_Before_Recording )
 {
+    mainWindow = vkMainWindow;
     ui = ui_mainwindow;
     sliderCountDown = slider_count_down;
     sliderSecondWaitBeforeRecording = slider_Second_Wait_Before_Recording;
@@ -63,15 +67,48 @@ QvkInformation::QvkInformation( QMainWindow *mainWindow, Ui_formMainWindow *ui_m
     connect( ui->pushButtonPause,    SIGNAL( clicked( bool ) ), timerRecord, SLOT( stop() ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), timerRecord, SLOT( start() ) );
 
+    // Update
     ui->label_Upate_tab_1->clear();
     ui->label_Upate_tab_4->clear();
     connect( &version, SIGNAL( signal_newVersionAvailable( QString ) ), this, SLOT( slot_newVersionAvailable( QString ) ) );
     connect( ui->checkBoxLookForUpdates, SIGNAL( toggled( bool ) ), &version, SLOT( slot_doDownload( bool ) ) );
+
+    // Frames, Format, Codecs
+    connect( ui->comboBoxFormat,       SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_Format( QString ) ) );
+    connect( ui->comboBoxVideoCodec,   SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_Videocodec( QString ) ) );
+    connect( ui->comboBoxAudioCodec,   SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_Audiocodec( QString ) ) );
+    connect( mainWindow->sliderFrames, SIGNAL( valueChanged( int ) ),           this, SLOT( slot_Frames( int ) ) );
+
 }
 
 
 QvkInformation::~QvkInformation()
 {
+}
+
+
+void QvkInformation::slot_Format( QString value )
+{
+    ui->labelInfoFormat->setText( value );
+    ui->labelInfoFrames->setText( QString::number( mainWindow->sliderFrames->value() ) );
+}
+
+
+void QvkInformation::slot_Videocodec( QString value )
+{
+    ui->labelInfoVideocodec->setText( value );
+}
+
+
+void QvkInformation::slot_Audiocodec( QString value )
+{
+    ui->labelInfoAudiocodec->setText( value );
+}
+
+
+void QvkInformation::slot_Frames( int value )
+{
+    ui->labelInfoFrames->setText( QString::number( value ) );
 }
 
 

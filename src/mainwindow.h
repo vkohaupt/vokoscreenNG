@@ -67,9 +67,11 @@ public:
     QvkSystray *vkSystray;
     QvkAudioController *vkAudioController;
 
+    QvkSpezialSlider *sliderFrames;
+
 private:
     QvkSpezialSlider *sliderScreencastCountDown;
-    QvkSpezialSlider *sliderFrames;
+//    QvkSpezialSlider *sliderFrames;
     QvkSpezialSlider *sliderX264;
     QvkSpezialSlider *sliderOpenh264;
     QvkSpezialSlider *sliderVp8;

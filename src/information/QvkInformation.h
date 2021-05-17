@@ -26,6 +26,7 @@
 #include "ui_formMainWindow.h"
 #include "QvkSpezialSlider.h"
 #include "QvkVersion.h"
+#include "mainwindow.h"
 
 #include <QWidget>
 
@@ -33,8 +34,9 @@ class QvkInformation: public QWidget
 { 
 Q_OBJECT
 public:
-  QvkInformation(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, QvkSpezialSlider *slider_count_down, QvkSpezialSlider *slider_Second_Wait_Before_Recording );
+  QvkInformation(QvkMainWindow *vkMainWindow, Ui_formMainWindow *ui_mainwindow, QvkSpezialSlider *slider_count_down, QvkSpezialSlider *slider_Second_Wait_Before_Recording );
   virtual ~QvkInformation();
+  QvkMainWindow *mainWindow;
 
 
 public slots:
@@ -52,6 +54,11 @@ private slots:
   void slot_summedTimeAfterPause();
 
   void slot_newVersionAvailable( QString update );
+
+  void slot_Format( QString value );
+  void slot_Videocodec( QString value );
+  void slot_Audiocodec( QString value );
+  void slot_Frames( int value );
 
 
 signals:
