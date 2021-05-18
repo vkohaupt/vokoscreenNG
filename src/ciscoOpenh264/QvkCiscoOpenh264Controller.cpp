@@ -28,6 +28,7 @@
 #include "QvkBz2Decode.h"
 #include "global.h"
 #include "QvkCiscoFinishDialog.h"
+#include "QvkCiscoWaitDialog.h"
 #include <gst/gst.h>
 
 QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller( QString vk_pathWithSettingsFilename, Ui_formMainWindow *ui_mainwindow )
@@ -41,7 +42,7 @@ QvkCiscoOpenh264Controller::~QvkCiscoOpenh264Controller()
 {
 }
 
-
+#include <QThread>
 void QvkCiscoOpenh264Controller::init()
 {
 #ifdef Q_OS_WIN
@@ -62,6 +63,11 @@ void QvkCiscoOpenh264Controller::init()
     QFileInfo fileInfo_libopenh264( fileInfo.path() + "/" + libopenh264_filename );
     if ( !fileInfo_libopenh264.exists() )
     {
+        QvkCiscoWaitDialog *vkCiscoWaitDialog = new QvkCiscoWaitDialog;
+        ui->tabWidgetSideBar->hide();
+        ui->verticalLayoutCentralWidget->insertWidget( 0, vkCiscoWaitDialog );
+        QThread::msleep( 3000 );
+
         QvkCiscoOpenh264Downloader *vkCiscoOpenh264Downloader = new QvkCiscoOpenh264Downloader( fileInfo.path() );
         connect( vkCiscoOpenh264Downloader, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_deCompress( QString ) ) );
         vkCiscoOpenh264Downloader->doDownload( downloadFile );
