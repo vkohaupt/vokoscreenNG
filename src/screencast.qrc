@@ -18,6 +18,7 @@
 <file>pictures/player/pause.png</file>
 <file>pictures/player/document-open.png</file>
 <file>pictures/screencast/supported-formats.png</file>
+<file>pictures/screencast/sandglass.png</file>
 <file>pictures/screencast/preferences-system.png</file>
 <file>pictures/screencast/format-codec.png</file>
 <file>pictures/screencast/microphone.png</file>
@@ -29,7 +30,6 @@
 <file>pictures/screencast/accept.png</file>
 <file>pictures/screencast/undo.png</file>
 <file>pictures/screencast/author.png</file>
-<file>pictures/screencast/sandglass.png</file>
 <file>pictures/space.png</file>
 <file>pictures/systray/systray.png</file>
 <file>pictures/systray/record.png</file>
@@ -58,12 +58,12 @@
 <file>pictures/screencast/format-codec.license</file>
 <file>pictures/screencast/microphone.license</file>
 <file>pictures/screencast/undo.license</file>
+<file>pictures/screencast/sandglass.license</file>
 <file>pictures/screencast/supported-formats.license</file>
 <file>pictures/screencast/timer.license</file>
 <file>pictures/screencast/strip.license</file>
 <file>pictures/screencast/missing.license</file>
 <file>pictures/screencast/help-about.license</file>
-<file>pictures/screencast/sandglass.license</file>
 <file>pictures/systray/systray.license</file>
 <file>pictures/systray/record.license</file>
 <file>pictures/template.license</file>

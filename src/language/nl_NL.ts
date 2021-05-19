@@ -178,11 +178,11 @@
     <name>Qvk_wl_MainWindow</name>
     <message>
         <source>Wayland desktop session detected</source>
-        <translation>Wayland-bureaubladsessie gedetecteerd</translation>
+        <translation>Wayland-werkomgevingssessie gedetecteerd</translation>
     </message>
     <message>
         <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Wayland wordt momenteel niet ondersteund - screencasts zullen een zwart scherm tonen. Log uit en start een X11-bureaubladsessie.</translation>
+        <translation>Wayland wordt momenteel niet ondersteund - screencasts zullen een zwart scherm tonen. Log uit en start een X11-werkomgevingssessie.</translation>
     </message>
 </context>
 <context>
@@ -292,7 +292,7 @@
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Cursor niet vastleggen</translation>
+        <translation>Cursor verbergen</translation>
     </message>
     <message>
         <source>Hour</source>

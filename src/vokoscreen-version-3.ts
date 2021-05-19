@@ -27,6 +27,20 @@
     </message>
 </context>
 <context>
+    <name>QvkCiscoFinishDialog</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QvkCiscoWaitDialog</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QvkCountdown</name>
     <message>
         <source>Countdown</source>
