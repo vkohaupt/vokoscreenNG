@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2021 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@freenet.de>
  *
@@ -28,7 +28,6 @@
 #include "QvkBz2Decode.h"
 #include "global.h"
 #include "QvkCiscoFinishDialog.h"
-#include "QvkCiscoWaitDialog.h"
 #include <gst/gst.h>
 
 QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller( QString vk_pathWithSettingsFilename, Ui_formMainWindow *ui_mainwindow )
@@ -63,15 +62,28 @@ void QvkCiscoOpenh264Controller::init()
     QFileInfo fileInfo_libopenh264( fileInfo.path() + "/" + libopenh264_filename );
     if ( !fileInfo_libopenh264.exists() )
     {
-        QvkCiscoWaitDialog *vkCiscoWaitDialog = new QvkCiscoWaitDialog;
+        vkCiscoWaitDialog = new QvkCiscoWaitDialog;
         ui->tabWidgetSideBar->hide();
         ui->verticalLayoutCentralWidget->insertWidget( 0, vkCiscoWaitDialog );
-        QThread::msleep( 3000 );
+        vkCiscoWaitDialog->show();
+        vkCiscoWaitDialog->repaint();
+        vkCiscoWaitDialog->update();
 
         QvkCiscoOpenh264Downloader *vkCiscoOpenh264Downloader = new QvkCiscoOpenh264Downloader( fileInfo.path() );
+        connect( vkCiscoOpenh264Downloader, SIGNAL( signal_failedDownload() ), this, SLOT( slot_closeWaitDialog() ) ); // new ------------------------------------
         connect( vkCiscoOpenh264Downloader, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_deCompress( QString ) ) );
         vkCiscoOpenh264Downloader->doDownload( downloadFile );
     }
+}
+
+
+// Wird nur aufgerufen wenn der Download fehlgeschlagen ist.
+void QvkCiscoOpenh264Controller::slot_closeWaitDialog()
+{
+    vkCiscoWaitDialog->close();
+    ui->tabWidgetSideBar->show();
+    ui->tabWidgetSideBar->repaint();
+    ui->tabWidgetSideBar->update();
 }
 
 
@@ -103,7 +115,7 @@ void QvkCiscoOpenh264Controller::slot_cisco_off( bool )
 void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile )
 {
     QFileInfo fileInfoDownloadedFile( pathWithDownloadedFile );
-    
+
     QvkBz2Decode *vkBz2Decode = new QvkBz2Decode;
     connect( vkBz2Decode, SIGNAL( signal_file_is_unzipped() ), this, SLOT( slot_showCiscoFinishDialog() ) );
 
@@ -115,6 +127,9 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
 
 void QvkCiscoOpenh264Controller::slot_showCiscoFinishDialog()
 {
+    QThread::msleep( 3000 );
+    vkCiscoWaitDialog->close();
+
     QvkCiscoFinishDialog *vkCiscoFinishDialog = new QvkCiscoFinishDialog;
     ui->tabWidgetSideBar->hide();
     ui->verticalLayoutCentralWidget->insertWidget( 0, vkCiscoFinishDialog );
@@ -148,4 +163,3 @@ void QvkCiscoOpenh264Controller::slot_pushButtonCiscoLicense()
 
    dialog->exec();
 }
-

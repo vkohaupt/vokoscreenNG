@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2021 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@freenet.de>
  *
@@ -26,6 +26,7 @@
 #include <QObject>
 
 #include "ui_formMainWindow.h"
+#include "QvkCiscoWaitDialog.h"
 
 class QvkCiscoOpenh264Controller: public QObject
 {
@@ -37,15 +38,15 @@ public:
     void init();
     bool isShowCiscoFinishDialog = false;
 
-    
+
 public slots:
 
-  
+
 private:
     Ui_formMainWindow *ui;
     QString libopenh264_filename;
     QString pathWithSettingsFilename;
-
+    QvkCiscoWaitDialog *vkCiscoWaitDialog;
 
 private slots:
     void slot_deCompress( QString string );
@@ -54,10 +55,12 @@ private slots:
     void slot_cisco_on( bool );
     void slot_cisco_off( bool );
 
+    void slot_closeWaitDialog(); // new -----------------------
+
 
 protected:
-  
-  
+
+
 signals:
     void signal_reboot();
     void signal_ciscofile_now_downloded( bool );

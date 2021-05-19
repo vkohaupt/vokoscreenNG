@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2021 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@freenet.de>
  *
@@ -55,6 +55,7 @@ private:
 
 signals:
     void signal_fileDownloaded( QString );
+    void signal_failedDownload(); // new --------------------------------------------------
 
 
 public slots:

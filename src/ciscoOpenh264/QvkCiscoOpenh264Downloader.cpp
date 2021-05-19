@@ -1,6 +1,6 @@
-/* vokoscreenNG - A desktop recorder
+﻿/* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2021 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@freenet.de>
  *
@@ -61,6 +61,7 @@ void QvkCiscoOpenh264Downloader::slot_downloadFinished( QNetworkReply *reply )
     if ( reply->error() )
     {
         qDebug().noquote() << global::nameOutput << "[h264] Download of" << reply->url().toString() << "failed:" << reply->errorString();
+        downloadOK = false; // new ----------------------------------------------------
     }
     else
     {
@@ -82,5 +83,12 @@ void QvkCiscoOpenh264Downloader::slot_downloadFinished( QNetworkReply *reply )
     if ( downloadOK == true )
     {
         emit signal_fileDownloaded( pathLocal + "/" + filename );
+    }
+
+
+    // new ---------------------------------------------------------
+    if ( downloadOK == false )
+    {
+        emit signal_failedDownload();
     }
 }
