@@ -496,6 +496,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 #ifdef Q_OS_WIN
     vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller( vkSettings.getFileName(), ui );
+    vkCiscoOpenh264Controller->showWaitDialog();
     vkCiscoOpenh264Controller->init();
 #endif
 #ifdef Q_OS_LINUX
