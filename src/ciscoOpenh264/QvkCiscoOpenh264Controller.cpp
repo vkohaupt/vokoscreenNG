@@ -22,6 +22,7 @@
 
 #include <QDir>
 #include <QDialog>
+#include <QThread>
 
 #include "QvkCiscoOpenh264Controller.h"
 #include "QvkCiscoOpenh264Downloader.h"
@@ -34,6 +35,15 @@ QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller( QString vk_pathWithSetti
 {
     ui = ui_mainwindow;
     pathWithSettingsFilename = vk_pathWithSettingsFilename;
+
+#ifdef Q_OS_WIN
+    libopenh264_filename = "libopenh264.dll";
+    downloadFile = "http://ciscobinary.openh264.org/openh264-2.1.1-win32.dll.bz2";
+#endif
+#ifdef Q_OS_LINUX
+    libopenh264_filename = "libopenh264.so";
+    downloadFile = "http://ciscobinary.openh264.org/libopenh264-2.1.1-linux64.6.so.bz2";
+#endif
 }
 
 
@@ -44,24 +54,20 @@ QvkCiscoOpenh264Controller::~QvkCiscoOpenh264Controller()
 
 void QvkCiscoOpenh264Controller::showWaitDialog()
 {
-    ui->tabWidgetSideBar->hide();
-    vkCiscoWaitDialog = new QvkCiscoWaitDialog;
-    ui->verticalLayoutCentralWidget->insertWidget( 0, vkCiscoWaitDialog );
-    vkCiscoWaitDialog->show();
+    QFileInfo fileInfo( pathWithSettingsFilename );
+    QFileInfo fileInfo_libopenh264( fileInfo.path() + "/" + libopenh264_filename );
+    if ( !fileInfo_libopenh264.exists() )
+    {
+        ui->tabWidgetSideBar->hide();
+        vkCiscoWaitDialog = new QvkCiscoWaitDialog;
+        ui->verticalLayoutCentralWidget->insertWidget( 0, vkCiscoWaitDialog );
+        vkCiscoWaitDialog->show();
+    }
 }
 
 
-#include <QThread>
 void QvkCiscoOpenh264Controller::init()
 {
-#ifdef Q_OS_WIN
-    libopenh264_filename = "libopenh264.dll";
-    QString downloadFile = "http://ciscobinary.openh264.org/openh264-2.1.1-win32.dll.bz2";
-#endif
-#ifdef Q_OS_LINUX
-    libopenh264_filename = "libopenh264.so";
-    QString downloadFile = "http://ciscobinary.openh264.org/libopenh264-2.1.1-linux64.6.so.bz2";
-#endif
 
     connect( ui->pushButtonCiscoLicense, SIGNAL( clicked( bool ) ), this, SLOT( slot_pushButtonCiscoLicense() ) );
 

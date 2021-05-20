@@ -48,6 +48,8 @@ private:
     QString libopenh264_filename;
     QString pathWithSettingsFilename;
     QvkCiscoWaitDialog *vkCiscoWaitDialog;
+    QString downloadFile;
+
 
 private slots:
     void slot_deCompress( QString string );
