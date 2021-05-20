@@ -61,7 +61,7 @@ void QvkCiscoOpenh264Downloader::slot_downloadFinished( QNetworkReply *reply )
     if ( reply->error() )
     {
         qDebug().noquote() << global::nameOutput << "[h264] Download of" << reply->url().toString() << "failed:" << reply->errorString();
-        downloadOK = false; // new ----------------------------------------------------
+        downloadOK = false;
     }
     else
     {
@@ -85,8 +85,6 @@ void QvkCiscoOpenh264Downloader::slot_downloadFinished( QNetworkReply *reply )
         emit signal_fileDownloaded( pathLocal + "/" + filename );
     }
 
-
-    // new ---------------------------------------------------------
     if ( downloadOK == false )
     {
         emit signal_failedDownload();

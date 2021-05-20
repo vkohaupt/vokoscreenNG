@@ -55,7 +55,7 @@ private:
 
 signals:
     void signal_fileDownloaded( QString );
-    void signal_failedDownload(); // new --------------------------------------------------
+    void signal_failedDownload();
 
 
 public slots:
