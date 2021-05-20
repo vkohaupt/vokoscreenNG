@@ -37,6 +37,7 @@ public:
     virtual ~QvkCiscoOpenh264Controller();
     void init();
     bool isShowCiscoFinishDialog = false;
+    void showWaitDialog();
 
 
 public slots:
@@ -54,8 +55,7 @@ private slots:
     void slot_pushButtonCiscoLicense();
     void slot_cisco_on( bool );
     void slot_cisco_off( bool );
-
-    void slot_closeWaitDialog(); // new -----------------------
+    void slot_closeWaitDialog();
 
 
 protected:

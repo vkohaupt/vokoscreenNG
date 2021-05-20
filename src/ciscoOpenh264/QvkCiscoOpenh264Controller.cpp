@@ -41,6 +41,16 @@ QvkCiscoOpenh264Controller::~QvkCiscoOpenh264Controller()
 {
 }
 
+
+void QvkCiscoOpenh264Controller::showWaitDialog()
+{
+    ui->tabWidgetSideBar->hide();
+    vkCiscoWaitDialog = new QvkCiscoWaitDialog;
+    ui->verticalLayoutCentralWidget->insertWidget( 0, vkCiscoWaitDialog );
+    vkCiscoWaitDialog->show();
+}
+
+
 #include <QThread>
 void QvkCiscoOpenh264Controller::init()
 {
@@ -62,15 +72,8 @@ void QvkCiscoOpenh264Controller::init()
     QFileInfo fileInfo_libopenh264( fileInfo.path() + "/" + libopenh264_filename );
     if ( !fileInfo_libopenh264.exists() )
     {
-        vkCiscoWaitDialog = new QvkCiscoWaitDialog;
-        ui->tabWidgetSideBar->hide();
-        ui->verticalLayoutCentralWidget->insertWidget( 0, vkCiscoWaitDialog );
-        vkCiscoWaitDialog->show();
-        vkCiscoWaitDialog->repaint();
-        vkCiscoWaitDialog->update();
-
         QvkCiscoOpenh264Downloader *vkCiscoOpenh264Downloader = new QvkCiscoOpenh264Downloader( fileInfo.path() );
-        connect( vkCiscoOpenh264Downloader, SIGNAL( signal_failedDownload() ), this, SLOT( slot_closeWaitDialog() ) ); // new ------------------------------------
+        connect( vkCiscoOpenh264Downloader, SIGNAL( signal_failedDownload() ), this, SLOT( slot_closeWaitDialog() ) );
         connect( vkCiscoOpenh264Downloader, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_deCompress( QString ) ) );
         vkCiscoOpenh264Downloader->doDownload( downloadFile );
     }
@@ -127,7 +130,13 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
 
 void QvkCiscoOpenh264Controller::slot_showCiscoFinishDialog()
 {
-    QThread::msleep( 3000 );
+    // Dieser Hack wird benötigt damit statt einem grauen Fenster der Waitdialog erscheint.
+    for ( int i = 0; i < 30; i++ )
+    {
+        QCoreApplication::processEvents();
+        QThread::msleep( 100 );
+    }
+
     vkCiscoWaitDialog->close();
 
     QvkCiscoFinishDialog *vkCiscoFinishDialog = new QvkCiscoFinishDialog;
@@ -163,3 +172,4 @@ void QvkCiscoOpenh264Controller::slot_pushButtonCiscoLicense()
 
    dialog->exec();
 }
+
