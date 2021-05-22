@@ -647,7 +647,7 @@ void QvkMainWindow::slot_videoCodecChanged( QString codec )
         ui->frameVideoCodecx264->setVisible( true );
     }
 
-    if ( codec == "openh264" )
+    if ( codec == "H.264" ) // openh264
     {
         ui->frameVideoCodecOpenh264->setVisible( true );
     }
@@ -1263,7 +1263,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "muxer:matroskamux:mkv"
                                     << "videomimetype:video/x-matroska"
                                     << "audiomimetype:audio/x-matroska"
-                                    << "videocodec:openh264enc:openh264"
+                                    << "videocodec:openh264enc:H.264"
                                 #ifdef Q_OS_LINUX
                                     << "videocodec:x264enc:x264"
                                 #endif
@@ -1287,7 +1287,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                      << "muxer:avimux:avi"
                                      << "videomimetype:video/x-msvideo"
                                      << "audiomimetype:audio/x-msvideo"
-                                     << "videocodec:openh264enc:openh264"
+                                     << "videocodec:openh264enc:H.264"
                                 #ifdef Q_OS_LINUX
                                      << "videocodec:x264enc:x264"
                                 #endif
@@ -1299,7 +1299,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "muxer:mp4mux:mp4"
                                     << "videomimetype:video/mp4"
                                     << "audiomimetype:audio/mpeg"
-                                    << "videocodec:openh264enc:openh264"
+                                    << "videocodec:openh264enc:H.264"
                                 #ifdef Q_OS_LINUX
                                     << "videocodec:x264enc:x264"
                                 #endif
@@ -1312,7 +1312,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "muxer:qtmux:mov"
                                     << "videomimetype:video/mp4"
                                     << "audiomimetype:audio/mpeg"
-                                    << "videocodec:openh264enc:openh264"
+                                    << "videocodec:openh264enc:H.264"
                                 #ifdef Q_OS_LINUX
                                     << "videocodec:x264enc:x264"
                                 #endif

@@ -98,14 +98,14 @@ void QvkCiscoOpenh264Controller::slot_closeWaitDialog()
 
 void QvkCiscoOpenh264Controller::slot_cisco_on( bool )
 {
-    int index = ui->comboBoxVideoCodec->findText( "openh264" );
+    int index = ui->comboBoxVideoCodec->findText( "H.264" );
     if ( index == -1 )
     {
         QFileInfo fileInfo( pathWithSettingsFilename );
         QFileInfo file_libopenh264( fileInfo.path() + "/" + libopenh264_filename );
         if ( file_libopenh264.exists( ) )
         {
-            ui->comboBoxVideoCodec->insertItem( 0, "openh264", "openh264enc" );
+            ui->comboBoxVideoCodec->insertItem( 0, "H.264", "openh264enc" );
         }
     }
 }
@@ -113,7 +113,7 @@ void QvkCiscoOpenh264Controller::slot_cisco_on( bool )
 
 void QvkCiscoOpenh264Controller::slot_cisco_off( bool )
 {
-    int index = ui->comboBoxVideoCodec->findText( "openh264" );
+    int index = ui->comboBoxVideoCodec->findText( "H.264" );
     if ( index > -1 )
     {
         ui->comboBoxVideoCodec->removeItem( index );
