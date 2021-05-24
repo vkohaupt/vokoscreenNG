@@ -96,6 +96,8 @@ int main(int argc, char *argv[])
 
         // Initialize GStreamer
         // https://developer.gnome.org/gstreamer/stable/gst-running.html
+// qmake options example:
+// DEFINES+=FOR_MY_LINUX_INSTALLER
 #if defined( Q_OS_WIN )
         QvkSettings vkSettings;
         QFileInfo dirPathProfile( vkSettings.getFileName() );
