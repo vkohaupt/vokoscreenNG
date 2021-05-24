@@ -96,7 +96,7 @@ int main(int argc, char *argv[])
 
         // Initialize GStreamer
         // https://developer.gnome.org/gstreamer/stable/gst-running.html
-#ifdef Q_OS_WIN
+#if defined( Q_OS_WIN )
         QvkSettings vkSettings;
         QFileInfo dirPathProfile( vkSettings.getFileName() );
         QString pathProfile = dirPathProfile.absolutePath();
@@ -124,13 +124,14 @@ int main(int argc, char *argv[])
         pathRegistryByteArray.append( pathProfile );
         pathRegistryByteArray.append( "/gstreamer.registry" );
         qputenv( "GST_REGISTRY_1_0", pathRegistryByteArray );
+
         /*
-    //Environment variables for debugging
-    qputenv( "GST_DEBUG", "4");
-    QByteArray envPathProfile;
-    envPathProfile.append( pathProfile.path() + "/GST_Error.txt" );
-    qputenv( "GST_DEBUG_FILE", envPathProfile );
-*/
+        //Environment variables for debugging
+        qputenv( "GST_DEBUG", "4");
+        QByteArray envPathProfile;
+        envPathProfile.append( pathProfile.path() + "/GST_Error.txt" );
+        qputenv( "GST_DEBUG_FILE", envPathProfile );
+        */
 #endif
 
         gst_init (&argc, &argv);
