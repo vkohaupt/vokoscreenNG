@@ -96,29 +96,42 @@ int main(int argc, char *argv[])
 
         // Initialize GStreamer
         // https://developer.gnome.org/gstreamer/stable/gst-running.html
+#ifdef Q_OS_LINUX
+        QString separator = ":";
+#endif
+#ifdef Q_OS_WIN
+        QString separator = ";";
+#endif
+
 // qmake options example:
 // DEFINES+=FOR_MY_LINUX_INSTALLER
-#if defined( Q_OS_WIN )
+#if defined( Q_OS_WIN ) || defined( FOR_MY_LINUX_INSTALLER )
         QvkSettings vkSettings;
         QFileInfo dirPathProfile( vkSettings.getFileName() );
         QString pathProfile = dirPathProfile.absolutePath();
         QString programPath = QDir::currentPath();
 
+        QByteArray systemByteArray;
+        systemByteArray.append( programPath );
+        systemByteArray.append( separator );
+        systemByteArray.append( pathProfile );
+        qputenv( "GST_PLUGIN_SYSTEM_PATH_1_0", systemByteArray );
+
         QByteArray programPathByteArray;
         programPathByteArray.append( programPath );
-        programPathByteArray.append( ";" );
+        programPathByteArray.append( separator );
         programPathByteArray.append( pathProfile );
         qputenv( "GSTREAMER_1_0_ROOT_X86", programPathByteArray );
 
         QByteArray pluginPathByteArray;
         pluginPathByteArray.append( programPath );
-        pluginPathByteArray.append( ";" );
+        pluginPathByteArray.append( separator );
         pluginPathByteArray.append( pathProfile );
         qputenv( "GST_PLUGIN_PATH_1_0", pluginPathByteArray );
 
         QByteArray pathPathByteArray;
         pathPathByteArray.append( programPath );
-        pathPathByteArray.append( ";" );
+        pathPathByteArray.append( separator );
         pathPathByteArray.append( pathProfile );
         qputenv( "PATH", pathPathByteArray );
 
@@ -126,7 +139,6 @@ int main(int argc, char *argv[])
         pathRegistryByteArray.append( pathProfile );
         pathRegistryByteArray.append( "/gstreamer.registry" );
         qputenv( "GST_REGISTRY_1_0", pathRegistryByteArray );
-
         /*
         //Environment variables for debugging
         qputenv( "GST_DEBUG", "4");
