@@ -21,12 +21,10 @@
  */
 
 #include <QString>
-#include <QLineEdit>
 
 namespace global
 {
     extern QString name;
     extern QString nameOutput;
     extern QString version;
-    extern QLineEdit *lineEditAudioPlug;
 }

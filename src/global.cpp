@@ -22,13 +22,11 @@
 
 #include "global.h"
 #include <QString>
-#include <QLineEdit>
 
 namespace global
 {
     QString name = "vokoscreenNG";
     QString nameOutput = "[" + name + "]";
-    QLineEdit *lineEditAudioPlug;
 
 #ifdef Q_OS_LINUX
     QString version = "3.1.0 pre alpha";
