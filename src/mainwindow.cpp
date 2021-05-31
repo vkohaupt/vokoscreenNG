@@ -29,6 +29,7 @@
 #include "global.h"
 #include "QvkScreenManager.h"
 #include "QvkLicenses.h"
+#include "QvkShowClick.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -478,7 +479,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // Area
     connect( screenManager, SIGNAL( signal_clear_widget() ),                          ui->comboBoxScreencastScreenArea, SLOT( clear() ) );
     connect( screenManager, SIGNAL( signal_screen_count_changed( QString, QString) ), this,                             SLOT( slot_screenCountChangedArea( QString, QString ) ) );
-    connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged( int) ),  vkRegionChoise, SLOT( slot_init() ) );
+    connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged( int) ),   vkRegionChoise, SLOT( slot_init() ) );
     screenManager->init();
 
     // *****************Begin Camera *********************************
@@ -487,6 +488,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vk_setCornerWidget( ui->tabWidgetCamera );
     // *****************End Camera ***********************************
 
+    // ***************** Begin showClick *****************************
+    QvkShowClick *showClick = new QvkShowClick();
+    showClick->init( ui );
+    // ***************** End showClick
 
     // *****************Begin Log *********************************
     vk_setCornerWidget( ui->tabWidgetLog );

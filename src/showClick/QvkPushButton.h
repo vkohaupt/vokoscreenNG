@@ -1,4 +1,4 @@
-/* vokoClick
+/* vokoscreenNG
  * Copyright (C) 2017-2021 Volker Kohaupt
  *
  * Author:
@@ -55,4 +55,4 @@ protected:
 
 };
 
-#endif // QvkAnimateWindow_H
+#endif
