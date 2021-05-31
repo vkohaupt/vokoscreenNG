@@ -74,6 +74,7 @@ QMAKE_LFLAGS += -Wl,--as-needed
 unix:CONFIG += link_pkgconfig
 unix:PKGCONFIG += gstreamer-1.0 libpulse wayland-client
 unix:LIBS += -lpulse-simple
+unix:LIBS += -lX11
 
 win32:RC_ICONS = vokoscreenNG.ico
 
@@ -99,7 +100,6 @@ include(settings/settings.pri)
 include(region/regionselection.pri)
 
 # winInfo
-unix:LIBS += -lX11
 include(winInfo/winInfo.pri)
 
 # countdown
@@ -163,3 +163,9 @@ win32:include(ciscoOpenh264/ciscoOpenh264.pri)
 # wayland
 unix:include(wayland/wayland.pri)
 unix:include(waylandRoutines/waylandRoutines.pri)
+
+#showClick
+include(showClick/showClick.pri)
+
+#spezialCheckBox
+include(spezialCheckBox/spezialCheckBox.pri)
