@@ -474,6 +474,14 @@
         <source>Log</source>
         <translation>Logg</translation>
     </message>
+    <message>
+        <source>Seite</source>
+        <translation>Sida</translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

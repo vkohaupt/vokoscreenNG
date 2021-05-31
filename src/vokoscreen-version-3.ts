@@ -476,14 +476,6 @@
         <source>Log</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Seite</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>...</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>license</name>

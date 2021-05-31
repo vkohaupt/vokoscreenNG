@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -2630,7 +2630,7 @@
       </widget>
       <widget class="QWidget" name="tabSidebarShowClick">
        <attribute name="title">
-        <string/>
+        <string notr="true"/>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_32">
         <item>
@@ -2638,7 +2638,7 @@
           <item row="0" column="3">
            <widget class="QPushButton" name="pushButton_darkCyan">
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
            </widget>
           </item>
@@ -2659,7 +2659,7 @@
                </size>
               </property>
               <property name="text">
-               <string/>
+               <string notr="true"/>
               </property>
               <property name="pixmap">
                <pixmap resource="screencast.qrc">:/pictures/showClick/transparenz.png</pixmap>
@@ -2677,7 +2677,7 @@
           <item row="1" column="3">
            <widget class="QPushButton" name="pushButton_darkMagenta">
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
            </widget>
           </item>
@@ -2690,7 +2690,7 @@
              </size>
             </property>
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
            </widget>
           </item>
@@ -2723,7 +2723,7 @@
                </size>
               </property>
               <property name="text">
-               <string/>
+               <string notr="true"/>
               </property>
               <property name="pixmap">
                <pixmap resource="screencast.qrc">:/pictures/showClick/sandglass.png</pixmap>
@@ -2744,40 +2744,44 @@
           <item row="2" column="0">
            <widget class="QPushButton" name="pushButton_green">
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
            </widget>
           </item>
           <item row="2" column="2">
            <widget class="QPushButton" name="pushButton_yellow">
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
            </widget>
           </item>
           <item row="1" column="2">
            <widget class="QPushButton" name="pushButton_magenta">
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
            </widget>
           </item>
           <item row="0" column="0">
            <widget class="QPushButton" name="pushButton_white">
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
            </widget>
           </item>
           <item row="3" column="2">
            <widget class="QPushButton" name="pushButton_gray">
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QPushButton" name="pushButton_darkRed"/>
+           <widget class="QPushButton" name="pushButton_darkRed">
+            <property name="text">
+             <string notr="true"/>
+            </property>
+           </widget>
           </item>
           <item row="0" column="1">
            <widget class="QPushButton" name="pushButton_black">
@@ -2785,7 +2789,7 @@
              <bool>false</bool>
             </property>
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
            </widget>
           </item>
@@ -2806,7 +2810,7 @@
                </size>
               </property>
               <property name="text">
-               <string/>
+               <string notr="true"/>
               </property>
               <property name="pixmap">
                <pixmap resource="screencast.qrc">:/pictures/showClick/cursor.png</pixmap>
@@ -2827,7 +2831,7 @@
           <item row="3" column="1">
            <widget class="QPushButton" name="pushButton_darkBlue">
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
            </widget>
           </item>
@@ -2840,7 +2844,7 @@
              </size>
             </property>
             <property name="text">
-             <string>...</string>
+             <string notr="true">...</string>
             </property>
             <property name="icon">
              <iconset>
@@ -2903,7 +2907,7 @@
           <item row="3" column="0">
            <widget class="QPushButton" name="pushButton_blue">
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
            </widget>
           </item>
@@ -2916,7 +2920,7 @@
              </size>
             </property>
             <property name="text">
-             <string>...</string>
+             <string notr="true">...</string>
             </property>
             <property name="icon">
              <iconset>
@@ -2925,7 +2929,11 @@
            </widget>
           </item>
           <item row="0" column="2">
-           <widget class="QPushButton" name="pushButton_cyan"/>
+           <widget class="QPushButton" name="pushButton_cyan">
+            <property name="text">
+             <string notr="true"/>
+            </property>
+           </widget>
           </item>
           <item row="7" column="4">
            <widget class="QToolButton" name="toolButtonShowTimeDefault">
@@ -2936,7 +2944,7 @@
              </size>
             </property>
             <property name="text">
-             <string>...</string>
+             <string notr="true">...</string>
             </property>
             <property name="icon">
              <iconset>
@@ -2945,12 +2953,16 @@
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="QPushButton" name="pushButton_red"/>
+           <widget class="QPushButton" name="pushButton_red">
+            <property name="text">
+             <string notr="true"/>
+            </property>
+           </widget>
           </item>
           <item row="2" column="3">
            <widget class="QPushButton" name="pushButton_darkYellow">
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
            </widget>
           </item>
@@ -2963,7 +2975,7 @@
              </size>
             </property>
             <property name="text">
-             <string>...</string>
+             <string notr="true">...</string>
             </property>
             <property name="icon">
              <iconset>
@@ -2991,7 +3003,7 @@
           <item row="2" column="1">
            <widget class="QPushButton" name="pushButton_darkGreen">
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
            </widget>
           </item>
