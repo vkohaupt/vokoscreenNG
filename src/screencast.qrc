@@ -78,6 +78,8 @@
 <file>pictures/windows.license</file>
 <file>sound/wasapi.wav</file>
 <file>ciscoOpenh264/BINARY_LICENSE.txt</file>
+<file>spezialCheckBox/off.png</file>
+<file>spezialCheckBox/on.png</file>
 <file>language/ar.qm</file>
 <file>language/ca.qm</file>
 <file>language/cs_CZ.qm</file>

@@ -28,6 +28,7 @@
 #include "ui_formMainWindow.h"
 #include "QvkCircleWidget.h"
 #include "QvkSpezialSlider.h"
+#include "QvkSpezialCheckbox.h"
 
 class QvkShowClick : public QObject
 {
@@ -81,8 +82,11 @@ private:
     QvkSpezialSlider *vkSpezialSliderOpacity;
     QvkSpezialSlider *vkSpezialSliderShowtime;
 
+    QvkSpezialCheckbox *vkSpezialCheckbox;
+
     void setColorButtons();
     void setSpezialSlider();
+    void setSpezialCheckBox();
     void setToolButtonDefaultValues();
     void setCircleWidget();
 

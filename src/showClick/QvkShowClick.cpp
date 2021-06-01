@@ -36,6 +36,7 @@ void QvkShowClick::init( Ui_formMainWindow *ui_formMainWindow )
 
     setColorButtons();
     setSpezialSlider();
+    setSpezialCheckBox();
     setToolButtonDefaultValues();
     setCircleWidget();
 }
@@ -338,5 +339,13 @@ void QvkShowClick::slot_SliderOpacityDefault()
 void QvkShowClick::slot_SlidershowTimeDefault()
 {
     vkSpezialSliderShowtime->setValue( 10 );
+}
+
+
+void QvkShowClick::setSpezialCheckBox()
+{
+    vkSpezialCheckbox = new QvkSpezialCheckbox();
+    ui->horizontalLayout_15->insertWidget( 1, vkSpezialCheckbox );
+    connect( vkSpezialCheckbox, SIGNAL( signal_clicked( bool ) ), this, SLOT( slot_pointerOnOff( bool ) ) );
 }
 
