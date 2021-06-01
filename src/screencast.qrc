@@ -80,6 +80,8 @@
 <file>ciscoOpenh264/BINARY_LICENSE.txt</file>
 <file>spezialCheckBox/off.png</file>
 <file>spezialCheckBox/on.png</file>
+<file>spezialCheckBox/off.license</file>
+<file>spezialCheckBox/on.license</file>
 <file>language/ar.qm</file>
 <file>language/ca.qm</file>
 <file>language/cs_CZ.qm</file>
