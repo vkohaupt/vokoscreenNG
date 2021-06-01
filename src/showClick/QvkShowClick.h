@@ -62,6 +62,10 @@ private slots:
     void slot_valueChanged_SpezialSliderCircle( int value );
     void slot_valueChanged_SpezialSliderOpacity( int value );
 
+    void slot_toolButtonColorDefault();
+    void slot_SliderCircleDefault();
+    void slot_SliderOpacityDefault();
+    void slot_SlidershowTimeDefault();
 
 protected:
 
@@ -79,6 +83,7 @@ private:
 
     void setColorButtons();
     void setSpezialSlider();
+    void setToolButtonDefaultValues();
     void setCircleWidget();
 
 signals:

@@ -36,6 +36,7 @@ void QvkShowClick::init( Ui_formMainWindow *ui_formMainWindow )
 
     setColorButtons();
     setSpezialSlider();
+    setToolButtonDefaultValues();
     setCircleWidget();
 }
 
@@ -304,3 +305,38 @@ void QvkShowClick::slot_valueChanged_SpezialSliderOpacity( int value )
     vkCircleWidget_2->setOpacity( value_1 / 100 );
     vkCircleWidget_3->setOpacity( value_1 / 100 );
 }
+
+void QvkShowClick::setToolButtonDefaultValues()
+{
+    connect( ui->toolButtonColorDefault,         SIGNAL( clicked() ), this, SLOT( slot_toolButtonColorDefault() ) );
+    connect( ui->toolButtonSliderCircleDefault,  SIGNAL( clicked() ), this, SLOT( slot_SliderCircleDefault() ) );
+    connect( ui->toolButtonSliderOpacityDefault, SIGNAL( clicked() ), this, SLOT( slot_SliderOpacityDefault() ) );
+    connect( ui->toolButtonShowTimeDefault,      SIGNAL( clicked() ), this, SLOT( slot_SlidershowTimeDefault() ) );
+}
+
+
+void QvkShowClick::slot_toolButtonColorDefault()
+{
+    vkCircleWidget_1->setColor( Qt::red );
+    vkCircleWidget_2->setColor( Qt::red );
+    vkCircleWidget_3->setColor( Qt::red );
+}
+
+
+void QvkShowClick::slot_SliderCircleDefault()
+{
+    vkSpezialSliderCircle->setValue( 50 );
+}
+
+
+void QvkShowClick::slot_SliderOpacityDefault()
+{
+    vkSpezialSliderOpacity->setValue( 70 );
+}
+
+
+void QvkShowClick::slot_SlidershowTimeDefault()
+{
+    vkSpezialSliderShowtime->setValue( 10 );
+}
+

@@ -131,6 +131,10 @@
                   <property name="text">
                    <string notr="true">Reset</string>
                   </property>
+                  <property name="icon">
+                   <iconset resource="screencast.qrc">
+                    <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                  </property>
                  </widget>
                 </item>
                 <item row="1" column="4">
@@ -839,6 +843,10 @@
                         <property name="text">
                          <string notr="true">Reset</string>
                         </property>
+                        <property name="icon">
+                         <iconset resource="screencast.qrc">
+                          <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                        </property>
                        </widget>
                       </item>
                      </layout>
@@ -876,6 +884,10 @@
                       <property name="text">
                        <string notr="true">Reset</string>
                       </property>
+                      <property name="icon">
+                       <iconset resource="screencast.qrc">
+                        <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                      </property>
                      </widget>
                     </item>
                    </layout>
@@ -907,6 +919,10 @@
                      <widget class="QToolButton" name="toolButtonVP8Reset">
                       <property name="text">
                        <string notr="true">Reset</string>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="screencast.qrc">
+                        <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                       </property>
                      </widget>
                     </item>
@@ -1015,6 +1031,10 @@
                    </property>
                    <property name="text">
                     <string notr="true">Reset</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="screencast.qrc">
+                     <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                    </property>
                   </widget>
                  </item>
@@ -1419,6 +1439,10 @@
                 </property>
                 <property name="text">
                  <string notr="true">Reset</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="screencast.qrc">
+                  <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                 </property>
                </widget>
               </item>
@@ -2682,8 +2706,8 @@
              <string notr="true">...</string>
             </property>
             <property name="icon">
-             <iconset>
-              <normaloff>:/pictures/showclick/undo.png</normaloff>:/pictures/showclick/undo.png</iconset>
+             <iconset resource="screencast.qrc">
+              <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
             </property>
            </widget>
           </item>
@@ -2754,8 +2778,8 @@
              <string notr="true">...</string>
             </property>
             <property name="icon">
-             <iconset>
-              <normaloff>:/pictures/showclick/undo.png</normaloff>:/pictures/showclick/undo.png</iconset>
+             <iconset resource="screencast.qrc">
+              <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
             </property>
            </widget>
           </item>
@@ -2866,8 +2890,8 @@
              <string notr="true">...</string>
             </property>
             <property name="icon">
-             <iconset>
-              <normaloff>:/pictures/showclick/undo.png</normaloff>:/pictures/showclick/undo.png</iconset>
+             <iconset resource="screencast.qrc">
+              <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
             </property>
            </widget>
           </item>
@@ -2883,8 +2907,8 @@
              <string notr="true">...</string>
             </property>
             <property name="icon">
-             <iconset>
-              <normaloff>:/pictures/showclick/undo.png</normaloff>:/pictures/showclick/undo.png</iconset>
+             <iconset resource="screencast.qrc">
+              <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
             </property>
            </widget>
           </item>

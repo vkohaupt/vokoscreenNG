@@ -54,11 +54,6 @@ void QvkTheme::setTheme()
     makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAvailable ), QIcon( ":/pictures/screencast/supported-formats.png" ) );
     makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAbout ),     QIcon( ":/pictures/screencast/help-about.png" ) );
 
-    ui->toolButtonFramesReset->setIcon( QIcon( ":/pictures/screencast/undo.png" ) );
-    ui->toolButtonScreencastAreaReset->setIcon( QIcon( ":/pictures/screencast/undo.png" ) );
-    ui->toolButtonx264Reset->setIcon( QIcon( ":/pictures/screencast/undo.png" ) );
-    ui->toolButtonOpenh264Reset->setIcon( QIcon( ":/pictures/screencast/undo.png" ) );
-    ui->toolButtonVP8Reset->setIcon( QIcon( ":/pictures/screencast/undo.png" ) );
     ui->toolButtonShowInSystrayAlternativeReset->setIcon( QIcon( ":/pictures/screencast/undo.png" ) );
 
     makeAndSetValidIcon( ui->tabWidgetCamera, ui->tabWidgetCamera->indexOf( ui->tabCamera ), QIcon( ":/pictures/camera/camera.png" ) );
