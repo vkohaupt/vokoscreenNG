@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>6</number>
           </property>
           <property name="iconSize">
            <size>
@@ -129,7 +129,7 @@
                    <string>Reset</string>
                   </property>
                   <property name="text">
-                   <string notr="true">Reset</string>
+                   <string notr="true"/>
                   </property>
                   <property name="icon">
                    <iconset resource="screencast.qrc">
@@ -841,7 +841,7 @@
                          <string>Reset</string>
                         </property>
                         <property name="text">
-                         <string notr="true">Reset</string>
+                         <string notr="true"/>
                         </property>
                         <property name="icon">
                          <iconset resource="screencast.qrc">
@@ -882,7 +882,7 @@
                        <string>Reset</string>
                       </property>
                       <property name="text">
-                       <string notr="true">Reset</string>
+                       <string notr="true"/>
                       </property>
                       <property name="icon">
                        <iconset resource="screencast.qrc">
@@ -918,7 +918,7 @@
                     <item>
                      <widget class="QToolButton" name="toolButtonVP8Reset">
                       <property name="text">
-                       <string notr="true">Reset</string>
+                       <string notr="true"/>
                       </property>
                       <property name="icon">
                        <iconset resource="screencast.qrc">
@@ -1030,7 +1030,7 @@
                     <string>Reset</string>
                    </property>
                    <property name="text">
-                    <string notr="true">Reset</string>
+                    <string notr="true"/>
                    </property>
                    <property name="icon">
                     <iconset resource="screencast.qrc">
@@ -1438,7 +1438,7 @@
                  <string>Reset</string>
                 </property>
                 <property name="text">
-                 <string notr="true">Reset</string>
+                 <string notr="true"/>
                 </property>
                 <property name="icon">
                  <iconset resource="screencast.qrc">
@@ -2703,7 +2703,7 @@
              </size>
             </property>
             <property name="text">
-             <string notr="true">...</string>
+             <string notr="true"/>
             </property>
             <property name="icon">
              <iconset resource="screencast.qrc">
@@ -2775,7 +2775,7 @@
              </size>
             </property>
             <property name="text">
-             <string notr="true">...</string>
+             <string notr="true"/>
             </property>
             <property name="icon">
              <iconset resource="screencast.qrc">
@@ -2887,7 +2887,7 @@
              </size>
             </property>
             <property name="text">
-             <string notr="true">...</string>
+             <string notr="true"/>
             </property>
             <property name="icon">
              <iconset resource="screencast.qrc">
@@ -2904,7 +2904,7 @@
              </size>
             </property>
             <property name="text">
-             <string notr="true">...</string>
+             <string notr="true"/>
             </property>
             <property name="icon">
              <iconset resource="screencast.qrc">

@@ -54,8 +54,6 @@ void QvkTheme::setTheme()
     makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAvailable ), QIcon( ":/pictures/screencast/supported-formats.png" ) );
     makeAndSetValidIcon( ui->tabWidgetScreencast, ui->tabWidgetScreencast->indexOf( ui->tabAbout ),     QIcon( ":/pictures/screencast/help-about.png" ) );
 
-    ui->toolButtonShowInSystrayAlternativeReset->setIcon( QIcon( ":/pictures/screencast/undo.png" ) );
-
     makeAndSetValidIcon( ui->tabWidgetCamera, ui->tabWidgetCamera->indexOf( ui->tabCamera ), QIcon( ":/pictures/camera/camera.png" ) );
 
     makeAndSetValidIcon( ui->tabWidgetLog, ui->tabWidgetLog->indexOf( ui->tabLog ), QIcon( ":/pictures/log/log.png" ) );
