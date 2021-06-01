@@ -21,9 +21,6 @@
  */
 
 #include "QvkTheme.h"
-#include "global.h"
-
-#include <QDebug>
 
 QvkTheme::QvkTheme( Ui_formMainWindow *ui_formMainWindow )
 {
@@ -58,7 +55,6 @@ void QvkTheme::setTheme()
 
     makeAndSetValidIcon( ui->tabWidgetLog, ui->tabWidgetLog->indexOf( ui->tabLog ), QIcon( ":/pictures/log/log.png" ) );
 }
-
 
 
 void QvkTheme::makeAndSetValidIcon( QTabWidget *tabWidget, int index , QIcon icon )
