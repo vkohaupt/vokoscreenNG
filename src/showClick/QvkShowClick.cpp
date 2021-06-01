@@ -22,6 +22,7 @@
 
 #include "QvkShowClick.h"
 #include "QvkPushButton.h"
+#include "QvkAnimateWindow.h"
 
 #include <QDebug>
 
@@ -38,6 +39,7 @@ void QvkShowClick::init( Ui_formMainWindow *ui_formMainWindow )
     setSpezialSlider();
     setSpezialCheckBox();
     setToolButtonDefaultValues();
+    setMouseClick();
     setCircleWidget();
 }
 
@@ -347,5 +349,34 @@ void QvkShowClick::setSpezialCheckBox()
     vkSpezialCheckbox = new QvkSpezialCheckbox();
     ui->horizontalLayout_15->insertWidget( 1, vkSpezialCheckbox );
     connect( vkSpezialCheckbox, SIGNAL( signal_clicked( bool ) ), this, SLOT( slot_pointerOnOff( bool ) ) );
+}
+
+
+void QvkShowClick::slot_pointerOnOff( bool value )
+{
+    if ( value == true )
+    {
+        vkGlobalMouse->setCursorOn();
+        vkGlobalMouse->mousePressed();
+    }
+
+    if ( value == false )
+    {
+        vkGlobalMouse->setCursorOff();
+    }
+}
+
+void QvkShowClick::setMouseClick()
+{
+    vkGlobalMouse = new QvkGlobalMouse();
+    connect( vkGlobalMouse, SIGNAL( signal_mousePressed( int, int, QString ) ), this, SLOT( slot_mousePressed( int, int, QString ) ) );
+}
+
+
+void QvkShowClick::slot_mousePressed( int x, int y, QString mouseButton )
+{
+    QvkAnimateWindow *animateWindow = new QvkAnimateWindow( this );
+    animateWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
+    animateWindow->init( x, y, vkSpezialSliderShowtime->value() * 100, mouseButton, vkSpezialSliderCircle->value(), vkSpezialSliderOpacity->value(), vkCircleWidget_1->getColor() );
 }
 

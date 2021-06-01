@@ -27,9 +27,11 @@
 #include <QBitmap>
 
 
-QvkAnimateWindow::QvkAnimateWindow( QWidget *parent )
+QvkAnimateWindow::QvkAnimateWindow(QWidget *parent )
 {
   setParent( parent );
+  setAttribute( Qt::WA_TranslucentBackground, true );
+  show();
 }
 
 
@@ -42,7 +44,6 @@ void QvkAnimateWindow::init( int x,
                              QColor valueColor )
 
 {
-    setAttribute( Qt::WA_TranslucentBackground, true );
     resize( 110, 110 );
     move( x / devicePixelRatioF() - ( width() / 2 ), y / devicePixelRatioF() - ( height() / 2 ) );
 

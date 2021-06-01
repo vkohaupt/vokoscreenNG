@@ -29,8 +29,9 @@
 #include "QvkCircleWidget.h"
 #include "QvkSpezialSlider.h"
 #include "QvkSpezialCheckbox.h"
+#include "QvkGlobalMouse.h"
 
-class QvkShowClick : public QObject
+class QvkShowClick : public QWidget //QObject
 {
     Q_OBJECT
 
@@ -68,6 +69,9 @@ private slots:
     void slot_SliderOpacityDefault();
     void slot_SlidershowTimeDefault();
 
+    void slot_pointerOnOff( bool value );
+    void slot_mousePressed( int, int, QString );
+
 protected:
 
 
@@ -89,6 +93,9 @@ private:
     void setSpezialCheckBox();
     void setToolButtonDefaultValues();
     void setCircleWidget();
+    void setMouseClick();
+
+    QvkGlobalMouse *vkGlobalMouse;
 
 signals:
 
