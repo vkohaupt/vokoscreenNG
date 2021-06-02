@@ -356,12 +356,14 @@ void QvkShowClick::slot_pointerOnOff( bool value )
 {
     if ( value == true )
     {
+        pointerOnOff = true;
         vkGlobalMouse->setCursorOn();
         vkGlobalMouse->mousePressed();
     }
 
     if ( value == false )
     {
+        pointerOnOff = false;
         vkGlobalMouse->setCursorOff();
     }
 }

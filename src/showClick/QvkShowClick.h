@@ -38,7 +38,8 @@ class QvkShowClick : public QWidget //QObject
 public:
     QvkShowClick();
     void init( Ui_formMainWindow *ui_formMainWindow );
-
+    QvkSpezialCheckbox *vkSpezialCheckbox;
+    bool pointerOnOff;
     
 public slots:
 
@@ -85,8 +86,6 @@ private:
     QvkSpezialSlider *vkSpezialSliderCircle;
     QvkSpezialSlider *vkSpezialSliderOpacity;
     QvkSpezialSlider *vkSpezialSliderShowtime;
-
-    QvkSpezialCheckbox *vkSpezialCheckbox;
 
     void setColorButtons();
     void setSpezialSlider();

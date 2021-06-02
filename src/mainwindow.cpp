@@ -29,7 +29,6 @@
 #include "global.h"
 #include "QvkScreenManager.h"
 #include "QvkLicenses.h"
-#include "QvkShowClick.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -489,8 +488,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // *****************End Camera ***********************************
 
     // ***************** Begin showClick *****************************
-    QvkShowClick *showClick = new QvkShowClick();
-    showClick->init( ui );
+    vkShowClick = new QvkShowClick();
+    vkShowClick->init( ui );
     // ***************** End showClick
 
     // *****************Begin Log *********************************
@@ -552,6 +551,13 @@ void QvkMainWindow::slot_setMaxFPS( int index )
 void QvkMainWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
+
+    if ( vkShowClick->pointerOnOff == true )
+    {
+        emit vkShowClick->vkSpezialCheckbox->signal_clicked( false );
+    }
+
+
 #ifdef Q_OS_WIN
     if ( vkCiscoOpenh264Controller->isShowCiscoFinishDialog == false )
     {

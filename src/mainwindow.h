@@ -37,6 +37,8 @@
 #include "QvkSpezialSlider.h"
 #include "QvkSystrayAlternative.h"
 #include "QvkAudioController.h"
+#include "QvkShowClick.h"
+
 #ifdef Q_OS_WIN
   #include "QvkCiscoOpenh264Controller.h"
 #endif
@@ -66,12 +68,12 @@ public:
     QvkHelp *vkHelp;
     QvkSystray *vkSystray;
     QvkAudioController *vkAudioController;
-
     QvkSpezialSlider *sliderFrames;
 
 private:
+    QvkShowClick *vkShowClick;
+
     QvkSpezialSlider *sliderScreencastCountDown;
-//    QvkSpezialSlider *sliderFrames;
     QvkSpezialSlider *sliderX264;
     QvkSpezialSlider *sliderOpenh264;
     QvkSpezialSlider *sliderVp8;
