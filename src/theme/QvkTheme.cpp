@@ -37,6 +37,8 @@ QvkTheme::~QvkTheme()
 
 void QvkTheme::setTheme()
 {
+    ui->tabWidgetSideBar->setUsesScrollButtons( false );
+
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarScreencast ), QIcon( ":/pictures/screencast/monitor.png" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ),     QIcon( ":/pictures/player/player.png" ) );
     makeAndSetValidIconForSideBar( ui->tabWidgetSideBar->indexOf( ui->tabSidebarCamera ),     QIcon( ":/pictures/camera/camera.png" ) );
