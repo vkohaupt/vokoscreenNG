@@ -52,6 +52,10 @@ private:
     QTimer *timer;
     Ui_formMainWindow *ui;
 
+    void setColorButtons();
+    void setCheckBoxOnOff();
+    void setTimer();
+
 
 private slots:
     void slot_followMouse();
