@@ -26,12 +26,14 @@
 #include <QWidget>
 #include <QTimer>
 
+#include "ui_formMainWindow.h"
+
 class QvkHaloWindow: public QWidget
 
 {
     Q_OBJECT
 public:
-    QvkHaloWindow(QWidget *parent );
+    QvkHaloWindow(QWidget *parent, Ui_formMainWindow *ui_formMainWindow );
     void init();
 
     virtual ~QvkHaloWindow();
@@ -40,6 +42,7 @@ public:
 
 
 public slots:
+    void slot_haloOnOff( bool value );
 
 
 private:
@@ -47,6 +50,8 @@ private:
     QColor color;
     qreal opacity;
     QTimer *timer;
+    Ui_formMainWindow *ui;
+
 
 private slots:
     void slot_followMouse();

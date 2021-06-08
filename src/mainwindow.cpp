@@ -494,7 +494,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // ***************** End showClick
 
 
-    QvkHalo *vkHalo = new QvkHalo();
+    QvkHalo *vkHalo = new QvkHalo( ui );
+    Q_UNUSED(vkHalo)
 
 
     // *****************Begin Log *********************************

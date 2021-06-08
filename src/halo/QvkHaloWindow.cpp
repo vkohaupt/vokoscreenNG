@@ -26,21 +26,23 @@
 #include <QBitmap>
 
 
-QvkHaloWindow::QvkHaloWindow( QWidget *parent )
+QvkHaloWindow::QvkHaloWindow( QWidget *parent, Ui_formMainWindow *ui_formMainWindow )
 {
+    ui = ui_formMainWindow;
+
     setParent( parent );
     setAttribute( Qt::WA_TranslucentBackground, true );
     show();
+
+    connect( ui->checkBoxHaloOnOff, SIGNAL( clicked( bool ) ), this, SLOT( slot_haloOnOff( bool ) ) );
 
     timer = new QTimer(this);
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_followMouse() ) );
 }
 
 
-void QvkHaloWindow::slot_followMouse()
+QvkHaloWindow::~QvkHaloWindow()
 {
-    QCursor cursor;
-    move( cursor.pos().x() - diameter/2, cursor.pos().y() - diameter/2 );
 }
 
 
@@ -72,15 +74,6 @@ void QvkHaloWindow::init()
     QRegion r1 = window.QRegion::subtracted( mouseHole );
 
     this->setMask( r1 );
-
-    show();
-    timer->start( 40 );
-
-}
-
-
-QvkHaloWindow::~QvkHaloWindow()
-{
 }
 
 
@@ -99,12 +92,12 @@ void QvkHaloWindow::paintEvent( QPaintEvent *event )
     qreal penWith = 1.0;
     QPen pen;
     pen.setWidthF( penWith );
-    pen.setColor( Qt::red );
+    pen.setColor( Qt::yellow );
     pen.setStyle( Qt::SolidLine );
     painterPixmap.setPen( pen );
 
-    painterPixmap.drawLine( 0, pixmap.height()/2, pixmap.width(), pixmap.height()/2 );
-    painterPixmap.drawLine( pixmap.width()/2, 0, pixmap.width()/2, pixmap.height() );
+//    painterPixmap.drawLine( 0, pixmap.height()/2, pixmap.width(), pixmap.height()/2 );
+//    painterPixmap.drawLine( pixmap.width()/2, 0, pixmap.width()/2, pixmap.height() );
 
     QBrush brush;
     brush.setColor( color );
@@ -119,4 +112,27 @@ void QvkHaloWindow::paintEvent( QPaintEvent *event )
     painter.begin( this );
     painter.drawPixmap( QPoint( 0, 0 ), pixmap );
     painter.end();
+}
+
+
+void QvkHaloWindow::slot_followMouse()
+{
+    QCursor cursor;
+    move( cursor.pos().x() - diameter/2, cursor.pos().y() - diameter/2 );
+}
+
+
+void QvkHaloWindow::slot_haloOnOff( bool value )
+{
+    if ( value == true )
+    {
+        timer->start( 40 );
+        show();
+    }
+
+    if ( value == false )
+    {
+        timer->stop();
+        hide();
+    }
 }

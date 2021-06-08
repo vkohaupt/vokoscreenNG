@@ -25,12 +25,14 @@
 
 #include <QWidget>
 
+#include "ui_formMainWindow.h"
+
 class QvkHalo: public QWidget
 
 {
     Q_OBJECT
 public:
-    QvkHalo();
+    QvkHalo( Ui_formMainWindow *ui_formMainWindow );
     virtual ~QvkHalo();
     
 public:

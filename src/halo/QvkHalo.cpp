@@ -24,9 +24,9 @@
 #include "QvkHaloWindow.h"
 
 
-QvkHalo::QvkHalo()
+QvkHalo::QvkHalo( Ui_formMainWindow *ui_formMainWindow )
 {
-    QvkHaloWindow *vkHaloWindow = new QvkHaloWindow( this );
+    QvkHaloWindow *vkHaloWindow = new QvkHaloWindow( this, ui_formMainWindow );
     vkHaloWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar
     vkHaloWindow->init();
 }
