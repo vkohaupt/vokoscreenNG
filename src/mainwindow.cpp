@@ -29,6 +29,7 @@
 #include "global.h"
 #include "QvkScreenManager.h"
 #include "QvkLicenses.h"
+#include "QvkHalo.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -491,6 +492,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkShowClick = new QvkShowClick();
     vkShowClick->init( ui );
     // ***************** End showClick
+
+
+    QvkHalo *vkHalo = new QvkHalo();
+
 
     // *****************Begin Log *********************************
     vk_setCornerWidget( ui->tabWidgetLog );

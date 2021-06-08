@@ -167,5 +167,8 @@ unix:include(waylandRoutines/waylandRoutines.pri)
 #showClick
 include(showClick/showClick.pri)
 
+# halo
+include(halo/halo.pri)
+
 #spezialCheckBox
 include(spezialCheckBox/spezialCheckBox.pri)
