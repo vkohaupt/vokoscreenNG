@@ -44,6 +44,11 @@ public:
 public slots:
     void slot_haloOnOff( bool value );
 
+    void slot_vkPushButton_halo_white();
+    void slot_vkPushButton_halo_black();
+    void slot_vkPushButton_halo_red();
+    void slot_vkPushButton_halo_darkRed();
+
 
 private:
     int diameter;

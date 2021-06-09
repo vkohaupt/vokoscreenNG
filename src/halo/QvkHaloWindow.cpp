@@ -94,12 +94,9 @@ void QvkHaloWindow::paintEvent( QPaintEvent *event )
     qreal penWith = 1.0;
     QPen pen;
     pen.setWidthF( penWith );
-    pen.setColor( Qt::yellow );
+    pen.setColor( color );
     pen.setStyle( Qt::SolidLine );
     painterPixmap.setPen( pen );
-
-    //    painterPixmap.drawLine( 0, pixmap.height()/2, pixmap.width(), pixmap.height()/2 );
-    //    painterPixmap.drawLine( pixmap.width()/2, 0, pixmap.width()/2, pixmap.height() );
 
     QBrush brush;
     brush.setColor( color );
@@ -235,4 +232,29 @@ void QvkHaloWindow::setColorButtons()
     vkPushButton_halo_darkGray->setMinimumHeight( minimumHeight );
     ui->horizontalLayout_halo_darkGray->addWidget( vkPushButton_halo_darkGray );
     connect( vkPushButton_halo_darkGray, SIGNAL( clicked() ), this, SLOT( slot_vkPushButton_halo_darkGray() ) );
+}
+
+
+void QvkHaloWindow::slot_vkPushButton_halo_white()
+{
+    color = Qt::white;
+    repaint();
+}
+
+void QvkHaloWindow::slot_vkPushButton_halo_black()
+{
+    color = Qt::black;
+    repaint();
+}
+
+void QvkHaloWindow::slot_vkPushButton_halo_red()
+{
+    color = Qt::red;
+    repaint();
+}
+
+void QvkHaloWindow::slot_vkPushButton_halo_darkRed()
+{
+    color = Qt::darkRed;
+    repaint();
 }
