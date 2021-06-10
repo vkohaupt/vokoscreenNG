@@ -95,9 +95,35 @@ void QvkPushButton::paintEvent( QPaintEvent *event )
                           height() - penWidthFrame );
 
         painter.end();
-
     }
 
+    if ( mousePressed == true )
+    {
+        QPainter painter;
+        painter.begin( this );
+        painter.setRenderHints( QPainter::Antialiasing, true );
+
+        // Area
+        QBrush brush( color );
+        painter.setBrush( brush );
+        painter.setPen( Qt::NoPen );
+        painter.drawRect( 1, 1, width(), height() );
+
+        // Frame
+        QPen penFrame;
+        penFrame.setWidthF( penWidthFrame );
+        penFrame.setColor( Qt::cyan );
+        penFrame.setStyle( Qt::SolidLine );
+        penFrame.setCapStyle( Qt::FlatCap );
+        penFrame.setJoinStyle( Qt::MiterJoin );
+        painter.setPen( penFrame );
+        painter.drawRect( penWidthFrame/2 + 1,
+                          penWidthFrame/2 + 1,
+                          width() - penWidthFrame,
+                          height() - penWidthFrame );
+
+        painter.end();
+    }
 }
 
 
@@ -105,6 +131,7 @@ void QvkPushButton::enterEvent( QEvent *event )
 {
     Q_UNUSED(event);
     mouseHover = true;
+    repaint();
 }
 
 
@@ -112,4 +139,20 @@ void QvkPushButton::leaveEvent( QEvent *event )
 {
     Q_UNUSED(event);
     mouseHover = false;
+    repaint();
+}
+
+
+void QvkPushButton::mousePressEvent( QMouseEvent *event )
+{
+    Q_UNUSED(event);
+    mousePressed = true;
+    repaint();
+}
+
+void QvkPushButton::mouseReleaseEvent( QMouseEvent *event )
+{
+    Q_UNUSED(event);
+    mousePressed = false;
+    repaint();
 }
