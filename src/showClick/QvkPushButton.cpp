@@ -24,7 +24,8 @@
 #include <QPainter>
 #include <QDebug>
 #include <QBitmap>
-
+#include <QMouseEvent>
+#include <QEvent>
 
 QvkPushButton::QvkPushButton( QColor valueColor)
 {
@@ -131,7 +132,6 @@ void QvkPushButton::enterEvent( QEvent *event )
 {
     Q_UNUSED(event);
     mouseHover = true;
-    repaint();
 }
 
 
@@ -139,20 +139,19 @@ void QvkPushButton::leaveEvent( QEvent *event )
 {
     Q_UNUSED(event);
     mouseHover = false;
-    repaint();
 }
 
 
 void QvkPushButton::mousePressEvent( QMouseEvent *event )
 {
-    Q_UNUSED(event);
     mousePressed = true;
-    repaint();
+    QPushButton::mousePressEvent( event );
 }
+
 
 void QvkPushButton::mouseReleaseEvent( QMouseEvent *event )
 {
-    Q_UNUSED(event);
     mousePressed = false;
-    repaint();
+    QPushButton::mouseReleaseEvent( event );
 }
+

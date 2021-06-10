@@ -130,6 +130,7 @@ void QvkShowClick::setColorButtons()
 
 void QvkShowClick::slot_vkPushButton_white()
 {
+  qDebug() << "9999999999999999999999999999999999999999999999999999999999999999999";
     vkCircleWidget_1->setColor( Qt::white );
     vkCircleWidget_2->setColor( Qt::white );
     vkCircleWidget_3->setColor( Qt::white );
