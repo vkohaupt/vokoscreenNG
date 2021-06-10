@@ -258,3 +258,75 @@ void QvkHaloWindow::slot_vkPushButton_halo_darkRed()
     color = Qt::darkRed;
     repaint();
 }
+
+void QvkHaloWindow::slot_vkPushButton_halo_green()
+{
+    color = Qt::green;
+    repaint();
+}
+
+void QvkHaloWindow::slot_vkPushButton_halo_darkGreen()
+{
+    color = Qt::darkGreen;
+    repaint();
+}
+
+void QvkHaloWindow::slot_vkPushButton_halo_blue()
+{
+    color = Qt::blue;
+    repaint();
+}
+
+void QvkHaloWindow::slot_vkPushButton_halo_darkBlue()
+{
+    color = Qt::darkBlue;
+    repaint();
+}
+
+void QvkHaloWindow::slot_vkPushButton_halo_cyan()
+{
+    color = Qt::cyan;
+    repaint();
+}
+
+void QvkHaloWindow::slot_vkPushButton_halo_darkCyan()
+{
+    color = Qt::darkCyan;
+    repaint();
+}
+
+void QvkHaloWindow::slot_vkPushButton_halo_magenta()
+{
+    color = Qt::magenta;
+    repaint();
+}
+
+void QvkHaloWindow::slot_vkPushButton_halo_darkMagenta()
+{
+    color = Qt::darkMagenta;
+    repaint();
+}
+
+void QvkHaloWindow::slot_vkPushButton_halo_yellow()
+{
+    color = Qt::yellow;
+    repaint();
+}
+
+void QvkHaloWindow::slot_vkPushButton_halo_darkYellow()
+{
+    color = Qt::darkYellow;
+    repaint();
+}
+
+void QvkHaloWindow::slot_vkPushButton_halo_gray()
+{
+    color = Qt::gray;
+    repaint();
+}
+
+void QvkHaloWindow::slot_vkPushButton_halo_darkGray()
+{
+    color = Qt::darkGray;
+    repaint();
+}
