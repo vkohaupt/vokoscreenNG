@@ -558,8 +558,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>30</height>
+                      <width>16</width>
+                      <height>16</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1732,7 +1732,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>96</width>
+                   <width>20</width>
                    <height>96</height>
                   </rect>
                  </property>
@@ -2740,45 +2740,6 @@
             </property>
            </spacer>
           </item>
-          <item row="4" column="0" colspan="4">
-           <widget class="QFrame" name="frame_3">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>100</height>
-             </size>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_38">
-             <property name="spacing">
-              <number>0</number>
-             </property>
-             <property name="leftMargin">
-              <number>2</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <widget class="QWidget" name="widget_1" native="true"/>
-             </item>
-             <item>
-              <widget class="QWidget" name="widget_2" native="true"/>
-             </item>
-             <item>
-              <widget class="QWidget" name="widget_3" native="true"/>
-             </item>
-            </layout>
-           </widget>
-          </item>
           <item row="8" column="0">
            <spacer name="verticalSpacer_7">
             <property name="orientation">
@@ -2794,6 +2755,12 @@
           </item>
           <item row="0" column="5" rowspan="10">
            <widget class="Line" name="line_4">
+            <property name="minimumSize">
+             <size>
+              <width>20</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="orientation">
              <enum>Qt::Vertical</enum>
             </property>
@@ -2852,21 +2819,6 @@
           </item>
           <item row="0" column="9">
            <layout class="QHBoxLayout" name="horizontalLayout_halo_darkRed"/>
-          </item>
-          <item row="4" column="6" colspan="4">
-           <widget class="QFrame" name="frame_2">
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_61">
-             <item>
-              <widget class="QWidget" name="widget" native="true"/>
-             </item>
-            </layout>
-           </widget>
           </item>
           <item row="3" column="3">
            <layout class="QHBoxLayout" name="horizontalLayout_darkGray"/>
@@ -3120,6 +3072,60 @@
           </item>
           <item row="0" column="7">
            <layout class="QHBoxLayout" name="horizontalLayout_halo_black"/>
+          </item>
+          <item row="4" column="0" colspan="5">
+           <widget class="QFrame" name="frame_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_38">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>2</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QWidget" name="widget_1" native="true"/>
+             </item>
+             <item>
+              <widget class="QWidget" name="widget_2" native="true"/>
+             </item>
+             <item>
+              <widget class="QWidget" name="widget_3" native="true"/>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="4" column="6" colspan="5">
+           <widget class="QFrame" name="frame_2">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_61">
+             <item>
+              <widget class="QWidget" name="widget" native="true"/>
+             </item>
+            </layout>
+           </widget>
           </item>
          </layout>
         </item>
