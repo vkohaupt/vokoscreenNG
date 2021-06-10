@@ -37,7 +37,7 @@ QvkHaloWindow::QvkHaloWindow( QWidget *parent, Ui_formMainWindow *ui_formMainWin
     setCursor( Qt::BlankCursor );
     show();
 
-    setCheckBoxOnOff();
+    setSpezialCheckBox();
     setTimer();
     setColorButtons();
 }
@@ -128,9 +128,11 @@ void QvkHaloWindow::slot_followMouse()
 }
 
 
-void QvkHaloWindow::setCheckBoxOnOff()
+void QvkHaloWindow::setSpezialCheckBox()
 {
-    connect( ui->checkBoxHaloOnOff, SIGNAL( clicked( bool ) ), this, SLOT( slot_haloOnOff( bool ) ) );
+    vkSpezialCheckbox = new QvkSpezialCheckbox();
+    ui->horizontalLayout_48->insertWidget( 1, vkSpezialCheckbox );
+    connect( vkSpezialCheckbox, SIGNAL( signal_clicked( bool ) ), this, SLOT( slot_haloOnOff( bool ) ) );
 }
 
 

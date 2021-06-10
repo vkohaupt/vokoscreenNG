@@ -27,6 +27,7 @@
 #include <QTimer>
 
 #include "ui_formMainWindow.h"
+#include "QvkSpezialCheckbox.h"
 
 class QvkHaloWindow: public QWidget
 
@@ -63,6 +64,7 @@ public slots:
 
 
 private:
+    QvkSpezialCheckbox *vkSpezialCheckbox;
     int diameter;
     QColor color;
     qreal opacity;
@@ -70,8 +72,8 @@ private:
     Ui_formMainWindow *ui;
 
     void setColorButtons();
-    void setCheckBoxOnOff();
     void setTimer();
+    void setSpezialCheckBox();
 
 
 private slots:
