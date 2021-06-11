@@ -311,18 +311,9 @@ void QvkShowClick::slot_valueChanged_SpezialSliderOpacity( int value )
 
 void QvkShowClick::setToolButtonDefaultValues()
 {
-    connect( ui->toolButtonColorDefault,         SIGNAL( clicked() ), this, SLOT( slot_toolButtonColorDefault() ) );
     connect( ui->toolButtonSliderCircleDefault,  SIGNAL( clicked() ), this, SLOT( slot_SliderCircleDefault() ) );
     connect( ui->toolButtonSliderOpacityDefault, SIGNAL( clicked() ), this, SLOT( slot_SliderOpacityDefault() ) );
     connect( ui->toolButtonShowTimeDefault,      SIGNAL( clicked() ), this, SLOT( slot_SlidershowTimeDefault() ) );
-}
-
-
-void QvkShowClick::slot_toolButtonColorDefault()
-{
-    vkCircleWidget_1->setColor( Qt::red );
-    vkCircleWidget_2->setColor( Qt::red );
-    vkCircleWidget_3->setColor( Qt::red );
 }
 
 

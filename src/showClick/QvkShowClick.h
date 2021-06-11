@@ -65,7 +65,6 @@ private slots:
     void slot_valueChanged_SpezialSliderCircle( int value );
     void slot_valueChanged_SpezialSliderOpacity( int value );
 
-    void slot_toolButtonColorDefault();
     void slot_SliderCircleDefault();
     void slot_SliderOpacityDefault();
     void slot_SlidershowTimeDefault();
