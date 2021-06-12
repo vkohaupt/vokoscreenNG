@@ -40,6 +40,7 @@ QvkHaloWindow::QvkHaloWindow( QWidget *parent, Ui_formMainWindow *ui_formMainWin
     setSpezialCheckBox();
     setTimer();
     setColorButtons();
+    setSpezialSlider();
 }
 
 
@@ -50,16 +51,9 @@ QvkHaloWindow::~QvkHaloWindow()
 
 void QvkHaloWindow::init()
 {
-    diameter = 100;
-    opacity = 0.5;
-    color = Qt::yellow;
-
-    QCursor cursor;
-    int x = cursor.pos().x() - diameter/2;
-    int y = cursor.pos().y() - diameter/2;
+    diameter = vkSpezialSliderDiameter->value();
 
     resize( diameter, diameter );
-    move( x / devicePixelRatioF() - ( diameter / 2 ), y / devicePixelRatioF() - ( diameter / 2 ) );
 
     QRegion window( 0,
                     0,
@@ -149,6 +143,28 @@ void QvkHaloWindow::slot_haloOnOff( bool value )
         timer->stop();
         hide();
     }
+}
+
+
+void QvkHaloWindow::setSpezialSlider()
+{
+    vkSpezialSliderDiameter = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayoutDiameter->insertWidget( 0, vkSpezialSliderDiameter );
+    vkSpezialSliderDiameter->setObjectName( "sliderhaloDiameter" );
+    vkSpezialSliderDiameter->setTracking( true );
+    vkSpezialSliderDiameter->setMinimum( 50 );
+    vkSpezialSliderDiameter->setMaximum( 100 );
+    vkSpezialSliderDiameter->setValue( 100 );
+    vkSpezialSliderDiameter->setShowValue( false );
+    vkSpezialSliderDiameter->show();
+    connect( vkSpezialSliderDiameter, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSliderDiameter( int ) ) );
+}
+
+
+void QvkHaloWindow::slot_valueChanged_SpezialSliderDiameter( int value )
+{
+    Q_UNUSED(value)
+    init();
 }
 
 

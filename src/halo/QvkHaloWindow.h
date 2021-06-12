@@ -28,6 +28,7 @@
 
 #include "ui_formMainWindow.h"
 #include "QvkSpezialCheckbox.h"
+#include "QvkSpezialSlider.h"
 
 class QvkHaloWindow: public QWidget
 
@@ -43,8 +44,25 @@ public:
 
 
 public slots:
-    void slot_haloOnOff( bool value );
 
+
+private:
+    QvkSpezialCheckbox *vkSpezialCheckbox;
+    QvkSpezialSlider *vkSpezialSliderDiameter;
+
+    int diameter;
+    QColor color = Qt::yellow;
+    qreal opacity = 0.5;
+    QTimer *timer;
+    Ui_formMainWindow *ui;
+
+    void setColorButtons();
+    void setTimer();
+    void setSpezialCheckBox();
+    void setSpezialSlider();
+
+
+private slots:
     void slot_vkPushButton_halo_white();
     void slot_vkPushButton_halo_black();
     void slot_vkPushButton_halo_red();
@@ -62,23 +80,10 @@ public slots:
     void slot_vkPushButton_halo_gray();
     void slot_vkPushButton_halo_darkGray();
 
-
-private:
-    QvkSpezialCheckbox *vkSpezialCheckbox;
-    int diameter;
-    QColor color;
-    qreal opacity;
-    QTimer *timer;
-    Ui_formMainWindow *ui;
-
-    void setColorButtons();
-    void setTimer();
-    void setSpezialCheckBox();
-
-
-private slots:
     void slot_followMouse();
+    void slot_haloOnOff( bool value );
 
+    void slot_valueChanged_SpezialSliderDiameter( int value );
 
 protected:
     void paintEvent(QPaintEvent *event);
