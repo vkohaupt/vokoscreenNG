@@ -2852,8 +2852,14 @@
           </item>
           <item row="5" column="6" colspan="4">
            <layout class="QHBoxLayout" name="horizontalLayout_43">
-            <item>
+            <item alignment="Qt::AlignLeft">
              <widget class="QLabel" name="label_31">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="maximumSize">
                <size>
                 <width>34</width>
