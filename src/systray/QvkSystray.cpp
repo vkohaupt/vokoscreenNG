@@ -40,7 +40,7 @@ void QvkSystray::init()
 {
     QAction *titleAction = new QAction( this );
     titleAction->setIcon( QIcon( ":pictures/systray/systray.png" ) );
-    titleAction->setText( global::name );
+    titleAction->setText( global::name + " " + global::version );
     titleAction->setEnabled( false );
 
     startAction = new QAction( this );
