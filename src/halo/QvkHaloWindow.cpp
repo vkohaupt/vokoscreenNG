@@ -53,6 +53,9 @@ void QvkHaloWindow::init()
 {
     diameter = vkSpezialSliderDiameter->value();
 
+    qreal a = vkSpezialSliderOpacity->value();
+    opacity = a / 100.0;
+
     resize( diameter, diameter );
 
     QRegion window( 0,
@@ -158,6 +161,18 @@ void QvkHaloWindow::setSpezialSlider()
     vkSpezialSliderDiameter->setShowValue( false );
     vkSpezialSliderDiameter->show();
     connect( vkSpezialSliderDiameter, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSliderDiameter( int ) ) );
+
+    vkSpezialSliderOpacity = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayoutHaloOpacity->insertWidget( 0, vkSpezialSliderOpacity );
+    vkSpezialSliderOpacity->setObjectName( "sliderhaloOpacity" );
+    vkSpezialSliderOpacity->setTracking( true );
+    vkSpezialSliderOpacity->setMinimum( 1 );
+    vkSpezialSliderOpacity->setMaximum( 100 );
+    vkSpezialSliderOpacity->setValue( 50 );
+    vkSpezialSliderOpacity->setShowValue( false );
+    vkSpezialSliderOpacity->show();
+    connect( vkSpezialSliderOpacity, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSliderDiameter( int ) ) );
+
 }
 
 
@@ -165,6 +180,7 @@ void QvkHaloWindow::slot_valueChanged_SpezialSliderDiameter( int value )
 {
     Q_UNUSED(value)
     init();
+    repaint();
 }
 
 

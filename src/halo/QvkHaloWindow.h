@@ -49,6 +49,7 @@ public slots:
 private:
     QvkSpezialCheckbox *vkSpezialCheckbox;
     QvkSpezialSlider *vkSpezialSliderDiameter;
+    QvkSpezialSlider *vkSpezialSliderOpacity;
 
     int diameter;
     QColor color = Qt::yellow;
