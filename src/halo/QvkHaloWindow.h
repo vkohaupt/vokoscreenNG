@@ -61,6 +61,7 @@ private:
     void setTimer();
     void setSpezialCheckBox();
     void setSpezialSlider();
+    void setToolButtonDefaultValues();
 
 
 private slots:
@@ -85,6 +86,10 @@ private slots:
     void slot_haloOnOff( bool value );
 
     void slot_valueChanged_SpezialSliderDiameter( int value );
+
+    void slot_DiameterDefault();
+    void slot_OpacityDefault();
+
 
 protected:
     void paintEvent(QPaintEvent *event);

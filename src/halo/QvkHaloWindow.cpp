@@ -41,6 +41,7 @@ QvkHaloWindow::QvkHaloWindow( QWidget *parent, Ui_formMainWindow *ui_formMainWin
     setTimer();
     setColorButtons();
     setSpezialSlider();
+    setToolButtonDefaultValues();
 }
 
 
@@ -157,7 +158,7 @@ void QvkHaloWindow::setSpezialSlider()
     vkSpezialSliderDiameter->setTracking( true );
     vkSpezialSliderDiameter->setMinimum( 50 );
     vkSpezialSliderDiameter->setMaximum( 100 );
-    vkSpezialSliderDiameter->setValue( 100 );
+    vkSpezialSliderDiameter->setValue( 80 );
     vkSpezialSliderDiameter->setShowValue( false );
     vkSpezialSliderDiameter->show();
     connect( vkSpezialSliderDiameter, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSliderDiameter( int ) ) );
@@ -168,7 +169,7 @@ void QvkHaloWindow::setSpezialSlider()
     vkSpezialSliderOpacity->setTracking( true );
     vkSpezialSliderOpacity->setMinimum( 1 );
     vkSpezialSliderOpacity->setMaximum( 100 );
-    vkSpezialSliderOpacity->setValue( 50 );
+    vkSpezialSliderOpacity->setValue( 60 );
     vkSpezialSliderOpacity->setShowValue( false );
     vkSpezialSliderOpacity->show();
     connect( vkSpezialSliderOpacity, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSliderDiameter( int ) ) );
@@ -181,6 +182,25 @@ void QvkHaloWindow::slot_valueChanged_SpezialSliderDiameter( int value )
     Q_UNUSED(value)
     init();
     repaint();
+}
+
+
+void QvkHaloWindow::setToolButtonDefaultValues()
+{
+    connect( ui->toolButtonDiameterDefault,  SIGNAL( clicked() ), this, SLOT( slot_DiameterDefault() ) );
+    connect( ui->toolButtonOpacityDefault, SIGNAL( clicked() ), this, SLOT( slot_OpacityDefault() ) );
+}
+
+
+void QvkHaloWindow::slot_DiameterDefault()
+{
+    vkSpezialSliderDiameter->setValue( 80 );
+}
+
+
+void QvkHaloWindow::slot_OpacityDefault()
+{
+    vkSpezialSliderOpacity->setValue( 60 );
 }
 
 
