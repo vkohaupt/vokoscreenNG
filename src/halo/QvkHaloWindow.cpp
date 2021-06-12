@@ -101,7 +101,7 @@ void QvkHaloWindow::paintEvent( QPaintEvent *event )
     brush.setStyle( Qt::SolidPattern );
     painterPixmap.setBrush( color );
     painterPixmap.setOpacity( opacity );
-    painterPixmap.drawEllipse( 0, 0, diameter, diameter );
+    painterPixmap.drawEllipse( 1, 1, diameter-2, diameter-2 );
 
     painterPixmap.end();
 
