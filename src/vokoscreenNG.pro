@@ -136,9 +136,6 @@ include(QvkGlobalShortcut/QvkGlobalShortcut.pri)
 # player
 include(player/player.pri)
 
-# theme
-include(theme/theme.pri)
-
 # screenManager
 include(screenManager/screenManager.pri)
 
@@ -170,5 +167,5 @@ include(showClick/showClick.pri)
 # halo
 include(halo/halo.pri)
 
-#spezialCheckBox
+# spezialCheckBox
 include(spezialCheckBox/spezialCheckBox.pri)

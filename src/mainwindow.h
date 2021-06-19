@@ -32,7 +32,6 @@
 #include "QvkSystray.h"
 #include "QvkMagnifierController.h"
 #include "QvkPlayer.h"
-#include "QvkTheme.h"
 #include "QvkLimitDiskFreeSpace.h"
 #include "QvkSpezialSlider.h"
 #include "QvkSystrayAlternative.h"
@@ -124,8 +123,6 @@ private:
     void vk_setCornerWidget( QTabWidget *tabWidget );
 
     QvkPlayer *vkPlayer;
-
-    QvkTheme *vkTheme;
 
     QvkCameraController *vkCameraController;
     QvkSystrayAlternative *vkSystrayAlternative;

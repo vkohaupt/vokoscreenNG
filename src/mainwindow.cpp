@@ -168,9 +168,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderStopRecordingAfterSeconds->setValue( 15 );
     sliderStopRecordingAfterSeconds->show();
 
-    vkTheme = new QvkTheme( ui );
-    Q_UNUSED(vkTheme);
-
     QvkLogController *vklogController = new QvkLogController( ui );
     Q_UNUSED(vklogController);
 

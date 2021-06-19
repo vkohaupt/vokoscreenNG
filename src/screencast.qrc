@@ -1,12 +1,15 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
 <file>pictures/camera/camera.png</file>
+<file>pictures/camera/camera-sidebar.png</file>
 <file>pictures/help/information.png</file>
 <file>pictures/linux.png</file>
 <file>pictures/log/log.png</file>
+<file>pictures/log/log-sidebar.png</file>
 <file>pictures/logo/logo.png</file>
 <file>pictures/player/move.png</file>
 <file>pictures/player/player.png</file>
+<file>pictures/player/player-sidebar.png</file>
 <file>pictures/player/go-next.png</file>
 <file>pictures/player/stop.png</file>
 <file>pictures/player/start.png</file>
@@ -23,6 +26,7 @@
 <file>pictures/screencast/format-codec.png</file>
 <file>pictures/screencast/microphone.png</file>
 <file>pictures/screencast/monitor.png</file>
+<file>pictures/screencast/monitor-sidebar.png</file>
 <file>pictures/screencast/timer.png</file>
 <file>pictures/screencast/strip.png</file>
 <file>pictures/screencast/help-about.png</file>
@@ -33,6 +37,7 @@
 <file>pictures/showClick/sandglass.png</file>
 <file>pictures/showClick/cursor.png</file>
 <file>pictures/showClick/vokoShowClick.png</file>
+<file>pictures/showClick/vokoShowClick-sidebar.png</file>
 <file>pictures/showClick/transparenz.png</file>
 <file>pictures/space.png</file>
 <file>pictures/systray/systray.png</file>
