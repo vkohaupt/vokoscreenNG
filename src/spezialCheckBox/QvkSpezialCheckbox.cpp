@@ -2,6 +2,7 @@
 #include "QvkSpezialCheckbox.h"
 
 #include <QDebug>
+#include <QPainterPath>
 
 QvkSpezialCheckbox::QvkSpezialCheckbox( QWidget *parent ) : QWidget( parent )
 {
