@@ -34,11 +34,14 @@
 
 #include <QTranslator>
 #include <QLibraryInfo>
+#include <QLoggingCategory>
 
 #include <gst/gst.h>
 
 int main(int argc, char *argv[])
 {
+    QLoggingCategory::defaultCategory()->setEnabled( QtDebugMsg, true );
+
     int currentExitCode = 0;
     do {
         QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);

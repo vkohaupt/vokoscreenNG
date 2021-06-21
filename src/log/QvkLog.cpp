@@ -25,7 +25,6 @@
 #include <QDebug>
 #include <QStandardPaths>
 #include <QTime>
-
 #include <QDir>
 
 QvkLog::QvkLog( Ui_formMainWindow *ui_mainwindow )
