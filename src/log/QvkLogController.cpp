@@ -1,4 +1,4 @@
-/* vokoscreenNG - A desktop recorder
+﻿/* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2019 Volker Kohaupt
  * 
  * Author:
@@ -34,15 +34,22 @@ void myMessageOutput( QtMsgType type, const QMessageLogContext &context, const Q
 }
 
 
-QvkLogController::QvkLogController( Ui_formMainWindow *ui_mainwindow )
+QvkLogController::QvkLogController()
 {
-    vklog = new QvkLog( ui_mainwindow );
+    vklog = new QvkLog();
+    connect( vklog, SIGNAL( signal_newLogText( QString) ), this, SLOT( slot_addTextToGuiLog( QString ) ) );
     qInstallMessageHandler( myMessageOutput );
 }
 
 
 QvkLogController::~QvkLogController()
 {
+}
+
+
+void QvkLogController::slot_addTextToGuiLog( QString value )
+{
+    emit signal_newLogText( value );
 }
 
 

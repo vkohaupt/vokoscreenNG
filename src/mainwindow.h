@@ -144,6 +144,8 @@ private:
 
 
 private slots:
+    void slot_textToGuiLog( QString value );
+
     void slot_reboot();
     void slot_preStart();
     void slot_Start();
@@ -185,6 +187,7 @@ private slots:
     void slot_setMaxFPS( int );
 
     void slot_gst_formatVideoAudoicodec_available();
+
 
 signals:
     void signal_close();

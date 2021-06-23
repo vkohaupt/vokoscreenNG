@@ -27,12 +27,8 @@
 #include <QTime>
 #include <QDir>
 
-QvkLog::QvkLog( Ui_formMainWindow *ui_mainwindow )
+QvkLog::QvkLog()
 {
-    ui = ui_mainwindow;
-
-    connect( this, SIGNAL( signal_newLogText( QString ) ), this, SLOT( slot_addLog( QString ) ) );
-
     QDateTime dateTime = QDateTime::currentDateTime();
     QString stringDateTime = dateTime.toString( "yyyy_MM_dd_hh_mm_ss" );
     path = QStandardPaths::writableLocation( QStandardPaths::AppConfigLocation );
@@ -52,29 +48,9 @@ QvkLog::~QvkLog()
 }
 
 
-void QvkLog::slot_addLog( QString value )
-{
-    ui->textBrowserLog->append( value );
-}
-
-
-void QvkLog::writeToLog( QString string )
-{
-#ifdef Q_OS_LINUX
-    QString eol = "\n";
-#endif
-#ifdef Q_OS_WIN
-    QString eol = "\r\n";
-#endif
-    logFile.open( QIODevice::Append | QIODevice::Text | QIODevice::Unbuffered );
-    logFile.write( string.toUtf8() );
-    logFile.write( eol.toUtf8() );
-    logFile.close();
-}
-
-
 void QvkLog::outputMessage( QtMsgType type, const QMessageLogContext &context, const QString &msg )
 {
+    // Output terminal
     QByteArray localMsg = msg.toLocal8Bit();
     switch (type) {
     case QtDebugMsg:
@@ -93,6 +69,19 @@ void QvkLog::outputMessage( QtMsgType type, const QMessageLogContext &context, c
         fprintf( stderr, "Fatal: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function );
         abort();
     }
-    writeToLog( msg );
+
+    // Output Logfile
+#ifdef Q_OS_LINUX
+    QString eol = "\n";
+#endif
+#ifdef Q_OS_WIN
+    QString eol = "\r\n";
+#endif
+    logFile.open( QIODevice::Append | QIODevice::Text | QIODevice::Unbuffered );
+    logFile.write( msg.toUtf8() );
+    logFile.write( eol.toUtf8() );
+    logFile.close();
+
+    // Output GUI
     emit signal_newLogText( msg );
 }

@@ -23,8 +23,6 @@
 #ifndef QVKLOGCONTROLLER_H
 #define QVKLOGCONTROLLER_H
 
-#include "ui_formMainWindow.h"
-
 #include <QObject>
 
 class QvkLogController : public QObject
@@ -32,26 +30,28 @@ class QvkLogController : public QObject
     Q_OBJECT
 
 public:
-  QvkLogController( Ui_formMainWindow *ui_mainwindow);
-  virtual ~QvkLogController();
-  QString get_logPath();
+    QvkLogController();
+    virtual ~QvkLogController();
+    QString get_logPath();
 
 
 public slots:
 
-  
+
 signals:
+    void signal_newLogText( QString value );
 
-  
+
 private slots:
+    void slot_addTextToGuiLog( QString value );
 
-  
+
 private:
 
 
 protected:
-  
-  
+
+
 };
 
 #endif

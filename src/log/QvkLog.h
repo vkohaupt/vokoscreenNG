@@ -23,8 +23,6 @@
 #ifndef QVKLOG_H
 #define QVKLOG_H
 
-#include "ui_formMainWindow.h"
-
 #include <QObject>
 #include <QFile>
 
@@ -33,7 +31,7 @@ class QvkLog : public QObject
     Q_OBJECT
 
 public:
-  QvkLog( Ui_formMainWindow *ui_mainwindow);
+  QvkLog();
   virtual ~QvkLog();
   void outputMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg);
   QString path;
@@ -48,12 +46,9 @@ signals:
 
   
 private slots:
-    void slot_addLog( QString value );
 
   
 private:
-    void writeToLog( QString string );
-    Ui_formMainWindow *ui;
 
 
 protected:

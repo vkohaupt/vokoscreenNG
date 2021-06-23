@@ -1,4 +1,4 @@
-/* vokoscreenNG - A desktop recorder
+﻿/* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2019 Volker Kohaupt
  * 
  * Author:
@@ -168,8 +168,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderStopRecordingAfterSeconds->setValue( 15 );
     sliderStopRecordingAfterSeconds->show();
 
-    QvkLogController *vklogController = new QvkLogController( ui );
-    Q_UNUSED(vklogController);
+    QvkLogController *vklogController = new QvkLogController();
+    connect( vklogController, SIGNAL( signal_newLogText( QString ) ), this, SLOT( slot_textToGuiLog( QString ) ) );
 
 #ifdef Q_OS_LINUX
     ui->pushButtonSendReport->setHidden( true );
@@ -538,6 +538,12 @@ QvkMainWindow::~QvkMainWindow()
 void QvkMainWindow::slot_reboot()
 {
     qApp->exit( EXIT_CODE_REBOOT );
+}
+
+
+void QvkMainWindow::slot_textToGuiLog( QString value )
+{
+    ui->textBrowserLog->append( value );
 }
 
 
