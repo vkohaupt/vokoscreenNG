@@ -62,7 +62,8 @@ void QvkMainWindow_wl::setConnects()
 QString QvkMainWindow_wl::Vk_get_Videocodec_Encoder()
 {
     QString value;
-    QString encoder = "openh264enc"; //ui->comboBoxVideoCodec->currentData().toString();
+//    QString encoder = "openh264enc"; //ui->comboBoxVideoCodec->currentData().toString();
+    QString encoder = "x264enc"; //ui->comboBoxVideoCodec->currentData().toString();
 
     if ( encoder == "openh264enc" )
     {
@@ -76,6 +77,18 @@ QString QvkMainWindow_wl::Vk_get_Videocodec_Encoder()
         list << "slice-mode=auto"; // Number of slices equal to number of threads
         value = list.join( " " );
         value.append( " ! h264parse" );
+    }
+
+    if ( encoder == "x264enc" )
+    {
+        QStringList list;
+        list << encoder;
+        list << "qp-min=17"; // + QString::number( sliderOpenh264->value() );
+        list << "qp-max=17"; // + QString::number( sliderOpenh264->value() );
+        list << "speed-preset=superfast";
+        list << "threads=" + QString::number( QThread::idealThreadCount() );
+        value = list.join( " " );
+        value.append( " ! video/x-h264, profile=baseline" );
     }
 
     return value;
