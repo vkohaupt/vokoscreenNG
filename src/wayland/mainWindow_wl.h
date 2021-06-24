@@ -25,11 +25,18 @@ public:
 private:
     Portal_wl *portal_wl = new Portal_wl();
     GstElement *vk_gstElement = nullptr;
-    QString Vk_get_Videocodec_Encoder();
+    QStringList videoFormatsList;
     QvkSpezialSlider *sliderFrames;
 
-    void setSpezialSlider();
-    void setConnects();
+    void gst_Elements_available();
+    void supported_Formats_And_Codecs();
+    void check_is_Format_available();
+
+    void set_available_Formats_in_Combox();
+    void set_SpezialSlider();
+    void set_Connects();
+
+    QString get_Videocodec_Encoder();
 
 
 public Q_SLOTS:
@@ -41,6 +48,7 @@ private Q_SLOTS:
     void slot_start_gst( QString vk_fd, QString vk_path );
     void slot_framesReset();
     void slot_textToGuiLog( QString value );
+    void slot_set_available_VideoCodecs_in_Combox( QString suffix );
 
 };
 

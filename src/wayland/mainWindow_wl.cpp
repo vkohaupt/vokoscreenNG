@@ -6,6 +6,7 @@
 #include <QStandardPaths>
 #include <QDateTime>
 #include <QThread>
+#include <QMimeDatabase>
 
 QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     : QMainWindow(parent, f)
@@ -20,15 +21,22 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     setWindowIcon( icon );
 
+    set_Connects();
+
+    supported_Formats_And_Codecs();
+    gst_Elements_available();
+    check_is_Format_available();
+
+    set_SpezialSlider();
+    set_available_Formats_in_Combox();
+
+
     ui->tabWidget->removeTab(1);
     ui->frame_information->hide();
     ui->pushButtonPause->hide();
     ui->pushButtonContinue->hide();
     ui->pushButtonPlay->hide();
     ui->pushButtonScreencastOpenfolder->hide();
-
-    setSpezialSlider();
-    setConnects();
 }
 
 
@@ -43,7 +51,7 @@ void QvkMainWindow_wl::slot_textToGuiLog( QString value )
 }
 
 
-void QvkMainWindow_wl::setConnects()
+void QvkMainWindow_wl::set_Connects()
 {
 
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart, SLOT( setEnabled( bool ) ) );
@@ -57,14 +65,15 @@ void QvkMainWindow_wl::setConnects()
     connect( portal_wl, SIGNAL( signal_fd_path( QString, QString ) ), this, SLOT( slot_start_gst( QString, QString ) ) );
 
     connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this, SLOT( slot_framesReset() ) );
+
+    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
 }
 
 
-QString QvkMainWindow_wl::Vk_get_Videocodec_Encoder()
+QString QvkMainWindow_wl::get_Videocodec_Encoder()
 {
     QString value;
-//    QString encoder = "openh264enc"; //ui->comboBoxVideoCodec->currentData().toString();
-    QString encoder = "x264enc"; //ui->comboBoxVideoCodec->currentData().toString();
+    QString encoder = ui->comboBoxVideoCodec->currentData().toString();
 
     if ( encoder == "openh264enc" )
     {
@@ -92,6 +101,18 @@ QString QvkMainWindow_wl::Vk_get_Videocodec_Encoder()
         value.append( " ! video/x-h264, profile=baseline" );
     }
 
+    if ( encoder == "vp8enc" )
+    {
+        QStringList list;
+        list << "vp8enc";
+        list << "min_quantizer=20"; // + QString::number( sliderVp8->value() );
+        list << "max_quantizer=20";  // + QString::number( sliderVp8->value() );
+        list << "cpu-used=" + QString::number( QThread::idealThreadCount() );
+        list << "deadline=1000000";
+        list << "threads=" + QString::number( QThread::idealThreadCount() );
+        value = list.join( " " );
+    }
+
     return value;
 }
 
@@ -110,10 +131,10 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     pipeline << "videoconvert";
     pipeline << "videorate";
     pipeline << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
-    pipeline << Vk_get_Videocodec_Encoder();
+    pipeline << get_Videocodec_Encoder();
     pipeline << "matroskamux name=mux";
 
-    QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + ".mkv";// + ui->comboBoxFormat->currentText();
+    QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
     pipeline << "filesink location=\"" + QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) + "/" + newVideoFilename + "\"";
 
     QString launch = pipeline.join( " ! " );
@@ -139,7 +160,7 @@ void QvkMainWindow_wl::slot_stop()
 }
 
 
-void QvkMainWindow_wl::setSpezialSlider()
+void QvkMainWindow_wl::set_SpezialSlider()
 {
     sliderFrames = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_slider_frames->insertWidget( 0, sliderFrames );
@@ -156,3 +177,228 @@ void QvkMainWindow_wl::slot_framesReset()
 {
     sliderFrames->setValue( 25 );
 }
+
+
+void QvkMainWindow_wl::gst_Elements_available()
+{
+    QStringList list;
+    list << "pipewiresrc";
+    list << "pulsesrc";
+    list << "queue";
+    list << "capsfilter";
+    list << "videoconvert";
+    list << "videorate";
+    list << "audioconvert";
+    list << "audiorate";
+    list << "filesink";
+    list << "videoscale";
+    list << "h264parse";
+    list << "audiomixer";
+
+    for ( int i = 0; i < list.count(); i++ )
+    {
+        GstElementFactory *factory = gst_element_factory_find( QString( list.at(i) ).toLatin1() );
+        if ( !factory )
+        {
+            qDebug().noquote() << global::nameOutput << "-" << list.at(i);
+        }
+        else
+        {
+            qDebug().noquote() << global::nameOutput << "+" << list.at(i);
+            gst_object_unref( factory );
+        }
+    }
+    qDebug();
+}
+
+// This is the base for format, video and audiocodec
+void QvkMainWindow_wl::supported_Formats_And_Codecs()
+{
+    QStringList MKV_QStringList = ( QStringList()
+                                    << "muxer:matroskamux:mkv"
+                                    << "videomimetype:video/x-matroska"
+                                    << "audiomimetype:audio/x-matroska"
+                                    << "videocodec:openh264enc:H.264"
+                                    << "videocodec:x264enc:x264"
+                                    << "videocodec:vp8enc:VP8"
+                                    << "audiocodec:vorbisenc:vorbis"
+                                    << "audiocodec:flacenc:flac"
+                                    << "audiocodec:opusenc:opus"
+                                    << "audiocodec:lamemp3enc:mp3"
+                                   );
+
+    QStringList WEBM_QStringList = ( QStringList()
+                                     << "muxer:webmmux:webm"
+                                     << "videomimetype:video/webm"
+                                     << "audiomimetype:audio/webm"
+                                     << "videocodec:vp8enc:VP8"
+                                     << "audiocodec:vorbisenc:vorbis"
+                                     << "audiocodec:opusenc:opus"
+                                   );
+
+    QStringList AVI_QStringList = ( QStringList()
+                                     << "muxer:avimux:avi"
+                                     << "videomimetype:video/x-msvideo"
+                                     << "audiomimetype:audio/x-msvideo"
+                                     << "videocodec:openh264enc:H.264"
+                                     << "videocodec:x264enc:x264"
+                                     << "videocodec:vp8enc:VP8"
+                                     << "audiocodec:lamemp3enc:mp3"
+                                   );
+
+    QStringList MP4_QStringList = ( QStringList()
+                                    << "muxer:mp4mux:mp4"
+                                    << "videomimetype:video/mp4"
+                                    << "audiomimetype:audio/mpeg"
+                                    << "videocodec:openh264enc:H.264"
+                                    << "videocodec:x264enc:x264"
+                                    << "audiocodec:lamemp3enc:mp3"
+                                    << "audiocodec:opusenc:opus"
+                                    );
+
+    // https://de.wikipedia.org/wiki/QuickTime
+    QStringList MOV_QStringList = ( QStringList()
+                                    << "muxer:qtmux:mov"
+                                    << "videomimetype:video/mp4"
+                                    << "audiomimetype:audio/mpeg"
+                                    << "videocodec:openh264enc:H.264"
+                                    << "videocodec:x264enc:x264"
+                                    << "videocodec:vp8enc:VP8"
+                                    << "audiocodec:lamemp3enc:mp3"
+                                  );
+
+    videoFormatsList.clear();
+    videoFormatsList.append( MKV_QStringList.join( ","  ) );
+    videoFormatsList.append( WEBM_QStringList.join( ","  ) );
+    videoFormatsList.append( AVI_QStringList.join( "," ) );
+    videoFormatsList.append( MP4_QStringList.join( ",") );
+    videoFormatsList.append( MOV_QStringList.join( ",") );
+}
+
+
+void QvkMainWindow_wl::check_is_Format_available()
+{
+    qDebug().noquote() << global::nameOutput << "Symbols: + available, - not available";
+    QStringList tempList;
+    for ( int x = 0; x < videoFormatsList.count(); x++ )
+    {
+        QString stringAllKeys = videoFormatsList.at( x );
+        QStringList listKeys = stringAllKeys.split( "," );
+        QStringList listKey = listKeys.filter( "muxer" );
+        QString muxer = QString( listKey.at( 0 ) ).section( ":", 1, 1 );
+
+        GstElementFactory *factory = gst_element_factory_find( muxer.toLatin1() );
+        if ( !factory )
+        {
+            qDebug().noquote() << global::nameOutput << "-" << muxer;
+        }
+        else
+        {
+            qDebug().noquote() << global::nameOutput << "+" << muxer;
+            tempList << videoFormatsList.at( x );
+            gst_object_unref( factory );
+        }
+    }
+    videoFormatsList.clear();
+    videoFormatsList << tempList;
+}
+
+
+void QvkMainWindow_wl::set_available_Formats_in_Combox()
+{
+    ui->comboBoxFormat->clear();
+
+    for ( int x = 0; x < videoFormatsList.count(); x++  )
+    {
+        QString stringAllKeys = videoFormatsList.at( x );
+        QStringList listKeys = stringAllKeys.split( "," );
+        QStringList listKeyMuxer = listKeys.filter( "muxer" );
+
+        QMimeDatabase mimeDatabase;
+        QStringList listKeyVideoMimetype = listKeys.filter( "videomimetype" );
+        QMimeType mimetype = mimeDatabase.mimeTypeForName( QString( listKeyVideoMimetype.at( 0 ) ).section( ":", 1 ) );
+        QIcon icon = QIcon( ":/pictures/screencast/strip.png" );
+
+        ui->comboBoxFormat->addItem( icon, // Picture
+                                     QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ), // suffix
+                                     QString( listKeyMuxer.at( 0 ) ).section( ":", 1, 1 ) ); // muxer
+    }
+}
+
+
+void QvkMainWindow_wl::slot_set_available_VideoCodecs_in_Combox( QString suffix )
+{
+    ui->comboBoxVideoCodec->clear();
+
+    QStringList listSuffix = videoFormatsList.filter( suffix );
+    QString stringSuffix = listSuffix.at( 0 );
+    QStringList listKeys = stringSuffix.split( "," );
+    QStringList listKeyVideoCodec = listKeys.filter( "videocodec" );
+    for ( int i = 0; i < listKeyVideoCodec.count(); i++ )
+    {
+        QString encoder = QString( listKeyVideoCodec.at( i ) ).section( ":", 1, 1 );
+
+        QString name = QString( listKeyVideoCodec.at( i ) ).section( ":", 2, 2 );
+        GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
+
+        if ( !factory )
+        {
+            qDebug().noquote() << global::nameOutput << "-" << encoder;
+        }
+        else
+        {
+            QString message = global::nameOutput + " + " + encoder;
+            GstElement *source = gst_element_factory_create( factory, "source" );
+            if ( !source )
+            {
+                message = global::nameOutput + " - " + encoder + " available but codec is missing";
+            }
+            else
+            {
+                ui->comboBoxVideoCodec->addItem( name, encoder );
+                gst_object_unref( source );
+            }
+
+            qDebug().noquote() << message;
+            gst_object_unref( factory );
+        }
+    }
+
+    if ( ui->comboBoxVideoCodec->count() == 0 )
+    {
+        ui->pushButtonStart->setEnabled( false );
+    }
+    else
+    {
+        ui->pushButtonStart->setEnabled( true );
+    }
+}
+
+/*
+void QvkMainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
+{
+    ui->comboBoxAudioCodec->clear();
+
+    QStringList listSuffix = videoFormatsList.filter( suffix );
+    QString stringSuffix = listSuffix.at( 0 );
+    QStringList listKeys = stringSuffix.split( "," );
+    QStringList listKeyAudioCodec = listKeys.filter( "audiocodec" );
+    for ( int i = 0; i < listKeyAudioCodec.count(); i++ )
+    {
+        QString encoder = QString( listKeyAudioCodec.at( i ) ).section( ":", 1, 1 );
+        QString name =    QString( listKeyAudioCodec.at( i ) ).section( ":", 2, 2 );
+        GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
+        if ( !factory )
+        {
+            qDebug().noquote() << global::nameOutput << "-" << encoder;
+        }
+        else
+        {
+            qDebug().noquote() << global::nameOutput << "+" << encoder;
+            ui->comboBoxAudioCodec->addItem( name, encoder );
+            gst_object_unref( factory );
+        }
+    }
+    qDebug();
+}
+*/
