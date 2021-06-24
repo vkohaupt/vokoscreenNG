@@ -24,8 +24,8 @@
 #include "global.h"
 
 #ifdef Q_OS_LINUX
+#include "mainWindow_wl.h"
 #include "QvkWaylandRoutines.h"
-#include "wl_mainwindow.h"
 #endif
 
 #ifdef Q_OS_WIN
@@ -169,7 +169,7 @@ int main(int argc, char *argv[])
         }
         else
         {
-            Qvk_wl_MainWindow *wl = new Qvk_wl_MainWindow;
+            QvkMainWindow_wl *wl = new QvkMainWindow_wl;
             wl->show();
         }
 #endif
