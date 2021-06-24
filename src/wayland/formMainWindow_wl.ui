@@ -68,7 +68,7 @@
         <item>
          <widget class="QTabWidget" name="tabWidget">
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <property name="iconSize">
            <size>
@@ -168,7 +168,7 @@
             <item row="4" column="0" colspan="2" alignment="Qt::AlignHCenter">
              <widget class="QLabel" name="label_4">
               <property name="text">
-               <string notr="true">Fedora 34 KDE (Out of the box)</string>
+               <string notr="true">Fedora 34 KDE</string>
               </property>
              </widget>
             </item>
@@ -336,7 +336,28 @@
             <item>
              <layout class="QGridLayout" name="gridLayout">
               <item row="1" column="2">
-               <spacer name="horizontalSpacer_4">
+               <widget class="QComboBox" name="comboBoxFormat"/>
+              </item>
+              <item row="2" column="2">
+               <widget class="QComboBox" name="comboBoxVideoCodec"/>
+              </item>
+              <item row="0" column="1" colspan="3">
+               <layout class="QHBoxLayout" name="horizontalLayout_slider_frames">
+                <item>
+                 <widget class="QToolButton" name="toolButtonFramesReset">
+                  <property name="text">
+                   <string notr="true"/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../screencast.qrc">
+                    <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="1" column="3">
+               <spacer name="horizontalSpacer">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
@@ -359,33 +380,23 @@
                 </item>
                </layout>
               </item>
-              <item row="1" column="3">
-               <spacer name="horizontalSpacer_5">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item row="0" column="1" colspan="3">
-               <layout class="QHBoxLayout" name="horizontalLayout_slider_frames">
-                <item>
-                 <widget class="QToolButton" name="toolButtonFramesReset">
+              <item row="2" column="0">
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <item alignment="Qt::AlignRight">
+                 <widget class="QLabel" name="labelVideoCodec">
                   <property name="text">
-                   <string notr="true"/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="../screencast.qrc">
-                    <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                   <string>Videocodec</string>
                   </property>
                  </widget>
                 </item>
                </layout>
+              </item>
+              <item row="1" column="0" alignment="Qt::AlignRight">
+               <widget class="QLabel" name="labelFormat">
+                <property name="text">
+                 <string>Format</string>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>

@@ -20,6 +20,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     setWindowIcon( icon );
 
+    ui->tabWidget->removeTab(1);
     ui->frame_information->hide();
     ui->pushButtonPause->hide();
     ui->pushButtonContinue->hide();
