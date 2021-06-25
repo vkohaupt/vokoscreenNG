@@ -27,9 +27,9 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
     set_Connects();
 
-    supported_Formats_And_Codecs();
-    gst_Elements_available();
-    check_is_Format_available();
+    set_supported_Formats_And_Codecs();
+    check_all_Elements_available();
+    check_all_Formats_available();
 
     set_SpezialSlider();
     set_available_Formats_in_ComboBox();
@@ -197,7 +197,7 @@ void QvkMainWindow_wl::messageBox( QString value )
 }
 
 
-void QvkMainWindow_wl::gst_Elements_available()
+void QvkMainWindow_wl::check_all_Elements_available()
 {
     QStringList list;
     list << "pipewiresrc";
@@ -234,7 +234,7 @@ void QvkMainWindow_wl::gst_Elements_available()
 }
 
 // This is the base for format, video and audiocodec
-void QvkMainWindow_wl::supported_Formats_And_Codecs()
+void QvkMainWindow_wl::set_supported_Formats_And_Codecs()
 {
     QStringList MKV_QStringList = ( QStringList()
                                     << "muxer:matroskamux:mkv"
@@ -298,7 +298,7 @@ void QvkMainWindow_wl::supported_Formats_And_Codecs()
 }
 
 
-void QvkMainWindow_wl::check_is_Format_available()
+void QvkMainWindow_wl::check_all_Formats_available()
 {
     qDebug().noquote() << global::nameOutput << "Symbols: + available, - not available";
     QStringList tempList;

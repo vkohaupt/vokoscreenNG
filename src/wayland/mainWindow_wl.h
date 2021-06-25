@@ -28,10 +28,10 @@ private:
     QStringList videoFormatsList;
     QvkSpezialSlider *sliderFrames;
 
-    void gst_Elements_available();
-    void supported_Formats_And_Codecs();
-    void check_is_Format_available();
+    void check_all_Elements_available();
+    void check_all_Formats_available();
 
+    void set_supported_Formats_And_Codecs();
     void set_available_Formats_in_ComboBox();
     void set_SpezialSlider();
     void set_Connects();
