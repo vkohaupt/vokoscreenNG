@@ -48,7 +48,6 @@ private Q_SLOTS:
     void slot_stop();
     void slot_start_gst( QString vk_fd, QString vk_path );
     void slot_framesReset();
-    void slot_textToGuiLog( QString value );
     void slot_set_available_VideoCodecs_in_ComboBox( QString suffix );
 
 };

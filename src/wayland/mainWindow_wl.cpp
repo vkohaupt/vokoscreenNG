@@ -16,7 +16,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->setupUi( this );
 
     QvkLogController *vklogController = new QvkLogController();
-    connect( vklogController, SIGNAL( signal_newLogText( QString ) ), this, SLOT( slot_textToGuiLog( QString ) ) );
+    connect( vklogController, SIGNAL( signal_newLogText( QString ) ), ui->textBrowserLog, SLOT( append( QString ) ) );
 
     setWindowTitle( global::name + " " + global::version );
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
@@ -25,15 +25,12 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->tabWidgetScreencast->setCurrentIndex( 0 );
     ui->tabWidgetSideBar->setCurrentIndex( 0 );
 
+    set_SpezialSlider();
     set_Connects();
-
-    set_supported_Formats_And_Codecs();
+    set_supported_Formats_And_Codecs(); // This is the base for format, video and audiocodec
     check_all_Elements_available();
     check_all_Formats_available();
-
-    set_SpezialSlider();
     set_available_Formats_in_ComboBox();
-
 
     ui->tabWidgetScreencast->removeTab(1);
     ui->frame_information->hide();
@@ -49,26 +46,20 @@ QvkMainWindow_wl::~QvkMainWindow_wl()
 }
 
 
-void QvkMainWindow_wl::slot_textToGuiLog( QString value )
-{
-    ui->textBrowserLog->append( value );
-}
-
-
 void QvkMainWindow_wl::set_Connects()
 {
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( slot_start() ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                SLOT( slot_start() ) );
 
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), this, SLOT( slot_stop() ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonStop, SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), this,                SLOT( slot_stop() ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonStart, SLOT( setDisabled( bool ) ) );
 
-    connect( portal_wl, SIGNAL( signal_fd_path( QString, QString ) ), this, SLOT( slot_start_gst( QString, QString ) ) );
+    connect( portal_wl, SIGNAL( signal_fd_path( QString, QString ) ), this,       SLOT( slot_start_gst( QString, QString ) ) );
 
-    connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this, SLOT( slot_framesReset() ) );
+    connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this,          SLOT( slot_framesReset() ) );
 
-    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_ComboBox( QString ) ) );
+    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this,   SLOT( slot_set_available_VideoCodecs_in_ComboBox( QString ) ) );
 }
 
 
@@ -106,7 +97,7 @@ QString QvkMainWindow_wl::get_Videocodec_Encoder()
     if ( encoder == "vp8enc" )
     {
         QStringList list;
-        list << "vp8enc";
+        list << encoder;
         list << "min_quantizer=20"; // + QString::number( sliderVp8->value() );
         list << "max_quantizer=20";  // + QString::number( sliderVp8->value() );
         list << "cpu-used=" + QString::number( QThread::idealThreadCount() );
@@ -128,7 +119,7 @@ void QvkMainWindow_wl::slot_start()
 
 void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 {
-    ui->pushButtonStop->clicked( true );
+    ui->pushButtonStop->setEnabled( true );
 
     QStringList stringList;
     stringList << QString( "pipewiresrc fd=" ).append( vk_fd ).append( " path=" ).append( vk_path ).append( " do-timestamp=true" );
