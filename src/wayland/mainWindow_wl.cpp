@@ -129,35 +129,37 @@ void QvkMainWindow_wl::slot_start()
 
 void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 {
-    QStringList pipeline;
-    pipeline << QString( "pipewiresrc fd=" ).append( vk_fd ).append( " path=" ).append( vk_path ).append( " do-timestamp=true" );
-    pipeline << "videoconvert";
-    pipeline << "videorate";
-    pipeline << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
-    pipeline << get_Videocodec_Encoder();
-    pipeline << "matroskamux name=mux";
+    QStringList stringList;
+    stringList << QString( "pipewiresrc fd=" ).append( vk_fd ).append( " path=" ).append( vk_path ).append( " do-timestamp=true" );
+    stringList << "videoconvert";
+    stringList << "videorate";
+    stringList << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
+    stringList << get_Videocodec_Encoder();
+    stringList << "matroskamux name=mux";
 
     QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
-    pipeline << "filesink location=\"" + QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) + "/" + newVideoFilename + "\"";
+    stringList << "filesink location=\"" + QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) + "/" + newVideoFilename + "\"";
 
-    QString launch = pipeline.join( " ! " );
+    QString launch = stringList.join( " ! " );
     qDebug().noquote() << global::nameOutput << launch;
 
-    vk_gstElement = gst_parse_launch( launch.toUtf8(), nullptr );
-    gst_element_set_state( vk_gstElement, GST_STATE_PLAYING );
+    pipeline = gst_parse_launch( launch.toUtf8(), nullptr );
+    gst_element_set_state( pipeline, GST_STATE_PLAYING );
 }
 
 
 void QvkMainWindow_wl::slot_stop()
 {
     // send EOS to pipeline
-    gst_element_send_event( vk_gstElement, gst_event_new_eos() );
+    gst_element_send_event( pipeline, gst_event_new_eos() );
 
     // wait for the EOS to traverse the pipeline and is reported to the bus
-    GstBus *bus = gst_element_get_bus( vk_gstElement );
+    GstBus *bus = gst_element_get_bus( pipeline );
     gst_bus_timed_pop_filtered( bus, GST_CLOCK_TIME_NONE, GST_MESSAGE_EOS );
+    gst_object_unref( bus );
 
-    gst_element_set_state( vk_gstElement, GST_STATE_NULL );
+    gst_element_set_state( pipeline, GST_STATE_NULL );
+    gst_object_unref ( pipeline );
 
     qDebug().noquote() << global::nameOutput << "Stop record";
 }

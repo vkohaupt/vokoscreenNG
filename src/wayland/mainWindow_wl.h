@@ -24,7 +24,7 @@ public:
 
 private:
     Portal_wl *portal_wl = new Portal_wl();
-    GstElement *vk_gstElement = nullptr;
+    GstElement *pipeline = nullptr;
     QStringList videoFormatsList;
     QvkSpezialSlider *sliderFrames;
 
