@@ -25,15 +25,10 @@
 #include <QFlags>
 #include <QLoggingCategory>
 #include <QMainWindow>
-/*
-namespace Ui
-{
-class PortalTest;
-}
-*/
+
 Q_DECLARE_LOGGING_CATEGORY(PortalTestKde)
 
-class Portal_wl : public QObject //QMainWindow
+class Portal_wl : public QObject
 {
     Q_OBJECT
 public:

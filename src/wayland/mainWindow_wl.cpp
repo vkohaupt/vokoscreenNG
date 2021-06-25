@@ -120,7 +120,7 @@ QString QvkMainWindow_wl::get_Videocodec_Encoder()
 
 void QvkMainWindow_wl::slot_start()
 {
-    qDebug().noquote() << global::nameOutput << "start";
+    qDebug().noquote() << global::nameOutput << "start record";
     portal_wl->requestScreenSharing();
 }
 
@@ -139,7 +139,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     pipeline << "filesink location=\"" + QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) + "/" + newVideoFilename + "\"";
 
     QString launch = pipeline.join( " ! " );
-    qDebug() << global::nameOutput << launch;
+    qDebug().noquote() << global::nameOutput << launch;
 
     vk_gstElement = gst_parse_launch( launch.toUtf8(), nullptr );
     gst_element_set_state( vk_gstElement, GST_STATE_PLAYING );
@@ -157,7 +157,7 @@ void QvkMainWindow_wl::slot_stop()
 
     gst_element_set_state( vk_gstElement, GST_STATE_NULL );
 
-    qDebug() << global::nameOutput << "Stop record";
+    qDebug().noquote() << global::nameOutput << "Stop record";
 }
 
 

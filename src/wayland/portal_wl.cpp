@@ -19,6 +19,7 @@
  */
 
 #include "portal_wl.h"
+#include "global.h"
 
 #include <QDBusArgument>
 #include <QDBusConnection>
@@ -60,6 +61,7 @@ Portal_wl::~Portal_wl()
 
 void Portal_wl::requestScreenSharing()
 {
+    qDebug().noquote() << global::nameOutput << "11";
     QDBusMessage message = QDBusMessage::createMethodCall(QLatin1String("org.freedesktop.portal.Desktop"),
                                                           QLatin1String("/org/freedesktop/portal/desktop"),
                                                           QLatin1String("org.freedesktop.portal.ScreenCast"),
@@ -84,13 +86,13 @@ void Portal_wl::requestScreenSharing()
                                                   this,
                                                   SLOT( slot_gotCreateSessionResponse(uint,QVariantMap)));
         }
-        qDebug() << "reply.value().path():" << reply.value().path();
+        qDebug().noquote() << global::nameOutput << "reply.value().path():" << reply.value().path();
     });
 }
 
 void Portal_wl::slot_gotCreateSessionResponse(uint response, const QVariantMap &results)
 {
-qDebug() << "1111111111111111111111111111111111111111111111111111111111 response:" << response << "results:" << results;
+qDebug().noquote() << global::nameOutput << "222 response:" << response << "results:" << results;
     if (response != 0)
     {
         qWarning() << "Failed to create session: " << response;
@@ -103,14 +105,14 @@ qDebug() << "1111111111111111111111111111111111111111111111111111111111 response
                                                           QLatin1String("SelectSources"));
 
     m_session = results.value(QLatin1String("session_handle")).toString();
-qDebug() << "111111111111111111111111111111111111111111111111111111111 m_session:" << m_session;
+qDebug().noquote() << global::nameOutput << "222 m_session:" << m_session;
 
     message << QVariant::fromValue(QDBusObjectPath(m_session))
             << QVariantMap { { QLatin1String("multiple"), true},
                              { QLatin1String("types"), (uint)1 }, //(uint)m_mainWindow->screenShareCombobox->currentIndex() + 1}, // 1 = Monitor
                              { QLatin1String("handle_token"), getRequestToken() } };
 
-qDebug() << "1111111111111111111111111111111111111111111111111111111111 message:"<< message;
+qDebug().noquote() << global::nameOutput << "222 message:"<< message;
 
     QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pendingCall);
@@ -129,12 +131,11 @@ qDebug() << "1111111111111111111111111111111111111111111111111111111111 message:
                                                 SLOT( slot_gotSelectSourcesResponse(uint,QVariantMap)));
         }
     });
-qDebug() << "2222222222222222222222222222222222222222222222222222222222222222222";
 }
 
 void Portal_wl::slot_gotSelectSourcesResponse( uint response, const QVariantMap &results )
 {
-qDebug() << "3333333333333333333333333333333333333333333333333333333333333333333333 response:" << response << "results:" << results;
+qDebug().noquote() << global::nameOutput << "333 response:" << response << "results:" << results;
     if ( response != 0 )
     {
         qWarning() << "Failed to select sources: " << response;
@@ -167,17 +168,17 @@ qDebug() << "3333333333333333333333333333333333333333333333333333333333333333333
                                                 SLOT( slot_gotStartResponse(uint,QVariantMap)));
         }
     });
-qDebug() << "44444444444444444444444444444444444444444444444444444444444444444444444";
+qDebug().noquote() << global::nameOutput << "333";
 }
 
 
 void Portal_wl::slot_gotStartResponse( uint response, const QVariantMap &results )
 {
-qDebug() << "55555555555555555555555555555555555555555555555555555555555555 response:" << response << "results:" << results;
+qDebug().noquote() << global::nameOutput << "4444 response:" << response << "results:" << results;
     if ( response != 0 )
     {
         // KDE-Dialog wird per Button <Abbruch> abgeprochen
-        qWarning() << "Failed to start: " << response;
+        qWarning().noquote() << global::nameOutput << "Failed to start: " << response;
         return;
     }
 
