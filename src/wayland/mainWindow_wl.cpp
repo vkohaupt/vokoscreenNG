@@ -232,65 +232,60 @@ void QvkMainWindow_wl::check_all_Elements_available()
 // This is the base for format, video and audiocodec
 void QvkMainWindow_wl::set_supported_Formats_And_Codecs()
 {
-    QStringList MKV_QStringList = ( QStringList()
-                                    << "muxer:matroskamux:mkv"
-                                    << "videomimetype:video/x-matroska"
-                                    << "audiomimetype:audio/x-matroska"
-                                    << "videocodec:openh264enc:H.264"
-                                    << "videocodec:x264enc:x264"
-                                    << "videocodec:vp8enc:VP8"
-                                    << "audiocodec:vorbisenc:vorbis"
-                                    << "audiocodec:flacenc:flac"
-                                    << "audiocodec:opusenc:opus"
-                                    << "audiocodec:lamemp3enc:mp3"
-                                   );
+    QStringList MKV;
+                MKV << "muxer:matroskamux:mkv";
+                MKV << "videomimetype:video/x-matroska";
+                MKV << "audiomimetype:audio/x-matroska";
+                MKV << "videocodec:openh264enc:H.264";
+                MKV << "videocodec:x264enc:x264";
+                MKV << "videocodec:vp8enc:VP8";
+                MKV << "audiocodec:vorbisenc:vorbis";
+                MKV << "audiocodec:flacenc:flac";
+                MKV << "audiocodec:opusenc:opus";
+                MKV << "audiocodec:lamemp3enc:mp3";
 
-    QStringList WEBM_QStringList = ( QStringList()
-                                     << "muxer:webmmux:webm"
-                                     << "videomimetype:video/webm"
-                                     << "audiomimetype:audio/webm"
-                                     << "videocodec:vp8enc:VP8"
-                                     << "audiocodec:vorbisenc:vorbis"
-                                     << "audiocodec:opusenc:opus"
-                                   );
+    QStringList WEBM;
+                WEBM << "muxer:webmmux:webm";
+                WEBM << "videomimetype:video/webm";
+                WEBM << "audiomimetype:audio/webm";
+                WEBM << "videocodec:vp8enc:VP8";
+                WEBM << "audiocodec:vorbisenc:vorbis";
+                WEBM << "audiocodec:opusenc:opus";
 
-    QStringList AVI_QStringList = ( QStringList()
-                                     << "muxer:avimux:avi"
-                                     << "videomimetype:video/x-msvideo"
-                                     << "audiomimetype:audio/x-msvideo"
-                                     << "videocodec:openh264enc:H.264"
-                                     << "videocodec:x264enc:x264"
-                                     << "videocodec:vp8enc:VP8"
-                                     << "audiocodec:lamemp3enc:mp3"
-                                   );
+    QStringList AVI;
+                AVI << "muxer:avimux:avi";
+                AVI << "videomimetype:video/x-msvideo";
+                AVI << "audiomimetype:audio/x-msvideo";
+                AVI << "videocodec:openh264enc:H.264";
+                AVI << "videocodec:x264enc:x264";
+                AVI << "videocodec:vp8enc:VP8";
+                AVI << "audiocodec:lamemp3enc:mp3";
 
-    QStringList MP4_QStringList = ( QStringList()
-                                    << "muxer:mp4mux:mp4"
-                                    << "videomimetype:video/mp4"
-                                    << "audiomimetype:audio/mpeg"
-                                    << "videocodec:openh264enc:H.264"
-                                    << "videocodec:x264enc:x264"
-                                    << "audiocodec:lamemp3enc:mp3"
-                                    << "audiocodec:opusenc:opus"
-                                    );
+    QStringList MP4;
+                MP4 << "muxer:mp4mux:mp4";
+                MP4 << "videomimetype:video/mp4";
+                MP4 << "audiomimetype:audio/mpeg";
+                MP4 << "videocodec:openh264enc:H.264";
+                MP4 << "videocodec:x264enc:x264";
+                MP4 << "audiocodec:lamemp3enc:mp3";
+                MP4 << "audiocodec:opusenc:opus";
 
     // https://de.wikipedia.org/wiki/QuickTime
-    QStringList MOV_QStringList = ( QStringList()
-                                    << "muxer:qtmux:mov"
-                                    << "videomimetype:video/mp4"
-                                    << "audiomimetype:audio/mpeg"
-                                    << "videocodec:openh264enc:H.264"
-                                    << "videocodec:x264enc:x264"
-                                    << "videocodec:vp8enc:VP8"
-                                    << "audiocodec:lamemp3enc:mp3"
-                                  );
+    QStringList MOV;
+                MOV << "muxer:qtmux:mov";
+                MOV << "videomimetype:video/mp4";
+                MOV << "audiomimetype:audio/mpeg";
+                MOV << "videocodec:openh264enc:H.264";
+                MOV << "videocodec:x264enc:x264";
+                MOV << "videocodec:vp8enc:VP8";
+                MOV << "audiocodec:lamemp3enc:mp3";
 
     videoFormatsList.clear();
-    videoFormatsList.append( MKV_QStringList.join( ","  ) );
-    videoFormatsList.append( WEBM_QStringList.join( ","  ) );
-    videoFormatsList.append( AVI_QStringList.join( "," ) );
-    videoFormatsList.append( MP4_QStringList.join( ",") );
-    videoFormatsList.append( MOV_QStringList.join( ",") );
+    videoFormatsList.append( MKV.join( "," ) );
+    videoFormatsList.append( WEBM.join( "," ) );
+    videoFormatsList.append( AVI.join( "," ) );
+    videoFormatsList.append( MP4.join( ",") );
+    videoFormatsList.append( MOV.join( ",") );
 }
 
 
