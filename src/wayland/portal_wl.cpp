@@ -61,7 +61,7 @@ Portal_wl::~Portal_wl()
 
 void Portal_wl::requestScreenSharing()
 {
-    qDebug().noquote() << global::nameOutput << "11";
+qDebug().noquote() << global::nameOutput << "111";
     QDBusMessage message = QDBusMessage::createMethodCall(QLatin1String("org.freedesktop.portal.Desktop"),
                                                           QLatin1String("/org/freedesktop/portal/desktop"),
                                                           QLatin1String("org.freedesktop.portal.ScreenCast"),
@@ -86,14 +86,14 @@ void Portal_wl::requestScreenSharing()
                                                   this,
                                                   SLOT( slot_gotCreateSessionResponse(uint,QVariantMap)));
         }
-        qDebug().noquote() << global::nameOutput << "reply.value().path():" << reply.value().path();
+qDebug().noquote() << global::nameOutput << "111" << "reply.value().path():" << reply.value().path();
     });
 }
 
 void Portal_wl::slot_gotCreateSessionResponse(uint response, const QVariantMap &results)
 {
 qDebug().noquote() << global::nameOutput << "222 response:" << response << "results:" << results;
-    if (response != 0)
+    if ( response != 0 )
     {
         qWarning() << "Failed to create session: " << response;
         return;
@@ -174,7 +174,7 @@ qDebug().noquote() << global::nameOutput << "333";
 
 void Portal_wl::slot_gotStartResponse( uint response, const QVariantMap &results )
 {
-qDebug().noquote() << global::nameOutput << "4444 response:" << response << "results:" << results;
+qDebug().noquote() << global::nameOutput << "444 111 response:" << response << "results:" << results;
     if ( response != 0 )
     {
         // KDE-Dialog wird per Button <Abbruch> abgeprochen
@@ -182,9 +182,10 @@ qDebug().noquote() << global::nameOutput << "4444 response:" << response << "res
         return;
     }
 
-    Streams streams = qdbus_cast<Streams>(results.value(QLatin1String("streams")));
+    Streams streams = qdbus_cast<Streams>( results.value( QLatin1String( "streams" ) ) );
     Stream stream = streams.at( vk_startCounter );
     vk_startCounter++;
+qDebug().noquote() << global::nameOutput << "444 222";
 
     QDBusMessage message = QDBusMessage::createMethodCall(QLatin1String("org.freedesktop.portal.Desktop"),
                                                           QLatin1String("/org/freedesktop/portal/desktop"),

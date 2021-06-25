@@ -122,7 +122,7 @@ QString QvkMainWindow_wl::get_Videocodec_Encoder()
 
 void QvkMainWindow_wl::slot_start()
 {
-    qDebug().noquote() << global::nameOutput << "start record";
+    qDebug().noquote() << global::nameOutput << "Start record";
     portal_wl->requestScreenSharing();
 }
 
