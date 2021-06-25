@@ -43,8 +43,8 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 
 ## Linux
 ### Run-time requirements
+
 * Qt5 >= 5.9.4
-* gstreamer-plugin-pipewire (since 3.1.0) mandatory for Wayland
 * pulseaudio
 * libwayland-client0 (since 3.0.9)
 * gstreamer >= 1.12.5
@@ -66,13 +66,21 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
   - Video: x264
 * gstreamer-plugins-libav
   - Player: x264
+* 
 
-**VAAPI only supported in vokoscreenNG 3.0.0 - 3.0.8**
+#### Wayland (since 3.1.0)
+* gstreamer-plugin-pipewire
+* xdg-desktop-portal
+* xdg-desktop-portal-(kde, gtk, ...)
 
-* gstreamer-plugins-vaapi
+#### VAAPI only supported in vokoscreenNG 3.0.0 - 3.0.8
+
+* gstreamer-plugins-vaapi 
   - Intel Hardwareenconding H.264 and MPEG2
-* intel-vaapi-driver
+* intel-vaapi-driver 
   - Intel Hardwareenconding H.264 and MPEG2
+* 
+
 
 ### Build requirements
 * pkgconfig
