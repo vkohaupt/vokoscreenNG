@@ -213,6 +213,8 @@ void QvkMainWindow_wl::check_all_Elements_available()
     list << "h264parse";
     list << "audiomixer";
 
+    qDebug().noquote() << global::nameOutput << "--- GStreamer elements ---";
+
     for ( int i = 0; i < list.count(); i++ )
     {
         GstElementFactory *factory = gst_element_factory_find( QString( list.at(i) ).toLatin1() );
@@ -300,7 +302,8 @@ void QvkMainWindow_wl::set_supported_Formats_And_Codecs()
 
 void QvkMainWindow_wl::check_all_Formats_available()
 {
-    qDebug().noquote() << global::nameOutput << "Symbols: + available, - not available";
+    qDebug().noquote() << global::nameOutput << "--- GStreamer muxer ---";
+
     QStringList tempList;
     for ( int x = 0; x < videoFormatsList.count(); x++ )
     {
@@ -323,6 +326,7 @@ void QvkMainWindow_wl::check_all_Formats_available()
     }
     videoFormatsList.clear();
     videoFormatsList << tempList;
+    qDebug();
 }
 
 
@@ -351,6 +355,8 @@ void QvkMainWindow_wl::set_available_Formats_in_ComboBox()
 void QvkMainWindow_wl::slot_set_available_VideoCodecs_in_ComboBox( QString suffix )
 {
     ui->comboBoxVideoCodec->clear();
+
+    qDebug().noquote() << global::nameOutput << "--- GStreamer video encoder ---";
 
     QStringList listSuffix = videoFormatsList.filter( suffix );
     QString stringSuffix = listSuffix.at( 0 );
@@ -394,6 +400,7 @@ void QvkMainWindow_wl::slot_set_available_VideoCodecs_in_ComboBox( QString suffi
     {
         ui->pushButtonStart->setEnabled( true );
     }
+    qDebug();
 }
 
 /*
