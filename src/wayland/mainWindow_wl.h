@@ -32,7 +32,7 @@ private:
     void supported_Formats_And_Codecs();
     void check_is_Format_available();
 
-    void set_available_Formats_in_Combox();
+    void set_available_Formats_in_ComboBox();
     void set_SpezialSlider();
     void set_Connects();
 
@@ -49,7 +49,7 @@ private Q_SLOTS:
     void slot_start_gst( QString vk_fd, QString vk_path );
     void slot_framesReset();
     void slot_textToGuiLog( QString value );
-    void slot_set_available_VideoCodecs_in_Combox( QString suffix );
+    void slot_set_available_VideoCodecs_in_ComboBox( QString suffix );
 
 };
 

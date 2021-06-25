@@ -29,7 +29,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     check_is_Format_available();
 
     set_SpezialSlider();
-    set_available_Formats_in_Combox();
+    set_available_Formats_in_ComboBox();
 
 
     ui->tabWidget->removeTab(1);
@@ -54,7 +54,6 @@ void QvkMainWindow_wl::slot_textToGuiLog( QString value )
 
 void QvkMainWindow_wl::set_Connects()
 {
-
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStop, SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( slot_start() ) );
@@ -67,7 +66,7 @@ void QvkMainWindow_wl::set_Connects()
 
     connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this, SLOT( slot_framesReset() ) );
 
-    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
+    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_ComboBox( QString ) ) );
 }
 
 
@@ -324,7 +323,7 @@ void QvkMainWindow_wl::check_is_Format_available()
 }
 
 
-void QvkMainWindow_wl::set_available_Formats_in_Combox()
+void QvkMainWindow_wl::set_available_Formats_in_ComboBox()
 {
     ui->comboBoxFormat->clear();
 
@@ -346,7 +345,7 @@ void QvkMainWindow_wl::set_available_Formats_in_Combox()
 }
 
 
-void QvkMainWindow_wl::slot_set_available_VideoCodecs_in_Combox( QString suffix )
+void QvkMainWindow_wl::slot_set_available_VideoCodecs_in_ComboBox( QString suffix )
 {
     ui->comboBoxVideoCodec->clear();
 
