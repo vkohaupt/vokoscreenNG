@@ -37,6 +37,7 @@ private:
     void set_Connects();
 
     QString get_Videocodec_Encoder();
+    void messageBox( QString value );
 
 
 public Q_SLOTS:

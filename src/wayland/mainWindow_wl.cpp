@@ -7,6 +7,7 @@
 #include <QDateTime>
 #include <QThread>
 #include <QMimeDatabase>
+#include <QMessageBox>
 
 QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     : QMainWindow(parent, f)
@@ -179,6 +180,21 @@ void QvkMainWindow_wl::slot_framesReset()
 }
 
 
+void QvkMainWindow_wl::messageBox( QString value )
+{
+    QMessageBox *messageBox = new QMessageBox();
+    QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
+    messageBox->setWindowIcon( icon );
+    messageBox->setWindowTitle( global::name + " " + global::version );
+    messageBox->setIcon( QMessageBox::Critical );
+    messageBox->setText( tr( "Wayland desktop session detected" ) );
+    messageBox->setInformativeText( ( "Please install the package\n" + value ) );
+    messageBox->exec();
+
+    exit(0);
+}
+
+
 void QvkMainWindow_wl::gst_Elements_available()
 {
     QStringList list;
@@ -201,6 +217,10 @@ void QvkMainWindow_wl::gst_Elements_available()
         if ( !factory )
         {
             qDebug().noquote() << global::nameOutput << "-" << list.at(i);
+            if ( list.at(i) == "pipewiresrc" )
+            {
+               messageBox( "gstreamer-plugin-pipewire" );
+            }
         }
         else
         {
