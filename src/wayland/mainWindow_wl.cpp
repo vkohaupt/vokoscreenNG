@@ -46,6 +46,13 @@ QvkMainWindow_wl::~QvkMainWindow_wl()
 }
 
 
+void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
+{
+    Q_UNUSED(event);
+    ui->pushButtonStop->click();
+}
+
+
 void QvkMainWindow_wl::set_Connects()
 {
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart, SLOT( setEnabled( bool ) ) );

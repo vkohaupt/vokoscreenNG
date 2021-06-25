@@ -50,6 +50,11 @@ private Q_SLOTS:
     void slot_framesReset();
     void slot_set_available_VideoCodecs_in_ComboBox( QString suffix );
 
+
+protected:
+    void closeEvent( QCloseEvent *event );
+
+
 };
 
 #endif 
