@@ -22,6 +22,9 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     setWindowIcon( icon );
 
+    ui->tabWidgetScreencast->setCurrentIndex( 0 );
+    ui->tabWidgetSideBar->setCurrentIndex( 0 );
+
     set_Connects();
 
     supported_Formats_And_Codecs();
@@ -32,7 +35,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_available_Formats_in_ComboBox();
 
 
-    ui->tabWidget->removeTab(1);
+    ui->tabWidgetScreencast->removeTab(1);
     ui->frame_information->hide();
     ui->pushButtonPause->hide();
     ui->pushButtonContinue->hide();
