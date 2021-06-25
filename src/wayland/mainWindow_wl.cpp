@@ -58,7 +58,6 @@ void QvkMainWindow_wl::slot_textToGuiLog( QString value )
 void QvkMainWindow_wl::set_Connects()
 {
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStop, SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( slot_start() ) );
 
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), this, SLOT( slot_stop() ) );
@@ -129,6 +128,8 @@ void QvkMainWindow_wl::slot_start()
 
 void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 {
+    ui->pushButtonStop->clicked( true );
+
     QStringList stringList;
     stringList << QString( "pipewiresrc fd=" ).append( vk_fd ).append( " path=" ).append( vk_path ).append( " do-timestamp=true" );
     stringList << "videoconvert";
