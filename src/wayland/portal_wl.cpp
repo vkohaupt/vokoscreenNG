@@ -59,9 +59,12 @@ Portal_wl::~Portal_wl()
 {
 }
 
-void Portal_wl::requestScreenSharing()
+void Portal_wl::requestScreenSharing(int value)
 {
 qDebug().noquote() << global::nameOutput << "111";
+
+    Selection_Screen_Window_Area = value;
+
     QDBusMessage message = QDBusMessage::createMethodCall(QLatin1String("org.freedesktop.portal.Desktop"),
                                                           QLatin1String("/org/freedesktop/portal/desktop"),
                                                           QLatin1String("org.freedesktop.portal.ScreenCast"),
@@ -109,7 +112,7 @@ qDebug().noquote() << global::nameOutput << "222 m_session:" << m_session;
 
     message << QVariant::fromValue(QDBusObjectPath(m_session))
             << QVariantMap { { QLatin1String("multiple"), true},
-                             { QLatin1String("types"), (uint)1 }, //(uint)m_mainWindow->screenShareCombobox->currentIndex() + 1}, // 1 = Monitor
+                             { QLatin1String("types"), (uint)Selection_Screen_Window_Area }, //(uint)m_mainWindow->screenShareCombobox->currentIndex() + 1}, // 1 = Monitor
 //                             { QLatin1String("cursor_mode"), (uint)2 },
                              { QLatin1String("handle_token"), getRequestToken() } };
 

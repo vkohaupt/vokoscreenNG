@@ -120,7 +120,19 @@ QString QvkMainWindow_wl::get_Videocodec_Encoder()
 void QvkMainWindow_wl::slot_start()
 {
     qDebug().noquote() << global::nameOutput << "Start record";
-    portal_wl->requestScreenSharing();
+
+    int value = 1;
+    if ( ui->radioButtonScreencastFullscreen->isChecked() )
+    {
+        value = 1;
+    }
+
+    if ( ui->radioButtonScreencastWindow->isChecked() )
+    {
+        value = 2;
+    }
+
+    portal_wl->requestScreenSharing( value );
 }
 
 

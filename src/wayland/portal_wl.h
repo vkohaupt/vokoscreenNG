@@ -40,7 +40,7 @@ public:
 
     Portal_wl();
     ~Portal_wl();
-    void requestScreenSharing();
+    void requestScreenSharing( int value );
 
 
 public Q_SLOTS:
@@ -65,6 +65,7 @@ private:
     QString vk_path;
     int vk_startCounter = 0;
 
+    int Selection_Screen_Window_Area;
 
 protected:
 
