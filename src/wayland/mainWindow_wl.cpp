@@ -1,6 +1,7 @@
 #include "mainWindow_wl.h"
 #include "global.h"
 #include "QvkLogController.h"
+#include "QvkScreenManager.h"
 
 #include <QStringList>
 #include <QStandardPaths>
@@ -32,6 +33,16 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     check_all_Formats_available();
     set_available_Formats_in_ComboBox();
 
+    vkRegionChoise = new QvkRegionChoise_wl( ui );
+    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( setVisible( bool ) ) );
+
+    QvkScreenManager *screenManager = new QvkScreenManager();
+    // Area
+    connect( screenManager, SIGNAL( signal_clear_widget() ),                          ui->comboBoxScreencastScreenArea, SLOT( clear() ) );
+    connect( screenManager, SIGNAL( signal_screen_count_changed( QString, QString) ), this,                             SLOT( slot_screenCountChangedArea( QString, QString ) ) );
+    connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged( int) ),   vkRegionChoise, SLOT( slot_init() ) );
+    screenManager->init();
+
     ui->tabWidgetScreencast->removeTab(1);
     ui->frame_information->hide();
     ui->pushButtonPause->hide();
@@ -50,6 +61,12 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
     ui->pushButtonStop->click();
+}
+
+
+void QvkMainWindow_wl::slot_screenCountChangedArea( QString stringText, QString stringData )
+{
+    ui->comboBoxScreencastScreenArea->addItem( stringText, stringData );
 }
 
 
@@ -132,7 +149,29 @@ void QvkMainWindow_wl::slot_start()
         value = 2;
     }
 
+    if ( ui->radioButtonScreencastArea->isChecked() )
+    {
+        value = 1;
+    }
+
     portal_wl->requestScreenSharing( value );
+}
+
+
+QString QvkMainWindow_wl::getArea()
+{
+    QString value = "";
+    if ( ui->radioButtonScreencastArea->isChecked() ) {
+        int width = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 2, 2).section( "=", 1, 1 ).toInt();
+        int height = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 3, 3).section( "=", 1, 1 ).toInt();
+
+        QString top = QString::number( vkRegionChoise->getYRecordArea() );
+        QString right = QString::number( width - ( vkRegionChoise->getWidth() + vkRegionChoise->getXRecordArea() ) );
+        QString bottom = QString::number( height - ( vkRegionChoise->getHeight() + vkRegionChoise->getYRecordArea() ) );
+        QString left = QString::number( vkRegionChoise->getXRecordArea() );
+        value = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
+    }
+    return value;
 }
 
 
@@ -144,6 +183,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     stringList << QString( "pipewiresrc fd=" ).append( vk_fd ).append( " path=" ).append( vk_path ).append( " do-timestamp=true" );
     stringList << "videoconvert";
     stringList << "videorate";
+    stringList << getArea();
     stringList << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
     stringList << get_Videocodec_Encoder();
     stringList << "matroskamux name=mux";

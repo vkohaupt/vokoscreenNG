@@ -7,3 +7,5 @@ SOURCES     += $$PWD/mainWindow_wl.cpp \
                $$PWD/portal_wl.cpp
 
 FORMS       += $$PWD/formMainWindow_wl.ui
+
+include(region/regionselection_wl.pri)

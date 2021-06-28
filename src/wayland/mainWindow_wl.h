@@ -4,6 +4,7 @@
 #include "ui_formMainWindow_wl.h"
 #include "portal_wl.h"
 #include "QvkSpezialSlider.h"
+#include "QvkRegionChoise_wl.h"
 
 #include <gst/gst.h>
 
@@ -27,6 +28,8 @@ private:
     GstElement *pipeline = nullptr;
     QStringList videoFormatsList;
     QvkSpezialSlider *sliderFrames;
+    QvkRegionChoise_wl *vkRegionChoise;
+    QString getArea();
 
     void check_all_Elements_available();
     void check_all_Formats_available();
@@ -49,6 +52,7 @@ private Q_SLOTS:
     void slot_start_gst( QString vk_fd, QString vk_path );
     void slot_framesReset();
     void slot_set_available_VideoCodecs_in_ComboBox( QString suffix );
+    void slot_screenCountChangedArea( QString stringText, QString stringData );
 
 
 protected:

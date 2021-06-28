@@ -20,37 +20,40 @@
  * --End_License--
  */
 
-#ifndef WL_MAINWINDOW_H
-#define WL_MAINWINDOW_H
+#ifndef REGIONBUTTONARROW_WL_H
+#define REGIONBUTTONARROW_WL_H
 
-#include <QMainWindow>
+#include <QPainter>
 
-
-namespace Ui {
-class Qvk_wl_MainWindow;
-}
-
-class Qvk_wl_MainWindow : public QMainWindow
-{
-    Q_OBJECT
-
+class QvkRegionButtonArrow_wl : public QObject
+{ 
+Q_OBJECT
 public:
-    Qvk_wl_MainWindow( QWidget *parent = Q_NULLPTR );
-    ~Qvk_wl_MainWindow();
-
+  QvkRegionButtonArrow_wl();
+  virtual ~QvkRegionButtonArrow_wl();
+  enum degreeArrow { topMiddle=0, topRight=45, rightMiddle=90, bottomRight=135,
+                     bottomMiddel=180, bottomLeft=225, leftMiddel=270, topLeft=315 };
 
 private:
+  int penWidth = 2;
+  int penWidthHalf = penWidth/2;
+  int radius = 20;
+  int diameter = 2 * radius;
+
+public slots:
+  QPixmap getPixmapHandle(QColor color, QColor colorSelected, degreeArrow degree );
+  QPixmap getButton( QColor color );
+  QPixmap getArrow(degreeArrow degree , QColor colorSelected);
+  int getWithHalf();
 
 
 private slots:
 
 
-signals:
-
-
 protected:
+
+    
 
 
 };
-
 #endif
