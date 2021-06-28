@@ -110,6 +110,7 @@ qDebug().noquote() << global::nameOutput << "222 m_session:" << m_session;
     message << QVariant::fromValue(QDBusObjectPath(m_session))
             << QVariantMap { { QLatin1String("multiple"), true},
                              { QLatin1String("types"), (uint)1 }, //(uint)m_mainWindow->screenShareCombobox->currentIndex() + 1}, // 1 = Monitor
+//                             { QLatin1String("cursor_mode"), (uint)2 },
                              { QLatin1String("handle_token"), getRequestToken() } };
 
 qDebug().noquote() << global::nameOutput << "222 message:"<< message;
