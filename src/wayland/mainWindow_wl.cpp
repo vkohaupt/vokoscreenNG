@@ -34,13 +34,14 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_available_Formats_in_ComboBox();
 
     vkRegionChoise = new QvkRegionChoise_wl( ui );
-    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( setVisible( bool ) ) );
+    connect( ui->radioButtonScreencastArea,     SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( setVisible( bool ) ) );
+    connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
 
     QvkScreenManager *screenManager = new QvkScreenManager();
     // Area
     connect( screenManager, SIGNAL( signal_clear_widget() ),                          ui->comboBoxScreencastScreenArea, SLOT( clear() ) );
     connect( screenManager, SIGNAL( signal_screen_count_changed( QString, QString) ), this,                             SLOT( slot_screenCountChangedArea( QString, QString ) ) );
-    connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged( int) ),   vkRegionChoise, SLOT( slot_init() ) );
+    connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged( int) ),   vkRegionChoise,                   SLOT( slot_init() ) );
     screenManager->init();
 
     ui->tabWidgetScreencast->removeTab(1);
@@ -81,7 +82,7 @@ void QvkMainWindow_wl::set_Connects()
 
     connect( portal_wl, SIGNAL( signal_fd_path( QString, QString ) ), this,       SLOT( slot_start_gst( QString, QString ) ) );
 
-    connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this,          SLOT( slot_framesReset() ) );
+    connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this,          SLOT( slot_frames_Reset() ) );
 
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this,   SLOT( slot_set_available_VideoCodecs_in_ComboBox( QString ) ) );
 }
@@ -158,7 +159,7 @@ void QvkMainWindow_wl::slot_start()
 }
 
 
-QString QvkMainWindow_wl::getArea()
+QString QvkMainWindow_wl::get_Area_Videocrop()
 {
     QString value = "";
     if ( ui->radioButtonScreencastArea->isChecked() ) {
@@ -183,7 +184,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     stringList << QString( "pipewiresrc fd=" ).append( vk_fd ).append( " path=" ).append( vk_path ).append( " do-timestamp=true" );
     stringList << "videoconvert";
     stringList << "videorate";
-    stringList << getArea();
+    stringList << get_Area_Videocrop();
     stringList << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
     stringList << get_Videocodec_Encoder();
     stringList << "matroskamux name=mux";
@@ -229,7 +230,7 @@ void QvkMainWindow_wl::set_SpezialSlider()
 }
 
 
-void QvkMainWindow_wl::slot_framesReset()
+void QvkMainWindow_wl::slot_frames_Reset()
 {
     sliderFrames->setValue( 25 );
 }
@@ -265,6 +266,7 @@ void QvkMainWindow_wl::check_all_Elements_available()
     list << "videoscale";
     list << "h264parse";
     list << "audiomixer";
+    list << "videocrop";
 
     qDebug().noquote() << global::nameOutput << "--- GStreamer elements ---";
 

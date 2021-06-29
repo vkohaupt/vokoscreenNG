@@ -29,7 +29,8 @@ private:
     QStringList videoFormatsList;
     QvkSpezialSlider *sliderFrames;
     QvkRegionChoise_wl *vkRegionChoise;
-    QString getArea();
+
+    void messageBox( QString value );
 
     void check_all_Elements_available();
     void check_all_Formats_available();
@@ -40,7 +41,7 @@ private:
     void set_Connects();
 
     QString get_Videocodec_Encoder();
-    void messageBox( QString value );
+    QString get_Area_Videocrop();
 
 
 public Q_SLOTS:
@@ -50,7 +51,7 @@ private Q_SLOTS:
     void slot_start();
     void slot_stop();
     void slot_start_gst( QString vk_fd, QString vk_path );
-    void slot_framesReset();
+    void slot_frames_Reset();
     void slot_set_available_VideoCodecs_in_ComboBox( QString suffix );
     void slot_screenCountChangedArea( QString stringText, QString stringData );
 
