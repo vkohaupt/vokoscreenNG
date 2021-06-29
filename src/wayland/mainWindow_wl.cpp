@@ -62,6 +62,7 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
     ui->pushButtonStop->click();
+    vkRegionChoise->close();
 }
 
 
