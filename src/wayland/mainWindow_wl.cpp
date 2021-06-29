@@ -163,18 +163,16 @@ void QvkMainWindow_wl::slot_start()
 QString QvkMainWindow_wl::get_Area_Videocrop()
 {
     QString value = "";
-    if ( ui->radioButtonScreencastArea->isChecked() ) {
-        vkRegionChoise->recordMode( true );
+    vkRegionChoise->recordMode( true );
 
-        int width = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 2, 2).section( "=", 1, 1 ).toInt();
-        int height = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 3, 3).section( "=", 1, 1 ).toInt();
+    int width = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 2, 2).section( "=", 1, 1 ).toInt();
+    int height = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 3, 3).section( "=", 1, 1 ).toInt();
 
-        QString top = QString::number( vkRegionChoise->getYRecordArea() );
-        QString right = QString::number( width - ( vkRegionChoise->getWidth() + vkRegionChoise->getXRecordArea() ) );
-        QString bottom = QString::number( height - ( vkRegionChoise->getHeight() + vkRegionChoise->getYRecordArea() ) );
-        QString left = QString::number( vkRegionChoise->getXRecordArea() );
-        value = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
-    }
+    QString top = QString::number( vkRegionChoise->getYRecordArea() );
+    QString right = QString::number( width - ( vkRegionChoise->getWidth() + vkRegionChoise->getXRecordArea() ) );
+    QString bottom = QString::number( height - ( vkRegionChoise->getHeight() + vkRegionChoise->getYRecordArea() ) );
+    QString left = QString::number( vkRegionChoise->getXRecordArea() );
+    value = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
     return value;
 }
 
@@ -187,7 +185,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     stringList << QString( "pipewiresrc fd=" ).append( vk_fd ).append( " path=" ).append( vk_path ).append( " do-timestamp=true" );
     stringList << "videoconvert";
     stringList << "videorate";
-    stringList << get_Area_Videocrop();
+    if ( ui->radioButtonScreencastArea->isChecked() ) { stringList << get_Area_Videocrop(); }
     stringList << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
     stringList << get_Videocodec_Encoder();
     stringList << "matroskamux name=mux";
