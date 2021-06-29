@@ -164,6 +164,8 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
 {
     QString value = "";
     if ( ui->radioButtonScreencastArea->isChecked() ) {
+        vkRegionChoise->recordMode( true );
+
         int width = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 2, 2).section( "=", 1, 1 ).toInt();
         int height = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 3, 3).section( "=", 1, 1 ).toInt();
 
@@ -215,6 +217,10 @@ void QvkMainWindow_wl::slot_stop()
     gst_object_unref ( pipeline );
 
     qDebug().noquote() << global::nameOutput << "Stop record";
+
+    if ( ui->radioButtonScreencastArea->isChecked() ) {
+       vkRegionChoise->recordMode( false );
+    }
 }
 
 
