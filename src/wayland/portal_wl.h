@@ -71,7 +71,8 @@ protected:
 
 
 signals:
-    void signal_fd_path( QString, QString );
+    void signal_portal_fd_path( QString, QString );
+    void signal_portal_cancel();
 
 
 

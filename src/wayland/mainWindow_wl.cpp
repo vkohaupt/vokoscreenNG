@@ -74,18 +74,18 @@ void QvkMainWindow_wl::slot_screenCountChangedArea( QString stringText, QString 
 
 void QvkMainWindow_wl::set_Connects()
 {
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                SLOT( slot_start() ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,  SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                 SLOT( slot_start() ) );
 
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), this,                SLOT( slot_stop() ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonStart, SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), this,                 SLOT( slot_stop() ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonStop,   SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonStart,  SLOT( setDisabled( bool ) ) );
 
-    connect( portal_wl, SIGNAL( signal_fd_path( QString, QString ) ), this,       SLOT( slot_start_gst( QString, QString ) ) );
+    connect( portal_wl, SIGNAL( signal_portal_fd_path( QString, QString ) ), this, SLOT( slot_start_gst( QString, QString ) ) );
 
-    connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this,          SLOT( slot_frames_Reset() ) );
+    connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this,           SLOT( slot_frames_Reset() ) );
 
-    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this,   SLOT( slot_set_available_VideoCodecs_in_ComboBox( QString ) ) );
+    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this,    SLOT( slot_set_available_VideoCodecs_in_ComboBox( QString ) ) );
 }
 
 
