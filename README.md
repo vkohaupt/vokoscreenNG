@@ -69,9 +69,10 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 * 
 
 #### Wayland (since 3.1.0)
-* gstreamer-plugin-pipewire
-* xdg-desktop-portal
-* xdg-desktop-portal-(kde, gtk, ...)
+* pipewire >= 0.3
+* gstreamer-plugin-pipewire(openSUSE) gstreamer1.0-pipewire(Debian) >= 0.3.24
+* xdg-desktop-portal >= 1.7.0
+* xdg-desktop-portal-(kde, gtk, ...) >= 1.7.0
 
 #### VAAPI only supported in vokoscreenNG 3.0.0 - 3.0.8
 
