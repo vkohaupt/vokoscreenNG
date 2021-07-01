@@ -58,7 +58,7 @@ public:
 
 public slots:
   void slot_areaReset();
-  void slot_init();
+  void slot_show( bool value );
 
 
 private slots:
@@ -71,6 +71,8 @@ protected:
   void mouseReleaseEvent( QMouseEvent * event );
   void leaveEvent( QEvent *event );
   void keyPressEvent( QKeyEvent * event );
+  void resizeEvent(QResizeEvent *event);
+
 
 private:
   Ui_formMainWindow_wl *ui;

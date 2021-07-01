@@ -79,24 +79,48 @@ QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow 
 }
 
 
-void QvkRegionChoise_wl::slot_init()
+void QvkRegionChoise_wl::slot_show( bool value )
 {
-    if ( ui->comboBoxScreencastScreenArea->currentIndex() > -1 )
-    {
-        int index = ui->comboBoxScreencastScreenArea->currentIndex();
-        QList<QScreen *> screenList = QGuiApplication::screens();
-        screen = screenList.at( index );
+    // Die Bereichsanzeige ist ein Fenster und wird immmer ab beginn des verfügbaren Bereichs auf dem Desktop gesetzt.
+    // Ist das Desktopmenü oben am Bildschirm wird das Fenster z.b bei 0,44 gesetzt.
+    // Ist das Menü unten am Bildschirm wird Fenster bei 0,0 gesetzt.
+    // Die Frage ist, wie erkennt man ob das Desktop-Menü oben oder unten gesetzt ist?
 
-        resize( screen->size().width(), screen->size().height() );
-        screenWidth = screen->size().width();
-        screenHeight = screen->size().height();
-        move( screen->geometry().x(), screen->geometry().y() );
+    if ( value == true )
+    {
+        if ( ui->comboBoxScreencastScreenArea->currentIndex() > -1 )
+        {
+            int index = ui->comboBoxScreencastScreenArea->currentIndex();
+            QList<QScreen *> screenList = QGuiApplication::screens();
+            screen = screenList.at( index );
+
+            qDebug() << "screen->availableSize():" << screen->availableSize() << "Verfügbarer Bereich auf dem Desktop ohne Menü";
+            qDebug() << "screen->availableGeometry():" << screen->availableGeometry() << "Verfügbarer Bereich auf dem Desktop ohne Menü";
+            qDebug();
+
+            showMaximized();
+        }
+    } else
+    {
+        hide();
     }
 }
 
 
 QvkRegionChoise_wl::~QvkRegionChoise_wl()
 {
+}
+
+
+// Wir ermitteln die größte Fensterhöhe
+void QvkRegionChoise_wl::resizeEvent(QResizeEvent *event)
+{
+
+    qDebug() << size().height() << "Das ist die neue Fensterhöhe ohne Fensterrahmen";
+    screenWidth = size().width();
+    screenHeight = size().height();
+
+
 }
 
 

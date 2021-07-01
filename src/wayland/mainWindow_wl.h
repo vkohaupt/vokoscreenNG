@@ -59,7 +59,6 @@ private Q_SLOTS:
 protected:
     void closeEvent( QCloseEvent *event );
 
-
 };
 
 #endif 
