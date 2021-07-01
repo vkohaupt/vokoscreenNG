@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>860</width>
-    <height>506</height>
+    <width>690</width>
+    <height>437</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -400,7 +400,7 @@
                    <item>
                     <layout class="QGridLayout" name="gridLayout_3">
                      <item row="2" column="2" alignment="Qt::AlignHCenter">
-                      <widget class="QCheckBox" name="checkBox_5">
+                      <widget class="QCheckBox" name="checkBox_menue_right">
                        <property name="text">
                         <string/>
                        </property>
@@ -410,7 +410,7 @@
                       </widget>
                      </item>
                      <item row="2" column="0" alignment="Qt::AlignHCenter">
-                      <widget class="QCheckBox" name="checkBox">
+                      <widget class="QCheckBox" name="checkBox_menue_left">
                        <property name="text">
                         <string/>
                        </property>
@@ -420,7 +420,7 @@
                       </widget>
                      </item>
                      <item row="1" column="1" alignment="Qt::AlignHCenter">
-                      <widget class="QCheckBox" name="checkBox_3">
+                      <widget class="QCheckBox" name="checkBox_menue_top">
                        <property name="text">
                         <string/>
                        </property>
@@ -433,7 +433,7 @@
                       </widget>
                      </item>
                      <item row="3" column="1" alignment="Qt::AlignHCenter">
-                      <widget class="QCheckBox" name="checkBox_7">
+                      <widget class="QCheckBox" name="checkBox_menue_bottom">
                        <property name="text">
                         <string/>
                        </property>

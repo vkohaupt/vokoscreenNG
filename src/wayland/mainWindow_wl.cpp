@@ -166,12 +166,19 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
     QString value = "";
     vkRegionChoise->recordMode( true );
 
+    int desktop_menue_height = 0;
+
+    if ( ui->checkBox_menue_top->isChecked() == true  )
+    {
+        desktop_menue_height = vkRegionChoise->get_desktop_menue_height();
+    }
+
     int width = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 2, 2).section( "=", 1, 1 ).toInt();
     int height = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 3, 3).section( "=", 1, 1 ).toInt();
 
-    QString top = QString::number( vkRegionChoise->getYRecordArea() );
+    QString top = QString::number( vkRegionChoise->getYRecordArea() + desktop_menue_height );
     QString right = QString::number( width - ( vkRegionChoise->getWidth() + vkRegionChoise->getXRecordArea() ) );
-    QString bottom = QString::number( height - ( vkRegionChoise->getHeight() + vkRegionChoise->getYRecordArea() ) );
+    QString bottom = QString::number( height - ( vkRegionChoise->getHeight() + vkRegionChoise->getYRecordArea() ) - desktop_menue_height );
     QString left = QString::number( vkRegionChoise->getXRecordArea() );
     value = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
     return value;

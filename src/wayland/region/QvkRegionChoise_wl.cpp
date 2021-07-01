@@ -121,11 +121,29 @@ void QvkRegionChoise_wl::resizeEvent(QResizeEvent *event)
     screenWidth = size().width();
     screenHeight = size().height();
 
-    if ( size().height() > availables_desktopp_hight )
+    if ( size().height() > get_availables_desktopp_height() )
     {
-        availables_desktopp_hight = size().height();
+        set_availables_desktopp_height( size().height() );
         availables_desktopp_width = size().width();
     }
+}
+
+
+void QvkRegionChoise_wl::set_availables_desktopp_height( int value )
+{
+    availables_desktopp_height = value;
+}
+
+
+int QvkRegionChoise_wl::get_availables_desktopp_height()
+{
+    return availables_desktopp_height;
+}
+
+
+int QvkRegionChoise_wl::get_desktop_menue_height()
+{
+    return ( screen->size().height() - get_availables_desktopp_height() );
 }
 
 

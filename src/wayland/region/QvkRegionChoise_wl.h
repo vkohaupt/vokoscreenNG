@@ -55,6 +55,9 @@ public:
   int screenWidth = 400; //Must set a value. Under windows comes a QPainter message
   int screenHeight = 400;
 
+  int get_availables_desktopp_height();
+  int get_desktop_menue_height();
+
 
 public slots:
   void slot_areaReset();
@@ -149,8 +152,10 @@ private:
   Qt::GlobalColor getFrameColor();
   Qt::GlobalColor frameColor;
 
-  int availables_desktopp_hight = 0;
+  int availables_desktopp_height = 0;
   int availables_desktopp_width = 0;
+  void set_availables_desktopp_height( int value );
+
 
 
 };
