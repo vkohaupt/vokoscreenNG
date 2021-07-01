@@ -112,15 +112,20 @@ QvkRegionChoise_wl::~QvkRegionChoise_wl()
 }
 
 
-// Wir ermitteln die größte Fensterhöhe
+// Ermitteln der größten Fensterhöhe
+// Unterstützt wird nur ein Desktopmenü oben, unten links oder rechts.
 void QvkRegionChoise_wl::resizeEvent(QResizeEvent *event)
 {
-
+    Q_UNUSED(event);
     qDebug() << size().height() << "Das ist die neue Fensterhöhe ohne Fensterrahmen";
     screenWidth = size().width();
     screenHeight = size().height();
 
-
+    if ( size().height() > availables_desktopp_hight )
+    {
+        availables_desktopp_hight = size().height();
+        availables_desktopp_width = size().width();
+    }
 }
 
 

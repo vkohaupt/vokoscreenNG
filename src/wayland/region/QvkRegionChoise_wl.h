@@ -149,5 +149,9 @@ private:
   Qt::GlobalColor getFrameColor();
   Qt::GlobalColor frameColor;
 
+  int availables_desktopp_hight = 0;
+  int availables_desktopp_width = 0;
+
+
 };
 #endif
