@@ -64,7 +64,8 @@ QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow 
 #endif
     ui = ui_formMainWindow;
 
-    setWindowTitle( QString( tr( "Area") ) );
+//    setWindowTitle( QString( tr( "Area") ) );
+    setWindowTitle( QString( ( "Area") ) );
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );

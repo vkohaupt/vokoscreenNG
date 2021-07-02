@@ -1,0 +1,10 @@
+ 
+
+Terminal programms:
+dbus-monitor
+busctl
+systemctl status
+
+ 
+GUI programms:
+qdbusviewer-qt5

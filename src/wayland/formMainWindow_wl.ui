@@ -92,7 +92,7 @@
                 <item row="0" column="0">
                  <widget class="QRadioButton" name="radioButtonScreencastFullscreen">
                   <property name="text">
-                   <string>Fullscreen</string>
+                   <string notr="true">Fullscreen</string>
                   </property>
                   <property name="checked">
                    <bool>true</bool>
@@ -102,7 +102,7 @@
                 <item row="2" column="0" rowspan="2">
                  <widget class="QRadioButton" name="radioButtonScreencastWindow">
                   <property name="text">
-                   <string>Window</string>
+                   <string notr="true">Window</string>
                   </property>
                  </widget>
                 </item>
@@ -196,7 +196,7 @@
                 <item row="5" column="2" alignment="Qt::AlignHCenter">
                  <widget class="QLabel" name="label_5">
                   <property name="text">
-                   <string>Menue</string>
+                   <string notr="true">Menue</string>
                   </property>
                  </widget>
                 </item>
@@ -229,7 +229,7 @@
                 <item row="6" column="0">
                  <widget class="QRadioButton" name="radioButtonScreencastArea">
                   <property name="text">
-                   <string>Area</string>
+                   <string notr="true">Area</string>
                   </property>
                  </widget>
                 </item>
@@ -286,7 +286,7 @@
                        <item row="1" column="1">
                         <widget class="QLabel" name="label_13">
                          <property name="text">
-                          <string>Video size:</string>
+                          <string notr="true">Video size:</string>
                          </property>
                         </widget>
                        </item>
@@ -316,7 +316,7 @@
                        <item row="0" column="1">
                         <widget class="QLabel" name="label_12">
                          <property name="text">
-                          <string>Free disk space:</string>
+                          <string notr="true">Free disk space:</string>
                          </property>
                         </widget>
                        </item>
@@ -332,7 +332,7 @@
                      <item row="0" column="0" alignment="Qt::AlignHCenter">
                       <widget class="QLabel" name="label_17">
                        <property name="text">
-                        <string>Information</string>
+                        <string notr="true">Information</string>
                        </property>
                       </widget>
                      </item>
@@ -354,7 +354,7 @@
                        <item>
                         <widget class="QLabel" name="label_14">
                          <property name="text">
-                          <string>Record Time:</string>
+                          <string notr="true">Record Time:</string>
                          </property>
                         </widget>
                        </item>
@@ -402,7 +402,7 @@
                      <item row="2" column="2" alignment="Qt::AlignHCenter">
                       <widget class="QCheckBox" name="checkBox_menue_right">
                        <property name="text">
-                        <string/>
+                        <string notr="true"/>
                        </property>
                        <property name="autoExclusive">
                         <bool>true</bool>
@@ -412,7 +412,7 @@
                      <item row="2" column="0" alignment="Qt::AlignHCenter">
                       <widget class="QCheckBox" name="checkBox_menue_left">
                        <property name="text">
-                        <string/>
+                        <string notr="true"/>
                        </property>
                        <property name="autoExclusive">
                         <bool>true</bool>
@@ -422,7 +422,7 @@
                      <item row="1" column="1" alignment="Qt::AlignHCenter">
                       <widget class="QCheckBox" name="checkBox_menue_top">
                        <property name="text">
-                        <string/>
+                        <string notr="true"/>
                        </property>
                        <property name="checked">
                         <bool>false</bool>
@@ -435,7 +435,7 @@
                      <item row="3" column="1" alignment="Qt::AlignHCenter">
                       <widget class="QCheckBox" name="checkBox_menue_bottom">
                        <property name="text">
-                        <string/>
+                        <string notr="true"/>
                        </property>
                        <property name="autoExclusive">
                         <bool>true</bool>
@@ -532,7 +532,7 @@
                 <item alignment="Qt::AlignRight">
                  <widget class="QLabel" name="labelFrames">
                   <property name="text">
-                   <string>Frames</string>
+                   <string notr="true">Frames</string>
                   </property>
                  </widget>
                 </item>
@@ -543,7 +543,7 @@
                 <item alignment="Qt::AlignRight">
                  <widget class="QLabel" name="labelVideoCodec">
                   <property name="text">
-                   <string>Videocodec</string>
+                   <string notr="true">Videocodec</string>
                   </property>
                  </widget>
                 </item>
@@ -552,7 +552,7 @@
               <item row="1" column="0" alignment="Qt::AlignRight">
                <widget class="QLabel" name="labelFormat">
                 <property name="text">
-                 <string>Format</string>
+                 <string notr="true">Format</string>
                 </property>
                </widget>
               </item>
@@ -586,10 +586,10 @@
              </font>
             </property>
             <property name="toolTip">
-             <string>CTRL+SHIFT+F10</string>
+             <string notr="true">CTRL+SHIFT+F10</string>
             </property>
             <property name="text">
-             <string>Start</string>
+             <string notr="true">Start</string>
             </property>
            </widget>
           </item>
@@ -605,10 +605,10 @@
              </font>
             </property>
             <property name="toolTip">
-             <string>CTRL+SHIFT+F11</string>
+             <string notr="true">CTRL+SHIFT+F11</string>
             </property>
             <property name="text">
-             <string>Stop</string>
+             <string notr="true">Stop</string>
             </property>
            </widget>
           </item>
@@ -624,10 +624,10 @@
              </font>
             </property>
             <property name="toolTip">
-             <string>CTRL+SHIFT+F12</string>
+             <string notr="true">CTRL+SHIFT+F12</string>
             </property>
             <property name="text">
-             <string>Pause</string>
+             <string notr="true">Pause</string>
             </property>
            </widget>
           </item>
@@ -643,10 +643,10 @@
              </font>
             </property>
             <property name="toolTip">
-             <string>CTRL+SHIFT+F12</string>
+             <string notr="true">CTRL+SHIFT+F12</string>
             </property>
             <property name="text">
-             <string>Continue</string>
+             <string notr="true">Continue</string>
             </property>
            </widget>
           </item>
@@ -659,10 +659,10 @@
              </font>
             </property>
             <property name="toolTip">
-             <string>Play last record</string>
+             <string notr="true">Play last record</string>
             </property>
             <property name="text">
-             <string>Play</string>
+             <string notr="true">Play</string>
             </property>
            </widget>
           </item>
@@ -675,10 +675,10 @@
              </font>
             </property>
             <property name="toolTip">
-             <string>Open folder</string>
+             <string notr="true">Open folder</string>
             </property>
             <property name="text">
-             <string>Folder</string>
+             <string notr="true">Folder</string>
             </property>
            </widget>
           </item>

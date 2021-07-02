@@ -2,6 +2,11 @@
 <qresource>
 <file>pictures/camera/camera-sidebar.png</file>
 <file>pictures/camera/camera.png</file>
+<file>pictures/cursor/size_hor.png</file>
+<file>pictures/cursor/size_ver.png</file>
+<file>pictures/cursor/size_all.png</file>
+<file>pictures/cursor/size_bdiag.png</file>
+<file>pictures/cursor/size_fdiag.png</file>
 <file>pictures/help/information.png</file>
 <file>pictures/linux.png</file>
 <file>pictures/log/log-sidebar.png</file>
@@ -45,6 +50,11 @@
 <file>pictures/systray/pause.png</file>
 <file>pictures/windows.png</file>
 <file>pictures/camera/camera.license</file>
+<file>pictures/cursor/size_all.license</file>
+<file>pictures/cursor/size_ver.license</file>
+<file>pictures/cursor/size_bdiag.license</file>
+<file>pictures/cursor/size_fdiag.license</file>
+<file>pictures/cursor/size_hor.license</file>
 <file>pictures/help/information.license</file>
 <file>pictures/linux.license</file>
 <file>pictures/log/log.license</file>

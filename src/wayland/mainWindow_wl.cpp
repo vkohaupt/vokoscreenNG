@@ -258,7 +258,7 @@ void QvkMainWindow_wl::messageBox( QString value )
     messageBox->setWindowIcon( icon );
     messageBox->setWindowTitle( global::name + " " + global::version );
     messageBox->setIcon( QMessageBox::Critical );
-    messageBox->setText( tr( "Wayland desktop session detected" ) );
+    messageBox->setText( ( "Wayland desktop session detected" ) );
     messageBox->setInformativeText( ( "Please install the package\n" + value ) );
     messageBox->exec();
 
