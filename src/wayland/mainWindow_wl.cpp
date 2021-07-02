@@ -139,21 +139,23 @@ QString QvkMainWindow_wl::get_Videocodec_Encoder()
 
 void QvkMainWindow_wl::slot_start()
 {
-    qDebug().noquote() << global::nameOutput << "Start record";
 
     int value = 1;
     if ( ui->radioButtonScreencastFullscreen->isChecked() )
     {
+        qDebug().noquote() << global::nameOutput << "Start record fullscreen";
         value = 1;
     }
 
     if ( ui->radioButtonScreencastWindow->isChecked() )
     {
+        qDebug().noquote() << global::nameOutput << "Start record window";
         value = 2;
     }
 
     if ( ui->radioButtonScreencastArea->isChecked() )
     {
+        qDebug().noquote() << global::nameOutput << "Start record area";
         value = 1;
     }
 

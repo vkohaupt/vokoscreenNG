@@ -81,6 +81,7 @@ void Portal_wl::requestScreenSharing( int value )
             qDebug().noquote() << global::nameOutput << "Error: " << reply.error().message();
         } else
         {
+            qDebug().noquote() << global::nameOutput << "Begin create portal session";
             QDBusConnection::sessionBus().connect(QString(),
                                                   reply.value().path(),
                                                   QLatin1String("org.freedesktop.portal.Request"),
@@ -96,9 +97,11 @@ void Portal_wl::slot_gotCreateSessionResponse(uint response, const QVariantMap &
 {
     if ( response != 0 )
     {
-        qDebug().noquote() << global::nameOutput << "Failed to create session: " << response;
+        qDebug().noquote() << global::nameOutput << "Failed to create portal session";
         return;
     }
+
+    qDebug().noquote() << global::nameOutput << "Portal session was created successfully ";
 
     QDBusMessage message = QDBusMessage::createMethodCall(QLatin1String("org.freedesktop.portal.Desktop"),
                                                           QLatin1String("/org/freedesktop/portal/desktop"),
@@ -109,7 +112,7 @@ void Portal_wl::slot_gotCreateSessionResponse(uint response, const QVariantMap &
 
     message << QVariant::fromValue(QDBusObjectPath(m_session))
             << QVariantMap { { QLatin1String("multiple"), true},
-                             { QLatin1String("types"), (uint)Selection_Screen_Window_Area }, //(uint)m_mainWindow->screenShareCombobox->currentIndex() + 1}, // 1 = Monitor
+                             { QLatin1String("types"), (uint)Selection_Screen_Window_Area },
 //                             { QLatin1String("cursor_mode"), (uint)2 },
                              { QLatin1String("handle_token"), getRequestToken() } };
 
