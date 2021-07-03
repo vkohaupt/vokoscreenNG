@@ -1014,7 +1014,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
     QRect regionTopLeft( frame_X - radius - 1, frame_Y - radius - 1, diameter + 2, diameter + 2 );
     if ( regionTopLeft.contains( event->pos() ) )
     {
-        setCursor( Qt::SizeFDiagCursor );
+        QPixmap pixmap( ":/pictures/cursor/size_fdiag.png" );
+        QCursor cursor( pixmap );
+        setCursor( cursor );
         handleUnderMouse = TopLeft;
         return;
     }
@@ -1022,7 +1024,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
     QRect regionTopMiddle( frame_X + frame_Width/2 - radius - 1, frame_Y - radius - 1, diameter + 2, diameter + 2 );
     if ( regionTopMiddle.contains( event->pos() )  )
     {
-        setCursor( Qt::SizeVerCursor );
+        QPixmap pixmap( ":/pictures/cursor/size_ver.png" );
+        QCursor cursor( pixmap );
+        setCursor( cursor );
         handleUnderMouse = TopMiddle;
         return;
     }
@@ -1030,7 +1034,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
     QRect regionTopRight( frame_X + frame_Width - radius - 1, frame_Y - radius - 1, diameter + 2, diameter + 2 );
     if ( regionTopRight.contains( event->pos() )  )
     {
-        setCursor( Qt::SizeBDiagCursor );
+        QPixmap pixmap( ":/pictures/cursor/size_bdiag.png" );
+        QCursor cursor( pixmap );
+        setCursor( cursor );
         handleUnderMouse = TopRight;
         return;
     }
@@ -1038,15 +1044,19 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
     QRect regionRightMiddle( frame_X + frame_Width - radius - 1, frame_Y + frame_height/2 - radius - 1, diameter + 2, diameter + 2 );
     if ( regionRightMiddle.contains( event->pos() )  )
     {
+        QPixmap pixmap( ":/pictures/cursor/size_hor.png" );
+        QCursor cursor( pixmap );
+        setCursor( cursor );
         handleUnderMouse = RightMiddle;
-        setCursor( Qt::SizeHorCursor );
         return;
     }
 
     QRect regionMiddle( frame_X + frame_Width/2 - radius - penHalf, frame_Y + frame_height/2 - radius - penHalf, 2 * radius + penWidth, 2 * radius + penWidth);
     if ( regionMiddle.contains( event->pos() )  )
     {
-        setCursor( Qt::SizeAllCursor );
+        QPixmap pixmap( ":/pictures/cursor/size_all.png" );
+        QCursor cursor( pixmap );
+        setCursor( cursor );
         handleUnderMouse = Middle;
         return;
     }
@@ -1059,7 +1069,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                               );
     if( regionBottomRight.contains( event->pos()) )
     {
-        setCursor(  Qt::SizeFDiagCursor);
+        QPixmap pixmap( ":/pictures/cursor/size_fdiag.png" );
+        QCursor cursor( pixmap );
+        setCursor( cursor );
         handleUnderMouse = BottomRight;
         return;
     }
@@ -1071,7 +1083,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                                );
     if( regionBottomMiddle.contains( event->pos()) )
     {
-        setCursor( Qt::SizeVerCursor );
+        QPixmap pixmap( ":/pictures/cursor/size_ver.png" );
+        QCursor cursor( pixmap );
+        setCursor( cursor );
         handleUnderMouse = BottomMiddle;
         return;
     }
@@ -1083,7 +1097,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                             );
     if( regionBottomLeft.contains( event->pos()) )
     {
-        setCursor( Qt::SizeBDiagCursor );
+        QPixmap pixmap( ":/pictures/cursor/size_bdiag.png" );
+        QCursor cursor( pixmap );
+        setCursor( cursor );
         handleUnderMouse = BottomLeft;
         return;
     }
@@ -1095,7 +1111,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                             );
     if( regionLeftMiddle.contains( event->pos()) )
     {
-        setCursor( Qt::SizeHorCursor );
+        QPixmap pixmap( ":/pictures/cursor/size_hor.png" );
+        QCursor cursor( pixmap );
+        setCursor( cursor );
         handleUnderMouse = LeftMiddle;
         return;
     }
