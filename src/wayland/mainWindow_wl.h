@@ -6,6 +6,8 @@
 #include "QvkSpezialSlider.h"
 #include "QvkRegionChoise_wl.h"
 
+#include <QMainWindow>
+
 #include <gst/gst.h>
 
 namespace Ui
@@ -21,10 +23,10 @@ public:
     QvkMainWindow_wl( QWidget *parent = Q_NULLPTR, Qt::WindowFlags f = Qt::WindowFlags() );
     ~QvkMainWindow_wl();
     Ui::formMainWindow_wl *ui;
+    Portal_wl *portal_wl = new Portal_wl();
 
 
 private:
-    Portal_wl *portal_wl = new Portal_wl();
     GstElement *pipeline = nullptr;
     QStringList videoFormatsList;
     QvkSpezialSlider *sliderFrames;

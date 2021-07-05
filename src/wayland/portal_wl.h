@@ -21,12 +21,10 @@
 #ifndef PORTAL_WL_H
 #define PORTAL_WL_H
 
-#include <QDBusObjectPath>
 #include <QFlags>
 #include <QLoggingCategory>
 #include <QMainWindow>
-
-Q_DECLARE_LOGGING_CATEGORY(PortalTestKde)
+#include <QVariantMap>
 
 class Portal_wl : public QObject
 {
@@ -56,16 +54,11 @@ private:
     QString getSessionToken();
     QString getRequestToken();
 
-    QDBusObjectPath m_inhibitionRequest;
     QString m_session;
     uint m_sessionTokenCounter;
     uint m_requestTokenCounter;
 
-    QString vk_fd;
-    QString vk_path;
-    int vk_startCounter = 0;
-
-    int Selection_Screen_Window_Area;
+    int Selection_Screen_Window_Area = 1;
 
 protected:
 
