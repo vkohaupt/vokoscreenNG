@@ -155,9 +155,16 @@ void QvkPulseAudioWatcher::slot_update()
         }
 
         QLabel *label = new QLabel();
-        label->setText( "No audio recording device found." );
-        ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter);
-        ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, label );
+        label->setText( "PulseAudio\n" );
+        label->setAlignment( Qt::AlignCenter );
+        ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter );
+        ui->verticalLayoutAudioDevices->addWidget( label );
+
+        QLabel *labelText = new QLabel();
+        labelText->setText( "No device found for audio recording." );
+        ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter );
+        ui->verticalLayoutAudioDevices->addWidget( labelText );
+
         slot_audioDeviceSelected();
     }
 }
