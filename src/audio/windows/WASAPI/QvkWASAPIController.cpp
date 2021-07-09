@@ -118,8 +118,15 @@ void QvkWASAPIController::getAllDevices()
     }
     else
     {
+        QList<QLabel *> listLabel = ui->scrollAreaAudioDevice->findChildren<QLabel *>();
+        for ( int i = 0; i < listLabel.count(); i++ )
+        {
+            ui->verticalLayoutAudioDevices->removeWidget( listLabel.at(i) );
+            delete listLabel.at(i);
+        }
+
         QLabel *label = new QLabel();
-        label->setText( "No audio recording device found, please read the online help." );
+        label->setText( "No device found for audio recording." );
         ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter);
         ui->verticalLayoutAudioDevices->addWidget( label );
     }
