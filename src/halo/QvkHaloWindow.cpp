@@ -22,6 +22,7 @@
 
 #include "QvkHaloWindow.h"
 #include "QvkPushButton.h"
+#include "QvkHaloCircleWidget.h"
 
 #include <QPainter>
 #include <QDebug>
@@ -42,6 +43,12 @@ QvkHaloWindow::QvkHaloWindow( QWidget *parent, Ui_formMainWindow *ui_formMainWin
     setColorButtons();
     setSpezialSlider();
     setToolButtonDefaultValues();
+
+    QvkHaloCircleWidget *vkHaloCircleWidget = new QvkHaloCircleWidget( ui->widget );
+    vkHaloCircleWidget->setObjectName( "widgetHaloCircle" );
+    vkHaloCircleWidget->show();
+
+
 }
 
 

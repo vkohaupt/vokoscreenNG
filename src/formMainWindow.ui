@@ -2707,10 +2707,16 @@
             <property name="frameShape">
              <enum>QFrame::NoFrame</enum>
             </property>
-            <property name="frameShadow">
-             <enum>QFrame::Plain</enum>
-            </property>
             <layout class="QHBoxLayout" name="horizontalLayout_61">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>2</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
              <item>
               <widget class="QWidget" name="widget" native="true"/>
              </item>
