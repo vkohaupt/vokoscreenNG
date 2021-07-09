@@ -42,7 +42,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -566,7 +566,7 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>36</width>
+                      <width>16</width>
                       <height>16</height>
                      </rect>
                     </property>

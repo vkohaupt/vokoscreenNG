@@ -245,7 +245,7 @@ void QvkShowClick::setSpezialSlider()
 {
     vkSpezialSliderCircle = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayoutCircle->insertWidget( 0, vkSpezialSliderCircle );
-    vkSpezialSliderCircle->setObjectName( "sliderCircle" );
+    vkSpezialSliderCircle->setObjectName( "sliderShowClickCircle" );
     vkSpezialSliderCircle->setTracking( true );
     vkSpezialSliderCircle->setMinimum( 40 );
     vkSpezialSliderCircle->setMaximum( 80 );
@@ -256,7 +256,7 @@ void QvkShowClick::setSpezialSlider()
 
     vkSpezialSliderOpacity = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayoutOpacity->insertWidget( 0, vkSpezialSliderOpacity );
-    vkSpezialSliderOpacity->setObjectName( "sliderOpacity" );
+    vkSpezialSliderOpacity->setObjectName( "sliderShowClickOpacity" );
     vkSpezialSliderOpacity->setTracking( true );
     vkSpezialSliderOpacity->setMinimum( 1 );
     vkSpezialSliderOpacity->setMaximum( 100 );
@@ -267,7 +267,7 @@ void QvkShowClick::setSpezialSlider()
 
     vkSpezialSliderShowtime = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayoutShowtime->insertWidget( 0, vkSpezialSliderShowtime );
-    vkSpezialSliderShowtime->setObjectName( "sliderShowtime" );
+    vkSpezialSliderShowtime->setObjectName( "sliderShowClickShowtime" );
     vkSpezialSliderShowtime->setTracking( true );
     vkSpezialSliderShowtime->setMinimum( 1 );
     vkSpezialSliderShowtime->setMaximum( 20 );
