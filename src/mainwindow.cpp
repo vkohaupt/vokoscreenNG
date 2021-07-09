@@ -561,12 +561,6 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
 
-    if ( vkShowClick->pointerOnOff == true )
-    {
-        emit vkShowClick->vkSpezialCheckbox->signal_clicked( false );
-    }
-
-
 #ifdef Q_OS_WIN
     if ( vkCiscoOpenh264Controller->isShowCiscoFinishDialog == false )
     {
@@ -582,6 +576,12 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 #ifdef Q_OS_WIN
     }
 #endif
+
+    if ( vkShowClick->pointerOnOff == true )
+    {
+        emit vkShowClick->vkSpezialCheckbox->signal_clicked( false );
+    }
+
     emit signal_close();
     emit signal_close( false );
 }
