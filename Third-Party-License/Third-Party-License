@@ -27,3 +27,8 @@ PulseAudio:
 Licence --> LGPL
 File    --> LGPL
 URL     --> https://www.freedesktop.org/wiki/Software/PulseAudio/
+
+Wayland:
+Licence --> "Expat" Mit
+File    --> Wayland-licence
+URL     --> https://gitlab.freedesktop.org/wayland/wayland
