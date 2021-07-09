@@ -175,17 +175,6 @@
     </message>
 </context>
 <context>
-    <name>Qvk_wl_MainWindow</name>
-    <message>
-        <source>Wayland desktop session detected</source>
-        <translation>Aptiktas Wayland darbalaukio seansas</translation>
-    </message>
-    <message>
-        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Šiuo metu Wayland nėra palaikomas. Ekrano įrašas rodys juodą ekraną. Atsijunkite ir paleiskite X11 darbalaukio seansą</translation>
-    </message>
-</context>
-<context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>

@@ -175,17 +175,6 @@
     </message>
 </context>
 <context>
-    <name>Qvk_wl_MainWindow</name>
-    <message>
-        <source>Wayland desktop session detected</source>
-        <translation>Zaznana je namizna seja Wayland</translation>
-    </message>
-    <message>
-        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Merjenje časa v okolju Wayland ni podprto. Zaslonski posnetek pokaže črn zaslon. Odjavite se in  začnite namizno sejo X11.</translation>
-    </message>
-</context>
-<context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>

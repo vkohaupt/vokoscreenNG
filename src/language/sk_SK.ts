@@ -175,18 +175,6 @@
     </message>
 </context>
 <context>
-    <name>Qvk_wl_MainWindow</name>
-    <message>
-        <source>Wayland desktop session detected</source>
-        <translation>Detekované Wayland desktopové sedenie</translation>
-    </message>
-    <message>
-        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Momentálne Wayland nie je podporovaný. Namiesto nahrávky je čierna obrazovka.
-Odhláste sa a naštartujte X11 desktopové sedenie</translation>
-    </message>
-</context>
-<context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>

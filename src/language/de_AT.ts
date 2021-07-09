@@ -175,17 +175,6 @@
     </message>
 </context>
 <context>
-    <name>Qvk_wl_MainWindow</name>
-    <message>
-        <source>Wayland desktop session detected</source>
-        <translation>Wayland Desktopsitzung erkannt</translation>
-    </message>
-    <message>
-        <source>To time Wayland is not supported. A screencast show a black screen. Please logout and start a X11 Desktop session</source>
-        <translation>Zur Zeit wird Wayland nicht unterstützt. Ein Screencast zeigt einen schwarzen Bildschirm. Bitte melden Sie sich ab und starten Sie eine X11 Desktop-Sitzung</translation>
-    </message>
-</context>
-<context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
