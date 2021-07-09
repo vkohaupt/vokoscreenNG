@@ -338,6 +338,7 @@ void QvkShowClick::slot_SlidershowTimeDefault()
 void QvkShowClick::setSpezialCheckBox()
 {
     vkSpezialCheckbox = new QvkSpezialCheckbox();
+    vkSpezialCheckbox->setObjectName( "spezialCheckboxShowclick" );
     ui->horizontalLayout_15->insertWidget( 1, vkSpezialCheckbox );
     connect( vkSpezialCheckbox, SIGNAL( signal_clicked( bool ) ), this, SLOT( slot_pointerOnOff( bool ) ) );
 }

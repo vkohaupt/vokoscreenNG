@@ -129,6 +129,7 @@ void QvkHaloWindow::slot_followMouse()
 void QvkHaloWindow::setSpezialCheckBox()
 {
     vkSpezialCheckbox = new QvkSpezialCheckbox();
+    vkSpezialCheckbox->setObjectName( "spezialCheckBoxHalo" );
     ui->horizontalLayout_48->insertWidget( 1, vkSpezialCheckbox );
     connect( vkSpezialCheckbox, SIGNAL( signal_clicked( bool ) ), this, SLOT( slot_haloOnOff( bool ) ) );
 }
