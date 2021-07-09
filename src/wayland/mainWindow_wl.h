@@ -31,6 +31,7 @@ private:
     QStringList videoFormatsList;
     QvkSpezialSlider *sliderFrames;
     QvkRegionChoise_wl *vkRegionChoise;
+    void vk_setCornerWidget( QTabWidget *tabWidget );
 
     void messageBox( QString value );
 

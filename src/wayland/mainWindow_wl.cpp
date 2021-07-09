@@ -24,6 +24,9 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     setWindowIcon( icon );
 
+    vk_setCornerWidget( ui->tabWidgetScreencast );
+    vk_setCornerWidget( ui->tabWidgetLog );
+
     ui->tabWidgetScreencast->setCurrentIndex( 0 );
     ui->tabWidgetSideBar->setCurrentIndex( 0 );
 
@@ -64,6 +67,17 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
     Q_UNUSED(event);
     ui->pushButtonStop->click();
     vkRegionChoise->close();
+}
+
+
+void QvkMainWindow_wl::vk_setCornerWidget( QTabWidget *tabWidget )
+{
+    QPixmap pixmap( ":/pictures/wayland.png" );
+    pixmap = pixmap.scaled( QSize( 48, 48 ), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+    QLabel *label = new QLabel();
+    label->setPixmap( pixmap );
+    label->setEnabled( false );
+    tabWidget->setCornerWidget( label, Qt::TopRightCorner);
 }
 
 
