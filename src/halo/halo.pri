@@ -3,9 +3,8 @@ DEPENDPATH  += $$PWD
 
 SOURCES   += $$PWD/QvkHalo.cpp \
              $$PWD/QvkHaloWindow.cpp \
-             $$PWD/QvkHaloCircleWidget.cpp
+             $$PWD/QvkHaloPreviewWidget.cpp
 
 HEADERS   += $$PWD/QvkHalo.h \
              $$PWD/QvkHaloWindow.h \
-             $$PWD/QvkHaloCircleWidget.h
-             
+             $$PWD/QvkHaloPreviewWidget.h

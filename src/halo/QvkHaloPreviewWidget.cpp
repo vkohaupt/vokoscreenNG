@@ -20,11 +20,11 @@
  * --End_License--
  */
 
-#include "QvkHaloCircleWidget.h"
+#include "QvkHaloPreviewWidget.h"
 
-QvkHaloCircleWidget::QvkHaloCircleWidget( QWidget *parent ) : QWidget( parent )
+QvkHaloPreviewWidget::QvkHaloPreviewWidget( QWidget *parent )
 {
-    parentWidget = parent;
+    setParent( parent );
 
     color = Qt::yellow;
     diameter = 50;
@@ -32,33 +32,30 @@ QvkHaloCircleWidget::QvkHaloCircleWidget( QWidget *parent ) : QWidget( parent )
 }
 
 
-QvkHaloCircleWidget::~QvkHaloCircleWidget()
+QvkHaloPreviewWidget::~QvkHaloPreviewWidget()
 {
 }
 
 
-void QvkHaloCircleWidget::paintEvent( QPaintEvent *event )
+void QvkHaloPreviewWidget::paintEvent( QPaintEvent *event )
 {
     Q_UNUSED(event);
 
-
-    QPainter painter;
-    painter.begin( this );
-    painter.setRenderHints( QPainter::Antialiasing, true );
+    QPainter painterBackground;
+    painterBackground.begin( this );
+    painterBackground.setRenderHints( QPainter::Antialiasing, true );
 
     if ( color == Qt::white )
     {
-        painter.fillRect( 0, 0, width(), height(), QColor( 245, 245, 245, 0 ) );
+        painterBackground.fillRect( 0, 0, width(), height(), QColor( 245, 245, 245, 0 ) );
     }
     else
     {
-        painter.fillRect( 0, 0, width(), height(), Qt::white );
+        painterBackground.fillRect( 0, 0, width(), height(), Qt::white );
     }
+    painterBackground.end();
 
 
-    painter.end();
-
-/*
     QPixmap pixmap( 100 * devicePixelRatioF(), 100 * devicePixelRatioF() );
     pixmap.fill( Qt::transparent );
     pixmap.setDevicePixelRatio( devicePixelRatioF() );
@@ -86,44 +83,44 @@ void QvkHaloCircleWidget::paintEvent( QPaintEvent *event )
     QPainter painter;
     painter.begin( this );
     painter.drawPixmap( QPoint( 0, 0 ), pixmap );
-    painter.end(); */
+    painter.end();
 }
 
 
-void QvkHaloCircleWidget::setColor( QColor value )
+void QvkHaloPreviewWidget::setColor( QColor value )
 {
     color = value;
     repaint();
 }
 
 
-QColor QvkHaloCircleWidget::getColor()
+QColor QvkHaloPreviewWidget::getColor()
 {
     return color;
 }
 
 
-void QvkHaloCircleWidget::setDiameter( int value )
+void QvkHaloPreviewWidget::setDiameter( int value )
 {
     diameter = value;
     repaint();
 }
 
 
-int QvkHaloCircleWidget::getDiameter()
+int QvkHaloPreviewWidget::getDiameter()
 {
     return diameter;
 }
 
 
-void QvkHaloCircleWidget::setOpacity( double value )
+void QvkHaloPreviewWidget::setOpacity( double value )
 {
     opacity = value;;
     repaint();
 }
 
 
-double QvkHaloCircleWidget::getOpacity()
+double QvkHaloPreviewWidget::getOpacity()
 {
     return opacity;
 }

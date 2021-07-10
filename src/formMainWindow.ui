@@ -2704,9 +2704,6 @@
          <layout class="QGridLayout" name="gridLayoutShowClick">
           <item row="3" column="6" colspan="5">
            <widget class="QFrame" name="frame_2">
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
-            </property>
             <layout class="QHBoxLayout" name="horizontalLayout_61">
              <property name="spacing">
               <number>0</number>
@@ -2718,7 +2715,9 @@
               <number>0</number>
              </property>
              <item>
-              <widget class="QWidget" name="widget" native="true"/>
+              <widget class="QWidget" name="widget" native="true">
+               <layout class="QHBoxLayout" name="horizontalLayout_46"/>
+              </widget>
              </item>
             </layout>
            </widget>

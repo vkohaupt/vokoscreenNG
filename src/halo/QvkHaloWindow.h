@@ -24,71 +24,32 @@
 #define QvkHaloWindow_H
 
 #include <QWidget>
-#include <QTimer>
-
-#include "ui_formMainWindow.h"
-#include "QvkSpezialCheckbox.h"
-#include "QvkSpezialSlider.h"
 
 class QvkHaloWindow: public QWidget
 
 {
     Q_OBJECT
 public:
-    QvkHaloWindow(QWidget *parent, Ui_formMainWindow *ui_formMainWindow );
-    void init();
-
+    QvkHaloWindow( QWidget *parent );
     virtual ~QvkHaloWindow();
+
     
 public:
+    void setDiameter( int value );
+    void setOpacit( double value );
 
 
 public slots:
+    void slot_followMouse();
 
 
 private:
-    QvkSpezialCheckbox *vkSpezialCheckbox;
-    QvkSpezialSlider *vkSpezialSliderDiameter;
-    QvkSpezialSlider *vkSpezialSliderOpacity;
-
-    int diameter;
+    int diameter = 80;
     QColor color = Qt::yellow;
     qreal opacity = 0.5;
-    QTimer *timer;
-    Ui_formMainWindow *ui;
-
-    void setColorButtons();
-    void setTimer();
-    void setSpezialCheckBox();
-    void setSpezialSlider();
-    void setToolButtonDefaultValues();
 
 
 private slots:
-    void slot_vkPushButton_halo_white();
-    void slot_vkPushButton_halo_black();
-    void slot_vkPushButton_halo_red();
-    void slot_vkPushButton_halo_darkRed();
-    void slot_vkPushButton_halo_green();
-    void slot_vkPushButton_halo_darkGreen();
-    void slot_vkPushButton_halo_blue();
-    void slot_vkPushButton_halo_darkBlue();
-    void slot_vkPushButton_halo_cyan();
-    void slot_vkPushButton_halo_darkCyan();
-    void slot_vkPushButton_halo_magenta();
-    void slot_vkPushButton_halo_darkMagenta();
-    void slot_vkPushButton_halo_yellow();
-    void slot_vkPushButton_halo_darkYellow();
-    void slot_vkPushButton_halo_gray();
-    void slot_vkPushButton_halo_darkGray();
-
-    void slot_followMouse();
-    void slot_haloOnOff( bool value );
-
-    void slot_valueChanged_SpezialSliderDiameter( int value );
-
-    void slot_DiameterDefault();
-    void slot_OpacityDefault();
 
 
 protected:

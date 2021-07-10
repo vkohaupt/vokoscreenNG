@@ -20,20 +20,19 @@
  * --End_License--
  */
 
-#ifndef QVKHALOCIRCLEWIDGET_H
-#define QVKHALOCIRCLEWIDGET_H
+#ifndef QVKHALOPREVIEWWIDGET_H
+#define QVKHALOPREVIEWWIDGET_H
 
 #include <QWidget>
 #include <QPainter>
 #include <QDebug>
 
-class QvkHaloCircleWidget: public QWidget
+class QvkHaloPreviewWidget: public QWidget
 {
     Q_OBJECT
 public:    
-    virtual ~QvkHaloCircleWidget();
-    QvkHaloCircleWidget( QWidget *parent );
-    QWidget *parentWidget;
+    virtual ~QvkHaloPreviewWidget();
+    QvkHaloPreviewWidget( QWidget *parent );
 
     void setColor( QColor value );
     void setDiameter( int value );
