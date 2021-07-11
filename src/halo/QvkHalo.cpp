@@ -192,96 +192,112 @@ void QvkHalo::setColorButtons()
 void QvkHalo::slot_vkPushButton_halo_white()
 {
     vkHaloPreviewWidget->setColor( Qt::white );
+    vkHaloWindow->setColor( Qt::white );
 }
 
 
 void QvkHalo::slot_vkPushButton_halo_black()
 {
     vkHaloPreviewWidget->setColor( Qt::black );
+    vkHaloWindow->setColor( Qt::black );
 }
 
 
 void QvkHalo::slot_vkPushButton_halo_red()
 {
     vkHaloPreviewWidget->setColor( Qt::red );
+    vkHaloWindow->setColor( Qt::red );
 }
 
 
 void QvkHalo::slot_vkPushButton_halo_darkRed()
 {
     vkHaloPreviewWidget->setColor( Qt::darkRed );
+    vkHaloWindow->setColor( Qt::darkRed );
 }
 
 
 void QvkHalo::slot_vkPushButton_halo_green()
 {
     vkHaloPreviewWidget->setColor( Qt::green );
+    vkHaloWindow->setColor( Qt::green );
 }
 
 
 void QvkHalo::slot_vkPushButton_halo_darkGreen()
 {
     vkHaloPreviewWidget->setColor( Qt::darkGreen );
+    vkHaloWindow->setColor( Qt::darkGreen );
 }
 
 
 void QvkHalo::slot_vkPushButton_halo_blue()
 {
     vkHaloPreviewWidget->setColor( Qt::blue );
+    vkHaloWindow->setColor( Qt::blue );
 }
 
 
 void QvkHalo::slot_vkPushButton_halo_darkBlue()
 {
     vkHaloPreviewWidget->setColor( Qt::darkBlue );
+    vkHaloWindow->setColor( Qt::darkBlue );
 }
 
 
 void QvkHalo::slot_vkPushButton_halo_cyan()
 {
     vkHaloPreviewWidget->setColor( Qt::cyan );
+    vkHaloWindow->setColor( Qt::cyan );
 }
 
 
 void QvkHalo::slot_vkPushButton_halo_darkCyan()
 {
     vkHaloPreviewWidget->setColor( Qt::darkCyan );
+    vkHaloWindow->setColor( Qt::darkCyan );
 }
 
 
 void QvkHalo::slot_vkPushButton_halo_magenta()
 {
     vkHaloPreviewWidget->setColor( Qt::magenta );
+    vkHaloWindow->setColor( Qt::magenta );
 }
 
 
 void QvkHalo::slot_vkPushButton_halo_darkMagenta()
 {
     vkHaloPreviewWidget->setColor( Qt::darkMagenta );
+    vkHaloWindow->setColor( Qt::darkMagenta );
 }
 
 
 void QvkHalo::slot_vkPushButton_halo_yellow()
 {
     vkHaloPreviewWidget->setColor( Qt::yellow );
+    vkHaloWindow->setColor( Qt::yellow );
 }
 
 
 void QvkHalo::slot_vkPushButton_halo_darkYellow()
 {
     vkHaloPreviewWidget->setColor( Qt::darkYellow );
+    vkHaloWindow->setColor( Qt::darkYellow );
 }
 
 
 void QvkHalo::slot_vkPushButton_halo_gray()
 {
     vkHaloPreviewWidget->setColor( Qt::gray );
+    vkHaloWindow->setColor( Qt::gray );
 }
 
 
 void QvkHalo::slot_vkPushButton_halo_darkGray()
 {
     vkHaloPreviewWidget->setColor( Qt::darkGray );
+    vkHaloWindow->setColor( Qt::darkGray );
 }
 
 

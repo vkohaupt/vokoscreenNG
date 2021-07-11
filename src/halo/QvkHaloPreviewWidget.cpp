@@ -41,6 +41,42 @@ void QvkHaloPreviewWidget::paintEvent( QPaintEvent *event )
 {
     Q_UNUSED(event);
 
+    QPainter painter;
+    painter.begin( this );
+    painter.setRenderHints( QPainter::Antialiasing, true );
+
+    if ( color == Qt::white )
+    {
+        painter.fillRect( 0, 0, width(), height(), QColor( 245, 245, 245, 0 ) );
+    }
+    else
+    {
+        painter.fillRect( 0, 0, width(), height(), Qt::white );
+    }
+
+    qreal penWith = 1.0;
+    QPen pen;
+    pen.setWidthF( penWith );
+    pen.setColor( color );
+    pen.setStyle( Qt::SolidLine );
+    painter.setPen( pen );
+
+    QBrush brush;
+    brush.setColor( color );
+    brush.setStyle( Qt::SolidPattern );
+    painter.setBrush( color );
+    painter.setOpacity( opacity );
+    painter.drawEllipse( 1, 1, diameter-2, diameter-2 );
+
+    painter.end();
+}
+
+
+/*
+void QvkHaloPreviewWidget::paintEvent( QPaintEvent *event )
+{
+    Q_UNUSED(event);
+
     QPainter painterBackground;
     painterBackground.begin( this );
     painterBackground.setRenderHints( QPainter::Antialiasing, true );
@@ -85,7 +121,7 @@ void QvkHaloPreviewWidget::paintEvent( QPaintEvent *event )
     painter.drawPixmap( QPoint( 0, 0 ), pixmap );
     painter.end();
 }
-
+*/
 
 void QvkHaloPreviewWidget::setColor( QColor value )
 {

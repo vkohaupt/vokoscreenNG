@@ -37,7 +37,7 @@ public:
 public:
     void setDiameter( int value );
     void setOpacit( double value );
-
+    void setColor( QColor value );
 
 public slots:
     void slot_followMouse();

@@ -112,3 +112,11 @@ void QvkHaloWindow::setOpacit( double value )
     opacity = value;
     repaint();
 }
+
+
+void QvkHaloWindow::setColor( QColor value )
+{
+   color = value;
+   repaint();
+}
+
