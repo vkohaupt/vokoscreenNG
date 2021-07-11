@@ -53,6 +53,7 @@ private:
     Ui_formMainWindow *ui;
     QvkSpezialCheckbox *vkSpezialCheckbox;
     QTimer *timer;
+    int diameterDefault = 70;
 
     void setHaloWindow();
     void setHaloPreviewWidget();

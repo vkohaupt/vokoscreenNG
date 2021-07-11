@@ -38,9 +38,9 @@ void QvkHalo::init( Ui_formMainWindow *ui_formMainWindow )
 {
     ui = ui_formMainWindow;
 
-    setSpezialSlider();
     setHaloPreviewWidget();
     setHaloWindow();
+    setSpezialSlider();
     setColorButtons();
     setToolButtonDefaultValues();
     setSpezialCheckBox();
@@ -55,11 +55,12 @@ void QvkHalo::setSpezialSlider()
     vkSpezialSliderDiameter->setObjectName( "sliderhaloDiameter" );
     vkSpezialSliderDiameter->setTracking( true );
     vkSpezialSliderDiameter->setMinimum( 50 );
-    vkSpezialSliderDiameter->setMaximum( 100 );
-    vkSpezialSliderDiameter->setValue( 80 );
+    vkSpezialSliderDiameter->setMaximum( 90 );
+    vkSpezialSliderDiameter->setValue( 0 );
     vkSpezialSliderDiameter->setShowValue( false );
     vkSpezialSliderDiameter->show();
     connect( vkSpezialSliderDiameter, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Diameter( int ) ) );
+    vkSpezialSliderDiameter->setValue( diameterDefault );
 
     vkSpezialSliderOpacity = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayoutHaloOpacity->insertWidget( 0, vkSpezialSliderOpacity );
@@ -309,7 +310,7 @@ void QvkHalo::setToolButtonDefaultValues()
 
 void QvkHalo::slot_DiameterDefault()
 {
-    vkSpezialSliderDiameter->setValue( 80 );
+    vkSpezialSliderDiameter->setValue( diameterDefault );
 }
 
 
