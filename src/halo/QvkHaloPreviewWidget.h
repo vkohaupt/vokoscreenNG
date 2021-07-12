@@ -32,7 +32,7 @@ class QvkHaloPreviewWidget: public QWidget
     Q_OBJECT
 public:    
     virtual ~QvkHaloPreviewWidget();
-    QvkHaloPreviewWidget( );//QWidget *parent = NULL);
+    QvkHaloPreviewWidget();
 
     void setColor( QColor value );
     void setDiameter( int value );

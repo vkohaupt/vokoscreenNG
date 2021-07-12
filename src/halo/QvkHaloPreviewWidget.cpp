@@ -23,9 +23,8 @@
 #include "QvkHaloPreviewWidget.h"
 
 
-QvkHaloPreviewWidget::QvkHaloPreviewWidget()// QWidget *parent )
+QvkHaloPreviewWidget::QvkHaloPreviewWidget()
 {
-//    setParent( parent );
     color = Qt::yellow;
 }
 
