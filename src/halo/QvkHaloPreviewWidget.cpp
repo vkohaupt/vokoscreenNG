@@ -23,9 +23,9 @@
 #include "QvkHaloPreviewWidget.h"
 
 
-QvkHaloPreviewWidget::QvkHaloPreviewWidget( QWidget *parent )
+QvkHaloPreviewWidget::QvkHaloPreviewWidget()// QWidget *parent )
 {
-    setParent( parent );
+//    setParent( parent );
     color = Qt::yellow;
 }
 
@@ -64,7 +64,7 @@ void QvkHaloPreviewWidget::paintEvent( QPaintEvent *event )
     brush.setStyle( Qt::SolidPattern );
     painter.setBrush( color );
     painter.setOpacity( opacity );
-    painter.drawEllipse( 1, 1, diameter-2, diameter-2 );
+    painter.drawEllipse( width()/2 - diameter/2, height()/2 - diameter/2, diameter, diameter );
 
     painter.end();
 }

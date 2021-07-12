@@ -85,7 +85,8 @@ void QvkHalo::setHaloWindow()
 
 void QvkHalo::setHaloPreviewWidget()
 {
-    vkHaloPreviewWidget = new QvkHaloPreviewWidget( ui->widget );
+    vkHaloPreviewWidget = new QvkHaloPreviewWidget( );
+    ui->horizontalLayout_61->insertWidget( 0, vkHaloPreviewWidget );
     vkHaloPreviewWidget->setObjectName( "widgetHaloPreview" );
     vkHaloPreviewWidget->show();
 }
