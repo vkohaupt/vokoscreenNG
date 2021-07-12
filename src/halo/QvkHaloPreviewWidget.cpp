@@ -22,12 +22,16 @@
 
 #include "QvkHaloPreviewWidget.h"
 
-QvkHaloPreviewWidget::QvkHaloPreviewWidget( QWidget *parent )
+
+/*
+ * diameterDefault ist the initial default and reset default
+ * */
+QvkHaloPreviewWidget::QvkHaloPreviewWidget( QWidget *parent, int diameterDefault )
 {
     setParent( parent );
 
     color = Qt::yellow;
-    diameter = 50;
+    diameter = diameterDefault;
     opacity = 0.7;
 }
 
