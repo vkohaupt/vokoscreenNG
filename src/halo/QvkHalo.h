@@ -54,6 +54,7 @@ private:
     QvkSpezialCheckbox *vkSpezialCheckbox;
     QTimer *timer;
     int diameterDefault = 70;
+    int opacityDefault = 60;
 
     void setHaloWindow();
     void setHaloPreviewWidget();

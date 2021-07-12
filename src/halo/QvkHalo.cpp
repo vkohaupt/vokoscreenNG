@@ -68,10 +68,11 @@ void QvkHalo::setSpezialSlider()
     vkSpezialSliderOpacity->setTracking( true );
     vkSpezialSliderOpacity->setMinimum( 1 );
     vkSpezialSliderOpacity->setMaximum( 100 );
-    vkSpezialSliderOpacity->setValue( 60 );
+    vkSpezialSliderOpacity->setValue( 0 );
     vkSpezialSliderOpacity->setShowValue( false );
     vkSpezialSliderOpacity->show();
     connect( vkSpezialSliderOpacity, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Opacity( int ) ) );
+    vkSpezialSliderOpacity->setValue( opacityDefault );
 }
 
 
@@ -84,7 +85,7 @@ void QvkHalo::setHaloWindow()
 
 void QvkHalo::setHaloPreviewWidget()
 {
-    vkHaloPreviewWidget = new QvkHaloPreviewWidget( ui->widget, diameterDefault );
+    vkHaloPreviewWidget = new QvkHaloPreviewWidget( ui->widget );
     vkHaloPreviewWidget->setObjectName( "widgetHaloPreview" );
     vkHaloPreviewWidget->show();
 }
@@ -99,8 +100,9 @@ void QvkHalo::slot_valueChanged_SpezialSlider_Diameter( int value )
 
 void QvkHalo::slot_valueChanged_SpezialSlider_Opacity( int value )
 {
+    vkHaloPreviewWidget->setOpacity( value );
+
     double opacity = (double)value / 100.0;
-    vkHaloPreviewWidget->setOpacity( opacity );
     vkHaloWindow->setOpacit( opacity );
 }
 
@@ -316,7 +318,7 @@ void QvkHalo::slot_DiameterDefault()
 
 void QvkHalo::slot_OpacityDefault()
 {
-    vkSpezialSliderOpacity->setValue( 60 );
+    vkSpezialSliderOpacity->setValue( opacityDefault );
 }
 
 
