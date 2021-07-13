@@ -51,74 +51,13 @@ void QvkHaloPreviewWidget::paintEvent( QPaintEvent *event )
         painter.fillRect( 0, 0, width(), height(), Qt::white );
     }
 
-    qreal penWith = 1.0;
-    QPen pen;
-    pen.setWidthF( penWith );
-    pen.setColor( color );
-    pen.setStyle( Qt::SolidLine );
-    painter.setPen( pen );
-
-    QBrush brush;
-    brush.setColor( color );
-    brush.setStyle( Qt::SolidPattern );
+    painter.setPen( Qt::NoPen );
     painter.setBrush( color );
     painter.setOpacity( opacity );
     painter.drawEllipse( width()/2 - diameter/2, height()/2 - diameter/2, diameter, diameter );
-
     painter.end();
 }
 
-
-/*
-void QvkHaloPreviewWidget::paintEvent( QPaintEvent *event )
-{
-    Q_UNUSED(event);
-
-    QPainter painterBackground;
-    painterBackground.begin( this );
-    painterBackground.setRenderHints( QPainter::Antialiasing, true );
-
-    if ( color == Qt::white )
-    {
-        painterBackground.fillRect( 0, 0, width(), height(), QColor( 245, 245, 245, 0 ) );
-    }
-    else
-    {
-        painterBackground.fillRect( 0, 0, width(), height(), Qt::white );
-    }
-    painterBackground.end();
-
-
-    QPixmap pixmap( 100 * devicePixelRatioF(), 100 * devicePixelRatioF() );
-    pixmap.fill( Qt::transparent );
-    pixmap.setDevicePixelRatio( devicePixelRatioF() );
-
-    QPainter painterPixmap;
-    painterPixmap.begin( &pixmap );
-    painterPixmap.setRenderHints( QPainter::Antialiasing, true );
-
-    qreal penWith = 1.0;
-    QPen pen;
-    pen.setWidthF( penWith );
-    pen.setColor( color );
-    pen.setStyle( Qt::SolidLine );
-    painterPixmap.setPen( pen );
-
-    QBrush brush;
-    brush.setColor( color );
-    brush.setStyle( Qt::SolidPattern );
-    painterPixmap.setBrush( color );
-    painterPixmap.setOpacity( opacity );
-    painterPixmap.drawEllipse( 1, 1, diameter-2, diameter-2 );
-
-    painterPixmap.end();
-
-    QPainter painter;
-    painter.begin( this );
-    painter.drawPixmap( QPoint( 0, 0 ), pixmap );
-    painter.end();
-}
-*/
 
 void QvkHaloPreviewWidget::setColor( QColor value )
 {
