@@ -45,8 +45,8 @@ public slots:
 
 private:
     int diameter;
-    QColor color = Qt::yellow;
-    qreal opacity = 0.5;
+    QColor color;
+    qreal opacity;
 
 
 private slots:

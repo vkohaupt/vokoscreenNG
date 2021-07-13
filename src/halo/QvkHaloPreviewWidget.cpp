@@ -25,7 +25,6 @@
 
 QvkHaloPreviewWidget::QvkHaloPreviewWidget()
 {
-    color = Qt::yellow;
 }
 
 

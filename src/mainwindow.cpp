@@ -29,7 +29,6 @@
 #include "global.h"
 #include "QvkScreenManager.h"
 #include "QvkLicenses.h"
-#include "QvkHalo.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -491,7 +490,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // ***************** End showClick
 
 
-    QvkHalo *vkHalo = new QvkHalo();
+    vkHalo = new QvkHalo();
     vkHalo->init( ui );
 
 
@@ -516,6 +515,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSettings.readCamera( vkCameraController );
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
     vkSettings.readPlayerPathOpenFile( vkPlayer );
+    vkSettings.readHaloColor( vkHalo );
 
     // After reading the settings, we read the arguments and run
     QStringList arguments = QApplication::instance()->arguments();
@@ -573,6 +573,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
         vkSettings.saveCamera( vkCameraController->cameraWindow->geometry().x(), vkCameraController->cameraWindow->geometry().y() );
         vkSettings.saveSystrayAlternative( vkSystrayAlternative->x(), vkSystrayAlternative->y() );
         vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile );
+        vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
 #ifdef Q_OS_WIN
     }
 #endif

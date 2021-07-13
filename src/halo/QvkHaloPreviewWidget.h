@@ -37,8 +37,8 @@ public:
     void setColor( QColor value );
     void setDiameter( int value );
     void setOpacity( int value );
-
     QColor getColor();
+
 
 public slots:
 

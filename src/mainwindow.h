@@ -37,6 +37,7 @@
 #include "QvkSystrayAlternative.h"
 #include "QvkAudioController.h"
 #include "QvkShowClick.h"
+#include "QvkHalo.h"
 
 #ifdef Q_OS_WIN
   #include "QvkCiscoOpenh264Controller.h"
@@ -124,6 +125,7 @@ private:
     void vk_setCornerWidget( QTabWidget *tabWidget );
 
     QvkPlayer *vkPlayer;
+    QvkHalo *vkHalo;
 
     QvkCameraController *vkCameraController;
     QvkSystrayAlternative *vkSystrayAlternative;

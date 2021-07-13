@@ -28,6 +28,7 @@
 #include "QvkCameraController.h"
 #include "QvkSystrayAlternative.h"
 #include "QvkPlayer.h"
+#include "QvkHalo.h"
 
 #include <QObject>
 #include <QSettings>
@@ -50,9 +51,10 @@ public:
     void readSystrayAlternative( QvkSystrayAlternative *vkSystrayAlternative );
     void savePlayerPathOpenFile(QString pathFile );
     void readPlayerPathOpenFile(QvkPlayer *vkplayer);
+    void saveHaloColor( QColor value );
+    void readHaloColor( QvkHalo *vkHalo );
     QString getFileName();
     QString getVideoPath();
-
 
 
 public slots:

@@ -26,7 +26,6 @@
 #include <QDebug>
 #include <QBitmap>
 
-
 QvkHaloWindow::QvkHaloWindow( QWidget *parent )
 {
     setParent( parent );

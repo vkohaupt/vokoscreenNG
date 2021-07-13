@@ -27,6 +27,7 @@
 
 #include <QFileInfo>
 #include <QMouseEvent>
+#include <QColor>
 
 QvkSettings::QvkSettings()
 {
@@ -462,3 +463,21 @@ void QvkSettings::readPlayerPathOpenFile( QvkPlayer *vkplayer )
     settings.endGroup();
 }
 
+void QvkSettings::saveHaloColor( QColor value )
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    settings.beginGroup( "Halo" );
+    settings.setValue( "Color", value );
+    settings.endGroup();
+}
+
+void QvkSettings::readHaloColor( QvkHalo *vkHalo )
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    settings.beginGroup( "Halo" );
+    QColor yellow = Qt::yellow;
+    QColor color = settings.value( "Color", yellow ).value<QColor>();
+    vkHalo->vkHaloPreviewWidget->setColor( color );
+    vkHalo->vkHaloWindow->setColor( color );
+    settings.endGroup();
+}
