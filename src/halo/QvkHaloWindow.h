@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkHaloWindow_H
-#define QvkHaloWindow_H
+#ifndef QVKHALOWINDOW_H
+#define QVKHALOWINDOW_H
 
 #include <QWidget>
 
@@ -58,4 +58,4 @@ protected:
 
 };
 
-#endif // QvkHaloWindow
+#endif // QVKHALOWINDOW_H

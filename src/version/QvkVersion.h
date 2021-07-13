@@ -1,5 +1,5 @@
-#ifndef version_H 
-#define version_H
+#ifndef VERSION_H 
+#define VERSION_H
 
 #include <QCoreApplication>
 #include <QNetworkReply>
@@ -34,4 +34,4 @@ signals:
 
 };
 
-#endif
+#endif // VERSION_H

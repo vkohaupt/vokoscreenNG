@@ -68,4 +68,4 @@ private:
     WId newWinID;
 };
 
-#endif
+#endif // QVKWININFO_H
