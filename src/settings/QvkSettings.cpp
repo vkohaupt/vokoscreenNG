@@ -475,7 +475,7 @@ void QvkSettings::readHaloColor( QvkHalo *vkHalo )
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.beginGroup( "Halo" );
-    QColor colorDefault = Qt::darkCyan;
+    QColor colorDefault = Qt::yellow;
     QColor color = settings.value( "Color", colorDefault ).value<QColor>();
     vkHalo->vkHaloPreviewWidget->setColor( color );
     vkHalo->vkHaloWindow->setColor( color );
