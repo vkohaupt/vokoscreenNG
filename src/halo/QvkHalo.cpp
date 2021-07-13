@@ -336,7 +336,7 @@ void QvkHalo::slot_haloOnOff( bool value )
 {
     if ( value == true )
     {
-        timer->start( 40 );
+        timer->start( 20 );
         vkHaloWindow->show();
     }
 

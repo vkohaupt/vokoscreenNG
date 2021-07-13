@@ -95,10 +95,10 @@ void QvkHaloWindow::setDiameter( int value )
                     diameter,
                     QRegion::Rectangle );
 
-    QRegion mouseHole( diameter / 2 - 1,
-                       diameter / 2 - 1,
-                       2,
-                       2,
+    QRegion mouseHole( diameter / 2 - 2,
+                       diameter / 2 - 2,
+                       4,
+                       4,
                        QRegion::Rectangle );
 
     QRegion r1 = window.QRegion::subtracted( mouseHole );
