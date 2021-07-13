@@ -129,7 +129,7 @@ void QvkSpezialCheckbox::paintUnChecked( QPainter &painter )
     pen.setWidthF( penWidth );
     pen.setColor( Qt::black );
     painter.setPen( pen );
-    QBrush brushButton( Qt::red );
+    QBrush brushButton( Qt::darkRed );
     painter.setBrush( brushButton );
     QRectF rectButton( button_x, button_y, button_width, button_height );
     painter.setBrush( brushButton );
