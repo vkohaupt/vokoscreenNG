@@ -279,15 +279,15 @@ void QvkShowClick::setSpezialSlider()
 
 void QvkShowClick::setCircleWidget()
 {
-    vkCircleWidget_1 = new QvkCircleWidget( ui->widget_1 );
+    vkCircleWidget_1 = new QvkPreviewWidget( ui->widget_1 );
     vkCircleWidget_1->setObjectName( "widgetCircle_1" );
     vkCircleWidget_1->show();
 
-    vkCircleWidget_2 = new QvkCircleWidget( ui->widget_2 );
+    vkCircleWidget_2 = new QvkPreviewWidget( ui->widget_2 );
     vkCircleWidget_2->setObjectName( "widgetCircle_2" );
     vkCircleWidget_2->show();
 
-    vkCircleWidget_3 = new QvkCircleWidget( ui->widget_3 );
+    vkCircleWidget_3 = new QvkPreviewWidget( ui->widget_3 );
     vkCircleWidget_3->setObjectName( "widgetCircle_3" );
     vkCircleWidget_3->show();
 }

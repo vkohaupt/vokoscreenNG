@@ -20,19 +20,19 @@
  * --End_License--
  */
 
-#ifndef QvkCircleWidget_H
-#define QvkCircleWidget_H
+#ifndef QVKPREVIEWWIDGET_H
+#define QVKPREVIEWWIDGET_H
 
 #include <QWidget>
 #include <QPainter>
 #include <QDebug>
 
-class QvkCircleWidget: public QWidget
+class QvkPreviewWidget: public QWidget
 {
     Q_OBJECT
 public:    
-    virtual ~QvkCircleWidget();
-    QvkCircleWidget( QWidget *parent );
+    virtual ~QvkPreviewWidget();
+    QvkPreviewWidget( QWidget *parent );
     QWidget *parentWidget;
 
     void setColor( QColor color );
@@ -65,4 +65,4 @@ signals:
 
 };
 
-#endif // QvkCircleWidget_H
+#endif // QVKPREVIEWWIDGET_H

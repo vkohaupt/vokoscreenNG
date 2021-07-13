@@ -26,7 +26,7 @@
 #include <QObject>
 
 #include "ui_formMainWindow.h"
-#include "QvkCircleWidget.h"
+#include "QvkPreviewWidget.h"
 #include "QvkSpezialSlider.h"
 #include "QvkSpezialCheckbox.h"
 #include "QvkGlobalMouse.h"
@@ -78,9 +78,9 @@ protected:
 private:
     Ui_formMainWindow *ui;
 
-    QvkCircleWidget *vkCircleWidget_1;
-    QvkCircleWidget *vkCircleWidget_2;
-    QvkCircleWidget *vkCircleWidget_3;
+    QvkPreviewWidget *vkCircleWidget_1;
+    QvkPreviewWidget *vkCircleWidget_2;
+    QvkPreviewWidget *vkCircleWidget_3;
 
     QvkSpezialSlider *vkSpezialSliderCircle;
     QvkSpezialSlider *vkSpezialSliderOpacity;

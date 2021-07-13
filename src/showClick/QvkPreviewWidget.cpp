@@ -20,9 +20,9 @@
  * --End_License--
  */
 
-#include "QvkCircleWidget.h"
+#include "QvkPreviewWidget.h"
 
-QvkCircleWidget::QvkCircleWidget( QWidget *parent ) : QWidget( parent )
+QvkPreviewWidget::QvkPreviewWidget( QWidget *parent ) : QWidget( parent )
 {
     parentWidget = parent;
 
@@ -32,12 +32,12 @@ QvkCircleWidget::QvkCircleWidget( QWidget *parent ) : QWidget( parent )
 }
 
 
-QvkCircleWidget::~QvkCircleWidget()
+QvkPreviewWidget::~QvkPreviewWidget()
 {
 }
 
 
-void QvkCircleWidget::paintEvent( QPaintEvent *event )
+void QvkPreviewWidget::paintEvent( QPaintEvent *event )
 {
     Q_UNUSED(event);
 
@@ -154,40 +154,40 @@ void QvkCircleWidget::paintEvent( QPaintEvent *event )
 }
 
 
-void QvkCircleWidget::setColor( QColor value )
+void QvkPreviewWidget::setColor( QColor value )
 {
     pointerColor = value;
     repaint();
 }
 
 
-QColor QvkCircleWidget::getColor()
+QColor QvkPreviewWidget::getColor()
 {
     return pointerColor;
 }
 
 
-void QvkCircleWidget::setDiameter( int value )
+void QvkPreviewWidget::setDiameter( int value )
 {
     diameter = value;
     repaint();
 }
 
 
-int QvkCircleWidget::getDiameter()
+int QvkPreviewWidget::getDiameter()
 {
     return diameter;
 }
 
 
-void QvkCircleWidget::setOpacity( double value )
+void QvkPreviewWidget::setOpacity( double value )
 {
     pointerOpacity = value;;
     repaint();
 }
 
 
-double QvkCircleWidget::getOpacity()
+double QvkPreviewWidget::getOpacity()
 {
     return pointerOpacity;
 }
