@@ -40,7 +40,7 @@ void QvkShowClick::init( Ui_formMainWindow *ui_formMainWindow )
     setSpezialCheckBox();
     setToolButtonDefaultValues();
     setMouseClick();
-    setCircleWidget();
+    setDiameterWidget();
 }
 
 
@@ -277,7 +277,7 @@ void QvkShowClick::setSpezialSlider()
 }
 
 
-void QvkShowClick::setCircleWidget()
+void QvkShowClick::setDiameterWidget()
 {
     vkCircleWidget_1 = new QvkPreviewWidget( ui->widget_1 );
     vkCircleWidget_1->setObjectName( "widgetCircle_1" );

@@ -91,7 +91,7 @@ private:
     void setSpezialSlider();
     void setSpezialCheckBox();
     void setToolButtonDefaultValues();
-    void setCircleWidget();
+    void setDiameterWidget();
     void setMouseClick();
 
     QvkGlobalMouse *vkGlobalMouse;
