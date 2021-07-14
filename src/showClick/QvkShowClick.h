@@ -81,7 +81,7 @@ protected:
 private:
     Ui_formMainWindow *ui;
 
-    QvkSpezialSlider *vkSpezialSliderCircle;
+    QvkSpezialSlider *vkSpezialSliderDiameter;
     QvkSpezialSlider *vkSpezialSliderOpacity;
     QvkSpezialSlider *vkSpezialSliderShowtime;
 

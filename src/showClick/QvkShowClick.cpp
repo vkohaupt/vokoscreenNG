@@ -243,16 +243,16 @@ void QvkShowClick::slot_vkPushButton_darkGray()
 
 void QvkShowClick::setSpezialSlider()
 {
-    vkSpezialSliderCircle = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayoutCircle->insertWidget( 0, vkSpezialSliderCircle );
-    vkSpezialSliderCircle->setObjectName( "sliderShowClickCircle" );
-    vkSpezialSliderCircle->setTracking( true );
-    vkSpezialSliderCircle->setMinimum( 40 );
-    vkSpezialSliderCircle->setMaximum( 80 );
-    vkSpezialSliderCircle->setValue( 50 );
-    vkSpezialSliderCircle->setShowValue( false );
-    vkSpezialSliderCircle->show();
-    connect( vkSpezialSliderCircle, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Diameter( int ) ) );
+    vkSpezialSliderDiameter = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayoutCircle->insertWidget( 0, vkSpezialSliderDiameter );
+    vkSpezialSliderDiameter->setObjectName( "sliderShowClickCircle" );
+    vkSpezialSliderDiameter->setTracking( true );
+    vkSpezialSliderDiameter->setMinimum( 40 );
+    vkSpezialSliderDiameter->setMaximum( 80 );
+    vkSpezialSliderDiameter->setValue( 50 );
+    vkSpezialSliderDiameter->setShowValue( false );
+    vkSpezialSliderDiameter->show();
+    connect( vkSpezialSliderDiameter, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Diameter( int ) ) );
 
     vkSpezialSliderOpacity = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayoutOpacity->insertWidget( 0, vkSpezialSliderOpacity );
@@ -319,7 +319,7 @@ void QvkShowClick::setToolButtonDefaultValues()
 
 void QvkShowClick::slot_spezialSlider_Diameter_Default()
 {
-    vkSpezialSliderCircle->setValue( 50 );
+    vkSpezialSliderDiameter->setValue( 50 );
 }
 
 
@@ -371,6 +371,6 @@ void QvkShowClick::slot_mousePressed( int x, int y, QString mouseButton )
 {
     QvkAnimateWindow *animateWindow = new QvkAnimateWindow( this );
     animateWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
-    animateWindow->init( x, y, vkSpezialSliderShowtime->value() * 100, mouseButton, vkSpezialSliderCircle->value(), vkSpezialSliderOpacity->value(), vkCircleWidget_1->getColor() );
+    animateWindow->init( x, y, vkSpezialSliderShowtime->value() * 100, mouseButton, vkSpezialSliderDiameter->value(), vkSpezialSliderOpacity->value(), vkCircleWidget_1->getColor() );
 }
 
