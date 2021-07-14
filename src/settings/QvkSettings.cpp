@@ -482,10 +482,29 @@ void QvkSettings::readHaloColor( QvkHalo *vkHalo )
     settings.endGroup();
 }
 
-void QvkSettings::saveShowclickColor( QColor value )
+void QvkSettings::saveShowclickColor( QColor color )
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.beginGroup( "ShowClick" );
-    settings.setValue( "Color", value );
+    settings.setValue( "Color", color );
     settings.endGroup();
 }
+
+void QvkSettings::readShowclickColor( QvkShowClick *vkShowClick )
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    settings.beginGroup( "ShowClick" );
+    QColor colorDefault = Qt::red;
+    QColor color = settings.value( "Color", colorDefault ).value<QColor>();
+    vkShowClick->vkPreviewWidget_1->setColor( color );
+    vkShowClick->vkPreviewWidget_2->setColor( color );
+    vkShowClick->vkPreviewWidget_3->setColor( color );
+    settings.endGroup();
+}
+
+
+
+
+
+
+

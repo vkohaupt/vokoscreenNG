@@ -29,6 +29,7 @@
 #include "QvkSystrayAlternative.h"
 #include "QvkPlayer.h"
 #include "QvkHalo.h"
+#include "QvkShowClick.h"
 
 #include <QObject>
 #include <QSettings>
@@ -61,6 +62,7 @@ public:
     void readHaloColor( QvkHalo *vkHalo );
 
     void saveShowclickColor( QColor value );
+    void readShowclickColor( QvkShowClick *vkShowClick );
 
     QString getFileName();
     QString getVideoPath();

@@ -516,6 +516,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
     vkSettings.readPlayerPathOpenFile( vkPlayer );
     vkSettings.readHaloColor( vkHalo );
+    vkSettings.readShowclickColor( vkShowClick );
 
     // After reading the settings, we read the arguments and run
     QStringList arguments = QApplication::instance()->arguments();
