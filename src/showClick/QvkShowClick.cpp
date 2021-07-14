@@ -39,7 +39,7 @@ void QvkShowClick::init( Ui_formMainWindow *ui_formMainWindow )
     setSpezialSlider();
     setSpezialCheckBox();
     setToolButtonDefaultValues();
-    setMouseClick();
+    setGlobalMouse();
     setPreviewWidgets();
 }
 
@@ -360,7 +360,7 @@ void QvkShowClick::slot_pointerOnOff( bool value )
     }
 }
 
-void QvkShowClick::setMouseClick()
+void QvkShowClick::setGlobalMouse()
 {
     vkGlobalMouse = new QvkGlobalMouse();
     connect( vkGlobalMouse, SIGNAL( signal_mousePressed( int, int, QString ) ), this, SLOT( slot_mousePressed( int, int, QString ) ) );

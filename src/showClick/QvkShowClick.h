@@ -92,7 +92,7 @@ private:
     void setSpezialCheckBox();
     void setToolButtonDefaultValues();
     void setPreviewWidgets();
-    void setMouseClick();
+    void setGlobalMouse();
 
     QvkGlobalMouse *vkGlobalMouse;
 
