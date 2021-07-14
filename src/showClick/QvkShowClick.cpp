@@ -130,114 +130,114 @@ void QvkShowClick::setColorButtons()
 
 void QvkShowClick::slot_vkPushButton_white()
 {
-    vkCircleWidget_1->setColor( Qt::white );
-    vkCircleWidget_2->setColor( Qt::white );
-    vkCircleWidget_3->setColor( Qt::white );
+    vkPreviewWidget_1->setColor( Qt::white );
+    vkPreviewWidget_2->setColor( Qt::white );
+    vkPreviewWidget_3->setColor( Qt::white );
 }
 
 void QvkShowClick::slot_vkPushButton_black()
 {
-    vkCircleWidget_1->setColor( Qt::black );
-    vkCircleWidget_2->setColor( Qt::black );
-    vkCircleWidget_3->setColor( Qt::black );
+    vkPreviewWidget_1->setColor( Qt::black );
+    vkPreviewWidget_2->setColor( Qt::black );
+    vkPreviewWidget_3->setColor( Qt::black );
 }
 
 void QvkShowClick::slot_vkPushButton_red()
 {
-    vkCircleWidget_1->setColor( Qt::red );
-    vkCircleWidget_2->setColor( Qt::red );
-    vkCircleWidget_3->setColor( Qt::red );
+    vkPreviewWidget_1->setColor( Qt::red );
+    vkPreviewWidget_2->setColor( Qt::red );
+    vkPreviewWidget_3->setColor( Qt::red );
 }
 
 void QvkShowClick::slot_vkPushButton_darkRed()
 {
-    vkCircleWidget_1->setColor( Qt::darkRed );
-    vkCircleWidget_2->setColor( Qt::darkRed );
-    vkCircleWidget_3->setColor( Qt::darkRed );
+    vkPreviewWidget_1->setColor( Qt::darkRed );
+    vkPreviewWidget_2->setColor( Qt::darkRed );
+    vkPreviewWidget_3->setColor( Qt::darkRed );
 }
 
 void QvkShowClick::slot_vkPushButton_green()
 {
-    vkCircleWidget_1->setColor( Qt::green );
-    vkCircleWidget_2->setColor( Qt::green );
-    vkCircleWidget_3->setColor( Qt::green );
+    vkPreviewWidget_1->setColor( Qt::green );
+    vkPreviewWidget_2->setColor( Qt::green );
+    vkPreviewWidget_3->setColor( Qt::green );
 }
 
 void QvkShowClick::slot_vkPushButton_darkGreen()
 {
-    vkCircleWidget_1->setColor( Qt::darkGreen );
-    vkCircleWidget_2->setColor( Qt::darkGreen );
-    vkCircleWidget_3->setColor( Qt::darkGreen );
+    vkPreviewWidget_1->setColor( Qt::darkGreen );
+    vkPreviewWidget_2->setColor( Qt::darkGreen );
+    vkPreviewWidget_3->setColor( Qt::darkGreen );
 }
 
 void QvkShowClick::slot_vkPushButton_blue()
 {
-    vkCircleWidget_1->setColor( Qt::blue );
-    vkCircleWidget_2->setColor( Qt::blue );
-    vkCircleWidget_3->setColor( Qt::blue );
+    vkPreviewWidget_1->setColor( Qt::blue );
+    vkPreviewWidget_2->setColor( Qt::blue );
+    vkPreviewWidget_3->setColor( Qt::blue );
 }
 
 void QvkShowClick::slot_vkPushButton_darkBlue()
 {
-    vkCircleWidget_1->setColor( Qt::darkBlue );
-    vkCircleWidget_2->setColor( Qt::darkBlue );
-    vkCircleWidget_3->setColor( Qt::darkBlue );
+    vkPreviewWidget_1->setColor( Qt::darkBlue );
+    vkPreviewWidget_2->setColor( Qt::darkBlue );
+    vkPreviewWidget_3->setColor( Qt::darkBlue );
 }
 
 void QvkShowClick::slot_vkPushButton_cyan()
 {
-    vkCircleWidget_1->setColor( Qt::cyan );
-    vkCircleWidget_2->setColor( Qt::cyan );
-    vkCircleWidget_3->setColor( Qt::cyan );
+    vkPreviewWidget_1->setColor( Qt::cyan );
+    vkPreviewWidget_2->setColor( Qt::cyan );
+    vkPreviewWidget_3->setColor( Qt::cyan );
 }
 
 void QvkShowClick::slot_vkPushButton_darkCyan()
 {
-    vkCircleWidget_1->setColor( Qt::darkCyan );
-    vkCircleWidget_2->setColor( Qt::darkCyan );
-    vkCircleWidget_3->setColor( Qt::darkCyan );
+    vkPreviewWidget_1->setColor( Qt::darkCyan );
+    vkPreviewWidget_2->setColor( Qt::darkCyan );
+    vkPreviewWidget_3->setColor( Qt::darkCyan );
 }
 
 void QvkShowClick::slot_vkPushButton_magenta()
 {
-    vkCircleWidget_1->setColor( Qt::magenta );
-    vkCircleWidget_2->setColor( Qt::magenta );
-    vkCircleWidget_3->setColor( Qt::magenta );
+    vkPreviewWidget_1->setColor( Qt::magenta );
+    vkPreviewWidget_2->setColor( Qt::magenta );
+    vkPreviewWidget_3->setColor( Qt::magenta );
 }
 
 void QvkShowClick::slot_vkPushButton_darkMagenta()
 {
-    vkCircleWidget_1->setColor( Qt::darkMagenta );
-    vkCircleWidget_2->setColor( Qt::darkMagenta );
-    vkCircleWidget_3->setColor( Qt::darkMagenta );
+    vkPreviewWidget_1->setColor( Qt::darkMagenta );
+    vkPreviewWidget_2->setColor( Qt::darkMagenta );
+    vkPreviewWidget_3->setColor( Qt::darkMagenta );
 }
 
 void QvkShowClick::slot_vkPushButton_yellow()
 {
-    vkCircleWidget_1->setColor( Qt::yellow );
-    vkCircleWidget_2->setColor( Qt::yellow );
-    vkCircleWidget_3->setColor( Qt::yellow );
+    vkPreviewWidget_1->setColor( Qt::yellow );
+    vkPreviewWidget_2->setColor( Qt::yellow );
+    vkPreviewWidget_3->setColor( Qt::yellow );
 }
 
 void QvkShowClick::slot_vkPushButton_darkYellow()
 {
-    vkCircleWidget_1->setColor( Qt::darkYellow );
-    vkCircleWidget_2->setColor( Qt::darkYellow );
-    vkCircleWidget_3->setColor( Qt::darkYellow );
+    vkPreviewWidget_1->setColor( Qt::darkYellow );
+    vkPreviewWidget_2->setColor( Qt::darkYellow );
+    vkPreviewWidget_3->setColor( Qt::darkYellow );
 }
 
 void QvkShowClick::slot_vkPushButton_gray()
 {
-    vkCircleWidget_1->setColor( Qt::gray );
-    vkCircleWidget_2->setColor( Qt::gray );
-    vkCircleWidget_3->setColor( Qt::gray );
+    vkPreviewWidget_1->setColor( Qt::gray );
+    vkPreviewWidget_2->setColor( Qt::gray );
+    vkPreviewWidget_3->setColor( Qt::gray );
 }
 
 void QvkShowClick::slot_vkPushButton_darkGray()
 {
-    vkCircleWidget_1->setColor( Qt::darkGray );
-    vkCircleWidget_2->setColor( Qt::darkGray );
-    vkCircleWidget_3->setColor( Qt::darkGray );
+    vkPreviewWidget_1->setColor( Qt::darkGray );
+    vkPreviewWidget_2->setColor( Qt::darkGray );
+    vkPreviewWidget_3->setColor( Qt::darkGray );
 }
 
 
@@ -279,34 +279,34 @@ void QvkShowClick::setSpezialSlider()
 
 void QvkShowClick::setDiameterWidget()
 {
-    vkCircleWidget_1 = new QvkPreviewWidget( ui->widget_1 );
-    vkCircleWidget_1->setObjectName( "widgetCircle_1" );
-    vkCircleWidget_1->show();
+    vkPreviewWidget_1 = new QvkPreviewWidget( ui->widget_1 );
+    vkPreviewWidget_1->setObjectName( "widgetCircle_1" );
+    vkPreviewWidget_1->show();
 
-    vkCircleWidget_2 = new QvkPreviewWidget( ui->widget_2 );
-    vkCircleWidget_2->setObjectName( "widgetCircle_2" );
-    vkCircleWidget_2->show();
+    vkPreviewWidget_2 = new QvkPreviewWidget( ui->widget_2 );
+    vkPreviewWidget_2->setObjectName( "widgetCircle_2" );
+    vkPreviewWidget_2->show();
 
-    vkCircleWidget_3 = new QvkPreviewWidget( ui->widget_3 );
-    vkCircleWidget_3->setObjectName( "widgetCircle_3" );
-    vkCircleWidget_3->show();
+    vkPreviewWidget_3 = new QvkPreviewWidget( ui->widget_3 );
+    vkPreviewWidget_3->setObjectName( "widgetCircle_3" );
+    vkPreviewWidget_3->show();
 }
 
 
 void QvkShowClick::slot_valueChanged_SpezialSlider_Diameter( int value )
 {
-    vkCircleWidget_1->setDiameter( value );
-    vkCircleWidget_2->setDiameter( value );
-    vkCircleWidget_3->setDiameter( value );
+    vkPreviewWidget_1->setDiameter( value );
+    vkPreviewWidget_2->setDiameter( value );
+    vkPreviewWidget_3->setDiameter( value );
 }
 
 
 void QvkShowClick::slot_valueChanged_SpezialSlider_Opacity( int value )
 {
     double value_1 = value;
-    vkCircleWidget_1->setOpacity( value_1 / 100 );
-    vkCircleWidget_2->setOpacity( value_1 / 100 );
-    vkCircleWidget_3->setOpacity( value_1 / 100 );
+    vkPreviewWidget_1->setOpacity( value_1 / 100 );
+    vkPreviewWidget_2->setOpacity( value_1 / 100 );
+    vkPreviewWidget_3->setOpacity( value_1 / 100 );
 }
 
 void QvkShowClick::setToolButtonDefaultValues()
@@ -371,6 +371,6 @@ void QvkShowClick::slot_mousePressed( int x, int y, QString mouseButton )
 {
     QvkAnimateWindow *animateWindow = new QvkAnimateWindow( this );
     animateWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
-    animateWindow->init( x, y, vkSpezialSliderShowtime->value() * 100, mouseButton, vkSpezialSliderDiameter->value(), vkSpezialSliderOpacity->value(), vkCircleWidget_1->getColor() );
+    animateWindow->init( x, y, vkSpezialSliderShowtime->value() * 100, mouseButton, vkSpezialSliderDiameter->value(), vkSpezialSliderOpacity->value(), vkPreviewWidget_1->getColor() );
 }
 

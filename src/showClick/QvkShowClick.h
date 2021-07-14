@@ -40,9 +40,9 @@ public:
     void init( Ui_formMainWindow *ui_formMainWindow );
     QvkSpezialCheckbox *vkSpezialCheckbox;
     bool pointerOnOff;
-    QvkPreviewWidget *vkCircleWidget_1;
-    QvkPreviewWidget *vkCircleWidget_2;
-    QvkPreviewWidget *vkCircleWidget_3;
+    QvkPreviewWidget *vkPreviewWidget_1;
+    QvkPreviewWidget *vkPreviewWidget_2;
+    QvkPreviewWidget *vkPreviewWidget_3;
 
 
 public slots:
