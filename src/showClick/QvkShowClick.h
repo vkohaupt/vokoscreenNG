@@ -65,12 +65,12 @@ private slots:
     void slot_vkPushButton_gray();
     void slot_vkPushButton_darkGray();
 
-    void slot_valueChanged_SpezialSliderCircle( int value );
-    void slot_valueChanged_SpezialSliderOpacity( int value );
+    void slot_valueChanged_SpezialSlider_Diameter( int value );
+    void slot_valueChanged_SpezialSlider_Opacity( int value );
 
-    void slot_SliderCircleDefault();
-    void slot_SliderOpacityDefault();
-    void slot_SlidershowTimeDefault();
+    void slot_spezialSlider_Diameter_Default();
+    void slot_spezialSlider_Opacity_Default();
+    void slot_spezialSlider_showTime_Default();
 
     void slot_pointerOnOff( bool value );
     void slot_mousePressed( int, int, QString );

@@ -252,7 +252,7 @@ void QvkShowClick::setSpezialSlider()
     vkSpezialSliderCircle->setValue( 50 );
     vkSpezialSliderCircle->setShowValue( false );
     vkSpezialSliderCircle->show();
-    connect( vkSpezialSliderCircle, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSliderCircle( int ) ) );
+    connect( vkSpezialSliderCircle, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Diameter( int ) ) );
 
     vkSpezialSliderOpacity = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayoutOpacity->insertWidget( 0, vkSpezialSliderOpacity );
@@ -263,7 +263,7 @@ void QvkShowClick::setSpezialSlider()
     vkSpezialSliderOpacity->setValue( 70 );
     vkSpezialSliderOpacity->setShowValue( false );
     vkSpezialSliderOpacity->show();
-    connect( vkSpezialSliderOpacity, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSliderOpacity( int ) ) );
+    connect( vkSpezialSliderOpacity, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Opacity( int ) ) );
 
     vkSpezialSliderShowtime = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayoutShowtime->insertWidget( 0, vkSpezialSliderShowtime );
@@ -293,7 +293,7 @@ void QvkShowClick::setCircleWidget()
 }
 
 
-void QvkShowClick::slot_valueChanged_SpezialSliderCircle( int value )
+void QvkShowClick::slot_valueChanged_SpezialSlider_Diameter( int value )
 {
     vkCircleWidget_1->setDiameter( value );
     vkCircleWidget_2->setDiameter( value );
@@ -301,7 +301,7 @@ void QvkShowClick::slot_valueChanged_SpezialSliderCircle( int value )
 }
 
 
-void QvkShowClick::slot_valueChanged_SpezialSliderOpacity( int value )
+void QvkShowClick::slot_valueChanged_SpezialSlider_Opacity( int value )
 {
     double value_1 = value;
     vkCircleWidget_1->setOpacity( value_1 / 100 );
@@ -311,25 +311,25 @@ void QvkShowClick::slot_valueChanged_SpezialSliderOpacity( int value )
 
 void QvkShowClick::setToolButtonDefaultValues()
 {
-    connect( ui->toolButtonSliderCircleDefault,  SIGNAL( clicked() ), this, SLOT( slot_SliderCircleDefault() ) );
-    connect( ui->toolButtonSliderOpacityDefault, SIGNAL( clicked() ), this, SLOT( slot_SliderOpacityDefault() ) );
-    connect( ui->toolButtonShowTimeDefault,      SIGNAL( clicked() ), this, SLOT( slot_SlidershowTimeDefault() ) );
+    connect( ui->toolButtonSliderCircleDefault,  SIGNAL( clicked() ), this, SLOT( slot_spezialSlider_Diameter_Default() ) );
+    connect( ui->toolButtonSliderOpacityDefault, SIGNAL( clicked() ), this, SLOT( slot_spezialSlider_Opacity_Default() ) );
+    connect( ui->toolButtonShowTimeDefault,      SIGNAL( clicked() ), this, SLOT( slot_spezialSlider_showTime_Default() ) );
 }
 
 
-void QvkShowClick::slot_SliderCircleDefault()
+void QvkShowClick::slot_spezialSlider_Diameter_Default()
 {
     vkSpezialSliderCircle->setValue( 50 );
 }
 
 
-void QvkShowClick::slot_SliderOpacityDefault()
+void QvkShowClick::slot_spezialSlider_Opacity_Default()
 {
     vkSpezialSliderOpacity->setValue( 70 );
 }
 
 
-void QvkShowClick::slot_SlidershowTimeDefault()
+void QvkShowClick::slot_spezialSlider_showTime_Default()
 {
     vkSpezialSliderShowtime->setValue( 10 );
 }
