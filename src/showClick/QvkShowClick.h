@@ -98,7 +98,7 @@ private:
 
     int diameterDefault = 50;
     int opacityDefault = 70;
-    int showTimeDefault = 10;
+    int timeDefault = 10;
 
 
 signals:

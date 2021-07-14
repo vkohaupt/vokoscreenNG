@@ -331,7 +331,7 @@ void QvkShowClick::slot_spezialSlider_Opacity_Default()
 
 void QvkShowClick::slot_spezialSlider_showTime_Default()
 {
-    vkSpezialSliderShowtime->setValue( showTimeDefault );
+    vkSpezialSliderShowtime->setValue( timeDefault );
 }
 
 
