@@ -307,8 +307,8 @@ void QvkHalo::slot_vkPushButton_halo_darkGray()
 
 void QvkHalo::setToolButtonDefaultValues()
 {
-    connect( ui->toolButtonDiameterDefault,  SIGNAL( clicked() ), this, SLOT( slot_DiameterDefault() ) );
-    connect( ui->toolButtonOpacityDefault, SIGNAL( clicked() ), this, SLOT( slot_OpacityDefault() ) );
+    connect( ui->toolButtonHaloDiameterDefault,  SIGNAL( clicked() ), this, SLOT( slot_DiameterDefault() ) );
+    connect( ui->toolButtonHaloOpacityDefault, SIGNAL( clicked() ), this, SLOT( slot_OpacityDefault() ) );
 }
 
 void QvkHalo::slot_DiameterDefault()

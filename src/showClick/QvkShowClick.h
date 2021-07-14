@@ -44,6 +44,7 @@ public:
     QvkPreviewWidget *vkCircleWidget_2;
     QvkPreviewWidget *vkCircleWidget_3;
 
+
 public slots:
 
 
@@ -75,6 +76,7 @@ private slots:
     void slot_pointerOnOff( bool value );
     void slot_mousePressed( int, int, QString );
 
+
 protected:
 
 
@@ -93,6 +95,11 @@ private:
     void setMouseClick();
 
     QvkGlobalMouse *vkGlobalMouse;
+
+    int diameterDefault = 50;
+    int opacityDefault = 70;
+    int showTimeDefault = 10;
+
 
 signals:
 

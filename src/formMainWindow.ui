@@ -2703,7 +2703,7 @@
         <item>
          <layout class="QGridLayout" name="gridLayoutShowClick">
           <item row="6" column="4">
-           <widget class="QToolButton" name="toolButtonShowTimeDefault">
+           <widget class="QToolButton" name="toolButtonShowclickTimeDefault">
             <property name="minimumSize">
              <size>
               <width>34</width>
@@ -2791,7 +2791,7 @@
            </layout>
           </item>
           <item row="5" column="10">
-           <widget class="QToolButton" name="toolButtonOpacityDefault">
+           <widget class="QToolButton" name="toolButtonHaloOpacityDefault">
             <property name="text">
              <string notr="true"/>
             </property>
@@ -2840,7 +2840,7 @@
            </layout>
           </item>
           <item row="4" column="4">
-           <widget class="QToolButton" name="toolButtonSliderCircleDefault">
+           <widget class="QToolButton" name="toolButtonShowclickDiameterDefault">
             <property name="minimumSize">
              <size>
               <width>34</width>
@@ -2857,7 +2857,7 @@
            </widget>
           </item>
           <item row="5" column="4">
-           <widget class="QToolButton" name="toolButtonSliderOpacityDefault">
+           <widget class="QToolButton" name="toolButtonShowclickOpacityDefault">
             <property name="minimumSize">
              <size>
               <width>34</width>
@@ -3112,7 +3112,7 @@
            </widget>
           </item>
           <item row="4" column="10">
-           <widget class="QToolButton" name="toolButtonDiameterDefault">
+           <widget class="QToolButton" name="toolButtonHaloDiameterDefault">
             <property name="text">
              <string notr="true"/>
             </property>
