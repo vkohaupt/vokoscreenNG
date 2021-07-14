@@ -26,9 +26,9 @@ QvkPreviewWidget::QvkPreviewWidget( QWidget *parent ) : QWidget( parent )
 {
     parentWidget = parent;
 
-    pointerColor = Qt::red;
+    color = Qt::red;
     diameter = 50;
-    pointerOpacity = 0.7;
+    opacity = 0.7;
 }
 
 
@@ -51,7 +51,7 @@ void QvkPreviewWidget::paintEvent( QPaintEvent *event )
             painter.begin( this );
             painter.setRenderHints( QPainter::Antialiasing, true );
 
-            if ( pointerColor == Qt::white )
+            if ( color == Qt::white )
             {
                 painter.fillRect( 0, 0, width(), height(), QColor( 245, 245, 245, 0 ) );
             }
@@ -63,11 +63,11 @@ void QvkPreviewWidget::paintEvent( QPaintEvent *event )
             qreal penWith = 6;
             QPen pen;
             pen.setWidthF( penWith );
-            pen.setColor( pointerColor );
+            pen.setColor( color );
             pen.setStyle( Qt::SolidLine );
             painter.setPen( pen );
             painter.setBrush( Qt::NoBrush );
-            painter.setOpacity( pointerOpacity );
+            painter.setOpacity( opacity );
             resize( parentWidget->width(), parentWidget->height());
             painter.drawEllipse( parentWidget->width()/2-diameter/2, parentWidget->height()/2-diameter/2, diameter, diameter );
 
@@ -87,7 +87,7 @@ void QvkPreviewWidget::paintEvent( QPaintEvent *event )
             painter.begin( this );
             painter.setRenderHints( QPainter::Antialiasing, true );
 
-            if ( pointerColor == Qt::white )
+            if ( color == Qt::white )
             {
                 painter.fillRect( 0, 0, width(), height(), QColor( 245, 245, 245, 0 ) );
             }
@@ -99,11 +99,11 @@ void QvkPreviewWidget::paintEvent( QPaintEvent *event )
             qreal penWith = 6;
             QPen pen;
             pen.setWidthF( penWith );
-            pen.setColor( pointerColor );
+            pen.setColor( color );
             pen.setStyle( Qt::SolidLine );
             painter.setPen( pen );
             painter.setBrush( Qt::NoBrush );
-            painter.setOpacity( pointerOpacity );
+            painter.setOpacity( opacity );
             resize( parentWidget->width(), parentWidget->height());
             painter.drawEllipse( parentWidget->width()/2-diameter/2, parentWidget->height()/2-diameter/2, diameter, diameter );
 
@@ -121,7 +121,7 @@ void QvkPreviewWidget::paintEvent( QPaintEvent *event )
             painter.begin( this );
             painter.setRenderHints( QPainter::Antialiasing, true );
 
-            if ( pointerColor == Qt::white )
+            if ( color == Qt::white )
             {
                 painter.fillRect( 0, 0, width(), height(), QColor( 245, 245, 245, 0 ) );
             }
@@ -133,11 +133,11 @@ void QvkPreviewWidget::paintEvent( QPaintEvent *event )
             qreal penWith = 6;
             QPen pen;
             pen.setWidthF( penWith );
-            pen.setColor( pointerColor );
+            pen.setColor( color );
             pen.setStyle( Qt::SolidLine );
             painter.setPen( pen );
             painter.setBrush( Qt::NoBrush );
-            painter.setOpacity( pointerOpacity );
+            painter.setOpacity( opacity );
             resize( parentWidget->width(), parentWidget->height());
             painter.drawEllipse( parentWidget->width()/2-diameter/2, parentWidget->height()/2-diameter/2, diameter, diameter );
 
@@ -156,14 +156,14 @@ void QvkPreviewWidget::paintEvent( QPaintEvent *event )
 
 void QvkPreviewWidget::setColor( QColor value )
 {
-    pointerColor = value;
+    color = value;
     repaint();
 }
 
 
 QColor QvkPreviewWidget::getColor()
 {
-    return pointerColor;
+    return color;
 }
 
 
@@ -182,12 +182,12 @@ int QvkPreviewWidget::getDiameter()
 
 void QvkPreviewWidget::setOpacity( double value )
 {
-    pointerOpacity = value;;
+    opacity = value;;
     repaint();
 }
 
 
 double QvkPreviewWidget::getOpacity()
 {
-    return pointerOpacity;
+    return opacity;
 }

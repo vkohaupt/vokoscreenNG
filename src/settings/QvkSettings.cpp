@@ -481,3 +481,11 @@ void QvkSettings::readHaloColor( QvkHalo *vkHalo )
     vkHalo->vkHaloWindow->setColor( color );
     settings.endGroup();
 }
+
+void QvkSettings::saveShowclickColor( QColor value )
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    settings.beginGroup( "ShowClick" );
+    settings.setValue( "Color", value );
+    settings.endGroup();
+}

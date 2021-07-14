@@ -45,9 +45,9 @@ public slots:
 
 
 private:
-    QColor pointerColor;
+    QColor color;
     int diameter;
-    double pointerOpacity;
+    double opacity;
 
     int getDiameter();
     double getOpacity();
