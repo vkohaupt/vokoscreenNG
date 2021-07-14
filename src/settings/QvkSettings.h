@@ -43,11 +43,11 @@ public:
     QvkSettings();
     virtual ~QvkSettings();
 
-    void saveAll(Ui_formMainWindow *ui_mainwindow, QMainWindow *parent, bool log);
-    void readAll(Ui_formMainWindow *ui_mainwindow, QMainWindow *parent);
+    void saveAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent, bool log );
+    void readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent );
 
-    void saveAreaScreencast(qreal x, qreal y, qreal width, qreal height);
-    void readAreaScreencast(QvkRegionChoise *vkRegionChoise);
+    void saveAreaScreencast( qreal x, qreal y, qreal width, qreal height );
+    void readAreaScreencast( QvkRegionChoise *vkRegionChoise );
 
     void saveCamera( int x, int y );
     void readCamera( QvkCameraController *vkCameraController );
@@ -55,13 +55,13 @@ public:
     void saveSystrayAlternative( int x, int y );
     void readSystrayAlternative( QvkSystrayAlternative *vkSystrayAlternative );
 
-    void savePlayerPathOpenFile(QString pathFile );
-    void readPlayerPathOpenFile(QvkPlayer *vkplayer);
+    void savePlayerPathOpenFile( QString pathFile );
+    void readPlayerPathOpenFile( QvkPlayer *vkplayer );
 
-    void saveHaloColor( QColor value );
+    void saveHaloColor( QColor color );
     void readHaloColor( QvkHalo *vkHalo );
 
-    void saveShowclickColor( QColor value );
+    void saveShowclickColor( QColor color );
     void readShowclickColor( QvkShowClick *vkShowClick );
 
     QString getFileName();
