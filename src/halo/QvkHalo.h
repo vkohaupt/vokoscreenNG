@@ -73,23 +73,6 @@ private slots:
 
     void slot_haloOnOff( bool value );
 
-    void slot_vkPushButton_halo_white();
-    void slot_vkPushButton_halo_black();
-    void slot_vkPushButton_halo_red();
-    void slot_vkPushButton_halo_darkRed();
-    void slot_vkPushButton_halo_green();
-    void slot_vkPushButton_halo_darkGreen();
-    void slot_vkPushButton_halo_blue();
-    void slot_vkPushButton_halo_darkBlue();
-    void slot_vkPushButton_halo_cyan();
-    void slot_vkPushButton_halo_darkCyan();
-    void slot_vkPushButton_halo_magenta();
-    void slot_vkPushButton_halo_darkMagenta();
-    void slot_vkPushButton_halo_yellow();
-    void slot_vkPushButton_halo_darkYellow();
-    void slot_vkPushButton_halo_gray();
-    void slot_vkPushButton_halo_darkGray();
-
 
 protected:
 
