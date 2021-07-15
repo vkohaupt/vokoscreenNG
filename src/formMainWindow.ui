@@ -566,8 +566,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>30</height>
+                      <width>16</width>
+                      <height>16</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1756,7 +1756,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>96</width>
+                   <width>20</width>
                    <height>96</height>
                   </rect>
                  </property>
@@ -2755,54 +2755,54 @@
            </widget>
           </item>
           <item row="0" column="0" rowspan="3" colspan="5">
-           <layout class="QGridLayout" name="gridLayout_11">
+           <layout class="QGridLayout" name="gridLayout_showclick_color_pushButton">
             <item row="2" column="2">
-             <layout class="QHBoxLayout" name="horizontalLayout_magenta"/>
+             <layout class="QHBoxLayout" name="horizontalLayout_showclick_magenta"/>
             </item>
             <item row="2" column="0">
-             <layout class="QHBoxLayout" name="horizontalLayout_cyan"/>
+             <layout class="QHBoxLayout" name="horizontalLayout_showclick_cyan"/>
             </item>
             <item row="1" column="2">
-             <layout class="QHBoxLayout" name="horizontalLayout_blue"/>
+             <layout class="QHBoxLayout" name="horizontalLayout_showclick_blue"/>
             </item>
             <item row="0" column="3">
-             <layout class="QHBoxLayout" name="horizontalLayout_darkRed"/>
+             <layout class="QHBoxLayout" name="horizontalLayout_showclick_darkRed"/>
             </item>
             <item row="0" column="2">
-             <layout class="QHBoxLayout" name="horizontalLayout_red"/>
+             <layout class="QHBoxLayout" name="horizontalLayout_showclick_red"/>
             </item>
             <item row="1" column="1">
-             <layout class="QHBoxLayout" name="horizontalLayout_darkGreen"/>
+             <layout class="QHBoxLayout" name="horizontalLayout_showclick_darkGreen"/>
             </item>
             <item row="1" column="3">
-             <layout class="QHBoxLayout" name="horizontalLayout_darkBlue"/>
+             <layout class="QHBoxLayout" name="horizontalLayout_showclick_darkBlue"/>
             </item>
             <item row="1" column="0">
-             <layout class="QHBoxLayout" name="horizontalLayout_green"/>
+             <layout class="QHBoxLayout" name="horizontalLayout_showclick_green"/>
             </item>
             <item row="0" column="1">
-             <layout class="QHBoxLayout" name="horizontalLayout_black"/>
+             <layout class="QHBoxLayout" name="horizontalLayout_showclick_black"/>
             </item>
             <item row="2" column="1">
-             <layout class="QHBoxLayout" name="horizontalLayout_darkCyan"/>
+             <layout class="QHBoxLayout" name="horizontalLayout_showclick_darkCyan"/>
             </item>
             <item row="2" column="3">
-             <layout class="QHBoxLayout" name="horizontalLayout_darkMagenta"/>
+             <layout class="QHBoxLayout" name="horizontalLayout_showclick_darkMagenta"/>
             </item>
             <item row="0" column="0">
-             <layout class="QHBoxLayout" name="horizontalLayout_white"/>
+             <layout class="QHBoxLayout" name="horizontalLayout_showclick_white"/>
             </item>
             <item row="3" column="0">
-             <layout class="QHBoxLayout" name="horizontalLayout_yellow"/>
+             <layout class="QHBoxLayout" name="horizontalLayout_showclick_yellow"/>
             </item>
             <item row="3" column="1">
-             <layout class="QHBoxLayout" name="horizontalLayout_darkYellow"/>
+             <layout class="QHBoxLayout" name="horizontalLayout_showclick_darkYellow"/>
             </item>
             <item row="3" column="2">
-             <layout class="QHBoxLayout" name="horizontalLayout_gray"/>
+             <layout class="QHBoxLayout" name="horizontalLayout_showclick_gray"/>
             </item>
             <item row="3" column="3">
-             <layout class="QHBoxLayout" name="horizontalLayout_darkGray"/>
+             <layout class="QHBoxLayout" name="horizontalLayout_showclick_darkGray"/>
             </item>
            </layout>
           </item>

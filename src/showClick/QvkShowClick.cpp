@@ -25,6 +25,7 @@
 #include "QvkAnimateWindow.h"
 
 #include <QDebug>
+#include <QHBoxLayout>
 
 QvkShowClick::QvkShowClick()
 {
@@ -46,198 +47,23 @@ void QvkShowClick::init( Ui_formMainWindow *ui_formMainWindow )
 
 void QvkShowClick::setColorButtons()
 {
-    int minimumHeight = 34;
-    QvkPushButton *vkPushButton_white = new QvkPushButton( Qt::white );
-    vkPushButton_white->setMinimumHeight( minimumHeight );
-    ui->horizontalLayout_white->addWidget( vkPushButton_white );
-    connect( vkPushButton_white, SIGNAL( clicked() ), this, SLOT( slot_vkPushButton_white() ) );
-
-    QvkPushButton *vkPushButton_black = new QvkPushButton( Qt::black );
-    vkPushButton_black->setMinimumHeight( minimumHeight );
-    ui->horizontalLayout_black->addWidget( vkPushButton_black );
-    connect( vkPushButton_black, SIGNAL( clicked() ), this, SLOT( slot_vkPushButton_black() ) );
-
-    QvkPushButton *vkPushButton_red = new QvkPushButton( Qt::red );
-    vkPushButton_red->setMinimumHeight( minimumHeight );
-    ui->horizontalLayout_red->addWidget( vkPushButton_red );
-    connect( vkPushButton_red, SIGNAL( clicked() ), this, SLOT( slot_vkPushButton_red() ) );
-
-    QvkPushButton *vkPushButton_darkRed = new QvkPushButton( Qt::darkRed );
-    vkPushButton_darkRed->setMinimumHeight( minimumHeight );
-    ui->horizontalLayout_darkRed->addWidget( vkPushButton_darkRed );
-    connect( vkPushButton_darkRed, SIGNAL( clicked() ), this, SLOT( slot_vkPushButton_darkRed() ) );
-
-    QvkPushButton *vkPushButton_green = new QvkPushButton( Qt::green );
-    vkPushButton_green->setMinimumHeight( minimumHeight );
-    ui->horizontalLayout_green->addWidget( vkPushButton_green );
-    connect( vkPushButton_green, SIGNAL( clicked() ), this, SLOT( slot_vkPushButton_green() ) );
-
-    QvkPushButton *vkPushButton_darkGreen = new QvkPushButton( Qt::darkGreen );
-    vkPushButton_darkGreen->setMinimumHeight( minimumHeight );
-    ui->horizontalLayout_darkGreen->addWidget( vkPushButton_darkGreen );
-    connect( vkPushButton_darkGreen, SIGNAL( clicked() ), this, SLOT( slot_vkPushButton_darkGreen() ) );
-
-    QvkPushButton *vkPushButton_blue = new QvkPushButton( Qt::blue );
-    vkPushButton_blue->setMinimumHeight( minimumHeight );
-    ui->horizontalLayout_blue->addWidget( vkPushButton_blue );
-    connect( vkPushButton_blue, SIGNAL( clicked() ), this, SLOT( slot_vkPushButton_blue() ) );
-
-    QvkPushButton *vkPushButton_darkBlue = new QvkPushButton( Qt::darkBlue );
-    vkPushButton_darkBlue->setMinimumHeight( minimumHeight );
-    ui->horizontalLayout_darkBlue->addWidget( vkPushButton_darkBlue );
-    connect( vkPushButton_darkBlue, SIGNAL( clicked() ), this, SLOT( slot_vkPushButton_darkBlue() ) );
-
-    QvkPushButton *vkPushButton_cyan = new QvkPushButton( Qt::cyan );
-    vkPushButton_cyan->setMinimumHeight( minimumHeight );
-    ui->horizontalLayout_cyan->addWidget( vkPushButton_cyan );
-    connect( vkPushButton_cyan, SIGNAL( clicked() ), this, SLOT( slot_vkPushButton_cyan() ) );
-
-    QvkPushButton *vkPushButton_darkCyan = new QvkPushButton( Qt::darkCyan );
-    vkPushButton_darkCyan->setMinimumHeight( minimumHeight );
-    ui->horizontalLayout_darkCyan->addWidget( vkPushButton_darkCyan );
-    connect( vkPushButton_darkCyan, SIGNAL( clicked() ), this, SLOT( slot_vkPushButton_darkCyan() ) );
-
-    QvkPushButton *vkPushButton_magenta = new QvkPushButton( Qt::magenta );
-    vkPushButton_magenta->setMinimumHeight( minimumHeight );
-    ui->horizontalLayout_magenta->addWidget( vkPushButton_magenta );
-    connect( vkPushButton_magenta, SIGNAL( clicked() ), this, SLOT( slot_vkPushButton_magenta() ) );
-
-    QvkPushButton *vkPushButton_darkMagenta = new QvkPushButton( Qt::darkMagenta );
-    vkPushButton_darkMagenta->setMinimumHeight( minimumHeight );
-    ui->horizontalLayout_darkMagenta->addWidget( vkPushButton_darkMagenta );
-    connect( vkPushButton_darkMagenta, SIGNAL( clicked() ), this, SLOT( slot_vkPushButton_darkMagenta() ) );
-
-    QvkPushButton *vkPushButton_yellow = new QvkPushButton( Qt::yellow );
-    vkPushButton_yellow->setMinimumHeight( minimumHeight );
-    ui->horizontalLayout_yellow->addWidget( vkPushButton_yellow );
-    connect( vkPushButton_yellow, SIGNAL( clicked() ), this, SLOT( slot_vkPushButton_yellow() ) );
-
-    QvkPushButton *vkPushButton_darkYellow = new QvkPushButton( Qt::darkYellow );
-    vkPushButton_darkYellow->setMinimumHeight( minimumHeight );
-    ui->horizontalLayout_darkYellow->addWidget( vkPushButton_darkYellow );
-    connect( vkPushButton_darkYellow, SIGNAL( clicked() ), this, SLOT( slot_vkPushButton_darkYellow() ) );
-
-    QvkPushButton *vkPushButton_gray = new QvkPushButton( Qt::gray );
-    vkPushButton_gray->setMinimumHeight( minimumHeight );
-    ui->horizontalLayout_gray->addWidget( vkPushButton_gray );
-    connect( vkPushButton_gray, SIGNAL( clicked() ), this, SLOT( slot_vkPushButton_gray() ) );
-
-    QvkPushButton *vkPushButton_darkGray = new QvkPushButton( Qt::darkGray );
-    vkPushButton_darkGray->setMinimumHeight( minimumHeight );
-    ui->horizontalLayout_darkGray->addWidget( vkPushButton_darkGray );
-    connect( vkPushButton_darkGray, SIGNAL( clicked() ), this, SLOT( slot_vkPushButton_darkGray() ) );
-}
-
-void QvkShowClick::slot_vkPushButton_white()
-{
-    vkPreviewWidget_1->setColor( Qt::white );
-    vkPreviewWidget_2->setColor( Qt::white );
-    vkPreviewWidget_3->setColor( Qt::white );
-}
-
-void QvkShowClick::slot_vkPushButton_black()
-{
-    vkPreviewWidget_1->setColor( Qt::black );
-    vkPreviewWidget_2->setColor( Qt::black );
-    vkPreviewWidget_3->setColor( Qt::black );
-}
-
-void QvkShowClick::slot_vkPushButton_red()
-{
-    vkPreviewWidget_1->setColor( Qt::red );
-    vkPreviewWidget_2->setColor( Qt::red );
-    vkPreviewWidget_3->setColor( Qt::red );
-}
-
-void QvkShowClick::slot_vkPushButton_darkRed()
-{
-    vkPreviewWidget_1->setColor( Qt::darkRed );
-    vkPreviewWidget_2->setColor( Qt::darkRed );
-    vkPreviewWidget_3->setColor( Qt::darkRed );
-}
-
-void QvkShowClick::slot_vkPushButton_green()
-{
-    vkPreviewWidget_1->setColor( Qt::green );
-    vkPreviewWidget_2->setColor( Qt::green );
-    vkPreviewWidget_3->setColor( Qt::green );
-}
-
-void QvkShowClick::slot_vkPushButton_darkGreen()
-{
-    vkPreviewWidget_1->setColor( Qt::darkGreen );
-    vkPreviewWidget_2->setColor( Qt::darkGreen );
-    vkPreviewWidget_3->setColor( Qt::darkGreen );
-}
-
-void QvkShowClick::slot_vkPushButton_blue()
-{
-    vkPreviewWidget_1->setColor( Qt::blue );
-    vkPreviewWidget_2->setColor( Qt::blue );
-    vkPreviewWidget_3->setColor( Qt::blue );
-}
-
-void QvkShowClick::slot_vkPushButton_darkBlue()
-{
-    vkPreviewWidget_1->setColor( Qt::darkBlue );
-    vkPreviewWidget_2->setColor( Qt::darkBlue );
-    vkPreviewWidget_3->setColor( Qt::darkBlue );
-}
-
-void QvkShowClick::slot_vkPushButton_cyan()
-{
-    vkPreviewWidget_1->setColor( Qt::cyan );
-    vkPreviewWidget_2->setColor( Qt::cyan );
-    vkPreviewWidget_3->setColor( Qt::cyan );
-}
-
-void QvkShowClick::slot_vkPushButton_darkCyan()
-{
-    vkPreviewWidget_1->setColor( Qt::darkCyan );
-    vkPreviewWidget_2->setColor( Qt::darkCyan );
-    vkPreviewWidget_3->setColor( Qt::darkCyan );
-}
-
-void QvkShowClick::slot_vkPushButton_magenta()
-{
-    vkPreviewWidget_1->setColor( Qt::magenta );
-    vkPreviewWidget_2->setColor( Qt::magenta );
-    vkPreviewWidget_3->setColor( Qt::magenta );
-}
-
-void QvkShowClick::slot_vkPushButton_darkMagenta()
-{
-    vkPreviewWidget_1->setColor( Qt::darkMagenta );
-    vkPreviewWidget_2->setColor( Qt::darkMagenta );
-    vkPreviewWidget_3->setColor( Qt::darkMagenta );
-}
-
-void QvkShowClick::slot_vkPushButton_yellow()
-{
-    vkPreviewWidget_1->setColor( Qt::yellow );
-    vkPreviewWidget_2->setColor( Qt::yellow );
-    vkPreviewWidget_3->setColor( Qt::yellow );
-}
-
-void QvkShowClick::slot_vkPushButton_darkYellow()
-{
-    vkPreviewWidget_1->setColor( Qt::darkYellow );
-    vkPreviewWidget_2->setColor( Qt::darkYellow );
-    vkPreviewWidget_3->setColor( Qt::darkYellow );
-}
-
-void QvkShowClick::slot_vkPushButton_gray()
-{
-    vkPreviewWidget_1->setColor( Qt::gray );
-    vkPreviewWidget_2->setColor( Qt::gray );
-    vkPreviewWidget_3->setColor( Qt::gray );
-}
-
-void QvkShowClick::slot_vkPushButton_darkGray()
-{
-    vkPreviewWidget_1->setColor( Qt::darkGray );
-    vkPreviewWidget_2->setColor( Qt::darkGray );
-    vkPreviewWidget_3->setColor( Qt::darkGray );
+    QList<QHBoxLayout *> listLayaout = ui->gridLayout_showclick_color_pushButton->findChildren<QHBoxLayout *>();
+    for ( int i = 0; i < listLayaout.count(); i++ )
+    {
+        for ( int x = 0; x < 20; x++ )
+        {
+            if ( listLayaout.at(i)->objectName().section( "_", 2, 2 ) == QVariant::fromValue( Qt::GlobalColor(x) ).toString() )
+            {
+                QvkPushButton *vkPushButton = new QvkPushButton( Qt::GlobalColor(x) );
+                listLayaout.at(i)->addWidget( vkPushButton );
+                connect( vkPushButton, &QPushButton::clicked, [=](){ vkPreviewWidget_1->setColor( Qt::GlobalColor(x) );
+                                                                     vkPreviewWidget_2->setColor( Qt::GlobalColor(x) );
+                                                                     vkPreviewWidget_3->setColor( Qt::GlobalColor(x) );
+                                                                   } );
+                break;
+            }
+        }
+    }
 }
 
 

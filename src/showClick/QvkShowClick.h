@@ -46,26 +46,6 @@ public:
 
 
 public slots:
-
-
-private slots:
-    void slot_vkPushButton_white();
-    void slot_vkPushButton_black();
-    void slot_vkPushButton_red();
-    void slot_vkPushButton_darkRed();
-    void slot_vkPushButton_green();
-    void slot_vkPushButton_darkGreen();
-    void slot_vkPushButton_blue();
-    void slot_vkPushButton_darkBlue();
-    void slot_vkPushButton_cyan();
-    void slot_vkPushButton_darkCyan();
-    void slot_vkPushButton_magenta();
-    void slot_vkPushButton_darkMagenta();
-    void slot_vkPushButton_yellow();
-    void slot_vkPushButton_darkYellow();
-    void slot_vkPushButton_gray();
-    void slot_vkPushButton_darkGray();
-
     void slot_valueChanged_SpezialSlider_Diameter( int value );
     void slot_valueChanged_SpezialSlider_Opacity( int value );
 
