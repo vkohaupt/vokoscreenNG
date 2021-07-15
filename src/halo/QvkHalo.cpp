@@ -38,17 +38,34 @@ void QvkHalo::init( Ui_formMainWindow *ui_formMainWindow )
 {
     ui = ui_formMainWindow;
 
-    setHaloPreviewWidget();
-    setHaloWindow();
-    setSpezialSlider();
-    setColorButtons();
+    createHaloPreviewWidget();
+    createHaloWindow();
+    createSpezialSlider();
+    createColorButtons();
+    createSpezialCheckBox();
+    createTimer();
+
     setToolButtonDefaultValues();
-    setSpezialCheckBox();
-    setTimer();
 }
 
 
-void QvkHalo::setSpezialSlider()
+void QvkHalo::createHaloPreviewWidget()
+{
+    vkHaloPreviewWidget = new QvkHaloPreviewWidget( );
+    ui->horizontalLayout_61->insertWidget( 0, vkHaloPreviewWidget );
+    vkHaloPreviewWidget->setObjectName( "widgetHaloPreview" );
+    vkHaloPreviewWidget->show();
+}
+
+
+void QvkHalo::createHaloWindow()
+{
+    vkHaloWindow = new QvkHaloWindow( this );
+    vkHaloWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar
+}
+
+
+void QvkHalo::createSpezialSlider()
 {
     vkSpezialSliderDiameter = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayoutDiameter->insertWidget( 0, vkSpezialSliderDiameter );
@@ -76,22 +93,6 @@ void QvkHalo::setSpezialSlider()
 }
 
 
-void QvkHalo::setHaloWindow()
-{
-    vkHaloWindow = new QvkHaloWindow( this );
-    vkHaloWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar
-}
-
-
-void QvkHalo::setHaloPreviewWidget()
-{
-    vkHaloPreviewWidget = new QvkHaloPreviewWidget( );
-    ui->horizontalLayout_61->insertWidget( 0, vkHaloPreviewWidget );
-    vkHaloPreviewWidget->setObjectName( "widgetHaloPreview" );
-    vkHaloPreviewWidget->show();
-}
-
-
 void QvkHalo::slot_valueChanged_SpezialSlider_Diameter( int value )
 {
     vkHaloPreviewWidget->setDiameter( value );
@@ -108,9 +109,8 @@ void QvkHalo::slot_valueChanged_SpezialSlider_Opacity( int value )
 }
 
 
-void QvkHalo::setColorButtons()
+void QvkHalo::createColorButtons()
 {
-
     QList<QHBoxLayout *> listLayaout = ui->gridLayout_halo_color_pushButton->findChildren<QHBoxLayout *>();
     for ( int i = 0; i < listLayaout.count(); i++ )
     {
@@ -130,25 +130,7 @@ void QvkHalo::setColorButtons()
 }
 
 
-void QvkHalo::setToolButtonDefaultValues()
-{
-    connect( ui->toolButtonHaloDiameterDefault,  SIGNAL( clicked() ), this, SLOT( slot_DiameterDefault() ) );
-    connect( ui->toolButtonHaloOpacityDefault, SIGNAL( clicked() ), this, SLOT( slot_OpacityDefault() ) );
-}
-
-void QvkHalo::slot_DiameterDefault()
-{
-    vkSpezialSliderDiameter->setValue( diameterDefault );
-}
-
-
-void QvkHalo::slot_OpacityDefault()
-{
-    vkSpezialSliderOpacity->setValue( opacityDefault );
-}
-
-
-void QvkHalo::setSpezialCheckBox()
+void QvkHalo::createSpezialCheckBox()
 {
     vkSpezialCheckbox = new QvkSpezialCheckbox();
     vkSpezialCheckbox->setObjectName( "spezialCheckBoxHalo" );
@@ -173,8 +155,15 @@ void QvkHalo::slot_haloOnOff( bool value )
 }
 
 
-void QvkHalo::setTimer()
+void QvkHalo::createTimer()
 {
     timer = new QTimer(this);
     connect( timer, SIGNAL( timeout() ), vkHaloWindow, SLOT( slot_followMouse() ) );
+}
+
+
+void QvkHalo::setToolButtonDefaultValues()
+{
+    connect( ui->toolButtonHaloDiameterDefault, &QToolButton::clicked, [=](){ vkSpezialSliderDiameter->setValue( diameterDefault ); } );
+    connect( ui->toolButtonHaloOpacityDefault,  &QToolButton::clicked, [=](){ vkSpezialSliderOpacity->setValue( opacityDefault ); } );
 }

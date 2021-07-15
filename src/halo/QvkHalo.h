@@ -56,21 +56,19 @@ private:
     int diameterDefault = 70;
     int opacityDefault = 60;
 
-    void setHaloWindow();
-    void setHaloPreviewWidget();
-    void setSpezialSlider();
-    void setColorButtons();
+    void createHaloWindow();
+    void createHaloPreviewWidget();
+    void createSpezialSlider();
+    void createColorButtons();
+    void createSpezialCheckBox();
+    void createTimer();
+
     void setToolButtonDefaultValues();
-    void setSpezialCheckBox();
-    void setTimer();
 
     
 private slots:
     void slot_valueChanged_SpezialSlider_Diameter( int value );
     void slot_valueChanged_SpezialSlider_Opacity( int value );
-    void slot_DiameterDefault();
-    void slot_OpacityDefault();
-
     void slot_haloOnOff( bool value );
 
 
