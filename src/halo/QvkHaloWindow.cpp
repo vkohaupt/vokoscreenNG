@@ -26,12 +26,25 @@
 #include <QDebug>
 #include <QBitmap>
 
+#ifdef Q_OS_LINUX
+#include <QX11Info>
+#endif
+
 QvkHaloWindow::QvkHaloWindow( QWidget *parent )
 {
     setParent( parent );
-    setAttribute( Qt::WA_TranslucentBackground, true );
     setCursor( Qt::BlankCursor );
-    setDiameter( diameter );
+
+#ifdef Q_OS_LINUX
+    if ( QX11Info::isCompositingManagerRunning() == true )
+    {
+        setAttribute( Qt::WA_TranslucentBackground, true );
+    } else
+    {
+        setAttribute( Qt::WA_TranslucentBackground, false );
+    }
+#endif
+
     show();
 }
 
@@ -53,19 +66,14 @@ void QvkHaloWindow::paintEvent( QPaintEvent *event )
     painterPixmap.begin( &pixmap );
     painterPixmap.setRenderHints( QPainter::Antialiasing, true );
 
-    qreal penWith = 1.0;
+    qreal holeRadius = 3;
+    qreal penWidth = diameter/2 - holeRadius;
     QPen pen;
-    pen.setWidthF( penWith );
+    pen.setWidthF( penWidth );
     pen.setColor( color );
-    pen.setStyle( Qt::SolidLine );
     painterPixmap.setPen( pen );
-
-    QBrush brush;
-    brush.setColor( color );
-    brush.setStyle( Qt::SolidPattern );
-    painterPixmap.setBrush( color );
     painterPixmap.setOpacity( opacity );
-    painterPixmap.drawEllipse( 1, 1, diameter-2, diameter-2 );
+    painterPixmap.drawEllipse( QPointF( diameter/2, diameter/2 ), holeRadius + penWidth/2, holeRadius + penWidth/2);
 
     painterPixmap.end();
 
@@ -73,13 +81,14 @@ void QvkHaloWindow::paintEvent( QPaintEvent *event )
     painter.begin( this );
     painter.drawPixmap( QPoint( 0, 0 ), pixmap );
     painter.end();
+
+    setMask( pixmap.mask() );
 }
 
 
 void QvkHaloWindow::slot_followMouse()
 {
-    QCursor cursor;
-    move( cursor.pos().x() - diameter/2, cursor.pos().y() - diameter/2 );
+    move( QCursor::pos().x() - diameter/2, QCursor::pos().y() - diameter/2 );
 }
 
 
@@ -87,22 +96,6 @@ void QvkHaloWindow::setDiameter( int value )
 {
     diameter = value;
     resize( diameter, diameter );
-
-    QRegion window( 0,
-                    0,
-                    diameter,
-                    diameter,
-                    QRegion::Rectangle );
-
-    QRegion mouseHole( diameter / 2 - 2,
-                       diameter / 2 - 2,
-                       4,
-                       4,
-                       QRegion::Rectangle );
-
-    QRegion r1 = window.QRegion::subtracted( mouseHole );
-
-    this->setMask( r1 );
 }
 
 
@@ -115,7 +108,7 @@ void QvkHaloWindow::setOpacit( double value )
 
 void QvkHaloWindow::setColor( QColor value )
 {
-   color = value;
-   repaint();
+    color = value;
+    repaint();
 }
 

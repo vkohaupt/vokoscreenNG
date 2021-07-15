@@ -44,9 +44,9 @@ public slots:
 
 
 private:
-    int diameter;
-    QColor color;
+    qreal diameter;
     qreal opacity;
+    QColor color;
 
 
 private slots:
