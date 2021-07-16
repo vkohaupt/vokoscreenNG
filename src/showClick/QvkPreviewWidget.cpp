@@ -53,7 +53,7 @@ void QvkPreviewWidget::paintEvent( QPaintEvent *event )
 
             if ( color == Qt::white )
             {
-                painter.fillRect( 0, 0, width(), height(), QColor( 245, 245, 245, 0 ) );
+                painter.fillRect( 0, 0, width(), height(), Qt::lightGray );
             }
             else
             {
@@ -89,7 +89,7 @@ void QvkPreviewWidget::paintEvent( QPaintEvent *event )
 
             if ( color == Qt::white )
             {
-                painter.fillRect( 0, 0, width(), height(), QColor( 245, 245, 245, 0 ) );
+                painter.fillRect( 0, 0, width(), height(), Qt::lightGray );
             }
             else
             {
@@ -123,7 +123,7 @@ void QvkPreviewWidget::paintEvent( QPaintEvent *event )
 
             if ( color == Qt::white )
             {
-                painter.fillRect( 0, 0, width(), height(), QColor( 245, 245, 245, 0 ) );
+                painter.fillRect( 0, 0, width(), height(), Qt::lightGray );
             }
             else
             {
