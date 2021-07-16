@@ -119,6 +119,7 @@ void QvkHalo::createColorButtons()
             if ( listLayaout.at(i)->objectName().section( "_", 2, 2 ) == QVariant::fromValue( Qt::GlobalColor(x) ).toString() )
             {
                 QvkPushButton *vkPushButton = new QvkPushButton( Qt::GlobalColor(x) );
+                vkPushButton->setMaximumHeight( 23 );
                 listLayaout.at(i)->addWidget( vkPushButton );
                 connect( vkPushButton, &QPushButton::clicked, [=](){ vkHaloPreviewWidget->setColor( Qt::GlobalColor(x) );
                                                                      vkHaloWindow->setColor( Qt::GlobalColor(x) );

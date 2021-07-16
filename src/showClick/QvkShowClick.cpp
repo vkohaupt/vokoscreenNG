@@ -55,6 +55,7 @@ void QvkShowClick::setColorButtons()
             if ( listLayaout.at(i)->objectName().section( "_", 2, 2 ) == QVariant::fromValue( Qt::GlobalColor(x) ).toString() )
             {
                 QvkPushButton *vkPushButton = new QvkPushButton( Qt::GlobalColor(x) );
+                vkPushButton->setMaximumHeight( 23 );
                 listLayaout.at(i)->addWidget( vkPushButton );
                 connect( vkPushButton, &QPushButton::clicked, [=](){ vkPreviewWidget_1->setColor( Qt::GlobalColor(x) );
                                                                      vkPreviewWidget_2->setColor( Qt::GlobalColor(x) );
