@@ -113,6 +113,13 @@ void QvkDirectSoundController::getAllDevices()
     }
     else
     {
+        QList<QLabel *> listLabel = ui->scrollAreaAudioDevice->findChildren<QLabel *>();
+        for ( int i = 0; i < listLabel.count(); i++ )
+        {
+            ui->verticalLayoutAudioDevices->removeWidget( listLabel.at(i) );
+            delete listLabel.at(i);
+        }
+
         QLabel *label = new QLabel();
         label->setText( "DirectSound\n" );
         label->setAlignment( Qt::AlignCenter );
