@@ -42,7 +42,7 @@ void QvkHaloPreviewWidget::paintEvent( QPaintEvent *event )
     painter.setRenderHints( QPainter::Antialiasing, true );
 
     if ( color == Qt::white )
-        painter.fillRect( 0, 0, width(), height(), QColor( 245, 245, 245, 0 ) );
+        painter.fillRect( 0, 0, width(), height(), Qt::lightGray );
     else
         painter.fillRect( 0, 0, width(), height(), Qt::white );
 
