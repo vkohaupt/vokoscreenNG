@@ -2739,12 +2739,6 @@
           </item>
           <item row="5" column="4">
            <widget class="QToolButton" name="toolButtonShowclickOpacityDefault">
-            <property name="minimumSize">
-             <size>
-              <width>34</width>
-              <height>34</height>
-             </size>
-            </property>
             <property name="text">
              <string notr="true"/>
             </property>
@@ -2808,12 +2802,6 @@
           </item>
           <item row="6" column="4">
            <widget class="QToolButton" name="toolButtonShowclickTimeDefault">
-            <property name="minimumSize">
-             <size>
-              <width>34</width>
-              <height>34</height>
-             </size>
-            </property>
             <property name="text">
              <string notr="true"/>
             </property>
@@ -3172,12 +3160,6 @@
           </item>
           <item row="4" column="4">
            <widget class="QToolButton" name="toolButtonShowclickDiameterDefault">
-            <property name="minimumSize">
-             <size>
-              <width>34</width>
-              <height>34</height>
-             </size>
-            </property>
             <property name="text">
              <string notr="true"/>
             </property>
