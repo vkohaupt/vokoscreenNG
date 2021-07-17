@@ -42,7 +42,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -566,8 +566,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>509</width>
-                      <height>166</height>
+                      <width>16</width>
+                      <height>16</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1756,8 +1756,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>335</width>
-                   <height>297</height>
+                   <width>20</width>
+                   <height>96</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -2838,7 +2838,7 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>102</height>
+              <height>100</height>
              </size>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_61">
@@ -2846,9 +2846,15 @@
               <number>0</number>
              </property>
              <property name="leftMargin">
-              <number>2</number>
+              <number>1</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
              </property>
              <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
               <number>0</number>
              </property>
             </layout>
@@ -3122,7 +3128,7 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>104</height>
+              <height>100</height>
              </size>
             </property>
             <property name="frameShape">
@@ -3133,9 +3139,15 @@
               <number>0</number>
              </property>
              <property name="leftMargin">
-              <number>2</number>
+              <number>1</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
              </property>
              <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
               <number>0</number>
              </property>
              <item>
