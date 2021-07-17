@@ -189,6 +189,7 @@ void QvkCameraController::slot_addedCamera( QString description, QString device 
 {
     ui_formMainWindow->checkBoxCameraOnOff->setEnabled( true );
     ui_formMainWindow->comboBoxCamera->setEnabled( true );
+    ui_formMainWindow->comboBoxCameraResolution->setEnabled( true );
     ui_formMainWindow->comboBoxCamera->addItem( description, device.toLatin1() );
     ui_formMainWindow->checkBoxCameraGray->setEnabled( true );
     ui_formMainWindow->checkBoxCameraInvert->setEnabled( true );
@@ -217,6 +218,7 @@ void QvkCameraController::slot_removedCamera( QString device )
         ui_formMainWindow->checkBoxCameraOnOff->setEnabled( false );
         ui_formMainWindow->comboBoxCamera->setEnabled( false );
         ui_formMainWindow->comboBoxCameraResolution->clear();
+        ui_formMainWindow->comboBoxCameraResolution->setEnabled( false );
         ui_formMainWindow->checkBoxCameraGray->setEnabled( false );
         ui_formMainWindow->checkBoxCameraInvert->setEnabled( false );
         ui_formMainWindow->checkBoxCameraMirrorHorizontal->setEnabled( false );
