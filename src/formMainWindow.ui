@@ -566,8 +566,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>30</height>
+                      <width>16</width>
+                      <height>16</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -1756,7 +1756,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>96</width>
+                   <width>20</width>
                    <height>96</height>
                   </rect>
                  </property>
@@ -2977,7 +2977,7 @@
           </item>
           <item row="6" column="0" colspan="4">
            <layout class="QHBoxLayout" name="horizontalLayout_5">
-            <item alignment="Qt::AlignLeft">
+            <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
              <widget class="QLabel" name="label_26">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -2993,7 +2993,7 @@
               </property>
               <property name="maximumSize">
                <size>
-                <width>25</width>
+                <width>34</width>
                 <height>34</height>
                </size>
               </property>
