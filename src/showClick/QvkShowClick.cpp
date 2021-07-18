@@ -180,9 +180,9 @@ void QvkShowClick::slot_mousePressed( int x, int y, QString mouseButton )
         }
     }
 
-    QvkAnimateWindow *animateWindow = new QvkAnimateWindow( this );
-    animateWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
-    animateWindow->init( x, y, vkSpezialSliderShowtime->value() * 100, mouseButton, vkSpezialSliderDiameter->value(), vkSpezialSliderOpacity->value(), color );
+    QvkAnimateWindow *vkAnimateWindow = new QvkAnimateWindow( this );
+    vkAnimateWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
+    vkAnimateWindow->init( x, y, vkSpezialSliderShowtime->value() * 100, mouseButton, vkSpezialSliderDiameter->value(), vkSpezialSliderOpacity->value(), color );
 }
 
 
