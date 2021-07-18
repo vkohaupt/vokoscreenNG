@@ -53,6 +53,7 @@ private:
     Ui_formMainWindow *ui;
     QvkSpezialCheckbox *vkSpezialCheckbox;
     QTimer *timer;
+    QColor colorDefault = Qt::yellow;
     int diameterDefault = 70;
     int opacityDefault = 60;
 

@@ -103,7 +103,7 @@ void QvkHaloWindow::setDiameter( int value )
 }
 
 
-void QvkHaloWindow::setOpacit( double value )
+void QvkHaloWindow::setOpacity( qreal value )
 {
     opacity = value;
     repaint();

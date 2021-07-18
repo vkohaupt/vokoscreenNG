@@ -40,12 +40,6 @@ void QvkHaloPreviewWidget::paintEvent( QPaintEvent *event )
     QPainter painter;
     painter.begin( this );
     painter.setRenderHints( QPainter::Antialiasing, true );
-
-    if ( color == Qt::white )
-        painter.fillRect( 0, 0, width(), height(), Qt::lightGray );
-    else
-        painter.fillRect( 0, 0, width(), height(), Qt::white );
-
     painter.setPen( Qt::NoPen );
     painter.setBrush( color );
     painter.setOpacity( opacity );
@@ -80,14 +74,14 @@ int QvkHaloPreviewWidget::getDiameter()
 }
 
 
-void QvkHaloPreviewWidget::setOpacity( int value )
+void QvkHaloPreviewWidget::setOpacity( qreal value )
 {
-    opacity = (double)value / 100.0;
+    opacity = value;
     repaint();
 }
 
 
-double QvkHaloPreviewWidget::getOpacity()
+qreal QvkHaloPreviewWidget::getOpacity()
 {
     return opacity;
 }

@@ -41,116 +41,30 @@ void QvkPreviewWidget::paintEvent( QPaintEvent *event )
 {
     Q_UNUSED(event);
 
-    QList<QWidget *> listWidget = parentWidget->findChildren<QWidget *>();
+    QPainter painter;
+    painter.begin( this );
+    painter.setRenderHints( QPainter::Antialiasing, true );
 
-    for( int i = 0; i < listWidget.count(); i++ )
-    {
-        if ( listWidget.at( i )->objectName() == "widgetCircle_1" )
-        {
-            QPainter painter;
-            painter.begin( this );
-            painter.setRenderHints( QPainter::Antialiasing, true );
 
-            if ( color == Qt::white )
-            {
-                painter.fillRect( 0, 0, width(), height(), Qt::lightGray );
-            }
-            else
-            {
-                painter.fillRect( 0, 0, width(), height(), Qt::white );
-            }
+    qreal penWith = 6;
+    QPen pen;
+    pen.setWidthF( penWith );
+    pen.setColor( color );
+    pen.setStyle( Qt::SolidLine );
+    painter.setPen( pen );
+    painter.setBrush( Qt::NoBrush );
+    painter.setOpacity( opacity );
+    resize( parentWidget->width(), parentWidget->height());
+    painter.drawEllipse( parentWidget->width()/2-diameter/2, parentWidget->height()/2-diameter/2, diameter, diameter );
 
-            qreal penWith = 6;
-            QPen pen;
-            pen.setWidthF( penWith );
-            pen.setColor( color );
-            pen.setStyle( Qt::SolidLine );
-            painter.setPen( pen );
-            painter.setBrush( Qt::NoBrush );
-            painter.setOpacity( opacity );
-            resize( parentWidget->width(), parentWidget->height());
-            painter.drawEllipse( parentWidget->width()/2-diameter/2, parentWidget->height()/2-diameter/2, diameter, diameter );
+    pen.setWidthF( 3.0 );
+    painter.setPen( pen );
+    QRectF rectF( width()/2 - diameter/2 + penWith, height()/2 - diameter/2 + penWith, diameter-2*penWith, diameter-2*penWith );
+    int startAngle = 90 * 16;
+    int spanAngle = 180 * 16;
+    painter.drawArc( rectF, startAngle, spanAngle );
 
-            pen.setWidthF( 3.0 );
-            painter.setPen( pen );
-            QRectF rectF( width()/2 - diameter/2 + penWith, height()/2 - diameter/2 + penWith, diameter-2*penWith, diameter-2*penWith );
-            int startAngle = 90 * 16;
-            int spanAngle = 180 * 16;
-            painter.drawArc( rectF, startAngle, spanAngle );
-
-            painter.end();
-        }
-
-        if ( listWidget.at( i )->objectName() == "widgetCircle_2" )
-        {
-            QPainter painter;
-            painter.begin( this );
-            painter.setRenderHints( QPainter::Antialiasing, true );
-
-            if ( color == Qt::white )
-            {
-                painter.fillRect( 0, 0, width(), height(), Qt::lightGray );
-            }
-            else
-            {
-                painter.fillRect( 0, 0, width(), height(), Qt::white );
-            }
-
-            qreal penWith = 6;
-            QPen pen;
-            pen.setWidthF( penWith );
-            pen.setColor( color );
-            pen.setStyle( Qt::SolidLine );
-            painter.setPen( pen );
-            painter.setBrush( Qt::NoBrush );
-            painter.setOpacity( opacity );
-            resize( parentWidget->width(), parentWidget->height());
-            painter.drawEllipse( parentWidget->width()/2-diameter/2, parentWidget->height()/2-diameter/2, diameter, diameter );
-
-            pen.setWidthF( 3.0 );
-            painter.setPen( pen );
-            QLineF line( width()/2, height()/2 - diameter/2 + penWith , width()/2, height()/2 + diameter/2 - penWith );
-            painter.drawLine( line );
-
-            painter.end();
-        }
-
-        if ( listWidget.at( i )->objectName() == "widgetCircle_3" )
-        {
-            QPainter painter;
-            painter.begin( this );
-            painter.setRenderHints( QPainter::Antialiasing, true );
-
-            if ( color == Qt::white )
-            {
-                painter.fillRect( 0, 0, width(), height(), Qt::lightGray );
-            }
-            else
-            {
-                painter.fillRect( 0, 0, width(), height(), Qt::white );
-            }
-
-            qreal penWith = 6;
-            QPen pen;
-            pen.setWidthF( penWith );
-            pen.setColor( color );
-            pen.setStyle( Qt::SolidLine );
-            painter.setPen( pen );
-            painter.setBrush( Qt::NoBrush );
-            painter.setOpacity( opacity );
-            resize( parentWidget->width(), parentWidget->height());
-            painter.drawEllipse( parentWidget->width()/2-diameter/2, parentWidget->height()/2-diameter/2, diameter, diameter );
-
-            pen.setWidthF( 3.0 );
-            painter.setPen( pen );
-            QRectF rectF( width()/2 - diameter/2 + penWith, height()/2 - diameter/2 + penWith, diameter-2*penWith, diameter-2*penWith );
-            int startAngle = -90 * 16;
-            int spanAngle = 180 * 16;
-            painter.drawArc( rectF, startAngle, spanAngle );
-
-            painter.end();
-        }
-    }
+    painter.end();
 }
 
 

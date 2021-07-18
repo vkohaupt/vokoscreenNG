@@ -36,7 +36,7 @@ public:
     
 public:
     void setDiameter( int value );
-    void setOpacit( double value );
+    void setOpacity( qreal value );
     void setColor( QColor value );
 
 public slots:

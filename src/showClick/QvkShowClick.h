@@ -40,18 +40,13 @@ public:
     void init( Ui_formMainWindow *ui_formMainWindow );
     QvkSpezialCheckbox *vkSpezialCheckbox;
     bool pointerOnOff;
-    QvkPreviewWidget *vkPreviewWidget_1;
-    QvkPreviewWidget *vkPreviewWidget_2;
-    QvkPreviewWidget *vkPreviewWidget_3;
+    QvkPreviewWidget *vkPreviewWidget;
+    QColor colorDefault = Qt::red;
 
 
 public slots:
     void slot_valueChanged_SpezialSlider_Diameter( int value );
     void slot_valueChanged_SpezialSlider_Opacity( int value );
-
-    void slot_spezialSlider_Diameter_Default();
-    void slot_spezialSlider_Opacity_Default();
-    void slot_spezialSlider_showTime_Default();
 
     void slot_pointerOnOff( bool value );
     void slot_mousePressed( int, int, QString );
@@ -71,7 +66,7 @@ private:
     void setSpezialSlider();
     void setSpezialCheckBox();
     void setToolButtonDefaultValues();
-    void setPreviewWidgets();
+    void setPreviewWidget();
     void setGlobalMouse();
 
     QvkGlobalMouse *vkGlobalMouse;

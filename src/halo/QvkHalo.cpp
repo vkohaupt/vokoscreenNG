@@ -102,10 +102,8 @@ void QvkHalo::slot_valueChanged_SpezialSlider_Diameter( int value )
 
 void QvkHalo::slot_valueChanged_SpezialSlider_Opacity( int value )
 {
-    vkHaloPreviewWidget->setOpacity( value );
-
-    double opacity = (double)value / 100.0;
-    vkHaloWindow->setOpacit( opacity );
+    vkHaloPreviewWidget->setOpacity( (qreal)value / 100 );
+    vkHaloWindow->setOpacity( (qreal)value / 100 );
 }
 
 
@@ -121,9 +119,9 @@ void QvkHalo::createColorButtons()
                 QvkPushButton *vkPushButton = new QvkPushButton( Qt::GlobalColor(x) );
                 vkPushButton->setMaximumHeight( 23 );
                 listLayaout.at(i)->addWidget( vkPushButton );
-                connect( vkPushButton, &QPushButton::clicked, [=](){ vkHaloPreviewWidget->setColor( Qt::GlobalColor(x) );
-                                                                     vkHaloWindow->setColor( Qt::GlobalColor(x) );
-                                                                   } );
+                connect( vkPushButton, &QPushButton::clicked, [=] () { vkHaloPreviewWidget->setColor( Qt::GlobalColor(x) );
+                                                                       vkHaloWindow->setColor( Qt::GlobalColor(x) );
+                                                                     } );
                 break;
             }
         }
@@ -158,13 +156,16 @@ void QvkHalo::slot_haloOnOff( bool value )
 
 void QvkHalo::createTimer()
 {
-    timer = new QTimer(this);
+    timer = new QTimer( this );
     connect( timer, SIGNAL( timeout() ), vkHaloWindow, SLOT( slot_followMouse() ) );
 }
 
 
 void QvkHalo::setToolButtonDefaultValues()
 {
-    connect( ui->toolButtonHaloDiameterDefault, &QToolButton::clicked, [=](){ vkSpezialSliderDiameter->setValue( diameterDefault ); } );
-    connect( ui->toolButtonHaloOpacityDefault,  &QToolButton::clicked, [=](){ vkSpezialSliderOpacity->setValue( opacityDefault ); } );
+    connect( ui->toolButtonHaloColorDefault,    &QToolButton::clicked, [=] () { vkHaloPreviewWidget->setColor( colorDefault );
+                                                                                vkHaloWindow->setColor( colorDefault );
+                                                                              } );
+    connect( ui->toolButtonHaloDiameterDefault, &QToolButton::clicked, [=] () { vkSpezialSliderDiameter->setValue( diameterDefault ); } );
+    connect( ui->toolButtonHaloOpacityDefault,  &QToolButton::clicked, [=] () { vkSpezialSliderOpacity->setValue( opacityDefault ); } );
 }

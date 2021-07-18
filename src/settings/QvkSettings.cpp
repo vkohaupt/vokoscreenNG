@@ -494,11 +494,8 @@ void QvkSettings::readShowclickColor( QvkShowClick *vkShowClick )
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.beginGroup( "ShowClick" );
-    QColor colorDefault = Qt::red;
-    QColor color = settings.value( "Color", colorDefault ).value<QColor>();
-    vkShowClick->vkPreviewWidget_1->setColor( color );
-    vkShowClick->vkPreviewWidget_2->setColor( color );
-    vkShowClick->vkPreviewWidget_3->setColor( color );
+    QColor color = settings.value( "Color", vkShowClick->colorDefault ).value<QColor>();
+    vkShowClick->vkPreviewWidget->setColor( color );
     settings.endGroup();
 }
 

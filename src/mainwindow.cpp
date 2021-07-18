@@ -575,7 +575,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
         vkSettings.saveSystrayAlternative( vkSystrayAlternative->x(), vkSystrayAlternative->y() );
         vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile );
         vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
-        vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget_1->getColor() );
+        vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget->getColor() );
 
 #ifdef Q_OS_WIN
     }

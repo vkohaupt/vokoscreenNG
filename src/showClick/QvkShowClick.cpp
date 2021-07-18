@@ -41,7 +41,7 @@ void QvkShowClick::init( Ui_formMainWindow *ui_formMainWindow )
     setSpezialCheckBox();
     setToolButtonDefaultValues();
     setGlobalMouse();
-    setPreviewWidgets();
+    setPreviewWidget();
 }
 
 
@@ -57,10 +57,7 @@ void QvkShowClick::setColorButtons()
                 QvkPushButton *vkPushButton = new QvkPushButton( Qt::GlobalColor(x) );
                 vkPushButton->setMaximumHeight( 23 );
                 listLayaout.at(i)->addWidget( vkPushButton );
-                connect( vkPushButton, &QPushButton::clicked, [=](){ vkPreviewWidget_1->setColor( Qt::GlobalColor(x) );
-                                                                     vkPreviewWidget_2->setColor( Qt::GlobalColor(x) );
-                                                                     vkPreviewWidget_3->setColor( Qt::GlobalColor(x) );
-                                                                   } );
+                connect( vkPushButton, &QPushButton::clicked, [=](){ vkPreviewWidget->setColor( Qt::GlobalColor(x) ); } );
                 break;
             }
         }
@@ -104,61 +101,15 @@ void QvkShowClick::setSpezialSlider()
 }
 
 
-void QvkShowClick::setPreviewWidgets()
-{
-    vkPreviewWidget_1 = new QvkPreviewWidget( ui->widget_1 );
-    vkPreviewWidget_1->setObjectName( "widgetCircle_1" );
-    vkPreviewWidget_1->show();
-
-    vkPreviewWidget_2 = new QvkPreviewWidget( ui->widget_2 );
-    vkPreviewWidget_2->setObjectName( "widgetCircle_2" );
-    vkPreviewWidget_2->show();
-
-    vkPreviewWidget_3 = new QvkPreviewWidget( ui->widget_3 );
-    vkPreviewWidget_3->setObjectName( "widgetCircle_3" );
-    vkPreviewWidget_3->show();
-}
-
-
 void QvkShowClick::slot_valueChanged_SpezialSlider_Diameter( int value )
 {
-    vkPreviewWidget_1->setDiameter( value );
-    vkPreviewWidget_2->setDiameter( value );
-    vkPreviewWidget_3->setDiameter( value );
+    vkPreviewWidget->setDiameter( value );
 }
 
 
 void QvkShowClick::slot_valueChanged_SpezialSlider_Opacity( int value )
 {
-    double value_1 = value;
-    vkPreviewWidget_1->setOpacity( value_1 / 100 );
-    vkPreviewWidget_2->setOpacity( value_1 / 100 );
-    vkPreviewWidget_3->setOpacity( value_1 / 100 );
-}
-
-void QvkShowClick::setToolButtonDefaultValues()
-{
-    connect( ui->toolButtonShowclickDiameterDefault, SIGNAL( clicked() ), this, SLOT( slot_spezialSlider_Diameter_Default() ) );
-    connect( ui->toolButtonShowclickOpacityDefault,  SIGNAL( clicked() ), this, SLOT( slot_spezialSlider_Opacity_Default() ) );
-    connect( ui->toolButtonShowclickTimeDefault,     SIGNAL( clicked() ), this, SLOT( slot_spezialSlider_showTime_Default() ) );
-}
-
-
-void QvkShowClick::slot_spezialSlider_Diameter_Default()
-{
-    vkSpezialSliderDiameter->setValue( diameterDefault );
-}
-
-
-void QvkShowClick::slot_spezialSlider_Opacity_Default()
-{
-    vkSpezialSliderOpacity->setValue( opacityDefault );
-}
-
-
-void QvkShowClick::slot_spezialSlider_showTime_Default()
-{
-    vkSpezialSliderShowtime->setValue( timeDefault );
+    vkPreviewWidget->setOpacity( (double)value / 100 );
 }
 
 
@@ -187,6 +138,16 @@ void QvkShowClick::slot_pointerOnOff( bool value )
     }
 }
 
+
+void QvkShowClick::setToolButtonDefaultValues()
+{
+    connect( ui->toolButtonShowclickColorDefault,    &QPushButton::clicked, [=] () { vkPreviewWidget->setColor( colorDefault ); } );
+    connect( ui->toolButtonShowclickDiameterDefault, &QPushButton::clicked, [=] () { vkSpezialSliderDiameter->setValue( diameterDefault ); } );
+    connect( ui->toolButtonShowclickOpacityDefault,  &QPushButton::clicked, [=] () { vkSpezialSliderOpacity->setValue( opacityDefault ); } );
+    connect( ui->toolButtonShowclickTimeDefault,     &QPushButton::clicked, [=] () { vkSpezialSliderShowtime->setValue( timeDefault ); } );
+}
+
+
 void QvkShowClick::setGlobalMouse()
 {
     vkGlobalMouse = new QvkGlobalMouse();
@@ -198,6 +159,14 @@ void QvkShowClick::slot_mousePressed( int x, int y, QString mouseButton )
 {
     QvkAnimateWindow *animateWindow = new QvkAnimateWindow( this );
     animateWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
-    animateWindow->init( x, y, vkSpezialSliderShowtime->value() * 100, mouseButton, vkSpezialSliderDiameter->value(), vkSpezialSliderOpacity->value(), vkPreviewWidget_1->getColor() );
+    animateWindow->init( x, y, vkSpezialSliderShowtime->value() * 100, mouseButton, vkSpezialSliderDiameter->value(), vkSpezialSliderOpacity->value(), vkPreviewWidget->getColor() );
 }
 
+
+
+void QvkShowClick::setPreviewWidget()
+{
+    vkPreviewWidget = new QvkPreviewWidget( ui->frame_3 );
+    vkPreviewWidget->setObjectName( "widgetCircle_1" );
+    vkPreviewWidget->show();
+}
