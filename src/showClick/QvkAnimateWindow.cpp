@@ -27,8 +27,9 @@
 #include <QBitmap>
 
 
-QvkAnimateWindow::QvkAnimateWindow(QWidget *parent )
+QvkAnimateWindow::QvkAnimateWindow( QWidget *parent )
 {
+  setAttribute( Qt::WA_DeleteOnClose, true) ;
   setParent( parent );
   setAttribute( Qt::WA_TranslucentBackground, true );
   show();
