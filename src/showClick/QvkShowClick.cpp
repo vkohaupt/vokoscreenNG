@@ -55,6 +55,7 @@ void QvkShowClick::setColorButtons()
             if ( listLayaout.at(i)->objectName().section( "_", 2, 2 ) == QVariant::fromValue( Qt::GlobalColor(x) ).toString() )
             {
                 QvkPushButton *vkPushButton = new QvkPushButton( Qt::GlobalColor(x) );
+                vkPushButton->setObjectName( "PushButton_ShowClick_color_" + QVariant::fromValue( Qt::GlobalColor(x) ).toString() );
                 vkPushButton->setMaximumHeight( 23 );
                 listLayaout.at(i)->addWidget( vkPushButton );
                 connect( vkPushButton, &QPushButton::clicked, [=](){ vkPreviewWidget->setColor( Qt::GlobalColor(x) ); } );
@@ -157,9 +158,31 @@ void QvkShowClick::setGlobalMouse()
 
 void QvkShowClick::slot_mousePressed( int x, int y, QString mouseButton )
 {
+    QColor color;
+    QList<QvkPushButton *> listPushButton = ui->centralWidget->findChildren<QvkPushButton *>();
+    for ( int i = 0; i < listPushButton.count(); i++ )
+    {
+        if ( ( listPushButton.at(i)->underMouse() == true ) and ( listPushButton.at(i)->objectName().contains( "ShowClick_color" ) ) )
+        {
+            QString objectNameColor = listPushButton.at(i)->objectName().section( "_", 3, 3);
+            for ( int x = 0; x < 20; x++ )
+            {
+                if ( QVariant::fromValue( Qt::GlobalColor(x) ).toString().contains( objectNameColor ) )
+                {
+                    color = Qt::GlobalColor(x);
+                    break;
+                }
+            }
+            break;
+        } else
+        {
+            color = vkPreviewWidget->getColor();
+        }
+    }
+
     QvkAnimateWindow *animateWindow = new QvkAnimateWindow( this );
     animateWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
-    animateWindow->init( x, y, vkSpezialSliderShowtime->value() * 100, mouseButton, vkSpezialSliderDiameter->value(), vkSpezialSliderOpacity->value(), vkPreviewWidget->getColor() );
+    animateWindow->init( x, y, vkSpezialSliderShowtime->value() * 100, mouseButton, vkSpezialSliderDiameter->value(), vkSpezialSliderOpacity->value(), color );
 }
 
 
