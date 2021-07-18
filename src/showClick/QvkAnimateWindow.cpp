@@ -29,8 +29,8 @@
 
 QvkAnimateWindow::QvkAnimateWindow( QWidget *parent )
 {
-  setAttribute( Qt::WA_DeleteOnClose, true) ;
   setParent( parent );
+  setAttribute( Qt::WA_DeleteOnClose, true ) ;
   setAttribute( Qt::WA_TranslucentBackground, true );
   show();
 }
