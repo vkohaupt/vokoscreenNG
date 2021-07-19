@@ -46,7 +46,7 @@ void QvkPreviewWidget::paintEvent( QPaintEvent *event )
     painter.setRenderHints( QPainter::Antialiasing, true );
 
 
-    qreal penWith = 6;
+    qreal penWith = 5.0;
     QPen pen;
     pen.setWidthF( penWith );
     pen.setColor( color );

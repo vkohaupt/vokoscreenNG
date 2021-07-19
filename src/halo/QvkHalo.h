@@ -46,7 +46,7 @@ public:
     QvkHaloPreviewWidget *vkHaloPreviewWidget;
     QvkHaloWindow *vkHaloWindow;
 
-    QColor colorDefault = Qt::yellow;
+    QColor colorDefault = Qt::green;
 
 
 public slots:

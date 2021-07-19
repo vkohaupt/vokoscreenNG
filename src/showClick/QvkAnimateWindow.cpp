@@ -90,7 +90,7 @@ void QvkAnimateWindow::paintEvent( QPaintEvent *event )
     painterPixmap.begin( &pixmap );
     painterPixmap.setRenderHints( QPainter::Antialiasing, true );
 
-    qreal penWith = 6.0;
+    qreal penWith = 5.0;
     QPen pen;
     pen.setWidthF( penWith );
     pen.setColor( color );
