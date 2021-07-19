@@ -59,7 +59,7 @@ void QvkPreviewWidget::paintEvent( QPaintEvent *event )
 
     pen.setWidthF( 3.0 );
     painter.setPen( pen );
-    QRectF rectF( width()/2 - diameter/2 + penWith, height()/2 - diameter/2 + penWith, diameter-2*penWith, diameter-2*penWith );
+    QRectF rectF( width()/2 - diameter/2 + 1.5*penWith, height()/2 - diameter/2 + 1.5*penWith, diameter-3*penWith, diameter-3*penWith );
     int startAngle = 90 * 16;
     int spanAngle = 180 * 16;
     painter.drawArc( rectF, startAngle, spanAngle );

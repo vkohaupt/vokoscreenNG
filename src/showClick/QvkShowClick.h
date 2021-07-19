@@ -71,7 +71,7 @@ private:
 
     QvkGlobalMouse *vkGlobalMouse;
 
-    int diameterDefault = 50;
+    int diameterDefault = 60;
     int opacityDefault = 70;
     int timeDefault = 10;
 

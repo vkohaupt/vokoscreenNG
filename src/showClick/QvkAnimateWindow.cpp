@@ -26,12 +26,26 @@
 #include <QTimer>
 #include <QBitmap>
 
+#ifdef Q_OS_LINUX
+#include <QX11Info>
+#endif
+
 
 QvkAnimateWindow::QvkAnimateWindow( QWidget *parent )
 {
   setParent( parent );
   setAttribute( Qt::WA_DeleteOnClose, true ) ;
-  setAttribute( Qt::WA_TranslucentBackground, true );
+//  setAttribute( Qt::WA_TranslucentBackground, false );
+#ifdef Q_OS_LINUX
+    if ( QX11Info::isCompositingManagerRunning() == true )
+    {
+        setAttribute( Qt::WA_TranslucentBackground, true );
+    } else
+    {
+        setAttribute( Qt::WA_TranslucentBackground, false );
+    }
+#endif
+
   show();
 }
 
@@ -93,7 +107,7 @@ void QvkAnimateWindow::paintEvent( QPaintEvent *event )
     painterPixmap.setOpacity( opacity );
     if ( mouseButton == "LeftButton" )
     {
-        QRectF rectF( width()/2 - diameter/2 + penWith, height()/2 - diameter/2 + penWith, diameter-2*penWith, diameter-2*penWith );
+        QRectF rectF( width()/2 - diameter/2 + 1.5*penWith, height()/2 - diameter/2 + 1.5*penWith, diameter-3*penWith, diameter-3*penWith );
         qreal startAngle = 90 * 16;
         qreal spanAngle = 180 * 16;
         painterPixmap.drawArc( rectF, startAngle, spanAngle );
@@ -101,7 +115,7 @@ void QvkAnimateWindow::paintEvent( QPaintEvent *event )
 
     if ( mouseButton == "RightButton" )
     {
-        QRectF rectF( width()/2 - diameter/2 + penWith, height()/2 - diameter/2 + penWith, diameter-2*penWith, diameter-2*penWith );
+        QRectF rectF( width()/2 - diameter/2 + 1.5*penWith, height()/2 - diameter/2 + 1.5*penWith, diameter-3*penWith, diameter-3*penWith );
         qreal startAngle = -90 * 16;
         qreal spanAngle = 180 * 16;
         painterPixmap.drawArc( rectF, startAngle, spanAngle );
@@ -109,7 +123,7 @@ void QvkAnimateWindow::paintEvent( QPaintEvent *event )
 
     if ( mouseButton == "MiddleButton" )
     {
-        QLineF line( width()/2, height()/2 - diameter/2 + penWith , width()/2, height()/2 + diameter/2 - penWith );
+        QLineF line( width()/2, height()/2 - diameter/2 + 1.5*penWith , width()/2, height()/2 + diameter/2 - 1.5*penWith );
         painterPixmap.drawLine( line );
     }
 
