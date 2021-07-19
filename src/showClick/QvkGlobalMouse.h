@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkGlobalMouse_H
-#define QvkGlobalMouse_H
+#ifndef QVKGLOBALMOUSE_H
+#define QVKGLOBALMOUSE_H
 
 #include <QObject>
 
@@ -57,4 +57,4 @@ signals:
 
 };
 
-#endif // QvkGlobalMouse_H
+#endif // QVKGLOBALMOUSE_H

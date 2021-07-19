@@ -70,7 +70,7 @@ void QvkHaloWindow::paintEvent( QPaintEvent *event )
     painterPixmap.begin( &pixmap );
     painterPixmap.setRenderHints( QPainter::Antialiasing, true );
 
-    qreal holeRadius = 3;
+    qreal holeRadius = 3.0;
     qreal penWidth = diameter/2 - holeRadius;
     QPen pen;
     pen.setWidthF( penWidth );
@@ -83,7 +83,7 @@ void QvkHaloWindow::paintEvent( QPaintEvent *event )
 
     QPainter painter;
     painter.begin( this );
-    painter.drawPixmap( QPoint( 0, 0 ), pixmap );
+    painter.drawPixmap( QPointF( 0, 0 ), pixmap );
     painter.end();
 
     setMask( pixmap.mask() );

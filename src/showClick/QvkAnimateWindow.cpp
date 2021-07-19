@@ -1,4 +1,4 @@
-/* vokoscreenNG
+﻿/* vokoscreenNG
  * Copyright (C) 2017-2021 Volker Kohaupt
  *
  * Author:
@@ -36,33 +36,17 @@ QvkAnimateWindow::QvkAnimateWindow( QWidget *parent )
 }
 
 
-void QvkAnimateWindow::init( int x,
-                             int y,
+void QvkAnimateWindow::init( qreal x,
+                             qreal y,
                              int showTime,
                              QString button,
-                             int valueDiameter,
-                             double valueOpacity,
+                             qreal valueDiameter,
+                             qreal valueOpacity,
                              QColor valueColor )
 
 {
     resize( 110, 110 );
     move( x / devicePixelRatioF() - ( width() / 2 ), y / devicePixelRatioF() - ( height() / 2 ) );
-
-    QRegion window( 0,
-                    0,
-                    width(),
-                    height(),
-                    QRegion::Rectangle );
-
-    QRegion mouseHole( width() / 2 - 1,
-                       height() / 2 - 1,
-                       2,
-                       2,
-                       QRegion::Rectangle );
-
-    QRegion r1 = window.QRegion::subtracted( mouseHole );
-
-    this->setMask( r1 );
 
     mouseButton = button;
     diameter = valueDiameter;
@@ -110,16 +94,16 @@ void QvkAnimateWindow::paintEvent( QPaintEvent *event )
     if ( mouseButton == "LeftButton" )
     {
         QRectF rectF( width()/2 - diameter/2 + penWith, height()/2 - diameter/2 + penWith, diameter-2*penWith, diameter-2*penWith );
-        int startAngle = 90 * 16;
-        int spanAngle = 180 * 16;
+        qreal startAngle = 90 * 16;
+        qreal spanAngle = 180 * 16;
         painterPixmap.drawArc( rectF, startAngle, spanAngle );
     }
 
     if ( mouseButton == "RightButton" )
     {
         QRectF rectF( width()/2 - diameter/2 + penWith, height()/2 - diameter/2 + penWith, diameter-2*penWith, diameter-2*penWith );
-        int startAngle = -90 * 16;
-        int spanAngle = 180 * 16;
+        qreal startAngle = -90 * 16;
+        qreal spanAngle = 180 * 16;
         painterPixmap.drawArc( rectF, startAngle, spanAngle );
     }
 
@@ -133,6 +117,8 @@ void QvkAnimateWindow::paintEvent( QPaintEvent *event )
 
     QPainter painter;
     painter.begin( this );
-    painter.drawPixmap( QPoint( 0, 0 ), pixmap );
+    painter.drawPixmap( QPointF( 0, 0 ), pixmap );
     painter.end();
+
+    setMask( pixmap.mask() );
 }

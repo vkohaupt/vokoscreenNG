@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkAnimateWindow_H
-#define QvkAnimateWindow_H
+#ifndef QVKANIMATEWINDOW_H
+#define QVKANIMATEWINDOW_H
 
 #include <QWidget>
 
@@ -30,9 +30,9 @@ class QvkAnimateWindow: public QWidget
 {
     Q_OBJECT
 public:
-    QvkAnimateWindow(QWidget *parent );
+    QvkAnimateWindow( QWidget *parent );
     virtual ~QvkAnimateWindow();
-    void init(int x, int y, int showTime, QString button, int valueDiameter , double valueOpacity, QColor valueColor);
+    void init( qreal x, qreal y, int showTime, QString button, qreal valueDiameter, qreal valueOpacity, QColor valueColor);
 
     
 public:
@@ -42,20 +42,19 @@ public slots:
 
 
 private:
-    int diameter;
+    qreal diameter;
+    qreal opacity;
     QColor color;
-    double opacity;
     QString mouseButton;
-
 
 
 private slots:
 
 
 protected:
-    void paintEvent(QPaintEvent *event);
+    void paintEvent( QPaintEvent *event );
 
 
 };
 
-#endif // QvkAnimateWindow_H
+#endif // QVKANIMATEWINDOW_H
