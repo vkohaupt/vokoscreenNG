@@ -54,7 +54,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                                 vkCountdown(new QvkCountdown)
 {
     ui->setupUi(this);
+
+#ifdef Q_OS_WIN
+    // Only for Windows WASAPI
     soundEffect = new QSoundEffect();
+#endif
 
     sliderScreencastCountDown = new QvkSpezialSlider( Qt::Horizontal );
     ui->gridLayout_9->addWidget( sliderScreencastCountDown, 2, 1 );
