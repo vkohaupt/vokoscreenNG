@@ -61,7 +61,6 @@ class QvkMainWindow : public QMainWindow
 public:
     explicit QvkMainWindow( QWidget *parent = Q_NULLPTR );
     ~QvkMainWindow();
-    static int const EXIT_CODE_REBOOT;
     Ui::formMainWindow *ui;
     QvkWinInfo *vkWinInfo;
     QvkCountdown *vkCountdown;
@@ -149,7 +148,6 @@ private:
 private slots:
     void slot_textToGuiLog( QString value );
 
-    void slot_reboot();
     void slot_preStart();
     void slot_Start();
     void slot_preStop();

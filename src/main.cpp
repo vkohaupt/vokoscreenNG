@@ -42,8 +42,6 @@ int main(int argc, char *argv[])
 {
     QLoggingCategory::defaultCategory()->setEnabled( QtDebugMsg, true );
 
-    int currentExitCode = 0;
-    do {
         QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
         QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 
@@ -179,9 +177,5 @@ int main(int argc, char *argv[])
         w->show();
 #endif
 
-        currentExitCode = app.exec();
-
-    } while( currentExitCode == QvkMainWindow::EXIT_CODE_REBOOT );
-
-    return currentExitCode;
+        return app.exec();
 }
