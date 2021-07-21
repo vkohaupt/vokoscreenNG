@@ -300,7 +300,7 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
     for ( int i = 0; i < listRadiobuttons.count(); i++ )
     {
         if ( log == true )
-            qDebug().noquote().nospace() <<  listRadiobuttons.at(i)->objectName() << "=" << listRadiobuttons.at(i)->isChecked();
+            qDebug().noquote() << global::nameOutput << listRadiobuttons.at(i)->objectName() << "=" << listRadiobuttons.at(i)->isChecked();
         else
             settings.setValue( listRadiobuttons.at(i)->objectName(), listRadiobuttons.at(i)->isChecked() );
     }
@@ -316,7 +316,7 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
         else
         {
             if ( log == true )
-                qDebug().noquote().nospace() << listCheckBox.at(i)->objectName() << "=" << listCheckBox.at(i)->isChecked();
+                qDebug().noquote() << global::nameOutput << listCheckBox.at(i)->objectName() << "=" << listCheckBox.at(i)->isChecked();
             else
                 settings.setValue( listCheckBox.at(i)->objectName(), listCheckBox.at(i)->isChecked() );
         }
@@ -326,7 +326,7 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
     for ( int i = 0; i < listComboBox.count(); i++ )
     {
         if ( log == true )
-            qDebug().noquote().nospace() << listComboBox.at(i)->objectName() << "=" << listComboBox.at(i)->currentText();
+            qDebug().noquote() << global::nameOutput << listComboBox.at(i)->objectName() << "=" << listComboBox.at(i)->currentText();
         else
             settings.setValue( listComboBox.at(i)->objectName(), listComboBox.at(i)->currentText() );
     }
@@ -335,7 +335,7 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
     for ( int i = 0; i < listSlider.count(); i++ )
     {
         if ( log == true )
-            qDebug().noquote().nospace() << listSlider.at(i)->objectName() << "=" << listSlider.at(i)->value();
+            qDebug().noquote() << global::nameOutput << listSlider.at(i)->objectName() << "=" << listSlider.at(i)->value();
         else
             settings.setValue( listSlider.at(i)->objectName(), listSlider.at(i)->value() );
     }
@@ -346,7 +346,7 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
         if ( listLineEdit.at(i)->objectName().contains( "lineEdit" ) )
         {
             if ( log == true )
-                qDebug().noquote().nospace() << listLineEdit.at(i)->objectName() << "=" << listLineEdit.at(i)->text();
+                qDebug().noquote() << global::nameOutput << listLineEdit.at(i)->objectName() << "=" << listLineEdit.at(i)->text();
             else
                 settings.setValue( listLineEdit.at(i)->objectName(), listLineEdit.at(i)->text() );
         }
@@ -367,13 +367,6 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
             }
         }
     }
-
-    QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui_mainwindow->centralWidget->findChildren<QvkSpezialCheckbox *>();
-    for ( int i = 0; i < listSpezialCheckbox.count(); i++ )
-    {
-        settings.setValue( listSpezialCheckbox.at(i)->objectName(), listSpezialCheckbox.at(i)->isChecked() );
-    }
-
 }
 
 QString QvkSettings::getFileName()

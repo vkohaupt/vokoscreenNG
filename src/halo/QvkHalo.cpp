@@ -67,6 +67,18 @@ void QvkHalo::createHaloWindow()
 
 void QvkHalo::createSpezialSlider()
 {
+    vkSpezialSliderHole = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayoutHaloHole->insertWidget( 0, vkSpezialSliderHole );
+    vkSpezialSliderHole->setObjectName( "sliderhaloHole" );
+    vkSpezialSliderHole->setTracking( true );
+    vkSpezialSliderHole->setMinimum( 10 );
+    vkSpezialSliderHole->setMaximum( 40 );
+    vkSpezialSliderHole->setValue( 0 );
+    vkSpezialSliderHole->setShowValue( false );
+    vkSpezialSliderHole->show();
+    connect( vkSpezialSliderHole, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Hole( int ) ) );
+    vkSpezialSliderHole->setValue( holeDefault );
+
     vkSpezialSliderDiameter = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayoutDiameter->insertWidget( 0, vkSpezialSliderDiameter );
     vkSpezialSliderDiameter->setObjectName( "sliderhaloDiameter" );
@@ -78,6 +90,7 @@ void QvkHalo::createSpezialSlider()
     vkSpezialSliderDiameter->show();
     connect( vkSpezialSliderDiameter, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Diameter( int ) ) );
     vkSpezialSliderDiameter->setValue( diameterDefault );
+
 
     vkSpezialSliderOpacity = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayoutHaloOpacity->insertWidget( 0, vkSpezialSliderOpacity );
@@ -97,6 +110,15 @@ void QvkHalo::slot_valueChanged_SpezialSlider_Diameter( int value )
 {
     vkHaloPreviewWidget->setDiameter( value );
     vkHaloWindow->setDiameter( value );
+
+    vkSpezialSliderHole->setMaximum( vkSpezialSliderDiameter->value()/2  );
+
+}
+
+
+void QvkHalo::slot_valueChanged_SpezialSlider_Hole( int value )
+{
+    vkHaloWindow->setHoleRadius( value );
 }
 
 

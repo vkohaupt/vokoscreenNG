@@ -619,7 +619,6 @@ void QvkMainWindow::afterWindowShown()
             }
         }
     }
-    qDebug().noquote() << global::nameOutput << "************** Hint: void QvkMainWindow::afterWindowShown()";
 }
 
 
@@ -1145,8 +1144,6 @@ void QvkMainWindow::VK_gst_Elements_available()
 // Check format, video and audoicodec on tab availability
 void QvkMainWindow::slot_gst_formatVideoAudoicodec_available()
 {
-    qDebug().noquote() << global::nameOutput << "[QvkMainWindow::slot_gst_formatVideoAudoicodec_available]";
-
     // Delete all QLabel
     QList<QLabel *> listLabel = ui->scrollAreaWidgetContentsAvailable->findChildren<QLabel *>();
     for( int i = 0; i < listLabel.count(); i++ )

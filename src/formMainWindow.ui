@@ -3223,6 +3223,20 @@
             </layout>
            </widget>
           </item>
+          <item row="6" column="6" colspan="4">
+           <layout class="QHBoxLayout" name="horizontalLayout_47">
+            <item>
+             <widget class="QLabel" name="label_32">
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayoutHaloHole"/>
+            </item>
+           </layout>
+          </item>
          </layout>
         </item>
        </layout>

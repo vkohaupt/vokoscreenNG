@@ -43,6 +43,7 @@ public:
     void init( Ui_formMainWindow *ui_formMainWindow );
     QvkSpezialSlider *vkSpezialSliderDiameter;
     QvkSpezialSlider *vkSpezialSliderOpacity;
+    QvkSpezialSlider *vkSpezialSliderHole;
     QvkHaloPreviewWidget *vkHaloPreviewWidget;
     QvkHaloWindow *vkHaloWindow;
 
@@ -59,6 +60,7 @@ private:
 
     int diameterDefault = 70;
     int opacityDefault = 60;
+    int holeDefault = 20;
 
     void createHaloWindow();
     void createHaloPreviewWidget();
@@ -73,6 +75,7 @@ private:
 private slots:
     void slot_valueChanged_SpezialSlider_Diameter( int value );
     void slot_valueChanged_SpezialSlider_Opacity( int value );
+    void slot_valueChanged_SpezialSlider_Hole( int value );
     void slot_haloOnOff( bool value );
 
 

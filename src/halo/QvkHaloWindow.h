@@ -33,11 +33,15 @@ public:
     QvkHaloWindow( QWidget *parent );
     virtual ~QvkHaloWindow();
 
-    
+    qreal holeRadius;
+
+
 public:
     void setDiameter( int value );
+    void setHoleRadius( int value );
     void setOpacity( qreal value );
     void setColor( QColor value );
+
 
 public slots:
     void slot_followMouse();

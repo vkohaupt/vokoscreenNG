@@ -62,6 +62,7 @@ void QvkHaloWindow::paintEvent( QPaintEvent *event )
 {
     Q_UNUSED(event);
 
+    qreal holeRadius = 3.0;
     QPixmap pixmap( 100 * devicePixelRatioF(), 100 * devicePixelRatioF() );
     pixmap.fill( Qt::transparent );
     pixmap.setDevicePixelRatio( devicePixelRatioF() );
@@ -70,7 +71,6 @@ void QvkHaloWindow::paintEvent( QPaintEvent *event )
     painterPixmap.begin( &pixmap );
     painterPixmap.setRenderHints( QPainter::Antialiasing, true );
 
-    qreal holeRadius = 3.0;
     qreal penWidth = diameter/2 - holeRadius;
     QPen pen;
     pen.setWidthF( penWidth );
@@ -100,6 +100,13 @@ void QvkHaloWindow::setDiameter( int value )
 {
     diameter = value;
     resize( diameter, diameter );
+}
+
+
+void QvkHaloWindow::setHoleRadius( int value )
+{
+    holeRadius = value;
+    repaint();
 }
 
 
