@@ -164,6 +164,7 @@ int main(int argc, char *argv[])
         {
             QvkMainWindow *w = new QvkMainWindow;
             w->show();
+            qDebug() << "11111111111111111111111111111111111111111111111111111111111111111111";
         }
         else
         {
