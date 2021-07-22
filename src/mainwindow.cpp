@@ -592,31 +592,6 @@ void QvkMainWindow::slot_vokoPlayer()
     vkPlayer->show();
 }
 
-/*
-void QvkMainWindow::showEvent( QShowEvent *event )
-{
-    QMainWindow::showEvent(event);
-//    QMetaObject::invokeMethod( this, "afterWindowShown", Qt::ConnectionType::QueuedConnection );
-}
-
-
-void QvkMainWindow::afterWindowShown()
-{
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
-
-    QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
-    for ( int i = 0; i < listSpezialCheckbox.count(); i++ )
-    {
-        if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckboxShowclick" )
-        {
-            if ( settings.value( listSpezialCheckbox.at(i)->objectName(), false ).toBool() == true )
-            {
-                emit listSpezialCheckbox.at(i)->signal_clicked( true );
-            }
-        }
-    }
-}
-*/
 
 /*
  * CountDown

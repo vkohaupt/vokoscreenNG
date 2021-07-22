@@ -189,8 +189,6 @@ private slots:
 
     void slot_gst_formatVideoAudoicodec_available();
 
-//    void afterWindowShown();
-
 
 signals:
     void signal_close();
@@ -202,7 +200,6 @@ signals:
 protected:
     void closeEvent( QCloseEvent *event );
     void resizeEvent( QResizeEvent *event );
-//    void showEvent(QShowEvent *event);
 
 
 };
