@@ -31,7 +31,7 @@
 #include "QvkSpezialCheckbox.h"
 #include "QvkGlobalMouse.h"
 
-class QvkShowClick : public QWidget //QObject
+class QvkShowClick : public QWidget
 {
     Q_OBJECT
 
