@@ -263,12 +263,9 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui_mainwindow->centralWidget->findChildren<QvkSpezialCheckbox *>();
     for ( int i = 0; i < listSpezialCheckbox.count(); i++ )
     {
-        if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckBoxHalo" )
+        if ( settings.value( listSpezialCheckbox.at(i)->objectName(), false ).toBool() == true )
         {
-            if ( settings.value( listSpezialCheckbox.at(i)->objectName(), false ).toBool() == true )
-            {
-                emit listSpezialCheckbox.at(i)->signal_clicked( true );
-            }
+            emit listSpezialCheckbox.at(i)->signal_clicked( true );
         }
     }
 }
@@ -496,10 +493,3 @@ void QvkSettings::readShowclickColor( QvkShowClick *vkShowClick )
     vkShowClick->vkPreviewWidget->setColor( color );
     settings.endGroup();
 }
-
-
-
-
-
-
-

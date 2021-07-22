@@ -129,7 +129,7 @@ void QvkShowClick::slot_pointerOnOff( bool value )
     {
         pointerOnOff = true;
         vkGlobalMouse->setCursorOn();
-        vkGlobalMouse->mousePressed();
+//        vkGlobalMouse->mousePressed();
     }
 
     if ( value == false )
@@ -180,9 +180,9 @@ void QvkShowClick::slot_mousePressed( int x, int y, QString mouseButton )
         }
     }
 
-    QvkAnimateWindow *vkAnimateWindow = new QvkAnimateWindow( this );
+    QvkAnimateWindow *vkAnimateWindow = new QvkAnimateWindow( this, x, y, vkSpezialSliderShowtime->value() * 100, mouseButton, vkSpezialSliderDiameter->value(), vkSpezialSliderOpacity->value(), color );
     vkAnimateWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
-    vkAnimateWindow->init( x, y, vkSpezialSliderShowtime->value() * 100, mouseButton, vkSpezialSliderDiameter->value(), vkSpezialSliderOpacity->value(), color );
+    vkAnimateWindow->show();
 }
 
 

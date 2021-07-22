@@ -176,6 +176,5 @@ int main(int argc, char *argv[])
         QvkMainWindow *w = new QvkMainWindow;
         w->show();
 #endif
-
         return app.exec();
 }

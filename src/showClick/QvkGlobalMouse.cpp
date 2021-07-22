@@ -22,8 +22,6 @@
 
 #include "QvkGlobalMouse.h"
 
-#include <QCoreApplication>
-#include <QThread>
 #include <QDebug>
 
 #ifdef Q_OS_WIN
@@ -38,7 +36,10 @@
 
 QvkGlobalMouse::QvkGlobalMouse()
 {
-    onOff = false;
+    timer = new QTimer;
+    timer->setTimerType( Qt::PreciseTimer );
+    timer->setInterval( 10 );
+    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_mousePressed() ) );
 }
 
 
@@ -49,18 +50,18 @@ QvkGlobalMouse::~QvkGlobalMouse()
 
 void QvkGlobalMouse::setCursorOn()
 {
-    onOff = true;
+    timer->start();
 }
 
 
 void QvkGlobalMouse::setCursorOff()
 {
-    onOff = false;
+    timer->stop();
 }
 
 
 #ifdef Q_OS_LINUX
-void QvkGlobalMouse::mousePressed()
+void QvkGlobalMouse::slot_mousePressed()
 {
     Display* display;
     Window root;
@@ -70,45 +71,39 @@ void QvkGlobalMouse::mousePressed()
     int x, y;
     int win_x, win_y;
     unsigned int mask;
-    int pressed = 0;
 
-    while( onOff )
+    XQueryPointer( display, root, &root_return, &child_return, &x, &y, &win_x, &win_y, &mask );
+    if ( ( mask & Button1Mask) | ( mask & Button2Mask ) | ( mask & Button3Mask ) )
     {
-        QCoreApplication::processEvents( QEventLoop::AllEvents );
-        XQueryPointer( display, root, &root_return, &child_return, &x, &y, &win_x, &win_y, &mask );
-        QThread::msleep( 10 );
-
-        if ( ( mask & Button1Mask) | ( mask & Button2Mask ) | ( mask & Button3Mask ) )
+        if ( pressed == 0 )
         {
-            if ( pressed == 0 )
+            QString mouseButton;
+            if (  mask & Button1Mask  )
             {
-                QString mouseButton;
-                if (  mask & Button1Mask  )
-                {
-                    mouseButton = "LeftButton";
-                }
-
-                if (  mask & Button2Mask  )
-                {
-                    mouseButton = "MiddleButton";
-                }
-
-                if ( mask & Button3Mask )
-                {
-                    mouseButton = "RightButton";
-                }
-
-                pressed = 1;
-                emit signal_mousePressed( win_x, win_y, mouseButton );
+                mouseButton = "LeftButton";
             }
-        }
-        else
-        {
-            pressed = 0;
-        }
 
-        fflush(stdout);
+            if (  mask & Button2Mask  )
+            {
+                mouseButton = "MiddleButton";
+            }
+
+            if ( mask & Button3Mask )
+            {
+                mouseButton = "RightButton";
+            }
+
+            pressed = 1;
+            emit signal_mousePressed( win_x, win_y, mouseButton );
+        }
     }
+    else
+    {
+        pressed = 0;
+    }
+
+    fflush(stdout);
+
     XCloseDisplay( display );
 }
 #endif

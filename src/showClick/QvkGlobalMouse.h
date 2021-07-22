@@ -24,6 +24,7 @@
 #define QVKGLOBALMOUSE_H
 
 #include <QObject>
+#include <QTimer>
 
 class QvkGlobalMouse: public QObject
 {
@@ -32,18 +33,16 @@ public:
     QvkGlobalMouse();
     virtual ~QvkGlobalMouse();
     
-    
-public:
-
+    QTimer *timer;
+    int zaehler = 0;
 
 public slots:
     void setCursorOn();
     void setCursorOff();
-    void mousePressed();
-
+    void slot_mousePressed();
 
 private:
-    bool onOff;
+    int pressed = 0;
 
 
 private slots:

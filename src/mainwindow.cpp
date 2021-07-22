@@ -592,11 +592,11 @@ void QvkMainWindow::slot_vokoPlayer()
     vkPlayer->show();
 }
 
-
+/*
 void QvkMainWindow::showEvent( QShowEvent *event )
 {
     QMainWindow::showEvent(event);
-    QMetaObject::invokeMethod( this, "afterWindowShown", Qt::ConnectionType::QueuedConnection );
+//    QMetaObject::invokeMethod( this, "afterWindowShown", Qt::ConnectionType::QueuedConnection );
 }
 
 
@@ -616,7 +616,7 @@ void QvkMainWindow::afterWindowShown()
         }
     }
 }
-
+*/
 
 /*
  * CountDown

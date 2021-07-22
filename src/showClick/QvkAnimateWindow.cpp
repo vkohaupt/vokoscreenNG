@@ -31,11 +31,18 @@
 #endif
 
 
-QvkAnimateWindow::QvkAnimateWindow( QWidget *parent )
+QvkAnimateWindow::QvkAnimateWindow( QWidget *parent,
+                                    qreal x,
+                                    qreal y,
+                                    int showTime,
+                                    QString button,
+                                    qreal valueDiameter,
+                                    qreal valueOpacity,
+                                    QColor valueColor )
 {
-  setParent( parent );
-  setAttribute( Qt::WA_DeleteOnClose, true ) ;
-//  setAttribute( Qt::WA_TranslucentBackground, false );
+    setParent( parent );
+    setAttribute( Qt::WA_DeleteOnClose, true ) ;
+
 #ifdef Q_OS_LINUX
     if ( QX11Info::isCompositingManagerRunning() == true )
     {
@@ -46,20 +53,7 @@ QvkAnimateWindow::QvkAnimateWindow( QWidget *parent )
     }
 #endif
 
-  show();
-}
-
-
-void QvkAnimateWindow::init( qreal x,
-                             qreal y,
-                             int showTime,
-                             QString button,
-                             qreal valueDiameter,
-                             qreal valueOpacity,
-                             QColor valueColor )
-
-{
-    resize( 110, 110 );
+    resize( valueDiameter + 10, valueDiameter + 10 );
     move( x / devicePixelRatioF() - ( width() / 2 ), y / devicePixelRatioF() - ( height() / 2 ) );
 
     mouseButton = button;
