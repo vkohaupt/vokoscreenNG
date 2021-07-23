@@ -32,18 +32,22 @@ class QvkGlobalMouse: public QObject
 public:    
     QvkGlobalMouse();
     virtual ~QvkGlobalMouse();
-    
     QTimer *timer;
-    int zaehler = 0;
+
 
 public slots:
     void setCursorOn();
     void setCursorOff();
     void slot_mousePressed();
 
+
 private:
 #ifdef Q_OS_LINUX
     int pressed = 0;
+#endif
+
+#ifdef Q_OS_WIN
+    bool once = false;
 #endif
 
 

@@ -155,9 +155,10 @@ LRESULT CALLBACK MouseProc( int nCode, WPARAM wParam, LPARAM lParam )
 
 void QvkGlobalMouse::slot_mousePressed()
 {
-    if ( einmal == false )
+    if ( once == false )
     {
         hHook = SetWindowsHookEx( WH_MOUSE_LL, MouseProc, NULL, 0 );
+        once = true;
     }
 
     if ( hHook == NULL )
