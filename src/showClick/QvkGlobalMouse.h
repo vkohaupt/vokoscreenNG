@@ -42,7 +42,9 @@ public slots:
     void slot_mousePressed();
 
 private:
+#ifdef Q_OS_LINUX
     int pressed = 0;
+#endif
 
 
 private slots:

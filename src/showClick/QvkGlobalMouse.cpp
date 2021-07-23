@@ -153,25 +153,24 @@ LRESULT CALLBACK MouseProc( int nCode, WPARAM wParam, LPARAM lParam )
     return CallNextHookEx( hHook, nCode, wParam, lParam );
 }
 
-void QvkGlobalMouse::mousePressed()
+void QvkGlobalMouse::slot_mousePressed()
 {
-    hHook = SetWindowsHookEx( WH_MOUSE_LL, MouseProc, NULL, 0 );
+    if ( einmal == false )
+    {
+        hHook = SetWindowsHookEx( WH_MOUSE_LL, MouseProc, NULL, 0 );
+    }
+
     if ( hHook == NULL )
     {
         qDebug() << "Hook failed";
     }
-    while( onOff )
-    {
-        QCoreApplication::processEvents( QEventLoop::AllEvents );
-        if ( pressed == 1 )
-        {
-            QThread::msleep( 10 );
-            //bool bol = UnhookWindowsHookEx( hHook );
 
-            pressed = 0;
-            emit signal_mousePressed( Mouse_X, Mouse_Y, Mouse_Button );
-        }
+    if ( pressed == 1 )
+    {
+        //bool bol = UnhookWindowsHookEx( hHook );
+
+        pressed = 0;
+        emit signal_mousePressed( Mouse_X, Mouse_Y, Mouse_Button );
     }
 }
 #endif
-
