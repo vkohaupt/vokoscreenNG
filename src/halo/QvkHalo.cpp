@@ -165,7 +165,7 @@ void QvkHalo::slot_haloOnOff( bool value )
 {
     if ( value == true )
     {
-        timer->start( 20 );
+        timer->start( 10 );
         vkHaloWindow->show();
     }
 
@@ -180,6 +180,7 @@ void QvkHalo::slot_haloOnOff( bool value )
 void QvkHalo::createTimer()
 {
     timer = new QTimer( this );
+    timer->setTimerType( Qt::PreciseTimer );
     connect( timer, SIGNAL( timeout() ), vkHaloWindow, SLOT( slot_followMouse() ) );
 }
 
