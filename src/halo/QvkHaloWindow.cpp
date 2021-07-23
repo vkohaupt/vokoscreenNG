@@ -89,9 +89,12 @@ void QvkHaloWindow::paintEvent( QPaintEvent *event )
     setMask( pixmap.mask() );
 }
 
-
+/*
+ * Move the windows and brings the window on the top
+ */
 void QvkHaloWindow::slot_followMouse()
 {
+    raise();
     move( QCursor::pos().x() - diameter/2, QCursor::pos().y() - diameter/2 );
 }
 
