@@ -24,12 +24,12 @@
 #define QVKHALO_H
 
 #include <QWidget>
-#include <QTimer>
 
 #include "QvkSpezialSlider.h"
 #include "QvkHaloPreviewWidget.h"
 #include "QvkSpezialCheckbox.h"
 #include "QvkHaloWindow.h"
+#include "QvkShowClick.h"
 
 #include "ui_formMainWindow.h"
 
@@ -38,7 +38,7 @@ class QvkHalo: public QWidget
 {
     Q_OBJECT
 public:
-    QvkHalo();
+    QvkHalo( QvkShowClick *showClick );
     virtual ~QvkHalo();
     void init( Ui_formMainWindow *ui_formMainWindow );
     QvkSpezialSlider *vkSpezialSliderDiameter;
@@ -46,6 +46,7 @@ public:
     QvkSpezialSlider *vkSpezialSliderHole;
     QvkHaloPreviewWidget *vkHaloPreviewWidget;
     QvkHaloWindow *vkHaloWindow;
+    QvkShowClick *showclick;
 
     QColor colorDefault = Qt::green;
 
@@ -56,22 +57,22 @@ public slots:
 private:
     Ui_formMainWindow *ui;
     QvkSpezialCheckbox *vkSpezialCheckbox;
-    QTimer *timer;
 
     int diameterDefault = 70;
     int opacityDefault = 60;
     int holeDefault = 20;
+    int timerID;
 
     void createHaloWindow();
     void createHaloPreviewWidget();
     void createSpezialSlider();
     void createColorButtons();
     void createSpezialCheckBox();
-    void createTimer();
 
     void setToolButtonDefaultValues();
 
-    
+
+
 private slots:
     void slot_valueChanged_SpezialSlider_Diameter( int value );
     void slot_valueChanged_SpezialSlider_Opacity( int value );
@@ -80,6 +81,7 @@ private slots:
 
 
 protected:
+    void timerEvent(QTimerEvent *event) override;
 
 
 };

@@ -34,6 +34,7 @@ public:
     virtual ~QvkHaloWindow();
 
     qreal holeRadius;
+    qreal diameter;
 
 
 public:
@@ -44,11 +45,9 @@ public:
 
 
 public slots:
-    void slot_followMouse();
 
 
 private:
-    qreal diameter;
     qreal opacity;
     QColor color;
 

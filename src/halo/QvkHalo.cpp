@@ -23,9 +23,9 @@
 #include "QvkHalo.h"
 #include "QvkPushButton.h"
 
-
-QvkHalo::QvkHalo()
+QvkHalo::QvkHalo( QvkShowClick *showClick )
 {
+    showclick = showClick;
 }
 
 
@@ -43,7 +43,6 @@ void QvkHalo::init( Ui_formMainWindow *ui_formMainWindow )
     createSpezialSlider();
     createColorButtons();
     createSpezialCheckBox();
-    createTimer();
 
     setToolButtonDefaultValues();
 }
@@ -165,23 +164,26 @@ void QvkHalo::slot_haloOnOff( bool value )
 {
     if ( value == true )
     {
-        timer->start( 10 );
+        timerID = startTimer( 10, Qt::PreciseTimer );
         vkHaloWindow->show();
     }
 
     if ( value == false )
     {
-        timer->stop();
+        killTimer( timerID );
         vkHaloWindow->hide();
     }
 }
 
 
-void QvkHalo::createTimer()
+/*
+ * Move the halo window and brings the window on the top
+ */
+void QvkHalo::timerEvent( QTimerEvent *event )
 {
-    timer = new QTimer( this );
-    timer->setTimerType( Qt::PreciseTimer );
-    connect( timer, SIGNAL( timeout() ), vkHaloWindow, SLOT( slot_followMouse() ) );
+    Q_UNUSED(event);
+    vkHaloWindow->raise();
+    vkHaloWindow->move( QCursor::pos().x() - vkHaloWindow->diameter/2, QCursor::pos().y() - vkHaloWindow->diameter/2 );
 }
 
 
