@@ -30,7 +30,6 @@ class QvkAnimateWindow: public QWidget
 {
     Q_OBJECT
 public:
-    //QvkAnimateWindow( QWidget *parent );
     QvkAnimateWindow( QWidget *parent,
                                         qreal x,
                                         qreal y,
@@ -41,7 +40,6 @@ public:
                                         QColor valueColor );
 
     virtual ~QvkAnimateWindow();
-//    void init( qreal x, qreal y, int showTime, QString button, qreal valueDiameter, qreal valueOpacity, QColor valueColor);
 
     
 public:
