@@ -182,16 +182,10 @@ void QvkHalo::timerEvent( QTimerEvent *event )
 {
     Q_UNUSED(event);
 
-    QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
-    for ( int i = 0; i < listSpezialCheckbox.count(); i++ )
+    QvkSpezialCheckbox *spezialCheckboxShowclick = ui->centralWidget->findChild<QvkSpezialCheckbox *>("spezialCheckboxShowclick");
+    if ( spezialCheckboxShowclick->isChecked() == false )
     {
-        if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckboxShowclick" )
-        {
-           if ( listSpezialCheckbox.at(i)->isChecked() == false )
-           {
-               vkHaloWindow->raise();
-           }
-        }
+        vkHaloWindow->raise();
     }
 
     vkHaloWindow->move( QCursor::pos().x() - vkHaloWindow->diameter/2, QCursor::pos().y() - vkHaloWindow->diameter/2 );
