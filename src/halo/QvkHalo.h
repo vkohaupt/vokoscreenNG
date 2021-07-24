@@ -29,7 +29,6 @@
 #include "QvkHaloPreviewWidget.h"
 #include "QvkSpezialCheckbox.h"
 #include "QvkHaloWindow.h"
-#include "QvkShowClick.h"
 
 #include "ui_formMainWindow.h"
 
@@ -38,7 +37,7 @@ class QvkHalo: public QWidget
 {
     Q_OBJECT
 public:
-    QvkHalo( QvkShowClick *showClick );
+    QvkHalo();
     virtual ~QvkHalo();
     void init( Ui_formMainWindow *ui_formMainWindow );
     QvkSpezialSlider *vkSpezialSliderDiameter;
@@ -46,7 +45,6 @@ public:
     QvkSpezialSlider *vkSpezialSliderHole;
     QvkHaloPreviewWidget *vkHaloPreviewWidget;
     QvkHaloWindow *vkHaloWindow;
-    QvkShowClick *showclick;
 
     QColor colorDefault = Qt::green;
 
