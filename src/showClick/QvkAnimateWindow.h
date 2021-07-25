@@ -42,9 +42,6 @@ public:
     virtual ~QvkAnimateWindow();
 
     
-public:
-
-
 public slots:
 
 
@@ -61,6 +58,8 @@ private slots:
 protected:
     void paintEvent( QPaintEvent *event );
 
+
+signals:
 
 };
 

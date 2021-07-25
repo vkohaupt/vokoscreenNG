@@ -89,7 +89,6 @@ void QvkHalo::createSpezialSlider()
     connect( vkSpezialSliderDiameter, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Diameter( int ) ) );
     vkSpezialSliderDiameter->setValue( diameterDefault );
 
-
     vkSpezialSliderOpacity = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayoutHaloOpacity->insertWidget( 0, vkSpezialSliderOpacity );
     vkSpezialSliderOpacity->setObjectName( "sliderhaloOpacity" );
