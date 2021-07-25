@@ -21,6 +21,8 @@
  */
 
 #include "QvkAnimateWindow.h"
+#include "global.h"
+
 #include <QPainter>
 #include <QDebug>
 #include <QTimer>
@@ -62,13 +64,20 @@ QvkAnimateWindow::QvkAnimateWindow( QWidget *parent,
     color = valueColor;
 
     QTimer::singleShot( showTime, this, SLOT( close() ) );
-
+    global::showclickCounter++;
     show();
 }
 
 
 QvkAnimateWindow::~QvkAnimateWindow()
 {
+}
+
+
+void QvkAnimateWindow::closeEvent( QCloseEvent *event )
+{
+    Q_UNUSED(event);
+    global::showclickCounter--;
 }
 
 

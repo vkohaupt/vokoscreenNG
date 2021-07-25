@@ -57,6 +57,7 @@ private slots:
 
 protected:
     void paintEvent( QPaintEvent *event );
+    void closeEvent( QCloseEvent *event );
 
 
 signals:

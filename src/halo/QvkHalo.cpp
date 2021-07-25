@@ -22,6 +22,7 @@
 
 #include "QvkHalo.h"
 #include "QvkPushButton.h"
+#include "global.h"
 
 QvkHalo::QvkHalo()
 {
@@ -181,8 +182,7 @@ void QvkHalo::timerEvent( QTimerEvent *event )
 {
     Q_UNUSED(event);
 
-    QvkSpezialCheckbox *spezialCheckboxShowclick = ui->centralWidget->findChild<QvkSpezialCheckbox *>("spezialCheckboxShowclick");
-    if ( spezialCheckboxShowclick->isChecked() == false )
+    if ( global::showclickCounter == 0 )
     {
         vkHaloWindow->raise();
     }
