@@ -37,10 +37,11 @@ void QvkShowClick::init( Ui_formMainWindow *ui_formMainWindow )
     ui = ui_formMainWindow;
 
     setColorButtons();
+    setGlobalMouse();
     setSpezialSlider();
     setSpezialCheckBox();
     setToolButtonDefaultValues();
-    setGlobalMouse();
+//    setGlobalMouse();
     setPreviewWidget();
 }
 
@@ -119,25 +120,25 @@ void QvkShowClick::setSpezialCheckBox()
     vkSpezialCheckbox = new QvkSpezialCheckbox();
     vkSpezialCheckbox->setObjectName( "spezialCheckboxShowclick" );
     ui->horizontalLayout_15->insertWidget( 1, vkSpezialCheckbox );
-    connect( vkSpezialCheckbox, SIGNAL( signal_clicked( bool ) ), this, SLOT( slot_pointerOnOff( bool ) ) );
+//    connect( vkSpezialCheckbox, SIGNAL( signal_clicked( bool ) ), this, SLOT( slot_pointerOnOff( bool ) ) );
+    connect( vkSpezialCheckbox, SIGNAL( signal_clicked( bool ) ), vkGlobalMouse, SLOT( slot_on( bool ) ) );
+
 }
 
-
+/*
 void QvkShowClick::slot_pointerOnOff( bool value )
 {
     if ( value == true )
     {
-        pointerOnOff = true;
         vkGlobalMouse->setCursorOn();
     }
 
     if ( value == false )
     {
-        pointerOnOff = false;
         vkGlobalMouse->setCursorOff();
     }
 }
-
+*/
 
 void QvkShowClick::setToolButtonDefaultValues()
 {

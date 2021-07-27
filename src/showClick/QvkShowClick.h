@@ -39,7 +39,6 @@ public:
     QvkShowClick();
     void init( Ui_formMainWindow *ui_formMainWindow );
     QvkSpezialCheckbox *vkSpezialCheckbox;
-    bool pointerOnOff;
     QvkPreviewWidget *vkPreviewWidget;
     QColor colorDefault = Qt::red;
 
@@ -48,7 +47,7 @@ public slots:
     void slot_valueChanged_SpezialSlider_Diameter( int value );
     void slot_valueChanged_SpezialSlider_Opacity( int value );
 
-    void slot_pointerOnOff( bool value );
+//    void slot_pointerOnOff( bool value );
     void slot_mousePressed( int, int, QString );
 
 

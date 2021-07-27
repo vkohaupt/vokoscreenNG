@@ -36,9 +36,10 @@ public:
 
 
 public slots:
-    void setCursorOn();
-    void setCursorOff();
+//    void setCursorOn();
+//    void setCursorOff();
     void slot_mousePressed();
+    void slot_on( bool value );
 
 
 private:

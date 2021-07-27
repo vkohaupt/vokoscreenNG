@@ -576,7 +576,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
     }
 #endif
 
-    if ( vkShowClick->pointerOnOff == true )
+    if ( vkShowClick->vkSpezialCheckbox->isChecked() == true )
     {
         emit vkShowClick->vkSpezialCheckbox->signal_clicked( false );
     }
