@@ -47,18 +47,6 @@ QvkGlobalMouse::~QvkGlobalMouse()
 {
 }
 
-/*
-void QvkGlobalMouse::setCursorOn()
-{
-    timer->start();
-}
-
-
-void QvkGlobalMouse::setCursorOff()
-{
-    timer->stop();
-}
-*/
 
 void QvkGlobalMouse::slot_on( bool value )
 {
