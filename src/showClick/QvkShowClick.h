@@ -44,8 +44,6 @@ public:
 
 
 public slots:
-    void slot_valueChanged_SpezialSlider_Diameter( int value );
-    void slot_valueChanged_SpezialSlider_Opacity( int value );
     void slot_mousePressed( int, int, QString );
 
 

@@ -58,7 +58,7 @@ void QvkShowClick::setColorButtons()
                 vkPushButton->setObjectName( "PushButton_ShowClick_color_" + QVariant::fromValue( Qt::GlobalColor(x) ).toString() );
                 vkPushButton->setMaximumHeight( 23 );
                 listLayaout.at(i)->addWidget( vkPushButton );
-                connect( vkPushButton, &QPushButton::clicked, [=](){ vkPreviewWidget->setColor( Qt::GlobalColor(x) ); } );
+                connect( vkPushButton, &QPushButton::clicked, [=]() { vkPreviewWidget->setColor( Qt::GlobalColor(x) ); } );
                 break;
             }
         }
@@ -77,7 +77,7 @@ void QvkShowClick::setSpezialSlider()
     vkSpezialSliderDiameter->setValue( 50 );
     vkSpezialSliderDiameter->setShowValue( false );
     vkSpezialSliderDiameter->show();
-    connect( vkSpezialSliderDiameter, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Diameter( int ) ) );
+    connect( vkSpezialSliderDiameter, &QSlider::valueChanged, [=]( int value ) { vkPreviewWidget->setDiameter( value ); } );
 
     vkSpezialSliderOpacity = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayoutOpacity->insertWidget( 0, vkSpezialSliderOpacity );
@@ -88,7 +88,7 @@ void QvkShowClick::setSpezialSlider()
     vkSpezialSliderOpacity->setValue( 70 );
     vkSpezialSliderOpacity->setShowValue( false );
     vkSpezialSliderOpacity->show();
-    connect( vkSpezialSliderOpacity, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Opacity( int ) ) );
+    connect( vkSpezialSliderOpacity, &QSlider::valueChanged, [=]( int value ) { vkPreviewWidget->setOpacity( (double)value / 100 ); } );
 
     vkSpezialSliderShowtime = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayoutShowtime->insertWidget( 0, vkSpezialSliderShowtime );
@@ -99,18 +99,6 @@ void QvkShowClick::setSpezialSlider()
     vkSpezialSliderShowtime->setValue( 10 );
     vkSpezialSliderShowtime->setShowValue( false );
     vkSpezialSliderShowtime->show();
-}
-
-
-void QvkShowClick::slot_valueChanged_SpezialSlider_Diameter( int value )
-{
-    vkPreviewWidget->setDiameter( value );
-}
-
-
-void QvkShowClick::slot_valueChanged_SpezialSlider_Opacity( int value )
-{
-    vkPreviewWidget->setOpacity( (double)value / 100 );
 }
 
 
