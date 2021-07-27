@@ -23,6 +23,7 @@
 #include "QvkWinInfo.h"
 
 #include <QBitmap>
+#include <QDebug>
 
 #ifdef Q_OS_LINUX
 #include <QX11Info>
@@ -33,9 +34,9 @@
 #include <windows.h>
 #endif
 
-
 QvkWinInfo::QvkWinInfo()
 {
+
 }
 
 
@@ -48,13 +49,13 @@ void QvkWinInfo::slot_start()
 
     lastWinID = this->winId();
 
-    windowTimer = new QTimer( this );
-    connect( windowTimer, SIGNAL( timeout() ), this, SLOT( slot_selectWindow() ) );
-    windowTimer->start( 500 );
-
     mouseTimer = new QTimer( this );
     connect( mouseTimer, SIGNAL( timeout() ), this, SLOT( slot_mousePosition() ) );
-    mouseTimer->start( 20 );
+    mouseTimer->start( 10 );
+
+    vkGlobalMouse = new QvkGlobalMouse;
+    vkGlobalMouse->slot_on( true );
+    connect( vkGlobalMouse, SIGNAL( signal_mousePressed( int, int, QString ) ), this, SLOT( slot_selectWindow() ) );
 
     show();
     emit signal_showCursor( true );
@@ -75,10 +76,10 @@ void QvkWinInfo::paintEvent( QPaintEvent *event )
     QPainter painter;
     painter.begin( &pixmap );
     painter.setPen( QPen( Qt::blue, 4 ) );
-    painter.drawLine( 50/2, 0, 50/2, 21);
-    painter.drawLine( 50/2, 50/2+4, 50/2, 50 );
-    painter.drawLine( 0, 50/2, 50/2-4, 50/2 );
-    painter.drawLine( 50/2+4, 50/2, 50, 50/2 );
+    painter.drawLine( 50/2, 0, 50/2, 15 );
+    painter.drawLine( 50/2, 50/2+10, 50/2, 50 );
+    painter.drawLine( 0, 50/2, 50/2-10, 50/2 );
+    painter.drawLine( 50/2+10, 50/2, 50, 50/2 );
     painter.end();
 
     QPainter painter_1;
@@ -180,8 +181,8 @@ void QvkWinInfo::slot_selectWindow()
 
     if ( lastWinID != newWinID )
     {
-        windowTimer->stop();
         mouseTimer->stop();
+        vkGlobalMouse->slot_on( false );
 
         // Cursor resize does not show in video in the first Frames
         resize( 10, 10 );

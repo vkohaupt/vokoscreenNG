@@ -31,6 +31,8 @@
 typedef QList<WId> WindowList;
 #endif
 
+#include "QvkGlobalMouse.h"
+
 class QvkWinInfo: public QWidget
 { 
     Q_OBJECT
@@ -41,6 +43,7 @@ public:
     static WId activeWindow();
     QRectF windowGeometryWithoutFrame( WId child);
 
+    QvkGlobalMouse *vkGlobalMouse;
 
 public slots:
     void slot_start();
@@ -61,7 +64,6 @@ protected:
 
 
 private:
-    QTimer *windowTimer;
     QTimer *mouseTimer;
 
     WId lastWinID;
