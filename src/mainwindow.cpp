@@ -1142,12 +1142,12 @@ void QvkMainWindow::slot_gst_formatVideoAudoicodec_available()
 
     // Adding all informations
     int rowCount = 0;
-    for ( int i = 0; i < globalFormatsList.count(); i++ )
+    for ( int i = 0; i < videoFormatsList.count(); i++ )
     {
         int rowMuxer = 1;
         int rowVideo = 1;
         int rowAudio = 1;
-        QStringList listElements = QString( globalFormatsList.at(i) ).split( "," ); // listElement beinhaltet muxer, Video und Audio
+        QStringList listElements = QString( videoFormatsList.at(i) ).split( "," ); // listElement beinhaltet muxer, Video und Audio
 
         for ( int x = 0; x < listElements.count(); x++ )
         {
@@ -1343,8 +1343,6 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
     videoFormatsList.append( AVI_QStringList.join( "," ) );
     videoFormatsList.append( MP4_QStringList.join( ",") );
     videoFormatsList.append( MOV_QStringList.join( ",") );
-
-    globalFormatsList << videoFormatsList;
 }
 
 

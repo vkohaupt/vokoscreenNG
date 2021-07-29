@@ -102,7 +102,6 @@ private:
     GError *error = Q_NULLPTR;
 
     QStringList videoFormatsList;
-    QStringList globalFormatsList;
 
     void VK_Supported_Formats_And_Codecs();
     void VK_Check_is_Format_available();
