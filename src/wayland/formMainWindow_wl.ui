@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>690</width>
+    <width>713</width>
     <height>437</height>
    </rect>
   </property>
@@ -68,7 +68,7 @@
         <item>
          <widget class="QTabWidget" name="tabWidgetScreencast">
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <property name="iconSize">
            <size>
@@ -118,7 +118,7 @@
                    </font>
                   </property>
                   <property name="text">
-                   <string notr="true">Experimental Wayland support, successfully tested with</string>
+                   <string notr="true">This experimental Wayland support is continuously developed, tested with</string>
                   </property>
                  </widget>
                 </item>
@@ -481,6 +481,19 @@
            <attribute name="title">
             <string notr="true"/>
            </attribute>
+           <widget class="QComboBox" name="comboBoxAudioCodec">
+            <property name="geometry">
+             <rect>
+              <x>50</x>
+              <y>250</y>
+              <width>131</width>
+              <height>32</height>
+             </rect>
+            </property>
+            <property name="currentText">
+             <string notr="true"/>
+            </property>
+           </widget>
           </widget>
           <widget class="QWidget" name="tab_5">
            <attribute name="icon">
@@ -570,6 +583,242 @@
                </size>
               </property>
              </spacer>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tabAvailable">
+           <attribute name="icon">
+            <iconset resource="../screencast.qrc">
+             <normaloff>:/pictures/screencast/supported-formats.png</normaloff>:/pictures/screencast/supported-formats.png</iconset>
+           </attribute>
+           <attribute name="title">
+            <string/>
+           </attribute>
+           <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="1,0,0">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_19">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <item>
+               <layout class="QGridLayout" name="gridLayout_7">
+                <item row="0" column="0" alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="label_24">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string notr="true">Format</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1" alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="label_25">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string notr="true">Video</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2" alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="label_26">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string notr="true">Audio</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QScrollArea" name="scrollAreaAvailable">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>100</height>
+                 </size>
+                </property>
+                <property name="widgetResizable">
+                 <bool>true</bool>
+                </property>
+                <widget class="QWidget" name="scrollAreaWidgetContentsAvailable">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>387</width>
+                   <height>292</height>
+                  </rect>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayoutAvailable">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_17">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_18">
+                <item>
+                 <widget class="QLabel" name="label_21">
+                  <property name="text">
+                   <string notr="true"/>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_8">
+                <item>
+                 <widget class="QLabel" name="labelAvalible">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16</width>
+                    <height>16</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string notr="true"/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="../screencast.qrc">:/pictures/screencast/accept.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item alignment="Qt::AlignLeft">
+                 <widget class="QLabel" name="label_22">
+                  <property name="text">
+                   <string notr="true">Available</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_7">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Expanding</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_11">
+                <item>
+                 <widget class="QLabel" name="labelNotAvailable">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16</width>
+                    <height>16</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string notr="true"/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="../screencast.qrc">:/pictures/screencast/missing.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_23">
+                  <property name="text">
+                   <string notr="true">Not available</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_25">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_9">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_16">
+              <item>
+               <widget class="QToolButton" name="help_screencast_avalaible_3">
+                <property name="toolTip">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string notr="true">Help</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_8">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>
