@@ -26,8 +26,7 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
 
     setWindowTitle( global::name + " " + global::version );
     setWindowTitle( tr( "Start" ) + " " + tr( "Stop" ) + " " + tr( "Pause" ) );
-    QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
-    setWindowIcon( icon );
+    setWindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
 
     QAction *titleAction = new QAction( this );
     titleAction->setIcon( QIcon( ":pictures/systray/systray.png" ) );
@@ -35,24 +34,24 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     titleAction->setEnabled( false );
 
     startAction = new QAction( this );
-    startAction->setIcon( QIcon::fromTheme( "media-playback-start", style()->standardIcon( QStyle::SP_MediaPlay ) ) );
+    startAction->setIcon( QIcon( ":/pictures/player/start.png" ) );
     startAction->setText( tr( "Start" ) );
     startAction->setData( "Start" );
 
     stopAction = new QAction( this );
-    stopAction->setIcon( QIcon::fromTheme( "media-playback-stop" , style()->standardIcon( QStyle::SP_MediaStop ) ) );
+    stopAction->setIcon( QIcon( ":/pictures/player/stop.png" ) );
     stopAction->setText( tr( "Stop" ) );
     stopAction->setData( "Stop" );
     stopAction->setEnabled( false );
 
     pauseAction = new QAction( this );
-    pauseAction->setIcon( QIcon::fromTheme( "media-playback-pause", style()->standardIcon( QStyle::SP_MediaPause ) ) );
+    pauseAction->setIcon( QIcon( ":/pictures/player/pause.png" ) );
     pauseAction->setText( tr( "Pause" ) );
     pauseAction->setData( "Pause" );
     pauseAction->setEnabled( false );
 
     continueAction = new QAction( this );
-    continueAction->setIcon( QIcon::fromTheme( "media-playback-start", style()->standardIcon( QStyle::SP_MediaPlay ) ) );
+    continueAction->setIcon( QIcon( ":/pictures/player/start.png" ));
     continueAction->setText( tr( "Continue" ) );
     continueAction->setData( "Continue" );
     continueAction->setEnabled( false );
@@ -171,8 +170,8 @@ void QvkSystrayAlternative::slot_setSystrayIcon( bool )
 
 void QvkSystrayAlternative::slot_setPauseIcon( bool )
 {
-    QIcon icon = QIcon::fromTheme( "media-playback-pause", style()->standardIcon( QStyle::SP_MediaPause ) );
-    QPixmap pixmap( icon.pixmap( size ) );
+    QPixmap pixmap( ":/pictures/systray/pause.png"  );
+    pixmap = pixmap.scaled( size , Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
     setPixmap( pixmap );
 }
 
