@@ -57,7 +57,7 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     continueAction->setEnabled( false );
 
     exitAction = new QAction( this );
-    exitAction->setIcon( QIcon::fromTheme( "application-exit", style()->standardIcon( QStyle::SP_DialogCloseButton ) ) );
+    exitAction->setIcon( QIcon( ":/pictures/systray/exit.png" ) );
     exitAction->setText( tr( "Exit" ) );
     exitAction->setData( "Exit" );
 
