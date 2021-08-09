@@ -152,23 +152,23 @@ QString QvkMainWindow_wl::get_Videocodec_Encoder()
 void QvkMainWindow_wl::slot_start()
 {
 
-    int value = 1;
+    int sourceType = 1;
     if ( ui->radioButtonScreencastFullscreen->isChecked() )
     {
         qDebug().noquote() << global::nameOutput << "Start record fullscreen";
-        value = 1;
+        sourceType = 1;
     }
 
     if ( ui->radioButtonScreencastWindow->isChecked() )
     {
         qDebug().noquote() << global::nameOutput << "Start record window";
-        value = 2;
+        sourceType = 2;
     }
 
     if ( ui->radioButtonScreencastArea->isChecked() )
     {
         qDebug().noquote() << global::nameOutput << "Start record area";
-        value = 1;
+        sourceType = 1;
     }
 
     /*
@@ -182,7 +182,7 @@ void QvkMainWindow_wl::slot_start()
         mousecursorONOff = 1;
     }
 
-    portal_wl->requestScreenSharing( value, mousecursorONOff );
+    portal_wl->requestScreenSharing( sourceType, mousecursorONOff );
 }
 
 
