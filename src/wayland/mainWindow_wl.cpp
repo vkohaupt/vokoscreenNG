@@ -151,7 +151,9 @@ QString QvkMainWindow_wl::get_Videocodec_Encoder()
 
 void QvkMainWindow_wl::slot_start()
 {
-
+    // https://flatpak.github.io/xdg-desktop-portal/portal-docs.html#gdbus-property-org-freedesktop-portal-ScreenCast.AvailableSourceTypes
+    // Value 1 = MONITOR
+    // Value 2 = WINDOW
     int sourceType = 1;
     if ( ui->radioButtonScreencastFullscreen->isChecked() )
     {
@@ -171,15 +173,20 @@ void QvkMainWindow_wl::slot_start()
         sourceType = 1;
     }
 
-    /*
-     * https://flatpak.github.io/xdg-desktop-portal/portal-docs.html#gdbus-property-org-freedesktop-portal-ScreenCast.AvailableCursorModes
-     * Value 1 hidden cursor
-     * Value 2 record cursor
-     */
-    int mousecursorONOff = 2;
+    // https://flatpak.github.io/xdg-desktop-portal/portal-docs.html#gdbus-property-org-freedesktop-portal-ScreenCast.AvailableCursorModes
+    // Value 1 = hidden cursor
+    // Value 2 = record cursor
+    int mousecursorONOff;;
     if ( ui->checkBoxMouseCursorOnOff->isChecked() == true )
     {
+        qDebug().noquote() << global::nameOutput << "Mouse cursor is not recording";
         mousecursorONOff = 1;
+    }
+
+    if ( ui->checkBoxMouseCursorOnOff->isChecked() == false )
+    {
+        qDebug().noquote() << global::nameOutput << "Mouse cursor is recording";
+        mousecursorONOff = 2;
     }
 
     portal_wl->requestScreenSharing( sourceType, mousecursorONOff );
