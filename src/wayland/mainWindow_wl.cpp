@@ -171,7 +171,18 @@ void QvkMainWindow_wl::slot_start()
         value = 1;
     }
 
-    portal_wl->requestScreenSharing( value );
+    /*
+     * https://flatpak.github.io/xdg-desktop-portal/portal-docs.html#gdbus-property-org-freedesktop-portal-ScreenCast.AvailableCursorModes
+     * Value 1 hidden cursor
+     * Value 2 record cursor
+     */
+    int mousecursorONOff = 2;
+    if ( ui->checkBoxMouseCursorOnOff->isChecked() == true )
+    {
+        mousecursorONOff = 1;
+    }
+
+    portal_wl->requestScreenSharing( value, mousecursorONOff );
 }
 
 

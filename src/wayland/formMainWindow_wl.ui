@@ -68,7 +68,7 @@
         <item>
          <widget class="QTabWidget" name="tabWidgetScreencast">
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <property name="iconSize">
            <size>
@@ -497,14 +497,14 @@
            <widget class="QLabel" name="label_3">
             <property name="geometry">
              <rect>
-              <x>30</x>
+              <x>170</x>
               <y>50</y>
-              <width>531</width>
+              <width>221</width>
               <height>18</height>
              </rect>
             </property>
             <property name="text">
-             <string notr="true">Recording of audio has not yet been implemented and therefore does not work. </string>
+             <string notr="true">Audio Recording is not working</string>
             </property>
            </widget>
           </widget>
@@ -519,11 +519,35 @@
            <layout class="QVBoxLayout" name="verticalLayout_3">
             <item>
              <layout class="QGridLayout" name="gridLayout">
-              <item row="1" column="2">
-               <widget class="QComboBox" name="comboBoxFormat"/>
+              <item row="1" column="3">
+               <spacer name="horizontalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
               </item>
               <item row="2" column="2">
                <widget class="QComboBox" name="comboBoxVideoCodec"/>
+              </item>
+              <item row="2" column="0">
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <item alignment="Qt::AlignRight">
+                 <widget class="QLabel" name="labelVideoCodec">
+                  <property name="text">
+                   <string notr="true">Videocodec</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="1" column="2">
+               <widget class="QComboBox" name="comboBoxFormat"/>
               </item>
               <item row="0" column="1" colspan="3">
                <layout class="QHBoxLayout" name="horizontalLayout_slider_frames">
@@ -540,36 +564,12 @@
                 </item>
                </layout>
               </item>
-              <item row="1" column="3">
-               <spacer name="horizontalSpacer">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
               <item row="0" column="0">
                <layout class="QHBoxLayout" name="horizontalLayout">
                 <item alignment="Qt::AlignRight">
                  <widget class="QLabel" name="labelFrames">
                   <property name="text">
                    <string notr="true">Frames</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item row="2" column="0">
-               <layout class="QVBoxLayout" name="verticalLayout_6">
-                <item alignment="Qt::AlignRight">
-                 <widget class="QLabel" name="labelVideoCodec">
-                  <property name="text">
-                   <string notr="true">Videocodec</string>
                   </property>
                  </widget>
                 </item>
@@ -582,20 +582,61 @@
                 </property>
                </widget>
               </item>
+              <item row="3" column="0">
+               <spacer name="verticalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="4" column="0" colspan="4">
+               <layout class="QHBoxLayout" name="horizontalLayout_22">
+                <item>
+                 <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
+                  <property name="text">
+                   <string notr="true">Do not record mouse cursor.
+!!! KDE Plasma crashes completely if we want to record cursor, it is a KDE bug.</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_18">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="help_screencast_nomousecursor">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="toolTip">
+                   <string notr="true"/>
+                  </property>
+                  <property name="text">
+                   <string notr="true">Help</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
              </layout>
-            </item>
-            <item>
-             <spacer name="verticalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
             </item>
            </layout>
           </widget>
@@ -819,6 +860,9 @@
              <layout class="QVBoxLayout" name="verticalLayout_16">
               <item>
                <widget class="QToolButton" name="help_screencast_avalaible_3">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="toolTip">
                  <string notr="true"/>
                 </property>

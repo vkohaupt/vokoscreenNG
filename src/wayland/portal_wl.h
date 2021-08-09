@@ -38,7 +38,7 @@ public:
 
     Portal_wl();
     ~Portal_wl();
-    void requestScreenSharing( int value );
+    void requestScreenSharing( int value, int mouseOnOff );
 
 
 public Q_SLOTS:
@@ -59,6 +59,7 @@ private:
     uint m_requestTokenCounter;
 
     int Selection_Screen_Window_Area = 1;
+    int record_mouse_onOff;
 
 protected:
 

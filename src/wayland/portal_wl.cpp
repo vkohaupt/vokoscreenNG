@@ -69,9 +69,10 @@ Portal_wl::~Portal_wl()
 }
 
 
-void Portal_wl::requestScreenSharing( int value )
+void Portal_wl::requestScreenSharing( int value, int mouseOnOff )
 {
     Selection_Screen_Window_Area = value;
+    record_mouse_onOff = mouseOnOff;
 
     QDBusMessage message = QDBusMessage::createMethodCall( QLatin1String( "org.freedesktop.portal.Desktop" ),
                                                            QLatin1String( "/org/freedesktop/portal/desktop" ),
@@ -123,7 +124,7 @@ void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap 
     message << QVariant::fromValue(QDBusObjectPath(m_session))
             << QVariantMap { { QLatin1String("multiple"), false},
                              { QLatin1String("types"), (uint)Selection_Screen_Window_Area },
-//                             { QLatin1String("cursor_mode"), (uint)2 },
+                             { QLatin1String("cursor_mode"), (uint)record_mouse_onOff },
                              { QLatin1String("handle_token"), getRequestToken() } };
 
     QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
