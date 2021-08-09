@@ -123,6 +123,7 @@ void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap 
     message << QVariant::fromValue(QDBusObjectPath(m_session))
             << QVariantMap { { QLatin1String("multiple"), false},
                              { QLatin1String("types"), (uint)Selection_Screen_Window_Area },
+//                             { QLatin1String("cursor_mode"), (uint)2 },
                              { QLatin1String("handle_token"), getRequestToken() } };
 
     QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
