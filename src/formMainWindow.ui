@@ -42,7 +42,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -89,7 +89,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>5</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -566,8 +566,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>30</height>
+                      <width>509</width>
+                      <height>166</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">

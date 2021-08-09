@@ -68,7 +68,7 @@
         <item>
          <widget class="QTabWidget" name="tabWidgetScreencast">
           <property name="currentIndex">
-           <number>3</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -76,7 +76,7 @@
             <height>48</height>
            </size>
           </property>
-          <widget class="QWidget" name="tab">
+          <widget class="QWidget" name="tabScreen">
            <attribute name="icon">
             <iconset resource="../screencast.qrc">
              <normaloff>:/pictures/screencast/monitor.png</normaloff>:/pictures/screencast/monitor.png</iconset>
@@ -473,7 +473,7 @@
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="tab_2">
+          <widget class="QWidget" name="tabAudio">
            <attribute name="icon">
             <iconset resource="../screencast.qrc">
              <normaloff>:/pictures/screencast/microphone.png</normaloff>:/pictures/screencast/microphone.png</iconset>
@@ -494,8 +494,21 @@
              <string notr="true"/>
             </property>
            </widget>
+           <widget class="QLabel" name="label_3">
+            <property name="geometry">
+             <rect>
+              <x>30</x>
+              <y>50</y>
+              <width>531</width>
+              <height>18</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string notr="true">Recording of audio has not yet been implemented and therefore does not work. </string>
+            </property>
+           </widget>
           </widget>
-          <widget class="QWidget" name="tab_5">
+          <widget class="QWidget" name="tabVideo">
            <attribute name="icon">
             <iconset resource="../screencast.qrc">
              <normaloff>:/pictures/screencast/format-codec.png</normaloff>:/pictures/screencast/format-codec.png</iconset>
@@ -585,6 +598,15 @@
              </spacer>
             </item>
            </layout>
+          </widget>
+          <widget class="QWidget" name="tabMisc">
+           <attribute name="icon">
+            <iconset resource="../screencast.qrc">
+             <normaloff>:/pictures/screencast/preferences-system.png</normaloff>:/pictures/screencast/preferences-system.png</iconset>
+           </attribute>
+           <attribute name="title">
+            <string notr="true"/>
+           </attribute>
           </widget>
           <widget class="QWidget" name="tabAvailable">
            <attribute name="icon">
