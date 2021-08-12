@@ -1579,6 +1579,7 @@ void QvkMainWindow::slot_preStart()
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
         vkCountdown->startCountdown( sliderScreencastCountDown->value() );
+        connect( vkCountdown, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
         return;
     }
 
@@ -1607,6 +1608,7 @@ void QvkMainWindow::slot_preStart()
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
         vkWinInfo->slot_start();
+        connect( vkCountdown, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
         return;
     }
 
@@ -1640,6 +1642,7 @@ void QvkMainWindow::slot_preStart()
         connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
         vkRegionChoise->recordMode( true );
         vkCountdown->startCountdown( sliderScreencastCountDown->value() );
+        connect( vkCountdown, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
         return;
     }
 
@@ -1652,6 +1655,16 @@ void QvkMainWindow::slot_preStart()
        slot_Start();
        return;
     }
+}
+
+
+void QvkMainWindow::slot_cancel( bool value )
+{
+    Q_UNUSED(value)
+    cancel = true;
+    disconnect( vkCountdown, nullptr, nullptr, nullptr );
+    ui->pushButtonStop->setEnabled( true );
+    ui->pushButtonStop->click();
 }
 
 
@@ -1890,6 +1903,14 @@ void QvkMainWindow::slot_Stop()
         ui->checkBoxShowInSystray->click();
     }
 
+
+    if ( cancel == true )
+    {
+        cancel = false;
+        goto Cancel;
+    }
+
+
     if ( wantRecording == true )
     {
         // wait for EOS
@@ -1908,6 +1929,8 @@ void QvkMainWindow::slot_Stop()
         gst_object_unref( pipeline );
         qDebug().noquote() << global::nameOutput << "Stop record";
     }
+
+Cancel:
 
     #ifdef Q_OS_WIN
        soundEffect->stop();

@@ -25,6 +25,7 @@
 
 #include <QWidget>
 #include <QPainter>
+#include <QDialogButtonBox>
 
 class QvkCountdown: public QWidget
 {
@@ -49,8 +50,10 @@ private:
     QTimer *timer;
     QTimer *animationTimer;
     QPainter painter;
+    QString cancelText = "Cancel";
+    QRectF rectCancel;
 
-    
+
 private slots:
    void slot_updateTimer();
    void slot_updateAnimationTimer();
@@ -58,11 +61,13 @@ private slots:
 
 protected:
     void paintEvent( QPaintEvent *event );
+    void mousePressEvent(QMouseEvent *event);
   
-  
+
 signals:
     void signal_countDownfinish( bool value );
     void signal_countdownBegin( bool value );
+    void signal_countDownCancel( bool );
 
 };
 

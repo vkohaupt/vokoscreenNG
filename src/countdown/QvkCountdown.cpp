@@ -26,6 +26,10 @@
 #include <QScreen>
 #include <QIcon>
 
+#include <QDebug>
+#include <QMouseEvent>
+#include <QPushButton>
+
 QvkCountdown::QvkCountdown()
 {
     x = 0;
@@ -50,6 +54,12 @@ QvkCountdown::QvkCountdown()
     animationTimer = new QTimer( this );
     animationTimer->setTimerType( Qt::PreciseTimer );
     connect( animationTimer, SIGNAL( timeout() ), this, SLOT( slot_updateAnimationTimer() ) );
+
+    // Is needed only for the translated text
+    QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Abort, this);
+    buttonBox->hide();
+    QList<QPushButton *> list = this->findChildren<QPushButton *>();
+    cancelText = list.at(0)->text();
 
     hide();
 }
@@ -131,5 +141,45 @@ void QvkCountdown::paintEvent( QPaintEvent *event )
     QFontMetrics fontMetrics( font );
     int fontWidth = fontMetrics.width( QString::number( countValue ) );
     painter.drawText( width()/2-fontWidth/2, height()/2+fontSize/2, QString::number( countValue ) );
+
+//--------------------- Cancel button -------------------------------
+
+    fontSize = 14;
+    font.setPointSize( fontSize );
+    font.setBold( true);
+    QFontMetrics fontMetrics_1( font );
+    fontWidth = fontMetrics_1.width( cancelText );
+
+    qreal x = width()/2 - (fontWidth+30)/2;
+    qreal y = 220;
+    qreal width = fontWidth + 30;
+    qreal height = 30;
+
+    brush.setColor( Qt::red );
+    brush.setStyle( Qt::SolidPattern );
+    painter.setBrush( brush );
+    pen.setWidth( 2 );
+    pen.setColor( Qt::black );
+    painter.setPen( pen );
+    rectCancel.setRect( x, y, width, height );
+    painter.drawRoundedRect( rectCancel, 10, 10 );
+
+    painter.setPen( Qt::white );
+    painter.setFont( font );
+    painter.drawText( rectCancel, Qt::AlignCenter, cancelText );
+
   painter.end();
 }
+
+
+void QvkCountdown::mousePressEvent( QMouseEvent *event )
+{
+    if ( rectCancel.contains( event->pos() ) )
+    {
+        hide();
+        timer->stop();
+        animationTimer->stop();
+        emit signal_countDownCancel( true );
+    }
+}
+

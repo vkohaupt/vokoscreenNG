@@ -139,6 +139,8 @@ private:
 
     QSoundEffect *soundEffect;
 
+    bool cancel = false;
+
 #ifdef Q_OS_WIN
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller;
 #endif
@@ -187,6 +189,8 @@ private slots:
     void slot_setMaxFPS( int );
 
     void slot_gst_formatVideoAudoicodec_available();
+
+    void slot_cancel( bool value );
 
 
 signals:
