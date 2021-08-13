@@ -106,7 +106,7 @@ void Portal_wl::requestScreenSharing( int value, int mouseOnOff )
 
 void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap &results )
 {
-    qDebug().noquote() << global::nameOutput << "Got response from portal session";
+    qDebug().noquote() << global::nameOutput << "Got response from portal CreateSession";
 
     if ( response != 0 )
     {
@@ -150,6 +150,8 @@ void Portal_wl::slot_gotSelectSourcesResponse(uint response, const QVariantMap &
 {
     Q_UNUSED(results);
 
+    qDebug().noquote() << global::nameOutput << "Got response from portal SelectSources";
+
     if (response != 0) {
         qWarning() << "Failed to select sources: " << response;
         return;
@@ -186,6 +188,8 @@ void Portal_wl::slot_gotSelectSourcesResponse(uint response, const QVariantMap &
 void Portal_wl::slot_gotStartResponse(uint response, const QVariantMap &results)
 {
     Q_UNUSED(results);
+
+    qDebug().noquote() << global::nameOutput << "Got response from portal Start";
 
     if ( response != 0 ) {
         qWarning() << "Failed to start: " << response;
