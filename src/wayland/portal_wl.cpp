@@ -191,24 +191,29 @@ void Portal_wl::slot_gotStartResponse(uint response, const QVariantMap &results)
         qWarning() << "Failed to start: " << response;
     }
 
-    QDBusMessage message = QDBusMessage::createMethodCall(QLatin1String("org.freedesktop.portal.Desktop"),
-                                                          QLatin1String("/org/freedesktop/portal/desktop"),
-                                                          QLatin1String("org.freedesktop.portal.ScreenCast"),
-                                                          QLatin1String("OpenPipeWireRemote"));
+    Streams streams = qdbus_cast<Streams>(results.value(QLatin1String("streams")));
+    Q_FOREACH (Stream stream, streams) {
 
-    message << QVariant::fromValue(QDBusObjectPath(m_session)) << QVariantMap();
+        QDBusMessage message = QDBusMessage::createMethodCall(QLatin1String("org.freedesktop.portal.Desktop"),
+                                                              QLatin1String("/org/freedesktop/portal/desktop"),
+                                                              QLatin1String("org.freedesktop.portal.ScreenCast"),
+                                                              QLatin1String("OpenPipeWireRemote"));
 
-    QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
-    pendingCall.waitForFinished();
-    QDBusPendingReply<QDBusUnixFileDescriptor> reply = pendingCall.reply();
-    if ( reply.isError() ) {
-        qWarning() << "Failed to get fd for node_id";
+        message << QVariant::fromValue(QDBusObjectPath(m_session)) << QVariantMap();
+
+        QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
+        pendingCall.waitForFinished();
+        QDBusPendingReply<QDBusUnixFileDescriptor> reply = pendingCall.reply();
+        if ( reply.isError() ) {
+            qWarning() << "Failed to get fd for node_id";
+        }
+
+        QString vk_fd = QString::number( reply.value().fileDescriptor() );
+//        QString vk_path = "0";
+        QString vk_path = QString::number( stream.node_id );
+
+        emit signal_portal_fd_path( vk_fd, vk_path );
     }
-
-    QString vk_fd = QString::number( reply.value().fileDescriptor() );
-    QString vk_path = "0";
-
-    emit signal_portal_fd_path( vk_fd, vk_path );
 }
 
 
