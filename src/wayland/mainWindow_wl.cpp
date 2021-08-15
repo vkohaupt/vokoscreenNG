@@ -97,6 +97,7 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonStart,  SLOT( setDisabled( bool ) ) );
 
     connect( portal_wl, SIGNAL( signal_portal_fd_path( QString, QString ) ), this, SLOT( slot_start_gst( QString, QString ) ) );
+    connect( portal_wl, SIGNAL( signal_portal_cancel( uint ) ), this,              SLOT( slot_portal_cancel( uint ) ) );
 
     connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this,           SLOT( slot_frames_Reset() ) );
 }
@@ -259,6 +260,14 @@ void QvkMainWindow_wl::slot_stop()
     if ( ui->radioButtonScreencastArea->isChecked() ) {
        vkRegionChoise->recordMode( false );
     }
+}
+
+
+void QvkMainWindow_wl::slot_portal_cancel( uint value )
+{
+    Q_UNUSED(value)
+    ui->pushButtonStart->setEnabled( true );
+    ui->pushButtonStop->setEnabled( false );
 }
 
 

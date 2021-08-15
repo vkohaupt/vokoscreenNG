@@ -192,7 +192,11 @@ void Portal_wl::slot_gotStartResponse(uint response, const QVariantMap &results)
     qDebug().noquote() << global::nameOutput << "Got response from portal Start";
 
     if ( response != 0 ) {
-        qWarning() << "Failed to start: " << response;
+        // qWarning() << "Failed to start: " << response;
+        // The system Desktop dialog was canceled
+        qDebug().noquote() << global::nameOutput << "Failed to start: " << response; // new
+        emit signal_portal_cancel( response ); // new
+        return; // new
     }
 
     Streams streams = qdbus_cast<Streams>(results.value(QLatin1String("streams")));
