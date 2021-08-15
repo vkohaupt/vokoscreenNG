@@ -93,12 +93,13 @@ void Portal_wl::requestScreenSharing( int value, int mouseOnOff )
         {
             qDebug().noquote() << global::nameOutput << "Begin create portal session";
 
-            QDBusConnection::sessionBus().connect( QString(),
+            bool bo = QDBusConnection::sessionBus().connect( QString(),
                                                    reply.value().path(),
                                                    QLatin1String( "org.freedesktop.portal.Request" ),
                                                    QLatin1String( "Response" ),
                                                    this,
                                                    SLOT( slot_gotCreateSessionResponse( uint, QVariantMap ) ) );
+            qDebug().noquote() << global::nameOutput << "QDBusConnection::sessionBus().connect: " << bo;
         }
     });
 }
@@ -192,16 +193,13 @@ void Portal_wl::slot_gotStartResponse(uint response, const QVariantMap &results)
     qDebug().noquote() << global::nameOutput << "Got response from portal Start";
 
     if ( response != 0 ) {
-        // qWarning() << "Failed to start: " << response;
         // The system Desktop dialog was canceled
-        qDebug().noquote() << global::nameOutput << "Failed to start: " << response; // new
-        emit signal_portal_cancel( response ); // new
-        return; // new
+        qDebug().noquote() << global::nameOutput << "Failed to start or cancel dialog: " << response;
+        emit signal_portal_cancel( response );
+        return;
     }
 
     Streams streams = qdbus_cast<Streams>(results.value(QLatin1String("streams")));
-    //    Q_FOREACH (Stream stream, streams) {
-
     Stream stream = streams.last();
 
     QDBusMessage message = QDBusMessage::createMethodCall(QLatin1String("org.freedesktop.portal.Desktop"),
@@ -219,11 +217,9 @@ void Portal_wl::slot_gotStartResponse(uint response, const QVariantMap &results)
     }
 
     QString vk_fd = QString::number( reply.value().fileDescriptor() );
-    //        QString vk_path = "0";
     QString vk_path = QString::number( stream.node_id );
 
     emit signal_portal_fd_path( vk_fd, vk_path );
-    //    }
 }
 
 
