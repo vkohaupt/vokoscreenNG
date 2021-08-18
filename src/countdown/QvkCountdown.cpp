@@ -39,7 +39,7 @@ QvkCountdown::QvkCountdown()
 
     // Die Optionen Qt::Tool sollte nicht angewendet werden da bei Auswahl eines Fenster der Countdown nicht angezeigt wird.
     // Die Option Qt::ToolTip wäre eine möglichkeit, gefällt mir aber Optisch nicht da ein Rahmen angezeigt wird.
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
     setAttribute( Qt::WA_TranslucentBackground, true );
     setWindowTitle( QString( tr( "Countdown") ) );
 

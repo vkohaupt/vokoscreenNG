@@ -25,33 +25,12 @@
         <x>0</x>
         <y>0</y>
         <width>784</width>
-        <height>584</height>
+        <height>544</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <layout class="QGridLayout" name="gridLayout">
-         <item row="0" column="2">
-          <widget class="QLabel" name="label_dummy_3">
-           <property name="text">
-            <string notr="true">TextLabel</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_dummy_1">
-           <property name="text">
-            <string notr="true">TextLabel</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="label_dummy_2">
-           <property name="text">
-            <string notr="true">TextLabel</string>
-           </property>
-          </widget>
-         </item>
          <item row="0" column="4">
           <spacer name="horizontalSpacer">
            <property name="orientation">
@@ -65,8 +44,29 @@
            </property>
           </spacer>
          </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_dummy_1">
+           <property name="text">
+            <string notr="true">TextLabel</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_dummy_3">
+           <property name="text">
+            <string notr="true">TextLabel</string>
+           </property>
+          </widget>
+         </item>
          <item row="0" column="3">
           <widget class="QLabel" name="label_dummy_4">
+           <property name="text">
+            <string notr="true">TextLabel</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="label_dummy_2">
            <property name="text">
             <string notr="true">TextLabel</string>
            </property>
@@ -76,6 +76,16 @@
        </item>
       </layout>
      </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Close</set>
+     </property>
+     <property name="centerButtons">
+      <bool>true</bool>
+     </property>
     </widget>
    </item>
   </layout>

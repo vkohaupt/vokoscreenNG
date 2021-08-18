@@ -26,16 +26,19 @@
 #include <QDirIterator>
 #include <QFontDatabase>
 #include <QFont>
+#include <QDialogButtonBox>
 
 QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::license )
 {
     ui->setupUi( this );
+    setWindowFlags( Qt::Tool );
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
 
     connect( ui_mainwindow->pushButtonLicense, SIGNAL( clicked( bool ) ), this, SLOT( show() ) );
+    connect(ui->buttonBox, SIGNAL( clicked( QAbstractButton * ) ), this, SLOT( close() ) );
 
     ui->label_dummy_1->hide();
     ui->label_dummy_2->hide();
@@ -93,4 +96,12 @@ int QvkLicenses::readLicences( QString path, int row )
         }
     }
     return row;
+}
+
+
+
+void QvkLicenses::showEvent(QShowEvent *event)
+{
+    Q_UNUSED(event)
+    activateWindow();
 }
