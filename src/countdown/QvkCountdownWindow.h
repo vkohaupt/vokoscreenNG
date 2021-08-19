@@ -20,19 +20,19 @@
  * --End_License--
  */
 
-#ifndef QVKCOUNTDOWN_H
-#define QVKCOUNTDOWN_H
+#ifndef QVKCOUNTDOWNWINDOW_H
+#define QVKCOUNTDOWNWINDOW_H
 
 #include <QWidget>
 #include <QPainter>
 #include <QDialogButtonBox>
 
-class QvkCountdown: public QWidget
+class QvkCountdownWindow: public QWidget
 {
     Q_OBJECT
 public:
-    QvkCountdown();
-    virtual ~QvkCountdown();
+    QvkCountdownWindow();
+    virtual ~QvkCountdownWindow();
     void startCountdown(int value );
     int x;
     int y;

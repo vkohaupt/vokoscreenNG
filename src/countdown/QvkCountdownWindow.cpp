@@ -20,17 +20,17 @@
  * --End_License--
  */
 
-#include "QvkCountdown.h"
+#include "QvkCountdownWindow.h"
+
 #include <QTimer>
 #include <QGuiApplication>
 #include <QScreen>
 #include <QIcon>
-
 #include <QDebug>
 #include <QMouseEvent>
 #include <QPushButton>
 
-QvkCountdown::QvkCountdown()
+QvkCountdownWindow::QvkCountdownWindow()
 {
     x = 0;
     y = 0;
@@ -65,7 +65,7 @@ QvkCountdown::QvkCountdown()
 }
 
 
-void QvkCountdown::startCountdown( int value )
+void QvkCountdownWindow::startCountdown( int value )
 {
     setGeometry( x, y, Width, Height );
     show();
@@ -78,12 +78,12 @@ void QvkCountdown::startCountdown( int value )
 }
 
 
-QvkCountdown::~QvkCountdown()
+QvkCountdownWindow::~QvkCountdownWindow()
 {
 }
 
 
-void QvkCountdown::slot_updateTimer()
+void QvkCountdownWindow::slot_updateTimer()
 {
   gradValue = 0;
   countValue--;
@@ -98,14 +98,14 @@ void QvkCountdown::slot_updateTimer()
   }
 }
 
-void QvkCountdown::slot_updateAnimationTimer()
+void QvkCountdownWindow::slot_updateAnimationTimer()
 {
   gradValue = gradValue - 20;
   update();
 }
 
 
-void QvkCountdown::paintEvent( QPaintEvent *event )
+void QvkCountdownWindow::paintEvent( QPaintEvent *event )
 {
   (void)event;
   painter.begin( this );
@@ -172,7 +172,7 @@ void QvkCountdown::paintEvent( QPaintEvent *event )
 }
 
 
-void QvkCountdown::mousePressEvent( QMouseEvent *event )
+void QvkCountdownWindow::mousePressEvent( QMouseEvent *event )
 {
     if ( rectCancel.contains( event->pos() ) )
     {

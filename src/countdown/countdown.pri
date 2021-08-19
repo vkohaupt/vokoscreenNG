@@ -1,5 +1,5 @@
 INCLUDEPATH += $$PWD
 DEPENDPATH  += $$PWD
-HEADERS     += $$PWD/QvkCountdown.h
+HEADERS     += $$PWD/QvkCountdownWindow.h
                    
-SOURCES     += $$PWD/QvkCountdown.cpp
+SOURCES     += $$PWD/QvkCountdownWindow.cpp

@@ -51,7 +51,7 @@
 QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                                 ui(new Ui::formMainWindow),
                                                 vkWinInfo(new QvkWinInfo),
-                                                vkCountdown(new QvkCountdown)
+                                                vkCountdownWindow(new QvkCountdownWindow)
 {
     ui->setupUi(this);
 
@@ -604,15 +604,15 @@ void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
         int left = static_cast<int>( screen.at( index )->geometry().left() * screen.at( index )->devicePixelRatio() );
         int top = static_cast<int>( screen.at( index )->geometry().top() * screen.at( index )->devicePixelRatio() );
 
-        vkCountdown->x = left + screen.at( index )->geometry().width() / 2 - ( vkCountdown->Width / 2 );
-        vkCountdown->y = top + screen.at( index )->geometry().height() / 2 - ( vkCountdown->Height / 2 );
+        vkCountdownWindow->x = left + screen.at( index )->geometry().width() / 2 - ( vkCountdownWindow->Width / 2 );
+        vkCountdownWindow->y = top + screen.at( index )->geometry().height() / 2 - ( vkCountdownWindow->Height / 2 );
     }
 
     if ( ui->radioButtonScreencastWindow->isChecked() == true )
     {
         QScreen *screen = QGuiApplication::primaryScreen();
-        vkCountdown->x = ( screen->geometry().width() / 2 ) - ( vkCountdown->Width / 2 );
-        vkCountdown->y = ( screen->geometry().height() / 2 ) - ( vkCountdown->Height / 2 );
+        vkCountdownWindow->x = ( screen->geometry().width() / 2 ) - ( vkCountdownWindow->Width / 2 );
+        vkCountdownWindow->y = ( screen->geometry().height() / 2 ) - ( vkCountdownWindow->Height / 2 );
     }
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
@@ -622,8 +622,8 @@ void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
         int left = static_cast<int>( screen.at( index )->geometry().left() * screen.at( index )->devicePixelRatio() );
         int top = static_cast<int>( screen.at( index )->geometry().top() * screen.at( index )->devicePixelRatio() );
 
-        vkCountdown->x = left + screen.at( index )->geometry().width() / 2 - ( vkCountdown->Width / 2 );
-        vkCountdown->y = top + screen.at( index )->geometry().height() / 2 - ( vkCountdown->Height / 2 );
+        vkCountdownWindow->x = left + screen.at( index )->geometry().width() / 2 - ( vkCountdownWindow->Width / 2 );
+        vkCountdownWindow->y = top + screen.at( index )->geometry().height() / 2 - ( vkCountdownWindow->Height / 2 );
     }
 }
 
@@ -1572,14 +1572,14 @@ void QvkMainWindow::slot_preStart()
 
     if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and  ( sliderScreencastCountDown->value() > 0 ) )
     {
-        disconnect( vkCountdown, nullptr, nullptr, nullptr );
-        connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
-        vkCountdown->startCountdown( sliderScreencastCountDown->value() );
-        connect( vkCountdown, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
+        disconnect( vkCountdownWindow, nullptr, nullptr, nullptr );
+        connect( vkCountdownWindow, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
+        connect( vkCountdownWindow, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
+        connect( vkCountdownWindow, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
+        connect( vkCountdownWindow, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
+        connect( vkCountdownWindow, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
+        vkCountdownWindow->startCountdown( sliderScreencastCountDown->value() );
+        connect( vkCountdownWindow, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
         return;
     }
 
@@ -1600,15 +1600,15 @@ void QvkMainWindow::slot_preStart()
     if ( ( ui->radioButtonScreencastWindow->isChecked() == true ) and ( sliderScreencastCountDown->value() > 0 ) )
     {
         disconnect( vkWinInfo, nullptr, nullptr, nullptr );
-        disconnect( vkCountdown, nullptr, nullptr, nullptr );
+        disconnect( vkCountdownWindow, nullptr, nullptr, nullptr );
         connect( vkWinInfo,   SIGNAL( signal_windowChanged( bool ) ),   this,                SLOT( slot_startCounter( bool ) ) );
         connect( vkWinInfo,   SIGNAL( signal_showCursor( bool ) ),      ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
         connect( vkWinInfo,   SIGNAL( signal_showCursor( bool ) ),      ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
+        connect( vkCountdownWindow, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
+        connect( vkCountdownWindow, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
+        connect( vkCountdownWindow, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
         vkWinInfo->slot_start();
-        connect( vkCountdown, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
+        connect( vkCountdownWindow, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
         return;
     }
 
@@ -1634,15 +1634,15 @@ void QvkMainWindow::slot_preStart()
 
     if ( ( ui->radioButtonScreencastArea->isChecked() == true ) and ( sliderScreencastCountDown->value() > 0 ) )
     {
-        disconnect( vkCountdown, nullptr, nullptr, nullptr );
-        connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
+        disconnect( vkCountdownWindow, nullptr, nullptr, nullptr );
+        connect( vkCountdownWindow, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
+        connect( vkCountdownWindow, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
+        connect( vkCountdownWindow, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
+        connect( vkCountdownWindow, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
+        connect( vkCountdownWindow, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
         vkRegionChoise->recordMode( true );
-        vkCountdown->startCountdown( sliderScreencastCountDown->value() );
-        connect( vkCountdown, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
+        vkCountdownWindow->startCountdown( sliderScreencastCountDown->value() );
+        connect( vkCountdownWindow, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
         return;
     }
 
@@ -1662,7 +1662,7 @@ void QvkMainWindow::slot_cancel( bool value )
 {
     Q_UNUSED(value)
     cancel = true;
-    disconnect( vkCountdown, nullptr, nullptr, nullptr );
+    disconnect( vkCountdownWindow, nullptr, nullptr, nullptr );
     ui->pushButtonStop->setEnabled( true );
     ui->pushButtonStop->click();
 }
@@ -1673,7 +1673,7 @@ void QvkMainWindow::slot_startCounter( bool value )
     Q_UNUSED(value);
     if ( sliderScreencastCountDown->value() > 0 )
     {
-        vkCountdown->startCountdown( sliderScreencastCountDown->value() );
+        vkCountdownWindow->startCountdown( sliderScreencastCountDown->value() );
     }
 }
 
