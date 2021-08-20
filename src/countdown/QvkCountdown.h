@@ -20,46 +20,50 @@
  * --End_License--
  */
 
-#ifndef QVKCOUNTDOWNWINDOW_H
-#define QVKCOUNTDOWNWINDOW_H
+#ifndef QVKCOUNTDOWN_H
+#define QVKCOUNTDOWN_H
 
 #include <QWidget>
 #include <QPainter>
 #include <QDialogButtonBox>
 
-class QvkCountdownWindow: public QWidget
+#include "QvkCountdownWindow.h"
+
+class QvkCountdown: public QWidget
 {
     Q_OBJECT
 public:
-    QvkCountdownWindow(  QWidget *parent );
-    virtual ~QvkCountdownWindow();
+    QvkCountdown();
+    virtual ~QvkCountdown();
+    void init();
+    void startCountdown(int value );
     int x;
     int y;
     int Width;
     int Height;
-    int countValue;
-    int gradValue;
 
     
 public slots:
 
 
 private:
-    int oldCountValue;
-    QPainter painter;
-    QString cancelText = "Cancel";
-    QRectF rectCancel;
+    QvkCountdownWindow *vkCountdownWindow;
+    void createCountdownWindow();
+    QTimer *timer;
+    QTimer *animationTimer;
 
 
 private slots:
+    void slot_updateTimer();
+    void slot_updateAnimationTimer();
 
 
 protected:
-    void paintEvent( QPaintEvent *event );
 
 
 signals:
-    void signal_countDownCancel( bool );
+    void signal_countDownfinish( bool value );
+    void signal_countdownBegin( bool value );
 
 };
 

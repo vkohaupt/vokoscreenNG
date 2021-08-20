@@ -50,8 +50,8 @@
 
 QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                                 ui(new Ui::formMainWindow),
-                                                vkWinInfo(new QvkWinInfo),
-                                                vkCountdownWindow(new QvkCountdownWindow)
+                                                vkWinInfo(new QvkWinInfo)
+//                                                vkCountdown(new QvkCountdown)
 {
     ui->setupUi(this);
 
@@ -191,6 +191,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkLicenses *vkLicenses = new QvkLicenses( ui );
 
     vkRegionChoise = new QvkRegionChoise( ui );
+
+    vkCountdown = new QvkCountdown();
+    vkCountdown->init();
 
     /* Wayland
      * If start with "./name -platform wayland" comes a Memory access error
@@ -604,15 +607,15 @@ void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
         int left = static_cast<int>( screen.at( index )->geometry().left() * screen.at( index )->devicePixelRatio() );
         int top = static_cast<int>( screen.at( index )->geometry().top() * screen.at( index )->devicePixelRatio() );
 
-        vkCountdownWindow->x = left + screen.at( index )->geometry().width() / 2 - ( vkCountdownWindow->Width / 2 );
-        vkCountdownWindow->y = top + screen.at( index )->geometry().height() / 2 - ( vkCountdownWindow->Height / 2 );
+        vkCountdown->x = left + screen.at( index )->geometry().width() / 2 - ( vkCountdown->Width / 2 );
+        vkCountdown->y = top + screen.at( index )->geometry().height() / 2 - ( vkCountdown->Height / 2 );
     }
 
     if ( ui->radioButtonScreencastWindow->isChecked() == true )
     {
         QScreen *screen = QGuiApplication::primaryScreen();
-        vkCountdownWindow->x = ( screen->geometry().width() / 2 ) - ( vkCountdownWindow->Width / 2 );
-        vkCountdownWindow->y = ( screen->geometry().height() / 2 ) - ( vkCountdownWindow->Height / 2 );
+        vkCountdown->x = ( screen->geometry().width() / 2 ) - ( vkCountdown->Width / 2 );
+        vkCountdown->y = ( screen->geometry().height() / 2 ) - ( vkCountdown->Height / 2 );
     }
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
@@ -622,8 +625,8 @@ void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
         int left = static_cast<int>( screen.at( index )->geometry().left() * screen.at( index )->devicePixelRatio() );
         int top = static_cast<int>( screen.at( index )->geometry().top() * screen.at( index )->devicePixelRatio() );
 
-        vkCountdownWindow->x = left + screen.at( index )->geometry().width() / 2 - ( vkCountdownWindow->Width / 2 );
-        vkCountdownWindow->y = top + screen.at( index )->geometry().height() / 2 - ( vkCountdownWindow->Height / 2 );
+        vkCountdown->x = left + screen.at( index )->geometry().width() / 2 - ( vkCountdown->Width / 2 );
+        vkCountdown->y = top + screen.at( index )->geometry().height() / 2 - ( vkCountdown->Height / 2 );
     }
 }
 
@@ -1562,7 +1565,6 @@ void QvkMainWindow::slot_preStart()
         timerStopRecordingAfter->start( value );
     }
 
-
     if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) )
     {
         slot_Start();
@@ -1572,14 +1574,14 @@ void QvkMainWindow::slot_preStart()
 
     if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and  ( sliderScreencastCountDown->value() > 0 ) )
     {
-        disconnect( vkCountdownWindow, nullptr, nullptr, nullptr );
-        connect( vkCountdownWindow, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
-        connect( vkCountdownWindow, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
-        connect( vkCountdownWindow, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
-        connect( vkCountdownWindow, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
-        connect( vkCountdownWindow, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
-        vkCountdownWindow->startCountdown( sliderScreencastCountDown->value() );
-        connect( vkCountdownWindow, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
+        disconnect( vkCountdown, nullptr, nullptr, nullptr );
+        connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
+        vkCountdown->startCountdown( sliderScreencastCountDown->value() );
+        connect( vkCountdown, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
         return;
     }
 
@@ -1589,26 +1591,24 @@ void QvkMainWindow::slot_preStart()
         return;
     }
 
-
     if ( ( ui->radioButtonScreencastWindow->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) )
     {
         slot_Start();
         return;
     }
 
-
     if ( ( ui->radioButtonScreencastWindow->isChecked() == true ) and ( sliderScreencastCountDown->value() > 0 ) )
     {
         disconnect( vkWinInfo, nullptr, nullptr, nullptr );
-        disconnect( vkCountdownWindow, nullptr, nullptr, nullptr );
+        disconnect( vkCountdown, nullptr, nullptr, nullptr );
         connect( vkWinInfo,   SIGNAL( signal_windowChanged( bool ) ),   this,                SLOT( slot_startCounter( bool ) ) );
         connect( vkWinInfo,   SIGNAL( signal_showCursor( bool ) ),      ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
         connect( vkWinInfo,   SIGNAL( signal_showCursor( bool ) ),      ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
-        connect( vkCountdownWindow, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
-        connect( vkCountdownWindow, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
-        connect( vkCountdownWindow, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
         vkWinInfo->slot_start();
-        connect( vkCountdownWindow, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
         return;
     }
 
@@ -1624,28 +1624,25 @@ void QvkMainWindow::slot_preStart()
         return;
     }
 
-
     if ( ( ui->radioButtonScreencastArea->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) )
     {
         slot_Start();
         return;
     }
 
-
     if ( ( ui->radioButtonScreencastArea->isChecked() == true ) and ( sliderScreencastCountDown->value() > 0 ) )
     {
-        disconnect( vkCountdownWindow, nullptr, nullptr, nullptr );
-        connect( vkCountdownWindow, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
-        connect( vkCountdownWindow, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
-        connect( vkCountdownWindow, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
-        connect( vkCountdownWindow, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
-        connect( vkCountdownWindow, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
+        disconnect( vkCountdown, nullptr, nullptr, nullptr );
+        connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
         vkRegionChoise->recordMode( true );
-        vkCountdownWindow->startCountdown( sliderScreencastCountDown->value() );
-        connect( vkCountdownWindow, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
+        vkCountdown->startCountdown( sliderScreencastCountDown->value() );
+        connect( vkCountdown, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
         return;
     }
-
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
@@ -1662,7 +1659,7 @@ void QvkMainWindow::slot_cancel( bool value )
 {
     Q_UNUSED(value)
     cancel = true;
-    disconnect( vkCountdownWindow, nullptr, nullptr, nullptr );
+    disconnect( vkCountdown, nullptr, nullptr, nullptr );
     ui->pushButtonStop->setEnabled( true );
     ui->pushButtonStop->click();
 }
@@ -1673,7 +1670,7 @@ void QvkMainWindow::slot_startCounter( bool value )
     Q_UNUSED(value);
     if ( sliderScreencastCountDown->value() > 0 )
     {
-        vkCountdownWindow->startCountdown( sliderScreencastCountDown->value() );
+        vkCountdown->startCountdown( sliderScreencastCountDown->value() );
     }
 }
 

@@ -24,7 +24,7 @@
 #define MAINWINDOW_H
 
 #include "QvkWinInfo.h"
-#include "QvkCountdownWindow.h"
+#include "QvkCountdown.h"
 #include "QvkRegionChoise.h"
 #include "QvkCameraController.h"
 #include "QvkSettings.h"
@@ -63,7 +63,7 @@ public:
     ~QvkMainWindow();
     Ui::formMainWindow *ui;
     QvkWinInfo *vkWinInfo;
-    QvkCountdownWindow *vkCountdownWindow;
+    QvkCountdown *vkCountdown;
     QvkRegionChoise *vkRegionChoise;
     QvkHelp *vkHelp;
     QvkSystray *vkSystray;

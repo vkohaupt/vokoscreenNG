@@ -30,78 +30,33 @@
 #include <QMouseEvent>
 #include <QPushButton>
 
-QvkCountdownWindow::QvkCountdownWindow()
-{
-    x = 0;
-    y = 0;
-    Width = 300;
-    Height = 300;;
+#ifdef Q_OS_LINUX
+#include <QX11Info>
+#endif
 
-    // Die Optionen Qt::Tool sollte nicht angewendet werden da bei Auswahl eines Fenster der Countdown nicht angezeigt wird.
-    // Die Option Qt::ToolTip wäre eine möglichkeit, gefällt mir aber Optisch nicht da ein Rahmen angezeigt wird.
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+QvkCountdownWindow::QvkCountdownWindow(  QWidget *parent )
+{
+    setParent( parent );
+
+#ifdef Q_OS_LINUX
+    if ( QX11Info::isCompositingManagerRunning() == true )
+    {
+        setAttribute( Qt::WA_TranslucentBackground, true );
+    } else
+    {
+        setAttribute( Qt::WA_TranslucentBackground, false );
+    }
+#endif
+
+#ifdef Q_OS_WIN
     setAttribute( Qt::WA_TranslucentBackground, true );
-    setWindowTitle( QString( tr( "Countdown") ) );
+#endif
 
-    QIcon icon;
-    icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
-    setWindowIcon( icon );
-
-    timer = new QTimer( this );
-    timer->setTimerType( Qt::PreciseTimer );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_updateTimer() ) );
-
-    animationTimer = new QTimer( this );
-    animationTimer->setTimerType( Qt::PreciseTimer );
-    connect( animationTimer, SIGNAL( timeout() ), this, SLOT( slot_updateAnimationTimer() ) );
-
-    // Is needed only for the translated text
-    QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Abort, this);
-    buttonBox->hide();
-    QList<QPushButton *> list = this->findChildren<QPushButton *>();
-    cancelText = list.at(0)->text();
-
-    hide();
-}
-
-
-void QvkCountdownWindow::startCountdown( int value )
-{
-    setGeometry( x, y, Width, Height );
     show();
-    countValue = value;
-    gradValue = 0;
-
-    timer->start( 1000 );
-    animationTimer->start( 25 );
-    emit signal_countdownBegin( true );
 }
-
 
 QvkCountdownWindow::~QvkCountdownWindow()
 {
-}
-
-
-void QvkCountdownWindow::slot_updateTimer()
-{
-  gradValue = 0;
-  countValue--;
-
-  if ( countValue == 0 )
-  {
-    setGeometry( x, y, 1, 1 );
-    hide();
-    timer->stop();
-    animationTimer->stop();
-    emit signal_countDownfinish( true );
-  }
-}
-
-void QvkCountdownWindow::slot_updateAnimationTimer()
-{
-  gradValue = gradValue - 20;
-  update();
 }
 
 
@@ -171,7 +126,7 @@ void QvkCountdownWindow::paintEvent( QPaintEvent *event )
   painter.end();
 }
 
-
+/*
 void QvkCountdownWindow::mousePressEvent( QMouseEvent *event )
 {
     if ( rectCancel.contains( event->pos() ) )
@@ -182,4 +137,4 @@ void QvkCountdownWindow::mousePressEvent( QMouseEvent *event )
         emit signal_countDownCancel( true );
     }
 }
-
+*/
