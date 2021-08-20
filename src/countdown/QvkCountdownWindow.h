@@ -25,7 +25,7 @@
 
 #include <QWidget>
 #include <QPainter>
-#include <QDialogButtonBox>
+#include <QMouseEvent>
 
 class QvkCountdownWindow: public QWidget
 {
@@ -56,6 +56,7 @@ private slots:
 
 protected:
     void paintEvent( QPaintEvent *event );
+    void mousePressEvent(QMouseEvent *event);
 
 
 signals:

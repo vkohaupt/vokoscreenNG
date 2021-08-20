@@ -24,8 +24,7 @@
 #define QVKCOUNTDOWN_H
 
 #include <QWidget>
-#include <QPainter>
-#include <QDialogButtonBox>
+//#include <QPainter>
 
 #include "QvkCountdownWindow.h"
 
@@ -56,6 +55,7 @@ private:
 private slots:
     void slot_updateTimer();
     void slot_updateAnimationTimer();
+    void slot_cancel( bool value );
 
 
 protected:
@@ -64,6 +64,7 @@ protected:
 signals:
     void signal_countDownfinish( bool value );
     void signal_countdownBegin( bool value );
+    void signal_countDownCancel( bool value);
 
 };
 

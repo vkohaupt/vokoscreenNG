@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2019 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@freenet.de>
  *
@@ -28,7 +28,6 @@
 #include <QIcon>
 #include <QDebug>
 #include <QMouseEvent>
-#include <QPushButton>
 
 QvkCountdown::QvkCountdown()
 {
@@ -61,6 +60,8 @@ void QvkCountdown::createCountdownWindow()
     vkCountdownWindow = new QvkCountdownWindow( this );
     vkCountdownWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar
 
+    connect( vkCountdownWindow, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
+
     x = 0;
     y = 0;
     Width = 300;
@@ -88,34 +89,30 @@ void QvkCountdown::startCountdown( int value )
 
 void QvkCountdown::slot_updateTimer()
 {
-  vkCountdownWindow->gradValue = 0;
-  vkCountdownWindow->countValue--;
+    vkCountdownWindow->gradValue = 0;
+    vkCountdownWindow->countValue--;
 
-  if ( vkCountdownWindow->countValue == 0 )
-  {
-    vkCountdownWindow->setGeometry( x, y, 1, 1 );
-    vkCountdownWindow->hide();
-    timer->stop();
-    animationTimer->stop();
-    emit signal_countDownfinish( true );
-  }
+    if ( vkCountdownWindow->countValue == 0 )
+    {
+        vkCountdownWindow->setGeometry( x, y, 1, 1 );
+        vkCountdownWindow->hide();
+        timer->stop();
+        animationTimer->stop();
+        emit signal_countDownfinish( true );
+    }
 }
+
 
 void QvkCountdown::slot_updateAnimationTimer()
 {
-  vkCountdownWindow->gradValue = vkCountdownWindow->gradValue - 20;
-  vkCountdownWindow->update();
+    vkCountdownWindow->gradValue = vkCountdownWindow->gradValue - 20;
+    vkCountdownWindow->update();
 }
 
-/*
-void QvkCountdown::mousePressEvent( QMouseEvent *event )
+
+void QvkCountdown::slot_cancel( bool value )
 {
-    if ( rectCancel.contains( event->pos() ) )
-    {
-        hide();
-        timer->stop();
-        animationTimer->stop();
-        emit signal_countDownCancel( true );
-    }
+    timer->stop();
+    animationTimer->stop();
+    emit signal_countDownCancel( value);
 }
-*/

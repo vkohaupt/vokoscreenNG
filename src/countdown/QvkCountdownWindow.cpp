@@ -22,19 +22,14 @@
 
 #include "QvkCountdownWindow.h"
 
-#include <QTimer>
-#include <QGuiApplication>
-#include <QScreen>
-#include <QIcon>
-#include <QDebug>
-#include <QMouseEvent>
+#include <QDialogButtonBox>
 #include <QPushButton>
 
 #ifdef Q_OS_LINUX
 #include <QX11Info>
 #endif
 
-QvkCountdownWindow::QvkCountdownWindow(  QWidget *parent )
+QvkCountdownWindow::QvkCountdownWindow( QWidget *parent )
 {
     setParent( parent );
 
@@ -51,6 +46,12 @@ QvkCountdownWindow::QvkCountdownWindow(  QWidget *parent )
 #ifdef Q_OS_WIN
     setAttribute( Qt::WA_TranslucentBackground, true );
 #endif
+
+    // Is needed only for the translated text
+    QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Abort, this);
+    buttonBox->hide();
+    QList<QPushButton *> list = this->findChildren<QPushButton *>();
+    cancelText = list.at(0)->text();
 
     show();
 }
@@ -126,15 +127,13 @@ void QvkCountdownWindow::paintEvent( QPaintEvent *event )
   painter.end();
 }
 
-/*
+
 void QvkCountdownWindow::mousePressEvent( QMouseEvent *event )
 {
     if ( rectCancel.contains( event->pos() ) )
     {
         hide();
-        timer->stop();
-        animationTimer->stop();
         emit signal_countDownCancel( true );
     }
 }
-*/
+
