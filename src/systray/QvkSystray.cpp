@@ -44,30 +44,30 @@ void QvkSystray::init()
     titleAction->setEnabled( false );
 
     startAction = new QAction( this );
-    startAction->setIcon( QIcon::fromTheme( "media-playback-start", ui->pushButtonStart->style()->standardIcon( QStyle::SP_MediaPlay ) ) );
+    startAction->setIcon( QIcon( ":pictures/player/start.png" ) );
     startAction->setText( tr( "Start" ) );
     startAction->setData( "Start" );
 
     stopAction = new QAction( this );
-    stopAction->setIcon( QIcon::fromTheme( "media-playback-stop" , ui->pushButtonStart->style()->standardIcon( QStyle::SP_MediaStop ) ) );
+    stopAction->setIcon( QIcon( ":pictures/player/stop.png" ) );
     stopAction->setText( tr( "Stop" ) );
     stopAction->setData( "Stop" );
     stopAction->setEnabled( false );
 
     pauseAction = new QAction( this );
-    pauseAction->setIcon( QIcon::fromTheme( "media-playback-pause", ui->pushButtonStart->style()->standardIcon( QStyle::SP_MediaPause ) ) );
+    pauseAction->setIcon( QIcon( ":pictures/player/pause.png" ) );
     pauseAction->setText( tr( "Pause" ) );
     pauseAction->setData( "Pause" );
     pauseAction->setEnabled( false );
 
     continueAction = new QAction( this );
-    continueAction->setIcon( QIcon::fromTheme( "media-playback-start", ui->pushButtonStart->style()->standardIcon( QStyle::SP_MediaPlay ) ) );
+    continueAction->setIcon( QIcon( ":pictures/player/start.png" ) );
     continueAction->setText( tr( "Continue" ) );
     continueAction->setData( "Continue" );
     continueAction->setEnabled( false );
 
     exitAction = new QAction( this );
-    exitAction->setIcon( QIcon::fromTheme( "application-exit", ui->pushButtonStart->style()->standardIcon( QStyle::SP_DialogCloseButton ) ) );
+    exitAction->setIcon( QIcon( ":pictures/systray/exit.png" ) );
     exitAction->setText( tr( "Exit" ) );
     exitAction->setData( "Exit" );
 
