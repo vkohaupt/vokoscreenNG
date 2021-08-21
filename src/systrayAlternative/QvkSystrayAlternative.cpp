@@ -15,7 +15,7 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     connect( ui->toolButtonShowInSystrayAlternativeReset, SIGNAL( clicked( bool ) ), this, SLOT( slot_ShowInSystrayAlternativeReset( bool ) ) );
     size = QSize( sliderShowInSystrayAlternative->value(), sliderShowInSystrayAlternative->value() );
 
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
     setAttribute( Qt::WA_TranslucentBackground, true );
     setScaledContents( true );
     resize( size );
@@ -24,13 +24,9 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     pixmap = pixmap.scaled( size , Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
     setPixmap( pixmap );
 
-    setWindowTitle( global::name + " " + global::version );
-    setWindowTitle( tr( "Start" ) + " " + tr( "Stop" ) + " " + tr( "Pause" ) );
-    setWindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
-
     QAction *titleAction = new QAction( this );
     titleAction->setIcon( QIcon( ":pictures/systray/systray.png" ) );
-    titleAction->setText( global::name );
+    titleAction->setText( global::name + " " + global::version );
     titleAction->setEnabled( false );
 
     startAction = new QAction( this );
