@@ -46,7 +46,6 @@ public slots:
 
 private:
     int oldCountValue;
-    QPainter painter;
     QString cancelText = "Cancel";
     QRectF rectCancel;
 

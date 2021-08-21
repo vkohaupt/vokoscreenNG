@@ -24,6 +24,7 @@
 
 #include <QDialogButtonBox>
 #include <QPushButton>
+#include <QBitmap>
 
 #ifdef Q_OS_LINUX
 #include <QX11Info>
@@ -64,8 +65,16 @@ QvkCountdownWindow::~QvkCountdownWindow()
 void QvkCountdownWindow::paintEvent( QPaintEvent *event )
 {
   (void)event;
-  painter.begin( this );
-    painter.setRenderHints( QPainter::Antialiasing, true );
+
+    QPixmap pixmap( 300 * devicePixelRatioF(), 300 * devicePixelRatioF() );
+    pixmap.fill( Qt::transparent );
+    pixmap.setDevicePixelRatio( devicePixelRatioF() );
+
+    QPainter painterPixmap;
+    painterPixmap.begin( &pixmap );
+    painterPixmap.setRenderHints( QPainter::Antialiasing, true );
+
+    painterPixmap.setRenderHints( QPainter::Antialiasing, true );
     QPen pen;
     QBrush brush;
     
@@ -73,32 +82,32 @@ void QvkCountdownWindow::paintEvent( QPaintEvent *event )
     brush.setStyle( Qt::SolidPattern );
     pen.setWidth( 0 );
     pen.setColor( Qt::darkGray );
-    painter.setBrush( brush );
-    painter.setPen( pen );
-    painter.setOpacity( 0.3 );
-    painter.drawPie( 0, 0, 300, 300, 90*16, gradValue*16 );
+    painterPixmap.setBrush( brush );
+    painterPixmap.setPen( pen );
+    painterPixmap.setOpacity( 0.3 );
+    painterPixmap.drawPie( 0, 0, 300, 300, 90*16, gradValue*16 );
 
-    painter.setOpacity( 1.0 );
+    painterPixmap.setOpacity( 1.0 );
     pen.setColor( Qt::darkGray );
     pen.setWidth( 6 );
-    painter.setPen( pen );
+    painterPixmap.setPen( pen );
     brush.setStyle( Qt::NoBrush );
-    painter.setBrush( brush );
-    painter.drawEllipse( QPoint( width()/2, height()/2), 125-3, 125-3 );
-    painter.drawEllipse( QPoint( width()/2, height()/2), 100, 100 );
-    painter.drawLine( 0, height()/2, width(), height()/2 );
-    painter.drawLine( width()/2, 0, width()/2, height() );
+    painterPixmap.setBrush( brush );
+    painterPixmap.drawEllipse( QPoint( width()/2, height()/2), 125-3, 125-3 );
+    painterPixmap.drawEllipse( QPoint( width()/2, height()/2), 100, 100 );
+    painterPixmap.drawLine( 0, height()/2, width(), height()/2 );
+    painterPixmap.drawLine( width()/2, 0, width()/2, height() );
     
     int fontSize = 110;
     QFont font;
     font.setPointSize( fontSize );
-    painter.setFont( font );
-    painter.setPen( Qt::red );
+    painterPixmap.setFont( font );
+    painterPixmap.setPen( Qt::red );
     QFontMetrics fontMetrics( font );
     int fontWidth = fontMetrics.width( QString::number( countValue ) );
-    painter.drawText( width()/2-fontWidth/2, height()/2+fontSize/2, QString::number( countValue ) );
+    painterPixmap.drawText( width()/2-fontWidth/2, height()/2+fontSize/2, QString::number( countValue ) );
 
-//--------------------- Cancel button -------------------------------
+    //--------------------- Cancel button -------------------------------
 
     fontSize = 14;
     font.setPointSize( fontSize );
@@ -113,18 +122,25 @@ void QvkCountdownWindow::paintEvent( QPaintEvent *event )
 
     brush.setColor( Qt::red );
     brush.setStyle( Qt::SolidPattern );
-    painter.setBrush( brush );
+    painterPixmap.setBrush( brush );
     pen.setWidth( 2 );
     pen.setColor( Qt::black );
-    painter.setPen( pen );
+    painterPixmap.setPen( pen );
     rectCancel.setRect( x, y, width, height );
-    painter.drawRoundedRect( rectCancel, 10, 10 );
+    painterPixmap.drawRoundedRect( rectCancel, 10, 10 );
 
-    painter.setPen( Qt::white );
-    painter.setFont( font );
-    painter.drawText( rectCancel, Qt::AlignCenter, cancelText );
+    painterPixmap.setPen( Qt::white );
+    painterPixmap.setFont( font );
+    painterPixmap.drawText( rectCancel, Qt::AlignCenter, cancelText );
 
-  painter.end();
+    painterPixmap.end();
+
+    QPainter painter;
+    painter.begin( this );
+    painter.drawPixmap( QPointF( 0, 0 ), pixmap );
+    painter.end();
+
+    setMask( pixmap.mask() );
 }
 
 
