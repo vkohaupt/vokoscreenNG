@@ -3,19 +3,23 @@
 
 #include "ui_formMainWindow.h"
 #include "QvkSpezialSlider.h"
+#include "QvkSystrayAlternativeWindow.h"
 
-#include <QLabel>
+#include <QWidget>
 #include <QMainWindow>
 #include <QSize>
 
 
-class QvkSystrayAlternative : public QLabel
+class QvkSystrayAlternative : public QWidget
 {
     Q_OBJECT
 
 public:
     explicit QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow, QvkSpezialSlider *gui_sliderShowInSystrayAlternative );
     ~QvkSystrayAlternative();
+     QvkSystrayAlternativeWindow *vkSystrayAlternativeWindow;
+     void setVisible( bool ) override;
+
 
 private:
     Ui_formMainWindow *ui;
@@ -30,6 +34,7 @@ private:
     QPoint point;
     QvkSpezialSlider *sliderShowInSystrayAlternative;
 
+
 private slots:
     void slot_setRecordIcon( bool );
     void slot_setSystrayIcon( bool );
@@ -39,9 +44,6 @@ private slots:
 
 
 protected:
-    void contextMenuEvent(QContextMenuEvent *event) override;
-    void mouseMoveEvent(QMouseEvent *event) override;
-    void mousePressEvent(QMouseEvent *event) override;
 
 };
 

@@ -429,7 +429,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
 
     vkSystrayAlternative = new QvkSystrayAlternative( this, ui, sliderShowInSystrayAlternative );
-    if ( QSystemTrayIcon::isSystemTrayAvailable() == true )
+    if ( QSystemTrayIcon::isSystemTrayAvailable() == false )
     {
         connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ), this, SLOT( slot_setVisibleSystray( bool ) ) );
         ui->frameShowInSystrayAlternative->hide();
@@ -570,7 +570,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
                                        vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
                                        vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
         vkSettings.saveCamera( vkCameraController->cameraWindow->geometry().x(), vkCameraController->cameraWindow->geometry().y() );
-        vkSettings.saveSystrayAlternative( vkSystrayAlternative->x(), vkSystrayAlternative->y() );
+        vkSettings.saveSystrayAlternative( vkSystrayAlternative->vkSystrayAlternativeWindow->x(), vkSystrayAlternative->vkSystrayAlternativeWindow->y() );
         vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile );
         vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
         vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget->getColor() );

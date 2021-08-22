@@ -13,16 +13,13 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
 
     connect( sliderShowInSystrayAlternative, SIGNAL( valueChanged( int ) ), this, SLOT( slot_resizeWindow( int ) ) );
     connect( ui->toolButtonShowInSystrayAlternativeReset, SIGNAL( clicked( bool ) ), this, SLOT( slot_ShowInSystrayAlternativeReset( bool ) ) );
+
     size = QSize( sliderShowInSystrayAlternative->value(), sliderShowInSystrayAlternative->value() );
 
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
-    setAttribute( Qt::WA_TranslucentBackground, true );
-    setScaledContents( true );
-    resize( size );
+    vkSystrayAlternativeWindow = new QvkSystrayAlternativeWindow( this );
+    vkSystrayAlternativeWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
 
-    QPixmap pixmap( ":/pictures/systray/systray.png" );
-    pixmap = pixmap.scaled( size , Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-    setPixmap( pixmap );
+    slot_setSystrayIcon( true );
 
     QAction *titleAction = new QAction( this );
     titleAction->setIcon( QIcon( ":pictures/systray/systray.png" ) );
@@ -100,6 +97,8 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     menu->addAction( continueAction );
     menu->addSeparator();
     menu->addAction( exitAction );
+
+    vkSystrayAlternativeWindow->set_Menu( menu );
 }
 
 
@@ -108,10 +107,15 @@ QvkSystrayAlternative::~QvkSystrayAlternative()
 }
 
 
+void QvkSystrayAlternative::setVisible( bool value )
+{
+    vkSystrayAlternativeWindow->setVisible( value );
+}
+
+
 void QvkSystrayAlternative::slot_resizeWindow( int value )
 {
     size = QSize( value, value );
-    resize( value, value );
 
     if ( ui->pushButtonStart->isEnabled() == true )
     {
@@ -130,29 +134,11 @@ void QvkSystrayAlternative::slot_resizeWindow( int value )
 }
 
 
-void QvkSystrayAlternative::mouseMoveEvent( QMouseEvent *event )
-{
-    move( event->globalPos() - point );
-}
-
-
-void QvkSystrayAlternative::mousePressEvent( QMouseEvent *event )
-{
-    point = event->pos();
-}
-
-
-void QvkSystrayAlternative::contextMenuEvent( QContextMenuEvent *event )
-{
-    menu->exec( event->globalPos() );
-}
-
-
 void QvkSystrayAlternative::slot_setRecordIcon( bool )
 {
     QPixmap pixmap( ":/pictures/systray/record.png" );
     pixmap = pixmap.scaled( size , Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-    setPixmap( pixmap );
+    vkSystrayAlternativeWindow->set_Size( size, pixmap );
 }
 
 
@@ -160,7 +146,7 @@ void QvkSystrayAlternative::slot_setSystrayIcon( bool )
 {
     QPixmap pixmap( ":/pictures/systray/systray.png"  );
     pixmap = pixmap.scaled( size , Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-    setPixmap( pixmap );
+    vkSystrayAlternativeWindow->set_Size( size, pixmap );
 }
 
 
@@ -168,11 +154,12 @@ void QvkSystrayAlternative::slot_setPauseIcon( bool )
 {
     QPixmap pixmap( ":/pictures/systray/pause.png"  );
     pixmap = pixmap.scaled( size , Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-    setPixmap( pixmap );
+    vkSystrayAlternativeWindow->set_Size( size, pixmap );
 }
+
 
 void QvkSystrayAlternative::slot_ShowInSystrayAlternativeReset( bool )
 {
-    move( 0, 0 );
+    vkSystrayAlternativeWindow->move( 0, 0 );
     sliderShowInSystrayAlternative->setValue( 48 );
 }
