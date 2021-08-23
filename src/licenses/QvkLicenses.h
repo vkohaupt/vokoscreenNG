@@ -28,7 +28,6 @@
 
 #include <QWidget>
 #include <QDebug>
-#include <QShowEvent>
 
 class QvkLicenses: public QWidget
 { 
@@ -48,7 +47,6 @@ signals:
 
 
 protected:
-    void showEvent(QShowEvent *event);
 
 
 private:

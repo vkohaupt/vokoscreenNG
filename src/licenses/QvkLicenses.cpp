@@ -31,7 +31,6 @@
 QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::license )
 {
     ui->setupUi( this );
-    setWindowFlags( Qt::Tool );
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
@@ -96,12 +95,4 @@ int QvkLicenses::readLicences( QString path, int row )
         }
     }
     return row;
-}
-
-
-
-void QvkLicenses::showEvent(QShowEvent *event)
-{
-    Q_UNUSED(event)
-    activateWindow();
 }
