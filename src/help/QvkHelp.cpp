@@ -49,6 +49,8 @@ QvkHelp::QvkHelp( Ui_formMainWindow *ui_mainwindow ) : uiHelp(new(Ui::help))
     ui = ui_mainwindow;
     uiHelp->setupUi( this );
 
+    connect(uiHelp->buttonBox, SIGNAL( clicked( QAbstractButton * ) ), this, SLOT( close() ) );
+
     slot_NetworkAccessibility( networkAccessManager.networkAccessible() );
     connect( &networkAccessManager, SIGNAL( networkAccessibleChanged( QNetworkAccessManager::NetworkAccessibility ) ),
                                     SLOT( slot_NetworkAccessibility( QNetworkAccessManager::NetworkAccessibility ) ) );

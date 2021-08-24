@@ -10,6 +10,8 @@
 
 QvkSystrayAlternativeWindow::QvkSystrayAlternativeWindow( QWidget *parent )
 {
+    Q_UNUSED(parent)
+
 #ifdef Q_OS_LINUX
     if ( QX11Info::isCompositingManagerRunning() == true )
     {
