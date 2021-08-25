@@ -196,21 +196,31 @@ void QvkMainWindow_wl::slot_start()
 
 QString QvkMainWindow_wl::get_Area_Videocrop()
 {
-    QString value = "";
+    QString videocrop = "";
     vkRegionChoise->recordMode( true );
 
-    if ( ui->checkBox_menue_top->isChecked() == true  )
-    {
-        int width = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 2, 2).section( "=", 1, 1 ).toInt();
-        int height = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 3, 3).section( "=", 1, 1 ).toInt();
+    int width = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 2, 2).section( "=", 1, 1 ).toInt();
+    int height = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 3, 3).section( "=", 1, 1 ).toInt();
 
+    if ( ui->checkBox_menue_top->isChecked() == true )
+    {
         QString top = QString::number( vkRegionChoise->getYRecordArea() + vkRegionChoise->get_desktop_menue_height() );
         QString right = QString::number( width - ( vkRegionChoise->getWidth() + vkRegionChoise->getXRecordArea() ) );
         QString bottom = QString::number( height - ( vkRegionChoise->getHeight() + vkRegionChoise->getYRecordArea() ) - vkRegionChoise->get_desktop_menue_height() );
         QString left = QString::number( vkRegionChoise->getXRecordArea() );
-        value = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
+        videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
     }
-    return value;
+
+    if ( ui->checkBox_menue_bottom->isChecked() == true )
+    {
+        QString top = QString::number( vkRegionChoise->getYRecordArea() );
+        QString right = QString::number( width - ( vkRegionChoise->getWidth() + vkRegionChoise->getXRecordArea() ) );
+        QString bottom = QString::number( height - ( vkRegionChoise->getHeight() + vkRegionChoise->getYRecordArea() ) );
+        QString left = QString::number( vkRegionChoise->getXRecordArea() );
+        videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
+    }
+
+    return videocrop;
 }
 
 
