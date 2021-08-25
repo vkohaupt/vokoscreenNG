@@ -172,6 +172,22 @@ void QvkMainWindow_wl::slot_start()
     {
         qDebug().noquote() << global::nameOutput << "Start record area";
         sourceType = 1;
+
+        if ( ui->checkBox_menue_top->isChecked() ) {
+            qDebug().noquote() << global::nameOutput << "Panel is top";
+        }
+
+        if ( ui->checkBox_menue_right->isChecked() ) {
+            qDebug().noquote() << global::nameOutput << "Panel is right";
+        }
+
+        if ( ui->checkBox_menue_bottom->isChecked() ) {
+            qDebug().noquote() << global::nameOutput << "Panel is bottom";
+        }
+
+        if ( ui->checkBox_menue_left->isChecked() ) {
+            qDebug().noquote() << global::nameOutput << "Panel is left";
+        }
     }
 
     // https://flatpak.github.io/xdg-desktop-portal/portal-docs.html#gdbus-property-org-freedesktop-portal-ScreenCast.AvailableCursorModes
