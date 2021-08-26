@@ -121,18 +121,6 @@ void QvkRegionChoise_wl::resizeEvent(QResizeEvent *event)
     qDebug() << size().height() << "Das ist die neue Fensterhöhe ohne Fensterrahmen";
     windowWidth = size().width();
     windowHeight = size().height();
-
-    if ( size().height() > get_availables_window_height() )
-    {
-        availables_window_height = size().height();
-        availables_window_width = size().width();
-    }
-}
-
-
-int QvkRegionChoise_wl::get_availables_window_height()
-{
-    return availables_window_height;
 }
 
 
@@ -141,8 +129,9 @@ int QvkRegionChoise_wl::get_availables_window_height()
  */
 int QvkRegionChoise_wl::get_panel_height()
 {
-    return ( screen->size().height() - get_availables_window_height() );
+    return ( screen->size().height() - size().height() );
 }
+
 
 
 void QvkRegionChoise_wl::setHandleColorBackground( QColor color )
