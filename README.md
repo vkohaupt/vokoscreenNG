@@ -68,7 +68,7 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
   - Player: x264
 * 
 
-#### Wayland (since 3.1.0)
+#### Wayland (vokoscreenNG >= 3.1.0)
 * pipewire >= 0.3
 * gstreamer-plugin-pipewire(openSUSE) gstreamer1.0-pipewire(Debian) >= 0.3.24
 * xdg-desktop-portal >= 1.7.0
@@ -89,8 +89,8 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 * libqt5-linguist
 * libX11-devel
 * gstreamer-devel
-* libpulse-devel (since 3.0.7)
-* wayland-devel (since 3.0.9)
+* libpulse-devel (vokoscreenNG >= 3.0.7)
+* wayland-devel (vokoscreenNG >= 3.0.9)
 
 On Ubuntu these requirements can be satisfied by running `sudo apt install libgstreamer1.0-dev qt5-default qttools5-dev-tools libqt5x11extras5-dev qtmultimedia5-dev libqt5multimedia5-plugins libpulse-dev`
 
