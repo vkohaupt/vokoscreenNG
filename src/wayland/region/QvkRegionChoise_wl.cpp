@@ -119,8 +119,8 @@ void QvkRegionChoise_wl::resizeEvent(QResizeEvent *event)
 {
     Q_UNUSED(event);
     qDebug() << size().height() << "Das ist die neue Fensterhöhe ohne Fensterrahmen";
-    screenWidth = size().width();
-    screenHeight = size().height();
+    windowWidth = size().width();
+    windowHeight = size().height();
 
     if ( size().height() > get_availables_desktopp_height() )
     {
@@ -142,7 +142,10 @@ int QvkRegionChoise_wl::get_availables_desktopp_height()
 }
 
 
-int QvkRegionChoise_wl::get_desktop_menue_height()
+/*
+ * Panel is the desktop panel that have the Taskbar, Systray and other things.
+ */
+int QvkRegionChoise_wl::get_panel_height()
 {
     return ( screen->size().height() - get_availables_desktopp_height() );
 }
@@ -183,7 +186,7 @@ void QvkRegionChoise_wl::paintEvent( QPaintEvent *event )
 {
     (void)event;
 
-    QPixmap pixmap( screenWidth, screenHeight );
+    QPixmap pixmap( windowWidth, windowHeight );
 
     if ( recordemode == false )
     {
@@ -492,7 +495,7 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Right :{
                                    frame_Width = frame_Width + 1;
 
-                                   if ( ( frame_X + frame_Width - framePenHalf ) > screenWidth )
+                                   if ( ( frame_X + frame_Width - framePenHalf ) > windowWidth )
                                    {
                                        frame_Width = frame_Width - 1;
                                    }
@@ -519,7 +522,7 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Right :{
                                    frame_Width = frame_Width + 1;
 
-                                   if ( ( frame_X + frame_Width - framePenHalf ) > screenWidth )
+                                   if ( ( frame_X + frame_Width - framePenHalf ) > windowWidth )
                                    {
                                        frame_Width = frame_Width - 1;
                                    }
@@ -546,7 +549,7 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Down : {
                                    frame_height = frame_height + 1;
 
-                                   if ( frame_Y + frame_height - framePenHalf > screenHeight )
+                                   if ( frame_Y + frame_height - framePenHalf > windowHeight )
                                    {
                                        frame_height = frame_height - 1;
                                    }
@@ -566,7 +569,7 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Right :{
                                    frame_Width = frame_Width + 1;
 
-                                   if ( frame_X + frame_Width - framePenHalf > screenWidth )
+                                   if ( frame_X + frame_Width - framePenHalf > windowWidth )
                                    {
                                        frame_Width = frame_Width - 1;
                                    }
@@ -593,7 +596,7 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Down : {
                                    frame_height = frame_height + 1;
 
-                                   if ( frame_Y + frame_height - framePenHalf > screenHeight )
+                                   if ( frame_Y + frame_height - framePenHalf > windowHeight )
                                    {
                                        frame_height = frame_height - 1;
                                    }
@@ -620,7 +623,7 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Down :  {
                                     frame_height = frame_height + 1;
 
-                                    if ( frame_Y + frame_height - framePenHalf > screenHeight )
+                                    if ( frame_Y + frame_height - framePenHalf > windowHeight )
                                     {
                                         frame_height = frame_height - 1;
                                     }
@@ -702,7 +705,7 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Right : {
                                     frame_X = frame_X + 1;
 
-                                    if ( frame_X + frame_Width - framePenHalf > screenWidth )
+                                    if ( frame_X + frame_Width - framePenHalf > windowWidth )
                                     {
                                         frame_X = frame_X - 1;
                                     }
@@ -722,7 +725,7 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Down  : {
                                     frame_Y = frame_Y + 1;
 
-                                    if ( frame_Y + frame_height - framePenHalf > screenHeight )
+                                    if ( frame_Y + frame_height - framePenHalf > windowHeight )
                                     {
                                         frame_Y = frame_Y - 1;
                                     }
@@ -823,9 +826,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                              frame_height = old_Frame_Y2 + framePenHalf;
                            }
 
-                           if( ( frame_X + frame_Width - framePenHalf ) > screenWidth )
+                           if( ( frame_X + frame_Width - framePenHalf ) > windowWidth )
                            {
-                             frame_Width = screenWidth + framePenHalf - frame_X;
+                             frame_Width = windowWidth + framePenHalf - frame_X;
                            }
 
                            break;
@@ -840,9 +843,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                            }
 
                            // Limit max
-                           if( ( frame_X + frame_Width - framePenHalf ) > screenWidth )
+                           if( ( frame_X + frame_Width - framePenHalf ) > windowWidth )
                            {
-                             frame_Width = screenWidth + framePenHalf - frame_X;
+                             frame_Width = windowWidth + framePenHalf - frame_X;
                            }
 
                            break;
@@ -863,14 +866,14 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                            }
 
                            //Limit max
-                           if( ( frame_X + frame_Width - framePenHalf ) > screenWidth )
+                           if( ( frame_X + frame_Width - framePenHalf ) > windowWidth )
                            {
-                             frame_Width = screenWidth + framePenHalf - frame_X;
+                             frame_Width = windowWidth + framePenHalf - frame_X;
                            }
 
-                           if( ( frame_Y + frame_height - framePenHalf ) > screenHeight )
+                           if( ( frame_Y + frame_height - framePenHalf ) > windowHeight )
                            {
-                             frame_height = screenHeight + framePenHalf - frame_Y;
+                             frame_height = windowHeight + framePenHalf - frame_Y;
                            }
 
                            break;
@@ -885,9 +888,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                            }
 
                            //Limit max
-                           if( ( frame_Y + frame_height - framePenHalf ) > screenHeight )
+                           if( ( frame_Y + frame_height - framePenHalf ) > windowHeight )
                            {
-                             frame_height = screenHeight + framePenHalf - frame_Y;
+                             frame_height = windowHeight + framePenHalf - frame_Y;
                            }
 
                            break;
@@ -917,9 +920,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                               frame_Width = old_Frame_X2 + framePenHalf;
                            }
 
-                           if( ( frame_Y + frame_height - framePenHalf ) > screenHeight )
+                           if( ( frame_Y + frame_height - framePenHalf ) > windowHeight )
                            {
-                             frame_height = screenHeight + framePenHalf - frame_Y;
+                             frame_height = windowHeight + framePenHalf - frame_Y;
                            }
 
                            break;
@@ -963,15 +966,15 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                            }
 
                            // Limit Right
-                           if( ( frame_X + frame_Width - framePenHalf ) > screenWidth )
+                           if( ( frame_X + frame_Width - framePenHalf ) > windowWidth )
                            {
-                               frame_X = screenWidth - frame_Width + framePenHalf;
+                               frame_X = windowWidth - frame_Width + framePenHalf;
                            }
 
                            // Limit Bottom
-                           if( ( frame_Y + frame_height - framePenHalf ) > screenHeight )
+                           if( ( frame_Y + frame_height - framePenHalf ) > windowHeight )
                            {
-                               frame_Y = screenHeight - frame_height + framePenHalf;
+                               frame_Y = windowHeight - frame_height + framePenHalf;
                            }
 
                            break;

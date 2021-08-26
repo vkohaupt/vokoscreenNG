@@ -220,9 +220,9 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
 
     if ( ui->checkBox_menue_top->isChecked() == true )
     {
-        QString top = QString::number( vkRegionChoise->getYRecordArea() + vkRegionChoise->get_desktop_menue_height() );
+        QString top = QString::number( vkRegionChoise->getYRecordArea() + vkRegionChoise->get_panel_height() );
         QString right = QString::number( width - ( vkRegionChoise->getWidth() + vkRegionChoise->getXRecordArea() ) );
-        QString bottom = QString::number( height - ( vkRegionChoise->getHeight() + vkRegionChoise->getYRecordArea() ) - vkRegionChoise->get_desktop_menue_height() );
+        QString bottom = QString::number( height - ( vkRegionChoise->getHeight() + vkRegionChoise->getYRecordArea() ) - vkRegionChoise->get_panel_height() );
         QString left = QString::number( vkRegionChoise->getXRecordArea() );
         videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
     }

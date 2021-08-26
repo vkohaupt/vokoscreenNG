@@ -52,11 +52,11 @@ public:
   void setFrameColor( Qt::GlobalColor color );
 
   QScreen *screen;
-  int screenWidth = 400; //Must set a value. Under windows comes a QPainter message
-  int screenHeight = 400;
+  int windowWidth = 400; //Must set a value. Under windows comes a QPainter message
+  int windowHeight = 400;
 
   int get_availables_desktopp_height();
-  int get_desktop_menue_height();
+  int get_panel_height();
 
 
 public slots:
