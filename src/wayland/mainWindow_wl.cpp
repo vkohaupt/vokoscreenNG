@@ -158,19 +158,19 @@ void QvkMainWindow_wl::slot_start()
     int sourceType = 1;
     if ( ui->radioButtonScreencastFullscreen->isChecked() )
     {
-        qDebug().noquote() << global::nameOutput << "Start record fullscreen";
+        qDebug().noquote() << global::nameOutput << "Start portal fullscreen";
         sourceType = 1;
     }
 
     if ( ui->radioButtonScreencastWindow->isChecked() )
     {
-        qDebug().noquote() << global::nameOutput << "Start record window";
+        qDebug().noquote() << global::nameOutput << "Start portal window";
         sourceType = 2;
     }
 
     if ( ui->radioButtonScreencastArea->isChecked() )
     {
-        qDebug().noquote() << global::nameOutput << "Start record area";
+        qDebug().noquote() << global::nameOutput << "Start portal area";
         sourceType = 1;
 
         if ( ui->checkBox_menue_top->isChecked() ) {
