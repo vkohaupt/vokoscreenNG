@@ -176,6 +176,9 @@
                        <property name="text">
                         <string notr="true"/>
                        </property>
+                       <property name="checked">
+                        <bool>true</bool>
+                       </property>
                        <property name="autoExclusive">
                         <bool>true</bool>
                        </property>
