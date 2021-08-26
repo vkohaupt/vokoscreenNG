@@ -114,7 +114,7 @@ QvkRegionChoise_wl::~QvkRegionChoise_wl()
 
 
 // Ermitteln der größten Fensterhöhe
-// Unterstützt wird nur ein Desktopmenü oben, unten links oder rechts.
+// Unterstützt wird nur ein Desktop panel oben, unten links oder rechts.
 void QvkRegionChoise_wl::resizeEvent(QResizeEvent *event)
 {
     Q_UNUSED(event);
@@ -122,23 +122,17 @@ void QvkRegionChoise_wl::resizeEvent(QResizeEvent *event)
     windowWidth = size().width();
     windowHeight = size().height();
 
-    if ( size().height() > get_availables_desktopp_height() )
+    if ( size().height() > get_availables_window_height() )
     {
-        set_availables_desktopp_height( size().height() );
-        availables_desktopp_width = size().width();
+        availables_window_height = size().height();
+        availables_window_width = size().width();
     }
 }
 
 
-void QvkRegionChoise_wl::set_availables_desktopp_height( int value )
+int QvkRegionChoise_wl::get_availables_window_height()
 {
-    availables_desktopp_height = value;
-}
-
-
-int QvkRegionChoise_wl::get_availables_desktopp_height()
-{
-    return availables_desktopp_height;
+    return availables_window_height;
 }
 
 
@@ -147,7 +141,7 @@ int QvkRegionChoise_wl::get_availables_desktopp_height()
  */
 int QvkRegionChoise_wl::get_panel_height()
 {
-    return ( screen->size().height() - get_availables_desktopp_height() );
+    return ( screen->size().height() - get_availables_window_height() );
 }
 
 
