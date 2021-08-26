@@ -143,7 +143,7 @@ int QvkRegionChoise_wl::get_availables_desktopp_height()
 
 
 /*
- * Panel is the desktop panel that have the Taskbar, Systray and other things.
+ * Panel is the desktop panel that contain the Taskbar, Systray and other things.
  */
 int QvkRegionChoise_wl::get_panel_height()
 {
@@ -1128,9 +1128,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
 
 void QvkRegionChoise_wl::printSize( QPainter &painter )
 {
-  QString widthHeigtSize = QString::number( static_cast<int>( getWidth()/screen->devicePixelRatio() ) ) +
+  QString widthHeigtSize = QString::number( static_cast<int>( getWidthRecordArea()/screen->devicePixelRatio() ) ) +
                            " x " +
-                           QString::number( static_cast<int>( getHeight()/screen->devicePixelRatio() ) );
+                           QString::number( static_cast<int>( getHeightRecordArea()/screen->devicePixelRatio() ) );
 
   QFont font;
   font.setPointSize( 14 );
@@ -1766,7 +1766,7 @@ qreal QvkRegionChoise_wl::getYRecordArea()
 /**
  * Return height from record area
  */
-qreal QvkRegionChoise_wl::getHeight()
+qreal QvkRegionChoise_wl::getHeightRecordArea()
 {
     qreal xReal =   ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * screen->devicePixelRatio();
     int xInt = static_cast<int>( ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * screen->devicePixelRatio() );
@@ -1794,7 +1794,7 @@ qreal QvkRegionChoise_wl::getHeight()
 /**
  * Return width from record Area
  */
-qreal QvkRegionChoise_wl::getWidth()
+qreal QvkRegionChoise_wl::getWidthRecordArea()
 {
     qreal xReal = ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * screen->devicePixelRatio();
     int xInt = static_cast<int>( ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * screen->devicePixelRatio() );
