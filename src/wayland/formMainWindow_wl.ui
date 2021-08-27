@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>713</width>
-    <height>443</height>
+    <height>415</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -89,12 +89,8 @@
              <layout class="QVBoxLayout" name="verticalLayout_7">
               <item>
                <layout class="QGridLayout" name="gridLayout_2">
-                <item row="7" column="0">
-                 <widget class="QRadioButton" name="radioButtonScreencastArea">
-                  <property name="text">
-                   <string notr="true">Area</string>
-                  </property>
-                 </widget>
+                <item row="7" column="1">
+                 <widget class="QComboBox" name="comboBoxScreencastScreenArea"/>
                 </item>
                 <item row="1" column="0">
                  <widget class="QRadioButton" name="radioButtonScreencastFullscreen">
@@ -104,10 +100,13 @@
                   <property name="checked">
                    <bool>true</bool>
                   </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroup</string>
+                  </attribute>
                  </widget>
                 </item>
-                <item row="5" column="0" colspan="4">
-                 <widget class="Line" name="line_4">
+                <item row="8" column="0" colspan="4">
+                 <widget class="Line" name="line_5">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
@@ -124,114 +123,6 @@
                   </property>
                  </widget>
                 </item>
-                <item row="7" column="2">
-                 <widget class="QGroupBox" name="groupBox">
-                  <property name="title">
-                   <string/>
-                  </property>
-                  <property name="flat">
-                   <bool>true</bool>
-                  </property>
-                  <layout class="QHBoxLayout" name="horizontalLayout_3">
-                   <item>
-                    <layout class="QGridLayout" name="gridLayout_3">
-                     <property name="spacing">
-                      <number>0</number>
-                     </property>
-                     <item row="2" column="2" alignment="Qt::AlignHCenter">
-                      <widget class="QCheckBox" name="checkBox_panel_right">
-                       <property name="enabled">
-                        <bool>false</bool>
-                       </property>
-                       <property name="text">
-                        <string notr="true"/>
-                       </property>
-                       <property name="autoExclusive">
-                        <bool>true</bool>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="2" column="0" alignment="Qt::AlignHCenter">
-                      <widget class="QCheckBox" name="checkBox_panel_left">
-                       <property name="enabled">
-                        <bool>false</bool>
-                       </property>
-                       <property name="text">
-                        <string notr="true"/>
-                       </property>
-                       <property name="autoExclusive">
-                        <bool>true</bool>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="1" column="1" alignment="Qt::AlignHCenter">
-                      <widget class="QCheckBox" name="checkBox_panel_top">
-                       <property name="text">
-                        <string notr="true"/>
-                       </property>
-                       <property name="checked">
-                        <bool>false</bool>
-                       </property>
-                       <property name="autoExclusive">
-                        <bool>true</bool>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="3" column="1" alignment="Qt::AlignHCenter">
-                      <widget class="QCheckBox" name="checkBox_panel_bottom">
-                       <property name="text">
-                        <string notr="true"/>
-                       </property>
-                       <property name="checked">
-                        <bool>true</bool>
-                       </property>
-                       <property name="autoExclusive">
-                        <bool>true</bool>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item row="6" column="1">
-                 <spacer name="horizontalSpacer_4">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item row="6" column="2" alignment="Qt::AlignHCenter">
-                 <widget class="QLabel" name="label_5">
-                  <property name="text">
-                   <string notr="true">Panel</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="7" column="1">
-                 <widget class="QComboBox" name="comboBoxScreencastScreenArea"/>
-                </item>
-                <item row="12" column="0" colspan="4" alignment="Qt::AlignHCenter">
-                 <widget class="QLabel" name="label_4">
-                  <property name="text">
-                   <string notr="true">Fedora 34 KDE / Gnome</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="8" column="0" colspan="4">
-                 <widget class="Line" name="line_5">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                 </widget>
-                </item>
                 <item row="13" column="0" colspan="4" alignment="Qt::AlignHCenter">
                  <widget class="QLabel" name="label_6">
                   <property name="font">
@@ -243,6 +134,16 @@
                   <property name="text">
                    <string notr="true">For full feature support please logout and start a X11 Desktop session.</string>
                   </property>
+                 </widget>
+                </item>
+                <item row="3" column="0" rowspan="2">
+                 <widget class="QRadioButton" name="radioButtonScreencastWindow">
+                  <property name="text">
+                   <string notr="true">Window</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroup</string>
+                  </attribute>
                  </widget>
                 </item>
                 <item row="1" column="4" rowspan="13">
@@ -262,6 +163,60 @@
                      <property name="verticalSpacing">
                       <number>0</number>
                      </property>
+                     <item row="1" column="0">
+                      <layout class="QHBoxLayout" name="horizontalLayout_4">
+                       <property name="bottomMargin">
+                        <number>3</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="label_14">
+                         <property name="text">
+                          <string notr="true">Record Time:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="labelInfoRecordTime">
+                         <property name="text">
+                          <string notr="true">00:00:00</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="4" column="0">
+                      <spacer name="verticalSpacer_21">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item row="0" column="0" alignment="Qt::AlignHCenter">
+                      <widget class="QLabel" name="label_17">
+                       <property name="text">
+                        <string notr="true">Information</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="3" column="0" alignment="Qt::AlignHCenter">
+                      <widget class="QLabel" name="label_Upate_tab_1">
+                       <property name="text">
+                        <string notr="true">TextLabel</string>
+                       </property>
+                       <property name="openExternalLinks">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
                      <item row="2" column="0">
                       <layout class="QGridLayout" name="gridLayout_5">
                        <item row="1" column="2">
@@ -327,67 +282,13 @@
                        </item>
                       </layout>
                      </item>
-                     <item row="0" column="0" alignment="Qt::AlignHCenter">
-                      <widget class="QLabel" name="label_17">
-                       <property name="text">
-                        <string notr="true">Information</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="3" column="0" alignment="Qt::AlignHCenter">
-                      <widget class="QLabel" name="label_Upate_tab_1">
-                       <property name="text">
-                        <string notr="true">TextLabel</string>
-                       </property>
-                       <property name="openExternalLinks">
-                        <bool>true</bool>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="1" column="0">
-                      <layout class="QHBoxLayout" name="horizontalLayout_4">
-                       <property name="bottomMargin">
-                        <number>3</number>
-                       </property>
-                       <item>
-                        <widget class="QLabel" name="label_14">
-                         <property name="text">
-                          <string notr="true">Record Time:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="labelInfoRecordTime">
-                         <property name="text">
-                          <string notr="true">00:00:00</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item row="4" column="0">
-                      <spacer name="verticalSpacer_21">
-                       <property name="orientation">
-                        <enum>Qt::Vertical</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>20</width>
-                         <height>40</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
                     </layout>
                    </item>
                   </layout>
                  </widget>
                 </item>
-                <item row="1" column="1">
-                 <spacer name="horizontalSpacer_3">
+                <item row="6" column="1">
+                 <spacer name="horizontalSpacer_4">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
@@ -399,10 +300,10 @@
                   </property>
                  </spacer>
                 </item>
-                <item row="3" column="0" rowspan="2">
-                 <widget class="QRadioButton" name="radioButtonScreencastWindow">
+                <item row="12" column="0" colspan="4" alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="label_4">
                   <property name="text">
-                   <string notr="true">Window</string>
+                   <string notr="true">Fedora 34 KDE / Gnome</string>
                   </property>
                  </widget>
                 </item>
@@ -426,6 +327,36 @@
                   </property>
                  </widget>
                 </item>
+                <item row="0" column="1">
+                 <spacer name="verticalSpacer_4">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="5" column="0" colspan="4">
+                 <widget class="Line" name="line_4">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="0">
+                 <widget class="QRadioButton" name="radioButtonScreencastArea">
+                  <property name="text">
+                   <string notr="true">Area</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroup</string>
+                  </attribute>
+                 </widget>
+                </item>
                 <item row="3" column="1">
                  <spacer name="horizontalSpacer_2">
                   <property name="orientation">
@@ -438,6 +369,26 @@
                    </size>
                   </property>
                  </spacer>
+                </item>
+                <item row="1" column="1">
+                 <spacer name="horizontalSpacer_3">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="2" column="0" colspan="4">
+                 <widget class="Line" name="line_2">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
                 </item>
                 <item row="9" column="0">
                  <spacer name="verticalSpacer_3">
@@ -452,25 +403,71 @@
                   </property>
                  </spacer>
                 </item>
-                <item row="2" column="0" colspan="4">
-                 <widget class="Line" name="line_2">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
+                <item row="6" column="2" alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="label_5">
+                  <property name="text">
+                   <string notr="true">Panel</string>
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="1">
-                 <spacer name="verticalSpacer_4">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
+                <item row="7" column="2">
+                 <layout class="QGridLayout" name="gridLayout_3">
+                  <property name="spacing">
+                   <number>0</number>
                   </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
+                  <item row="2" column="2" alignment="Qt::AlignHCenter">
+                   <widget class="QCheckBox" name="checkBox_panel_right">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="text">
+                     <string notr="true"/>
+                    </property>
+                    <property name="autoExclusive">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0" alignment="Qt::AlignHCenter">
+                   <widget class="QCheckBox" name="checkBox_panel_left">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="text">
+                     <string notr="true"/>
+                    </property>
+                    <property name="autoExclusive">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1" alignment="Qt::AlignHCenter">
+                   <widget class="QCheckBox" name="checkBox_panel_top">
+                    <property name="text">
+                     <string notr="true"/>
+                    </property>
+                    <property name="checked">
+                     <bool>false</bool>
+                    </property>
+                    <property name="autoExclusive">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1" alignment="Qt::AlignHCenter">
+                   <widget class="QCheckBox" name="checkBox_panel_bottom">
+                    <property name="text">
+                     <string notr="true"/>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                    <property name="autoExclusive">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </item>
                </layout>
               </item>
@@ -748,7 +745,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>387</width>
-                   <height>298</height>
+                   <height>274</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -1085,4 +1082,7 @@
   <include location="../screencast.qrc"/>
  </resources>
  <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
 </ui>
