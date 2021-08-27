@@ -173,19 +173,19 @@ void QvkMainWindow_wl::slot_start()
         qDebug().noquote() << global::nameOutput << "Start portal area";
         sourceType = 1;
 
-        if ( ui->checkBox_menue_top->isChecked() ) {
+        if ( ui->checkBox_panel_top->isChecked() ) {
             qDebug().noquote() << global::nameOutput << "Panel is top";
         }
 
-        if ( ui->checkBox_menue_right->isChecked() ) {
+        if ( ui->checkBox_panel_right->isChecked() ) {
             qDebug().noquote() << global::nameOutput << "Panel is right";
         }
 
-        if ( ui->checkBox_menue_bottom->isChecked() ) {
+        if ( ui->checkBox_panel_bottom->isChecked() ) {
             qDebug().noquote() << global::nameOutput << "Panel is bottom";
         }
 
-        if ( ui->checkBox_menue_left->isChecked() ) {
+        if ( ui->checkBox_panel_left->isChecked() ) {
             qDebug().noquote() << global::nameOutput << "Panel is left";
         }
     }
@@ -218,7 +218,7 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
     int screenWidth = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 2, 2).section( "=", 1, 1 ).toInt();
     int screenHeight = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 3, 3).section( "=", 1, 1 ).toInt();
 
-    if ( ui->checkBox_menue_top->isChecked() == true )
+    if ( ui->checkBox_panel_top->isChecked() == true )
     {
         QString top = QString::number( vkRegionChoise->getYRecordArea() + vkRegionChoise->get_panel_height() );
         QString right = QString::number( screenWidth - ( vkRegionChoise->getWidthRecordArea() + vkRegionChoise->getXRecordArea() ) );
@@ -227,7 +227,7 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
         videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
     }
 
-    if ( ui->checkBox_menue_bottom->isChecked() == true )
+    if ( ui->checkBox_panel_bottom->isChecked() == true )
     {
         QString top = QString::number( vkRegionChoise->getYRecordArea() );
         QString right = QString::number( screenWidth - ( vkRegionChoise->getWidthRecordArea() + vkRegionChoise->getXRecordArea() ) );

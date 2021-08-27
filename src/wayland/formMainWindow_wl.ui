@@ -139,7 +139,10 @@
                       <number>0</number>
                      </property>
                      <item row="2" column="2" alignment="Qt::AlignHCenter">
-                      <widget class="QCheckBox" name="checkBox_menue_right">
+                      <widget class="QCheckBox" name="checkBox_panel_right">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
                        <property name="text">
                         <string notr="true"/>
                        </property>
@@ -149,7 +152,10 @@
                       </widget>
                      </item>
                      <item row="2" column="0" alignment="Qt::AlignHCenter">
-                      <widget class="QCheckBox" name="checkBox_menue_left">
+                      <widget class="QCheckBox" name="checkBox_panel_left">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
                        <property name="text">
                         <string notr="true"/>
                        </property>
@@ -159,7 +165,7 @@
                       </widget>
                      </item>
                      <item row="1" column="1" alignment="Qt::AlignHCenter">
-                      <widget class="QCheckBox" name="checkBox_menue_top">
+                      <widget class="QCheckBox" name="checkBox_panel_top">
                        <property name="text">
                         <string notr="true"/>
                        </property>
@@ -172,7 +178,7 @@
                       </widget>
                      </item>
                      <item row="3" column="1" alignment="Qt::AlignHCenter">
-                      <widget class="QCheckBox" name="checkBox_menue_bottom">
+                      <widget class="QCheckBox" name="checkBox_panel_bottom">
                        <property name="text">
                         <string notr="true"/>
                        </property>
