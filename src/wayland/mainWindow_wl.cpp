@@ -210,6 +210,12 @@ void QvkMainWindow_wl::slot_start()
 }
 
 
+/*
+ * QDesktopWidget is obsolete but we need.
+ * opensuse 15.4 comes with Qt 5.15.2 and we can work with QScreen::screen()
+ * https://code.opensuse.org/leap/features/issue/7
+ */
+#include <QDesktopWidget>
 QString QvkMainWindow_wl::get_Area_Videocrop()
 {
     QString videocrop = "";
@@ -217,6 +223,10 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
 
     int screenWidth = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 2, 2).section( "=", 1, 1 ).toInt();
     int screenHeight = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 3, 3).section( "=", 1, 1 ).toInt();
+
+    QDesktopWidget *widget = QApplication::desktop();
+    qDebug() << "1111111111111111111111111111111111111111111" << widget->screenGeometry( this );
+
 
     if ( ui->checkBox_panel_top->isChecked() == true )
     {
