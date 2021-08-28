@@ -89,9 +89,6 @@
              <layout class="QVBoxLayout" name="verticalLayout_7">
               <item>
                <layout class="QGridLayout" name="gridLayout_2">
-                <item row="7" column="1">
-                 <widget class="QComboBox" name="comboBoxScreencastScreenArea"/>
-                </item>
                 <item row="1" column="0">
                  <widget class="QRadioButton" name="radioButtonScreencastFullscreen">
                   <property name="text">
@@ -469,6 +466,9 @@
                   </item>
                  </layout>
                 </item>
+                <item row="7" column="1">
+                 <widget class="QComboBox" name="comboBoxScreencastScreenArea"/>
+                </item>
                </layout>
               </item>
              </layout>
@@ -745,7 +745,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>387</width>
-                   <height>274</height>
+                   <height>270</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">

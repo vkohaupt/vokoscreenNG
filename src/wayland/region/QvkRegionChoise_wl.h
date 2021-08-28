@@ -51,7 +51,7 @@ public:
 
   void setFrameColor( Qt::GlobalColor color );
 
-  QScreen *screen;
+  QScreen *Screen;
   int windowWidth = 400; //Must set a value. Under windows comes a QPainter message
   int windowHeight = 400;
 
