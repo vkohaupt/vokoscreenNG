@@ -103,7 +103,7 @@ void QvkRegionChoise_wl::slot_show( bool value )
     {
         // "Screen" wird im weiteren Verlauf noch gebraucht für pixelratio
         qDebug().noquote();
-#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
         Screen = screen();
         qDebug().noquote() << global::nameOutput << "devicePixelRatio is for all screens available"
 #else
