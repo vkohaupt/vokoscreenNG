@@ -82,6 +82,10 @@ QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow 
 }
 
 
+/*
+ * bool value = true radiobutton was selected
+ * bool value = false radio button was deselected
+ */
 void QvkRegionChoise_wl::slot_show( bool value )
 {
     // Hinweis:
