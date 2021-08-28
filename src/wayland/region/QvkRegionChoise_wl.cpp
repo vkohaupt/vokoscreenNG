@@ -30,6 +30,7 @@
 #include <QBitmap>
 #include <QPaintEvent>
 #include <QIcon>
+#include <QTimer>
 
 #ifdef Q_OS_LINUX
   #include <QX11Info>
@@ -82,28 +83,36 @@ QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow 
 
 void QvkRegionChoise_wl::slot_show( bool value )
 {
-    // Die Bereichsanzeige ist ein Fenster und wird immmer ab beginn des verfügbaren Bereichs auf dem Desktop gesetzt.
+    // Hinweis:
+    // Die Bereichsanzeige ist ein Fenster und wird immmer am beginn des verfügbaren Bereichs auf dem Desktop gesetzt.
     // Ist das Desktopmenü oben am Bildschirm wird das Fenster z.b bei 0,44 gesetzt.
     // Ist das Menü unten am Bildschirm wird Fenster bei 0,0 gesetzt.
     // Die Frage ist, wie erkennt man ob das Desktop-Menü oben oder unten gesetzt ist?
+    // Gelöst wird das bis jetzt in dem der User in der GUI angeben muß wo das Panel palziert ist
 
+
+    // Das Fenster wird dort plaziert wo sich die GUI befindet, dies wird vom compositer geregelt.
+    // Damit die Fenstergröße ermittelt werden kann ist unter KDE folgender ablauf zwingend notwendig
+    // Gnome muß noch getestet werden
     if ( value == true )
     {
-        if ( ui->comboBoxScreencastScreenArea->currentIndex() > -1 )
-        {
-            int index = ui->comboBoxScreencastScreenArea->currentIndex();
-            QList<QScreen *> screenList = QGuiApplication::screens();
-            screen = screenList.at( index );
+        int index = ui->comboBoxScreencastScreenArea->currentIndex();
+        QList<QScreen *> screenList = QGuiApplication::screens();
 
-            qDebug() << "screen->availableSize():" << screen->availableSize() << "Verfügbarer Bereich auf dem Desktop ohne Menü";
-            qDebug() << "screen->availableGeometry():" << screen->availableGeometry() << "Verfügbarer Bereich auf dem Desktop ohne Menü";
-            qDebug();
+        // "screen" wird im weiteren Verlauf noch gebraucht für pixelratio
+        // das passt aber noch nicht für mehrere Bildschirme
+        screen = screenList.at( index );
 
-            showMaximized();
-        }
+        // Das Fenster wird per "show()" in einer von Qt vorgegebenen größe angezeigt
+        // Anschließend wird das Fenster per "singelshot()" maximiert
+        show();
+        QTimer::singleShot( 1500, this, SLOT( showMaximized() ) );
     } else
     {
-        hide();
+        // Beim ausblenden muß das Fenster erst per "shownormal()" dargestellt werden
+        // und anschließend per "hide()" versteckt werden
+        showNormal();
+        QTimer::singleShot( 1500, this, SLOT( hide() ) );
     }
 }
 
@@ -114,11 +123,10 @@ QvkRegionChoise_wl::~QvkRegionChoise_wl()
 
 
 // Ermitteln der größten Fensterhöhe
-// Unterstützt wird nur ein Desktop panel oben, unten links oder rechts.
+// Unterstützt wird nur ein Desktop panel oben und unten, später sollte auch links und rechts eingebaut werden.
 void QvkRegionChoise_wl::resizeEvent(QResizeEvent *event)
 {
     Q_UNUSED(event);
-    qDebug() << size().height() << "Das ist die neue Fensterhöhe ohne Fensterrahmen";
     windowWidth = size().width();
     windowHeight = size().height();
 }
