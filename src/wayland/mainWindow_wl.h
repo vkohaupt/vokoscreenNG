@@ -58,8 +58,8 @@ private Q_SLOTS:
     void slot_stop();
     void slot_start_gst( QString vk_fd, QString vk_path );
     void slot_frames_Reset();
-    void slot_screenCountChangedArea( QString stringText, QString stringData );
     void slot_portal_cancel( uint );
+
 
 protected:
     void closeEvent( QCloseEvent *event );

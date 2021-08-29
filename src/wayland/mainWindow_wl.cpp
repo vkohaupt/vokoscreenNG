@@ -32,12 +32,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     connect( ui->radioButtonScreencastArea,     SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( slot_show( bool ) ) );
     connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
 
-    QvkScreenManager *screenManager = new QvkScreenManager();
-    // Area
-    connect( screenManager, SIGNAL( signal_clear_widget() ),                          ui->comboBoxScreencastScreenArea, SLOT( clear() ) );
-    connect( screenManager, SIGNAL( signal_screen_count_changed( QString, QString) ), this,                             SLOT( slot_screenCountChangedArea( QString, QString ) ) );
-    screenManager->init();
-
     ui->frame_information->hide();
     ui->pushButtonPause->hide();
     ui->pushButtonContinue->hide();
@@ -120,12 +114,6 @@ void QvkMainWindow_wl::set_CornerWidget()
         label->setEnabled( false );
         list.at( i )->setCornerWidget( label, Qt::TopRightCorner );
     }
-}
-
-
-void QvkMainWindow_wl::slot_screenCountChangedArea( QString stringText, QString stringData )
-{
-    ui->comboBoxScreencastScreenArea->addItem( stringText, stringData );
 }
 
 
