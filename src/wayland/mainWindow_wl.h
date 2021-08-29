@@ -6,6 +6,7 @@
 #include "QvkSpezialSlider.h"
 #include "QvkRegionChoise_wl.h"
 #include "QvkContainerController.h"
+#include "QvkLogController.h"
 
 #include <QMainWindow>
 
@@ -28,6 +29,7 @@ public:
 
 
 private:
+    QvkLogController *vklogController;
     GstElement *pipeline = nullptr;
     QStringList videoFormatsList;
     QvkSpezialSlider *sliderFrames;
@@ -36,9 +38,10 @@ private:
 
     void messageBox( QString value );
 
-    void check_all_Elements_available();
+    void set_system_info();
     void set_SpezialSlider();
     void set_Connects();
+    void check_all_Elements_available();
 
     QString get_Videocodec_Encoder();
     QString get_Area_Videocrop();

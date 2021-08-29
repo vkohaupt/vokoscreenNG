@@ -1,6 +1,5 @@
 #include "mainWindow_wl.h"
 #include "global.h"
-#include "QvkLogController.h"
 #include "QvkScreenManager.h"
 
 #include <QStringList>
@@ -10,6 +9,8 @@
 #include <QMimeDatabase>
 #include <QMessageBox>
 #include <QDebug>
+#include <QStyleFactory>
+#include <QLibraryInfo>
 
 QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     : QMainWindow(parent, f)
@@ -17,7 +18,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 {
     ui->setupUi( this );
 
-    QvkLogController *vklogController = new QvkLogController();
+    vklogController = new QvkLogController();
     connect( vklogController, SIGNAL( signal_newLogText( QString ) ), ui->textBrowserLog, SLOT( append( QString ) ) );
 
     setWindowTitle( global::name + " " + global::version );
@@ -30,6 +31,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->tabWidgetScreencast->setCurrentIndex( 0 );
     ui->tabWidgetSideBar->setCurrentIndex( 0 );
 
+    set_system_info();
     set_SpezialSlider();
     set_Connects();
     check_all_Elements_available();
@@ -66,6 +68,35 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
     vkRegionChoise->close();
 }
 
+
+void QvkMainWindow_wl::set_system_info()
+{
+    qDebug().noquote() << global::nameOutput << "Version:" << global::version;
+    qDebug().noquote() << global::nameOutput << "Locale:" << QLocale::system().name();
+    QDateTime dateTime = QDateTime::currentDateTime();
+    qDebug().noquote() << global::nameOutput << "Log from:" << dateTime.toString( "yyyy-MM-dd hh:mm:ss" );
+    QLocale locale;
+    qDebug().noquote() << global::nameOutput << "Country:" << QLocale::countryToString( locale.country() );
+    qDebug().noquote() << global::nameOutput << "Qt:" << qVersion();
+    qDebug().noquote() << global::nameOutput << gst_version_string();
+//    qDebug().noquote() << global::nameOutput << "PulseAudio library version:" << pa_get_library_version();
+    qDebug().noquote() << global::nameOutput << "Operating system:" << QSysInfo::prettyProductName();
+    qDebug().noquote() << global::nameOutput << "CPU Architecture:" << QSysInfo::currentCpuArchitecture();
+    qDebug().noquote() << global::nameOutput << "Count CPU:" << QThread::idealThreadCount();
+    qDebug().noquote() << global::nameOutput << global::name << "running as:" << QGuiApplication::platformName() << "client";
+    qDebug().noquote() << global::nameOutput << global::name << "running on:" << qgetenv( "XDG_SESSION_TYPE" ).toLower();
+    qDebug().noquote() << global::nameOutput << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
+    qDebug().noquote() << global::nameOutput << "Icon-Theme:" << QIcon::themeName();
+    qDebug().noquote() << global::nameOutput << "Styles:" << QStyleFactory::keys();
+    qDebug().noquote() << global::nameOutput << "Qt-PluginsPath:     " << QLibraryInfo::location( QLibraryInfo::PluginsPath );
+    qDebug().noquote() << global::nameOutput << "Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
+    qDebug().noquote() << global::nameOutput << "Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
+//    qDebug().noquote() << global::nameOutput << "Settings:" << vkSettings.getFileName();
+    qDebug().noquote() << global::nameOutput << "Log:" << vklogController->get_logPath();
+    qDebug().noquote() << global::nameOutput << "Default Videopath:" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
+//    qDebug().noquote() << global::nameOutput << "User Videopath:" << vkSettings.getVideoPath();
+    qDebug().noquote();
+}
 
 void QvkMainWindow_wl::vk_setCornerWidget( QTabWidget *tabWidget )
 {
