@@ -45,8 +45,9 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 ### Run-time requirements
 
 * Qt5 >= 5.9.4
+* Qt5 >= 5.14 (vokoscreenNG >= 3.1.0)
 * pulseaudio
-* libwayland-client0 (since 3.0.9)
+* libwayland-client0 (since vokoscreenNG 3.0.9)
 * gstreamer >= 1.12.5
 * gstreamer-plugins-base
   - Audio: vorbis, opus
