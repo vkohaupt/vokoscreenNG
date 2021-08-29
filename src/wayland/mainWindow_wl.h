@@ -34,12 +34,12 @@ private:
     QStringList videoFormatsList;
     QvkSpezialSlider *sliderFrames;
     QvkRegionChoise_wl *vkRegionChoise;
-    void vk_setCornerWidget( QTabWidget *tabWidget );
+    void set_CornerWidget();
 
     void messageBox( QString value );
 
     void set_system_info();
-    void set_SpezialSlider();
+    void set_SpezialSliders();
     void set_Connects();
     void check_all_Elements_available();
 

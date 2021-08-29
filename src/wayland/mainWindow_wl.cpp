@@ -25,17 +25,13 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     setWindowIcon( icon );
 
-    vk_setCornerWidget( ui->tabWidgetScreencast );
-    vk_setCornerWidget( ui->tabWidgetLog );
-
     ui->tabWidgetScreencast->setCurrentIndex( 0 );
     ui->tabWidgetSideBar->setCurrentIndex( 0 );
-
+    set_CornerWidget();
     set_system_info();
-    set_SpezialSlider();
+    set_SpezialSliders();
     set_Connects();
     check_all_Elements_available();
-
     vkContainerController = new QvkContainerController( this, ui );
 
     vkRegionChoise = new QvkRegionChoise_wl( ui );
@@ -98,14 +94,23 @@ void QvkMainWindow_wl::set_system_info()
     qDebug().noquote();
 }
 
-void QvkMainWindow_wl::vk_setCornerWidget( QTabWidget *tabWidget )
+
+void QvkMainWindow_wl::set_CornerWidget()
 {
+    QList<QTabWidget *> list;
+    list << ui->tabWidgetScreencast;
+    list << ui->tabWidgetLog;
+
     QPixmap pixmap( ":/pictures/wayland.png" );
     pixmap = pixmap.scaled( QSize( 48, 48 ), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-    QLabel *label = new QLabel();
-    label->setPixmap( pixmap );
-    label->setEnabled( false );
-    tabWidget->setCornerWidget( label, Qt::TopRightCorner);
+
+    for ( int i = 0; i < list.count(); i++ )
+    {
+        QLabel *label = new QLabel();
+        label->setPixmap( pixmap );
+        label->setEnabled( false );
+        list.at( i )->setCornerWidget( label, Qt::TopRightCorner );
+    }
 }
 
 
@@ -329,7 +334,7 @@ void QvkMainWindow_wl::slot_portal_cancel( uint value )
 }
 
 
-void QvkMainWindow_wl::set_SpezialSlider()
+void QvkMainWindow_wl::set_SpezialSliders()
 {
     sliderFrames = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_slider_frames->insertWidget( 0, sliderFrames );
