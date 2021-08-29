@@ -5,6 +5,7 @@
 #include "portal_wl.h"
 #include "QvkSpezialSlider.h"
 #include "QvkRegionChoise_wl.h"
+#include "QvkContainerController.h"
 
 #include <QMainWindow>
 
@@ -42,6 +43,7 @@ private:
     QString get_Videocodec_Encoder();
     QString get_Area_Videocrop();
 
+    QvkContainerController *vkContainerController;
 
 public Q_SLOTS:
 

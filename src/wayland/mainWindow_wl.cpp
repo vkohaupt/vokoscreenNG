@@ -2,7 +2,6 @@
 #include "global.h"
 #include "QvkLogController.h"
 #include "QvkScreenManager.h"
-#include "QvkContainerController.h"
 
 #include <QStringList>
 #include <QStandardPaths>
@@ -35,8 +34,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_Connects();
     check_all_Elements_available();
 
-    QvkContainerController *vkContainerController = new QvkContainerController( this, ui );
-    Q_UNUSED(vkContainerController)
+    vkContainerController = new QvkContainerController( this, ui );
 
     vkRegionChoise = new QvkRegionChoise_wl( ui );
     connect( ui->radioButtonScreencastArea,     SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( slot_show( bool ) ) );
@@ -214,9 +212,10 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
     QString videocrop = "";
     vkRegionChoise->recordMode( true );
 
-    int screenWidth = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 2, 2).section( "=", 1, 1 ).toInt();
-    int screenHeight = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 3, 3).section( "=", 1, 1 ).toInt();
-
+    QScreen *Screen = screen();
+    int screenWidth = Screen->size().width();
+    int screenHeight = Screen->size().height();
+qDebug() << "********************+ get_Area_Videocrop" << Screen->size();
     if ( ui->checkBox_panel_top->isChecked() == true )
     {
         QString top = QString::number( vkRegionChoise->getYRecordArea() + vkRegionChoise->get_panel_height() );

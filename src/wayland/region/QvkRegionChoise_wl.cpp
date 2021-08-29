@@ -90,9 +90,9 @@ void QvkRegionChoise_wl::slot_show( bool value )
 {
     // Hinweis:
     // Die Bereichsanzeige ist ein Fenster und wird immmer am beginn des verfügbaren Bereichs auf dem Desktop gesetzt.
-    // Ist das Desktopmenü oben am Bildschirm wird das Fenster z.b bei 0,44 gesetzt.
-    // Ist das Menü unten am Bildschirm wird Fenster bei 0,0 gesetzt.
-    // Die Frage ist, wie erkennt man ob das Desktop-Menü oben oder unten gesetzt ist?
+    // Ist das Desktop-Panel oben am Bildschirm wird das Fenster z.b bei 0,44 gesetzt.
+    // Ist das Panel unten am Bildschirm wird das Fenster bei 0,0 gesetzt.
+    // Die Frage ist, wie erkennt man ob das Desktop-Panel oben oder unten gesetzt ist?
     // Gelöst wird das bis jetzt in dem der User in der GUI angeben muß wo das Panel palziert ist
 
 
