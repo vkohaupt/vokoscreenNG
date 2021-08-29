@@ -102,21 +102,13 @@ void QvkRegionChoise_wl::slot_show( bool value )
     if ( value == true )
     {
         // "Screen" wird im weiteren Verlauf noch gebraucht für pixelratio
-        qDebug().noquote();
-#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
         Screen = screen();
-        qDebug().noquote() << global::nameOutput << "devicePixelRatio is for all screens available"
-#else
-        QList<QScreen *> screenList = QGuiApplication::screens();
-        Screen = screenList.at( 0 );
-        qDebug().noquote() << global::nameOutput << "devicePixelRatio only for the first screen. For all screens need Qt >= 5.15";
-#endif
 
         // Das Fenster wird per "show()" in einer von Qt vorgegebenen größe angezeigt
         // Anschließend wird das Fenster per "singelshot()" maximiert
         show();
         update();
-        QTimer::singleShot( 1500, this, SLOT( showMaximized() ) );
+        QTimer::singleShot( 1000, this, SLOT( showMaximized() ) );
         update();
     } else
     {
@@ -124,7 +116,7 @@ void QvkRegionChoise_wl::slot_show( bool value )
         // und anschließend per "hide()" versteckt werden
         showNormal();
         update();
-        QTimer::singleShot( 1500, this, SLOT( hide() ) );
+        QTimer::singleShot( 1000, this, SLOT( hide() ) );
         update();
     }
 }
