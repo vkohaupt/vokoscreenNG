@@ -215,7 +215,7 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
     QScreen *Screen = screen();
     int screenWidth = Screen->size().width();
     int screenHeight = Screen->size().height();
-qDebug() << "********************+ get_Area_Videocrop" << Screen->size();
+
     if ( ui->checkBox_panel_top->isChecked() == true )
     {
         QString top = QString::number( vkRegionChoise->getYRecordArea() + vkRegionChoise->get_panel_height() );
@@ -233,6 +233,13 @@ qDebug() << "********************+ get_Area_Videocrop" << Screen->size();
         QString left = QString::number( vkRegionChoise->getXRecordArea() );
         videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
     }
+
+    qDebug().noquote() << global::nameOutput << "Area crop from the screen"
+                                             << Screen->name() + ","
+                                             << Screen->manufacturer() + ","
+                                             << Screen->model() + ","
+                                             << QString::number( Screen->size().width() ) + "/" + QString::number( Screen->size().height() );
+
 
     return videocrop;
 }
