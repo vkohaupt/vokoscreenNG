@@ -17,21 +17,15 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     , ui(new Ui::formMainWindow_wl)
 {
     ui->setupUi( this );
-
-    vklogController = new QvkLogController();
-    connect( vklogController, SIGNAL( signal_newLogText( QString ) ), ui->textBrowserLog, SLOT( append( QString ) ) );
-
-    setWindowTitle( global::name + " " + global::version );
-    QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
-    setWindowIcon( icon );
-
+    set_LogController();
+    set_WindowTitle();
     ui->tabWidgetScreencast->setCurrentIndex( 0 );
     ui->tabWidgetSideBar->setCurrentIndex( 0 );
     set_CornerWidget();
     set_system_info();
     set_SpezialSliders();
     set_Connects();
-    check_all_Elements_available();
+    set_check_all_Elements_available();
     vkContainerController = new QvkContainerController( this, ui );
 
     vkRegionChoise = new QvkRegionChoise_wl( ui );
@@ -62,6 +56,21 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
     Q_UNUSED(event);
     ui->pushButtonStop->click();
     vkRegionChoise->close();
+}
+
+
+void QvkMainWindow_wl::set_LogController()
+{
+    vklogController = new QvkLogController();
+    connect( vklogController, SIGNAL( signal_newLogText( QString ) ), ui->textBrowserLog, SLOT( append( QString ) ) );
+}
+
+
+void QvkMainWindow_wl::set_WindowTitle()
+{
+    setWindowTitle( global::name + " " + global::version );
+    QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
+    setWindowIcon( icon );
 }
 
 
@@ -367,7 +376,7 @@ void QvkMainWindow_wl::messageBox( QString value )
 }
 
 
-void QvkMainWindow_wl::check_all_Elements_available()
+void QvkMainWindow_wl::set_check_all_Elements_available()
 {
     QStringList list;
     list << "pipewiresrc";

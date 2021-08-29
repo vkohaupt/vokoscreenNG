@@ -34,19 +34,21 @@ private:
     QStringList videoFormatsList;
     QvkSpezialSlider *sliderFrames;
     QvkRegionChoise_wl *vkRegionChoise;
+
+    void set_LogController();
+    void set_WindowTitle();
     void set_CornerWidget();
-
-    void messageBox( QString value );
-
     void set_system_info();
     void set_SpezialSliders();
     void set_Connects();
-    void check_all_Elements_available();
+    void set_check_all_Elements_available();
+    QvkContainerController *vkContainerController;
+
+    void messageBox( QString value );
 
     QString get_Videocodec_Encoder();
     QString get_Area_Videocrop();
 
-    QvkContainerController *vkContainerController;
 
 public Q_SLOTS:
 
