@@ -26,18 +26,12 @@
 
 #include <QDebug>
 #include <QPainter>
-#include <QGuiApplication>
 #include <QBitmap>
 #include <QPaintEvent>
 #include <QIcon>
 #include <QTimer>
-#include <QtGlobal>
 
-#ifdef Q_OS_LINUX
-  #include <QX11Info>
-#endif
-
-QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow ):handlePressed(NoHandle),
+QvkRegionChoise_wl::QvkRegionChoise_wl():handlePressed(NoHandle),
                                    handleUnderMouse(NoHandle),
                                    HandleColorBackground( Qt::lightGray ),
                                    HandleColorBackgroundSize( Qt::lightGray ),
@@ -57,14 +51,6 @@ QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow 
                                    frame_min_height(200 + framePenWidth),
                                    frameColor(Qt::lightGray)
 {
-#ifdef Q_OS_LINUX
-    if ( QX11Info::isPlatformX11() == true )
-        platform = x11;
-
-    if ( QX11Info::isPlatformX11() == false )
-        platform = wayland;
-#endif
-    ui = ui_formMainWindow;
 
 //    setWindowTitle( QString( tr( "Area") ) );
     setWindowTitle( QString( ( "Area") ) );
@@ -315,24 +301,8 @@ void QvkRegionChoise_wl::mousePressEvent(QMouseEvent *event)
     old_Frame_X2 = frame_X + frame_Width;
     old_Frame_Y2 = frame_Y + frame_height;
 
-#ifdef Q_OS_WIN
-    repaint();
+    clearMask();
     update();
-#endif
-
-#ifdef Q_OS_LINUX
-    if ( platform == wayland )
-    {
-      clearMask();
-      update();
-    }
-
-    if ( platform == x11 )
-    {
-      repaint();
-      update();
-    }
-#endif
 
 }
 
@@ -977,35 +947,12 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                          }
     } // end switch
 
-#ifdef Q_OS_LINUX
     if ( handlePressed != NoHandle )
     {
-        if ( platform == wayland )
-        {
             clearMask();
             update();
-        }
-
-        if ( platform == x11 )
-        {
-            if ( QX11Info::isCompositingManagerRunning() == true )
-            {
-                repaint();
-                update();
-            }
-            else
-            {
-                repaint();
-                update();
-            }
-        }
     }
-#endif
 
-#ifdef Q_OS_WIN
-    repaint();
-    update();
-#endif
 
     if ( handlePressed != NoHandle )
         return;
@@ -1776,13 +1723,6 @@ qreal QvkRegionChoise_wl::getHeightRecordArea()
         xReal = static_cast<int>( ( frame_height - framePenWidth ) * Screen->devicePixelRatio() );
     }
 
-#ifdef Q_OS_WIN
-    if ( ( xReal + getYRecordArea() ) == Screen->size().height() )
-    {
-      xReal-=2;
-    }
-#endif
-
     return xReal;
 }
 
@@ -1803,13 +1743,6 @@ qreal QvkRegionChoise_wl::getWidthRecordArea()
     {
         xReal = static_cast<int>( ( frame_Width - framePenWidth ) * Screen->devicePixelRatio() );
     }
-
-#ifdef Q_OS_WIN
-    if ( ( xReal + getXRecordArea() ) == Screen->size().width() )
-    {
-      xReal-=2;
-    }
-#endif
 
     return xReal;
 }

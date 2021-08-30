@@ -27,10 +27,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_Connects();
     set_check_all_Elements_available();
     vkContainerController = new QvkContainerController( this, ui );
-
-    vkRegionChoise = new QvkRegionChoise_wl( ui );
-    connect( ui->radioButtonScreencastArea,     SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( slot_show( bool ) ) );
-    connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
+    set_RegionChoice();
 
     ui->frame_information->hide();
     ui->pushButtonPause->hide();
@@ -401,4 +398,12 @@ void QvkMainWindow_wl::set_check_all_Elements_available()
         }
     }
     qDebug();
+}
+
+
+void QvkMainWindow_wl::set_RegionChoice()
+{
+    vkRegionChoise = new QvkRegionChoise_wl();
+    connect( ui->radioButtonScreencastArea,     SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( slot_show( bool ) ) );
+    connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
 }

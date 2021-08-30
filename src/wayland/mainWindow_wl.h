@@ -43,6 +43,7 @@ private:
     void set_Connects();
     void set_check_all_Elements_available();
     QvkContainerController *vkContainerController;
+    void set_RegionChoice();
 
     void messageBox( QString value );
 
