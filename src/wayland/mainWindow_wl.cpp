@@ -92,6 +92,21 @@ void QvkMainWindow_wl::set_system_info()
     qDebug().noquote() << global::nameOutput << "Default Videopath:" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
 //    qDebug().noquote() << global::nameOutput << "User Videopath:" << vkSettings.getVideoPath();
     qDebug().noquote();
+
+    if ( qgetenv( "XDG_CURRENT_DESKTOP" ) == "KDE" ) {
+        qDebug().noquote() << global::nameOutput << "KDE detected, use panel bottom";
+        ui->checkBox_panel_bottom->click();
+        return;
+    }
+
+    if ( qgetenv( "XDG_CURRENT_DESKTOP" ) == "GNOME" ) {
+        qDebug().noquote() << global::nameOutput << "GNOME detected, use panel top";
+        ui->checkBox_panel_top->click();
+        return;
+    }
+
+    qDebug().noquote() << global::nameOutput << "Desktop not detected, use panel bottom";
+    ui->checkBox_panel_bottom->click();
 }
 
 
