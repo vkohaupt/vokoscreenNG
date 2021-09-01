@@ -34,6 +34,7 @@ private:
     QStringList videoFormatsList;
     QvkSpezialSlider *sliderFrames;
     QvkRegionChoise_wl *vkRegionChoise;
+    QWidget *testWidget;
 
     void set_LogController();
     void set_WindowTitle();
@@ -44,6 +45,7 @@ private:
     void set_check_all_Elements_available();
     QvkContainerController *vkContainerController;
     void set_RegionChoice();
+    void set_test_available_geometry();
 
     void messageBox( QString value );
 
@@ -60,6 +62,8 @@ private Q_SLOTS:
     void slot_start_gst( QString vk_fd, QString vk_path );
     void slot_frames_Reset();
     void slot_portal_cancel( uint );
+
+    void test();
 
 
 protected:

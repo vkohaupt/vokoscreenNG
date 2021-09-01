@@ -54,7 +54,7 @@ public:
   int windowHeight = 400;
 
   int get_availables_window_height();
-  int get_panel_height();
+  int get_sum_all_panels_height();
 
 
 public slots:

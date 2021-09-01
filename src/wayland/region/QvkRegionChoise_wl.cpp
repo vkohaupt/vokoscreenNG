@@ -126,7 +126,7 @@ void QvkRegionChoise_wl::resizeEvent(QResizeEvent *event)
 /*
  * Panel is the desktop panel that contain the Taskbar, Systray and other things.
  */
-int QvkRegionChoise_wl::get_panel_height()
+int QvkRegionChoise_wl::get_sum_all_panels_height()
 {
     return ( Screen->size().height() - size().height() );
 }

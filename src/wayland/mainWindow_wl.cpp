@@ -28,6 +28,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_check_all_Elements_available();
     vkContainerController = new QvkContainerController( this, ui );
     set_RegionChoice();
+    set_test_available_geometry();
 
     ui->frame_information->hide();
     ui->pushButtonPause->hide();
@@ -261,11 +262,12 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
     int screenWidth = Screen->size().width();
     int screenHeight = Screen->size().height();
 
+// ************ old ********************************************
     if ( ui->checkBox_panel_top->isChecked() == true )
     {
-        QString top = QString::number( vkRegionChoise->getYRecordArea() + vkRegionChoise->get_panel_height() );
+        QString top = QString::number( vkRegionChoise->getYRecordArea() + vkRegionChoise->get_sum_all_panels_height() );
         QString right = QString::number( screenWidth - ( vkRegionChoise->getWidthRecordArea() + vkRegionChoise->getXRecordArea() ) );
-        QString bottom = QString::number( screenHeight - ( vkRegionChoise->getHeightRecordArea() + vkRegionChoise->getYRecordArea() ) - vkRegionChoise->get_panel_height() );
+        QString bottom = QString::number( screenHeight - ( vkRegionChoise->getHeightRecordArea() + vkRegionChoise->getYRecordArea() ) - vkRegionChoise->get_sum_all_panels_height() );
         QString left = QString::number( vkRegionChoise->getXRecordArea() );
         videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
     }
@@ -278,6 +280,18 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
         QString left = QString::number( vkRegionChoise->getXRecordArea() );
         videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
     }
+
+// *********** new ***********************************************
+    if ( ui->spinBox_bottom->value() == 0 )
+    {
+        QString top = QString::number( vkRegionChoise->getYRecordArea() + vkRegionChoise->get_sum_all_panels_height() );
+        QString right = QString::number( screenWidth - ( vkRegionChoise->getWidthRecordArea() + vkRegionChoise->getXRecordArea() ) );
+        QString bottom = QString::number( screenHeight - ( vkRegionChoise->getHeightRecordArea() + vkRegionChoise->getYRecordArea() ) - vkRegionChoise->get_sum_all_panels_height() );
+        QString left = QString::number( vkRegionChoise->getXRecordArea() );
+        videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
+    }
+
+
 
     qDebug().noquote() << global::nameOutput << "Area crop from the screen"
                                              << Screen->name() + ","
@@ -421,4 +435,27 @@ void QvkMainWindow_wl::set_RegionChoice()
     vkRegionChoise = new QvkRegionChoise_wl();
     connect( ui->radioButtonScreencastArea,     SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( slot_show( bool ) ) );
     connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
+}
+
+
+#include <QTimer>
+void QvkMainWindow_wl::set_test_available_geometry()
+{
+    testWidget = new QWidget;
+    testWidget->setWindowFlags( Qt::FramelessWindowHint );
+    testWidget->setAttribute( Qt::WA_TranslucentBackground, true);
+    testWidget->show();
+    testWidget->showMaximized();
+    QTimer::singleShot( 1000, this, SLOT( test() ) );
+}
+
+
+void QvkMainWindow_wl::test()
+{
+    qDebug() << testWidget->size().height();
+
+    QScreen *Screen = screen();
+    ui->spinBox_top->setValue( Screen->size().height() - testWidget->size().height() );
+
+    testWidget->close();
 }
