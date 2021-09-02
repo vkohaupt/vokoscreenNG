@@ -99,6 +99,7 @@ On Ubuntu these requirements can be satisfied by running `sudo apt install libgs
 1. Download the source / clone the repo and `cd` into its directory
 2. `cd src`
 3. `qmake`
+4. `make`
 
 ## Install packages
 
