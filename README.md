@@ -45,7 +45,7 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 ### Run-time requirements
 
 * Qt5 >= 5.9.4
-* Qt5 >= 5.14 (vokoscreenNG >= 3.1.0)
+* Qt5 >= 5.14 (vokoscreenNG >= 3.1.0 pre alpha)
 * pulseaudio
 * libwayland-client0 (since vokoscreenNG 3.0.9)
 * gstreamer >= 1.12.5
@@ -86,8 +86,8 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 
 ### Build requirements
 * pkgconfig
-* libqt5-devel >= 5.14 (vokoscreenNG >= 3.1.0)
-* libqt5-linguist >= 5.14 (vokoscreenNG >= 3.1.0)
+* libqt5-devel >= 5.14 (vokoscreenNG >= 3.1.0 pre alpha)
+* libqt5-linguist >= 5.14 (vokoscreenNG >= 3.1.0 pre alpha)
 * libX11-devel
 * gstreamer-devel
 * libpulse-devel (vokoscreenNG >= 3.0.7)
