@@ -86,8 +86,8 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 
 ### Build requirements
 * pkgconfig
-* libqt5-devel
-* libqt5-linguist
+* libqt5-devel >= 5.14 (vokoscreenNG >= 3.1.0)
+* libqt5-linguist >= 5.14 (vokoscreenNG >= 3.1.0)
 * libX11-devel
 * gstreamer-devel
 * libpulse-devel (vokoscreenNG >= 3.0.7)
