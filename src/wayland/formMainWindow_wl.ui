@@ -479,7 +479,7 @@
                     <item alignment="Qt::AlignHCenter">
                      <widget class="QLabel" name="label_11">
                       <property name="text">
-                       <string>Desktop Panel</string>
+                       <string notr="true">Desktop Panel</string>
                       </property>
                      </widget>
                     </item>
@@ -812,7 +812,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>431</width>
+                   <width>441</width>
                    <height>429</height>
                   </rect>
                  </property>

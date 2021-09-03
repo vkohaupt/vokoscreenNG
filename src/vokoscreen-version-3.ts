@@ -460,13 +460,6 @@
     </message>
 </context>
 <context>
-    <name>formMainWindow_wl</name>
-    <message>
-        <source>Desktop Panel</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
