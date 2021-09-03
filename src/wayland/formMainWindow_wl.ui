@@ -490,6 +490,9 @@
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
+                    <property name="suffix">
+                     <string notr="true"/>
+                    </property>
                    </widget>
                   </item>
                   <item row="2" column="1">
@@ -497,13 +500,23 @@
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
+                    <property name="suffix">
+                     <string notr="true"/>
+                    </property>
                    </widget>
                   </item>
                   <item row="3" column="2">
-                   <widget class="QSpinBox" name="spinBox_bottom"/>
+                   <widget class="QSpinBox" name="spinBox_bottom">
+                    <property name="suffix">
+                     <string notr="true"/>
+                    </property>
+                   </widget>
                   </item>
                   <item row="1" column="2">
                    <widget class="QSpinBox" name="spinBox_top">
+                    <property name="suffix">
+                     <string notr="true"/>
+                    </property>
                     <property name="maximum">
                      <number>2000</number>
                     </property>
