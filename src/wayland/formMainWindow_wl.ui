@@ -68,7 +68,7 @@
         <item>
          <widget class="QTabWidget" name="tabWidgetScreencast">
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <property name="iconSize">
            <size>
@@ -691,7 +691,7 @@
                  <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
                   <property name="text">
                    <string notr="true">Do not record mouse cursor.
-!!! KDE Plasma crashes completely if we want to record cursor, it is a KDE bug.</string>
+!!! Opensuse Tumbelweed KDE Plasma crashes completely if we want to record cursor.</string>
                   </property>
                   <property name="checked">
                    <bool>true</bool>
@@ -812,7 +812,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>441</width>
+                   <width>431</width>
                    <height>429</height>
                   </rect>
                  </property>
