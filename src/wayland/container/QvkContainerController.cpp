@@ -203,10 +203,10 @@ void QvkContainerController::set_available_formatVideoAudoicodec_in_tab()
         {
             for ( int i = 0; i < list_VideoCodecs.count(); i++ )
             {
-                QIcon icon( QString::fromUtf8( "/home/vk/Programmieren/QList-Codec/codec/accept.png" ) );
+                QIcon icon( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
                 if ( list_VideoCodecs.at(i).available == false )
                 {
-                    icon.addFile( QString::fromUtf8( "/home/vk/Programmieren/QList-Codec/codec/missing.png" ) );
+                    icon.addFile( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
                 }
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
                 QLabel *labelPicture = new QLabel();
@@ -223,10 +223,10 @@ void QvkContainerController::set_available_formatVideoAudoicodec_in_tab()
         {
             for ( int i = 0; i < list_AudioCodecs.count(); i++ )
             {
-                QIcon icon( QString::fromUtf8( "/home/vk/Programmieren/QList-Codec/codec/accept.png" ) );
+                QIcon icon( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
                 if ( list_AudioCodecs.at(i).available == false )
                 {
-                    icon.addFile( QString::fromUtf8( "/home/vk/Programmieren/QList-Codec/codec/missing.png" ) );
+                    icon.addFile( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
                 }
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
                 QLabel *labelPicture = new QLabel();
