@@ -129,8 +129,7 @@ void QvkMainWindow_wl::set_Connects()
 
     connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this,           SLOT( slot_frames_Reset() ) );
 
-    connect( ui->spinBox_top, QOverload<int>::of(&QSpinBox::valueChanged),[=](int i){ int value = ui->spinBox_top->maximum() - i;
-                                                                                      ui->spinBox_bottom->setValue( value ); } );
+    connect( ui->spinBox_top, QOverload<int>::of(&QSpinBox::valueChanged),[=](int i){ ui->spinBox_bottom->setValue( ui->spinBox_top->maximum() - i ); } );
 }
 
 
