@@ -93,21 +93,6 @@ void QvkMainWindow_wl::set_system_info()
     qDebug().noquote() << global::nameOutput << "Default Videopath:" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
 //    qDebug().noquote() << global::nameOutput << "User Videopath:" << vkSettings.getVideoPath();
     qDebug().noquote();
-
-    if ( qgetenv( "XDG_CURRENT_DESKTOP" ) == "KDE" ) {
-        qDebug().noquote() << global::nameOutput << "KDE detected, use panel bottom";
-        ui->checkBox_panel_bottom->click();
-        return;
-    }
-
-    if ( qgetenv( "XDG_CURRENT_DESKTOP" ) == "GNOME" ) {
-        qDebug().noquote() << global::nameOutput << "GNOME detected, use panel top";
-        ui->checkBox_panel_top->click();
-        return;
-    }
-
-    qDebug().noquote() << global::nameOutput << "Desktop not detected, use panel bottom";
-    ui->checkBox_panel_bottom->click();
 }
 
 
@@ -144,8 +129,7 @@ void QvkMainWindow_wl::set_Connects()
 
     connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this,           SLOT( slot_frames_Reset() ) );
 
-    connect( ui->spinBox_top, QOverload<int>::of(&QSpinBox::valueChanged),[=](int i){ qDebug() << i;
-                                                                                      int value = ui->spinBox_top->maximum() - i;
+    connect( ui->spinBox_top, QOverload<int>::of(&QSpinBox::valueChanged),[=](int i){ int value = ui->spinBox_top->maximum() - i;
                                                                                       ui->spinBox_bottom->setValue( value ); } );
 }
 
@@ -219,22 +203,6 @@ void QvkMainWindow_wl::slot_start()
     {
         qDebug().noquote() << global::nameOutput << "Start portal area";
         sourceType = 1;
-
-        if ( ui->checkBox_panel_top->isChecked() ) {
-            qDebug().noquote() << global::nameOutput << "Panel is top";
-        }
-
-        if ( ui->checkBox_panel_right->isChecked() ) {
-            qDebug().noquote() << global::nameOutput << "Panel is right";
-        }
-
-        if ( ui->checkBox_panel_bottom->isChecked() ) {
-            qDebug().noquote() << global::nameOutput << "Panel is bottom";
-        }
-
-        if ( ui->checkBox_panel_left->isChecked() ) {
-            qDebug().noquote() << global::nameOutput << "Panel is left";
-        }
     }
 
     // https://flatpak.github.io/xdg-desktop-portal/portal-docs.html#gdbus-property-org-freedesktop-portal-ScreenCast.AvailableCursorModes
@@ -266,43 +234,17 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
     int screenWidth = Screen->size().width();
     int screenHeight = Screen->size().height();
 
-// ************ old ********************************************
-/*    if ( ui->checkBox_panel_top->isChecked() == true )
-    {
-        QString top = QString::number( vkRegionChoise->getYRecordArea() + vkRegionChoise->get_sum_all_panels_height() );
-        QString right = QString::number( screenWidth - ( vkRegionChoise->getWidthRecordArea() + vkRegionChoise->getXRecordArea() ) );
-        QString bottom = QString::number( screenHeight - ( vkRegionChoise->getHeightRecordArea() + vkRegionChoise->getYRecordArea() ) - vkRegionChoise->get_sum_all_panels_height() );
-        QString left = QString::number( vkRegionChoise->getXRecordArea() );
-        videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
-    }
-
-    if ( ui->checkBox_panel_bottom->isChecked() == true )
-    {
-        QString top = QString::number( vkRegionChoise->getYRecordArea() );
-        QString right = QString::number( screenWidth - ( vkRegionChoise->getWidthRecordArea() + vkRegionChoise->getXRecordArea() ) );
-        QString bottom = QString::number( screenHeight - ( vkRegionChoise->getHeightRecordArea() + vkRegionChoise->getYRecordArea() ) );
-        QString left = QString::number( vkRegionChoise->getXRecordArea() );
-        videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
-    }
-*/
-// *********** new ***********************************************
-//    if ( ui->spinBox_bottom->value() == 0 )
-    {
-        QString top = QString::number( vkRegionChoise->getYRecordArea() + ui->spinBox_top->value() );//  vkRegionChoise->get_sum_all_panels_height() );
-        QString right = QString::number( screenWidth - ( vkRegionChoise->getWidthRecordArea() + vkRegionChoise->getXRecordArea() ) );
-        QString bottom = QString::number( screenHeight - ( vkRegionChoise->getHeightRecordArea() + vkRegionChoise->getYRecordArea() ) - vkRegionChoise->get_sum_all_panels_height() );
-        QString left = QString::number( vkRegionChoise->getXRecordArea() );
-        videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
-    }
-
-
+    QString top = QString::number( vkRegionChoise->getYRecordArea() + ui->spinBox_top->value() );//  vkRegionChoise->get_sum_all_panels_height() );
+    QString right = QString::number( screenWidth - ( vkRegionChoise->getWidthRecordArea() + vkRegionChoise->getXRecordArea() ) );
+    QString bottom = QString::number( screenHeight - ( vkRegionChoise->getHeightRecordArea() + vkRegionChoise->getYRecordArea() ) - vkRegionChoise->get_sum_all_panels_height() );
+    QString left = QString::number( vkRegionChoise->getXRecordArea() );
+    videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
 
     qDebug().noquote() << global::nameOutput << "Area crop from the screen"
-                                             << Screen->name() + ","
-                                             << Screen->manufacturer() + ","
-                                             << Screen->model() + ","
-                                             << QString::number( Screen->size().width() ) + "/" + QString::number( Screen->size().height() );
-
+                       << Screen->name() + ","
+                       << Screen->manufacturer() + ","
+                       << Screen->model() + ","
+                       << QString::number( Screen->size().width() ) + "/" + QString::number( Screen->size().height() );
 
     return videocrop;
 }
@@ -459,8 +401,5 @@ void QvkMainWindow_wl::test()
     QScreen *Screen = screen();
     ui->spinBox_top->setMaximum( Screen->size().height() - testWidget->size().height() );
     ui->spinBox_top->setValue( Screen->size().height() - testWidget->size().height() );
-
-
-
     testWidget->close();
 }

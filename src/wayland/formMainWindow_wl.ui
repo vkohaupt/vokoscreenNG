@@ -214,7 +214,19 @@
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
+                    <property name="buttonSymbols">
+                     <enum>QAbstractSpinBox::NoButtons</enum>
+                    </property>
+                    <property name="specialValueText">
+                     <string notr="true"/>
+                    </property>
                     <property name="suffix">
+                     <string notr="true"/>
+                    </property>
+                    <property name="prefix">
                      <string notr="true"/>
                     </property>
                    </widget>
@@ -224,24 +236,29 @@
                     <property name="enabled">
                      <bool>false</bool>
                     </property>
+                    <property name="specialValueText">
+                     <string notr="true"/>
+                    </property>
                     <property name="suffix">
                      <string notr="true"/>
                     </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="2">
-                   <widget class="QSpinBox" name="spinBox_bottom">
-                    <property name="enabled">
-                     <bool>false</bool>
-                    </property>
-                    <property name="suffix">
+                    <property name="prefix">
                      <string notr="true"/>
                     </property>
                    </widget>
                   </item>
                   <item row="1" column="2">
                    <widget class="QSpinBox" name="spinBox_top">
+                    <property name="buttonSymbols">
+                     <enum>QAbstractSpinBox::UpDownArrows</enum>
+                    </property>
+                    <property name="specialValueText">
+                     <string notr="true"/>
+                    </property>
                     <property name="suffix">
+                     <string notr="true"/>
+                    </property>
+                    <property name="prefix">
                      <string notr="true"/>
                     </property>
                    </widget>
@@ -258,6 +275,28 @@
                      </size>
                     </property>
                    </spacer>
+                  </item>
+                  <item row="3" column="2">
+                   <widget class="QSpinBox" name="spinBox_bottom">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
+                    <property name="buttonSymbols">
+                     <enum>QAbstractSpinBox::NoButtons</enum>
+                    </property>
+                    <property name="specialValueText">
+                     <string notr="true"/>
+                    </property>
+                    <property name="suffix">
+                     <string notr="true"/>
+                    </property>
+                    <property name="prefix">
+                     <string notr="true"/>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </item>
@@ -415,72 +454,6 @@
                    </item>
                   </layout>
                  </widget>
-                </item>
-                <item row="5" column="2">
-                 <layout class="QGridLayout" name="gridLayout_3">
-                  <property name="spacing">
-                   <number>0</number>
-                  </property>
-                  <item row="3" column="2" alignment="Qt::AlignHCenter">
-                   <widget class="QCheckBox" name="checkBox_panel_right">
-                    <property name="enabled">
-                     <bool>false</bool>
-                    </property>
-                    <property name="text">
-                     <string notr="true"/>
-                    </property>
-                    <property name="autoExclusive">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="1" alignment="Qt::AlignHCenter">
-                   <widget class="QCheckBox" name="checkBox_panel_bottom">
-                    <property name="text">
-                     <string notr="true"/>
-                    </property>
-                    <property name="checked">
-                     <bool>false</bool>
-                    </property>
-                    <property name="autoExclusive">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="0" alignment="Qt::AlignHCenter">
-                   <widget class="QCheckBox" name="checkBox_panel_left">
-                    <property name="enabled">
-                     <bool>false</bool>
-                    </property>
-                    <property name="text">
-                     <string notr="true"/>
-                    </property>
-                    <property name="autoExclusive">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="1" alignment="Qt::AlignHCenter">
-                   <widget class="QCheckBox" name="checkBox_panel_top">
-                    <property name="text">
-                     <string notr="true"/>
-                    </property>
-                    <property name="checked">
-                     <bool>false</bool>
-                    </property>
-                    <property name="autoExclusive">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="0" colspan="3" alignment="Qt::AlignHCenter">
-                   <widget class="QLabel" name="label_5">
-                    <property name="text">
-                     <string notr="true">Panel old</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
                 </item>
                 <item row="2" column="0">
                  <widget class="QRadioButton" name="radioButtonScreencastFullscreen">
