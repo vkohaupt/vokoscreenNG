@@ -231,6 +231,9 @@
                   </item>
                   <item row="3" column="2">
                    <widget class="QSpinBox" name="spinBox_bottom">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="suffix">
                      <string notr="true"/>
                     </property>
@@ -240,9 +243,6 @@
                    <widget class="QSpinBox" name="spinBox_top">
                     <property name="suffix">
                      <string notr="true"/>
-                    </property>
-                    <property name="maximum">
-                     <number>2000</number>
                     </property>
                    </widget>
                   </item>
@@ -785,7 +785,7 @@
                    <x>0</x>
                    <y>0</y>
                    <width>431</width>
-                   <height>429</height>
+                   <height>333</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">

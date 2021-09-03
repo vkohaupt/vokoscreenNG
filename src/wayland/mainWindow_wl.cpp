@@ -143,6 +143,10 @@ void QvkMainWindow_wl::set_Connects()
     connect( portal_wl, SIGNAL( signal_portal_cancel( uint ) ), this,              SLOT( slot_portal_cancel( uint ) ) );
 
     connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this,           SLOT( slot_frames_Reset() ) );
+
+    connect( ui->spinBox_top, QOverload<int>::of(&QSpinBox::valueChanged),[=](int i){ qDebug() << i;
+                                                                                      int value = ui->spinBox_top->maximum() - i;
+                                                                                      ui->spinBox_bottom->setValue( value ); } );
 }
 
 
@@ -263,7 +267,7 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
     int screenHeight = Screen->size().height();
 
 // ************ old ********************************************
-    if ( ui->checkBox_panel_top->isChecked() == true )
+/*    if ( ui->checkBox_panel_top->isChecked() == true )
     {
         QString top = QString::number( vkRegionChoise->getYRecordArea() + vkRegionChoise->get_sum_all_panels_height() );
         QString right = QString::number( screenWidth - ( vkRegionChoise->getWidthRecordArea() + vkRegionChoise->getXRecordArea() ) );
@@ -280,11 +284,11 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
         QString left = QString::number( vkRegionChoise->getXRecordArea() );
         videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
     }
-
+*/
 // *********** new ***********************************************
-    if ( ui->spinBox_bottom->value() == 0 )
+//    if ( ui->spinBox_bottom->value() == 0 )
     {
-        QString top = QString::number( vkRegionChoise->getYRecordArea() + vkRegionChoise->get_sum_all_panels_height() );
+        QString top = QString::number( vkRegionChoise->getYRecordArea() + ui->spinBox_top->value() );//  vkRegionChoise->get_sum_all_panels_height() );
         QString right = QString::number( screenWidth - ( vkRegionChoise->getWidthRecordArea() + vkRegionChoise->getXRecordArea() ) );
         QString bottom = QString::number( screenHeight - ( vkRegionChoise->getHeightRecordArea() + vkRegionChoise->getYRecordArea() ) - vkRegionChoise->get_sum_all_panels_height() );
         QString left = QString::number( vkRegionChoise->getXRecordArea() );
@@ -452,10 +456,11 @@ void QvkMainWindow_wl::set_test_available_geometry()
 
 void QvkMainWindow_wl::test()
 {
-    qDebug() << testWidget->size().height();
-
     QScreen *Screen = screen();
+    ui->spinBox_top->setMaximum( Screen->size().height() - testWidget->size().height() );
     ui->spinBox_top->setValue( Screen->size().height() - testWidget->size().height() );
+
+
 
     testWidget->close();
 }
