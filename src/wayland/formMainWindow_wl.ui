@@ -252,9 +252,6 @@
                     <property name="alignment">
                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                     </property>
-                    <property name="buttonSymbols">
-                     <enum>QAbstractSpinBox::UpDownArrows</enum>
-                    </property>
                     <property name="specialValueText">
                      <string notr="true"/>
                     </property>

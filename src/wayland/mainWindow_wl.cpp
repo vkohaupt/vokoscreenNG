@@ -391,11 +391,11 @@ void QvkMainWindow_wl::set_test_available_geometry()
     testWidget->setAttribute( Qt::WA_TranslucentBackground, false );
     testWidget->show();
     testWidget->showMaximized();
-    QTimer::singleShot( 1000, Qt::PreciseTimer, this, SLOT( slot_set_panel_hight_in_spinbox() ) );
+    QTimer::singleShot( 1000, Qt::PreciseTimer, this, SLOT( slot_set_panel_values_in_spinboxes() ) );
 }
 
 
-void QvkMainWindow_wl::slot_set_panel_hight_in_spinbox()
+void QvkMainWindow_wl::slot_set_panel_values_in_spinboxes()
 {
     QScreen *Screen = screen();
     ui->spinBox_top->setMaximum( Screen->size().height() - testWidget->size().height() );
