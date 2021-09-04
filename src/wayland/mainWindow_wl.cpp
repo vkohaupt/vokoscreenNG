@@ -232,10 +232,10 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
     int screenWidth = Screen->size().width();
     int screenHeight = Screen->size().height();
 
-    QString top = QString::number( vkRegionChoise->getYRecordArea() + ui->spinBox_top->value() );//  vkRegionChoise->get_sum_all_panels_height() );
-    QString right = QString::number( screenWidth - ( vkRegionChoise->getWidthRecordArea() + vkRegionChoise->getXRecordArea() ) );
-    QString bottom = QString::number( screenHeight - ( vkRegionChoise->getHeightRecordArea() + vkRegionChoise->getYRecordArea() ) - vkRegionChoise->get_sum_all_panels_height() );
-    QString left = QString::number( vkRegionChoise->getXRecordArea() );
+    QString top = QString::number( vkRegionChoise->getYRecordArea() + ui->spinBox_top->value() );
+    QString right = QString::number( screenWidth - ( vkRegionChoise->getWidthRecordArea() + vkRegionChoise->getXRecordArea() + ui->spinBox_left->value() + ui->spinBox_right->value() ) );
+    QString bottom = QString::number( screenHeight - ( vkRegionChoise->getHeightRecordArea() + vkRegionChoise->getYRecordArea() ) - ui->spinBox_top->value() + ui->spinBox_bottom->value() );
+    QString left = QString::number( vkRegionChoise->getXRecordArea() + ui->spinBox_left->value() );
     videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
 
     qDebug().noquote() << global::nameOutput << "Area crop from the screen"
@@ -380,6 +380,7 @@ void QvkMainWindow_wl::set_RegionChoice()
     connect( ui->radioButtonScreencastArea,     SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( slot_show( bool ) ) );
     connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
     connect( ui->spinBox_top, QOverload<int>::of(&QSpinBox::valueChanged),[=](int i){ ui->spinBox_bottom->setValue( ui->spinBox_top->maximum() - i ); } );
+    connect( ui->spinBox_left, QOverload<int>::of(&QSpinBox::valueChanged),[=](int i){ ui->spinBox_right->setValue( ui->spinBox_left->maximum() - i ); } );
 }
 
 
@@ -387,7 +388,7 @@ void QvkMainWindow_wl::set_test_available_geometry()
 {
     testWidget = new QWidget;
     testWidget->setWindowFlags( Qt::FramelessWindowHint );
-    testWidget->setAttribute( Qt::WA_TranslucentBackground, true );
+    testWidget->setAttribute( Qt::WA_TranslucentBackground, false );
     testWidget->show();
     testWidget->showMaximized();
     QTimer::singleShot( 1000, Qt::PreciseTimer, this, SLOT( slot_set_panel_hight_in_spinbox() ) );
@@ -399,5 +400,15 @@ void QvkMainWindow_wl::slot_set_panel_hight_in_spinbox()
     QScreen *Screen = screen();
     ui->spinBox_top->setMaximum( Screen->size().height() - testWidget->size().height() );
     ui->spinBox_top->setValue( Screen->size().height() - testWidget->size().height() );
+
+    ui->spinBox_left->setMaximum( Screen->size().width() - testWidget->size().width() );
+    ui->spinBox_left->setValue( Screen->size().width() - testWidget->size().width() );
+    // If no desktop panel, then spinbox disabled
+    if ( ui->spinBox_left->value() == 0 ){
+        ui->spinBox_left->setEnabled( false );
+    } else {
+        ui->spinBox_left->setEnabled( true );
+    }
+
     testWidget->close();
 }

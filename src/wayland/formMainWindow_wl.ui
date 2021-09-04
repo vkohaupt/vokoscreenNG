@@ -233,8 +233,8 @@
                   </item>
                   <item row="2" column="1">
                    <widget class="QSpinBox" name="spinBox_left">
-                    <property name="enabled">
-                     <bool>false</bool>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                     </property>
                     <property name="specialValueText">
                      <string notr="true"/>
@@ -249,6 +249,9 @@
                   </item>
                   <item row="1" column="2">
                    <widget class="QSpinBox" name="spinBox_top">
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
                     <property name="buttonSymbols">
                      <enum>QAbstractSpinBox::UpDownArrows</enum>
                     </property>
