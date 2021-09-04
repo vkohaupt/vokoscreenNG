@@ -379,8 +379,8 @@ void QvkMainWindow_wl::set_RegionChoice()
     vkRegionChoise = new QvkRegionChoise_wl();
     connect( ui->radioButtonScreencastArea,     SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( slot_show( bool ) ) );
     connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
-    connect( ui->spinBox_top, QOverload<int>::of(&QSpinBox::valueChanged),[=](int i){ ui->spinBox_bottom->setValue( ui->spinBox_top->maximum() - i ); } );
-    connect( ui->spinBox_left, QOverload<int>::of(&QSpinBox::valueChanged),[=](int i){ ui->spinBox_right->setValue( ui->spinBox_left->maximum() - i ); } );
+    connect( ui->spinBox_top,  QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int i){ ui->spinBox_bottom->setValue( ui->spinBox_top->maximum() - i ); } );
+    connect( ui->spinBox_left, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int i){ ui->spinBox_right->setValue( ui->spinBox_left->maximum() - i ); } );
 }
 
 
@@ -389,7 +389,7 @@ void QvkMainWindow_wl::set_test_available_geometry()
     testWidget = new QWidget;
     testWidget->setWindowFlags( Qt::FramelessWindowHint );
     testWidget->setAttribute( Qt::WA_TranslucentBackground, false );
-    testWidget->show();
+//    testWidget->show();
     testWidget->showMaximized();
     QTimer::singleShot( 1000, Qt::PreciseTimer, this, SLOT( slot_set_panel_values_in_spinboxes() ) );
 }
