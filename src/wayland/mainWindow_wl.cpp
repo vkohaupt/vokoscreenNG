@@ -400,6 +400,12 @@ void QvkMainWindow_wl::slot_set_panel_values_in_spinboxes()
     QScreen *Screen = screen();
     ui->spinBox_top->setMaximum( Screen->size().height() - testWidget->size().height() );
     ui->spinBox_top->setValue( Screen->size().height() - testWidget->size().height() );
+    // If no desktop panel, then spinbox disabled
+    if ( ui->spinBox_top->value() == 0 ){
+        ui->spinBox_top->setEnabled( false );
+    } else {
+        ui->spinBox_top->setEnabled( true );
+    }
 
     ui->spinBox_left->setMaximum( Screen->size().width() - testWidget->size().width() );
     ui->spinBox_left->setValue( Screen->size().width() - testWidget->size().width() );

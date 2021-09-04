@@ -104,7 +104,7 @@ void QvkCountdownWindow::paintEvent( QPaintEvent *event )
     painterPixmap.setFont( font );
     painterPixmap.setPen( Qt::red );
     QFontMetrics fontMetrics( font );
-    int fontWidth = fontMetrics.width( QString::number( countValue ) );
+    int fontWidth = fontMetrics.horizontalAdvance( QString::number( countValue ) );
     painterPixmap.drawText( width()/2-fontWidth/2, height()/2+fontSize/2, QString::number( countValue ) );
 
     //--------------------- Cancel button -------------------------------
@@ -113,7 +113,7 @@ void QvkCountdownWindow::paintEvent( QPaintEvent *event )
     font.setPointSize( fontSize );
     font.setBold( true);
     QFontMetrics fontMetrics_1( font );
-    fontWidth = fontMetrics_1.width( cancelText );
+    fontWidth = fontMetrics_1.horizontalAdvance( cancelText );
 
     qreal x = width()/2 - (fontWidth+30)/2;
     qreal y = 220;
