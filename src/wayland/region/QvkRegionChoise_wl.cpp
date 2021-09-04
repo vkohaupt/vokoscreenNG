@@ -59,9 +59,8 @@ QvkRegionChoise_wl::QvkRegionChoise_wl():handlePressed(NoHandle),
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
 
-    // Hint: Qt::WindowStaysOnTopHint is only for X11 and Windows on WayLand not do it
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
-    setAttribute( Qt::WA_TranslucentBackground, true);
+    setWindowFlags( Qt::FramelessWindowHint );
+    setAttribute( Qt::WA_TranslucentBackground, true );
     setMouseTracking( true );
     setFrameColor( Qt::darkGreen );
     hide();
@@ -79,7 +78,7 @@ void QvkRegionChoise_wl::slot_show( bool value )
     // Ist das Desktop-Panel oben am Bildschirm wird das Fenster z.b bei 0,44 gesetzt.
     // Ist das Panel unten am Bildschirm wird das Fenster bei 0,0 gesetzt.
     // Die Frage ist, wie erkennt man ob das Desktop-Panel oben oder unten gesetzt ist?
-    // Gelöst wird das bis jetzt in dem der User in der GUI angeben muß wo das Panel palziert ist
+    // Gelöst wird das bis jetzt in dem der User in der GUI angeben muß wo das Panel plaziert ist
 
 
     // Das Fenster wird dort plaziert wo sich die GUI befindet, dies wird vom compositer geregelt.
@@ -94,7 +93,7 @@ void QvkRegionChoise_wl::slot_show( bool value )
         // Anschließend wird das Fenster per "singelshot()" maximiert
         show();
         update();
-        QTimer::singleShot( 1000, this, SLOT( showMaximized() ) );
+        QTimer::singleShot( 1000, Qt::PreciseTimer, this, SLOT( showMaximized() ) );
         update();
     } else
     {
@@ -102,7 +101,7 @@ void QvkRegionChoise_wl::slot_show( bool value )
         // und anschließend per "hide()" versteckt werden
         showNormal();
         update();
-        QTimer::singleShot( 1000, this, SLOT( hide() ) );
+        QTimer::singleShot( 1000, Qt::PreciseTimer, this, SLOT( hide() ) );
         update();
     }
 }

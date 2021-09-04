@@ -50,7 +50,7 @@ public:
   void setFrameColor( Qt::GlobalColor color );
 
   QScreen *Screen;
-  int windowWidth = 400; //Must set a value. Under windows comes a QPainter message
+  int windowWidth = 400;
   int windowHeight = 400;
 
   int get_availables_window_height();
@@ -139,9 +139,6 @@ private:
   void HandleMiddle(QPainter &painter);
 
   void vk_setGeometry( int x, int y, int with, int height );
-
-  enum vk_platform { x11, wayland, windows };
-  vk_platform platform;
 
   bool recordemode = false;
 

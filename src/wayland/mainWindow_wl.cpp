@@ -11,6 +11,7 @@
 #include <QDebug>
 #include <QStyleFactory>
 #include <QLibraryInfo>
+#include <QTimer>
 
 QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     : QMainWindow(parent, f)
@@ -128,8 +129,6 @@ void QvkMainWindow_wl::set_Connects()
     connect( portal_wl, SIGNAL( signal_portal_cancel( uint ) ), this,              SLOT( slot_portal_cancel( uint ) ) );
 
     connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this,           SLOT( slot_frames_Reset() ) );
-
-    connect( ui->spinBox_top, QOverload<int>::of(&QSpinBox::valueChanged),[=](int i){ ui->spinBox_bottom->setValue( ui->spinBox_top->maximum() - i ); } );
 }
 
 
@@ -380,22 +379,22 @@ void QvkMainWindow_wl::set_RegionChoice()
     vkRegionChoise = new QvkRegionChoise_wl();
     connect( ui->radioButtonScreencastArea,     SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( slot_show( bool ) ) );
     connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
+    connect( ui->spinBox_top, QOverload<int>::of(&QSpinBox::valueChanged),[=](int i){ ui->spinBox_bottom->setValue( ui->spinBox_top->maximum() - i ); } );
 }
 
 
-#include <QTimer>
 void QvkMainWindow_wl::set_test_available_geometry()
 {
     testWidget = new QWidget;
     testWidget->setWindowFlags( Qt::FramelessWindowHint );
-    testWidget->setAttribute( Qt::WA_TranslucentBackground, true);
+    testWidget->setAttribute( Qt::WA_TranslucentBackground, true );
     testWidget->show();
     testWidget->showMaximized();
-    QTimer::singleShot( 1000, this, SLOT( test() ) );
+    QTimer::singleShot( 1000, Qt::PreciseTimer, this, SLOT( slot_set_panel_hight_in_spinbox() ) );
 }
 
 
-void QvkMainWindow_wl::test()
+void QvkMainWindow_wl::slot_set_panel_hight_in_spinbox()
 {
     QScreen *Screen = screen();
     ui->spinBox_top->setMaximum( Screen->size().height() - testWidget->size().height() );

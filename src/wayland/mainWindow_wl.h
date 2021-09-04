@@ -62,8 +62,7 @@ private Q_SLOTS:
     void slot_start_gst( QString vk_fd, QString vk_path );
     void slot_frames_Reset();
     void slot_portal_cancel( uint );
-
-    void test();
+    void slot_set_panel_hight_in_spinbox();
 
 
 protected:
