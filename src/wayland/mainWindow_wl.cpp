@@ -389,7 +389,6 @@ void QvkMainWindow_wl::set_test_available_geometry()
     testWidget = new QWidget;
     testWidget->setWindowFlags( Qt::FramelessWindowHint );
     testWidget->setAttribute( Qt::WA_TranslucentBackground, false );
-//    testWidget->show();
     testWidget->showMaximized();
     QTimer::singleShot( 1000, Qt::PreciseTimer, this, SLOT( slot_set_panel_values_in_spinboxes() ) );
 }
