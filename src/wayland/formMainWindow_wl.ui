@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>722</width>
-    <height>467</height>
+    <width>767</width>
+    <height>482</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -473,14 +473,14 @@
                   <item alignment="Qt::AlignHCenter">
                    <widget class="QLabel" name="label_7">
                     <property name="text">
-                     <string>openSUSE Tumbelweed KDE</string>
+                     <string notr="true">openSUSE Tumbelweed KDE</string>
                     </property>
                    </widget>
                   </item>
                   <item alignment="Qt::AlignHCenter">
                    <widget class="QLabel" name="label_5">
                     <property name="text">
-                     <string>Fedora 34 KDE / Gnome</string>
+                     <string notr="true">Fedora 34 KDE / Gnome</string>
                     </property>
                    </widget>
                   </item>
@@ -491,7 +491,7 @@
                   <item alignment="Qt::AlignHCenter">
                    <widget class="QLabel" name="label_4">
                     <property name="text">
-                     <string>Kubuntu 21.04</string>
+                     <string notr="true">Kubuntu 21.04</string>
                     </property>
                    </widget>
                   </item>
@@ -772,8 +772,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>402</width>
-                   <height>331</height>
+                   <width>431</width>
+                   <height>337</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
