@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>767</width>
-    <height>478</height>
+    <width>722</width>
+    <height>467</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -89,67 +89,17 @@
              <layout class="QVBoxLayout" name="verticalLayout_7">
               <item>
                <layout class="QGridLayout" name="gridLayout_2">
-                <item row="1" column="0" colspan="2">
-                 <layout class="QHBoxLayout" name="horizontalLayout_3">
-                  <item>
-                   <widget class="QCheckBox" name="checkBox">
-                    <property name="enabled">
-                     <bool>false</bool>
-                    </property>
-                    <property name="text">
-                     <string notr="true">Video</string>
-                    </property>
-                    <property name="checked">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QCheckBox" name="checkBox_2">
-                    <property name="enabled">
-                     <bool>false</bool>
-                    </property>
-                    <property name="text">
-                     <string notr="true">Audio</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_5">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
-                </item>
-                <item row="3" column="0">
-                 <widget class="QRadioButton" name="radioButtonScreencastWindow">
+                <item row="2" column="0">
+                 <widget class="QRadioButton" name="radioButtonScreencastFullscreen">
                   <property name="text">
-                   <string notr="true">Window</string>
+                   <string notr="true">Fullscreen</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
                   </property>
                   <attribute name="buttonGroup">
                    <string notr="true">buttonGroup</string>
                   </attribute>
-                 </widget>
-                </item>
-                <item row="10" column="0" colspan="3" alignment="Qt::AlignHCenter">
-                 <widget class="QLabel" name="label_6">
-                  <property name="font">
-                   <font>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string notr="true">For full feature support please logout and start a X11 Desktop session.</string>
-                  </property>
                  </widget>
                 </item>
                 <item row="6" column="0" colspan="3">
@@ -169,148 +119,6 @@
                   </property>
                   <property name="text">
                    <string notr="true">This experimental Wayland support is continuously developed, tested with</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="5" column="0" colspan="2">
-                 <layout class="QGridLayout" name="gridLayout_4">
-                  <property name="spacing">
-                   <number>0</number>
-                  </property>
-                  <item row="2" column="0">
-                   <widget class="QRadioButton" name="radioButtonScreencastArea">
-                    <property name="text">
-                     <string notr="true">Area</string>
-                    </property>
-                    <attribute name="buttonGroup">
-                     <string notr="true">buttonGroup</string>
-                    </attribute>
-                   </widget>
-                  </item>
-                  <item row="2" column="4">
-                   <widget class="QToolButton" name="toolButtonScreencastAreaReset">
-                    <property name="text">
-                     <string notr="true"/>
-                    </property>
-                    <property name="icon">
-                     <iconset resource="../screencast.qrc">
-                      <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="1" colspan="3">
-                   <layout class="QHBoxLayout" name="horizontalLayout_6">
-                    <item alignment="Qt::AlignHCenter">
-                     <widget class="QLabel" name="label_11">
-                      <property name="text">
-                       <string notr="true">Desktop Panel</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item row="2" column="3">
-                   <widget class="QSpinBox" name="spinBox_right">
-                    <property name="enabled">
-                     <bool>false</bool>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                    </property>
-                    <property name="buttonSymbols">
-                     <enum>QAbstractSpinBox::NoButtons</enum>
-                    </property>
-                    <property name="specialValueText">
-                     <string notr="true"/>
-                    </property>
-                    <property name="suffix">
-                     <string notr="true"/>
-                    </property>
-                    <property name="prefix">
-                     <string notr="true"/>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="1">
-                   <widget class="QSpinBox" name="spinBox_left">
-                    <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                    </property>
-                    <property name="specialValueText">
-                     <string notr="true"/>
-                    </property>
-                    <property name="suffix">
-                     <string notr="true"/>
-                    </property>
-                    <property name="prefix">
-                     <string notr="true"/>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="2">
-                   <widget class="QSpinBox" name="spinBox_top">
-                    <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                    </property>
-                    <property name="specialValueText">
-                     <string notr="true"/>
-                    </property>
-                    <property name="suffix">
-                     <string notr="true"/>
-                    </property>
-                    <property name="prefix">
-                     <string notr="true"/>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="5">
-                   <spacer name="horizontalSpacer_3">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="3" column="2">
-                   <widget class="QSpinBox" name="spinBox_bottom">
-                    <property name="enabled">
-                     <bool>false</bool>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                    </property>
-                    <property name="buttonSymbols">
-                     <enum>QAbstractSpinBox::NoButtons</enum>
-                    </property>
-                    <property name="specialValueText">
-                     <string notr="true"/>
-                    </property>
-                    <property name="suffix">
-                     <string notr="true"/>
-                    </property>
-                    <property name="prefix">
-                     <string notr="true"/>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item row="8" column="0" colspan="3" alignment="Qt::AlignHCenter">
-                 <widget class="QLabel" name="label_2">
-                  <property name="text">
-                   <string notr="true">openSUSE Tumbelweed KDE</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_8">
-                  <property name="text">
-                   <string/>
                   </property>
                  </widget>
                 </item>
@@ -455,19 +263,6 @@
                   </layout>
                  </widget>
                 </item>
-                <item row="2" column="0">
-                 <widget class="QRadioButton" name="radioButtonScreencastFullscreen">
-                  <property name="text">
-                   <string notr="true">Fullscreen</string>
-                  </property>
-                  <property name="checked">
-                   <bool>true</bool>
-                  </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">buttonGroup</string>
-                  </attribute>
-                 </widget>
-                </item>
                 <item row="4" column="0" colspan="3">
                  <widget class="Line" name="line_4">
                   <property name="orientation">
@@ -475,12 +270,232 @@
                   </property>
                  </widget>
                 </item>
-                <item row="9" column="0" colspan="3" alignment="Qt::AlignHCenter">
-                 <widget class="QLabel" name="label_4">
+                <item row="10" column="0" colspan="3" alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="label_6">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
                   <property name="text">
-                   <string notr="true">Fedora 34 KDE / Gnome</string>
+                   <string notr="true">For full feature support please logout and start a X11 Desktop session.</string>
                   </property>
                  </widget>
+                </item>
+                <item row="1" column="0" colspan="2">
+                 <layout class="QHBoxLayout" name="horizontalLayout_3">
+                  <item>
+                   <widget class="QCheckBox" name="checkBox">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="text">
+                     <string notr="true">Video</string>
+                    </property>
+                    <property name="checked">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QCheckBox" name="checkBox_2">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="text">
+                     <string notr="true">Audio</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_5">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_8">
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="0" colspan="2">
+                 <layout class="QGridLayout" name="gridLayout_4">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <item row="2" column="0">
+                   <widget class="QRadioButton" name="radioButtonScreencastArea">
+                    <property name="text">
+                     <string notr="true">Area</string>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">buttonGroup</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item row="2" column="4">
+                   <widget class="QToolButton" name="toolButtonScreencastAreaReset">
+                    <property name="text">
+                     <string notr="true"/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="../screencast.qrc">
+                      <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1" colspan="3">
+                   <layout class="QHBoxLayout" name="horizontalLayout_6">
+                    <item alignment="Qt::AlignHCenter">
+                     <widget class="QLabel" name="label_11">
+                      <property name="text">
+                       <string notr="true">Desktop Panel</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item row="2" column="3">
+                   <widget class="QSpinBox" name="spinBox_right">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
+                    <property name="buttonSymbols">
+                     <enum>QAbstractSpinBox::NoButtons</enum>
+                    </property>
+                    <property name="specialValueText">
+                     <string notr="true"/>
+                    </property>
+                    <property name="suffix">
+                     <string notr="true"/>
+                    </property>
+                    <property name="prefix">
+                     <string notr="true"/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QSpinBox" name="spinBox_left">
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
+                    <property name="specialValueText">
+                     <string notr="true"/>
+                    </property>
+                    <property name="suffix">
+                     <string notr="true"/>
+                    </property>
+                    <property name="prefix">
+                     <string notr="true"/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QSpinBox" name="spinBox_top">
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
+                    <property name="specialValueText">
+                     <string notr="true"/>
+                    </property>
+                    <property name="suffix">
+                     <string notr="true"/>
+                    </property>
+                    <property name="prefix">
+                     <string notr="true"/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="5">
+                   <spacer name="horizontalSpacer_3">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item row="3" column="2">
+                   <widget class="QSpinBox" name="spinBox_bottom">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
+                    <property name="buttonSymbols">
+                     <enum>QAbstractSpinBox::NoButtons</enum>
+                    </property>
+                    <property name="specialValueText">
+                     <string notr="true"/>
+                    </property>
+                    <property name="suffix">
+                     <string notr="true"/>
+                    </property>
+                    <property name="prefix">
+                     <string notr="true"/>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QRadioButton" name="radioButtonScreencastWindow">
+                  <property name="text">
+                   <string notr="true">Window</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroup</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item row="8" column="0" colspan="3">
+                 <layout class="QHBoxLayout" name="horizontalLayout_12">
+                  <item alignment="Qt::AlignHCenter">
+                   <widget class="QLabel" name="label_7">
+                    <property name="text">
+                     <string>openSUSE Tumbelweed KDE</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignHCenter">
+                   <widget class="QLabel" name="label_5">
+                    <property name="text">
+                     <string>Fedora 34 KDE / Gnome</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="9" column="0" colspan="3">
+                 <layout class="QHBoxLayout" name="horizontalLayout_7">
+                  <item alignment="Qt::AlignHCenter">
+                   <widget class="QLabel" name="label_4">
+                    <property name="text">
+                     <string>Kubuntu 21.04</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </item>
                </layout>
               </item>
@@ -757,8 +772,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>431</width>
-                   <height>333</height>
+                   <width>402</width>
+                   <height>331</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
