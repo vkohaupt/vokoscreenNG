@@ -622,7 +622,7 @@ QSize QvkPlayer::getPixelaspectRatio()
 void QvkPlayer::vk_showFullscreen()
 {
     uiMainWindow->tabWidgetSideBar->hide();
-//    uiMainWindow->verticalLayoutCentralWidget->addWidget( this );
+    uiMainWindow->widgetSidbar->hide();
     uiMainWindow->horizontalLayout_49->addWidget( this );
 
     parentMainWindow->showFullScreen();
@@ -649,6 +649,7 @@ void QvkPlayer::vk_showFullscreen()
 void QvkPlayer::vk_showNormal()
 {
     uiMainWindow->tabWidgetSideBar->show();
+    uiMainWindow->widgetSidbar->show();
     uiMainWindow->verticalLayoutTabSidebarPlayer->addWidget( this );
     parentMainWindow->showNormal();
 
