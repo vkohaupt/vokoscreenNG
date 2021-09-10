@@ -622,7 +622,9 @@ QSize QvkPlayer::getPixelaspectRatio()
 void QvkPlayer::vk_showFullscreen()
 {
     uiMainWindow->tabWidgetSideBar->hide();
-    uiMainWindow->verticalLayoutCentralWidget->addWidget( this );
+//    uiMainWindow->verticalLayoutCentralWidget->addWidget( this );
+    uiMainWindow->horizontalLayout_49->addWidget( this );
+
     parentMainWindow->showFullScreen();
 
     ui->widgetMenueBar->setParent( ui->labelPlayer);
