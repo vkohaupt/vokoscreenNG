@@ -1086,7 +1086,7 @@ void QvkRegionChoise::printSize( QPainter &painter )
   painter.setFont( font );
 
   QFontMetrics fontMetrics( font );
-  pixelWidth = fontMetrics.horizontalAdvance( widthHeigtSize );
+  pixelWidth = fontMetrics.width( widthHeigtSize );
   pixelHeight = fontMetrics.height();
   QRect rect( frame_X + frame_Width/2 - pixelWidth/2 - 5,
               frame_Y + frame_height/2 - pixelHeight/2 - 50,
@@ -1188,7 +1188,7 @@ void QvkRegionChoise::HandleTopLeftSize( QPainter &painter)
     string.append( "x:" + QString::number( frame_X ) );
     string.append( "  ");
     QFontMetrics fontMetrics( font );
-    pixelWidth = fontMetrics.horizontalAdvance( string );
+    pixelWidth = fontMetrics.width( string );
     pixelHeight = fontMetrics.height() * 2;
     QRect rect( frame_X + radius,
                 frame_Y + radius,
@@ -1245,7 +1245,7 @@ void QvkRegionChoise::HandleTopMiddleSize( QPainter &painter )
     string.append( "  " );
     string.append( "y:" + QString::number( frame_Y ) );
     string.append( "  " );
-    pixelWidth = fontMetrics.horizontalAdvance( string);
+    pixelWidth = fontMetrics.width( string);
     pixelHeight = fontMetrics.height();
     QRect rect( frame_X + frame_Width/2 - pixelWidth/2,
                 frame_Y + radius + 5,
@@ -1300,7 +1300,7 @@ void QvkRegionChoise::HandleTopRightSize( QPainter &painter )
     string.append( "x:" + QString::number( frame_X + frame_Width - framePenHalf ) );
     string.append( "  ");
     QFontMetrics fontMetrics( font );
-    pixelWidth = fontMetrics.horizontalAdvance( string );
+    pixelWidth = fontMetrics.width( string );
     pixelHeight = fontMetrics.height() * 2;
     QRect rect( frame_X + frame_Width - pixelWidth - radius,
                 frame_Y + radius,
@@ -1357,7 +1357,7 @@ void QvkRegionChoise::HandleRightMiddleSize( QPainter &painter )
     string.append( "x:" + QString::number( frame_X + frame_Width - framePenHalf ) );
     string.append( "  ");
     QFontMetrics fontMetrics( font );
-    pixelWidth = fontMetrics.horizontalAdvance( string );
+    pixelWidth = fontMetrics.width( string );
     pixelHeight = fontMetrics.height();
     QRect rect( frame_X + frame_Width - pixelWidth - radius - 5,
                 frame_Y + frame_height/2 - pixelHeight/2,
@@ -1413,7 +1413,7 @@ void QvkRegionChoise::HandleBottomRightSize( QPainter &painter )
     string.append( "x:" + QString::number( frame_X + frame_Width - framePenHalf) );
     string.append( "  ");
     QFontMetrics fontMetrics( font );
-    pixelWidth = fontMetrics.horizontalAdvance( string );
+    pixelWidth = fontMetrics.width( string );
     pixelHeight = fontMetrics.height() * 2;
     QRect rect( frame_X + frame_Width - pixelWidth - radius,
                 frame_Y + frame_height - pixelHeight - radius,
@@ -1471,7 +1471,7 @@ void QvkRegionChoise::HandleBottomMiddleSize(QPainter &painter )
     string.append( "  " );
     string.append( "y:" + QString::number( frame_Y ) );
     string.append( "  " );
-    pixelWidth = fontMetrics.horizontalAdvance( string);
+    pixelWidth = fontMetrics.width( string);
     pixelHeight = fontMetrics.height();
     QRect rect( frame_X + frame_Width/2 - pixelWidth/2,
                 frame_Y + frame_height - pixelHeight - radius - 5,
@@ -1526,7 +1526,7 @@ void QvkRegionChoise::HandleBottomLeftSize( QPainter &painter )
     string.append( "x:" + QString::number( frame_X ) );
     string.append( "  ");
     QFontMetrics fontMetrics( font );
-    pixelWidth = fontMetrics.horizontalAdvance( string );
+    pixelWidth = fontMetrics.width( string );
     pixelHeight = fontMetrics.height() * 2;
     QRect rect( frame_X + radius,
                 frame_Y + frame_height - pixelHeight - radius - 5,
@@ -1583,7 +1583,7 @@ void QvkRegionChoise::HandleLeftMiddleSize( QPainter &painter )
     string.append( "x:" + QString::number( frame_X ) );
     string.append( "  ");
     QFontMetrics fontMetrics( font );
-    pixelWidth = fontMetrics.horizontalAdvance( string );
+    pixelWidth = fontMetrics.width( string );
     pixelHeight = fontMetrics.height();
     QRect rect( frame_X + radius + 5,
                 frame_Y + frame_height/2 - pixelHeight/2,

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>704</width>
+    <width>702</width>
     <height>426</height>
    </rect>
   </property>
@@ -301,7 +301,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -778,7 +778,7 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>488</width>
+                      <width>486</width>
                       <height>167</height>
                      </rect>
                     </property>
@@ -1981,7 +1981,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>314</width>
+                   <width>312</width>
                    <height>290</height>
                   </rect>
                  </property>
