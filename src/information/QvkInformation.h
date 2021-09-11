@@ -81,6 +81,9 @@ private:
 
   QvkVersion version;
 
+  QString fileName = "";
+
+
 };
 
 #endif
