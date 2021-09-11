@@ -60,7 +60,7 @@ void QvkCiscoOpenh264Controller::showWaitDialog()
     {
         ui->tabWidgetSideBar->hide();
         vkCiscoWaitDialog = new QvkCiscoWaitDialog;
-        ui->verticalLayoutCentralWidget->insertWidget( 0, vkCiscoWaitDialog );
+        ui->horizontalLayout_49->insertWidget( 0, vkCiscoWaitDialog );
         vkCiscoWaitDialog->show();
     }
 }
@@ -147,7 +147,7 @@ void QvkCiscoOpenh264Controller::slot_showCiscoFinishDialog()
 
     QvkCiscoFinishDialog *vkCiscoFinishDialog = new QvkCiscoFinishDialog;
     ui->tabWidgetSideBar->hide();
-    ui->verticalLayoutCentralWidget->insertWidget( 0, vkCiscoFinishDialog );
+    ui->horizontalLayout_49->insertWidget( 0, vkCiscoFinishDialog );
     isShowCiscoFinishDialog = true;
 }
 
