@@ -59,6 +59,7 @@ void QvkCiscoOpenh264Controller::showWaitDialog()
     if ( !fileInfo_libopenh264.exists() )
     {
         ui->tabWidgetSideBar->hide();
+        ui->widgetSidbar->hide();
         vkCiscoWaitDialog = new QvkCiscoWaitDialog;
         ui->horizontalLayout_49->insertWidget( 0, vkCiscoWaitDialog );
         vkCiscoWaitDialog->show();
