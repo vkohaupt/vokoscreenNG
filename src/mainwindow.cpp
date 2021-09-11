@@ -2013,7 +2013,7 @@ void QvkMainWindow::slot_Play()
     QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
 
     qDebug().noquote() << global::nameOutput << "play video with vokoplayer";
-    ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
+    ui->toolButtonPlayer->click();
     QString string;
     string.append( ui->lineEditVideoPath->text() );
     string.append( "/" );
