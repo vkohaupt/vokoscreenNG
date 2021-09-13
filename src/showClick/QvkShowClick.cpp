@@ -58,7 +58,7 @@ void QvkShowClick::setColorButtons()
                 vkPushButton->setObjectName( "PushButton_ShowClick_color_" + QVariant::fromValue( Qt::GlobalColor(x) ).toString() );
                 vkPushButton->setMaximumHeight( 23 );
                 listLayaout.at(i)->addWidget( vkPushButton );
-                connect( vkPushButton, &QPushButton::clicked, [=]() { vkPreviewWidget->setColor( Qt::GlobalColor(x) ); } );
+                connect( vkPushButton, &QPushButton::clicked, this, [=]() { vkPreviewWidget->setColor( Qt::GlobalColor(x) ); } );
                 break;
             }
         }
@@ -77,7 +77,7 @@ void QvkShowClick::setSpezialSlider()
     vkSpezialSliderDiameter->setValue( 50 );
     vkSpezialSliderDiameter->setShowValue( false );
     vkSpezialSliderDiameter->show();
-    connect( vkSpezialSliderDiameter, &QSlider::valueChanged, [=]( int value ) { vkPreviewWidget->setDiameter( value ); } );
+    connect( vkSpezialSliderDiameter, &QSlider::valueChanged, this, [=]( int value ) { vkPreviewWidget->setDiameter( value ); } );
 
     vkSpezialSliderOpacity = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayoutOpacity->insertWidget( 0, vkSpezialSliderOpacity );
@@ -88,7 +88,7 @@ void QvkShowClick::setSpezialSlider()
     vkSpezialSliderOpacity->setValue( 70 );
     vkSpezialSliderOpacity->setShowValue( false );
     vkSpezialSliderOpacity->show();
-    connect( vkSpezialSliderOpacity, &QSlider::valueChanged, [=]( int value ) { vkPreviewWidget->setOpacity( (double)value / 100 ); } );
+    connect( vkSpezialSliderOpacity, &QSlider::valueChanged, this, [=]( int value ) { vkPreviewWidget->setOpacity( (double)value / 100 ); } );
 
     vkSpezialSliderShowtime = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayoutShowtime->insertWidget( 0, vkSpezialSliderShowtime );
@@ -113,10 +113,10 @@ void QvkShowClick::setSpezialCheckBox()
 
 void QvkShowClick::setToolButtonDefaultValues()
 {
-    connect( ui->toolButtonShowclickColorDefault,    &QPushButton::clicked, [=] () { vkPreviewWidget->setColor( colorDefault ); } );
-    connect( ui->toolButtonShowclickDiameterDefault, &QPushButton::clicked, [=] () { vkSpezialSliderDiameter->setValue( diameterDefault ); } );
-    connect( ui->toolButtonShowclickOpacityDefault,  &QPushButton::clicked, [=] () { vkSpezialSliderOpacity->setValue( opacityDefault ); } );
-    connect( ui->toolButtonShowclickTimeDefault,     &QPushButton::clicked, [=] () { vkSpezialSliderShowtime->setValue( timeDefault ); } );
+    connect( ui->toolButtonShowclickColorDefault,    &QPushButton::clicked, this, [=]() { vkPreviewWidget->setColor( colorDefault ); } );
+    connect( ui->toolButtonShowclickDiameterDefault, &QPushButton::clicked, this, [=]() { vkSpezialSliderDiameter->setValue( diameterDefault ); } );
+    connect( ui->toolButtonShowclickOpacityDefault,  &QPushButton::clicked, this, [=]() { vkSpezialSliderOpacity->setValue( opacityDefault ); } );
+    connect( ui->toolButtonShowclickTimeDefault,     &QPushButton::clicked, this, [=]() { vkSpezialSliderShowtime->setValue( timeDefault ); } );
 }
 
 
