@@ -38,6 +38,7 @@
 #include "QvkAudioController.h"
 #include "QvkShowClick.h"
 #include "QvkHalo.h"
+#include "QvkGlobalShortcut.h"
 
 #ifdef Q_OS_WIN
   #include "QvkCiscoOpenh264Controller.h"
@@ -71,7 +72,7 @@ public:
     QvkSpezialSlider *sliderFrames;
 
     QvkMagnifierController *vkMagnifierController;
-
+    QvkGlobalShortcut *vkGlobalShortcut;
 
 private:
     QvkShowClick *vkShowClick;

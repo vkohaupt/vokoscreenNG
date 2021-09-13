@@ -24,7 +24,6 @@
 
 #include "ui_formMainWindow.h"
 #include "QvkInformation.h"
-#include "QvkGlobalShortcut.h"
 #include "QvkLogController.h"
 #include "global.h"
 #include "QvkScreenManager.h"
@@ -51,7 +50,6 @@
 QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                                 ui(new Ui::formMainWindow),
                                                 vkWinInfo(new QvkWinInfo)
-//                                                vkCountdown(new QvkCountdown)
 {
     ui->setupUi(this);
 
@@ -203,13 +201,13 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #ifdef Q_OS_LINUX
     if ( QX11Info::isPlatformX11() == true )
     {
-        QvkGlobalShortcut *vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
+        vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
         Q_UNUSED(vkGlobalShortcut);
     }
 #endif
 
 #ifdef Q_OS_WIN
-    QvkGlobalShortcut *vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
+    vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
     Q_UNUSED(vkGlobalShortcut);
 #endif
 
@@ -1928,8 +1926,11 @@ void QvkMainWindow::slot_Stop()
         GstStateChangeReturn ret ;
         Q_UNUSED(ret);
         ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
+        Q_UNUSED(ret);
         ret = gst_element_set_state( pipeline, GST_STATE_READY );
+        Q_UNUSED(ret);
         ret = gst_element_set_state( pipeline, GST_STATE_NULL );
+        Q_UNUSED(ret);
         gst_object_unref( pipeline );
         qDebug().noquote() << global::nameOutput << "Stop record";
     }
