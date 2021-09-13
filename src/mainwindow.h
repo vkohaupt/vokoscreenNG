@@ -70,6 +70,9 @@ public:
     QvkAudioController *vkAudioController;
     QvkSpezialSlider *sliderFrames;
 
+    QvkMagnifierController *vkMagnifierController;
+
+
 private:
     QvkShowClick *vkShowClick;
 

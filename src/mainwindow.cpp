@@ -181,7 +181,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     setWindowIcon( icon );
 
-    QvkMagnifierController *vkMagnifierController = new QvkMagnifierController(ui);
+    vkMagnifierController = new QvkMagnifierController(ui);
     Q_UNUSED(vkMagnifierController);
 
     vkPlayer = new QvkPlayer( this, ui );
