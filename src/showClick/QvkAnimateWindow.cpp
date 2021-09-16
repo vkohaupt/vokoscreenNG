@@ -55,6 +55,10 @@ QvkAnimateWindow::QvkAnimateWindow( QWidget *parent,
     }
 #endif
 
+#ifdef Q_OS_WIN
+    setAttribute( Qt::WA_TranslucentBackground, true );
+#endif
+
     resize( valueDiameter + 10, valueDiameter + 10 );
     move( x / devicePixelRatioF() - ( width() / 2 ), y / devicePixelRatioF() - ( height() / 2 ) );
 
