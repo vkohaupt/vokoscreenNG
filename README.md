@@ -21,7 +21,32 @@ Every file must include the License-header.
 The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/blob/3.0/Third-Party-License/MIT-License
 
 
-## Windows 10
+## Windows 10 64-bit
+### BuildRequires (Not completely)
+* Required from version 3.1.0  
+  Online-Installer https://www.qt.io/download-thank-you?os=windows  
+  - Qt
+    - Qt 5.15.2
+      - MinGW 8.1.0 64-bit
+      - Qt Network Authorization (Not sure if this is needed)
+    - Developer and Designer Tools
+      - Qt Creator 5.0.1 CDB Debugger Support
+      - Debugging Tools for Windows
+      - MinGW 8.1.0 64-bit
+      - CMake 3.21.1 64-bit
+      - Ninja 1.10.2
+      - openSSL 1.1.1 Toolkit
+        - openssl 64-bit binaries (Not sure if this is needed)
+    
+         
+  https://gstreamer.freedesktop.org/data/pkg/windows/1.18.4/mingw/gstreamer-1.0-mingw-x86_64-1.18.4.msi  
+  https://gstreamer.freedesktop.org/data/pkg/windows/1.18.4/mingw/gstreamer-1.0-devel-mingw-x86_64-1.18.4.msi  
+
+### Environment
+* No additional entries 
+
+
+## Windows 10 32-bit
 ### Requirements
 * The integrated vokoscreenNG Player needs a codec pack.
 
