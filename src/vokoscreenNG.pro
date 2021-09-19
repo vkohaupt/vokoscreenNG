@@ -76,7 +76,6 @@ unix:PKGCONFIG += gstreamer-1.0 libpulse wayland-client
 unix:LIBS += -lpulse-simple
 unix:LIBS += -lX11
 
-
 win32:contains(QMAKE_HOST.arch, x86_64) {
 RC_ICONS = vokoscreenNG.ico
 GStreamerDir=$$(GSTREAMER_1_0_ROOT_X86)
@@ -86,8 +85,6 @@ INCLUDEPATH += $${GStreamerDir}\lib\glib-2.0\include
 INCLUDEPATH += $${GStreamerDir}\include
 LIBS += -L$${GStreamerDir}\bin
 LIBS += -L$${GStreamerDir}\lib\gstreamer-1.0
-LIBS += -LC:\Qt\Qt5.9.4\Tools\mingw530_32\bin
-LIBS += -LC:\Qt\Qt5.9.4\Tools\mingw530_32\opt\bin
 LIBS += -llibgstreamer-1.0-0
 LIBS += -llibglib-2.0-0
 LIBS += -llibgobject-2.0-0
