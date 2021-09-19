@@ -23,23 +23,18 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 
 ## Windows 10 64-bit
 ### BuildRequires
-- Required from version 3.1.0  
+- Required from version 3.1.0 pre alpha
 
   The 32-bit version of vc_redist.x86.exe is required to run the Qt installer.  
   https://aka.ms/vs/16/release/vc_redist.x86.exe  
   
-  Online-Installer https://www.qt.io/download-thank-you?os=windows
+  Qt Online Installer https://www.qt.io/download-thank-you?os=windows
     - Qt 5.15.2  
       [+] MinGW 8.1.0 64-bit  
-      [+] Qt Network Authorization (Not sure if this is needed)  
     - Developer and Designer Tools  
       [+] Qt Creator 5.0.1 CDB Debugger Support  
       [+] Debugging Tools for Windows  
       [+] MinGW 8.1.0 64-bit  
-      [+] CMake 3.21.1 64-bit  
-      [+] Ninja 1.10.2  
-    - openSSL 1.1.1 Toolkit  
-      [+] openssl 64-bit binaries (Not sure if this is needed)
          
   https://gstreamer.freedesktop.org/data/pkg/windows/1.18.4/mingw/gstreamer-1.0-mingw-x86_64-1.18.4.msi  
   https://gstreamer.freedesktop.org/data/pkg/windows/1.18.4/mingw/gstreamer-1.0-devel-mingw-x86_64-1.18.4.msi  
