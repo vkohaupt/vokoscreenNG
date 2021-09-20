@@ -78,7 +78,7 @@ unix:LIBS += -lX11
 
 win32:contains(QMAKE_HOST.arch, x86_64) {
 RC_ICONS = vokoscreenNG.ico
-GStreamerDir=$$(GSTREAMER_1_0_ROOT_X86)
+GStreamerDir=$$(GSTREAMER_1_0_ROOT_MINGW_X86_64)
 INCLUDEPATH += $${GStreamerDir}\include\gstreamer-1.0
 INCLUDEPATH += $${GStreamerDir}\include\glib-2.0
 INCLUDEPATH += $${GStreamerDir}\lib\glib-2.0\include
