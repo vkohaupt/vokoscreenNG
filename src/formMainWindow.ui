@@ -301,7 +301,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -430,26 +430,23 @@
                </spacer>
               </item>
               <item>
-               <layout class="QGridLayout" name="gridLayout_9" rowstretch="0,0,0" columnstretch="0,0,0,0">
+               <layout class="QGridLayout" name="gridLayout_9" rowstretch="0,0,0,0,0" columnstretch="0,0,0,0">
                 <property name="verticalSpacing">
                  <number>0</number>
                 </property>
-                <item row="0" column="0">
-                 <widget class="QCheckBox" name="checkBoxMagnifier">
-                  <property name="text">
-                   <string>Magnification</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="3">
-                 <widget class="QToolButton" name="help_screencast_magnifier">
+                <item row="4" column="3">
+                 <widget class="QToolButton" name="help_screencast_deleteallsettings">
                   <property name="text">
                    <string notr="true">Help</string>
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="1">
-                 <layout class="QHBoxLayout" name="horizontalLayout_8"/>
+                <item row="2" column="3">
+                 <widget class="QToolButton" name="help_screencast_countdown">
+                  <property name="text">
+                   <string notr="true">Help</string>
+                  </property>
+                 </widget>
                 </item>
                 <item row="0" column="2">
                  <spacer name="horizontalSpacer_16">
@@ -467,6 +464,9 @@
                   </property>
                  </spacer>
                 </item>
+                <item row="0" column="1">
+                 <layout class="QHBoxLayout" name="horizontalLayout_8"/>
+                </item>
                 <item row="2" column="0">
                  <widget class="QLabel" name="labelScreencastCountdownText">
                   <property name="text">
@@ -477,10 +477,10 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="3">
-                 <widget class="QToolButton" name="help_screencast_countdown">
+                <item row="0" column="0">
+                 <widget class="QCheckBox" name="checkBoxMagnifier">
                   <property name="text">
-                   <string notr="true">Help</string>
+                   <string>Magnification</string>
                   </property>
                  </widget>
                 </item>
@@ -496,6 +496,37 @@
                    </size>
                   </property>
                  </spacer>
+                </item>
+                <item row="0" column="3">
+                 <widget class="QToolButton" name="help_screencast_magnifier">
+                  <property name="text">
+                   <string notr="true">Help</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <spacer name="verticalSpacer_20">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="4" column="0" colspan="3">
+                 <layout class="QHBoxLayout" name="horizontalLayout_13">
+                  <item>
+                   <widget class="QCheckBox" name="checkBoxResetAtNextStart">
+                    <property name="text">
+                     <string>Reset all settings at the next start</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </item>
                </layout>
               </item>
@@ -1337,6 +1368,62 @@
            <layout class="QVBoxLayout" name="verticalLayout_2">
             <item>
              <layout class="QGridLayout" name="gridLayout_8">
+              <item row="4" column="0">
+               <layout class="QHBoxLayout" name="horizontalLayout_31">
+                <item>
+                 <widget class="QCheckBox" name="checkBoxStartsMinimized">
+                  <property name="text">
+                   <string>Starts minimized</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="3" column="0">
+               <layout class="QHBoxLayout" name="horizontalLayout_23">
+                <item>
+                 <widget class="QCheckBox" name="checkBoxMinimizedWhenRecordingStarts">
+                  <property name="text">
+                   <string>Minimized when recording starts</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="6" column="0">
+               <spacer name="verticalSpacer_16">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="1" column="2">
+               <widget class="QToolButton" name="help_screencast_limitoffreediskspace">
+                <property name="text">
+                 <string notr="true">Help</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QToolButton" name="PushButtonVideoPath">
+                <property name="text">
+                 <string notr="true">...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QToolButton" name="help_screencast_startsminimized">
+                <property name="text">
+                 <string notr="true">Help</string>
+                </property>
+               </widget>
+              </item>
               <item row="0" column="0">
                <layout class="QHBoxLayout" name="horizontalLayout_25">
                 <item>
@@ -1379,45 +1466,24 @@
                 </item>
                </layout>
               </item>
-              <item row="4" column="2">
-               <widget class="QToolButton" name="help_screencast_startsminimized">
+              <item row="7" column="2">
+               <widget class="QToolButton" name="help_screencast_lookforupdates">
                 <property name="text">
-                 <string notr="true">Help</string>
+                 <string>Help</string>
                 </property>
                </widget>
               </item>
-              <item row="6" column="2">
-               <widget class="QToolButton" name="help_screencast_SecondWaitBeforeRecording">
-                <property name="text">
-                 <string notr="true">Help</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="0">
-               <layout class="QHBoxLayout" name="horizontalLayout_7">
-                <item>
-                 <widget class="QLabel" name="label_18">
-                  <property name="text">
-                   <string>Second wait before recording</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item row="0" column="2">
-               <widget class="QToolButton" name="help_screencast_videopath">
+              <item row="2" column="1">
+               <widget class="QToolButton" name="toolButtonShowInSystrayAlternativeReset">
                 <property name="toolTip">
+                 <string>Reset</string>
+                </property>
+                <property name="text">
                  <string notr="true"/>
                 </property>
-                <property name="text">
-                 <string notr="true">Help</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="2">
-               <widget class="QToolButton" name="help_screencast_deleteallsettings">
-                <property name="text">
-                 <string notr="true">Help</string>
+                <property name="icon">
+                 <iconset resource="screencast.qrc">
+                  <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                 </property>
                </widget>
               </item>
@@ -1460,67 +1526,23 @@
                 </item>
                </layout>
               </item>
-              <item row="2" column="2">
-               <widget class="QToolButton" name="help_screencast_showinsystray">
+              <item row="5" column="2">
+               <widget class="QToolButton" name="help_screencast_SecondWaitBeforeRecording">
                 <property name="text">
                  <string notr="true">Help</string>
                 </property>
                </widget>
               </item>
-              <item row="0" column="1">
-               <widget class="QToolButton" name="PushButtonVideoPath">
-                <property name="text">
-                 <string notr="true">...</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="QToolButton" name="help_screencast_minimizedwhenrecordingstarts">
-                <property name="text">
-                 <string notr="true">Help</string>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="0">
-               <layout class="QHBoxLayout" name="horizontalLayout_17">
+              <item row="5" column="0">
+               <layout class="QHBoxLayout" name="horizontalLayout_7">
                 <item>
-                 <widget class="QCheckBox" name="checkBoxLookForUpdates">
+                 <widget class="QLabel" name="label_18">
                   <property name="text">
-                   <string>Look for updates</string>
+                   <string>Second wait before recording</string>
                   </property>
                  </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="label_Upate_tab_4">
-                  <property name="text">
-                   <string notr="true">TextLabel</string>
-                  </property>
-                  <property name="openExternalLinks">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_3">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
                 </item>
                </layout>
-              </item>
-              <item row="1" column="2">
-               <widget class="QToolButton" name="help_screencast_limitoffreediskspace">
-                <property name="text">
-                 <string notr="true">Help</string>
-                </property>
-               </widget>
               </item>
               <item row="2" column="0">
                <layout class="QHBoxLayout" name="horizontalLayout_21">
@@ -1607,70 +1629,61 @@
                 </item>
                </layout>
               </item>
-              <item row="5" column="0">
-               <layout class="QHBoxLayout" name="horizontalLayout_13">
-                <item>
-                 <widget class="QCheckBox" name="checkBoxResetAtNextStart">
-                  <property name="text">
-                   <string>Reset all settings at the next start</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item row="3" column="0">
-               <layout class="QHBoxLayout" name="horizontalLayout_23">
-                <item>
-                 <widget class="QCheckBox" name="checkBoxMinimizedWhenRecordingStarts">
-                  <property name="text">
-                   <string>Minimized when recording starts</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item row="4" column="0">
-               <layout class="QHBoxLayout" name="horizontalLayout_31">
-                <item>
-                 <widget class="QCheckBox" name="checkBoxStartsMinimized">
-                  <property name="text">
-                   <string>Starts minimized</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
               <item row="7" column="0">
-               <spacer name="verticalSpacer_16">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>40</height>
-                 </size>
-                </property>
-               </spacer>
+               <layout class="QHBoxLayout" name="horizontalLayout_17">
+                <item>
+                 <widget class="QCheckBox" name="checkBoxLookForUpdates">
+                  <property name="text">
+                   <string>Look for updates</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_Upate_tab_4">
+                  <property name="text">
+                   <string notr="true">TextLabel</string>
+                  </property>
+                  <property name="openExternalLinks">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_3">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
               </item>
-              <item row="8" column="2">
-               <widget class="QToolButton" name="help_screencast_lookforupdates">
+              <item row="0" column="2">
+               <widget class="QToolButton" name="help_screencast_videopath">
+                <property name="toolTip">
+                 <string notr="true"/>
+                </property>
                 <property name="text">
-                 <string>Help</string>
+                 <string notr="true">Help</string>
                 </property>
                </widget>
               </item>
-              <item row="2" column="1">
-               <widget class="QToolButton" name="toolButtonShowInSystrayAlternativeReset">
-                <property name="toolTip">
-                 <string>Reset</string>
-                </property>
+              <item row="2" column="2">
+               <widget class="QToolButton" name="help_screencast_showinsystray">
                 <property name="text">
-                 <string notr="true"/>
+                 <string notr="true">Help</string>
                 </property>
-                <property name="icon">
-                 <iconset resource="screencast.qrc">
-                  <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QToolButton" name="help_screencast_minimizedwhenrecordingstarts">
+                <property name="text">
+                 <string notr="true">Help</string>
                 </property>
                </widget>
               </item>
