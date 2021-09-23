@@ -25,7 +25,7 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 ### BuildRequires
 - Required from version 3.1.0 pre alpha
 
-  The 32-bit version of vc_redist.x86.exe is required to run the Qt installer.  
+  The Qt installer needs the 32 bit version of vc_redist.x86.exe  
   https://aka.ms/vs/16/release/vc_redist.x86.exe  
   
   Qt Online Installer https://www.qt.io/download-thank-you?os=windows
