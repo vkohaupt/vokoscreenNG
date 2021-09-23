@@ -112,18 +112,6 @@ int main(int argc, char *argv[])
         QString pathProfile = dirPathProfile.absolutePath();
         QString programPath = QDir::currentPath();
 
-        QByteArray systemByteArray;
-        systemByteArray.append( programPath );
-        systemByteArray.append( separator );
-        systemByteArray.append( pathProfile );
-        qputenv( "GST_PLUGIN_SYSTEM_PATH_1_0", systemByteArray );
-
-        QByteArray programPathByteArray;
-        programPathByteArray.append( programPath );
-        programPathByteArray.append( separator );
-        programPathByteArray.append( pathProfile );
-        qputenv( "GSTREAMER_1_0_ROOT_X86", programPathByteArray );
-
         QByteArray pluginPathByteArray;
         pluginPathByteArray.append( programPath );
         pluginPathByteArray.append( separator );
