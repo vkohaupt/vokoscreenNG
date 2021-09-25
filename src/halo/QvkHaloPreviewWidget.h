@@ -37,6 +37,7 @@ public:
     void setColor( QColor value );
     void setDiameter( int value );
     void setOpacity( qreal value );
+    void setHole( int value );
     QColor getColor();
 
 
@@ -47,6 +48,7 @@ private:
     QColor color;
     int diameter;
     qreal opacity;
+    int holeRadius;
 
     int getDiameter();
     qreal getOpacity();

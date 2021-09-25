@@ -40,10 +40,15 @@ void QvkHaloPreviewWidget::paintEvent( QPaintEvent *event )
     QPainter painter;
     painter.begin( this );
     painter.setRenderHints( QPainter::Antialiasing, true );
-    painter.setPen( Qt::NoPen );
-    painter.setBrush( color );
+
+    qreal penWidth = diameter/2 - holeRadius;
+    QPen pen;
+    pen.setWidthF( penWidth );
+    pen.setColor( color );
+    painter.setPen( pen );
     painter.setOpacity( opacity );
-    painter.drawEllipse( width()/2 - diameter/2, height()/2 - diameter/2, diameter, diameter );
+    painter.drawEllipse( QPointF( width()/2, height()/2 ), holeRadius + penWidth/2, holeRadius + penWidth/2);
+
     painter.end();
 }
 
@@ -85,3 +90,10 @@ qreal QvkHaloPreviewWidget::getOpacity()
 {
     return opacity;
 }
+
+
+void QvkHaloPreviewWidget::setHole( int value )
+{
+    holeRadius = value;
+}
+

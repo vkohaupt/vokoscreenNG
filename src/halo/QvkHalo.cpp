@@ -118,6 +118,9 @@ void QvkHalo::slot_valueChanged_SpezialSlider_Hole( int value )
 {
     vkHaloWindow->setHoleRadius( value );
     vkHaloWindow->repaint();
+
+    vkHaloPreviewWidget->setHole( value );
+    vkHaloPreviewWidget->repaint();
 }
 
 
