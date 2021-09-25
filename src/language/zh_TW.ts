@@ -25,13 +25,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCountdown</name>
-    <message>
-        <source>Countdown</source>
-        <translation>倒數計時</translation>
-    </message>
-</context>
-<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>

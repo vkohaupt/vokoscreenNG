@@ -3294,8 +3294,20 @@
            <layout class="QHBoxLayout" name="horizontalLayout_47">
             <item>
              <widget class="QLabel" name="label_32">
+              <property name="maximumSize">
+               <size>
+                <width>34</width>
+                <height>13</height>
+               </size>
+              </property>
               <property name="text">
-               <string notr="true">TextLabel</string>
+               <string notr="true"/>
+              </property>
+              <property name="pixmap">
+               <pixmap>pictures/showClick/halo.png</pixmap>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
