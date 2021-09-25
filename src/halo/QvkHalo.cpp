@@ -70,9 +70,9 @@ void QvkHalo::createSpezialSlider()
     ui->horizontalLayoutHaloHole->insertWidget( 0, vkSpezialSliderHole );
     vkSpezialSliderHole->setObjectName( "sliderhaloHole" );
     vkSpezialSliderHole->setTracking( true );
-    vkSpezialSliderHole->setMinimum( 10 );
+    vkSpezialSliderHole->setMinimum( 5 );
     vkSpezialSliderHole->setMaximum( 40 );
-    vkSpezialSliderHole->setValue( 0 );
+    vkSpezialSliderHole->setValue( 30 ); // This value must be greater than the holeDefault in order to be changed after the connect
     vkSpezialSliderHole->setShowValue( false );
     vkSpezialSliderHole->show();
     connect( vkSpezialSliderHole, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Hole( int ) ) );
@@ -117,6 +117,7 @@ void QvkHalo::slot_valueChanged_SpezialSlider_Diameter( int value )
 void QvkHalo::slot_valueChanged_SpezialSlider_Hole( int value )
 {
     vkHaloWindow->setHoleRadius( value );
+    vkHaloWindow->repaint();
 }
 
 
@@ -198,4 +199,6 @@ void QvkHalo::setToolButtonDefaultValues()
                                                                                    } );
     connect( ui->toolButtonHaloDiameterDefault, &QToolButton::clicked, this, [=]() { vkSpezialSliderDiameter->setValue( diameterDefault ); } );
     connect( ui->toolButtonHaloOpacityDefault,  &QToolButton::clicked, this, [=]() { vkSpezialSliderOpacity->setValue( opacityDefault ); } );
+    connect( ui->toolButtonHaloHoleDefault,     &QToolButton::clicked, this, [=]() { vkSpezialSliderHole->setValue( holeDefault); } );
+
 }

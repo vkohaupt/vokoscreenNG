@@ -62,7 +62,6 @@ void QvkHaloWindow::paintEvent( QPaintEvent *event )
 {
     Q_UNUSED(event);
 
-    qreal holeRadius = 5.0;
     QPixmap pixmap( 100 * devicePixelRatioF(), 100 * devicePixelRatioF() );
     pixmap.fill( Qt::transparent );
     pixmap.setDevicePixelRatio( devicePixelRatioF() );
