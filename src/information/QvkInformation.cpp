@@ -188,9 +188,9 @@ void QvkInformation::slot_StorageInfo()
         QFileInfo file( string );
         file.refresh();
         ui->labelVideoSize->setText( QString::number( file.size()/1024 ) );
-#ifdef Q_OS_WIN
+#ifdef Q_OS_WIN32
         // Windows 2 GB file size limit, recording stopped at 1,95 GB
-/*        if ( ( file.size() > 1950000000 ) and ( fileName != videoFileList.at( 0 ) ) )
+        if ( ( file.size() > 1950000000 ) and ( fileName != videoFileList.at( 0 ) ) )
         {
             fileName = videoFileList.at( 0 );
             ui->pushButtonStop->click();
@@ -203,7 +203,6 @@ void QvkInformation::slot_StorageInfo()
             msgBox.setStandardButtons( QMessageBox::Ok );
             msgBox.exec();
         }
-*/
 #endif
     }
 }
