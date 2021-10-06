@@ -188,7 +188,9 @@ void QvkInformation::slot_StorageInfo()
         QFileInfo file( string );
         file.refresh();
         ui->labelVideoSize->setText( QString::number( file.size()/1024 ) );
+
 #ifdef Q_OS_WIN32
+        qDebug().noquote() << global::nameOutput << "QvkInformation::slot_StorageInfo() print only in 32-bit version"
         // Windows 2 GB file size limit, recording stopped at 1,95 GB
         if ( ( file.size() > 1950000000 ) and ( fileName != videoFileList.at( 0 ) ) )
         {
