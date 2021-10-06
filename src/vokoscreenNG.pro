@@ -77,6 +77,7 @@ unix:LIBS += -lpulse-simple
 unix:LIBS += -lX11
 
 win32:contains(QMAKE_HOST.arch, x86_64) {
+message("[vokoscreenNG] Create x86_64 build")
 RC_ICONS = vokoscreenNG.ico
 GStreamerDir=$$(GSTREAMER_1_0_ROOT_MINGW_X86_64)
 INCLUDEPATH += $${GStreamerDir}\include\gstreamer-1.0
