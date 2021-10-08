@@ -92,23 +92,6 @@ LIBS += -llibgobject-2.0-0
 LIBS += -llibbz2
 }
 
-#win32:RC_ICONS = vokoscreenNG.ico
-
-#win32:GStreamerDir=$$(GSTREAMER_1_0_ROOT_X86)
-#win32:INCLUDEPATH += $${GStreamerDir}\include\gstreamer-1.0
-#win32:INCLUDEPATH += $${GStreamerDir}\include\glib-2.0
-#win32:INCLUDEPATH += $${GStreamerDir}\lib\glib-2.0\include
-#win32:INCLUDEPATH += $${GStreamerDir}\include
-
-#win32:LIBS += -L$${GStreamerDir}\bin
-#win32:LIBS += -L$${GStreamerDir}\lib\gstreamer-1.0
-#win32:LIBS += -LC:\Qt\Qt5.9.4\Tools\mingw530_32\bin
-#win32:LIBS += -LC:\Qt\Qt5.9.4\Tools\mingw530_32\opt\bin
-#win32:LIBS += -llibgstreamer-1.0-0
-#win32:LIBS += -llibglib-2.0-0
-#win32:LIBS += -llibgobject-2.0-0
-#win32:LIBS += -llibbz2
-
 # settings
 include(settings/settings.pri)
 

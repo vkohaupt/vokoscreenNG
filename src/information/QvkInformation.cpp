@@ -188,27 +188,6 @@ void QvkInformation::slot_StorageInfo()
         QFileInfo file( string );
         file.refresh();
         ui->labelVideoSize->setText( QString::number( file.size()/1024 ) );
-
-#ifdef Q_OS_WIN64
-#else
-     #ifdef Q_OS_Win32
-        qDebug().noquote() << global::nameOutput << "QvkInformation::slot_StorageInfo() print only in 32-bit version";
-        // Windows 2 GB file size limit, recording stopped at 1,95 GB
-        if ( ( file.size() > 1950000000 ) and ( fileName != videoFileList.at( 0 ) ) )
-        {
-            fileName = videoFileList.at( 0 );
-            ui->pushButtonStop->click();
-            qDebug().noquote() << global::nameOutput << "File size limit of 1,95 GB reached, recording stopped.";
-            QMessageBox msgBox;
-            msgBox.setWindowTitle( global::name + "" + global::version );
-            msgBox.setText("vokoscreenNG for Windows support only files smaller 2 GB.\nFile size limit reached.");
-            msgBox.setInformativeText("Recording was stopped for security at 1,95 GB.");
-            msgBox.setIcon( QMessageBox::Information );
-            msgBox.setStandardButtons( QMessageBox::Ok );
-            msgBox.exec();
-        }
-     #endif
-#endif
     }
 }
 
