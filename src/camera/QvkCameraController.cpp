@@ -117,6 +117,7 @@ void QvkCameraController::slot_frameOnOff( bool value )
     {
         Qt::WindowFlags flags;
 
+#ifdef Q_OS_WIN
         if ( value == true )
         {
             flags = Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
@@ -128,6 +129,24 @@ void QvkCameraController::slot_frameOnOff( bool value )
             flags = Qt::WindowStaysOnTopHint;
             cameraWindow->setWindowFlags( flags );
         }
+#endif
+
+#ifdef Q_OS_LINUX
+        if ( value == true )
+        {
+            vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setDisabled( true );
+            cameraWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::X11BypassWindowManagerHint );
+            ui_formMainWindow->checkBoxCameraOnOff->click();
+            ui_formMainWindow->checkBoxCameraOnOff->click();
+        }
+
+        if ( value == false )
+        {
+            vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setDisabled( false );
+            flags = Qt::WindowStaysOnTopHint;
+            cameraWindow->setWindowFlags( flags );
+        }
+#endif
 
         cameraWindow->show();
     }
