@@ -116,6 +116,7 @@ void QvkCameraWindow::mouseDoubleClickEvent( QMouseEvent *event )
     }
 }
 
+
 void QvkCameraWindow::keyPressEvent( QKeyEvent *event )
 {
     if ( event->key() == Qt::Key_Escape )
@@ -136,6 +137,7 @@ void QvkCameraWindow::keyPressEvent( QKeyEvent *event )
     }
 }
 
+
 void QvkCameraWindow::mousePressEvent(QMouseEvent *event)
 {
     if ( event->button() == Qt::RightButton )
@@ -146,7 +148,6 @@ void QvkCameraWindow::mousePressEvent(QMouseEvent *event)
        }
        else
        {
-           vkCameraSettingsDialog->move( event->globalX() + 30, event->globalY() + 30 );
            vkCameraSettingsDialog->show();
            if ( isFullScreen() == true )
            {
