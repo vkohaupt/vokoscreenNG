@@ -53,7 +53,7 @@ QvkInformation::QvkInformation( QvkMainWindow *vkMainWindow,
     timerStorageInfo->start();
 
     // Recorded time
-    elapsedTime = new QElapsedTimer();// 0, 0, 0, 0 );
+    elapsedTime = new QElapsedTimer();
     connect( ui->pushButtonStart,    SIGNAL( clicked( bool ) ), this, SLOT( slot_timeFirstStart() ) );
     connect( ui->pushButtonPause,    SIGNAL( clicked( bool ) ), this, SLOT( slot_summedTimeAfterPause() ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), this, SLOT( slot_timeContinueStart() ) );
