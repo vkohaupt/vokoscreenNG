@@ -401,7 +401,7 @@ void QvkPlayer::slot_play()
 {
     show();
     mediaPlayer->play();
-    parentMainWindow->setWindowTitle( mediaPlayer->currentMedia().canonicalUrl().fileName() + " - " + oldWindowTitel );
+    parentMainWindow->setWindowTitle( mediaPlayer->currentMedia().request().url().toString() + " - " + oldWindowTitel );
 }
 
 
