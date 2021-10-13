@@ -108,7 +108,7 @@ void QvkSpezialSlider::paintEvent(QPaintEvent *event)
         QFont font = qApp->font();
         painter.setFont( font );
         QFontMetrics fontMetrics( font );
-        setMinimumHeight( fontMetrics.width( "5555" ) );
+        setMinimumHeight( fontMetrics.horizontalAdvance( "5555" ) );
         painter.setPen( vk_get_color( QPalette::ButtonText ) );
         painter.drawText( qRectF, Qt::AlignCenter, QString::number( value() ) );
     }

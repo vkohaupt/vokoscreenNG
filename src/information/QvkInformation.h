@@ -29,6 +29,7 @@
 #include "mainwindow.h"
 
 #include <QWidget>
+#include <QElapsedTimer>
 
 class QvkInformation: public QWidget
 { 
@@ -72,7 +73,7 @@ private:
   QString newVideoFilename = "";
   QTimer *timerStorageInfo;
   QTimer *timerRecord;
-  QTime *elapsedTime;
+  QElapsedTimer *elapsedTime;
 
   int int_summed = 0;
 
