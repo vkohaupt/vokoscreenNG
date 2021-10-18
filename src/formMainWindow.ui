@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>704</width>
+    <width>756</width>
     <height>426</height>
    </rect>
   </property>
@@ -812,7 +812,7 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>488</width>
+                      <width>540</width>
                       <height>167</height>
                      </rect>
                     </property>
@@ -1912,6 +1912,10 @@
            </layout>
           </widget>
           <widget class="QWidget" name="tabShortCut">
+           <attribute name="icon">
+            <iconset resource="screencast.qrc">
+             <normaloff>:/pictures/screencast/shortcut.png</normaloff>:/pictures/screencast/shortcut.png</iconset>
+           </attribute>
            <attribute name="title">
             <string notr="true"/>
            </attribute>
@@ -2908,7 +2912,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>314</width>
+                   <width>366</width>
                    <height>290</height>
                   </rect>
                  </property>
