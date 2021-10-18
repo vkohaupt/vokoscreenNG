@@ -254,7 +254,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -479,6 +479,9 @@
                 </item>
                 <item row="0" column="0">
                  <widget class="QCheckBox" name="checkBoxMagnifier">
+                  <property name="toolTip">
+                   <string notr="true">CTRL+SHIFT+F9</string>
+                  </property>
                   <property name="text">
                    <string>Magnification</string>
                   </property>
