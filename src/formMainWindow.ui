@@ -1927,6 +1927,9 @@
                 <property name="text">
                  <string notr="true">ON / OFF</string>
                 </property>
+                <property name="checked">
+                 <bool>true</bool>
+                </property>
                </widget>
               </item>
               <item>
@@ -1970,21 +1973,21 @@
                   </widget>
                  </item>
                  <item row="3" column="2" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_6">
+                  <widget class="QCheckBox" name="checkBox_shortcut_pause_shift">
                    <property name="text">
                     <string notr="true"/>
                    </property>
                   </widget>
                  </item>
                  <item row="5" column="1" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_13">
+                  <widget class="QCheckBox" name="checkBox_shortcut_magnification_strg">
                    <property name="text">
                     <string notr="true"/>
                    </property>
                   </widget>
                  </item>
                  <item row="1" column="1" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_17">
+                  <widget class="QCheckBox" name="checkBox_shortcut_start_strg">
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -1998,28 +2001,28 @@
                   </widget>
                  </item>
                  <item row="4" column="4" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_12">
+                  <widget class="QCheckBox" name="checkBox_shortcut_continue_meta">
                    <property name="text">
                     <string notr="true"/>
                    </property>
                   </widget>
                  </item>
                  <item row="5" column="4" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_16">
+                  <widget class="QCheckBox" name="checkBox_shortcut_magnification_meta">
                    <property name="text">
                     <string notr="true"/>
                    </property>
                   </widget>
                  </item>
                  <item row="1" column="4" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_20">
+                  <widget class="QCheckBox" name="checkBox_shortcut_start_meta">
                    <property name="text">
                     <string notr="true"/>
                    </property>
                   </widget>
                  </item>
                  <item row="5" column="2" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_14">
+                  <widget class="QCheckBox" name="checkBox_shortcut_magnification_shift">
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -2234,14 +2237,14 @@
                   </widget>
                  </item>
                  <item row="5" column="3" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_15">
+                  <widget class="QCheckBox" name="checkBox_shortcut_magnification_alt">
                    <property name="text">
                     <string notr="true"/>
                    </property>
                   </widget>
                  </item>
                  <item row="2" column="4" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_4">
+                  <widget class="QCheckBox" name="checkBox_shortcut_stop_meta">
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -2255,14 +2258,14 @@
                   </widget>
                  </item>
                  <item row="4" column="1" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_9">
+                  <widget class="QCheckBox" name="checkBox_shortcut_continue_strg">
                    <property name="text">
                     <string notr="true"/>
                    </property>
                   </widget>
                  </item>
                  <item row="3" column="3" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_7">
+                  <widget class="QCheckBox" name="checkBox_shortcut_pause_alt">
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -2286,14 +2289,14 @@
                   </widget>
                  </item>
                  <item row="1" column="3" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_19">
+                  <widget class="QCheckBox" name="checkBox_shortcut_start_alt">
                    <property name="text">
                     <string notr="true"/>
                    </property>
                   </widget>
                  </item>
                  <item row="2" column="1" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox">
+                  <widget class="QCheckBox" name="checkBox_shortcut_stop_strg">
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -2515,28 +2518,28 @@
                   </widget>
                  </item>
                  <item row="2" column="3" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_3">
+                  <widget class="QCheckBox" name="checkBox_shortcut_stop_alt">
                    <property name="text">
                     <string notr="true"/>
                    </property>
                   </widget>
                  </item>
                  <item row="1" column="2" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_18">
+                  <widget class="QCheckBox" name="checkBox_shortcut_start_shift">
                    <property name="text">
                     <string notr="true"/>
                    </property>
                   </widget>
                  </item>
                  <item row="2" column="2" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_2">
+                  <widget class="QCheckBox" name="checkBox_shortcut_stop_shift">
                    <property name="text">
                     <string notr="true"/>
                    </property>
                   </widget>
                  </item>
                  <item row="3" column="4" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_8">
+                  <widget class="QCheckBox" name="checkBox_shortcut_pause_meta">
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -2751,7 +2754,7 @@
                   </widget>
                  </item>
                  <item row="4" column="2" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_10">
+                  <widget class="QCheckBox" name="checkBox_shortcut_continue_shift">
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -2966,7 +2969,7 @@
                   </widget>
                  </item>
                  <item row="3" column="1" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_5">
+                  <widget class="QCheckBox" name="checkBox_shortcut_pause_strg">
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -3195,7 +3198,7 @@
                   </widget>
                  </item>
                  <item row="4" column="3" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_11">
+                  <widget class="QCheckBox" name="checkBox_shortcut_continue_alt">
                    <property name="text">
                     <string notr="true"/>
                    </property>
