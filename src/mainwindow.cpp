@@ -41,6 +41,7 @@
 #include <QThread>
 #include <QMessageBox>
 #include <QStyleFactory>
+#include <QAbstractItemView>
 
 #ifdef Q_OS_LINUX
   #include <QX11Info>
@@ -166,6 +167,12 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderStopRecordingAfterSeconds->setMaximum( 99 );
     sliderStopRecordingAfterSeconds->setValue( 15 );
     sliderStopRecordingAfterSeconds->show();
+
+    ui->comboBox_shortcut_start->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    ui->comboBox_shortcut_stop->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    ui->comboBox_shortcut_pause->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    ui->comboBox_shortcut_continue->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    ui->comboBox_shortcut_magnification->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 
     QvkLogController *vklogController = new QvkLogController();
     connect( vklogController, SIGNAL( signal_newLogText( QString ) ), this, SLOT( slot_textToGuiLog( QString ) ) );
