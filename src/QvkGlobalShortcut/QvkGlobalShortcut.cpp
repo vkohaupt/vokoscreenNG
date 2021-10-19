@@ -29,7 +29,7 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     Q_UNUSED(mainWindow);
     ui = ui_mainwindow;
 
-    connect( ui->checkBox_shortcut_OnOff, SIGNAL( toggled( bool ) ), ui->frame_screencast_shortcut, SLOT( setEnabled( bool ) ) );
+    connect( ui->checkBox_shortcut_OnOff, SIGNAL( clicked( bool ) ), ui->frame_screencast_shortcut, SLOT( setEnabled( bool ) ) );
 
 
     QGlobalShortcut *shortcutWebcam = new QGlobalShortcut( this );
