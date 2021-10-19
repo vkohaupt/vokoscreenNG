@@ -29,6 +29,9 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     Q_UNUSED(mainWindow);
     ui = ui_mainwindow;
 
+    connect( ui->checkBox_shortcut_OnOff, SIGNAL( toggled( bool ) ), ui->frame_screencast_shortcut, SLOT( setEnabled( bool ) ) );
+
+
     QGlobalShortcut *shortcutWebcam = new QGlobalShortcut( this );
     connect( shortcutWebcam, SIGNAL( activated() ), ui->checkBoxCameraOnOff, SLOT( click() ) );
     shortcutWebcam->setShortcut( QKeySequence( "Ctrl+Shift+F8" ) );

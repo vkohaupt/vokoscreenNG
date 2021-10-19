@@ -1952,7 +1952,7 @@
              </layout>
             </item>
             <item>
-             <widget class="QFrame" name="frame_4">
+             <widget class="QFrame" name="frame_screencast_shortcut">
               <property name="frameShape">
                <enum>QFrame::StyledPanel</enum>
               </property>
