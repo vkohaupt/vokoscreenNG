@@ -28,6 +28,8 @@
 
 #include <QObject>
 #include <QMainWindow>
+#include <QMouseEvent>
+#include <QEvent>
 
 class QvkGlobalShortcut: public QObject
 {
@@ -44,14 +46,17 @@ public slots:
 private:
     Ui_formMainWindow *ui;
     QGlobalShortcut *shortcutStart;
-
+    QString checkBox_shortcut_objectName_was_clicked;
 
 private slots:
     void slot_pauseContinue();
     void slot_setOrUnsetShortcut( bool value );
+    void slot_checkboxClicked( bool value );
+
     
 protected:
-  
+    bool eventFilter(QObject *object, QEvent *ev) override;
+
     
 signals:
 

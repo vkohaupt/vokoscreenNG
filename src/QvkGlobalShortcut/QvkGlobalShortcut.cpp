@@ -23,6 +23,7 @@
 #include "QvkGlobalShortcut.h"
 
 #include <QDebug>
+#include <QCheckBox>
 
 QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow )
 {
@@ -31,6 +32,12 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
 
     connect( ui->checkBox_shortcut_OnOff, SIGNAL( clicked( bool ) ), ui->frame_screencast_shortcut, SLOT( setEnabled( bool ) ) );
 
+    QList<QCheckBox *> listCheckBox = ui->frame_screencast_shortcut->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ )
+    {
+        listCheckBox.at(i)->installEventFilter( this );
+        connect( listCheckBox.at(i), SIGNAL( clicked( bool ) ), this, SLOT( slot_checkboxClicked( bool ) ) );
+    }
 
     QGlobalShortcut *shortcutWebcam = new QGlobalShortcut( this );
     connect( shortcutWebcam, SIGNAL( activated() ), ui->checkBoxCameraOnOff, SLOT( click() ) );
@@ -53,12 +60,96 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     shortcutPauseContinue->setShortcut( QKeySequence( "Ctrl+Shift+F12" ) );
 
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ), this, SLOT( slot_setOrUnsetShortcut( bool ) ) );
-
 }
 
 
 QvkGlobalShortcut::~QvkGlobalShortcut()
 {
+}
+
+
+void QvkGlobalShortcut::slot_checkboxClicked( bool value )
+{
+    Q_UNUSED(value)
+    QString shortcut;
+
+    QList<QCheckBox *> listCheckBox = ui->frame_screencast_shortcut->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ )
+    {
+        if ( ( listCheckBox.at(i)->objectName().section( "_", 2, 2 ) == "start" ) and
+             ( listCheckBox.at(i)->isChecked() ) and
+             ( checkBox_shortcut_objectName_was_clicked.section("_", 2, 2 ) == "start" ) )
+        {
+            shortcut.append( "+" );
+            shortcut.append( listCheckBox.at(i)->objectName().section( "_", 3, 3 ).toUpper() );
+            continue;
+        }
+
+        if ( ( listCheckBox.at(i)->objectName().section( "_", 2, 2 ) == "stop" ) and
+             ( listCheckBox.at(i)->isChecked() ) and
+             ( checkBox_shortcut_objectName_was_clicked.section("_", 2, 2 ) == "stop" ) )
+        {
+            shortcut.append( "+" );
+            shortcut.append( listCheckBox.at(i)->objectName().section( "_", 3, 3 ).toUpper() );
+            continue;
+        }
+
+        if ( ( listCheckBox.at(i)->objectName().section( "_", 2, 2 ) == "pause" ) and
+             ( listCheckBox.at(i)->isChecked() ) and
+             ( checkBox_shortcut_objectName_was_clicked.section("_", 2, 2 ) == "pause" ) )
+        {
+            shortcut.append( "+" );
+            shortcut.append( listCheckBox.at(i)->objectName().section( "_", 3, 3 ).toUpper() );
+            continue;
+        }
+
+        if ( ( listCheckBox.at(i)->objectName().section( "_", 2, 2 ) == "continue" ) and
+             ( listCheckBox.at(i)->isChecked() ) and
+             ( checkBox_shortcut_objectName_was_clicked.section("_", 2, 2 ) == "continue" ) )
+        {
+            shortcut.append( "+" );
+            shortcut.append( listCheckBox.at(i)->objectName().section( "_", 3, 3 ).toUpper() );
+            continue;
+        }
+    }
+
+    if ( shortcut.startsWith( "+" ) == true )
+    {
+        shortcut.remove( 0, 1 );
+    }
+
+    if ( checkBox_shortcut_objectName_was_clicked.section("_", 2, 2 ) == "start" )
+    {
+        qDebug().noquote() << "Start" << shortcut;
+        return;
+    }
+
+    if ( checkBox_shortcut_objectName_was_clicked.section("_", 2, 2 ) == "stop" )
+    {
+        qDebug().noquote() << "Stop" << shortcut;
+        return;
+    }
+
+    if ( checkBox_shortcut_objectName_was_clicked.section("_", 2, 2 ) == "pause" )
+    {
+        qDebug().noquote() << "Pause" << shortcut;
+        return;
+    }
+
+    if ( checkBox_shortcut_objectName_was_clicked.section("_", 2, 2 ) == "continue" )
+    {
+        qDebug().noquote() << "Continue" << shortcut;
+        return;
+    }
+
+}
+
+
+bool QvkGlobalShortcut::eventFilter(QObject *object, QEvent *event)
+{
+    QCheckBox *checkBox = qobject_cast<QCheckBox *>(object);
+    checkBox_shortcut_objectName_was_clicked = checkBox->objectName();
+    return QObject::eventFilter( object, event );
 }
 
 
@@ -74,6 +165,7 @@ void QvkGlobalShortcut::slot_pauseContinue()
     }
 }
 
+
 void QvkGlobalShortcut::slot_setOrUnsetShortcut( bool value )
 {
    if ( value == true )
@@ -84,6 +176,4 @@ void QvkGlobalShortcut::slot_setOrUnsetShortcut( bool value )
    {
        shortcutStart->setEnabled( true );
    }
-
-
 }
