@@ -286,7 +286,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <property name="iconSize">
        <size>
@@ -844,8 +844,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>486</width>
-                      <height>209</height>
+                      <width>21</width>
+                      <height>16</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -3548,19 +3548,6 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_33">
         <item>
-         <spacer name="verticalSpacer_24">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
          <widget class="QFrame" name="frame_screencast_shortcut">
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
@@ -3616,78 +3603,9 @@
             </widget>
            </item>
            <item>
-            <spacer name="verticalSpacer_23">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
             <layout class="QGridLayout" name="gridLayout_shortcut">
-             <item row="0" column="5" alignment="Qt::AlignHCenter">
-              <widget class="QLabel" name="label_38">
-               <property name="text">
-                <string notr="true">META</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="5" alignment="Qt::AlignHCenter">
-              <widget class="QCheckBox" name="checkBox_shortcut_stop_meta">
-               <property name="text">
-                <string notr="true"/>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="2" alignment="Qt::AlignHCenter">
-              <widget class="QLabel" name="label_37">
-               <property name="text">
-                <string notr="true">STRG</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="2" alignment="Qt::AlignHCenter">
-              <widget class="QCheckBox" name="checkBox_shortcut_pause_strg">
-               <property name="text">
-                <string notr="true"/>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="2" alignment="Qt::AlignHCenter">
-              <widget class="QCheckBox" name="checkBox_shortcut_magnification_strg">
-               <property name="text">
-                <string notr="true"/>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="4" alignment="Qt::AlignHCenter">
-              <widget class="QCheckBox" name="checkBox_shortcut_stop_alt">
-               <property name="text">
-                <string notr="true"/>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="5" alignment="Qt::AlignHCenter">
-              <widget class="QCheckBox" name="checkBox_shortcut_start_meta">
-               <property name="text">
-                <string notr="true"/>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="4" alignment="Qt::AlignHCenter">
-              <widget class="QLabel" name="label_36">
-               <property name="text">
-                <string notr="true">ALT</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="1">
-              <widget class="QLabel" name="label_shortcut_picture_magnification">
+             <item row="2" column="1">
+              <widget class="QLabel" name="label_shortcut_picture_stop">
                <property name="text">
                 <string notr="true">Picture</string>
                </property>
@@ -3696,31 +3614,19 @@
                </property>
               </widget>
              </item>
-             <item row="4" column="5" alignment="Qt::AlignHCenter">
-              <widget class="QCheckBox" name="checkBox_shortcut_magnification_meta">
-               <property name="text">
-                <string notr="true"/>
+             <item row="1" column="1">
+              <widget class="QLabel" name="label_shortcut_picture_start">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
                </property>
-              </widget>
-             </item>
-             <item row="1" column="4" alignment="Qt::AlignHCenter">
-              <widget class="QCheckBox" name="checkBox_shortcut_start_alt">
                <property name="text">
-                <string notr="true"/>
+                <string notr="true">Picture</string>
                </property>
-              </widget>
-             </item>
-             <item row="1" column="2" alignment="Qt::AlignHCenter">
-              <widget class="QCheckBox" name="checkBox_shortcut_start_strg">
-               <property name="text">
-                <string notr="true"/>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="3" alignment="Qt::AlignHCenter">
-              <widget class="QLabel" name="label_35">
-               <property name="text">
-                <string notr="true">SHIFT</string>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
                </property>
               </widget>
              </item>
@@ -3755,427 +3661,56 @@
                </item>
               </layout>
              </item>
-             <item row="4" column="0" alignment="Qt::AlignHCenter">
-              <widget class="QLabel" name="label_42">
+             <item row="4" column="2" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_magnification_strg">
                <property name="text">
-                <string>Magnification</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="6">
-              <widget class="QComboBox" name="comboBox_shortcut_magnification">
-               <property name="toolTip">
                 <string notr="true"/>
                </property>
-               <property name="currentText">
-                <string notr="true">A</string>
-               </property>
-               <property name="currentIndex">
-                <number>0</number>
-               </property>
-               <item>
-                <property name="text">
-                 <string notr="true">A</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">B</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">C</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">D</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">E</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">G</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">H</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">I</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">J</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">K</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">L</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">M</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">N</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">O</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">P</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">Q</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">R</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">S</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">T</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">U</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">V</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">W</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">X</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">Y</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">Z</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F1</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F2</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F3</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F4</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F5</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F6</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F7</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F8</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F9</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F10</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F11</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F12</string>
-                </property>
-               </item>
               </widget>
              </item>
-             <item row="3" column="1">
-              <widget class="QLabel" name="label_shortcut_picture_pause">
+             <item row="2" column="0" alignment="Qt::AlignHCenter">
+              <widget class="QWidget" name="widget" native="true">
+               <layout class="QHBoxLayout" name="horizontalLayout_52">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item alignment="Qt::AlignLeft">
+                 <widget class="QLabel" name="label_44">
+                  <property name="text">
+                   <string>Stop</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="4" column="3" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_magnification_shift">
                <property name="text">
-                <string notr="true">Picture</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="6">
-              <widget class="QComboBox" name="comboBox_shortcut_start">
-               <property name="toolTip">
                 <string notr="true"/>
                </property>
-               <property name="currentText">
-                <string notr="true">A</string>
+              </widget>
+             </item>
+             <item row="0" column="4" alignment="Qt::AlignHCenter">
+              <widget class="QLabel" name="label_36">
+               <property name="text">
+                <string notr="true">ALT</string>
                </property>
-               <property name="currentIndex">
-                <number>0</number>
-               </property>
-               <item>
-                <property name="text">
-                 <string notr="true">A</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">B</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">C</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">D</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">E</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">G</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">H</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">I</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">J</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">K</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">L</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">M</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">N</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">O</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">P</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">Q</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">R</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">S</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">T</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">U</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">V</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">W</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">X</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">Y</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">Z</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F1</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F2</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F3</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F4</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F5</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F6</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F7</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F8</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F9</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F10</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F11</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string notr="true">F12</string>
-                </property>
-               </item>
               </widget>
              </item>
              <item row="1" column="0">
@@ -4185,6 +3720,48 @@
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="5" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_camera_meta">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="3" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_stop_shift">
+               <property name="text">
+                <string notr="true"/>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_pause_strg">
+               <property name="text">
+                <string notr="true"/>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="4" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_magnification_alt">
+               <property name="text">
+                <string notr="true"/>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1" alignment="Qt::AlignHCenter">
+              <widget class="QLabel" name="label_shortcut_picture_camera">
+               <property name="text">
+                <string>Pcture</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="3" alignment="Qt::AlignHCenter">
+              <widget class="QLabel" name="label_35">
+               <property name="text">
+                <string notr="true">SHIFT</string>
                </property>
               </widget>
              </item>
@@ -4391,6 +3968,72 @@
                </item>
               </widget>
              </item>
+             <item row="2" column="5" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_stop_meta">
+               <property name="text">
+                <string notr="true"/>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0" alignment="Qt::AlignHCenter">
+              <widget class="QLabel" name="label_47">
+               <property name="text">
+                <string>Camera</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="5" alignment="Qt::AlignHCenter">
+              <widget class="QLabel" name="label_38">
+               <property name="text">
+                <string notr="true">META</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="4" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_pause_alt">
+               <property name="text">
+                <string notr="true"/>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="4" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_camera_alt">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="5" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_pause_meta">
+               <property name="text">
+                <string notr="true"/>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0" alignment="Qt::AlignHCenter">
+              <widget class="QLabel" name="label_42">
+               <property name="text">
+                <string>Magnification</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="4" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_stop_alt">
+               <property name="text">
+                <string notr="true"/>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QLabel" name="label_shortcut_picture_magnification">
+               <property name="text">
+                <string notr="true">Picture</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
              <item row="3" column="6">
               <widget class="QComboBox" name="comboBox_shortcut_pause">
                <property name="toolTip">
@@ -4594,14 +4237,22 @@
                </item>
               </widget>
              </item>
-             <item row="1" column="1">
-              <widget class="QLabel" name="label_shortcut_picture_start">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
+             <item row="1" column="5" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_start_meta">
+               <property name="text">
+                <string notr="true"/>
                </property>
+              </widget>
+             </item>
+             <item row="5" column="2" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_camera_strg">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QLabel" name="label_shortcut_picture_pause">
                <property name="text">
                 <string notr="true">Picture</string>
                </property>
@@ -4610,93 +4261,633 @@
                </property>
               </widget>
              </item>
-             <item row="3" column="3" alignment="Qt::AlignHCenter">
-              <widget class="QCheckBox" name="checkBox_shortcut_pause_shift">
+             <item row="1" column="2" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_start_strg">
                <property name="text">
                 <string notr="true"/>
                </property>
               </widget>
              </item>
-             <item row="2" column="1">
-              <widget class="QLabel" name="label_shortcut_picture_stop">
-               <property name="text">
-                <string notr="true">Picture</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="5" alignment="Qt::AlignHCenter">
-              <widget class="QCheckBox" name="checkBox_shortcut_pause_meta">
-               <property name="text">
+             <item row="5" column="6">
+              <widget class="QComboBox" name="comboBox_shortcut_camera">
+               <property name="toolTip">
                 <string notr="true"/>
                </property>
-              </widget>
-             </item>
-             <item row="3" column="4" alignment="Qt::AlignHCenter">
-              <widget class="QCheckBox" name="checkBox_shortcut_pause_alt">
-               <property name="text">
-                <string notr="true"/>
+               <property name="currentText">
+                <string notr="true">A</string>
                </property>
-              </widget>
-             </item>
-             <item row="4" column="4" alignment="Qt::AlignHCenter">
-              <widget class="QCheckBox" name="checkBox_shortcut_magnification_alt">
-               <property name="text">
-                <string notr="true"/>
+               <property name="currentIndex">
+                <number>0</number>
                </property>
-              </widget>
-             </item>
-             <item row="2" column="0" alignment="Qt::AlignHCenter">
-              <widget class="QWidget" name="widget" native="true">
-               <layout class="QHBoxLayout" name="horizontalLayout_52">
-                <property name="spacing">
-                 <number>0</number>
+               <item>
+                <property name="text">
+                 <string notr="true">A</string>
                 </property>
-                <property name="leftMargin">
-                 <number>0</number>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">B</string>
                 </property>
-                <property name="topMargin">
-                 <number>0</number>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">C</string>
                 </property>
-                <property name="rightMargin">
-                 <number>0</number>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">D</string>
                 </property>
-                <property name="bottomMargin">
-                 <number>0</number>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">E</string>
                 </property>
-                <item alignment="Qt::AlignLeft">
-                 <widget class="QLabel" name="label_44">
-                  <property name="text">
-                   <string>Stop</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">G</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">H</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">I</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">J</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">K</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">L</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">M</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">N</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">O</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">P</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">Q</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">R</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">S</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">T</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">U</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">V</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">W</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">X</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">Y</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">Z</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F1</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F2</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F3</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F4</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F5</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F6</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F7</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F8</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F9</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F10</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F11</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F12</string>
+                </property>
+               </item>
               </widget>
              </item>
-             <item row="4" column="3" alignment="Qt::AlignHCenter">
-              <widget class="QCheckBox" name="checkBox_shortcut_magnification_shift">
+             <item row="1" column="6">
+              <widget class="QComboBox" name="comboBox_shortcut_start">
+               <property name="toolTip">
+                <string notr="true"/>
+               </property>
+               <property name="currentText">
+                <string notr="true">A</string>
+               </property>
+               <property name="currentIndex">
+                <number>0</number>
+               </property>
+               <item>
+                <property name="text">
+                 <string notr="true">A</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">B</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">C</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">D</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">E</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">G</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">H</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">I</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">J</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">K</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">L</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">M</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">N</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">O</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">P</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">Q</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">R</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">S</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">T</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">U</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">V</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">W</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">X</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">Y</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">Z</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F1</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F2</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F3</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F4</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F5</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F6</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F7</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F8</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F9</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F10</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F11</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F12</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="4" column="6">
+              <widget class="QComboBox" name="comboBox_shortcut_magnification">
+               <property name="toolTip">
+                <string notr="true"/>
+               </property>
+               <property name="currentText">
+                <string notr="true">A</string>
+               </property>
+               <property name="currentIndex">
+                <number>0</number>
+               </property>
+               <item>
+                <property name="text">
+                 <string notr="true">A</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">B</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">C</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">D</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">E</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">G</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">H</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">I</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">J</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">K</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">L</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">M</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">N</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">O</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">P</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">Q</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">R</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">S</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">T</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">U</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">V</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">W</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">X</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">Y</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">Z</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F1</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F2</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F3</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F4</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F5</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F6</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F7</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F8</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F9</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F10</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F11</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string notr="true">F12</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="1" column="4" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_start_alt">
                <property name="text">
                 <string notr="true"/>
                </property>
               </widget>
              </item>
-             <item row="2" column="3" alignment="Qt::AlignHCenter">
-              <widget class="QCheckBox" name="checkBox_shortcut_stop_shift">
+             <item row="5" column="3" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_camera_shift">
                <property name="text">
-                <string notr="true"/>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="2" alignment="Qt::AlignHCenter">
-              <widget class="QCheckBox" name="checkBox_shortcut_stop_strg">
-               <property name="text">
-                <string notr="true"/>
+                <string/>
                </property>
               </widget>
              </item>
@@ -4707,23 +4898,38 @@
                </property>
               </widget>
              </item>
+             <item row="4" column="5" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_magnification_meta">
+               <property name="text">
+                <string notr="true"/>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2" alignment="Qt::AlignHCenter">
+              <widget class="QLabel" name="label_37">
+               <property name="text">
+                <string notr="true">STRG</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_stop_strg">
+               <property name="text">
+                <string notr="true"/>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="3" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="checkBox_shortcut_pause_shift">
+               <property name="text">
+                <string notr="true"/>
+               </property>
+              </widget>
+             </item>
             </layout>
            </item>
           </layout>
          </widget>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_25">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
         </item>
         <item>
          <spacer name="verticalSpacer_22">
@@ -4787,19 +4993,6 @@
            <string>The global keyboard shortcuts are under development </string>
           </property>
          </widget>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_26">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
         </item>
         <item>
          <spacer name="verticalSpacer_15">

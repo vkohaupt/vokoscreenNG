@@ -125,7 +125,6 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_start_clicked( bool value )
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
         ui->label_shortcut_picture_start->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
 
-        ui->comboBox_shortcut_start->setEnabled( true );
         shortcut_start();
     } else
     {
@@ -134,7 +133,6 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_start_clicked( bool value )
         ui->label_shortcut_picture_start->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
 
         shortcutStart->unsetShortcut();
-        ui->comboBox_shortcut_start->setEnabled( false );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Start: None";
     }
 }
@@ -185,7 +183,6 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_stop_clicked( bool value )
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
         ui->label_shortcut_picture_stop->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
 
-        ui->comboBox_shortcut_stop->setEnabled( true );
         shortcut_stop();
     } else
     {
@@ -194,7 +191,6 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_stop_clicked( bool value )
         ui->label_shortcut_picture_stop->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
 
         shortcutStop->unsetShortcut();
-        ui->comboBox_shortcut_stop->setEnabled( false );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Stop: None";
     }
 }
