@@ -81,6 +81,7 @@ private:
     QvkSpezialSlider *sliderX264;
     QvkSpezialSlider *sliderOpenh264;
     QvkSpezialSlider *sliderVp8;
+    QvkSpezialSlider *sliderVp9;
     QvkSpezialSlider *sliderLimitOfFreeDiskSpace;
     QvkSpezialSlider *sliderShowInSystrayAlternative;
     QvkSpezialSlider *sliderHour;
@@ -176,6 +177,8 @@ private slots:
     void slot_x264Reset();
     void slot_openh264Reset();
     void slot_vp8Reset();
+    void slot_vp9Reset();
+
 
     void slot_StartTimer( bool value );
     void slot_startTime();

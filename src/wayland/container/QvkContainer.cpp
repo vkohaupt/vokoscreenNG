@@ -94,6 +94,7 @@ QvkContainer::QvkContainer(QObject *parent) : QObject(parent)
     Container *MKV = new Container( "matroskamux", "mkv" );
     MKV->add_VideoCodec( "openh264enc", "H.264" );
     MKV->add_VideoCodec( "vp8enc", "VP8");
+    MKV->add_VideoCodec( "vp9enc", "VP9");
     MKV->add_VideoCodec( "x264enc", "x264");
     MKV->add_AudioCodec( "vorbisenc", "vorbis" );
     MKV->add_AudioCodec( "flacenc", "flac" );
@@ -102,6 +103,7 @@ QvkContainer::QvkContainer(QObject *parent) : QObject(parent)
 
     Container *WEBM = new Container( "webmmux", "webm" );
     WEBM->add_VideoCodec( "vp8enc", "VP8" );
+    WEBM->add_VideoCodec( "vp9enc", "VP9" );
     WEBM->add_AudioCodec( "vorbisenc", "vorbis" );
     WEBM->add_AudioCodec( "opusenc", "opus" );
 
@@ -109,6 +111,7 @@ QvkContainer::QvkContainer(QObject *parent) : QObject(parent)
     AVI->add_VideoCodec( "openh264enc", "H.264" );
     AVI->add_VideoCodec( "x264enc", "x264" );
     AVI->add_VideoCodec( "vp8enc", "VP8" );
+    AVI->add_VideoCodec( "vp9enc", "VP9" );
     AVI->add_AudioCodec( "lamemp3enc", "mp3" );
 
     Container *MP4 = new Container( "mp4mux", "mp4" );
@@ -121,6 +124,7 @@ QvkContainer::QvkContainer(QObject *parent) : QObject(parent)
     MOV->add_VideoCodec( "openh264enc", "H.264" );
     MOV->add_VideoCodec( "x264enc", "x264" );
     MOV->add_VideoCodec( "vp8enc", "VP8" );
+    MOV->add_VideoCodec( "vp9enc", "VP9" );
     MOV->add_AudioCodec( "lamemp3enc", "mp3" );
 
     Containers = new QList<Container*>;

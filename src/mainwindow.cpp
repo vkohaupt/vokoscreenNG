@@ -104,6 +104,15 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderVp8->setValue( 20 );
     sliderVp8->show();
 
+    sliderVp9 = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_vp9->insertWidget( 1, sliderVp9 );
+    sliderVp9->setObjectName( "sliderVp9" );
+    sliderVp9->setTracking( true );
+    sliderVp9->setMinimum( 0 );
+    sliderVp9->setMaximum( 63 );
+    sliderVp9->setValue( 20 );
+    sliderVp9->show();
+
     sliderLimitOfFreeDiskSpace = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_27->insertWidget( 3, sliderLimitOfFreeDiskSpace );
     sliderLimitOfFreeDiskSpace->setObjectName( "sliderLimitOfFreeDiskSpace" );
@@ -421,6 +430,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->toolButtonx264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_x264Reset() ) );
     connect( ui->toolButtonOpenh264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_openh264Reset() ) );
     connect( ui->toolButtonVP8Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_vp8Reset() ) );
+    connect( ui->toolButtonVP9Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_vp9Reset() ) );
 
     // Tab 3 Time
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
@@ -672,12 +682,17 @@ void QvkMainWindow::slot_vp8Reset()
     sliderVp8->setValue( 20 );
 }
 
+void QvkMainWindow::slot_vp9Reset()
+{
+    sliderVp9->setValue( 20 );
+}
 
 void QvkMainWindow::slot_videoCodecChanged( QString codec )
 {
     ui->frameVideoCodecx264->setVisible( false );
     ui->frameVideoCodecOpenh264->setVisible( false );
     ui->frameVideoCodecVp8->setVisible( false );
+    ui->frameVideoCodecVp9->setVisible( false );
 
     if ( codec == "x264"  )
     {
@@ -692,6 +707,11 @@ void QvkMainWindow::slot_videoCodecChanged( QString codec )
     if ( codec == "VP8" )
     {
         ui->frameVideoCodecVp8->setVisible( true );
+    }
+
+    if ( codec == "VP9" )
+    {
+        ui->frameVideoCodecVp9->setVisible( true );
     }
 }
 
@@ -1303,6 +1323,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videocodec:x264enc:x264"
                                 #endif
                                     << "videocodec:vp8enc:VP8"
+                                    << "videocodec:vp9enc:VP9"
                                     << "audiocodec:vorbisenc:vorbis"
                                     << "audiocodec:flacenc:flac"
                                     << "audiocodec:opusenc:opus"
@@ -1314,6 +1335,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                      << "videomimetype:video/webm"
                                      << "audiomimetype:audio/webm"
                                      << "videocodec:vp8enc:VP8"
+                                     << "videocodec:vp9enc:VP9"
                                      << "audiocodec:vorbisenc:vorbis"
                                      << "audiocodec:opusenc:opus"
                                    );
@@ -1327,6 +1349,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                      << "videocodec:x264enc:x264"
                                 #endif
                                      << "videocodec:vp8enc:VP8"
+                                     << "videocodec:vp9enc:VP9"
                                      << "audiocodec:lamemp3enc:mp3"
                                    );
 
@@ -1352,6 +1375,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "videocodec:x264enc:x264"
                                 #endif
                                     << "videocodec:vp8enc:VP8"
+                                    << "videocodec:vp9enc:VP9"
                                     << "audiocodec:lamemp3enc:mp3"
                                   );
 
@@ -1536,6 +1560,18 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << "vp8enc";
         list << "min_quantizer=" + QString::number( sliderVp8->value() );
         list << "max_quantizer=" + QString::number( sliderVp8->value() );
+        list << "cpu-used=" + QString::number( QThread::idealThreadCount() );
+        list << "deadline=1000000";
+        list << "threads=" + QString::number( QThread::idealThreadCount() );
+        value = list.join( " " );
+    }
+
+    if ( encoder == "vp9enc")
+    {
+        QStringList list;
+        list << "vp9enc";
+        list << "min_quantizer=" + QString::number( sliderVp9->value() );
+        list << "max_quantizer=" + QString::number( sliderVp9->value() );
         list << "cpu-used=" + QString::number( QThread::idealThreadCount() );
         list << "deadline=1000000";
         list << "threads=" + QString::number( QThread::idealThreadCount() );

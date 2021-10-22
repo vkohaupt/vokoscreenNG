@@ -175,6 +175,18 @@ QString QvkMainWindow_wl::get_Videocodec_Encoder()
         value = list.join( " " );
     }
 
+    if ( encoder == "vp9enc" )
+    {
+        QStringList list;
+        list << encoder;
+        list << "min_quantizer=20"; // + QString::number( sliderVp9->value() );
+        list << "max_quantizer=20";  // + QString::number( sliderVp9->value() );
+        list << "cpu-used=" + QString::number( QThread::idealThreadCount() );
+        list << "deadline=1000000";
+        list << "threads=" + QString::number( QThread::idealThreadCount() );
+        value = list.join( " " );
+    }
+
     return value;
 }
 

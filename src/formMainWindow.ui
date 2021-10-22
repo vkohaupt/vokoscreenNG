@@ -1187,6 +1187,42 @@
                    </layout>
                   </widget>
                  </item>
+                 <item>
+                  <widget class="QFrame" name="frameVideoCodecVp9">
+                   <property name="frameShape">
+                    <enum>QFrame::NoFrame</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_vp9">
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="label_46">
+                      <property name="text">
+                       <string>Quality</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QToolButton" name="toolButtonVP9Reset">
+                      <property name="text">
+                       <string notr="true"/>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="screencast.qrc">
+                        <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
                 </layout>
                </widget>
               </item>
