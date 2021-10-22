@@ -844,8 +844,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>21</width>
-                      <height>16</height>
+                      <width>486</width>
+                      <height>209</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -3576,7 +3576,7 @@
                 </font>
                </property>
                <property name="text">
-                <string>Global keyboard shortcuts</string>
+                <string notr="true">Global keyboard shortcuts</string>
                </property>
               </widget>
              </item>
@@ -3726,7 +3726,7 @@
              <item row="5" column="5" alignment="Qt::AlignHCenter">
               <widget class="QCheckBox" name="checkBox_shortcut_camera_meta">
                <property name="text">
-                <string/>
+                <string notr="true"/>
                </property>
               </widget>
              </item>
@@ -3754,7 +3754,7 @@
              <item row="5" column="1" alignment="Qt::AlignHCenter">
               <widget class="QLabel" name="label_shortcut_picture_camera">
                <property name="text">
-                <string>Pcture</string>
+                <string notr="true">Picture</string>
                </property>
               </widget>
              </item>
@@ -3999,7 +3999,7 @@
              <item row="5" column="4" alignment="Qt::AlignHCenter">
               <widget class="QCheckBox" name="checkBox_shortcut_camera_alt">
                <property name="text">
-                <string/>
+                <string notr="true"/>
                </property>
               </widget>
              </item>
@@ -4247,7 +4247,7 @@
              <item row="5" column="2" alignment="Qt::AlignHCenter">
               <widget class="QCheckBox" name="checkBox_shortcut_camera_strg">
                <property name="text">
-                <string/>
+                <string notr="true"/>
                </property>
               </widget>
              </item>
@@ -4887,7 +4887,7 @@
              <item row="5" column="3" alignment="Qt::AlignHCenter">
               <widget class="QCheckBox" name="checkBox_shortcut_camera_shift">
                <property name="text">
-                <string/>
+                <string notr="true"/>
                </property>
               </widget>
              </item>
@@ -4990,7 +4990,7 @@
            </font>
           </property>
           <property name="text">
-           <string>The global keyboard shortcuts are under development </string>
+           <string notr="true">The global keyboard shortcuts are under development </string>
           </property>
          </widget>
         </item>
