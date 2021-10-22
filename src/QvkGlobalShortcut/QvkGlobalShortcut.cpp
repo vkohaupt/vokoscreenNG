@@ -79,12 +79,47 @@ QvkGlobalShortcut::~QvkGlobalShortcut()
 {
 }
 
+
+QString QvkGlobalShortcut::boolToString( bool bo )
+{
+    int i = QVariant( bo ).toUInt();
+    return QString::number( i );
+}
+
+
+bool QvkGlobalShortcut::isBusy()
+{
+   // Beispiel:
+   // 1010F
+
+   QString start;;
+   start.append( boolToString( ui->checkBox_shortcut_start_strg->isChecked() ) );
+   start.append( boolToString( ui->checkBox_shortcut_start_shift->isChecked() ) );
+   start.append( boolToString( ui->checkBox_shortcut_start_alt->isChecked() ) );
+   start.append( boolToString( ui->checkBox_shortcut_start_meta->isChecked() ) );
+   start.append( ui->comboBox_shortcut_start->currentText() );
+
+   QString stop;
+   stop.append( boolToString( ui->checkBox_shortcut_stop_strg->isChecked() ) );
+   stop.append( boolToString( ui->checkBox_shortcut_stop_shift->isChecked() ) );
+   stop.append( boolToString( ui->checkBox_shortcut_stop_alt->isChecked() ) );
+   stop.append( boolToString( ui->checkBox_shortcut_stop_meta->isChecked() ) );
+   stop.append( ui->comboBox_shortcut_stop->currentText() );
+
+   QStringList list;
+
+   if ( stop == start )
+       return true;
+   else
+       return false;
+}
+
 // Start
 void QvkGlobalShortcut::slot_checkbox_shortcut_start_clicked( bool value )
 {
     Q_UNUSED(value)
 
-    if ( ui->checkBox_shortcut_start_alt->isChecked() | ui->checkBox_shortcut_start_meta->isChecked() | ui->checkBox_shortcut_start_shift->isChecked() | ui->checkBox_shortcut_start_strg->isChecked() )
+    if ( ( ui->checkBox_shortcut_start_alt->isChecked() | ui->checkBox_shortcut_start_meta->isChecked() | ui->checkBox_shortcut_start_shift->isChecked() | ui->checkBox_shortcut_start_strg->isChecked() ) and !isBusy() )
     {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
@@ -144,7 +179,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_stop_clicked( bool value )
 {
     Q_UNUSED(value)
 
-    if ( ui->checkBox_shortcut_stop_alt->isChecked() or ui->checkBox_shortcut_stop_meta->isChecked() or ui->checkBox_shortcut_stop_shift->isChecked() or ui->checkBox_shortcut_stop_strg->isChecked() )
+    if ( ( ui->checkBox_shortcut_stop_alt->isChecked() | ui->checkBox_shortcut_stop_meta->isChecked() | ui->checkBox_shortcut_stop_shift->isChecked() | ui->checkBox_shortcut_stop_strg->isChecked() ) and !isBusy() )
     {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );

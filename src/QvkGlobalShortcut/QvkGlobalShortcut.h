@@ -50,6 +50,9 @@ public slots:
 
 private:
     Ui_formMainWindow *ui;
+    bool isBusy();
+    QString boolToString( bool bo );
+
     QGlobalShortcut *shortcutStart;
     QGlobalShortcut *shortcutStop;
 
