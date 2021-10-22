@@ -104,6 +104,8 @@ private:
     QFileSystemWatcher *videoFileSystemWatcher;
 
     GstElement *pipeline;
+    GstBus *bus;
+    GstMessage *msg;
     GError *error = Q_NULLPTR;
 
     QStringList videoFormatsList;

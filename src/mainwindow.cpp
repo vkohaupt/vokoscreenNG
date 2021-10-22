@@ -1961,22 +1961,17 @@ void QvkMainWindow::slot_Stop()
 
     if ( wantRecording == true )
     {
-        // wait for EOS
-        bool a = gst_element_send_event( pipeline, gst_event_new_eos() );
-        Q_UNUSED(a);
+        // wait for EOS or ERROR message
+        gst_element_send_event( pipeline, gst_event_new_eos() );
+        bus = gst_element_get_bus (pipeline);
+        msg = gst_bus_timed_pop_filtered( GST_ELEMENT_BUS (pipeline), GST_CLOCK_TIME_NONE, (GstMessageType) (GST_MESSAGE_ERROR | GST_MESSAGE_EOS) );
 
-        GstClockTime timeout = 5 * GST_SECOND;
-        GstMessage *msg = gst_bus_timed_pop_filtered( GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
-        Q_UNUSED(msg);
-
-        GstStateChangeReturn ret ;
-        Q_UNUSED(ret);
-        ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
-        Q_UNUSED(ret);
-        ret = gst_element_set_state( pipeline, GST_STATE_READY );
-        Q_UNUSED(ret);
-        ret = gst_element_set_state( pipeline, GST_STATE_NULL );
-        Q_UNUSED(ret);
+        // Release resources
+        if (msg != NULL) {
+            gst_message_unref (msg);
+        }
+        gst_object_unref (bus);
+        gst_element_set_state (pipeline, GST_STATE_NULL);
         gst_object_unref( pipeline );
         qDebug().noquote() << global::nameOutput << "Stop record";
     }
