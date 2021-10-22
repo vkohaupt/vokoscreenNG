@@ -21,23 +21,35 @@
  */
 
 #include "QvkGlobalShortcut.h"
+#include "global.h"
 
 #include <QDebug>
 #include <QCheckBox>
+#include <QComboBox>
 
 QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow )
 {
     Q_UNUSED(mainWindow);
     ui = ui_mainwindow;
 
-    connect( ui->checkBox_shortcut_OnOff, SIGNAL( clicked( bool ) ), ui->frame_screencast_shortcut, SLOT( setEnabled( bool ) ) );
+    shortcutStart = new QGlobalShortcut( this );
+    connect( shortcutStart, SIGNAL( activated() ), ui->pushButtonStart, SLOT( click() ) );
+    connect( ui->checkBox_shortcut_start_strg,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_start_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_start_shift, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_start_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_start_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_start_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_start_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_start_clicked( bool ) ) );
+    connect( ui->comboBox_shortcut_start, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_start_currentIndexChanged( int ) ) );
 
-    QList<QCheckBox *> listCheckBox = ui->frame_screencast_shortcut->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listCheckBox.count(); i++ )
-    {
-        listCheckBox.at(i)->installEventFilter( this );
-        connect( listCheckBox.at(i), SIGNAL( clicked( bool ) ), this, SLOT( slot_checkboxClicked( bool ) ) );
-    }
+    shortcutStop = new QGlobalShortcut( this );
+    connect( shortcutStop, SIGNAL( activated() ), ui->pushButtonStop, SLOT( click() ) );
+    connect( ui->checkBox_shortcut_stop_strg,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_stop_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_stop_shift, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_stop_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_stop_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_stop_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_stop_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_stop_clicked( bool ) ) );
+    connect( ui->comboBox_shortcut_stop, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_stop_currentIndexChanged( int ) ) );
+
+
+
 
     QGlobalShortcut *shortcutWebcam = new QGlobalShortcut( this );
     connect( shortcutWebcam, SIGNAL( activated() ), ui->checkBoxCameraOnOff, SLOT( click() ) );
@@ -47,13 +59,13 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( shortcutMagnifier, SIGNAL( activated() ), ui->checkBoxMagnifier, SLOT( click() ) );
     shortcutMagnifier->setShortcut( QKeySequence( "Ctrl+Shift+F9" ) );
 
-    shortcutStart = new QGlobalShortcut( this );
-    connect( shortcutStart, SIGNAL( activated() ), ui->pushButtonStart, SLOT( click() ) );
-    shortcutStart->setShortcut( QKeySequence( "Ctrl+Shift+F10" ) );
+//    shortcutStart = new QGlobalShortcut( this );
+//    connect( shortcutStart, SIGNAL( activated() ), ui->pushButtonStart, SLOT( click() ) );
+//    shortcutStart->setShortcut( QKeySequence( "Ctrl+Shift+F10" ) );
 
-    QGlobalShortcut *shortcutStop = new QGlobalShortcut( this );
-    connect( shortcutStop, SIGNAL( activated() ), ui->pushButtonStop, SLOT( click() ) );
-    shortcutStop->setShortcut( QKeySequence( "Ctrl+Shift+F11" ) );
+//    shortcutStop = new QGlobalShortcut( this );
+//    connect( shortcutStop, SIGNAL( activated() ), ui->pushButtonStop, SLOT( click() ) );
+//    shortcutStop->setShortcut( QKeySequence( "Ctrl+Shift+F11" ) );
 
     QGlobalShortcut *shortcutPauseContinue = new QGlobalShortcut( this );
     connect( shortcutPauseContinue, SIGNAL( activated() ), this, SLOT( slot_pauseContinue() ) );
@@ -67,45 +79,45 @@ QvkGlobalShortcut::~QvkGlobalShortcut()
 {
 }
 
-
-void QvkGlobalShortcut::slot_checkboxClicked( bool value )
+// Start
+void QvkGlobalShortcut::slot_checkbox_shortcut_start_clicked( bool value )
 {
     Q_UNUSED(value)
+
+    if ( ui->checkBox_shortcut_start_alt->isChecked() | ui->checkBox_shortcut_start_meta->isChecked() | ui->checkBox_shortcut_start_shift->isChecked() | ui->checkBox_shortcut_start_strg->isChecked() )
+    {
+        QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
+        QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
+        ui->label_shortcut_picture_start->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+
+        ui->comboBox_shortcut_start->setEnabled( true );
+        shortcut_start();
+    } else
+    {
+        QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
+        QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
+        ui->label_shortcut_picture_start->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+
+        shortcutStart->unsetShortcut();
+        ui->comboBox_shortcut_start->setEnabled( false );
+        qDebug().noquote() << global::nameOutput << "Set global shortcut for Start: None";
+    }
+}
+
+void QvkGlobalShortcut::slot_checkbox_shortcut_start_currentIndexChanged( int value )
+{
+    Q_UNUSED(value)
+    slot_checkbox_shortcut_start_clicked( true );
+}
+
+void QvkGlobalShortcut::shortcut_start()
+{
     QString shortcut;
 
     QList<QCheckBox *> listCheckBox = ui->frame_screencast_shortcut->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ )
     {
-        if ( ( listCheckBox.at(i)->objectName().section( "_", 2, 2 ) == "start" ) and
-             ( listCheckBox.at(i)->isChecked() ) and
-             ( checkBox_shortcut_objectName_was_clicked.section("_", 2, 2 ) == "start" ) )
-        {
-            shortcut.append( "+" );
-            shortcut.append( listCheckBox.at(i)->objectName().section( "_", 3, 3 ).toUpper() );
-            continue;
-        }
-
-        if ( ( listCheckBox.at(i)->objectName().section( "_", 2, 2 ) == "stop" ) and
-             ( listCheckBox.at(i)->isChecked() ) and
-             ( checkBox_shortcut_objectName_was_clicked.section("_", 2, 2 ) == "stop" ) )
-        {
-            shortcut.append( "+" );
-            shortcut.append( listCheckBox.at(i)->objectName().section( "_", 3, 3 ).toUpper() );
-            continue;
-        }
-
-        if ( ( listCheckBox.at(i)->objectName().section( "_", 2, 2 ) == "pause" ) and
-             ( listCheckBox.at(i)->isChecked() ) and
-             ( checkBox_shortcut_objectName_was_clicked.section("_", 2, 2 ) == "pause" ) )
-        {
-            shortcut.append( "+" );
-            shortcut.append( listCheckBox.at(i)->objectName().section( "_", 3, 3 ).toUpper() );
-            continue;
-        }
-
-        if ( ( listCheckBox.at(i)->objectName().section( "_", 2, 2 ) == "continue" ) and
-             ( listCheckBox.at(i)->isChecked() ) and
-             ( checkBox_shortcut_objectName_was_clicked.section("_", 2, 2 ) == "continue" ) )
+        if ( ( listCheckBox.at(i)->objectName().section( "_", 2, 2 ) == "start" ) and ( listCheckBox.at(i)->isChecked() ) )
         {
             shortcut.append( "+" );
             shortcut.append( listCheckBox.at(i)->objectName().section( "_", 3, 3 ).toUpper() );
@@ -118,38 +130,72 @@ void QvkGlobalShortcut::slot_checkboxClicked( bool value )
         shortcut.remove( 0, 1 );
     }
 
-    if ( checkBox_shortcut_objectName_was_clicked.section("_", 2, 2 ) == "start" )
-    {
-        qDebug().noquote() << "Start" << shortcut;
-        return;
-    }
+    shortcut.append( "+" + ui->comboBox_shortcut_start->currentText() );
 
-    if ( checkBox_shortcut_objectName_was_clicked.section("_", 2, 2 ) == "stop" )
-    {
-        qDebug().noquote() << "Stop" << shortcut;
-        return;
-    }
+    shortcutStart->unsetShortcut();
+    shortcutStart->setShortcut( QKeySequence( shortcut ) );
 
-    if ( checkBox_shortcut_objectName_was_clicked.section("_", 2, 2 ) == "pause" )
-    {
-        qDebug().noquote() << "Pause" << shortcut;
-        return;
-    }
-
-    if ( checkBox_shortcut_objectName_was_clicked.section("_", 2, 2 ) == "continue" )
-    {
-        qDebug().noquote() << "Continue" << shortcut;
-        return;
-    }
-
+    qDebug().noquote() << global::nameOutput << "Set global shortcut for Start:" << shortcut;
 }
 
 
-bool QvkGlobalShortcut::eventFilter(QObject *object, QEvent *event)
+// Stop
+void QvkGlobalShortcut::slot_checkbox_shortcut_stop_clicked( bool value )
 {
-    QCheckBox *checkBox = qobject_cast<QCheckBox *>(object);
-    checkBox_shortcut_objectName_was_clicked = checkBox->objectName();
-    return QObject::eventFilter( object, event );
+    Q_UNUSED(value)
+
+    if ( ui->checkBox_shortcut_stop_alt->isChecked() or ui->checkBox_shortcut_stop_meta->isChecked() or ui->checkBox_shortcut_stop_shift->isChecked() or ui->checkBox_shortcut_stop_strg->isChecked() )
+    {
+        QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
+        QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
+        ui->label_shortcut_picture_stop->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+
+        ui->comboBox_shortcut_stop->setEnabled( true );
+        shortcut_stop();
+    } else
+    {
+        QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
+        QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
+        ui->label_shortcut_picture_stop->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+
+        shortcutStop->unsetShortcut();
+        ui->comboBox_shortcut_stop->setEnabled( false );
+        qDebug().noquote() << global::nameOutput << "Set global shortcut for Stop: None";
+    }
+}
+
+void QvkGlobalShortcut::slot_checkbox_shortcut_stop_currentIndexChanged( int value )
+{
+    Q_UNUSED(value)
+    slot_checkbox_shortcut_stop_clicked( true );
+}
+
+void QvkGlobalShortcut::shortcut_stop()
+{
+    QString shortcut;
+
+    QList<QCheckBox *> listCheckBox = ui->frame_screencast_shortcut->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ )
+    {
+        if ( ( listCheckBox.at(i)->objectName().section( "_", 2, 2 ) == "stop" ) and ( listCheckBox.at(i)->isChecked() ) )
+        {
+            shortcut.append( "+" );
+            shortcut.append( listCheckBox.at(i)->objectName().section( "_", 3, 3 ).toUpper() );
+            continue;
+        }
+    }
+
+    if ( shortcut.startsWith( "+" ) == true )
+    {
+        shortcut.remove( 0, 1 );
+    }
+
+    shortcut.append( "+" + ui->comboBox_shortcut_stop->currentText() );
+
+    shortcutStop->unsetShortcut();
+    shortcutStop->setShortcut( QKeySequence( shortcut ) );
+
+    qDebug().noquote() << global::nameOutput << "Set global shortcut for Stop:" << shortcut;
 }
 
 

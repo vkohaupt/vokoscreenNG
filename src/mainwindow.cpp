@@ -534,6 +534,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSettings.readHaloColor( vkHalo );
     vkSettings.readShowclickColor( vkShowClick );
 
+    vkGlobalShortcut->slot_checkbox_shortcut_start_clicked( true );
+    vkGlobalShortcut->slot_checkbox_shortcut_stop_clicked( true );
+
     // After reading the settings, we read the arguments and run
     QStringList arguments = QApplication::instance()->arguments();
     if ( arguments.count() > 1  )

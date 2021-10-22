@@ -187,6 +187,24 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             continue;
         }
 
+
+
+//-----------------------------------------------------
+        // Evtl. könnte man das so lösen
+        // Die Checkboxen werden gesetzt aber kein connect durchgeführt
+        // Dies wird durch einen seperaten aufruf durch ???? gemacht
+        // dadurch wird nur einmal der shortcut scharf geschalten
+        if ( listCheckBox.at(i)->objectName().contains( "checkBox_shortcut" ) and
+             ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true ) )
+        {
+            listCheckBox.at(i)->setChecked( true );
+            continue;
+        }
+
+//------------------------------------------------------
+
+
+
         // We found a setting, then we want set or not.
         if ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true )
         {

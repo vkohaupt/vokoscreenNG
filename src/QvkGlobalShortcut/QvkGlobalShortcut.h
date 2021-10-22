@@ -41,21 +41,28 @@ public:
 
 
 public slots:
+    void slot_checkbox_shortcut_start_clicked( bool value );
+    void slot_checkbox_shortcut_start_currentIndexChanged( int value );
 
-  
+    void slot_checkbox_shortcut_stop_clicked( bool value );
+    void slot_checkbox_shortcut_stop_currentIndexChanged( int value );
+
+
 private:
     Ui_formMainWindow *ui;
     QGlobalShortcut *shortcutStart;
-    QString checkBox_shortcut_objectName_was_clicked;
+    QGlobalShortcut *shortcutStop;
+
+    void shortcut_start();
+    void shortcut_stop();
+
 
 private slots:
     void slot_pauseContinue();
     void slot_setOrUnsetShortcut( bool value );
-    void slot_checkboxClicked( bool value );
 
     
 protected:
-    bool eventFilter(QObject *object, QEvent *ev) override;
 
     
 signals:
