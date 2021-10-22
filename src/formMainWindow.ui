@@ -286,7 +286,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -844,8 +844,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>540</width>
-                      <height>167</height>
+                      <width>486</width>
+                      <height>209</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -3542,9 +3542,9 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="tabSidebarShortcut">
        <attribute name="title">
-        <string>Seite</string>
+        <string notr="true"/>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_33">
         <item>
