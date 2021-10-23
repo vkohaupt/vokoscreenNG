@@ -3622,7 +3622,7 @@
                   <string notr="true"/>
                  </property>
                  <property name="text">
-                  <string>/</string>
+                  <string notr="true"> / </string>
                  </property>
                 </widget>
                </item>
@@ -3633,11 +3633,27 @@
                  </property>
                 </widget>
                </item>
+               <item>
+                <spacer name="horizontalSpacer_30">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Ignored</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
               </layout>
              </item>
              <item row="1" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_50">
-               <item alignment="Qt::AlignRight">
+               <item>
                 <widget class="QLabel" name="label_43">
                  <property name="text">
                   <string>Start</string>
@@ -3654,7 +3670,7 @@
                  </property>
                 </widget>
                </item>
-               <item alignment="Qt::AlignLeft">
+               <item>
                 <widget class="QLabel" name="label_44">
                  <property name="text">
                   <string>Stop</string>
@@ -3663,6 +3679,22 @@
                   <set>Qt::AlignCenter</set>
                  </property>
                 </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_27">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Ignored</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
                </item>
               </layout>
              </item>
@@ -4409,13 +4441,6 @@
                </property>
               </widget>
              </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="label_42">
-               <property name="text">
-                <string>Magnification</string>
-               </property>
-              </widget>
-             </item>
              <item row="3" column="3" alignment="Qt::AlignHCenter">
               <widget class="QCheckBox" name="checkBox_shortcut_magnification_shift">
                <property name="text">
@@ -4427,13 +4452,6 @@
               <widget class="QLabel" name="label_35">
                <property name="text">
                 <string notr="true">SHIFT</string>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
-              <widget class="QLabel" name="label_47">
-               <property name="text">
-                <string>Camera</string>
                </property>
               </widget>
              </item>
@@ -4675,6 +4693,60 @@
                </property>
               </widget>
              </item>
+             <item row="3" column="0">
+              <layout class="QHBoxLayout" name="horizontalLayout_54">
+               <item alignment="Qt::AlignLeft">
+                <widget class="QLabel" name="label_42">
+                 <property name="text">
+                  <string>Magnification</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_32">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Ignored</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item row="4" column="0">
+              <layout class="QHBoxLayout" name="horizontalLayout_55">
+               <item alignment="Qt::AlignLeft">
+                <widget class="QLabel" name="label_47">
+                 <property name="text">
+                  <string>Camera</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_34">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Ignored</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
             </layout>
            </item>
           </layout>
@@ -4692,6 +4764,63 @@
            </size>
           </property>
          </spacer>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_52">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <item>
+           <spacer name="horizontalSpacer_25">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item alignment="Qt::AlignRight">
+           <widget class="QLabel" name="label_49">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QLabel" name="label_51">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignLeft">
+           <widget class="QLabel" name="label_50">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_26">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </item>
         <item alignment="Qt::AlignHCenter">
          <widget class="QLabel" name="label_39">
