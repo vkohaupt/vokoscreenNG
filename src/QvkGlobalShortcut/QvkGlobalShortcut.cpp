@@ -56,26 +56,13 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( ui->checkBox_shortcut_magnification_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_magnification_clicked( bool ) ) );
     connect( ui->comboBox_shortcut_magnification, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_magnification_currentIndexChanged( int ) ) );
 
-
-    QGlobalShortcut *shortcutWebcam = new QGlobalShortcut( this );
-    connect( shortcutWebcam, SIGNAL( activated() ), ui->checkBoxCameraOnOff, SLOT( click() ) );
-    shortcutWebcam->setShortcut( QKeySequence( "Ctrl+Shift+F8" ) );
-
-//    shortcutMagnification = new QGlobalShortcut( this );
-//    connect( shortcutMagnification, SIGNAL( activated() ), ui->checkBoxMagnifier, SLOT( click() ) );
-//    shortcutMagnification->setShortcut( QKeySequence( "Ctrl+Shift+F9" ) );
-
-//    shortcutStart = new QGlobalShortcut( this );
-//    connect( shortcutStart, SIGNAL( activated() ), ui->pushButtonStart, SLOT( click() ) );
-//    shortcutStart->setShortcut( QKeySequence( "Ctrl+Shift+F10" ) );
-
-//    shortcutStop = new QGlobalShortcut( this );
-//    connect( shortcutStop, SIGNAL( activated() ), ui->pushButtonStop, SLOT( click() ) );
-//    shortcutStop->setShortcut( QKeySequence( "Ctrl+Shift+F11" ) );
-
-//    QGlobalShortcut *shortcutPauseContinue = new QGlobalShortcut( this );
-//    connect( shortcutPauseContinue, SIGNAL( activated() ), this, SLOT( slot_pauseContinue() ) );
-//    shortcutPauseContinue->setShortcut( QKeySequence( "Ctrl+Shift+F12" ) );
+    shortcutCamera = new QGlobalShortcut( this );
+    connect( shortcutCamera, SIGNAL( activated() ), ui->checkBoxCameraOnOff, SLOT( click() ) );
+    connect( ui->checkBox_shortcut_camera_strg,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_camera_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_camera_shift, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_camera_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_camera_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_camera_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_camera_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_camera_clicked( bool ) ) );
+    connect( ui->comboBox_shortcut_camera, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_camera_currentIndexChanged( int ) ) );
 
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ), this, SLOT( slot_setOrUnsetShortcut( bool ) ) );
 }
@@ -141,6 +128,7 @@ bool QvkGlobalShortcut::isBusy( QString check )
 
    return returnCode;
 }
+
 
 // Start
 void QvkGlobalShortcut::slot_checkbox_shortcut_start_clicked( bool value )
@@ -247,6 +235,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_pause_currentIndexChanged( int va
     slot_checkbox_shortcut_pause_clicked( true );
 }
 
+
 // Magnifier
 void QvkGlobalShortcut::slot_checkbox_shortcut_magnification_clicked( bool value )
 {
@@ -293,6 +282,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_magnification_clicked( bool value
     }
 }
 
+
 void QvkGlobalShortcut::slot_checkbox_shortcut_magnification_currentIndexChanged( int value )
 {
     Q_UNUSED(value)
@@ -300,7 +290,57 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_magnification_currentIndexChanged
 }
 
 
+// Camera
+void QvkGlobalShortcut::slot_checkbox_shortcut_camera_clicked( bool value )
+{
+    Q_UNUSED(value)
 
+    if ( ( ui->checkBox_shortcut_camera_strg->isChecked() | ui->checkBox_shortcut_camera_shift->isChecked() | ui->checkBox_shortcut_camera_alt->isChecked() | ui->checkBox_shortcut_camera_meta->isChecked()  ) and !isBusy( "camera" ) )
+    {
+        QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
+        QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
+        ui->label_shortcut_picture_camera->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+
+        QString shortcut;
+        if ( ui->checkBox_shortcut_camera_strg->isChecked() ) {
+            shortcut.append( "+STRG" );
+        }
+        if ( ui->checkBox_shortcut_camera_shift->isChecked() ) {
+            shortcut.append( "+SHIFT" );
+        }
+        if ( ui->checkBox_shortcut_camera_alt->isChecked() ) {
+            shortcut.append( "+ALT" );
+        }
+        if ( ui->checkBox_shortcut_camera_meta->isChecked() ) {
+            shortcut.append( "+META" );
+        }
+
+        shortcut.append( "+" + ui->comboBox_shortcut_camera->currentText() );
+
+        if ( shortcut.startsWith( "+" ) == true ) {
+            shortcut.remove( 0, 1 );
+        }
+
+        shortcutCamera->unsetShortcut();
+        shortcutCamera->setShortcut( QKeySequence( shortcut ) );
+
+        qDebug().noquote() << global::nameOutput << "Set global shortcut for Magnification:" << shortcut;
+    } else
+    {
+        QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
+        QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
+        ui->label_shortcut_picture_camera->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+
+        shortcutCamera->unsetShortcut();
+        qDebug().noquote() << global::nameOutput << "Set global shortcut for Camera: None";
+    }
+}
+
+void QvkGlobalShortcut::slot_checkbox_shortcut_camera_currentIndexChanged( int value )
+{
+    Q_UNUSED(value)
+    slot_checkbox_shortcut_camera_clicked( true );
+}
 
 
 
