@@ -3569,7 +3569,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QTabWidget" name="tabWidget">
+         <widget class="QTabWidget" name="tabWidgetShortcut">
           <property name="currentIndex">
            <number>0</number>
           </property>
@@ -3579,7 +3579,7 @@
             <height>48</height>
            </size>
           </property>
-          <widget class="QWidget" name="tab">
+          <widget class="QWidget" name="tabShortcut">
            <attribute name="icon">
             <iconset resource="screencast.qrc">
              <normaloff>:/pictures/screencast/shortcut.png</normaloff>:/pictures/screencast/shortcut.png</iconset>

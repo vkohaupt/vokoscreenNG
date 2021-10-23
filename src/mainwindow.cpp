@@ -215,6 +215,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
     Q_UNUSED(vkGlobalShortcut);
 #endif
+    vk_setCornerWidget( ui->tabWidgetShortcut );
 
     QvkInformation *vkInformation = new QvkInformation( this, ui, sliderScreencastCountDown, sliderSecondWaitBeforeRecording );
     connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
