@@ -55,7 +55,7 @@ public slots:
 
 private:
     Ui_formMainWindow *ui;
-    bool isBusy();
+    bool isBusy(QString check);
     QString boolToString( bool bo );
 
     QGlobalShortcut *shortcutStart;

@@ -93,38 +93,53 @@ QString QvkGlobalShortcut::boolToString( bool bo )
 }
 
 
-bool QvkGlobalShortcut::isBusy()
+bool QvkGlobalShortcut::isBusy( QString check )
 {
    // Beispiel:
    // 1010F
 
    QString start;;
+   QString pause;
+   QString magnification;
+
    start.append( boolToString( ui->checkBox_shortcut_start_strg->isChecked() ) );
    start.append( boolToString( ui->checkBox_shortcut_start_shift->isChecked() ) );
    start.append( boolToString( ui->checkBox_shortcut_start_alt->isChecked() ) );
    start.append( boolToString( ui->checkBox_shortcut_start_meta->isChecked() ) );
    start.append( ui->comboBox_shortcut_start->currentText() );
 
-   QString pause;
    pause.append( boolToString( ui->checkBox_shortcut_pause_strg->isChecked() ) );
    pause.append( boolToString( ui->checkBox_shortcut_pause_shift->isChecked() ) );
    pause.append( boolToString( ui->checkBox_shortcut_pause_alt->isChecked() ) );
    pause.append( boolToString( ui->checkBox_shortcut_pause_meta->isChecked() ) );
    pause.append( ui->comboBox_shortcut_pause->currentText() );
 
-   QString magnification;
    magnification.append( boolToString( ui->checkBox_shortcut_magnification_strg->isChecked() ) );
    magnification.append( boolToString( ui->checkBox_shortcut_magnification_shift->isChecked() ) );
    magnification.append( boolToString( ui->checkBox_shortcut_magnification_alt->isChecked() ) );
    magnification.append( boolToString( ui->checkBox_shortcut_magnification_meta->isChecked() ) );
    magnification.append( ui->comboBox_shortcut_magnification->currentText() );
 
-   QStringList list = QStringList() << start << pause << magnification;
+   bool returnCode = false;
+   if ( check == "start" )
+   {
+       if ( ( start == pause ) or ( start == magnification ) )
+         returnCode = true;
+   }
 
-   if ( start == pause )
-       return true;
-   else
-       return false;
+   if ( check == "pause" )
+   {
+       if ( ( pause == start ) or ( pause == magnification) )
+         returnCode = true;
+   }
+
+   if ( check == "magnification" )
+   {
+       if ( ( magnification == start ) or ( magnification == pause ) )
+         returnCode = true;
+   }
+
+   return returnCode;
 }
 
 // Start
@@ -132,7 +147,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_start_clicked( bool value )
 {
     Q_UNUSED(value)
 
-    if ( ( ui->checkBox_shortcut_start_strg->isChecked() | ui->checkBox_shortcut_start_shift->isChecked() | ui->checkBox_shortcut_start_alt->isChecked() | ui->checkBox_shortcut_start_meta->isChecked() ) and !isBusy() )
+    if ( ( ui->checkBox_shortcut_start_strg->isChecked() | ui->checkBox_shortcut_start_shift->isChecked() | ui->checkBox_shortcut_start_alt->isChecked() | ui->checkBox_shortcut_start_meta->isChecked() ) and !isBusy( "start" ) )
     {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
@@ -185,7 +200,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_pause_clicked( bool value )
 {
     Q_UNUSED(value)
 
-    if ( ( ui->checkBox_shortcut_pause_strg->isChecked() | ui->checkBox_shortcut_pause_shift->isChecked() | ui->checkBox_shortcut_pause_alt->isChecked() | ui->checkBox_shortcut_pause_meta->isChecked()  ) and !isBusy() )
+    if ( ( ui->checkBox_shortcut_pause_strg->isChecked() | ui->checkBox_shortcut_pause_shift->isChecked() | ui->checkBox_shortcut_pause_alt->isChecked() | ui->checkBox_shortcut_pause_meta->isChecked()  ) and !isBusy( "pause" ) )
     {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
@@ -222,7 +237,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_pause_clicked( bool value )
         ui->label_shortcut_picture_pause->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
 
         shortcutPause->unsetShortcut();
-        qDebug().noquote() << global::nameOutput << "Set global shortcut for Stop: None";
+        qDebug().noquote() << global::nameOutput << "Set global shortcut for Pause: None";
     }
 }
 
@@ -237,7 +252,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_magnification_clicked( bool value
 {
     Q_UNUSED(value)
 
-    if ( ( ui->checkBox_shortcut_magnification_strg->isChecked() | ui->checkBox_shortcut_magnification_shift->isChecked() | ui->checkBox_shortcut_magnification_alt->isChecked() | ui->checkBox_shortcut_magnification_meta->isChecked()  ) and !isBusy() )
+    if ( ( ui->checkBox_shortcut_magnification_strg->isChecked() | ui->checkBox_shortcut_magnification_shift->isChecked() | ui->checkBox_shortcut_magnification_alt->isChecked() | ui->checkBox_shortcut_magnification_meta->isChecked()  ) and !isBusy( "magnification" ) )
     {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
