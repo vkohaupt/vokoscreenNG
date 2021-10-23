@@ -3609,7 +3609,7 @@
                <property name="spacing">
                 <number>0</number>
                </property>
-               <item alignment="Qt::AlignHCenter">
+               <item alignment="Qt::AlignRight">
                 <widget class="QLabel" name="label_40">
                  <property name="text">
                   <string>Pause</string>
@@ -3626,7 +3626,7 @@
                  </property>
                 </widget>
                </item>
-               <item alignment="Qt::AlignHCenter">
+               <item alignment="Qt::AlignLeft">
                 <widget class="QLabel" name="label_41">
                  <property name="text">
                   <string>Continue</string>
@@ -3637,10 +3637,10 @@
              </item>
              <item row="1" column="0">
               <layout class="QHBoxLayout" name="horizontalLayout_50">
-               <item alignment="Qt::AlignHCenter">
-                <widget class="QLabel" name="label_44">
+               <item alignment="Qt::AlignRight">
+                <widget class="QLabel" name="label_43">
                  <property name="text">
-                  <string>Stop</string>
+                  <string>Start</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
@@ -3654,10 +3654,10 @@
                  </property>
                 </widget>
                </item>
-               <item alignment="Qt::AlignHCenter">
-                <widget class="QLabel" name="label_43">
+               <item alignment="Qt::AlignLeft">
+                <widget class="QLabel" name="label_44">
                  <property name="text">
-                  <string>Start</string>
+                  <string>Stop</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
