@@ -164,6 +164,9 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_start_clicked( bool value )
         shortcutStart->unsetShortcut();
         shortcutStart->setShortcut( QKeySequence( shortcut ) );
 
+        ui->pushButtonStart->setToolTip( shortcut );
+        ui->pushButtonStop->setToolTip( shortcut );
+
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Start:" << shortcut;
     } else
     {
@@ -172,6 +175,8 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_start_clicked( bool value )
         ui->label_shortcut_picture_start->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
 
         shortcutStart->unsetShortcut();
+        ui->pushButtonStart->setToolTip( "None" );
+        ui->pushButtonStop->setToolTip( "None" );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Start: None";
     }
 }
@@ -217,6 +222,9 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_pause_clicked( bool value )
         shortcutPause->unsetShortcut();
         shortcutPause->setShortcut( QKeySequence( shortcut ) );
 
+        ui->pushButtonPause->setToolTip( shortcut );
+        ui->pushButtonContinue->setToolTip( shortcut );
+
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Pause:" << shortcut;
     } else
     {
@@ -225,6 +233,8 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_pause_clicked( bool value )
         ui->label_shortcut_picture_pause->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
 
         shortcutPause->unsetShortcut();
+        ui->pushButtonPause->setToolTip( "None" );
+        ui->pushButtonContinue->setToolTip( "None" );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Pause: None";
     }
 }
@@ -270,6 +280,8 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_magnification_clicked( bool value
         shortcutMagnification->unsetShortcut();
         shortcutMagnification->setShortcut( QKeySequence( shortcut ) );
 
+        ui->checkBoxMagnifier->setToolTip( shortcut );
+
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Magnification:" << shortcut;
     } else
     {
@@ -278,6 +290,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_magnification_clicked( bool value
         ui->label_shortcut_picture_magnification->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
 
         shortcutMagnification->unsetShortcut();
+        ui->checkBoxMagnifier->setToolTip( "None" );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Magnification: None";
     }
 }
@@ -324,7 +337,9 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_camera_clicked( bool value )
         shortcutCamera->unsetShortcut();
         shortcutCamera->setShortcut( QKeySequence( shortcut ) );
 
-        qDebug().noquote() << global::nameOutput << "Set global shortcut for Magnification:" << shortcut;
+        ui->checkBoxCameraOnOff->setToolTip( shortcut );
+
+        qDebug().noquote() << global::nameOutput << "Set global shortcut for Camera:" << shortcut;
     } else
     {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
@@ -332,6 +347,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_camera_clicked( bool value )
         ui->label_shortcut_picture_camera->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
 
         shortcutCamera->unsetShortcut();
+        ui->checkBoxCameraOnOff->setToolTip( "None" );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Camera: None";
     }
 }
