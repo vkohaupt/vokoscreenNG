@@ -48,13 +48,22 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( ui->checkBox_shortcut_pause_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_pause_clicked( bool ) ) );
     connect( ui->comboBox_shortcut_pause, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_pause_currentIndexChanged( int ) ) );
 
+    shortcutMagnification = new QGlobalShortcut( this );
+    connect( shortcutMagnification, SIGNAL( activated() ), ui->checkBoxMagnifier, SLOT( click() ) );
+    connect( ui->checkBox_shortcut_magnification_strg,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_magnification_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_magnification_shift, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_magnification_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_magnification_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_magnification_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_magnification_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_magnification_clicked( bool ) ) );
+    connect( ui->comboBox_shortcut_magnification, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_magnification_currentIndexChanged( int ) ) );
+
+
     QGlobalShortcut *shortcutWebcam = new QGlobalShortcut( this );
     connect( shortcutWebcam, SIGNAL( activated() ), ui->checkBoxCameraOnOff, SLOT( click() ) );
     shortcutWebcam->setShortcut( QKeySequence( "Ctrl+Shift+F8" ) );
 
-    shortcutMagnification = new QGlobalShortcut( this );
-    connect( shortcutMagnification, SIGNAL( activated() ), ui->checkBoxMagnifier, SLOT( click() ) );
-    shortcutMagnification->setShortcut( QKeySequence( "Ctrl+Shift+F9" ) );
+//    shortcutMagnification = new QGlobalShortcut( this );
+//    connect( shortcutMagnification, SIGNAL( activated() ), ui->checkBoxMagnifier, SLOT( click() ) );
+//    shortcutMagnification->setShortcut( QKeySequence( "Ctrl+Shift+F9" ) );
 
 //    shortcutStart = new QGlobalShortcut( this );
 //    connect( shortcutStart, SIGNAL( activated() ), ui->pushButtonStart, SLOT( click() ) );
