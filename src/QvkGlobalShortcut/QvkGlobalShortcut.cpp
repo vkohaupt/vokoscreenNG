@@ -116,13 +116,36 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_start_clicked( bool value )
 {
     Q_UNUSED(value)
 
-    if ( ( ui->checkBox_shortcut_start_alt->isChecked() | ui->checkBox_shortcut_start_meta->isChecked() | ui->checkBox_shortcut_start_shift->isChecked() | ui->checkBox_shortcut_start_strg->isChecked() ) and !isBusy() )
+    if ( ( ui->checkBox_shortcut_start_strg->isChecked() | ui->checkBox_shortcut_start_shift->isChecked() | ui->checkBox_shortcut_start_alt->isChecked() | ui->checkBox_shortcut_start_meta->isChecked() ) and !isBusy() )
     {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
-        ui->label_shortcut_picture_start->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+        ui->label_shortcut_picture_start->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ) );
 
-        shortcut_start();
+        QString shortcut;
+        if ( ui->checkBox_shortcut_start_strg->isChecked() ) {
+            shortcut.append( "+STRG" );
+        }
+        if ( ui->checkBox_shortcut_start_shift->isChecked() ) {
+            shortcut.append( "+SHIFT" );
+        }
+        if ( ui->checkBox_shortcut_start_alt->isChecked() ) {
+            shortcut.append( "+ALT" );
+        }
+        if ( ui->checkBox_shortcut_start_meta->isChecked() ) {
+            shortcut.append( "+META" );
+        }
+
+        shortcut.append( "+" + ui->comboBox_shortcut_start->currentText() );
+
+        if ( shortcut.startsWith( "+" ) == true ) {
+            shortcut.remove( 0, 1 );
+        }
+
+        shortcutStart->unsetShortcut();
+        shortcutStart->setShortcut( QKeySequence( shortcut ) );
+
+        qDebug().noquote() << global::nameOutput << "Set global shortcut for Start:" << shortcut;
     } else
     {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
@@ -140,47 +163,42 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_start_currentIndexChanged( int va
     slot_checkbox_shortcut_start_clicked( true );
 }
 
-void QvkGlobalShortcut::shortcut_start()
-{
-    QString shortcut;
-
-    QList<QCheckBox *> listCheckBox = ui->frame_screencast_shortcut->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listCheckBox.count(); i++ )
-    {
-        if ( ( listCheckBox.at(i)->objectName().section( "_", 2, 2 ) == "start" ) and ( listCheckBox.at(i)->isChecked() ) )
-        {
-            shortcut.append( "+" );
-            shortcut.append( listCheckBox.at(i)->objectName().section( "_", 3, 3 ).toUpper() );
-            continue;
-        }
-    }
-
-    if ( shortcut.startsWith( "+" ) == true )
-    {
-        shortcut.remove( 0, 1 );
-    }
-
-    shortcut.append( "+" + ui->comboBox_shortcut_start->currentText() );
-
-    shortcutStart->unsetShortcut();
-    shortcutStart->setShortcut( QKeySequence( shortcut ) );
-
-    qDebug().noquote() << global::nameOutput << "Set global shortcut for Start:" << shortcut;
-}
-
 
 // Pause
 void QvkGlobalShortcut::slot_checkbox_shortcut_pause_clicked( bool value )
 {
     Q_UNUSED(value)
 
-    if ( ( ui->checkBox_shortcut_pause_alt->isChecked() | ui->checkBox_shortcut_pause_meta->isChecked() | ui->checkBox_shortcut_pause_shift->isChecked() | ui->checkBox_shortcut_pause_strg->isChecked() ) and !isBusy() )
+    if ( ( ui->checkBox_shortcut_pause_strg->isChecked() | ui->checkBox_shortcut_pause_shift->isChecked() | ui->checkBox_shortcut_pause_alt->isChecked() | ui->checkBox_shortcut_pause_meta->isChecked()  ) and !isBusy() )
     {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
         ui->label_shortcut_picture_pause->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
 
-        shortcut_pause();
+        QString shortcut;
+        if ( ui->checkBox_shortcut_pause_strg->isChecked() ) {
+            shortcut.append( "+STRG" );
+        }
+        if ( ui->checkBox_shortcut_pause_shift->isChecked() ) {
+            shortcut.append( "+SHIFT" );
+        }
+        if ( ui->checkBox_shortcut_pause_alt->isChecked() ) {
+            shortcut.append( "+ALT" );
+        }
+        if ( ui->checkBox_shortcut_pause_meta->isChecked() ) {
+            shortcut.append( "+META" );
+        }
+
+        shortcut.append( "+" + ui->comboBox_shortcut_pause->currentText() );
+
+        if ( shortcut.startsWith( "+" ) == true ) {
+            shortcut.remove( 0, 1 );
+        }
+
+        shortcutPause->unsetShortcut();
+        shortcutPause->setShortcut( QKeySequence( shortcut ) );
+
+        qDebug().noquote() << global::nameOutput << "Set global shortcut for Pause:" << shortcut;
     } else
     {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
@@ -196,34 +214,6 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_pause_currentIndexChanged( int va
 {
     Q_UNUSED(value)
     slot_checkbox_shortcut_pause_clicked( true );
-}
-
-void QvkGlobalShortcut::shortcut_pause()
-{
-    QString shortcut;
-
-    QList<QCheckBox *> listCheckBox = ui->frame_screencast_shortcut->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listCheckBox.count(); i++ )
-    {
-        if ( ( listCheckBox.at(i)->objectName().section( "_", 2, 2 ) == "pause" ) and ( listCheckBox.at(i)->isChecked() ) )
-        {
-            shortcut.append( "+" );
-            shortcut.append( listCheckBox.at(i)->objectName().section( "_", 3, 3 ).toUpper() );
-            continue;
-        }
-    }
-
-    if ( shortcut.startsWith( "+" ) == true )
-    {
-        shortcut.remove( 0, 1 );
-    }
-
-    shortcut.append( "+" + ui->comboBox_shortcut_pause->currentText() );
-
-    shortcutPause->unsetShortcut();
-    shortcutPause->setShortcut( QKeySequence( shortcut ) );
-
-    qDebug().noquote() << global::nameOutput << "Set global shortcut for Pause:" << shortcut;
 }
 
 

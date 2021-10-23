@@ -58,9 +58,6 @@ private:
     QGlobalShortcut *shortcutStart;
     QGlobalShortcut *shortcutPause;
 
-    void shortcut_start();
-    void shortcut_pause();
-
 
 private slots:
     void slot_pauseContinue();
