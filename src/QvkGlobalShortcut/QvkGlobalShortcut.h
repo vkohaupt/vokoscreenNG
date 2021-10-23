@@ -41,11 +41,13 @@ public:
 
 
 public slots:
+    void slot_startStop();
+
     void slot_checkbox_shortcut_start_clicked( bool value );
     void slot_checkbox_shortcut_start_currentIndexChanged( int value );
 
-    void slot_checkbox_shortcut_stop_clicked( bool value );
-    void slot_checkbox_shortcut_stop_currentIndexChanged( int value );
+    void slot_checkbox_shortcut_pause_clicked( bool value );
+    void slot_checkbox_shortcut_pause_currentIndexChanged( int value );
 
 
 private:
@@ -54,10 +56,10 @@ private:
     QString boolToString( bool bo );
 
     QGlobalShortcut *shortcutStart;
-    QGlobalShortcut *shortcutStop;
+    QGlobalShortcut *shortcutPause;
 
     void shortcut_start();
-    void shortcut_stop();
+    void shortcut_pause();
 
 
 private slots:

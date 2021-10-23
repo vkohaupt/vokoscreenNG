@@ -169,7 +169,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderStopRecordingAfterSeconds->show();
 
     ui->comboBox_shortcut_start->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-    ui->comboBox_shortcut_stop->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     ui->comboBox_shortcut_pause->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     ui->comboBox_shortcut_magnification->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 
@@ -535,7 +534,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSettings.readShowclickColor( vkShowClick );
 
     vkGlobalShortcut->slot_checkbox_shortcut_start_clicked( true );
-    vkGlobalShortcut->slot_checkbox_shortcut_stop_clicked( true );
+    vkGlobalShortcut->slot_checkbox_shortcut_pause_clicked( true );
 
     // After reading the settings, we read the arguments and run
     QStringList arguments = QApplication::instance()->arguments();

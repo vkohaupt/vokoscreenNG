@@ -33,23 +33,20 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     ui = ui_mainwindow;
 
     shortcutStart = new QGlobalShortcut( this );
-    connect( shortcutStart, SIGNAL( activated() ), ui->pushButtonStart, SLOT( click() ) );
+    connect( shortcutStart, SIGNAL( activated() ), this, SLOT( slot_startStop() ) );
     connect( ui->checkBox_shortcut_start_strg,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_start_clicked( bool ) ) );
     connect( ui->checkBox_shortcut_start_shift, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_start_clicked( bool ) ) );
     connect( ui->checkBox_shortcut_start_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_start_clicked( bool ) ) );
     connect( ui->checkBox_shortcut_start_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_start_clicked( bool ) ) );
     connect( ui->comboBox_shortcut_start, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_start_currentIndexChanged( int ) ) );
 
-    shortcutStop = new QGlobalShortcut( this );
-    connect( shortcutStop, SIGNAL( activated() ), ui->pushButtonStop, SLOT( click() ) );
-    connect( ui->checkBox_shortcut_stop_strg,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_stop_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_stop_shift, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_stop_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_stop_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_stop_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_stop_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_stop_clicked( bool ) ) );
-    connect( ui->comboBox_shortcut_stop, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_stop_currentIndexChanged( int ) ) );
-
-
-
+    shortcutPause = new QGlobalShortcut( this );
+    connect( shortcutPause, SIGNAL( activated() ), this, SLOT( slot_pauseContinue() ) );
+    connect( ui->checkBox_shortcut_pause_strg,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_pause_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_pause_shift, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_pause_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_pause_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_pause_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_pause_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_pause_clicked( bool ) ) );
+    connect( ui->comboBox_shortcut_pause, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_pause_currentIndexChanged( int ) ) );
 
     QGlobalShortcut *shortcutWebcam = new QGlobalShortcut( this );
     connect( shortcutWebcam, SIGNAL( activated() ), ui->checkBoxCameraOnOff, SLOT( click() ) );
@@ -67,9 +64,9 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
 //    connect( shortcutStop, SIGNAL( activated() ), ui->pushButtonStop, SLOT( click() ) );
 //    shortcutStop->setShortcut( QKeySequence( "Ctrl+Shift+F11" ) );
 
-    QGlobalShortcut *shortcutPauseContinue = new QGlobalShortcut( this );
-    connect( shortcutPauseContinue, SIGNAL( activated() ), this, SLOT( slot_pauseContinue() ) );
-    shortcutPauseContinue->setShortcut( QKeySequence( "Ctrl+Shift+F12" ) );
+//    QGlobalShortcut *shortcutPauseContinue = new QGlobalShortcut( this );
+//    connect( shortcutPauseContinue, SIGNAL( activated() ), this, SLOT( slot_pauseContinue() ) );
+//    shortcutPauseContinue->setShortcut( QKeySequence( "Ctrl+Shift+F12" ) );
 
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ), this, SLOT( slot_setOrUnsetShortcut( bool ) ) );
 }
@@ -99,16 +96,16 @@ bool QvkGlobalShortcut::isBusy()
    start.append( boolToString( ui->checkBox_shortcut_start_meta->isChecked() ) );
    start.append( ui->comboBox_shortcut_start->currentText() );
 
-   QString stop;
-   stop.append( boolToString( ui->checkBox_shortcut_stop_strg->isChecked() ) );
-   stop.append( boolToString( ui->checkBox_shortcut_stop_shift->isChecked() ) );
-   stop.append( boolToString( ui->checkBox_shortcut_stop_alt->isChecked() ) );
-   stop.append( boolToString( ui->checkBox_shortcut_stop_meta->isChecked() ) );
-   stop.append( ui->comboBox_shortcut_stop->currentText() );
+   QString pause;
+   pause.append( boolToString( ui->checkBox_shortcut_pause_strg->isChecked() ) );
+   pause.append( boolToString( ui->checkBox_shortcut_pause_shift->isChecked() ) );
+   pause.append( boolToString( ui->checkBox_shortcut_pause_alt->isChecked() ) );
+   pause.append( boolToString( ui->checkBox_shortcut_pause_meta->isChecked() ) );
+   pause.append( ui->comboBox_shortcut_pause->currentText() );
 
    QStringList list;
 
-   if ( stop == start )
+   if ( start == pause )
        return true;
    else
        return false;
@@ -172,43 +169,43 @@ void QvkGlobalShortcut::shortcut_start()
 }
 
 
-// Stop
-void QvkGlobalShortcut::slot_checkbox_shortcut_stop_clicked( bool value )
+// Pause
+void QvkGlobalShortcut::slot_checkbox_shortcut_pause_clicked( bool value )
 {
     Q_UNUSED(value)
 
-    if ( ( ui->checkBox_shortcut_stop_alt->isChecked() | ui->checkBox_shortcut_stop_meta->isChecked() | ui->checkBox_shortcut_stop_shift->isChecked() | ui->checkBox_shortcut_stop_strg->isChecked() ) and !isBusy() )
+    if ( ( ui->checkBox_shortcut_pause_alt->isChecked() | ui->checkBox_shortcut_pause_meta->isChecked() | ui->checkBox_shortcut_pause_shift->isChecked() | ui->checkBox_shortcut_pause_strg->isChecked() ) and !isBusy() )
     {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
-        ui->label_shortcut_picture_stop->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+        ui->label_shortcut_picture_pause->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
 
-        shortcut_stop();
+        shortcut_pause();
     } else
     {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
-        ui->label_shortcut_picture_stop->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+        ui->label_shortcut_picture_pause->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
 
-        shortcutStop->unsetShortcut();
+        shortcutPause->unsetShortcut();
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Stop: None";
     }
 }
 
-void QvkGlobalShortcut::slot_checkbox_shortcut_stop_currentIndexChanged( int value )
+void QvkGlobalShortcut::slot_checkbox_shortcut_pause_currentIndexChanged( int value )
 {
     Q_UNUSED(value)
-    slot_checkbox_shortcut_stop_clicked( true );
+    slot_checkbox_shortcut_pause_clicked( true );
 }
 
-void QvkGlobalShortcut::shortcut_stop()
+void QvkGlobalShortcut::shortcut_pause()
 {
     QString shortcut;
 
     QList<QCheckBox *> listCheckBox = ui->frame_screencast_shortcut->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ )
     {
-        if ( ( listCheckBox.at(i)->objectName().section( "_", 2, 2 ) == "stop" ) and ( listCheckBox.at(i)->isChecked() ) )
+        if ( ( listCheckBox.at(i)->objectName().section( "_", 2, 2 ) == "pause" ) and ( listCheckBox.at(i)->isChecked() ) )
         {
             shortcut.append( "+" );
             shortcut.append( listCheckBox.at(i)->objectName().section( "_", 3, 3 ).toUpper() );
@@ -221,12 +218,24 @@ void QvkGlobalShortcut::shortcut_stop()
         shortcut.remove( 0, 1 );
     }
 
-    shortcut.append( "+" + ui->comboBox_shortcut_stop->currentText() );
+    shortcut.append( "+" + ui->comboBox_shortcut_pause->currentText() );
 
-    shortcutStop->unsetShortcut();
-    shortcutStop->setShortcut( QKeySequence( shortcut ) );
+    shortcutPause->unsetShortcut();
+    shortcutPause->setShortcut( QKeySequence( shortcut ) );
 
-    qDebug().noquote() << global::nameOutput << "Set global shortcut for Stop:" << shortcut;
+    qDebug().noquote() << global::nameOutput << "Set global shortcut for Pause:" << shortcut;
+}
+
+
+void QvkGlobalShortcut::slot_startStop()
+{
+    if ( ui->pushButtonStart->isEnabled() == true )
+    {
+        ui->pushButtonStart->click();
+    } else
+    {
+        ui->pushButtonStop->click();
+    }
 }
 
 
