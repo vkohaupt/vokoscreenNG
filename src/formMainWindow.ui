@@ -4765,63 +4765,6 @@
           </property>
          </spacer>
         </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_52">
-          <property name="spacing">
-           <number>0</number>
-          </property>
-          <item>
-           <spacer name="horizontalSpacer_25">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item alignment="Qt::AlignRight">
-           <widget class="QLabel" name="label_49">
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-           </widget>
-          </item>
-          <item alignment="Qt::AlignHCenter">
-           <widget class="QLabel" name="label_51">
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-           </widget>
-          </item>
-          <item alignment="Qt::AlignLeft">
-           <widget class="QLabel" name="label_50">
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_26">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Expanding</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
         <item alignment="Qt::AlignHCenter">
          <widget class="QLabel" name="label_39">
           <property name="palette">

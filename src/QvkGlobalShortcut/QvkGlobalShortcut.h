@@ -49,6 +49,9 @@ public slots:
     void slot_checkbox_shortcut_pause_clicked( bool value );
     void slot_checkbox_shortcut_pause_currentIndexChanged( int value );
 
+    void slot_checkbox_shortcut_magnification_clicked( bool value );
+    void slot_checkbox_shortcut_magnification_currentIndexChanged( int value );
+
 
 private:
     Ui_formMainWindow *ui;
@@ -57,6 +60,7 @@ private:
 
     QGlobalShortcut *shortcutStart;
     QGlobalShortcut *shortcutPause;
+    QGlobalShortcut *shortcutMagnification;
 
 
 private slots:

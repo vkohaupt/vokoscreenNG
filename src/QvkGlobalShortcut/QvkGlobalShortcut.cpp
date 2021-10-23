@@ -52,9 +52,9 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( shortcutWebcam, SIGNAL( activated() ), ui->checkBoxCameraOnOff, SLOT( click() ) );
     shortcutWebcam->setShortcut( QKeySequence( "Ctrl+Shift+F8" ) );
 
-    QGlobalShortcut *shortcutMagnifier = new QGlobalShortcut( this );
-    connect( shortcutMagnifier, SIGNAL( activated() ), ui->checkBoxMagnifier, SLOT( click() ) );
-    shortcutMagnifier->setShortcut( QKeySequence( "Ctrl+Shift+F9" ) );
+    shortcutMagnification = new QGlobalShortcut( this );
+    connect( shortcutMagnification, SIGNAL( activated() ), ui->checkBoxMagnifier, SLOT( click() ) );
+    shortcutMagnification->setShortcut( QKeySequence( "Ctrl+Shift+F9" ) );
 
 //    shortcutStart = new QGlobalShortcut( this );
 //    connect( shortcutStart, SIGNAL( activated() ), ui->pushButtonStart, SLOT( click() ) );
@@ -103,7 +103,14 @@ bool QvkGlobalShortcut::isBusy()
    pause.append( boolToString( ui->checkBox_shortcut_pause_meta->isChecked() ) );
    pause.append( ui->comboBox_shortcut_pause->currentText() );
 
-   QStringList list;
+   QString magnification;
+   magnification.append( boolToString( ui->checkBox_shortcut_magnification_strg->isChecked() ) );
+   magnification.append( boolToString( ui->checkBox_shortcut_magnification_shift->isChecked() ) );
+   magnification.append( boolToString( ui->checkBox_shortcut_magnification_alt->isChecked() ) );
+   magnification.append( boolToString( ui->checkBox_shortcut_magnification_meta->isChecked() ) );
+   magnification.append( ui->comboBox_shortcut_magnification->currentText() );
+
+   QStringList list = QStringList() << start << pause << magnification;
 
    if ( start == pause )
        return true;
@@ -215,6 +222,64 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_pause_currentIndexChanged( int va
     Q_UNUSED(value)
     slot_checkbox_shortcut_pause_clicked( true );
 }
+
+// Magnifier
+void QvkGlobalShortcut::slot_checkbox_shortcut_magnification_clicked( bool value )
+{
+    Q_UNUSED(value)
+
+    if ( ( ui->checkBox_shortcut_magnification_strg->isChecked() | ui->checkBox_shortcut_magnification_shift->isChecked() | ui->checkBox_shortcut_magnification_alt->isChecked() | ui->checkBox_shortcut_magnification_meta->isChecked()  ) and !isBusy() )
+    {
+        QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
+        QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
+        ui->label_shortcut_picture_magnification->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+
+        QString shortcut;
+        if ( ui->checkBox_shortcut_magnification_strg->isChecked() ) {
+            shortcut.append( "+STRG" );
+        }
+        if ( ui->checkBox_shortcut_magnification_shift->isChecked() ) {
+            shortcut.append( "+SHIFT" );
+        }
+        if ( ui->checkBox_shortcut_magnification_alt->isChecked() ) {
+            shortcut.append( "+ALT" );
+        }
+        if ( ui->checkBox_shortcut_magnification_meta->isChecked() ) {
+            shortcut.append( "+META" );
+        }
+
+        shortcut.append( "+" + ui->comboBox_shortcut_magnification->currentText() );
+
+        if ( shortcut.startsWith( "+" ) == true ) {
+            shortcut.remove( 0, 1 );
+        }
+
+        shortcutMagnification->unsetShortcut();
+        shortcutMagnification->setShortcut( QKeySequence( shortcut ) );
+
+        qDebug().noquote() << global::nameOutput << "Set global shortcut for Magnification:" << shortcut;
+    } else
+    {
+        QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
+        QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
+        ui->label_shortcut_picture_magnification->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+
+        shortcutMagnification->unsetShortcut();
+        qDebug().noquote() << global::nameOutput << "Set global shortcut for Magnification: None";
+    }
+}
+
+void QvkGlobalShortcut::slot_checkbox_shortcut_magnification_currentIndexChanged( int value )
+{
+    Q_UNUSED(value)
+    slot_checkbox_shortcut_magnification_clicked( true );
+}
+
+
+
+
+
+
 
 
 void QvkGlobalShortcut::slot_startStop()
