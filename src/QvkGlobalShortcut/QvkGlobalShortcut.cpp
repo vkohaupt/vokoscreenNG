@@ -88,6 +88,7 @@ bool QvkGlobalShortcut::isBusy( QString check )
    QString start;;
    QString pause;
    QString magnification;
+   QString camera;
 
    start.append( boolToString( ui->checkBox_shortcut_start_strg->isChecked() ) );
    start.append( boolToString( ui->checkBox_shortcut_start_shift->isChecked() ) );
@@ -107,22 +108,34 @@ bool QvkGlobalShortcut::isBusy( QString check )
    magnification.append( boolToString( ui->checkBox_shortcut_magnification_meta->isChecked() ) );
    magnification.append( ui->comboBox_shortcut_magnification->currentText() );
 
+   camera.append( boolToString( ui->checkBox_shortcut_camera_strg->isChecked() ) );
+   camera.append( boolToString( ui->checkBox_shortcut_camera_shift->isChecked() ) );
+   camera.append( boolToString( ui->checkBox_shortcut_camera_alt->isChecked() ) );
+   camera.append( boolToString( ui->checkBox_shortcut_camera_meta->isChecked() ) );
+   camera.append( ui->comboBox_shortcut_camera->currentText() );
+
    bool returnCode = false;
    if ( check == "start" )
    {
-       if ( ( start == pause ) or ( start == magnification ) )
+       if ( ( start == pause ) or ( start == magnification ) or ( start == camera ) )
          returnCode = true;
    }
 
    if ( check == "pause" )
    {
-       if ( ( pause == start ) or ( pause == magnification) )
+       if ( ( pause == start ) or ( pause == magnification) or ( pause == camera ) )
          returnCode = true;
    }
 
    if ( check == "magnification" )
    {
-       if ( ( magnification == start ) or ( magnification == pause ) )
+       if ( ( magnification == start ) or ( magnification == pause ) or ( magnification == camera ) )
+         returnCode = true;
+   }
+
+   if ( check == "camera" )
+   {
+       if ( ( camera == start ) or ( camera == pause ) or ( camera == magnification ) )
          returnCode = true;
    }
 
