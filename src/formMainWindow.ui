@@ -289,7 +289,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -3323,6 +3323,11 @@
           </item>
           <item row="0" column="5" colspan="4" alignment="Qt::AlignHCenter">
            <widget class="QLabel" name="label_34">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string notr="true">Halo</string>
             </property>
@@ -3475,6 +3480,11 @@
           </item>
           <item row="0" column="0" colspan="4" alignment="Qt::AlignHCenter">
            <widget class="QLabel" name="label_33">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string notr="true">Showclick</string>
             </property>
@@ -4147,7 +4157,7 @@
                   </widget>
                  </item>
                  <item row="6" column="4" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_7">
+                  <widget class="QCheckBox" name="checkBox_shortcut_halo_alt">
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -4161,7 +4171,7 @@
                   </widget>
                  </item>
                  <item row="5" column="3" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_2">
+                  <widget class="QCheckBox" name="checkBox_shortcut_showclick_shift">
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -4202,7 +4212,7 @@
                   </widget>
                  </item>
                  <item row="6" column="2" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_5">
+                  <widget class="QCheckBox" name="checkBox_shortcut_halo_strg">
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -4412,7 +4422,7 @@
                   </widget>
                  </item>
                  <item row="5" column="4" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_3">
+                  <widget class="QCheckBox" name="checkBox_shortcut_showclick_alt">
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -4454,7 +4464,7 @@
                   </widget>
                  </item>
                  <item row="6" column="3" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_6">
+                  <widget class="QCheckBox" name="checkBox_shortcut_halo_shift">
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -4645,7 +4655,7 @@
                   </widget>
                  </item>
                  <item row="5" column="5" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_4">
+                  <widget class="QCheckBox" name="checkBox_shortcut_showclick_meta">
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -4659,7 +4669,7 @@
                   </widget>
                  </item>
                  <item row="5" column="2" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox">
+                  <widget class="QCheckBox" name="checkBox_shortcut_showclick_strg">
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -4899,14 +4909,14 @@
                   </widget>
                  </item>
                  <item row="6" column="5" alignment="Qt::AlignHCenter">
-                  <widget class="QCheckBox" name="checkBox_8">
+                  <widget class="QCheckBox" name="checkBox_shortcut_halo_meta">
                    <property name="text">
                     <string notr="true"/>
                    </property>
                   </widget>
                  </item>
                  <item row="5" column="6">
-                  <widget class="QComboBox" name="comboBox_shortcut_camera_2">
+                  <widget class="QComboBox" name="comboBox_shortcut_showclick">
                    <property name="toolTip">
                     <string notr="true"/>
                    </property>
@@ -5109,7 +5119,7 @@
                   </widget>
                  </item>
                  <item row="6" column="6">
-                  <widget class="QComboBox" name="comboBox_shortcut_camera_3">
+                  <widget class="QComboBox" name="comboBox_shortcut_halo">
                    <property name="toolTip">
                     <string notr="true"/>
                    </property>
