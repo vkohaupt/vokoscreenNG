@@ -66,16 +66,18 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( ui->comboBox_shortcut_camera, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_camera_currentIndexChanged( int ) ) );
 
     QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
-    for ( int i = 0; i < listSpezialCheckbox.count(); i++ )
-    {
-        if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckboxShowclick" )
-        {
+    for ( int i = 0; i < listSpezialCheckbox.count(); i++ ){
+        if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckboxShowclick" ){
             spezialCheckboxShowclick = listSpezialCheckbox.at(i);
         }
     }
-
-    qDebug() << "----------------------------" <<  listSpezialCheckbox;
-
+    shortcutShowclick = new QGlobalShortcut( this );
+    connect( shortcutShowclick, SIGNAL( activated() ), spezialCheckboxShowclick, SLOT( slot_click() ) );
+    connect( ui->checkBox_shortcut_showclick_strg,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_showclick_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_showclick_shift, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_showclick_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_showclick_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_showclick_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_showclick_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_showclick_clicked( bool ) ) );
+    connect( ui->comboBox_shortcut_showclick, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_showclick_currentIndexChanged( int ) ) );
 
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ), this, SLOT( slot_setOrUnsetShortcut( bool ) ) );
 }
@@ -102,6 +104,7 @@ bool QvkGlobalShortcut::isBusy( QString check )
    QString pause;
    QString magnification;
    QString camera;
+   QString showclick;
 
    start.append( boolToString( ui->checkBox_shortcut_start_strg->isChecked() ) );
    start.append( boolToString( ui->checkBox_shortcut_start_shift->isChecked() ) );
@@ -127,29 +130,41 @@ bool QvkGlobalShortcut::isBusy( QString check )
    camera.append( boolToString( ui->checkBox_shortcut_camera_meta->isChecked() ) );
    camera.append( ui->comboBox_shortcut_camera->currentText() );
 
+   showclick.append( boolToString( ui->checkBox_shortcut_showclick_strg->isChecked() ) );
+   showclick.append( boolToString( ui->checkBox_shortcut_showclick_shift->isChecked() ) );
+   showclick.append( boolToString( ui->checkBox_shortcut_showclick_alt->isChecked() ) );
+   showclick.append( boolToString( ui->checkBox_shortcut_showclick_meta->isChecked() ) );
+   showclick.append( ui->comboBox_shortcut_showclick->currentText() );
+
    bool returnCode = false;
    if ( check == "start" )
    {
-       if ( ( start == pause ) or ( start == magnification ) or ( start == camera ) )
-         returnCode = true;
+       if ( ( start == pause ) or ( start == magnification ) or ( start == camera ) or ( start == showclick ) )
+         return true;
    }
 
    if ( check == "pause" )
    {
-       if ( ( pause == start ) or ( pause == magnification) or ( pause == camera ) )
-         returnCode = true;
+       if ( ( pause == start ) or ( pause == magnification) or ( pause == camera ) or ( start == showclick ) )
+         return true;
    }
 
    if ( check == "magnification" )
    {
-       if ( ( magnification == start ) or ( magnification == pause ) or ( magnification == camera ) )
-         returnCode = true;
+       if ( ( magnification == start ) or ( magnification == pause ) or ( magnification == camera ) or ( start == showclick ) )
+         return true;
    }
 
    if ( check == "camera" )
    {
-       if ( ( camera == start ) or ( camera == pause ) or ( camera == magnification ) )
-         returnCode = true;
+       if ( ( camera == start ) or ( camera == pause ) or ( camera == magnification ) or ( start == showclick ) )
+         return true;
+   }
+
+   if ( check == "showclick" )
+   {
+       if ( ( showclick == start ) or ( showclick == pause ) or ( showclick == magnification ) or ( showclick == camera ) )
+         return true;
    }
 
    return returnCode;
@@ -385,7 +400,60 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_camera_currentIndexChanged( int v
 }
 
 
+// Showclick
+void QvkGlobalShortcut::slot_checkbox_shortcut_showclick_clicked( bool value )
+{
+    Q_UNUSED(value)
 
+    if ( ( ui->checkBox_shortcut_showclick_strg->isChecked() | ui->checkBox_shortcut_showclick_shift->isChecked() | ui->checkBox_shortcut_showclick_alt->isChecked() | ui->checkBox_shortcut_showclick_meta->isChecked()  ) and !isBusy( "showclick" ) )
+    {
+        QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
+        QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
+        ui->label_shortcut_picture_showclick->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+
+        QString shortcut;
+        if ( ui->checkBox_shortcut_showclick_strg->isChecked() ) {
+            shortcut.append( "+STRG" );
+        }
+        if ( ui->checkBox_shortcut_showclick_shift->isChecked() ) {
+            shortcut.append( "+SHIFT" );
+        }
+        if ( ui->checkBox_shortcut_showclick_alt->isChecked() ) {
+            shortcut.append( "+ALT" );
+        }
+        if ( ui->checkBox_shortcut_showclick_meta->isChecked() ) {
+            shortcut.append( "+META" );
+        }
+
+        shortcut.append( "+" + ui->comboBox_shortcut_showclick->currentText() );
+
+        if ( shortcut.startsWith( "+" ) == true ) {
+            shortcut.remove( 0, 1 );
+        }
+
+        shortcutShowclick->unsetShortcut();
+        shortcutShowclick->setShortcut( QKeySequence( shortcut ) );
+
+        spezialCheckboxShowclick->setToolTip( shortcut );
+
+        qDebug().noquote() << global::nameOutput << "Set global shortcut for Showclick:" << shortcut;
+    } else
+    {
+        QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
+        QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
+        ui->label_shortcut_picture_showclick->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+
+        shortcutShowclick->unsetShortcut();
+        spezialCheckboxShowclick->setToolTip( "None" );
+        qDebug().noquote() << global::nameOutput << "Set global shortcut for Showclick: None";
+    }
+}
+
+void QvkGlobalShortcut::slot_checkbox_shortcut_showclick_currentIndexChanged( int value )
+{
+    Q_UNUSED(value)
+    slot_checkbox_shortcut_camera_clicked( true );
+}
 
 
 void QvkGlobalShortcut::slot_startStop()

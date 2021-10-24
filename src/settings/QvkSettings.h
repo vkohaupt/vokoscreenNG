@@ -23,7 +23,6 @@
 #ifndef QVKSETTINGS_H 
 #define QVKSETTINGS_H
 
-#include "ui_formMainWindow.h"
 #include "QvkRegionChoise.h"
 #include "QvkCameraController.h"
 #include "QvkSystrayAlternative.h"

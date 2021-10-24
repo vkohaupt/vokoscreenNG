@@ -538,6 +538,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkGlobalShortcut->slot_checkbox_shortcut_pause_clicked( true );
     vkGlobalShortcut->slot_checkbox_shortcut_magnification_clicked( true );
     vkGlobalShortcut->slot_checkbox_shortcut_camera_clicked( true );
+    vkGlobalShortcut->slot_checkbox_shortcut_showclick_clicked( true );
 
     // After reading the settings, we read the arguments and run
     QStringList arguments = QApplication::instance()->arguments();

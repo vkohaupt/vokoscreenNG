@@ -12,11 +12,11 @@ class QvkSpezialCheckbox : public QWidget
 public:
     QvkSpezialCheckbox(QWidget *parent = 0);
     bool isChecked();
-    void click();
 
     
 public slots:
     void slot_setChecked( bool value );
+    void slot_click();
 
 
 protected:

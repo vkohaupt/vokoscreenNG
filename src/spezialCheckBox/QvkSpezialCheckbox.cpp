@@ -28,7 +28,7 @@ void QvkSpezialCheckbox::slot_setChecked( bool value )
 }
 
 
-void QvkSpezialCheckbox::click()
+void QvkSpezialCheckbox::slot_click()
 {
     if ( checked == true )
     {

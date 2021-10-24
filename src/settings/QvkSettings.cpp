@@ -22,7 +22,6 @@
 
 #include "QvkSettings.h"
 #include "global.h"
-#include "ui_formMainWindow.h"
 #include "QvkSpezialCheckbox.h"
 
 #include <QFileInfo>

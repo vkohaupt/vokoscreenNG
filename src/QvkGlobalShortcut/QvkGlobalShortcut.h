@@ -56,6 +56,9 @@ public slots:
     void slot_checkbox_shortcut_camera_clicked( bool value );
     void slot_checkbox_shortcut_camera_currentIndexChanged( int value );
 
+    void slot_checkbox_shortcut_showclick_clicked( bool value );
+    void slot_checkbox_shortcut_showclick_currentIndexChanged( int value );
+
 
 private:
     Ui_formMainWindow *ui;
@@ -66,6 +69,7 @@ private:
     QGlobalShortcut *shortcutPause;
     QGlobalShortcut *shortcutMagnification;
     QGlobalShortcut *shortcutCamera;
+    QGlobalShortcut *shortcutShowclick;
 
     QvkSpezialCheckbox *spezialCheckboxShowclick;
 
