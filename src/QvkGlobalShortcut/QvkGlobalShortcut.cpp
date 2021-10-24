@@ -136,38 +136,37 @@ bool QvkGlobalShortcut::isBusy( QString check )
    showclick.append( boolToString( ui->checkBox_shortcut_showclick_meta->isChecked() ) );
    showclick.append( ui->comboBox_shortcut_showclick->currentText() );
 
-   bool returnCode = false;
    if ( check == "start" )
    {
        if ( ( start == pause ) or ( start == magnification ) or ( start == camera ) or ( start == showclick ) )
-         returnCode = true;
+         return true;
    }
 
    if ( check == "pause" )
    {
-       if ( ( pause == start ) or ( pause == magnification) or ( pause == camera ) or ( start == showclick ) )
-         returnCode = true;
+       if ( ( pause == start ) or ( pause == magnification) or ( pause == camera ) or ( pause == showclick ) )
+         return true;
    }
 
    if ( check == "magnification" )
    {
-       if ( ( magnification == start ) or ( magnification == pause ) or ( magnification == camera ) or ( start == showclick ) )
-         returnCode = true;
+       if ( ( magnification == start ) or ( magnification == pause ) or ( magnification == camera ) or ( magnification == showclick ) )
+         return true;
    }
 
    if ( check == "camera" )
    {
-       if ( ( camera == start ) or ( camera == pause ) or ( camera == magnification ) or ( start == showclick ) )
-         returnCode = true;
+       if ( ( camera == start ) or ( camera == pause ) or ( camera == magnification ) or ( camera == showclick ) )
+         return true;
    }
 
    if ( check == "showclick" )
    {
        if ( ( showclick == start ) or ( showclick == pause ) or ( showclick == magnification ) or ( showclick == camera ) )
-         returnCode = true;
+         return true;
    }
 
-   return returnCode;
+   return false;
 }
 
 
