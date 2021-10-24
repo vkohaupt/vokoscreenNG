@@ -136,7 +136,6 @@ bool QvkGlobalShortcut::isBusy( QString check )
    showclick.append( boolToString( ui->checkBox_shortcut_showclick_meta->isChecked() ) );
    showclick.append( ui->comboBox_shortcut_showclick->currentText() );
 
-   bool returnCode = false;
    if ( check == "start" )
    {
        if ( ( start == pause ) or ( start == magnification ) or ( start == camera ) or ( start == showclick ) )
@@ -167,7 +166,7 @@ bool QvkGlobalShortcut::isBusy( QString check )
          return true;
    }
 
-   return returnCode;
+   return false;
 }
 
 
