@@ -25,6 +25,7 @@
 
 #include "ui_formMainWindow.h"
 #include "qglobalshortcut.h"
+#include "QvkSpezialCheckbox.h"
 
 #include <QObject>
 #include <QMainWindow>
@@ -66,6 +67,7 @@ private:
     QGlobalShortcut *shortcutMagnification;
     QGlobalShortcut *shortcutCamera;
 
+    QvkSpezialCheckbox *spezialCheckboxShowclick;
 
 private slots:
     void slot_pauseContinue();

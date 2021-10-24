@@ -30,6 +30,7 @@
 QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow *ui_mainwindow )
 {
     Q_UNUSED(mainWindow);
+
     ui = ui_mainwindow;
 
     shortcutStart = new QGlobalShortcut( this );
@@ -63,6 +64,18 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( ui->checkBox_shortcut_camera_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_camera_clicked( bool ) ) );
     connect( ui->checkBox_shortcut_camera_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_camera_clicked( bool ) ) );
     connect( ui->comboBox_shortcut_camera, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_camera_currentIndexChanged( int ) ) );
+
+    QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
+    for ( int i = 0; i < listSpezialCheckbox.count(); i++ )
+    {
+        if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckboxShowclick" )
+        {
+            spezialCheckboxShowclick = listSpezialCheckbox.at(i);
+        }
+    }
+
+    qDebug() << "----------------------------" <<  listSpezialCheckbox;
+
 
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ), this, SLOT( slot_setOrUnsetShortcut( bool ) ) );
 }

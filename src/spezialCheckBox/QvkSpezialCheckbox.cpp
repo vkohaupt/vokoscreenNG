@@ -28,6 +28,23 @@ void QvkSpezialCheckbox::slot_setChecked( bool value )
 }
 
 
+void QvkSpezialCheckbox::click()
+{
+    if ( checked == true )
+    {
+        checked = false;
+    }
+    else
+    {
+        checked = true;
+    }
+
+    repaint();
+
+    emit signal_clicked( checked );
+}
+
+
 void QvkSpezialCheckbox::mouseReleaseEvent(QMouseEvent *event)
 {
     Q_UNUSED(event);

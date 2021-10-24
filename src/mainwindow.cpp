@@ -198,24 +198,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkCountdown = new QvkCountdown();
     vkCountdown->init();
 
-    /* Wayland
-     * If start with "./name -platform wayland" comes a Memory access error
-     * On Wayland we have to time no access to GlobalShortcuts
-     * We must disable this function for Wayland but not for X11 and Windows
-     */
-#ifdef Q_OS_LINUX
-    if ( QX11Info::isPlatformX11() == true )
-    {
-        vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
-        Q_UNUSED(vkGlobalShortcut);
-    }
-#endif
-
-#ifdef Q_OS_WIN
-    vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
-    Q_UNUSED(vkGlobalShortcut);
-#endif
-    vk_setCornerWidget( ui->tabWidgetShortcut );
 
     QvkInformation *vkInformation = new QvkInformation( this, ui, sliderScreencastCountDown, sliderSecondWaitBeforeRecording );
     connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
@@ -509,11 +491,29 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkHalo = new QvkHalo();
     vkHalo->init( ui );
 
-
     // *****************Begin Log *********************************
     vk_setCornerWidget( ui->tabWidgetLog );
     connect( ui->pushButtonSendReport, SIGNAL( clicked( bool ) ), this, SLOT( slot_sendReport() ) );
     // *****************End Log ***********************************
+
+
+    /* Wayland
+     * If start with "./name -platform wayland" comes a Memory access error
+     * On Wayland we have to time no access to GlobalShortcuts
+     * We must disable this function for Wayland but not for X11 and Windows
+     */
+#ifdef Q_OS_LINUX
+    if ( QX11Info::isPlatformX11() == true )
+    {
+        vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
+        Q_UNUSED(vkGlobalShortcut);
+    }
+#endif
+#ifdef Q_OS_WIN
+    vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
+    Q_UNUSED(vkGlobalShortcut);
+#endif
+    vk_setCornerWidget( ui->tabWidgetShortcut );
 
 
 #ifdef Q_OS_WIN
