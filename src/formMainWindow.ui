@@ -847,8 +847,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>30</height>
+                      <width>21</width>
+                      <height>16</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -2032,7 +2032,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>98</width>
+                   <width>20</width>
                    <height>98</height>
                   </rect>
                  </property>
@@ -3947,16 +3947,11 @@
                     <string notr="true"/>
                    </property>
                    <property name="currentText">
-                    <string notr="true"/>
+                    <string notr="true">A</string>
                    </property>
                    <property name="currentIndex">
                     <number>0</number>
                    </property>
-                   <item>
-                    <property name="text">
-                     <string notr="true"/>
-                    </property>
-                   </item>
                    <item>
                     <property name="text">
                      <string notr="true">A</string>
@@ -5451,6 +5446,13 @@
                   </spacer>
                  </item>
                 </layout>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_50">
+                 <property name="text">
+                  <string>Es werden nur </string>
+                 </property>
+                </widget>
                </item>
                <item>
                 <spacer name="verticalSpacer_15">

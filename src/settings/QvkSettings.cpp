@@ -54,6 +54,17 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         }
     }
 
+
+    // We want block the signals for shortcut ComboBox signals
+    QList<QComboBox *> listComboBoxShortcut = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
+    for ( int i = 0; i < listComboBoxShortcut.count(); i++ )
+    {
+        if ( listComboBoxShortcut.at(i)->objectName().contains( "comboBox_shortcut", Qt::CaseInsensitive ) == true )
+        {
+            listComboBoxShortcut.at(i)->blockSignals( true );
+        }
+    }
+
     QList<QComboBox *> listComboBox = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
     for ( int i = 0; i < listComboBox.count(); i++ )
     {
@@ -64,6 +75,16 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             listComboBox.at(i)->setCurrentIndex( valueInt );
         }
     }
+
+    // After set all comboBox values we set the shortcut ComboBox signals
+    for ( int i = 0; i < listComboBoxShortcut.count(); i++ )
+    {
+        if ( listComboBoxShortcut.at(i)->objectName().contains( "comboBox_shortcut", Qt::CaseInsensitive ) == true )
+        {
+            listComboBoxShortcut.at(i)->blockSignals( false );
+        }
+    }
+
 
     // These settings must be set in this order: Format, Videocodec, Audiocodec
     // 1. Format
