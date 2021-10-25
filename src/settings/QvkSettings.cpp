@@ -55,7 +55,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     }
 
 
-    // We want block the signals for shortcut ComboBox signals
+    // We want block the signals for shortcut ComboBox signals and set the default value
     QList<QComboBox *> listComboBoxShortcut = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
     for ( int i = 0; i < listComboBoxShortcut.count(); i++ )
     {
@@ -65,6 +65,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         }
     }
 
+    // Then we set the values for all ComboBoxes
     QList<QComboBox *> listComboBox = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
     for ( int i = 0; i < listComboBox.count(); i++ )
     {
