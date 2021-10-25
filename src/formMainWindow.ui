@@ -289,7 +289,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>3</number>
       </property>
       <property name="iconSize">
        <size>
@@ -3708,11 +3708,16 @@
                     <string notr="true"/>
                    </property>
                    <property name="currentText">
-                    <string notr="true">A</string>
+                    <string notr="true"/>
                    </property>
                    <property name="currentIndex">
                     <number>0</number>
                    </property>
+                   <item>
+                    <property name="text">
+                     <string notr="true"/>
+                    </property>
+                   </item>
                    <item>
                     <property name="text">
                      <string notr="true">A</string>
@@ -3942,11 +3947,16 @@
                     <string notr="true"/>
                    </property>
                    <property name="currentText">
-                    <string notr="true">A</string>
+                    <string notr="true"/>
                    </property>
                    <property name="currentIndex">
                     <number>0</number>
                    </property>
+                   <item>
+                    <property name="text">
+                     <string notr="true"/>
+                    </property>
+                   </item>
                    <item>
                     <property name="text">
                      <string notr="true">A</string>
@@ -4224,11 +4234,16 @@
                     <string notr="true"/>
                    </property>
                    <property name="currentText">
-                    <string notr="true">A</string>
+                    <string notr="true"/>
                    </property>
                    <property name="currentIndex">
                     <number>0</number>
                    </property>
+                   <item>
+                    <property name="text">
+                     <string notr="true"/>
+                    </property>
+                   </item>
                    <item>
                     <property name="text">
                      <string notr="true">A</string>
@@ -4710,11 +4725,16 @@
                     <string notr="true"/>
                    </property>
                    <property name="currentText">
-                    <string notr="true">A</string>
+                    <string notr="true"/>
                    </property>
                    <property name="currentIndex">
                     <number>0</number>
                    </property>
+                   <item>
+                    <property name="text">
+                     <string notr="true"/>
+                    </property>
+                   </item>
                    <item>
                     <property name="text">
                      <string notr="true">A</string>
@@ -4927,11 +4947,16 @@
                     <string notr="true"/>
                    </property>
                    <property name="currentText">
-                    <string notr="true">A</string>
+                    <string notr="true"/>
                    </property>
                    <property name="currentIndex">
                     <number>0</number>
                    </property>
+                   <item>
+                    <property name="text">
+                     <string notr="true"/>
+                    </property>
+                   </item>
                    <item>
                     <property name="text">
                      <string notr="true">A</string>
@@ -5130,11 +5155,16 @@
                     <string notr="true"/>
                    </property>
                    <property name="currentText">
-                    <string notr="true">A</string>
+                    <string notr="true"/>
                    </property>
                    <property name="currentIndex">
                     <number>0</number>
                    </property>
+                   <item>
+                    <property name="text">
+                     <string notr="true"/>
+                    </property>
+                   </item>
                    <item>
                     <property name="text">
                      <string notr="true">A</string>
