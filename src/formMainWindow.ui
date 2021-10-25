@@ -3708,16 +3708,11 @@
                     <string notr="true"/>
                    </property>
                    <property name="currentText">
-                    <string notr="true"/>
+                    <string notr="true">A</string>
                    </property>
                    <property name="currentIndex">
                     <number>0</number>
                    </property>
-                   <item>
-                    <property name="text">
-                     <string notr="true"/>
-                    </property>
-                   </item>
                    <item>
                     <property name="text">
                      <string notr="true">A</string>
@@ -4229,16 +4224,11 @@
                     <string notr="true"/>
                    </property>
                    <property name="currentText">
-                    <string notr="true"/>
+                    <string notr="true">A</string>
                    </property>
                    <property name="currentIndex">
                     <number>0</number>
                    </property>
-                   <item>
-                    <property name="text">
-                     <string notr="true"/>
-                    </property>
-                   </item>
                    <item>
                     <property name="text">
                      <string notr="true">A</string>
@@ -4720,16 +4710,11 @@
                     <string notr="true"/>
                    </property>
                    <property name="currentText">
-                    <string notr="true"/>
+                    <string notr="true">A</string>
                    </property>
                    <property name="currentIndex">
                     <number>0</number>
                    </property>
-                   <item>
-                    <property name="text">
-                     <string notr="true"/>
-                    </property>
-                   </item>
                    <item>
                     <property name="text">
                      <string notr="true">A</string>
@@ -4942,16 +4927,11 @@
                     <string notr="true"/>
                    </property>
                    <property name="currentText">
-                    <string notr="true"/>
+                    <string notr="true">A</string>
                    </property>
                    <property name="currentIndex">
                     <number>0</number>
                    </property>
-                   <item>
-                    <property name="text">
-                     <string notr="true"/>
-                    </property>
-                   </item>
                    <item>
                     <property name="text">
                      <string notr="true">A</string>
@@ -5150,16 +5130,11 @@
                     <string notr="true"/>
                    </property>
                    <property name="currentText">
-                    <string notr="true"/>
+                    <string notr="true">A</string>
                    </property>
                    <property name="currentIndex">
                     <number>0</number>
                    </property>
-                   <item>
-                    <property name="text">
-                     <string notr="true"/>
-                    </property>
-                   </item>
                    <item>
                     <property name="text">
                      <string notr="true">A</string>
@@ -5446,13 +5421,6 @@
                   </spacer>
                  </item>
                 </layout>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_50">
-                 <property name="text">
-                  <string>Es werden nur </string>
-                 </property>
-                </widget>
                </item>
                <item>
                 <spacer name="verticalSpacer_15">
