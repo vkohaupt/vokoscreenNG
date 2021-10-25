@@ -65,10 +65,10 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( ui->checkBox_shortcut_camera_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_camera_clicked( bool ) ) );
     connect( ui->comboBox_shortcut_camera, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_camera_currentIndexChanged( int ) ) );
 
-    QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
-    for ( int i = 0; i < listSpezialCheckbox.count(); i++ ){
-        if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckboxShowclick" ){
-            spezialCheckboxShowclick = listSpezialCheckbox.at(i);
+    QList<QvkSpezialCheckbox *> listSpezialCheckboxShowclick = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
+    for ( int i = 0; i < listSpezialCheckboxShowclick.count(); i++ ){
+        if ( listSpezialCheckboxShowclick.at(i)->objectName() == "spezialCheckboxShowclick" ){
+            spezialCheckboxShowclick = listSpezialCheckboxShowclick.at(i);
         }
     }
     shortcutShowclick = new QGlobalShortcut( this );
@@ -78,6 +78,22 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( ui->checkBox_shortcut_showclick_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_showclick_clicked( bool ) ) );
     connect( ui->checkBox_shortcut_showclick_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_showclick_clicked( bool ) ) );
     connect( ui->comboBox_shortcut_showclick, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_showclick_currentIndexChanged( int ) ) );
+
+    //--------------------------------------------------------------
+    QList<QvkSpezialCheckbox *> listSpezialCheckboxHalo = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
+    qDebug() << listSpezialCheckboxHalo;
+    for ( int i = 0; i < listSpezialCheckboxHalo.count(); i++ ){
+        if ( listSpezialCheckboxHalo.at(i)->objectName() == "spezialCheckboxHalo" ){
+            spezialCheckboxHalo = listSpezialCheckboxHalo.at(i);
+        }
+    }
+    shortcutHalo = new QGlobalShortcut( this );
+    connect( shortcutHalo, SIGNAL( activated() ), spezialCheckboxHalo, SLOT( slot_click() ) );
+    connect( ui->checkBox_shortcut_halo_strg,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_halo_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_halo_shift, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_halo_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_halo_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_halo_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_halo_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_halo_clicked( bool ) ) );
+    connect( ui->comboBox_shortcut_halo, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_halo_currentIndexChanged( int ) ) );
 
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ), this, SLOT( slot_setOrUnsetShortcut( bool ) ) );
 }
@@ -105,6 +121,7 @@ bool QvkGlobalShortcut::isBusy( QString check )
    QString magnification;
    QString camera;
    QString showclick;
+   QString halo;
 
    start.append( boolToString( ui->checkBox_shortcut_start_strg->isChecked() ) );
    start.append( boolToString( ui->checkBox_shortcut_start_shift->isChecked() ) );
@@ -136,33 +153,45 @@ bool QvkGlobalShortcut::isBusy( QString check )
    showclick.append( boolToString( ui->checkBox_shortcut_showclick_meta->isChecked() ) );
    showclick.append( ui->comboBox_shortcut_showclick->currentText() );
 
+   halo.append( boolToString( ui->checkBox_shortcut_halo_strg->isChecked() ) );
+   halo.append( boolToString( ui->checkBox_shortcut_halo_shift->isChecked() ) );
+   halo.append( boolToString( ui->checkBox_shortcut_halo_alt->isChecked() ) );
+   halo.append( boolToString( ui->checkBox_shortcut_halo_meta->isChecked() ) );
+   halo.append( ui->comboBox_shortcut_halo->currentText() );
+
    if ( check == "start" )
    {
-       if ( ( start == pause ) or ( start == magnification ) or ( start == camera ) or ( start == showclick ) )
+       if ( ( start == pause ) or ( start == magnification ) or ( start == camera ) or ( start == showclick ) or ( start == halo ) )
          return true;
    }
 
    if ( check == "pause" )
    {
-       if ( ( pause == start ) or ( pause == magnification) or ( pause == camera ) or ( pause == showclick ) )
+       if ( ( pause == start ) or ( pause == magnification) or ( pause == camera ) or ( pause == showclick ) or ( pause == halo ) )
          return true;
    }
 
    if ( check == "magnification" )
    {
-       if ( ( magnification == start ) or ( magnification == pause ) or ( magnification == camera ) or ( magnification == showclick ) )
+       if ( ( magnification == start ) or ( magnification == pause ) or ( magnification == camera ) or ( magnification == showclick ) or ( magnification == halo ) )
          return true;
    }
 
    if ( check == "camera" )
    {
-       if ( ( camera == start ) or ( camera == pause ) or ( camera == magnification ) or ( camera == showclick ) )
+       if ( ( camera == start ) or ( camera == pause ) or ( camera == magnification ) or ( camera == showclick ) or ( camera == halo ) )
          return true;
    }
 
    if ( check == "showclick" )
    {
-       if ( ( showclick == start ) or ( showclick == pause ) or ( showclick == magnification ) or ( showclick == camera ) )
+       if ( ( showclick == start ) or ( showclick == pause ) or ( showclick == magnification ) or ( showclick == camera ) or ( showclick == halo ) )
+         return true;
+   }
+
+   if ( check == "halo" )
+   {
+       if ( ( halo == start ) or ( halo== pause ) or ( halo == magnification ) or ( halo == camera ) or ( halo == showclick ) )
          return true;
    }
 
@@ -452,6 +481,62 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_showclick_currentIndexChanged( in
 {
     Q_UNUSED(value)
     slot_checkbox_shortcut_camera_clicked( true );
+}
+
+
+// Halo
+void QvkGlobalShortcut::slot_checkbox_shortcut_halo_clicked( bool value )
+{
+    Q_UNUSED(value)
+
+    if ( ( ui->checkBox_shortcut_halo_strg->isChecked() | ui->checkBox_shortcut_halo_shift->isChecked() | ui->checkBox_shortcut_halo_alt->isChecked() | ui->checkBox_shortcut_halo_meta->isChecked()  ) and !isBusy( "halo" ) )
+    {
+        QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
+        QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
+        ui->label_shortcut_picture_halo->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+
+        QString shortcut;
+        if ( ui->checkBox_shortcut_halo_strg->isChecked() ) {
+            shortcut.append( "+STRG" );
+        }
+        if ( ui->checkBox_shortcut_halo_shift->isChecked() ) {
+            shortcut.append( "+SHIFT" );
+        }
+        if ( ui->checkBox_shortcut_halo_alt->isChecked() ) {
+            shortcut.append( "+ALT" );
+        }
+        if ( ui->checkBox_shortcut_halo_meta->isChecked() ) {
+            shortcut.append( "+META" );
+        }
+
+        shortcut.append( "+" + ui->comboBox_shortcut_halo->currentText() );
+
+        if ( shortcut.startsWith( "+" ) == true ) {
+            shortcut.remove( 0, 1 );
+        }
+
+        shortcutHalo->unsetShortcut();
+        shortcutHalo->setShortcut( QKeySequence( shortcut ) );
+
+        spezialCheckboxHalo->setToolTip( shortcut );
+
+        qDebug().noquote() << global::nameOutput << "Set global shortcut for Halo:" << shortcut;
+    } else
+    {
+        QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
+        QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
+        ui->label_shortcut_picture_halo->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+
+        shortcutHalo->unsetShortcut();
+        spezialCheckboxHalo->setToolTip( "None" );
+        qDebug().noquote() << global::nameOutput << "Set global shortcut for Halo: None";
+    }
+}
+
+void QvkGlobalShortcut::slot_checkbox_shortcut_halo_currentIndexChanged( int value )
+{
+    Q_UNUSED(value)
+    slot_checkbox_shortcut_halo_clicked( true );
 }
 
 
