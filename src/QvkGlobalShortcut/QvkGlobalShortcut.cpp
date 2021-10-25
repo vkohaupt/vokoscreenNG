@@ -79,7 +79,6 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( ui->checkBox_shortcut_showclick_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_showclick_clicked( bool ) ) );
     connect( ui->comboBox_shortcut_showclick, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_showclick_currentIndexChanged( int ) ) );
 
-    //--------------------------------------------------------------
     QList<QvkSpezialCheckbox *> listSpezialCheckboxHalo = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
     for ( int i = 0; i < listSpezialCheckboxHalo.count(); i++ ){
         if ( listSpezialCheckboxHalo.at(i)->objectName() == "spezialCheckboxHalo" ){
