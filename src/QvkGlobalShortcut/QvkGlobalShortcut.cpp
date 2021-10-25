@@ -81,7 +81,6 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
 
     //--------------------------------------------------------------
     QList<QvkSpezialCheckbox *> listSpezialCheckboxHalo = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
-    qDebug() << listSpezialCheckboxHalo;
     for ( int i = 0; i < listSpezialCheckboxHalo.count(); i++ ){
         if ( listSpezialCheckboxHalo.at(i)->objectName() == "spezialCheckboxHalo" ){
             spezialCheckboxHalo = listSpezialCheckboxHalo.at(i);
@@ -191,7 +190,7 @@ bool QvkGlobalShortcut::isBusy( QString check )
 
    if ( check == "halo" )
    {
-       if ( ( halo == start ) or ( halo== pause ) or ( halo == magnification ) or ( halo == camera ) or ( halo == showclick ) )
+       if ( ( halo == start ) or ( halo == pause ) or ( halo == magnification ) or ( halo == camera ) or ( halo == showclick ) )
          return true;
    }
 
@@ -480,7 +479,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_showclick_clicked( bool value )
 void QvkGlobalShortcut::slot_checkbox_shortcut_showclick_currentIndexChanged( int value )
 {
     Q_UNUSED(value)
-    slot_checkbox_shortcut_camera_clicked( true );
+    slot_checkbox_shortcut_showclick_clicked( true );
 }
 
 
