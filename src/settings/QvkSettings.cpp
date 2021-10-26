@@ -62,6 +62,23 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         if ( listComboBoxShortcut.at(i)->objectName().contains( "comboBox_shortcut", Qt::CaseInsensitive ) == true )
         {
             listComboBoxShortcut.at(i)->blockSignals( true );
+
+            if ( listComboBoxShortcut.at(i)->objectName() == "comboBox_shortcut_start" ) {
+                QString valueText = settings.value( listComboBoxShortcut.at(i)->objectName(), "F10" ).toString();
+                listComboBoxShortcut.at(i)->setCurrentText( valueText );
+            }
+            if ( listComboBoxShortcut.at(i)->objectName() == "comboBox_shortcut_pause" ) {
+                QString valueText = settings.value( listComboBoxShortcut.at(i)->objectName(), "F12" ).toString();
+                listComboBoxShortcut.at(i)->setCurrentText( valueText );
+            }
+            if ( listComboBoxShortcut.at(i)->objectName() == "comboBox_shortcut_magnification" ) {
+                QString valueText = settings.value( listComboBoxShortcut.at(i)->objectName(), "F9" ).toString();
+                listComboBoxShortcut.at(i)->setCurrentText( valueText );
+            }
+            if ( listComboBoxShortcut.at(i)->objectName() == "comboBox_shortcut_camera" ) {
+                QString valueText = settings.value( listComboBoxShortcut.at(i)->objectName(), "F8" ).toString();
+                listComboBoxShortcut.at(i)->setCurrentText( valueText );
+            }
         }
     }
 
@@ -209,22 +226,69 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         }
 
 
-
-//-----------------------------------------------------
-        // Evtl. könnte man das so lösen
-        // Die Checkboxen werden gesetzt aber kein connect durchgeführt
-        // Dies wird durch einen seperaten aufruf durch ???? gemacht
-        // dadurch wird nur einmal der shortcut scharf geschalten
+        //
         if ( listCheckBox.at(i)->objectName().contains( "checkBox_shortcut" ) and
-             ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true ) )
+           ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true ) )
         {
             listCheckBox.at(i)->setChecked( true );
             continue;
         }
 
-//------------------------------------------------------
+        // Start/Stop
+        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_start_strg" ) {
+             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
+                 listCheckBox.at(i)->setChecked( true );
+                 continue;
+             }
+        }
+        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_start_shift" ) {
+             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
+                 listCheckBox.at(i)->setChecked( true );
+                 continue;
+             }
+        }
 
+        // Pause/Continue
+        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_pause_strg" ) {
+             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
+                 listCheckBox.at(i)->setChecked( true );
+                 continue;
+             }
+        }
+        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_pause_shift" ) {
+             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
+                 listCheckBox.at(i)->setChecked( true );
+                 continue;
+             }
+        }
 
+        // Magnification
+        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_magnification_strg" ) {
+             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
+                 listCheckBox.at(i)->setChecked( true );
+                 continue;
+             }
+        }
+        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_magnification_shift" ) {
+             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
+                 listCheckBox.at(i)->setChecked( true );
+                 continue;
+             }
+        }
+
+        // Camera
+        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_camera_strg" ) {
+             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
+                 listCheckBox.at(i)->setChecked( true );
+                 continue;
+             }
+        }
+        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_camera_shift" ) {
+             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
+                 listCheckBox.at(i)->setChecked( true );
+                 continue;
+             }
+        }
 
         // We found a setting, then we want set or not.
         if ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true )
