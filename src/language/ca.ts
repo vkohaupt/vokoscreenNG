@@ -434,7 +434,7 @@
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Restableix tots els ajustament al següent inici</translation>
+        <translation>Restableix tots els ajustaments en el proper inici</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
