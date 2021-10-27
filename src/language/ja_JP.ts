@@ -143,6 +143,10 @@
         <source>Exit</source>
         <translation>終了する</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>カメラ</translation>
+    </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>

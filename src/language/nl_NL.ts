@@ -143,6 +143,10 @@
         <source>Exit</source>
         <translation>Afsluiten</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>Camera</translation>
+    </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>

@@ -145,6 +145,10 @@
         <source>Exit</source>
         <translation>خروج</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>دوربین</translation>
+    </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>

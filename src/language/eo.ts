@@ -143,6 +143,10 @@
         <source>Exit</source>
         <translation>Eliri</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>Kamerao</translation>
+    </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>

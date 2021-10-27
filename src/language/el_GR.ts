@@ -143,6 +143,10 @@
         <source>Exit</source>
         <translation>Έξοδος</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>Κάμερα</translation>
+    </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
