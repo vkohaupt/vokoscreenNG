@@ -56,6 +56,7 @@ private:
     QAction *exitAction;
     QvkVersion version;
 
+    QAction *cameraAction;
 
 private slots:
     void slot_hide();

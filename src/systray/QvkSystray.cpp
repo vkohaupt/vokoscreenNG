@@ -66,6 +66,12 @@ void QvkSystray::init()
     continueAction->setData( "Continue" );
     continueAction->setEnabled( false );
 
+    cameraAction = new QAction( this );
+    cameraAction->setIcon( QIcon( ":pictures/camera/camera-systray.png" ) );
+    cameraAction->setText( tr( "Camera" ) );
+    cameraAction->setData( "Camera" );
+    cameraAction->setCheckable( true );
+
     exitAction = new QAction( this );
     exitAction->setIcon( QIcon( ":pictures/systray/exit.png" ) );
     exitAction->setText( tr( "Exit" ) );
@@ -103,6 +109,9 @@ void QvkSystray::init()
     connect( pauseAction,    SIGNAL( triggered( bool ) ), ui->pushButtonPause,    SLOT( click() ) );
     connect( continueAction, SIGNAL( triggered( bool ) ), ui->pushButtonContinue, SLOT( click() ) );
 
+    connect( ui->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ),   cameraAction, SLOT( setChecked( bool ) ) );
+    connect( cameraAction,            SIGNAL( triggered( bool ) ), ui->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
+
     menu = new QMenu();
     menu->addAction( titleAction );
     menu->addSeparator();
@@ -110,6 +119,8 @@ void QvkSystray::init()
     menu->addAction( stopAction );
     menu->addAction( pauseAction );
     menu->addAction( continueAction );
+    menu->addSeparator();
+    menu->addAction( cameraAction );
     menu->addSeparator();
     menu->addAction( exitAction );
 
