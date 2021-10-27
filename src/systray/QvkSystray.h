@@ -57,6 +57,7 @@ private:
     QvkVersion version;
 
     QAction *cameraAction;
+    QAction *magnifierAction;
 
 private slots:
     void slot_hide();

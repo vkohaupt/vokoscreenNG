@@ -72,6 +72,12 @@ void QvkSystray::init()
     cameraAction->setData( "Camera" );
     cameraAction->setCheckable( true );
 
+    magnifierAction = new QAction( this );
+    magnifierAction->setIcon( QIcon( ":pictures/systray/magnification.png" ) );
+    magnifierAction->setText( tr( "Magnification" ) );
+    magnifierAction->setData( "Magnification" );
+    magnifierAction->setCheckable( true );
+
     exitAction = new QAction( this );
     exitAction->setIcon( QIcon( ":pictures/systray/exit.png" ) );
     exitAction->setText( tr( "Exit" ) );
@@ -112,6 +118,10 @@ void QvkSystray::init()
     connect( ui->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ),   cameraAction, SLOT( setChecked( bool ) ) );
     connect( cameraAction,            SIGNAL( triggered( bool ) ), ui->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
 
+    connect( ui->checkBoxMagnifier, SIGNAL( toggled( bool ) ),   magnifierAction, SLOT( setChecked( bool ) ) );
+    connect( magnifierAction,       SIGNAL( triggered( bool ) ), ui->checkBoxMagnifier, SLOT( click() ) );
+
+
     menu = new QMenu();
     menu->addAction( titleAction );
     menu->addSeparator();
@@ -121,6 +131,7 @@ void QvkSystray::init()
     menu->addAction( continueAction );
     menu->addSeparator();
     menu->addAction( cameraAction );
+    menu->addAction( magnifierAction );
     menu->addSeparator();
     menu->addAction( exitAction );
 
