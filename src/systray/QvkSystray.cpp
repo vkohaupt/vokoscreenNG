@@ -22,6 +22,7 @@
 
 #include "QvkSystray.h"
 #include "global.h"
+#include "QvkSpezialCheckbox.h"
 
 #include <QDebug>
 
@@ -78,6 +79,18 @@ void QvkSystray::init()
     magnifierAction->setData( "Magnification" );
     magnifierAction->setCheckable( true );
 
+    showclickAction = new QAction( this );
+    showclickAction->setIcon( QIcon( ":pictures/systray/magnification.png" ) );
+    showclickAction->setText( "ShowClick" );
+    showclickAction->setData( "ShowClick" );
+    showclickAction->setCheckable( true );
+
+    haloAction = new QAction( this );
+    haloAction->setIcon( QIcon( ":pictures/systray/magnification.png" ) );
+    haloAction->setText( "Halo" );
+    haloAction->setData( "Halo" );
+    haloAction->setCheckable( true );
+
     exitAction = new QAction( this );
     exitAction->setIcon( QIcon( ":pictures/systray/exit.png" ) );
     exitAction->setText( tr( "Exit" ) );
@@ -121,6 +134,21 @@ void QvkSystray::init()
     connect( ui->checkBoxMagnifier, SIGNAL( toggled( bool ) ),   magnifierAction, SLOT( setChecked( bool ) ) );
     connect( magnifierAction,       SIGNAL( triggered( bool ) ), ui->checkBoxMagnifier, SLOT( click() ) );
 
+    QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
+    for ( int i = 0; i < listSpezialCheckbox.count(); i++ )
+    {
+        if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckboxShowclick" )
+        {
+            connect( listSpezialCheckbox.at(i), SIGNAL( signal_clicked( bool ) ), showclickAction, SLOT( setChecked( bool ) ) );
+            connect( showclickAction,           SIGNAL( triggered( bool ) ),      listSpezialCheckbox.at(i), SLOT( slot_click() ) );
+        }
+
+        if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckboxHalo" )
+        {
+            connect( listSpezialCheckbox.at(i), SIGNAL( signal_clicked( bool ) ), haloAction, SLOT( setChecked( bool ) ) );
+            connect( haloAction,                SIGNAL( triggered( bool ) ),      listSpezialCheckbox.at(i), SLOT( slot_click() ) );
+        }
+    }
 
     menu = new QMenu();
     menu->addAction( titleAction );
@@ -132,6 +160,8 @@ void QvkSystray::init()
     menu->addSeparator();
     menu->addAction( cameraAction );
     menu->addAction( magnifierAction );
+    menu->addAction( showclickAction );
+    menu->addAction( haloAction );
     menu->addSeparator();
     menu->addAction( exitAction );
 

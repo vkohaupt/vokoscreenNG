@@ -424,6 +424,16 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( videoFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
 
+
+    // ***************** Begin showClick *****************************
+    vkShowClick = new QvkShowClick();
+    vkShowClick->init( ui );
+    // ***************** End showClick
+
+    vkHalo = new QvkHalo();
+    vkHalo->init( ui );
+
+
     vkSystrayAlternative = new QvkSystrayAlternative( this, ui, sliderShowInSystrayAlternative );
     if ( QSystemTrayIcon::isSystemTrayAvailable() == true )
     {
@@ -484,12 +494,12 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // *****************End Camera ***********************************
 
     // ***************** Begin showClick *****************************
-    vkShowClick = new QvkShowClick();
-    vkShowClick->init( ui );
+//    vkShowClick = new QvkShowClick();
+//    vkShowClick->init( ui );
     // ***************** End showClick
 
-    vkHalo = new QvkHalo();
-    vkHalo->init( ui );
+//    vkHalo = new QvkHalo();
+//    vkHalo->init( ui );
 
     // *****************Begin Log *********************************
     vk_setCornerWidget( ui->tabWidgetLog );

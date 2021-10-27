@@ -58,6 +58,8 @@ private:
 
     QAction *cameraAction;
     QAction *magnifierAction;
+    QAction *showclickAction;
+    QAction *haloAction;
 
 private slots:
     void slot_hide();
