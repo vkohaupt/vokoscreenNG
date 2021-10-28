@@ -48,13 +48,14 @@
 <file>pictures/showClick/transparenz.png</file>
 <file>pictures/showClick/vokoShowClick-sidebar.png</file>
 <file>pictures/space.png</file>
+<file>pictures/systray/magnification.png</file>
 <file>pictures/systray/exit.png</file>
 <file>pictures/systray/systray.png</file>
 <file>pictures/systray/record.png</file>
 <file>pictures/systray/pause.png</file>
+<file>pictures/systray/showclick.png</file>
 <file>pictures/wayland.png</file>
 <file>pictures/windows.png</file>
-<file>pictures/systray/magnification.png</file>
 <file>pictures/camera/camera.license</file>
 <file>pictures/cursor/size_all.license</file>
 <file>pictures/cursor/size_ver.license</file>

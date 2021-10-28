@@ -80,13 +80,13 @@ void QvkSystray::init()
     magnifierAction->setCheckable( true );
 
     showclickAction = new QAction( this );
-    showclickAction->setIcon( QIcon( ":pictures/systray/magnification.png" ) );
+    showclickAction->setIcon( QIcon( ":pictures/systray/showclick.png" ) );
     showclickAction->setText( "ShowClick" );
     showclickAction->setData( "ShowClick" );
     showclickAction->setCheckable( true );
 
     haloAction = new QAction( this );
-    haloAction->setIcon( QIcon( ":pictures/systray/magnification.png" ) );
+    haloAction->setIcon( QIcon( ":pictures/systray/showclick.png" ) );
     haloAction->setText( "Halo" );
     haloAction->setData( "Halo" );
     haloAction->setCheckable( true );
