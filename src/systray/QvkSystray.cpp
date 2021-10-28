@@ -68,7 +68,7 @@ void QvkSystray::init()
     continueAction->setEnabled( false );
 
     cameraAction = new QAction( this );
-    cameraAction->setIcon( QIcon( ":pictures/camera/camera-systray.png" ) );
+    cameraAction->setIcon( QIcon( ":pictures/systray/camera.png" ) );
     cameraAction->setText( tr( "Camera" ) );
     cameraAction->setData( "Camera" );
     cameraAction->setCheckable( true );

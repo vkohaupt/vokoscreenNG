@@ -2,7 +2,6 @@
 <qresource>
 <file>pictures/camera/camera-sidebar.png</file>
 <file>pictures/camera/camera.png</file>
-<file>pictures/camera/camera-systray.png</file>
 <file>pictures/cursor/size_hor.png</file>
 <file>pictures/cursor/size_ver.png</file>
 <file>pictures/cursor/size_all.png</file>
@@ -49,6 +48,7 @@
 <file>pictures/showClick/vokoShowClick-sidebar.png</file>
 <file>pictures/space.png</file>
 <file>pictures/systray/magnification.png</file>
+<file>pictures/systray/camera.png</file>
 <file>pictures/systray/exit.png</file>
 <file>pictures/systray/systray.png</file>
 <file>pictures/systray/record.png</file>
