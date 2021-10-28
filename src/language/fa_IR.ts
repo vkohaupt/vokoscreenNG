@@ -149,6 +149,10 @@
         <source>Camera</source>
         <translation>دوربین</translation>
     </message>
+    <message>
+        <source>Magnification</source>
+        <translation>بزرگنمایی</translation>
+    </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>

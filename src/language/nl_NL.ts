@@ -147,6 +147,10 @@
         <source>Camera</source>
         <translation>Camera</translation>
     </message>
+    <message>
+        <source>Magnification</source>
+        <translation>Vergroting</translation>
+    </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>

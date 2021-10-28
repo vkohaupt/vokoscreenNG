@@ -147,6 +147,10 @@
         <source>Camera</source>
         <translation>Kamerao</translation>
     </message>
+    <message>
+        <source>Magnification</source>
+        <translation>Ekranopligrandigo</translation>
+    </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>

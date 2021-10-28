@@ -147,6 +147,10 @@
         <source>Camera</source>
         <translation>กล้อง</translation>
     </message>
+    <message>
+        <source>Magnification</source>
+        <translation>เกาะติด</translation>
+    </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>

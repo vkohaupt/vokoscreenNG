@@ -147,6 +147,10 @@
         <source>Camera</source>
         <translation>Kamera</translation>
     </message>
+    <message>
+        <source>Magnification</source>
+        <translation>Nagyítás</translation>
+    </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
