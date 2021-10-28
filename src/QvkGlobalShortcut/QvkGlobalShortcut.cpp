@@ -40,6 +40,7 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( ui->checkBox_shortcut_start_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_start_clicked( bool ) ) );
     connect( ui->checkBox_shortcut_start_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_start_clicked( bool ) ) );
     connect( ui->comboBox_shortcut_start, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_start_currentIndexChanged( int ) ) );
+    connect( ui->toolButton_shortcut_reset_start, SIGNAL( clicked() ), this, SLOT( slot_toolButton_shortcut_start_reset() ) );
 
     shortcutPause = new QGlobalShortcut( this );
     connect( shortcutPause, SIGNAL( activated() ), this, SLOT( slot_pauseContinue() ) );
@@ -48,6 +49,7 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( ui->checkBox_shortcut_pause_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_pause_clicked( bool ) ) );
     connect( ui->checkBox_shortcut_pause_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_pause_clicked( bool ) ) );
     connect( ui->comboBox_shortcut_pause, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_pause_currentIndexChanged( int ) ) );
+    connect( ui->toolButton_shortcut_reset_pause, SIGNAL( clicked() ), this, SLOT( slot_toolButton_shortcut_pause_reset() ) );
 
     shortcutMagnification = new QGlobalShortcut( this );
     connect( shortcutMagnification, SIGNAL( activated() ), ui->checkBoxMagnifier, SLOT( click() ) );
@@ -56,6 +58,7 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( ui->checkBox_shortcut_magnification_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_magnification_clicked( bool ) ) );
     connect( ui->checkBox_shortcut_magnification_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_magnification_clicked( bool ) ) );
     connect( ui->comboBox_shortcut_magnification, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_magnification_currentIndexChanged( int ) ) );
+    connect( ui->toolButton_shortcut_reset_magnification, SIGNAL( clicked() ), this, SLOT( slot_toolButton_shortcut_magnification_reset() ) );
 
     shortcutCamera = new QGlobalShortcut( this );
     connect( shortcutCamera, SIGNAL( activated() ), ui->checkBoxCameraOnOff, SLOT( click() ) );
@@ -64,6 +67,7 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( ui->checkBox_shortcut_camera_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_camera_clicked( bool ) ) );
     connect( ui->checkBox_shortcut_camera_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_camera_clicked( bool ) ) );
     connect( ui->comboBox_shortcut_camera, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_camera_currentIndexChanged( int ) ) );
+    connect( ui->toolButton_shortcut_reset_camera, SIGNAL( clicked() ), this, SLOT( slot_toolButton_shortcut_camera_reset() ) );
 
     QList<QvkSpezialCheckbox *> listSpezialCheckboxShowclick = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
     for ( int i = 0; i < listSpezialCheckboxShowclick.count(); i++ ){
@@ -573,4 +577,76 @@ void QvkGlobalShortcut::slot_setOrUnsetShortcut( bool value )
    {
        shortcutStart->setEnabled( true );
    }
+}
+
+
+void QvkGlobalShortcut::slot_toolButton_shortcut_start_reset()
+{
+    if ( ui->checkBox_shortcut_start_strg->isChecked() == false )
+        ui->checkBox_shortcut_start_strg->click();
+
+    if ( ui->checkBox_shortcut_start_shift->isChecked() == false )
+        ui->checkBox_shortcut_start_shift->click();
+
+    if ( ui->checkBox_shortcut_start_alt->isChecked() == true )
+        ui->checkBox_shortcut_start_alt->click();
+
+    if ( ui->checkBox_shortcut_start_meta->isChecked() == true )
+        ui->checkBox_shortcut_start_meta->click();
+
+    ui->comboBox_shortcut_start->setCurrentText( "F10" );
+}
+
+
+void QvkGlobalShortcut::slot_toolButton_shortcut_pause_reset()
+{
+    if ( ui->checkBox_shortcut_pause_strg->isChecked() == false )
+        ui->checkBox_shortcut_pause_strg->click();
+
+    if ( ui->checkBox_shortcut_pause_shift->isChecked() == false )
+        ui->checkBox_shortcut_pause_shift->click();
+
+    if ( ui->checkBox_shortcut_pause_alt->isChecked() == true )
+        ui->checkBox_shortcut_pause_alt->click();
+
+    if ( ui->checkBox_shortcut_pause_meta->isChecked() == true )
+        ui->checkBox_shortcut_pause_meta->click();
+
+    ui->comboBox_shortcut_pause->setCurrentText( "F12" );
+}
+
+
+void QvkGlobalShortcut::slot_toolButton_shortcut_magnification_reset()
+{
+    if ( ui->checkBox_shortcut_magnification_strg->isChecked() == false )
+        ui->checkBox_shortcut_magnification_strg->click();
+
+    if ( ui->checkBox_shortcut_magnification_shift->isChecked() == false )
+        ui->checkBox_shortcut_magnification_shift->click();
+
+    if ( ui->checkBox_shortcut_magnification_alt->isChecked() == true )
+        ui->checkBox_shortcut_magnification_alt->click();
+
+    if ( ui->checkBox_shortcut_magnification_meta->isChecked() == true )
+        ui->checkBox_shortcut_magnification_meta->click();
+
+    ui->comboBox_shortcut_magnification->setCurrentText( "F9" );
+}
+
+
+void QvkGlobalShortcut::slot_toolButton_shortcut_camera_reset()
+{
+    if ( ui->checkBox_shortcut_camera_strg->isChecked() == false )
+        ui->checkBox_shortcut_camera_strg->click();
+
+    if ( ui->checkBox_shortcut_camera_shift->isChecked() == false )
+        ui->checkBox_shortcut_camera_shift->click();
+
+    if ( ui->checkBox_shortcut_camera_alt->isChecked() == true )
+        ui->checkBox_shortcut_camera_alt->click();
+
+    if ( ui->checkBox_shortcut_camera_meta->isChecked() == true )
+        ui->checkBox_shortcut_camera_meta->click();
+
+    ui->comboBox_shortcut_camera->setCurrentText( "F8" );
 }

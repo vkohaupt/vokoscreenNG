@@ -46,15 +46,19 @@ public slots:
 
     void slot_checkbox_shortcut_start_clicked( bool value );
     void slot_checkbox_shortcut_start_currentIndexChanged( int value );
+    void slot_toolButton_shortcut_start_reset();
 
     void slot_checkbox_shortcut_pause_clicked( bool value );
     void slot_checkbox_shortcut_pause_currentIndexChanged( int value );
+    void slot_toolButton_shortcut_pause_reset();
 
     void slot_checkbox_shortcut_magnification_clicked( bool value );
     void slot_checkbox_shortcut_magnification_currentIndexChanged( int value );
+    void slot_toolButton_shortcut_magnification_reset();
 
     void slot_checkbox_shortcut_camera_clicked( bool value );
     void slot_checkbox_shortcut_camera_currentIndexChanged( int value );
+    void slot_toolButton_shortcut_camera_reset();
 
     void slot_checkbox_shortcut_showclick_clicked( bool value );
     void slot_checkbox_shortcut_showclick_currentIndexChanged( int value );
