@@ -62,10 +62,11 @@ public slots:
 
     void slot_checkbox_shortcut_showclick_clicked( bool value );
     void slot_checkbox_shortcut_showclick_currentIndexChanged( int value );
+    void slot_toolButton_shortcut_showclick_reset();
 
     void slot_checkbox_shortcut_halo_clicked( bool value );
     void slot_checkbox_shortcut_halo_currentIndexChanged( int value );
-
+    void slot_toolButton_shortcut_halo_reset();
 
 private:
     Ui_formMainWindow *ui;

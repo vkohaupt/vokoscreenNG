@@ -82,6 +82,7 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( ui->checkBox_shortcut_showclick_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_showclick_clicked( bool ) ) );
     connect( ui->checkBox_shortcut_showclick_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_showclick_clicked( bool ) ) );
     connect( ui->comboBox_shortcut_showclick, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_showclick_currentIndexChanged( int ) ) );
+    connect( ui->toolButton_shortcut_reset_showclick, SIGNAL( clicked() ), this, SLOT( slot_toolButton_shortcut_showclick_reset() ) );
 
     QList<QvkSpezialCheckbox *> listSpezialCheckboxHalo = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
     for ( int i = 0; i < listSpezialCheckboxHalo.count(); i++ ){
@@ -96,6 +97,7 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( ui->checkBox_shortcut_halo_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_halo_clicked( bool ) ) );
     connect( ui->checkBox_shortcut_halo_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_halo_clicked( bool ) ) );
     connect( ui->comboBox_shortcut_halo, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_halo_currentIndexChanged( int ) ) );
+    connect( ui->toolButton_shortcut_reset_halo, SIGNAL( clicked() ), this, SLOT( slot_toolButton_shortcut_halo_reset() ) );
 
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ), this, SLOT( slot_setOrUnsetShortcut( bool ) ) );
 }
@@ -649,4 +651,40 @@ void QvkGlobalShortcut::slot_toolButton_shortcut_camera_reset()
         ui->checkBox_shortcut_camera_meta->click();
 
     ui->comboBox_shortcut_camera->setCurrentText( "F8" );
+}
+
+
+void QvkGlobalShortcut::slot_toolButton_shortcut_showclick_reset()
+{
+    if ( ui->checkBox_shortcut_showclick_strg->isChecked() == false )
+        ui->checkBox_shortcut_showclick_strg->click();
+
+    if ( ui->checkBox_shortcut_showclick_shift->isChecked() == false )
+        ui->checkBox_shortcut_showclick_shift->click();
+
+    if ( ui->checkBox_shortcut_showclick_alt->isChecked() == true )
+        ui->checkBox_shortcut_showclick_alt->click();
+
+    if ( ui->checkBox_shortcut_showclick_meta->isChecked() == true )
+        ui->checkBox_shortcut_showclick_meta->click();
+
+    ui->comboBox_shortcut_showclick->setCurrentText( "F7" );
+}
+
+
+void QvkGlobalShortcut::slot_toolButton_shortcut_halo_reset()
+{
+    if ( ui->checkBox_shortcut_halo_strg->isChecked() == false )
+        ui->checkBox_shortcut_halo_strg->click();
+
+    if ( ui->checkBox_shortcut_halo_shift->isChecked() == false )
+        ui->checkBox_shortcut_halo_shift->click();
+
+    if ( ui->checkBox_shortcut_halo_alt->isChecked() == true )
+        ui->checkBox_shortcut_halo_alt->click();
+
+    if ( ui->checkBox_shortcut_halo_meta->isChecked() == true )
+        ui->checkBox_shortcut_halo_meta->click();
+
+    ui->comboBox_shortcut_halo->setCurrentText( "F6" );
 }
