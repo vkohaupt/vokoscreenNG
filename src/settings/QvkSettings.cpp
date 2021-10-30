@@ -79,6 +79,14 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
                 QString valueText = settings.value( listComboBoxShortcut.at(i)->objectName(), "F8" ).toString();
                 listComboBoxShortcut.at(i)->setCurrentText( valueText );
             }
+            if ( listComboBoxShortcut.at(i)->objectName() == "comboBox_shortcut_showclick" ) {
+                QString valueText = settings.value( listComboBoxShortcut.at(i)->objectName(), "F7" ).toString();
+                listComboBoxShortcut.at(i)->setCurrentText( valueText );
+            }
+            if ( listComboBoxShortcut.at(i)->objectName() == "comboBox_shortcut_halo" ) {
+                QString valueText = settings.value( listComboBoxShortcut.at(i)->objectName(), "F6" ).toString();
+                listComboBoxShortcut.at(i)->setCurrentText( valueText );
+            }
         }
     }
 
@@ -284,6 +292,34 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
              }
         }
         if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_camera_shift" ) {
+             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
+                 listCheckBox.at(i)->setChecked( true );
+                 continue;
+             }
+        }
+
+        // Showclick
+        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_showclick_strg" ) {
+             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
+                 listCheckBox.at(i)->setChecked( true );
+                 continue;
+             }
+        }
+        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_showclick_shift" ) {
+             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
+                 listCheckBox.at(i)->setChecked( true );
+                 continue;
+             }
+        }
+
+        // Halo
+        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_halo_strg" ) {
+             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
+                 listCheckBox.at(i)->setChecked( true );
+                 continue;
+             }
+        }
+        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_halo_shift" ) {
              if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
                  listCheckBox.at(i)->setChecked( true );
                  continue;
