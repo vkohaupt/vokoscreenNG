@@ -55,16 +55,6 @@ QvkCameraWatcher::QvkCameraWatcher( Ui_formMainWindow *ui_mainwindow )
 
 void QvkCameraWatcher::slot_update()
 {
-// QT-Bug. Wenn eine Kamera aktiv ist wird diese Kamera nicht mehr in QCameraInfo aufgeführt.
-// Das heißt, die aktivierte Camera wird nach ca. 3 Sekunden siehe Timer deaktiviert.
-// Dieses #ifdef kann man entfernen sobald der Qt Bug unter Linux beseitigt ist.
-#ifdef Q_OS_LINUX
-    if ( ui->checkBoxCameraOnOff->checkState() == Qt::Checked )
-    {
-        return;
-    }
-#endif
-
     QList<QCameraInfo> camerasInfoList = QCameraInfo::availableCameras();
 
     // Add new Device
