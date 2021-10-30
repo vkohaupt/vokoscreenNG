@@ -72,6 +72,7 @@ void QvkSystray::init()
     cameraAction->setText( tr( "Camera" ) );
     cameraAction->setData( "Camera" );
     cameraAction->setCheckable( true );
+    cameraAction->setEnabled( true );
 
     magnifierAction = new QAction( this );
     magnifierAction->setIcon( QIcon( ":pictures/systray/magnification.png" ) );
@@ -128,8 +129,9 @@ void QvkSystray::init()
     connect( pauseAction,    SIGNAL( triggered( bool ) ), ui->pushButtonPause,    SLOT( click() ) );
     connect( continueAction, SIGNAL( triggered( bool ) ), ui->pushButtonContinue, SLOT( click() ) );
 
-    connect( ui->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ),   cameraAction, SLOT( setChecked( bool ) ) );
+    connect( ui->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ),   cameraAction,            SLOT( setChecked( bool ) ) );
     connect( cameraAction,            SIGNAL( triggered( bool ) ), ui->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
+    connect( ui->comboBoxCamera,      SIGNAL( currentIndexChanged( int ) ), this,           SLOT( slot_currentIndexChanged( int ) ) );
 
     connect( ui->checkBoxMagnifier, SIGNAL( toggled( bool ) ),   magnifierAction, SLOT( setChecked( bool ) ) );
     connect( magnifierAction,       SIGNAL( triggered( bool ) ), ui->checkBoxMagnifier, SLOT( click() ) );
@@ -174,6 +176,11 @@ void QvkSystray::init()
 
     connect( &version, SIGNAL( signal_newVersionAvailable( QString ) ), this, SLOT( slot_newVersionAvailable( QString ) ) );
     connect( ui->checkBoxLookForUpdates, SIGNAL( toggled( bool ) ), &version, SLOT( slot_doDownload( bool ) ) );
+
+    if ( ui->checkBoxCameraOnOff->isEnabled() == false ){
+        cameraAction->setEnabled( false );
+    }
+
 }
 
 
@@ -228,4 +235,13 @@ void QvkSystray::slot_setSystrayIcon( bool )
 void QvkSystray::slot_setPauseIcon( bool )
 {
     setIcon( QIcon( ":/pictures/systray/pause.png" ) );
+}
+
+
+void QvkSystray::slot_currentIndexChanged( int index )
+{
+    if ( index > -1 )
+        cameraAction->setEnabled( true );
+    else
+        cameraAction->setEnabled( false );
 }
