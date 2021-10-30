@@ -289,7 +289,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <property name="iconSize">
        <size>
@@ -847,8 +847,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>30</height>
+                      <width>21</width>
+                      <height>16</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -2032,7 +2032,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>98</width>
+                   <width>20</width>
                    <height>98</height>
                   </rect>
                  </property>
@@ -5489,7 +5489,7 @@
                  <item>
                   <widget class="QLabel" name="label_53">
                    <property name="text">
-                    <string notr="true">Keyboard shortcut not assigned or assigned more than once </string>
+                    <string notr="true">Keyboard shortcut not assigned or assigned more than once.</string>
                    </property>
                    <property name="textInteractionFlags">
                     <set>Qt::TextSelectableByMouse</set>
