@@ -78,7 +78,7 @@ void QvkReferenceWindow::slot_make_picture_from_tabs()
     }
 
     QList<QToolButton *> listToolButton = ui->widgetSidbar->findChildren<QToolButton *>();
-    for ( int i = 0; i < listToolButton.count(); i++ ) {
+    for ( int i = 1; i < listToolButton.count(); i++ ) {
         listToolButton.at(i)->click();
         for ( int y = 0; y < 30; y++ ) {
             QCoreApplication::processEvents();
@@ -95,7 +95,7 @@ void QvkReferenceWindow::slot_make_picture_from_tab()
     QList<QScreen *> screenList = QGuiApplication::screens();
 
     int sumScreenWidth = 0;
-    int largestWindow = 0;
+    int largestScreen = 0;
     for ( int i = 0; i < screenList.count(); i++ )
     {
         sumScreenWidth = sumScreenWidth + screenList.at(i)->size().width();
@@ -108,5 +108,5 @@ void QvkReferenceWindow::slot_make_picture_from_tab()
                                               widget->size().width() + left + right,
                                               widget->size().height() + top + bottom );
 
-    windowPixmap.save( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) + "/" + "screencast-" + QString::number( counterFile++ ) + ".png");
+    windowPixmap.save( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) + "/" + "vokoscreenNG-" + QString::number( counterFile++ ) + ".png");
 }
