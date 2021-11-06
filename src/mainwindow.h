@@ -48,6 +48,7 @@
 #include <QFileSystemWatcher>
 #include <QSoundEffect>
 #include <QShowEvent>
+//#include <QWindow>
 
 #include <gst/gst.h>
 
@@ -144,6 +145,7 @@ private:
     QSoundEffect *soundEffect;
 
     bool cancel = false;
+
 
 #ifdef Q_OS_WIN
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller;

@@ -168,3 +168,6 @@ include(halo/halo.pri)
 
 # spezialCheckBox
 include(spezialCheckBox/spezialCheckBox.pri)
+
+# ReferenceWindow
+include(referenceWindow/referenceWindow.pri)

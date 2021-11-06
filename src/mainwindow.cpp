@@ -28,6 +28,7 @@
 #include "global.h"
 #include "QvkScreenManager.h"
 #include "QvkLicenses.h"
+#include "QvkReferenceWindow.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -493,14 +494,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vk_setCornerWidget( ui->tabWidgetCamera );
     // *****************End Camera ***********************************
 
-    // ***************** Begin showClick *****************************
-//    vkShowClick = new QvkShowClick();
-//    vkShowClick->init( ui );
-    // ***************** End showClick
-
-//    vkHalo = new QvkHalo();
-//    vkHalo->init( ui );
-
     // *****************Begin Log *********************************
     vk_setCornerWidget( ui->tabWidgetLog );
     connect( ui->pushButtonSendReport, SIGNAL( clicked( bool ) ), this, SLOT( slot_sendReport() ) );
@@ -560,6 +553,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         vkPlayer->slot_play();
         ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
     }
+
+    QvkReferenceWindow *vkReferenceWindow = new QvkReferenceWindow( this );
+    vkReferenceWindow->init( ui );
 }
 
 
