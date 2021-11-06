@@ -24,17 +24,16 @@
 #define QvkReferenceWindow_H
 
 #include "ui_formMainWindow.h"
+#include <mainwindow.h>
 
 #include <QWindow>
-#include <QShowEvent>
-#include <QExposeEvent>
 
 class QvkReferenceWindow : public QWindow
 {
     Q_OBJECT
 
 public:
-    QvkReferenceWindow( QWidget *parent = 0 );
+    QvkReferenceWindow( QvkMainWindow *parent = 0 );
     virtual ~QvkReferenceWindow();
     void init( Ui_formMainWindow *vk_ui );
 
@@ -55,7 +54,7 @@ protected:
 
 private:
     Ui_formMainWindow *ui = Q_NULLPTR;
-    QWidget *widget = Q_NULLPTR;
+    QvkMainWindow *widget = Q_NULLPTR;
     int left = 0;
     int top = 0;
     int right = 0;

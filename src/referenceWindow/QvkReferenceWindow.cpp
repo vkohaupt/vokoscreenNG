@@ -29,10 +29,10 @@
 #include <QStandardPaths>
 #include <QPushButton>
 #include <QTimer>
-#include <QCoreApplication>
 #include <QThread>
+#include <QMessageBox>
 
-QvkReferenceWindow::QvkReferenceWindow( QWidget *parent )
+QvkReferenceWindow::QvkReferenceWindow( QvkMainWindow *parent )
 {
     widget = parent;
     setTitle( "vokoscreenNG Referenz Window" );
@@ -88,6 +88,15 @@ void QvkReferenceWindow::slot_make_picture_from_tabs()
     }
 
     listToolButton.at(0)->click();
+
+    if ( QDesktopServices::openUrl( QUrl( "file:///" + QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ), QUrl::TolerantMode ) ) == false )
+    {
+        QMessageBox msgBox;
+        msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
+        msgBox.setWindowTitle( global::name + " " + global::version );
+        msgBox.setIcon( QMessageBox::Information );
+        msgBox.exec();
+    }
 }
 
 
