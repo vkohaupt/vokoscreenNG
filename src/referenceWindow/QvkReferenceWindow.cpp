@@ -87,6 +87,7 @@ void QvkReferenceWindow::slot_make_picture_from_tabs()
         slot_make_picture_from_tab();
     }
 
+    listToolButton.at(0)->click();
 }
 
 
