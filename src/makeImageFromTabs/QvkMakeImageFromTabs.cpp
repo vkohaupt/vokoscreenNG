@@ -21,7 +21,7 @@
  */
 
 #include "global.h"
-#include "QvkReferenceWindow.h"
+#include "QvkMakeImageFromTabs.h"
 
 #include <QScreen>
 #include <QGuiApplication>
@@ -32,7 +32,7 @@
 #include <QThread>
 #include <QMessageBox>
 
-QvkReferenceWindow::QvkReferenceWindow( QvkMainWindow *parent )
+QvkMakeImageFromTabs::QvkMakeImageFromTabs( QvkMainWindow *parent )
 {
     vokoscreenGuiWithoutMargins = parent;
     setTitle( "vokoscreenNG Referenz Window" );
@@ -40,18 +40,18 @@ QvkReferenceWindow::QvkReferenceWindow( QvkMainWindow *parent )
 }
 
 
-void QvkReferenceWindow::init( Ui_formMainWindow *vk_ui )
+void QvkMakeImageFromTabs::init( Ui_formMainWindow *vk_ui )
 {
     ui = vk_ui;
     connect( ui->pushButtonImages, SIGNAL( clicked() ), this, SLOT( slot_make_picture_from_tabs() ) );
 }
 
 
-QvkReferenceWindow::~QvkReferenceWindow()
+QvkMakeImageFromTabs::~QvkMakeImageFromTabs()
 {}
 
 
-void QvkReferenceWindow::slot_make_picture_from_tabs()
+void QvkMakeImageFromTabs::slot_make_picture_from_tabs()
 {
     counterFile = 0;
 
@@ -100,7 +100,7 @@ void QvkReferenceWindow::slot_make_picture_from_tabs()
 }
 
 
-void QvkReferenceWindow::slot_make_picture_from_tab()
+void QvkMakeImageFromTabs::slot_make_picture_from_tab()
 {
     QList<QScreen *> screenList = QGuiApplication::screens();
 
