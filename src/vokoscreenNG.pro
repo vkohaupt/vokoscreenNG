@@ -169,5 +169,5 @@ include(halo/halo.pri)
 # spezialCheckBox
 include(spezialCheckBox/spezialCheckBox.pri)
 
-# makeImageFromTabs
-include(makeImageFromTabs/makeImageFromTabs.pri)
+# ImageFromTabs
+include(imageFromTabs/imageFromTabs.pri)

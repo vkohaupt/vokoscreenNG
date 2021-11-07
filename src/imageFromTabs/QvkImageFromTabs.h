@@ -20,21 +20,21 @@
  * --End_License--
  */
 
-#ifndef QvKMAKEIMAGEFROMTABS_H
-#define QVKMAKEIMAGEFROMTABS_H
+#ifndef QVKIMAGEFROMTABS_H
+#define QVKIMAGEFROMTABS_H
 
 #include "ui_formMainWindow.h"
 #include <mainwindow.h>
 
 #include <QWindow>
 
-class QvkMakeImageFromTabs : public QWindow
+class QvkImageFromTabs : public QWindow
 {
     Q_OBJECT
 
 public:
-    QvkMakeImageFromTabs( QvkMainWindow *parent = 0 );
-    virtual ~QvkMakeImageFromTabs();
+    QvkImageFromTabs( QvkMainWindow *parent = 0 );
+    virtual ~QvkImageFromTabs();
     void init( Ui_formMainWindow *vk_ui );
 
 

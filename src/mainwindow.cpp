@@ -28,7 +28,7 @@
 #include "global.h"
 #include "QvkScreenManager.h"
 #include "QvkLicenses.h"
-#include "QvkMakeImageFromTabs.h"
+#include "QvkImageFromTabs.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -554,8 +554,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
     }
 
-    QvkMakeImageFromTabs *vkMakeImageFromTabs = new QvkMakeImageFromTabs( this );
-    vkMakeImageFromTabs->init( ui );
+    QvkImageFromTabs *vkImageFromTabs = new QvkImageFromTabs( this );
+    vkImageFromTabs->init( ui );
 }
 
 
