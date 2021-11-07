@@ -198,6 +198,8 @@ private slots:
 
     void slot_cancel( bool value );
 
+    void slot_haveAudioDeviceSelected( bool bo );
+
 
 signals:
     void signal_close();

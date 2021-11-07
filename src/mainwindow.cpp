@@ -388,10 +388,12 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #ifdef Q_OS_WIN
     // Alle Funktionen werden innerhalb dieser Klasse aufgerufen
     vkAudioController = new QvkAudioController( ui );
+    connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this, SLOT( slot_haveAudioDeviceSelected( bool ) ) );
 #endif
 
 #ifdef Q_OS_LINUX
     vkAudioController = new QvkAudioController( ui );
+    connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this, SLOT( slot_haveAudioDeviceSelected( bool ) ) );
     vkAudioController->init();
 #endif
 
@@ -562,6 +564,16 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
+}
+
+
+void QvkMainWindow::slot_haveAudioDeviceSelected( bool bo )
+{
+    if ( bo == false ) {
+        ui->labelInfoAudiocodec->setText( "-----" );
+    } else {
+        ui->labelInfoAudiocodec->setText( ui->comboBoxAudioCodec->currentText() );
+    }
 }
 
 

@@ -102,7 +102,22 @@ void QvkInformation::slot_Videocodec( QString value )
 
 void QvkInformation::slot_Audiocodec( QString value )
 {
-    ui->labelInfoAudiocodec->setText( value );
+    bool bo = false;
+    QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ )
+    {
+        if ( listCheckBox.at(i)->checkState() == Qt::Checked )
+        {
+            bo = true;
+            break;
+        }
+    }
+
+    if ( bo == false ) {
+        ui->labelInfoAudiocodec->setText( "------" );
+    } else {
+        ui->labelInfoAudiocodec->setText( value );
+    }
 }
 
 
