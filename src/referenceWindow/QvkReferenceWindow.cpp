@@ -1,4 +1,4 @@
-/* vokoscreenNG - A desktop recorder
+﻿/* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2021 Volker Kohaupt
  * 
  * Author:
@@ -34,7 +34,7 @@
 
 QvkReferenceWindow::QvkReferenceWindow( QvkMainWindow *parent )
 {
-    widget = parent;
+    vokoscreenGuiWithoutMargins = parent;
     setTitle( "vokoscreenNG Referenz Window" );
     resize( 400, 300 );
 }
@@ -114,10 +114,10 @@ void QvkReferenceWindow::slot_make_picture_from_tab()
 
     QPixmap pixmapScreen( screenList.at(0)->grabWindow( 0, 0, 0, sumScreenWidth, stringListScreenWidth.last().toInt() ) );
 
-    QPixmap windowPixmap = pixmapScreen.copy( widget->mapToGlobal( QPoint(0,0) ).x() - left,
-                                              widget->mapToGlobal( QPoint(0,0) ).y() - top,
-                                              widget->size().width() + left + right,
-                                              widget->size().height() + top + bottom );
+    QPixmap windowPixmap = pixmapScreen.copy( vokoscreenGuiWithoutMargins->mapToGlobal( QPoint(0,0) ).x() - left,
+                                              vokoscreenGuiWithoutMargins->mapToGlobal( QPoint(0,0) ).y() - top,
+                                              vokoscreenGuiWithoutMargins->size().width() + left + right,
+                                              vokoscreenGuiWithoutMargins->size().height() + top + bottom );
 
     windowPixmap.save( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) + "/" + "vokoscreenNG-" + QString::number( counterFile++ ) + ".png");
 }

@@ -54,7 +54,7 @@ protected:
 
 private:
     Ui_formMainWindow *ui = Q_NULLPTR;
-    QvkMainWindow *widget = Q_NULLPTR;
+    QvkMainWindow *vokoscreenGuiWithoutMargins = Q_NULLPTR;
     int left = 0;
     int top = 0;
     int right = 0;
