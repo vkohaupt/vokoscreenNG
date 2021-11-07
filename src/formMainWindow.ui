@@ -2415,7 +2415,7 @@
               <item>
                <widget class="QPushButton" name="pushButtonImages">
                 <property name="text">
-                 <string>Images of tabs </string>
+                 <string>Create images of tabs </string>
                 </property>
                </widget>
               </item>
