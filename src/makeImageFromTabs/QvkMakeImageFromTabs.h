@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QvkMakeImageFromTabs_H
-#define QvkMakeImageFromTabs_H
+#ifndef QvKMAKEIMAGEFROMTABS_H
+#define QVKMAKEIMAGEFROMTABS_H
 
 #include "ui_formMainWindow.h"
 #include <mainwindow.h>
