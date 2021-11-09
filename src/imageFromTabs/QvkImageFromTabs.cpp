@@ -115,7 +115,7 @@ void QvkImageFromTabs::slot_make_picture_from_tab()
         sumScreenWidth = sumScreenWidth + screenList.at(i)->size().width();
         stringListScreenHeight << QString::number( screenList.at(i)->size().height() );
     }
-
+    stringListScreenHeight.sort();
     QPixmap pixmapScreen( screenList.at(0)->grabWindow( 0, 0, 0, sumScreenWidth, stringListScreenHeight.last().toInt() ) );
 
     QPixmap windowPixmap = pixmapScreen.copy( vokoscreenGuiWithoutMargins->mapToGlobal( QPoint(0,0) ).x() - left,
