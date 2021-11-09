@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>702</width>
-    <height>468</height>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -847,8 +847,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>486</width>
-                      <height>209</height>
+                      <width>594</width>
+                      <height>401</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -2032,8 +2032,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>312</width>
-                   <height>332</height>
+                   <width>420</width>
+                   <height>524</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -2179,7 +2179,7 @@
            <attribute name="title">
             <string notr="true"/>
            </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0,0,0,0,0,0,0,0">
+           <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0,0,0,0,0,0,0,0,0,0,0">
             <item>
              <spacer name="verticalSpacer_3">
               <property name="orientation">
@@ -2433,6 +2433,13 @@
                </spacer>
               </item>
              </layout>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_save_image_path">
+              <property name="text">
+               <string notr="true">   </string>
+              </property>
+             </widget>
             </item>
             <item>
              <spacer name="verticalSpacer_14">
