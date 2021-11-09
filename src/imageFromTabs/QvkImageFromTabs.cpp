@@ -125,5 +125,5 @@ void QvkImageFromTabs::slot_make_picture_from_tab()
 
     windowPixmap.save( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) + "/" + "vokoscreenNG-" + QString::number( counterFile++ ) + ".png" );
     ui->label_save_image_path->setAlignment( Qt::AlignHCenter );
-    ui->label_save_image_path->setText( "Image saved in: " + QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
+    ui->label_save_image_path->setText( "Images saved in: " + QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
 }
