@@ -570,7 +570,7 @@ QvkMainWindow::~QvkMainWindow()
 void QvkMainWindow::slot_haveAudioDeviceSelected( bool bo )
 {
     if ( bo == false ) {
-        ui->labelInfoAudiocodec->setText( "-----" );
+        ui->labelInfoAudiocodec->setText( "------" );
     } else {
         ui->labelInfoAudiocodec->setText( ui->comboBoxAudioCodec->currentText() );
     }
