@@ -53,6 +53,8 @@ QvkImageFromTabs::~QvkImageFromTabs()
 
 void QvkImageFromTabs::slot_make_picture_from_tabs()
 {
+    ui->pushButtonImages->setEnabled( false );
+
     counterFile = 0;
 
     show();
@@ -72,7 +74,7 @@ void QvkImageFromTabs::slot_make_picture_from_tabs()
         ui->tabWidgetScreencast->setCurrentIndex( i );
         for ( int y = 0; y < 30; y++ ) {
             QCoreApplication::processEvents();
-            QThread::msleep( 10 );
+            QThread::msleep( 20 );
         }
         slot_make_picture_from_tab();
     }
@@ -82,7 +84,7 @@ void QvkImageFromTabs::slot_make_picture_from_tabs()
         listToolButton.at(i)->click();
         for ( int y = 0; y < 30; y++ ) {
             QCoreApplication::processEvents();
-            QThread::msleep( 10 );
+            QThread::msleep( 20 );
         }
         slot_make_picture_from_tab();
     }
@@ -97,6 +99,8 @@ void QvkImageFromTabs::slot_make_picture_from_tabs()
         msgBox.setIcon( QMessageBox::Information );
         msgBox.exec();
     }
+
+    ui->pushButtonImages->setEnabled( true );
 }
 
 
