@@ -55,6 +55,20 @@ void QvkImageFromTabs::slot_make_picture_from_tabs()
 {
     ui->pushButtonImages->setEnabled( false );
 
+/*
+    QMap<int, QString> map;
+    map.insert( 111, "111" );
+    map.insert( 1, "1" );
+    map.insert( 100, "100" );
+    map.insert( 5, "5" );
+    map.insert( 3, "3" );
+
+    QList<QString> list = map.values();
+    int string = list.last().toInt();
+    qDebug() << string;
+return;
+*/
+
     counterFile = 0;
 
     show();
@@ -109,14 +123,14 @@ void QvkImageFromTabs::slot_make_picture_from_tab()
     QList<QScreen *> screenList = QGuiApplication::screens();
 
     int sumScreenWidth = 0;
-    QStringList stringListScreenHeight;
+    QMap<int, QString> map;
     for ( int i = 0; i < screenList.count(); i++ )
     {
         sumScreenWidth = sumScreenWidth + screenList.at(i)->size().width();
-        stringListScreenHeight << QString::number( screenList.at(i)->size().height() );
+        map.insert( screenList.at(i)->size().height(), QString::number( screenList.at(i)->size().height() ) );
     }
-    stringListScreenHeight.sort();
-    QPixmap pixmapScreen( screenList.at(0)->grabWindow( 0, 0, 0, sumScreenWidth, stringListScreenHeight.last().toInt() ) );
+
+    QPixmap pixmapScreen( screenList.at(0)->grabWindow( 0, 0, 0, sumScreenWidth, map.values().last().toInt() ) );
 
     QPixmap windowPixmap = pixmapScreen.copy( vokoscreenGuiWithoutMargins->mapToGlobal( QPoint(0,0) ).x() - left,
                                               vokoscreenGuiWithoutMargins->mapToGlobal( QPoint(0,0) ).y() - top,
