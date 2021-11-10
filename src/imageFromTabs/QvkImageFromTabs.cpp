@@ -55,20 +55,6 @@ void QvkImageFromTabs::slot_make_picture_from_tabs()
 {
     ui->pushButtonImages->setEnabled( false );
 
-/*
-    QMap<int, QString> map;
-    map.insert( 111, "111" );
-    map.insert( 1, "1" );
-    map.insert( 100, "100" );
-    map.insert( 5, "5" );
-    map.insert( 3, "3" );
-
-    QList<QString> list = map.values();
-    int string = list.last().toInt();
-    qDebug() << string;
-return;
-*/
-
     counterFile = 0;
 
     show();
