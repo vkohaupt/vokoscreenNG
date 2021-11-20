@@ -650,11 +650,7 @@
                 <item>
                  <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
                   <property name="text">
-                   <string notr="true">Do not record mouse cursor.
-!!! Opensuse Tumbelweed KDE Plasma crashes completely if we want to record cursor.</string>
-                  </property>
-                  <property name="checked">
-                   <bool>true</bool>
+                   <string notr="true">Do not record mouse cursor.</string>
                   </property>
                  </widget>
                 </item>

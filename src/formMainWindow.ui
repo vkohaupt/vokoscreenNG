@@ -336,7 +336,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>6</number>
+           <number>2</number>
           </property>
           <property name="iconSize">
            <size>
@@ -847,8 +847,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>594</width>
-                      <height>401</height>
+                      <width>486</width>
+                      <height>231</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -2032,8 +2032,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>420</width>
-                   <height>524</height>
+                   <width>312</width>
+                   <height>354</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -2437,7 +2437,7 @@
             <item>
              <widget class="QLabel" name="label_save_image_path">
               <property name="text">
-               <string notr="true">   </string>
+               <string notr="true"/>
               </property>
              </widget>
             </item>
