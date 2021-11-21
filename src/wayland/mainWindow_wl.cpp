@@ -234,7 +234,10 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
 
     QString top = QString::number( vkRegionChoise->getYRecordArea() + ui->spinBox_top->value() );
     QString right = QString::number( screenWidth - ( vkRegionChoise->getWidthRecordArea() + vkRegionChoise->getXRecordArea() + ui->spinBox_left->value() + ui->spinBox_right->value() ) );
-    QString bottom = QString::number( screenHeight - ( vkRegionChoise->getHeightRecordArea() + vkRegionChoise->getYRecordArea() ) - ui->spinBox_top->value() + ui->spinBox_bottom->value() );
+
+    QString bottom = QString::number( screenHeight - ( ui->spinBox_top->value() + vkRegionChoise->getYRecordArea() + vkRegionChoise->getHeightRecordArea() ) );
+
+
     QString left = QString::number( vkRegionChoise->getXRecordArea() + ui->spinBox_left->value() );
     videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
 
