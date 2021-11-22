@@ -112,8 +112,7 @@ QvkRegionChoise_wl::~QvkRegionChoise_wl()
 }
 
 
-// Ermitteln der größten Fensterhöhe
-// Unterstützt wird nur ein Desktop panel oben und unten, später sollte auch links und rechts eingebaut werden.
+// Ermitteln der größten Fensterhöhe und breite zwischen den Panels
 void QvkRegionChoise_wl::resizeEvent(QResizeEvent *event)
 {
     Q_UNUSED(event);
