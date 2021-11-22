@@ -131,6 +131,10 @@ void QvkMainWindow_wl::set_Connects()
     connect( portal_wl, SIGNAL( signal_portal_cancel( uint ) ), this,              SLOT( slot_portal_cancel( uint ) ) );
 
     connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this,           SLOT( slot_frames_Reset() ) );
+
+    connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->widget_Desktop_spinboxes, SLOT( setDisabled( bool ) ) );
+    connect( ui->radioButtonScreencastWindow,     SIGNAL( toggled( bool ) ), ui->widget_Desktop_spinboxes, SLOT( setDisabled( bool ) ) );
+
 }
 
 
