@@ -51,6 +51,7 @@ private:
 
     QString get_Videocodec_Encoder();
     QString get_Area_Videocrop();
+    QString get_Muxer();
 
 
 public Q_SLOTS:

@@ -188,6 +188,21 @@ QString QvkMainWindow_wl::get_Videocodec_Encoder()
 }
 
 
+QString QvkMainWindow_wl::get_Muxer()
+{
+    QString value = ui->comboBoxFormat->currentData().toString();
+    if ( ui->comboBoxFormat->currentData().toString() == "matroskamux" )
+    {
+        value = ui->comboBoxFormat->currentData().toString() + " name=mux writing-app=" + global::name + "_" + QString( global::version ).replace( " ", "_" );
+    }
+    else
+    {
+        value = ui->comboBoxFormat->currentData().toString() + " name=mux";
+    }
+    return value;
+}
+
+
 void QvkMainWindow_wl::slot_start()
 {
     // https://flatpak.github.io/xdg-desktop-portal/portal-docs.html#gdbus-property-org-freedesktop-portal-ScreenCast.AvailableSourceTypes
@@ -268,7 +283,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     if ( ui->radioButtonScreencastArea->isChecked() ) { stringList << get_Area_Videocrop(); }
     stringList << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
     stringList << get_Videocodec_Encoder();
-    stringList << "matroskamux name=mux";
+    stringList << get_Muxer();
 
     QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
     stringList << "filesink location=\"" + QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) + "/" + newVideoFilename + "\"";
