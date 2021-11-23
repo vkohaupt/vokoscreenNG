@@ -336,7 +336,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>6</number>
           </property>
           <property name="iconSize">
            <size>
@@ -2411,7 +2411,7 @@
               <item>
                <widget class="QPushButton" name="pushButtonImages">
                 <property name="text">
-                 <string>Create images of tabs </string>
+                 <string notr="true">Create images of tabs </string>
                 </property>
                </widget>
               </item>

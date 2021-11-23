@@ -613,7 +613,11 @@
                </spacer>
               </item>
               <item row="2" column="2">
-               <widget class="QComboBox" name="comboBoxVideoCodec"/>
+               <widget class="QComboBox" name="comboBoxVideoCodec">
+                <property name="currentText">
+                 <string notr="true"/>
+                </property>
+               </widget>
               </item>
               <item row="2" column="0">
                <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -627,7 +631,11 @@
                </layout>
               </item>
               <item row="1" column="2">
-               <widget class="QComboBox" name="comboBoxFormat"/>
+               <widget class="QComboBox" name="comboBoxFormat">
+                <property name="currentText">
+                 <string notr="true"/>
+                </property>
+               </widget>
               </item>
               <item row="0" column="1" colspan="3">
                <layout class="QHBoxLayout" name="horizontalLayout_slider_frames">
@@ -798,8 +806,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>431</width>
-                   <height>365</height>
+                   <width>447</width>
+                   <height>374</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
