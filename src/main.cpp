@@ -35,6 +35,7 @@
 #include <QTranslator>
 #include <QLibraryInfo>
 #include <QLoggingCategory>
+#include <QStyleFactory>
 
 #include <gst/gst.h>
 
@@ -44,6 +45,7 @@ int main(int argc, char *argv[])
 
         QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
         QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+        QApplication::setStyle( QStyleFactory::create( "Fusion" ) );
 
         QApplication app(argc, argv);
 
