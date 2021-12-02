@@ -329,16 +329,15 @@ void QvkPlayer::setMediaFile( QString string )
 
 void QvkPlayer::slot_openFile()
 {
-    if ( pathOpenFile == "" )
+    QFileDialog dialog( this );
+    dialog.setFileMode( QFileDialog::ExistingFile );
+    dialog.setOptions( QFileDialog::DontUseNativeDialog );
+    dialog.setDirectory( uiMainWindow->lineEditVideoPath->text() );
+    QString file;
+    if ( dialog.exec() )
     {
-        pathOpenFile = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
+        file = dialog.selectedFiles().at(0);
     }
-
-
-    QString file = QFileDialog::getOpenFileName( this,
-                                                 tr( "Open File" ),
-                                                 pathOpenFile,
-                                                 "" );
 
     if ( !file.isEmpty() )
     {
