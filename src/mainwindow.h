@@ -146,7 +146,6 @@ private:
 
     bool cancel = false;
 
-
 #ifdef Q_OS_WIN
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller;
 #endif

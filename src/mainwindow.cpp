@@ -1,4 +1,4 @@
-﻿/* vokoscreenNG - A desktop recorder
+/* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2019 Volker Kohaupt
  * 
  * Author:
@@ -842,14 +842,18 @@ void QvkMainWindow::slot_startTime()
 
 void QvkMainWindow::slot_newVideoPath()
 {
-    QString dir = QFileDialog::getExistingDirectory( this,
-                                                     "",
-                                                     QStandardPaths::writableLocation( QStandardPaths::HomeLocation ),
-                                                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks );
+    QFileDialog dialog( this );
+    dialog.setFileMode( QFileDialog::Directory );
+    dialog.setOption( QFileDialog::ShowDirsOnly, true );
+    dialog.setOption( QFileDialog::DontUseNativeDialog, true );
+    dialog.setOption( QFileDialog::DontUseCustomDirectoryIcons, true );
+    dialog.setDirectory( QStandardPaths::writableLocation( QStandardPaths::HomeLocation ) );
 
-    if ( dir > "" )
+    if ( dialog.exec() )
     {
-        ui->lineEditVideoPath->setText( dir );
+        if ( !dialog.selectedFiles().empty() ) {
+            ui->lineEditVideoPath->setText( dialog.selectedFiles().at(0) );
+        }
     }
 }
 
