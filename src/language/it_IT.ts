@@ -39,6 +39,17 @@
     </message>
 </context>
 <context>
+    <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Filemanager non trovato</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Si prega di installare un filemanager</translation>
+    </message>
+</context>
+<context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>

@@ -39,6 +39,17 @@
     </message>
 </context>
 <context>
+    <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Ni najdenega upravljalnika datotek.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Program za urejanje datotek je treba namestiti.</translation>
+    </message>
+</context>
+<context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>

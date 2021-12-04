@@ -39,6 +39,17 @@
     </message>
 </context>
 <context>
+    <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Претраживач датотека није пронађен</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Молим вас инсталирајте претраживач датотека</translation>
+    </message>
+</context>
+<context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>

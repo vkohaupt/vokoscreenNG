@@ -39,6 +39,17 @@
     </message>
 </context>
 <context>
+    <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Ne eblis trovi dosieradministrilon.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Instalu dosieradministrilon.</translation>
+    </message>
+</context>
+<context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>

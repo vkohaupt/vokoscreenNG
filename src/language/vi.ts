@@ -1,520 +1,525 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="vi" version="2.1">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Chọn một hoặc nhiều thiết bị</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
-        <translation type="unfinished"></translation>
+        <translation>Camera</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Đổi sang cửa sổ nhỏ</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Đổi sang toàn màn hình</translation>
     </message>
 </context>
 <context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Chọn một hoặc nhiều thiết bị</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Hỗ trợ</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Không tìm được filemanager</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Xin cài đặt filemanager</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Cảnh báo</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ghi hình chưa bắt đầu, không đủ dung lượng ổ đĩa trống</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dung lượng ổ đĩa trống đã đạt giới hạn</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation type="unfinished"></translation>
+        <translation>Giới hạn ổ đĩa trống</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation type="unfinished"></translation>
+        <translation>Megabyte</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ghi hình đã kết thúc, không đủ dung lượng ổ đĩa trống</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Toàn màn hình</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Cửa sổ</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Không tìm được filemanager</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation type="unfinished"></translation>
+        <translation>Xin cài đặt filemanager</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mã nguồn</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation type="unfinished"></translation>
+        <translation>Trang chủ</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation type="unfinished"></translation>
+        <translation>Chuyển ngữ</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"></translation>
+        <translation>Ủng hộ tài chính</translation>
+    </message>
+</context>
+<context>
+    <name>QvkPlayer</name>
+    <message>
+        <source>Open File</source>
+        <translation>Mở File</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Chọn một hoặc nhiều thiết bị</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation type="unfinished"></translation>
+        <translation>Khu vực</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Bắt đầu</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Dừng lại</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Tạm dừng</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiếp tục</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Thoát</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation type="unfinished"></translation>
+        <translation>Camera</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation type="unfinished"></translation>
+        <translation>Phóng to</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Bắt đầu</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Dừng lại</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Tạm dừng</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiếp tục</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Thoát</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Hộp thoại</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Đổi sang chiều ngang</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Đổi sang chiều dọc</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation type="unfinished"></translation>
+        <translation>Đổi ngược lại</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation type="unfinished"></translation>
+        <translation>Xám</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation type="unfinished"></translation>
+        <translation>Trắng Đen</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Xóa khung hình</translation>
     </message>
     <message>
         <source>160x120</source>
-        <translation type="unfinished"></translation>
+        <translation>160x120</translation>
     </message>
     <message>
         <source>320x240</source>
-        <translation type="unfinished"></translation>
+        <translation>320x240</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Cài đặt Camera</translation>
     </message>
     <message>
         <source>640x480</source>
-        <translation type="unfinished"></translation>
+        <translation>640x480</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation type="unfinished"></translation>
+        <translation>Khu vực</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Khởi động lại</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation type="unfinished"></translation>
+        <translation>Phóng to</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Đếm ngược</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kích cỡ Video</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dung lượng đĩa trống</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Thông tin</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Thời gian ghi hình</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation type="unfinished"></translation>
+        <translation>Audio</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation type="unfinished"></translation>
+        <translation>Khung ảnh</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation type="unfinished"></translation>
+        <translation>Videocodec</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Định dạng</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation type="unfinished"></translation>
+        <translation>Audiocodec</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation type="unfinished"></translation>
+        <translation>Chất lượng</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>Không ghi hình phần hiển thị của chuột</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation type="unfinished"></translation>
+        <translation>Giờ</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation type="unfinished"></translation>
+        <translation>Phút</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation type="unfinished"></translation>
+        <translation>Bắt đầu đếm giờ</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation type="unfinished"></translation>
+        <translation>Dừng ghi hình sau</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation type="unfinished"></translation>
+        <translation>Giờ</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>Phút</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Giây</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation type="unfinished"></translation>
+        <translation>Đường dẫn video</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation type="unfinished"></translation>
+        <translation>Giới hạn ổ đĩa trống</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiển thị trong systray</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation type="unfinished"></translation>
+        <translation>Số giây đợi trước khi ghi hình</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation type="unfinished"></translation>
+        <translation>Tìm cập nhật</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Hỗ trợ</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Video</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation type="unfinished"></translation>
+        <translation>Có sẵn</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation type="unfinished"></translation>
+        <translation>Không có sẵn</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Bắt đầu</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Dừng lại</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Tạm dừng</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Tiếp tục</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Phát</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Thư mục</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation type="unfinished"></translation>
+        <translation>Camera</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation type="unfinished"></translation>
+        <translation>Đổi ngược lại</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation type="unfinished"></translation>
+        <translation>Xám</translation>
     </message>
     <message>
         <source>Send Report</source>
-        <translation type="unfinished"></translation>
+        <translation>Gửi báo cáo</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+SHIFT+F10</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F11</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+SHIFT+F11</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F12</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+SHIFT+F12</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation type="unfinished"></translation>
+        <translation>Phát đoạn ghi hình gần nhất</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Mở thư mục</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+SHIFT+F8</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation type="unfinished"></translation>
+        <translation>Ẩn màn hình khi bắt đầu ghi hình</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation type="unfinished"></translation>
+        <translation>Bắt đầu ẩn màn hình</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Đổi sang chiều ngang</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Đổi sang chiều dọc</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation type="unfinished"></translation>
+        <translation>Trắng Đen</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Xóa khung hình</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation type="unfinished"></translation>
+        <translation>Ủng hộ tài chính</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation type="unfinished"></translation>
+        <translation>Reset tất cả cài đặt ở lần chay tới</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>Quyền sở hữu và giấy phép sử dụng bức tranh</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation type="unfinished"></translation>
+        <translation>Megabyte</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation type="unfinished"></translation>
+        <translation>Quay màn hình</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Trình phát</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation type="unfinished"></translation>
+        <translation>Nhật ký</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation type="unfinished"></translation>
+        <translation>Quyền sở hữu và giấy phép sử dụng bức tranh</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Phát</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Tạm dừng</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Dừng lại</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Mở File</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
+        <translation>Toàn màn hình</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Khung hình trước</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Khung hình sau</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Tắt tiếng</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Dời menu</translation>
     </message>
 </context>
 </TS>
