@@ -217,6 +217,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << "PulseAudio library version:" << pa_get_library_version();
 #endif
     qDebug().noquote() << global::nameOutput << "Operating system:" << QSysInfo::prettyProductName();
+    qDebug().noquote() << global::nameOutput << "KernelVersion:"  << QSysInfo::kernelVersion();
     qDebug().noquote() << global::nameOutput << "CPU Architecture:" << QSysInfo::currentCpuArchitecture();
     qDebug().noquote() << global::nameOutput << "Count CPU:" << QThread::idealThreadCount();
     qDebug().noquote() << global::nameOutput << global::name << "running as:" << QGuiApplication::platformName() << "client";
