@@ -40,18 +40,20 @@ public:
     Ui_formMainWindow *ui;
     QRadioButton *radioButtonWASAPI;
     QRadioButton *radioButtonDirectSound;
+    QvkWASAPIController *vkWASAPIController;
+    QvkDirectSoundController *vkDirectSoundController;
+
 
 public slots:
 
 
 private:
-    QvkWASAPIController *vkWASAPIController;
-    QvkDirectSoundController *vkDirectSoundController;
 
 
 private slots:
     void slot_WASAPI( bool value );
     void slot_DirectSound( bool value );
+
 
 protected:
 

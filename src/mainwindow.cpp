@@ -386,9 +386,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // Tab 2 Audio and Videocodec
 #ifdef Q_OS_WIN
-    // Alle Funktionen werden innerhalb dieser Klasse aufgerufen
     vkAudioController = new QvkAudioController( ui );
-    connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this, SLOT( slot_haveAudioDeviceSelected( bool ) ) );
+    connect( vkAudioController->vkDirectSoundController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this, SLOT( slot_haveAudioDeviceSelected( bool ) ) );
+    connect( vkAudioController->vkWASAPIController,      SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this, SLOT( slot_haveAudioDeviceSelected( bool ) ) );
 #endif
 
 #ifdef Q_OS_LINUX
