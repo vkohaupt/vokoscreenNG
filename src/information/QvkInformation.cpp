@@ -134,12 +134,12 @@ void QvkInformation::slot_newVersionAvailable( QString update )
         if ( global::version < update )
         {
             QString string = "New Version available: " + update;
-            ui->label_Upate_tab_1->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + string + "</a>" );
-            ui->label_Upate_tab_4->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + string + "</a>" );
+            ui->label_Upate_tab_1->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-download.html'>" + string + "</a>" );
+            ui->label_Upate_tab_4->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-download.html'>" + string + "</a>" );
         }
         else
         {
-            ui->label_Upate_tab_4->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>No update available</a>" );
+            ui->label_Upate_tab_4->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-download.html'>No update available</a>" );
         }
     }
     else
