@@ -329,6 +329,8 @@ void QvkPlayer::setMediaFile( QString string )
 
 void QvkPlayer::slot_openFile()
 {
+    QApplication::setDesktopSettingsAware( false ); // Top right now Qt Buttons
+
     QFileDialog dialog( this );
     dialog.setFileMode( QFileDialog::ExistingFile );
     dialog.setOptions( QFileDialog::DontUseNativeDialog );
@@ -345,6 +347,8 @@ void QvkPlayer::slot_openFile()
         slot_play();
         pathOpenFile = QDir( file ).absolutePath();
     }
+
+    QApplication::setDesktopSettingsAware( true );
 }
 
 

@@ -843,6 +843,8 @@ void QvkMainWindow::slot_startTime()
 
 void QvkMainWindow::slot_newVideoPath()
 {
+    QApplication::setDesktopSettingsAware( false ); // Top right now Qt Buttons
+
     QFileDialog dialog( this );
     dialog.setFileMode( QFileDialog::Directory );
     dialog.setOption( QFileDialog::ShowDirsOnly, true );
@@ -856,6 +858,9 @@ void QvkMainWindow::slot_newVideoPath()
             ui->lineEditVideoPath->setText( dialog.selectedFiles().at(0) );
         }
     }
+
+    QApplication::setDesktopSettingsAware( true );
+
 }
 
 
