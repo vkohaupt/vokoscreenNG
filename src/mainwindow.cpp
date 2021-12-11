@@ -29,6 +29,7 @@
 #include "QvkScreenManager.h"
 #include "QvkLicenses.h"
 #include "QvkImageFromTabs.h"
+#include "QvkDirDialog.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -843,24 +844,17 @@ void QvkMainWindow::slot_startTime()
 
 void QvkMainWindow::slot_newVideoPath()
 {
-    QApplication::setDesktopSettingsAware( false ); // Top right now Qt Buttons
+    QApplication::setDesktopSettingsAware( false );
 
-    QFileDialog dialog( this );
-    dialog.setFileMode( QFileDialog::Directory );
-    dialog.setOption( QFileDialog::ShowDirsOnly, true );
-    dialog.setOption( QFileDialog::DontUseNativeDialog, true );
-    dialog.setOption( QFileDialog::DontUseCustomDirectoryIcons, true );
-    dialog.setDirectory( QStandardPaths::writableLocation( QStandardPaths::HomeLocation ) );
-
-    if ( dialog.exec() )
+    QvkDirDialog vkDirDialog( this );
+    if ( vkDirDialog.exec() == QDialog::Accepted )
     {
-        if ( !dialog.selectedFiles().empty() ) {
-            ui->lineEditVideoPath->setText( dialog.selectedFiles().at(0) );
+        if ( !vkDirDialog.selectedFiles().empty() ) {
+            ui->lineEditVideoPath->setText( vkDirDialog.selectedFiles().at(0) );
         }
     }
 
     QApplication::setDesktopSettingsAware( true );
-
 }
 
 

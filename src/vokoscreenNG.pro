@@ -160,7 +160,7 @@ win32:include(ciscoOpenh264/ciscoOpenh264.pri)
 unix:include(wayland/wayland.pri)
 unix:include(waylandRoutines/waylandRoutines.pri)
 
-#showClick
+# showClick
 include(showClick/showClick.pri)
 
 # halo
@@ -171,3 +171,7 @@ include(spezialCheckBox/spezialCheckBox.pri)
 
 # ImageFromTabs
 include(imageFromTabs/imageFromTabs.pri)
+
+# Folder Dialog
+include(dirDialog/dirDialog.pri)
+
