@@ -24,6 +24,7 @@
 #include "QvkPlayerVideoSurface.h"
 #include "QvkSpezialSlider.h"
 #include "global.h"
+#include "QvkFileDialog.h"
 
 #include <QTime>
 #include <QStandardPaths>
@@ -329,16 +330,16 @@ void QvkPlayer::setMediaFile( QString string )
 
 void QvkPlayer::slot_openFile()
 {
-    QApplication::setDesktopSettingsAware( false ); // Top right now Qt Buttons
+    QApplication::setDesktopSettingsAware( false );
 
-    QFileDialog dialog( this );
-    dialog.setFileMode( QFileDialog::ExistingFile );
-    dialog.setOptions( QFileDialog::DontUseNativeDialog );
-    dialog.setDirectory( uiMainWindow->lineEditVideoPath->text() );
     QString file;
-    if ( dialog.exec() )
+    QvkFileDialog vkFileDialog( this );
+    vkFileDialog.setVideoPath( uiMainWindow->lineEditVideoPath->text() );
+    if ( vkFileDialog.exec() == QDialog::Accepted )
     {
-        file = dialog.selectedFiles().at(0);
+        if ( !vkFileDialog.selectedFiles().empty() ) {
+            file = vkFileDialog.selectedFiles().at(0);
+        }
     }
 
     if ( !file.isEmpty() )

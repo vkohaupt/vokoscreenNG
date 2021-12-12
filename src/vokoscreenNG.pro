@@ -175,3 +175,6 @@ include(imageFromTabs/imageFromTabs.pri)
 # Folder Dialog
 include(dirDialog/dirDialog.pri)
 
+# File Dialog
+include(fileDialog/fileDialog.pri)
+
