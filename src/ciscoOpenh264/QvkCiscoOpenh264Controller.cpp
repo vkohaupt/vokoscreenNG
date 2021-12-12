@@ -162,7 +162,7 @@ void QvkCiscoOpenh264Controller::slot_pushButtonCiscoLicense()
    textStream.setCodec( "UTF-8" );
 
    QDialog *dialog = new QDialog();
-   // dialog->setWindowState( Qt::WindowContextHelpButtonHint ); // Entfernt das Fragezeichen in der Titelzeile aber erst ab Qt 5.10
+   dialog->setWindowFlag( Qt::WindowContextHelpButtonHint ); // Entfernt das Fragezeichen in der Titelzeile
    dialog->resize( 600, 600 );
    dialog->setWindowTitle( "Cisco licence" );
 
