@@ -23,6 +23,7 @@
 #include <QDir>
 #include <QDialog>
 #include <QThread>
+#include <QDialogButtonBox>
 
 #include "QvkCiscoOpenh264Controller.h"
 #include "QvkCiscoOpenh264Downloader.h"
@@ -177,6 +178,10 @@ void QvkCiscoOpenh264Controller::slot_pushButtonCiscoLicense()
    textBrowser->show();
 
    boxLayout->addWidget( textBrowser );
+
+   QDialogButtonBox buttonBox( QDialogButtonBox::Close );
+   connect( &buttonBox, &QDialogButtonBox::clicked, dialog, &QDialog::accept );
+   boxLayout->addWidget( &buttonBox );
 
    dialog->exec();
 }
