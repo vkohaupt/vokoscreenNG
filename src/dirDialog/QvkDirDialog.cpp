@@ -18,6 +18,7 @@ QvkDirDialog::QvkDirDialog( QWidget *parent )
     setOption( QFileDialog::DontUseNativeDialog, true );
     setOption( QFileDialog::DontUseCustomDirectoryIcons, true );
     setDirectory( QStandardPaths::writableLocation( QStandardPaths::HomeLocation ) );
+    setWindowFlag( Qt::WindowContextHelpButtonHint, false );
 
     // Remove image in QDialogButtonBox
     QList<QDialogButtonBox *> list = findChildren<QDialogButtonBox *>();

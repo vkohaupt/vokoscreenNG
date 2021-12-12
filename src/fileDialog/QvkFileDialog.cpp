@@ -16,6 +16,7 @@ QvkFileDialog::QvkFileDialog( QWidget *parent )
     setFileMode( QFileDialog::ExistingFile );
     setOption( QFileDialog::DontUseNativeDialog, true );
     setOption( QFileDialog::DontUseCustomDirectoryIcons, true );
+    setWindowFlag( Qt::WindowContextHelpButtonHint, false );
 
     // Remove image in QDialogButtonBox
     QList<QDialogButtonBox *> list = findChildren<QDialogButtonBox *>();
