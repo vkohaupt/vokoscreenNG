@@ -56,10 +56,12 @@ private:
 signals:
     void signal_fileDownloaded( QString );
     void signal_failedDownload();
+    void signal_downloadProgress( qint64 downloadedSize, qint64 fileSize );
 
 
 public slots:
     void slot_downloadFinished( QNetworkReply *reply );
+    void slot_downloadProgress( qint64 downloadedSize, qint64 fileSize );
 
 
 private slots:

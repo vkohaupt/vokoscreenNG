@@ -60,6 +60,9 @@ private slots:
     void slot_closeWaitDialog();
 
 
+    void slot_downloadProgress( qint64 downloadedSize, qint64 fileSize );
+
+
 protected:
 
 

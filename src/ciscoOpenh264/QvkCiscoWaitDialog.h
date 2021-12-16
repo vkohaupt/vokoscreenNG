@@ -15,6 +15,8 @@ public:
     explicit QvkCiscoWaitDialog(QWidget *parent = nullptr);
     ~QvkCiscoWaitDialog();
 
+    void progress(qint64 downloadedSize, qint64 fileSize );
+
 private:
     Ui::QvkCiscoWaitDialog *ui;
 

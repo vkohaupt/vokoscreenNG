@@ -11,3 +11,13 @@ QvkCiscoWaitDialog::~QvkCiscoWaitDialog()
 {
     delete ui;
 }
+
+void QvkCiscoWaitDialog::progress( qint64 downloadedSize, qint64 fileSize )
+{
+    ui->progressBar->setMinimum( 0 );
+    ui->progressBar->setMaximum( fileSize );
+    ui->progressBar->setValue( downloadedSize );
+
+    update();
+    repaint();
+}

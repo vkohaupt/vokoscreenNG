@@ -36,8 +36,21 @@ void QvkCiscoOpenh264Downloader::doDownload( const QUrl &url )
     request.setSslConfiguration(QSslConfiguration::defaultConfiguration());
     request.setUrl( url );
     QNetworkReply *reply = networkAccessManager.get( request );
+
+
+    connect( reply, SIGNAL( downloadProgress( qint64, qint64 ) ), SLOT( slot_downloadProgress( qint64, qint64 ) ) );
+
+
     listDownloads.append( reply );
 }
+
+
+
+void QvkCiscoOpenh264Downloader::slot_downloadProgress( qint64 downloadedSize, qint64 fileSize )
+{
+    emit signal_downloadProgress( downloadedSize, fileSize );
+}
+
 
 
 bool QvkCiscoOpenh264Downloader::saveLocal( const QString &filename, QIODevice *data )
@@ -56,6 +69,7 @@ bool QvkCiscoOpenh264Downloader::saveLocal( const QString &filename, QIODevice *
 
 void QvkCiscoOpenh264Downloader::slot_downloadFinished( QNetworkReply *reply )
 {
+    qDebug() << reply->header(QNetworkRequest::ContentLengthHeader).toUInt() << "---------------------------------------";
     QString filename = QFileInfo( reply->url().path() ).fileName();
     bool downloadOK = false;
     if ( reply->error() )

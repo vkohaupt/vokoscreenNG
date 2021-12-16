@@ -84,8 +84,15 @@ void QvkCiscoOpenh264Controller::init()
         QvkCiscoOpenh264Downloader *vkCiscoOpenh264Downloader = new QvkCiscoOpenh264Downloader( fileInfo.path() );
         connect( vkCiscoOpenh264Downloader, SIGNAL( signal_failedDownload() ), this, SLOT( slot_closeWaitDialog() ) );
         connect( vkCiscoOpenh264Downloader, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_deCompress( QString ) ) );
+        connect( vkCiscoOpenh264Downloader, SIGNAL( signal_downloadProgress( qint64, qint64) ), this, SLOT( slot_downloadProgress( qint64, qint64 ) )  );
         vkCiscoOpenh264Downloader->doDownload( downloadFile );
     }
+}
+
+
+void QvkCiscoOpenh264Controller::slot_downloadProgress( qint64 downloadedSize, qint64 fileSize )
+{
+     vkCiscoWaitDialog->progress( downloadedSize, fileSize );
 }
 
 
