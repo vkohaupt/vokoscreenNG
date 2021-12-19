@@ -25,8 +25,6 @@ QvkSystrayAlternativeWindow::QvkSystrayAlternativeWindow( QWidget *parent )
 #ifdef Q_OS_WIN
     setAttribute( Qt::WA_TranslucentBackground, true );
 #endif
-
-    show();
 }
 
 
