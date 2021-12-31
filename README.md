@@ -135,12 +135,12 @@ On Ubuntu these requirements can be satisfied by running `sudo apt install libgs
 * [Arch linux](https://www.archlinux.org/packages/community/x86_64/vokoscreen/): `sudo pacman -S vokoscreen`
 * [NixOS](https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/video/vokoscreen-ng/default.nix): `nix-env -iA nixos.vokoscreen-ng`
 
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-0.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-1.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-2.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-3.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-4.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-5.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-6.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-7.png)
-![Picture](https://vokoscreen.volkoh.de/3.0/picture/screencast-8.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-0.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-1.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-2.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-3.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-4.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-5.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-6.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-7.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-8.png)
