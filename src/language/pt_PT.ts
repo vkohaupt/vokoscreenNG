@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt_PT" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="pt_PT">
 <context>
     <name>QvkAudioController</name>
     <message>
@@ -109,13 +109,6 @@
     <message>
         <source>Donate</source>
         <translation>Faz uma doação</translation>
-    </message>
-</context>
-<context>
-    <name>QvkPlayer</name>
-    <message>
-        <source>Open File</source>
-        <translation>Abrir ficheiro</translation>
     </message>
 </context>
 <context>

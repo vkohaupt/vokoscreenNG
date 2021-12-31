@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="hu" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="hu">
 <context>
     <name>QvkAudioController</name>
     <message>
@@ -109,13 +109,6 @@
     <message>
         <source>Donate</source>
         <translation>Adományozás</translation>
-    </message>
-</context>
-<context>
-    <name>QvkPlayer</name>
-    <message>
-        <source>Open File</source>
-        <translation>Fájl megnyitása</translation>
     </message>
 </context>
 <context>
