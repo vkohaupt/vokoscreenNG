@@ -118,10 +118,10 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 * libpulse-devel (vokoscreenNG >= 3.0.7)
 * wayland-devel (vokoscreenNG >= 3.0.9)
 
-On Ubuntu these requirements can be satisfied by running `sudo apt install libgstreamer1.0-dev qt5-default qttools5-dev-tools libqt5x11extras5-dev qtmultimedia5-dev libqt5multimedia5-plugins libpulse-dev`
+On Ubuntu these requirements can be satisfied by running `sudo apt install libgstreamer1.0-dev qt5-default qttools5-dev-tools libqt5x11extras5-dev qtmultimedia5-dev libqt5multimedia5-plugins libpulse-dev libwayland-dev`
 
 ### Build instructions
-1. Download the source / clone the repo and `cd` into its directory
+1. `Download the source / clone the repo and cd into its directory`
 2. `cd src`
 3. `qmake`
 4. `make`

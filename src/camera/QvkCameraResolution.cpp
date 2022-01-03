@@ -74,6 +74,11 @@ void QvkCameraResolution::slot_statusChanged( QCamera::Status status )
                            << ui_formMainWindow->comboBoxCamera->currentText()
                            << ui_formMainWindow->comboBoxCamera->currentData().toByteArray();
         qDebug() << resolution;
+
+
+        QList<QVideoFrame::PixelFormat> list = camera->supportedViewfinderPixelFormats( );
+        qDebug() << "--------------------------------------" << list;
+
         camera->unload();
         disconnect( camera, nullptr, nullptr, nullptr );
 
