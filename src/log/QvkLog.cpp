@@ -2,7 +2,7 @@
  * Copyright (C) 2017-2019 Volker Kohaupt
  * 
  * Author:
- *      Volker Kohaupt <vkohaupt@freenet.de>
+ *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
  * This file is free software; you can redistribute it and/or modify
  * it under the terms of version 2 of the GNU General Public License
