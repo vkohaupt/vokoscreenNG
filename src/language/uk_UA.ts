@@ -3,7 +3,7 @@
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Виберіть один або декілька пристроїв</translation>
+        <translation>Оберіть один або декілька пристроїв</translation>
     </message>
 </context>
 <context>
@@ -28,7 +28,7 @@
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Виберіть один або декілька пристроїв</translation>
+        <translation>Оберіть один або декілька пристроїв</translation>
     </message>
 </context>
 <context>
@@ -42,11 +42,11 @@
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Файлового менеджера не знайдено.</translation>
+        <translation>Файлового упорядника не знайдено.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Будь ласка встановіть файловий менеджер.</translation>
+        <translation>Будь ласка встановіть файловий упорядник.</translation>
     </message>
 </context>
 <context>
@@ -80,7 +80,7 @@
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Весь екран</translation>
+        <translation>Увесь екран</translation>
     </message>
     <message>
         <source>Window</source>
@@ -88,11 +88,11 @@
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Файлового менеджера не знайдено.</translation>
+        <translation>Файлового упорядника не знайдено.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Будь ласка встановіть файловий менеджер.</translation>
+        <translation>Будь ласка встановіть файловий упорядник.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
@@ -100,7 +100,7 @@
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Веб-сайт</translation>
+        <translation>Вебсайт</translation>
     </message>
     <message>
         <source>Translations</source>
@@ -115,7 +115,7 @@
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Виберіть один або декілька пристроїв</translation>
+        <translation>Оберіть один або декілька пристроїв</translation>
     </message>
 </context>
 <context>
@@ -195,7 +195,7 @@
     </message>
     <message>
         <source>Invert</source>
-        <translation>Відобразити</translation>
+        <translation>Перевернути</translation>
     </message>
     <message>
         <source>Gray</source>
@@ -278,7 +278,7 @@
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Аудіокодек</translation>
+        <translation>Авдіокодек</translation>
     </message>
     <message>
         <source>Quality</source>
@@ -286,7 +286,7 @@
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Не записувати курсор миші</translation>
+        <translation>Не записувати вказівник миші</translation>
     </message>
     <message>
         <source>Hour</source>
@@ -318,7 +318,7 @@
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Зберегти в теку</translation>
+        <translation>Зберегти до теки</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>

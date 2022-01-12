@@ -17,11 +17,11 @@
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Modalità finestra</translation>
+        <translation>Passa a Finestra</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Modalità schermo intero</translation>
+        <translation>Passa a Schermo Intero</translation>
     </message>
 </context>
 <context>
@@ -42,11 +42,11 @@
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Filemanager non trovato</translation>
+        <translation>Nessun Filemanager.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Si prega di installare un filemanager</translation>
+        <translation>Installa un filemanager.</translation>
     </message>
 </context>
 <context>
@@ -57,7 +57,7 @@
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>La registrazione non è partita, spazio disco insufficiente</translation>
+        <translation>Registrazione non è stata avviata. Spazio disco insufficiente.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
@@ -73,7 +73,7 @@
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Registrazione interrotta, spazio disco insufficiente</translation>
+        <translation>Registrazione interrotta. Spazio disco insufficiente</translation>
     </message>
 </context>
 <context>
@@ -129,11 +129,11 @@
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Avvia</translation>
+        <translation>Inizia</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Ferma</translation>
+        <translation>Interrompi</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -160,11 +160,11 @@
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Avvia</translation>
+        <translation>Inizia</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Ferma</translation>
+        <translation>Interrompi</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -187,11 +187,11 @@
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Ribalta orizzontalmente</translation>
+        <translation>Capovolgi orizzontale</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Ribalta verticalmente</translation>
+        <translation>Capovolgi verticale</translation>
     </message>
     <message>
         <source>Invert</source>
@@ -238,11 +238,11 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ingrandimento</translation>
+        <translation>Ingrandisci</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Ritarda avvio</translation>
+        <translation>Avvio ritardo di</translation>
     </message>
     <message>
         <source>Video size:</source>
@@ -258,7 +258,7 @@
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Ora di registrazione:</translation>
+        <translation>Tempo di registrazione:</translation>
     </message>
     <message>
         <source>Audio</source>
@@ -270,11 +270,11 @@
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Codificatore video</translation>
+        <translation>Codifica video</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formato</translation>
+        <translation>Formato video</translation>
     </message>
     <message>
         <source>Audiocodec</source>
@@ -298,7 +298,7 @@
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Avvia il timer</translation>
+        <translation>Avvia il tempo</translation>
     </message>
     <message>
         <source>Stop recording after</source>
@@ -418,19 +418,19 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimizza all&apos;attivazione della registrazione</translation>
+        <translation>Ridotto a icona durante la registrazione</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Avvia minimizzato</translation>
+        <translation>Avvia a icona</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Ribalta orizzontalmente</translation>
+        <translation>Capovolgi orizzontale</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Ribalta verticalmente</translation>
+        <translation>Capovolgi verticale</translation>
     </message>
     <message>
         <source>Black-and-white</source>
@@ -466,7 +466,7 @@
     </message>
     <message>
         <source>Log</source>
-        <translation>Registro</translation>
+        <translation>Registro eventi</translation>
     </message>
 </context>
 <context>
@@ -508,7 +508,7 @@
     </message>
     <message>
         <source>Mute</source>
-        <translation>Silenzioso</translation>
+        <translation>Silenzia</translation>
     </message>
     <message>
         <source>Move menu</source>
