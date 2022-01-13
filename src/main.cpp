@@ -114,22 +114,23 @@ int main(int argc, char *argv[])
         QString pathProfile = dirPathProfile.absolutePath();
         QString programPath = QDir::currentPath();
 
-        QByteArray pluginPathByteArray;
-        pluginPathByteArray.append( programPath );
-        pluginPathByteArray.append( separator );
-        pluginPathByteArray.append( pathProfile );
-        qputenv( "GST_PLUGIN_PATH_1_0", pluginPathByteArray );
+        QString pluginPath;
+        pluginPath.append( programPath );
+        pluginPath.append( separator );
+        pluginPath.append( pathProfile );
+        qputenv( "GST_PLUGIN_PATH_1_0", pluginPath.toUtf8() );
 
-        QByteArray pathPathByteArray;
-        pathPathByteArray.append( programPath );
-        pathPathByteArray.append( separator );
-        pathPathByteArray.append( pathProfile );
-        qputenv( "PATH", pathPathByteArray );
+        QString pathPath;
+        pathPath.append( programPath );
+        pathPath.append( separator );
+        pathPath.append( pathProfile );
+        qputenv( "PATH", pathPath.toUtf8() );
 
-        QByteArray pathRegistryByteArray;
-        pathRegistryByteArray.append( pathProfile );
-        pathRegistryByteArray.append( "/gstreamer.registry" );
-        qputenv( "GST_REGISTRY_1_0", pathRegistryByteArray );
+        QString pathRegistry;
+        pathRegistry.append( pathProfile );
+        pathRegistry.append( "/gstreamer.registry" );
+        qputenv( "GST_REGISTRY_1_0", pathRegistry.toUtf8() );
+
         /*
         //Environment variables for debugging
         qputenv( "GST_DEBUG", "4");
