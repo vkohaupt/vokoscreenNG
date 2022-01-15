@@ -48,8 +48,6 @@ void QvkAudioController::init()
     connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
     connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
     getAllDevices();
-    QvkPulseAudioWatcher *vkPulseAudioWatcher = new QvkPulseAudioWatcher( ui );
-    vkPulseAudioWatcher->start_monitor();
 }
 
 
@@ -59,36 +57,49 @@ void QvkAudioController::getAllDevices()
     if ( QvkPulseAudioServer::isAvailable() )
     {
         list << QvkPulseAudioDevices::getAllDevices();
-    }
-
-    if ( !list.empty() )
-    {
-        for ( int i = 0; i < list.count(); i++ )
+        if ( !list.empty() )
         {
-            QCheckBox *checkboxAudioDevice = new QCheckBox();
-            connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
-            checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
-            checkboxAudioDevice->setAccessibleName( QString( list.at(i) ).section( ":::", 0, 0 ) );
-            checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( i ) );
-            checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
-            ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
-            qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( list.at(i) ).section( ":::", 1, 1 ) << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 );
-        }
-        qDebug().noquote();
+            for ( int i = 0; i < list.count(); i++ )
+            {
+                QCheckBox *checkboxAudioDevice = new QCheckBox();
+                connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
+                checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
+                checkboxAudioDevice->setAccessibleName( QString( list.at(i) ).section( ":::", 0, 0 ) );
+                checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( i ) );
+                checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
+                ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
+                qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( list.at(i) ).section( ":::", 1, 1 ) << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 );
+            }
+            qDebug().noquote();
 
-        QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
-        ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
-    }
-    else
-    {
+            QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
+            ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
+
+            QvkPulseAudioWatcher *vkPulseAudioWatcher = new QvkPulseAudioWatcher( ui );
+            vkPulseAudioWatcher->start_monitor();
+        }
+        else
+        {
+            QLabel *label = new QLabel();
+            label->setText( "PulseAudio\n" );
+            label->setAlignment( Qt::AlignCenter );
+            ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter );
+            ui->verticalLayoutAudioDevices->addWidget( label );
+
+            QLabel *labelText = new QLabel();
+            labelText->setText( "No device found for audio recording." );
+            ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter );
+            ui->verticalLayoutAudioDevices->addWidget( labelText );
+        }
+    } else {
         QLabel *label = new QLabel();
-        label->setText( "PulseAudio\n" );
+        label->setText( "PulseAudio not found\n" );
         label->setAlignment( Qt::AlignCenter );
         ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter );
         ui->verticalLayoutAudioDevices->addWidget( label );
 
         QLabel *labelText = new QLabel();
-        labelText->setText( "No device found for audio recording." );
+        labelText->setText( "Please install or start Pulseaudio" );
         ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter );
         ui->verticalLayoutAudioDevices->addWidget( labelText );
     }
