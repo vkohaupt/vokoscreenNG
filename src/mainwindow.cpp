@@ -1739,6 +1739,21 @@ QString QvkMainWindow::VK_getMuxer()
 }
 
 
+QStringList QvkMainWindow::VK_getSelectedAudioDeviceName()
+{
+    QStringList list;
+    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listQCheckBox.count(); i++ )
+    {
+        if ( listQCheckBox.at(i)->checkState() == Qt::Checked )
+        {
+            list << listQCheckBox.at(i)->text();
+        }
+    }
+    return list;
+}
+
+
 QStringList QvkMainWindow::VK_getSelectedAudioDevice()
 {
     QStringList list;
@@ -1802,7 +1817,8 @@ void QvkMainWindow::slot_Start()
     if ( ( VK_getSelectedAudioDevice().count() == 1 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
     {
         #ifdef Q_OS_LINUX
-            VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(0) );
+            VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(0) )
+                                                   .append( " client-name=" ).append( global::nameOutput + "." + QString( VK_getSelectedAudioDeviceName().at(0) ).replace( " ", "-") );
             VK_PipelineList << "audio/x-raw, channels=2";
             VK_PipelineList << "audioconvert";
             VK_PipelineList << "audiorate";
@@ -1855,7 +1871,8 @@ void QvkMainWindow::slot_Start()
         for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ )
         {
             #ifdef Q_OS_LINUX
-                VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(x) );
+                VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(x) )
+                                                       .append( " client-name=" ).append( global::nameOutput + "." + QString( VK_getSelectedAudioDeviceName().at(x) ).replace( " ", "-") );
                 VK_PipelineList << "audio/x-raw, channels=2";
                 VK_PipelineList << "queue";
                 VK_PipelineList << "mix.";
