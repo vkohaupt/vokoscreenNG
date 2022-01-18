@@ -334,7 +334,12 @@ void QvkPlayer::slot_openFile()
 
     QString file;
     QvkFileDialog vkFileDialog( this );
-    vkFileDialog.setVideoPath( uiMainWindow->lineEditVideoPath->text() );
+    if ( !pathOpenFile.isEmpty() ) {
+        vkFileDialog.setVideoPath( pathOpenFile );
+    } else {
+        vkFileDialog.setVideoPath( uiMainWindow->lineEditVideoPath->text() );
+    }
+
     if ( vkFileDialog.exec() == QDialog::Accepted )
     {
         if ( !vkFileDialog.selectedFiles().empty() ) {
