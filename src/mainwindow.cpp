@@ -1882,7 +1882,7 @@ void QvkMainWindow::slot_Start()
                 if ( vkAudioController->radioButtonDirectSound->isCheckable() )
                 {
                     VK_PipelineList << QString( "directsoundsrc device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(x) + "'" );
-                    VK_PipelineList << "audio/x-raw, channels=2";
+                    VK_PipelineList << "audioconvert";
                     VK_PipelineList << "queue";
                     VK_PipelineList << "mix.";
                 }
