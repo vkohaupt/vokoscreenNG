@@ -117,14 +117,14 @@
          <item alignment="Qt::AlignHCenter">
           <widget class="QLabel" name="label_2">
            <property name="text">
-            <string notr="true">The setup was successful.</string>
+            <string>The setup was successful.</string>
            </property>
           </widget>
          </item>
          <item alignment="Qt::AlignHCenter">
           <widget class="QLabel" name="label_4">
            <property name="text">
-            <string notr="true">Close this window and start vokoscreenNG again.</string>
+            <string>Close this window and start vokoscreenNG again.</string>
            </property>
           </widget>
          </item>
@@ -144,7 +144,7 @@
          <item alignment="Qt::AlignHCenter">
           <widget class="QLabel" name="label_3">
            <property name="text">
-            <string notr="true">Have fun with vokoscreenNG</string>
+            <string>Have fun with vokoscreenNG</string>
            </property>
           </widget>
          </item>
