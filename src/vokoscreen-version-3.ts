@@ -27,6 +27,21 @@
     </message>
 </context>
 <context>
+    <name>QvkCiscoFinishDialog</name>
+    <message>
+        <source>The setup was successful.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close this window and start vokoscreenNG again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Have fun with vokoscreenNG</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
