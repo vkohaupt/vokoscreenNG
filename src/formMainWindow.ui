@@ -336,7 +336,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -2340,7 +2340,7 @@
                 </property>
                 <item>
                  <property name="text">
-                  <string notr="true">Automatically</string>
+                  <string>Automatically</string>
                  </property>
                 </item>
                </widget>
@@ -2411,7 +2411,7 @@
               <item>
                <widget class="QPushButton" name="pushButtonImages">
                 <property name="text">
-                 <string notr="true">Create images of tabs </string>
+                 <string>Create images of tabs </string>
                 </property>
                </widget>
               </item>
@@ -2499,7 +2499,7 @@
                     <item alignment="Qt::AlignHCenter">
                      <widget class="QPushButton" name="pushButtonCiscoLicense">
                       <property name="text">
-                       <string notr="true">License information</string>
+                       <string>License information</string>
                       </property>
                      </widget>
                     </item>
@@ -2531,14 +2531,14 @@
                       <item>
                        <widget class="QRadioButton" name="radioButton_cisco_on">
                         <property name="text">
-                         <string notr="true">ON</string>
+                         <string>ON</string>
                         </property>
                        </widget>
                       </item>
                       <item>
                        <widget class="QRadioButton" name="radioButton_cisco_off">
                         <property name="text">
-                         <string notr="true">OFF</string>
+                         <string>OFF</string>
                         </property>
                        </widget>
                       </item>
@@ -3698,7 +3698,7 @@
                     </font>
                    </property>
                    <property name="text">
-                    <string notr="true">Global keyboard shortcuts</string>
+                    <string>Global keyboard shortcuts</string>
                    </property>
                   </widget>
                  </item>
@@ -5499,7 +5499,7 @@
                  <item>
                   <widget class="QLabel" name="label_50">
                    <property name="text">
-                    <string notr="true">Assigned shortcut keys.</string>
+                    <string>Assigned shortcut keys.</string>
                    </property>
                    <property name="wordWrap">
                     <bool>true</bool>
@@ -5535,7 +5535,7 @@
                  <item>
                   <widget class="QLabel" name="label_53">
                    <property name="text">
-                    <string notr="true">Keyboard shortcut not assigned or assigned more than once.</string>
+                    <string>Keyboard shortcut not assigned or assigned more than once.</string>
                    </property>
                    <property name="textInteractionFlags">
                     <set>Qt::TextSelectableByMouse</set>
@@ -5566,7 +5566,7 @@
                   </font>
                  </property>
                  <property name="text">
-                  <string notr="true">If it shows assigned but does not work, it is being used by another program.</string>
+                  <string>If it shows assigned but does not work, it is being used by another program.</string>
                  </property>
                  <property name="textInteractionFlags">
                   <set>Qt::TextSelectableByMouse</set>

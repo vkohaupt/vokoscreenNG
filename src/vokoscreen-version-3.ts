@@ -470,6 +470,42 @@
         <source>Log</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Automatically</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Global keyboard shortcuts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Assigned shortcut keys.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Keyboard shortcut not assigned or assigned more than once.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If it shows assigned but does not work, it is being used by another program.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>license</name>

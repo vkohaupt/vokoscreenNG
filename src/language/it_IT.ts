@@ -133,7 +133,7 @@
     </message>
     <message>
         <source>Stop</source>
-        <translation>Interrompi</translation>
+        <translation>Ferma</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -458,7 +458,7 @@
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Trasmissione schermo</translation>
+        <translation>Registra Schermo</translation>
     </message>
     <message>
         <source>Player</source>
