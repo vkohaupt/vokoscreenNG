@@ -28,15 +28,15 @@
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation type="unfinished"/>
+        <translation>Het instellen is voltooid.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation type="unfinished"/>
+        <translation>Sluit dit venster en herstart vokoscreenNG.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation type="unfinished"/>
+        <translation>Veel plezier met vokoscreenNG</translation>
     </message>
 </context>
 <context>
@@ -485,39 +485,39 @@
     </message>
     <message>
         <source>Automatically</source>
-        <translation type="unfinished"/>
+        <translation>Automatisch</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation type="unfinished"/>
+        <translation>Afbeeldingen maken van tabbladen</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation type="unfinished"/>
+        <translation>Licentie-informatie</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"/>
+        <translation>AAN</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"/>
+        <translation>UIT</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation type="unfinished"/>
+        <translation>Globale sneltoetsen</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation type="unfinished"/>
+        <translation>De sneltoetsen zijn toegewezen.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation type="unfinished"/>
+        <translation>De sneltoets is niet of meer dan eens toegewezen.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation type="unfinished"/>
+        <translation>Als de sneltoets wordt aangeduid als zijnde toegewezen maar niet werkt, dan wordt deze al gebruikt door een ander programma.</translation>
     </message>
 </context>
 <context>
