@@ -5630,6 +5630,9 @@
                    <property name="text">
                     <string>Keyboard shortcut not assigned or assigned more than once.</string>
                    </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
                    <property name="textInteractionFlags">
                     <set>Qt::TextSelectableByMouse</set>
                    </property>
@@ -5650,21 +5653,28 @@
                  </property>
                 </spacer>
                </item>
-               <item alignment="Qt::AlignHCenter">
-                <widget class="QLabel" name="label_54">
-                 <property name="font">
-                  <font>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="text">
-                  <string>If it shows assigned but does not work, it is being used by another program.</string>
-                 </property>
-                 <property name="textInteractionFlags">
-                  <set>Qt::TextSelectableByMouse</set>
-                 </property>
-                </widget>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_4">
+                 <item>
+                  <widget class="QLabel" name="label_54">
+                   <property name="font">
+                    <font>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>If it shows assigned but does not work, it is being used by another program.</string>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                   <property name="textInteractionFlags">
+                    <set>Qt::TextSelectableByMouse</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </item>
                <item>
                 <spacer name="verticalSpacer_22">
