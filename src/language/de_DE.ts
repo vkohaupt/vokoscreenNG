@@ -25,6 +25,21 @@
     </message>
 </context>
 <context>
+    <name>QvkCiscoFinishDialog</name>
+    <message>
+        <source>The setup was successful.</source>
+        <translation>Das Setup war erfolgreich.</translation>
+    </message>
+    <message>
+        <source>Close this window and start vokoscreenNG again.</source>
+        <translation>Schließe das Fenster  und starte vokoscreenNG erneut.</translation>
+    </message>
+    <message>
+        <source>Have fun with vokoscreenNG</source>
+        <translation>Have fun with vokoscreenNG</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -470,39 +485,39 @@
     </message>
     <message>
         <source>Automatically</source>
-        <translation type="unfinished"/>
+        <translation>Automatisch</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation type="unfinished"/>
+        <translation>Erstelle Bilder von Tabs</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation type="unfinished"/>
+        <translation>Lizenz Information</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"/>
+        <translation>Ein</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"/>
+        <translation>Aus</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation type="unfinished"/>
+        <translation>Globale Tastenkombinationen</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation type="unfinished"/>
+        <translation>Zugewiesene Tastenkombinationen.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation type="unfinished"/>
+        <translation>Tastaturkürzel nicht zugewiesen oder mehrfach zugewiesen.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation type="unfinished"/>
+        <translation>Wenn es zugewiesen anzeigt, aber nicht funktioniert, wird es von einem anderen Programm verwendet.</translation>
     </message>
 </context>
 <context>
