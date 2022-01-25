@@ -336,7 +336,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>6</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1206,6 +1206,9 @@
                     </item>
                     <item>
                      <widget class="QToolButton" name="toolButtonVP8Reset">
+                      <property name="toolTip">
+                       <string>Reset</string>
+                      </property>
                       <property name="text">
                        <string notr="true"/>
                       </property>
@@ -3082,6 +3085,9 @@
             </item>
             <item row="0" column="4" rowspan="4" alignment="Qt::AlignVCenter">
              <widget class="QToolButton" name="toolButtonHaloColorDefault">
+              <property name="toolTip">
+               <string>Reset</string>
+              </property>
               <property name="text">
                <string notr="true"/>
               </property>
@@ -3128,6 +3134,9 @@
           </item>
           <item row="8" column="8">
            <widget class="QToolButton" name="toolButtonHaloHoleDefault">
+            <property name="toolTip">
+             <string>Reset</string>
+            </property>
             <property name="text">
              <string notr="true"/>
             </property>
@@ -3210,6 +3219,9 @@
           </item>
           <item row="6" column="8">
            <widget class="QToolButton" name="toolButtonHaloDiameterDefault">
+            <property name="toolTip">
+             <string>Reset</string>
+            </property>
             <property name="text">
              <string notr="true"/>
             </property>
@@ -3358,6 +3370,9 @@
           </item>
           <item row="7" column="3">
            <widget class="QToolButton" name="toolButtonShowclickOpacityDefault">
+            <property name="toolTip">
+             <string>Reset</string>
+            </property>
             <property name="text">
              <string notr="true"/>
             </property>
@@ -3443,6 +3458,9 @@
           </item>
           <item row="8" column="3">
            <widget class="QToolButton" name="toolButtonShowclickTimeDefault">
+            <property name="toolTip">
+             <string>Reset</string>
+            </property>
             <property name="text">
              <string notr="true"/>
             </property>
@@ -3502,6 +3520,9 @@
           </item>
           <item row="6" column="3">
            <widget class="QToolButton" name="toolButtonShowclickDiameterDefault">
+            <property name="toolTip">
+             <string>Reset</string>
+            </property>
             <property name="text">
              <string notr="true"/>
             </property>
@@ -3552,6 +3573,9 @@
             </item>
             <item row="0" column="4" rowspan="4" alignment="Qt::AlignVCenter">
              <widget class="QToolButton" name="toolButtonShowclickColorDefault">
+              <property name="toolTip">
+               <string>Reset</string>
+              </property>
               <property name="text">
                <string notr="true"/>
               </property>
@@ -3601,6 +3625,9 @@
           </item>
           <item row="7" column="8">
            <widget class="QToolButton" name="toolButtonHaloOpacityDefault">
+            <property name="toolTip">
+             <string>Reset</string>
+            </property>
             <property name="text">
              <string notr="true"/>
             </property>
@@ -3982,6 +4009,9 @@
                  </item>
                  <item row="3" column="8">
                   <widget class="QToolButton" name="toolButton_shortcut_reset_magnification">
+                   <property name="toolTip">
+                    <string>Reset</string>
+                   </property>
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -4611,6 +4641,9 @@
                  </item>
                  <item row="4" column="8">
                   <widget class="QToolButton" name="toolButton_shortcut_reset_camera">
+                   <property name="toolTip">
+                    <string>Reset</string>
+                   </property>
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -4622,6 +4655,9 @@
                  </item>
                  <item row="6" column="8">
                   <widget class="QToolButton" name="toolButton_shortcut_reset_halo">
+                   <property name="toolTip">
+                    <string>Reset</string>
+                   </property>
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -5205,6 +5241,9 @@
                  </item>
                  <item row="5" column="8">
                   <widget class="QToolButton" name="toolButton_shortcut_reset_showclick">
+                   <property name="toolTip">
+                    <string>Reset</string>
+                   </property>
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -5216,6 +5255,9 @@
                  </item>
                  <item row="1" column="8">
                   <widget class="QToolButton" name="toolButton_shortcut_reset_start">
+                   <property name="toolTip">
+                    <string>Reset</string>
+                   </property>
                    <property name="text">
                     <string notr="true"/>
                    </property>
@@ -5451,6 +5493,9 @@
                  </item>
                  <item row="2" column="8">
                   <widget class="QToolButton" name="toolButton_shortcut_reset_pause">
+                   <property name="toolTip">
+                    <string>Reset</string>
+                   </property>
                    <property name="text">
                     <string notr="true"/>
                    </property>
