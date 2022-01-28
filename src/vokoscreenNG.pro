@@ -70,6 +70,8 @@ TRANSLATIONS = $$files(language/*.ts)
 QMAKE_CLEAN += $$TARGET */*~
 
 QMAKE_LFLAGS += -Wl,--as-needed
+# -rpath,\'\$$ORIGIN/lib\' is for the linux installer
+unix:QMAKE_LFLAGS += '-Wl,-rpath,\'\$$ORIGIN/lib\''
 
 unix:CONFIG += link_pkgconfig
 unix:PKGCONFIG += gstreamer-1.0 libpulse wayland-client
