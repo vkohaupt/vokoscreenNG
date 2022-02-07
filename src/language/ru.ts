@@ -28,15 +28,15 @@
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation type="unfinished"/>
+        <translation>Установка завершена успешно.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation type="unfinished"/>
+        <translation>Закройте это окно и снова запустите vokoscreenNG.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation type="unfinished"/>
+        <translation>Получайте удовольствие от vokoscreenNG</translation>
     </message>
 </context>
 <context>
@@ -57,11 +57,11 @@
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Файлового менеджера не найдено.</translation>
+        <translation>Не удалось найти диспетчер файлов.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Пожалуйста установите файловый менеджер.</translation>
+        <translation>Пожалуйста установите диспетчер файлов.</translation>
     </message>
 </context>
 <context>
@@ -72,11 +72,11 @@
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>Запись не начата, недостаточно свободного места на диске.</translation>
+        <translation>Запись не началась, недостаточно свободного места на диске.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Достигнут лимит свободного места на диске.</translation>
+        <translation>Достигнут предел свободного дискового пространства.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
@@ -103,11 +103,11 @@
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Файлового менеджера не найдено.</translation>
+        <translation>Не удалось найти диспетчер файлов.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Пожалуйста установите файловый менеджер.</translation>
+        <translation>Пожалуйста установите диспетчер файлов.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
@@ -210,15 +210,15 @@
     </message>
     <message>
         <source>Invert</source>
-        <translation>Перевернуть</translation>
+        <translation>Инвертировать</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Серый</translation>
+        <translation>Чёрно-белое в оттенках серого</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Чёрно-белое</translation>
+        <translation>Чёрно-белое двухцветное</translation>
     </message>
     <message>
         <source>Remove window frame</source>
@@ -234,7 +234,7 @@
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Настройки камеры</translation>
+        <translation>Параметры камеры</translation>
     </message>
     <message>
         <source>640x480</source>
@@ -273,7 +273,7 @@
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Время для записи:</translation>
+        <translation>Время записи:</translation>
     </message>
     <message>
         <source>Audio</source>
@@ -333,7 +333,7 @@
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Сохранять в папке:</translation>
+        <translation>Папка видео:</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
@@ -341,7 +341,7 @@
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Показать значок на верхней панели </translation>
+        <translation>Показывать значок в области уведомления</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
@@ -397,15 +397,15 @@
     </message>
     <message>
         <source>Invert</source>
-        <translation>Перевернуть</translation>
+        <translation>Инвертировать</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Серый</translation>
+        <translation>Чёрно-белое в оттенках серого</translation>
     </message>
     <message>
         <source>Send Report</source>
-        <translation>Отправить жалобу</translation>
+        <translation>Отправить сообщение об ошибке</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -421,7 +421,7 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Проиграть последнюю запись</translation>
+        <translation>Воспроизвести последнюю запись</translation>
     </message>
     <message>
         <source>Open folder</source>
@@ -433,7 +433,7 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Сворачивать окно при начале записи</translation>
+        <translation>Сворачивать окно перед началом записи</translation>
     </message>
     <message>
         <source>Starts minimized</source>
@@ -449,7 +449,7 @@
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Чёрно-белое</translation>
+        <translation>Чёрно-белое двухцветное</translation>
     </message>
     <message>
         <source>Remove window frame</source>
@@ -465,7 +465,7 @@
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Копирайт и лицензия с изображений</translation>
+        <translation>Копирайт и лицензия на использование изображений</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -473,7 +473,7 @@
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Скринкаст</translation>
+        <translation>Запись с экрана</translation>
     </message>
     <message>
         <source>Player</source>
@@ -485,46 +485,46 @@
     </message>
     <message>
         <source>Automatically</source>
-        <translation type="unfinished"/>
+        <translation>Автоматически</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation type="unfinished"/>
+        <translation>Создать изображения вкладок </translation>
     </message>
     <message>
         <source>License information</source>
-        <translation type="unfinished"/>
+        <translation>Сведения о лицензии</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"/>
+        <translation>Включить</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"/>
+        <translation>Выключить</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation type="unfinished"/>
+        <translation>Глобальные комбинации клавиш</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation type="unfinished"/>
+        <translation>Назначенные комбинации клавиш.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation type="unfinished"/>
+        <translation>Комбинация клавиш не назначена или назначена более одного раза.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation type="unfinished"/>
+        <translation>Отображение фактически не работающей комбинации клавиш в качестве использующейся означает, что она используется другой программой</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Копирайт и лицензия с изображений</translation>
+        <translation>Копирайт и лицензия на использование изображений</translation>
     </message>
 </context>
 <context>
@@ -547,7 +547,7 @@
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Весь экран</translation>
+        <translation>Во весь экран</translation>
     </message>
     <message>
         <source>Previous frame</source>

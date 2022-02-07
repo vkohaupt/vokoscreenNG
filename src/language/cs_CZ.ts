@@ -485,7 +485,7 @@
     </message>
     <message>
         <source>Automatically</source>
-        <translation type="unfinished"/>
+        <translation>Automaticky</translation>
     </message>
     <message>
         <source>Create images of tabs </source>

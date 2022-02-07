@@ -28,15 +28,15 @@
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation type="unfinished"/>
+        <translation>Налаштування пройшло успішно.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation type="unfinished"/>
+        <translation>Закрийте це вікно та знову запустіть vokoscreenNG.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation type="unfinished"/>
+        <translation>Розважайтеся з vokoscreenNG</translation>
     </message>
 </context>
 <context>
@@ -389,7 +389,7 @@
     </message>
     <message>
         <source>Folder</source>
-        <translation>Папка</translation>
+        <translation>Тека</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -397,7 +397,7 @@
     </message>
     <message>
         <source>Invert</source>
-        <translation>Відобразити</translation>
+        <translation>Перевернути</translation>
     </message>
     <message>
         <source>Gray</source>
@@ -485,35 +485,35 @@
     </message>
     <message>
         <source>Automatically</source>
-        <translation type="unfinished"/>
+        <translation>Автоматично</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation type="unfinished"/>
+        <translation>Створення зображень вкладок</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation type="unfinished"/>
+        <translation>Інформація про ліцензію</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"/>
+        <translation>УВІМК</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"/>
+        <translation>ВИМК</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation type="unfinished"/>
+        <translation>Глобальні клавішні скорочення</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation type="unfinished"/>
+        <translation>Призначені клавіші швидкого доступу.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation type="unfinished"/>
+        <translation>Скорочення клавішів не призначено або призначено більше одного разу.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
@@ -547,7 +547,7 @@
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Весь екран</translation>
+        <translation>Увесь екран</translation>
     </message>
     <message>
         <source>Previous frame</source>

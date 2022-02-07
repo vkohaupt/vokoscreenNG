@@ -28,15 +28,15 @@
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation type="unfinished"/>
+        <translation>Kurulum başarılı oldu.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation type="unfinished"/>
+        <translation>Bu pencereyi kapatın ve vokoscreenNG&apos;yi yeniden başlatın.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation type="unfinished"/>
+        <translation>vokoscreenNG ile iyi eğlenceler</translation>
     </message>
 </context>
 <context>
@@ -485,39 +485,39 @@
     </message>
     <message>
         <source>Automatically</source>
-        <translation type="unfinished"/>
+        <translation>Otomatik olarak</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation type="unfinished"/>
+        <translation>Sekmelerde resim oluşturun</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation type="unfinished"/>
+        <translation>Lisans bilgisi</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"/>
+        <translation>AÇ</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"/>
+        <translation>KAPAT</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation type="unfinished"/>
+        <translation>Genel klavye kısayolları</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation type="unfinished"/>
+        <translation>Atanan kısayol tuşları.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation type="unfinished"/>
+        <translation>Klavye kısayolu birden fazla atanmamış veya atanmamış.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation type="unfinished"/>
+        <translation>Atanmış görünüyor ancak çalışmıyorsa başka bir program tarafından kullanılıyordur.</translation>
     </message>
 </context>
 <context>
