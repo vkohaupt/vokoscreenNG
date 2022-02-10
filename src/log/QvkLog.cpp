@@ -79,7 +79,9 @@ void QvkLog::outputMessage( QtMsgType type, const QMessageLogContext &context, c
 #endif
     QString sTime = QTime::currentTime().toString();
     QString sMsg( msg );
-    sMsg.insert( 14, " " + sTime );
+    if ( !sMsg.isEmpty() ) {
+       sMsg.insert( 14, " " + sTime );
+    }
     logFile.open( QIODevice::Append | QIODevice::Text | QIODevice::Unbuffered );
     logFile.write( sMsg.toUtf8() );
     logFile.write( eol.toUtf8() );
