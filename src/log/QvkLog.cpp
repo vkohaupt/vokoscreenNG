@@ -77,11 +77,14 @@ void QvkLog::outputMessage( QtMsgType type, const QMessageLogContext &context, c
 #ifdef Q_OS_WIN
     QString eol = "\r\n";
 #endif
+    QString sTime = QTime::currentTime().toString();
+    QString sMsg( msg );
+    sMsg.insert( 14, " " + sTime );
     logFile.open( QIODevice::Append | QIODevice::Text | QIODevice::Unbuffered );
-    logFile.write( msg.toUtf8() );
+    logFile.write( sMsg.toUtf8() );
     logFile.write( eol.toUtf8() );
     logFile.close();
 
     // Output GUI
-    emit signal_newLogText( msg );
+    emit signal_newLogText( sMsg );
 }
