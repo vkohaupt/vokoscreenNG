@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
             {
                 qDebug().noquote() << global::nameOutput << arguments.at(1) << "file not exists";
                 qDebug().resetFormat().noquote() << help;
-                qDebug( " " );
+                qDebug();
                 return 1;
             }
         }

@@ -1911,11 +1911,11 @@ void QvkMainWindow::slot_Start()
     VK_Pipeline = VK_Pipeline.replace( "mix. !", "mix." );
     VK_Pipeline = VK_Pipeline.replace( "mux. !", "mux." );
 
-    qDebug( " " );
+    qDebug();
     qDebug().noquote() << global::nameOutput << "Free disk space at the beginning of the recording:" << ui->labelFreeSize->text() << "MB";
-    qDebug( " " );
+    qDebug();
     qDebug().noquote() << global::nameOutput << "Start record with:" << VK_Pipeline;
-    qDebug( " " );
+    qDebug();
     qDebug().noquote() << Pipeline_structured_output( VK_Pipeline );
 
     QByteArray byteArray = VK_Pipeline.toUtf8();

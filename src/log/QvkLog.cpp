@@ -20,7 +20,8 @@
  * --End_License--
  */
 
-#include "QvkLog.h" 
+#include "QvkLog.h"
+#include "global.h"
 
 #include <QDebug>
 #include <QStandardPaths>
@@ -80,7 +81,7 @@ void QvkLog::outputMessage( QtMsgType type, const QMessageLogContext &context, c
     QString sTime = QTime::currentTime().toString();
     QString sMsg( msg );
     if ( !sMsg.isEmpty() ) {
-       sMsg.insert( 14, " " + sTime );
+       sMsg.insert( global::nameOutput.count(), " " + sTime );
     }
     logFile.open( QIODevice::Append | QIODevice::Text | QIODevice::Unbuffered );
     logFile.write( sMsg.toUtf8() );

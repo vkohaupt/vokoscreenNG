@@ -107,12 +107,12 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
         {
             case QMediaPlayer::NoError:
             {
-               qDebug() << global::nameOutput + " " + "[Player]" + " " + "No error has occurred.";
+               qDebug().noquote() << global::nameOutput + " " + "[Player]" + " " + "No error has occurred.";
                break;
             }
             case QMediaPlayer::ResourceError:
             {
-               qDebug() << global::nameOutput + " " + "[Player]" + " " + "To play this video a codec is needed. "
+               qDebug().noquote() << global::nameOutput + " " + "[Player]" + " " + "To play this video a codec is needed. "
                                                                          "Please install a codec pack.";
                QMessageBox msgBox( this );
                msgBox.setText( "To play this video a codec is needed.\n"
@@ -125,7 +125,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
             }
             case QMediaPlayer::FormatError:
             {
-               qDebug() << global::nameOutput + " " + "[Player]" + " " + "The format of a media resource isn't (fully) supported. Playback may still be possible, but without an audio or video component.";
+               qDebug().noquote() << global::nameOutput + " " + "[Player]" + " " + "The format of a media resource isn't (fully) supported. Playback may still be possible, but without an audio or video component.";
                QMessageBox msgBox( this );
                msgBox.setText( "The format of a media resource isn't (fully) supported.\n"
                                "Playback may still be possible, but without an audio or video component." );
@@ -136,7 +136,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
             }
             case QMediaPlayer::NetworkError:
             {
-               qDebug() << global::nameOutput + " " + "[Player]" + " " + "A network error occurred.";
+               qDebug().noquote() << global::nameOutput + " " + "[Player]" + " " + "A network error occurred.";
                QMessageBox msgBox( this );
                msgBox.setText( "A network error occurred." );
                msgBox.setWindowTitle( global::name + " " + global::version );
@@ -146,7 +146,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
             }
             case QMediaPlayer::AccessDeniedError:
             {
-               qDebug() << global::nameOutput + " " + "[Player]" + " " + "There are not the appropriate permissions to play a media resource.";
+               qDebug().noquote() << global::nameOutput + " " + "[Player]" + " " + "There are not the appropriate permissions to play a media resource.";
                QMessageBox msgBox( this );
                msgBox.setText( "There are not the appropriate permissions to play a media resource." );
                msgBox.setWindowTitle( global::name + " " + global::version );
@@ -156,7 +156,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
             }
             case QMediaPlayer::ServiceMissingError:
             {
-               qDebug() << global::nameOutput + " " + "[Player]" + " " + "A valid playback service was not found, playback cannot proceed.";
+               qDebug().noquote() << global::nameOutput + " " + "[Player]" + " " + "A valid playback service was not found, playback cannot proceed.";
                QMessageBox msgBox( this );
                msgBox.setText( "A valid playback service was not found, playback cannot proceed." );
                msgBox.setWindowTitle( global::name + " " + global::version );
@@ -166,7 +166,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
             }
             case QMediaPlayer::MediaIsPlaylist:
             {
-               qDebug() << global::nameOutput + " " + "[Player]" + " " + "QMediaPlayer::MediaIsPlaylist";
+               qDebug().noquote() << global::nameOutput + " " + "[Player]" + " " + "QMediaPlayer::MediaIsPlaylist";
                QMessageBox msgBox( this );
                msgBox.setText( "QMediaPlayer::MediaIsPlaylist" );
                msgBox.setWindowTitle( global::name + " " + global::version );
@@ -476,7 +476,7 @@ void QvkPlayer::slot_durationChanged( qint64 value )
 
 void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
 {
-    qDebug() << "[vokoplayer]" << state;
+    qDebug().noquote() << global::nameOutput + " " + "[Player]" << state;
 
     if ( state == QMediaPlayer::StoppedState )
     {
