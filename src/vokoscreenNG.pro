@@ -74,7 +74,9 @@ QMAKE_LFLAGS += -Wl,--as-needed
 unix:QMAKE_LFLAGS += '-Wl,-rpath,\'\$$ORIGIN/lib\''
 
 unix:CONFIG += link_pkgconfig
-unix:PKGCONFIG += gstreamer-1.0 libpulse wayland-client
+unix:PKGCONFIG += gstreamer-1.0
+unix:PKGCONFIG += libpulse
+unix:PKGCONFIG += wayland-client
 unix:LIBS += -lpulse-simple
 unix:LIBS += -lX11
 
