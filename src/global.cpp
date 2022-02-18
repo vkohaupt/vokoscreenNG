@@ -30,10 +30,10 @@ namespace global
     int showclickCounter = 0;
 
 #ifdef Q_OS_LINUX
-    QString version = "3.2.0-beta-03";
+    QString version = "3.2.0-beta-04";
 #endif
 
 #ifdef Q_OS_WIN
-    QString version = "3.2.0-beta-03";
+    QString version = "3.2.0-beta-04";
 #endif
 }
