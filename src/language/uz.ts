@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="uz">
+<TS version="2.1" language="uz_UZ">
 <context>
     <name>QvkAudioController</name>
     <message>
@@ -19,7 +19,7 @@
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Oynaga o&apos;tish</translation>
+        <translation>Oynaga oʻtish</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
@@ -63,7 +63,7 @@
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Iltimos, fayl boshqaruvchisini o&apos;rnating.</translation>
+        <translation>Iltimos, fayl boshqaruvchisini oʻrnating.</translation>
     </message>
 </context>
 <context>
@@ -74,30 +74,30 @@
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>Запись не началась, недостаточно свободного места на диске.</translation>
+        <translation>Yozish boshlanmadi, diskda boʻsh joy yetarli emas.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Достигнут предел свободного дискового пространства.</translation>
+        <translation>Disk boʻsh maydoni chekloviga yetdi.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Предел свободного дискового пространства</translation>
+        <translation>Diskdagi boʻsh joy cheklovi</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Мегабайт</translation>
+        <translation>Megabayt</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Запись остановлена, недостаточно свободного места на диске.</translation>
+        <translation>Yozuv toʻxtatildi, diskda boʻsh joy yetarli emas.</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>To&apos;liq ekran</translation>
+        <translation>Toʻliq ekran</translation>
     </message>
     <message>
         <source>Window</source>
@@ -109,7 +109,7 @@
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Iltimos, fayl boshqaruvchisini o&apos;rnating.</translation>
+        <translation>Iltimos, fayl boshqaruvchisini oʻrnating.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
@@ -150,7 +150,7 @@
     </message>
     <message>
         <source>Stop</source>
-        <translation>To&apos;xtatish</translation>
+        <translation>Toʻxtatish</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -181,7 +181,7 @@
     </message>
     <message>
         <source>Stop</source>
-        <translation>To&apos;xtatish</translation>
+        <translation>Toʻxtatish</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -251,7 +251,7 @@
     </message>
     <message>
         <source>Reset</source>
-        <translation>Qayta o&apos;rnatish</translation>
+        <translation>Qayta oʻrnatish</translation>
     </message>
     <message>
         <source>Magnification</source>
@@ -263,11 +263,11 @@
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Video o&apos;lchami:</translation>
+        <translation>Video oʻlchami:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Bo&apos;sh disk maydoni:</translation>
+        <translation>Boʻsh disk maydoni:</translation>
     </message>
     <message>
         <source>Information</source>
@@ -319,7 +319,7 @@
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Yozishni to&apos;xtatish</translation>
+        <translation>Yozishni toʻxtatish</translation>
     </message>
     <message>
         <source>Hours</source>
@@ -339,11 +339,11 @@
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Diskdagi bo&apos;sh joy cheklovi</translation>
+        <translation>Diskdagi boʻsh joy cheklovi</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Treyda ko&apos;rsatish</translation>
+        <translation>Treyda koʻrsatish</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
@@ -375,7 +375,7 @@
     </message>
     <message>
         <source>Stop</source>
-        <translation>To&apos;xtatish</translation>
+        <translation>Toʻxtatish</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -503,7 +503,7 @@
     </message>
     <message>
         <source>OFF</source>
-        <translation>O&apos;chirish</translation>
+        <translation>Oʻchirish</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
@@ -515,11 +515,11 @@
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Klaviatura yorlig&apos;i tayinlanmagan yoki bir necha marta tayinlangan.</translation>
+        <translation>Klaviatura yorligʻi tayinlanmagan yoki bir necha marta tayinlangan.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Agar u tayinlanganligini ko&apos;rsatsa, lekin ishlamasa, u boshqa dastur tomonidan foydalanilmoqda.</translation>
+        <translation>Agar u tayinlanganligini koʻrsatsa, lekin ishlamasa, u boshqa dastur tomonidan foydalanilmoqda.</translation>
     </message>
 </context>
 <context>
@@ -549,7 +549,7 @@
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>To&apos;liq ekran</translation>
+        <translation>Toʻliq ekran</translation>
     </message>
     <message>
         <source>Previous frame</source>
