@@ -1,5 +1,0 @@
-
-
-Testen ob das mit dem High Profil funktioniert.
-Mit mediainfo kontrollieren.
-https://gstreamer-bugs.narkive.com/I4PXV3KV/bug-757419-new-openh264enc-add-support-for-cabac-entropy-coding
