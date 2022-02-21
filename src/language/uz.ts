@@ -1,411 +1,411 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ru">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="uz">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Выберите одно или несколько устройств</translation>
+        <translation>Bir yoki bir nechta qurilmani tanlang</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
-        <translation>Камера</translation>
+        <translation>Kamera</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Переключиться в режим окна</translation>
+        <translation>Oynaga oʻtish</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Переключиться в полноэкранный режим</translation>
+        <translation>Toʻliq ekranga oʻtish</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Установка завершена успешно.</translation>
+        <translation>Sozlash muvaffaqiyatli boʻldi.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Закройте это окно и снова запустите vokoscreenNG.</translation>
+        <translation>Ushbu oynani yoping va vokoscreenNG ni qayta ishga tushiring.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Получайте удовольствие от vokoscreenNG</translation>
+        <translation>VokoscreenNG bilan zavqlaning</translation>
     </message>
 </context>
 <context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Выберите одно или несколько устройств</translation>
+        <translation>Bir yoki bir nechta qurilmani tanlang</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Справка</translation>
+        <translation>Yordam</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Файловый менеджер не найден.</translation>
+        <translation>Hech qanday fayl boshqaruvchisi topilmadi.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Пожалуйста установите файловый менеджер.</translation>
+        <translation>Iltimos, fayl boshqaruvchisini oʻrnating.</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Предупреждение</translation>
+        <translation>Ogohlantirish</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>Запись не началась, недостаточно свободного места на диске.</translation>
+        <translation>Yozish boshlanmadi, diskda boʻsh joy yetarli emas.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Достигнут предел свободного дискового пространства.</translation>
+        <translation>Boʻsh disk hajmi chekloviga yetdi.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Предел свободного дискового пространства</translation>
+        <translation>Boʻsh disk hajmi cheklovi</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Мегабайт</translation>
+        <translation>Megabayt</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Запись остановлена, недостаточно свободного места на диске.</translation>
+        <translation>Yozish toʻxtatildi, diskda boʻsh joy yetarli emas.</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Весь экран</translation>
+        <translation>Toʻliq ekran</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Окно</translation>
+        <translation>Oyna</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Файловый менеджер не найден.</translation>
+        <translation>Hech qanday fayl boshqaruvchisi topilmadi.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Пожалуйста установите файловый менеджер.</translation>
+        <translation>Iltimos, fayl boshqaruvchisini oʻrnating.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Исходный код</translation>
+        <translation>Manba kodi</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Веб-сайт</translation>
+        <translation>Uy sahifasi</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Переводы</translation>
+        <translation>Tarjimalar</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Пожертвовать</translation>
+        <translation>Xayriya qilish</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Выберите одно или несколько устройств</translation>
+        <translation>Bir yoki bir nechta qurilmani tanlang</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Область экрана</translation>
+        <translation>Maydon</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Начать</translation>
+        <translation>Boshlash</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Остановить</translation>
+        <translation>Toʻxtatish</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Приостановить</translation>
+        <translation>Toʻxtatib turish</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Продолжить</translation>
+        <translation>Davom etish</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Выход</translation>
+        <translation>Chiqish</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Камера</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Лупа</translation>
+        <translation>Kattalashtirish</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Начать</translation>
+        <translation>Boshlash</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Остановить</translation>
+        <translation>Toʻxtatish</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Приостановить</translation>
+        <translation>Toʻxtatib turish</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Продолжить</translation>
+        <translation>Davom etish</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Выход</translation>
+        <translation>Chiqish</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Диалоговое окно</translation>
+        <translation>Muloqot</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Отразить по горизонтали</translation>
+        <translation>Gorizontal aylantirish</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Отразить по вертикали</translation>
+        <translation>Vertikal aylantirish</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Инвертировать</translation>
+        <translation>Teskari aylantirish</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Чёрно-белое в оттенках серого</translation>
+        <translation>Kulrang</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Чёрно-белое двухцветное</translation>
+        <translation>Qora va oq</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Убрать рамку окна</translation>
+        <translation>Oyna ramkasini olib tashlash</translation>
     </message>
     <message>
         <source>160x120</source>
-        <translation>160х120</translation>
+        <translation>160x120</translation>
     </message>
     <message>
         <source>320x240</source>
-        <translation>320х240</translation>
+        <translation>320x240</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Параметры камеры</translation>
+        <translation>Kamera sozlamalari</translation>
     </message>
     <message>
         <source>640x480</source>
-        <translation>640х480</translation>
+        <translation>640x480</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Область экрана</translation>
+        <translation>Maydon</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Сбросить</translation>
+        <translation>Qayta oʻrnatish</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Лупа</translation>
+        <translation>Kattalashtirish</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Обратный отсчёт</translation>
+        <translation>Ortga sanash</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Размер видео:</translation>
+        <translation>Video oʻlchami:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Свободное место на диске:</translation>
+        <translation>Diskdagi boʻsh joy:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Информация</translation>
+        <translation>Ma&apos;lumot</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Время записи:</translation>
+        <translation>Yozish vaqti:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Звук</translation>
+        <translation>Audio</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Кадры</translation>
+        <translation>Kadrlar</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Видеокодек</translation>
+        <translation>Videokodek</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Формат</translation>
+        <translation>Format</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Звуковой кодек</translation>
+        <translation>Audiokodek</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>Качество</translation>
+        <translation>Sifat</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Не записывать указатель мыши</translation>
+        <translation>Sichqoncha kursori yozilmasin</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Час</translation>
+        <translation>Soat</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Минута</translation>
+        <translation>Daqiqa</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Запустить таймер</translation>
+        <translation>Taymerni ishga tushirish</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Остановить запись после</translation>
+        <translation>Yozishni toʻxtatish</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Часов</translation>
+        <translation>Soat</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Минут</translation>
+        <translation>Daqiqa</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Секунд</translation>
+        <translation>Soniya</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Путь к видео:</translation>
+        <translation>Video yo‘li</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Предел свободного дискового пространства</translation>
+        <translation>Boʻsh disk hajmi cheklovi</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Показывать значок в области уведомления</translation>
+        <translation>Treyda koʻrsatish </translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Секунд до начала записи</translation>
+        <translation>Yozishdan oldin soniya kutish </translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Проверить обновления</translation>
+        <translation>Yangilanishlarni qidirish</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Справка</translation>
+        <translation>Yordam</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Видео</translation>
+        <translation>Video</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Доступно</translation>
+        <translation>Mavjud</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Недоступно</translation>
+        <translation>Mavjud emas</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Начать</translation>
+        <translation>Boshlash</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Остановить</translation>
+        <translation>Toʻxtatish</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Приостановить</translation>
+        <translation>Toʻxtatib turish</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Продолжить</translation>
+        <translation>Davom etish</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Воспроизвести</translation>
+        <translation>Ijro etish</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Папка</translation>
+        <translation>Jild</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Камера</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Инвертировать</translation>
+        <translation>Teskari aylantirish</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Чёрно-белое в оттенках серого</translation>
+        <translation>Kulrang</translation>
     </message>
     <message>
         <source>Send Report</source>
-        <translation>Отправить сообщение об ошибке</translation>
+        <translation>Hisobot yuborish</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -421,11 +421,11 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Воспроизвести последнюю запись</translation>
+        <translation>Oxirgi yozuvni ijro etish</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Открыть папку</translation>
+        <translation>Jildni ochish</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
@@ -433,137 +433,137 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Сворачивать окно перед началом записи</translation>
+        <translation>Yozish boshlanganda minimallashtirish</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Запускать свёрнутым</translation>
+        <translation>Minimallashtirilgan holda boshlanadi</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Отразить по горизонтали</translation>
+        <translation>Gorizontal aylantirish</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Отразить по вертикали</translation>
+        <translation>Vertikal aylantirish</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Чёрно-белое двухцветное</translation>
+        <translation>Qora va oq</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Убрать рамку окна</translation>
+        <translation>Oyna ramkasini olib tashlash</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Пожертвовать</translation>
+        <translation>Xayriya qilish</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Сбросить все настройки при следующем запуске</translation>
+        <translation>Keyingi ishga tushirishda barcha sozlamalarni tiklash</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Авторское право и лицензия на использование изображений</translation>
+        <translation>Rasmlardan mualliflik huquqi va litsenziya</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Мегабайт</translation>
+        <translation>Megabayt</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Запись с экрана</translation>
+        <translation>Ekran yozuvi</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Проигрыватель</translation>
+        <translation>Pleyer</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Журнал</translation>
+        <translation>Jurnal</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Автоматически</translation>
+        <translation>Avtomatik ravishda</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Создать изображения вкладок </translation>
+        <translation>Yorliqlar tasvirlarini yaratish</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Сведения о лицензии</translation>
+        <translation>Litsenziya haqida ma&apos;lumot</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>Включить</translation>
+        <translation>Yoqilgan</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>Выключить</translation>
+        <translation>Oʻchirilgan</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Глобальные комбинации клавиш</translation>
+        <translation>Global klaviatura yorliqlari</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Назначенные комбинации клавиш.</translation>
+        <translation>Belgilangan yorliq tugmalari.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Комбинация клавиш не назначена или назначена более одного раза.</translation>
+        <translation>Klaviatura yorligʻi tayinlanmagan yoki bir necha marta tayinlangan. </translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Отображение фактически не работающей комбинации клавиш в качестве использующейся означает, что она используется другой программой</translation>
+        <translation>Agar u tayinlanganligini koʻrsatsa, lekin ishlamasa, u boshqa dastur tomonidan foydalanilmoqda.</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Авторское право и лицензия на использование изображений</translation>
+        <translation>Rasmlardan mualliflik huquqi va litsenziya</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Воспроизвести</translation>
+        <translation>Ijro etish</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Приостановить</translation>
+        <translation>Toʻxtatib turish</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Остановить</translation>
+        <translation>Toʻxtatish</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Открыть файл</translation>
+        <translation>Faylni ochish</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Во весь экран</translation>
+        <translation>Toʻliq ekran</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Предыдущий кадр</translation>
+        <translation>Oldingi kadr</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Следующий кадр</translation>
+        <translation>Keyingi kadr</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Без звука</translation>
+        <translation>Ovozni o‘chirish</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Переместить меню</translation>
+        <translation>Menyuni ko‘chirish</translation>
     </message>
 </context>
 </TS>
