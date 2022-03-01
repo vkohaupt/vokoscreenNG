@@ -219,8 +219,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << gst_version_string();
 #ifdef Q_OS_LINUX
     qDebug().noquote() << global::nameOutput << "PulseAudio library version:" << pa_get_library_version();
-    qDebug().noquote() << global::nameOutput << "Virtual Maschine:" << vkVirtual->isVirtualMaschine();
 #endif
+    qDebug().noquote() << global::nameOutput << "Virtual Maschine:" << vkVirtual->isVirtualMaschine();
     qDebug().noquote() << global::nameOutput << "Operating system:" << QSysInfo::prettyProductName();
     qDebug().noquote() << global::nameOutput << "KernelVersion:"  << QSysInfo::kernelVersion();
     qDebug().noquote() << global::nameOutput << "CPU Architecture:" << QSysInfo::currentCpuArchitecture();
