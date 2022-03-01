@@ -29,6 +29,24 @@ QString QvkVirtual::isVirtualMaschine()
 #endif
 
 
+#ifdef Q_OS_WIN
+QString QvkVirtual::isVirtualMaschine()
+{
+    QString maschine = "Nativ";
+
+    QProcess process;
+    process.setProcessChannelMode( QProcess::MergedChannels );
+    process.start( "wmic", QStringList() << "computersystem" << "get" << "manufacturer,name" );
+
+    if ( process.waitForFinished( 30000 ) )
+    {
+        QString text( process.readAll() );
+        maschine = text.trimmed();
+    }
+
+    return maschine;
+}
+#endif
 
 /*
 QProcess wmic;
