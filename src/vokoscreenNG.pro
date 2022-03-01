@@ -182,3 +182,6 @@ include(dirDialog/dirDialog.pri)
 # File Dialog
 include(fileDialog/fileDialog.pri)
 
+# Virtual Maschine
+include(virtual/virtual.pri)
+
