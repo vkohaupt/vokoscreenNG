@@ -51,8 +51,15 @@ QvkLog::~QvkLog()
 
 void QvkLog::outputMessage( QtMsgType type, const QMessageLogContext &context, const QString &msg )
 {
+    // Insert timestamp
+    QString sTime = QTime::currentTime().toString();
+    QString sMsg( msg );
+    if ( !sMsg.isEmpty() ) {
+        sMsg.prepend( sTime + " " ) ;
+    }
+
     // Output terminal
-    QByteArray localMsg = msg.toLocal8Bit();
+    QByteArray localMsg = sMsg.toLocal8Bit();
     switch (type) {
     case QtDebugMsg:
         fprintf( stderr, "%s\n", localMsg.constData() );
@@ -78,11 +85,6 @@ void QvkLog::outputMessage( QtMsgType type, const QMessageLogContext &context, c
 #ifdef Q_OS_WIN
     QString eol = "\r\n";
 #endif
-    QString sTime = QTime::currentTime().toString();
-    QString sMsg( msg );
-    if ( !sMsg.isEmpty() ) {
-       sMsg.insert( global::nameOutput.count(), " " + sTime );
-    }
     logFile.open( QIODevice::Append | QIODevice::Text | QIODevice::Unbuffered );
     logFile.write( sMsg.toUtf8() );
     logFile.write( eol.toUtf8() );
