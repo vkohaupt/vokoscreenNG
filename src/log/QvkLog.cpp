@@ -85,9 +85,9 @@ void QvkLog::outputMessage( QtMsgType type, const QMessageLogContext &context, c
 #ifdef Q_OS_WIN
     QString eol = "\r\n";
 #endif
-    logFile.open( QIODevice::Append | QIODevice::Text | QIODevice::Unbuffered );
-    logFile.write( sMsg.toUtf8() );
-    logFile.write( eol.toUtf8() );
+    logFile.open( QIODevice::WriteOnly | QIODevice::Append );
+    QTextStream stream( &logFile );
+    stream << sMsg << eol;
     logFile.close();
 
     // Output GUI
