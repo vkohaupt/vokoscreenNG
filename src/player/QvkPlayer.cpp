@@ -410,7 +410,9 @@ void QvkPlayer::slot_play()
 {
     show();
     mediaPlayer->play();
-    parentMainWindow->setWindowTitle( mediaPlayer->currentMedia().request().url().toString() + " - " + oldWindowTitel );
+    QUrl url( mediaPlayer->currentMedia().request().url() );
+    QString filename = url.fileName();
+    parentMainWindow->setWindowTitle( filename + " - " + oldWindowTitel );
 }
 
 
