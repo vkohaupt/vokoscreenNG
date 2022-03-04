@@ -32,6 +32,8 @@ QString QvkVirtual::isVirtualMaschine()
 #ifdef Q_OS_WIN
 QString QvkVirtual::isVirtualMaschine()
 {
+    QString maschine = "In progress, not working. Possibly in a next release.";
+/*
     QString maschine = "Nativ";
 
     QProcess process;
@@ -43,7 +45,7 @@ QString QvkVirtual::isVirtualMaschine()
         QString text( process.readAll() );
         maschine = text.trimmed();
     }
-
+*/
     return maschine;
 }
 #endif
