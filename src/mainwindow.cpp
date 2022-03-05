@@ -1883,7 +1883,7 @@ void QvkMainWindow::slot_Start()
             #endif
 
             #ifdef Q_OS_WIN
-                if ( vkAudioController->radioButtonDirectSound->isCheckable() )
+                if ( vkAudioController->radioButtonDirectSound->isChecked() )
                 {
                     VK_PipelineList << QString( "directsoundsrc device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(x) + "'" );
                     VK_PipelineList << "audioconvert";
