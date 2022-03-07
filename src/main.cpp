@@ -132,12 +132,14 @@ int main(int argc, char *argv[])
         qputenv( "GST_REGISTRY_1_0", pathRegistry.toUtf8() );
 
         /*
-        //Environment variables for debugging
-        qputenv( "GST_DEBUG", "4");
-        QByteArray envPathProfile;
-        envPathProfile.append( pathProfile.path() + "/GST_Error.txt" );
-        qputenv( "GST_DEBUG_FILE", envPathProfile );
+        QString debugLevel = "4";
+        qputenv( "GST_DEBUG", debugLevel.toUtf8() );
+        QString debugPathProfile;
+        debugPathProfile.append( pathProfile );
+        debugPathProfile.append( "/GST-Debuglevel-" + debugLevel + ".txt" );
+        qputenv( "GST_DEBUG_FILE", debugPathProfile.toUtf8() );
         */
+
 #endif
 
         gst_init (&argc, &argv);
