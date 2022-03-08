@@ -216,7 +216,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_start_clicked( bool value )
 
         QString shortcut;
         if ( ui->checkBox_shortcut_start_strg->isChecked() ) {
-            shortcut.append( "+STRG" );
+            shortcut.append( "+CTRL" );
         }
         if ( ui->checkBox_shortcut_start_shift->isChecked() ) {
             shortcut.append( "+SHIFT" );
@@ -274,7 +274,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_pause_clicked( bool value )
 
         QString shortcut;
         if ( ui->checkBox_shortcut_pause_strg->isChecked() ) {
-            shortcut.append( "+STRG" );
+            shortcut.append( "+CTRL" );
         }
         if ( ui->checkBox_shortcut_pause_shift->isChecked() ) {
             shortcut.append( "+SHIFT" );
@@ -332,7 +332,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_magnification_clicked( bool value
 
         QString shortcut;
         if ( ui->checkBox_shortcut_magnification_strg->isChecked() ) {
-            shortcut.append( "+STRG" );
+            shortcut.append( "+CTRL" );
         }
         if ( ui->checkBox_shortcut_magnification_shift->isChecked() ) {
             shortcut.append( "+SHIFT" );
@@ -389,7 +389,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_camera_clicked( bool value )
 
         QString shortcut;
         if ( ui->checkBox_shortcut_camera_strg->isChecked() ) {
-            shortcut.append( "+STRG" );
+            shortcut.append( "+CTRL" );
         }
         if ( ui->checkBox_shortcut_camera_shift->isChecked() ) {
             shortcut.append( "+SHIFT" );
@@ -445,7 +445,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_showclick_clicked( bool value )
 
         QString shortcut;
         if ( ui->checkBox_shortcut_showclick_strg->isChecked() ) {
-            shortcut.append( "+STRG" );
+            shortcut.append( "+CTRL" );
         }
         if ( ui->checkBox_shortcut_showclick_shift->isChecked() ) {
             shortcut.append( "+SHIFT" );
@@ -501,7 +501,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_halo_clicked( bool value )
 
         QString shortcut;
         if ( ui->checkBox_shortcut_halo_strg->isChecked() ) {
-            shortcut.append( "+STRG" );
+            shortcut.append( "+CTRL" );
         }
         if ( ui->checkBox_shortcut_halo_shift->isChecked() ) {
             shortcut.append( "+SHIFT" );
