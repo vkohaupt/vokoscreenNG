@@ -37,4 +37,5 @@ ui_*.h
 .*
 !.tx
 !.gitignore
+!.github
 *~
