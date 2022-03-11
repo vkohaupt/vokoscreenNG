@@ -90,6 +90,9 @@ void QvkAudioController::getAllDevices()
             labelText->setText( "No device found for audio recording." );
             ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter );
             ui->verticalLayoutAudioDevices->addWidget( labelText );
+
+            QvkPulseAudioWatcher *vkPulseAudioWatcher = new QvkPulseAudioWatcher( ui );
+            vkPulseAudioWatcher->start_monitor();
         }
     } else {
         QLabel *label = new QLabel();
@@ -102,6 +105,9 @@ void QvkAudioController::getAllDevices()
         labelText->setText( "Please install or start Pulseaudio" );
         ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter );
         ui->verticalLayoutAudioDevices->addWidget( labelText );
+
+        QvkPulseAudioWatcher *vkPulseAudioWatcher = new QvkPulseAudioWatcher( ui );
+        vkPulseAudioWatcher->start_monitor();
     }
 
     slot_audioDeviceSelected();

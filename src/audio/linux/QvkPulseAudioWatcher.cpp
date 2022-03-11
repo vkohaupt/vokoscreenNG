@@ -22,6 +22,7 @@
 
 #include "QvkPulseAudioWatcher.h"
 #include "QvkPulseAudioDevices.h"
+#include "QvkPulseAudioServer.h"
 #include "global.h"
 
 #include <QDebug>
@@ -134,7 +135,41 @@ void QvkPulseAudioWatcher::slot_update()
         slot_audioDeviceSelected();
     }
 
-    if ( list.empty() )
+    if ( list.empty() and ( QvkPulseAudioServer::isAvailable() == false ) )
+    {
+        // Remove SpacerItem
+        for (int i = 0; i < ui->verticalLayoutAudioDevices->count(); ++i)
+        {
+            QLayoutItem *layoutItem = ui->verticalLayoutAudioDevices->itemAt(i);
+            if ( layoutItem->spacerItem() )
+            {
+                ui->verticalLayoutAudioDevices->removeItem( layoutItem );
+                delete layoutItem;
+                --i;
+            }
+        }
+
+        QList<QLabel *> deleteLabel = ui->verticalLayoutAudioDevices->findChildren<QLabel *>();
+        for ( int x = 0; x < deleteLabel.count(); x ++ )
+        {
+            delete deleteLabel.at(x);
+        }
+
+        QLabel *label = new QLabel();
+        label->setText( "PulseAudio not found\n" );
+        label->setAlignment( Qt::AlignCenter );
+        ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter );
+        ui->verticalLayoutAudioDevices->addWidget( label );
+
+        QLabel *labelText = new QLabel();
+        labelText->setText( "Please install or start Pulseaudio" );
+        ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter );
+        ui->verticalLayoutAudioDevices->addWidget( labelText );
+
+        slot_audioDeviceSelected();
+    }
+
+    if ( list.empty() and ( QvkPulseAudioServer::isAvailable() == true ) )
     {
         // Remove SpacerItem
         for (int i = 0; i < ui->verticalLayoutAudioDevices->count(); ++i)
@@ -167,6 +202,7 @@ void QvkPulseAudioWatcher::slot_update()
 
         slot_audioDeviceSelected();
     }
+
 }
 
 
