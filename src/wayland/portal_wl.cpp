@@ -83,7 +83,7 @@ void Portal_wl::requestScreenSharing( int value, int mouseOnOff )
 
     QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall( message );
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher( pendingCall);
-    connect( watcher, &QDBusPendingCallWatcher::finished, [this] (QDBusPendingCallWatcher *watcher )
+    connect( watcher, &QDBusPendingCallWatcher::finished, this, [=] (QDBusPendingCallWatcher *watcher )
     {
         QDBusPendingReply<QDBusObjectPath> reply = *watcher;
         if ( reply.isError() ) {
@@ -130,7 +130,7 @@ void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap 
 
     QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pendingCall);
-    connect(watcher, &QDBusPendingCallWatcher::finished, [this] (QDBusPendingCallWatcher *watcher) {
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] (QDBusPendingCallWatcher *watcher) {
         QDBusPendingReply<QDBusObjectPath> reply = *watcher;
         if (reply.isError()) {
             qWarning() << "Couldn't get reply";
@@ -169,7 +169,7 @@ void Portal_wl::slot_gotSelectSourcesResponse(uint response, const QVariantMap &
 
     QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pendingCall);
-    connect(watcher, &QDBusPendingCallWatcher::finished, [this] (QDBusPendingCallWatcher *watcher) {
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] (QDBusPendingCallWatcher *watcher) {
         QDBusPendingReply<QDBusObjectPath> reply = *watcher;
         if (reply.isError()) {
             qWarning() << "Couldn't get reply";
