@@ -100,9 +100,14 @@ void QvkCiscoOpenh264Controller::slot_downloadProgress( qint64 downloadedSize, q
 void QvkCiscoOpenh264Controller::slot_closeWaitDialog()
 {
     vkCiscoWaitDialog->close();
+
     ui->tabWidgetSideBar->show();
     ui->tabWidgetSideBar->repaint();
     ui->tabWidgetSideBar->update();
+
+    ui->widgetSidbar->show();
+    ui->widgetSidbar->repaint();
+    ui->widgetSidbar->update();
 }
 
 
