@@ -70,7 +70,7 @@ void QvkHalo::createSpezialSlider()
     ui->horizontalLayoutHaloHole->insertWidget( 0, vkSpezialSliderHole );
     vkSpezialSliderHole->setObjectName( "sliderhaloHole" );
     vkSpezialSliderHole->setTracking( true );
-    vkSpezialSliderHole->setMinimum( 5 );
+    vkSpezialSliderHole->setMinimum( 20 );
     vkSpezialSliderHole->setMaximum( 40 );
     vkSpezialSliderHole->setValue( 30 ); // This value must be greater than the holeDefault in order to be changed after the connect
     vkSpezialSliderHole->setShowValue( false );
