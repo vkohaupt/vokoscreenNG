@@ -24,7 +24,6 @@
 #include "QvkDirectSoundController.h"
 
 #include <QAudioDeviceInfo>
-#include <QSpacerItem>
 #include <QPainter>
 #include <QDebug>
 
@@ -80,17 +79,6 @@ void QvkDirectSoundController::init()
 
 void QvkDirectSoundController::getAllDevices()
 {
-    int count = ui->verticalLayoutAudioDevices->count();
-    for ( int i = 0; i < count; ++i )
-    {
-        QLayoutItem *layoutItem = ui->verticalLayoutAudioDevices->itemAt(i);
-        if ( layoutItem->spacerItem() )
-        {
-            ui->verticalLayoutAudioDevices->removeItem( layoutItem );
-            delete layoutItem;
-        }
-    }
-
     QList<QLabel *> listLabel = ui->scrollAreaAudioDevice->findChildren<QLabel *>();
     for ( int i = 0; i < listLabel.count(); i++ )
     {
@@ -109,15 +97,13 @@ void QvkDirectSoundController::getAllDevices()
             checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( i ) );
             checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
             checkboxAudioDevice->setAutoExclusive( false );
-            ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft );
+            ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
             qDebug().noquote() << global::nameOutput << "[Audio DirectSound] found device:" << list.at(i).deviceName();
 
             connect( checkboxAudioDevice, SIGNAL(clicked(bool)),this,SLOT(slot_audioDeviceSelected() ) );
         }
         qDebug();
-        QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
-        ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
     }
     else
     {
@@ -169,6 +155,13 @@ void QvkDirectSoundController::slot_pluggedInOutDevice( QString string )
 
     if ( header == "[Audio-device-added]" )
     {
+        QList<QLabel *> listLabel = ui->scrollAreaAudioDevice->findChildren<QLabel *>();
+        for ( int i = 0; i < listLabel.count(); i++ )
+        {
+            ui->verticalLayoutAudioDevices->removeWidget( listLabel.at(i) );
+            delete listLabel.at(i);
+        }
+
         QCheckBox *checkboxAudioDevice = new QCheckBox();
         connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
         checkboxAudioDevice->setText( name );
@@ -177,7 +170,8 @@ void QvkDirectSoundController::slot_pluggedInOutDevice( QString string )
         checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( listAudioDevices.count() ) );
         checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
         checkboxAudioDevice->setAutoExclusive( false );
-        ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
+        ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
+        ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice ); // Besser ein Add ?????????????????????????????
     }
 
     if ( header == "[Audio-device-removed]" )
@@ -188,8 +182,23 @@ void QvkDirectSoundController::slot_pluggedInOutDevice( QString string )
             if ( listAudioDevices.at(i)->accessibleName() == device )
             {
                 delete listAudioDevices.at(i);
+                listAudioDevices.removeAt(i);
             }
         }
         slot_audioDeviceSelected();
+
+        if ( listAudioDevices.empty() )
+        {
+            QLabel *label = new QLabel();
+            label->setText( "DirectSound\n" );
+            label->setAlignment( Qt::AlignCenter );
+            ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter );
+            ui->verticalLayoutAudioDevices->addWidget( label );
+
+            QLabel *labelText = new QLabel();
+            labelText->setText( "No device found for audio recording." );
+            ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter );
+            ui->verticalLayoutAudioDevices->addWidget( labelText );
+        }
     }
 }
