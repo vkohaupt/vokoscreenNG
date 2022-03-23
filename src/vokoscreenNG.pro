@@ -71,7 +71,7 @@ QMAKE_CLEAN += $$TARGET */*~
 
 QMAKE_LFLAGS += -Wl,--as-needed
 
-unix:INSTALLER=$$(VOKOSCREENNGINSTALLER)
+unix:INSTALLER=$$(VOKOSCREENNG_INSTALLER)
 unix:contains(INSTALLER, "IFW" ){
   # -rpath,\'\$$ORIGIN/lib\' is for the IFW linux installer
   QMAKE_LFLAGS += '-Wl,-rpath,\'\$$ORIGIN/lib\''
