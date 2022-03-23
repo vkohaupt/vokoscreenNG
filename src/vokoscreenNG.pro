@@ -70,8 +70,13 @@ TRANSLATIONS = $$files(language/*.ts)
 QMAKE_CLEAN += $$TARGET */*~
 
 QMAKE_LFLAGS += -Wl,--as-needed
-# -rpath,\'\$$ORIGIN/lib\' is for the linux installer
-unix:QMAKE_LFLAGS += '-Wl,-rpath,\'\$$ORIGIN/lib\''
+
+unix:INSTALLER=$$(VOKOSCREENNGINSTALLER)
+unix:contains(INSTALLER, "IFW" ){
+  # -rpath,\'\$$ORIGIN/lib\' is for the IFW linux installer
+  QMAKE_LFLAGS += '-Wl,-rpath,\'\$$ORIGIN/lib\''
+  message($$INSTALLER)
+}
 
 unix:CONFIG += link_pkgconfig
 unix:PKGCONFIG += gstreamer-1.0
