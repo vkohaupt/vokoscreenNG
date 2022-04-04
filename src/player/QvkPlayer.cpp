@@ -143,6 +143,13 @@ void QvkPlayer::slot_embedded( bool embedded )
 }
 
 
+void QvkPlayer::closeEvent( QCloseEvent *event )
+{
+    Q_UNUSED(event)
+    ui->pushButtonEmbedded->click();
+}
+
+
 void QvkPlayer::slot_hideMouse()
 {
     if ( ( widget_Video->underMouse() == true ) and ( ui->widget_menuebar->underMouse() == false ) ){
