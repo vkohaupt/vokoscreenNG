@@ -47,6 +47,9 @@ int main(int argc, char *argv[])
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QApplication::setStyle( QStyleFactory::create( "Fusion" ) );
 
+
+
+
     QApplication app(argc, argv);
 
     QString help;

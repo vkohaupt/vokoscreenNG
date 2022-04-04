@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
- * Copyright (C) 2017-2019 Volker Kohaupt
- * 
+ * Copyright (C) 2017-2022 Volker Kohaupt
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -20,14 +20,39 @@
  * --End_License--
  */
 
-#include <QString>
-#include <QLineEdit>
+#ifndef QVKDISCOVERGST_H
+#define QVKDISCOVERGST_H
 
-namespace global
+#include "glib.h"
+#include "gst/gst.h"
+#include "gst/video/videooverlay.h"
+
+#include <QObject>
+
+
+class QvkDiscoverGst : public QObject
 {
-    extern QString name;
-    extern QString nameOutput;
-    extern QString version;
-    extern int showclickCounter;
-    extern QLineEdit *lineEdit_EOS;
-}
+    Q_OBJECT
+public:
+    explicit QvkDiscoverGst();
+    void discover_file(QString mediaFile);
+
+private:
+
+
+private slots:
+
+
+public slots:
+
+
+signals:
+    void signal_discover_quit( bool isVideo, bool isAudio );
+
+    
+protected:
+
+
+};
+
+#endif // QVKGSTPLAYER_H

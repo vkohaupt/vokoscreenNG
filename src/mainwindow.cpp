@@ -1,4 +1,4 @@
-/* vokoscreenNG - A desktop recorder
+﻿/* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2019 Volker Kohaupt
  * 
  * Author:
@@ -191,6 +191,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     Q_UNUSED(vkMagnifierController);
 
     vkPlayer = new QvkPlayer( this, ui );
+    vkPlayer->init();
+
 
     QvkHelp *vkHelp = new QvkHelp( ui );
 
@@ -379,7 +381,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
 
-    connect( this,                            SIGNAL( signal_close()  ), vkRegionChoise, SLOT( close() ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( slot_init() ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( setVisible( bool ) ) );
     connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreen, SLOT( setDisabled( bool ) ) );
@@ -442,7 +443,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkHalo = new QvkHalo();
     vkHalo->init( ui );
 
-
     vkSystrayAlternative = new QvkSystrayAlternative( this, ui, sliderShowInSystrayAlternative );
     if ( QSystemTrayIcon::isSystemTrayAvailable() == true )
     {
@@ -478,6 +478,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkLicenses,             SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkSystrayAlternative,   SLOT( close() ) );
+    connect( this,      SIGNAL( signal_close() ),       vkPlayer,               SLOT( close() ) );
+    connect( this,      SIGNAL( signal_close() ),       vkRegionChoise,         SLOT( close() ) );
 
     VK_Supported_Formats_And_Codecs();
     VK_Check_is_Format_available();
@@ -614,7 +616,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
                                        vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
         vkSettings.saveCamera( vkCameraController->cameraWindow->geometry().x(), vkCameraController->cameraWindow->geometry().y() );
         vkSettings.saveSystrayAlternative( vkSystrayAlternative->vkSystrayAlternativeWindow->x(), vkSystrayAlternative->vkSystrayAlternativeWindow->y() );
-        vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile );
+//        vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile ); //------------------------------------------------------------------------------------------------------------------
         vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
         vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget->getColor() );
 
@@ -2072,13 +2074,11 @@ void QvkMainWindow::slot_Play()
     QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
 
     qDebug().noquote() << global::nameOutput << "play video with vokoplayer";
-    ui->toolButtonPlayer->click();
     QString string;
     string.append( ui->lineEditVideoPath->text() );
     string.append( "/" );
     string.append( videoFileList.at( 0 ) );
     vkPlayer->setMediaFile( string );
-    vkPlayer->slot_play();
 }
 
 void QvkMainWindow::slot_Folder()

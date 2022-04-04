@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
- * Copyright (C) 2017-2019 Volker Kohaupt
- * 
+ * Copyright (C) 2017-2022 Volker Kohaupt
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -23,28 +23,27 @@
 #ifndef QVKPLAYER_H
 #define QVKPLAYER_H
 
-#include "ui_formMainWindow.h"
 #include "ui_player.h"
+#include "QvkPlayerGst.h"
 #include "QvkSpezialSlider.h"
+#include "ui_formMainWindow.h"
 
 #include <QWidget>
-#include <QMediaPlayer>
 #include <QMouseEvent>
 #include <QKeyEvent>
-#include <QStyle>
-#include <QMainWindow>
+#include <QResizeEvent>
 
 class QvkPlayer : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit QvkPlayer(QMainWindow *parent, Ui_formMainWindow *ui_mainwindow);
+    //explicit QvkPlayer();
+    QvkPlayer( QMainWindow *parent, Ui_formMainWindow *m_ui_mainwindow );
     ~QvkPlayer();
+    void init();
     void setMediaFile( QString string );
     Ui_player *ui;
-    QString pathOpenFile;
-
 
 
 public slots:
@@ -52,53 +51,44 @@ public slots:
 
 
 private slots:
-    void slot_setNewImage( QImage image );
-    void slot_mute();
-    void slot_durationChanged( qint64 value );
-    void slot_positionChanged( qint64 value );
-    void slot_stateChanged( QMediaPlayer::State );
-    void slot_mutedChanged( bool muted );
-    void slot_toolButtonFullscreen();
+    void slot_stop();
+    void slot_pause();
     void slot_openFile();
-    void slot_sliderVideoPressed();
-    void slot_sliderVideoReleased();
-    void slot_sliderVideoMoved( int value );
-    void slot_volumeChanged(int value); // Funktioniert nicht mit Pulse
+    void slot_EOS( QString m_file );
+    void slot_duration( qint64 durationMSecs );
+    void slot_currentTime( qint64 currentTimeMSecs );
+    void slot_frameForward();
+    void slot_frameBackward();
+    void slot_sliderVideoMoved( int );
+    void slot_mute( bool bol );
+    void slot_mute_from_Pulse( bool muted );
+    void slot_volume( int volume );
+    void slot_volume_from_pulse( qreal );
     void slot_hideMouse();
-    void slot_sliderVideo_KeyRight_KeyLeft( int value );
-    void slot_toolButtonFrameForward();
-    void slot_toolButtonFrameBackward();
+    void slot_embedded( bool bo );
 
 
 private:
-    QMainWindow *parentMainWindow;
-    Ui_formMainWindow *uiMainWindow;
-    QMediaPlayer *mediaPlayer;
-    QString get_time( qint64 value );
+    Ui_formMainWindow *ui_mainwindow;
+    QvkPlayerGst *vkPlayerGst;
+    QString mediaFile;
+    QString getMediaFile();
+    QWidget *widget_Video = nullptr;
+    QvkSpezialSlider *sliderVideo;
+    QvkSpezialSlider *sliderVolume;
     int mouseInWidgetX;
     int mouseInWidgetY;
     bool pressed = false;
-    void vk_showFullscreen();
-    void vk_showNormal();
     QTimer *timerHideMouse;
-    QString oldWindowTitel;
-    bool playingFlag = false;
-    QLabel *metaLabel;
-    QFrame *metaFrame;
-    QvkSpezialSlider *sliderVolume;
-    QvkSpezialSlider *sliderVideo;
-    QSize getPixelaspectRatio();
 
 
 protected:
     void mouseDoubleClickEvent( QMouseEvent *event );
-    void closeEvent(QCloseEvent *event);
     void keyPressEvent( QKeyEvent *event );
-    void mousePressEvent(QMouseEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
-    void resizeEvent(QResizeEvent *event);
-    void leaveEvent(QEvent *event);
+    void mouseMoveEvent( QMouseEvent *event );
+    void mousePressEvent( QMouseEvent *event );
+    void mouseReleaseEvent( QMouseEvent *event );
+    void resizeEvent( QResizeEvent *event );
 
 
 };

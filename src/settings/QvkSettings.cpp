@@ -594,7 +594,7 @@ void QvkSettings::readPlayerPathOpenFile( QvkPlayer *vkplayer )
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.beginGroup( "Player" );
-    vkplayer->pathOpenFile = settings.value( "Path", "" ).toString();
+//    vkplayer->pathOpenFile = settings.value( "Path", "" ).toString(); //-----------------------------------------------------------------------------
     settings.endGroup();
 }
 

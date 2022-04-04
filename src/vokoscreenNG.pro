@@ -85,6 +85,12 @@ unix:PKGCONFIG += wayland-client
 unix:LIBS += -lpulse-simple
 unix:LIBS += -lX11
 
+# Player
+CONFIG += c++11
+unix:PKGCONFIG += gstreamer-video-1.0
+unix:PKGCONFIG += gstreamer-pbutils-1.0
+unix:PKGCONFIG += glib-2.0
+
 win32:contains(QMAKE_HOST.arch, x86_64) {
 message("[vokoscreenNG] Create x86_64 build")
 RC_ICONS = vokoscreenNG.ico

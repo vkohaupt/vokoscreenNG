@@ -151,6 +151,8 @@ private:
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller;
 #endif
 
+    QPalette appPalette;
+
 
 private slots:
     void slot_textToGuiLog( QString value );
