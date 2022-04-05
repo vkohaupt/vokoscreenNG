@@ -2074,12 +2074,14 @@ void QvkMainWindow::slot_Play()
     QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
 
     qDebug().noquote() << global::nameOutput << "play video with vokoplayer";
+    ui->toolButtonPlayer->click();
     QString string;
     string.append( ui->lineEditVideoPath->text() );
     string.append( "/" );
     string.append( videoFileList.at( 0 ) );
     vkPlayer->setMediaFile( string );
 }
+
 
 void QvkMainWindow::slot_Folder()
 {
