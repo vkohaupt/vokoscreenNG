@@ -418,9 +418,16 @@ void QvkPlayer::setMediaFile( QString string )
     setWindowTitle( file.fileName() + " - " + global::name + " " + global::version + " - " + "Player" );
     vkPlayerGst->set_winId( widget_Video->winId() );
     vkPlayerGst->set_mediaFile( mediaFile );
+
+    ui->label_logo->hide();
     ui->pushButtonPlay->setEnabled( true );
     ui->pushButtonStop->click();
     ui->pushButtonPlay->click();
+
+    if ( ui->pushButtonEmbedded->isChecked() == true )
+    {
+        slot_embedded( true );
+    }
 }
 
 
@@ -439,7 +446,6 @@ void QvkPlayer::slot_openFile()
     if ( vkFileDialog.exec() == QDialog::Accepted )
     {
         if ( !vkFileDialog.selectedFiles().empty() ) {
-            ui->label_logo->hide();
             setMediaFile( vkFileDialog.selectedFiles().at(0) );
         }
     }
