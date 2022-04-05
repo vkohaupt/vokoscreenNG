@@ -187,7 +187,7 @@
         <item>
          <widget class="QPushButton" name="pushButtonEmbedded">
           <property name="text">
-           <string>Embedded</string>
+           <string notr="true">Embedded</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
