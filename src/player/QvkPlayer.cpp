@@ -288,6 +288,10 @@ void QvkPlayer::slot_stop()
     widget_Video->setStyleSheet( "QWidget { background-color: black; }" );
     widget_Video->setVisible( false );
 
+    // Only update by Video not by Qt.
+    // If embedded and setUpdatesEnabled=true, Video flickering all one second, if the "label_playbackTime" is updated.
+    widget_Video->setUpdatesEnabled( false );
+
     if ( isFullScreen() == true ) {
         ui->verticalLayout->addWidget( ui->widget_menuebar );
         ui->widget_menuebar->show();
@@ -435,21 +439,7 @@ void QvkPlayer::slot_openFile()
     if ( vkFileDialog.exec() == QDialog::Accepted )
     {
         if ( !vkFileDialog.selectedFiles().empty() ) {
-
             ui->label_logo->hide();
-
-            // Remove and hide the old widget_video
-            ui->verticalLayout->removeWidget( widget_Video );
-            widget_Video->hide();
-
-            // Create a new widget_video
-            widget_Video = new QWidget;
-            vkPlayerGst->set_winId( widget_Video->winId() );
-            ui->verticalLayout->insertWidget( 0, widget_Video );
-            ui->verticalLayout->setStretch( 0, 1 );
-            widget_Video->setStyleSheet( "QWidget { background-color: black; }" );
-            widget_Video->setVisible( true );
-
             setMediaFile( vkFileDialog.selectedFiles().at(0) );
         }
     }
