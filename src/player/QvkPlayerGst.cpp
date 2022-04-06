@@ -93,6 +93,35 @@ void QvkPlayerGst::init()
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( 20 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_timer() ) );
+
+    qDebug().noquote() << global::nameOutput << "GstElement player";
+    QStringList list;
+    list << "filesrc";
+    list << "decodebin";
+    list << "videoconvert";
+    list << "audioconvert";
+#ifdef Q_OS_LINUX
+    list << "xvimagesink";
+    list << "pulsesink";
+#endif
+#ifdef Q_OS_WIN
+    list << "d3dvideosink";
+    list << "directsoundsink";
+#endif
+
+    for ( int i = 0; i < list.count(); i++ )
+    {
+        GstElementFactory *factory = gst_element_factory_find( QString( list.at(i) ).toLatin1() );
+        if ( !factory )
+        {
+            qDebug().noquote() << global::nameOutput << "-" << list.at(i);
+        }
+        else
+        {
+            qDebug().noquote() << global::nameOutput << "+" << list.at(i);
+            gst_object_unref( factory );
+        }
+    }
 }
 
 
