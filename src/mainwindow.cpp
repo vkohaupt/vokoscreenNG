@@ -190,9 +190,13 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkMagnifierController = new QvkMagnifierController(ui);
     Q_UNUSED(vkMagnifierController);
 
+#ifdef Q_OS_LINUX
     vkPlayer = new QvkPlayer( this, ui );
     vkPlayer->init();
-
+#endif
+#ifdef Q_OS_WIN
+    vkPlayer = new QvkPlayer( this, ui );
+#endif
 
     QvkHelp *vkHelp = new QvkHelp( ui );
 
@@ -204,7 +208,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkCountdown->init();
 
     QvkVirtual *vkVirtual = new QvkVirtual();
-
 
     QvkInformation *vkInformation = new QvkInformation( this, ui, sliderScreencastCountDown, sliderSecondWaitBeforeRecording );
     connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );

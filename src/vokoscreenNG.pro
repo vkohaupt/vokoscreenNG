@@ -124,7 +124,7 @@ include(countdown/countdown.pri)
 # webcam
 include(camera/camera.pri)
 
-# pulse
+# audio linux
 unix:include(audio/linux/audioLinux.pri)
 
 # audio windows
@@ -149,8 +149,11 @@ include(log/log.pri)
 include(QGlobalShortcut/qglobalshortcut.pri)
 include(QvkGlobalShortcut/QvkGlobalShortcut.pri)
 
-# player
-include(player/player.pri)
+# player linux
+unix:include(player/linux/playerLinux.pri)
+
+# player windows
+win32:include(player/windows/playerWindows.pri)
 
 # screenManager
 include(screenManager/screenManager.pri)
