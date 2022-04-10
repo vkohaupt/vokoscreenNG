@@ -41,6 +41,22 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     sliderCameraWindowSize->setShowValue( false );
     sliderCameraWindowSize->setEnabled( false );
 
+
+
+    sliderCameraWindowZoom = new QvkSpezialSlider( Qt::Horizontal );
+    ui_formMainWindow->horizontalLayout_zoom->insertWidget( 1, sliderCameraWindowZoom );
+    sliderCameraWindowZoom->setObjectName( "sliderCameraWindowZoom" );
+    sliderCameraWindowZoom->setMinimum( 1 );
+    sliderCameraWindowZoom->setMaximum( 300 );
+    sliderCameraWindowZoom->setValue( 1 );
+    sliderCameraWindowZoom->show();
+    sliderCameraWindowZoom->setShowValue( false );
+    sliderCameraWindowZoom->setEnabled( true );
+    ui_formMainWindow->horizontalLayout_zoom->removeItem( ui_formMainWindow->horizontalSpacer_zoom1 );
+    ui_formMainWindow->horizontalLayout_zoom->removeItem( ui_formMainWindow->horizontalSpacer_zoom2 );
+
+
+
     vkCameraSettingsDialog = new cameraSettingsDialog;
 
     QvkCameraResolution *vkCameraResolution = new QvkCameraResolution( ui_formMainWindow, vkCameraSettingsDialog );
@@ -199,8 +215,29 @@ void QvkCameraController::slot_setNewImage( QImage image )
     if ( ui_formMainWindow->checkBoxCameraMono->isChecked() == true )
         image = image.convertToFormat( QImage::Format_Mono );
 
-    image = image.scaled( cameraWindow->width(), cameraWindow->height(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+
+    sliderCameraWindowZoom->setMaximum( cameraWindow->height() / 2 );
+    qreal width = image.width();
+    qreal height = image.height();
+    qreal quotient = width / height;
+    int minusPixel = sliderCameraWindowZoom->value();
+    QImage image_zoom = image.copy( minusPixel,
+                                    minusPixel / quotient,
+                                    ( width - ( 2 * minusPixel ) ),
+                                    ( height - ( 2 * minusPixel / quotient) )
+                                  );
+    image = image_zoom.scaled( cameraWindow->width(), cameraWindow->height(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
     cameraWindow->setPixmap( QPixmap::fromImage( image, Qt::AutoColor) );
+
+    if ( cameraWindow->isFullScreen() == false )
+    {
+        cameraWindow->resize( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt(),
+                              ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt()
+                            );
+        cameraWindow->setFixedSize( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt(),
+                                    ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt()
+                                    );
+    }
 }
 
 

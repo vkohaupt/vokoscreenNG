@@ -73,7 +73,7 @@ private:
     QvkCameraWatcher *cameraWatcher;
     QvkVideoSurface *videoSurface;
     QvkSpezialSlider *sliderCameraWindowSize;
-
+    QvkSpezialSlider *sliderCameraWindowZoom;
 
 protected:
 
