@@ -2,6 +2,8 @@
 <qresource>
 <file>pictures/camera/camera-sidebar.png</file>
 <file>pictures/camera/camera.png</file>
+<file>pictures/camera/lupe-minus.png</file>
+<file>pictures/camera/lupe-plus.png</file>
 <file>pictures/cursor/size_hor.png</file>
 <file>pictures/cursor/size_ver.png</file>
 <file>pictures/cursor/size_all.png</file>
@@ -57,7 +59,9 @@
 <file>pictures/systray/showclick.png</file>
 <file>pictures/wayland.png</file>
 <file>pictures/windows.png</file>
+<file>pictures/camera/lupe-plus.license</file>
 <file>pictures/camera/camera.license</file>
+<file>pictures/camera/lupe-minus.license</file>
 <file>pictures/cursor/size_all.license</file>
 <file>pictures/cursor/size_ver.license</file>
 <file>pictures/cursor/size_bdiag.license</file>

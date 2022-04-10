@@ -52,8 +52,8 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     sliderCameraWindowZoom->show();
     sliderCameraWindowZoom->setShowValue( false );
     sliderCameraWindowZoom->setEnabled( true );
-    ui_formMainWindow->horizontalLayout_zoom->removeItem( ui_formMainWindow->horizontalSpacer_zoom1 );
-    ui_formMainWindow->horizontalLayout_zoom->removeItem( ui_formMainWindow->horizontalSpacer_zoom2 );
+//    ui_formMainWindow->horizontalLayout_zoom->removeItem( ui_formMainWindow->horizontalSpacer_zoom1 );
+//    ui_formMainWindow->horizontalLayout_zoom->removeItem( ui_formMainWindow->horizontalSpacer_zoom2 );
 
 
 

@@ -28,15 +28,15 @@
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation type="unfinished"/>
+        <translation>La configurazione ha avuto successo.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation type="unfinished"/>
+        <translation>Chiudere questa finestra e riavviare vokoscreenNG.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation type="unfinished"/>
+        <translation>Buon divertimento con vokoscreenNG</translation>
     </message>
 </context>
 <context>
@@ -57,7 +57,7 @@
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Nessun Filemanager.</translation>
+        <translation>Nessun filemanager trovato.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
@@ -103,11 +103,11 @@
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Filemanager non trovato</translation>
+        <translation>Filemanager non trovato.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Si prega di installare un filemanager</translation>
+        <translation>Si prega di installare un filemanager.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
@@ -485,39 +485,39 @@
     </message>
     <message>
         <source>Automatically</source>
-        <translation type="unfinished"/>
+        <translation>Automaticamente</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation type="unfinished"/>
+        <translation>Crea immagini delle schede</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation type="unfinished"/>
+        <translation>Informazioni sulla licenza</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"/>
+        <translation>Acceso</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"/>
+        <translation>Spento</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation type="unfinished"/>
+        <translation>Scorciatoie da tastiera globali</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation type="unfinished"/>
+        <translation>Tasti scorciatoia assegnati.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation type="unfinished"/>
+        <translation>Scorciatoia da tastiera non assegnata o assegnata più volte.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation type="unfinished"/>
+        <translation>Se mostra l&apos;assegnamento ma non funziona, significa che è usata da qualche altro programma.</translation>
     </message>
 </context>
 <context>
