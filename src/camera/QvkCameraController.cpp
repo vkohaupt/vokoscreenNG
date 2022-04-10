@@ -44,11 +44,10 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     sliderCameraWindowZoom = new QvkSpezialSlider( Qt::Horizontal );
     ui_formMainWindow->horizontalLayout_zoom->insertWidget( 1, sliderCameraWindowZoom );
     sliderCameraWindowZoom->setObjectName( "sliderCameraWindowZoom" );
-    sliderCameraWindowZoom->setMinimum( 1 );
-    sliderCameraWindowZoom->setMaximum( 300 );
-    sliderCameraWindowZoom->setValue( 1 );
+    sliderCameraWindowZoom->setMinimum( 0 );
+    sliderCameraWindowZoom->setValue( 0 );
     sliderCameraWindowZoom->show();
-    sliderCameraWindowZoom->setShowValue( false );
+    sliderCameraWindowZoom->setShowValue( true );
     sliderCameraWindowZoom->setEnabled( true );
 
     ui_formMainWindow->frame_size_window->hide();
@@ -146,14 +145,14 @@ void QvkCameraController::slot_frameOnOff( bool value )
 #ifdef Q_OS_LINUX
         if ( value == true )
         {
-            vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setDisabled( true );
+            //vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setDisabled( true );
             flags = Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
             cameraWindow->setWindowFlags( flags );
         }
 
         if ( value == false )
         {
-            vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setDisabled( false );
+            //vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setDisabled( false );
             flags = Qt::WindowStaysOnTopHint;
             cameraWindow->setWindowFlags( flags );
         }
