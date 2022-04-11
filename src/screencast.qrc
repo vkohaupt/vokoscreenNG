@@ -8,7 +8,6 @@
 <file>pictures/cursor/size_ver.png</file>
 <file>pictures/cursor/size_all.png</file>
 <file>pictures/cursor/size_bdiag.png</file>
-<file>pictures/cursor/vertikal.png</file>
 <file>pictures/cursor/size_fdiag.png</file>
 <file>pictures/help/information.png</file>
 <file>pictures/linux.png</file>
@@ -99,6 +98,7 @@
 <file>pictures/showClick/cursor.license</file>
 <file>pictures/showClick/transparenz.license</file>
 <file>pictures/showClick/vokoShowClick.license</file>
+<file>pictures/showClick/halo.license</file>
 <file>pictures/showClick/sandglass.license</file>
 <file>pictures/systray/systray.license</file>
 <file>pictures/systray/exit.license</file>
