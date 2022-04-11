@@ -38,7 +38,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     sliderCameraWindowSize->setMaximum( 3 );
     sliderCameraWindowSize->setValue( 2 );
     sliderCameraWindowSize->show();
-    sliderCameraWindowSize->setShowValue( false );
+    sliderCameraWindowSize->setShowValue( true );
     sliderCameraWindowSize->setEnabled( false );
 
     sliderCameraWindowZoom = new QvkSpezialSlider( Qt::Horizontal );
@@ -50,7 +50,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     sliderCameraWindowZoom->setShowValue( true );
     sliderCameraWindowZoom->setEnabled( true );
 
-    ui_formMainWindow->frame_size_window->hide();
+//    ui_formMainWindow->frame_size_window->hide();
 
     vkCameraSettingsDialog = new cameraSettingsDialog;
 
@@ -165,6 +165,7 @@ void QvkCameraController::slot_frameOnOff( bool value )
 
 void QvkCameraController::slot_sliderMoved( int value )
 {
+/*
     if ( value == 1 )
     {
         cameraWindow->resize( 160, 120 );
@@ -178,7 +179,9 @@ void QvkCameraController::slot_sliderMoved( int value )
     if ( value == 3 )
     {
         cameraWindow->resize( 639, 479 );
+        qDebug() << "3333333333333333333333333333333333333333333333333333";
     }
+*/
 }
 
 
@@ -210,7 +213,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
         image = image.convertToFormat( QImage::Format_Mono );
 
 
-    sliderCameraWindowZoom->setMaximum( cameraWindow->height() / 2 );
+    sliderCameraWindowZoom->setMaximum( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() / 2 );
     qreal width = image.width();
     qreal height = image.height();
     qreal quotient = width / height;
@@ -225,11 +228,14 @@ void QvkCameraController::slot_setNewImage( QImage image )
 
     if ( cameraWindow->isFullScreen() == false )
     {
-        cameraWindow->resize( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt(),
-                              ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt()
-                            );
-        cameraWindow->setFixedSize( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt(),
-                                    ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt()
+        int value = 1;
+        if ( sliderCameraWindowSize->value() == 2 )
+            value = 2;
+        if ( sliderCameraWindowSize->value() == 3 )
+            value = 4;
+
+        cameraWindow->setFixedSize( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() / value,
+                                    ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() / value
                                     );
     }
 }
@@ -247,9 +253,9 @@ void QvkCameraController::slot_addedCamera( QString description, QString device 
     ui_formMainWindow->checkBoxCameraMirrorVertical->setEnabled( true );
     ui_formMainWindow->checkBoxCameraMono->setEnabled( true );
     sliderCameraWindowSize->setEnabled( true );
-    ui_formMainWindow->labelCameraWindowSize160_120->setEnabled( true );
-    ui_formMainWindow->labelCameraWindowSize320_240->setEnabled( true );
-    ui_formMainWindow->labelCameraWindowSize640_480->setEnabled( true );
+//    ui_formMainWindow->labelCameraWindowSize160_120->setEnabled( true );
+//    ui_formMainWindow->labelCameraWindowSize320_240->setEnabled( true );
+//    ui_formMainWindow->labelCameraWindowSize640_480->setEnabled( true );
 }
 
 
@@ -275,9 +281,9 @@ void QvkCameraController::slot_removedCamera( QString device )
         ui_formMainWindow->checkBoxCameraMirrorVertical->setEnabled( false );
         ui_formMainWindow->checkBoxCameraMono->setEnabled( false );
         sliderCameraWindowSize->setEnabled( false );
-        ui_formMainWindow->labelCameraWindowSize160_120->setEnabled( false );
-        ui_formMainWindow->labelCameraWindowSize320_240->setEnabled( false );
-        ui_formMainWindow->labelCameraWindowSize640_480->setEnabled( false );
+//        ui_formMainWindow->labelCameraWindowSize160_120->setEnabled( false );
+//        ui_formMainWindow->labelCameraWindowSize320_240->setEnabled( false );
+//        ui_formMainWindow->labelCameraWindowSize640_480->setEnabled( false );
     }
 }
 
@@ -302,7 +308,7 @@ void QvkCameraController::slot_startCamera( bool value )
         viewfinderSettings.setMaximumFrameRate( 0.0 );
         camera->setViewfinderSettings( viewfinderSettings );
 
-        slot_sliderMoved( sliderCameraWindowSize->value() );
+//        slot_sliderMoved( sliderCameraWindowSize->value() );
 
         camera->setViewfinder( videoSurface );
         cameraWindow->setStyleSheet( "background-color:black;" );
