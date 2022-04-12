@@ -2840,6 +2840,9 @@
               </item>
               <item row="11" column="0" colspan="3">
                <layout class="QHBoxLayout" name="horizontalLayout_zoom">
+                <property name="spacing">
+                 <number>12</number>
+                </property>
                 <item>
                  <widget class="QLabel" name="label_55">
                   <property name="minimumSize">
@@ -2913,21 +2916,30 @@
               </item>
               <item row="3" column="0" colspan="3">
                <layout class="QHBoxLayout" name="horizontalLayout_45" stretch="0">
+                <property name="spacing">
+                 <number>12</number>
+                </property>
                 <item>
-                 <spacer name="horizontalSpacer_37">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
+                 <widget class="QLabel" name="label_window_resize">
+                  <property name="enabled">
+                   <bool>true</bool>
                   </property>
-                  <property name="sizeType">
-                   <enum>QSizePolicy::Preferred</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
+                  <property name="maximumSize">
                    <size>
-                    <width>40</width>
-                    <height>20</height>
+                    <width>34</width>
+                    <height>34</height>
                    </size>
                   </property>
-                 </spacer>
+                  <property name="text">
+                   <string notr="true"/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="screencast.qrc">:/pictures/camera/window-resize.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </item>

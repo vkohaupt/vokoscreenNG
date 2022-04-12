@@ -3,6 +3,7 @@
 <file>pictures/camera/camera-sidebar.png</file>
 <file>pictures/camera/camera.png</file>
 <file>pictures/camera/lupe-minus.png</file>
+<file>pictures/camera/window-resize.png</file>
 <file>pictures/camera/lupe-plus.png</file>
 <file>pictures/cursor/size_hor.png</file>
 <file>pictures/cursor/size_ver.png</file>
@@ -60,6 +61,7 @@
 <file>pictures/windows.png</file>
 <file>pictures/camera/lupe-plus.license</file>
 <file>pictures/camera/camera.license</file>
+<file>pictures/camera/window-resize.license</file>
 <file>pictures/camera/lupe-minus.license</file>
 <file>pictures/cursor/size_all.license</file>
 <file>pictures/cursor/size_ver.license</file>
