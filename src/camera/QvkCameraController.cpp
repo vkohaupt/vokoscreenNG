@@ -213,7 +213,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
     cameraWindow->setFixedSize( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value(),
                                 ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - ( sliderCameraWindowSize->value() / quotient )
                               );
-    ui_formMainWindow->labelCameraWindowSize->setText( QString::number( cameraWindow->width() ) + "x" + QString::number( cameraWindow->height() ) );
+    ui_formMainWindow->labelCameraWindowSize->setText( QString::number( cameraWindow->width() ) + " x " + QString::number( cameraWindow->height() ) );
     // Window size end
 }
 
