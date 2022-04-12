@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2019 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -34,12 +34,11 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     sliderCameraWindowSize = new QvkSpezialSlider( Qt::Horizontal );
     ui_formMainWindow->horizontalLayout_45->insertWidget( 1, sliderCameraWindowSize );
     sliderCameraWindowSize->setObjectName( "sliderCameraWindowSize" );
-    sliderCameraWindowSize->setMinimum( 1 );
-    sliderCameraWindowSize->setMaximum( 3 );
-    sliderCameraWindowSize->setValue( 2 );
+    sliderCameraWindowSize->setMinimum( 0 );
+    sliderCameraWindowSize->setValue( 0 );
     sliderCameraWindowSize->show();
     sliderCameraWindowSize->setShowValue( true );
-    sliderCameraWindowSize->setEnabled( false );
+    sliderCameraWindowSize->setEnabled( true );
 
     sliderCameraWindowZoom = new QvkSpezialSlider( Qt::Horizontal );
     ui_formMainWindow->horizontalLayout_zoom->insertWidget( 1, sliderCameraWindowZoom );
@@ -49,8 +48,6 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     sliderCameraWindowZoom->show();
     sliderCameraWindowZoom->setShowValue( true );
     sliderCameraWindowZoom->setEnabled( true );
-
-//    ui_formMainWindow->frame_size_window->hide();
 
     vkCameraSettingsDialog = new cameraSettingsDialog;
 
@@ -114,8 +111,8 @@ void QvkCameraController::getAllDevices()
         {
             if ( ( camerasInfoList.at(i).description() > "" ) and ( !camerasInfoList.at(i).description().contains( "@device:pnp" ) ) )
             {
-               qDebug().noquote() << global::nameOutput << "[Camera] Found:" << camerasInfoList.at(i).description() << camerasInfoList.at(i).deviceName();
-               slot_addedCamera( camerasInfoList.at(i).description(), camerasInfoList.at(i).deviceName() );
+                qDebug().noquote() << global::nameOutput << "[Camera] Found:" << camerasInfoList.at(i).description() << camerasInfoList.at(i).deviceName();
+                slot_addedCamera( camerasInfoList.at(i).description(), camerasInfoList.at(i).deviceName() );
             }
         }
     }
@@ -145,14 +142,12 @@ void QvkCameraController::slot_frameOnOff( bool value )
 #ifdef Q_OS_LINUX
         if ( value == true )
         {
-            //vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setDisabled( true );
             flags = Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
             cameraWindow->setWindowFlags( flags );
         }
 
         if ( value == false )
         {
-            //vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setDisabled( false );
             flags = Qt::WindowStaysOnTopHint;
             cameraWindow->setWindowFlags( flags );
         }
@@ -165,23 +160,7 @@ void QvkCameraController::slot_frameOnOff( bool value )
 
 void QvkCameraController::slot_sliderMoved( int value )
 {
-/*
-    if ( value == 1 )
-    {
-        cameraWindow->resize( 160, 120 );
-    }
-
-    if ( value == 2 )
-    {
-        cameraWindow->resize( 320, 240 );
-    }
-
-    if ( value == 3 )
-    {
-        cameraWindow->resize( 639, 479 );
-        qDebug() << "3333333333333333333333333333333333333333333333333333";
-    }
-*/
+    Q_UNUSED(value)
 }
 
 
@@ -213,6 +192,8 @@ void QvkCameraController::slot_setNewImage( QImage image )
         image = image.convertToFormat( QImage::Format_Mono );
 
 
+
+    // Zoom
     sliderCameraWindowZoom->setMaximum( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() / 2 );
     qreal width = image.width();
     qreal height = image.height();
@@ -220,24 +201,20 @@ void QvkCameraController::slot_setNewImage( QImage image )
     int minusPixel = sliderCameraWindowZoom->value();
     QImage image_zoom = image.copy( minusPixel,
                                     minusPixel / quotient,
-                                    ( width - ( 2 * minusPixel ) ),
-                                    ( height - ( 2 * minusPixel / quotient) )
+                                    width - ( 2 * minusPixel ),
+                                    height - ( 2 * minusPixel / quotient )
                                   );
-    image = image_zoom.scaled( cameraWindow->width(), cameraWindow->height(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
-    cameraWindow->setPixmap( QPixmap::fromImage( image, Qt::AutoColor) );
+    image = image_zoom.scaled( cameraWindow->width(), cameraWindow->height(), Qt::KeepAspectRatio, Qt::SmoothTransformation );
+    cameraWindow->setPixmap( QPixmap::fromImage( image, Qt::AutoColor ) );
+    // Zoom end
 
-    if ( cameraWindow->isFullScreen() == false )
-    {
-        int value = 1;
-        if ( sliderCameraWindowSize->value() == 2 )
-            value = 2;
-        if ( sliderCameraWindowSize->value() == 3 )
-            value = 4;
-
-        cameraWindow->setFixedSize( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() / value,
-                                    ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() / value
-                                    );
-    }
+    // Window size
+    sliderCameraWindowSize->setMaximum( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() );
+    cameraWindow->setFixedSize( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value(),
+                                ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - ( sliderCameraWindowSize->value() / quotient )
+                              );
+    ui_formMainWindow->labelCameraWindowSize->setText( QString::number( cameraWindow->width() ) + "x" + QString::number( cameraWindow->height() ) );
+    // Window size end
 }
 
 
@@ -253,9 +230,6 @@ void QvkCameraController::slot_addedCamera( QString description, QString device 
     ui_formMainWindow->checkBoxCameraMirrorVertical->setEnabled( true );
     ui_formMainWindow->checkBoxCameraMono->setEnabled( true );
     sliderCameraWindowSize->setEnabled( true );
-//    ui_formMainWindow->labelCameraWindowSize160_120->setEnabled( true );
-//    ui_formMainWindow->labelCameraWindowSize320_240->setEnabled( true );
-//    ui_formMainWindow->labelCameraWindowSize640_480->setEnabled( true );
 }
 
 
@@ -281,9 +255,6 @@ void QvkCameraController::slot_removedCamera( QString device )
         ui_formMainWindow->checkBoxCameraMirrorVertical->setEnabled( false );
         ui_formMainWindow->checkBoxCameraMono->setEnabled( false );
         sliderCameraWindowSize->setEnabled( false );
-//        ui_formMainWindow->labelCameraWindowSize160_120->setEnabled( false );
-//        ui_formMainWindow->labelCameraWindowSize320_240->setEnabled( false );
-//        ui_formMainWindow->labelCameraWindowSize640_480->setEnabled( false );
     }
 }
 
@@ -307,8 +278,6 @@ void QvkCameraController::slot_startCamera( bool value )
         viewfinderSettings.setMinimumFrameRate( 0.0 );
         viewfinderSettings.setMaximumFrameRate( 0.0 );
         camera->setViewfinderSettings( viewfinderSettings );
-
-//        slot_sliderMoved( sliderCameraWindowSize->value() );
 
         camera->setViewfinder( videoSurface );
         cameraWindow->setStyleSheet( "background-color:black;" );
@@ -334,20 +303,20 @@ void QvkCameraController::slot_statusChanged( QCamera::Status status )
 {
     switch ( status )
     {
-      case QCamera::UnavailableStatus : { qDebug().noquote() << global::nameOutput << status; break; }// 0
-      case QCamera::UnloadedStatus    : { qDebug().noquote() << global::nameOutput << status; break; }// 1
-      case QCamera::LoadingStatus     : { qDebug().noquote() << global::nameOutput << status; break; }// 2
-      case QCamera::UnloadingStatus   : { qDebug().noquote() << global::nameOutput << status; break; }// 3
-      case QCamera::LoadedStatus      : { qDebug().noquote() << global::nameOutput << status;
-                                          #ifdef Q_OS_LINUX
-                                             camera->start();
-                                          #endif
-                                          break;
-                                        }// 4
-      case QCamera::StandbyStatus     : { qDebug().noquote() << global::nameOutput << status; break; }// 5
-      case QCamera::StartingStatus    : { qDebug().noquote() << global::nameOutput << status; break; }// 6
-      case QCamera::StoppingStatus    : { qDebug().noquote() << global::nameOutput << status; break; }// 7
-      case QCamera::ActiveStatus      : { qDebug().noquote() << global::nameOutput << status; break; }// 8
+    case QCamera::UnavailableStatus : { qDebug().noquote() << global::nameOutput << status; break; }// 0
+    case QCamera::UnloadedStatus    : { qDebug().noquote() << global::nameOutput << status; break; }// 1
+    case QCamera::LoadingStatus     : { qDebug().noquote() << global::nameOutput << status; break; }// 2
+    case QCamera::UnloadingStatus   : { qDebug().noquote() << global::nameOutput << status; break; }// 3
+    case QCamera::LoadedStatus      : { qDebug().noquote() << global::nameOutput << status;
+#ifdef Q_OS_LINUX
+        camera->start();
+#endif
+        break;
+    }// 4
+    case QCamera::StandbyStatus     : { qDebug().noquote() << global::nameOutput << status; break; }// 5
+    case QCamera::StartingStatus    : { qDebug().noquote() << global::nameOutput << status; break; }// 6
+    case QCamera::StoppingStatus    : { qDebug().noquote() << global::nameOutput << status; break; }// 7
+    case QCamera::ActiveStatus      : { qDebug().noquote() << global::nameOutput << status; break; }// 8
     }
 }
 
@@ -356,9 +325,9 @@ void QvkCameraController::slot_stateChanged( QCamera::State state )
 {
     switch ( state )
     {
-      case QCamera::UnloadedState : { qDebug().noquote() << global::nameOutput << state; break;  }// 0
-      case QCamera::LoadedState   : { qDebug().noquote() << global::nameOutput << state; break;  }// 1
-      case QCamera::ActiveState   : { qDebug().noquote() << global::nameOutput << state; break;  }// 2
+    case QCamera::UnloadedState : { qDebug().noquote() << global::nameOutput << state; break;  }// 0
+    case QCamera::LoadedState   : { qDebug().noquote() << global::nameOutput << state; break;  }// 1
+    case QCamera::ActiveState   : { qDebug().noquote() << global::nameOutput << state; break;  }// 2
     }
 }
 

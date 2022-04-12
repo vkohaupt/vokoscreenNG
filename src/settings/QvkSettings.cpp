@@ -348,7 +348,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             if ( variant.isValid() )
             {
                 listSlider.at(i)->setValue( variant.toInt() );
-                listSlider.at(i)->setMinimum(1);
+                listSlider.at(i)->setMinimum(0);
                 continue;
             }
             else
