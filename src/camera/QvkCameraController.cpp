@@ -38,7 +38,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     sliderCameraWindowSize->setValue( 0 );
     sliderCameraWindowSize->show();
     sliderCameraWindowSize->setShowValue( true );
-    sliderCameraWindowSize->setEnabled( true );
+    sliderCameraWindowSize->setEnabled( false );
 
     sliderCameraWindowZoom = new QvkSpezialSlider( Qt::Horizontal );
     ui_formMainWindow->horizontalLayout_zoom->insertWidget( 1, sliderCameraWindowZoom );
@@ -47,7 +47,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     sliderCameraWindowZoom->setValue( 0 );
     sliderCameraWindowZoom->show();
     sliderCameraWindowZoom->setShowValue( true );
-    sliderCameraWindowZoom->setEnabled( true );
+    sliderCameraWindowZoom->setEnabled( false );
 
     vkCameraSettingsDialog = new cameraSettingsDialog;
 
@@ -230,6 +230,7 @@ void QvkCameraController::slot_addedCamera( QString description, QString device 
     ui_formMainWindow->checkBoxCameraMirrorVertical->setEnabled( true );
     ui_formMainWindow->checkBoxCameraMono->setEnabled( true );
     sliderCameraWindowSize->setEnabled( true );
+    sliderCameraWindowZoom->setEnabled( true );
 }
 
 
@@ -255,6 +256,7 @@ void QvkCameraController::slot_removedCamera( QString device )
         ui_formMainWindow->checkBoxCameraMirrorVertical->setEnabled( false );
         ui_formMainWindow->checkBoxCameraMono->setEnabled( false );
         sliderCameraWindowSize->setEnabled( false );
+        sliderCameraWindowZoom->setEnabled( false );
     }
 }
 
