@@ -33,18 +33,28 @@ cameraSettingsDialog::cameraSettingsDialog(QWidget *parent) :
     setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint | Qt::Tool );
     ui->setupUi(this);
 
+//    ui->tabWidget->setTabIcon( 0, QIcon( ":/pictures/camera/camera.png" ) );
+    setWindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
+    setWindowTitle( tr( "Camera settings" ) );
+
     dialog_sliderCameraWindowSize = new QvkSpezialSlider( Qt::Horizontal );
-    ui->verticalLayout_3->insertWidget( 0, dialog_sliderCameraWindowSize );
+    ui->horizontalLayout_3->insertWidget( 1, dialog_sliderCameraWindowSize );
     dialog_sliderCameraWindowSize->setObjectName( "sliderCameraWindowSize" );
     dialog_sliderCameraWindowSize->setMinimum( 0 );
     dialog_sliderCameraWindowSize->setMaximum( 3000 );
     dialog_sliderCameraWindowSize->setValue( 0 );
     dialog_sliderCameraWindowSize->show();
-    dialog_sliderCameraWindowSize->setShowValue( false );
+    dialog_sliderCameraWindowSize->setShowValue( true );
 
-    ui->tabWidget->setTabIcon( 0, QIcon( ":/pictures/camera/camera.png" ) );
-    setWindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
-    setWindowTitle( tr( "Camera settings" ) );
+    dialog_sliderCameraWindowZoom = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_2->insertWidget( 1, dialog_sliderCameraWindowZoom );
+    dialog_sliderCameraWindowZoom->setObjectName( "sliderCameraWindowZoom" );
+    dialog_sliderCameraWindowZoom->setMinimum( 0 );
+    dialog_sliderCameraWindowZoom->setMaximum( 3000 );
+    dialog_sliderCameraWindowZoom->setValue( 0 );
+    dialog_sliderCameraWindowZoom->show();
+    dialog_sliderCameraWindowZoom->setShowValue( true );
+
 }
 
 cameraSettingsDialog::~cameraSettingsDialog()

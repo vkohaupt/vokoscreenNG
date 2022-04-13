@@ -45,6 +45,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     ui_formMainWindow->horizontalLayout_zoom->insertWidget( 1, sliderCameraWindowZoom );
     sliderCameraWindowZoom->setObjectName( "sliderCameraWindowZoom" );
     sliderCameraWindowZoom->setMinimum( 0 );
+    sliderCameraWindowZoom->setMaximum( 3000 );
     sliderCameraWindowZoom->setValue( 0 );
     sliderCameraWindowZoom->show();
     sliderCameraWindowZoom->setShowValue( true );

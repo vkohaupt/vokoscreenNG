@@ -40,6 +40,7 @@ public:
     ~cameraSettingsDialog();
     Ui::cameraSettingsDialog *ui;
     QvkSpezialSlider *dialog_sliderCameraWindowSize;
+    QvkSpezialSlider *dialog_sliderCameraWindowZoom;
 
 private:
 
