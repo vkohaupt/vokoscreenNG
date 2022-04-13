@@ -35,6 +35,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     ui_formMainWindow->horizontalLayout_45->insertWidget( 1, sliderCameraWindowSize );
     sliderCameraWindowSize->setObjectName( "sliderCameraWindowSize" );
     sliderCameraWindowSize->setMinimum( 0 );
+    sliderCameraWindowSize->setMaximum( 3000 );
     sliderCameraWindowSize->setValue( 0 );
     sliderCameraWindowSize->show();
     sliderCameraWindowSize->setShowValue( true );
@@ -77,7 +78,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
 
     connect( ui_formMainWindow->checkBoxCameraWindowFrame, SIGNAL( toggled( bool ) ), this, SLOT( slot_frameOnOff( bool ) ) );
 
-    connect( sliderCameraWindowSize, SIGNAL( valueChanged( int ) ), this, SLOT( slot_sliderMoved( int ) ) );
+//    connect( sliderCameraWindowSize, SIGNAL( valueChanged( int ) ), this, SLOT( slot_sliderMoved( int ) ) );
 }
 
 

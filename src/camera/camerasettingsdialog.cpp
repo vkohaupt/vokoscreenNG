@@ -37,6 +37,7 @@ cameraSettingsDialog::cameraSettingsDialog(QWidget *parent) :
     ui->verticalLayout_3->insertWidget( 0, dialog_sliderCameraWindowSize );
     dialog_sliderCameraWindowSize->setObjectName( "sliderCameraWindowSize" );
     dialog_sliderCameraWindowSize->setMinimum( 0 );
+    dialog_sliderCameraWindowSize->setMaximum( 3000 );
     dialog_sliderCameraWindowSize->setValue( 0 );
     dialog_sliderCameraWindowSize->show();
     dialog_sliderCameraWindowSize->setShowValue( false );
