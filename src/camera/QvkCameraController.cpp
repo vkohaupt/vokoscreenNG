@@ -35,7 +35,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     ui_formMainWindow->horizontalLayout_45->insertWidget( 1, sliderCameraWindowSize );
     sliderCameraWindowSize->setObjectName( "sliderCameraWindowSize" );
     sliderCameraWindowSize->setMinimum( 0 );
-    sliderCameraWindowSize->setMaximum( 3000 );
+    sliderCameraWindowSize->setMaximum( 1 );
     sliderCameraWindowSize->setValue( 0 );
     sliderCameraWindowSize->show();
     sliderCameraWindowSize->setShowValue( true );
@@ -45,13 +45,19 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     ui_formMainWindow->horizontalLayout_zoom->insertWidget( 1, sliderCameraWindowZoom );
     sliderCameraWindowZoom->setObjectName( "sliderCameraWindowZoom" );
     sliderCameraWindowZoom->setMinimum( 0 );
-    sliderCameraWindowZoom->setMaximum( 3000 );
+    sliderCameraWindowZoom->setMaximum( 1 );
     sliderCameraWindowZoom->setValue( 0 );
     sliderCameraWindowZoom->show();
     sliderCameraWindowZoom->setShowValue( true );
     sliderCameraWindowZoom->setEnabled( false );
 
     vkCameraSettingsDialog = new cameraSettingsDialog;
+    connect( sliderCameraWindowSize, SIGNAL( rangeChanged( int, int ) ), vkCameraSettingsDialog->dialog_sliderCameraWindowSize, SLOT( setRange( int, int ) ) );
+    connect( sliderCameraWindowSize, SIGNAL( valueChanged( int ) ),      vkCameraSettingsDialog->dialog_sliderCameraWindowSize, SLOT( setValue( int ) ) );
+    connect( sliderCameraWindowZoom, SIGNAL( rangeChanged( int, int ) ), vkCameraSettingsDialog->dialog_sliderCameraWindowZoom, SLOT( setRange( int, int ) ) );
+    connect( sliderCameraWindowZoom, SIGNAL( valueChanged( int ) ),      vkCameraSettingsDialog->dialog_sliderCameraWindowZoom, SLOT( setValue( int ) ) );
+    connect( vkCameraSettingsDialog->dialog_sliderCameraWindowSize, SIGNAL( valueChanged( int ) ), sliderCameraWindowSize, SLOT( setValue( int ) ) );
+    connect( vkCameraSettingsDialog->dialog_sliderCameraWindowZoom, SIGNAL( valueChanged( int ) ), sliderCameraWindowZoom, SLOT( setValue( int ) ) );
 
     QvkCameraResolution *vkCameraResolution = new QvkCameraResolution( ui_formMainWindow, vkCameraSettingsDialog );
     connect( ui_formMainWindow->comboBoxCamera, SIGNAL( currentIndexChanged( int ) ), vkCameraResolution, SLOT( slot_resolution( int ) ) );
@@ -59,7 +65,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
 
     getAllDevices();
 
-    cameraWindow = new QvkCameraWindow( ui_surface, sliderCameraWindowSize, vkCameraSettingsDialog );
+    cameraWindow = new QvkCameraWindow( ui_surface, vkCameraSettingsDialog );
     cameraWindow->hide();
     connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_formMainWindow->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
     cameraWindow->setWindowTitle( QString( tr( "Camera") ) );
@@ -78,8 +84,6 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ), this, SLOT( slot_setNewImage( QImage ) ) );
 
     connect( ui_formMainWindow->checkBoxCameraWindowFrame, SIGNAL( toggled( bool ) ), this, SLOT( slot_frameOnOff( bool ) ) );
-
-//    connect( sliderCameraWindowSize, SIGNAL( valueChanged( int ) ), this, SLOT( slot_sliderMoved( int ) ) );
 }
 
 
