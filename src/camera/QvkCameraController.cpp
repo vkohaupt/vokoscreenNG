@@ -94,6 +94,9 @@ QvkCameraController::~QvkCameraController()
 
 void QvkCameraController::slot_resolutionChanged()
 {
+    sliderCameraWindowZoom->setMaximum( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() / 2 );
+    sliderCameraWindowSize->setMaximum( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() );
+
     if ( ui_formMainWindow->checkBoxCameraOnOff->checkState() == Qt::Checked )
     {
         ui_formMainWindow->checkBoxCameraOnOff->click();
@@ -200,7 +203,6 @@ void QvkCameraController::slot_setNewImage( QImage image )
 
 
     // Zoom
-    sliderCameraWindowZoom->setMaximum( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() / 2 );
     qreal width = image.width();
     qreal height = image.height();
     qreal quotient = width / height;
@@ -209,16 +211,15 @@ void QvkCameraController::slot_setNewImage( QImage image )
                                     minusPixel / quotient,
                                     width - ( 2 * minusPixel ),
                                     height - ( 2 * minusPixel / quotient )
-                                  );
+                                    );
     image = image_zoom.scaled( cameraWindow->width(), cameraWindow->height(), Qt::KeepAspectRatio, Qt::SmoothTransformation );
     cameraWindow->setPixmap( QPixmap::fromImage( image, Qt::AutoColor ) );
     // Zoom end
 
     // Window size
-    sliderCameraWindowSize->setMaximum( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() );
     cameraWindow->setFixedSize( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value(),
                                 ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - ( sliderCameraWindowSize->value() / quotient )
-                              );
+                                );
     ui_formMainWindow->labelCameraWindowSize->setText( QString::number( cameraWindow->width() ) + "x" + QString::number( cameraWindow->height() ) );
     // Window size end
 }
