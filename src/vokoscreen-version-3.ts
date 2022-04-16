@@ -227,19 +227,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>160x120</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>320x240</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>640x480</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
