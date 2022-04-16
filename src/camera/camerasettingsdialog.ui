@@ -84,7 +84,7 @@
             <item>
              <widget class="QLabel" name="label_25">
               <property name="text">
-               <string>320x240</string>
+               <string notr="true">---x---</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
