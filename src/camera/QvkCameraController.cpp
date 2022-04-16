@@ -39,7 +39,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     sliderCameraWindowSize->setValue( 0 );
     sliderCameraWindowSize->show();
     sliderCameraWindowSize->setShowValue( true );
-    sliderCameraWindowSize->setEnabled( false );
+    sliderCameraWindowSize->setEnabled( true );
 
     sliderCameraWindowZoom = new QvkSpezialSlider( Qt::Horizontal );
     ui_formMainWindow->horizontalLayout_zoom->insertWidget( 1, sliderCameraWindowZoom );
@@ -49,7 +49,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     sliderCameraWindowZoom->setValue( 0 );
     sliderCameraWindowZoom->show();
     sliderCameraWindowZoom->setShowValue( true );
-    sliderCameraWindowZoom->setEnabled( false );
+    sliderCameraWindowZoom->setEnabled( true );
 
     vkCameraSettingsDialog = new cameraSettingsDialog;
     connect( sliderCameraWindowSize, SIGNAL( rangeChanged( int, int ) ), vkCameraSettingsDialog->dialog_sliderCameraWindowSize, SLOT( setRange( int, int ) ) );
@@ -220,7 +220,6 @@ void QvkCameraController::slot_setNewImage( QImage image )
     cameraWindow->setFixedSize( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value(),
                                 ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - ( sliderCameraWindowSize->value() / quotient )
                                 );
-    ui_formMainWindow->labelCameraWindowSize->setText( QString::number( cameraWindow->width() ) + "x" + QString::number( cameraWindow->height() ) );
     // Window size end
 }
 

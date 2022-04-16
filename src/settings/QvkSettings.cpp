@@ -345,7 +345,6 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         if ( variant.isValid() )
         {
             listSlider.at(i)->setValue( variant.toInt() );
-            qDebug() << listSlider.at(i)->objectName() << variant.toInt();
         }
     }
 
