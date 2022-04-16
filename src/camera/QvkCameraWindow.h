@@ -45,7 +45,9 @@ public:
 
 private:
    Ui_formMainWindow *ui_formMainWindow;
-
+   bool mousePressed = false;
+   int mouseLocal_X;
+   int mouseLocal_Y;
 
 public slots:
 
@@ -58,9 +60,10 @@ protected:
     void closeEvent(QCloseEvent *event);
     void mouseDoubleClickEvent( QMouseEvent *event );
     void keyPressEvent( QKeyEvent *event );
-
     void mousePressEvent(QMouseEvent *event);
     void resizeEvent(QResizeEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
 
 signals:
     void signal_cameraWindow_close( bool );

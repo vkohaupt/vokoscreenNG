@@ -61,7 +61,7 @@ QvkCameraWindow::~QvkCameraWindow()
 }
 
 
-void QvkCameraWindow::closeEvent(QCloseEvent *event)
+void QvkCameraWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
     emit signal_cameraWindow_close( false );
@@ -83,7 +83,7 @@ void QvkCameraWindow::slot_switchToFullscreen()
 }
 
 
-void QvkCameraWindow::resizeEvent(QResizeEvent *event)
+void QvkCameraWindow::resizeEvent( QResizeEvent *event )
 {
     Q_UNUSED(event);
     if ( isFullScreen() == true )
@@ -136,7 +136,7 @@ void QvkCameraWindow::keyPressEvent( QKeyEvent *event )
 }
 
 
-void QvkCameraWindow::mousePressEvent(QMouseEvent *event)
+void QvkCameraWindow::mousePressEvent( QMouseEvent *event )
 {
     if ( event->button() == Qt::RightButton )
     {
@@ -168,5 +168,36 @@ void QvkCameraWindow::mousePressEvent(QMouseEvent *event)
     if ( isFullScreen() == true )
     {
         vkCameraSettingsDialog->close();
+    }
+
+    if ( ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true ) and ( event->button() == Qt::LeftButton ) )
+    {
+        QPixmap pixmap( ":/pictures/cursor/size_all.png" );
+        QCursor cursor( pixmap );
+        setCursor( cursor );
+        mousePressed = true;
+        mouseLocal_X = event->localPos().x();
+        mouseLocal_Y = event->localPos().y();
+    }
+}
+
+
+void QvkCameraWindow::mouseReleaseEvent( QMouseEvent *event )
+{
+    Q_UNUSED(event)
+    if ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true )
+    {
+        unsetCursor();
+        mousePressed = false;
+    }
+}
+
+
+void QvkCameraWindow::mouseMoveEvent( QMouseEvent *event )
+{
+    Q_UNUSED(event)
+    if ( ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true ) and ( mousePressed == true ) )
+    {
+        move( QCursor::pos().x() - mouseLocal_X, QCursor::pos().y() - mouseLocal_Y );
     }
 }
