@@ -85,17 +85,15 @@ void QvkCameraResolution::slot_statusChanged( QCamera::Status status )
         ui_formMainWindow->comboBoxCameraResolution->setCurrentIndex( index );
         vkCameraSettingsDialog->ui->comboBoxCameraResolution->setCurrentIndex( index );
 
-
         QList<QSlider *> listSlider = ui_formMainWindow->centralWidget->findChildren<QSlider *>();
         for ( int i = 0; i < listSlider.count(); i++ )
         {
-            if ( listSlider.at(i)->objectName() == "sliderCameraWindowSize" )
+            if ( ( listSlider.at(i)->objectName() == "sliderCameraWindowSize" ) or ( listSlider.at(i)->objectName() == "sliderCameraWindowZoom" ) )
             {
                 QVariant variant = settings.value( listSlider.at(i)->objectName() );
                 if ( variant.isValid() )
                 {
                     listSlider.at(i)->setValue( variant.toInt() );
-                    qDebug() << listSlider.at(i)->objectName() << variant.toInt();
                 }
             }
         }
