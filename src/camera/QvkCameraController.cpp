@@ -78,7 +78,6 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
 
     connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_formMainWindow->comboBoxCamera, SLOT( setDisabled( bool ) ) );
     connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), this, SLOT( slot_startCamera( bool ) ) );
-//    connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraWindowFrame, SLOT( setEnabled( bool ) ) );
 
     connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ), this, SLOT( slot_setNewImage( QImage ) ) );
 
@@ -98,13 +97,28 @@ void QvkCameraController::slot_resolutionChanged()
 
     if ( ui_formMainWindow->checkBoxCameraOnOff->checkState() == Qt::Checked )
     {
-        ui_formMainWindow->checkBoxCameraOnOff->click();
-        ui_formMainWindow->checkBoxCameraOnOff->click();
 
-        if ( vkCameraSettingsDialog->isVisible() == true )
+        if ( cameraWindow->isFullScreen() == false )
         {
-            vkCameraSettingsDialog->close();
-            vkCameraSettingsDialog->show();
+            ui_formMainWindow->checkBoxCameraOnOff->click();
+            ui_formMainWindow->checkBoxCameraOnOff->click();
+
+            if ( vkCameraSettingsDialog->isVisible() == true )
+            {
+                vkCameraSettingsDialog->close();
+                vkCameraSettingsDialog->show();
+            }
+        } else{
+            cameraWindow->showNormal();
+            ui_formMainWindow->checkBoxCameraOnOff->click();
+            ui_formMainWindow->checkBoxCameraOnOff->click();
+
+            if ( vkCameraSettingsDialog->isVisible() == true )
+            {
+                vkCameraSettingsDialog->close();
+                vkCameraSettingsDialog->show();
+            }
+            cameraWindow->showFullScreen();
         }
     }
 }
@@ -202,8 +216,6 @@ void QvkCameraController::slot_setNewImage( QImage image )
     if ( ui_formMainWindow->checkBoxCameraMono->isChecked() == true )
         image = image.convertToFormat( QImage::Format_Mono );
 
-
-
     // Zoom
     qreal width = image.width();
     qreal height = image.height();
@@ -219,9 +231,12 @@ void QvkCameraController::slot_setNewImage( QImage image )
     // Zoom end
 
     // Window size
-    cameraWindow->setFixedSize( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value(),
-                                ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - ( sliderCameraWindowSize->value() / quotient )
-                                );
+    if ( cameraWindow->isFullScreen() == false )
+    {
+        cameraWindow->setFixedSize( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value(),
+                                    ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - ( sliderCameraWindowSize->value() / quotient )
+                                    );
+    }
     // Window size end
 }
 

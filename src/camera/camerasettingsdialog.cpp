@@ -33,7 +33,6 @@ cameraSettingsDialog::cameraSettingsDialog(QWidget *parent) :
     setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint | Qt::Tool );
     ui->setupUi(this);
 
-//    ui->tabWidget->setTabIcon( 0, QIcon( ":/pictures/camera/camera.png" ) );
     setWindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
     setWindowTitle( tr( "Camera settings" ) );
 
