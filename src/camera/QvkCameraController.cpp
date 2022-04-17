@@ -66,7 +66,6 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     getAllDevices();
 
     cameraWindow = new QvkCameraWindow( ui_surface, vkCameraSettingsDialog );
-    cameraWindow->hide();
     connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_formMainWindow->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
     cameraWindow->setWindowTitle( QString( tr( "Camera") ) );
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );

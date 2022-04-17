@@ -170,7 +170,7 @@ void QvkCameraWindow::mousePressEvent( QMouseEvent *event )
         vkCameraSettingsDialog->close();
     }
 
-    if ( ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true ) and ( event->button() == Qt::LeftButton ) )
+    if ( ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true ) and ( event->button() == Qt::LeftButton ) and ( isFullScreen() == false ) )
     {
         QPixmap pixmap( ":/pictures/cursor/size_all.png" );
         QCursor cursor( pixmap );
@@ -185,7 +185,7 @@ void QvkCameraWindow::mousePressEvent( QMouseEvent *event )
 void QvkCameraWindow::mouseReleaseEvent( QMouseEvent *event )
 {
     Q_UNUSED(event)
-    if ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true )
+    if ( ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true ) and ( isFullScreen() == false ) )
     {
         unsetCursor();
         mousePressed = false;
