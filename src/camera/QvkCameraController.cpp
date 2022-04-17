@@ -79,7 +79,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
 
     connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_formMainWindow->comboBoxCamera, SLOT( setDisabled( bool ) ) );
     connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), this, SLOT( slot_startCamera( bool ) ) );
-    connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraWindowFrame, SLOT( setEnabled( bool ) ) );
+//    connect( ui_formMainWindow->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraWindowFrame, SLOT( setEnabled( bool ) ) );
 
     connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ), this, SLOT( slot_setNewImage( QImage ) ) );
 
@@ -130,7 +130,7 @@ void QvkCameraController::getAllDevices()
 
 void QvkCameraController::slot_frameOnOff( bool value )
 {
-    if ( cameraWindow->isVisible() == true )
+    if ( cameraWindow->isFullScreen() == false )
     {
         Qt::WindowFlags flags;
 
@@ -162,7 +162,10 @@ void QvkCameraController::slot_frameOnOff( bool value )
         }
 #endif
 
-        cameraWindow->show();
+        if ( ui_formMainWindow->checkBoxCameraOnOff->isChecked() == true )
+        {
+          cameraWindow->show();
+        }
     }
 }
 
@@ -237,6 +240,8 @@ void QvkCameraController::slot_addedCamera( QString description, QString device 
     ui_formMainWindow->checkBoxCameraMono->setEnabled( true );
     sliderCameraWindowSize->setEnabled( true );
     sliderCameraWindowZoom->setEnabled( true );
+
+    ui_formMainWindow->checkBoxCameraWindowFrame->setEnabled( true );
 }
 
 
@@ -263,6 +268,8 @@ void QvkCameraController::slot_removedCamera( QString device )
         ui_formMainWindow->checkBoxCameraMono->setEnabled( false );
         sliderCameraWindowSize->setEnabled( false );
         sliderCameraWindowZoom->setEnabled( false );
+
+        ui_formMainWindow->checkBoxCameraWindowFrame->setEnabled( false );
     }
 }
 
