@@ -32,9 +32,7 @@ HEADERS += mainwindow.h \
 
 FORMS +=   formMainWindow.ui
 
-RESOURCES += screencast.qrc \
-    player/screencast.qrc
-
+RESOURCES += screencast.qrc
 
 isEmpty(QMAKE_LRELEASE) {
   # Try invocation path of qmake for lrelease
