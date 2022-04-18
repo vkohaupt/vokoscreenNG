@@ -376,10 +376,6 @@ void QvkPlayer::mouseDoubleClickEvent( QMouseEvent *event )
         ui->verticalLayout->addWidget( ui->widget_menuebar );
         ui->widget_menuebar->raise();
         ui->widget_menuebar->show();
-
-        // To prevent a possibly black picture
-//        QTimer::singleShot(  50, Qt::PreciseTimer, ui->pushButtonFrameBackward, SLOT( click() ) );
-//        QTimer::singleShot( 100, Qt::PreciseTimer, ui->pushButtonFrameForward, SLOT( click() ) );
     }
 }
 
@@ -424,7 +420,6 @@ void QvkPlayer::setMediaFile( QString string )
     mediaFile = string;
     QFileInfo file( getMediaFile() );
     setWindowTitle( file.fileName() + " - " + global::name + " " + global::version + " - " + "Player" );
-//    vkPlayerGst->set_winId( widget_Video->winId() ); // wird wohl nicht benötigt
     vkPlayerGst->set_mediaFile( mediaFile );
 
     ui->label_logo->hide();
