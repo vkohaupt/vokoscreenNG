@@ -252,17 +252,6 @@ void QvkPlayer::slot_play()
 }
 
 
-void QvkPlayer::slot_pause()
-{
-    vkPlayerGst->slot_pause();
-
-    ui->pushButtonPlay->setVisible( true );
-    ui->pushButtonPause->setVisible( false );
-
-    ui->pushButtonStop->setEnabled( true );
-}
-
-
 void QvkPlayer::slot_stop()
 {
     vkPlayerGst->slot_stop();
@@ -283,8 +272,16 @@ void QvkPlayer::slot_stop()
     // Create a new widget_video
     widget_Video = new QWidget;
     vkPlayerGst->set_winId( widget_Video->winId() );
-    ui->verticalLayout->insertWidget( 0, widget_Video );
-    ui->verticalLayout->setStretch( 0, 1 );
+
+    if ( ui->pushButtonEmbedded->isChecked() == false )
+    {
+        ui->verticalLayout->insertWidget( 0, widget_Video );
+        ui->verticalLayout->setStretch( 0, 1 );
+    } else {
+        ui_mainwindow->verticalLayoutTabSidebarPlayer->insertWidget( 0, widget_Video );
+        ui_mainwindow->verticalLayoutTabSidebarPlayer->setStretch( 0, 1 );;
+    }
+
     widget_Video->setStyleSheet( "QWidget { background-color: black; }" );
     widget_Video->setVisible( false );
 
@@ -302,6 +299,17 @@ void QvkPlayer::slot_stop()
     ui->label_duration->setText( "00:00:00" );
     ui->label_playbackTime->setText( "00:00:00" );
     sliderVideo->setSliderPosition( 0 );
+}
+
+
+void QvkPlayer::slot_pause()
+{
+    vkPlayerGst->slot_pause();
+
+    ui->pushButtonPlay->setVisible( true );
+    ui->pushButtonPause->setVisible( false );
+
+    ui->pushButtonStop->setEnabled( true );
 }
 
 
@@ -416,7 +424,7 @@ void QvkPlayer::setMediaFile( QString string )
     mediaFile = string;
     QFileInfo file( getMediaFile() );
     setWindowTitle( file.fileName() + " - " + global::name + " " + global::version + " - " + "Player" );
-    vkPlayerGst->set_winId( widget_Video->winId() );
+//    vkPlayerGst->set_winId( widget_Video->winId() ); // wird wohl nicht benötigt
     vkPlayerGst->set_mediaFile( mediaFile );
 
     ui->label_logo->hide();
