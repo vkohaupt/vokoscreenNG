@@ -32,7 +32,8 @@ HEADERS += mainwindow.h \
 
 FORMS +=   formMainWindow.ui
 
-RESOURCES += screencast.qrc
+RESOURCES += screencast.qrc \
+    player/screencast.qrc
 
 
 isEmpty(QMAKE_LRELEASE) {
