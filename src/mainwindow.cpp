@@ -901,6 +901,23 @@ void QvkMainWindow::resizeEvent( QResizeEvent *event )
 }
 
 
+void QvkMainWindow::mouseDoubleClickEvent(QMouseEvent *event)
+{
+    Q_UNUSED(event)
+    if ( vkPlayer->ui->pushButtonEmbedded->isChecked() == true )
+    {
+        vkPlayer->ui->pushButtonEmbedded->click();
+        vkPlayer->showFullScreen();
+        return;
+    }
+
+    if (  vkPlayer->ui->pushButtonEmbedded->isChecked() == false )
+    {
+        vkPlayer->ui->pushButtonEmbedded->click();
+    }
+}
+
+
 void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
 {
 #ifdef Q_OS_LINUX
