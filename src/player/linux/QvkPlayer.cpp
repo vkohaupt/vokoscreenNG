@@ -501,6 +501,9 @@ void QvkPlayer::keyPressEvent( QKeyEvent *event )
 
 void QvkPlayer::mouseMoveEvent( QMouseEvent *event )
 {
+    timerHideMouse->stop();
+    timerHideMouse->start();
+
     unsetCursor();
     if ( isFullScreen() == true ){
       ui->widget_menuebar->show();
