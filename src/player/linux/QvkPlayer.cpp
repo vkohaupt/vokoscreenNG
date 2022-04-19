@@ -422,6 +422,7 @@ void QvkPlayer::mouseDoubleClickEvent( QMouseEvent *event )
 
         if ( ( vkPlayerGst->is_running() == false ) and ( vkPlayerGst->is_pause() == false ) )
         {
+            widget_Video->setUpdatesEnabled( true );
             ui->widget_menuebar->setParent( ui->label_logo );
             ui->widget_menuebar->raise();
             ui->widget_menuebar->show();
@@ -472,6 +473,7 @@ void QvkPlayer::keyPressEvent( QKeyEvent *event )
 
             if ( ( vkPlayerGst->is_running() == false ) and ( vkPlayerGst->is_pause() == false ) )
             {
+                widget_Video->setUpdatesEnabled( true );
                 ui->widget_menuebar->setParent( ui->label_logo );
                 ui->widget_menuebar->raise();
                 ui->widget_menuebar->show();
