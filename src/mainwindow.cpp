@@ -907,7 +907,8 @@ void QvkMainWindow::mouseDoubleClickEvent(QMouseEvent *event)
     if ( vkPlayer->ui->pushButtonEmbedded->isChecked() == true )
     {
         vkPlayer->ui->pushButtonEmbedded->click();
-        vkPlayer->showFullScreen();
+        QMouseEvent* doubleClick = new QMouseEvent( QEvent::MouseButtonDblClick, vkPlayer->rect().center(), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier );
+        QApplication::postEvent( vkPlayer, doubleClick );
         return;
     }
 
