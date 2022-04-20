@@ -46,6 +46,8 @@ public:
     void setMediaFile( QString string );
     Ui_player *ui;
     bool isFromGui = true;;
+    QTimer *timerHideMouse;
+
 
 public slots:
     void slot_play();
@@ -80,7 +82,6 @@ private:
     int mouseInWidgetX;
     int mouseInWidgetY;
     bool pressed = false;
-    QTimer *timerHideMouse;
 
 
 protected:
