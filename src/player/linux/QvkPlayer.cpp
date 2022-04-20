@@ -457,12 +457,21 @@ void QvkPlayer::mouseDoubleClickEvent( QMouseEvent *event )
 
 void QvkPlayer::keyPressEvent( QKeyEvent *event )
 {
+    // fullscreen -> GUI
+    if ( ( ( event->key() == Qt::Key_F11 ) or ( event->key() == Qt::Key_F ) or ( event->key() == Qt::Key_Escape ) ) and ( isFromGui == true ) ) {
+        ui->pushButtonEmbedded->click();
+        ui->widget_menuebar->show();
+        return;
+    }
+
+    // fullscreen -> window
     if ( event->key() == Qt::Key_Escape ) {
         showNormal();
         ui->verticalLayout->addWidget( ui->widget_menuebar );
         ui->widget_menuebar->raise();
         ui->widget_menuebar->show();
         widget_Video->setUpdatesEnabled( false );
+        return;
     }
 
     if ( ( event->key() == Qt::Key_F11 ) or ( event->key() == Qt::Key_F ) )
