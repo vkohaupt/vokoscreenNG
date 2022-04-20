@@ -225,20 +225,8 @@
         <translation>إزالة إطار النافذة</translation>
     </message>
     <message>
-        <source>160x120</source>
-        <translation>160x120</translation>
-    </message>
-    <message>
-        <source>320x240</source>
-        <translation>320x240</translation>
-    </message>
-    <message>
         <source>Camera settings</source>
         <translation>اعدادات الكاميرا</translation>
-    </message>
-    <message>
-        <source>640x480</source>
-        <translation>640x480</translation>
     </message>
 </context>
 <context>

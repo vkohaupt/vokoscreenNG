@@ -17,26 +17,26 @@
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Mudar para janela</translation>
+        <translation>Mudar para Janela</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Mudar para tela cheia</translation>
+        <translation>Mudar para o Modo Tela Cheia</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation type="unfinished"/>
+        <translation>Instalação concluída com sucesso.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation type="unfinished"/>
+        <translation>Feche esta Janela e Inicie o vokoscreenNG novamente.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation type="unfinished"/>
+        <translation>Divirta-se com o vokoscreenNG!</translation>
     </message>
 </context>
 <context>
@@ -225,20 +225,8 @@
         <translation>Remover moldura da janela</translation>
     </message>
     <message>
-        <source>160x120</source>
-        <translation>160x120</translation>
-    </message>
-    <message>
-        <source>320x240</source>
-        <translation>320x240</translation>
-    </message>
-    <message>
         <source>Camera settings</source>
         <translation>Configurações da câmera</translation>
-    </message>
-    <message>
-        <source>640x480</source>
-        <translation>640x480</translation>
     </message>
 </context>
 <context>
@@ -265,7 +253,7 @@
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Espaço disponível no disco</translation>
+        <translation>Espaço disponível no disco:</translation>
     </message>
     <message>
         <source>Information</source>
@@ -281,7 +269,7 @@
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>Quadros</translation>
     </message>
     <message>
         <source>Videocodec</source>
@@ -421,7 +409,7 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Reproduzir última gravação</translation>
+        <translation>Reproduzir a última gravação</translation>
     </message>
     <message>
         <source>Open folder</source>
@@ -485,39 +473,39 @@
     </message>
     <message>
         <source>Automatically</source>
-        <translation type="unfinished"/>
+        <translation>Automaticamente</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation type="unfinished"/>
+        <translation>Criar imagens das abas</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation type="unfinished"/>
+        <translation>Infomações de Licença</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"/>
+        <translation>LIGADO</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"/>
+        <translation>DESLIGADO</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation type="unfinished"/>
+        <translation>Atalhos de teclado globais</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation type="unfinished"/>
+        <translation>Atalhos de teclado atribuídos</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation type="unfinished"/>
+        <translation>Atalho de teclado não atribuído ou atribuído em duplicidade.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation type="unfinished"/>
+        <translation>Se o atalho foi atribuído, mas não funciona, ele pode estar sendo utilizado por outro programa.</translation>
     </message>
 </context>
 <context>

@@ -226,20 +226,8 @@
         <translation>Quitar marco de ventana</translation>
     </message>
     <message>
-        <source>160x120</source>
-        <translation>160 × 120</translation>
-    </message>
-    <message>
-        <source>320x240</source>
-        <translation>320 × 240</translation>
-    </message>
-    <message>
         <source>Camera settings</source>
         <translation>Configuración de cámara</translation>
-    </message>
-    <message>
-        <source>640x480</source>
-        <translation>640 × 480</translation>
     </message>
 </context>
 <context>
