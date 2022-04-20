@@ -906,6 +906,7 @@ void QvkMainWindow::mouseDoubleClickEvent(QMouseEvent *event)
     Q_UNUSED(event)
     if ( vkPlayer->ui->pushButtonEmbedded->isChecked() == true )
     {
+        vkPlayer->isFromGui = true;
         vkPlayer->ui->pushButtonEmbedded->click();
         QMouseEvent* doubleClick = new QMouseEvent( QEvent::MouseButtonDblClick, vkPlayer->rect().center(), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier );
         QApplication::postEvent( vkPlayer, doubleClick );

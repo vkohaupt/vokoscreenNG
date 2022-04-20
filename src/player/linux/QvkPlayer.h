@@ -45,7 +45,7 @@ public:
     void init();
     void setMediaFile( QString string );
     Ui_player *ui;
-
+    bool isFromGui = true;;
 
 public slots:
     void slot_play();

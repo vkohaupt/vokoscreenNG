@@ -409,6 +409,13 @@ void QvkPlayer::mouseDoubleClickEvent( QMouseEvent *event )
 {
     Q_UNUSED(event)
 
+    if ( ( isFullScreen() == true ) and ( isFromGui == true ) )
+    {
+        ui->pushButtonEmbedded->click();
+        ui->widget_menuebar->show();
+        return;
+    }
+
     if ( isFullScreen() == false )
     {
         if ( vkPlayerGst->is_running() == true )
