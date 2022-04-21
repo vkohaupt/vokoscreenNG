@@ -459,9 +459,16 @@ void QvkPlayer::keyPressEvent( QKeyEvent *event )
 {
     // fullscreen -> GUI
     if ( ( ( event->key() == Qt::Key_F11 ) or ( event->key() == Qt::Key_F ) or ( event->key() == Qt::Key_Escape ) ) and ( isFromGui == true ) ) {
-        ui->pushButtonEmbedded->click();
-        ui->widget_menuebar->show();
+        QMouseEvent* doubleClick = new QMouseEvent( QEvent::MouseButtonDblClick, ui_mainwindow->tabSidebarPlayer->rect().center(), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier );
+        QApplication::postEvent( ui_mainwindow->tabSidebarPlayer, doubleClick );
+        isFromGui = false;
         return;
+    }
+
+    // window -> GUI
+    if ( ( event->key() == Qt::Key_Escape ) and ( isFullScreen() == false ) ) {
+        QMouseEvent* doubleClick = new QMouseEvent( QEvent::MouseButtonDblClick, ui_mainwindow->tabSidebarPlayer->rect().center(), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier );
+        QApplication::postEvent( ui_mainwindow->tabSidebarPlayer, doubleClick );
     }
 
     // fullscreen -> window

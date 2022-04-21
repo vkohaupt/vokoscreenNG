@@ -904,6 +904,7 @@ void QvkMainWindow::resizeEvent( QResizeEvent *event )
 void QvkMainWindow::mouseDoubleClickEvent(QMouseEvent *event)
 {
     Q_UNUSED(event)
+    // GUI -> fullscreen
     if ( vkPlayer->ui->pushButtonEmbedded->isChecked() == true )
     {
         vkPlayer->isFromGui = true;
@@ -915,7 +916,8 @@ void QvkMainWindow::mouseDoubleClickEvent(QMouseEvent *event)
         return;
     }
 
-    if (  vkPlayer->ui->pushButtonEmbedded->isChecked() == false )
+    // window -> GUI
+    if ( vkPlayer->ui->pushButtonEmbedded->isChecked() == false )
     {
         vkPlayer->ui->pushButtonEmbedded->click();
     }
