@@ -24,9 +24,9 @@
 #define QVKPLAYER_H
 
 #include "ui_player.h"
+#include "ui_formMainWindow.h"
 #include "QvkPlayerGst.h"
 #include "QvkSpezialSlider.h"
-#include "ui_formMainWindow.h"
 
 #include <QWidget>
 #include <QMouseEvent>
@@ -39,14 +39,14 @@ class QvkPlayer : public QWidget
     Q_OBJECT
 
 public:
-    //explicit QvkPlayer();
-    QvkPlayer( QMainWindow *parent, Ui_formMainWindow *m_ui_mainwindow );
+    QvkPlayer( QMainWindow *parent, Ui_formMainWindow *m_ui );
     ~QvkPlayer();
-    void init();
     void setMediaFile( QString string );
-    Ui_player *ui;
-    bool isFromGui = false;
+    Ui_player *ui_player;
+    Ui_formMainWindow *ui_gui;
     QTimer *timerHideMouse;
+    QWidget *widget_Video = nullptr;
+    void widgetsToPlayer();
 
 
 public slots:
@@ -68,30 +68,28 @@ private slots:
     void slot_volume( int volume );
     void slot_volume_from_pulse( qreal );
     void slot_hideMouse();
-    void slot_embedded( bool bo );
 
 
 private:
-    Ui_formMainWindow *ui_mainwindow;
     QvkPlayerGst *vkPlayerGst;
     QString mediaFile;
     QString getMediaFile();
-    QWidget *widget_Video = nullptr;
     QvkSpezialSlider *sliderVideo;
     QvkSpezialSlider *sliderVolume;
     int mouseInWidgetX;
     int mouseInWidgetY;
     bool pressed = false;
+    void widgetsToGui();
 
 
 protected:
     void mouseDoubleClickEvent( QMouseEvent *event );
-    void keyPressEvent( QKeyEvent *event );
+//    void keyPressEvent( QKeyEvent *event );
     void mouseMoveEvent( QMouseEvent *event );
     void mousePressEvent( QMouseEvent *event );
     void mouseReleaseEvent( QMouseEvent *event );
     void resizeEvent( QResizeEvent *event );
-    void closeEvent( QCloseEvent *event );
+//    void closeEvent( QCloseEvent *event );
 
 
 };

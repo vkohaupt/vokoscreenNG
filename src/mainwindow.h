@@ -213,7 +213,7 @@ signals:
 protected:
     void closeEvent( QCloseEvent *event );
     void resizeEvent( QResizeEvent *event );
-    void mouseDoubleClickEvent(QMouseEvent *event);
+    void mouseDoubleClickEvent( QMouseEvent *event );
 
 
 };

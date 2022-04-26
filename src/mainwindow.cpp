@@ -192,7 +192,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 #ifdef Q_OS_LINUX
     vkPlayer = new QvkPlayer( this, ui );
-    vkPlayer->init();
+//    vkPlayer->init();
 #endif
 #ifdef Q_OS_WIN
     vkPlayer = new QvkPlayer( this, ui );
@@ -563,7 +563,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     {
         qDebug().noquote() << global::nameOutput << "started from file:" << arguments.at(1);
         vkPlayer->setMediaFile( arguments.at(1) );
-        vkPlayer->slot_play();
+//        vkPlayer->slot_play();
         ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
     }
 
@@ -901,26 +901,11 @@ void QvkMainWindow::resizeEvent( QResizeEvent *event )
 }
 
 
-void QvkMainWindow::mouseDoubleClickEvent(QMouseEvent *event)
+void QvkMainWindow::mouseDoubleClickEvent( QMouseEvent *event )
 {
     Q_UNUSED(event)
-    // GUI -> fullscreen
-    if ( vkPlayer->ui->pushButtonEmbedded->isChecked() == true )
-    {
-        vkPlayer->isFromGui = true;
-        vkPlayer->timerHideMouse->stop();
-        vkPlayer->timerHideMouse->start();
-        vkPlayer->ui->pushButtonEmbedded->click();
-        QMouseEvent* doubleClick = new QMouseEvent( QEvent::MouseButtonDblClick, vkPlayer->rect().center(), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier );
-        QApplication::postEvent( vkPlayer, doubleClick );
-        return;
-    }
-
-    // window -> GUI
-    if ( vkPlayer->ui->pushButtonEmbedded->isChecked() == false )
-    {
-        vkPlayer->ui->pushButtonEmbedded->click();
-    }
+    vkPlayer->widgetsToPlayer();
+    vkPlayer->showFullScreen();
 }
 
 
