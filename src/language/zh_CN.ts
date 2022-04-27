@@ -28,15 +28,15 @@
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation type="unfinished"/>
+        <translation>设置成功</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation type="unfinished"/>
+        <translation>关闭这个窗口并且重新启动vokoscreenNG</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation type="unfinished"/>
+        <translation>vokoscreenNG祝你玩得开心</translation>
     </message>
 </context>
 <context>
@@ -103,7 +103,7 @@
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>未发现文件管理器。</translation>
+        <translation>未发现文件管理器</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
@@ -409,7 +409,7 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>播放最新一次的录制</translation>
+        <translation>播放最后一次的录制</translation>
     </message>
     <message>
         <source>Open folder</source>
@@ -473,39 +473,39 @@
     </message>
     <message>
         <source>Automatically</source>
-        <translation type="unfinished"/>
+        <translation>自动</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation type="unfinished"/>
+        <translation>创建标签图像</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation type="unfinished"/>
+        <translation>许可证信息</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"/>
+        <translation>开</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"/>
+        <translation>关</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation type="unfinished"/>
+        <translation>全局键盘快捷键</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation type="unfinished"/>
+        <translation>指定快捷键</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation type="unfinished"/>
+        <translation>键盘快捷键未指定或者重复</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation type="unfinished"/>
+        <translation>如果已指定但是不工作，意味着其它程序已使用</translation>
     </message>
 </context>
 <context>

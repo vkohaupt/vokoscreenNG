@@ -28,15 +28,15 @@
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation type="unfinished"/>
+        <translation>Thiết lập thành công.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation type="unfinished"/>
+        <translation>Đóng cửa sổ này và khởi động lại vokoscreenNG.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation type="unfinished"/>
+        <translation>Chúc bạn vui vẻ với vokoscreenNG</translation>
     </message>
 </context>
 <context>
@@ -57,11 +57,11 @@
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Không tìm được filemanager</translation>
+        <translation>Không tìm thấy trình quản lý tệp.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Xin cài đặt filemanager</translation>
+        <translation>Vui lòng cài đặt trình quản lý tệp.</translation>
     </message>
 </context>
 <context>
@@ -103,11 +103,11 @@
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Không tìm được filemanager</translation>
+        <translation>Không tìm thấy trình quản lý tệp.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Xin cài đặt filemanager</translation>
+        <translation>Vui lòng cài đặt trình quản lý tệp.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
@@ -473,39 +473,39 @@
     </message>
     <message>
         <source>Automatically</source>
-        <translation type="unfinished"/>
+        <translation>Tự động</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation type="unfinished"/>
+        <translation>Tạo hình ảnh của các tab</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation type="unfinished"/>
+        <translation>Thông tin giấy phép</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"/>
+        <translation>BẬT</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"/>
+        <translation>TẮT</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation type="unfinished"/>
+        <translation>Các phím tắt chung</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation type="unfinished"/>
+        <translation>Các phím tắt được chỉ định.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation type="unfinished"/>
+        <translation>Phím tắt không được chỉ định hoặc được chỉ định nhiều lần.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation type="unfinished"/>
+        <translation>Nếu nó hiển thị được chỉ định nhưng không hoạt động, nó đang được sử dụng bởi một chương trình khác.</translation>
     </message>
 </context>
 <context>
