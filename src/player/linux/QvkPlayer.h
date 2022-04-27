@@ -47,6 +47,7 @@ public:
     QTimer *timerHideMouse;
     QWidget *widget_Video = nullptr;
     void widgetsToPlayer();
+    void widgetsToGui();
 
 
 public slots:
@@ -79,7 +80,6 @@ private:
     int mouseInWidgetX;
     int mouseInWidgetY;
     bool pressed = false;
-    void widgetsToGui();
 
 
 protected:

@@ -897,8 +897,12 @@ void QvkMainWindow::resizeEvent( QResizeEvent *event )
 void QvkMainWindow::mouseDoubleClickEvent( QMouseEvent *event )
 {
     Q_UNUSED(event)
-    vkPlayer->widgetsToPlayer();
-    vkPlayer->showFullScreen();
+    if ( vkPlayer->isFullScreen() == true ){
+        vkPlayer->widgetsToGui();
+    } else {
+        vkPlayer->widgetsToPlayer();
+        vkPlayer->showFullScreen();
+    }
 }
 
 
