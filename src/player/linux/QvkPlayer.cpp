@@ -110,6 +110,7 @@ QvkPlayer::~QvkPlayer()
 
 void QvkPlayer::widgetsToGui()
 {
+    ui_player->widget_menuebar->show();
     ui_gui->verticalLayout_gui_player->addWidget( ui_player->widget_player );
     ui_player->verticalLayout_player->addWidget( ui_player->widget_menuebar );
 
