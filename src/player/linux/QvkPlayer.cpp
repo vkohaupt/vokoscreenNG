@@ -422,6 +422,8 @@ void QvkPlayer::slot_stop()
     ui_player->label_duration->setText( "00:00:00" );
     ui_player->label_playbackTime->setText( "00:00:00" );
     sliderVideo->setSliderPosition( 0 );
+
+    widgetsToGui();
 }
 
 
