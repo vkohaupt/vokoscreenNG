@@ -191,8 +191,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     Q_UNUSED(vkMagnifierController);
 
 #ifdef Q_OS_LINUX
-    vkPlayer = new QvkPlayer( this, ui );
-//    vkPlayer->init();
+    vkPlayer = new QvkPlayer( ui );
 #endif
 #ifdef Q_OS_WIN
     vkPlayer = new QvkPlayer( this, ui );
@@ -634,12 +633,6 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 
     emit signal_close();
     emit signal_close( false );
-}
-
-
-void QvkMainWindow::slot_vokoPlayer()
-{
-    vkPlayer->show();
 }
 
 

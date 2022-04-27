@@ -192,8 +192,6 @@ private slots:
 
     void slot_sendReport();
 
-    void slot_vokoPlayer();
-
     void slot_setMaxFPS( int );
 
     void slot_gst_formatVideoAudoicodec_available();

@@ -39,7 +39,7 @@ class QvkPlayer : public QWidget
     Q_OBJECT
 
 public:
-    QvkPlayer( QMainWindow *parent, Ui_formMainWindow *m_ui );
+    QvkPlayer( Ui_formMainWindow *m_ui );
     ~QvkPlayer();
     void setMediaFile( QString string );
     Ui_player *ui_player;
@@ -84,12 +84,11 @@ private:
 
 protected:
     void mouseDoubleClickEvent( QMouseEvent *event );
-//    void keyPressEvent( QKeyEvent *event );
+    void keyPressEvent( QKeyEvent *event );
     void mouseMoveEvent( QMouseEvent *event );
     void mousePressEvent( QMouseEvent *event );
     void mouseReleaseEvent( QMouseEvent *event );
     void resizeEvent( QResizeEvent *event );
-//    void closeEvent( QCloseEvent *event );
 
 
 };
