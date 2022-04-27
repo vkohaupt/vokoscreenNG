@@ -382,8 +382,9 @@ void QvkPlayer::slot_play()
 void QvkPlayer::slot_EOS( QString m_file )
 {
     QFile file( m_file );
-    qDebug().noquote().nospace() << global::nameOutput << "[Player] End of stream" << file.fileName();
+    qDebug().noquote().nospace() << global::nameOutput << "[Player] End of stream " << file.fileName();
 
+    ui_player->widget_menuebar->show();
     ui_player->pushButtonStop->click();
 }
 
