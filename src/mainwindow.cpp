@@ -897,9 +897,15 @@ void QvkMainWindow::resizeEvent( QResizeEvent *event )
 void QvkMainWindow::mouseDoubleClickEvent( QMouseEvent *event )
 {
     Q_UNUSED(event)
+
+    // Doubleclick in empty playergui
     if ( vkPlayer->isFullScreen() == true ){
         vkPlayer->widgetsToGui();
-    } else {
+        return;
+    }
+
+    if ( ( vkPlayer->vkPlayerGst->is_running() == true ) or ( vkPlayer->vkPlayerGst->is_pause() == true ) )
+    {
         vkPlayer->widgetsToPlayer();
         vkPlayer->showFullScreen();
     }

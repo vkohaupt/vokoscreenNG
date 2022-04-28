@@ -213,6 +213,11 @@ void QvkPlayer::mouseMoveEvent( QMouseEvent *event )
 
 void QvkPlayer::setMediaFile( QString string )
 {
+    bool isfull = false;
+    if ( isFullScreen() == true ){
+        isfull = true ;
+    }
+
     mediaFile = string;
     QFileInfo file( getMediaFile() );
     setWindowTitle( file.fileName() + " - " + global::name + " " + global::version + " - " + "Player" );
@@ -223,6 +228,11 @@ void QvkPlayer::setMediaFile( QString string )
     ui_gui->verticalLayout_gui_player->setStretch(0, 1);
     ui_player->pushButtonStop->click();
     ui_player->pushButtonPlay->click();
+
+    if ( isfull == true ){
+        widgetsToPlayer();
+        showFullScreen();
+    }
 }
 
 

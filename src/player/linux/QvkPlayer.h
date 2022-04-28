@@ -41,6 +41,7 @@ class QvkPlayer : public QWidget
 public:
     QvkPlayer( Ui_formMainWindow *m_ui );
     ~QvkPlayer();
+    QvkPlayerGst *vkPlayerGst;
     void setMediaFile( QString string );
     Ui_player *ui_player;
     Ui_formMainWindow *ui_gui;
@@ -72,7 +73,6 @@ private slots:
 
 
 private:
-    QvkPlayerGst *vkPlayerGst;
     QString mediaFile;
     QString getMediaFile();
     QvkSpezialSlider *sliderVideo;
