@@ -80,6 +80,7 @@ private:
     int mouseInWidgetX;
     int mouseInWidgetY;
     bool pressed = false;
+    int timeHideMouse;
 
 
 protected:
@@ -89,7 +90,6 @@ protected:
     void mousePressEvent( QMouseEvent *event );
     void mouseReleaseEvent( QMouseEvent *event );
     void resizeEvent( QResizeEvent *event );
-
 
 };
 

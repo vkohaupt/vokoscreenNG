@@ -95,10 +95,11 @@ QvkPlayer::QvkPlayer( Ui_formMainWindow *ui_formMainWindow ) : ui_player(new Ui_
     connect( ui_player->pushButtonMute, SIGNAL( clicked( bool ) ), this, SLOT( slot_mute( bool ) ) );
     connect( sliderVolume, SIGNAL( sliderMoved( int ) ), this, SLOT( slot_volume( int ) ) );
 
+    timeHideMouse = 3000;
     timerHideMouse = new QTimer( this );
     timerHideMouse->setTimerType( Qt::PreciseTimer );
     connect( timerHideMouse, SIGNAL( timeout() ), this, SLOT( slot_hideMouse() ) );
-    timerHideMouse->setInterval( 3000 );
+    timerHideMouse->setInterval( timeHideMouse );
     timerHideMouse->start();
 }
 
@@ -125,7 +126,7 @@ void QvkPlayer::widgetsToGui()
 void QvkPlayer::widgetsToPlayer()
 {
     timerHideMouse->stop();
-    timerHideMouse->start();
+    timerHideMouse->start( timeHideMouse );
     unsetCursor();
     QList<QWidget *> listWidget = ui_gui->tabSidebarPlayer->findChildren<QWidget *>();
     for( int i = 0; i < listWidget.count(); i++ )
@@ -147,9 +148,15 @@ void QvkPlayer::widgetsToPlayer()
     int menueBarWidth = ui_player->widget_menuebar->width();
     ui_player->widget_menuebar->move( ( screenWidth - menueBarWidth ) / 2 , screenHeight - menueBarHeight );
 
-    // Only update by Video not by Qt.
-    // If embedded and setUpdatesEnabled=true, Video flickering all one second, if the "label_playbackTime" is updated.
+    // Menu must updated if fullscreen
     widget_Video->setUpdatesEnabled( true );
+
+    if ( vkPlayerGst->is_pause() == true )
+    {
+        unsetCursor();
+        QTimer::singleShot( 200, this, SLOT( slot_hideMouse() ) );
+        QTimer::singleShot( 250, ui_player->widget_menuebar, SLOT( show() ) );
+    }
 }
 
 
@@ -167,7 +174,7 @@ void QvkPlayer::slot_hideMouse()
 void QvkPlayer::mouseMoveEvent( QMouseEvent *event )
 {
     timerHideMouse->stop();
-    timerHideMouse->start();
+    timerHideMouse->start( timeHideMouse );
 
     unsetCursor();
 
