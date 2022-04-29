@@ -912,6 +912,16 @@ void QvkMainWindow::mouseDoubleClickEvent( QMouseEvent *event )
 }
 
 
+void QvkMainWindow::keyPressEvent( QKeyEvent *event )
+{
+    // Player go from GUI to Fullscreen
+    if ( ( event->key() == Qt::Key_F11 ) or ( event->key() == Qt::Key_F ) ) {
+        vkPlayer->widgetsToPlayer();
+        vkPlayer->showFullScreen();
+    }
+}
+
+
 void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
 {
 #ifdef Q_OS_LINUX

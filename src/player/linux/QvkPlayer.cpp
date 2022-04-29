@@ -153,7 +153,9 @@ void QvkPlayer::widgetsToPlayer()
 
     if ( vkPlayerGst->is_pause() == true )
     {
-        unsetCursor();
+        QCursor cursor;
+        cursor.setPos( cursor.pos() + QPoint( 1, 1 ) );
+
         QTimer::singleShot( 200, this, SLOT( slot_hideMouse() ) );
         QTimer::singleShot( 250, ui_player->widget_menuebar, SLOT( show() ) );
     }
