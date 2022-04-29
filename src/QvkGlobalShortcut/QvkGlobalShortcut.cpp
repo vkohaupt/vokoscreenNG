@@ -382,7 +382,6 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_magnification_clicked( bool value
     }
 }
 
-
 void QvkGlobalShortcut::slot_checkbox_shortcut_magnification_currentIndexChanged( int value )
 {
     Q_UNUSED(value)

@@ -787,8 +787,7 @@ void QvkMainWindow::slot_setVisibleSystray( bool value )
         vkSystray->init();
         connect( vkSystray, SIGNAL( signal_SystemtrayIsClose() ), this,      SLOT( close() ) );
         connect( this,      SIGNAL( signal_close() ),             vkSystray, SLOT( slot_closeSystray() ) );
-
-        connect( vkGlobalShortcut, SIGNAL( signal_shortcutSystray( QString, QString ) ), vkSystray, SLOT( slot_shortcutSystray( QString, QString ) ) ); //neu---------------------------------------------
+        connect( vkGlobalShortcut, SIGNAL( signal_shortcutSystray( QString, QString ) ), vkSystray, SLOT( slot_shortcutSystray( QString, QString ) ) );
     }
 }
 

@@ -48,7 +48,6 @@ void QvkSystray::init()
     startAction->setIcon( QIcon( ":pictures/player/start.png" ) );
     startAction->setText( tr( "Start" ) );
     startAction->setData( "Start" );
-    startAction->setShortcut( Qt::Key_Escape );
 
     stopAction = new QAction( this );
     stopAction->setIcon( QIcon( ":pictures/player/stop.png" ) );
