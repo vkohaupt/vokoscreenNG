@@ -262,7 +262,7 @@ void QvkSystray::slot_shortcutSystray( QString device, QString shortcut )
         stopAction->setShortcutVisibleInContextMenu( true );
         stopAction->setShortcut( QKeySequence::fromString( shortcut ) );
         if ( shortcut == "None" ){
-            startAction->setShortcutVisibleInContextMenu( false );
+            stopAction->setShortcutVisibleInContextMenu( false );
         }
     }
 
@@ -270,7 +270,7 @@ void QvkSystray::slot_shortcutSystray( QString device, QString shortcut )
         pauseAction->setShortcutVisibleInContextMenu( true );
         pauseAction->setShortcut( QKeySequence::fromString( shortcut ) );
         if ( shortcut == "None" ){
-            startAction->setShortcutVisibleInContextMenu( false );
+            pauseAction->setShortcutVisibleInContextMenu( false );
         }
     }
 
@@ -278,7 +278,7 @@ void QvkSystray::slot_shortcutSystray( QString device, QString shortcut )
         continueAction->setShortcutVisibleInContextMenu( true );
         continueAction->setShortcut( QKeySequence::fromString( shortcut ) );
         if ( shortcut == "None" ){
-            startAction->setShortcutVisibleInContextMenu( false );
+            continueAction->setShortcutVisibleInContextMenu( false );
         }
     }
 
