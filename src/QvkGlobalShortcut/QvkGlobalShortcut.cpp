@@ -240,6 +240,9 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_start_clicked( bool value )
         ui->pushButtonStart->setToolTip( shortcut );
         ui->pushButtonStop->setToolTip( shortcut );
 
+        emit signal_shortcutSystray( "Start", shortcut );
+        emit signal_shortcutSystray( "Stop", shortcut );
+
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Start:" << shortcut;
     } else
     {
@@ -250,6 +253,10 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_start_clicked( bool value )
         shortcutStart->unsetShortcut();
         ui->pushButtonStart->setToolTip( "None" );
         ui->pushButtonStop->setToolTip( "None" );
+
+        emit signal_shortcutSystray( "Start", "None" );
+        emit signal_shortcutSystray( "Stop", "None" );
+
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Start: None";
     }
 }
@@ -298,6 +305,9 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_pause_clicked( bool value )
         ui->pushButtonPause->setToolTip( shortcut );
         ui->pushButtonContinue->setToolTip( shortcut );
 
+        emit signal_shortcutSystray( "Pause", shortcut );
+        emit signal_shortcutSystray( "Continue", shortcut );
+
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Pause:" << shortcut;
     } else
     {
@@ -308,6 +318,10 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_pause_clicked( bool value )
         shortcutPause->unsetShortcut();
         ui->pushButtonPause->setToolTip( "None" );
         ui->pushButtonContinue->setToolTip( "None" );
+
+        emit signal_shortcutSystray( "Pause", "None" );
+        emit signal_shortcutSystray( "Continue", "None" );
+
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Pause: None";
     }
 }

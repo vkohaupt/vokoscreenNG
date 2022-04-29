@@ -71,6 +71,11 @@ private slots:
 
     void slot_currentIndexChanged( int index );
 
+    void slot_shortcutSystray( QString device, QString shortcut );
+
+
+
+
 protected:
   
   

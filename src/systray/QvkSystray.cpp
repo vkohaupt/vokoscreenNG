@@ -48,6 +48,7 @@ void QvkSystray::init()
     startAction->setIcon( QIcon( ":pictures/player/start.png" ) );
     startAction->setText( tr( "Start" ) );
     startAction->setData( "Start" );
+    startAction->setShortcut( Qt::Key_Escape );
 
     stopAction = new QAction( this );
     stopAction->setIcon( QIcon( ":pictures/player/stop.png" ) );
@@ -244,4 +245,42 @@ void QvkSystray::slot_currentIndexChanged( int index )
         cameraAction->setEnabled( true );
     else
         cameraAction->setEnabled( false );
+}
+
+
+void QvkSystray::slot_shortcutSystray( QString device, QString shortcut )
+{
+    if ( device == "Start"){
+        startAction->setShortcutVisibleInContextMenu( true );
+        startAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ){
+            startAction->setShortcutVisibleInContextMenu( false );
+        }
+        return;
+    }
+
+    if ( device == "Stop"){
+        stopAction->setShortcutVisibleInContextMenu( true );
+        stopAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ){
+            startAction->setShortcutVisibleInContextMenu( false );
+        }
+    }
+
+    if ( device == "Pause"){
+        pauseAction->setShortcutVisibleInContextMenu( true );
+        pauseAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ){
+            startAction->setShortcutVisibleInContextMenu( false );
+        }
+    }
+
+    if ( device == "Continue"){
+        continueAction->setShortcutVisibleInContextMenu( true );
+        continueAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ){
+            startAction->setShortcutVisibleInContextMenu( false );
+        }
+    }
+
 }

@@ -92,6 +92,7 @@ protected:
 
     
 signals:
+    void signal_shortcutSystray( QString, QString );
 
     
 };
