@@ -5724,7 +5724,7 @@
        <attribute name="toolTip">
         <string>Player</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_gui_player">
+       <layout class="QVBoxLayout" name="verticalLayoutTabSidebarPlayer">
         <property name="spacing">
          <number>0</number>
         </property>

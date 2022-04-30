@@ -112,7 +112,7 @@ QvkPlayer::~QvkPlayer()
 void QvkPlayer::widgetsToGui()
 {
     ui_player->widget_menuebar->show();
-    ui_gui->verticalLayout_gui_player->addWidget( ui_player->widget_player );
+    ui_gui->verticalLayoutTabSidebarPlayer->addWidget( ui_player->widget_player );
     ui_player->verticalLayout_player->addWidget( ui_player->widget_menuebar );
 
     // Only update by Video not by Qt.
@@ -234,7 +234,7 @@ void QvkPlayer::setMediaFile( QString string )
 
     ui_player->label_logo->hide();
     ui_player->pushButtonPlay->setEnabled( true );
-    ui_gui->verticalLayout_gui_player->setStretch(0, 1);
+    ui_gui->verticalLayoutTabSidebarPlayer->setStretch(0, 1);
     ui_player->pushButtonStop->click();
     ui_player->pushButtonPlay->click();
 
