@@ -366,18 +366,17 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_magnification_clicked( bool value
 
         shortcutMagnification->unsetShortcut();
         shortcutMagnification->setShortcut( QKeySequence( shortcut ) );
-
         ui->checkBoxMagnifier->setToolTip( shortcut );
-
+        emit signal_shortcutSystray( "magnification", shortcut );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Magnification:" << shortcut;
     } else
     {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
         ui->label_shortcut_picture_magnification->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
-
         shortcutMagnification->unsetShortcut();
         ui->checkBoxMagnifier->setToolTip( "None" );
+        emit signal_shortcutSystray( "magnification", "None" );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Magnification: None";
     }
 }
@@ -422,9 +421,8 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_camera_clicked( bool value )
 
         shortcutCamera->unsetShortcut();
         shortcutCamera->setShortcut( QKeySequence( shortcut ) );
-
         ui->checkBoxCameraOnOff->setToolTip( shortcut );
-
+        emit signal_shortcutSystray( "camera", shortcut );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Camera:" << shortcut;
     } else
     {
@@ -434,6 +432,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_camera_clicked( bool value )
 
         shortcutCamera->unsetShortcut();
         ui->checkBoxCameraOnOff->setToolTip( "None" );
+        emit signal_shortcutSystray( "camera", "None" );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Camera: None";
     }
 }
@@ -478,9 +477,8 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_showclick_clicked( bool value )
 
         shortcutShowclick->unsetShortcut();
         shortcutShowclick->setShortcut( QKeySequence( shortcut ) );
-
         spezialCheckboxShowclick->setToolTip( shortcut );
-
+        emit signal_shortcutSystray( "showclick", shortcut );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Showclick:" << shortcut;
     } else
     {
@@ -490,6 +488,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_showclick_clicked( bool value )
 
         shortcutShowclick->unsetShortcut();
         spezialCheckboxShowclick->setToolTip( "None" );
+        emit signal_shortcutSystray( "showclick", "None" );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Showclick: None";
     }
 }
@@ -536,7 +535,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_halo_clicked( bool value )
         shortcutHalo->setShortcut( QKeySequence( shortcut ) );
 
         spezialCheckboxHalo->setToolTip( shortcut );
-
+        emit signal_shortcutSystray( "halo", shortcut );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Halo:" << shortcut;
     } else
     {
@@ -546,6 +545,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_halo_clicked( bool value )
 
         shortcutHalo->unsetShortcut();
         spezialCheckboxHalo->setToolTip( "None" );
+        emit signal_shortcutSystray( "halo", "None" );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Halo: None";
     }
 }
