@@ -211,9 +211,10 @@ signals:
 protected:
     void closeEvent( QCloseEvent *event );
     void resizeEvent( QResizeEvent *event );
+#ifdef Q_OS_LINUX
     void mouseDoubleClickEvent( QMouseEvent *event );
     void keyPressEvent( QKeyEvent *event );
-
+#endif
 
 };
 

@@ -895,6 +895,7 @@ void QvkMainWindow::resizeEvent( QResizeEvent *event )
 }
 
 
+#ifdef Q_OS_LINUX
 void QvkMainWindow::mouseDoubleClickEvent( QMouseEvent *event )
 {
     Q_UNUSED(event)
@@ -921,6 +922,7 @@ void QvkMainWindow::keyPressEvent( QKeyEvent *event )
         vkPlayer->showFullScreen();
     }
 }
+#endif
 
 
 void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
