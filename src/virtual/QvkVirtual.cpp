@@ -32,20 +32,24 @@ QString QvkVirtual::isVirtualMaschine()
 #ifdef Q_OS_WIN
 QString QvkVirtual::isVirtualMaschine()
 {
-    QString maschine = "In progress, not working. Possibly in a next release.";
-/*
     QString maschine = "Nativ";
 
     QProcess process;
     process.setProcessChannelMode( QProcess::MergedChannels );
-    process.start( "wmic", QStringList() << "computersystem" << "get" << "manufacturer,name" );
+    QStringList list;
+    list.append( "computersystem" );
+    list.append( "get" );
+    list.append( "manufacturer,name" );
+    process.start( "C:/WINDOWS/System32/Wbem/WMIC.exe", list );
 
     if ( process.waitForFinished( 30000 ) )
     {
         QString text( process.readAll() );
-        maschine = text.trimmed();
+        text = text.section( "\n", 1 );
+        text = text.replace( "\r", "" );
+        maschine = text.replace( "\n", "" );
     }
-*/
+
     return maschine;
 }
 #endif
