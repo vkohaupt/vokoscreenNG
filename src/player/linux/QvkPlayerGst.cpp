@@ -94,7 +94,7 @@ void QvkPlayerGst::init()
     timer->setInterval( 20 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_timer() ) );
 
-    qDebug().noquote() << global::nameOutput << "GstElement player";
+    qDebug().noquote() << global::nameOutput << "Player symbols: + available, - not available";
     QStringList list;
     list << "filesrc";
     list << "decodebin";
@@ -122,6 +122,7 @@ void QvkPlayerGst::init()
             gst_object_unref( factory );
         }
     }
+    qDebug().noquote();
 }
 
 

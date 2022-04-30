@@ -190,13 +190,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkMagnifierController = new QvkMagnifierController(ui);
     Q_UNUSED(vkMagnifierController);
 
-#ifdef Q_OS_LINUX
-    vkPlayer = new QvkPlayer( ui );
-#endif
-#ifdef Q_OS_WIN
-    vkPlayer = new QvkPlayer( this, ui );
-#endif
-
     QvkHelp *vkHelp = new QvkHelp( ui );
 
     QvkLicenses *vkLicenses = new QvkLicenses( ui );
@@ -264,6 +257,13 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 
     vk_setCornerWidget( ui->tabWidgetScreencast );
+
+#ifdef Q_OS_LINUX
+    vkPlayer = new QvkPlayer( ui );
+#endif
+#ifdef Q_OS_WIN
+    vkPlayer = new QvkPlayer( this, ui );
+#endif
 
     // Sidebar
     connect( ui->toolButtonScreencast, &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(0); } );
@@ -1425,7 +1425,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
 
 void QvkMainWindow::VK_Check_is_Format_available()
 {
-    qDebug().noquote() << global::nameOutput << "Symbols: + available, - not available";
+    qDebug().noquote() << global::nameOutput << "Record symbols: + available, - not available";
     QStringList tempList;
     for ( int x = 0; x < videoFormatsList.count(); x++ )
     {
