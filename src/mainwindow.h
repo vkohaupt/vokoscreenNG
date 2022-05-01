@@ -48,7 +48,6 @@
 #include <QFileSystemWatcher>
 #include <QSoundEffect>
 #include <QShowEvent>
-//#include <QWindow>
 
 #include <gst/gst.h>
 
@@ -187,8 +186,6 @@ private slots:
 
     void slot_IfStartAudioCodecWidgetsSetEnabled();
     void slot_IfStopAudioCodecWidgetsSetDisabled();
-
-    void slot_setVisibleSystray( bool value );
 
     void slot_sendReport();
 

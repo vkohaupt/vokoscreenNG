@@ -203,6 +203,13 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             listCheckBox.at(i)->click();
             continue;
         }
+        if ( ( listCheckBox.at(i)->objectName() == "checkBoxShowInSystray" ) and
+             ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == false ) )
+        {
+            listCheckBox.at(i)->click();
+            listCheckBox.at(i)->click();
+            continue;
+        }
 
         if ( ( listCheckBox.at(i)->objectName() == "checkBoxStartsMinimized" ) and
              ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true ) )

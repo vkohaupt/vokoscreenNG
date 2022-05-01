@@ -445,10 +445,32 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkHalo = new QvkHalo();
     vkHalo->init( ui );
 
+    /* Wayland
+     * If start with "./name -platform wayland" comes a Memory access error
+     * On Wayland we have to time no access to GlobalShortcuts
+     * We must disable this function for Wayland but not for X11 and Windows
+     */
+#ifdef Q_OS_LINUX
+    if ( QX11Info::isPlatformX11() == true )
+    {
+        vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
+        Q_UNUSED(vkGlobalShortcut);
+    }
+#endif
+#ifdef Q_OS_WIN
+    vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
+    Q_UNUSED(vkGlobalShortcut);
+#endif
+    vk_setCornerWidget( ui->tabWidgetShortcut );
+
     vkSystrayAlternative = new QvkSystrayAlternative( this, ui, sliderShowInSystrayAlternative );
     if ( QSystemTrayIcon::isSystemTrayAvailable() == true )
     {
-        connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ), this, SLOT( slot_setVisibleSystray( bool ) ) );
+        vkSystray = new QvkSystray(ui);
+        vkSystray->init();
+        connect( vkSystray,                 SIGNAL( signal_SystemtrayIsClose() ),                 this,      SLOT( close() ) );
+        connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ),                            vkSystray, SLOT( setVisible( bool ) ) );
+        connect( vkGlobalShortcut,          SIGNAL( signal_shortcutSystray( QString, QString ) ), vkSystray, SLOT( slot_shortcutSystray( QString, QString ) ) );
         ui->frameShowInSystrayAlternative->hide();
         ui->toolButtonShowInSystrayAlternativeReset->hide();
     } else
@@ -510,26 +532,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vk_setCornerWidget( ui->tabWidgetLog );
     connect( ui->pushButtonSendReport, SIGNAL( clicked( bool ) ), this, SLOT( slot_sendReport() ) );
     // *****************End Log ***********************************
-
-
-    /* Wayland
-     * If start with "./name -platform wayland" comes a Memory access error
-     * On Wayland we have to time no access to GlobalShortcuts
-     * We must disable this function for Wayland but not for X11 and Windows
-     */
-#ifdef Q_OS_LINUX
-    if ( QX11Info::isPlatformX11() == true )
-    {
-        vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
-        Q_UNUSED(vkGlobalShortcut);
-    }
-#endif
-#ifdef Q_OS_WIN
-    vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
-    Q_UNUSED(vkGlobalShortcut);
-#endif
-    vk_setCornerWidget( ui->tabWidgetShortcut );
-
 
 #ifdef Q_OS_WIN
     vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller( vkSettings.getFileName(), ui );
@@ -770,25 +772,6 @@ void QvkMainWindow::slot_sendReport()
     QString string = stringList.join( "" );
     bool b = QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) );
     Q_UNUSED(b);
-}
-
-
-void QvkMainWindow::slot_setVisibleSystray( bool value )
-{
-    if ( value == false )
-    {
-        vkSystray->slot_closeSystray();
-        delete vkSystray;
-    }
-
-    if ( value == true )
-    {
-        vkSystray = new QvkSystray(ui);
-        vkSystray->init();
-        connect( vkSystray, SIGNAL( signal_SystemtrayIsClose() ), this,      SLOT( close() ) );
-        connect( this,      SIGNAL( signal_close() ),             vkSystray, SLOT( slot_closeSystray() ) );
-        connect( vkGlobalShortcut, SIGNAL( signal_shortcutSystray( QString, QString ) ), vkSystray, SLOT( slot_shortcutSystray( QString, QString ) ) );
-    }
 }
 
 
