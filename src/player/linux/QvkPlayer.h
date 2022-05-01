@@ -49,6 +49,7 @@ public:
     QWidget *widget_Video = nullptr;
     void widgetsToPlayer();
     void widgetsToGui();
+    QString pathOpenFile;
 
 
 public slots:

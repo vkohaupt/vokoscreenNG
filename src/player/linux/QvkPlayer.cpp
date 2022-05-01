@@ -255,12 +255,20 @@ void QvkPlayer::slot_openFile()
 {
     QApplication::setDesktopSettingsAware( false );
 
+    QString file;
     QvkFileDialog vkFileDialog( this );
-    vkFileDialog.setVideoPath( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
+    if ( !pathOpenFile.isEmpty() ) {
+        vkFileDialog.setVideoPath( pathOpenFile );
+    } else {
+        vkFileDialog.setVideoPath( ui_gui->lineEditVideoPath->text() );
+    }
+
     if ( vkFileDialog.exec() == QDialog::Accepted )
     {
         if ( !vkFileDialog.selectedFiles().empty() ) {
             setMediaFile( vkFileDialog.selectedFiles().at(0) );
+            file = vkFileDialog.selectedFiles().at(0);
+            pathOpenFile = QDir( file ).absolutePath();
         }
     }
 
