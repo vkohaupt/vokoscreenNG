@@ -258,12 +258,17 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vk_setCornerWidget( ui->tabWidgetScreencast );
 
+// Linux player deactivated to manny errrors
+/*
 #ifdef Q_OS_LINUX
     vkPlayer = new QvkPlayer( ui );
 #endif
 #ifdef Q_OS_WIN
     vkPlayer = new QvkPlayer( this, ui );
 #endif
+*/
+    vkPlayer = new QvkPlayer( this, ui );
+
 
     // Sidebar
     connect( ui->toolButtonScreencast, &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(0); } );
@@ -564,7 +569,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     {
         qDebug().noquote() << global::nameOutput << "started from file:" << arguments.at(1);
         vkPlayer->setMediaFile( arguments.at(1) );
-//        vkPlayer->slot_play();
+        vkPlayer->slot_play();
         ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
     }
 
@@ -878,6 +883,8 @@ void QvkMainWindow::resizeEvent( QResizeEvent *event )
 }
 
 
+// Linux player deactivated to manny errors
+/*
 #ifdef Q_OS_LINUX
 void QvkMainWindow::mouseDoubleClickEvent( QMouseEvent *event )
 {
@@ -906,7 +913,7 @@ void QvkMainWindow::keyPressEvent( QKeyEvent *event )
     }
 }
 #endif
-
+*/
 
 void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
 {
@@ -2083,13 +2090,14 @@ void QvkMainWindow::slot_Play()
     filters << global::name + "*";
     QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
 
-    qDebug().noquote() << global::nameOutput << "play video with vokoplayer";
+    qDebug().noquote() << global::nameOutput << "play video with vokoplayer" << videoFileList.at(0);
     ui->toolButtonPlayer->click();
     QString string;
     string.append( ui->lineEditVideoPath->text() );
     string.append( "/" );
     string.append( videoFileList.at( 0 ) );
     vkPlayer->setMediaFile( string );
+    vkPlayer->slot_play();
 }
 
 

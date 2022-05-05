@@ -208,10 +208,14 @@ signals:
 protected:
     void closeEvent( QCloseEvent *event );
     void resizeEvent( QResizeEvent *event );
+
+// New linux player deactivtaed to manny errors
+/*
 #ifdef Q_OS_LINUX
     void mouseDoubleClickEvent( QMouseEvent *event );
     void keyPressEvent( QKeyEvent *event );
 #endif
+*/
 
 };
 

@@ -71,7 +71,7 @@ QvkRegionChoise::QvkRegionChoise( Ui_formMainWindow *ui_formMainWindow ):handleP
     setWindowIcon( icon );
 
     // Hint: Qt::WindowStaysOnTopHint is only for X11 and Windows on WayLand not do it
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint ); // With Qt::ToolTip no keyboard;
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); // With Qt::ToolTip no keyboard;
     setAttribute( Qt::WA_TranslucentBackground, true);
     setMouseTracking( true );
     setFrameColor( Qt::darkGreen );

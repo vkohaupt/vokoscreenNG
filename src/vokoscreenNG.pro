@@ -148,11 +148,13 @@ include(log/log.pri)
 include(QGlobalShortcut/qglobalshortcut.pri)
 include(QvkGlobalShortcut/QvkGlobalShortcut.pri)
 
+# New Player deactivated, to many errors. Change to Windows player see next paragraph
 # player linux
-unix:include(player/linux/playerLinux.pri)
+# unix:include(player/linux/playerLinux.pri)
 
 # player windows
-win32:include(player/windows/playerWindows.pri)
+# win32:include(player/windows/playerWindows.pri)
+include(player/windows/playerWindows.pri)
 
 # screenManager
 include(screenManager/screenManager.pri)
