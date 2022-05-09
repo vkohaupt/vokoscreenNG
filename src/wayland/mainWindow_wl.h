@@ -3,10 +3,11 @@
 
 #include "ui_formMainWindow_wl.h"
 #include "portal_wl.h"
+
 #include "QvkSpezialSlider.h"
-#include "QvkRegionChoise_wl.h"
 #include "QvkContainerController.h"
 #include "QvkLogController.h"
+#include "QvkRegionChoise_wl.h"
 
 #include <QMainWindow>
 
@@ -29,12 +30,13 @@ public:
 
 
 private:
+    QvkRegionChoise_wl *vkRegionChoise_wl;
+
     QvkLogController *vklogController;
     GstElement *pipeline = nullptr;
     QStringList videoFormatsList;
     QvkSpezialSlider *sliderFrames;
-    QvkRegionChoise_wl *vkRegionChoise;
-    QWidget *testWidget;
+//    QWidget *testWidget;
 
     void set_LogController();
     void set_WindowTitle();
@@ -63,7 +65,7 @@ private Q_SLOTS:
     void slot_start_gst( QString vk_fd, QString vk_path );
     void slot_frames_Reset();
     void slot_portal_cancel( uint );
-    void slot_set_panel_values_in_spinboxes();
+//    void slot_set_panel_values_in_spinboxes();
 
 
 protected:

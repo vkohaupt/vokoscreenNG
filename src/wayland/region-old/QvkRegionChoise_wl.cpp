@@ -21,21 +21,17 @@
  */
 
 #include "QvkRegionChoise_wl.h"
-#include "QvkRegionButtonArrow.h"
+#include "QvkRegionButtonArrow_wl.h"
 #include "global.h"
 
 #include <QDebug>
 #include <QPainter>
-#include <QGuiApplication>
 #include <QBitmap>
 #include <QPaintEvent>
 #include <QIcon>
+#include <QTimer>
 
-#ifdef Q_OS_LINUX
-  #include <QX11Info>
-#endif
-
-QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow ):handlePressed(NoHandle),
+QvkRegionChoise_wl::QvkRegionChoise_wl():handlePressed(NoHandle),
                                    handleUnderMouse(NoHandle),
                                    HandleColorBackground( Qt::lightGray ),
                                    HandleColorBackgroundSize( Qt::lightGray ),
@@ -56,52 +52,83 @@ QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow 
                                    frameColor(Qt::lightGray)
 {
 
-    ui = ui_formMainWindow;
-
-    setWindowTitle( QString( tr( "Area") ) );
+//    setWindowTitle( QString( tr( "Area") ) );
+    setWindowTitle( QString( ( "Area") ) );
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
 
-    // Hint: Qt::WindowStaysOnTopHint is only for X11 and Windows on WayLand not do it
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); // With Qt::ToolTip no keyboard;
-    setAttribute( Qt::WA_TranslucentBackground, true);
+    setWindowFlags( Qt::FramelessWindowHint );
+    setAttribute( Qt::WA_TranslucentBackground, true );
     setMouseTracking( true );
     setFrameColor( Qt::darkGreen );
+    hide();
 }
 
 
-void QvkRegionChoise_wl::slot_init()
-{
-
-    QList<QScreen *> screenList = QGuiApplication::screens();
-    screen = screenList.at( 0 );
-    resize( screen->size().width(), screen->size().height() );
-    screenWidth = screen->size().width();
-    screenHeight = screen->size().height();
-qDebug() << screenList;
-
-
 /*
-    if ( ui->comboBoxScreencastScreenArea->currentIndex() > -1 )
-    {
-        int index = ui->comboBoxScreencastScreenArea->currentIndex();
-        QList<QScreen *> screenList = QGuiApplication::screens();
-        screen = screenList.at( index );
+ * bool value = true radiobutton was selected
+ * bool value = false radio button was deselected
+ */
+void QvkRegionChoise_wl::slot_show( bool value )
+{
+    // Hinweis:
+    // Die Bereichsanzeige ist ein Fenster und wird immmer am beginn des verfügbaren Bereichs auf dem Desktop gesetzt.
+    // Ist das Desktop-Panel oben am Bildschirm wird das Fenster z.b bei 0,44 gesetzt.
+    // Ist das Panel unten am Bildschirm wird das Fenster bei 0,0 gesetzt.
+    // Die Frage ist, wie erkennt man ob das Desktop-Panel oben oder unten gesetzt ist?
+    // Gelöst wird das bis jetzt in dem der User in der GUI angeben muß wo das Panel plaziert ist
 
-        resize( screen->size().width(), screen->size().height() );
-        screenWidth = screen->size().width();
-        screenHeight = screen->size().height();
-        move( screen->geometry().x(), screen->geometry().y() );
+
+    // Das Fenster wird dort plaziert wo sich die GUI befindet, dies wird vom compositer geregelt.
+    // Damit die Fenstergröße ermittelt werden kann ist unter KDE folgender ablauf zwingend notwendig
+    // Gnome wurde getestet und funktioniert.
+    if ( value == true )
+    {
+        // "Screen" wird im weiteren Verlauf noch gebraucht für pixelratio
+        Screen = screen();
+
+        // Das Fenster wird per "show()" in einer von Qt vorgegebenen größe angezeigt
+        // Anschließend wird das Fenster per "singelshot()" maximiert
+        show();
+        update();
+        QTimer::singleShot( 1000, Qt::PreciseTimer, this, SLOT( showMaximized() ) );
+        update();
+    } else
+    {
+        // Beim ausblenden muß das Fenster erst per "shownormal()" dargestellt werden
+        // und anschließend per "hide()" versteckt werden
+        showNormal();
+        update();
+        QTimer::singleShot( 1000, Qt::PreciseTimer, this, SLOT( hide() ) );
+        update();
     }
-*/
 }
 
 
 QvkRegionChoise_wl::~QvkRegionChoise_wl()
 {
 }
+
+
+// Ermitteln der größten Fensterhöhe und breite zwischen den Panels
+void QvkRegionChoise_wl::resizeEvent(QResizeEvent *event)
+{
+    Q_UNUSED(event);
+    windowWidth = size().width();
+    windowHeight = size().height();
+}
+
+
+/*
+ * Panel is the desktop panel that contain the Taskbar, Systray and other things.
+ */
+int QvkRegionChoise_wl::get_sum_all_panels_height()
+{
+    return ( Screen->size().height() - size().height() );
+}
+
 
 
 void QvkRegionChoise_wl::setHandleColorBackground( QColor color )
@@ -139,7 +166,7 @@ void QvkRegionChoise_wl::paintEvent( QPaintEvent *event )
 {
     (void)event;
 
-    QPixmap pixmap( screenWidth, screenHeight );
+    QPixmap pixmap( windowWidth, windowHeight );
 
     if ( recordemode == false )
     {
@@ -272,7 +299,9 @@ void QvkRegionChoise_wl::mousePressEvent(QMouseEvent *event)
     old_Frame_X2 = frame_X + frame_Width;
     old_Frame_Y2 = frame_Y + frame_height;
 
-    repaint();
+    clearMask();
+    update();
+
 }
 
 
@@ -285,9 +314,6 @@ void QvkRegionChoise_wl::mouseReleaseEvent( QMouseEvent * event )
 
   handlePressed = NoHandle;
 
-  repaint();
-  setVisible( false );
-  setVisible( true );
   update();
 }
 
@@ -433,7 +459,7 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Right :{
                                    frame_Width = frame_Width + 1;
 
-                                   if ( ( frame_X + frame_Width - framePenHalf ) > screenWidth )
+                                   if ( ( frame_X + frame_Width - framePenHalf ) > windowWidth )
                                    {
                                        frame_Width = frame_Width - 1;
                                    }
@@ -460,7 +486,7 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Right :{
                                    frame_Width = frame_Width + 1;
 
-                                   if ( ( frame_X + frame_Width - framePenHalf ) > screenWidth )
+                                   if ( ( frame_X + frame_Width - framePenHalf ) > windowWidth )
                                    {
                                        frame_Width = frame_Width - 1;
                                    }
@@ -487,7 +513,7 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Down : {
                                    frame_height = frame_height + 1;
 
-                                   if ( frame_Y + frame_height - framePenHalf > screenHeight )
+                                   if ( frame_Y + frame_height - framePenHalf > windowHeight )
                                    {
                                        frame_height = frame_height - 1;
                                    }
@@ -507,7 +533,7 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Right :{
                                    frame_Width = frame_Width + 1;
 
-                                   if ( frame_X + frame_Width - framePenHalf > screenWidth )
+                                   if ( frame_X + frame_Width - framePenHalf > windowWidth )
                                    {
                                        frame_Width = frame_Width - 1;
                                    }
@@ -534,7 +560,7 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Down : {
                                    frame_height = frame_height + 1;
 
-                                   if ( frame_Y + frame_height - framePenHalf > screenHeight )
+                                   if ( frame_Y + frame_height - framePenHalf > windowHeight )
                                    {
                                        frame_height = frame_height - 1;
                                    }
@@ -561,7 +587,7 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Down :  {
                                     frame_height = frame_height + 1;
 
-                                    if ( frame_Y + frame_height - framePenHalf > screenHeight )
+                                    if ( frame_Y + frame_height - framePenHalf > windowHeight )
                                     {
                                         frame_height = frame_height - 1;
                                     }
@@ -643,7 +669,7 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Right : {
                                     frame_X = frame_X + 1;
 
-                                    if ( frame_X + frame_Width - framePenHalf > screenWidth )
+                                    if ( frame_X + frame_Width - framePenHalf > windowWidth )
                                     {
                                         frame_X = frame_X - 1;
                                     }
@@ -663,7 +689,7 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Down  : {
                                     frame_Y = frame_Y + 1;
 
-                                    if ( frame_Y + frame_height - framePenHalf > screenHeight )
+                                    if ( frame_Y + frame_height - framePenHalf > windowHeight )
                                     {
                                         frame_Y = frame_Y - 1;
                                     }
@@ -764,9 +790,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                              frame_height = old_Frame_Y2 + framePenHalf;
                            }
 
-                           if( ( frame_X + frame_Width - framePenHalf ) > screenWidth )
+                           if( ( frame_X + frame_Width - framePenHalf ) > windowWidth )
                            {
-                             frame_Width = screenWidth + framePenHalf - frame_X;
+                             frame_Width = windowWidth + framePenHalf - frame_X;
                            }
 
                            break;
@@ -781,9 +807,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                            }
 
                            // Limit max
-                           if( ( frame_X + frame_Width - framePenHalf ) > screenWidth )
+                           if( ( frame_X + frame_Width - framePenHalf ) > windowWidth )
                            {
-                             frame_Width = screenWidth + framePenHalf - frame_X;
+                             frame_Width = windowWidth + framePenHalf - frame_X;
                            }
 
                            break;
@@ -804,14 +830,14 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                            }
 
                            //Limit max
-                           if( ( frame_X + frame_Width - framePenHalf ) > screenWidth )
+                           if( ( frame_X + frame_Width - framePenHalf ) > windowWidth )
                            {
-                             frame_Width = screenWidth + framePenHalf - frame_X;
+                             frame_Width = windowWidth + framePenHalf - frame_X;
                            }
 
-                           if( ( frame_Y + frame_height - framePenHalf ) > screenHeight )
+                           if( ( frame_Y + frame_height - framePenHalf ) > windowHeight )
                            {
-                             frame_height = screenHeight + framePenHalf - frame_Y;
+                             frame_height = windowHeight + framePenHalf - frame_Y;
                            }
 
                            break;
@@ -826,9 +852,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                            }
 
                            //Limit max
-                           if( ( frame_Y + frame_height - framePenHalf ) > screenHeight )
+                           if( ( frame_Y + frame_height - framePenHalf ) > windowHeight )
                            {
-                             frame_height = screenHeight + framePenHalf - frame_Y;
+                             frame_height = windowHeight + framePenHalf - frame_Y;
                            }
 
                            break;
@@ -858,9 +884,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                               frame_Width = old_Frame_X2 + framePenHalf;
                            }
 
-                           if( ( frame_Y + frame_height - framePenHalf ) > screenHeight )
+                           if( ( frame_Y + frame_height - framePenHalf ) > windowHeight )
                            {
-                             frame_height = screenHeight + framePenHalf - frame_Y;
+                             frame_height = windowHeight + framePenHalf - frame_Y;
                            }
 
                            break;
@@ -904,26 +930,27 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                            }
 
                            // Limit Right
-                           if( ( frame_X + frame_Width - framePenHalf ) > screenWidth )
+                           if( ( frame_X + frame_Width - framePenHalf ) > windowWidth )
                            {
-                               frame_X = screenWidth - frame_Width + framePenHalf;
+                               frame_X = windowWidth - frame_Width + framePenHalf;
                            }
 
                            // Limit Bottom
-                           if( ( frame_Y + frame_height - framePenHalf ) > screenHeight )
+                           if( ( frame_Y + frame_height - framePenHalf ) > windowHeight )
                            {
-                               frame_Y = screenHeight - frame_height + framePenHalf;
+                               frame_Y = windowHeight - frame_height + framePenHalf;
                            }
 
                            break;
                          }
     } // end switch
 
-
     if ( handlePressed != NoHandle )
     {
-            repaint();
+            clearMask();
+            update();
     }
+
 
     if ( handlePressed != NoHandle )
         return;
@@ -978,7 +1005,7 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
         return;
     }
 
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QRect regionBottomRight( frame_X + frame_Width - buttonArrow.getWithHalf(),
                                frame_Y + frame_height - buttonArrow.getWithHalf(),
                                buttonArrow.getWithHalf()*2,
@@ -1042,9 +1069,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
 
 void QvkRegionChoise_wl::printSize( QPainter &painter )
 {
-  QString widthHeigtSize = QString::number( static_cast<int>( getWidth()/screen->devicePixelRatio() ) ) +
+  QString widthHeigtSize = QString::number( static_cast<int>( getWidthRecordArea()/Screen->devicePixelRatio() ) ) +
                            " x " +
-                           QString::number( static_cast<int>( getHeight()/screen->devicePixelRatio() ) );
+                           QString::number( static_cast<int>( getHeightRecordArea()/Screen->devicePixelRatio() ) );
 
   QFont font;
   font.setPointSize( 14 );
@@ -1114,7 +1141,7 @@ void QvkRegionChoise_wl::HandleRecord( QPainter &painter, int x, int y, int star
 
 void QvkRegionChoise_wl::HandleTopLeft( QPainter &painter )
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QColor color;
 
     if ( handlePressed == TopLeft )
@@ -1171,7 +1198,7 @@ void QvkRegionChoise_wl::HandleTopLeftSize( QPainter &painter)
 
 void QvkRegionChoise_wl::HandleTopMiddle( QPainter &painter)
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QColor color;
 
     if ( handlePressed == TopMiddle )
@@ -1226,7 +1253,7 @@ void QvkRegionChoise_wl::HandleTopMiddleSize( QPainter &painter )
 
 void QvkRegionChoise_wl::HandleTopRight(QPainter &painter)
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QColor color;
 
     if ( handlePressed == TopRight )
@@ -1283,7 +1310,7 @@ void QvkRegionChoise_wl::HandleTopRightSize( QPainter &painter )
 
 void QvkRegionChoise_wl::HandleRightMiddle( QPainter &painter )
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QColor color;
 
     if ( handlePressed == RightMiddle )
@@ -1338,7 +1365,7 @@ void QvkRegionChoise_wl::HandleRightMiddleSize( QPainter &painter )
 
 void QvkRegionChoise_wl::HandleBottomRight( QPainter &painter )
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QColor color;
 
     if ( handlePressed == BottomRight )
@@ -1368,7 +1395,7 @@ void QvkRegionChoise_wl::HandleBottomRight( QPainter &painter )
 
 void QvkRegionChoise_wl::HandleBottomRightSize( QPainter &painter )
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QFont font;
     font.setPointSize( 10 );
     painter.setFont( font );
@@ -1397,7 +1424,7 @@ void QvkRegionChoise_wl::HandleBottomRightSize( QPainter &painter )
 
 void QvkRegionChoise_wl::HandleBottomMiddle( QPainter &painter )
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QColor color;
 
     if ( handlePressed == BottomMiddle )
@@ -1452,7 +1479,7 @@ void QvkRegionChoise_wl::HandleBottomMiddleSize(QPainter &painter )
 
 void QvkRegionChoise_wl::HandleBottomLeft( QPainter &painter )
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QColor color;
 
     if ( handlePressed == BottomLeft )
@@ -1509,7 +1536,7 @@ void QvkRegionChoise_wl::HandleBottomLeftSize( QPainter &painter )
 
 void QvkRegionChoise_wl::HandleLeftMiddle( QPainter &painter )
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QColor color;
 
     if ( handlePressed == LeftMiddle )
@@ -1565,7 +1592,7 @@ void QvkRegionChoise_wl::HandleLeftMiddleSize( QPainter &painter )
 
 void QvkRegionChoise_wl::HandleMiddle( QPainter &painter )
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QColor color;
 
     if ( handlePressed == Middle )
@@ -1615,11 +1642,13 @@ void QvkRegionChoise_wl::recordMode( bool value )
     {
         recordemode = true;
         repaint();
+        update();
     }
     else
     {
         recordemode = false;
         repaint();
+        update();
     }
 }
 
@@ -1646,8 +1675,8 @@ int QvkRegionChoise_wl::getY()
  */
 qreal QvkRegionChoise_wl::getXRecordArea()
 {
-    qreal xReal = ( frame_X + framePenWidth/2 ) * screen->devicePixelRatio();
-    int xInt = static_cast<int>( ( frame_X + framePenWidth/2 ) * screen->devicePixelRatio() );
+    qreal xReal = ( frame_X + framePenWidth/2 ) * Screen->devicePixelRatio();
+    int xInt = static_cast<int>( ( frame_X + framePenWidth/2 ) * Screen->devicePixelRatio() );
 
     if ( xReal > xInt )
     {
@@ -1663,8 +1692,8 @@ qreal QvkRegionChoise_wl::getXRecordArea()
  */
 qreal QvkRegionChoise_wl::getYRecordArea()
 {
-   qreal xReal = ( frame_Y + framePenWidth/2 ) * screen->devicePixelRatio();
-   int xInt = static_cast<int>( ( frame_Y + framePenWidth/2 ) * screen->devicePixelRatio() );
+   qreal xReal = ( frame_Y + framePenWidth/2 ) * Screen->devicePixelRatio();
+   int xInt = static_cast<int>( ( frame_Y + framePenWidth/2 ) * Screen->devicePixelRatio() );
 
    if ( xReal > xInt )
    {
@@ -1678,18 +1707,18 @@ qreal QvkRegionChoise_wl::getYRecordArea()
 /**
  * Return height from record area
  */
-qreal QvkRegionChoise_wl::getHeight()
+qreal QvkRegionChoise_wl::getHeightRecordArea()
 {
-    qreal xReal =   ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * screen->devicePixelRatio();
-    int xInt = static_cast<int>( ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * screen->devicePixelRatio() );
+    qreal xReal =   ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * Screen->devicePixelRatio();
+    int xInt = static_cast<int>( ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * Screen->devicePixelRatio() );
 
     if ( xReal > xInt )
     {
-        xReal = static_cast<int>( ( frame_height - framePenWidth ) * screen->devicePixelRatio() ) - 1;
+        xReal = static_cast<int>( ( frame_height - framePenWidth ) * Screen->devicePixelRatio() ) - 1;
     }
     else
     {
-        xReal = static_cast<int>( ( frame_height - framePenWidth ) * screen->devicePixelRatio() );
+        xReal = static_cast<int>( ( frame_height - framePenWidth ) * Screen->devicePixelRatio() );
     }
 
     return xReal;
@@ -1699,18 +1728,18 @@ qreal QvkRegionChoise_wl::getHeight()
 /**
  * Return width from record Area
  */
-qreal QvkRegionChoise_wl::getWidth()
+qreal QvkRegionChoise_wl::getWidthRecordArea()
 {
-    qreal xReal = ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * screen->devicePixelRatio();
-    int xInt = static_cast<int>( ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * screen->devicePixelRatio() );
+    qreal xReal = ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * Screen->devicePixelRatio();
+    int xInt = static_cast<int>( ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * Screen->devicePixelRatio() );
 
     if ( xReal > xInt )
     {
-        xReal = static_cast<int>( ( frame_Width - framePenWidth ) * screen->devicePixelRatio() ) - 1;
+        xReal = static_cast<int>( ( frame_Width - framePenWidth ) * Screen->devicePixelRatio() ) - 1;
     }
     else
     {
-        xReal = static_cast<int>( ( frame_Width - framePenWidth ) * screen->devicePixelRatio() );
+        xReal = static_cast<int>( ( frame_Width - framePenWidth ) * Screen->devicePixelRatio() );
     }
 
     return xReal;
@@ -1724,18 +1753,21 @@ void QvkRegionChoise_wl::slot_areaReset()
     frame_Width = frame_min_width;
     frame_height = frame_min_height;
     repaint();
+    update();
 }
 
 void QvkRegionChoise_wl::setX( int x )
 {
     frame_X = x - framePenHalf;
     repaint();
+    update();
 }
 
 void QvkRegionChoise_wl::setY( int y )
 {
     frame_Y = y - framePenHalf;
     repaint();
+    update();
 }
 
 
@@ -1743,11 +1775,13 @@ void QvkRegionChoise_wl::setWidth( int width )
 {
     frame_Width = width + framePenWidth;
     repaint();
+    update();
 }
 
 void QvkRegionChoise_wl::setHeight( int height )
 {
     frame_height = height + framePenWidth;
     repaint();
+    update();
 }
 

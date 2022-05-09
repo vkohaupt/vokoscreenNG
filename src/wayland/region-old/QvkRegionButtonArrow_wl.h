@@ -40,7 +40,6 @@ private:
   int radius = 20;
   int diameter = 2 * radius;
 
-
 public slots:
   QPixmap getPixmapHandle(QColor color, QColor colorSelected, degreeArrow degree );
   QPixmap getButton( QColor color );

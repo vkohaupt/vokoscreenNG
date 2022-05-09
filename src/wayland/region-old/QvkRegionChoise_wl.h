@@ -20,10 +20,8 @@
  * --End_License--
  */
 
-#ifndef REGIONCHOISE_WL_H
-#define REGIONCHOISE_WL_H
-
-#include "ui_formMainWindow_wl.h"
+#ifndef REGIONCHOISE_wl_H
+#define REGIONCHOISE_wl_H
 
 #include "QvkRegionButtonArrow_wl.h"
 
@@ -34,12 +32,12 @@ class QvkRegionChoise_wl : public QWidget
 { 
 Q_OBJECT
 public:
-  QvkRegionChoise_wl( Ui_formMainWindow_wl *ui );
+  QvkRegionChoise_wl();
   virtual ~QvkRegionChoise_wl();
   int getX();
   int getY();
-  qreal getHeight();
-  qreal getWidth();
+  qreal getHeightRecordArea();
+  qreal getWidthRecordArea();
   qreal getXRecordArea();
   qreal getYRecordArea();
 
@@ -51,15 +49,17 @@ public:
 
   void setFrameColor( Qt::GlobalColor color );
 
-  QScreen *screen;
-  int screenWidth = 400; //Must set a value. Under windows comes a QPainter message
-  int screenHeight = 400;
+  QScreen *Screen;
+  int windowWidth = 400;
+  int windowHeight = 400;
+
+  int get_availables_window_height();
+  int get_sum_all_panels_height();
 
 
 public slots:
   void slot_areaReset();
-  void slot_init();
-//  void slot_show( bool value );
+  void slot_show( bool value );
 
 
 private slots:
@@ -72,11 +72,10 @@ protected:
   void mouseReleaseEvent( QMouseEvent * event );
   void leaveEvent( QEvent *event );
   void keyPressEvent( QKeyEvent * event );
+  void resizeEvent(QResizeEvent *event);
 
-  
+
 private:
-  Ui_formMainWindow_wl *ui;
-
   enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle };
   Handle handlePressed;
   Handle handleUnderMouse;
@@ -145,6 +144,10 @@ private:
 
   Qt::GlobalColor getFrameColor();
   Qt::GlobalColor frameColor;
+
+  int availables_window_height = 0;
+  int availables_window_width = 0;
+
 
 };
 #endif

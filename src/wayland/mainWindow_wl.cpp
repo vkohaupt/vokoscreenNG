@@ -29,8 +29,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_check_all_Elements_available();
     vkContainerController = new QvkContainerController( this, ui );
     set_RegionChoice();
-    set_test_available_geometry();
-
+//    set_test_available_geometry();
     ui->frame_information->hide();
     ui->pushButtonPause->hide();
     ui->pushButtonContinue->hide();
@@ -53,7 +52,7 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
     ui->pushButtonStop->click();
-    vkRegionChoise->close();
+    vkRegionChoise_wl->close();
 }
 
 
@@ -135,8 +134,9 @@ void QvkMainWindow_wl::set_Connects()
 
     connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this,           SLOT( slot_frames_Reset() ) );
 
-    connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->widget_Desktop_spinboxes, SLOT( setDisabled( bool ) ) );
-    connect( ui->radioButtonScreencastWindow,     SIGNAL( toggled( bool ) ), ui->widget_Desktop_spinboxes, SLOT( setDisabled( bool ) ) );
+//    connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->widget_Desktop_spinboxes, SLOT( setDisabled( bool ) ) );
+//    connect( ui->radioButtonScreencastWindow,     SIGNAL( toggled( bool ) ), ui->widget_Desktop_spinboxes, SLOT( setDisabled( bool ) ) );
+
 
 }
 
@@ -249,17 +249,18 @@ void QvkMainWindow_wl::slot_start()
 
 QString QvkMainWindow_wl::get_Area_Videocrop()
 {
+
     QString videocrop = "";
-    vkRegionChoise->recordMode( true );
+    vkRegionChoise_wl->recordMode( true );
 
     QScreen *Screen = screen();
     int screenWidth = Screen->size().width();
     int screenHeight = Screen->size().height();
 
-    QString top = QString::number( vkRegionChoise->getYRecordArea() + ui->spinBox_top->value() );
-    QString right = QString::number( screenWidth - (  ui->spinBox_left->value() + vkRegionChoise->getXRecordArea() + vkRegionChoise->getWidthRecordArea() ) );
-    QString bottom = QString::number( screenHeight - ( ui->spinBox_top->value() + vkRegionChoise->getYRecordArea() + vkRegionChoise->getHeightRecordArea() ) );
-    QString left = QString::number( vkRegionChoise->getXRecordArea() + ui->spinBox_left->value() );
+    QString top = QString::number( vkRegionChoise_wl->getYRecordArea() );
+    QString right = QString::number( screenWidth - ( vkRegionChoise_wl->getXRecordArea() + vkRegionChoise_wl->getWidth() ) );
+    QString bottom = QString::number( screenHeight - ( vkRegionChoise_wl->getYRecordArea() + vkRegionChoise_wl->getHeight() ) );
+    QString left = QString::number( vkRegionChoise_wl->getXRecordArea() );
     videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
 
     qDebug().noquote() << global::nameOutput << "Area crop from the screen"
@@ -269,6 +270,7 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
                        << QString::number( Screen->size().width() ) + "/" + QString::number( Screen->size().height() );
 
     return videocrop;
+
 }
 
 
@@ -312,7 +314,7 @@ void QvkMainWindow_wl::slot_stop()
     qDebug().noquote() << global::nameOutput << "Stop record";
 
     if ( ui->radioButtonScreencastArea->isChecked() ) {
-       vkRegionChoise->recordMode( false );
+       vkRegionChoise_wl->recordMode( false );
     }
 }
 
@@ -397,7 +399,7 @@ void QvkMainWindow_wl::set_check_all_Elements_available()
     qDebug();
 }
 
-
+/*
 void QvkMainWindow_wl::set_RegionChoice()
 {
     vkRegionChoise = new QvkRegionChoise_wl();
@@ -406,8 +408,21 @@ void QvkMainWindow_wl::set_RegionChoice()
     connect( ui->spinBox_top,  QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int i){ ui->spinBox_bottom->setValue( ui->spinBox_top->maximum() - i ); } );
     connect( ui->spinBox_left, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int i){ ui->spinBox_right->setValue( ui->spinBox_left->maximum() - i ); } );
 }
+*/
 
+void QvkMainWindow_wl::set_RegionChoice()
+{
+    vkRegionChoise_wl = new QvkRegionChoise_wl( ui );
+    connect( ui->radioButtonScreencastArea, SIGNAL( toggled( bool ) ), vkRegionChoise_wl, SLOT( setVisible( bool ) ) );
+    vkRegionChoise_wl->slot_init();
 
+//    connect( ui->radioButtonScreencastArea,     SIGNAL( toggled( bool ) ), vkRegionChoise_wl, SLOT( slot_show( bool ) ) );
+//    connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise_wl, SLOT( slot_areaReset() ) );
+//    connect( ui->spinBox_top,  QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int i){ ui->spinBox_bottom->setValue( ui->spinBox_top->maximum() - i ); } );
+//    connect( ui->spinBox_left, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int i){ ui->spinBox_right->setValue( ui->spinBox_left->maximum() - i ); } );
+}
+
+/*
 void QvkMainWindow_wl::set_test_available_geometry()
 {
     testWidget = new QWidget;
@@ -441,3 +456,4 @@ void QvkMainWindow_wl::slot_set_panel_values_in_spinboxes()
 
     testWidget->close();
 }
+*/
