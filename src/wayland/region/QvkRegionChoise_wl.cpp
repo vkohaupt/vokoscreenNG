@@ -31,10 +31,6 @@
 #include <QPaintEvent>
 #include <QIcon>
 
-#ifdef Q_OS_LINUX
-  #include <QX11Info>
-#endif
-
 QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow ):handlePressed(NoHandle),
                                    handleUnderMouse(NoHandle),
                                    HandleColorBackground( Qt::lightGray ),
@@ -131,7 +127,6 @@ void QvkRegionChoise_wl::vk_setGeometry( int x, int y, int with, int height  )
   frame_Y = y;
   frame_Width = with;
   frame_height = height;
-  update();
 }
 
 
@@ -288,7 +283,6 @@ void QvkRegionChoise_wl::mouseReleaseEvent( QMouseEvent * event )
   repaint();
   setVisible( false );
   setVisible( true );
-  update();
 }
 
 
@@ -674,7 +668,6 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
     }
 
     repaint();
-    update();
 }
 
 
