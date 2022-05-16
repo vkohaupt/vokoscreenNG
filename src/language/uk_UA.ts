@@ -505,7 +505,7 @@
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation type="unfinished"/>
+        <translation>Якщо показує призначено, але не працює, то використовується іншою програмою.</translation>
     </message>
 </context>
 <context>

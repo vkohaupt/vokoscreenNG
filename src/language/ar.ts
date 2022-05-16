@@ -28,15 +28,15 @@
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation type="unfinished"/>
+        <translation>كان الإعداد ناجحًا.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation type="unfinished"/>
+        <translation>أغلق هذه النافذة وابدأ تشغيل vokoscreenNG مرة أخرى.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation type="unfinished"/>
+        <translation>استمتع مع vokoscreenNG</translation>
     </message>
 </context>
 <context>
@@ -61,7 +61,7 @@
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation> الرجاء تنصيب اداره الملفات</translation>
+        <translation>الرجاء تنصيب اداره الملفات</translation>
     </message>
 </context>
 <context>
@@ -76,7 +76,7 @@
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>تم الوصول إلى حد المساحة الفارغة على القرص.</translation>
+        <translation>تم الوصول إلى الحد الأقصى لمساحة القرص الحرة.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
@@ -107,7 +107,7 @@
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation> الرجاء تنصيب اداره الملفات</translation>
+        <translation>الرجاء تنصيب اداره الملفات</translation>
     </message>
     <message>
         <source>Sourcecode</source>
@@ -425,7 +425,7 @@
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation> البدء  بوضع التصغير </translation>
+        <translation> البدء بوضع التصغير </translation>
     </message>
     <message>
         <source>Flip horizontal</source>
@@ -473,39 +473,39 @@
     </message>
     <message>
         <source>Automatically</source>
-        <translation type="unfinished"/>
+        <translation>تلقائيا</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation type="unfinished"/>
+        <translation>إنشاء صور لعلامات التبويب</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation type="unfinished"/>
+        <translation>معلومات الترخيص</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"/>
+        <translation>تشغيل</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"/>
+        <translation>إيقاف</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation type="unfinished"/>
+        <translation>اختصارات لوحة المفاتيح العامة</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation type="unfinished"/>
+        <translation>مفاتيح الاختصار المعينة.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation type="unfinished"/>
+        <translation>لم يتم تعيين اختصار لوحة المفاتيح أو تم التعيين أكثر من مرة.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation type="unfinished"/>
+        <translation>إذا ظهر أنه تم تعيينه ولكنه لا يعمل ، فهذا يعني أنه قيد الاستخدام من قبل برنامج آخر.</translation>
     </message>
 </context>
 <context>

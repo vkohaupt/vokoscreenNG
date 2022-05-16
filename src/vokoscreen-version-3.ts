@@ -143,6 +143,13 @@
     </message>
 </context>
 <context>
+    <name>QvkRegionChoise_wl</name>
+    <message>
+        <source>Area</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
