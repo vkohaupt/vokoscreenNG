@@ -30,6 +30,13 @@ private:
     QAction *continueAction;
     QAction *hideAction;
     QAction *exitAction;
+
+    QAction *cameraAction;
+    QAction *magnifierAction;
+    QAction *showclickAction;
+    QAction *haloAction;
+
+
     QSize size;
     QPoint point;
     QvkSpezialSlider *sliderShowInSystrayAlternative;
@@ -41,6 +48,7 @@ private slots:
     void slot_setPauseIcon( bool );
     void slot_resizeWindow( int );
     void slot_ShowInSystrayAlternativeReset( bool );
+    void slot_shortcutSystray( QString device, QString shortcut );
 
 
 protected:

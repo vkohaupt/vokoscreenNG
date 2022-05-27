@@ -1,5 +1,6 @@
 #include "QvkSystrayAlternative.h"
 #include "global.h"
+#include "QvkSpezialCheckbox.h"
 
 #include <QDebug>
 #include <QAction>
@@ -49,6 +50,31 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     continueAction->setData( "Continue" );
     continueAction->setEnabled( false );
 
+    cameraAction = new QAction( this );
+    cameraAction->setIcon( QIcon( ":pictures/systray/camera.png" ) );
+    cameraAction->setText( tr( "Camera" ) );
+    cameraAction->setData( "Camera" );
+    cameraAction->setCheckable( true );
+    cameraAction->setEnabled( true );
+
+    magnifierAction = new QAction( this );
+    magnifierAction->setIcon( QIcon( ":pictures/systray/magnification.png" ) );
+    magnifierAction->setText( tr( "Magnification" ) );
+    magnifierAction->setData( "Magnification" );
+    magnifierAction->setCheckable( true );
+
+    showclickAction = new QAction( this );
+    showclickAction->setIcon( QIcon( ":pictures/systray/showclick.png" ) );
+    showclickAction->setText( "ShowClick" );
+    showclickAction->setData( "ShowClick" );
+    showclickAction->setCheckable( true );
+
+    haloAction = new QAction( this );
+    haloAction->setIcon( QIcon( ":pictures/systray/showclick.png" ) );
+    haloAction->setText( "Halo" );
+    haloAction->setData( "Halo" );
+    haloAction->setCheckable( true );
+
     exitAction = new QAction( this );
     exitAction->setIcon( QIcon( ":/pictures/systray/exit.png" ) );
     exitAction->setText( tr( "Exit" ) );
@@ -88,6 +114,33 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     connect( exitAction,     SIGNAL( triggered( bool ) ), this,                   SLOT( close() ) );
     connect( exitAction,     SIGNAL( triggered( bool ) ), mainWindow,             SLOT( close() ) );
 
+
+
+    connect( ui->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ),   cameraAction,            SLOT( setChecked( bool ) ) );
+    connect( cameraAction,            SIGNAL( triggered( bool ) ), ui->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
+    connect( ui->comboBoxCamera,      SIGNAL( currentIndexChanged( int ) ), this,           SLOT( slot_currentIndexChanged( int ) ) );
+
+    connect( ui->checkBoxMagnifier, SIGNAL( toggled( bool ) ),   magnifierAction, SLOT( setChecked( bool ) ) );
+    connect( magnifierAction,       SIGNAL( triggered( bool ) ), ui->checkBoxMagnifier, SLOT( click() ) );
+
+    QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
+    for ( int i = 0; i < listSpezialCheckbox.count(); i++ )
+    {
+        if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckboxShowclick" )
+        {
+            connect( listSpezialCheckbox.at(i), SIGNAL( signal_clicked( bool ) ), showclickAction, SLOT( setChecked( bool ) ) );
+            connect( showclickAction,           SIGNAL( triggered( bool ) ),      listSpezialCheckbox.at(i), SLOT( slot_click() ) );
+        }
+
+        if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckboxHalo" )
+        {
+            connect( listSpezialCheckbox.at(i), SIGNAL( signal_clicked( bool ) ), haloAction, SLOT( setChecked( bool ) ) );
+            connect( haloAction,                SIGNAL( triggered( bool ) ),      listSpezialCheckbox.at(i), SLOT( slot_click() ) );
+        }
+    }
+
+
+
     menu = new QMenu();
     menu->addAction( titleAction );
     menu->addSeparator();
@@ -95,6 +148,11 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     menu->addAction( stopAction );
     menu->addAction( pauseAction );
     menu->addAction( continueAction );
+    menu->addSeparator();
+    menu->addAction( cameraAction );
+    menu->addAction( magnifierAction );
+    menu->addAction( showclickAction );
+    menu->addAction( haloAction );
     menu->addSeparator();
     menu->addAction( exitAction );
 
@@ -162,4 +220,74 @@ void QvkSystrayAlternative::slot_ShowInSystrayAlternativeReset( bool )
 {
     vkSystrayAlternativeWindow->move( 0, 0 );
     sliderShowInSystrayAlternative->setValue( 48 );
+}
+
+
+void QvkSystrayAlternative::slot_shortcutSystray( QString device, QString shortcut )
+{
+    if ( device == "Start" ){
+        startAction->setShortcutVisibleInContextMenu( true );
+        startAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ){
+            startAction->setShortcutVisibleInContextMenu( false );
+        }
+        return;
+    }
+
+    if ( device == "Stop" ){
+        stopAction->setShortcutVisibleInContextMenu( true );
+        stopAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ){
+            stopAction->setShortcutVisibleInContextMenu( false );
+        }
+    }
+
+    if ( device == "Pause" ){
+        pauseAction->setShortcutVisibleInContextMenu( true );
+        pauseAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ){
+            pauseAction->setShortcutVisibleInContextMenu( false );
+        }
+    }
+
+    if ( device == "Continue" ){
+        continueAction->setShortcutVisibleInContextMenu( true );
+        continueAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ){
+            continueAction->setShortcutVisibleInContextMenu( false );
+        }
+    }
+
+    if ( device == "camera" ){
+        cameraAction->setShortcutVisibleInContextMenu( true );
+        cameraAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ){
+            cameraAction->setShortcutVisibleInContextMenu( false );
+        }
+    }
+
+    if ( device == "magnification" ){
+        magnifierAction->setShortcutVisibleInContextMenu( true );
+        magnifierAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ){
+            magnifierAction->setShortcutVisibleInContextMenu( false );
+        }
+    }
+
+    if ( device == "showclick" ){
+        showclickAction->setShortcutVisibleInContextMenu( true );
+        showclickAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ){
+            showclickAction->setShortcutVisibleInContextMenu( false );
+        }
+    }
+
+    if ( device == "halo" ){
+        haloAction->setShortcutVisibleInContextMenu( true );
+        haloAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ){
+            haloAction->setShortcutVisibleInContextMenu( false );
+        }
+    }
+
 }

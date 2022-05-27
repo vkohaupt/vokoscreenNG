@@ -481,6 +481,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     } else
     {
         connect( ui->checkBoxShowInSystrayAlternative, SIGNAL( clicked( bool ) ), vkSystrayAlternative, SLOT( setVisible( bool ) ) );
+        connect( vkGlobalShortcut,          SIGNAL( signal_shortcutSystray( QString, QString ) ), vkSystrayAlternative, SLOT( slot_shortcutSystray( QString, QString ) ) );
         ui->frameShowInSystray->hide();
     }
 
