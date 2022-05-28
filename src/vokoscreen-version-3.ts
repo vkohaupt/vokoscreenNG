@@ -202,6 +202,14 @@
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Magnification</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>

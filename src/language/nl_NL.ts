@@ -21,7 +21,7 @@
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Beeldvullende weergave</translation>
+        <translation>Schermvullende weergave</translation>
     </message>
 </context>
 <context>
@@ -135,6 +135,13 @@
 </context>
 <context>
     <name>QvkRegionChoise</name>
+    <message>
+        <source>Area</source>
+        <translation>Gebied</translation>
+    </message>
+</context>
+<context>
+    <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
         <translation>Gebied</translation>
@@ -421,7 +428,7 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimaliseren als opname start</translation>
+        <translation>Minimaliseren zodra opname start</translation>
     </message>
     <message>
         <source>Starts minimized</source>
@@ -505,7 +512,7 @@
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Als de sneltoets wordt aangeduid als zijnde toegewezen maar niet werkt, dan wordt deze al gebruikt door een ander programma.</translation>
+        <translation>Als de sneltoets wordt aangeduid als toegewezen maar niet werkt, dan is de sneltoets reeds in gebruik door een ander programma.</translation>
     </message>
 </context>
 <context>
@@ -535,7 +542,7 @@
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Beeldvullend</translation>
+        <translation>Schermvullend</translation>
     </message>
     <message>
         <source>Previous frame</source>
