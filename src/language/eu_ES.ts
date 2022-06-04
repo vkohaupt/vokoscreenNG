@@ -200,6 +200,14 @@
         <source>Exit</source>
         <translation>Irten</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>Kamera</translation>
+    </message>
+    <message>
+        <source>Magnification</source>
+        <translation>Lupa</translation>
+    </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>

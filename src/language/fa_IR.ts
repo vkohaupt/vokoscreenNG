@@ -202,6 +202,14 @@
         <source>Exit</source>
         <translation>خروج</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>دوربین</translation>
+    </message>
+    <message>
+        <source>Magnification</source>
+        <translation>بزرگنمایی</translation>
+    </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>

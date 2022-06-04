@@ -200,6 +200,14 @@
         <source>Exit</source>
         <translation>Eliri</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>Kamerao</translation>
+    </message>
+    <message>
+        <source>Magnification</source>
+        <translation>Ekranopligrandigo</translation>
+    </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>

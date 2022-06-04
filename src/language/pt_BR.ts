@@ -200,6 +200,14 @@
         <source>Exit</source>
         <translation>Sair</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>Câmera</translation>
+    </message>
+    <message>
+        <source>Magnification</source>
+        <translation>Zoom</translation>
+    </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>

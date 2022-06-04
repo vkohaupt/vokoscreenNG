@@ -200,6 +200,14 @@
         <source>Exit</source>
         <translation>Končaj</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>Kamera</translation>
+    </message>
+    <message>
+        <source>Magnification</source>
+        <translation>Povečava</translation>
+    </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>

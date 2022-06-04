@@ -200,6 +200,14 @@
         <source>Exit</source>
         <translation>Thoát</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>Camera</translation>
+    </message>
+    <message>
+        <source>Magnification</source>
+        <translation>Phóng to</translation>
+    </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>

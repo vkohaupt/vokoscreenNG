@@ -28,15 +28,15 @@
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation type="unfinished"/>
+        <translation>Nastavení proběhlo úspěšně.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation type="unfinished"/>
+        <translation>Zavřít toto okno a znovu spustit vokoscreenNG.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation type="unfinished"/>
+        <translation>Hezkou zábavu s vokoscreenNG</translation>
     </message>
 </context>
 <context>
@@ -200,6 +200,14 @@
         <source>Exit</source>
         <translation>Odejít</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>Kamera</translation>
+    </message>
+    <message>
+        <source>Magnification</source>
+        <translation>Zvětšení</translation>
+    </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
@@ -276,7 +284,7 @@
     </message>
     <message>
         <source>Frames</source>
-        <translation>Rámy</translation>
+        <translation>Snímky</translation>
     </message>
     <message>
         <source>Videocodec</source>
@@ -484,35 +492,35 @@
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation type="unfinished"/>
+        <translation>Vytvořit snímky karet</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation type="unfinished"/>
+        <translation>Informace o licenci</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"/>
+        <translation>Zapnuto</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"/>
+        <translation>Vypnuto</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation type="unfinished"/>
+        <translation>Globální klávesové zkratky</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation type="unfinished"/>
+        <translation>Přiřazené klávesové zkratky.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation type="unfinished"/>
+        <translation>Nepřiřazená nebo více než jednou přiřazená klávesová zkratka.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation type="unfinished"/>
+        <translation>Pokud je zobrazena jako přiřazená, ale nefunguje, používá ji jiný program.</translation>
     </message>
 </context>
 <context>
@@ -546,11 +554,11 @@
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Předchozí okno</translation>
+        <translation>Předchozí snímek</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Následující okno</translation>
+        <translation>Následující snímek</translation>
     </message>
     <message>
         <source>Mute</source>

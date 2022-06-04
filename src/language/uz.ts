@@ -200,6 +200,14 @@
         <source>Exit</source>
         <translation>Chiqish</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>Kamera</translation>
+    </message>
+    <message>
+        <source>Magnification</source>
+        <translation>Kattalashtirish</translation>
+    </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>

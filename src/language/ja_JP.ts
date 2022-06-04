@@ -200,6 +200,14 @@
         <source>Exit</source>
         <translation>終了する</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>カメラ</translation>
+    </message>
+    <message>
+        <source>Magnification</source>
+        <translation>拡大</translation>
+    </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
