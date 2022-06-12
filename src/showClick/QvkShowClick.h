@@ -70,6 +70,15 @@ private:
     int opacityDefault = 70;
     int timeDefault = 10;
 
+    int vk_x;
+    int vk_y;
+    QString vk_mouseButton;
+    QColor vk_color;
+
+
+private slots:
+    void slot_animateWindow();
+
 
 signals:
 

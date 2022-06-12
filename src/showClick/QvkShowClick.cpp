@@ -151,11 +151,29 @@ void QvkShowClick::slot_mousePressed( int x, int y, QString mouseButton )
         }
     }
 
+    vk_x = x;
+    vk_y = y;
+    vk_mouseButton = mouseButton;
+    vk_color = color;
+
+    // Under Gnome no action if closing the GUI or doubleclick.
+    // We wait 200 ms and then show the showclick window.
+    QTimer::singleShot( 200, Qt::PreciseTimer, this, SLOT( slot_animateWindow() ) );
+}
+
+
+void QvkShowClick::slot_animateWindow()
+{
+
+    int x = vk_x;
+    int y = vk_y;
+    QString mouseButton = vk_mouseButton;
+    QColor color = vk_color;
+
     QvkAnimateWindow *vkAnimateWindow = new QvkAnimateWindow( this, x, y, vkSpezialSliderShowtime->value() * 100, mouseButton, vkSpezialSliderDiameter->value(), vkSpezialSliderOpacity->value(), color );
     vkAnimateWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
     vkAnimateWindow->show();
 }
-
 
 
 void QvkShowClick::setPreviewWidget()
