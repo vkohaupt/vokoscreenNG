@@ -94,6 +94,7 @@ void QvkCameraWindow::resizeEvent( QResizeEvent *event )
     {
         vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setText( tr( "Switch to Fullscreen" ) );
         ui_formMainWindow->labelCameraWindowSize->setText( QString::number( width() ) + "x" + QString::number( height() ) );
+        vkCameraSettingsDialog->ui->labelCameraWindowSize->setText( QString::number( width() ) + "x" + QString::number( height() ) );
     }
 }
 

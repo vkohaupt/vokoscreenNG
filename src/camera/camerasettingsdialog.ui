@@ -82,7 +82,7 @@
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_44">
             <item>
-             <widget class="QLabel" name="label_25">
+             <widget class="QLabel" name="labelCameraWindowSize">
               <property name="text">
                <string notr="true">---x---</string>
               </property>
