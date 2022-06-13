@@ -55,7 +55,7 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     cameraAction->setText( tr( "Camera" ) );
     cameraAction->setData( "Camera" );
     cameraAction->setCheckable( true );
-    cameraAction->setEnabled( true );
+    cameraAction->setEnabled( false );
 
     magnifierAction = new QAction( this );
     magnifierAction->setIcon( QIcon( ":pictures/systray/magnification.png" ) );
@@ -162,6 +162,15 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
 
 QvkSystrayAlternative::~QvkSystrayAlternative()
 {
+}
+
+
+void QvkSystrayAlternative::slot_currentIndexChanged( int index )
+{
+    if ( index > -1 )
+        cameraAction->setEnabled( true );
+    else
+        cameraAction->setEnabled( false );
 }
 
 

@@ -49,6 +49,7 @@ private slots:
     void slot_resizeWindow( int );
     void slot_ShowInSystrayAlternativeReset( bool );
     void slot_shortcutSystray( QString device, QString shortcut );
+    void slot_currentIndexChanged( int index );
 
 
 protected:
