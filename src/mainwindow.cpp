@@ -445,6 +445,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // ***************** Begin showClick *****************************
     vkShowClick = new QvkShowClick();
     vkShowClick->init( ui );
+    vk_setCornerWidget( ui->tabWidgetShowClick );
+
     // ***************** End showClick
 
     vkHalo = new QvkHalo();
