@@ -29,7 +29,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_check_all_Elements_available();
     vkContainerController = new QvkContainerController( this, ui );
     set_RegionChoice();
-//    set_test_available_geometry();
     ui->frame_information->hide();
     ui->pushButtonPause->hide();
     ui->pushButtonContinue->hide();
@@ -52,7 +51,6 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
     ui->pushButtonStop->click();
-//    vkRegionChoise_wl->close();
 }
 
 
@@ -133,11 +131,6 @@ void QvkMainWindow_wl::set_Connects()
     connect( portal_wl, SIGNAL( signal_portal_cancel( uint ) ), this,              SLOT( slot_portal_cancel( uint ) ) );
 
     connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this,           SLOT( slot_frames_Reset() ) );
-
-//    connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->widget_Desktop_spinboxes, SLOT( setDisabled( bool ) ) );
-//    connect( ui->radioButtonScreencastWindow,     SIGNAL( toggled( bool ) ), ui->widget_Desktop_spinboxes, SLOT( setDisabled( bool ) ) );
-
-
 }
 
 
@@ -399,61 +392,10 @@ void QvkMainWindow_wl::set_check_all_Elements_available()
     qDebug();
 }
 
-/*
-void QvkMainWindow_wl::set_RegionChoice()
-{
-    vkRegionChoise = new QvkRegionChoise_wl();
-    connect( ui->radioButtonScreencastArea,     SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( slot_show( bool ) ) );
-    connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
-    connect( ui->spinBox_top,  QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int i){ ui->spinBox_bottom->setValue( ui->spinBox_top->maximum() - i ); } );
-    connect( ui->spinBox_left, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int i){ ui->spinBox_right->setValue( ui->spinBox_left->maximum() - i ); } );
-}
-*/
 
 void QvkMainWindow_wl::set_RegionChoice()
 {
     vkRegionChoise_wl = new QvkRegionChoise_wl( ui );
     connect( ui->radioButtonScreencastArea, SIGNAL( toggled( bool ) ), vkRegionChoise_wl, SLOT( setVisible( bool ) ) );
     vkRegionChoise_wl->slot_init();
-
-//    connect( ui->radioButtonScreencastArea,     SIGNAL( toggled( bool ) ), vkRegionChoise_wl, SLOT( slot_show( bool ) ) );
-//    connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise_wl, SLOT( slot_areaReset() ) );
-//    connect( ui->spinBox_top,  QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int i){ ui->spinBox_bottom->setValue( ui->spinBox_top->maximum() - i ); } );
-//    connect( ui->spinBox_left, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int i){ ui->spinBox_right->setValue( ui->spinBox_left->maximum() - i ); } );
 }
-
-/*
-void QvkMainWindow_wl::set_test_available_geometry()
-{
-    testWidget = new QWidget;
-    testWidget->setWindowFlags( Qt::FramelessWindowHint );
-    testWidget->setAttribute( Qt::WA_TranslucentBackground, true );
-    testWidget->showMaximized();
-    QTimer::singleShot( 1000, Qt::PreciseTimer, this, SLOT( slot_set_panel_values_in_spinboxes() ) );
-}
-
-
-void QvkMainWindow_wl::slot_set_panel_values_in_spinboxes()
-{
-    QScreen *Screen = screen();
-    ui->spinBox_top->setMaximum( Screen->size().height() - testWidget->size().height() );
-    ui->spinBox_top->setValue( Screen->size().height() - testWidget->size().height() );
-    // If no desktop panel, then spinbox disabled
-    if ( ui->spinBox_top->value() == 0 ){
-        ui->spinBox_top->setEnabled( false );
-    } else {
-        ui->spinBox_top->setEnabled( true );
-    }
-
-    ui->spinBox_left->setMaximum( Screen->size().width() - testWidget->size().width() );
-    ui->spinBox_left->setValue( Screen->size().width() - testWidget->size().width() );
-    // If no desktop panel, then spinbox disabled
-    if ( ui->spinBox_left->value() == 0 ){
-        ui->spinBox_left->setEnabled( false );
-    } else {
-        ui->spinBox_left->setEnabled( true );
-    }
-
-    testWidget->close();
-}
-*/

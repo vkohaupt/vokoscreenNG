@@ -76,22 +76,6 @@ void QvkRegionChoise_wl::slot_init()
     resize( screen->size().width(), screen->size().height() );
     screenWidth = screen->size().width();
     screenHeight = screen->size().height();
-qDebug() << screenList;
-
-
-/*
-    if ( ui->comboBoxScreencastScreenArea->currentIndex() > -1 )
-    {
-        int index = ui->comboBoxScreencastScreenArea->currentIndex();
-        QList<QScreen *> screenList = QGuiApplication::screens();
-        screen = screenList.at( index );
-
-        resize( screen->size().width(), screen->size().height() );
-        screenWidth = screen->size().width();
-        screenHeight = screen->size().height();
-        move( screen->geometry().x(), screen->geometry().y() );
-    }
-*/
 }
 
 
