@@ -74,6 +74,7 @@ public:
     QvkMagnifierController *vkMagnifierController;
     QvkGlobalShortcut *vkGlobalShortcut;
 
+
 private:
     QvkShowClick *vkShowClick;
 
@@ -145,6 +146,8 @@ private:
     QSoundEffect *soundEffect;
 
     bool cancel = false;
+
+    bool have_video_folder_write_permission();
 
 #ifdef Q_OS_WIN
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller;

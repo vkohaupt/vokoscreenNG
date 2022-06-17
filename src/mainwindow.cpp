@@ -578,12 +578,49 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     QvkImageFromTabs *vkImageFromTabs = new QvkImageFromTabs( this );
     vkImageFromTabs->init( ui );
+
+    have_video_folder_write_permission();
 }
 
 
 QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
+}
+
+
+bool QvkMainWindow::have_video_folder_write_permission()
+{
+    bool value;
+    QString filename = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) + "/vokoscreenNG-test-write.txt";
+    QFile file( filename );
+    if ( file.open( QIODevice::ReadWrite ) )
+    {
+        QTextStream stream( &file );
+        stream << "Test Test Test Test Test Test" << Qt::endl;
+        file.close();
+        qDebug().noquote() << global::nameOutput << "Permission: Can write in" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
+        file.remove();
+        value = true;
+    } else {
+        qDebug().noquote() << "Permission: ERROR can not write in" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
+        QMessageBox *messageBox = new QMessageBox();
+        QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
+        messageBox->setWindowIcon( icon );
+        messageBox->setWindowTitle( global::name + " " + global::version );
+        messageBox->setIcon( QMessageBox::Critical );
+        messageBox->setText( ( "<b>No write access on video folder</b>" ) );
+        messageBox->setInformativeText( "vokoscreenNG can not create video on\n" + \
+                                        QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) + "\n\n" + \
+                                        "possible reasons:\n" +
+                                        "1. The folder is read-only\n" +
+                                        "2. Operating system security settings\n" +
+                                        "3. Antivirus program prevents writing"
+                                       );
+        messageBox->exec();
+        value = false;
+    }
+    return value;
 }
 
 
