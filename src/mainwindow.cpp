@@ -626,7 +626,7 @@ bool QvkMainWindow::have_video_folder_write_permission()
         messageBox->setText( ( "<b>No write access on video folder</b>" ) );
         messageBox->setInformativeText( "vokoscreenNG can not create a video on<br>" + \
                                         QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) + "<br><br>" + \
-                                        "<b>possible reasons:</b><br>" +
+                                        "<b>Possible reasons:</b><br>" +
                                         "1. The folder is read-only<br>" +
                                         "2. Operating system security settings<br>" +
                                         "3. Antivirus program prevents writing<br><br>" +
