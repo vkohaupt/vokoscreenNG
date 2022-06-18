@@ -1666,6 +1666,19 @@ void QvkMainWindow::slot_preStart()
         ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
     }
 
+
+    if ( have_video_folder_write_permission() == false )
+    {
+        ui->pushButtonStop->setEnabled( false );
+        ui->pushButtonStart->setEnabled( true );
+        ui->pushButtonPause->setEnabled( false );
+        ui->pushButtonPlay->setEnabled( false );
+        ui->checkBoxResetAtNextStart->setChecked( true );
+        ui->checkBoxResetAtNextStart->setEnabled( false );
+        return;
+    }
+
+
     if ( vkLimitDiskFreeSpace->isStorageOKMessagBoxByStart() == false )
     {
         wantRecording = false;
