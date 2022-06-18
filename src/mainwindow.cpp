@@ -591,31 +591,46 @@ QvkMainWindow::~QvkMainWindow()
 
 bool QvkMainWindow::have_video_folder_write_permission()
 {
+    QString filename;
+    if ( vkSettings.getVideoPath() > "" ) {
+        filename = vkSettings.getVideoPath() + + "/vokoscreenNG-test-write.txt";
+    } else {
+        filename = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) + "/vokoscreenNG-test-write.txt";
+    }
+
+    QFileInfo fileInfo( filename );
+    QString folder = fileInfo.absolutePath();
+
     bool value;
-    QString filename = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) + "/vokoscreenNG-test-write.txt";
     QFile file( filename );
     if ( file.open( QIODevice::ReadWrite ) )
     {
         QTextStream stream( &file );
         stream << "Test Test Test Test Test Test" << Qt::endl;
         file.close();
-        qDebug().noquote() << global::nameOutput << "Permission: Can write in" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
+        qDebug().noquote();
+        qDebug().noquote() << global::nameOutput << "Permission: Can write in" << folder;
+        qDebug().noquote();
         file.remove();
         value = true;
     } else {
-        qDebug().noquote() << "Permission: ERROR can not write in" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
+        qDebug().noquote();
+        qDebug().noquote() << "Permission: ERROR can not write in" << folder;
+        qDebug().noquote();
         QMessageBox *messageBox = new QMessageBox();
         QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
         messageBox->setWindowIcon( icon );
         messageBox->setWindowTitle( global::name + " " + global::version );
         messageBox->setIcon( QMessageBox::Critical );
+        messageBox->setTextFormat( Qt::RichText );
         messageBox->setText( ( "<b>No write access on video folder</b>" ) );
-        messageBox->setInformativeText( "vokoscreenNG can not create video on\n" + \
-                                        QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) + "\n\n" + \
-                                        "possible reasons:\n" +
-                                        "1. The folder is read-only\n" +
-                                        "2. Operating system security settings\n" +
-                                        "3. Antivirus program prevents writing"
+        messageBox->setInformativeText( "vokoscreenNG can not create a video on<br>" + \
+                                        QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) + "<br><br>" + \
+                                        "<b>possible reasons:</b><br>" +
+                                        "1. The folder is read-only<br>" +
+                                        "2. Operating system security settings<br>" +
+                                        "3. Antivirus program prevents writing<br><br>" +
+                                        "<b>Please fix the problem and restart vokoscreenNG<b>"
                                        );
         messageBox->exec();
         value = false;
