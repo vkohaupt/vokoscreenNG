@@ -1,7 +1,18 @@
 # vokoscreenNG (New Generation)
 
-* For **Windows** and **Linux(X11, Experimental Wayland support since 3.1.0 pre alpha)**
-* vokoscreenNG is based of Qt and GStreamer.
+<table>
+    <tr>
+      <td>
+          <img alt="" src="https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-0.png" width="500" height="300">
+      </td>
+      <td>
+          <img alt="" src="https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-7.png" width="500" height="300">
+      </td>
+    </tr>
+  </table>
+
+vokoscreenNG for Windows and Linux is a powerful screencast creator in 41 languages to record the screen, an area or a window (Linux only). Recording of audio from multiple sources is supported. With the built-in camera support, you can make your video more personal. Other tools such as systray, magnifying glass, countdown, timer, Showclick and Halo support will help you do a good job. 
+
 
 ## Download
 * Windows https://linuxecke.volkoh.de/vokoscreen/vokoscreen-download.html
