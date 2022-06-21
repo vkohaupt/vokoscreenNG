@@ -1,16 +1,20 @@
-# vokoscreenNG (New Generation)
 
 <table>
     <tr>
+        <td align="middle" colspan="2">&nbsp;
+          <img src="https://vokoscreen.volkoh.de/3.0/picture/logo-web-1.png">
+        </td>
+    </tr>
+    <tr>
       <td>
-          <img alt="" src="https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-0.png" width="500" height="300">
+          <img src="https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-0.png" width="500" height="300">
       </td>
       <td>
-          <img alt="" src="https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-7.png" width="500" height="300">
+          <img src="https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-7.png" width="500" height="300">
       </td>
     </tr>
-  </table>
-
+</table>
+  
 vokoscreenNG for Windows and Linux is a powerful screencast creator in 41 languages to record the screen, an area or a window (Linux only). Recording of audio from multiple sources is supported. With the built-in camera support, you can make your video more personal. Other tools such as systray, magnifying glass, countdown, timer, Showclick and Halo support will help you do a good job. 
 
 
