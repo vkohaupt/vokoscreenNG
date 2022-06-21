@@ -2,7 +2,7 @@
 <table>
     <tr>
         <td align="middle" colspan="2">&nbsp;
-          <img src="https://vokoscreen.volkoh.de/3.0/picture/logo-web-1.png">
+          <img src="https://vokoscreen.volkoh.de/3.0/picture/logo-web-2.png">
         </td>
     </tr>
     <tr>
