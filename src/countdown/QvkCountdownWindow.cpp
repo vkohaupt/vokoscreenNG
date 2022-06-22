@@ -74,10 +74,8 @@ void QvkCountdownWindow::paintEvent( QPaintEvent *event )
     painterPixmap.begin( &pixmap );
     painterPixmap.setRenderHints( QPainter::Antialiasing, true );
 
-    painterPixmap.setRenderHints( QPainter::Antialiasing, true );
     QPen pen;
     QBrush brush;
-    
     brush.setColor( Qt::darkGray );
     brush.setStyle( Qt::SolidPattern );
     pen.setWidth( 0 );
