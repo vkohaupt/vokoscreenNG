@@ -51,9 +51,8 @@ QvkCountdownWindow::QvkCountdownWindow( QWidget *parent )
     // Is needed only for the translated text
     QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Abort, this);
     buttonBox->hide();
-    QList<QPushButton *> list = this->findChildren<QPushButton *>();
+    QList<QPushButton *> list = buttonBox->findChildren<QPushButton *>();
     cancelText = list.at(0)->text();
-
     show();
 }
 
