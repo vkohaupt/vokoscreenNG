@@ -214,6 +214,7 @@ void QvkSystray::slot_hide()
 }
 
 // This slot need in Main GUI
+
 void QvkSystray::slot_closeSystray()
 {
     hide();

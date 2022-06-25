@@ -512,6 +512,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( this,      SIGNAL( signal_close() ),       vkSystrayAlternative,   SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkPlayer,               SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkRegionChoise,         SLOT( close() ) );
+    connect( this,      SIGNAL( signal_close() ),       vkSystray,              SLOT( slot_closeSystray() ) );
 
     VK_Supported_Formats_And_Codecs();
     VK_Check_is_Format_available();
