@@ -213,7 +213,6 @@ void QvkSystray::slot_hide()
     emit signal_SystemtrayIsClose();
 }
 
-// This slot need in Main GUI
 
 void QvkSystray::slot_closeSystray()
 {
