@@ -580,7 +580,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkImageFromTabs *vkImageFromTabs = new QvkImageFromTabs( this );
     vkImageFromTabs->init( ui );
 
-    have_video_folder_write_permission();
+    is_videoFolderExists_and_haveWritePermission();
 }
 
 
@@ -590,15 +590,25 @@ QvkMainWindow::~QvkMainWindow()
 }
 
 
-bool QvkMainWindow::have_video_folder_write_permission()
+bool QvkMainWindow::is_videoFolderExists_and_haveWritePermission()
 {
-    QString filename;
-    if ( vkSettings.getVideoPath() > "" ) {
-        filename = vkSettings.getVideoPath() + + "/vokoscreenNG-test-write.txt";
-    } else {
-        filename = QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) + "/vokoscreenNG-test-write.txt";
+    // Create Folder if not exists
+    QDir dir( ui->lineEditVideoPath->text() );
+    if ( !dir.exists() )
+    {
+        // check of QStandardPaths::MoviesLocation
+        QDir dir( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
+        if ( !dir.exists() )
+        {
+            bool myBool = dir.mkpath( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
+            Q_UNUSED(myBool);
+        }
+        ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
     }
 
+    // Check write permission
+    QString filename;
+    filename = ui->lineEditVideoPath->text() + + "/vokoscreenNG-test-write.txt";
     bool value;
     QFileInfo fileInfo( filename );
     QFile file( filename );
@@ -1651,22 +1661,7 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
 
 void QvkMainWindow::slot_preStart()
 {
-    // Create Folder if not exists
-    QDir dir( ui->lineEditVideoPath->text() );
-    if ( !dir.exists() )
-    {
-        // check of QStandardPaths::MoviesLocation
-        QDir dir( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
-        if ( !dir.exists() )
-        {
-            bool myBool = dir.mkpath( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
-            Q_UNUSED(myBool);
-        }
-        ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
-    }
-
-
-    if ( have_video_folder_write_permission() == false )
+    if ( is_videoFolderExists_and_haveWritePermission() == false )
     {
         ui->pushButtonStop->setEnabled( false );
         ui->pushButtonStart->setEnabled( true );
@@ -1676,7 +1671,6 @@ void QvkMainWindow::slot_preStart()
         ui->checkBoxResetAtNextStart->setEnabled( false );
         return;
     }
-
 
     if ( vkLimitDiskFreeSpace->isStorageOKMessagBoxByStart() == false )
     {

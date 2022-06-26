@@ -147,7 +147,8 @@ private:
 
     bool cancel = false;
 
-    bool have_video_folder_write_permission();
+    bool is_videoFolderExists_and_haveWritePermission();
+
 
 #ifdef Q_OS_WIN
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller;
