@@ -229,7 +229,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
     qDebug().noquote() << global::nameOutput << "Icon-Theme:" << QIcon::themeName();
     qDebug().noquote() << global::nameOutput << "Styles:" << QApplication::style()->metaObject()->className();
-    qDebug().noquote() << global::nameOutput << "InstallPath:        " << QCoreApplication::applicationDirPath();
+    qDebug().noquote() << global::nameOutput << "ExecutablePath:     " << QCoreApplication::applicationDirPath();
     qDebug().noquote() << global::nameOutput << "Qt-PluginsPath:     " << QLibraryInfo::location( QLibraryInfo::PluginsPath );
     qDebug().noquote() << global::nameOutput << "Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
     qDebug().noquote() << global::nameOutput << "Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
