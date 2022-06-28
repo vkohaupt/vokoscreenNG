@@ -103,7 +103,7 @@
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Não foi encontrado nenhum gestor de ficheiros.</translation>
+        <translation>Não foi encontrado um gestor de ficheiros.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
