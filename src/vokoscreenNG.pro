@@ -202,3 +202,7 @@ include(fileDialog/fileDialog.pri)
 # Virtual Maschine
 include(virtual/virtual.pri)
 
+# Snapshot
+include(snapshot/snapshot.pri)
+
+

@@ -31,6 +31,7 @@
 #include "QvkImageFromTabs.h"
 #include "QvkDirDialog.h"
 #include "QvkVirtual.h"
+#include "QvkSnapshot.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -442,18 +443,19 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( videoFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
 
-    // ***************** Begin showClick *****************************
+    // ***************** showClick *****************************
     vkShowClick = new QvkShowClick();
     vkShowClick->init( ui );
     vk_setCornerWidget( ui->tabWidgetShowClick );
-    // ***************** End showClick
 
+    // ***************** Halo ---------------------------------------
     vkHalo = new QvkHalo();
     vkHalo->init( ui );
 
     // ***************** snapshot ***********************************
+    QvkSnapshot *vkSnapshot = new QvkSnapshot( ui );
+    Q_UNUSED(vkSnapshot)
     vk_setCornerWidget( ui->tabWidgetSnapshot );
-    supportedImageFormats();
 
     /* Wayland
      * If start with "./name -platform wayland" comes a Memory access error
@@ -590,43 +592,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
-}
-
-
-#include <QImageWriter>
-void QvkMainWindow::supportedImageFormats()
-{
-    QList<QByteArray> listFormats = QImageWriter::supportedImageFormats();
-    if ( listFormats.empty() == false )
-    {
-        for ( int x = 0; x < listFormats.count(); x++ )
-        {
-            ui->comboBoxImageFormats->addItem( QString( listFormats.at(x) ) );
-        }
-    }
-    ui->comboBoxImageFormats->setCurrentIndex( ui->comboBoxImageFormats->findText( "png" ) );
-
-    QList<QScreen *> screen = QGuiApplication::screens();
-    if ( !screen.empty() )
-    {
-        for ( int i = 0; i < screen.count(); i++ )
-        {
-            QString X = QString::number( static_cast<int>( screen.at(i)->geometry().left() * screen.at(i)->devicePixelRatio() ) );
-            QString Y = QString::number( static_cast<int>( screen.at(i)->geometry().top() * screen.at(i)->devicePixelRatio() ) );
-            QString Width = QString::number( static_cast<int>( screen.at(i)->geometry().width() * screen.at(i)->devicePixelRatio() ) );
-            QString Height = QString::number( static_cast<int>( screen.at(i)->geometry().height() * screen.at(i)->devicePixelRatio() ) );
-            QString stringText = screen.at(i)->name() + " " + ":  " + Width + " x " + Height;
-            QString stringData = "x=" + X + " " +
-                                 "y=" + Y + " " +
-                                 "with=" + Width + " " +
-                                 "height=" + Height;
-
-            ui->comboBoxSnapshotScreens->addItem( stringText );
-
-            QImage image = screen.at(i)->grabWindow(0).toImage();
-            image.save( "/home/vk/Bilder/" + screen.at(i)->name(), ui->comboBoxImageFormats->currentText().toUtf8() );
-        }
-    }
 }
 
 
