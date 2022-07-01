@@ -47,6 +47,7 @@
 <file>pictures/showClick/vokoShowClick.png</file>
 <file>pictures/showClick/transparenz.png</file>
 <file>pictures/showClick/vokoShowClick-sidebar.png</file>
+<file>pictures/snapshot/snapshot.png</file>
 <file>pictures/space.png</file>
 <file>pictures/systray/magnification.png</file>
 <file>pictures/systray/camera.png</file>
@@ -98,6 +99,7 @@
 <file>pictures/showClick/vokoShowClick.license</file>
 <file>pictures/showClick/halo.license</file>
 <file>pictures/showClick/sandglass.license</file>
+<file>pictures/snapshot/snapshot.license</file>
 <file>pictures/systray/pause.license</file>
 <file>pictures/systray/magnification.license</file>
 <file>pictures/systray/exit.license</file>
