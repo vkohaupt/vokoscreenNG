@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>702</width>
-    <height>500</height>
+    <width>703</width>
+    <height>546</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -135,6 +135,41 @@
          <property name="icon">
           <iconset resource="screencast.qrc">
            <normaloff>:/pictures/showClick/vokoShowClick-sidebar.png</normaloff>:/pictures/showClick/vokoShowClick-sidebar.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>72</width>
+           <height>72</height>
+          </size>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <property name="autoRaise">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="toolButtonSnapshot">
+         <property name="minimumSize">
+          <size>
+           <width>110</width>
+           <height>78</height>
+          </size>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string notr="true"/>
+         </property>
+         <property name="icon">
+          <iconset resource="screencast.qrc">
+           <normaloff>:/pictures/snapshot/snapshot.png</normaloff>:/pictures/snapshot/snapshot.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -289,7 +324,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <property name="iconSize">
        <size>
@@ -336,7 +371,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -862,7 +897,7 @@
                       <x>0</x>
                       <y>0</y>
                       <width>486</width>
-                      <height>241</height>
+                      <height>287</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -2076,8 +2111,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>312</width>
-                   <height>364</height>
+                   <width>301</width>
+                   <height>410</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -3738,6 +3773,35 @@
              </layout>
             </item>
            </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabSidebarSnapshot">
+       <attribute name="title">
+        <string notr="true">Seite</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_36">
+        <item>
+         <widget class="QTabWidget" name="tabWidget">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>48</width>
+            <height>48</height>
+           </size>
+          </property>
+          <widget class="QWidget" name="tabSnapshot">
+           <attribute name="icon">
+            <iconset resource="screencast.qrc">
+             <normaloff>:/pictures/snapshot/snapshot.png</normaloff>:/pictures/snapshot/snapshot.png</iconset>
+           </attribute>
+           <attribute name="title">
+            <string notr="true"/>
+           </attribute>
           </widget>
          </widget>
         </item>
