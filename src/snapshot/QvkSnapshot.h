@@ -20,6 +20,7 @@ private:
     QList<QScreen *> screen;
     void supportedImageFormats();
     void screens();
+    bool is_imageFolderExists_and_haveWritePermission();
 
 public slots:
 

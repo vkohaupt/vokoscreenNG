@@ -149,7 +149,6 @@ private:
 
     bool is_videoFolderExists_and_haveWritePermission();
 
-    void supportedImageFormats();
 
 #ifdef Q_OS_WIN
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller;
