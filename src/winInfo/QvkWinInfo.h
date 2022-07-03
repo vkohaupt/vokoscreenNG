@@ -42,8 +42,8 @@ public:
     WId getWinID();
     static WId activeWindow();
     QRectF windowGeometryWithoutFrame( WId child);
-
     QvkGlobalMouse *vkGlobalMouse;
+
 
 public slots:
     void slot_start();

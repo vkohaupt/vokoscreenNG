@@ -1,4 +1,24 @@
-﻿
+﻿/* vokoscreenNG - A desktop recorder
+ * Copyright (C) 2017-2022 Volker Kohaupt
+ *
+ * Author:
+ *      Volker Kohaupt <vkohaupt@volkoh.de>
+ *
+ * This file is free software; you can redistribute it and/or modify
+ * it under the terms of version 2 of the GNU General Public License
+ * as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+ *
+ * --End_License--
+ */
 #include <QGuiApplication>
 #include <QImageWriter>
 #include <QComboBox>
@@ -22,6 +42,7 @@ QvkSnapshot::QvkSnapshot( QvkMainWindow *_vkMainWindow, Ui_formMainWindow *ui_fo
     is_imageFolderExists_and_haveWritePermission();
 }
 
+
 QvkSnapshot::~QvkSnapshot()
 {
 }
@@ -32,8 +53,7 @@ void QvkSnapshot::supportedImageFormats()
     QList<QByteArray> listFormats = QImageWriter::supportedImageFormats();
     if ( listFormats.empty() == false )
     {
-        for ( int x = 0; x < listFormats.count(); x++ )
-        {
+        for ( int x = 0; x < listFormats.count(); x++ ) {
             ui->comboBoxSnapshotImageFormats->addItem( QString( listFormats.at(x) ) );
         }
     }
@@ -52,6 +72,18 @@ void QvkSnapshot::slot_newImage()
         QImage image = screen.at( ui->comboBoxScreencastScreen->currentIndex() )->grabWindow(0).toImage();
         bo = image.save( ui->lineEditSnapshotImagePath->text() + "/" + screen.at( ui->comboBoxScreencastScreen->currentIndex() )->name() + "." +
                          ui->comboBoxSnapshotImageFormats->currentText().toUtf8(), ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
+
+        if ( bo == false ) {
+            qDebug().noquote() << global::nameOutput << "Failed to save image";
+        }
+    }
+
+    if ( ui->radioButtonScreencastWindow->isChecked() == true )
+    {
+        vkWinInfo = new QvkWinInfo;
+        disconnect( vkWinInfo, nullptr, nullptr, nullptr );
+        connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), this, SLOT( slot_snapshotWindow( bool ) ) );
+        vkWinInfo->slot_start();
     }
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
@@ -75,14 +107,13 @@ void QvkSnapshot::slot_newImage()
         bo = copyImage.save( ui->lineEditSnapshotImagePath->text() + "/" + screen.at( ui->comboBoxScreencastScreen->currentIndex() )->name() + "." +
                              ui->comboBoxSnapshotImageFormats->currentText().toUtf8(), ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
 
-        if ( ui->pushButtonStart->isEnabled() == true )
-        {
+        if ( bo == false ) {
+            qDebug().noquote() << global::nameOutput << "Failed to save image";
+        }
+
+        if ( ui->pushButtonStart->isEnabled() == true ) {
             vkMainWindow->vkRegionChoise->recordMode( false );
         }
-    }
-
-    if ( bo == false ) {
-        qDebug().noquote() << global::nameOutput << "Failed to save image";
     }
 }
 
@@ -95,8 +126,7 @@ bool QvkSnapshot::is_imageFolderExists_and_haveWritePermission()
     {
         // check of QStandardPaths::MoviesLocation
         QDir dir( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
-        if ( !dir.exists() )
-        {
+        if ( !dir.exists() ) {
             bool myBool = dir.mkpath( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
             Q_UNUSED(myBool);
         }
@@ -144,4 +174,21 @@ bool QvkSnapshot::is_imageFolderExists_and_haveWritePermission()
         value = false;
     }
     return value;
+}
+
+
+void QvkSnapshot::slot_snapshotWindow( bool )
+{
+    QvkSpezialSlider *spezialSlider = ui->centralWidget->findChild<QvkSpezialSlider *>( "sliderSecondWaitBeforeRecording" );
+    QThread::msleep( static_cast<unsigned long>( spezialSlider->value()) * 1000 );
+
+    WId xid = vkWinInfo->activeWindow();
+    QImage image = screen.at( ui->comboBoxScreencastScreen->currentIndex() )->grabWindow(xid).toImage();
+    bool bo = image.save( ui->lineEditSnapshotImagePath->text() + "/" + screen.at( ui->comboBoxScreencastScreen->currentIndex() )->name() + "." +
+                     ui->comboBoxSnapshotImageFormats->currentText().toUtf8(), ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
+
+    if ( bo == false ) {
+        qDebug().noquote() << global::nameOutput << "Failed to save image";
+    }
+
 }
