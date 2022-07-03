@@ -453,7 +453,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkHalo->init( ui );
 
     // ***************** snapshot ***********************************
-    QvkSnapshot *vkSnapshot = new QvkSnapshot( ui );
+    QvkSnapshot *vkSnapshot = new QvkSnapshot( this, ui );
     Q_UNUSED(vkSnapshot)
     vk_setCornerWidget( ui->tabWidgetSnapshot );
 

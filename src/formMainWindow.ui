@@ -324,7 +324,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -896,8 +896,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>30</height>
+                      <width>486</width>
+                      <height>287</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -2111,8 +2111,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>98</width>
-                   <height>98</height>
+                   <width>301</width>
+                   <height>410</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -2756,6 +2756,19 @@
             </property>
             <property name="text">
              <string>Folder</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButtonSnapshot">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Snapshot</string>
             </property>
            </widget>
           </item>
@@ -3820,21 +3833,7 @@
            <layout class="QVBoxLayout" name="verticalLayout_37">
             <item>
              <layout class="QGridLayout" name="gridLayout_10">
-              <item row="1" column="0">
-               <widget class="QLabel" name="label_58">
-                <property name="text">
-                 <string>Screen</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="label_57">
-                <property name="text">
-                 <string>Format</string>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
+              <item row="2" column="2">
                <spacer name="verticalSpacer">
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>
@@ -3847,9 +3846,6 @@
                 </property>
                </spacer>
               </item>
-              <item row="2" column="1">
-               <widget class="QComboBox" name="comboBoxSnapshotImageFormats"/>
-              </item>
               <item row="0" column="0">
                <widget class="QLabel" name="label_56">
                 <property name="text">
@@ -3857,7 +3853,21 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="2" colspan="2">
+              <item row="0" column="4">
+               <widget class="QToolButton" name="toolButton">
+                <property name="text">
+                 <string>...</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_57">
+                <property name="text">
+                 <string>Format</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2" colspan="2">
                <spacer name="horizontalSpacer_24">
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
@@ -3870,25 +3880,11 @@
                 </property>
                </spacer>
               </item>
+              <item row="1" column="1">
+               <widget class="QComboBox" name="comboBoxSnapshotImageFormats"/>
+              </item>
               <item row="0" column="1" colspan="3">
                <widget class="QLineEdit" name="lineEditSnapshotImagePath"/>
-              </item>
-              <item row="1" column="1" colspan="2">
-               <widget class="QComboBox" name="comboBoxSnapshotScreens"/>
-              </item>
-              <item row="0" column="4">
-               <widget class="QToolButton" name="toolButton">
-                <property name="text">
-                 <string>...</string>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="3">
-               <widget class="QCheckBox" name="checkBox_2">
-                <property name="text">
-                 <string>Screen under Mouse</string>
-                </property>
-               </widget>
               </item>
              </layout>
             </item>
@@ -3906,13 +3902,6 @@
                  </size>
                 </property>
                </spacer>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButtonSnapshot">
-                <property name="text">
-                 <string>New snapshot</string>
-                </property>
-               </widget>
               </item>
               <item>
                <spacer name="horizontalSpacer_31">

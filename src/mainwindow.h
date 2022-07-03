@@ -74,6 +74,8 @@ public:
     QvkMagnifierController *vkMagnifierController;
     QvkGlobalShortcut *vkGlobalShortcut;
 
+    bool wantRecording = true;
+
 
 private:
     QvkShowClick *vkShowClick;
@@ -135,7 +137,7 @@ private:
     QvkSystrayAlternative *vkSystrayAlternative;
 
     QvkLimitDiskFreeSpace *vkLimitDiskFreeSpace;
-    bool wantRecording = true;
+//    bool wantRecording = true;
 
     void checkVideoPath();
 

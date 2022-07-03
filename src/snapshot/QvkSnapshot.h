@@ -5,22 +5,23 @@
 #include <QScreen>
 
 #include "ui_formMainWindow.h"
+#include "mainwindow.h"
 
 class QvkSnapshot : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit QvkSnapshot( Ui_formMainWindow *ui_formMainWindow );
+    explicit QvkSnapshot( QvkMainWindow *vkMainWindow,  Ui_formMainWindow *ui_formMainWindow );
     ~QvkSnapshot();
-
+    QvkMainWindow *vkMainWindow;
 
 private:
     Ui_formMainWindow *ui;
     QList<QScreen *> screen;
     void supportedImageFormats();
-    void screens();
     bool is_imageFolderExists_and_haveWritePermission();
+
 
 public slots:
 

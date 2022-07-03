@@ -55,6 +55,8 @@ public:
   int screenWidth = 400; //Must set a value. Under windows comes a QPainter message
   int screenHeight = 400;
 
+  bool recordemode = false;
+
 
 public slots:
   void slot_areaReset();
@@ -71,6 +73,7 @@ protected:
   void mouseReleaseEvent( QMouseEvent * event );
   void leaveEvent( QEvent *event );
   void keyPressEvent( QKeyEvent * event );
+
 
 private:
   Ui_formMainWindow *ui;
@@ -142,7 +145,7 @@ private:
   enum vk_platform { x11, wayland, windows };
   vk_platform platform;
 
-  bool recordemode = false;
+//  bool recordemode = false;
 
   Qt::GlobalColor getFrameColor();
   Qt::GlobalColor frameColor;
