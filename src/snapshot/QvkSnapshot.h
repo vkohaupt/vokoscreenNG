@@ -45,7 +45,7 @@ private:
     void supportedImageFormats();
     bool is_imageFolderExists_and_haveWritePermission();
     QvkWinInfo *vkWinInfo;
-
+    QString filename;
 
 public slots:
 

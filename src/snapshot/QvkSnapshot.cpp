@@ -64,14 +64,13 @@ void QvkSnapshot::supportedImageFormats()
 
 void QvkSnapshot::slot_newImage()
 {
-    bool bo = false;
     screen = QGuiApplication::screens();
+    filename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss.zzz" ) + "." + ui->comboBoxSnapshotImageFormats->currentText().toUtf8();
 
     if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
     {
         QImage image = screen.at( ui->comboBoxScreencastScreen->currentIndex() )->grabWindow(0).toImage();
-        bo = image.save( ui->lineEditSnapshotImagePath->text() + "/" + screen.at( ui->comboBoxScreencastScreen->currentIndex() )->name() + "." +
-                         ui->comboBoxSnapshotImageFormats->currentText().toUtf8(), ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
+        bool bo = image.save( ui->lineEditSnapshotImagePath->text() + "/" + filename, ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
 
         if ( bo == false ) {
             qDebug().noquote() << global::nameOutput << "Failed to save image";
@@ -104,8 +103,7 @@ void QvkSnapshot::slot_newImage()
         QImage image = screen.at( ui->comboBoxScreencastScreenArea->currentIndex() )->grabWindow(0).toImage();
 
         QImage copyImage = image.copy( startx, starty, endx, endy );
-        bo = copyImage.save( ui->lineEditSnapshotImagePath->text() + "/" + screen.at( ui->comboBoxScreencastScreen->currentIndex() )->name() + "." +
-                             ui->comboBoxSnapshotImageFormats->currentText().toUtf8(), ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
+        bool bo = copyImage.save( ui->lineEditSnapshotImagePath->text() + "/" + filename, ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
 
         if ( bo == false ) {
             qDebug().noquote() << global::nameOutput << "Failed to save image";
@@ -184,8 +182,7 @@ void QvkSnapshot::slot_snapshotWindow( bool )
 
     WId xid = vkWinInfo->activeWindow();
     QImage image = screen.at( ui->comboBoxScreencastScreen->currentIndex() )->grabWindow(xid).toImage();
-    bool bo = image.save( ui->lineEditSnapshotImagePath->text() + "/" + screen.at( ui->comboBoxScreencastScreen->currentIndex() )->name() + "." +
-                     ui->comboBoxSnapshotImageFormats->currentText().toUtf8(), ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
+    bool bo = image.save( ui->lineEditSnapshotImagePath->text() + "/" + filename, ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
 
     if ( bo == false ) {
         qDebug().noquote() << global::nameOutput << "Failed to save image";
