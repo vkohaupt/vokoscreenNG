@@ -68,6 +68,11 @@ public slots:
     void slot_checkbox_shortcut_halo_currentIndexChanged( int value );
     void slot_toolButton_shortcut_halo_reset();
 
+    void slot_checkbox_shortcut_snapshot_clicked( bool value );
+    void slot_checkbox_shortcut_snapshot_currentIndexChanged( int value );
+    void slot_toolButton_shortcut_snapshot_reset();
+
+
 private:
     Ui_formMainWindow *ui;
     bool isBusy(QString check);
@@ -79,9 +84,11 @@ private:
     QGlobalShortcut *shortcutCamera;
     QGlobalShortcut *shortcutShowclick;
     QGlobalShortcut *shortcutHalo;
+    QGlobalShortcut *shortcutSnapshot;
 
     QvkSpezialCheckbox *spezialCheckboxShowclick;
     QvkSpezialCheckbox *spezialCheckboxHalo;
+
 
 private slots:
     void slot_pauseContinue();

@@ -324,7 +324,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -5796,7 +5796,7 @@
                   </widget>
                  </item>
                  <item row="7" column="1" alignment="Qt::AlignHCenter">
-                  <widget class="QLabel" name="label_shortcut_picture_snaphot">
+                  <widget class="QLabel" name="label_shortcut_picture_snapshot">
                    <property name="text">
                     <string>Picture</string>
                    </property>
@@ -5805,33 +5805,33 @@
                  <item row="7" column="2" alignment="Qt::AlignHCenter">
                   <widget class="QCheckBox" name="checkBox_shortcut_snapshot_strg">
                    <property name="text">
-                    <string/>
+                    <string notr="true"/>
                    </property>
                   </widget>
                  </item>
                  <item row="7" column="3" alignment="Qt::AlignHCenter">
                   <widget class="QCheckBox" name="checkBox_shortcut_snapshot_shift">
                    <property name="text">
-                    <string/>
+                    <string notr="true"/>
                    </property>
                   </widget>
                  </item>
                  <item row="7" column="4" alignment="Qt::AlignHCenter">
                   <widget class="QCheckBox" name="checkBox_shortcut_snapshot_alt">
                    <property name="text">
-                    <string/>
+                    <string notr="true"/>
                    </property>
                   </widget>
                  </item>
                  <item row="7" column="5" alignment="Qt::AlignHCenter">
                   <widget class="QCheckBox" name="checkBox_shortcut_snapshot_meta">
                    <property name="text">
-                    <string/>
+                    <string notr="true"/>
                    </property>
                   </widget>
                  </item>
                  <item row="7" column="6">
-                  <widget class="QComboBox" name="comboBox_shortcut_shortcut">
+                  <widget class="QComboBox" name="comboBox_shortcut_snapshot">
                    <property name="toolTip">
                     <string notr="true"/>
                    </property>
@@ -6034,7 +6034,7 @@
                   </widget>
                  </item>
                  <item row="7" column="8">
-                  <widget class="QToolButton" name="toolButton_shortcut_reset_shortcut">
+                  <widget class="QToolButton" name="toolButton_shortcut_reset_snapshot">
                    <property name="text">
                     <string notr="true"/>
                    </property>

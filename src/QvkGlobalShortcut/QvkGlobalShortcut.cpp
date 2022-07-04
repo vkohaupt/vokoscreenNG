@@ -100,6 +100,15 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( ui->toolButton_shortcut_reset_halo, SIGNAL( clicked() ), this, SLOT( slot_toolButton_shortcut_halo_reset() ) );
 
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ), this, SLOT( slot_setOrUnsetShortcut( bool ) ) );
+
+    shortcutSnapshot = new QGlobalShortcut( this );
+    connect( shortcutSnapshot, SIGNAL( activated() ), ui->pushButtonSnapshot, SLOT( click() ) );
+    connect( ui->checkBox_shortcut_snapshot_strg,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_snapshot_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_snapshot_shift, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_snapshot_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_snapshot_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_snapshot_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_snapshot_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_snapshot_clicked( bool ) ) );
+    connect( ui->comboBox_shortcut_snapshot, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_snapshot_currentIndexChanged( int ) ) );
+    connect( ui->toolButton_shortcut_reset_snapshot, SIGNAL( clicked() ), this, SLOT( slot_toolButton_shortcut_snapshot_reset() ) );
 }
 
 
@@ -126,6 +135,7 @@ bool QvkGlobalShortcut::isBusy( QString check )
    QString camera;
    QString showclick;
    QString halo;
+   QString snapshot;
 
    start.append( boolToString( ui->checkBox_shortcut_start_strg->isChecked() ) );
    start.append( boolToString( ui->checkBox_shortcut_start_shift->isChecked() ) );
@@ -163,39 +173,51 @@ bool QvkGlobalShortcut::isBusy( QString check )
    halo.append( boolToString( ui->checkBox_shortcut_halo_meta->isChecked() ) );
    halo.append( ui->comboBox_shortcut_halo->currentText() );
 
+   snapshot.append( boolToString( ui->checkBox_shortcut_snapshot_strg->isChecked() ) );
+   snapshot.append( boolToString( ui->checkBox_shortcut_snapshot_shift->isChecked() ) );
+   snapshot.append( boolToString( ui->checkBox_shortcut_snapshot_alt->isChecked() ) );
+   snapshot.append( boolToString( ui->checkBox_shortcut_snapshot_meta->isChecked() ) );
+   snapshot.append( ui->comboBox_shortcut_snapshot->currentText() );
+
    if ( check == "start" )
    {
-       if ( ( start == pause ) or ( start == magnification ) or ( start == camera ) or ( start == showclick ) or ( start == halo ) )
+       if ( ( start == pause ) or ( start == magnification ) or ( start == camera ) or ( start == showclick ) or ( start == halo ) or ( start == snapshot ) )
          return true;
    }
 
    if ( check == "pause" )
    {
-       if ( ( pause == start ) or ( pause == magnification) or ( pause == camera ) or ( pause == showclick ) or ( pause == halo ) )
+       if ( ( pause == start ) or ( pause == magnification) or ( pause == camera ) or ( pause == showclick ) or ( pause == halo ) or ( pause == snapshot ) )
          return true;
    }
 
    if ( check == "magnification" )
    {
-       if ( ( magnification == start ) or ( magnification == pause ) or ( magnification == camera ) or ( magnification == showclick ) or ( magnification == halo ) )
+       if ( ( magnification == start ) or ( magnification == pause ) or ( magnification == camera ) or ( magnification == showclick ) or ( magnification == halo ) or ( magnification == snapshot ) )
          return true;
    }
 
    if ( check == "camera" )
    {
-       if ( ( camera == start ) or ( camera == pause ) or ( camera == magnification ) or ( camera == showclick ) or ( camera == halo ) )
+       if ( ( camera == start ) or ( camera == pause ) or ( camera == magnification ) or ( camera == showclick ) or ( camera == halo ) or ( camera == snapshot ) )
          return true;
    }
 
    if ( check == "showclick" )
    {
-       if ( ( showclick == start ) or ( showclick == pause ) or ( showclick == magnification ) or ( showclick == camera ) or ( showclick == halo ) )
+       if ( ( showclick == start ) or ( showclick == pause ) or ( showclick == magnification ) or ( showclick == camera ) or ( showclick == halo ) or ( showclick == snapshot ) )
          return true;
    }
 
    if ( check == "halo" )
    {
-       if ( ( halo == start ) or ( halo == pause ) or ( halo == magnification ) or ( halo == camera ) or ( halo == showclick ) )
+       if ( ( halo == start ) or ( halo == pause ) or ( halo == magnification ) or ( halo == camera ) or ( halo == showclick ) or( halo == snapshot ) )
+         return true;
+   }
+
+   if ( check == "snapshot" )
+   {
+       if ( ( snapshot == start ) or ( snapshot == pause ) or ( snapshot == magnification )  or ( snapshot == camera ) or ( snapshot == showclick ) or ( snapshot == halo ) )
          return true;
    }
 
@@ -557,6 +579,60 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_halo_currentIndexChanged( int val
 }
 
 
+void QvkGlobalShortcut::slot_checkbox_shortcut_snapshot_clicked( bool value )
+{
+    Q_UNUSED(value)
+
+    if ( ( ui->checkBox_shortcut_snapshot_strg->isChecked() | ui->checkBox_shortcut_snapshot_shift->isChecked() | ui->checkBox_shortcut_snapshot_alt->isChecked() | ui->checkBox_shortcut_snapshot_meta->isChecked()  ) and !isBusy( "snapshot" ) )
+    {
+        QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
+        QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
+        ui->label_shortcut_picture_snapshot->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+
+        QString shortcut;
+        if ( ui->checkBox_shortcut_snapshot_strg->isChecked() ) {
+            shortcut.append( "+CTRL" );
+        }
+        if ( ui->checkBox_shortcut_snapshot_shift->isChecked() ) {
+            shortcut.append( "+SHIFT" );
+        }
+        if ( ui->checkBox_shortcut_snapshot_alt->isChecked() ) {
+            shortcut.append( "+ALT" );
+        }
+        if ( ui->checkBox_shortcut_snapshot_meta->isChecked() ) {
+            shortcut.append( "+META" );
+        }
+
+        shortcut.append( "+" + ui->comboBox_shortcut_snapshot->currentText() );
+
+        if ( shortcut.startsWith( "+" ) == true ) {
+            shortcut.remove( 0, 1 );
+        }
+
+        shortcutSnapshot->unsetShortcut();
+        shortcutSnapshot->setShortcut( QKeySequence( shortcut ) );
+        ui->pushButtonSnapshot->setToolTip( shortcut );
+        emit signal_shortcutSystray( "snapshot", shortcut );
+        qDebug().noquote() << global::nameOutput << "Set global shortcut for Snapshot:" << shortcut;
+    } else
+    {
+        QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
+        QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
+        ui->label_shortcut_picture_snapshot->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
+        shortcutSnapshot->unsetShortcut();
+        ui->pushButtonSnapshot->setToolTip( "None" );
+        emit signal_shortcutSystray( "snapshot", "None" );
+        qDebug().noquote() << global::nameOutput << "Set global shortcut for Snapshot: None";
+    }
+}
+
+void QvkGlobalShortcut::slot_checkbox_shortcut_snapshot_currentIndexChanged( int value )
+{
+    Q_UNUSED(value)
+    slot_checkbox_shortcut_snapshot_clicked( true );
+}
+
+
 void QvkGlobalShortcut::slot_startStop()
 {
     if ( ui->pushButtonStart->isEnabled() == true )
@@ -700,4 +776,22 @@ void QvkGlobalShortcut::slot_toolButton_shortcut_halo_reset()
         ui->checkBox_shortcut_halo_meta->click();
 
     ui->comboBox_shortcut_halo->setCurrentText( "F6" );
+}
+
+
+void QvkGlobalShortcut::slot_toolButton_shortcut_snapshot_reset()
+{
+    if ( ui->checkBox_shortcut_snapshot_strg->isChecked() == false )
+        ui->checkBox_shortcut_snapshot_strg->click();
+
+    if ( ui->checkBox_shortcut_snapshot_shift->isChecked() == false )
+        ui->checkBox_shortcut_snapshot_shift->click();
+
+    if ( ui->checkBox_shortcut_snapshot_alt->isChecked() == true )
+        ui->checkBox_shortcut_snapshot_alt->click();
+
+    if ( ui->checkBox_shortcut_snapshot_meta->isChecked() == true )
+        ui->checkBox_shortcut_snapshot_meta->click();
+
+    ui->comboBox_shortcut_snapshot->setCurrentText( "F5" );
 }
