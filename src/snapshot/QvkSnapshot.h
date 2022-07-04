@@ -53,7 +53,7 @@ public slots:
 private slots:
     void slot_newImage();
     void slot_snapshotWindow( bool );
-
+    void slot_imagePath();
 
 protected:
 

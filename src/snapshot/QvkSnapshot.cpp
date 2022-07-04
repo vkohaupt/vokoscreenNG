@@ -30,6 +30,7 @@
 #include "global.h"
 #include "QvkSnapshot.h"
 #include "QvkSpezialSlider.h"
+#include "QvkDirDialog.h"
 
 
 QvkSnapshot::QvkSnapshot( QvkMainWindow *_vkMainWindow, Ui_formMainWindow *ui_formMainWindow )
@@ -37,6 +38,7 @@ QvkSnapshot::QvkSnapshot( QvkMainWindow *_vkMainWindow, Ui_formMainWindow *ui_fo
     ui = ui_formMainWindow;
     vkMainWindow = _vkMainWindow;
     connect( ui->pushButtonSnapshot, SIGNAL( clicked() ), this, SLOT( slot_newImage() ) );
+    connect( ui->toolButtonSnapshotImagePath, SIGNAL( clicked() ), this, SLOT( slot_imagePath() ) );
 
     supportedImageFormats();
     is_imageFolderExists_and_haveWritePermission();
@@ -198,4 +200,20 @@ void QvkSnapshot::slot_snapshotWindow( bool )
             vkMainWindow->vkSystray->showMessage( global::name, "Window captured", QIcon( ":/pictures/systray/systray.png" ), 10000 );
         }
     }
+}
+
+
+void QvkSnapshot::slot_imagePath()
+{
+    QApplication::setDesktopSettingsAware( false );
+
+    QvkDirDialog vkDirDialog( this );
+    if ( vkDirDialog.exec() == QDialog::Accepted )
+    {
+        if ( !vkDirDialog.selectedFiles().empty() ) {
+            ui->lineEditSnapshotImagePath->setText( vkDirDialog.selectedFiles().at(0) );
+        }
+    }
+
+    QApplication::setDesktopSettingsAware( true );
 }
