@@ -240,6 +240,13 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             continue;
         }
 
+        if ( ( listCheckBox.at(i)->objectName().contains( "checkBoxSnapshotShowBallonInSystray" ) ) and
+             ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) )
+        {
+            listCheckBox.at(i)->click();
+            continue;
+        }
+
 
         //
         if ( listCheckBox.at(i)->objectName().contains( "checkBox_shortcut" ) and

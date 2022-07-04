@@ -74,6 +74,10 @@ void QvkSnapshot::slot_newImage()
 
         if ( bo == false ) {
             qDebug().noquote() << global::nameOutput << "Failed to save image";
+        } else {
+            if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
+                vkMainWindow->vkSystray->showMessage( global::name, "Full screen captured", QIcon( ":/pictures/systray/systray.png" ), 10000 );
+            }
         }
     }
 
@@ -87,7 +91,6 @@ void QvkSnapshot::slot_newImage()
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
-
         if (  vkMainWindow->vkRegionChoise->recordemode == false )
         {
             vkMainWindow->vkRegionChoise->recordMode( true );
@@ -107,6 +110,10 @@ void QvkSnapshot::slot_newImage()
 
         if ( bo == false ) {
             qDebug().noquote() << global::nameOutput << "Failed to save image";
+        } else {
+            if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
+                vkMainWindow->vkSystray->showMessage( global::name, "Area captured", QIcon( ":/pictures/systray/systray.png" ), 10000 );
+            }
         }
 
         if ( ui->pushButtonStart->isEnabled() == true ) {
@@ -186,6 +193,9 @@ void QvkSnapshot::slot_snapshotWindow( bool )
 
     if ( bo == false ) {
         qDebug().noquote() << global::nameOutput << "Failed to save image";
+    } else {
+        if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
+            vkMainWindow->vkSystray->showMessage( global::name, "Window captured", QIcon( ":/pictures/systray/systray.png" ), 10000 );
+        }
     }
-
 }
