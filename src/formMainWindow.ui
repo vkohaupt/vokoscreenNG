@@ -1613,6 +1613,9 @@
               </item>
               <item row="5" column="0">
                <layout class="QHBoxLayout" name="horizontalLayout_7">
+                <property name="rightMargin">
+                 <number>9</number>
+                </property>
                 <item>
                  <widget class="QLabel" name="label_18">
                   <property name="text">
