@@ -87,6 +87,10 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
                 QString valueText = settings.value( listComboBoxShortcut.at(i)->objectName(), "F6" ).toString();
                 listComboBoxShortcut.at(i)->setCurrentText( valueText );
             }
+            if ( listComboBoxShortcut.at(i)->objectName() == "comboBox_shortcut_snapshot" ) {
+                QString valueText = settings.value( listComboBoxShortcut.at(i)->objectName(), "F5" ).toString();
+                listComboBoxShortcut.at(i)->setCurrentText( valueText );
+            }
         }
     }
 
@@ -334,6 +338,20 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
              }
         }
         if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_halo_shift" ) {
+             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
+                 listCheckBox.at(i)->setChecked( true );
+                 continue;
+             }
+        }
+
+        // Snapshot
+        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_snapshot_strg" ) {
+             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
+                 listCheckBox.at(i)->setChecked( true );
+                 continue;
+             }
+        }
+        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_snapshot_shift" ) {
              if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
                  listCheckBox.at(i)->setChecked( true );
                  continue;
