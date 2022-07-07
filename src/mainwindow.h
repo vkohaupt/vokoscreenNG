@@ -92,6 +92,7 @@ private:
     QvkSpezialSlider *sliderStopRecordingAfterHouers;
     QvkSpezialSlider *sliderStopRecordingAfterMinutes;
     QvkSpezialSlider *sliderStopRecordingAfterSeconds;
+    QvkSpezialSlider *sliderWaitBeforeSnapshot;
 
     QvkSettings vkSettings;
 
