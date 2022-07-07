@@ -61,6 +61,7 @@ private:
     QAction *haloAction;
     QAction *snapshotAction;
 
+
 private slots:
     void slot_hide();
     void slot_setRecordIcon( bool );
@@ -68,12 +69,8 @@ private slots:
     void slot_setPauseIcon( bool );
     void slot_newVersionAvailable( QString update );
     void slot_showHomepage();
-
     void slot_currentIndexChanged( int index );
-
     void slot_shortcutSystray( QString device, QString shortcut );
-
-
 
 
 protected:

@@ -247,10 +247,11 @@ void QvkSystray::slot_setPauseIcon( bool )
 
 void QvkSystray::slot_currentIndexChanged( int index )
 {
-    if ( index > -1 )
+    if ( index > -1 ) {
         cameraAction->setEnabled( true );
-    else
+    } else {
         cameraAction->setEnabled( false );
+    }
 }
 
 
@@ -328,5 +329,4 @@ void QvkSystray::slot_shortcutSystray( QString device, QString shortcut )
             snapshotAction->setShortcutVisibleInContextMenu( false );
         }
     }
-
 }

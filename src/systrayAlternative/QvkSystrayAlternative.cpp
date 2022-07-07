@@ -139,8 +139,6 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
         }
     }
 
-
-
     menu = new QMenu();
     menu->addAction( titleAction );
     menu->addSeparator();
