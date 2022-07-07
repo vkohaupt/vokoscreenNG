@@ -354,6 +354,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_Stop() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, &QPushButton::clicked, this, [=]() { lastButtonPressed = "start"; } );
 
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), this,                   SLOT( slot_Pause() ) );
     connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonPause,    SLOT( hide() ) );
@@ -371,6 +372,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonPlay, SIGNAL( clicked( bool ) ), this, SLOT( slot_Play() ) );
 
     connect( ui->pushButtonScreencastOpenfolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_Folder() ) );
+
+    connect( ui->pushButtonSnapshot, &QPushButton::clicked, this, [=]() { lastButtonPressed = "snapshot"; } );
 
 
     // Tab 1 Screen
@@ -2170,7 +2173,16 @@ void QvkMainWindow::slot_Play()
 
 void QvkMainWindow::slot_Folder()
 {
-    if ( QDesktopServices::openUrl( QUrl( "file:///" + ui->lineEditVideoPath->text(), QUrl::TolerantMode ) ) == false )
+    QString path;
+    if ( lastButtonPressed == "start" ) {
+        path = ui->lineEditVideoPath->text();
+    }
+
+    if ( lastButtonPressed == "snapshot" ) {
+        path = ui->lineEditSnapshotImagePath->text();
+    }
+
+    if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false )
     {
         QMessageBox msgBox( this );
         msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );

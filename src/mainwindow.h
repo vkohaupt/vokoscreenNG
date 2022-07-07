@@ -140,23 +140,18 @@ private:
 //    bool wantRecording = true;
 
     void checkVideoPath();
-
     bool isAudioDeviceSelected();
-
     QString Pipeline_structured_output( QString pipeline );
-
     QSoundEffect *soundEffect;
-
     bool cancel = false;
-
     bool is_videoFolderExists_and_haveWritePermission();
+    QPalette appPalette;
+    QString lastButtonPressed = "start";
 
 
 #ifdef Q_OS_WIN
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller;
 #endif
-
-    QPalette appPalette;
 
 
 private slots:
