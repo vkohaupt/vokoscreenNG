@@ -3840,7 +3840,7 @@
                 <item row="0" column="2">
                  <widget class="QToolButton" name="toolButtonSnapshotImagePath">
                   <property name="text">
-                   <string>...</string>
+                   <string notr="true">...</string>
                   </property>
                  </widget>
                 </item>
@@ -5826,14 +5826,14 @@
                  <item row="7" column="0">
                   <widget class="QLabel" name="label_58">
                    <property name="text">
-                    <string notr="true">Snapshot</string>
+                    <string>Snapshot</string>
                    </property>
                   </widget>
                  </item>
                  <item row="7" column="1" alignment="Qt::AlignHCenter">
                   <widget class="QLabel" name="label_shortcut_picture_snapshot">
                    <property name="text">
-                    <string>Picture</string>
+                    <string notr="true">Picture</string>
                    </property>
                   </widget>
                  </item>
