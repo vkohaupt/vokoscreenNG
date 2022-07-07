@@ -92,6 +92,11 @@ void QvkSystray::init()
     haloAction->setData( "Halo" );
     haloAction->setCheckable( true );
 
+    snapshotAction = new QAction( this );
+    snapshotAction->setIcon( QIcon( ":pictures/systray/snapshot.png" ) );
+    snapshotAction->setText( "Snapshot" );
+    snapshotAction->setData( "Snapshot" );
+
     exitAction = new QAction( this );
     exitAction->setIcon( QIcon( ":pictures/systray/exit.png" ) );
     exitAction->setText( tr( "Exit" ) );
@@ -152,6 +157,8 @@ void QvkSystray::init()
         }
     }
 
+    connect( snapshotAction, SIGNAL( triggered( bool ) ), ui->pushButtonSnapshot, SLOT( click() ) );
+
     menu = new QMenu();
     menu->addAction( titleAction );
     menu->addSeparator();
@@ -164,6 +171,7 @@ void QvkSystray::init()
     menu->addAction( magnifierAction );
     menu->addAction( showclickAction );
     menu->addAction( haloAction );
+    menu->addAction( snapshotAction );
     menu->addSeparator();
     menu->addAction( exitAction );
 
@@ -180,7 +188,6 @@ void QvkSystray::init()
     if ( ui->checkBoxCameraOnOff->isEnabled() == false ){
         cameraAction->setEnabled( false );
     }
-
 }
 
 
@@ -311,6 +318,14 @@ void QvkSystray::slot_shortcutSystray( QString device, QString shortcut )
         haloAction->setShortcut( QKeySequence::fromString( shortcut ) );
         if ( shortcut == "None" ){
             haloAction->setShortcutVisibleInContextMenu( false );
+        }
+    }
+
+    if ( device == "snapshot" ){
+        snapshotAction->setShortcutVisibleInContextMenu( true );
+        snapshotAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ){
+            snapshotAction->setShortcutVisibleInContextMenu( false );
         }
     }
 

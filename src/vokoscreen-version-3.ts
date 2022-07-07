@@ -524,6 +524,22 @@
         <source>If it shows assigned but does not work, it is being used by another program.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Snapshot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imagepath</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Picture</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -52,7 +52,6 @@ private:
     QAction *stopAction;
     QAction *pauseAction;
     QAction *continueAction;
-    QAction *hideAction;
     QAction *exitAction;
     QvkVersion version;
 
@@ -60,6 +59,7 @@ private:
     QAction *magnifierAction;
     QAction *showclickAction;
     QAction *haloAction;
+    QAction *snapshotAction;
 
 private slots:
     void slot_hide();
