@@ -30,7 +30,7 @@ void QvkVersion::slot_downloadFinished( QNetworkReply *reply )
     QUrl url = reply->url();
     if ( reply->error() )
     {
-        fprintf( stderr, "[vokoscreenNG] Download of %s failed: %s\n", url.toEncoded().constData(), qPrintable( reply->errorString() ) );
+        qDebug().noquote() << global::nameOutput << "Download of" << url.toEncoded().constData() << "failed." << reply->errorString();
     }
     else
     {
