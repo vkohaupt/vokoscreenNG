@@ -324,7 +324,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>4</number>
       </property>
       <property name="iconSize">
        <size>
@@ -892,8 +892,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>572</width>
-                      <height>287</height>
+                      <width>21</width>
+                      <height>16</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -2110,8 +2110,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>387</width>
-                   <height>410</height>
+                   <width>20</width>
+                   <height>98</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -4146,7 +4146,7 @@
                    <property name="spacing">
                     <number>0</number>
                    </property>
-                   <item alignment="Qt::AlignRight">
+                   <item alignment="Qt::AlignLeft">
                     <widget class="QLabel" name="label_40">
                      <property name="text">
                       <string>Pause</string>
@@ -4163,7 +4163,7 @@
                      </property>
                     </widget>
                    </item>
-                   <item alignment="Qt::AlignLeft">
+                   <item alignment="Qt::AlignRight">
                     <widget class="QLabel" name="label_41">
                      <property name="text">
                       <string>Continue</string>
@@ -4236,7 +4236,7 @@
                  <item row="0" column="2" alignment="Qt::AlignHCenter">
                   <widget class="QLabel" name="label_37">
                    <property name="text">
-                    <string notr="true">STRG</string>
+                    <string notr="true">CTRL</string>
                    </property>
                   </widget>
                  </item>
@@ -5067,7 +5067,7 @@
                    <property name="spacing">
                     <number>0</number>
                    </property>
-                   <item alignment="Qt::AlignRight">
+                   <item alignment="Qt::AlignLeft">
                     <widget class="QLabel" name="label_43">
                      <property name="text">
                       <string>Start</string>
@@ -5087,7 +5087,7 @@
                      </property>
                     </widget>
                    </item>
-                   <item>
+                   <item alignment="Qt::AlignRight">
                     <widget class="QLabel" name="label_44">
                      <property name="text">
                       <string>Stop</string>
