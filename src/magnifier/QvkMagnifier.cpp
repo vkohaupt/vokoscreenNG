@@ -228,7 +228,7 @@ void QvkMagnifier::setMagnifier()
 void QvkMagnifier::slot_mytimer()
 {
     QCursor cursor;
-    QPixmap originalPixmap = QPixmap();
+    QPixmap pixmap = QPixmap();
     QList<QScreen *> screen = QGuiApplication::screens();
 
     setMagnifier();
@@ -236,104 +236,104 @@ void QvkMagnifier::slot_mytimer()
     // Obere linke Ecke
     if ( ( cursor.pos().x() < distanceX ) and ( cursor.pos().y() <  distanceY ) )
     {
-        originalPixmap = screen.at(0)->grabWindow( 0,
-                                                   0,
-                                                   0,
-                                                   2 * distanceX,
-                                                   2 * distanceY );
-        label->setPixmap( originalPixmap );
+        pixmap = screen.at(0)->grabWindow( 0,
+                                           0,
+                                           0,
+                                           2 * distanceX,
+                                           2 * distanceY );
+        label->setPixmap( pixmap );
         return;
     }
 
     // Obere rechte Ecke
     if ( ( cursor.pos().x() > ( rectVirtualScreen.width() - distanceX ) ) and ( cursor.pos().y() < distanceY ) )
     {
-        originalPixmap = screen.at(0)->grabWindow( 0,
-                                                   rectVirtualScreen.width() - 2 * distanceX,
-                                                   0,
-                                                   2 * distanceX ,
-                                                   2 * distanceY );
-        label->setPixmap( originalPixmap );
+        pixmap = screen.at(0)->grabWindow( 0,
+                                           rectVirtualScreen.width() - 2 * distanceX,
+                                           0,
+                                           2 * distanceX ,
+                                           2 * distanceY );
+        label->setPixmap( pixmap );
         return;
     }
 
     // Linke untere Ecke
     if ( ( cursor.pos().x() < distanceX ) and ( cursor.pos().y() > rectVirtualScreen.height() - distanceY ) )
     {
-        originalPixmap = screen.at(0)->grabWindow( 0,
-                                                   0,
-                                                   rectVirtualScreen.height() - 2 * distanceY,
-                                                   2 * distanceX ,
-                                                   2 * distanceY );
-        label->setPixmap( originalPixmap );
+        pixmap = screen.at(0)->grabWindow( 0,
+                                           0,
+                                           rectVirtualScreen.height() - 2 * distanceY,
+                                           2 * distanceX ,
+                                           2 * distanceY );
+        label->setPixmap( pixmap );
         return;
     }
 
     // Rechte untere Ecke
     if ( ( cursor.pos().x() > rectVirtualScreen.width() - distanceX ) and ( cursor.pos().y() > rectVirtualScreen.height() - distanceY ) )
     {
-        originalPixmap = screen.at(0)->grabWindow( 0,
-                                                   rectVirtualScreen.width() - 2 * distanceX,
-                                                   rectVirtualScreen.height() - 2 * distanceY,
-                                                   2 * distanceX ,
-                                                   2 * distanceY );
-        label->setPixmap( originalPixmap );
+        pixmap = screen.at(0)->grabWindow( 0,
+                                           rectVirtualScreen.width() - 2 * distanceX,
+                                           rectVirtualScreen.height() - 2 * distanceY,
+                                           2 * distanceX ,
+                                           2 * distanceY );
+        label->setPixmap( pixmap );
         return;
     }
 
     // Unterer Rand
     if ( cursor.pos().y() > rectVirtualScreen.height() - distanceY )
     {
-        originalPixmap = screen.at(0)->grabWindow( 0,
-                                                   cursor.pos().x() - distanceX,
-                                                   rectVirtualScreen.height() - 2 * distanceY,
-                                                   2 * distanceX ,
-                                                   2 * distanceY );
-        label->setPixmap( originalPixmap );
+        pixmap = screen.at(0)->grabWindow( 0,
+                                           cursor.pos().x() - distanceX,
+                                           rectVirtualScreen.height() - 2 * distanceY,
+                                           2 * distanceX ,
+                                           2 * distanceY );
+        label->setPixmap( pixmap );
         return;
     }
 
     // Oberen Rand
     if ( cursor.pos().y() < distanceY )
     {
-        originalPixmap = screen.at(0)->grabWindow( 0,
-                                                   cursor.pos().x() - distanceX,
-                                                   0,
-                                                   2 * distanceX,
-                                                   2 * distanceY );
-        label->setPixmap( originalPixmap );
+        pixmap = screen.at(0)->grabWindow( 0,
+                                           cursor.pos().x() - distanceX,
+                                           0,
+                                           2 * distanceX,
+                                           2 * distanceY );
+        label->setPixmap( pixmap );
         return;
     }
 
     // Rechter Rand
     if ( cursor.pos().x() > rectVirtualScreen.width() - distanceX )
     {
-        originalPixmap = screen.at(0)->grabWindow( 0,
-                                                   rectVirtualScreen.width() - 2 * distanceX,
-                                                   cursor.pos().y() - distanceY,
-                                                   2 * distanceX ,
-                                                   2 * distanceY );
-        label->setPixmap( originalPixmap );
+        pixmap = screen.at(0)->grabWindow( 0,
+                                           rectVirtualScreen.width() - 2 * distanceX,
+                                           cursor.pos().y() - distanceY,
+                                           2 * distanceX ,
+                                           2 * distanceY );
+        label->setPixmap( pixmap );
         return;
     }
 
     // Linker Rand
     if ( cursor.pos().x() < distanceX )
     {
-        originalPixmap = screen.at(0)->grabWindow( 0,
-                                                   0,
-                                                   cursor.pos().y() - distanceY,
-                                                   2 * distanceX ,
-                                                   2 * distanceY );
-        label->setPixmap( originalPixmap );
+        pixmap = screen.at(0)->grabWindow( 0,
+                                           0,
+                                           cursor.pos().y() - distanceY,
+                                           2 * distanceX ,
+                                           2 * distanceY );
+        label->setPixmap( pixmap );
         return;
     }
 
     // Fläche
-    originalPixmap = screen.at(0)->grabWindow( 0,
-                                               cursor.pos().x() - distanceX,
-                                               cursor.pos().y() - distanceY,
-                                               2 * distanceX ,
-                                               2 * distanceY );
-    label->setPixmap( originalPixmap );
+    pixmap = screen.at(0)->grabWindow( 0,
+                                       cursor.pos().x() - distanceX,
+                                       cursor.pos().y() - distanceY,
+                                       2 * distanceX ,
+                                       2 * distanceY );
+    label->setPixmap( pixmap );
 }
