@@ -78,7 +78,7 @@ void QvkSnapshot::slot_newImage()
             qDebug().noquote() << global::nameOutput << "Failed to save image";
         } else {
             if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
-                vkMainWindow->vkSystray->showMessage( global::name, "Full screen captured", QIcon( ":/pictures/systray/systray.png" ), 10000 );
+                vkMainWindow->vkSystray->showMessage( global::name, "<b>Fullscreen captured</b>", QIcon( "" ), 10000 );
             }
         }
     }
@@ -114,7 +114,7 @@ void QvkSnapshot::slot_newImage()
             qDebug().noquote() << global::nameOutput << "Failed to save image";
         } else {
             if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
-                vkMainWindow->vkSystray->showMessage( global::name, "Area captured", QIcon( ":/pictures/systray/systray.png" ), 10000 );
+                vkMainWindow->vkSystray->showMessage( global::name, "<b>Area captured</b>", QIcon( "" ), 10000 );
             }
         }
 
@@ -197,7 +197,7 @@ void QvkSnapshot::slot_snapshotWindow( bool )
         qDebug().noquote() << global::nameOutput << "Failed to save image";
     } else {
         if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
-            vkMainWindow->vkSystray->showMessage( global::name, "Window captured", QIcon( ":/pictures/systray/systray.png" ), 10000 );
+            vkMainWindow->vkSystray->showMessage( global::name, "<b>Window captured</b>", QIcon( "" ), 10000 );
         }
     }
 }
