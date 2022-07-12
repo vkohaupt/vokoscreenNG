@@ -85,15 +85,30 @@ void QvkSnapshot::slot_newImage()
 
     if ( ui->radioButtonScreencastWindow->isChecked() == true )
     {
-        vkWinInfo = new QvkWinInfo;
-        disconnect( vkWinInfo, nullptr, nullptr, nullptr );
-        connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), this, SLOT( slot_snapshotWindow( bool ) ) );
-        vkWinInfo->slot_start();
+        if ( ui->pushButtonStart->isEnabled() == true )
+        {
+            vkWinInfo = new QvkWinInfo;
+            disconnect( vkWinInfo, nullptr, nullptr, nullptr );
+            connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), this, SLOT( slot_snapshotWindow( bool ) ) );
+            vkWinInfo->slot_start();
+        } else {
+            WId xid = vkMainWindow->vkWinInfo->getWinID();
+            QImage image = screen.at( ui->comboBoxScreencastScreen->currentIndex() )->grabWindow(xid).toImage();
+            bool bo = image.save( ui->lineEditSnapshotImagePath->text() + "/" + filename, ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
+
+            if ( bo == false ) {
+                qDebug().noquote() << global::nameOutput << "Failed to save image";
+            } else {
+                if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
+                    vkMainWindow->vkSystray->showMessage( global::name, "<b>Window captured</b>", QIcon( "" ), 10000 );
+                }
+            }
+        }
     }
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
-        if (  vkMainWindow->vkRegionChoise->recordemode == false )
+        if ( vkMainWindow->vkRegionChoise->recordemode == false )
         {
             vkMainWindow->vkRegionChoise->recordMode( true );
             QvkSpezialSlider *spezialSlider = ui->centralWidget->findChild<QvkSpezialSlider *>( "sliderWaitBeforeSnapshot" );
