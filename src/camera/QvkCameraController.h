@@ -75,10 +75,12 @@ private:
     QvkSpezialSlider *sliderCameraWindowSize;
     QvkSpezialSlider *sliderCameraWindowZoom;
 
+
 protected:
 
 
 signals:
+    void signal_setNewImage( QImage );
 
 
 };

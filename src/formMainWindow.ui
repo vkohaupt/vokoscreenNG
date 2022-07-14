@@ -324,7 +324,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -892,8 +892,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>572</width>
-                      <height>231</height>
+                      <width>21</width>
+                      <height>16</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -2110,8 +2110,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>387</width>
-                   <height>354</height>
+                   <width>20</width>
+                   <height>98</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -2853,17 +2853,7 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="0" colspan="4">
-               <widget class="Line" name="line_2">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="0" colspan="3">
+              <item row="8" column="0" colspan="3">
                <layout class="QHBoxLayout" name="horizontalLayout_14">
                 <item>
                  <widget class="QCheckBox" name="checkBoxCameraInvert">
@@ -2896,6 +2886,35 @@
                  </widget>
                 </item>
                </layout>
+              </item>
+              <item row="0" column="2">
+               <widget class="QComboBox" name="comboBoxCameraResolution">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="sizeAdjustPolicy">
+                 <enum>QComboBox::AdjustToContents</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="comboBoxCamera">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="currentText">
+                 <string notr="true"/>
+                </property>
+                <property name="sizeAdjustPolicy">
+                 <enum>QComboBox::AdjustToContents</enum>
+                </property>
+               </widget>
               </item>
               <item row="4" column="0" colspan="3">
                <layout class="QHBoxLayout" name="horizontalLayout_12">
@@ -2934,7 +2953,27 @@
                 </item>
                </layout>
               </item>
-              <item row="10" column="0" colspan="3">
+              <item row="1" column="0" colspan="4">
+               <widget class="Line" name="line_2">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="QToolButton" name="help_camera_camera">
+                <property name="toolTip">
+                 <string>Help</string>
+                </property>
+                <property name="text">
+                 <string notr="true">Help</string>
+                </property>
+               </widget>
+              </item>
+              <item row="13" column="0" colspan="3">
                <layout class="QHBoxLayout" name="horizontalLayout_zoom">
                 <property name="spacing">
                  <number>12</number>
@@ -2966,74 +3005,6 @@
                 </item>
                </layout>
               </item>
-              <item row="0" column="3">
-               <widget class="QToolButton" name="help_camera_camera">
-                <property name="toolTip">
-                 <string>Help</string>
-                </property>
-                <property name="text">
-                 <string notr="true">Help</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="QComboBox" name="comboBoxCameraResolution">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="sizeAdjustPolicy">
-                 <enum>QComboBox::AdjustToContents</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="0" colspan="3">
-               <widget class="Line" name="line_11">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="0" colspan="3">
-               <layout class="QHBoxLayout" name="horizontalLayout_42">
-                <item>
-                 <widget class="QCheckBox" name="checkBoxCameraWindowFrame">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="text">
-                   <string>Remove window frame</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item row="7" column="0" colspan="3">
-               <widget class="Line" name="line_7">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="0" colspan="3">
-               <widget class="Line" name="line_10">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="11" column="1">
-               <spacer name="verticalSpacer_26">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>40</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
               <item row="0" column="0">
                <widget class="QCheckBox" name="checkBoxCameraOnOff">
                 <property name="enabled">
@@ -3047,24 +3018,39 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="1">
-               <widget class="QComboBox" name="comboBoxCamera">
-                <property name="enabled">
-                 <bool>false</bool>
+              <item row="15" column="1">
+               <spacer name="verticalSpacer_26">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
                 </property>
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
                 </property>
-                <property name="currentText">
-                 <string notr="true"/>
-                </property>
-                <property name="sizeAdjustPolicy">
-                 <enum>QComboBox::AdjustToContents</enum>
+               </spacer>
+              </item>
+              <item row="5" column="0" colspan="3">
+               <widget class="Line" name="line_11">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
                 </property>
                </widget>
+              </item>
+              <item row="10" column="0" colspan="3">
+               <layout class="QHBoxLayout" name="horizontalLayout_42">
+                <item>
+                 <widget class="QCheckBox" name="checkBoxCameraWindowFrame">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="text">
+                   <string>Remove window frame</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
               <item row="2" column="0" colspan="3">
                <layout class="QVBoxLayout" name="verticalLayout_28">
@@ -3120,6 +3106,52 @@
                  </layout>
                 </item>
                </layout>
+              </item>
+              <item row="9" column="0" colspan="3">
+               <widget class="Line" name="line_7">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0" colspan="3">
+               <layout class="QHBoxLayout" name="horizontalLayout_62">
+                <item>
+                 <widget class="QRadioButton" name="radioButtonCameraRectangle">
+                  <property name="text">
+                   <string>Rectangle</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="radioButtonCameraEllipse">
+                  <property name="text">
+                   <string>Ellipse</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="radioButtonCameraCircle">
+                  <property name="text">
+                   <string>Circle</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="12" column="0" colspan="3">
+               <widget class="Line" name="line_10">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="0" colspan="3">
+               <widget class="Line" name="line_9">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>

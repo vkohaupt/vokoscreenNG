@@ -24,6 +24,8 @@
 
 #include <QDebug>
 #include <QMouseEvent>
+#include <QBitmap>
+
 
 QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, cameraSettingsDialog *settingsDialog )
 {
@@ -32,7 +34,7 @@ QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, cameraSettingsD
 
     setWindowFlags( windowFlags() | Qt::WindowStaysOnTopHint );
     setMinimumSize( QSize( 160, 120 ) );
-    setAlignment( Qt::AlignHCenter | Qt::AlignVCenter );
+//    setAlignment( Qt::AlignHCenter | Qt::AlignVCenter );
     setMouseTracking( true ); // No function, why?
 
     connect( ui_formMainWindow->checkBoxCameraMirrorHorizontal, SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraMirrorHorizontal, SLOT( setChecked( bool ) ) );
@@ -58,6 +60,44 @@ QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, cameraSettingsD
 
 QvkCameraWindow::~QvkCameraWindow()
 {
+}
+
+
+void QvkCameraWindow::paintEvent( QPaintEvent *event )
+{
+    Q_UNUSED(event)
+
+    QPixmap pixmap( image.width(), image.height() );
+    if ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true ) {
+        pixmap.fill( Qt::transparent );
+    } else {
+        pixmap.fill( Qt::black );
+    }
+
+    QPainter painterPixmap;
+    painterPixmap.begin( &pixmap );
+    painterPixmap.setRenderHints( QPainter::Antialiasing, true );
+    painterPixmap.drawImage( 0, 0, image );
+    painterPixmap.end();
+
+    QPainter painter;
+    painter.begin( this);
+    painter.setRenderHints( QPainter::Antialiasing, true );
+    painter.drawPixmap( QPoint( 0, 0 ), pixmap );
+    painter.end();
+
+    if ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true ) {
+        setMask( pixmap.mask() );
+    } else {
+        clearMask();
+    }
+}
+
+
+void QvkCameraWindow::slot_setNewImage( QImage _image )
+{
+    image = _image;
+    repaint();
 }
 
 

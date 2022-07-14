@@ -31,8 +31,9 @@
 
 #include <QLabel>
 #include <QWidget>
+#include <QPaintEvent>
 
-class QvkCameraWindow : public QLabel
+class QvkCameraWindow : public QWidget //QLabel
 {
     Q_OBJECT
 
@@ -48,8 +49,10 @@ private:
    bool mousePressed = false;
    int mouseLocal_X;
    int mouseLocal_Y;
+   QImage image;
 
 public slots:
+   void slot_setNewImage( QImage _image );
 
 
 private slots:
@@ -64,6 +67,7 @@ protected:
     void resizeEvent(QResizeEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
+    void paintEvent( QPaintEvent *event );
 
 signals:
     void signal_cameraWindow_close( bool );

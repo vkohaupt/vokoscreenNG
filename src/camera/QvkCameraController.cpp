@@ -1,4 +1,4 @@
-/* vokoscreenNG - A desktop recorder
+﻿/* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2019 Volker Kohaupt
  *
  * Author:
@@ -26,6 +26,9 @@
 #include "camerasettingsdialog.h"
 
 #include <QCameraInfo>
+#include <QPainterPath>
+#include <QPaintDevice>
+#include <QBitmap>
 
 QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoSurface(new QvkVideoSurface())
 {
@@ -68,6 +71,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     cameraWindow = new QvkCameraWindow( ui_surface, vkCameraSettingsDialog );
     connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_formMainWindow->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
     cameraWindow->setWindowTitle( QString( tr( "Camera") ) );
+    cameraWindow->setAttribute( Qt::WA_TranslucentBackground, true );
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     cameraWindow->setWindowIcon( icon );
 
@@ -82,6 +86,10 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ), this, SLOT( slot_setNewImage( QImage ) ) );
 
     connect( ui_formMainWindow->checkBoxCameraWindowFrame, SIGNAL( toggled( bool ) ), this, SLOT( slot_frameOnOff( bool ) ) );
+
+
+
+    connect( this, SIGNAL(signal_setNewImage( QImage) ), cameraWindow, SLOT(slot_setNewImage( QImage ) ) );
 }
 
 
@@ -227,17 +235,71 @@ void QvkCameraController::slot_setNewImage( QImage image )
                                     height - ( 2 * minusPixel / quotient )
                                     );
     image = image_zoom.scaled( cameraWindow->width(), cameraWindow->height(), Qt::KeepAspectRatio, Qt::SmoothTransformation );
-    cameraWindow->setPixmap( QPixmap::fromImage( image, Qt::AutoColor ) );
     // Zoom end
+
+
+    // Ellipse
+    if ( ui_formMainWindow->radioButtonCameraEllipse->isChecked() == true )
+    {
+        int w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
+        int h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - ( sliderCameraWindowSize->value() / quotient );
+        QPixmap pixmap( w, h );
+        pixmap.fill( Qt::transparent );
+        QPainter painter;
+        painter.begin( &pixmap );
+        painter.setRenderHints( QPainter::Antialiasing, true );
+        QPainterPath path;
+        path.addEllipse( 0, 0, w, h);
+        painter.setClipPath( path );
+        painter.drawImage( QRect( 0, 0, w, h ), image );
+        painter.end();
+        image = pixmap.toImage();
+    }
+    // Elipse end
+
+
+    // Circle
+    if ( ui_formMainWindow->radioButtonCameraCircle->isChecked() == true )
+    {
+        int w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
+        int h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - ( sliderCameraWindowSize->value() / quotient );
+
+        QPixmap pixmap( w, h );
+        pixmap.fill( Qt::transparent );
+
+        QPainter painter;
+        painter.begin( &pixmap );
+        painter.setRenderHints( QPainter::Antialiasing, true );
+        QPainterPath path;
+        path.addEllipse( (w-h)/2, 0, h, h );
+        painter.setClipPath( path );
+        painter.drawImage( QRect( 0, 0, w, h ), image );
+        painter.end();
+        image = pixmap.copy( (w-h)/2, 0, h, h ).toImage();
+    }
+    // Circle end
+
+    emit signal_setNewImage( image );
 
     // Window size
     if ( cameraWindow->isFullScreen() == false )
     {
-        cameraWindow->setFixedSize( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value(),
-                                    ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - ( sliderCameraWindowSize->value() / quotient )
-                                    );
+        if ( ( ui_formMainWindow->radioButtonCameraRectangle->isChecked() ) or ( ui_formMainWindow->radioButtonCameraEllipse->isChecked() )  )
+        {
+            cameraWindow->setFixedSize( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value(),
+                                        ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - ( sliderCameraWindowSize->value() / quotient )
+                                        );
+        }
+
+        if ( ui_formMainWindow->radioButtonCameraCircle->isChecked() )
+        {
+            cameraWindow->setFixedSize( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - ( sliderCameraWindowSize->value() / quotient ),
+                                        ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - ( sliderCameraWindowSize->value() / quotient )
+                                        );
+        }
     }
     // Window size end
+
 }
 
 
@@ -372,9 +434,9 @@ void QvkCameraController::slot_error( QCamera::Error error )
     case QCamera::CameraError:
     {
         qDebug().noquote() << global::nameOutput << "General Camera error";
-        cameraWindow->clear();
+//        cameraWindow->clear();
         cameraWindow->setStyleSheet( "background-color:white;" );
-        cameraWindow->setText( "Camera is busy " );
+//        cameraWindow->setText( "Camera is busy " );
         break;
     }
     case QCamera::InvalidRequestError:
