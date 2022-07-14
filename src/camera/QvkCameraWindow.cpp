@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2019 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -34,7 +34,7 @@ QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, cameraSettingsD
 
     setWindowFlags( windowFlags() | Qt::WindowStaysOnTopHint );
     setMinimumSize( QSize( 160, 120 ) );
-//    setAlignment( Qt::AlignHCenter | Qt::AlignVCenter );
+    //    setAlignment( Qt::AlignHCenter | Qt::AlignVCenter );
     setMouseTracking( true ); // No function, why?
 
     connect( ui_formMainWindow->checkBoxCameraMirrorHorizontal, SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraMirrorHorizontal, SLOT( setChecked( bool ) ) );
@@ -181,29 +181,29 @@ void QvkCameraWindow::mousePressEvent( QMouseEvent *event )
 {
     if ( event->button() == Qt::RightButton )
     {
-       if ( vkCameraSettingsDialog->isVisible() )
-       {
-           vkCameraSettingsDialog->close();
-       }
-       else
-       {
-           vkCameraSettingsDialog->show();
-           if ( isFullScreen() == true )
-           {
-               vkCameraSettingsDialog->ui->widgetCameraWindowSize->hide();
-               vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame->hide();
-               vkCameraSettingsDialog->ui->line_2->hide();
-               vkCameraSettingsDialog->ui->line_3->hide();
-           }
-           else
-           {
-               vkCameraSettingsDialog->ui->widgetCameraWindowSize->show();
-               vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame->show();
-               vkCameraSettingsDialog->ui->line_2->show();
-               vkCameraSettingsDialog->ui->line_3->show();
-           }
-       }
-       return;
+        if ( vkCameraSettingsDialog->isVisible() )
+        {
+            vkCameraSettingsDialog->close();
+        }
+        else
+        {
+            vkCameraSettingsDialog->show();
+            if ( isFullScreen() == true )
+            {
+                vkCameraSettingsDialog->ui->widgetCameraWindowSize->hide();
+                vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame->hide();
+                vkCameraSettingsDialog->ui->line_2->hide();
+                vkCameraSettingsDialog->ui->line_3->hide();
+            }
+            else
+            {
+                vkCameraSettingsDialog->ui->widgetCameraWindowSize->show();
+                vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame->show();
+                vkCameraSettingsDialog->ui->line_2->show();
+                vkCameraSettingsDialog->ui->line_3->show();
+            }
+        }
+        return;
     }
 
     if ( isFullScreen() == true )

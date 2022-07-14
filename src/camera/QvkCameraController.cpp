@@ -87,8 +87,6 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
 
     connect( ui_formMainWindow->checkBoxCameraWindowFrame, SIGNAL( toggled( bool ) ), this, SLOT( slot_frameOnOff( bool ) ) );
 
-
-
     connect( this, SIGNAL(signal_setNewImage( QImage) ), cameraWindow, SLOT(slot_setNewImage( QImage ) ) );
 }
 
@@ -185,7 +183,7 @@ void QvkCameraController::slot_frameOnOff( bool value )
 
         if ( ui_formMainWindow->checkBoxCameraOnOff->isChecked() == true )
         {
-          cameraWindow->show();
+            cameraWindow->show();
         }
     }
 }
@@ -299,7 +297,6 @@ void QvkCameraController::slot_setNewImage( QImage image )
         }
     }
     // Window size end
-
 }
 
 
@@ -434,9 +431,9 @@ void QvkCameraController::slot_error( QCamera::Error error )
     case QCamera::CameraError:
     {
         qDebug().noquote() << global::nameOutput << "General Camera error";
-//        cameraWindow->clear();
+        //        cameraWindow->clear();
         cameraWindow->setStyleSheet( "background-color:white;" );
-//        cameraWindow->setText( "Camera is busy " );
+        //        cameraWindow->setText( "Camera is busy " );
         break;
     }
     case QCamera::InvalidRequestError:
