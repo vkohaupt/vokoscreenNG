@@ -113,6 +113,15 @@ void QvkSpezialSlider::paintEvent(QPaintEvent *event)
         painter.drawText( qRectF, Qt::AlignCenter, QString::number( value() ) );
     }
 
+    if ( bigHandel == true )
+    {
+        QFont font = qApp->font();
+        painter.setFont( font );
+        QFontMetrics fontMetrics( font );
+        setMinimumHeight( fontMetrics.horizontalAdvance( "5555" ) );
+        painter.setPen( vk_get_color( QPalette::ButtonText ) );
+    }
+
     painter.end();
 }
 
@@ -209,4 +218,13 @@ void QvkSpezialSlider::mouseReleaseEvent( QMouseEvent *event )
 void QvkSpezialSlider::setShowValue( bool value )
 {
     showValue = value;
+}
+
+/*
+ * Display a big handle without value
+ * If showValue == true this do nothing
+ */
+void QvkSpezialSlider::setBigHandel( bool value )
+{
+    bigHandel = value;
 }

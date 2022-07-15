@@ -41,7 +41,8 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     sliderCameraWindowSize->setMaximum( 1 );
     sliderCameraWindowSize->setValue( 0 );
     sliderCameraWindowSize->show();
-    sliderCameraWindowSize->setShowValue( true );
+    sliderCameraWindowSize->setShowValue( false );
+    sliderCameraWindowSize->setBigHandel( true );
     sliderCameraWindowSize->setEnabled( true );
 
     sliderCameraWindowZoom = new QvkSpezialSlider( Qt::Horizontal );

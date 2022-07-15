@@ -24,10 +24,12 @@ private:
     bool mousePressed = false;
     QColor vk_get_color(QPalette::ColorRole colorRole);
     bool showValue = true;
+    bool bigHandel = false;
 
 
 public slots:
     void setShowValue( bool value );
+    void setBigHandel( bool value );
 
 
 protected:
