@@ -522,6 +522,14 @@
         <source>If it shows assigned but does not work, it is being used by another program.</source>
         <translation>Si es mostra com assignada, però no funciona, es deu a que és emprada per un altre programa.</translation>
     </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Instantània</translation>
+    </message>
+    <message>
+        <source>Imagepath</source>
+        <translation>Camí de la imatge</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

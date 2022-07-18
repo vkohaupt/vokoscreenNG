@@ -522,6 +522,14 @@
         <source>If it shows assigned but does not work, it is being used by another program.</source>
         <translation>Om den visas som tilldelad men inte fungerar, används den av ett annat program.</translation>
     </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Ögonblicksbild</translation>
+    </message>
+    <message>
+        <source>Imagepath</source>
+        <translation>Bildsökväg</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

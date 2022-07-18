@@ -522,6 +522,14 @@
         <source>If it shows assigned but does not work, it is being used by another program.</source>
         <translation>Wenn es zugewiesen anzeigt, aber nicht funktioniert, wird es von einem anderen Programm verwendet.</translation>
     </message>
+    <message>
+        <source>Snapshot</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Imagepath</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -52,10 +52,20 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     sliderCameraWindowZoom->setMaximum( 1 );
     sliderCameraWindowZoom->setValue( 0 );
     sliderCameraWindowZoom->show();
-    sliderCameraWindowZoom->setShowValue( false );
-    sliderCameraWindowZoom->setBigHandel( true );
+    sliderCameraWindowZoom->setShowValue( true );
     sliderCameraWindowZoom->setEnabled( true );
-
+/*
+    sliderCameraWindowElements = new QvkSpezialSlider( Qt::Horizontal );
+    ui_formMainWindow->horizontalLayout_elements->insertWidget( 1, sliderCameraWindowElements );
+    sliderCameraWindowElements->setObjectName( "sliderCameraWindowElements" );
+    sliderCameraWindowElements->setMinimum( 0 );
+    sliderCameraWindowElements->setMaximum( 2 );
+    sliderCameraWindowElements->setValue( 0 );
+    sliderCameraWindowElements->show();
+    sliderCameraWindowElements->setShowValue( false );
+    sliderCameraWindowElements->setBigHandel( true );
+    sliderCameraWindowElements->setEnabled( true );
+*/
     vkCameraSettingsDialog = new cameraSettingsDialog;
     connect( sliderCameraWindowSize, SIGNAL( rangeChanged( int, int ) ), vkCameraSettingsDialog->dialog_sliderCameraWindowSize, SLOT( setRange( int, int ) ) );
     connect( sliderCameraWindowSize, SIGNAL( valueChanged( int ) ),      vkCameraSettingsDialog->dialog_sliderCameraWindowSize, SLOT( setValue( int ) ) );

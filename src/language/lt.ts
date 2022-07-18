@@ -522,6 +522,14 @@
         <source>If it shows assigned but does not work, it is being used by another program.</source>
         <translation>Jei yra rodoma, jog jis yra priskirtas, o jis neveikia, vadinasi jį naudoja kita programa.</translation>
     </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Momentinė kopija</translation>
+    </message>
+    <message>
+        <source>Imagepath</source>
+        <translation>Paveikslo kelias</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

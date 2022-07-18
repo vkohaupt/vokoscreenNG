@@ -522,6 +522,14 @@
         <source>If it shows assigned but does not work, it is being used by another program.</source>
         <translation>Pokud je zobrazena jako přiřazená, ale nefunguje, používá ji jiný program.</translation>
     </message>
+    <message>
+        <source>Snapshot</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Imagepath</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -522,6 +522,14 @@
         <source>If it shows assigned but does not work, it is being used by another program.</source>
         <translation>Nếu nó hiển thị được chỉ định nhưng không hoạt động, nó đang được sử dụng bởi một chương trình khác.</translation>
     </message>
+    <message>
+        <source>Snapshot</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Imagepath</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>license</name>

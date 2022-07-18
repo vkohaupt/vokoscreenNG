@@ -522,6 +522,14 @@
         <source>If it shows assigned but does not work, it is being used by another program.</source>
         <translation>Als de sneltoets wordt aangeduid als toegewezen maar niet werkt, dan is de sneltoets reeds in gebruik door een ander programma.</translation>
     </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Schermfoto</translation>
+    </message>
+    <message>
+        <source>Imagepath</source>
+        <translation>Afbeeldingslocatie</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

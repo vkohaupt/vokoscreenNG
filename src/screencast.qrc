@@ -1,8 +1,14 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
 <file>pictures/camera/camera-sidebar.png</file>
+<file>pictures/camera/window-rectangle-off.png</file>
 <file>pictures/camera/camera.png</file>
+<file>pictures/camera/on.png</file>
+<file>pictures/camera/window-ellipse-on.png</file>
+<file>pictures/camera/window-rectangle-on.png</file>
+<file>pictures/camera/window-ellipse-off.png</file>
 <file>pictures/camera/window-resize.png</file>
+<file>pictures/camera/window-circle-off.png</file>
 <file>pictures/cursor/size_hor.png</file>
 <file>pictures/cursor/size_ver.png</file>
 <file>pictures/cursor/size_all.png</file>
@@ -61,8 +67,13 @@
 <file>pictures/systray/showclick.png</file>
 <file>pictures/wayland.png</file>
 <file>pictures/windows.png</file>
+<file>pictures/camera/window-ellipse-on.license</file>
 <file>pictures/camera/camera.license</file>
 <file>pictures/camera/window-resize.license</file>
+<file>pictures/camera/window-circle-off.license</file>
+<file>pictures/camera/window-rectangle-off.license</file>
+<file>pictures/camera/window-rectangle-on.license</file>
+<file>pictures/camera/window-ellipse-off.license</file>
 <file>pictures/cursor/size_all.license</file>
 <file>pictures/cursor/size_ver.license</file>
 <file>pictures/cursor/size_bdiag.license</file>
