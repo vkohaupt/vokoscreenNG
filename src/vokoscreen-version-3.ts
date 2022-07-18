@@ -532,18 +532,6 @@
         <source>Imagepath</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Rectangle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ellipse</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Circle</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>license</name>
