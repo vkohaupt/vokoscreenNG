@@ -54,18 +54,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     sliderCameraWindowZoom->show();
     sliderCameraWindowZoom->setShowValue( true );
     sliderCameraWindowZoom->setEnabled( true );
-/*
-    sliderCameraWindowElements = new QvkSpezialSlider( Qt::Horizontal );
-    ui_formMainWindow->horizontalLayout_elements->insertWidget( 1, sliderCameraWindowElements );
-    sliderCameraWindowElements->setObjectName( "sliderCameraWindowElements" );
-    sliderCameraWindowElements->setMinimum( 0 );
-    sliderCameraWindowElements->setMaximum( 2 );
-    sliderCameraWindowElements->setValue( 0 );
-    sliderCameraWindowElements->show();
-    sliderCameraWindowElements->setShowValue( false );
-    sliderCameraWindowElements->setBigHandel( true );
-    sliderCameraWindowElements->setEnabled( true );
-*/
+
     vkCameraSettingsDialog = new cameraSettingsDialog;
     connect( sliderCameraWindowSize, SIGNAL( rangeChanged( int, int ) ), vkCameraSettingsDialog->dialog_sliderCameraWindowSize, SLOT( setRange( int, int ) ) );
     connect( sliderCameraWindowSize, SIGNAL( valueChanged( int ) ),      vkCameraSettingsDialog->dialog_sliderCameraWindowSize, SLOT( setValue( int ) ) );
@@ -99,7 +88,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
 
     connect( ui_formMainWindow->checkBoxCameraWindowFrame, SIGNAL( toggled( bool ) ), this, SLOT( slot_frameOnOff( bool ) ) );
 
-    connect( this, SIGNAL(signal_setNewImage( QImage) ), cameraWindow, SLOT(slot_setNewImage( QImage ) ) );
+    connect( this, SIGNAL( signal_setNewImage( QImage) ), cameraWindow, SLOT(slot_setNewImage( QImage ) ) );
 }
 
 
@@ -237,7 +226,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
 
 
     // Rectangel
-    if ( ui_formMainWindow->radioButtonCameraRectangle->isChecked() == true )
+    if ( ui_formMainWindow->toolButton_camera_view_rectangle->isChecked() == true )
     {
         // Zoom
         qreal width = image.width();
@@ -261,7 +250,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
 
 
     // Ellipse
-    if ( ui_formMainWindow->radioButtonCameraEllipse->isChecked() == true )
+    if ( ui_formMainWindow->toolButton_camera_view_ellipse->isChecked() == true )
     {
         // Zoom
         qreal width = image.width();
@@ -296,7 +285,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
 
 
     // Circle
-    if ( ui_formMainWindow->radioButtonCameraCircle->isChecked() == true )
+    if ( ui_formMainWindow->toolButton_camera_view_circle->isChecked() == true )
     {
         // Zoom
         qreal width = image.width();
