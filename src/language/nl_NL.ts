@@ -530,18 +530,6 @@
         <source>Imagepath</source>
         <translation>Afbeeldingslocatie</translation>
     </message>
-    <message>
-        <source>Rectangle</source>
-        <translation>Rechthoek</translation>
-    </message>
-    <message>
-        <source>Ellipse</source>
-        <translation>Ovaal</translation>
-    </message>
-    <message>
-        <source>Circle</source>
-        <translation>Cirkel</translation>
-    </message>
 </context>
 <context>
     <name>license</name>
