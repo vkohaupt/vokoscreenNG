@@ -73,9 +73,24 @@ void QvkCameraWindow::paintEvent( QPaintEvent *event )
 {
     Q_UNUSED(event)
 
-    QPixmap pixmap( image.width(), image.height() );
+    int displayedWidth = 0;
+    int displayedHeight = 0;
+    if ( isFullScreen() == true ) {
+        displayedWidth = width();
+        displayedHeight = height();
+        image = image.scaled( displayedWidth, displayedHeight, Qt::KeepAspectRatio, Qt::SmoothTransformation );
+    } else {
+        displayedWidth = image.width();
+        displayedHeight = image.height();
+    }
+
+    QPixmap pixmap( displayedWidth, displayedHeight );
     if ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true ) {
-        pixmap.fill( Qt::transparent );
+        if ( isFullScreen() == true ) {
+            pixmap.fill( Qt::black );
+        } else {
+            pixmap.fill( Qt::transparent );
+        }
     } else {
         pixmap.fill( Qt::black );
     }
@@ -83,7 +98,7 @@ void QvkCameraWindow::paintEvent( QPaintEvent *event )
     QPainter painterPixmap;
     painterPixmap.begin( &pixmap );
     painterPixmap.setRenderHints( QPainter::Antialiasing, true );
-    painterPixmap.drawImage( 0, 0, image );
+    painterPixmap.drawImage( ( width() - image.width() ) / 2 , 0, image );
     painterPixmap.end();
 
     QPainter painter;

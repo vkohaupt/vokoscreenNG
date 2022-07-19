@@ -29,11 +29,10 @@
 #include "camerasettingsdialog.h"
 #include "QvkSpezialSlider.h"
 
-#include <QLabel>
 #include <QWidget>
 #include <QPaintEvent>
 
-class QvkCameraWindow : public QWidget //QLabel
+class QvkCameraWindow : public QWidget
 {
     Q_OBJECT
 
