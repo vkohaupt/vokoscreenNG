@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>411</width>
-    <height>454</height>
+    <width>391</width>
+    <height>483</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -37,9 +37,6 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
-          <widget class="QComboBox" name="comboBoxCameraResolution"/>
-         </item>
-         <item>
           <spacer name="horizontalSpacer">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -51,6 +48,9 @@
             </size>
            </property>
           </spacer>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBoxCameraResolution"/>
          </item>
         </layout>
        </item>
@@ -130,6 +130,184 @@
         </widget>
        </item>
        <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="spacing">
+          <number>12</number>
+         </property>
+         <item alignment="Qt::AlignLeft">
+          <widget class="QLabel" name="label_2">
+           <property name="maximumSize">
+            <size>
+             <width>34</width>
+             <height>34</height>
+            </size>
+           </property>
+           <property name="text">
+            <string notr="true"/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="../screencast.qrc">:/pictures/systray/magnification.png</pixmap>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_65">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <spacer name="horizontalSpacer_41">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton_camera_view_rectangle">
+           <property name="text">
+            <string notr="true"/>
+           </property>
+           <property name="icon">
+            <iconset resource="../screencast.qrc">
+             <normaloff>:/pictures/camera/window-rectangle-off.png</normaloff>
+             <normalon>:/pictures/camera/window-rectangle-on.png</normalon>:/pictures/camera/window-rectangle-off.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>34</width>
+             <height>34</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_35">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Preferred</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton_camera_view_ellipse">
+           <property name="text">
+            <string notr="true"/>
+           </property>
+           <property name="icon">
+            <iconset resource="../screencast.qrc">
+             <normaloff>:/pictures/camera/window-ellipse-off.png</normaloff>
+             <normalon>:/pictures/camera/window-ellipse-on.png</normalon>:/pictures/camera/window-ellipse-off.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>34</width>
+             <height>34</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_36">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Preferred</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton_camera_view_circle">
+           <property name="text">
+            <string notr="true"/>
+           </property>
+           <property name="icon">
+            <iconset resource="../screencast.qrc">
+             <normaloff>:/pictures/camera/window-circle-off.png</normaloff>
+             <normalon>:/pictures/camera/window-circle-on.png</normalon>:/pictures/camera/window-circle-off.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>34</width>
+             <height>34</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_37">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_12">
          <item>
           <widget class="QCheckBox" name="checkBoxCameraMirrorVertical">
@@ -203,32 +381,6 @@
           <enum>Qt::Horizontal</enum>
          </property>
         </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <property name="spacing">
-          <number>12</number>
-         </property>
-         <item alignment="Qt::AlignLeft">
-          <widget class="QLabel" name="label_2">
-           <property name="maximumSize">
-            <size>
-             <width>34</width>
-             <height>34</height>
-            </size>
-           </property>
-           <property name="text">
-            <string notr="true"/>
-           </property>
-           <property name="pixmap">
-            <pixmap resource="../screencast.qrc">:/pictures/systray/magnification.png</pixmap>
-           </property>
-           <property name="scaledContents">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
        </item>
        <item>
         <widget class="Line" name="line_5">

@@ -44,6 +44,9 @@ QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, cameraSettingsD
     connect( ui_formMainWindow->checkBoxCameraMono,             SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraMono,             SLOT( setChecked( bool ) ) );
     connect( ui_formMainWindow->checkBoxCameraWindowFrame,      SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame,      SLOT( setChecked( bool ) ) );
     connect( ui_formMainWindow->comboBoxCameraResolution, SIGNAL( currentIndexChanged( int ) ), vkCameraSettingsDialog->ui->comboBoxCameraResolution,  SLOT( setCurrentIndex( int ) ) );
+    connect( ui_formMainWindow->toolButton_camera_view_rectangle, SIGNAL( clicked( bool ) ), vkCameraSettingsDialog->ui->toolButton_camera_view_rectangle, SLOT( setChecked( bool )) );
+    connect( ui_formMainWindow->toolButton_camera_view_ellipse,   SIGNAL( clicked( bool ) ), vkCameraSettingsDialog->ui->toolButton_camera_view_ellipse,   SLOT( setChecked( bool ) ) );
+    connect( ui_formMainWindow->toolButton_camera_view_circle,    SIGNAL( clicked( bool ) ), vkCameraSettingsDialog->ui->toolButton_camera_view_circle,    SLOT( setChecked( bool ) ) );
 
     connect( vkCameraSettingsDialog->ui->checkBoxCameraMirrorHorizontal, SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraMirrorHorizontal, SLOT( setChecked( bool ) ) );
     connect( vkCameraSettingsDialog->ui->checkBoxCameraMirrorVertical,   SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraMirrorVertical,   SLOT( setChecked( bool ) ) );
@@ -52,6 +55,9 @@ QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, cameraSettingsD
     connect( vkCameraSettingsDialog->ui->checkBoxCameraMono,             SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraMono,             SLOT( setChecked( bool ) ) );
     connect( vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame,      SIGNAL( toggled( bool ) ), ui_formMainWindow->checkBoxCameraWindowFrame,      SLOT( setChecked( bool ) ) );
     connect( vkCameraSettingsDialog->ui->comboBoxCameraResolution,  SIGNAL( currentIndexChanged( int ) ), ui_formMainWindow->comboBoxCameraResolution, SLOT( setCurrentIndex( int ) ) );
+    connect( vkCameraSettingsDialog->ui->toolButton_camera_view_rectangle, SIGNAL( clicked( bool ) ), ui_formMainWindow->toolButton_camera_view_rectangle, SLOT( setChecked( bool ) ) );
+    connect( vkCameraSettingsDialog->ui->toolButton_camera_view_ellipse,   SIGNAL( clicked( bool ) ), ui_formMainWindow->toolButton_camera_view_ellipse,   SLOT( setChecked( bool ) ) );
+    connect( vkCameraSettingsDialog->ui->toolButton_camera_view_circle,    SIGNAL( clicked( bool ) ), ui_formMainWindow->toolButton_camera_view_circle,    SLOT( setChecked( bool ) ) );
 
     connect( vkCameraSettingsDialog->ui->buttonBox, SIGNAL( accepted() ), vkCameraSettingsDialog, SLOT( close() ) );
     connect( vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_switchToFullscreen() ) );
