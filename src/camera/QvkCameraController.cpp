@@ -454,9 +454,8 @@ void QvkCameraController::slot_error( QCamera::Error error )
     case QCamera::CameraError:
     {
         qDebug().noquote() << global::nameOutput << "General Camera error";
-        //        cameraWindow->clear();
-        cameraWindow->setStyleSheet( "background-color:white;" );
-        //        cameraWindow->setText( "Camera is busy " );
+        cameraWindow->error = "Camera is busy";
+        cameraWindow->repaint();
         break;
     }
     case QCamera::InvalidRequestError:

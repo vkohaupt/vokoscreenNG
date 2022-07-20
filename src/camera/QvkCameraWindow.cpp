@@ -73,6 +73,17 @@ void QvkCameraWindow::paintEvent( QPaintEvent *event )
 {
     Q_UNUSED(event)
 
+    if ( image.format() == QImage::Format_Invalid ) {
+        QPainter painter;
+        painter.begin( this);
+        painter.setRenderHints( QPainter::Antialiasing, true );
+        QBrush brush( Qt::white );
+        painter.fillRect( 0, 0, width(), height(), brush );
+        painter.drawText( QRectF( 0, 0, width(), height() ), Qt::AlignCenter, error );
+        painter.end();
+        return;
+    }
+
     int displayedWidth = 0;
     int displayedHeight = 0;
     if ( isFullScreen() == true ) {

@@ -41,7 +41,7 @@ public:
     virtual ~QvkCameraWindow();
     Ui_cameraSettingsDialog *uiCameraSettingsDialog;
     cameraSettingsDialog *vkCameraSettingsDialog;
-
+    QString error;
 
 private:
    Ui_formMainWindow *ui_formMainWindow;
@@ -49,6 +49,7 @@ private:
    int mouseLocal_X;
    int mouseLocal_Y;
    QImage image;
+
 
 public slots:
    void slot_setNewImage( QImage _image );
