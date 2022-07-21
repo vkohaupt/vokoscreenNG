@@ -194,29 +194,36 @@ void QvkCameraController::slot_frameOnOff( bool value )
 void QvkCameraController::slot_setNewImage( QImage image )
 {
 #ifdef Q_OS_LINUX
-    if ( ui_formMainWindow->checkBoxCameraMirrorHorizontal->isChecked() == true )
+    if ( ui_formMainWindow->checkBoxCameraMirrorHorizontal->isChecked() == true ) {
         image = image.mirrored( true, false );
+    }
 
-    if ( ui_formMainWindow->checkBoxCameraMirrorVertical->isChecked() == true )
+    if ( ui_formMainWindow->checkBoxCameraMirrorVertical->isChecked() == true ) {
         image = image.mirrored( false, true );
+    }
 #endif
 
 #ifdef Q_OS_WIN
-    if ( ui_formMainWindow->checkBoxCameraMirrorHorizontal->isChecked() == true )
+    if ( ui_formMainWindow->checkBoxCameraMirrorHorizontal->isChecked() == true ) {
         image = image.mirrored( true, false );
+    }
 
-    if ( ui_formMainWindow->checkBoxCameraMirrorVertical->isChecked() == false )
+    if ( ui_formMainWindow->checkBoxCameraMirrorVertical->isChecked() == false ) {
         image = image.mirrored( false, true );
+    }
 #endif
 
-    if ( ui_formMainWindow->checkBoxCameraInvert->isChecked() == true )
+    if ( ui_formMainWindow->checkBoxCameraInvert->isChecked() == true ) {
         image.invertPixels( QImage::InvertRgb );
+    }
 
-    if ( ui_formMainWindow->checkBoxCameraGray->isChecked() == true )
+    if ( ui_formMainWindow->checkBoxCameraGray->isChecked() == true ) {
         image = image.convertToFormat( QImage::Format_Grayscale8 );
+    }
 
-    if ( ui_formMainWindow->checkBoxCameraMono->isChecked() == true )
+    if ( ui_formMainWindow->checkBoxCameraMono->isChecked() == true ) {
         image = image.convertToFormat( QImage::Format_Mono );
+    }
 
 
     // Zoom
@@ -225,7 +232,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
         qreal width = image.width();
         qreal height = image.height();
         qreal quotient = width / height;
-        int minusPixel = sliderCameraWindowZoom->value();
+        qreal minusPixel = sliderCameraWindowZoom->value();
         QImage image_zoom = image.copy( minusPixel,
                                         minusPixel / quotient,
                                         width - ( 2 * minusPixel ),
@@ -245,6 +252,11 @@ void QvkCameraController::slot_setNewImage( QImage image )
             int h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value();
             image = image.scaled( w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation );
             cameraWindow->setFixedSize( image.width(), image.height() );
+            emit signal_setNewImage( image );
+            return;
+        } else {
+            emit signal_setNewImage( image );
+            return;
         }
     }
     // Rectangel end
