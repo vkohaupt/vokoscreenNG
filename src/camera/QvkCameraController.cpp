@@ -219,10 +219,9 @@ void QvkCameraController::slot_setNewImage( QImage image )
         image = image.convertToFormat( QImage::Format_Mono );
 
 
-    // Rectangel
-    if ( ui_formMainWindow->toolButton_camera_view_rectangle->isChecked() == true )
+    // Zoom
+    if ( sliderCameraWindowZoom->value() > 0 )
     {
-        // Zoom
         qreal width = image.width();
         qreal height = image.height();
         qreal quotient = width / height;
@@ -233,8 +232,13 @@ void QvkCameraController::slot_setNewImage( QImage image )
                                         height - ( 2 * minusPixel / quotient )
                                         );
         image = image_zoom.scaled( width, height, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-        // Zoom end
+    }
+    // Zoom end
 
+
+    // Rectangel
+    if ( ui_formMainWindow->toolButton_camera_view_rectangle->isChecked() == true )
+    {
         if ( cameraWindow->isFullScreen() == false )
         {
             int w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
@@ -249,19 +253,6 @@ void QvkCameraController::slot_setNewImage( QImage image )
     // Ellipse
     if ( ui_formMainWindow->toolButton_camera_view_ellipse->isChecked() == true )
     {
-        // Zoom
-        qreal width = image.width();
-        qreal height = image.height();
-        qreal quotient = width / height;
-        int minusPixel = sliderCameraWindowZoom->value();
-        QImage image_zoom = image.copy( minusPixel,
-                                        minusPixel / quotient,
-                                        width - ( 2 * minusPixel ),
-                                        height - ( 2 * minusPixel / quotient )
-                                        );
-        image = image_zoom.scaled( width, height, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-        // Zoom end
-
         if ( cameraWindow->isFullScreen() == false ) {
             int w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
             int h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value();
@@ -287,19 +278,6 @@ void QvkCameraController::slot_setNewImage( QImage image )
     // Circle
     if ( ui_formMainWindow->toolButton_camera_view_circle->isChecked() == true )
     {
-        // Zoom
-        qreal width = image.width();
-        qreal height = image.height();
-        qreal quotient = width / height;
-        int minusPixel = sliderCameraWindowZoom->value();
-        QImage image_zoom = image.copy( minusPixel,
-                                        minusPixel / quotient,
-                                        width - ( 2 * minusPixel ),
-                                        height - ( 2 * minusPixel / quotient )
-                                        );
-        image = image_zoom.scaled( width, height, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-        // Zoom end
-
         if ( cameraWindow->isFullScreen() == true ){
             int w = image.width();
             int h = image.height();
