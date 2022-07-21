@@ -235,10 +235,13 @@ void QvkCameraController::slot_setNewImage( QImage image )
         image = image_zoom.scaled( width, height, Qt::KeepAspectRatio, Qt::SmoothTransformation );
         // Zoom end
 
-        int w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
-        int h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value();
-        image = image.scaled( w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-        cameraWindow->setFixedSize( image.width(), image.height() );
+        if ( cameraWindow->isFullScreen() == false )
+        {
+            int w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
+            int h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value();
+            image = image.scaled( w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation );
+            cameraWindow->setFixedSize( image.width(), image.height() );
+        }
     }
     // Rectangel end
 
@@ -259,10 +262,11 @@ void QvkCameraController::slot_setNewImage( QImage image )
         image = image_zoom.scaled( width, height, Qt::KeepAspectRatio, Qt::SmoothTransformation );
         // Zoom end
 
-        int w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
-        int h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value();
-        image = image.scaled( w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-
+        if ( cameraWindow->isFullScreen() == false ) {
+            int w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
+            int h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value();
+            image = image.scaled( w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation );
+        }
         QPixmap pixmap( image.width(), image.height() );
         pixmap.fill( Qt::transparent );
         QPainter painter;
@@ -274,7 +278,9 @@ void QvkCameraController::slot_setNewImage( QImage image )
         painter.drawImage( QPoint( 0, 0 ), image );
         painter.end();
         image = pixmap.toImage();
-        cameraWindow->setFixedSize( image.width(), image.height() );
+        if ( cameraWindow->isFullScreen() == false ) {
+            cameraWindow->setFixedSize( image.width(), image.height() );
+        }
     }
 
 
@@ -293,7 +299,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
                                         );
         image = image_zoom.scaled( width, height, Qt::KeepAspectRatio, Qt::SmoothTransformation );
         // Zoom end
-
+// Fullscreen sollte vom Original image ausgehen und nicht von der Fenstergröße
         qreal w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
         qreal h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value();
         QPixmap pixmap( h, h );
@@ -309,7 +315,9 @@ void QvkCameraController::slot_setNewImage( QImage image )
         painter.drawImage( target, image, source );
         painter.end();
         image = pixmap.toImage();
-        cameraWindow->setFixedSize( h, h );
+        if ( cameraWindow->isFullScreen() == false ) {
+            cameraWindow->setFixedSize( h, h );
+        }
     }
     // Circle end
 
