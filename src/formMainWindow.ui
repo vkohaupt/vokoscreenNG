@@ -892,7 +892,7 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>21</width>
+                      <width>35</width>
                       <height>16</height>
                      </rect>
                     </property>
@@ -2849,28 +2849,6 @@
               <property name="verticalSpacing">
                <number>9</number>
               </property>
-              <item row="1" column="0">
-               <widget class="QLabel" name="label_window_resize">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>34</width>
-                  <height>34</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string notr="true"/>
-                </property>
-                <property name="pixmap">
-                 <pixmap resource="screencast.qrc">:/pictures/camera/window-resize.png</pixmap>
-                </property>
-                <property name="scaledContents">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
               <item row="0" column="3">
                <widget class="QToolButton" name="help_camera_camera">
                 <property name="toolTip">
@@ -2880,16 +2858,6 @@
                  <string notr="true">Help</string>
                 </property>
                </widget>
-              </item>
-              <item row="2" column="1" colspan="2">
-               <layout class="QHBoxLayout" name="horizontalLayout_zoom">
-                <property name="spacing">
-                 <number>12</number>
-                </property>
-                <property name="leftMargin">
-                 <number>0</number>
-                </property>
-               </layout>
               </item>
               <item row="2" column="0">
                <widget class="QLabel" name="label_55">
@@ -2916,7 +2884,7 @@
                 </property>
                </widget>
               </item>
-              <item row="5" column="0" colspan="3">
+              <item row="6" column="0" colspan="3">
                <layout class="QHBoxLayout" name="horizontalLayout_14">
                 <property name="leftMargin">
                  <number>0</number>
@@ -2998,6 +2966,16 @@
                 </item>
                </layout>
               </item>
+              <item row="2" column="1" colspan="2">
+               <layout class="QHBoxLayout" name="horizontalLayout_zoom">
+                <property name="spacing">
+                 <number>12</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+               </layout>
+              </item>
               <item row="0" column="0" colspan="3">
                <layout class="QHBoxLayout" name="horizontalLayout_63">
                 <property name="leftMargin">
@@ -3047,7 +3025,56 @@
                 </item>
                </layout>
               </item>
-              <item row="4" column="0" colspan="3">
+              <item row="1" column="1" colspan="2">
+               <layout class="QHBoxLayout" name="horizontalLayout_66">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_45">
+                  <property name="spacing">
+                   <number>12</number>
+                  </property>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QLabel" name="labelCameraWindowSize">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="text">
+                   <string notr="true">---x---</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_window_resize">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>34</width>
+                  <height>34</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string notr="true"/>
+                </property>
+                <property name="pixmap">
+                 <pixmap resource="screencast.qrc">:/pictures/camera/window-resize.png</pixmap>
+                </property>
+                <property name="scaledContents">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0" colspan="3">
                <layout class="QHBoxLayout" name="horizontalLayout_12">
                 <property name="leftMargin">
                  <number>0</number>
@@ -3100,50 +3127,6 @@
                    </size>
                   </property>
                  </spacer>
-                </item>
-               </layout>
-              </item>
-              <item row="1" column="1" colspan="2">
-               <layout class="QHBoxLayout" name="horizontalLayout_66">
-                <property name="leftMargin">
-                 <number>0</number>
-                </property>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_45">
-                  <property name="spacing">
-                   <number>12</number>
-                  </property>
-                 </layout>
-                </item>
-                <item>
-                 <widget class="QLabel" name="labelCameraWindowSize">
-                  <property name="enabled">
-                   <bool>true</bool>
-                  </property>
-                  <property name="text">
-                   <string notr="true">---x---</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item row="6" column="0" colspan="3">
-               <layout class="QHBoxLayout" name="horizontalLayout_42">
-                <property name="leftMargin">
-                 <number>0</number>
-                </property>
-                <item>
-                 <widget class="QCheckBox" name="checkBoxCameraWindowFrame">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="text">
-                   <string>Remove window frame</string>
-                  </property>
-                 </widget>
                 </item>
                </layout>
               </item>
@@ -3296,6 +3279,23 @@
                    </size>
                   </property>
                  </spacer>
+                </item>
+               </layout>
+              </item>
+              <item row="4" column="0" colspan="3">
+               <layout class="QHBoxLayout" name="horizontalLayout_42">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QCheckBox" name="checkBoxCameraWindowFrame">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="text">
+                   <string>Remove window frame</string>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </item>
