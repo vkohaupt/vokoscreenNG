@@ -191,12 +191,6 @@ void QvkCameraController::slot_frameOnOff( bool value )
 }
 
 
-void QvkCameraController::slot_sliderMoved( int value )
-{
-    Q_UNUSED(value)
-}
-
-
 void QvkCameraController::slot_setNewImage( QImage image )
 {
 #ifdef Q_OS_LINUX

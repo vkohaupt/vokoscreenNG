@@ -54,16 +54,11 @@ private slots:
     void slot_addedCamera( QString description, QString device );
     void slot_removedCamera( QString device );
     void slot_startCamera( bool value );
-
     void slot_statusChanged( QCamera::Status status );
     void slot_stateChanged( QCamera::State state );
     void slot_error( QCamera::Error error );
-
     void slot_setNewImage( QImage image );
-
     void slot_frameOnOff( bool value );
-    void slot_sliderMoved( int value );
-
     void slot_resolutionChanged();
 
 
