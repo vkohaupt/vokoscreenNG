@@ -54,11 +54,11 @@ void QvkCameraResolution::slot_statusChanged( QCamera::Status status )
 {
     switch ( status )
     {
-    case QCamera::UnavailableStatus : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 0
-    case QCamera::UnloadedStatus    : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 1
-    case QCamera::LoadingStatus     : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 2
-    case QCamera::UnloadingStatus   : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 3
-    case QCamera::LoadedStatus      : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status;
+    case QCamera::UnavailableStatus : { qDebug().noquote() << global::nameOutput << "[Camera] QvkCameraResolution" << status; break; }// 0
+    case QCamera::UnloadedStatus    : { qDebug().noquote() << global::nameOutput << "[Camera] QvkCameraResolution" << status; break; }// 1
+    case QCamera::LoadingStatus     : { qDebug().noquote() << global::nameOutput << "[Camera] QvkCameraResolution" << status; break; }// 2
+    case QCamera::UnloadingStatus   : { qDebug().noquote() << global::nameOutput << "[Camera] QvkCameraResolution" << status; break; }// 3
+    case QCamera::LoadedStatus      : { qDebug().noquote() << global::nameOutput << "[Camera] QvkCameraResolution" << status;
         ui_formMainWindow->comboBoxCameraResolution->clear();
         vkCameraSettingsDialog->ui->comboBoxCameraResolution->clear();
         QCameraViewfinderSettings cameraViewfinderSettings;
@@ -70,7 +70,7 @@ void QvkCameraResolution::slot_statusChanged( QCamera::Status status )
             ui_formMainWindow->comboBoxCameraResolution->addItem( width + "x" + height );
             vkCameraSettingsDialog->ui->comboBoxCameraResolution->addItem( width + "x" + height );
         }
-        qDebug().noquote() << global::nameOutput << "Camera resolutions for:"
+        qDebug().noquote() << global::nameOutput << "[Camera] Resolutions for:"
                            << ui_formMainWindow->comboBoxCamera->currentText()
                            << ui_formMainWindow->comboBoxCamera->currentData().toByteArray();
         qDebug() << resolution;
@@ -100,10 +100,10 @@ void QvkCameraResolution::slot_statusChanged( QCamera::Status status )
 
         break;
     }// 4
-    case QCamera::StandbyStatus     : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 5
-    case QCamera::StartingStatus    : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 6
-    case QCamera::StoppingStatus    : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 7
-    case QCamera::ActiveStatus      : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << status; break; }// 8
+    case QCamera::StandbyStatus     : { qDebug().noquote() << global::nameOutput << "[Camera] QvkCameraResolution" << status; break; }// 5
+    case QCamera::StartingStatus    : { qDebug().noquote() << global::nameOutput << "[Camera] QvkCameraResolution" << status; break; }// 6
+    case QCamera::StoppingStatus    : { qDebug().noquote() << global::nameOutput << "[Camera] QvkCameraResolution" << status; break; }// 7
+    case QCamera::ActiveStatus      : { qDebug().noquote() << global::nameOutput << "[Camera] QvkCameraResolution" << status; break; }// 8
     }
 }
 
@@ -112,8 +112,8 @@ void QvkCameraResolution::slot_stateChanged( QCamera::State state )
 {
     switch ( state )
     {
-      case QCamera::UnloadedState : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << state; break;  }// 0
-      case QCamera::LoadedState   : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << state; break;  }// 1
-      case QCamera::ActiveState   : { qDebug().noquote() << global::nameOutput << "QvkCameraResolution" << state; break;  }// 2
+      case QCamera::UnloadedState : { qDebug().noquote() << global::nameOutput << "[Camera] QvkCameraResolution" << state; break;  }// 0
+      case QCamera::LoadedState   : { qDebug().noquote() << global::nameOutput << "[Camera] QvkCameraResolution" << state; break;  }// 1
+      case QCamera::ActiveState   : { qDebug().noquote() << global::nameOutput << "[Camera] QvkCameraResolution" << state; break;  }// 2
     }
 }

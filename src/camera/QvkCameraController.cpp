@@ -65,7 +65,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
 
     QvkCameraResolution *vkCameraResolution = new QvkCameraResolution( ui_formMainWindow, vkCameraSettingsDialog );
     connect( ui_formMainWindow->comboBoxCamera, SIGNAL( currentIndexChanged( int ) ), vkCameraResolution, SLOT( slot_resolution( int ) ) );
-    connect( ui_formMainWindow->comboBoxCameraResolution, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_resolutionChanged() ) );
+    connect( ui_formMainWindow->comboBoxCameraResolution, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_resolutionChanged( int ) ) );
 
     getAllDevices();
 
@@ -97,8 +97,11 @@ QvkCameraController::~QvkCameraController()
 }
 
 
-void QvkCameraController::slot_resolutionChanged()
+void QvkCameraController::slot_resolutionChanged( int index )
 {
+    Q_UNUSED(index)
+    qDebug().noquote() << global::nameOutput << "[Camera] Changed resolution to: " << ui_formMainWindow->comboBoxCameraResolution->currentText();
+
     int minimumSize = 100;
     sliderCameraWindowSize->setMaximum( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - minimumSize);
     sliderCameraWindowZoom->setMaximum( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() / 2 );

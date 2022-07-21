@@ -59,7 +59,7 @@ private slots:
     void slot_error( QCamera::Error error );
     void slot_setNewImage( QImage image );
     void slot_frameOnOff( bool value );
-    void slot_resolutionChanged();
+    void slot_resolutionChanged( int index);
 
 
 private:
