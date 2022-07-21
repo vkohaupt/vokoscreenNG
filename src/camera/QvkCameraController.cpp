@@ -299,23 +299,38 @@ void QvkCameraController::slot_setNewImage( QImage image )
                                         );
         image = image_zoom.scaled( width, height, Qt::KeepAspectRatio, Qt::SmoothTransformation );
         // Zoom end
-// Fullscreen sollte vom Original image ausgehen und nicht von der Fenstergröße
-        qreal w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
-        qreal h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value();
-        QPixmap pixmap( h, h );
-        pixmap.fill( Qt::transparent );
-        QPainter painter;
-        painter.begin( &pixmap );
-        painter.setRenderHints( QPainter::Antialiasing, true );
-        QPainterPath path;
-        path.addEllipse( 0, 0, h, h );
-        painter.setClipPath( path );
-        QRectF target( 0.0, 0.0, h, h );
-        QRectF source( (w-h)/2, 0.0, image.height(),image.height() );
-        painter.drawImage( target, image, source );
-        painter.end();
-        image = pixmap.toImage();
-        if ( cameraWindow->isFullScreen() == false ) {
+
+        if ( cameraWindow->isFullScreen() == true ){
+            int w = image.width();
+            int h = image.height();
+            QPixmap pixmap( w, h );
+            pixmap.fill( Qt::transparent );
+            QPainter painter;
+            painter.begin( &pixmap );
+            painter.setRenderHints( QPainter::Antialiasing, true );
+            QPainterPath path;
+            path.addEllipse( (w-h)/2, 0, h, h );
+            painter.setClipPath( path );
+            image = image.scaled( w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation );
+            painter.drawImage( 0, 0, image );
+            painter.end();
+            image = pixmap.toImage();
+        } else {
+            qreal w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
+            qreal h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value();
+            QPixmap pixmap( h, h );
+            pixmap.fill( Qt::transparent );
+            QPainter painter;
+            painter.begin( &pixmap );
+            painter.setRenderHints( QPainter::Antialiasing, true );
+            QPainterPath path;
+            path.addEllipse( 0, 0, h, h );
+            painter.setClipPath( path );
+            QRectF target( 0.0, 0.0, h, h );
+            QRectF source( (w-h)/2, 0.0, image.height(),image.height() );
+            painter.drawImage( target, image, source );
+            painter.end();
+            image = pixmap.toImage();
             cameraWindow->setFixedSize( h, h );
         }
     }
