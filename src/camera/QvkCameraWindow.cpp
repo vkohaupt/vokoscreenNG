@@ -33,8 +33,8 @@ QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, cameraSettingsD
     vkCameraSettingsDialog = settingsDialog;
 
     setWindowFlags( windowFlags() | Qt::WindowStaysOnTopHint );
-    setMinimumSize( QSize( 160, 120 ) );
-    resize( 160, 120 );
+    setMinimumSize( QSize( 100, 100 ) );
+    resize( 100, 100 );
     setMouseTracking( true ); // No function, why?
 
     connect( ui_formMainWindow->checkBoxCameraMirrorHorizontal, SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraMirrorHorizontal, SLOT( setChecked( bool ) ) );
