@@ -517,6 +517,10 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
                 settings.setValue( listToolButton.at(i)->objectName(), "audio-volume-high" );
             }
         }
+
+        if ( listToolButton.at(i)->objectName().contains( "toolButton_camera_view" ) ) {
+                settings.setValue( listToolButton.at(i)->objectName(), listToolButton.at(i)->isChecked() );
+        }
     }
 
     QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui_mainwindow->centralWidget->findChildren<QvkSpezialCheckbox *>();
