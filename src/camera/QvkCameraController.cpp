@@ -241,7 +241,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
                                         width - ( 2 * minusPixel ),
                                         height - ( 2 * minusPixel / quotient )
                                         );
-        image = image_zoom.scaled( width, height, Qt::KeepAspectRatio, Qt::SmoothTransformation );
+        image = image_zoom.scaled( width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
     }
     // Zoom end
 
