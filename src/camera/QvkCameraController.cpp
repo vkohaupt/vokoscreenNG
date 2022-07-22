@@ -71,7 +71,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
 
     cameraWindow = new QvkCameraWindow( ui_surface, vkCameraSettingsDialog );
     connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_formMainWindow->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
-    cameraWindow->setWindowTitle( QString( tr( "Camera") ) );
+    cameraWindow->setWindowTitle( QString( tr( "Camera") ) + " " + global::version );
     cameraWindow->setAttribute( Qt::WA_TranslucentBackground, true );
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     cameraWindow->setWindowIcon( icon );

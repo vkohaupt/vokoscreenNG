@@ -403,13 +403,16 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     QList<QToolButton *> listToolButton = ui_mainwindow->centralWidget->findChildren<QToolButton *>();
     for ( int i = 0; i < listToolButton.count(); i++ )
     {
-        if ( listToolButton.at(i)->objectName().contains( "toolButtonMute" ) )
-        {
+        if ( listToolButton.at(i)->objectName().contains( "toolButtonMute" ) ) {
             QString value = settings.value( listToolButton.at(i)->objectName() ).toString();
-            if ( value == "audio-volume-muted")
-            {
+            if ( value == "audio-volume-muted") {
                 listToolButton.at(i)->click();
-                break;
+            }
+        }
+
+        if ( listToolButton.at(i)->objectName().contains( "toolButton_camera_view" ) ) {
+            if ( settings.value( listToolButton.at(i)->objectName() ).toBool() == true ) {
+                listToolButton.at(i)->click();
             }
         }
     }
