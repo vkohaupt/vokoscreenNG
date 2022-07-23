@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>789</width>
-    <height>490</height>
+    <width>790</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -324,7 +324,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <property name="iconSize">
        <size>
@@ -892,7 +892,7 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>35</width>
+                      <width>21</width>
                       <height>16</height>
                      </rect>
                     </property>
@@ -4028,14 +4028,14 @@
              <layout class="QVBoxLayout" name="verticalLayout_37">
               <item>
                <layout class="QGridLayout" name="gridLayout_10">
-                <item row="0" column="2">
-                 <widget class="QToolButton" name="toolButtonSnapshotImagePath">
+                <item row="4" column="0" colspan="2">
+                 <widget class="QCheckBox" name="checkBoxSnapshotShowBallonInSystray">
                   <property name="text">
-                   <string notr="true">...</string>
+                   <string>Show in systray</string>
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="1">
+                <item row="6" column="1">
                  <spacer name="verticalSpacer">
                   <property name="orientation">
                    <enum>Qt::Vertical</enum>
@@ -4051,32 +4051,40 @@
                   </property>
                  </spacer>
                 </item>
-                <item row="0" column="1">
-                 <widget class="QLineEdit" name="lineEditSnapshotImagePath">
-                  <property name="readOnly">
-                   <bool>true</bool>
+                <item row="0" column="0" colspan="2" alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="label_60">
+                  <property name="font">
+                   <font>
+                    <pointsize>14</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string notr="true">Snapshot</string>
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="0" colspan="2">
-                 <layout class="QHBoxLayout" name="horizontalLayout_59">
-                  <item>
-                   <widget class="QLabel" name="label_59">
-                    <property name="text">
-                     <string>Second wait before recording</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item row="0" column="0">
+                <item row="2" column="0">
                  <widget class="QLabel" name="label_56">
                   <property name="text">
                    <string>Imagepath</string>
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="1">
+                <item row="2" column="2">
+                 <widget class="QToolButton" name="toolButtonSnapshotImagePath">
+                  <property name="text">
+                   <string notr="true">...</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QLineEdit" name="lineEditSnapshotImagePath">
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
                  <layout class="QHBoxLayout" name="horizontalLayout_44">
                   <item>
                    <widget class="QComboBox" name="comboBoxSnapshotImageFormats"/>
@@ -4096,17 +4104,28 @@
                   </item>
                  </layout>
                 </item>
-                <item row="1" column="0">
+                <item row="3" column="0">
                  <widget class="QLabel" name="label_57">
                   <property name="text">
                    <string>Format</string>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0" colspan="2">
-                 <widget class="QCheckBox" name="checkBoxSnapshotShowBallonInSystray">
-                  <property name="text">
-                   <string>Show in systray</string>
+                <item row="5" column="0" colspan="2">
+                 <layout class="QHBoxLayout" name="horizontalLayout_59">
+                  <item>
+                   <widget class="QLabel" name="label_59">
+                    <property name="text">
+                     <string>Second wait before recording</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="1" column="0" colspan="3">
+                 <widget class="Line" name="line_2">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
                   </property>
                  </widget>
                 </item>
@@ -4128,23 +4147,6 @@
              </layout>
             </widget>
            </widget>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_60">
-            <item>
-             <spacer name="horizontalSpacer_31">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
           </item>
          </layout>
         </item>
