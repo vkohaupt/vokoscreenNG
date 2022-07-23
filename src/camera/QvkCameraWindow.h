@@ -42,6 +42,8 @@ public:
     Ui_cameraSettingsDialog *uiCameraSettingsDialog;
     cameraSettingsDialog *vkCameraSettingsDialog;
     QString error;
+    void setNewImage( QImage _image );
+
 
 private:
    Ui_formMainWindow *ui_formMainWindow;
@@ -52,7 +54,6 @@ private:
 
 
 public slots:
-   void slot_setNewImage( QImage _image );
 
 
 private slots:

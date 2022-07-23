@@ -126,7 +126,7 @@ void QvkCameraWindow::paintEvent( QPaintEvent *event )
 }
 
 
-void QvkCameraWindow::slot_setNewImage( QImage _image )
+void QvkCameraWindow::setNewImage( QImage _image )
 {
     image = _image;
     repaint();

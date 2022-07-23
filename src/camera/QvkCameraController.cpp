@@ -87,8 +87,6 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     connect( videoSurface, SIGNAL( signal_newPicture( QImage ) ), this, SLOT( slot_setNewImage( QImage ) ) );
 
     connect( ui_formMainWindow->checkBoxCameraWindowFrame, SIGNAL( toggled( bool ) ), this, SLOT( slot_frameOnOff( bool ) ) );
-
-    connect( this, SIGNAL( signal_setNewImage( QImage) ), cameraWindow, SLOT(slot_setNewImage( QImage ) ) );
 }
 
 
@@ -251,14 +249,17 @@ void QvkCameraController::slot_setNewImage( QImage image )
     {
         if ( cameraWindow->isFullScreen() == false )
         {
+            qreal width = image.width();
+            qreal height = image.height();
+            qreal quotient = width / height;
             int w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
-            int h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value();
-            image = image.scaled( w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation );
+            int h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
+            image = image.scaled( w, h, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
             cameraWindow->setFixedSize( image.width(), image.height() );
-            emit signal_setNewImage( image );
+            cameraWindow->setNewImage( image );
             return;
         } else {
-            emit signal_setNewImage( image );
+            cameraWindow->setNewImage( image );
             return;
         }
     }
@@ -329,7 +330,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
     }
     // Circle end
 
-    emit signal_setNewImage( image );
+    cameraWindow->setNewImage( image );
 }
 
 
