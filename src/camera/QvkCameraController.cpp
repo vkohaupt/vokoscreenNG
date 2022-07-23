@@ -159,14 +159,14 @@ void QvkCameraController::slot_frameOnOff( bool value )
 #ifdef Q_OS_WIN
         if ( value == true )
         {
-            flags = Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
-            cameraWindow->setWindowFlags( flags );
+            cameraWindow->setWindowFlag( Qt::Window, false );
+            cameraWindow->setWindowFlag( Qt::ToolTip, true );
         }
 
         if ( value == false )
         {
-            flags = Qt::WindowStaysOnTopHint;
-            cameraWindow->setWindowFlags( flags );
+            cameraWindow->setWindowFlag( Qt::Window, true );
+            cameraWindow->setWindowFlag( Qt::ToolTip, false );
         }
 #endif
 
