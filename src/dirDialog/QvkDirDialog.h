@@ -1,6 +1,6 @@
 
-#ifndef QvkDirDialog_H
-#define QvkDirDialog_H
+#ifndef QVKDIRDIALOG_H
+#define QVKDIRDIALOG_H
 
 #include <QFileDialog>
 #include <QEvent>
