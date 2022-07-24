@@ -19,6 +19,7 @@
  *
  * --End_License--
  */
+
 #include <QGuiApplication>
 #include <QImageWriter>
 #include <QComboBox>

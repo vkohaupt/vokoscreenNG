@@ -21,7 +21,7 @@
  */
 
 #ifndef QVKSNAPSHOT_H
-#define qvksnapshot_h
+#define QVKSNAPSHOT_H
 
 #include <QWidget>
 #include <QScreen>
@@ -39,6 +39,7 @@ public:
     ~QvkSnapshot();
     QvkMainWindow *vkMainWindow;
 
+
 private:
     Ui_formMainWindow *ui;
     QList<QScreen *> screen;
@@ -47,6 +48,7 @@ private:
     QvkWinInfo *vkWinInfo;
     QString filename;
 
+
 public slots:
 
 
@@ -54,6 +56,7 @@ private slots:
     void slot_newImage();
     void slot_snapshotWindow( bool );
     void slot_imagePath();
+
 
 protected:
 
