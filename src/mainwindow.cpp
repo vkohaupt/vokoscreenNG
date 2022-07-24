@@ -465,7 +465,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // ***************** snapshot ***********************************
     QvkSnapshot *vkSnapshot = new QvkSnapshot( this, ui );
-    Q_UNUSED(vkSnapshot)
+    vkSnapshot->init();
     vk_setCornerWidget( ui->tabWidgetSnapshot );
 
     /* Wayland

@@ -38,16 +38,22 @@ QvkSnapshot::QvkSnapshot( QvkMainWindow *_vkMainWindow, Ui_formMainWindow *ui_fo
 {
     ui = ui_formMainWindow;
     vkMainWindow = _vkMainWindow;
-    connect( ui->pushButtonSnapshot, SIGNAL( clicked() ), this, SLOT( slot_newImage() ) );
-    connect( ui->toolButtonSnapshotImagePath, SIGNAL( clicked() ), this, SLOT( slot_imagePath() ) );
-
-    supportedImageFormats();
-    is_imageFolderExists_and_haveWritePermission();
 }
 
 
 QvkSnapshot::~QvkSnapshot()
 {
+}
+
+
+void QvkSnapshot::init()
+{
+    connect( ui->pushButtonSnapshot, SIGNAL( clicked() ), this, SLOT( slot_newImage() ) );
+    connect( ui->toolButtonSnapshotImagePath, SIGNAL( clicked() ), this, SLOT( slot_imagePath() ) );
+
+    supportedImageFormats();
+    is_imageFolderExists_and_haveWritePermission();
+
 }
 
 

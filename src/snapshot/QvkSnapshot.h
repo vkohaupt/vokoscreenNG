@@ -38,6 +38,7 @@ public:
     explicit QvkSnapshot( QvkMainWindow *vkMainWindow,  Ui_formMainWindow *ui_formMainWindow );
     ~QvkSnapshot();
     QvkMainWindow *vkMainWindow;
+    void init();
 
 
 private:
