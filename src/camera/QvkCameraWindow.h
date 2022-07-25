@@ -51,6 +51,7 @@ private:
    int mouseLocal_X;
    int mouseLocal_Y;
    QImage image;
+   QRect rectCloseButton;
 
 
 public slots:

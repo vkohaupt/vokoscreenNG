@@ -77,27 +77,53 @@ void QvkCameraWindow::paintEvent( QPaintEvent *event )
     if ( image.format() == QImage::Format_Invalid ) {
         if ( error > "" ) {
             int w = 480;
-            int h = 360;
+            int h = 300;
             int pointSize = 14;
-            int frameWidth = 10;
+            int frameWidth = 8;
             resize( w, h );
             QPainter painter;
             painter.begin( this );
             painter.setRenderHints( QPainter::Antialiasing, true );
+
+            // Background
+            QBrush brush( Qt::white );
+            painter.fillRect( 0, 0, w, h, brush );
+
+            // Frame
+            if ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true )
+            {
+                QPen pen;
+                pen.setWidth( frameWidth );
+                pen.setColor( QString( "#9EBBD8" ) );
+                painter.setPen( pen );
+                painter.drawRect( frameWidth/2, frameWidth/2, w-frameWidth, h-frameWidth );
+            }
+
+            // Text
             QFont font;
             font.setPointSize( pointSize );
             painter.setFont( font );
-            QBrush brush( Qt::white );
-            painter.fillRect( 0, 0, w, h, brush );
             QPen pen;
-            pen.setWidth( frameWidth );
-            pen.setColor( QString( "#9EBBD8" ) );
-            painter.setPen( pen );
-            painter.drawRect( frameWidth/2, frameWidth/2, w-frameWidth, h-frameWidth );
             pen.setColor( Qt::black );
             painter.setPen( pen );
             painter.drawText( QRect( 0, 0, w, h/2 ), Qt::AlignCenter, global::name + " " + global::version );
             painter.drawText( QRectF( 0, 0, w, h ), Qt::AlignCenter, error );
+
+            // Close button
+            if ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true )
+            {
+                int width = 20;
+                int height = 20;
+                int distanceToFrame = 3;
+                rectCloseButton.setRect( w - frameWidth - distanceToFrame - width, frameWidth + distanceToFrame, width, height );
+                QPen pen;
+                pen.setWidth( 2 );
+                pen.setColor( Qt::red );
+                painter.setPen( pen );
+                painter.drawLine( rectCloseButton.topRight(), rectCloseButton.bottomLeft() );
+                painter.drawLine( rectCloseButton.topLeft(), rectCloseButton.bottomRight() );
+            }
+
             painter.end();
             return;
         }
@@ -231,6 +257,11 @@ void QvkCameraWindow::keyPressEvent( QKeyEvent *event )
 
 void QvkCameraWindow::mousePressEvent( QMouseEvent *event )
 {
+    if ( rectCloseButton.contains( event->pos() ) ) {
+        close();
+        return;
+    }
+
     if ( event->button() == Qt::RightButton )
     {
         if ( vkCameraSettingsDialog->isVisible() )
