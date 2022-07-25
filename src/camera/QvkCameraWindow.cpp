@@ -21,6 +21,7 @@
  */
 
 #include "QvkCameraWindow.h"
+#include "global.h"
 
 #include <QDebug>
 #include <QMouseEvent>
@@ -74,12 +75,28 @@ void QvkCameraWindow::paintEvent( QPaintEvent *event )
     Q_UNUSED(event)
 
     if ( image.format() == QImage::Format_Invalid ) {
+        int w = 480;
+        int h = 360;
+        int pointSize = 14;
+        int frameWidth = 10;
+        resize( w, h );
         QPainter painter;
-        painter.begin( this);
+        painter.begin( this );
         painter.setRenderHints( QPainter::Antialiasing, true );
+        QFont font;
+        font.setPointSize( pointSize );
+        painter.setFont( font );
         QBrush brush( Qt::white );
-        painter.fillRect( 0, 0, width(), height(), brush );
-        painter.drawText( QRectF( 0, 0, width(), height() ), Qt::AlignCenter, error );
+        painter.fillRect( 0, 0, w, h, brush );
+        QPen pen;
+        pen.setWidth( frameWidth );
+        pen.setColor( QString( "#9EBBD8" ) );
+        painter.setPen( pen );
+        painter.drawRect( frameWidth/2, frameWidth/2, w-frameWidth, h-frameWidth );
+        pen.setColor( Qt::black );
+        painter.setPen( pen );
+        painter.drawText( QRect( 0, 0, w, h/2 ), Qt::AlignCenter, global::name + " " + global::version );
+        painter.drawText( QRectF( 0, 0, w, h ), Qt::AlignCenter, error );
         painter.end();
         return;
     }
