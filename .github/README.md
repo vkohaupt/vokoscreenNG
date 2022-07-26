@@ -33,9 +33,7 @@ Windows and Linux installation routines are not provided, because each platform,
 ## Code Contributions
 If you want to contribute code, please ask beforehand whether your idea finds harmony. Your source code must be in separate files and published under the MIT-License.
 Every file must include the License-header.
-The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/blob/3.0/Third-Party-License/MIT-License
-
-
+The License-header can be found here:https://github.com/vkohaupt/vokoscreenNG/blob/3.0/info-licences-changelog-install/Third-Party-License/Third-Party-License
 ## Windows 10 64-bit
 ### BuildRequires
 - Required from version 3.1.0
