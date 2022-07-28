@@ -1108,7 +1108,7 @@ QString QvkMainWindow::VK_getXimagesrc()
     {
         QStringList stringList;
         stringList << "gdiscreencapsrc"
-                   << "monitor=" + QString::number( ui->comboBoxScreencastScreenArea->currentIndex() )
+                   << "monitor=" + QString::number( ui->comboBoxScreencastScreen->currentIndex() )
                    << "cursor=" + showPointer;
         value = stringList.join( " " );
     }
