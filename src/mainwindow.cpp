@@ -1106,20 +1106,18 @@ QString QvkMainWindow::VK_getXimagesrc()
 
     if( ui->radioButtonScreencastFullscreen->isChecked() == true )
     {
-        int screenNumber = ( ui->comboBoxScreencastScreen->currentText().section( ":", 0, 0 ).trimmed().right(1) ).toInt() - 1;
         QStringList stringList;
         stringList << "gdiscreencapsrc"
-                   << "monitor=" + QString::number( screenNumber )
+                   << "monitor=" + QString::number( ui->comboBoxScreencastScreenArea->currentIndex() )
                    << "cursor=" + showPointer;
         value = stringList.join( " " );
     }
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
-        int screenNumber = ( ui->comboBoxScreencastScreenArea->currentText().section( ":", 0, 0 ).trimmed().right(1) ).toInt() - 1;
         QStringList stringList;
         stringList << "gdiscreencapsrc"
-                   << "monitor=" + QString::number( screenNumber )
+                   << "monitor=" + QString::number( ui->comboBoxScreencastScreenArea->currentIndex() )
                    << "cursor=" + showPointer
                    << "x=" + QString::number( vkRegionChoise->getXRecordArea() )
                    << "y=" + QString::number( vkRegionChoise->getYRecordArea() )
