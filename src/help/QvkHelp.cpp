@@ -322,6 +322,13 @@ void QvkHelp::slot_showHelp( QString tempPathFileName )
 
     QString value = QString::fromUtf8( file.readAll() );
 
+    // Entfernen von REM
+    // Es wird nur ein einziges REM unterstützt
+    int begin = value.indexOf( "<!--" );
+    int end = value.indexOf( "-->" );
+    int len = QString( "-->" ).length();
+    value = value.remove( begin, end - begin + len );
+
     // Antialiasing for Font
     QFont font = uiHelp->textBrowser->font();
     font.setStyleStrategy( QFont::PreferAntialias );
