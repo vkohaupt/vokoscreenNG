@@ -199,6 +199,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkMagnifierController = new QvkMagnifierController(ui);
     Q_UNUSED(vkMagnifierController);
 
+    vkPlayer = new QvkPlayer( this, ui );
+
     QvkHelp *vkHelp = new QvkHelp( ui );
 
     QvkLicenses *vkLicenses = new QvkLicenses( ui );
@@ -276,7 +278,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkPlayer = new QvkPlayer( this, ui );
 #endif
 */
-    vkPlayer = new QvkPlayer( this, ui );
 
 
     // Sidebar

@@ -66,14 +66,11 @@ public:
     QvkWinInfo *vkWinInfo;
     QvkCountdown *vkCountdown;
     QvkRegionChoise *vkRegionChoise;
-    QvkHelp *vkHelp;
     QvkSystray *vkSystray;
     QvkAudioController *vkAudioController;
     QvkSpezialSlider *sliderFrames;
-
     QvkMagnifierController *vkMagnifierController;
     QvkGlobalShortcut *vkGlobalShortcut;
-
     bool wantRecording = true;
 
 
@@ -138,7 +135,6 @@ private:
     QvkSystrayAlternative *vkSystrayAlternative;
 
     QvkLimitDiskFreeSpace *vkLimitDiskFreeSpace;
-//    bool wantRecording = true;
 
     void checkVideoPath();
     bool isAudioDeviceSelected();
