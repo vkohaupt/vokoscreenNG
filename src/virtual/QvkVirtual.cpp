@@ -39,7 +39,7 @@ QString QvkVirtual::isVirtualMaschine()
     QStringList list;
     list.append( "computersystem" );
     list.append( "get" );
-    list.append( "manufacturer,name" );
+    list.append( "manufacturer,name,model" );
     process.start( "C:/WINDOWS/System32/Wbem/WMIC.exe", list );
 
     if ( process.waitForFinished( 30000 ) )
