@@ -32,10 +32,10 @@ namespace global
     QLineEdit *lineEdit_EOS;
 
 #ifdef Q_OS_LINUX
-    QString version = "3.4.0-beta-02";
+    QString version = "3.4.0-beta-03";
 #endif
 
 #ifdef Q_OS_WIN
-    QString version = "3.4.0-beta-02";
+    QString version = "3.4.0-beta-03";
 #endif
 }
