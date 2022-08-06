@@ -48,12 +48,13 @@ QvkSnapshot::~QvkSnapshot()
 
 void QvkSnapshot::init()
 {
-    connect( ui->pushButtonSnapshot, SIGNAL( clicked() ), this, SLOT( slot_newImage() ) );
-    connect( ui->toolButtonSnapshotImagePath, SIGNAL( clicked() ), this, SLOT( slot_imagePath() ) );
+    connect( ui->pushButtonScreencastSnapshot, SIGNAL( clicked() ), this,         SLOT( slot_newImage() ) );
+    connect( ui->toolButtonSnapshotImagePath,  SIGNAL( clicked() ), this,         SLOT( slot_imagePath() ) );
+    connect( ui->pushButtonSnapshotOpenfolder, SIGNAL( clicked() ), vkMainWindow, SLOT( slot_Folder() ) );
+    connect( ui->pushButtonSnapshotSnapshot,   SIGNAL( clicked() ), this,         SLOT( slot_newImage() ) );
 
     supportedImageFormats();
     is_imageFolderExists_and_haveWritePermission();
-
 }
 
 

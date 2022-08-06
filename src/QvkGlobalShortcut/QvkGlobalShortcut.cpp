@@ -102,7 +102,7 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ), this, SLOT( slot_setOrUnsetShortcut( bool ) ) );
 
     shortcutSnapshot = new QGlobalShortcut( this );
-    connect( shortcutSnapshot, SIGNAL( activated() ), ui->pushButtonSnapshot, SLOT( click() ) );
+    connect( shortcutSnapshot, SIGNAL( activated() ), ui->pushButtonScreencastSnapshot, SLOT( click() ) );
     connect( ui->checkBox_shortcut_snapshot_strg,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_snapshot_clicked( bool ) ) );
     connect( ui->checkBox_shortcut_snapshot_shift, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_snapshot_clicked( bool ) ) );
     connect( ui->checkBox_shortcut_snapshot_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_snapshot_clicked( bool ) ) );
@@ -611,7 +611,8 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_snapshot_clicked( bool value )
 
         shortcutSnapshot->unsetShortcut();
         shortcutSnapshot->setShortcut( QKeySequence( shortcut ) );
-        ui->pushButtonSnapshot->setToolTip( shortcut );
+        ui->pushButtonScreencastSnapshot->setToolTip( shortcut );
+        ui->pushButtonSnapshotSnapshot->setToolTip( shortcut );
         emit signal_shortcutSystray( "snapshot", shortcut );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Snapshot:" << shortcut;
     } else
@@ -620,7 +621,8 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_snapshot_clicked( bool value )
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
         ui->label_shortcut_picture_snapshot->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
         shortcutSnapshot->unsetShortcut();
-        ui->pushButtonSnapshot->setToolTip( "None" );
+        ui->pushButtonScreencastSnapshot->setToolTip( "None" );
+        ui->pushButtonSnapshotSnapshot->setToolTip( "None" );
         emit signal_shortcutSystray( "snapshot", "None" );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Snapshot: None";
     }

@@ -382,7 +382,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     connect( ui->pushButtonScreencastOpenfolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_Folder() ) );
 
-    connect( ui->pushButtonSnapshot, &QPushButton::clicked, this, [=]() { lastButtonPressed = "snapshot"; } );
+    connect( ui->pushButtonScreencastSnapshot, &QPushButton::clicked, this, [=]() { lastButtonPressed = "snapshot"; } );
 
 
     // Tab 1 Screen

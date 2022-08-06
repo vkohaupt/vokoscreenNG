@@ -157,7 +157,7 @@ void QvkSystray::init()
         }
     }
 
-    connect( snapshotAction, SIGNAL( triggered( bool ) ), ui->pushButtonSnapshot, SLOT( click() ) );
+    connect( snapshotAction, SIGNAL( triggered( bool ) ), ui->pushButtonScreencastSnapshot, SLOT( click() ) );
 
     menu = new QMenu();
     menu->addAction( titleAction );
