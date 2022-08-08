@@ -26,7 +26,8 @@
 QvkMagnifierController::QvkMagnifierController(Ui_formMainWindow *ui_mainwindow ) : vkMagnifier(new QvkMagnifier)
 {
     QvkSpezialSlider *sliderMagnification = new QvkSpezialSlider( Qt::Horizontal );
-    ui_mainwindow->horizontalLayout_8->addWidget( sliderMagnification );
+//    ui_mainwindow->horizontalLayout_8->addWidget( sliderMagnification );
+    ui_mainwindow->horizontalLayout_8->insertWidget( 1, sliderMagnification );
     sliderMagnification->setObjectName("sliderMagnification");
     sliderMagnification->setTracking( true );
     sliderMagnification->setMinimum( 1 );

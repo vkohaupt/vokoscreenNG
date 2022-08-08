@@ -29,7 +29,6 @@
 #include <QLabel>
 #include <QApplication>
 #include <QTimer>
-#include <QPaintEvent>
 
 class QvkMagnifier: public QDialog
 { 
