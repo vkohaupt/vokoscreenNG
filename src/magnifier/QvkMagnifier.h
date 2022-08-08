@@ -29,6 +29,7 @@
 #include <QLabel>
 #include <QApplication>
 #include <QTimer>
+#include <QPaintEvent>
 
 class QvkMagnifier: public QDialog
 { 
@@ -68,7 +69,7 @@ private:
   QPoint screenCursorPos;
   QList<QScreen *> screenList;
   int screenIndex;
-
+  int distanceCopyMagnifier;
 
 };
 

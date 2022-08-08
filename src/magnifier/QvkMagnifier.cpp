@@ -37,6 +37,7 @@ QvkMagnifier::QvkMagnifier()
     resize( 2 * distanceX * faktor, 2 * distanceY * faktor );
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar
     border = 3;
+    distanceCopyMagnifier = 30;
 
     label->setGeometry( QRect( 0 + border, 0 + border, this->width() - 2 * border, this->height() - 2 * border ) );
     label->setAlignment( Qt::AlignCenter );
@@ -102,6 +103,7 @@ void QvkMagnifier::slot_magnifier600x200()
 }
 
 
+
 void QvkMagnifier::setMagnifier()
 {
     bool debug = false;
@@ -116,11 +118,11 @@ void QvkMagnifier::setMagnifier()
     if ( regionMiddle.contains( screenCursorPos ) )
     {
         int valueY = globalCursorPos.y() + distanceY;
-        if ( ( screenCursorPos.y() + distanceY ) <= ( 2 * distanceY ) ) { // 3
-            valueY = screen->geometry().top() + 2 * distanceY; // 3
+        if ( ( screenCursorPos.y() + distanceY ) <= ( 2 * distanceY ) ) {
+            valueY = screen->geometry().top() + 2 * distanceY;
         }
 
-        move( screen->geometry().left() + screenCursorPos.x() - this->width()/2, valueY ); //globalCursorPos.y() + distanceY );
+        move( screen->geometry().left() + screenCursorPos.x() - this->width()/2, valueY + distanceCopyMagnifier );
 
         if ( debug == true ) { qDebug() << "Magnifier regionMiddle:" << regionMiddle
                                         << "globalCursorPos:" << globalCursorPos
@@ -140,11 +142,11 @@ void QvkMagnifier::setMagnifier()
     if ( regionRight.contains( screenCursorPos ) )
     {
         int valueY = globalCursorPos.y() + distanceY;
-        if ( ( screenCursorPos.y() + distanceY ) <= ( 2 * distanceY ) ) { // 3
-            valueY = screen->geometry().top() + 2 * distanceY; // 3
+        if ( ( screenCursorPos.y() + distanceY ) <= ( 2 * distanceY ) ) {
+            valueY = screen->geometry().top() + 2 * distanceY;
         }
 
-        move( screen->geometry().right() - width(), valueY );
+        move( screen->geometry().right() - width(), valueY + distanceCopyMagnifier );
 
         if ( debug == true ) { qDebug() << "Magnifier regionRightMiddle:" << regionRight
                                         << "globalCursorPos:" << globalCursorPos
@@ -164,11 +166,11 @@ void QvkMagnifier::setMagnifier()
     if ( regionLeft.contains( screenCursorPos ) )
     {
         int valueY = globalCursorPos.y() + distanceY;
-        if ( ( screenCursorPos.y() + distanceY ) <= ( 2 * distanceY ) ) { // 3
-            valueY = screen->geometry().top() + 2 * distanceY; // 3
+        if ( ( screenCursorPos.y() + distanceY ) <= ( 2 * distanceY ) ) {
+            valueY = screen->geometry().top() + 2 * distanceY;
         }
 
-        move( screen->geometry().left(), valueY );
+        move( screen->geometry().left(), valueY + distanceCopyMagnifier );
 
         if ( debug == true ) { qDebug() << "Magnifier regionLeft:" << regionLeft
                                         << "globalCursorPos:" << globalCursorPos
@@ -227,12 +229,13 @@ void QvkMagnifier::slot_mytimer()
 
         WId id = 0;
         pixmap = screen->grabWindow( id,
-                                     valueX, //screenCursorPos.x() - distanceX,
-                                     valueY, //screenCursorPos.y() - distanceY,
+                                     valueX,
+                                     valueY,
                                      2 * distanceX ,
                                      2 * distanceY );
 
         label->setPixmap( pixmap );
+
 
         if ( debug == true ) { qDebug() << "Grab regionAreaMiddle:" << regionAreaMiddle
                                         << "globalCursorPos:" << globalCursorPos
