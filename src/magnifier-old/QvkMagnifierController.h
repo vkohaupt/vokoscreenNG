@@ -20,59 +20,38 @@
  * --End_License--
  */
 
-#ifndef QVKMAGNIFIER_H
-#define QVKMAGNIFIER_H
+#ifndef QVKMAGNIFIERCONTROLLER_H
+#define QVKMAGNIFIERCONTROLLER_H
 
-#include <QScreen>
-#include <QPixmap>
-#include <QDialog>
-#include <QLabel>
-#include <QApplication>
-#include <QTimer>
+#include "ui_formMainWindow.h"
+#include "QvkMagnifier.h"
 
-class QvkMagnifier: public QDialog
-{ 
-Q_OBJECT
+class QvkMagnifierController : public QObject
+{
+    Q_OBJECT
+
 public:
-  QvkMagnifier();
-  virtual ~QvkMagnifier();
-  
+   QvkMagnifierController( Ui_formMainWindow *ui_mainwindow );
+   virtual ~QvkMagnifierController();
 
+  
 public slots:
-  void slot_magnifierShow( bool value );
-  void slot_magnifier200x200();
-  void slot_magnifier400x200();
-  void slot_magnifier600x200();
 
 
 private slots:
-  void slot_mytimer();
-  
+   void slot_valueChanged( int value );
 
-protected:  
 
-  
-signals:
-  
-  
 private:
-  void setMagnifier();
-  QLabel *label;
-  int border;
-  int distanceX;
-  int distanceY;
-  int faktor;
-  QTimer *timer;
-  QPoint globalCursorPos;
-  QScreen *screen;
-  QPoint screenCursorPos;
-  QList<QScreen *> screenList;
-  int screenIndex;
+  QvkMagnifier *vkMagnifier;
 
-  int x1;
-  int y1;
+
+protected:
+
+
+signals:
+
 
 };
-
 
 #endif

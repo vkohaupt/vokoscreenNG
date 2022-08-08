@@ -56,6 +56,8 @@ signals:
   
   
 private:
+  int NewDistanceXLeft();
+  int NewDistanceXRight();
   void setMagnifier();
   QLabel *label;
   int border;
@@ -63,15 +65,7 @@ private:
   int distanceY;
   int faktor;
   QTimer *timer;
-  QPoint globalCursorPos;
-  QScreen *screen;
-  QPoint screenCursorPos;
-  QList<QScreen *> screenList;
-  int screenIndex;
-
-  int x1;
-  int y1;
-
+  QRect rectVirtualScreen;
 };
 
 
