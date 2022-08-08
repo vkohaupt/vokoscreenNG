@@ -120,7 +120,7 @@ void QvkSnapshot::slot_newImage()
         {
             vkMainWindow->vkRegionChoise->recordMode( true );
             QvkSpezialSlider *spezialSlider = ui->centralWidget->findChild<QvkSpezialSlider *>( "sliderWaitBeforeSnapshot" );
-            QThread::msleep( static_cast<unsigned long>( spezialSlider->value()) * 1000 );
+            QThread::msleep( static_cast<unsigned long>( spezialSlider->value()) * 1000/10 );
         }
 
         int startx = vkMainWindow->vkRegionChoise->x() + vkMainWindow->vkRegionChoise->getXRecordArea();
@@ -210,7 +210,7 @@ bool QvkSnapshot::is_imageFolderExists_and_haveWritePermission()
 void QvkSnapshot::slot_snapshotWindow( bool )
 {
     QvkSpezialSlider *spezialSlider = ui->centralWidget->findChild<QvkSpezialSlider *>( "sliderWaitBeforeSnapshot" );
-    QThread::msleep( static_cast<unsigned long>( spezialSlider->value()) * 1000 );
+    QThread::msleep( static_cast<unsigned long>( spezialSlider->value()) * 1000/10 );
 
     WId xid = vkWinInfo->activeWindow();
     QImage image = screen.at( ui->comboBoxScreencastScreen->currentIndex() )->grabWindow(xid).toImage();

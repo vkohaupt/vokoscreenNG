@@ -25,11 +25,13 @@ private:
     QColor vk_get_color(QPalette::ColorRole colorRole);
     bool showValue = true;
     bool bigHandel = false;
+    bool decimalPoint = false;
 
 
 public slots:
     void setShowValue( bool value );
     void setBigHandel( bool value );
+    void setDecimalPoint( bool value );
 
 
 protected:

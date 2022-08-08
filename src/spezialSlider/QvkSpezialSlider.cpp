@@ -110,7 +110,13 @@ void QvkSpezialSlider::paintEvent(QPaintEvent *event)
         QFontMetrics fontMetrics( font );
         setMinimumHeight( fontMetrics.horizontalAdvance( "5555" ) );
         painter.setPen( vk_get_color( QPalette::ButtonText ) );
-        painter.drawText( qRectF, Qt::AlignCenter, QString::number( value() ) );
+
+        if ( decimalPoint == false ) {
+            painter.drawText( qRectF, Qt::AlignCenter, QString::number( value() ) );
+        } else {
+            qreal real = (qreal)value() / 10;
+            painter.drawText( qRectF, Qt::AlignCenter, QString::number( real, 'f', 1 ) );
+        }
     }
 
     if ( bigHandel == true )
@@ -227,4 +233,10 @@ void QvkSpezialSlider::setShowValue( bool value )
 void QvkSpezialSlider::setBigHandel( bool value )
 {
     bigHandel = value;
+}
+
+
+void QvkSpezialSlider::setDecimalPoint( bool value )
+{
+    decimalPoint = value;
 }

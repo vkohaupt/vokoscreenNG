@@ -176,8 +176,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->horizontalLayout_59->insertWidget( 1, sliderWaitBeforeSnapshot );
     sliderWaitBeforeSnapshot->setObjectName( "sliderWaitBeforeSnapshot" );
     sliderWaitBeforeSnapshot->setMinimum( 0 );
-    sliderWaitBeforeSnapshot->setMaximum( 3 );
-    sliderWaitBeforeSnapshot->setValue( 1 );
+    sliderWaitBeforeSnapshot->setMaximum( 30 );
+    sliderWaitBeforeSnapshot->setValue( 10 );
+    sliderWaitBeforeSnapshot->setDecimalPoint( true );
     sliderWaitBeforeSnapshot->show();
 
     ui->comboBox_shortcut_start->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
