@@ -109,33 +109,20 @@ void QvkMagnifier::setMagnifier()
     // Magnifier area middle OK
     // Region beinhalte absolute Bildschirmwerte
     QRegion regionMiddle( this->width()/2,
-                          2 * distanceY,
+                          0,
                           screen->size().width() - 2 * this->width()/2,
                           screen->size().height() - 2 * this->height()/2 ) ;
 
     if ( regionMiddle.contains( screenCursorPos ) )
     {
-        move( screen->geometry().left() + screenCursorPos.x() - this->width()/2, globalCursorPos.y() + distanceY );
+        int valueY = globalCursorPos.y() + distanceY;
+        if ( ( screenCursorPos.y() + distanceY ) <= ( 2 * distanceY ) ) { // 3
+            valueY = screen->geometry().top() + 2 * distanceY; // 3
+        }
+
+        move( screen->geometry().left() + screenCursorPos.x() - this->width()/2, valueY ); //globalCursorPos.y() + distanceY );
 
         if ( debug == true ) { qDebug() << "Magnifier regionMiddle:" << regionMiddle
-                                        << "globalCursorPos:" << globalCursorPos
-                                        << "screenCursorPos:" << screenCursorPos << screenIndex; }
-
-        return;
-    }
-
-    // Magnifier top middle OK
-    // Region beinhalte absolute Bildschirmwerte
-    QRegion regionTopMiddle( this->width()/2,
-                             0,
-                             screen->size().width() - 2 * this->width()/2,
-                             2 * distanceY );
-
-    if ( regionTopMiddle.contains( screenCursorPos ) )
-    {
-        move( screen->geometry().left() + screenCursorPos.x() - this->width()/2, screen->geometry().top() + 3 * distanceY);
-
-        if ( debug == true ) { qDebug() << "Magnifier regionTopMiddle:" << regionTopMiddle
                                         << "globalCursorPos:" << globalCursorPos
                                         << "screenCursorPos:" << screenCursorPos << screenIndex; }
 
@@ -153,8 +140,8 @@ void QvkMagnifier::setMagnifier()
     if ( regionRight.contains( screenCursorPos ) )
     {
         int valueY = globalCursorPos.y() + distanceY;
-        if ( ( screenCursorPos.y() + distanceY ) <= ( 3 * distanceY ) ) {
-            valueY = screen->geometry().top() + 3 * distanceY;
+        if ( ( screenCursorPos.y() + distanceY ) <= ( 2 * distanceY ) ) { // 3
+            valueY = screen->geometry().top() + 2 * distanceY; // 3
         }
 
         move( screen->geometry().right() - width(), valueY );
@@ -177,8 +164,8 @@ void QvkMagnifier::setMagnifier()
     if ( regionLeft.contains( screenCursorPos ) )
     {
         int valueY = globalCursorPos.y() + distanceY;
-        if ( ( screenCursorPos.y() + distanceY ) <= ( 3 * distanceY ) ) {
-            valueY = screen->geometry().top() + 3 * distanceY;
+        if ( ( screenCursorPos.y() + distanceY ) <= ( 2 * distanceY ) ) { // 3
+            valueY = screen->geometry().top() + 2 * distanceY; // 3
         }
 
         move( screen->geometry().left(), valueY );
@@ -220,18 +207,28 @@ void QvkMagnifier::slot_mytimer()
 
     setMagnifier();
 
-    // Grab Area middle OK
-    QRegion regionAreaMiddle( 0 + this->width()/2,
-                              0 + this->height()/4,
+    // Grab middle
+    QRegion regionAreaMiddle( this->width()/2,
+                              0,
                               screen->size().width() - 2 * this->width()/2,
                               screen->size().height() - 2 * this->height()/2 ) ;
 
     if ( regionAreaMiddle.contains( screenCursorPos ) )
     {
+        int valueX = screenCursorPos.x() - distanceX;
+        if ( screenCursorPos.x() <= distanceX ) {
+            valueX = 0;
+        }
+
+        int valueY = screenCursorPos.y() - distanceY;
+        if ( screenCursorPos.y() <= distanceY ) {
+            valueY = 0;
+        }
+
         WId id = 0;
         pixmap = screen->grabWindow( id,
-                                     screenCursorPos.x() - distanceX,
-                                     screenCursorPos.y() - distanceY,
+                                     valueX, //screenCursorPos.x() - distanceX,
+                                     valueY, //screenCursorPos.y() - distanceY,
                                      2 * distanceX ,
                                      2 * distanceY );
 
@@ -244,34 +241,8 @@ void QvkMagnifier::slot_mytimer()
     }
 
 
-    // Grab top middle OK
-    QRegion regionTopMiddle( 0 + this->width()/2,
-                             0,
-                             screen->size().width() - 2 * this->width()/2,
-                             this->height()/2 );
-
-    if ( regionTopMiddle.contains( screenCursorPos ) ) // screenCursorPos beinhaltet die Cursorkoordinaten vom aktuellen Bildschirm
-    {
-        WId id = 0;
-        pixmap = screen->grabWindow( id,
-                                     screenCursorPos.x() - distanceX,
-                                     0,
-                                     2 * distanceX,
-                                     2 * distanceY );
-
-        label->setPixmap( pixmap );
-
-        if ( debug == true ) { qDebug() << "Grab regionTopMiddle:" << regionTopMiddle
-                                        << "globalCursorPos:" << globalCursorPos
-                                        << "screenCursorPos:" << screenCursorPos << screenIndex; }
-
-        return;
-    }
-
-
     // Grab right
     QRegion regionRight( screen->size().width() - this->width()/2,
-                         // 2 * distanceY,
                          0,
                          this->width()/2,
                          screen->size().height() - 2 * this->height()/2 );

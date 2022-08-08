@@ -69,8 +69,6 @@ private:
   QList<QScreen *> screenList;
   int screenIndex;
 
-  int x1;
-  int y1;
 
 };
 
