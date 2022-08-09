@@ -106,14 +106,14 @@ void QvkMagnifier::slot_magnifier600x200()
 
 void QvkMagnifier::setMagnifier()
 {
-    bool debug = false;
+    bool debug = true;
 
     // Magnifier area middle OK
     // Region beinhalte absolute Bildschirmwerte
     QRegion regionMiddle( this->width()/2,
                           0,
                           screen->size().width() - 2 * this->width()/2,
-                          screen->size().height() - 2 * this->height()/2 ) ;
+                          screen->size().height() - this->height() - distanceY - distanceCopyMagnifier );
 
     if ( regionMiddle.contains( screenCursorPos ) )
     {
@@ -154,6 +154,24 @@ void QvkMagnifier::setMagnifier()
 
         return;
     }
+
+
+    // Magnifier bottom-------------------------------------------------------------------------------------
+    QRegion regionBottom( 0,
+                          screen->size().height() - this->height() - distanceY - distanceCopyMagnifier,
+                          screen->size().width(),
+                          this->height() + distanceY + distanceCopyMagnifier );
+
+   if ( regionBottom.contains( screenCursorPos ) )
+   {
+       move( screen->geometry().left() + screenCursorPos.x() - this->width()/2, globalCursorPos.y() - this->height() - 2*distanceY - distanceCopyMagnifier );
+
+       if ( debug == true ) { qDebug() << "Magnifier bottom:" << regionBottom
+                                       << "globalCursorPos:" << globalCursorPos
+                                       << "screenCursorPos:" << screenCursorPos << screenIndex; }
+
+       return;
+   }
 
 
     // Magnifier left OK
