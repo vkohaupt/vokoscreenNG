@@ -64,7 +64,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 
     sliderScreencastCountDown = new QvkSpezialSlider( Qt::Horizontal );
-    ui->gridLayout_9->addWidget( sliderScreencastCountDown, 2, 1 );
+    ui->horizontalLayout_60->insertWidget( 0, sliderScreencastCountDown );
     sliderScreencastCountDown->setObjectName( "sliderScreencastCountDown" );
     sliderScreencastCountDown->setTracking( true );
     sliderScreencastCountDown->setMinimum( 0 );
@@ -177,7 +177,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderWaitBeforeSnapshot->setObjectName( "sliderWaitBeforeSnapshot" );
     sliderWaitBeforeSnapshot->setMinimum( 0 );
     sliderWaitBeforeSnapshot->setMaximum( 30 );
-    sliderWaitBeforeSnapshot->setValue( 10 );
+    sliderWaitBeforeSnapshot->setValue( 4 );
     sliderWaitBeforeSnapshot->setDecimalPoint( true );
     sliderWaitBeforeSnapshot->show();
 
