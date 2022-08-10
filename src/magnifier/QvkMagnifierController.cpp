@@ -26,9 +26,8 @@
 QvkMagnifierController::QvkMagnifierController(Ui_formMainWindow *ui_mainwindow ) : vkMagnifier(new QvkMagnifier)
 {
     QvkSpezialSlider *sliderMagnification = new QvkSpezialSlider( Qt::Horizontal );
-//    ui_mainwindow->horizontalLayout_8->addWidget( sliderMagnification );
-    ui_mainwindow->horizontalLayout_8->insertWidget( 1, sliderMagnification );
-    sliderMagnification->setObjectName("sliderMagnification");
+    ui_mainwindow->horizontalLayout_8->insertWidget( 0, sliderMagnification );
+    sliderMagnification->setObjectName( "sliderMagnification" );
     sliderMagnification->setTracking( true );
     sliderMagnification->setMinimum( 1 );
     sliderMagnification->setMaximum( 3 );
@@ -47,10 +46,15 @@ QvkMagnifierController::~QvkMagnifierController()
 
 void QvkMagnifierController::slot_valueChanged( int value )
 {
-    if ( value == 1 )
+    if ( value == 1 ) {
        vkMagnifier->slot_magnifier200x200();
-    if ( value == 2 )
+    }
+
+    if ( value == 2 ) {
        vkMagnifier->slot_magnifier400x200();
-    if ( value == 3 )
+    }
+
+    if ( value == 3 ) {
        vkMagnifier->slot_magnifier600x200();
+    }
 }
