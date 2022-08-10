@@ -108,7 +108,7 @@ void QvkMagnifier::setMagnifier()
 {
     bool debug = true;
 
-    // Magnifier area middle OK
+    // Magnifier area middle
     // Region beinhalte absolute Bildschirmwerte
     QRegion regionMiddle( this->width()/2,
                           0,
@@ -132,7 +132,7 @@ void QvkMagnifier::setMagnifier()
     }
 
 
-    // Magnifier right OK
+    // Magnifier right
     // Region beinhalte absolute Bildschirmwerte
     QRegion regionRight( screen->size().width() - this->width()/2,
                          0,
@@ -156,25 +156,61 @@ void QvkMagnifier::setMagnifier()
     }
 
 
-    // Magnifier bottom-------------------------------------------------------------------------------------
-    QRegion regionBottom( 0,
-                          screen->size().height() - this->height() - distanceY - distanceCopyMagnifier,
-                          screen->size().width(),
-                          this->height() + distanceY + distanceCopyMagnifier );
+    // Magnifier bottom right
+    QRegion regionBottomRight( screen->size().width() - this->width()/2,
+                               screen->size().height() - this->height() - distanceY - distanceCopyMagnifier,
+                               this->width(),
+                               this->height() + distanceY + distanceCopyMagnifier );
 
-   if ( regionBottom.contains( screenCursorPos ) )
-   {
-       move( screen->geometry().left() + screenCursorPos.x() - this->width()/2, globalCursorPos.y() - this->height() - 2*distanceY - distanceCopyMagnifier );
+    if ( regionBottomRight.contains( screenCursorPos ) )
+    {
+        move( screen->geometry().right() - this->width(), globalCursorPos.y() - this->height() - 2*distanceY - distanceCopyMagnifier );
 
-       if ( debug == true ) { qDebug() << "Magnifier bottom:" << regionBottom
-                                       << "globalCursorPos:" << globalCursorPos
-                                       << "screenCursorPos:" << screenCursorPos << screenIndex; }
+        if ( debug == true ) { qDebug() << "Magnifier regionBottomRight:" << regionBottomRight
+                                        << "globalCursorPos:" << globalCursorPos
+                                        << "screenCursorPos:" << screenCursorPos << screenIndex; }
 
-       return;
-   }
+        return;
+    }
 
 
-    // Magnifier left OK
+    // Magnifier bottom middle
+    QRegion regionBottomMiddle( this->width()/2,
+                                screen->size().height() - this->height() - distanceY - distanceCopyMagnifier,
+                                screen->size().width(),
+                                this->height() + distanceY + distanceCopyMagnifier );
+
+    if ( regionBottomMiddle.contains( screenCursorPos ) )
+    {
+        move( screen->geometry().left() + screenCursorPos.x() - this->width()/2, globalCursorPos.y() - this->height() - 2*distanceY - distanceCopyMagnifier );
+
+        if ( debug == true ) { qDebug() << "Magnifier regionBottomMiddle:" << regionBottomMiddle
+                                        << "globalCursorPos:" << globalCursorPos
+                                        << "screenCursorPos:" << screenCursorPos << screenIndex; }
+
+        return;
+    }
+
+
+    // Magnifier left bottom
+    QRegion regionBottomLeft( 0,
+                              screen->size().height() - this->height() - distanceY - distanceCopyMagnifier,
+                              this->width()/2,
+                              this->height() + distanceY + distanceCopyMagnifier );
+
+    if ( regionBottomLeft.contains( screenCursorPos ) )
+    {
+        move( screen->geometry().left(), globalCursorPos.y() - this->height() - 2*distanceY - distanceCopyMagnifier );
+
+        if ( debug == true ) { qDebug() << "Magnifier regionBottomLeft:" << regionBottomLeft
+                                        << "globalCursorPos:" << globalCursorPos
+                                        << "screenCursorPos:" << screenCursorPos << screenIndex; }
+
+        return;
+    }
+
+
+    // Magnifier left
     // Region beinhalte absolute Bildschirmwerte
     QRegion regionLeft( 0,
                         0,
