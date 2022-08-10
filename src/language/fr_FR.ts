@@ -3,7 +3,7 @@
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Sélectionnez un ou plusieurs fichiers</translation>
+        <translation>Sélectionnez un ou plusieurs appareils</translation>
     </message>
 </context>
 <context>
@@ -17,7 +17,7 @@
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Basculez vers la fenêtre</translation>
+        <translation>Mode fenêtré</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
@@ -68,7 +68,7 @@
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Attention, danger !</translation>
+        <translation>Attention</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
@@ -524,11 +524,11 @@
     </message>
     <message>
         <source>Snapshot</source>
-        <translation type="unfinished"/>
+        <translation>Instantatné</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation type="unfinished"/>
+        <translation>Chemin de l&apos;image</translation>
     </message>
 </context>
 <context>

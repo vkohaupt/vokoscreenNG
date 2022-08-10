@@ -524,11 +524,11 @@
     </message>
     <message>
         <source>Snapshot</source>
-        <translation type="unfinished"/>
+        <translation>Pantaila argazkia</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation type="unfinished"/>
+        <translation>Irudi-bidea</translation>
     </message>
 </context>
 <context>

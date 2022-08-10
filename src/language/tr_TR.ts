@@ -524,11 +524,11 @@
     </message>
     <message>
         <source>Snapshot</source>
-        <translation type="unfinished"/>
+        <translation>Ekrançıktısı</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation type="unfinished"/>
+        <translation>Resimyolu</translation>
     </message>
 </context>
 <context>
