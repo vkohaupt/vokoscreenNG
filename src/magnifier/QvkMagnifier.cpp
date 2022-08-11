@@ -206,8 +206,9 @@ void QvkMagnifier::slot_mytimer()
         }
 
         int valueY = screenCursorPos.y() - distanceY;
-        if ( screenCursorPos.y() <= distanceY )
+        if ( screenCursorPos.y() <= distanceY ) {
             valueY = 0;
+        }
 
         WId id = 0;
         pixmap = screen->grabWindow( id,
@@ -229,8 +230,9 @@ void QvkMagnifier::slot_mytimer()
     if ( regionTopMiddle.contains( screenCursorPos ) )
     {
         int valueY = screenCursorPos.y() - distanceY;
-        if ( screenCursorPos.y() <= distanceY )
+        if ( screenCursorPos.y() <= distanceY ) {
             valueY = 0;
+        }
 
         WId id = 0;
         pixmap = screen->grabWindow( id,
