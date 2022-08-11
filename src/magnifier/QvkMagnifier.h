@@ -70,6 +70,17 @@ private:
   int screenIndex;
   int distanceCopyMagnifier;
 
+  QRegion regionTopLeft;
+  QRegion regionTopMiddle;
+  QRegion regionTopRight;
+  QRegion regionRightMiddle;
+  QRegion regionBottomRight;
+  QRegion regionBottomMiddle;
+  QRegion regionBottomLeft;
+  QRegion regionLeftMiddle;
+  QRegion regionMiddle;
+
+
 };
 
 
