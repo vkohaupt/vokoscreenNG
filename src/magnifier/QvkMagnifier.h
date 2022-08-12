@@ -80,6 +80,8 @@ private:
   QRegion regionLeftMiddle;
   QRegion regionMiddle;
 
+  enum region{ none, topLeft, topMiddle, topRight, rightMiddle, bottomRight, bottomMiddle, bottomLeft, leftMiddle, middle };
+  region screenRegion;
 
 };
 

@@ -105,7 +105,8 @@ void QvkMagnifier::slot_magnifier600x200()
 
 void QvkMagnifier::setMagnifier()
 {
-    bool debug = true;
+    bool debug = false;
+    screenRegion = region::none;
 
     // Magnifier top left
     // Region includes absolute screen values
@@ -122,6 +123,8 @@ void QvkMagnifier::setMagnifier()
         if ( debug == true ) { qDebug() << "Magnifier regionTopLeft" << regionTopLeft
                                         << "globalCursorPos:" << globalCursorPos
                                         << "screenCursorPos:" << screenCursorPos << screenIndex; }
+
+        screenRegion = region::topLeft;
 
         return;
     }
@@ -143,6 +146,8 @@ void QvkMagnifier::setMagnifier()
                                         << "globalCursorPos:" << globalCursorPos
                                         << "screenCursorPos:" << screenCursorPos << screenIndex; }
 
+        screenRegion = region::topMiddle;
+
         return;
     }
 
@@ -163,6 +168,8 @@ void QvkMagnifier::setMagnifier()
                                         << "globalCursorPos:" << globalCursorPos
                                         << "screenCursorPos:" << screenCursorPos << screenIndex; }
 
+        screenRegion = region::topRight;
+
         return;
     }
 
@@ -170,10 +177,10 @@ void QvkMagnifier::setMagnifier()
     // Magnifier right middle
     // Region includes absolute screen values
     regionRightMiddle = QRegion( screen->size().width() - this->width()/2,
-                              0,
-                              this->width()/2,
-                              //                        (    Top       )   (             Bottom                      )
-                              screen->size().height() - this->height()/2 - ( this->height() +  distanceCopyMagnifier ) );
+                                 0,
+                                 this->width()/2,
+                                 //                        (    Top       )   (             Bottom                      )
+                                 screen->size().height() - this->height()/2 - ( this->height() +  distanceCopyMagnifier ) );
 
     if ( regionRightMiddle.contains( screenCursorPos ) )
     {
@@ -184,6 +191,8 @@ void QvkMagnifier::setMagnifier()
                                         << "globalCursorPos:" << globalCursorPos
                                         << "screenCursorPos:" << screenCursorPos << screenIndex; }
 
+        screenRegion = region::rightMiddle;
+
         return;
     }
 }
@@ -191,7 +200,7 @@ void QvkMagnifier::setMagnifier()
 
 void QvkMagnifier::slot_mytimer()
 {
-    bool debug = false;
+    bool debug = true;
 
     globalCursorPos = QCursor::pos();
     if( debug == true ) { qDebug() << "slot_mytimer globalCursorPos:" << globalCursorPos; }
@@ -217,119 +226,103 @@ void QvkMagnifier::slot_mytimer()
 
     setMagnifier();
 
-    // Grab top left
-    if ( regionTopLeft.contains( screenCursorPos ) )
+    int valueX = 0;
+    int valueY = 0;
+    switch ( screenRegion )
     {
-        int valueX = screenCursorPos.x() - distanceX;
-        if ( screenCursorPos.x() - distanceX <= 0 ) {
-            valueX = 0;
-        }
+        case none : {
+                break;
+            }
+        case topLeft : {
+                valueX = screenCursorPos.x() - distanceX;
 
-        int valueY = screenCursorPos.y() - distanceY;
-        if ( screenCursorPos.y() <= distanceY ) {
-            valueY = 0;
-        }
+                if ( screenCursorPos.x() - distanceX <= 0 ) {
+                    valueX = 0;
+                }
 
-        WId id = 0;
-        pixmap = screen->grabWindow( id,
+                valueY = screenCursorPos.y() - distanceY;
+                if ( screenCursorPos.y() <= distanceY ) {
+                    valueY = 0;
+                }
+
+                if ( debug == true ) { qDebug() << "Grab regionTopLeft:" << regionTopLeft
+                                                << "globalCursorPos:" << globalCursorPos
+                                                << "screenCursorPos:" << screenCursorPos << screenIndex; }
+                break;
+            }
+        case topMiddle : {
+                valueX = screenCursorPos.x() - distanceX;
+
+                valueY = screenCursorPos.y() - distanceY;
+                if ( screenCursorPos.y() <= distanceY ) {
+                    valueY = 0;
+                }
+
+                if ( debug == true ) { qDebug() << "Grab regionTopMiddle:" << regionTopMiddle
+                                                << "globalCursorPos:" << globalCursorPos
+                                                << "screenCursorPos:" << screenCursorPos << screenIndex; }
+                break;
+            }
+        case topRight : {
+                valueX = screenCursorPos.x() - distanceX;
+                if ( screenCursorPos.x() >= screen->size().width() - distanceX ) {
+                    valueX = screen->size().width() - 2*distanceX;
+                }
+
+                valueY = screenCursorPos.y() - distanceY;
+                if ( screenCursorPos.y() <= distanceY ) {
+                    valueY = 0;
+                }
+
+                if ( debug == true ) { qDebug() << "Grab regionTopRight:" << regionTopRight
+                                                << "globalCursorPos:" << globalCursorPos
+                                                << "screenCursorPos:" << screenCursorPos << screenIndex; }
+                break;
+            }
+        case rightMiddle : {
+                valueX = screenCursorPos.x() - distanceX;
+                if ( screenCursorPos.x() >= screen->size().width() - distanceX ) {
+                    valueX = screen->size().width() - 2*distanceX;
+                }
+
+                valueY = screenCursorPos.y() - distanceY;
+                if ( screenCursorPos.y() <= distanceY ) {
+                    valueY = 0;
+                }
+
+                if ( debug == true ) { qDebug() << "Grab regionRightMiddle:" << regionRightMiddle
+                                                << "globalCursorPos:" << globalCursorPos
+                                                << "screenCursorPos:" << screenCursorPos << screenIndex; }
+
+                break;
+            }
+        case bottomRight : {
+                break;
+            }
+        case bottomMiddle : {
+                break;
+            }
+        case bottomLeft : {
+                break;
+            }
+        case leftMiddle : {
+                break;
+            }
+        case middle : {
+                break;
+            }
+    }
+
+    if ( screenRegion != region::none ) {
+        pixmap = screen->grabWindow( 0,
                                      valueX,
                                      valueY,
                                      2*distanceX,
                                      2*distanceY);
 
         label->setPixmap( pixmap );
-
-        if ( debug == true ) { qDebug() << "Grab regionTopLeft:" << regionTopLeft
-                                        << "globalCursorPos:" << globalCursorPos
-                                        << "screenCursorPos:" << screenCursorPos << screenIndex; }
-        return;
     }
 
-
-    // Grab top middle
-    if ( regionTopMiddle.contains( screenCursorPos ) )
-    {
-        int valueX = screenCursorPos.x() - distanceX;
-
-        int valueY = screenCursorPos.y() - distanceY;
-        if ( screenCursorPos.y() <= distanceY ) {
-            valueY = 0;
-        }
-
-        WId id = 0;
-        pixmap = screen->grabWindow( id,
-                                     valueX,
-                                     valueY,
-                                     2*distanceX,
-                                     2*distanceY);
-
-        label->setPixmap( pixmap );
-
-        if ( debug == true ) { qDebug() << "Grab regionTopMiddle:" << regionTopMiddle
-                                        << "globalCursorPos:" << globalCursorPos
-                                        << "screenCursorPos:" << screenCursorPos << screenIndex; }
-        return;
-    }
-
-
-    // Grab top right
-    if ( regionTopRight.contains( screenCursorPos ) )
-    {
-        int valueX = screenCursorPos.x() - distanceX;
-        if ( screenCursorPos.x() >= screen->size().width() - distanceX ) {
-            valueX = screen->size().width() - 2*distanceX;
-        }
-
-        int valueY = screenCursorPos.y() - distanceY;
-        if ( screenCursorPos.y() <= distanceY ) {
-            valueY = 0;
-        }
-
-        WId id = 0;
-        pixmap = screen->grabWindow( id,
-                                     valueX,
-                                     valueY,
-                                     2*distanceX,
-                                     2*distanceY);
-
-        label->setPixmap( pixmap );
-
-        if ( debug == true ) { qDebug() << "Grab regionTopRight:" << regionTopRight
-                                        << "globalCursorPos:" << globalCursorPos
-                                        << "screenCursorPos:" << screenCursorPos << screenIndex; }
-        return;
-    }
-
-
-    // Grab right middle
-    if ( regionRightMiddle.contains( screenCursorPos ) )
-    {
-
-        int valueX = screenCursorPos.x() - distanceX;
-        if ( screenCursorPos.x() >= screen->size().width() - distanceX ) {
-            valueX = screen->size().width() - 2*distanceX;
-        }
-
-        int valueY = screenCursorPos.y() - distanceY;
-        if ( screenCursorPos.y() <= distanceY ) {
-            valueY = 0;
-        }
-
-        WId id = 0;
-        pixmap = screen->grabWindow( id,
-                                     valueX,
-                                     valueY,
-                                     2*distanceX,
-                                     2*distanceY);
-
-        if ( debug == true ) { qDebug() << "Grab regionRightMiddle:" << regionRightMiddle
-                                        << "globalCursorPos:" << globalCursorPos
-                                        << "screenCursorPos:" << screenCursorPos << screenIndex; }
-
-        label->setPixmap( pixmap );
-
-        return;
-    }
 }
 
 /*
