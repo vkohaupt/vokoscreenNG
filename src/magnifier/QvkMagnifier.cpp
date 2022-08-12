@@ -106,7 +106,7 @@ void QvkMagnifier::slot_magnifier600x200()
 void QvkMagnifier::setMagnifier()
 {
     bool debug = false;
-    screenRegion = region::none;
+    nameRegion = region::none;
 
     // Magnifier top left
     // Region includes absolute screen values
@@ -117,14 +117,15 @@ void QvkMagnifier::setMagnifier()
 
     if ( regionTopLeft.contains( screenCursorPos ) )
     {
+        nameRegion = region::topLeft;
+        valueRegion = regionTopLeft;
+
         // Move works with global mouse coordinates like screen->geometry().left() and globalCursorPos
         move( screen->geometry().left(), globalCursorPos.y() + 2*distanceY + distanceCopyMagnifier );
 
         if ( debug == true ) { qDebug() << "Magnifier regionTopLeft" << regionTopLeft
                                         << "globalCursorPos:" << globalCursorPos
                                         << "screenCursorPos:" << screenCursorPos << screenIndex; }
-
-        screenRegion = region::topLeft;
 
         return;
     }
@@ -139,14 +140,15 @@ void QvkMagnifier::setMagnifier()
 
     if ( regionTopMiddle.contains( screenCursorPos ) )
     {
+        nameRegion = region::topMiddle;
+        valueRegion = regionTopMiddle;
+
         // Move works with global mouse coordinates like screen->geometry().left() and globalCursorPos
         move( globalCursorPos.x() - width()/2, globalCursorPos.y() + 2*distanceY + distanceCopyMagnifier );
 
         if ( debug == true ) { qDebug() << "Magnifier regionTopMiddle:" << regionTopMiddle
                                         << "globalCursorPos:" << globalCursorPos
                                         << "screenCursorPos:" << screenCursorPos << screenIndex; }
-
-        screenRegion = region::topMiddle;
 
         return;
     }
@@ -161,14 +163,15 @@ void QvkMagnifier::setMagnifier()
 
     if ( regionTopRight.contains( screenCursorPos ) )
     {
+        nameRegion = region::topRight;
+        valueRegion = regionTopRight;
+
         // Move works with global mouse coordinates like screen->geometry().left() and globalCursorPos
         move( screen->geometry().right() - this->width(), globalCursorPos.y() + 2*distanceY + distanceCopyMagnifier );
 
         if ( debug == true ) { qDebug() << "Magnifier regionTopRight:" << regionTopRight
                                         << "globalCursorPos:" << globalCursorPos
                                         << "screenCursorPos:" << screenCursorPos << screenIndex; }
-
-        screenRegion = region::topRight;
 
         return;
     }
@@ -184,14 +187,15 @@ void QvkMagnifier::setMagnifier()
 
     if ( regionRightMiddle.contains( screenCursorPos ) )
     {
+        nameRegion = region::rightMiddle;
+        valueRegion = regionRightMiddle;
+
         // Move works with global mouse coordinates like screen->geometry().left() and globalCursorPos
         move( screen->geometry().right() - this->width(), globalCursorPos.y() + 2*distanceY + distanceCopyMagnifier );
 
         if ( debug == true ) { qDebug() << "Magnifier regionRightMiddle:" << regionRightMiddle
                                         << "globalCursorPos:" << globalCursorPos
                                         << "screenCursorPos:" << screenCursorPos << screenIndex; }
-
-        screenRegion = region::rightMiddle;
 
         return;
     }
@@ -222,13 +226,11 @@ void QvkMagnifier::slot_mytimer()
     screenIndex = screenList.indexOf( screen );
     if( debug == true ) { qDebug() << "slot_mytimer screenIndex:" << screenIndex; }
 
-    QPixmap pixmap;
-
     setMagnifier();
 
     int valueX = 0;
     int valueY = 0;
-    switch ( screenRegion )
+    switch ( nameRegion )
     {
         case none : {
                 break;
@@ -245,9 +247,6 @@ void QvkMagnifier::slot_mytimer()
                     valueY = 0;
                 }
 
-                if ( debug == true ) { qDebug() << "Grab regionTopLeft:" << regionTopLeft
-                                                << "globalCursorPos:" << globalCursorPos
-                                                << "screenCursorPos:" << screenCursorPos << screenIndex; }
                 break;
             }
         case topMiddle : {
@@ -258,9 +257,6 @@ void QvkMagnifier::slot_mytimer()
                     valueY = 0;
                 }
 
-                if ( debug == true ) { qDebug() << "Grab regionTopMiddle:" << regionTopMiddle
-                                                << "globalCursorPos:" << globalCursorPos
-                                                << "screenCursorPos:" << screenCursorPos << screenIndex; }
                 break;
             }
         case topRight : {
@@ -274,9 +270,6 @@ void QvkMagnifier::slot_mytimer()
                     valueY = 0;
                 }
 
-                if ( debug == true ) { qDebug() << "Grab regionTopRight:" << regionTopRight
-                                                << "globalCursorPos:" << globalCursorPos
-                                                << "screenCursorPos:" << screenCursorPos << screenIndex; }
                 break;
             }
         case rightMiddle : {
@@ -289,10 +282,6 @@ void QvkMagnifier::slot_mytimer()
                 if ( screenCursorPos.y() <= distanceY ) {
                     valueY = 0;
                 }
-
-                if ( debug == true ) { qDebug() << "Grab regionRightMiddle:" << regionRightMiddle
-                                                << "globalCursorPos:" << globalCursorPos
-                                                << "screenCursorPos:" << screenCursorPos << screenIndex; }
 
                 break;
             }
@@ -313,16 +302,70 @@ void QvkMagnifier::slot_mytimer()
             }
     }
 
-    if ( screenRegion != region::none ) {
-        pixmap = screen->grabWindow( 0,
-                                     valueX,
-                                     valueY,
-                                     2*distanceX,
-                                     2*distanceY);
+    if ( nameRegion != region::none ) {
+        QPixmap pixmap = screen->grabWindow( 0,
+                                             valueX,
+                                             valueY,
+                                             2*distanceX,
+                                             2*distanceY);
 
         label->setPixmap( pixmap );
+
+        if ( debug == true ) { qDebug().noquote() << "Grab" << enumToString( nameRegion ) << valueRegion
+                                                  << "globalCursorPos:" << globalCursorPos
+                                                  << "screenCursorPos:" << screenCursorPos << screenIndex; }
+    }
+}
+
+
+QString QvkMagnifier::enumToString( region reg )
+{
+    QString string;
+    switch ( reg )
+    {
+        case none : {
+                string = "none";
+                break;
+            }
+        case topLeft : {
+                string = "topLeft";
+                break;
+            }
+        case topMiddle : {
+                string = "topMiddle";
+                break;
+            }
+        case topRight : {
+                string = "topRight";
+                break;
+            }
+        case rightMiddle : {
+                string = "rightMiddle";
+                break;
+            }
+        case bottomRight : {
+                string = "bottomRight";
+                break;
+            }
+        case bottomMiddle : {
+                string = "bottomMiddle";
+                break;
+            }
+        case bottomLeft : {
+                string = "bottomLeft";
+                break;
+            }
+        case leftMiddle : {
+                string = "leftMiddle";
+                break;
+            }
+        case middle : {
+                string = "middle";
+                break;
+            }
     }
 
+    return string;
 }
 
 /*

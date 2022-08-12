@@ -79,9 +79,13 @@ private:
   QRegion regionBottomLeft;
   QRegion regionLeftMiddle;
   QRegion regionMiddle;
+  QRegion valueRegion;
 
   enum region{ none, topLeft, topMiddle, topRight, rightMiddle, bottomRight, bottomMiddle, bottomLeft, leftMiddle, middle };
-  region screenRegion;
+  region nameRegion;
+
+  QString enumToString( region reg );
+
 
 };
 
