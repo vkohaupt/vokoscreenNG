@@ -249,6 +249,8 @@ void QvkMagnifier::slot_mytimer()
     // Grab top middle
     if ( regionTopMiddle.contains( screenCursorPos ) )
     {
+        int valueX = screenCursorPos.x() - distanceX;
+
         int valueY = screenCursorPos.y() - distanceY;
         if ( screenCursorPos.y() <= distanceY ) {
             valueY = 0;
@@ -256,7 +258,7 @@ void QvkMagnifier::slot_mytimer()
 
         WId id = 0;
         pixmap = screen->grabWindow( id,
-                                     screenCursorPos.x() - distanceX,
+                                     valueX,
                                      valueY,
                                      2*distanceX,
                                      2*distanceY);
