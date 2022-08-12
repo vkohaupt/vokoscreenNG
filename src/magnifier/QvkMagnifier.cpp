@@ -119,7 +119,7 @@ void QvkMagnifier::setMagnifier()
         // Move works with global mouse coordinates like screen->geometry().left() and globalCursorPos
         move( screen->geometry().left(), globalCursorPos.y() + 2*distanceY + distanceCopyMagnifier );
 
-        if ( debug == true ) { qDebug() << "Magnifier regionTopLeft"
+        if ( debug == true ) { qDebug() << "Magnifier regionTopLeft" << regionTopLeft
                                         << "globalCursorPos:" << globalCursorPos
                                         << "screenCursorPos:" << screenCursorPos << screenIndex; }
 
@@ -279,8 +279,9 @@ void QvkMagnifier::slot_mytimer()
         }
 
         int valueY = screenCursorPos.y() - distanceY;
-        if ( screenCursorPos.y() <= distanceY )
+        if ( screenCursorPos.y() <= distanceY ) {
             valueY = 0;
+        }
 
         WId id = 0;
         pixmap = screen->grabWindow( id,
@@ -308,8 +309,9 @@ void QvkMagnifier::slot_mytimer()
         }
 
         int valueY = screenCursorPos.y() - distanceY;
-        if ( screenCursorPos.y() <= distanceY )
+        if ( screenCursorPos.y() <= distanceY ) {
             valueY = 0;
+        }
 
         WId id = 0;
         pixmap = screen->grabWindow( id,
@@ -318,7 +320,7 @@ void QvkMagnifier::slot_mytimer()
                                      2*distanceX,
                                      2*distanceY);
 
-        if ( debug == true ) { qDebug() << "Grab regionRightMiddle:"
+        if ( debug == true ) { qDebug() << "Grab regionRightMiddle:" << regionRightMiddle
                                         << "globalCursorPos:" << globalCursorPos
                                         << "screenCursorPos:" << screenCursorPos << screenIndex; }
 
