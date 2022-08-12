@@ -108,7 +108,7 @@ void QvkMagnifier::setMagnifier()
     bool debug = true;
 
     // Magnifier top left
-    // Region beinhalte absolute Bildschirmwerte
+    // Region includes absolute screen values
     regionTopLeft = QRegion( 0,
                              0,
                              this->width()/2,
@@ -128,7 +128,7 @@ void QvkMagnifier::setMagnifier()
 
 
     // Magnifier top middle
-    // Region beinhalte absolute Bildschirmwerte
+    // Region includes absolute screen values
     regionTopMiddle = QRegion( this->width()/2,
                                0,
                                screen->size().width() - 2*this->width()/2,
@@ -148,7 +148,7 @@ void QvkMagnifier::setMagnifier()
 
 
     // Magnifier top right
-    // Region beinhalte absolute Bildschirmwerte
+    // Region includes absolute screen values
     regionTopRight = QRegion( screen->size().width() - this->width()/2,
                               0,
                               this->width()/2,
@@ -166,6 +166,26 @@ void QvkMagnifier::setMagnifier()
         return;
     }
 
+
+    // Magnifier right middle
+    // Region includes absolute screen values
+    regionRightMiddle = QRegion( screen->size().width() - this->width()/2,
+                              0,
+                              this->width()/2,
+                              //                        (    Top       )   (             Bottom                      )
+                              screen->size().height() - this->height()/2 - ( this->height() +  distanceCopyMagnifier ) );
+
+    if ( regionRightMiddle.contains( screenCursorPos ) )
+    {
+        // Move works with global mouse coordinates like screen->geometry().left() and globalCursorPos
+        move( screen->geometry().right() - this->width(), globalCursorPos.y() + 2*distanceY + distanceCopyMagnifier );
+
+        if ( debug == true ) { qDebug() << "Magnifier regionRightMiddle:" << regionRightMiddle
+                                        << "globalCursorPos:" << globalCursorPos
+                                        << "screenCursorPos:" << screenCursorPos << screenIndex; }
+
+        return;
+    }
 }
 
 
