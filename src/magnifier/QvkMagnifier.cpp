@@ -185,10 +185,10 @@ void QvkMagnifier::setMagnifier()
     // Magnifier right middle
     // Region includes absolute screen values
     regionRightMiddle = QRegion( screen->size().width() - this->width()/2,
-                                 0,
+                                 this->height()/2,
                                  this->width()/2,
                                  //                        (    Top       )   (             Bottom                      )
-                                 screen->size().height() - this->height()/2 - ( this->height() +  distanceCopyMagnifier ) );
+                                 screen->size().height() - this->height()/2 - ( this->height() + distanceY + distanceCopyMagnifier ) );
 
     if ( regionRightMiddle.contains( screenCursorPos ) )
     {
@@ -205,7 +205,7 @@ void QvkMagnifier::setMagnifier()
     // Magnifier bottom right
     // Region includes absolute screen values
     regionBottomRight = QRegion( screen->size().width() - this->width()/2,
-                                 screen->size().height() - this->height() - 2*distanceY - distanceCopyMagnifier,
+                                 screen->size().height() - this->height() - distanceY - distanceCopyMagnifier,
                                  this->width()/2,
                                  this->height() + 2*distanceY + distanceCopyMagnifier );
 
@@ -214,11 +214,17 @@ void QvkMagnifier::setMagnifier()
         nameRegion = region::bottomRight;
         valueRegion = regionBottomRight;
 
+        int valueY = globalCursorPos.y() - ( distanceY + distanceCopyMagnifier + height() );
+        if ( screenCursorPos.y() >= ( screen->size().height() - distanceY ) ) {
+            valueY = globalCursorPos.y() - ( screenCursorPos.y() + ( distanceY - screen->size().height() ) ) - ( distanceY + distanceCopyMagnifier + height() );
+        }
+
         // Move works with global mouse coordinates like screen->geometry().left() and globalCursorPos
-        move( screen->geometry().right() - this->width(), globalCursorPos.y() - distanceY - distanceCopyMagnifier - height() );
+        move( screen->geometry().right() - this->width(), valueY );
 
         return;
     }
+
 }
 
 
@@ -306,6 +312,13 @@ void QvkMagnifier::slot_mytimer()
                 break;
             }
         case bottomRight : {
+                valueX = screenCursorPos.x() - distanceX;
+                if ( screenCursorPos.x() >= screen->size().width() - distanceX ) {
+                    valueX = screen->size().width() - 2*distanceX;
+                }
+
+                valueY = screenCursorPos.y() - distanceY;
+
                 break;
             }
         case bottomMiddle : {
