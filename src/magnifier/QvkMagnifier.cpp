@@ -105,7 +105,6 @@ void QvkMagnifier::slot_magnifier600x200()
 
 void QvkMagnifier::setMagnifier()
 {
-    bool debug = false;
     nameRegion = region::none;
 
     // Magnifier top left
@@ -122,10 +121,6 @@ void QvkMagnifier::setMagnifier()
 
         // Move works with global mouse coordinates like screen->geometry().left() and globalCursorPos
         move( screen->geometry().left(), globalCursorPos.y() + 2*distanceY + distanceCopyMagnifier );
-
-        if ( debug == true ) { qDebug() << "Magnifier regionTopLeft" << regionTopLeft
-                                        << "globalCursorPos:" << globalCursorPos
-                                        << "screenCursorPos:" << screenCursorPos << screenIndex; }
 
         return;
     }
@@ -146,10 +141,6 @@ void QvkMagnifier::setMagnifier()
         // Move works with global mouse coordinates like screen->geometry().left() and globalCursorPos
         move( globalCursorPos.x() - width()/2, globalCursorPos.y() + 2*distanceY + distanceCopyMagnifier );
 
-        if ( debug == true ) { qDebug() << "Magnifier regionTopMiddle:" << regionTopMiddle
-                                        << "globalCursorPos:" << globalCursorPos
-                                        << "screenCursorPos:" << screenCursorPos << screenIndex; }
-
         return;
     }
 
@@ -168,10 +159,6 @@ void QvkMagnifier::setMagnifier()
 
         // Move works with global mouse coordinates like screen->geometry().left() and globalCursorPos
         move( screen->geometry().right() - this->width(), globalCursorPos.y() + 2*distanceY + distanceCopyMagnifier );
-
-        if ( debug == true ) { qDebug() << "Magnifier regionTopRight:" << regionTopRight
-                                        << "globalCursorPos:" << globalCursorPos
-                                        << "screenCursorPos:" << screenCursorPos << screenIndex; }
 
         return;
     }
@@ -192,10 +179,6 @@ void QvkMagnifier::setMagnifier()
 
         // Move works with global mouse coordinates like screen->geometry().left() and globalCursorPos
         move( screen->geometry().right() - this->width(), globalCursorPos.y() + 2*distanceY + distanceCopyMagnifier );
-
-        if ( debug == true ) { qDebug() << "Magnifier regionRightMiddle:" << regionRightMiddle
-                                        << "globalCursorPos:" << globalCursorPos
-                                        << "screenCursorPos:" << screenCursorPos << screenIndex; }
 
         return;
     }
@@ -228,6 +211,7 @@ void QvkMagnifier::slot_mytimer()
 
     setMagnifier();
 
+    // Begin grab
     int valueX = 0;
     int valueY = 0;
     switch ( nameRegion )
@@ -237,7 +221,6 @@ void QvkMagnifier::slot_mytimer()
             }
         case topLeft : {
                 valueX = screenCursorPos.x() - distanceX;
-
                 if ( screenCursorPos.x() - distanceX <= 0 ) {
                     valueX = 0;
                 }
