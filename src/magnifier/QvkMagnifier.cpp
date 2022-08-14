@@ -322,7 +322,7 @@ void QvkMagnifier::setMagnifier()
 
 void QvkMagnifier::slot_mytimer()
 {
-    bool debug = true;
+    bool debug = false;
 
     globalCursorPos = QCursor::pos();
     if( debug == true ) { qDebug() << "slot_mytimer globalCursorPos:" << globalCursorPos; }
