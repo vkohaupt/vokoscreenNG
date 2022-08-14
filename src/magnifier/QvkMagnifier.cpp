@@ -214,9 +214,9 @@ void QvkMagnifier::setMagnifier()
         nameRegion = region::bottomRight;
         valueRegion = regionBottomRight;
 
-        int valueY = globalCursorPos.y() - ( distanceY + distanceCopyMagnifier + height() );
+        int valueY = globalCursorPos.y() - ( distanceY + distanceCopyMagnifier + this->height() );
         if ( screenCursorPos.y() >= ( screen->size().height() - distanceY ) ) {
-            valueY = globalCursorPos.y() - ( screenCursorPos.y() + ( distanceY - screen->size().height() ) ) - ( distanceY + distanceCopyMagnifier + height() );
+            valueY = globalCursorPos.y() - ( screenCursorPos.y() + ( distanceY - screen->size().height() ) ) - ( distanceY + distanceCopyMagnifier + this->height() );
         }
 
         // Move works with global mouse coordinates like screen->geometry().left() and globalCursorPos
@@ -229,8 +229,8 @@ void QvkMagnifier::setMagnifier()
     // Magnifier bottom middle
     // Region includes absolute screen values
     regionBottomMiddle = QRegion( this->width()/2,
-                                  screen->size().height() - height()/2,
-                                  screen->size().width() - 2*width()/2,
+                                  screen->size().height() - this->height()/2,
+                                  screen->size().width() - 2*this->width()/2,
                                   this->height()/2 );
 
     if ( regionBottomMiddle.contains( screenCursorPos ) )
@@ -238,17 +238,40 @@ void QvkMagnifier::setMagnifier()
         nameRegion = region::bottomMiddle;
         valueRegion = regionBottomMiddle;
 
-        int valueY = globalCursorPos.y() - ( distanceY + distanceCopyMagnifier + height() );
+        int valueY = globalCursorPos.y() - ( distanceY + distanceCopyMagnifier + this->height() );
         if ( screenCursorPos.y() >= ( screen->size().height() - distanceY ) ) {
-            valueY = globalCursorPos.y() - ( screenCursorPos.y() + ( distanceY - screen->size().height() ) ) - ( distanceY + distanceCopyMagnifier + height() );
+            valueY = globalCursorPos.y() - ( screenCursorPos.y() + ( distanceY - screen->size().height() ) ) - ( distanceY + distanceCopyMagnifier + this->height() );
         }
 
         // Move works with global mouse coordinates like screen->geometry().left() and globalCursorPos
-        move( globalCursorPos.x() - width()/2, valueY );
+        move( globalCursorPos.x() - this->width()/2, valueY );
 
         return;
     }
 
+
+    // Magnifier bottom left
+    // Region includes absolute screen values
+    regionBottomLeft = QRegion( 0,
+                                screen->size().height() - this->height()/2,
+                                this->width()/2,
+                                this->height()/2 );
+
+    if ( regionBottomLeft.contains( screenCursorPos ) )
+    {
+        nameRegion = region::bottomLeft;
+        valueRegion = regionBottomLeft;
+
+        int valueY = globalCursorPos.y() - ( distanceY + distanceCopyMagnifier + this->height() );
+        if ( screenCursorPos.y() >= ( screen->size().height() - distanceY ) ) {
+            valueY = globalCursorPos.y() - ( screenCursorPos.y() + ( distanceY - screen->size().height() ) ) - ( distanceY + distanceCopyMagnifier + this->height() );
+        }
+
+        // Move works with global mouse coordinates like screen->geometry().left() and globalCursorPos
+        move( screen->geometry().left(), valueY );
+
+        return;
+    }
 }
 
 
@@ -359,6 +382,16 @@ void QvkMagnifier::slot_mytimer()
                 break;
             }
         case bottomLeft : {
+                valueX = screenCursorPos.x() - distanceX;
+                if ( screenCursorPos.x() - distanceX <= 0 ) {
+                    valueX = 0;
+                }
+
+                valueY = screenCursorPos.y() - distanceY;
+                if ( screenCursorPos.y() >= screen->size().height() - distanceY ) {
+                    valueY = screen->size().height() - 2*distanceY;
+                }
+
                 break;
             }
         case leftMiddle : {
