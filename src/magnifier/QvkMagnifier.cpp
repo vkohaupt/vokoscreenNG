@@ -229,9 +229,9 @@ void QvkMagnifier::setMagnifier()
     // Magnifier bottom middle
     // Region includes absolute screen values
     regionBottomMiddle = QRegion( this->width()/2,
-                                  screen->size().height() - this->height()/2,
+                                  screen->size().height() - this->height() - distanceY - distanceCopyMagnifier,
                                   screen->size().width() - 2*this->width()/2,
-                                  this->height()/2 );
+                                  this->height() + 2*distanceY + distanceCopyMagnifier );
 
     if ( regionBottomMiddle.contains( screenCursorPos ) )
     {
