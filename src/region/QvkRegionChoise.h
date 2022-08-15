@@ -145,8 +145,6 @@ private:
   enum vk_platform { x11, wayland, windows };
   vk_platform platform;
 
-//  bool recordemode = false;
-
   Qt::GlobalColor getFrameColor();
   Qt::GlobalColor frameColor;
 
