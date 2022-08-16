@@ -524,11 +524,11 @@
     </message>
     <message>
         <source>Snapshot</source>
-        <translation type="unfinished"/>
+        <translation>Snapshot</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation type="unfinished"/>
+        <translation>Bilderpfad</translation>
     </message>
 </context>
 <context>
