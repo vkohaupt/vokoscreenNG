@@ -324,7 +324,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>6</number>
       </property>
       <property name="iconSize">
        <size>
@@ -929,8 +929,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>573</width>
-                      <height>241</height>
+                      <width>21</width>
+                      <height>16</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -2160,8 +2160,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>388</width>
-                   <height>364</height>
+                   <width>20</width>
+                   <height>98</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -6614,33 +6614,6 @@ p, li { white-space: pre-wrap; }
           </widget>
          </widget>
         </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_36">
-          <item>
-           <widget class="QPushButton" name="pushButtonSendReport">
-            <property name="font">
-             <font>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Send Report</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QToolButton" name="help_log_sendreport">
-            <property name="toolTip">
-             <string>Help</string>
-            </property>
-            <property name="text">
-             <string notr="true">Help</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
        </layout>
       </widget>
      </widget>
@@ -6680,8 +6653,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>tabWidgetCamera</tabstop>
   <tabstop>tabWidgetLog</tabstop>
   <tabstop>textBrowserLog</tabstop>
-  <tabstop>pushButtonSendReport</tabstop>
-  <tabstop>help_log_sendreport</tabstop>
  </tabstops>
  <resources>
   <include location="screencast.qrc"/>

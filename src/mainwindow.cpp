@@ -188,11 +188,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkLogController *vklogController = new QvkLogController();
     connect( vklogController, SIGNAL( signal_newLogText( QString ) ), this, SLOT( slot_textToGuiLog( QString ) ) );
 
-#ifdef Q_OS_LINUX
-    ui->pushButtonSendReport->setHidden( true );
-    ui->help_log_sendreport->setHidden( true );
-#endif
-
     setWindowTitle( global::name + " " + global::version );
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     setWindowIcon( icon );
@@ -557,7 +552,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // *****************Begin Log *********************************
     vk_setCornerWidget( ui->tabWidgetLog );
-    connect( ui->pushButtonSendReport, SIGNAL( clicked( bool ) ), this, SLOT( slot_sendReport() ) );
     // *****************End Log ***********************************
 
 #ifdef Q_OS_WIN
@@ -809,57 +803,6 @@ void QvkMainWindow::slot_videoCodecChanged( QString codec )
     {
         ui->frameVideoCodecVp8->setVisible( true );
     }
-}
-
-
-void QvkMainWindow::slot_sendReport()
-{
-#ifdef Q_OS_WIN
-    QString eol = "\r\n";
-#endif
-#ifdef Q_OS_LINUX
-    QString eol = "\n";
-#endif
-    QStringList stringList;
-    stringList << "mailto:";
-    stringList << "vkohaupt@volkoh.de";
-    stringList << "?";
-    stringList << "subject=";
-    stringList << QString( global::name + QString( " " ) +  global::version );
-    stringList << "&";
-    stringList << "body=";
-    stringList << "Your comment";
-    stringList << eol;
-    stringList << eol;
-    stringList << eol;
-    stringList << "Report:";
-    stringList << eol;
-    stringList << ui->textBrowserLog->toPlainText();
-    stringList << eol;
-    stringList << "--------------------------------";
-    stringList << eol;
-    stringList << "Settings:";
-    stringList << eol;
-    stringList << vkSettings.getFileName();
-    stringList << eol;
-
-    // read conf
-    QFile file( vkSettings.getFileName() );
-    if( !file.open( QIODevice::ReadOnly) )
-    {
-        QMessageBox::information( Q_NULLPTR, "error", file.errorString() );
-    }
-    QTextStream in( &file );
-    while( !in.atEnd() )
-    {
-        QString line = in.readLine() + eol;
-        stringList << line;
-    }
-    file.close();
-
-    QString string = stringList.join( "" );
-    bool b = QDesktopServices::openUrl( QUrl( string, QUrl::TolerantMode ) );
-    Q_UNUSED(b);
 }
 
 

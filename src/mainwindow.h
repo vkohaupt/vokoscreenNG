@@ -185,8 +185,6 @@ private slots:
     void slot_IfStartAudioCodecWidgetsSetEnabled();
     void slot_IfStopAudioCodecWidgetsSetDisabled();
 
-    void slot_sendReport();
-
     void slot_setMaxFPS( int );
 
     void slot_gst_formatVideoAudoicodec_available();
