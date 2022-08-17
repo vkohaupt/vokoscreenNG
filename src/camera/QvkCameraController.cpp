@@ -309,7 +309,9 @@ void QvkCameraController::slot_setNewImage( QImage image )
             painter.drawImage( 0, 0, image );
             painter.end();
             image = pixmap.toImage();
-        } else {
+        } else {   
+#ifdef Q_OS_LINUX
+            // Under linux absolute perfect. Under Windows outer black line.
             qreal w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
             qreal h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value();
             QPixmap pixmap( h, h );
@@ -326,6 +328,31 @@ void QvkCameraController::slot_setNewImage( QImage image )
             painter.end();
             image = pixmap.toImage();
             cameraWindow->setFixedSize( h, h );
+#endif
+            // Under Windows a bit better as the other code
+#ifdef Q_OS_WIN
+            qreal w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
+            qreal h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value();
+            QPixmap pixmap( h, h );
+            pixmap.fill( Qt::transparent );
+            QPainter painter;
+            painter.begin( &pixmap );
+            painter.setRenderHint( QPainter::Antialiasing, true );
+            painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
+
+            QRegion region( QRect( 0, 0, h, h ), QRegion::Ellipse );
+            painter.setClipRegion( region );
+            painter.drawImage( QPointF( 0.0, 0.0 ), image );
+
+            QRectF target( 0.0, 0.0, h, h );
+            QRectF source( (w-h)/2, 0.0, image.height(), image.height() );
+            painter.drawImage( target, image, source );
+            painter.end();
+
+            image = pixmap.toImage();
+
+            cameraWindow->setFixedSize( h, h );
+#endif
         }
     }
     // Circle end

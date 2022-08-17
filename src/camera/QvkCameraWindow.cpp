@@ -154,13 +154,15 @@ void QvkCameraWindow::paintEvent( QPaintEvent *event )
 
     QPainter painterPixmap;
     painterPixmap.begin( &pixmap );
-    painterPixmap.setRenderHints( QPainter::Antialiasing, true );
+    painterPixmap.setRenderHint( QPainter::Antialiasing, true );
+    painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painterPixmap.drawImage( ( width() - image.width() ) / 2 , 0, image );
     painterPixmap.end();
 
     QPainter painter;
     painter.begin( this);
-    painter.setRenderHints( QPainter::Antialiasing, true );
+    painter.setRenderHint( QPainter::Antialiasing, true );
+    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painter.drawPixmap( QPoint( 0, 0 ), pixmap );
     painter.end();
 
