@@ -319,14 +319,19 @@ void QvkCameraController::slot_setNewImage( QImage image )
             QPainter painter;
             painter.begin( &pixmap );
             painter.setRenderHints( QPainter::Antialiasing, true );
+            painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
+
             QPainterPath path;
             path.addEllipse( 0, 0, h, h );
             painter.setClipPath( path );
+
             QRectF target( 0.0, 0.0, h, h );
             QRectF source( (w-h)/2, 0.0, image.height(),image.height() );
             painter.drawImage( target, image, source );
             painter.end();
+
             image = pixmap.toImage();
+
             cameraWindow->setFixedSize( h, h );
 #endif
             // Under Windows a bit better as the other code
