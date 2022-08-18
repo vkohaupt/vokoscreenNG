@@ -1534,6 +1534,20 @@ void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
     
     if ( ui->comboBoxVideoCodec->count() == 0 )
     {
+        QMessageBox messageBox;
+        messageBox.setIcon( QMessageBox::Information );
+        messageBox.setText( "<b>No videocodec found</b>" );
+
+        QString string;
+        string += "<center>Please install package</center><br>";
+        string += "gstreamer-plugins-base<br>";
+        string += "gstreamer-plugins-good<br>";
+        string += "gstreamer-plugins-bad<br>";
+        string += "gstreamer-plugins-ugly<br>";
+        string += "gstreamer-plugins-libav<br>";
+        messageBox.setInformativeText( string );
+        messageBox.exec();
+
         ui->pushButtonStart->setEnabled( false );
     }
     else
