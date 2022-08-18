@@ -37,7 +37,6 @@ public:
     QvkCameraWatcher();
     QvkCameraWatcher( Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkCameraWatcher();
-    QTimer *timer;
 
 
 public slots:
@@ -45,7 +44,7 @@ public slots:
 
 private:
     Ui_formMainWindow *ui;
-//    QTimer *timer;
+    QTimer *timer;
     int counter;
 
 
