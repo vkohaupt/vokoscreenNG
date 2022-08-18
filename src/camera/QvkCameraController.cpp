@@ -320,7 +320,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
             qreal quotient = width / height;
             qreal w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
             qreal h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
-            QPixmap pixmap( h, h );
+            QPixmap pixmap( w, h );
             pixmap.fill( Qt::transparent );
             QPainter painter;
             painter.begin( &pixmap );
@@ -328,17 +328,17 @@ void QvkCameraController::slot_setNewImage( QImage image )
             painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
 
             QPainterPath path;
-            path.addEllipse( 0, 0, h, h );
+            path.addEllipse( (w-h)/2, 0, h, h );
             painter.setClipPath( path );
 
-            QRectF target( 0.0, 0.0, h, h );
-            QRectF source( (w-h)/2, 0.0, image.height(),image.height() );
+            QRectF target( (w-h)/2, 0.0, h, h );
+            QRectF source( (w-h)/2, 0.0, image.height(), image.height() );
             painter.drawImage( target, image, source );
             painter.end();
 
             image = pixmap.toImage();
 
-            cameraWindow->setFixedSize( h, h );
+            cameraWindow->setFixedSize( w, h );
 #endif
             // Under Windows a bit better as the other code
 #ifdef Q_OS_WIN
