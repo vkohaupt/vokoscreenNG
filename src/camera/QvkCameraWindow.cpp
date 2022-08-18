@@ -156,8 +156,11 @@ void QvkCameraWindow::paintEvent( QPaintEvent *event )
     painterPixmap.begin( &pixmap );
     painterPixmap.setRenderHint( QPainter::Antialiasing, true );
     painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
-//    painterPixmap.drawImage( ( width() - image.width() ) / 2 , 0, image );
-    painterPixmap.drawImage( 0, 0, image );
+    if ( isFullScreen() == true ) {
+        painterPixmap.drawImage( ( width() - image.width() ) / 2 , 0, image );
+    } else {
+        painterPixmap.drawImage( 0, 0, image );
+    }
     painterPixmap.end();
 
     QPainter painter;
