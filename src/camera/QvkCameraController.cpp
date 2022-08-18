@@ -270,8 +270,11 @@ void QvkCameraController::slot_setNewImage( QImage image )
     if ( ui_formMainWindow->toolButton_camera_view_ellipse->isChecked() == true )
     {
         if ( cameraWindow->isFullScreen() == false ) {
+            qreal width = image.width();
+            qreal height = image.height();
+            qreal quotient = width / height;
             int w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
-            int h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value();
+            int h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
             image = image.scaled( w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation );
         }
         QPixmap pixmap( image.width(), image.height() );
@@ -312,8 +315,11 @@ void QvkCameraController::slot_setNewImage( QImage image )
         } else {   
 #ifdef Q_OS_LINUX
             // Under linux absolute perfect. Under Windows outer black line.
+            qreal width = image.width();
+            qreal height = image.height();
+            qreal quotient = width / height;
             qreal w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
-            qreal h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value();
+            qreal h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
             QPixmap pixmap( h, h );
             pixmap.fill( Qt::transparent );
             QPainter painter;
@@ -336,8 +342,11 @@ void QvkCameraController::slot_setNewImage( QImage image )
 #endif
             // Under Windows a bit better as the other code
 #ifdef Q_OS_WIN
+            qreal width = image.width();
+            qreal height = image.height();
+            qreal quotient = width / height;
             qreal w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
-            qreal h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value();
+            qreal h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
             QPixmap pixmap( h, h );
             pixmap.fill( Qt::transparent );
             QPainter painter;
