@@ -20,52 +20,50 @@
  * --End_License--
  */
 
-#ifndef QVKHALOWINDOW_H
-#define QVKHALOWINDOW_H
+#ifndef QVKHALOPREVIEWWIDGET_H
+#define QVKHALOPREVIEWWIDGET_H
 
 #include <QWidget>
-#include <QScreen>
+#include <QPainter>
+#include <QDebug>
 
-class QvkHaloWindow: public QWidget
-
+class QvkHaloPreviewWidget: public QWidget
 {
     Q_OBJECT
-public:
-    QvkHaloWindow( QWidget *parent );
-    virtual ~QvkHaloWindow();
+public:    
+    virtual ~QvkHaloPreviewWidget();
+    QvkHaloPreviewWidget();
 
-    qreal holeRadius;
-    qreal diameter;
-
-
-public:
-    void setDiameter( int value );
-    void setHoleRadius( int value );
-    void setOpacity( qreal value );
     void setColor( QColor value );
+    void setDiameter( int value );
+    void setOpacity( qreal value );
+    void setHole( int value );
+    QColor getColor();
 
 
 public slots:
 
 
 private:
-    qreal opacity;
     QColor color;
+    int diameter;
+    qreal opacity;
+    int holeRadius;
 
-    QPoint globalCursorPos;
-    QScreen *screen;
-    QPoint screenCursorPos;
-    QList<QScreen *> screenList;
-    int screenIndex;
+    int getDiameter();
+    qreal getOpacity();
 
 
 private slots:
 
 
 protected:
-    void paintEvent(QPaintEvent *event);
+    void paintEvent( QPaintEvent *event );
+
+
+signals:
 
 
 };
 
-#endif // QVKHALOWINDOW_H
+#endif // QvkCircleWidget_H

@@ -62,10 +62,12 @@ private:
     int holeDefault = 5;
     QTimer *timer;
 
+    void createHaloWindow();
     void createHaloPreviewWidget();
     void createSpezialSlider();
     void createColorButtons();
     void createSpezialCheckBox();
+
     void setToolButtonDefaultValues();
 
 

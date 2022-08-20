@@ -24,7 +24,7 @@
 #include "QvkPushButton.h"
 #include "global.h"
 
-QvkHalo::QvkHalo() : vkHaloWindow (new QvkHaloWindow(this))
+QvkHalo::QvkHalo()
 {
 }
 
@@ -39,6 +39,7 @@ void QvkHalo::init( Ui_formMainWindow *ui_formMainWindow )
     ui = ui_formMainWindow;
 
     createHaloPreviewWidget();
+    createHaloWindow();
     createSpezialSlider();
     createColorButtons();
     createSpezialCheckBox();
@@ -47,8 +48,10 @@ void QvkHalo::init( Ui_formMainWindow *ui_formMainWindow )
 
     timer = new QTimer( this );
     timer->setTimerType( Qt::PreciseTimer );
-    timer->setInterval( 40 );
+    timer->setInterval( 10 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_mytimer() ) );
+
+    show();
 }
 
 
@@ -58,6 +61,13 @@ void QvkHalo::createHaloPreviewWidget()
     ui->horizontalLayout_61->insertWidget( 0, vkHaloPreviewWidget );
     vkHaloPreviewWidget->setObjectName( "widgetHaloPreview" );
     vkHaloPreviewWidget->show();
+}
+
+
+void QvkHalo::createHaloWindow()
+{
+    vkHaloWindow = new QvkHaloWindow( this );
+    vkHaloWindow->setWindowFlags( Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar
 }
 
 
@@ -107,6 +117,7 @@ void QvkHalo::slot_valueChanged_SpezialSlider_Diameter( int value )
     vkHaloWindow->setDiameter( value );
 
     vkSpezialSliderHole->setMaximum( vkSpezialSliderDiameter->value()/2  );
+
 }
 
 
@@ -182,7 +193,7 @@ void QvkHalo::slot_mytimer()
         vkHaloWindow->raise();
     }
 
-    vkHaloWindow->repaint();
+    vkHaloWindow->move( QCursor::pos().x() - vkHaloWindow->diameter/2, QCursor::pos().y() - vkHaloWindow->diameter/2 );
 }
 
 

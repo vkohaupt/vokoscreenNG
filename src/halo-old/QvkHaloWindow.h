@@ -24,7 +24,6 @@
 #define QVKHALOWINDOW_H
 
 #include <QWidget>
-#include <QScreen>
 
 class QvkHaloWindow: public QWidget
 
@@ -51,12 +50,6 @@ public slots:
 private:
     qreal opacity;
     QColor color;
-
-    QPoint globalCursorPos;
-    QScreen *screen;
-    QPoint screenCursorPos;
-    QList<QScreen *> screenList;
-    int screenIndex;
 
 
 private slots:
