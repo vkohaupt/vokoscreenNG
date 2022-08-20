@@ -24,6 +24,7 @@
 #define QVKHALO_H
 
 #include <QWidget>
+#include <QTimer>
 
 #include "QvkSpezialSlider.h"
 #include "QvkHaloPreviewWidget.h"
@@ -59,7 +60,7 @@ private:
     int diameterDefault = 70;
     int opacityDefault = 60;
     int holeDefault = 5;
-    int timerID;
+    QTimer *timer;
 
     void createHaloWindow();
     void createHaloPreviewWidget();
@@ -70,16 +71,15 @@ private:
     void setToolButtonDefaultValues();
 
 
-
 private slots:
     void slot_valueChanged_SpezialSlider_Diameter( int value );
     void slot_valueChanged_SpezialSlider_Opacity( int value );
     void slot_valueChanged_SpezialSlider_Hole( int value );
     void slot_haloOnOff( bool value );
+    void slot_mytimer();
 
 
 protected:
-    void timerEvent(QTimerEvent *event) override;
 
 
 };

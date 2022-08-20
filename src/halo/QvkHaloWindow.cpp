@@ -32,7 +32,8 @@
 
 QvkHaloWindow::QvkHaloWindow( QWidget *parent )
 {
-    setParent( parent );
+    Q_UNUSED(parent)
+
     setCursor( Qt::BlankCursor );
 
 #ifdef Q_OS_LINUX

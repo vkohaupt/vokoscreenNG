@@ -45,6 +45,13 @@ void QvkHalo::init( Ui_formMainWindow *ui_formMainWindow )
     createSpezialCheckBox();
 
     setToolButtonDefaultValues();
+
+    timer = new QTimer( this );
+    timer->setTimerType( Qt::PreciseTimer );
+    timer->setInterval( 10 );
+    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_mytimer() ) );
+
+    show();
 }
 
 
@@ -60,7 +67,7 @@ void QvkHalo::createHaloPreviewWidget()
 void QvkHalo::createHaloWindow()
 {
     vkHaloWindow = new QvkHaloWindow( this );
-    vkHaloWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar
+    vkHaloWindow->setWindowFlags( Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar
 }
 
 
@@ -167,25 +174,20 @@ void QvkHalo::slot_haloOnOff( bool value )
 {
     if ( value == true )
     {
-        timerID = startTimer( 10, Qt::PreciseTimer );
+        timer->start();
         vkHaloWindow->show();
     }
 
     if ( value == false )
     {
-        killTimer( timerID );
+        timer->stop();
         vkHaloWindow->hide();
     }
 }
 
 
-/*
- * Move the halo window and brings the window on the top
- */
-void QvkHalo::timerEvent( QTimerEvent *event )
+void QvkHalo::slot_mytimer()
 {
-    Q_UNUSED(event);
-
     if ( global::showclickCounter == 0 )
     {
         vkHaloWindow->raise();
