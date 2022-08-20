@@ -55,8 +55,6 @@ private:
     QPoint globalCursorPos;
     QScreen *screen;
     QPoint screenCursorPos;
-    QList<QScreen *> screenList;
-    int screenIndex;
 
 
 private slots:
