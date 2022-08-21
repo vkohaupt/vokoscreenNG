@@ -630,13 +630,11 @@ bool QvkMainWindow::is_videoFolderExists_and_haveWritePermission()
         QTextStream stream( &file );
         stream << "Test Test Test Test Test Test" << Qt::endl;
         file.close();
-        qDebug().noquote();
         qDebug().noquote() << global::nameOutput << "Permission: Can write in" << fileInfo.absolutePath();
         qDebug().noquote();
         file.remove();
         value = true;
     } else {
-        qDebug().noquote();
         qDebug().noquote() << "Permission: ERROR can not write in" << fileInfo.absolutePath();
         qDebug().noquote();
         QMessageBox *messageBox = new QMessageBox();

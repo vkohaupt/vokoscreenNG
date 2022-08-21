@@ -26,6 +26,7 @@
 #include <QDebug>
 #include <QBitmap>
 #include <QGuiApplication>
+#include <QPaintEvent>
 
 #ifdef Q_OS_LINUX
 #include <QX11Info>
@@ -50,6 +51,22 @@ QvkHaloWindow::QvkHaloWindow( QWidget *parent )
 #ifdef Q_OS_WIN
     setAttribute( Qt::WA_TranslucentBackground, true );
 #endif
+
+    bool debug = false;
+
+    globalCursorPos = QCursor::pos();
+    if( debug == true ) { qDebug() << "QvkHaloWindow::paintEvent globalCursorPos:" << globalCursorPos; }
+
+    screen = QGuiApplication::screenAt( globalCursorPos );
+    if ( screen ) {
+        if( debug == true ) { qDebug() << "QvkHaloWindow::paintEvent screen:" << screen; }
+    } else {
+        // screenAt found no screen. Without a return the Application is crashed
+        return;
+    }
+
+    screenCursorPos = globalCursorPos - screen->geometry().topLeft(); // screenCursorPos beginnt bei 0 auf dem jeweiliegen Bildschirm
+    if( debug == true ) { qDebug() << "QvkHaloWindow::paintEvent screenCursorPos:" << screenCursorPos; }
 }
 
 
@@ -78,8 +95,7 @@ void QvkHaloWindow::paintEvent( QPaintEvent *event )
     screenCursorPos = globalCursorPos - screen->geometry().topLeft(); // screenCursorPos beginnt bei 0 auf dem jeweiliegen Bildschirm
     if( debug == true ) { qDebug() << "QvkHaloWindow::paintEvent screenCursorPos:" << screenCursorPos; }
 
-    resize( screen->size().width(), screen->size().height() );
-    move( globalCursorPos.x() - screenCursorPos.x(), globalCursorPos.y() - screenCursorPos.y() );
+    if( debug == true ) { qDebug() << "----------"; }
 
 #ifdef Q_OS_LINUX
     if ( QX11Info::isCompositingManagerRunning() == true )

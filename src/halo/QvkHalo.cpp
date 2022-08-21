@@ -24,7 +24,7 @@
 #include "QvkPushButton.h"
 #include "global.h"
 
-QvkHalo::QvkHalo() : vkHaloWindow (new QvkHaloWindow(this))
+QvkHalo::QvkHalo()
 {
 }
 
@@ -39,6 +39,7 @@ void QvkHalo::init( Ui_formMainWindow *ui_formMainWindow )
     ui = ui_formMainWindow;
 
     createHaloPreviewWidget();
+    vkHaloWindow = new QvkHaloWindow( this );
     createSpezialSlider();
     createColorButtons();
     createSpezialCheckBox();
@@ -181,6 +182,16 @@ void QvkHalo::slot_mytimer()
     {
         vkHaloWindow->raise();
     }
+
+    bool debug = false;
+
+    vkHaloWindow->resize( vkHaloWindow->screen->size().width(),
+                          vkHaloWindow->screen->size().height() );
+    if( debug == true ) { qDebug() << "QvkHalo::slot_mytimer resize:"
+                                   <<  vkHaloWindow->screen->size(); }
+
+    vkHaloWindow->move( vkHaloWindow->screen->geometry().x(),
+                        vkHaloWindow->screen->geometry().y() );
 
     vkHaloWindow->repaint();
 }

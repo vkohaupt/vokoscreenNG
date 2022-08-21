@@ -44,6 +44,10 @@ public:
     void setOpacity( qreal value );
     void setColor( QColor value );
 
+    QPoint globalCursorPos;
+    QScreen *screen;
+    QPoint screenCursorPos;
+
 
 public slots:
 
@@ -51,10 +55,6 @@ public slots:
 private:
     qreal opacity;
     QColor color;
-
-    QPoint globalCursorPos;
-    QScreen *screen;
-    QPoint screenCursorPos;
 
 
 private slots:
