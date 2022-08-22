@@ -183,17 +183,18 @@ void QvkHalo::slot_mytimer()
         vkHaloWindow->raise();
     }
 
-    bool debug = false;
+    if ( QCursor::pos() != oldPos )
+    {
+        vkHaloWindow->repaint();
 
-    vkHaloWindow->resize( vkHaloWindow->screen->size().width(),
-                          vkHaloWindow->screen->size().height() );
-    if( debug == true ) { qDebug() << "QvkHalo::slot_mytimer resize:"
-                                   <<  vkHaloWindow->screen->size(); }
+        vkHaloWindow->resize( vkHaloWindow->screen->size().width(),
+                              vkHaloWindow->screen->size().height() );
 
-    vkHaloWindow->move( vkHaloWindow->screen->geometry().x(),
-                        vkHaloWindow->screen->geometry().y() );
+        vkHaloWindow->move( vkHaloWindow->screen->geometry().x(),
+                            vkHaloWindow->screen->geometry().y() );
 
-    vkHaloWindow->repaint();
+        oldPos = QCursor::pos();
+    }
 }
 
 

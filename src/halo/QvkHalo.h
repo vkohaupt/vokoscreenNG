@@ -61,6 +61,7 @@ private:
     int opacityDefault = 60;
     int holeDefault = 5;
     QTimer *timer;
+    QPoint oldPos = QPoint( -1, -1 );
 
     void createHaloPreviewWidget();
     void createSpezialSlider();
