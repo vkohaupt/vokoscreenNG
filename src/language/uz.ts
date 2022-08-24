@@ -524,11 +524,11 @@
     </message>
     <message>
         <source>Snapshot</source>
-        <translation type="unfinished"/>
+        <translation>Suratga olish</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation type="unfinished"/>
+        <translation>Suratga yo‘l</translation>
     </message>
 </context>
 <context>

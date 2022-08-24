@@ -409,10 +409,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation type="unfinished"></translation>
     </message>
