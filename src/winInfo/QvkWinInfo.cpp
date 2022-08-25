@@ -26,7 +26,6 @@
 #include <QDebug>
 
 #ifdef Q_OS_LINUX
-#include <QX11Info>
 #include <X11/Xutil.h>
 #endif
 
@@ -109,7 +108,7 @@ static listWinId getWindow( Atom prop )
     ulong after;
 
     Display *display = XOpenDisplay( NULL );
-    Window window = QX11Info::appRootWindow();
+    Window window = XDefaultRootWindow( display) ;
     if ( XGetWindowProperty( display, window, prop, 0, 1024 * sizeof(Window) / 4, False, AnyPropertyType,
                              &type, &format, &count, &after, &data ) == Success )
     {
