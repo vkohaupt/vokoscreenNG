@@ -24,8 +24,6 @@
 
 #include <QBitmap>
 #include <QDebug>
-#include <QScreen>
-#include <QGuiApplication>
 
 #ifdef Q_OS_LINUX
 #include <QX11Info>

@@ -41,7 +41,7 @@ public:
     virtual ~QvkWinInfo();
     WId getWinID();
     static WId activeWindow();
-    QRectF windowGeometryWithoutFrame( WId child);
+    QRectF windowGeometryWithoutFrame( WId child );
     QvkGlobalMouse *vkGlobalMouse;
 
 
