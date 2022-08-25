@@ -138,7 +138,7 @@ WId QvkWinInfo::activeWindow()
 }
 
 
-QRectF QvkWinInfo::windowGeometryWithoutFrame( WId child)
+QRectF QvkWinInfo::windowGeometryWithoutFrame( WId child )
 {
     int x, y;
     Window root;
@@ -161,7 +161,8 @@ QRectF QvkWinInfo::windowGeometryWithoutFrame( WId child)
         int newx, newy;
         Window dummy;
 
-        if( XTranslateCoordinates( display, parent, QX11Info::appRootWindow(), x, y, &newx, &newy, &dummy ))
+        Window window = QX11Info::appRootWindow();
+        if( XTranslateCoordinates( display, parent, window, x, y, &newx, &newy, &dummy ))
         {
             x = newx;
             y = newy;
