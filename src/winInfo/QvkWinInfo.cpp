@@ -24,6 +24,8 @@
 
 #include <QBitmap>
 #include <QDebug>
+#include <QScreen>
+#include <QGuiApplication>
 
 #ifdef Q_OS_LINUX
 #include <QX11Info>
@@ -106,7 +108,8 @@ static WindowList getWindow( Atom prop )
     int format = 0;
     uchar* data = Q_NULLPTR;
     ulong count, after;
-    Display* display = QX11Info::display();
+
+    Display *display = XOpenDisplay( NULL );
     Window window = QX11Info::appRootWindow();
     if ( XGetWindowProperty( display, window, prop, 0, 1024 * sizeof(Window) / 4, False, AnyPropertyType,
                              &type, &format, &count, &after, &data ) == Success )
@@ -117,6 +120,9 @@ static WindowList getWindow( Atom prop )
         if (data)
             XFree( data );
     }
+
+    XCloseDisplay( display );
+
     return res;
 }
 
@@ -124,8 +130,11 @@ static WindowList getWindow( Atom prop )
 WId QvkWinInfo::activeWindow()
 {
     static Atom net_active = 0;
-    if ( !net_active )
-        net_active = XInternAtom( QX11Info::display(), "_NET_ACTIVE_WINDOW", True );
+    if ( !net_active ) {
+        Display *display = XOpenDisplay( NULL );
+        net_active = XInternAtom( display, "_NET_ACTIVE_WINDOW", True );
+        XCloseDisplay( display );
+    }
 
     return getWindow( net_active ).value(0);
 }
@@ -137,13 +146,14 @@ QRectF QvkWinInfo::windowGeometryWithoutFrame( WId child)
     Window root;
     uint w, h, border, depth;
 
-    XGetGeometry( QX11Info::display(), child, &root, &x, &y, &w, &h, &border, &depth );
+    Display *display = XOpenDisplay( NULL );
+    XGetGeometry( display, child, &root, &x, &y, &w, &h, &border, &depth );
 
     Window parent;
     Window* children;
     unsigned int nchildren;
 
-    if( XQueryTree( QX11Info::display(), child, &root, &parent, &children, &nchildren ) != 0 )
+    if( XQueryTree( display, child, &root, &parent, &children, &nchildren ) != 0 )
     {
         if( children != nullptr )
         {
@@ -153,12 +163,14 @@ QRectF QvkWinInfo::windowGeometryWithoutFrame( WId child)
         int newx, newy;
         Window dummy;
 
-        if( XTranslateCoordinates( QX11Info::display(), parent, QX11Info::appRootWindow(), x, y, &newx, &newy, &dummy ))
+        if( XTranslateCoordinates( display, parent, QX11Info::appRootWindow(), x, y, &newx, &newy, &dummy ))
         {
             x = newx;
             y = newy;
         }
     }
+
+    XCloseDisplay( display );
 
     QRectF rect( x, y, w, h );
 
