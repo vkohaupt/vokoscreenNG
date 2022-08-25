@@ -99,13 +99,14 @@ void QvkWinInfo::slot_mousePosition()
 
 
 #ifdef Q_OS_LINUX
-static WindowList getWindow( Atom prop )
+static listWinId getWindow( Atom prop )
 {
-    WindowList res;
+    listWinId listWId;
     Atom type = 0;
     int format = 0;
     uchar* data = Q_NULLPTR;
-    ulong count, after;
+    ulong count;
+    ulong after;
 
     Display *display = XOpenDisplay( NULL );
     Window window = QX11Info::appRootWindow();
@@ -114,14 +115,14 @@ static WindowList getWindow( Atom prop )
     {
         Window* list = reinterpret_cast<Window*>( data ) ;
         for ( uint i = 0; i < count; ++i )
-            res += list[i];
-        if (data)
+            listWId += list[i];
+        if ( data )
             XFree( data );
     }
 
     XCloseDisplay( display );
 
-    return res;
+    return listWId;
 }
 
 

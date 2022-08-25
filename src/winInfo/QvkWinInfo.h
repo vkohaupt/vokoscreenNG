@@ -28,7 +28,7 @@
 #include <QWidget>
 
 #ifdef Q_OS_LINUX
-typedef QList<WId> WindowList;
+typedef QList<WId> listWinId;
 #endif
 
 #include "QvkGlobalMouse.h"
