@@ -456,33 +456,21 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkShowClick->init( ui );
     vk_setCornerWidget( ui->tabWidgetShowClick );
 
-    // ***************** Halo ---------------------------------------
+    // ***************** Halo **********************************
     vkHalo = new QvkHalo();
     vkHalo->init( ui );
 
-    // ***************** snapshot ***********************************
+    // ***************** snapshot ******************************
     QvkSnapshot *vkSnapshot = new QvkSnapshot( this, ui );
     vkSnapshot->init();
     vk_setCornerWidget( ui->tabWidgetSnapshot );
 
-    /* Wayland
-     * If start with "./name -platform wayland" comes a Memory access error
-     * On Wayland we have to time no access to GlobalShortcuts
-     * We must disable this function for Wayland but not for X11 and Windows
-     */
-#ifdef Q_OS_LINUX
-    if ( QX11Info::isPlatformX11() == true )
-    {
-        vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
-        Q_UNUSED(vkGlobalShortcut);
-    }
-#endif
-#ifdef Q_OS_WIN
+    // ***************** shortcut ******************************
     vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
     Q_UNUSED(vkGlobalShortcut);
-#endif
     vk_setCornerWidget( ui->tabWidgetShortcut );
 
+    // *************** systrayAlternative **********************
     vkSystrayAlternative = new QvkSystrayAlternative( this, ui, sliderShowInSystrayAlternative );
     vkSystray = new QvkSystray( ui );
     if ( QSystemTrayIcon::isSystemTrayAvailable() == true )
