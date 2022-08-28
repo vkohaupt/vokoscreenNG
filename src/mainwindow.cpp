@@ -484,9 +484,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vk_setCornerWidget( ui->tabWidgetShortcut );
 
     vkSystrayAlternative = new QvkSystrayAlternative( this, ui, sliderShowInSystrayAlternative );
+    vkSystray = new QvkSystray( ui );
     if ( QSystemTrayIcon::isSystemTrayAvailable() == true )
     {
-        vkSystray = new QvkSystray(ui);
         vkSystray->init();
         connect( vkSystray,                 SIGNAL( signal_SystemtrayIsClose() ),                 this,      SLOT( close() ) );
         connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ),                            vkSystray, SLOT( setVisible( bool ) ) );
