@@ -142,9 +142,6 @@ private:
 
   void vk_setGeometry( int x, int y, int with, int height );
 
-  enum vk_platform { x11, wayland, windows };
-  vk_platform platform;
-
   Qt::GlobalColor getFrameColor();
   Qt::GlobalColor frameColor;
 

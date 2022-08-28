@@ -31,10 +31,6 @@
 #include <QPaintEvent>
 #include <QIcon>
 
-#ifdef Q_OS_LINUX
-  #include <QX11Info>
-#endif
-
 QvkRegionChoise::QvkRegionChoise( Ui_formMainWindow *ui_formMainWindow ):handlePressed(NoHandle),
                                    handleUnderMouse(NoHandle),
                                    HandleColorBackground( Qt::lightGray ),
@@ -55,13 +51,6 @@ QvkRegionChoise::QvkRegionChoise( Ui_formMainWindow *ui_formMainWindow ):handleP
                                    frame_min_height(200 + framePenWidth),
                                    frameColor(Qt::lightGray)
 {
-#ifdef Q_OS_LINUX
-    if ( QX11Info::isPlatformX11() == true )
-        platform = x11;
-
-    if ( QX11Info::isPlatformX11() == false )
-        platform = wayland;
-#endif
     ui = ui_formMainWindow;
 
     setWindowTitle( QString( tr( "Area") ) );
@@ -72,7 +61,6 @@ QvkRegionChoise::QvkRegionChoise( Ui_formMainWindow *ui_formMainWindow ):handleP
 
     // Hint: Qt::WindowStaysOnTopHint is only for X11 and Windows on WayLand not do it
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); // With Qt::ToolTip no keyboard;
-//    setWindowFlags( Qt::CustomizeWindowHint | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Tool ) ; // Funktioniert nicht unter Gnome
     setAttribute( Qt::WA_TranslucentBackground, true);
     setMouseTracking( true );
     setFrameColor( Qt::darkGreen );
@@ -269,25 +257,8 @@ void QvkRegionChoise::mousePressEvent(QMouseEvent *event)
     old_Frame_X2 = frame_X + frame_Width;
     old_Frame_Y2 = frame_Y + frame_height;
 
-#ifdef Q_OS_WIN
     repaint();
     update();
-#endif
-
-#ifdef Q_OS_LINUX
-    if ( platform == wayland )
-    {
-      clearMask();
-      update();
-    }
-
-    if ( platform == x11 )
-    {
-      repaint();
-      update();
-    }
-#endif
-
 }
 
 
@@ -931,35 +902,8 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
                          }
     } // end switch
 
-#ifdef Q_OS_LINUX
-    if ( handlePressed != NoHandle )
-    {
-        if ( platform == wayland )
-        {
-            clearMask();
-            update();
-        }
-
-        if ( platform == x11 )
-        {
-            if ( QX11Info::isCompositingManagerRunning() == true )
-            {
-                repaint();
-                update();
-            }
-            else
-            {
-                repaint();
-                update();
-            }
-        }
-    }
-#endif
-
-#ifdef Q_OS_WIN
     repaint();
     update();
-#endif
 
     if ( handlePressed != NoHandle )
         return;
