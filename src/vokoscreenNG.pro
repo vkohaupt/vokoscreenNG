@@ -148,6 +148,9 @@ include(log/log.pri)
 include(QGlobalShortcut/qglobalshortcut.pri)
 include(QvkGlobalShortcut/QvkGlobalShortcut.pri)
 
+# GlobalMouse
+include(globalMouse/globalMouse.pri)
+
 # New Player deactivated, to many errors. Change to Windows player see next paragraph
 # player linux
 # unix:include(player/linux/playerLinux.pri)
