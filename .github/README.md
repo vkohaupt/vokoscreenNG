@@ -95,8 +95,6 @@ The License-header can be found here:https://github.com/vkohaupt/vokoscreenNG/bl
   - Audio: flac
 * gstreamer-plugins-bad
   - Video: camera
-  - Audio: **AAC only supported in vokoscreenNG 3.0.5 - 3.0.8**
-* gstreamer-plugins-bad-orig-addon (openSUSE Packman)
   - Video: openh264
 * gstreamer-plugins-ugly
   - Video: x264
