@@ -111,15 +111,6 @@ The License-header can be found here:https://github.com/vkohaupt/vokoscreenNG/bl
 * xdg-desktop-portal >= 1.7.0
 * xdg-desktop-portal-(kde, gtk, ...) >= 1.7.0
 
-#### VAAPI only supported in vokoscreenNG 3.0.0 - 3.0.8
-
-* gstreamer-plugins-vaapi 
-  - Intel Hardwareenconding H.264 and MPEG2
-* intel-vaapi-driver 
-  - Intel Hardwareenconding H.264 and MPEG2
-* 
-
-
 ### Build requirements
 * pkgconfig
 * libqt5-devel >= 5.14 (vokoscreenNG >= 3.1.0 pre alpha)
@@ -141,7 +132,7 @@ On Ubuntu these requirements can be satisfied by running `sudo apt install libgs
 
 * [Debian](https://tracker.debian.org/pkg/vokoscreen-ng): `sudo apt install vokoscreen-ng`
 * [Fedora](https://src.fedoraproject.org/rpms/vokoscreenNG): `sudo dnf install vokoscreenNG`
-* [openSUSE](https://software.opensuse.org/package/vokoscreenNG) (Tumbleweed and Leap 15.2): `sudo zypper install vokoscreenNG`
+* [openSUSE](https://software.opensuse.org/package/vokoscreenNG) (Tumbleweed and Leap): `sudo zypper install vokoscreenNG`
 * [Ubuntu](https://launchpad.net/ubuntu/+source/vokoscreen-ng): `sudo apt install vokoscreen-ng`
 * [Arch linux](https://www.archlinux.org/packages/community/x86_64/vokoscreen/): `sudo pacman -S vokoscreen`
 * [NixOS](https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/video/vokoscreen-ng/default.nix): `nix-env -iA nixos.vokoscreen-ng`
