@@ -67,7 +67,7 @@ QvkAnimateWindow::QvkAnimateWindow( QWidget *parent,
     opacity = valueOpacity / 100;
     color = valueColor;
 
-    QTimer::singleShot( showTime, this, SLOT( close() ) );
+    QTimer::singleShot( showTime, Qt::PreciseTimer, this, SLOT( close() ) );
     global::showclickCounter++;
     show();
 }
