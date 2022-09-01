@@ -15,6 +15,7 @@ class QvkComposite: public QObject
 public:
     QvkComposite();
 
+
 public slots:
     void slot_doDownload();
 

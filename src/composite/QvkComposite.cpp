@@ -28,13 +28,13 @@ void QvkComposite::slot_downloadFinished( QNetworkReply *reply )
     QUrl url = reply->url();
     if ( reply->error() )
     {
-        qDebug().noquote() << global::nameOutput << "Download of" << url.toEncoded().constData() << "failed" << reply->errorString();
+        //qDebug().noquote() << global::nameOutput << "Download of" << url.toEncoded().constData() << "failed" << reply->errorString();
     }
     else
     {
-       // Read data and make nothing
-       qDebug().noquote() << global::nameOutput << "Download of" << url.toEncoded().constData() << "successful";
-       QString string = QString( reply->readAll() );
-       Q_UNUSED(string)
+        // Read data and make nothing
+        //qDebug().noquote() << global::nameOutput << "Download of" << url.toEncoded().constData() << "successful";
+        QString string = QString( reply->readAll() );
+        Q_UNUSED(string)
     }
 }
