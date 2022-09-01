@@ -208,4 +208,5 @@ include(virtual/virtual.pri)
 # Snapshot
 include(snapshot/snapshot.pri)
 
-
+# Composite
+unix:include(composite/composite.pri)

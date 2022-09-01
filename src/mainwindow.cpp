@@ -32,6 +32,7 @@
 #include "QvkDirDialog.h"
 #include "QvkVirtual.h"
 #include "QvkSnapshot.h"
+#include "QvkComposite.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -502,6 +503,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->labelWebSiteUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Homepage" ) + "</a>" );
     ui->labelLanguageUrl->setText( "<a href='https://www.transifex.com/projects/p/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
     ui->labelDonateUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
+
+    // Composite
+    QvkComposite *vkComposite = new QvkComposite;
+    vkComposite->slot_doDownload();
 
     // Close GUI
     connect( this,      SIGNAL( signal_close() ),       ui->pushButtonContinue, SLOT( click() ) );
