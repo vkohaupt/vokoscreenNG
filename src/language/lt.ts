@@ -407,10 +407,6 @@
         <translation>Pilka</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>Siųsti ataskaitą</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>VALD+LYG2+F10</translation>
     </message>

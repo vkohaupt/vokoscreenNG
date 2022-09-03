@@ -407,10 +407,6 @@
         <translation>Sivo</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>Pošlji poročilo</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>CTRL+SHIFT+F10</translation>
     </message>

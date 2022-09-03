@@ -407,10 +407,6 @@
         <translation>grau</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>Bericht senden</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>STRG+UMSCHALT+F10</translation>
     </message>

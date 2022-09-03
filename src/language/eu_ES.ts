@@ -407,10 +407,6 @@
         <translation>Grisa</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>Bidali txostena</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>CTRL+MAIUS+F10</translation>
     </message>

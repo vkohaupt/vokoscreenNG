@@ -409,10 +409,6 @@
         <translation>Gris</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>Enviar informe</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>Ctrl + Mayús + F10</translation>
     </message>

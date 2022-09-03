@@ -409,10 +409,6 @@
         <translation>سیاه و سفید</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>ارسال گزارش</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>CTRL+SHIFT+F10</translation>
     </message>

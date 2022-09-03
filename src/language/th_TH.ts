@@ -407,10 +407,6 @@
         <translation>เกรย์</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>ส่งรายงาน</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>CTRL+SHIFT+F10</translation>
     </message>

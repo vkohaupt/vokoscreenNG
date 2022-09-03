@@ -407,10 +407,6 @@
         <translation>Cinza</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>Enviar relatório</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>Ctrl+Shift+F10</translation>
     </message>

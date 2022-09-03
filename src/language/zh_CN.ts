@@ -407,10 +407,6 @@
         <translation>灰度</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>发送报告</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>CTRL+SHIFT+F10</translation>
     </message>

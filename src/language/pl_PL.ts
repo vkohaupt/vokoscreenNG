@@ -28,15 +28,15 @@
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation type="unfinished"/>
+        <translation>Konfiguracja powiodła się</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation type="unfinished"/>
+        <translation>Zamknij okno i ponownie uruchom vokoscreenNG.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation type="unfinished"/>
+        <translation>Baw się dobrze z vokoscreenNG</translation>
     </message>
 </context>
 <context>
@@ -252,7 +252,7 @@
     </message>
     <message>
         <source>Reset</source>
-        <translation>Reset</translation>
+        <translation>Resetuj</translation>
     </message>
     <message>
         <source>Magnification</source>
@@ -407,10 +407,6 @@
         <translation>Szary</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>Wyślij raport</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>CTRL+SHIFT+F10</translation>
     </message>
@@ -444,11 +440,11 @@
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Przerzuć horyzontalnie</translation>
+        <translation>Odwróć poziomo</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Przerzuć pionowo</translation>
+        <translation>Odwróć pionowo</translation>
     </message>
     <message>
         <source>Black-and-white</source>
@@ -488,47 +484,47 @@
     </message>
     <message>
         <source>Automatically</source>
-        <translation type="unfinished"/>
+        <translation>Automatycznie</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation type="unfinished"/>
+        <translation>Wykonaj rzut obrazu kart</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation type="unfinished"/>
+        <translation>Informacja o licencji</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"/>
+        <translation>WŁ.</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"/>
+        <translation>WYŁ.</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation type="unfinished"/>
+        <translation>Globalne skróty klawiaturowe</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation type="unfinished"/>
+        <translation>Przypisane klawisze skrótów.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation type="unfinished"/>
+        <translation>Skrót klawiaturowy nie został przypisany lub przypisany więcej niż jeden raz</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation type="unfinished"/>
+        <translation>Jeśli został przypisany, ale nie działa, jest używany przez inny program.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation type="unfinished"/>
+        <translation>Migawka</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation type="unfinished"/>
+        <translation>Ścieżka obrazu</translation>
     </message>
 </context>
 <context>

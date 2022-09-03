@@ -407,10 +407,6 @@
         <translation>Tonos de Gris</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>Enviar el Reporte</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>CTRL+MAYUS+F10</translation>
     </message>

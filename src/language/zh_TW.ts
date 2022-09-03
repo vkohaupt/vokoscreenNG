@@ -407,10 +407,6 @@
         <translation>灰色</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>發送報告</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>CTRL+SHIFT+F10</translation>
     </message>

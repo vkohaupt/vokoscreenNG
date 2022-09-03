@@ -407,10 +407,6 @@
         <translation>Grize</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>Sendi prikolapsan raporton</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>Ctrl + Shift + F10</translation>
     </message>

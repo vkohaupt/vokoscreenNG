@@ -407,10 +407,6 @@
         <translation>Harmaa</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>Lähetä raportti</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>CTRL+SHIFT+F10</translation>
     </message>

@@ -407,10 +407,6 @@
         <translation>Gri</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>Rapor Gönder</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>CTRL+SHIFT+F10</translation>
     </message>

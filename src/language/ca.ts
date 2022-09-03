@@ -407,10 +407,6 @@
         <translation>Gris</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>Envia el registre</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>Ctrl+Majús.+F10</translation>
     </message>

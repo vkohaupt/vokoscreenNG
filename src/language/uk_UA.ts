@@ -407,10 +407,6 @@
         <translation>Сірий</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>Відправити скаргу</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>CTRL+SHIFT+F10</translation>
     </message>

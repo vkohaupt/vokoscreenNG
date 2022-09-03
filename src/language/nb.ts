@@ -407,10 +407,6 @@
         <translation>Grå</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>Send Rapport</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>CTRL+SHIFT+F10</translation>
     </message>

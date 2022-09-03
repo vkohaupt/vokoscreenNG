@@ -407,10 +407,6 @@
         <translation>Grijs</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>Rapportage versturen</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>CTRL+SHIFT+F10</translation>
     </message>

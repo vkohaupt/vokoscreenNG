@@ -407,10 +407,6 @@
         <translation>Чёрно-белое в оттенках серого</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>Отправить сообщение об ошибке</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>CTRL+SHIFT+F10</translation>
     </message>

@@ -407,10 +407,6 @@
         <translation>Abu - abu</translation>
     </message>
     <message>
-        <source>Send Report</source>
-        <translation>Kirim Laporan</translation>
-    </message>
-    <message>
         <source>CTRL+SHIFT+F10</source>
         <translation>CTRL+SHIFT+F10</translation>
     </message>
