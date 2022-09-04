@@ -1,5 +1,5 @@
 ﻿/* vokoscreenNG
- * Copyright (C) 2017-2021 Volker Kohaupt
+ * Copyright (C) 2017-2022 Volker Kohaupt
  *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
