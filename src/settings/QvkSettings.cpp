@@ -251,6 +251,11 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             continue;
         }
 
+        if ( ( listCheckBox.at(i)->objectName().contains( "checkBoxGstreamerDebugLevel" ) ) and
+             ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true ) )
+        {
+            continue;
+        }
 
         //
         if ( listCheckBox.at(i)->objectName().contains( "checkBox_shortcut" ) and
@@ -369,6 +374,11 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     for ( int i = 0; i < listSlider.count(); i++ )
     {
         if ( listSlider.at(i)->objectName() == "sliderVideo" )
+        {
+            continue;
+        }
+
+        if ( listSlider.at(i)->objectName() == "sliderGstDebugLevel" )
         {
             continue;
         }

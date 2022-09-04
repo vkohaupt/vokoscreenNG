@@ -182,6 +182,16 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderWaitBeforeSnapshot->setDecimalPoint( true );
     sliderWaitBeforeSnapshot->show();
 
+    sliderGstDebugLevel = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_36->insertWidget( 1, sliderGstDebugLevel );
+    sliderGstDebugLevel->setObjectName( "sliderGstDebugLevel" );
+    sliderGstDebugLevel->setMinimum( 0 );
+    sliderGstDebugLevel->setMaximum( 9 );
+    sliderGstDebugLevel->setValue( 0 );
+    sliderGstDebugLevel->setDecimalPoint( false );
+    sliderGstDebugLevel->setEnabled( false );
+    sliderGstDebugLevel->show();
+
     ui->comboBox_shortcut_start->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     ui->comboBox_shortcut_pause->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     ui->comboBox_shortcut_magnification->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
@@ -451,6 +461,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     connect( videoFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
+    connect( ui->checkBoxGstreamerDebugLevel, SIGNAL( toggled( bool) ), this, SLOT( slot_GstreamerDebugLevel( bool ) ) );
+    connect( ui->pushButtonGstreamerDebugLevel, SIGNAL( clicked( bool ) ), this, SLOT( slot_GstreamerOpenFolder( bool ) ) );
 
     // ***************** showClick *****************************
     vkShowClick = new QvkShowClick();
@@ -595,6 +607,34 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
+}
+
+
+void QvkMainWindow::slot_GstreamerOpenFolder( bool value )
+{
+    Q_UNUSED(value);
+    QvkSettings vkSettingsGstDebug;
+    QFileInfo fileInfo( vkSettingsGstDebug.getFileName() );
+    QString path = fileInfo.absolutePath();
+    if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false )
+    {
+        QMessageBox msgBox( this );
+        msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
+        msgBox.setWindowTitle( global::name + " " + global::version );
+        msgBox.setIcon( QMessageBox::Information );
+        msgBox.exec();
+    }
+}
+
+
+void QvkMainWindow::slot_GstreamerDebugLevel( bool value )
+{
+   if ( value == true ) {
+       sliderGstDebugLevel->setEnabled( true );
+   } else {
+       sliderGstDebugLevel->setValue( 0 );
+       sliderGstDebugLevel->setEnabled( false );
+   }
 }
 
 

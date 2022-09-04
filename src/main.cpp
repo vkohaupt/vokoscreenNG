@@ -28,14 +28,15 @@
 #include "QvkWaylandRoutines.h"
 #endif
 
-#ifdef Q_OS_WIN
-#include "QvkSettings.h"
-#endif
+//#ifdef Q_OS_WIN
+//#include "QvkSettings.h"
+//#endif
 
 #include <QTranslator>
 #include <QLibraryInfo>
 #include <QLoggingCategory>
 #include <QStyleFactory>
+#include <QSettings>
 
 #include <gst/gst.h>
 
@@ -132,15 +133,39 @@ int main(int argc, char *argv[])
     qputenv( "GST_REGISTRY_1_0", pathRegistry.toUtf8() );
 
     /*
-        QString debugLevel = "4";
-        qputenv( "GST_DEBUG", debugLevel.toUtf8() );
-        QString debugPathProfile;
-        debugPathProfile.append( pathProfile );
-        debugPathProfile.append( "/GST-Debuglevel-" + debugLevel + ".txt" );
-        qputenv( "GST_DEBUG_FILE", debugPathProfile.toUtf8() );
-        */
+    QString debugLevel = "4";
+    qputenv( "GST_DEBUG", debugLevel.toUtf8() );
+    QString debugPathProfile;
+    debugPathProfile.append( pathProfile );
+    debugPathProfile.append( "/GST-Debuglevel-" + debugLevel + ".txt" );
+    qputenv( "GST_DEBUG_FILE", debugPathProfile.toUtf8() );
+*/
 
 #endif
+
+    // Gstreamer begin
+    // Write Gstreamer debug level in a file
+    QvkSettings vkSettingsGstDebug;
+    QFileInfo fileInfo( vkSettingsGstDebug.getFileName() );
+    QString pathAndFilename = fileInfo.absoluteFilePath();
+    // qDebug() << "pathAndFilename:" << pathAndFilename;
+
+    QString pathToProfile = fileInfo.absolutePath();
+    // qDebug() << "pathProfile" << pathToProfile;
+
+    QSettings setingsGstDebug( pathAndFilename, QSettings::IniFormat );
+    QString debugLevel = setingsGstDebug.value( "sliderGstDebugLevel" ).toString();
+    // qDebug() << "debugLevel:" << debugLevel;
+
+    if ( debugLevel.contains( "0" ) == false ) {
+        qputenv( "GST_DEBUG", debugLevel.toUtf8() );
+        QString debugPathProfile;
+        debugPathProfile.append( pathToProfile );
+        debugPathProfile.append( "/GST-Debuglevel-" + debugLevel + ".txt" );
+        qputenv( "GST_DEBUG_FILE", debugPathProfile.toUtf8() );
+    }
+    // Gstreamer end
+
 
     gst_init (&argc, &argv);
 

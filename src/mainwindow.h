@@ -90,6 +90,7 @@ private:
     QvkSpezialSlider *sliderStopRecordingAfterMinutes;
     QvkSpezialSlider *sliderStopRecordingAfterSeconds;
     QvkSpezialSlider *sliderWaitBeforeSnapshot;
+    QvkSpezialSlider *sliderGstDebugLevel;
 
     QvkSettings vkSettings;
 
@@ -177,6 +178,9 @@ private slots:
     void slot_x264Reset();
     void slot_openh264Reset();
     void slot_vp8Reset();
+
+    void slot_GstreamerDebugLevel( bool );
+    void slot_GstreamerOpenFolder( bool );
 
     void slot_StartTimer( bool value );
     void slot_startTime();
