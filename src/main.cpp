@@ -1,5 +1,5 @@
 /* vokoscreenNG - A desktop recorder
- * Copyright (C) 2017-2019 Volker Kohaupt
+ * Copyright (C) 2017-2022 Volker Kohaupt
  *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
@@ -131,16 +131,6 @@ int main(int argc, char *argv[])
     pathRegistry.append( pathProfile );
     pathRegistry.append( "/gstreamer.registry" );
     qputenv( "GST_REGISTRY_1_0", pathRegistry.toUtf8() );
-
-    /*
-    QString debugLevel = "4";
-    qputenv( "GST_DEBUG", debugLevel.toUtf8() );
-    QString debugPathProfile;
-    debugPathProfile.append( pathProfile );
-    debugPathProfile.append( "/GST-Debuglevel-" + debugLevel + ".txt" );
-    qputenv( "GST_DEBUG_FILE", debugPathProfile.toUtf8() );
-*/
-
 #endif
 
     // Gstreamer debug begin
