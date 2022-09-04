@@ -28,9 +28,9 @@
 #include "QvkWaylandRoutines.h"
 #endif
 
-//#ifdef Q_OS_WIN
-//#include "QvkSettings.h"
-//#endif
+#ifdef Q_OS_WIN
+#include "QvkSettings.h"
+#endif
 
 #include <QTranslator>
 #include <QLibraryInfo>
@@ -143,7 +143,7 @@ int main(int argc, char *argv[])
 
 #endif
 
-    // Gstreamer begin
+    // Gstreamer debug begin
     // Write Gstreamer debug level in a file
     QvkSettings vkSettingsGstDebug;
     QFileInfo fileInfo( vkSettingsGstDebug.getFileName() );
@@ -164,7 +164,7 @@ int main(int argc, char *argv[])
         debugPathProfile.append( "/GST-Debuglevel-" + debugLevel + ".txt" );
         qputenv( "GST_DEBUG_FILE", debugPathProfile.toUtf8() );
     }
-    // Gstreamer end
+    // Gstreamer debug end
 
 
     gst_init (&argc, &argv);
