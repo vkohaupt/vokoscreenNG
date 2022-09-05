@@ -610,6 +610,12 @@ QvkMainWindow::~QvkMainWindow()
 }
 
 
+/*
+Warning, please only activate if requested by the developer!
+Warning, the storage device can fill up to 2GB/min.!
+Warning, your machine can slow down extremely!
+*/
+
 void QvkMainWindow::slot_GstreamerOpenFolder( bool value )
 {
     Q_UNUSED(value);
