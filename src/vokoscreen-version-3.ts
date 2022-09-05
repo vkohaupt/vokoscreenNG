@@ -528,10 +528,6 @@
         <source>Imagepath</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>GStreamer Debuglevel</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>license</name>

@@ -1858,7 +1858,7 @@
                 <item>
                  <widget class="QCheckBox" name="checkBoxGstreamerDebugLevel">
                   <property name="text">
-                   <string>GStreamer Debuglevel</string>
+                   <string notr="true">GStreamer Debuglevel</string>
                   </property>
                  </widget>
                 </item>
