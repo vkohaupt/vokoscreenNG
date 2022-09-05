@@ -408,6 +408,16 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     for ( int i = 0; i < listTabWidget.count(); i++ )
     {
         listTabWidget.at(i)->setCurrentIndex( 0 );
+
+        QvkSettings vkSettingsGstDebug;
+        QFileInfo fileInfo( vkSettingsGstDebug.getFileName() );
+        QString pathAndFilename = fileInfo.absoluteFilePath();
+        QSettings setingsGstDebug( pathAndFilename, QSettings::IniFormat );
+        bool bo = setingsGstDebug.value( "checkBoxGstreamerDebugLevel" ).toBool();
+        if ( bo == true ) {
+            ui_mainwindow->tabWidgetScreencast->setCurrentIndex( 3 );
+        }
+
     }
 
     QList<QToolButton *> listToolButton = ui_mainwindow->centralWidget->findChildren<QToolButton *>();
