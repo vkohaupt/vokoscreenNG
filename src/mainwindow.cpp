@@ -620,10 +620,13 @@ void QvkMainWindow::slot_GstreamerDebugLevelDialog( bool value )
         string += "2. Warning, the storage device can fill up to 2GB/min.!<br>";
         string += "3. Warning, your machine can slow down extremely!";
 
+        QPixmap pixmap( ":/pictures/status/warning.png" );
+        pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+
         QMessageBox msgBox( this );
         msgBox.setText( "<center><b>Warning</b></center><br>"  + string );
         msgBox.setWindowTitle( global::name + " " + global::version );
-        msgBox.setIcon( QMessageBox::Warning );
+        msgBox.setIconPixmap( pixmap );
         msgBox.setStandardButtons( QMessageBox::Ok | QMessageBox::Cancel );
         msgBox.setDefaultButton( QMessageBox::Cancel );
         int ret = msgBox.exec();
