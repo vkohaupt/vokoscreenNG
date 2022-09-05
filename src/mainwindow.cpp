@@ -463,6 +463,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
     connect( ui->checkBoxGstreamerDebugLevel, SIGNAL( toggled( bool) ), this, SLOT( slot_GstreamerDebugLevel( bool ) ) );
     connect( ui->pushButtonGstreamerDebugLevel, SIGNAL( clicked( bool ) ), this, SLOT( slot_GstreamerOpenFolder( bool ) ) );
+    connect( ui->checkBoxGstreamerDebugLevel, SIGNAL( clicked( bool ) ), this, SLOT( slot_GstreamerDebugLevelDialog( bool ) ) );
 
     // ***************** showClick *****************************
     vkShowClick = new QvkShowClick();
@@ -610,11 +611,30 @@ QvkMainWindow::~QvkMainWindow()
 }
 
 
-/*
-Warning, please only activate if requested by the developer!
-Warning, the storage device can fill up to 2GB/min.!
-Warning, your machine can slow down extremely!
-*/
+void QvkMainWindow::slot_GstreamerDebugLevelDialog( bool value )
+{
+    if ( value == true )
+    {
+        QString string;
+        string += "1. Warning, please only activate if requested by the developer!<br>";
+        string += "2. Warning, the storage device can fill up to 2GB/min.!<br>";
+        string += "3. Warning, your machine can slow down extremely!";
+
+        QMessageBox msgBox( this );
+        msgBox.setText( "<center><b>Warning</b></center><br>"  + string );
+        msgBox.setWindowTitle( global::name + " " + global::version );
+        msgBox.setIcon( QMessageBox::Warning );
+        msgBox.setStandardButtons( QMessageBox::Ok | QMessageBox::Cancel );
+        msgBox.setDefaultButton( QMessageBox::Cancel );
+        int ret = msgBox.exec();
+
+        if( ret == QMessageBox::Cancel )
+        {
+            ui->checkBoxGstreamerDebugLevel->click();
+        }
+    }
+}
+
 
 void QvkMainWindow::slot_GstreamerOpenFolder( bool value )
 {

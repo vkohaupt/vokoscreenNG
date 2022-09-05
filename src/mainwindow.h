@@ -180,6 +180,7 @@ private slots:
     void slot_vp8Reset();
 
     void slot_GstreamerDebugLevel( bool );
+    void slot_GstreamerDebugLevelDialog( bool );
     void slot_GstreamerOpenFolder( bool );
 
     void slot_StartTimer( bool value );
