@@ -58,6 +58,7 @@
 <file>pictures/snapshot/snapshot.png</file>
 <file>pictures/snapshot/Camera-photo.png</file>
 <file>pictures/space.png</file>
+<file>pictures/status/warning.png</file>
 <file>pictures/systray/magnification.png</file>
 <file>pictures/systray/camera.png</file>
 <file>pictures/systray/exit.png</file>
@@ -116,6 +117,7 @@
 <file>pictures/showClick/halo.license</file>
 <file>pictures/showClick/sandglass.license</file>
 <file>pictures/snapshot/snapshot.license</file>
+<file>pictures/status/warning.license</file>
 <file>pictures/systray/pause.license</file>
 <file>pictures/systray/magnification.license</file>
 <file>pictures/systray/exit.license</file>
