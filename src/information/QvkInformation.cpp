@@ -26,7 +26,6 @@
 #include <QTimer>
 #include <QTime>
 #include <QStorageInfo>
-#include <QMessageBox>
 #include <QDebug>
 
 QvkInformation::QvkInformation( QvkMainWindow *vkMainWindow,

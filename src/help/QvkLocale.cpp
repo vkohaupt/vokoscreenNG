@@ -23,9 +23,6 @@
 #include "QvkLocale.h"
 #include "global.h"
 
-#include <QMessageBox>
-
-
 QvkLocale::QvkLocale()
 {
     vkDownload = new QvkDownloader( temporaryDirLocal.path() );
