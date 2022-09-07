@@ -704,11 +704,13 @@ bool QvkMainWindow::is_videoFolderExists_and_haveWritePermission()
     } else {
         qDebug().noquote() << "Video permission: ERROR can not write in" << fileInfo.absolutePath();
         qDebug().noquote();
+        QPixmap pixmap( ":/pictures/status/warning.png" );
+        pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
         QMessageBox *messageBox = new QMessageBox();
         QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
         messageBox->setWindowIcon( icon );
         messageBox->setWindowTitle( global::name + " " + global::version );
-        messageBox->setIcon( QMessageBox::Critical );
+        messageBox->setIconPixmap( pixmap );
         messageBox->setTextFormat( Qt::RichText );
         messageBox->setText( ( "<b>No write access on video folder</b>" ) );
         messageBox->setInformativeText( "vokoscreenNG can not create a video on<br>" + \
@@ -1599,8 +1601,11 @@ void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
     
     if ( ui->comboBoxVideoCodec->count() == 0 )
     {
+        QPixmap pixmap( ":/pictures/status/warning.png" );
+        pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+
         QMessageBox messageBox;
-        messageBox.setIcon( QMessageBox::Information );
+        messageBox.setIconPixmap( pixmap );
         messageBox.setText( "<b>No videocodec found</b>" );
 
         QString string;
