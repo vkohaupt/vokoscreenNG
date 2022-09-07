@@ -1601,7 +1601,7 @@ void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
     
     if ( ui->comboBoxVideoCodec->count() == 0 )
     {
-        QPixmap pixmap( ":/pictures/status/warning.png" );
+        QPixmap pixmap( ":/pictures/status/information.png" );
         pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
 
         QMessageBox messageBox;
