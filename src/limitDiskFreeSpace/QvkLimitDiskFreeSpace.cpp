@@ -71,6 +71,9 @@ bool QvkLimitDiskFreeSpace::isStorageOKMessagBoxByStart()
     {
         timerStorageSize->stop();
 
+        QPixmap pixmap( ":/pictures/status/warning.png" );
+        pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+
         QMessageBox *messageBox = new QMessageBox();
         messageBox->setWindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
         messageBox->setWindowTitle( tr( "Warning" ) + " " + global::name + " " + global::version );
@@ -81,7 +84,7 @@ bool QvkLimitDiskFreeSpace::isStorageOKMessagBoxByStart()
                                         + tr( "Limit of free disk space" ) + " " + QString::number( sliderLimitOfFreeDiskSpace->value() ) + " " + tr( "Megabyte" )
                                       );
         messageBox->setStandardButtons( QMessageBox::Ok );
-        messageBox->setIcon( QMessageBox::Warning );
+        messageBox->setIconPixmap( pixmap );
         messageBox->show();
 
         return false;
@@ -102,6 +105,9 @@ void QvkLimitDiskFreeSpace::slot_storageMessagBoxByRecord()
         timerStorageSize->stop();
         ui->pushButtonStop->click();
 
+        QPixmap pixmap( ":/pictures/status/warning.png" );
+        pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+
         QMessageBox *messageBox = new QMessageBox();
         messageBox->setWindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
         messageBox->setWindowTitle( tr( "Warning" ) + " " + global::name + " " + global::version );
@@ -112,7 +118,7 @@ void QvkLimitDiskFreeSpace::slot_storageMessagBoxByRecord()
                                         + tr( "Limit of free disk space" ) + " " + QString::number( sliderLimitOfFreeDiskSpace->value() ) + " " + tr( "Megabyte" )
                                       );
         messageBox->setStandardButtons( QMessageBox::Ok );
-        messageBox->setIcon( QMessageBox::Warning );
+        messageBox->setIconPixmap( pixmap );
         messageBox->show();
     }
 }
