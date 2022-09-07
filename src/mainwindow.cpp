@@ -647,10 +647,13 @@ void QvkMainWindow::slot_GstreamerOpenFolder( bool value )
     QString path = fileInfo.absolutePath();
     if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false )
     {
+        QPixmap pixmap( ":/pictures/status/information.png" );
+        pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+
         QMessageBox msgBox( this );
         msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
         msgBox.setWindowTitle( global::name + " " + global::version );
-        msgBox.setIcon( QMessageBox::Information );
+        msgBox.setIconPixmap( pixmap );
         msgBox.exec();
     }
 }
