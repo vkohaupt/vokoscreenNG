@@ -185,19 +185,22 @@ bool QvkSnapshot::is_imageFolderExists_and_haveWritePermission()
         qDebug().noquote();
         qDebug().noquote() << "Pictures permission: ERROR can not write in" << fileInfo.absolutePath();
         qDebug().noquote();
+        QPixmap pixmap( ":/pictures/status/warning.png" );
+        pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
         QMessageBox *messageBox = new QMessageBox();
         QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
         messageBox->setWindowIcon( icon );
         messageBox->setWindowTitle( global::name + " " + global::version );
-        messageBox->setIcon( QMessageBox::Critical );
+        messageBox->setIconPixmap( pixmap );
         messageBox->setTextFormat( Qt::RichText );
         messageBox->setText( ( "<b>No write access on pictures folder</b>" ) );
         messageBox->setInformativeText( "vokoscreenNG can not create a picture on<br>" + \
                                         fileInfo.absolutePath() + "<br><br>" + \
                                         "<b>Possible reasons:</b><br>" +
-                                        "1. The folder is read-only<br>" +
-                                        "2. Operating system security settings<br>" +
-                                        "3. Antivirus program prevents writing<br><br>" +
+                                        "1. The folder does not exist<br>" +
+                                        "2. The folder is read-only<br>" +
+                                        "3. Operating system security settings<br>" +
+                                        "4. Antivirus program prevents writing<br><br>" +
                                         "<b>Please fix the problem and restart vokoscreenNG<b>"
                                        );
         messageBox->exec();
