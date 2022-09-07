@@ -341,12 +341,14 @@ void QvkMainWindow_wl::slot_frames_Reset()
 
 void QvkMainWindow_wl::messageBox( QString value )
 {
+    QPixmap pixmap( ":/pictures/status/warning.png" );
+    pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
     QMessageBox *messageBox = new QMessageBox();
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
     messageBox->setWindowIcon( icon );
     messageBox->setWindowTitle( global::name + " " + global::version );
-    messageBox->setIcon( QMessageBox::Critical );
-    messageBox->setText( ( "Wayland desktop session detected" ) );
+    messageBox->setIconPixmap( pixmap );
+    messageBox->setText( "Wayland desktop session detected" );
     messageBox->setInformativeText( ( "Please install the package\n" + value ) );
     messageBox->exec();
     exit(0);
