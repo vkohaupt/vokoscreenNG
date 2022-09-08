@@ -196,7 +196,7 @@ bool QvkSnapshot::is_imageFolderExists_and_haveWritePermission()
         messageBox->setText( ( "<b>No write access on pictures folder</b>" ) );
         messageBox->setInformativeText( "vokoscreenNG can not create a picture on<br>" + \
                                         fileInfo.absolutePath() + "<br><br>" + \
-                                        "<b>Possible reasons:</b><br>" +
+                                        "<b>Possible Cause:</b><br>" +
                                         "1. The folder does not exist<br>" +
                                         "2. The folder is read-only<br>" +
                                         "3. Operating system security settings<br>" +
