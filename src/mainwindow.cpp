@@ -1542,10 +1542,22 @@ void QvkMainWindow::VK_set_available_Formats_in_Combox()
         QStringList listKeys = stringAllKeys.split( "," );
         QStringList listKeyMuxer = listKeys.filter( "muxer" );
 
-        QMimeDatabase mimeDatabase;
-        QStringList listKeyVideoMimetype = listKeys.filter( "videomimetype" );
-        QMimeType mimetype = mimeDatabase.mimeTypeForName( QString( listKeyVideoMimetype.at( 0 ) ).section( ":", 1 ) );
-        QIcon icon = QIcon::fromTheme( mimetype.iconName(), QIcon( ":/pictures/screencast/strip.png" ) );
+        QIcon icon;
+        if ( QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ) == "mkv" ){
+            icon = QIcon( ":/pictures/screencast/strip-mkv.png" );
+        }
+        if ( QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ) == "avi" ){
+            icon = QIcon( ":/pictures/screencast/strip-avi.png" );
+        }
+        if ( QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ) == "webm" ){
+            icon = QIcon( ":/pictures/screencast/strip-webm.png" );
+        }
+        if ( QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ) == "mp4" ){
+            icon = QIcon( ":/pictures/screencast/strip-mp4.png" );
+        }
+        if ( QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ) == "mov" ){
+            icon = QIcon( ":/pictures/screencast/strip-mov.png" );
+        }
 
         ui->comboBoxFormat->addItem( icon, // Picture
                                      QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ), // suffix
