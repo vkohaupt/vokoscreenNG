@@ -82,7 +82,7 @@ void QvkCountdown::startCountdown( int value )
     vkCountdownWindow->gradValue = 0;
 
     timer->start( 1000 );
-    animationTimer->start( 25 );
+    animationTimer->start( 40 );
     emit signal_countdownBegin( true );
 }
 
@@ -106,7 +106,7 @@ void QvkCountdown::slot_updateTimer()
 void QvkCountdown::slot_updateAnimationTimer()
 {
     vkCountdownWindow->gradValue = vkCountdownWindow->gradValue - 20;
-    vkCountdownWindow->update();
+    vkCountdownWindow->repaint();
 }
 
 
