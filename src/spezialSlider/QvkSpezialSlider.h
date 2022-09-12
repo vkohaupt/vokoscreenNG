@@ -17,7 +17,7 @@ public:
 
 private:
     QPen pen;
-    qreal radius;
+    qreal radiusLine;
     qreal lineHight;
     qreal distance;
     qreal handleRadius;
