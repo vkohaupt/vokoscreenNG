@@ -28,8 +28,7 @@ QvkSpezialSlider::QvkSpezialSlider( Qt::Orientation orientation )
     label = new QLabel( this );
     label->resize( sliderHight, sliderHight );
     label->setAlignment( Qt::AlignCenter );
-    label->setStyleSheet( "QLabel{ color : black;} QLabel::disabled { color : lightGray; }" );
-//    label->setStyleSheet( "QLabel{ color : black; background-color: cyan;} QLabel::disabled { color : lightGray; }" );
+    label->setStyleSheet( "QLabel{ color: black; background-color: none;} QLabel::disabled { color: lightGray; }" );
 
     connect( this, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged( int ) ) );
 
@@ -92,7 +91,6 @@ void QvkSpezialSlider::css_slider()
         slider.append( "margin-bottom: " + QString::number( -( 5 ) ) + "px;" ); // width/2
         slider.append( "border-radius: " + QString::number( 7 ) + "px;" ); // width/2+border
         slider.append( "}" );
-        label->hide();
     }
 
     // Line disabled
