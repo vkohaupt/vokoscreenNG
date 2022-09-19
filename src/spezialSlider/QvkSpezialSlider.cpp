@@ -1,223 +1,306 @@
 ﻿#include "QvkSpezialSlider.h"
 
-#include <QPaintEvent>
 #include <QDebug>
-#include <QPainter>
-#include <QGuiApplication>
+#include <QFont>
+#include <QApplication>
 #include <QSlider>
+#include <QStyle>
 
-QvkSpezialSlider::QvkSpezialSlider( Qt::Orientation orientation)
+QvkSpezialSlider::QvkSpezialSlider( Qt::Orientation orientation )
 {
+    QFont font = qApp->font();
+    QFontMetrics fontMetrics( font );
+    fontWidth = fontMetrics.horizontalAdvance( QString::number( 123 ) );
+
+    grooveHight = 6;
+    grooveBorderRadius = 2;
+    grooveBackgroundColor = QColor( Qt::gray ).name();
+    grooveForgroundColor = "#3DAEE9";
+
+    handleBorderColor = "#3DAEE9";
+    handleBorderWith = 2;
+
+    sliderHight = fontWidth + 2*handleBorderWith + 6;
+
     setOrientation( orientation );
-    radiusLine = 4.0; // Radius from begin and end off line
-    lineHight = 6.0;
+    setFixedHeight( sliderHight );
+
+    label = new QLabel( this );
+    label->resize( sliderHight, sliderHight );
+    label->setAlignment( Qt::AlignCenter );
+    label->setStyleSheet( "QLabel{ color : black;} QLabel::disabled { color : lightGray; }" );
+//    label->setStyleSheet( "QLabel{ color : black; background-color: cyan;} QLabel::disabled { color : lightGray; }" );
+
+    connect( this, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged( int ) ) );
+
+    css_slider();
 }
+
 
 QvkSpezialSlider::~QvkSpezialSlider()
 {
 }
 
 
-QColor QvkSpezialSlider::vk_get_color( enum QPalette::ColorRole colorRole )
+void QvkSpezialSlider::css_slider()
 {
-    QColor color;
-    if ( isEnabled() == true )
-    {
-        QPalette palette = QGuiApplication::palette();
-        color = palette.color( QPalette::Active, colorRole );
+    QString slider;
+
+    // The Widget
+    slider.append( "QSlider {" );
+    slider.append( "background-color: none;" );
+    slider.append( "}" );
+
+    // Line background
+    slider.append( "QSlider::groove:horizontal {" );
+    slider.append( "background-color: " + grooveBackgroundColor + ";" );
+    slider.append( "height: " + QString::number( grooveHight ) + "px;" );
+    slider.append( "border-radius: " + QString::number( grooveBorderRadius ) + "px;" );
+    slider.append( "}" );
+
+    // Line forground
+    slider.append( "QSlider::sub-page:horizontal {" );
+    slider.append( "background-color: " + grooveForgroundColor + ";" );
+    slider.append( "border-radius: " + QString::number( grooveBorderRadius ) + "px;" );
+    slider.append( "}" );
+
+    // Handle big
+    if ( bigHandel == true ) {
+        slider.append( "QSlider::handle:horizontal {" );
+        slider.append( "background-color: white;" );
+        slider.append( "border-width: " + QString::number( handleBorderWith ) + "px;" );
+        slider.append( "border-color: " + handleBorderColor + ";" );
+        slider.append( "border-style: solid;" );
+        slider.append( "width: " +  QString::number( fontWidth + 2*handleBorderWith ) + "px;" );
+        slider.append( "height: " + QString::number( fontWidth + 2*handleBorderWith ) + "px;" );
+        slider.append( "margin-top: " +    QString::number( -( fontWidth/2 + handleBorderWith-1 ) ) + "px;" );
+        slider.append( "margin-bottom: " + QString::number( -( fontWidth/2 + handleBorderWith-1 ) ) + "px;" ); // minus ist gleich aus der Vertikalen Mitte
+        slider.append( "border-radius: " + QString::number( fontWidth/2 + 2*handleBorderWith ) + "px;" );
+        slider.append( "}" );
     }
 
-    if ( isEnabled() == false )
-    {
-        QPalette palette = QGuiApplication::palette();
-        color = palette.color( QPalette::Disabled, colorRole );
+    // Handle mini
+    if ( bigHandel == false ) {
+        slider.append( "QSlider::handle:horizontal {" );
+        slider.append( "background-color: white;" );
+        slider.append( "border-width: " + QString::number( handleBorderWith ) + "px;" );
+        slider.append( "border-color: " + handleBorderColor + ";" );
+        slider.append( "border-style: solid;" );
+        slider.append( "width: " + QString::number( 10 ) + "px;" ); // content
+        slider.append( "height: " + QString::number( 10 ) + "px;" ); // content
+        slider.append( "margin-top: " + QString::number( -( 5  ) ) + "px;" ); // width/2
+        slider.append( "margin-bottom: " + QString::number( -( 5 ) ) + "px;" ); // width/2
+        slider.append( "border-radius: " + QString::number( 7 ) + "px;" ); // width/2+border
+        slider.append( "}" );
+        label->hide();
     }
 
-    return color;
+    // Line disabled
+    slider.append( "QSlider::sub-page:horizontal:disabled {" );
+    slider.append( "background-color: lightgray;" );
+    slider.append( "}" );
+
+    // Handle disabled
+    slider.append( "QSlider::handle:horizontal:disabled {" );
+    slider.append( "border-color: lightgray;" );
+    slider.append( "}" );
+
+    setStyleSheet( slider );
 }
 
 
-void QvkSpezialSlider::paintEvent(QPaintEvent *event)
+void QvkSpezialSlider::slot_valueChanged( int value )
 {
-    (void)event;
-    distance = ( height() - lineHight ) / 2.0; // Distance from top or bottom to line
-    handleRadius = height() / 2.0;
-
-    QPainter painter;
-    painter.begin( this );
-    painter.setRenderHints( QPainter::Antialiasing, true );
-
-    // Background from line
-    pen.setStyle( Qt::NoPen );
-    painter.setPen( pen );
-
-    QBrush brush;
-    brush.setStyle( Qt::SolidPattern );
-    brush.setColor( vk_get_color( QPalette::Mid ) );
-    painter.setBrush( brush );
-
-    // Background from line
-    painter.drawRoundedRect( 0,
-                             distance,
-                             width(),
-                             height() - 2*distance,
-                             radiusLine,
-                             radiusLine,
-                             Qt::AbsoluteSize );
-
-    // Foreground from line
-    brush.setColor( vk_get_color( QPalette::Highlight) );
-    painter.setBrush( brush );
-    qreal distancePixel = (qreal)width() / ( (qreal)maximum() - (qreal)minimum() );
-    painter.drawRoundedRect( QRectF( 0.0,
-                                     distance,
-                                     ( (qreal)value() - (qreal)minimum() ) * distancePixel,
-                                     (qreal)height() - 2*distance ),
-                             radiusLine,
-                             radiusLine,
-                             Qt::AbsoluteSize );
-
-    // Handle
-    pen.setStyle( Qt::SolidLine );
-    pen.setColor( vk_get_color( QPalette::Highlight ) );
-    pen.setWidthF( 2.0 );
-    painter.setPen( pen );
-
-    brush.setColor( vk_get_color( QPalette::Button ) );
-    painter.setBrush( brush );
-
-    qreal onePixel = 0;
-    if ( value() == minimum() )
-    {
-        onePixel = 1;
-    }
-    if ( value() == maximum() )
-    {
-        onePixel = -1;
+    if ( showValue == false ) {
+        label->setText( "" );
     }
 
-    handleRadius = handleRadius - pen.widthF()/2;
-    QRectF qRectF( (qreal)(width() - 2*handleRadius) / (qreal)( maximum() - minimum() ) * (qreal)( value() - minimum() ) + onePixel,
-                   pen.widthF()/2,
-                   2*handleRadius,
-                   2*handleRadius );
-
-    painter.drawEllipse( qRectF );
-
-    // Handletext
-    if ( showValue == true )
-    {
-        QFont font = qApp->font();
-        painter.setFont( font );
-        QFontMetrics fontMetrics( font );
-        setMinimumHeight( fontMetrics.horizontalAdvance( "5555" ) );
-        painter.setPen( vk_get_color( QPalette::ButtonText ) );
-
+    if ( showValue == true ) {
         if ( decimalPoint == false ) {
-            painter.drawText( qRectF, Qt::AlignCenter, QString::number( value() ) );
+            label->setText( QString::number( value ) );
         } else {
-            qreal real = (qreal)value() / 10;
-            painter.drawText( qRectF, Qt::AlignCenter, QString::number( real, 'f', 1 ) );
+            qreal real = (qreal)value / 10;
+            label->setText( QString::number( real, 'f', 1 ) );
         }
     }
 
-    if ( bigHandel == true )
-    {
-        QFont font = qApp->font();
-        painter.setFont( font );
-        QFontMetrics fontMetrics( font );
-        setMinimumHeight( fontMetrics.horizontalAdvance( "5555" ) );
-        painter.setPen( vk_get_color( QPalette::ButtonText ) );
-    }
-
-    painter.end();
+    qreal distancePixel = QStyle::sliderPositionFromValue( minimum(), maximum(), value, width() - label->width() );
+    label->move( distancePixel, 0 );
 }
 
 
-void QvkSpezialSlider::mousePressEvent( QMouseEvent *event )
+void QvkSpezialSlider::resizeEvent( QResizeEvent *event )
 {
-    if( event->button() != Qt::LeftButton)
-    {
-        return;
-    }
-
-    // Press on Handle
-    QRectF rectHandle( (qreal)(width() - 2*handleRadius) / ( (qreal)maximum() - (qreal)minimum() ) * ( (qreal)value() - minimum() ) + (qreal)( pen.widthF() / 2.0 ),
-                       pen.widthF()/2.0,
-                       2*handleRadius,
-                       2*handleRadius );
-
-    if ( rectHandle.contains( event->pos() ) )
-    {
-        mousePressed = true;
-        return;
-    }
-
-    // Click on line
-    qreal myValue = 0;
-    qreal distancePixel = (qreal)width() / (qreal)( maximum() - minimum() );
-    if ( event->button() == Qt::LeftButton )
-    {
-        myValue = qRound( minimum() + ( (qreal)event->x() / (qreal)distancePixel ) );
-        setValue( myValue );
-        emit sliderMoved( myValue );
-    }
-    event->accept();
+    Q_UNUSED(event)
+    slot_valueChanged( value() );
 }
 
 
-void QvkSpezialSlider::mouseMoveEvent( QMouseEvent *event )
-{
-    if ( mousePressed == true )
-    {
-        qreal stepSizeInPixels = (qreal)( (qreal)width() / (qreal)( maximum() - minimum() ) );
-        qreal stepCurrent = value() - minimum();
-
-        if ( event->localPos().x() > ( stepCurrent * stepSizeInPixels ) + (qreal)( stepSizeInPixels / 2 ) )
-        {
-            qreal couldValue = ( event->localPos().x() / stepSizeInPixels ) + minimum() + 1;
-            setValue( static_cast<int>(couldValue) );
-            emit sliderMoved( static_cast<int>(couldValue) );
-            return;
-        }
-
-        if ( event->localPos().x() < ( stepCurrent * stepSizeInPixels ) - (qreal)( stepSizeInPixels / 2 ) )
-        {
-            qreal couldValue = ( event->localPos().x() / stepSizeInPixels ) + minimum();
-            setValue( static_cast<int>(couldValue) );
-            emit sliderMoved( static_cast<int>(couldValue) );
-            return;
-        }
-    }
-}
-
-
-void QvkSpezialSlider::mouseReleaseEvent( QMouseEvent *event )
-{
-    Q_UNUSED(event);
-    mousePressed = false;
-}
-
-/*
- * Show value on handle.
- * The value default is true.
- */
 void QvkSpezialSlider::setShowValue( bool value )
 {
     showValue = value;
+    css_slider();
 }
 
-/*
- * Display a big handle without value
- * If showValue == true this do nothing
- */
+
 void QvkSpezialSlider::setBigHandel( bool value )
 {
     bigHandel = value;
+    css_slider();
 }
 
 
 void QvkSpezialSlider::setDecimalPoint( bool value )
 {
     decimalPoint = value;
+    css_slider();
 }
+
+
+
+/*
+QvkSpezialSlider::QvkSpezialSlider( Qt::Orientation orientation )
+{
+    QFont font = qApp->font();
+    fontSize = font.pointSize();
+
+    sliderHight = 24 + fontSize;
+    lineHight = 6;
+    lineBorderRadius = 3;
+    lineBackgroundColor = QColor( Qt::gray ).name();
+    lineForgroundColor = "#3DAEE9";
+
+    HandleBorderColor = "#3DAEE9";
+
+    setOrientation( orientation );
+    setFixedHeight( sliderHight );
+
+    label = new QLabel( this );
+    label->resize( 17 + fontSize, 17 + fontSize );
+    label->setAlignment( Qt::AlignCenter );
+    label->setStyleSheet( "QLabel{ color : black; } QLabel::disabled { color : lightGray; }" );
+
+    connect( this, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged( int ) ) );
+
+    css_slider();
+}
+
+
+QvkSpezialSlider::~QvkSpezialSlider()
+{
+}
+
+
+void QvkSpezialSlider::css_slider()
+{
+    QString slider;
+
+    // The Widget
+    slider.append( "QSlider {" );
+    slider.append( "background-color: none;" );
+    slider.append( "}" );
+
+    // Line background
+    slider.append( "QSlider::groove:horizontal {" );
+    slider.append( "background-color: " + lineBackgroundColor + ";" );
+    slider.append( "height: " + QString::number( lineHight ) + "px;" );
+    slider.append( "border-radius: " + QString::number( lineBorderRadius ) + "px;" );
+    slider.append( "}" );
+
+    // Line forground
+    slider.append( "QSlider::sub-page:horizontal {" );
+    slider.append( "background-color: " + lineForgroundColor + ";" );
+    slider.append( "border-radius: " + QString::number( lineBorderRadius ) + "px;" );
+    slider.append( "}" );
+
+    // Handle big
+    if ( bigHandel == true ) {
+        slider.append( "QSlider::handle:horizontal {" );
+        slider.append( "background-color: white;" );
+        slider.append( "border-width: 2px;" );
+        slider.append( "border-color: " + HandleBorderColor + ";" );
+        slider.append( "border-style: solid;" );
+        slider.append( "width: " + QString::number( 17 + fontSize ) + "px;" );
+        slider.append( "height: " + QString::number( 17 + fontSize ) + "px;" );
+        slider.append( "margin-top: " + QString::number( -( lineHight + fontSize/2 + 2  ) ) + "px;" );
+        slider.append( "margin-bottom: " + QString::number( -( lineHight + fontSize/2 + 2 ) ) + "px;" );
+        slider.append( "border-radius: " + QString::number( sliderHight/2 - 2 ) + "px;" );
+        slider.append( "}" );
+    }
+
+    // Handle mini
+    if ( bigHandel == false ) {
+        slider.append( "QSlider::handle:horizontal {" );
+        slider.append( "background-color: white;" );
+        slider.append( "border-width: 2px;" );
+        slider.append( "border-color: " + HandleBorderColor + ";" );
+        slider.append( "border-style: solid;" );
+        slider.append( "width: " + QString::number( 10 ) + "px;" ); // content
+        slider.append( "height: " + QString::number( 10 ) + "px;" ); // content
+        slider.append( "margin-top: " + QString::number( -( 5  ) ) + "px;" ); // width/2
+        slider.append( "margin-bottom: " + QString::number( -( 5 ) ) + "px;" ); // width/2
+        slider.append( "border-radius: " + QString::number( 7 ) + "px;" ); // width/2+border
+        slider.append( "}" );
+    }
+
+    // Line disabled
+    slider.append( "QSlider::sub-page:horizontal:disabled {" );
+    slider.append( "background-color: lightgray;" );
+    slider.append( "}" );
+
+    // Handle disabled
+    slider.append( "QSlider::handle:horizontal:disabled {" );
+    slider.append( "border-color: lightgray;" );
+    slider.append( "}" );
+
+    setStyleSheet( slider );
+}
+
+
+void QvkSpezialSlider::slot_valueChanged( int value )
+{
+    if ( showValue == false ) {
+        label->setText( "" );
+    }
+
+    if ( showValue == true ) {
+        if ( decimalPoint == false ) {
+            label->setText( QString::number( value ) );
+        } else {
+            qreal real = (qreal)value / 10;
+            label->setText( QString::number( real, 'f', 1 ) );
+        }
+    }
+
+    qreal distancePixel = (qreal)( width() - (qreal)32 ) / ( (qreal)maximum() - (qreal)minimum() );
+    label->move( ( value - minimum() ) * distancePixel + 2, 2 );
+}
+
+
+void QvkSpezialSlider::resizeEvent( QResizeEvent *event )
+{
+    Q_UNUSED(event)
+    slot_valueChanged( value() );
+}
+
+
+void QvkSpezialSlider::setShowValue( bool value )
+{
+    showValue = value;
+    css_slider();
+}
+
+
+void QvkSpezialSlider::setBigHandel( bool value )
+{
+    bigHandel = value;
+    css_slider();
+}
+
+
+void QvkSpezialSlider::setDecimalPoint( bool value )
+{
+    decimalPoint = value;
+    css_slider();
+}
+*/

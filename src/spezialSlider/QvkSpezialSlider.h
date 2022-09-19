@@ -1,10 +1,9 @@
 #ifndef QVKSPEZIALSLIDER_H
 #define QVKSPEZIALSLIDER_H
 
-#include <QWidget>
-#include <QPainter>
 #include <QSlider>
-#include <QMouseEvent>
+#include <QResizeEvent>
+#include <QLabel>
 
 class QvkSpezialSlider : public QSlider
 {
@@ -13,32 +12,47 @@ class QvkSpezialSlider : public QSlider
 public:
     explicit QvkSpezialSlider( Qt::Orientation orientation );
     ~QvkSpezialSlider();
+    QLabel *label;
+
+    /**
+    * Display a value in the handle. The default is true.
+    */
+    void setShowValue( bool );
+
+    /**
+    * Display a big handle. The default is true.
+    */
+    void setBigHandel( bool );
+
+    /**
+    * Display a value as decimal. The default is false.
+    */
+    void setDecimalPoint( bool );
 
 
 private:
-    QPen pen;
-    qreal radiusLine;
-    qreal lineHight;
     qreal distance;
     qreal handleRadius;
-    bool mousePressed = false;
-    QColor vk_get_color(QPalette::ColorRole colorRole);
-    bool showValue = true;
-    bool bigHandel = false;
+    bool bigHandel = true;
     bool decimalPoint = false;
+    bool showValue = true;
+    int sliderHight;
+    int fontWidth;
+    int grooveHight;
+    int grooveBorderRadius;
+    QString grooveBackgroundColor;
+    QString grooveForgroundColor;
+    QString handleBorderColor;
+    int handleBorderWith;
+    void css_slider();
 
 
 public slots:
-    void setShowValue( bool value );
-    void setBigHandel( bool value );
-    void setDecimalPoint( bool value );
+    void slot_valueChanged( int );
 
 
 protected:
-    void paintEvent( QPaintEvent *event );
-    void mousePressEvent( QMouseEvent *event );
-    void mouseMoveEvent( QMouseEvent *event );
-    void mouseReleaseEvent( QMouseEvent *event );
+    void resizeEvent(QResizeEvent *event);
 
 
 signals:

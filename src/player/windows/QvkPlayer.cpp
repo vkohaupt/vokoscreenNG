@@ -43,10 +43,12 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     ui->horizontalLayout_2->setStretch( 0, 1 );
     sliderVideo->setObjectName( "sliderVideo" );
     sliderVideo->setTracking( true );
-    sliderVideo->setShowValue( false );
-    sliderVideo->setEnabled( false );
     sliderVideo->setMaximum(1);
     sliderVideo->show();
+    sliderVideo->setEnabled( false );
+    sliderVideo->setShowValue( false );
+    sliderVideo->setDecimalPoint( false );
+    sliderVideo->setBigHandel( false );
 
     sliderVolume = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_3->insertWidget( 12, sliderVolume );
@@ -56,6 +58,10 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     sliderVolume->setMinimum( 0 );
     sliderVolume->setMaximum( 100 );
     sliderVolume->show();
+    sliderVolume->setEnabled( true );
+    sliderVolume->setShowValue( true );
+    sliderVolume->setDecimalPoint( false );
+    sliderVolume->setBigHandel( true );
 
     parentMainWindow = parent;
     oldWindowTitel = parentMainWindow->windowTitle();
@@ -641,7 +647,6 @@ void QvkPlayer::vk_showFullscreen()
     ui->widgetMenueBar->setParent( ui->labelPlayer);
     ui->framePlayer->setStyleSheet( "QFrame { background-color: black; }"  );
     ui->widgetMenueBar->setStyleSheet( "QWidget { background-color: lightgray; }" );
-    ui->labelMovePicture->setStyleSheet( "QLabel { background-color: lightgray; }" );
     ui->toolButtonFullscreen->setIcon( QIcon( ":/pictures/player/restore.png" ) );
     ui->labelMovePicture->show();
     ui->widgetMenueBar->show();

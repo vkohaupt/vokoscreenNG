@@ -31,6 +31,7 @@
 
 #include <QWidget>
 #include <QPaintEvent>
+#include <QPainter>
 
 class QvkCameraWindow : public QWidget
 {
