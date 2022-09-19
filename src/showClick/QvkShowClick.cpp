@@ -77,6 +77,7 @@ void QvkShowClick::setSpezialSlider()
     vkSpezialSliderDiameter->setValue( 50 );
     vkSpezialSliderDiameter->setShowValue( false );
     vkSpezialSliderDiameter->show();
+    vkSpezialSliderDiameter->setBigHandel( false );
     connect( vkSpezialSliderDiameter, &QSlider::valueChanged, this, [=]( int value ) { vkPreviewWidget->setDiameter( value ); } );
 
     vkSpezialSliderOpacity = new QvkSpezialSlider( Qt::Horizontal );
@@ -88,6 +89,7 @@ void QvkShowClick::setSpezialSlider()
     vkSpezialSliderOpacity->setValue( 70 );
     vkSpezialSliderOpacity->setShowValue( false );
     vkSpezialSliderOpacity->show();
+    vkSpezialSliderOpacity->setBigHandel( false );
     connect( vkSpezialSliderOpacity, &QSlider::valueChanged, this, [=]( int value ) { vkPreviewWidget->setOpacity( (double)value / 100 ); } );
 
     vkSpezialSliderShowtime = new QvkSpezialSlider( Qt::Horizontal );
@@ -99,6 +101,7 @@ void QvkShowClick::setSpezialSlider()
     vkSpezialSliderShowtime->setValue( 10 );
     vkSpezialSliderShowtime->setShowValue( false );
     vkSpezialSliderShowtime->show();
+    vkSpezialSliderShowtime->setBigHandel( false );
 }
 
 
