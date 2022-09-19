@@ -371,7 +371,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>3</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1863,6 +1863,16 @@
                  </widget>
                 </item>
                 <item>
+                 <widget class="QPushButton" name="pushButtonGstreamerDebugLevel">
+                  <property name="toolTip">
+                   <string>Open folder</string>
+                  </property>
+                  <property name="text">
+                   <string>Folder</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
                  <spacer name="horizontalSpacer_46">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -1874,16 +1884,6 @@
                    </size>
                   </property>
                  </spacer>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="pushButtonGstreamerDebugLevel">
-                  <property name="toolTip">
-                   <string>Open folder</string>
-                  </property>
-                  <property name="text">
-                   <string>Folder</string>
-                  </property>
-                 </widget>
                 </item>
                </layout>
               </item>
