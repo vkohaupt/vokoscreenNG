@@ -123,7 +123,11 @@ void QvkSpezialSlider::slot_valueChanged( int value )
     }
 
     qreal distancePixel = QStyle::sliderPositionFromValue( minimum(), maximum(), value, width() - label->width() );
-    label->move( distancePixel, 0 );
+    int adjustmentPixel = 0;
+    if ( value == minimum() ) {
+        adjustmentPixel = -1;
+    }
+    label->move( distancePixel + adjustmentPixel, 0 );
 }
 
 
