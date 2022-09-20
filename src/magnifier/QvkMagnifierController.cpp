@@ -31,6 +31,7 @@ QvkMagnifierController::QvkMagnifierController(Ui_formMainWindow *ui_mainwindow 
     sliderMagnification->setTracking( true );
     sliderMagnification->setMinimum( 1 );
     sliderMagnification->setMaximum( 3 );
+    sliderMagnification->setPageStep( 1 );
     sliderMagnification->show();
 
     connect( ui_mainwindow->checkBoxMagnifier, SIGNAL( clicked( bool ) ),     vkMagnifier, SLOT( slot_magnifierShow( bool ) ) );

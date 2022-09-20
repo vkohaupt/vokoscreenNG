@@ -71,6 +71,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderScreencastCountDown->setMinimum( 0 );
     sliderScreencastCountDown->setMaximum( 30 );
     sliderScreencastCountDown->setValue( 0 );
+    sliderScreencastCountDown->setPageStep( 1 );
     sliderScreencastCountDown->show();
 
     sliderFrames = new QvkSpezialSlider( Qt::Horizontal );
@@ -147,6 +148,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderSecondWaitBeforeRecording->setMinimum( 0 );
     sliderSecondWaitBeforeRecording->setMaximum( 3 );
     sliderSecondWaitBeforeRecording->setValue( 1 );
+    sliderSecondWaitBeforeRecording->setPageStep( 1 );
     sliderSecondWaitBeforeRecording->show();
 
     sliderStopRecordingAfterHouers = new QvkSpezialSlider( Qt::Horizontal );
@@ -190,6 +192,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderGstDebugLevel->setValue( 0 );
     sliderGstDebugLevel->setDecimalPoint( false );
     sliderGstDebugLevel->setEnabled( false );
+    sliderGstDebugLevel->setPageStep( 1 );
     sliderGstDebugLevel->show();
 
     ui->comboBox_shortcut_start->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
