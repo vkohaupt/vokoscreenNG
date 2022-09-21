@@ -10,6 +10,10 @@
 <file>pictures/camera/window-ellipse-off.png</file>
 <file>pictures/camera/window-resize.png</file>
 <file>pictures/camera/window-circle-off.png</file>
+<file>pictures/css/radio-unchecked.png</file>
+<file>pictures/css/radio-checked.png</file>
+<file>pictures/css/checkBox-checked.png</file>
+<file>pictures/css/checkBox-unchecked.png</file>
 <file>pictures/cursor/size_hor.png</file>
 <file>pictures/cursor/size_ver.png</file>
 <file>pictures/cursor/size_all.png</file>
@@ -33,8 +37,6 @@
 <file>pictures/player/pause.png</file>
 <file>pictures/player/player-sidebar.png</file>
 <file>pictures/player/document-open.png</file>
-<file>pictures/radioButton/radio-unchecked.png</file>
-<file>pictures/radioButton/radio-checked.png</file>
 <file>pictures/screencast/supported-formats.png</file>
 <file>pictures/screencast/strip-mkv.png</file>
 <file>pictures/screencast/sandglass.png</file>
@@ -137,7 +139,7 @@
 <file>pictures/systray/record.license</file>
 <file>pictures/template.license</file>
 <file>pictures/windows.license</file>
-<file>pictures/radioButton/radioButton.qss</file>
+<file>pictures/css/css.qss</file>
 <file>sound/wasapi.wav</file>
 <file>ciscoOpenh264/BINARY_LICENSE.txt</file>
 <file>spezialCheckBox/off.png</file>

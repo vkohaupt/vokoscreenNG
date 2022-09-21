@@ -64,11 +64,12 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     soundEffect = new QSoundEffect();
 #endif
 
-    QFile file(":/pictures/radioButton/radioButton.qss");
-    file.open(QFile::ReadOnly | QFile::Text);
-    QTextStream stream(&file);
-    qApp->setStyleSheet(stream.readAll());
-    
+    QFile fileCSS( ":/pictures/css/css.qss" );
+    fileCSS.open( QFile::ReadOnly | QFile::Text );
+    QTextStream streamCSS( &fileCSS );
+    qApp->setStyleSheet( streamCSS.readAll() );
+    fileCSS.close();
+
     sliderScreencastCountDown = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_60->insertWidget( 0, sliderScreencastCountDown );
     sliderScreencastCountDown->setObjectName( "sliderScreencastCountDown" );

@@ -1,0 +1,38 @@
+QRadioButton::indicator {
+}
+
+QRadioButton::indicator:checked {
+    background: none;
+    border-image: url(:/pictures/css/radio-checked.png);
+    width: 18;
+    height: 18;
+}
+
+QRadioButton::indicator:unchecked {
+    background: none;
+    border-image: url(:/pictures/css/radio-unchecked.png);
+    width: 18;
+    height: 18;
+}
+
+
+
+
+
+QCheckBox::indicator {
+}
+
+QCheckBox::indicator:checked {
+    background: none;
+    border-image: url(:/pictures/css/checkBox-checked.png);
+    width: 18;
+    height: 18;
+}
+
+QCheckBox::indicator:unchecked {
+    background: none;
+    border-image: url(:/pictures/css/checkBox-unchecked.png);
+    width: 18;
+    height: 18;
+}
+

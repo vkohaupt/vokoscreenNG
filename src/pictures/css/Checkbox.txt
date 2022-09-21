@@ -1,0 +1,3 @@
+
+Betrifft nur die Checkbox
+Um ein möglichst sauberes Bild in der Gui zubekommen, ist beim exportieren darauf zu achten das genau die selbe Auflösung wie in der css Datei hergenommen wird.
