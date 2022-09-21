@@ -1,3 +1,7 @@
 
-Betrifft nur die Checkbox
+Betrifft nur die Checkbo.
 Um ein möglichst sauberes Bild in der Gui zubekommen, ist beim exportieren darauf zu achten das genau die selbe Auflösung wie in der css Datei hergenommen wird.
+
+Betrifft alle:
+Farbe blau #3daee9
+Farbe grau #EEEEEE

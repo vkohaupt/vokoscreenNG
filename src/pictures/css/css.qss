@@ -8,6 +8,13 @@ QRadioButton::indicator:checked {
     height: 18;
 }
 
+QRadioButton::indicator:checked:pressed {
+    background: none;
+    border-image: url(:/pictures/css/radio-checked-pressed.png);
+    width: 18;
+    height: 18;
+}
+
 QRadioButton::indicator:unchecked {
     background: none;
     border-image: url(:/pictures/css/radio-unchecked.png);
@@ -15,6 +22,12 @@ QRadioButton::indicator:unchecked {
     height: 18;
 }
 
+QRadioButton::indicator:unchecked:pressed {
+    background: none;
+    border-image: url(:/pictures/css/radio-unchecked-pressed.png);
+    width: 18;
+    height: 18;
+}
 
 
 
@@ -29,9 +42,23 @@ QCheckBox::indicator:checked {
     height: 18;
 }
 
+QCheckBox::indicator:checked:pressed {
+    background: none;
+    border-image: url(:/pictures/css/checkBox-checked-pressed.png);
+    width: 18;
+    height: 18;
+}
+
 QCheckBox::indicator:unchecked {
     background: none;
     border-image: url(:/pictures/css/checkBox-unchecked.png);
+    width: 18;
+    height: 18;
+}
+
+QCheckBox::indicator:unchecked:pressed {
+    background: none;
+    border-image: url(:/pictures/css/checkBox-unchecked-pressed.png);
     width: 18;
     height: 18;
 }
