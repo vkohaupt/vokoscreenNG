@@ -516,6 +516,9 @@
               </item>
               <item>
                <layout class="QGridLayout" name="gridLayout_9" rowstretch="0,0,0,0,0" columnstretch="0,0,0,0">
+                <property name="leftMargin">
+                 <number>1</number>
+                </property>
                 <property name="verticalSpacing">
                  <number>0</number>
                 </property>
