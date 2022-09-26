@@ -83,9 +83,10 @@ void QvkSnapshot::slot_newImage()
         bool bo = image.save( ui->lineEditSnapshotImagePath->text() + "/" + filename, ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
 
         if ( bo == false ) {
-            qDebug().noquote() << global::nameOutput << "Failed to save image";
+            qDebug().noquote() << global::nameOutput << "Failed to save fullscreen snapshot";
         } else {
             if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
+                qDebug().noquote() << global::nameOutput << "Fullscreen snapshot saved:" << ui->lineEditSnapshotImagePath->text() + "/" + filename;
                 vkMainWindow->vkSystray->showMessage( global::name, "<b>Fullscreen captured</b>", QIcon( "" ), 10000 );
             }
         }
@@ -97,6 +98,7 @@ void QvkSnapshot::slot_newImage()
         {
             vkWinInfo = new QvkWinInfo;
             disconnect( vkWinInfo, nullptr, nullptr, nullptr );
+            // The slot is triggered if no recording is running
             connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), this, SLOT( slot_snapshotWindow( bool ) ) );
             vkWinInfo->slot_start();
         } else {
@@ -105,9 +107,10 @@ void QvkSnapshot::slot_newImage()
             bool bo = image.save( ui->lineEditSnapshotImagePath->text() + "/" + filename, ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
 
             if ( bo == false ) {
-                qDebug().noquote() << global::nameOutput << "Failed to save image";
+                qDebug().noquote() << global::nameOutput << "Failed to save window snapshot during a recording is running";
             } else {
                 if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
+                    qDebug().noquote() << global::nameOutput << "A recording is running and a Window Snapshot is saved:" << ui->lineEditSnapshotImagePath->text() + "/" + filename;
                     vkMainWindow->vkSystray->showMessage( global::name, "<b>Window captured</b>", QIcon( "" ), 10000 );
                 }
             }
@@ -134,9 +137,10 @@ void QvkSnapshot::slot_newImage()
         bool bo = copyImage.save( ui->lineEditSnapshotImagePath->text() + "/" + filename, ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
 
         if ( bo == false ) {
-            qDebug().noquote() << global::nameOutput << "Failed to save image";
+            qDebug().noquote() << global::nameOutput << "Failed to save aera snapshot";
         } else {
             if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
+                qDebug().noquote() << global::nameOutput << "Aera Snapshot saved:" << ui->lineEditSnapshotImagePath->text() + "/" + filename;
                 vkMainWindow->vkSystray->showMessage( global::name, "<b>Area captured</b>", QIcon( "" ), 10000 );
             }
         }
@@ -209,7 +213,7 @@ bool QvkSnapshot::is_imageFolderExists_and_haveWritePermission()
     return value;
 }
 
-
+// The slot is triggered if no recording is running
 void QvkSnapshot::slot_snapshotWindow( bool )
 {
     QvkSpezialSlider *spezialSlider = ui->centralWidget->findChild<QvkSpezialSlider *>( "sliderWaitBeforeSnapshot" );
@@ -220,10 +224,11 @@ void QvkSnapshot::slot_snapshotWindow( bool )
     bool bo = image.save( ui->lineEditSnapshotImagePath->text() + "/" + filename, ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
 
     if ( bo == false ) {
-        qDebug().noquote() << global::nameOutput << "Failed to save image";
+        qDebug().noquote() << global::nameOutput << "No recording and a Window Snapshot failed to save image";
     } else {
         if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
             vkMainWindow->vkSystray->showMessage( global::name, "<b>Window captured</b>", QIcon( "" ), 10000 );
+            qDebug().noquote() << global::nameOutput << "No Recording and a Window Snapshot is saved:" << ui->lineEditSnapshotImagePath->text() + "/" + filename;
         }
     }
 }
