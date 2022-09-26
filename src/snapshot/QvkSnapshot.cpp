@@ -87,7 +87,7 @@ void QvkSnapshot::slot_newImage()
         } else {
             if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
                 qDebug().noquote() << global::nameOutput << "Fullscreen snapshot saved:" << ui->lineEditSnapshotImagePath->text() + "/" + filename;
-                vkMainWindow->vkSystray->showMessage( global::name, "<b>Fullscreen captured</b>", QIcon( "" ), 10000 );
+                vkMainWindow->vkSystray->showMessage( global::name, "Fullscreen captured", QSystemTrayIcon::Information, 10000 );
             }
         }
     }
