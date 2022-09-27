@@ -145,7 +145,7 @@ private:
     bool is_videoFolderExists_and_haveWritePermission();
     QPalette appPalette;
     QString lastButtonPressed = "start";
-
+    bool isMonitorSource( QString audioSource );
 
 #ifdef Q_OS_WIN
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller;

@@ -1938,6 +1938,12 @@ QString QvkMainWindow::Pipeline_structured_output( QString pipeline )
 }
 
 
+bool QvkMainWindow::isMonitorSource(QString audioSource)
+{
+    return audioSource.endsWith(".monitor");
+}
+
+
 void QvkMainWindow::slot_Start()
 {
     if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  )
@@ -2022,6 +2028,9 @@ void QvkMainWindow::slot_Start()
             #ifdef Q_OS_LINUX
                 VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(x) )
                                                        .append( " client-name=" ).append( global::nameOutput + "." + QString( VK_getSelectedAudioDeviceName().at(x) ).replace( " ", "-") );
+                if (isMonitorSource(VK_getSelectedAudioDevice().at(x))) {
+                    VK_PipelineList << "audio/x-raw, channels=2";
+                }
                 VK_PipelineList << "audioconvert";
                 VK_PipelineList << "queue";
                 VK_PipelineList << "mix.";
