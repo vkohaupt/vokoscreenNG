@@ -914,7 +914,7 @@
                   <number>0</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>17</number>
+                  <number>0</number>
                  </property>
                  <item>
                   <widget class="QScrollArea" name="scrollAreaAudioDevice">
@@ -933,26 +933,10 @@
                       <x>0</x>
                       <y>0</y>
                       <width>573</width>
-                      <height>241</height>
+                      <height>258</height>
                      </rect>
                     </property>
-                    <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
-                     <property name="spacing">
-                      <number>0</number>
-                     </property>
-                     <property name="leftMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="bottomMargin">
-                      <number>0</number>
-                     </property>
-                    </layout>
+                    <layout class="QVBoxLayout" name="verticalLayoutAudioDevices"/>
                    </widget>
                   </widget>
                  </item>
