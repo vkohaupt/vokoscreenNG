@@ -144,7 +144,7 @@ int main(int argc, char *argv[])
     // qDebug() << "pathProfile" << pathToProfile;
 
     QSettings setingsGstDebug( pathAndFilename, QSettings::IniFormat );
-    QString debugLevel = setingsGstDebug.value( "sliderGstDebugLevel" ).toString();
+    QString debugLevel = setingsGstDebug.value( "sliderGstDebugLevel", "0" ).toString();
     // qDebug() << "debugLevel:" << debugLevel;
 
     if ( debugLevel.contains( "0" ) == false ) {
