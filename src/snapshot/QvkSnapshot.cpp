@@ -32,6 +32,7 @@
 #include "QvkSnapshot.h"
 #include "QvkSpezialSlider.h"
 #include "QvkDirDialog.h"
+#include "QvkShowMessage.h"
 
 
 QvkSnapshot::QvkSnapshot( QvkMainWindow *_vkMainWindow, Ui_formMainWindow *ui_formMainWindow )
@@ -74,12 +75,12 @@ void QvkSnapshot::supportedImageFormats()
 
 void QvkSnapshot::slot_newImage()
 {
-    screen = QGuiApplication::screens();
+    myScreen = QGuiApplication::screens();
     filename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss.zzz" ) + "." + ui->comboBoxSnapshotImageFormats->currentText().toUtf8();
 
     if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
     {
-        QImage image = screen.at( ui->comboBoxScreencastScreen->currentIndex() )->grabWindow(0).toImage();
+        QImage image = myScreen.at( ui->comboBoxScreencastScreen->currentIndex() )->grabWindow(0).toImage();
         bool bo = image.save( ui->lineEditSnapshotImagePath->text() + "/" + filename, ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
 
         if ( bo == false ) {
@@ -87,7 +88,8 @@ void QvkSnapshot::slot_newImage()
         } else {
             if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
                 qDebug().noquote() << global::nameOutput << "Fullscreen snapshot saved:" << ui->lineEditSnapshotImagePath->text() + "/" + filename;
-                vkMainWindow->vkSystray->showMessage( global::name, "Fullscreen captured", QSystemTrayIcon::Information, 10000 );
+                QvkShowMessage *vkShowMessage = new QvkShowMessage;
+                vkShowMessage->showMessage( QString( "Fullscreen captured" ), image );
             }
         }
     }
@@ -103,7 +105,7 @@ void QvkSnapshot::slot_newImage()
             vkWinInfo->slot_start();
         } else {
             WId xid = vkMainWindow->vkWinInfo->getWinID();
-            QImage image = screen.at( ui->comboBoxScreencastScreen->currentIndex() )->grabWindow(xid).toImage();
+            QImage image = myScreen.at( ui->comboBoxScreencastScreen->currentIndex() )->grabWindow(xid).toImage();
             bool bo = image.save( ui->lineEditSnapshotImagePath->text() + "/" + filename, ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
 
             if ( bo == false ) {
@@ -111,7 +113,8 @@ void QvkSnapshot::slot_newImage()
             } else {
                 if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
                     qDebug().noquote() << global::nameOutput << "A recording is running and a Window Snapshot is saved:" << ui->lineEditSnapshotImagePath->text() + "/" + filename;
-                    vkMainWindow->vkSystray->showMessage( global::name, "<b>Window captured</b>", QIcon( "" ), 10000 );
+                    QvkShowMessage *vkShowMessage = new QvkShowMessage;
+                    vkShowMessage->showMessage( "Window captured", image );
                 }
             }
         }
@@ -131,7 +134,7 @@ void QvkSnapshot::slot_newImage()
         int endx = vkMainWindow->vkRegionChoise->getWidth();
         int endy = vkMainWindow->vkRegionChoise->getHeight();
 
-        QImage image = screen.at( ui->comboBoxScreencastScreenArea->currentIndex() )->grabWindow(0).toImage();
+        QImage image = myScreen.at( ui->comboBoxScreencastScreenArea->currentIndex() )->grabWindow(0).toImage();
 
         QImage copyImage = image.copy( startx, starty, endx, endy );
         bool bo = copyImage.save( ui->lineEditSnapshotImagePath->text() + "/" + filename, ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
@@ -141,7 +144,8 @@ void QvkSnapshot::slot_newImage()
         } else {
             if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
                 qDebug().noquote() << global::nameOutput << "Aera Snapshot saved:" << ui->lineEditSnapshotImagePath->text() + "/" + filename;
-                vkMainWindow->vkSystray->showMessage( global::name, "<b>Area captured</b>", QIcon( "" ), 10000 );
+                QvkShowMessage *vkShowMessage = new QvkShowMessage;
+                vkShowMessage->showMessage( "Area captured", copyImage );
             }
         }
 
@@ -220,15 +224,16 @@ void QvkSnapshot::slot_snapshotWindow( bool )
     QThread::msleep( static_cast<unsigned long>( spezialSlider->value()) * 1000/10 );
 
     WId xid = vkWinInfo->activeWindow();
-    QImage image = screen.at( ui->comboBoxScreencastScreen->currentIndex() )->grabWindow(xid).toImage();
+    QImage image = myScreen.at( ui->comboBoxScreencastScreen->currentIndex() )->grabWindow(xid).toImage();
     bool bo = image.save( ui->lineEditSnapshotImagePath->text() + "/" + filename, ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
 
     if ( bo == false ) {
         qDebug().noquote() << global::nameOutput << "No recording and a Window Snapshot failed to save image";
     } else {
         if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
-            vkMainWindow->vkSystray->showMessage( global::name, "<b>Window captured</b>", QIcon( "" ), 10000 );
             qDebug().noquote() << global::nameOutput << "No Recording and a Window Snapshot is saved:" << ui->lineEditSnapshotImagePath->text() + "/" + filename;
+            QvkShowMessage *vkShowMessage = new QvkShowMessage;
+            vkShowMessage->showMessage( "Window captured", image );
         }
     }
 }

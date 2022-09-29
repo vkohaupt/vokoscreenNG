@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2022 Volker Kohaupt
- *
+ * 
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -20,50 +20,46 @@
  * --End_License--
  */
 
-#ifndef QVKSNAPSHOT_H
-#define QVKSNAPSHOT_H
+#ifndef QVKSHOWMESSAGE_H 
+#define QVKSHOWMESSAGE_H
 
 #include <QWidget>
-#include <QScreen>
+#include <QLabel>
+#include <QCloseEvent>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 
-#include "ui_formMainWindow.h"
-#include "mainwindow.h"
-#include "QvkWinInfo.h"
-
-class QvkSnapshot : public QWidget
+class QvkShowMessage : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit QvkSnapshot( QvkMainWindow *vkMainWindow,  Ui_formMainWindow *ui_formMainWindow );
-    ~QvkSnapshot();
-    QvkMainWindow *vkMainWindow;
-    void init();
-
-
-private:
-    Ui_formMainWindow *ui;
-    QList<QScreen *> myScreen;
-    void supportedImageFormats();
-    bool is_imageFolderExists_and_haveWritePermission();
-    QvkWinInfo *vkWinInfo;
-    QString filename;
+    QvkShowMessage();
+    virtual ~QvkShowMessage();
+    void showMessage( QString text , QImage image );
 
 
 public slots:
 
 
 private slots:
-    void slot_newImage();
-    void slot_snapshotWindow( bool );
-    void slot_imagePath();
 
-
-protected:
-
-
+    
 signals:
 
+
+protected:  
+    void closeEvent( QCloseEvent *event );
+
+
+private:
+    QHBoxLayout *hBoxLayoutWindow;
+    QVBoxLayout *vBoxLayoutIcon;
+    QVBoxLayout *vBoxLayoutTextImage;
+    QLabel *labelIcon;
+    QLabel *labelText;
+    QLabel *labelImage;
+    QScreen *myScreen;
 
 };
 

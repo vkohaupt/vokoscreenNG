@@ -210,3 +210,6 @@ include(snapshot/snapshot.pri)
 
 # Composite
 unix:include(composite/composite.pri)
+
+# ShowMessage
+include(showMessage/showMessage.pri)
