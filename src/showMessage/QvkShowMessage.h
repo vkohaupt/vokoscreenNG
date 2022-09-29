@@ -43,6 +43,7 @@ public slots:
 
 
 private slots:
+    void slot_durationButton();
 
     
 signals:
@@ -60,7 +61,9 @@ private:
     QLabel *labelText;
     QLabel *labelImage;
     QScreen *myScreen;
-
+    QLabel *labelImageDuration;
+    int grad = +36;
+    QTimer *timer;
 };
 
 #endif

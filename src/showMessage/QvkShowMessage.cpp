@@ -29,6 +29,7 @@
 #include <QIcon>
 #include <QPixmap>
 #include <QTimer>
+#include <QPainter>
 
 QvkShowMessage::QvkShowMessage()
 {
@@ -64,6 +65,16 @@ QvkShowMessage::QvkShowMessage()
     vBoxLayoutTextImage->addWidget( labelImage );
     hBoxLayoutWindow->addStretch();
 
+    labelImageDuration = new QLabel;
+    labelImageDuration->setAlignment( Qt::AlignTop );
+    hBoxLayoutWindow->addWidget( labelImageDuration );
+
+    timer = new QTimer();
+    timer->setTimerType( Qt::PreciseTimer );
+    timer->setInterval( 1000 );
+    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_durationButton() ) );
+    slot_durationButton();
+
     hide();
 }
 
@@ -97,7 +108,9 @@ void QvkShowMessage::showMessage( QString text, QImage image )
     move( myScreen->geometry().x() + myScreen->geometry().width() - width(),
           myScreen->geometry().y() + myScreen->geometry().height() - height() );
 
-    QTimer::singleShot( 10000, this, SLOT( close() ) );
+    QTimer::singleShot( 10000, Qt::PreciseTimer, this, SLOT( close() ) );
+
+    timer->start();
 
     show();
 }
@@ -106,4 +119,36 @@ void QvkShowMessage::showMessage( QString text, QImage image )
 void QvkShowMessage::closeEvent( QCloseEvent *event )
 {
     event->accept();
+}
+
+
+void QvkShowMessage::slot_durationButton()
+{
+    int h = 16;
+    QPixmap pixmap( h+2, h+2 );
+    pixmap.fill( Qt::transparent );
+
+    QPainter painter;
+    painter.begin( &pixmap );
+    painter.setRenderHints( QPainter::Antialiasing, true );
+    painter.setOpacity( 1.0 );
+
+    QPen pen;
+    pen.setColor( Qt::black );
+    pen.setWidth( 1 );
+    painter.setPen( pen );
+    painter.drawEllipse( QRectF( 1, 1, h, h ) );
+
+    pen.setColor( Qt::black );
+    pen.setWidth( 1 );
+    painter.setPen( pen );
+    QBrush brush;
+    brush.setStyle( Qt::SolidPattern );
+    brush.setColor( Qt::cyan );
+    painter.setBrush( brush );
+    grad = grad - 36;
+    painter.drawPie( 1, 1, h, h, 90*16, grad*16 );
+    painter.end();
+
+    labelImageDuration->setPixmap( pixmap );
 }
