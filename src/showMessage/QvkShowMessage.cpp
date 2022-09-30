@@ -35,7 +35,9 @@ QvkShowMessage::QvkShowMessage()
 {
     setFixedSize( 300, 130 );
     setWindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
-    setWindowFlag( Qt::Tool, true );
+    setWindowFlag( Qt::Window, true );
+    setWindowFlag( Qt::WindowStaysOnTopHint, true );
+
     setAttribute( Qt::WA_DeleteOnClose );
     setWindowTitle( global::name + " " + global::version );
 
