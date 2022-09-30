@@ -28,15 +28,15 @@
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation type="unfinished"/>
+        <translation>تنظیمات موفقیت آمیز بود</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation type="unfinished"/>
+        <translation>بستن پنجره و شروع دوباره برنامه</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation type="unfinished"/>
+        <translation>از وکواسکرین لذت ببرید</translation>
     </message>
 </context>
 <context>
@@ -486,47 +486,47 @@
     </message>
     <message>
         <source>Automatically</source>
-        <translation type="unfinished"/>
+        <translation>خودکار</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation type="unfinished"/>
+        <translation>ایجاد تصاویر برای هر تب</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation type="unfinished"/>
+        <translation>اطلاعات لایسنس</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"/>
+        <translation>روشن</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"/>
+        <translation>خاموش</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation type="unfinished"/>
+        <translation>میانبرهای فراگیر صفحه کلید</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation type="unfinished"/>
+        <translation>کلیدهای میانبر تعریف شده </translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation type="unfinished"/>
+        <translation>میانبر صفحه کلید تعریف نشده یا بیش از یکبار تعریف شده</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation type="unfinished"/>
+        <translation>اگر تعریف شده نشان داده شده اما کار نمیکند،توسط برنامه دیگری استفاده شده</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation type="unfinished"/>
+        <translation>عکس گرفتن فوری</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation type="unfinished"/>
+        <translation>مسیر تصویر</translation>
     </message>
 </context>
 <context>
