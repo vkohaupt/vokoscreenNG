@@ -35,7 +35,7 @@ private:
     QAction *magnifierAction;
     QAction *showclickAction;
     QAction *haloAction;
-
+    QAction *snapshotAction;
 
     QSize size;
     QPoint point;

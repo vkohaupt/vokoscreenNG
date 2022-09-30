@@ -75,6 +75,12 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     haloAction->setData( "Halo" );
     haloAction->setCheckable( true );
 
+    snapshotAction = new QAction( this );
+    snapshotAction->setIcon( QIcon( ":pictures/systray/snapshot.png" ) );
+    snapshotAction->setText( "Snapshot" );
+    snapshotAction->setData( "Snapshot" );
+    snapshotAction->setCheckable( false );
+
     exitAction = new QAction( this );
     exitAction->setIcon( QIcon( ":/pictures/systray/exit.png" ) );
     exitAction->setText( tr( "Exit" ) );
@@ -111,6 +117,7 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     connect( stopAction,     SIGNAL( triggered( bool ) ), ui->pushButtonStop,     SLOT( click() ) );
     connect( pauseAction,    SIGNAL( triggered( bool ) ), ui->pushButtonPause,    SLOT( click() ) );
     connect( continueAction, SIGNAL( triggered( bool ) ), ui->pushButtonContinue, SLOT( click() ) );
+    connect( snapshotAction, SIGNAL( triggered( bool ) ), ui->pushButtonSnapshotSnapshot, SLOT( click() ) );
     connect( exitAction,     SIGNAL( triggered( bool ) ), this,                   SLOT( close() ) );
     connect( exitAction,     SIGNAL( triggered( bool ) ), mainWindow,             SLOT( close() ) );
 
@@ -149,6 +156,7 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     menu->addAction( magnifierAction );
     menu->addAction( showclickAction );
     menu->addAction( haloAction );
+    menu->addAction( snapshotAction );
     menu->addSeparator();
     menu->addAction( exitAction );
 
@@ -292,6 +300,14 @@ void QvkSystrayAlternative::slot_shortcutSystray( QString device, QString shortc
         haloAction->setShortcut( QKeySequence::fromString( shortcut ) );
         if ( shortcut == "None" ){
             haloAction->setShortcutVisibleInContextMenu( false );
+        }
+    }
+
+    if ( device == "snapshot" ){
+        snapshotAction->setShortcutVisibleInContextMenu( true );
+        snapshotAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ){
+            snapshotAction->setShortcutVisibleInContextMenu( false );
         }
     }
 
