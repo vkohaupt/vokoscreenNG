@@ -59,8 +59,8 @@ QvkRegionChoise::QvkRegionChoise( Ui_formMainWindow *ui_formMainWindow ):handleP
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
 
-    // Hint: Qt::WindowStaysOnTopHint is only for X11 and Windows on WayLand not do it
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); // With Qt::ToolTip no keyboard;
+    // QTooltip have no keyboard input focus, we must set the window aktiv, see QvkRegionChoise::mouseReleaseEvent()
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
     setAttribute( Qt::WA_TranslucentBackground, true);
     setMouseTracking( true );
     setFrameColor( Qt::darkGreen );
@@ -270,6 +270,9 @@ void QvkRegionChoise::mouseReleaseEvent( QMouseEvent * event )
   }
 
   handlePressed = NoHandle;
+
+  // QTooltip have no keyboard input focus, we must set the window aktiv.
+  activateWindow();
 
   update();
 }
