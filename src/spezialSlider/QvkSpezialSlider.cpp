@@ -63,7 +63,7 @@ void QvkSpezialSlider::css_slider()
     slider.append( "border-radius: " + QString::number( grooveBorderRadius ) + "px;" );
     slider.append( "}" );
 
-    // Handle big
+    // Handle big unpressed
     if ( bigHandel == true ) {
         slider.append( "QSlider::handle:horizontal {" );
         slider.append( "background-color: white;" );
@@ -77,6 +77,22 @@ void QvkSpezialSlider::css_slider()
         slider.append( "border-radius: " + QString::number( fontWidth/2 + 2*handleBorderWith ) + "px;" );
         slider.append( "}" );
     }
+
+    // Handle big pressed
+    if ( bigHandel == true ) {
+        slider.append( "QSlider::handle:horizontal:pressed {" );
+        slider.append( "background-color: whitesmoke;" );
+        slider.append( "border-width: " + QString::number( handleBorderWith ) + "px;" );
+        slider.append( "border-color: " + handleBorderColor + ";" );
+        slider.append( "border-style: solid;" );
+        slider.append( "width: " +  QString::number( fontWidth + 2*handleBorderWith ) + "px;" );
+        slider.append( "height: " + QString::number( fontWidth + 2*handleBorderWith ) + "px;" );
+        slider.append( "margin-top: " +    QString::number( -( fontWidth/2 + handleBorderWith-1 ) ) + "px;" );
+        slider.append( "margin-bottom: " + QString::number( -( fontWidth/2 + handleBorderWith-1 ) ) + "px;" ); // minus ist gleich aus der Vertikalen Mitte
+        slider.append( "border-radius: " + QString::number( fontWidth/2 + 2*handleBorderWith ) + "px;" );
+        slider.append( "}" );
+    }
+
 
     // Handle mini
     if ( bigHandel == false ) {
