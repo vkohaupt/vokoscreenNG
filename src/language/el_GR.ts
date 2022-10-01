@@ -28,15 +28,15 @@
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation type="unfinished"/>
+        <translation>Η εγκατάσταση ήταν επιτυχημένη</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation type="unfinished"/>
+        <translation>Κλείστε αυτό το παράθυρο και ξεκινήστε το vokoscreenNG ξανά.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation type="unfinished"/>
+        <translation>Διασκεδάστε με το vokoscreenNG</translation>
     </message>
 </context>
 <context>
@@ -84,7 +84,7 @@
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Μεγαμπάιτ</translation>
+        <translation>Megabyte</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
@@ -436,7 +436,7 @@
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Ανοίγει σε ελαχιστοποίηση</translation>
+        <translation>Εκκίνηση σε ελαχιστοποίηση</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
@@ -484,47 +484,47 @@
     </message>
     <message>
         <source>Automatically</source>
-        <translation type="unfinished"/>
+        <translation>αυτόματα</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation type="unfinished"/>
+        <translation>Δημιουργία εικόνων των καρτελών</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation type="unfinished"/>
+        <translation>Πληροφορίες για την άδεια χρήσης</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation type="unfinished"/>
+        <translation>ΟΝ</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation type="unfinished"/>
+        <translation>ΟFF</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation type="unfinished"/>
+        <translation>Συντομεύσεις πληκτρολογίου</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation type="unfinished"/>
+        <translation>Πλήκτρα με αντιστοίχιση</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation type="unfinished"/>
+        <translation>Δεν υπάρχει καμμία αντιστοίχηση πληκτρολογίου ή υπάρχουν περισσότερες από μία</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation type="unfinished"/>
+        <translation>Αν έχει ένδειξη αντιστοίχισης αλλά δεν λειτουργεί, τότε χρησιμοποιείται από κάποιο άλλο πρόγραμμα.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation type="unfinished"/>
+        <translation>Στιγμιότυπο</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation type="unfinished"/>
+        <translation>Διαδρομή αποθήκευσης εικόνων</translation>
     </message>
 </context>
 <context>
