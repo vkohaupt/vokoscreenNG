@@ -93,11 +93,25 @@ void QvkSpezialSlider::css_slider()
         slider.append( "}" );
     }
 
-
-    // Handle mini
+    // Handle mini unpressed
     if ( bigHandel == false ) {
         slider.append( "QSlider::handle:horizontal {" );
         slider.append( "background-color: white;" );
+        slider.append( "border-width: " + QString::number( handleBorderWith ) + "px;" );
+        slider.append( "border-color: " + handleBorderColor + ";" );
+        slider.append( "border-style: solid;" );
+        slider.append( "width: " + QString::number( 10 ) + "px;" ); // content
+        slider.append( "height: " + QString::number( 10 ) + "px;" ); // content
+        slider.append( "margin-top: " + QString::number( -( 5  ) ) + "px;" ); // width/2
+        slider.append( "margin-bottom: " + QString::number( -( 5 ) ) + "px;" ); // width/2
+        slider.append( "border-radius: " + QString::number( 7 ) + "px;" ); // width/2+border
+        slider.append( "}" );
+    }
+
+    // Handle mini pressed
+    if ( bigHandel == false ) {
+        slider.append( "QSlider::handle:horizontal:pressed {" );
+        slider.append( "background-color: whitesmoke;" );
         slider.append( "border-width: " + QString::number( handleBorderWith ) + "px;" );
         slider.append( "border-color: " + handleBorderColor + ";" );
         slider.append( "border-style: solid;" );
