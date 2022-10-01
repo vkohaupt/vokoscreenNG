@@ -74,7 +74,7 @@ void QvkWinInfo::paintEvent( QPaintEvent *event )
     pixmap.fill( Qt::transparent );
     QPainter painter;
     painter.begin( &pixmap );
-    painter.setPen( QPen( Qt::blue, 4 ) );
+    painter.setPen( QPen( QColor( QString( "#3daee9" ) ), 4 ) );
     painter.drawLine( 50/2, 0, 50/2, 15 );
     painter.drawLine( 50/2, 50/2+10, 50/2, 50 );
     painter.drawLine( 0, 50/2, 50/2-10, 50/2 );

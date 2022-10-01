@@ -146,7 +146,7 @@ void QvkShowMessage::slot_durationButton()
     painter.setPen( pen );
     QBrush brush;
     brush.setStyle( Qt::SolidPattern );
-    brush.setColor( Qt::cyan );
+    brush.setColor( QString( "#3daee9" ) );
     painter.setBrush( brush );
     grad = grad - 36;
     painter.drawPie( 1, 1, h, h, 90*16, grad*16 );
