@@ -73,7 +73,7 @@ QCheckBox::indicator:unchecked:hover {
 QCheckBox::indicator:unchecked:hover:pressed {
     background: none;
     border-image: url(:/pictures/css/checkBox-unchecked-hover-pressed.png);
-    width: 16;
-    height: 16;
+    width: 18;
+    height: 18;
 }
 
