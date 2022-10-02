@@ -146,6 +146,7 @@ void QvkSpezialSlider::css_slider()
     // Handle disabled
     slider.append( "QSlider::handle:horizontal:disabled {" );
     slider.append( "border-color: lightgray;" );
+    slider.append( "content: 'kk'" );
     slider.append( "}" );
 
     setStyleSheet( slider );
