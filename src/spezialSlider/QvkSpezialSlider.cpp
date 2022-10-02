@@ -78,15 +78,30 @@ void QvkSpezialSlider::css_slider()
         slider.append( "}" );
     }
 
+    // Handle big hover
+    if ( bigHandel == true ) {
+        slider.append( "QSlider::handle:horizontal:hover {" );
+        slider.append( "background-color: white;" );
+        slider.append( "border-width: " + QString::number( 3 ) + "px;" );
+        slider.append( "border-color: " + handleBorderColor + ";" );
+        slider.append( "border-style: solid;" );
+        slider.append( "width: " +  QString::number( -1+fontWidth + 2*handleBorderWith ) + "px;" );
+        slider.append( "height: " + QString::number( -1+fontWidth + 2*handleBorderWith ) + "px;" );
+        slider.append( "margin-top: " +    QString::number( -( fontWidth/2 + handleBorderWith-1 ) ) + "px;" );
+        slider.append( "margin-bottom: " + QString::number( -( fontWidth/2 + handleBorderWith-1 ) ) + "px;" ); // minus ist gleich aus der Vertikalen Mitte
+        slider.append( "border-radius: " + QString::number( fontWidth/2 + 2*handleBorderWith ) + "px;" );
+        slider.append( "}" );
+    }
+
     // Handle big pressed
     if ( bigHandel == true ) {
         slider.append( "QSlider::handle:horizontal:pressed {" );
         slider.append( "background-color: whitesmoke;" );
-        slider.append( "border-width: " + QString::number( handleBorderWith ) + "px;" );
+        slider.append( "border-width: " + QString::number( 3 ) + "px;" );
         slider.append( "border-color: " + handleBorderColor + ";" );
         slider.append( "border-style: solid;" );
-        slider.append( "width: " +  QString::number( fontWidth + 2*handleBorderWith ) + "px;" );
-        slider.append( "height: " + QString::number( fontWidth + 2*handleBorderWith ) + "px;" );
+        slider.append( "width: " +  QString::number( -1+fontWidth + 2*handleBorderWith ) + "px;" );
+        slider.append( "height: " + QString::number( -1+fontWidth + 2*handleBorderWith ) + "px;" );
         slider.append( "margin-top: " +    QString::number( -( fontWidth/2 + handleBorderWith-1 ) ) + "px;" );
         slider.append( "margin-bottom: " + QString::number( -( fontWidth/2 + handleBorderWith-1 ) ) + "px;" ); // minus ist gleich aus der Vertikalen Mitte
         slider.append( "border-radius: " + QString::number( fontWidth/2 + 2*handleBorderWith ) + "px;" );

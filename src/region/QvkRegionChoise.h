@@ -49,7 +49,7 @@ public:
   void setWidth( int width );
   void setHeight( int height );
 
-  void setFrameColor( Qt::GlobalColor color );
+  void setFrameColor( QColor color );
 
   QScreen *screen;
   int screenWidth = 400; //Must set a value. Under windows comes a QPainter message
@@ -142,8 +142,8 @@ private:
 
   void vk_setGeometry( int x, int y, int with, int height );
 
-  Qt::GlobalColor getFrameColor();
-  Qt::GlobalColor frameColor;
+  QColor getFrameColor();
+  QColor frameColor;
 
 };
 #endif

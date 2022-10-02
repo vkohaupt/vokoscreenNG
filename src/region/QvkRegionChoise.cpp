@@ -36,7 +36,7 @@ QvkRegionChoise::QvkRegionChoise( Ui_formMainWindow *ui_formMainWindow ):handleP
                                    HandleColorBackground( Qt::lightGray ),
                                    HandleColorBackgroundSize( Qt::lightGray ),
                                    HandleColorByMousePressed( Qt::lightGray ),
-                                   colorSelectedArrow( Qt::green ),
+                                   colorSelectedArrow( QColor( QString ( "#3DAEE9" ) ) ),
                                    framePenWidth(4), // framePenWidth must be an even number
                                    framePenHalf(framePenWidth/2),
                                    radius(20),
@@ -59,11 +59,11 @@ QvkRegionChoise::QvkRegionChoise( Ui_formMainWindow *ui_formMainWindow ):handleP
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
 
-    // QTooltip have no keyboard input focus, we must set the window aktiv, see QvkRegionChoise::mouseReleaseEvent()
+    // QTooltip have no keyboard input focus, we must set the window active, see QvkRegionChoise::mouseReleaseEvent()
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
-    setAttribute( Qt::WA_TranslucentBackground, true);
+    setAttribute( Qt::WA_TranslucentBackground, true );
     setMouseTracking( true );
-    setFrameColor( Qt::darkGreen );
+    setFrameColor( QString( "#3DAEE9" ) );
     hide();
 }
 
@@ -1064,13 +1064,13 @@ void QvkRegionChoise::drawFrame(QPainter &painter)
 }
 
 
-void QvkRegionChoise::setFrameColor( Qt::GlobalColor color )
+void QvkRegionChoise::setFrameColor(QColor color )
 {
     frameColor = color;
 }
 
 
-Qt::GlobalColor QvkRegionChoise::getFrameColor()
+QColor QvkRegionChoise::getFrameColor()
 {
     return frameColor;
 }
