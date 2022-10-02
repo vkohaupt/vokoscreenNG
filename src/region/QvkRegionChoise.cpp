@@ -1064,7 +1064,7 @@ void QvkRegionChoise::drawFrame(QPainter &painter)
 }
 
 
-void QvkRegionChoise::setFrameColor(QColor color )
+void QvkRegionChoise::setFrameColor( QColor color )
 {
     frameColor = color;
 }
