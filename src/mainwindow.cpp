@@ -39,7 +39,6 @@
 #include <QDir>
 #include <QFileDialog>
 #include <QDesktopServices>
-#include <QMimeDatabase>
 #include <QStringList>
 #include <QLibraryInfo>
 #include <QThread>
@@ -1318,12 +1317,6 @@ void QvkMainWindow::slot_gst_formatVideoAudoicodec_available()
 
         for ( int x = 0; x < listElements.count(); x++ )
         {
-            // Mimetype is not needed
-            if ( listElements.at(x).contains( QRegExp( "*mimetype*", Qt::CaseInsensitive, QRegExp::Wildcard ) ) )
-            {
-                continue;
-            }
-
             bool available;
             QString element = QString( listElements.at( x ) ).section( ":", 1, 1 );
             GstElementFactory *factory = gst_element_factory_find( element.toLatin1() );
@@ -1445,8 +1438,6 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
 {
     QStringList MKV_QStringList = ( QStringList()
                                     << "muxer:matroskamux:mkv"
-                                    << "videomimetype:video/x-matroska"
-                                    << "audiomimetype:audio/x-matroska"
                                     << "videocodec:openh264enc:H.264"
                                 #ifdef Q_OS_LINUX
                                     << "videocodec:x264enc:x264"
@@ -1460,8 +1451,6 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
 
     QStringList WEBM_QStringList = ( QStringList()
                                      << "muxer:webmmux:webm"
-                                     << "videomimetype:video/webm"
-                                     << "audiomimetype:audio/webm"
                                      << "videocodec:vp8enc:VP8"
                                      << "audiocodec:vorbisenc:vorbis"
                                      << "audiocodec:opusenc:opus"
@@ -1469,8 +1458,6 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
 
     QStringList AVI_QStringList = ( QStringList()
                                      << "muxer:avimux:avi"
-                                     << "videomimetype:video/x-msvideo"
-                                     << "audiomimetype:audio/x-msvideo"
                                      << "videocodec:openh264enc:H.264"
                                 #ifdef Q_OS_LINUX
                                      << "videocodec:x264enc:x264"
@@ -1481,8 +1468,6 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
 
     QStringList MP4_QStringList = ( QStringList()
                                     << "muxer:mp4mux:mp4"
-                                    << "videomimetype:video/mp4"
-                                    << "audiomimetype:audio/mpeg"
                                     << "videocodec:openh264enc:H.264"
                                 #ifdef Q_OS_LINUX
                                     << "videocodec:x264enc:x264"
@@ -1494,8 +1479,6 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
     // https://de.wikipedia.org/wiki/QuickTime
     QStringList MOV_QStringList = ( QStringList()
                                     << "muxer:qtmux:mov"
-                                    << "videomimetype:video/mp4"
-                                    << "audiomimetype:audio/mpeg"
                                     << "videocodec:openh264enc:H.264"
                                 #ifdef Q_OS_LINUX
                                     << "videocodec:x264enc:x264"

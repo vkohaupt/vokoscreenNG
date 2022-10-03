@@ -6,7 +6,6 @@
 #include <QStandardPaths>
 #include <QDateTime>
 #include <QThread>
-#include <QMimeDatabase>
 #include <QMessageBox>
 #include <QDebug>
 #include <QStyleFactory>
