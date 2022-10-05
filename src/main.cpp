@@ -101,10 +101,12 @@ int main(int argc, char *argv[])
     // Initialize GStreamer
     // https://developer.gnome.org/gstreamer/stable/gst-running.html
 #ifdef Q_OS_LINUX
-    QString separator = ":";
+    QString separator;
+    separator = ":";
 #endif
 #ifdef Q_OS_WIN
-    QString separator = ";";
+    QString separator;
+    separator = ";";
 #endif
 
     // qmake options example:
