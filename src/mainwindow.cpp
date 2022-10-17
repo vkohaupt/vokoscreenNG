@@ -245,6 +245,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
     qDebug().noquote() << global::nameOutput << "Virtual Maschine:" << vkVirtual->isVirtualMaschine();
     qDebug().noquote() << global::nameOutput << "Operating system:" << QSysInfo::prettyProductName();
+    if ( QSysInfo::prettyProductName().contains( "Flatpak" ) ) {
+        isFlatpak = true;
+    }
+
     qDebug().noquote() << global::nameOutput << "KernelVersion:"  << QSysInfo::kernelVersion();
     qDebug().noquote() << global::nameOutput << "CPU Architecture:" << QSysInfo::currentCpuArchitecture();
     qDebug().noquote() << global::nameOutput << "Count CPU:" << QThread::idealThreadCount();
@@ -1436,11 +1440,16 @@ void QvkMainWindow::slot_gst_formatVideoAudoicodec_available()
 // This is the base for format, video and audiocodec
 void QvkMainWindow::VK_Supported_Formats_And_Codecs()
 {
+    QString videocodec_x264enc = "";
+    if ( isFlatpak == false ) {
+        videocodec_x264enc = "videocodec:x264enc:x264";
+    }
+
     QStringList MKV_QStringList = ( QStringList()
                                     << "muxer:matroskamux:mkv"
                                     << "videocodec:openh264enc:H.264"
                                 #ifdef Q_OS_LINUX
-                                    << "videocodec:x264enc:x264"
+                                    << videocodec_x264enc
                                 #endif
                                     << "videocodec:vp8enc:VP8"
                                     << "audiocodec:vorbisenc:vorbis"
@@ -1460,7 +1469,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                      << "muxer:avimux:avi"
                                      << "videocodec:openh264enc:H.264"
                                 #ifdef Q_OS_LINUX
-                                     << "videocodec:x264enc:x264"
+                                     << videocodec_x264enc
                                 #endif
                                      << "videocodec:vp8enc:VP8"
                                      << "audiocodec:lamemp3enc:mp3"
@@ -1470,7 +1479,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "muxer:mp4mux:mp4"
                                     << "videocodec:openh264enc:H.264"
                                 #ifdef Q_OS_LINUX
-                                    << "videocodec:x264enc:x264"
+                                    << videocodec_x264enc
                                 #endif
                                     << "audiocodec:lamemp3enc:mp3"
                                     << "audiocodec:opusenc:opus"
@@ -1481,7 +1490,7 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
                                     << "muxer:qtmux:mov"
                                     << "videocodec:openh264enc:H.264"
                                 #ifdef Q_OS_LINUX
-                                    << "videocodec:x264enc:x264"
+                                    << videocodec_x264enc
                                 #endif
                                     << "videocodec:vp8enc:VP8"
                                     << "audiocodec:lamemp3enc:mp3"

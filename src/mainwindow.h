@@ -72,6 +72,7 @@ public:
     QvkMagnifierController *vkMagnifierController;
     QvkGlobalShortcut *vkGlobalShortcut;
     bool wantRecording = true;
+    bool isFlatpak = false;
 
 
 private:
