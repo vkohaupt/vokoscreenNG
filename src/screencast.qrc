@@ -79,6 +79,8 @@
 <file>pictures/snapshot/snapshot.png</file>
 <file>pictures/snapshot/Camera-photo.png</file>
 <file>pictures/space.png</file>
+<file>pictures/spezialCheckBox/on.png</file>
+<file>pictures/spezialCheckBox/off.png</file>
 <file>pictures/status/warning.png</file>
 <file>pictures/status/information.png</file>
 <file>pictures/systray/magnification.png</file>
@@ -144,6 +146,8 @@
 <file>pictures/showClick/halo.license</file>
 <file>pictures/showClick/sandglass.license</file>
 <file>pictures/snapshot/snapshot.license</file>
+<file>pictures/spezialCheckBox/on.license</file>
+<file>pictures/spezialCheckBox/off.license</file>
 <file>pictures/status/warning.license</file>
 <file>pictures/systray/pause.license</file>
 <file>pictures/systray/magnification.license</file>
@@ -154,10 +158,6 @@
 <file>pictures/css/css.qss</file>
 <file>sound/wasapi.wav</file>
 <file>ciscoOpenh264/BINARY_LICENSE.txt</file>
-<file>spezialCheckBox/off.png</file>
-<file>spezialCheckBox/on.png</file>
-<file>spezialCheckBox/off.license</file>
-<file>spezialCheckBox/on.license</file>
 <file>language/ar.qm</file>
 <file>language/ca.qm</file>
 <file>language/cs_CZ.qm</file>

@@ -69,6 +69,7 @@ rm screencast.qrc
 echo =====================
 echo Create screencast.qrc
 echo =====================
+
 ##########
 # Pictures
 ##########
@@ -93,13 +94,6 @@ echo $array | sed "s/ /<\/file>\n<file>/g" >> screencast.qrc
 array="<file>"$( find ./ciscoOpenh264/* -name *.txt | cut -c 3- )"</file>"
 echo $array | sed "s/ /<\/file>\n<file>/g" >> screencast.qrc
 
-###############################
-# spezialCheckBox
-###############################
-array="<file>"$( find ./spezialCheckBox/* -name *.png | cut -c 3- )"</file>"
-echo $array | sed "s/ /<\/file>\n<file>/g" >> screencast.qrc
-array="<file>"$( find ./spezialCheckBox/* -name *.license | cut -c 3- )"</file>"
-echo $array | sed "s/ /<\/file>\n<file>/g" >> screencast.qrc
 
 ################
 # language packs
