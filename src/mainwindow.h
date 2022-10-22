@@ -147,6 +147,7 @@ private:
     QPalette appPalette;
     QString lastButtonPressed = "start";
 
+    bool openh264ProfileTest;
 
 #ifdef Q_OS_WIN
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller;
@@ -198,6 +199,8 @@ private slots:
     void slot_cancel( bool value );
 
     void slot_haveAudioDeviceSelected( bool bo );
+
+    void slot_comboBoxOpenh264Profile( QStringList list );
 
 
 signals:

@@ -32,6 +32,7 @@
 #include "QvkDirDialog.h"
 #include "QvkVirtual.h"
 #include "QvkSnapshot.h"
+#include "QvkPadsAndCaps.h"
 
 #include <QDebug>
 #include <QDateTime>
@@ -614,12 +615,30 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkImageFromTabs->init( ui );
 
     is_videoFolderExists_and_haveWritePermission();
+
+    openh264ProfileTest = false;
+    if ( openh264ProfileTest == true ) {
+        QvkPadsAndCaps *vkPadsAndCaps = new QvkPadsAndCaps;
+        connect( vkPadsAndCaps, SIGNAL( signal_openh264encProfile( QStringList ) ), this, SLOT( slot_comboBoxOpenh264Profile( QStringList ) ) );
+        vkPadsAndCaps->pad_profile();
+    } else {
+        ui->label_61->setVisible( false );
+        ui->comboBox_openh264_profile->setVisible( false );
+    }
 }
 
 
 QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
+}
+
+
+void QvkMainWindow::slot_comboBoxOpenh264Profile( QStringList list )
+{
+    ui->comboBox_openh264_profile->clear();
+    ui->comboBox_openh264_profile->addItems( list );
+    ui->comboBox_openh264_profile->setCurrentText( "baseline" );
 }
 
 
@@ -1697,6 +1716,7 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << "multi-thread=" + QString::number( QThread::idealThreadCount() );
         list << "slice-mode=auto"; // Number of slices equal to number of threads
         value = list.join( " " );
+//        value.append( " ! video/x-h264, profile=" ).append( "\"" ).append( ui->comboBox_openh264_profile->currentText().append( "\"" ) );
         value.append( " ! h264parse" );
     }
 

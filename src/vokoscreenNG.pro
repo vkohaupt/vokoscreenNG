@@ -213,3 +213,6 @@ unix:include(composite/composite.pri)
 
 # ShowMessage
 include(showMessage/showMessage.pri)
+
+# padsAndCaps
+include(padsAndCaps/padsAndCaps.pri)
