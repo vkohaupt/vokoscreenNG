@@ -1252,7 +1252,7 @@
                           <item>
                            <widget class="QLabel" name="label_61">
                             <property name="text">
-                             <string>Profile</string>
+                             <string notr="true">Profile</string>
                             </property>
                            </widget>
                           </item>
