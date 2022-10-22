@@ -1716,7 +1716,9 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << "multi-thread=" + QString::number( QThread::idealThreadCount() );
         list << "slice-mode=auto"; // Number of slices equal to number of threads
         value = list.join( " " );
-//        value.append( " ! video/x-h264, profile=" ).append( "\"" ).append( ui->comboBox_openh264_profile->currentText().append( "\"" ) );
+        if ( openh264ProfileTest == true ) {
+            value.append( " ! video/x-h264, profile=" ).append( "\"" ).append( ui->comboBox_openh264_profile->currentText().append( "\"" ) );
+        }
         value.append( " ! h264parse" );
     }
 
