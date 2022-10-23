@@ -25,18 +25,20 @@
 
 #include <QScreen>
 #include <QPixmap>
-#include <QDialog>
-#include <QLabel>
 #include <QApplication>
 #include <QTimer>
+#include <QWidget>
 
-class QvkMagnifier: public QDialog
+class QvkMagnifier: public QWidget
 { 
 Q_OBJECT
 public:
   QvkMagnifier();
   virtual ~QvkMagnifier();
-  
+  QPixmap pixmap;
+  bool isToolButtonWindow = false;
+  bool isToolButtonCircle = false;
+
 
 public slots:
   void slot_magnifierShow( bool value );
@@ -50,6 +52,7 @@ private slots:
   
 
 protected:  
+  void paintEvent( QPaintEvent *event );
 
   
 signals:
@@ -57,11 +60,10 @@ signals:
   
 private:
   void setMagnifier();
-  QLabel *label;
   int border;
   int distanceX;
   int distanceY;
-  int faktor;
+  int factor;
   QTimer *timer;
   QPoint globalCursorPos;
   QScreen *screen;

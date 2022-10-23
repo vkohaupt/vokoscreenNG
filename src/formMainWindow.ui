@@ -371,7 +371,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -583,6 +583,70 @@
                   <property name="sizeConstraint">
                    <enum>QLayout::SetDefaultConstraint</enum>
                   </property>
+                  <item>
+                   <widget class="QFrame" name="frame_4">
+                    <property name="frameShape">
+                     <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_62">
+                     <item>
+                      <widget class="QToolButton" name="toolButton_magnifier_window">
+                       <property name="text">
+                        <string notr="true"/>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="screencast.qrc">
+                         <normaloff>:/pictures/camera/window-rectangle-on.png</normaloff>:/pictures/camera/window-rectangle-on.png</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>24</width>
+                         <height>24</height>
+                        </size>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                       <property name="checked">
+                        <bool>true</bool>
+                       </property>
+                       <property name="autoExclusive">
+                        <bool>true</bool>
+                       </property>
+                       <property name="autoRaise">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QToolButton" name="toolButton_magnifier_circle">
+                       <property name="text">
+                        <string notr="true"/>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="screencast.qrc">
+                         <normaloff>:/pictures/camera/window-circle-off.png</normaloff>:/pictures/camera/window-circle-off.png</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>24</width>
+                         <height>24</height>
+                        </size>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                       <property name="autoExclusive">
+                        <bool>true</bool>
+                       </property>
+                       <property name="autoRaise">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
                   <item>
                    <spacer name="horizontalSpacer_16">
                     <property name="orientation">

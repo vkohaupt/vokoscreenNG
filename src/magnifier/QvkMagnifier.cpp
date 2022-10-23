@@ -26,27 +26,22 @@
 #include <QDebug>
 #include <QScreen>
 #include <QRegion>
+#include <QPainter>
+#include <QPaintEvent>
+#include <QBitmap>
+#include <QPainterPath>
 
 QvkMagnifier::QvkMagnifier()
 {
-    faktor = 2; // Vergrößerungsfaktor
-    label = new QLabel( this );
+    factor = 2; // Vergrößerungsfaktor
 
     slot_magnifier200x200();
 
-    resize( 2 * distanceX * faktor, 2 * distanceY * faktor );
+    resize( 2 * distanceX * factor, 2 * distanceY * factor );
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar
+    setAttribute( Qt::WA_TranslucentBackground, true ); // neu
     border = 3;
     distanceCopyMagnifier = 30;
-
-    label->setGeometry( QRect( 0 + border, 0 + border, this->width() - 2 * border, this->height() - 2 * border ) );
-    label->setAlignment( Qt::AlignCenter );
-    label->setScaledContents( true );
-
-    QPalette pal = QPalette();
-    pal.setColor( QPalette::Window, Qt::gray );
-    setAutoFillBackground( true );
-    setPalette( pal );
 
     timer = new QTimer( this );
     timer->setTimerType( Qt::PreciseTimer );
@@ -80,8 +75,7 @@ void QvkMagnifier::slot_magnifier200x200()
 {
     distanceX = 50;
     distanceY = 50; // distanceY ist der Abstand Cursor zur Lupe
-    resize( 2 * distanceX * faktor, 2 * distanceY * faktor );
-    label->setGeometry( QRect( 0 + border, 0 + border, this->width() - 2 * border, this->height() - 2 * border ) );
+    resize( 2 * distanceX * factor, 2 * distanceY * factor );
 }
 
 
@@ -89,8 +83,7 @@ void QvkMagnifier::slot_magnifier400x200()
 {
     distanceX = 100;
     distanceY = 50; // distanceY ist der Abstand Cursor zur Lupe
-    resize( 2 * distanceX * faktor, 2 * distanceY * faktor );
-    label->setGeometry( QRect( 0 + border, 0 + border, this->width() - 2 * border, this->height() - 2 * border ) );
+    resize( 2 * distanceX * factor, 2 * distanceY * factor );
 }
 
 
@@ -98,8 +91,7 @@ void QvkMagnifier::slot_magnifier600x200()
 {
     distanceX = 150;
     distanceY = 50; // distanceY ist der Abstand Cursor zur Lupe
-    resize( 2 * distanceX * faktor, 2 * distanceY * faktor );
-    label->setGeometry( QRect( 0 + border, 0 + border, this->width() - 2 * border, this->height() - 2 * border ) );
+    resize( 2 * distanceX * factor, 2 * distanceY * factor );
 }
 
 
@@ -462,18 +454,62 @@ void QvkMagnifier::slot_mytimer()
     }
 
     if ( nameRegion != region::none ) {
-        QPixmap pixmap = screen->grabWindow( 0,
-                                             valueX,
-                                             valueY,
-                                             2*distanceX,
-                                             2*distanceY);
+        pixmap = screen->grabWindow( 0,
+                                     valueX,
+                                     valueY,
+                                     2*distanceX,
+                                     2*distanceY);
 
-        label->setPixmap( pixmap );
+        repaint();
 
         if ( debug == true ) { qDebug().noquote() << "Grab" << enumToString( nameRegion ) << valueRegion
                                                   << "globalCursorPos:" << globalCursorPos
                                                   << "screenCursorPos:" << screenCursorPos << screenIndex; }
     }
+}
+
+
+void QvkMagnifier::paintEvent( QPaintEvent *event )
+{
+    Q_UNUSED(event);
+    if ( pixmap.isNull() == true ) {
+        return;
+    }
+
+    QPixmap painterPixmap( pixmap.width() * factor, pixmap.height() * factor );
+    painterPixmap.fill( Qt::transparent );
+
+    QPainter painter;
+    painter.begin( &painterPixmap );
+    painter.setRenderHints( QPainter::Antialiasing, true );
+    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
+
+    if ( isToolButtonCircle == true ) {
+        QPainterPath path;
+        path.addEllipse( 0, 0, pixmap.width() * factor, pixmap.height() * factor );
+        painter.setClipPath( path );
+    }
+
+    QPixmap pix = pixmap.scaled( painterPixmap.width(), painterPixmap.height(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+    painter.drawPixmap( QPoint( 0, 0 ), pix );
+
+    QPen pen;
+    pen.setWidth( 7 );
+    pen.setColor( Qt::lightGray );
+    painter.setPen( pen );
+    if ( isToolButtonCircle == true ) {
+        painter.drawEllipse( 0, 0, pixmap.width() * factor, pixmap.height() * factor );
+    } else {
+        painter.drawRect( 0, 0, pixmap.width() * factor, pixmap.height() * factor );
+    }
+    painter.end();
+
+    QPainter painter_1;
+    painter_1.begin( this );
+    painter_1.setRenderHint( QPainter::Antialiasing, true );
+    painter_1.setRenderHint( QPainter::SmoothPixmapTransform, true );
+    painter_1.drawPixmap( QPoint( 0, 0 ), painterPixmap );
+    painter_1.end();
 }
 
 
@@ -526,3 +562,30 @@ QString QvkMagnifier::enumToString( region reg )
 
     return string;
 }
+
+/*
+    QRegion region( 0, 0, pixmap.width() * factor, pixmap.height() * factor, QRegion::Ellipse );
+    setMask( region );
+
+    QPainter painter;
+    painter.begin( &painterPixmap );
+    painter.setRenderHints( QPainter::Antialiasing, true );
+    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
+    QPixmap pix = pixmap.scaled( painterPixmap.width(), painterPixmap.height(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+    painter.drawPixmap( QPoint( 0, 0 ), pix );                            // hier wird das pixmap gezeichnet
+    QPen pen;
+    pen.setWidth( 6 );
+    pen.setColor( Qt::gray );
+    painter.setPen( pen );
+    painter.drawEllipse( 3, 3, pixmap.width()*2-6, pixmap.height()*2-6 );      // Und hier der Kreis
+    painter.end();
+
+    QPainter painter_1;
+    painter_1.begin( this );
+    painter_1.setRenderHint( QPainter::Antialiasing, true );
+    painter_1.setRenderHint( QPainter::SmoothPixmapTransform, true );
+    painter_1.drawPixmap( QPoint( 0, 0 ), painterPixmap );
+    painter_1.end();
+
+    setMask( pixmap.mask() );
+*/
