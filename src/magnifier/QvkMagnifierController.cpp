@@ -38,7 +38,7 @@ QvkMagnifierController::QvkMagnifierController( Ui_formMainWindow *ui ) : vkMagn
     connect( sliderMagnification,   SIGNAL( valueChanged( int ) ), this,        SLOT( slot_valueChanged( int ) ) );
     sliderMagnification->setValue( 2 );
 
-    connect( ui->toolButton_magnifier_window, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonWindowClicked( bool ) ) );
+    connect( ui->toolButton_magnifier_rectangle, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonRectangleClicked( bool ) ) );
     connect( ui->toolButton_magnifier_circle, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonCircleClicked( bool ) ) );
 }
 
@@ -64,9 +64,9 @@ void QvkMagnifierController::slot_valueChanged( int value )
 }
 
 
-void QvkMagnifierController::slot_toolButtonWindowClicked( bool value )
+void QvkMagnifierController::slot_toolButtonRectangleClicked( bool value )
 {
-    vkMagnifier->isToolButtonWindow = value;
+    vkMagnifier->isToolButtonRectangle = value;
     vkMagnifier->isToolButtonCircle = false;
 }
 
@@ -74,5 +74,5 @@ void QvkMagnifierController::slot_toolButtonWindowClicked( bool value )
 void QvkMagnifierController::slot_toolButtonCircleClicked( bool value )
 {
     vkMagnifier->isToolButtonCircle = value;
-    vkMagnifier->isToolButtonWindow = false;
+    vkMagnifier->isToolButtonRectangle = false;
 }

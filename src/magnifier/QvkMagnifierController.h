@@ -40,7 +40,7 @@ public slots:
 
 private slots:
    void slot_valueChanged( int value );
-   void slot_toolButtonWindowClicked( bool value );
+   void slot_toolButtonRectangleClicked( bool value );
    void slot_toolButtonCircleClicked( bool value );
 
 

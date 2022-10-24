@@ -435,6 +435,12 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
                 listToolButton.at(i)->click();
             }
         }
+
+        if ( listToolButton.at(i)->objectName().contains( "toolButton_magnifier" ) ) {
+            if ( settings.value( listToolButton.at(i)->objectName() ).toBool() == true ) {
+                listToolButton.at(i)->click();
+            }
+        }
     }
 
     QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui_mainwindow->centralWidget->findChildren<QvkSpezialCheckbox *>();
@@ -542,6 +548,10 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
         }
 
         if ( listToolButton.at(i)->objectName().contains( "toolButton_camera_view" ) ) {
+                settings.setValue( listToolButton.at(i)->objectName(), listToolButton.at(i)->isChecked() );
+        }
+
+        if ( listToolButton.at(i)->objectName().contains( "toolButton_magnifier" ) ) {
                 settings.setValue( listToolButton.at(i)->objectName(), listToolButton.at(i)->isChecked() );
         }
     }

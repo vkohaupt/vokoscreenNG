@@ -590,7 +590,7 @@
                     </property>
                     <layout class="QHBoxLayout" name="horizontalLayout_62">
                      <item>
-                      <widget class="QToolButton" name="toolButton_magnifier_window">
+                      <widget class="QToolButton" name="toolButton_magnifier_rectangle">
                        <property name="text">
                         <string notr="true"/>
                        </property>

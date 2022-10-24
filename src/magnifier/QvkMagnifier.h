@@ -36,7 +36,7 @@ public:
   QvkMagnifier();
   virtual ~QvkMagnifier();
   QPixmap pixmap;
-  bool isToolButtonWindow = false;
+  bool isToolButtonRectangle = false;
   bool isToolButtonCircle = false;
 
 
