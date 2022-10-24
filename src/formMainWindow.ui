@@ -596,7 +596,8 @@
                        </property>
                        <property name="icon">
                         <iconset resource="screencast.qrc">
-                         <normaloff>:/pictures/camera/window-rectangle-on.png</normaloff>:/pictures/camera/window-rectangle-on.png</iconset>
+                         <normaloff>:/pictures/camera/window-rectangle-off.png</normaloff>
+                         <normalon>:/pictures/camera/window-rectangle-on.png</normalon>:/pictures/camera/window-rectangle-off.png</iconset>
                        </property>
                        <property name="iconSize">
                         <size>
@@ -625,7 +626,8 @@
                        </property>
                        <property name="icon">
                         <iconset resource="screencast.qrc">
-                         <normaloff>:/pictures/camera/window-circle-off.png</normaloff>:/pictures/camera/window-circle-off.png</iconset>
+                         <normaloff>:/pictures/camera/window-circle-off.png</normaloff>
+                         <normalon>:/pictures/camera/window-circle-on.png</normalon>:/pictures/camera/window-circle-off.png</iconset>
                        </property>
                        <property name="iconSize">
                         <size>

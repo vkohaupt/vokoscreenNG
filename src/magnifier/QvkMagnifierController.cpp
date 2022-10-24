@@ -23,10 +23,10 @@
 #include "QvkMagnifierController.h"
 #include "QvkSpezialSlider.h"
 
-QvkMagnifierController::QvkMagnifierController( Ui_formMainWindow *ui_mainwindow ) : vkMagnifier(new QvkMagnifier)
+QvkMagnifierController::QvkMagnifierController( Ui_formMainWindow *ui ) : vkMagnifier(new QvkMagnifier)
 {
     QvkSpezialSlider *sliderMagnification = new QvkSpezialSlider( Qt::Horizontal );
-    ui_mainwindow->horizontalLayout_8->insertWidget( 0, sliderMagnification );
+    ui->horizontalLayout_8->insertWidget( 0, sliderMagnification );
     sliderMagnification->setObjectName( "sliderMagnification" );
     sliderMagnification->setTracking( true );
     sliderMagnification->setMinimum( 1 );
@@ -34,12 +34,12 @@ QvkMagnifierController::QvkMagnifierController( Ui_formMainWindow *ui_mainwindow
     sliderMagnification->setPageStep( 1 );
     sliderMagnification->show();
 
-    connect( ui_mainwindow->checkBoxMagnifier, SIGNAL( clicked( bool ) ),     vkMagnifier, SLOT( slot_magnifierShow( bool ) ) );
-    connect( sliderMagnification,              SIGNAL( valueChanged( int ) ), this,        SLOT( slot_valueChanged( int ) ) );
+    connect( ui->checkBoxMagnifier, SIGNAL( clicked( bool ) ),     vkMagnifier, SLOT( slot_magnifierShow( bool ) ) );
+    connect( sliderMagnification,   SIGNAL( valueChanged( int ) ), this,        SLOT( slot_valueChanged( int ) ) );
     sliderMagnification->setValue( 2 );
 
-    connect( ui_mainwindow->toolButton_magnifier_window, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonWindowClicked( bool ) ) );
-    connect( ui_mainwindow->toolButton_magnifier_circle, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonCircleClicked( bool ) ) );
+    connect( ui->toolButton_magnifier_window, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonWindowClicked( bool ) ) );
+    connect( ui->toolButton_magnifier_circle, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonCircleClicked( bool ) ) );
 }
 
 

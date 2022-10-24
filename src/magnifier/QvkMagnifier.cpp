@@ -510,6 +510,9 @@ void QvkMagnifier::paintEvent( QPaintEvent *event )
     painter_1.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painter_1.drawPixmap( QPoint( 0, 0 ), painterPixmap );
     painter_1.end();
+
+    // This can delete if vokoscreen run only with a compositer
+    setMask( painterPixmap.mask() );
 }
 
 

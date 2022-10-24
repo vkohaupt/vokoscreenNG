@@ -33,7 +33,7 @@ class QvkMagnifierController : public QObject
 public:
    QvkMagnifierController( Ui_formMainWindow *ui_mainwindow );
    virtual ~QvkMagnifierController();
-
+   Ui_formMainWindow *ui;
   
 public slots:
 
