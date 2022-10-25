@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2022 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -21,25 +21,39 @@
  */
 
 #include "QvkMagnifierController.h"
-#include "QvkSpezialSlider.h"
 
-QvkMagnifierController::QvkMagnifierController( Ui_formMainWindow *ui ) : vkMagnifier(new QvkMagnifier)
+#include <QDebug>
+
+QvkMagnifierController::QvkMagnifierController( Ui_formMainWindow *myui ) : vkMagnifier(new QvkMagnifier)
 {
-    QvkSpezialSlider *sliderMagnification = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_8->insertWidget( 0, sliderMagnification );
-    sliderMagnification->setObjectName( "sliderMagnification" );
-    sliderMagnification->setTracking( true );
-    sliderMagnification->setMinimum( 1 );
-    sliderMagnification->setMaximum( 3 );
-    sliderMagnification->setPageStep( 1 );
-    sliderMagnification->show();
+    ui = myui;
 
-    connect( ui->checkBoxMagnifier, SIGNAL( clicked( bool ) ),     vkMagnifier, SLOT( slot_magnifierShow( bool ) ) );
-    connect( sliderMagnification,   SIGNAL( valueChanged( int ) ), this,        SLOT( slot_valueChanged( int ) ) );
-    sliderMagnification->setValue( 2 );
+    sliderMagnificationRectangle = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_rectangle->insertWidget( 1, sliderMagnificationRectangle );
+    sliderMagnificationRectangle->setObjectName( "sliderMagnificationRectangle" );
+    sliderMagnificationRectangle->setTracking( true );
+    sliderMagnificationRectangle->setMinimum( 1 );
+    sliderMagnificationRectangle->setMaximum( 3 );
+    sliderMagnificationRectangle->setPageStep( 1 );
+    sliderMagnificationRectangle->show();
+
+    sliderMagnificationElipse = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_elipse->insertWidget( 1, sliderMagnificationElipse );
+    sliderMagnificationElipse->setObjectName( "sliderMagnificationElipse" );
+    sliderMagnificationElipse->setTracking( true );
+    sliderMagnificationElipse->setMinimum( 1 );
+    sliderMagnificationElipse->setMaximum( 2 );
+    sliderMagnificationElipse->setPageStep( 1 );
+    sliderMagnificationElipse->show();
+
+    connect( ui->checkBoxMagnifier,         SIGNAL( clicked( bool ) ),     vkMagnifier, SLOT( slot_magnifierShow( bool ) ) );
+    connect( sliderMagnificationRectangle,  SIGNAL( valueChanged( int ) ), this,        SLOT( slot_valueChangedRectangle( int ) ) );
+    sliderMagnificationRectangle->setValue( 2 );
+    connect( sliderMagnificationElipse,     SIGNAL( valueChanged( int ) ), this,        SLOT( slot_valueChangedElipse( int ) ) );
 
     connect( ui->toolButton_magnifier_rectangle, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonRectangleClicked( bool ) ) );
-    connect( ui->toolButton_magnifier_circle, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonCircleClicked( bool ) ) );
+    connect( ui->toolButton_magnifier_elipse,    SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonElipseClicked( bool ) ) );
+    connect( ui->toolButton_magnifier_circle,    SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonCircleClicked( bool ) ) );
 }
 
 
@@ -48,18 +62,36 @@ QvkMagnifierController::~QvkMagnifierController()
 }
 
 
-void QvkMagnifierController::slot_valueChanged( int value )
+void QvkMagnifierController::slot_valueChangedRectangle( int value )
 {
-    if ( value == 1 ) {
-       vkMagnifier->slot_magnifier200x200();
-    }
+    if ( ui->toolButton_magnifier_rectangle->isChecked() == true )
+    {
+        if ( value == 1 ) {
+            vkMagnifier->slot_magnifier200x200();
+        }
 
-    if ( value == 2 ) {
-       vkMagnifier->slot_magnifier400x200();
-    }
+        if ( value == 2 ) {
+            vkMagnifier->slot_magnifier400x200();
+        }
 
-    if ( value == 3 ) {
-       vkMagnifier->slot_magnifier600x200();
+        if ( value == 3 ) {
+            vkMagnifier->slot_magnifier600x200();
+        }
+    }
+}
+
+
+void QvkMagnifierController::slot_valueChangedElipse( int value )
+{
+    if ( ui->toolButton_magnifier_elipse->isChecked() == true )
+    {
+        if ( value == 1 ) {
+            vkMagnifier->slot_magnifier400x200();
+        }
+
+        if ( value == 2 ) {
+            vkMagnifier->slot_magnifier600x200();
+        }
     }
 }
 
@@ -67,12 +99,25 @@ void QvkMagnifierController::slot_valueChanged( int value )
 void QvkMagnifierController::slot_toolButtonRectangleClicked( bool value )
 {
     vkMagnifier->isToolButtonRectangle = value;
+    vkMagnifier->isToolButtonElipse = false;
     vkMagnifier->isToolButtonCircle = false;
+    slot_valueChangedRectangle( sliderMagnificationRectangle->value() );
+}
+
+
+void QvkMagnifierController::slot_toolButtonElipseClicked( bool value )
+{
+    vkMagnifier->isToolButtonRectangle = false;
+    vkMagnifier->isToolButtonElipse = value;
+    vkMagnifier->isToolButtonCircle = false;
+    slot_valueChangedElipse( sliderMagnificationElipse->value() );
 }
 
 
 void QvkMagnifierController::slot_toolButtonCircleClicked( bool value )
 {
-    vkMagnifier->isToolButtonCircle = value;
     vkMagnifier->isToolButtonRectangle = false;
+    vkMagnifier->isToolButtonElipse = false;
+    vkMagnifier->isToolButtonCircle = value;
+    vkMagnifier->slot_magnifier200x200();
 }

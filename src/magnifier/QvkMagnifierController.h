@@ -25,6 +25,7 @@
 
 #include "ui_formMainWindow.h"
 #include "QvkMagnifier.h"
+#include "QvkSpezialSlider.h"
 
 class QvkMagnifierController : public QObject
 {
@@ -39,13 +40,18 @@ public slots:
 
 
 private slots:
-   void slot_valueChanged( int value );
+   void slot_valueChangedRectangle( int value );
+   void slot_valueChangedElipse( int value );
+
    void slot_toolButtonRectangleClicked( bool value );
+   void slot_toolButtonElipseClicked( bool value );
    void slot_toolButtonCircleClicked( bool value );
 
 
 private:
   QvkMagnifier *vkMagnifier;
+  QvkSpezialSlider *sliderMagnificationRectangle;
+  QvkSpezialSlider *sliderMagnificationElipse;
 
 
 protected:

@@ -515,15 +515,15 @@
                </spacer>
               </item>
               <item>
-               <layout class="QGridLayout" name="gridLayout_9" rowstretch="0,0,0,0,0" columnstretch="0,0,0,0">
+               <layout class="QGridLayout" name="gridLayout_9" rowstretch="0,0,0,0,0,0" columnstretch="0,0,0,0">
                 <property name="leftMargin">
                  <number>1</number>
                 </property>
                 <property name="verticalSpacing">
                  <number>0</number>
                 </property>
-                <item row="4" column="3">
-                 <widget class="QToolButton" name="help_screencast_deleteallsettings">
+                <item row="0" column="3">
+                 <widget class="QToolButton" name="help_screencast_magnifier">
                   <property name="toolTip">
                    <string>Help</string>
                   </property>
@@ -532,63 +532,29 @@
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="2">
-                 <spacer name="verticalSpacer_9">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
+                <item row="0" column="1" rowspan="2">
+                 <widget class="QFrame" name="frame_5">
+                  <property name="frameShape">
+                   <enum>QFrame::NoFrame</enum>
                   </property>
-                  <property name="sizeType">
-                   <enum>QSizePolicy::Minimum</enum>
+                  <property name="frameShadow">
+                   <enum>QFrame::Plain</enum>
                   </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
+                  <property name="lineWidth">
+                   <number>0</number>
                   </property>
-                 </spacer>
-                </item>
-                <item row="2" column="3">
-                 <widget class="QToolButton" name="help_screencast_countdown">
-                  <property name="toolTip">
-                   <string>Help</string>
-                  </property>
-                  <property name="text">
-                   <string notr="true">Help</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0">
-                 <widget class="QLabel" name="labelScreencastCountdownText">
-                  <property name="text">
-                   <string>Countdown</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0">
-                 <widget class="QCheckBox" name="checkBoxMagnifier">
-                  <property name="toolTip">
-                   <string notr="true">CTRL+SHIFT+F9</string>
-                  </property>
-                  <property name="text">
-                   <string>Magnification</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <layout class="QHBoxLayout" name="horizontalLayout_8">
-                  <property name="sizeConstraint">
-                   <enum>QLayout::SetDefaultConstraint</enum>
-                  </property>
-                  <item>
-                   <widget class="QFrame" name="frame_4">
-                    <property name="frameShape">
-                     <enum>QFrame::NoFrame</enum>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_62">
+                  <layout class="QVBoxLayout" name="verticalLayout_28">
+                   <property name="spacing">
+                    <number>2</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_rectangle">
                      <item>
                       <widget class="QToolButton" name="toolButton_magnifier_rectangle">
                        <property name="text">
@@ -615,10 +581,71 @@
                         <bool>true</bool>
                        </property>
                        <property name="autoRaise">
-                        <bool>true</bool>
+                        <bool>false</bool>
                        </property>
                       </widget>
                      </item>
+                     <item>
+                      <spacer name="horizontalSpacer_49">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_elipse">
+                     <item>
+                      <widget class="QToolButton" name="toolButton_magnifier_elipse">
+                       <property name="text">
+                        <string notr="true"/>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="screencast.qrc">
+                         <normaloff>:/pictures/camera/window-ellipse-off.png</normaloff>
+                         <normalon>:/pictures/camera/window-ellipse-on.png</normalon>:/pictures/camera/window-ellipse-off.png</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>24</width>
+                         <height>24</height>
+                        </size>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                       <property name="autoExclusive">
+                        <bool>true</bool>
+                       </property>
+                       <property name="autoRaise">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_47">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_circle">
                      <item>
                       <widget class="QToolButton" name="toolButton_magnifier_circle">
                        <property name="text">
@@ -642,45 +669,39 @@
                         <bool>true</bool>
                        </property>
                        <property name="autoRaise">
-                        <bool>true</bool>
+                        <bool>false</bool>
                        </property>
                       </widget>
                      </item>
+                     <item>
+                      <spacer name="horizontalSpacer_48">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
                     </layout>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_16">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
+                   </item>
+                  </layout>
+                 </widget>
                 </item>
-                <item row="3" column="0">
-                 <spacer name="verticalSpacer_20">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
+                <item row="3" column="3">
+                 <widget class="QToolButton" name="help_screencast_countdown">
+                  <property name="toolTip">
+                   <string>Help</string>
                   </property>
-                  <property name="sizeType">
-                   <enum>QSizePolicy::Expanding</enum>
+                  <property name="text">
+                   <string notr="true">Help</string>
                   </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
+                 </widget>
                 </item>
-                <item row="4" column="0" colspan="3">
+                <item row="5" column="0" colspan="3">
                  <layout class="QHBoxLayout" name="horizontalLayout_13">
                   <item>
                    <widget class="QCheckBox" name="checkBoxResetAtNextStart">
@@ -691,28 +712,8 @@
                   </item>
                  </layout>
                 </item>
-                <item row="2" column="1" colspan="2">
-                 <layout class="QHBoxLayout" name="horizontalLayout_60">
-                  <item>
-                   <spacer name="horizontalSpacer_43">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                     <enum>QSizePolicy::Minimum</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
-                </item>
-                <item row="0" column="3">
-                 <widget class="QToolButton" name="help_screencast_magnifier">
+                <item row="5" column="3">
+                 <widget class="QToolButton" name="help_screencast_deleteallsettings">
                   <property name="toolTip">
                    <string>Help</string>
                   </property>
@@ -734,6 +735,139 @@
                   </property>
                  </spacer>
                 </item>
+                <item row="3" column="1" colspan="2">
+                 <layout class="QHBoxLayout" name="horizontalLayout_60">
+                  <item>
+                   <spacer name="horizontalSpacer_43">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Minimum</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QLabel" name="labelScreencastCountdownText">
+                  <property name="text">
+                   <string>Countdown</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="2">
+                 <layout class="QHBoxLayout" name="horizontalLayout_8">
+                  <property name="sizeConstraint">
+                   <enum>QLayout::SetDefaultConstraint</enum>
+                  </property>
+                  <item>
+                   <widget class="QFrame" name="frame_4">
+                    <property name="frameShape">
+                     <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_62"/>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_16">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item row="2" column="1">
+                 <spacer name="verticalSpacer_7">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="4" column="0">
+                 <spacer name="verticalSpacer_20">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Expanding</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="1" column="2">
+                 <spacer name="verticalSpacer_9">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Minimum</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="0" column="0" rowspan="2">
+                 <layout class="QVBoxLayout" name="verticalLayout_39">
+                  <property name="topMargin">
+                   <number>5</number>
+                  </property>
+                  <item>
+                   <widget class="QCheckBox" name="checkBoxMagnifier">
+                    <property name="toolTip">
+                     <string notr="true">CTRL+SHIFT+F9</string>
+                    </property>
+                    <property name="text">
+                     <string>Magnification</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="verticalSpacer_27">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
                </layout>
               </item>
              </layout>
@@ -753,6 +887,13 @@
               <property name="verticalSpacing">
                <number>0</number>
               </property>
+              <item row="0" column="0" alignment="Qt::AlignHCenter">
+               <widget class="QLabel" name="label_17">
+                <property name="text">
+                 <string>Information</string>
+                </property>
+               </widget>
+              </item>
               <item row="2" column="0" alignment="Qt::AlignHCenter">
                <widget class="QLabel" name="label_Upate_tab_1">
                 <property name="text">
@@ -929,13 +1070,6 @@
                  </size>
                 </property>
                </spacer>
-              </item>
-              <item row="0" column="0" alignment="Qt::AlignHCenter">
-               <widget class="QLabel" name="label_17">
-                <property name="text">
-                 <string>Information</string>
-                </property>
-               </widget>
               </item>
              </layout>
             </item>

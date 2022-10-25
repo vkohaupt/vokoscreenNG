@@ -484,7 +484,7 @@ void QvkMagnifier::paintEvent( QPaintEvent *event )
     painter.setRenderHints( QPainter::Antialiasing, true );
     painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
 
-    if ( isToolButtonCircle == true ) {
+    if ( ( isToolButtonElipse == true ) or ( isToolButtonCircle == true ) ) {
         QPainterPath path;
         path.addEllipse( 0, 0, pixmap.width() * factor, pixmap.height() * factor );
         painter.setClipPath( path );
@@ -497,7 +497,7 @@ void QvkMagnifier::paintEvent( QPaintEvent *event )
     pen.setWidth( 7 );
     pen.setColor( Qt::lightGray );
     painter.setPen( pen );
-    if ( isToolButtonCircle == true ) {
+    if ( ( isToolButtonElipse == true ) or ( isToolButtonCircle == true ) ) {
         painter.drawEllipse( 0, 0, pixmap.width() * factor, pixmap.height() * factor );
     } else {
         painter.drawRect( 0, 0, pixmap.width() * factor, pixmap.height() * factor );
@@ -565,30 +565,3 @@ QString QvkMagnifier::enumToString( region reg )
 
     return string;
 }
-
-/*
-    QRegion region( 0, 0, pixmap.width() * factor, pixmap.height() * factor, QRegion::Ellipse );
-    setMask( region );
-
-    QPainter painter;
-    painter.begin( &painterPixmap );
-    painter.setRenderHints( QPainter::Antialiasing, true );
-    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
-    QPixmap pix = pixmap.scaled( painterPixmap.width(), painterPixmap.height(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-    painter.drawPixmap( QPoint( 0, 0 ), pix );                            // hier wird das pixmap gezeichnet
-    QPen pen;
-    pen.setWidth( 6 );
-    pen.setColor( Qt::gray );
-    painter.setPen( pen );
-    painter.drawEllipse( 3, 3, pixmap.width()*2-6, pixmap.height()*2-6 );      // Und hier der Kreis
-    painter.end();
-
-    QPainter painter_1;
-    painter_1.begin( this );
-    painter_1.setRenderHint( QPainter::Antialiasing, true );
-    painter_1.setRenderHint( QPainter::SmoothPixmapTransform, true );
-    painter_1.drawPixmap( QPoint( 0, 0 ), painterPixmap );
-    painter_1.end();
-
-    setMask( pixmap.mask() );
-*/
