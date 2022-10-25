@@ -41,8 +41,8 @@ QvkMagnifierController::QvkMagnifierController( Ui_formMainWindow *myui ) : vkMa
     ui->horizontalLayout_elipse->insertWidget( 1, sliderMagnificationElipse );
     sliderMagnificationElipse->setObjectName( "sliderMagnificationElipse" );
     sliderMagnificationElipse->setTracking( true );
-    sliderMagnificationElipse->setMinimum( 1 );
-    sliderMagnificationElipse->setMaximum( 2 );
+    sliderMagnificationElipse->setMinimum( 2 );
+    sliderMagnificationElipse->setMaximum( 3 );
     sliderMagnificationElipse->setPageStep( 1 );
     sliderMagnificationElipse->show();
 
@@ -85,11 +85,11 @@ void QvkMagnifierController::slot_valueChangedElipse( int value )
 {
     if ( ui->toolButton_magnifier_elipse->isChecked() == true )
     {
-        if ( value == 1 ) {
+        if ( value == 2 ) {
             vkMagnifier->slot_magnifier400x200();
         }
 
-        if ( value == 2 ) {
+        if ( value == 3 ) {
             vkMagnifier->slot_magnifier600x200();
         }
     }
