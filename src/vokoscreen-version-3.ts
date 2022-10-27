@@ -528,6 +528,14 @@
         <source>Imagepath</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Delay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fade out</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>license</name>
