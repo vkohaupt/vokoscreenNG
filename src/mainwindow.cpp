@@ -185,7 +185,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->horizontalLayout_59->insertWidget( 1, sliderWaitBeforeSnapshot );
     sliderWaitBeforeSnapshot->setObjectName( "sliderWaitBeforeSnapshot" );
     sliderWaitBeforeSnapshot->setMinimum( 0 );
-    sliderWaitBeforeSnapshot->setMaximum( 30 );
+    sliderWaitBeforeSnapshot->setMaximum( 300 );
     sliderWaitBeforeSnapshot->setValue( 4 );
     sliderWaitBeforeSnapshot->setDecimalPoint( true );
     sliderWaitBeforeSnapshot->show();

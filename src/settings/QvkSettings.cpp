@@ -363,6 +363,14 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
              }
         }
 
+
+        if ( ( listCheckBox.at(i)->objectName().contains( "checkBoxSnapshotHideBeforeRecording" ) ) and
+             ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) )
+        {
+            listCheckBox.at(i)->click();
+            continue;
+        }
+
         // We found a setting, then we want set or not.
         if ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true )
         {
