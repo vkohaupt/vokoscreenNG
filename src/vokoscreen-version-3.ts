@@ -529,11 +529,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Delay</source>
+        <source>Hide this window before starting a snapshot</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fade out</source>
+        <source>Waiting time before taking a snapshot</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

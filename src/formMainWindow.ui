@@ -1132,8 +1132,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>573</width>
-                      <height>258</height>
+                      <width>21</width>
+                      <height>18</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices"/>
@@ -2420,8 +2420,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>388</width>
-                   <height>364</height>
+                   <width>20</width>
+                   <height>98</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -4351,23 +4351,6 @@
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="1">
-                 <layout class="QHBoxLayout" name="horizontalLayout_59">
-                  <item>
-                   <spacer name="horizontalSpacer_42">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
-                </item>
                 <item row="2" column="1">
                  <widget class="QLineEdit" name="lineEditSnapshotImagePath">
                   <property name="readOnly">
@@ -4416,19 +4399,36 @@
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="0">
-                 <widget class="QLabel" name="label_59">
-                  <property name="text">
-                   <string>Delay</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="5" column="0" colspan="2">
                  <widget class="QCheckBox" name="checkBoxSnapshotHideBeforeRecording">
                   <property name="text">
-                   <string>Fade out</string>
+                   <string>Hide this window before starting a snapshot</string>
                   </property>
                  </widget>
+                </item>
+                <item row="4" column="0" colspan="2">
+                 <layout class="QHBoxLayout" name="horizontalLayout_59">
+                  <item>
+                   <widget class="QLabel" name="label_59">
+                    <property name="text">
+                     <string>Waiting time before taking a snapshot</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_42">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
                 </item>
                </layout>
               </item>

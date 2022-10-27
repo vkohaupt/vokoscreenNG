@@ -182,7 +182,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderStopRecordingAfterSeconds->show();
 
     sliderWaitBeforeSnapshot = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_59->insertWidget( 0, sliderWaitBeforeSnapshot );
+    ui->horizontalLayout_59->insertWidget( 1, sliderWaitBeforeSnapshot );
     sliderWaitBeforeSnapshot->setObjectName( "sliderWaitBeforeSnapshot" );
     sliderWaitBeforeSnapshot->setMinimum( 0 );
     sliderWaitBeforeSnapshot->setMaximum( 30 );
