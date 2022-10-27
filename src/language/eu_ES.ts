@@ -526,6 +526,14 @@
         <source>Imagepath</source>
         <translation>Irudi-bidea</translation>
     </message>
+    <message>
+        <source>Delay</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <source>Fade out</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>license</name>

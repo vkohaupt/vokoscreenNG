@@ -526,6 +526,14 @@
         <source>Imagepath</source>
         <translation>Afbeeldingslocatie</translation>
     </message>
+    <message>
+        <source>Delay</source>
+        <translation>Wachttijd</translation>
+    </message>
+    <message>
+        <source>Fade out</source>
+        <translation>Vervagen</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

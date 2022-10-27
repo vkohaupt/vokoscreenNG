@@ -526,6 +526,14 @@
         <source>Imagepath</source>
         <translation>Bilderpfad</translation>
     </message>
+    <message>
+        <source>Delay</source>
+        <translation>Verzögern</translation>
+    </message>
+    <message>
+        <source>Fade out</source>
+        <translation>Ausblenden</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
