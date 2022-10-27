@@ -324,7 +324,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <property name="iconSize">
        <size>
@@ -4325,28 +4325,19 @@
              <layout class="QVBoxLayout" name="verticalLayout_37">
               <item>
                <layout class="QGridLayout" name="gridLayout_10">
-                <item row="4" column="0" colspan="2">
-                 <widget class="QCheckBox" name="checkBoxSnapshotShowBallonInSystray">
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_57">
                   <property name="text">
-                   <string>Show in systray</string>
+                   <string>Format</string>
                   </property>
                  </widget>
                 </item>
-                <item row="6" column="1">
-                 <spacer name="verticalSpacer">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
+                <item row="2" column="2">
+                 <widget class="QToolButton" name="toolButtonSnapshotImagePath">
+                  <property name="text">
+                   <string notr="true">...</string>
                   </property>
-                  <property name="sizeType">
-                   <enum>QSizePolicy::Minimum</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
+                 </widget>
                 </item>
                 <item row="0" column="0" colspan="2" alignment="Qt::AlignHCenter">
                  <widget class="QLabel" name="label_60">
@@ -4360,19 +4351,22 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0">
-                 <widget class="QLabel" name="label_56">
-                  <property name="text">
-                   <string>Imagepath</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="2">
-                 <widget class="QToolButton" name="toolButtonSnapshotImagePath">
-                  <property name="text">
-                   <string notr="true">...</string>
-                  </property>
-                 </widget>
+                <item row="4" column="1">
+                 <layout class="QHBoxLayout" name="horizontalLayout_59">
+                  <item>
+                   <spacer name="horizontalSpacer_42">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
                 </item>
                 <item row="2" column="1">
                  <widget class="QLineEdit" name="lineEditSnapshotImagePath">
@@ -4401,41 +4395,38 @@
                   </item>
                  </layout>
                 </item>
-                <item row="3" column="0">
-                 <widget class="QLabel" name="label_57">
+                <item row="6" column="0" colspan="2">
+                 <widget class="QCheckBox" name="checkBoxSnapshotShowBallonInSystray">
                   <property name="text">
-                   <string>Format</string>
+                   <string>Show in systray</string>
                   </property>
                  </widget>
                 </item>
-                <item row="5" column="0" colspan="2">
-                 <layout class="QHBoxLayout" name="horizontalLayout_59">
-                  <item>
-                   <widget class="QLabel" name="label_59">
-                    <property name="text">
-                     <string>Second wait before recording</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_42">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_56">
+                  <property name="text">
+                   <string>Imagepath</string>
+                  </property>
+                 </widget>
                 </item>
                 <item row="1" column="0" colspan="3">
                  <widget class="Line" name="line_2">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0">
+                 <widget class="QLabel" name="label_59">
+                  <property name="text">
+                   <string>Delay</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="0" colspan="2">
+                 <widget class="QCheckBox" name="checkBoxSnapshotHideBeforeRecording">
+                  <property name="text">
+                   <string>Fade out</string>
                   </property>
                  </widget>
                 </item>

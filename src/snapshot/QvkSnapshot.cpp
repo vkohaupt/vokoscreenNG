@@ -80,6 +80,15 @@ void QvkSnapshot::slot_newImage()
 
     if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
     {
+        bool wasVisible = false;
+        if ( ( ui->checkBoxSnapshotHideBeforeRecording->isChecked() == true ) and ( vkMainWindow->isMinimized() == false ) ) {
+            wasVisible = true;
+            vkMainWindow->hide();
+        }
+
+        QvkSpezialSlider *spezialSlider = ui->centralWidget->findChild<QvkSpezialSlider *>( "sliderWaitBeforeSnapshot" );
+        QThread::msleep( static_cast<unsigned long>( spezialSlider->value()) * 1000/10 );
+
         QImage image = myScreen.at( ui->comboBoxScreencastScreen->currentIndex() )->grabWindow(0).toImage();
         bool bo = image.save( ui->lineEditSnapshotImagePath->text() + "/" + filename, ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
 
@@ -92,6 +101,11 @@ void QvkSnapshot::slot_newImage()
                 vkShowMessage->showMessage( QString( "Fullscreen captured" ), image );
             }
         }
+
+        if ( ( ui->checkBoxSnapshotHideBeforeRecording->isChecked() == true ) and ( wasVisible == true ) ) {
+            vkMainWindow->show();
+        }
+
     }
 
     if ( ui->radioButtonScreencastWindow->isChecked() == true )
