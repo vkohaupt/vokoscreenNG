@@ -5,35 +5,35 @@ QRadioButton::indicator {
 }
 
 QRadioButton::indicator:checked {
-    border-image: url(:/pictures/css/radio-checked.png);
+    border-image: url(:/pictures/css/radioButton/radio-checked.png);
 }
 
 QRadioButton::indicator:checked:disabled {
-    border-image: url(:/pictures/css/radio-checked-disabled.png);
+    border-image: url(:/pictures/css/radioButton/radio-checked-disabled.png);
 }
 
 QRadioButton::indicator:checked:hover {
-    border-image: url(:/pictures/css/radio-checked-hover.png);
+    border-image: url(:/pictures/css/radioButton/radio-checked-hover.png);
 }
 
 QRadioButton::indicator:checked:hover:pressed {
-    border-image: url(:/pictures/css/radio-checked-hover-pressed.png);
+    border-image: url(:/pictures/css/radioButton/radio-checked-hover-pressed.png);
 }
 
 QRadioButton::indicator:unchecked {
-    border-image: url(:/pictures/css/radio-unchecked.png);
+    border-image: url(:/pictures/css/radioButton/radio-unchecked.png);
 }
 
 QRadioButton::indicator:unchecked:disabled {
-    border-image: url(:/pictures/css/radio-unchecked-disabled.png);
+    border-image: url(:/pictures/css/radioButton/radio-unchecked-disabled.png);
 }
 
 QRadioButton::indicator:unchecked:hover {
-    border-image: url(:/pictures/css/radio-unchecked-hover.png);
+    border-image: url(:/pictures/css/radioButton/radio-unchecked-hover.png);
 }
 
 QRadioButton::indicator:unchecked:hover:pressed {
-    border-image: url(:/pictures/css/radio-unchecked-hover-pressed.png);
+    border-image: url(:/pictures/css/radioButton/radio-unchecked-hover-pressed.png);
 }
 
 
@@ -46,33 +46,33 @@ QCheckBox::indicator {
 }
 
 QCheckBox::indicator:checked {
-    border-image: url(:/pictures/css/checkBox-checked.png);
+    border-image: url(:/pictures/css/checkBox/checkBox-checked.png);
 }
 
 QCheckBox::indicator:checked:disabled {
-    border-image: url(:/pictures/css/checkBox-checked-disabled.png);
+    border-image: url(:/pictures/css/checkBox/checkBox-checked-disabled.png);
 }
 
 QCheckBox::indicator:checked:hover {
-    border-image: url(:/pictures/css/checkBox-checked-hover.png);
+    border-image: url(:/pictures/css/checkBox/checkBox-checked-hover.png);
 }
 
 QCheckBox::indicator:checked:hover:pressed {
-    border-image: url(:/pictures/css/checkBox-checked-hover-pressed.png);
+    border-image: url(:/pictures/css/checkBox/checkBox-checked-hover-pressed.png);
 }
 
 QCheckBox::indicator:unchecked {
-    border-image: url(:/pictures/css/checkBox-unchecked.png);
+    border-image: url(:/pictures/css/checkBox/checkBox-unchecked.png);
 }
 
 QCheckBox::indicator:unchecked:disabled {
-    border-image: url(:/pictures/css/checkBox-unchecked-disabled.png);
+    border-image: url(:/pictures/css/checkBox/checkBox-unchecked-disabled.png);
 }
 
 QCheckBox::indicator:unchecked:hover {
-    border-image: url(:/pictures/css/checkBox-unchecked-hover.png);
+    border-image: url(:/pictures/css/checkBox/checkBox-unchecked-hover.png);
 }
 
 QCheckBox::indicator:unchecked:hover:pressed {
-    border-image: url(:/pictures/css/checkBox-unchecked-hover-pressed.png);
+    border-image: url(:/pictures/css/checkBox/checkBox-unchecked-hover-pressed.png);
 }

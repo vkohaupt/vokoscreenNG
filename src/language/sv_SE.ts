@@ -528,11 +528,11 @@
     </message>
     <message>
         <source>Hide this window before starting a snapshot</source>
-        <translation type="unfinished"/>
+        <translation>Dölj detta fönster före ett skärmklipp</translation>
     </message>
     <message>
         <source>Waiting time before taking a snapshot</source>
-        <translation type="unfinished"/>
+        <translation>Väntetid före ett skärmklipp utförs</translation>
     </message>
 </context>
 <context>
