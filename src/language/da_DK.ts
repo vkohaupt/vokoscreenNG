@@ -527,11 +527,11 @@
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Hide this window before starting a snapshot</source>
+        <source>Hide this window</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Waiting time before taking a snapshot</source>
+        <source>Seconds wait before recording</source>
         <translation type="unfinished"/>
     </message>
 </context>

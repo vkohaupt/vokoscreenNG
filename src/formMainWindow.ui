@@ -324,7 +324,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -547,6 +547,9 @@
                    <property name="spacing">
                     <number>2</number>
                    </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
                    <property name="topMargin">
                     <number>0</number>
                    </property>
@@ -555,15 +558,26 @@
                    </property>
                    <item>
                     <layout class="QHBoxLayout" name="horizontalLayout_rectangle">
+                     <property name="leftMargin">
+                      <number>3</number>
+                     </property>
                      <item>
                       <widget class="QToolButton" name="toolButton_magnifier_rectangle">
+                       <property name="styleSheet">
+                        <string notr="true">QToolButton::checked{
+    width: 27;
+    height: 27;
+    border-image: url(:/pictures/css/magnifier/background-pressed.png);
+ }
+</string>
+                       </property>
                        <property name="text">
                         <string notr="true"/>
                        </property>
                        <property name="icon">
                         <iconset resource="screencast.qrc">
-                         <normaloff>:/pictures/camera/window-rectangle-off.png</normaloff>
-                         <normalon>:/pictures/camera/window-rectangle-on.png</normalon>:/pictures/camera/window-rectangle-off.png</iconset>
+                         <normaloff>:/pictures/css/magnifier/window-rectangle-off.png</normaloff>
+                         <normalon>:/pictures/css/magnifier/window-rectangle-on.png</normalon>:/pictures/css/magnifier/window-rectangle-off.png</iconset>
                        </property>
                        <property name="iconSize">
                         <size>
@@ -581,7 +595,7 @@
                         <bool>true</bool>
                        </property>
                        <property name="autoRaise">
-                        <bool>false</bool>
+                        <bool>true</bool>
                        </property>
                       </widget>
                      </item>
@@ -602,15 +616,26 @@
                    </item>
                    <item>
                     <layout class="QHBoxLayout" name="horizontalLayout_elipse">
+                     <property name="leftMargin">
+                      <number>3</number>
+                     </property>
                      <item>
                       <widget class="QToolButton" name="toolButton_magnifier_elipse">
+                       <property name="styleSheet">
+                        <string notr="true">QToolButton::checked{
+    width: 27;
+    height: 27;
+    border-image: url(:/pictures/css/magnifier/background-pressed.png);
+ }
+</string>
+                       </property>
                        <property name="text">
                         <string notr="true"/>
                        </property>
                        <property name="icon">
                         <iconset resource="screencast.qrc">
-                         <normaloff>:/pictures/camera/window-ellipse-off.png</normaloff>
-                         <normalon>:/pictures/camera/window-ellipse-on.png</normalon>:/pictures/camera/window-ellipse-off.png</iconset>
+                         <normaloff>:/pictures/css/magnifier/window-ellipse-off.png</normaloff>
+                         <normalon>:/pictures/css/magnifier/window-ellipse-on.png</normalon>:/pictures/css/magnifier/window-ellipse-off.png</iconset>
                        </property>
                        <property name="iconSize">
                         <size>
@@ -625,7 +650,7 @@
                         <bool>true</bool>
                        </property>
                        <property name="autoRaise">
-                        <bool>false</bool>
+                        <bool>true</bool>
                        </property>
                       </widget>
                      </item>
@@ -646,15 +671,26 @@
                    </item>
                    <item>
                     <layout class="QHBoxLayout" name="horizontalLayout_circle">
+                     <property name="leftMargin">
+                      <number>3</number>
+                     </property>
                      <item>
                       <widget class="QToolButton" name="toolButton_magnifier_circle">
+                       <property name="styleSheet">
+                        <string notr="true">QToolButton::checked{
+    width: 27;
+    height: 27;
+    border-image: url(:/pictures/css/magnifier/background-pressed.png);
+ }
+</string>
+                       </property>
                        <property name="text">
                         <string notr="true"/>
                        </property>
                        <property name="icon">
                         <iconset resource="screencast.qrc">
-                         <normaloff>:/pictures/camera/window-circle-off.png</normaloff>
-                         <normalon>:/pictures/camera/window-circle-on.png</normalon>:/pictures/camera/window-circle-off.png</iconset>
+                         <normaloff>:/pictures/css/magnifier/window-circle-off.png</normaloff>
+                         <normalon>:/pictures/css/magnifier/window-circle-on.png</normalon>:/pictures/css/magnifier/window-circle-off.png</iconset>
                        </property>
                        <property name="iconSize">
                         <size>
@@ -669,7 +705,7 @@
                         <bool>true</bool>
                        </property>
                        <property name="autoRaise">
-                        <bool>false</bool>
+                        <bool>true</bool>
                        </property>
                       </widget>
                      </item>
@@ -1132,8 +1168,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>21</width>
-                      <height>18</height>
+                      <width>573</width>
+                      <height>258</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices"/>
@@ -2420,8 +2456,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>20</width>
-                   <height>98</height>
+                   <width>388</width>
+                   <height>364</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">

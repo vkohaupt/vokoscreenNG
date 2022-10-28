@@ -527,12 +527,12 @@
         <translation>Afbeeldingslocatie</translation>
     </message>
     <message>
-        <source>Hide this window before starting a snapshot</source>
-        <translation type="unfinished"/>
+        <source>Hide this window</source>
+        <translation>Venster verbergen</translation>
     </message>
     <message>
-        <source>Waiting time before taking a snapshot</source>
-        <translation type="unfinished"/>
+        <source>Seconds wait before recording</source>
+        <translation>Aantal seconden voordat opname start</translation>
     </message>
 </context>
 <context>

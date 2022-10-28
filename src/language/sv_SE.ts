@@ -527,12 +527,12 @@
         <translation>Bildsökväg</translation>
     </message>
     <message>
-        <source>Hide this window before starting a snapshot</source>
-        <translation>Dölj detta fönster före ett skärmklipp</translation>
+        <source>Hide this window</source>
+        <translation>Dölj det här fönstret</translation>
     </message>
     <message>
-        <source>Waiting time before taking a snapshot</source>
-        <translation>Väntetid före ett skärmklipp utförs</translation>
+        <source>Seconds wait before recording</source>
+        <translation>Sekunders väntetid före inspelning</translation>
     </message>
 </context>
 <context>
