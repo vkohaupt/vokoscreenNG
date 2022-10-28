@@ -4402,7 +4402,7 @@
                 <item row="5" column="0" colspan="2">
                  <widget class="QCheckBox" name="checkBoxSnapshotHideBeforeRecording">
                   <property name="text">
-                   <string>Hide this window before starting a snapshot</string>
+                   <string>Hide this window</string>
                   </property>
                  </widget>
                 </item>
@@ -4411,7 +4411,7 @@
                   <item>
                    <widget class="QLabel" name="label_59">
                     <property name="text">
-                     <string>Waiting time before taking a snapshot</string>
+                     <string>Seconds wait before recording</string>
                     </property>
                    </widget>
                   </item>
