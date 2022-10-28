@@ -527,12 +527,12 @@
         <translation>Afbeeldingslocatie</translation>
     </message>
     <message>
-        <source>Delay</source>
-        <translation>Wachttijd</translation>
+        <source>Hide this window before starting a snapshot</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Fade out</source>
-        <translation>Vervagen</translation>
+        <source>Waiting time before taking a snapshot</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

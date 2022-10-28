@@ -527,11 +527,11 @@
         <translation>Irudi-bidea</translation>
     </message>
     <message>
-        <source>Delay</source>
+        <source>Hide this window before starting a snapshot</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <source>Fade out</source>
+        <source>Waiting time before taking a snapshot</source>
         <translation type="unfinished"/>
     </message>
 </context>

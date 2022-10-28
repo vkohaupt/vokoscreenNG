@@ -527,12 +527,12 @@
         <translation>Bilderpfad</translation>
     </message>
     <message>
-        <source>Delay</source>
-        <translation>Verzögern</translation>
+        <source>Hide this window before starting a snapshot</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <source>Fade out</source>
-        <translation>Ausblenden</translation>
+        <source>Waiting time before taking a snapshot</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
