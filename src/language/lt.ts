@@ -528,11 +528,11 @@
     </message>
     <message>
         <source>Hide this window</source>
-        <translation type="unfinished"/>
+        <translation>Slėpti šį langą</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation type="unfinished"/>
+        <translation>Kiek sekundžių laukti, prieš įrašinėjant</translation>
     </message>
 </context>
 <context>

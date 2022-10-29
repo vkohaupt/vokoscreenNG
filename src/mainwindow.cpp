@@ -625,6 +625,28 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->label_61->setVisible( false );
         ui->comboBox_openh264_profile->setVisible( false );
     }
+
+
+    QString localeName = QLocale::system().name();
+    QString localeCountry = QLocale::countryToString( locale.country() );
+    QDir dir( ":/language", "*.qm" );
+    QStringList list = dir.entryList();
+    if ( list.contains( localeName ) == false )
+    {
+        QPalette palette;
+        palette.setColor( QPalette::Window, Qt::white );
+        palette.setColor( QPalette::WindowText, Qt::red );
+        ui->label_translate->setAutoFillBackground( true );
+        ui->label_translate->setPalette( palette );
+
+        QString transifex = "<a href='https://explore.transifex.com/vkohaupt/vokoscreen/'>Transifex</a>";
+        ui->label_translate->setText( "<p align=center>For<b> " + localeCountry + "</b> is the language <b> " + localeName + " </b> not 100% translated.<br>" \
+                                      "Please help to translate your language on <b>" + transifex + "</b></p>");
+    } else {
+        ui->label_translate->hide();
+        ui->verticalLayout_7->removeItem( ui->verticalSpacer );
+        //delete ui->verticalSpacer;
+    }
 }
 
 
