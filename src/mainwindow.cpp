@@ -627,7 +627,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     }
 
 
-    QString localeName = QLocale::system().name();
+    QString localeName = QLocale::system().name() + ".qm";
     QString localeCountry = QLocale::countryToString( locale.country() );
     QDir dir( ":/language", "*.qm" );
     QStringList list = dir.entryList();
@@ -645,7 +645,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     } else {
         ui->label_translate->hide();
         ui->verticalLayout_7->removeItem( ui->verticalSpacer );
-        //delete ui->verticalSpacer;
     }
 }
 
