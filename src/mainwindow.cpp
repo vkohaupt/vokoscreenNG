@@ -1063,10 +1063,10 @@ void QvkMainWindow::keyPressEvent( QKeyEvent *event )
 void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
 {
 #ifdef Q_OS_LINUX
-    QPixmap pixmap( ":/pictures/linux.png" );
+    QPixmap pixmap( ":/pictures/cornerWidget/linux.png" );
 #endif
 #ifdef Q_OS_WIN
-    QPixmap pixmap( ":/pictures/windows.png" );
+    QPixmap pixmap( ":/pictures/cornerWidget/windows.png" );
 #endif
     pixmap = pixmap.scaled( QSize( 48, 48 ), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
     QLabel *label = new QLabel();

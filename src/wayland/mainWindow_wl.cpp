@@ -104,7 +104,7 @@ void QvkMainWindow_wl::set_CornerWidget()
     list << ui->tabWidgetScreencast;
     list << ui->tabWidgetLog;
 
-    QPixmap pixmap( ":/pictures/wayland.png" );
+    QPixmap pixmap( ":/pictures/cornerWidget/wayland.png" );
     pixmap = pixmap.scaled( QSize( 48, 48 ), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
 
     for ( int i = 0; i < list.count(); i++ )
