@@ -83,7 +83,7 @@ void QvkSnapshot::slot_newImage()
         bool wasVisible = false;
         if ( ( ui->checkBoxSnapshotHideBeforeRecording->isChecked() == true ) and ( vkMainWindow->isMinimized() == false ) ) {
             wasVisible = true;
-            vkMainWindow->hide();
+            vkMainWindow->showMinimized();
         }
 
         QvkSpezialSlider *spezialSlider = ui->centralWidget->findChild<QvkSpezialSlider *>( "sliderWaitBeforeSnapshot" );
@@ -103,9 +103,8 @@ void QvkSnapshot::slot_newImage()
         }
 
         if ( ( ui->checkBoxSnapshotHideBeforeRecording->isChecked() == true ) and ( wasVisible == true ) ) {
-            vkMainWindow->show();
+            vkMainWindow->showNormal();
         }
-
     }
 
     if ( ui->radioButtonScreencastWindow->isChecked() == true )
@@ -136,12 +135,21 @@ void QvkSnapshot::slot_newImage()
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
+        bool wasVisible = false;
+        if ( ( ui->checkBoxSnapshotHideBeforeRecording->isChecked() == true ) and ( vkMainWindow->isMinimized() == false ) ) {
+            wasVisible = true;
+            vkMainWindow->showMinimized();
+        }
+
         if ( vkMainWindow->vkRegionChoise->recordemode == false )
         {
             vkMainWindow->vkRegionChoise->recordMode( true );
             QvkSpezialSlider *spezialSlider = ui->centralWidget->findChild<QvkSpezialSlider *>( "sliderWaitBeforeSnapshot" );
             QThread::msleep( static_cast<unsigned long>( spezialSlider->value()) * 1000/10 );
         }
+
+        QvkSpezialSlider *spezialSlider = ui->centralWidget->findChild<QvkSpezialSlider *>( "sliderWaitBeforeSnapshot" );
+        QThread::msleep( static_cast<unsigned long>( spezialSlider->value()) * 1000/10 );
 
         int startx = vkMainWindow->vkRegionChoise->getXRecordArea();
         int starty = vkMainWindow->vkRegionChoise->getYRecordArea();
@@ -165,6 +173,10 @@ void QvkSnapshot::slot_newImage()
 
         if ( ui->pushButtonStart->isEnabled() == true ) {
             vkMainWindow->vkRegionChoise->recordMode( false );
+        }
+
+        if ( ( ui->checkBoxSnapshotHideBeforeRecording->isChecked() == true ) and ( wasVisible == true ) ) {
+            vkMainWindow->showNormal();
         }
     }
 }
