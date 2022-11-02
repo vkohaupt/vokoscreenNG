@@ -82,7 +82,7 @@
      <item row="4" column="0" alignment="Qt::AlignHCenter">
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string notr="true"> Download opensource openh264</string>
+        <string notr="true"> Download the free open source H264 video codec from Cisco Systems, Inc.</string>
        </property>
       </widget>
      </item>
