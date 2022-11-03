@@ -54,11 +54,18 @@ QvkMagnifierController::QvkMagnifierController( Ui_formMainWindow *myui ) : vkMa
     connect( ui->toolButton_magnifier_rectangle, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonRectangleClicked( bool ) ) );
     connect( ui->toolButton_magnifier_elipse,    SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonElipseClicked( bool ) ) );
     connect( ui->toolButton_magnifier_circle,    SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonCircleClicked( bool ) ) );
+
+    connect( vkMagnifier, SIGNAL( signal_magnifier_on_screen( QScreen *) ), this, SLOT( slot_magnifier_on_screen( QScreen *) ) );
 }
 
 
 QvkMagnifierController::~QvkMagnifierController()
 {
+}
+
+void  QvkMagnifierController::slot_magnifier_on_screen(QScreen *myScreen)
+{
+    ui->label_magnifier_on_screen->setText( myScreen->name() );
 }
 
 

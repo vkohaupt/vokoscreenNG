@@ -214,6 +214,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vkMagnifierController = new QvkMagnifierController(ui);
     Q_UNUSED(vkMagnifierController);
+    ui->label_magnifier_on_screen->setText( "" );
 
     vkPlayer = new QvkPlayer( this, ui );
 

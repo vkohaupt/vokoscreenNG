@@ -57,8 +57,9 @@ protected:
 
   
 signals:
+  void signal_magnifier_on_screen( QScreen *);
   
-  
+
 private:
   void setMagnifier();
   int border;

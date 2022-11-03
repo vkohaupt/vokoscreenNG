@@ -35,7 +35,8 @@ public:
    QvkMagnifierController( Ui_formMainWindow *ui_mainwindow );
    virtual ~QvkMagnifierController();
    Ui_formMainWindow *ui;
-  
+   QvkMagnifier *vkMagnifier;
+
 public slots:
 
 
@@ -47,9 +48,10 @@ private slots:
    void slot_toolButtonElipseClicked( bool value );
    void slot_toolButtonCircleClicked( bool value );
 
+   void  slot_magnifier_on_screen( QScreen *myScreen);
+
 
 private:
-  QvkMagnifier *vkMagnifier;
   QvkSpezialSlider *sliderMagnificationRectangle;
   QvkSpezialSlider *sliderMagnificationElipse;
 

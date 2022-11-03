@@ -322,6 +322,7 @@ void QvkMagnifier::slot_mytimer()
     screen = QGuiApplication::screenAt( globalCursorPos );
     if ( screen ) {
         if( debug == true ) { qDebug() << "slot_mytimer screen:" << screen; }
+        emit signal_magnifier_on_screen( screen );
     } else {
         // screenAt found no screen. Without a return the Application is crashed
         return;
