@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2022 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -32,28 +32,28 @@ class QvkMagnifierController : public QObject
     Q_OBJECT
 
 public:
-   QvkMagnifierController( Ui_formMainWindow *ui_mainwindow );
-   virtual ~QvkMagnifierController();
-   Ui_formMainWindow *ui;
-   QvkMagnifier *vkMagnifier;
+    QvkMagnifierController( Ui_formMainWindow *ui_mainwindow );
+    virtual ~QvkMagnifierController();
+    Ui_formMainWindow *ui;
 
 public slots:
 
 
 private slots:
-   void slot_valueChangedRectangle( int value );
-   void slot_valueChangedElipse( int value );
+    void slot_valueChangedRectangle( int value );
+    void slot_valueChangedElipse( int value );
 
-   void slot_toolButtonRectangleClicked( bool value );
-   void slot_toolButtonElipseClicked( bool value );
-   void slot_toolButtonCircleClicked( bool value );
+    void slot_toolButtonRectangleClicked( bool value );
+    void slot_toolButtonElipseClicked( bool value );
+    void slot_toolButtonCircleClicked( bool value );
 
-   void  slot_magnifier_on_screen( QScreen *myScreen);
+    void  slot_magnifier_on_screen( QScreen *myScreen);
 
 
 private:
-  QvkSpezialSlider *sliderMagnificationRectangle;
-  QvkSpezialSlider *sliderMagnificationElipse;
+    QvkMagnifier *vkMagnifier;
+    QvkSpezialSlider *sliderMagnificationRectangle;
+    QvkSpezialSlider *sliderMagnificationElipse;
 
 
 protected:
