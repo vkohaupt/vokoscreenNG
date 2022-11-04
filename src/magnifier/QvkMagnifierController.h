@@ -48,6 +48,7 @@ private slots:
     void slot_toolButtonCircleClicked( bool value );
 
     void  slot_magnifier_on_screen( QScreen *myScreen);
+    void slot_label_magnifier_on_screen_clear( bool );
 
 
 private:

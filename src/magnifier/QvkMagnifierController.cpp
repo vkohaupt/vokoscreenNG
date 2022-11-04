@@ -47,6 +47,7 @@ QvkMagnifierController::QvkMagnifierController( Ui_formMainWindow *myui ) : vkMa
     sliderMagnificationElipse->show();
 
     connect( ui->checkBoxMagnifier,         SIGNAL( clicked( bool ) ),     vkMagnifier, SLOT( slot_magnifierShow( bool ) ) );
+    connect( ui->checkBoxMagnifier,         SIGNAL( clicked( bool ) ),     this,        SLOT( slot_label_magnifier_on_screen_clear( bool ) ) );
     connect( sliderMagnificationRectangle,  SIGNAL( valueChanged( int ) ), this,        SLOT( slot_valueChangedRectangle( int ) ) );
     sliderMagnificationRectangle->setValue( 2 );
     connect( sliderMagnificationElipse,     SIGNAL( valueChanged( int ) ), this,        SLOT( slot_valueChangedElipse( int ) ) );
@@ -55,7 +56,7 @@ QvkMagnifierController::QvkMagnifierController( Ui_formMainWindow *myui ) : vkMa
     connect( ui->toolButton_magnifier_elipse,    SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonElipseClicked( bool ) ) );
     connect( ui->toolButton_magnifier_circle,    SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonCircleClicked( bool ) ) );
 
-    connect( vkMagnifier, SIGNAL( signal_magnifier_on_screen( QScreen *) ), this, SLOT( slot_magnifier_on_screen( QScreen *) ) );
+    connect( vkMagnifier, SIGNAL( signal_magnifier_on_screen( QScreen * ) ), this, SLOT( slot_magnifier_on_screen( QScreen * ) ) );
 }
 
 
@@ -63,9 +64,18 @@ QvkMagnifierController::~QvkMagnifierController()
 {
 }
 
-void  QvkMagnifierController::slot_magnifier_on_screen(QScreen *myScreen)
+
+void  QvkMagnifierController::slot_magnifier_on_screen( QScreen *myScreen )
 {
     ui->label_magnifier_on_screen->setText( myScreen->name() );
+}
+
+
+void QvkMagnifierController::slot_label_magnifier_on_screen_clear( bool value )
+{
+    if ( value == false ) {
+        ui->label_magnifier_on_screen->clear();
+    }
 }
 
 
