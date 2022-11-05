@@ -49,10 +49,10 @@ QvkSnapshot::~QvkSnapshot()
 
 void QvkSnapshot::init()
 {
-    connect( ui->pushButtonScreencastSnapshot, SIGNAL( clicked() ), this,         SLOT( slot_newImage() ) );
-    connect( ui->toolButtonSnapshotImagePath,  SIGNAL( clicked() ), this,         SLOT( slot_imagePath() ) );
-    connect( ui->pushButtonSnapshotOpenfolder, SIGNAL( clicked() ), vkMainWindow, SLOT( slot_Folder() ) );
-    connect( ui->pushButtonSnapshotSnapshot,   SIGNAL( clicked() ), this,         SLOT( slot_newImage() ) );
+    connect( ui->pushButtonScreencastSnapshot, SIGNAL( clicked() ), this, SLOT( slot_newImage() ) );
+    connect( ui->toolButtonSnapshotImagePath,  SIGNAL( clicked() ), this, SLOT( slot_imagePath() ) );
+    connect( ui->pushButtonSnapshotOpenfolder, SIGNAL( clicked() ), this, SLOT( slot_Folder() ) );
+    connect( ui->pushButtonSnapshotSnapshot,   SIGNAL( clicked() ), this, SLOT( slot_newImage() ) );
 
     supportedImageFormats();
     is_imageFolderExists_and_haveWritePermission();
@@ -278,4 +278,22 @@ void QvkSnapshot::slot_imagePath()
     }
 
     QApplication::setDesktopSettingsAware( true );
+}
+
+
+void QvkSnapshot::slot_Folder()
+{
+    QString path = ui->lineEditSnapshotImagePath->text();
+
+    if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false )
+    {
+        QPixmap pixmap( ":/pictures/status/information.png" );
+        pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+
+        QMessageBox msgBox( this );
+        msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
+        msgBox.setWindowTitle( global::name + " " + global::version );
+        msgBox.setIconPixmap( pixmap );
+        msgBox.exec();
+    }
 }
