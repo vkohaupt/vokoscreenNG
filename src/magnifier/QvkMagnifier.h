@@ -62,7 +62,6 @@ signals:
 
 private:
   void setMagnifier();
-  int border;
   int distanceX;
   int distanceY;
   int factor;

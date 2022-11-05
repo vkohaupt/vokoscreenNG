@@ -40,7 +40,6 @@ QvkMagnifier::QvkMagnifier()
     resize( 2 * distanceX * factor, 2 * distanceY * factor );
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar
     setAttribute( Qt::WA_TranslucentBackground, true ); // neu
-    border = 3;
     distanceCopyMagnifier = 30;
 
     timer = new QTimer( this );
@@ -487,7 +486,7 @@ void QvkMagnifier::paintEvent( QPaintEvent *event )
 
     if ( ( isToolButtonElipse == true ) or ( isToolButtonCircle == true ) ) {
         QPainterPath path;
-        path.addEllipse( 0, 0, pixmap.width() * factor, pixmap.height() * factor );
+        path.addEllipse( 0, 0, width(), height() );
         painter.setClipPath( path );
     }
 
@@ -499,9 +498,9 @@ void QvkMagnifier::paintEvent( QPaintEvent *event )
     pen.setColor( Qt::lightGray );
     painter.setPen( pen );
     if ( ( isToolButtonElipse == true ) or ( isToolButtonCircle == true ) ) {
-        painter.drawEllipse( 0, 0, pixmap.width() * factor, pixmap.height() * factor );
+        painter.drawEllipse( 0, 0, width(), height() );
     } else {
-        painter.drawRect( 0, 0, pixmap.width() * factor, pixmap.height() * factor );
+        painter.drawRect( 0, 0, width(), height() );
     }
     painter.end();
 
