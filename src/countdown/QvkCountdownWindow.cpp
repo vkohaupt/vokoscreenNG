@@ -137,7 +137,7 @@ void QvkCountdownWindow::paintEvent( QPaintEvent *event )
     painter.drawPixmap( QPointF( 0, 0 ), pixmap );
     painter.end();
 
-//    setMask( pixmap.mask() );
+    setMask( pixmap.mask() );
 }
 
 
