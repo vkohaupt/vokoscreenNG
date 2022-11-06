@@ -511,8 +511,12 @@ void QvkMagnifier::paintEvent( QPaintEvent *event )
     painter_1.drawPixmap( QPoint( 0, 0 ), painterPixmap );
     painter_1.end();
 
-    // This can delete if vokoscreen run only with a compositer
+    // This can delete if vokoscreen run only with a compositer.
+    // This is also not required under Windows, Windows has a compositer.
+#ifdef Q_OS_LINUX
     setMask( painterPixmap.mask() );
+#endif
+
 }
 
 
