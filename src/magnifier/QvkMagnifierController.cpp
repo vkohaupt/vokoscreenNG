@@ -67,7 +67,8 @@ QvkMagnifierController::~QvkMagnifierController()
 
 void  QvkMagnifierController::slot_magnifier_on_screen( QScreen *myScreen )
 {
-    ui->label_magnifier_on_screen->setText( myScreen->name() );
+    QString str = myScreen->name().remove( "." ).remove( '\\' );
+    ui->label_magnifier_on_screen->setText( str );
 }
 
 
