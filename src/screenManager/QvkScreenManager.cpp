@@ -73,7 +73,7 @@ void QvkScreenManager::slot_screen_count_changed()
             QString Y = QString::number( static_cast<int>( screen.at(i)->geometry().top() * screen.at(i)->devicePixelRatio() ) );
             QString Width = QString::number( static_cast<int>( screen.at(i)->geometry().width() * screen.at(i)->devicePixelRatio() ) );
             QString Height = QString::number( static_cast<int>( screen.at(i)->geometry().height() * screen.at(i)->devicePixelRatio() ) );
-            QString stringText = screen.at(i)->name() + " " + ":  " + Width + " x " + Height;
+            QString stringText = screen.at(i)->name().remove( "." ).remove( '\\' ) + " " + ":  " + Width + " x " + Height;
             QString stringData = "x=" + X + " " +
                                  "y=" + Y + " " +
                                  "with=" + Width + " " +
