@@ -50,7 +50,7 @@ void QvkWASAPIController::slot_audioIconOnOff( bool state )
         QPainter painter;
         QPen pen;
         painter.begin( &workPixmap );
-        pen.setColor( Qt::red );
+        pen.setColor( QString( "#3daee9" ) );
         pen.setWidth( 2 );
         painter.setPen( pen );
         painter.drawLine ( 5, 5, size.width()-5, size.height()-5 );
