@@ -24,13 +24,15 @@
 #define QVKSCREENMANAGER_H
 
 #include <QObject>
+#include <QMainWindow>
+#include <QLabel>
 
 class QvkScreenManager : public QObject
 {
     Q_OBJECT
 
 public:
-    QvkScreenManager();
+    QvkScreenManager( QMainWindow *parent );
     virtual ~QvkScreenManager();
     void init();
 
@@ -40,7 +42,10 @@ public slots:
 
 private slots:
     void slot_screen_count_changed();
-    void slot_geometryChanged(const QRect &rect);
+    void slot_geometryChanged( const QRect &rect );
+    void slot_toolButton_toggled( bool checked );
+    void slot_close();
+
 
 signals:
     void signal_clear_widget();
@@ -51,6 +56,7 @@ protected:
 
 
 private:
+    QList<QLabel *> widgetList;
 
 };
 

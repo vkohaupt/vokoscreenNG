@@ -556,7 +556,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     slot_gst_formatVideoAudoicodec_available();
     VK_gst_Elements_available();
 
-    QvkScreenManager *screenManager = new QvkScreenManager();
+    QvkScreenManager *screenManager = new QvkScreenManager( this );
     // Fullscreen
     connect( screenManager, SIGNAL( signal_clear_widget() ),                          ui->comboBoxScreencastScreen, SLOT( clear() ) );
     connect( screenManager, SIGNAL( signal_screen_count_changed( QString, QString) ), this,                         SLOT( slot_screenCountChanged( QString, QString ) ) );

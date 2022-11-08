@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2022 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -26,14 +26,21 @@
 #include <QScreen>
 #include <QGuiApplication>
 #include <QDebug>
-
 #include <QApplication>
+#include <QToolButton>
 
-QvkScreenManager::QvkScreenManager()
+QvkScreenManager::QvkScreenManager( QMainWindow *parent )
 {
-    connect( qApp, SIGNAL( screenAdded( QScreen* ) ),   this, SLOT( slot_screen_count_changed() ) );
-    connect( qApp, SIGNAL( screenRemoved( QScreen* ) ), this, SLOT( slot_screen_count_changed() ) );
+    connect( qApp, SIGNAL( screenAdded( QScreen* ) ),          this, SLOT( slot_screen_count_changed() ) );
+    connect( qApp, SIGNAL( screenRemoved( QScreen* ) ),        this, SLOT( slot_screen_count_changed() ) );
     connect( qApp, SIGNAL( primaryScreenChanged( QScreen* ) ), this, SLOT( slot_screen_count_changed() ) );
+
+    QToolButton *toolButton = parent->findChild<QToolButton *>("toolButton_screen_name");
+    if ( toolButton != NULL ) {
+        connect( toolButton, SIGNAL( toggled( bool ) ), this, SLOT( slot_toolButton_toggled( bool ) ) );
+    }
+
+    connect( parent, SIGNAL( signal_close() ), this, SLOT( slot_close() ) );
 }
 
 
@@ -45,6 +52,7 @@ void QvkScreenManager::init()
 
 QvkScreenManager::~QvkScreenManager()
 {}
+
 
 void QvkScreenManager::slot_screen_count_changed()
 {
@@ -75,9 +83,9 @@ void QvkScreenManager::slot_screen_count_changed()
             QString Height = QString::number( static_cast<int>( screen.at(i)->geometry().height() * screen.at(i)->devicePixelRatio() ) );
             QString stringText = screen.at(i)->name().remove( "." ).remove( '\\' ) + " " + ":  " + Width + " x " + Height;
             QString stringData = "x=" + X + " " +
-                                 "y=" + Y + " " +
-                                 "with=" + Width + " " +
-                                 "height=" + Height;
+                    "y=" + Y + " " +
+                    "with=" + Width + " " +
+                    "height=" + Height;
 
             disconnect( screen.at(i), nullptr, nullptr, nullptr );
             connect( screen.at(i), SIGNAL( geometryChanged( const QRect ) ), this, SLOT( slot_geometryChanged( const QRect ) ) );
@@ -87,9 +95,50 @@ void QvkScreenManager::slot_screen_count_changed()
     }
 }
 
+
 void QvkScreenManager::slot_geometryChanged( const QRect &rect )
 {
     Q_UNUSED(rect);
     slot_screen_count_changed();
 }
 
+
+void QvkScreenManager::slot_toolButton_toggled( bool checked )
+{
+    QList<QScreen *> screenList = QGuiApplication::screens();
+
+    if ( checked == true ) {
+        widgetList.clear();
+        for ( int i = 0; i < screenList.count(); i++ ) {
+            QLabel *widget = new QLabel;
+            widget->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
+            widget->resize( 400, 200 );
+            widget->move( screenList.at(i)->geometry().x(), 0 );
+
+            QFont font;
+            font.setPixelSize( 50 );
+            widget->setFont( font );
+
+            widget->setStyleSheet( "QLabel { background-color : #3DAEE9; color : black; }" );
+
+            widget->setAlignment( Qt::AlignCenter );
+            widget->setText( screenList.at(i)->name() );
+            widget->show();
+            widgetList << widget;
+        }
+    } else {
+        for ( int i = 0; i < screenList.count(); i++ ) {
+            widgetList.at(i)->close();
+            delete widgetList.at(i);
+        }
+    }
+}
+
+
+void QvkScreenManager::slot_close()
+{
+    for ( int i = 0; i < widgetList.count(); i++ ) {
+        widgetList.at(i)->close();
+        delete widgetList.at(i);
+    }
+}
