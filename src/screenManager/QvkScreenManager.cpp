@@ -111,7 +111,7 @@ void QvkScreenManager::slot_toolButton_toggled( bool checked )
             QLabel *label = new QLabel;
             label->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
             label->resize( 400, 200 );
-            label->move( screenList.at(i)->geometry().x(), 0 );
+            label->move( screenList.at(i)->geometry().x(), screenList.at(i)->geometry().y() );
 
             QFont font;
             font.setPixelSize( 50 );
