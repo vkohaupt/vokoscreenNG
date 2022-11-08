@@ -39,8 +39,6 @@ QvkScreenManager::QvkScreenManager( QMainWindow *parent )
     if ( toolButton != NULL ) {
         connect( toolButton, SIGNAL( toggled( bool ) ), this, SLOT( slot_toolButton_toggled( bool ) ) );
     }
-
-    connect( parent, SIGNAL( signal_close() ), this, SLOT( slot_close() ) );
 }
 
 
@@ -108,37 +106,27 @@ void QvkScreenManager::slot_toolButton_toggled( bool checked )
     QList<QScreen *> screenList = QGuiApplication::screens();
 
     if ( checked == true ) {
-        widgetList.clear();
+        labelList.clear();
         for ( int i = 0; i < screenList.count(); i++ ) {
-            QLabel *widget = new QLabel;
-            widget->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
-            widget->resize( 400, 200 );
-            widget->move( screenList.at(i)->geometry().x(), 0 );
+            QLabel *label = new QLabel;
+            label->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
+            label->resize( 400, 200 );
+            label->move( screenList.at(i)->geometry().x(), 0 );
 
             QFont font;
             font.setPixelSize( 50 );
-            widget->setFont( font );
+            label->setFont( font );
+            label->setStyleSheet( "QLabel { background-color : orange; color : black; }" );
 
-            widget->setStyleSheet( "QLabel { background-color : #3DAEE9; color : black; }" );
-
-            widget->setAlignment( Qt::AlignCenter );
-            widget->setText( screenList.at(i)->name() );
-            widget->show();
-            widgetList << widget;
+            label->setAlignment( Qt::AlignCenter );
+            label->setText( screenList.at(i)->name().remove( "." ).remove( '\\' ) );
+            label->show();
+            labelList << label;
         }
     } else {
-        for ( int i = 0; i < screenList.count(); i++ ) {
-            widgetList.at(i)->close();
-            delete widgetList.at(i);
+        for ( int i = 0; i < labelList.count(); i++ ) {
+            labelList.at(i)->close();
+            labelList.at(i)->deleteLater();
         }
-    }
-}
-
-
-void QvkScreenManager::slot_close()
-{
-    for ( int i = 0; i < widgetList.count(); i++ ) {
-        widgetList.at(i)->close();
-        delete widgetList.at(i);
     }
 }
