@@ -148,6 +148,17 @@
     </message>
 </context>
 <context>
+    <name>QvkSnapshot</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Ingen filhanterare hittades.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Installera en filhanterare.</translation>
+    </message>
+</context>
+<context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>

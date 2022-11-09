@@ -148,6 +148,17 @@
     </message>
 </context>
 <context>
+    <name>QvkSnapshot</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Kein Dateimanager gefunden.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Bitte installieren Sie einen Dateimanager.</translation>
+    </message>
+</context>
+<context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>

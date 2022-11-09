@@ -148,6 +148,17 @@
     </message>
 </context>
 <context>
+    <name>QvkSnapshot</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Nerasta jokios failų tvarkytuvės.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Įdiekite failų tvarkytuvę.</translation>
+    </message>
+</context>
+<context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
