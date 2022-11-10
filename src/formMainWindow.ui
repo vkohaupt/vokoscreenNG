@@ -503,7 +503,7 @@
                   </property>
                   <property name="icon">
                    <iconset resource="screencast.qrc">
-                    <normaloff>:/pictures/screencast/screen_name.png</normaloff>:/pictures/screencast/screen_name.png</iconset>
+                    <normaloff>:/pictures/screencast/screen-name.png</normaloff>:/pictures/screencast/screen-name.png</iconset>
                   </property>
                   <property name="checkable">
                    <bool>true</bool>
