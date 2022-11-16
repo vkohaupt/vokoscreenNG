@@ -641,7 +641,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->label_translate->setPalette( palette );
 
         QString transifex = "<a href='https://explore.transifex.com/vkohaupt/vokoscreen/'>Transifex</a>";
-        ui->label_translate->setText( "<p align=center>For<b> " + localeCountry + "</b> is the language <b> " + localeName + " </b> not 100% translated.<br>" \
+        ui->label_translate->setText( "<p align=center>For<b> " + localeCountry + "</b> is the language <b> " + localeName.replace( ".qm", "" ) + " </b> not 100% translated.<br>" \
                                       "Please help to translate your language on <b>" + transifex + "</b></p>");
     } else {
         ui->label_translate->hide();
