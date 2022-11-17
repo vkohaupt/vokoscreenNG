@@ -42,7 +42,6 @@ void QvkComposite::paintEvent( QPaintEvent *event )
 void QvkComposite::slot_shot()
 {
     QImage image = screen()->grabWindow(0).toImage();
-    image.save( "/home/vk/test.png" );
 
     QColor colorBlack = image.pixelColor( 3, 3 );
     if ( colorBlack == Qt::black ) {
