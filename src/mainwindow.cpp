@@ -64,6 +64,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     soundEffect = new QSoundEffect();
 #endif
 
+#ifdef Q_OS_LINUX
+    // Composite
+    QvkComposite *vkComposite = new QvkComposite( this );
+#endif
+
     QFile fileCSS( ":/pictures/css/css.qss" );
     fileCSS.open( QFile::ReadOnly | QFile::Text );
     QTextStream streamCSS( &fileCSS );
@@ -530,12 +535,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->labelWebSiteUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Homepage" ) + "</a>" );
     ui->labelLanguageUrl->setText( "<a href='https://www.transifex.com/projects/p/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
     ui->labelDonateUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
-
-#ifdef Q_OS_LINUX
-    // Composite
-    QvkComposite *vkComposite = new QvkComposite;
-    vkComposite->slot_doDownload();
-#endif
 
     // Close GUI
     connect( this,      SIGNAL( signal_close() ),       ui->pushButtonContinue, SLOT( click() ) );

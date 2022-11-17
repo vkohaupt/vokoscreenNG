@@ -1,40 +1,55 @@
 #include "QvkComposite.h"
 #include "global.h"
 
-#include <QX11Info>
+#include <QPainter>
+#include <QDebug>
+#include <QScreen>
+#include <QTimer>
+#include <QGuiApplication>
 
-QvkComposite::QvkComposite()
+QvkComposite::QvkComposite( QMainWindow *parent )
 {
-    connect( &manager, SIGNAL( finished( QNetworkReply* ) ), SLOT( slot_downloadFinished( QNetworkReply* ) ) );
+    Q_UNUSED( parent );
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
+    setAttribute( Qt::WA_TranslucentBackground, true );
+
+    resize( 5, 5 );
+    move( 0, 0 );
+    show();
+
+    QTimer::singleShot( 1000, Qt::PreciseTimer, this, SLOT( slot_shot() ) );
 }
 
 
-void QvkComposite::slot_doDownload()
+void QvkComposite::paintEvent( QPaintEvent *event )
 {
-    if ( QX11Info::isCompositingManagerRunning() == true )
-    {
-        QNetworkRequest request( QUrl( "https://vokoscreen.volkoh.de/3.0/version/linux/COMPOSITE-ON" ) );
-        manager.get( request );
-    } else
-    {
-        QNetworkRequest request( QUrl( "https://vokoscreen.volkoh.de/3.0/version/linux/COMPOSITE-OFF" ) );
-        manager.get( request );
-    }
+    Q_UNUSED(event)
+
+    QPixmap pixmap( width(), height() );
+    pixmap.fill( Qt::transparent );
+
+    QPainter painter;
+    painter.begin( &pixmap );
+    painter.setRenderHints( QPainter::Antialiasing, true );
+
+    QPainter painter_1;
+    painter_1.begin( this );
+    painter_1.drawPixmap( 0, 0, pixmap );
+    painter_1.end();
 }
 
 
-void QvkComposite::slot_downloadFinished( QNetworkReply *reply )
+void QvkComposite::slot_shot()
 {
-    QUrl url = reply->url();
-    if ( reply->error() )
-    {
-        //qDebug().noquote() << global::nameOutput << "Download of" << url.toEncoded().constData() << "failed" << reply->errorString();
+    QImage image = screen()->grabWindow(0).toImage();
+    image.save( "/home/vk/test.png" );
+
+    QColor colorBlack = image.pixelColor( 3, 3 );
+    if ( colorBlack == Qt::black ) {
+        isCompositeEnabled = false;
     }
-    else
-    {
-        // Read data and make nothing
-        //qDebug().noquote() << global::nameOutput << "Download of" << url.toEncoded().constData() << "successful";
-        QString string = QString( reply->readAll() );
-        Q_UNUSED(string)
-    }
+
+    emit signal_compositeEnabled( isCompositeEnabled );
+    qDebug().noquote() << global::nameOutput << "[Composite]" << isCompositeEnabled;
+    close();
 }

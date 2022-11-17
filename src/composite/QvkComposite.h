@@ -1,36 +1,36 @@
 #ifndef COMPOSITE_H
 #define COMPOSITE_H
 
-#include <QCoreApplication>
-#include <QNetworkReply>
-#include <QTimer>
 #include <QDebug>
-#include <QDesktopServices>
-#include <QDir>
-#include <QSettings>
+#include <QWidget>
+#include <QPainter>
+#include <QPaintEvent>
+#include <QMainWindow>
 
-class QvkComposite: public QObject
+class QvkComposite: public QWidget
 {
     Q_OBJECT
 public:
-    QvkComposite();
+    QvkComposite( QMainWindow *parent );
+    bool isCompositeEnabled = true;
 
 
 public slots:
-    void slot_doDownload();
 
 
 private:
-    QNetworkAccessManager manager;
-    QList<QNetworkReply *> currentDownloadsQList;
-    QString remoteVersion;
 
 
 private slots:
-    void slot_downloadFinished( QNetworkReply *reply );
+    void slot_shot();
+
+
+protected:
+    void paintEvent( QPaintEvent *event );
 
     
 signals:
+    void signal_compositeEnabled( bool );
 
 };
 
