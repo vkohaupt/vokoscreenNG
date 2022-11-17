@@ -29,13 +29,9 @@ void QvkComposite::paintEvent( QPaintEvent *event )
     pixmap.fill( Qt::transparent );
 
     QPainter painter;
-    painter.begin( &pixmap );
-    painter.setRenderHints( QPainter::Antialiasing, true );
-
-    QPainter painter_1;
-    painter_1.begin( this );
-    painter_1.drawPixmap( 0, 0, pixmap );
-    painter_1.end();
+    painter.begin( this );
+    painter.drawPixmap( 0, 0, pixmap );
+    painter.end();
 }
 
 
