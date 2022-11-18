@@ -67,6 +67,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #ifdef Q_OS_LINUX
     // Composite
     QvkComposite *vkComposite = new QvkComposite( this );
+    Q_UNUSED(vkComposite)
 #endif
 
     QFile fileCSS( ":/pictures/css/css.qss" );
@@ -1184,11 +1185,7 @@ QString QvkMainWindow::VK_getXimagesrc()
         QStringList stringList;
         stringList << "gdiscreencapsrc"
                    << "monitor=" + QString::number( screenNumber )
-                   << "cursor=" + showPointer
-                   << "x=" + QString::number( vkRegionChoise->getXRecordArea() )
-                   << "y=" + QString::number( vkRegionChoise->getYRecordArea() )
-                   << "width=" + QString::number( vkRegionChoise->getWidth() )
-                   << "height=" + QString::number( vkRegionChoise->getHeight() );
+                   << "cursor=" + showPointer;
         value = stringList.join( " " );
     }
 
@@ -1290,6 +1287,7 @@ void QvkMainWindow::VK_gst_Elements_available()
     list << "wasapisrc";
     list << "directsoundsrc";
     list << "bz2dec";
+    list << "videocrop";
 #endif
 #ifdef Q_OS_LINUX
     list << "ximagesrc";
@@ -1987,6 +1985,17 @@ void QvkMainWindow::slot_Start()
     QStringList VK_PipelineList;
     VK_PipelineList << VK_getXimagesrc();
     VK_PipelineList << VK_getCapsFilter();
+#ifdef Q_OS_WIN
+    if ( ui->radioButtonScreencastArea->isChecked() == true ) {
+        QString top = QString::number( vkRegionChoise->getYRecordArea() );
+        QString left = QString::number( vkRegionChoise->getXRecordArea() );
+        int int_right = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 2, 2 ).split( "=" ).at( 1 ).toInt() - vkRegionChoise->getWidth() - vkRegionChoise->getXRecordArea();
+        QString right = QString::number( int_right );
+        int int_bottom = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 3, 3 ).split( "=" ).at( 1 ).toInt() - vkRegionChoise->getHeight() - vkRegionChoise->getYRecordArea();
+        QString bottom = QString::number( int_bottom );
+        VK_PipelineList << QString( "videocrop " ) + "top=" + top + " " + "left=" + left + " " + "right=" + right + " " + "bottom=" + bottom;
+    }
+#endif
     VK_PipelineList << "videoconvert";
     VK_PipelineList << "videorate";
     VK_PipelineList << "queue max-size-bytes=1073741824 max-size-time=10000000000 max-size-buffers=1000";
