@@ -2348,6 +2348,7 @@ void QvkMainWindow::slot_screenCountChangedArea( QString stringText, QString str
     ui->comboBoxScreencastScreenArea->addItem( stringText, stringData );
 
 #ifdef Q_OS_WIN
+    // Unter Windows muß zur Aufnahme mit GStreamer das Display in sortierter Reihenfolge bereitgestellt werden. Display1, Display2, Display3 etc.
     QStringList list;
     for ( int i=0; i < ui->comboBoxScreencastScreenArea->count(); i++ )
     {

@@ -85,7 +85,7 @@ void QvkRegionChoise::slot_init()
 #endif
 
 #ifdef Q_OS_WIN
-    // Für die darstellung des Bereichs wird der Index aus einer unsortierten Liste benötigt.
+    // Für das anzeigen der Bereichsanzeige auf dem Bildschirm wird der Index aus einer unsortierten Liste benötigt.
     if ( ui->comboBoxScreencastScreenArea->currentIndex() > -1 )
     {
         int index = 0;
