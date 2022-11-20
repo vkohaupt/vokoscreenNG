@@ -70,6 +70,7 @@ QvkRegionChoise::QvkRegionChoise( Ui_formMainWindow *ui_formMainWindow ):handleP
 
 void QvkRegionChoise::slot_init()
 {
+#ifdef Q_OS_LINUX
     if ( ui->comboBoxScreencastScreenArea->currentIndex() > -1 )
     {
         int index = ui->comboBoxScreencastScreenArea->currentIndex();
@@ -81,8 +82,30 @@ void QvkRegionChoise::slot_init()
         screenHeight = screen->size().height();
         move( screen->geometry().x(), screen->geometry().y() );
     }
-}
+#endif
 
+#ifdef Q_OS_WIN
+    // Für die darstellung des Bereichs wird der Index aus einer unsortierten Liste benötigt.
+    if ( ui->comboBoxScreencastScreenArea->currentIndex() > -1 )
+    {
+        int index = 0;
+        QString nameDisplay = ui->comboBoxScreencastScreenArea->currentText().section( ":", 0, 0 ).trimmed();
+        QList<QScreen *> screenList = QGuiApplication::screens(); // unsortiert
+        for ( int i=0; i < screenList.count(); i++ ) {
+            QString nameList = screenList.at(i)->name().remove( "." ).remove( "\\" ) ;
+            if ( nameDisplay == nameList )
+            {
+                index = i;
+            }
+        }
+        screen = screenList.at( index );
+        resize( screen->size().width(), screen->size().height() );
+        screenWidth = screen->size().width();
+        screenHeight = screen->size().height();
+        move( screen->geometry().x(), screen->geometry().y() );
+    }
+#endif
+}
 
 QvkRegionChoise::~QvkRegionChoise()
 {

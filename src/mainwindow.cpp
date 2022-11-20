@@ -1171,7 +1171,7 @@ QString QvkMainWindow::VK_getXimagesrc()
 
     if( ui->radioButtonScreencastFullscreen->isChecked() == true )
     {
-        int screenNumber = ( ui->comboBoxScreencastScreen->currentText().section( ":", 0, 0 ).trimmed().right(1) ).toInt() - 1;
+        int screenNumber = ( ui->comboBoxScreencastScreen->currentIndex() );
         QStringList stringList;
         stringList << "gdiscreencapsrc"
                    << "monitor=" + QString::number( screenNumber )
@@ -1181,7 +1181,7 @@ QString QvkMainWindow::VK_getXimagesrc()
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
-        int screenNumber = ( ui->comboBoxScreencastScreenArea->currentText().section( ":", 0, 0 ).trimmed().right(1) ).toInt() - 1;
+        int screenNumber = ( ui->comboBoxScreencastScreenArea->currentIndex() );
         QStringList stringList;
         stringList << "gdiscreencapsrc"
                    << "monitor=" + QString::number( screenNumber )
@@ -2329,11 +2329,35 @@ void QvkMainWindow::slot_screenCountChanged( QString stringText, QString stringD
     qDebug().noquote() << global::nameOutput << "ItemText in Combobox:" << stringText;
     qDebug().noquote() << global::nameOutput << "ItemData in Combobox:" << stringData;
     qDebug();
+
+#ifdef Q_OS_WIN
+    QStringList list;
+    for ( int i=0; i < ui->comboBoxScreencastScreen->count(); i++ )
+    {
+        list.append( ui->comboBoxScreencastScreen->itemText( i ) );
+    }
+    list.sort();
+    ui->comboBoxScreencastScreen->clear();
+    ui->comboBoxScreencastScreen->addItems( list );
+#endif
 }
 
 
 void QvkMainWindow::slot_screenCountChangedArea( QString stringText, QString stringData )
 {
     ui->comboBoxScreencastScreenArea->addItem( stringText, stringData );
-}
 
+#ifdef Q_OS_WIN
+    QStringList list;
+    for ( int i=0; i < ui->comboBoxScreencastScreenArea->count(); i++ )
+    {
+        list.append( ui->comboBoxScreencastScreenArea->itemText( i ) + "|" + ui->comboBoxScreencastScreenArea->itemData( i ).toString() );
+    }
+    list.sort();
+    ui->comboBoxScreencastScreenArea->clear();
+
+    for ( int i=0; i < list.count(); i++ ) {
+        ui->comboBoxScreencastScreenArea->addItem( list.at(i).section( "|", 0, 0 ), list.at(i).section( "|", 1, 1 ) );
+    }
+#endif
+}
