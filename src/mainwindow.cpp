@@ -845,6 +845,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
  */
 void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
 {
+#ifdef Q_OS_LINUX
     if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
     {
         int index = ui->comboBoxScreencastScreen->currentIndex();
@@ -873,6 +874,48 @@ void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
         vkCountdown->x = left + screen.at( index )->geometry().width() / 2 - ( vkCountdown->Width / 2 );
         vkCountdown->y = top + screen.at( index )->geometry().height() / 2 - ( vkCountdown->Height / 2 );
     }
+#endif
+
+#ifdef Q_OS_WIN
+    // Unter Windows muß der Index des Displays zur Anzege des Countdowns in unsorierter Reihenfolge bereitgestellt werden.
+    if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
+    {
+        int index = 0;
+        QString nameDisplay = ui->comboBoxScreencastScreen->currentText().section( ":", 0, 0 ).trimmed();
+        QList<QScreen *> screenList = QGuiApplication::screens(); // unsortiert
+        for ( int i=0; i < screenList.count(); i++ ) {
+            QString nameList = screenList.at(i)->name().remove( "." ).remove( "\\" ) ;
+            if ( nameDisplay == nameList )
+            {
+                index = i;
+            }
+        }
+
+        int left = static_cast<int>( screenList.at( index )->geometry().left() * screenList.at( index )->devicePixelRatio() );
+        int top = static_cast<int>( screenList.at( index )->geometry().top() * screenList.at( index )->devicePixelRatio() );
+        vkCountdown->x = left + screenList.at( index )->geometry().width() / 2 - ( vkCountdown->Width / 2 );
+        vkCountdown->y = top + screenList.at( index )->geometry().height() / 2 - ( vkCountdown->Height / 2 );
+    }
+
+    if ( ui->radioButtonScreencastArea->isChecked() == true )
+    {
+        int index = 0;
+        QString nameDisplay = ui->comboBoxScreencastScreenArea->currentText().section( ":", 0, 0 ).trimmed();
+        QList<QScreen *> screenList = QGuiApplication::screens(); // unsortiert
+        for ( int i=0; i < screenList.count(); i++ ) {
+            QString nameList = screenList.at(i)->name().remove( "." ).remove( "\\" ) ;
+            if ( nameDisplay == nameList )
+            {
+                index = i;
+            }
+        }
+        int left = static_cast<int>( screenList.at( index )->geometry().left() * screenList.at( index )->devicePixelRatio() );
+        int top = static_cast<int>( screenList.at( index )->geometry().top() * screenList.at( index )->devicePixelRatio() );
+
+        vkCountdown->x = left + screenList.at( index )->geometry().width() / 2 - ( vkCountdown->Width / 2 );
+        vkCountdown->y = top + screenList.at( index )->geometry().height() / 2 - ( vkCountdown->Height / 2 );
+    }
+#endif
 }
 
 
