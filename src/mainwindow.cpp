@@ -1,4 +1,4 @@
-﻿/* vokoscreenNG - A desktop recorder
+/* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2022 Volker Kohaupt
  * 
  * Author:
@@ -604,12 +604,21 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // After reading the settings, we read the arguments and run
     QStringList arguments = QApplication::instance()->arguments();
-    if ( arguments.count() > 1  )
-    {
-        qDebug().noquote() << global::nameOutput << "started from file:" << arguments.at(1);
-        vkPlayer->setMediaFile( arguments.at(1) );
-        vkPlayer->slot_play();
-        ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
+    if ( arguments.contains( "gst_appsrc" ) == true ) {
+        gst_appsrc = true;
+        ui->pushButtonStart->setVisible( false );
+        ui->pushButtonStop->setVisible( false );
+        ui->horizontalLayout->insertWidget( 0, ui->pushButtonStopAppsrc );
+        ui->horizontalLayout->insertWidget( 0, ui->pushButtonStartAppsrc );
+    } else {
+        ui->pushButtonStartAppsrc->setVisible( false );
+        ui->pushButtonStopAppsrc->setVisible( false );
+        if ( arguments.count() > 1  ) {
+            qDebug().noquote() << global::nameOutput << "started from file:" << arguments.at(1);
+            vkPlayer->setMediaFile( arguments.at(1) );
+            vkPlayer->slot_play();
+            ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
+        }
     }
 
     QvkImageFromTabs *vkImageFromTabs = new QvkImageFromTabs( this );

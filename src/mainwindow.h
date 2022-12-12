@@ -149,6 +149,9 @@ private:
 
     bool openh264ProfileTest;
 
+    bool gst_appsrc = false;
+
+
 #ifdef Q_OS_WIN
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller;
 #endif

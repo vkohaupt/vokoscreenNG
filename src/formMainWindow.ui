@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>790</width>
+    <width>850</width>
     <height>500</height>
    </rect>
   </property>
@@ -287,6 +287,35 @@
          </property>
          <property name="autoRaise">
           <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButtonStartAppsrc">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string notr="true">Start-App</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButtonStopAppsrc">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string notr="true">Stop-App</string>
          </property>
         </widget>
        </item>
@@ -1181,7 +1210,7 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>573</width>
+                      <width>633</width>
                       <height>258</height>
                      </rect>
                     </property>
@@ -2469,7 +2498,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>388</width>
+                   <width>448</width>
                    <height>364</height>
                   </rect>
                  </property>

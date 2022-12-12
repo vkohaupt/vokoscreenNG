@@ -85,6 +85,10 @@ int main(int argc, char *argv[])
             return 0;
         }
 
+        if ( arguments.at(1) == "gst_appsrc" ) {
+            goto end;
+        }
+
         // If call from terminal and local file or remote file not exists
         QFile file( arguments.at(1) );
         if ( ( file.exists() == false ) and
@@ -96,7 +100,9 @@ int main(int argc, char *argv[])
             qDebug();
             return 1;
         }
+
     }
+    end:
 
     // Initialize GStreamer
     // https://developer.gnome.org/gstreamer/stable/gst-running.html
