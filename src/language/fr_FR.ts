@@ -531,7 +531,7 @@
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Instantatné</translation>
+        <translation>Instantané</translation>
     </message>
     <message>
         <source>Imagepath</source>
