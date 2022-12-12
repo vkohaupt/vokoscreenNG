@@ -35,7 +35,6 @@ class QvkImageFromTabs : public QWindow
 public:
     QvkImageFromTabs( QvkMainWindow *parent = 0 );
     virtual ~QvkImageFromTabs();
-    void init( Ui_formMainWindow *vk_ui );
 
 
 public slots:
@@ -53,13 +52,8 @@ protected:
 
 
 private:
-    Ui_formMainWindow *ui = Q_NULLPTR;
-    QvkMainWindow *vokoscreenGuiWithoutMargins = Q_NULLPTR;
-    int left = 0;
-    int top = 0;
-    int right = 0;
-    int bottom = 0;
-    int counterFile = 0;
+    QvkMainWindow *myParent = Q_NULLPTR;
+    int counterFile;
 
 };
 

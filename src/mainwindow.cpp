@@ -622,7 +622,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     }
 
     QvkImageFromTabs *vkImageFromTabs = new QvkImageFromTabs( this );
-    vkImageFromTabs->init( ui );
+    Q_UNUSED(vkImageFromTabs)
 
     is_videoFolderExists_and_haveWritePermission();
 

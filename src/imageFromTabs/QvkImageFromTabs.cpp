@@ -34,16 +34,8 @@
 
 QvkImageFromTabs::QvkImageFromTabs( QvkMainWindow *parent )
 {
-    vokoscreenGuiWithoutMargins = parent;
-    setTitle( "vokoscreenNG Referenz Window" );
-    resize( 400, 300 );
-}
-
-
-void QvkImageFromTabs::init( Ui_formMainWindow *vk_ui )
-{
-    ui = vk_ui;
-    connect( ui->pushButtonImages, SIGNAL( clicked() ), this, SLOT( slot_make_picture_from_tabs() ) );
+    myParent = parent;
+    connect( myParent->ui->pushButtonImages, SIGNAL( clicked() ), this, SLOT( slot_make_picture_from_tabs() ) );
 }
 
 
@@ -53,25 +45,13 @@ QvkImageFromTabs::~QvkImageFromTabs()
 
 void QvkImageFromTabs::slot_make_picture_from_tabs()
 {
-    ui->pushButtonImages->setEnabled( false );
+    myParent->ui->pushButtonImages->setEnabled( false );
 
     counterFile = 0;
 
-    show();
-    for ( int y = 0; y < 30; y++ )
+    for ( int i = 0; i < myParent->ui->tabWidgetScreencast->tabBar()->count(); i++ )
     {
-        QCoreApplication::processEvents();
-        QThread::msleep( 100 );
-    }
-    left = frameMargins().left();
-    top = frameMargins().top();
-    right = frameMargins().right();
-    bottom = frameMargins().bottom();
-    close();
-
-    for ( int i = 0; i < ui->tabWidgetScreencast->tabBar()->count(); i++ )
-    {
-        ui->tabWidgetScreencast->setCurrentIndex( i );
+        myParent->ui->tabWidgetScreencast->setCurrentIndex( i );
         for ( int y = 0; y < 30; y++ ) {
             QCoreApplication::processEvents();
             QThread::msleep( 20 );
@@ -79,7 +59,7 @@ void QvkImageFromTabs::slot_make_picture_from_tabs()
         slot_make_picture_from_tab();
     }
 
-    QList<QToolButton *> listToolButton = ui->widgetSidbar->findChildren<QToolButton *>();
+    QList<QToolButton *> listToolButton = myParent->ui->widgetSidbar->findChildren<QToolButton *>();
     for ( int i = 1; i < listToolButton.count(); i++ ) {
         listToolButton.at(i)->click();
         for ( int y = 0; y < 30; y++ ) {
@@ -103,7 +83,7 @@ void QvkImageFromTabs::slot_make_picture_from_tabs()
         msgBox.exec();
     }
 
-    ui->pushButtonImages->setEnabled( true );
+    myParent->ui->pushButtonImages->setEnabled( true );
 }
 
 
@@ -113,20 +93,23 @@ void QvkImageFromTabs::slot_make_picture_from_tab()
 
     int sumScreenWidth = 0;
     QMap<int, QString> map;
-    for ( int i = 0; i < screenList.count(); i++ )
-    {
+    for ( int i = 0; i < screenList.count(); i++ ) {
         sumScreenWidth = sumScreenWidth + screenList.at(i)->size().width();
         map.insert( screenList.at(i)->size().height(), QString::number( screenList.at(i)->size().height() ) );
     }
 
     QPixmap pixmapScreen( screenList.at(0)->grabWindow( 0, 0, 0, sumScreenWidth, map.values().last().toInt() ) );
 
-    QPixmap windowPixmap = pixmapScreen.copy( vokoscreenGuiWithoutMargins->mapToGlobal( QPoint(0,0) ).x() - left,
-                                              vokoscreenGuiWithoutMargins->mapToGlobal( QPoint(0,0) ).y() - top,
-                                              vokoscreenGuiWithoutMargins->size().width() + left + right,
-                                              vokoscreenGuiWithoutMargins->size().height() + top + bottom );
+    int left = myParent->windowHandle()->frameMargins().left();
+    int top = myParent->windowHandle()->frameMargins().top();
+    int right = myParent->windowHandle()->frameMargins().right();
+    int bottom = myParent->windowHandle()->frameMargins().bottom();
+    QPixmap windowPixmap = pixmapScreen.copy( myParent->mapToGlobal( QPoint(0,0) ).x() - left,
+                                              myParent->mapToGlobal( QPoint(0,0) ).y() - top,
+                                              myParent->size().width() + left + right,
+                                              myParent->size().height() + top + bottom );
 
     windowPixmap.save( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) + "/" + "vokoscreenNG-" + QString::number( counterFile++ ) + ".png" );
-    ui->label_save_image_path->setAlignment( Qt::AlignHCenter );
-    ui->label_save_image_path->setText( "Images saved in: " + QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
+    myParent->ui->label_save_image_path->setAlignment( Qt::AlignHCenter );
+    myParent->ui->label_save_image_path->setText( "Images saved in: " + QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
 }
