@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>850</width>
-    <height>500</height>
+    <width>789</width>
+    <height>489</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1210,8 +1210,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>633</width>
-                      <height>258</height>
+                      <width>572</width>
+                      <height>247</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices"/>
@@ -2498,8 +2498,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>448</width>
-                   <height>364</height>
+                   <width>387</width>
+                   <height>353</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
