@@ -713,6 +713,7 @@ void QvkMainWindow::slot_GstreamerOpenFolder( bool value )
         pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
 
         QMessageBox msgBox( this );
+        //: Display a MessageBox, if not found a filemanager.
         msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
         msgBox.setWindowTitle( global::name + " " + global::version );
         msgBox.setIconPixmap( pixmap );
