@@ -439,6 +439,9 @@
                   <property name="text">
                    <string notr="true">Wi&amp;ndow</string>
                   </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroup</string>
+                  </attribute>
                  </widget>
                 </item>
                 <item row="2" column="2">
@@ -460,6 +463,9 @@
                   <property name="text">
                    <string>Area</string>
                   </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroup</string>
+                  </attribute>
                  </widget>
                 </item>
                 <item row="1" column="4">
@@ -516,6 +522,9 @@
                   <property name="text">
                    <string notr="true">Fulls&amp;creen</string>
                   </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroup</string>
+                  </attribute>
                  </widget>
                 </item>
                 <item row="2" column="1">
@@ -6961,4 +6970,7 @@ p, li { white-space: pre-wrap; }
   <include location="screencast.qrc"/>
  </resources>
  <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
 </ui>
