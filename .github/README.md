@@ -146,3 +146,4 @@ On Ubuntu these requirements can be satisfied by running `sudo apt install libgs
 ![Picture](https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-6.png)
 ![Picture](https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-7.png)
 ![Picture](https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-8.png)
+![Picture](https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-9.png)
