@@ -104,6 +104,7 @@
     </message>
     <message>
         <source>No filemanager found.</source>
+        <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
         <translation>No se encontró ningún gestor de archivos.</translation>
     </message>
     <message>

@@ -103,6 +103,7 @@
     </message>
     <message>
         <source>No filemanager found.</source>
+        <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
         <translation>找不到檔案管理員程式</translation>
     </message>
     <message>

@@ -103,6 +103,7 @@
     </message>
     <message>
         <source>No filemanager found.</source>
+        <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
         <translation>No s’ha trobat cap gestor de fitxers.</translation>
     </message>
     <message>

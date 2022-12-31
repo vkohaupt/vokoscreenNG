@@ -103,6 +103,7 @@
     </message>
     <message>
         <source>No filemanager found.</source>
+        <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
         <translation>Tiedostonhallintaa ei löytynyt.</translation>
     </message>
     <message>
