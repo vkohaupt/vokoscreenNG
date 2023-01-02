@@ -77,7 +77,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     fileCSS.close();
 
     sliderScreencastCountDown = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_60->insertWidget( 0, sliderScreencastCountDown );
+    ui->horizontalLayout_60->insertWidget( 1, sliderScreencastCountDown );
     sliderScreencastCountDown->setObjectName( "sliderScreencastCountDown" );
     sliderScreencastCountDown->setTracking( true );
     sliderScreencastCountDown->setMinimum( 0 );
