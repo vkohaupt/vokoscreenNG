@@ -591,6 +591,9 @@
               </item>
               <item>
                <layout class="QGridLayout" name="gridLayout_13">
+                <property name="verticalSpacing">
+                 <number>0</number>
+                </property>
                 <item row="0" column="2">
                  <spacer name="horizontalSpacer_45">
                   <property name="orientation">
