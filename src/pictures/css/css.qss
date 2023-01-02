@@ -76,3 +76,77 @@ QCheckBox::indicator:unchecked:hover {
 QCheckBox::indicator:unchecked:hover:pressed {
     border-image: url(:/pictures/css/checkBox/checkBox-unchecked-hover-pressed.png);
 }
+
+
+
+
+QToolButton#toolButton_magnifier_rectangle {
+    background: none;
+    width: 24;
+    height: 24;
+}
+
+QToolButton#toolButton_magnifier_rectangle {
+    border-image: url(:/pictures/css/magnifier/magnifier-rectangle-unchecked.png);
+}
+
+QToolButton#toolButton_magnifier_rectangle:hover {
+    border-image: url(:/pictures/css/magnifier/magnifier-rectangle-unchecked-hover.png);
+}
+
+QToolButton#toolButton_magnifier_rectangle:checked {
+    border-image: url(:/pictures/css/magnifier/magnifier-rectangle-checked.png);
+}
+
+QToolButton#toolButton_magnifier_rectangle:checked:hover {
+    border-image: url(:/pictures/css/magnifier/magnifier-rectangle-checked-hover.png);
+}
+
+
+
+
+QToolButton#toolButton_magnifier_elipse {
+    background: none;
+    width: 24;
+    height: 24;
+}
+
+QToolButton#toolButton_magnifier_elipse {
+    border-image: url(:/pictures/css/magnifier/magnifier-elipse-unchecked.png);
+}
+
+QToolButton#toolButton_magnifier_elipse:hover {
+    border-image: url(:/pictures/css/magnifier/magnifier-elipse-unchecked-hover.png);
+}
+
+QToolButton#toolButton_magnifier_elipse:checked {
+    border-image: url(:/pictures/css/magnifier/magnifier-elipse-checked.png);
+}
+
+QToolButton#toolButton_magnifier_elipse:checked:hover {
+    border-image: url(:/pictures/css/magnifier/magnifier-elipse-checked-hover.png);
+}
+
+
+
+QToolButton#toolButton_magnifier_circle {
+    background: none;
+    width: 24;
+    height: 24;
+}
+
+QToolButton#toolButton_magnifier_circle {
+    border-image: url(:/pictures/css/magnifier/magnifier-circle-unchecked.png);
+}
+
+QToolButton#toolButton_magnifier_circle:hover {
+    border-image: url(:/pictures/css/magnifier/magnifier-circle-unchecked-hover.png);
+}
+
+QToolButton#toolButton_magnifier_circle:checked {
+    border-image: url(:/pictures/css/magnifier/magnifier-circle-checked.png);
+}
+
+QToolButton#toolButton_magnifier_circle:checked:hover {
+    border-image: url(:/pictures/css/magnifier/magnifier-circle-checked-hover.png);
+}

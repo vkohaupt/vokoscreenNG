@@ -597,15 +597,84 @@
                 <property name="verticalSpacing">
                  <number>0</number>
                 </property>
-                <item row="0" column="3">
-                 <widget class="QToolButton" name="help_screencast_magnifier">
-                  <property name="toolTip">
-                   <string>Help</string>
+                <item row="2" column="1">
+                 <spacer name="verticalSpacer_20">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
                   </property>
-                  <property name="text">
-                   <string notr="true">Help</string>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
                   </property>
-                 </widget>
+                 </spacer>
+                </item>
+                <item row="0" column="2">
+                 <spacer name="horizontalSpacer_45">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="5" column="1">
+                 <spacer name="verticalSpacer_9">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="0" column="0" rowspan="2">
+                 <layout class="QVBoxLayout" name="verticalLayout_39">
+                  <property name="topMargin">
+                   <number>5</number>
+                  </property>
+                  <item>
+                   <widget class="QCheckBox" name="checkBoxMagnifier">
+                    <property name="toolTip">
+                     <string notr="true">CTRL+SHIFT+F9</string>
+                    </property>
+                    <property name="text">
+                     <string>Magnification</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item alignment="Qt::AlignHCenter">
+                   <widget class="QLabel" name="label_magnifier_on_screen">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="text">
+                     <string notr="true">On Screen</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="verticalSpacer_27">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
                 </item>
                 <item row="4" column="1" colspan="2">
                  <layout class="QHBoxLayout" name="horizontalLayout_60">
@@ -627,15 +696,35 @@
                   </item>
                  </layout>
                 </item>
-                <item row="0" column="2">
-                 <spacer name="horizontalSpacer_45">
+                <item row="0" column="3">
+                 <widget class="QToolButton" name="help_screencast_magnifier">
+                  <property name="toolTip">
+                   <string>Help</string>
+                  </property>
+                  <property name="text">
+                   <string notr="true">Help</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="6" column="3">
+                 <widget class="QToolButton" name="help_screencast_deleteallsettings">
+                  <property name="toolTip">
+                   <string>Help</string>
+                  </property>
+                  <property name="text">
+                   <string notr="true">Help</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <spacer name="verticalSpacer_7">
                   <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
+                   <enum>Qt::Vertical</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
-                    <width>40</width>
-                    <height>20</height>
+                    <width>20</width>
+                    <height>40</height>
                    </size>
                   </property>
                  </spacer>
@@ -691,40 +780,18 @@
                      </property>
                      <item>
                       <widget class="QToolButton" name="toolButton_magnifier_rectangle">
-                       <property name="styleSheet">
-                        <string notr="true">QToolButton::checked{
-    width: 27;
-    height: 27;
-    border-image: url(:/pictures/css/magnifier/background-pressed.png);
- }
-</string>
-                       </property>
                        <property name="text">
                         <string notr="true"/>
                        </property>
-                       <property name="icon">
-                        <iconset resource="screencast.qrc">
-                         <normaloff>:/pictures/css/magnifier/window-rectangle-off.png</normaloff>
-                         <normalon>:/pictures/css/magnifier/window-rectangle-on.png</normalon>:/pictures/css/magnifier/window-rectangle-off.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>24</width>
-                         <height>24</height>
-                        </size>
-                       </property>
                        <property name="checkable">
-                        <bool>true</bool>
-                       </property>
-                       <property name="checked">
                         <bool>true</bool>
                        </property>
                        <property name="autoExclusive">
                         <bool>true</bool>
                        </property>
-                       <property name="autoRaise">
-                        <bool>true</bool>
-                       </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">buttonGroup_2</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item>
@@ -749,27 +816,8 @@
                      </property>
                      <item>
                       <widget class="QToolButton" name="toolButton_magnifier_elipse">
-                       <property name="styleSheet">
-                        <string notr="true">QToolButton::checked{
-    width: 27;
-    height: 27;
-    border-image: url(:/pictures/css/magnifier/background-pressed.png);
- }
-</string>
-                       </property>
                        <property name="text">
                         <string notr="true"/>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="screencast.qrc">
-                         <normaloff>:/pictures/css/magnifier/window-ellipse-off.png</normaloff>
-                         <normalon>:/pictures/css/magnifier/window-ellipse-on.png</normalon>:/pictures/css/magnifier/window-ellipse-off.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>24</width>
-                         <height>24</height>
-                        </size>
                        </property>
                        <property name="checkable">
                         <bool>true</bool>
@@ -777,9 +825,9 @@
                        <property name="autoExclusive">
                         <bool>true</bool>
                        </property>
-                       <property name="autoRaise">
-                        <bool>true</bool>
-                       </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">buttonGroup_2</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item>
@@ -804,27 +852,8 @@
                      </property>
                      <item>
                       <widget class="QToolButton" name="toolButton_magnifier_circle">
-                       <property name="styleSheet">
-                        <string notr="true">QToolButton::checked{
-    width: 27;
-    height: 27;
-    border-image: url(:/pictures/css/magnifier/background-pressed.png);
- }
-</string>
-                       </property>
                        <property name="text">
                         <string notr="true"/>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="screencast.qrc">
-                         <normaloff>:/pictures/css/magnifier/window-circle-off.png</normaloff>
-                         <normalon>:/pictures/css/magnifier/window-circle-on.png</normalon>:/pictures/css/magnifier/window-circle-off.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>24</width>
-                         <height>24</height>
-                        </size>
                        </property>
                        <property name="checkable">
                         <bool>true</bool>
@@ -832,9 +861,9 @@
                        <property name="autoExclusive">
                         <bool>true</bool>
                        </property>
-                       <property name="autoRaise">
-                        <bool>true</bool>
-                       </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">buttonGroup_2</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item>
@@ -865,95 +894,6 @@
                    </widget>
                   </item>
                  </layout>
-                </item>
-                <item row="5" column="1">
-                 <spacer name="verticalSpacer_9">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item row="0" column="0" rowspan="2">
-                 <layout class="QVBoxLayout" name="verticalLayout_39">
-                  <property name="topMargin">
-                   <number>5</number>
-                  </property>
-                  <item>
-                   <widget class="QCheckBox" name="checkBoxMagnifier">
-                    <property name="toolTip">
-                     <string notr="true">CTRL+SHIFT+F9</string>
-                    </property>
-                    <property name="text">
-                     <string>Magnification</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item alignment="Qt::AlignHCenter">
-                   <widget class="QLabel" name="label_magnifier_on_screen">
-                    <property name="enabled">
-                     <bool>false</bool>
-                    </property>
-                    <property name="text">
-                     <string notr="true">On Screen</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="verticalSpacer_27">
-                    <property name="orientation">
-                     <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>20</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
-                </item>
-                <item row="6" column="3">
-                 <widget class="QToolButton" name="help_screencast_deleteallsettings">
-                  <property name="toolTip">
-                   <string>Help</string>
-                  </property>
-                  <property name="text">
-                   <string notr="true">Help</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="1">
-                 <spacer name="verticalSpacer_20">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item row="3" column="1">
-                 <spacer name="verticalSpacer_7">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
                 </item>
                </layout>
               </item>
@@ -6971,6 +6911,7 @@ p, li { white-space: pre-wrap; }
  </resources>
  <connections/>
  <buttongroups>
+  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
