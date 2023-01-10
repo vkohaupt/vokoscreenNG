@@ -245,7 +245,7 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
     QString videocrop = "";
     vkRegionChoise_wl->recordMode( true );
 
-    QScreen *Screen = screen();
+    QScreen *Screen = QGuiApplication::primaryScreen();
     int screenWidth = Screen->size().width();
     int screenHeight = Screen->size().height();
 

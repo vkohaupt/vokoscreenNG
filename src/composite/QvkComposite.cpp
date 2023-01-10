@@ -37,7 +37,7 @@ void QvkComposite::paintEvent( QPaintEvent *event )
 
 void QvkComposite::slot_shot()
 {
-    QImage image = screen()->grabWindow(0).toImage();
+    QImage image = QGuiApplication::primaryScreen()->grabWindow(0).toImage();
 
     QColor colorBlack = image.pixelColor( 3, 3 );
     if ( colorBlack == Qt::black ) {
