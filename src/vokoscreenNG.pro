@@ -34,6 +34,19 @@ FORMS +=   formMainWindow.ui
 
 RESOURCES += screencast.qrc
 
+MIN_MAJOR_VERSION=5
+MIN_MINOR_VERSION=15
+msg="Your Qt version $${QT_VERSION} is to old, you need Qt $${MIN_MAJOR_VERSION}.$${MIN_MINOR_VERSION} or newer"
+lessThan(QT_MAJOR_VERSION, $$MIN_MAJOR_VERSION) {
+    message("$${msg}")
+    error("  $${msg}")
+}
+
+lessThan(QT_MINOR_VERSION, $$MIN_MINOR_VERSION) {
+    message("$${msg}")
+    error("  $${msg}")
+}
+
 isEmpty(QMAKE_LRELEASE) {
   # Try invocation path of qmake for lrelease
   # NOTE: Usually from Qt Unified Installer
