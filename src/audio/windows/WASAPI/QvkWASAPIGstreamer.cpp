@@ -114,7 +114,10 @@ QString QvkWASAPIGstreamer::get_AudioDeviceString( GstDevice *device )
   gst_object_unref( GST_OBJECT( element ) );
   gst_object_unref( GST_OBJECT( pureelement ) );
 
-  QString string = g_string_free( launch_line, FALSE );
+  QString string = "";
+  if ( launch_line != Q_NULLPTR ) {
+    string = g_string_free( launch_line, FALSE );
+  }
   return string;
 }
 
