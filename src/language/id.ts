@@ -1,87 +1,86 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="es">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="id">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Seleccione uno o más dispositivos</translation>
+        <translation>Pilih satu atau lebih perangkat</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>Kamera</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Cambiar a ventana</translation>
+        <translation>Pindah ke Jendela</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Ir a pantalla completa</translation>
+        <translation>Pindah ke Layar Penuh</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Configuración finalizada correctamente</translation>
+        <translation>Persiapan program sukses.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Cierre la ventana e inicie vokoscreenNG de nuevo</translation>
+        <translation>Tutup jendela dan mulai ulang vokoscreenNG.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Difrute con vokoscreenNG</translation>
+        <translation>Selamat bersenang-senang dengan vokoscreenNG</translation>
     </message>
 </context>
 <context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Seleccione uno o más dispositivos</translation>
+        <translation>Pilih satu atau lebih perangkat</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Ayuda</translation>
+        <translation>Bantuan</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>No se encontró ningún gestor de archivos.</translation>
+        <translation>Pengelola berkas tidak ditemukan.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Instale un gestor de archivos.</translation>
+        <translation>Mohon pasang pengelola berkas.</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Atención</translation>
+        <translation>Peringatan</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>La grabación no empieza por insuficiencia de espacio en disco</translation>
+        <translation>Perekaman belum berjalan, ruang bebas diska tidak cukup.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>No queda espacio libre en disco</translation>
+        <translation>Batas ruang bebas diska tercapai.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Límite de espacio libre en disco
- </translation>
+        <translation>Batas dari ruang bebas diska</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -89,336 +88,335 @@
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Paró la grabación, no queda espacio en disco</translation>
+        <translation>Perekaman telah dihentikan, ruang bebas diska tidak cukup.</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Pantalla completa</translation>
+        <translation>Layar penuh</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Ventana</translation>
+        <translation>Jendela</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>No se encontró ningún gestor de archivos.</translation>
+        <translation>Manajer erkas tidak ditemukan</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Instale un gestor de archivos.</translation>
+        <translation>Mohon pasang sebuah manajer berkas</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Código fuente</translation>
+        <translation>Kode sumber</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Sitio web</translation>
+        <translation>Halaman muka</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Traducciones</translation>
+        <translation>Terjemahan</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donar</translation>
+        <translation>Donasi</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Seleccione uno o más dispositivos</translation>
+        <translation>Pilih satu atau lebih perangkat.</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>Daerah</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>Bidangluas</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>No se encontró ningún gestor de archivos.</translation>
+        <translation>Pengelola berkas tidak ditemukan.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Instale un gestor de archivos.</translation>
+        <translation>Mohon pasang pengelola berkas.</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Iniciar</translation>
+        <translation>Mulai</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>Berhenti</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Tangguhkan</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>Lanjut</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Salir</translation>
+        <translation>Keluar</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>Pembesaran</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Iniciar</translation>
+        <translation>Mulai</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>Berhenti</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Jeda</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>Lanjut</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Salir</translation>
+        <translation>Keluar</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>Pembesaran</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Cuadro de diálogo</translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Voltear horizontalmente</translation>
+        <translation>Putar ke arah horizontal</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Voltear verticalmente</translation>
+        <translation>Putar ke arah vertikal</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertir</translation>
+        <translation>Balikan</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Gris</translation>
+        <translation>Abu - abu</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Blanco y negro</translation>
+        <translation>Hitam-dan-putih</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Quitar marco de ventana</translation>
+        <translation>Hilangkan bingkai jendela</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Configuración de cámara</translation>
+        <translation>Pengaturan Kamera</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>Daerah</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Restablecer</translation>
+        <translation>Atur ulang</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>Pembesaran</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Cuenta regresiva</translation>
+        <translation>Hitung mundur</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Tamaño de vídeo:</translation>
+        <translation>Ukuran video:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Espacio en disco disponible:</translation>
+        <translation>Ruang bebas diska:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Información</translation>
+        <translation>Informasi:</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Tiempo de grabación:</translation>
+        <translation>Waktu Rekam:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Sonido</translation>
+        <translation>Audio</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Fotogramas</translation>
+        <translation>Frame</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Códec de vídeo</translation>
+        <translation>Kodekvideo</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formato</translation>
+        <translation>Format</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Códec de audio</translation>
+        <translation>Kodekaudio</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>Calidad</translation>
+        <translation>Kualitas</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>No grabar el puntero del ratón</translation>
+        <translation>Jangan rekam kursor tetikus</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Hora</translation>
+        <translation>Jam</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minuto</translation>
+        <translation>Menit</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Iniciar temporizador</translation>
+        <translation>Mulai pengatur waktu</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Detener la grabación después de </translation>
+        <translation>Hentikan rekaman setelah</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Horas</translation>
+        <translation>Jam - Jam</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minutos</translation>
+        <translation>Menit</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Segundos</translation>
+        <translation>Detik</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Ruta del vídeo</translation>
+        <translation>Jalur video</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Límite de espacio libre en disco
- </translation>
+        <translation>Batas dari ruang bebas diska</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Mostrar en bandeja del sistema</translation>
+        <translation>Tampilkan dalam baki sistem</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Segundos de espera antes de grabar</translation>
+        <translation>Detik menunggu sebelum merekam</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Buscar actualizaciones</translation>
+        <translation>Memeriksa perubahan</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Ayuda</translation>
+        <translation>Bantuan</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Vídeos</translation>
+        <translation>Video</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Disponible</translation>
+        <translation>Tersedia</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>No disponible</translation>
+        <translation>Tidak tersedia</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Iniciar</translation>
+        <translation>Mulai</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>Berhenti</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Tangguhkan</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>Lanjut</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Reproducir</translation>
+        <translation>Putar</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Carpeta</translation>
+        <translation>Folder</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertir</translation>
+        <translation>Balikan</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Gris</translation>
+        <translation>Abu - abu</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -434,51 +432,51 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Reproducir última grabación</translation>
+        <translation>Putar rekaman terakhir</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Abrir carpeta</translation>
+        <translation>Buka folder</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation>Ctrl + Mayús + F8</translation>
+        <translation>CTRL+SHIFT+F8</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimizar al empezar grabación</translation>
+        <translation>Kecilkan ketika rekaman dimulai</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Empezar aplicación minimizada</translation>
+        <translation>Mulai mengecilkan</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Voltear horizontalmente</translation>
+        <translation>Putar ke arah horizontal</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Voltear verticalmente</translation>
+        <translation>Putar ke arah vertikal</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Blanco y negro</translation>
+        <translation>Hitam-dan-putih</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Quitar marco de ventana</translation>
+        <translation>Hilangkan bingkai jendela</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donar</translation>
+        <translation>Donasi</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Restablecer todas las preferencias en el próximo inicio</translation>
+        <translation>Atur ulang semua pengaturan pada mulai berikutnya</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Derechos de autor y licencia desde imágenes</translation>
+        <translation>Hak cipta dan lisensi dari gambar - gambar</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -486,113 +484,113 @@
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Captura de pantalla</translation>
+        <translation>RekamLayar</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Reproductor</translation>
+        <translation>Pemutar</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Registro</translation>
+        <translation>Pencatatan</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automáticamente</translation>
+        <translation>Secara otomatis</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Crear imágenes de pestañas</translation>
+        <translation>Buat gambar dari tab</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Información sobre la Licencia</translation>
+        <translation>Informasi lisensi</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>Encender</translation>
+        <translation>HIDUPKAN</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>Apagar</translation>
+        <translation>MATIKAN</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Accesos directos de teclado</translation>
+        <translation>Tombol-pintas umum</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Acceso directo asignado</translation>
+        <translation>Tombol pintas yang diterapkan.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Acceso directo de teclado no asignado o asignado más de una vez</translation>
+        <translation>Tombol pintas belum dipasang atau telah dipasang lebih dari sekali.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Si aparece asignado pero no funciona, es que está siendo utilizado por otro programa</translation>
+        <translation>Apabila telah diterapkan namun tidak bekerja, bisa jadi sedang digunakan oleh program lain.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Captura</translation>
+        <translation>Jepret-gambar</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Ruta de la imagen</translation>
+        <translation>Jalursimpan-gambar</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Ocultar esta ventana</translation>
+        <translation>Sembunyikan jendela</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Segundos en espera antes de grabar</translation>
+        <translation>detik waktu tunggu prarekam</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Derechos de autor y licencia desde imágenes</translation>
+        <translation>Hak cipta dan lisensi dari gambar - gambar</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Reproducir</translation>
+        <translation>Putar</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Tangguhkan</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>Berhenti</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Abrir archivo</translation>
+        <translation>Buka Berkas</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Pantalla completa</translation>
+        <translation>Layar penuh</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Fotograma anterior</translation>
+        <translation>Bingkai sebelumnya</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Fotograma siguiente</translation>
+        <translation>Bingkai berikutnya</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Silenciar</translation>
+        <translation>Bisu</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Mover el menú</translation>
+        <translation>Pindah menu</translation>
     </message>
 </context>
 </TS>

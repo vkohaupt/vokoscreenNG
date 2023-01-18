@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="es">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="es_ES">
 <context>
     <name>QvkAudioController</name>
     <message>
@@ -17,11 +17,11 @@
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Cambiar a ventana</translation>
+        <translation>Cambiar a Ventana</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Ir a pantalla completa</translation>
+        <translation>Cambiar a Pantalla Completa</translation>
     </message>
 </context>
 <context>
@@ -57,31 +57,30 @@
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>No se encontró ningún gestor de archivos.</translation>
+        <translation>Gestor de ficheros no encontrado.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Instale un gestor de archivos.</translation>
+        <translation>Por favor, instale un gestor de ficheros.</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Atención</translation>
+        <translation>Aviso</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>La grabación no empieza por insuficiencia de espacio en disco</translation>
+        <translation>La grabación no ha empezado; no hay espacio en disco disponible.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>No queda espacio libre en disco</translation>
+        <translation>El límite de espacio en disco se ha alcanzado.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Límite de espacio libre en disco
- </translation>
+        <translation>Límite de espacio en disco.</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -89,14 +88,14 @@
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Paró la grabación, no queda espacio en disco</translation>
+        <translation>La grabación ha parado; no hay suficiente espacio en disco.</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Pantalla completa</translation>
+        <translation>Pantalla</translation>
     </message>
     <message>
         <source>Window</source>
@@ -105,11 +104,11 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>No se encontró ningún gestor de archivos.</translation>
+        <translation>Gestor de ficheros no encontrado.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Instale un gestor de archivos.</translation>
+        <translation>Por favor, instale un gestor de ficheros.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
@@ -117,7 +116,7 @@
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Sitio web</translation>
+        <translation>Página web</translation>
     </message>
     <message>
         <source>Translations</source>
@@ -125,7 +124,7 @@
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donar</translation>
+        <translation>Dona</translation>
     </message>
 </context>
 <context>
@@ -153,11 +152,11 @@
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>No se encontró ningún gestor de archivos.</translation>
+        <translation>Gestor de ficheros no encontrado.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Instale un gestor de archivos.</translation>
+        <translation>Por favor, instale un gestor de ficheros.</translation>
     </message>
 </context>
 <context>
@@ -188,7 +187,7 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>Lupa</translation>
     </message>
 </context>
 <context>
@@ -219,7 +218,7 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>Lupa</translation>
     </message>
 </context>
 <context>
@@ -246,7 +245,7 @@
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Blanco y negro</translation>
+        <translation>Blanco y Negro</translation>
     </message>
     <message>
         <source>Remove window frame</source>
@@ -254,7 +253,7 @@
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Configuración de cámara</translation>
+        <translation>Configuración de la cámara</translation>
     </message>
 </context>
 <context>
@@ -265,11 +264,11 @@
     </message>
     <message>
         <source>Reset</source>
-        <translation>Restablecer</translation>
+        <translation>Reiniciar</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>Lupa</translation>
     </message>
     <message>
         <source>Countdown</source>
@@ -277,7 +276,7 @@
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Tamaño de vídeo:</translation>
+        <translation>Tamaño de vídeo</translation>
     </message>
     <message>
         <source>Free disk space:</source>
@@ -289,11 +288,11 @@
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Tiempo de grabación:</translation>
+        <translation>Tiempo de grabación</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Sonido</translation>
+        <translation>Audio</translation>
     </message>
     <message>
         <source>Frames</source>
@@ -317,7 +316,7 @@
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>No grabar el puntero del ratón</translation>
+        <translation>No grabar el cursor del ratón</translation>
     </message>
     <message>
         <source>Hour</source>
@@ -333,7 +332,7 @@
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Detener la grabación después de </translation>
+        <translation>Detener grabación después de</translation>
     </message>
     <message>
         <source>Hours</source>
@@ -353,8 +352,7 @@
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Límite de espacio libre en disco
- </translation>
+        <translation>Límite de espacio en disco.</translation>
     </message>
     <message>
         <source>Show in systray</source>
@@ -374,7 +372,7 @@
     </message>
     <message>
         <source>Video</source>
-        <translation>Vídeos</translation>
+        <translation>Vídeo</translation>
     </message>
     <message>
         <source>Available</source>
@@ -434,7 +432,7 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Reproducir última grabación</translation>
+        <translation>Reproducir  última grabación</translation>
     </message>
     <message>
         <source>Open folder</source>
@@ -442,15 +440,15 @@
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation>Ctrl + Mayús + F8</translation>
+        <translation>CTRL+SHIFT+F8</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimizar al empezar grabación</translation>
+        <translation>Minimizar cuando la grabación comience</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Empezar aplicación minimizada</translation>
+        <translation>Iniciar minimizado</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
@@ -462,7 +460,7 @@
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Blanco y negro</translation>
+        <translation>Blanco y Negro</translation>
     </message>
     <message>
         <source>Remove window frame</source>
@@ -474,11 +472,11 @@
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Restablecer todas las preferencias en el próximo inicio</translation>
+        <translation>Reiniciar todos los ajustes en el siguiente inicio</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Derechos de autor y licencia desde imágenes</translation>
+        <translation>Derechos de autor y licencias de imágenes</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -494,7 +492,7 @@
     </message>
     <message>
         <source>Log</source>
-        <translation>Registro</translation>
+        <translation>Log</translation>
     </message>
     <message>
         <source>Automatically</source>
@@ -534,7 +532,7 @@
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Captura</translation>
+        <translation>Captura de pantalla</translation>
     </message>
     <message>
         <source>Imagepath</source>
@@ -553,7 +551,7 @@
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Derechos de autor y licencia desde imágenes</translation>
+        <translation>Derechos de autor y licencias de imágenes</translation>
     </message>
 </context>
 <context>
@@ -564,7 +562,7 @@
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Stop</source>
@@ -572,15 +570,15 @@
     </message>
     <message>
         <source>Open File</source>
-        <translation>Abrir archivo</translation>
+        <translation>Abrir Archivo</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Pantalla completa</translation>
+        <translation>pantalla</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Fotograma anterior</translation>
+        <translation>Fotograma previo</translation>
     </message>
     <message>
         <source>Next frame</source>
@@ -592,7 +590,7 @@
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Mover el menú</translation>
+        <translation>Mover menú</translation>
     </message>
 </context>
 </TS>

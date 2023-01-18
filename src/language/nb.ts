@@ -1,87 +1,86 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="es">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nb">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Seleccione uno o más dispositivos</translation>
+        <translation>Velg én til flere enheter</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>Kamera</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Cambiar a ventana</translation>
+        <translation>Bytt til vindu</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Ir a pantalla completa</translation>
+        <translation>Bytt til fullskjerm</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Configuración finalizada correctamente</translation>
+        <translation>Oppsettet var vellykket.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Cierre la ventana e inicie vokoscreenNG de nuevo</translation>
+        <translation>Lukk dette vinduet og start vokoscreenNG på nytt.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Difrute con vokoscreenNG</translation>
+        <translation>Ha det gøy med vokoscreenNG</translation>
     </message>
 </context>
 <context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Seleccione uno o más dispositivos</translation>
+        <translation>Velg én til flere enheter</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Ayuda</translation>
+        <translation>Hjelp</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>No se encontró ningún gestor de archivos.</translation>
+        <translation>Ingen filutforsker funnet.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Instale un gestor de archivos.</translation>
+        <translation>Vennligst installere en filutforsker.</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Atención</translation>
+        <translation>Advarsel</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>La grabación no empieza por insuficiencia de espacio en disco</translation>
+        <translation>Opptaket har ikke startet, for lite ledig diskplass.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>No queda espacio libre en disco</translation>
+        <translation>Ledig diskplass grense nådd.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Límite de espacio libre en disco
- </translation>
+        <translation>Grense for ledig diskplass.</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -89,336 +88,335 @@
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Paró la grabación, no queda espacio en disco</translation>
+        <translation>Opptaket ble stoppet, for lite ledig diskplass.</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Pantalla completa</translation>
+        <translation>Fullskjerm</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Ventana</translation>
+        <translation>Vindu</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>No se encontró ningún gestor de archivos.</translation>
+        <translation>Ingen filutforsker funnet.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Instale un gestor de archivos.</translation>
+        <translation>Vennligst installere en filutforsker.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Código fuente</translation>
+        <translation>Sourcekode</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Sitio web</translation>
+        <translation>Hjemmeside</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Traducciones</translation>
+        <translation>Oversettelser</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donar</translation>
+        <translation>Donasjon</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Seleccione uno o más dispositivos</translation>
+        <translation>Velg én til flere enheter</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>Område</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>Område</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>No se encontró ningún gestor de archivos.</translation>
+        <translation>Ingen filutforsker funnet.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Instale un gestor de archivos.</translation>
+        <translation>Vennligst installere en filutforsker.</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Iniciar</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>Stoppe</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>Fortsett</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Salir</translation>
+        <translation>Avslutt</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>Forstørrelse</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Iniciar</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>Stoppe</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>Fortsett</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Salir</translation>
+        <translation>Avslutt</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>Forstørrelse</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Cuadro de diálogo</translation>
+        <translation>Dialog</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Voltear horizontalmente</translation>
+        <translation>Snu horisontalt</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Voltear verticalmente</translation>
+        <translation>Snu vertikalt</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertir</translation>
+        <translation>Invertere</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Gris</translation>
+        <translation>Grå</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Blanco y negro</translation>
+        <translation>Svart-hvit</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Quitar marco de ventana</translation>
+        <translation>Fjern vindusramme</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Configuración de cámara</translation>
+        <translation>Kamera instillinger</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>Område</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Restablecer</translation>
+        <translation>Nullstille</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>Forstørrelse</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Cuenta regresiva</translation>
+        <translation>Nedtelling</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Tamaño de vídeo:</translation>
+        <translation>Videostørrelse:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Espacio en disco disponible:</translation>
+        <translation>Ledig diskplass:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Información</translation>
+        <translation>Informasjon</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Tiempo de grabación:</translation>
+        <translation>Opptakstid:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Sonido</translation>
+        <translation>Lyd</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Fotogramas</translation>
+        <translation>Rammer</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Códec de vídeo</translation>
+        <translation>Videokodek</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formato</translation>
+        <translation>Format</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Códec de audio</translation>
+        <translation>Lydkodek</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>Calidad</translation>
+        <translation>Kvalitet</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>No grabar el puntero del ratón</translation>
+        <translation>ikke ta opp musepeker</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Hora</translation>
+        <translation>Time</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minuto</translation>
+        <translation>Minutt</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Iniciar temporizador</translation>
+        <translation>Start timeren</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Detener la grabación después de </translation>
+        <translation>Stopp opptak etter</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Horas</translation>
+        <translation>Timer</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minutos</translation>
+        <translation>Minutter</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Segundos</translation>
+        <translation>Sekunder</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Ruta del vídeo</translation>
+        <translation>Video Sti</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Límite de espacio libre en disco
- </translation>
+        <translation>Grense for ledig diskplass.</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Mostrar en bandeja del sistema</translation>
+        <translation>Vis i systemstatusfeltet</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Segundos de espera antes de grabar</translation>
+        <translation>Sekund venting før opptak</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Buscar actualizaciones</translation>
+        <translation>Se etter oppdateringer</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Ayuda</translation>
+        <translation>Hjelp</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Vídeos</translation>
+        <translation>Video</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Disponible</translation>
+        <translation>Tilgjengelig</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>No disponible</translation>
+        <translation>Ikke tilgjengelig</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Iniciar</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>Stoppe</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>Fortsett</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Reproducir</translation>
+        <translation>Spille</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Carpeta</translation>
+        <translation>Mappe</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertir</translation>
+        <translation>Invertere</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Gris</translation>
+        <translation>Grå</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -434,51 +432,51 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Reproducir última grabación</translation>
+        <translation>Spill av siste opptak</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Abrir carpeta</translation>
+        <translation>Åpne mappe</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation>Ctrl + Mayús + F8</translation>
+        <translation>CTRL+SHIFT+F8</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimizar al empezar grabación</translation>
+        <translation>Minimert når opptak starter</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Empezar aplicación minimizada</translation>
+        <translation>Starter minimert</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Voltear horizontalmente</translation>
+        <translation>Snu horisontalt</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Voltear verticalmente</translation>
+        <translation>Snu vertikalt</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Blanco y negro</translation>
+        <translation>Svart-hvit</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Quitar marco de ventana</translation>
+        <translation>Fjern vindusramme</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donar</translation>
+        <translation>Donasjon</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Restablecer todas las preferencias en el próximo inicio</translation>
+        <translation>Nullstille alle innstillinger ved neste oppstart</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Derechos de autor y licencia desde imágenes</translation>
+        <translation>Opphavsrett og lisens fra bilder</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -486,113 +484,113 @@
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Captura de pantalla</translation>
+        <translation>Skjermopptak</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Reproductor</translation>
+        <translation>Spiller</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Registro</translation>
+        <translation>Logg</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automáticamente</translation>
+        <translation>Automatisk</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Crear imágenes de pestañas</translation>
+        <translation>Lag bilder av faner</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Información sobre la Licencia</translation>
+        <translation>Lisensinformasjon</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>Encender</translation>
+        <translation>PÅ</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>Apagar</translation>
+        <translation>AV</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Accesos directos de teclado</translation>
+        <translation>Globale tastatur snarveier</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Acceso directo asignado</translation>
+        <translation>Tildelte snarvei taster.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Acceso directo de teclado no asignado o asignado más de una vez</translation>
+        <translation>Tastesnarvei ikke tildelt eller tildelt mer enn en gang.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Si aparece asignado pero no funciona, es que está siendo utilizado por otro programa</translation>
+        <translation>Hvis den vises som tildelt, men ikke virker, er den i bruk av et annet program.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Captura</translation>
+        <translation>Øyeblikksbilde</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Ruta de la imagen</translation>
+        <translation>Bildesti</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Ocultar esta ventana</translation>
+        <translation>Skjul dette vinduet</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Segundos en espera antes de grabar</translation>
+        <translation>Sekunder venter før opptak</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Derechos de autor y licencia desde imágenes</translation>
+        <translation>Opphavsrett og lisens fra bilder</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Reproducir</translation>
+        <translation>Spille</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Pause</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>Stoppe</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Abrir archivo</translation>
+        <translation>Åpne Fil</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Pantalla completa</translation>
+        <translation>Fullskjerm</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Fotograma anterior</translation>
+        <translation>Forrige bilde</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Fotograma siguiente</translation>
+        <translation>Neste bilde</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Silenciar</translation>
+        <translation>Stilne</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Mover el menú</translation>
+        <translation>Flytt meny</translation>
     </message>
 </context>
 </TS>
