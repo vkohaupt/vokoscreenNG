@@ -2026,7 +2026,7 @@ QString QvkMainWindow::Pipeline_structured_output( QString pipeline )
     return string;
 }
 
-
+/*
 void QvkMainWindow::slot_Start()
 {
     if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  )
@@ -2186,6 +2186,217 @@ void QvkMainWindow::slot_Start()
 
     emit signal_newVideoFilename( newVideoFilename );
 }
+*/
+
+void QvkMainWindow::slot_Start()
+{
+    if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  )
+    {
+        setWindowState( Qt::WindowMinimized );
+    }
+
+    QThread::msleep( static_cast<unsigned long>( sliderSecondWaitBeforeRecording->value()) * 1000 );
+
+    QStringList VK_PipelineList;
+    VK_PipelineList << VK_getXimagesrc();
+    VK_PipelineList << VK_getCapsFilter();
+#ifdef Q_OS_WIN
+    if ( ui->radioButtonScreencastArea->isChecked() == true ) {
+        QString top = QString::number( vkRegionChoise->getYRecordArea() );
+        QString left = QString::number( vkRegionChoise->getXRecordArea() );
+        int int_right = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 2, 2 ).split( "=" ).at( 1 ).toInt() - vkRegionChoise->getWidth() - vkRegionChoise->getXRecordArea();
+        QString right = QString::number( int_right );
+        int int_bottom = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 3, 3 ).split( "=" ).at( 1 ).toInt() - vkRegionChoise->getHeight() - vkRegionChoise->getYRecordArea();
+        QString bottom = QString::number( int_bottom );
+        VK_PipelineList << QString( "videocrop " ) + "top=" + top + " " + "left=" + left + " " + "right=" + right + " " + "bottom=" + bottom;
+    }
+#endif
+    VK_PipelineList << "videoconvert";
+    VK_PipelineList << "videorate";
+    VK_PipelineList << "queue max-size-bytes=1073741824 max-size-time=10000000000 max-size-buffers=1000";
+    VK_PipelineList << Vk_get_Videocodec_Encoder();
+
+    // Only if one or more audiodevice is selected
+    if ( ( VK_getSelectedAudioDevice().count() > 0 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
+    {
+        VK_PipelineList << "queue";
+        VK_PipelineList << "mux.";
+    }
+
+    // Pipeline for one selected audiodevice
+    if ( ( VK_getSelectedAudioDevice().count() == 1 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
+    {
+        #ifdef Q_OS_LINUX
+            VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(0) )
+                                                   .append( " client-name=" ).append( global::nameOutput + "." + QString( VK_getSelectedAudioDeviceName().at(0) ).replace( " ", "-") );
+            VK_PipelineList << "audio/x-raw, channels=2";
+            VK_PipelineList << "audioconvert";
+            VK_PipelineList << "audiorate";
+            VK_PipelineList << "queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000";
+            VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
+            VK_PipelineList << "queue";
+            VK_PipelineList << "mux.";
+        #endif
+
+        #ifdef Q_OS_WIN
+            if ( vkAudioController->radioButtonWASAPI->isChecked() )
+            {
+                if ( VK_getSelectedAudioDevice().at(0).section( ":::", 1, 1 ) == "Playback" )
+                {
+                    soundEffect->setSource( QUrl::fromLocalFile( ":/sound/wasapi.wav" ) );
+                    soundEffect->setLoopCount( QSoundEffect::Infinite );
+                    soundEffect->setVolume( 0.0 );
+                    soundEffect->play();
+                    VK_PipelineList << QString( "wasapisrc loopback=true low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
+                }
+                else
+                {
+                    VK_PipelineList << QString( "wasapisrc low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
+                }
+                VK_PipelineList << "audioconvert";
+                VK_PipelineList << "audiorate";
+                VK_PipelineList << "queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000";
+                VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
+                VK_PipelineList << "queue";
+                VK_PipelineList << "mux.";
+            }
+
+            if ( vkAudioController->radioButtonDirectSound->isChecked() )
+            {
+                VK_PipelineList << QString( "directsoundsrc device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(0) + "'" );
+                VK_PipelineList << "audio/x-raw, channels=2";
+                VK_PipelineList << "audioconvert";
+                VK_PipelineList << "audiorate";
+                VK_PipelineList << "queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000";
+                VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
+                VK_PipelineList << "queue";
+                VK_PipelineList << "mux.";
+            }
+        #endif
+    }
+
+    // Pipeline for more as one audiodevice
+    if ( ( VK_getSelectedAudioDevice().count() > 1 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
+    {
+        // Geräte sortieren so das Playback Geräte zuerst erscheinen
+        #ifdef Q_OS_WIN
+            QStringList listDevices;
+            QStringList listSource;
+            QStringList listPlayer;
+            for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ )
+            {
+                if ( VK_getSelectedAudioDevice().at(x).section( ":::", 1, 1 ) == "Playback" ) {
+                    listPlayer << VK_getSelectedAudioDevice().at(x);
+                } else {
+                    listSource << VK_getSelectedAudioDevice().at(x);
+                }
+            }
+            listDevices << listSource;
+            listDevices << listPlayer;
+        #endif
+
+        for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ )
+        {
+            #ifdef Q_OS_LINUX
+                VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(x) )
+                                                       .append( " client-name=" ).append( global::nameOutput + "." + QString( VK_getSelectedAudioDeviceName().at(x) ).replace( " ", "-") );
+                if ( VK_getSelectedAudioDevice().at(x).endsWith( ".monitor" ) ) {
+// Mit der Philips hakelt es, ohne ok.
+                    VK_PipelineList << "audio/x-raw, channels=2";
+                }
+                VK_PipelineList << "audioconvert";
+                VK_PipelineList << "audioresample";
+                VK_PipelineList << "queue";
+                VK_PipelineList << "mix.";
+            #endif
+
+            #ifdef Q_OS_WIN
+                if ( vkAudioController->radioButtonWASAPI->isChecked() == true )
+                {
+                    if ( soundEffect->isPlaying() == false ) {
+                        soundEffect->setSource( QUrl::fromLocalFile( ":/sound/wasapi.wav" ) );
+                        soundEffect->setLoopCount( QSoundEffect::Infinite );
+                        soundEffect->setVolume( 0.0 );
+                        soundEffect->play();
+                    }
+
+                    if ( listDevices.at(x).section( ":::", 1, 1 ) == "Playback" ) {
+                        VK_PipelineList << QString( "wasapisrc loopback=true low-latency=true role=multimedia device=" ).append( listDevices.at(x).section( ":::", 0, 0 ) );
+                        VK_PipelineList << "audio/x-raw, channels=2";
+                        VK_PipelineList << "audioconvert";
+                        VK_PipelineList << "audioresample";
+                        VK_PipelineList << "queue";
+                        VK_PipelineList << "mix.";
+                    } else {
+                        VK_PipelineList << QString( "wasapisrc low-latency=true role=multimedia device=" ).append( listDevices.at(x).section( ":::", 0, 0 ) );
+                        VK_PipelineList << "audio/x-raw, channels=1";
+                        VK_PipelineList << "audioconvert";
+                        VK_PipelineList << "audioresample";
+                        VK_PipelineList << "queue";
+                        VK_PipelineList << "mix.";
+                    }
+                }
+
+                if ( vkAudioController->radioButtonDirectSound->isChecked() )
+                {
+                    VK_PipelineList << QString( "directsoundsrc device-name=" ).append( "'" + listDevices.at(x) + "'" );
+                    VK_PipelineList << "audioconvert";
+                    VK_PipelineList << "queue";
+                    VK_PipelineList << "mix.";
+                }
+            #endif
+        }
+        VK_PipelineList << "audiomixer name=mix";
+        VK_PipelineList << "audioconvert";
+        VK_PipelineList << "audiorate";
+        VK_PipelineList << "queue";
+        VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
+        VK_PipelineList << "queue";
+        VK_PipelineList << "mux.";
+    }
+
+    VK_PipelineList << VK_getMuxer();
+    VK_PipelineList.removeAll( "" );
+
+    QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
+    VK_PipelineList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
+
+    // Write settings to log
+    vkSettings.saveAll( ui, this, true );
+
+    QString VK_Pipeline = VK_PipelineList.join( VK_Gstr_Pipe );
+    VK_Pipeline = VK_Pipeline.replace( "mix. !", "mix." );
+    VK_Pipeline = VK_Pipeline.replace( "mux. !", "mux." );
+
+    qDebug();
+    qDebug().noquote() << global::nameOutput << "Free disk space at the beginning of the recording:" << ui->labelFreeSize->text() << "MB";
+    qDebug();
+    qDebug().noquote() << global::nameOutput << "Start record with:" << VK_Pipeline;
+    qDebug();
+    qDebug().noquote() << Pipeline_structured_output( VK_Pipeline );
+
+    QByteArray byteArray = VK_Pipeline.toUtf8();
+    const gchar *line = byteArray.constData();
+    GError *error = Q_NULLPTR;
+    pipeline = gst_parse_launch( line, &error );
+
+    // Start playing
+    GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
+    if ( ret == GST_STATE_CHANGE_FAILURE )   { qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
+    if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
+    if ( ret == GST_STATE_CHANGE_ASYNC )     { qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_ASYNC"   << "Returncode =" << ret;   } // 2
+    if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
+    if ( ret == GST_STATE_CHANGE_FAILURE )
+    {
+        qDebug().noquote() << global::name << "Unable to set the pipeline to the playing state.";
+        gst_object_unref( pipeline );
+        return;
+    }
+
+    emit signal_newVideoFilename( newVideoFilename );
+}
+
+
 
 
 void QvkMainWindow::slot_preStop()

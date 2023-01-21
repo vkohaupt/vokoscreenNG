@@ -108,7 +108,7 @@ void QvkWASAPIController::getAllDevices()
                                << "Input/Output:" << QString( list.at(i) ).section( ":::", 2, 2 );
 
             connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
-            connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkBox( bool ) ) );
+//            connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkBox( bool ) ) );
         }
         qDebug().noquote();
     }
@@ -127,7 +127,7 @@ void QvkWASAPIController::getAllDevices()
     }
 }
 
-
+/*
 void QvkWASAPIController::slot_checkBox( bool value )
 {
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
@@ -146,7 +146,7 @@ void QvkWASAPIController::slot_checkBox( bool value )
         }
     }
 }
-
+*/
 
 void QvkWASAPIController::slot_audioDeviceSelected()
 {
