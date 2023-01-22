@@ -2300,10 +2300,6 @@ void QvkMainWindow::slot_Start()
             #ifdef Q_OS_LINUX
                 VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(x) )
                                                        .append( " client-name=" ).append( global::nameOutput + "." + QString( VK_getSelectedAudioDeviceName().at(x) ).replace( " ", "-") );
-                if ( VK_getSelectedAudioDevice().at(x).endsWith( ".monitor" ) ) {
-// Mit der Philips hakelt es, ohne ok.
-                    VK_PipelineList << "audio/x-raw, channels=2";
-                }
                 VK_PipelineList << "audioconvert";
                 VK_PipelineList << "audioresample";
                 VK_PipelineList << "queue";
