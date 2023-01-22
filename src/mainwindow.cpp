@@ -2318,14 +2318,12 @@ void QvkMainWindow::slot_Start()
 
                     if ( listDevices.at(x).section( ":::", 1, 1 ) == "Playback" ) {
                         VK_PipelineList << QString( "wasapisrc loopback=true low-latency=true role=multimedia device=" ).append( listDevices.at(x).section( ":::", 0, 0 ) );
-                        VK_PipelineList << "audio/x-raw, channels=2";
                         VK_PipelineList << "audioconvert";
                         VK_PipelineList << "audioresample";
                         VK_PipelineList << "queue";
                         VK_PipelineList << "mix.";
                     } else {
                         VK_PipelineList << QString( "wasapisrc low-latency=true role=multimedia device=" ).append( listDevices.at(x).section( ":::", 0, 0 ) );
-                        VK_PipelineList << "audio/x-raw, channels=1";
                         VK_PipelineList << "audioconvert";
                         VK_PipelineList << "audioresample";
                         VK_PipelineList << "queue";
