@@ -39,6 +39,7 @@
 #include "QvkShowClick.h"
 #include "QvkHalo.h"
 #include "QvkGlobalShortcut.h"
+#include "QvkLogController.h"
 
 #ifdef Q_OS_WIN
   #include "QvkCiscoOpenh264Controller.h"
@@ -71,6 +72,7 @@ public:
     QvkSpezialSlider *sliderFrames;
     QvkMagnifierController *vkMagnifierController;
     QvkGlobalShortcut *vkGlobalShortcut;
+    QvkLogController *vklogController;
     bool wantRecording = true;
     bool isFlatpak = false;
 
@@ -151,7 +153,6 @@ private:
 
     bool gst_appsrc = false;
 
-
 #ifdef Q_OS_WIN
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller;
 #endif
@@ -168,6 +169,7 @@ private slots:
     void slot_Continue();
     void slot_Play();
     void slot_Folder();
+    void slot_logFolder();
     void slot_screenCountChanged( QString, QString );
     void slot_screenCountChangedArea( QString stringText, QString stringData );
     void slot_newVideoPath();

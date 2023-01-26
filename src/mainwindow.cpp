@@ -24,7 +24,6 @@
 
 #include "ui_formMainWindow.h"
 #include "QvkInformation.h"
-#include "QvkLogController.h"
 #include "global.h"
 #include "QvkScreenManager.h"
 #include "QvkLicenses.h"
@@ -211,7 +210,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->comboBox_shortcut_pause->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     ui->comboBox_shortcut_magnification->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 
-    QvkLogController *vklogController = new QvkLogController();
+    vklogController = new QvkLogController();
     connect( vklogController, SIGNAL( signal_newLogText( QString ) ), this, SLOT( slot_textToGuiLog( QString ) ) );
 
     setWindowTitle( global::name + " " + global::version );
@@ -411,6 +410,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     connect( ui->pushButtonScreencastSnapshot, &QPushButton::clicked, this, [=]() { lastButtonPressed = "snapshot"; } );
 
+    connect( ui->pushButton_log_openfolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_logFolder() ) );
 
     // Tab 1 Screen
 #ifdef Q_OS_WIN
@@ -2552,6 +2552,25 @@ void QvkMainWindow::slot_Folder()
         QPixmap pixmap( ":/pictures/status/information.png" );
         pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
         
+        QMessageBox msgBox( this );
+        msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
+        msgBox.setWindowTitle( global::name + " " + global::version );
+        msgBox.setIconPixmap( pixmap );
+        msgBox.exec();
+    }
+}
+
+
+void QvkMainWindow::slot_logFolder()
+{
+    QUrl url( vklogController->get_logPath() );
+    QString path = url.adjusted( QUrl::RemoveFilename ).toString();
+
+    if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false )
+    {
+        QPixmap pixmap( ":/pictures/status/information.png" );
+        pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+
         QMessageBox msgBox( this );
         msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
         msgBox.setWindowTitle( global::name + " " + global::version );
