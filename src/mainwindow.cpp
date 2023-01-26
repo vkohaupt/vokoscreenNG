@@ -1347,16 +1347,17 @@ void QvkMainWindow::VK_gst_Elements_available()
     list << "pulsesrc";
 #endif
     list << "queue";
+    list << "appsrc";
     list << "capsfilter";
     list << "videoconvert";
     list << "videorate";
-    list << "audioconvert";
-    list << "audiorate";
-    list << "filesink";
     list << "videoscale";
     list << "h264parse";
+    list << "audioconvert";
+    list << "audiorate";
     list << "audiomixer";
-    list << "appsrc";
+    list << "audioresample";
+    list << "filesink";
 
     for ( int i = 0; i < list.count(); i++ )
     {
