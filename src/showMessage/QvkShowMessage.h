@@ -26,6 +26,7 @@
 #include <QWidget>
 #include <QLabel>
 #include <QCloseEvent>
+#include <QMouseEvent>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
@@ -36,7 +37,7 @@ class QvkShowMessage : public QWidget
 public:
     QvkShowMessage();
     virtual ~QvkShowMessage();
-    void showMessage( QString text , QImage image );
+    void showMessage( QString text , QImage image, QString path );
 
 
 public slots:
@@ -51,6 +52,7 @@ signals:
 
 protected:  
     void closeEvent( QCloseEvent *event );
+    void mouseReleaseEvent(QMouseEvent *event);
 
 
 private:
@@ -64,6 +66,8 @@ private:
     QLabel *labelImageDuration;
     int grad = +36;
     QTimer *timer;
+    int secCounter = 0;
+    QString path;
 };
 
 #endif

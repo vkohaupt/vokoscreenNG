@@ -30,6 +30,8 @@
 #include <QPixmap>
 #include <QTimer>
 #include <QPainter>
+#include <QDesktopServices>
+#include <QMessageBox>
 
 QvkShowMessage::QvkShowMessage()
 {
@@ -85,8 +87,10 @@ QvkShowMessage::~QvkShowMessage()
 {}
 
 
-void QvkShowMessage::showMessage( QString text, QImage image )
+void QvkShowMessage::showMessage( QString text, QImage image, QString _path )
 {
+    path = _path;
+
     QPixmap pixmap( ":/pictures/status/information.png" );
     pixmap = pixmap.scaled( 48, 48, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
     labelIcon->setPixmap( pixmap );
@@ -110,8 +114,6 @@ void QvkShowMessage::showMessage( QString text, QImage image )
     move( myScreen->geometry().x() + myScreen->geometry().width() - width(),
           myScreen->geometry().y() + myScreen->geometry().height() - height() );
 
-    QTimer::singleShot( 10000, Qt::PreciseTimer, this, SLOT( close() ) );
-
     timer->start();
 
     show();
@@ -126,6 +128,11 @@ void QvkShowMessage::closeEvent( QCloseEvent *event )
 
 void QvkShowMessage::slot_durationButton()
 {
+    if ( underMouse() == true ) {
+        secCounter = 0;
+        grad = 36;
+    }
+
     int h = 16;
     QPixmap pixmap( h+2, h+2 );
     pixmap.fill( Qt::transparent );
@@ -153,4 +160,26 @@ void QvkShowMessage::slot_durationButton()
     painter.end();
 
     labelImageDuration->setPixmap( pixmap );
+
+    secCounter++;
+    if ( secCounter > 11 ) {
+        close();
+    }
+}
+
+
+void QvkShowMessage::mouseReleaseEvent( QMouseEvent *event )
+{
+    Q_UNUSED(event)
+    if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false )
+    {
+        QPixmap pixmap( ":/pictures/status/information.png" );
+        pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+
+        QMessageBox msgBox( this );
+        msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
+        msgBox.setWindowTitle( global::name + " " + global::version );
+        msgBox.setIconPixmap( pixmap );
+        msgBox.exec();
+    }
 }
