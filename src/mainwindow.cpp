@@ -1082,6 +1082,17 @@ void QvkMainWindow::resizeEvent( QResizeEvent *event )
 }
 
 
+void QvkMainWindow::showEvent( QShowEvent *event )
+{
+    Q_UNUSED(event)
+    QMetaObject::invokeMethod( this, "slot_afterWindowShown", Qt::ConnectionType::QueuedConnection );
+}
+
+void QvkMainWindow::slot_afterWindowShown() {
+// here we can under Windows for WASAPI call a first record
+}
+
+
 // Linux player deactivated to manny errors
 /*
 #ifdef Q_OS_LINUX

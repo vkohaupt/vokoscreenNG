@@ -207,6 +207,8 @@ private slots:
 
     void slot_comboBoxOpenh264Profile( QStringList list );
 
+    void slot_afterWindowShown();
+
 
 signals:
     void signal_close();
@@ -218,6 +220,7 @@ signals:
 protected:
     void closeEvent( QCloseEvent *event );
     void resizeEvent( QResizeEvent *event );
+    void showEvent( QShowEvent *event );
 
 // New linux player deactivtaed to manny errors
 /*
