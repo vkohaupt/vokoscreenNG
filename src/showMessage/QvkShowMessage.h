@@ -64,7 +64,7 @@ private:
     QLabel *labelImage;
     QScreen *myScreen;
     QLabel *labelImageDuration;
-    int grad = +36;
+    int degree = +36;
     QTimer *timer;
     int secCounter = 0;
     QString path;

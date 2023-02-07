@@ -130,7 +130,7 @@ void QvkShowMessage::slot_durationButton()
 {
     if ( underMouse() == true ) {
         secCounter = 0;
-        grad = 36;
+        degree = 36;
     }
 
     int h = 16;
@@ -155,8 +155,8 @@ void QvkShowMessage::slot_durationButton()
     brush.setStyle( Qt::SolidPattern );
     brush.setColor( QString( "#3daee9" ) );
     painter.setBrush( brush );
-    grad = grad - 36;
-    painter.drawPie( 1, 1, h, h, 90*16, grad*16 );
+    degree = degree - 36;
+    painter.drawPie( 1, 1, h, h, 90*16, degree*16 );
     painter.end();
 
     labelImageDuration->setPixmap( pixmap );
