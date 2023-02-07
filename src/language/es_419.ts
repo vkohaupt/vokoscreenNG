@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="es">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="es_419">
 <context>
     <name>QvkAudioController</name>
     <message>
@@ -17,26 +17,26 @@
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Cambiar a ventana</translation>
+        <translation>Cambiar a modo ventana</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Ir a pantalla completa</translation>
+        <translation>Cambiar a modo pantalla completa</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Configuración finalizada correctamente</translation>
+        <translation>La instalación fue correcta.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Cierre la ventana e inicie vokoscreenNG de nuevo</translation>
+        <translation>Cierre esta ventana e inicia vokoscreenNG de nuevo.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Difrute con vokoscreenNG</translation>
+        <translation>Diviértete con vokoscreenNG</translation>
     </message>
 </context>
 <context>
@@ -57,31 +57,30 @@
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>No se encontró ningún gestor de archivos.</translation>
+        <translation>No se encontró administrador de archivos</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Instale un gestor de archivos.</translation>
+        <translation>Por favor instalar un administrador de archivos</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Atención</translation>
+        <translation>Cuidado</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>No se pudo empezar a grabar, no hay suficiente espacio libre en el disco.</translation>
+        <translation>Grabación no iniciada, no tiene espacio en el disco duro</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>No queda espacio libre en disco</translation>
+        <translation>Se alcanzó el límite de espacio libre en disco.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Límite de espacio libre en disco
- </translation>
+        <translation>Límite de espacio libre en disco</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -89,7 +88,7 @@
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Paró la grabación, no queda espacio en disco</translation>
+        <translation>La grabación fue detenida, no tiene espacio libre en el disco</translation>
     </message>
 </context>
 <context>
@@ -105,11 +104,11 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>No se encontró ningún gestor de archivos.</translation>
+        <translation>No se encontró administrador de archivos</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Instale un gestor de archivos.</translation>
+        <translation>Por favor instalar un administrador de archivos</translation>
     </message>
     <message>
         <source>Sourcecode</source>
@@ -117,7 +116,7 @@
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Sitio web</translation>
+        <translation>Página de inicio</translation>
     </message>
     <message>
         <source>Translations</source>
@@ -153,11 +152,11 @@
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>No se encontró ningún gestor de archivos.</translation>
+        <translation>No se encontró administrador de archivos</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Instale un gestor de archivos.</translation>
+        <translation>Por favor instalar un administrador de archivos</translation>
     </message>
 </context>
 <context>
@@ -226,15 +225,15 @@
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Cuadro de diálogo</translation>
+        <translation>Dialogo</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Voltear horizontalmente</translation>
+        <translation>Giro Horizontal</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Voltear verticalmente</translation>
+        <translation>Gira Vertical</translation>
     </message>
     <message>
         <source>Invert</source>
@@ -250,11 +249,11 @@
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Quitar marco de ventana</translation>
+        <translation>Remover marco de ventana</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Configuración de cámara</translation>
+        <translation>Ajustes de camara</translation>
     </message>
 </context>
 <context>
@@ -265,7 +264,7 @@
     </message>
     <message>
         <source>Reset</source>
-        <translation>Restablecer</translation>
+        <translation>Reiniciar</translation>
     </message>
     <message>
         <source>Magnification</source>
@@ -273,15 +272,15 @@
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Cuenta regresiva</translation>
+        <translation>Conteo regresivo</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Tamaño de vídeo:</translation>
+        <translation>Tamaño video:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Espacio en disco disponible:</translation>
+        <translation>Espacio de disco libre:</translation>
     </message>
     <message>
         <source>Information</source>
@@ -293,15 +292,15 @@
     </message>
     <message>
         <source>Audio</source>
-        <translation>Sonido</translation>
+        <translation>Audio</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Fotogramas</translation>
+        <translation>Cuadros</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Códec de vídeo</translation>
+        <translation>Codec de video</translation>
     </message>
     <message>
         <source>Format</source>
@@ -309,7 +308,7 @@
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Códec de audio</translation>
+        <translation>Codec de audio</translation>
     </message>
     <message>
         <source>Quality</source>
@@ -317,7 +316,7 @@
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>No grabar el puntero del ratón</translation>
+        <translation>No grabar puntero del ratón</translation>
     </message>
     <message>
         <source>Hour</source>
@@ -333,7 +332,7 @@
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Detener la grabación después de </translation>
+        <translation>Detener grabación después de</translation>
     </message>
     <message>
         <source>Hours</source>
@@ -349,12 +348,11 @@
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Ruta del vídeo</translation>
+        <translation>Videopath</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Límite de espacio libre en disco
- </translation>
+        <translation>Límite de espacio libre en disco</translation>
     </message>
     <message>
         <source>Show in systray</source>
@@ -362,11 +360,11 @@
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Segundos de espera antes de grabar</translation>
+        <translation>Segunda espera antes de grabar</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Buscar actualizaciones</translation>
+        <translation>Revisar actualizaciones</translation>
     </message>
     <message>
         <source>Help</source>
@@ -374,7 +372,7 @@
     </message>
     <message>
         <source>Video</source>
-        <translation>Vídeos</translation>
+        <translation>Video</translation>
     </message>
     <message>
         <source>Available</source>
@@ -402,7 +400,7 @@
     </message>
     <message>
         <source>Play</source>
-        <translation>Reproducir</translation>
+        <translation>Play</translation>
     </message>
     <message>
         <source>Folder</source>
@@ -434,31 +432,31 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Reproducir última grabación</translation>
+        <translation>Reproducir la última grabación</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Abrir carpeta</translation>
+        <translation>Abrir folder</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation>Ctrl + Mayús + F8</translation>
+        <translation>CTRL+SHIFT+F8</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimizar al empezar grabación</translation>
+        <translation>Minimizar cuando la grabación comience</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Empezar aplicación minimizada</translation>
+        <translation>Iniciar minimizado</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Voltear horizontalmente</translation>
+        <translation>Giro Horizontal</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Voltear verticalmente</translation>
+        <translation>Gira Vertical</translation>
     </message>
     <message>
         <source>Black-and-white</source>
@@ -466,7 +464,7 @@
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Quitar marco de ventana</translation>
+        <translation>Remover marco de ventana</translation>
     </message>
     <message>
         <source>Donate</source>
@@ -474,11 +472,11 @@
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Restablecer todas las preferencias en el próximo inicio</translation>
+        <translation>Resetear todas las configuraciones en el próximo inicio</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Derechos de autor y licencia desde imágenes</translation>
+        <translation>Derechos de autor y licencias de imágenes</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -486,7 +484,7 @@
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Captura de pantalla</translation>
+        <translation>Grabaciones</translation>
     </message>
     <message>
         <source>Player</source>
@@ -502,39 +500,39 @@
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Crear imágenes de pestañas</translation>
+        <translation>Crear imágenes de tabuladores</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Información sobre la Licencia</translation>
+        <translation>Información de licencia</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>Encender</translation>
+        <translation>Inicio</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>Apagar</translation>
+        <translation>Apagado</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Accesos directos de teclado</translation>
+        <translation>Accesos directos globales de teclado</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Acceso directo asignado</translation>
+        <translation>Teclas de acceso directo asignadas.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Acceso directo de teclado no asignado o asignado más de una vez</translation>
+        <translation>Acceso directo de teclado no asignado más de una vez.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Si aparece asignado pero no funciona, es que está siendo utilizado por otro programa</translation>
+        <translation>Si esto se muestra como asignado, pero no funciona, está siendo utilizado por otro programa.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Captura</translation>
+        <translation>Captura de pantalla</translation>
     </message>
     <message>
         <source>Imagepath</source>
@@ -542,25 +540,25 @@
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Ocultar esta ventana</translation>
+        <translation>Oculta esta ventana</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Segundos en espera antes de grabar</translation>
+        <translation>Segundos de espera antes de grabación</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Derechos de autor y licencia desde imágenes</translation>
+        <translation>Derechos de autor y licencias de imágenes</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Reproducir</translation>
+        <translation>Play</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -580,11 +578,11 @@
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Fotograma anterior</translation>
+        <translation>Cuadro anterior</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Fotograma siguiente</translation>
+        <translation>Cuadro siguiente</translation>
     </message>
     <message>
         <source>Mute</source>
@@ -592,7 +590,7 @@
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Mover el menú</translation>
+        <translation>Mover menú</translation>
     </message>
 </context>
 </TS>

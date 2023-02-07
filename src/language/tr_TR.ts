@@ -116,7 +116,7 @@
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Ana Sayfa</translation>
+        <translation>Web Sayfası</translation>
     </message>
     <message>
         <source>Translations</source>
@@ -500,7 +500,7 @@
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Sekmelerde resim oluşturun</translation>
+        <translation>Sekmelerin ekran görüntülerini kaydet</translation>
     </message>
     <message>
         <source>License information</source>

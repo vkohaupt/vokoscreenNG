@@ -1,424 +1,422 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="es">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="uk_UA">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Seleccione uno o más dispositivos</translation>
+        <translation>Оберіть один або декілька пристроїв</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>Камера</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Cambiar a ventana</translation>
+        <translation>Перемикнутися на режим вікна</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Ir a pantalla completa</translation>
+        <translation>Перемикнутися на повний екран</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Configuración finalizada correctamente</translation>
+        <translation>Налаштування пройшло успішно.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Cierre la ventana e inicie vokoscreenNG de nuevo</translation>
+        <translation>Закрийте це вікно та знову запустіть vokoscreenNG.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Difrute con vokoscreenNG</translation>
+        <translation>Розважайтеся з vokoscreenNG</translation>
     </message>
 </context>
 <context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Seleccione uno o más dispositivos</translation>
+        <translation>Оберіть один або декілька пристроїв</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Ayuda</translation>
+        <translation>Допомога</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>No se encontró ningún gestor de archivos.</translation>
+        <translation>Не знайдено файлового менеджера</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Instale un gestor de archivos.</translation>
+        <translation>Будь ласка, встановіть файловий менеджер.</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Atención</translation>
+        <translation>Попередження</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>No se pudo empezar a grabar, no hay suficiente espacio libre en el disco.</translation>
+        <translation>Запис не почато, бракує вільного місця на диску.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>No queda espacio libre en disco</translation>
+        <translation>Досягнуто ліміту вільного місця на диску. </translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Límite de espacio libre en disco
- </translation>
+        <translation>Ліміт вільного місця на диску</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>Мегабайт</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Paró la grabación, no queda espacio en disco</translation>
+        <translation>Запис зупинено, бракує вільного місця на диску. </translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Pantalla completa</translation>
+        <translation>Увесь екран</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Ventana</translation>
+        <translation>Вікно</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>No se encontró ningún gestor de archivos.</translation>
+        <translation>Файлового упорядника не знайдено.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Instale un gestor de archivos.</translation>
+        <translation>Будь ласка встановіть файловий упорядник.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Código fuente</translation>
+        <translation>Джерельний код</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Sitio web</translation>
+        <translation>Вебсайт</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Traducciones</translation>
+        <translation>Переклади</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donar</translation>
+        <translation>Зробити внесок</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Seleccione uno o más dispositivos</translation>
+        <translation>Оберіть один або декілька пристроїв</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>Довільна область</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>Довільна область</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>No se encontró ningún gestor de archivos.</translation>
+        <translation>Файлового упорядника не знайдено.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Instale un gestor de archivos.</translation>
+        <translation>Будь ласка встановіть файловий упорядник.</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Iniciar</translation>
+        <translation>Почати</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>Зупинити</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Призупинити</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>Продовжити</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Salir</translation>
+        <translation>Вийти</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>Камера</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>Збільшення</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Iniciar</translation>
+        <translation>Почати</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>Зупинити</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Призупинити</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>Продовжити</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Salir</translation>
+        <translation>Вийти</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>Камера</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>Збільшення</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Cuadro de diálogo</translation>
+        <translation>Діалогове вікно</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Voltear horizontalmente</translation>
+        <translation>Показати горизонтально</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Voltear verticalmente</translation>
+        <translation>Показати вертикально</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertir</translation>
+        <translation>Перевернути</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Gris</translation>
+        <translation>Сірий</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Blanco y negro</translation>
+        <translation>У відтінках сірого</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Quitar marco de ventana</translation>
+        <translation>Прибрати рамку вікна</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Configuración de cámara</translation>
+        <translation>Налаштування камери</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>Довільна область</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Restablecer</translation>
+        <translation>Скинути</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>Збільшення</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Cuenta regresiva</translation>
+        <translation>Зворотній відлік</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Tamaño de vídeo:</translation>
+        <translation>Розмір відеофайлу: </translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Espacio en disco disponible:</translation>
+        <translation>Вільне місце на диску: </translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Información</translation>
+        <translation>Інформація</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Tiempo de grabación:</translation>
+        <translation>Час запису:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Sonido</translation>
+        <translation>Звук</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Fotogramas</translation>
+        <translation>Кадри</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Códec de vídeo</translation>
+        <translation>Відеокодек</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formato</translation>
+        <translation>Формат</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Códec de audio</translation>
+        <translation>Авдіокодек</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>Calidad</translation>
+        <translation>Якість</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>No grabar el puntero del ratón</translation>
+        <translation>Не записувати вказівник миші</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Hora</translation>
+        <translation>Година</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minuto</translation>
+        <translation>Хвилина</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Iniciar temporizador</translation>
+        <translation>Запустити таймер</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Detener la grabación después de </translation>
+        <translation>Зупинити запис через</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Horas</translation>
+        <translation>Години</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minutos</translation>
+        <translation>Хвилини</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Segundos</translation>
+        <translation>Секунди</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Ruta del vídeo</translation>
+        <translation>Зберегти до теки</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Límite de espacio libre en disco
- </translation>
+        <translation>Ліміт вільного місця на диску</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Mostrar en bandeja del sistema</translation>
+        <translation>Показати значок на панелі</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Segundos de espera antes de grabar</translation>
+        <translation>Зачекати секунд перед початком запису</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Buscar actualizaciones</translation>
+        <translation>Перевірити оновлення</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Ayuda</translation>
+        <translation>Допомога</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Vídeos</translation>
+        <translation>Відео</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Disponible</translation>
+        <translation>Доступний</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>No disponible</translation>
+        <translation>Недоступний</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Iniciar</translation>
+        <translation>Почати</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>Зупинити</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Призупинити</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>Продовжити</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Reproducir</translation>
+        <translation>Програти</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Carpeta</translation>
+        <translation>Тека</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>Камера</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertir</translation>
+        <translation>Перевернути</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Gris</translation>
+        <translation>Сірий</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -434,165 +432,165 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Reproducir última grabación</translation>
+        <translation>Відтворити останній запис</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Abrir carpeta</translation>
+        <translation>Відкрити теку</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation>Ctrl + Mayús + F8</translation>
+        <translation>CTRL+SHIFT+F8</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimizar al empezar grabación</translation>
+        <translation>Згортати вікно при початку запису</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Empezar aplicación minimizada</translation>
+        <translation>Запускати згорнутим</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Voltear horizontalmente</translation>
+        <translation>Показати горизонтально</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Voltear verticalmente</translation>
+        <translation>Показати вертикально</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Blanco y negro</translation>
+        <translation>У відтінках сірого</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Quitar marco de ventana</translation>
+        <translation>Прибрати рамку вікна</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donar</translation>
+        <translation>Зробити внесок</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Restablecer todas las preferencias en el próximo inicio</translation>
+        <translation>Скинути усі налаштування при наступному старті</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Derechos de autor y licencia desde imágenes</translation>
+        <translation>Авторські права та ліцензія на зображення</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>Мегабайт</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Captura de pantalla</translation>
+        <translation>Скрінкаст</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Reproductor</translation>
+        <translation>Програвач</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Registro</translation>
+        <translation>Лог</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automáticamente</translation>
+        <translation>Автоматично</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Crear imágenes de pestañas</translation>
+        <translation>Створення зображень вкладок</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Información sobre la Licencia</translation>
+        <translation>Інформація про ліцензію</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>Encender</translation>
+        <translation>УВІМК</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>Apagar</translation>
+        <translation>ВИМК</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Accesos directos de teclado</translation>
+        <translation>Глобальні клавішні скорочення</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Acceso directo asignado</translation>
+        <translation>Призначені клавіші швидкого доступу.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Acceso directo de teclado no asignado o asignado más de una vez</translation>
+        <translation>Скорочення клавішів не призначено або призначено більше одного разу.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Si aparece asignado pero no funciona, es que está siendo utilizado por otro programa</translation>
+        <translation>Якщо показує призначено, але не працює, то використовується іншою програмою.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Captura</translation>
+        <translation>Знімок</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Ruta de la imagen</translation>
+        <translation>Шлях до зображення</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Ocultar esta ventana</translation>
+        <translation>Згорнути це вікно</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Segundos en espera antes de grabar</translation>
+        <translation>Зачекати секунду перед записуванням</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Derechos de autor y licencia desde imágenes</translation>
+        <translation>Авторські права та ліцензія на зображення</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Reproducir</translation>
+        <translation>Програти</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Призупинити</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>Зупинити</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Abrir archivo</translation>
+        <translation>Відкрити файл</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Pantalla completa</translation>
+        <translation>Увесь екран</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Fotograma anterior</translation>
+        <translation>Попередній кадр</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Fotograma siguiente</translation>
+        <translation>Наступний кадр</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Silenciar</translation>
+        <translation>Без звуку</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Mover el menú</translation>
+        <translation>Перемістити меню</translation>
     </message>
 </context>
 </TS>
