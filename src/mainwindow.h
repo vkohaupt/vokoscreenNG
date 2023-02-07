@@ -222,13 +222,6 @@ protected:
     void resizeEvent( QResizeEvent *event );
     void showEvent( QShowEvent *event );
 
-// New linux player deactivtaed to manny errors
-/*
-#ifdef Q_OS_LINUX
-    void mouseDoubleClickEvent( QMouseEvent *event );
-    void keyPressEvent( QKeyEvent *event );
-#endif
-*/
 
 };
 
