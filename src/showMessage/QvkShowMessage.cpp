@@ -21,7 +21,6 @@
  */
 
 #include "QvkShowMessage.h"
-//#include "global.h"
 
 #include <QApplication>
 #include <QScreen>
@@ -73,7 +72,7 @@ QvkShowMessage::QvkShowMessage()
 
     timer = new QTimer();
     timer->setTimerType( Qt::PreciseTimer );
-    timer->setInterval( 1000 );
+    timer->setInterval( 100 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_durationButton() ) );
     slot_durationButton();
 
@@ -160,8 +159,7 @@ void QvkShowMessage::closeEvent( QCloseEvent *event )
 void QvkShowMessage::slot_durationButton()
 {
     if ( underMouse() == true ) {
-        secCounter = 0;
-        degree = 36;
+        degree = 3.6;
     }
 
     int h = 16;
@@ -186,14 +184,13 @@ void QvkShowMessage::slot_durationButton()
     brush.setStyle( Qt::SolidPattern );
     brush.setColor( QString( "#3daee9" ) );
     painter.setBrush( brush );
-    degree = degree - 36;
+    degree = degree - 3.6;
     painter.drawPie( 1, 1, h, h, 90*16, degree*16 );
     painter.end();
 
     labelImageDuration->setPixmap( pixmap );
 
-    secCounter++;
-    if ( secCounter > 11 ) {
+    if ( degree <= -360 ) {
         close();
     }
 }
