@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2022 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -87,13 +87,33 @@ QvkShowMessage::~QvkShowMessage()
 {}
 
 
-void QvkShowMessage::showMessage( QString text, QImage image, QString _path )
+// If path given, then we can click on the message and a browser or filemanger will be opened
+void QvkShowMessage::setURL( QString url )
 {
-    path = _path;
+    path = url;
+}
 
-    QPixmap pixmap( ":/pictures/status/information.png" );
-    pixmap = pixmap.scaled( 48, 48, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-    labelIcon->setPixmap( pixmap );
+
+void QvkShowMessage::setImage( QImage m_image )
+{
+    image = m_image;
+}
+
+
+void QvkShowMessage::setStatusIcon( QString m_statusIcon )
+{
+    statusIcon = m_statusIcon;
+}
+
+
+void QvkShowMessage::showMessage( QString text )
+{
+    if ( statusIcon > "" )
+    {
+        QPixmap pixmap( statusIcon );
+        pixmap = pixmap.scaled( 48, 48, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+        labelIcon->setPixmap( pixmap );
+    }
 
     labelText->setText( text );
 
@@ -171,15 +191,19 @@ void QvkShowMessage::slot_durationButton()
 void QvkShowMessage::mouseReleaseEvent( QMouseEvent *event )
 {
     Q_UNUSED(event)
-    if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false )
+    // If path given, then we can click on the message and a browser or filemanger will be opened
+    if ( path > "" )
     {
-        QPixmap pixmap( ":/pictures/status/information.png" );
-        pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+        if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false )
+        {
+            QPixmap pixmap( ":/pictures/status/information.png" );
+            pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
 
-        QMessageBox msgBox( this );
-        msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
-        msgBox.setWindowTitle( global::name + " " + global::version );
-        msgBox.setIconPixmap( pixmap );
-        msgBox.exec();
+            QMessageBox msgBox( this );
+            msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
+            msgBox.setWindowTitle( global::name + " " + global::version );
+            msgBox.setIconPixmap( pixmap );
+            msgBox.exec();
+        }
     }
 }

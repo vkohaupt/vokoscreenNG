@@ -98,7 +98,10 @@ void QvkSnapshot::slot_newImage()
             qDebug().noquote() << global::nameOutput << "Fullscreen snapshot saved:" << ui->lineEditSnapshotImagePath->text() + "/" + filename;
             if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
                 QvkShowMessage *vkShowMessage = new QvkShowMessage;
-                vkShowMessage->showMessage( QString( "Fullscreen captured" ), image, ui->lineEditSnapshotImagePath->text() );
+                vkShowMessage->setURL( ui->lineEditSnapshotImagePath->text() );
+                vkShowMessage->setImage( image );
+                vkShowMessage->setStatusIcon( ":/pictures/status/information.png" );
+                vkShowMessage->showMessage( QString( "Fullscreen captured" ) );
             }
         }
 
@@ -127,7 +130,10 @@ void QvkSnapshot::slot_newImage()
                 qDebug().noquote() << global::nameOutput << "A recording is running and a Window Snapshot is saved:" << ui->lineEditSnapshotImagePath->text() + "/" + filename;
                 if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
                     QvkShowMessage *vkShowMessage = new QvkShowMessage;
-                    vkShowMessage->showMessage( "Window captured", image, ui->lineEditSnapshotImagePath->text() );
+                    vkShowMessage->setURL( ui->lineEditSnapshotImagePath->text() );
+                    vkShowMessage->setImage( image );
+                    vkShowMessage->setStatusIcon( ":/pictures/status/information.png" );
+                    vkShowMessage->showMessage( "Window captured" );
                 }
             }
         }
@@ -167,7 +173,10 @@ void QvkSnapshot::slot_newImage()
             qDebug().noquote() << global::nameOutput << "Aera Snapshot saved:" << ui->lineEditSnapshotImagePath->text() + "/" + filename;
             if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
                 QvkShowMessage *vkShowMessage = new QvkShowMessage;
-                vkShowMessage->showMessage( "Area captured", copyImage, ui->lineEditSnapshotImagePath->text() );
+                vkShowMessage->setURL( ui->lineEditSnapshotImagePath->text() );
+                vkShowMessage->setImage( copyImage );
+                vkShowMessage->setStatusIcon( ":/pictures/status/information.png" );
+                vkShowMessage->showMessage( "Area captured" );
             }
         }
 
@@ -259,7 +268,10 @@ void QvkSnapshot::slot_snapshotWindow( bool )
         qDebug().noquote() << global::nameOutput << "No Recording and a Window Snapshot is saved:" << ui->lineEditSnapshotImagePath->text() + "/" + filename;
         if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
             QvkShowMessage *vkShowMessage = new QvkShowMessage;
-            vkShowMessage->showMessage( "Window captured", image, ui->lineEditSnapshotImagePath->text() );
+            vkShowMessage->setURL( ui->lineEditSnapshotImagePath->text() );
+            vkShowMessage->setImage( image );
+            vkShowMessage->setStatusIcon( ":/pictures/status/information.png" );
+            vkShowMessage->showMessage( "Window captured" );
         }
     }
 }

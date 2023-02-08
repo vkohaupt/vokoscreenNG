@@ -37,7 +37,10 @@ class QvkShowMessage : public QWidget
 public:
     QvkShowMessage();
     virtual ~QvkShowMessage();
-    void showMessage( QString text , QImage image, QString path );
+    void showMessage( QString text );
+    void setURL( QString url );
+    void setImage( QImage image );
+    void setStatusIcon( QString statusIcon );
 
 
 public slots:
@@ -67,7 +70,9 @@ private:
     int degree = +36;
     QTimer *timer;
     int secCounter = 0;
-    QString path;
+    QString path = "";
+    QImage image;
+    QString statusIcon = "";
 };
 
 #endif
