@@ -103,6 +103,7 @@ void QvkSnapshot::slot_newImage()
                 vkShowMessage->set_StatusIcon( ":/pictures/status/information.png" );
                 vkShowMessage->set_WindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
                 vkShowMessage->set_WindowTitle( global::name + " " + global::version );
+                vkShowMessage->set_timeOut( 10000 );
                 vkShowMessage->showMessage( QString( "Fullscreen captured" ) );
             }
         }
@@ -137,6 +138,7 @@ void QvkSnapshot::slot_newImage()
                     vkShowMessage->set_StatusIcon( ":/pictures/status/information.png" );
                     vkShowMessage->set_WindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
                     vkShowMessage->set_WindowTitle( global::name + " " + global::version );
+                    vkShowMessage->set_timeOut( 10000 );
                     vkShowMessage->showMessage( "Window captured" );
                 }
             }
@@ -182,6 +184,7 @@ void QvkSnapshot::slot_newImage()
                 vkShowMessage->set_StatusIcon( ":/pictures/status/information.png" );
                 vkShowMessage->set_WindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
                 vkShowMessage->set_WindowTitle( global::name + " " + global::version );
+                vkShowMessage->set_timeOut( 10000 );
                 vkShowMessage->showMessage( "Area captured" );
             }
         }
@@ -279,6 +282,7 @@ void QvkSnapshot::slot_snapshotWindow( bool )
             vkShowMessage->set_StatusIcon( ":/pictures/status/information.png" );
             vkShowMessage->set_WindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
             vkShowMessage->set_WindowTitle( global::name + " " + global::version );
+            vkShowMessage->set_timeOut( 10000 );
             vkShowMessage->showMessage( "Window captured" );
         }
     }

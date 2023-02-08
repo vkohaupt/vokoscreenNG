@@ -72,7 +72,7 @@ QvkShowMessage::QvkShowMessage()
 
     timer = new QTimer();
     timer->setTimerType( Qt::PreciseTimer );
-    timer->setInterval( 100 );
+    timer->setInterval( timerInterval );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_durationButton() ) );
     slot_durationButton();
 
@@ -116,8 +116,16 @@ void QvkShowMessage::set_WindowTitle( QString title)
 }
 
 
+void QvkShowMessage::set_timeOut( qreal value )
+{
+    timeOut = value;
+}
+
+
 void QvkShowMessage::showMessage( QString text )
 {
+    degreeStep = 360 / timeOut * timerInterval;
+
     if ( statusIcon > "" )
     {
         QPixmap pixmap( statusIcon );
@@ -159,7 +167,7 @@ void QvkShowMessage::closeEvent( QCloseEvent *event )
 void QvkShowMessage::slot_durationButton()
 {
     if ( underMouse() == true ) {
-        degree = 3.6;
+        degree = degreeStep;
     }
 
     int h = 16;
@@ -184,7 +192,7 @@ void QvkShowMessage::slot_durationButton()
     brush.setStyle( Qt::SolidPattern );
     brush.setColor( QString( "#3daee9" ) );
     painter.setBrush( brush );
-    degree = degree - 3.6;
+    degree = degree - degreeStep;
     painter.drawPie( 1, 1, h, h, 90*16, degree*16 );
     painter.end();
 

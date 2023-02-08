@@ -43,6 +43,7 @@ public:
     void set_StatusIcon( QString statusIcon );
     void set_WindowIcon( QIcon icon );
     void set_WindowTitle( QString title);
+    void set_timeOut( qreal value );
 
 
 public slots:
@@ -69,12 +70,15 @@ private:
     QLabel *labelImage;
     QScreen *myScreen;
     QLabel *labelImageDuration;
-    qreal degree = +36;
+    qreal degree = 0;
+    qreal degreeStep;
     QTimer *timer;
-    QString path = "";
+    qreal timerInterval = 100;
+    QString path;
     QImage image;
-    QString statusIcon = "";
-    QString windowTitle = "";
+    QString statusIcon;
+    QString windowTitle;
+    qreal timeOut = 10000;
 };
 
 #endif
