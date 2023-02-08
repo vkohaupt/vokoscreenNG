@@ -21,7 +21,7 @@
  */
 
 #include "QvkShowMessage.h"
-#include "global.h"
+//#include "global.h"
 
 #include <QApplication>
 #include <QScreen>
@@ -36,12 +36,10 @@
 QvkShowMessage::QvkShowMessage()
 {
     setFixedSize( 300, 130 );
-//    setWindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
     setWindowFlag( Qt::Window, true );
     setWindowFlag( Qt::WindowStaysOnTopHint, true );
 
     setAttribute( Qt::WA_DeleteOnClose );
-    setWindowTitle( global::name + " " + global::version );
 
     hBoxLayoutWindow = new QHBoxLayout;
     setLayout( hBoxLayoutWindow );
@@ -109,6 +107,13 @@ void QvkShowMessage::set_StatusIcon( QString m_statusIcon )
 void QvkShowMessage::set_WindowIcon( QIcon icon )
 {
     setWindowIcon( icon );
+}
+
+
+void QvkShowMessage::set_WindowTitle( QString title)
+{
+    windowTitle = title;
+    setWindowTitle( windowTitle );
 }
 
 
@@ -207,7 +212,7 @@ void QvkShowMessage::mouseReleaseEvent( QMouseEvent *event )
 
             QMessageBox msgBox( this );
             msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
-            msgBox.setWindowTitle( global::name + " " + global::version );
+            msgBox.setWindowTitle( windowTitle );
             msgBox.setIconPixmap( pixmap );
             msgBox.exec();
         }

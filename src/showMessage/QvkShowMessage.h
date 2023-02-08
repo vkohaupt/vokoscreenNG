@@ -42,6 +42,7 @@ public:
     void set_Image( QImage image );
     void set_StatusIcon( QString statusIcon );
     void set_WindowIcon( QIcon icon );
+    void set_WindowTitle( QString title);
 
 
 public slots:
@@ -74,6 +75,7 @@ private:
     QString path = "";
     QImage image;
     QString statusIcon = "";
+    QString windowTitle = "";
 };
 
 #endif
