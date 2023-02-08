@@ -36,7 +36,7 @@
 QvkShowMessage::QvkShowMessage()
 {
     setFixedSize( 300, 130 );
-    setWindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
+//    setWindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
     setWindowFlag( Qt::Window, true );
     setWindowFlag( Qt::WindowStaysOnTopHint, true );
 
@@ -88,21 +88,27 @@ QvkShowMessage::~QvkShowMessage()
 
 
 // If path given, then we can click on the message and a browser or filemanger will be opened
-void QvkShowMessage::setURL( QString url )
+void QvkShowMessage::set_URL( QString url )
 {
     path = url;
 }
 
 
-void QvkShowMessage::setImage( QImage m_image )
+void QvkShowMessage::set_Image( QImage m_image )
 {
     image = m_image;
 }
 
 
-void QvkShowMessage::setStatusIcon( QString m_statusIcon )
+void QvkShowMessage::set_StatusIcon( QString m_statusIcon )
 {
     statusIcon = m_statusIcon;
+}
+
+
+void QvkShowMessage::set_WindowIcon( QIcon icon )
+{
+    setWindowIcon( icon );
 }
 
 

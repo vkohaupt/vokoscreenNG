@@ -38,9 +38,10 @@ public:
     QvkShowMessage();
     virtual ~QvkShowMessage();
     void showMessage( QString text );
-    void setURL( QString url );
-    void setImage( QImage image );
-    void setStatusIcon( QString statusIcon );
+    void set_URL( QString url );
+    void set_Image( QImage image );
+    void set_StatusIcon( QString statusIcon );
+    void set_WindowIcon( QIcon icon );
 
 
 public slots:
