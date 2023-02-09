@@ -25,8 +25,6 @@
 
 #include "ui_formMainWindow.h"
 
-#include "QvkVersion.h"
-
 #include <QObject>
 #include <QSystemTrayIcon>
 #include <QMenu>
@@ -53,7 +51,7 @@ private:
     QAction *pauseAction;
     QAction *continueAction;
     QAction *exitAction;
-    QvkVersion version;
+//    QvkVersion version;
 
     QAction *cameraAction;
     QAction *magnifierAction;
@@ -67,8 +65,8 @@ private slots:
     void slot_setRecordIcon( bool );
     void slot_setSystrayIcon( bool );
     void slot_setPauseIcon( bool );
-    void slot_newVersionAvailable( QString update );
-    void slot_showHomepage();
+//    void slot_newVersionAvailable( QString update );
+//    void slot_showHomepage();
     void slot_currentIndexChanged( int index );
     void slot_shortcutSystray( QString device, QString shortcut );
 

@@ -22,6 +22,7 @@
 
 #include "QvkInformation.h"
 #include "global.h"
+#include "QvkShowMessage.h"
 
 #include <QTimer>
 #include <QTime>
@@ -135,6 +136,10 @@ void QvkInformation::slot_newVersionAvailable( QString update )
             QString string = "New Version available: " + update;
             ui->label_Upate_tab_1->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-download.html'>" + string + "</a>" );
             ui->label_Upate_tab_4->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-download.html'>" + string + "</a>" );
+
+            QvkShowMessage *vkShowMessage = new QvkShowMessage;
+            vkShowMessage->set_URL( "https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html" );
+            vkShowMessage->showMessage( "New Version available: " + update );
         }
         else
         {

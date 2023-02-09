@@ -27,6 +27,7 @@
 #include <QStandardPaths>
 #include <QMessageBox>
 #include <QThread>
+#include <QDesktopServices>
 
 #include "global.h"
 #include "QvkSnapshot.h"

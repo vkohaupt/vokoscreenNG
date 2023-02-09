@@ -25,6 +25,7 @@
 #include "QvkSpezialCheckbox.h"
 
 #include <QDebug>
+#include <QDesktopServices>
 
 QvkSystray::QvkSystray(Ui_formMainWindow *ui_mainwindow )
 {
@@ -182,34 +183,9 @@ void QvkSystray::init()
 
     connect( exitAction, SIGNAL( triggered( bool ) ), this, SLOT( slot_hide() ) );
 
-    connect( &version, SIGNAL( signal_newVersionAvailable( QString ) ), this, SLOT( slot_newVersionAvailable( QString ) ) );
-    connect( ui->checkBoxLookForUpdates, SIGNAL( toggled( bool ) ), &version, SLOT( slot_doDownload( bool ) ) );
-
     if ( ui->checkBoxCameraOnOff->isEnabled() == false ){
         cameraAction->setEnabled( false );
     }
-}
-
-
-void QvkSystray::slot_newVersionAvailable( QString update )
-{
-    if ( ui->checkBoxLookForUpdates->isChecked() == true )
-    {
-        if ( global::version < update )
-        {
-            if ( QSystemTrayIcon::supportsMessages() == true )
-            {
-                connect( this, SIGNAL( messageClicked() ), this, SLOT( slot_showHomepage() ) );
-                showMessage( global::name, "New Version available: " + update, QSystemTrayIcon::Information, 5000 );
-            }
-        }
-    }
-}
-
-
-void QvkSystray::slot_showHomepage()
-{
-   QDesktopServices::openUrl(QUrl("https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html", QUrl::TolerantMode));
 }
 
 

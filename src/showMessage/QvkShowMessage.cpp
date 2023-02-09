@@ -135,10 +135,12 @@ void QvkShowMessage::showMessage( QString text )
 
     labelText->setText( text );
 
-    QPixmap pixmapImage;
-    pixmapImage = pixmapImage.fromImage( image );
-    pixmapImage = pixmapImage.scaled( 300, 80, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-    labelImage->setPixmap( pixmapImage );
+    if ( image.isNull() == false ) {
+        QPixmap pixmapImage;
+        pixmapImage = pixmapImage.fromImage( image );
+        pixmapImage = pixmapImage.scaled( 300, 80, Qt::KeepAspectRatio, Qt::SmoothTransformation );
+        labelImage->setPixmap( pixmapImage );
+    }
 
     QPoint globalCursorPos = QCursor::pos();
     myScreen = QGuiApplication::screenAt( globalCursorPos );

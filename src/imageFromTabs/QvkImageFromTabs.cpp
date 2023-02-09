@@ -31,6 +31,7 @@
 #include <QTimer>
 #include <QThread>
 #include <QMessageBox>
+#include <QDesktopServices>
 
 QvkImageFromTabs::QvkImageFromTabs( QvkMainWindow *parent )
 {
