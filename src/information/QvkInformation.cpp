@@ -138,6 +138,8 @@ void QvkInformation::slot_newVersionAvailable( QString update )
             ui->label_Upate_tab_4->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-download.html'>" + string + "</a>" );
 
             QvkShowMessage *vkShowMessage = new QvkShowMessage;
+            vkShowMessage->set_WindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
+            vkShowMessage->set_WindowTitle( global::name + " " + global::version );
             vkShowMessage->set_URL( "https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html" );
             vkShowMessage->showMessage( "New Version available: " + update );
         }
