@@ -58,7 +58,6 @@ signals:
 
 protected:  
     void closeEvent( QCloseEvent *event );
-    void mouseReleaseEvent(QMouseEvent *event);
 
 
 private:

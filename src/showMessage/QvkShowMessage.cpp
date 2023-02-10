@@ -126,14 +126,19 @@ void QvkShowMessage::showMessage( QString text )
 {
     degreeStep = 360 / timeOut * timerInterval;
 
-    if ( statusIcon > "" )
+    if ( statusIcon.isEmpty() == false )
     {
         QPixmap pixmap( statusIcon );
         pixmap = pixmap.scaled( 48, 48, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
         labelIcon->setPixmap( pixmap );
     }
 
-    labelText->setText( text );
+    if ( path.isEmpty() == false ) {
+        labelText->setOpenExternalLinks( true );
+        labelText->setText( "<a href='" + path + "'>" + text + "</a>" );
+    } else {
+        labelText->setText( text );
+    }
 
     if ( image.isNull() == false ) {
         QPixmap pixmapImage;
@@ -202,26 +207,5 @@ void QvkShowMessage::slot_durationButton()
 
     if ( degree <= -360 ) {
         close();
-    }
-}
-
-
-void QvkShowMessage::mouseReleaseEvent( QMouseEvent *event )
-{
-    Q_UNUSED(event)
-    // If path given, then we can click on the message and a browser or filemanger will be opened
-    if ( path > "" )
-    {
-        if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false )
-        {
-            QPixmap pixmap( ":/pictures/status/information.png" );
-            pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-
-            QMessageBox msgBox( this );
-            msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
-            msgBox.setWindowTitle( windowTitle );
-            msgBox.setIconPixmap( pixmap );
-            msgBox.exec();
-        }
     }
 }
