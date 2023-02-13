@@ -161,9 +161,6 @@ void QvkSnapshot::slot_newImage()
             QThread::msleep( static_cast<unsigned long>( spezialSlider->value()) * 1000/10 );
         }
 
-        QvkSpezialSlider *spezialSlider = ui->centralWidget->findChild<QvkSpezialSlider *>( "sliderWaitBeforeSnapshot" );
-        QThread::msleep( static_cast<unsigned long>( spezialSlider->value()) * 1000/10 );
-
         int startx = vkMainWindow->vkRegionChoise->getXRecordArea();
         int starty = vkMainWindow->vkRegionChoise->getYRecordArea();
         int endx = vkMainWindow->vkRegionChoise->getWidth();
