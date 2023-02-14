@@ -154,12 +154,9 @@ void QvkSnapshot::slot_newImage()
             vkMainWindow->showMinimized();
         }
 
-        if ( vkMainWindow->vkRegionChoise->recordemode == false )
-        {
-            vkMainWindow->vkRegionChoise->recordMode( true );
-            QvkSpezialSlider *spezialSlider = ui->centralWidget->findChild<QvkSpezialSlider *>( "sliderWaitBeforeSnapshot" );
-            QThread::msleep( static_cast<unsigned long>( spezialSlider->value()) * 1000/10 );
-        }
+        vkMainWindow->vkRegionChoise->recordMode( true );
+        QvkSpezialSlider *spezialSlider = ui->centralWidget->findChild<QvkSpezialSlider *>( "sliderWaitBeforeSnapshot" );
+        QThread::msleep( static_cast<unsigned long>( spezialSlider->value()) * 1000/10 );
 
         int startx = vkMainWindow->vkRegionChoise->getXRecordArea();
         int starty = vkMainWindow->vkRegionChoise->getYRecordArea();
