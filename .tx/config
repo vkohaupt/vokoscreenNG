@@ -1,12 +1,9 @@
 [main]
 host = https://www.transifex.com
-# Die Prozente müßen hier angegeben werden. Per CLI funktioniert es nicht.
+
+[o:vkohaupt:p:vokoscreen:r:vokoscreen-version-3]
+file_filter = language/<lang>.ts
+source_file = language/en.ts
+source_lang = en
 minimum_perc = 100
 
-# Die Resource muß übereinstimmen mit dem Slug Name
-[vokoscreen.vokoscreen-version-3]
-file_filter = language/<lang>.ts
-source_lang = en
-
-# Für den Downlad genügt dann ein
-# tx pull -a

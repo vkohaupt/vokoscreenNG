@@ -1,596 +1,596 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="es_MX">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ko_KR">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Seleccione uno o más dispositivos</translation>
+        <translation>1개 이상의 장치 선택</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>카메라</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Cambiar a Ventana</translation>
+        <translation>창으로 전환</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Cambiar a pantalla completa</translation>
+        <translation>전체화면 전환</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>La instalación fue correcta.</translation>
+        <translation>설치를 성공적으로 마쳤습니다.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Cierra la ventana e inicia vokoscreenNG de nuevo.</translation>
+        <translation>창을 닫고 vokoscreenNG를 다시 시작해 주세요.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Diviértete con vokoscreenNG</translation>
+        <translation>vovkoscreenNG와 함께 즐겨요</translation>
     </message>
 </context>
 <context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Elige uno o más dispositivos</translation>
+        <translation>1개 이상의 장치 선택</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Ayuda</translation>
+        <translation>도움말</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>No se encontró el manejador de archivos.</translation>
+        <translation>파일 탐색기가 없습니다.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Por favor, instale un manejador de archivos.</translation>
+        <translation>파일탐색기를 설치해 주세요.</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Advertencia</translation>
+        <translation>경고</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>La grabación no ha comenzado porque no hay suficiente espacio libre en el disco. </translation>
+        <translation>여유 디스크 공간이 충분하지 않아서, 녹화를 시작하지 않았습니다.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>El espacio libre del disco se agotó. </translation>
+        <translation>여유 디스크 공간이 부족합니다.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Espacio libre del disco</translation>
+        <translation>여유 디스크 공간 제한</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>메가바이트</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>La grabación se detuvo porque no hay espacio libre en el disco.</translation>
+        <translation>여유 디스크 공간이 충분하지 않아서, 녹화가 중단됐습니다.</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Pantalla Completa</translation>
+        <translation>전체화면</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Ventana</translation>
+        <translation>창</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>No se encontró el manejador de archivos.</translation>
+        <translation>파일 탐색기가 없습니다.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Por favor, instale un manejador de archivos.</translation>
+        <translation>파일탐색기를 설치해 주세요.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Código fuente</translation>
+        <translation>소스코드</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Página de inicio</translation>
+        <translation>홈페이지</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Traducciones</translation>
+        <translation>번역</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donar</translation>
+        <translation>후원하기</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Elige uno o más dispositivos</translation>
+        <translation>1개 이상의 장치 선택</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>영역</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>영역</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>No se encontró el manejador de archivos.</translation>
+        <translation>파일 탐색기가 없습니다.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Por favor, instale un manejador de archivos.</translation>
+        <translation>파일탐색기를 설치해 주세요.</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Comenzar</translation>
+        <translation>시작</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>중지</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>일시정지</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>계속하기</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Salir</translation>
+        <translation>종료</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>카메라</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>확대</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Comenzar</translation>
+        <translation>시작</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>중지</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>일시정지</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>계속하기</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Salir</translation>
+        <translation>종료</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>카메라</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>확대</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Diálogo</translation>
+        <translation>대화창</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Distribuir en dos ventanas horizontales</translation>
+        <translation>좌우 뒤집기</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Distribuir en dos ventanas verticales</translation>
+        <translation>상하 뒤집기</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertir</translation>
+        <translation>반전</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Tonos de Gris</translation>
+        <translation>회색</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Blanco y Negro</translation>
+        <translation>흑백</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Remover el marco de la ventana</translation>
+        <translation>창틀 제거</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Configuración de la cámara</translation>
+        <translation>카메라 설정</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Área</translation>
+        <translation>영역</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Redefinir</translation>
+        <translation>초기화</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>확대</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Cuenta regresiva</translation>
+        <translation>카운트다운</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Tamaño del video:</translation>
+        <translation>비디오 크기:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Espacio libre del disco:</translation>
+        <translation>남는 디스크 공간:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Información</translation>
+        <translation>정보</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Tiempo de grabación:</translation>
+        <translation>녹화 시간:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Audio</translation>
+        <translation>음성</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Cuadros</translation>
+        <translation>프레임수</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Codec de video</translation>
+        <translation>영상코덱</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formato</translation>
+        <translation>포맷</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Codec de audio</translation>
+        <translation>음성코덱</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>Calidad</translation>
+        <translation>품질</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>No grabar el cursor del ratón</translation>
+        <translation>마우스 커서 녹화하지 않기</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Hora</translation>
+        <translation>시</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minuto</translation>
+        <translation>분</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Iniciar el cronómetro</translation>
+        <translation>타이머 시작</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Detener la grabación después de </translation>
+        <translation>녹화 후 중지</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Horas</translation>
+        <translation>시간</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minutos</translation>
+        <translation>분</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Segundos</translation>
+        <translation>초</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Ruta al video</translation>
+        <translation>영상 경로</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Espacio libre del disco</translation>
+        <translation>사용 가능한 디스크 공간 제한</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Mostrar en systray</translation>
+        <translation>트레이에 표시하기</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Segundos a esperar antes de la grabación</translation>
+        <translation>몇 초 후 녹화 시작</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Buscar actualizaciones</translation>
+        <translation>업데이트 찾기</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Ayuda</translation>
+        <translation>도움말</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Video</translation>
+        <translation>영상</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Disponible</translation>
+        <translation>사용가능</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>No disponible</translation>
+        <translation>사용불가</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Comenzar</translation>
+        <translation>시작</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>중지</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>일시정지</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Continuar</translation>
+        <translation>계속하기</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Reproducir</translation>
+        <translation>재생</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Carpeta</translation>
+        <translation>폴더</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>카메라</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertir</translation>
+        <translation>반전</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Tonos de Gris</translation>
+        <translation>회색</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
-        <translation>CTRL+MAYUS+F10</translation>
+        <translation>CTRL+SHIFT+F10</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F11</source>
-        <translation>CTRL+MAYUS+F11</translation>
+        <translation>CTRL+SHIFT+F11</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F12</source>
-        <translation>CTRL+MAYUS+F12</translation>
+        <translation>CTRL+SHIFT+F12</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Reproducir la última grabación</translation>
+        <translation>마지막 녹화 재생</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Abrir carpeta</translation>
+        <translation>폴더 열기</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation>CTRL+MAYUS+F8</translation>
+        <translation>CTRL+SHIFT+F8</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimizada cuando comience la grabación</translation>
+        <translation>녹화 시작할 때 창 최소화</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Comienza minimizada</translation>
+        <translation>창 최소화로 시작하기</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Distribuir en dos ventanas horizontales</translation>
+        <translation>좌우 반전</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Distribuir en dos ventanas verticales</translation>
+        <translation>상하 반전</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Blanco y Negro</translation>
+        <translation>흑백</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Remover el marco de la ventana</translation>
+        <translation>창틀 제거</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donar</translation>
+        <translation>후원하기</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Redefinir la configuración en la siguiente grabación</translation>
+        <translation>다음 시작시 모든 설정 초기화</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Derechos de autor y licencia sobre la grabación</translation>
+        <translation>이미지의 저작권과 라이선스</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>메가바이트</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Pantalla de grabación</translation>
+        <translation>스크린캐스트</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Reproductor</translation>
+        <translation>플레이어</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Bitácora</translation>
+        <translation>로그</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automáticamente</translation>
+        <translation>자동으로</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Crear imágenes de tabuladores</translation>
+        <translation>탭 이미지 만들기</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Información de Licencia</translation>
+        <translation>라이선스 정보</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>Inicio</translation>
+        <translation>ON</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>Apagado</translation>
+        <translation>OFF</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Accesos directos globales de teclado</translation>
+        <translation>전역 키보드 단축키</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Teclas de acceso directo asignadas.</translation>
+        <translation>할당된 단축키.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Acceso directo de teclado no asignado más de una vez.</translation>
+        <translation>키보드 단축키가 할당되지 않았거나, 2개 이상 할당됨.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Si esto se muestra como asignado, pero no funciona, está siendo utilizado por otro programa.</translation>
+        <translation>할당된 것으로 표시되지만 작동하지 않는다면, 다른 프로그램에서 사용 중인 것입니다.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Captura de pantalla</translation>
+        <translation>스냅샷</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Ruta de la imagen</translation>
+        <translation>이미지경로</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Oculta esta ventana</translation>
+        <translation>이 창 숨기기</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Segundos de espera antes de grabar</translation>
+        <translation>몇 초 후 녹화 시작</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Derechos de autor y licencia sobre la grabación</translation>
+        <translation>이미지의 저작권과 라이선스</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Reproducir</translation>
+        <translation>재생</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>일시정지</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>중지</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Abrir Archivo</translation>
+        <translation>파일 열기</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Pantalla Completa</translation>
+        <translation>전체화면</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Cuadro anterior</translation>
+        <translation>이전 프레임</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Siguiente cuadro</translation>
+        <translation>다음 프레임</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Apagar el micrófono</translation>
+        <translation>음소거</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Mover el menú</translation>
+        <translation>메뉴 이동하기</translation>
     </message>
 </context>
 </TS>

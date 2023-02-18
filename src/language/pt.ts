@@ -1,86 +1,86 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="es_MX">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="pt">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Seleccione uno o más dispositivos</translation>
+        <translation>Selecione um ou mais dispositivos</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>Camera</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Cambiar a Ventana</translation>
+        <translation>Mudar para janela</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Cambiar a pantalla completa</translation>
+        <translation>Mudar para ecrã inteiro</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>La instalación fue correcta.</translation>
+        <translation>A configuração foi bem sucedida.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Cierra la ventana e inicia vokoscreenNG de nuevo.</translation>
+        <translation>Feche esta janela e inicie vokoscreenNG novamente.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Diviértete con vokoscreenNG</translation>
+        <translation>Divirta-se com vokoscreenNG</translation>
     </message>
 </context>
 <context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Elige uno o más dispositivos</translation>
+        <translation>Seleccione um ou mais dispositivos</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Ayuda</translation>
+        <translation>Ajuda</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>No se encontró el manejador de archivos.</translation>
+        <translation>Não foi encontrado nenhum gestor de ficheiros.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Por favor, instale un manejador de archivos.</translation>
+        <translation>Por favor, instale um gestor de ficheiros.</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Advertencia</translation>
+        <translation>Aviso</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>La grabación no ha comenzado porque no hay suficiente espacio libre en el disco. </translation>
+        <translation>A gravação não é iniciada, não há espaço livre em disco suficiente.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>El espacio libre del disco se agotó. </translation>
+        <translation>Foi alcançado o limite de espaço em disco.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Espacio libre del disco</translation>
+        <translation>Limite de espaço livre em disco</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -88,50 +88,50 @@
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>La grabación se detuvo porque no hay espacio libre en el disco.</translation>
+        <translation>A gravação foi parada, sem espaço em disco disponível.</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Pantalla Completa</translation>
+        <translation>Ecrã inteiro</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Ventana</translation>
+        <translation>Janela</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>No se encontró el manejador de archivos.</translation>
+        <translation>Não foi encontrado um gestor de ficheiros.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Por favor, instale un manejador de archivos.</translation>
+        <translation>Por favor, instale um gestor de ficheiros.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Código fuente</translation>
+        <translation>Código-fonte</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Página de inicio</translation>
+        <translation>Página inicial</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Traducciones</translation>
+        <translation>Traduções</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donar</translation>
+        <translation>Doar</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Elige uno o más dispositivos</translation>
+        <translation>Selecione um ou mais dispositivos</translation>
     </message>
 </context>
 <context>
@@ -152,26 +152,26 @@
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>No se encontró el manejador de archivos.</translation>
+        <translation>Não foi encontrado um gestor de ficheiros.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Por favor, instale un manejador de archivos.</translation>
+        <translation>Por favor, instale um gestor de ficheiros.</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Comenzar</translation>
+        <translation>Começar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>Parar</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -179,30 +179,30 @@
     </message>
     <message>
         <source>Exit</source>
-        <translation>Salir</translation>
+        <translation>Sair</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>Camera</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>Ampliação</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Comenzar</translation>
+        <translation>Começar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>Parar</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -210,15 +210,15 @@
     </message>
     <message>
         <source>Exit</source>
-        <translation>Salir</translation>
+        <translation>Sair</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>Camera</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>Ampliação</translation>
     </message>
 </context>
 <context>
@@ -229,31 +229,31 @@
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Distribuir en dos ventanas horizontales</translation>
+        <translation>Girar horizontal</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Distribuir en dos ventanas verticales</translation>
+        <translation>Girar vertical</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertir</translation>
+        <translation>Inverter</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Tonos de Gris</translation>
+        <translation>Cinzento</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Blanco y Negro</translation>
+        <translation>Preto e branco</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Remover el marco de la ventana</translation>
+        <translation>Remover a moldura da janela</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Configuración de la cámara</translation>
+        <translation>Configurações da câmara</translation>
     </message>
 </context>
 <context>
@@ -264,43 +264,43 @@
     </message>
     <message>
         <source>Reset</source>
-        <translation>Redefinir</translation>
+        <translation>Restabelecer</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Ampliación</translation>
+        <translation>Ampliação</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Cuenta regresiva</translation>
+        <translation>Contagem decrescente</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Tamaño del video:</translation>
+        <translation>Tamanho do vídeo:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Espacio libre del disco:</translation>
+        <translation>Espaço de disco disponível:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Información</translation>
+        <translation>Informação</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Tiempo de grabación:</translation>
+        <translation>Tempo de gravação:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Audio</translation>
+        <translation>Áudio</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Cuadros</translation>
+        <translation>Imagens</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Codec de video</translation>
+        <translation>Codec de vídeo</translation>
     </message>
     <message>
         <source>Format</source>
@@ -308,15 +308,15 @@
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Codec de audio</translation>
+        <translation>Codec de áudio</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>Calidad</translation>
+        <translation>Qualidade</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>No grabar el cursor del ratón</translation>
+        <translation>Não gravar o cursor do rato</translation>
     </message>
     <message>
         <source>Hour</source>
@@ -328,11 +328,11 @@
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Iniciar el cronómetro</translation>
+        <translation>Iniciar o cronómetro</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Detener la grabación después de </translation>
+        <translation>Parar a gravação após</translation>
     </message>
     <message>
         <source>Hours</source>
@@ -348,51 +348,51 @@
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Ruta al video</translation>
+        <translation>Caminho do vídeo </translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Espacio libre del disco</translation>
+        <translation>Limite do espaço em disco disponível</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Mostrar en systray</translation>
+        <translation>Mostrar na barra de tarefas</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Segundos a esperar antes de la grabación</translation>
+        <translation>Esperar em segundos antes de iniciar a gravar</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Buscar actualizaciones</translation>
+        <translation>Procurar por atualizações</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Ayuda</translation>
+        <translation>Ajuda</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Video</translation>
+        <translation>Vídeo</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Disponible</translation>
+        <translation>Disponível</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>No disponible</translation>
+        <translation>Indisponível</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Comenzar</translation>
+        <translation>Iniciar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>Parar</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -400,83 +400,83 @@
     </message>
     <message>
         <source>Play</source>
-        <translation>Reproducir</translation>
+        <translation>Reproduzir</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Carpeta</translation>
+        <translation>Pasta</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Cámara</translation>
+        <translation>Câmara</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertir</translation>
+        <translation>Inverter</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Tonos de Gris</translation>
+        <translation>Cinzento</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
-        <translation>CTRL+MAYUS+F10</translation>
+        <translation>CTRL+SHIFT+F10</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F11</source>
-        <translation>CTRL+MAYUS+F11</translation>
+        <translation>CTRL+SHIFT+F11</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F12</source>
-        <translation>CTRL+MAYUS+F12</translation>
+        <translation>CTRL+SHIFT+F12</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Reproducir la última grabación</translation>
+        <translation>Reproduzir a última gravação</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Abrir carpeta</translation>
+        <translation>Abrir pasta</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation>CTRL+MAYUS+F8</translation>
+        <translation>CTRL+SHIFT+F8</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimizada cuando comience la grabación</translation>
+        <translation>Minimizar quando a gravação Iniciar</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Comienza minimizada</translation>
+        <translation>Iniciar minimizado</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Distribuir en dos ventanas horizontales</translation>
+        <translation>Girar horizontal</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Distribuir en dos ventanas verticales</translation>
+        <translation>Girar vertical</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Blanco y Negro</translation>
+        <translation>Preto e branco</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Remover el marco de la ventana</translation>
+        <translation>Remover a moldura da janela</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Donar</translation>
+        <translation>Doar</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Redefinir la configuración en la siguiente grabación</translation>
+        <translation>Repor todas as configurações no próximo início</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Derechos de autor y licencia sobre la grabación</translation>
+        <translation>Direitos de autor e licença das imagens</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -484,113 +484,113 @@
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Pantalla de grabación</translation>
+        <translation>Captura de ecrã em vídeo</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Reproductor</translation>
+        <translation>Leitor</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Bitácora</translation>
+        <translation>Registos</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automáticamente</translation>
+        <translation>Automaticamente</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Crear imágenes de tabuladores</translation>
+        <translation>Criar imagens de guias</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Información de Licencia</translation>
+        <translation>Informação de licença</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>Inicio</translation>
+        <translation>ON</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>Apagado</translation>
+        <translation>OFF</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Accesos directos globales de teclado</translation>
+        <translation>Atalhos globais de teclado</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Teclas de acceso directo asignadas.</translation>
+        <translation>Teclas de atalho atribuídas.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Acceso directo de teclado no asignado más de una vez.</translation>
+        <translation>Atalho de teclado não atribuído ou atribuído mais de uma vez.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Si esto se muestra como asignado, pero no funciona, está siendo utilizado por otro programa.</translation>
+        <translation>Se mostrar atribuído, mas não funciona, ele está sendo usado por outro programa.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Captura de pantalla</translation>
+        <translation>Instantâneo</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Ruta de la imagen</translation>
+        <translation>Caminho da imagem</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Oculta esta ventana</translation>
+        <translation>Esconder esta janela</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Segundos de espera antes de grabar</translation>
+        <translation>Espera em segundos antes de gravar</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Derechos de autor y licencia sobre la grabación</translation>
+        <translation>Direitos de autor e licença das imagens</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Reproducir</translation>
+        <translation>Reproduzir</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pausar</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Detener</translation>
+        <translation>Parar</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Abrir Archivo</translation>
+        <translation>Abrir Ficheiro</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Pantalla Completa</translation>
+        <translation>Ecrã inteiro</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Cuadro anterior</translation>
+        <translation>Imagem anterior</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Siguiente cuadro</translation>
+        <translation>Imagem seguinte</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Apagar el micrófono</translation>
+        <translation>Mudo</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Mover el menú</translation>
+        <translation>Mover o menu</translation>
     </message>
 </context>
 </TS>
