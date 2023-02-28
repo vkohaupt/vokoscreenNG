@@ -1085,12 +1085,30 @@ void QvkMainWindow::resizeEvent( QResizeEvent *event )
 void QvkMainWindow::showEvent( QShowEvent *event )
 {
     Q_UNUSED(event)
-    QMetaObject::invokeMethod( this, "slot_afterWindowShown", Qt::ConnectionType::QueuedConnection );
+#ifdef Q_OS_WIN
+    if ( vkAudioController->radioButtonWASAPI->isChecked() ) {
+        if ( VK_getSelectedAudioDevice().count() > 1 ) {
+            if ( testWASAPI == false ) {
+                QMetaObject::invokeMethod( this, "slot_afterWindowShown", Qt::ConnectionType::QueuedConnection );
+            }
+        }
+    }
+#endif
 }
 
 
-void QvkMainWindow::slot_afterWindowShown() {
 // here we can under Windows for WASAPI call a first record
+void QvkMainWindow::slot_afterWindowShown() {
+#ifdef Q_OS_WIN
+    if ( vkAudioController->radioButtonWASAPI->isChecked() ) {
+        if ( VK_getSelectedAudioDevice().count() > 1 ) {
+            if ( testWASAPI == false ) {
+                ui->pushButtonStart->click();
+                QTimer::singleShot( 2000, Qt::PreciseTimer, ui->pushButtonStop, SLOT( click() ) );
+            }
+        }
+    }
+#endif
 }
 
 
@@ -2172,8 +2190,25 @@ void QvkMainWindow::slot_Start()
     VK_PipelineList << VK_getMuxer();
     VK_PipelineList.removeAll( "" );
 
-    QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
+    QString newVideoFilename;
+#ifdef Q_OS_WIN
+    if ( vkAudioController->radioButtonWASAPI->isChecked() ) {
+        if ( VK_getSelectedAudioDevice().count() > 1 ) {
+            if ( testWASAPI == false ) {
+                newVideoFilename = global::name + "-" + "TEST_WASAPI" + "." + ui->comboBoxFormat->currentText();
+                VK_PipelineList << "filesink location=\"" + wasapiTemporaryDir.path() + "/" + newVideoFilename + "\"";
+            } else {
+                newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
+                VK_PipelineList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
+            }
+        }
+    }
+#endif
+
+#ifdef Q_OS_LINUX
+    newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
     VK_PipelineList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
+#endif
 
     // Write settings to log
     vkSettings.saveAll( ui, this, true );
@@ -2268,9 +2303,15 @@ void QvkMainWindow::slot_Stop()
 
 Cancel:
 
-    #ifdef Q_OS_WIN
-       soundEffect->stop();
-    #endif
+#ifdef Q_OS_WIN
+   soundEffect->stop();
+   if ( testWASAPI == false ) {
+       testWASAPI = true;
+       wasapiTemporaryDir.remove();
+       ui->labelInfoRecordTime->setText( "00:00:00" );
+       ui->labelVideoSize->setText( "0" );
+   }
+#endif
 
     wantRecording = true;
 
