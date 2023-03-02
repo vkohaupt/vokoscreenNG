@@ -44,6 +44,7 @@ public:
 public slots:
     void slot_audioDeviceSelected();
 //    void slot_checkBox(bool);
+    void slot_runTestWASAPI( bool bo );
 
 
 private:
