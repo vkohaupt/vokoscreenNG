@@ -1100,6 +1100,8 @@ void QvkMainWindow::showEvent( QShowEvent *event )
 // here we can under Windows for WASAPI call a first record
 void QvkMainWindow::slot_afterWindowShown() {
 #ifdef Q_OS_WIN
+    update();
+    repaint();
     if ( vkAudioController->radioButtonWASAPI->isChecked() ) {
         if ( VK_getSelectedAudioDevice().count() > 1 ) {
             if ( testWASAPI == false ) {

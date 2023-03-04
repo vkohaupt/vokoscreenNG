@@ -222,6 +222,13 @@
     </message>
 </context>
 <context>
+    <name>QvkWASAPIController</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>Valitse yksi tai useampi laite</translation>
+    </message>
+</context>
+<context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
