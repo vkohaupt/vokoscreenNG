@@ -130,6 +130,7 @@ void QvkWASAPIController::getAllDevices()
 
 /*
  * Run WASAPI test
+ * bool zeigt den Status der Checkbox an, ob es auf checked oder unchecked gesetzt wurde.
  */
 void QvkWASAPIController::slot_runTestWASAPI( bool bo )
 {
@@ -143,6 +144,7 @@ void QvkWASAPIController::slot_runTestWASAPI( bool bo )
         }
 
         if ( counter > 1 ) {
+            wantCountdown = false;
             ui->pushButtonStart->click();
             QTimer::singleShot( 2000, Qt::PreciseTimer, ui->pushButtonStop, SLOT( click() ) );
         }

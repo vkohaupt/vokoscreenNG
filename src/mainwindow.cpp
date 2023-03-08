@@ -1851,8 +1851,14 @@ void QvkMainWindow::slot_preStart()
         return;
     }
 
-
-    if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and  ( sliderScreencastCountDown->value() > 0 ) )
+#ifdef Q_OS_WIN
+    if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and
+         ( sliderScreencastCountDown->value() > 0 ) and
+         ( vkAudioController->vkWASAPIController->wantCountdown == true ) )
+#endif
+#ifdef Q_OS_LINUX
+    if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and ( sliderScreencastCountDown->value() > 0 ) )
+#endif
     {
         disconnect( vkCountdown, nullptr, nullptr, nullptr );
         connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
@@ -1910,7 +1916,14 @@ void QvkMainWindow::slot_preStart()
         return;
     }
 
+#ifdef Q_OS_WIN
+    if ( ( ui->radioButtonScreencastArea->isChecked() == true ) and
+         ( sliderScreencastCountDown->value() > 0 ) and
+         ( vkAudioController->vkWASAPIController->wantCountdown == true ) )
+#endif
+#ifdef Q_OS_LINUX
     if ( ( ui->radioButtonScreencastArea->isChecked() == true ) and ( sliderScreencastCountDown->value() > 0 ) )
+#endif
     {
         disconnect( vkCountdown, nullptr, nullptr, nullptr );
         connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
@@ -2307,6 +2320,7 @@ Cancel:
 
 #ifdef Q_OS_WIN
    soundEffect->stop();
+   vkAudioController->vkWASAPIController->wantCountdown = true;
    if ( testWASAPI == false ) {
        testWASAPI = true;
        wasapiTemporaryDir.remove();

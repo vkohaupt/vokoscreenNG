@@ -39,6 +39,7 @@ public:
     void init();
     void getAllDevices();
     QvkWASAPIWatcher *vkWASAPIWatcher;
+    bool wantCountdown = true;
 
 
 public slots:
