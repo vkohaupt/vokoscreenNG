@@ -108,3 +108,4 @@ echo '</RCC>'  >> screencast.qrc
 echo ==========
 echo Script end
 echo ==========
+
