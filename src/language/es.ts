@@ -3,14 +3,14 @@
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Select one or more devices</translation>
+        <translation>Seleccione uno o más dispositivos</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Cámara</translation>
     </message>
 </context>
 <context>
