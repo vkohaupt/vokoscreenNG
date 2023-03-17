@@ -15,7 +15,7 @@
     </tr>
 </table>
   
-vokoscreenNG for Windows and Linux is a powerful screencast creator in 41 languages to record the screen, an area or a window (Linux only). Recording of audio from multiple sources is supported. With the built-in camera support, you can make your video more personal. Other tools such as systray, magnifying glass, countdown, timer, Showclick and Halo support will help you do a good job. 
+vokoscreenNG for Windows and Linux is a powerful screencast creator in many languages to record the screen, an area or a window (Linux only). Recording of audio from multiple sources is supported. With the built-in camera support, you can make your video more personal. Other tools such as systray, magnifying glass, countdown, timer, Showclick and Halo support will help you do a good job. 
 
 
 ## Download
@@ -34,6 +34,7 @@ Windows and Linux installation routines are not provided, because each platform,
 If you want to contribute code, please ask beforehand whether your idea finds harmony. Your source code must be in separate files and published under the MIT-License.
 Every file must include the License-header.
 The License-header can be found here:https://github.com/vkohaupt/vokoscreenNG/blob/3.0/info-licences-changelog-install/Third-Party-License/Third-Party-License
+
 ## Windows 10 64-bit
 ### BuildRequires
 - Required from version 3.1.0
@@ -57,26 +58,6 @@ The License-header can be found here:https://github.com/vkohaupt/vokoscreenNG/bl
 
 ### Environment
 * No additional entries 
-
-
-## Windows 10 32-bit
-### Requirements
-* The integrated vokoscreenNG Player needs a codec pack.
-
-### BuildRequires
-* Required from version 3.0.5 to 3.0.9  
-   https://download.qt.io/official_releases/qt/5.9/5.9.4/qt-opensource-windows-x86-5.9.4.exe  
-   https://gstreamer.freedesktop.org/pkg/windows/1.16.1/gstreamer-1.0-devel-mingw-x86-1.16.1.msi  
-   https://gstreamer.freedesktop.org/pkg/windows/1.16.1/gstreamer-1.0-mingw-x86-1.16.1.msi  
-
-* Required from version 3.0.0 to 3.0.4  
-   https://download.qt.io/official_releases/qt/5.9/5.9.4/qt-opensource-windows-x86-5.9.4.exe  
-   https://gstreamer.freedesktop.org/pkg/windows/1.14.4/gstreamer-1.0-x86_64-1.14.4.msi  
-   https://gstreamer.freedesktop.org/pkg/windows/1.14.4/gstreamer-1.0-devel-x86_64-1.14.4.msi  
-
-### Environment
-* GST_PLUGIN_PATH=C:\gstreamer\1.0\x86\lib\gstreamer-1.0
-* GSTREAMER_1_0_ROOT_X86=C:\gstreamer\1.0\x86\
 
 
 ## Linux
