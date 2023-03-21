@@ -24,7 +24,6 @@
 #define QVKCOUNTDOWN_H
 
 #include <QWidget>
-//#include <QPainter>
 
 #include "QvkCountdownWindow.h"
 

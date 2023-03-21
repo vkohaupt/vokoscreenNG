@@ -26,27 +26,10 @@
 #include <QPushButton>
 #include <QBitmap>
 
-#ifdef Q_OS_LINUX
-#include <QX11Info>
-#endif
-
 QvkCountdownWindow::QvkCountdownWindow( QWidget *parent )
 {
     setParent( parent );
-
-#ifdef Q_OS_LINUX
-    if ( QX11Info::isCompositingManagerRunning() == true )
-    {
-        setAttribute( Qt::WA_TranslucentBackground, true );
-    } else
-    {
-        setAttribute( Qt::WA_TranslucentBackground, false );
-    }
-#endif
-
-#ifdef Q_OS_WIN
     setAttribute( Qt::WA_TranslucentBackground, true );
-#endif
 
     // Is needed only for the translated text
     QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Abort, this);
