@@ -1,5 +1,5 @@
 /* vokoscreenNG
- * Copyright (C) 2017-2022 Volker Kohaupt
+ * Copyright (C) 2017-2021 Volker Kohaupt
  *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
@@ -39,17 +39,12 @@ void QvkHalo::init( Ui_formMainWindow *ui_formMainWindow )
     ui = ui_formMainWindow;
 
     createHaloPreviewWidget();
-    vkHaloWindow = new QvkHaloWindow( this );
+    createHaloWindow();
     createSpezialSlider();
     createColorButtons();
     createSpezialCheckBox();
 
     setToolButtonDefaultValues();
-
-    timer = new QTimer( this );
-    timer->setTimerType( Qt::PreciseTimer );
-    timer->setInterval( 40 );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_mytimer() ) );
 }
 
 
@@ -59,6 +54,13 @@ void QvkHalo::createHaloPreviewWidget()
     ui->horizontalLayout_61->insertWidget( 0, vkHaloPreviewWidget );
     vkHaloPreviewWidget->setObjectName( "widgetHaloPreview" );
     vkHaloPreviewWidget->show();
+}
+
+
+void QvkHalo::createHaloWindow()
+{
+    vkHaloWindow = new QvkHaloWindow( this );
+    vkHaloWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar
 }
 
 
@@ -73,7 +75,6 @@ void QvkHalo::createSpezialSlider()
     vkSpezialSliderHole->setValue( 30 ); // This value must be greater than the holeDefault in order to be changed after the connect
     vkSpezialSliderHole->setShowValue( false );
     vkSpezialSliderHole->show();
-    vkSpezialSliderHole->setBigHandel( false);
     connect( vkSpezialSliderHole, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Hole( int ) ) );
     vkSpezialSliderHole->setValue( holeDefault );
 
@@ -86,7 +87,6 @@ void QvkHalo::createSpezialSlider()
     vkSpezialSliderDiameter->setValue( 0 );
     vkSpezialSliderDiameter->setShowValue( false );
     vkSpezialSliderDiameter->show();
-    vkSpezialSliderDiameter->setBigHandel( false );
     connect( vkSpezialSliderDiameter, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Diameter( int ) ) );
     vkSpezialSliderDiameter->setValue( diameterDefault );
 
@@ -99,7 +99,6 @@ void QvkHalo::createSpezialSlider()
     vkSpezialSliderOpacity->setValue( 0 );
     vkSpezialSliderOpacity->setShowValue( false );
     vkSpezialSliderOpacity->show();
-    vkSpezialSliderOpacity->setBigHandel( false );
     connect( vkSpezialSliderOpacity, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Opacity( int ) ) );
     vkSpezialSliderOpacity->setValue( opacityDefault );
 }
@@ -111,6 +110,7 @@ void QvkHalo::slot_valueChanged_SpezialSlider_Diameter( int value )
     vkHaloWindow->setDiameter( value );
 
     vkSpezialSliderHole->setMaximum( vkSpezialSliderDiameter->value()/2  );
+
 }
 
 
@@ -167,37 +167,31 @@ void QvkHalo::slot_haloOnOff( bool value )
 {
     if ( value == true )
     {
-        timer->start();
+        timerID = startTimer( 10, Qt::PreciseTimer );
         vkHaloWindow->show();
     }
 
     if ( value == false )
     {
-        timer->stop();
+        killTimer( timerID );
         vkHaloWindow->hide();
     }
 }
 
 
-void QvkHalo::slot_mytimer()
+/*
+ * Move the halo window and brings the window on the top
+ */
+void QvkHalo::timerEvent( QTimerEvent *event )
 {
+    Q_UNUSED(event);
+
     if ( global::showclickCounter == 0 )
     {
         vkHaloWindow->raise();
     }
 
-    if ( QCursor::pos() != oldPos )
-    {
-        vkHaloWindow->repaint();
-
-        vkHaloWindow->resize( vkHaloWindow->screen->size().width(),
-                              vkHaloWindow->screen->size().height() );
-
-        vkHaloWindow->move( vkHaloWindow->screen->geometry().x(),
-                            vkHaloWindow->screen->geometry().y() );
-
-        oldPos = QCursor::pos();
-    }
+    vkHaloWindow->move( QCursor::pos().x() - vkHaloWindow->diameter/2, QCursor::pos().y() - vkHaloWindow->diameter/2 );
 }
 
 

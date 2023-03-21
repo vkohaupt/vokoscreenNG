@@ -1,5 +1,5 @@
 /* vokoscreenNG
- * Copyright (C) 2017-2022 Volker Kohaupt
+ * Copyright (C) 2017-2021 Volker Kohaupt
  *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
@@ -25,48 +25,13 @@
 #include <QPainter>
 #include <QDebug>
 #include <QBitmap>
-#include <QGuiApplication>
-#include <QPaintEvent>
-
-#ifdef Q_OS_LINUX
-#include <QX11Info>
-#endif
 
 QvkHaloWindow::QvkHaloWindow( QWidget *parent )
 {
-    Q_UNUSED(parent)
-
-    setWindowFlags( Qt::WindowTransparentForInput | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
-
-#ifdef Q_OS_LINUX
-    if ( QX11Info::isCompositingManagerRunning() == true )
-    {
-        setAttribute( Qt::WA_TranslucentBackground, true );
-    } else
-    {
-        setAttribute( Qt::WA_TranslucentBackground, false );
-    }
-#endif
-
-#ifdef Q_OS_WIN
+    setParent( parent );
+    setCursor( Qt::BlankCursor );
     setAttribute( Qt::WA_TranslucentBackground, true );
-#endif
-
-    bool debug = false;
-
-    globalCursorPos = QCursor::pos();
-    if( debug == true ) { qDebug() << "QvkHaloWindow::paintEvent globalCursorPos:" << globalCursorPos; }
-
-    screen = QGuiApplication::screenAt( globalCursorPos );
-    if ( screen ) {
-        if( debug == true ) { qDebug() << "QvkHaloWindow::paintEvent screen:" << screen; }
-    } else {
-        // screenAt found no screen. Without a return the Application is crashed
-        return;
-    }
-
-    screenCursorPos = globalCursorPos - screen->geometry().topLeft(); // screenCursorPos beginnt bei 0 auf dem jeweiliegen Bildschirm
-    if( debug == true ) { qDebug() << "QvkHaloWindow::paintEvent screenCursorPos:" << screenCursorPos; }
+    show();
 }
 
 
@@ -79,95 +44,37 @@ void QvkHaloWindow::paintEvent( QPaintEvent *event )
 {
     Q_UNUSED(event);
 
-    bool debug = false;
+    QPixmap pixmap( 100 * devicePixelRatioF(), 100 * devicePixelRatioF() );
+    pixmap.fill( Qt::transparent );
+    pixmap.setDevicePixelRatio( devicePixelRatioF() );
 
-    globalCursorPos = QCursor::pos();
-    if( debug == true ) { qDebug() << "QvkHaloWindow::paintEvent globalCursorPos:" << globalCursorPos; }
+    QPainter painterPixmap;
+    painterPixmap.begin( &pixmap );
+    painterPixmap.setRenderHints( QPainter::Antialiasing, true );
 
-    screen = QGuiApplication::screenAt( globalCursorPos );
-    if ( screen ) {
-        if( debug == true ) { qDebug() << "QvkHaloWindow::paintEvent screen:" << screen; }
-    } else {
-        // screenAt found no screen. Without a return the Application is crashed
-        return;
-    }
+    qreal penWidth = diameter/2 - holeRadius;
+    QPen pen;
+    pen.setWidthF( penWidth );
+    pen.setColor( color );
+    painterPixmap.setPen( pen );
+    painterPixmap.setOpacity( opacity );
+    painterPixmap.drawEllipse( QPointF( diameter/2, diameter/2 ), holeRadius + penWidth/2, holeRadius + penWidth/2);
 
-    screenCursorPos = globalCursorPos - screen->geometry().topLeft(); // screenCursorPos beginnt bei 0 auf dem jeweiliegen Bildschirm
-    if( debug == true ) { qDebug() << "QvkHaloWindow::paintEvent screenCursorPos:" << screenCursorPos; }
+    painterPixmap.end();
 
-    if( debug == true ) { qDebug() << "----------"; }
+    QPainter painter;
+    painter.begin( this );
+    painter.drawPixmap( QPointF( 0, 0 ), pixmap );
+    painter.end();
 
-#ifdef Q_OS_LINUX
-    if ( QX11Info::isCompositingManagerRunning() == true )
-    {
-#endif
-        QPainter painter;
-        painter.begin( this );
-        painter.setRenderHints( QPainter::Antialiasing, true );
-
-        qreal penWidth = diameter/2 - holeRadius;
-        QPen pen;
-        pen.setWidthF( penWidth );
-        pen.setColor( color );
-        painter.setPen( pen );
-        painter.setOpacity( opacity );
-
-        qreal x1 = screenCursorPos.x();
-        qreal y1 = screenCursorPos.y();
-        qreal width =  holeRadius + penWidth/2;
-        qreal height = holeRadius + penWidth/2;
-        painter.drawEllipse( QPointF( x1, y1 ), width, height );
-
-        painter.end();
-
-#ifdef Q_OS_LINUX
-    }
-#endif
-
-#ifdef Q_OS_LINUX
-    if ( QX11Info::isCompositingManagerRunning() == false )
-    {
-        QPixmap pixmap( screen->size().width() * devicePixelRatioF(),
-                        screen->size().height() * devicePixelRatioF() );
-        pixmap.fill( Qt::transparent );
-        pixmap.setDevicePixelRatio( devicePixelRatioF() );
-
-        QPainter painterPixmap;
-        painterPixmap.begin( &pixmap );
-        painterPixmap.setRenderHints( QPainter::Antialiasing, true );
-
-        qreal penWidth = diameter/2 - holeRadius;
-        QPen pen;
-        pen.setWidthF( penWidth );
-        pen.setColor( color );
-        painterPixmap.setPen( pen );
-        painterPixmap.setOpacity( opacity );
-
-        qreal x1 = screenCursorPos.x();
-        qreal y1 = screenCursorPos.y();
-        qreal width =  holeRadius + penWidth/2;
-        qreal height = holeRadius + penWidth/2;
-        painterPixmap.drawEllipse( QPointF( x1, y1 ), width, height );
-
-        painterPixmap.end();
-
-        QPainter painter;
-        painter.begin( this );
-        painter.drawPixmap( QPointF( 0, 0 ), pixmap );
-        painter.end();
-
-        clearMask();
-        setMask( pixmap.mask() );
-    }
-#endif
-
+    setMask( pixmap.mask() );
 }
 
 
 void QvkHaloWindow::setDiameter( int value )
 {
     diameter = value;
-    repaint();
+    resize( diameter, diameter );
 }
 
 

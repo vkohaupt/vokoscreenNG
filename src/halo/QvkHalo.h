@@ -1,5 +1,5 @@
 /* vokoscreenNG
- * Copyright (C) 2017-2022 Volker Kohaupt
+ * Copyright (C) 2017-2021 Volker Kohaupt
  *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
@@ -24,7 +24,6 @@
 #define QVKHALO_H
 
 #include <QWidget>
-#include <QTimer>
 
 #include "QvkSpezialSlider.h"
 #include "QvkHaloPreviewWidget.h"
@@ -60,14 +59,16 @@ private:
     int diameterDefault = 70;
     int opacityDefault = 60;
     int holeDefault = 5;
-    QTimer *timer;
-    QPoint oldPos = QPoint( -1, -1 );
+    int timerID;
 
+    void createHaloWindow();
     void createHaloPreviewWidget();
     void createSpezialSlider();
     void createColorButtons();
     void createSpezialCheckBox();
+
     void setToolButtonDefaultValues();
+
 
 
 private slots:
@@ -75,10 +76,10 @@ private slots:
     void slot_valueChanged_SpezialSlider_Opacity( int value );
     void slot_valueChanged_SpezialSlider_Hole( int value );
     void slot_haloOnOff( bool value );
-    void slot_mytimer();
 
 
 protected:
+    void timerEvent(QTimerEvent *event) override;
 
 
 };

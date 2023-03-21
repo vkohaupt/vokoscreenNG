@@ -1,5 +1,5 @@
 /* vokoscreenNG
- * Copyright (C) 2017-2022 Volker Kohaupt
+ * Copyright (C) 2017-2021 Volker Kohaupt
  *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
@@ -24,7 +24,6 @@
 #define QVKHALOWINDOW_H
 
 #include <QWidget>
-#include <QScreen>
 
 class QvkHaloWindow: public QWidget
 
@@ -43,10 +42,6 @@ public:
     void setHoleRadius( int value );
     void setOpacity( qreal value );
     void setColor( QColor value );
-
-    QPoint globalCursorPos;
-    QScreen *screen;
-    QPoint screenCursorPos;
 
 
 public slots:
