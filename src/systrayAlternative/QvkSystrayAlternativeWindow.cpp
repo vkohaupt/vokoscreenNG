@@ -3,28 +3,10 @@
 #include <QBitmap>
 #include <QDebug>
 
-#ifdef Q_OS_LINUX
-#include <QX11Info>
-#endif
-
-
 QvkSystrayAlternativeWindow::QvkSystrayAlternativeWindow( QWidget *parent )
 {
     Q_UNUSED(parent)
-
-#ifdef Q_OS_LINUX
-    if ( QX11Info::isCompositingManagerRunning() == true )
-    {
-        setAttribute( Qt::WA_TranslucentBackground, true );
-    } else
-    {
-        setAttribute( Qt::WA_TranslucentBackground, false );
-    }
-#endif
-
-#ifdef Q_OS_WIN
     setAttribute( Qt::WA_TranslucentBackground, true );
-#endif
 }
 
 
