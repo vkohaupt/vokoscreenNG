@@ -28,11 +28,6 @@
 #include <QTimer>
 #include <QBitmap>
 
-#ifdef Q_OS_LINUX
-#include <QX11Info>
-#endif
-
-
 QvkAnimateWindow::QvkAnimateWindow( QWidget *parent,
                                     qreal x,
                                     qreal y,
@@ -44,20 +39,7 @@ QvkAnimateWindow::QvkAnimateWindow( QWidget *parent,
 {
     setParent( parent );
     setAttribute( Qt::WA_DeleteOnClose, true ) ;
-
-#ifdef Q_OS_LINUX
-    if ( QX11Info::isCompositingManagerRunning() == true )
-    {
-        setAttribute( Qt::WA_TranslucentBackground, true );
-    } else
-    {
-        setAttribute( Qt::WA_TranslucentBackground, false );
-    }
-#endif
-
-#ifdef Q_OS_WIN
     setAttribute( Qt::WA_TranslucentBackground, true );
-#endif
 
     resize( valueDiameter + 10, valueDiameter + 10 );
     move( x / devicePixelRatioF() - ( width() / 2 ), y / devicePixelRatioF() - ( height() / 2 ) );
