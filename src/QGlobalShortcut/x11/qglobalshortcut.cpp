@@ -7,6 +7,10 @@
 #include <X11/Xutil.h>
 #include <xcb/xcb.h>
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#else
+    #include <QX11Info>
+#endif
 
 namespace
 {
@@ -115,7 +119,14 @@ QGlobalShortcut::QGlobalShortcut(QObject *parent) :
     QObject(parent),
     sPrivate(new QGlobalShortcutPrivate)
 {
-    sPrivate->m_display = XOpenDisplay( NULL );
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
+    const QNativeInterface::QX11Application *x11Interface = qGuiApp->nativeInterface<QNativeInterface::QX11Application>();
+    sPrivate->m_display = x11Interface->display();
+#else
+    sPrivate->m_display = QX11Info::display();
+#endif
+
     sPrivate->m_win = DefaultRootWindow(sPrivate->m_display);
     sPrivate->enabled = true;
     sPrivate->initHash();

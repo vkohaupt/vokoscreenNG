@@ -4,6 +4,12 @@
 #
 #-------------------------------------------------
 
+equals(QT_MAJOR_VERSION, 6):!lessThan(QT_MINOR_VERSION, 0) {
+   # there is nothing to do
+} else {
+   unix: QT += x11extras
+}
+
 unix: QT += dbus
 QT += core gui widgets multimedia network
 # testlib // Achtung unter Windows öffnet sich damit die Konsole und qDebug() zeigt seine Ausgaben.
@@ -33,19 +39,6 @@ HEADERS += mainwindow.h \
 FORMS +=   formMainWindow.ui
 
 RESOURCES += screencast.qrc
-
-MIN_MAJOR_VERSION=5
-MIN_MINOR_VERSION=15
-msg="Your Qt version $${QT_VERSION} is to old, you need Qt $${MIN_MAJOR_VERSION}.$${MIN_MINOR_VERSION} or newer"
-lessThan(QT_MAJOR_VERSION, $$MIN_MAJOR_VERSION) {
-    message("$${msg}")
-    error("  $${msg}")
-}
-
-lessThan(QT_MINOR_VERSION, $$MIN_MINOR_VERSION) {
-    message("$${msg}")
-    error("  $${msg}")
-}
 
 isEmpty(QMAKE_LRELEASE) {
   # Try invocation path of qmake for lrelease
