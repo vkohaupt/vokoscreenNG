@@ -4,7 +4,6 @@ INCLUDEPATH += $$PWD
 CONFIG += c++11
 
 linux {
-    QT       += x11extras
     CONFIG   += link_pkgconfig
     PKGCONFIG += x11
 }
