@@ -23,6 +23,7 @@
 #ifndef REGIONBUTTONARROW_H
 #define REGIONBUTTONARROW_H
 
+#include <QObject>
 #include <QPainter>
 
 class QvkRegionButtonArrow : public QObject
