@@ -3,7 +3,6 @@
 #include <QStringList>
 #include <QKeySequence>
 #include <QVector>
-#include <QX11Info>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <xcb/xcb.h>
@@ -116,7 +115,7 @@ QGlobalShortcut::QGlobalShortcut(QObject *parent) :
     QObject(parent),
     sPrivate(new QGlobalShortcutPrivate)
 {
-    sPrivate->m_display = QX11Info::display();
+    sPrivate->m_display = XOpenDisplay( NULL );
     sPrivate->m_win = DefaultRootWindow(sPrivate->m_display);
     sPrivate->enabled = true;
     sPrivate->initHash();
