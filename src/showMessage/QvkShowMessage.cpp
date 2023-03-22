@@ -156,8 +156,8 @@ void QvkShowMessage::showMessage( QString text )
     }
 
     // move is global
-    move( myScreen->geometry().x() + myScreen->geometry().width() - width(),
-          myScreen->geometry().y() + myScreen->geometry().height() - height() );
+    move( myScreen->geometry().x() + myScreen->availableSize().width() - frameGeometry().width(),
+          myScreen->geometry().y() + myScreen->availableSize().height() - frameGeometry().height() );
 
     timer->start();
 
