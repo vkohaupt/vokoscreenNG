@@ -47,7 +47,6 @@
 #include <QAbstractItemView>
 
 #ifdef Q_OS_LINUX
-  #include <QX11Info>
   #include <pulse/pulseaudio.h>
   #include "QvkComposite.h"
 #endif
@@ -274,9 +273,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << "Log:" << vklogController->get_logPath();
     qDebug().noquote() << global::nameOutput << "Default Videopath:" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
     qDebug().noquote() << global::nameOutput << "User Videopath:" << vkSettings.getVideoPath();
-#ifdef Q_OS_LINUX
-    qDebug().noquote() << global::nameOutput << "CompositingManager running:" << QX11Info::isCompositingManagerRunning();
-#endif
     qDebug();
 #ifdef Q_OS_WIN
     QByteArray GSTREAMER_1_0_ROOT_X86 = qgetenv( "GSTREAMER_1_0_ROOT_X86" );
