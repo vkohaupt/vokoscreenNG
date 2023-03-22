@@ -39,10 +39,10 @@ void QvkVersion::slot_downloadFinished( QNetworkReply *reply )
        if ( !stringList.empty() )
        {
            QString update;
-           int i = stringList.indexOf( QRegExp( "Version*", Qt::CaseInsensitive, QRegExp::Wildcard ) );
-           if ( i > -1 )
-           {
-              update = stringList.at(i).section( "=", 1, 1 );
+           for ( int x = 0; x < stringList.count(); x++ ) {
+               if ( stringList.at(x).startsWith( "Version" ) == true ) {
+                   update = stringList.at(x).section( "=", 1, 1 );
+               }
            }
            emit signal_newVersionAvailable( update );
        }

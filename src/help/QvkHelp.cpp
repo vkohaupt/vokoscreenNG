@@ -80,7 +80,7 @@ QvkHelp::QvkHelp( Ui_formMainWindow *ui_mainwindow ) : uiHelp(new(Ui::help))
     QList<QToolButton *> listToolButton = ui->centralWidget->findChildren<QToolButton *>();
     for ( int i = 0; i < listToolButton.count(); i++ )
     {
-        if ( listToolButton.at(i)->objectName().contains( QRegExp( "^help_") ) )
+        if ( listToolButton.at(i)->objectName().startsWith( "help_") )
         {
             listToolButton.at(i)->setIcon( iconHelp );
             listToolButton.at(i)->installEventFilter( this );
@@ -117,7 +117,7 @@ void QvkHelp::slot_NetworkAccessibility( QNetworkAccessManager::NetworkAccessibi
     QList<QToolButton *> listToolButton = ui->centralWidget->findChildren<QToolButton *>();
     for ( int i = 0; i < listToolButton.count(); i++ )
     {
-        if ( listToolButton.at(i)->objectName().contains( QRegExp( "^help_") ) )
+        if ( listToolButton.at(i)->objectName().startsWith( "help_") )
         {
             if ( accessible == QNetworkAccessManager::Accessible )
             {
