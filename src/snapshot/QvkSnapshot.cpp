@@ -99,7 +99,7 @@ void QvkSnapshot::slot_newImage()
             qDebug().noquote() << global::nameOutput << "Fullscreen snapshot saved:" << ui->lineEditSnapshotImagePath->text() + "/" + filename;
             if ( ui->checkBoxSnapshotShowBallonInSystray->isChecked() == true ) {
                 QvkShowMessage *vkShowMessage = new QvkShowMessage;
-                vkShowMessage->set_URL( "file://" + ui->lineEditSnapshotImagePath->text() );
+                vkShowMessage->set_URL( "file:///" + ui->lineEditSnapshotImagePath->text() );
                 vkShowMessage->set_Image( image );
                 vkShowMessage->set_StatusIcon( ":/pictures/status/information.png" );
                 vkShowMessage->set_WindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
