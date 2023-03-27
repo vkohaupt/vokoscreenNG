@@ -8,6 +8,7 @@
 # 2. Downloads completed translations from Transifex and writes them to
 # screencast.qrc.
 
+
 # Testen ob lupdate auf dem System vorhanden ist.
 progname=$(which lupdate-qt5)
 if [ $? = 0 ]; then
