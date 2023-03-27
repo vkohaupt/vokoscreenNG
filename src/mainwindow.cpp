@@ -530,7 +530,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // Tab 6 About
     ui->labelSourcecodeUrl->setText( "<a href='https://github.com/vkohaupt/vokoscreenNG'>" + tr( "Sourcecode" ) + "</a>" );
     ui->labelWebSiteUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Homepage" ) + "</a>" );
-    ui->labelLanguageUrl->setText( "<a href='https://www.transifex.com/projects/p/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
+    ui->labelLanguageUrl->setText( "<a href='https://app.transifex.com/vkohaupt/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
     ui->labelDonateUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
 
     // Close GUI
@@ -645,7 +645,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->label_translate->setAutoFillBackground( true );
         ui->label_translate->setPalette( palette );
 
-        QString transifex = "<a href='https://explore.transifex.com/vkohaupt/vokoscreen/'>Transifex</a>";
+        QString transifex = "<a href='https://app.transifex.com/vkohaupt/vokoscreen/'>Transifex</a>";
         ui->label_translate->setText( "<p align=center>For<b> " + localeCountry + "</b> is the language <b> " + localeName.replace( ".qm", "" ) + " </b> not 100% translated.<br>" \
                                       "Please help to translate your language on <b>" + transifex + "</b></p>");
     } else {
