@@ -2096,6 +2096,7 @@ void QvkMainWindow::slot_Start()
                     soundEffect->setLoopCount( QSoundEffect::Infinite );
                     soundEffect->setVolume( 0.0 );
                     soundEffect->play();
+                    qDebug().noquote() << global::nameOutpt << "[WASAPI] Soundeffect run";
                     VK_PipelineList << QString( "wasapisrc loopback=true low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
                 }
                 else
@@ -2163,6 +2164,7 @@ void QvkMainWindow::slot_Start()
                         soundEffect->setLoopCount( QSoundEffect::Infinite );
                         soundEffect->setVolume( 0.0 );
                         soundEffect->play();
+                        qDebug().noquote() << global::nameOutpt << "[WASAPI] Soundeffect run";
                     }
 
                     if ( listDevices.at(x).section( ":::", 1, 1 ) == "Playback" ) {
@@ -2203,7 +2205,7 @@ void QvkMainWindow::slot_Start()
 
     QString newVideoFilename;
 #ifdef Q_OS_WIN
-    if ( vkAudioController->radioButtonWASAPI->isChecked() ) {
+    if ( vkAudioController->radioButtonWASAPI->isChecked() == true ) {
         if ( VK_getSelectedAudioDevice().count() > 1 ) {
             if ( testWASAPI == false ) {
                 newVideoFilename = global::name + "-" + "TEST_WASAPI" + "." + ui->comboBoxFormat->currentText();
@@ -2212,7 +2214,15 @@ void QvkMainWindow::slot_Start()
                 newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
                 VK_PipelineList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
             }
+        } else {
+            newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
+            VK_PipelineList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
         }
+    }
+
+    if ( vkAudioController->radioButtonDirectSound->isChecked() == true ) {
+        newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
+        VK_PipelineList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
     }
 #endif
 
@@ -2315,7 +2325,10 @@ void QvkMainWindow::slot_Stop()
 Cancel:
 
 #ifdef Q_OS_WIN
-   soundEffect->stop();
+   if ( soundEffect->isPlaying() == true ) {
+      soundEffect->stop();
+      qDebug().noquote() << global::nameOutpt << "[WASAPI] Soundeffect stop";
+   }
    vkAudioController->vkWASAPIController->wantCountdown = true;
    if ( testWASAPI == false ) {
        testWASAPI = true;
