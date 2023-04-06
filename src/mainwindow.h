@@ -155,7 +155,6 @@ private:
 
 #ifdef Q_OS_WIN
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller;
-    bool testWASAPI = false;
     QTemporaryDir wasapiTemporaryDir;
 #endif
 
