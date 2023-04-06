@@ -2096,7 +2096,7 @@ void QvkMainWindow::slot_Start()
                     soundEffect->setLoopCount( QSoundEffect::Infinite );
                     soundEffect->setVolume( 0.0 );
                     soundEffect->play();
-                    qDebug().noquote() << global::nameOutpt << "[WASAPI] Soundeffect run";
+                    qDebug().noquote() << global::nameOutput << "[WASAPI] Soundeffect run";
                     VK_PipelineList << QString( "wasapisrc loopback=true low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
                 }
                 else
@@ -2164,7 +2164,7 @@ void QvkMainWindow::slot_Start()
                         soundEffect->setLoopCount( QSoundEffect::Infinite );
                         soundEffect->setVolume( 0.0 );
                         soundEffect->play();
-                        qDebug().noquote() << global::nameOutpt << "[WASAPI] Soundeffect run";
+                        qDebug().noquote() << global::nameOutput << "[WASAPI] Soundeffect run";
                     }
 
                     if ( listDevices.at(x).section( ":::", 1, 1 ) == "Playback" ) {
@@ -2327,7 +2327,7 @@ Cancel:
 #ifdef Q_OS_WIN
    if ( soundEffect->isPlaying() == true ) {
       soundEffect->stop();
-      qDebug().noquote() << global::nameOutpt << "[WASAPI] Soundeffect stop";
+      qDebug().noquote() << global::nameOutput << "[WASAPI] Soundeffect stop";
    }
    vkAudioController->vkWASAPIController->wantCountdown = true;
    if ( testWASAPI == false ) {
