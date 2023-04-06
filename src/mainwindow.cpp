@@ -1078,38 +1078,6 @@ void QvkMainWindow::resizeEvent( QResizeEvent *event )
 }
 
 
-void QvkMainWindow::showEvent( QShowEvent *event )
-{
-    Q_UNUSED(event)
-#ifdef Q_OS_WIN
-    if ( vkAudioController->radioButtonWASAPI->isChecked() ) {
-        if ( VK_getSelectedAudioDevice().count() > 1 ) {
-            if ( global::testWASAPI == false ) {
-                QMetaObject::invokeMethod( this, "slot_afterWindowShown", Qt::ConnectionType::QueuedConnection );
-            }
-        }
-    }
-#endif
-}
-
-
-// here we can under Windows for WASAPI call a first record
-void QvkMainWindow::slot_afterWindowShown() {
-#ifdef Q_OS_WIN
-    update();
-    repaint();
-    if ( vkAudioController->radioButtonWASAPI->isChecked() ) {
-        if ( VK_getSelectedAudioDevice().count() > 1 ) {
-            if ( global::testWASAPI == false ) {
-                ui->pushButtonStart->click();
-                QTimer::singleShot( 2000, Qt::PreciseTimer, ui->pushButtonStop, SLOT( click() ) );
-            }
-        }
-    }
-#endif
-}
-
-
 void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
 {
 #ifdef Q_OS_LINUX
