@@ -144,6 +144,7 @@ void QvkWASAPIController::slot_runTestWASAPI( bool bo )
         }
 
         if ( counter > 1 ) {
+            global::testWASAPI = false;
             wantCountdown = false;
             ui->pushButtonStart->click();
             QTimer::singleShot( 2000, Qt::PreciseTimer, ui->pushButtonStop, SLOT( click() ) );

@@ -1084,7 +1084,7 @@ void QvkMainWindow::showEvent( QShowEvent *event )
 #ifdef Q_OS_WIN
     if ( vkAudioController->radioButtonWASAPI->isChecked() ) {
         if ( VK_getSelectedAudioDevice().count() > 1 ) {
-            if ( testWASAPI == false ) {
+            if ( global::testWASAPI == false ) {
                 QMetaObject::invokeMethod( this, "slot_afterWindowShown", Qt::ConnectionType::QueuedConnection );
             }
         }
@@ -1100,7 +1100,7 @@ void QvkMainWindow::slot_afterWindowShown() {
     repaint();
     if ( vkAudioController->radioButtonWASAPI->isChecked() ) {
         if ( VK_getSelectedAudioDevice().count() > 1 ) {
-            if ( testWASAPI == false ) {
+            if ( global::testWASAPI == false ) {
                 ui->pushButtonStart->click();
                 QTimer::singleShot( 2000, Qt::PreciseTimer, ui->pushButtonStop, SLOT( click() ) );
             }
@@ -2207,7 +2207,7 @@ void QvkMainWindow::slot_Start()
 #ifdef Q_OS_WIN
     if ( vkAudioController->radioButtonWASAPI->isChecked() == true ) {
         if ( VK_getSelectedAudioDevice().count() > 1 ) {
-            if ( testWASAPI == false ) {
+            if ( global::testWASAPI == false ) {
                 newVideoFilename = global::name + "-" + "TEST_WASAPI" + "." + ui->comboBoxFormat->currentText();
                 VK_PipelineList << "filesink location=\"" + wasapiTemporaryDir.path() + "/" + newVideoFilename + "\"";
             } else {
@@ -2330,8 +2330,8 @@ Cancel:
       qDebug().noquote() << global::nameOutput << "[WASAPI] Soundeffect stop";
    }
    vkAudioController->vkWASAPIController->wantCountdown = true;
-   if ( testWASAPI == false ) {
-       testWASAPI = true;
+   if ( global::testWASAPI == false ) {
+       global::testWASAPI = true;
        wasapiTemporaryDir.remove();
        ui->labelInfoRecordTime->setText( "00:00:00" );
        ui->labelVideoSize->setText( "0" );

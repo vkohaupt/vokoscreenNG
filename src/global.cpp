@@ -30,6 +30,7 @@ namespace global
     QString nameOutput = "[" + name + "]";
     int showclickCounter = 0;
     QLineEdit *lineEdit_EOS;
+    bool testWASAPI = false;
 
 #ifdef Q_OS_LINUX
     QString version = "3.6.0";
