@@ -2007,12 +2007,15 @@ QString QvkMainWindow::Pipeline_structured_output( QString pipeline )
 
 void QvkMainWindow::slot_Start()
 {
-    if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  )
-    {
+    if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  ) {
         setWindowState( Qt::WindowMinimized );
     }
 
-    QThread::msleep( static_cast<unsigned long>( sliderSecondWaitBeforeRecording->value()) * 1000 );
+    if ( global::testWASAPI == false ) {
+        QThread::msleep( static_cast<unsigned long>( sliderSecondWaitBeforeRecording->value()) * 1000 );
+        qDebug().noquote() << global::nameOutput << "SecondWaitBeforeRecording:" << sliderSecondWaitBeforeRecording->value();
+        qDebug().noquote();
+    }
 
     QStringList VK_PipelineList;
     VK_PipelineList << VK_getXimagesrc();
