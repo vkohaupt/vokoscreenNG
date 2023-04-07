@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2022 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -1629,7 +1629,7 @@ void QvkMainWindow::VK_set_available_Formats_in_Combox()
 void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
 {
     ui->comboBoxVideoCodec->clear();
-    
+
     QStringList listSuffix = videoFormatsList.filter( suffix );
     QString stringSuffix = listSuffix.at( 0 );
     QStringList listKeys = stringSuffix.split( "," );
@@ -1647,7 +1647,7 @@ void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
 
         QString name = QString( listKeyVideoCodec.at( i ) ).section( ":", 2, 2 );
         GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
-        
+
         if ( !factory )
         {
             qDebug().noquote() << global::nameOutput << "-" << encoder;
@@ -1665,12 +1665,12 @@ void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
                 ui->comboBoxVideoCodec->addItem( name, encoder );
                 gst_object_unref( source );
             }
-            
+
             qDebug().noquote() << message;
             gst_object_unref( factory );
         }
     }
-    
+
     if ( ui->comboBoxVideoCodec->count() == 0 )
     {
         QPixmap pixmap( ":/pictures/status/information.png" );
@@ -2011,11 +2011,21 @@ void QvkMainWindow::slot_Start()
         setWindowState( Qt::WindowMinimized );
     }
 
-    if ( global::testWASAPI == false ) {
+#ifdef Q_OS_WIN
+    if ( global::testWASAPI == true ) {
+        qDebug().noquote() << global::nameOutput << "Ignore SecondWaitBeforeRecording";
+        qDebug().noquote();
+    } else {
         QThread::msleep( static_cast<unsigned long>( sliderSecondWaitBeforeRecording->value()) * 1000 );
-        qDebug().noquote() << global::nameOutput << "SecondWaitBeforeRecording:" << sliderSecondWaitBeforeRecording->value();
+        qDebug().noquote() << global::nameOutput << "Accept SecondWaitBeforeRecording";
         qDebug().noquote();
     }
+#endif
+#ifdef Q_OS_LINUX
+    QThread::msleep( static_cast<unsigned long>( sliderSecondWaitBeforeRecording->value()) * 1000 );
+    qDebug().noquote() << global::nameOutput << "SecondWaitBeforeRecording:" << sliderSecondWaitBeforeRecording->value();
+    qDebug().noquote();
+#endif
 
     QStringList VK_PipelineList;
     VK_PipelineList << VK_getXimagesrc();
@@ -2178,7 +2188,7 @@ void QvkMainWindow::slot_Start()
 #ifdef Q_OS_WIN
     if ( vkAudioController->radioButtonWASAPI->isChecked() == true ) {
         if ( VK_getSelectedAudioDevice().count() > 1 ) {
-            if ( global::testWASAPI == false ) {
+            if ( global::testWASAPI == true ) {
                 newVideoFilename = global::name + "-" + "TEST_WASAPI" + "." + ui->comboBoxFormat->currentText();
                 VK_PipelineList << "filesink location=\"" + wasapiTemporaryDir.path() + "/" + newVideoFilename + "\"";
             } else {
@@ -2301,9 +2311,8 @@ Cancel:
       qDebug().noquote() << global::nameOutput << "[WASAPI] Soundeffect stop";
    }
    vkAudioController->vkWASAPIController->wantCountdown = true;
-   if ( global::testWASAPI == false ) {
-       global::testWASAPI = true;
-       wasapiTemporaryDir.remove();
+   if ( global::testWASAPI == true ) {
+       global::testWASAPI = false;
        ui->labelInfoRecordTime->setText( "00:00:00" );
        ui->labelVideoSize->setText( "0" );
    }
@@ -2407,7 +2416,7 @@ void QvkMainWindow::slot_Folder()
     {
         QPixmap pixmap( ":/pictures/status/information.png" );
         pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-        
+
         QMessageBox msgBox( this );
         msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
         msgBox.setWindowTitle( global::name + " " + global::version );

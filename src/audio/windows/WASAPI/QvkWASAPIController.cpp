@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2022 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -144,7 +144,7 @@ void QvkWASAPIController::slot_runTestWASAPI( bool bo )
         }
 
         if ( counter > 1 ) {
-            global::testWASAPI = false;
+            global::testWASAPI = true;
             wantCountdown = false;
             ui->pushButtonStart->click();
             QTimer::singleShot( 2000, Qt::PreciseTimer, ui->pushButtonStop, SLOT( click() ) );
