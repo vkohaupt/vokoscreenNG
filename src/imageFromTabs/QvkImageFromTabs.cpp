@@ -32,6 +32,8 @@
 #include <QThread>
 #include <QMessageBox>
 #include <QDesktopServices>
+#include <QBitmap>
+#include <QColor>
 
 QvkImageFromTabs::QvkImageFromTabs( QvkMainWindow *parent )
 {
@@ -110,7 +112,29 @@ void QvkImageFromTabs::slot_make_picture_from_tab()
                                               myParent->size().width() + left + right,
                                               myParent->size().height() + top + bottom );
 
-    windowPixmap.save( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) + "/" + "vokoscreenNG-" + QString::number( counterFile++ ) + ".png" );
+    // Begin rounded corner
+    QPixmap pixmap( windowPixmap.width(), windowPixmap.height() );
+    pixmap.fill( Qt::transparent );
+    QPainter painter( &pixmap );
+    painter.setRenderHint( QPainter::Antialiasing, true );
+    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
+    painter.setBrush( Qt::color1 );
+    QRectF rect( 0, 0, windowPixmap.width(), windowPixmap.height() );
+    painter.drawRoundedRect( rect, 8, 8, Qt::AbsoluteSize );
+    painter.end();
+
+    QPixmap pixmapImage( windowPixmap.width(), windowPixmap.height() );
+    pixmapImage.fill( Qt::transparent );
+    QPainter painter_1( &pixmapImage );
+    painter_1.setRenderHint( QPainter::Antialiasing, true );
+    painter_1.setRenderHint( QPainter::SmoothPixmapTransform, true );
+    painter_1.drawPixmap( 0, 0, windowPixmap );
+    painter_1.end();
+
+    pixmapImage.setMask( pixmap.mask() );
+    // End rounded corner
+
+    pixmapImage.save( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) + "/" + "vokoscreenNG-" + QString::number( counterFile++ ) + ".png" );
     myParent->ui->label_save_image_path->setAlignment( Qt::AlignHCenter );
     myParent->ui->label_save_image_path->setText( "Images saved in: " + QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
 }
