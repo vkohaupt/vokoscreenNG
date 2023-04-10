@@ -74,6 +74,7 @@ void QvkHalo::createSpezialSlider()
     vkSpezialSliderHole->setMaximum( 40 );
     vkSpezialSliderHole->setValue( 30 ); // This value must be greater than the holeDefault in order to be changed after the connect
     vkSpezialSliderHole->setShowValue( false );
+    vkSpezialSliderHole->setBigHandel( false );
     vkSpezialSliderHole->show();
     connect( vkSpezialSliderHole, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Hole( int ) ) );
     vkSpezialSliderHole->setValue( holeDefault );
@@ -86,6 +87,7 @@ void QvkHalo::createSpezialSlider()
     vkSpezialSliderDiameter->setMaximum( 90 );
     vkSpezialSliderDiameter->setValue( 0 );
     vkSpezialSliderDiameter->setShowValue( false );
+    vkSpezialSliderDiameter->setBigHandel( false );
     vkSpezialSliderDiameter->show();
     connect( vkSpezialSliderDiameter, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Diameter( int ) ) );
     vkSpezialSliderDiameter->setValue( diameterDefault );
@@ -98,6 +100,7 @@ void QvkHalo::createSpezialSlider()
     vkSpezialSliderOpacity->setMaximum( 100 );
     vkSpezialSliderOpacity->setValue( 0 );
     vkSpezialSliderOpacity->setShowValue( false );
+    vkSpezialSliderOpacity->setBigHandel( false );
     vkSpezialSliderOpacity->show();
     connect( vkSpezialSliderOpacity, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Opacity( int ) ) );
     vkSpezialSliderOpacity->setValue( opacityDefault );
