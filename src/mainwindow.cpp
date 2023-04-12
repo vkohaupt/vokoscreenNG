@@ -45,6 +45,7 @@
 #include <QMessageBox>
 #include <QStyleFactory>
 #include <QAbstractItemView>
+#include <QComboBox>
 
 #ifdef Q_OS_LINUX
   #include <pulse/pulseaudio.h>
@@ -94,7 +95,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderFrames->show();
 
     sliderX264 = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_26->insertWidget( 2, sliderX264 );
+    ui->horizontalLayout_26->insertWidget( 1, sliderX264 );
     sliderX264->setObjectName( "sliderX264" );
     sliderX264->setTracking( true );
     sliderX264->setMinimum( 0 );
@@ -121,7 +122,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderVp8->show();
 
     sliderLimitOfFreeDiskSpace = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_27->insertWidget( 3, sliderLimitOfFreeDiskSpace );
+    ui->horizontalLayout_27->insertWidget( 2, sliderLimitOfFreeDiskSpace );
     sliderLimitOfFreeDiskSpace->setObjectName( "sliderLimitOfFreeDiskSpace" );
     sliderLimitOfFreeDiskSpace->setMinimum( 100 );
     sliderLimitOfFreeDiskSpace->setMaximum( 999 );
@@ -453,7 +454,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
 
-    connect( ui->comboBoxVideoCodec, SIGNAL( currentIndexChanged( QString ) ), this, SLOT( slot_videoCodecChanged( QString ) ) );
+    connect( ui->comboBoxVideoCodec, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_videoCodecChanged( QString ) ) );
     connect( ui->toolButtonx264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_x264Reset() ) );
     connect( ui->toolButtonOpenh264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_openh264Reset() ) );
     connect( ui->toolButtonVP8Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_vp8Reset() ) );
