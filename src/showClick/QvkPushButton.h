@@ -50,7 +50,7 @@ private:
 
 protected:
     void paintEvent( QPaintEvent *event ) override;
-    void enterEvent( QEvent *event ) override;
+    void enterEvent( QEvent *event ); // Qt6 want no override. Please test again.
     void leaveEvent( QEvent *event ) override;
     void mousePressEvent( QMouseEvent *event ) override;
     void mouseReleaseEvent( QMouseEvent *event ) override;

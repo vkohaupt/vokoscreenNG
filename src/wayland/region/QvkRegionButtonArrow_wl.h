@@ -24,6 +24,7 @@
 #define REGIONBUTTONARROW_WL_H
 
 #include <QPainter>
+#include <QObject>
 
 class QvkRegionButtonArrow_wl : public QObject
 { 
