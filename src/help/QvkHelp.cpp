@@ -51,13 +51,6 @@ QvkHelp::QvkHelp( Ui_formMainWindow *ui_mainwindow ) : uiHelp(new(Ui::help))
 
     connect(uiHelp->buttonBox, SIGNAL( clicked( QAbstractButton * ) ), this, SLOT( close() ) );
 
-    // Qt5 Ermittelt ob das Netzwerk verfügbar ist. Momentan werden damit nur die Onlinehilfe Buttons aktiviert und deaktiviert.
-    // In Qt6 muß das andersweitig umgesetzt werden.
-/*
-    slot_NetworkAccessibility( networkAccessManager.networkAccessible() );
-    connect( &networkAccessManager, SIGNAL( networkAccessibleChanged( QNetworkAccessManager::NetworkAccessibility ) ),
-                                    SLOT( slot_NetworkAccessibility( QNetworkAccessManager::NetworkAccessibility ) ) );
-*/
     resize( 800, 600 );
     setWindowTitle( QString( tr( "Help") ) );
 
@@ -114,39 +107,6 @@ void QvkHelp::slot_parse_locale( QStringList list )
     }
 }
 
-// Qt5 Ermittelt ob das Netzwerk verfügbar ist. Momentan werden damit nur die Onlinehilfe Buttons aktiviert und deaktiviert.
-// In Qt6 muß das andersweitig umgesetzt werden.
-/*
-void QvkHelp::slot_NetworkAccessibility( QNetworkAccessManager::NetworkAccessibility accessible )
-{
-    QList<QToolButton *> listToolButton = ui->centralWidget->findChildren<QToolButton *>();
-    for ( int i = 0; i < listToolButton.count(); i++ )
-    {
-        if ( listToolButton.at(i)->objectName().startsWith( "help_") )
-        {
-            if ( accessible == QNetworkAccessManager::Accessible )
-            {
-               listToolButton.at(i)->setEnabled( true );
-            }
-
-            if ( accessible == QNetworkAccessManager::NotAccessible )
-            {
-               listToolButton.at(i)->setEnabled( false );
-            }
-        }
-    }
-
-    if ( accessible == QNetworkAccessManager::Accessible )
-    {
-        ui->comboBoxOnlineHelp->setEnabled( true );
-    }
-
-    if ( accessible == QNetworkAccessManager::NotAccessible )
-    {
-        ui->comboBoxOnlineHelp->setEnabled( false );
-    }
-}
-*/
 
 bool QvkHelp::eventFilter(QObject *object, QEvent *event)
 {
@@ -271,8 +231,14 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
     QFile file( tempPathFileName );
     if( !file.open( QIODevice::ReadOnly ) )
     {
-        qDebug().noquote() << global::nameOutput << "QvkHelp::slot_parseHTML" << tempPathFileName  << file.errorString();
-        //QMessageBox::information( nullptr, global::name + " " + global::version, "QvkHelp::slot_parseHTML\n" + tempPathFileName + "\n" + file.errorString() );
+        qDebug().noquote() << global::nameOutput << "QvkHelp::slot_parseHTML" << tempPathFileName  << file.errorString() << "The online help needs an internet connection";
+        QMessageBox msgBox;
+        msgBox.setWindowTitle( global::name + " " + global::version );
+        msgBox.setWindowIcon( QIcon( ":/pictures/logo/logo.png" ) );
+        msgBox.setIconPixmap( QPixmap( ":/pictures/status/information.png" ).scaledToHeight( 50, Qt::SmoothTransformation ) );
+        msgBox.setText("\nThe online help needs an internet connection");
+        msgBox.exec();
+
         return;
     }
 
