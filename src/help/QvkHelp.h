@@ -66,14 +66,19 @@ private:
     QString vk_helpPath;
 
     QTemporaryDir temporaryDirLocal;
-    QNetworkAccessManager networkAccessManager;
+
+    // Qt5 Ermittelt ob das Netzwerk verfügbar ist. Momentan werden damit nur die Onlinehilfe Buttons aktiviert und deaktiviert.
+    // In Qt6 muß das andersweitig umgesetzt werden.
+//    QNetworkAccessManager networkAccessManager;
 
 
 private slots:
     void slot_parseHTML( QString tempPathFileName );
     void slot_showHelp( QString tempPathFileName );
 
-    void slot_NetworkAccessibility( QNetworkAccessManager::NetworkAccessibility accessible );
+    // Qt5 Ermittelt ob das Netzwerk verfügbar ist. Momentan werden damit nur die Onlinehilfe Buttons aktiviert und deaktiviert.
+    // In Qt6 muß das andersweitig umgesetzt werden.
+//    void slot_NetworkAccessibility( QNetworkAccessManager::NetworkAccessibility accessible );
 
     void slot_parse_locale( QStringList list );
 

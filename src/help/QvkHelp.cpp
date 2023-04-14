@@ -51,10 +51,13 @@ QvkHelp::QvkHelp( Ui_formMainWindow *ui_mainwindow ) : uiHelp(new(Ui::help))
 
     connect(uiHelp->buttonBox, SIGNAL( clicked( QAbstractButton * ) ), this, SLOT( close() ) );
 
+    // Qt5 Ermittelt ob das Netzwerk verfügbar ist. Momentan werden damit nur die Onlinehilfe Buttons aktiviert und deaktiviert.
+    // In Qt6 muß das andersweitig umgesetzt werden.
+/*
     slot_NetworkAccessibility( networkAccessManager.networkAccessible() );
     connect( &networkAccessManager, SIGNAL( networkAccessibleChanged( QNetworkAccessManager::NetworkAccessibility ) ),
                                     SLOT( slot_NetworkAccessibility( QNetworkAccessManager::NetworkAccessibility ) ) );
-
+*/
     resize( 800, 600 );
     setWindowTitle( QString( tr( "Help") ) );
 
@@ -111,7 +114,9 @@ void QvkHelp::slot_parse_locale( QStringList list )
     }
 }
 
-
+// Qt5 Ermittelt ob das Netzwerk verfügbar ist. Momentan werden damit nur die Onlinehilfe Buttons aktiviert und deaktiviert.
+// In Qt6 muß das andersweitig umgesetzt werden.
+/*
 void QvkHelp::slot_NetworkAccessibility( QNetworkAccessManager::NetworkAccessibility accessible )
 {
     QList<QToolButton *> listToolButton = ui->centralWidget->findChildren<QToolButton *>();
@@ -141,7 +146,7 @@ void QvkHelp::slot_NetworkAccessibility( QNetworkAccessManager::NetworkAccessibi
         ui->comboBoxOnlineHelp->setEnabled( false );
     }
 }
-
+*/
 
 bool QvkHelp::eventFilter(QObject *object, QEvent *event)
 {
