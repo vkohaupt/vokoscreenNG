@@ -129,7 +129,7 @@ include(countdown/countdown.pri)
 # camera
 equals(QT_MAJOR_VERSION, 6) {
    # Qt6
-   # there is nothing to do
+   include(camera-qt6/camera.pri)
 } else {
    # Qt5
    unix: QT += x11extras
@@ -167,7 +167,7 @@ include(globalMouse/globalMouse.pri)
 # player
 equals(QT_MAJOR_VERSION, 6) {
    # Qt6
-   # there is nothing to do
+   include(player-qt6/player.pri)
 } else {
    # Qt5
    include(player/player.pri)
