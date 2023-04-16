@@ -31,7 +31,13 @@
 #include "QvkHelp.h"
 #include "QvkSystray.h"
 #include "QvkMagnifierController.h"
-#include "QvkPlayer.h"
+#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
+    // Qt5
+    #include "QvkPlayer.h"
+#else
+    // Qt6
+#endif
+
 #include "QvkLimitDiskFreeSpace.h"
 #include "QvkSpezialSlider.h"
 #include "QvkSystrayAlternative.h"

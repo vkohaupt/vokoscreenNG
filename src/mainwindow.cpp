@@ -221,7 +221,12 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     Q_UNUSED(vkMagnifierController);
     ui->label_magnifier_on_screen->setText( "" );
 
+#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
+    // Qt5
     vkPlayer = new QvkPlayer( this, ui );
+#else
+    // Qt6
+#endif
 
     QvkHelp *vkHelp = new QvkHelp( ui );
 
@@ -291,17 +296,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 
     vk_setCornerWidget( ui->tabWidgetScreencast );
-
-// Linux player deactivated to manny errrors
-/*
-#ifdef Q_OS_LINUX
-    vkPlayer = new QvkPlayer( ui );
-#endif
-#ifdef Q_OS_WIN
-    vkPlayer = new QvkPlayer( this, ui );
-#endif
-*/
-
 
     // Sidebar
     connect( ui->toolButtonScreencast, &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(0); } );
@@ -542,7 +536,12 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkLicenses,             SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkSystrayAlternative,   SLOT( close() ) );
+#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
+    // Qt5
     connect( this,      SIGNAL( signal_close() ),       vkPlayer,               SLOT( close() ) );
+#else
+    // Qt6
+#endif
     connect( this,      SIGNAL( signal_close() ),       vkRegionChoise,         SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkSystray,              SLOT( slot_closeSystray() ) );
 
@@ -587,7 +586,12 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSettings.readAreaScreencast( vkRegionChoise );
     vkSettings.readCamera( vkCameraController );
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
+#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
+    // Qt5
     vkSettings.readPlayerPathOpenFile( vkPlayer );
+#else
+    // Qt6
+#endif
     vkSettings.readHaloColor( vkHalo );
     vkSettings.readShowclickColor( vkShowClick );
 
@@ -612,8 +616,13 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->pushButtonStopAppsrc->setVisible( false );
         if ( arguments.count() > 1  ) {
             qDebug().noquote() << global::nameOutput << "started from file:" << arguments.at(1);
+#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
+    // Qt5
             vkPlayer->setMediaFile( arguments.at(1) );
             vkPlayer->slot_play();
+#else
+    // Qt6
+#endif
             ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
         }
     }
@@ -829,7 +838,12 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
                                        vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
         vkSettings.saveCamera( vkCameraController->cameraWindow->geometry().x(), vkCameraController->cameraWindow->geometry().y() );
         vkSettings.saveSystrayAlternative( vkSystrayAlternative->vkSystrayAlternativeWindow->x(), vkSystrayAlternative->vkSystrayAlternativeWindow->y() );
+#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
+    // Qt5
         vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile );
+#else
+    // Qt6
+#endif
         vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
         vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget->getColor() );
 
@@ -2397,8 +2411,13 @@ void QvkMainWindow::slot_Play()
     string.append( ui->lineEditVideoPath->text() );
     string.append( "/" );
     string.append( videoFileList.at( 0 ) );
+#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
+    // Qt5
     vkPlayer->setMediaFile( string );
     vkPlayer->slot_play();
+#else
+    // Qt6
+#endif
 }
 
 
