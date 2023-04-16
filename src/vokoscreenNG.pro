@@ -126,8 +126,15 @@ include(winInfo/winInfo.pri)
 # countdown
 include(countdown/countdown.pri)
 
-# webcam
-include(camera/camera.pri)
+# camera
+equals(QT_MAJOR_VERSION, 6) {
+   # Qt6
+   # there is nothing to do
+} else {
+   # Qt5
+   unix: QT += x11extras
+   include(camera/camera.pri)
+}
 
 # audio linux
 unix:include(audio/linux/audioLinux.pri)
@@ -158,7 +165,13 @@ include(QvkGlobalShortcut/QvkGlobalShortcut.pri)
 include(globalMouse/globalMouse.pri)
 
 # player
-include(player/player.pri)
+equals(QT_MAJOR_VERSION, 6) {
+   # Qt6
+   # there is nothing to do
+} else {
+   # Qt5
+   include(player/player.pri)
+}
 
 # screenManager
 include(screenManager/screenManager.pri)
