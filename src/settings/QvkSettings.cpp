@@ -639,6 +639,8 @@ void QvkSettings::readSystrayAlternative( QvkSystrayAlternative *vkSystrayAltern
     settings.endGroup();
 }
 
+#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
+    // Qt5
 void QvkSettings::savePlayerPathOpenFile( QString pathFile )
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
@@ -657,6 +659,9 @@ void QvkSettings::readPlayerPathOpenFile( QvkPlayer *vkplayer )
     vkplayer->pathOpenFile = settings.value( "Path", "" ).toString();
     settings.endGroup();
 }
+#else
+    // Qt6
+#endif
 
 void QvkSettings::saveHaloColor( QColor value )
 {
