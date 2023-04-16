@@ -24,7 +24,6 @@
 #include "global.h"
 
 #include <QDebug>
-#include <QAudioDeviceInfo>
 #include <QCameraInfo>
 
 /*
