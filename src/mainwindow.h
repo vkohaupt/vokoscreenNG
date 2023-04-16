@@ -138,7 +138,12 @@ private:
 
     void vk_setCornerWidget( QTabWidget *tabWidget );
 
+#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
+    // Qt5
     QvkPlayer *vkPlayer;
+#else
+    // Qt6
+#endif
     QvkHalo *vkHalo;
 
     QvkCameraController *vkCameraController;
