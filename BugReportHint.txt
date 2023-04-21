@@ -1,0 +1,7 @@
+Thank you for your reference. The bug report is not complete and therefore cannot be edited.
+If a full bug report is not received within three weeks, this thread will be closed or deleted.
+
+Please refer to this template.
+https://github.com/vkohaupt/vokoscreenNG/blob/3.0/.github/ISSUE_TEMPLATE/bug_report.md
+
+Many thanks for your help
