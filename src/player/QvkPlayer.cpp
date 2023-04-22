@@ -119,10 +119,16 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
             case QMediaPlayer::ResourceError:
             {
                qDebug().noquote() << global::nameOutput + " " + "[Player]" + " " + "To play this video a codec is needed. "
-                                                                         "Please install a codec pack.";
+                                                                         "Please install a codec pack. "
+                                                                         "Note: For a recording, encoders are required, you can find them in a tab for "
+                                                                         "the recording. These cannot be used for the player. The player requires decoders.";
+
                QMessageBox msgBox( this );
-               msgBox.setText( "To play this video a codec is needed.\n"
-                               "Please install a codec pack." );
+               msgBox.setText( "To play this video a codec is needed. "
+                               "Please install a codec pack.\n"
+                               "\n"
+                               "Note: For a recording, encoders are required, you can find them in a tab for "
+                               "the recording. These cannot be used for the player. The player requires decoders.");
                msgBox.setWindowTitle( global::name + " " + global::version );
                msgBox.setIcon( QMessageBox::Information );
                msgBox.exec();

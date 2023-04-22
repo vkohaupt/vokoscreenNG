@@ -1581,7 +1581,8 @@ void QvkMainWindow::VK_Supported_Formats_And_Codecs()
 
 void QvkMainWindow::VK_Check_is_Format_available()
 {
-    qDebug().noquote() << global::nameOutput << "Record symbols: + available, - not available";
+    qDebug().noquote() << global::nameOutput << "This codec and formats are only for record, not for the player";
+    qDebug().noquote() << global::nameOutput << "Symbols: + available, - not available";
     QStringList tempList;
     for ( int x = 0; x < videoFormatsList.count(); x++ )
     {
