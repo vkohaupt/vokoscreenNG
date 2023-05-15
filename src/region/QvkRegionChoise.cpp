@@ -59,8 +59,15 @@ QvkRegionChoise::QvkRegionChoise( Ui_formMainWindow *ui_formMainWindow ):handleP
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
 
-    // QTooltip have no keyboard input focus, we must set the window active, see QvkRegionChoise::mouseReleaseEvent()
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
+    QString currentDesktop = qgetenv( "XDG_CURRENT_DESKTOP" );
+    if( currentDesktop.toLower() == QString( "Mate" ).toLower() ) {
+        setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+        qDebug().noquote() << global::nameOutput << "[Area] WindowFlags without Qt::ToolTip";
+    } else {
+        // QTooltip have no keyboard input focus, we must set the window active, see QvkRegionChoise::mouseReleaseEvent()
+        setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
+        qDebug().noquote() << global::nameOutput << "[Area] WindowFlags with Qt::ToolTip";
+    }
     setAttribute( Qt::WA_TranslucentBackground, true );
     setMouseTracking( true );
     setFrameColor( QString( "#3DAEE9" ) );
