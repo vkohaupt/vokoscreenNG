@@ -23,6 +23,8 @@
 #include "QvkDownloader.h"
 #include "global.h"
 
+#include <QSettings>
+
 QvkDownloader::QvkDownloader( QString pathLocal , QObject *parent ) : QObject(parent)
 {
     connect( &networkAccessManager, SIGNAL( finished( QNetworkReply* ) ), SLOT( slot_downloadFinished( QNetworkReply* ) ) );
@@ -33,8 +35,17 @@ QvkDownloader::QvkDownloader( QString pathLocal , QObject *parent ) : QObject(pa
 void QvkDownloader::doDownload( const QUrl &url )
 {
     QNetworkRequest request;
-    request.setSslConfiguration(QSslConfiguration::defaultConfiguration());
+    request.setSslConfiguration( QSslConfiguration::defaultConfiguration() );
     request.setUrl( url );
+
+    qint64 installTime = QDateTime::currentDateTime().currentMSecsSinceEpoch();
+    QSettings installSetting( QSettings::IniFormat, QSettings::UserScope, global::name, QString( "InstallTime" ), Q_NULLPTR );
+    installSetting.beginGroup( global::name );
+    QString time = installSetting.value( "time", installTime ).toString();
+    QString version = installSetting.value( "version", global::version ).toString();
+    QByteArray headerValue = time.append( "_" ).append( version ).toLatin1();
+
+    request.setRawHeader( "User-Agent", headerValue );
     QNetworkReply *reply = networkAccessManager.get( request );
     listDownloads.append( reply );
 }

@@ -27,6 +27,7 @@
 #include <QFileInfo>
 #include <QMouseEvent>
 #include <QColor>
+#include <QDateTime>
 
 QvkSettings::QvkSettings()
 {
@@ -35,6 +36,16 @@ QvkSettings::QvkSettings()
     settings.beginGroup( global::name );
     settings.setValue( "Version", global::version );
     settings.endGroup();
+
+    qint64 currentDateTime = QDateTime::currentDateTime().currentMSecsSinceEpoch();
+    QString installTime = QString::number( currentDateTime ).toLatin1();
+    QSettings installSetting( QSettings::IniFormat, QSettings::UserScope, global::name, QString( "InstallTime" ), Q_NULLPTR );
+    installSetting.beginGroup( global::name );
+    if ( installSetting.value( "version", "0.0.0" ).toString() != global::version ) {
+        installSetting.setValue( "time", installTime );
+        installSetting.setValue( "version", global::version );
+    }
+    installSetting.endGroup();
 }
 
 QvkSettings::~QvkSettings(){}
