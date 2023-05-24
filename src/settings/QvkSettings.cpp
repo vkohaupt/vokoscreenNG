@@ -37,12 +37,12 @@ QvkSettings::QvkSettings()
     settings.setValue( "Version", global::version );
     settings.endGroup();
 
-    qint64 currentDateTime = QDateTime::currentDateTime().currentMSecsSinceEpoch();
-    QString installTime = QString::number( currentDateTime ).toLatin1();
+    QDateTime time;
+    time.setMSecsSinceEpoch( QDateTime::currentDateTime().currentMSecsSinceEpoch() );
     QSettings installSetting( QSettings::IniFormat, QSettings::UserScope, global::name, QString( "InstallTime" ), Q_NULLPTR );
     installSetting.beginGroup( global::name );
     if ( installSetting.value( "version", "0.0.0" ).toString() != global::version ) {
-        installSetting.setValue( "time", installTime );
+        installSetting.setValue( "time", time.toString( "yyyy.MM.dd-hh:mm:ss:zzz" ) );
         installSetting.setValue( "version", global::version );
     }
     installSetting.endGroup();

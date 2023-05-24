@@ -38,12 +38,14 @@ void QvkDownloader::doDownload( const QUrl &url )
     request.setSslConfiguration( QSslConfiguration::defaultConfiguration() );
     request.setUrl( url );
 
-    qint64 installTime = QDateTime::currentDateTime().currentMSecsSinceEpoch();
+    QDateTime time;
+    time.setMSecsSinceEpoch( QDateTime::currentDateTime().currentMSecsSinceEpoch() );
     QSettings installSetting( QSettings::IniFormat, QSettings::UserScope, global::name, QString( "InstallTime" ), Q_NULLPTR );
     installSetting.beginGroup( global::name );
-    QString time = installSetting.value( "time", installTime ).toString();
+    QString timeStringMSecsSinceEpoch = installSetting.value( "time", time.toString( "yyyy.MM.dd-hh:mm:ss:zzz" ) ).toString();
     QString version = installSetting.value( "version", global::version ).toString();
-    QByteArray headerValue = time.append( "_" ).append( version ).toLatin1();
+    QByteArray headerValue = timeStringMSecsSinceEpoch.append( "_" ).append( version ).toLatin1();
+    installSetting.endGroup();
 
     request.setRawHeader( "User-Agent", headerValue );
     QNetworkReply *reply = networkAccessManager.get( request );
