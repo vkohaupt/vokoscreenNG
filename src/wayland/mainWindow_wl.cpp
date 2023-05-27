@@ -307,6 +307,7 @@ void QvkMainWindow_wl::slot_stop()
 
     if ( ui->radioButtonScreencastArea->isChecked() ) {
        vkRegionChoise_wl->recordMode( false );
+       vkRegionChoise_wl->repaint();
     }
 }
 
