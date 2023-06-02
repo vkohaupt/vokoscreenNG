@@ -353,7 +353,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -3127,7 +3127,7 @@
               <property name="verticalSpacing">
                <number>9</number>
               </property>
-              <item row="0" column="3">
+              <item row="0" column="3" alignment="Qt::AlignTop">
                <widget class="QToolButton" name="help_camera_camera">
                 <property name="toolTip">
                  <string>Help</string>
@@ -6885,7 +6885,7 @@ p, li { white-space: pre-wrap; }
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
