@@ -27,7 +27,27 @@
 #include <QMouseEvent>
 #include <QBitmap>
 
+QvkCameraWindow::QvkCameraWindow()
+{
+    setWindowFlags( windowFlags() | Qt::WindowStaysOnTopHint );
+    resize( 500, 400 );
+}
 
+
+QvkCameraWindow::~QvkCameraWindow()
+{
+}
+
+
+void QvkCameraWindow::closeEvent( QCloseEvent *event )
+{
+    Q_UNUSED(event);
+    emit signal_cameraWindow_close( false );
+}
+
+
+// Old
+/*
 QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, cameraSettingsDialog *settingsDialog )
 {
     ui_formMainWindow = ui_surface;
@@ -323,3 +343,4 @@ void QvkCameraWindow::mouseMoveEvent( QMouseEvent *event )
         move( QCursor::pos().x() - mouseLocal_X, QCursor::pos().y() - mouseLocal_Y );
     }
 }
+*/

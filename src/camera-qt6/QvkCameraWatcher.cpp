@@ -24,11 +24,104 @@
 #include "global.h"
 
 #include <QDebug>
-#include <QCameraInfo>
+#include <QCameraDevice>
+
+// Hint:
+// QvkWatcherPlug monitoring only new or removed cameras
+
+
+QvkCameraWatcher::QvkCameraWatcher()
+{
+}
+
+
+QvkCameraWatcher::~QvkCameraWatcher()
+{
+}
+
+
+QvkCameraWatcher::QvkCameraWatcher( Ui_formMainWindow *ui_mainwindow )
+{
+    ui = ui_mainwindow;
+
+//    connect( &m_devices, &QMediaDevices::videoInputsChanged, this, &QvkCameraWatcher::slot_update );
 
 /*
- * QvkWatcherPlug monitoring only new or removed Audiodevices.
- */
+    timer = new QTimer( this );
+    timer->setTimerType( Qt::PreciseTimer );
+    timer->setInterval( 3000 );
+    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_update() ) );
+    timer->start();
+*/
+}
+
+void QvkCameraWatcher::slot_update()
+{
+    qDebug() << "-------------------------------------------------";
+    const QList<QCameraDevice> availableCameras = QMediaDevices::videoInputs();
+    for (const QCameraDevice &cameraDevice : availableCameras) {
+        qDebug().noquote() << global::nameOutput << "[Camera] slot_update Added:" << cameraDevice.description() << "Device:" << cameraDevice.id();
+    }
+
+/*
+    const QList<QCameraDevice> camerasList = QMediaDevices::videoInputs();
+    for ( int i = 0; i < camerasList.count(); i++ ) {
+        qDebug().noquote() << global::nameOutput << camerasList.count() << "[Camera] slot_update Added:" << camerasList.at(i).description() << "Device:" << camerasList.at(i).id();
+    }
+
+
+    // Add new Device
+    if ( camerasList.count() > ui->comboBoxCamera->count() )
+    {
+        for ( int i = 0; i < camerasList.count(); i++ )
+        {
+            if ( ui->comboBoxCamera->findData( (QVariant)camerasList.at(i).id() ) == -1 )
+            {
+                if ( ( camerasList.at(i).description() > "" ) and ( !camerasList.at(i).description().contains( "@device:pnp" ) ) )
+                {
+                    qDebug().noquote() << global::nameOutput << "[Camera] Added:" << camerasList.at(i).description() << "Device:" << camerasList.at(i).id();
+                    emit signal_addedCamera( camerasList.at(i).description(), camerasList.at(i).id() );
+                }
+            }
+        }
+        return;
+    }
+return;
+qDebug() << "111111111111111111111111111111111111111111111111111111111";
+    QStringList cameraStringList;
+    for ( int i = 0; i < camerasList.count(); i++ )
+    {
+        cameraStringList << camerasList.at(i).id();
+    }
+qDebug() << "222222222222222222222222222222222222222222222222222222222";
+    int cameraCountCombobox = ui->comboBoxCamera->count();
+
+    // Remove device
+    if ( camerasList.count() < cameraCountCombobox )
+    {
+        for ( int i = 1; i <= cameraCountCombobox; i++ )
+        {
+            if ( cameraStringList.contains( QString( ui->comboBoxCamera->itemData(i-1).toString() ) ) == false )
+            {
+                qDebug().noquote() << global::nameOutput << "[Camera] Removed:" << ui->comboBoxCamera->itemText(i-1) << "ID:" << ui->comboBoxCamera->itemData(i-1).toString();
+                emit signal_removedCamera( ui->comboBoxCamera->itemData(i-1).toByteArray() );
+                break;
+            }
+        }
+    }
+    */
+}
+
+/*
+#include "QvkCameraWatcher.h"
+#include "global.h"
+
+#include <QDebug>
+#include <QCameraInfo>
+
+
+// QvkWatcherPlug monitoring only new or removed cameras
+
 
 QvkCameraWatcher::QvkCameraWatcher()
 {
@@ -95,3 +188,4 @@ void QvkCameraWatcher::slot_update()
         }
     }
 }
+*/

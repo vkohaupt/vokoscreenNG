@@ -20,90 +20,58 @@
  * --End_License--
  */
 
-#ifndef QVKCAMERAWATCHER_H
-#define QVKCAMERAWATCHER_H
+#ifndef QVKCAMERASINGLE_H
+#define QVKCAMERASINGLE_H
 
 #include "ui_formMainWindow.h"
+#include "QvkSpezialSlider.h"
+#include "QvkCameraWindow.h"
 
 #include <QObject>
-#include <QTimer>
-#include <QMediaDevices>
+#include <QCamera>
+#include <QCameraDevice>
+#include <QVideoSink>
+#include <QMediaCaptureSession>
 
-class QvkCameraWatcher: public QObject
+
+class QvkCameraSingle : public QObject
 {
     Q_OBJECT
 
-
 public:
-    QvkCameraWatcher();
-    QvkCameraWatcher( Ui_formMainWindow *ui_mainwindow );
-    virtual ~QvkCameraWatcher();
-
-    QMediaDevices m_devices;
+    QvkCameraSingle( Ui_formMainWindow *ui_surface,  QCameraDevice m_cameraDevice );
+    virtual ~QvkCameraSingle();
+    QRadioButton *radioButtonCamera;
 
 
 public slots:
-    void slot_update();
-
-private:
-    Ui_formMainWindow *ui;
-    QTimer *timer;
-    int counter;
 
 
 private slots:
+    void slot_checkBoxCameraOnOff( bool value );
+    void slot_videoFrameChanged(QVideoFrame videoFrame );
+    void slot_radioButtonCameraTextClicked( bool value );
 
+
+private:
+    Ui_formMainWindow *ui;
+    QCameraDevice cameraDevice;
+    QCamera *camera;
+    QvkCameraWindow *vkCameraWindow;
+    QMediaCaptureSession *captureSession;
+    QVideoSink *videoSink;
+    QCheckBox *checkBoxCamera;
+
+    QCheckBox *checkBoxCameraMirrorHorizontal;
+    QCheckBox *checkBoxCameraMirrorVertical;
 
 
 protected:
 
 
 signals:
-    void signal_addedCamera( QString, QByteArray );
-    void signal_removedCamera( QByteArray );
+
 
 };
 
 #endif
-
-/*
-#include "ui_formMainWindow.h"
-
-#include <QObject>
-#include <QTimer>
-
-class QvkCameraWatcher: public QObject
-{
-    Q_OBJECT
-
-
-public:
-    QvkCameraWatcher();
-    QvkCameraWatcher( Ui_formMainWindow *ui_mainwindow );
-    virtual ~QvkCameraWatcher();
-
-
-public slots:
-
-
-private:
-    Ui_formMainWindow *ui;
-    QTimer *timer;
-    int counter;
-
-
-private slots:
-    void slot_update();
-
-
-protected:
-
-
-signals:
-    void signal_addedCamera( QString, QString );
-    void signal_removedCamera( QString );
-
-};
-
-#endif
-*/

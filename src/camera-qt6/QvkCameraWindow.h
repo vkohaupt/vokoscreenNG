@@ -24,53 +24,53 @@
 #define QVKCAMERAWINDOW_H
 
 #include "ui_formMainWindow.h"
-#include "ui_camerasettingsdialog.h"
+//#include "ui_camerasettingsdialog.h"
 
-#include "camerasettingsdialog.h"
+//#include "camerasettingsdialog.h"
 #include "QvkSpezialSlider.h"
 
 #include <QWidget>
 #include <QPaintEvent>
 #include <QPainter>
 
-class QvkCameraWindow : public QWidget
+class QvkCameraWindow : public QLabel
 {
     Q_OBJECT
 
 public:
-    QvkCameraWindow( Ui_formMainWindow *ui_surface, cameraSettingsDialog *settingsDialog);
+    QvkCameraWindow();
     virtual ~QvkCameraWindow();
-    Ui_cameraSettingsDialog *uiCameraSettingsDialog;
-    cameraSettingsDialog *vkCameraSettingsDialog;
-    QString error;
-    void setNewImage( QImage _image );
+//    Ui_cameraSettingsDialog *uiCameraSettingsDialog;
+//    cameraSettingsDialog *vkCameraSettingsDialog;
+//    QString error;
+//    void setNewImage( QImage _image );
 
 
 private:
    Ui_formMainWindow *ui_formMainWindow;
-   bool mousePressed = false;
-   int mouseLocal_X;
-   int mouseLocal_Y;
-   QImage image;
-   QRect rectCloseButton;
+//   bool mousePressed = false;
+//   int mouseLocal_X;
+//   int mouseLocal_Y;
+//   QImage image;
+//   QRect rectCloseButton;
 
 
 public slots:
 
 
 private slots:
-   void slot_switchToFullscreen();
+//   void slot_switchToFullscreen();
 
 
 protected:
     void closeEvent(QCloseEvent *event);
-    void mouseDoubleClickEvent( QMouseEvent *event );
-    void keyPressEvent( QKeyEvent *event );
-    void mousePressEvent(QMouseEvent *event);
-    void resizeEvent(QResizeEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
-    void paintEvent( QPaintEvent *event );
+//    void mouseDoubleClickEvent( QMouseEvent *event );
+//    void keyPressEvent( QKeyEvent *event );
+//    void mousePressEvent(QMouseEvent *event);
+//    void resizeEvent(QResizeEvent *event);
+//    void mouseReleaseEvent(QMouseEvent *event);
+//    void mouseMoveEvent(QMouseEvent *event);
+//    void paintEvent( QPaintEvent *event );
 
 signals:
     void signal_cameraWindow_close( bool );

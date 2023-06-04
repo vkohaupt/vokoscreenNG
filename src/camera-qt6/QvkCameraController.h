@@ -24,6 +24,79 @@
 #define QVKCAMERACONTROLLER_H
 
 #include "ui_formMainWindow.h"
+#include "QvkSpezialSlider.h"
+#include "QvkCameraSingle.h"
+
+#include <QObject>
+#include <QComboBox>
+#include <QLabel>
+#include <QMouseEvent>
+#include <QEvent>
+#include <QCamera>
+#include <QMediaDevices>
+#include <QMediaCaptureSession>
+#include <QVideoSink>
+#include <QLabel>
+#include <QRadioButton>
+
+class QvkCameraController : public QObject
+{
+    Q_OBJECT
+
+public:
+    QvkCameraController( Ui_formMainWindow *ui_surface );
+    virtual ~QvkCameraController();
+
+
+public slots:
+
+
+private slots:
+//    void slot_radioButtonCameraTextClicked( bool value );
+//    void slot_checkBoxCameraOnOff( bool value );
+//    void slot_videoFrameChanged(QVideoFrame videoFrame);
+
+private:
+    Ui_formMainWindow *ui;
+//    QCamera *camera = nullptr;
+//    QCamera *camera;
+//    QVideoWidget *videoWidget;
+//    QMediaCaptureSession *captureSession;
+//    QMediaDevices m_devices;
+//    QVideoSink *videoSink;
+//    QLabel *videolabel;
+//    QComboBox *comboBoxCameraFormat;
+
+    QvkCameraSingle *vkCameraSingle;
+    QvkSpezialSlider *sliderCameraWindowSize;
+    QvkSpezialSlider *sliderCameraWindowZoom;
+    QButtonGroup *buttonGroup = new QButtonGroup;
+    QLabel *labelCurrentCamera = new QLabel;
+
+//    void addCamera( QString description, QByteArray device );
+//    void removedCamera( QString device );
+//    QString getComboBoxFormat();
+
+
+
+protected:
+//    void mousePressEvent( QMouseEvent *event );
+
+
+signals:
+//    void signal_addedCamera( QString, QString );
+//    void signal_removedCamera( QString );
+
+
+};
+
+#endif
+
+
+
+
+/*
+#include "ui_formMainWindow.h"
 
 #include "QvkCameraWatcher.h"
 #include "QvkCameraWindow.h"
@@ -81,3 +154,4 @@ signals:
 };
 
 #endif
+*/

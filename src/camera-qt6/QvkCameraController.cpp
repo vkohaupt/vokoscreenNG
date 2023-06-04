@@ -21,6 +21,501 @@
  */
 
 #include "QvkCameraController.h"
+#include "global.h"
+
+#include <QDebug>
+#include <QMediaDevices>
+#include <QCameraDevice>
+#include <QCameraFormat>
+#include <QRadioButton>
+#include <QList>
+#include <QVideoFrame>
+#include <QImage>
+
+QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
+{
+    ui = ui_surface;
+
+    sliderCameraWindowSize = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_45->insertWidget( 0, sliderCameraWindowSize );
+    sliderCameraWindowSize->setObjectName( "sliderCameraWindowSize" );
+    sliderCameraWindowSize->setMinimum( 0 );
+    sliderCameraWindowSize->setMaximum( 1 );
+    sliderCameraWindowSize->setValue( 0 );
+    sliderCameraWindowSize->show();
+    sliderCameraWindowSize->setShowValue( false );
+    sliderCameraWindowSize->setBigHandel( true );
+    sliderCameraWindowSize->setEnabled( true );
+
+    sliderCameraWindowZoom = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_zoom->insertWidget( 0, sliderCameraWindowZoom );
+    sliderCameraWindowZoom->setObjectName( "sliderCameraWindowZoom" );
+    sliderCameraWindowZoom->setMinimum( 0 );
+    sliderCameraWindowZoom->setMaximum( 1 );
+    sliderCameraWindowZoom->setValue( 0 );
+    sliderCameraWindowZoom->show();
+    sliderCameraWindowZoom->setShowValue( true );
+    sliderCameraWindowZoom->setEnabled( true );
+
+    ui->checkBoxCameraOnOff->deleteLater();
+    ui->comboBoxCamera->deleteLater();
+    ui->comboBoxCameraResolution->deleteLater();
+
+    // Create a vertical layout
+    QVBoxLayout *layoutAllCameras = new QVBoxLayout;
+    ui->horizontalLayout_63->addLayout( layoutAllCameras );
+    layoutAllCameras->setObjectName( "layoutAllCameras" );
+
+    // Add Devices
+    const QList<QCameraDevice> camerasInfoList = QMediaDevices::videoInputs();
+    for ( int i = 0; i < camerasInfoList.count(); i++ ) {
+        vkCameraSingle = new QvkCameraSingle( ui, camerasInfoList.at(i) );
+        buttonGroup->addButton( vkCameraSingle->radioButtonCamera );
+    }
+
+    // Am Ende ein spaceritem einfügen
+    QSpacerItem *spacerItem = new QSpacerItem( 100,100, QSizePolicy::Expanding, QSizePolicy::Expanding );
+    layoutAllCameras->addItem( spacerItem );
+
+    // Dann ein Label für den Kameratext hinzufügen
+    labelCurrentCamera->setObjectName( "labelCurrentCamera" );
+    labelCurrentCamera->setAlignment( Qt::AlignHCenter );
+    QFont font;
+    font.setBold( true );
+    labelCurrentCamera->setFont( font );
+    layoutAllCameras->addWidget( labelCurrentCamera );
+
+}
+
+
+QvkCameraController::~QvkCameraController()
+{
+}
+
+/*
+void QvkCameraController::slot_radioButtonCameraTextClicked( bool value )
+{
+    QString cameraIndex;
+    if ( value == true ) {
+        QList<QRadioButton *> listRadioButtons = ui->centralWidget->findChildren<QRadioButton *>();
+        for ( int i = 0; i < listRadioButtons.count(); i++ ) {
+            if ( ( listRadioButtons.at(i)->isChecked() == true ) and ( listRadioButtons.at(i)->objectName().contains( "radioButtonCamera-" ) ) ) {
+                cameraIndex = listRadioButtons.at(i)->objectName().last(1);
+            }
+        }
+
+        QList<QCheckBox *> listCheckBox = ui->centralWidget->findChildren<QCheckBox *>();
+        for ( int i = 0; i < listCheckBox.count(); i++ ) {
+            if ( listCheckBox.at(i)->objectName() == ( "checkBoxCamera-" + cameraIndex ) ) {
+                labelCurrentCamera->setText( listCheckBox.at(i)->text() );
+            }
+        }
+    }
+}
+*/
+// Begin zweiter Versuch
+/*
+QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
+{
+    ui_formMainWindow = ui_surface;
+
+    sliderCameraWindowSize = new QvkSpezialSlider( Qt::Horizontal );
+    ui_formMainWindow->horizontalLayout_45->insertWidget( 0, sliderCameraWindowSize );
+    sliderCameraWindowSize->setObjectName( "sliderCameraWindowSize" );
+    sliderCameraWindowSize->setMinimum( 0 );
+    sliderCameraWindowSize->setMaximum( 1 );
+    sliderCameraWindowSize->setValue( 0 );
+    sliderCameraWindowSize->show();
+    sliderCameraWindowSize->setShowValue( false );
+    sliderCameraWindowSize->setBigHandel( true );
+    sliderCameraWindowSize->setEnabled( true );
+
+    sliderCameraWindowZoom = new QvkSpezialSlider( Qt::Horizontal );
+    ui_formMainWindow->horizontalLayout_zoom->insertWidget( 0, sliderCameraWindowZoom );
+    sliderCameraWindowZoom->setObjectName( "sliderCameraWindowZoom" );
+    sliderCameraWindowZoom->setMinimum( 0 );
+    sliderCameraWindowZoom->setMaximum( 1 );
+    sliderCameraWindowZoom->setValue( 0 );
+    sliderCameraWindowZoom->show();
+    sliderCameraWindowZoom->setShowValue( true );
+    sliderCameraWindowZoom->setEnabled( true );
+
+    ui_formMainWindow->checkBoxCameraOnOff->deleteLater();
+    ui_formMainWindow->comboBoxCamera->deleteLater();
+    ui_formMainWindow->comboBoxCameraResolution->deleteLater();
+
+    // Create a vertical layout
+    QVBoxLayout *layoutAllCameras = new QVBoxLayout;
+    ui_formMainWindow->horizontalLayout_63->addLayout( layoutAllCameras );
+
+    // Add Devices
+    const QList<QCameraDevice> camerasInfoList = QMediaDevices::videoInputs();
+    if ( camerasInfoList.count() > ui_formMainWindow->comboBoxCamera->count() )
+    {
+        for ( int i = 0; i < camerasInfoList.count(); i++ )
+        {
+            if ( ui_formMainWindow->comboBoxCamera->findData( camerasInfoList.at(i).id() ) == -1 )
+            {
+                if ( ( camerasInfoList.at(i).description() > "" ) and ( !camerasInfoList.at(i).description().contains( "@device:pnp" ) ) )
+                {
+                    qDebug().noquote() << global::nameOutput << "[Camera] Added:" << camerasInfoList.at(i).description() << "Device:" << camerasInfoList.at(i).id();
+                    QHBoxLayout *layoutCamera = new QHBoxLayout;
+                    layoutCamera->setObjectName( "layoutCamera-" + QString::number( i ) );
+                    layoutAllCameras->addLayout( layoutCamera );
+
+                    QRadioButton *radioButtonCamera = new QRadioButton;
+                    layoutCamera->addWidget( radioButtonCamera );
+                    radioButtonCamera->setObjectName( "radioButtonCamera-" + QString::number( i ) );
+                    buttonGroup->addButton( radioButtonCamera );
+                    connect( radioButtonCamera, SIGNAL( clicked( bool ) ), this, SLOT( slot_radioButtonCameraTextClicked( bool ) ) );
+
+                    QCheckBox *checkBoxCamera = new QCheckBox;
+                    layoutCamera->addWidget( checkBoxCamera  );
+                    checkBoxCamera->setText( camerasInfoList.at(i).description() );
+                    checkBoxCamera->setAccessibleName( camerasInfoList.at(i).id() );
+                    checkBoxCamera->setObjectName( "checkBoxCamera-" + QString::number( i ) );
+                    connect( checkBoxCamera, SIGNAL( toggled( bool ) ), this, SLOT( slot_checkBoxCameraOnOff( bool ) ) );
+
+                    QComboBox *comboBoxFormatCamera = new QComboBox;
+                    layoutCamera->addWidget( comboBoxFormatCamera  );
+                    comboBoxFormatCamera->setObjectName( "comboBoxFormatCamera-"  + QString::number( i ) );
+                    const QList<QCameraDevice> cameraDeviceList = QMediaDevices::videoInputs();
+                    const QList<QCameraFormat> cameraFormatList = cameraDeviceList.at( i ).videoFormats();
+                    for ( int x = 0; x < cameraFormatList.count(); x++ ) {
+                        QString format = QVideoFrameFormat::pixelFormatToString( cameraFormatList.at(x).pixelFormat() );
+                        if ( comboBoxFormatCamera->findText( format ) == -1 ) {
+                            comboBoxFormatCamera->addItem( format );
+                        }
+                    }
+
+                    QComboBox *comboBoxResolutionCamera = new QComboBox;
+                    layoutCamera->addWidget( comboBoxResolutionCamera );
+                    comboBoxResolutionCamera->setObjectName( "comboBoxResolutionCamera-" + QString::number( i ) );
+                    for ( int x = 0; x < cameraFormatList.count(); x++ ) {
+                        // Beispiel: Ist YUYV == YUYV dann füge die Auflösung hinzu
+                        if ( comboBoxFormatCamera->currentText() == QVideoFrameFormat::pixelFormatToString( cameraFormatList.at(x).pixelFormat() ) ) {
+                            comboBoxResolutionCamera->addItem( QString::number( cameraFormatList.at(x).resolution().width() ).
+                                                              append( "x" ).
+                                                              append( QString::number( cameraFormatList.at(x).resolution().height() ) ) );
+                        }
+                    }
+
+                    layoutCamera->setStretchFactor( checkBoxCamera, 2 );
+                }
+            }
+        }
+        // Am Ende ein spaceritem einfügen
+        QSpacerItem *spacerItem = new QSpacerItem( 100,100, QSizePolicy::Expanding, QSizePolicy::Expanding );
+        layoutAllCameras->addItem( spacerItem );
+        // Dann ein Label für den Kameratext hinzufügen
+        labelCurrentCamera->setText( "" );
+        labelCurrentCamera->setAlignment( Qt::AlignHCenter );
+        QFont font;
+        font.setBold( true );
+        labelCurrentCamera->setFont( font );
+        layoutAllCameras->addWidget( labelCurrentCamera );
+        return;
+    }
+}
+
+
+QvkCameraController::~QvkCameraController()
+{
+}
+
+
+void QvkCameraController::slot_radioButtonCameraTextClicked( bool value )
+{
+    QString cameraIndex;
+    if ( value == true ) {
+        QList<QRadioButton *> listRadioButtons = ui_formMainWindow->centralWidget->findChildren<QRadioButton *>();
+        for ( int i = 0; i < listRadioButtons.count(); i++ ) {
+            if ( ( listRadioButtons.at(i)->isChecked() == true ) and ( listRadioButtons.at(i)->objectName().contains( "radioButtonCamera-" ) ) ) {
+                cameraIndex = listRadioButtons.at(i)->objectName().last(1);
+            }
+        }
+
+        QList<QCheckBox *> listCheckBox = ui_formMainWindow->centralWidget->findChildren<QCheckBox *>();
+        for ( int i = 0; i < listCheckBox.count(); i++ ) {
+            if ( listCheckBox.at(i)->objectName() == ( "checkBoxCamera-" + cameraIndex ) ) {
+                labelCurrentCamera->setText( listCheckBox.at(i)->text() );
+            }
+        }
+    }
+}
+
+
+void QvkCameraController::slot_checkBoxCameraOnOff( bool value )
+{
+    // Starten
+    QList<QCheckBox *> listCheckBox = ui_formMainWindow->centralWidget->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ ) {
+        if ( ( listCheckBox.at(i)->hasFocus() == true ) and ( value == true ) ) {
+            QString cameraCurrentGUIDevice = listCheckBox.at(i)->accessibleName();
+            // Nun die Camera mit dem device suchen und starten
+            const QList<QCameraDevice> cameraDeviceList = QMediaDevices::videoInputs();
+            for ( int i = 0; i < cameraDeviceList.count(); i++ ) {
+                if ( QString( cameraDeviceList.at(i).id() ) == cameraCurrentGUIDevice ) {
+                    camera = new QCamera( cameraDeviceList.at(i) );
+
+                    const QList<QCameraFormat> cameraFormatList = cameraDeviceList.at(i).videoFormats();
+                    camera->setCameraFormat( cameraFormatList.at(0) );
+                    qDebug() << "---------------------------------------" << cameraFormatList.count() << cameraFormatList.at(0).pixelFormat() ;
+
+                    videoWidget = new QVideoWidget;
+                    videoWidget->show();
+                    captureSession = new QMediaCaptureSession;
+                    captureSession->setCamera( camera );
+                    captureSession->setVideoOutput( videoWidget );
+                    videoSink = new QVideoSink;
+                    videoSink = videoWidget->videoSink();
+                    connect( videoSink, SIGNAL( videoFrameChanged( QVideoFrame ) ), this, SLOT( slot_videoFrameChanged( QVideoFrame ) ) );
+
+
+
+//                    videoSink = new QVideoSink;
+//                    connect( videoSink, SIGNAL( videoFrameChanged( QVideoFrame ) ), this, SLOT( slot_videoFrameChanged( QVideoFrame ) ) );
+//                    videolabel = new QLabel;
+//                    videolabel->show();
+//                    captureSession = new QMediaCaptureSession;
+//                    captureSession->setCamera( camera );
+//                    captureSession->setVideoOutput( videoSink );
+
+
+                    camera->start();
+                }
+            }
+        }
+    }
+
+    // Stoppen
+    for ( int i = 0; i < listCheckBox.count(); i++ ) {
+        if ( ( listCheckBox.at(i)->hasFocus() == true ) and ( value == false ) ) {
+            QString cameraCurrentGUIDevice = listCheckBox.at(i)->accessibleName();
+            // Nun die Camera mit dem device suchen und stoppen
+            const QList<QCameraDevice> cameraDeviceList = QMediaDevices::videoInputs();
+            for ( int i = 0; i < cameraDeviceList.count(); i++ ) {
+                if ( QString( cameraDeviceList.at(i).id() ) == cameraCurrentGUIDevice ) {
+                    camera->stop();
+                    camera->deleteLater();
+                    videoWidget->deleteLater();
+//                    videolabel->deleteLater();
+                    captureSession->deleteLater();
+                    videoSink->deleteLater();
+                }
+            }
+        }
+    }
+}
+
+
+void QvkCameraController::slot_videoFrameChanged( QVideoFrame videoFrame )
+{
+    qDebug() << "--------------";
+
+    QImage image = videoFrame.toImage();
+    image.convertTo( QImage::Format_RGBA64_Premultiplied );
+    QPixmap pixmap;
+    pixmap.convertFromImage( image );
+    videolabel->setPixmap( pixmap );
+}
+*/
+
+/* Begin erster Versuch
+QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
+{
+    ui_formMainWindow = ui_surface;
+
+    sliderCameraWindowSize = new QvkSpezialSlider( Qt::Horizontal );
+    ui_formMainWindow->horizontalLayout_45->insertWidget( 0, sliderCameraWindowSize );
+    sliderCameraWindowSize->setObjectName( "sliderCameraWindowSize" );
+    sliderCameraWindowSize->setMinimum( 0 );
+    sliderCameraWindowSize->setMaximum( 1 );
+    sliderCameraWindowSize->setValue( 0 );
+    sliderCameraWindowSize->show();
+    sliderCameraWindowSize->setShowValue( false );
+    sliderCameraWindowSize->setBigHandel( true );
+    sliderCameraWindowSize->setEnabled( true );
+
+    sliderCameraWindowZoom = new QvkSpezialSlider( Qt::Horizontal );
+    ui_formMainWindow->horizontalLayout_zoom->insertWidget( 0, sliderCameraWindowZoom );
+    sliderCameraWindowZoom->setObjectName( "sliderCameraWindowZoom" );
+    sliderCameraWindowZoom->setMinimum( 0 );
+    sliderCameraWindowZoom->setMaximum( 1 );
+    sliderCameraWindowZoom->setValue( 0 );
+    sliderCameraWindowZoom->show();
+    sliderCameraWindowZoom->setShowValue( true );
+    sliderCameraWindowZoom->setEnabled( true );
+
+    comboBoxCameraFormat = new QComboBox;
+    ui_formMainWindow->horizontalLayout_63->insertWidget( 2, comboBoxCameraFormat );
+    comboBoxCameraFormat->setEnabled( false );
+    comboBoxCameraFormat->setSizeAdjustPolicy( QComboBox::AdjustToContents );
+
+//    connect( &m_devices, &QMediaDevices::videoInputsChanged, this, &QvkCameraController::slot_update );
+    connect( &m_devices, SIGNAL( videoInputsChanged() ), this, SLOT( slot_update() ) );
+    connect( ui_formMainWindow->comboBoxCamera, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_fillComboBoxFormat( int ) ) );
+    connect( comboBoxCameraFormat,              SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_fillComboBoxResolution( int ) ) );
+    slot_update();
+
+//    camera = new QCamera(cameraDeviceList.at(0) );
+}
+
+
+QvkCameraController::~QvkCameraController()
+{
+}
+
+
+// Hier wird das Pixelformat JPEG oder YUYV in die Combobox übertragen
+void QvkCameraController::slot_fillComboBoxFormat( int index )
+{
+    comboBoxCameraFormat->clear();
+
+    if ( index == -1 ) {
+        return;
+    }
+
+    const QList<QCameraDevice> cameraDeviceList = QMediaDevices::videoInputs();
+    const QList<QCameraFormat> cameraFormatList = cameraDeviceList.at( index ).videoFormats();
+
+    for ( int x = 0; x < cameraFormatList.count(); x++ ) {
+        QString format = QVideoFrameFormat::pixelFormatToString( cameraFormatList.at(x).pixelFormat() );
+        if ( comboBoxCameraFormat->findText( format ) == -1 ) {
+            comboBoxCameraFormat->addItem( format ); // from liefert weitere Daten wie "Format" und "Auflösung"
+        }
+    }
+}
+
+// Ob das "get" so funktioniert weiß ich noch nicht
+QString QvkCameraController::getComboBoxFormat()
+{
+    return "Format_" + comboBoxCameraFormat->currentText();
+}
+
+
+// Index ist gleich Index von comboBoxFormat
+void QvkCameraController::slot_fillComboBoxResolution( int index )
+{
+    ui_formMainWindow->comboBoxCameraResolution->clear();
+
+    if ( index == -1 ) {
+        return;
+    }
+
+    const QList<QCameraDevice> cameraDeviceList = QMediaDevices::videoInputs();
+    const QList<QCameraFormat> cameraFormatList = cameraDeviceList.at( ui_formMainWindow->comboBoxCamera->currentIndex() ).videoFormats();
+
+    for ( int x = 0; x < cameraFormatList.count(); x++ ) {
+        // Beispiel: Ist YUYV == YUYV dann füge die Auflösung hinzu
+        if ( comboBoxCameraFormat->currentText() == QVideoFrameFormat::pixelFormatToString( cameraFormatList.at(x).pixelFormat() ) ) {
+            ui_formMainWindow->comboBoxCameraResolution->addItem( QString::number( cameraFormatList.at(x).resolution().width() ).append( "x" ).append( QString::number(cameraFormatList.at(x).resolution().height() ) ) );
+        }
+    }
+
+}
+
+
+void QvkCameraController::slot_update()
+{
+    const QList<QCameraDevice> camerasInfoList = QMediaDevices::videoInputs();
+
+    // Add new Device
+    if ( camerasInfoList.count() > ui_formMainWindow->comboBoxCamera->count() )
+    {
+        for ( int i = 0; i < camerasInfoList.count(); i++ )
+        {
+            if ( ui_formMainWindow->comboBoxCamera->findData( camerasInfoList.at(i).id() ) == -1 )
+            {
+                if ( ( camerasInfoList.at(i).description() > "" ) and ( !camerasInfoList.at(i).description().contains( "@device:pnp" ) ) )
+                {
+                    qDebug().noquote() << global::nameOutput << "[Camera] Added:" << camerasInfoList.at(i).description() << "Device:" << camerasInfoList.at(i).id();
+                    addCamera( camerasInfoList.at(i).description(), camerasInfoList.at(i).id() );
+                }
+            }
+        }
+        return;
+    }
+
+    QStringList cameraInfoStringList;
+    for ( int i = 0; i < camerasInfoList.count(); i++ )
+    {
+        cameraInfoStringList << camerasInfoList.at(i).id();
+    }
+
+    int cameraCountCombobox = ui_formMainWindow->comboBoxCamera->count();
+
+    // Remove device
+    if ( camerasInfoList.count() < cameraCountCombobox )
+    {
+        for ( int i = 1; i <= cameraCountCombobox; i++ )
+        {
+            if ( cameraInfoStringList.contains( QString( ui_formMainWindow->comboBoxCamera->itemData(i-1).toString() ) ) == false )
+            {
+                qDebug().noquote() << global::nameOutput << "[Camera] Removed:" << ui_formMainWindow->comboBoxCamera->itemText(i-1) << "Device:" << ui_formMainWindow->comboBoxCamera->itemData(i-1).toString();
+                removedCamera( ui_formMainWindow->comboBoxCamera->itemData(i-1).toString() );
+                break;
+            }
+        }
+    }
+}
+
+
+void QvkCameraController::addCamera( QString description, QByteArray device )
+{
+    ui_formMainWindow->checkBoxCameraOnOff->setEnabled( true );
+    ui_formMainWindow->comboBoxCamera->setEnabled( true );
+    ui_formMainWindow->comboBoxCameraResolution->setEnabled( true );
+    ui_formMainWindow->comboBoxCamera->addItem( description, (QVariant)device );
+    ui_formMainWindow->checkBoxCameraGray->setEnabled( true );
+    ui_formMainWindow->checkBoxCameraInvert->setEnabled( true );
+    ui_formMainWindow->checkBoxCameraMirrorHorizontal->setEnabled( true );
+    ui_formMainWindow->checkBoxCameraMirrorVertical->setEnabled( true );
+    ui_formMainWindow->checkBoxCameraMono->setEnabled( true );
+
+    sliderCameraWindowSize->setEnabled( true );
+    sliderCameraWindowZoom->setEnabled( true );
+
+    comboBoxCameraFormat->setEnabled( true );
+
+    ui_formMainWindow->checkBoxCameraWindowFrame->setEnabled( true );
+}
+
+
+void QvkCameraController::removedCamera( QString device )
+{
+    if ( ( ui_formMainWindow->checkBoxCameraOnOff->isChecked() == true ) and ( ui_formMainWindow->comboBoxCamera->currentData().toString() == device ) )
+    {
+//        cameraWindow->close();
+    }
+
+    int x = ui_formMainWindow->comboBoxCamera->findData( device.toLatin1() );
+    ui_formMainWindow->comboBoxCamera->removeItem( x );
+
+    if ( ui_formMainWindow->comboBoxCamera->count() == 0 )
+    {
+        ui_formMainWindow->checkBoxCameraOnOff->setEnabled( false );
+        ui_formMainWindow->comboBoxCamera->setEnabled( false );
+        ui_formMainWindow->comboBoxCameraResolution->clear();
+        ui_formMainWindow->comboBoxCameraResolution->setEnabled( false );
+        ui_formMainWindow->checkBoxCameraGray->setEnabled( false );
+        ui_formMainWindow->checkBoxCameraInvert->setEnabled( false );
+        ui_formMainWindow->checkBoxCameraMirrorHorizontal->setEnabled( false );
+        ui_formMainWindow->checkBoxCameraMirrorVertical->setEnabled( false );
+        ui_formMainWindow->checkBoxCameraMono->setEnabled( false );
+
+        sliderCameraWindowSize->setEnabled( false );
+        sliderCameraWindowZoom->setEnabled( false );
+
+        comboBoxCameraFormat->setEnabled( false );
+
+        ui_formMainWindow->checkBoxCameraWindowFrame->setEnabled( false );
+    }
+}
+*/ // End erster versuch
+
+/*
+#include "QvkCameraController.h"
 #include "QvkCameraResolution.h"
 #include "global.h"
 #include "camerasettingsdialog.h"
@@ -530,3 +1025,4 @@ void QvkCameraController::slot_error( QCamera::Error error )
     }
     }
 }
+*/
