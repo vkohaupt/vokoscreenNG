@@ -69,12 +69,12 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
 
     getAllDevices();
 
-    cameraWindow = new QvkCameraWindow( ui_surface, vkCameraSettingsDialog );
-    connect( cameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_formMainWindow->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
-    cameraWindow->setWindowTitle( QString( tr( "Camera") ) + " " + global::version );
-    cameraWindow->setAttribute( Qt::WA_TranslucentBackground, true );
+    vkCameraWindow = new QvkCameraWindow( ui_surface, vkCameraSettingsDialog );
+    connect( vkCameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), ui_formMainWindow->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
+    vkCameraWindow->setWindowTitle( QString( tr( "Camera") ) + " " + global::version );
+    vkCameraWindow->setAttribute( Qt::WA_TranslucentBackground, true );
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
-    cameraWindow->setWindowIcon( icon );
+    vkCameraWindow->setWindowIcon( icon );
 
     QvkCameraWatcher *cameraWatcher = new QvkCameraWatcher( ui_formMainWindow );
 
@@ -107,7 +107,7 @@ void QvkCameraController::slot_resolutionChanged( int index )
     if ( ui_formMainWindow->checkBoxCameraOnOff->checkState() == Qt::Checked )
     {
 
-        if ( cameraWindow->isFullScreen() == false )
+        if ( vkCameraWindow->isFullScreen() == false )
         {
             ui_formMainWindow->checkBoxCameraOnOff->click();
             ui_formMainWindow->checkBoxCameraOnOff->click();
@@ -118,7 +118,7 @@ void QvkCameraController::slot_resolutionChanged( int index )
                 vkCameraSettingsDialog->show();
             }
         } else{
-            cameraWindow->showNormal();
+            vkCameraWindow->showNormal();
             ui_formMainWindow->checkBoxCameraOnOff->click();
             ui_formMainWindow->checkBoxCameraOnOff->click();
 
@@ -127,7 +127,7 @@ void QvkCameraController::slot_resolutionChanged( int index )
                 vkCameraSettingsDialog->close();
                 vkCameraSettingsDialog->show();
             }
-            cameraWindow->showFullScreen();
+            vkCameraWindow->showFullScreen();
         }
     }
 }
@@ -152,7 +152,7 @@ void QvkCameraController::getAllDevices()
 
 void QvkCameraController::slot_frameOnOff( bool value )
 {
-    if ( cameraWindow->isFullScreen() == false )
+    if ( vkCameraWindow->isFullScreen() == false )
     {
         Qt::WindowFlags flags;
 
@@ -174,19 +174,19 @@ void QvkCameraController::slot_frameOnOff( bool value )
         if ( value == true )
         {
             flags = Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
-            cameraWindow->setWindowFlags( flags );
+            vkCameraWindow->setWindowFlags( flags );
         }
 
         if ( value == false )
         {
             flags = Qt::WindowStaysOnTopHint;
-            cameraWindow->setWindowFlags( flags );
+            vkCameraWindow->setWindowFlags( flags );
         }
 #endif
 
         if ( ui_formMainWindow->checkBoxCameraOnOff->isChecked() == true )
         {
-            cameraWindow->show();
+            vkCameraWindow->show();
         }
     }
 }
@@ -247,7 +247,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
     // Rectangel
     if ( ui_formMainWindow->toolButton_camera_view_rectangle->isChecked() == true )
     {
-        if ( cameraWindow->isFullScreen() == false )
+        if ( vkCameraWindow->isFullScreen() == false )
         {
             qreal width = image.width();
             qreal height = image.height();
@@ -255,11 +255,11 @@ void QvkCameraController::slot_setNewImage( QImage image )
             int w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
             int h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
             image = image.scaled( w, h, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-            cameraWindow->setFixedSize( image.width(), image.height() );
-            cameraWindow->setNewImage( image );
+            vkCameraWindow->setFixedSize( image.width(), image.height() );
+            vkCameraWindow->setNewImage( image );
             return;
         } else {
-            cameraWindow->setNewImage( image );
+            vkCameraWindow->setNewImage( image );
             return;
         }
     }
@@ -269,7 +269,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
     // Ellipse
     if ( ui_formMainWindow->toolButton_camera_view_ellipse->isChecked() == true )
     {
-        if ( cameraWindow->isFullScreen() == false ) {
+        if ( vkCameraWindow->isFullScreen() == false ) {
             qreal width = image.width();
             qreal height = image.height();
             qreal quotient = width / height;
@@ -288,8 +288,8 @@ void QvkCameraController::slot_setNewImage( QImage image )
         painter.drawImage( QPoint( 0, 0 ), image );
         painter.end();
         image = pixmap.toImage();
-        if ( cameraWindow->isFullScreen() == false ) {
-            cameraWindow->setFixedSize( image.width(), image.height() );
+        if ( vkCameraWindow->isFullScreen() == false ) {
+            vkCameraWindow->setFixedSize( image.width(), image.height() );
         }
     }
 
@@ -297,7 +297,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
     // Circle
     if ( ui_formMainWindow->toolButton_camera_view_circle->isChecked() == true )
     {
-        if ( cameraWindow->isFullScreen() == true ){
+        if ( vkCameraWindow->isFullScreen() == true ){
             int w = image.width();
             int h = image.height();
             QPixmap pixmap( w, h );
@@ -340,7 +340,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
 
             image = pixmap.toImage();
 
-            cameraWindow->setFixedSize( h, h );
+            vkCameraWindow->setFixedSize( h, h );
 #endif
             // Under Windows a bit better as the other code
 #ifdef Q_OS_WIN
@@ -374,7 +374,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
     }
     // Circle end
 
-    cameraWindow->setNewImage( image );
+    vkCameraWindow->setNewImage( image );
 }
 
 
@@ -400,7 +400,7 @@ void QvkCameraController::slot_removedCamera( QString device )
 {
     if ( ( ui_formMainWindow->checkBoxCameraOnOff->isChecked() == true ) and ( ui_formMainWindow->comboBoxCamera->currentData().toString() == device ) )
     {
-        cameraWindow->close();
+        vkCameraWindow->close();
     }
 
     int x = ui_formMainWindow->comboBoxCamera->findData( device.toLatin1() );
@@ -446,8 +446,8 @@ void QvkCameraController::slot_startCamera( bool value )
         camera->setViewfinderSettings( viewfinderSettings );
 
         camera->setViewfinder( videoSurface );
-        cameraWindow->setStyleSheet( "background-color:black;" );
-        cameraWindow->show();
+        vkCameraWindow->setStyleSheet( "background-color:black;" );
+        vkCameraWindow->show();
 #ifdef Q_OS_LINUX
         camera->load();
 #endif
@@ -460,7 +460,7 @@ void QvkCameraController::slot_startCamera( bool value )
         disconnect( camera, nullptr, nullptr, nullptr );
         camera->stop();
         camera->unload();
-        cameraWindow->close();
+        vkCameraWindow->close();
     }
 }
 
@@ -509,8 +509,8 @@ void QvkCameraController::slot_error( QCamera::Error error )
     case QCamera::CameraError:
     {
         qDebug().noquote() << global::nameOutput << "General Camera error";
-        cameraWindow->error = "Camera is busy";
-        cameraWindow->repaint();
+        vkCameraWindow->error = "Camera is busy";
+        vkCameraWindow->repaint();
         break;
     }
     case QCamera::InvalidRequestError:

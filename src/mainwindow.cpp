@@ -836,7 +836,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
                                        vkRegionChoise->getYRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
                                        vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
                                        vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
-        vkSettings.saveCamera( vkCameraController->cameraWindow->geometry().x(), vkCameraController->cameraWindow->geometry().y() );
+        vkSettings.saveCamera( vkCameraController->vkCameraWindow->geometry().x(), vkCameraController->vkCameraWindow->geometry().y() );
         vkSettings.saveSystrayAlternative( vkSystrayAlternative->vkSystrayAlternativeWindow->x(), vkSystrayAlternative->vkSystrayAlternativeWindow->y() );
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
     // Qt5

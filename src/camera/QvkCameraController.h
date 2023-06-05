@@ -41,7 +41,7 @@ public:
     QvkCameraController( Ui_formMainWindow *ui_surface );
     virtual ~QvkCameraController();
 
-    QvkCameraWindow *cameraWindow;
+    QvkCameraWindow *vkCameraWindow;
     void getAllDevices();
     cameraSettingsDialog *vkCameraSettingsDialog;
     Ui_cameraSettingsDialog *uiCameraSettingsDialog;
