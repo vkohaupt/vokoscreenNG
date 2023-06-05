@@ -42,6 +42,7 @@ public:
     QvkCameraSingle( Ui_formMainWindow *ui_surface,  QCameraDevice m_cameraDevice );
     virtual ~QvkCameraSingle();
     QRadioButton *radioButtonCamera;
+    QvkCameraWindow *vkCameraWindow;
 
 
 public slots:
@@ -57,7 +58,6 @@ private:
     Ui_formMainWindow *ui;
     QCameraDevice cameraDevice;
     QCamera *camera;
-    QvkCameraWindow *vkCameraWindow;
     QMediaCaptureSession *captureSession;
     QVideoSink *videoSink;
     QCheckBox *checkBoxCamera;

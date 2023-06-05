@@ -46,6 +46,7 @@ class QvkCameraController : public QObject
 public:
     QvkCameraController( Ui_formMainWindow *ui_surface );
     virtual ~QvkCameraController();
+    QvkCameraSingle *vkCameraSingle;
 
 
 public slots:
@@ -67,7 +68,6 @@ private:
 //    QLabel *videolabel;
 //    QComboBox *comboBoxCameraFormat;
 
-    QvkCameraSingle *vkCameraSingle;
     QvkSpezialSlider *sliderCameraWindowSize;
     QvkSpezialSlider *sliderCameraWindowZoom;
     QButtonGroup *buttonGroup = new QButtonGroup;

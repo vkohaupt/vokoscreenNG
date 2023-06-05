@@ -629,7 +629,12 @@ void QvkSettings::readCamera( QvkCameraController *vkCameraController )
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.beginGroup( "Camera" );
+#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
+    // Qt5
     vkCameraController->vkCameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
+#else
+    // Qt6
+#endif
     settings.endGroup();
 }
 

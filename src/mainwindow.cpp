@@ -831,17 +831,20 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
     if ( vkCiscoOpenh264Controller->isShowCiscoFinishDialog == false )
     {
 #endif
+
         vkSettings.saveAll( ui, this, false );
         vkSettings.saveAreaScreencast( vkRegionChoise->getXRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
                                        vkRegionChoise->getYRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
                                        vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
                                        vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
-        vkSettings.saveCamera( vkCameraController->vkCameraWindow->geometry().x(), vkCameraController->vkCameraWindow->geometry().y() );
         vkSettings.saveSystrayAlternative( vkSystrayAlternative->vkSystrayAlternativeWindow->x(), vkSystrayAlternative->vkSystrayAlternativeWindow->y() );
+
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
-    // Qt5
+        // Qt5
+        vkSettings.saveCamera( vkCameraController->vkCameraWindow->geometry().x(), vkCameraController->vkCameraWindow->geometry().y() );
         vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile );
 #else
+        vkSettings.saveCamera( vkCameraController->vkCameraSingle->vkCameraWindow->geometry().x(), vkCameraController->vkCameraSingle->vkCameraWindow->geometry().y() );
     // Qt6
 #endif
         vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
