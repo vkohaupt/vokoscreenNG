@@ -30,7 +30,7 @@
 QvkCameraWindow::QvkCameraWindow()
 {
     setWindowFlags( windowFlags() | Qt::WindowStaysOnTopHint );
-    resize( 500, 400 );
+    resize( 100, 100 );
 }
 
 

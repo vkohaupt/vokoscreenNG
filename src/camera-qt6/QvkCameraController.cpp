@@ -66,6 +66,14 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
     ui->horizontalLayout_63->addLayout( layoutAllCameras );
     layoutAllCameras->setObjectName( "layoutAllCameras" );
 
+    // Existing widgets from the GUI will hidden
+    ui->checkBoxCameraWindowFrame->hide();
+    ui->checkBoxCameraMirrorHorizontal->hide();
+    ui->checkBoxCameraMirrorVertical->hide();
+    ui->checkBoxCameraInvert->hide();
+    ui->checkBoxCameraGray->hide();
+    ui->checkBoxCameraMono->hide();
+
     // Add Devices
     const QList<QCameraDevice> camerasInfoList = QMediaDevices::videoInputs();
     for ( int i = 0; i < camerasInfoList.count(); i++ ) {

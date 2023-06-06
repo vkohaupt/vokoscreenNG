@@ -52,6 +52,7 @@ private slots:
     void slot_checkBoxCameraOnOff( bool value );
     void slot_videoFrameChanged(QVideoFrame videoFrame );
     void slot_radioButtonCameraTextClicked( bool value );
+    void slot_frameOnOff( bool value );
 
 
 private:
@@ -60,11 +61,13 @@ private:
     QCamera *camera;
     QMediaCaptureSession *captureSession;
     QVideoSink *videoSink;
-    QCheckBox *checkBoxCamera;
-
+    QCheckBox *checkBoxCameraOnOff;
+    QCheckBox *checkBoxCameraWindowFrame;
     QCheckBox *checkBoxCameraMirrorHorizontal;
     QCheckBox *checkBoxCameraMirrorVertical;
-
+    QCheckBox *checkBoxCameraInvert;
+    QCheckBox *checkBoxCameraGray;
+    QCheckBox *checkBoxCameraMono;
 
 protected:
 

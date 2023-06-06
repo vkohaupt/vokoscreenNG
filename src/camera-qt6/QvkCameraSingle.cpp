@@ -64,35 +64,47 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     radioButtonCamera->setAutoExclusive( true );
     connect( radioButtonCamera, SIGNAL( clicked( bool ) ), this, SLOT( slot_radioButtonCameraTextClicked( bool ) ) );
 
-    checkBoxCamera = new QCheckBox;
-    layoutCamera->addWidget( checkBoxCamera  );
-    checkBoxCamera->setText( cameraDevice.description() );
-    checkBoxCamera->setAccessibleName( cameraDevice.id() );
-    checkBoxCamera->setObjectName( "checkBoxCamera-" + QString::number( counter ) );
-    connect( checkBoxCamera, SIGNAL( toggled( bool ) ), this, SLOT( slot_checkBoxCameraOnOff( bool ) ) );
+    checkBoxCameraOnOff = new QCheckBox;
+    layoutCamera->addWidget( checkBoxCameraOnOff );
+    checkBoxCameraOnOff->setText( cameraDevice.description() );
+    checkBoxCameraOnOff->setAccessibleName( cameraDevice.id() );
+    checkBoxCameraOnOff->setObjectName( "checkBoxCameraOnOff-" + QString::number( counter ) );
+    connect( checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), this, SLOT( slot_checkBoxCameraOnOff( bool ) ) );
 
-    layoutCamera->setStretchFactor( checkBoxCamera, 2 );
+    layoutCamera->setStretchFactor( checkBoxCameraOnOff, 2 );
 
-    // Existing widgets from the GUI are hidden
-    ui->checkBoxCameraWindowFrame->setEnabled( true );
-    ui->checkBoxCameraMirrorHorizontal->hide();
-    ui->checkBoxCameraMirrorVertical->hide();
-    ui->checkBoxCameraGray->setEnabled( true );
-    ui->checkBoxCameraInvert->setEnabled( true );
-    ui->checkBoxCameraMono->setEnabled( true );
-
-    checkBoxCameraMirrorHorizontal = new QCheckBox;
-    checkBoxCameraMirrorHorizontal->setText( tr( "Flip horizontal" ) );
-    checkBoxCameraMirrorHorizontal->setObjectName( "checkBoxCameraMirrorHorizontal-" + QString::number( counter )  );
-    ui->horizontalLayout_12->insertWidget( 0, checkBoxCameraMirrorHorizontal );
+    checkBoxCameraWindowFrame = new QCheckBox;
+    checkBoxCameraWindowFrame->setText( tr( "Remove window frame" ) );
+    checkBoxCameraWindowFrame->setObjectName( "checkBoxCameraWindowFrame-" + QString::number( counter )  );
+    ui->horizontalLayout_42->insertWidget( 0, checkBoxCameraWindowFrame, 1 );
+    connect( checkBoxCameraWindowFrame, SIGNAL( clicked( bool ) ), this, SLOT( slot_frameOnOff( bool ) ) );
 
     checkBoxCameraMirrorVertical = new QCheckBox;
     checkBoxCameraMirrorVertical->setText( tr( "Flip vertical" ) );
     checkBoxCameraMirrorVertical->setObjectName( "checkBoxCameraMirrorVertical-" + QString::number( counter )  );
-    ui->horizontalLayout_12->insertWidget( 0, checkBoxCameraMirrorVertical );
+    ui->horizontalLayout_12->insertWidget( 0, checkBoxCameraMirrorVertical, 1 );
+
+    checkBoxCameraMirrorHorizontal = new QCheckBox;
+    checkBoxCameraMirrorHorizontal->setText( tr( "Flip horizontal" ) );
+    checkBoxCameraMirrorHorizontal->setObjectName( "checkBoxCameraMirrorHorizontal-" + QString::number( counter )  );
+    ui->horizontalLayout_12->insertWidget( 1, checkBoxCameraMirrorHorizontal, 2 );
+
+    checkBoxCameraInvert = new QCheckBox;
+    checkBoxCameraInvert->setText( tr( "Invert" ) );
+    checkBoxCameraInvert->setObjectName( "checkBoxCameraInvert-" + QString::number( counter )  );
+    ui->horizontalLayout_14->insertWidget( 0, checkBoxCameraInvert, 1 );
+
+    checkBoxCameraGray = new QCheckBox;
+    checkBoxCameraGray->setText( tr( "Gray" ) );
+    checkBoxCameraGray->setObjectName( "checkBoxCameraGray-" + QString::number( counter )  );
+    ui->horizontalLayout_14->insertWidget( 1, checkBoxCameraGray, 1 );
+
+    checkBoxCameraMono = new QCheckBox;
+    checkBoxCameraMono->setText( tr( "Black-and-white" ) );
+    checkBoxCameraMono->setObjectName( "checkBoxCameraMono-" + QString::number( counter )  );
+    ui->horizontalLayout_14->insertWidget( 2, checkBoxCameraMono, 2 );
 
     slot_radioButtonCameraTextClicked( false );
-
 }
 
 
@@ -109,13 +121,13 @@ void QvkCameraSingle::slot_checkBoxCameraOnOff( bool value )
         camera = new QCamera( cameraDevice );
         const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
         camera->setCameraFormat( cameraFormatList.at(0) );
-        qDebug() << "---------------------------------------" << cameraFormatList.count() << cameraFormatList.at(0).pixelFormat() ;
+        qDebug() << cameraFormatList.count() << cameraFormatList.at(0).pixelFormat() ;
 
         videoSink = new QVideoSink;
         connect( videoSink, SIGNAL( videoFrameChanged( QVideoFrame ) ), this, SLOT( slot_videoFrameChanged( QVideoFrame ) ) );
 
         vkCameraWindow = new QvkCameraWindow;
-        connect( vkCameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), checkBoxCamera, SLOT( toggle() ) );
+        connect( vkCameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), checkBoxCameraOnOff, SLOT( toggle() ) );
         vkCameraWindow->show();
 
         captureSession = new QMediaCaptureSession;
@@ -138,30 +150,76 @@ void QvkCameraSingle::slot_checkBoxCameraOnOff( bool value )
 }
 
 
+void QvkCameraSingle::slot_frameOnOff( bool value )
+{
+    if ( vkCameraWindow->isFullScreen() == false )
+    {
+        Qt::WindowFlags flags;
+
+#ifdef Q_OS_WIN
+        if ( value == true )
+        {
+            cameraWindow->setWindowFlag( Qt::Window, false );
+            cameraWindow->setWindowFlag( Qt::ToolTip, true );
+        }
+
+        if ( value == false )
+        {
+            cameraWindow->setWindowFlag( Qt::Window, true );
+            cameraWindow->setWindowFlag( Qt::ToolTip, false );
+        }
+#endif
+
+#ifdef Q_OS_LINUX
+        if ( value == true )
+        {
+            flags = Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
+            vkCameraWindow->setWindowFlags( flags );
+        }
+
+        if ( value == false )
+        {
+            flags = Qt::WindowStaysOnTopHint;
+            vkCameraWindow->setWindowFlags( flags );
+        }
+#endif
+
+        if ( checkBoxCameraOnOff->isChecked() == true )
+        {
+            vkCameraWindow->show();
+        }
+    }
+}
+
+
 void QvkCameraSingle::slot_radioButtonCameraTextClicked( bool value )
 {
     Q_UNUSED(value)
     QList<QLabel *> listLabel = ui->centralWidget->findChildren<QLabel *>( "labelCurrentCamera" );
     if ( radioButtonCamera->isChecked() == true ) {
-        listLabel.at(0)->setText( checkBoxCamera->text() );
+        listLabel.at(0)->setText( checkBoxCameraOnOff->text() );
     }
 
-    // Widget verstecken
-    QList<QCheckBox *> listCheckBoxVertical = ui->centralWidget->findChildren<QCheckBox *>();
-    if ( listCheckBoxVertical.empty() == false ) {
-        for ( int i = 0; i < listCheckBoxVertical.count(); i++ ) {
-            if ( listCheckBoxVertical.at(i)->objectName().contains( "checkBoxCameraMirrorVertical" ) ) {
-                listCheckBoxVertical.at(i)->hide();
+    QList<QCheckBox *> list = ui->centralWidget->findChildren<QCheckBox *>();
+    if ( list.empty() == false ) {
+        for ( int i = 0; i < list.count(); i++ ) {
+            if ( list.at(i)->objectName().contains( "checkBoxCameraWindowFrame" ) ) {
+                list.at(i)->hide();
             }
-        }
-    }
-
-    // Widget verstecken
-    QList<QCheckBox *> listCheckBoxHorizontal = ui->centralWidget->findChildren<QCheckBox *>();
-    if ( listCheckBoxHorizontal.empty() == false ) {
-        for ( int i = 0; i < listCheckBoxHorizontal.count(); i++ ) {
-            if ( listCheckBoxHorizontal.at(i)->objectName().contains( "checkBoxCameraMirrorHorizontal" ) ) {
-                listCheckBoxHorizontal.at(i)->hide();
+            if ( list.at(i)->objectName().contains( "checkBoxCameraMirrorVertical" ) ) {
+                list.at(i)->hide();
+            }
+            if ( list.at(i)->objectName().contains( "checkBoxCameraMirrorHorizontal" ) ) {
+                list.at(i)->hide();
+            }
+            if ( list.at(i)->objectName().contains( "checkBoxCameraInvert" ) ) {
+                list.at(i)->hide();
+            }
+            if ( list.at(i)->objectName().contains( "checkBoxCameraGray" ) ) {
+                list.at(i)->hide();
+            }
+            if ( list.at(i)->objectName().contains( "checkBoxCameraMono" ) ) {
+                list.at(i)->hide();
             }
         }
     }
@@ -169,8 +227,12 @@ void QvkCameraSingle::slot_radioButtonCameraTextClicked( bool value )
     // If the config emmpty the last camera is set
     radioButtonCamera->setChecked( true );
 
+    checkBoxCameraWindowFrame->show();
     checkBoxCameraMirrorHorizontal->show();
     checkBoxCameraMirrorVertical->show();
+    checkBoxCameraInvert->show();
+    checkBoxCameraGray->show();
+    checkBoxCameraMono->show();
 }
 
 
@@ -187,21 +249,22 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
         image = image.mirrored( false, true );
     }
 
-    if ( ui->checkBoxCameraInvert->isChecked() == true ) {
+    if ( checkBoxCameraInvert->isChecked() == true ) {
         image.invertPixels( QImage::InvertRgb );
     }
 
-    if ( ui->checkBoxCameraGray->isChecked() == true ) {
+    if ( checkBoxCameraGray->isChecked() == true ) {
         image = image.convertToFormat( QImage::Format_Grayscale8 );
     }
 
-    if ( ui->checkBoxCameraMono->isChecked() == true ) {
+    if ( checkBoxCameraMono->isChecked() == true ) {
         image = image.convertToFormat( QImage::Format_Mono );
     }
 
     QPixmap pixmap;
     pixmap.convertFromImage( image );
     vkCameraWindow->setPixmap( pixmap );
+    vkCameraWindow->setFixedSize( pixmap.width(), pixmap.height() );
 
     /*
 
