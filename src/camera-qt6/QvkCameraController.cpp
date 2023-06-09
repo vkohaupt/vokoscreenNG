@@ -67,6 +67,17 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
     layoutAllCameras->setObjectName( "layoutAllCameras" );
 
     // Existing widgets from the GUI will hidden
+    ui->horizontalLayout_65->removeWidget( ui->toolButton_camera_view_rectangle );
+    delete ui->toolButton_camera_view_rectangle;
+    ui->horizontalLayout_65->removeWidget( ui->toolButton_camera_view_ellipse );
+    delete ui->toolButton_camera_view_ellipse;
+    ui->horizontalLayout_65->removeWidget( ui->toolButton_camera_view_circle );
+    delete ui->toolButton_camera_view_circle;
+
+
+//    ui->toolButton_camera_view_rectangle->hide();
+//    ui->toolButton_camera_view_ellipse->hide();
+//    ui->toolButton_camera_view_circle->hide();
     ui->checkBoxCameraWindowFrame->hide();
     ui->checkBoxCameraMirrorHorizontal->hide();
     ui->checkBoxCameraMirrorVertical->hide();

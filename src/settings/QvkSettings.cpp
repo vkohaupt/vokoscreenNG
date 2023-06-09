@@ -567,11 +567,17 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
         }
 
         if ( listToolButton.at(i)->objectName().contains( "toolButton_camera_view" ) ) {
-                settings.setValue( listToolButton.at(i)->objectName(), listToolButton.at(i)->isChecked() );
+#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
+            // Qt5
+            settings.setValue( listToolButton.at(i)->objectName(), listToolButton.at(i)->isChecked() );
+#else
+            // Qt6
+            settings.setValue( listToolButton.at(i)->objectName(), listToolButton.at(i)->isDown() );
+#endif
         }
 
         if ( listToolButton.at(i)->objectName().contains( "toolButton_magnifier" ) ) {
-                settings.setValue( listToolButton.at(i)->objectName(), listToolButton.at(i)->isChecked() );
+            settings.setValue( listToolButton.at(i)->objectName(), listToolButton.at(i)->isChecked() );
         }
     }
 
