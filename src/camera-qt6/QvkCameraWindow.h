@@ -23,7 +23,7 @@
 #ifndef QVKCAMERAWINDOW_H
 #define QVKCAMERAWINDOW_H
 
-#include "ui_formMainWindow.h"
+//#include "ui_formMainWindow.h"
 //#include "ui_camerasettingsdialog.h"
 
 //#include "camerasettingsdialog.h"
@@ -32,28 +32,29 @@
 #include <QWidget>
 #include <QPaintEvent>
 #include <QPainter>
+#include <QCheckBox>
 
-class QvkCameraWindow : public QLabel
+class QvkCameraWindow : public QWidget
 {
     Q_OBJECT
 
 public:
-    QvkCameraWindow();
+    QvkCameraWindow(QCheckBox *checkBox);
     virtual ~QvkCameraWindow();
 //    Ui_cameraSettingsDialog *uiCameraSettingsDialog;
 //    cameraSettingsDialog *vkCameraSettingsDialog;
-//    QString error;
-//    void setNewImage( QImage _image );
+    QString error;
+    void setNewImage( QImage _image );
 
 
 private:
-   Ui_formMainWindow *ui_formMainWindow;
+//   Ui_formMainWindow *ui_formMainWindow;
 //   bool mousePressed = false;
 //   int mouseLocal_X;
 //   int mouseLocal_Y;
-//   QImage image;
-//   QRect rectCloseButton;
-
+   QImage image;
+   QRect rectCloseButton;
+   QCheckBox *checkBoxCameraWindowFrame;
 
 public slots:
 
@@ -70,7 +71,7 @@ protected:
 //    void resizeEvent(QResizeEvent *event);
 //    void mouseReleaseEvent(QMouseEvent *event);
 //    void mouseMoveEvent(QMouseEvent *event);
-//    void paintEvent( QPaintEvent *event );
+    void paintEvent( QPaintEvent *event );
 
 signals:
     void signal_cameraWindow_close( bool );

@@ -50,10 +50,11 @@ public slots:
 
 private slots:
     void slot_checkBoxCameraOnOff( bool value );
-    void slot_videoFrameChanged(QVideoFrame videoFrame );
+    void slot_videoFrameChanged( QVideoFrame videoFrame );
     void slot_radioButtonCurrentCameraClicked( bool value );
-    void slot_frameOnOff( bool value );
     void slot_toolButtonClicked( bool value );
+    void slot_cameraWindowFrameOnOff( bool value );
+    void slot_cameraError();
 
 
 private:

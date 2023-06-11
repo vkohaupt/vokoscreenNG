@@ -34,6 +34,7 @@
 #include <QList>
 #include <QVideoFrame>
 #include <QImage>
+#include <QPainterPath>
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -70,10 +71,8 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     checkBoxCameraOnOff->setAccessibleName( cameraDevice.id() );
     checkBoxCameraOnOff->setObjectName( "checkBoxCameraOnOff-" + QString::number( counter ) );
     connect( checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), this, SLOT( slot_checkBoxCameraOnOff( bool ) ) );
-
     layoutCamera->setStretchFactor( checkBoxCameraOnOff, 2 );
 
-    // ************************************************************************************************** in bearbeitung
     toolButton_camera_view_rectangle = new QToolButton;
     toolButton_camera_view_rectangle->setObjectName( "toolButton_camera_view_rectangle-" + QString::number( counter ) );
     toolButton_camera_view_rectangle->setCheckable( true );
@@ -105,15 +104,10 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     ui->horizontalLayout_65->insertWidget( 3, toolButton_camera_view_circle, 1 );
     connect( toolButton_camera_view_circle, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonClicked( bool ) ) );
 
-
-
-
-
     checkBoxCameraWindowFrame = new QCheckBox;
     checkBoxCameraWindowFrame->setText( tr( "Remove window frame" ) );
-    checkBoxCameraWindowFrame->setObjectName( "checkBoxCameraWindowFrame-" + QString::number( counter ) );
+    checkBoxCameraWindowFrame->setObjectName( "11checkBoxCameraWindowFrame-" + QString::number( counter ) );
     ui->horizontalLayout_42->insertWidget( 0, checkBoxCameraWindowFrame, 1 );
-    connect( checkBoxCameraWindowFrame, SIGNAL( clicked( bool ) ), this, SLOT( slot_frameOnOff( bool ) ) );
 
     checkBoxCameraMirrorVertical = new QCheckBox;
     checkBoxCameraMirrorVertical->setText( tr( "Flip vertical" ) );
@@ -140,8 +134,13 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     checkBoxCameraMono->setObjectName( "checkBoxCameraMono-" + QString::number( counter )  );
     ui->horizontalLayout_14->insertWidget( 2, checkBoxCameraMono, 2 );
 
+
+    vkCameraWindow = new QvkCameraWindow( checkBoxCameraWindowFrame );
+    connect( vkCameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
+    connect( checkBoxCameraWindowFrame, SIGNAL( clicked( bool ) ), this, SLOT( slot_cameraWindowFrameOnOff( bool ) ) );
+
+
     slot_radioButtonCurrentCameraClicked( false );
-//    slot_toolButtonClicked( false );
 }
 
 
@@ -195,6 +194,7 @@ void QvkCameraSingle::slot_checkBoxCameraOnOff( bool value )
     if ( value == true )
     {
         camera = new QCamera( cameraDevice );
+        connect( camera, SIGNAL( errorChanged() ), this, SLOT( slot_cameraError() ) );
         const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
         camera->setCameraFormat( cameraFormatList.at(0) );
         qDebug() << cameraFormatList.count() << cameraFormatList.at(0).pixelFormat() ;
@@ -202,8 +202,6 @@ void QvkCameraSingle::slot_checkBoxCameraOnOff( bool value )
         videoSink = new QVideoSink;
         connect( videoSink, SIGNAL( videoFrameChanged( QVideoFrame ) ), this, SLOT( slot_videoFrameChanged( QVideoFrame ) ) );
 
-        vkCameraWindow = new QvkCameraWindow;
-        connect( vkCameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), checkBoxCameraOnOff, SLOT( toggle() ) );
         vkCameraWindow->show();
 
         captureSession = new QMediaCaptureSession;
@@ -221,47 +219,45 @@ void QvkCameraSingle::slot_checkBoxCameraOnOff( bool value )
         captureSession->deleteLater();
         disconnect( videoSink );
         videoSink->deleteLater();
-        vkCameraWindow->deleteLater();
+        vkCameraWindow->hide();
     }
 }
 
 
-void QvkCameraSingle::slot_frameOnOff( bool value )
+void QvkCameraSingle::slot_cameraError()
+{
+    vkCameraWindow->error = camera->errorString();
+    vkCameraWindow->repaint();
+}
+
+
+void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
 {
     if ( vkCameraWindow->isFullScreen() == false )
     {
-        Qt::WindowFlags flags;
-
 #ifdef Q_OS_WIN
-        if ( value == true )
-        {
-            cameraWindow->setWindowFlag( Qt::Window, false );
-            cameraWindow->setWindowFlag( Qt::ToolTip, true );
+        if ( value == true ) {
+            vkCameraWindow->setWindowFlag( Qt::Window, false );
+            vkCameraWindow->setWindowFlag( Qt::ToolTip, true );
         }
 
-        if ( value == false )
-        {
-            cameraWindow->setWindowFlag( Qt::Window, true );
-            cameraWindow->setWindowFlag( Qt::ToolTip, false );
+        if ( value == false ) {
+            vkCameraWindow->setWindowFlag( Qt::Window, true );
+            vkCameraWindow->setWindowFlag( Qt::ToolTip, false );
         }
 #endif
 
 #ifdef Q_OS_LINUX
-        if ( value == true )
-        {
-            flags = Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
-            vkCameraWindow->setWindowFlags( flags );
+        if ( value == true ) {
+            vkCameraWindow->setWindowFlags( Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
         }
 
-        if ( value == false )
-        {
-            flags = Qt::WindowStaysOnTopHint;
-            vkCameraWindow->setWindowFlags( flags );
+        if ( value == false ) {
+            vkCameraWindow->setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint );
         }
 #endif
 
-        if ( checkBoxCameraOnOff->isChecked() == true )
-        {
+        if ( checkBoxCameraOnOff->isChecked() == true ) {
             vkCameraWindow->show();
         }
     }
@@ -339,6 +335,10 @@ void QvkCameraSingle::slot_radioButtonCurrentCameraClicked( bool value )
 
 void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
 {
+    if ( videoFrame.isValid() == false ) {
+        return;
+    }
+
     QImage image = videoFrame.toImage();
     image.convertTo( QImage::Format_RGB32 );
 
@@ -362,10 +362,37 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
         image = image.convertToFormat( QImage::Format_Mono );
     }
 
-    QPixmap pixmap;
-    pixmap.convertFromImage( image );
-    vkCameraWindow->setPixmap( pixmap );
-    vkCameraWindow->setFixedSize( pixmap.width(), pixmap.height() );
+    // Ellipse
+    if ( toolButton_camera_view_ellipse->isChecked() == true )
+    {
+/*        if ( vkCameraWindow->isFullScreen() == false ) {
+            qreal width = image.width();
+            qreal height = image.height();
+            qreal quotient = width / height;
+            int w = ui->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
+            int h = ui->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
+            image = image.scaled( w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation );
+        } */
+        QPixmap pixmap( image.width(), image.height() );
+        pixmap.fill( Qt::transparent );
+        QPainter painter;
+        painter.begin( &pixmap );
+        painter.setRenderHints( QPainter::Antialiasing, true );
+        painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
+        QPainterPath path;
+        path.addEllipse( 0, 0, image.width(), image.height() );
+        painter.setClipPath( path );
+        painter.drawImage( QPoint( 0, 0 ), image );
+        painter.end();
+        image = pixmap.toImage();
+        if ( vkCameraWindow->isFullScreen() == false ) {
+            vkCameraWindow->setFixedSize( image.width(), image.height() );
+        }
+    }
+
+    vkCameraWindow->setFixedSize( image.width(), image.height() );
+    vkCameraWindow->setNewImage( image );
+
 
     /*
 
