@@ -1,5 +1,5 @@
 /* vokoscreenNG - A desktop recorder
- * Copyright (C) 2017-2022 Volker Kohaupt
+ * Copyright (C) 2017-2023 Volker Kohaupt
  * 
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
@@ -63,10 +63,13 @@ private:
     QCamera *camera;
     QMediaCaptureSession *captureSession;
     QVideoSink *videoSink;
+
+    QCheckBox *checkBoxCameraOnOff;
+    QvkSpezialSlider *sliderCameraWindowSize;
+    QvkSpezialSlider *sliderCameraWindowZoom;
     QToolButton *toolButton_camera_view_rectangle;
     QToolButton *toolButton_camera_view_ellipse;
     QToolButton *toolButton_camera_view_circle;
-    QCheckBox *checkBoxCameraOnOff;
     QCheckBox *checkBoxCameraWindowFrame;
     QCheckBox *checkBoxCameraMirrorHorizontal;
     QCheckBox *checkBoxCameraMirrorVertical;

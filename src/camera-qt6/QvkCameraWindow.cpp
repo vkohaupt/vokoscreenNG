@@ -1,5 +1,5 @@
 /* vokoscreenNG - A desktop recorder
- * Copyright (C) 2017-2022 Volker Kohaupt
+ * Copyright (C) 2017-2023 Volker Kohaupt
  *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
@@ -30,7 +30,7 @@
 QvkCameraWindow::QvkCameraWindow( QCheckBox *checkBox )
 {
     checkBoxCameraWindowFrame = checkBox;
-    setWindowFlags( Qt::Window | Qt::WindowStaysOnTopHint );
+    setWindowFlags( windowFlags() | Qt::WindowStaysOnTopHint );
     setWindowIcon( QIcon( QString::fromUtf8( ":/pictures/logo/logo.png" ) ) );
     setWindowTitle( QString( tr( "Camera") ) + " " + global::version );
     resize( 100, 100 );

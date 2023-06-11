@@ -1,5 +1,5 @@
 /* vokoscreenNG - A desktop recorder
- * Copyright (C) 2017-2022 Volker Kohaupt
+ * Copyright (C) 2017-2023 Volker Kohaupt
  * 
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
@@ -68,8 +68,8 @@ private:
 //    QLabel *videolabel;
 //    QComboBox *comboBoxCameraFormat;
 
-    QvkSpezialSlider *sliderCameraWindowSize;
-    QvkSpezialSlider *sliderCameraWindowZoom;
+//    QvkSpezialSlider *sliderCameraWindowSize;
+//    QvkSpezialSlider *sliderCameraWindowZoom;
     QButtonGroup *buttonGroup = new QButtonGroup;
     QLabel *labelCurrentCamera = new QLabel;
 

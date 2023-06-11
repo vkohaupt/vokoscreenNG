@@ -1,5 +1,5 @@
 ﻿/* vokoscreenNG - A desktop recorder
- * Copyright (C) 2017-2022 Volker Kohaupt
+ * Copyright (C) 2017-2023 Volker Kohaupt
  *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
@@ -36,54 +36,23 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
 {
     ui = ui_surface;
 
-    sliderCameraWindowSize = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_45->insertWidget( 0, sliderCameraWindowSize );
-    sliderCameraWindowSize->setObjectName( "sliderCameraWindowSize" );
-    sliderCameraWindowSize->setMinimum( 0 );
-    sliderCameraWindowSize->setMaximum( 1 );
-    sliderCameraWindowSize->setValue( 0 );
-    sliderCameraWindowSize->show();
-    sliderCameraWindowSize->setShowValue( false );
-    sliderCameraWindowSize->setBigHandel( true );
-    sliderCameraWindowSize->setEnabled( true );
-
-    sliderCameraWindowZoom = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_zoom->insertWidget( 0, sliderCameraWindowZoom );
-    sliderCameraWindowZoom->setObjectName( "sliderCameraWindowZoom" );
-    sliderCameraWindowZoom->setMinimum( 0 );
-    sliderCameraWindowZoom->setMaximum( 1 );
-    sliderCameraWindowZoom->setValue( 0 );
-    sliderCameraWindowZoom->show();
-    sliderCameraWindowZoom->setShowValue( true );
-    sliderCameraWindowZoom->setEnabled( true );
-
     ui->checkBoxCameraOnOff->deleteLater();
     ui->comboBoxCamera->deleteLater();
     ui->comboBoxCameraResolution->deleteLater();
+    ui->toolButton_camera_view_rectangle->deleteLater();
+    ui->toolButton_camera_view_ellipse->deleteLater();
+    ui->toolButton_camera_view_circle->deleteLater();
+    ui->checkBoxCameraWindowFrame->deleteLater();
+    ui->checkBoxCameraMirrorHorizontal->deleteLater();
+    ui->checkBoxCameraMirrorVertical->deleteLater();
+    ui->checkBoxCameraInvert->deleteLater();
+    ui->checkBoxCameraGray->deleteLater();
+    ui->checkBoxCameraMono->deleteLater();
 
     // Create a vertical layout
     QVBoxLayout *layoutAllCameras = new QVBoxLayout;
     ui->horizontalLayout_63->addLayout( layoutAllCameras );
     layoutAllCameras->setObjectName( "layoutAllCameras" );
-
-    // Existing widgets from the GUI will hidden
-    ui->horizontalLayout_65->removeWidget( ui->toolButton_camera_view_rectangle );
-    delete ui->toolButton_camera_view_rectangle;
-    ui->horizontalLayout_65->removeWidget( ui->toolButton_camera_view_ellipse );
-    delete ui->toolButton_camera_view_ellipse;
-    ui->horizontalLayout_65->removeWidget( ui->toolButton_camera_view_circle );
-    delete ui->toolButton_camera_view_circle;
-
-
-//    ui->toolButton_camera_view_rectangle->hide();
-//    ui->toolButton_camera_view_ellipse->hide();
-//    ui->toolButton_camera_view_circle->hide();
-    delete ui->checkBoxCameraWindowFrame;
-    ui->checkBoxCameraMirrorHorizontal->hide();
-    ui->checkBoxCameraMirrorVertical->hide();
-    ui->checkBoxCameraInvert->hide();
-    ui->checkBoxCameraGray->hide();
-    ui->checkBoxCameraMono->hide();
 
     // Add Devices
     const QList<QCameraDevice> camerasInfoList = QMediaDevices::videoInputs();
@@ -103,7 +72,6 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
     font.setBold( true );
     labelCurrentCamera->setFont( font );
     layoutAllCameras->addWidget( labelCurrentCamera );
-
 }
 
 
