@@ -43,7 +43,7 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
 {
     ui = ui_surface;
     cameraDevice = m_cameraDevice;
-    qDebug().noquote() << global::nameOutput << "[Camera] ------------------Added:" << cameraDevice.description() << "Device:" << cameraDevice.id();
+    qDebug().noquote() << global::nameOutput << "[Camera] Added:" << cameraDevice.description() << "Device:" << cameraDevice.id();
 
     QList<QVBoxLayout *> listQVBoxLayout = ui->centralWidget->findChildren<QVBoxLayout *>( "layoutAllCameras" );
 
@@ -72,6 +72,29 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     checkBoxCameraOnOff->setObjectName( "checkBoxCameraOnOff-" + QString::number( counter ) );
     connect( checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), this, SLOT( slot_checkBoxCameraOnOff( bool ) ) );
     layoutCamera->setStretchFactor( checkBoxCameraOnOff, 2 );
+
+    comboBoxCameraVideoFormat = new QComboBox;
+    connect( comboBoxCameraVideoFormat, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_comboboxCameraInsertResolutions( int ) ) );
+    connect( comboBoxCameraVideoFormat, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_comboboxCameraFormatCurrentIndexChanged( int ) ) );
+    layoutCamera->addWidget( comboBoxCameraVideoFormat );
+
+    comboBoxCameraResolution = new QComboBox;
+    connect( comboBoxCameraResolution, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_setComboboxCameraFPS( QString ) ) );
+    layoutCamera->addWidget( comboBoxCameraResolution );
+
+    // Wird zur Zeit nicht benötigt da Informationen fehlen
+    comboBoxCameraFrame = new QComboBox;
+    layoutCamera->addWidget( comboBoxCameraFrame );
+    comboBoxCameraFrame->hide();
+
+
+    for ( int i = 0; i < cameraDevice.videoFormats().count(); i++ ) {
+        QString format = QVideoFrameFormat::pixelFormatToString( cameraDevice.videoFormats().at(i).pixelFormat() ).toUpper();
+        if ( comboBoxCameraVideoFormat->findText( format ) == -1 ) {
+            comboBoxCameraVideoFormat->addItem( format, cameraDevice.videoFormats().at(i).pixelFormat() ); // bei der Philips wird der Wert 17 für YUYV eingetragen und für JPEG der Wert 29
+        }
+    }
+
 
     sliderCameraWindowSize = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_45->insertWidget( 0, sliderCameraWindowSize );
@@ -155,11 +178,9 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     checkBoxCameraMono->setObjectName( "checkBoxCameraMono-" + QString::number( counter )  );
     ui->horizontalLayout_14->insertWidget( 2, checkBoxCameraMono, 2 );
 
-
     vkCameraWindow = new QvkCameraWindow( checkBoxCameraWindowFrame );
     connect( vkCameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
     connect( checkBoxCameraWindowFrame, SIGNAL( clicked( bool ) ), this, SLOT( slot_cameraWindowFrameOnOff( bool ) ) );
-
 
     slot_radioButtonCurrentCameraClicked( false );
 }
@@ -167,6 +188,53 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
 
 QvkCameraSingle::~QvkCameraSingle()
 {
+}
+
+
+void QvkCameraSingle::slot_comboboxCameraFormatCurrentIndexChanged( int value )
+{
+    if ( camera != Q_NULLPTR ) {
+        slot_checkBoxCameraOnOff( false );
+        slot_checkBoxCameraOnOff( true );
+    }
+}
+
+
+void QvkCameraSingle::slot_comboboxCameraInsertResolutions( int value )
+{
+    Q_UNUSED(value)
+    comboBoxCameraResolution->clear();
+    const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
+    for ( int i = 0; i < cameraFormatList.count(); i++ ) {
+        if ( cameraFormatList.at(i).pixelFormat() == comboBoxCameraVideoFormat->currentData() ) {
+            QString resolution;
+            resolution.append( QString::number( cameraFormatList.at(i).resolution().width() ) );
+            resolution.append( "x" );
+            resolution.append( QString::number( cameraFormatList.at(i).resolution().height() ) );
+            if ( comboBoxCameraResolution->findText( resolution ) == -1 ) {
+                comboBoxCameraResolution->addItem( resolution, cameraFormatList.at(i).resolution() );
+            }
+        }
+    }
+}
+
+
+// Es muß noch geklärt werden wie man die Zwischenwerte von z.b 5 bis 30 ermittelt und dann setzt
+// Diese Funktion dient nur zum üben und hat keine funktion
+void QvkCameraSingle::slot_setComboboxCameraFPS( QString value )
+{
+    Q_UNUSED(value)
+    comboBoxCameraFrame->clear();
+
+    QVideoFrameFormat::PixelFormat format;
+    format = static_cast<QVideoFrameFormat::PixelFormat>( comboBoxCameraVideoFormat->currentData().toInt() );
+
+    QSize resolution;
+    resolution = comboBoxCameraResolution->currentData().toSize();
+
+    for ( int i = 0; i < cameraDevice.videoFormats().count(); i++ ) {
+//        qDebug() << cameraDevice.videoFormats().at(i).pixelFormat() << cameraDevice.videoFormats().at(i).resolution() << cameraDevice.videoFormats().at(i).minFrameRate() << cameraDevice.videoFormats().at(i).maxFrameRate();
+    }
 }
 
 
@@ -215,9 +283,17 @@ void QvkCameraSingle::slot_checkBoxCameraOnOff( bool value )
     if ( value == true ) {
         camera = new QCamera( cameraDevice );
         connect( camera, SIGNAL( errorChanged() ), this, SLOT( slot_cameraError() ) );
+
+        // Format und Resolution von Widget ermitteln und anwenden
         const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
-        camera->setCameraFormat( cameraFormatList.at(0) );
-        qDebug() << cameraFormatList.count() << cameraFormatList.at(0).pixelFormat() ;
+        for ( int i = 0; i < cameraFormatList.count(); i++ ) {
+            if ( cameraFormatList.at(i).pixelFormat() == comboBoxCameraVideoFormat->currentData() ) {
+                if ( cameraFormatList.at(i).resolution() == comboBoxCameraResolution->currentData() ) {
+                    camera->setCameraFormat( cameraFormatList.at(i) );
+                    qDebug() << cameraFormatList.at(i).pixelFormat() << cameraFormatList.at(i).resolution();
+                }
+            }
+        }
 
         videoSink = new QVideoSink;
         connect( videoSink, SIGNAL( videoFrameChanged( QVideoFrame ) ), this, SLOT( slot_videoFrameChanged( QVideoFrame ) ) );
@@ -234,10 +310,14 @@ void QvkCameraSingle::slot_checkBoxCameraOnOff( bool value )
     // Camera stopen
     if ( value == false ) {
         camera->stop();
-        camera->deleteLater();
-        captureSession->deleteLater();
+        delete camera;
+        camera = Q_NULLPTR;
+
+        delete captureSession;
+
         disconnect( videoSink );
-        videoSink->deleteLater();
+        delete videoSink;
+
         vkCameraWindow->hide();
     }
 }
