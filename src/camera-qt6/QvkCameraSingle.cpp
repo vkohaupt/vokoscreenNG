@@ -74,19 +74,17 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     layoutCamera->setStretchFactor( checkBoxCameraOnOff, 2 );
 
     comboBoxCameraVideoFormat = new QComboBox;
-    connect( comboBoxCameraVideoFormat, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_comboboxCameraResolutionsInsertValues( int ) ) );
+    comboBoxCameraVideoFormat->setMinimumWidth( 100 );
+    comboBoxCameraVideoFormat->setObjectName( "comboBoxCameraVideoFormat-" + QString::number( counter ) );
+    connect( comboBoxCameraVideoFormat, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_comboboxCameraResolutionsInsertValues( int ) ) ); // Wird im Slot dosconnected
     connect( comboBoxCameraVideoFormat, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_comboboxCameraFormatCurrentIndexChanged( int ) ) );
     layoutCamera->addWidget( comboBoxCameraVideoFormat );
 
     comboBoxCameraResolution = new QComboBox;
-    connect( comboBoxCameraResolution, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_comboboxCameraFPSInsertValues( QString ) ) );
+    comboBoxCameraResolution->setMinimumWidth( 100 );
+    comboBoxCameraResolution->setObjectName( "comboBoxCameraResolution-" + QString::number( counter ) );
+    connect( comboBoxCameraResolution,  SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_comboboxCameraResolutionsCurrentIndexChanged( int ) ) );
     layoutCamera->addWidget( comboBoxCameraResolution );
-
-    // Wird zur Zeit nicht benötigt da Informationen fehlen
-    comboBoxCameraFPS = new QComboBox;
-    layoutCamera->addWidget( comboBoxCameraFPS );
-    comboBoxCameraFPS->hide();
-
 
     for ( int i = 0; i < cameraDevice.videoFormats().count(); i++ ) {
         QString format = QVideoFrameFormat::pixelFormatToString( cameraDevice.videoFormats().at(i).pixelFormat() ).toUpper();
@@ -94,7 +92,6 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
             comboBoxCameraVideoFormat->addItem( format, cameraDevice.videoFormats().at(i).pixelFormat() ); // bei der Philips wird der Wert 17 für YUYV eingetragen und für JPEG der Wert 29
         }
     }
-
 
     sliderCameraWindowSize = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_45->insertWidget( 0, sliderCameraWindowSize );
@@ -193,6 +190,7 @@ QvkCameraSingle::~QvkCameraSingle()
 
 void QvkCameraSingle::slot_comboboxCameraFormatCurrentIndexChanged( int value )
 {
+    Q_UNUSED(value)
     if ( camera != Q_NULLPTR ) {
         slot_checkBoxCameraOnOff( false );
         slot_checkBoxCameraOnOff( true );
@@ -200,9 +198,23 @@ void QvkCameraSingle::slot_comboboxCameraFormatCurrentIndexChanged( int value )
 }
 
 
+void QvkCameraSingle::slot_comboboxCameraResolutionsCurrentIndexChanged( int value )
+{
+    Q_UNUSED(value)
+    if ( camera != Q_NULLPTR ) {
+            slot_checkBoxCameraOnOff( false );
+            slot_checkBoxCameraOnOff( true );
+    }
+}
+
+
+
 void QvkCameraSingle::slot_comboboxCameraResolutionsInsertValues( int value )
 {
     Q_UNUSED(value)
+
+    disconnect( comboBoxCameraResolution, nullptr, nullptr, nullptr );
+
     comboBoxCameraResolution->clear();
     const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
     for ( int i = 0; i < cameraFormatList.count(); i++ ) {
@@ -216,25 +228,8 @@ void QvkCameraSingle::slot_comboboxCameraResolutionsInsertValues( int value )
             }
         }
     }
-}
 
-
-// Es muß noch geklärt werden wie man die Zwischenwerte von z.b 5 bis 30 ermittelt und dann setzt
-// Diese Funktion dient nur zum üben und hat keine funktion
-void QvkCameraSingle::slot_comboboxCameraFPSInsertValues( QString value )
-{
-    Q_UNUSED(value)
-    comboBoxCameraFPS->clear();
-
-    QVideoFrameFormat::PixelFormat format;
-    format = static_cast<QVideoFrameFormat::PixelFormat>( comboBoxCameraVideoFormat->currentData().toInt() );
-
-    QSize resolution;
-    resolution = comboBoxCameraResolution->currentData().toSize();
-
-    for ( int i = 0; i < cameraDevice.videoFormats().count(); i++ ) {
-//        qDebug() << cameraDevice.videoFormats().at(i).pixelFormat() << cameraDevice.videoFormats().at(i).resolution() << cameraDevice.videoFormats().at(i).minFrameRate() << cameraDevice.videoFormats().at(i).maxFrameRate();
-    }
+    connect( comboBoxCameraResolution, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_comboboxCameraResolutionsCurrentIndexChanged( int ) ) );
 }
 
 
@@ -290,7 +285,13 @@ void QvkCameraSingle::slot_checkBoxCameraOnOff( bool value )
             if ( cameraFormatList.at(i).pixelFormat() == comboBoxCameraVideoFormat->currentData() ) {
                 if ( cameraFormatList.at(i).resolution() == comboBoxCameraResolution->currentData() ) {
                     camera->setCameraFormat( cameraFormatList.at(i) );
-                    qDebug() << cameraFormatList.at(i).pixelFormat() << cameraFormatList.at(i).resolution();
+                    QString width  = QString::number( cameraFormatList.at(i).resolution().width() );
+                    QString height = QString::number( cameraFormatList.at(i).resolution().height() );
+                    qDebug().noquote() << global::nameOutput
+                                       << "[Camera] Start with format:"
+                                       << cameraFormatList.at(i).pixelFormat()
+                                       << "and resolution:"
+                                       << width + "x" + height;
                 }
             }
         }
