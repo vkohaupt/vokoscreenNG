@@ -74,18 +74,18 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     layoutCamera->setStretchFactor( checkBoxCameraOnOff, 2 );
 
     comboBoxCameraVideoFormat = new QComboBox;
-    connect( comboBoxCameraVideoFormat, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_comboboxCameraInsertResolutions( int ) ) );
+    connect( comboBoxCameraVideoFormat, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_comboboxCameraResolutionsInsertValues( int ) ) );
     connect( comboBoxCameraVideoFormat, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_comboboxCameraFormatCurrentIndexChanged( int ) ) );
     layoutCamera->addWidget( comboBoxCameraVideoFormat );
 
     comboBoxCameraResolution = new QComboBox;
-    connect( comboBoxCameraResolution, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_setComboboxCameraFPS( QString ) ) );
+    connect( comboBoxCameraResolution, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_comboboxCameraFPSInsertValues( QString ) ) );
     layoutCamera->addWidget( comboBoxCameraResolution );
 
     // Wird zur Zeit nicht benötigt da Informationen fehlen
-    comboBoxCameraFrame = new QComboBox;
-    layoutCamera->addWidget( comboBoxCameraFrame );
-    comboBoxCameraFrame->hide();
+    comboBoxCameraFPS = new QComboBox;
+    layoutCamera->addWidget( comboBoxCameraFPS );
+    comboBoxCameraFPS->hide();
 
 
     for ( int i = 0; i < cameraDevice.videoFormats().count(); i++ ) {
@@ -200,7 +200,7 @@ void QvkCameraSingle::slot_comboboxCameraFormatCurrentIndexChanged( int value )
 }
 
 
-void QvkCameraSingle::slot_comboboxCameraInsertResolutions( int value )
+void QvkCameraSingle::slot_comboboxCameraResolutionsInsertValues( int value )
 {
     Q_UNUSED(value)
     comboBoxCameraResolution->clear();
@@ -221,10 +221,10 @@ void QvkCameraSingle::slot_comboboxCameraInsertResolutions( int value )
 
 // Es muß noch geklärt werden wie man die Zwischenwerte von z.b 5 bis 30 ermittelt und dann setzt
 // Diese Funktion dient nur zum üben und hat keine funktion
-void QvkCameraSingle::slot_setComboboxCameraFPS( QString value )
+void QvkCameraSingle::slot_comboboxCameraFPSInsertValues( QString value )
 {
     Q_UNUSED(value)
-    comboBoxCameraFrame->clear();
+    comboBoxCameraFPS->clear();
 
     QVideoFrameFormat::PixelFormat format;
     format = static_cast<QVideoFrameFormat::PixelFormat>( comboBoxCameraVideoFormat->currentData().toInt() );

@@ -55,8 +55,8 @@ private slots:
     void slot_toolButtonClicked( bool value );
     void slot_cameraWindowFrameOnOff( bool value );
     void slot_cameraError();
-    void slot_comboboxCameraInsertResolutions( int value );
-    void slot_setComboboxCameraFPS( QString value );
+    void slot_comboboxCameraResolutionsInsertValues( int value );
+    void slot_comboboxCameraFPSInsertValues( QString value );
     void slot_comboboxCameraFormatCurrentIndexChanged( int value );
 
 
@@ -70,7 +70,7 @@ private:
     QCheckBox *checkBoxCameraOnOff;
     QComboBox *comboBoxCameraVideoFormat;
     QComboBox *comboBoxCameraResolution;
-    QComboBox *comboBoxCameraFrame;
+    QComboBox *comboBoxCameraFPS;
     QvkSpezialSlider *sliderCameraWindowSize;
     QvkSpezialSlider *sliderCameraWindowZoom;
     QToolButton *toolButton_camera_view_rectangle;
