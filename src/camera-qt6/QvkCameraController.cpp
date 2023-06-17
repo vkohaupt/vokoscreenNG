@@ -49,6 +49,18 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
     ui->checkBoxCameraGray->deleteLater();
     ui->checkBoxCameraMono->deleteLater();
 
+    // SpacerItems aus GUI löschen
+    for (int i = 0; i < ui->horizontalLayout_65->count(); ++i) {
+        QLayoutItem *layoutItem = ui->horizontalLayout_65->itemAt(i);
+        if (layoutItem->spacerItem()) {
+            ui->horizontalLayout_65->removeItem( layoutItem );
+            // You could also use: layout->takeAt(i);
+            delete layoutItem;
+            --i;
+        }
+    }
+
+
     // Create a vertical layout
     QVBoxLayout *layoutAllCameras = new QVBoxLayout;
     ui->horizontalLayout_63->addLayout( layoutAllCameras );

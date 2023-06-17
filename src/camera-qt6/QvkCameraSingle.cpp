@@ -70,7 +70,7 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     checkBoxCameraOnOff->setText( cameraDevice.description() );
     checkBoxCameraOnOff->setAccessibleName( cameraDevice.id() );
     checkBoxCameraOnOff->setObjectName( "checkBoxCameraOnOff-" + QString::number( counter ) );
-    connect( checkBoxCameraOnOff, SIGNAL( toggled( bool ) ), this, SLOT( slot_checkBoxCameraOnOff( bool ) ) );
+    connect( checkBoxCameraOnOff, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkBoxCameraOnOff( bool ) ) );
     layoutCamera->setStretchFactor( checkBoxCameraOnOff, 2 );
 
     comboBoxCameraVideoFormat = new QComboBox;
@@ -122,8 +122,7 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     toolButton_camera_view_rectangle->setAutoRaise( true );
     toolButton_camera_view_rectangle->setIconSize( QSize( 34, 34 ) );
     toolButton_camera_view_rectangle->setIcon( QIcon( ":/pictures/camera/window-rectangle-off.png" ) );
-    ui->horizontalLayout_65->insertWidget( 1, toolButton_camera_view_rectangle, 1 );
-    connect( toolButton_camera_view_rectangle, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonClicked( bool ) ) );
+    connect( toolButton_camera_view_rectangle, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonRectangleClicked( bool ) ) );
 
     toolButton_camera_view_ellipse = new QToolButton;
     toolButton_camera_view_ellipse->setObjectName( "toolButton_camera_view_ellipse-" + QString::number( counter ) );
@@ -132,8 +131,7 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     toolButton_camera_view_ellipse->setAutoRaise( true );
     toolButton_camera_view_ellipse->setIconSize( QSize( 34, 34 ) );
     toolButton_camera_view_ellipse->setIcon( QIcon( ":/pictures/camera/window-ellipse-off.png" ) );
-    ui->horizontalLayout_65->insertWidget( 2, toolButton_camera_view_ellipse, 1 );
-    connect( toolButton_camera_view_ellipse, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonClicked( bool ) ) );
+    connect( toolButton_camera_view_ellipse, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonEllipseClicked( bool ) ) );
 
     toolButton_camera_view_circle = new QToolButton;
     toolButton_camera_view_circle->setObjectName( "toolButton_camera_view_circle-" + QString::number( counter ) );
@@ -142,12 +140,22 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     toolButton_camera_view_circle->setAutoRaise( true );
     toolButton_camera_view_circle->setIconSize( QSize( 34, 34 ) );
     toolButton_camera_view_circle->setIcon( QIcon( ":/pictures/camera/window-circle-off.png" ) );
-    ui->horizontalLayout_65->insertWidget( 3, toolButton_camera_view_circle, 1 );
-    connect( toolButton_camera_view_circle, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonClicked( bool ) ) );
+    connect( toolButton_camera_view_circle, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonCircleClicked( bool ) ) );
+
+    // Widget zur aufnahme der Toolbutton Rectangle, Ellipse und Circle
+    widgetToolButton = new QWidget;
+    widgetToolButton->setObjectName( "widgetToolButton-" + QString::number( counter ) );
+    widgetToolButton->setCursor( Qt::WaitCursor );
+    ui->horizontalLayout_65->addWidget( widgetToolButton );
+    widgetToolButton->show();
+    QHBoxLayout *widgetLayout = new QHBoxLayout( widgetToolButton );
+    widgetLayout->addWidget( toolButton_camera_view_rectangle );
+    widgetLayout->addWidget( toolButton_camera_view_ellipse );
+    widgetLayout->addWidget( toolButton_camera_view_circle );
 
     checkBoxCameraWindowFrame = new QCheckBox;
     checkBoxCameraWindowFrame->setText( tr( "Remove window frame" ) );
-    checkBoxCameraWindowFrame->setObjectName( "11checkBoxCameraWindowFrame-" + QString::number( counter ) );
+    checkBoxCameraWindowFrame->setObjectName( "checkBoxCameraWindowFrame-" + QString::number( counter ) );
     ui->horizontalLayout_42->insertWidget( 0, checkBoxCameraWindowFrame, 1 );
 
     checkBoxCameraMirrorVertical = new QCheckBox;
@@ -233,42 +241,31 @@ void QvkCameraSingle::slot_comboboxCameraResolutionsInsertValues( int value )
 }
 
 
-void QvkCameraSingle::slot_toolButtonClicked( bool value )
+void QvkCameraSingle::slot_toolButtonRectangleClicked( bool value )
 {
     Q_UNUSED(value)
 
-    if ( toolButton_camera_view_rectangle->objectName().contains( "toolButton_camera_view_rectangle" ) ) {
-        if ( toolButton_camera_view_rectangle->isChecked() == true ) {
-            toolButton_camera_view_rectangle->setIcon( QIcon( ":/pictures/camera/window-rectangle-on.png" ) );
-            toolButton_camera_view_rectangle->setDown( true );
-            toolButton_camera_view_ellipse->setDown( false );
-            toolButton_camera_view_circle->setDown( false );
-        } else {
-            toolButton_camera_view_rectangle->setIcon( QIcon( ":/pictures/camera/window-rectangle-off.png" ) );
-        }
-    }
+    toolButton_camera_view_rectangle->setIcon( QIcon( ":/pictures/camera/window-rectangle-on.png" ) );
+    toolButton_camera_view_ellipse->setIcon( QIcon( ":/pictures/camera/window-ellipse-off.png" ) );
+    toolButton_camera_view_circle->setIcon( QIcon( ":/pictures/camera/window-circle-off.png" ) );
+}
 
-    if ( toolButton_camera_view_ellipse->objectName().contains( "toolButton_camera_view_ellipse" ) ) {
-        if ( toolButton_camera_view_ellipse->isChecked() == true ) {
-            toolButton_camera_view_ellipse->setIcon( QIcon( ":/pictures/camera/window-ellipse-on.png" ) );
-            toolButton_camera_view_ellipse->setDown( true );
-            toolButton_camera_view_rectangle->setDown( false );
-            toolButton_camera_view_circle->setDown( false );
-        } else {
-            toolButton_camera_view_ellipse->setIcon( QIcon( ":/pictures/camera/window-ellipse-off.png" ) );
-        }
-    }
 
-    if ( toolButton_camera_view_circle->objectName().contains( "toolButton_camera_view_circle" ) ) {
-        if ( toolButton_camera_view_circle->isChecked() == true ) {
-            toolButton_camera_view_circle->setIcon( QIcon( ":/pictures/camera/window-circle-on.png" ) );
-            toolButton_camera_view_circle->setDown( true );
-            toolButton_camera_view_rectangle->setDown( false );
-            toolButton_camera_view_ellipse->setDown( false );
-        } else {
-            toolButton_camera_view_circle->setIcon( QIcon( ":/pictures/camera/window-circle-off.png" ) );
-        }
-    }
+void QvkCameraSingle::slot_toolButtonEllipseClicked( bool value )
+{
+    Q_UNUSED(value)
+    toolButton_camera_view_ellipse->setIcon( QIcon( ":/pictures/camera/window-ellipse-on.png" ) );
+    toolButton_camera_view_rectangle->setIcon( QIcon( ":/pictures/camera/window-rectangle-off.png" ) );
+    toolButton_camera_view_circle->setIcon( QIcon( ":/pictures/camera/window-circle-off.png" ) );
+}
+
+
+void QvkCameraSingle::slot_toolButtonCircleClicked( bool value )
+{
+    Q_UNUSED(value)
+    toolButton_camera_view_circle->setIcon( QIcon( ":/pictures/camera/window-circle-on.png" ) );
+    toolButton_camera_view_rectangle->setIcon( QIcon( ":/pictures/camera/window-rectangle-off.png" ) );
+    toolButton_camera_view_ellipse->setIcon( QIcon( ":/pictures/camera/window-ellipse-off.png" ) );
 }
 
 
@@ -378,18 +375,12 @@ void QvkCameraSingle::slot_radioButtonCurrentCameraClicked( bool value )
         listLabel.at(0)->setText( checkBoxCameraOnOff->text() );
     }
 
-    // Hide all Toolbutton from other camera
-    QList<QToolButton *> listToolButton = ui->centralWidget->findChildren<QToolButton *>();
-    if ( listToolButton.empty() == false ) {
-        for ( int i = 0; i < listToolButton.count(); i++ ) {
-            if ( listToolButton.at(i)->objectName().contains( "toolButton_camera_view_rectangle" ) ) {
-                listToolButton.at(i)->hide();
-            }
-            if ( listToolButton.at(i)->objectName().contains( "toolButton_camera_view_ellipse" ) ) {
-                listToolButton.at(i)->hide();
-            }
-            if ( listToolButton.at(i)->objectName().contains( "toolButton_camera_view_circle" ) ) {
-                listToolButton.at(i)->hide();
+     // Hide widgetToolButton from other camera
+    QList<QWidget *> listWidget = ui->centralWidget->findChildren<QWidget *>();
+    if ( listWidget.empty() == false ) {
+        for ( int i = 0; i < listWidget.count(); i++ ) {
+            if ( listWidget.at(i)->objectName().contains( "widgetToolButton-" ) ) {
+                listWidget.at(i)->hide();
             }
         }
     }
@@ -438,6 +429,7 @@ void QvkCameraSingle::slot_radioButtonCurrentCameraClicked( bool value )
     // Show all Widget from current camera
     sliderCameraWindowZoom->show();
     sliderCameraWindowSize->show();
+    widgetToolButton->show();
     toolButton_camera_view_rectangle->show();
     toolButton_camera_view_ellipse->show();
     toolButton_camera_view_circle->show();
@@ -452,6 +444,7 @@ void QvkCameraSingle::slot_radioButtonCurrentCameraClicked( bool value )
 
 void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
 {
+//    qDebug() << toolButton_camera_view_ellipse->isChecked() << toolButton_camera_view_rectangle->isChecked();
     if ( videoFrame.isValid() == false ) {
         return;
     }
@@ -494,33 +487,35 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
         image = image_zoom.scaled( width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
     }
     // Zoom end
-
+*/
 
     // Rectangel
-    if ( ui->toolButton_camera_view_rectangle->isChecked() == true )
+    if ( toolButton_camera_view_rectangle->isChecked() == true )
     {
+//        qDebug() << toolButton_camera_view_ellipse->isChecked() << toolButton_camera_view_rectangle->isChecked();
         if ( vkCameraWindow->isFullScreen() == false )
         {
-            qreal width = image.width();
-            qreal height = image.height();
-            qreal quotient = width / height;
-            int w = ui->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
-            int h = ui->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
-            image = image.scaled( w, h, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+//            qreal width = image.width();
+//            qreal height = image.height();
+//            qreal quotient = width / height;
+//            int w = ui->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
+//            int h = ui->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
+//            image = image.scaled( w, h, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
             vkCameraWindow->setFixedSize( image.width(), image.height() );
-            vkCameraWindow->setNewImage( image );
-            return;
+//            vkCameraWindow->setNewImage( image );
+//            return;
         } else {
-            vkCameraWindow->setNewImage( image );
-            return;
+//            vkCameraWindow->setNewImage( image );
+//            return;
         }
     }
     // Rectangel end
-*/
+
 
     // Ellipse
-    if ( toolButton_camera_view_ellipse->isDown() == true )
+    if ( toolButton_camera_view_ellipse->isChecked() == true )
     {
+//        qDebug() << toolButton_camera_view_ellipse->isChecked() << toolButton_camera_view_rectangle->isChecked();
  /*       if ( vkCameraWindow->isFullScreen() == false ) {
             qreal width = image.width();
             qreal height = image.height();

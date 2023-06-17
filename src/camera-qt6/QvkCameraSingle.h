@@ -52,7 +52,9 @@ private slots:
     void slot_checkBoxCameraOnOff( bool value );
     void slot_videoFrameChanged( QVideoFrame videoFrame );
     void slot_radioButtonCurrentCameraClicked( bool value );
-    void slot_toolButtonClicked( bool value );
+    void slot_toolButtonRectangleClicked( bool value );
+    void slot_toolButtonEllipseClicked( bool value );
+    void slot_toolButtonCircleClicked( bool value );
     void slot_cameraWindowFrameOnOff( bool value );
     void slot_cameraError();
     void slot_comboboxCameraResolutionsInsertValues( int value );
@@ -62,6 +64,7 @@ private slots:
 
 private:
     Ui_formMainWindow *ui;
+
     QCameraDevice cameraDevice;
     QCamera *camera = Q_NULLPTR;
     QMediaCaptureSession *captureSession;
@@ -72,6 +75,7 @@ private:
     QComboBox *comboBoxCameraResolution;
     QvkSpezialSlider *sliderCameraWindowSize;
     QvkSpezialSlider *sliderCameraWindowZoom;
+    QWidget *widgetToolButton;
     QToolButton *toolButton_camera_view_rectangle;
     QToolButton *toolButton_camera_view_ellipse;
     QToolButton *toolButton_camera_view_circle;
