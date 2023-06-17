@@ -145,13 +145,21 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     // Widget zur aufnahme der Toolbutton Rectangle, Ellipse und Circle
     widgetToolButton = new QWidget;
     widgetToolButton->setObjectName( "widgetToolButton-" + QString::number( counter ) );
-    widgetToolButton->setCursor( Qt::WaitCursor );
     ui->horizontalLayout_65->addWidget( widgetToolButton );
     widgetToolButton->show();
     QHBoxLayout *widgetLayout = new QHBoxLayout( widgetToolButton );
+    QSpacerItem *spacerItem_1 = new QSpacerItem( 40, 20, QSizePolicy::Expanding );
+    widgetLayout->addSpacerItem( spacerItem_1 );
     widgetLayout->addWidget( toolButton_camera_view_rectangle );
+    QSpacerItem *spacerItem_2 = new QSpacerItem( 40, 20, QSizePolicy::Preferred );
+    widgetLayout->addSpacerItem( spacerItem_2 );
     widgetLayout->addWidget( toolButton_camera_view_ellipse );
+    QSpacerItem *spacerItem_3 = new QSpacerItem( 40, 20, QSizePolicy::Preferred );
+    widgetLayout->addSpacerItem( spacerItem_3 );
     widgetLayout->addWidget( toolButton_camera_view_circle );
+    QSpacerItem *spacerItem_4 = new QSpacerItem( 40, 20, QSizePolicy::Expanding );
+    widgetLayout->addSpacerItem( spacerItem_4 );
+    // End
 
     checkBoxCameraWindowFrame = new QCheckBox;
     checkBoxCameraWindowFrame->setText( tr( "Remove window frame" ) );
