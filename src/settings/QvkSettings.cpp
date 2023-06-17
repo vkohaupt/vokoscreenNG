@@ -462,6 +462,25 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         }
     }
 
+    QList<QToolButton *> listToolButtonCameraView = ui_mainwindow->centralWidget->findChildren<QToolButton *>( "toolButton_camera_view_" );
+    for ( int i = 0; i < listToolButtonCameraView.count(); i++ ) {
+        if ( listToolButtonCameraView.at(i)->objectName().contains( "toolButton_camera_view_Rectangle" ) ) {
+            if ( settings.value( listToolButtonCameraView.at(i)->objectName() ).toBool() == true ) {
+                listToolButton.at(i)->click();
+            }
+        }
+        if ( listToolButtonCameraView.at(i)->objectName().contains( "toolButton_camera_view_Ellipse" ) ) {
+            if ( settings.value( listToolButtonCameraView.at(i)->objectName() ).toBool() == true ) {
+                listToolButton.at(i)->click();
+            }
+        }
+        if ( listToolButtonCameraView.at(i)->objectName().contains( "toolButton_camera_view_Circlee" ) ) {
+            if ( settings.value( listToolButtonCameraView.at(i)->objectName() ).toBool() == true ) {
+                listToolButtonCameraView.at(i)->click();
+            }
+        }
+    }
+
     QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui_mainwindow->centralWidget->findChildren<QvkSpezialCheckbox *>();
     for ( int i = 0; i < listSpezialCheckbox.count(); i++ )
     {
@@ -567,13 +586,7 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
         }
 
         if ( listToolButton.at(i)->objectName().contains( "toolButton_camera_view" ) ) {
-#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
-            // Qt5
             settings.setValue( listToolButton.at(i)->objectName(), listToolButton.at(i)->isChecked() );
-#else
-            // Qt6
-            settings.setValue( listToolButton.at(i)->objectName(), listToolButton.at(i)->isDown() );
-#endif
         }
 
         if ( listToolButton.at(i)->objectName().contains( "toolButton_magnifier" ) ) {
