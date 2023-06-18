@@ -218,8 +218,7 @@ void QvkCameraSingle::slot_comboboxCameraResolutionsCurrentIndexChanged( int val
 {
     Q_UNUSED(value)
 
-    //    int minimumSize = 100;
-    //    sliderCameraWindowSize->setMaximum( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - minimumSize);
+    sliderCameraWindowSize->setMaximum( comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - 100 );
     sliderCameraWindowZoom->setMaximum( comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() / 2 );
 
     if ( camera != Q_NULLPTR ) {
@@ -250,6 +249,7 @@ void QvkCameraSingle::slot_comboboxCameraResolutionsInsertValues( int value )
         }
     }
 
+    sliderCameraWindowSize->setMaximum( comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - 100 );
     sliderCameraWindowZoom->setMaximum( comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() / 2 );
 
     connect( comboBoxCameraResolution, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_comboboxCameraResolutionsCurrentIndexChanged( int ) ) );
@@ -459,7 +459,6 @@ void QvkCameraSingle::slot_radioButtonCurrentCameraClicked( bool value )
 
 void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
 {
-//    qDebug() << toolButton_camera_view_ellipse->isChecked() << toolButton_camera_view_rectangle->isChecked();
     if ( videoFrame.isValid() == false ) {
         return;
     }
@@ -507,21 +506,20 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
     // Rectangel
     if ( toolButton_camera_view_rectangle->isChecked() == true )
     {
-//        qDebug() << toolButton_camera_view_ellipse->isChecked() << toolButton_camera_view_rectangle->isChecked();
         if ( vkCameraWindow->isFullScreen() == false )
         {
-//            qreal width = image.width();
-//            qreal height = image.height();
-//            qreal quotient = width / height;
-//            int w = ui->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
-//            int h = ui->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
-//            image = image.scaled( w, h, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+            qreal width = image.width();
+            qreal height = image.height();
+            qreal quotient = width / height;
+            int w = comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
+            int h = comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
+            image = image.scaled( w, h, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
             vkCameraWindow->setFixedSize( image.width(), image.height() );
-//            vkCameraWindow->setNewImage( image );
-//            return;
+            vkCameraWindow->setNewImage( image );
+            return;
         } else {
-//            vkCameraWindow->setNewImage( image );
-//            return;
+            vkCameraWindow->setNewImage( image );
+            return;
         }
     }
     // Rectangel end
@@ -530,7 +528,6 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
     // Ellipse
     if ( toolButton_camera_view_ellipse->isChecked() == true )
     {
-//        qDebug() << toolButton_camera_view_ellipse->isChecked() << toolButton_camera_view_rectangle->isChecked();
        if ( vkCameraWindow->isFullScreen() == false ) {
             qreal width = image.width();
             qreal height = image.height();
@@ -556,7 +553,7 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
         }
     }
     // Ellipse end
-/*
+
     // Circle
     if ( toolButton_camera_view_circle->isChecked() == true )
     {
@@ -581,8 +578,8 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
             qreal width = image.width();
             qreal height = image.height();
             qreal quotient = width / height;
-            qreal w = ui->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
-            qreal h = ui->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
+            qreal w = comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
+            qreal h = comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
 
             QPixmap pixmap( h, h );
             pixmap.fill( Qt::transparent );
@@ -613,8 +610,8 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
             qreal width = image.width();
             qreal height = image.height();
             qreal quotient = width / height;
-            qreal w = ui->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
-            qreal h = ui->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
+            qreal w = comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
+            qreal h = comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
 
             QPixmap pixmap( h, h );
             pixmap.fill( Qt::transparent );
@@ -639,7 +636,6 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
 #endif
         }
     }
-*/
     // Circle end
 
     vkCameraWindow->setNewImage( image );

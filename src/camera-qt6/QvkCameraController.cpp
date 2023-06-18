@@ -54,7 +54,6 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
         QLayoutItem *layoutItem = ui->horizontalLayout_65->itemAt(i);
         if (layoutItem->spacerItem()) {
             ui->horizontalLayout_65->removeItem( layoutItem );
-            // You could also use: layout->takeAt(i);
             delete layoutItem;
             --i;
         }
