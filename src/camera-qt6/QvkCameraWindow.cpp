@@ -24,12 +24,14 @@
 #include "global.h"
 
 #include <QDebug>
-#include <QMouseEvent>
 #include <QBitmap>
 
-QvkCameraWindow::QvkCameraWindow( QCheckBox *checkBox )
+
+QvkCameraWindow::QvkCameraWindow( QCheckBox *checkBox, Ui_formMainWindow *ui_surface )
 {
+    ui = ui_surface;
     checkBoxCameraWindowFrame = checkBox;
+
     setWindowFlags( windowFlags() | Qt::WindowStaysOnTopHint );
     setWindowIcon( QIcon( QString::fromUtf8( ":/pictures/logo/logo.png" ) ) );
     setWindowTitle( QString( tr( "Camera") ) + " " + global::version );
@@ -47,6 +49,22 @@ void QvkCameraWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
     emit signal_cameraWindow_close( false );
+}
+
+
+void QvkCameraWindow::resizeEvent( QResizeEvent *event )
+{
+    Q_UNUSED(event);
+    if ( isFullScreen() == true )
+    {
+        //        vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setText( tr( "Switch to Window" ) );
+    }
+    else
+    {
+        //        vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setText( tr( "Switch to Fullscreen" ) );
+        ui->labelCameraWindowSize->setText( QString::number( width() ) + "x" + QString::number( height() ) );
+        //        vkCameraSettingsDialog->ui->labelCameraWindowSize->setText( QString::number( width() ) + "x" + QString::number( height() ) );
+    }
 }
 
 

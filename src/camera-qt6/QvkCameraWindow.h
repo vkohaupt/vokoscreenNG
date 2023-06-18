@@ -23,23 +23,28 @@
 #ifndef QVKCAMERAWINDOW_H
 #define QVKCAMERAWINDOW_H
 
-//#include "ui_formMainWindow.h"
+#include "ui_formMainWindow.h"
 //#include "ui_camerasettingsdialog.h"
 
 //#include "camerasettingsdialog.h"
 #include "QvkSpezialSlider.h"
 
 #include <QWidget>
-#include <QPaintEvent>
+#include <QImage>
 #include <QPainter>
 #include <QCheckBox>
+#include <QResizeEvent>
+#include <QCloseEvent>
+#include <QPaintEvent>
+#include <QMouseEvent>
+#include <QKeyEvent>
 
 class QvkCameraWindow : public QWidget
 {
     Q_OBJECT
 
 public:
-    QvkCameraWindow(QCheckBox *checkBox);
+    QvkCameraWindow( QCheckBox *checkBox, Ui_formMainWindow *ui_surface );
     virtual ~QvkCameraWindow();
 //    Ui_cameraSettingsDialog *uiCameraSettingsDialog;
 //    cameraSettingsDialog *vkCameraSettingsDialog;
@@ -48,13 +53,14 @@ public:
 
 
 private:
-//   Ui_formMainWindow *ui_formMainWindow;
+   Ui_formMainWindow *ui;
 //   bool mousePressed = false;
 //   int mouseLocal_X;
 //   int mouseLocal_Y;
    QImage image;
    QRect rectCloseButton;
    QCheckBox *checkBoxCameraWindowFrame;
+
 
 public slots:
 
@@ -68,7 +74,7 @@ protected:
 //    void mouseDoubleClickEvent( QMouseEvent *event );
 //    void keyPressEvent( QKeyEvent *event );
 //    void mousePressEvent(QMouseEvent *event);
-//    void resizeEvent(QResizeEvent *event);
+    void resizeEvent(QResizeEvent *event);
 //    void mouseReleaseEvent(QMouseEvent *event);
 //    void mouseMoveEvent(QMouseEvent *event);
     void paintEvent( QPaintEvent *event );

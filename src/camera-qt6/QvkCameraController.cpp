@@ -59,7 +59,6 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
         }
     }
 
-
     // Create a vertical layout
     QVBoxLayout *layoutAllCameras = new QVBoxLayout;
     ui->horizontalLayout_63->addLayout( layoutAllCameras );
