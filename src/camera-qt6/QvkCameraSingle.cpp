@@ -59,6 +59,27 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
         }
     }
 
+    sliderCameraWindowSize = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_45->insertWidget( 0, sliderCameraWindowSize );
+    sliderCameraWindowSize->setObjectName( "sliderCameraWindowSize-" + QString::number( counter ) );
+    sliderCameraWindowSize->setMinimum( 0 );
+    sliderCameraWindowSize->setMaximum( 1 );
+    sliderCameraWindowSize->setValue( 0 );
+    sliderCameraWindowSize->show();
+    sliderCameraWindowSize->setShowValue( false );
+    sliderCameraWindowSize->setBigHandel( true );
+    sliderCameraWindowSize->setEnabled( true );
+
+    sliderCameraWindowZoom = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_zoom->insertWidget( 0, sliderCameraWindowZoom );
+    sliderCameraWindowZoom->setObjectName( "sliderCameraWindowZoom-" + QString::number( counter ) );
+    sliderCameraWindowZoom->setMinimum( 0 );
+    sliderCameraWindowZoom->setMaximum( 1 );
+    sliderCameraWindowZoom->setValue( 0 );
+    sliderCameraWindowZoom->show();
+    sliderCameraWindowZoom->setShowValue( true );
+    sliderCameraWindowZoom->setEnabled( true );
+
     radioButtonCamera = new QRadioButton;
     layoutCamera->addWidget( radioButtonCamera );
     radioButtonCamera->setObjectName( "radioButtonCamera-" + QString::number( counter ) );
@@ -92,27 +113,6 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
             comboBoxCameraVideoFormat->addItem( format, cameraDevice.videoFormats().at(i).pixelFormat() ); // bei der Philips wird der Wert 17 für YUYV eingetragen und für JPEG der Wert 29
         }
     }
-
-    sliderCameraWindowSize = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_45->insertWidget( 0, sliderCameraWindowSize );
-    sliderCameraWindowSize->setObjectName( "sliderCameraWindowSize-" + QString::number( counter ) );
-    sliderCameraWindowSize->setMinimum( 0 );
-    sliderCameraWindowSize->setMaximum( 1 );
-    sliderCameraWindowSize->setValue( 0 );
-    sliderCameraWindowSize->show();
-    sliderCameraWindowSize->setShowValue( false );
-    sliderCameraWindowSize->setBigHandel( true );
-    sliderCameraWindowSize->setEnabled( true );
-
-    sliderCameraWindowZoom = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_zoom->insertWidget( 0, sliderCameraWindowZoom );
-    sliderCameraWindowZoom->setObjectName( "sliderCameraWindowZoom-" + QString::number( counter ) );
-    sliderCameraWindowZoom->setMinimum( 0 );
-    sliderCameraWindowZoom->setMaximum( 1 );
-    sliderCameraWindowZoom->setValue( 0 );
-    sliderCameraWindowZoom->show();
-    sliderCameraWindowZoom->setShowValue( true );
-    sliderCameraWindowZoom->setEnabled( true );
 
     toolButton_camera_view_rectangle = new QToolButton;
     toolButton_camera_view_rectangle->setObjectName( "toolButton_camera_view_rectangle-" + QString::number( counter ) );
@@ -217,6 +217,11 @@ void QvkCameraSingle::slot_comboboxCameraFormatCurrentIndexChanged( int value )
 void QvkCameraSingle::slot_comboboxCameraResolutionsCurrentIndexChanged( int value )
 {
     Q_UNUSED(value)
+
+    //    int minimumSize = 100;
+    //    sliderCameraWindowSize->setMaximum( ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - minimumSize);
+    sliderCameraWindowZoom->setMaximum( comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() / 2 );
+
     if ( camera != Q_NULLPTR ) {
             slot_checkBoxCameraOnOff( false );
             slot_checkBoxCameraOnOff( true );
@@ -244,6 +249,8 @@ void QvkCameraSingle::slot_comboboxCameraResolutionsInsertValues( int value )
             }
         }
     }
+
+    sliderCameraWindowZoom->setMaximum( comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() / 2 );
 
     connect( comboBoxCameraResolution, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_comboboxCameraResolutionsCurrentIndexChanged( int ) ) );
 }
@@ -344,13 +351,13 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
 
 #ifdef Q_OS_WIN
         if ( value == true ) {
-            cameraWindow->setWindowFlag( Qt::Window, false );
-            cameraWindow->setWindowFlag( Qt::ToolTip, true );
+            vkCameraWindow->setWindowFlag( Qt::Window, false );
+            vkCameraWindow->setWindowFlag( Qt::ToolTip, true );
         }
 
         if ( value == false ) {
-            cameraWindow->setWindowFlag( Qt::Window, true );
-            cameraWindow->setWindowFlag( Qt::ToolTip, false );
+            vkCameraWindow->setWindowFlag( Qt::Window, true );
+            vkCameraWindow->setWindowFlag( Qt::ToolTip, false );
         }
 #endif
 
@@ -479,7 +486,7 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
     if ( checkBoxCameraMono->isChecked() == true ) {
         image = image.convertToFormat( QImage::Format_Mono );
     }
-/*
+
     // Zoom
     if ( sliderCameraWindowZoom->value() > 0 )
     {
@@ -495,7 +502,7 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
         image = image_zoom.scaled( width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
     }
     // Zoom end
-*/
+
 
     // Rectangel
     if ( toolButton_camera_view_rectangle->isChecked() == true )
@@ -524,14 +531,14 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
     if ( toolButton_camera_view_ellipse->isChecked() == true )
     {
 //        qDebug() << toolButton_camera_view_ellipse->isChecked() << toolButton_camera_view_rectangle->isChecked();
- /*       if ( vkCameraWindow->isFullScreen() == false ) {
+       if ( vkCameraWindow->isFullScreen() == false ) {
             qreal width = image.width();
             qreal height = image.height();
             qreal quotient = width / height;
-            int w = ui->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
-            int h = ui->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
+            int w = comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
+            int h = comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
             image = image.scaled( w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-        } */
+        }
         QPixmap pixmap( image.width(), image.height() );
         pixmap.fill( Qt::transparent );
         QPainter painter;
