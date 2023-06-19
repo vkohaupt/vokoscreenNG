@@ -55,9 +55,9 @@ public:
 
 private:
    Ui_formMainWindow *ui;
-//   bool mousePressed = false;
-//   int mouseLocal_X;
-//   int mouseLocal_Y;
+   bool mousePressed = false;
+   int mouseLocal_X;
+   int mouseLocal_Y;
    QImage image;
    QRect rectCloseButton;
    QCheckBox *checkBoxCameraWindowFrame;
@@ -72,12 +72,12 @@ private slots:
 
 protected:
     void closeEvent(QCloseEvent *event);
-//    void mouseDoubleClickEvent( QMouseEvent *event );
-//    void keyPressEvent( QKeyEvent *event );
-//    void mousePressEvent(QMouseEvent *event);
+    void mouseDoubleClickEvent( QMouseEvent *event );
+    void keyPressEvent( QKeyEvent *event );
+    void mousePressEvent(QMouseEvent *event);
     void resizeEvent(QResizeEvent *event);
-//    void mouseReleaseEvent(QMouseEvent *event);
-//    void mouseMoveEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
     void paintEvent( QPaintEvent *event );
 
 signals:
