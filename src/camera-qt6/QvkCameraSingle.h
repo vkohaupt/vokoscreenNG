@@ -32,6 +32,7 @@
 #include <QCameraDevice>
 #include <QVideoSink>
 #include <QMediaCaptureSession>
+#include <QLabel>
 
 
 class QvkCameraSingle : public QObject
@@ -60,6 +61,7 @@ private slots:
     void slot_comboboxCameraResolutionsInsertValues( int value );
     void slot_comboboxCameraFormatCurrentIndexChanged( int value );
     void slot_comboboxCameraResolutionsCurrentIndexChanged( int value );
+    void slot_setlabelCameraWindowSize();
 
 
 private:
@@ -74,6 +76,7 @@ private:
     QComboBox *comboBoxCameraVideoFormat;
     QComboBox *comboBoxCameraResolution;
     QvkSpezialSlider *sliderCameraWindowSize;
+    QLabel *labelCameraWindowSize;
     QvkSpezialSlider *sliderCameraWindowZoom;
     QWidget *widgetToolButton;
     QToolButton *toolButton_camera_view_rectangle;

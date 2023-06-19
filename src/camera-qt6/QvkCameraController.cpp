@@ -39,6 +39,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
     ui->checkBoxCameraOnOff->deleteLater();
     ui->comboBoxCamera->deleteLater();
     ui->comboBoxCameraResolution->deleteLater();
+    ui->labelCameraWindowSize->deleteLater();
     ui->toolButton_camera_view_rectangle->deleteLater();
     ui->toolButton_camera_view_ellipse->deleteLater();
     ui->toolButton_camera_view_circle->deleteLater();

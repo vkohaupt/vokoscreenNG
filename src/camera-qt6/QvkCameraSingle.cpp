@@ -59,6 +59,11 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
         }
     }
 
+    labelCameraWindowSize = new QLabel;
+    ui->horizontalLayout_66->addWidget( labelCameraWindowSize );
+    labelCameraWindowSize->setObjectName( "labelCameraWindowSize-" + QString::number( counter ) );
+    labelCameraWindowSize->setText( "---x---" );
+
     sliderCameraWindowSize = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_45->insertWidget( 0, sliderCameraWindowSize );
     sliderCameraWindowSize->setObjectName( "sliderCameraWindowSize-" + QString::number( counter ) );
@@ -191,9 +196,11 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     checkBoxCameraMono->setObjectName( "checkBoxCameraMono-" + QString::number( counter )  );
     ui->horizontalLayout_14->insertWidget( 2, checkBoxCameraMono, 2 );
 
-    vkCameraWindow = new QvkCameraWindow( checkBoxCameraWindowFrame, ui );
+    vkCameraWindow = new QvkCameraWindow( ui, checkBoxCameraWindowFrame, labelCameraWindowSize  );
+    vkCameraWindow->setObjectName( "vkCameraWindow-" + QString::number( counter ));
     connect( vkCameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
     connect( checkBoxCameraWindowFrame, SIGNAL( clicked( bool ) ), this, SLOT( slot_cameraWindowFrameOnOff( bool ) ) );
+//    connect( sliderCameraWindowSize, SIGNAL( valueChanged( int ) ), this, SLOT( slot_setlabelCameraWindowSize() ) );
 
     slot_radioButtonCurrentCameraClicked( false );
 }
@@ -201,6 +208,12 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
 
 QvkCameraSingle::~QvkCameraSingle()
 {
+}
+
+
+void QvkCameraSingle::slot_setlabelCameraWindowSize()
+{
+    labelCameraWindowSize->setText( QString::number( vkCameraWindow->width() ) + "x" + QString::number( vkCameraWindow->height() ) );
 }
 
 
@@ -438,12 +451,22 @@ void QvkCameraSingle::slot_radioButtonCurrentCameraClicked( bool value )
         }
     }
 
+    QList<QLabel *> listLabelCameraWindowSize = ui->centralWidget->findChildren<QLabel *>();
+    if ( listLabelCameraWindowSize.empty() == false ) {
+        for ( int i = 0; i < listLabelCameraWindowSize.count(); i++ ) {
+            if ( listLabelCameraWindowSize.at(i)->objectName().contains( "labelCameraWindowSize" ) ) {
+                listLabelCameraWindowSize.at(i)->hide();
+            }
+        }
+    }
+
     // If the config emmpty the last camera is set
     radioButtonCamera->setChecked( true );
 
     // Show all Widget from current camera
     sliderCameraWindowZoom->show();
     sliderCameraWindowSize->show();
+    labelCameraWindowSize->show();
     widgetToolButton->show();
     toolButton_camera_view_rectangle->show();
     toolButton_camera_view_ellipse->show();

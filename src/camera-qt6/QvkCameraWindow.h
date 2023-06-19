@@ -33,6 +33,7 @@
 #include <QImage>
 #include <QPainter>
 #include <QCheckBox>
+#include <QLabel>
 #include <QResizeEvent>
 #include <QCloseEvent>
 #include <QPaintEvent>
@@ -44,7 +45,7 @@ class QvkCameraWindow : public QWidget
     Q_OBJECT
 
 public:
-    QvkCameraWindow( QCheckBox *checkBox, Ui_formMainWindow *ui_surface );
+    QvkCameraWindow( Ui_formMainWindow *ui_surface, QCheckBox *checkBox, QLabel *m_labelCameraWindowSize );
     virtual ~QvkCameraWindow();
 //    Ui_cameraSettingsDialog *uiCameraSettingsDialog;
 //    cameraSettingsDialog *vkCameraSettingsDialog;
@@ -60,7 +61,7 @@ private:
    QImage image;
    QRect rectCloseButton;
    QCheckBox *checkBoxCameraWindowFrame;
-
+   QLabel *labelCameraWindowSize;
 
 public slots:
 

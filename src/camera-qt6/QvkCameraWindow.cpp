@@ -27,10 +27,11 @@
 #include <QBitmap>
 
 
-QvkCameraWindow::QvkCameraWindow( QCheckBox *checkBox, Ui_formMainWindow *ui_surface )
+QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, QCheckBox *checkBox, QLabel *m_labelCameraWindowSize )
 {
     ui = ui_surface;
     checkBoxCameraWindowFrame = checkBox;
+    labelCameraWindowSize = m_labelCameraWindowSize;
 
     setWindowFlags( windowFlags() | Qt::WindowStaysOnTopHint );
     setWindowIcon( QIcon( QString::fromUtf8( ":/pictures/logo/logo.png" ) ) );
@@ -55,15 +56,12 @@ void QvkCameraWindow::closeEvent( QCloseEvent *event )
 void QvkCameraWindow::resizeEvent( QResizeEvent *event )
 {
     Q_UNUSED(event);
-    if ( isFullScreen() == true )
-    {
+    if ( isFullScreen() == true ) {
         //        vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setText( tr( "Switch to Window" ) );
-    }
-    else
-    {
+    } else {
         //        vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setText( tr( "Switch to Fullscreen" ) );
-        ui->labelCameraWindowSize->setText( QString::number( width() ) + "x" + QString::number( height() ) );
         //        vkCameraSettingsDialog->ui->labelCameraWindowSize->setText( QString::number( width() ) + "x" + QString::number( height() ) );
+        labelCameraWindowSize->setText( QString::number( width() ) + "x" + QString::number( height() ) );
     }
 }
 
