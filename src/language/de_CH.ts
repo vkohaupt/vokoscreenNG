@@ -244,11 +244,11 @@
     </message>
     <message>
         <source>Invert</source>
-        <translation>invertiert</translation>
+        <translation>Invertiert</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>grau</translation>
+        <translation>Grau</translation>
     </message>
     <message>
         <source>Black-and-white</source>
@@ -419,11 +419,11 @@
     </message>
     <message>
         <source>Invert</source>
-        <translation>invertiert</translation>
+        <translation>Invertiert</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>grau</translation>
+        <translation>Grau</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
