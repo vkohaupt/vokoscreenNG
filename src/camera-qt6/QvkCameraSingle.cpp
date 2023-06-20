@@ -112,13 +112,6 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     connect( comboBoxCameraResolution,  SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_comboboxCameraResolutionsCurrentIndexChanged( int ) ) );
     layoutCamera->addWidget( comboBoxCameraResolution );
 
-    for ( int i = 0; i < cameraDevice.videoFormats().count(); i++ ) {
-        QString format = QVideoFrameFormat::pixelFormatToString( cameraDevice.videoFormats().at(i).pixelFormat() ).toUpper();
-        if ( comboBoxCameraVideoFormat->findText( format ) == -1 ) {
-            comboBoxCameraVideoFormat->addItem( format, cameraDevice.videoFormats().at(i).pixelFormat() ); // bei der Philips wird der Wert 17 für YUYV eingetragen und für JPEG der Wert 29
-        }
-    }
-
     toolButton_camera_view_rectangle = new QToolButton;
     toolButton_camera_view_rectangle->setObjectName( "toolButton_camera_view_rectangle-" + QString::number( counter ) );
     toolButton_camera_view_rectangle->setCheckable( true );
@@ -196,11 +189,53 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     checkBoxCameraMono->setObjectName( "checkBoxCameraMono-" + QString::number( counter )  );
     ui->horizontalLayout_14->insertWidget( 2, checkBoxCameraMono, 2 );
 
-    vkCameraWindow = new QvkCameraWindow( ui, checkBoxCameraWindowFrame, labelCameraWindowSize  );
+    vkCameraWindow = new QvkCameraWindow( ui, checkBoxCameraWindowFrame, labelCameraWindowSize );
     vkCameraWindow->setObjectName( "vkCameraWindow-" + QString::number( counter ));
     connect( vkCameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
     connect( checkBoxCameraWindowFrame, SIGNAL( clicked( bool ) ), this, SLOT( slot_cameraWindowFrameOnOff( bool ) ) );
-//    connect( sliderCameraWindowSize, SIGNAL( valueChanged( int ) ), this, SLOT( slot_setlabelCameraWindowSize() ) );
+
+    vkCameraSettingsDialog = new cameraSettingsDialog;
+    connect( sliderCameraWindowSize, SIGNAL( rangeChanged( int, int ) ), vkCameraSettingsDialog->dialog_sliderCameraWindowSize, SLOT( setRange( int, int ) ) );
+    connect( sliderCameraWindowSize, SIGNAL( valueChanged( int ) ),      vkCameraSettingsDialog->dialog_sliderCameraWindowSize, SLOT( setValue( int ) ) );
+    connect( sliderCameraWindowZoom, SIGNAL( rangeChanged( int, int ) ), vkCameraSettingsDialog->dialog_sliderCameraWindowZoom, SLOT( setRange( int, int ) ) );
+    connect( sliderCameraWindowZoom, SIGNAL( valueChanged( int ) ),      vkCameraSettingsDialog->dialog_sliderCameraWindowZoom, SLOT( setValue( int ) ) );
+    connect( vkCameraSettingsDialog->dialog_sliderCameraWindowSize, SIGNAL( valueChanged( int ) ), sliderCameraWindowSize, SLOT( setValue( int ) ) );
+    connect( vkCameraSettingsDialog->dialog_sliderCameraWindowZoom, SIGNAL( valueChanged( int ) ), sliderCameraWindowZoom, SLOT( setValue( int ) ) );
+
+    connect( checkBoxCameraMirrorHorizontal, SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraMirrorHorizontal, SLOT( setChecked( bool ) ) );
+    connect( checkBoxCameraMirrorVertical,   SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraMirrorVertical,   SLOT( setChecked( bool ) ) );
+    connect( checkBoxCameraInvert,           SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraInvert,           SLOT( setChecked( bool ) ) );
+    connect( checkBoxCameraGray,             SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraGray,             SLOT( setChecked( bool ) ) );
+    connect( checkBoxCameraMono,             SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraMono,             SLOT( setChecked( bool ) ) );
+    connect( checkBoxCameraWindowFrame,      SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame,      SLOT( setChecked( bool ) ) );
+    connect( comboBoxCameraResolution, SIGNAL( currentIndexChanged( int ) ), vkCameraSettingsDialog->ui->comboBoxCameraResolution,  SLOT( setCurrentIndex( int ) ) );
+    connect( toolButton_camera_view_rectangle, SIGNAL( clicked( bool ) ), vkCameraSettingsDialog->ui->toolButton_camera_view_rectangle, SLOT( setChecked( bool )) );
+    connect( toolButton_camera_view_ellipse,   SIGNAL( clicked( bool ) ), vkCameraSettingsDialog->ui->toolButton_camera_view_ellipse,   SLOT( setChecked( bool ) ) );
+    connect( toolButton_camera_view_circle,    SIGNAL( clicked( bool ) ), vkCameraSettingsDialog->ui->toolButton_camera_view_circle,    SLOT( setChecked( bool ) ) );
+
+    connect( vkCameraSettingsDialog->ui->checkBoxCameraMirrorHorizontal, SIGNAL( toggled( bool ) ), checkBoxCameraMirrorHorizontal, SLOT( setChecked( bool ) ) );
+    connect( vkCameraSettingsDialog->ui->checkBoxCameraMirrorVertical,   SIGNAL( toggled( bool ) ), checkBoxCameraMirrorVertical,   SLOT( setChecked( bool ) ) );
+    connect( vkCameraSettingsDialog->ui->checkBoxCameraInvert,           SIGNAL( toggled( bool ) ), checkBoxCameraInvert,           SLOT( setChecked( bool ) ) );
+    connect( vkCameraSettingsDialog->ui->checkBoxCameraGray,             SIGNAL( toggled( bool ) ), checkBoxCameraGray,             SLOT( setChecked( bool ) ) );
+    connect( vkCameraSettingsDialog->ui->checkBoxCameraMono,             SIGNAL( toggled( bool ) ), checkBoxCameraMono,             SLOT( setChecked( bool ) ) );
+    connect( vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame,      SIGNAL( toggled( bool ) ), checkBoxCameraWindowFrame,      SLOT( setChecked( bool ) ) );
+    connect( vkCameraSettingsDialog->ui->comboBoxCameraResolution,  SIGNAL( currentIndexChanged( int ) ), comboBoxCameraResolution, SLOT( setCurrentIndex( int ) ) );
+    connect( vkCameraSettingsDialog->ui->toolButton_camera_view_rectangle, SIGNAL( clicked( bool ) ), toolButton_camera_view_rectangle, SLOT( setChecked( bool ) ) );
+    connect( vkCameraSettingsDialog->ui->toolButton_camera_view_ellipse,   SIGNAL( clicked( bool ) ), toolButton_camera_view_ellipse,   SLOT( setChecked( bool ) ) );
+    connect( vkCameraSettingsDialog->ui->toolButton_camera_view_circle,    SIGNAL( clicked( bool ) ), toolButton_camera_view_circle,    SLOT( setChecked( bool ) ) );
+    connect( vkCameraSettingsDialog->ui->buttonBox, SIGNAL( accepted() ), vkCameraSettingsDialog, SLOT( close() ) );
+    connect( vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_switchToFullscreen() ) );
+
+    connect( vkCameraWindow, SIGNAL( signal_mousePressEvent( QMouseEvent* ) ), this, SLOT( slot_vkCameraSettingsDialogShow()) );
+
+    for ( int i = 0; i < cameraDevice.videoFormats().count(); i++ ) {
+        QString format = QVideoFrameFormat::pixelFormatToString( cameraDevice.videoFormats().at(i).pixelFormat() ).toUpper();
+        if ( comboBoxCameraVideoFormat->findText( format ) == -1 ) {
+            comboBoxCameraVideoFormat->addItem( format, cameraDevice.videoFormats().at(i).pixelFormat() ); // bei der Philips wird der Wert 17 für YUYV eingetragen und für JPEG der Wert 29
+            vkCameraSettingsDialog->ui->comboBoxCameraVideoFormat->addItem( format, cameraDevice.videoFormats().at(i).pixelFormat() );
+        }
+    }
+
 
     slot_radioButtonCurrentCameraClicked( false );
 }
@@ -211,9 +246,30 @@ QvkCameraSingle::~QvkCameraSingle()
 }
 
 
-void QvkCameraSingle::slot_setlabelCameraWindowSize()
+void QvkCameraSingle::slot_vkCameraSettingsDialogShow()
 {
-    labelCameraWindowSize->setText( QString::number( vkCameraWindow->width() ) + "x" + QString::number( vkCameraWindow->height() ) );
+    vkCameraSettingsDialog->show();
+    if ( vkCameraWindow->isFullScreen() == true ) {
+        vkCameraSettingsDialog->ui->widgetCameraWindowSize->hide();
+        vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame->hide();
+        vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setText( tr( "Switch to Window" ) );
+    } else {
+        vkCameraSettingsDialog->ui->widgetCameraWindowSize->show();
+        vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame->show();
+        vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setText( tr( "Switch to Fullscreen" ) );
+    }
+}
+
+
+void QvkCameraSingle::slot_switchToFullscreen()
+{
+    if ( vkCameraWindow->isFullScreen() == true ) {
+        vkCameraSettingsDialog->close();
+        vkCameraWindow->showNormal();
+    } else {
+        vkCameraSettingsDialog->close();
+        vkCameraWindow->setWindowState( Qt::WindowFullScreen );
+    }
 }
 
 
@@ -249,6 +305,7 @@ void QvkCameraSingle::slot_comboboxCameraResolutionsInsertValues( int value )
     disconnect( comboBoxCameraResolution, nullptr, nullptr, nullptr );
 
     comboBoxCameraResolution->clear();
+    vkCameraSettingsDialog->ui->comboBoxCameraResolution->clear();
     const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
     for ( int i = 0; i < cameraFormatList.count(); i++ ) {
         if ( cameraFormatList.at(i).pixelFormat() == comboBoxCameraVideoFormat->currentData() ) {
@@ -258,12 +315,15 @@ void QvkCameraSingle::slot_comboboxCameraResolutionsInsertValues( int value )
             resolution.append( QString::number( cameraFormatList.at(i).resolution().height() ) );
             if ( comboBoxCameraResolution->findText( resolution ) == -1 ) {
                 comboBoxCameraResolution->addItem( resolution, cameraFormatList.at(i).resolution() );
+                vkCameraSettingsDialog->ui->comboBoxCameraResolution->addItem( resolution, cameraDevice.videoFormats().at(i).pixelFormat() );
             }
         }
     }
 
     sliderCameraWindowSize->setMaximum( comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - 100 );
     sliderCameraWindowZoom->setMaximum( comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() / 2 );
+    vkCameraSettingsDialog->dialog_sliderCameraWindowSize->setMaximum( comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - 100 );
+    vkCameraSettingsDialog->dialog_sliderCameraWindowZoom->setMaximum( comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() / 2 );
 
     connect( comboBoxCameraResolution, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_comboboxCameraResolutionsCurrentIndexChanged( int ) ) );
 }

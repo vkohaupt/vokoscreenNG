@@ -24,9 +24,9 @@
 #define QVKCAMERAWINDOW_H
 
 #include "ui_formMainWindow.h"
-//#include "ui_camerasettingsdialog.h"
+#include "ui_camerasettingsdialog.h"
 
-//#include "camerasettingsdialog.h"
+#include "camerasettingsdialog.h"
 #include "QvkSpezialSlider.h"
 
 #include <QWidget>
@@ -45,7 +45,7 @@ class QvkCameraWindow : public QWidget
     Q_OBJECT
 
 public:
-    QvkCameraWindow( Ui_formMainWindow *ui_surface, QCheckBox *checkBox, QLabel *m_labelCameraWindowSize );
+    QvkCameraWindow(Ui_formMainWindow *ui_surface, QCheckBox *checkBox, QLabel *m_labelCameraWindowSize );
     virtual ~QvkCameraWindow();
 //    Ui_cameraSettingsDialog *uiCameraSettingsDialog;
 //    cameraSettingsDialog *vkCameraSettingsDialog;
@@ -82,6 +82,7 @@ protected:
 
 signals:
     void signal_cameraWindow_close( bool );
+    void signal_mousePressEvent( QMouseEvent *event );
 
 };
 

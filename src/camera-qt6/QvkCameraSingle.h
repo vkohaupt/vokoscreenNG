@@ -26,6 +26,7 @@
 #include "ui_formMainWindow.h"
 #include "QvkSpezialSlider.h"
 #include "QvkCameraWindow.h"
+#include "camerasettingsdialog.h"
 
 #include <QObject>
 #include <QCamera>
@@ -44,6 +45,7 @@ public:
     virtual ~QvkCameraSingle();
     QRadioButton *radioButtonCamera;
     QvkCameraWindow *vkCameraWindow;
+    cameraSettingsDialog *vkCameraSettingsDialog;
 
 
 public slots:
@@ -61,7 +63,8 @@ private slots:
     void slot_comboboxCameraResolutionsInsertValues( int value );
     void slot_comboboxCameraFormatCurrentIndexChanged( int value );
     void slot_comboboxCameraResolutionsCurrentIndexChanged( int value );
-    void slot_setlabelCameraWindowSize();
+    void slot_vkCameraSettingsDialogShow();
+    void slot_switchToFullscreen();
 
 
 private:

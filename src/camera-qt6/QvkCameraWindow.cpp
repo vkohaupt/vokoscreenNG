@@ -27,12 +27,13 @@
 #include <QBitmap>
 
 
-QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, QCheckBox *checkBox, QLabel *m_labelCameraWindowSize )
+QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface,
+                                 QCheckBox *checkBox,
+                                 QLabel *m_labelCameraWindowSize )
 {
     ui = ui_surface;
     checkBoxCameraWindowFrame = checkBox;
     labelCameraWindowSize = m_labelCameraWindowSize;
-
     setWindowFlags( windowFlags() | Qt::WindowStaysOnTopHint );
     setWindowIcon( QIcon( QString::fromUtf8( ":/pictures/logo/logo.png" ) ) );
     setWindowTitle( QString( tr( "Camera") ) + " " + global::version );
@@ -168,13 +169,7 @@ void QvkCameraWindow::closeEvent( QCloseEvent *event )
 void QvkCameraWindow::resizeEvent( QResizeEvent *event )
 {
     Q_UNUSED(event);
-    if ( isFullScreen() == true ) {
-        //        vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setText( tr( "Switch to Window" ) );
-    } else {
-        //        vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen->setText( tr( "Switch to Fullscreen" ) );
-        //        vkCameraSettingsDialog->ui->labelCameraWindowSize->setText( QString::number( width() ) + "x" + QString::number( height() ) );
-        labelCameraWindowSize->setText( QString::number( width() ) + "x" + QString::number( height() ) );
-    }
+    labelCameraWindowSize->setText( QString::number( width() ) + "x" + QString::number( height() ) );
 }
 
 
@@ -202,7 +197,6 @@ void QvkCameraWindow::mouseDoubleClickEvent( QMouseEvent *event )
             showNormal();
         } else {
             setWindowState( Qt::WindowFullScreen );
-            //            vkCameraSettingsDialog->close();
         }
     }
 }
@@ -214,29 +208,11 @@ void QvkCameraWindow::mousePressEvent( QMouseEvent *event )
         close();
         return;
     }
-/*
-    if ( event->button() == Qt::RightButton )
-    {
-        if ( vkCameraSettingsDialog->isVisible() ) {
-            vkCameraSettingsDialog->close();
-        } else {
-            vkCameraSettingsDialog->show();
-            if ( isFullScreen() == true )
-            {
-                vkCameraSettingsDialog->ui->widgetCameraWindowSize->hide();
-                vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame->hide();
-            } else {
-                vkCameraSettingsDialog->ui->widgetCameraWindowSize->show();
-                vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame->show();
-            }
-        }
-        return;
+
+    if ( event->button() == Qt::RightButton ) {
+        emit signal_mousePressEvent( event );
     }
 
-    if ( isFullScreen() == true ) {
-        vkCameraSettingsDialog->close();
-    }
-*/
     if ( ( checkBoxCameraWindowFrame->isChecked() == true ) and ( event->button() == Qt::LeftButton ) and ( isFullScreen() == false ) ) {
         QPixmap pixmap( ":/pictures/cursor/size_all.png" );
         QCursor cursor( pixmap );
