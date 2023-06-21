@@ -191,7 +191,7 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
 
     vkCameraWindow = new QvkCameraWindow( ui, checkBoxCameraWindowFrame );
     vkCameraWindow->setObjectName( "vkCameraWindow-" + QString::number( counter ));
-    connect( vkCameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
+    connect( vkCameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), checkBoxCameraOnOff, SLOT( click() ) );
     connect( checkBoxCameraWindowFrame, SIGNAL( clicked( bool ) ), this, SLOT( slot_cameraWindowFrameOnOff( bool ) ) );
 
     vkCameraSettingsDialog = new cameraSettingsDialog;
@@ -208,7 +208,7 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     connect( checkBoxCameraGray,             SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraGray,             SLOT( setChecked( bool ) ) );
     connect( checkBoxCameraMono,             SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraMono,             SLOT( setChecked( bool ) ) );
     connect( checkBoxCameraWindowFrame,      SIGNAL( toggled( bool ) ), vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame,      SLOT( setChecked( bool ) ) );
-    connect( comboBoxCameraResolution, SIGNAL( currentIndexChanged( int ) ), vkCameraSettingsDialog->ui->comboBoxCameraResolution,  SLOT( setCurrentIndex( int ) ) );
+ //   connect( comboBoxCameraResolution, SIGNAL( currentIndexChanged( int ) ), vkCameraSettingsDialog->ui->comboBoxCameraResolution,  SLOT( setCurrentIndex( int ) ) );
     connect( toolButton_camera_view_rectangle, SIGNAL( clicked( bool ) ), vkCameraSettingsDialog->ui->toolButton_camera_view_rectangle, SLOT( setChecked( bool )) );
     connect( toolButton_camera_view_ellipse,   SIGNAL( clicked( bool ) ), vkCameraSettingsDialog->ui->toolButton_camera_view_ellipse,   SLOT( setChecked( bool ) ) );
     connect( toolButton_camera_view_circle,    SIGNAL( clicked( bool ) ), vkCameraSettingsDialog->ui->toolButton_camera_view_circle,    SLOT( setChecked( bool ) ) );
@@ -223,8 +223,11 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     connect( vkCameraSettingsDialog->ui->toolButton_camera_view_rectangle, SIGNAL( clicked( bool ) ), toolButton_camera_view_rectangle, SLOT( setChecked( bool ) ) );
     connect( vkCameraSettingsDialog->ui->toolButton_camera_view_ellipse,   SIGNAL( clicked( bool ) ), toolButton_camera_view_ellipse,   SLOT( setChecked( bool ) ) );
     connect( vkCameraSettingsDialog->ui->toolButton_camera_view_circle,    SIGNAL( clicked( bool ) ), toolButton_camera_view_circle,    SLOT( setChecked( bool ) ) );
-    connect( vkCameraSettingsDialog->ui->buttonBox, SIGNAL( accepted() ), vkCameraSettingsDialog, SLOT( close() ) );
-    connect( vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_switchToFullscreen() ) );
+    connect( vkCameraSettingsDialog->ui->buttonBox,                       SIGNAL( accepted() ),       vkCameraSettingsDialog,           SLOT( close() ) );
+    connect( vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen,    SIGNAL( clicked( bool ) ),  this,                             SLOT( slot_switchToFullscreen() ) );
+    connect( vkCameraSettingsDialog->ui->comboBoxCameraVideoFormat,       SIGNAL( currentIndexChanged( int ) ), comboBoxCameraVideoFormat, SLOT( setCurrentIndex( int ) ) );
+
+    connect( comboBoxCameraVideoFormat, SIGNAL( currentIndexChanged( int ) ), vkCameraSettingsDialog->ui->comboBoxCameraVideoFormat, SLOT( setCurrentIndex( int ) ) );
 
     connect( vkCameraWindow, SIGNAL( signal_mousePressEvent( QMouseEvent* ) ),        this,                  SLOT( slot_vkCameraSettingsDialogShow()) );
     connect( vkCameraWindow, SIGNAL( signal_changelabelCameraWindowSize( QString ) ), labelCameraWindowSize, SLOT( setText( QString) ) );
@@ -328,6 +331,7 @@ void QvkCameraSingle::slot_comboboxCameraResolutionsInsertValues( int value )
     vkCameraSettingsDialog->dialog_sliderCameraWindowZoom->setMaximum( comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() / 2 );
 
     connect( comboBoxCameraResolution, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_comboboxCameraResolutionsCurrentIndexChanged( int ) ) );
+    connect( comboBoxCameraResolution,  SIGNAL( currentIndexChanged( int ) ), vkCameraSettingsDialog->ui->comboBoxCameraResolution,  SLOT( setCurrentIndex( int ) ) );
 }
 
 
