@@ -189,7 +189,7 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     checkBoxCameraMono->setObjectName( "checkBoxCameraMono-" + QString::number( counter )  );
     ui->horizontalLayout_14->insertWidget( 2, checkBoxCameraMono, 2 );
 
-    vkCameraWindow = new QvkCameraWindow( ui, checkBoxCameraWindowFrame, labelCameraWindowSize );
+    vkCameraWindow = new QvkCameraWindow( ui, checkBoxCameraWindowFrame );
     vkCameraWindow->setObjectName( "vkCameraWindow-" + QString::number( counter ));
     connect( vkCameraWindow, SIGNAL( signal_cameraWindow_close( bool ) ), checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
     connect( checkBoxCameraWindowFrame, SIGNAL( clicked( bool ) ), this, SLOT( slot_cameraWindowFrameOnOff( bool ) ) );
@@ -226,7 +226,9 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     connect( vkCameraSettingsDialog->ui->buttonBox, SIGNAL( accepted() ), vkCameraSettingsDialog, SLOT( close() ) );
     connect( vkCameraSettingsDialog->ui->pushButtonSwitchToFullscreen, SIGNAL( clicked( bool ) ), this, SLOT( slot_switchToFullscreen() ) );
 
-    connect( vkCameraWindow, SIGNAL( signal_mousePressEvent( QMouseEvent* ) ), this, SLOT( slot_vkCameraSettingsDialogShow()) );
+    connect( vkCameraWindow, SIGNAL( signal_mousePressEvent( QMouseEvent* ) ),        this,                  SLOT( slot_vkCameraSettingsDialogShow()) );
+    connect( vkCameraWindow, SIGNAL( signal_changelabelCameraWindowSize( QString ) ), labelCameraWindowSize, SLOT( setText( QString) ) );
+    connect( vkCameraWindow, SIGNAL( signal_changelabelCameraWindowSize( QString ) ), vkCameraSettingsDialog->ui->labelCameraWindowSize, SLOT( setText( QString) ) );
 
     for ( int i = 0; i < cameraDevice.videoFormats().count(); i++ ) {
         QString format = QVideoFrameFormat::pixelFormatToString( cameraDevice.videoFormats().at(i).pixelFormat() ).toUpper();

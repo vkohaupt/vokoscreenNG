@@ -45,10 +45,8 @@ class QvkCameraWindow : public QWidget
     Q_OBJECT
 
 public:
-    QvkCameraWindow(Ui_formMainWindow *ui_surface, QCheckBox *checkBox, QLabel *m_labelCameraWindowSize );
+    QvkCameraWindow(Ui_formMainWindow *ui_surface, QCheckBox *checkBox );
     virtual ~QvkCameraWindow();
-//    Ui_cameraSettingsDialog *uiCameraSettingsDialog;
-//    cameraSettingsDialog *vkCameraSettingsDialog;
     QString error;
     void setNewImage( QImage _image );
 
@@ -61,13 +59,12 @@ private:
    QImage image;
    QRect rectCloseButton;
    QCheckBox *checkBoxCameraWindowFrame;
-   QLabel *labelCameraWindowSize;
+
 
 public slots:
 
 
 private slots:
-//   void slot_switchToFullscreen();
 
 
 protected:
@@ -80,9 +77,11 @@ protected:
     void mouseMoveEvent(QMouseEvent *event);
     void paintEvent( QPaintEvent *event );
 
+
 signals:
     void signal_cameraWindow_close( bool );
     void signal_mousePressEvent( QMouseEvent *event );
+    void signal_changelabelCameraWindowSize( QString value );
 
 };
 
