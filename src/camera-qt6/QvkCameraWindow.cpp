@@ -27,10 +27,11 @@
 #include <QBitmap>
 
 
-QvkCameraWindow::QvkCameraWindow(Ui_formMainWindow *ui_surface,
-                                 QCheckBox *checkBox)
+QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface,
+                                  QCheckBox *checkBox )
 {
     ui = ui_surface;
+    setAttribute( Qt::WA_TranslucentBackground, true );
     checkBoxCameraWindowFrame = checkBox;
     setWindowFlags( windowFlags() | Qt::WindowStaysOnTopHint );
     setWindowIcon( QIcon( QString::fromUtf8( ":/pictures/logo/logo.png" ) ) );
