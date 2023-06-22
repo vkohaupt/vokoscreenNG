@@ -34,10 +34,13 @@
 #include <QList>
 #include <QVideoFrame>
 #include <QImage>
+#include <QIcon>
 #include <QPainterPath>
-
+#include <QPainter>
+#include <QPixmap>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QRectF>
 
 QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m_cameraDevice )
 {

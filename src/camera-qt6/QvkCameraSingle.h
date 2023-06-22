@@ -34,6 +34,11 @@
 #include <QVideoSink>
 #include <QMediaCaptureSession>
 #include <QLabel>
+#include <QRadioButton>
+#include <QToolButton>
+#include <QCheckBox>
+#include <QWidget>
+#include <QComboBox>
 
 
 class QvkCameraSingle : public QObject
@@ -91,6 +96,7 @@ private:
     QCheckBox *checkBoxCameraInvert;
     QCheckBox *checkBoxCameraGray;
     QCheckBox *checkBoxCameraMono;
+
 
 protected:
 

@@ -24,13 +24,13 @@
 #include "global.h"
 
 #include <QDebug>
+#include <QLayoutItem>
+#include <QVBoxLayout>
+#include <QSpacerItem>
+#include <QFont>
 #include <QMediaDevices>
 #include <QCameraDevice>
-#include <QCameraFormat>
-#include <QRadioButton>
 #include <QList>
-#include <QVideoFrame>
-#include <QImage>
 
 QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
 {
@@ -83,6 +83,12 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
     font.setBold( true );
     labelCurrentCamera->setFont( font );
     layoutAllCameras->addWidget( labelCurrentCamera );
+
+    // Hide Widget if only one camera
+    if ( camerasInfoList.count() == 1 ) {
+        vkCameraSingle->radioButtonCamera->hide();
+        labelCurrentCamera->hide();
+    }
 }
 
 
