@@ -47,6 +47,7 @@ public:
     QvkHaloWindow *vkHaloWindow;
 
     QColor colorDefault = Qt::green;
+    QvkSpezialCheckbox *vkSpezialCheckbox;
 
 
 public slots:
@@ -54,7 +55,6 @@ public slots:
 
 private:
     Ui_formMainWindow *ui;
-    QvkSpezialCheckbox *vkSpezialCheckbox;
 
     int diameterDefault = 70;
     int opacityDefault = 60;

@@ -430,6 +430,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     connect( ui->comboBoxScreencastScreen, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_setMaxFPS( int ) ) );
 
+    connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), this, SLOT( slot_disableShowclickHalo( bool ) ) );
+
     // Tab 2 Audio and Videocodec
 #ifdef Q_OS_WIN
     vkAudioController = new QvkAudioController( ui );
@@ -668,6 +670,41 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
+}
+
+
+void QvkMainWindow::slot_disableShowclickHalo( bool bo )
+{
+    QIcon myIcon( ":/pictures/showClick/vokoShowClick.png" );
+
+    if ( bo == true  ) {
+        if ( vkShowClick->vkSpezialCheckbox->isChecked() == true ) {
+            vkShowClick->vkSpezialCheckbox->slot_click();
+        }
+
+        if ( vkHalo->vkSpezialCheckbox->isChecked() == true ) {
+            vkHalo->vkSpezialCheckbox->slot_click();
+        }
+
+        QSize size = ui->tabWidgetShowClick->iconSize();
+        QPixmap workPixmap( myIcon.pixmap( size ) );
+        QPainter painter;
+        QPen pen;
+        painter.begin( &workPixmap );
+        pen.setColor( QString( "#3daee9" ) );
+        pen.setWidth( 2 );
+        painter.setPen( pen );
+        painter.drawLine ( 5, 5, size.width()-5, size.height()-5 );
+        painter.drawLine ( 5, size.height()-5, size.width()-5, 5 );
+        painter.end();
+        ui->toolButtonShowclick->setIcon( workPixmap );
+        ui->tabWidgetShowClick->setTabIcon( 0, workPixmap );
+        ui->tab->setEnabled( false );
+    } else {
+        ui->tab->setEnabled( true );
+        ui->toolButtonShowclick->setIcon( myIcon );
+        ui->tabWidgetShowClick->setTabIcon( 0, myIcon );
+    }
 }
 
 

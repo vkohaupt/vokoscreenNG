@@ -219,6 +219,8 @@ private slots:
 
     void slot_comboBoxOpenh264Profile( QStringList list );
 
+    void slot_disableShowclickHalo( bool bo );
+
 
 signals:
     void signal_close();
