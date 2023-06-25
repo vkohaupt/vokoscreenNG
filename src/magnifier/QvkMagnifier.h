@@ -46,6 +46,7 @@ public slots:
   void slot_magnifier200x200();
   void slot_magnifier400x200();
   void slot_magnifier600x200();
+  void slot_setMagnifierChangedSize(int value );
 
 
 private slots:

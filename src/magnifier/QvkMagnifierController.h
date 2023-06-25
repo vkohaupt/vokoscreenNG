@@ -47,7 +47,7 @@ private slots:
     void slot_toolButtonElipseClicked( bool value );
     void slot_toolButtonCircleClicked( bool value );
 
-    void  slot_magnifier_on_screen( QScreen *myScreen);
+    void slot_magnifier_on_screen( QScreen *myScreen);
     void slot_label_magnifier_on_screen_clear( bool );
 
 
@@ -55,6 +55,7 @@ private:
     QvkMagnifier *vkMagnifier;
     QvkSpezialSlider *sliderMagnificationRectangle;
     QvkSpezialSlider *sliderMagnificationElipse;
+    QvkSpezialSlider *sliderMagnificationSize;
 
 
 protected:
