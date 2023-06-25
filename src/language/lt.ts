@@ -14,6 +14,33 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSingle</name>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Šalinti lango rėmelį</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>Apversti vertikaliai</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>Apversti horizontaliai</translation>
+    </message>
+    <message>
+        <source>Invert</source>
+        <translation>Invertuoti</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Pilka</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>Juoda ir balta</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
@@ -22,6 +49,10 @@
     <message>
         <source>Switch to Fullscreen</source>
         <translation>Perjungti į visą ekraną</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Kamera</translation>
     </message>
 </context>
 <context>

@@ -14,6 +14,33 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSingle</name>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Vensterrand verwijderen</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>Verticaal spiegelen</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>Horizontaal spiegelen</translation>
+    </message>
+    <message>
+        <source>Invert</source>
+        <translation>Omkeren</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Grijs</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>Zwart-wit</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
@@ -22,6 +49,10 @@
     <message>
         <source>Switch to Fullscreen</source>
         <translation>Schermvullende weergave</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Camera</translation>
     </message>
 </context>
 <context>

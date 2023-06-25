@@ -14,6 +14,33 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSingle</name>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Remove window frame</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>Flip vertical</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>Flip horizontal</translation>
+    </message>
+    <message>
+        <source>Invert</source>
+        <translation>Invert</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Gray</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>Black-and-white</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
@@ -22,6 +49,10 @@
     <message>
         <source>Switch to Fullscreen</source>
         <translation>Switch to Fullscreen</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Camera</translation>
     </message>
 </context>
 <context>

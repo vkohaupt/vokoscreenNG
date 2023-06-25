@@ -14,6 +14,33 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSingle</name>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Αφαίρεσε το πλαίσιο παραθύρου</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>Κάθετη περιστροφή</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>Οριζόντια περιστροφή</translation>
+    </message>
+    <message>
+        <source>Invert</source>
+        <translation>Αντιστροφή</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Γκρι</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>Ασπρόμαυρη</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
@@ -22,6 +49,10 @@
     <message>
         <source>Switch to Fullscreen</source>
         <translation>Εναλλαγή σε Πλήρη οθόνη</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Κάμερα</translation>
     </message>
 </context>
 <context>

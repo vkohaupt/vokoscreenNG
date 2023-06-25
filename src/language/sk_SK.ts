@@ -1,460 +1,460 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ru_RU">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="sk_SK">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Выберите одно или несколько устройств</translation>
+        <translation>Vyberte jedno alebo viac zariadení</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
-        <translation>Камера</translation>
+        <translation>Kamera</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Убрать рамку окна</translation>
+        <translation>Odstrániť orámovanie okna</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Отразить по вертикали</translation>
+        <translation>Prevrátiť vertikálne</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Отразить по горизонтали</translation>
+        <translation>Prevrátiť horizontálne</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Инвертировать</translation>
+        <translation>Invertovať</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Чёрно-белое в оттенках серого</translation>
+        <translation>Stupne sivej</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Чёрно-белое двухцветное</translation>
+        <translation>Dvojfarebné, čierna a biela </translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Переключиться в режим окна</translation>
+        <translation>Zobraziť v okne</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Переключиться в полноэкранный режим</translation>
+        <translation>Zobraziť na celú obrazovku</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Камера</translation>
+        <translation>Kamera</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Установка завершена успешно.</translation>
+        <translation>Nastavenie bolo úspešné.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Закройте это окно и снова запустите vokoscreenNG.</translation>
+        <translation>Zatvorte okno a spustite vokoscreenNG opäť.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Получайте удовольствие от vokoscreenNG</translation>
+        <translation>Zabávajte sa s vokoscreenNG</translation>
     </message>
 </context>
 <context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Выберите одно или несколько устройств</translation>
+        <translation>Vyberte jedno alebo viac zariadení</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Справка</translation>
+        <translation>Pomocník</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Файловый менеджер не найден.</translation>
+        <translation>Nenašiel sa žiadny súborový manažér.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Пожалуйста установите файловый менеджер.</translation>
+        <translation>Inštalujte súborový manažér.</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Предупреждение</translation>
+        <translation>Upozornenie</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>Запись не началась, недостаточно свободного места на диске.</translation>
+        <translation>Nahrávanie sa nezačalo, nemáte dostatok voľného miesta na disku.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Достигнут предел свободного дискового пространства.</translation>
+        <translation>Dosiahli ste hraničnú veľkosť pre pridelené vám miesto na disku. </translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Предел свободного дискового пространства</translation>
+        <translation>Horná hranica pre voľné miesto na disku</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Мегабайт</translation>
+        <translation>Megabajt</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Запись остановлена, недостаточно свободного места на диске.</translation>
+        <translation>Nahrávanie je zastavené, nie je dosť miesta na disku.</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Весь экран</translation>
+        <translation>Celá obrazovka</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Окно</translation>
+        <translation>Okno</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>Файловый менеджер не найден.</translation>
+        <translation>Nenašiel sa žiadny súborový manažér.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Пожалуйста установите файловый менеджер.</translation>
+        <translation>Inštalujte súborový manažér.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Исходный код</translation>
+        <translation>Zdrojový kód</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Веб-сайт</translation>
+        <translation>Domovská stránka</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Переводы</translation>
+        <translation>Preklady</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Пожертвовать</translation>
+        <translation>Podporiť</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>ВыберитВыберите одно или несколько устройстве одно или несколько устройств</translation>
+        <translation>Vyberte jedno alebo viac zariadení</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Область экрана</translation>
+        <translation>Oblasť</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Область экрана</translation>
+        <translation>Oblasť</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Файловый менеджер не найден.</translation>
+        <translation>Nenašiel sa žiadny súborový manažér.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Пожалуйста установите файловый менеджер.</translation>
+        <translation>Inštalujte súborový manažér.</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Начать</translation>
+        <translation>Štart</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Остановить</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Приостановить</translation>
+        <translation>Pauza</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Продолжить</translation>
+        <translation>Pokračovať</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Выход</translation>
+        <translation>Odísť</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Камера</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Лупа</translation>
+        <translation>Zväčšenie</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Начать</translation>
+        <translation>Štart</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Остановить</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Приостановить</translation>
+        <translation>Pauza</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Продолжить</translation>
+        <translation>Pokračovať</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Выход</translation>
+        <translation>Odísť</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Камера</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Лупа</translation>
+        <translation>Zväčšenie</translation>
     </message>
 </context>
 <context>
     <name>QvkWASAPIController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>ВыберитВыберите одно или несколько устройстве одно или несколько устройств</translation>
+        <translation>Vyberte jedno alebo viac zariadení</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Диалоговое окно</translation>
+        <translation>Dialóg</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Отразить по горизонтали</translation>
+        <translation>Prevrátiť horizontálne</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Отразить по вертикали</translation>
+        <translation>Prevrátiť vertikálne</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Инвертировать</translation>
+        <translation>Invertovať</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Чёрно-белое в оттенках серого</translation>
+        <translation>Stupne sivej</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Чёрно-белое двухцветное</translation>
+        <translation>Dvojfarebné, čierna a biela </translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Убрать рамку окна</translation>
+        <translation>Odstrániť orámovanie okna</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Параметры камеры</translation>
+        <translation>Nastavenia kamery</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Область экрана</translation>
+        <translation>Oblasť</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Сбросить</translation>
+        <translation>Resetovanie</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Лупа</translation>
+        <translation>Zväčšenie</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Обратный отсчёт</translation>
+        <translation>Odpočítavanie</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Размер видео:</translation>
+        <translation>Veľkosť videa:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Свободное место на диске:</translation>
+        <translation>Voľné miesto na disku:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Информация</translation>
+        <translation>Informácia</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Время записи:</translation>
+        <translation>Čas nahrávania:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Звук</translation>
+        <translation>Zvuk</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Кадры</translation>
+        <translation>Snímky</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Видеокодек</translation>
+        <translation>Kódek video</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Формат</translation>
+        <translation>Formát</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Звуковой кодек</translation>
+        <translation>Zvukový kódek</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>Качество</translation>
+        <translation>Kvalita</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Не записывать указатель мыши</translation>
+        <translation>Nenahrávať kurzor myši</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Час</translation>
+        <translation>Hodina</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Минута</translation>
+        <translation>Minúta</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Запустить таймер</translation>
+        <translation>Spustiť stopky</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Остановить запись после</translation>
+        <translation>Zastaviť nahrávanie po</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Часов</translation>
+        <translation>Hodiny</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Минут</translation>
+        <translation>Minúty</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Секунд</translation>
+        <translation>Sekundy</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Путь к видео:</translation>
+        <translation>Cesta k videu</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Предел свободного дискового пространства</translation>
+        <translation>Horná hranica pre voľné miesto na disku</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Показывать значок в области уведомления</translation>
+        <translation>Zobraziť v systémovom paneli</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Секунд до начала записи</translation>
+        <translation>Čakanie v sekundách pred nahrávaním</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Проверить обновления</translation>
+        <translation>Kontrola aktualizácií</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Справка</translation>
+        <translation>Pomocník</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Видео</translation>
+        <translation>Video</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Доступно</translation>
+        <translation>Je k dispozícii</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Недоступно</translation>
+        <translation>Nie je k dispozícii</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Начать</translation>
+        <translation>Štart</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Остановить</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Приостановить</translation>
+        <translation>Pauza</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Продолжить</translation>
+        <translation>Pokračovať</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Воспроизвести</translation>
+        <translation>Prehrať</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Папка</translation>
+        <translation>Priečinok - adresár</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Камера</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Инвертировать</translation>
+        <translation>Invertovať</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Чёрно-белое в оттенках серого</translation>
+        <translation>Stupne sivej</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -470,11 +470,11 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Воспроизвести последнюю запись</translation>
+        <translation>Prehrať poslednú nahrávku</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Открыть папку</translation>
+        <translation>Otvoriť adresár - priečinok</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
@@ -482,153 +482,153 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Сворачивать окно перед началом записи</translation>
+        <translation>Minimalizovať pri štarte nahrávania</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Запускать свёрнутым</translation>
+        <translation>Spustiť minimalizované</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Отразить по горизонтали</translation>
+        <translation>Prevrátiť horizontálne</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Отразить по вертикали</translation>
+        <translation>Prevrátiť vertikálne</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Чёрно-белое двухцветное</translation>
+        <translation>Dvojfarebné, čierna a biela </translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Убрать рамку окна</translation>
+        <translation>Odstrániť orámovanie okna</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Пожертвовать</translation>
+        <translation>Podporiť</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Сбросить все настройки при следующем запуске</translation>
+        <translation>Resetovať všetky nastavenia pri nasledujúcom štarte</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Авторское право и лицензия на использование изображений</translation>
+        <translation>Copyright a licencie obrázkov</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Мегабайт</translation>
+        <translation>Megabajt</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Запись с экрана</translation>
+        <translation>Nahrávanie obrazovky</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Проигрыватель</translation>
+        <translation>Prehrávač</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Журнал</translation>
+        <translation>Záznam o činnosti</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Автоматически</translation>
+        <translation>Automaticky</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Создать изображения вкладок </translation>
+        <translation>Vytvoriť obrázky tabuliek</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Сведения о лицензии</translation>
+        <translation>Informácie o licencii</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>Включить</translation>
+        <translation>ZAP.</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>Выключить</translation>
+        <translation>VYP.</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Глобальные комбинации клавиш</translation>
+        <translation>Globálne klávesnicove skratky</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Назначенные комбинации клавиш.</translation>
+        <translation>Priradené kľúčové skratky</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Комбинация клавиш не назначена или назначена более одного раза.</translation>
+        <translation>Klávesová skratka nie je priradená alebo je priradená viac ako raz</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Отображение фактически не работающей комбинации клавиш в качестве использующейся означает, что она используется другой программой</translation>
+        <translation>Ak sa zobrazuje ako priradené, ale nefunguje, používa ho iný program.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Снимок</translation>
+        <translation>Snímok obrazovky</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Путь изображения</translation>
+        <translation>Cesta k obrázku</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Скрыть это окно</translation>
+        <translation>Schovať okno</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Секунды ожидания перед записью</translation>
+        <translation>Sekundy pred nahrávaním</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Авторское право и лицензия на использование изображений</translation>
+        <translation>Copyright a licencie obrázkov</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Воспроизвести</translation>
+        <translation>Prehrať</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Приостановить</translation>
+        <translation>Pauza</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Остановить</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Открыть файл</translation>
+        <translation>Otvoriť súbor</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Весь экран</translation>
+        <translation>Celá obrazovka</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Предыдущий кадр</translation>
+        <translation>Predchádzajúce políčko</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Следующий кадр</translation>
+        <translation>Nasledujúce políčko</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Без звука</translation>
+        <translation>Stíšiť</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Переместить меню</translation>
+        <translation>Premiestniť menu</translation>
     </message>
 </context>
 </TS>

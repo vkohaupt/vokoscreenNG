@@ -14,6 +14,33 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSingle</name>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Uklonite okvir prozora</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>Okrenite okomito </translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>Okreni vodoravno</translation>
+    </message>
+    <message>
+        <source>Invert</source>
+        <translation>Izokreni</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Sivo</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>Crno-bijelo</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
@@ -22,6 +49,10 @@
     <message>
         <source>Switch to Fullscreen</source>
         <translation>Prebaci na cijeli zaslon</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Kamera</translation>
     </message>
 </context>
 <context>

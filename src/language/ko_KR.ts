@@ -14,6 +14,33 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSingle</name>
+    <message>
+        <source>Remove window frame</source>
+        <translation>창틀 제거</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>상하 뒤집기</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>좌우 뒤집기</translation>
+    </message>
+    <message>
+        <source>Invert</source>
+        <translation>반전</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>회색</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>흑백</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
@@ -22,6 +49,10 @@
     <message>
         <source>Switch to Fullscreen</source>
         <translation>전체화면 전환</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>카메라</translation>
     </message>
 </context>
 <context>

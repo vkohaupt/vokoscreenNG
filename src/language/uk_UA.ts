@@ -14,6 +14,33 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSingle</name>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Прибрати рамку вікна</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>Показати вертикально</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>Показати горизонтально</translation>
+    </message>
+    <message>
+        <source>Invert</source>
+        <translation>Перевернути</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Сірий</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>У відтінках сірого</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
@@ -22,6 +49,10 @@
     <message>
         <source>Switch to Fullscreen</source>
         <translation>Перемикнутися на повний екран</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Камера</translation>
     </message>
 </context>
 <context>

@@ -635,6 +635,16 @@
                     </property>
                    </spacer>
                   </item>
+                  <item>
+                   <widget class="QToolButton" name="help_screencast_magnifier">
+                    <property name="toolTip">
+                     <string>Help</string>
+                    </property>
+                    <property name="text">
+                     <string notr="true">Help</string>
+                    </property>
+                   </widget>
+                  </item>
                  </layout>
                 </item>
                 <item row="2" column="2">
@@ -707,16 +717,6 @@
                   </item>
                  </layout>
                 </item>
-                <item row="2" column="4">
-                 <widget class="QToolButton" name="help_screencast_magnifier">
-                  <property name="toolTip">
-                   <string>Help</string>
-                  </property>
-                  <property name="text">
-                   <string notr="true">Help</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="4" column="1">
                  <widget class="QToolButton" name="toolButton_magnifier_circle">
                   <property name="text">
@@ -774,7 +774,7 @@
                    </size>
                   </property>
                   <property name="text">
-                   <string/>
+                   <string notr="true"/>
                   </property>
                   <property name="pixmap">
                    <pixmap resource="screencast.qrc">:/pictures/systray/magnification.png</pixmap>
@@ -6930,7 +6930,7 @@ p, li { white-space: pre-wrap; }
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
