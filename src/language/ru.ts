@@ -39,6 +39,14 @@
         <source>Black-and-white</source>
         <translation>Чёрно-белое двухцветное</translation>
     </message>
+    <message>
+        <source>Switch to Window</source>
+        <translation>Переключиться в режим окна</translation>
+    </message>
+    <message>
+        <source>Switch to Fullscreen</source>
+        <translation>Переключиться в полноэкранный режим</translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>

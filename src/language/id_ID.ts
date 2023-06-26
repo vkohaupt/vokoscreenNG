@@ -39,6 +39,14 @@
         <source>Black-and-white</source>
         <translation>Hitam-dan-Putih</translation>
     </message>
+    <message>
+        <source>Switch to Window</source>
+        <translation>Beralih ke Jendela</translation>
+    </message>
+    <message>
+        <source>Switch to Fullscreen</source>
+        <translation>Beralih ke Layar Penuh</translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>

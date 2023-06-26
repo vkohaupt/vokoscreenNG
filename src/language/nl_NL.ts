@@ -39,6 +39,14 @@
         <source>Black-and-white</source>
         <translation>Zwart-wit</translation>
     </message>
+    <message>
+        <source>Switch to Window</source>
+        <translation>Vensterweergave</translation>
+    </message>
+    <message>
+        <source>Switch to Fullscreen</source>
+        <translation>Schermvullende weergave</translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>

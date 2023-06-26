@@ -39,6 +39,14 @@
         <source>Black-and-white</source>
         <translation>Zuri-beltza</translation>
     </message>
+    <message>
+        <source>Switch to Window</source>
+        <translation>Aldatu leihora</translation>
+    </message>
+    <message>
+        <source>Switch to Fullscreen</source>
+        <translation>Aldatu pantaila osora</translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>

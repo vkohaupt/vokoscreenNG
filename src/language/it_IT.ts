@@ -39,6 +39,14 @@
         <source>Black-and-white</source>
         <translation>Bianco e nero</translation>
     </message>
+    <message>
+        <source>Switch to Window</source>
+        <translation>Passa a Finestra</translation>
+    </message>
+    <message>
+        <source>Switch to Fullscreen</source>
+        <translation>Passa a Schermo Intero</translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>

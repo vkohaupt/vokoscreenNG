@@ -17,7 +17,7 @@
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterkarmen</translation>
+        <translation>Ta bort fönsterram</translation>
     </message>
     <message>
         <source>Flip vertical</source>
@@ -25,7 +25,7 @@
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Vänd horisontell</translation>
+        <translation>Vänd horisontellt</translation>
     </message>
     <message>
         <source>Invert</source>
@@ -37,18 +37,26 @@
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Svart och Vit</translation>
+        <translation>Svartvit</translation>
+    </message>
+    <message>
+        <source>Switch to Window</source>
+        <translation>Växla till fönsterläge</translation>
+    </message>
+    <message>
+        <source>Switch to Fullscreen</source>
+        <translation>Växla till helskärmsläge</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Växla till fönstret</translation>
+        <translation>Växla till fönsterläge</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Växla till fönstret</translation>
+        <translation>Växla till helskärmsläge</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -59,15 +67,15 @@
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Installationen lyckades.</translation>
+        <translation>Installationen gick bra.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Stäng det här fönstret och starta vokoscreenNG igen.</translation>
+        <translation>Stäng detta fönster och starta vokoscreenNG igen.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Ha kul med vokoscreenNG</translation>
+        <translation>Ha så kul med vokoscreenNG</translation>
     </message>
 </context>
 <context>
@@ -103,15 +111,15 @@
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation> Inspelningen har inte startats, Det finns inte tillräckligt med ledigt diskutrymme.</translation>
+        <translation>Inspelningen är inte startad, det finns inte tillräckligt med ledigt diskutrymme.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Gränsen för ledigt diskutrymme har nåtts.</translation>
+        <translation>Det lediga diskutrymmet är slut.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Begränsning av ledigt diskutrymme</translation>
+        <translation>Gräns för ledigt diskutrymme</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -119,14 +127,14 @@
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Inspelningen har stoppades, inte tillräckligt med ledigt diskutrymme.</translation>
+        <translation>Inspelningen har stoppats, det finns inte tillräckligt med ledigt diskutrymme.</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow</name>
     <message>
         <source>Fullscreen</source>
-        <translation>Full skärm</translation>
+        <translation>Helskärm</translation>
     </message>
     <message>
         <source>Window</source>
@@ -151,7 +159,7 @@
     </message>
     <message>
         <source>Translations</source>
-        <translation>Översättning</translation>
+        <translation>Översättningar</translation>
     </message>
     <message>
         <source>Donate</source>
@@ -194,15 +202,15 @@
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Starta</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stoppa</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Paus</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -210,7 +218,7 @@
     </message>
     <message>
         <source>Exit</source>
-        <translation>Stäng</translation>
+        <translation>Avsluta</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -218,22 +226,22 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Förstoring</translation>
+        <translation>Förstoringsglas</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Starta</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stoppa</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Paus</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -241,7 +249,7 @@
     </message>
     <message>
         <source>Exit</source>
-        <translation>Stäng</translation>
+        <translation>Avsluta</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -249,7 +257,7 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Förstoring</translation>
+        <translation>Förstoringsglas</translation>
     </message>
 </context>
 <context>
@@ -267,7 +275,7 @@
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Vänd horisontell</translation>
+        <translation>Vänd horisontellt</translation>
     </message>
     <message>
         <source>Flip vertical</source>
@@ -283,15 +291,15 @@
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Svart och Vit</translation>
+        <translation>Svartvit</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterkarmen</translation>
+        <translation>Ta bort fönsterram</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Kamera inställningar</translation>
+        <translation>Kamerainställningar</translation>
     </message>
 </context>
 <context>
@@ -302,11 +310,11 @@
     </message>
     <message>
         <source>Reset</source>
-        <translation>Återställa</translation>
+        <translation>Återställ</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Förstoring</translation>
+        <translation>Förstoringsglas</translation>
     </message>
     <message>
         <source>Countdown</source>
@@ -314,11 +322,11 @@
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Video storlek</translation>
+        <translation>Videostorlek:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Ledigt diskutrymme</translation>
+        <translation>Ledigt diskutrymme:</translation>
     </message>
     <message>
         <source>Information</source>
@@ -326,7 +334,7 @@
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Rekordtid:</translation>
+        <translation>Inspelningstid:</translation>
     </message>
     <message>
         <source>Audio</source>
@@ -334,11 +342,11 @@
     </message>
     <message>
         <source>Frames</source>
-        <translation>Ramar</translation>
+        <translation>Bildrutor</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videocodec</translation>
+        <translation>Videokodek</translation>
     </message>
     <message>
         <source>Format</source>
@@ -346,7 +354,7 @@
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Audiocodec</translation>
+        <translation>Ljudkodek</translation>
     </message>
     <message>
         <source>Quality</source>
@@ -354,11 +362,11 @@
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Spela inte in mus rörelse</translation>
+        <translation>Spela inte in muspekaren</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Timme</translation>
+        <translation>Timma</translation>
     </message>
     <message>
         <source>Minute</source>
@@ -366,11 +374,11 @@
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Starta timern </translation>
+        <translation>Starta tiduret</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Stoppa inspelning efter</translation>
+        <translation>Stoppa inspelningen efter</translation>
     </message>
     <message>
         <source>Hours</source>
@@ -386,23 +394,23 @@
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videopath</translation>
+        <translation>Videosökväg</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Begränsning av ledigt diskutrymme</translation>
+        <translation>Gräns för ledigt diskutrymme</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Visas i system fältet</translation>
+        <translation>Visa i systemfältet</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Väntan innan inspelning</translation>
+        <translation>Vänta x sekunder före inspelningsstart</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Kollar efter uppdatering </translation>
+        <translation>Sök efter uppdateringar</translation>
     </message>
     <message>
         <source>Help</source>
@@ -414,7 +422,7 @@
     </message>
     <message>
         <source>Available</source>
-        <translation>Tillgängliga</translation>
+        <translation>Tillgänglig</translation>
     </message>
     <message>
         <source>Not available</source>
@@ -422,15 +430,15 @@
     </message>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Starta</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stoppa</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Paus</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -438,7 +446,7 @@
     </message>
     <message>
         <source>Play</source>
-        <translation>Spela</translation>
+        <translation>Spela upp</translation>
     </message>
     <message>
         <source>Folder</source>
@@ -450,7 +458,7 @@
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invert</translation>
+        <translation>Invertera</translation>
     </message>
     <message>
         <source>Gray</source>
@@ -470,7 +478,7 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Spela sista inspelning</translation>
+        <translation>Spela upp senaste inspelning</translation>
     </message>
     <message>
         <source>Open folder</source>
@@ -482,15 +490,15 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimeras när inspelningen startar</translation>
+        <translation>Minimerad när inspelning startar</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Startar minimerad</translation>
+        <translation>Starta minimerad</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Vänd horisontell</translation>
+        <translation>Vänd horisontellt</translation>
     </message>
     <message>
         <source>Flip vertical</source>
@@ -498,11 +506,11 @@
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Svart och Vit</translation>
+        <translation>Svartvit</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Ta bort fönsterkarmen</translation>
+        <translation>Ta bort fönsterram</translation>
     </message>
     <message>
         <source>Donate</source>
@@ -510,11 +518,11 @@
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Återställ alla inställningar vid nästa start</translation>
+        <translation>Återställ alla inställningar vid nästa programstart</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Upphovsrätt och licens från bilder</translation>
+        <translation>Copyright och licens från bilder</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -522,7 +530,7 @@
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Screencast</translation>
+        <translation>Skärminspelning</translation>
     </message>
     <message>
         <source>Player</source>
@@ -530,7 +538,7 @@
     </message>
     <message>
         <source>Log</source>
-        <translation>Logga</translation>
+        <translation>Logg</translation>
     </message>
     <message>
         <source>Automatically</source>
@@ -554,19 +562,19 @@
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Globala kortkommandon</translation>
+        <translation>Systemövergripande tangentbordsgenvägar</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Tilldelade genvägsknappar.</translation>
+        <translation>Tilldelade snabbtangenter</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Kortkommandot inte tilldelat eller tilldelat mer än en gång.</translation>
+        <translation>Ej tilldelade snabbtangenter eller tilldelade mer än en gång.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Om det visar tilldelat men inte fungerar, används det av ett annat program.</translation>
+        <translation>Om den visas som tilldelad men inte fungerar, används den av ett annat program.</translation>
     </message>
     <message>
         <source>Snapshot</source>
@@ -574,37 +582,37 @@
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Bild path</translation>
+        <translation>Bildsökväg</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Göm detta fönster</translation>
+        <translation>Dölj det här fönstret</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Sekunder vänta innan inspelning</translation>
+        <translation>Sekunders väntetid före inspelning</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Upphovsrätt och licens från bilder</translation>
+        <translation>Copyright och licens från bilder</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Spela</translation>
+        <translation>Spela upp</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Paus</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stoppa</translation>
     </message>
     <message>
         <source>Open File</source>
@@ -612,23 +620,23 @@
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Full skärm</translation>
+        <translation>Helskärm</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Tidigare ram</translation>
+        <translation>Föregående bildruta</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Nästa ram</translation>
+        <translation>Nästa bildruta</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Muta</translation>
+        <translation>Tyst</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Flytta meny</translation>
+        <translation>Flytta menyn</translation>
     </message>
 </context>
 </TS>

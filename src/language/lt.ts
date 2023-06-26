@@ -39,6 +39,14 @@
         <source>Black-and-white</source>
         <translation>Juoda ir balta</translation>
     </message>
+    <message>
+        <source>Switch to Window</source>
+        <translation>Perjungti į langą</translation>
+    </message>
+    <message>
+        <source>Switch to Fullscreen</source>
+        <translation>Perjungti į visą ekraną</translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>

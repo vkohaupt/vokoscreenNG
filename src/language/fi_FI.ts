@@ -39,6 +39,14 @@
         <source>Black-and-white</source>
         <translation>Mustavalkoinen</translation>
     </message>
+    <message>
+        <source>Switch to Window</source>
+        <translation>Vaihda ikkunaan</translation>
+    </message>
+    <message>
+        <source>Switch to Fullscreen</source>
+        <translation>Vaihda koko näyttöön</translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>

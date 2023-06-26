@@ -39,6 +39,14 @@
         <source>Black-and-white</source>
         <translation>Czarno-białe</translation>
     </message>
+    <message>
+        <source>Switch to Window</source>
+        <translation>Tryb okna</translation>
+    </message>
+    <message>
+        <source>Switch to Fullscreen</source>
+        <translation>Tryb pełnoekranowy</translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>

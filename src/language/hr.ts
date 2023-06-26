@@ -39,6 +39,14 @@
         <source>Black-and-white</source>
         <translation>Crno-bijelo</translation>
     </message>
+    <message>
+        <source>Switch to Window</source>
+        <translation>Prebaci na prozor</translation>
+    </message>
+    <message>
+        <source>Switch to Fullscreen</source>
+        <translation>Prebaci na cijeli zaslon</translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>

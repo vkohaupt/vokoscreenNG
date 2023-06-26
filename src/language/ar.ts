@@ -39,6 +39,14 @@
         <source>Black-and-white</source>
         <translation>ابيض واسود</translation>
     </message>
+    <message>
+        <source>Switch to Window</source>
+        <translation> أظهر النافذة</translation>
+    </message>
+    <message>
+        <source>Switch to Fullscreen</source>
+        <translation>تغيير لملء الشاشة</translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>

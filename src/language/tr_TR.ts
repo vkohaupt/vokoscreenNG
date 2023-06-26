@@ -39,6 +39,14 @@
         <source>Black-and-white</source>
         <translation>Siyah-ve-beyaz</translation>
     </message>
+    <message>
+        <source>Switch to Window</source>
+        <translation>Pencereye Geç</translation>
+    </message>
+    <message>
+        <source>Switch to Fullscreen</source>
+        <translation>Tam Ekrana Geç</translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>

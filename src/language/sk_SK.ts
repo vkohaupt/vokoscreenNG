@@ -39,6 +39,14 @@
         <source>Black-and-white</source>
         <translation>Dvojfarebné, čierna a biela </translation>
     </message>
+    <message>
+        <source>Switch to Window</source>
+        <translation>Zobraziť v okne</translation>
+    </message>
+    <message>
+        <source>Switch to Fullscreen</source>
+        <translation>Zobraziť na celú obrazovku</translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>

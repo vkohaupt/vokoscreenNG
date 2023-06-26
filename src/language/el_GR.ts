@@ -39,6 +39,14 @@
         <source>Black-and-white</source>
         <translation>Ασπρόμαυρη</translation>
     </message>
+    <message>
+        <source>Switch to Window</source>
+        <translation>Εναλλαγή σε Παράθυρο</translation>
+    </message>
+    <message>
+        <source>Switch to Fullscreen</source>
+        <translation>Εναλλαγή σε Πλήρη οθόνη</translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>

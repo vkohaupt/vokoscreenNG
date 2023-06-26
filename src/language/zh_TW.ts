@@ -39,6 +39,14 @@
         <source>Black-and-white</source>
         <translation>黑白</translation>
     </message>
+    <message>
+        <source>Switch to Window</source>
+        <translation>切換至視窗</translation>
+    </message>
+    <message>
+        <source>Switch to Fullscreen</source>
+        <translation>切換至全螢幕</translation>
+    </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
