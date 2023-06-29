@@ -159,14 +159,14 @@ void QvkCameraController::slot_frameOnOff( bool value )
 #ifdef Q_OS_WIN
         if ( value == true )
         {
-            cameraWindow->setWindowFlag( Qt::Window, false );
-            cameraWindow->setWindowFlag( Qt::ToolTip, true );
+            vkCameraWindow->setWindowFlag( Qt::Window, false );
+            vkCameraWindow->setWindowFlag( Qt::ToolTip, true );
         }
 
         if ( value == false )
         {
-            cameraWindow->setWindowFlag( Qt::Window, true );
-            cameraWindow->setWindowFlag( Qt::ToolTip, false );
+            vkCameraWindow->setWindowFlag( Qt::Window, true );
+            vkCameraWindow->setWindowFlag( Qt::ToolTip, false );
         }
 #endif
 
@@ -368,7 +368,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
 
             image = pixmap.toImage();
 
-            cameraWindow->setFixedSize( h, h );
+            vkCameraWindow->setFixedSize( h, h );
 #endif
         }
     }
