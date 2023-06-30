@@ -33,10 +33,10 @@ namespace global
     bool testWASAPI = false;
 
 #ifdef Q_OS_LINUX
-    QString version = "3.7.0-beta-02";
+    QString version = "3.7.0";
 #endif
 
 #ifdef Q_OS_WIN
-    QString version = "3.7.0-beta-02";
+    QString version = "3.7.0";
 #endif
 }
