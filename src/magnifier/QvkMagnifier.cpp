@@ -38,8 +38,8 @@ QvkMagnifier::QvkMagnifier()
     slot_magnifier200x200();
 
     resize( 2 * distanceX * factor, 2 * distanceY * factor );
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar
-    setAttribute( Qt::WA_TranslucentBackground, true ); // neu
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Tool );
+    setAttribute( Qt::WA_TranslucentBackground, true );
     distanceCopyMagnifier = 30;
 
     timer = new QTimer( this );
