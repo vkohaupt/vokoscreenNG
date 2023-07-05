@@ -49,6 +49,7 @@ private:
 
 public slots:
     void slot_valueChanged( int );
+    void slot_rangeChanged( int, int );
 
 
 protected:

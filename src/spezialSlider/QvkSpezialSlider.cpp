@@ -31,6 +31,7 @@ QvkSpezialSlider::QvkSpezialSlider( Qt::Orientation orientation )
     label->setStyleSheet( "QLabel{ color: black; background-color: none;} QLabel::disabled { color: lightGray; }" );
 
     connect( this, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged( int ) ) );
+    connect( this, SIGNAL( rangeChanged( int, int ) ), this, SLOT( slot_rangeChanged( int, int ) ) );
 
     css_slider();
 }
@@ -38,6 +39,12 @@ QvkSpezialSlider::QvkSpezialSlider( Qt::Orientation orientation )
 
 QvkSpezialSlider::~QvkSpezialSlider()
 {
+}
+
+
+void QvkSpezialSlider::slot_rangeChanged( int, int )
+{
+    slot_valueChanged( value() );
 }
 
 
