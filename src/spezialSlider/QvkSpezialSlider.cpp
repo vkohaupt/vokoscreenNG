@@ -64,7 +64,7 @@ void QvkSpezialSlider::css_slider()
     slider.append( "border-radius: " + QString::number( grooveBorderRadius ) + "px;" );
     slider.append( "}" );
 
-    // Line forground
+    // Line foreground
     slider.append( "QSlider::sub-page:horizontal {" );
     slider.append( "background-color: " + grooveForgroundColor + ";" );
     slider.append( "border-radius: " + QString::number( grooveBorderRadius ) + "px;" );

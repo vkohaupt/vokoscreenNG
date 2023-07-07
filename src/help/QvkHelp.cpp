@@ -37,7 +37,7 @@
  * QToolbutton -> help_screencast_fullscreen
  * Remote file -> help_screencast_fullscreen.html
  *
- * We write as snake_case, so the underline character is the seperator.
+ * We write as snake_case, so the underline character is the separator.
  * The first section is help, this we need for set for icon and installEventFilter, see constructor.
  * The second section is the tab in the sidebar and the subdir on remote.
  * The third section is the name from the function that we want help.
@@ -264,7 +264,7 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
 
     if ( counter == 0 )
     {
-        // "dummy.png" is a fake, we need this if no file is downlowded
+        // "dummy.png" is a fake, we need this if no file is downloaded
         slot_showHelp( tmpPath + "/" + "dummy.png");
     }
 
