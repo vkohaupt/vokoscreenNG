@@ -484,7 +484,7 @@ void QvkPlayer::slot_durationChanged( qint64 value )
     sliderVideo->setMaximum( static_cast<int>( value / mediaPlayer->notifyInterval() ) );
 
     // Show length from video in label
-    ui->labelVideoLenght->setText( get_time( value ) );
+    ui->labelVideoLength->setText( get_time( value ) );
 }
 
 
