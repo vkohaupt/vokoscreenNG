@@ -474,10 +474,10 @@ QString QvkPlayer::get_time( qint64 value )
 
 void QvkPlayer::slot_durationChanged( qint64 value )
 {
-    // Set lenght from video on slider
+    // Set length from video on slider
     sliderVideo->setMaximum( static_cast<int>( value / mediaPlayer->notifyInterval() ) );
 
-    // Show lenght from video in label
+    // Show length from video in label
     ui->labelVideoLenght->setText( get_time( value ) );
 }
 

@@ -1424,7 +1424,7 @@ void QvkMainWindow::slot_gst_formatVideoAudoicodec_available()
         delete listFrame.at( i );
     }
 
-    // Adding all informations
+    // Adding all information
     int rowCount = 0;
     for ( int i = 0; i < videoFormatsList.count(); i++ )
     {
