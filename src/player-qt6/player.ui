@@ -168,7 +168,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="labelVideoLenght">
+            <widget class="QLabel" name="labelVideoLength">
              <property name="enabled">
               <bool>false</bool>
              </property>

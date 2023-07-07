@@ -335,7 +335,7 @@ void QvkPlayer::setMediaFile( QString string )
 
     ui->labelDuration->setEnabled( true );
     ui->labelSeparator->setEnabled( true );
-    ui->labelVideoLenght->setEnabled( true );
+    ui->labelVideoLength->setEnabled( true );
     sliderVideo->setEnabled( true );
 }
 
@@ -820,16 +820,16 @@ void QvkPlayer::mousePressEvent( QMouseEvent *event )
                 if ( stringList.at(i) == "Resolution" )
                 {
                     QString width = QString::number( mediaPlayer->metaData( stringList.at(i) ).toSize().width() );
-                    QString heigth = QString::number( mediaPlayer->metaData( stringList.at(i) ).toSize().height() );
-                    metaString += stringList.at(i) + " :   " + width + "x" + heigth + "\n";
+                    QString height = QString::number( mediaPlayer->metaData( stringList.at(i) ).toSize().height() );
+                    metaString += stringList.at(i) + " :   " + width + "x" + height + "\n";
                     continue;
                 }
 
                 if ( stringList.at(i) == "PixelAspectRatio" )
                 {
                     QString width = QString::number( mediaPlayer->metaData( stringList.at(i) ).toSize().width() );
-                    QString heigth = QString::number( mediaPlayer->metaData( stringList.at(i) ).toSize().height() );
-                    metaString += stringList.at(i) + " :   " + width + "x" + heigth + "\n";
+                    QString height = QString::number( mediaPlayer->metaData( stringList.at(i) ).toSize().height() );
+                    metaString += stringList.at(i) + " :   " + width + "x" + height + "\n";
                     continue;
                 }
 
