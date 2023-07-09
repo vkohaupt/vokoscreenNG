@@ -59,6 +59,7 @@ QvkRegionChoise::QvkRegionChoise( Ui_formMainWindow *ui_formMainWindow ):handleP
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
 
+    // Beim Mate Desktop wird die Bereichsauswahl beim setzen von Qt::ToolTip nicht aktualisiert.
     QString currentDesktop = qgetenv( "XDG_CURRENT_DESKTOP" );
     if( currentDesktop.toLower() == QString( "Mate" ).toLower() ) {
         setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
