@@ -343,8 +343,6 @@ void QvkMagnifier::slot_mytimer()
     screenIndex = screenList.indexOf( screen );
     if( debug == true ) { qDebug() << "slot_mytimer screenIndex:" << screenIndex; }
 
-    setMagnifier();
-
     // Begin grab
     int valueX = 0;
     int valueY = 0;
@@ -467,63 +465,49 @@ void QvkMagnifier::slot_mytimer()
                                      2*distanceX,
                                      2*distanceY);
 
-        repaint();
+        if ( pixmap.isNull() == true ) {
+                    return;
+        }
+
+        QPixmap painterPixmap( pixmap.width() * factor, pixmap.height() * factor );
+        painterPixmap.fill( Qt::transparent );
+
+        QPainter painter;
+        painter.begin( &painterPixmap );
+        painter.setRenderHints( QPainter::Antialiasing, true );
+        painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
+
+        if ( ( isToolButtonElipse == true ) or ( isToolButtonCircle == true ) ) {
+                    QPainterPath path;
+                    path.addEllipse( 0, 0, width(), height() );
+                    painter.setClipPath( path );
+        }
+
+        QPixmap pix = pixmap.scaled( painterPixmap.width(), painterPixmap.height(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+        painter.drawPixmap( QPoint( 0, 0 ), pix );
+
+        QPen pen;
+        pen.setWidth( 7 );
+        pen.setColor( Qt::lightGray );
+        painter.setPen( pen );
+        if ( ( isToolButtonElipse == true ) or ( isToolButtonCircle == true ) ) {
+                    painter.drawEllipse( 0, 0, width(), height() );
+        } else {
+                    painter.drawRect( 0, 0, width(), height() );
+        }
+        painter.end();
+
+        setPixmap( painterPixmap );
+        setMagnifier();
+
+#ifdef Q_OS_LINUX
+        setMask( painterPixmap.mask() );
+#endif
 
         if ( debug == true ) { qDebug().noquote() << "Grab" << enumToString( nameRegion ) << valueRegion
                                                   << "globalCursorPos:" << globalCursorPos
                                                   << "screenCursorPos:" << screenCursorPos << screenIndex; }
     }
-}
-
-
-void QvkMagnifier::paintEvent( QPaintEvent *event )
-{
-    Q_UNUSED(event);
-    if ( pixmap.isNull() == true ) {
-        return;
-    }
-
-    QPixmap painterPixmap( pixmap.width() * factor, pixmap.height() * factor );
-    painterPixmap.fill( Qt::transparent );
-
-    QPainter painter;
-    painter.begin( &painterPixmap );
-    painter.setRenderHints( QPainter::Antialiasing, true );
-    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
-
-    if ( ( isToolButtonElipse == true ) or ( isToolButtonCircle == true ) ) {
-        QPainterPath path;
-        path.addEllipse( 0, 0, width(), height() );
-        painter.setClipPath( path );
-    }
-
-    QPixmap pix = pixmap.scaled( painterPixmap.width(), painterPixmap.height(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-    painter.drawPixmap( QPoint( 0, 0 ), pix );
-
-    QPen pen;
-    pen.setWidth( 7 );
-    pen.setColor( Qt::lightGray );
-    painter.setPen( pen );
-    if ( ( isToolButtonElipse == true ) or ( isToolButtonCircle == true ) ) {
-        painter.drawEllipse( 0, 0, width(), height() );
-    } else {
-        painter.drawRect( 0, 0, width(), height() );
-    }
-    painter.end();
-
-    QPainter painter_1;
-    painter_1.begin( this );
-    painter_1.setRenderHint( QPainter::Antialiasing, true );
-    painter_1.setRenderHint( QPainter::SmoothPixmapTransform, true );
-    painter_1.drawPixmap( QPoint( 0, 0 ), painterPixmap );
-    painter_1.end();
-
-    // This can delete if vokoscreen run only with a compositer.
-    // This is also not required under Windows, Windows has a compositer.
-#ifdef Q_OS_LINUX
-    setMask( painterPixmap.mask() );
-#endif
-
 }
 
 

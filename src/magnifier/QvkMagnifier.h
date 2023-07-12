@@ -28,8 +28,9 @@
 #include <QApplication>
 #include <QTimer>
 #include <QWidget>
+#include <QLabel>
 
-class QvkMagnifier: public QWidget
+class QvkMagnifier: public QLabel
 { 
 Q_OBJECT
 public:
@@ -53,8 +54,7 @@ private slots:
   void slot_mytimer();
   
 
-protected:  
-  void paintEvent( QPaintEvent *event );
+protected:
 
   
 signals:
@@ -69,7 +69,7 @@ private:
   QTimer *timer;
   QPoint globalCursorPos;
   QScreen *screen;
-  QPoint screenCursorPos;
+  QPoint screenCursorPos = QPoint( 1, 1 );
   QList<QScreen *> screenList;
   int screenIndex;
   int distanceCopyMagnifier;
@@ -86,7 +86,7 @@ private:
   QRegion valueRegion;
 
   enum region{ none, topLeft, topMiddle, topRight, rightMiddle, bottomRight, bottomMiddle, bottomLeft, leftMiddle, middle };
-  region nameRegion;
+  region nameRegion = region::topLeft;
 
   QString enumToString( region reg );
 
