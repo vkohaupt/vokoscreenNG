@@ -81,9 +81,8 @@ void QvkSnapshot::slot_newImage()
 
     if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
     {
-        bool wasVisible = false;
-        if ( ( ui->checkBoxSnapshotHideBeforeRecording->isChecked() == true ) and ( vkMainWindow->isMinimized() == false ) ) {
-            wasVisible = true;
+        bool wasMinimized = vkMainWindow->isMinimized();
+        if ( ( ui->checkBoxSnapshotHideBeforeRecording->isChecked() == true ) and ( wasMinimized  == false ) ) {
             vkMainWindow->showMinimized();
         }
 
@@ -109,7 +108,7 @@ void QvkSnapshot::slot_newImage()
             }
         }
 
-        if ( ( ui->checkBoxSnapshotHideBeforeRecording->isChecked() == true ) and ( wasVisible == true ) ) {
+        if ( ( ui->checkBoxSnapshotHideBeforeRecording->isChecked() == true ) and ( wasMinimized == false ) ) {
             vkMainWindow->showNormal();
         }
     }
@@ -148,9 +147,8 @@ void QvkSnapshot::slot_newImage()
 
     if ( ui->radioButtonScreencastArea->isChecked() == true )
     {
-        bool wasVisible = false;
-        if ( ( ui->checkBoxSnapshotHideBeforeRecording->isChecked() == true ) and ( vkMainWindow->isMinimized() == false ) ) {
-            wasVisible = true;
+        bool wasMinimized = vkMainWindow->isMinimized();
+        if ( ( ui->checkBoxSnapshotHideBeforeRecording->isChecked() == true ) and ( wasMinimized == false ) ) {
             vkMainWindow->showMinimized();
         }
 
@@ -188,7 +186,7 @@ void QvkSnapshot::slot_newImage()
             vkMainWindow->vkRegionChoise->recordMode( false );
         }
 
-        if ( ( ui->checkBoxSnapshotHideBeforeRecording->isChecked() == true ) and ( wasVisible == true ) ) {
+        if ( ( ui->checkBoxSnapshotHideBeforeRecording->isChecked() == true ) and ( wasMinimized == false ) ) {
             vkMainWindow->showNormal();
         }
     }
