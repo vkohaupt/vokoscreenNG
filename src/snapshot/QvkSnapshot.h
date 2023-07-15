@@ -26,8 +26,8 @@
 #include <QWidget>
 #include <QScreen>
 
-#include "ui_formMainWindow.h"
-#include "mainwindow.h"
+#include "ui_formMainWindow.h"  // contains the GUI
+#include "mainwindow.h"         // contains the class QvkMainWindow
 #include "QvkWinInfo.h"
 
 class QvkSnapshot : public QWidget
@@ -35,13 +35,13 @@ class QvkSnapshot : public QWidget
     Q_OBJECT
 
 public:
-    explicit QvkSnapshot( QvkMainWindow *vkMainWindow,  Ui_formMainWindow *ui_formMainWindow );
+    explicit QvkSnapshot( QvkMainWindow *myParent );
     ~QvkSnapshot();
-    QvkMainWindow *vkMainWindow;
     void init();
 
 
 private:
+    QvkMainWindow *vkMainWindow;
     Ui_formMainWindow *ui;
     QList<QScreen *> myScreen;
     void supportedImageFormats();

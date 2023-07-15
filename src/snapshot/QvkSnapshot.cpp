@@ -35,11 +35,10 @@
 #include "QvkDirDialog.h"
 #include "QvkShowMessage.h"
 
-
-QvkSnapshot::QvkSnapshot( QvkMainWindow *_vkMainWindow, Ui_formMainWindow *ui_formMainWindow )
+QvkSnapshot::QvkSnapshot( QvkMainWindow *myParent )
 {
-    ui = ui_formMainWindow;
-    vkMainWindow = _vkMainWindow;
+    vkMainWindow = myParent;
+    ui = vkMainWindow->ui;
 }
 
 
