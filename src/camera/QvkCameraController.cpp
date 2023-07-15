@@ -156,36 +156,17 @@ void QvkCameraController::slot_frameOnOff( bool value )
     {
         Qt::WindowFlags flags;
 
-#ifdef Q_OS_WIN
-        if ( value == true )
-        {
-            vkCameraWindow->setWindowFlag( Qt::Window, false );
-            vkCameraWindow->setWindowFlag( Qt::ToolTip, true );
-        }
-
-        if ( value == false )
-        {
-            vkCameraWindow->setWindowFlag( Qt::Window, true );
-            vkCameraWindow->setWindowFlag( Qt::ToolTip, false );
-        }
-#endif
-
-#ifdef Q_OS_LINUX
-        if ( value == true )
-        {
+        if ( value == true ) {
             flags = Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
             vkCameraWindow->setWindowFlags( flags );
         }
 
-        if ( value == false )
-        {
+        if ( value == false ) {
             flags = Qt::WindowStaysOnTopHint;
             vkCameraWindow->setWindowFlags( flags );
         }
-#endif
 
-        if ( ui_formMainWindow->checkBoxCameraOnOff->isChecked() == true )
-        {
+        if ( ui_formMainWindow->checkBoxCameraOnOff->isChecked() == true ) {
             vkCameraWindow->show();
         }
     }
@@ -313,8 +294,6 @@ void QvkCameraController::slot_setNewImage( QImage image )
             painter.end();
             image = pixmap.toImage();
         } else {   
-#ifdef Q_OS_LINUX
-            // Under linux absolute perfect. Under Windows outer black line.
             qreal width = image.width();
             qreal height = image.height();
             qreal quotient = width / height;
@@ -341,35 +320,6 @@ void QvkCameraController::slot_setNewImage( QImage image )
             image = pixmap.toImage();
 
             vkCameraWindow->setFixedSize( h, h );
-#endif
-            // Under Windows a bit better as the other code
-#ifdef Q_OS_WIN
-            qreal width = image.width();
-            qreal height = image.height();
-            qreal quotient = width / height;
-            qreal w = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
-            qreal h = ui_formMainWindow->comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
-
-            QPixmap pixmap( h, h );
-            pixmap.fill( Qt::transparent );
-            QPainter painter;
-            painter.begin( &pixmap );
-            painter.setRenderHint( QPainter::Antialiasing, true );
-            painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
-
-            QRegion region( QRect( 0, 0, h, h ), QRegion::Ellipse );
-            painter.setClipRegion( region );
-            painter.drawImage( QPointF( 0.0, 0.0 ), image );
-
-            QRectF target( 0.0, 0.0, h, h );
-            QRectF source( (w-h)/2, 0.0, image.height(), image.height() );
-            painter.drawImage( target, image, source );
-            painter.end();
-
-            image = pixmap.toImage();
-
-            vkCameraWindow->setFixedSize( h, h );
-#endif
         }
     }
     // Circle end
