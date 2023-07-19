@@ -546,7 +546,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     VK_gst_Elements_available();
     vkContainerController = new QvkContainerController( ui );
-//    VK_set_available_Formats_in_Combox(); //------------ Icon müßen noch in Container eingebaut werden
 
     QvkScreenManager *screenManager = new QvkScreenManager( this );
     // Fullscreen

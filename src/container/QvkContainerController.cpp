@@ -156,8 +156,7 @@ void QvkContainerController::slot_set_available_VideoCodecs_in_Combobox( const Q
         for ( int i = 0; i < list.count(); i++ ) {
             if ( list.at(i).available == true ) {
 #ifdef Q_OS_WIN
-                if ( ui->radioButton_cisco_off->isChecked() and ( list.at(i).encoder == "openh264enc" ) )
-                {
+                if ( ui->radioButton_cisco_off->isChecked() and ( list.at(i).encoder == "openh264enc" ) ) {
                     continue;
                 }
 #endif
@@ -167,12 +166,9 @@ void QvkContainerController::slot_set_available_VideoCodecs_in_Combobox( const Q
                 } else {
                     QString message = global::nameOutput + " + " + list.at(i).encoder;
                     GstElement *source = gst_element_factory_create( factory, "source" );
-                    if ( !source )
-                    {
+                    if ( !source ) {
                         message = global::nameOutput + " - " + list.at(i).encoder + " available but codec is missing";
-                    }
-                    else
-                    {
+                    } else {
                         ui->comboBoxVideoCodec->addItem( list.at(i).name, list.at(i).encoder );
                         gst_object_unref( source );
                     }

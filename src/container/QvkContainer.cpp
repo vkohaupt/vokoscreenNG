@@ -1,6 +1,5 @@
 #include "QvkContainer.h"
 
-#include <QDebug>
 #include <QStringList>
 #include <QList>
 
