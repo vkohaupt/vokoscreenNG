@@ -56,10 +56,13 @@ public:
     QList<Container::AudioCodec> get_AudioCodecs( QString suffix );
     void set_ContainerAvailable( QString muxer, bool available );
 
+
 private:
     QList<Container*> *Containers;
 
+
 signals:
+
 
 };
 

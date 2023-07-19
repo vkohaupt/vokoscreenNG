@@ -62,10 +62,8 @@ void Container::add_AudioCodec( QString encoder, QString  name )
 
 void Container::set_VideoCodecAvailable( QString encoder, bool available )
 {
-    for ( int i = 0; i < VideoCodecs.count(); i++ )
-    {
-        if ( VideoCodecs.at(i).encoder == encoder )
-        {
+    for ( int i = 0; i < VideoCodecs.count(); i++ ) {
+        if ( VideoCodecs.at(i).encoder == encoder ) {
             VideoCodec videoCodec = VideoCodecs.at(i);
             videoCodec.available = available;
             VideoCodecs.replace( i, videoCodec );
@@ -75,10 +73,8 @@ void Container::set_VideoCodecAvailable( QString encoder, bool available )
 
 void Container::set_AudioCodecAvailable( QString encoder, bool available )
 {
-    for ( int i = 0; i < AudioCodecs.count(); i++ )
-    {
-        if ( AudioCodecs.at(i).encoder == encoder )
-        {
+    for ( int i = 0; i < AudioCodecs.count(); i++ ) {
+        if ( AudioCodecs.at(i).encoder == encoder ) {
             AudioCodec audioCodec = AudioCodecs.at(i);
             audioCodec.available = available;
             AudioCodecs.replace( i, audioCodec );
@@ -216,10 +212,8 @@ QList<Container::VideoCodec> QvkContainer::get_VideoCodecs( QString suffix )
 QList<Container::AudioCodec> QvkContainer::get_AudioCodecs( QString suffix )
 {
     QList<Container::AudioCodec> list;
-    for ( int i = 0; i < Containers->count(); i++ )
-    {
-        if ( Containers->at(i)->get_Suffix() == suffix )
-        {
+    for ( int i = 0; i < Containers->count(); i++ ) {
+        if ( Containers->at(i)->get_Suffix() == suffix ) {
             list << Containers->at(i)->AudioCodecs;
         }
     }
@@ -233,10 +227,8 @@ QList<Container::AudioCodec> QvkContainer::get_AudioCodecs( QString suffix )
  */
 void QvkContainer::set_ContainerAvailable( QString muxer, bool available  )
 {
-    for ( int i = 0; i < Containers->count(); i++ )
-    {
-        if ( Containers->at(i)->get_Muxer() == muxer )
-        {
+    for ( int i = 0; i < Containers->count(); i++ ) {
+        if ( Containers->at(i)->get_Muxer() == muxer ) {
             Containers->at(i)->set_MuxerAvailable( available );
         }
     }

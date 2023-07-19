@@ -25,8 +25,9 @@ QvkContainerController::QvkContainerController(QObject *parent, Ui::formMainWind
 
     qDebug();
     qDebug().noquote() << global::nameOutput << "Video encoder:";
-    for ( int i = 0; i < vkContainer->get_AllVideoEncoders().count(); i++ ) {
-        QString encoder = vkContainer->get_AllVideoEncoders().at(i);
+    QStringList videoList = vkContainer->get_AllVideoEncoders();
+    for ( int i = 0; i < videoList.count(); i++ ) {
+        QString encoder = videoList.at(i);
         GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
         if ( !factory ) {
             qDebug().noquote() << global::nameOutput << "-" << encoder;
@@ -38,8 +39,9 @@ QvkContainerController::QvkContainerController(QObject *parent, Ui::formMainWind
 
     qDebug();
     qDebug().noquote() << global::nameOutput << "Audio encoder:";
-    for ( int i = 0; i < vkContainer->get_AllAudioEncoders().count(); i++ ) {
-        QString encoder = vkContainer->get_AllAudioEncoders().at(i);
+    QStringList audioList = vkContainer->get_AllAudioEncoders();
+    for ( int i = 0; i < audioList.count(); i++ ) {
+        QString encoder = audioList.at(i);
         GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
         if ( !factory ) {
             qDebug().noquote() << global::nameOutput << "-" << encoder;
@@ -78,18 +80,13 @@ void QvkContainerController::set_videoencoder_to_available_or_unavailable()
     {
         QString suffix = vkContainer->get_Containers().at(i)->get_Suffix();
         QList<Container::VideoCodec> list = vkContainer->get_VideoCodecs( suffix  );
-        if ( !list.empty() )
-        {
-            for ( int x = 0; x < list.count(); x++ )
-            {
+        if ( !list.empty() ) {
+            for ( int x = 0; x < list.count(); x++ ) {
                 QString encoder = list.at(x).encoder;
                 GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
-                if ( !factory )
-                {
+                if ( !factory ) {
                     vkContainer->get_Containers().at(i)->set_VideoCodecAvailable( encoder, false );
-                }
-                else
-                {
+                } else {
                     vkContainer->get_Containers().at(i)->set_VideoCodecAvailable( encoder, true );
                     gst_object_unref( factory );
                 }
@@ -105,18 +102,13 @@ void QvkContainerController::set_audioencoder_to_available_or_unavailable()
     {
         QString suffix = vkContainer->get_Containers().at(i)->get_Suffix();
         QList<Container::AudioCodec> list = vkContainer->get_AudioCodecs( suffix  );
-        if ( !list.empty() )
-        {
-            for ( int x = 0; x < list.count(); x++ )
-            {
+        if ( !list.empty() ) {
+            for ( int x = 0; x < list.count(); x++ ) {
                 QString encoder = list.at(x).encoder;
                 GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
-                if ( !factory )
-                {
+                if ( !factory ) {
                     vkContainer->get_Containers().at(i)->set_AudioCodecAvailable( encoder, false );
-                }
-                else
-                {
+                } else {
                     vkContainer->get_Containers().at(i)->set_AudioCodecAvailable( encoder, true );
                     gst_object_unref( factory );
                 }
@@ -129,10 +121,8 @@ void QvkContainerController::set_audioencoder_to_available_or_unavailable()
 
 void QvkContainerController::set_available_muxer_in_ComboBox()
 {
-    for ( int i = 0; i < vkContainer->get_Containers().count(); i++ )
-    {
-        if ( vkContainer->get_Containers().at(i)->get_Available() == true )
-        {
+    for ( int i = 0; i < vkContainer->get_Containers().count(); i++ ) {
+        if ( vkContainer->get_Containers().at(i)->get_Available() == true ) {
             ui->comboBoxFormat->addItem( vkContainer->get_Containers().at(i)->get_Suffix(), vkContainer->get_Containers().at(i)->get_Muxer() );
         }
     }
@@ -146,12 +136,9 @@ void QvkContainerController::slot_set_available_VideoCodecs_in_Combobox( const Q
 {
     ui->comboBoxVideoCodec->clear();
     QList<Container::VideoCodec> list = vkContainer->get_VideoCodecs( suffix  );
-    if ( !list.empty() )
-    {
-        for ( int i = 0; i < list.count(); i++ )
-        {
-            if ( list.at(i).available == true )
-            {
+    if ( !list.empty() ) {
+        for ( int i = 0; i < list.count(); i++ ) {
+            if ( list.at(i).available == true ) {
                 ui->comboBoxVideoCodec->addItem( list.at(i).name, list.at(i).encoder );
             }
         }
@@ -165,12 +152,9 @@ void QvkContainerController::slot_set_available_AudioCodecs_in_Combobox( const Q
 {
     ui->comboBoxAudioCodec->clear();
     QList<Container::AudioCodec> list = vkContainer->get_AudioCodecs( suffix  );
-    if ( !list.empty() )
-    {
-        for ( int i = 0; i < list.count(); i++ )
-        {
-            if ( list.at(i).available == true )
-            {
+    if ( !list.empty() ) {
+        for ( int i = 0; i < list.count(); i++ ) {
+            if ( list.at(i).available == true ) {
                 ui->comboBoxAudioCodec->addItem( list.at(i).name, list.at(i).encoder );
             }
         }
@@ -183,17 +167,14 @@ void QvkContainerController::set_available_formatVideoAudoicodec_in_tab()
 {
     // Delete all QLabel
     QList<QLabel *> listLabel = ui->scrollAreaWidgetContentsAvailable->findChildren<QLabel *>();
-    for( int i = 0; i < listLabel.count(); i++ )
-    {
+    for( int i = 0; i < listLabel.count(); i++ ) {
         delete listLabel.at( i );
     }
 
     // Delete spacerItem
-    for ( int i = 0; i < ui->gridLayoutAvailable->count(); ++i )
-    {
+    for ( int i = 0; i < ui->gridLayoutAvailable->count(); ++i ) {
         QLayoutItem *layoutItem = ui->gridLayoutAvailable->itemAt(i);
-        if ( layoutItem->spacerItem() )
-        {
+        if ( layoutItem->spacerItem() ) {
             ui->gridLayoutAvailable->removeItem(layoutItem);
             delete layoutItem;
             --i;
@@ -202,8 +183,7 @@ void QvkContainerController::set_available_formatVideoAudoicodec_in_tab()
 
     // Delete line
     QList<QFrame *> listFrame = ui->scrollAreaWidgetContentsAvailable->findChildren<QFrame *>();
-    for( int i = 0; i < listFrame.count(); i++ )
-    {
+    for( int i = 0; i < listFrame.count(); i++ ) {
         delete listFrame.at( i );
     }
 
@@ -215,8 +195,7 @@ void QvkContainerController::set_available_formatVideoAudoicodec_in_tab()
         int rowVideo = 1;
         int rowAudio = 1;
         QIcon icon( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
-        if ( vkContainer->get_Containers().at(i)->get_Available() == false )
-        {
+        if ( vkContainer->get_Containers().at(i)->get_Available() == false ) {
             icon.addFile( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
         }
         QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
@@ -233,8 +212,7 @@ void QvkContainerController::set_available_formatVideoAudoicodec_in_tab()
             for ( int i = 0; i < list_VideoCodecs.count(); i++ )
             {
                 QIcon icon( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
-                if ( list_VideoCodecs.at(i).available == false )
-                {
+                if ( list_VideoCodecs.at(i).available == false ) {
                     icon.addFile( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
                 }
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
@@ -253,8 +231,7 @@ void QvkContainerController::set_available_formatVideoAudoicodec_in_tab()
             for ( int i = 0; i < list_AudioCodecs.count(); i++ )
             {
                 QIcon icon( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
-                if ( list_AudioCodecs.at(i).available == false )
-                {
+                if ( list_AudioCodecs.at(i).available == false ) {
                     icon.addFile( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
                 }
                 QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
