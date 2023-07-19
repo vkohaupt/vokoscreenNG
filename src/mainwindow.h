@@ -191,8 +191,8 @@ private slots:
     void slot_startCounter( bool value );
     void slot_comboBoxScreencastScreenCountdown( bool );
 
-    void slot_set_available_VideoCodecs_in_Combox( QString suffix );
-    void slot_set_available_AudioCodecs_in_Combox( QString suffix );
+//    void slot_set_available_VideoCodecs_in_Combox( QString suffix );-------------------------------------------------
+//    void slot_set_available_AudioCodecs_in_Combox( QString suffix );-------------------------------------------------
     void slot_videoCodecChanged( QString codec );
     void slot_framesReset();
     void slot_x264Reset();

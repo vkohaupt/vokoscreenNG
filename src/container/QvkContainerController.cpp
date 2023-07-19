@@ -122,7 +122,23 @@ void QvkContainerController::set_available_muxer_in_ComboBox()
 {
     for ( int i = 0; i < vkContainer->get_Containers().count(); i++ ) {
         if ( vkContainer->get_Containers().at(i)->get_Available() == true ) {
-            ui->comboBoxFormat->addItem( vkContainer->get_Containers().at(i)->get_Suffix(), vkContainer->get_Containers().at(i)->get_Muxer() );
+            QIcon icon;
+            if ( vkContainer->get_Containers().at(i)->get_Suffix() == "mkv" ){
+                icon = QIcon( ":/pictures/screencast/strip-mkv.png" );
+            }
+            if ( vkContainer->get_Containers().at(i)->get_Suffix() == "avi" ){
+                icon = QIcon( ":/pictures/screencast/strip-avi.png" );
+            }
+            if ( vkContainer->get_Containers().at(i)->get_Suffix() == "webm" ){
+                icon = QIcon( ":/pictures/screencast/strip-webm.png" );
+            }
+            if ( vkContainer->get_Containers().at(i)->get_Suffix() == "mp4" ){
+                icon = QIcon( ":/pictures/screencast/strip-mp4.png" );
+            }
+            if ( vkContainer->get_Containers().at(i)->get_Suffix() == "mov" ){
+                icon = QIcon( ":/pictures/screencast/strip-mov.png" );
+            }
+            ui->comboBoxFormat->addItem( icon, vkContainer->get_Containers().at(i)->get_Suffix(), vkContainer->get_Containers().at(i)->get_Muxer() );
         }
     }
 }

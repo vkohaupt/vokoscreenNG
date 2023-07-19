@@ -1390,40 +1390,8 @@ void QvkMainWindow::VK_gst_Elements_available()
 }
 
 
-void QvkMainWindow::VK_set_available_Formats_in_Combox()
-{
-    ui->comboBoxFormat->clear();
-
-    for ( int x = 0; x < videoFormatsList.count(); x++  )
-    {
-        QString stringAllKeys = videoFormatsList.at( x );
-        QStringList listKeys = stringAllKeys.split( "," );
-        QStringList listKeyMuxer = listKeys.filter( "muxer" );
-
-        QIcon icon;
-        if ( QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ) == "mkv" ){
-            icon = QIcon( ":/pictures/screencast/strip-mkv.png" );
-        }
-        if ( QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ) == "avi" ){
-            icon = QIcon( ":/pictures/screencast/strip-avi.png" );
-        }
-        if ( QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ) == "webm" ){
-            icon = QIcon( ":/pictures/screencast/strip-webm.png" );
-        }
-        if ( QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ) == "mp4" ){
-            icon = QIcon( ":/pictures/screencast/strip-mp4.png" );
-        }
-        if ( QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ) == "mov" ){
-            icon = QIcon( ":/pictures/screencast/strip-mov.png" );
-        }
-
-        ui->comboBoxFormat->addItem( icon, // Picture
-                                     QString( listKeyMuxer.at( 0 ) ).section( ":", 2, 2 ), // suffix
-                                     QString( listKeyMuxer.at( 0 ) ).section( ":", 1, 1 ) ); // muxer
-    }
-}
-
-
+// MessageBox und cisco in Container einabauen
+/*
 void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
 {
     ui->comboBoxVideoCodec->clear();
@@ -1495,35 +1463,7 @@ void QvkMainWindow::slot_set_available_VideoCodecs_in_Combox( QString suffix )
         ui->pushButtonStart->setEnabled( true );
     }
 }
-
-
-void QvkMainWindow::slot_set_available_AudioCodecs_in_Combox( QString suffix )
-{
-    ui->comboBoxAudioCodec->clear();
-
-    QStringList listSuffix = videoFormatsList.filter( suffix );
-    QString stringSuffix = listSuffix.at( 0 );
-    QStringList listKeys = stringSuffix.split( "," );
-    QStringList listKeyAudioCodec = listKeys.filter( "audiocodec" );
-    for ( int i = 0; i < listKeyAudioCodec.count(); i++ )
-    {
-        QString encoder = QString( listKeyAudioCodec.at( i ) ).section( ":", 1, 1 );
-        QString name =    QString( listKeyAudioCodec.at( i ) ).section( ":", 2, 2 );
-        GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
-        if ( !factory )
-        {
-            qDebug().noquote() << global::nameOutput << "-" << encoder;
-        }
-        else
-        {
-            qDebug().noquote() << global::nameOutput << "+" << encoder;
-            ui->comboBoxAudioCodec->addItem( name, encoder );
-            gst_object_unref( factory );
-        }
-    }
-    qDebug();
-}
-
+*/
 
 QString QvkMainWindow::Vk_get_Videocodec_Encoder()
 {

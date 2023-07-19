@@ -11,5 +11,3 @@ FORMS       += $$PWD/formMainWindow_wl.ui
 # Area
 include(region/regionselection_wl.pri)
 
-# container
-#include(container/container_wl.pri)
