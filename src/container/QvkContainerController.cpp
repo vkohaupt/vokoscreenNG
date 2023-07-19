@@ -3,6 +3,7 @@
 
 #include <QDebug>
 #include <QLabel>
+#include <QMessageBox>
 #include <gst/gst.h>
 
 QvkContainerController::QvkContainerController( Ui::formMainWindow *Ui )
@@ -154,11 +155,62 @@ void QvkContainerController::slot_set_available_VideoCodecs_in_Combobox( const Q
     if ( !list.empty() ) {
         for ( int i = 0; i < list.count(); i++ ) {
             if ( list.at(i).available == true ) {
-                ui->comboBoxVideoCodec->addItem( list.at(i).name, list.at(i).encoder );
+#ifdef Q_OS_WIN
+                if ( ui->radioButton_cisco_off->isChecked() and ( list.at(i).encoder == "openh264enc" ) )
+                {
+                    continue;
+                }
+#endif
+                GstElementFactory *factory = gst_element_factory_find( list.at(i).encoder.toLatin1() );
+                if ( !factory ) {
+                    qDebug().noquote() << global::nameOutput << "-" << list.at(i).encoder;
+                } else {
+                    QString message = global::nameOutput + " + " + list.at(i).encoder;
+                    GstElement *source = gst_element_factory_create( factory, "source" );
+                    if ( !source )
+                    {
+                        message = global::nameOutput + " - " + list.at(i).encoder + " available but codec is missing";
+                    }
+                    else
+                    {
+                        ui->comboBoxVideoCodec->addItem( list.at(i).name, list.at(i).encoder );
+                        gst_object_unref( source );
+                    }
+
+                    qDebug().noquote() << message;
+                    gst_object_unref( factory );
+                }
             }
+        }
+
+        if ( ui->comboBoxVideoCodec->count() == 0 )
+        {
+            QPixmap pixmap( ":/pictures/status/information.png" );
+            pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+
+            QMessageBox messageBox;
+            messageBox.setIconPixmap( pixmap );
+            messageBox.setText( "<b>No videocodec found</b>" );
+
+            QString string;
+            string += "<center>Please install package</center><br>";
+            string += "gstreamer-plugins-base<br>";
+            string += "gstreamer-plugins-good<br>";
+            string += "gstreamer-plugins-bad<br>";
+            string += "gstreamer-plugins-ugly<br>";
+            string += "gstreamer-plugins-libav<br>";
+            messageBox.setInformativeText( string );
+            messageBox.exec();
+
+            ui->pushButtonStart->setEnabled( false );
+        }
+        else
+        {
+            ui->pushButtonStart->setEnabled( true );
         }
     }
 }
+
 
 /*
  * Insert audio-encoder and video-name from container in audiocodec Combobox
