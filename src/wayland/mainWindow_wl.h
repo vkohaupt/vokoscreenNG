@@ -45,7 +45,7 @@ private:
     void set_SpezialSliders();
     void set_Connects();
     void set_check_all_Elements_available();
-    QvkContainerController *vkContainerController;
+//    QvkContainerController *vkContainerController;
     void set_RegionChoice();
     void set_test_available_geometry();
 

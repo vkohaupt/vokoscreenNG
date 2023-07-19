@@ -47,6 +47,8 @@
 #include "QvkGlobalShortcut.h"
 #include "QvkLogController.h"
 
+#include "QvkContainerController.h"
+
 #ifdef Q_OS_WIN
   #include "QvkCiscoOpenh264Controller.h"
 #endif
@@ -118,8 +120,6 @@ private:
 
     QStringList videoFormatsList;
 
-    void VK_Supported_Formats_And_Codecs();
-    void VK_Check_is_Format_available();
     void VK_set_available_Formats_in_Combox();
     QString VK_get_AudioSystem();
     QStringList VK_getSelectedAudioDevice();
@@ -132,6 +132,7 @@ private:
     QString get_height_From_Screen();
 
     void VK_gst_Elements_available();
+    QvkContainerController *vkContainerController;
 
     QTimer *timerStartTimer;
     QTimer *timerStopRecordingAfter = new QTimer( this );
@@ -211,7 +212,7 @@ private slots:
 
     void slot_setMaxFPS( int );
 
-    void slot_gst_formatVideoAudoicodec_available();
+//    void slot_gst_formatVideoAudoicodec_available(); ---------------------------------------------------------------------------------------------------
 
     void slot_cancel( bool value );
 

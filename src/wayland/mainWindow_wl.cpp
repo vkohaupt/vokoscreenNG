@@ -26,7 +26,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_SpezialSliders();
     set_Connects();
     set_check_all_Elements_available();
-    vkContainerController = new QvkContainerController( this, ui );
+//    vkContainerController = new QvkContainerController( this, ui );
     set_RegionChoice();
     ui->frame_information->hide();
     ui->pushButtonPause->hide();

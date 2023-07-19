@@ -447,9 +447,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this, SLOT( slot_framesReset() ) );
 
-    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combox( QString ) ) );
-    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combox( QString ) ) );
-
     connect( ui->comboBoxVideoCodec, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_videoCodecChanged( QString ) ) );
     connect( ui->toolButtonx264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_x264Reset() ) );
     connect( ui->toolButtonOpenh264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_openh264Reset() ) );
@@ -547,12 +544,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( this,      SIGNAL( signal_close() ),       vkRegionChoise,         SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkSystray,              SLOT( slot_closeSystray() ) );
 
-    VK_Supported_Formats_And_Codecs();
-    VK_Check_is_Format_available();
-    VK_set_available_Formats_in_Combox();
-
-    slot_gst_formatVideoAudoicodec_available();
     VK_gst_Elements_available();
+    vkContainerController = new QvkContainerController( ui );
+//    VK_set_available_Formats_in_Combox(); //------------ Icon müßen noch in Container eingebaut werden
 
     QvkScreenManager *screenManager = new QvkScreenManager( this );
     // Fullscreen
@@ -1353,6 +1347,7 @@ QString QvkMainWindow::VK_scale()
 
 void QvkMainWindow::VK_gst_Elements_available()
 {
+    qDebug().noquote() << global::nameOutput << "Symbols: + available, - not available";
     QStringList list;
 #ifdef Q_OS_WIN
     list << "gdiscreencapsrc";
@@ -1392,259 +1387,6 @@ void QvkMainWindow::VK_gst_Elements_available()
         }
     }
     qDebug();
-}
-
-
-// Check format, video and audoicodec on tab availability
-void QvkMainWindow::slot_gst_formatVideoAudoicodec_available()
-{
-    // Delete all QLabel
-    QList<QLabel *> listLabel = ui->scrollAreaWidgetContentsAvailable->findChildren<QLabel *>();
-    for( int i = 0; i < listLabel.count(); i++ )
-    {
-        delete listLabel.at( i );
-    }
-
-    // Delete spacerItem
-    for ( int i = 0; i < ui->gridLayoutAvailable->count(); ++i )
-    {
-        QLayoutItem *layoutItem = ui->gridLayoutAvailable->itemAt(i);
-        if ( layoutItem->spacerItem() )
-        {
-            ui->gridLayoutAvailable->removeItem(layoutItem);
-            delete layoutItem;
-            --i;
-        }
-    }
-
-    // Delete line
-    QList<QFrame *> listFrame = ui->scrollAreaWidgetContentsAvailable->findChildren<QFrame *>();
-    for( int i = 0; i < listFrame.count(); i++ )
-    {
-        delete listFrame.at( i );
-    }
-
-    // Adding all information
-    int rowCount = 0;
-    for ( int i = 0; i < videoFormatsList.count(); i++ )
-    {
-        int rowMuxer = 1;
-        int rowVideo = 1;
-        int rowAudio = 1;
-        QStringList listElements = QString( videoFormatsList.at(i) ).split( "," ); // listElement beinhaltet muxer, Video und Audio
-
-        for ( int x = 0; x < listElements.count(); x++ )
-        {
-            bool available;
-            QString element = QString( listElements.at( x ) ).section( ":", 1, 1 );
-            GstElementFactory *factory = gst_element_factory_find( element.toLatin1() );
-            if ( !factory )
-            {
-                available = false;
-            }
-            else
-            {
-                available = true;
-            }
-
-            if ( QString( listElements.at( x ) ).section( ":", 0, 0 ) == "muxer" )
-            {
-                QLabel *labelPicture = new QLabel();
-                QIcon icon;
-                if ( available == true )
-                {
-                    QIcon picture( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
-                    icon = picture;
-                }
-                else
-                {
-                    QIcon picture( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
-                    icon = picture;
-                }
-                QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
-                labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
-                labelPicture->setAlignment( Qt::AlignRight );
-                ui->gridLayoutAvailable->addWidget( labelPicture, rowCount + rowMuxer, 0 );
-
-                ui->gridLayoutAvailable->addWidget( new QLabel( "  " + QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowMuxer, 1 );
-                rowMuxer++;
-            }
-
-            if ( QString( listElements.at( x ) ).section( ":", 0, 0 ) == "videocodec" )
-            {
-                QLabel *labelPicture = new QLabel();
-                QIcon icon;
-
-                // If element available then check video codec
-                if ( available == true )
-                {
-                    GstElement *source = gst_element_factory_create( factory, "source" );
-                    if ( !source )
-                    {
-                        QIcon picture( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
-                        icon = picture;
-                    }
-                    else
-                    {
-                        QIcon picture( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
-                        icon = picture;
-                        gst_object_unref( source );
-                        gst_object_unref( factory );
-                    }
-                }
-                else
-                {
-                    QIcon picture( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
-                    icon = picture;
-                }
-
-                QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
-                labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
-                labelPicture->setAlignment( Qt::AlignRight );
-                ui->gridLayoutAvailable->addWidget( labelPicture, rowCount + rowVideo, 2 );
-
-                ui->gridLayoutAvailable->addWidget( new QLabel( "  " + QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowVideo, 3 );
-                rowVideo++;
-            }
-
-            if ( QString( listElements.at( x ) ).section( ":", 0, 0 ) == "audiocodec" )
-            {
-                QLabel *labelPicture = new QLabel();
-                QIcon icon;
-                if ( available == true )
-                {
-                    QIcon picture( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
-                    icon = picture;
-                }
-                else
-                {
-                    QIcon picture( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
-                    icon = picture;
-                }
-
-                QSize size = icon.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
-                labelPicture->setPixmap( icon.pixmap( size, QIcon::Normal, QIcon::On ));
-                labelPicture->setAlignment( Qt::AlignRight );
-                ui->gridLayoutAvailable->addWidget( labelPicture, rowCount + rowAudio, 4 );
-                ui->gridLayoutAvailable->addWidget( new QLabel( "  " + QString( listElements.at( x ) ).section( ":", 2, 2 ) ), rowCount + rowAudio, 5 );
-                rowAudio++;
-            }
-        }
-
-        rowCount = ui->gridLayoutAvailable->rowCount();
-        for ( int x = 0; x <= 5; x++ )
-        {
-            QFrame *line = new QFrame();
-            line->setObjectName( QStringLiteral( "line" ) );
-            line->setFrameShape( QFrame::HLine );
-            line->setFrameShadow( QFrame::Sunken );
-            ui->gridLayoutAvailable->addWidget( line, rowCount, x );
-
-            QLabel *label = new QLabel;
-            label->setText( " " );
-            ui->gridLayoutAvailable->addWidget( label, rowCount, x );
-        }
-    }
-
-    ui->gridLayoutAvailable->addItem( new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding),
-                                      ui->gridLayoutAvailable->rowCount() + 1, 0 );
-}
-
-
-// This is the base for format, video and audiocodec
-void QvkMainWindow::VK_Supported_Formats_And_Codecs()
-{
-    QString videocodec_x264enc = "";
-    if ( isFlatpak == false ) {
-        videocodec_x264enc = "videocodec:x264enc:x264";
-    }
-
-    QStringList MKV_QStringList = ( QStringList()
-                                    << "muxer:matroskamux:mkv"
-                                    << "videocodec:openh264enc:H.264"
-                                #ifdef Q_OS_LINUX
-                                    << videocodec_x264enc
-                                #endif
-                                    << "videocodec:vp8enc:VP8"
-                                    << "audiocodec:vorbisenc:vorbis"
-                                    << "audiocodec:flacenc:flac"
-                                    << "audiocodec:opusenc:opus"
-                                    << "audiocodec:lamemp3enc:mp3"
-                                   );
-
-    QStringList WEBM_QStringList = ( QStringList()
-                                     << "muxer:webmmux:webm"
-                                     << "videocodec:vp8enc:VP8"
-                                     << "audiocodec:vorbisenc:vorbis"
-                                     << "audiocodec:opusenc:opus"
-                                   );
-
-    QStringList AVI_QStringList = ( QStringList()
-                                     << "muxer:avimux:avi"
-                                     << "videocodec:openh264enc:H.264"
-                                #ifdef Q_OS_LINUX
-                                     << videocodec_x264enc
-                                #endif
-                                     << "videocodec:vp8enc:VP8"
-                                     << "audiocodec:lamemp3enc:mp3"
-                                   );
-
-    QStringList MP4_QStringList = ( QStringList()
-                                    << "muxer:mp4mux:mp4"
-                                    << "videocodec:openh264enc:H.264"
-                                #ifdef Q_OS_LINUX
-                                    << videocodec_x264enc
-                                #endif
-                                    << "audiocodec:lamemp3enc:mp3"
-                                    << "audiocodec:opusenc:opus"
-                                    );
-
-    // https://de.wikipedia.org/wiki/QuickTime
-    QStringList MOV_QStringList = ( QStringList()
-                                    << "muxer:qtmux:mov"
-                                    << "videocodec:openh264enc:H.264"
-                                #ifdef Q_OS_LINUX
-                                    << videocodec_x264enc
-                                #endif
-                                    << "videocodec:vp8enc:VP8"
-                                    << "audiocodec:lamemp3enc:mp3"
-                                  );
-
-    videoFormatsList.clear();
-    videoFormatsList.append( MKV_QStringList.join( ","  ) );
-    videoFormatsList.append( WEBM_QStringList.join( ","  ) );
-    videoFormatsList.append( AVI_QStringList.join( "," ) );
-    videoFormatsList.append( MP4_QStringList.join( ",") );
-    videoFormatsList.append( MOV_QStringList.join( ",") );
-}
-
-
-void QvkMainWindow::VK_Check_is_Format_available()
-{
-    qDebug().noquote() << global::nameOutput << "This codec and formats are only for record, not for the player";
-    qDebug().noquote() << global::nameOutput << "Symbols: + available, - not available";
-    QStringList tempList;
-    for ( int x = 0; x < videoFormatsList.count(); x++ )
-    {
-        QString stringAllKeys = videoFormatsList.at( x );
-        QStringList listKeys = stringAllKeys.split( "," );
-        QStringList listKey = listKeys.filter( "muxer" );
-        QString muxer = QString( listKey.at( 0 ) ).section( ":", 1, 1 );
-
-        GstElementFactory *factory = gst_element_factory_find( muxer.toLatin1() );
-        if ( !factory )
-        {
-            qDebug().noquote() << global::nameOutput << "-" << muxer;
-        }
-        else
-        {
-            qDebug().noquote() << global::nameOutput << "+" << muxer;
-            tempList << videoFormatsList.at( x );
-            gst_object_unref( factory );
-        }
-    }
-    videoFormatsList.clear();
-    videoFormatsList << tempList;
 }
 
 

@@ -62,6 +62,7 @@ void QvkScreenManager::slot_screen_count_changed()
         {
             if ( screen.at(i)->name() == QGuiApplication::primaryScreen()->name() )
             {
+                qDebug();
                 qDebug().noquote() << global::nameOutput << "This screen is the primary screen: " << QGuiApplication::primaryScreen()->name();
             }
             qDebug().noquote() << global::nameOutput << "Name from screen: " << screen.at(i)->name();

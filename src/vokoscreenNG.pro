@@ -234,3 +234,6 @@ include(showMessage/showMessage.pri)
 
 # padsAndCaps
 include(padsAndCaps/padsAndCaps.pri)
+
+# Container
+include(container/container.pri)
