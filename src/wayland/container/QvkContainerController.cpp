@@ -1,4 +1,5 @@
 #include "QvkContainerController.h"
+#include "global.h"
 
 #include <QDebug>
 #include <QLabel>
@@ -21,21 +22,49 @@ QvkContainerController::QvkContainerController(QObject *parent, Ui::formMainWind
 
     set_available_muxer_in_ComboBox();
     set_available_formatVideoAudoicodec_in_tab();
+
+    qDebug();
+    qDebug().noquote() << global::nameOutput << "Video encoder:";
+    for ( int i = 0; i < vkContainer->get_AllVideoEncoders().count(); i++ ) {
+        QString encoder = vkContainer->get_AllVideoEncoders().at(i);
+        GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
+        if ( !factory ) {
+            qDebug().noquote() << global::nameOutput << "-" << encoder;
+        } else {
+            qDebug().noquote() << global::nameOutput << "+" << encoder;
+            gst_object_unref( factory );
+        }
+    }
+
+    qDebug();
+    qDebug().noquote() << global::nameOutput << "Audio encoder:";
+    for ( int i = 0; i < vkContainer->get_AllAudioEncoders().count(); i++ ) {
+        QString encoder = vkContainer->get_AllAudioEncoders().at(i);
+        GstElementFactory *factory = gst_element_factory_find( encoder.toLatin1() );
+        if ( !factory ) {
+            qDebug().noquote() << global::nameOutput << "-" << encoder;
+        } else {
+            qDebug().noquote() << global::nameOutput << "+" << encoder;
+            gst_object_unref( factory );
+        }
+    }
 }
 
 
 void QvkContainerController::set_muxer_to_available_or_unavailable()
 {
+    qDebug().noquote() << global::nameOutput << "This codec and formats are only for record, not for the player";
+    qDebug().noquote() << global::nameOutput << "Symbols: + available, - not available";
     for ( int i = 0; i < vkContainer->get_Containers().count(); i++ )
     {
         QString muxer = vkContainer->get_Containers().at(i)->get_Muxer();
+        QString suffix = vkContainer->get_Containers().at(i)->get_Suffix();
         GstElementFactory *factory = gst_element_factory_find( muxer.toLatin1() );
-        if ( !factory )
-        {
+        if ( !factory ) {
+            qDebug().noquote() << global::nameOutput << "-" << muxer << "(" + suffix + ")";
             vkContainer->set_ContainerAvailable( muxer, false );
-        }
-        else
-        {
+        } else {
+            qDebug().noquote() << global::nameOutput <<  "+" << muxer << "(" + suffix + ")";
             vkContainer->set_ContainerAvailable( muxer, true );
             gst_object_unref( factory );
         }

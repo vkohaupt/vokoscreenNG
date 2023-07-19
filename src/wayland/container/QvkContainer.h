@@ -50,6 +50,8 @@ class QvkContainer : public QObject
 public:
     explicit QvkContainer(QObject *parent = nullptr);
     QList<Container*> get_Containers();
+    QStringList get_AllVideoEncoders();
+    QStringList get_AllAudioEncoders();
     QList<Container::VideoCodec> get_VideoCodecs( QString suffix );
     QList<Container::AudioCodec> get_AudioCodecs( QString suffix );
     void set_ContainerAvailable( QString muxer, bool available );

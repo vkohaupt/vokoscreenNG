@@ -1,6 +1,8 @@
 #include "QvkContainer.h"
 
 #include <QDebug>
+#include <QStringList>
+#include <QList>
 
 /*!
  * Hint:
@@ -123,12 +125,16 @@ QvkContainer::QvkContainer(QObject *parent) : QObject(parent)
     MOV->add_VideoCodec( "vp8enc", "VP8" );
     MOV->add_AudioCodec( "lamemp3enc", "mp3" );
 
+    Container *GIF = new Container( "gifenc", "gif" );
+    GIF->add_VideoCodec( "gifenc", "gif" );
+
     Containers = new QList<Container*>;
     Containers->append( MKV );
     Containers->append( WEBM );
     Containers->append( AVI );
     Containers->append( MP4 );
     Containers->append( MOV );
+    Containers->append( GIF );
 }
 
 /*!
@@ -137,6 +143,48 @@ QvkContainer::QvkContainer(QObject *parent) : QObject(parent)
 QList<Container*> QvkContainer::get_Containers()
 {
     return *Containers;
+}
+
+
+/*!
+ *  Return all supported video-encoder as QStringList
+ */
+QStringList QvkContainer::get_AllVideoEncoders()
+{
+    QList<Container::VideoCodec> list;
+    for ( int i = 0; i < Containers->count(); i++ ) {
+        list << Containers->at(i)->VideoCodecs;
+    }
+
+    QStringList stringList;
+    for ( int i = 0; i < list.count(); i++ ) {
+        if ( stringList.contains( list.at(i).encoder ) == false ) {
+            stringList << list.at(i).encoder;
+        }
+    }
+
+    return stringList;
+}
+
+
+/*!
+ *  Return all supported audio-encoder as QStringList
+ */
+QStringList QvkContainer::get_AllAudioEncoders()
+{
+    QList<Container::AudioCodec> list;
+    for ( int i = 0; i < Containers->count(); i++ ) {
+        list << Containers->at(i)->AudioCodecs;
+    }
+
+    QStringList stringList;
+    for ( int i = 0; i < list.count(); i++ ) {
+        if ( stringList.contains( list.at(i).encoder ) == false ) {
+            stringList << list.at(i).encoder;
+        }
+    }
+
+    return stringList;
 }
 
 /*!
@@ -149,10 +197,8 @@ QList<Container*> QvkContainer::get_Containers()
 QList<Container::VideoCodec> QvkContainer::get_VideoCodecs( QString suffix )
 {
     QList<Container::VideoCodec> list;
-    for ( int i = 0; i < Containers->count(); i++ )
-    {
-        if ( Containers->at(i)->get_Suffix() == suffix )
-        {
+    for ( int i = 0; i < Containers->count(); i++ ) {
+        if ( Containers->at(i)->get_Suffix() == suffix ) {
             list << Containers->at(i)->VideoCodecs;
         }
     }
