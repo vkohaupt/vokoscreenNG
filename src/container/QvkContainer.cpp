@@ -120,8 +120,8 @@ QvkContainer::QvkContainer(QObject *parent) : QObject(parent)
     MOV->add_VideoCodec( "vp8enc", "VP8" );
     MOV->add_AudioCodec( "lamemp3enc", "mp3" );
 
-    Container *GIF = new Container( "gifenc", "gif" );
-    GIF->add_VideoCodec( "gifenc", "gif" );
+//    Container *GIF = new Container( "gifenc", "gif" );
+//    GIF->add_VideoCodec( "gifenc", "gif" );
 
     Containers = new QList<Container*>;
     Containers->append( MKV );
@@ -129,7 +129,7 @@ QvkContainer::QvkContainer(QObject *parent) : QObject(parent)
     Containers->append( AVI );
     Containers->append( MP4 );
     Containers->append( MOV );
-    Containers->append( GIF );
+//    Containers->append( GIF );
 }
 
 /*!
