@@ -45,6 +45,7 @@ void QvkComposite::slot_shot()
     }
 
     emit signal_compositeEnabled( isCompositeEnabled );
+    qDebug();
     qDebug().noquote() << global::nameOutput << "[Composite]" << isCompositeEnabled;
     close();
 }

@@ -234,13 +234,11 @@ bool QvkSnapshot::is_imageFolderExists_and_haveWritePermission()
         QTextStream stream( &file );
         stream << "Test Test Test Test Test Test" << Qt::endl;
         file.close();
-        qDebug().noquote();
         qDebug().noquote() << global::nameOutput << "Pictures permission: Can write in" << fileInfo.absolutePath();
         qDebug().noquote();
         file.remove();
         value = true;
     } else {
-        qDebug().noquote();
         qDebug().noquote() << "Pictures permission: ERROR can not write in" << fileInfo.absolutePath();
         qDebug().noquote();
         QPixmap pixmap( ":/pictures/status/warning.png" );

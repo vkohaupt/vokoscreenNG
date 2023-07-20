@@ -153,6 +153,8 @@ void QvkContainerController::slot_set_available_VideoCodecs_in_Combobox( const Q
     ui->comboBoxVideoCodec->clear();
     QList<Container::VideoCodec> list = vkContainer->get_VideoCodecs( suffix  );
     if ( !list.empty() ) {
+        qDebug();
+        qDebug().noquote() << global::nameOutput << "Format was changed, codecs are inserted:";
         for ( int i = 0; i < list.count(); i++ ) {
             if ( list.at(i).available == true ) {
 #ifdef Q_OS_WIN
