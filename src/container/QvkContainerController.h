@@ -12,7 +12,7 @@ class QvkContainerController : public QObject
 
 public:
     QvkContainerController( Ui::formMainWindow *Ui );
-    void init( bool m_isFlatpak );
+    void init( bool isFlatpak );
 
     
 private:
