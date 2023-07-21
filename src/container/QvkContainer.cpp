@@ -91,7 +91,9 @@ QvkContainer::QvkContainer(QObject *parent) : QObject(parent)
     Container *MKV = new Container( "matroskamux", "mkv" );
     MKV->add_VideoCodec( "openh264enc", "H.264" );
     MKV->add_VideoCodec( "vp8enc", "VP8");
+#ifdef Q_OS_LINUX
     MKV->add_VideoCodec( "x264enc", "x264");
+#endif
     MKV->add_AudioCodec( "vorbisenc", "vorbis" );
     MKV->add_AudioCodec( "flacenc", "flac" );
     MKV->add_AudioCodec( "opusenc", "opus" );
@@ -104,24 +106,30 @@ QvkContainer::QvkContainer(QObject *parent) : QObject(parent)
 
     Container *AVI = new Container( "avimux", "avi" );
     AVI->add_VideoCodec( "openh264enc", "H.264" );
+#ifdef Q_OS_LINUX
     AVI->add_VideoCodec( "x264enc", "x264" );
+#endif
     AVI->add_VideoCodec( "vp8enc", "VP8" );
     AVI->add_AudioCodec( "lamemp3enc", "mp3" );
 
     Container *MP4 = new Container( "mp4mux", "mp4" );
     MP4->add_VideoCodec( "openh264enc", "H.264" );
+#ifdef Q_OS_LINUX
     MP4->add_VideoCodec( "x264enc", "x264" );
+#endif
     MP4->add_AudioCodec( "lamemp3enc", "mp3" );
     MP4->add_AudioCodec( "opusenc", "opus" );
 
     Container *MOV = new Container( "qtmux", "mov" );
     MOV->add_VideoCodec( "openh264enc", "H.264" );
+#ifdef Q_OS_LINUX
     MOV->add_VideoCodec( "x264enc", "x264" );
+#endif
     MOV->add_VideoCodec( "vp8enc", "VP8" );
     MOV->add_AudioCodec( "lamemp3enc", "mp3" );
 
-//    Container *GIF = new Container( "gifenc", "gif" );
-//    GIF->add_VideoCodec( "gifenc", "gif" );
+    //    Container *GIF = new Container( "gifenc", "gif" );
+    //    GIF->add_VideoCodec( "gifenc", "gif" );
 
     Containers = new QList<Container*>;
     Containers->append( MKV );
@@ -129,7 +137,7 @@ QvkContainer::QvkContainer(QObject *parent) : QObject(parent)
     Containers->append( AVI );
     Containers->append( MP4 );
     Containers->append( MOV );
-//    Containers->append( GIF );
+    //    Containers->append( GIF );
 }
 
 /*!
