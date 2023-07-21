@@ -131,7 +131,7 @@ QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
     MOV->add_VideoCodec( "vp8enc", "VP8" );
     MOV->add_AudioCodec( "lamemp3enc", "mp3" );
 
-    Container *GIF;
+    Container *GIF = Q_NULLPTR;
     if ( QString( gst_version_string() ) >= "1.22.5" ) {
         GIF = new Container( "gifenc", "gif" );
         GIF->add_VideoCodec( "gifenc", "gif" );
