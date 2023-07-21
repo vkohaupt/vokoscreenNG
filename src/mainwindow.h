@@ -224,7 +224,6 @@ signals:
     void signal_close( bool value );
     void signal_newVideoFilename( QString );
     void signal_resizeEvent( QResizeEvent *event );
-    void signal_isFlatpak( bool );
 
 
 protected:
