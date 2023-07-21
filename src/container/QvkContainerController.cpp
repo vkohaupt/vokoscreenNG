@@ -142,6 +142,9 @@ void QvkContainerController::set_available_muxer_in_ComboBox()
             if ( vkContainer->get_Containers().at(i)->get_Suffix() == "mov" ){
                 icon = QIcon( ":/pictures/screencast/strip-mov.png" );
             }
+            if ( vkContainer->get_Containers().at(i)->get_Suffix() == "gif" ){
+                icon = QIcon( ":/pictures/screencast/strip-gif.png" );
+            }
             ui->comboBoxFormat->addItem( icon, vkContainer->get_Containers().at(i)->get_Suffix(), vkContainer->get_Containers().at(i)->get_Muxer() );
         }
     }

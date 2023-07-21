@@ -83,6 +83,7 @@
 <file>pictures/screencast/strip-avi.png</file>
 <file>pictures/screencast/accept.png</file>
 <file>pictures/screencast/strip-webm.png</file>
+<file>pictures/screencast/strip-gif.png</file>
 <file>pictures/screencast/undo.png</file>
 <file>pictures/screencast/author.png</file>
 <file>pictures/showClick/sandglass.png</file>
@@ -138,6 +139,7 @@
 <file>pictures/player/go-previous.license</file>
 <file>pictures/screencast/monitor.license</file>
 <file>pictures/screencast/strip-mkv.license</file>
+<file>pictures/screencast/strip-gif.license</file>
 <file>pictures/screencast/strip-mov.license</file>
 <file>pictures/screencast/accept.license</file>
 <file>pictures/screencast/preferences-system.license</file>
@@ -194,6 +196,7 @@
 <file>language/es_MX.qm</file>
 <file>language/es.qm</file>
 <file>language/eu_ES.qm</file>
+<file>language/fa_IR.qm</file>
 <file>language/fi_FI.qm</file>
 <file>language/fr_FR.qm</file>
 <file>language/hr.qm</file>
