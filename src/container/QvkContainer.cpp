@@ -1,7 +1,10 @@
 #include "QvkContainer.h"
+#include "global.h"
+#include <gst/gst.h>
 
 #include <QStringList>
 #include <QList>
+#include <QDebug>
 
 /*!
  * Hint:
@@ -128,8 +131,10 @@ QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
     MOV->add_VideoCodec( "vp8enc", "VP8" );
     MOV->add_AudioCodec( "lamemp3enc", "mp3" );
 
-    //    Container *GIF = new Container( "gifenc", "gif" );
-    //    GIF->add_VideoCodec( "gifenc", "gif" );
+    Container *GIF = new Container( "gifenc", "gif" );
+    if ( QString( gst_version_string() ) >= "1.22.5" ) {
+        GIF->add_VideoCodec( "gifenc", "gif" );
+    }
 
     Containers = new QList<Container*>;
     Containers->append( MKV );
@@ -137,7 +142,10 @@ QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
     Containers->append( AVI );
     Containers->append( MP4 );
     Containers->append( MOV );
-    //    Containers->append( GIF );
+
+    if ( QString( gst_version_string() ) >= "1.22.5" ) {
+        Containers->append( GIF );
+    }
 }
 
 /*!
