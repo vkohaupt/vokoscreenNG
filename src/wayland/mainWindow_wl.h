@@ -3,11 +3,11 @@
 
 #include "ui_formMainWindow_wl.h"
 #include "portal_wl.h"
+#include "QvkContainerController_wl.h"
+#include "QvkRegionChoise_wl.h"
 
 #include "QvkSpezialSlider.h"
-#include "QvkContainerController.h"
 #include "QvkLogController.h"
-#include "QvkRegionChoise_wl.h"
 
 #include <QMainWindow>
 
@@ -45,7 +45,7 @@ private:
     void set_SpezialSliders();
     void set_Connects();
     void set_check_all_Elements_available();
-//    QvkContainerController *vkContainerController;
+    QvkContainerController_wl *vkContainerController_wl;
     void set_RegionChoice();
     void set_test_available_geometry();
 
