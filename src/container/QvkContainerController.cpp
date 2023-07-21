@@ -8,10 +8,13 @@
 
 QvkContainerController::QvkContainerController( Ui::formMainWindow *Ui )
 {
-//    Q_UNUSED(parent)
-
     ui = Ui;
-    vkContainer = new QvkContainer;
+}
+
+
+void QvkContainerController::init( bool isFlatpak )
+{
+    vkContainer = new QvkContainer( this, isFlatpak );
 
     set_muxer_to_available_or_unavailable();
     set_videoencoder_to_available_or_unavailable();

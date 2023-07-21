@@ -546,6 +546,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     VK_gst_Elements_available();
     vkContainerController = new QvkContainerController( ui );
+    vkContainerController->init( isFlatpak );
 
     QvkScreenManager *screenManager = new QvkScreenManager( this );
     // Fullscreen

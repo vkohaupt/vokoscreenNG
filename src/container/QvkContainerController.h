@@ -12,6 +12,7 @@ class QvkContainerController : public QObject
 
 public:
     QvkContainerController( Ui::formMainWindow *Ui );
+    void init( bool m_isFlatpak );
 
     
 private:
@@ -27,6 +28,9 @@ private:
 private slots:
     void slot_set_available_VideoCodecs_in_Combobox( const QString suffix );
     void slot_set_available_AudioCodecs_in_Combobox( const QString suffix );
+
+
+public slots:
 
 
 signals:

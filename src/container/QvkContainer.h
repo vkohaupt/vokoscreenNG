@@ -48,7 +48,7 @@ class QvkContainer : public QObject
 {
     Q_OBJECT
 public:
-    explicit QvkContainer(QObject *parent = nullptr);
+    explicit QvkContainer(QObject *parent, bool isFlatpak );
     QList<Container*> get_Containers();
     QStringList get_AllVideoEncoders();
     QStringList get_AllAudioEncoders();
