@@ -452,6 +452,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->toolButtonOpenh264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_openh264Reset() ) );
     connect( ui->toolButtonVP8Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_vp8Reset() ) );
 
+    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_currentTextChangedToGIF( QString ) ) );
+
     // Tab 3 Time
     connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
     timerStartTimer = new QTimer();
@@ -664,6 +666,24 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
+}
+
+
+void QvkMainWindow::slot_currentTextChangedToGIF( QString value )
+{
+    if ( value == "gif" ) {
+        if (  VK_getSelectedAudioDevice().count() >= 1 ) {
+            QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
+            for ( int i = 0; i < listQCheckBox.count(); i++ ) {
+                if ( listQCheckBox.at(i)->checkState() == Qt::Checked ) {
+                    listQCheckBox.at(i)->click();
+                }
+            }
+        }
+        ui->scrollAreaWidgetContentsAudioDevices->setEnabled( false );
+    } else {
+        ui->scrollAreaWidgetContentsAudioDevices->setEnabled( true );
+    }
 }
 
 
@@ -1437,6 +1457,15 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         value = list.join( " " );
     }
 
+    if ( encoder == "gifenc" )
+    {
+        QStringList list;
+        list << "gifenc";
+        list << "speed=30";
+        list << "repeat=-1";
+        value = list.join( " " );
+    }
+
     return value;
 }
 
@@ -1606,14 +1635,16 @@ QString QvkMainWindow::VK_get_AudioSystem()
 QString QvkMainWindow::VK_getMuxer()
 {
     QString value = ui->comboBoxFormat->currentData().toString();
-    if ( ui->comboBoxFormat->currentData().toString() == "matroskamux" )
-    {
+    if ( ui->comboBoxFormat->currentData().toString() == "matroskamux" ) {
         value = ui->comboBoxFormat->currentData().toString() + " name=mux writing-app=" + global::name + "_" + QString( global::version ).replace( " ", "_" );
-    }
-    else
-    {
+    } else {
         value = ui->comboBoxFormat->currentData().toString() + " name=mux";
     }
+
+    if ( ui->comboBoxFormat->currentData().toString() == "gifenc" ) {
+        value = "";
+    }
+
     return value;
 }
 

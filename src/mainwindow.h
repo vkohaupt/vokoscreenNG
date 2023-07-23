@@ -218,6 +218,7 @@ private slots:
 
     void slot_disableShowclickHalo( bool bo );
 
+    void slot_currentTextChangedToGIF( QString value);
 
 signals:
     void signal_close();
