@@ -595,11 +595,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>TextLabel</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CheckBox</source>
+        <source>Loop</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
