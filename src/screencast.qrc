@@ -64,6 +64,7 @@
 <file>pictures/player/pause.png</file>
 <file>pictures/player/player-sidebar.png</file>
 <file>pictures/player/document-open.png</file>
+<file>pictures/screencast/loop.png</file>
 <file>pictures/screencast/supported-formats.png</file>
 <file>pictures/screencast/strip-mkv.png</file>
 <file>pictures/screencast/sandglass.png</file>
@@ -151,6 +152,7 @@
 <file>pictures/screencast/undo.license</file>
 <file>pictures/screencast/sandglass.license</file>
 <file>pictures/screencast/supported-formats.license</file>
+<file>pictures/screencast/loop.license</file>
 <file>pictures/screencast/timer.license</file>
 <file>pictures/screencast/strip.license</file>
 <file>pictures/screencast/missing.license</file>

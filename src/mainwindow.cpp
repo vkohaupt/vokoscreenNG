@@ -1026,20 +1026,22 @@ void QvkMainWindow::slot_videoCodecChanged( QString codec )
     ui->frameVideoCodecx264->setVisible( false );
     ui->frameVideoCodecOpenh264->setVisible( false );
     ui->frameVideoCodecVp8->setVisible( false );
+    ui->frameVideoCodecGIF->setVisible( false );
 
-    if ( codec == "x264"  )
-    {
+    if ( codec == "x264" ) {
         ui->frameVideoCodecx264->setVisible( true );
     }
 
-    if ( codec == "H.264" ) // openh264
-    {
+    if ( codec == "H.264" ) {
         ui->frameVideoCodecOpenh264->setVisible( true );
     }
 
-    if ( codec == "VP8" )
-    {
+    if ( codec == "VP8" ) {
         ui->frameVideoCodecVp8->setVisible( true );
+    }
+
+    if ( codec == "gif" ) {
+        ui->frameVideoCodecGIF->setVisible( true );
     }
 }
 
@@ -1462,7 +1464,11 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         QStringList list;
         list << "gifenc";
         list << "speed=30";
-        list << "repeat=-1";
+        if ( ui->checkBoxGifLoop->isChecked() ) {
+            list << "repeat=-1";
+        } else {
+            list << "repeat=0";
+        }
         value = list.join( " " );
     }
 
