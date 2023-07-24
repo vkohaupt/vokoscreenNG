@@ -376,8 +376,13 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
 
 
         if ( ( listCheckBox.at(i)->objectName().contains( "checkBoxSnapshotHideBeforeRecording" ) ) and
-             ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) )
-        {
+             ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) ) {
+            listCheckBox.at(i)->click();
+            continue;
+        }
+
+        if ( ( listCheckBox.at(i)->objectName().contains( "checkBoxGifLoop" ) ) and
+            ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) ) {
             listCheckBox.at(i)->click();
             continue;
         }
