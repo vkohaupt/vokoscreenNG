@@ -156,22 +156,40 @@ void QvkCameraController::slot_frameOnOff( bool value )
     {
         Qt::WindowFlags flags;
 
-        if ( value == true ) {
+#ifdef Q_OS_WIN
+        if ( value == true )
+        {
+            vkCameraWindow->setWindowFlag( Qt::Window, false );
+            vkCameraWindow->setWindowFlag( Qt::ToolTip, true );
+        }
+
+        if ( value == false )
+        {
+            vkCameraWindow->setWindowFlag( Qt::Window, true );
+            vkCameraWindow->setWindowFlag( Qt::ToolTip, false );
+        }
+#endif
+
+#ifdef Q_OS_LINUX
+        if ( value == true )
+        {
             flags = Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
             vkCameraWindow->setWindowFlags( flags );
         }
 
-        if ( value == false ) {
+        if ( value == false )
+        {
             flags = Qt::WindowStaysOnTopHint;
             vkCameraWindow->setWindowFlags( flags );
         }
+#endif
 
-        if ( ui_formMainWindow->checkBoxCameraOnOff->isChecked() == true ) {
+        if ( ui_formMainWindow->checkBoxCameraOnOff->isChecked() == true )
+        {
             vkCameraWindow->show();
         }
     }
 }
-
 
 void QvkCameraController::slot_setNewImage( QImage image )
 {
