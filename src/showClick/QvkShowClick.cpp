@@ -174,7 +174,7 @@ void QvkShowClick::slot_animateWindow()
     QColor color = vk_color;
 
     QvkAnimateWindow *vkAnimateWindow = new QvkAnimateWindow( this, x, y, vkSpezialSliderShowtime->value() * 100, mouseButton, vkSpezialSliderDiameter->value(), vkSpezialSliderOpacity->value(), color );
-    vkAnimateWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Tool );
+    vkAnimateWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
     vkAnimateWindow->show();
 }
 

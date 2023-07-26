@@ -60,7 +60,7 @@ void QvkHalo::createHaloPreviewWidget()
 void QvkHalo::createHaloWindow()
 {
     vkHaloWindow = new QvkHaloWindow( this );
-    vkHaloWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Tool ); //With tooltip, no entry in Taskbar
+    vkHaloWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar
 }
 
 
