@@ -56,6 +56,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                                 ui(new Ui::formMainWindow),
                                                 vkWinInfo(new QvkWinInfo)
 {
+
+    translator.load( QLocale::system().name(), ":/language" );
+    qApp->installTranslator( &translator );
+
+
     ui->setupUi(this);
 
 #ifdef Q_OS_WIN
@@ -410,8 +415,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->help_screencast_window->setVisible( false );
 #endif
 
-    ui->radioButtonScreencastFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
-    ui->radioButtonScreencastWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
+//    ui->radioButtonScreencastFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
+//    ui->radioButtonScreencastWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
 
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled( bool ) ) );
@@ -660,12 +665,50 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->label_translate->hide();
         ui->verticalLayout_7->removeItem( ui->verticalSpacer );
     }
+
+    QDir dirLanguage( ":/language", "*.qm" );
+    QStringList listLanguage = dirLanguage.entryList();
+    QStringList sortList;
+    for ( int x=0; x < listLanguage.count(); x++ ) {
+        // .qm remove
+        QString string_xy_XY = listLanguage.at(x).chopped(3);
+        QLocale locale_xy_XY( string_xy_XY );
+        QString language = QLocale::languageToString( locale_xy_XY.language() );
+        QString country = QLocale::countryToString( locale_xy_XY.country() );
+        QString string = language + "  " + "( " + country + " )" + "  " + "( " + string_xy_XY + " )";
+        sortList << string;
+    }
+    sortList.sort();
+    for ( int x=0; x < sortList.count(); x++ ) {
+        ui->comboBoxLanguage->addItem( sortList.at(x) );
+    }
+    connect( ui->comboBoxLanguage, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_languageChanged( QString ) ) );
 }
 
 
 QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
+}
+
+
+void QvkMainWindow::slot_languageChanged( QString value )
+{
+    qApp->removeTranslator(&translator);
+
+    QString language = value.section( "  ", 2, 2 );
+    language = language.replace( "(", "" );
+    language = language.replace( ")", "" );
+    language = language.trimmed();
+
+    QString path( ":/language/" );
+    qDebug() << path + language + ".qm";
+    if ( translator.load( path + language + ".qm" ) ) {
+        qApp->installTranslator(&translator);
+        ui->retranslateUi(this);
+    } else {
+        qDebug() << "-----------------" << "Not load";
+    }
 }
 
 

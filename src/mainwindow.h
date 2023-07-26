@@ -57,6 +57,7 @@
 #include <QFileSystemWatcher>
 #include <QSoundEffect>
 #include <QShowEvent>
+#include <QTranslator>
 
 #include <gst/gst.h>
 
@@ -165,6 +166,8 @@ private:
 
     bool gst_appsrc = false;
 
+    QTranslator translator;
+
 #ifdef Q_OS_WIN
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller;
     QTemporaryDir wasapiTemporaryDir;
@@ -219,6 +222,9 @@ private slots:
     void slot_disableShowclickHalo( bool bo );
 
     void slot_currentTextChangedToGIF( QString value);
+
+    void slot_languageChanged( QString value );
+
 
 signals:
     void signal_close();
