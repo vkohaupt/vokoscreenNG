@@ -592,6 +592,10 @@
         <source>Seconds wait before recording</source>
         <translation>Sekunden warten, bevor die Aufnahme beginnt</translation>
     </message>
+    <message>
+        <source>Loop</source>
+        <translation>Wiederholen</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

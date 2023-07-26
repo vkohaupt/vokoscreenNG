@@ -592,6 +592,10 @@
         <source>Seconds wait before recording</source>
         <translation>Aantal seconden voordat opname start</translation>
     </message>
+    <message>
+        <source>Loop</source>
+        <translation>Herhalen</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

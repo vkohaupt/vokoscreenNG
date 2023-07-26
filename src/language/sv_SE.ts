@@ -592,6 +592,10 @@
         <source>Seconds wait before recording</source>
         <translation>Sekunders väntetid före inspelning</translation>
     </message>
+    <message>
+        <source>Loop</source>
+        <translation>Slinga</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
