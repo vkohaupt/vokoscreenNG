@@ -84,6 +84,7 @@ public:
     QvkLogController *vklogController;
     bool wantRecording = true;
     bool isFlatpak = false;
+    void changeLanguageInSourcecode();
 
 
 private:

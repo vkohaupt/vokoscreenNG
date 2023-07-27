@@ -505,10 +505,6 @@
         <translation>Entferne Fensterrahmen</translation>
     </message>
     <message>
-        <source>Donate</source>
-        <translation>Spende</translation>
-    </message>
-    <message>
         <source>Reset all settings at the next start</source>
         <translation>Alle Einstellungen beim nächsten Start zurücksetzen</translation>
     </message>
@@ -595,6 +591,10 @@
     <message>
         <source>Fullscreen</source>
         <translation>Vollbild</translation>
+    </message>
+    <message>
+        <source>Online-Help</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

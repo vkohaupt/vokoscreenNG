@@ -170,11 +170,7 @@ int main(int argc, char *argv[])
     QTranslator * qtTranslator = new QTranslator();
     qtTranslator->load( "qt_" + QLocale::system().name(), QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
     app.installTranslator( qtTranslator );
-/*
-    QTranslator translator;
-    translator.load( QLocale::system().name(), ":/language" );
-    app.installTranslator( &translator );
-*/
+
 #ifdef Q_OS_LINUX
     if ( QvkWaylandRoutines::is_Wayland_Display_Available() == false )
     {

@@ -505,10 +505,6 @@
         <translation>Ta bort fönsterram</translation>
     </message>
     <message>
-        <source>Donate</source>
-        <translation>Donera</translation>
-    </message>
-    <message>
         <source>Reset all settings at the next start</source>
         <translation>Återställ alla inställningar vid nästa programstart</translation>
     </message>
@@ -595,6 +591,10 @@
     <message>
         <source>Fullscreen</source>
         <translation>Helskärm</translation>
+    </message>
+    <message>
+        <source>Online-Help</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

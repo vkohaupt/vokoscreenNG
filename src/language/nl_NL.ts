@@ -505,10 +505,6 @@
         <translation>Vensterrand verwijderen</translation>
     </message>
     <message>
-        <source>Donate</source>
-        <translation>Doneren</translation>
-    </message>
-    <message>
         <source>Reset all settings at the next start</source>
         <translation>Alle instellingen herstellen bij opnieuw opstarten</translation>
     </message>
@@ -595,6 +591,10 @@
     <message>
         <source>Fullscreen</source>
         <translation>Schermvullend</translation>
+    </message>
+    <message>
+        <source>Online-Help</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
