@@ -232,7 +232,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // Qt6
 #endif
 
-    QvkHelp *vkHelp = new QvkHelp( ui );
+    vkHelp = new QvkHelp( ui );
 
     vkLicenses = new QvkLicenses( ui );
 
@@ -738,6 +738,8 @@ void QvkMainWindow::changeLanguageInSourcecode()
     language = language.replace( ")", "" );
     language = language.trimmed();
     vkLicenses->ui->pushButtonClose->setLocale( QLocale( language ) );
+
+    vkHelp->uiHelp->pushButtonClose->setLocale( QLocale( language ) );
 
 }
 

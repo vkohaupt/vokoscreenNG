@@ -41,7 +41,8 @@ class QvkHelp: public QWidget
 public:
     QvkHelp( Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkHelp() override;
-    
+    Ui_help *uiHelp;
+
 
 public slots:
     void slot_cleanUp();
@@ -49,7 +50,6 @@ public slots:
   
 private:
     Ui_formMainWindow *ui;
-    Ui_help *uiHelp;
 
     QStringList toDownloadFiles = { ".png", ".svg", ".css", ".jpg" };
     bool isFileInLine( QString line );

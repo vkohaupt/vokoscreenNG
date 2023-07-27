@@ -49,7 +49,7 @@ QvkHelp::QvkHelp( Ui_formMainWindow *ui_mainwindow ) : uiHelp(new(Ui::help))
     ui = ui_mainwindow;
     uiHelp->setupUi( this );
 
-    connect(uiHelp->buttonBox, SIGNAL( clicked( QAbstractButton * ) ), this, SLOT( close() ) );
+    connect( uiHelp->pushButtonClose, SIGNAL( clicked( bool ) ), this, SLOT( close() ) );
 
     resize( 800, 600 );
     setWindowTitle( QString( tr( "Help") ) );
