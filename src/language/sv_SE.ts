@@ -594,7 +594,7 @@
     </message>
     <message>
         <source>Online-Help</source>
-        <translation type="unfinished"/>
+        <translation>Online-hjälp</translation>
     </message>
 </context>
 <context>
