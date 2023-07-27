@@ -600,6 +600,13 @@
     </message>
 </context>
 <context>
+    <name>help</name>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
