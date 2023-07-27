@@ -575,6 +575,28 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vk_setCornerWidget( ui->tabWidgetLog );
     // *****************End Log ***********************************
 
+
+    QDir dirLanguage( ":/language", "*.qm" );
+    QStringList listLanguage;
+    listLanguage.append( "--" );
+    listLanguage.append( dirLanguage.entryList() );
+    QStringList sortList;
+    for ( int x=0; x < listLanguage.count(); x++ ) {
+        // .qm remove
+        QString string_xy_XY = listLanguage.at(x).chopped(3);
+        QLocale locale_xy_XY( string_xy_XY );
+        QString language = QLocale::languageToString( locale_xy_XY.language() );
+        QString country = QLocale::countryToString( locale_xy_XY.country() );
+        QString string = language + "  " + "( " + country + " )" + "  " + "( " + string_xy_XY + " )";
+        sortList << string;
+    }
+    sortList.sort();
+    for ( int x=0; x < sortList.count(); x++ ) {
+        ui->comboBoxLanguage->addItem( sortList.at(x) );
+    }
+    connect( ui->comboBoxLanguage, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_languageChanged( QString ) ) );
+
+
 #ifdef Q_OS_WIN
     vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller( vkSettings.getFileName(), ui );
     vkCiscoOpenh264Controller->showWaitDialog();
@@ -666,24 +688,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->verticalLayout_7->removeItem( ui->verticalSpacer );
     }
 
-    QDir dirLanguage( ":/language", "*.qm" );
-    QStringList listLanguage = dirLanguage.entryList();
-    QStringList sortList;
-    for ( int x=0; x < listLanguage.count(); x++ ) {
-        // .qm remove
-        QString string_xy_XY = listLanguage.at(x).chopped(3);
-        QLocale locale_xy_XY( string_xy_XY );
-        QString language = QLocale::languageToString( locale_xy_XY.language() );
-        QString country = QLocale::countryToString( locale_xy_XY.country() );
-        QString string = language + "  " + "( " + country + " )" + "  " + "( " + string_xy_XY + " )";
-        sortList << string;
-    }
-    sortList.sort();
-    for ( int x=0; x < sortList.count(); x++ ) {
-        ui->comboBoxLanguage->addItem( sortList.at(x) );
-    }
-    connect( ui->comboBoxLanguage, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_languageChanged( QString ) ) );
-
     // Change language that is in sourcecode
     changeLanguageInSourcecode();
 }
@@ -710,7 +714,9 @@ void QvkMainWindow::slot_languageChanged( QString value )
         ui->retranslateUi(this);
         qDebug().noquote() << global::nameOutput << "Language changed to:" << path + language + ".qm";
     } else {
-        qDebug().noquote() << global::nameOutput << "Faild to load language:" << path + language + ".qm";
+        qApp->installTranslator(&translator);
+        ui->retranslateUi(this);
+        qDebug().noquote() << global::nameOutput << "Faild to load language:" << path + language + ".qm" << "Set default language";
     }
 
     // Change language that is in sourcecode

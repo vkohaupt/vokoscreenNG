@@ -3,7 +3,7 @@
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer één of meer apparaten</translation>
+        <translation>Selecteer een of meerdere apparaten</translation>
     </message>
 </context>
 <context>
@@ -82,7 +82,7 @@
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer één of meer apparaten</translation>
+        <translation>Selecteer een of meerdere apparaten</translation>
     </message>
 </context>
 <context>
@@ -162,7 +162,7 @@
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer één of meer apparaten</translation>
+        <translation>Selecteer een of meerdere apparaten</translation>
     </message>
 </context>
 <context>
@@ -256,7 +256,7 @@
     <name>QvkWASAPIController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer één of meer apparaten</translation>
+        <translation>Selecteer een of meerdere apparaten</translation>
     </message>
 </context>
 <context>
@@ -594,7 +594,7 @@
     </message>
     <message>
         <source>Online-Help</source>
-        <translation type="unfinished"/>
+        <translation>Online-hulp</translation>
     </message>
 </context>
 <context>
