@@ -1,9 +1,9 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="de">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="hr">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Ein oder mehrere Geräte auswählen</translation>
+        <translation>Odaberi jedan ili više uređaja</translation>
     </message>
 </context>
 <context>
@@ -17,46 +17,46 @@
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Fensterrahmen entfernen</translation>
+        <translation>Uklonite okvir prozora</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vertikal spiegeln</translation>
+        <translation>Okrenite okomito </translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontal spiegeln</translation>
+        <translation>Okreni vodoravno</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertiert</translation>
+        <translation>Izokreni</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grau</translation>
+        <translation>Sivo</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Schwarz-Weiß</translation>
+        <translation>Crno-bijelo</translation>
     </message>
     <message>
         <source>Switch to Window</source>
-        <translation>Auf Fenster umschalten</translation>
+        <translation>Prebaci na prozor</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Auf Vollbild umschalten</translation>
+        <translation>Prebaci na cijeli zaslon</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Auf Fenster umschalten</translation>
+        <translation>Prebaci na prozor</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Auf Vollbild umschalten</translation>
+        <translation>Prebaci na cijeli zaslon</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -67,67 +67,68 @@
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Das Setup war erfolgreich.</translation>
+        <translation>Postavljanje je bilo uspješno.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Schließe das Fenster und starte vokoscreenNG erneut.</translation>
+        <translation>Zatvorite ovaj prozor i ponovno pokrenite vokoscreenNG.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Have fun with vokoscreenNG</translation>
+        <translation>Zabavite se uz vokoscreenNG</translation>
     </message>
 </context>
 <context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Ein oder mehrere Geräte auswählen</translation>
+        <translation>Odaberi jedan ili više uređaja</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Hilfe</translation>
+        <translation>Pomoć</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Kein Dateimanager gefunden.</translation>
+        <translation>Upravitelj datoteka nije pronađen. 
+ </translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Bitte installieren Sie einen Dateimanager.</translation>
+        <translation>Molim instalirajte filemanager</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Warnung</translation>
+        <translation>Upozorenje</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>Die Aufnahme wird nicht gestartet, nicht genügend freier Speicherplatz.</translation>
+        <translation>Snimanje nije pokrenuto, nema dovoljno slobodnog prostora na disku.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Das Limit für den freien Speicherplatz ist erreicht.</translation>
+        <translation>Dosegnuto je ograničenje slobodnog prostora na disku.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Grenze für freien Plattenplatz</translation>
+        <translation>Ograničenje slobodnog prostora na disku</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>Megabajt</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Die Aufnahme wurde gestoppt, nicht genügend freier Speicherplatz.</translation>
+        <translation>Snimanje je zaustavljeno, nema dovoljno slobodnog prostora na disku.</translation>
     </message>
 </context>
 <context>
@@ -135,82 +136,84 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>Kein Dateimanager gefunden.</translation>
+        <translation>Upravitelj datoteka nije pronađen. 
+ </translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Bitte installieren Sie einen Dateimanager.</translation>
+        <translation>Molim instalirajte filemanager</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Quellcode</translation>
+        <translation>Izvorni kod </translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Webseite</translation>
+        <translation>Početna stranica </translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Übersetzungen</translation>
+        <translation>Prijevodi </translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Spende</translation>
+        <translation>Donirajte</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Ein oder mehrere Geräte auswählen</translation>
+        <translation>Odaberi jedan ili više uređaja</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Bereich</translation>
+        <translation>Površina</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Bereich</translation>
+        <translation>Površina</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Kein Dateimanager gefunden.</translation>
+        <translation>Upravitelj datoteka nije pronađen. 
+ </translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Bitte installieren Sie einen Dateimanager.</translation>
+        <translation>Molim instalirajte filemanager</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Pokreni</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Zaustavi</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Pauza</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Weiter</translation>
+        <translation>Nastavi</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Beenden</translation>
+        <translation>Izlaz</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -218,30 +221,30 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lupe</translation>
+        <translation>Povećanje </translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Pokreni</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Zaustavi</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Pauza</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Weiter</translation>
+        <translation>Nastavi</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Beenden</translation>
+        <translation>Izlaz</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -249,84 +252,84 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lupe</translation>
+        <translation>Povećanje</translation>
     </message>
 </context>
 <context>
     <name>QvkWASAPIController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Ein oder mehrere Geräte auswählen</translation>
+        <translation>Odaberi jedan ili više uređaja</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>Dijalog</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontal spiegeln</translation>
+        <translation>Okreni vodoravno</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vertikal spiegeln</translation>
+        <translation>Okrenite okomito </translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertiert</translation>
+        <translation>Izokreni</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grau</translation>
+        <translation>Sivo</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Schwarz-Weiß</translation>
+        <translation>Crno-bijelo</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Fensterrahmen entfernen</translation>
+        <translation>Uklonite okvir prozora</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Kameraeinstellungen</translation>
+        <translation>Postavke kamere</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Bereich</translation>
+        <translation>Površina</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Zurücksetzen</translation>
+        <translation>Resetiraj</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lupe</translation>
+        <translation>Odbrojavanje</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Countdown</translation>
+        <translation>Odbrojavanje </translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videogröße:</translation>
+        <translation>Veličina videozapisa: </translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Freier Plattenplatz:</translation>
+        <translation>Slobodan prostor na disku: </translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Information</translation>
+        <translation>Informacija </translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Aufnahmezeit:</translation>
+        <translation>Vrijeme snimanja: </translation>
     </message>
     <message>
         <source>Audio</source>
@@ -334,11 +337,11 @@
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>Okviri</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videocodec</translation>
+        <translation>Videokodek</translation>
     </message>
     <message>
         <source>Format</source>
@@ -346,67 +349,67 @@
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Audiocodec</translation>
+        <translation>Audiokodek</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>Qualität</translation>
+        <translation>Kvaliteta</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Mauszeiger nicht aufnehmen</translation>
+        <translation>Ne snimaj kursor miša </translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Stunde</translation>
+        <translation>Sat</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minute</translation>
+        <translation>Minuta</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Timer starten</translation>
+        <translation>Pokreni tajmer</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Aufnahme stoppen nach</translation>
+        <translation>Prekini snimanje nakon</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Stunden</translation>
+        <translation>Sat</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minuten</translation>
+        <translation>Minute</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Sekunden</translation>
+        <translation>Skunde</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videopfad</translation>
+        <translation>Video-put</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Grenze für freien Plattenplatz</translation>
+        <translation>Ograničenje slobodnog prostora na disku</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Im Benachrichtigungsfeld anzeigen</translation>
+        <translation>Prikaži u traci sustava </translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Sekunden vor der Aufnahme warten</translation>
+        <translation>Drugo čekanje prije snimanja </translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Nach Aktualisierungen suchen</translation>
+        <translation>Potražite ažuriranja </translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hilfe</translation>
+        <translation>Pomoć</translation>
     </message>
     <message>
         <source>Video</source>
@@ -414,35 +417,35 @@
     </message>
     <message>
         <source>Available</source>
-        <translation>Verfügbar</translation>
+        <translation>Dostupno</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Nicht verfügbar</translation>
+        <translation>Nije dostupno</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Pokreni</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Zaustavi</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Pauza</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Weiter</translation>
+        <translation>Nastavi</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Play</translation>
+        <translation>Pokreni</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Ordner</translation>
+        <translation>Mapa</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -450,11 +453,11 @@
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertiert</translation>
+        <translation>Izokreni</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grau</translation>
+        <translation>Sivo</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -470,11 +473,11 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Letzte Aufnahme abspielen</translation>
+        <translation>Reproduciraj posljednji zapis</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Ordner öffnen</translation>
+        <translation>Otvori mapu</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
@@ -482,165 +485,165 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimiert beim Start der Aufzeichnung</translation>
+        <translation>Minimizirano prilikom pokretanja snimanja</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Startet minimiert</translation>
+        <translation>Počinje minimizirano</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontal spiegeln</translation>
+        <translation>Okreni vodoravno</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vertikal spiegeln</translation>
+        <translation>Okrenite okomito </translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Schwarz-Weiß</translation>
+        <translation>Crno-bijelo</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Fensterrahmen entfernen</translation>
+        <translation>Uklonite okvir prozora</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Spende</translation>
+        <translation>Donirajte</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Alle Einstellungen beim nächsten Start zurücksetzen</translation>
+        <translation>Vrati sve postavke na sljedeći početak</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright und Lizenz von Bildern</translation>
+        <translation>Autorska prava i licenca sa slika</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>Megabajt</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Screencast</translation>
+        <translation>Snimke zaslona</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Player</translation>
+        <translation>Izvođač</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Log</translation>
+        <translation>Dnevnik</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automatisch</translation>
+        <translation>Automatski</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Erstelle Bilder von Tabs</translation>
+        <translation>Stvorite slike kartica </translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Lizenz Information</translation>
+        <translation>Podaci o licenci </translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>Ein</translation>
+        <translation>Ukljućeno</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>Aus</translation>
+        <translation>Isključeno</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Globale Tastenkombinationen</translation>
+        <translation>Globalni tipkovnički prečaci </translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Zugewiesene Tastenkombinationen.</translation>
+        <translation>Dodijeljene tipke prečaca. </translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Tastaturkürzel nicht zugewiesen oder mehrfach zugewiesen.</translation>
+        <translation>Tipkovni prečac nije dodijeljen ili je dodijeljen više od jednom. </translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Wenn es zugewiesen anzeigt, aber nicht funktioniert, wird es von einem anderen Programm verwendet.</translation>
+        <translation>Ako se prikazuje kao dodijeljeno, ali ne radi, koristi ga drugi program. </translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Snapshot</translation>
+        <translation>Snimak</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Bilderpfad</translation>
+        <translation>Imagepath</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Dieses Fenster ausblenden</translation>
+        <translation>Sakrij ovaj prozor </translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Sekunden warten, bevor die Aufnahme beginnt</translation>
+        <translation>Sekunde čekanja prije snimanja </translation>
     </message>
     <message>
         <source>Loop</source>
-        <translation>Wiederholen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Window</source>
-        <translation>Fenster</translation>
+        <translation>Prozor</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Vollbild</translation>
+        <translation>Puni zaslon </translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright und Lizenz von Bildern</translation>
+        <translation>Autorska prava i licenca sa slika</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Play</translation>
+        <translation>Pokreni</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Pauza</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Zaustavi</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Datei öffnen</translation>
+        <translation>Otvorena datoteka </translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Vollbild</translation>
+        <translation>Puni zaslon </translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Vorheriges Bild</translation>
+        <translation>Prethodni okvir </translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Nächstes Bild</translation>
+        <translation>Sljedeći kadar</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Stummschaltung</translation>
+        <translation>Isključi zvuk </translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Menü verschieben</translation>
+        <translation>Premjesti izbornik </translation>
     </message>
 </context>
 </TS>

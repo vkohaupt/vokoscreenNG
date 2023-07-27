@@ -1,9 +1,9 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="de">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="lt">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Ein oder mehrere Geräte auswählen</translation>
+        <translation>Pasirinkite vieną ar daugiau įrenginių</translation>
     </message>
 </context>
 <context>
@@ -17,46 +17,46 @@
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Fensterrahmen entfernen</translation>
+        <translation>Šalinti lango rėmelį</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vertikal spiegeln</translation>
+        <translation>Apversti vertikaliai</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontal spiegeln</translation>
+        <translation>Apversti horizontaliai</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertiert</translation>
+        <translation>Invertuoti</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grau</translation>
+        <translation>Pilka</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Schwarz-Weiß</translation>
+        <translation>Juoda ir balta</translation>
     </message>
     <message>
         <source>Switch to Window</source>
-        <translation>Auf Fenster umschalten</translation>
+        <translation>Perjungti į langą</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Auf Vollbild umschalten</translation>
+        <translation>Perjungti į visą ekraną</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Auf Fenster umschalten</translation>
+        <translation>Perjungti į langą</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Auf Vollbild umschalten</translation>
+        <translation>Perjungti į visą ekraną</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -67,67 +67,67 @@
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Das Setup war erfolgreich.</translation>
+        <translation>Sąranka buvo sėkminga.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Schließe das Fenster und starte vokoscreenNG erneut.</translation>
+        <translation>Užverkite šį langą ir dar kartą paleiskite vokoscreenNG.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Have fun with vokoscreenNG</translation>
+        <translation>Gero laiko su vokoscreenNG</translation>
     </message>
 </context>
 <context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Ein oder mehrere Geräte auswählen</translation>
+        <translation>Pasirinkite vieną ar daugiau įrenginių</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Hilfe</translation>
+        <translation>Žinynas</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Kein Dateimanager gefunden.</translation>
+        <translation>Nerasta jokios failų tvarkytuvės.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Bitte installieren Sie einen Dateimanager.</translation>
+        <translation>Įdiekite failų tvarkytuvę.</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Warnung</translation>
+        <translation>Įspėjimas</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>Die Aufnahme wird nicht gestartet, nicht genügend freier Speicherplatz.</translation>
+        <translation>Įrašinėjimas nepradėtas, trūksta laisvos vietos diske.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Das Limit für den freien Speicherplatz ist erreicht.</translation>
+        <translation>Yra pasiekta laisvos vietos diske riba.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Grenze für freien Plattenplatz</translation>
+        <translation>Laisvos vietos diske apribojimas</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>Megabaitų</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Die Aufnahme wurde gestoppt, nicht genügend freier Speicherplatz.</translation>
+        <translation>Įrašinėjimas buvo sustabdytas, trūksta laisvos vietos diske.</translation>
     </message>
 </context>
 <context>
@@ -135,82 +135,82 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>Kein Dateimanager gefunden.</translation>
+        <translation>Nerasta jokios failų tvarkytuvės.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Bitte installieren Sie einen Dateimanager.</translation>
+        <translation>Įdiekite failų tvarkytuvę.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Quellcode</translation>
+        <translation>Pirminis kodas</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Webseite</translation>
+        <translation>Svetainė</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Übersetzungen</translation>
+        <translation>Vertimai</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Spende</translation>
+        <translation>Paaukoti</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Ein oder mehrere Geräte auswählen</translation>
+        <translation>Pasirinkite vieną ar daugiau įrenginių</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Bereich</translation>
+        <translation>Sritis</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Bereich</translation>
+        <translation>Sritis</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Kein Dateimanager gefunden.</translation>
+        <translation>Nerasta jokios failų tvarkytuvės.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Bitte installieren Sie einen Dateimanager.</translation>
+        <translation>Įdiekite failų tvarkytuvę.</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Pradėti</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stabdyti</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Pristabdyti</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Weiter</translation>
+        <translation>Tęsti</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Beenden</translation>
+        <translation>Išeiti</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -218,30 +218,30 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lupe</translation>
+        <translation>Didinimas</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Pradėti</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stabdyti</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Pristabdyti</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Weiter</translation>
+        <translation>Tęsti</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Beenden</translation>
+        <translation>Išeiti</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -249,200 +249,200 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lupe</translation>
+        <translation>Didinimas</translation>
     </message>
 </context>
 <context>
     <name>QvkWASAPIController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Ein oder mehrere Geräte auswählen</translation>
+        <translation>Pasirinkite vieną ar daugiau įrenginių</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>Dialogas</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontal spiegeln</translation>
+        <translation>Apversti horizontaliai</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vertikal spiegeln</translation>
+        <translation>Apversti vertikaliai</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertiert</translation>
+        <translation>Invertuoti</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grau</translation>
+        <translation>Pilka</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Schwarz-Weiß</translation>
+        <translation>Juoda ir balta</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Fensterrahmen entfernen</translation>
+        <translation>Šalinti lango rėmelį</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Kameraeinstellungen</translation>
+        <translation>Kameros nustatymai</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Bereich</translation>
+        <translation>Sritis</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Zurücksetzen</translation>
+        <translation>Atstatyti</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lupe</translation>
+        <translation>Didinimas</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Countdown</translation>
+        <translation>Atvirkštinis skaičiavimas</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videogröße:</translation>
+        <translation>Vaizdo dydis:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Freier Plattenplatz:</translation>
+        <translation>Laisva vieta diske:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Information</translation>
+        <translation>Informacija</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Aufnahmezeit:</translation>
+        <translation>Įrašinėjimo laikas:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Audio</translation>
+        <translation>Garsas</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>Kadrai</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videocodec</translation>
+        <translation>Vaizdo kodekas</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Format</translation>
+        <translation>Formatas</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Audiocodec</translation>
+        <translation>Garso kodekas</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>Qualität</translation>
+        <translation>Kokybė</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Mauszeiger nicht aufnehmen</translation>
+        <translation>Neįrašinėti pelės žymeklio</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Stunde</translation>
+        <translation>Val.</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minute</translation>
+        <translation>Min.</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Timer starten</translation>
+        <translation>Paleisti laikmatį</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Aufnahme stoppen nach</translation>
+        <translation>Stabdyti įrašinėjimą po</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Stunden</translation>
+        <translation>Val.</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minuten</translation>
+        <translation>Min.</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Sekunden</translation>
+        <translation>Sek.</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videopfad</translation>
+        <translation>Vaizdo įrašo kelias</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Grenze für freien Plattenplatz</translation>
+        <translation>Laisvos vietos diske apribojimas</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Im Benachrichtigungsfeld anzeigen</translation>
+        <translation>Rodyti sistemos dėkle</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Sekunden vor der Aufnahme warten</translation>
+        <translation>Luktelėti sekundėlę prieš įrašinėjant</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Nach Aktualisierungen suchen</translation>
+        <translation>Tikrinti ar yra atnaujinimų</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hilfe</translation>
+        <translation>Žinynas</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Video</translation>
+        <translation>Vaizdas</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Verfügbar</translation>
+        <translation>Prieinama</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Nicht verfügbar</translation>
+        <translation>Neprieinama</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Pradėti</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stabdyti</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Pristabdyti</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Weiter</translation>
+        <translation>Tęsti</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Play</translation>
+        <translation>Groti</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Ordner</translation>
+        <translation>Aplankas</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -450,197 +450,197 @@
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertiert</translation>
+        <translation>Invertuoti</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grau</translation>
+        <translation>Pilka</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
-        <translation>CTRL+SHIFT+F10</translation>
+        <translation>VALD+LYG2+F10</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F11</source>
-        <translation>CTRL+SHIFT+F11</translation>
+        <translation>VALD+LYG2+F11</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F12</source>
-        <translation>CTRL+SHIFT+F12</translation>
+        <translation>VALD+LYG2+F12</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Letzte Aufnahme abspielen</translation>
+        <translation>Groti paskiausią įrašą</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Ordner öffnen</translation>
+        <translation>Atverti aplanką</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation>CTRL+SHIFT+F8</translation>
+        <translation>VALD+LYG2+F8</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimiert beim Start der Aufzeichnung</translation>
+        <translation>Prasidėjus įrašinėjimui, suskleisti</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Startet minimiert</translation>
+        <translation>Pasileidžia suskleista</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontal spiegeln</translation>
+        <translation>Apversti horizontaliai</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vertikal spiegeln</translation>
+        <translation>Apversti vertikaliai</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Schwarz-Weiß</translation>
+        <translation>Juoda ir balta</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Fensterrahmen entfernen</translation>
+        <translation>Šalinti lango rėmelį</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Spende</translation>
+        <translation>Paaukoti</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Alle Einstellungen beim nächsten Start zurücksetzen</translation>
+        <translation>Kito paleidimo metu atstatyti visus nustatymus</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright und Lizenz von Bildern</translation>
+        <translation>Autorių teisės ir licencijos iš paveikslų</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>Megabaitų</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Screencast</translation>
+        <translation>Ekrano įrašas</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Player</translation>
+        <translation>Grotuvas</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Log</translation>
+        <translation>Žurnalas</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automatisch</translation>
+        <translation>Automatiškai</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Erstelle Bilder von Tabs</translation>
+        <translation>Sukurti kortelių paveikslus</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Lizenz Information</translation>
+        <translation>Informacija apie licenciją</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>Ein</translation>
+        <translation>ĮJUNGTA</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>Aus</translation>
+        <translation>IŠJUNGTA</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Globale Tastenkombinationen</translation>
+        <translation>Visuotiniai spartieji klavišai</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Zugewiesene Tastenkombinationen.</translation>
+        <translation>Spartieji klavišai priskirti.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Tastaturkürzel nicht zugewiesen oder mehrfach zugewiesen.</translation>
+        <translation>Spartusis klavišas nepriskirtas arba priskirtas daugiau kaip vieną kartą.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Wenn es zugewiesen anzeigt, aber nicht funktioniert, wird es von einem anderen Programm verwendet.</translation>
+        <translation>Jei yra rodoma, jog jis yra priskirtas, o jis neveikia, vadinasi jį naudoja kita programa.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Snapshot</translation>
+        <translation>Momentinė kopija</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Bilderpfad</translation>
+        <translation>Paveikslo kelias</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Dieses Fenster ausblenden</translation>
+        <translation>Slėpti šį langą</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Sekunden warten, bevor die Aufnahme beginnt</translation>
+        <translation>Kiek sekundžių laukti, prieš įrašinėjant</translation>
     </message>
     <message>
         <source>Loop</source>
-        <translation>Wiederholen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Window</source>
-        <translation>Fenster</translation>
+        <translation>Langas</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Vollbild</translation>
+        <translation>Visas ekranas</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright und Lizenz von Bildern</translation>
+        <translation>Autorių teisės ir licencijos iš paveikslų</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Play</translation>
+        <translation>Groti</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Pristabdyti</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stabdyti</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Datei öffnen</translation>
+        <translation>Atverti failą</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Vollbild</translation>
+        <translation>Visas ekranas</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Vorheriges Bild</translation>
+        <translation>Ankstesnis kadras</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Nächstes Bild</translation>
+        <translation>Kitas kadras</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Stummschaltung</translation>
+        <translation>Nutildyti</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Menü verschieben</translation>
+        <translation>Perkelti meniu</translation>
     </message>
 </context>
 </TS>

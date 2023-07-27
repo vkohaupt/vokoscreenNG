@@ -1,125 +1,125 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="de">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="it_IT">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Ein oder mehrere Geräte auswählen</translation>
+        <translation>Seleziona uno o più dispositivi</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>Webcam</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Fensterrahmen entfernen</translation>
+        <translation>Rimuovi bordo finestra</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vertikal spiegeln</translation>
+        <translation>Capovolgi verticale</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontal spiegeln</translation>
+        <translation>Capovolgi orizzontale</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertiert</translation>
+        <translation>Inverti</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grau</translation>
+        <translation>Grigio</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Schwarz-Weiß</translation>
+        <translation>Bianco e nero</translation>
     </message>
     <message>
         <source>Switch to Window</source>
-        <translation>Auf Fenster umschalten</translation>
+        <translation>Passa a Finestra</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Auf Vollbild umschalten</translation>
+        <translation>Passa a Schermo Intero</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Switch to Window</source>
-        <translation>Auf Fenster umschalten</translation>
+        <translation>Passa a Finestra</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Auf Vollbild umschalten</translation>
+        <translation>Passa a Schermo Intero</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>Webcam</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Das Setup war erfolgreich.</translation>
+        <translation>La configurazione ha avuto successo.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Schließe das Fenster und starte vokoscreenNG erneut.</translation>
+        <translation>Chiudere questa finestra e riavviare vokoscreenNG.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Have fun with vokoscreenNG</translation>
+        <translation>Buon divertimento con vokoscreenNG</translation>
     </message>
 </context>
 <context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Ein oder mehrere Geräte auswählen</translation>
+        <translation>Seleziona uno o più dispositivi</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Hilfe</translation>
+        <translation>Aiuto</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Kein Dateimanager gefunden.</translation>
+        <translation>Nessun filemanager trovato.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Bitte installieren Sie einen Dateimanager.</translation>
+        <translation>Installa un filemanager.</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Warnung</translation>
+        <translation>Attenzione</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>Die Aufnahme wird nicht gestartet, nicht genügend freier Speicherplatz.</translation>
+        <translation>Registrazione non è stata avviata. Spazio disco insufficiente.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Das Limit für den freien Speicherplatz ist erreicht.</translation>
+        <translation>Limite spazio disco libero raggiunto</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Grenze für freien Plattenplatz</translation>
+        <translation>Limite di spazio disco libero</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -127,7 +127,7 @@
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Die Aufnahme wurde gestoppt, nicht genügend freier Speicherplatz.</translation>
+        <translation>Registrazione interrotta. Spazio disco insufficiente</translation>
     </message>
 </context>
 <context>
@@ -135,198 +135,198 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>Kein Dateimanager gefunden.</translation>
+        <translation>Filemanager non trovato.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Bitte installieren Sie einen Dateimanager.</translation>
+        <translation>Si prega di installare un filemanager.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Quellcode</translation>
+        <translation>Codice sorgente</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Webseite</translation>
+        <translation>Pagina iniziale</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Übersetzungen</translation>
+        <translation>Traduzioni</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Spende</translation>
+        <translation>Fai una donazione</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Ein oder mehrere Geräte auswählen</translation>
+        <translation>Seleziona uno o più dispositivi</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Bereich</translation>
+        <translation>Area</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Bereich</translation>
+        <translation>Area</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Kein Dateimanager gefunden.</translation>
+        <translation>Filemanager non trovato.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Bitte installieren Sie einen Dateimanager.</translation>
+        <translation>Si prega di installare un filemanager.</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Inizia</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Ferma</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Weiter</translation>
+        <translation>Continua</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Beenden</translation>
+        <translation>Esci</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>Webcam</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lupe</translation>
+        <translation>Ingrandimento</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Inizia</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Interrompi</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Weiter</translation>
+        <translation>Continua</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Beenden</translation>
+        <translation>Esci</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>Webcam</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lupe</translation>
+        <translation>Ingrandisci</translation>
     </message>
 </context>
 <context>
     <name>QvkWASAPIController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Ein oder mehrere Geräte auswählen</translation>
+        <translation>Seleziona uno o più dispositivi</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>Finestra di dialogo Impostazioni fotocamera</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontal spiegeln</translation>
+        <translation>Capovolgi orizzontale</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vertikal spiegeln</translation>
+        <translation>Capovolgi verticale</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertiert</translation>
+        <translation>Inverti</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grau</translation>
+        <translation>Grigio</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Schwarz-Weiß</translation>
+        <translation>Bianco e nero</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Fensterrahmen entfernen</translation>
+        <translation>Rimuovi bordo finestra</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Kameraeinstellungen</translation>
+        <translation>Impostazioni camera</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Bereich</translation>
+        <translation>Area</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Zurücksetzen</translation>
+        <translation>Ripristina</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lupe</translation>
+        <translation>Ingrandisci</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Countdown</translation>
+        <translation>Avvio ritardo di</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videogröße:</translation>
+        <translation>Dimensioni video:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Freier Plattenplatz:</translation>
+        <translation>Spazio disco libero:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Information</translation>
+        <translation>Informazione</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Aufnahmezeit:</translation>
+        <translation>Tempo di registrazione:</translation>
     </message>
     <message>
         <source>Audio</source>
@@ -334,79 +334,79 @@
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>Fotogrammi</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videocodec</translation>
+        <translation>Codifica video</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Format</translation>
+        <translation>Formato video</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Audiocodec</translation>
+        <translation>Codificatore audio</translation>
     </message>
     <message>
         <source>Quality</source>
-        <translation>Qualität</translation>
+        <translation>Qualità</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Mauszeiger nicht aufnehmen</translation>
+        <translation>Non registrare il cursore del mouse</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Stunde</translation>
+        <translation>Ora</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minute</translation>
+        <translation>Minuto</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Timer starten</translation>
+        <translation>Avvia il tempo</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Aufnahme stoppen nach</translation>
+        <translation>Ferma la registrazione dopo</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Stunden</translation>
+        <translation>Ore</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minuten</translation>
+        <translation>Minuti</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Sekunden</translation>
+        <translation>Secondi</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videopfad</translation>
+        <translation>Salva in</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Grenze für freien Plattenplatz</translation>
+        <translation>Limite di spazio disco libero</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Im Benachrichtigungsfeld anzeigen</translation>
+        <translation>Mostra nel vassoio di sistema</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Sekunden vor der Aufnahme warten</translation>
+        <translation>Secondi di attesa prima di registrare</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Nach Aktualisierungen suchen</translation>
+        <translation>Cerca aggiornamenti</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hilfe</translation>
+        <translation>Aiuto</translation>
     </message>
     <message>
         <source>Video</source>
@@ -414,47 +414,47 @@
     </message>
     <message>
         <source>Available</source>
-        <translation>Verfügbar</translation>
+        <translation>Disponibile</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Nicht verfügbar</translation>
+        <translation>Non disponibile</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>Avvia</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Ferma</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Weiter</translation>
+        <translation>Continua</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Play</translation>
+        <translation>Riproduci</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Ordner</translation>
+        <translation>Cartella</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>Webcam</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertiert</translation>
+        <translation>Inverti</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grau</translation>
+        <translation>Grigio</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -470,11 +470,11 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Letzte Aufnahme abspielen</translation>
+        <translation>Riproduci ultima registrazione</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Ordner öffnen</translation>
+        <translation>Apri cartella</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
@@ -482,39 +482,39 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimiert beim Start der Aufzeichnung</translation>
+        <translation>Ridotto a icona durante la registrazione</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Startet minimiert</translation>
+        <translation>Avvia a icona</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontal spiegeln</translation>
+        <translation>Capovolgi orizzontale</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Vertikal spiegeln</translation>
+        <translation>Capovolgi verticale</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Schwarz-Weiß</translation>
+        <translation>Bianco e nero</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Fensterrahmen entfernen</translation>
+        <translation>Rimuovi bordo finestra</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Spende</translation>
+        <translation>Fai una donazione</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Alle Einstellungen beim nächsten Start zurücksetzen</translation>
+        <translation>Ripristina tutte le impostazioni al prossimo avvio</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright und Lizenz von Bildern</translation>
+        <translation>Copyright e licenza immagini</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -522,51 +522,51 @@
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Screencast</translation>
+        <translation>Registra Schermo</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Player</translation>
+        <translation>Lettore</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Log</translation>
+        <translation>Registro eventi</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automatisch</translation>
+        <translation>Automaticamente</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Erstelle Bilder von Tabs</translation>
+        <translation>Crea immagini delle schede</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Lizenz Information</translation>
+        <translation>Informazioni sulla licenza</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>Ein</translation>
+        <translation>Acceso</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>Aus</translation>
+        <translation>Spento</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Globale Tastenkombinationen</translation>
+        <translation>Scorciatoie da tastiera globali</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Zugewiesene Tastenkombinationen.</translation>
+        <translation>Tasti scorciatoia assegnati.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Tastaturkürzel nicht zugewiesen oder mehrfach zugewiesen.</translation>
+        <translation>Scorciatoia da tastiera non assegnata o assegnata più volte.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Wenn es zugewiesen anzeigt, aber nicht funktioniert, wird es von einem anderen Programm verwendet.</translation>
+        <translation>Se mostra l&apos;assegnamento ma non funziona, significa che è usata da qualche altro programma.</translation>
     </message>
     <message>
         <source>Snapshot</source>
@@ -574,73 +574,73 @@
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Bilderpfad</translation>
+        <translation>Percorso immagine</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Dieses Fenster ausblenden</translation>
+        <translation>Nascondi questa finestra</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Sekunden warten, bevor die Aufnahme beginnt</translation>
+        <translation>Secondi di attesa prima di registrare</translation>
     </message>
     <message>
         <source>Loop</source>
-        <translation>Wiederholen</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Window</source>
-        <translation>Fenster</translation>
+        <translation>Finestra</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Vollbild</translation>
+        <translation>Schermo intero</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright und Lizenz von Bildern</translation>
+        <translation>Copyright e licenza immagini</translation>
     </message>
 </context>
 <context>
     <name>player</name>
     <message>
         <source>Play</source>
-        <translation>Play</translation>
+        <translation>Riproduci</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pause</translation>
+        <translation>Pausa</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Ferma</translation>
     </message>
     <message>
         <source>Open File</source>
-        <translation>Datei öffnen</translation>
+        <translation>Apri file</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Vollbild</translation>
+        <translation>Schermo intero</translation>
     </message>
     <message>
         <source>Previous frame</source>
-        <translation>Vorheriges Bild</translation>
+        <translation>Fermo immagine precedente</translation>
     </message>
     <message>
         <source>Next frame</source>
-        <translation>Nächstes Bild</translation>
+        <translation>Fermo immagine successivo</translation>
     </message>
     <message>
         <source>Mute</source>
-        <translation>Stummschaltung</translation>
+        <translation>Silenzia</translation>
     </message>
     <message>
         <source>Move menu</source>
-        <translation>Menü verschieben</translation>
+        <translation>Sposta menu</translation>
     </message>
 </context>
 </TS>

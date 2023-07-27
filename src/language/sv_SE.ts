@@ -133,14 +133,6 @@
 <context>
     <name>QvkMainWindow</name>
     <message>
-        <source>Fullscreen</source>
-        <translation>Helskärm</translation>
-    </message>
-    <message>
-        <source>Window</source>
-        <translation>Fönster</translation>
-    </message>
-    <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
         <translation>Ingen filhanterare hittades.</translation>
@@ -595,6 +587,14 @@
     <message>
         <source>Loop</source>
         <translation>Slinga</translation>
+    </message>
+    <message>
+        <source>Window</source>
+        <translation>Fönster</translation>
+    </message>
+    <message>
+        <source>Fullscreen</source>
+        <translation>Helskärm</translation>
     </message>
 </context>
 <context>

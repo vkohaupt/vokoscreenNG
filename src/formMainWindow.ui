@@ -2721,7 +2721,7 @@
                 <item>
                  <widget class="QLabel" name="labelDonateUrl">
                   <property name="text">
-                   <string>Donate</string>
+                   <string notr="true">Donate</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -2786,7 +2786,7 @@
               <item>
                <widget class="QLabel" name="label_20">
                 <property name="text">
-                 <string notr="true">Online-Help</string>
+                 <string>Online-Help</string>
                 </property>
                </widget>
               </item>
@@ -7014,7 +7014,7 @@ p, li { white-space: pre-wrap; }
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>

@@ -702,13 +702,19 @@ void QvkMainWindow::slot_languageChanged( QString value )
     language = language.trimmed();
 
     QString path( ":/language/" );
-    qDebug() << path + language + ".qm";
     if ( translator.load( path + language + ".qm" ) ) {
         qApp->installTranslator(&translator);
         ui->retranslateUi(this);
+        qDebug().noquote() << global::nameOutput << "Language changed to:" << path + language + ".qm";
     } else {
-        qDebug() << "-----------------" << "Not load";
+        qDebug().noquote() << global::nameOutput << "Faild to load language:" << path + language + ".qm";
     }
+
+    ui->labelSourcecodeUrl->setText( "<a href='https://github.com/vkohaupt/vokoscreenNG'>" + tr( "Sourcecode" ) + "</a>" );
+    ui->labelWebSiteUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Homepage" ) + "</a>" );
+    ui->labelLanguageUrl->setText( "<a href='https://app.transifex.com/vkohaupt/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
+    ui->labelDonateUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
+
 }
 
 

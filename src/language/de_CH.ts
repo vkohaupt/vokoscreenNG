@@ -133,14 +133,6 @@
 <context>
     <name>QvkMainWindow</name>
     <message>
-        <source>Fullscreen</source>
-        <translation>Vollbild</translation>
-    </message>
-    <message>
-        <source>Window</source>
-        <translation>Fenster</translation>
-    </message>
-    <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
         <translation>Kein Dateimanager gefunden.</translation>
@@ -595,6 +587,14 @@
     <message>
         <source>Loop</source>
         <translation>Wiederholen</translation>
+    </message>
+    <message>
+        <source>Window</source>
+        <translation>Fenster</translation>
+    </message>
+    <message>
+        <source>Fullscreen</source>
+        <translation>Vollbild</translation>
     </message>
 </context>
 <context>

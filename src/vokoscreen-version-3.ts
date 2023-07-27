@@ -507,10 +507,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Donate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Reset all settings at the next start</source>
         <translation type="unfinished"></translation>
     </message>
@@ -596,6 +592,10 @@
     </message>
     <message>
         <source>Fullscreen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Online-Help</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
