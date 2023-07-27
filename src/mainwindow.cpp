@@ -26,7 +26,6 @@
 #include "QvkInformation.h"
 #include "global.h"
 #include "QvkScreenManager.h"
-#include "QvkLicenses.h"
 #include "QvkImageFromTabs.h"
 #include "QvkDirDialog.h"
 #include "QvkVirtual.h"
@@ -235,7 +234,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     QvkHelp *vkHelp = new QvkHelp( ui );
 
-    QvkLicenses *vkLicenses = new QvkLicenses( ui );
+    vkLicenses = new QvkLicenses( ui );
 
     vkRegionChoise = new QvkRegionChoise( ui );
 
@@ -731,6 +730,15 @@ void QvkMainWindow::changeLanguageInSourcecode()
     ui->labelWebSiteUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Homepage" ) + "</a>" );
     ui->labelLanguageUrl->setText( "<a href='https://app.transifex.com/vkohaupt/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
     ui->labelDonateUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
+
+    vkPlayer->ui->retranslateUi(this);
+
+    QString language = ui->comboBoxLanguage->currentText().section( "  ", 2, 2 );
+    language = language.replace( "(", "" );
+    language = language.replace( ")", "" );
+    language = language.trimmed();
+    vkLicenses->ui->pushButtonClose->setLocale( QLocale( language ) );
+
 }
 
 

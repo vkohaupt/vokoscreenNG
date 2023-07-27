@@ -37,7 +37,7 @@ QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::licen
     setWindowIcon( icon );
 
     connect( ui_mainwindow->pushButtonLicense, SIGNAL( clicked( bool ) ), this, SLOT( show() ) );
-    connect(ui->buttonBox, SIGNAL( clicked( QAbstractButton * ) ), this, SLOT( close() ) );
+    connect(ui->pushButtonClose, SIGNAL( clicked( QAbstractButton * ) ), this, SLOT( close() ) );
 
     ui->label_dummy_1->hide();
     ui->label_dummy_2->hide();

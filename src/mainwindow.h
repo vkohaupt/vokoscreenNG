@@ -46,8 +46,8 @@
 #include "QvkHalo.h"
 #include "QvkGlobalShortcut.h"
 #include "QvkLogController.h"
-
 #include "QvkContainerController.h"
+#include "QvkLicenses.h"
 
 #ifdef Q_OS_WIN
   #include "QvkCiscoOpenh264Controller.h"
@@ -82,6 +82,7 @@ public:
     QvkMagnifierController *vkMagnifierController;
     QvkGlobalShortcut *vkGlobalShortcut;
     QvkLogController *vklogController;
+    QvkLicenses *vkLicenses;
     bool wantRecording = true;
     bool isFlatpak = false;
     void changeLanguageInSourcecode();
