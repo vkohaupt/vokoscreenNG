@@ -67,8 +67,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 #ifdef Q_OS_LINUX
     // Composite
-    QvkComposite *vkComposite = new QvkComposite( this );
-    Q_UNUSED(vkComposite)
+    new QvkComposite( this );
 #endif
 
     QFile fileCSS( ":/pictures/css/css.qss" );
@@ -412,9 +411,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->help_screencast_window->setVisible( false );
 #endif
 
-//    ui->radioButtonScreencastFullscreen->setText( tr("Fullscreen") ); // QT Creator sets an ampersand, translation now here
-//    ui->radioButtonScreencastWindow->setText( tr("Window") ); // QT Creator sets an ampersand, translation now here
-
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled( bool ) ) );
 
@@ -495,7 +491,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // ***************** shortcut ******************************
     vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
-    Q_UNUSED(vkGlobalShortcut);
     vk_setCornerWidget( ui->tabWidgetShortcut );
 
     // *************** systrayAlternative **********************
@@ -558,7 +553,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // *****************Begin Camera *********************************
     vkCameraController = new QvkCameraController(ui);
-//    Q_UNUSED(vkCameraController);
     vk_setCornerWidget( ui->tabWidgetCamera );
     // *****************End Camera ***********************************
 
@@ -643,8 +637,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         }
     }
 
-    QvkImageFromTabs *vkImageFromTabs = new QvkImageFromTabs( this );
-    Q_UNUSED(vkImageFromTabs)
+    new QvkImageFromTabs( this );
 
     is_videoFolderExists_and_haveWritePermission();
 
@@ -692,7 +685,7 @@ QvkMainWindow::~QvkMainWindow()
 
 void QvkMainWindow::slot_languageChanged( QString value )
 {
-    qApp->removeTranslator(&translator);
+    qApp->removeTranslator( &translator );
 
     QString language = value.section( "  ", 2, 2 );
     language = language.replace( "(", "" );
@@ -701,11 +694,11 @@ void QvkMainWindow::slot_languageChanged( QString value )
 
     QString path( ":/language/" );
     if ( translator.load( path + language + ".qm" ) ) {
-        qApp->installTranslator(&translator);
+        qApp->installTranslator( &translator );
         ui->retranslateUi(this);
         qDebug().noquote() << global::nameOutput << "Language changed to:" << path + language + ".qm";
     } else {
-        qApp->installTranslator(&translator);
+        qApp->installTranslator( &translator );
         ui->retranslateUi(this);
         qDebug().noquote() << global::nameOutput << "Faild to load language:" << path + language + ".qm" << "Set default language";
     }
@@ -722,7 +715,7 @@ void QvkMainWindow::changeLanguageInSourcecode()
     ui->labelWebSiteUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Homepage" ) + "</a>" );
     ui->labelLanguageUrl->setText( "<a href='https://app.transifex.com/vkohaupt/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
     ui->labelDonateUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
-    vkPlayer->ui->retranslateUi(vkPlayer);
+    vkPlayer->ui->retranslateUi( vkPlayer );
     vkLicenses->ui->retranslateUi( vkLicenses );
     vkHelp->uiHelp->retranslateUi( vkHelp );
     vkCameraController->vkCameraSettingsDialog->ui->retranslateUi( vkCameraController->vkCameraSettingsDialog );
