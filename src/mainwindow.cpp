@@ -563,7 +563,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     QDir dirLanguage( ":/language", "*.qm" );
     QStringList listLanguage;
-    listLanguage.append( "--" );
+    listLanguage.append( "en" );
     listLanguage.append( dirLanguage.entryList() );
     QStringList sortList;
     for ( int x=0; x < listLanguage.count(); x++ ) {
