@@ -29,37 +29,37 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
 
     startAction = new QAction( this );
     startAction->setIcon( QIcon( ":/pictures/player/start.png" ) );
-    startAction->setText( tr( "Start" ) );
+//    startAction->setText( tr( "Start" ) );
     startAction->setData( "Start" );
 
     stopAction = new QAction( this );
     stopAction->setIcon( QIcon( ":/pictures/player/stop.png" ) );
-    stopAction->setText( tr( "Stop" ) );
+//    stopAction->setText( tr( "Stop" ) );
     stopAction->setData( "Stop" );
     stopAction->setEnabled( false );
 
     pauseAction = new QAction( this );
     pauseAction->setIcon( QIcon( ":/pictures/player/pause.png" ) );
-    pauseAction->setText( tr( "Pause" ) );
+//    pauseAction->setText( tr( "Pause" ) );
     pauseAction->setData( "Pause" );
     pauseAction->setEnabled( false );
 
     continueAction = new QAction( this );
     continueAction->setIcon( QIcon( ":/pictures/player/start.png" ));
-    continueAction->setText( tr( "Continue" ) );
+//    continueAction->setText( tr( "Continue" ) );
     continueAction->setData( "Continue" );
     continueAction->setEnabled( false );
 
     cameraAction = new QAction( this );
     cameraAction->setIcon( QIcon( ":pictures/systray/camera.png" ) );
-    cameraAction->setText( tr( "Camera" ) );
+//    cameraAction->setText( tr( "Camera" ) );
     cameraAction->setData( "Camera" );
     cameraAction->setCheckable( true );
     cameraAction->setEnabled( false );
 
     magnifierAction = new QAction( this );
     magnifierAction->setIcon( QIcon( ":pictures/systray/magnification.png" ) );
-    magnifierAction->setText( tr( "Magnification" ) );
+//    magnifierAction->setText( tr( "Magnification" ) );
     magnifierAction->setData( "Magnification" );
     magnifierAction->setCheckable( true );
 
@@ -161,11 +161,25 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     menu->addAction( exitAction );
 
     vkSystrayAlternativeWindow->set_Menu( menu );
+
+    setMenueText();
 }
 
 
 QvkSystrayAlternative::~QvkSystrayAlternative()
 {
+}
+
+
+void QvkSystrayAlternative::setMenueText()
+{
+    startAction->setText( tr( "Start" ) );
+    stopAction->setText( tr( "Stop" ) );
+    pauseAction->setText( tr( "Pause" ) );
+    continueAction->setText( tr( "Continue" ) );
+    cameraAction->setText( tr( "Camera" ) );
+    magnifierAction->setText( tr( "Magnification" ) );
+    exitAction->setText( tr( "Exit" ) );
 }
 
 

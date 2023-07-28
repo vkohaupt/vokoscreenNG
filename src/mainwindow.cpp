@@ -496,7 +496,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // *************** systrayAlternative **********************
     vkSystrayAlternative = new QvkSystrayAlternative( this, ui, sliderShowInSystrayAlternative );
     vkSystray = new QvkSystray( ui );
-    if ( QSystemTrayIcon::isSystemTrayAvailable() == true )
+    if ( QSystemTrayIcon::isSystemTrayAvailable() == false ) //-----------------------------------------------------------------------------------
     {
         vkSystray->init();
         connect( vkSystray,                 SIGNAL( signal_SystemtrayIsClose() ),                 this,      SLOT( close() ) );
@@ -722,6 +722,7 @@ void QvkMainWindow::changeLanguageInSourcecode()
     vkCameraController->vkCameraSettingsDialog->ui->retranslateUi( vkCameraController->vkCameraSettingsDialog );
     vkSystray->slot_closeSystray();
     vkSystray->init();
+    vkSystrayAlternative->setMenueText();
 }
 
 
