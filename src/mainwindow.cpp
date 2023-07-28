@@ -672,7 +672,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->verticalLayout_7->removeItem( ui->verticalSpacer );
     }
 
-    // Change language that is in sourcecode
+    // If Language changed from settings
+    // Change language that is in sourcecode and change all UI`s
     changeLanguageInSourcecode();
 }
 
@@ -682,7 +683,7 @@ QvkMainWindow::~QvkMainWindow()
     delete ui;
 }
 
-
+// Language is changed from combobox
 void QvkMainWindow::slot_languageChanged( QString value )
 {
     qApp->removeTranslator( &translator );
@@ -703,12 +704,12 @@ void QvkMainWindow::slot_languageChanged( QString value )
         qDebug().noquote() << global::nameOutput << "Faild to load language:" << path + language + ".qm" << "Set default language";
     }
 
-    // Change language that is in sourcecode
+    // Change language that is in sourcecode and change all UI`s
     changeLanguageInSourcecode();
 }
 
 
-// Change language that is in sourcecode
+// Change language that is in sourcecode and change all UI`s
 void QvkMainWindow::changeLanguageInSourcecode()
 {
     ui->labelSourcecodeUrl->setText( "<a href='https://github.com/vkohaupt/vokoscreenNG'>" + tr( "Sourcecode" ) + "</a>" );
@@ -719,6 +720,8 @@ void QvkMainWindow::changeLanguageInSourcecode()
     vkLicenses->ui->retranslateUi( vkLicenses );
     vkHelp->uiHelp->retranslateUi( vkHelp );
     vkCameraController->vkCameraSettingsDialog->ui->retranslateUi( vkCameraController->vkCameraSettingsDialog );
+    vkSystray->slot_closeSystray();
+    vkSystray->init();
 }
 
 
