@@ -496,7 +496,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // *************** systrayAlternative **********************
     vkSystrayAlternative = new QvkSystrayAlternative( this, ui, sliderShowInSystrayAlternative );
     vkSystray = new QvkSystray( ui );
-    if ( QSystemTrayIcon::isSystemTrayAvailable() == false ) //-----------------------------------------------------------------------------------
+    if ( QSystemTrayIcon::isSystemTrayAvailable() == true )
     {
         vkSystray->init();
         connect( vkSystray,                 SIGNAL( signal_SystemtrayIsClose() ),                 this,      SLOT( close() ) );
