@@ -577,9 +577,13 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     }
     sortList.sort();
     for ( int x=0; x < sortList.count(); x++ ) {
-        ui->comboBoxLanguage->addItem( sortList.at(x) );
+        QString language = sortList.at(x).section( "  ", 2, 2 );
+        language = language.replace( "(", "" );
+        language = language.replace( ")", "" );
+        language = language.trimmed();
+        ui->comboBoxLanguage->addItem( sortList.at(x), language );
     }
-    connect( ui->comboBoxLanguage, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_languageChanged( QString ) ) );
+    connect( ui->comboBoxLanguage, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_languageChanged( int ) ) );
 
 
 #ifdef Q_OS_WIN
@@ -684,24 +688,20 @@ QvkMainWindow::~QvkMainWindow()
 }
 
 // Language is changed from combobox
-void QvkMainWindow::slot_languageChanged( QString value )
+void QvkMainWindow::slot_languageChanged( int )
 {
     qApp->removeTranslator( &translator );
 
-    QString language = value.section( "  ", 2, 2 );
-    language = language.replace( "(", "" );
-    language = language.replace( ")", "" );
-    language = language.trimmed();
-
+    QString language = ui->comboBoxLanguage->currentData().toString();
     QString path( ":/language/" );
     if ( translator.load( path + language + ".qm" ) ) {
         qApp->installTranslator( &translator );
-        ui->retranslateUi(this);
-        qDebug().noquote() << global::nameOutput << "Language changed to:" << path + language + ".qm";
+        ui->retranslateUi( this );
+        qDebug().noquote() << global::nameOutput << "Language changed to:" << ui->comboBoxLanguage->currentText() << path + language + ".qm";
     } else {
         qApp->installTranslator( &translator );
-        ui->retranslateUi(this);
-        qDebug().noquote() << global::nameOutput << "Faild to load language:" << path + language + ".qm" << "Set default language";
+        ui->retranslateUi( this );
+        qDebug().noquote() << global::nameOutput << "Faild to load language:" << ui->comboBoxLanguage->currentText() << path + language + ".qm" << "Set default language";
     }
 
     // Change language that is in sourcecode and change all UI`s

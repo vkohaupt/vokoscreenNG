@@ -226,7 +226,7 @@ private slots:
 
     void slot_currentTextChangedToGIF( QString value);
 
-    void slot_languageChanged( QString value );
+    void slot_languageChanged(int);
 
 
 signals:
