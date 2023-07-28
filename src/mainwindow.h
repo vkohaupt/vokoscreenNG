@@ -84,6 +84,7 @@ public:
     QvkLogController *vklogController;
     QvkLicenses *vkLicenses;
     QvkHelp *vkHelp;
+    QvkCameraController *vkCameraController;
     bool wantRecording = true;
     bool isFlatpak = false;
     void changeLanguageInSourcecode();
@@ -151,7 +152,6 @@ private:
 #endif
     QvkHalo *vkHalo;
 
-    QvkCameraController *vkCameraController;
     QvkSystrayAlternative *vkSystrayAlternative;
 
     QvkLimitDiskFreeSpace *vkLimitDiskFreeSpace;

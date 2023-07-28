@@ -181,9 +181,7 @@
 <file>language/de_AT.qm</file>
 <file>language/de_CH.qm</file>
 <file>language/de_DE.qm</file>
-<file>language/de.qm</file>
 <file>language/nl_NL.qm</file>
 <file>language/sv_SE.qm</file>
-<file>language/sv.qm</file>
 </qresource>
 </RCC>

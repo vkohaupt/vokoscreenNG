@@ -558,7 +558,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // *****************Begin Camera *********************************
     vkCameraController = new QvkCameraController(ui);
-    Q_UNUSED(vkCameraController);
+//    Q_UNUSED(vkCameraController);
     vk_setCornerWidget( ui->tabWidgetCamera );
     // *****************End Camera ***********************************
 
@@ -722,17 +722,10 @@ void QvkMainWindow::changeLanguageInSourcecode()
     ui->labelWebSiteUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Homepage" ) + "</a>" );
     ui->labelLanguageUrl->setText( "<a href='https://app.transifex.com/vkohaupt/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
     ui->labelDonateUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
-
-    vkPlayer->ui->retranslateUi(this);
-
-    QString language = ui->comboBoxLanguage->currentText().section( "  ", 2, 2 );
-    language = language.replace( "(", "" );
-    language = language.replace( ")", "" );
-    language = language.trimmed();
-    vkLicenses->ui->pushButtonClose->setLocale( QLocale( language ) );
-
-    vkHelp->uiHelp->pushButtonClose->setLocale( QLocale( language ) );
-
+    vkPlayer->ui->retranslateUi(vkPlayer);
+    vkLicenses->ui->retranslateUi( vkLicenses );
+    vkHelp->uiHelp->retranslateUi( vkHelp );
+    vkCameraController->vkCameraSettingsDialog->ui->retranslateUi( vkCameraController->vkCameraSettingsDialog );
 }
 
 
