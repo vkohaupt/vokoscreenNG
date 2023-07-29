@@ -28,6 +28,7 @@
 #include <QMouseEvent>
 #include <QColor>
 #include <QDateTime>
+#include <QDir>
 
 QvkSettings::QvkSettings()
 {
@@ -109,6 +110,39 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     QList<QComboBox *> listComboBox = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
     for ( int i = 0; i < listComboBox.count(); i++ )
     {
+        // Language
+        if ( listComboBox.at(i)->objectName() == "comboBoxLanguage" ) {
+
+            // Achtung ist die Systemsprache nicht vorhanden, kann auf eine andere Sprache gewechselt werden.
+            // Diese wird abgespeichert aber nicht eingelesen. Es wird dann "en" angezeigt.
+
+            // listComboBox.at(i)->removeItem( 20 ); // Nur zum testen. Index muß zuvor ermittelt werden.
+            // Systemsprache ist in der Combobox nicht vorhanden, es wird "en" gesetzt
+            int index1 = listComboBox.at(i)->findData( QLocale::system().name() );
+            if ( index1 == -1 ) {
+                int value = listComboBox.at(i)->findData( "en" );
+                listComboBox.at(i)->setCurrentIndex( value );
+                break;
+            }
+
+            // Wird eine Sprache in den Settings gefunden wird diese gesetzt
+            QString valueText = settings.value( listComboBox.at(i)->objectName(), "" ).toString();
+            int valueInt = listComboBox.at(i)->findText( valueText );
+            if ( valueInt > -1 ) {
+                listComboBox.at(i)->setCurrentIndex( valueInt );
+                break;
+            }
+
+            // Systemsprache wird in der Combobox gesetzt wenn diese in der Combobox gefunden wird.
+            int index = listComboBox.at(i)->findData( QLocale::system().name() );
+            if ( index > -1 ) {
+                listComboBox.at(i)->setCurrentIndex( index );
+            }
+
+            break;
+        }
+
+
         QString valueText = settings.value( listComboBox.at(i)->objectName(), "" ).toString();
         int valueInt = listComboBox.at(i)->findText( valueText );
         if ( valueInt > -1 )
