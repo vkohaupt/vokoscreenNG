@@ -117,7 +117,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             // listComboBox.at(i)->removeItem( 20 ); // Nur zum testen. Index muß zuvor ermittelt werden.
             int index;
 
-            // Wird eine Sprache in den Settings gefunden wird diese gesetzt
+            // Wird eine Sprache in den Settings gefunden, wird diese wenn in der ComboBox vorhanden gesetzt
             QString valueText = settings.value( listComboBox.at(i)->objectName(), "" ).toString();
             index = listComboBox.at(i)->findText( valueText );
             if ( index > -1 ) {
