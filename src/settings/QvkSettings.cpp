@@ -113,25 +113,23 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         // Language
         if ( listComboBox.at(i)->objectName() == "comboBoxLanguage" ) {
 
-            // Achtung ist die Systemsprache nicht vorhanden, kann auf eine andere Sprache gewechselt werden.
-            // Diese wird abgespeichert aber nicht eingelesen. Es wird dann "en" angezeigt.
 
             // listComboBox.at(i)->removeItem( 20 ); // Nur zum testen. Index muß zuvor ermittelt werden.
-
-            // Systemsprache ist in der Combobox nicht vorhanden, es wird "en" gesetzt
             int index;
-            index = listComboBox.at(i)->findData( QLocale::system().name() );
-            if ( index == -1 ) {
-                int value = listComboBox.at(i)->findData( "en" );
-                listComboBox.at(i)->setCurrentIndex( value );
-                break;
-            }
 
             // Wird eine Sprache in den Settings gefunden wird diese gesetzt
             QString valueText = settings.value( listComboBox.at(i)->objectName(), "" ).toString();
             index = listComboBox.at(i)->findText( valueText );
             if ( index > -1 ) {
                 listComboBox.at(i)->setCurrentIndex( index );
+                break;
+            }
+
+            // Systemsprache ist in der Combobox nicht vorhanden, es wird "en" gesetzt
+            index = listComboBox.at(i)->findData( QLocale::system().name() );
+            if ( index == -1 ) {
+                int value = listComboBox.at(i)->findData( "en" );
+                listComboBox.at(i)->setCurrentIndex( value );
                 break;
             }
 
