@@ -47,37 +47,31 @@ void QvkSystray::init()
 
     startAction = new QAction( this );
     startAction->setIcon( QIcon( ":pictures/player/start.png" ) );
-    startAction->setText( tr( "Start" ) );
     startAction->setData( "Start" );
 
     stopAction = new QAction( this );
     stopAction->setIcon( QIcon( ":pictures/player/stop.png" ) );
-    stopAction->setText( tr( "Stop" ) );
     stopAction->setData( "Stop" );
     stopAction->setEnabled( false );
 
     pauseAction = new QAction( this );
     pauseAction->setIcon( QIcon( ":pictures/player/pause.png" ) );
-    pauseAction->setText( tr( "Pause" ) );
     pauseAction->setData( "Pause" );
     pauseAction->setEnabled( false );
 
     continueAction = new QAction( this );
     continueAction->setIcon( QIcon( ":pictures/player/start.png" ) );
-    continueAction->setText( tr( "Continue" ) );
     continueAction->setData( "Continue" );
     continueAction->setEnabled( false );
 
     cameraAction = new QAction( this );
     cameraAction->setIcon( QIcon( ":pictures/systray/camera.png" ) );
-    cameraAction->setText( tr( "Camera" ) );
     cameraAction->setData( "Camera" );
     cameraAction->setCheckable( true );
     cameraAction->setEnabled( true );
 
     magnifierAction = new QAction( this );
     magnifierAction->setIcon( QIcon( ":pictures/systray/magnification.png" ) );
-    magnifierAction->setText( tr( "Magnification" ) );
     magnifierAction->setData( "Magnification" );
     magnifierAction->setCheckable( true );
 
@@ -100,7 +94,6 @@ void QvkSystray::init()
 
     exitAction = new QAction( this );
     exitAction->setIcon( QIcon( ":pictures/systray/exit.png" ) );
-    exitAction->setText( tr( "Exit" ) );
     exitAction->setData( "Exit" );
 
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), startAction,    SLOT( setEnabled( bool ) ) );
@@ -186,6 +179,20 @@ void QvkSystray::init()
     if ( ui->checkBoxCameraOnOff->isEnabled() == false ){
         cameraAction->setEnabled( false );
     }
+
+    setMenueText();
+}
+
+
+void QvkSystray::setMenueText()
+{
+    startAction->setText( tr( "Start" ) );
+    stopAction->setText( tr( "Stop" ) );
+    pauseAction->setText( tr( "Pause" ) );
+    continueAction->setText( tr( "Continue" ) );
+    cameraAction->setText( tr( "Camera" ) );
+    magnifierAction->setText( tr( "Magnification" ) );
+    exitAction->setText( tr( "Exit" ) );
 }
 
 

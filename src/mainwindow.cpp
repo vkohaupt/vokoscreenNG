@@ -720,8 +720,7 @@ void QvkMainWindow::changeLanguageInSourcecode()
     vkLicenses->ui->retranslateUi( vkLicenses );
     vkHelp->uiHelp->retranslateUi( vkHelp );
     vkCameraController->vkCameraSettingsDialog->ui->retranslateUi( vkCameraController->vkCameraSettingsDialog );
-    vkSystray->slot_closeSystray();
-    vkSystray->init();
+    vkSystray->setMenueText();
     vkSystrayAlternative->setMenueText();
 }
 
