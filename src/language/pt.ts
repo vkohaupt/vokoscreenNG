@@ -10,7 +10,7 @@
     <name>QvkCameraController</name>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Câmara</translation>
     </message>
 </context>
 <context>
@@ -45,7 +45,7 @@
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Mudar para ecrã inteiro</translation>
+        <translation>Mudar para o ecrã completo</translation>
     </message>
 </context>
 <context>
@@ -60,14 +60,14 @@
     </message>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Câmara</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>A configuração foi bem sucedida.</translation>
+        <translation>A instalação foi bem sucedida.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
@@ -96,7 +96,7 @@
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Não foi encontrado nenhum gestor de ficheiros.</translation>
+        <translation>Nenhum gestor de ficheiros encontrado.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
@@ -111,11 +111,11 @@
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>A gravação não é iniciada, não há espaço livre em disco suficiente.</translation>
+        <translation>A gravação não foi iniciada, não há espaço livre suficiente no disco.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Foi alcançado o limite de espaço em disco.</translation>
+        <translation>O limite de espaço livre em disco foi atingido.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
@@ -127,7 +127,7 @@
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>A gravação foi parada, sem espaço em disco disponível.</translation>
+        <translation>A gravação foi interrompida porque não havia espaço livre suficiente no disco.</translation>
     </message>
 </context>
 <context>
@@ -135,7 +135,7 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>Nenhum gestor de ficheiros encontrado.</translation>
+        <translation>Não foi encontrado um gestor de ficheiros.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
@@ -214,7 +214,7 @@
     </message>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Câmara</translation>
     </message>
     <message>
         <source>Magnification</source>
@@ -245,7 +245,7 @@
     </message>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Câmara</translation>
     </message>
     <message>
         <source>Magnification</source>
@@ -302,7 +302,7 @@
     </message>
     <message>
         <source>Reset</source>
-        <translation>Restabelecer</translation>
+        <translation>Reiniciar</translation>
     </message>
     <message>
         <source>Magnification</source>
@@ -582,7 +582,7 @@
     </message>
     <message>
         <source>Loop</source>
-        <translation type="unfinished"/>
+        <translation>Ciclo</translation>
     </message>
     <message>
         <source>Window</source>
@@ -594,7 +594,7 @@
     </message>
     <message>
         <source>Online-Help</source>
-        <translation type="unfinished"/>
+        <translation>Ajuda ‘online’</translation>
     </message>
 </context>
 <context>

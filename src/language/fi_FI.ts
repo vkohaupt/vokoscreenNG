@@ -582,7 +582,7 @@
     </message>
     <message>
         <source>Loop</source>
-        <translation type="unfinished"/>
+        <translation>Silmukka</translation>
     </message>
     <message>
         <source>Window</source>
@@ -594,7 +594,7 @@
     </message>
     <message>
         <source>Online-Help</source>
-        <translation type="unfinished"/>
+        <translation>Online apu</translation>
     </message>
 </context>
 <context>

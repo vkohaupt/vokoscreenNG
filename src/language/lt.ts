@@ -582,7 +582,7 @@
     </message>
     <message>
         <source>Loop</source>
-        <translation type="unfinished"/>
+        <translation>Cikliškai kartoti</translation>
     </message>
     <message>
         <source>Window</source>
@@ -594,7 +594,7 @@
     </message>
     <message>
         <source>Online-Help</source>
-        <translation type="unfinished"/>
+        <translation>Žinynas internete</translation>
     </message>
 </context>
 <context>
