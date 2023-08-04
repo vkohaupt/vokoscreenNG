@@ -39,12 +39,12 @@ QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller( QString vk_pathWithSetti
 
 #ifdef Q_OS_WIN
     libopenh264_filename = "libopenh264-6.dll";
-    downloadFile = "http://ciscobinary.openh264.org/openh264-2.1.1-win64.dll.bz2";
+    downloadFile = "http://ciscobinary.openh264.org/openh264-2.3.0-win64.dll.bz2";
 #endif
 
 #ifdef Q_OS_LINUX
     libopenh264_filename = "libopenh264.so";
-    downloadFile = "http://ciscobinary.openh264.org/libopenh264-2.1.1-linux64.6.so.bz2";
+    downloadFile = "http://ciscobinary.openh264.org/libopenh264-2.3.0-linux64.6.so.bz2";
 #endif
 }
 
@@ -57,7 +57,7 @@ QvkCiscoOpenh264Controller::~QvkCiscoOpenh264Controller()
 void QvkCiscoOpenh264Controller::showWaitDialog()
 {
     QFileInfo fileInfo( pathWithSettingsFilename );
-    QFileInfo fileInfo_libopenh264( fileInfo.path() + "/" + libopenh264_filename );
+    QFileInfo fileInfo_libopenh264( fileInfo.path() + "/" + downloadFile.section( "/", 3, 3 ) );
     if ( !fileInfo_libopenh264.exists() )
     {
         ui->tabWidgetSideBar->hide();
@@ -78,7 +78,7 @@ void QvkCiscoOpenh264Controller::init()
     connect( ui->radioButton_cisco_off, SIGNAL( clicked( bool ) ), this, SLOT( slot_cisco_off( bool ) ) );
 
     QFileInfo fileInfo( pathWithSettingsFilename );
-    QFileInfo fileInfo_libopenh264( fileInfo.path() + "/" + libopenh264_filename );
+    QFileInfo fileInfo_libopenh264( fileInfo.path() + "/" + downloadFile.section( "/", 3, 3 ) );
     if ( !fileInfo_libopenh264.exists() )
     {
         QvkCiscoOpenh264Downloader *vkCiscoOpenh264Downloader = new QvkCiscoOpenh264Downloader( fileInfo.path() );
