@@ -596,6 +596,10 @@
         <source>Online-Help</source>
         <translation>Online-hulp</translation>
     </message>
+    <message>
+        <source>Language</source>
+        <translation>Taal</translation>
+    </message>
 </context>
 <context>
     <name>help</name>

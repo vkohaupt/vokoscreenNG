@@ -582,7 +582,7 @@
     </message>
     <message>
         <source>Loop</source>
-        <translation type="unfinished"/>
+        <translation>Loop</translation>
     </message>
     <message>
         <source>Window</source>
@@ -594,14 +594,18 @@
     </message>
     <message>
         <source>Online-Help</source>
-        <translation type="unfinished"/>
+        <translation>Online-Help</translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation>Language</translation>
     </message>
 </context>
 <context>
     <name>help</name>
     <message>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Close</translation>
     </message>
 </context>
 <context>
@@ -612,7 +616,7 @@
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished"/>
+        <translation>Close</translation>
     </message>
 </context>
 <context>

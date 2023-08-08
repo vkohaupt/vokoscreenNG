@@ -5,5 +5,5 @@ host = https://www.transifex.com
 file_filter = language/<lang>.ts
 source_file = language/en.ts
 source_lang = en
-minimum_perc = 97
+minimum_perc = 100
 

@@ -596,6 +596,10 @@
         <source>Online-Help</source>
         <translation>Žinynas internete</translation>
     </message>
+    <message>
+        <source>Language</source>
+        <translation>Kalba</translation>
+    </message>
 </context>
 <context>
     <name>help</name>
