@@ -27,6 +27,7 @@ QvkCiscoOpenh264Downloader::QvkCiscoOpenh264Downloader( QString vk_pathLocal , Q
 {
     connect( &networkAccessManager, SIGNAL( finished( QNetworkReply* ) ), SLOT( slot_downloadFinished( QNetworkReply* ) ) );
     pathLocal = vk_pathLocal;
+    qDebug() << "555555555555555555555555555555555555555555555555555555 pathLocal:" << pathLocal;
 }
 
 

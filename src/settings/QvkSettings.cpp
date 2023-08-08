@@ -47,6 +47,12 @@ QvkSettings::QvkSettings()
         installSetting.setValue( "version", global::version );
     }
     installSetting.endGroup();
+
+    // Extra Verzeichnis für openh264 erstellen ------------------------------------------------------
+    QSettings openh264Settings( QSettings::IniFormat, QSettings::UserScope, QString( global::name + "-" + "openh264" + "-" + global::version ), global::name, Q_NULLPTR );
+    openh264Settings.beginGroup( global::name );
+    openh264Settings.setValue( "Version", global::version );
+    openh264Settings.endGroup();
 }
 
 QvkSettings::~QvkSettings(){}
@@ -645,6 +651,15 @@ QString QvkSettings::getFileName()
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     return settings.fileName();
 }
+
+//----------------------------------------------------------
+QString QvkSettings::getOpenh264ProfilePathWithFilename()
+{
+    QSettings openh264Settings( QSettings::IniFormat, QSettings::UserScope, QString( global::name + "-" + "openh264" + "-" + global::version ), global::name, Q_NULLPTR );
+    QFileInfo fileInfo( openh264Settings.fileName() );
+    return fileInfo.absoluteFilePath();
+}
+
 
 QString QvkSettings::getVideoPath()
 {

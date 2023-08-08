@@ -123,16 +123,22 @@ int main(int argc, char *argv[])
     QString pathProfile = dirPathProfile.absolutePath();
     QString programPath = QDir::currentPath();
 
+    // Die GStreamer plugins werden GST_PLUGIN_PATH_1_0 variable gefunden
     QString pluginPath;
     pluginPath.append( programPath );
-    pluginPath.append( separator );
-    pluginPath.append( pathProfile );
+//    pluginPath.append( separator );
+//    QFileInfo h264Profile( vkSettings.getOpenh264ProfilePathWithFilename() );
+//    pluginPath.append( h264Profile.absolutePath() );
     qputenv( "GST_PLUGIN_PATH_1_0", pluginPath.toUtf8() );
 
+    // Der openh264 Codec wird über die PATH variable gefunden
     QString pathPath;
     pathPath.append( programPath );
     pathPath.append( separator );
-    pathPath.append( pathProfile );
+    QFileInfo h264Profile( vkSettings.getOpenh264ProfilePathWithFilename() );
+    pathPath.append( h264Profile.absolutePath() );
+//    pathPath.append( separator );
+//    pathPath.append( pathProfile );
     qputenv( "PATH", pathPath.toUtf8() );
 
     QString pathRegistry;
@@ -163,7 +169,6 @@ int main(int argc, char *argv[])
         qputenv( "GST_DEBUG_FILE", debugPathProfile.toUtf8() );
     }
     // Gstreamer debug end
-
 
     gst_init (&argc, &argv);
 

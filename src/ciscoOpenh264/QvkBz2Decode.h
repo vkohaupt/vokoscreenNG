@@ -38,7 +38,7 @@ public:
     static gboolean func( GstBus *bus, GstMessage *msg, gpointer data );
     void start_encoding(QString inputFile , QString outpuFile);
 
-    
+
 public slots:
 
 
