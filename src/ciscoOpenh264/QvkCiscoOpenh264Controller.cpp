@@ -36,7 +36,6 @@ QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller( QString vk_pathWithSetti
 {
     ui = ui_mainwindow;
     pathWithSettingsFilename = vk_pathWithSettingsFilename;
-qDebug() << "22222222222222222222222222222222222222222222222222222222222 pathWithSettingsFilename:" << pathWithSettingsFilename;
 #ifdef Q_OS_WIN
     libopenh264_filename = "libopenh264-6.dll";
     downloadFile = "http://ciscobinary.openh264.org/openh264-2.3.0-win64.dll.bz2";
@@ -57,10 +56,8 @@ QvkCiscoOpenh264Controller::~QvkCiscoOpenh264Controller()
 void QvkCiscoOpenh264Controller::showWaitDialog()
 {
     QFileInfo fileInfo( pathWithSettingsFilename );
-//    QFileInfo fileInfo_libopenh264( fileInfo.path() + "/" + downloadFile.section( "/", 3, 3 ) );
     QFileInfo fileInfo_libopenh264( fileInfo.path() + "/" + libopenh264_filename );
-    if ( !fileInfo_libopenh264.exists() )
-    {
+    if ( !fileInfo_libopenh264.exists() ) {
         ui->tabWidgetSideBar->hide();
         ui->widgetSidbar->hide();
         vkCiscoWaitDialog = new QvkCiscoWaitDialog;
@@ -79,10 +76,8 @@ void QvkCiscoOpenh264Controller::init()
     connect( ui->radioButton_cisco_off, SIGNAL( clicked( bool ) ), this, SLOT( slot_cisco_off( bool ) ) );
 
     QFileInfo fileInfo( pathWithSettingsFilename );
-//    QFileInfo fileInfo_libopenh264( fileInfo.path() + "/" + downloadFile.section( "/", 3, 3 ) );
     QFileInfo fileInfo_libopenh264( fileInfo.path() + "/" + libopenh264_filename );
-    if ( !fileInfo_libopenh264.exists() )
-    {
+    if ( !fileInfo_libopenh264.exists() ) {
         QvkCiscoOpenh264Downloader *vkCiscoOpenh264Downloader = new QvkCiscoOpenh264Downloader( fileInfo.path() );
         connect( vkCiscoOpenh264Downloader, SIGNAL( signal_failedDownload() ), this, SLOT( slot_closeWaitDialog() ) );
         connect( vkCiscoOpenh264Downloader, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_deCompress( QString ) ) );
@@ -116,12 +111,10 @@ void QvkCiscoOpenh264Controller::slot_closeWaitDialog()
 void QvkCiscoOpenh264Controller::slot_cisco_on( bool )
 {
     int index = ui->comboBoxVideoCodec->findText( "H.264" );
-    if ( index == -1 )
-    {
+    if ( index == -1 ) {
         QFileInfo fileInfo( pathWithSettingsFilename );
         QFileInfo file_libopenh264( fileInfo.path() + "/" + libopenh264_filename );
-        if ( file_libopenh264.exists( ) )
-        {
+        if ( file_libopenh264.exists( ) ) {
             ui->comboBoxVideoCodec->insertItem( 0, "H.264", "openh264enc" );
         }
     }
@@ -131,8 +124,7 @@ void QvkCiscoOpenh264Controller::slot_cisco_on( bool )
 void QvkCiscoOpenh264Controller::slot_cisco_off( bool )
 {
     int index = ui->comboBoxVideoCodec->findText( "H.264" );
-    if ( index > -1 )
-    {
+    if ( index > -1 ) {
         ui->comboBoxVideoCodec->removeItem( index );
     }
 }
@@ -154,8 +146,7 @@ void QvkCiscoOpenh264Controller::slot_deCompress( QString pathWithDownloadedFile
 void QvkCiscoOpenh264Controller::slot_showCiscoFinishDialog()
 {
     // Dieser Hack wird benötigt damit statt einem grauen Fenster der Waitdialog erscheint.
-    for ( int i = 0; i < 30; i++ )
-    {
+    for ( int i = 0; i < 30; i++ ) {
         QCoreApplication::processEvents();
         QThread::msleep( 100 );
     }

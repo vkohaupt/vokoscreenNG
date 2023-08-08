@@ -27,7 +27,6 @@ QvkCiscoOpenh264Downloader::QvkCiscoOpenh264Downloader( QString vk_pathLocal , Q
 {
     connect( &networkAccessManager, SIGNAL( finished( QNetworkReply* ) ), SLOT( slot_downloadFinished( QNetworkReply* ) ) );
     pathLocal = vk_pathLocal;
-    qDebug() << "555555555555555555555555555555555555555555555555555555 pathLocal:" << pathLocal;
 }
 
 
@@ -52,8 +51,7 @@ bool QvkCiscoOpenh264Downloader::saveLocal( const QString &filename, QIODevice *
 {
     QString fileInTempPath = pathLocal + "/" + filename;
     QFile file( fileInTempPath );
-    if ( !file.open( QIODevice::WriteOnly ) )
-    {
+    if ( !file.open( QIODevice::WriteOnly ) ) {
         return false;
     }
     file.write( data->readAll() );
@@ -66,20 +64,15 @@ void QvkCiscoOpenh264Downloader::slot_downloadFinished( QNetworkReply *reply )
 {
     QString filename = QFileInfo( reply->url().path() ).fileName();
     bool downloadOK = false;
-    if ( reply->error() )
-    {
+    if ( reply->error() ) {
         qDebug().noquote() << global::nameOutput << "[h264] Download of" << reply->url().toString() << "failed:" << reply->errorString();
         downloadOK = false;
-    }
-    else
-    {
+    } else {
         if ( saveLocal( filename, reply ) == true )
         {
             qDebug().noquote() << global::nameOutput << "[h264] Download of" << reply->url().toString() << "succeeded (saved to" << pathLocal + "/" + filename + ")";
             downloadOK = true;
-        }
-        else
-        {
+        } else {
             qDebug().noquote() << global::nameOutput << "[h264] Download of" << reply->url().toString() << "can not save" << pathLocal + "/" + filename + ")";
             downloadOK = false;
         }
@@ -88,13 +81,11 @@ void QvkCiscoOpenh264Downloader::slot_downloadFinished( QNetworkReply *reply )
     listDownloads.removeAll( reply );
     reply->deleteLater();
 
-    if ( downloadOK == true )
-    {
+    if ( downloadOK == true ) {
         emit signal_fileDownloaded( pathLocal + "/" + filename );
     }
 
-    if ( downloadOK == false )
-    {
+    if ( downloadOK == false ) {
         emit signal_failedDownload();
     }
 }

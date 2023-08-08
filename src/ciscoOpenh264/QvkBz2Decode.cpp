@@ -24,8 +24,6 @@
 #include "global.h"
 
 #include <QDebug>
-#include <QFile> //--------------------------------------------------------------------------------
-#include <QFileInfo> //--------------------------------------------------------------------
 
 QvkBz2Decode::QvkBz2Decode()
 {
@@ -34,7 +32,6 @@ QvkBz2Decode::QvkBz2Decode()
 QvkBz2Decode::~QvkBz2Decode()
 {}
 
-QString bz2Path; //-------------------------------------------------------------------------
 gboolean QvkBz2Decode::func( GstBus *bus, GstMessage *msg, gpointer data )
 {
     Q_UNUSED(bus)
@@ -60,17 +57,6 @@ gboolean QvkBz2Decode::func( GstBus *bus, GstMessage *msg, gpointer data )
         qDebug().noquote() << global::nameOutput << "[QvkBz2Decode::func]" << error->message;
         g_error_free( error );
 
-        // Wenn die .bz2 nicht ausgepackt werden kann, wird eine leere Datei openh264.txt angelegt.
-        // Die openh264.txt wird im selben Ordner wie die .bz2 erstellt
-        // Beim start von vokoscreen wird in der main.cpp übrprüft ob die Datei openh264.txt vorhanden ist.
-        // Wenn die openh264.txt vorhanden ist wird die Datei openh264-6.dll gelöscht.
-        // Anschließend wird die openh264.txt Datei gelöscht.
-
-        // Datei anlegen
-        QFile file( bz2Path + "/" + "openh264.txt" );
-        file.open( QIODevice::ReadWrite );
-        file.close();
-
         g_main_loop_quit( loop );
         break;
     }
@@ -84,10 +70,6 @@ gboolean QvkBz2Decode::func( GstBus *bus, GstMessage *msg, gpointer data )
 
 void QvkBz2Decode::start_encoding( QString inputFile, QString outpuFile )
 {
-    // Pfad ermitteln für die anzulegende Datei openh264.txt
-    QFileInfo fileInfo( inputFile );
-    bz2Path = fileInfo.path();
-
     QByteArray byteArrayInputFile = inputFile.toUtf8();
     const gchar *inFile = byteArrayInputFile.constData();
 
@@ -107,8 +89,7 @@ void QvkBz2Decode::start_encoding( QString inputFile, QString outpuFile )
     decoder  = gst_element_factory_make( "bz2dec",   "bz2-decoder" );
     sink     = gst_element_factory_make( "filesink", "file-out" );
 
-    if ( !pipeline || !source || !decoder || !sink )
-    {
+    if ( !pipeline || !source || !decoder || !sink ) {
         qDebug().noquote() << global::nameOutput << "[QvkBz2Decode::start_encoding]" << "One element could not be created. Exiting.";
         return;
     }

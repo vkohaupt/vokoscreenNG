@@ -76,7 +76,7 @@ public:
 
     QString getFileName();
     QString getVideoPath();
-    QString getOpenh264ProfilePathWithFilename(); //----------------------------------------------------------
+    QString getOpenh264ProfilePathWithFilename();
 
 
 public slots:

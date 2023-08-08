@@ -587,8 +587,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 
 #ifdef Q_OS_WIN
-qDebug() << "1111111111111111111111111111111111111111 vkSettings.getOpenh264ProfilePath():" << vkSettings.getOpenh264ProfilePathWithFilename();
-    vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller(  vkSettings.getOpenh264ProfilePathWithFilename(), ui ); //------------------------------------------
+    vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller(  vkSettings.getOpenh264ProfilePathWithFilename(), ui );
     vkCiscoOpenh264Controller->showWaitDialog();
     vkCiscoOpenh264Controller->init();
 #endif
