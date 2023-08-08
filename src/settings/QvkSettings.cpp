@@ -48,11 +48,13 @@ QvkSettings::QvkSettings()
     }
     installSetting.endGroup();
 
+#ifdef Q_OS_WIN
     // Extra Verzeichnis für openh264 erstellen
     QSettings openh264Settings( QSettings::IniFormat, QSettings::UserScope, QString( global::name + "-" + "openh264" + "-" + global::version ), global::name, Q_NULLPTR );
     openh264Settings.beginGroup( global::name );
     openh264Settings.setValue( "Version", global::version );
     openh264Settings.endGroup();
+#endif
 }
 
 QvkSettings::~QvkSettings(){}
