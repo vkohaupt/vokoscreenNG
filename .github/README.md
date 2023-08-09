@@ -53,8 +53,8 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
     - openSSL 1.1.1 Toolkit  
       [+] openssl 64-bit binaries  
       
-  https://gstreamer.freedesktop.org/data/pkg/windows/1.18.5/mingw/gstreamer-1.0-mingw-x86_64-1.18.5.msi  
-  https://gstreamer.freedesktop.org/data/pkg/windows/1.18.5/mingw/gstreamer-1.0-devel-mingw-x86_64-1.18.5.msi  
+  https://gstreamer.freedesktop.org/data/pkg/windows/1.22.5/mingw/gstreamer-1.0-mingw-x86_64-1.22.5.msi  
+  https://gstreamer.freedesktop.org/data/pkg/windows/1.22.5/mingw/gstreamer-1.0-devel-mingw-x86_64-1.22.5.msi  
 
 ### Environment
 * No additional entries 
@@ -84,7 +84,9 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
   - Video: x264
 * gstreamer-plugins-libav
   - Player: x264
-* 
+* gstreamer-plugins-rs
+  - Video: GIF
+    
 
 #### Wayland (vokoscreenNG >= 3.1.0)
 * pipewire >= 0.3
