@@ -135,7 +135,7 @@ QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
 #ifdef Q_OS_LINUX
     // Die Abfrage ist nötig damit GIF nicht im Tab erscheint
     Container *GIF = Q_NULLPTR;
-    if ( QString( gst_version_string() ) >= "GStreamer 1.22.4" ) {
+    if ( QString( gst_version_string() ) >= "GStreamer 1.20.1" ) {
         GIF = new Container( "gifenc", "gif" );
         GIF->add_VideoCodec( "gifenc", "gif" );
     }
@@ -143,16 +143,18 @@ QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
 
     Containers = new QList<Container*>;
     Containers->append( MKV );
-    Containers->append( WEBM );
-    Containers->append( AVI );
-    Containers->append( MP4 );
-    Containers->append( MOV );
+
 #ifdef Q_OS_LINUX
-    if ( QString( gst_version_string() ) >= "GStreamer 1.22.4" ) {
+    if ( QString( gst_version_string() ) >= "GStreamer 1.20.1" ) {
         Containers->append( GIF );
     }
 #endif
+    Containers->append( MP4 );
+    Containers->append( WEBM );
+    Containers->append( AVI );
+    Containers->append( MOV );
 }
+
 
 /*!
  * Return all supported container like mkv, avi, ... as QList.
