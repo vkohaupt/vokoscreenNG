@@ -28,7 +28,7 @@
 #include <QBitmap>
 
 
-QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, cameraSettingsDialog *settingsDialog )
+QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface, QvkCameraSettingsDialog *settingsDialog )
 {
     ui_formMainWindow = ui_surface;
     vkCameraSettingsDialog = settingsDialog;

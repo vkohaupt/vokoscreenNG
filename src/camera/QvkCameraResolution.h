@@ -24,7 +24,7 @@
 #define QVKCAMERARESOLUTION_H
 
 #include "ui_formMainWindow.h"
-#include "camerasettingsdialog.h"
+#include "QvkCameraSettingsDialog.h"
 #include "ui_camerasettingsdialog.h"
 
 #include <QCamera>
@@ -35,9 +35,9 @@ class QvkCameraResolution : public QObject
     Q_OBJECT
 
 public:
-   QvkCameraResolution( Ui_formMainWindow *ui, cameraSettingsDialog *settingsDialog );
+   QvkCameraResolution( Ui_formMainWindow *ui, QvkCameraSettingsDialog *settingsDialog );
    virtual ~QvkCameraResolution();
-   cameraSettingsDialog *vkCameraSettingsDialog;
+   QvkCameraSettingsDialog *vkCameraSettingsDialog;
 
 
 public slots:

@@ -23,7 +23,6 @@
 #include "QvkCameraController.h"
 #include "QvkCameraResolution.h"
 #include "global.h"
-#include "camerasettingsdialog.h"
 
 #include <QCameraInfo>
 #include <QPainterPath>
@@ -55,7 +54,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface ):videoS
     sliderCameraWindowZoom->setShowValue( true );
     sliderCameraWindowZoom->setEnabled( true );
 
-    vkCameraSettingsDialog = new cameraSettingsDialog;
+    vkCameraSettingsDialog = new QvkCameraSettingsDialog;
     connect( sliderCameraWindowSize, SIGNAL( rangeChanged( int, int ) ), vkCameraSettingsDialog->dialog_sliderCameraWindowSize, SLOT( setRange( int, int ) ) );
     connect( sliderCameraWindowSize, SIGNAL( valueChanged( int ) ),      vkCameraSettingsDialog->dialog_sliderCameraWindowSize, SLOT( setValue( int ) ) );
     connect( sliderCameraWindowZoom, SIGNAL( rangeChanged( int, int ) ), vkCameraSettingsDialog->dialog_sliderCameraWindowZoom, SLOT( setRange( int, int ) ) );

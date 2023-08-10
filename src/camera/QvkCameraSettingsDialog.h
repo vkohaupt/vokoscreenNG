@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef CAMERASETTINGSDIALOG_H
-#define CAMERASETTINGSDIALOG_H
+#ifndef QVKCAMERASETTINGSDIALOG_H
+#define QVKCAMERASETTINGSDIALOG_H
 
 #include "QvkSpezialSlider.h"
 
@@ -31,13 +31,13 @@ namespace Ui {
 class cameraSettingsDialog;
 }
 
-class cameraSettingsDialog : public QDialog
+class QvkCameraSettingsDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit cameraSettingsDialog( QWidget *parent = Q_NULLPTR );
-    ~cameraSettingsDialog();
+    explicit QvkCameraSettingsDialog( QWidget *parent = Q_NULLPTR );
+    ~QvkCameraSettingsDialog();
     Ui::cameraSettingsDialog *ui;
     QvkSpezialSlider *dialog_sliderCameraWindowSize;
     QvkSpezialSlider *dialog_sliderCameraWindowZoom;
@@ -47,4 +47,4 @@ private:
 
 };
 
-#endif // CAMERASETTINGSDIALOG_H
+#endif // QVKCAMERASETTINGSDIALOG_H

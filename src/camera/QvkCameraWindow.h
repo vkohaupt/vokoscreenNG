@@ -26,7 +26,7 @@
 #include "ui_formMainWindow.h"
 #include "ui_camerasettingsdialog.h"
 
-#include "camerasettingsdialog.h"
+#include "QvkCameraSettingsDialog.h"
 #include "QvkSpezialSlider.h"
 
 #include <QWidget>
@@ -38,10 +38,10 @@ class QvkCameraWindow : public QWidget
     Q_OBJECT
 
 public:
-    QvkCameraWindow( Ui_formMainWindow *ui_surface, cameraSettingsDialog *settingsDialog);
+    QvkCameraWindow( Ui_formMainWindow *ui_surface, QvkCameraSettingsDialog *settingsDialog);
     virtual ~QvkCameraWindow();
     Ui_cameraSettingsDialog *uiCameraSettingsDialog;
-    cameraSettingsDialog *vkCameraSettingsDialog;
+    QvkCameraSettingsDialog *vkCameraSettingsDialog;
     QString error;
     void setNewImage( QImage _image );
 

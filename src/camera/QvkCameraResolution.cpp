@@ -26,7 +26,7 @@
 #include <QSettings>
 #include <QCameraInfo>
 
-QvkCameraResolution::QvkCameraResolution( Ui_formMainWindow *ui, cameraSettingsDialog *settingsDialog )
+QvkCameraResolution::QvkCameraResolution( Ui_formMainWindow *ui, QvkCameraSettingsDialog *settingsDialog )
 {
     ui_formMainWindow = ui;
     vkCameraSettingsDialog = settingsDialog;

@@ -29,6 +29,7 @@
 #include "QvkCameraWindow.h"
 #include "QvkVideoSurface.h"
 #include "QvkSpezialSlider.h"
+#include "QvkCameraSettingsDialog.h"
 
 #include <QCamera>
 #include <QComboBox>
@@ -43,7 +44,7 @@ public:
 
     QvkCameraWindow *vkCameraWindow;
     void getAllDevices();
-    cameraSettingsDialog *vkCameraSettingsDialog;
+    QvkCameraSettingsDialog *vkCameraSettingsDialog;
     Ui_cameraSettingsDialog *uiCameraSettingsDialog;
 
 

@@ -22,10 +22,10 @@
 
 #include "ui_camerasettingsdialog.h"
 
-#include "camerasettingsdialog.h"
+#include "QvkCameraSettingsDialog.h"
 #include "global.h"
 
-cameraSettingsDialog::cameraSettingsDialog(QWidget *parent) :
+QvkCameraSettingsDialog::QvkCameraSettingsDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::cameraSettingsDialog)
 {
@@ -56,7 +56,7 @@ cameraSettingsDialog::cameraSettingsDialog(QWidget *parent) :
 
 }
 
-cameraSettingsDialog::~cameraSettingsDialog()
+QvkCameraSettingsDialog::~QvkCameraSettingsDialog()
 {
     delete ui;
 }
