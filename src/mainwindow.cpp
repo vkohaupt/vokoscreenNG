@@ -1630,6 +1630,8 @@ void QvkMainWindow::slot_preStart()
 
     if ( ( ui->radioButtonScreencastArea->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) )
     {
+        vkRegionChoise->recordMode( true );
+        vkRegionChoise->repaint();
         slot_Start();
         return;
     }
@@ -2002,8 +2004,6 @@ void QvkMainWindow::slot_Start()
 
     emit signal_newVideoFilename( newVideoFilename );
 }
-
-
 
 
 void QvkMainWindow::slot_preStop()
