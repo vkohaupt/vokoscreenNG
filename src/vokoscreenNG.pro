@@ -135,7 +135,8 @@ equals(QT_MAJOR_VERSION, 6) {
 } else {
    # Qt5
    unix: QT += x11extras
-   include(camera/camera.pri)
+   unix:include(cameraLinux/cameraLinux.pri)
+   win32:include(cameraWindows/cameraWindows.pri)
 }
 
 # audio linux
