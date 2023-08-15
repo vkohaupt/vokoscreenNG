@@ -176,6 +176,7 @@ private:
     QTemporaryDir wasapiTemporaryDir;
 #endif
 
+    QPalette oldPalette;
 
 private slots:
     void slot_textToGuiLog( QString value );
@@ -227,6 +228,8 @@ private slots:
     void slot_currentTextChangedToGIF( QString value);
 
     void slot_languageChanged(int);
+
+    void slot_darkMode( bool bo );
 
 
 signals:

@@ -60,6 +60,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->setupUi(this);
 
+    oldPalette = qApp->palette();
+
 #ifdef Q_OS_WIN
     // Only for Windows WASAPI
     soundEffect = new QSoundEffect();
@@ -474,6 +476,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxGstreamerDebugLevel, SIGNAL( toggled( bool) ), this, SLOT( slot_GstreamerDebugLevel( bool ) ) );
     connect( ui->pushButtonGstreamerDebugLevel, SIGNAL( clicked( bool ) ), this, SLOT( slot_GstreamerOpenFolder( bool ) ) );
     connect( ui->checkBoxGstreamerDebugLevel, SIGNAL( clicked( bool ) ), this, SLOT( slot_GstreamerDebugLevelDialog( bool ) ) );
+    connect( ui->checkBox_darkMode, SIGNAL( clicked( bool ) ), this, SLOT( slot_darkMode( bool ) ) );
+
 
     // ***************** showClick *****************************
     vkShowClick = new QvkShowClick();
@@ -686,6 +690,44 @@ QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
 }
+
+
+void QvkMainWindow::slot_darkMode( bool bo )
+{
+    QWidgetList widgetList = QApplication::allWidgets();
+    if ( bo == true ) {
+        QPalette newPalette;
+        newPalette.setColor(QPalette::Window,          QColor( 37,  37,  37));
+        newPalette.setColor(QPalette::WindowText,      QColor(212, 212, 212));
+        newPalette.setColor(QPalette::Base,            QColor( 60,  60,  60));
+        newPalette.setColor(QPalette::AlternateBase,   QColor( 45,  45,  45));
+        newPalette.setColor(QPalette::PlaceholderText, QColor(127, 127, 127));
+        newPalette.setColor(QPalette::Text,            QColor(212, 212, 212));
+        newPalette.setColor(QPalette::Button,          QColor( 45,  45,  45));
+        newPalette.setColor(QPalette::ButtonText,      QColor(212, 212, 212));
+        newPalette.setColor(QPalette::BrightText,      QColor(240, 240, 240));
+        newPalette.setColor(QPalette::Highlight,       QColor( 38,  79, 120));
+        newPalette.setColor(QPalette::HighlightedText, QColor(240, 240, 240));
+
+        newPalette.setColor(QPalette::Light,           QColor( 60,  60,  60));
+        newPalette.setColor(QPalette::Midlight,        QColor( 52,  52,  52));
+        newPalette.setColor(QPalette::Dark,            QColor( 30,  30,  30));
+        newPalette.setColor(QPalette::Mid,             QColor( 37,  37,  37));
+        newPalette.setColor(QPalette::Shadow,          QColor( 0,    0,   0));
+
+        newPalette.setColor(QPalette::Disabled, QPalette::Text,       QColor(127, 127, 127));
+        newPalette.setColor(QPalette::Disabled, QPalette::ButtonText, QColor(127, 127, 127));
+
+        for ( int i=0; i < widgetList.count(); i++ ) {
+            widgetList.at(i)->setPalette( newPalette );
+        }
+    } else {
+        for ( int i=0; i < widgetList.count(); i++ ) {
+            widgetList.at(i)->setPalette( oldPalette );
+        }
+    }
+}
+
 
 // Language is changed from combobox
 void QvkMainWindow::slot_languageChanged( int )
