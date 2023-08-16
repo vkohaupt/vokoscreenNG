@@ -60,7 +60,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->setupUi(this);
 
-    oldPalette = qApp->palette();
+    oldPaletteDarkMode = qApp->palette();
 
 #ifdef Q_OS_WIN
     // Only for Windows WASAPI
@@ -208,6 +208,14 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderGstDebugLevel->setEnabled( false );
     sliderGstDebugLevel->setPageStep( 1 );
     sliderGstDebugLevel->show();
+
+    vkSpezialCheckboxDarkMode = new QvkSpezialCheckbox();
+    connect( vkSpezialCheckboxDarkMode, SIGNAL( signal_clicked( bool ) ), this, SLOT( slot_darkMode( bool ) ) );
+    vkSpezialCheckboxDarkMode->setObjectName( "spezialCheckboxDarkMode" );
+    vkSpezialCheckboxDarkMode->setMinimumHeight( 28 );
+    vkSpezialCheckboxDarkMode->set_colorChecked( QColor( QString ( "#3DAEE9" ) ) );
+    vkSpezialCheckboxDarkMode->set_colorUnChecked( QColor( QString ( "#3DAEE9" ) ) );
+    ui->horizontalLayout_darkMode->insertWidget( 1, vkSpezialCheckboxDarkMode );
 
     ui->comboBox_shortcut_start->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     ui->comboBox_shortcut_pause->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
@@ -476,8 +484,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->checkBoxGstreamerDebugLevel, SIGNAL( toggled( bool) ), this, SLOT( slot_GstreamerDebugLevel( bool ) ) );
     connect( ui->pushButtonGstreamerDebugLevel, SIGNAL( clicked( bool ) ), this, SLOT( slot_GstreamerOpenFolder( bool ) ) );
     connect( ui->checkBoxGstreamerDebugLevel, SIGNAL( clicked( bool ) ), this, SLOT( slot_GstreamerDebugLevelDialog( bool ) ) );
-    connect( ui->checkBox_darkMode, SIGNAL( clicked( bool ) ), this, SLOT( slot_darkMode( bool ) ) );
-
 
     // ***************** showClick *****************************
     vkShowClick = new QvkShowClick();
@@ -723,7 +729,7 @@ void QvkMainWindow::slot_darkMode( bool bo )
         }
     } else {
         for ( int i=0; i < widgetList.count(); i++ ) {
-            widgetList.at(i)->setPalette( oldPalette );
+            widgetList.at(i)->setPalette( oldPaletteDarkMode );
         }
     }
 }

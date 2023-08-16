@@ -14,6 +14,13 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSettingsDialog</name>
+    <message>
+        <source>Camera settings</source>
+        <translation>Camera-instellingen</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -581,10 +588,6 @@
         <translation>Aantal seconden voordat opname start</translation>
     </message>
     <message>
-        <source>Loop</source>
-        <translation>Herhalen</translation>
-    </message>
-    <message>
         <source>Window</source>
         <translation>Venster</translation>
     </message>
@@ -595,10 +598,6 @@
     <message>
         <source>Online-Help</source>
         <translation>Online-hulp</translation>
-    </message>
-    <message>
-        <source>Language</source>
-        <translation>Taal</translation>
     </message>
 </context>
 <context>

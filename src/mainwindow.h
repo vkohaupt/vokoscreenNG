@@ -1,4 +1,4 @@
-/* vokoscreenNG - A desktop recorder
+﻿/* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2022 Volker Kohaupt
  * 
  * Author:
@@ -176,7 +176,9 @@ private:
     QTemporaryDir wasapiTemporaryDir;
 #endif
 
-    QPalette oldPalette;
+    QvkSpezialCheckbox *vkSpezialCheckboxDarkMode;
+    QPalette oldPaletteDarkMode;
+
 
 private slots:
     void slot_textToGuiLog( QString value );

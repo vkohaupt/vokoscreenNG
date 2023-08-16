@@ -161,6 +161,8 @@ void QvkHalo::createSpezialCheckBox()
 {
     vkSpezialCheckbox = new QvkSpezialCheckbox();
     vkSpezialCheckbox->setObjectName( "spezialCheckboxHalo" );
+    vkSpezialCheckbox->set_colorChecked( Qt::darkGreen );
+    vkSpezialCheckbox->set_colorUnChecked( Qt::darkRed );
     ui->horizontalLayout_48->insertWidget( 1, vkSpezialCheckbox );
     connect( vkSpezialCheckbox, SIGNAL( signal_clicked( bool ) ), this, SLOT( slot_haloOnOff( bool ) ) );
 }

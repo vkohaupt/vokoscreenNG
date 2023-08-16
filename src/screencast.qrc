@@ -87,6 +87,7 @@
 <file>pictures/screencast/strip-gif.png</file>
 <file>pictures/screencast/undo.png</file>
 <file>pictures/screencast/author.png</file>
+<file>pictures/screencast/day.png</file>
 <file>pictures/showClick/sandglass.png</file>
 <file>pictures/showClick/cursor.png</file>
 <file>pictures/showClick/halo.png</file>
@@ -183,6 +184,7 @@
 <file>language/de.qm</file>
 <file>language/en_US.qm</file>
 <file>language/eu_ES.qm</file>
+<file>language/fi_FI.qm</file>
 <file>language/ko_KR.qm</file>
 <file>language/lt.qm</file>
 <file>language/nl_NL.qm</file>

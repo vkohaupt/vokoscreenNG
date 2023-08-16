@@ -14,6 +14,13 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSettingsDialog</name>
+    <message>
+        <source>Camera settings</source>
+        <translation>Kameraren ezarpenak</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -581,10 +588,6 @@
         <translation>Segundo hauen ondoren hasi grabatzen</translation>
     </message>
     <message>
-        <source>Loop</source>
-        <translation>Begizta</translation>
-    </message>
-    <message>
         <source>Window</source>
         <translation>Leihoa</translation>
     </message>
@@ -595,10 +598,6 @@
     <message>
         <source>Online-Help</source>
         <translation>Online-laguntza</translation>
-    </message>
-    <message>
-        <source>Language</source>
-        <translation>Hizkuntza</translation>
     </message>
 </context>
 <context>

@@ -30,12 +30,9 @@ void QvkSpezialCheckbox::slot_setChecked( bool value )
 
 void QvkSpezialCheckbox::slot_click()
 {
-    if ( checked == true )
-    {
+    if ( checked == true ) {
         checked = false;
-    }
-    else
-    {
+    } else {
         checked = true;
     }
 
@@ -49,12 +46,9 @@ void QvkSpezialCheckbox::mouseReleaseEvent(QMouseEvent *event)
 {
     Q_UNUSED(event);
 
-    if ( checked == true )
-    {
+    if ( checked == true ) {
         checked = false;
-    }
-    else
-    {
+    } else {
         checked = true;
     }
 
@@ -78,16 +72,27 @@ void QvkSpezialCheckbox::paintEvent( QPaintEvent *event )
     radius = 11;
     margin = 3;
 
-    if ( isChecked() == false )
-    {
+    if ( isChecked() == false ) {
         paintUnChecked( painter );
     }
 
-    if ( isChecked() == true )
-    {
+    if ( isChecked() == true ) {
         paintChecked( painter );
     }
 }
+
+
+void QvkSpezialCheckbox::set_colorChecked( QColor color )
+{
+    colorChecked = color;
+}
+
+
+void QvkSpezialCheckbox::set_colorUnChecked( QColor color )
+{
+    colorUnChecked = color;
+}
+
 
 void QvkSpezialCheckbox::paintChecked( QPainter &painter )
 {
@@ -95,7 +100,7 @@ void QvkSpezialCheckbox::paintChecked( QPainter &painter )
     pen.setColor( Qt::black );
     pen.setWidthF( penWidth );
     painter.setPen( pen );
-    QBrush brushButton( Qt::darkGreen );
+    QBrush brushButton( colorChecked );
     painter.setBrush( brushButton );
     QRectF rectButton( button_x, button_y, button_width, button_height );
     painter.setBrush( brushButton );
@@ -130,13 +135,14 @@ void QvkSpezialCheckbox::paintChecked( QPainter &painter )
                          3,
                          slider_height - 2 * margin);
     }
-
+/*
     QPixmap pixmap( ":/pictures/spezialCheckBox/on.png" );
     pixmap.setDevicePixelRatio( devicePixelRatioF() );
     pixmap = pixmap.scaled( slider_height / 5 * 3 * devicePixelRatioF(), slider_height / 5 * 3 * devicePixelRatioF(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
     painter.drawPixmap( button_x + margin + ( ( slider_x - button_x - margin ) / 2 ) - ( pixmap.width() / 2 / devicePixelRatioF() ),
                         button_y + margin + ( slider_height / 5 ),
                         pixmap );
+*/
 }
 
 
@@ -146,7 +152,7 @@ void QvkSpezialCheckbox::paintUnChecked( QPainter &painter )
     pen.setWidthF( penWidth );
     pen.setColor( Qt::black );
     painter.setPen( pen );
-    QBrush brushButton( Qt::darkRed );
+    QBrush brushButton( colorUnChecked );
     painter.setBrush( brushButton );
     QRectF rectButton( button_x, button_y, button_width, button_height );
     painter.setBrush( brushButton );
@@ -181,7 +187,7 @@ void QvkSpezialCheckbox::paintUnChecked( QPainter &painter )
                          3,
                          slider_height - 2 * margin);
     }
-
+/*
     QPixmap pixmap( ":/pictures/spezialCheckBox/off.png" );
     pixmap.setDevicePixelRatio(  devicePixelRatioF() );
     pixmap = pixmap.scaled( slider_height / 5 * 3 * devicePixelRatioF(),
@@ -189,4 +195,5 @@ void QvkSpezialCheckbox::paintUnChecked( QPainter &painter )
     painter.drawPixmap( slider_x+slider_width + ( button_width - slider_x - slider_width) / 2 - pixmap.width() / 2 / devicePixelRatioF(),
                         button_y + margin + ( slider_height / 5 ),
                         pixmap );
+*/
 }

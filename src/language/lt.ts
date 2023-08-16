@@ -14,6 +14,13 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSettingsDialog</name>
+    <message>
+        <source>Camera settings</source>
+        <translation>Kameros nustatymai</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -581,10 +588,6 @@
         <translation>Kiek sekundžių laukti, prieš įrašinėjant</translation>
     </message>
     <message>
-        <source>Loop</source>
-        <translation>Cikliškai kartoti</translation>
-    </message>
-    <message>
         <source>Window</source>
         <translation>Langas</translation>
     </message>
@@ -595,10 +598,6 @@
     <message>
         <source>Online-Help</source>
         <translation>Žinynas internete</translation>
-    </message>
-    <message>
-        <source>Language</source>
-        <translation>Kalba</translation>
     </message>
 </context>
 <context>

@@ -14,6 +14,13 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSettingsDialog</name>
+    <message>
+        <source>Camera settings</source>
+        <translation>카메라 설정</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -581,10 +588,6 @@
         <translation>몇 초 후 녹화 시작</translation>
     </message>
     <message>
-        <source>Loop</source>
-        <translation>반복</translation>
-    </message>
-    <message>
         <source>Window</source>
         <translation>창</translation>
     </message>
@@ -595,10 +598,6 @@
     <message>
         <source>Online-Help</source>
         <translation>온라인 도움말</translation>
-    </message>
-    <message>
-        <source>Language</source>
-        <translation>언어</translation>
     </message>
 </context>
 <context>

@@ -14,6 +14,13 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSettingsDialog</name>
+    <message>
+        <source>Camera settings</source>
+        <translation>Configurações da câmara</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -581,10 +588,6 @@
         <translation>Espera em segundos antes de gravar</translation>
     </message>
     <message>
-        <source>Loop</source>
-        <translation>Ciclo</translation>
-    </message>
-    <message>
         <source>Window</source>
         <translation>Janela</translation>
     </message>
@@ -595,10 +598,6 @@
     <message>
         <source>Online-Help</source>
         <translation>Ajuda ‘online’</translation>
-    </message>
-    <message>
-        <source>Language</source>
-        <translation>Idioma</translation>
     </message>
 </context>
 <context>

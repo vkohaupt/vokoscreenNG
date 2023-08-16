@@ -4,6 +4,7 @@
 
 #include <QWidget>
 #include <QPainter>
+#include <QColor>
 
 class QvkSpezialCheckbox : public QWidget
 {
@@ -12,8 +13,10 @@ class QvkSpezialCheckbox : public QWidget
 public:
     QvkSpezialCheckbox(QWidget *parent = 0);
     bool isChecked();
-
+    void set_colorChecked( QColor color );
+    void set_colorUnChecked ( QColor color );
     
+
 public slots:
     void slot_setChecked( bool value );
     void slot_click();
@@ -39,6 +42,10 @@ private:
 
     void paintChecked( QPainter &painter );
     void paintUnChecked( QPainter &painter );
+
+    QColor colorChecked;
+    QColor colorUnChecked;
+
 
 
 signals:

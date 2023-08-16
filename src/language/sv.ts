@@ -14,6 +14,13 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSettingsDialog</name>
+    <message>
+        <source>Camera settings</source>
+        <translation>Kamerainställningar</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -581,10 +588,6 @@
         <translation>Sekunders väntetid före inspelning</translation>
     </message>
     <message>
-        <source>Loop</source>
-        <translation>Slinga</translation>
-    </message>
-    <message>
         <source>Window</source>
         <translation>Fönster</translation>
     </message>
@@ -595,10 +598,6 @@
     <message>
         <source>Online-Help</source>
         <translation>Online-hjälp</translation>
-    </message>
-    <message>
-        <source>Language</source>
-        <translation>Språk</translation>
     </message>
 </context>
 <context>
