@@ -1824,7 +1824,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="screencast.qrc">:/pictures/help/information.png</pixmap>
+                   <pixmap resource="screencast.qrc">:/pictures/screencast/information.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -7125,7 +7125,7 @@ p, li { white-space: pre-wrap; }
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>

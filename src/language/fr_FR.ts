@@ -597,21 +597,10 @@
     </message>
 </context>
 <context>
-    <name>help</name>
-    <message>
-        <source>Close</source>
-        <translation>Fermer</translation>
-    </message>
-</context>
-<context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Copyright et licence de la vidéo</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>Fermer</translation>
     </message>
 </context>
 <context>

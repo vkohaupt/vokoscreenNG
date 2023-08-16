@@ -597,21 +597,10 @@
     </message>
 </context>
 <context>
-    <name>help</name>
-    <message>
-        <source>Close</source>
-        <translation>閉じる</translation>
-    </message>
-</context>
-<context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>画像の著作権およびライセンス</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>閉じる</translation>
     </message>
 </context>
 <context>

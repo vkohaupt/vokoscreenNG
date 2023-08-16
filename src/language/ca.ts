@@ -597,21 +597,10 @@
     </message>
 </context>
 <context>
-    <name>help</name>
-    <message>
-        <source>Close</source>
-        <translation>Tanca</translation>
-    </message>
-</context>
-<context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Drets d&apos;autor i llicència de les imatges</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>Tanca</translation>
     </message>
 </context>
 <context>

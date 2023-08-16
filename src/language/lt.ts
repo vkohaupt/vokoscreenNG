@@ -597,21 +597,10 @@
     </message>
 </context>
 <context>
-    <name>help</name>
-    <message>
-        <source>Close</source>
-        <translation>Užverti</translation>
-    </message>
-</context>
-<context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Autorių teisės ir licencijos iš paveikslų</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>Užverti</translation>
     </message>
 </context>
 <context>

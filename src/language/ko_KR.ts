@@ -597,21 +597,10 @@
     </message>
 </context>
 <context>
-    <name>help</name>
-    <message>
-        <source>Close</source>
-        <translation>닫기</translation>
-    </message>
-</context>
-<context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>이미지의 저작권과 라이선스</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>닫기</translation>
     </message>
 </context>
 <context>

@@ -597,21 +597,10 @@
     </message>
 </context>
 <context>
-    <name>help</name>
-    <message>
-        <source>Close</source>
-        <translation>أغلق</translation>
-    </message>
-</context>
-<context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>حقوق الطبع والنشر والترخيص من الصور</translation>
-    </message>
-    <message>
-        <source>Close</source>
-        <translation>أغلق</translation>
     </message>
 </context>
 <context>
