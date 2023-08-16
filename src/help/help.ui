@@ -42,11 +42,17 @@
      <item>
       <widget class="QPushButton" name="pushButtonClose">
        <property name="text">
-        <string>Close</string>
+        <string notr="true"/>
        </property>
        <property name="icon">
         <iconset resource="../screencast.qrc">
-         <normaloff>:/pictures/systray/exit.png</normaloff>:/pictures/systray/exit.png</iconset>
+         <normaloff>:/pictures/screencast/exit.png</normaloff>:/pictures/screencast/exit.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>22</height>
+        </size>
        </property>
       </widget>
      </item>
