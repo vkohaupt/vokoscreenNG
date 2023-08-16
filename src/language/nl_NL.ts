@@ -595,10 +595,6 @@
         <source>Fullscreen</source>
         <translation>Schermvullend</translation>
     </message>
-    <message>
-        <source>Online-Help</source>
-        <translation>Online-hulp</translation>
-    </message>
 </context>
 <context>
     <name>help</name>

@@ -595,10 +595,6 @@
         <source>Fullscreen</source>
         <translation>Vollbild</translation>
     </message>
-    <message>
-        <source>Online-Help</source>
-        <translation>Onlinehilfe</translation>
-    </message>
 </context>
 <context>
     <name>help</name>

@@ -595,10 +595,6 @@
         <source>Fullscreen</source>
         <translation>Pantaila osoa</translation>
     </message>
-    <message>
-        <source>Online-Help</source>
-        <translation>Online-laguntza</translation>
-    </message>
 </context>
 <context>
     <name>help</name>

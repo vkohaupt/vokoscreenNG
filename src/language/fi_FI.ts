@@ -595,10 +595,6 @@
         <source>Fullscreen</source>
         <translation>Koko näyttö</translation>
     </message>
-    <message>
-        <source>Online-Help</source>
-        <translation>Online apu</translation>
-    </message>
 </context>
 <context>
     <name>help</name>

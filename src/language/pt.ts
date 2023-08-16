@@ -595,10 +595,6 @@
         <source>Fullscreen</source>
         <translation>Ecrã inteiro</translation>
     </message>
-    <message>
-        <source>Online-Help</source>
-        <translation>Ajuda ‘online’</translation>
-    </message>
 </context>
 <context>
     <name>help</name>

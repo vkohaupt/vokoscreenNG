@@ -595,10 +595,6 @@
         <source>Fullscreen</source>
         <translation>Visas ekranas</translation>
     </message>
-    <message>
-        <source>Online-Help</source>
-        <translation>Žinynas internete</translation>
-    </message>
 </context>
 <context>
     <name>help</name>
