@@ -170,6 +170,7 @@ private:
     bool gst_appsrc = false;
 
     QTranslator translator;
+    QTranslator qtTranslator;
 
 #ifdef Q_OS_WIN
     QvkCiscoOpenh264Controller *vkCiscoOpenh264Controller;

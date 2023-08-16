@@ -57,6 +57,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 {
     translator.load( QLocale::system().name(), ":/language" );
     qApp->installTranslator( &translator );
+    qtTranslator.load( "qt_" + QLocale::system().name(), QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
+    qApp->installTranslator( &qtTranslator );
 
     ui->setupUi(this);
 
@@ -739,12 +741,18 @@ void QvkMainWindow::slot_darkMode( bool bo )
 void QvkMainWindow::slot_languageChanged( int )
 {
     qApp->removeTranslator( &translator );
+    qApp->removeTranslator( &qtTranslator );
 
     QString language = ui->comboBoxLanguage->currentData().toString();
     QString path( ":/language/" );
     if ( translator.load( path + language + ".qm" ) ) {
+        // GUI
         qApp->installTranslator( &translator );
         ui->retranslateUi( this );
+
+        // Dialog
+        qtTranslator.load( "qt_" + language, QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
+        qApp->installTranslator( &qtTranslator );
         qDebug().noquote() << global::nameOutput << "Language changed to:" << ui->comboBoxLanguage->currentText() << path + language + ".qm";
     } else {
         qApp->installTranslator( &translator );
