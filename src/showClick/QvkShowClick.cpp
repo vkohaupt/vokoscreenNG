@@ -111,6 +111,8 @@ void QvkShowClick::setSpezialCheckBox()
     vkSpezialCheckbox->setObjectName( "spezialCheckboxShowclick" );
     vkSpezialCheckbox->set_colorChecked( Qt::darkGreen );
     vkSpezialCheckbox->set_colorUnChecked( Qt::darkRed );
+    vkSpezialCheckbox->set_imageChecked( ":/pictures/spezialCheckBox/on.png" );
+    vkSpezialCheckbox->set_imageUnChecked( ":/pictures/spezialCheckBox/off.png" );
     ui->horizontalLayout_15->insertWidget( 1, vkSpezialCheckbox );
     connect( vkSpezialCheckbox, SIGNAL( signal_clicked( bool ) ), vkGlobalMouse, SLOT( slot_on( bool ) ) );
 }

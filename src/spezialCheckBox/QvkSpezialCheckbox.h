@@ -15,6 +15,8 @@ public:
     bool isChecked();
     void set_colorChecked( QColor color );
     void set_colorUnChecked ( QColor color );
+    void set_imageChecked( QString value );
+    void set_imageUnChecked( QString value );
     
 
 public slots:
@@ -46,6 +48,8 @@ private:
     QColor colorChecked;
     QColor colorUnChecked;
 
+    QString imageChecked;
+    QString imageUnChecked;
 
 
 signals:

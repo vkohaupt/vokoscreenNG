@@ -94,6 +94,18 @@ void QvkSpezialCheckbox::set_colorUnChecked( QColor color )
 }
 
 
+void QvkSpezialCheckbox::set_imageChecked( QString value )
+{
+    imageChecked = value;
+}
+
+
+void QvkSpezialCheckbox::set_imageUnChecked( QString value )
+{
+    imageUnChecked = value;
+}
+
+
 void QvkSpezialCheckbox::paintChecked( QPainter &painter )
 {
     QPen pen;
@@ -135,14 +147,16 @@ void QvkSpezialCheckbox::paintChecked( QPainter &painter )
                          3,
                          slider_height - 2 * margin);
     }
-/*
-    QPixmap pixmap( ":/pictures/spezialCheckBox/on.png" );
-    pixmap.setDevicePixelRatio( devicePixelRatioF() );
-    pixmap = pixmap.scaled( slider_height / 5 * 3 * devicePixelRatioF(), slider_height / 5 * 3 * devicePixelRatioF(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-    painter.drawPixmap( button_x + margin + ( ( slider_x - button_x - margin ) / 2 ) - ( pixmap.width() / 2 / devicePixelRatioF() ),
-                        button_y + margin + ( slider_height / 5 ),
-                        pixmap );
-*/
+
+    if ( imageChecked.isNull() == false ) {
+        QPixmap pixmap( imageChecked );
+        pixmap.setDevicePixelRatio( devicePixelRatioF() );
+        pixmap = pixmap.scaled( slider_height / 5 * 3 * devicePixelRatioF(), slider_height / 5 * 3 * devicePixelRatioF(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+        painter.drawPixmap( button_x + margin + ( ( slider_x - button_x - margin ) / 2 ) - ( pixmap.width() / 2 / devicePixelRatioF() ),
+                            button_y + margin + ( slider_height / 5 ),
+                            pixmap );
+    }
+
 }
 
 
@@ -187,13 +201,15 @@ void QvkSpezialCheckbox::paintUnChecked( QPainter &painter )
                          3,
                          slider_height - 2 * margin);
     }
-/*
-    QPixmap pixmap( ":/pictures/spezialCheckBox/off.png" );
-    pixmap.setDevicePixelRatio(  devicePixelRatioF() );
-    pixmap = pixmap.scaled( slider_height / 5 * 3 * devicePixelRatioF(),
-                            slider_height / 5 * 3 * devicePixelRatioF(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-    painter.drawPixmap( slider_x+slider_width + ( button_width - slider_x - slider_width) / 2 - pixmap.width() / 2 / devicePixelRatioF(),
-                        button_y + margin + ( slider_height / 5 ),
-                        pixmap );
-*/
+
+    if ( imageChecked.isNull() == false ) {
+        QPixmap pixmap( imageUnChecked );
+        pixmap.setDevicePixelRatio(  devicePixelRatioF() );
+        pixmap = pixmap.scaled( slider_height / 5 * 3 * devicePixelRatioF(),
+                                slider_height / 5 * 3 * devicePixelRatioF(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+        painter.drawPixmap( slider_x+slider_width + ( button_width - slider_x - slider_width) / 2 - pixmap.width() / 2 / devicePixelRatioF(),
+                            button_y + margin + ( slider_height / 5 ),
+                            pixmap );
+    }
+
 }
