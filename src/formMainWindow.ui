@@ -1537,7 +1537,17 @@
                         <item>
                          <widget class="QCheckBox" name="checkBoxGifLoop">
                           <property name="text">
-                           <string>Loop</string>
+                           <string notr="true"/>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="screencast.qrc">
+                            <normaloff>:/pictures/screencast/loop.png</normaloff>:/pictures/screencast/loop.png</iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>32</width>
+                            <height>32</height>
+                           </size>
                           </property>
                          </widget>
                         </item>
@@ -1789,27 +1799,7 @@
              <layout class="QGridLayout" name="gridLayout_8">
               <item row="7" column="0">
                <layout class="QGridLayout" name="gridLayout_14">
-                <item row="0" column="2">
-                 <spacer name="horizontalSpacer_52">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item row="0" column="3">
-                 <widget class="QLabel" name="label_20">
-                  <property name="text">
-                   <string>Online-Help</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
+                <item row="0" column="0">
                  <widget class="QComboBox" name="comboBoxLanguage">
                   <property name="editable">
                    <bool>true</bool>
@@ -1825,12 +1815,18 @@
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_63">
-                  <property name="text">
-                   <string>Language</string>
+                <item row="0" column="2">
+                 <spacer name="horizontalSpacer_52">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
                   </property>
-                 </widget>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
                 </item>
                 <item row="0" column="4">
                  <widget class="QComboBox" name="comboBoxOnlineHelp">
@@ -1845,6 +1841,13 @@
                     <string>Automatically</string>
                    </property>
                   </item>
+                 </widget>
+                </item>
+                <item row="0" column="3">
+                 <widget class="QLabel" name="label_20">
+                  <property name="text">
+                   <string>Online-Help</string>
+                  </property>
                  </widget>
                 </item>
                </layout>
@@ -2218,7 +2221,7 @@
               <item row="9" column="0">
                <widget class="QCheckBox" name="checkBox_darkMode">
                 <property name="text">
-                 <string>Dark mode</string>
+                 <string notr="true">Dark mode</string>
                 </property>
                </widget>
               </item>
@@ -7030,7 +7033,7 @@ p, li { white-space: pre-wrap; }
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>

@@ -81,7 +81,6 @@
 <file>pictures/screencast/help-about.png</file>
 <file>pictures/screencast/monitor-sidebar.png</file>
 <file>pictures/screencast/missing.png</file>
-<file>pictures/screencast/loop-org.png</file>
 <file>pictures/screencast/strip-avi.png</file>
 <file>pictures/screencast/accept.png</file>
 <file>pictures/screencast/strip-webm.png</file>
@@ -183,6 +182,8 @@
 <file>language/de_DE.qm</file>
 <file>language/de.qm</file>
 <file>language/en_US.qm</file>
+<file>language/eu_ES.qm</file>
+<file>language/ko_KR.qm</file>
 <file>language/lt.qm</file>
 <file>language/nl_NL.qm</file>
 <file>language/pt.qm</file>
