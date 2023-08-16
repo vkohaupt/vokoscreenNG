@@ -750,15 +750,16 @@ void QvkMainWindow::slot_languageChanged( int )
         qApp->installTranslator( &translator );
         ui->retranslateUi( this );
 
-        // Dialog
-        qtTranslator.load( "qt_" + language, QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
-        qApp->installTranslator( &qtTranslator );
         qDebug().noquote() << global::nameOutput << "Language changed to:" << ui->comboBoxLanguage->currentText() << path + language + ".qm";
     } else {
         qApp->installTranslator( &translator );
         ui->retranslateUi( this );
         qDebug().noquote() << global::nameOutput << "Faild to load language:" << ui->comboBoxLanguage->currentText() << path + language + ".qm" << "Set default language";
     }
+
+    // Dialog
+    qtTranslator.load( "qt_" + language, QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
+    qApp->installTranslator( &qtTranslator );
 
     // Change language that is in sourcecode and change all UI`s
     changeLanguageInSourcecode();
