@@ -3,6 +3,7 @@
 
 #include <QDebug>
 #include <QPainterPath>
+#include <QThread>
 
 QvkSpezialCheckbox::QvkSpezialCheckbox( QWidget *parent ) : QWidget( parent )
 {
@@ -24,6 +25,7 @@ bool QvkSpezialCheckbox::isChecked()
 void QvkSpezialCheckbox::slot_setChecked( bool value )
 {
      checked = value;
+     QThread::msleep( 300 );
      repaint();
 }
 
