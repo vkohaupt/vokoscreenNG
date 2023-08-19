@@ -1728,6 +1728,9 @@
                     <property name="topMargin">
                      <number>0</number>
                     </property>
+                    <property name="rightMargin">
+                     <number>6</number>
+                    </property>
                     <property name="bottomMargin">
                      <number>0</number>
                     </property>
@@ -1750,7 +1753,7 @@
                       </property>
                      </widget>
                     </item>
-                    <item>
+                    <item alignment="Qt::AlignTop">
                      <widget class="QToolButton" name="toolButtonVP8Reset">
                       <property name="toolTip">
                        <string>Reset</string>
@@ -7170,7 +7173,7 @@ p, li { white-space: pre-wrap; }
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
