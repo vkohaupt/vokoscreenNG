@@ -1722,6 +1722,9 @@
                     <enum>QFrame::Raised</enum>
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_vp8">
+                    <property name="leftMargin">
+                     <number>6</number>
+                    </property>
                     <property name="topMargin">
                      <number>0</number>
                     </property>
@@ -7167,7 +7170,7 @@ p, li { white-space: pre-wrap; }
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
