@@ -1673,42 +1673,34 @@
                      <number>0</number>
                     </property>
                     <item>
-                     <layout class="QVBoxLayout" name="verticalLayout_28">
-                      <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_68">
-                        <item>
-                         <widget class="QCheckBox" name="checkBoxGifLoop">
-                          <property name="text">
-                           <string notr="true"/>
-                          </property>
-                          <property name="icon">
-                           <iconset resource="screencast.qrc">
-                            <normaloff>:/pictures/screencast/loop.png</normaloff>:/pictures/screencast/loop.png</iconset>
-                          </property>
-                          <property name="iconSize">
-                           <size>
-                            <width>28</width>
-                            <height>28</height>
-                           </size>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <spacer name="horizontalSpacer_50">
-                          <property name="orientation">
-                           <enum>Qt::Horizontal</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>40</width>
-                            <height>20</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                       </layout>
-                      </item>
-                     </layout>
+                     <widget class="QCheckBox" name="checkBoxGifLoop">
+                      <property name="text">
+                       <string notr="true"/>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="screencast.qrc">
+                        <normaloff>:/pictures/screencast/loop.png</normaloff>:/pictures/screencast/loop.png</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>28</width>
+                        <height>28</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_53">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
                     </item>
                    </layout>
                   </widget>
@@ -7173,7 +7165,7 @@ p, li { white-space: pre-wrap; }
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
