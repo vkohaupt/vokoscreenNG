@@ -22,10 +22,18 @@ bool QvkSpezialCheckbox::isChecked()
 }
 
 
+void QvkSpezialCheckbox::set_waitBeforeTrigger( int value )
+{
+    waitBeforeTrigger = value;
+}
+
+
 void QvkSpezialCheckbox::slot_setChecked( bool value )
 {
      checked = value;
-     QThread::msleep( 300 );
+     if ( waitBeforeTrigger > 0 ) {
+         QThread::msleep( waitBeforeTrigger );
+     }
      repaint();
 }
 

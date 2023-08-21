@@ -17,7 +17,8 @@ public:
     void set_colorUnChecked ( QColor color );
     void set_imageChecked( QString value );
     void set_imageUnChecked( QString value );
-    
+    void set_waitBeforeTrigger( int value );
+
 
 public slots:
     void slot_setChecked( bool value );
@@ -50,6 +51,8 @@ private:
 
     QString imageChecked;
     QString imageUnChecked;
+
+    int waitBeforeTrigger = 300;
 
 
 signals:
