@@ -1005,11 +1005,17 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
         // Qt5
-        vkSettings.saveCamera( vkCameraController->old_XY.x(), vkCameraController->old_XY.y() );
+        #ifdef Q_OS_LINUX
+             vkSettings.saveCamera( vkCameraController->vkCameraWindow->geometry().x(), vkCameraController->vkCameraWindow->geometry().y() );
+        #endif
+
+        #ifdef Q_OS_WIN
+             vkSettings.saveCamera( vkCameraController->old_XY.x(), vkCameraController->old_XY.y() );
+        #endif
         vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile );
 #else
+        // Qt6
         vkSettings.saveCamera( vkCameraController->vkCameraSingle->vkCameraWindow->geometry().x(), vkCameraController->vkCameraSingle->vkCameraWindow->geometry().y() );
-    // Qt6
 #endif
         vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
         vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget->getColor() );
