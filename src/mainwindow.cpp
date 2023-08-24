@@ -610,7 +610,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vkSettings.readAll( ui, this );
     vkSettings.readAreaScreencast( vkRegionChoise );
-    vkSettings.readCamera( vkCameraController );
+    vkSettings.readCamera( vkCameraController ); //-----------------------------------------------------------
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
     // Qt5
@@ -776,7 +776,7 @@ void QvkMainWindow::changeLanguageInSourcecode()
     vkPlayer->ui->retranslateUi( vkPlayer );
     vkLicenses->ui->retranslateUi( vkLicenses );
     vkHelp->uiHelp->retranslateUi( vkHelp );
-    vkCameraController->vkCameraSettingsDialog->ui->retranslateUi( vkCameraController->vkCameraSettingsDialog );
+    vkCameraController->vkCameraSettingsDialog->ui->retranslateUi( vkCameraController->vkCameraSettingsDialog ); //-------------------------------------
     vkSystray->setMenueText();
     vkSystrayAlternative->setMenueText();
 }
@@ -1005,7 +1005,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
         // Qt5
-        vkSettings.saveCamera( vkCameraController->vkCameraWindow->geometry().x(), vkCameraController->vkCameraWindow->geometry().y() );
+        vkSettings.saveCamera( vkCameraController->old_XY.x(), vkCameraController->old_XY.y() );
         vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile );
 #else
         vkSettings.saveCamera( vkCameraController->vkCameraSingle->vkCameraWindow->geometry().x(), vkCameraController->vkCameraSingle->vkCameraWindow->geometry().y() );

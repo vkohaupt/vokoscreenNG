@@ -46,6 +46,8 @@ public:
     void getAllDevices();
     QvkCameraSettingsDialog *vkCameraSettingsDialog;
     Ui_cameraSettingsDialog *uiCameraSettingsDialog;
+    QPoint old_XY;
+    Ui_formMainWindow *ui_formMainWindow;
 
 
 public slots:
@@ -61,15 +63,20 @@ private slots:
     void slot_setNewImage( QImage image );
     void slot_frameOnOff( bool value );
     void slot_resolutionChanged( int index);
+    void slot_cameraWindow_move();
 
 
 private:
-    Ui_formMainWindow *ui_formMainWindow;
+//    Ui_formMainWindow *ui_formMainWindow;
     QCamera *camera = nullptr;
     QvkCameraWatcher *cameraWatcher;
     QvkVideoSurface *videoSurface;
     QvkSpezialSlider *sliderCameraWindowSize;
     QvkSpezialSlider *sliderCameraWindowZoom;
+    int cameraWindow_X;
+    int cameraWindow_Y;
+    int oldCameraWindow_X;
+    int oldVameraWindow_Y;
 
 
 protected:

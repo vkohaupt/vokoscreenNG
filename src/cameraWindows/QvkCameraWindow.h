@@ -74,6 +74,7 @@ protected:
 
 signals:
     void signal_cameraWindow_close( bool );
+    void signal_cameraWindow_move();
 
 };
 

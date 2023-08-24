@@ -706,7 +706,18 @@ void QvkSettings::readCamera( QvkCameraController *vkCameraController )
     settings.beginGroup( "Camera" );
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
     // Qt5
-    vkCameraController->vkCameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
+    vkCameraController->old_XY.setX( settings.value( "X", 0 ).toInt() );
+    vkCameraController->old_XY.setY( settings.value( "Y", 0 ).toInt() );
+
+    QList<QCheckBox *> listCheckBox = vkCameraController->ui_formMainWindow->centralWidget->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ ) {
+        if ( listCheckBox.at(i)->objectName() == "checkBoxCameraOnOff" ) {
+            if ( listCheckBox.at(i)->isChecked() == true ) {
+                vkCameraController->vkCameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
+            }
+        }
+    }
+
 #else
     // Qt6
 #endif
