@@ -36,7 +36,6 @@ private:
     GstElement *pipeline = nullptr;
     QStringList videoFormatsList;
     QvkSpezialSlider *sliderFrames;
-//    QWidget *testWidget;
 
     void set_LogController();
     void set_WindowTitle();

@@ -299,59 +299,6 @@
                   </attribute>
                  </widget>
                 </item>
-                <item row="7" column="0" colspan="2">
-                 <layout class="QGridLayout" name="gridLayout_4">
-                  <property name="spacing">
-                   <number>0</number>
-                  </property>
-                  <item row="0" column="0">
-                   <widget class="QRadioButton" name="radioButtonScreencastArea">
-                    <property name="text">
-                     <string notr="true">Area</string>
-                    </property>
-                    <attribute name="buttonGroup">
-                     <string notr="true">buttonGroup</string>
-                    </attribute>
-                   </widget>
-                  </item>
-                  <item row="0" column="4">
-                   <spacer name="horizontalSpacer_2">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="0" column="2">
-                   <widget class="QWidget" name="widget_Desktop_spinboxes" native="true">
-                    <layout class="QGridLayout" name="gridLayout_3">
-                     <property name="spacing">
-                      <number>0</number>
-                     </property>
-                     <item row="0" column="0">
-                      <widget class="QToolButton" name="toolButtonScreencastAreaReset">
-                       <property name="text">
-                        <string notr="true"/>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="../screencast.qrc">
-                         <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                  <item row="0" column="1">
-                   <widget class="QComboBox" name="comboBoxScreencastScreenArea"/>
-                  </item>
-                 </layout>
-                </item>
                 <item row="5" column="0">
                  <widget class="QRadioButton" name="radioButtonScreencastFullscreen">
                   <property name="text">
@@ -416,6 +363,16 @@
                   <property name="text">
                    <string notr="true">For full feature support please logout and start a X11 Desktop session.</string>
                   </property>
+                 </widget>
+                </item>
+                <item row="7" column="0">
+                 <widget class="QRadioButton" name="radioButtonScreencastArea">
+                  <property name="text">
+                   <string notr="true">Area</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroup</string>
+                  </attribute>
                  </widget>
                 </item>
                </layout>

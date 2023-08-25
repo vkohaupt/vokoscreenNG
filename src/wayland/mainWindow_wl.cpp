@@ -18,6 +18,13 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 {
     ui->setupUi( this );
     set_LogController();
+
+    QFile fileCSS( ":/pictures/css/css.qss" );
+    fileCSS.open( QFile::ReadOnly | QFile::Text );
+    QTextStream streamCSS( &fileCSS );
+    qApp->setStyleSheet( streamCSS.readAll() );
+    fileCSS.close();
+
     set_WindowTitle();
     ui->tabWidgetScreencast->setCurrentIndex( 0 );
     ui->tabWidgetSideBar->setCurrentIndex( 0 );
@@ -36,8 +43,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->frame_video_audio_on_off->hide();
     ui->comboBoxAudioCodec->hide();
 
-
     ui->radioButtonScreencastFullscreen->click();
+
 }
 
 
@@ -50,6 +57,7 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
     ui->pushButtonStop->click();
+    vkRegionChoise_wl->close();
 }
 
 

@@ -36,7 +36,7 @@ QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow 
                                    HandleColorBackground( Qt::lightGray ),
                                    HandleColorBackgroundSize( Qt::lightGray ),
                                    HandleColorByMousePressed( Qt::lightGray ),
-                                   colorSelectedArrow( Qt::green ),
+                                   colorSelectedArrow( QColor( QString ( "#3DAEE9" ) ) ),
                                    framePenWidth(4), // framePenWidth must be an even number
                                    framePenHalf(framePenWidth/2),
                                    radius(20),
@@ -63,7 +63,7 @@ QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow 
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
     setAttribute( Qt::WA_TranslucentBackground, true);
     setMouseTracking( true );
-    setFrameColor( Qt::darkGreen );
+    setFrameColor( QString( "#3DAEE9" ) );
 }
 
 
@@ -1055,13 +1055,13 @@ void QvkRegionChoise_wl::drawFrame(QPainter &painter)
 }
 
 
-void QvkRegionChoise_wl::setFrameColor( Qt::GlobalColor color )
+void QvkRegionChoise_wl::setFrameColor( QColor color )
 {
     frameColor = color;
 }
 
 
-Qt::GlobalColor QvkRegionChoise_wl::getFrameColor()
+QColor QvkRegionChoise_wl::getFrameColor()
 {
     return frameColor;
 }
