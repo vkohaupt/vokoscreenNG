@@ -134,7 +134,7 @@ equals(QT_MAJOR_VERSION, 6) {
    }
 } else {
    # Qt5
-   unix: QT += x11extras
+#   unix: QT += x11extras
    unix:include(cameraLinux/cameraLinux.pri)
    win32:include(cameraWindows/cameraWindows.pri)
 }

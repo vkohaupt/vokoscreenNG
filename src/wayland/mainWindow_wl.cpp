@@ -11,6 +11,7 @@
 #include <QStyleFactory>
 #include <QLibraryInfo>
 #include <QTimer>
+#include <QFile>
 
 QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     : QMainWindow(parent, f)
