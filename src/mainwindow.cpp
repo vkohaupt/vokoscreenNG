@@ -773,15 +773,24 @@ void QvkMainWindow::changeLanguageInSourcecode()
     ui->labelWebSiteUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Homepage" ) + "</a>" );
     ui->labelLanguageUrl->setText( "<a href='https://app.transifex.com/vkohaupt/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
     ui->labelDonateUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
+
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
     // Qt5
     vkPlayer->ui->retranslateUi( vkPlayer );
 #else
     // Qt6
 #endif
+
     vkLicenses->ui->retranslateUi( vkLicenses );
     vkHelp->uiHelp->retranslateUi( vkHelp );
+
+#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
+    // Qt5
     vkCameraController->vkCameraSettingsDialog->ui->retranslateUi( vkCameraController->vkCameraSettingsDialog );
+#else
+    // Qt6
+#endif
+
     vkSystray->setMenueText();
     vkSystrayAlternative->setMenueText();
 }
