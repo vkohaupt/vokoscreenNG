@@ -57,14 +57,10 @@ void QvkCameraWatcher::slot_update()
     QList<QCameraInfo> camerasInfoList = QCameraInfo::availableCameras();
 
     // Add new Device
-    if ( camerasInfoList.count() > ui->comboBoxCamera->count() )
-    {
-        for ( int i = 0; i < camerasInfoList.count(); i++ )
-        {
-            if ( ui->comboBoxCamera->findData( camerasInfoList.at(i).deviceName() ) == -1 )
-            {
-                if ( ( camerasInfoList.at(i).description() > "" ) and ( !camerasInfoList.at(i).description().contains( "@device:pnp" ) ) )
-                {
+    if ( camerasInfoList.count() > ui->comboBoxCamera->count() ) {
+        for ( int i = 0; i < camerasInfoList.count(); i++ ) {
+            if ( ui->comboBoxCamera->findData( camerasInfoList.at(i).deviceName() ) == -1 ) {
+                if ( ( camerasInfoList.at(i).description() > "" ) and ( !camerasInfoList.at(i).description().contains( "@device:pnp" ) ) ) {
                     qDebug().noquote() << global::nameOutput << "[Camera] Added:" << camerasInfoList.at(i).description() << "Device:" << camerasInfoList.at(i).deviceName();
                     emit signal_addedCamera( camerasInfoList.at(i).description(), camerasInfoList.at(i).deviceName() );
                 }
@@ -74,20 +70,16 @@ void QvkCameraWatcher::slot_update()
     }
 
     QStringList cameraInfoStringList;
-    for ( int i = 0; i < camerasInfoList.count(); i++ )
-    {
+    for ( int i = 0; i < camerasInfoList.count(); i++ ) {
         cameraInfoStringList << camerasInfoList.at(i).deviceName();
     }
 
     int cameraCountCombobox = ui->comboBoxCamera->count();
 
     // Remove device
-    if ( camerasInfoList.count() < cameraCountCombobox )
-    {
-        for ( int i = 1; i <= cameraCountCombobox; i++ )
-        {
-            if ( cameraInfoStringList.contains( QString( ui->comboBoxCamera->itemData(i-1).toString() ) ) == false )
-            {
+    if ( camerasInfoList.count() < cameraCountCombobox ) {
+        for ( int i = 1; i <= cameraCountCombobox; i++ ) {
+            if ( cameraInfoStringList.contains( QString( ui->comboBoxCamera->itemData(i-1).toString() ) ) == false ) {
                 qDebug().noquote() << global::nameOutput << "[Camera] Removed:" << ui->comboBoxCamera->itemText(i-1) << "Device:" << ui->comboBoxCamera->itemData(i-1).toString();
                 emit signal_removedCamera( ui->comboBoxCamera->itemData(i-1).toString() );
                 break;

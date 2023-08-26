@@ -53,8 +53,7 @@ bool QvkPulseAudioServer::isAvailable()
     int status = pa_context_connect( context, NULL, PA_CONTEXT_NOAUTOSPAWN, NULL );
     if ( status < 0 ) {
         value = false;
-    }
-    else {
+    } else {
         value = true;
     }
 

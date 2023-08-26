@@ -39,8 +39,7 @@ QvkPulseAudioDevices::~QvkPulseAudioDevices()
 QStringList QvkPulseAudioDevices::getAllDevices()
 {
     QStringList list;
-    if ( QvkPulseAudioServer::isAvailable() )
-    {
+    if ( QvkPulseAudioServer::isAvailable() ) {
         const char *ss = get_all_audio_devices();
         QString s1 = QString::fromUtf8( ss );
         QString s2 = s1.left( QString::fromUtf8( ss ).count() - 3 );

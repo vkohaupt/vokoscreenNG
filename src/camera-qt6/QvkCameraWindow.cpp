@@ -66,8 +66,7 @@ void QvkCameraWindow::paintEvent( QPaintEvent *event )
             painter.fillRect( 0, 0, w, h, brush );
 
             // Frame
-            if ( checkBoxCameraWindowFrame->isChecked() == true )
-            {
+            if ( checkBoxCameraWindowFrame->isChecked() == true ) {
                 QPen pen;
                 pen.setWidth( frameWidth );
                 pen.setColor( QString( "#9EBBD8" ) );
@@ -86,8 +85,7 @@ void QvkCameraWindow::paintEvent( QPaintEvent *event )
             painter.drawText( QRectF( 0, 0, w, h ), Qt::AlignCenter, error );
 
             // Close button
-            if ( checkBoxCameraWindowFrame->isChecked() == true )
-            {
+            if ( checkBoxCameraWindowFrame->isChecked() == true ) {
                 int width = 20;
                 int height = 20;
                 int distanceToFrame = 3;
@@ -147,7 +145,6 @@ void QvkCameraWindow::paintEvent( QPaintEvent *event )
     } else {
         clearMask();
     }
-
 }
 
 

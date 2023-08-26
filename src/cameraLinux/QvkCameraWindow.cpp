@@ -110,8 +110,7 @@ void QvkCameraWindow::paintEvent( QPaintEvent *event )
             painter.drawText( QRectF( 0, 0, w, h ), Qt::AlignCenter, error );
 
             // Close button
-            if ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true )
-            {
+            if ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true ) {
                 int width = 20;
                 int height = 20;
                 int distanceToFrame = 3;

@@ -426,8 +426,7 @@ void QvkCameraSingle::slot_cameraError()
 
 void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
 {
-    if ( vkCameraWindow->isFullScreen() == false )
-    {
+    if ( vkCameraWindow->isFullScreen() == false ) {
         Qt::WindowFlags flags;
 
 #ifdef Q_OS_WIN
@@ -578,8 +577,7 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
     }
 
     // Zoom
-    if ( sliderCameraWindowZoom->value() > 0 )
-    {
+    if ( sliderCameraWindowZoom->value() > 0 ) {
         qreal width = image.width();
         qreal height = image.height();
         qreal quotient = width / height;
@@ -595,10 +593,8 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
 
 
     // Rectangel
-    if ( toolButton_camera_view_rectangle->isChecked() == true )
-    {
-        if ( vkCameraWindow->isFullScreen() == false )
-        {
+    if ( toolButton_camera_view_rectangle->isChecked() == true ) {
+        if ( vkCameraWindow->isFullScreen() == false ) {
             qreal width = image.width();
             qreal height = image.height();
             qreal quotient = width / height;
@@ -617,8 +613,7 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
 
 
     // Ellipse
-    if ( toolButton_camera_view_ellipse->isChecked() == true )
-    {
+    if ( toolButton_camera_view_ellipse->isChecked() == true ) {
        if ( vkCameraWindow->isFullScreen() == false ) {
             qreal width = image.width();
             qreal height = image.height();
@@ -646,9 +641,8 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
     // Ellipse end
 
     // Circle
-    if ( toolButton_camera_view_circle->isChecked() == true )
-    {
-        if ( vkCameraWindow->isFullScreen() == true ){
+    if ( toolButton_camera_view_circle->isChecked() == true ) {
+        if ( vkCameraWindow->isFullScreen() == true ) {
             int w = image.width();
             int h = image.height();
             QPixmap pixmap( w, h );

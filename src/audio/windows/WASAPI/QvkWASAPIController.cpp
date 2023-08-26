@@ -43,8 +43,7 @@ QvkWASAPIController::~QvkWASAPIController()
 void QvkWASAPIController::slot_audioIconOnOff( bool state )
 {
     QIcon myIcon( ":/pictures/screencast/microphone.png" );
-    if ( state == false  )
-    {
+    if ( state == false  ) {
         QSize size = ui->tabWidgetScreencast->iconSize();
         QPixmap workPixmap( myIcon.pixmap( size ) );
         QPainter painter;
@@ -79,8 +78,7 @@ void QvkWASAPIController::init()
 void QvkWASAPIController::getAllDevices()
 {
     QList<QLabel *> listLabel = ui->scrollAreaAudioDevice->findChildren<QLabel *>();
-    for ( int i = 0; i < listLabel.count(); i++ )
-    {
+    for ( int i = 0; i < listLabel.count(); i++ ) {
         ui->verticalLayoutAudioDevices->removeWidget( listLabel.at(i) );
         delete listLabel.at(i);
     }
@@ -90,10 +88,8 @@ void QvkWASAPIController::getAllDevices()
     list << vkWASAPIGstreamer.get_all_Audio_Source_devices();
     list << vkWASAPIGstreamer.get_all_Audio_Playback_devices();
 
-    if ( !list.empty() )
-    {
-        for ( int i = 0; i < list.count(); i++ )
-        {
+    if ( !list.empty() ) {
+        for ( int i = 0; i < list.count(); i++ ) {
             QCheckBox *checkboxAudioDevice = new QCheckBox();
             checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
             QString device = QString( list.at(i).section( ":::", 0, 0 ) );
@@ -112,9 +108,7 @@ void QvkWASAPIController::getAllDevices()
             connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
         }
         qDebug().noquote();
-    }
-    else
-    {
+    } else {
         QLabel *label = new QLabel();
         label->setText( "WASAPI\n" );
         label->setAlignment( Qt::AlignCenter );
@@ -157,10 +151,8 @@ void QvkWASAPIController::slot_audioDeviceSelected()
 {
     bool value = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listCheckBox.count(); i++ )
-    {
-        if ( listCheckBox.at(i)->checkState() == Qt::Checked )
-        {
+    for ( int i = 0; i < listCheckBox.count(); i++ ) {
+        if ( listCheckBox.at(i)->checkState() == Qt::Checked ) {
             value = true;
             break;
         }
@@ -173,8 +165,7 @@ void QvkWASAPIController::slot_audioDeviceSelected()
 void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
 {
     QList<QLabel *> listLabel = ui->scrollAreaAudioDevice->findChildren<QLabel *>();
-    for ( int i = 0; i < listLabel.count(); i++ )
-    {
+    for ( int i = 0; i < listLabel.count(); i++ ) {
         ui->verticalLayoutAudioDevices->removeWidget( listLabel.at(i) );
         delete listLabel.at(i);
     }
@@ -183,8 +174,7 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
     QString name   = string.section( "---", 1, 1 );
     QString device = string.section( "---", 2, 2 );
 
-    if ( header == "[Audio-device-added]" )
-    {
+    if ( header == "[Audio-device-added]" ) {
         QCheckBox *checkboxAudioDevice = new QCheckBox();
         connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
         checkboxAudioDevice->setText( name );
@@ -195,21 +185,17 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
         ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
     }
 
-    if ( header == "[Audio-device-removed]" )
-    {
+    if ( header == "[Audio-device-removed]" ) {
         QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-        for ( int i = 0; i < listAudioDevices.count(); i++ )
-        {
-            if ( listAudioDevices.at(i)->accessibleName() == device )
-            {
+        for ( int i = 0; i < listAudioDevices.count(); i++ ) {
+            if ( listAudioDevices.at(i)->accessibleName() == device ) {
                 delete listAudioDevices.at(i);
                 listAudioDevices.removeAt(i);
             }
         }
         slot_audioDeviceSelected();
 
-        if ( listAudioDevices.empty() )
-        {
+        if ( listAudioDevices.empty() ) {
             QLabel *label = new QLabel();
             label->setText( "WASAPI\n" );
             label->setAlignment( Qt::AlignCenter );

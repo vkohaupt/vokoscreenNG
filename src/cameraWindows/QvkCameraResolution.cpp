@@ -63,8 +63,7 @@ void QvkCameraResolution::slot_statusChanged( QCamera::Status status )
         vkCameraSettingsDialog->ui->comboBoxCameraResolution->clear();
         QCameraViewfinderSettings cameraViewfinderSettings;
         QList<QSize> resolution = camera->supportedViewfinderResolutions( cameraViewfinderSettings );
-        for ( int x = 0; x < resolution.count(); x++ )
-        {
+        for ( int x = 0; x < resolution.count(); x++ ) {
             QString width = QString::number( resolution.at(x).width() );
             QString height = QString::number( resolution.at(x).height() );
             ui_formMainWindow->comboBoxCameraResolution->addItem( width + "x" + height );
@@ -86,13 +85,10 @@ void QvkCameraResolution::slot_statusChanged( QCamera::Status status )
         vkCameraSettingsDialog->ui->comboBoxCameraResolution->setCurrentIndex( index );
 
         QList<QSlider *> listSlider = ui_formMainWindow->centralWidget->findChildren<QSlider *>();
-        for ( int i = 0; i < listSlider.count(); i++ )
-        {
-            if ( ( listSlider.at(i)->objectName() == "sliderCameraWindowSize" ) or ( listSlider.at(i)->objectName() == "sliderCameraWindowZoom" ) )
-            {
+        for ( int i = 0; i < listSlider.count(); i++ ) {
+            if ( ( listSlider.at(i)->objectName() == "sliderCameraWindowSize" ) or ( listSlider.at(i)->objectName() == "sliderCameraWindowZoom" ) ) {
                 QVariant variant = settings.value( listSlider.at(i)->objectName() );
-                if ( variant.isValid() )
-                {
+                if ( variant.isValid() ) {
                     listSlider.at(i)->setValue( variant.toInt() );
                 }
             }

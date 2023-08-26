@@ -48,18 +48,17 @@ QString QvkWASAPIGstreamer::get_AudioDeviceString( GstDevice *device )
 
   element = gst_device_create_element( device, Q_NULLPTR );
 
-  if ( !element )
+  if ( !element ) {
     return Q_NULLPTR;
+  }
 
   factory = gst_element_get_factory( element );
-  if ( !factory )
-  {
+  if ( !factory ) {
     gst_object_unref( element );
     return Q_NULLPTR;
   }
 
-  if ( !gst_plugin_feature_get_name( factory ) )
-  {
+  if ( !gst_plugin_feature_get_name( factory ) ) {
     gst_object_unref( element );
     return Q_NULLPTR;
   }
@@ -67,23 +66,25 @@ QString QvkWASAPIGstreamer::get_AudioDeviceString( GstDevice *device )
   pureelement = gst_element_factory_create( factory, Q_NULLPTR );
 
   properties = g_object_class_list_properties( G_OBJECT_GET_CLASS( element ), &number_of_properties );
-  if ( properties )
-  {
-    for ( i = 0; i < number_of_properties; i++ )
-    {
+  if ( properties ) {
+    for ( i = 0; i < number_of_properties; i++ ) {
       gint j;
       gboolean ignore = FALSE;
       property = properties[i];
 
-      if ( ( property->flags & G_PARAM_READWRITE ) != G_PARAM_READWRITE )
+      if ( ( property->flags & G_PARAM_READWRITE ) != G_PARAM_READWRITE ) {
         continue;
+      }
 
-      for ( j = 0; ignored_propnames[j]; j++ )
-        if ( !g_strcmp0( ignored_propnames[j], property->name ) )
+      for ( j = 0; ignored_propnames[j]; j++ ) {
+        if ( !g_strcmp0( ignored_propnames[j], property->name ) ) {
           ignore = TRUE;
+        }
+      }
 
-      if ( ignore )
+      if ( ignore ) {
         continue;
+      }
 
       g_value_init( &value, property->value_type );
       g_value_init( &pvalue, property->value_type );
@@ -92,8 +93,7 @@ QString QvkWASAPIGstreamer::get_AudioDeviceString( GstDevice *device )
       if (gst_value_compare( &value, &pvalue ) != GST_VALUE_EQUAL )
       {
         gchar *valuestr = gst_value_serialize( &value );
-        if ( !valuestr )
-        {
+        if ( !valuestr ) {
           GST_WARNING( "Could not serialize property %s:%s", GST_OBJECT_NAME( element ), property->name );
           g_free( valuestr );
           goto next;
@@ -139,20 +139,17 @@ QStringList QvkWASAPIGstreamer::get_all_Audio_Source_devices()
     bool isMonitorStart =  gst_device_monitor_start( monitor );
 
     list = gst_device_monitor_get_devices( monitor );
-    for ( iterator = list; iterator; iterator = iterator->next )
-    {
+    for ( iterator = list; iterator; iterator = iterator->next ) {
         device = (GstDevice*)iterator->data;
         name = gst_device_get_display_name( device );
         stringDevice = get_AudioDeviceString( device );
         stringDevice.append( ":::" ).append( name ).append( ":::" ).append( "Source" );
-        if ( stringDevice.contains( ".") )
-        {
+        if ( stringDevice.contains( ".") ) {
           stringList.append( stringDevice );
         }
     }
 
-    if ( isMonitorStart == true )
-    {
+    if ( isMonitorStart == true ) {
        gst_device_monitor_stop( monitor );
     }
 
@@ -176,20 +173,17 @@ QStringList QvkWASAPIGstreamer::get_all_Audio_Playback_devices()
     bool isMonitorStart =  gst_device_monitor_start( monitor );
 
     list = gst_device_monitor_get_devices( monitor );
-    for ( iterator = list; iterator; iterator = iterator->next )
-    {
+    for ( iterator = list; iterator; iterator = iterator->next ) {
         device = (GstDevice*)iterator->data;
         name = gst_device_get_display_name( device );
         stringDevice = get_AudioDeviceString( device );
         stringDevice.append( ":::" ).append( name ).append( ":::" ).append( "Playback" );
-        if ( stringDevice.contains( ".") )
-        {
+        if ( stringDevice.contains( ".") ) {
           stringList.append( stringDevice );
         }
     }
 
-    if ( isMonitorStart == true )
-    {
+    if ( isMonitorStart == true ) {
        gst_device_monitor_stop( monitor );
     }
 

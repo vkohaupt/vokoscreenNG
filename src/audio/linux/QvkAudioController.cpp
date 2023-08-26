@@ -54,13 +54,10 @@ void QvkAudioController::init()
 void QvkAudioController::getAllDevices()
 {
     QStringList list;
-    if ( QvkPulseAudioServer::isAvailable() )
-    {
+    if ( QvkPulseAudioServer::isAvailable() ) {
         list << QvkPulseAudioDevices::getAllDevices();
-        if ( !list.empty() )
-        {
-            for ( int i = 0; i < list.count(); i++ )
-            {
+        if ( !list.empty() ) {
+            for ( int i = 0; i < list.count(); i++ ) {
                 QCheckBox *checkboxAudioDevice = new QCheckBox();
                 connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
                 checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
@@ -77,9 +74,7 @@ void QvkAudioController::getAllDevices()
 
             QvkPulseAudioWatcher *vkPulseAudioWatcher = new QvkPulseAudioWatcher( ui );
             vkPulseAudioWatcher->start_monitor();
-        }
-        else
-        {
+        } else {
             QLabel *label = new QLabel();
             label->setText( "PulseAudio\n" );
             label->setAlignment( Qt::AlignCenter );
@@ -124,10 +119,8 @@ bool QvkAudioController::isAudioDeviceSelected()
 {
     bool value = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listCheckBox.count(); i++ )
-    {
-        if ( listCheckBox.at(i)->checkState() == Qt::Checked )
-        {
+    for ( int i = 0; i < listCheckBox.count(); i++ ) {
+        if ( listCheckBox.at(i)->checkState() == Qt::Checked ) {
             value = true;
             break;
         }
@@ -142,8 +135,7 @@ bool QvkAudioController::isAudioDeviceSelected()
 void QvkAudioController::audioIconOnOff( bool state )
 {
     QIcon myIcon( ":/pictures/screencast/microphone.png" );
-    if ( state == false  )
-    {
+    if ( state == false  ) {
         QSize size = ui->tabWidgetScreencast->iconSize();
         QPixmap workPixmap( myIcon.pixmap( size ) );
         QPainter painter;

@@ -57,24 +57,19 @@ void QvkDirectSoundWatcher::slot_update()
     QList<QAudioDeviceInfo> listAudioDeviceInfo = QAudioDeviceInfo::availableDevices( QAudio::AudioInput );
 
     QStringList stringListCheckBox;
-    for ( int i = 0; i < listCheckBox.count(); i++ )
-    {
+    for ( int i = 0; i < listCheckBox.count(); i++ ) {
         stringListCheckBox.append( listCheckBox.at(i)->accessibleName() );
     }
 
     QStringList stringListAudioDeviceInfo;
-    for ( int i = 0; i < listAudioDeviceInfo.count(); i++ )
-    {
+    for ( int i = 0; i < listAudioDeviceInfo.count(); i++ ) {
         stringListAudioDeviceInfo.append( listAudioDeviceInfo.at(i).deviceName() );
     }
 
     // Add new Device
-    if ( listAudioDeviceInfo.count() > listCheckBox.count() )
-    {
-        for ( int i = 0; i < stringListAudioDeviceInfo.count(); i++ )
-        {
-            if ( stringListCheckBox.contains( stringListAudioDeviceInfo.at(i) ) == false )
-            {
+    if ( listAudioDeviceInfo.count() > listCheckBox.count() ) {
+        for ( int i = 0; i < stringListAudioDeviceInfo.count(); i++ ) {
+            if ( stringListCheckBox.contains( stringListAudioDeviceInfo.at(i) ) == false ) {
                 QString name = listAudioDeviceInfo.at(i).deviceName();
                 QString device = listAudioDeviceInfo.at(i).deviceName();
                 qDebug().noquote() << global::nameOutput << "[Audio DirectSound] Added:" << name << "Device:" << device;
@@ -90,12 +85,9 @@ void QvkDirectSoundWatcher::slot_update()
     }
 
     // Remove device
-    if ( listAudioDeviceInfo.count() < listCheckBox.count() )
-    {
-        for ( int i = 0; i < stringListCheckBox.count(); i++ )
-        {
-            if ( stringListAudioDeviceInfo.contains( stringListCheckBox.at(i) ) == false )
-            {
+    if ( listAudioDeviceInfo.count() < listCheckBox.count() ) {
+        for ( int i = 0; i < stringListCheckBox.count(); i++ ) {
+            if ( stringListAudioDeviceInfo.contains( stringListCheckBox.at(i) ) == false ) {
                 QString name = stringListCheckBox.at(i);
                 QString device = stringListCheckBox.at(i);
                 qDebug().noquote() << global::nameOutput << "[Audio DirectSound] Removed:" << name << "Device:" << device;

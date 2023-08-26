@@ -43,8 +43,7 @@ QvkDirectSoundController::~QvkDirectSoundController()
 void QvkDirectSoundController::slot_audioIconOnOff( bool state )
 {
     QIcon myIcon( ":/pictures/screencast/microphone.png" );
-    if ( state == false  )
-    {
+    if ( state == false  ) {
         QSize size = ui->tabWidgetScreencast->iconSize();
         QPixmap workPixmap( myIcon.pixmap( size ) );
         QPainter painter;
@@ -80,17 +79,14 @@ void QvkDirectSoundController::init()
 void QvkDirectSoundController::getAllDevices()
 {
     QList<QLabel *> listLabel = ui->scrollAreaAudioDevice->findChildren<QLabel *>();
-    for ( int i = 0; i < listLabel.count(); i++ )
-    {
+    for ( int i = 0; i < listLabel.count(); i++ ) {
         ui->verticalLayoutAudioDevices->removeWidget( listLabel.at(i) );
         delete listLabel.at(i);
     }
 
     QList<QAudioDeviceInfo> list = QAudioDeviceInfo::availableDevices( QAudio::AudioInput );
-    if ( !list.empty() )
-    {
-        for ( int i = 0; i < list.count(); i++ )
-        {
+    if ( !list.empty() ) {
+        for ( int i = 0; i < list.count(); i++ ) {
             QCheckBox *checkboxAudioDevice = new QCheckBox();
             checkboxAudioDevice->setText( list.at(i).deviceName() );
             checkboxAudioDevice->setAccessibleName( list.at(i).deviceName() );
@@ -104,12 +100,9 @@ void QvkDirectSoundController::getAllDevices()
             connect( checkboxAudioDevice, SIGNAL(clicked(bool)),this,SLOT(slot_audioDeviceSelected() ) );
         }
         qDebug();
-    }
-    else
-    {
+    } else {
         QList<QLabel *> listLabel = ui->scrollAreaAudioDevice->findChildren<QLabel *>();
-        for ( int i = 0; i < listLabel.count(); i++ )
-        {
+        for ( int i = 0; i < listLabel.count(); i++ ) {
             ui->verticalLayoutAudioDevices->removeWidget( listLabel.at(i) );
             delete listLabel.at(i);
         }
@@ -134,10 +127,8 @@ void QvkDirectSoundController::slot_audioDeviceSelected()
 {
     bool value = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listCheckBox.count(); i++ )
-    {
-        if ( listCheckBox.at(i)->checkState() == Qt::Checked )
-        {
+    for ( int i = 0; i < listCheckBox.count(); i++ ) {
+        if ( listCheckBox.at(i)->checkState() == Qt::Checked ) {
             value = true;
             break;
         }
@@ -153,11 +144,9 @@ void QvkDirectSoundController::slot_pluggedInOutDevice( QString string )
     QString name   = string.section( ":", 1, 1 );
     QString device = string.section( ":", 2, 2 );
 
-    if ( header == "[Audio-device-added]" )
-    {
+    if ( header == "[Audio-device-added]" ) {
         QList<QLabel *> listLabel = ui->scrollAreaAudioDevice->findChildren<QLabel *>();
-        for ( int i = 0; i < listLabel.count(); i++ )
-        {
+        for ( int i = 0; i < listLabel.count(); i++ ) {
             ui->verticalLayoutAudioDevices->removeWidget( listLabel.at(i) );
             delete listLabel.at(i);
         }
@@ -174,21 +163,17 @@ void QvkDirectSoundController::slot_pluggedInOutDevice( QString string )
         ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice ); // Besser ein Add ?????????????????????????????
     }
 
-    if ( header == "[Audio-device-removed]" )
-    {
+    if ( header == "[Audio-device-removed]" ) {
         QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-        for ( int i = 0; i < listAudioDevices.count(); i++ )
-        {
-            if ( listAudioDevices.at(i)->accessibleName() == device )
-            {
+        for ( int i = 0; i < listAudioDevices.count(); i++ ) {
+            if ( listAudioDevices.at(i)->accessibleName() == device ) {
                 delete listAudioDevices.at(i);
                 listAudioDevices.removeAt(i);
             }
         }
         slot_audioDeviceSelected();
 
-        if ( listAudioDevices.empty() )
-        {
+        if ( listAudioDevices.empty() ) {
             QLabel *label = new QLabel();
             label->setText( "DirectSound\n" );
             label->setAlignment( Qt::AlignCenter );

@@ -94,8 +94,7 @@ void QvkCameraWindow::paintEvent( QPaintEvent *event )
             painter.fillRect( 0, 0, w, h, brush );
 
             // Frame
-            if ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true )
-            {
+            if ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true ) {
                 QPen pen;
                 pen.setWidth( frameWidth );
                 pen.setColor( QString( "#9EBBD8" ) );
@@ -114,8 +113,7 @@ void QvkCameraWindow::paintEvent( QPaintEvent *event )
             painter.drawText( QRectF( 0, 0, w, h ), Qt::AlignCenter, error );
 
             // Close button
-            if ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true )
-            {
+            if ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true ) {
                 int width = 20;
                 int height = 20;
                 int distanceToFrame = 3;
@@ -249,20 +247,14 @@ void QvkCameraWindow::mousePressEvent( QMouseEvent *event )
 
     if ( event->button() == Qt::RightButton )
     {
-        if ( vkCameraSettingsDialog->isVisible() )
-        {
+        if ( vkCameraSettingsDialog->isVisible() ) {
             vkCameraSettingsDialog->close();
-        }
-        else
-        {
+        } else {
             vkCameraSettingsDialog->show();
-            if ( isFullScreen() == true )
-            {
+            if ( isFullScreen() == true ) {
                 vkCameraSettingsDialog->ui->widgetCameraWindowSize->hide();
                 vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame->hide();
-            }
-            else
-            {
+            } else {
                 vkCameraSettingsDialog->ui->widgetCameraWindowSize->show();
                 vkCameraSettingsDialog->ui->checkBoxCameraWindowFrame->show();
             }
@@ -270,13 +262,11 @@ void QvkCameraWindow::mousePressEvent( QMouseEvent *event )
         return;
     }
 
-    if ( isFullScreen() == true )
-    {
+    if ( isFullScreen() == true ) {
         vkCameraSettingsDialog->close();
     }
 
-    if ( ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true ) and ( event->button() == Qt::LeftButton ) and ( isFullScreen() == false ) )
-    {
+    if ( ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true ) and ( event->button() == Qt::LeftButton ) and ( isFullScreen() == false ) ) {
         QPixmap pixmap( ":/pictures/cursor/size_all.png" );
         QCursor cursor( pixmap );
         setCursor( cursor );
@@ -290,8 +280,7 @@ void QvkCameraWindow::mousePressEvent( QMouseEvent *event )
 void QvkCameraWindow::mouseReleaseEvent( QMouseEvent *event )
 {
     Q_UNUSED(event)
-    if ( ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true ) and ( isFullScreen() == false ) )
-    {
+    if ( ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true ) and ( isFullScreen() == false ) ) {
         unsetCursor();
         mousePressed = false;
     }
@@ -301,8 +290,7 @@ void QvkCameraWindow::mouseReleaseEvent( QMouseEvent *event )
 void QvkCameraWindow::mouseMoveEvent( QMouseEvent *event )
 {
     Q_UNUSED(event)
-    if ( ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true ) and ( mousePressed == true ) )
-    {
+    if ( ( ui_formMainWindow->checkBoxCameraWindowFrame->isChecked() == true ) and ( mousePressed == true ) ) {
         move( QCursor::pos().x() - mouseLocal_X, QCursor::pos().y() - mouseLocal_Y );
     }
 

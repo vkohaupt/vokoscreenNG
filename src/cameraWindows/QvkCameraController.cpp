@@ -208,8 +208,7 @@ void QvkCameraController::slot_setNewImage( QImage image )
 
 
     // Ellipse
-    if ( ui_formMainWindow->toolButton_camera_view_ellipse->isChecked() == true )
-    {
+    if ( ui_formMainWindow->toolButton_camera_view_ellipse->isChecked() == true ) {
         if ( vkCameraWindow->isFullScreen() == false ) {
             qreal width = image.width();
             qreal height = image.height();
@@ -236,9 +235,8 @@ void QvkCameraController::slot_setNewImage( QImage image )
 
 
     // Circle
-    if ( ui_formMainWindow->toolButton_camera_view_circle->isChecked() == true )
-    {
-        if ( vkCameraWindow->isFullScreen() == true ){
+    if ( ui_formMainWindow->toolButton_camera_view_circle->isChecked() == true ) {
+        if ( vkCameraWindow->isFullScreen() == true ) {
             int w = image.width();
             int h = image.height();
             QPixmap pixmap( w, h );
@@ -308,16 +306,14 @@ void QvkCameraController::slot_addedCamera( QString description, QString device 
 
 void QvkCameraController::slot_removedCamera( QString device )
 {
-    if ( ( ui_formMainWindow->checkBoxCameraOnOff->isChecked() == true ) and ( ui_formMainWindow->comboBoxCamera->currentData().toString() == device ) )
-    {
+    if ( ( ui_formMainWindow->checkBoxCameraOnOff->isChecked() == true ) and ( ui_formMainWindow->comboBoxCamera->currentData().toString() == device ) ) {
         vkCameraWindow->close();
     }
 
     int x = ui_formMainWindow->comboBoxCamera->findData( device.toLatin1() );
     ui_formMainWindow->comboBoxCamera->removeItem( x );
 
-    if ( ui_formMainWindow->comboBoxCamera->count() == 0 )
-    {
+    if ( ui_formMainWindow->comboBoxCamera->count() == 0 ) {
         ui_formMainWindow->checkBoxCameraOnOff->setEnabled( false );
         ui_formMainWindow->comboBoxCamera->setEnabled( false );
         ui_formMainWindow->comboBoxCameraResolution->clear();
@@ -337,8 +333,7 @@ void QvkCameraController::slot_removedCamera( QString device )
 
 void QvkCameraController::slot_startCamera( bool value )
 {
-    if ( value == true )
-    {
+    if ( value == true ) {
         QByteArray device = ui_formMainWindow->comboBoxCamera->currentData().toByteArray();
         delete camera;
         camera = new QCamera( device );

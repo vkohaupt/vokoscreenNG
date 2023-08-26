@@ -74,8 +74,7 @@ void pa_sinklist_cb(pa_context *c, const pa_sink_info *l, int eol, void *userdat
     int ctr = 0;
 
     // If eol is set to a positive number, you're at the end of the list
-    if (eol > 0)
-    {
+    if (eol > 0) {
         return;
     }
 
@@ -84,10 +83,8 @@ void pa_sinklist_cb(pa_context *c, const pa_sink_info *l, int eol, void *userdat
     // contents into it and we're done.  If we receive more than 16 devices,
     // they're going to get dropped.  You could make this dynamically allocate
     // space for the device list, but this is a simple example.
-    for (ctr = 0; ctr < 16; ctr++)
-    {
-        if (! pa_devicelist[ctr].initialized)
-        {
+    for (ctr = 0; ctr < 16; ctr++) {
+        if (! pa_devicelist[ctr].initialized) {
             strncpy(pa_devicelist[ctr].name, l->name, 511);
             strncpy(pa_devicelist[ctr].description, l->description, 255);
             pa_devicelist[ctr].index = l->index;
@@ -104,15 +101,12 @@ void pa_sourcelist_cb(pa_context *c, const pa_source_info *l, int eol, void *use
     pa_devicelist_t *pa_devicelist = userdata;
     int ctr = 0;
 
-    if (eol > 0)
-    {
+    if (eol > 0) {
         return;
     }
 
-    for (ctr = 0; ctr < 16; ctr++)
-    {
-        if (! pa_devicelist[ctr].initialized)
-        {
+    for (ctr = 0; ctr < 16; ctr++) {
+        if (! pa_devicelist[ctr].initialized) {
             strncpy(pa_devicelist[ctr].name, l->name, 511);
             strncpy(pa_devicelist[ctr].description, l->description, 255);
             pa_devicelist[ctr].index = l->index;
@@ -155,19 +149,16 @@ int pa_get_devicelist(pa_devicelist_t *input, pa_devicelist_t *output)
 
     // Now we'll enter into an infinite loop until we get the data we receive
     // or if there's an error
-    for (;;)
-    {
+    for (;;) {
         // We can't do anything until PA is ready, so just iterate the mainloop
         // and continue
-        if ( pa_ready == 0 )
-        {
+        if ( pa_ready == 0 ) {
             pa_mainloop_iterate(pa_ml, 1, NULL);
             continue;
         }
 
         // We couldn't get a connection to the server, so exit out
-        if ( pa_ready == 2 )
-        {
+        if ( pa_ready == 2 ) {
             pa_context_disconnect(pa_ctx);
             pa_context_unref(pa_ctx);
             pa_mainloop_free(pa_ml);
@@ -241,16 +232,13 @@ const char *get_all_audio_devices()
     static char s[4096];
     for(int i = 0; i < 4096; ++i) s[i] = 0;
 
-    if ( pa_get_devicelist(pa_input_devicelist, pa_output_devicelist) < 0 )
-    {
+    if ( pa_get_devicelist(pa_input_devicelist, pa_output_devicelist) < 0 ) {
         fprintf(stderr, "failed to get device list\n");
         return s;
     }
 
-    for ( int ctr = 0; ctr < 16; ctr++)
-    {
-        if ( ! pa_input_devicelist[ctr].initialized )
-        {
+    for ( int ctr = 0; ctr < 16; ctr++) {
+        if ( ! pa_input_devicelist[ctr].initialized ) {
             break;
         }
 

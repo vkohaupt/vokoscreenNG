@@ -53,21 +53,17 @@ void QvkWASAPIWatcher::slot_update()
 
     QList<QCheckBox *> listCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
     QStringList stringListCheckBox;
-    for ( int i = 0; i < listCheckBox.count(); i++ )
-    {
+    for ( int i = 0; i < listCheckBox.count(); i++ ) {
         stringListCheckBox << listCheckBox.at(i)->accessibleName();
     }
 
     // Add new Device
-    if ( listDevices.count() > listCheckBox.count() )
-    {
-        for ( int i = 0; i < listDevices.count(); i++ )
-        {
+    if ( listDevices.count() > listCheckBox.count() ) {
+        for ( int i = 0; i < listDevices.count(); i++ ) {
             QString device = QString( listDevices.at(i) ).section( ":::", 0, 0 )
                            + ":::"
                            + QString( listDevices.at(i) ).section( ":::", 2, 2 ) ;
-            if ( stringListCheckBox.contains( device ) == false )
-            {
+            if ( stringListCheckBox.contains( device ) == false ) {
                 QString name = QString( listDevices.at(i) ).section( ":::", 1, 1 );
                 qDebug().noquote() << global::nameOutput << "[Audio WASAPI] Added:" << name << "Device:" << device;
                 QString audioDevicePlug = "";
@@ -87,21 +83,17 @@ void QvkWASAPIWatcher::slot_update()
     // listCheckbox  --> Device ::: Typ
 
     QStringList listDeviceTyp;
-    for ( int i = 0; i < listDevices.count(); i++ )
-    {
+    for ( int i = 0; i < listDevices.count(); i++ ) {
         listDeviceTyp << QString( listDevices.at(i) ).section( ":::", 0, 0 )
                        + ":::"
                        + QString( listDevices.at(i) ).section( ":::", 2, 2 );
     }
 
     // Remove device
-    if ( listDevices.count() < listCheckBox.count() )
-    {
-        for ( int i = 0; i < listCheckBox.count(); i++ )
-        {
+    if ( listDevices.count() < listCheckBox.count() ) {
+        for ( int i = 0; i < listCheckBox.count(); i++ ) {
             QString string = QString( listCheckBox.at(i)->accessibleName() );
-            if ( listDeviceTyp.contains( string ) == false )
-            {
+            if ( listDeviceTyp.contains( string ) == false ) {
                 QString name = listCheckBox.at(i)->text();
                 QString device = listCheckBox.at(i)->accessibleName();
                 qDebug().noquote() << global::nameOutput << "[Audio WASAPI] Removed:" << name << "Device:" << device;
