@@ -35,8 +35,7 @@ QvkLog::QvkLog()
     path = QStandardPaths::writableLocation( QStandardPaths::AppConfigLocation );
 
     QString logFolderName = path + "/" + "log";
-    if( !QDir( logFolderName ).exists() )
-    {
+    if( !QDir( logFolderName ).exists() ) {
         QDir().mkpath( logFolderName );
     }
 

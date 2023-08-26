@@ -126,8 +126,7 @@ void QvkCountdownWindow::paintEvent( QPaintEvent *event )
 
 void QvkCountdownWindow::mousePressEvent( QMouseEvent *event )
 {
-    if ( rectCancel.contains( event->pos() ) )
-    {
+    if ( rectCancel.contains( event->pos() ) ) {
         hide();
         emit signal_countDownCancel( true );
     }

@@ -53,8 +53,7 @@ bool QvkLimitDiskFreeSpace::isStorageOK()
     storage.refresh();
 
     // Stop a record if disk space smaller 250MB(Default) 999MB(Max)
-    if ( storage.bytesAvailable() <= ( sliderLimitOfFreeDiskSpace->value() * 1024 * 1024 ) )
-    {
+    if ( storage.bytesAvailable() <= ( sliderLimitOfFreeDiskSpace->value() * 1024 * 1024 ) ) {
         return false;
     }
     return true;
@@ -67,8 +66,7 @@ bool QvkLimitDiskFreeSpace::isStorageOKMessagBoxByStart()
     storage.refresh();
 
     // Stop a record if disk space smaller 250MB(Default) 999MB(Max)
-    if ( storage.bytesAvailable() <= ( sliderLimitOfFreeDiskSpace->value() * 1024 * 1024 ) )
-    {
+    if ( storage.bytesAvailable() <= ( sliderLimitOfFreeDiskSpace->value() * 1024 * 1024 ) ) {
         timerStorageSize->stop();
 
         QPixmap pixmap( ":/pictures/status/warning.png" );
@@ -100,8 +98,7 @@ void QvkLimitDiskFreeSpace::slot_storageMessagBoxByRecord()
     storage.refresh();
 
     // Stop a record if disk space smaller 250MB(Default) 999MB(Max)
-    if ( storage.bytesAvailable() <= ( sliderLimitOfFreeDiskSpace->value() * 1024 * 1024 ) )
-    {
+    if ( storage.bytesAvailable() <= ( sliderLimitOfFreeDiskSpace->value() * 1024 * 1024 ) ) {
         timerStorageSize->stop();
         ui->pushButtonStop->click();
 

@@ -92,8 +92,7 @@ void QvkCountdown::slot_updateTimer()
     vkCountdownWindow->gradValue = 0;
     vkCountdownWindow->countValue--;
 
-    if ( vkCountdownWindow->countValue == 0 )
-    {
+    if ( vkCountdownWindow->countValue == 0 ) {
         vkCountdownWindow->setGeometry( x, y, 1, 1 );
         vkCountdownWindow->hide();
         timer->stop();

@@ -22,13 +22,10 @@ QvkDirDialog::QvkDirDialog( QWidget *parent )
 
     // Remove image in QDialogButtonBox
     QList<QDialogButtonBox *> list = findChildren<QDialogButtonBox *>();
-    if ( !list.empty() )
-    {
+    if ( !list.empty() ) {
         QList<QAbstractButton *> listButtons = list.at(0)->buttons();
-        if ( !listButtons.empty() )
-        {
-            for ( int x = 0; x < listButtons.count(); x++ )
-            {
+        if ( !listButtons.empty() ) {
+            for ( int x = 0; x < listButtons.count(); x++ ) {
                 listButtons.at(x)->setIcon( QIcon( "" ) );
             }
         }
@@ -38,17 +35,14 @@ QvkDirDialog::QvkDirDialog( QWidget *parent )
 // Wird benötigt für weitere tests
 /*
     QList<QStackedWidget *> listWidgets = findChildren<QStackedWidget *>();
-    if ( !listWidgets.empty() )
-    {
+    if ( !listWidgets.empty() ) {
         listWidgets.at(0)->installEventFilter( this );
     }
 
 
     QList<QListView *> listWidgets = findChildren<QListView *>( "listView" );
-    if ( !listWidgets.empty() )
-    {
-        for (int x = 0; x < listWidgets.count(); x++)
-        {
+    if ( !listWidgets.empty() ) {
+        for (int x = 0; x < listWidgets.count(); x++) {
             listWidgets.at(x)->installEventFilter( this );
             qDebug() << listWidgets.at(x);
         }

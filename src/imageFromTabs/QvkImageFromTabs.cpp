@@ -52,8 +52,7 @@ void QvkImageFromTabs::slot_make_picture_from_tabs()
 
     counterFile = 0;
 
-    for ( int i = 0; i < myParent->ui->tabWidgetScreencast->tabBar()->count(); i++ )
-    {
+    for ( int i = 0; i < myParent->ui->tabWidgetScreencast->tabBar()->count(); i++ ) {
         myParent->ui->tabWidgetScreencast->setCurrentIndex( i );
         for ( int y = 0; y < 30; y++ ) {
             QCoreApplication::processEvents();
@@ -74,8 +73,7 @@ void QvkImageFromTabs::slot_make_picture_from_tabs()
 
     listToolButton.at(0)->click();
 
-    if ( QDesktopServices::openUrl( QUrl( "file:///" + QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ), QUrl::TolerantMode ) ) == false )
-    {
+    if ( QDesktopServices::openUrl( QUrl( "file:///" + QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ), QUrl::TolerantMode ) ) == false ) {
         QPixmap pixmap( ":/pictures/status/information.png" );
         pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
 

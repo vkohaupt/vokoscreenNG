@@ -120,8 +120,6 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     {
         // Language
         if ( listComboBox.at(i)->objectName() == "comboBoxLanguage" ) {
-
-
             // listComboBox.at(i)->removeItem( 20 ); // Nur zum testen. Index muß zuvor ermittelt werden.
             int index;
 

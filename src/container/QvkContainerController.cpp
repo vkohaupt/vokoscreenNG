@@ -61,8 +61,7 @@ void QvkContainerController::set_muxer_to_available_or_unavailable()
 {
     qDebug().noquote() << global::nameOutput << "Formats, video- and audio codec are only for record, not for the player";
     qDebug().noquote() << global::nameOutput << "Video formats:";
-    for ( int i = 0; i < vkContainer->get_Containers().count(); i++ )
-    {
+    for ( int i = 0; i < vkContainer->get_Containers().count(); i++ ) {
         QString muxer = vkContainer->get_Containers().at(i)->get_Muxer();
         QString suffix = vkContainer->get_Containers().at(i)->get_Suffix();
         GstElementFactory *factory = gst_element_factory_find( muxer.toLatin1() );
@@ -80,8 +79,7 @@ void QvkContainerController::set_muxer_to_available_or_unavailable()
 
 void QvkContainerController::set_videoencoder_to_available_or_unavailable()
 {
-    for ( int i = 0; i < vkContainer->get_Containers().count(); i++ )
-    {
+    for ( int i = 0; i < vkContainer->get_Containers().count(); i++ ) {
         QString suffix = vkContainer->get_Containers().at(i)->get_Suffix();
         QList<Container::VideoCodec> list = vkContainer->get_VideoCodecs( suffix  );
         if ( !list.empty() ) {
@@ -102,8 +100,7 @@ void QvkContainerController::set_videoencoder_to_available_or_unavailable()
 
 void QvkContainerController::set_audioencoder_to_available_or_unavailable()
 {
-    for ( int i = 0; i < vkContainer->get_Containers().count(); i++ )
-    {
+    for ( int i = 0; i < vkContainer->get_Containers().count(); i++ ) {
         QString suffix = vkContainer->get_Containers().at(i)->get_Suffix();
         QList<Container::AudioCodec> list = vkContainer->get_AudioCodecs( suffix  );
         if ( !list.empty() ) {
@@ -207,9 +204,7 @@ void QvkContainerController::slot_set_available_VideoCodecs_in_Combobox( const Q
             messageBox.exec();
 
             ui->pushButtonStart->setEnabled( false );
-        }
-        else
-        {
+        } else {
             ui->pushButtonStart->setEnabled( true );
         }
     }
@@ -260,8 +255,7 @@ void QvkContainerController::set_available_formatVideoAudoicodec_in_tab()
 
     // Adding all informations
     int rowCount = 0;
-    for ( int i = 0; i < vkContainer->get_Containers().count(); i++ )
-    {
+    for ( int i = 0; i < vkContainer->get_Containers().count(); i++ ) {
         int rowMuxer = 1;
         int rowVideo = 1;
         int rowAudio = 1;
@@ -278,10 +272,8 @@ void QvkContainerController::set_available_formatVideoAudoicodec_in_tab()
         rowMuxer++;
 
         QList<Container::VideoCodec> list_VideoCodecs = vkContainer->get_VideoCodecs( vkContainer->get_Containers().at(i)->get_Suffix()  );
-        if ( !list_VideoCodecs.empty() )
-        {
-            for ( int i = 0; i < list_VideoCodecs.count(); i++ )
-            {
+        if ( !list_VideoCodecs.empty() ) {
+            for ( int i = 0; i < list_VideoCodecs.count(); i++ ) {
                 QIcon icon( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
                 if ( list_VideoCodecs.at(i).available == false ) {
                     icon.addFile( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
@@ -297,10 +289,8 @@ void QvkContainerController::set_available_formatVideoAudoicodec_in_tab()
         }
 
         QList<Container::AudioCodec> list_AudioCodecs = vkContainer->get_AudioCodecs( vkContainer->get_Containers().at(i)->get_Suffix()  );
-        if ( !list_AudioCodecs.empty() )
-        {
-            for ( int i = 0; i < list_AudioCodecs.count(); i++ )
-            {
+        if ( !list_AudioCodecs.empty() ) {
+            for ( int i = 0; i < list_AudioCodecs.count(); i++ ) {
                 QIcon icon( QString::fromUtf8( ":/pictures/screencast/accept.png" ) );
                 if ( list_AudioCodecs.at(i).available == false ) {
                     icon.addFile( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
@@ -316,8 +306,7 @@ void QvkContainerController::set_available_formatVideoAudoicodec_in_tab()
         }
 
         rowCount = ui->gridLayoutAvailable->rowCount();
-        for ( int x = 0; x <= 5; x++ )
-        {
+        for ( int x = 0; x <= 5; x++ ) {
             QFrame *line = new QFrame();
             line->setObjectName( QStringLiteral( "line" ) );
             line->setFrameShape( QFrame::HLine );

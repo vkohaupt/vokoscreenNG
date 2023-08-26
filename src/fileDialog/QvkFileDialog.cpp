@@ -20,13 +20,10 @@ QvkFileDialog::QvkFileDialog( QWidget *parent )
 
     // Remove image in QDialogButtonBox
     QList<QDialogButtonBox *> list = findChildren<QDialogButtonBox *>();
-    if ( !list.empty() )
-    {
+    if ( !list.empty() ) {
         QList<QAbstractButton *> listButtons = list.at(0)->buttons();
-        if ( !listButtons.empty() )
-        {
-            for ( int x = 0; x < listButtons.count(); x++ )
-            {
+        if ( !listButtons.empty() ) {
+            for ( int x = 0; x < listButtons.count(); x++ ) {
                 listButtons.at(x)->setIcon( QIcon( "" ) );
             }
         }

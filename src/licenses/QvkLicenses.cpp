@@ -55,11 +55,9 @@ QvkLicenses::~QvkLicenses(){}
 int QvkLicenses::readLicences( QString path, int row )
 {
     QDirIterator dirIterator( path, QDir::Files, QDirIterator::Subdirectories );
-    while ( dirIterator.hasNext() )
-    {
+    while ( dirIterator.hasNext() ) {
         QString string = dirIterator.next();
-        if ( ( string.contains( ".license" ) == true ) and ( string.contains( "template" ) == false ) )
-        {
+        if ( ( string.contains( ".license" ) == true ) and ( string.contains( "template" ) == false ) ) {
             QSettings settings( dirIterator.filePath(), QSettings::IniFormat );
             settings.beginGroup( "license" );
 

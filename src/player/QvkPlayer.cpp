@@ -69,8 +69,7 @@ QvkPlayer::QvkPlayer( QMainWindow *parent, Ui_formMainWindow *ui_mainwindow ) : 
     uiMainWindow->verticalLayoutTabSidebarPlayer->addWidget( this );
 
     QList<QWidget *> listToolButton = ui->frameMenueBar->findChildren<QWidget *>();
-    for ( int i = 0; i < listToolButton.count(); i++ )
-    {
+    for ( int i = 0; i < listToolButton.count(); i++ ) {
         listToolButton.at(i)->setMouseTracking( true );
     }
 
@@ -244,17 +243,14 @@ void QvkPlayer::slot_volumeChanged( int )
 
 void QvkPlayer::slot_hideMouse()
 {
-   if ( parentMainWindow->isFullScreen() == false )
-   {
+   if ( parentMainWindow->isFullScreen() == false ) {
        ui->labelPlayer->setCursor( Qt::BlankCursor );
        return;
    }
 
-   if ( parentMainWindow->isFullScreen() == true )
-   {
+   if ( parentMainWindow->isFullScreen() == true ) {
        ui->labelPlayer->setCursor( Qt::BlankCursor );
-       if ( ui->widgetMenueBar->isHidden() == false )
-       {
+       if ( ui->widgetMenueBar->isHidden() == false ) {
            ui->widgetMenueBar->hide();
        }
    }
@@ -265,23 +261,19 @@ void QvkPlayer::mouseMoveEvent( QMouseEvent *event )
 {
     Q_UNUSED(event);
     timerHideMouse->stop();
-    if ( parentMainWindow->isFullScreen() == false )
-    {
+    if ( parentMainWindow->isFullScreen() == false ) {
         ui->labelPlayer->unsetCursor();
         timerHideMouse->start();
         return;
     }
 
-    if ( ( ui->widgetMenueBar->underMouse() == true ) and ( pressed == true ) )
-    {
+    if ( ( ui->widgetMenueBar->underMouse() == true ) and ( pressed == true ) ) {
         ui->widgetMenueBar->move( event->pos().x() - mouseInWidgetX , event->pos().y() - mouseInWidgetY );
         return;
     }
 
-    if ( parentMainWindow->isFullScreen() == true )
-    {
-        if ( ui->widgetMenueBar->underMouse() == false )
-        {
+    if ( parentMainWindow->isFullScreen() == true ) {
+        if ( ui->widgetMenueBar->underMouse() == false ) {
             ui->labelPlayer->unsetCursor();
             ui->widgetMenueBar->show();
             timerHideMouse->start();
@@ -299,8 +291,7 @@ void QvkPlayer::closeEvent(QCloseEvent *event)
 
 void QvkPlayer::slot_toolButtonFrameForward()
 {
-    if ( mediaPlayer->media().isNull() == false   )
-    {
+    if ( mediaPlayer->media().isNull() == false   ) {
         ui->labelDuration->setText( get_time( ( sliderVideo->value() + 1 ) * mediaPlayer->notifyInterval() ) );
         sliderVideo->setValue( sliderVideo->value() + 1 );
         mediaPlayer->pause();
@@ -311,8 +302,7 @@ void QvkPlayer::slot_toolButtonFrameForward()
 
 void QvkPlayer::slot_toolButtonFrameBackward()
 {
-    if ( mediaPlayer->media().isNull() == false   )
-    {
+    if ( mediaPlayer->media().isNull() == false ) {
         ui->labelDuration->setText( get_time( ( sliderVideo->value() - 1 ) * mediaPlayer->notifyInterval() ) );
         sliderVideo->setValue( sliderVideo->value() - 1 );
         mediaPlayer->pause();
@@ -323,13 +313,10 @@ void QvkPlayer::slot_toolButtonFrameBackward()
 
 void QvkPlayer::setMediaFile( QString string )
 {
-    if ( string.contains( "http://" ) or string.contains( "https://" ) )
-    {
+    if ( string.contains( "http://" ) or string.contains( "https://" ) ) {
        QMediaContent mediaContent = QMediaContent( QUrl( string ) );
        mediaPlayer->setMedia( mediaContent );
-    }
-    else
-    {
+    } else {
        mediaPlayer->setMedia( QUrl::fromLocalFile( string ) );
     }
 
@@ -352,15 +339,13 @@ void QvkPlayer::slot_openFile()
         vkFileDialog.setVideoPath( uiMainWindow->lineEditVideoPath->text() );
     }
 
-    if ( vkFileDialog.exec() == QDialog::Accepted )
-    {
+    if ( vkFileDialog.exec() == QDialog::Accepted ) {
         if ( !vkFileDialog.selectedFiles().empty() ) {
             file = vkFileDialog.selectedFiles().at(0);
         }
     }
 
-    if ( !file.isEmpty() )
-    {
+    if ( !file.isEmpty() ) {
         setMediaFile( file );
         slot_play();
         pathOpenFile = QDir( file ).absolutePath();
@@ -372,8 +357,7 @@ void QvkPlayer::slot_openFile()
 
 void QvkPlayer::slot_sliderVideoPressed()
 {
-    if ( mediaPlayer->state() == QMediaPlayer::PlayingState )
-    {
+    if ( mediaPlayer->state() == QMediaPlayer::PlayingState ) {
         playingFlag = true;
     }
 
@@ -384,19 +368,16 @@ void QvkPlayer::slot_sliderVideoPressed()
 void QvkPlayer::slot_sliderVideoReleased()
 {
     // if pause und video not playing
-    if ( ( mediaPlayer->state() == QMediaPlayer::PausedState ) and ( playingFlag == false ) )
-    {
+    if ( ( mediaPlayer->state() == QMediaPlayer::PausedState ) and ( playingFlag == false ) ) {
         mediaPlayer->setPosition( sliderVideo->value() * mediaPlayer->notifyInterval() );
         return;
     }
 
     // If pause and video playing
-    if ( ( mediaPlayer->state() == QMediaPlayer::PausedState ) and ( playingFlag == true ) )
-    {
+    if ( ( mediaPlayer->state() == QMediaPlayer::PausedState ) and ( playingFlag == true ) ) {
         mediaPlayer->setPosition( sliderVideo->value() * mediaPlayer->notifyInterval() );
         playingFlag = false;
     }
-
 
     mediaPlayer->setPosition( sliderVideo->value() * mediaPlayer->notifyInterval() );
     mediaPlayer->play();
@@ -432,14 +413,12 @@ void QvkPlayer::slot_mute()
 {
     ui->toolButtonMute->setEnabled( false );
 
-    if ( mediaPlayer->isMuted()== true )
-    {
+    if ( mediaPlayer->isMuted()== true ) {
         mediaPlayer->setMuted( false );
         return;
     }
 
-    if ( mediaPlayer->isMuted()== false )
-    {
+    if ( mediaPlayer->isMuted()== false ) {
         mediaPlayer->setMuted( true );
         return;
     }
@@ -448,16 +427,14 @@ void QvkPlayer::slot_mute()
 
 void QvkPlayer::slot_mutedChanged( bool muted )
 {
-    if ( muted == true )
-    {
+    if ( muted == true ) {
         ui->toolButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-muted.png" ) );
         sliderVolume->setEnabled( false );
         ui->toolButtonMute->setEnabled( true );
         return;
     }
 
-    if ( muted == false )
-    {
+    if ( muted == false ) {
         ui->toolButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-high.png" ) );
         sliderVolume->setEnabled( true );
         ui->toolButtonMute->setEnabled( true );
@@ -492,8 +469,7 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
 {
     qDebug().noquote() << global::nameOutput + " " + "[Player]" << state;
 
-    if ( state == QMediaPlayer::StoppedState )
-    {
+    if ( state == QMediaPlayer::StoppedState ) {
         ui->pushButtonStop->setEnabled( false );
         ui->pushButtonPause->setVisible( false );
         ui->pushButtonPlay->setVisible( true );
@@ -511,8 +487,7 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
         metaLabel->hide();
     }
 
-    if ( state == QMediaPlayer::PlayingState )
-    {
+    if ( state == QMediaPlayer::PlayingState ) {
         ui->pushButtonPlay->setVisible( false );
         ui->pushButtonPause->setVisible( true );
         ui->pushButtonPause->setEnabled( true );
@@ -521,8 +496,7 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
         ui->toolButtonFrameForward->setEnabled( true );
     }
 
-    if ( state == QMediaPlayer::PausedState )
-    {
+    if ( state == QMediaPlayer::PausedState ) {
         ui->pushButtonPause->setVisible( false );
         ui->pushButtonStop->setEnabled( true );
         ui->pushButtonPlay->setVisible( true );
@@ -538,8 +512,7 @@ void QvkPlayer::slot_stateChanged( QMediaPlayer::State state )
  */
 void QvkPlayer::slot_positionChanged( qint64 value )
 {
-    if ( mediaPlayer->state() == QMediaPlayer::PlayingState )
-    {
+    if ( mediaPlayer->state() == QMediaPlayer::PlayingState ) {
        sliderVideo->setValue( static_cast<int>( value / mediaPlayer->notifyInterval() ) );
 
        // Show playing time in label
@@ -553,8 +526,7 @@ void QvkPlayer::slot_setNewImage( QImage image )
     QSize ratioSize = getPixelaspectRatio();
     qreal ratio = (qreal)ratioSize.width() / (qreal)ratioSize.height();
     QScreen *screen = QGuiApplication::primaryScreen();
-    if ( ratio == 1.0 )
-    {
+    if ( ratio == 1.0 ) {
         image.setDevicePixelRatio( screen->devicePixelRatio() );
         image = image.scaled( static_cast<int>( ui->framePlayer->width()*screen->devicePixelRatio() ),
                               static_cast<int>( ui->framePlayer->height()*screen->devicePixelRatio() ),
@@ -567,11 +539,9 @@ void QvkPlayer::slot_setNewImage( QImage image )
     // Testvideos find in source code under /vokoscreenNG/Videos-to-test-the-player/
     // Example:
     // Area:450x800 scale:1280*720
-    if ( ( ratio != 1.0 ) and ( ratioSize.width() < ratioSize.height() ) )
-    {
+    if ( ( ratio != 1.0 ) and ( ratioSize.width() < ratioSize.height() ) ) {
         // Adapt to the frame
-        if ( ui->framePlayer->width() < (int)( (qreal)ui->framePlayer->height() * ( (qreal)image.width() / (qreal)image.height() * ratio ) * screen->devicePixelRatio() ) )
-        {
+        if ( ui->framePlayer->width() < (int)( (qreal)ui->framePlayer->height() * ( (qreal)image.width() / (qreal)image.height() * ratio ) * screen->devicePixelRatio() ) ) {
             image = image.scaled( static_cast<int>( ui->framePlayer->width() * screen->devicePixelRatio() ),
                                   (int)( (qreal)ui->framePlayer->width() * ( (qreal)image.height() / (qreal)image.width() / ratio ) * screen->devicePixelRatio() ),
                                   Qt::IgnoreAspectRatio,
@@ -581,8 +551,7 @@ void QvkPlayer::slot_setNewImage( QImage image )
         }
 
         // Adapt to the frame
-        if ( ui->framePlayer->height() > (int)( (qreal)ui->framePlayer->height() * ( (qreal)image.width() / (qreal)image.height() * ratio ) * screen->devicePixelRatio() ) )
-        {
+        if ( ui->framePlayer->height() > (int)( (qreal)ui->framePlayer->height() * ( (qreal)image.width() / (qreal)image.height() * ratio ) * screen->devicePixelRatio() ) ) {
             image = image.scaled( (int)( (qreal)ui->framePlayer->height() * ( (qreal)image.width() / (qreal)image.height() * ratio ) * screen->devicePixelRatio() ),
                                   static_cast<int>( ui->framePlayer->height() * screen->devicePixelRatio() ),
                                   Qt::IgnoreAspectRatio,
@@ -594,11 +563,9 @@ void QvkPlayer::slot_setNewImage( QImage image )
 
     // Example:
     // Area:800x320 scale:1280*720
-    if ( ( ratio != 1.0 ) and ( ratioSize.width() > ratioSize.height() ) )
-    {
+    if ( ( ratio != 1.0 ) and ( ratioSize.width() > ratioSize.height() ) ) {
         // Adapt to the frame
-        if ( ui->framePlayer->height() < (int)( (qreal)ui->framePlayer->width() * ( (qreal)image.height() / (qreal)image.width() / ratio ) * screen->devicePixelRatio() ) )
-        {
+        if ( ui->framePlayer->height() < (int)( (qreal)ui->framePlayer->width() * ( (qreal)image.height() / (qreal)image.width() / ratio ) * screen->devicePixelRatio() ) ) {
             image = image.scaled( (int)( (qreal)ui->framePlayer->height() * ( (qreal)image.width() / (qreal)image.height() * ratio ) * screen->devicePixelRatio() ),
                                   static_cast<int>( ui->framePlayer->height() * screen->devicePixelRatio() ),
                                   Qt::IgnoreAspectRatio,
@@ -608,8 +575,7 @@ void QvkPlayer::slot_setNewImage( QImage image )
         }
 
         // Adapt to the frame
-        if ( ui->framePlayer->height() > (int)( (qreal)ui->framePlayer->width() * ( (qreal)image.height() / (qreal)image.width() / ratio ) * screen->devicePixelRatio() ) )
-        {
+        if ( ui->framePlayer->height() > (int)( (qreal)ui->framePlayer->width() * ( (qreal)image.height() / (qreal)image.width() / ratio ) * screen->devicePixelRatio() ) ) {
             image = image.scaled( static_cast<int>( ui->framePlayer->width() * screen->devicePixelRatio() ),
                                   (int)( (qreal)ui->framePlayer->width() * (qreal)image.height() / (qreal)image.width() / ratio * screen->devicePixelRatio() ),
                                   Qt::IgnoreAspectRatio,
@@ -625,13 +591,10 @@ QSize QvkPlayer::getPixelaspectRatio()
 {
     int width = 1;
     int height = 1;
-    if ( mediaPlayer->isMetaDataAvailable() == true )
-    {
+    if ( mediaPlayer->isMetaDataAvailable() == true ) {
         QStringList stringList = mediaPlayer->availableMetaData();
-        for ( int i = 0; i < stringList.count(); i++ )
-        {
-            if ( stringList.at(i) == "PixelAspectRatio" )
-            {
+        for ( int i = 0; i < stringList.count(); i++ ) {
+            if ( stringList.at(i) == "PixelAspectRatio" ) {
                 width = mediaPlayer->metaData( stringList.at(i) ).toSize().width();
                 height = mediaPlayer->metaData( stringList.at(i) ).toSize().height();
                 break;
@@ -658,8 +621,7 @@ void QvkPlayer::vk_showFullscreen()
     ui->widgetMenueBar->show();
     ui->labelPlayer->setFocus();
 
-    if ( mediaPlayer->state() == QMediaPlayer::PausedState )
-    {
+    if ( mediaPlayer->state() == QMediaPlayer::PausedState ) {
         ui->toolButtonFrameBackward->click();
         qApp->processEvents();
         ui->toolButtonFrameForward->click();
@@ -684,8 +646,7 @@ void QvkPlayer::vk_showNormal()
     ui->widgetMenueBar->show();
     ui->labelPlayer->setFocus();
 
-    if ( mediaPlayer->state() == QMediaPlayer::PausedState )
-    {
+    if ( mediaPlayer->state() == QMediaPlayer::PausedState ) {
         ui->toolButtonFrameBackward->click();
         qApp->processEvents();
         ui->toolButtonFrameForward->click();
@@ -696,12 +657,9 @@ void QvkPlayer::vk_showNormal()
 
 void QvkPlayer::slot_toolButtonFullscreen()
 {
-    if ( parentMainWindow->isFullScreen() == true )
-    {
+    if ( parentMainWindow->isFullScreen() == true ) {
         vk_showNormal();
-    }
-    else
-    {
+    } else {
         vk_showFullscreen();
     }
 }
@@ -709,14 +667,10 @@ void QvkPlayer::slot_toolButtonFullscreen()
 
 void QvkPlayer::mouseDoubleClickEvent( QMouseEvent *event )
 {
-    if ( event->button() == Qt::LeftButton )
-    {
-        if ( parentMainWindow->isFullScreen() == true )
-        {
+    if ( event->button() == Qt::LeftButton ) {
+        if ( parentMainWindow->isFullScreen() == true ) {
             vk_showNormal();
-        }
-        else
-        {
+        } else {
             vk_showFullscreen();
         }
     }
@@ -726,26 +680,22 @@ void QvkPlayer::mouseDoubleClickEvent( QMouseEvent *event )
 void QvkPlayer::keyPressEvent( QKeyEvent *event )
 {
     int stepSize = 25;
-    if ( ( mediaPlayer->state() == QMediaPlayer::PlayingState ) or ( mediaPlayer->state() == QMediaPlayer::PausedState ) )
-    {
-        if ( event->key() == Qt::Key_Right )
-        {
+    if ( ( mediaPlayer->state() == QMediaPlayer::PlayingState ) or ( mediaPlayer->state() == QMediaPlayer::PausedState ) ) {
+        if ( event->key() == Qt::Key_Right ) {
             ui->labelDuration->setText( get_time( ( sliderVideo->value() + stepSize ) * mediaPlayer->notifyInterval() ) );
             sliderVideo->setValue( sliderVideo->value() + stepSize );
             mediaPlayer->setPosition( sliderVideo->value() * mediaPlayer->notifyInterval() );
             return;
         }
 
-        if ( event->key() == Qt::Key_Left )
-        {
+        if ( event->key() == Qt::Key_Left ) {
             ui->labelDuration->setText( get_time( ( sliderVideo->value() - stepSize ) * mediaPlayer->notifyInterval() ) );
             sliderVideo->setValue( sliderVideo->value() - stepSize );
             mediaPlayer->setPosition( sliderVideo->value() * mediaPlayer->notifyInterval() );
         }
     }
 
-    if ( event->key() == Qt::Key_Space )
-    {
+    if ( event->key() == Qt::Key_Space ) {
         switch ( mediaPlayer->state() )
         {
             case QMediaPlayer::PlayingState:
@@ -766,19 +716,14 @@ void QvkPlayer::keyPressEvent( QKeyEvent *event )
         }
     }
 
-    if ( event->key() == Qt::Key_Escape )
-    {
+    if ( event->key() == Qt::Key_Escape ) {
         vk_showNormal();
     }
 
-    if ( ( event->key() == Qt::Key_F11 ) or ( event->key() == Qt::Key_F ) )
-    {
-        if ( parentMainWindow->isFullScreen() == true )
-        {
+    if ( ( event->key() == Qt::Key_F11 ) or ( event->key() == Qt::Key_F ) ) {
+        if ( parentMainWindow->isFullScreen() == true ) {
             vk_showNormal();
-        }
-        else
-        {
+        } else {
             vk_showFullscreen();
         }
     }
@@ -787,10 +732,8 @@ void QvkPlayer::keyPressEvent( QKeyEvent *event )
 
 void QvkPlayer::mousePressEvent( QMouseEvent *event )
 {
-    if ( parentMainWindow->isFullScreen() == true )
-    {
-        if ( ui->widgetMenueBar->underMouse() and ( pressed == false  ) )
-        {
+    if ( parentMainWindow->isFullScreen() == true ) {
+        if ( ui->widgetMenueBar->underMouse() and ( pressed == false  ) ) {
             mouseInWidgetX = event->pos().x() - ui->widgetMenueBar->pos().x();
             mouseInWidgetY = event->pos().y() - ui->widgetMenueBar->pos().y();
             ui->labelMovePicture->setCursor( Qt::SizeAllCursor );
@@ -798,35 +741,29 @@ void QvkPlayer::mousePressEvent( QMouseEvent *event )
         }
     }
 
-    if ( ( event->button() == Qt::RightButton ) and ( metaFrame->isVisible() == true ) )
-    {
+    if ( ( event->button() == Qt::RightButton ) and ( metaFrame->isVisible() == true ) ) {
         metaFrame->hide();
         metaLabel->hide();
         return;
     }
 
-    if ( event->button() == Qt::RightButton )
-    {
-        if ( mediaPlayer->isMetaDataAvailable() == true )
-        {
+    if ( event->button() == Qt::RightButton ) {
+        if ( mediaPlayer->isMetaDataAvailable() == true ) {
             QString metaString;
             QStringList stringList = mediaPlayer->availableMetaData();
             stringList.removeAt( stringList.indexOf( "AudioBitRate" ) );
             stringList.removeAt( stringList.indexOf( "maximum-bitrate" ) );
             stringList.removeAt( stringList.indexOf( "minimum-bitrate" ) );
             stringList.sort();
-            for ( int i = 0; i < stringList.count(); i++ )
-            {
-                if ( stringList.at(i) == "Resolution" )
-                {
+            for ( int i = 0; i < stringList.count(); i++ ) {
+                if ( stringList.at(i) == "Resolution" ) {
                     QString width = QString::number( mediaPlayer->metaData( stringList.at(i) ).toSize().width() );
                     QString height = QString::number( mediaPlayer->metaData( stringList.at(i) ).toSize().height() );
                     metaString += stringList.at(i) + " :   " + width + "x" + height + "\n";
                     continue;
                 }
 
-                if ( stringList.at(i) == "PixelAspectRatio" )
-                {
+                if ( stringList.at(i) == "PixelAspectRatio" ) {
                     QString width = QString::number( mediaPlayer->metaData( stringList.at(i) ).toSize().width() );
                     QString height = QString::number( mediaPlayer->metaData( stringList.at(i) ).toSize().height() );
                     metaString += stringList.at(i) + " :   " + width + "x" + height + "\n";
@@ -867,18 +804,15 @@ void QvkPlayer::leaveEvent( QEvent *event )
 void QvkPlayer::resizeEvent( QResizeEvent *event )
 {
     Q_UNUSED(event);
-    if ( parentMainWindow->isFullScreen() == true )
-    {
+    if ( parentMainWindow->isFullScreen() == true ) {
         ui->widgetMenueBar->move( ui->framePlayer->width()/2 - ui->widgetMenueBar->width()/2,
                                   ui->framePlayer->height() - ui->widgetMenueBar->height() );
         return;
     }
 
 
-    if ( mediaPlayer->state() == QMediaPlayer::PausedState )
-    {
+    if ( mediaPlayer->state() == QMediaPlayer::PausedState ) {
         ui->toolButtonFrameForward->click();
         ui->toolButtonFrameBackward->click();
     }
 }
-

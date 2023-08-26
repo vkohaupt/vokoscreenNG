@@ -74,10 +74,8 @@ QvkHelp::QvkHelp( Ui_formMainWindow *ui_mainwindow ) : uiHelp(new(Ui::help))
 
     QIcon iconHelp( ":/pictures/help/information.png" );
     QList<QToolButton *> listToolButton = ui->centralWidget->findChildren<QToolButton *>();
-    for ( int i = 0; i < listToolButton.count(); i++ )
-    {
-        if ( listToolButton.at(i)->objectName().startsWith( "help_") )
-        {
+    for ( int i = 0; i < listToolButton.count(); i++ ) {
+        if ( listToolButton.at(i)->objectName().startsWith( "help_") ) {
             listToolButton.at(i)->setIcon( iconHelp );
             listToolButton.at(i)->installEventFilter( this );
         }
@@ -92,8 +90,7 @@ QvkHelp::~QvkHelp()
 
 void QvkHelp::slot_parse_locale( QStringList list )
 {
-    for ( int i = 0; i < list.count(); i++  )
-    {
+    for ( int i = 0; i < list.count(); i++ ) {
        QLocale locale( list.at( i ) );
        ui->comboBoxOnlineHelp->addItem( locale.nativeLanguageName() + " " + "(" + list.at(i) + ")", list.at( i ) );
     }
@@ -101,8 +98,7 @@ void QvkHelp::slot_parse_locale( QStringList list )
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     QString valueText = settings.value( ui->comboBoxOnlineHelp->objectName(), "" ).toString();
     int valueInt = ui->comboBoxOnlineHelp->findText( valueText );
-    if ( valueInt > -1 )
-    {
+    if ( valueInt > -1 ) {
         ui->comboBoxOnlineHelp->setCurrentIndex( valueInt );
     }
 }
@@ -119,12 +115,9 @@ bool QvkHelp::eventFilter(QObject *object, QEvent *event)
     {
 
         QString language;
-        if ( ui->comboBoxOnlineHelp->findText( "(" + QLocale::system().name() + ")", Qt::MatchEndsWith ) > -1 )
-        {
+        if ( ui->comboBoxOnlineHelp->findText( "(" + QLocale::system().name() + ")", Qt::MatchEndsWith ) > -1 ) {
             language = QLocale::system().name();
-        }
-        else
-        {
+        } else {
             language = "en";
         }
 
@@ -146,9 +139,7 @@ bool QvkHelp::eventFilter(QObject *object, QEvent *event)
         loadHTML( vk_helpPath_locale + object->objectName().section( "_", 1, 1 ) + "/" + object->objectName() + ".html" );
         uiHelp->labelURL->setText( vk_helpPath_locale + object->objectName().section( "_", 1, 1 ) + "/" + object->objectName() + ".html" );
         return false;
-    }
-    else
-    {
+    } else {
         return QObject::eventFilter( object, event );
     }
 }
@@ -177,15 +168,11 @@ void QvkHelp::loadHTML( QString value )
 bool QvkHelp::isFileInLine( QString line )
 {
     bool value = false;
-    for ( int i = 0; i < toDownloadFiles.count(); i++ )
-    {
-        if ( line.contains( toDownloadFiles.at(i), Qt::CaseInsensitive ) )
-        {
+    for ( int i = 0; i < toDownloadFiles.count(); i++ ) {
+        if ( line.contains( toDownloadFiles.at(i), Qt::CaseInsensitive ) ) {
             value = true;
             break;
-        }
-        else
-        {
+        } else {
             value = false;
         }
     }
@@ -196,16 +183,14 @@ bool QvkHelp::isFileInLine( QString line )
 int QvkHelp::getCountFileToDownload( QString tempPathFileName )
 {
     QFile file( tempPathFileName );
-    if( !file.open( QIODevice::ReadOnly ) )
-    {
+    if( !file.open( QIODevice::ReadOnly ) ) {
         qDebug().noquote() << global::nameOutput << "QvkHelp::getCountFileToDownload" << tempPathFileName  << file.errorString();
         //QMessageBox::information( nullptr, "Help error", "QvkHelp::getCountFileToDownload\n" + tempPathFileName + "\n" + file.errorString() );
     }
 
     int count = 0;
     QTextStream textStream( &file );
-    while( !textStream.atEnd() )
-    {
+    while( !textStream.atEnd() ) {
         QString line = textStream.readLine();
         if ( isFileInLine( line ) )
         {
@@ -229,8 +214,7 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
     QString tmpPath = fileInfo.absolutePath();
 
     QFile file( tempPathFileName );
-    if( !file.open( QIODevice::ReadOnly ) )
-    {
+    if( !file.open( QIODevice::ReadOnly ) ) {
         qDebug().noquote() << global::nameOutput << "QvkHelp::slot_parseHTML" << tempPathFileName  << file.errorString() << "The online help needs an internet connection";
         QMessageBox msgBox;
         msgBox.setWindowTitle( global::name + " " + global::version );
@@ -245,15 +229,12 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
     int countFiles = getCountFileToDownload( tempPathFileName );
     int counter = 0;
     QTextStream textStream( &file );
-    while( !textStream.atEnd() )
-    {
+    while( !textStream.atEnd() ) {
         QString line = textStream.readLine();
-        if ( isFileInLine( line ) )
-        {
+        if ( isFileInLine( line ) ) {
             QString fileForHTML = line.section( "\"", 1, 1 );
             counter++;
-            if ( counter == countFiles )
-            {
+            if ( counter == countFiles ) {
                 disconnect( vkDownloadFiles, nullptr, nullptr, nullptr );
                 connect( vkDownloadFiles, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_showHelp( QString ) ) );
             }
@@ -262,8 +243,7 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
         }
     }
 
-    if ( counter == 0 )
-    {
+    if ( counter == 0 ) {
         // "dummy.png" is a fake, we need this if no file is downloaded
         slot_showHelp( tmpPath + "/" + "dummy.png");
     }
@@ -285,8 +265,7 @@ void QvkHelp::slot_showHelp( QString tempPathFileName )
 
     QString htmlFile = tmpPath + "/" + remoteBasename + ".html";
     QFile file( htmlFile );
-    if( !file.open( QIODevice::ReadOnly ) )
-    {
+    if( !file.open( QIODevice::ReadOnly ) ) {
         qDebug().noquote() << global::nameOutput << "QvkHelp::slot_showHelp" << tempPathFileName  << file.errorString();
         //QMessageBox::information( nullptr, "Help error", "QvkHelp::slot_showHelp\n" + tempPathFileName + "\n" + file.errorString() );
     }
@@ -314,8 +293,7 @@ void QvkHelp::slot_showHelp( QString tempPathFileName )
     dir.setCurrent( currentdir );
 
     // remove all tmp files
-    for ( int i = 0; i < localFiles.count(); i++  )
-    {
+    for ( int i = 0; i < localFiles.count(); i++  ) {
         QFile file( localFiles.at( i ) );
         file.remove();
     }

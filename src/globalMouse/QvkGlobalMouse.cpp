@@ -50,13 +50,11 @@ QvkGlobalMouse::~QvkGlobalMouse()
 
 void QvkGlobalMouse::slot_on( bool value )
 {
-    if ( value == true )
-    {
+    if ( value == true ) {
         timer->start();
     }
 
-    if ( value == false )
-    {
+    if ( value == false ) {
         timer->stop();
     }
 }
@@ -75,32 +73,25 @@ void QvkGlobalMouse::slot_mousePressed()
     unsigned int mask;
 
     XQueryPointer( display, root, &root_return, &child_return, &x, &y, &win_x, &win_y, &mask );
-    if ( ( mask & Button1Mask) | ( mask & Button2Mask ) | ( mask & Button3Mask ) )
-    {
-        if ( pressed == 0 )
-        {
+    if ( ( mask & Button1Mask) | ( mask & Button2Mask ) | ( mask & Button3Mask ) ) {
+        if ( pressed == 0 ) {
             QString mouseButton;
-            if (  mask & Button1Mask  )
-            {
+            if (  mask & Button1Mask  ) {
                 mouseButton = "LeftButton";
             }
 
-            if (  mask & Button2Mask  )
-            {
+            if (  mask & Button2Mask  ) {
                 mouseButton = "MiddleButton";
             }
 
-            if ( mask & Button3Mask )
-            {
+            if ( mask & Button3Mask ) {
                 mouseButton = "RightButton";
             }
 
             pressed = 1;
             emit signal_mousePressed( win_x, win_y, mouseButton );
         }
-    }
-    else
-    {
+    } else {
         pressed = 0;
     }
 
@@ -157,19 +148,16 @@ LRESULT CALLBACK MouseProc( int nCode, WPARAM wParam, LPARAM lParam )
 
 void QvkGlobalMouse::slot_mousePressed()
 {
-    if ( once == false )
-    {
+    if ( once == false ) {
         hHook = SetWindowsHookEx( WH_MOUSE_LL, MouseProc, NULL, 0 );
         once = true;
     }
 
-    if ( hHook == NULL )
-    {
+    if ( hHook == NULL ) {
         qDebug() << "Hook failed";
     }
 
-    if ( pressed == 1 )
-    {
+    if ( pressed == 1 ) {
         //bool bol = UnhookWindowsHookEx( hHook );
 
         pressed = 0;

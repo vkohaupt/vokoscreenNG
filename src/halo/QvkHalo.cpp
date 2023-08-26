@@ -137,12 +137,9 @@ void QvkHalo::slot_valueChanged_SpezialSlider_Opacity( int value )
 void QvkHalo::createColorButtons()
 {
     QList<QHBoxLayout *> listLayaout = ui->gridLayout_halo_color_pushButton->findChildren<QHBoxLayout *>();
-    for ( int i = 0; i < listLayaout.count(); i++ )
-    {
-        for ( int x = 0; x < 20; x++ )
-        {
-            if ( listLayaout.at(i)->objectName().section( "_", 2, 2 ) == QVariant::fromValue( Qt::GlobalColor(x) ).toString() )
-            {
+    for ( int i = 0; i < listLayaout.count(); i++ ) {
+        for ( int x = 0; x < 20; x++ ) {
+            if ( listLayaout.at(i)->objectName().section( "_", 2, 2 ) == QVariant::fromValue( Qt::GlobalColor(x) ).toString() ) {
                 QvkPushButton *vkPushButton = new QvkPushButton( Qt::GlobalColor(x) );
                 vkPushButton->setObjectName( "PushButton_Halo_color_" + QVariant::fromValue( Qt::GlobalColor(x) ).toString() );
                 vkPushButton->setMaximumHeight( 23 );
@@ -173,14 +170,12 @@ void QvkHalo::createSpezialCheckBox()
 
 void QvkHalo::slot_haloOnOff( bool value )
 {
-    if ( value == true )
-    {
+    if ( value == true ) {
         timerID = startTimer( 10, Qt::PreciseTimer );
         vkHaloWindow->show();
     }
 
-    if ( value == false )
-    {
+    if ( value == false ) {
         killTimer( timerID );
         vkHaloWindow->hide();
     }
@@ -194,8 +189,7 @@ void QvkHalo::timerEvent( QTimerEvent *event )
 {
     Q_UNUSED(event);
 
-    if ( global::showclickCounter == 0 )
-    {
+    if ( global::showclickCounter == 0 ) {
         vkHaloWindow->raise();
     }
 

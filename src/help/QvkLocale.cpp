@@ -45,14 +45,12 @@ QvkLocale::~QvkLocale()
 void QvkLocale::slot_parse( QString tempPathFileName )
 {
     QFile file( tempPathFileName );
-    if( !file.open( QIODevice::ReadOnly ) )
-    {
+    if( !file.open( QIODevice::ReadOnly ) ) {
         return;
     }
 
     QTextStream textStream( &file );
-    while( !textStream.atEnd() )
-    {
+    while( !textStream.atEnd() ) {
         localeList << textStream.readLine();
     }
     file.close();

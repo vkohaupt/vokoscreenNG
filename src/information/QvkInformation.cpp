@@ -104,10 +104,8 @@ void QvkInformation::slot_Audiocodec( QString value )
 {
     bool bo = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listCheckBox.count(); i++ )
-    {
-        if ( listCheckBox.at(i)->checkState() == Qt::Checked )
-        {
+    for ( int i = 0; i < listCheckBox.count(); i++ ) {
+        if ( listCheckBox.at(i)->checkState() == Qt::Checked ) {
             bo = true;
             break;
         }
@@ -129,10 +127,8 @@ void QvkInformation::slot_Frames( int value )
 
 void QvkInformation::slot_newVersionAvailable( QString update )
 {
-    if ( ui->checkBoxLookForUpdates->isChecked() == true )
-    {
-        if ( global::version < update )
-        {
+    if ( ui->checkBoxLookForUpdates->isChecked() == true ) {
+        if ( global::version < update ) {
             QString string = "New Version available: " + update;
             ui->label_Upate_tab_1->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-download.html'>" + string + "</a>" );
             ui->label_Upate_tab_4->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-download.html'>" + string + "</a>" );
@@ -143,14 +139,10 @@ void QvkInformation::slot_newVersionAvailable( QString update )
             vkShowMessage->set_URL( "https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html" );
             vkShowMessage->set_StatusIcon( ":/pictures/status/information.png" );
             vkShowMessage->showMessage( "New Version available: " + update );
-        }
-        else
-        {
+        } else {
             ui->label_Upate_tab_4->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-download.html'>No update available</a>" );
         }
-    }
-    else
-    {
+    } else {
         ui->label_Upate_tab_1->clear();
         ui->label_Upate_tab_4->clear();
     }
@@ -201,8 +193,7 @@ void QvkInformation::slot_StorageInfo()
     filters << newVideoFilename;
     QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
 
-    if ( !videoFileList.empty() )
-    {
+    if ( !videoFileList.empty() ) {
         QString string;
         string.append( ui->lineEditVideoPath->text() );
         string.append( "/" );
@@ -217,17 +208,14 @@ void QvkInformation::slot_StorageInfo()
 void QvkInformation::slot_displayRecordTime()
 {
 
-   if ( ( ui->pushButtonStop->isEnabled() == true ) and ( ui->checkBoxStartTime->checkState() == Qt::Checked ) )
-   {
+   if ( ( ui->pushButtonStop->isEnabled() == true ) and ( ui->checkBoxStartTime->checkState() == Qt::Checked ) ) {
        QTime time( 0, 0, 0, 0 );
        ui->labelInfoRecordTime->setText( time.addMSecs( elapsedTime->elapsed() + int_summed ).toString( "hh:mm:ss" ) );
        return;
    }
 
-   if ( ui->pushButtonStop->isEnabled() == true )
-   {
+   if ( ui->pushButtonStop->isEnabled() == true ) {
       QTime time( 0, 0, 0, 0 );
       ui->labelInfoRecordTime->setText( time.addMSecs( elapsedTime->elapsed() + int_summed - sliderCountDown->value()*1000 - sliderSecondWaitBeforeRecording->value()*1000 ).toString( "hh:mm:ss" ) );
    }
 }
-

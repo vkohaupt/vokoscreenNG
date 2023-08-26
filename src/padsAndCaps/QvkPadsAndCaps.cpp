@@ -73,16 +73,13 @@ void QvkPadsAndCaps::pad_profile()
     }
 
     pads = gst_element_factory_get_static_pad_templates( source_factory );
-    while( pads )
-    {
+    while( pads ) {
         padtemplate = (GstStaticPadTemplate *) pads->data;
         pads = g_list_next( pads );
-        if ( padtemplate->static_caps.string )
-        {
+        if ( padtemplate->static_caps.string ) {
             GstCaps *caps = gst_static_caps_get( &padtemplate->static_caps );
 
-            for ( guint i = 0; i < gst_caps_get_size( caps ); i++ )
-            {
+            for ( guint i = 0; i < gst_caps_get_size( caps ); i++ ) {
                 GstStructure *structure = gst_caps_get_structure( caps, i );
                 gst_structure_foreach( structure, print_field, NULL );
             }

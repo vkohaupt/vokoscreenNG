@@ -179,46 +179,46 @@ bool QvkGlobalShortcut::isBusy( QString check )
    snapshot.append( boolToString( ui->checkBox_shortcut_snapshot_meta->isChecked() ) );
    snapshot.append( ui->comboBox_shortcut_snapshot->currentText() );
 
-   if ( check == "start" )
-   {
-       if ( ( start == pause ) or ( start == magnification ) or ( start == camera ) or ( start == showclick ) or ( start == halo ) or ( start == snapshot ) )
+   if ( check == "start" ) {
+       if ( ( start == pause ) or ( start == magnification ) or ( start == camera ) or ( start == showclick ) or ( start == halo ) or ( start == snapshot ) ) {
          return true;
+       }
    }
 
-   if ( check == "pause" )
-   {
-       if ( ( pause == start ) or ( pause == magnification) or ( pause == camera ) or ( pause == showclick ) or ( pause == halo ) or ( pause == snapshot ) )
+   if ( check == "pause" ) {
+       if ( ( pause == start ) or ( pause == magnification) or ( pause == camera ) or ( pause == showclick ) or ( pause == halo ) or ( pause == snapshot ) ) {
          return true;
+       }
    }
 
-   if ( check == "magnification" )
-   {
-       if ( ( magnification == start ) or ( magnification == pause ) or ( magnification == camera ) or ( magnification == showclick ) or ( magnification == halo ) or ( magnification == snapshot ) )
+   if ( check == "magnification" ) {
+       if ( ( magnification == start ) or ( magnification == pause ) or ( magnification == camera ) or ( magnification == showclick ) or ( magnification == halo ) or ( magnification == snapshot ) ) {
          return true;
+       }
    }
 
-   if ( check == "camera" )
-   {
-       if ( ( camera == start ) or ( camera == pause ) or ( camera == magnification ) or ( camera == showclick ) or ( camera == halo ) or ( camera == snapshot ) )
+   if ( check == "camera" ) {
+       if ( ( camera == start ) or ( camera == pause ) or ( camera == magnification ) or ( camera == showclick ) or ( camera == halo ) or ( camera == snapshot ) ) {
          return true;
+       }
    }
 
-   if ( check == "showclick" )
-   {
-       if ( ( showclick == start ) or ( showclick == pause ) or ( showclick == magnification ) or ( showclick == camera ) or ( showclick == halo ) or ( showclick == snapshot ) )
+   if ( check == "showclick" ) {
+       if ( ( showclick == start ) or ( showclick == pause ) or ( showclick == magnification ) or ( showclick == camera ) or ( showclick == halo ) or ( showclick == snapshot ) ) {
          return true;
+       }
    }
 
-   if ( check == "halo" )
-   {
-       if ( ( halo == start ) or ( halo == pause ) or ( halo == magnification ) or ( halo == camera ) or ( halo == showclick ) or( halo == snapshot ) )
+   if ( check == "halo" ) {
+       if ( ( halo == start ) or ( halo == pause ) or ( halo == magnification ) or ( halo == camera ) or ( halo == showclick ) or( halo == snapshot ) ) {
          return true;
+       }
    }
 
-   if ( check == "snapshot" )
-   {
-       if ( ( snapshot == start ) or ( snapshot == pause ) or ( snapshot == magnification )  or ( snapshot == camera ) or ( snapshot == showclick ) or ( snapshot == halo ) )
+   if ( check == "snapshot" ) {
+       if ( ( snapshot == start ) or ( snapshot == pause ) or ( snapshot == magnification )  or ( snapshot == camera ) or ( snapshot == showclick ) or ( snapshot == halo ) ) {
          return true;
+       }
    }
 
    return false;
@@ -266,8 +266,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_start_clicked( bool value )
         emit signal_shortcutSystray( "Stop", shortcut );
 
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Start:" << shortcut;
-    } else
-    {
+    } else {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
         ui->label_shortcut_picture_start->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
@@ -331,8 +330,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_pause_clicked( bool value )
         emit signal_shortcutSystray( "Continue", shortcut );
 
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Pause:" << shortcut;
-    } else
-    {
+    } else {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
         ui->label_shortcut_picture_pause->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
@@ -391,8 +389,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_magnification_clicked( bool value
         ui->checkBoxMagnifier->setToolTip( shortcut );
         emit signal_shortcutSystray( "magnification", shortcut );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Magnification:" << shortcut;
-    } else
-    {
+    } else {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
         ui->label_shortcut_picture_magnification->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
@@ -446,8 +443,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_camera_clicked( bool value )
         ui->checkBoxCameraOnOff->setToolTip( shortcut );
         emit signal_shortcutSystray( "camera", shortcut );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Camera:" << shortcut;
-    } else
-    {
+    } else {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
         ui->label_shortcut_picture_camera->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
@@ -502,8 +498,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_showclick_clicked( bool value )
         spezialCheckboxShowclick->setToolTip( shortcut );
         emit signal_shortcutSystray( "showclick", shortcut );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Showclick:" << shortcut;
-    } else
-    {
+    } else {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
         ui->label_shortcut_picture_showclick->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
@@ -559,8 +554,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_halo_clicked( bool value )
         spezialCheckboxHalo->setToolTip( shortcut );
         emit signal_shortcutSystray( "halo", shortcut );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Halo:" << shortcut;
-    } else
-    {
+    } else {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
         ui->label_shortcut_picture_halo->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
@@ -615,8 +609,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_snapshot_clicked( bool value )
         ui->pushButtonSnapshotSnapshot->setToolTip( shortcut );
         emit signal_shortcutSystray( "snapshot", shortcut );
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Snapshot:" << shortcut;
-    } else
-    {
+    } else {
         QIcon iconAvailable( QString::fromUtf8( ":/pictures/screencast/missing.png" ) );
         QSize size = iconAvailable.actualSize( QSize( 16, 16 ), QIcon::Normal, QIcon::On );
         ui->label_shortcut_picture_snapshot->setPixmap( iconAvailable.pixmap( size, QIcon::Normal, QIcon::On ));
@@ -637,11 +630,9 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_snapshot_currentIndexChanged( int
 
 void QvkGlobalShortcut::slot_startStop()
 {
-    if ( ui->pushButtonStart->isEnabled() == true )
-    {
+    if ( ui->pushButtonStart->isEnabled() == true ) {
         ui->pushButtonStart->click();
-    } else
-    {
+    } else {
         ui->pushButtonStop->click();
     }
 }
@@ -649,12 +640,9 @@ void QvkGlobalShortcut::slot_startStop()
 
 void QvkGlobalShortcut::slot_pauseContinue()
 {
-    if ( ui->pushButtonContinue->isHidden() == true )
-    {
+    if ( ui->pushButtonContinue->isHidden() == true ) {
         ui->pushButtonPause->click();
-    }
-    else
-    {
+    } else {
         ui->pushButtonContinue->click();
     }
 }
@@ -662,12 +650,9 @@ void QvkGlobalShortcut::slot_pauseContinue()
 
 void QvkGlobalShortcut::slot_setOrUnsetShortcut( bool value )
 {
-   if ( value == true )
-   {
+   if ( value == true ) {
        shortcutStart->setEnabled( false );
-   }
-   else
-   {
+   } else {
        shortcutStart->setEnabled( true );
    }
 }

@@ -63,14 +63,12 @@ void QvkMagnifier::slot_setMagnifierChangedSize(int value )
 
 void QvkMagnifier::slot_magnifierShow( bool value )
 {
-    if ( value == true )
-    {
+    if ( value == true ) {
         show();
         timer->start();
     }
 
-    if ( value == false )
-    {
+    if ( value == false ) {
         close();
         timer->stop();
     }
@@ -112,8 +110,7 @@ void QvkMagnifier::setMagnifier()
                              this->width()/2,
                              this->height()/2 );
 
-    if ( regionTopLeft.contains( screenCursorPos ) )
-    {
+    if ( regionTopLeft.contains( screenCursorPos ) ) {
         nameRegion = region::topLeft;
         valueRegion = regionTopLeft;
 
@@ -137,8 +134,7 @@ void QvkMagnifier::setMagnifier()
                                screen->size().width() - 2*this->width()/2,
                                this->height()/2 );
 
-    if ( regionTopMiddle.contains( screenCursorPos ) )
-    {
+    if ( regionTopMiddle.contains( screenCursorPos ) ) {
         nameRegion = region::topMiddle;
         valueRegion = regionTopMiddle;
 
@@ -162,8 +158,7 @@ void QvkMagnifier::setMagnifier()
                               this->width()/2,
                               this->height()/2 );
 
-    if ( regionTopRight.contains( screenCursorPos ) )
-    {
+    if ( regionTopRight.contains( screenCursorPos ) ) {
         nameRegion = region::topRight;
         valueRegion = regionTopRight;
 
@@ -188,8 +183,7 @@ void QvkMagnifier::setMagnifier()
                                  //                        (    Top       )   (             Bottom                      )
                                  screen->size().height() - this->height()/2 - ( this->height() + distanceY + distanceCopyMagnifier ) );
 
-    if ( regionRightMiddle.contains( screenCursorPos ) )
-    {
+    if ( regionRightMiddle.contains( screenCursorPos ) ) {
         nameRegion = region::rightMiddle;
         valueRegion = regionRightMiddle;
 
@@ -207,8 +201,7 @@ void QvkMagnifier::setMagnifier()
                                  this->width()/2,
                                  this->height() + 2*distanceY + distanceCopyMagnifier );
 
-    if ( regionBottomRight.contains( screenCursorPos ) )
-    {
+    if ( regionBottomRight.contains( screenCursorPos ) ) {
         nameRegion = region::bottomRight;
         valueRegion = regionBottomRight;
 
@@ -231,8 +224,7 @@ void QvkMagnifier::setMagnifier()
                                   screen->size().width() - 2*this->width()/2,
                                   this->height() + 2*distanceY + distanceCopyMagnifier );
 
-    if ( regionBottomMiddle.contains( screenCursorPos ) )
-    {
+    if ( regionBottomMiddle.contains( screenCursorPos ) ) {
         nameRegion = region::bottomMiddle;
         valueRegion = regionBottomMiddle;
 
@@ -255,8 +247,7 @@ void QvkMagnifier::setMagnifier()
                                 this->width()/2,
                                 this->height() + 2*distanceY + distanceCopyMagnifier );
 
-    if ( regionBottomLeft.contains( screenCursorPos ) )
-    {
+    if ( regionBottomLeft.contains( screenCursorPos ) ) {
         nameRegion = region::bottomLeft;
         valueRegion = regionBottomLeft;
 
@@ -280,8 +271,7 @@ void QvkMagnifier::setMagnifier()
                                 //                        (    Top       )   (             Bottom                      )
                                 screen->size().height() - this->height()/2 - ( this->height() + distanceY + distanceCopyMagnifier ) );
 
-    if ( regionLeftMiddle.contains( screenCursorPos ) )
-    {
+    if ( regionLeftMiddle.contains( screenCursorPos ) ) {
         nameRegion = region::leftMiddle;
         valueRegion = regionLeftMiddle;
 
@@ -302,8 +292,7 @@ void QvkMagnifier::setMagnifier()
                             screen->size().width() - 2*this->width()/2,
                             screen->size().height() - this->height()/2 - ( this->height() + distanceY + distanceCopyMagnifier ) );
 
-    if ( regionMiddle.contains( screenCursorPos ) )
-    {
+    if ( regionMiddle.contains( screenCursorPos ) ) {
         nameRegion = region::middle;
         valueRegion = regionMiddle;
 
