@@ -67,7 +67,6 @@ private slots:
 
 
 private:
-//    Ui_formMainWindow *ui_formMainWindow;
     QCamera *camera = nullptr;
     QvkCameraWatcher *cameraWatcher;
     QvkVideoSurface *videoSurface;

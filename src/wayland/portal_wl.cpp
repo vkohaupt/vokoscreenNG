@@ -89,8 +89,7 @@ void Portal_wl::requestScreenSharing( int value, int mouseOnOff )
         if ( reply.isError() ) {
             qWarning() << "Couldn't get reply";
             qWarning() << "Error: " << reply.error().message();
-        } else
-        {
+        } else {
             qDebug().noquote() << global::nameOutput << "Begin create portal session";
 
             bool bo = QDBusConnection::sessionBus().connect( QString(),
@@ -109,8 +108,7 @@ void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap 
 {
     qDebug().noquote() << global::nameOutput << "Got response from portal CreateSession";
 
-    if ( response != 0 )
-    {
+    if ( response != 0 ) {
         qWarning() << "Failed to create session: " << response;
         return;
     }

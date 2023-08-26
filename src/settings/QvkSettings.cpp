@@ -545,89 +545,79 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
 {
     Q_UNUSED(parent);
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
-    if ( log == true )
-    {
+    if ( log == true ) {
         // do nothing
-    }
-    else
+    } else {
         settings.clear();
+    }
 
     settings.beginGroup( global::name );
-    if ( log == true )
-    {
+    if ( log == true ) {
         // do nothing
-    }
-    else
+    } else {
         settings.setValue( "Version", global::version );
+    }
     settings.endGroup();
 
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralWidget->findChildren<QRadioButton *>();
-    for ( int i = 0; i < listRadiobuttons.count(); i++ )
-    {
-        if ( log == true )
+    for ( int i = 0; i < listRadiobuttons.count(); i++ ) {
+        if ( log == true ) {
             qDebug().noquote() << global::nameOutput << listRadiobuttons.at(i)->objectName() << "=" << listRadiobuttons.at(i)->isChecked();
-        else
+        } else {
             settings.setValue( listRadiobuttons.at(i)->objectName(), listRadiobuttons.at(i)->isChecked() );
+        }
     }
 
     QList<QCheckBox *> listCheckBox = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listCheckBox.count(); i++ )
-    {
+    for ( int i = 0; i < listCheckBox.count(); i++ ) {
         if ( ( listCheckBox.at(i)->objectName() == "checkBoxStopRecordingAfter" ) or
              ( listCheckBox.at(i)->objectName() == "checkBoxStartTime" ) )
         {
             // We do not save
-        }
-        else
-        {
-            if ( log == true )
+        } else {
+            if ( log == true ) {
                 qDebug().noquote() << global::nameOutput << listCheckBox.at(i)->objectName() << "=" << listCheckBox.at(i)->isChecked();
-            else
+            } else {
                 settings.setValue( listCheckBox.at(i)->objectName(), listCheckBox.at(i)->isChecked() );
+            }
         }
     }
 
     QList<QComboBox *> listComboBox = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
-    for ( int i = 0; i < listComboBox.count(); i++ )
-    {
-        if ( log == true )
+    for ( int i = 0; i < listComboBox.count(); i++ ) {
+        if ( log == true ) {
             qDebug().noquote() << global::nameOutput << listComboBox.at(i)->objectName() << "=" << listComboBox.at(i)->currentText();
-        else
+        } else {
             settings.setValue( listComboBox.at(i)->objectName(), listComboBox.at(i)->currentText() );
+        }
     }
 
     QList<QSlider *> listSlider = ui_mainwindow->centralWidget->findChildren<QSlider *>();
-    for ( int i = 0; i < listSlider.count(); i++ )
-    {
-        if ( log == true )
+    for ( int i = 0; i < listSlider.count(); i++ ) {
+        if ( log == true ) {
             qDebug().noquote() << global::nameOutput << listSlider.at(i)->objectName() << "=" << listSlider.at(i)->value();
-        else
+        } else {
             settings.setValue( listSlider.at(i)->objectName(), listSlider.at(i)->value() );
+        }
     }
 
     QList<QLineEdit *> listLineEdit = ui_mainwindow->centralWidget->findChildren<QLineEdit *>();
-    for ( int i = 0; i < listLineEdit.count(); i++ )
-    {
-        if ( listLineEdit.at(i)->objectName().contains( "lineEdit" ) )
-        {
-            if ( log == true )
+    for ( int i = 0; i < listLineEdit.count(); i++ ) {
+        if ( listLineEdit.at(i)->objectName().contains( "lineEdit" ) ) {
+            if ( log == true ) {
                 qDebug().noquote() << global::nameOutput << listLineEdit.at(i)->objectName() << "=" << listLineEdit.at(i)->text();
-            else
+            } else {
                 settings.setValue( listLineEdit.at(i)->objectName(), listLineEdit.at(i)->text() );
+            }
         }
     }
 
     QList<QToolButton *> listToolButton = ui_mainwindow->centralWidget->findChildren<QToolButton *>();
-    for ( int i = 0; i < listToolButton.count(); i++ )
-    {
-        if ( listToolButton.at(i)->objectName().contains( "toolButtonMute" ) )
-        {
-            if ( listToolButton.at(i)->isChecked() == true )
-            {
+    for ( int i = 0; i < listToolButton.count(); i++ ) {
+        if ( listToolButton.at(i)->objectName().contains( "toolButtonMute" ) ) {
+            if ( listToolButton.at(i)->isChecked() == true ) {
                 settings.setValue( listToolButton.at(i)->objectName(), "audio-volume-muted" );
-            }
-            else
-            {
+            } else {
                 settings.setValue( listToolButton.at(i)->objectName(), "audio-volume-high" );
             }
         }
@@ -642,8 +632,7 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
     }
 
     QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui_mainwindow->centralWidget->findChildren<QvkSpezialCheckbox *>();
-    for ( int i = 0; i < listSpezialCheckbox.count(); i++ )
-    {
+    for ( int i = 0; i < listSpezialCheckbox.count(); i++ ) {
         settings.setValue( listSpezialCheckbox.at(i)->objectName(), listSpezialCheckbox.at(i)->isChecked() );
     }
 }

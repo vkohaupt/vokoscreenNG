@@ -202,8 +202,7 @@ void QvkSpezialCheckbox::paintUnChecked( QPainter &painter )
     QBrush brushRibs( Qt::darkGray );
     painter.setBrush( brushRibs );
     int step = 5;
-    for ( int x = 0; x < 10; x++ )
-    {
+    for ( int x = 0; x < 10; x++ ) {
        int value = step * x;
 
        painter.drawRect( slider_x + radius/2 + value,

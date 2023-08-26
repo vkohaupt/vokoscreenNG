@@ -166,11 +166,7 @@ int main(int argc, char *argv[])
     // Gstreamer debug end
 
     gst_init (&argc, &argv);
-/*
-    QTranslator * qtTranslator = new QTranslator();
-    qtTranslator->load( "qt_" + QLocale::system().name(), QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
-    app.installTranslator( qtTranslator );
-*/
+
 #ifdef Q_OS_LINUX
     if ( QvkWaylandRoutines::is_Wayland_Display_Available() == false )
     {

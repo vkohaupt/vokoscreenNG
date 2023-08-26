@@ -86,33 +86,6 @@ QvkCameraController::~QvkCameraController()
 {
 }
 
-/*
-int QvkCameraController::get_camaraWindow_X()
-{
-    int value;
-    if ( vkCameraWindow != NULL ) {
-        value = vkCameraWindow->geometry().x();
-    } else {
-        value = 0;
-    }
-
-    return value;
-}
-
-
-int QvkCameraController::get_cameraWindow_Y()
-{
-    int value;
-    if ( vkCameraWindow != NULL ) {
-        value = vkCameraWindow->geometry().y();
-    } else {
-        value = 0;
-    }
-
-    return value;
-}
-*/
-
 void QvkCameraController::slot_resolutionChanged( int index )
 {
     Q_UNUSED(index)

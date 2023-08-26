@@ -53,7 +53,6 @@ QvkCameraSettingsDialog::QvkCameraSettingsDialog(QWidget *parent) :
     dialog_sliderCameraWindowZoom->setValue( 0 );
     dialog_sliderCameraWindowZoom->show();
     dialog_sliderCameraWindowZoom->setShowValue( true );
-
 }
 
 QvkCameraSettingsDialog::~QvkCameraSettingsDialog()

@@ -1208,12 +1208,9 @@ void QvkMainWindow::slot_areaSetResolution( QString value )
 
 void QvkMainWindow::slot_StartTimer( bool value )
 {
-    if ( value == true )
-    {
+    if ( value == true ) {
         timerStartTimer->start( 1000 );
-    }
-    else
-    {
+    } else {
         timerStartTimer->stop();
     }
 }

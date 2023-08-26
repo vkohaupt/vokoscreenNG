@@ -116,8 +116,7 @@ void QvkMainWindow_wl::set_CornerWidget()
     QPixmap pixmap( ":/pictures/cornerWidget/wayland.png" );
     pixmap = pixmap.scaled( QSize( 48, 48 ), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
 
-    for ( int i = 0; i < list.count(); i++ )
-    {
+    for ( int i = 0; i < list.count(); i++ ) {
         QLabel *label = new QLabel();
         label->setPixmap( pixmap );
         label->setEnabled( false );
@@ -192,12 +191,9 @@ QString QvkMainWindow_wl::get_Videocodec_Encoder()
 QString QvkMainWindow_wl::get_Muxer()
 {
     QString value = ui->comboBoxFormat->currentData().toString();
-    if ( ui->comboBoxFormat->currentData().toString() == "matroskamux" )
-    {
+    if ( ui->comboBoxFormat->currentData().toString() == "matroskamux" ) {
         value = ui->comboBoxFormat->currentData().toString() + " name=mux writing-app=" + global::name + "_" + QString( global::version ).replace( " ", "_" );
-    }
-    else
-    {
+    } else {
         value = ui->comboBoxFormat->currentData().toString() + " name=mux";
     }
     return value;
@@ -210,20 +206,17 @@ void QvkMainWindow_wl::slot_start()
     // Value 1 = MONITOR
     // Value 2 = WINDOW
     int sourceType = 1;
-    if ( ui->radioButtonScreencastFullscreen->isChecked() )
-    {
+    if ( ui->radioButtonScreencastFullscreen->isChecked() ) {
         qDebug().noquote() << global::nameOutput << "Start portal fullscreen";
         sourceType = 1;
     }
 
-    if ( ui->radioButtonScreencastWindow->isChecked() )
-    {
+    if ( ui->radioButtonScreencastWindow->isChecked() ) {
         qDebug().noquote() << global::nameOutput << "Start portal window";
         sourceType = 2;
     }
 
-    if ( ui->radioButtonScreencastArea->isChecked() )
-    {
+    if ( ui->radioButtonScreencastArea->isChecked() ) {
         qDebug().noquote() << global::nameOutput << "Start portal area";
         sourceType = 1;
     }
@@ -232,14 +225,12 @@ void QvkMainWindow_wl::slot_start()
     // Value 1 = hidden cursor
     // Value 2 = record cursor
     int mousecursorONOff = 1;
-    if ( ui->checkBoxMouseCursorOnOff->isChecked() == true )
-    {
+    if ( ui->checkBoxMouseCursorOnOff->isChecked() == true ) {
         qDebug().noquote() << global::nameOutput << "Mouse cursor is not recording";
         mousecursorONOff = 1;
     }
 
-    if ( ui->checkBoxMouseCursorOnOff->isChecked() == false )
-    {
+    if ( ui->checkBoxMouseCursorOnOff->isChecked() == false ) {
         qDebug().noquote() << global::nameOutput << "Mouse cursor is recording";
         mousecursorONOff = 2;
     }
@@ -383,19 +374,14 @@ void QvkMainWindow_wl::set_check_all_Elements_available()
 
     qDebug().noquote() << global::nameOutput << "--- GStreamer elements ---";
 
-    for ( int i = 0; i < list.count(); i++ )
-    {
+    for ( int i = 0; i < list.count(); i++ ) {
         GstElementFactory *factory = gst_element_factory_find( QString( list.at(i) ).toLatin1() );
-        if ( !factory )
-        {
+        if ( !factory ) {
             qDebug().noquote() << global::nameOutput << "-" << list.at(i);
-            if ( list.at(i) == "pipewiresrc" )
-            {
+            if ( list.at(i) == "pipewiresrc" ) {
                messageBox( "gstreamer-plugin-pipewire" );
             }
-        }
-        else
-        {
+        } else {
             qDebug().noquote() << global::nameOutput << "+" << list.at(i);
             gst_object_unref( factory );
         }
