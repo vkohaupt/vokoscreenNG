@@ -18,8 +18,7 @@ QString QvkVirtual::isVirtualMaschine()
     process.setProcessChannelMode( QProcess::MergedChannels );
     process.start( "systemd-detect-virt", QStringList() );
 
-    if ( process.waitForFinished( 30000 ) )
-    {
+    if ( process.waitForFinished( 30000 ) ) {
         QString text( process.readAll() );
         maschine = text.trimmed();
     }
@@ -42,8 +41,7 @@ QString QvkVirtual::isVirtualMaschine()
     list.append( "manufacturer,name,model" );
     process.start( "C:/WINDOWS/System32/Wbem/WMIC.exe", list );
 
-    if ( process.waitForFinished( 30000 ) )
-    {
+    if ( process.waitForFinished( 30000 ) ) {
         QString text( process.readAll() );
         text = text.section( "\n", 1 );
         text = text.replace( "\r", "" );
@@ -59,8 +57,7 @@ QProcess wmic;
 
 wmic.setProcessChannelMode(QProcess::MergedChannels);
 wmic.start("wmic", QStringList() << "computersystem" << "get" << "manufacturer,name");
-if(wmic.waitForFinished(10000))
-{
+if ( wmic.waitForFinished(10000 ) ) {
     QString text(wmic.readAll());
     bool isVM = text.contains("VMware") || text.contains("VirtualBox") || text.contains("Virtual Machine");
     qDebug() << text;

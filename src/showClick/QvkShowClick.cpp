@@ -48,12 +48,9 @@ void QvkShowClick::init( Ui_formMainWindow *ui_formMainWindow )
 void QvkShowClick::setColorButtons()
 {
     QList<QHBoxLayout *> listLayaout = ui->gridLayout_showclick_color_pushButton->findChildren<QHBoxLayout *>();
-    for ( int i = 0; i < listLayaout.count(); i++ )
-    {
-        for ( int x = 0; x < 20; x++ )
-        {
-            if ( listLayaout.at(i)->objectName().section( "_", 2, 2 ) == QVariant::fromValue( Qt::GlobalColor(x) ).toString() )
-            {
+    for ( int i = 0; i < listLayaout.count(); i++ ) {
+        for ( int x = 0; x < 20; x++ ) {
+            if ( listLayaout.at(i)->objectName().section( "_", 2, 2 ) == QVariant::fromValue( Qt::GlobalColor(x) ).toString() ) {
                 QvkPushButton *vkPushButton = new QvkPushButton( Qt::GlobalColor(x) );
                 vkPushButton->setObjectName( "PushButton_ShowClick_color_" + QVariant::fromValue( Qt::GlobalColor(x) ).toString() );
                 vkPushButton->setMaximumHeight( 23 );
@@ -139,22 +136,17 @@ void QvkShowClick::slot_mousePressed( int x, int y, QString mouseButton )
 {
     QColor color;
     QList<QvkPushButton *> listPushButton = ui->centralWidget->findChildren<QvkPushButton *>();
-    for ( int i = 0; i < listPushButton.count(); i++ )
-    {
-        if ( ( listPushButton.at(i)->underMouse() == true ) and ( listPushButton.at(i)->objectName().contains( "ShowClick_color" ) ) )
-        {
+    for ( int i = 0; i < listPushButton.count(); i++ ) {
+        if ( ( listPushButton.at(i)->underMouse() == true ) and ( listPushButton.at(i)->objectName().contains( "ShowClick_color" ) ) ) {
             QString objectNameColor = listPushButton.at(i)->objectName().section( "_", 3, 3);
-            for ( int x = 0; x < 20; x++ )
-            {
-                if ( QVariant::fromValue( Qt::GlobalColor(x) ).toString().contains( objectNameColor ) )
-                {
+            for ( int x = 0; x < 20; x++ ) {
+                if ( QVariant::fromValue( Qt::GlobalColor(x) ).toString().contains( objectNameColor ) ) {
                     color = Qt::GlobalColor(x);
                     break;
                 }
             }
             break;
-        } else
-        {
+        } else {
             color = vkPreviewWidget->getColor();
         }
     }

@@ -126,8 +126,7 @@ void QvkShowMessage::showMessage( QString text )
 {
     degreeStep = 360 / timeOut * timerInterval;
 
-    if ( statusIcon.isEmpty() == false )
-    {
+    if ( statusIcon.isEmpty() == false ) {
         QPixmap pixmap( statusIcon );
         pixmap = pixmap.scaled( 48, 48, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
         labelIcon->setPixmap( pixmap );

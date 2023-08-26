@@ -146,8 +146,7 @@ QString QvkMainWindow_wl::get_Videocodec_Encoder()
     QString value;
     QString encoder = ui->comboBoxVideoCodec->currentData().toString();
 
-    if ( encoder == "openh264enc" )
-    {
+    if ( encoder == "openh264enc" ) {
         QStringList list;
         list << encoder;
         list << "qp-min=23"; // + QString::number( sliderOpenh264->value() );
@@ -160,8 +159,7 @@ QString QvkMainWindow_wl::get_Videocodec_Encoder()
         value.append( " ! h264parse" );
     }
 
-    if ( encoder == "x264enc" )
-    {
+    if ( encoder == "x264enc" ) {
         QStringList list;
         list << encoder;
         list << "qp-min=17"; // + QString::number( sliderOpenh264->value() );
@@ -172,8 +170,7 @@ QString QvkMainWindow_wl::get_Videocodec_Encoder()
         value.append( " ! video/x-h264, profile=baseline" );
     }
 
-    if ( encoder == "vp8enc" )
-    {
+    if ( encoder == "vp8enc" ) {
         QStringList list;
         list << encoder;
         list << "min_quantizer=20"; // + QString::number( sliderVp8->value() );

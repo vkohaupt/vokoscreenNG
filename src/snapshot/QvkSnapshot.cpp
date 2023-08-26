@@ -62,8 +62,7 @@ void QvkSnapshot::init()
 void QvkSnapshot::supportedImageFormats()
 {
     QList<QByteArray> listFormats = QImageWriter::supportedImageFormats();
-    if ( listFormats.empty() == false )
-    {
+    if ( listFormats.empty() == false ) {
         for ( int x = 0; x < listFormats.count(); x++ ) {
             ui->comboBoxSnapshotImageFormats->addItem( QString( listFormats.at(x) ) );
         }
@@ -78,8 +77,7 @@ void QvkSnapshot::slot_newImage()
     myScreen = QGuiApplication::screens();
     filename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss.zzz" ) + "." + ui->comboBoxSnapshotImageFormats->currentText().toUtf8();
 
-    if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
-    {
+    if ( ui->radioButtonScreencastFullscreen->isChecked() == true ) {
         Qt::ApplicationStates wasApplicationStates = QGuiApplication::applicationState();
 
         bool wasMinimized = vkMainWindow->isMinimized();
@@ -119,10 +117,8 @@ void QvkSnapshot::slot_newImage()
         }
     }
 
-    if ( ui->radioButtonScreencastWindow->isChecked() == true )
-    {
-        if ( ui->pushButtonStart->isEnabled() == true )
-        {
+    if ( ui->radioButtonScreencastWindow->isChecked() == true ) {
+        if ( ui->pushButtonStart->isEnabled() == true ) {
             vkWinInfo = new QvkWinInfo;
             disconnect( vkWinInfo, nullptr, nullptr, nullptr );
             // The slot is triggered if no recording is running
@@ -151,8 +147,7 @@ void QvkSnapshot::slot_newImage()
         }
     }
 
-    if ( ui->radioButtonScreencastArea->isChecked() == true )
-    {
+    if ( ui->radioButtonScreencastArea->isChecked() == true ) {
         Qt::ApplicationStates wasApplicationStates = QGuiApplication::applicationState();
 
         bool wasMinimized = vkMainWindow->isMinimized();
@@ -210,8 +205,7 @@ bool QvkSnapshot::is_imageFolderExists_and_haveWritePermission()
 {
     // Create Folder if not exists
     QDir dir( ui->lineEditSnapshotImagePath->text() );
-    if ( !dir.exists() )
-    {
+    if ( !dir.exists() ) {
         // check of QStandardPaths::MoviesLocation
         QDir dir( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
         if ( !dir.exists() ) {
@@ -229,8 +223,7 @@ bool QvkSnapshot::is_imageFolderExists_and_haveWritePermission()
     bool value;
     QFileInfo fileInfo( filename );
     QFile file( filename );
-    if ( file.open( QIODevice::ReadWrite ) )
-    {
+    if ( file.open( QIODevice::ReadWrite ) ) {
         QTextStream stream( &file );
         stream << "Test Test Test Test Test Test" << Qt::endl;
         file.close();
@@ -298,8 +291,7 @@ void QvkSnapshot::slot_imagePath()
     QApplication::setDesktopSettingsAware( false );
 
     QvkDirDialog vkDirDialog( this );
-    if ( vkDirDialog.exec() == QDialog::Accepted )
-    {
+    if ( vkDirDialog.exec() == QDialog::Accepted ) {
         if ( !vkDirDialog.selectedFiles().empty() ) {
             ui->lineEditSnapshotImagePath->setText( vkDirDialog.selectedFiles().at(0) );
         }
@@ -313,8 +305,7 @@ void QvkSnapshot::slot_Folder()
 {
     QString path = ui->lineEditSnapshotImagePath->text();
 
-    if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false )
-    {
+    if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false ) {
         QPixmap pixmap( ":/pictures/status/information.png" );
         pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
 

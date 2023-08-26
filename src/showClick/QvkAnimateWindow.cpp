@@ -94,24 +94,21 @@ void QvkAnimateWindow::paintEvent( QPaintEvent *event )
     pen.setWidthF( 3.0 );
     painterPixmap.setPen( pen );
     painterPixmap.setOpacity( opacity );
-    if ( mouseButton == "LeftButton" )
-    {
+    if ( mouseButton == "LeftButton" ) {
         QRectF rectF( width()/2 - diameter/2 + 1.5*penWith, height()/2 - diameter/2 + 1.5*penWith, diameter-3*penWith, diameter-3*penWith );
         qreal startAngle = 90 * 16;
         qreal spanAngle = 180 * 16;
         painterPixmap.drawArc( rectF, startAngle, spanAngle );
     }
 
-    if ( mouseButton == "RightButton" )
-    {
+    if ( mouseButton == "RightButton" ) {
         QRectF rectF( width()/2 - diameter/2 + 1.5*penWith, height()/2 - diameter/2 + 1.5*penWith, diameter-3*penWith, diameter-3*penWith );
         qreal startAngle = -90 * 16;
         qreal spanAngle = 180 * 16;
         painterPixmap.drawArc( rectF, startAngle, spanAngle );
     }
 
-    if ( mouseButton == "MiddleButton" )
-    {
+    if ( mouseButton == "MiddleButton" ) {
         QLineF line( width()/2, height()/2 - diameter/2 + 1.5*penWith , width()/2, height()/2 + diameter/2 - 1.5*penWith );
         painterPixmap.drawLine( line );
     }

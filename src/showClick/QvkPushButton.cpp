@@ -70,8 +70,7 @@ void QvkPushButton::paintEvent( QPaintEvent *event )
         painter.end();
     }
 
-    if ( mouseHover == true )
-    {
+    if ( mouseHover == true ) {
         QPainter painter;
         painter.begin( this );
         painter.setRenderHints( QPainter::Antialiasing, true );
@@ -98,8 +97,7 @@ void QvkPushButton::paintEvent( QPaintEvent *event )
         painter.end();
     }
 
-    if ( mousePressed == true )
-    {
+    if ( mousePressed == true ) {
         QPainter painter;
         painter.begin( this );
         painter.setRenderHints( QPainter::Antialiasing, true );

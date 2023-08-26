@@ -508,16 +508,14 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // *************** systrayAlternative **********************
     vkSystrayAlternative = new QvkSystrayAlternative( this, ui, sliderShowInSystrayAlternative );
     vkSystray = new QvkSystray( ui );
-    if ( QSystemTrayIcon::isSystemTrayAvailable() == true )
-    {
+    if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
         vkSystray->init();
         connect( vkSystray,                 SIGNAL( signal_SystemtrayIsClose() ),                 this,      SLOT( close() ) );
         connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ),                            vkSystray, SLOT( setVisible( bool ) ) );
         connect( vkGlobalShortcut,          SIGNAL( signal_shortcutSystray( QString, QString ) ), vkSystray, SLOT( slot_shortcutSystray( QString, QString ) ) );
         ui->frameShowInSystrayAlternative->hide();
         ui->toolButtonShowInSystrayAlternativeReset->hide();
-    } else
-    {
+    } else {
         connect( ui->checkBoxShowInSystrayAlternative, SIGNAL( clicked( bool ) ), vkSystrayAlternative, SLOT( setVisible( bool ) ) );
         connect( vkGlobalShortcut,          SIGNAL( signal_shortcutSystray( QString, QString ) ), vkSystrayAlternative, SLOT( slot_shortcutSystray( QString, QString ) ) );
         ui->frameShowInSystray->hide();
@@ -672,8 +670,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QString localeCountry = QLocale::countryToString( locale.country() );
     QDir dir( ":/language", "*.qm" );
     QStringList list = dir.entryList();
-    if ( list.contains( localeName ) == false )
-    {
+    if ( list.contains( localeName ) == false ) {
         QPalette palette;
         palette.setColor( QPalette::Window, Qt::white );
         palette.setColor( QPalette::WindowText, Qt::red );
@@ -859,8 +856,7 @@ void QvkMainWindow::slot_comboBoxOpenh264Profile( QStringList list )
 
 void QvkMainWindow::slot_GstreamerDebugLevelDialog( bool value )
 {
-    if ( value == true )
-    {
+    if ( value == true ) {
         QString string;
         string += "1. Warning, please only activate if requested by the developer!<br>";
         string += "2. Warning, the storage device can fill up to 2GB/min.!<br>";
@@ -877,8 +873,7 @@ void QvkMainWindow::slot_GstreamerDebugLevelDialog( bool value )
         msgBox.setDefaultButton( QMessageBox::Cancel );
         int ret = msgBox.exec();
 
-        if( ret == QMessageBox::Cancel )
-        {
+        if( ret == QMessageBox::Cancel ) {
             ui->checkBoxGstreamerDebugLevel->click();
         }
     }
@@ -891,8 +886,7 @@ void QvkMainWindow::slot_GstreamerOpenFolder( bool value )
     QvkSettings vkSettingsGstDebug;
     QFileInfo fileInfo( vkSettingsGstDebug.getFileName() );
     QString path = fileInfo.absolutePath();
-    if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false )
-    {
+    if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false ) {
         QPixmap pixmap( ":/pictures/status/information.png" );
         pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
 
@@ -921,12 +915,10 @@ bool QvkMainWindow::is_videoFolderExists_and_haveWritePermission()
 {
     // Create Folder if not exists
     QDir dir( ui->lineEditVideoPath->text() );
-    if ( !dir.exists() )
-    {
+    if ( !dir.exists() ) {
         // check of QStandardPaths::MoviesLocation
         QDir dir( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
-        if ( !dir.exists() )
-        {
+        if ( !dir.exists() ) {
             bool myBool = dir.mkpath( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
             Q_UNUSED(myBool);
         }
@@ -939,8 +931,7 @@ bool QvkMainWindow::is_videoFolderExists_and_haveWritePermission()
     bool value;
     QFileInfo fileInfo( filename );
     QFile file( filename );
-    if ( file.open( QIODevice::ReadWrite ) )
-    {
+    if ( file.open( QIODevice::ReadWrite ) ) {
         QTextStream stream( &file );
         stream << "Test Test Test Test Test Test" << Qt::endl;
         file.close();
@@ -993,8 +984,7 @@ void QvkMainWindow::slot_textToGuiLog( QString value )
 
 void QvkMainWindow::slot_setMaxFPS( int index )
 {
-    if ( index > -1 )
-    {
+    if ( index > -1 ) {
         QList<QScreen *> screen = QGuiApplication::screens();
         sliderFrames->setMaximum( screen.at( index )->refreshRate() );
     }
@@ -1038,8 +1028,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
     }
 #endif
 
-    if ( vkShowClick->vkSpezialCheckbox->isChecked() == true )
-    {
+    if ( vkShowClick->vkSpezialCheckbox->isChecked() == true ) {
         emit vkShowClick->vkSpezialCheckbox->signal_clicked( false );
     }
 
@@ -1054,8 +1043,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
 {
 #ifdef Q_OS_LINUX
-    if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
-    {
+    if ( ui->radioButtonScreencastFullscreen->isChecked() == true ) {
         int index = ui->comboBoxScreencastScreen->currentIndex();
         QList<QScreen *> screen = QGuiApplication::screens();
         int left = static_cast<int>( screen.at( index )->geometry().left() * screen.at( index )->devicePixelRatio() );
@@ -1065,15 +1053,13 @@ void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
         vkCountdown->y = top + screen.at( index )->geometry().height() / 2 - ( vkCountdown->Height / 2 );
     }
 
-    if ( ui->radioButtonScreencastWindow->isChecked() == true )
-    {
+    if ( ui->radioButtonScreencastWindow->isChecked() == true ) {
         QScreen *screen = QGuiApplication::primaryScreen();
         vkCountdown->x = ( screen->geometry().width() / 2 ) - ( vkCountdown->Width / 2 );
         vkCountdown->y = ( screen->geometry().height() / 2 ) - ( vkCountdown->Height / 2 );
     }
 
-    if ( ui->radioButtonScreencastArea->isChecked() == true )
-    {
+    if ( ui->radioButtonScreencastArea->isChecked() == true ) {
         int index = ui->comboBoxScreencastScreenArea->currentIndex();
         QList<QScreen *> screen = QGuiApplication::screens();
         int left = static_cast<int>( screen.at( index )->geometry().left() * screen.at( index )->devicePixelRatio() );
@@ -1086,8 +1072,7 @@ void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
 
 #ifdef Q_OS_WIN
     // Unter Windows muß der Index des Displays zur Anzege des Countdowns in unsorierter Reihenfolge bereitgestellt werden.
-    if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
-    {
+    if ( ui->radioButtonScreencastFullscreen->isChecked() == true ) {
         int index = 0;
         QString nameDisplay = ui->comboBoxScreencastScreen->currentText().section( ":", 0, 0 ).trimmed();
         QList<QScreen *> screenList = QGuiApplication::screens(); // unsortiert
@@ -1105,8 +1090,7 @@ void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
         vkCountdown->y = top + screenList.at( index )->geometry().height() / 2 - ( vkCountdown->Height / 2 );
     }
 
-    if ( ui->radioButtonScreencastArea->isChecked() == true )
-    {
+    if ( ui->radioButtonScreencastArea->isChecked() == true ) {
         int index = 0;
         QString nameDisplay = ui->comboBoxScreencastScreenArea->currentText().section( ":", 0, 0 ).trimmed();
         QList<QScreen *> screenList = QGuiApplication::screens(); // unsortiert
@@ -1181,8 +1165,7 @@ void QvkMainWindow::slot_videoCodecChanged( QString codec )
 
 void QvkMainWindow::slot_IfStartAudioCodecWidgetsSetEnabled()
 {
-    if ( isAudioDeviceSelected() == true )
-    {
+    if ( isAudioDeviceSelected() == true ) {
         ui->labelAudioCodec->setEnabled( false );
         ui->comboBoxAudioCodec->setEnabled( false );
     }
@@ -1191,8 +1174,7 @@ void QvkMainWindow::slot_IfStartAudioCodecWidgetsSetEnabled()
 
 void QvkMainWindow::slot_IfStopAudioCodecWidgetsSetDisabled()
 {
-    if ( isAudioDeviceSelected() == true )
-    {
+    if ( isAudioDeviceSelected() == true ) {
         ui->labelAudioCodec->setEnabled( true );
         ui->comboBoxAudioCodec->setEnabled( true );
     }
@@ -1234,8 +1216,7 @@ void QvkMainWindow::slot_newVideoPath()
     QApplication::setDesktopSettingsAware( false );
 
     QvkDirDialog vkDirDialog( this );
-    if ( vkDirDialog.exec() == QDialog::Accepted )
-    {
+    if ( vkDirDialog.exec() == QDialog::Accepted ) {
         if ( !vkDirDialog.selectedFiles().empty() ) {
             ui->lineEditVideoPath->setText( vkDirDialog.selectedFiles().at(0) );
         }
@@ -1247,8 +1228,7 @@ void QvkMainWindow::slot_newVideoPath()
 
 void QvkMainWindow::slot_videoFileSystemWatcherSetNewPath()
 {
-    if ( !videoFileSystemWatcher->directories().isEmpty() )
-    {
+    if ( !videoFileSystemWatcher->directories().isEmpty() ) {
        videoFileSystemWatcher->removePaths( videoFileSystemWatcher->directories() );
     }
     videoFileSystemWatcher->addPath( ui->lineEditVideoPath->text() );
@@ -1262,12 +1242,9 @@ void QvkMainWindow::slot_videoFileSystemWatcherSetButtons()
   filters << global::name +"*";
   QStringList List = dir.entryList( filters, QDir::Files, QDir::Time );
 
-  if ( List.isEmpty() || ( ui->pushButtonStart->isEnabled() == false ) )
-  {
+  if ( List.isEmpty() || ( ui->pushButtonStart->isEnabled() == false ) ) {
     ui->pushButtonPlay->setEnabled( false );
-  }
-  else
-  {
+  } else {
     ui->pushButtonPlay->setEnabled( true );
   }
 }
@@ -1299,10 +1276,8 @@ bool QvkMainWindow::isAudioDeviceSelected()
 {
     bool value = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listCheckBox.count(); i++ )
-    {
-        if ( listCheckBox.at(i)->checkState() == Qt::Checked )
-        {
+    for ( int i = 0; i < listCheckBox.count(); i++ ) {
+        if ( listCheckBox.at(i)->checkState() == Qt::Checked ) {
             value = true;
             break;
         }
@@ -1317,13 +1292,11 @@ QString QvkMainWindow::VK_getXimagesrc()
     QString value = "";
 
     QString showPointer = "true";
-    if( ui->checkBoxMouseCursorOnOff->checkState() == Qt::Checked )
-    {
+    if( ui->checkBoxMouseCursorOnOff->checkState() == Qt::Checked ) {
         showPointer = "false";
     }
 
-    if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
-    {
+    if ( ui->radioButtonScreencastFullscreen->isChecked() == true ) {
           QStringList stringList;
           stringList << "ximagesrc"
                      << "display-name=" + qgetenv( "DISPLAY" )
@@ -1336,15 +1309,11 @@ QString QvkMainWindow::VK_getXimagesrc()
           value = stringList.join( " " );
     }
 
-    if( ui->radioButtonScreencastWindow->isChecked() == true )
-    {
+    if( ui->radioButtonScreencastWindow->isChecked() == true ) {
         QString xid;
-        if ( ui->checkBoxStartTime->isChecked() == true )
-        {
+        if ( ui->checkBoxStartTime->isChecked() == true ) {
             xid = QString::number( QvkWinInfo::activeWindow() );
-        }
-        else
-        {
+        } else {
             xid = QString::number( vkWinInfo->getWinID() );
         }
 
@@ -1357,8 +1326,7 @@ QString QvkMainWindow::VK_getXimagesrc()
         value = stringList.join( " " );
     }
 
-    if ( ui->radioButtonScreencastArea->isChecked() == true )
-    {
+    if ( ui->radioButtonScreencastArea->isChecked() == true ) {
         QStringList stringList;
         stringList << "ximagesrc"
                    << "display-name=" + qgetenv( "DISPLAY" )
@@ -1382,13 +1350,11 @@ QString QvkMainWindow::VK_getXimagesrc()
     QString value;
     QString showPointer = "true";
 
-    if( ui->checkBoxMouseCursorOnOff->checkState() == Qt::Checked )
-    {
+    if( ui->checkBoxMouseCursorOnOff->checkState() == Qt::Checked ) {
         showPointer = "false";
     }
 
-    if( ui->radioButtonScreencastFullscreen->isChecked() == true )
-    {
+    if( ui->radioButtonScreencastFullscreen->isChecked() == true ) {
         int screenNumber = ( ui->comboBoxScreencastScreen->currentIndex() );
         QStringList stringList;
         stringList << "gdiscreencapsrc"
@@ -1397,8 +1363,7 @@ QString QvkMainWindow::VK_getXimagesrc()
         value = stringList.join( " " );
     }
 
-    if ( ui->radioButtonScreencastArea->isChecked() == true )
-    {
+    if ( ui->radioButtonScreencastArea->isChecked() == true ) {
         int screenNumber = ( ui->comboBoxScreencastScreenArea->currentIndex() );
         QStringList stringList;
         stringList << "gdiscreencapsrc"
@@ -1434,36 +1399,30 @@ QString QvkMainWindow::VK_scale()
     QString value = "";
     int modulo = 2;
 
-    if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
-    {
+    if ( ui->radioButtonScreencastFullscreen->isChecked() == true ) {
         int width = get_width_From_Screen().toInt();
         int height = get_height_From_Screen().toInt();
 
-        if ( ( get_width_From_Screen().toInt() % modulo ) > 0 )
-        {
+        if ( ( get_width_From_Screen().toInt() % modulo ) > 0 ) {
             width = get_width_From_Screen().toInt() - ( get_width_From_Screen().toInt() % modulo ) + modulo;
         }
 
-        if ( ( get_height_From_Screen().toInt() % modulo ) > 0 )
-        {
+        if ( ( get_height_From_Screen().toInt() % modulo ) > 0 ) {
             height = get_height_From_Screen().toInt() - ( get_height_From_Screen().toInt() % modulo ) + modulo;
         }
 
         value = "videoscale ! video/x-raw, width=" + QString::number( width ) + ", height=" + QString::number( height ) + " !";
     }
 
-    if ( ui->radioButtonScreencastArea->isChecked() == true )
-    {
+    if ( ui->radioButtonScreencastArea->isChecked() == true ) {
         int width = (int)vkRegionChoise->getWidth();
         int height = (int)vkRegionChoise->getHeight();
 
-        if ( ( (int)vkRegionChoise->getWidth() % modulo ) > 0 )
-        {
+        if ( ( (int)vkRegionChoise->getWidth() % modulo ) > 0 ) {
             width = (int)vkRegionChoise->getWidth() - ( (int)vkRegionChoise->getWidth() % modulo ) + modulo;
         }
 
-        if ( ( (int)vkRegionChoise->getHeight() % modulo ) > 0 )
-        {
+        if ( ( (int)vkRegionChoise->getHeight() % modulo ) > 0 ) {
             height = (int)vkRegionChoise->getHeight() - ( (int)vkRegionChoise->getHeight() % modulo ) + modulo;
         }
 
@@ -1471,21 +1430,18 @@ QString QvkMainWindow::VK_scale()
     }
 
 #ifdef Q_OS_LINUX
-    if ( ui->radioButtonScreencastWindow->isChecked() == true )
-    {
+    if ( ui->radioButtonScreencastWindow->isChecked() == true ) {
         int modulo = 2;
         QRectF rect = vkWinInfo->windowGeometryWithoutFrame( vkWinInfo->getWinID() );
 
         int width = (int)rect.width();
         int height = (int)rect.height();
 
-        if ( ( width % modulo ) > 0 )
-        {
+        if ( ( width % modulo ) > 0 ) {
             width = width - ( width % modulo );
         }
 
-        if ( ( height % modulo ) > 0 )
-        {
+        if ( ( height % modulo ) > 0 ) {
             height = height - ( height % modulo );
         }
 
@@ -1525,15 +1481,11 @@ void QvkMainWindow::VK_gst_Elements_available()
     list << "audioresample";
     list << "filesink";
 
-    for ( int i = 0; i < list.count(); i++ )
-    {
+    for ( int i = 0; i < list.count(); i++ ) {
         GstElementFactory *factory = gst_element_factory_find( QString( list.at(i) ).toLatin1() );
-        if ( !factory )
-        {
+        if ( !factory ) {
             qDebug().noquote() << global::nameOutput << "-" << list.at(i);
-        }
-        else
-        {
+        } else {
             qDebug().noquote() << global::nameOutput << "+" << list.at(i);
             gst_object_unref( factory );
         }
@@ -1546,8 +1498,7 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
 {
     QString value;
     QString encoder = ui->comboBoxVideoCodec->currentData().toString();
-    if ( encoder == "x264enc" )
-    {
+    if ( encoder == "x264enc" ) {
         QStringList list;
         list << VK_scale();
         list << ui->comboBoxVideoCodec->currentData().toString();
@@ -1560,8 +1511,7 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         value.append( " ! video/x-h264, profile=" + ui->comboBoxx264Profile->currentText() );
     }
 
-    if ( encoder == "openh264enc" )
-    {
+    if ( encoder == "openh264enc" ) {
         QStringList list;
         list << ui->comboBoxVideoCodec->currentData().toString();
         list << "qp-min=" + QString::number( sliderOpenh264->value() );
@@ -1577,8 +1527,7 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         value.append( " ! h264parse" );
     }
 
-    if ( encoder == "vp8enc" )
-    {
+    if ( encoder == "vp8enc" ) {
         QStringList list;
         list << "vp8enc";
         list << "min_quantizer=" + QString::number( sliderVp8->value() );
@@ -1589,8 +1538,7 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         value = list.join( " " );
     }
 
-    if ( encoder == "gifenc" )
-    {
+    if ( encoder == "gifenc" ) {
         QStringList list;
         list << "gifenc";
         list << "speed=30";
@@ -1608,8 +1556,7 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
 
 void QvkMainWindow::slot_preStart()
 {
-    if ( is_videoFolderExists_and_haveWritePermission() == false )
-    {
+    if ( is_videoFolderExists_and_haveWritePermission() == false ) {
         ui->pushButtonStop->setEnabled( false );
         ui->pushButtonStart->setEnabled( true );
         ui->pushButtonPause->setEnabled( false );
@@ -1619,15 +1566,13 @@ void QvkMainWindow::slot_preStart()
         return;
     }
 
-    if ( vkLimitDiskFreeSpace->isStorageOKMessagBoxByStart() == false )
-    {
+    if ( vkLimitDiskFreeSpace->isStorageOKMessagBoxByStart() == false ) {
         wantRecording = false;
         ui->pushButtonStop->click();
         return;
     }
 
-    if ( ui->checkBoxStopRecordingAfter->isChecked() == true )
-    {
+    if ( ui->checkBoxStopRecordingAfter->isChecked() == true ) {
         int value = sliderStopRecordingAfterHouers->value()*60*60*1000;
         value += sliderStopRecordingAfterMinutes->value()*60*1000;
         value += sliderStopRecordingAfterSeconds->value()*1000;
@@ -1637,8 +1582,7 @@ void QvkMainWindow::slot_preStart()
         timerStopRecordingAfter->start( value );
     }
 
-    if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) )
-    {
+    if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) ) {
         slot_Start();
         return;
     }
@@ -1663,20 +1607,17 @@ void QvkMainWindow::slot_preStart()
         return;
     }
 
-    if ( ui->radioButtonScreencastFullscreen->isChecked() == true )
-    {
+    if ( ui->radioButtonScreencastFullscreen->isChecked() == true ) {
         slot_Start();
         return;
     }
 
-    if ( ( ui->radioButtonScreencastWindow->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) )
-    {
+    if ( ( ui->radioButtonScreencastWindow->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) ) {
         slot_Start();
         return;
     }
 
-    if ( ( ui->radioButtonScreencastWindow->isChecked() == true ) and ( sliderScreencastCountDown->value() > 0 ) )
-    {
+    if ( ( ui->radioButtonScreencastWindow->isChecked() == true ) and ( sliderScreencastCountDown->value() > 0 ) ) {
         disconnect( vkWinInfo, nullptr, nullptr, nullptr );
         disconnect( vkCountdown, nullptr, nullptr, nullptr );
         connect( vkWinInfo,   SIGNAL( signal_windowChanged( bool ) ),   this,                SLOT( slot_startCounter( bool ) ) );
@@ -1690,8 +1631,7 @@ void QvkMainWindow::slot_preStart()
         return;
     }
 
-    if ( ui->radioButtonScreencastWindow->isChecked() == true )
-    {
+    if ( ui->radioButtonScreencastWindow->isChecked() == true ) {
         disconnect( vkWinInfo, nullptr, nullptr, nullptr );
         connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ),    ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
         connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ),    ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
@@ -1702,8 +1642,7 @@ void QvkMainWindow::slot_preStart()
         return;
     }
 
-    if ( ( ui->radioButtonScreencastArea->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) )
-    {
+    if ( ( ui->radioButtonScreencastArea->isChecked() == true ) and ( ui->checkBoxStartTime->isChecked() == true ) ) {
         vkRegionChoise->recordMode( true );
         vkRegionChoise->repaint();
         slot_Start();
@@ -1731,8 +1670,7 @@ void QvkMainWindow::slot_preStart()
         return;
     }
 
-    if ( ui->radioButtonScreencastArea->isChecked() == true )
-    {
+    if ( ui->radioButtonScreencastArea->isChecked() == true ) {
        vkRegionChoise->recordMode( true );
        vkRegionChoise->repaint();
        vkRegionChoise->update();
@@ -1755,8 +1693,7 @@ void QvkMainWindow::slot_cancel( bool value )
 void QvkMainWindow::slot_startCounter( bool value )
 {
     Q_UNUSED(value);
-    if ( sliderScreencastCountDown->value() > 0 )
-    {
+    if ( sliderScreencastCountDown->value() > 0 ) {
         vkCountdown->startCountdown( sliderScreencastCountDown->value() );
     }
 }
@@ -1791,10 +1728,8 @@ QStringList QvkMainWindow::VK_getSelectedAudioDeviceName()
 {
     QStringList list;
     QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listQCheckBox.count(); i++ )
-    {
-        if ( listQCheckBox.at(i)->checkState() == Qt::Checked )
-        {
+    for ( int i = 0; i < listQCheckBox.count(); i++ ) {
+        if ( listQCheckBox.at(i)->checkState() == Qt::Checked ) {
             list << listQCheckBox.at(i)->text();
         }
     }
@@ -1806,10 +1741,8 @@ QStringList QvkMainWindow::VK_getSelectedAudioDevice()
 {
     QStringList list;
     QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listQCheckBox.count(); i++ )
-    {
-        if ( listQCheckBox.at(i)->checkState() == Qt::Checked )
-        {
+    for ( int i = 0; i < listQCheckBox.count(); i++ ) {
+        if ( listQCheckBox.at(i)->checkState() == Qt::Checked ) {
             list << listQCheckBox.at(i)->accessibleName();
         }
     }
@@ -1879,8 +1812,7 @@ void QvkMainWindow::slot_Start()
     VK_PipelineList << Vk_get_Videocodec_Encoder();
 
     // Only if one or more audiodevice is selected
-    if ( ( VK_getSelectedAudioDevice().count() > 0 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
-    {
+    if ( ( VK_getSelectedAudioDevice().count() > 0 ) and ( ui->comboBoxAudioCodec->count() > 0 ) ) {
         VK_PipelineList << "queue";
         VK_PipelineList << "mux.";
     }
@@ -1903,17 +1835,14 @@ void QvkMainWindow::slot_Start()
         #ifdef Q_OS_WIN
             if ( vkAudioController->radioButtonWASAPI->isChecked() )
             {
-                if ( VK_getSelectedAudioDevice().at(0).section( ":::", 1, 1 ) == "Playback" )
-                {
+                if ( VK_getSelectedAudioDevice().at(0).section( ":::", 1, 1 ) == "Playback" ) {
                     soundEffect->setSource( QUrl::fromLocalFile( ":/sound/wasapi.wav" ) );
                     soundEffect->setLoopCount( QSoundEffect::Infinite );
                     soundEffect->setVolume( 0.0 );
                     soundEffect->play();
                     qDebug().noquote() << global::nameOutput << "[WASAPI] Soundeffect run";
                     VK_PipelineList << QString( "wasapisrc loopback=true low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
-                }
-                else
-                {
+                } else {
                     VK_PipelineList << QString( "wasapisrc low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
                 }
                 VK_PipelineList << "audioconvert";
@@ -1924,8 +1853,7 @@ void QvkMainWindow::slot_Start()
                 VK_PipelineList << "mux.";
             }
 
-            if ( vkAudioController->radioButtonDirectSound->isChecked() )
-            {
+            if ( vkAudioController->radioButtonDirectSound->isChecked() ) {
                 VK_PipelineList << QString( "directsoundsrc device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(0) + "'" );
                 VK_PipelineList << "audio/x-raw, channels=2";
                 VK_PipelineList << "audioconvert";
@@ -1946,8 +1874,7 @@ void QvkMainWindow::slot_Start()
             QStringList listDevices;
             QStringList listSource;
             QStringList listPlayer;
-            for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ )
-            {
+            for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ ) {
                 if ( VK_getSelectedAudioDevice().at(x).section( ":::", 1, 1 ) == "Playback" ) {
                     listPlayer << VK_getSelectedAudioDevice().at(x);
                 } else {
@@ -1995,8 +1922,7 @@ void QvkMainWindow::slot_Start()
                     }
                 }
 
-                if ( vkAudioController->radioButtonDirectSound->isChecked() )
-                {
+                if ( vkAudioController->radioButtonDirectSound->isChecked() ) {
                     VK_PipelineList << QString( "directsoundsrc device-name=" ).append( "'" + listDevices.at(x) + "'" );
                     VK_PipelineList << "audioconvert";
                     VK_PipelineList << "queue";
@@ -2082,13 +2008,11 @@ void QvkMainWindow::slot_Start()
 
 void QvkMainWindow::slot_preStop()
 {
-    if ( ui->checkBoxStartTime->isChecked() == true )
-    {
+    if ( ui->checkBoxStartTime->isChecked() == true ) {
          ui->checkBoxStartTime->click();
     }
 
-    if ( timerStopRecordingAfter->isActive() )
-    {
+    if ( timerStopRecordingAfter->isActive() ) {
         timerStopRecordingAfter->stop();
         ui->frameStopRecordingAfter->setEnabled( true );
     }
@@ -2097,22 +2021,17 @@ void QvkMainWindow::slot_preStop()
 
 void QvkMainWindow::slot_Stop()
 {
-    if ( vkLimitDiskFreeSpace->isStorageOK() == false )
-    {
+    if ( vkLimitDiskFreeSpace->isStorageOK() == false ) {
         ui->checkBoxShowInSystray->click();
         ui->checkBoxShowInSystray->click();
     }
 
-
-    if ( cancel == true )
-    {
+    if ( cancel == true ) {
         cancel = false;
         goto Cancel;
     }
 
-
-    if ( wantRecording == true )
-    {
+    if ( wantRecording == true ) {
         // wait for EOS
         bool a = gst_element_send_event( pipeline, gst_event_new_eos() );
         Q_UNUSED(a);
@@ -2152,8 +2071,7 @@ Cancel:
 
     qDebug().noquote() << global::nameOutput << "Free disk space at the end of the recording:" << ui->labelFreeSize->text() << "MB";
 
-    if ( ui->radioButtonScreencastArea->isChecked() == true )
-    {
+    if ( ui->radioButtonScreencastArea->isChecked() == true ) {
         // We wait one second and then show the button inside the frame.
         QThread::msleep( 1000 );
         vkRegionChoise->recordMode( false );
@@ -2161,8 +2079,7 @@ Cancel:
         vkRegionChoise->update();
     }
 
-    if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  )
-    {
+    if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  ) {
         showNormal();
     }
 }
@@ -2170,8 +2087,7 @@ Cancel:
 
 void QvkMainWindow::slot_Pause()
 {
-    if ( ui->pushButtonStart->isEnabled() == false )
-    {
+    if ( ui->pushButtonStart->isEnabled() == false ) {
         qDebug().noquote() << global::nameOutput << "Pause was clicked";
         GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
         if ( ret == GST_STATE_CHANGE_FAILURE )   { qDebug().noquote() << global::nameOutput << "Pause was clicked" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
@@ -2179,10 +2095,8 @@ void QvkMainWindow::slot_Pause()
         if ( ret == GST_STATE_CHANGE_ASYNC )     { qDebug().noquote() << global::nameOutput << "Pause was clicked" << "GST_STATE_CHANGE_ASYNC" << "Returncode =" << ret;   }   // 2
         if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "Pause was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
 
-
         /* wait until it's up and running or failed */
-        if (gst_element_get_state (pipeline, NULL, NULL, -1) == GST_STATE_CHANGE_FAILURE)
-        {
+        if (gst_element_get_state (pipeline, NULL, NULL, -1) == GST_STATE_CHANGE_FAILURE) {
           g_error ("Failed to go into PAUSED state");
         }
 
@@ -2192,8 +2106,7 @@ void QvkMainWindow::slot_Pause()
 
 void QvkMainWindow::slot_Continue()
 {
-    if ( ( ui->pushButtonStart->isEnabled() == false ) and ( ui->pushButtonContinue->isEnabled() == true ) )
-    {
+    if ( ( ui->pushButtonStart->isEnabled() == false ) and ( ui->pushButtonContinue->isEnabled() == true ) ) {
         GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
         if ( ret == GST_STATE_CHANGE_FAILURE )   { qDebug().noquote() << global::nameOutput << "Continue was clicked" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
         if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug().noquote() << global::nameOutput << "Continue was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
@@ -2201,12 +2114,9 @@ void QvkMainWindow::slot_Continue()
         if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "Continue was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
 
         /* wait until it's up and running or failed */
-        if (gst_element_get_state (pipeline, NULL, NULL, -1) == GST_STATE_CHANGE_FAILURE)
-        {
+        if (gst_element_get_state (pipeline, NULL, NULL, -1) == GST_STATE_CHANGE_FAILURE) {
           g_error ("Failed to go into PLAYING state");
-        }
-        else
-        {
+        } else {
             qDebug().noquote() << global::nameOutput << "Continue was clicked";
         }
     }
@@ -2247,8 +2157,7 @@ void QvkMainWindow::slot_Folder()
         path = ui->lineEditSnapshotImagePath->text();
     }
 
-    if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false )
-    {
+    if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false ) {
         QPixmap pixmap( ":/pictures/status/information.png" );
         pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
 
@@ -2266,8 +2175,7 @@ void QvkMainWindow::slot_logFolder()
     QUrl url( vklogController->get_logPath() );
     QString path = url.adjusted( QUrl::RemoveFilename ).toString();
 
-    if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false )
-    {
+    if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false ) {
         QPixmap pixmap( ":/pictures/status/information.png" );
         pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
 
@@ -2314,8 +2222,7 @@ void QvkMainWindow::slot_screenCountChanged( QString stringText, QString stringD
 
 #ifdef Q_OS_WIN
     QStringList list;
-    for ( int i=0; i < ui->comboBoxScreencastScreen->count(); i++ )
-    {
+    for ( int i=0; i < ui->comboBoxScreencastScreen->count(); i++ ) {
         list.append( ui->comboBoxScreencastScreen->itemText( i ) );
     }
     list.sort();
@@ -2332,8 +2239,7 @@ void QvkMainWindow::slot_screenCountChangedArea( QString stringText, QString str
 #ifdef Q_OS_WIN
     // Unter Windows muß zur Aufnahme mit GStreamer das Display in sortierter Reihenfolge bereitgestellt werden. Display1, Display2, Display3 etc.
     QStringList list;
-    for ( int i=0; i < ui->comboBoxScreencastScreenArea->count(); i++ )
-    {
+    for ( int i=0; i < ui->comboBoxScreencastScreenArea->count(); i++ ) {
         list.append( ui->comboBoxScreencastScreenArea->itemText( i ) + "|" + ui->comboBoxScreencastScreenArea->itemData( i ).toString() );
     }
     list.sort();

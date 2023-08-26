@@ -65,8 +65,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
 
     // Clear all settings if checkBoxResetAtNextStart is set
     QList<QCheckBox *> listCheckBoxReset = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listCheckBoxReset.count(); i++ )
-    {
+    for ( int i = 0; i < listCheckBoxReset.count(); i++ ) {
         if ( ( listCheckBoxReset.at(i)->objectName() == "checkBoxResetAtNextStart" ) and
              ( settings.value( listCheckBoxReset.at(i)->objectName(), false ).toBool() == true ) )
         {
@@ -151,17 +150,14 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
 
         QString valueText = settings.value( listComboBox.at(i)->objectName(), "" ).toString();
         int valueInt = listComboBox.at(i)->findText( valueText );
-        if ( valueInt > -1 )
-        {
+        if ( valueInt > -1 ) {
             listComboBox.at(i)->setCurrentIndex( valueInt );
         }
     }
 
     // After set all comboBox values we set the shortcut ComboBox signals
-    for ( int i = 0; i < listComboBoxShortcut.count(); i++ )
-    {
-        if ( listComboBoxShortcut.at(i)->objectName().contains( "comboBox_shortcut", Qt::CaseInsensitive ) == true )
-        {
+    for ( int i = 0; i < listComboBoxShortcut.count(); i++ ) {
+        if ( listComboBoxShortcut.at(i)->objectName().contains( "comboBox_shortcut", Qt::CaseInsensitive ) == true ) {
             listComboBoxShortcut.at(i)->blockSignals( false );
         }
     }
@@ -170,14 +166,11 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     // These settings must be set in this order: Format, Videocodec, Audiocodec
     // 1. Format
     QList<QComboBox *> listComboBoxFormat = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
-    for ( int i = 0; i < listComboBoxFormat.count(); i++ )
-    {
-        if ( listComboBoxFormat.at(i)->objectName() == "comboBoxFormat" )
-        {
+    for ( int i = 0; i < listComboBoxFormat.count(); i++ ) {
+        if ( listComboBoxFormat.at(i)->objectName() == "comboBoxFormat" ) {
             QString valueText = settings.value( listComboBoxFormat.at(i)->objectName(), "" ).toString();
             int valueInt = listComboBoxFormat.at(i)->findText( valueText );
-            if ( valueInt > -1 )
-            {
+            if ( valueInt > -1 ) {
                 listComboBoxFormat.at(i)->setCurrentIndex( valueInt );
             }
         }
@@ -185,14 +178,11 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
 
     // 2. Videocodec
     QList<QComboBox *> listComboBoxVideo = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
-    for ( int i = 0; i < listComboBoxVideo.count(); i++ )
-    {
-        if ( listComboBoxVideo.at(i)->objectName() == "comboBoxVideoCodec" )
-        {
+    for ( int i = 0; i < listComboBoxVideo.count(); i++ ) {
+        if ( listComboBoxVideo.at(i)->objectName() == "comboBoxVideoCodec" ) {
             QString valueText = settings.value( listComboBoxVideo.at(i)->objectName(), "" ).toString();
             int valueInt = listComboBoxVideo.at(i)->findText( valueText );
-            if ( valueInt > -1 )
-            {
+            if ( valueInt > -1 ) {
                 listComboBoxVideo.at(i)->setCurrentIndex( valueInt );
             }
         }
@@ -200,14 +190,11 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
 
     // 3. Audiocodec
     QList<QComboBox *> listComboBoxAudio = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
-    for ( int i = 0; i < listComboBoxAudio.count(); i++ )
-    {
-        if ( listComboBoxAudio.at(i)->objectName() == "comboBoxAudioCodec" )
-        {
+    for ( int i = 0; i < listComboBoxAudio.count(); i++ ) {
+        if ( listComboBoxAudio.at(i)->objectName() == "comboBoxAudioCodec" ) {
             QString valueText = settings.value( listComboBoxAudio.at(i)->objectName(), "" ).toString();
             int valueInt = listComboBoxAudio.at(i)->findText( valueText );
-            if ( valueInt > -1 )
-            {
+            if ( valueInt > -1 ) {
                 listComboBoxAudio.at(i)->setCurrentIndex( valueInt );
             }
         }
@@ -437,31 +424,25 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     QList<QSlider *> listSlider = ui_mainwindow->centralWidget->findChildren<QSlider *>();
     for ( int i = 0; i < listSlider.count(); i++ )
     {
-        if ( listSlider.at(i)->objectName() == "sliderVideo" )
-        {
+        if ( listSlider.at(i)->objectName() == "sliderVideo" ) {
             continue;
         }
 
-        if ( listSlider.at(i)->objectName() == "sliderGstDebugLevel" )
-        {
+        if ( listSlider.at(i)->objectName() == "sliderGstDebugLevel" ) {
             continue;
         }
 
         QVariant variant = settings.value( listSlider.at(i)->objectName() );
-        if ( variant.isValid() )
-        {
+        if ( variant.isValid() ) {
             listSlider.at(i)->setValue( variant.toInt() );
         }
     }
 
     QList<QLineEdit *> listLineEdit = ui_mainwindow->centralWidget->findChildren<QLineEdit *>();
-    for ( int i = 0; i < listLineEdit.count(); i++ )
-    {
-        if ( listLineEdit.at(i)->objectName().contains( "lineEdit" ) )
-        {
+    for ( int i = 0; i < listLineEdit.count(); i++ ) {
+        if ( listLineEdit.at(i)->objectName().contains( "lineEdit" ) ) {
             QString value = settings.value( listLineEdit.at(i)->objectName() ).toString();
-            if ( !value.isEmpty() )
-            {
+            if ( !value.isEmpty() ) {
                 listLineEdit.at(i)->setText( value );
             }
         }
@@ -469,8 +450,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
 
     // All TabWidget start with value=0, also if in Qt-Creator is the value an other
     QList<QTabWidget *> listTabWidget = ui_mainwindow->centralWidget->findChildren<QTabWidget *>();
-    for ( int i = 0; i < listTabWidget.count(); i++ )
-    {
+    for ( int i = 0; i < listTabWidget.count(); i++ ) {
         listTabWidget.at(i)->setCurrentIndex( 0 );
 
         QvkSettings vkSettingsGstDebug;
@@ -485,8 +465,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     }
 
     QList<QToolButton *> listToolButton = ui_mainwindow->centralWidget->findChildren<QToolButton *>();
-    for ( int i = 0; i < listToolButton.count(); i++ )
-    {
+    for ( int i = 0; i < listToolButton.count(); i++ ) {
         if ( listToolButton.at(i)->objectName().contains( "toolButtonMute" ) ) {
             QString value = settings.value( listToolButton.at(i)->objectName() ).toString();
             if ( value == "audio-volume-muted") {
@@ -527,10 +506,8 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     }
 
     QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui_mainwindow->centralWidget->findChildren<QvkSpezialCheckbox *>();
-    for ( int i = 0; i < listSpezialCheckbox.count(); i++ )
-    {
-        if ( settings.value( listSpezialCheckbox.at(i)->objectName(), false ).toBool() == true )
-        {
+    for ( int i = 0; i < listSpezialCheckbox.count(); i++ ) {
+        if ( settings.value( listSpezialCheckbox.at(i)->objectName(), false ).toBool() == true ) {
             emit listSpezialCheckbox.at(i)->signal_clicked( true );
         }
     }

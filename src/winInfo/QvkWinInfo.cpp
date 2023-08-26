@@ -113,10 +113,12 @@ static listWinId getWindow( Atom prop )
                              &type, &format, &count, &after, &data ) == Success )
     {
         Window* list = reinterpret_cast<Window*>( data ) ;
-        for ( uint i = 0; i < count; ++i )
+        for ( uint i = 0; i < count; ++i ) {
             listWId += list[i];
-        if ( data )
+        }
+        if ( data ) {
             XFree( data );
+        }
     }
 
     XCloseDisplay( display );
@@ -151,18 +153,15 @@ QRectF QvkWinInfo::windowGeometryWithoutFrame( WId child )
     Window* children;
     unsigned int nchildren;
 
-    if( XQueryTree( display, child, &root, &parent, &children, &nchildren ) != 0 )
-    {
-        if( children != nullptr )
-        {
+    if( XQueryTree( display, child, &root, &parent, &children, &nchildren ) != 0 ) {
+        if( children != nullptr ) {
             XFree( children );
         }
 
         int newx, newy;
         Window dummy;
         Window window = root;
-        if( XTranslateCoordinates( display, parent, window, x, y, &newx, &newy, &dummy ) )
-        {
+        if( XTranslateCoordinates( display, parent, window, x, y, &newx, &newy, &dummy ) ) {
             x = newx;
             y = newy;
         }
@@ -189,8 +188,7 @@ void QvkWinInfo::slot_selectWindow()
 {
     newWinID = activeWindow();
 
-    if ( lastWinID != newWinID )
-    {
+    if ( lastWinID != newWinID ) {
         mouseTimer->stop();
         vkGlobalMouse->slot_on( false );
 

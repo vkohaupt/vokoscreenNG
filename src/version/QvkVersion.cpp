@@ -9,8 +9,7 @@ QvkVersion::QvkVersion()
 
 void QvkVersion::slot_doDownload( bool checked )
 {
-    if ( checked == false )
-    {
+    if ( checked == false ) {
         emit signal_newVersionAvailable( "" );
         return;
     }
@@ -28,16 +27,12 @@ void QvkVersion::slot_doDownload( bool checked )
 void QvkVersion::slot_downloadFinished( QNetworkReply *reply )
 {
     QUrl url = reply->url();
-    if ( reply->error() )
-    {
+    if ( reply->error() ) {
         qDebug().noquote() << global::nameOutput << "Download of" << url.toEncoded().constData() << "failed." << reply->errorString();
-    }
-    else
-    {
+    } else {
        QString string = QString( reply->readAll() );
        QStringList stringList = string.split( "\n" );
-       if ( !stringList.empty() )
-       {
+       if ( !stringList.empty() ) {
            QString update;
            for ( int x = 0; x < stringList.count(); x++ ) {
                if ( stringList.at(x).startsWith( "Version" ) == true ) {

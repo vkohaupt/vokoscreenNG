@@ -150,9 +150,7 @@ void QvkRegionChoise_wl::paintEvent( QPaintEvent *event )
         case Middle      : HandleTopLeftSize( painterPixmap );     break;
         }
         painterPixmap.end();
-    }
-    else
-    {
+    } else {
         pixmap.fill( Qt::transparent );
         QPainter painterPixmap;
         painterPixmap.begin( &pixmap );
@@ -220,8 +218,7 @@ void QvkRegionChoise_wl::paintEvent( QPaintEvent *event )
 
 void QvkRegionChoise_wl::mousePressEvent(QMouseEvent *event)
 {
-    if( event->button() != Qt::LeftButton)
-    {
+    if( event->button() != Qt::LeftButton) {
         return;
     }
 
@@ -256,8 +253,7 @@ void QvkRegionChoise_wl::mousePressEvent(QMouseEvent *event)
 
 void QvkRegionChoise_wl::mouseReleaseEvent( QMouseEvent * event )
 {
-  if( event->button() != Qt::LeftButton)
-  {
+  if( event->button() != Qt::LeftButton) {
       return;
   }
 
@@ -276,8 +272,7 @@ void QvkRegionChoise_wl::leaveEvent(QEvent *event)
 
 void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
 {
-    if ( recordemode == true )
-    {
+    if ( recordemode == true ) {
         return;
     }
 
@@ -903,8 +898,7 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
         return;
 
     QRect regionTopLeft( frame_X - radius - 1, frame_Y - radius - 1, diameter + 2, diameter + 2 );
-    if ( regionTopLeft.contains( event->pos() ) )
-    {
+    if ( regionTopLeft.contains( event->pos() ) ) {
         QPixmap pixmap( ":/pictures/cursor/size_fdiag.png" );
         QCursor cursor( pixmap );
         setCursor( cursor );
@@ -913,8 +907,7 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
     }
 
     QRect regionTopMiddle( frame_X + frame_Width/2 - radius - 1, frame_Y - radius - 1, diameter + 2, diameter + 2 );
-    if ( regionTopMiddle.contains( event->pos() )  )
-    {
+    if ( regionTopMiddle.contains( event->pos() ) ) {
         QPixmap pixmap( ":/pictures/cursor/size_ver.png" );
         QCursor cursor( pixmap );
         setCursor( cursor );
@@ -923,8 +916,7 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
     }
 
     QRect regionTopRight( frame_X + frame_Width - radius - 1, frame_Y - radius - 1, diameter + 2, diameter + 2 );
-    if ( regionTopRight.contains( event->pos() )  )
-    {
+    if ( regionTopRight.contains( event->pos() ) ) {
         QPixmap pixmap( ":/pictures/cursor/size_bdiag.png" );
         QCursor cursor( pixmap );
         setCursor( cursor );
@@ -933,8 +925,7 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
     }
 
     QRect regionRightMiddle( frame_X + frame_Width - radius - 1, frame_Y + frame_height/2 - radius - 1, diameter + 2, diameter + 2 );
-    if ( regionRightMiddle.contains( event->pos() )  )
-    {
+    if ( regionRightMiddle.contains( event->pos() ) ) {
         QPixmap pixmap( ":/pictures/cursor/size_hor.png" );
         QCursor cursor( pixmap );
         setCursor( cursor );
@@ -943,8 +934,7 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
     }
 
     QRect regionMiddle( frame_X + frame_Width/2 - radius - penHalf, frame_Y + frame_height/2 - radius - penHalf, 2 * radius + penWidth, 2 * radius + penWidth);
-    if ( regionMiddle.contains( event->pos() )  )
-    {
+    if ( regionMiddle.contains( event->pos() ) ) {
         QPixmap pixmap( ":/pictures/cursor/size_all.png" );
         QCursor cursor( pixmap );
         setCursor( cursor );
@@ -958,8 +948,7 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                                buttonArrow.getWithHalf()*2,
                                buttonArrow.getWithHalf()*2
                               );
-    if( regionBottomRight.contains( event->pos()) )
-    {
+    if ( regionBottomRight.contains( event->pos() ) ) {
         QPixmap pixmap( ":/pictures/cursor/size_fdiag.png" );
         QCursor cursor( pixmap );
         setCursor( cursor );
@@ -972,8 +961,7 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                                 buttonArrow.getWithHalf()*2,
                                 buttonArrow.getWithHalf()*2
                                );
-    if( regionBottomMiddle.contains( event->pos()) )
-    {
+    if ( regionBottomMiddle.contains( event->pos() ) ) {
         QPixmap pixmap( ":/pictures/cursor/size_ver.png" );
         QCursor cursor( pixmap );
         setCursor( cursor );
@@ -986,8 +974,7 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                               buttonArrow.getWithHalf()*2,
                               buttonArrow.getWithHalf()*2
                             );
-    if( regionBottomLeft.contains( event->pos()) )
-    {
+    if ( regionBottomLeft.contains( event->pos()) ) {
         QPixmap pixmap( ":/pictures/cursor/size_bdiag.png" );
         QCursor cursor( pixmap );
         setCursor( cursor );
@@ -1000,8 +987,7 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                               buttonArrow.getWithHalf()*2,
                               buttonArrow.getWithHalf()*2
                             );
-    if( regionLeftMiddle.contains( event->pos()) )
-    {
+    if ( regionLeftMiddle.contains( event->pos() ) ) {
         QPixmap pixmap( ":/pictures/cursor/size_hor.png" );
         QCursor cursor( pixmap );
         setCursor( cursor );
@@ -1091,22 +1077,16 @@ void QvkRegionChoise_wl::HandleTopLeft( QPainter &painter )
     QvkRegionButtonArrow buttonArrow;
     QColor color;
 
-    if ( handlePressed == TopLeft )
-    {
+    if ( handlePressed == TopLeft ) {
         color = HandleColorByMousePressed;
-    }
-    else
-    {
+    } else {
         color = HandleColorBackground;
     }
 
     QColor colorSelected;
-    if ( HandleSelected == TopLeft )
-    {
+    if ( HandleSelected == TopLeft ) {
         colorSelected = colorSelectedArrow;
-    }
-    else
-    {
+    } else {
         colorSelected = Qt::black;
     }
 
@@ -1148,22 +1128,16 @@ void QvkRegionChoise_wl::HandleTopMiddle( QPainter &painter)
     QvkRegionButtonArrow buttonArrow;
     QColor color;
 
-    if ( handlePressed == TopMiddle )
-    {
+    if ( handlePressed == TopMiddle ) {
         color = HandleColorByMousePressed;
-    }
-    else
-    {
+    } else {
         color = HandleColorBackground;
     }
 
     QColor colorSelected;
-    if ( HandleSelected == TopMiddle )
-    {
+    if ( HandleSelected == TopMiddle ) {
         colorSelected = colorSelectedArrow;
-    }
-    else
-    {
+    } else {
         colorSelected = Qt::black;
     }
 
@@ -1203,22 +1177,16 @@ void QvkRegionChoise_wl::HandleTopRight(QPainter &painter)
     QvkRegionButtonArrow buttonArrow;
     QColor color;
 
-    if ( handlePressed == TopRight )
-    {
+    if ( handlePressed == TopRight ) {
         color = HandleColorByMousePressed;
-    }
-    else
-    {
+    } else {
         color = HandleColorBackground;
     }
 
     QColor colorSelected;
-    if ( HandleSelected == TopRight )
-    {
+    if ( HandleSelected == TopRight ) {
         colorSelected = colorSelectedArrow;
-    }
-    else
-    {
+    } else {
         colorSelected = Qt::black;
     }
 
@@ -1260,22 +1228,16 @@ void QvkRegionChoise_wl::HandleRightMiddle( QPainter &painter )
     QvkRegionButtonArrow buttonArrow;
     QColor color;
 
-    if ( handlePressed == RightMiddle )
-    {
+    if ( handlePressed == RightMiddle ) {
         color = HandleColorByMousePressed;
-    }
-    else
-    {
+    } else {
         color = HandleColorBackground;
     }
 
     QColor colorSelected;
-    if ( HandleSelected == RightMiddle )
-    {
+    if ( HandleSelected == RightMiddle ) {
         colorSelected = colorSelectedArrow;
-    }
-    else
-    {
+    } else {
         colorSelected = Qt::black;
     }
 
@@ -1315,22 +1277,16 @@ void QvkRegionChoise_wl::HandleBottomRight( QPainter &painter )
     QvkRegionButtonArrow buttonArrow;
     QColor color;
 
-    if ( handlePressed == BottomRight )
-    {
+    if ( handlePressed == BottomRight ) {
         color = HandleColorByMousePressed;
-    }
-    else
-    {
+    } else {
         color = HandleColorBackground;
     }
 
     QColor colorSelected;
-    if ( HandleSelected == BottomRight )
-    {
+    if ( HandleSelected == BottomRight ) {
         colorSelected = colorSelectedArrow;
-    }
-    else
-    {
+    } else {
         colorSelected = Qt::black;
     }
 
@@ -1374,22 +1330,16 @@ void QvkRegionChoise_wl::HandleBottomMiddle( QPainter &painter )
     QvkRegionButtonArrow buttonArrow;
     QColor color;
 
-    if ( handlePressed == BottomMiddle )
-    {
+    if ( handlePressed == BottomMiddle ) {
         color = HandleColorByMousePressed;
-    }
-    else
-    {
+    } else {
         color = HandleColorBackground;
     }
 
     QColor colorSelected;
-    if ( HandleSelected == BottomMiddle )
-    {
+    if ( HandleSelected == BottomMiddle ) {
         colorSelected = colorSelectedArrow;
-    }
-    else
-    {
+    } else {
         colorSelected = Qt::black;
     }
 
@@ -1429,22 +1379,16 @@ void QvkRegionChoise_wl::HandleBottomLeft( QPainter &painter )
     QvkRegionButtonArrow buttonArrow;
     QColor color;
 
-    if ( handlePressed == BottomLeft )
-    {
+    if ( handlePressed == BottomLeft ) {
         color = HandleColorByMousePressed;
-    }
-    else
-    {
+    } else {
         color = HandleColorBackground;
     }
 
     QColor colorSelected;
-    if ( HandleSelected == BottomLeft )
-    {
+    if ( HandleSelected == BottomLeft ) {
         colorSelected = colorSelectedArrow;
-    }
-    else
-    {
+    } else {
         colorSelected = Qt::black;
     }
 
@@ -1486,22 +1430,16 @@ void QvkRegionChoise_wl::HandleLeftMiddle( QPainter &painter )
     QvkRegionButtonArrow buttonArrow;
     QColor color;
 
-    if ( handlePressed == LeftMiddle )
-    {
+    if ( handlePressed == LeftMiddle ) {
         color = HandleColorByMousePressed;
-    }
-    else
-    {
+    } else {
         color = HandleColorBackground;
     }
 
     QColor colorSelected;
-    if ( HandleSelected == LeftMiddle )
-    {
+    if ( HandleSelected == LeftMiddle ) {
         colorSelected = colorSelectedArrow;
-    }
-    else
-    {
+    } else {
         colorSelected = Qt::black;
     }
 
@@ -1542,22 +1480,16 @@ void QvkRegionChoise_wl::HandleMiddle( QPainter &painter )
     QvkRegionButtonArrow buttonArrow;
     QColor color;
 
-    if ( handlePressed == Middle )
-    {
+    if ( handlePressed == Middle ) {
         color = HandleColorByMousePressed;
-    }
-    else
-    {
+    } else {
         color = HandleColorBackground;
     }
 
     QColor colorSelected;
-    if ( HandleSelected == Middle )
-    {
+    if ( HandleSelected == Middle ) {
         colorSelected = colorSelectedArrow;
-    }
-    else
-    {
+    } else {
         colorSelected = Qt::black;
     }
 
@@ -1585,13 +1517,10 @@ void QvkRegionChoise_wl::HandleMiddle( QPainter &painter )
 
 void QvkRegionChoise_wl::recordMode( bool value )
 {
-    if ( value == true )
-    {
+    if ( value == true ) {
         recordemode = true;
         repaint();
-    }
-    else
-    {
+    } else {
         recordemode = false;
         repaint();
     }
@@ -1623,8 +1552,7 @@ qreal QvkRegionChoise_wl::getXRecordArea()
     qreal xReal = ( frame_X + framePenWidth/2 ) * screen->devicePixelRatio();
     int xInt = static_cast<int>( ( frame_X + framePenWidth/2 ) * screen->devicePixelRatio() );
 
-    if ( xReal > xInt )
-    {
+    if ( xReal > xInt ) {
         xReal = xInt + 1;
     }
 
@@ -1640,8 +1568,7 @@ qreal QvkRegionChoise_wl::getYRecordArea()
    qreal xReal = ( frame_Y + framePenWidth/2 ) * screen->devicePixelRatio();
    int xInt = static_cast<int>( ( frame_Y + framePenWidth/2 ) * screen->devicePixelRatio() );
 
-   if ( xReal > xInt )
-   {
+   if ( xReal > xInt ) {
        xReal = xInt + 1;
    }
 
@@ -1657,12 +1584,9 @@ qreal QvkRegionChoise_wl::getHeight()
     qreal xReal =   ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * screen->devicePixelRatio();
     int xInt = static_cast<int>( ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * screen->devicePixelRatio() );
 
-    if ( xReal > xInt )
-    {
+    if ( xReal > xInt ) {
         xReal = static_cast<int>( ( frame_height - framePenWidth ) * screen->devicePixelRatio() ) - 1;
-    }
-    else
-    {
+    } else {
         xReal = static_cast<int>( ( frame_height - framePenWidth ) * screen->devicePixelRatio() );
     }
 
@@ -1678,12 +1602,9 @@ qreal QvkRegionChoise_wl::getWidth()
     qreal xReal = ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * screen->devicePixelRatio();
     int xInt = static_cast<int>( ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * screen->devicePixelRatio() );
 
-    if ( xReal > xInt )
-    {
+    if ( xReal > xInt ) {
         xReal = static_cast<int>( ( frame_Width - framePenWidth ) * screen->devicePixelRatio() ) - 1;
-    }
-    else
-    {
+    } else {
         xReal = static_cast<int>( ( frame_Width - framePenWidth ) * screen->devicePixelRatio() );
     }
 

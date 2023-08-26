@@ -136,16 +136,13 @@ void QvkSystray::init()
     connect( magnifierAction,       SIGNAL( triggered( bool ) ), ui->checkBoxMagnifier, SLOT( click() ) );
 
     QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
-    for ( int i = 0; i < listSpezialCheckbox.count(); i++ )
-    {
-        if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckboxShowclick" )
-        {
+    for ( int i = 0; i < listSpezialCheckbox.count(); i++ ) {
+        if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckboxShowclick" ) {
             connect( listSpezialCheckbox.at(i), SIGNAL( signal_clicked( bool ) ), showclickAction, SLOT( setChecked( bool ) ) );
             connect( showclickAction,           SIGNAL( triggered( bool ) ),      listSpezialCheckbox.at(i), SLOT( slot_click() ) );
         }
 
-        if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckboxHalo" )
-        {
+        if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckboxHalo" ) {
             connect( listSpezialCheckbox.at(i), SIGNAL( signal_clicked( bool ) ), haloAction, SLOT( setChecked( bool ) ) );
             connect( haloAction,                SIGNAL( triggered( bool ) ),      listSpezialCheckbox.at(i), SLOT( slot_click() ) );
         }
@@ -240,75 +237,75 @@ void QvkSystray::slot_currentIndexChanged( int index )
 
 void QvkSystray::slot_shortcutSystray( QString device, QString shortcut )
 {
-    if ( device == "Start" ){
+    if ( device == "Start" ) {
         startAction->setShortcutVisibleInContextMenu( true );
         startAction->setShortcut( QKeySequence::fromString( shortcut ) );
-        if ( shortcut == "None" ){
+        if ( shortcut == "None" ) {
             startAction->setShortcutVisibleInContextMenu( false );
         }
         return;
     }
 
-    if ( device == "Stop" ){
+    if ( device == "Stop" ) {
         stopAction->setShortcutVisibleInContextMenu( true );
         stopAction->setShortcut( QKeySequence::fromString( shortcut ) );
-        if ( shortcut == "None" ){
+        if ( shortcut == "None" ) {
             stopAction->setShortcutVisibleInContextMenu( false );
         }
     }
 
-    if ( device == "Pause" ){
+    if ( device == "Pause" ) {
         pauseAction->setShortcutVisibleInContextMenu( true );
         pauseAction->setShortcut( QKeySequence::fromString( shortcut ) );
-        if ( shortcut == "None" ){
+        if ( shortcut == "None" ) {
             pauseAction->setShortcutVisibleInContextMenu( false );
         }
     }
 
-    if ( device == "Continue" ){
+    if ( device == "Continue" ) {
         continueAction->setShortcutVisibleInContextMenu( true );
         continueAction->setShortcut( QKeySequence::fromString( shortcut ) );
-        if ( shortcut == "None" ){
+        if ( shortcut == "None" ) {
             continueAction->setShortcutVisibleInContextMenu( false );
         }
     }
 
-    if ( device == "camera" ){
+    if ( device == "camera" ) {
         cameraAction->setShortcutVisibleInContextMenu( true );
         cameraAction->setShortcut( QKeySequence::fromString( shortcut ) );
-        if ( shortcut == "None" ){
+        if ( shortcut == "None" ) {
             cameraAction->setShortcutVisibleInContextMenu( false );
         }
     }
 
-    if ( device == "magnification" ){
+    if ( device == "magnification" ) {
         magnifierAction->setShortcutVisibleInContextMenu( true );
         magnifierAction->setShortcut( QKeySequence::fromString( shortcut ) );
-        if ( shortcut == "None" ){
+        if ( shortcut == "None" ) {
             magnifierAction->setShortcutVisibleInContextMenu( false );
         }
     }
 
-    if ( device == "showclick" ){
+    if ( device == "showclick" ) {
         showclickAction->setShortcutVisibleInContextMenu( true );
         showclickAction->setShortcut( QKeySequence::fromString( shortcut ) );
-        if ( shortcut == "None" ){
+        if ( shortcut == "None" ) {
             showclickAction->setShortcutVisibleInContextMenu( false );
         }
     }
 
-    if ( device == "halo" ){
+    if ( device == "halo" ) {
         haloAction->setShortcutVisibleInContextMenu( true );
         haloAction->setShortcut( QKeySequence::fromString( shortcut ) );
-        if ( shortcut == "None" ){
+        if ( shortcut == "None" ) {
             haloAction->setShortcutVisibleInContextMenu( false );
         }
     }
 
-    if ( device == "snapshot" ){
+    if ( device == "snapshot" ) {
         snapshotAction->setShortcutVisibleInContextMenu( true );
         snapshotAction->setShortcut( QKeySequence::fromString( shortcut ) );
-        if ( shortcut == "None" ){
+        if ( shortcut == "None" ) {
             snapshotAction->setShortcutVisibleInContextMenu( false );
         }
     }
