@@ -358,10 +358,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation type="unfinished"></translation>
     </message>
