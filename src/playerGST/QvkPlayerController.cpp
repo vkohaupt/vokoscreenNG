@@ -397,6 +397,7 @@ void QvkPlayerController::slot_openFile()
 {
     QApplication::setDesktopSettingsAware( false );
 
+    QString file;
     QvkFileDialog vkFileDialog( this );
 
     if ( !pathOpenFile.isEmpty() ) {
@@ -423,12 +424,14 @@ void QvkPlayerController::slot_openFile()
             ui->verticalLayout->setStretch( 0, 1 );
             widget_Video->setStyleSheet( "QWidget { background-color: black; }" );
             widget_Video->setVisible( true );
-            setMediaFile( vkFileDialog.selectedFiles().at(0) );
+            file = vkFileDialog.selectedFiles().at(0);
         }
     }
 
-//    Weiter machen siehe QvkPlayer.cpp
-
+    if ( !file.isEmpty() ) {
+        setMediaFile( file );
+        pathOpenFile = QDir( file ).absolutePath();
+    }
 
     QApplication::setDesktopSettingsAware( true );
 }
