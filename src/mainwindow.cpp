@@ -236,7 +236,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
     // Qt5
-    vkPlayer = new QvkPlayer( this, ui );
+//    vkPlayer = new QvkPlayer( this, ui );
+    vkPlayer = new QvkPlayerController( ui ); // This is for the new GStreamer player
+    vkPlayer->init();  // This is for the new GStreamer player
 #else
     // Qt6
 #endif
@@ -612,7 +614,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
     // Qt5
-    vkSettings.readPlayerPathOpenFile( vkPlayer );
+//    vkSettings.readPlayerPathOpenFile( vkPlayer ); //--------------------------------------------------------------------------------------
 #else
     // Qt6
 #endif
@@ -1016,7 +1018,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
         #ifdef Q_OS_WIN
              vkSettings.saveCamera( vkCameraController->old_XY.x(), vkCameraController->old_XY.y() );
         #endif
-        vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile );
+        vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile ); //------------------------------------------------------------------------
 #else
         // Qt6
         vkSettings.saveCamera( vkCameraController->vkCameraSingle->vkCameraWindow->geometry().x(), vkCameraController->vkCameraSingle->vkCameraWindow->geometry().y() );

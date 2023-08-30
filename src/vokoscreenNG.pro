@@ -176,6 +176,7 @@ equals(QT_MAJOR_VERSION, 6) {
 } else {
    # Qt5
    include(player/player.pri)
+   include(playerGST/playerGST.pri)
 }
 
 # screenManager

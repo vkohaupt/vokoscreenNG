@@ -34,6 +34,7 @@
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
     // Qt5
     #include "QvkPlayer.h"
+    #include "QvkPlayerController.h"
 #else
     // Qt6
 #endif
@@ -146,7 +147,8 @@ private:
 
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
     // Qt5
-    QvkPlayer *vkPlayer;
+//    QvkPlayer *vkPlayer;
+    QvkPlayerController *vkPlayer; // This is for the new GStreamer player
 #else
     // Qt6
 #endif
