@@ -35,6 +35,7 @@ QvkPlayerController::QvkPlayerController( Ui_formMainWindow *ui_mainwindow ) : u
     ui->setupUi(this);
 
     uiMainWindow = ui_mainwindow;
+    uiMainWindow->verticalLayoutTabSidebarPlayer->addWidget( this );
 
     setWindowTitle( global::name + " " + global::version + " - " + "Player");
     setWindowIcon( QIcon( QString::fromUtf8( ":/pictures/logo/logo.png" ) ) );
@@ -148,15 +149,13 @@ void QvkPlayerController::slot_volume( int volume )
 
 void QvkPlayerController::slot_mute_from_Pulse( bool muted )
 {
-    if ( ( muted == true ) and ( ui->pushButtonMute->isChecked() == false ) )
-    {
+    if ( ( muted == true ) and ( ui->pushButtonMute->isChecked() == false ) ) {
         ui->pushButtonMute->setChecked( true );
         ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-muted.png" ) );
         return;
     }
 
-    if ( ( muted == false ) and ( ui->pushButtonMute->isChecked() == true ) )
-    {
+    if ( ( muted == false ) and ( ui->pushButtonMute->isChecked() == true ) ) {
         ui->pushButtonMute->setChecked( false );
         ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-high.png" ) );
         return;
@@ -168,14 +167,12 @@ void QvkPlayerController::slot_mute( bool muted )
 {
     vkPlayerGst->mute( muted );
 
-    if ( muted == true )
-    {
+    if ( muted == true ) {
         ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-muted.png" ) );
         return;
     }
 
-    if ( muted == false )
-    {
+    if ( muted == false ) {
         ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-high.png" ) );
         return;
     }
@@ -194,8 +191,7 @@ void QvkPlayerController::slot_sliderVideoMoved( int value )
 
 void QvkPlayerController::slot_play()
 {
-    if ( getMediaFile() > "" )
-    {
+    if ( getMediaFile() > "" ) {
         ui->label_logo->setVisible( false );
         widget_Video->setVisible( true );
         this->setMouseTracking( true );
@@ -301,33 +297,28 @@ void QvkPlayerController::mouseDoubleClickEvent( QMouseEvent *event )
 {
     Q_UNUSED(event)
 
-    if ( isFullScreen() == false )
-    {
-        if ( vkPlayerGst->is_running() == true )
-        {
+    if ( isFullScreen() == false ) {
+        if ( vkPlayerGst->is_running() == true ) {
             ui->widget_menuebar->setParent( widget_Video );
             ui->widget_menuebar->raise();
             ui->widget_menuebar->show();
             showFullScreen();
         }
 
-        if ( ( vkPlayerGst->is_running() == false ) and ( vkPlayerGst->is_pause() == false ) )
-        {
+        if ( ( vkPlayerGst->is_running() == false ) and ( vkPlayerGst->is_pause() == false ) ) {
             ui->widget_menuebar->setParent( ui->label_logo );
             ui->widget_menuebar->raise();
             ui->widget_menuebar->show();
             showFullScreen();
         }
 
-        if ( ( vkPlayerGst->is_running() == false ) and ( vkPlayerGst->is_pause() == true ) )
-        {
+        if ( ( vkPlayerGst->is_running() == false ) and ( vkPlayerGst->is_pause() == true ) ) {
             ui->widget_menuebar->setParent( widget_Video );
             ui->widget_menuebar->raise();
             ui->widget_menuebar->show();
             showFullScreen();
         }
-    }
-    else {
+    } else {
         showNormal();
         ui->verticalLayout->addWidget( ui->widget_menuebar );
         ui->widget_menuebar->raise();
@@ -347,27 +338,22 @@ void QvkPlayerController::keyPressEvent( QKeyEvent *event )
         ui->verticalLayout->addWidget( ui->widget_menuebar );
     }
 
-    if ( ( event->key() == Qt::Key_F11 ) or ( event->key() == Qt::Key_F ) )
-    {
-        if ( isFullScreen() == false )
-        {
-            if ( vkPlayerGst->is_running() == true )
-            {
+    if ( ( event->key() == Qt::Key_F11 ) or ( event->key() == Qt::Key_F ) ) {
+        if ( isFullScreen() == false ) {
+            if ( vkPlayerGst->is_running() == true ) {
                 ui->widget_menuebar->setParent( widget_Video );
                 ui->widget_menuebar->raise();
                 ui->widget_menuebar->show();
                 showFullScreen();
             }
 
-            if ( vkPlayerGst->is_running() == false )
-            {
+            if ( vkPlayerGst->is_running() == false ) {
                 ui->widget_menuebar->setParent( ui->label_logo );
                 ui->widget_menuebar->raise();
                 ui->widget_menuebar->show();
                 showFullScreen();
             }
-        }
-        else {
+        } else {
             showNormal();
             ui->verticalLayout->addWidget( ui->widget_menuebar );
         }
@@ -424,6 +410,7 @@ void QvkPlayerController::slot_openFile()
             ui->verticalLayout->setStretch( 0, 1 );
             widget_Video->setStyleSheet( "QWidget { background-color: black; }" );
             widget_Video->setVisible( true );
+
             file = vkFileDialog.selectedFiles().at(0);
         }
     }
@@ -506,8 +493,7 @@ void QvkPlayerController::mouseMoveEvent( QMouseEvent *event )
 
 void QvkPlayerController::mousePressEvent( QMouseEvent *event )
 {
-    if ( ui->widget_menuebar->underMouse() )
-    {
+    if ( ui->widget_menuebar->underMouse() ) {
         mouseInWidgetX = event->pos().x() - ui->widget_menuebar->pos().x();
         mouseInWidgetY = event->pos().y() - ui->widget_menuebar->pos().y();
         pressed = true;
@@ -524,8 +510,7 @@ void QvkPlayerController::mouseReleaseEvent( QMouseEvent *event )
 
 void QvkPlayerController::resizeEvent( QResizeEvent *event )
 {
-    if ( isFullScreen() == true )
-    {
+    if ( isFullScreen() == true ) {
         int screenHeight = event->size().height();
         int screenWidth = event->size().width();
         int menueBarHeight = ui->widget_menuebar->height();
