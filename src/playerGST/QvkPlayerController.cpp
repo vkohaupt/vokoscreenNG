@@ -35,7 +35,6 @@ QvkPlayerController::QvkPlayerController( Ui_formMainWindow *ui_mainwindow ) : u
     ui->setupUi(this);
 
     uiMainWindow = ui_mainwindow;
-    uiMainWindow->verticalLayoutTabSidebarPlayer->addWidget( this );
 
     setWindowTitle( global::name + " " + global::version + " - " + "Player");
     setWindowIcon( QIcon( QString::fromUtf8( ":/pictures/logo/logo.png" ) ) );
