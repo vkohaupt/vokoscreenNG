@@ -40,12 +40,6 @@ QvkPlayerController::QvkPlayerController( Ui_formMainWindow *ui_mainwindow ) : u
     setWindowTitle( global::name + " " + global::version + " - " + "Player");
     setWindowIcon( QIcon( QString::fromUtf8( ":/pictures/logo/logo.png" ) ) );
 
-    widget_Video = new QWidget;
-    ui->verticalLayout->insertWidget( 0, widget_Video );
-    ui->verticalLayout->setStretch( 0, 1 );
-    widget_Video->setStyleSheet( "QWidget { background-color: black; }" );
-    widget_Video->setVisible( false );
-
     sliderVideo = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_2->insertWidget( 0, sliderVideo );
     ui->horizontalLayout_2->setStretch( 0, 1 );
@@ -82,7 +76,6 @@ QvkPlayerController::QvkPlayerController( Ui_formMainWindow *ui_mainwindow ) : u
 void QvkPlayerController::init()
 {
     vkPlayerGst = new QvkPlayerGst();
-    vkPlayerGst->set_winId( widget_Video->winId() );
     vkPlayerGst->init();
 
     connect( vkPlayerGst, SIGNAL( signal_EOS( QString ) ),        this, SLOT( slot_EOS( QString ) ) );
@@ -122,10 +115,10 @@ QvkPlayerController::~QvkPlayerController()
 void QvkPlayerController::slot_hideMouse()
 {
     if ( ( widget_Video->underMouse() == true ) and ( ui->widget_menuebar->underMouse() == false ) ){
-       setCursor( Qt::BlankCursor );
-       if ( isFullScreen() == true ){
-         ui->widget_menuebar->hide();
-       }
+        setCursor( Qt::BlankCursor );
+        if ( isFullScreen() == true ){
+            ui->widget_menuebar->hide();
+        }
     }
 }
 
@@ -239,18 +232,6 @@ void QvkPlayerController::slot_stop()
     sliderVideo->setEnabled( false );
     ui->pushButtonFrameBackward->setEnabled( false );
     ui->pushButtonFrameForward->setEnabled( false );
-
-    // Remove and hide the old widget_video
-    ui->verticalLayout->removeWidget( widget_Video );
-    widget_Video->hide();
-
-    // Create a new widget_video
-    widget_Video = new QWidget;
-    vkPlayerGst->set_winId( widget_Video->winId() );
-    ui->verticalLayout->insertWidget( 0, widget_Video );
-    ui->verticalLayout->setStretch( 0, 1 );
-    widget_Video->setStyleSheet( "QWidget { background-color: black; }" );
-    widget_Video->setVisible( false );
 
     if ( isFullScreen() == true ) {
         ui->verticalLayout->addWidget( ui->widget_menuebar );
@@ -400,8 +381,11 @@ void QvkPlayerController::slot_openFile()
             ui->label_logo->hide();
 
             // Remove and hide the old widget_video
-            ui->verticalLayout->removeWidget( widget_Video );
-            widget_Video->hide();
+            if ( widget_Video != nullptr ) {
+                ui->verticalLayout->removeWidget( widget_Video );
+                widget_Video->hide();
+                widget_Video = nullptr;
+            }
 
             // Create a new widget_video
             widget_Video = new QWidget;
@@ -452,7 +436,7 @@ void QvkPlayerController::mouseMoveEvent( QMouseEvent *event )
 
     unsetCursor();
     if ( isFullScreen() == true ){
-      ui->widget_menuebar->show();
+        ui->widget_menuebar->show();
     }
 
     if ( ui->widget_menuebar->underMouse() and ( pressed == true ) and isFullScreen() )

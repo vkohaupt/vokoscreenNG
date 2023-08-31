@@ -614,7 +614,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
     // Qt5
-//    vkSettings.readPlayerPathOpenFile( vkPlayer ); //--------------------------------------------------------------------------------------
+//    vkSettings.readPlayerPathOpenFile( vkPlayer );
+    vkSettings.readPlayerPathOpenFile( 0, vkPlayer ); // this is for the new GStreamer player
+
 #else
     // Qt6
 #endif
