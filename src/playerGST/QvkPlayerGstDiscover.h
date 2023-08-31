@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QVKDISCOVERGST_H
-#define QVKDISCOVERGST_H
+#ifndef QVKPLAYERGSTDISCOVER_H
+#define QVKPLAYERGSTDISCOVER_H
 
 #include "glib.h"
 #include "gst/gst.h"
@@ -30,11 +30,11 @@
 #include <QObject>
 
 
-class QvkDiscoverGst : public QObject
+class QvkPlayerGstDiscover : public QObject
 {
     Q_OBJECT
 public:
-    explicit QvkDiscoverGst();
+    explicit QvkPlayerGstDiscover();
     void discover_file(QString mediaFile);
 
 private:
@@ -55,4 +55,4 @@ protected:
 
 };
 
-#endif // QVKGSTPLAYER_H
+#endif

@@ -28,8 +28,8 @@
 
 QvkPlayerGst::QvkPlayerGst()
 {
-    vkDiscoverGst = new QvkDiscoverGst;
-    connect( vkDiscoverGst, SIGNAL( signal_discover_quit( bool, bool ) ), this, SLOT( slot_discover_quit( bool, bool ) ) );
+    vkPlayerGstDiscover = new QvkPlayerGstDiscover;
+    connect( vkPlayerGstDiscover, SIGNAL( signal_discover_quit( bool, bool ) ), this, SLOT( slot_discover_quit( bool, bool ) ) );
 }
 
 
@@ -111,7 +111,7 @@ WId QvkPlayerGst::get_winId()
 void QvkPlayerGst::set_mediaFile( QString string )
 {
     mediaFile = string;
-    vkDiscoverGst->discover_file( mediaFile );
+    vkPlayerGstDiscover->discover_file( mediaFile );
 }
 
 

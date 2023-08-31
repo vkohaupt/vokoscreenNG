@@ -20,7 +20,7 @@
  * --End_License--
  */
 
-#include "QvkDiscoverGst.h"
+#include "QvkPlayerGstDiscover.h"
 #include "global.h"
 
 #include <string.h>
@@ -29,7 +29,7 @@
 
 #include <QDebug>
 
-QvkDiscoverGst::QvkDiscoverGst()
+QvkPlayerGstDiscover::QvkPlayerGstDiscover()
 {
 }
 
@@ -127,7 +127,7 @@ void on_finished_cb( GstDiscoverer *discoverer, CustomData *data )
 }
 
 
-void QvkDiscoverGst::discover_file( QString mediaFile )
+void QvkPlayerGstDiscover::discover_file( QString mediaFile )
 {
     CustomData data;
     GError *err = NULL;

@@ -3,10 +3,10 @@ DEPENDPATH  += $$PWD
 
 SOURCES   += $$PWD/QvkPlayerController.cpp \
              $$PWD/QvkPlayerGst.cpp \
-             $$PWD/QvkDiscoverGst.cpp
+             $$PWD/QvkPlayerGstDiscover.cpp
 
 HEADERS   += $$PWD/QvkPlayerController.h \
              $$PWD/QvkPlayerGst.h \
-             $$PWD/QvkDiscoverGst.h
+             $$PWD/QvkPlayerGstDiscover.h
 
 FORMS     += $$PWD/playerGST.ui

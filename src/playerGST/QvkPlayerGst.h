@@ -31,7 +31,7 @@
 #include <QWidget>
 #include <QTimer>
 
-#include "QvkDiscoverGst.h"
+#include "QvkPlayerGstDiscover.h"
 
 class QvkPlayerGst : public QObject
 {
@@ -49,7 +49,7 @@ public:
     void frameBackward( qint64 slidervalue );
     void playAfterFrameSkip( qint64 slidervalue );
     bool is_pause();
-    QvkDiscoverGst *vkDiscoverGst;
+    QvkPlayerGstDiscover *vkPlayerGstDiscover;
     bool have_stream_video = false;
     bool have_stream_audio = false;
     void mute( bool bol );
