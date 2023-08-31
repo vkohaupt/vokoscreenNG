@@ -181,7 +181,7 @@ void QvkPlayerController::slot_sliderVideoMoved( int value )
 
 void QvkPlayerController::slot_play()
 {
-    if ( getMediaFile() > "" ) {
+    if ( mediaFile > "" ) {
         // Remove and hide the old widget_video
         if ( widget_Video != nullptr ) {
             ui->verticalLayout->removeWidget( widget_Video );
@@ -359,18 +359,12 @@ void QvkPlayerController::keyPressEvent( QKeyEvent *event )
 void QvkPlayerController::setMediaFile( QString string )
 {
     mediaFile = string;
-    QFileInfo file( getMediaFile() );
+    QFileInfo file( mediaFile );
     setWindowTitle( file.fileName() + " - " + global::name + " " + global::version + " - " + "Player" );
     vkPlayerGst->set_mediaFile( mediaFile );
     ui->pushButtonPlay->setEnabled( true );
     ui->pushButtonStop->click();
     ui->pushButtonPlay->click();
-}
-
-
-QString QvkPlayerController::getMediaFile()
-{
-    return mediaFile;
 }
 
 

@@ -71,7 +71,6 @@ private:
     Ui_formMainWindow *uiMainWindow;
     QvkPlayerGst *vkPlayerGst;
     QString mediaFile;
-    QString getMediaFile();
     QWidget *widget_Video = nullptr;
     QvkSpezialSlider *sliderVideo;
     QvkSpezialSlider *sliderVolume;
