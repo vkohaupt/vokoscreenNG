@@ -67,8 +67,6 @@ QvkPlayerController::QvkPlayerController( Ui_formMainWindow *ui_mainwindow ) : u
     ui->pushButtonPause->setVisible( false );
     ui->pushButtonPlay->setEnabled( false );
     ui->pushButtonStop->setEnabled( false );
-
-    show();
 }
 
 
@@ -184,6 +182,21 @@ void QvkPlayerController::slot_sliderVideoMoved( int value )
 void QvkPlayerController::slot_play()
 {
     if ( getMediaFile() > "" ) {
+        // Remove and hide the old widget_video
+        if ( widget_Video != nullptr ) {
+            ui->verticalLayout->removeWidget( widget_Video );
+            widget_Video->hide();
+            widget_Video = nullptr;
+        }
+
+        // Create a new widget_video
+        widget_Video = new QWidget;
+        vkPlayerGst->set_winId( widget_Video->winId() );
+        ui->verticalLayout->insertWidget( 0, widget_Video );
+        ui->verticalLayout->setStretch( 0, 1 );
+        widget_Video->setStyleSheet( "QWidget { background-color: black; }" );
+        widget_Video->setVisible( true );
+
         ui->label_logo->setVisible( false );
         widget_Video->setVisible( true );
         this->setMouseTracking( true );
@@ -204,6 +217,8 @@ void QvkPlayerController::slot_play()
         } else {
             vkPlayerGst->slot_play();
         }
+
+        show();
     }
 }
 
