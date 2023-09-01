@@ -99,6 +99,7 @@ signals:
     void signal_currentTime( qint64 currentTime );
     void signal_mute( bool bol );
     void signal_volume( qreal volume );
+    void signal_pause();
 
 
 protected:

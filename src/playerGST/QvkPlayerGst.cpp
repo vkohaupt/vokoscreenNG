@@ -48,6 +48,8 @@ void QvkPlayerGst::on_pad_added( GstElement *element, GstPad *pad, gpointer data
     gst_object_unref( sinkpad );
 }
 
+// https://stackoverflow.com/questions/57556590/how-to-emit-signal-from-static-function-in-qt
+
 // https://gstreamer.freedesktop.org/documentation/application-development/advanced/pipeline-manipulation.html?gi-language=c
 /* called when a new message is posted on the bus */
 int counter = 0;
@@ -57,29 +59,39 @@ void QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message, gpointer 
     Q_UNUSED(user_data)
 
     switch (GST_MESSAGE_TYPE (message)) {
-    case GST_MESSAGE_ERROR:
-        qDebug().noquote() << global::nameOutput << "GST_MESSAGE_ERROR";
-        break;
-    case GST_MESSAGE_EOS:
-        global::lineEdit_EOS->setText( QString::number( counter++ ) );
-        break;
-    case GST_MESSAGE_DURATION_CHANGED:
-        break;
-    case GST_MESSAGE_STEP_DONE:
-        qDebug().noquote() << global::nameOutput << "MESSAGE_STEP_DONE";
-        break;
-    case GST_MESSAGE_TAG:
-        break;
-    case GST_MESSAGE_STATE_CHANGED:
-        break;
-    case GST_MESSAGE_STREAM_START:
-        break;
-    case GST_MESSAGE_APPLICATION:
-    {
-        break;
-    }
-    default:
-        break;
+        case GST_MESSAGE_ERROR:
+            qDebug().noquote() << global::nameOutput << "GST_MESSAGE_ERROR";
+            break;
+        case GST_MESSAGE_EOS:
+            global::lineEdit_EOS->setText( QString::number( counter++ ) );
+            break;
+        case GST_MESSAGE_DURATION_CHANGED:
+            break;
+        case GST_MESSAGE_STEP_DONE:
+            qDebug().noquote() << global::nameOutput << "MESSAGE_STEP_DONE";
+            break;
+        case GST_MESSAGE_TAG:
+            break;
+        case GST_MESSAGE_STATE_CHANGED:
+            {
+                GstState old_state, new_state;
+                gst_message_parse_state_changed ( message, &old_state, &new_state, NULL);
+                QString message1 = GST_OBJECT_NAME ( message->src );
+                QString oldState = gst_element_state_get_name( old_state );
+                QString newState = gst_element_state_get_name( new_state );
+                if( ( message1 == "pipeline" ) and ( oldState == "PLAYING" ) and ( newState == "PAUSED" ) ) {
+                    qDebug().noquote().nospace() << global::nameOutput << "[Player] " << "GST_MESSAGE_STATE_CHANGED from PLAYING to PAUSED";
+                }
+            }
+            break;
+        case GST_MESSAGE_STREAM_START:
+            break;
+        case GST_MESSAGE_APPLICATION:
+            {
+                break;
+            }
+        default:
+            break;
     }
 }
 

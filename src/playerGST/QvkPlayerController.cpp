@@ -111,14 +111,13 @@ QvkPlayerController::~QvkPlayerController()
 
 void QvkPlayerController::slot_hideMouse()
 {
-    if ( ( widget_Video->underMouse() == true ) and ( ui->widget_menuebar->underMouse() == false ) ){
+    if ( ( widget_Video->underMouse() == true ) and ( ui->widget_menuebar->underMouse() == false ) ) {
         setCursor( Qt::BlankCursor );
         if ( isFullScreen() == true ){
             ui->widget_menuebar->hide();
         }
     }
 }
-
 
 
 void QvkPlayerController::slot_volume_from_pulse( qreal volume )
@@ -231,6 +230,15 @@ void QvkPlayerController::slot_pause()
     ui->pushButtonPause->setVisible( false );
 
     ui->pushButtonStop->setEnabled( true );
+
+    // Vorsorglich repaint und update
+    widget_Video->repaint();
+    ui->widget_menuebar->repaint();
+    repaint();
+
+    widget_Video->update();
+    ui->widget_menuebar->update();
+    update();
 }
 
 
@@ -242,6 +250,7 @@ void QvkPlayerController::slot_stop()
     ui->pushButtonPause->setVisible( false );
     ui->pushButtonPause->setEnabled( false );
     ui->pushButtonStop->setEnabled( false );
+    widget_Video->hide();
     ui->label_logo->setVisible( true );
     sliderVideo->setEnabled( false );
     ui->pushButtonFrameBackward->setEnabled( false );
@@ -318,11 +327,16 @@ void QvkPlayerController::mouseDoubleClickEvent( QMouseEvent *event )
         ui->verticalLayout->addWidget( ui->widget_menuebar );
         ui->widget_menuebar->raise();
         ui->widget_menuebar->show();
-
-        // To prevent a possibly black picture
-        QTimer::singleShot(  50, Qt::PreciseTimer, ui->pushButtonFrameBackward, SLOT( click() ) );
-        QTimer::singleShot( 100, Qt::PreciseTimer, ui->pushButtonFrameForward, SLOT( click() ) );
     }
+
+    // Vorsorglich repaint und update
+    widget_Video->repaint();
+    ui->widget_menuebar->repaint();
+    repaint();
+
+    widget_Video->update();
+    ui->widget_menuebar->update();
+    update();
 }
 
 
@@ -353,6 +367,15 @@ void QvkPlayerController::keyPressEvent( QKeyEvent *event )
             ui->verticalLayout->addWidget( ui->widget_menuebar );
         }
     }
+
+    // Vorsorglich repaint und update
+    widget_Video->repaint();
+    ui->widget_menuebar->repaint();
+    repaint();
+
+    widget_Video->update();
+    ui->widget_menuebar->update();
+    update();
 }
 
 
