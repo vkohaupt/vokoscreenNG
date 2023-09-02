@@ -32,6 +32,7 @@
 #include <QMouseEvent>
 #include <QKeyEvent>
 #include <QResizeEvent>
+#include <QCloseEvent>
 
 class QvkPlayerController : public QWidget
 {
@@ -87,6 +88,7 @@ protected:
     void mousePressEvent( QMouseEvent *event );
     void mouseReleaseEvent( QMouseEvent *event );
     void resizeEvent( QResizeEvent *event );
+    void closeEvent( QCloseEvent *event );
 
 
 };

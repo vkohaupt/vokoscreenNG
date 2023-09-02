@@ -78,7 +78,7 @@ void QvkPlayerController::init()
     connect( vkPlayerGst, SIGNAL( signal_EOS( QString ) ),        this, SLOT( slot_EOS( QString ) ) );
     connect( vkPlayerGst, SIGNAL( signal_duration( qint64 ) ),    this, SLOT( slot_duration( qint64 ) ) );
     connect( vkPlayerGst, SIGNAL( signal_currentTime( qint64 ) ), this, SLOT( slot_currentTime( qint64 ) ) );
-    connect( vkPlayerGst, SIGNAL( signal_mute( bool ) ),          this, SLOT( slot_mute_from_Pulse( bool ) ) );
+//    connect( vkPlayerGst, SIGNAL( signal_mute( bool ) ),          this, SLOT( slot_mute_from_Pulse( bool ) ) );
     connect( vkPlayerGst, SIGNAL( signal_volume( qreal ) ),       this, SLOT( slot_volume_from_pulse( qreal ) ) );
 
     connect( ui->pushButtonPlay, SIGNAL( clicked() ),  this, SLOT( slot_play() ) );
@@ -106,6 +106,13 @@ void QvkPlayerController::init()
 QvkPlayerController::~QvkPlayerController()
 {
     delete ui;
+}
+
+
+void QvkPlayerController::closeEvent( QCloseEvent *event )
+{
+    Q_UNUSED(event)
+    ui->pushButtonStop->click();
 }
 
 
@@ -180,6 +187,18 @@ void QvkPlayerController::slot_sliderVideoMoved( int value )
 
 void QvkPlayerController::slot_play()
 {
+    if ( vkPlayerGst->is_running() == true ) {
+        return;
+    }
+
+    if ( vkPlayerGst->is_pause() == true ) {
+        vkPlayerGst->slot_play();
+        ui->pushButtonPlay->setVisible( false );
+        ui->pushButtonPause->setVisible( true );
+        ui->pushButtonStop->setEnabled( false );
+        return;
+    }
+
     if ( mediaFile > "" ) {
         // Remove and hide the old widget_video
         if ( widget_Video != nullptr ) {
@@ -211,11 +230,7 @@ void QvkPlayerController::slot_play()
         ui->pushButtonFrameBackward->setEnabled( true );
         ui->pushButtonFrameForward->setEnabled( true );
 
-        if ( vkPlayerGst->frameSkip == true ){
-            vkPlayerGst->playAfterFrameSkip( sliderVideo->value() );
-        } else {
-            vkPlayerGst->slot_play();
-        }
+        vkPlayerGst->slot_play();
 
         show();
     }
@@ -225,20 +240,9 @@ void QvkPlayerController::slot_play()
 void QvkPlayerController::slot_pause()
 {
     vkPlayerGst->slot_pause();
-
     ui->pushButtonPlay->setVisible( true );
     ui->pushButtonPause->setVisible( false );
-
     ui->pushButtonStop->setEnabled( true );
-
-    // Vorsorglich repaint und update
-    widget_Video->repaint();
-    ui->widget_menuebar->repaint();
-    repaint();
-
-    widget_Video->update();
-    ui->widget_menuebar->update();
-    update();
 }
 
 

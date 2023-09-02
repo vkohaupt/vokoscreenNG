@@ -79,9 +79,20 @@ void QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message, gpointer 
                 QString message1 = GST_OBJECT_NAME ( message->src );
                 QString oldState = gst_element_state_get_name( old_state );
                 QString newState = gst_element_state_get_name( new_state );
+/*
+                if( ( message1 == "pipeline" ) and ( oldState == "PAUSED" ) and ( newState == "READY" ) ) {
+                    qDebug().noquote().nospace() << global::nameOutput << "[Player] " << "GST_MESSAGE_STATE_CHANGED from PAUSED to READY";
+                }
+
                 if( ( message1 == "pipeline" ) and ( oldState == "PLAYING" ) and ( newState == "PAUSED" ) ) {
                     qDebug().noquote().nospace() << global::nameOutput << "[Player] " << "GST_MESSAGE_STATE_CHANGED from PLAYING to PAUSED";
                 }
+
+                g_print ("Element %s changed state from %s to %s.\n",
+                     GST_OBJECT_NAME (message->src),
+                     gst_element_state_get_name (old_state),
+                     gst_element_state_get_name (new_state));
+*/
             }
             break;
         case GST_MESSAGE_STREAM_START:
@@ -142,6 +153,7 @@ void QvkPlayerGst::slot_discover_quit( bool video, bool audio )
 
 void QvkPlayerGst::mute( bool bol )
 {
+    qDebug() << "mute" << bol;
     g_object_set( G_OBJECT( audiosink ), "mute", bol, NULL );
 }
 
@@ -313,7 +325,6 @@ bool QvkPlayerGst::is_running()
         state_change = gst_element_get_state( pipeline, &cur_state,  NULL, 10000000 );
         Q_UNUSED(state_change)
     }
-
     if ( cur_state == GST_STATE_PLAYING ) {
         return true;
     } else {
@@ -356,7 +367,7 @@ void QvkPlayerGst::slot_timer()
     if ( gst_element_query_position( pipeline, GST_FORMAT_TIME, &currentTime ) ) {
         emit signal_currentTime( currentTime / 1000 / 1000 );
     }
-
+/*
     // Get mute from external e.g. Pulseaudio-Volumecontrol or Systray-mutecontrol
     if ( have_stream_audio == true ) {
         bool bol;
@@ -371,6 +382,7 @@ void QvkPlayerGst::slot_timer()
         qreal m_volume = QAudio::convertVolume( volume, QAudio::LinearVolumeScale, QAudio::CubicVolumeScale );
         emit signal_volume( m_volume );
     }
+*/
 }
 
 
