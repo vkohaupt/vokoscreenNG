@@ -647,7 +647,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
     // Qt5
             vkPlayer->setMediaFile( arguments.at(1) );
-            vkPlayer->slot_play();
+            vkPlayer->slot_pushButtonPlay();
 #else
     // Qt6
 #endif
@@ -2142,9 +2142,8 @@ void QvkMainWindow::slot_Play()
     string.append( videoFileList.at( 0 ) );
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
     // Qt5
-    qDebug() << "111111111111111111111111111111111111111111111111111111111";
     vkPlayer->setMediaFile( string );
-    vkPlayer->slot_play();
+    vkPlayer->slot_pushButtonPlay();
 #else
     // Qt6
 #endif

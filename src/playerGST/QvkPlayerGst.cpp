@@ -367,7 +367,7 @@ void QvkPlayerGst::slot_timer()
     if ( gst_element_query_position( pipeline, GST_FORMAT_TIME, &currentTime ) ) {
         emit signal_currentTime( currentTime / 1000 / 1000 );
     }
-/*
+
     // Get mute from external e.g. Pulseaudio-Volumecontrol or Systray-mutecontrol
     if ( have_stream_audio == true ) {
         bool bol;
@@ -382,7 +382,6 @@ void QvkPlayerGst::slot_timer()
         qreal m_volume = QAudio::convertVolume( volume, QAudio::LinearVolumeScale, QAudio::CubicVolumeScale );
         emit signal_volume( m_volume );
     }
-*/
 }
 
 

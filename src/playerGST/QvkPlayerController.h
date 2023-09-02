@@ -48,12 +48,12 @@ public:
 
 
 public slots:
-    void slot_play();
+    void slot_pushButtonPlay();
 
 
 private slots:
-    void slot_stop();
-    void slot_pause();
+    void slot_pushButtonStop();
+    void slot_pushButtonPause();
     void slot_openFile();
     void slot_EOS( QString m_file );
     void slot_duration( qint64 durationMSecs );

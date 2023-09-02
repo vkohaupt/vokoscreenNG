@@ -78,12 +78,12 @@ void QvkPlayerController::init()
     connect( vkPlayerGst, SIGNAL( signal_EOS( QString ) ),        this, SLOT( slot_EOS( QString ) ) );
     connect( vkPlayerGst, SIGNAL( signal_duration( qint64 ) ),    this, SLOT( slot_duration( qint64 ) ) );
     connect( vkPlayerGst, SIGNAL( signal_currentTime( qint64 ) ), this, SLOT( slot_currentTime( qint64 ) ) );
-//    connect( vkPlayerGst, SIGNAL( signal_mute( bool ) ),          this, SLOT( slot_mute_from_Pulse( bool ) ) );
+    connect( vkPlayerGst, SIGNAL( signal_mute( bool ) ),          this, SLOT( slot_mute_from_Pulse( bool ) ) );
     connect( vkPlayerGst, SIGNAL( signal_volume( qreal ) ),       this, SLOT( slot_volume_from_pulse( qreal ) ) );
 
-    connect( ui->pushButtonPlay, SIGNAL( clicked() ),  this, SLOT( slot_play() ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked() ),  this, SLOT( slot_stop() ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked() ), this, SLOT( slot_pause() ) );
+    connect( ui->pushButtonPlay, SIGNAL( clicked() ),  this, SLOT( slot_pushButtonPlay() ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked() ),  this, SLOT( slot_pushButtonStop() ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked() ), this, SLOT( slot_pushButtonPause() ) );
 
     connect( ui->pushButtonFrameForward,  SIGNAL( clicked() ), this, SLOT( slot_frameForward() ) );
     connect( ui->pushButtonFrameBackward, SIGNAL( clicked() ), this, SLOT( slot_frameBackward() ) );
@@ -185,7 +185,7 @@ void QvkPlayerController::slot_sliderVideoMoved( int value )
 }
 
 
-void QvkPlayerController::slot_play()
+void QvkPlayerController::slot_pushButtonPlay()
 {
     if ( vkPlayerGst->is_running() == true ) {
         return;
@@ -237,7 +237,7 @@ void QvkPlayerController::slot_play()
 }
 
 
-void QvkPlayerController::slot_pause()
+void QvkPlayerController::slot_pushButtonPause()
 {
     vkPlayerGst->slot_pause();
     ui->pushButtonPlay->setVisible( true );
@@ -246,7 +246,7 @@ void QvkPlayerController::slot_pause()
 }
 
 
-void QvkPlayerController::slot_stop()
+void QvkPlayerController::slot_pushButtonStop()
 {
     vkPlayerGst->slot_stop();
 
