@@ -33,7 +33,7 @@
 #include "QvkMagnifierController.h"
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
     // Qt5
-    #include "QvkPlayer.h"
+//    #include "QvkPlayer.h"
     #include "QvkPlayerController.h"
 #else
     // Qt6

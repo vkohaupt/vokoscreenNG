@@ -390,8 +390,6 @@ void QvkPlayerController::setMediaFile( QString string )
     setWindowTitle( file.fileName() + " - " + global::name + " " + global::version + " - " + "Player" );
     vkPlayerGst->set_mediaFile( mediaFile );
     ui->pushButtonPlay->setEnabled( true );
-    ui->pushButtonStop->click();
-    ui->pushButtonPlay->click();
 }
 
 

@@ -2142,6 +2142,7 @@ void QvkMainWindow::slot_Play()
     string.append( videoFileList.at( 0 ) );
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
     // Qt5
+    qDebug() << "111111111111111111111111111111111111111111111111111111111";
     vkPlayer->setMediaFile( string );
     vkPlayer->slot_play();
 #else
