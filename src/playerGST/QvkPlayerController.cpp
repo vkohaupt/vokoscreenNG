@@ -67,6 +67,9 @@ QvkPlayerController::QvkPlayerController( Ui_formMainWindow *ui_mainwindow ) : u
     ui->pushButtonPause->setVisible( false );
     ui->pushButtonPlay->setEnabled( false );
     ui->pushButtonStop->setEnabled( false );
+
+    ui->pushButtonFrameBackward->hide();
+    ui->pushButtonFrameForward->hide();
 }
 
 
@@ -435,10 +438,9 @@ void QvkPlayerController::slot_openFile()
     if ( !file.isEmpty() ) {
         setMediaFile( file );
         pathOpenFile = QDir( file ).absolutePath();
+        ui->pushButtonStop->click();
+        ui->pushButtonPlay->click();
     }
-
-    ui->pushButtonStop->click();
-    ui->pushButtonPlay->click();
 
     QApplication::setDesktopSettingsAware( true );
 }
