@@ -437,6 +437,9 @@ void QvkPlayerController::slot_openFile()
         pathOpenFile = QDir( file ).absolutePath();
     }
 
+    ui->pushButtonStop->click();
+    ui->pushButtonPlay->click();
+
     QApplication::setDesktopSettingsAware( true );
 }
 
