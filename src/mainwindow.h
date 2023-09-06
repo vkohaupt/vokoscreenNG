@@ -31,14 +31,7 @@
 #include "QvkHelp.h"
 #include "QvkSystray.h"
 #include "QvkMagnifierController.h"
-#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
-    // Qt5
-//    #include "QvkPlayer.h"
-    #include "QvkPlayerController.h"
-#else
-    // Qt6
-#endif
-
+#include "QvkPlayerController.h"
 #include "QvkLimitDiskFreeSpace.h"
 #include "QvkSpezialSlider.h"
 #include "QvkSystrayAlternative.h"
@@ -145,13 +138,8 @@ private:
 
     void vk_setCornerWidget( QTabWidget *tabWidget );
 
-#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
-    // Qt5
-//    QvkPlayer *vkPlayer;
     QvkPlayerController *vkPlayer; // This is for the new GStreamer player
-#else
-    // Qt6
-#endif
+
     QvkHalo *vkHalo;
 
     QvkSystrayAlternative *vkSystrayAlternative;

@@ -168,16 +168,8 @@ include(QvkGlobalShortcut/QvkGlobalShortcut.pri)
 include(globalMouse/globalMouse.pri)
 
 # player
-equals(QT_MAJOR_VERSION, 6) {
-   # Qt6
-   !lessThan(QT_MINOR_VERSION, 5) {
-      include(player-qt6/player-qt6.pri)
-   }
-} else {
-   # Qt5
-   win32:include(playerGST/windows/playerWindows.pri)
-   unix:include(playerGST/linux/playerLinux.pri)
-}
+win32:include(playerGST/windows/playerWindows.pri)
+unix:include(playerGST/linux/playerLinux.pri)
 
 # screenManager
 include(screenManager/screenManager.pri)

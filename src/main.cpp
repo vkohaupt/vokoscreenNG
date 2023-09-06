@@ -139,7 +139,8 @@ int main(int argc, char *argv[])
     QString pathRegistry;
     pathRegistry.append( pathProfile );
     pathRegistry.append( "/gstreamer.registry" );
-    qputenv( "GST_REGISTRY_1_0", pathRegistry.toUtf8() ); */
+    qputenv( "GST_REGISTRY_1_0", pathRegistry.toUtf8() );
+*/
 #endif
 
     // Gstreamer debug begin

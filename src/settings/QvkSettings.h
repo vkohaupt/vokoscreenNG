@@ -26,14 +26,7 @@
 #include "QvkRegionChoise.h"
 #include "QvkCameraController.h"
 #include "QvkSystrayAlternative.h"
-#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
-    // Qt5
-//#include "QvkPlayer.h"
 #include "QvkPlayerController.h"
-#else
-    // Qt6
-#endif
-
 #include "QvkHalo.h"
 #include "QvkShowClick.h"
 
@@ -61,15 +54,8 @@ public:
     void saveSystrayAlternative( int x, int y );
     void readSystrayAlternative( QvkSystrayAlternative *vkSystrayAlternative );
 
-#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
-    // Qt5
     void savePlayerPathOpenFile( QString pathFile );
-//    void readPlayerPathOpenFile( QvkPlayer *vkplayer );
     void readPlayerPathOpenFile( int dummy, QvkPlayerController *vkplayer );
-
-#else
-    // Qt6
-#endif
 
     void saveHaloColor( QColor color );
     void readHaloColor( QvkHalo *vkHalo );

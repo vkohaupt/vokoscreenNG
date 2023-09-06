@@ -234,14 +234,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     Q_UNUSED(vkMagnifierController);
     ui->label_magnifier_on_screen->setText( "" );
 
-#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
-    // Qt5
-//    vkPlayer = new QvkPlayer( this, ui );
     vkPlayer = new QvkPlayerController( ui ); // This is for the new GStreamer player
     vkPlayer->init();  // This is for the new GStreamer player
-#else
-    // Qt6
-#endif
 
     vkHelp = new QvkHelp( ui );
 
@@ -540,12 +534,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkLicenses,             SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkSystrayAlternative,   SLOT( close() ) );
-#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
-    // Qt5
     connect( this,      SIGNAL( signal_close() ),       vkPlayer,               SLOT( close() ) );
-#else
-    // Qt6
-#endif
     connect( this,      SIGNAL( signal_close() ),       vkRegionChoise,         SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkSystray,              SLOT( slot_closeSystray() ) );
 
@@ -612,14 +601,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSettings.readAreaScreencast( vkRegionChoise );
     vkSettings.readCamera( vkCameraController );
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
-#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
-    // Qt5
-//    vkSettings.readPlayerPathOpenFile( vkPlayer );
     vkSettings.readPlayerPathOpenFile( 0, vkPlayer ); // this is for the new GStreamer player
 
-#else
-    // Qt6
-#endif
     vkSettings.readHaloColor( vkHalo );
     vkSettings.readShowclickColor( vkShowClick );
 
@@ -644,13 +627,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->pushButtonStopAppsrc->setVisible( false );
         if ( arguments.count() > 1  ) {
             qDebug().noquote() << global::nameOutput << "started from file:" << arguments.at(1);
-#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
-    // Qt5
             vkPlayer->setMediaFile( arguments.at(1) );
             vkPlayer->slot_pushButtonPlay();
-#else
-    // Qt6
-#endif
             ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
         }
     }
@@ -775,12 +753,7 @@ void QvkMainWindow::changeLanguageInSourcecode()
     ui->labelLanguageUrl->setText( "<a href='https://app.transifex.com/vkohaupt/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
     ui->labelDonateUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
 
-#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
-    // Qt5
     vkPlayer->ui->retranslateUi( vkPlayer );
-#else
-    // Qt6
-#endif
 
     vkLicenses->ui->retranslateUi( vkLicenses );
     vkHelp->uiHelp->retranslateUi( vkHelp );
@@ -1010,6 +983,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
                                        vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
                                        vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
         vkSettings.saveSystrayAlternative( vkSystrayAlternative->vkSystrayAlternativeWindow->x(), vkSystrayAlternative->vkSystrayAlternativeWindow->y() );
+        vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile ); //------------------------------------------------------------------------
 
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
         // Qt5
@@ -1020,7 +994,6 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
         #ifdef Q_OS_WIN
              vkSettings.saveCamera( vkCameraController->old_XY.x(), vkCameraController->old_XY.y() );
         #endif
-        vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile ); //------------------------------------------------------------------------
 #else
         // Qt6
         vkSettings.saveCamera( vkCameraController->vkCameraSingle->vkCameraWindow->geometry().x(), vkCameraController->vkCameraSingle->vkCameraWindow->geometry().y() );
@@ -2135,18 +2108,11 @@ void QvkMainWindow::slot_Play()
     QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
 
     qDebug().noquote() << global::nameOutput << "play video with vokoplayer" << videoFileList.at(0);
-//    ui->toolButtonPlayer->click();
     QString string;
     string.append( ui->lineEditVideoPath->text() );
     string.append( "/" );
     string.append( videoFileList.at( 0 ) );
-#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
-    // Qt5
     vkPlayer->setMediaFile( string );
-//    vkPlayer->slot_pushButtonPlay(); // Wird für den alten Player benötigt
-#else
-    // Qt6
-#endif
 }
 
 
