@@ -325,7 +325,6 @@ void QvkPlayerGst::slot_EOS( QString value )
 
 //    if ( frameSkip == false )
     {
-        qDebug() << "----------" << "QvkPlayerGst::slot_EOS( QString value )";
         emit signal_EOS( get_mediaFile() );
     }
 }
