@@ -88,8 +88,8 @@ void QvkPlayerController::init()
     connect( ui->pushButtonStop, SIGNAL( clicked() ),  this, SLOT( slot_pushButtonStop() ) );
     connect( ui->pushButtonPause, SIGNAL( clicked() ), this, SLOT( slot_pushButtonPause() ) );
 
-    connect( ui->pushButtonFrameForward,  SIGNAL( clicked() ), this, SLOT( slot_frameForward() ) );
-    connect( ui->pushButtonFrameBackward, SIGNAL( clicked() ), this, SLOT( slot_frameBackward() ) );
+//    connect( ui->pushButtonFrameForward,  SIGNAL( clicked() ), this, SLOT( slot_frameForward() ) );
+//    connect( ui->pushButtonFrameBackward, SIGNAL( clicked() ), this, SLOT( slot_frameBackward() ) );
 
     connect( ui->pushButtonOpenFile, SIGNAL( clicked() ), this, SLOT( slot_openFile() )  );
 
@@ -116,75 +116,6 @@ void QvkPlayerController::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event)
     ui->pushButtonStop->click();
-}
-
-
-void QvkPlayerController::slot_hideMouse()
-{
-    if ( ( widget_Video->underMouse() == true ) and ( ui->widget_menuebar->underMouse() == false ) ) {
-        setCursor( Qt::BlankCursor );
-        if ( isFullScreen() == true ){
-            ui->widget_menuebar->hide();
-        }
-    }
-}
-
-
-void QvkPlayerController::slot_volume_from_pulse( qreal volume )
-{
-    sliderVolume->setValue( qRound( volume*100 ) );
-}
-
-
-void QvkPlayerController::slot_volume( int volume )
-{
-    if ( vkPlayerGst->have_stream_audio == true ) {
-        if ( ( volume >= 0 ) and ( volume <= 100 ) ) {
-            vkPlayerGst->volume( volume );
-        }
-    }
-}
-
-
-void QvkPlayerController::slot_mute_from_Pulse( bool muted )
-{
-    if ( ( muted == true ) and ( ui->pushButtonMute->isChecked() == false ) ) {
-        ui->pushButtonMute->setChecked( true );
-        ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-muted.png" ) );
-        return;
-    }
-
-    if ( ( muted == false ) and ( ui->pushButtonMute->isChecked() == true ) ) {
-        ui->pushButtonMute->setChecked( false );
-        ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-high.png" ) );
-        return;
-    }
-}
-
-
-void QvkPlayerController::slot_mute( bool muted )
-{
-    vkPlayerGst->mute( muted );
-
-    if ( muted == true ) {
-        ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-muted.png" ) );
-        return;
-    }
-
-    if ( muted == false ) {
-        ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-high.png" ) );
-        return;
-    }
-}
-
-
-void QvkPlayerController::slot_sliderVideoMoved( int value )
-{
-    if ( ui->pushButtonPlay->isHidden() == true ) {
-        vkPlayerGst->playAfterFrameSkip( value );
-    } else {
-        vkPlayerGst->frameForward( value );
-    }
 }
 
 
@@ -240,6 +171,51 @@ void QvkPlayerController::slot_pushButtonPlay()
 }
 
 
+void QvkPlayerController::setMediaFile( QString string )
+{
+    mediaFile = string;
+    QFileInfo file( mediaFile );
+    setWindowTitle( file.fileName() + " - " + global::name + " " + global::version + " - " + "Player" );
+    vkPlayerGst->set_mediaFile( mediaFile );
+    ui->pushButtonPlay->setEnabled( true );
+
+    ui->pushButtonStop->click();
+    ui->pushButtonPlay->click();
+}
+
+
+void QvkPlayerController::slot_openFile()
+{
+    QApplication::setDesktopSettingsAware( false );
+
+    QString file;
+    QvkFileDialog vkFileDialog( this );
+
+    if ( !pathOpenFile.isEmpty() ) {
+        vkFileDialog.setVideoPath( pathOpenFile );
+    } else {
+        QList<QLineEdit *> listLineEdit = uiMainWindow->centralWidget->findChildren<QLineEdit *>( "lineEditVideoPath" );
+        if ( !listLineEdit.empty() ) {
+            vkFileDialog.setVideoPath( uiMainWindow->lineEditVideoPath->text() );
+        }
+    }
+
+    if ( vkFileDialog.exec() == QDialog::Accepted ) {
+        if ( !vkFileDialog.selectedFiles().empty() ) {
+            ui->label_logo->hide();
+            file = vkFileDialog.selectedFiles().at(0);
+        }
+    }
+
+    if ( !file.isEmpty() ) {
+        pathOpenFile = QDir( file ).absolutePath();
+        setMediaFile( file );
+    }
+
+    QApplication::setDesktopSettingsAware( true );
+}
+
+
 void QvkPlayerController::slot_pushButtonPause()
 {
     vkPlayerGst->slot_pause();
@@ -282,6 +258,102 @@ void QvkPlayerController::slot_EOS( QString m_file )
     qDebug().noquote().nospace() << global::nameOutput << "[Player] End of stream" << file.fileName();
 
     ui->pushButtonStop->click();
+}
+
+
+void QvkPlayerController::slot_duration( qint64 durationMSecs )
+{
+    sliderVideo->setMaximum( durationMSecs );
+
+    QTime time( 0, 0, 0 );
+    QTime t = time.addMSecs( durationMSecs );
+    ui->label_duration->setText( t.toString( "hh:mm:ss" ) );
+}
+
+
+void QvkPlayerController::slot_currentTime( qint64 currentTimeMSecs ) //mycrosekunden
+{
+    sliderVideo->setSliderPosition( currentTimeMSecs );
+
+    QTime time( 0, 0, 0 );
+    QTime t = time.addMSecs( currentTimeMSecs );
+    ui->label_playbackTime->setText( t.toString( "hh:mm:ss" ) );
+}
+
+
+void QvkPlayerController::mouseMoveEvent( QMouseEvent *event )
+{
+    // Stop and start with new time, no flickering
+    timerHideMouse->stop();
+    timerHideMouse->start();
+
+    unsetCursor();
+    if ( isFullScreen() == true ){
+        ui->widget_menuebar->show();
+    }
+
+    if ( ui->widget_menuebar->underMouse() and ( pressed == true ) and isFullScreen() )
+    {
+        ui->widget_menuebar->raise();
+        ui->widget_menuebar->show();
+
+        int setX;
+        if ( ( event->pos().x() - mouseInWidgetX ) < 0 ) {
+            setX = 0;
+            mouseInWidgetX = event->pos().x();
+        } else {
+            if ( ( event->pos().x() + ( ui->widget_menuebar->width() - mouseInWidgetX ) ) > width() ) {
+                setX = width() - ui->widget_menuebar->width();
+                mouseInWidgetX = event->pos().x() - ui->widget_menuebar->pos().x();
+            } else {
+                setX = event->pos().x() - mouseInWidgetX;
+            }
+        }
+
+        int setY;
+        if ( ( event->pos().y() - mouseInWidgetY ) < 0 ) {
+            setY = 0;
+            mouseInWidgetY = event->pos().y();
+        } else {
+            if ( ( event->pos().y() + ( ui->widget_menuebar->height() - mouseInWidgetY ) ) > height() ) {
+                setY = height() - ui->widget_menuebar->height();
+                mouseInWidgetY = event->pos().y() - ui->widget_menuebar->pos().y();
+            } else {
+                setY = event->pos().y() - mouseInWidgetY;
+            }
+        }
+
+        ui->widget_menuebar->move( setX, setY );
+    }
+}
+
+
+void QvkPlayerController::mousePressEvent( QMouseEvent *event )
+{
+    if ( ui->widget_menuebar->underMouse() ) {
+        mouseInWidgetX = event->pos().x() - ui->widget_menuebar->pos().x();
+        mouseInWidgetY = event->pos().y() - ui->widget_menuebar->pos().y();
+        pressed = true;
+    }
+}
+
+
+void QvkPlayerController::mouseReleaseEvent( QMouseEvent *event )
+{
+    Q_UNUSED(event)
+    pressed = false;
+}
+
+
+void QvkPlayerController::resizeEvent( QResizeEvent *event )
+{
+    if ( isFullScreen() == true ) {
+        int screenHeight = event->size().height();
+        int screenWidth = event->size().width();
+        int menueBarHeight = ui->widget_menuebar->height();
+        int menueBarWidth = ui->widget_menuebar->width();
+        ui->widget_menuebar->move( ( screenWidth - menueBarWidth ) / 2 , screenHeight - menueBarHeight );
+    }
 }
 
 
@@ -386,157 +458,70 @@ void QvkPlayerController::keyPressEvent( QKeyEvent *event )
 }
 
 
-void QvkPlayerController::setMediaFile( QString string )
+void QvkPlayerController::slot_hideMouse()
 {
-    mediaFile = string;
-    QFileInfo file( mediaFile );
-    setWindowTitle( file.fileName() + " - " + global::name + " " + global::version + " - " + "Player" );
-    vkPlayerGst->set_mediaFile( mediaFile );
-    ui->pushButtonPlay->setEnabled( true );
+    if ( ( widget_Video->underMouse() == true ) and ( ui->widget_menuebar->underMouse() == false ) ) {
+        setCursor( Qt::BlankCursor );
+        if ( isFullScreen() == true ){
+            ui->widget_menuebar->hide();
+        }
+    }
 }
 
 
-void QvkPlayerController::slot_openFile()
+void QvkPlayerController::slot_volume_from_pulse( qreal volume )
 {
-    QApplication::setDesktopSettingsAware( false );
+    sliderVolume->setValue( qRound( volume*100 ) );
+}
 
-    QString file;
-    QvkFileDialog vkFileDialog( this );
 
-    if ( !pathOpenFile.isEmpty() ) {
-        vkFileDialog.setVideoPath( pathOpenFile );
+void QvkPlayerController::slot_volume( int volume )
+{
+    if ( vkPlayerGst->have_stream_audio == true ) {
+        if ( ( volume >= 0 ) and ( volume <= 100 ) ) {
+            vkPlayerGst->volume( volume );
+        }
+    }
+}
+
+
+void QvkPlayerController::slot_mute_from_Pulse( bool muted )
+{
+    if ( ( muted == true ) and ( ui->pushButtonMute->isChecked() == false ) ) {
+        ui->pushButtonMute->setChecked( true );
+        ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-muted.png" ) );
+        return;
+    }
+
+    if ( ( muted == false ) and ( ui->pushButtonMute->isChecked() == true ) ) {
+        ui->pushButtonMute->setChecked( false );
+        ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-high.png" ) );
+        return;
+    }
+}
+
+
+void QvkPlayerController::slot_mute( bool muted )
+{
+    vkPlayerGst->mute( muted );
+
+    if ( muted == true ) {
+        ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-muted.png" ) );
+        return;
+    }
+
+    if ( muted == false ) {
+        ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-high.png" ) );
+        return;
+    }
+}
+
+
+void QvkPlayerController::slot_sliderVideoMoved( int value )
+{
+    if ( ui->pushButtonPlay->isHidden() == true ) {
+        vkPlayerGst->playAfterFrameSkip( value );
     } else {
-        QList<QLineEdit *> listLineEdit = uiMainWindow->centralWidget->findChildren<QLineEdit *>( "lineEditVideoPath" );
-        if ( !listLineEdit.empty() ) {
-            vkFileDialog.setVideoPath( uiMainWindow->lineEditVideoPath->text() );
-        }
-    }
-
-    if ( vkFileDialog.exec() == QDialog::Accepted ) {
-        if ( !vkFileDialog.selectedFiles().empty() ) {
-            ui->label_logo->hide();
-
-            // Remove and hide the old widget_video
-            if ( widget_Video != nullptr ) {
-                ui->verticalLayout->removeWidget( widget_Video );
-                widget_Video->hide();
-                widget_Video = nullptr;
-            }
-
-            // Create a new widget_video
-            widget_Video = new QWidget;
-            vkPlayerGst->set_winId( widget_Video->winId() );
-            ui->verticalLayout->insertWidget( 0, widget_Video );
-            ui->verticalLayout->setStretch( 0, 1 );
-            widget_Video->setStyleSheet( "QWidget { background-color: black; }" );
-            widget_Video->setVisible( true );
-
-            file = vkFileDialog.selectedFiles().at(0);
-        }
-    }
-
-    if ( !file.isEmpty() ) {
-        setMediaFile( file );
-        pathOpenFile = QDir( file ).absolutePath();
-        ui->pushButtonStop->click();
-        ui->pushButtonPlay->click();
-    }
-
-    QApplication::setDesktopSettingsAware( true );
-}
-
-
-void QvkPlayerController::slot_duration( qint64 durationMSecs )
-{
-    sliderVideo->setMaximum( durationMSecs );
-
-    QTime time( 0, 0, 0 );
-    QTime t = time.addMSecs( durationMSecs );
-    ui->label_duration->setText( t.toString( "hh:mm:ss" ) );
-}
-
-
-void QvkPlayerController::slot_currentTime( qint64 currentTimeMSecs ) //mycrosekunden
-{
-    sliderVideo->setSliderPosition( currentTimeMSecs );
-
-    QTime time( 0, 0, 0 );
-    QTime t = time.addMSecs( currentTimeMSecs );
-    ui->label_playbackTime->setText( t.toString( "hh:mm:ss" ) );
-}
-
-
-void QvkPlayerController::mouseMoveEvent( QMouseEvent *event )
-{
-    // Stop and start with new time, no flickering
-    timerHideMouse->stop();
-    timerHideMouse->start();
-
-    unsetCursor();
-    if ( isFullScreen() == true ){
-        ui->widget_menuebar->show();
-    }
-
-    if ( ui->widget_menuebar->underMouse() and ( pressed == true ) and isFullScreen() )
-    {
-        ui->widget_menuebar->raise();
-        ui->widget_menuebar->show();
-
-        int setX;
-        if ( ( event->pos().x() - mouseInWidgetX ) < 0 ) {
-            setX = 0;
-            mouseInWidgetX = event->pos().x();
-        } else {
-            if ( ( event->pos().x() + ( ui->widget_menuebar->width() - mouseInWidgetX ) ) > width() ) {
-                setX = width() - ui->widget_menuebar->width();
-                mouseInWidgetX = event->pos().x() - ui->widget_menuebar->pos().x();
-            } else {
-                setX = event->pos().x() - mouseInWidgetX;
-            }
-        }
-
-        int setY;
-        if ( ( event->pos().y() - mouseInWidgetY ) < 0 ) {
-            setY = 0;
-            mouseInWidgetY = event->pos().y();
-        } else {
-            if ( ( event->pos().y() + ( ui->widget_menuebar->height() - mouseInWidgetY ) ) > height() ) {
-                setY = height() - ui->widget_menuebar->height();
-                mouseInWidgetY = event->pos().y() - ui->widget_menuebar->pos().y();
-            } else {
-                setY = event->pos().y() - mouseInWidgetY;
-            }
-        }
-
-        ui->widget_menuebar->move( setX, setY );
-    }
-}
-
-
-void QvkPlayerController::mousePressEvent( QMouseEvent *event )
-{
-    if ( ui->widget_menuebar->underMouse() ) {
-        mouseInWidgetX = event->pos().x() - ui->widget_menuebar->pos().x();
-        mouseInWidgetY = event->pos().y() - ui->widget_menuebar->pos().y();
-        pressed = true;
-    }
-}
-
-
-void QvkPlayerController::mouseReleaseEvent( QMouseEvent *event )
-{
-    Q_UNUSED(event)
-    pressed = false;
-}
-
-
-void QvkPlayerController::resizeEvent( QResizeEvent *event )
-{
-    if ( isFullScreen() == true ) {
-        int screenHeight = event->size().height();
-        int screenWidth = event->size().width();
-        int menueBarHeight = ui->widget_menuebar->height();
-        int menueBarWidth = ui->widget_menuebar->width();
-        ui->widget_menuebar->move( ( screenWidth - menueBarWidth ) / 2 , screenHeight - menueBarHeight );
+        vkPlayerGst->frameForward( value );
     }
 }

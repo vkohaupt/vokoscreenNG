@@ -53,11 +53,11 @@ void QvkPlayerGst::on_pad_added( GstElement *element, GstPad *pad, gpointer data
 // https://gstreamer.freedesktop.org/documentation/application-development/advanced/pipeline-manipulation.html?gi-language=c
 /* called when a new message is posted on the bus */
 int counter = 0;
-void QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data )
+//void QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data )
+GstBusSyncReply QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data )
 {
     Q_UNUSED(bus);
     Q_UNUSED(user_data)
-
     switch (GST_MESSAGE_TYPE (message)) {
         case GST_MESSAGE_ERROR:
             qDebug().noquote() << global::nameOutput << "GST_MESSAGE_ERROR";
@@ -74,11 +74,12 @@ void QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message, gpointer 
             break;
         case GST_MESSAGE_STATE_CHANGED:
             {
-                GstState old_state, new_state;
+/*                GstState old_state, new_state;
                 gst_message_parse_state_changed ( message, &old_state, &new_state, NULL);
                 QString message1 = GST_OBJECT_NAME ( message->src );
                 QString oldState = gst_element_state_get_name( old_state );
                 QString newState = gst_element_state_get_name( new_state );
+*/
 /*
                 if( ( message1 == "pipeline" ) and ( oldState == "PAUSED" ) and ( newState == "READY" ) ) {
                     qDebug().noquote().nospace() << global::nameOutput << "[Player] " << "GST_MESSAGE_STATE_CHANGED from PAUSED to READY";
@@ -104,6 +105,8 @@ void QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message, gpointer 
         default:
             break;
     }
+
+    return GST_BUS_PASS;
 }
 
 
@@ -196,17 +199,28 @@ void QvkPlayerGst::play_pre()
 
         gst_video_overlay_set_window_handle( GST_VIDEO_OVERLAY( videosink ), get_winId() );
 
-        g_object_set( G_OBJECT( audiosink ), "client-name", "vokoscreenNG", NULL );
+//        g_object_set( G_OBJECT( audiosink ), "client-name", "vokoscreenNG", NULL );
         g_object_set( G_OBJECT( filesrc ), "location", get_mediaFile().toUtf8().constData(), NULL );
 
         bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
-        gst_bus_add_signal_watch( bus );
-        g_signal_connect( bus, "message", ( GCallback ) call_bus_message, pipeline );
-        gst_object_unref( bus );
+
+    // Diese Richtung bringt was!!!!
+    // https://cpp.hotexamples.com/de/site/file?hash=0x6ae3f28e697c273bdd356e73a10f071cc2cc8017697ab0b24b0b251453a9db66
+//    gst_bus_enable_sync_message_emission (bus);
+//    gst_bus_set_sync_handler (bus, (GstBusSyncHandler) call_bus_message, NULL, NULL);
+
+//    gst_bus_enable_sync_message_emission (bus);
+    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, NULL );
+//    gst_bus_add_watch( bus, BusCallback, this );
+
+
+//        gst_bus_add_signal_watch( bus );
+//        g_signal_connect( bus, "message", ( GCallback ) call_bus_message, pipeline );
+//        gst_object_unref( bus );
         return;
     }
 
-
+/*
     if( ( have_stream_video == true ) and ( have_stream_audio == false ) )
     {
         pipeline  = gst_pipeline_new( "pipeline" );
@@ -265,6 +279,7 @@ void QvkPlayerGst::play_pre()
         gst_object_unref( bus );
         return;
     }
+*/
 }
 
 
@@ -308,8 +323,9 @@ void QvkPlayerGst::slot_EOS( QString value )
 {
     Q_UNUSED(value)
 
-    if ( frameSkip == false )
+//    if ( frameSkip == false )
     {
+        qDebug() << "----------" << "QvkPlayerGst::slot_EOS( QString value )";
         emit signal_EOS( get_mediaFile() );
     }
 }
@@ -430,8 +446,8 @@ void QvkPlayerGst::frameBackward( qint64 slidervalue )
 
 void QvkPlayerGst::playAfterFrameSkip( qint64 slidervalue )
 {
-    timer->start();
-    frameSkip = false;
+//    timer->start();
+//    frameSkip = false;
     gint64 sliderValue = slidervalue;
     gint64 start  = sliderValue * GST_SECOND / 1000;
 

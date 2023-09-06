@@ -56,7 +56,8 @@ public:
     void volume( qreal volume );
 
     static void on_pad_added( GstElement *element, GstPad *pad, gpointer data );
-    static void call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data );
+//    static void call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data );
+    static GstBusSyncReply call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data );
 
 
 private:

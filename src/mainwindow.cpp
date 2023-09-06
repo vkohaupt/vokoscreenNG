@@ -2135,7 +2135,7 @@ void QvkMainWindow::slot_Play()
     QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
 
     qDebug().noquote() << global::nameOutput << "play video with vokoplayer" << videoFileList.at(0);
-    ui->toolButtonPlayer->click();
+//    ui->toolButtonPlayer->click();
     QString string;
     string.append( ui->lineEditVideoPath->text() );
     string.append( "/" );
@@ -2143,7 +2143,7 @@ void QvkMainWindow::slot_Play()
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
     // Qt5
     vkPlayer->setMediaFile( string );
-    vkPlayer->slot_pushButtonPlay();
+//    vkPlayer->slot_pushButtonPlay(); // Wird für den alten Player benötigt
 #else
     // Qt6
 #endif
