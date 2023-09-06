@@ -175,8 +175,8 @@ equals(QT_MAJOR_VERSION, 6) {
    }
 } else {
    # Qt5
-   include(player/player.pri)
-   include(playerGST/playerGST.pri)
+   win32:include(playerGST/windows/playerWindows.pri)
+   unix:include(playerGST/linux/playerLinux.pri)
 }
 
 # screenManager

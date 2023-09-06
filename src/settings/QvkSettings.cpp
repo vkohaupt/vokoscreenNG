@@ -722,6 +722,7 @@ void QvkSettings::savePlayerPathOpenFile( QString pathFile )
     settings.endGroup();
 }
 
+/*
 void QvkSettings::readPlayerPathOpenFile( QvkPlayer *vkplayer )
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
@@ -729,7 +730,7 @@ void QvkSettings::readPlayerPathOpenFile( QvkPlayer *vkplayer )
     vkplayer->pathOpenFile = settings.value( "Path", "" ).toString();
     settings.endGroup();
 }
-
+*/
 void QvkSettings::readPlayerPathOpenFile( int value, QvkPlayerController *vkplayer )
 {
     Q_UNUSED(value)
