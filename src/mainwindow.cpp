@@ -2113,6 +2113,11 @@ void QvkMainWindow::slot_Play()
     string.append( "/" );
     string.append( videoFileList.at( 0 ) );
     vkPlayerController->setMediaFile( string );
+
+    // Neu
+    vkPlayerController->show();
+    vkPlayerController->ui->pushButtonStop->click();
+    vkPlayerController->ui->pushButtonPlay->click();
 }
 
 

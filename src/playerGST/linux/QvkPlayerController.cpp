@@ -65,7 +65,7 @@ QvkPlayerController::QvkPlayerController( Ui_formMainWindow *ui_mainwindow ) : u
     ui->widget_menuebar->setStyleSheet( "QWidget { background-color: lightGray; }" );
 
     ui->pushButtonPause->setVisible( false );
-    ui->pushButtonPlay->setEnabled( false );
+    ui->pushButtonPlay->setEnabled( true );
     ui->pushButtonStop->setEnabled( false );
 
     ui->pushButtonFrameBackward->hide();
@@ -131,7 +131,8 @@ qDebug() << "----------" << "vkPlayerGst->is_running() == true )";
         vkPlayerGst->slot_play();
         ui->pushButtonPlay->setVisible( false );
         ui->pushButtonPause->setVisible( true );
-        ui->pushButtonStop->setEnabled( false );
+//        ui->pushButtonStop->setEnabled( false );
+        ui->pushButtonStop->setEnabled( true ); // neu
         return;
     }
 
@@ -179,10 +180,10 @@ void QvkPlayerController::setMediaFile( QString string )
     QFileInfo file( mediaFile );
     setWindowTitle( file.fileName() + " - " + global::name + " " + global::version + " - " + "Player" );
     vkPlayerGst->set_mediaFile( mediaFile );
-    ui->pushButtonPlay->setEnabled( true );
+//    ui->pushButtonPlay->setEnabled( true );
 
-    ui->pushButtonStop->click();
-    ui->pushButtonPlay->click();
+//    ui->pushButtonStop->click();
+//    ui->pushButtonPlay->click();
 }
 
 
@@ -212,6 +213,8 @@ void QvkPlayerController::slot_openFile()
     if ( !file.isEmpty() ) {
         pathOpenFile = QDir( file ).absolutePath();
         setMediaFile( file );
+        ui->pushButtonStop->click(); // neu
+        ui->pushButtonPlay->click(); // neu
     }
 
     QApplication::setDesktopSettingsAware( true );
