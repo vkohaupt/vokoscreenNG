@@ -138,7 +138,7 @@ private:
 
     void vk_setCornerWidget( QTabWidget *tabWidget );
 
-    QvkPlayerController *vkPlayer; // This is for the new GStreamer player
+    QvkPlayerController *vkPlayerController; // This is for the new GStreamer player
 
     QvkHalo *vkHalo;
 

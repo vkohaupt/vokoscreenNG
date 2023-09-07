@@ -122,10 +122,12 @@ void QvkPlayerController::closeEvent( QCloseEvent *event )
 void QvkPlayerController::slot_pushButtonPlay()
 {
     if ( vkPlayerGst->is_running() == true ) {
+qDebug() << "----------" << "vkPlayerGst->is_running() == true )";
         return;
     }
 
     if ( vkPlayerGst->is_pause() == true ) {
+        qDebug() << "----------" << "vkPlayerGst->is_pause() == true )";
         vkPlayerGst->slot_play();
         ui->pushButtonPlay->setVisible( false );
         ui->pushButtonPause->setVisible( true );

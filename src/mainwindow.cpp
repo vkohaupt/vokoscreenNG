@@ -234,8 +234,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     Q_UNUSED(vkMagnifierController);
     ui->label_magnifier_on_screen->setText( "" );
 
-    vkPlayer = new QvkPlayerController( ui ); // This is for the new GStreamer player
-    vkPlayer->init();  // This is for the new GStreamer player
+    vkPlayerController = new QvkPlayerController( ui ); // This is for the new GStreamer player
+    vkPlayerController->init();  // This is for the new GStreamer player
 
     vkHelp = new QvkHelp( ui );
 
@@ -534,7 +534,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkLicenses,             SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkSystrayAlternative,   SLOT( close() ) );
-    connect( this,      SIGNAL( signal_close() ),       vkPlayer,               SLOT( close() ) );
+    connect( this,      SIGNAL( signal_close() ),       vkPlayerController,     SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkRegionChoise,         SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkSystray,              SLOT( slot_closeSystray() ) );
 
@@ -601,7 +601,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSettings.readAreaScreencast( vkRegionChoise );
     vkSettings.readCamera( vkCameraController );
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
-    vkSettings.readPlayerPathOpenFile( 0, vkPlayer ); // this is for the new GStreamer player
+    vkSettings.readPlayerPathOpenFile( 0, vkPlayerController ); // this is for the new GStreamer player
 
     vkSettings.readHaloColor( vkHalo );
     vkSettings.readShowclickColor( vkShowClick );
@@ -627,8 +627,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->pushButtonStopAppsrc->setVisible( false );
         if ( arguments.count() > 1  ) {
             qDebug().noquote() << global::nameOutput << "started from file:" << arguments.at(1);
-            vkPlayer->setMediaFile( arguments.at(1) );
-            vkPlayer->slot_pushButtonPlay();
+            vkPlayerController->setMediaFile( arguments.at(1) );
+            vkPlayerController->slot_pushButtonPlay();
             ui->tabWidgetSideBar->setCurrentIndex( ui->tabWidgetSideBar->indexOf( ui->tabSidebarPlayer ) );
         }
     }
@@ -753,7 +753,7 @@ void QvkMainWindow::changeLanguageInSourcecode()
     ui->labelLanguageUrl->setText( "<a href='https://app.transifex.com/vkohaupt/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
     ui->labelDonateUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
 
-    vkPlayer->ui->retranslateUi( vkPlayer );
+    vkPlayerController->ui->retranslateUi( vkPlayerController );
 
     vkLicenses->ui->retranslateUi( vkLicenses );
     vkHelp->uiHelp->retranslateUi( vkHelp );
@@ -983,7 +983,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
                                        vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
                                        vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
         vkSettings.saveSystrayAlternative( vkSystrayAlternative->vkSystrayAlternativeWindow->x(), vkSystrayAlternative->vkSystrayAlternativeWindow->y() );
-        vkSettings.savePlayerPathOpenFile( vkPlayer->pathOpenFile ); //------------------------------------------------------------------------
+        vkSettings.savePlayerPathOpenFile( vkPlayerController->pathOpenFile ); //------------------------------------------------------------------------
 
 #if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
         // Qt5
@@ -2112,7 +2112,7 @@ void QvkMainWindow::slot_Play()
     string.append( ui->lineEditVideoPath->text() );
     string.append( "/" );
     string.append( videoFileList.at( 0 ) );
-    vkPlayer->setMediaFile( string );
+    vkPlayerController->setMediaFile( string );
 }
 
 
