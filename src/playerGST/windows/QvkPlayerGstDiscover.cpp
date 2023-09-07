@@ -135,12 +135,7 @@ void QvkPlayerGstDiscover::discover_file( QString mediaFile )
     isAudio = false;
     isVideo = false;
 
-#ifdef Q_OS_LINUX
-    mediaFile.prepend( "file://" );
-#endif
-#ifdef Q_OS_WIN
     mediaFile.prepend( "file:///" );
-#endif
 
     QByteArray byteArray = mediaFile.toUtf8();
     const gchar *uri = byteArray.constData();

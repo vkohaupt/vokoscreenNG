@@ -129,7 +129,7 @@ void QvkPlayerController::slot_pushButtonPlay()
         vkPlayerGst->slot_play();
         ui->pushButtonPlay->setVisible( false );
         ui->pushButtonPause->setVisible( true );
-        ui->pushButtonStop->setEnabled( true ); // neu
+        ui->pushButtonStop->setEnabled( true );
         return;
     }
 
@@ -142,6 +142,8 @@ void QvkPlayerController::slot_pushButtonPlay()
         }
 
         // Create a new widget_video
+        ui->label_logo->setVisible( false );
+
         widget_Video = new QWidget;
         vkPlayerGst->set_winId( widget_Video->winId() );
         ui->verticalLayout->insertWidget( 0, widget_Video );
@@ -149,8 +151,6 @@ void QvkPlayerController::slot_pushButtonPlay()
         widget_Video->setStyleSheet( "QWidget { background-color: black; }" );
         widget_Video->setVisible( true );
 
-        ui->label_logo->setVisible( false );
-        widget_Video->setVisible( true );
         this->setMouseTracking( true );
         widget_Video->setMouseTracking( true );
 
@@ -514,12 +514,10 @@ void QvkPlayerController::slot_mute( bool muted )
     }
 }
 
-
+/*
+ * The player move to the seek position in play and pause mode
+ */
 void QvkPlayerController::slot_sliderVideoMoved( int value )
 {
-    if ( ui->pushButtonPlay->isHidden() == true ) {
-        vkPlayerGst->playAfterFrameSkip( value );
-    } else {
-        vkPlayerGst->frameForward( value );
-    }
+    vkPlayerGst->goToTime( value );
 }

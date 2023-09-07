@@ -56,8 +56,10 @@ public:
     void volume( qreal volume );
 
     static void on_pad_added( GstElement *element, GstPad *pad, gpointer data );
-//    static void call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data );
     static GstBusSyncReply call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data );
+
+    // Go to the time e.g. from slider
+    void goToTime( qint64 value );
 
 
 private:
@@ -66,14 +68,9 @@ private:
     GstElement *decodebin = nullptr;
     GstElement *videoconvert = nullptr;
     GstElement *audioconvert = nullptr;
-#ifdef Q_OS_LINUX
     GstElement *videosink = nullptr;
     GstElement *audiosink = nullptr;
-#endif
-#ifdef Q_OS_WIN
-    GstElement *videosink = nullptr;
-    GstElement *audiosink = nullptr;
-#endif
+
     WId get_winId();
     WId m_winID;
     QString mediaFile;
