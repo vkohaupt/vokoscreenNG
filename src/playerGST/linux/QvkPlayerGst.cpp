@@ -1,4 +1,4 @@
-/* vokoscreenNG - A desktop recorder
+﻿/* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2022 Volker Kohaupt
  *
  * Author:
@@ -424,4 +424,16 @@ void QvkPlayerGst::playAfterFrameSkip( qint64 slidervalue )
                              GST_SEEK_FLAG_FLUSH, start );
 
     gst_element_set_state( pipeline, GST_STATE_PLAYING );
+}
+
+/*
+ * The player move to the seek position in play and pause mode
+ */
+void QvkPlayerGst::goToTime( qint64 value )
+{
+    timer->start();
+    gint64 seekPos = value * GST_SECOND / 1000;
+    gst_element_seek_simple( pipeline,
+                             GST_FORMAT_TIME,
+                             GST_SEEK_FLAG_FLUSH, seekPos );
 }

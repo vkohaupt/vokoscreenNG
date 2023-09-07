@@ -58,6 +58,8 @@ public:
     static void on_pad_added( GstElement *element, GstPad *pad, gpointer data );
     static void call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data );
 
+    // Go to the time e.g. from slider
+    void goToTime( qint64 value );
 
 private:
     GstElement *pipeline = nullptr;

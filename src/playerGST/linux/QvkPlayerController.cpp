@@ -122,16 +122,13 @@ void QvkPlayerController::closeEvent( QCloseEvent *event )
 void QvkPlayerController::slot_pushButtonPlay()
 {
     if ( vkPlayerGst->is_running() == true ) {
-qDebug() << "----------" << "vkPlayerGst->is_running() == true )";
         return;
     }
 
     if ( vkPlayerGst->is_pause() == true ) {
-        qDebug() << "----------" << "vkPlayerGst->is_pause() == true )";
         vkPlayerGst->slot_play();
         ui->pushButtonPlay->setVisible( false );
         ui->pushButtonPause->setVisible( true );
-//        ui->pushButtonStop->setEnabled( false );
         ui->pushButtonStop->setEnabled( true ); // neu
         return;
     }
@@ -145,6 +142,8 @@ qDebug() << "----------" << "vkPlayerGst->is_running() == true )";
         }
 
         // Create a new widget_video
+        ui->label_logo->setVisible( false );
+
         widget_Video = new QWidget;
         vkPlayerGst->set_winId( widget_Video->winId() );
         ui->verticalLayout->insertWidget( 0, widget_Video );
@@ -152,8 +151,6 @@ qDebug() << "----------" << "vkPlayerGst->is_running() == true )";
         widget_Video->setStyleSheet( "QWidget { background-color: black; }" );
         widget_Video->setVisible( true );
 
-        ui->label_logo->setVisible( false );
-        widget_Video->setVisible( true );
         this->setMouseTracking( true );
         widget_Video->setMouseTracking( true );
 
@@ -180,10 +177,6 @@ void QvkPlayerController::setMediaFile( QString string )
     QFileInfo file( mediaFile );
     setWindowTitle( file.fileName() + " - " + global::name + " " + global::version + " - " + "Player" );
     vkPlayerGst->set_mediaFile( mediaFile );
-//    ui->pushButtonPlay->setEnabled( true );
-
-//    ui->pushButtonStop->click();
-//    ui->pushButtonPlay->click();
 }
 
 
@@ -521,12 +514,10 @@ void QvkPlayerController::slot_mute( bool muted )
     }
 }
 
-
+/*
+ * The player move to the seek position in play and pause mode
+ */
 void QvkPlayerController::slot_sliderVideoMoved( int value )
 {
-    if ( ui->pushButtonPlay->isHidden() == true ) {
-        vkPlayerGst->playAfterFrameSkip( value );
-    } else {
-        vkPlayerGst->frameForward( value );
-    }
+    vkPlayerGst->goToTime( value );
 }
