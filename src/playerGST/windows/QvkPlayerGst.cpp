@@ -156,7 +156,6 @@ void QvkPlayerGst::slot_discover_quit( bool video, bool audio )
 
 void QvkPlayerGst::mute( bool bol )
 {
-    qDebug() << "mute" << bol;
     g_object_set( G_OBJECT( audiosink ), "mute", bol, NULL );
 }
 
