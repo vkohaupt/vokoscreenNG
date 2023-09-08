@@ -479,6 +479,11 @@ void QvkPlayerController::slot_volume( int volume )
     if ( vkPlayerGst->have_stream_audio == true ) {
         if ( ( volume >= 0 ) and ( volume <= 100 ) ) {
             vkPlayerGst->volume( volume );
+            if ( volume == 0 ) {
+                ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-muted.png" ) );
+            } else {
+                ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-high.png" ) );
+            }
         }
     }
 }
