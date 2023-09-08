@@ -29,6 +29,7 @@
 #include <QStandardPaths>
 #include <QDebug>
 #include <QTimer>
+#include <QScreen>
 
 QvkPlayerController::QvkPlayerController( Ui_formMainWindow *ui_mainwindow ) : ui(new Ui::playerGST)
 {
@@ -167,6 +168,7 @@ void QvkPlayerController::slot_pushButtonPlay()
         vkPlayerGst->slot_play();
 
         show();
+        raise();
     }
 }
 
@@ -345,6 +347,7 @@ void QvkPlayerController::mouseReleaseEvent( QMouseEvent *event )
 
 void QvkPlayerController::resizeEvent( QResizeEvent *event )
 {
+/*
     if ( isFullScreen() == true ) {
         int screenHeight = event->size().height();
         int screenWidth = event->size().width();
@@ -352,6 +355,7 @@ void QvkPlayerController::resizeEvent( QResizeEvent *event )
         int menueBarWidth = ui->widget_menuebar->width();
         ui->widget_menuebar->move( ( screenWidth - menueBarWidth ) / 2 , screenHeight - menueBarHeight );
     }
+*/
 }
 
 
@@ -399,21 +403,18 @@ void QvkPlayerController::mouseDoubleClickEvent( QMouseEvent *event )
             ui->widget_menuebar->show();
             showFullScreen();
         }
+
+        int screenWidth = screen()->size().width();
+        int screenHeight = screen()->size().height();
+        int menubarWidth = ui->widget_menuebar->size().width();
+        int menubarHeight = ui->widget_menuebar->size().height();
+        ui->widget_menuebar->move( ( screenWidth - menubarWidth ) / 2, screenHeight - menubarHeight );
     } else {
         showNormal();
         ui->verticalLayout->addWidget( ui->widget_menuebar );
         ui->widget_menuebar->raise();
         ui->widget_menuebar->show();
     }
-
-    // Vorsorglich repaint und update
-    widget_Video->repaint();
-    ui->widget_menuebar->repaint();
-    repaint();
-
-    widget_Video->update();
-    ui->widget_menuebar->update();
-    update();
 }
 
 
