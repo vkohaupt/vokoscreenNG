@@ -236,6 +236,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vkPlayerController = new QvkPlayerController( ui ); // This is for the new GStreamer player
     vkPlayerController->init();  // This is for the new GStreamer player
+    vk_setCornerWidget( ui->tabWidgetPlayer );
 
     vkHelp = new QvkHelp( ui );
 
@@ -2107,7 +2108,6 @@ void QvkMainWindow::slot_Play()
     filters << global::name + "*";
     QStringList videoFileList = dir.entryList( filters, QDir::Files, QDir::Time );
 
-    qDebug().noquote() << global::nameOutput << "play video with vokoplayer" << videoFileList.at(0);
     QString string;
     string.append( ui->lineEditVideoPath->text() );
     string.append( "/" );
