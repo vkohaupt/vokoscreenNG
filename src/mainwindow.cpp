@@ -405,7 +405,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonStop,     SLOT( setDisabled( bool ) ) );
     ui->pushButtonContinue->hide();
 
-    connect( ui->pushButtonPlay, SIGNAL( clicked( bool ) ), this, SLOT( slot_Play() ) );
+    connect( ui->pushButtonPlay,   SIGNAL( clicked( bool ) ), this,               SLOT( slot_Play() ) );
+    connect( ui->pushButtonPlayer, SIGNAL( clicked( bool ) ), vkPlayerController, SLOT( show() ) );
 
     connect( ui->pushButtonScreencastOpenfolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_Folder() ) );
 
