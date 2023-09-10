@@ -409,6 +409,7 @@ void QvkPlayerController::mouseDoubleClickEvent( QMouseEvent *event )
         int menubarWidth = ui->widget_menuebar->size().width();
         int menubarHeight = ui->widget_menuebar->size().height();
         ui->widget_menuebar->move( ( screenWidth - menubarWidth ) / 2, screenHeight - menubarHeight );
+
     } else {
         showNormal();
         ui->verticalLayout->addWidget( ui->widget_menuebar );
@@ -440,6 +441,13 @@ void QvkPlayerController::keyPressEvent( QKeyEvent *event )
                 ui->widget_menuebar->show();
                 showFullScreen();
             }
+
+            int screenWidth = screen()->size().width();
+            int screenHeight = screen()->size().height();
+            int menubarWidth = ui->widget_menuebar->size().width();
+            int menubarHeight = ui->widget_menuebar->size().height();
+            ui->widget_menuebar->move( ( screenWidth - menubarWidth ) / 2, screenHeight - menubarHeight );
+
         } else {
             showNormal();
             ui->verticalLayout->addWidget( ui->widget_menuebar );

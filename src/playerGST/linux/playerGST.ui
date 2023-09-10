@@ -23,7 +23,7 @@
       <string notr="true"/>
      </property>
      <property name="pixmap">
-      <pixmap resource="../screencast.qrc">:/pictures/logo/logo.png</pixmap>
+      <pixmap resource="../../screencast.qrc">:/pictures/logo/logo.png</pixmap>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -97,7 +97,7 @@
            <string>Play</string>
           </property>
           <property name="icon">
-           <iconset resource="../screencast.qrc">
+           <iconset resource="../../screencast.qrc">
             <normaloff>:/pictures/player/start.png</normaloff>:/pictures/player/start.png</iconset>
           </property>
          </widget>
@@ -111,7 +111,7 @@
            <string>Pause</string>
           </property>
           <property name="icon">
-           <iconset resource="../screencast.qrc">
+           <iconset resource="../../screencast.qrc">
             <normaloff>:/pictures/player/pause.png</normaloff>:/pictures/player/pause.png</iconset>
           </property>
          </widget>
@@ -125,7 +125,7 @@
            <string>Stop</string>
           </property>
           <property name="icon">
-           <iconset resource="../screencast.qrc">
+           <iconset resource="../../screencast.qrc">
             <normaloff>:/pictures/player/stop.png</normaloff>:/pictures/player/stop.png</iconset>
           </property>
          </widget>
@@ -152,7 +152,7 @@
            <string notr="true"/>
           </property>
           <property name="icon">
-           <iconset resource="../screencast.qrc">
+           <iconset resource="../../screencast.qrc">
             <normaloff>:/pictures/player/go-previous.png</normaloff>:/pictures/player/go-previous.png</iconset>
           </property>
          </widget>
@@ -166,7 +166,7 @@
            <string notr="true"/>
           </property>
           <property name="icon">
-           <iconset resource="../screencast.qrc">
+           <iconset resource="../../screencast.qrc">
             <normaloff>:/pictures/player/go-next.png</normaloff>:/pictures/player/go-next.png</iconset>
           </property>
          </widget>
@@ -190,7 +190,7 @@
            <string notr="true"/>
           </property>
           <property name="icon">
-           <iconset resource="../screencast.qrc">
+           <iconset resource="../../screencast.qrc">
             <normaloff>:/pictures/player/document-open.png</normaloff>:/pictures/player/document-open.png</iconset>
           </property>
          </widget>
@@ -214,7 +214,7 @@
            <string notr="true"/>
           </property>
           <property name="icon">
-           <iconset resource="../screencast.qrc">
+           <iconset resource="../../screencast.qrc">
             <normaloff>:/pictures/player/audio-volume-high.png</normaloff>:/pictures/player/audio-volume-high.png</iconset>
           </property>
           <property name="checkable">
@@ -230,7 +230,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../screencast.qrc"/>
+  <include location="../../screencast.qrc"/>
  </resources>
  <connections/>
 </ui>
