@@ -345,20 +345,6 @@ void QvkPlayerController::mouseReleaseEvent( QMouseEvent *event )
 }
 
 
-void QvkPlayerController::resizeEvent( QResizeEvent *event )
-{
-/*
-    if ( isFullScreen() == true ) {
-        int screenHeight = event->size().height();
-        int screenWidth = event->size().width();
-        int menueBarHeight = ui->widget_menuebar->height();
-        int menueBarWidth = ui->widget_menuebar->width();
-        ui->widget_menuebar->move( ( screenWidth - menueBarWidth ) / 2 , screenHeight - menueBarHeight );
-    }
-*/
-}
-
-
 void QvkPlayerController::slot_frameForward()
 {
     vkPlayerGst->frameForward( sliderVideo->value() );
@@ -409,11 +395,12 @@ void QvkPlayerController::mouseDoubleClickEvent( QMouseEvent *event )
         int menubarWidth = ui->widget_menuebar->size().width();
         int menubarHeight = ui->widget_menuebar->size().height();
         ui->widget_menuebar->move( ( screenWidth - menubarWidth ) / 2, screenHeight - menubarHeight );
+
     } else {
-        showNormal();
         ui->verticalLayout->addWidget( ui->widget_menuebar );
         ui->widget_menuebar->raise();
         ui->widget_menuebar->show();
+        showNormal();
     }
 }
 
@@ -434,26 +421,37 @@ void QvkPlayerController::keyPressEvent( QKeyEvent *event )
                 showFullScreen();
             }
 
-            if ( vkPlayerGst->is_running() == false ) {
+            if ( ( vkPlayerGst->is_running() == false ) and ( vkPlayerGst->is_pause() == false ) ) {
                 ui->widget_menuebar->setParent( ui->label_logo );
                 ui->widget_menuebar->raise();
                 ui->widget_menuebar->show();
                 showFullScreen();
+
+                widget_Video->update();
+                ui->widget_menuebar->update();
+                update();
             }
+
+            if ( ( vkPlayerGst->is_running() == false ) and ( vkPlayerGst->is_pause() == true ) ) {
+                ui->widget_menuebar->setParent( widget_Video );
+                ui->widget_menuebar->raise();
+                ui->widget_menuebar->show();
+                showFullScreen();
+            }
+
+            int screenWidth = screen()->size().width();
+            int screenHeight = screen()->size().height();
+            int menubarWidth = ui->widget_menuebar->size().width();
+            int menubarHeight = ui->widget_menuebar->size().height();
+            ui->widget_menuebar->move( ( screenWidth - menubarWidth ) / 2, screenHeight - menubarHeight );
+
         } else {
-            showNormal();
             ui->verticalLayout->addWidget( ui->widget_menuebar );
+            ui->widget_menuebar->raise();
+            ui->widget_menuebar->show();
+            showNormal();
         }
     }
-
-    // Vorsorglich repaint und update
-    widget_Video->repaint();
-    ui->widget_menuebar->repaint();
-    repaint();
-
-    widget_Video->update();
-    ui->widget_menuebar->update();
-    update();
 }
 
 

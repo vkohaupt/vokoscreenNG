@@ -87,7 +87,6 @@ protected:
     void mouseMoveEvent( QMouseEvent *event );
     void mousePressEvent( QMouseEvent *event );
     void mouseReleaseEvent( QMouseEvent *event );
-    void resizeEvent( QResizeEvent *event );
     void closeEvent( QCloseEvent *event );
 
 };

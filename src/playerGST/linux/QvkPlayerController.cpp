@@ -345,20 +345,6 @@ void QvkPlayerController::mouseReleaseEvent( QMouseEvent *event )
 }
 
 
-void QvkPlayerController::resizeEvent( QResizeEvent *event )
-{
-/*
-    if ( isFullScreen() == true ) {
-        int screenHeight = event->size().height();
-        int screenWidth = event->size().width();
-        int menueBarHeight = ui->widget_menuebar->height();
-        int menueBarWidth = ui->widget_menuebar->width();
-        ui->widget_menuebar->move( ( screenWidth - menueBarWidth ) / 2 , screenHeight - menueBarHeight );
-    }
-*/
-}
-
-
 void QvkPlayerController::slot_frameForward()
 {
     vkPlayerGst->frameForward( sliderVideo->value() );
