@@ -209,17 +209,17 @@ void QvkPlayerGst::play_pre()
 //    gst_bus_set_sync_handler (bus, (GstBusSyncHandler) call_bus_message, NULL, NULL);
 
 //    gst_bus_enable_sync_message_emission (bus);
-    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, NULL );
+        gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, NULL );
 //    gst_bus_add_watch( bus, BusCallback, this );
 
 
 //        gst_bus_add_signal_watch( bus );
 //        g_signal_connect( bus, "message", ( GCallback ) call_bus_message, pipeline );
-//        gst_object_unref( bus );
+        gst_object_unref( bus );
         return;
     }
 
-/*
+
     if( ( have_stream_video == true ) and ( have_stream_audio == false ) )
     {
         pipeline  = gst_pipeline_new( "pipeline" );
@@ -244,8 +244,11 @@ void QvkPlayerGst::play_pre()
         g_object_set( G_OBJECT( filesrc ), "location", get_mediaFile().toUtf8().constData(), NULL );
 
         bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
+        gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, NULL );
+/*
         gst_bus_add_signal_watch( bus );
         g_signal_connect( bus, "message", ( GCallback ) call_bus_message, pipeline );
+*/
         gst_object_unref( bus );
         return;
     }
@@ -274,11 +277,12 @@ void QvkPlayerGst::play_pre()
 
         bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
         gst_bus_add_signal_watch( bus );
-        g_signal_connect( bus, "message", ( GCallback ) call_bus_message, pipeline );
+        gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, NULL );
+
+//        g_signal_connect( bus, "message", ( GCallback ) call_bus_message, pipeline );
         gst_object_unref( bus );
         return;
     }
-*/
 }
 
 
