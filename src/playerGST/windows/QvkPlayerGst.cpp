@@ -117,7 +117,7 @@ void QvkPlayerGst::init()
 
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
-    timer->setInterval( 20 );
+    timer->setInterval( 200 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_timer() ) );
 }
 
@@ -156,6 +156,7 @@ void QvkPlayerGst::slot_discover_quit( bool video, bool audio )
 
 void QvkPlayerGst::mute( bool bol )
 {
+    qDebug() << "---------- Mute" << bol;
     g_object_set( G_OBJECT( audiosink ), "mute", bol, NULL );
 }
 
@@ -164,6 +165,43 @@ void QvkPlayerGst::volume( qreal m_volume )
 {
     qreal volume = QAudio::convertVolume( m_volume / qreal(100.0), QAudio::CubicVolumeScale, QAudio::LinearVolumeScale );
     g_object_set( G_OBJECT( audiosink ), "volume", volume, NULL );
+
+//    qDebug() << "---------- Volume" << m_volume << volume;
+}
+
+
+void QvkPlayerGst::slot_timer()
+{
+    if ( have_duration == false ) {
+        gint64 duration;
+        gst_element_query_duration( pipeline, GST_FORMAT_TIME, &duration );
+        if ( duration > -1 ) {
+            emit signal_duration( duration / 1000 / 1000 );
+            have_duration = true;
+        }
+    }
+
+    gint64 currentTime;
+    if ( gst_element_query_position( pipeline, GST_FORMAT_TIME, &currentTime ) ) {
+        emit signal_currentTime( currentTime / 1000 / 1000 );
+    }
+/*
+    // Get mute from external e.g. Pulseaudio-Volumecontrol or Systray-mutecontrol
+    if ( have_stream_audio == true ) {
+        bool bol;
+        g_object_get( G_OBJECT( audiosink ), "mute", &bol, NULL );
+        emit signal_mute( bol );
+    }
+*/
+    // Get volume from external e.g. Pulseaudio-Volumecontrol or Systray-volumecontrol
+    if ( have_stream_audio == true ) {
+        qreal volume;
+        g_object_get( G_OBJECT( audiosink ), "volume", &volume, NULL );
+        qreal m_volume = QAudio::convertVolume( volume, QAudio::LinearVolumeScale, QAudio::CubicVolumeScale );
+//        qDebug() << "---------- Volume Timer" << m_volume << volume;
+        emit signal_volume( m_volume );
+    }
+
 }
 
 
@@ -177,14 +215,9 @@ void QvkPlayerGst::play_pre()
         decodebin = gst_element_factory_make( "decodebin", nullptr );
         videoconvert = gst_element_factory_make( "videoconvert", nullptr );
         audioconvert = gst_element_factory_make( "audioconvert", nullptr );
-#ifdef Q_OS_LINUX
-        videosink = gst_element_factory_make( "xvimagesink", nullptr );
-        audiosink = gst_element_factory_make( "pulsesink", nullptr );
-#endif
-#ifdef Q_OS_WIN
         videosink = gst_element_factory_make( "d3dvideosink", nullptr );
         audiosink = gst_element_factory_make( "directsoundsink", nullptr );
-#endif
+
         gst_bin_add_many( GST_BIN( pipeline ), filesrc, decodebin, audioconvert, audiosink, videoconvert, videosink, nullptr );
         gst_element_link( filesrc, decodebin  );
 
@@ -198,23 +231,10 @@ void QvkPlayerGst::play_pre()
 
         gst_video_overlay_set_window_handle( GST_VIDEO_OVERLAY( videosink ), get_winId() );
 
-//        g_object_set( G_OBJECT( audiosink ), "client-name", "vokoscreenNG", NULL );
         g_object_set( G_OBJECT( filesrc ), "location", get_mediaFile().toUtf8().constData(), NULL );
 
         bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
-
-    // Diese Richtung bringt was!!!!
-    // https://cpp.hotexamples.com/de/site/file?hash=0x6ae3f28e697c273bdd356e73a10f071cc2cc8017697ab0b24b0b251453a9db66
-//    gst_bus_enable_sync_message_emission (bus);
-//    gst_bus_set_sync_handler (bus, (GstBusSyncHandler) call_bus_message, NULL, NULL);
-
-//    gst_bus_enable_sync_message_emission (bus);
         gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, NULL );
-//    gst_bus_add_watch( bus, BusCallback, this );
-
-
-//        gst_bus_add_signal_watch( bus );
-//        g_signal_connect( bus, "message", ( GCallback ) call_bus_message, pipeline );
         gst_object_unref( bus );
         return;
     }
@@ -226,12 +246,8 @@ void QvkPlayerGst::play_pre()
         filesrc   = gst_element_factory_make( "filesrc", nullptr );
         decodebin = gst_element_factory_make( "decodebin", nullptr );
         videoconvert = gst_element_factory_make( "videoconvert", nullptr );
-#ifdef Q_OS_LINUX
-        videosink = gst_element_factory_make( "xvimagesink", nullptr );
-#endif
-#ifdef Q_OS_WIN
         videosink = gst_element_factory_make( "d3dvideosink", nullptr );
-#endif
+
         gst_bin_add_many( GST_BIN( pipeline ), filesrc, decodebin, videoconvert, videosink, nullptr );
         gst_element_link( filesrc, decodebin  );
 
@@ -245,10 +261,6 @@ void QvkPlayerGst::play_pre()
 
         bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
         gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, NULL );
-/*
-        gst_bus_add_signal_watch( bus );
-        g_signal_connect( bus, "message", ( GCallback ) call_bus_message, pipeline );
-*/
         gst_object_unref( bus );
         return;
     }
@@ -259,12 +271,8 @@ void QvkPlayerGst::play_pre()
         filesrc   = gst_element_factory_make( "filesrc", nullptr );
         decodebin = gst_element_factory_make( "decodebin", nullptr );
         audioconvert = gst_element_factory_make( "audioconvert", nullptr );
-#ifdef Q_OS_LINUX
-        audiosink = gst_element_factory_make( "pulsesink", nullptr );
-#endif
-#ifdef Q_OS_WIN
         audiosink = gst_element_factory_make( "directsoundsink", nullptr );
-#endif
+
         gst_bin_add_many( GST_BIN( pipeline ), filesrc, decodebin, audioconvert, audiosink, nullptr );
         gst_element_link( filesrc, decodebin  );
 
@@ -276,10 +284,7 @@ void QvkPlayerGst::play_pre()
         g_object_set( G_OBJECT( filesrc ), "location", get_mediaFile().toUtf8().constData(), NULL );
 
         bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
-        gst_bus_add_signal_watch( bus );
         gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, NULL );
-
-//        g_signal_connect( bus, "message", ( GCallback ) call_bus_message, pipeline );
         gst_object_unref( bus );
         return;
     }
@@ -366,39 +371,6 @@ bool QvkPlayerGst::is_pause()
         return true;
     } else {
         return false;
-    }
-}
-
-
-void QvkPlayerGst::slot_timer()
-{
-    if ( have_duration == false ) {
-        gint64 duration;
-        gst_element_query_duration( pipeline, GST_FORMAT_TIME, &duration );
-        if ( duration > -1 ) {
-            emit signal_duration( duration / 1000 / 1000 );
-            have_duration = true;
-        }
-    }
-
-    gint64 currentTime;
-    if ( gst_element_query_position( pipeline, GST_FORMAT_TIME, &currentTime ) ) {
-        emit signal_currentTime( currentTime / 1000 / 1000 );
-    }
-
-    // Get mute from external e.g. Pulseaudio-Volumecontrol or Systray-mutecontrol
-    if ( have_stream_audio == true ) {
-        bool bol;
-        g_object_get( G_OBJECT( audiosink ), "mute", &bol, NULL );
-        emit signal_mute( bol );
-    }
-
-    // Get volume from external e.g. Pulseaudio-Volumecontrol or Systray-volumecontrol
-    if ( have_stream_audio == true ) {
-        qreal volume;
-        g_object_get( G_OBJECT( audiosink ), "volume", &volume, NULL );
-        qreal m_volume = QAudio::convertVolume( volume, QAudio::LinearVolumeScale, QAudio::CubicVolumeScale );
-        emit signal_volume( m_volume );
     }
 }
 

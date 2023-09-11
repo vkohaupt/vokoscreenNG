@@ -82,8 +82,8 @@ void QvkPlayerController::init()
     connect( vkPlayerGst, SIGNAL( signal_EOS( QString ) ),        this, SLOT( slot_EOS( QString ) ) );
     connect( vkPlayerGst, SIGNAL( signal_duration( qint64 ) ),    this, SLOT( slot_duration( qint64 ) ) );
     connect( vkPlayerGst, SIGNAL( signal_currentTime( qint64 ) ), this, SLOT( slot_currentTime( qint64 ) ) );
-    connect( vkPlayerGst, SIGNAL( signal_mute( bool ) ),          this, SLOT( slot_mute_from_Pulse( bool ) ) );
-    connect( vkPlayerGst, SIGNAL( signal_volume( qreal ) ),       this, SLOT( slot_volume_from_pulse( qreal ) ) );
+    connect( vkPlayerGst, SIGNAL( signal_mute( bool ) ),          this, SLOT( slot_mute_from_system( bool ) ) );
+    connect( vkPlayerGst, SIGNAL( signal_volume( qreal ) ),       this, SLOT( slot_volume_from_system( qreal ) ) );
 
     connect( ui->pushButtonPlay, SIGNAL( clicked() ),  this, SLOT( slot_pushButtonPlay() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked() ),  this, SLOT( slot_pushButtonStop() ) );
@@ -96,9 +96,9 @@ void QvkPlayerController::init()
 
     connect( sliderVideo, SIGNAL( sliderMoved( int ) ), this, SLOT( slot_sliderVideoMoved( int ) ) );
 
-    connect( ui->pushButtonMute, SIGNAL( clicked( bool ) ), this, SLOT( slot_mute( bool ) ) );
+    connect( ui->pushButtonMute, SIGNAL( clicked( bool ) ), this, SLOT( slot_mute_from_pushbutton( bool ) ) );
 
-    connect( sliderVolume, SIGNAL( sliderMoved( int ) ), this, SLOT( slot_volume( int ) ) );
+    connect( sliderVolume, SIGNAL( sliderMoved( int ) ), this, SLOT( slot_volume_from_slider( int ) ) );
 
     timerHideMouse = new QTimer( this );
     timerHideMouse->setTimerType( Qt::PreciseTimer );
@@ -466,13 +466,13 @@ void QvkPlayerController::slot_hideMouse()
 }
 
 
-void QvkPlayerController::slot_volume_from_pulse( qreal volume )
+void QvkPlayerController::slot_volume_from_system( qreal volume )
 {
     sliderVolume->setValue( qRound( volume*100 ) );
 }
 
 
-void QvkPlayerController::slot_volume( int volume )
+void QvkPlayerController::slot_volume_from_slider( int volume )
 {
     if ( vkPlayerGst->have_stream_audio == true ) {
         if ( ( volume >= 0 ) and ( volume <= 100 ) ) {
@@ -487,7 +487,7 @@ void QvkPlayerController::slot_volume( int volume )
 }
 
 
-void QvkPlayerController::slot_mute_from_Pulse( bool muted )
+void QvkPlayerController::slot_mute_from_system( bool muted )
 {
     if ( ( muted == true ) and ( ui->pushButtonMute->isChecked() == false ) ) {
         ui->pushButtonMute->setChecked( true );
@@ -503,7 +503,7 @@ void QvkPlayerController::slot_mute_from_Pulse( bool muted )
 }
 
 
-void QvkPlayerController::slot_mute( bool muted )
+void QvkPlayerController::slot_mute_from_pushbutton( bool muted )
 {
     vkPlayerGst->mute( muted );
 

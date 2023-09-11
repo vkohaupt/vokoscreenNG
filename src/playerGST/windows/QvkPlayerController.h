@@ -61,10 +61,10 @@ private slots:
     void slot_frameForward();
     void slot_frameBackward();
     void slot_sliderVideoMoved( int );
-    void slot_mute( bool bol );
-    void slot_mute_from_Pulse( bool muted );
-    void slot_volume( int volume );
-    void slot_volume_from_pulse( qreal );
+    void slot_mute_from_pushbutton( bool bol );
+    void slot_mute_from_system( bool muted );
+    void slot_volume_from_slider( int volume );
+    void slot_volume_from_system( qreal );
     void slot_hideMouse();
 
 
