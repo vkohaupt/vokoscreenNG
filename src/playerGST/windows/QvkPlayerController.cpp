@@ -256,7 +256,7 @@ void QvkPlayerController::slot_pushButtonStop()
 void QvkPlayerController::slot_EOS( QString m_file )
 {
     QFile file( m_file );
-    qDebug().noquote().nospace() << global::nameOutput << "[Player][Controller] End of stream" << file.fileName();
+    qDebug().noquote().nospace() << global::nameOutput << "[Player][Controller] End of stream " << file.fileName();
 
     ui->pushButtonStop->click();
 }
