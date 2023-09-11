@@ -72,13 +72,13 @@ void QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message, gpointer 
             break;
         case GST_MESSAGE_STATE_CHANGED:
             {
-/*                GstState old_state, new_state;
+                /*                GstState old_state, new_state;
                 gst_message_parse_state_changed ( message, &old_state, &new_state, NULL);
                 QString message1 = GST_OBJECT_NAME ( message->src );
                 QString oldState = gst_element_state_get_name( old_state );
                 QString newState = gst_element_state_get_name( new_state );
 */
-/*
+                /*
                 if( ( message1 == "pipeline" ) and ( oldState == "PAUSED" ) and ( newState == "READY" ) ) {
                     qDebug().noquote().nospace() << global::nameOutput << "[Player] " << "GST_MESSAGE_STATE_CHANGED from PAUSED to READY";
                 }
@@ -257,8 +257,7 @@ void QvkPlayerGst::slot_play()
         play_pre();
     }
 
-    if ( ( have_stream_video == true ) or ( have_stream_audio == true ) )
-    {
+    if ( ( have_stream_video == true ) or ( have_stream_audio == true ) ) {
         GstStateChangeReturn sret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
 
         if ( sret == GST_STATE_CHANGE_FAILURE ) {
@@ -291,7 +290,7 @@ void QvkPlayerGst::slot_EOS( QString value )
 {
     Q_UNUSED(value)
 
-//    if ( frameSkip == false )
+    //    if ( frameSkip == false )
     {
         emit signal_EOS( get_mediaFile() );
     }

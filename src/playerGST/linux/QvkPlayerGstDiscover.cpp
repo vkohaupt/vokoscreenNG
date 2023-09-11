@@ -66,7 +66,7 @@ void print_tag_foreach( const GstTagList *tags, const gchar *tag, gpointer user_
 
 // This function is called every time the discoverer has information regarding
 // one of the URIs we provided.
-void on_discovered_cb (GstDiscoverer *discoverer, GstDiscovererInfo *info, GError *err, CustomData *data)
+void on_discovered_cb( GstDiscoverer *discoverer, GstDiscovererInfo *info, GError *err, CustomData *data )
 {
     Q_UNUSED(discoverer)
     Q_UNUSED(data)
@@ -75,21 +75,21 @@ void on_discovered_cb (GstDiscoverer *discoverer, GstDiscovererInfo *info, GErro
     const gchar *uri;
     const GstTagList *tags;
 
-    uri = gst_discoverer_info_get_uri (info);
+    uri = gst_discoverer_info_get_uri( info );
 
-    result = gst_discoverer_info_get_result (info);
-    switch (result) {
+    result = gst_discoverer_info_get_result( info );
+    switch ( result ) {
         case GST_DISCOVERER_URI_INVALID:
-            g_print ("Invalid URI '%s'\n", uri);
+            g_print( "Invalid URI '%s'\n", uri );
             break;
         case GST_DISCOVERER_ERROR:
-            g_print ("Discoverer error: %s\n", err->message);
+            g_print( "Discoverer error: %s\n", err->message );
             break;
         case GST_DISCOVERER_TIMEOUT:
-            g_print ("Timeout\n");
+            g_print( "Timeout\n" );
             break;
         case GST_DISCOVERER_BUSY:
-            g_print ("Busy\n");
+            g_print( "Busy\n" );
             break;
         case GST_DISCOVERER_MISSING_PLUGINS:{
                 const GstStructure *s;
@@ -98,8 +98,8 @@ void on_discovered_cb (GstDiscoverer *discoverer, GstDiscovererInfo *info, GErro
                 s = gst_discoverer_info_get_misc (info);
                 str = gst_structure_to_string (s);
 
-                g_print ("Missing plugins: %s\n", str);
-                g_free (str);
+                g_print( "Missing plugins: %s\n", str );
+                g_free( str );
                 break;
             }
         case GST_DISCOVERER_OK:{
@@ -107,12 +107,12 @@ void on_discovered_cb (GstDiscoverer *discoverer, GstDiscovererInfo *info, GErro
             }
     }
 
-    if (result != GST_DISCOVERER_OK) {
+    if ( result != GST_DISCOVERER_OK ) {
         g_printerr ("This URI cannot be played\n");
         return;
     }
 
-    tags = gst_discoverer_info_get_tags (info);
+    tags = gst_discoverer_info_get_tags( info );
     if ( tags ) {
         gst_tag_list_foreach( tags, print_tag_foreach, GINT_TO_POINTER(1) );
     }
@@ -142,12 +142,11 @@ void QvkPlayerGstDiscover::discover_file( QString mediaFile )
     qDebug().noquote().nospace() << global::nameOutput << "[Player][Discover] Uri: " << QString( uri );
 
     // Initialize custom data structure
-    memset (&data, 0, sizeof (data));
+    memset( &data, 0, sizeof( data ) );
 
     // Instantiate the Discoverer
-    data.discoverer = gst_discoverer_new (5 * GST_SECOND, &err);
-    if (!data.discoverer)
-    {
+    data.discoverer = gst_discoverer_new( 5 * GST_SECOND, &err );
+    if ( !data.discoverer ) {
         g_print ("Error creating discoverer instance: %s\n", err->message);
         g_clear_error (&err);
         //    return -1;
@@ -158,30 +157,27 @@ void QvkPlayerGstDiscover::discover_file( QString mediaFile )
     g_signal_connect( data.discoverer, "finished", G_CALLBACK( on_finished_cb ), &data );
 
     // Start the discoverer process (nothing to do yet)
-    gst_discoverer_start (data.discoverer);
+    gst_discoverer_start( data.discoverer );
 
     // Add a request to process asynchronously the URI passed through the command line
-    if (!gst_discoverer_discover_uri_async (data.discoverer, uri))
-    {
+    if ( !gst_discoverer_discover_uri_async( data.discoverer, uri ) ) {
         g_print ("Failed to start discovering URI '%s'\n", uri);
         g_object_unref (data.discoverer);
         //    return -1;
     }
 
     // Create a GLib Main Loop and set it to run, so we can wait for the signals
-    data.loop = g_main_loop_new (NULL, FALSE);
-    g_main_loop_run (data.loop);
+    data.loop = g_main_loop_new( NULL, FALSE );
+    g_main_loop_run( data.loop );
 
     // Stop the discoverer process
-    gst_discoverer_stop (data.discoverer);
+    gst_discoverer_stop( data.discoverer );
 
     // Free resources
-    g_object_unref (data.discoverer);
-    g_main_loop_unref (data.loop);
+    g_object_unref( data.discoverer );
+    g_main_loop_unref( data.loop );
 
     qDebug().noquote().nospace() << global::nameOutput << "[Player][Discover] Video: " << isVideo;
     qDebug().noquote().nospace() << global::nameOutput << "[Player][Discover] Audio: " << isAudio;
     emit signal_discover_quit( isVideo, isAudio );
 }
-
-
