@@ -476,7 +476,7 @@ void QvkPlayerController::slot_volume_from_slider( int volume )
 {
     if ( vkPlayerGst->have_stream_audio == true ) {
         if ( ( volume >= 0 ) and ( volume <= 100 ) ) {
-            vkPlayerGst->volume( volume );
+            vkPlayerGst->set_volume( volume );
             if ( volume == 0 ) {
                 ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-muted.png" ) );
             } else {
@@ -505,7 +505,8 @@ void QvkPlayerController::slot_mute_from_system( bool muted )
 
 void QvkPlayerController::slot_mute_from_pushbutton( bool muted )
 {
-    vkPlayerGst->mute( muted );
+    vkPlayerGst->set_mute( muted );
+    vkPlayerGst->set_volume( sliderVolume->value() ); // Mute greift nur wenn volume nochmals gesetzt wird
 
     if ( muted == true ) {
         ui->pushButtonMute->setIcon( QIcon( ":/pictures/player/audio-volume-muted.png" ) );

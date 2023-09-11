@@ -154,19 +154,16 @@ void QvkPlayerGst::slot_discover_quit( bool video, bool audio )
 }
 
 
-void QvkPlayerGst::mute( bool bol )
+void QvkPlayerGst::set_mute( bool bol )
 {
-    qDebug() << "---------- Mute" << bol;
     g_object_set( G_OBJECT( audiosink ), "mute", bol, NULL );
 }
 
 
-void QvkPlayerGst::volume( qreal m_volume )
+void QvkPlayerGst::set_volume( qreal m_volume )
 {
     qreal volume = QAudio::convertVolume( m_volume / qreal(100.0), QAudio::CubicVolumeScale, QAudio::LinearVolumeScale );
     g_object_set( G_OBJECT( audiosink ), "volume", volume, NULL );
-
-//    qDebug() << "---------- Volume" << m_volume << volume;
 }
 
 
@@ -185,20 +182,19 @@ void QvkPlayerGst::slot_timer()
     if ( gst_element_query_position( pipeline, GST_FORMAT_TIME, &currentTime ) ) {
         emit signal_currentTime( currentTime / 1000 / 1000 );
     }
-/*
-    // Get mute from external e.g. Pulseaudio-Volumecontrol or Systray-mutecontrol
+
+    // Get mute from system
     if ( have_stream_audio == true ) {
         bool bol;
         g_object_get( G_OBJECT( audiosink ), "mute", &bol, NULL );
         emit signal_mute( bol );
     }
-*/
-    // Get volume from external e.g. Pulseaudio-Volumecontrol or Systray-volumecontrol
+
+    // Get volume from system
     if ( have_stream_audio == true ) {
         qreal volume;
         g_object_get( G_OBJECT( audiosink ), "volume", &volume, NULL );
         qreal m_volume = QAudio::convertVolume( volume, QAudio::LinearVolumeScale, QAudio::CubicVolumeScale );
-//        qDebug() << "---------- Volume Timer" << m_volume << volume;
         emit signal_volume( m_volume );
     }
 

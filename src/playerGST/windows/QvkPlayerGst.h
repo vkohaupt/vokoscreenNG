@@ -52,8 +52,8 @@ public:
     QvkPlayerGstDiscover *vkPlayerGstDiscover;
     bool have_stream_video = false;
     bool have_stream_audio = false;
-    void mute( bool bol );
-    void volume( qreal volume );
+    void set_mute( bool bol );
+    void set_volume( qreal volume );
 
     static void on_pad_added( GstElement *element, GstPad *pad, gpointer data );
     static GstBusSyncReply call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data );
