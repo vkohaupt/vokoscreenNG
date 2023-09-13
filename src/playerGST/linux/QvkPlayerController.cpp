@@ -153,6 +153,7 @@ void QvkPlayerController::slot_pushButtonPlay()
 
         this->setMouseTracking( true );
         widget_Video->setMouseTracking( true );
+        sliderVideo->setMouseTracking( false );
 
         ui->pushButtonPlay->setVisible( false );
         ui->pushButtonPause->setVisible( true );
