@@ -91,6 +91,10 @@ void Container::set_AudioCodecAvailable( QString encoder, bool available )
  */
 QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
 {
+#ifdef Q_OS_WIN
+    Q_UNUSED(isFlatpak)
+#endif
+
     Container *MKV = new Container( "matroskamux", "mkv" );
     MKV->add_VideoCodec( "openh264enc", "H.264" );
     MKV->add_VideoCodec( "vp8enc", "VP8");
