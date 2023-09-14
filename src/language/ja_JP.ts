@@ -356,10 +356,6 @@
         <translation>音声コーデック</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>品質</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>マウスカーソルを録画しない</translation>
     </message>

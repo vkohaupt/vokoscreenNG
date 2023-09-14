@@ -356,10 +356,6 @@
         <translation>Κωδικοποιητής ήχου</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>Ποιότητα</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Μην καταγράφεις τον κέρσορα</translation>
     </message>

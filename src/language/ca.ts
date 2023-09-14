@@ -356,10 +356,6 @@
         <translation>Còdec de l&apos;àudio</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>Qualitat</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>No enregistris el cursor del ratolí</translation>
     </message>

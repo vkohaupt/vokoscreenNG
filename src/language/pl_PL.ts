@@ -356,10 +356,6 @@
         <translation>Kodek audio</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>Jakość</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Nie nagrywaj kursora myszy</translation>
     </message>

@@ -356,10 +356,6 @@
         <translation>Audiocodec</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>Quality</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Do not record mouse cursor</translation>
     </message>

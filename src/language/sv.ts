@@ -356,10 +356,6 @@
         <translation>Ljudkodek</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>Kvalitet</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Spela inte in muspekaren</translation>
     </message>

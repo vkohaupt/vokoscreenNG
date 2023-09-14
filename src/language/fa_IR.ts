@@ -358,10 +358,6 @@
         <translation>کدک صدا</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>کیفیت</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>نشانگر موس را ضبط نکن</translation>
     </message>

@@ -356,10 +356,6 @@
         <translation>Audiokodek</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>Kvalita</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Nenahrávat kurzor myši</translation>
     </message>

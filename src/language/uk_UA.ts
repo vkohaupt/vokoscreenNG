@@ -356,10 +356,6 @@
         <translation>Авдіокодек</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>Якість</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Не записувати вказівник миші</translation>
     </message>

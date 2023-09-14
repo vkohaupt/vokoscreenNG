@@ -356,10 +356,6 @@
         <translation>ترميز الصوت</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>جوده</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>لا تسجل مؤشر الفأرة</translation>
     </message>

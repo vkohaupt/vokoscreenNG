@@ -356,10 +356,6 @@
         <translation>Kodekaudio</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>Kualitas</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Jangan rekam kursor tetikus</translation>
     </message>

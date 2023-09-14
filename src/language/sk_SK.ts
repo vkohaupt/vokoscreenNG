@@ -356,10 +356,6 @@
         <translation>Zvukový kódek</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>Kvalita</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Nenahrávať kurzor myši</translation>
     </message>

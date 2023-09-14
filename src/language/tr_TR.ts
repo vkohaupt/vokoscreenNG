@@ -356,10 +356,6 @@
         <translation>Ses çözücü</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>Kalite</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Fare imlecini kaydetme</translation>
     </message>

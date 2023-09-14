@@ -356,10 +356,6 @@
         <translation>Audio-kodeka</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>Kalitatea</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Ez grabatu saguaren erakuslea</translation>
     </message>

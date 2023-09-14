@@ -356,10 +356,6 @@
         <translation>Garso kodekas</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>Kokybė</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Neįrašinėti pelės žymeklio</translation>
     </message>

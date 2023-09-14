@@ -356,10 +356,6 @@
         <translation>音频编码</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>质量</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>不要录制鼠标</translation>
     </message>

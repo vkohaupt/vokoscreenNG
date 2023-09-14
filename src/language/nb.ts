@@ -356,10 +356,6 @@
         <translation>Lydkodek</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>Kvalitet</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>ikke ta opp musepeker</translation>
     </message>

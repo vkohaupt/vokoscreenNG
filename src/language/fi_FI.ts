@@ -356,10 +356,6 @@
         <translation>Audiokoodekki</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>Laatu</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Älä tallenna hiiren osoitinta</translation>
     </message>

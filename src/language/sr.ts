@@ -356,10 +356,6 @@
         <translation>Аудио кодек</translation>
     </message>
     <message>
-        <source>Quality</source>
-        <translation>Квалитет</translation>
-    </message>
-    <message>
         <source>Do not record mouse cursor</source>
         <translation>Немој снимати стрелицу</translation>
     </message>
