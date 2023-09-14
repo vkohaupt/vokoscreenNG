@@ -372,24 +372,19 @@ void QvkPlayerController::mouseDoubleClickEvent( QMouseEvent *event )
     if ( isFullScreen() == false ) {
         if ( vkPlayerGst->is_running() == true ) {
             ui->widget_menuebar->setParent( widget_Video );
-            ui->widget_menuebar->raise();
-            ui->widget_menuebar->show();
-            showFullScreen();
         }
 
         if ( ( vkPlayerGst->is_running() == false ) and ( vkPlayerGst->is_pause() == false ) ) {
             ui->widget_menuebar->setParent( ui->label_logo );
-            ui->widget_menuebar->raise();
-            ui->widget_menuebar->show();
-            showFullScreen();
         }
 
         if ( ( vkPlayerGst->is_running() == false ) and ( vkPlayerGst->is_pause() == true ) ) {
             ui->widget_menuebar->setParent( widget_Video );
-            ui->widget_menuebar->raise();
-            ui->widget_menuebar->show();
-            showFullScreen();
         }
+
+        ui->widget_menuebar->raise();
+        ui->widget_menuebar->show();
+        showFullScreen();
 
         int screenWidth = screen()->size().width();
         int screenHeight = screen()->size().height();
@@ -417,16 +412,10 @@ void QvkPlayerController::keyPressEvent( QKeyEvent *event )
         if ( isFullScreen() == false ) {
             if ( vkPlayerGst->is_running() == true ) {
                 ui->widget_menuebar->setParent( widget_Video );
-                ui->widget_menuebar->raise();
-                ui->widget_menuebar->show();
-                showFullScreen();
             }
 
             if ( ( vkPlayerGst->is_running() == false ) and ( vkPlayerGst->is_pause() == false ) ) {
                 ui->widget_menuebar->setParent( ui->label_logo );
-                ui->widget_menuebar->raise();
-                ui->widget_menuebar->show();
-                showFullScreen();
 
                 widget_Video->update();
                 ui->widget_menuebar->update();
@@ -435,10 +424,11 @@ void QvkPlayerController::keyPressEvent( QKeyEvent *event )
 
             if ( ( vkPlayerGst->is_running() == false ) and ( vkPlayerGst->is_pause() == true ) ) {
                 ui->widget_menuebar->setParent( widget_Video );
-                ui->widget_menuebar->raise();
-                ui->widget_menuebar->show();
-                showFullScreen();
             }
+
+            ui->widget_menuebar->raise();
+            ui->widget_menuebar->show();
+            showFullScreen();
 
             int screenWidth = screen()->size().width();
             int screenHeight = screen()->size().height();
