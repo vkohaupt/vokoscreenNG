@@ -641,4 +641,19 @@ Sekund počkej před záznamem??</translation>
         <translation>Přesunout nabídku</translation>
     </message>
 </context>
+<context>
+    <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Přehrát</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pauza</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Stop</translation>
+    </message>
+</context>
 </TS>

@@ -638,4 +638,19 @@
         <translation>移动菜单</translation>
     </message>
 </context>
+<context>
+    <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>播放</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>暂停</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
+</context>
 </TS>

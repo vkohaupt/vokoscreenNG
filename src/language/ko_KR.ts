@@ -638,4 +638,19 @@
         <translation>메뉴 이동하기</translation>
     </message>
 </context>
+<context>
+    <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>재생</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>일시정지</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>중지</translation>
+    </message>
+</context>
 </TS>

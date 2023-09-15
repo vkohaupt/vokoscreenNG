@@ -638,4 +638,19 @@
         <translation>Menüyü taşı</translation>
     </message>
 </context>
+<context>
+    <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Oynat</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Duraklat</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Durdur</translation>
+    </message>
+</context>
 </TS>

@@ -638,4 +638,19 @@
         <translation>Siirrä valikko</translation>
     </message>
 </context>
+<context>
+    <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Toista</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Tauko</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Lopeta</translation>
+    </message>
+</context>
 </TS>

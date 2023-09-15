@@ -638,4 +638,19 @@
         <translation>Перемістити меню</translation>
     </message>
 </context>
+<context>
+    <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Програти</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Призупинити</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Зупинити</translation>
+    </message>
+</context>
 </TS>

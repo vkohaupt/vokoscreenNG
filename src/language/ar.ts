@@ -638,4 +638,19 @@
         <translation>حرك قائمه الخيارات</translation>
     </message>
 </context>
+<context>
+    <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>شغّل</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>ألبِث</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>أوقِف</translation>
+    </message>
+</context>
 </TS>

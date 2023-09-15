@@ -638,4 +638,19 @@
         <translation>Perkelti meniu</translation>
     </message>
 </context>
+<context>
+    <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Groti</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pristabdyti</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Stabdyti</translation>
+    </message>
+</context>
 </TS>

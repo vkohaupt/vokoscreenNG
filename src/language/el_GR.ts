@@ -638,4 +638,19 @@
         <translation>Μετακίνησε το μενού</translation>
     </message>
 </context>
+<context>
+    <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Αναπαραγωγή</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Παύση</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Διακοπή</translation>
+    </message>
+</context>
 </TS>

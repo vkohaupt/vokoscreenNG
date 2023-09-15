@@ -638,4 +638,19 @@
         <translation>Mugitu menua</translation>
     </message>
 </context>
+<context>
+    <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Erreproduzitu</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pausatu</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Gelditu</translation>
+    </message>
+</context>
 </TS>

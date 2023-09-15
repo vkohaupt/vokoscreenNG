@@ -638,4 +638,19 @@
         <translation>Menu verplaatsen</translation>
     </message>
 </context>
+<context>
+    <name>playerGST</name>
+    <message>
+        <source>Play</source>
+        <translation>Afspelen</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Onderbreken</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Stoppen</translation>
+    </message>
+</context>
 </TS>
