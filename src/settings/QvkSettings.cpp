@@ -127,7 +127,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             index = listComboBox.at(i)->findText( valueText );
             if ( index > -1 ) {
                 listComboBox.at(i)->setCurrentIndex( index );
-                break;
+                continue;
             }
 
             // Systemsprache ist in der Combobox nicht vorhanden, es wird "en" gesetzt
@@ -135,7 +135,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             if ( index == -1 ) {
                 int value = listComboBox.at(i)->findData( "en" );
                 listComboBox.at(i)->setCurrentIndex( value );
-                break;
+                continue;
             }
 
             // Systemsprache wird in der Combobox gesetzt wenn diese in der Combobox gefunden wird.
@@ -144,7 +144,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
                 listComboBox.at(i)->setCurrentIndex( index );
             }
 
-            break;
+            continue;
         }
 
 
