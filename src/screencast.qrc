@@ -152,9 +152,11 @@
 <file>pictures/screencast/preferences-system.license</file>
 <file>pictures/screencast/strip-avi.license</file>
 <file>pictures/screencast/format-codec.license</file>
+<file>pictures/screencast/compress.license</file>
 <file>pictures/screencast/strip-webm.license</file>
 <file>pictures/screencast/microphone.license</file>
 <file>pictures/screencast/shortcut.license</file>
+<file>pictures/screencast/night.license</file>
 <file>pictures/screencast/undo.license</file>
 <file>pictures/screencast/sandglass.license</file>
 <file>pictures/screencast/supported-formats.license</file>
@@ -164,6 +166,7 @@
 <file>pictures/screencast/missing.license</file>
 <file>pictures/screencast/strip-mp4.license</file>
 <file>pictures/screencast/help-about.license</file>
+<file>pictures/screencast/exit.license</file>
 <file>pictures/screencast/screen-name.license</file>
 <file>pictures/showClick/cursor.license</file>
 <file>pictures/showClick/transparenz.license</file>
