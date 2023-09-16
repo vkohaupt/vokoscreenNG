@@ -73,7 +73,6 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         }
     }
 
-
     // We want block the signals for shortcut ComboBox signals and set the default value
     QList<QComboBox *> listComboBoxShortcut = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
     for ( int i = 0; i < listComboBoxShortcut.count(); i++ )
@@ -147,7 +146,6 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             continue;
         }
 
-
         QString valueText = settings.value( listComboBox.at(i)->objectName(), "" ).toString();
         int valueInt = listComboBox.at(i)->findText( valueText );
         if ( valueInt > -1 ) {
@@ -159,44 +157,6 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     for ( int i = 0; i < listComboBoxShortcut.count(); i++ ) {
         if ( listComboBoxShortcut.at(i)->objectName().contains( "comboBox_shortcut", Qt::CaseInsensitive ) == true ) {
             listComboBoxShortcut.at(i)->blockSignals( false );
-        }
-    }
-
-
-    // These settings must be set in this order: Format, Videocodec, Audiocodec
-    // 1. Format
-    QList<QComboBox *> listComboBoxFormat = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
-    for ( int i = 0; i < listComboBoxFormat.count(); i++ ) {
-        if ( listComboBoxFormat.at(i)->objectName() == "comboBoxFormat" ) {
-            QString valueText = settings.value( listComboBoxFormat.at(i)->objectName(), "" ).toString();
-            int valueInt = listComboBoxFormat.at(i)->findText( valueText );
-            if ( valueInt > -1 ) {
-                listComboBoxFormat.at(i)->setCurrentIndex( valueInt );
-            }
-        }
-    }
-
-    // 2. Videocodec
-    QList<QComboBox *> listComboBoxVideo = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
-    for ( int i = 0; i < listComboBoxVideo.count(); i++ ) {
-        if ( listComboBoxVideo.at(i)->objectName() == "comboBoxVideoCodec" ) {
-            QString valueText = settings.value( listComboBoxVideo.at(i)->objectName(), "" ).toString();
-            int valueInt = listComboBoxVideo.at(i)->findText( valueText );
-            if ( valueInt > -1 ) {
-                listComboBoxVideo.at(i)->setCurrentIndex( valueInt );
-            }
-        }
-    }
-
-    // 3. Audiocodec
-    QList<QComboBox *> listComboBoxAudio = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
-    for ( int i = 0; i < listComboBoxAudio.count(); i++ ) {
-        if ( listComboBoxAudio.at(i)->objectName() == "comboBoxAudioCodec" ) {
-            QString valueText = settings.value( listComboBoxAudio.at(i)->objectName(), "" ).toString();
-            int valueInt = listComboBoxAudio.at(i)->findText( valueText );
-            if ( valueInt > -1 ) {
-                listComboBoxAudio.at(i)->setCurrentIndex( valueInt );
-            }
         }
     }
 
