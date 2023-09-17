@@ -113,7 +113,7 @@ void QvkPlayerGst::init()
 
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
-    timer->setInterval( 20 );
+    timer->setInterval( 200 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_timer() ) );
 }
 
