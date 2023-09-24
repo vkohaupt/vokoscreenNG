@@ -1013,6 +1013,10 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 
     emit signal_close();
     emit signal_close( false );
+
+#ifdef Q_OS_LINUX
+    vkHalo->vkHaloWindow->close();
+#endif
 }
 
 

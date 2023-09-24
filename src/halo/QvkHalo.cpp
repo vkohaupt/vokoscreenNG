@@ -60,7 +60,6 @@ void QvkHalo::createHaloPreviewWidget()
 void QvkHalo::createHaloWindow()
 {
     vkHaloWindow = new QvkHaloWindow( this );
-    vkHaloWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar
 }
 
 
@@ -205,5 +204,4 @@ void QvkHalo::setToolButtonDefaultValues()
     connect( ui->toolButtonHaloDiameterDefault, &QToolButton::clicked, this, [=]() { vkSpezialSliderDiameter->setValue( diameterDefault ); } );
     connect( ui->toolButtonHaloOpacityDefault,  &QToolButton::clicked, this, [=]() { vkSpezialSliderOpacity->setValue( opacityDefault ); } );
     connect( ui->toolButtonHaloHoleDefault,     &QToolButton::clicked, this, [=]() { vkSpezialSliderHole->setValue( holeDefault); } );
-
 }

@@ -26,14 +26,29 @@
 #include <QDebug>
 #include <QBitmap>
 
+
+#ifdef Q_OS_LINUX
+QvkHaloWindow::QvkHaloWindow( QWidget *parent )
+{
+    Q_UNUSED(parent)
+    setWindowFlags( Qt::X11BypassWindowManagerHint | Qt::WindowStaysOnTopHint );
+    setAttribute( Qt::WA_TranslucentBackground, true );
+    resize ( 100, 100 );
+    setCursor( Qt::BlankCursor );
+}
+#endif
+
+#ifdef Q_OS_WIN
 QvkHaloWindow::QvkHaloWindow( QWidget *parent )
 {
     setParent( parent );
-    setCursor( Qt::BlankCursor );
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
     setAttribute( Qt::WA_TranslucentBackground, true );
+    resize ( 100, 100 );
+    setCursor( Qt::BlankCursor );
     show();
 }
-
+#endif
 
 QvkHaloWindow::~QvkHaloWindow()
 {
