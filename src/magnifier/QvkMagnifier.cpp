@@ -38,7 +38,12 @@ QvkMagnifier::QvkMagnifier()
     slot_magnifier200x200();
 
     resize( 2 * distanceX * factor, 2 * distanceY * factor );
+#ifdef Q_OS_LINUX
+    setWindowFlags( Qt::X11BypassWindowManagerHint | Qt::WindowStaysOnTopHint );
+#endif
+#ifdef Q_OS_WIN
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
+#endif
     setAttribute( Qt::WA_TranslucentBackground, true );
     distanceCopyMagnifier = 30;
 

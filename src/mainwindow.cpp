@@ -1016,6 +1016,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 
 #ifdef Q_OS_LINUX
     vkHalo->vkHaloWindow->close();
+    vkMagnifierController->vkMagnifier->close();
 #endif
 }
 
