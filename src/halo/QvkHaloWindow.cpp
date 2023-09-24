@@ -46,7 +46,6 @@ QvkHaloWindow::QvkHaloWindow( QWidget *parent )
     setAttribute( Qt::WA_TranslucentBackground, true );
     resize ( 100, 100 );
     setCursor( Qt::BlankCursor );
-    show();
 }
 #endif
 
