@@ -48,15 +48,29 @@ QvkDirDialog::QvkDirDialog( QWidget *parent )
             qDebug() << listWidgets.at(x);
         }
     }
-
+*/
     QList<QToolButton *> listWidgets = findChildren<QToolButton *>();
     if ( !listWidgets.empty() ) {
         for (int x = 0; x < listWidgets.count(); x++) {
-            if ( listWidgets.at(x)->objectName() == "backButton" )
-               qDebug() << listWidgets.at(x)->icon();
+            if ( listWidgets.at(x)->objectName() == "backButton" ) {
+                listWidgets.at(x)->setIcon( QIcon( ":/pictures/fileDirDialog/backButton.png" ) );
+            }
+            if ( listWidgets.at(x)->objectName() == "forwardButton" ) {
+                listWidgets.at(x)->setIcon( QIcon( ":/pictures/fileDirDialog/forwardButton.png" ) );
+            }
+            if ( listWidgets.at(x)->objectName() == "toParentButton" ) {
+                listWidgets.at(x)->setIcon( QIcon( ":/pictures/fileDirDialog/toParentButton.png" ) );
+            }
+            if ( listWidgets.at(x)->objectName() == "newFolderButton" ) {
+                listWidgets.at(x)->setIcon( QIcon( ":/pictures/fileDirDialog/newFolderButton.png" ) );
+            }
+
+
+            qDebug() << "-----" << listWidgets.at(x)->objectName();
+
         }
     }
-*/
+
 }
 
 
