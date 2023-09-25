@@ -58,7 +58,7 @@ private:
 
     int diameterDefault = 70;
     int opacityDefault = 60;
-    int holeDefault = 5;
+    int holeDefault = 20;
     int timerID;
 
     void createHaloWindow();

@@ -8,6 +8,7 @@
 #include <QAbstractButton>
 #include <QStackedWidget>
 #include <QListView>
+#include <QToolButton>
 
 QvkDirDialog::QvkDirDialog( QWidget *parent )
 {
@@ -47,8 +48,15 @@ QvkDirDialog::QvkDirDialog( QWidget *parent )
             qDebug() << listWidgets.at(x);
         }
     }
-*/
 
+    QList<QToolButton *> listWidgets = findChildren<QToolButton *>();
+    if ( !listWidgets.empty() ) {
+        for (int x = 0; x < listWidgets.count(); x++) {
+            if ( listWidgets.at(x)->objectName() == "backButton" )
+               qDebug() << listWidgets.at(x)->icon();
+        }
+    }
+*/
 }
 
 
