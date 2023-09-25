@@ -9,6 +9,7 @@
 #include <QStackedWidget>
 #include <QListView>
 #include <QToolButton>
+#include <QPushButton>
 
 QvkDirDialog::QvkDirDialog( QWidget *parent )
 {
@@ -32,9 +33,35 @@ QvkDirDialog::QvkDirDialog( QWidget *parent )
         }
     }
 
+    // Set Buttons horizontal
+    QList<QDialogButtonBox *> listPushButtons = findChildren<QDialogButtonBox *>();
+    if ( !listPushButtons.empty() ) {
+        for (int x = 0; x < listPushButtons.count(); x++) {
+            listPushButtons.at(x)->setOrientation( Qt::Horizontal );
+        }
+    }
+
+    QList<QWidget *> listWidget = findChildren<QWidget *>();
+    if ( !listWidget.empty() ) {
+        for ( int x = 0; x < listWidget.count(); x++ ) {
+            if ( listWidget.at(x)->objectName() == "fileTypeLabel" ) {
+                listWidget.at(x)->hide();
+            }
+            if ( listWidget.at(x)->objectName() == "fileTypeCombo" ) {
+                listWidget.at(x)->hide();
+            }
+            if ( listWidget.at(x)->objectName() == "fileNameLabel" ) {
+                listWidget.at(x)->hide();
+            }
+            if ( listWidget.at(x)->objectName() == "fileNameEdit" ) {
+                listWidget.at(x)->hide();
+            }
+        }
+    }
+
     QList<QToolButton *> listWidgets = findChildren<QToolButton *>();
     if ( !listWidgets.empty() ) {
-        for (int x = 0; x < listWidgets.count(); x++) {
+        for ( int x = 0; x < listWidgets.count(); x++ ) {
             if ( listWidgets.at(x)->objectName() == "backButton" ) {
                 listWidgets.at(x)->setIcon( QIcon( ":/pictures/fileDirDialog/backButton.png" ) );
             }
@@ -49,6 +76,9 @@ QvkDirDialog::QvkDirDialog( QWidget *parent )
             }
         }
     }
+
+
+
 
     // Wird benötigt für weitere tests
     /*
