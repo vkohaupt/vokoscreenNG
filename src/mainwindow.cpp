@@ -235,8 +235,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     Q_UNUSED(vkMagnifierController);
     ui->label_magnifier_on_screen->setText( "" );
 
-    vkPlayerController = new QvkPlayerController( ui ); // This is for the new GStreamer player
-    vkPlayerController->init();  // This is for the new GStreamer player
+    vkPlayerController = new QvkPlayerController( ui );
+    vkPlayerController->init();
     vk_setCornerWidget( ui->tabWidgetPlayer );
 
     vkHelp = new QvkHelp( ui );
