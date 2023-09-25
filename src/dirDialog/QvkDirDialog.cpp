@@ -28,7 +28,23 @@ QvkDirDialog::QvkDirDialog( QWidget *parent )
         QList<QAbstractButton *> listButtons = list.at(0)->buttons();
         if ( !listButtons.empty() ) {
             for ( int x = 0; x < listButtons.count(); x++ ) {
-                listButtons.at(x)->setIcon( QIcon( "" ) );
+                listButtons.at(x)->setIcon( QIcon() );
+            }
+        }
+    }
+
+    // Hide sidbar and widget for type
+    QList<QWidget *> listWidget = findChildren<QWidget *>();
+    if ( !listWidget.empty() ) {
+        for ( int x = 0; x < listWidget.count(); x++ ) {
+            if ( listWidget.at(x)->objectName() == "sidebar" ) {
+                listWidget.at(x)->hide();
+            }
+            if ( listWidget.at(x)->objectName() == "fileTypeLabel" ) {
+                listWidget.at(x)->hide();
+            }
+            if ( listWidget.at(x)->objectName() == "fileTypeCombo" ) {
+                listWidget.at(x)->hide();
             }
         }
     }
@@ -41,44 +57,24 @@ QvkDirDialog::QvkDirDialog( QWidget *parent )
         }
     }
 
-    QList<QWidget *> listWidget = findChildren<QWidget *>();
-    if ( !listWidget.empty() ) {
-        for ( int x = 0; x < listWidget.count(); x++ ) {
-            if ( listWidget.at(x)->objectName() == "fileTypeLabel" ) {
-                listWidget.at(x)->hide();
+    // Set custom icons
+    QList<QToolButton *> listToolButton = findChildren<QToolButton *>();
+    if ( !listToolButton.empty() ) {
+        for ( int x = 0; x < listToolButton.count(); x++ ) {
+            if ( listToolButton.at(x)->objectName() == "backButton" ) {
+                listToolButton.at(x)->setIcon( QIcon( ":/pictures/fileDirDialog/backButton.png" ) );
             }
-            if ( listWidget.at(x)->objectName() == "fileTypeCombo" ) {
-                listWidget.at(x)->hide();
+            if ( listToolButton.at(x)->objectName() == "forwardButton" ) {
+                listToolButton.at(x)->setIcon( QIcon( ":/pictures/fileDirDialog/forwardButton.png" ) );
             }
-            if ( listWidget.at(x)->objectName() == "fileNameLabel" ) {
-                listWidget.at(x)->hide();
+            if ( listToolButton.at(x)->objectName() == "toParentButton" ) {
+                listToolButton.at(x)->setIcon( QIcon( ":/pictures/fileDirDialog/toParentButton.png" ) );
             }
-            if ( listWidget.at(x)->objectName() == "fileNameEdit" ) {
-                listWidget.at(x)->hide();
-            }
-        }
-    }
-
-    QList<QToolButton *> listWidgets = findChildren<QToolButton *>();
-    if ( !listWidgets.empty() ) {
-        for ( int x = 0; x < listWidgets.count(); x++ ) {
-            if ( listWidgets.at(x)->objectName() == "backButton" ) {
-                listWidgets.at(x)->setIcon( QIcon( ":/pictures/fileDirDialog/backButton.png" ) );
-            }
-            if ( listWidgets.at(x)->objectName() == "forwardButton" ) {
-                listWidgets.at(x)->setIcon( QIcon( ":/pictures/fileDirDialog/forwardButton.png" ) );
-            }
-            if ( listWidgets.at(x)->objectName() == "toParentButton" ) {
-                listWidgets.at(x)->setIcon( QIcon( ":/pictures/fileDirDialog/toParentButton.png" ) );
-            }
-            if ( listWidgets.at(x)->objectName() == "newFolderButton" ) {
-                listWidgets.at(x)->setIcon( QIcon( ":/pictures/fileDirDialog/newFolderButton.png" ) );
+            if ( listToolButton.at(x)->objectName() == "newFolderButton" ) {
+                listToolButton.at(x)->setIcon( QIcon( ":/pictures/fileDirDialog/newFolderButton.png" ) );
             }
         }
     }
-
-
-
 
     // Wird benötigt für weitere tests
     /*
