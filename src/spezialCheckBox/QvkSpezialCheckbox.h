@@ -52,7 +52,7 @@ private:
     QString imageChecked;
     QString imageUnChecked;
 
-    int waitBeforeTrigger = 300;
+    int waitBeforeTrigger = 0;
 
 
 signals:

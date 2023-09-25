@@ -32,23 +32,6 @@ QvkDirDialog::QvkDirDialog( QWidget *parent )
         }
     }
 
-
-// Wird benötigt für weitere tests
-/*
-    QList<QStackedWidget *> listWidgets = findChildren<QStackedWidget *>();
-    if ( !listWidgets.empty() ) {
-        listWidgets.at(0)->installEventFilter( this );
-    }
-
-
-    QList<QListView *> listWidgets = findChildren<QListView *>( "listView" );
-    if ( !listWidgets.empty() ) {
-        for (int x = 0; x < listWidgets.count(); x++) {
-            listWidgets.at(x)->installEventFilter( this );
-            qDebug() << listWidgets.at(x);
-        }
-    }
-*/
     QList<QToolButton *> listWidgets = findChildren<QToolButton *>();
     if ( !listWidgets.empty() ) {
         for (int x = 0; x < listWidgets.count(); x++) {
@@ -64,13 +47,25 @@ QvkDirDialog::QvkDirDialog( QWidget *parent )
             if ( listWidgets.at(x)->objectName() == "newFolderButton" ) {
                 listWidgets.at(x)->setIcon( QIcon( ":/pictures/fileDirDialog/newFolderButton.png" ) );
             }
-
-
-            qDebug() << "-----" << listWidgets.at(x)->objectName();
-
         }
     }
 
+    // Wird benötigt für weitere tests
+    /*
+    QList<QStackedWidget *> listWidgets = findChildren<QStackedWidget *>();
+    if ( !listWidgets.empty() ) {
+        listWidgets.at(0)->installEventFilter( this );
+    }
+
+
+    QList<QListView *> listWidgets = findChildren<QListView *>( "listView" );
+    if ( !listWidgets.empty() ) {
+        for (int x = 0; x < listWidgets.count(); x++) {
+            listWidgets.at(x)->installEventFilter( this );
+            qDebug() << listWidgets.at(x);
+        }
+    }
+*/
 }
 
 
