@@ -22,6 +22,10 @@ QvkDirDialog::QvkDirDialog( QWidget *parent )
     setDirectory( QStandardPaths::writableLocation( QStandardPaths::HomeLocation ) );
     setWindowFlag( Qt::WindowContextHelpButtonHint, false );
 
+    // Start with empty history
+    QStringList stringList;
+    setHistory( stringList );
+
     // Remove image in QDialogButtonBox
     QList<QDialogButtonBox *> list = findChildren<QDialogButtonBox *>();
     if ( !list.empty() ) {
