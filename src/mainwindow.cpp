@@ -1198,16 +1198,12 @@ void QvkMainWindow::slot_startTime()
 
 void QvkMainWindow::slot_newVideoPath()
 {
-    QApplication::setDesktopSettingsAware( false );
-
     QvkDirDialog vkDirDialog( this );
     if ( vkDirDialog.exec() == QDialog::Accepted ) {
         if ( !vkDirDialog.selectedFiles().empty() ) {
             ui->lineEditVideoPath->setText( vkDirDialog.selectedFiles().at(0) );
         }
     }
-
-    QApplication::setDesktopSettingsAware( true );
 }
 
 

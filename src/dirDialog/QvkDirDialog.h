@@ -17,7 +17,6 @@ public slots:
 
 
 protected:
-    bool eventFilter(QObject *o, QEvent *event);
 
 
 private:
