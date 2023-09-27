@@ -25,8 +25,6 @@
 
 #include "ui_formMainWindow.h"
 
-#include "QvkRegionButtonArrow.h"
-
 #include <QWidget>
 #include <QScreen>
 
