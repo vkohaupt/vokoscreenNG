@@ -27,7 +27,7 @@
 #include "global.h"
 #include "QvkScreenManager.h"
 #include "QvkImageFromTabs.h"
-#include "QvkDirDialog.h"
+#include "qvkdirdialog.h"
 #include "QvkVirtual.h"
 #include "QvkSnapshot.h"
 #include "QvkPadsAndCaps.h"
@@ -1198,10 +1198,10 @@ void QvkMainWindow::slot_startTime()
 
 void QvkMainWindow::slot_newVideoPath()
 {
-    QvkDirDialog vkDirDialog( this );
-    if ( vkDirDialog.exec() == QDialog::Accepted ) {
-        if ( !vkDirDialog.selectedFiles().empty() ) {
-            ui->lineEditVideoPath->setText( vkDirDialog.selectedFiles().at(0) );
+    QvkDirDialog *vkDirDialog = new QvkDirDialog;
+    if ( vkDirDialog->exec() == QDialog::Accepted ) {
+        if ( !vkDirDialog->selectedDir().empty() ) {
+            ui->lineEditVideoPath->setText( vkDirDialog->selectedDir().at(0) );
         }
     }
 }

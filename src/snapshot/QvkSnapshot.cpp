@@ -32,7 +32,7 @@
 #include "global.h"
 #include "QvkSnapshot.h"
 #include "QvkSpezialSlider.h"
-#include "QvkDirDialog.h"
+#include "qvkdirdialog.h"
 #include "QvkShowMessage.h"
 
 QvkSnapshot::QvkSnapshot( QvkMainWindow *myParent )
@@ -288,16 +288,12 @@ void QvkSnapshot::slot_snapshotWindow( bool )
 
 void QvkSnapshot::slot_imagePath()
 {
-    QApplication::setDesktopSettingsAware( false );
-
     QvkDirDialog vkDirDialog( this );
     if ( vkDirDialog.exec() == QDialog::Accepted ) {
-        if ( !vkDirDialog.selectedFiles().empty() ) {
-            ui->lineEditSnapshotImagePath->setText( vkDirDialog.selectedFiles().at(0) );
+        if ( !vkDirDialog.selectedDir().empty() ) {
+            ui->lineEditSnapshotImagePath->setText( vkDirDialog.selectedDir().at(0) );
         }
     }
-
-    QApplication::setDesktopSettingsAware( true );
 }
 
 
