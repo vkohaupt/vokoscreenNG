@@ -7,6 +7,7 @@
 
 #include <QFileDialog>
 
+#ifdef Q_OS_WIN
 namespace Ui {
 class QvkDirDialog;
 }
@@ -19,26 +20,40 @@ public:
     explicit QvkDirDialog(QWidget *parent = nullptr);
     ~QvkDirDialog();
 
-#ifdef Q_OS_LINUX
-    QStringList selectedDir();
-    QFileSystemModel *fileSystemModel;
-#endif
-
 private:
     Ui::QvkDirDialog *ui;
 
-#ifdef Q_OS_LINUX
-    QStringList listCurrentDir;
-#endif
-
-
 private slots:
-#ifdef Q_OS_LINUX
-    void slot_clicked( QModelIndex );
-#endif
 
 protected:
+#endif
 
+
+#ifdef Q_OS_LINUX
+namespace Ui {
+class QvkDirDialog;
+}
+
+class QvkDirDialog : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit QvkDirDialog(QWidget *parent = nullptr);
+    ~QvkDirDialog();
+
+    QStringList selectedDir();
+    QFileSystemModel *fileSystemModel;
+
+private:
+    Ui::QvkDirDialog *ui;
+    QStringList listCurrentDir;
+
+private slots:
+    void slot_clicked( QModelIndex );
+
+protected:
+#endif
 
 };
 
