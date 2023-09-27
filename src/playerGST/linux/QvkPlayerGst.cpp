@@ -22,6 +22,7 @@
 
 #include "global.h"
 #include "QvkPlayerGst.h"
+#include "gst/video/videooverlay.h"
 
 #include <QDebug>
 #include <QAudio>

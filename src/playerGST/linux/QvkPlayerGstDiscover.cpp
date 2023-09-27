@@ -24,6 +24,7 @@
 #include "global.h"
 
 #include <string.h>
+#include "glib.h"
 #include <gst/gst.h>
 #include <gst/pbutils/pbutils.h>
 

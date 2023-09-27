@@ -23,12 +23,7 @@
 #ifndef QVKPLAYERGSTDISCOVER_H
 #define QVKPLAYERGSTDISCOVER_H
 
-#include "glib.h"
-#include "gst/gst.h"
-#include "gst/video/videooverlay.h"
-
 #include <QObject>
-
 
 class QvkPlayerGstDiscover : public QObject
 {

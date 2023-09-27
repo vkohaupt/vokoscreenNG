@@ -23,15 +23,15 @@
 #ifndef QVKPLAYERGST_H
 #define QVKPLAYERGST_H
 
+#include "QvkPlayerGstDiscover.h"
+
 #include "glib.h"
-#include "gst/gst.h"
-#include "gst/video/videooverlay.h"
+#include "gst/gstelement.h"
 
 #include <QObject>
 #include <QWidget>
 #include <QTimer>
 
-#include "QvkPlayerGstDiscover.h"
 
 class QvkPlayerGst : public QObject
 {
