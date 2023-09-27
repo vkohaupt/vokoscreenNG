@@ -1200,9 +1200,16 @@ void QvkMainWindow::slot_newVideoPath()
 {
     QvkDirDialog *vkDirDialog = new QvkDirDialog;
     if ( vkDirDialog->exec() == QDialog::Accepted ) {
+#ifdef Q_OS_LINUX
         if ( !vkDirDialog->selectedDir().empty() ) {
             ui->lineEditVideoPath->setText( vkDirDialog->selectedDir().at(0) );
         }
+#endif
+#ifdef Q_OS_WIN
+        if ( !vkDirDialog->selectedFiles().empty() ) {
+            ui->lineEditVideoPath->setText( vkDirDialog->selectedFiles().at(0) );
+        }
+#endif
     }
 }
 

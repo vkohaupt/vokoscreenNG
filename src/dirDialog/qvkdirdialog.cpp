@@ -11,6 +11,32 @@
 #include <QList>
 #include <QAbstractButton>
 
+#include <QFileDialog>
+
+#ifdef Q_OS_WIN
+QvkDirDialog::QvkDirDialog(QWidget *parent)
+{
+/*
+    QFileDialog *fileDialog = new QFileDialog;
+    fileDialog->setFileMode( QFileDialog::Directory );
+    fileDialog->setOption( QFileDialog::DontUseNativeDialog, true );
+    fileDialog->setOption( QFileDialog::ShowDirsOnly, true );
+    fileDialog->setDirectory( QStandardPaths::writableLocation( QStandardPaths::HomeLocation ) );
+    fileDialog->show();
+*/
+    setFileMode( QFileDialog::Directory );
+    setOption( QFileDialog::ShowDirsOnly, true );
+    setDirectory( QStandardPaths::writableLocation( QStandardPaths::HomeLocation ) );
+}
+
+QvkDirDialog::~QvkDirDialog()
+{
+    delete ui;
+}
+
+#endif
+
+#ifdef Q_OS_LINUX
 QvkDirDialog::QvkDirDialog(QWidget *parent) : QDialog(parent), ui(new Ui::QvkDirDialog)
 {
     ui->setupUi(this);
@@ -37,6 +63,7 @@ QvkDirDialog::QvkDirDialog(QWidget *parent) : QDialog(parent), ui(new Ui::QvkDir
     connect( ui->treeView, SIGNAL( clicked( QModelIndex ) ), this, SLOT( slot_clicked( QModelIndex ) ) );
 }
 
+
 QvkDirDialog::~QvkDirDialog()
 {
     delete ui;
@@ -54,3 +81,4 @@ QStringList QvkDirDialog::selectedDir()
 {
     return listCurrentDir;
 }
+#endif

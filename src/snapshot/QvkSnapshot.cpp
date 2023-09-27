@@ -288,11 +288,18 @@ void QvkSnapshot::slot_snapshotWindow( bool )
 
 void QvkSnapshot::slot_imagePath()
 {
-    QvkDirDialog vkDirDialog( this );
-    if ( vkDirDialog.exec() == QDialog::Accepted ) {
-        if ( !vkDirDialog.selectedDir().empty() ) {
-            ui->lineEditSnapshotImagePath->setText( vkDirDialog.selectedDir().at(0) );
+    QvkDirDialog *vkDirDialog = new QvkDirDialog;
+    if ( vkDirDialog->exec() == QDialog::Accepted ) {
+#ifdef Q_OS_LINUX
+        if ( !vkDirDialog->selectedDir().empty() ) {
+            ui->lineEditSnapshotImagePath->setText( vkDirDialog->selectedDir().at(0) );
         }
+#endif
+#ifdef Q_OS_WIN
+        if ( !vkDirDialog->selectedFiles().empty() ) {
+            ui->lineEditSnapshotImagePath->setText( vkDirDialog->selectedFiles().at(0) );
+        }
+#endif
     }
 }
 
