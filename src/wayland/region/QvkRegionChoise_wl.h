@@ -25,10 +25,9 @@
 
 #include "ui_formMainWindow_wl.h"
 
-#include "QvkRegionButtonArrow_wl.h"
-
 #include <QWidget>
 #include <QScreen>
+#include <QCloseEvent>
 
 class QvkRegionChoise_wl : public QWidget
 { 
@@ -59,7 +58,6 @@ public:
 public slots:
   void slot_areaReset();
   void slot_init();
-//  void slot_show( bool value );
 
 
 private slots:
@@ -71,9 +69,10 @@ protected:
   void mousePressEvent( QMouseEvent *event );
   void mouseReleaseEvent( QMouseEvent * event );
   void leaveEvent( QEvent *event );
-  void keyPressEvent( QKeyEvent * event );
-
+  void keyPressEvent( QKeyEvent *event );
+  void closeEvent( QCloseEvent *event );
   
+
 private:
   Ui_formMainWindow_wl *ui;
 

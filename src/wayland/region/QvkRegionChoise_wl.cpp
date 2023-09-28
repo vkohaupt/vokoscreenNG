@@ -61,7 +61,7 @@ QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow 
     setWindowIcon( icon );
 
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
-    setAttribute( Qt::WA_TranslucentBackground, true);
+    setAttribute( Qt::WA_TranslucentBackground, true );
     setMouseTracking( true );
     setFrameColor( QString( "#3DAEE9" ) );
 }
@@ -80,6 +80,15 @@ void QvkRegionChoise_wl::slot_init()
 
 QvkRegionChoise_wl::~QvkRegionChoise_wl()
 {
+}
+
+
+void QvkRegionChoise_wl::closeEvent( QCloseEvent *event )
+{
+    // Bereichsanzeige wird in der Fensterleiste geschloßen und wechseln zum Vollbildmodus
+    if ( ui->radioButtonScreencastArea->isChecked() == true ) {
+        ui->radioButtonScreencastFullscreen->click();
+    }
 }
 
 
