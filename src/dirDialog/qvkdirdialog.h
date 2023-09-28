@@ -42,7 +42,7 @@ public:
     explicit QvkDirDialog(QWidget *parent = nullptr);
     ~QvkDirDialog();
 
-    QStringList selectedDir();
+    QStringList selectedFiles();
     QFileSystemModel *fileSystemModel;
 
 private:

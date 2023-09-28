@@ -77,7 +77,7 @@ void QvkDirDialog::slot_clicked( QModelIndex modelIndex )
 }
 
 
-QStringList QvkDirDialog::selectedDir()
+QStringList QvkDirDialog::selectedFiles()
 {
     return listCurrentDir;
 }
