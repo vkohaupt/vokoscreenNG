@@ -24,16 +24,17 @@
 #define QVKLICENSES_H
 
 #include "ui_licenses.h"
-#include "ui_formMainWindow.h"
 
 #include <QWidget>
 #include <QDebug>
+
+#include <QPushButton> // neu
 
 class QvkLicenses: public QWidget
 { 
     Q_OBJECT
 public:
-    QvkLicenses(Ui_formMainWindow *ui_mainwindow );
+    QvkLicenses( QPushButton *pushButton );
     virtual ~QvkLicenses();
     Ui_license *ui;
 

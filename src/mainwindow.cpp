@@ -241,7 +241,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vkHelp = new QvkHelp( ui );
 
-    vkLicenses = new QvkLicenses( ui );
+    vkLicenses = new QvkLicenses( ui->pushButtonLicense );
 
     vkRegionChoise = new QvkRegionChoise( ui );
 

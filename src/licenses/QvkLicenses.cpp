@@ -28,7 +28,8 @@
 #include <QFont>
 #include <QDialogButtonBox>
 
-QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::license )
+//QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::license )
+QvkLicenses::QvkLicenses( QPushButton *pushButton ) : ui( new Ui::license )
 {
     ui->setupUi( this );
 
@@ -36,7 +37,7 @@ QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::licen
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
 
-    connect( ui_mainwindow->pushButtonLicense, SIGNAL( clicked( bool ) ), this, SLOT( show() ) );
+    connect( pushButton, SIGNAL( clicked( bool ) ), this, SLOT( show() ) );
     connect( ui->pushButtonClose, SIGNAL( clicked( bool ) ), this, SLOT( close() ) );
 
     ui->label_dummy_1->hide();
