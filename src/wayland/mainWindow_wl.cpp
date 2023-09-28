@@ -1,6 +1,6 @@
 #include "mainWindow_wl.h"
 #include "global.h"
-#include "QvkScreenManager.h"
+//#include "QvkScreenManager.h"
 
 #include <QStringList>
 #include <QStandardPaths>
@@ -36,6 +36,11 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_check_all_Elements_available();
     vkContainerController_wl = new QvkContainerController_wl( ui );
     set_RegionChoice();
+
+    ui->labelSourcecodeUrl->setText( "<a href='https://github.com/vkohaupt/vokoscreenNG'>" + tr( "Sourcecode" ) + "</a>" );
+    ui->labelWebSiteUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Homepage" ) + "</a>" );
+    ui->labelLanguageUrl->setText( "<a href='https://app.transifex.com/vkohaupt/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
+    ui->labelDonateUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
 
     ui->frame_information->hide();
     ui->pushButtonPause->hide();
