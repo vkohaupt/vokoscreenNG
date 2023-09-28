@@ -68,7 +68,7 @@
         <item>
          <widget class="QTabWidget" name="tabWidgetScreencast">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -330,7 +330,6 @@
                   <property name="font">
                    <font>
                     <pointsize>16</pointsize>
-                    <weight>75</weight>
                     <bold>true</bold>
                    </font>
                   </property>
@@ -343,7 +342,6 @@
                  <widget class="QLabel" name="label">
                   <property name="font">
                    <font>
-                    <weight>75</weight>
                     <bold>true</bold>
                    </font>
                   </property>
@@ -356,7 +354,6 @@
                  <widget class="QLabel" name="label_6">
                   <property name="font">
                    <font>
-                    <weight>75</weight>
                     <bold>true</bold>
                    </font>
                   </property>
@@ -601,7 +598,6 @@
                  <widget class="QLabel" name="label_24">
                   <property name="font">
                    <font>
-                    <weight>75</weight>
                     <bold>true</bold>
                    </font>
                   </property>
@@ -614,7 +610,6 @@
                  <widget class="QLabel" name="label_25">
                   <property name="font">
                    <font>
-                    <weight>75</weight>
                     <bold>true</bold>
                    </font>
                   </property>
@@ -627,7 +622,6 @@
                  <widget class="QLabel" name="label_26">
                   <property name="font">
                    <font>
-                    <weight>75</weight>
                     <bold>true</bold>
                    </font>
                   </property>
@@ -654,7 +648,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>479</width>
+                   <width>477</width>
                    <height>374</height>
                   </rect>
                  </property>
@@ -828,7 +822,6 @@
            <widget class="QPushButton" name="pushButtonStart">
             <property name="font">
              <font>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -847,7 +840,6 @@
             </property>
             <property name="font">
              <font>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -866,7 +858,6 @@
             </property>
             <property name="font">
              <font>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -885,7 +876,6 @@
             </property>
             <property name="font">
              <font>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -901,7 +891,6 @@
            <widget class="QPushButton" name="pushButtonPlay">
             <property name="font">
              <font>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -917,7 +906,6 @@
            <widget class="QPushButton" name="pushButtonScreencastOpenfolder">
             <property name="font">
              <font>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>

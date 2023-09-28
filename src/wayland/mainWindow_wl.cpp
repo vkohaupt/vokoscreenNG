@@ -46,6 +46,9 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
     ui->radioButtonScreencastFullscreen->click();
 
+    // Hide to time not needed tabs
+    ui->tabWidgetScreencast->removeTab(3); // Misc
+    ui->tabWidgetScreencast->removeTab(1); // Audio
 }
 
 
@@ -320,6 +323,9 @@ void QvkMainWindow_wl::slot_portal_cancel( uint value )
     Q_UNUSED(value)
     ui->pushButtonStart->setEnabled( true );
     ui->pushButtonStop->setEnabled( false );
+    ui->radioButtonScreencastFullscreen->setEnabled( true );
+    ui->radioButtonScreencastWindow->setEnabled( true );
+    ui->radioButtonScreencastArea->setEnabled( true );
 }
 
 
