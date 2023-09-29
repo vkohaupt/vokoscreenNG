@@ -13,3 +13,6 @@ include(region/regionselection_wl.pri)
 
 # Container
 include(container/container_wl.pri)
+
+# QvkImageFromTabs
+include(imageFromTabs/imageFromTabs_wl.pri)
