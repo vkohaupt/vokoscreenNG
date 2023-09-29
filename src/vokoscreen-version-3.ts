@@ -88,6 +88,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -150,6 +157,25 @@
         <source>Please install a filemanager.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation type="unfinished"></translation>
@@ -595,48 +621,32 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Move menu</source>
+        <source>Copyright and license from pictures</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

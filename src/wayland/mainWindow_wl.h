@@ -10,6 +10,7 @@
 #include "QvkLogController.h"
 
 #include <QMainWindow>
+#include <QTranslator>
 
 #include <gst/gst.h>
 
@@ -30,8 +31,10 @@ public:
 
 
 private:
-    QvkRegionChoise_wl *vkRegionChoise_wl;
+    QTranslator translator;
+    QTranslator qtTranslator;
 
+    QvkRegionChoise_wl *vkRegionChoise_wl;
     QvkLogController *vklogController;
     GstElement *pipeline = nullptr;
     QStringList videoFormatsList;

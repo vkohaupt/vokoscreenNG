@@ -18,7 +18,13 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     : QMainWindow(parent, f)
     , ui(new Ui::formMainWindow_wl)
 {
+    translator.load( QLocale::system().name(), ":/language" );
+    qApp->installTranslator( &translator );
+    qtTranslator.load( "qt_" + QLocale::system().name(), QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
+    qApp->installTranslator( &qtTranslator );
+
     ui->setupUi( this );
+
     set_LogController();
 
     QFile fileCSS( ":/pictures/css/css.qss" );
