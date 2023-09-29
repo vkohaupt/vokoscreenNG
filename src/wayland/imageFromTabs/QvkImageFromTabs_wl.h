@@ -54,6 +54,8 @@ protected:
 private:
     QvkMainWindow_wl *myParent = Q_NULLPTR;
     int counterFile;
+    int counter;
+    QTimer *timer;
 
 };
 
