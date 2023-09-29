@@ -35,6 +35,7 @@
 #include <QBitmap>
 #include <QColor>
 #include <QPainter>
+#include <QPainterPath>
 
 QvkImageFromTabs_wl::QvkImageFromTabs_wl( QvkMainWindow_wl *parent )
 {
@@ -71,31 +72,52 @@ void QvkImageFromTabs_wl::slot_make_picture_from_tab()
 
     myParent->ui->tabWidgetScreencast->setCurrentIndex( counter );
     if ( myParent->ui->tabWidgetScreencast->tabBar()->isTabVisible( counter ) == true ) {
+        int titelBarHight = 32;
         counter++;
+
+        // Grab window
         QPixmap windowPixmap;
         windowPixmap = myParent->ui->centralwidget->grab();
 
-        // Begin rounded corner
-        QPixmap pixmap( windowPixmap.width(), windowPixmap.height() );
-        pixmap.fill( Qt::transparent );
-        QPainter painter( &pixmap );
+        // The new size for the painter
+        QRect rect( 0, 0, windowPixmap.width(), windowPixmap.height() + titelBarHight );
+
+        // The pixmap for the painter
+        QPixmap pixmapImage( rect.width(), rect.height() );
+        pixmapImage.fill( Qt::transparent );
+
+        // Now we paint
+        QPainter painter( &pixmapImage );
         painter.setRenderHint( QPainter::Antialiasing, true );
         painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
-        painter.setBrush( Qt::color1 );
-        QRectF rect( 0, 0, windowPixmap.width(), windowPixmap.height() );
-        painter.drawRoundedRect( rect, 8, 8, Qt::AbsoluteSize );
+
+        // Set clipath with rounded corner
+        QPainterPath clipPath;
+        clipPath.addRoundedRect( rect, 5, 5 );
+        painter.setClipPath( clipPath );
+
+        // Draw titelbar
+        painter.setBrush( Qt::darkGray );
+        painter.setPen( Qt::darkGray );
+        painter.drawRect( QRectF( 0, 0, windowPixmap.width(), titelBarHight ) );
+
+        // Draw logo in titelbar
+        QPixmap logoPixmap_1( ":/pictures/logo/logo.png" );
+        QPixmap logoPixmap = logoPixmap_1.scaled( 26, 26, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+        painter.drawPixmap( 3, 3, logoPixmap );
+
+        // Draw text in titelbar
+        QFont font;
+        font.setPointSize( 11 );
+        painter.setFont( font );
+        QFontMetrics fontMetrics( font );
+        int textWidth = fontMetrics.horizontalAdvance( global::name + " " + global::version );
+        painter.setPen( Qt::white );
+        painter.drawText( ( windowPixmap.width() / 2 ) - ( textWidth / 2 ), 21, global::name + " " + global::version );
+
+        // Draw pixmap
+        painter.drawPixmap( 0, titelBarHight, windowPixmap );
         painter.end();
-
-        QPixmap pixmapImage( windowPixmap.width(), windowPixmap.height() );
-        pixmapImage.fill( Qt::transparent );
-        QPainter painter_1( &pixmapImage );
-        painter_1.setRenderHint( QPainter::Antialiasing, true );
-        painter_1.setRenderHint( QPainter::SmoothPixmapTransform, true );
-        painter_1.drawPixmap( 0, 0, windowPixmap );
-        painter_1.end();
-
-        pixmapImage.setMask( pixmap.mask() );
-        // End rounded corner
 
         pixmapImage.save( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) + "/" + "vokoscreenNG-" + QString::number( counterFile++ ) + ".png" );
         myParent->ui->label_save_image_path->setAlignment( Qt::AlignHCenter );
