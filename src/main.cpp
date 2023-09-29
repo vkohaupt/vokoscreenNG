@@ -114,7 +114,7 @@ int main(int argc, char *argv[])
     QString separator;
     separator = ";";
 #endif
-/*
+
     // qmake options example:
     // DEFINES+=FOR_MY_LINUX_INSTALLER
 #if defined( Q_OS_WIN ) || defined( FOR_MY_LINUX_INSTALLER )
@@ -141,7 +141,7 @@ int main(int argc, char *argv[])
     pathRegistry.append( "/gstreamer.registry" );
     qputenv( "GST_REGISTRY_1_0", pathRegistry.toUtf8() );
 #endif
-*/
+
     // Gstreamer debug begin
     // Write Gstreamer debug level in a file
     QvkSettings vkSettingsGstDebug;
