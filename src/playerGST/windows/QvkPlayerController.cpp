@@ -243,10 +243,10 @@ void QvkPlayerController::slot_pushButtonStop()
     if ( isFullScreen() == true ) {
         ui->verticalLayout->addWidget( ui->widget_menuebar );
         ui->widget_menuebar->show();
-        unsetCursor();
         showNormal();
     }
 
+    unsetCursor();
     ui->label_duration->setText( "00:00:00" );
     ui->label_playbackTime->setText( "00:00:00" );
     sliderVideo->setSliderPosition( 0 );
