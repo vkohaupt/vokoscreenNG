@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Dialog</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>Vennligst installere en filutforsker.</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>Sourcekode</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>Hjemmeside</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Oversettelser</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Donasjon</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>Sourcekode</translation>
@@ -593,49 +619,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Opphavsrett og lisens fra bilder</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>Lag bilder av faner</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>Lisensinformasjon</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>PÅ</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>AV</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>Spille</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pause</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Stoppe</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>Åpne Fil</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>Fullskjerm</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>Forrige bilde</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>Neste bilde</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>Stilne</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>Flytt meny</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>Opphavsrett og lisens fra bilder</translation>
     </message>
 </context>
 <context>

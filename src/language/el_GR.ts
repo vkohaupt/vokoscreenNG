@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Διάλογος</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>Παρακαλώ εγκαταστήστε ένα διαχειριστή αρχείων.</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>Πηγαίος κώδικας</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>Αρχική</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Μεταφράσεις</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Δωρεά</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>Πηγαίος κώδικας</translation>
@@ -593,49 +619,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Πνευματικά δικαιώματα και άδεια από τις φωτογραφίες</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>Δημιουργία εικόνων των καρτελών</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>Πληροφορίες για την άδεια χρήσης</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>ΟΝ</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>ΟFF</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>Αναπαραγωγή</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Παύση</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Διακοπή</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>Άνοιγμα αρχείου</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>Πλήρης οθόνη</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>Προηγούμενο στιγμιότυπο</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>Επόμενο στιγμιότυπο</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>Σίγαση</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>Μετακίνησε το μενού</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>Πνευματικά δικαιώματα και άδεια από τις φωτογραφίες</translation>
     </message>
 </context>
 <context>

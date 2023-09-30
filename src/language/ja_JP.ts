@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>ダイアログ</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>ファイルマネージャーをインストールしてください</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>ソースコード</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>ホームページ</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>翻訳</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>寄付</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>ソースコード</translation>
@@ -593,49 +619,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>画像の著作権およびライセンス</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>タブのイメージを作成</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>ライセンス情報</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>オン</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>オフ</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>再生</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>一時停止</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>停止</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>ファイルを開く</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>全画面</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>前のフレーム</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>次のフレーム</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>ミュート</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>移動</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>画像の著作権およびライセンス</translation>
     </message>
 </context>
 <context>

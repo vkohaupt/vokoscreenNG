@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Діалогове вікно</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>Будь ласка встановіть файловий упорядник.</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>Джерельний код</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>Вебсайт</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Переклади</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Зробити внесок</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>Джерельний код</translation>
@@ -593,49 +619,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Авторські права та ліцензія на зображення</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>Створення зображень вкладок</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>Інформація про ліцензію</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>УВІМК</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>ВИМК</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>Програти</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Призупинити</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Зупинити</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>Відкрити файл</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>Увесь екран</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>Попередній кадр</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>Наступний кадр</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>Без звуку</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>Перемістити меню</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>Авторські права та ліцензія на зображення</translation>
     </message>
 </context>
 <context>

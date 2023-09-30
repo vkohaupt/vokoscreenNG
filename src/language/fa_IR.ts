@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>گفتگو</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -150,6 +157,25 @@
         <source>Please install a filemanager.</source>
         <translation>لطفا برنامه یک برنامه مدیریت فایل نصب کنید.</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>کد منبع</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>صفحه اصلی</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>ترجمه ها</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>حمایت</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>کد منبع</translation>
@@ -595,49 +621,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>کپی رایت و مجوز برای عکس ها</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>ایجاد تصاویر برای هر تب</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>اطلاعات لایسنس</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>روشن</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>خاموش</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>پخش</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>وقفه</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>توقف</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>باز کردن فایل</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>تمام صفحه</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>فریم قبلی</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>فریم بعدی</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>بی‌صدا</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>جابه‌جایی منو</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>کپی رایت و مجوز برای عکس ها</translation>
     </message>
 </context>
 <context>

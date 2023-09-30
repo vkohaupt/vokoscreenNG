@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Finestra di dialogo Impostazioni fotocamera</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>Si prega di installare un filemanager.</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>Codice sorgente</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>Pagina iniziale</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Traduzioni</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Fai una donazione</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>Codice sorgente</translation>
@@ -593,49 +619,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Copyright e licenza immagini</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>Crea immagini delle schede</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>Informazioni sulla licenza</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>Acceso</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>Spento</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>Riproduci</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pausa</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Ferma</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>Apri file</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>Schermo intero</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>Fermo immagine precedente</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>Fermo immagine successivo</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>Silenzia</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>Sposta menu</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>Copyright e licenza immagini</translation>
     </message>
 </context>
 <context>

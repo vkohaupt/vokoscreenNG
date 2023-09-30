@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>الحوار</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>الرجاء تنصيب اداره الملفات</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>الملف المصدري</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>صفحة البرنامج</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>الترجمات</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>تبرع</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>الملف المصدري</translation>
@@ -593,49 +619,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>حقوق الطبع والنشر والترخيص من الصور</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>إنشاء صور لعلامات التبويب</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>معلومات الترخيص</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>تشغيل</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>إيقاف</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>شغّل</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>ألبِث</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>أوقِف</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>افتح الملف</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>شاشة كاملة</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>الإطار السابق</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>الإطار التالي</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>صامت</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>حرك قائمه الخيارات</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>حقوق الطبع والنشر والترخيص من الصور</translation>
     </message>
 </context>
 <context>

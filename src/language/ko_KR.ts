@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>대화창</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>파일탐색기를 설치해 주세요.</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>소스코드</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>홈페이지</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>번역</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>후원하기</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>소스코드</translation>
@@ -593,49 +619,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>이미지의 저작권과 라이선스</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>탭 이미지 만들기</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>라이선스 정보</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>ON</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>OFF</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>재생</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>일시정지</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>중지</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>파일 열기</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>전체화면</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>이전 프레임</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>다음 프레임</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>음소거</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>메뉴 이동하기</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>이미지의 저작권과 라이선스</translation>
     </message>
 </context>
 <context>

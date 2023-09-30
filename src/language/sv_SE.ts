@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Dialog</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>Installera en filhanterare.</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>Källkod</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>Hemsida</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Översättningar</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Donera</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>Källkod</translation>
@@ -593,49 +619,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Copyright och licens från bilder</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>Skapa bilder av flikar</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>Licensinformation</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>PÅ</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>AV</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>Spela upp</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pausa</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Stoppa</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>Öppna fil</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>Helskärm</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>Föregående bildruta</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>Nästa bildruta</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>Tyst</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>Flytta menyn</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>Copyright och licens från bilder</translation>
     </message>
 </context>
 <context>

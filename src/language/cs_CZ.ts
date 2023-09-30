@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Dialog</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>Prosím o instalaci správce souborů.</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>Zdrojový kód</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>Domovská stránka</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Překlad</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Podpořit</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>Zdrojový kód</translation>
@@ -596,49 +622,33 @@ Sekund počkej před záznamem??</translation>
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Autorská práva a licence k obrázkům</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>Vytvořit snímky karet</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>Informace o licenci</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>Zapnuto</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>Vypnuto</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>Přehrát</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pauza</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Stop</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>Otevřít soubor</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>Celá obrazovka</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>Předchozí snímek</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>Následující snímek</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>Ztlumit</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>Přesunout nabídku</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>Autorská práva a licence k obrázkům</translation>
     </message>
 </context>
 <context>

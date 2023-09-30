@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Elkarrizketa</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>Instalatu fitxategi arakatzaile bat.</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>Iturburu-kodea</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>Hasiera-orria</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Itzulpenak</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Eman dirua</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>Iturburu-kodea</translation>
@@ -593,49 +619,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Irudien gaineko copyrighta eta lizentzia</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>Sortu fitxen irudiak</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>Lizentziaren informazioa</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>PIZTU</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>ITZALI</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>Erreproduzitu</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pausatu</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Gelditu</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>Ireki fitxategia</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>Pantaila osoa</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>Aurreko fotograma</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>Hurrengo fotograma</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>Mutu</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>Mugitu menua</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>Irudien gaineko copyrighta eta lizentzia</translation>
     </message>
 </context>
 <context>

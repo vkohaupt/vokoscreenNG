@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Дијалог</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>Молим вас инсталирајте претраживач датотека</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>Изворни код</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>Почетна</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Преводи</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Донирај</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>Изворни код</translation>
@@ -593,49 +619,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Ауторска права и лиценца од слика</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>Креирај слике картица</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>Информације о лиценци</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>Укључи</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>Искључи</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>Почни</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Пауза</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Стоп</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>Отвори документ</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>Пун екран</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>Прошли кадар</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>Следећи кадар</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>Нем</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>Помери мени</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>Ауторска права и лиценца од слика</translation>
     </message>
 </context>
 <context>

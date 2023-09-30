@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Diálogo</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>Por favor, instale um gestor de ficheiros.</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>Código-fonte</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>Página inicial</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Traduções</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Doar</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>Código-fonte</translation>
@@ -593,49 +619,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Direitos de autor e licença das imagens</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>Criar imagens de guias</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>Informação de licença</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>ON</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>OFF</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>Reproduzir</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pausa</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Parar</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>Abrir Ficheiro</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>Ecrã inteiro</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>Imagem anterior</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>Imagem seguinte</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>Mudo</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>Mover o menu</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>Direitos de autor e licença das imagens</translation>
     </message>
 </context>
 <context>

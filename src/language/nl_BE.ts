@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Dialoogvenster</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>Installeer een bestandsbeheerder.</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>Broncode</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>Website</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Vertalingen</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Doneren</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>Broncode</translation>
@@ -593,49 +619,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Copyright en licentie uit afbeeldingen</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>Afbeeldingen maken van tabbladen</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>Licentie informatie</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>AAN</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>UIT</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>Afspelen</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pauzeren</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Stop</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>Bestand openen</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>Volledig scherm</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>Vorig frame</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>Volgend frame</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>Dempen</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>Menu verplaatsen</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>Copyright en licentie uit afbeeldingen</translation>
     </message>
 </context>
 <context>

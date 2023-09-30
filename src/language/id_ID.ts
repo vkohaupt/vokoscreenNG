@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Percakapan</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>Silakan instal pengelola file.</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>Kode sumber</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>Beranda</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Terjemahan</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Donasi</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>Kode sumber</translation>
@@ -593,49 +619,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Hak cipta dan lisensi dari gambar</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>Buat gambar tab</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>Informasi lisensi</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>NYALA</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>MATI</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>Mainkan</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Jeda</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Berhenti</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>Buka file</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>Layar penuh</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>Bingkai sebelumnya</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>Bingkai berikutnya</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>Bisukan</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>Pindahkan menu</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>Hak cipta dan lisensi dari gambar</translation>
     </message>
 </context>
 <context>

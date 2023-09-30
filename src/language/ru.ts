@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Диалоговое окно</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>Пожалуйста установите файловый менеджер.</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>Исходный код</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>Веб-сайт</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Переводы</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Пожертвовать</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>Исходный код</translation>
@@ -593,49 +619,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Авторское право и лицензия на использование изображений</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>Создать изображения вкладок </translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>Сведения о лицензии</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>Включить</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>Выключить</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>Воспроизвести</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Приостановить</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Остановить</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>Открыть файл</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>Во весь экран</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>Предыдущий кадр</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>Следующий кадр</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>Без звука</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>Переместить меню</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>Авторское право и лицензия на использование изображений</translation>
     </message>
 </context>
 <context>

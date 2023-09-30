@@ -68,7 +68,7 @@
         <item>
          <widget class="QTabWidget" name="tabWidgetScreencast">
           <property name="currentIndex">
-           <number>0</number>
+           <number>5</number>
           </property>
           <property name="iconSize">
            <size>
@@ -137,7 +137,7 @@
                        <item>
                         <widget class="QLabel" name="label_14">
                          <property name="text">
-                          <string notr="true">Record Time:</string>
+                          <string>Record Time:</string>
                          </property>
                         </widget>
                        </item>
@@ -175,7 +175,7 @@
                        <item row="1" column="1">
                         <widget class="QLabel" name="label_13">
                          <property name="text">
-                          <string notr="true">Video size:</string>
+                          <string>Video size:</string>
                          </property>
                         </widget>
                        </item>
@@ -205,7 +205,7 @@
                        <item row="0" column="1">
                         <widget class="QLabel" name="label_12">
                          <property name="text">
-                          <string notr="true">Free disk space:</string>
+                          <string>Free disk space:</string>
                          </property>
                         </widget>
                        </item>
@@ -221,7 +221,7 @@
                      <item row="0" column="0" alignment="Qt::AlignHCenter">
                       <widget class="QLabel" name="label_17">
                        <property name="text">
-                        <string notr="true">Information</string>
+                        <string>Information</string>
                        </property>
                       </widget>
                      </item>
@@ -292,7 +292,7 @@
                 <item row="6" column="0">
                  <widget class="QRadioButton" name="radioButtonScreencastWindow">
                   <property name="text">
-                   <string notr="true">Window</string>
+                   <string>Window</string>
                   </property>
                   <attribute name="buttonGroup">
                    <string notr="true">buttonGroup</string>
@@ -302,7 +302,7 @@
                 <item row="5" column="0">
                  <widget class="QRadioButton" name="radioButtonScreencastFullscreen">
                   <property name="text">
-                   <string notr="true">Fullscreen</string>
+                   <string>Fullscreen</string>
                   </property>
                   <property name="checked">
                    <bool>false</bool>
@@ -365,7 +365,7 @@
                 <item row="7" column="0">
                  <widget class="QRadioButton" name="radioButtonScreencastArea">
                   <property name="text">
-                   <string notr="true">Area</string>
+                   <string>Area</string>
                   </property>
                   <attribute name="buttonGroup">
                    <string notr="true">buttonGroup</string>
@@ -469,7 +469,7 @@
                 <item alignment="Qt::AlignRight">
                  <widget class="QLabel" name="labelVideoCodec">
                   <property name="text">
-                   <string notr="true">Videocodec</string>
+                   <string>Videocodec</string>
                   </property>
                  </widget>
                 </item>
@@ -502,7 +502,7 @@
                 <item alignment="Qt::AlignRight">
                  <widget class="QLabel" name="labelFrames">
                   <property name="text">
-                   <string notr="true">Frames</string>
+                   <string>Frames</string>
                   </property>
                  </widget>
                 </item>
@@ -511,7 +511,7 @@
               <item row="1" column="0" alignment="Qt::AlignRight">
                <widget class="QLabel" name="labelFormat">
                 <property name="text">
-                 <string notr="true">Format</string>
+                 <string>Format</string>
                 </property>
                </widget>
               </item>
@@ -533,7 +533,7 @@
                 <item>
                  <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
                   <property name="text">
-                   <string notr="true">Do not record mouse cursor.</string>
+                   <string>Do not record mouse cursor.</string>
                   </property>
                  </widget>
                 </item>
@@ -702,7 +702,7 @@
                 <item alignment="Qt::AlignLeft">
                  <widget class="QLabel" name="label_22">
                   <property name="text">
-                   <string notr="true">Available</string>
+                   <string>Available</string>
                   </property>
                  </widget>
                 </item>
@@ -748,7 +748,7 @@
                 <item>
                  <widget class="QLabel" name="label_23">
                   <property name="text">
-                   <string notr="true">Not available</string>
+                   <string>Not available</string>
                   </property>
                  </widget>
                 </item>
@@ -878,7 +878,7 @@
                 <item>
                  <widget class="QLabel" name="labelSourcecodeUrl">
                   <property name="text">
-                   <string notr="true">Sourcecode</string>
+                   <string>Sourcecode</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -891,7 +891,7 @@
                 <item>
                  <widget class="QLabel" name="labelWebSiteUrl">
                   <property name="text">
-                   <string notr="true">Website</string>
+                   <string>Website</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -908,7 +908,7 @@
                 <item>
                  <widget class="QLabel" name="labelLanguageUrl">
                   <property name="text">
-                   <string notr="true">Translation</string>
+                   <string>Translation</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -921,7 +921,7 @@
                 <item>
                  <widget class="QLabel" name="labelDonateUrl">
                   <property name="text">
-                   <string notr="true">Donate</string>
+                   <string>Donate</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -1206,7 +1206,7 @@
              <string notr="true">CTRL+SHIFT+F10</string>
             </property>
             <property name="text">
-             <string notr="true">Start</string>
+             <string>Start</string>
             </property>
            </widget>
           </item>
@@ -1224,7 +1224,7 @@
              <string notr="true">CTRL+SHIFT+F11</string>
             </property>
             <property name="text">
-             <string notr="true">Stop</string>
+             <string>Stop</string>
             </property>
            </widget>
           </item>
@@ -1242,7 +1242,7 @@
              <string notr="true">CTRL+SHIFT+F12</string>
             </property>
             <property name="text">
-             <string notr="true">Pause</string>
+             <string>Pause</string>
             </property>
            </widget>
           </item>
@@ -1260,7 +1260,7 @@
              <string notr="true">CTRL+SHIFT+F12</string>
             </property>
             <property name="text">
-             <string notr="true">Continue</string>
+             <string>Continue</string>
             </property>
            </widget>
           </item>
@@ -1275,7 +1275,7 @@
              <string notr="true">Play last record</string>
             </property>
             <property name="text">
-             <string notr="true">Play</string>
+             <string>Play</string>
             </property>
            </widget>
           </item>
@@ -1290,7 +1290,7 @@
              <string notr="true">Open folder</string>
             </property>
             <property name="text">
-             <string notr="true">Folder</string>
+             <string>Folder</string>
             </property>
            </widget>
           </item>

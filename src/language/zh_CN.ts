@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>对话框</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>请安装一个文件管理器。</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>源代码</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>网站</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>翻译</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>捐赠</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>源代码</translation>
@@ -593,49 +619,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>图片版权和许可条款</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>创建标签图像</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>许可证信息</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>开</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>关</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>播放</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>暂停</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>停止</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>打开文件</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>全屏模式</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>上一帧</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>下一帧</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>静音</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>移动菜单</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>图片版权和许可条款</translation>
     </message>
 </context>
 <context>

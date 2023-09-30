@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Dialogas</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>Įdiekite failų tvarkytuvę.</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>Pirminis kodas</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>Svetainė</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Vertimai</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Paaukoti</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>Pirminis kodas</translation>
@@ -593,49 +619,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Autorių teisės ir licencijos iš paveikslų</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>Sukurti kortelių paveikslus</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>Informacija apie licenciją</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>ĮJUNGTA</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>IŠJUNGTA</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>Groti</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pristabdyti</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Stabdyti</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>Atverti failą</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>Visas ekranas</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>Ankstesnis kadras</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>Kitas kadras</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>Nutildyti</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>Perkelti meniu</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>Autorių teisės ir licencijos iš paveikslų</translation>
     </message>
 </context>
 <context>

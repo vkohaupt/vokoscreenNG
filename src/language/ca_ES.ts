@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Diàleg</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>Instal·leu un gestor de fitxers.</translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>Codi font</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>Lloc web</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Traduccions</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Feu una donació</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>Codi font</translation>
@@ -593,49 +619,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Drets d&apos;autor i llicència de les imatges</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>Crea imatges de les pestanyes</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>Informació de la llicència</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>ACTIU</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>INACTIU</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>Reprodueix</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Pausa</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Atura</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>Obre un fitxer</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>Pantalla completa</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>Fotograma anterior</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>Fotograma següent</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>Silenci</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>Mou el menú</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>Drets d&apos;autor i llicència de les imatges</translation>
     </message>
 </context>
 <context>

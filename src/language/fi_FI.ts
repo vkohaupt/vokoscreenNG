@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>QvkDirDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation>Valintaikkuna</translation>
+    </message>
+</context>
+<context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
@@ -148,6 +155,25 @@
         <source>Please install a filemanager.</source>
         <translation>Asenna tiedostonhallinta. </translation>
     </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>Lähdekoodi</translation>
+    </message>
+    <message>
+        <source>Homepage</source>
+        <translation>Kotisivu</translation>
+    </message>
+    <message>
+        <source>Translations</source>
+        <translation>Käännökset</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Lahjoita</translation>
+    </message>
+</context>
+<context>
+    <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
         <translation>Lähdekoodi</translation>
@@ -593,49 +619,33 @@
     </message>
 </context>
 <context>
-    <name>license</name>
+    <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
         <translation>Tekijänoikeudet ja lisenssit kuvista</translation>
     </message>
+    <message>
+        <source>Create images of tabs </source>
+        <translation>Luo kuvat välilehdistä</translation>
+    </message>
+    <message>
+        <source>License information</source>
+        <translation>Lisenssitiedot</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation>ON</translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation>POIS</translation>
+    </message>
 </context>
 <context>
-    <name>player</name>
+    <name>license</name>
     <message>
-        <source>Play</source>
-        <translation>Toista</translation>
-    </message>
-    <message>
-        <source>Pause</source>
-        <translation>Tauko</translation>
-    </message>
-    <message>
-        <source>Stop</source>
-        <translation>Lopeta</translation>
-    </message>
-    <message>
-        <source>Open File</source>
-        <translation>Avaa tiedosto</translation>
-    </message>
-    <message>
-        <source>Fullscreen</source>
-        <translation>Koko näyttö</translation>
-    </message>
-    <message>
-        <source>Previous frame</source>
-        <translation>Edellinen kehys</translation>
-    </message>
-    <message>
-        <source>Next frame</source>
-        <translation>Seuraava kehys</translation>
-    </message>
-    <message>
-        <source>Mute</source>
-        <translation>Mykistä</translation>
-    </message>
-    <message>
-        <source>Move menu</source>
-        <translation>Siirrä valikko</translation>
+        <source>Copyright and license from pictures</source>
+        <translation>Tekijänoikeudet ja lisenssit kuvista</translation>
     </message>
 </context>
 <context>
