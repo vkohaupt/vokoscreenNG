@@ -683,31 +683,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Do not record mouse cursor.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Sourcecode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Website</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Translation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Donate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -732,6 +712,10 @@
     </message>
     <message>
         <source>Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do not record mouse cursor</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

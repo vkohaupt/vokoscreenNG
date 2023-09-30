@@ -640,6 +640,98 @@
         <source>OFF</source>
         <translation>UIT</translation>
     </message>
+    <message>
+        <source>Record Time:</source>
+        <translation>Opnametijd:</translation>
+    </message>
+    <message>
+        <source>Video size:</source>
+        <translation>Videoformaat:</translation>
+    </message>
+    <message>
+        <source>Free disk space:</source>
+        <translation>Vrije schijfruimte:</translation>
+    </message>
+    <message>
+        <source>Information</source>
+        <translation>Informatie</translation>
+    </message>
+    <message>
+        <source>Window</source>
+        <translation>Venster</translation>
+    </message>
+    <message>
+        <source>Fullscreen</source>
+        <translation>Schermvullend</translation>
+    </message>
+    <message>
+        <source>Area</source>
+        <translation>Gebied</translation>
+    </message>
+    <message>
+        <source>Videocodec</source>
+        <translation>Videocodec</translation>
+    </message>
+    <message>
+        <source>Frames</source>
+        <translation>Frames</translation>
+    </message>
+    <message>
+        <source>Format</source>
+        <translation>Formaat</translation>
+    </message>
+    <message>
+        <source>Do not record mouse cursor.</source>
+        <translation>Leg de cursor niet vast.</translation>
+    </message>
+    <message>
+        <source>Available</source>
+        <translation>Beschikbaar</translation>
+    </message>
+    <message>
+        <source>Not available</source>
+        <translation>Niet beschikbaar</translation>
+    </message>
+    <message>
+        <source>Sourcecode</source>
+        <translation>Broncode</translation>
+    </message>
+    <message>
+        <source>Website</source>
+        <translation>Website</translation>
+    </message>
+    <message>
+        <source>Translation</source>
+        <translation>Vertalen</translation>
+    </message>
+    <message>
+        <source>Donate</source>
+        <translation>Doneren</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>Starten</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Stoppen</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Onderbreken</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Hervatten</translation>
+    </message>
+    <message>
+        <source>Play</source>
+        <translation>Afspelen</translation>
+    </message>
+    <message>
+        <source>Folder</source>
+        <translation>Map</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

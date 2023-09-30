@@ -533,7 +533,7 @@
                 <item>
                  <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
                   <property name="text">
-                   <string>Do not record mouse cursor.</string>
+                   <string>Do not record mouse cursor</string>
                   </property>
                  </widget>
                 </item>
@@ -878,7 +878,7 @@
                 <item>
                  <widget class="QLabel" name="labelSourcecodeUrl">
                   <property name="text">
-                   <string>Sourcecode</string>
+                   <string notr="true">Sourcecode</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -891,7 +891,7 @@
                 <item>
                  <widget class="QLabel" name="labelWebSiteUrl">
                   <property name="text">
-                   <string>Website</string>
+                   <string notr="true">Website</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -908,7 +908,7 @@
                 <item>
                  <widget class="QLabel" name="labelLanguageUrl">
                   <property name="text">
-                   <string>Translation</string>
+                   <string notr="true">Translation</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -921,7 +921,7 @@
                 <item>
                  <widget class="QLabel" name="labelDonateUrl">
                   <property name="text">
-                   <string>Donate</string>
+                   <string notr="true">Donate</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
