@@ -292,49 +292,37 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Up   :  {
                                     frame_Y = frame_Y - 1;
                                     frame_height = frame_height + 1;
-
-                                    if ( frame_Y < 0 - framePenHalf )
-                                    {
+                                    if ( frame_Y < 0 - framePenHalf ) {
                                       frame_Y = frame_Y + 1;
                                       frame_height = frame_height - 1;
                                     }
-
                                     break;
                                  }
             case Qt::Key_Down :  {
                                     frame_Y = frame_Y + 1;
                                     frame_height = frame_height - 1;
-
-                                    if ( frame_height < frame_min_height )
-                                    {
+                                    if ( frame_height < frame_min_height ) {
                                         frame_Y = frame_Y - 1;
                                         frame_height = frame_height + 1;
                                     }
-
                                     break;
                                  }
             case Qt::Key_Left  : {
                                     frame_X = frame_X - 1;
                                     frame_Width = frame_Width + 1;
-
-                                    if ( frame_X < 0 - framePenHalf )
-                                    {
+                                    if ( frame_X < 0 - framePenHalf ) {
                                         frame_X = frame_X + 1;
                                         frame_Width = frame_Width - 1;
                                     }
-
                                     break;
                                  }
             case Qt::Key_Right : {
                                     frame_X = frame_X + 1;
                                     frame_Width = frame_Width - 1;
-
-                                    if ( frame_Width < frame_min_width )
-                                    {
+                                    if ( frame_Width < frame_min_width ) {
                                         frame_X = frame_X - 1;
                                         frame_Width = frame_Width + 1;
                                     }
-
                                     break;
                                  }
         }
@@ -347,25 +335,19 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Up   : {
                                    frame_Y = frame_Y - 1;
                                    frame_height = frame_height + 1;
-
-                                   if ( frame_Y < 0 - framePenHalf )
-                                   {
+                                   if ( frame_Y < 0 - framePenHalf ) {
                                      frame_Y = frame_Y + 1;
                                      frame_height = frame_height - 1;
                                    }
-
                                    break;
                                 }
             case Qt::Key_Down : {
                                    frame_Y = frame_Y + 1;
                                    frame_height = frame_height - 1;
-
-                                   if ( frame_height < frame_min_height )
-                                   {
+                                   if ( frame_height < frame_min_height ) {
                                        frame_Y = frame_Y - 1;
                                        frame_height = frame_height + 1;
                                    }
-
                                    break;
                                 }
         }
@@ -378,45 +360,33 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Up   : {
                                    frame_Y = frame_Y - 1;
                                    frame_height = frame_height + 1;
-
-                                   if ( frame_Y < 0 - framePenHalf )
-                                   {
+                                   if ( frame_Y < 0 - framePenHalf ) {
                                      frame_Y = frame_Y + 1;
                                      frame_height = frame_height - 1;
                                    }
-
                                    break;
                                 }
             case Qt::Key_Down : {
                                    frame_Y = frame_Y + 1;
                                    frame_height = frame_height - 1;
-
-                                   if ( frame_height < frame_min_height )
-                                   {
+                                   if ( frame_height < frame_min_height ) {
                                        frame_Y = frame_Y - 1;
                                        frame_height = frame_height + 1;
                                    }
-
                                    break;
                                 }
             case Qt::Key_Left : {
                                    frame_Width = frame_Width - 1;
-
-                                   if ( frame_Width < frame_min_width )
-                                   {
+                                   if ( frame_Width < frame_min_width ) {
                                        frame_Width = frame_Width + 1;
                                    }
-
                                    break;
                                 }
             case Qt::Key_Right :{
                                    frame_Width = frame_Width + 1;
-
-                                   if ( ( frame_X + frame_Width - framePenHalf ) > screenWidth )
-                                   {
+                                   if ( ( frame_X + frame_Width - framePenHalf ) > screenWidth ) {
                                        frame_Width = frame_Width - 1;
                                    }
-
                                    break;
                                 }
         }
@@ -428,22 +398,16 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
         {
             case Qt::Key_Left : {
                                    frame_Width = frame_Width - 1;
-
-                                   if ( frame_Width < frame_min_width )
-                                   {
+                                   if ( frame_Width < frame_min_width ) {
                                        frame_Width = frame_Width + 1;
                                    }
-
                                    break;
                                 }
             case Qt::Key_Right :{
                                    frame_Width = frame_Width + 1;
-
-                                   if ( ( frame_X + frame_Width - framePenHalf ) > screenWidth )
-                                   {
+                                   if ( ( frame_X + frame_Width - framePenHalf ) > screenWidth ) {
                                        frame_Width = frame_Width - 1;
                                    }
-
                                    break;
                                 }
         }
@@ -455,42 +419,30 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
         {
             case Qt::Key_Up   : {
                                    frame_height = frame_height - 1;
-
-                                   if ( frame_height < frame_min_height )
-                                   {
+                                   if ( frame_height < frame_min_height ) {
                                        frame_height = frame_height + 1;
                                    }
-
                                    break;
                                 }
             case Qt::Key_Down : {
                                    frame_height = frame_height + 1;
-
-                                   if ( frame_Y + frame_height - framePenHalf > screenHeight )
-                                   {
+                                   if ( frame_Y + frame_height - framePenHalf > screenHeight ) {
                                        frame_height = frame_height - 1;
                                    }
-
                                    break;
                                 }
             case Qt::Key_Left : {
                                    frame_Width = frame_Width - 1;
-
-                                   if ( frame_Width < frame_min_width )
-                                   {
+                                   if ( frame_Width < frame_min_width ) {
                                        frame_Width = frame_Width + 1;
                                    }
-
                                    break;
                                 }
             case Qt::Key_Right :{
                                    frame_Width = frame_Width + 1;
-
-                                   if ( frame_X + frame_Width - framePenHalf > screenWidth )
-                                   {
+                                   if ( frame_X + frame_Width - framePenHalf > screenWidth ) {
                                        frame_Width = frame_Width - 1;
                                    }
-
                                    break;
                                 }
         }
@@ -502,22 +454,16 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
         {
             case Qt::Key_Up   : {
                                    frame_height = frame_height - 1;
-
-                                   if ( frame_height < frame_min_height )
-                                   {
+                                   if ( frame_height < frame_min_height ) {
                                        frame_height = frame_height + 1;
                                    }
-
                                    break;
                                 }
             case Qt::Key_Down : {
                                    frame_height = frame_height + 1;
-
-                                   if ( frame_Y + frame_height - framePenHalf > screenHeight )
-                                   {
+                                   if ( frame_Y + frame_height - framePenHalf > screenHeight ) {
                                        frame_height = frame_height - 1;
                                    }
-
                                    break;
                                 }
         }
@@ -529,46 +475,34 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
         {
             case Qt::Key_Up   :  {
                                     frame_height = frame_height - 1;
-
-                                    if ( frame_height < frame_min_height )
-                                    {
+                                    if ( frame_height < frame_min_height ) {
                                         frame_height = frame_height + 1;
                                     }
-
                                     break;
                                  }
             case Qt::Key_Down :  {
                                     frame_height = frame_height + 1;
-
-                                    if ( frame_Y + frame_height - framePenHalf > screenHeight )
-                                    {
+                                    if ( frame_Y + frame_height - framePenHalf > screenHeight ) {
                                         frame_height = frame_height - 1;
                                     }
-
                                     break;
                                  }
             case Qt::Key_Left  : {
                                     frame_X = frame_X - 1;
                                     frame_Width = frame_Width + 1;
-
-                                    if ( frame_X < 0 - framePenHalf )
-                                    {
+                                    if ( frame_X < 0 - framePenHalf ) {
                                         frame_X = frame_X + 1;
                                         frame_Width = frame_Width - 1;
                                     }
-
                                     break;
                                  }
             case Qt::Key_Right : {
                                     frame_X = frame_X + 1;
                                     frame_Width = frame_Width - 1;
-
-                                    if ( frame_Width < frame_min_width )
-                                    {
+                                    if ( frame_Width < frame_min_width ) {
                                         frame_X = frame_X - 1;
                                         frame_Width = frame_Width + 1;
                                     }
-
                                     break;
                                  }
         }
@@ -581,25 +515,19 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
             case Qt::Key_Left  : {
                                     frame_X = frame_X - 1;
                                     frame_Width = frame_Width + 1;
-
-                                    if ( frame_X < 0 - framePenHalf )
-                                    {
+                                    if ( frame_X < 0 - framePenHalf ) {
                                         frame_X = frame_X + 1;
                                         frame_Width = frame_Width - 1;
                                     }
-
                                     break;
                                  }
             case Qt::Key_Right : {
                                     frame_X = frame_X + 1;
                                     frame_Width = frame_Width - 1;
-
-                                    if ( frame_Width < frame_min_width )
-                                    {
+                                    if ( frame_Width < frame_min_width ) {
                                         frame_X = frame_X - 1;
                                         frame_Width = frame_Width + 1;
                                     }
-
                                     break;
                                  }
         }
@@ -611,42 +539,30 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
         {
             case Qt::Key_Left  : {
                                     frame_X = frame_X - 1;
-
-                                    if (  frame_X + framePenHalf < 0 )
-                                    {
+                                    if (  frame_X + framePenHalf < 0 ) {
                                         frame_X = frame_X + 1;
                                     }
-
                                     break;
                                  }
             case Qt::Key_Right : {
                                     frame_X = frame_X + 1;
-
-                                    if ( frame_X + frame_Width - framePenHalf > screenWidth )
-                                    {
+                                    if ( frame_X + frame_Width - framePenHalf > screenWidth ) {
                                         frame_X = frame_X - 1;
                                     }
-
                                     break;
                                  }
             case Qt::Key_Up    : {
                                     frame_Y = frame_Y - 1;
-
-                                    if ( frame_Y + framePenHalf < 0 )
-                                    {
+                                    if ( frame_Y + framePenHalf < 0 ) {
                                         frame_Y = frame_Y + 1;
                                     }
-
                                     break;
                                  }
             case Qt::Key_Down  : {
                                     frame_Y = frame_Y + 1;
-
-                                    if ( frame_Y + frame_height - framePenHalf > screenHeight )
-                                    {
+                                    if ( frame_Y + frame_height - framePenHalf > screenHeight ) {
                                         frame_Y = frame_Y - 1;
                                     }
-
                                     break;
                                  }
         }
