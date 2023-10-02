@@ -70,6 +70,7 @@ protected:
   void mouseReleaseEvent( QMouseEvent * event );
   void leaveEvent( QEvent *event );
   void keyPressEvent( QKeyEvent *event );
+  void keyReleaseEvent( QKeyEvent *event );
   void closeEvent( QCloseEvent *event );
   
 
