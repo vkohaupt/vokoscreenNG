@@ -106,7 +106,7 @@ void Portal_wl::requestScreenSharing( int value, int mouseOnOff )
 
 void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap &results )
 {
-    qDebug().noquote() << global::nameOutput << "Got response from portal CreateSession";
+    qDebug().noquote() << global::nameOutput << "slot_gotCreateSessionResponse --Begin--";
 
     if ( response != 0 ) {
         qWarning() << "Failed to create session: " << response;
@@ -125,15 +125,21 @@ void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap 
                              { QLatin1String("types"), (uint)Selection_Screen_Window_Area },
                              { QLatin1String("cursor_mode"), (uint)record_mouse_onOff },
                              { QLatin1String("handle_token"), getRequestToken() } };
+    qDebug().noquote() << global::nameOutput << "slot_gotCreateSessionResponse()" << message;
 
     QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
+    qDebug().noquote() << global::nameOutput << "slot_gotCreateSessionResponse()" << pendingCall.error();
+
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pendingCall);
+    qDebug().noquote() << global::nameOutput << "slot_gotCreateSessionResponse()" << watcher->error();
+
     connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] (QDBusPendingCallWatcher *watcher) {
         QDBusPendingReply<QDBusObjectPath> reply = *watcher;
         if (reply.isError()) {
             qWarning() << "Couldn't get reply";
             qWarning() << "Error: " << reply.error().message();
         } else {
+            qDebug().noquote() << global::nameOutput << "slot_gotCreateSessionResponse() into else";
             QDBusConnection::sessionBus().connect(QString(),
                                                 reply.value().path(),
                                                 QLatin1String("org.freedesktop.portal.Request"),
@@ -165,7 +171,7 @@ void Portal_wl::slot_gotSelectSourcesResponse(uint response, const QVariantMap &
             << QString() // parent_window
             << QVariantMap { { QLatin1String("handle_token"), getRequestToken() } };
 
-    QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
+    QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message, 1000);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pendingCall);
     connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] (QDBusPendingCallWatcher *watcher) {
         QDBusPendingReply<QDBusObjectPath> reply = *watcher;
