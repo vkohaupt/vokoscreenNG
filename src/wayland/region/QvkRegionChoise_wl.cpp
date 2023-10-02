@@ -71,7 +71,9 @@ void QvkRegionChoise_wl::slot_init()
 {
     QList<QScreen *> screenList = QGuiApplication::screens();
     screen = screenList.at( 0 );
-    resize( screen->size().width(), screen->size().height() );
+//    resize( screen->size().width(), screen->size().height() );
+    showMaximized();
+    hide();
     screenWidth = screen->size().width();
     screenHeight = screen->size().height();
 }
@@ -85,7 +87,7 @@ QvkRegionChoise_wl::~QvkRegionChoise_wl()
 void QvkRegionChoise_wl::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event)
-    // Bereichsanzeige wird in der Fensterleiste geschloßen und wechseln zum Vollbildmodus
+    // Bereichsanzeige wird in der Fensterleiste geschloßen und es wird zum Vollbildmodus gewechselt
     if ( ui->radioButtonScreencastArea->isChecked() == true ) {
         ui->radioButtonScreencastFullscreen->click();
     }
