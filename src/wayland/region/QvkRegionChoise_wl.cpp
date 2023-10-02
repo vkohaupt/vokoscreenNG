@@ -259,8 +259,6 @@ void QvkRegionChoise_wl::mousePressEvent(QMouseEvent *event)
     old_Frame_Y2 = frame_Y + frame_height;
 
     repaint();
-    setMask( pixmap.mask() );
-
 }
 
 
@@ -279,13 +277,14 @@ void QvkRegionChoise_wl::mouseReleaseEvent( QMouseEvent * event )
 
 void QvkRegionChoise_wl::leaveEvent(QEvent *event)
 {
-    Q_UNUSED(event);
+    Q_UNUSED(event)
     unsetCursor();
 }
 
 
 void QvkRegionChoise_wl::keyReleaseEvent( QKeyEvent *event )
 {
+    Q_UNUSED(event)
     repaint();
     setMask( pixmap.mask() );
 }
