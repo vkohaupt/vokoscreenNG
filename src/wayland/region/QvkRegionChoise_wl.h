@@ -28,6 +28,10 @@
 #include <QWidget>
 #include <QScreen>
 #include <QCloseEvent>
+#include <QPaintEvent>
+#include <QMouseEvent>
+#include <QEvent>
+#include <QKeyEvent>
 
 class QvkRegionChoise_wl : public QWidget
 { 
@@ -62,17 +66,6 @@ public slots:
 
 private slots:
 
-    
-protected:
-  void paintEvent( QPaintEvent *event );
-  void mouseMoveEvent( QMouseEvent *event );
-  void mousePressEvent( QMouseEvent *event );
-  void mouseReleaseEvent( QMouseEvent * event );
-  void leaveEvent( QEvent *event );
-  void keyPressEvent( QKeyEvent *event );
-  void keyReleaseEvent( QKeyEvent *event );
-  void closeEvent( QCloseEvent *event );
-  
 
 private:
   Ui_formMainWindow_wl *ui;
@@ -146,6 +139,20 @@ private:
 
   QColor getFrameColor();
   QColor frameColor;
+
+  int a = 0;
+
+
+protected:
+  void paintEvent( QPaintEvent *event );
+  void mouseMoveEvent( QMouseEvent *event );
+  void mousePressEvent( QMouseEvent *event );
+  void mouseReleaseEvent( QMouseEvent * event );
+  void leaveEvent( QEvent *event );
+  void keyPressEvent( QKeyEvent *event );
+  void keyReleaseEvent( QKeyEvent *event );
+  void closeEvent( QCloseEvent *event );
+
 
 };
 #endif

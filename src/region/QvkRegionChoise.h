@@ -54,7 +54,7 @@ public:
   int screenHeight = 400;
 
   bool recordemode = false;
-
+  int zaehler = 0;
 
 public slots:
   void slot_areaReset();

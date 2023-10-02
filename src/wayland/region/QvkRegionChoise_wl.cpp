@@ -126,8 +126,6 @@ void QvkRegionChoise_wl::paintEvent( QPaintEvent *event )
 {
     (void)event;
 
-    clearMask();
-
     QImage image( screenWidth, screenHeight, QImage::Format_ARGB32_Premultiplied );
 
     if ( recordemode == false )
@@ -224,10 +222,15 @@ void QvkRegionChoise_wl::paintEvent( QPaintEvent *event )
     painter.begin( this );
     painter.drawPixmap( QPoint( 0, 0 ), pixmap );
     painter.end();
+
+    if ( a == 0 ) {
+        setMask( pixmap.mask() );
+        a++;
+    }
 }
 
 
-void QvkRegionChoise_wl::mousePressEvent(QMouseEvent *event)
+void QvkRegionChoise_wl::mousePressEvent( QMouseEvent *event )
 {
     if( event->button() != Qt::LeftButton) {
         return;
@@ -258,6 +261,7 @@ void QvkRegionChoise_wl::mousePressEvent(QMouseEvent *event)
     old_Frame_X2 = frame_X + frame_Width;
     old_Frame_Y2 = frame_Y + frame_height;
 
+    clearMask();
     repaint();
 }
 
@@ -275,7 +279,7 @@ void QvkRegionChoise_wl::mouseReleaseEvent( QMouseEvent * event )
 }
 
 
-void QvkRegionChoise_wl::leaveEvent(QEvent *event)
+void QvkRegionChoise_wl::leaveEvent( QEvent *event )
 {
     Q_UNUSED(event)
     unsetCursor();
@@ -579,6 +583,7 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
         }
     }
 
+    clearMask();
     repaint();
     setMask( pixmap.mask() );
 }

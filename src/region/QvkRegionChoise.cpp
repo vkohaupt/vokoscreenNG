@@ -149,7 +149,6 @@ void QvkRegionChoise::vk_setGeometry( int x, int y, int with, int height  )
 void QvkRegionChoise::paintEvent( QPaintEvent *event )
 {
     (void)event;
-
     QPixmap pixmap( screenWidth, screenHeight );
 
     if ( recordemode == false ) {
