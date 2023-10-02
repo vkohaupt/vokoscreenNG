@@ -126,13 +126,15 @@ void QvkRegionChoise_wl::paintEvent( QPaintEvent *event )
 {
     (void)event;
 
-    QPixmap pixmap( screenWidth, screenHeight );
+    clearMask();
+
+    QImage image( screenWidth, screenHeight, QImage::Format_ARGB32_Premultiplied );
 
     if ( recordemode == false )
     {
-        pixmap.fill( Qt::transparent );
+        image.fill( Qt::transparent );
         QPainter painterPixmap;
-        painterPixmap.begin( &pixmap );
+        painterPixmap.begin( &image );
         painterPixmap.setRenderHints( QPainter::Antialiasing, true );
         HandleTopLeft( painterPixmap );
         HandleTopMiddle( painterPixmap );
@@ -160,9 +162,9 @@ void QvkRegionChoise_wl::paintEvent( QPaintEvent *event )
         }
         painterPixmap.end();
     } else {
-        pixmap.fill( Qt::transparent );
+        image.fill( Qt::transparent );
         QPainter painterPixmap;
-        painterPixmap.begin( &pixmap );
+        painterPixmap.begin( &image );
         painterPixmap.setRenderHints( QPainter::Antialiasing, true );
         HandleRecord( painterPixmap,
                       frame_X - radius + penHalf,
@@ -216,12 +218,12 @@ void QvkRegionChoise_wl::paintEvent( QPaintEvent *event )
         painterPixmap.drawPoint( 0, 0 );
     }
 
+    pixmap = pixmap.fromImage( image );
+
     QPainter painter;
     painter.begin( this );
     painter.drawPixmap( QPoint( 0, 0 ), pixmap );
     painter.end();
-
-    setMask( pixmap.mask() );
 }
 
 
@@ -269,6 +271,7 @@ void QvkRegionChoise_wl::mouseReleaseEvent( QMouseEvent * event )
   handlePressed = NoHandle;
 
   repaint();
+  setMask( pixmap.mask() );
 }
 
 
