@@ -574,19 +574,6 @@
                   </property>
                  </spacer>
                 </item>
-                <item>
-                 <widget class="QToolButton" name="help_screencast_nomousecursor">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="toolTip">
-                   <string notr="true"/>
-                  </property>
-                  <property name="text">
-                   <string notr="true">Help</string>
-                  </property>
-                 </widget>
-                </item>
                </layout>
               </item>
              </layout>

@@ -140,12 +140,13 @@ void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap 
             qWarning() << "Error: " << reply.error().message();
         } else {
             qDebug().noquote() << global::nameOutput << "slot_gotCreateSessionResponse() into else";
-            QDBusConnection::sessionBus().connect(QString(),
+            bool bo = QDBusConnection::sessionBus().connect(QString(),
                                                 reply.value().path(),
                                                 QLatin1String("org.freedesktop.portal.Request"),
                                                 QLatin1String("Response"),
                                                 this,
                                                 SLOT( slot_gotSelectSourcesResponse(uint,QVariantMap)));
+            qDebug() << "test test" << bo; // Hahaha, ist true und geht nicht
         }
     });
 }
@@ -171,7 +172,7 @@ void Portal_wl::slot_gotSelectSourcesResponse(uint response, const QVariantMap &
             << QString() // parent_window
             << QVariantMap { { QLatin1String("handle_token"), getRequestToken() } };
 
-    QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message, 1000);
+    QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pendingCall);
     connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] (QDBusPendingCallWatcher *watcher) {
         QDBusPendingReply<QDBusObjectPath> reply = *watcher;
