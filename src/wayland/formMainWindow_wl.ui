@@ -68,7 +68,7 @@
         <item>
          <widget class="QTabWidget" name="tabWidgetScreencast">
           <property name="currentIndex">
-           <number>5</number>
+           <number>2</number>
           </property>
           <property name="iconSize">
            <size>
