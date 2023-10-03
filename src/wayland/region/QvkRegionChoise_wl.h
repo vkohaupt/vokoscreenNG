@@ -39,20 +39,18 @@ Q_OBJECT
 public:
   QvkRegionChoise_wl( Ui_formMainWindow_wl *ui );
   virtual ~QvkRegionChoise_wl();
-  int getX();
-  int getY();
-  qreal getHeight();
-  qreal getWidth();
-  qreal getXRecordArea();
-  qreal getYRecordArea();
+  int get_X();
+  int get_Y();
+  qreal get_Height();
+  qreal get_Width();
+  qreal get_XRecordArea();
+  qreal get_YRecordArea();
 
-  void recordMode(bool value);
-  void setX( int x );
-  void setY( int y );
-  void setWidth( int width );
-  void setHeight( int height );
+  void recordMode( bool value );
+//  void setWidth( int width );
+//  void setHeight( int height );
 
-  void setFrameColor( QColor color );
+  void set_FrameColor( QColor color );
 
   QScreen *screen;
   int screenWidth = 400; //Must set a value. Under windows comes a QPainter message
@@ -81,9 +79,9 @@ private:
   QColor HandleColorBackgroundSize;
   QColor HandleColorByMousePressed;
   QColor colorSelectedArrow;
-  void setHandleColorBackground( QColor color );
-  void setHandleColorByMousePressed( QColor color );
-  void setHandleColorBackgroundSize( QColor color );
+  void set_HandleColorBackground( QColor color );
+  void set_HandleColorByMousePressed( QColor color );
+  void set_HandleColorBackgroundSize( QColor color );
 
   int mous_delta_X_to_blueline;
   int mous_delta_Y_to_blueline;
@@ -137,7 +135,7 @@ private:
 
   bool recordemode = false;
 
-  QColor getFrameColor();
+  QColor get_FrameColor();
   QColor frameColor;
 
   int a = 0;

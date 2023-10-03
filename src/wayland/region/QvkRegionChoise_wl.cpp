@@ -63,7 +63,7 @@ QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow 
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
     setAttribute( Qt::WA_TranslucentBackground, true );
     setMouseTracking( true );
-    setFrameColor( QString( "#3DAEE9" ) );
+    set_FrameColor( QString( "#3DAEE9" ) );
 }
 
 
@@ -94,19 +94,19 @@ void QvkRegionChoise_wl::closeEvent( QCloseEvent *event )
 }
 
 
-void QvkRegionChoise_wl::setHandleColorBackground( QColor color )
+void QvkRegionChoise_wl::set_HandleColorBackground( QColor color )
 {
     HandleColorBackground = color;
 }
 
 
-void QvkRegionChoise_wl::setHandleColorByMousePressed( QColor color )
+void QvkRegionChoise_wl::set_HandleColorByMousePressed( QColor color )
 {
     HandleColorByMousePressed = color;
 }
 
 
-void QvkRegionChoise_wl::setHandleColorBackgroundSize( QColor color )
+void QvkRegionChoise_wl::set_HandleColorBackgroundSize( QColor color )
 {
     HandleColorBackgroundSize = color;
 }
@@ -915,9 +915,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
 
 void QvkRegionChoise_wl::printSize( QPainter &painter )
 {
-  QString widthHeigtSize = QString::number( static_cast<int>( getWidth()/screen->devicePixelRatio() ) ) +
+  QString widthHeigtSize = QString::number( static_cast<int>( get_Width()/screen->devicePixelRatio() ) ) +
                            " x " +
-                           QString::number( static_cast<int>( getHeight()/screen->devicePixelRatio() ) );
+                           QString::number( static_cast<int>( get_Height()/screen->devicePixelRatio() ) );
 
   QFont font;
   font.setPointSize( 14 );
@@ -942,7 +942,7 @@ void QvkRegionChoise_wl::printSize( QPainter &painter )
 
 void QvkRegionChoise_wl::drawFrame(QPainter &painter)
 {
-    QPen pen( getFrameColor(), framePenWidth );
+    QPen pen( get_FrameColor(), framePenWidth );
     pen.setJoinStyle( Qt::MiterJoin );
     painter.setPen( pen );
     QBrush brush( Qt::transparent, Qt::SolidPattern);
@@ -954,13 +954,13 @@ void QvkRegionChoise_wl::drawFrame(QPainter &painter)
 }
 
 
-void QvkRegionChoise_wl::setFrameColor( QColor color )
+void QvkRegionChoise_wl::set_FrameColor( QColor color )
 {
     frameColor = color;
 }
 
 
-QColor QvkRegionChoise_wl::getFrameColor()
+QColor QvkRegionChoise_wl::get_FrameColor()
 {
     return frameColor;
 }
@@ -1442,7 +1442,7 @@ void QvkRegionChoise_wl::recordMode( bool value )
 /**
  * Return x from window
  */
-int QvkRegionChoise_wl::getX()
+int QvkRegionChoise_wl::get_X()
 {
   return frame_X;
 }
@@ -1451,7 +1451,7 @@ int QvkRegionChoise_wl::getX()
 /**
  * Return y from window
  */
-int QvkRegionChoise_wl::getY()
+int QvkRegionChoise_wl::get_Y()
 {
   return  frame_Y;
 }
@@ -1460,7 +1460,7 @@ int QvkRegionChoise_wl::getY()
 /**
  * Return x from record area
  */
-qreal QvkRegionChoise_wl::getXRecordArea()
+qreal QvkRegionChoise_wl::get_XRecordArea()
 {
     qreal xReal = ( frame_X + framePenWidth/2 ) * screen->devicePixelRatio();
     int xInt = static_cast<int>( ( frame_X + framePenWidth/2 ) * screen->devicePixelRatio() );
@@ -1476,7 +1476,7 @@ qreal QvkRegionChoise_wl::getXRecordArea()
 /**
  * Return y from record area
  */
-qreal QvkRegionChoise_wl::getYRecordArea()
+qreal QvkRegionChoise_wl::get_YRecordArea()
 {
    qreal xReal = ( frame_Y + framePenWidth/2 ) * screen->devicePixelRatio();
    int xInt = static_cast<int>( ( frame_Y + framePenWidth/2 ) * screen->devicePixelRatio() );
@@ -1492,7 +1492,7 @@ qreal QvkRegionChoise_wl::getYRecordArea()
 /**
  * Return height from record area
  */
-qreal QvkRegionChoise_wl::getHeight()
+qreal QvkRegionChoise_wl::get_Height()
 {
     qreal xReal =   ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * screen->devicePixelRatio();
     int xInt = static_cast<int>( ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * screen->devicePixelRatio() );
@@ -1510,7 +1510,7 @@ qreal QvkRegionChoise_wl::getHeight()
 /**
  * Return width from record Area
  */
-qreal QvkRegionChoise_wl::getWidth()
+qreal QvkRegionChoise_wl::get_Width()
 {
     qreal xReal = ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * screen->devicePixelRatio();
     int xInt = static_cast<int>( ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * screen->devicePixelRatio() );
@@ -1531,31 +1531,7 @@ void QvkRegionChoise_wl::slot_areaReset()
     frame_Y = 200 - framePenHalf;
     frame_Width = frame_min_width;
     frame_height = frame_min_height;
+    clearMask();
     repaint();
+    setMask( pixmap.mask() );
 }
-
-void QvkRegionChoise_wl::setX( int x )
-{
-    frame_X = x - framePenHalf;
-    repaint();
-}
-
-void QvkRegionChoise_wl::setY( int y )
-{
-    frame_Y = y - framePenHalf;
-    repaint();
-}
-
-
-void QvkRegionChoise_wl::setWidth( int width )
-{
-    frame_Width = width + framePenWidth;
-    repaint();
-}
-
-void QvkRegionChoise_wl::setHeight( int height )
-{
-    frame_height = height + framePenWidth;
-    repaint();
-}
-

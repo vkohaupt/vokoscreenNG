@@ -68,7 +68,7 @@
         <item>
          <widget class="QTabWidget" name="tabWidgetScreencast">
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -89,7 +89,42 @@
              <layout class="QVBoxLayout" name="verticalLayout_7">
               <item>
                <layout class="QGridLayout" name="gridLayout_2">
-                <item row="4" column="2" rowspan="8">
+                <item row="6" column="0">
+                 <widget class="QRadioButton" name="radioButtonScreencastWindow">
+                  <property name="text">
+                   <string>Window</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroup</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item row="3" column="0" colspan="4" alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="label_6">
+                  <property name="font">
+                   <font>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string notr="true">For full feature support please logout and start a X11 Desktop session.</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0" colspan="4" alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="label_2">
+                  <property name="font">
+                   <font>
+                    <pointsize>16</pointsize>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string notr="true">Read this!</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="3" rowspan="8">
                  <widget class="QFrame" name="frame_information">
                   <property name="frameShape">
                    <enum>QFrame::StyledPanel</enum>
@@ -230,7 +265,24 @@
                   </layout>
                  </widget>
                 </item>
-                <item row="4" column="0" colspan="2">
+                <item row="7" column="0">
+                 <widget class="QRadioButton" name="radioButtonScreencastArea">
+                  <property name="text">
+                   <string>Area</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroup</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_8">
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0" colspan="3">
                  <widget class="QFrame" name="frame_video_audio_on_off">
                   <property name="frameShape">
                    <enum>QFrame::NoFrame</enum>
@@ -282,23 +334,6 @@
                   </layout>
                  </widget>
                 </item>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_8">
-                  <property name="text">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-                <item row="6" column="0">
-                 <widget class="QRadioButton" name="radioButtonScreencastWindow">
-                  <property name="text">
-                   <string>Window</string>
-                  </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">buttonGroup</string>
-                  </attribute>
-                 </widget>
-                </item>
                 <item row="5" column="0">
                  <widget class="QRadioButton" name="radioButtonScreencastFullscreen">
                   <property name="text">
@@ -310,6 +345,18 @@
                   <attribute name="buttonGroup">
                    <string notr="true">buttonGroup</string>
                   </attribute>
+                 </widget>
+                </item>
+                <item row="2" column="0" colspan="4" alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="label">
+                  <property name="font">
+                   <font>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string notr="true">This is a experimental Wayland support.</string>
+                  </property>
                  </widget>
                 </item>
                 <item row="8" column="0">
@@ -325,52 +372,29 @@
                   </property>
                  </spacer>
                 </item>
-                <item row="1" column="0" colspan="3" alignment="Qt::AlignHCenter">
-                 <widget class="QLabel" name="label_2">
-                  <property name="font">
-                   <font>
-                    <pointsize>16</pointsize>
-                    <bold>true</bold>
-                   </font>
-                  </property>
+                <item row="7" column="1">
+                 <widget class="QToolButton" name="toolButtonScreencastAreaReset">
                   <property name="text">
-                   <string notr="true">Read this!</string>
+                   <string notr="true"/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../screencast.qrc">
+                    <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0" colspan="3" alignment="Qt::AlignHCenter">
-                 <widget class="QLabel" name="label">
-                  <property name="font">
-                   <font>
-                    <bold>true</bold>
-                   </font>
+                <item row="7" column="2">
+                 <spacer name="horizontalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
                   </property>
-                  <property name="text">
-                   <string notr="true">This is a experimental Wayland support.</string>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
                   </property>
-                 </widget>
-                </item>
-                <item row="3" column="0" colspan="3" alignment="Qt::AlignHCenter">
-                 <widget class="QLabel" name="label_6">
-                  <property name="font">
-                   <font>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string notr="true">For full feature support please logout and start a X11 Desktop session.</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="7" column="0">
-                 <widget class="QRadioButton" name="radioButtonScreencastArea">
-                  <property name="text">
-                   <string>Area</string>
-                  </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">buttonGroup</string>
-                  </attribute>
-                 </widget>
+                 </spacer>
                 </item>
                </layout>
               </item>

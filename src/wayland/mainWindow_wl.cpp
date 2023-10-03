@@ -13,6 +13,7 @@
 #include <QLibraryInfo>
 #include <QTimer>
 #include <QFile>
+#include <QToolButton>
 
 QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     : QMainWindow(parent, f)
@@ -39,10 +40,10 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_CornerWidget();
     set_system_info();
     set_SpezialSliders();
+    set_RegionChoice();
     set_Connects();
     set_check_all_Elements_available();
     vkContainerController_wl = new QvkContainerController_wl( ui );
-    set_RegionChoice();
     new QvkLicenses( ui->pushButtonLicense );
     new QvkImageFromTabs_wl( this );
 
@@ -165,7 +166,8 @@ void QvkMainWindow_wl::set_Connects()
     connect( portal_wl, SIGNAL( signal_portal_fd_path( QString, QString ) ), this, SLOT( slot_start_gst( QString, QString ) ) );
     connect( portal_wl, SIGNAL( signal_portal_cancel( uint ) ), this,              SLOT( slot_portal_cancel( uint ) ) );
 
-    connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this,           SLOT( slot_frames_Reset() ) );
+    connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise_wl, SLOT( slot_areaReset() ) );
+    connect( ui->toolButtonFramesReset,         SIGNAL( clicked( bool ) ), this,              SLOT( slot_frames_Reset() ) );
 }
 
 
@@ -277,10 +279,10 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
     int screenWidth = Screen->size().width();
     int screenHeight = Screen->size().height();
 
-    QString top = QString::number( vkRegionChoise_wl->getYRecordArea() );
-    QString right = QString::number( screenWidth - ( vkRegionChoise_wl->getXRecordArea() + vkRegionChoise_wl->getWidth() ) );
-    QString bottom = QString::number( screenHeight - ( vkRegionChoise_wl->getYRecordArea() + vkRegionChoise_wl->getHeight() ) );
-    QString left = QString::number( vkRegionChoise_wl->getXRecordArea() );
+    QString top = QString::number( vkRegionChoise_wl->get_YRecordArea() );
+    QString right = QString::number( screenWidth - ( vkRegionChoise_wl->get_XRecordArea() + vkRegionChoise_wl->get_Width() ) );
+    QString bottom = QString::number( screenHeight - ( vkRegionChoise_wl->get_YRecordArea() + vkRegionChoise_wl->get_Height() ) );
+    QString left = QString::number( vkRegionChoise_wl->get_XRecordArea() );
     videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
 
     qDebug().noquote() << global::nameOutput << "Area crop from the screen"
