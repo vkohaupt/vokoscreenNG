@@ -350,6 +350,7 @@ void QvkMainWindow_wl::slot_portal_cancel( uint value )
     ui->radioButtonScreencastFullscreen->setEnabled( true );
     ui->radioButtonScreencastWindow->setEnabled( true );
     ui->radioButtonScreencastArea->setEnabled( true );
+    ui->tabVideo->setEnabled( true );
 }
 
 
