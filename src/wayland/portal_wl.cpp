@@ -133,13 +133,13 @@ void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap 
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pendingCall);
     qDebug().noquote() << global::nameOutput << "slot_gotCreateSessionResponse()" << watcher->error();
 
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] (QDBusPendingCallWatcher *watcher) {
+    bool bo = connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] (QDBusPendingCallWatcher *watcher) {
         QDBusPendingReply<QDBusObjectPath> reply = *watcher;
         if (reply.isError()) {
-            qWarning() << "Couldn't get reply";
-            qWarning() << "Error: " << reply.error().message();
+            qDebug() << "Couldn't get reply";
+            qDebug() << "Error: " << reply.error().message();
         } else {
-            qDebug().noquote() << global::nameOutput << "slot_gotCreateSessionResponse() into else";
+            qDebug().noquote() << global::nameOutput << "slot_gotCreateSessionResponse() into else" << "reply.value().path() :" << reply.value().path();
             bool bo = QDBusConnection::sessionBus().connect(QString(),
                                                 reply.value().path(),
                                                 QLatin1String("org.freedesktop.portal.Request"),
@@ -149,6 +149,8 @@ void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap 
             qDebug() << "test test" << bo; // Hahaha, ist true und geht nicht
         }
     });
+
+    qDebug() << "test-1 test-1" << bo;
 }
 
 
