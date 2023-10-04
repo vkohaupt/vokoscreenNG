@@ -127,6 +127,11 @@ void QvkImageFromTabs::slot_make_picture_from_tab()
     painter_1.setRenderHint( QPainter::Antialiasing, true );
     painter_1.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painter_1.drawPixmap( 0, 0, windowPixmap );
+    QPen pen;
+    pen.setColor( Qt::gray );
+    pen.setWidth( 1 );
+    painter_1.setPen( pen );
+    painter_1.drawRoundedRect( rect, 8, 8, Qt::AbsoluteSize );
     painter_1.end();
 
     pixmapImage.setMask( pixmap.mask() );
