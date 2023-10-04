@@ -1,4 +1,5 @@
 #include "mainWindow_wl.h"
+#include "QvkInformation_wl.h"
 #include "global.h"
 #include "QvkLicenses.h"
 #include "QvkImageFromTabs_wl.h"
@@ -34,6 +35,9 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     qApp->setStyleSheet( streamCSS.readAll() );
     fileCSS.close();
 
+    QvkInformation_wl *vkInformation = new QvkInformation_wl( this, ui );
+    connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
+
     set_WindowTitle();
     ui->tabWidgetScreencast->setCurrentIndex( 0 );
     ui->tabWidgetSideBar->setCurrentIndex( 0 );
@@ -47,12 +51,15 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     new QvkLicenses( ui->pushButtonLicense );
     new QvkImageFromTabs_wl( this );
 
+    // Misc
+    ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
+
+    // About
     ui->labelSourcecodeUrl->setText( "<a href='https://github.com/vkohaupt/vokoscreenNG'>" + tr( "Sourcecode" ) + "</a>" );
     ui->labelWebSiteUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Homepage" ) + "</a>" );
     ui->labelLanguageUrl->setText( "<a href='https://app.transifex.com/vkohaupt/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
     ui->labelDonateUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
 
-//    ui->frame_information->hide();
     ui->pushButtonPause->hide();
     ui->pushButtonContinue->hide();
     ui->pushButtonPlay->hide();
@@ -65,7 +72,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->radioButtonScreencastFullscreen->click();
 
     // Hide to time not needed tabs
-    ui->tabWidgetScreencast->removeTab(3); // Misc
     ui->tabWidgetScreencast->removeTab(1); // Audio
 }
 
@@ -310,13 +316,16 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     stringList << get_Muxer();
 
     QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
-    stringList << "filesink location=\"" + QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) + "/" + newVideoFilename + "\"";
+    stringList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
 
     QString launch = stringList.join( " ! " );
     qDebug().noquote() << global::nameOutput << launch;
 
     pipeline = gst_parse_launch( launch.toUtf8(), nullptr );
     gst_element_set_state( pipeline, GST_STATE_PLAYING );
+
+    emit signal_newVideoFilename( newVideoFilename );
+
 }
 
 

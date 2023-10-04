@@ -16,3 +16,6 @@ include(container/container_wl.pri)
 
 # QvkImageFromTabs
 include(imageFromTabs/imageFromTabs_wl.pri)
+
+# Information
+include(information/information_wl.pri)

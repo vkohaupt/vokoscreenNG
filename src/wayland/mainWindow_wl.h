@@ -28,6 +28,7 @@ public:
     ~QvkMainWindow_wl();
     Ui::formMainWindow_wl *ui;
     Portal_wl *portal_wl = new Portal_wl();
+    QvkSpezialSlider *sliderFrames;
 
 
 private:
@@ -38,7 +39,6 @@ private:
     QvkLogController *vklogController;
     GstElement *pipeline = nullptr;
     QStringList videoFormatsList;
-    QvkSpezialSlider *sliderFrames;
 
     void set_LogController();
     void set_WindowTitle();
@@ -67,11 +67,14 @@ private Q_SLOTS:
     void slot_start_gst( QString vk_fd, QString vk_path );
     void slot_frames_Reset();
     void slot_portal_cancel( uint );
-//    void slot_set_panel_values_in_spinboxes();
 
 
 protected:
     void closeEvent( QCloseEvent *event );
+
+signals:
+    void signal_newVideoFilename( QString );
+
 
 };
 
