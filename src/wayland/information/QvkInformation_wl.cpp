@@ -172,12 +172,12 @@ void QvkInformation_wl::slot_timeContinueStart()
     elapsedTime->restart();
 }
 
-
+*/
 void QvkInformation_wl::slot_newVideoFilename( QString filename )
 {
     newVideoFilename = filename;
 }
-*/
+
 
 void QvkInformation_wl::slot_StorageInfo()
 {

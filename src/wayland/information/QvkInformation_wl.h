@@ -32,58 +32,58 @@
 #include <QElapsedTimer>
 
 class QvkInformation_wl: public QWidget
-{ 
-Q_OBJECT
+{
+    Q_OBJECT
 public:
-//  QvkInformation_wl(QvkMainWindow *vkMainWindow, Ui_formMainWindow *ui_mainwindow, QvkSpezialSlider *slider_count_down, QvkSpezialSlider *slider_Second_Wait_Before_Recording );
-  QvkInformation_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMainWindow_wl *ui_mainwindow );
-  virtual ~QvkInformation_wl();
-  QvkMainWindow_wl *mainWindow;
+    //  QvkInformation_wl(QvkMainWindow *vkMainWindow, Ui_formMainWindow *ui_mainwindow, QvkSpezialSlider *slider_count_down, QvkSpezialSlider *slider_Second_Wait_Before_Recording );
+    QvkInformation_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMainWindow_wl *ui_mainwindow );
+    virtual ~QvkInformation_wl();
+    QvkMainWindow_wl *mainWindow;
 
 
 public slots:
 
-  
-private slots: 
-  void slot_cleanup();
-  void slot_StorageInfo();
-//  void slot_newVideoFilename( QString filename );
-//  void slot_displayRecordTime();
 
-//  void slot_timeFirstStart();
-//  void slot_timeContinueStart();
+private slots:
+    void slot_cleanup();
+    void slot_StorageInfo();
+    void slot_newVideoFilename( QString filename );
+    //  void slot_displayRecordTime();
 
-//  void slot_summedTimeAfterPause();
+    //  void slot_timeFirstStart();
+    //  void slot_timeContinueStart();
 
-//  void slot_newVersionAvailable( QString update );
+    //  void slot_summedTimeAfterPause();
 
-  void slot_Format( QString value );
-  void slot_Videocodec( QString value );
-//  void slot_Audiocodec( QString value );
-  void slot_Frames( int value );
+    //  void slot_newVersionAvailable( QString update );
+
+    void slot_Format( QString value );
+    void slot_Videocodec( QString value );
+    //  void slot_Audiocodec( QString value );
+    void slot_Frames( int value );
 
 
 signals:
-  
+
 
 protected:  
 
-  
+
 private:
-  Ui_formMainWindow_wl *ui;
-  QString newVideoFilename = "";
-  QTimer *timerStorageInfo;
-  QTimer *timerRecord;
-//  QElapsedTimer *elapsedTime;
+    Ui_formMainWindow_wl *ui;
+    QString newVideoFilename = "";
+    QTimer *timerStorageInfo;
+    QTimer *timerRecord;
+    //  QElapsedTimer *elapsedTime;
 
-  int int_summed = 0;
+    int int_summed = 0;
 
-//  QvkSpezialSlider *sliderCountDown;
-//  QvkSpezialSlider *sliderSecondWaitBeforeRecording;
+    //  QvkSpezialSlider *sliderCountDown;
+    //  QvkSpezialSlider *sliderSecondWaitBeforeRecording;
 
-  QvkVersion version;
+    QvkVersion version;
 
-  QString fileName = "";
+    QString fileName = "";
 
 
 };
