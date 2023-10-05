@@ -58,6 +58,7 @@ void QvkImageFromTabs_wl::slot_make_picture_from_tabs()
     timer = new QTimer( this );
     timer->setTimerType( Qt::PreciseTimer );
     connect( timer, &QTimer::timeout, this, QOverload<>::of( &QvkImageFromTabs_wl::slot_make_picture_from_tab ) );
+    connect( this, SIGNAL( signal_open_picture_folder() ), this, SLOT( slot_open_picture_folder() ) );
     timer->start( 600 );
 }
 
@@ -67,6 +68,7 @@ void QvkImageFromTabs_wl::slot_make_picture_from_tab()
     if ( counter >= myParent->ui->tabWidgetScreencast->tabBar()->count() ) {
         timer->stop();
         myParent->ui->pushButtonImages->setEnabled( true );
+        emit signal_open_picture_folder();
         return;
     }
 
@@ -122,5 +124,22 @@ void QvkImageFromTabs_wl::slot_make_picture_from_tab()
         pixmapImage.save( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) + "/" + "vokoscreenNG-" + QString::number( counterFile++ ) + ".png" );
         myParent->ui->label_save_image_path->setAlignment( Qt::AlignHCenter );
         myParent->ui->label_save_image_path->setText( "Images saved in: " + QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
+    }
+}
+
+
+void QvkImageFromTabs_wl::slot_open_picture_folder()
+{
+    // https://community.kde.org/Plasma/Wayland_Showstoppers
+    // Sollte mit Qt 6.5 funktionieren
+    if ( QDesktopServices::openUrl( QUrl( "file://" + QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ), QUrl::TolerantMode ) ) == false ) {
+        QPixmap pixmap( ":/pictures/status/information.png" );
+        pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+
+        QMessageBox msgBox;
+        msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
+        msgBox.setWindowTitle( global::name + " " + global::version );
+        msgBox.setIconPixmap( pixmap );
+        msgBox.exec();
     }
 }

@@ -43,9 +43,11 @@ public slots:
 private slots:
     void slot_make_picture_from_tab();
     void slot_make_picture_from_tabs();
+    void slot_open_picture_folder();
 
 
 signals:
+    void signal_open_picture_folder();
 
 
 protected:  
