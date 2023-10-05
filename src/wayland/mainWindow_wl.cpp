@@ -1,8 +1,10 @@
 #include "mainWindow_wl.h"
 #include "QvkInformation_wl.h"
+#include "QvkImageFromTabs_wl.h"
+
 #include "global.h"
 #include "QvkLicenses.h"
-#include "QvkImageFromTabs_wl.h"
+#include "qvkdirdialog.h"
 
 #include <QStringList>
 #include <QStandardPaths>
@@ -52,7 +54,10 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     new QvkImageFromTabs_wl( this );
 
     // Misc
+    videoFileSystemWatcher = new QFileSystemWatcher();
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
+    connect( ui->toolButtonVideoPath, SIGNAL( clicked( bool ) ),        this, SLOT( slot_newVideoPath() ) );
+    connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetNewPath() ) );
 
     // About
     ui->labelSourcecodeUrl->setText( "<a href='https://github.com/vkohaupt/vokoscreenNG'>" + tr( "Sourcecode" ) + "</a>" );
@@ -159,6 +164,7 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastWindow,     SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastArea,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabVideo,                        SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoPath,                  SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                                SLOT( slot_start() ) );
 
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), this,                                SLOT( slot_stop() ) );
@@ -168,6 +174,7 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->radioButtonScreencastWindow,     SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->radioButtonScreencastArea,       SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->tabVideo,                        SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->frameVideoPath,                  SLOT( setDisabled( bool ) ) );
 
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( clicked( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastWindow,     SIGNAL( clicked( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
@@ -442,4 +449,24 @@ void QvkMainWindow_wl::set_RegionChoice()
     vkRegionChoise_wl = new QvkRegionChoise_wl( ui );
     connect( ui->radioButtonScreencastArea, SIGNAL( toggled( bool ) ), vkRegionChoise_wl, SLOT( setVisible( bool ) ) );
     vkRegionChoise_wl->slot_init();
+}
+
+
+void QvkMainWindow_wl::slot_newVideoPath()
+{
+    QvkDirDialog *vkDirDialog = new QvkDirDialog;
+    if ( vkDirDialog->exec() == QDialog::Accepted ) {
+        if ( !vkDirDialog->selectedFiles().empty() ) {
+            ui->lineEditVideoPath->setText( vkDirDialog->selectedFiles().at(0) );
+        }
+    }
+}
+
+
+void QvkMainWindow_wl::slot_videoFileSystemWatcherSetNewPath()
+{
+    if ( !videoFileSystemWatcher->directories().isEmpty() ) {
+        videoFileSystemWatcher->removePaths( videoFileSystemWatcher->directories() );
+    }
+    videoFileSystemWatcher->addPath( ui->lineEditVideoPath->text() );
 }
