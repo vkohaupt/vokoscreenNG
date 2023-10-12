@@ -127,17 +127,7 @@ include(winInfo/winInfo.pri)
 include(countdown/countdown.pri)
 
 # camera
-equals(QT_MAJOR_VERSION, 6) {
-   # Qt6
-   !lessThan(QT_MINOR_VERSION, 5) {
-      include(camera-qt6/camera-qt6.pri)
-   }
-} else {
-   # Qt5
-#   unix: QT += x11extras
-   unix:include(cameraLinux/cameraLinux.pri)
-   win32:include(cameraWindows/cameraWindows.pri)
-}
+include(camera/camera.pri)
 
 # audio linux
 unix:include(audio/linux/audioLinux.pri)

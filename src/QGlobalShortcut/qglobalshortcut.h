@@ -13,14 +13,7 @@ class QGlobalShortcut : public QObject, public QAbstractNativeEventFilter
 public:
     explicit QGlobalShortcut(QObject *parent = nullptr);
     ~QGlobalShortcut();
-
-#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
-    // QT5
-    bool nativeEventFilter(const QByteArray &eventType, void *message, long *result) override;
-#else
-    // Qt6
     bool nativeEventFilter(const QByteArray &eventType, void *message, qintptr *result) override;
-#endif
 
     QKeySequence shortcut();
     bool isEmpty();

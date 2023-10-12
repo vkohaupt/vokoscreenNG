@@ -761,12 +761,7 @@ void QvkMainWindow::changeLanguageInSourcecode()
     vkLicenses->ui->retranslateUi( vkLicenses );
     vkHelp->uiHelp->retranslateUi( vkHelp );
 
-#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
-    // Qt5
-    vkCameraController->vkCameraSettingsDialog->ui->retranslateUi( vkCameraController->vkCameraSettingsDialog );
-#else
-    // Qt6
-#endif
+    vkCameraController->vkCameraSingle->vkCameraSettingsDialog->ui->retranslateUi( vkCameraController->vkCameraSingle->vkCameraSettingsDialog );
 
     vkSystray->setMenueText();
     vkSystrayAlternative->setMenueText();
@@ -986,21 +981,9 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
                                        vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
                                        vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
         vkSettings.saveSystrayAlternative( vkSystrayAlternative->vkSystrayAlternativeWindow->x(), vkSystrayAlternative->vkSystrayAlternativeWindow->y() );
-        vkSettings.savePlayerPathOpenFile( vkPlayerController->pathOpenFile ); //------------------------------------------------------------------------
-
-#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
-        // Qt5
-        #ifdef Q_OS_LINUX
-             vkSettings.saveCamera( vkCameraController->vkCameraWindow->geometry().x(), vkCameraController->vkCameraWindow->geometry().y() );
-        #endif
-
-        #ifdef Q_OS_WIN
-             vkSettings.saveCamera( vkCameraController->old_XY.x(), vkCameraController->old_XY.y() );
-        #endif
-#else
-        // Qt6
+        vkSettings.savePlayerPathOpenFile( vkPlayerController->pathOpenFile );
         vkSettings.saveCamera( vkCameraController->vkCameraSingle->vkCameraWindow->geometry().x(), vkCameraController->vkCameraSingle->vkCameraWindow->geometry().y() );
-#endif
+
         vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
         vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget->getColor() );
 

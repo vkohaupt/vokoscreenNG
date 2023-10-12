@@ -119,13 +119,8 @@ QGlobalShortcut::QGlobalShortcut(QObject *parent) :
     QObject(parent),
     sPrivate(new QGlobalShortcutPrivate)
 {
-
-#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
     const QNativeInterface::QX11Application *x11Interface = qGuiApp->nativeInterface<QNativeInterface::QX11Application>();
     sPrivate->m_display = x11Interface->display();
-#else
-    sPrivate->m_display = QX11Info::display();
-#endif
 
     sPrivate->m_win = DefaultRootWindow(sPrivate->m_display);
     sPrivate->enabled = true;
@@ -140,13 +135,7 @@ QGlobalShortcut::~QGlobalShortcut()
     delete sPrivate;
 }
 
-#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
-    // Qt5
-    bool QGlobalShortcut::nativeEventFilter(const QByteArray &eventType, void *message, long *result)
-#else
-    // Qt6
-    bool QGlobalShortcut::nativeEventFilter(const QByteArray &eventType, void *message, qintptr *result)
-#endif
+bool QGlobalShortcut::nativeEventFilter(const QByteArray &eventType, void *message, qintptr *result)
 {
     Q_UNUSED(eventType)
     Q_UNUSED(result)
