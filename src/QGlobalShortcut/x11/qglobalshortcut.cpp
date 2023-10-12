@@ -7,11 +7,6 @@
 #include <X11/Xutil.h>
 #include <xcb/xcb.h>
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-#else
-    #include <QX11Info>
-#endif
-
 namespace
 {
     QString strShortcuts[49] = {"Esc","Tab","BackTab","Backspace","Return","Enter","Ins","Del",
