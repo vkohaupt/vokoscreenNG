@@ -20,18 +20,6 @@
  * --End_License--
  */
 
-#include "mainwindow.h"
-
-#include "ui_formMainWindow.h"
-#include "QvkInformation.h"
-#include "global.h"
-#include "QvkScreenManager.h"
-#include "QvkImageFromTabs.h"
-#include "qvkdirdialog.h"
-#include "QvkVirtual.h"
-#include "QvkSnapshot.h"
-#include "QvkPadsAndCaps.h"
-
 #include <QDebug>
 #include <QDateTime>
 #include <QStandardPaths>
@@ -45,6 +33,19 @@
 #include <QStyleFactory>
 #include <QAbstractItemView>
 #include <QComboBox>
+#include "mainwindow.h"
+
+#include "ui_formMainWindow.h"
+#include "QvkInformation.h"
+#include "global.h"
+#include "QvkScreenManager.h"
+#include "QvkImageFromTabs.h"
+#include "qvkdirdialog.h"
+#include "QvkVirtual.h"
+#include "QvkSnapshot.h"
+#include "QvkPadsAndCaps.h"
+
+
 
 #ifdef Q_OS_LINUX
   #include <pulse/pulseaudio.h>
@@ -742,7 +743,7 @@ void QvkMainWindow::slot_languageChanged( int )
     // Dialog
     qtTranslator.load( "qt_" + language, QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
     qApp->installTranslator( &qtTranslator );
-
+    qDebug() << "1111111111111111111111111111111111111111111111111111";
     // Change language that is in sourcecode and change all UI`s
     changeLanguageInSourcecode();
 }
@@ -757,12 +758,9 @@ void QvkMainWindow::changeLanguageInSourcecode()
     ui->labelDonateUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
 
     vkPlayerController->ui->retranslateUi( vkPlayerController );
-
     vkLicenses->ui->retranslateUi( vkLicenses );
     vkHelp->uiHelp->retranslateUi( vkHelp );
-
-    vkCameraController->vkCameraSingle->vkCameraSettingsDialog->ui->retranslateUi( vkCameraController->vkCameraSingle->vkCameraSettingsDialog );
-
+//    vkCameraController->vkCameraSingle->vkCameraSettingsDialog->ui->retranslateUi( vkCameraController->vkCameraSingle->vkCameraSettingsDialog );
     vkSystray->setMenueText();
     vkSystrayAlternative->setMenueText();
 }

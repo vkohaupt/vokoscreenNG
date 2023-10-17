@@ -11,7 +11,7 @@ equals(QT_MAJOR_VERSION, 6):!lessThan(QT_MINOR_VERSION, 0) {
 }
 
 unix: QT += dbus
-QT += core gui widgets multimedia network
+QT += core gui widgets multimedia network testlib
 # testlib // Achtung unter Windows öffnet sich damit die Konsole und qDebug() zeigt seine Ausgaben.
 
 TARGET = vokoscreenNG
@@ -21,7 +21,7 @@ TEMPLATE = app
 # any feature of Qt which as been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
-DEFINES += QT_DEPRECATED_WARNINGS
+#DEFINES += QT_DEPRECATED_WARNINGS
 
 # You can also make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -39,6 +39,8 @@ HEADERS += mainwindow.h \
 FORMS +=   formMainWindow.ui
 
 RESOURCES += screencast.qrc
+
+CONFIG += c++17
 
 isEmpty(QMAKE_LRELEASE) {
   # Try invocation path of qmake for lrelease
@@ -74,7 +76,7 @@ TRANSLATIONS = $$files(language/*.ts)
 # Clean target
 QMAKE_CLEAN += $$TARGET */*~
 
-QMAKE_LFLAGS += -Wl,--as-needed
+#QMAKE_LFLAGS += -Wl,--as-needed
 
 unix:INSTALLER=$$(VOKOSCREENNG_INSTALLER)
 unix:contains(INSTALLER, "IFW" ){
@@ -91,10 +93,27 @@ unix:LIBS += -lpulse-simple
 unix:LIBS += -lX11
 
 # Player
-CONFIG += c++11
 unix:PKGCONFIG += gstreamer-video-1.0
 unix:PKGCONFIG += gstreamer-pbutils-1.0
 unix:PKGCONFIG += glib-2.0
+
+#win32:contains(QMAKE_HOST.arch, x86_64) {
+#message("[vokoscreenNG] Create x86_64 build")
+#RC_ICONS = vokoscreenNG.ico
+#GStreamerDir=$$(GSTREAMER_1_0_ROOT_MINGW_X86_64)
+#INCLUDEPATH += $${GStreamerDir}\include\gstreamer-1.0
+#INCLUDEPATH += $${GStreamerDir}\include\glib-2.0
+#INCLUDEPATH += $${GStreamerDir}\lib\glib-2.0\include
+#INCLUDEPATH += $${GStreamerDir}\include
+#LIBS += -L$${GStreamerDir}\bin
+#LIBS += -L$${GStreamerDir}\lib\gstreamer-1.0
+#LIBS += -llibgstreamer-1.0-0
+#LIBS += -llibgstvideo-1.0-0
+#LIBS += -llibgstpbutils-1.0-0
+#LIBS += -llibglib-2.0-0
+#LIBS += -llibgobject-2.0-0
+#LIBS += -llibbz2
+#}
 
 win32:contains(QMAKE_HOST.arch, x86_64) {
 message("[vokoscreenNG] Create x86_64 build")
@@ -106,12 +125,12 @@ INCLUDEPATH += $${GStreamerDir}\lib\glib-2.0\include
 INCLUDEPATH += $${GStreamerDir}\include
 LIBS += -L$${GStreamerDir}\bin
 LIBS += -L$${GStreamerDir}\lib\gstreamer-1.0
-LIBS += -llibgstreamer-1.0-0
-LIBS += -llibgstvideo-1.0-0
-LIBS += -llibgstpbutils-1.0-0
-LIBS += -llibglib-2.0-0
-LIBS += -llibgobject-2.0-0
-LIBS += -llibbz2
+LIBS += $${GStreamerDir}\bin\libgstreamer-1.0-0.dll
+LIBS += $${GStreamerDir}\bin\libgstvideo-1.0-0.dll
+LIBS += $${GStreamerDir}\bin\libgstpbutils-1.0-0.dll
+LIBS += $${GStreamerDir}\bin\libglib-2.0-0.dll
+LIBS += $${GStreamerDir}\bin\libgobject-2.0-0.dll
+LIBS += $${GStreamerDir}\bin\libbz2.dll
 }
 
 # settings

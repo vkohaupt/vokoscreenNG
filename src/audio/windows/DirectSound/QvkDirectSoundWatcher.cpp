@@ -24,7 +24,8 @@
 #include "global.h"
 
 #include <QDebug>
-#include <QAudioDeviceInfo>
+#include <QAudioDevice>
+#include <QMediaDevices>
 
 /*
  * QvkWatcherPlug monitoring only new or removed Audiodevices.
@@ -54,7 +55,7 @@ void QvkDirectSoundWatcher::start_monitor()
 void QvkDirectSoundWatcher::slot_update()
 {
     QList<QCheckBox *> listCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
-    QList<QAudioDeviceInfo> listAudioDeviceInfo = QAudioDeviceInfo::availableDevices( QAudio::AudioInput );
+    QList<QAudioDevice> listAudioDeviceInfo = QMediaDevices::audioInputs();
 
     QStringList stringListCheckBox;
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
@@ -63,15 +64,15 @@ void QvkDirectSoundWatcher::slot_update()
 
     QStringList stringListAudioDeviceInfo;
     for ( int i = 0; i < listAudioDeviceInfo.count(); i++ ) {
-        stringListAudioDeviceInfo.append( listAudioDeviceInfo.at(i).deviceName() );
+        stringListAudioDeviceInfo.append( listAudioDeviceInfo.at(i).description() );
     }
 
     // Add new Device
     if ( listAudioDeviceInfo.count() > listCheckBox.count() ) {
         for ( int i = 0; i < stringListAudioDeviceInfo.count(); i++ ) {
             if ( stringListCheckBox.contains( stringListAudioDeviceInfo.at(i) ) == false ) {
-                QString name = listAudioDeviceInfo.at(i).deviceName();
-                QString device = listAudioDeviceInfo.at(i).deviceName();
+                QString name = listAudioDeviceInfo.at(i).description();
+                QString device = listAudioDeviceInfo.at(i).description();
                 qDebug().noquote() << global::nameOutput << "[Audio DirectSound] Added:" << name << "Device:" << device;
                 QString audioDevicePlug = "";
                 audioDevicePlug.append( "[Audio-device-added]" );

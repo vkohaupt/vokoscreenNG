@@ -23,9 +23,12 @@
 #include "global.h"
 #include "QvkDirectSoundController.h"
 
-#include <QAudioDeviceInfo>
+#include <QAudioDevice>
+#include <QMediaDevices>
 #include <QPainter>
 #include <QDebug>
+#include <QMediaDevices>
+
 
 QvkDirectSoundController::QvkDirectSoundController( Ui_formMainWindow *ui_mainwindow )
 {
@@ -84,18 +87,18 @@ void QvkDirectSoundController::getAllDevices()
         delete listLabel.at(i);
     }
 
-    QList<QAudioDeviceInfo> list = QAudioDeviceInfo::availableDevices( QAudio::AudioInput );
+    QList<QAudioDevice> list = QMediaDevices::audioOutputs();
     if ( !list.empty() ) {
         for ( int i = 0; i < list.count(); i++ ) {
             QCheckBox *checkboxAudioDevice = new QCheckBox();
-            checkboxAudioDevice->setText( list.at(i).deviceName() );
-            checkboxAudioDevice->setAccessibleName( list.at(i).deviceName() );
+            checkboxAudioDevice->setText( list.at(i).description() );
+            checkboxAudioDevice->setAccessibleName( list.at(i).description() );
             checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( i ) );
             checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
             checkboxAudioDevice->setAutoExclusive( false );
             ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
-            qDebug().noquote() << global::nameOutput << "[Audio DirectSound] found device:" << list.at(i).deviceName();
+            qDebug().noquote() << global::nameOutput << "[Audio DirectSound] found device:" << list.at(i).description();
 
             connect( checkboxAudioDevice, SIGNAL(clicked(bool)),this,SLOT(slot_audioDeviceSelected() ) );
         }

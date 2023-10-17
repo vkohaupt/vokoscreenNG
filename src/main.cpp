@@ -20,6 +20,12 @@
  * --End_License--
  */
 
+#include <QTranslator>
+#include <QLibraryInfo>
+#include <QLoggingCategory>
+#include <QStyleFactory>
+#include <QSettings>
+
 #include "mainwindow.h"
 #include "global.h"
 
@@ -32,22 +38,14 @@
 #include "QvkSettings.h"
 #endif
 
-#include <QTranslator>
-#include <QLibraryInfo>
-#include <QLoggingCategory>
-#include <QStyleFactory>
-#include <QSettings>
+
 
 #include <gst/gst.h>
 
 int main(int argc, char *argv[])
 {
     QLoggingCategory::defaultCategory()->setEnabled( QtDebugMsg, true );
-
-    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QApplication::setStyle( QStyleFactory::create( "Fusion" ) );
-
     QApplication app(argc, argv);
 
     QString help;
@@ -118,6 +116,7 @@ int main(int argc, char *argv[])
     // qmake options example:
     // DEFINES+=FOR_MY_LINUX_INSTALLER
 #if defined( Q_OS_WIN ) || defined( FOR_MY_LINUX_INSTALLER )
+/*
     QvkSettings vkSettings;
     QFileInfo dirPathProfile( vkSettings.getFileName() );
     QString pathProfile = dirPathProfile.absolutePath();
@@ -140,6 +139,27 @@ int main(int argc, char *argv[])
     pathRegistry.append( pathProfile );
     pathRegistry.append( "/gstreamer.registry" );
     qputenv( "GST_REGISTRY_1_0", pathRegistry.toUtf8() );
+*/
+
+    bool bo;
+    QString pluginPath;
+    pluginPath.append( QDir::currentPath() + "/gstreamer/gstreamer_lib" );
+    bo = qputenv( "GST_PLUGIN_PATH_1_0", pluginPath.toUtf8() );
+    qDebug() << "GST_PLUGIN_PATH_1_0" << bo << pluginPath;;
+
+    QString pathPath;
+    pathPath.append( QDir::currentPath() + "/gstreamer/gstreamer_bin" );
+    bo = qputenv( "PATH", pathPath.toUtf8() );
+    qDebug() << "PATH" << bo << pathPath;
+
+    QString pathRegistry;
+    pathRegistry.append( "C:/Users/vk/Documents/build-untitled-Desktop_Qt_6_6_0_MinGW_64_bit-Profile/release/gstreamer.registry" );
+    qputenv( "GST_REGISTRY_1_0", pathRegistry.toUtf8() );
+    qDebug() << "GST_REGISTRY_1_0" << bo << pathRegistry;
+
+    gst_init (&argc, &argv);
+
+
 #endif
 
     // Gstreamer debug begin
