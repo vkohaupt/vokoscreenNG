@@ -76,7 +76,7 @@ TRANSLATIONS = $$files(language/*.ts)
 # Clean target
 QMAKE_CLEAN += $$TARGET */*~
 
-#QMAKE_LFLAGS += -Wl,--as-needed
+QMAKE_LFLAGS += -Wl,--as-needed
 
 unix:INSTALLER=$$(VOKOSCREENNG_INSTALLER)
 unix:contains(INSTALLER, "IFW" ){
@@ -97,28 +97,11 @@ unix:PKGCONFIG += gstreamer-video-1.0
 unix:PKGCONFIG += gstreamer-pbutils-1.0
 unix:PKGCONFIG += glib-2.0
 
-#win32:contains(QMAKE_HOST.arch, x86_64) {
-#message("[vokoscreenNG] Create x86_64 build")
-#RC_ICONS = vokoscreenNG.ico
-#GStreamerDir=$$(GSTREAMER_1_0_ROOT_MINGW_X86_64)
-#INCLUDEPATH += $${GStreamerDir}\include\gstreamer-1.0
-#INCLUDEPATH += $${GStreamerDir}\include\glib-2.0
-#INCLUDEPATH += $${GStreamerDir}\lib\glib-2.0\include
-#INCLUDEPATH += $${GStreamerDir}\include
-#LIBS += -L$${GStreamerDir}\bin
-#LIBS += -L$${GStreamerDir}\lib\gstreamer-1.0
-#LIBS += -llibgstreamer-1.0-0
-#LIBS += -llibgstvideo-1.0-0
-#LIBS += -llibgstpbutils-1.0-0
-#LIBS += -llibglib-2.0-0
-#LIBS += -llibgobject-2.0-0
-#LIBS += -llibbz2
-#}
-
 win32:contains(QMAKE_HOST.arch, x86_64) {
 message("[vokoscreenNG] Create x86_64 build")
 RC_ICONS = vokoscreenNG.ico
 GStreamerDir=$$(GSTREAMER_1_0_ROOT_MINGW_X86_64)
+message("----------------------------------------------------------"$$GStreamerDir)
 INCLUDEPATH += $${GStreamerDir}\include\gstreamer-1.0
 INCLUDEPATH += $${GStreamerDir}\include\glib-2.0
 INCLUDEPATH += $${GStreamerDir}\lib\glib-2.0\include

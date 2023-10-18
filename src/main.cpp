@@ -140,7 +140,7 @@ int main(int argc, char *argv[])
     pathRegistry.append( "/gstreamer.registry" );
     qputenv( "GST_REGISTRY_1_0", pathRegistry.toUtf8() );
 */
-
+/*
     bool bo;
     QString pluginPath;
     pluginPath.append( QDir::currentPath() + "/gstreamer/gstreamer_lib" );
@@ -156,7 +156,7 @@ int main(int argc, char *argv[])
     pathRegistry.append( "C:/Users/vk/Documents/build-untitled-Desktop_Qt_6_6_0_MinGW_64_bit-Profile/release/gstreamer.registry" );
     qputenv( "GST_REGISTRY_1_0", pathRegistry.toUtf8() );
     qDebug() << "GST_REGISTRY_1_0" << bo << pathRegistry;
-
+*/
     gst_init (&argc, &argv);
 
 

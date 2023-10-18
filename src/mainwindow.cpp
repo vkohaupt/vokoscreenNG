@@ -57,9 +57,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                                 vkWinInfo(new QvkWinInfo)
 {
     translator.load( QLocale::system().name(), ":/language" );
-    qApp->installTranslator( &translator );
+    QCoreApplication::installTranslator( &translator );
     qtTranslator.load( "qt_" + QLocale::system().name(), QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
-    qApp->installTranslator( &qtTranslator );
+    QCoreApplication::installTranslator( &qtTranslator );
 
     ui->setupUi(this);
 
@@ -284,9 +284,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << "Icon-Theme:" << QIcon::themeName();
     qDebug().noquote() << global::nameOutput << "Styles:" << QApplication::style()->metaObject()->className();
     qDebug().noquote() << global::nameOutput << "ExecutablePath:     " << QCoreApplication::applicationDirPath();
-    qDebug().noquote() << global::nameOutput << "Qt-PluginsPath:     " << QLibraryInfo::location( QLibraryInfo::PluginsPath );
-    qDebug().noquote() << global::nameOutput << "Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
-    qDebug().noquote() << global::nameOutput << "Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
+    qDebug().noquote() << global::nameOutput << "Qt-PluginsPath:     " << QLibraryInfo::path( QLibraryInfo::PluginsPath );
+    qDebug().noquote() << global::nameOutput << "Qt-TranslationsPath:" << QLibraryInfo::path( QLibraryInfo::TranslationsPath );
+    qDebug().noquote() << global::nameOutput << "Qt-LibraryPath:     " << QLibraryInfo::path( QLibraryInfo::LibrariesPath );
     qDebug().noquote() << global::nameOutput << "Settings:" << vkSettings.getFileName();
     qDebug().noquote() << global::nameOutput << "Log:" << vklogController->get_logPath();
     qDebug().noquote() << global::nameOutput << "Default Videopath:" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
@@ -723,27 +723,27 @@ void QvkMainWindow::slot_darkMode( bool bo )
 // Language is changed from combobox
 void QvkMainWindow::slot_languageChanged( int )
 {
-    qApp->removeTranslator( &translator );
-    qApp->removeTranslator( &qtTranslator );
+    QCoreApplication::removeTranslator( &translator );
+    QCoreApplication::removeTranslator( &qtTranslator );
 
     QString language = ui->comboBoxLanguage->currentData().toString();
     QString path( ":/language/" );
     if ( translator.load( path + language + ".qm" ) ) {
         // GUI
-        qApp->installTranslator( &translator );
+        QCoreApplication::installTranslator( &translator );
         ui->retranslateUi( this );
 
         qDebug().noquote() << global::nameOutput << "Language changed to:" << ui->comboBoxLanguage->currentText() << path + language + ".qm";
     } else {
-        qApp->installTranslator( &translator );
+        QCoreApplication::installTranslator( &translator );
         ui->retranslateUi( this );
         qDebug().noquote() << global::nameOutput << "Faild to load language:" << ui->comboBoxLanguage->currentText() << path + language + ".qm" << "Set default language";
     }
 
     // Dialog
     qtTranslator.load( "qt_" + language, QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
-    qApp->installTranslator( &qtTranslator );
-    qDebug() << "1111111111111111111111111111111111111111111111111111";
+    QCoreApplication::installTranslator( &qtTranslator );
+
     // Change language that is in sourcecode and change all UI`s
     changeLanguageInSourcecode();
 }
@@ -967,6 +967,7 @@ void QvkMainWindow::slot_setMaxFPS( int index )
 void QvkMainWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
+    qDebug().noquote() << global::nameOutput << "Clean closed";
 
 #ifdef Q_OS_WIN
     if ( vkCiscoOpenh264Controller->isShowCiscoFinishDialog == false )
@@ -1000,6 +1001,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
     vkHalo->vkHaloWindow->close();
     vkMagnifierController->vkMagnifier->close();
 #endif
+
 }
 
 
