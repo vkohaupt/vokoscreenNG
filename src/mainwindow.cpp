@@ -58,7 +58,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 {
     translator.load( QLocale::system().name(), ":/language" );
     QCoreApplication::installTranslator( &translator );
-    qtTranslator.load( "qt_" + QLocale::system().name(), QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
+    qtTranslator.load( "qt_" + QLocale::system().name(), QLibraryInfo::path( QLibraryInfo::TranslationsPath ) );
     QCoreApplication::installTranslator( &qtTranslator );
 
     ui->setupUi(this);
@@ -565,7 +565,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vk_setCornerWidget( ui->tabWidgetLog );
     // *****************End Log ***********************************
 
-
     QDir dirLanguage( ":/language", "*.qm" );
     QStringList listLanguage;
     listLanguage.append( "en" );
@@ -589,7 +588,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->comboBoxLanguage->addItem( sortList.at(x), language );
     }
     connect( ui->comboBoxLanguage, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_languageChanged( int ) ) );
-
 
 #ifdef Q_OS_WIN
     vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller(  vkSettings.getOpenh264ProfilePathWithFilename(), ui );
@@ -651,7 +649,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->comboBox_openh264_profile->setVisible( false );
     }
 
-
     QString localeName = QLocale::system().name() + ".qm";
     QString localeCountry = QLocale::countryToString( locale.country() );
     QDir dir( ":/language", "*.qm" );
@@ -670,10 +667,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->label_translate->hide();
         ui->verticalLayout_7->removeItem( ui->verticalSpacer );
     }
-
-    // If Language changed from settings
-    // Change language that is in sourcecode and change all UI`s
-    changeLanguageInSourcecode();
 }
 
 
@@ -731,38 +724,37 @@ void QvkMainWindow::slot_languageChanged( int )
     if ( translator.load( path + language + ".qm" ) ) {
         // GUI
         QCoreApplication::installTranslator( &translator );
-        ui->retranslateUi( this );
-
         qDebug().noquote() << global::nameOutput << "Language changed to:" << ui->comboBoxLanguage->currentText() << path + language + ".qm";
     } else {
         QCoreApplication::installTranslator( &translator );
-        ui->retranslateUi( this );
         qDebug().noquote() << global::nameOutput << "Faild to load language:" << ui->comboBoxLanguage->currentText() << path + language + ".qm" << "Set default language";
     }
 
     // Dialog
-    qtTranslator.load( "qt_" + language, QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
+    qtTranslator.load( "qt_" + language, QLibraryInfo::path( QLibraryInfo::TranslationsPath ) );
     QCoreApplication::installTranslator( &qtTranslator );
-
-    // Change language that is in sourcecode and change all UI`s
-    changeLanguageInSourcecode();
 }
 
 
-// Change language that is in sourcecode and change all UI`s
-void QvkMainWindow::changeLanguageInSourcecode()
+void QvkMainWindow::changeEvent( QEvent *event )
 {
-    ui->labelSourcecodeUrl->setText( "<a href='https://github.com/vkohaupt/vokoscreenNG'>" + tr( "Sourcecode" ) + "</a>" );
-    ui->labelWebSiteUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Homepage" ) + "</a>" );
-    ui->labelLanguageUrl->setText( "<a href='https://app.transifex.com/vkohaupt/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
-    ui->labelDonateUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
+    if ( event->type() == QEvent::LanguageChange ) {
+        ui->retranslateUi(this);
 
-    vkPlayerController->ui->retranslateUi( vkPlayerController );
-    vkLicenses->ui->retranslateUi( vkLicenses );
-    vkHelp->uiHelp->retranslateUi( vkHelp );
-//    vkCameraController->vkCameraSingle->vkCameraSettingsDialog->ui->retranslateUi( vkCameraController->vkCameraSingle->vkCameraSettingsDialog );
-    vkSystray->setMenueText();
-    vkSystrayAlternative->setMenueText();
+        ui->labelSourcecodeUrl->setText( "<a href='https://github.com/vkohaupt/vokoscreenNG'>" + tr( "Sourcecode" ) + "</a>" );
+        ui->labelWebSiteUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Homepage" ) + "</a>" );
+        ui->labelLanguageUrl->setText( "<a href='https://app.transifex.com/vkohaupt/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
+        ui->labelDonateUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
+
+        vkPlayerController->ui->retranslateUi( vkPlayerController );
+        vkLicenses->ui->retranslateUi( vkLicenses );
+        vkHelp->uiHelp->retranslateUi( vkHelp );
+//        vkCameraController->vkCameraSingle->vkCameraSettingsDialog->ui->retranslateUi( vkCameraController->vkCameraSingle->vkCameraSettingsDialog );
+        vkSystray->setMenueText();
+        vkSystrayAlternative->setMenueText();
+    } else {
+        QWidget::changeEvent(event);
+    }
 }
 
 
@@ -967,7 +959,6 @@ void QvkMainWindow::slot_setMaxFPS( int index )
 void QvkMainWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
-    qDebug().noquote() << global::nameOutput << "Clean closed";
 
 #ifdef Q_OS_WIN
     if ( vkCiscoOpenh264Controller->isShowCiscoFinishDialog == false )
@@ -981,8 +972,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
                                        vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
         vkSettings.saveSystrayAlternative( vkSystrayAlternative->vkSystrayAlternativeWindow->x(), vkSystrayAlternative->vkSystrayAlternativeWindow->y() );
         vkSettings.savePlayerPathOpenFile( vkPlayerController->pathOpenFile );
-        vkSettings.saveCamera( vkCameraController->vkCameraSingle->vkCameraWindow->geometry().x(), vkCameraController->vkCameraSingle->vkCameraWindow->geometry().y() );
-
+//        vkSettings.saveCamera( vkCameraController->vkCameraSingle->vkCameraWindow->geometry().x(), vkCameraController->vkCameraSingle->vkCameraWindow->geometry().y() );
         vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
         vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget->getColor() );
 
@@ -1001,6 +991,8 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
     vkHalo->vkHaloWindow->close();
     vkMagnifierController->vkMagnifier->close();
 #endif
+
+    qDebug().noquote() << global::nameOutput << "Clean closed";
 
 }
 

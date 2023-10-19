@@ -36,19 +36,19 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
 {
     ui = ui_surface;
 
-    ui->checkBoxCameraOnOff->deleteLater();
-    ui->comboBoxCamera->deleteLater();
-    ui->comboBoxCameraResolution->deleteLater();
-    ui->labelCameraWindowSize->deleteLater();
-    ui->toolButton_camera_view_rectangle->deleteLater();
-    ui->toolButton_camera_view_ellipse->deleteLater();
-    ui->toolButton_camera_view_circle->deleteLater();
-    ui->checkBoxCameraWindowFrame->deleteLater();
-    ui->checkBoxCameraMirrorHorizontal->deleteLater();
-    ui->checkBoxCameraMirrorVertical->deleteLater();
-    ui->checkBoxCameraInvert->deleteLater();
-    ui->checkBoxCameraGray->deleteLater();
-    ui->checkBoxCameraMono->deleteLater();
+    ui->checkBoxCameraOnOff->hide();
+    ui->comboBoxCamera->hide();
+    ui->comboBoxCameraResolution->hide();
+    ui->labelCameraWindowSize->hide();
+    ui->toolButton_camera_view_rectangle->hide();
+    ui->toolButton_camera_view_ellipse->hide();
+    ui->toolButton_camera_view_circle->hide();
+    ui->checkBoxCameraWindowFrame->hide();
+    ui->checkBoxCameraMirrorHorizontal->hide();
+    ui->checkBoxCameraMirrorVertical->hide();
+    ui->checkBoxCameraInvert->hide();
+    ui->checkBoxCameraGray->hide();
+    ui->checkBoxCameraMono->hide();
 
     // SpacerItems aus GUI löschen
     for (int i = 0; i < ui->horizontalLayout_65->count(); ++i) {

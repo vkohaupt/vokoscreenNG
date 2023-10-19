@@ -50,8 +50,10 @@
 #include <QMainWindow>
 #include <QFileSystemWatcher>
 #include <QSoundEffect>
-#include <QShowEvent>
 #include <QTranslator>
+#include <QShowEvent>
+#include <QCloseEvent>
+#include <QEvent>
 
 #include <gst/gst.h>
 
@@ -235,6 +237,7 @@ signals:
 protected:
     void closeEvent( QCloseEvent *event );
     void resizeEvent( QResizeEvent *event );
+    void changeEvent( QEvent *event );
 
 
 };
