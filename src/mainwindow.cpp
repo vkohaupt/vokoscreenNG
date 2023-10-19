@@ -33,6 +33,8 @@
 #include <QStyleFactory>
 #include <QAbstractItemView>
 #include <QComboBox>
+#include <QCheckBox>
+#include <QList>
 #include "mainwindow.h"
 
 #include "ui_formMainWindow.h"
@@ -533,7 +535,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // Close GUI
     connect( this,      SIGNAL( signal_close() ),       ui->pushButtonContinue, SLOT( click() ) );
     connect( this,      SIGNAL( signal_close() ),       ui->pushButtonStop,     SLOT( click() ) );
-    connect( this,      SIGNAL( signal_close( bool ) ), ui->checkBoxCameraOnOff,SLOT( setChecked( bool ) ) );
     connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( slot_cleanUp() ) );
     connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkLicenses,             SLOT( close() ) );
@@ -985,15 +986,22 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
     }
 
     emit signal_close();
-    emit signal_close( false );
 
 #ifdef Q_OS_LINUX
     vkHalo->vkHaloWindow->close();
     vkMagnifierController->vkMagnifier->close();
 #endif
 
-    qDebug().noquote() << global::nameOutput << "Clean closed";
+    QList<QCheckBox *> listCheckBox = ui->centralWidget->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ ) {
+        if ( listCheckBox.at(i)->objectName().contains( "checkBoxCameraOnOff-" ) ) {
+           if ( listCheckBox.at(i)->isChecked() == true ) {
+               listCheckBox.at(i)->click();
+           }
+        }
+    }
 
+    qDebug().noquote() << global::nameOutput << "Clean closed";
 }
 
 
