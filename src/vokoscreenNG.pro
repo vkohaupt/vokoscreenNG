@@ -4,10 +4,12 @@
 #
 #-------------------------------------------------
 
-equals(QT_MAJOR_VERSION, 6):!lessThan(QT_MINOR_VERSION, 0) {
+equals(QT_MAJOR_VERSION, 6):!lessThan(QT_MINOR_VERSION, 5) {
    # there is nothing to do
 } else {
-   unix: QT += x11extras
+    message("Cannot use Qt $${QT_VERSION}")
+    error( "Need minimum Qt 6.5" )
+exit
 }
 
 unix: QT += dbus
@@ -101,7 +103,6 @@ win32:contains(QMAKE_HOST.arch, x86_64) {
 message("[vokoscreenNG] Create x86_64 build")
 RC_ICONS = vokoscreenNG.ico
 GStreamerDir=$$(GSTREAMER_1_0_ROOT_MINGW_X86_64)
-message("----------------------------------------------------------"$$GStreamerDir)
 INCLUDEPATH += $${GStreamerDir}\include\gstreamer-1.0
 INCLUDEPATH += $${GStreamerDir}\include\glib-2.0
 INCLUDEPATH += $${GStreamerDir}\lib\glib-2.0\include
