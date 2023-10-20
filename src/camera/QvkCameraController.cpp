@@ -70,6 +70,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
     for ( int i = 0; i < camerasInfoList.count(); i++ ) {
         vkCameraSingle = new QvkCameraSingle( ui, camerasInfoList.at(i) );
         buttonGroup->addButton( vkCameraSingle->radioButtonCamera );
+        cameraSingelList.append( vkCameraSingle );
     }
 
     // Am Ende ein spaceritem einfügen

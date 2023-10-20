@@ -30,6 +30,7 @@
 #include <QObject>
 #include <QLabel>
 #include <QButtonGroup>
+#include <QList>
 
 class QvkCameraController : public QObject
 {
@@ -39,6 +40,7 @@ public:
     QvkCameraController( Ui_formMainWindow *ui_surface );
     virtual ~QvkCameraController();
     QvkCameraSingle *vkCameraSingle;
+    QList<QvkCameraSingle *> cameraSingelList;
 
 
 public slots:

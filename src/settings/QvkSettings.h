@@ -48,7 +48,7 @@ public:
     void saveAreaScreencast( qreal x, qreal y, qreal width, qreal height );
     void readAreaScreencast( QvkRegionChoise *vkRegionChoise );
 
-    void saveCamera( int x, int y );
+    void saveCamera( int index, int x, int y );
     void readCamera( QvkCameraController *vkCameraController );
 
     void saveSystrayAlternative( int x, int y );

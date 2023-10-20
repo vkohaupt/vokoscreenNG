@@ -973,9 +973,11 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
                                        vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
         vkSettings.saveSystrayAlternative( vkSystrayAlternative->vkSystrayAlternativeWindow->x(), vkSystrayAlternative->vkSystrayAlternativeWindow->y() );
         vkSettings.savePlayerPathOpenFile( vkPlayerController->pathOpenFile );
-//        vkSettings.saveCamera( vkCameraController->vkCameraSingle->vkCameraWindow->geometry().x(), vkCameraController->vkCameraSingle->vkCameraWindow->geometry().y() );
         vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
         vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget->getColor() );
+        for ( int index = 0; index < vkCameraController->cameraSingelList.count(); index++ ) {
+            vkSettings.saveCamera( index, vkCameraController->cameraSingelList.at(index)->vkCameraWindow->x(), vkCameraController->cameraSingelList.at(index)->vkCameraWindow->y() );
+        }
 
 #ifdef Q_OS_WIN
     }

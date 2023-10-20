@@ -615,10 +615,10 @@ void QvkSettings::readAreaScreencast( QvkRegionChoise *vkRegionChoise )
     settings.endGroup();
 }
 
-void QvkSettings::saveCamera( int x, int y )
+void QvkSettings::saveCamera( int index, int x, int y )
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
-    settings.beginGroup( "Camera" );
+    settings.beginGroup( "Camera-" + QString::number( index ) );
     settings.setValue( "X", x );
     settings.setValue( "Y", y );
     settings.endGroup();
