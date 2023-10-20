@@ -431,13 +431,11 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
 
 #ifdef Q_OS_WIN
         if ( value == true ) {
-            vkCameraWindow->setWindowFlag( Qt::Window, false );
-            vkCameraWindow->setWindowFlag( Qt::ToolTip, true );
+            vkCameraWindow->setWindowFlag( Qt::FramelessWindowHint, true );
         }
 
         if ( value == false ) {
-            vkCameraWindow->setWindowFlag( Qt::Window, true );
-            vkCameraWindow->setWindowFlag( Qt::ToolTip, false );
+            vkCameraWindow->setWindowFlag( Qt::FramelessWindowHint, false );
         }
 #endif
 
@@ -457,6 +455,7 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
             vkCameraWindow->show();
         }
     }
+
 }
 
 
@@ -546,7 +545,7 @@ void QvkCameraSingle::slot_radioButtonCurrentCameraClicked( bool value )
     checkBoxCameraMono->show();
 }
 
-
+/*
 void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
 {
     if ( videoFrame.isValid() == false ) {
@@ -719,6 +718,148 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
             vkCameraWindow->setFixedSize( h, h );
 
 #endif
+        }
+    }
+    // Circle end
+
+    vkCameraWindow->setNewImage( image );
+}
+*/
+
+//void QvkCameraController::slot_setNewImage( QImage image )
+void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
+{
+    QImage image = videoFrame.toImage();
+    image = image.convertedTo( QImage::Format_ARGB32 );
+
+    if ( checkBoxCameraMirrorHorizontal->isChecked() == true ) {
+        image = image.mirrored( true, false );
+    }
+
+    if ( checkBoxCameraMirrorVertical->isChecked() == false ) {
+        image = image.mirrored( false, true );
+    }
+
+    if ( checkBoxCameraInvert->isChecked() == true ) {
+        image.invertPixels( QImage::InvertRgb );
+    }
+
+    if ( checkBoxCameraGray->isChecked() == true ) {
+        image = image.convertToFormat( QImage::Format_Grayscale8 );
+    }
+
+    if ( checkBoxCameraMono->isChecked() == true ) {
+        image = image.convertToFormat( QImage::Format_Mono );
+    }
+
+
+    // Zoom
+    if ( sliderCameraWindowZoom->value() > 0 ) {
+        qreal width = image.width();
+        qreal height = image.height();
+        qreal quotient = width / height;
+        qreal minusPixel = sliderCameraWindowZoom->value();
+        QImage image_zoom = image.copy( minusPixel,
+                                       minusPixel / quotient,
+                                       width - ( 2 * minusPixel ),
+                                       height - ( 2 * minusPixel / quotient )
+                                       );
+        image = image_zoom.scaled( width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+    }
+    // Zoom end
+
+
+    // Rectangel
+    if ( toolButton_camera_view_rectangle->isChecked() == true ) {
+        if ( vkCameraWindow->isFullScreen() == false ) {
+            qreal width = image.width();
+            qreal height = image.height();
+            qreal quotient = width / height;
+            int w = comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
+            int h = comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
+            image = image.scaled( w, h, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+            vkCameraWindow->setFixedSize( image.width(), image.height() );
+            vkCameraWindow->setNewImage( image );
+            return;
+        } else {
+            vkCameraWindow->setNewImage( image );
+            return;
+        }
+    }
+    // Rectangel end
+
+
+    // Ellipse
+    if ( toolButton_camera_view_ellipse->isChecked() == true ) {
+        if ( vkCameraWindow->isFullScreen() == false ) {
+            qreal width = image.width();
+            qreal height = image.height();
+            qreal quotient = width / height;
+            int w = comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
+            int h = comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
+            image = image.scaled( w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation );
+        }
+        QPixmap pixmap( image.width(), image.height() );
+        pixmap.fill( Qt::transparent );
+        QPainter painter;
+        painter.begin( &pixmap );
+        painter.setRenderHints( QPainter::Antialiasing, true );
+        QPainterPath path;
+        path.addEllipse( 0, 0, image.width(), image.height() );
+        painter.setClipPath( path );
+        painter.drawImage( QPoint( 0, 0 ), image );
+        painter.end();
+        image = pixmap.toImage();
+        if ( vkCameraWindow->isFullScreen() == false ) {
+            vkCameraWindow->setFixedSize( image.width(), image.height() );
+        }
+    }
+
+
+    // Circle
+    if ( toolButton_camera_view_circle->isChecked() == true ) {
+        if ( vkCameraWindow->isFullScreen() == true ) {
+            int w = image.width();
+            int h = image.height();
+            QPixmap pixmap( w, h );
+            pixmap.fill( Qt::transparent );
+            QPainter painter;
+            painter.begin( &pixmap );
+            painter.setRenderHints( QPainter::Antialiasing, true );
+            QPainterPath path;
+            path.addEllipse( (w-h)/2, 0, h, h );
+            painter.setClipPath( path );
+            image = image.scaled( w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation );
+            painter.drawImage( 0, 0, image );
+            painter.end();
+            image = pixmap.toImage();
+        } else {
+            qreal width = image.width();
+            qreal height = image.height();
+            qreal quotient = width / height;
+            qreal w = comboBoxCameraResolution->currentText().section( "x", 0, 0 ).toInt() - sliderCameraWindowSize->value();
+            qreal h = comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() - sliderCameraWindowSize->value() / quotient;
+
+            QPixmap pixmap( h, h );
+            pixmap.fill( Qt::transparent );
+            QPainter painter;
+            painter.begin( &pixmap );
+            painter.setRenderHints( QPainter::Antialiasing, true );
+            painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
+
+            QPainterPath path;
+            path.addEllipse( 0, 0, h, h );
+            painter.setClipPath( path );
+
+            QRectF target( 0.0, 0.0, h, h );
+            QRectF source( (w-h)/2, 0.0, image.height(), image.height() );
+            painter.drawImage( target, image, source );
+
+            painter.end();
+
+            image = pixmap.toImage();
+
+            vkCameraWindow->setFixedSize( h, h );
         }
     }
     // Circle end
