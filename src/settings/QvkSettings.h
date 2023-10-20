@@ -49,7 +49,7 @@ public:
     void readAreaScreencast( QvkRegionChoise *vkRegionChoise );
 
     void saveCamera( int index, int x, int y );
-    void readCamera( QvkCameraController *vkCameraController );
+    void readCamera( QList<QvkCameraSingle *> vkCameraSingle);
 
     void saveSystrayAlternative( int x, int y );
     void readSystrayAlternative( QvkSystrayAlternative *vkSystrayAlternative );

@@ -602,7 +602,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vkSettings.readAll( ui, this );
     vkSettings.readAreaScreencast( vkRegionChoise );
-    vkSettings.readCamera( vkCameraController );
+    vkSettings.readCamera( vkCameraController->cameraSingelList );
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
     vkSettings.readPlayerPathOpenFile( 0, vkPlayerController ); // this is for the new GStreamer player
 

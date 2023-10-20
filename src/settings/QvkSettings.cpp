@@ -624,32 +624,14 @@ void QvkSettings::saveCamera( int index, int x, int y )
     settings.endGroup();
 }
 
-void QvkSettings::readCamera( QvkCameraController *vkCameraController )
+void QvkSettings::readCamera( QList<QvkCameraSingle *> vkCameraSingle)
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
-    settings.beginGroup( "Camera" );
-#if (QT_VERSION <= QT_VERSION_CHECK(6, 0, 0))
-    // Qt5
-#ifdef Q_OS_LINUX
-    vkCameraController->vkCameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
-#endif
-
-#ifdef Q_OS_WIN
-    vkCameraController->old_XY.setX( settings.value( "X", 0 ).toInt() );
-    vkCameraController->old_XY.setY( settings.value( "Y", 0 ).toInt() );
-    QList<QCheckBox *> listCheckBox = vkCameraController->ui_formMainWindow->centralWidget->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listCheckBox.count(); i++ ) {
-        if ( listCheckBox.at(i)->objectName() == "checkBoxCameraOnOff" ) {
-            if ( listCheckBox.at(i)->isChecked() == true ) {
-                vkCameraController->vkCameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
-            }
-        }
+    for ( int index = 0; index < vkCameraSingle.count(); index++ ) {
+        settings.beginGroup( "Camera-" + QString::number( index ) );
+           vkCameraSingle.at( index )->vkCameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt()  );
+        settings.endGroup();
     }
-#endif
-#else
-    // Qt6
-#endif
-    settings.endGroup();
 }
 
 void QvkSettings::saveSystrayAlternative( int x, int y )
