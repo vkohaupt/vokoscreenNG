@@ -971,12 +971,15 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
                                        vkRegionChoise->getYRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
                                        vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
                                        vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
-        vkSettings.saveSystrayAlternative( vkSystrayAlternative->vkSystrayAlternativeWindow->x(), vkSystrayAlternative->vkSystrayAlternativeWindow->y() );
+        vkSettings.saveSystrayAlternative( vkSystrayAlternative->vkSystrayAlternativeWindow->x(),
+                                           vkSystrayAlternative->vkSystrayAlternativeWindow->y() );
         vkSettings.savePlayerPathOpenFile( vkPlayerController->pathOpenFile );
         vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
         vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget->getColor() );
         for ( int index = 0; index < vkCameraController->cameraSingelList.count(); index++ ) {
-            vkSettings.saveCamera( index, vkCameraController->cameraSingelList.at(index)->vkCameraWindow->x(), vkCameraController->cameraSingelList.at(index)->vkCameraWindow->y() );
+            vkSettings.saveCamera( index,
+                                   vkCameraController->cameraSingelList.at(index)->vkCameraWindow->x(),
+                                   vkCameraController->cameraSingelList.at(index)->vkCameraWindow->y() );
         }
 
 #ifdef Q_OS_WIN
