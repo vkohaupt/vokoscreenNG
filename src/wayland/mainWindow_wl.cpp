@@ -22,10 +22,15 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     : QMainWindow(parent, f)
     , ui(new Ui::formMainWindow_wl)
 {
-    translator.load( QLocale::system().name(), ":/language" );
-    qApp->installTranslator( &translator );
-    qtTranslator.load( "qt_" + QLocale::system().name(), QLibraryInfo::path( QLibraryInfo::TranslationsPath ) );
-    qApp->installTranslator( &qtTranslator );
+    bool bo = translator.load( QLocale::system().name(), ":/language" );
+    if ( bo == true ) {
+        qApp->installTranslator( &translator );
+    }
+
+    bo = qtTranslator.load( "qt_" + QLocale::system().name(), QLibraryInfo::path( QLibraryInfo::TranslationsPath ) );
+    if ( bo == true ) {
+        qApp->installTranslator( &qtTranslator );
+    }
 
     ui->setupUi( this );
 
@@ -116,7 +121,7 @@ void QvkMainWindow_wl::set_system_info()
     QDateTime dateTime = QDateTime::currentDateTime();
     qDebug().noquote() << global::nameOutput << "Log from:" << dateTime.toString( "yyyy-MM-dd hh:mm:ss" );
     QLocale locale;
-    qDebug().noquote() << global::nameOutput << "Country:" << QLocale::countryToString( locale.country() );
+    qDebug().noquote() << global::nameOutput << "Country:" << QLocale::territoryToString( locale.territory() );
     qDebug().noquote() << global::nameOutput << "Qt:" << qVersion();
     qDebug().noquote() << global::nameOutput << gst_version_string();
 //    qDebug().noquote() << global::nameOutput << "PulseAudio library version:" << pa_get_library_version();
