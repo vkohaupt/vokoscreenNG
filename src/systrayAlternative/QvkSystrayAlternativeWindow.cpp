@@ -55,7 +55,7 @@ void QvkSystrayAlternativeWindow::set_Menu( QMenu *m_menu )
 
 void QvkSystrayAlternativeWindow::mouseMoveEvent( QMouseEvent *event )
 {
-    move( event->globalPos() - point );
+    move( event->globalPosition().toPoint() - point );
 }
 
 
