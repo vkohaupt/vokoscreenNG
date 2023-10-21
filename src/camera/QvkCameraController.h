@@ -40,7 +40,7 @@ public:
     QvkCameraController( Ui_formMainWindow *ui_surface );
     virtual ~QvkCameraController();
     QvkCameraSingle *vkCameraSingle;
-    QList<QvkCameraSingle *> cameraSingelList;
+    QList<QvkCameraSingle *> cameraSingleList;
 
 
 public slots:

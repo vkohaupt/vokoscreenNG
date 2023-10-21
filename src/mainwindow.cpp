@@ -602,7 +602,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     vkSettings.readAll( ui, this );
     vkSettings.readAreaScreencast( vkRegionChoise );
-    vkSettings.readCamera( vkCameraController->cameraSingelList );
+    vkSettings.readCamera( vkCameraController->cameraSingleList );
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
     vkSettings.readPlayerPathOpenFile( 0, vkPlayerController ); // this is for the new GStreamer player
 
@@ -750,9 +750,14 @@ void QvkMainWindow::changeEvent( QEvent *event )
         vkPlayerController->ui->retranslateUi( vkPlayerController );
         vkLicenses->ui->retranslateUi( vkLicenses );
         vkHelp->uiHelp->retranslateUi( vkHelp );
-//        vkCameraController->vkCameraSingle->vkCameraSettingsDialog->ui->retranslateUi( vkCameraController->vkCameraSingle->vkCameraSettingsDialog );
         vkSystray->setMenueText();
         vkSystrayAlternative->setMenueText();
+
+        for ( int i = 0; i < vkCameraController->cameraSingleList.count(); i++ ) {
+            vkCameraController->cameraSingleList.at(i)->vkCameraSettingsDialog->ui->retranslateUi( vkCameraController->cameraSingleList.at(i)->vkCameraSettingsDialog );
+        }
+
+
     } else {
         QWidget::changeEvent(event);
     }
@@ -976,10 +981,10 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
         vkSettings.savePlayerPathOpenFile( vkPlayerController->pathOpenFile );
         vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
         vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget->getColor() );
-        for ( int index = 0; index < vkCameraController->cameraSingelList.count(); index++ ) {
+        for ( int index = 0; index < vkCameraController->cameraSingleList.count(); index++ ) {
             vkSettings.saveCamera( index,
-                                   vkCameraController->cameraSingelList.at(index)->vkCameraWindow->x(),
-                                   vkCameraController->cameraSingelList.at(index)->vkCameraWindow->y() );
+                                   vkCameraController->cameraSingleList.at(index)->vkCameraWindow->x(),
+                                   vkCameraController->cameraSingleList.at(index)->vkCameraWindow->y() );
         }
 
 #ifdef Q_OS_WIN
