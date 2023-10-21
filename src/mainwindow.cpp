@@ -58,10 +58,15 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                                 ui(new Ui::formMainWindow),
                                                 vkWinInfo(new QvkWinInfo)
 {
-    translator.load( QLocale::system().name(), ":/language" );
-    QCoreApplication::installTranslator( &translator );
-    qtTranslator.load( "qt_" + QLocale::system().name(), QLibraryInfo::path( QLibraryInfo::TranslationsPath ) );
-    QCoreApplication::installTranslator( &qtTranslator );
+    bool bo = translator.load( QLocale::system().name(), ":/language" );
+    if ( bo == true ) {
+        QCoreApplication::installTranslator( &translator );
+    }
+
+    bo = qtTranslator.load( "qt_" + QLocale::system().name(), QLibraryInfo::path( QLibraryInfo::TranslationsPath ) );
+    if ( bo == true ) {
+        QCoreApplication::installTranslator( &qtTranslator );
+    }
 
     ui->setupUi(this);
 
