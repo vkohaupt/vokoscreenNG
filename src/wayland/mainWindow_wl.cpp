@@ -24,7 +24,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 {
     translator.load( QLocale::system().name(), ":/language" );
     qApp->installTranslator( &translator );
-    qtTranslator.load( "qt_" + QLocale::system().name(), QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
+    qtTranslator.load( "qt_" + QLocale::system().name(), QLibraryInfo::path( QLibraryInfo::TranslationsPath ) );
     qApp->installTranslator( &qtTranslator );
 
     ui->setupUi( this );
@@ -128,9 +128,9 @@ void QvkMainWindow_wl::set_system_info()
     qDebug().noquote() << global::nameOutput << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
     qDebug().noquote() << global::nameOutput << "Icon-Theme:" << QIcon::themeName();
     qDebug().noquote() << global::nameOutput << "Styles:" << QStyleFactory::keys();
-    qDebug().noquote() << global::nameOutput << "Qt-PluginsPath:     " << QLibraryInfo::location( QLibraryInfo::PluginsPath );
-    qDebug().noquote() << global::nameOutput << "Qt-TranslationsPath:" << QLibraryInfo::location( QLibraryInfo::TranslationsPath );
-    qDebug().noquote() << global::nameOutput << "Qt-LibraryPath:     " << QLibraryInfo::location( QLibraryInfo::LibrariesPath );
+    qDebug().noquote() << global::nameOutput << "Qt-PluginsPath:     " << QLibraryInfo::path( QLibraryInfo::PluginsPath );
+    qDebug().noquote() << global::nameOutput << "Qt-TranslationsPath:" << QLibraryInfo::path( QLibraryInfo::TranslationsPath );
+    qDebug().noquote() << global::nameOutput << "Qt-LibraryPath:     " << QLibraryInfo::path( QLibraryInfo::LibrariesPath );
 //    qDebug().noquote() << global::nameOutput << "Settings:" << vkSettings.getFileName();
     qDebug().noquote() << global::nameOutput << "Log:" << vklogController->get_logPath();
     qDebug().noquote() << global::nameOutput << "Default Videopath:" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
