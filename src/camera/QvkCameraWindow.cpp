@@ -32,7 +32,7 @@ QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface,
 {
     ui = ui_surface;
     checkBoxCameraWindowFrame = checkBox;
-    setWindowFlags( windowFlags() | Qt::WindowStaysOnTopHint );
+    setWindowFlags( Qt::WindowStaysOnTopHint );
     setAttribute( Qt::WA_TranslucentBackground, true );
     setWindowIcon( QIcon( QString::fromUtf8( ":/pictures/logo/logo.png" ) ) );
     setWindowTitle( QString( tr( "Camera") ) + " " + global::version );
@@ -139,13 +139,6 @@ void QvkCameraWindow::paintEvent( QPaintEvent *event )
     painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painter.drawPixmap( QPoint( 0, 0 ), pixmap );
     painter.end();
-/*
-    if ( checkBoxCameraWindowFrame->isChecked() == true ) {
-        setMask( pixmap.mask() );
-    } else {
-        clearMask();
-    }
-*/
 }
 
 
