@@ -42,7 +42,7 @@ QStringList QvkPulseAudioDevices::getAllDevices()
     if ( QvkPulseAudioServer::isAvailable() ) {
         const char *ss = get_all_audio_devices();
         QString s1 = QString::fromUtf8( ss );
-        QString s2 = s1.left( QString::fromUtf8( ss ).count() - 3 );
+        QString s2 = s1.left( QString::fromUtf8( ss ).length() - 3 );
         list = s2.split( "---" );
     }
     return list;
