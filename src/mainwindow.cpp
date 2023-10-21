@@ -268,7 +268,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QDateTime dateTime = QDateTime::currentDateTime();
     qDebug().noquote() << global::nameOutput << "Log from:" << dateTime.toString( "yyyy-MM-dd hh:mm:ss" );
     QLocale locale;
-    qDebug().noquote() << global::nameOutput << "Country:" << QLocale::countryToString( locale.country() );
+    qDebug().noquote() << global::nameOutput << "Country:" << QLocale::territoryToString( locale.territory() );
     qDebug().noquote() << global::nameOutput << "Qt:" << qVersion();
     qDebug().noquote() << global::nameOutput << gst_version_string();
 #ifdef Q_OS_LINUX
@@ -656,7 +656,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     }
 
     QString localeName = QLocale::system().name() + ".qm";
-    QString localeCountry = QLocale::countryToString( locale.country() );
+    QString localeCountry = QLocale::territoryToString( locale.territory() );
     QDir dir( ":/language", "*.qm" );
     QStringList list = dir.entryList();
     if ( list.contains( localeName ) == false ) {
@@ -737,8 +737,10 @@ void QvkMainWindow::slot_languageChanged( int )
     }
 
     // Dialog
-    qtTranslator.load( "qt_" + language, QLibraryInfo::path( QLibraryInfo::TranslationsPath ) );
-    QCoreApplication::installTranslator( &qtTranslator );
+    bool bo = qtTranslator.load( "qt_" + language, QLibraryInfo::path( QLibraryInfo::TranslationsPath ) );
+    if ( bo == true ) {
+        QCoreApplication::installTranslator( &qtTranslator );
+    }
 }
 
 
