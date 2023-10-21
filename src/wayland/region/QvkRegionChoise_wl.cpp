@@ -252,11 +252,11 @@ void QvkRegionChoise_wl::mousePressEvent( QMouseEvent *event )
       case Middle      : { handlePressed = Middle;       handleKeyPressed = Middle;       HandleSelected = Middle;       break; }
     }
 
-    mous_delta_X_to_blueline = event->x() - frame_X;
-    mous_delta_Y_to_blueline = event->y() - frame_Y;
+    mous_delta_X_to_blueline = event->position().x() - frame_X;
+    mous_delta_Y_to_blueline = event->position().y() - frame_Y;
 
-    old_Mouse_X = event->x();
-    old_Mouse_Y = event->y();
+    old_Mouse_X = event->position().x();
+    old_Mouse_Y = event->position().y();
     old_Frame_Width = frame_Width;
     old_Frame_Height = frame_height;
 
@@ -601,10 +601,10 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
     {
       case NoHandle    : break;
       case TopLeft     : { // Move
-                           frame_X = event->x() - mous_delta_X_to_blueline;
-                           frame_Y = event->y() - mous_delta_Y_to_blueline;
-                           frame_Width = old_Mouse_X - event->x() + old_Frame_Width;
-                           frame_height = old_Mouse_Y - event->y() + old_Frame_Height;
+                           frame_X = event->position().x() - mous_delta_X_to_blueline;
+                           frame_Y = event->position().y() - mous_delta_Y_to_blueline;
+                           frame_Width = old_Mouse_X - event->position().x() + old_Frame_Width;
+                           frame_height = old_Mouse_Y - event->position().y() + old_Frame_Height;
 
                            // Limit min
                            if ( frame_Width < frame_min_width ) {
@@ -631,8 +631,8 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                            break;
                          }
       case TopMiddle   : { // Move
-                           frame_Y = event->y() - mous_delta_Y_to_blueline;
-                           frame_height = old_Mouse_Y - event->y() + old_Frame_Height;
+                           frame_Y = event->position().y() - mous_delta_Y_to_blueline;
+                           frame_height = old_Mouse_Y - event->position().y() + old_Frame_Height;
 
                            // Limit min
                            if ( frame_height < frame_min_height ) {
@@ -649,9 +649,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                            break;
                          }
       case TopRight    : { // Move
-                           frame_Y = event->y() - mous_delta_Y_to_blueline;
-                           frame_Width = event->x() - old_Mouse_X + old_Frame_Width;
-                           frame_height = old_Mouse_Y - event->y() + old_Frame_Height;;
+                           frame_Y = event->position().y() - mous_delta_Y_to_blueline;
+                           frame_Width = event->position().x() - old_Mouse_X + old_Frame_Width;
+                           frame_height = old_Mouse_Y - event->position().y() + old_Frame_Height;;
 
                            // Limit min
                            if ( frame_Width < frame_min_width ) {
@@ -676,7 +676,7 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                            break;
                          }
       case RightMiddle : { // Move
-                           frame_Width = event->x() - old_Mouse_X + old_Frame_Width;
+                           frame_Width = event->position().x() - old_Mouse_X + old_Frame_Width;
 
                            // Limit min
                            if ( frame_Width < frame_min_width ) {
@@ -691,8 +691,8 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                            break;
                          }
       case BottomRight : { // Move
-                           frame_Width = event->x() - old_Mouse_X + old_Frame_Width;
-                           frame_height = event->y() - old_Mouse_Y + old_Frame_Height;
+                           frame_Width = event->position().x() - old_Mouse_X + old_Frame_Width;
+                           frame_height = event->position().y() - old_Mouse_Y + old_Frame_Height;
 
                            // Limit min
                            if ( frame_Width < frame_min_width ) {
@@ -715,7 +715,7 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                            break;
                          }
       case BottomMiddle: { // Move
-                           frame_height = event->y() - old_Mouse_Y + old_Frame_Height;
+                           frame_height = event->position().y() - old_Mouse_Y + old_Frame_Height;
 
                            // Limit min
                            if ( frame_height < frame_min_height ) {
@@ -731,9 +731,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                          }
     case BottomLeft    : {
                            // Move
-                           frame_X = event->x() - mous_delta_X_to_blueline;
-                           frame_height = event->y() - old_Mouse_Y + old_Frame_Height;
-                           frame_Width = old_Mouse_X - event->x() + old_Frame_Width;
+                           frame_X = event->position().x() - mous_delta_X_to_blueline;
+                           frame_height = event->position().y() - old_Mouse_Y + old_Frame_Height;
+                           frame_Width = old_Mouse_X - event->position().x() + old_Frame_Width;
 
                            // Limit min
                            if ( frame_Width < frame_min_width ) {
@@ -758,8 +758,8 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
                            break;
                          }
       case LeftMiddle  : { // Move
-                           frame_X = event->x() - mous_delta_X_to_blueline;
-                           frame_Width = old_Mouse_X - event->x() + old_Frame_Width;
+                           frame_X = event->position().x() - mous_delta_X_to_blueline;
+                           frame_Width = old_Mouse_X - event->position().x() + old_Frame_Width;
 
                            // Limit min
                            if ( frame_Width < frame_min_width ) {
@@ -778,8 +778,8 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
       case Middle      : { // Move
                            int deltaX = ( old_Frame_X2 - framePenHalf - frame_Width/2 ) - old_Mouse_X;
                            int deltaY = ( old_Frame_Y2 - framePenHalf - frame_height/2 ) - old_Mouse_Y;
-                           frame_X = event->x() - frame_Width/2 + framePenHalf + deltaX;
-                           frame_Y = event->y() - frame_height/2 + framePenHalf + deltaY;
+                           frame_X = event->position().x() - frame_Width/2 + framePenHalf + deltaX;
+                           frame_Y = event->position().y() - frame_height/2 + framePenHalf + deltaY;
 
                            // Limit Top
                            if ( frame_Y <= 0 - framePenHalf ) {
