@@ -19,7 +19,7 @@ public:
     ~QvkSystrayAlternative();
      QvkSystrayAlternativeWindow *vkSystrayAlternativeWindow;
      void setVisible( bool ) override;
-     void setMenueText();
+     void setMenuText();
 
 
 private:

@@ -155,7 +155,7 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
 
     vkSystrayAlternativeWindow->set_Menu( menu );
 
-    setMenueText();
+    setMenuText();
 }
 
 
@@ -164,7 +164,7 @@ QvkSystrayAlternative::~QvkSystrayAlternative()
 }
 
 
-void QvkSystrayAlternative::setMenueText()
+void QvkSystrayAlternative::setMenuText()
 {
     startAction->setText( tr( "Start" ) );
     stopAction->setText( tr( "Stop" ) );

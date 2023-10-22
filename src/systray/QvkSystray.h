@@ -38,7 +38,7 @@ public:
     virtual ~QvkSystray();
     void init();
     QAction *startAction;
-    void setMenueText();
+    void setMenuText();
 
     
 public slots:

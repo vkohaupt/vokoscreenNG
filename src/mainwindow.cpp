@@ -758,9 +758,9 @@ void QvkMainWindow::changeEvent( QEvent *event )
         vkLicenses->ui->retranslateUi( vkLicenses );
         vkHelp->uiHelp->retranslateUi( vkHelp );
         if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
-            vkSystray->setMenueText();
+            vkSystray->setMenuText();
         }
-        vkSystrayAlternative->setMenueText();
+        vkSystrayAlternative->setMenuText();
 
         for ( int i = 0; i < vkCameraController->cameraSingleList.count(); i++ ) {
             vkCameraController->cameraSingleList.at(i)->vkCameraSettingsDialog->ui->retranslateUi( vkCameraController->cameraSingleList.at(i)->vkCameraSettingsDialog );

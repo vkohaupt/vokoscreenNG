@@ -177,11 +177,11 @@ void QvkSystray::init()
         cameraAction->setEnabled( false );
     }
 
-    setMenueText();
+    setMenuText();
 }
 
 
-void QvkSystray::setMenueText()
+void QvkSystray::setMenuText()
 {
     startAction->setText( tr( "Start" ) );
     stopAction->setText( tr( "Stop" ) );
