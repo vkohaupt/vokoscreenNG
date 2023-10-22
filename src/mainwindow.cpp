@@ -581,7 +581,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         QString string_xy_XY = listLanguage.at(x).chopped(3);
         QLocale locale_xy_XY( string_xy_XY );
         QString language = QLocale::languageToString( locale_xy_XY.language() );
-        QString country = QLocale::countryToString( locale_xy_XY.country() );
+        QString country = QLocale::territoryToString( locale_xy_XY.territory() );
         QString string = language + "  " + "( " + country + " )" + "  " + "( " + string_xy_XY + " )";
         sortList << string;
     }
