@@ -14,16 +14,9 @@
 #include <QFileDialog>
 
 #ifdef Q_OS_WIN
-QvkDirDialog::QvkDirDialog(QWidget *parent)
+QvkDirDialog::QvkDirDialog( QWidget *parent )
 {
-/*
-    QFileDialog *fileDialog = new QFileDialog;
-    fileDialog->setFileMode( QFileDialog::Directory );
-    fileDialog->setOption( QFileDialog::DontUseNativeDialog, true );
-    fileDialog->setOption( QFileDialog::ShowDirsOnly, true );
-    fileDialog->setDirectory( QStandardPaths::writableLocation( QStandardPaths::HomeLocation ) );
-    fileDialog->show();
-*/
+    Q_UNUSED(parent)
     setFileMode( QFileDialog::Directory );
     setOption( QFileDialog::ShowDirsOnly, true );
     setDirectory( QStandardPaths::writableLocation( QStandardPaths::HomeLocation ) );
