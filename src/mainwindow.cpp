@@ -757,7 +757,9 @@ void QvkMainWindow::changeEvent( QEvent *event )
         vkPlayerController->ui->retranslateUi( vkPlayerController );
         vkLicenses->ui->retranslateUi( vkLicenses );
         vkHelp->uiHelp->retranslateUi( vkHelp );
-        vkSystray->setMenueText();
+        if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
+            vkSystray->setMenueText();
+        }
         vkSystrayAlternative->setMenueText();
 
         for ( int i = 0; i < vkCameraController->cameraSingleList.count(); i++ ) {
