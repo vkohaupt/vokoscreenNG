@@ -442,16 +442,17 @@ void QvkCameraSingle::slot_checkBoxCameraOnOff( bool value )
 
     // Camera stopen
     if ( value == false ) {
+        disconnect( videoSink );
+        delete videoSink;
+
         camera->stop();
         delete camera;
         camera = Q_NULLPTR;
 
         delete captureSession;
 
-        disconnect( videoSink );
-        delete videoSink;
-
         vkCameraWindow->hide();
+        qDebug().noquote() << global::nameOutput << "[Camera] Stop";
     }
 }
 
