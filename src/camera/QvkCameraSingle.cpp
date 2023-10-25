@@ -266,10 +266,12 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
 #ifdef Q_OS_WIN
         if ( value == true ) {
             vkCameraWindow->setWindowFlag( Qt::FramelessWindowHint, true );
+            qDebug().noquote() << global::nameOutput << "[Camera] Set window frameless";
         }
 
         if ( value == false ) {
             vkCameraWindow->setWindowFlag( Qt::FramelessWindowHint, false );
+            qDebug().noquote() << global::nameOutput << "[Camera] Set window frame";
         }
 #endif
 
@@ -282,11 +284,13 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
         if ( value == true ) {
             flags = Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
             vkCameraWindow->setWindowFlags( flags );
+            qDebug().noquote() << global::nameOutput << "[Camera] Set window frameless";
         }
 
         if ( value == false ) {
             flags = Qt::WindowStaysOnTopHint;
             vkCameraWindow->setWindowFlags( flags );
+            qDebug().noquote() << global::nameOutput << "[Camera] Set window frame";
         }
 #endif
 
@@ -295,7 +299,6 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
         }
     }
 
-    qDebug().noquote() << global::nameOutput << "[Camera] Set window frameless";
 }
 
 
