@@ -289,6 +289,8 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
             vkCameraWindow->show();
         }
     }
+
+    qDebug().noquote() << global::nameOutput << "[Camera] Set window frameless";
 }
 
 
