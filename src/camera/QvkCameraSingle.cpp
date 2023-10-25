@@ -273,6 +273,11 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
         }
 #endif
 
+// 1. Automatischer Start des Kamerafenster nach Start von vokoscreenNG im Vordergrund. Fehler--------------------------
+// 2. Fenster nach umschalten mittels frameless im Vordergrund. Fehler--------------------------------
+// 3. Fenster beim einschalten der Kamera im Vordergrund. OK
+// 4. Frameless Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. OK
+// 5. Umschalten von frameless in den window mode und umgekehrt kein gezappel. OK
 #ifdef Q_OS_LINUX
         if ( value == true ) {
             flags = Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
