@@ -279,7 +279,7 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
 // 2. Fenster nach umschalten mittels frameless im Vordergrund. OK
 // 3. Fenster beim einschalten der Kamera im Vordergrund. OK
 // 4. Frameless Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. OK
-// 5. Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. Fehler--------------------------
+// 5. Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. OK
 // 6. Umschalten von frameless in den window mode und umgekehrt kein gezappel. OK
 #ifdef Q_OS_LINUX
 // On Linux we need no more windowflags.
