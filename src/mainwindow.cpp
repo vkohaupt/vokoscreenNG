@@ -992,8 +992,8 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
         vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget->getColor() );
         for ( int index = 0; index < vkCameraController->cameraSingleList.count(); index++ ) {
             vkSettings.saveCamera( index,
-                                   vkCameraController->cameraSingleList.at(index)->vkCameraWindow->x(),
-                                   vkCameraController->cameraSingleList.at(index)->vkCameraWindow->y() );
+                                   vkCameraController->cameraSingleList.at(index)->vkCameraWindow->geometry().x(),
+                                   vkCameraController->cameraSingleList.at(index)->vkCameraWindow->geometry().y() );
         }
 
 #ifdef Q_OS_WIN
