@@ -139,6 +139,14 @@ void QvkCameraWindow::paintEvent( QPaintEvent *event )
     painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painter.drawPixmap( QPoint( 0, 0 ), pixmap );
     painter.end();
+
+#ifdef Q_OS_LINUX
+    if ( checkBoxCameraWindowFrame->isChecked() == true ) {
+        setMask( pixmap.mask() );
+    } else {
+        clearMask();
+    }
+#endif
 }
 
 

@@ -275,30 +275,21 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
         }
 #endif
 
-// 1. Automatischer Start des Kamerafenster nach Start von vokoscreenNG im Vordergrund. Fehler--------------------------
-// 2. Fenster nach umschalten mittels frameless im Vordergrund. Fehler--------------------------------
+// 1. Automatischer Start des Kamerafenster nach Start von vokoscreenNG im Vordergrund. OK
+// 2. Fenster nach umschalten mittels frameless im Vordergrund. OK
 // 3. Fenster beim einschalten der Kamera im Vordergrund. OK
 // 4. Frameless Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. OK
-// 5. Umschalten von frameless in den window mode und umgekehrt kein gezappel. OK
+// 5. Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. Fehler--------------------------
+// 6. Umschalten von frameless in den window mode und umgekehrt kein gezappel. OK
 #ifdef Q_OS_LINUX
-        if ( value == true ) {
-            flags = Qt::Window | Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint;
-            vkCameraWindow->setWindowFlags( flags );
-            qDebug().noquote() << global::nameOutput << "[Camera] Set window frameless";
-        }
-
-        if ( value == false ) {
-            flags = Qt::WindowStaysOnTopHint;
-            vkCameraWindow->setWindowFlags( flags );
-            qDebug().noquote() << global::nameOutput << "[Camera] Set window frame";
-        }
+// On Linux we need no more windowflags.
+// In QvkCameraWindow::paintEvent() we set setMask() and all works fine.
 #endif
 
         if ( checkBoxCameraOnOff->isChecked() == true ) {
             vkCameraWindow->show();
         }
     }
-
 }
 
 
