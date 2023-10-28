@@ -990,11 +990,21 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
         vkSettings.savePlayerPathOpenFile( vkPlayerController->pathOpenFile );
         vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
         vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget->getColor() );
+
+        #ifdef Q_OS_LINUX
         for ( int index = 0; index < vkCameraController->cameraSingleList.count(); index++ ) {
             vkSettings.saveCamera( index,
                                    vkCameraController->cameraSingleList.at(index)->vkCameraWindow->geometry().x(),
                                    vkCameraController->cameraSingleList.at(index)->vkCameraWindow->geometry().y() );
         }
+        #endif
+        #ifdef Q_OS_WIN
+        for ( int index = 0; index < vkCameraController->cameraSingleList.count(); index++ ) {
+            vkSettings.saveCamera( index,
+                                   vkCameraController->cameraSingleList.at(index)->vkCameraWindow->pos().x(),
+                                   vkCameraController->cameraSingleList.at(index)->vkCameraWindow->pos().y() );
+        }
+        #endif
 
 #ifdef Q_OS_WIN
     }
