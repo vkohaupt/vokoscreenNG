@@ -614,7 +614,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSettings.readCamera( vkCameraController->cameraSingleList );
 #endif
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
-    vkSettings.readPlayerPathOpenFile( 0, vkPlayerController ); // this is for the new GStreamer player
+    vkSettings.readPlayerPathOpenFile( 0, vkPlayerController );
 
     vkSettings.readHaloColor( vkHalo );
     vkSettings.readShowclickColor( vkShowClick );
