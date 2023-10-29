@@ -605,9 +605,14 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->frame_cisco->hide();
 #endif
 
+#ifdef Q_OS_WIN
     vkSettings.readCamera( vkCameraController->cameraSingleList );
+#endif
     vkSettings.readAll( ui, this );
     vkSettings.readAreaScreencast( vkRegionChoise );
+#ifdef Q_OS_LINUX
+    vkSettings.readCamera( vkCameraController->cameraSingleList );
+#endif
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
     vkSettings.readPlayerPathOpenFile( 0, vkPlayerController ); // this is for the new GStreamer player
 
