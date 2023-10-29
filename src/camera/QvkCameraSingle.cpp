@@ -255,8 +255,11 @@ QvkCameraSingle::~QvkCameraSingle()
 
 void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
 {
+#ifdef Q_OS_LINUX
+    Q_UNUSED(value)
+#endif
+
     if ( vkCameraWindow->isFullScreen() == false ) {
-        Qt::WindowFlags flags;
 
 // 1. Automatischer Start des Kamerafenster nach Start von vokoscreenNG im Vordergrund. OK
 // 2. Fenster nach umschalten mittels frameless im Vordergrund. OK
