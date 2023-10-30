@@ -300,9 +300,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << "User Videopath:" << vkSettings.getVideoPath();
     qDebug();
 #ifdef Q_OS_WIN
-    QByteArray GSTREAMER_1_0_ROOT_X86 = qgetenv( "GSTREAMER_1_0_ROOT_X86" );
-    qDebug().noquote() << global::nameOutput << "GSTREAMER_1_0_ROOT_X86:"<< GSTREAMER_1_0_ROOT_X86;
-
     QByteArray GST_PLUGIN_PATH_1_0 = qgetenv( "GST_PLUGIN_PATH_1_0" );
     qDebug().noquote() << global::nameOutput << "GST_PLUGIN_PATH_1_0:"<< GST_PLUGIN_PATH_1_0;
 
