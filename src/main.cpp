@@ -116,7 +116,7 @@ int main(int argc, char *argv[])
     // qmake options example:
     // DEFINES+=FOR_MY_LINUX_INSTALLER
 #if defined( Q_OS_WIN ) || defined( FOR_MY_LINUX_INSTALLER )
-/*
+
     QvkSettings vkSettings;
     QFileInfo dirPathProfile( vkSettings.getFileName() );
     QString pathProfile = dirPathProfile.absolutePath();
@@ -125,11 +125,15 @@ int main(int argc, char *argv[])
     // Die GStreamer plugins werden über die GST_PLUGIN_PATH_1_0 variable gefunden
     QString pluginPath;
     pluginPath.append( programPath );
+    pluginPath.append( separator ); // neu
+    pluginPath.append( programPath + "/gstreamer/gstreamer_lib" ); // neu
     qputenv( "GST_PLUGIN_PATH_1_0", pluginPath.toUtf8() );
 
     // Der openh264 Codec wird über die PATH variable gefunden
     QString pathPath;
     pathPath.append( programPath );
+    pathPath.append( separator ); // neu
+    pathPath.append( programPath + "/gstreamer/gstreamer_bin" ); // neu
     pathPath.append( separator );
     QFileInfo h264Profile( vkSettings.getOpenh264ProfilePathWithFilename() );
     pathPath.append( h264Profile.absolutePath() );
@@ -139,7 +143,7 @@ int main(int argc, char *argv[])
     pathRegistry.append( pathProfile );
     pathRegistry.append( "/gstreamer.registry" );
     qputenv( "GST_REGISTRY_1_0", pathRegistry.toUtf8() );
-*/
+
 /*
     bool bo;
     QString pluginPath;
