@@ -73,6 +73,15 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
         cameraSingleList.append( vkCameraSingle );
     }
 
+    // Wenn keine Camera vorhanden Icons für Zoom und Fenstergröße ausblenden
+    if ( camerasInfoList.count() == 0 ) {
+        ui->label_camera_window_resize->hide();
+        ui->label_camera_window_zoom->hide();
+        QLabel *label = new QLabel;
+        label->setText( "No camera found" );
+        ui->horizontalLayout_zoom->addWidget( label );
+    }
+
     // Am Ende ein spaceritem einfügen
     QSpacerItem *spacerItem = new QSpacerItem( 100,100, QSizePolicy::Expanding, QSizePolicy::Expanding );
     layoutAllCameras->addItem( spacerItem );
