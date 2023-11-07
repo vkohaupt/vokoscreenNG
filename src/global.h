@@ -29,6 +29,5 @@ namespace global
     extern QString nameOutput;
     extern QString version;
     extern int showclickCounter;
-    extern QLineEdit *lineEdit_EOS;
     extern bool testWASAPI;
 }

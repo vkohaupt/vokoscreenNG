@@ -20,25 +20,84 @@
  * --End_License--
  */
 
-#include <QPointer>
 #include <QMessageLogContext>
 #include <QString>
+#include <QStandardPaths>
+#include <QTime>
+#include <QDateTime>
+#include <QDir>
+#include <QLineEdit>
+#include <QByteArray>
+#include <QTextStream>
+#include <QFile>
 
-#include "QvkLogController.h" 
-#include "QvkLog.h"
+#include <global.h>
+#include "QvkLogController.h"
 
-QPointer<QvkLog> vklog;
-void myMessageOutput( QtMsgType type, const QMessageLogContext &context, const QString &msg )
+QFile logFile;
+QString path;
+QLineEdit *lineEdit_LOG;
+
+void myMessageHandler( QtMsgType type, const QMessageLogContext &context, const QString &msg )
 {
-    vklog->outputMessage( type, context, msg );
+    // Insert timestamp
+    QString sTime = QTime::currentTime().toString();
+    QString sMsg( msg );
+    if ( !sMsg.isEmpty() ) {
+        sMsg.prepend( sTime + " " ) ;
+    }
+
+    // Output terminal
+    QByteArray localMsg = sMsg.toLocal8Bit();
+    switch (type) {
+    case QtDebugMsg:
+        fprintf( stderr, "%s\n", localMsg.constData() );
+        break;
+    case QtInfoMsg:
+        fprintf( stderr, "Info: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function );
+        break;
+    case QtWarningMsg:
+        fprintf( stderr, "Warning: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function );
+        break;
+    case QtCriticalMsg:
+        fprintf( stderr, "Critical: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function );
+        break;
+    case QtFatalMsg:
+        fprintf( stderr, "Fatal: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function );
+        abort();
+    }
+
+    // Output Logfile
+#ifdef Q_OS_LINUX
+    QString eol = "\n";
+#endif
+#ifdef Q_OS_WIN
+    QString eol = "\r\n";
+#endif
+    logFile.open( QIODevice::WriteOnly | QIODevice::Append );
+    QTextStream stream( &logFile );
+    stream << sMsg << eol;
+    logFile.close();
+
+    lineEdit_LOG->setText( sMsg );
 }
 
 
 QvkLogController::QvkLogController()
 {
-    vklog = new QvkLog();
-    connect( vklog, SIGNAL( signal_newLogText( QString) ), this, SLOT( slot_addTextToGuiLog( QString ) ) );
-    qInstallMessageHandler( myMessageOutput );
+    QDateTime dateTime = QDateTime::currentDateTime();
+    QString stringDateTime = dateTime.toString( "yyyy-MM-dd_hh-mm-ss" );
+    path = QStandardPaths::writableLocation( QStandardPaths::AppConfigLocation );
+
+    QString logFolderName = path + "/" + "log";
+    if( !QDir( logFolderName ).exists() ) {
+        QDir().mkpath( logFolderName );
+    }
+
+    logFile.setFileName( path + "/" + "log" + "/" + stringDateTime + ".log" );
+    lineEdit_LOG = new QLineEdit;
+    connect( lineEdit_LOG, SIGNAL( textChanged( const QString ) ), this, SLOT( slot_addTextToGuiLog( QString ) ) );
+    qInstallMessageHandler( myMessageHandler );
 }
 
 
@@ -55,5 +114,5 @@ void QvkLogController::slot_addTextToGuiLog( QString value )
 
 QString QvkLogController::get_logPath()
 {
-    return vklog->logFile.fileName();
+    return logFile.fileName();
 }

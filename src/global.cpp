@@ -22,21 +22,12 @@
 
 #include "global.h"
 #include <QString>
-#include <QLineEdit>
 
 namespace global
 {
+    QString version = "4.0.0-beta-01";
     QString name = "vokoscreenNG";
     QString nameOutput = "[" + name + "]";
     int showclickCounter = 0;
-    QLineEdit *lineEdit_EOS;
     bool testWASAPI = false;
-
-#ifdef Q_OS_LINUX
-    QString version = "4.0.0-beta-01";
-#endif
-
-#ifdef Q_OS_WIN
-    QString version = "4.0.0-beta-01";
-#endif
 }

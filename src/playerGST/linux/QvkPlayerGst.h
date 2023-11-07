@@ -31,7 +31,7 @@
 #include <QObject>
 #include <QWidget>
 #include <QTimer>
-
+#include <QLineEdit>
 
 class QvkPlayerGst : public QObject
 {

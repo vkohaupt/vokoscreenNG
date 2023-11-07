@@ -27,6 +27,8 @@
 #include <QDebug>
 #include <QAudio>
 
+QLineEdit *lineEdit_EOS;
+
 QvkPlayerGst::QvkPlayerGst()
 {
     vkPlayerGstDiscover = new QvkPlayerGstDiscover;
@@ -62,7 +64,7 @@ void QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message, gpointer 
             qDebug().noquote() << global::nameOutput << "GST_MESSAGE_ERROR";
             break;
         case GST_MESSAGE_EOS:
-            global::lineEdit_EOS->setText( QString::number( counter++ ) );
+            lineEdit_EOS->setText( QString::number( counter++ ) );
             break;
         case GST_MESSAGE_DURATION_CHANGED:
             break;
@@ -109,8 +111,8 @@ void QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message, gpointer 
 
 void QvkPlayerGst::init()
 {
-    global::lineEdit_EOS = new QLineEdit;
-    connect( global::lineEdit_EOS, SIGNAL( textChanged( const QString ) ), this, SLOT( slot_EOS( QString ) ) );
+    lineEdit_EOS = new QLineEdit;
+    connect( lineEdit_EOS, SIGNAL( textChanged( const QString ) ), this, SLOT( slot_EOS( QString ) ) );
 
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );

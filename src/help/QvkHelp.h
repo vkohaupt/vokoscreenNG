@@ -26,6 +26,7 @@
 #include "ui_formMainWindow.h"
 #include "ui_help.h"
 #include "QvkDownloader.h"
+#include "QvkLocale.h"
 
 #include <QObject>
 #include <QTemporaryDir>
@@ -42,6 +43,7 @@ public:
     QvkHelp( Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkHelp() override;
     Ui_help *uiHelp;
+    QvkLocale *vkLocale;
 
 
 public slots:

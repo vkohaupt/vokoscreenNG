@@ -21,7 +21,6 @@
  */
 
 #include "QvkHelp.h"
-#include "QvkLocale.h"
 #include "global.h"
 
 #include <QMessageBox>
@@ -66,7 +65,7 @@ QvkHelp::QvkHelp( Ui_formMainWindow *ui_mainwindow ) : uiHelp(new(Ui::help))
 
     vk_helpPath = helpStringList.join( "/" ).append( "/");
 
-    QvkLocale *vkLocale = new QvkLocale();
+    vkLocale = new QvkLocale();
     connect( vkLocale, SIGNAL( signal_locale( QStringList) ), this, SLOT( slot_parse_locale( QStringList ) ) );
 
     vkDownloadHTML = new QvkDownloader( temporaryDirLocal.path() );
@@ -147,7 +146,12 @@ bool QvkHelp::eventFilter(QObject *object, QEvent *event)
 
 void QvkHelp::slot_cleanUp()
 {
-    temporaryDirLocal.remove();
+    bool bo = temporaryDirLocal.remove();
+    if ( bo == true ) {
+        qDebug().noquote() << global::nameOutput << "QvkHelp::slot_cleanUp TempDir is removed" << temporaryDirLocal.path();
+    } else {
+        qDebug().noquote() << global::nameOutput << "QvkHelp::slot_cleanUp TempDir not removed" << temporaryDirLocal.path();
+    }
 }
 
 

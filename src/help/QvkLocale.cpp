@@ -59,3 +59,14 @@ void QvkLocale::slot_parse( QString tempPathFileName )
 
     emit signal_locale( localeList );
 }
+
+
+void QvkLocale::slot_cleanUp()
+{
+    bool bo = temporaryDirLocal.remove();
+    if ( bo == true ) {
+        qDebug().noquote() << global::nameOutput << "QvkLocale::slot_cleanUp TempDir is removed" << temporaryDirLocal.path();
+    } else {
+        qDebug().noquote() << global::nameOutput << "QvkLocale::slot_cleanUp TempDir not removed" << temporaryDirLocal.path();
+    }
+}

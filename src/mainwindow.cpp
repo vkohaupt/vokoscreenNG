@@ -47,8 +47,6 @@
 #include "QvkSnapshot.h"
 #include "QvkPadsAndCaps.h"
 
-
-
 #ifdef Q_OS_LINUX
   #include <pulse/pulseaudio.h>
   #include "QvkComposite.h"
@@ -538,6 +536,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( this,      SIGNAL( signal_close() ),       ui->pushButtonContinue, SLOT( click() ) );
     connect( this,      SIGNAL( signal_close() ),       ui->pushButtonStop,     SLOT( click() ) );
     connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( slot_cleanUp() ) );
+    connect( this,      SIGNAL( signal_close() ),       vkHelp->vkLocale,       SLOT( slot_cleanUp() ) );
     connect( this,      SIGNAL( signal_close() ),       vkHelp,                 SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkLicenses,             SLOT( close() ) );
     connect( this,      SIGNAL( signal_close() ),       vkSystrayAlternative,   SLOT( close() ) );
@@ -573,9 +572,14 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     listLanguage.append( "en" );
     listLanguage.append( dirLanguage.entryList() );
     QStringList sortList;
+    QString string_xy_XY;
     for ( int x=0; x < listLanguage.count(); x++ ) {
         // .qm remove
-        QString string_xy_XY = listLanguage.at(x).chopped(3);
+        if ( listLanguage.at(x).contains( "." ) == true ) {
+            string_xy_XY = listLanguage.at(x).chopped(3);
+        } else {
+            string_xy_XY = listLanguage.at(x);
+        }
         QLocale locale_xy_XY( string_xy_XY );
         QString language = QLocale::languageToString( locale_xy_XY.language() );
         QString country = QLocale::territoryToString( locale_xy_XY.territory() );
@@ -977,6 +981,9 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
 
+    qDebug();
+    qDebug().noquote() << global::nameOutput << "QvkMainWindow::closeEvent Begin close";
+
 #ifdef Q_OS_WIN
     if ( vkCiscoOpenh264Controller->isShowCiscoFinishDialog == false )
     {
@@ -1032,7 +1039,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
         }
     }
 
-    qDebug().noquote() << global::nameOutput << "Clean closed";
+    qDebug().noquote() << global::nameOutput << "QvkMainWindow::closeEvent Clean closed";
 }
 
 

@@ -170,13 +170,10 @@ int main(int argc, char *argv[])
     gst_init (&argc, &argv);
 
 #ifdef Q_OS_LINUX
-    if ( QvkWaylandRoutines::is_Wayland_Display_Available() == false )
-    {
+    if ( QvkWaylandRoutines::is_Wayland_Display_Available() == false ) {
         QvkMainWindow *w = new QvkMainWindow;
         w->show();
-    }
-    else
-    {
+    } else {
         QvkMainWindow_wl *wl = new QvkMainWindow_wl;
         wl->show();
     }

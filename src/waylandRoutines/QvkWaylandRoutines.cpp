@@ -25,6 +25,8 @@
 
 #include <wayland-client.h>
 #include <QDebug>
+#include <QString>
+#include <QTime>
 
 QvkWaylandRoutines::QvkWaylandRoutines( QWidget *parent )
 {
@@ -40,7 +42,8 @@ bool QvkWaylandRoutines::is_Wayland_Display_Available()
 {
     wl_display *display = wl_display_connect( Q_NULLPTR );
     if ( display == Q_NULLPTR ) {
-        qDebug().noquote() << global::nameOutput << "Desktop session is a X11 session";
+        QString time = QTime::currentTime().toString();
+        qDebug().noquote() << time << global::nameOutput << "Desktop session is a X11 session";
         return false;
     }
 

@@ -40,6 +40,7 @@ public:
 
 
 public slots:
+    void slot_cleanUp();
 
 
 private:
