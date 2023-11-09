@@ -30,6 +30,7 @@
 #include <QObject>
 #include <QWidget>
 #include <QTimer>
+#include <QLineEdit>
 
 #include "QvkPlayerGstDiscover.h"
 
