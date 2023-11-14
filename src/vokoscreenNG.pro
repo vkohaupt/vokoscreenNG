@@ -56,24 +56,7 @@ isEmpty(QMAKE_LRELEASE) {
     QMAKE_LRELEASE = lrelease-qt5
   }
 }    
-
 system($$QMAKE_LRELEASE language/*.ts)
-
-TRANSLATIONS = $$files(language/*.ts)
-
-# language packages
-!isEmpty(TRANSLATIONS) {
-  isEmpty(TS_DIR):TS_DIR = language
-  TSQM.name = $$QMAKE_LRELEASE ${QMAKE_FILE_IN}
-  TSQM.input = TRANSLATIONS
-  TSQM.output = $$TS_DIR/${QMAKE_FILE_BASE}.qm
-  TSQM.commands = $$QMAKE_LRELEASE ${QMAKE_FILE_IN}
-  TSQM.CONFIG = no_link 
-  QMAKE_EXTRA_COMPILERS += TSQM
-  PRE_TARGETDEPS += compiler_TSQM_make_all
-}
-  else: message(No translation files in project)
-
 
 # Clean target
 QMAKE_CLEAN += $$TARGET */*~
