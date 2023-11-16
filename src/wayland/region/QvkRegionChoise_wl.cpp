@@ -135,7 +135,7 @@ void QvkRegionChoise_wl::paintEvent( QPaintEvent *event )
         image.fill( Qt::transparent );
         QPainter painterPixmap;
         painterPixmap.begin( &image );
-        painterPixmap.setRenderHints( QPainter::Antialiasing, true );
+        painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
         HandleTopLeft( painterPixmap );
         HandleTopMiddle( painterPixmap );
         HandleTopRight( painterPixmap );
@@ -165,7 +165,7 @@ void QvkRegionChoise_wl::paintEvent( QPaintEvent *event )
         image.fill( Qt::transparent );
         QPainter painterPixmap;
         painterPixmap.begin( &image );
-        painterPixmap.setRenderHints( QPainter::Antialiasing, true );
+        painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
         HandleRecord( painterPixmap,
                       frame_X - radius + penHalf,
                       frame_Y - radius + penHalf,
@@ -222,6 +222,7 @@ void QvkRegionChoise_wl::paintEvent( QPaintEvent *event )
 
     QPainter painter;
     painter.begin( this );
+    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painter.drawPixmap( QPoint( 0, 0 ), pixmap );
     painter.end();
 
