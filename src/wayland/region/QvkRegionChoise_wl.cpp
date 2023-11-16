@@ -129,10 +129,10 @@ void QvkRegionChoise_wl::paintEvent( QPaintEvent *event )
     (void)event;
 
     QImage image( screenWidth, screenHeight, QImage::Format_ARGB32_Premultiplied );
+    image.fill( Qt::transparent );
 
     if ( recordemode == false )
     {
-        image.fill( Qt::transparent );
         QPainter painterPixmap;
         painterPixmap.begin( &image );
         painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
@@ -162,7 +162,6 @@ void QvkRegionChoise_wl::paintEvent( QPaintEvent *event )
         }
         painterPixmap.end();
     } else {
-        image.fill( Qt::transparent );
         QPainter painterPixmap;
         painterPixmap.begin( &image );
         painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
