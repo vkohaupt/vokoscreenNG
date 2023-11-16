@@ -41,8 +41,7 @@ QPixmap QvkRegionButtonArrow_wl::getButton( QColor color )
 
     QPainter painter;
     painter.begin( &pixmap );
-    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
-
+      painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
       QBrush brush;
         brush.setColor( color );
         brush.setStyle( Qt::SolidPattern );
@@ -68,8 +67,7 @@ QPixmap QvkRegionButtonArrow_wl::getArrow( degreeArrow degree, QColor colorSelec
 
     QPainter painter;
     painter.begin( &pixmap );
-    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
-
+        painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
         painter.translate((diameter+penWidth)/2, (diameter+penWidth)/2);
         painter.rotate( degree );
         QPen pen;
