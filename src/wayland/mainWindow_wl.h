@@ -12,6 +12,7 @@
 #include <QMainWindow>
 #include <QTranslator>
 #include <QFileSystemWatcher>
+#include <QScreen>
 
 #include <gst/gst.h>
 
@@ -58,6 +59,8 @@ private:
     QString get_Videocodec_Encoder();
     QString get_Area_Videocrop();
     QString get_Muxer();
+
+    qreal myDevicePixelRatio( QScreen *m_screen );
 
 
 public Q_SLOTS:

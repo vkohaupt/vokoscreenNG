@@ -20,6 +20,7 @@
 #include <QScreen>
 #include <QList>
 #include <QGuiApplication>
+#include <qpa/qplatformscreen.h>
 
 QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     : QMainWindow(parent, f)
@@ -87,11 +88,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     // Hide to time not needed tabs
     ui->tabWidgetScreencast->removeTab(1); // Audio
 
-    QScreen *a_screen = QGuiApplication::screenAt( QPoint( 10, 10 ) );
-    qDebug().noquote() << global::nameOutput << "Screen available desktop width :" << a_screen->geometry();
-    qDebug().noquote() << global::nameOutput << "Logik" << a_screen->logicalDotsPerInch() << a_screen->logicalDotsPerInchX();
-    qDebug().noquote() << global::nameOutput << "physi" << a_screen->physicalDotsPerInch() << a_screen->physicalDotsPerInchX();
-
     QList<QScreen *> screen = QGuiApplication::screens();
     if ( !screen.empty() )
     {
@@ -103,7 +99,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             qDebug().noquote() << global::nameOutput << "Name from screen: " << screen.at(i)->name();
             qDebug().noquote() << global::nameOutput << "Screen available desktop width :" << QString::number( screen.at(i)->geometry().width() );
             qDebug().noquote() << global::nameOutput << "Screen available desktop height:" << QString::number( screen.at(i)->geometry().height() );
-            qDebug().noquote() << global::nameOutput << "DevicePixelRatio:" << screen.at(i)->devicePixelRatio() << " (Normal displays is 1, Retina display is 2)";
+            qDebug().noquote() << global::nameOutput << "DevicePixelRatio:" << myDevicePixelRatio( screen.at(i) ) << " (Normal displays is 1, Retina display is 2)";
             qDebug().noquote() << global::nameOutput << "Vertical refresh rate of the screen in Hz:" << screen.at(i)->refreshRate();
             qDebug().noquote() << global::nameOutput << "Screen orientation" << screen.at(i)->orientation();
             qDebug().noquote() << global::nameOutput << "Color depth of the screen: " << screen.at(i)->depth();
@@ -115,8 +111,10 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 }
 
 
-
-
+qreal QvkMainWindow_wl::myDevicePixelRatio( QScreen *m_screen )
+{
+    return (qreal)qRound( m_screen->logicalDotsPerInch() / m_screen->physicalDotsPerInchX() * 100 ) / 100;
+}
 
 
 QvkMainWindow_wl::~QvkMainWindow_wl()
