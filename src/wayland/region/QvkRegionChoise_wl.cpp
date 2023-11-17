@@ -69,13 +69,15 @@ QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow 
 
 void QvkRegionChoise_wl::slot_init()
 {
-    QList<QScreen *> screenList = QGuiApplication::screens();
-    screen = screenList.at( 0 );
+//    QList<QScreen *> screenList = QGuiApplication::screens();
+//    currentScreen = screenList.at( 0 );
+    currentScreen = screen();
+
 //    resize( screen->size().width(), screen->size().height() );
     showMaximized();
     hide();
-    screenWidth = screen->size().width();
-    screenHeight = screen->size().height();
+    screenWidth = currentScreen->size().width();
+    screenHeight = currentScreen->size().height();
 }
 
 
@@ -915,9 +917,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
 
 void QvkRegionChoise_wl::printSize( QPainter &painter )
 {
-  QString widthHeigtSize = QString::number( static_cast<int>( get_Width()/screen->devicePixelRatio() ) ) +
+  QString widthHeigtSize = QString::number( static_cast<int>( get_Width()/currentScreen->devicePixelRatio() ) ) +
                            " x " +
-                           QString::number( static_cast<int>( get_Height()/screen->devicePixelRatio() ) );
+                           QString::number( static_cast<int>( get_Height()/currentScreen->devicePixelRatio() ) );
 
   QFont font;
   font.setPointSize( 14 );
@@ -1462,8 +1464,8 @@ int QvkRegionChoise_wl::get_Y()
  */
 qreal QvkRegionChoise_wl::get_XRecordArea()
 {
-    qreal xReal = ( frame_X + framePenWidth/2 ) * screen->devicePixelRatio();
-    int xInt = static_cast<int>( ( frame_X + framePenWidth/2 ) * screen->devicePixelRatio() );
+  qreal xReal = ( frame_X + framePenWidth/2 );// * screen->devicePixelRatio();
+    int xInt = static_cast<int>( ( frame_X + framePenWidth/2 ) ); //* screen->devicePixelRatio() );
 
     if ( xReal > xInt ) {
         xReal = xInt + 1;
@@ -1478,8 +1480,9 @@ qreal QvkRegionChoise_wl::get_XRecordArea()
  */
 qreal QvkRegionChoise_wl::get_YRecordArea()
 {
-   qreal xReal = ( frame_Y + framePenWidth/2 ) * screen->devicePixelRatio();
-   int xInt = static_cast<int>( ( frame_Y + framePenWidth/2 ) * screen->devicePixelRatio() );
+    qDebug() << "11111111111111111111111111111111111111111111111111111" << currentScreen->devicePixelRatio();
+    qreal xReal = ( frame_Y + framePenWidth/2 );// * screen->devicePixelRatio();
+    int xInt = static_cast<int>( ( frame_Y + framePenWidth/2 ) );// * screen->devicePixelRatio() );
 
    if ( xReal > xInt ) {
        xReal = xInt + 1;
@@ -1494,13 +1497,13 @@ qreal QvkRegionChoise_wl::get_YRecordArea()
  */
 qreal QvkRegionChoise_wl::get_Height()
 {
-    qreal xReal =   ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * screen->devicePixelRatio();
-    int xInt = static_cast<int>( ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * screen->devicePixelRatio() );
+    qreal xReal =   ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * currentScreen->devicePixelRatio();
+    int xInt = static_cast<int>( ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * currentScreen->devicePixelRatio() );
 
     if ( xReal > xInt ) {
-        xReal = static_cast<int>( ( frame_height - framePenWidth ) * screen->devicePixelRatio() ) - 1;
+        xReal = static_cast<int>( ( frame_height - framePenWidth ) * currentScreen->devicePixelRatio() ) - 1;
     } else {
-        xReal = static_cast<int>( ( frame_height - framePenWidth ) * screen->devicePixelRatio() );
+        xReal = static_cast<int>( ( frame_height - framePenWidth ) * currentScreen->devicePixelRatio() );
     }
 
     return xReal;
@@ -1512,13 +1515,13 @@ qreal QvkRegionChoise_wl::get_Height()
  */
 qreal QvkRegionChoise_wl::get_Width()
 {
-    qreal xReal = ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * screen->devicePixelRatio();
-    int xInt = static_cast<int>( ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * screen->devicePixelRatio() );
+    qreal xReal = ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * currentScreen->devicePixelRatio();
+    int xInt = static_cast<int>( ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * currentScreen->devicePixelRatio() );
 
     if ( xReal > xInt ) {
-        xReal = static_cast<int>( ( frame_Width - framePenWidth ) * screen->devicePixelRatio() ) - 1;
+        xReal = static_cast<int>( ( frame_Width - framePenWidth ) * currentScreen->devicePixelRatio() ) - 1;
     } else {
-        xReal = static_cast<int>( ( frame_Width - framePenWidth ) * screen->devicePixelRatio() );
+        xReal = static_cast<int>( ( frame_Width - framePenWidth ) * currentScreen->devicePixelRatio() );
     }
 
     return xReal;

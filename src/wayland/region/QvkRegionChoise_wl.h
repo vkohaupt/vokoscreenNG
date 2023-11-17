@@ -52,7 +52,7 @@ public:
 
   void set_FrameColor( QColor color );
 
-  QScreen *screen;
+  QScreen *currentScreen;
   int screenWidth = 400; //Must set a value. Under windows comes a QPainter message
   int screenHeight = 400;
 
