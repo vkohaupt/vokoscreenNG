@@ -336,23 +336,27 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
 
     QString videocrop = "";
     vkRegionChoise_wl->recordMode( true );
-
+/*
     QScreen *Screen = screen();
     int screenWidth = Screen->size().width();
     int screenHeight = Screen->size().height();
+*/
+
+    qDebug() << "22222222222222222222222222222222222222" << vkRegionChoise_wl->screenWidth;
 
     QString top = QString::number( vkRegionChoise_wl->get_YRecordArea() );
-    QString right = QString::number( screenWidth - ( vkRegionChoise_wl->get_XRecordArea() + vkRegionChoise_wl->get_Width() ) );
-    QString bottom = QString::number( screenHeight - ( vkRegionChoise_wl->get_YRecordArea() + vkRegionChoise_wl->get_Height() ) );
+    QString right  = QString::number( vkRegionChoise_wl->screenSizeX() - ( vkRegionChoise_wl->get_XRecordArea() + vkRegionChoise_wl->get_Width() ) );
+    QString bottom = QString::number( vkRegionChoise_wl->screenSizeY() - ( vkRegionChoise_wl->get_YRecordArea() + vkRegionChoise_wl->get_Height() ) );
     QString left = QString::number( vkRegionChoise_wl->get_XRecordArea() );
     videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
 
+    /*
     qDebug().noquote() << global::nameOutput << "Area crop from the screen"
                        << Screen->name() + ","
                        << Screen->manufacturer() + ","
                        << Screen->model() + ","
                        << QString::number( Screen->size().width() ) + "/" + QString::number( Screen->size().height() );
-
+*/
     return videocrop;
 
 }

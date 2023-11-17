@@ -41,20 +41,21 @@ public:
   virtual ~QvkRegionChoise_wl();
   int get_X();
   int get_Y();
-  qreal get_Height();
-  qreal get_Width();
-  qreal get_XRecordArea();
-  qreal get_YRecordArea();
+  int get_Height();
+  int get_Width();
+  int get_XRecordArea();
+  int get_YRecordArea();
 
   void recordMode( bool value );
-//  void setWidth( int width );
-//  void setHeight( int height );
 
   void set_FrameColor( QColor color );
 
   QScreen *currentScreen;
   int screenWidth = 400; //Must set a value. Under windows comes a QPainter message
   int screenHeight = 400;
+
+  int screenSizeX();
+  int screenSizeY();
 
 
 public slots:
@@ -139,6 +140,7 @@ private:
   QColor frameColor;
 
   int a = 0;
+  qreal myDevicePixelRatio( QScreen *m_screen );
 
 
 protected:
