@@ -20,7 +20,6 @@
 #include <QScreen>
 #include <QList>
 #include <QGuiApplication>
-#include <qpa/qplatformscreen.h>
 
 QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     : QMainWindow(parent, f)
