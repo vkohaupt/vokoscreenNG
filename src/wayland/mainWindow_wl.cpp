@@ -338,8 +338,8 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
     vkRegionChoise_wl->recordMode( true );
 
     QString top    = QString::number( vkRegionChoise_wl->get_YRecordArea() );
-    QString right  = QString::number( vkRegionChoise_wl->screenSizeX() - ( vkRegionChoise_wl->get_XRecordArea() + vkRegionChoise_wl->get_Width() ) );
-    QString bottom = QString::number( vkRegionChoise_wl->screenSizeY() - ( vkRegionChoise_wl->get_YRecordArea() + vkRegionChoise_wl->get_Height() ) );
+    QString right  = QString::number( vkRegionChoise_wl->screenSizeX() - ( vkRegionChoise_wl->get_XRecordArea() + vkRegionChoise_wl->get_WidthRecordArea() ) );
+    QString bottom = QString::number( vkRegionChoise_wl->screenSizeY() - ( vkRegionChoise_wl->get_YRecordArea() + vkRegionChoise_wl->get_HeightRecordArea() ) );
     QString left   = QString::number( vkRegionChoise_wl->get_XRecordArea() );
     videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
 

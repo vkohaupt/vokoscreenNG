@@ -82,12 +82,6 @@ QvkRegionChoise_wl::~QvkRegionChoise_wl()
 }
 
 
-qreal QvkRegionChoise_wl::myDevicePixelRatio( QScreen *m_screen )
-{
-    return (qreal)qRound( m_screen->logicalDotsPerInch() / m_screen->physicalDotsPerInchX() * 100 ) / 100;
-}
-
-
 void QvkRegionChoise_wl::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event)
@@ -919,9 +913,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
 
 void QvkRegionChoise_wl::printSize( QPainter &painter )
 {
-  QString widthHeigtSize = QString::number( static_cast<int>( get_Width()/currentScreen->devicePixelRatio() ) ) +
+  QString widthHeigtSize = QString::number( static_cast<int>( get_WidthRecordArea()/currentScreen->devicePixelRatio() ) ) +
                            " x " +
-                           QString::number( static_cast<int>( get_Height()/currentScreen->devicePixelRatio() ) );
+                           QString::number( static_cast<int>( get_HeightRecordArea()/currentScreen->devicePixelRatio() ) );
 
   QFont font;
   font.setPointSize( 14 );
@@ -1461,6 +1455,11 @@ int QvkRegionChoise_wl::get_Y()
 }
 
 
+qreal QvkRegionChoise_wl::myDevicePixelRatio( QScreen *m_screen )
+{
+  return (qreal)qRound( m_screen->logicalDotsPerInch() / m_screen->physicalDotsPerInchX() * 100 ) / 100;
+}
+
 /*
  * Gibt die Original Breite des Bildschirm zurück
  */
@@ -1499,7 +1498,7 @@ int QvkRegionChoise_wl::get_YRecordArea()
 /**
  * Return height from record area
  */
-int QvkRegionChoise_wl::get_Height()
+int QvkRegionChoise_wl::get_HeightRecordArea()
 {
     return ( frame_height - framePenWidth ) * myDevicePixelRatio( currentScreen );
 }
@@ -1508,7 +1507,7 @@ int QvkRegionChoise_wl::get_Height()
 /**
  * Return width from record Area
  */
-int QvkRegionChoise_wl::get_Width()
+int QvkRegionChoise_wl::get_WidthRecordArea()
 {
     return ( frame_Width - framePenWidth ) * myDevicePixelRatio( currentScreen );
 }

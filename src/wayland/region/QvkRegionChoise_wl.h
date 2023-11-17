@@ -41,10 +41,10 @@ public:
   virtual ~QvkRegionChoise_wl();
   int get_X();
   int get_Y();
-  int get_Height();
-  int get_Width();
   int get_XRecordArea();
   int get_YRecordArea();
+  int get_WidthRecordArea();
+  int get_HeightRecordArea();
 
   void recordMode( bool value );
 
