@@ -88,8 +88,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->tabWidgetScreencast->removeTab(1); // Audio
 
     QList<QScreen *> screen = QGuiApplication::screens();
-    if ( !screen.empty() )
-    {
+    if ( !screen.empty() ) {
         for ( int i = 0; i < screen.size(); i++ ) {
             if ( screen.at(i)->name() == QGuiApplication::primaryScreen()->name() ) {
                 qDebug();
