@@ -93,11 +93,22 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             if ( screen.at(i)->name() == QGuiApplication::primaryScreen()->name() ) {
                 qDebug();
                 qDebug().noquote() << global::nameOutput << "This screen is the primary screen: " << QGuiApplication::primaryScreen()->name();
+            } else {
+                qDebug().noquote() << global::nameOutput << "Name from screen: " << screen.at(i)->name();
             }
-            qDebug().noquote() << global::nameOutput << "Name from screen: " << screen.at(i)->name();
-            qDebug().noquote() << global::nameOutput << "Screen available desktop width :" << QString::number( screen.at(i)->geometry().width() );
-            qDebug().noquote() << global::nameOutput << "Screen available desktop height:" << QString::number( screen.at(i)->geometry().height() );
-            qDebug().noquote() << global::nameOutput << "DevicePixelRatio:" << myDevicePixelRatio( screen.at(i) ) << " (Normal displays is 1, Retina display is 2)";
+            qDebug().noquote() << global::nameOutput << "DevicePixelRatio:" << myDevicePixelRatio( screen.at(i) );
+            qDebug().noquote() << global::nameOutput << "Screen Resolution width :"
+                                                     << screen.at(i)->geometry().width() * myDevicePixelRatio( screen.at(i) )
+                                                     << "="
+                                                     << screen.at(i)->geometry().width()
+                                                     << "x"
+                                                     << myDevicePixelRatio( screen.at(i) );
+            qDebug().noquote() << global::nameOutput << "Screen Resolution width :"
+                                                     << screen.at(i)->geometry().height() * myDevicePixelRatio( screen.at(i) )
+                                                     << "="
+                                                     << screen.at(i)->geometry().height()
+                                                     << "x"
+                                                     << myDevicePixelRatio( screen.at(i) );
             qDebug().noquote() << global::nameOutput << "Vertical refresh rate of the screen in Hz:" << screen.at(i)->refreshRate();
             qDebug().noquote() << global::nameOutput << "Screen orientation" << screen.at(i)->orientation();
             qDebug().noquote() << global::nameOutput << "Color depth of the screen: " << screen.at(i)->depth();
