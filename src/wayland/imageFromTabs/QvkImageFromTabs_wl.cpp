@@ -69,6 +69,7 @@ void QvkImageFromTabs_wl::slot_make_picture_from_tab()
         timer->stop();
         myParent->ui->pushButtonImages->setEnabled( true );
         emit signal_open_picture_folder();
+        disconnect( this, NULL, NULL, NULL );
         return;
     }
 
