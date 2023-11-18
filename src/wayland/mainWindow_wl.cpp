@@ -331,7 +331,7 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
 {
 
     QString videocrop = "";
-    vkRegionChoise_wl->recordMode( true );
+    vkRegionChoise_wl->set_recordMode( true );
 
     QString top    = QString::number( vkRegionChoise_wl->get_YRecordArea() );
     QString right  = QString::number( vkRegionChoise_wl->screenSizeX() - ( vkRegionChoise_wl->get_XRecordArea() + vkRegionChoise_wl->get_WidthRecordArea() ) );
@@ -392,8 +392,9 @@ void QvkMainWindow_wl::slot_stop()
     qDebug().noquote() << global::nameOutput << "Stop record";
 
     if ( ui->radioButtonScreencastArea->isChecked() ) {
-       vkRegionChoise_wl->recordMode( false );
+       vkRegionChoise_wl->set_recordMode( false );
        vkRegionChoise_wl->repaint();
+       vkRegionChoise_wl->setMask( vkRegionChoise_wl->pixmap.mask() );
     }
 }
 

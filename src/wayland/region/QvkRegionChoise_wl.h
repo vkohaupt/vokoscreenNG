@@ -46,13 +46,13 @@ public:
   int get_WidthRecordArea();
   int get_HeightRecordArea();
 
-  void recordMode( bool value );
-
+  void set_recordMode( bool value );
   void set_FrameColor( QColor color );
 
   QScreen *currentScreen;
   int screenWidth = 400; //Must set a value. Under windows comes a QPainter message
   int screenHeight = 400;
+  QPixmap pixmap;
 
   int screenSizeX();
   int screenSizeY();
@@ -68,7 +68,7 @@ private slots:
 
 private:
   Ui_formMainWindow_wl *ui;
-  QPixmap pixmap;
+//  QPixmap pixmap;
 
   enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle };
   Handle handlePressed;

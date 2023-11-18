@@ -1420,7 +1420,7 @@ void QvkRegionChoise_wl::HandleMiddle( QPainter &painter )
 }
 
 
-void QvkRegionChoise_wl::recordMode( bool value )
+void QvkRegionChoise_wl::set_recordMode( bool value )
 {
     if ( value == true ) {
         recordemode = true;
