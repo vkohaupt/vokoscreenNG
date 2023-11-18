@@ -68,8 +68,6 @@ private slots:
 
 private:
   Ui_formMainWindow_wl *ui;
-//  QPixmap pixmap;
-
   enum Handle { NoHandle, TopLeft, TopMiddle, TopRight, RightMiddle, BottomRight, BottomMiddle, BottomLeft, LeftMiddle, Middle };
   Handle handlePressed;
   Handle handleUnderMouse;
