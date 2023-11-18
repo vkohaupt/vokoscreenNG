@@ -1451,7 +1451,13 @@ int QvkRegionChoise_wl::get_Y()
 
 qreal QvkRegionChoise_wl::myDevicePixelRatio( QScreen *m_screen )
 {
-  return (qreal)qRound( m_screen->logicalDotsPerInch() / m_screen->physicalDotsPerInchX() * 100 ) / 100;
+  qDebug().noquote() << global::nameOutput << "QScreen::devicePixelRatio" << m_screen->devicePixelRatio();
+
+  if ( m_screen->devicePixelRatio() == 1 ) {
+        return 1;
+  } else {
+        return (qreal)qRound( m_screen->logicalDotsPerInch() / m_screen->physicalDotsPerInchX() * 100 ) / 100;
+  }
 }
 
 /**
