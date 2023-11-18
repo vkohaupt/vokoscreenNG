@@ -87,6 +87,12 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     // Hide to time not needed tabs
     ui->tabWidgetScreencast->removeTab(1); // Audio
 
+    qDebug();
+    qDebug().noquote() << global::nameOutput << "Hint:";
+    qDebug().noquote() << global::nameOutput << "When recording in full-screen mode, the screen resolution is recorded";
+    qDebug().noquote() << global::nameOutput << "When recording an area, only the native resolution and optional scaling are supported.";
+    qDebug();
+
     QList<QScreen *> screen = QGuiApplication::screens();
     if ( !screen.empty() ) {
         for ( int i = 0; i < screen.size(); i++ ) {
@@ -97,18 +103,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
                 qDebug().noquote() << global::nameOutput << "Name from screen: " << screen.at(i)->name();
             }
             qDebug().noquote() << global::nameOutput << "DevicePixelRatio:" << myDevicePixelRatio( screen.at(i) );
-            qDebug().noquote() << global::nameOutput << "Screen Resolution width :"
-                                                     << screen.at(i)->geometry().width() * myDevicePixelRatio( screen.at(i) )
-                                                     << "="
-                                                     << screen.at(i)->geometry().width()
-                                                     << "x"
-                                                     << myDevicePixelRatio( screen.at(i) );
-            qDebug().noquote() << global::nameOutput << "Screen Resolution height :"
-                                                     << screen.at(i)->geometry().height() * myDevicePixelRatio( screen.at(i) )
-                                                     << "="
-                                                     << screen.at(i)->geometry().height()
-                                                     << "x"
-                                                     << myDevicePixelRatio( screen.at(i) );
+            qDebug().noquote() << global::nameOutput << "Screen Resolution width :" << screen.at(i)->geometry().width();
+            qDebug().noquote() << global::nameOutput << "Screen Resolution height :" << screen.at(i)->geometry().height();
             qDebug().noquote() << global::nameOutput << "Vertical refresh rate of the screen in Hz:" << screen.at(i)->refreshRate();
             qDebug().noquote() << global::nameOutput << "Screen orientation" << screen.at(i)->orientation();
             qDebug().noquote() << global::nameOutput << "Color depth of the screen: " << screen.at(i)->depth();
