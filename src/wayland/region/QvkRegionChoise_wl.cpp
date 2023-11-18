@@ -163,6 +163,7 @@ void QvkRegionChoise_wl::paintEvent( QPaintEvent *event )
         QPainter painterPixmap;
         painterPixmap.begin( &image );
         painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
+        painterPixmap.setRenderHint( QPainter::Antialiasing, true );
         HandleRecord( painterPixmap,
                       frame_X - radius + penHalf,
                       frame_Y - radius + penHalf,
