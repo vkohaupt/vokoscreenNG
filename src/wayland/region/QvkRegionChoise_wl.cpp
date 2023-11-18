@@ -1460,16 +1460,16 @@ qreal QvkRegionChoise_wl::myDevicePixelRatio( QScreen *m_screen )
   return (qreal)qRound( m_screen->logicalDotsPerInch() / m_screen->physicalDotsPerInchX() * 100 ) / 100;
 }
 
-/*
- * Gibt die Original Breite des Bildschirm zurück
+/**
+ * Returns the resolution width of the screen
  */
 int QvkRegionChoise_wl::screenSizeX()
 {
   return screenWidth * myDevicePixelRatio( currentScreen );
 }
 
-/*
- * Gibt die Original Höhe des Bildschirm zurück
+/**
+ * Returns the resolution height of the screen
  */
 int QvkRegionChoise_wl::screenSizeY()
 {

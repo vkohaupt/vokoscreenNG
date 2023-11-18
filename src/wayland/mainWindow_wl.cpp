@@ -103,7 +103,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
                                                      << screen.at(i)->geometry().width()
                                                      << "x"
                                                      << myDevicePixelRatio( screen.at(i) );
-            qDebug().noquote() << global::nameOutput << "Screen Resolution width :"
+            qDebug().noquote() << global::nameOutput << "Screen Resolution height :"
                                                      << screen.at(i)->geometry().height() * myDevicePixelRatio( screen.at(i) )
                                                      << "="
                                                      << screen.at(i)->geometry().height()
