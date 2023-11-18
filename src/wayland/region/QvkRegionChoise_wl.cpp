@@ -206,13 +206,7 @@ void QvkRegionChoise_wl::paintEvent( QPaintEvent *event )
 
         drawFrame( painterPixmap );
 
-        // setMask(pixmap.mask()) is not working if enlarge the Area over the full screen.
-        // Remedy: We draw a black pixel with a width=1 on the left top corner and setMask(pixmap.mask()) works.
-        QPen pen;
-          pen.setColor( Qt::black );
-          pen.setWidth( 1 );
-        painterPixmap.setPen( pen );
-        painterPixmap.drawPoint( 0, 0 );
+        painterPixmap.end();
     }
 
     pixmap = pixmap.fromImage( image );
