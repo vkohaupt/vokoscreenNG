@@ -351,7 +351,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -3910,16 +3910,38 @@
            <layout class="QVBoxLayout" name="verticalLayout_35">
             <item>
              <layout class="QGridLayout" name="gridLayoutShowClick">
-              <item row="8" column="0" colspan="3">
-               <layout class="QHBoxLayout" name="horizontalLayout_32">
-                <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
-                 <widget class="QLabel" name="label_27">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
+              <item row="8" column="3">
+               <widget class="QToolButton" name="toolButtonShowclickOpacityDefault">
+                <property name="toolTip">
+                 <string>Reset</string>
+                </property>
+                <property name="text">
+                 <string notr="true"/>
+                </property>
+                <property name="icon">
+                 <iconset resource="screencast.qrc">
+                  <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="8">
+               <widget class="QToolButton" name="toolButtonHaloHoleDefault">
+                <property name="toolTip">
+                 <string>Reset</string>
+                </property>
+                <property name="text">
+                 <string notr="true"/>
+                </property>
+                <property name="icon">
+                 <iconset resource="screencast.qrc">
+                  <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item row="7" column="5" colspan="3">
+               <layout class="QHBoxLayout" name="horizontalLayout_47">
+                <item alignment="Qt::AlignLeft">
+                 <widget class="QLabel" name="label_32">
                   <property name="maximumSize">
                    <size>
                     <width>34</width>
@@ -3930,7 +3952,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="screencast.qrc">:/pictures/showClick/transparenz.png</pixmap>
+                   <pixmap resource="screencast.qrc">:/pictures/showClick/halo.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -3938,51 +3960,9 @@
                  </widget>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayoutOpacity"/>
+                 <layout class="QHBoxLayout" name="horizontalLayoutHaloHole"/>
                 </item>
                </layout>
-              </item>
-              <item row="9" column="5" colspan="3">
-               <layout class="QHBoxLayout" name="horizontalLayout_48">
-                <item>
-                 <spacer name="horizontalSpacer_15">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_13">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-               </layout>
-              </item>
-              <item row="0" column="5" colspan="4" alignment="Qt::AlignHCenter">
-               <widget class="QLabel" name="label_34">
-                <property name="font">
-                 <font>
-                  <pointsize>14</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string notr="true">Halo</string>
-                </property>
-               </widget>
               </item>
               <item row="8" column="5" colspan="3">
                <layout class="QHBoxLayout" name="horizontalLayout_43">
@@ -4016,17 +3996,197 @@
                 </item>
                </layout>
               </item>
-              <item row="6" column="8">
-               <widget class="QToolButton" name="toolButtonHaloDiameterDefault">
-                <property name="toolTip">
-                 <string>Reset</string>
+              <item row="8" column="0" colspan="3">
+               <layout class="QHBoxLayout" name="horizontalLayout_32">
+                <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
+                 <widget class="QLabel" name="label_27">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>34</width>
+                    <height>13</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string notr="true"/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="screencast.qrc">:/pictures/showClick/transparenz.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayoutOpacity"/>
+                </item>
+               </layout>
+              </item>
+              <item row="2" column="5" rowspan="3" colspan="4">
+               <layout class="QGridLayout" name="gridLayout_halo_color_pushButton">
+                <item row="3" column="3">
+                 <layout class="QHBoxLayout" name="horizontalLayout_halo_darkGray"/>
+                </item>
+                <item row="1" column="0">
+                 <layout class="QHBoxLayout" name="horizontalLayout_halo_green"/>
+                </item>
+                <item row="0" column="2">
+                 <layout class="QHBoxLayout" name="horizontalLayout_halo_red"/>
+                </item>
+                <item row="2" column="0">
+                 <layout class="QHBoxLayout" name="horizontalLayout_halo_cyan"/>
+                </item>
+                <item row="0" column="0">
+                 <layout class="QHBoxLayout" name="horizontalLayout_halo_white"/>
+                </item>
+                <item row="2" column="2">
+                 <layout class="QHBoxLayout" name="horizontalLayout_halo_magenta"/>
+                </item>
+                <item row="2" column="3">
+                 <layout class="QHBoxLayout" name="horizontalLayout_halo_darkMagenta"/>
+                </item>
+                <item row="1" column="1">
+                 <layout class="QHBoxLayout" name="horizontalLayout_halo_darkGreen"/>
+                </item>
+                <item row="0" column="1">
+                 <layout class="QHBoxLayout" name="horizontalLayout_halo_black"/>
+                </item>
+                <item row="2" column="1">
+                 <layout class="QHBoxLayout" name="horizontalLayout_halo_darkCyan"/>
+                </item>
+                <item row="3" column="1">
+                 <layout class="QHBoxLayout" name="horizontalLayout_halo_darkYellow"/>
+                </item>
+                <item row="1" column="2">
+                 <layout class="QHBoxLayout" name="horizontalLayout_halo_blue"/>
+                </item>
+                <item row="1" column="3">
+                 <layout class="QHBoxLayout" name="horizontalLayout_halo_darkBlue"/>
+                </item>
+                <item row="3" column="2">
+                 <layout class="QHBoxLayout" name="horizontalLayout_halo_gray"/>
+                </item>
+                <item row="0" column="3">
+                 <layout class="QHBoxLayout" name="horizontalLayout_halo_darkRed"/>
+                </item>
+                <item row="3" column="0">
+                 <layout class="QHBoxLayout" name="horizontalLayout_halo_yellow"/>
+                </item>
+                <item row="0" column="4" rowspan="4" alignment="Qt::AlignVCenter">
+                 <widget class="QToolButton" name="toolButtonHaloColorDefault">
+                  <property name="toolTip">
+                   <string>Reset</string>
+                  </property>
+                  <property name="text">
+                   <string notr="true"/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="screencast.qrc">
+                    <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="5" column="5" colspan="4">
+               <widget class="QFrame" name="frame_2">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>100</height>
+                 </size>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_61">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>1</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                </layout>
+               </widget>
+              </item>
+              <item row="7" column="0" colspan="3">
+               <layout class="QHBoxLayout" name="horizontalLayout_5">
+                <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
+                 <widget class="QLabel" name="label_26">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>34</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>34</width>
+                    <height>34</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string notr="true"/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="screencast.qrc">:/pictures/showClick/sandglass.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayoutShowtime"/>
+                </item>
+               </layout>
+              </item>
+              <item row="0" column="5" colspan="4" alignment="Qt::AlignHCenter">
+               <widget class="QLabel" name="label_34">
+                <property name="font">
+                 <font>
+                  <pointsize>14</pointsize>
+                 </font>
                 </property>
                 <property name="text">
-                 <string notr="true"/>
+                 <string notr="true">Halo</string>
                 </property>
-                <property name="icon">
-                 <iconset resource="screencast.qrc">
-                  <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+               </widget>
+              </item>
+              <item row="0" column="4" rowspan="11">
+               <widget class="Line" name="line_4">
+                <property name="minimumSize">
+                 <size>
+                  <width>20</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
                 </property>
                </widget>
               </item>
@@ -4044,40 +4204,64 @@
                 </property>
                </widget>
               </item>
-              <item row="5" column="0" colspan="4">
-               <widget class="QFrame" name="frame_3">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+              <item row="6" column="5" colspan="3">
+               <layout class="QHBoxLayout" name="horizontalLayout_41">
+                <item alignment="Qt::AlignLeft">
+                 <widget class="QLabel" name="label_30">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>34</width>
+                    <height>13</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string notr="true"/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="screencast.qrc">:/pictures/showClick/cursor.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayoutDiameter"/>
+                </item>
+               </layout>
+              </item>
+              <item row="7" column="3">
+               <widget class="QToolButton" name="toolButtonShowclickTimeDefault">
+                <property name="toolTip">
+                 <string>Reset</string>
                 </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>100</height>
-                 </size>
+                <property name="text">
+                 <string notr="true"/>
                 </property>
-                <property name="frameShape">
-                 <enum>QFrame::NoFrame</enum>
+                <property name="icon">
+                 <iconset resource="screencast.qrc">
+                  <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                 </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_38">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                </layout>
+               </widget>
+              </item>
+              <item row="8" column="8">
+               <widget class="QToolButton" name="toolButtonHaloOpacityDefault">
+                <property name="toolTip">
+                 <string>Reset</string>
+                </property>
+                <property name="text">
+                 <string notr="true"/>
+                </property>
+                <property name="icon">
+                 <iconset resource="screencast.qrc">
+                  <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                </property>
                </widget>
               </item>
               <item row="2" column="0" rowspan="3" colspan="4">
@@ -4146,162 +4330,8 @@
                 </item>
                </layout>
               </item>
-              <item row="0" column="0" colspan="4" alignment="Qt::AlignHCenter">
-               <widget class="QLabel" name="label_33">
-                <property name="font">
-                 <font>
-                  <pointsize>14</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string notr="true">Showclick</string>
-                </property>
-               </widget>
-              </item>
-              <item row="9" column="0" colspan="3">
-               <layout class="QHBoxLayout" name="horizontalLayout_15">
-                <item>
-                 <spacer name="horizontalSpacer_11">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_5">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-               </layout>
-              </item>
-              <item row="5" column="5" colspan="4">
-               <widget class="QFrame" name="frame_2">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>100</height>
-                 </size>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_61">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>1</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>0</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>0</number>
-                 </property>
-                </layout>
-               </widget>
-              </item>
-              <item row="1" column="5" colspan="4">
-               <widget class="Line" name="line_8">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="8" column="8">
-               <widget class="QToolButton" name="toolButtonHaloOpacityDefault">
-                <property name="toolTip">
-                 <string>Reset</string>
-                </property>
-                <property name="text">
-                 <string notr="true"/>
-                </property>
-                <property name="icon">
-                 <iconset resource="screencast.qrc">
-                  <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="5" colspan="3">
-               <layout class="QHBoxLayout" name="horizontalLayout_47">
-                <item alignment="Qt::AlignLeft">
-                 <widget class="QLabel" name="label_32">
-                  <property name="maximumSize">
-                   <size>
-                    <width>34</width>
-                    <height>13</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string notr="true"/>
-                  </property>
-                  <property name="pixmap">
-                   <pixmap resource="screencast.qrc">:/pictures/showClick/halo.png</pixmap>
-                  </property>
-                  <property name="scaledContents">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayoutHaloHole"/>
-                </item>
-               </layout>
-              </item>
-              <item row="6" column="5" colspan="3">
-               <layout class="QHBoxLayout" name="horizontalLayout_41">
-                <item alignment="Qt::AlignLeft">
-                 <widget class="QLabel" name="label_30">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>34</width>
-                    <height>13</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string notr="true"/>
-                  </property>
-                  <property name="pixmap">
-                   <pixmap resource="screencast.qrc">:/pictures/showClick/cursor.png</pixmap>
-                  </property>
-                  <property name="scaledContents">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayoutDiameter"/>
-                </item>
-               </layout>
-              </item>
-              <item row="8" column="3">
-               <widget class="QToolButton" name="toolButtonShowclickOpacityDefault">
+              <item row="6" column="8">
+               <widget class="QToolButton" name="toolButtonHaloDiameterDefault">
                 <property name="toolTip">
                  <string>Reset</string>
                 </property>
@@ -4356,150 +4386,133 @@
                 </item>
                </layout>
               </item>
-              <item row="0" column="4" rowspan="10">
-               <widget class="Line" name="line_4">
+              <item row="10" column="0" colspan="3">
+               <layout class="QHBoxLayout" name="horizontalLayout_15">
+                <item>
+                 <spacer name="horizontalSpacer_11">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_5">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item row="10" column="5" colspan="3">
+               <layout class="QHBoxLayout" name="horizontalLayout_48">
+                <item>
+                 <spacer name="horizontalSpacer_15">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_13">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item row="0" column="0" colspan="4" alignment="Qt::AlignHCenter">
+               <widget class="QLabel" name="label_33">
+                <property name="font">
+                 <font>
+                  <pointsize>14</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string notr="true">Showclick</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5" colspan="4">
+               <widget class="Line" name="line_8">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0" colspan="4">
+               <widget class="QFrame" name="frame_3">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="minimumSize">
                  <size>
-                  <width>20</width>
-                  <height>0</height>
+                  <width>0</width>
+                  <height>100</height>
                  </size>
                 </property>
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_38">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>1</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                </layout>
+               </widget>
+              </item>
+              <item row="9" column="1">
+               <spacer name="verticalSpacer_27">
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>
                 </property>
-               </widget>
-              </item>
-              <item row="7" column="8">
-               <widget class="QToolButton" name="toolButtonHaloHoleDefault">
-                <property name="toolTip">
-                 <string>Reset</string>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
                 </property>
-                <property name="text">
-                 <string notr="true"/>
-                </property>
-                <property name="icon">
-                 <iconset resource="screencast.qrc">
-                  <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5" rowspan="3" colspan="4">
-               <layout class="QGridLayout" name="gridLayout_halo_color_pushButton">
-                <item row="3" column="3">
-                 <layout class="QHBoxLayout" name="horizontalLayout_halo_darkGray"/>
-                </item>
-                <item row="1" column="0">
-                 <layout class="QHBoxLayout" name="horizontalLayout_halo_green"/>
-                </item>
-                <item row="0" column="2">
-                 <layout class="QHBoxLayout" name="horizontalLayout_halo_red"/>
-                </item>
-                <item row="2" column="0">
-                 <layout class="QHBoxLayout" name="horizontalLayout_halo_cyan"/>
-                </item>
-                <item row="0" column="0">
-                 <layout class="QHBoxLayout" name="horizontalLayout_halo_white"/>
-                </item>
-                <item row="2" column="2">
-                 <layout class="QHBoxLayout" name="horizontalLayout_halo_magenta"/>
-                </item>
-                <item row="2" column="3">
-                 <layout class="QHBoxLayout" name="horizontalLayout_halo_darkMagenta"/>
-                </item>
-                <item row="1" column="1">
-                 <layout class="QHBoxLayout" name="horizontalLayout_halo_darkGreen"/>
-                </item>
-                <item row="0" column="1">
-                 <layout class="QHBoxLayout" name="horizontalLayout_halo_black"/>
-                </item>
-                <item row="2" column="1">
-                 <layout class="QHBoxLayout" name="horizontalLayout_halo_darkCyan"/>
-                </item>
-                <item row="3" column="1">
-                 <layout class="QHBoxLayout" name="horizontalLayout_halo_darkYellow"/>
-                </item>
-                <item row="1" column="2">
-                 <layout class="QHBoxLayout" name="horizontalLayout_halo_blue"/>
-                </item>
-                <item row="1" column="3">
-                 <layout class="QHBoxLayout" name="horizontalLayout_halo_darkBlue"/>
-                </item>
-                <item row="3" column="2">
-                 <layout class="QHBoxLayout" name="horizontalLayout_halo_gray"/>
-                </item>
-                <item row="0" column="3">
-                 <layout class="QHBoxLayout" name="horizontalLayout_halo_darkRed"/>
-                </item>
-                <item row="3" column="0">
-                 <layout class="QHBoxLayout" name="horizontalLayout_halo_yellow"/>
-                </item>
-                <item row="0" column="4" rowspan="4" alignment="Qt::AlignVCenter">
-                 <widget class="QToolButton" name="toolButtonHaloColorDefault">
-                  <property name="toolTip">
-                   <string>Reset</string>
-                  </property>
-                  <property name="text">
-                   <string notr="true"/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="screencast.qrc">
-                    <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item row="7" column="3">
-               <widget class="QToolButton" name="toolButtonShowclickTimeDefault">
-                <property name="toolTip">
-                 <string>Reset</string>
-                </property>
-                <property name="text">
-                 <string notr="true"/>
-                </property>
-                <property name="icon">
-                 <iconset resource="screencast.qrc">
-                  <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
-                </property>
-               </widget>
-              </item>
-              <item row="7" column="0" colspan="3">
-               <layout class="QHBoxLayout" name="horizontalLayout_5">
-                <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
-                 <widget class="QLabel" name="label_26">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>34</width>
-                    <height>0</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>34</width>
-                    <height>34</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string notr="true"/>
-                  </property>
-                  <property name="pixmap">
-                   <pixmap resource="screencast.qrc">:/pictures/showClick/sandglass.png</pixmap>
-                  </property>
-                  <property name="scaledContents">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayoutShowtime"/>
-                </item>
-               </layout>
+               </spacer>
               </item>
              </layout>
             </item>
@@ -7211,7 +7224,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
