@@ -1424,10 +1424,14 @@ void QvkRegionChoise_wl::set_recordMode( bool value )
 {
     if ( value == true ) {
         recordemode = true;
+        clearMask();
         repaint();
+        setMask( pixmap.mask() );
     } else {
         recordemode = false;
+        clearMask();
         repaint();
+        setMask( pixmap.mask() );
     }
 }
 
