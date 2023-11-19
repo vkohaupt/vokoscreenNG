@@ -73,11 +73,11 @@ void QvkAnimateWindow::paintEvent( QPaintEvent *event )
 
     QPixmap pixmap( height() * devicePixelRatioF(), width() * devicePixelRatioF() );
     pixmap.fill( Qt::transparent );
-    pixmap.setDevicePixelRatio( devicePixelRatioF() );
 
     QPainter painterPixmap;
     painterPixmap.begin( &pixmap );
-    painterPixmap.setRenderHints( QPainter::Antialiasing, true );
+    painterPixmap.setRenderHint( QPainter::Antialiasing, true );
+    painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
 
     qreal penWith = 5.0;
     QPen pen;
@@ -117,6 +117,7 @@ void QvkAnimateWindow::paintEvent( QPaintEvent *event )
 
     QPainter painter;
     painter.begin( this );
+    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painter.drawPixmap( QPointF( 0, 0 ), pixmap );
     painter.end();
 
