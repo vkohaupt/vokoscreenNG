@@ -174,7 +174,8 @@ void QvkShowClick::slot_animateWindow()
                                                              x * devicePixelRatioF(),
                                                              y * devicePixelRatioF(),
                                                              vkSpezialSliderShowtime->value() * 100,
-                                                             mouseButton, vkSpezialSliderDiameter->value(),
+                                                             mouseButton,
+                                                             vkSpezialSliderDiameter->value(),
                                                              vkSpezialSliderOpacity->value(),
                                                              color );
     vkAnimateWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
