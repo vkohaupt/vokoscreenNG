@@ -7,20 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSettingsDialog</name>
-    <message>
-        <source>Camera settings</source>
-        <translation>Kameros nustatymai</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -57,14 +43,6 @@
 </context>
 <context>
     <name>QvkCameraWindow</name>
-    <message>
-        <source>Switch to Window</source>
-        <translation>Perjungti į langą</translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation>Perjungti į visą ekraną</translation>
-    </message>
     <message>
         <source>Camera</source>
         <translation>Kamera</translation>
@@ -108,6 +86,17 @@
 </context>
 <context>
     <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Nerasta jokios failų tvarkytuvės.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Įdiekite failų tvarkytuvę.</translation>
+    </message>
+</context>
+<context>
+    <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
         <translation>Nerasta jokios failų tvarkytuvės.</translation>
@@ -715,6 +704,14 @@
     <message>
         <source>Do not record mouse cursor</source>
         <translation>Neįrašinėti pelės žymeklio</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Garso kodekas</translation>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>Vaizdo įrašo kelias</translation>
     </message>
 </context>
 <context>

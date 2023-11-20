@@ -7,20 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Camera</source>
-        <translation>Κάμερα</translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSettingsDialog</name>
-    <message>
-        <source>Camera settings</source>
-        <translation>Ρυθμίσεις Κάμερας</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -57,14 +43,6 @@
 </context>
 <context>
     <name>QvkCameraWindow</name>
-    <message>
-        <source>Switch to Window</source>
-        <translation>Εναλλαγή σε Παράθυρο</translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation>Εναλλαγή σε Πλήρη οθόνη</translation>
-    </message>
     <message>
         <source>Camera</source>
         <translation>Κάμερα</translation>
@@ -108,6 +86,17 @@
 </context>
 <context>
     <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Δε βρέθηκε διαχειριστής αρχείων.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Παρακαλώ εγκαταστήστε ένα διαχειριστή αρχείων.</translation>
+    </message>
+</context>
+<context>
+    <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
         <translation>Δε βρέθηκε διαχειριστής αρχείων.</translation>
@@ -715,6 +704,14 @@
     <message>
         <source>Do not record mouse cursor</source>
         <translation>Μην καταγράφεις τον κέρσορα</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Κωδικοποιητής ήχου</translation>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>Τοποθεσία αρχείου</translation>
     </message>
 </context>
 <context>

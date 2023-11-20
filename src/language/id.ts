@@ -7,20 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSettingsDialog</name>
-    <message>
-        <source>Camera settings</source>
-        <translation>Pengaturan Kamera</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -57,14 +43,6 @@
 </context>
 <context>
     <name>QvkCameraWindow</name>
-    <message>
-        <source>Switch to Window</source>
-        <translation>Pindah ke Jendela</translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation>Pindah ke Layar Penuh</translation>
-    </message>
     <message>
         <source>Camera</source>
         <translation>Kamera</translation>
@@ -108,6 +86,17 @@
 </context>
 <context>
     <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Pengelola berkas tidak ditemukan.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Mohon pasang pengelola berkas.</translation>
+    </message>
+</context>
+<context>
+    <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
         <translation>Pengelola berkas tidak ditemukan.</translation>
@@ -715,6 +704,14 @@
     <message>
         <source>Do not record mouse cursor</source>
         <translation>Jangan rekam kursor tetikus</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Kodekaudio</translation>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>Jalur video</translation>
     </message>
 </context>
 <context>

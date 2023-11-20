@@ -7,20 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSettingsDialog</name>
-    <message>
-        <source>Camera settings</source>
-        <translation>Kamera ayarları</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -57,14 +43,6 @@
 </context>
 <context>
     <name>QvkCameraWindow</name>
-    <message>
-        <source>Switch to Window</source>
-        <translation>Pencereye Geç</translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation>Tam Ekrana Geç</translation>
-    </message>
     <message>
         <source>Camera</source>
         <translation>Kamera</translation>
@@ -108,6 +86,17 @@
 </context>
 <context>
     <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Dosya yöneticisi bulunamadı</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Lütfen bir dosya yöneticisi yükleyin.</translation>
+    </message>
+</context>
+<context>
+    <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
         <translation>Dosya yöneticisi bulunamadı</translation>
@@ -715,6 +704,14 @@
     <message>
         <source>Do not record mouse cursor</source>
         <translation>Fare imlecini kayıtta gösterme</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Ses çözücü</translation>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>Video yolu</translation>
     </message>
 </context>
 <context>

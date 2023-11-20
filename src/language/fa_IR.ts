@@ -7,20 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Camera</source>
-        <translation>دوربین</translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSettingsDialog</name>
-    <message>
-        <source>Camera settings</source>
-        <translation>تنظیمات دوربین</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -57,14 +43,6 @@
 </context>
 <context>
     <name>QvkCameraWindow</name>
-    <message>
-        <source>Switch to Window</source>
-        <translation>تغییر به حالت پنجره</translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation>تغییر به حالت تمام صفحه</translation>
-    </message>
     <message>
         <source>Camera</source>
         <translation>دوربین</translation>
@@ -108,6 +86,17 @@
 </context>
 <context>
     <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>برنامه مدیریت فایل پیدا نشد.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>لطفا برنامه یک برنامه مدیریت فایل نصب کنید.</translation>
+    </message>
+</context>
+<context>
+    <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
         <translation>برنامه مدیریت فایل پیدا نشد.</translation>
@@ -717,6 +706,14 @@
     <message>
         <source>Do not record mouse cursor</source>
         <translation>نشانگر موس را ضبط نکن</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>کدک صدا</translation>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>مسیر ویدیو</translation>
     </message>
 </context>
 <context>

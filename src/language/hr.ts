@@ -7,20 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSettingsDialog</name>
-    <message>
-        <source>Camera settings</source>
-        <translation>Postavke kamere</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -57,14 +43,6 @@
 </context>
 <context>
     <name>QvkCameraWindow</name>
-    <message>
-        <source>Switch to Window</source>
-        <translation>Prebaci na prozor</translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation>Prebaci na cijeli zaslon</translation>
-    </message>
     <message>
         <source>Camera</source>
         <translation>Kamera</translation>
@@ -108,6 +86,18 @@
 </context>
 <context>
     <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Upravitelj datoteka nije pronađen. 
+ </translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Molim instalirajte filemanager</translation>
+    </message>
+</context>
+<context>
+    <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
         <translation>Upravitelj datoteka nije pronađen. 
@@ -718,6 +708,14 @@
     <message>
         <source>Do not record mouse cursor</source>
         <translation>Ne snimaj kursor miša </translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Audiokodek</translation>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>Video-put</translation>
     </message>
 </context>
 <context>

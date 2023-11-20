@@ -7,20 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Camera</source>
-        <translation>카메라</translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSettingsDialog</name>
-    <message>
-        <source>Camera settings</source>
-        <translation>카메라 설정</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -57,14 +43,6 @@
 </context>
 <context>
     <name>QvkCameraWindow</name>
-    <message>
-        <source>Switch to Window</source>
-        <translation>창으로 전환</translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation>전체화면 전환</translation>
-    </message>
     <message>
         <source>Camera</source>
         <translation>카메라</translation>
@@ -108,6 +86,17 @@
 </context>
 <context>
     <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>파일 탐색기가 없습니다.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>파일탐색기를 설치해 주세요.</translation>
+    </message>
+</context>
+<context>
+    <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
         <translation>파일 탐색기가 없습니다.</translation>
@@ -715,6 +704,14 @@
     <message>
         <source>Do not record mouse cursor</source>
         <translation>마우스 커서 녹화하지 않기</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>음성 코덱</translation>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>영상 경로</translation>
     </message>
 </context>
 <context>

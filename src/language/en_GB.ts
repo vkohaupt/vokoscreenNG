@@ -7,20 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Camera</source>
-        <translation>Camera</translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSettingsDialog</name>
-    <message>
-        <source>Camera settings</source>
-        <translation>Camera settings</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -57,14 +43,6 @@
 </context>
 <context>
     <name>QvkCameraWindow</name>
-    <message>
-        <source>Switch to Window</source>
-        <translation>Switch to Window</translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation>Switch to Fullscreen</translation>
-    </message>
     <message>
         <source>Camera</source>
         <translation>Camera</translation>
@@ -108,6 +86,17 @@
 </context>
 <context>
     <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>No filemanager found.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Please install a filemanager.</translation>
+    </message>
+</context>
+<context>
+    <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
         <translation>No filemanager found.</translation>
@@ -715,6 +704,14 @@
     <message>
         <source>Do not record mouse cursor</source>
         <translation>Do not record mouse cursor</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Audiocodec</translation>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>Videopath</translation>
     </message>
 </context>
 <context>

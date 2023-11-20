@@ -7,20 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Camera</source>
-        <translation>攝影機</translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSettingsDialog</name>
-    <message>
-        <source>Camera settings</source>
-        <translation>攝影機設定</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -57,14 +43,6 @@
 </context>
 <context>
     <name>QvkCameraWindow</name>
-    <message>
-        <source>Switch to Window</source>
-        <translation>切換至視窗</translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation>切換至全螢幕</translation>
-    </message>
     <message>
         <source>Camera</source>
         <translation>攝影機</translation>
@@ -108,6 +86,17 @@
 </context>
 <context>
     <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>找不到檔案管理員程式</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>請安裝檔案管理員程式</translation>
+    </message>
+</context>
+<context>
+    <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
         <translation>找不到檔案管理員程式</translation>
@@ -715,6 +704,14 @@
     <message>
         <source>Do not record mouse cursor</source>
         <translation>不要錄製滑鼠游標</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>音訊編碼</translation>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>影片路徑</translation>
     </message>
 </context>
 <context>

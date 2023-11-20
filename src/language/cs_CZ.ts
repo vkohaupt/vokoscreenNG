@@ -7,20 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSettingsDialog</name>
-    <message>
-        <source>Camera settings</source>
-        <translation>Nastavení kamery</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -57,14 +43,6 @@
 </context>
 <context>
     <name>QvkCameraWindow</name>
-    <message>
-        <source>Switch to Window</source>
-        <translation>Přepnout do okna</translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation>Přepnout na celou obrazovku</translation>
-    </message>
     <message>
         <source>Camera</source>
         <translation>Kamera</translation>
@@ -108,6 +86,17 @@
 </context>
 <context>
     <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Nebyl nalezen žádný správce souborů.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Prosím o instalaci správce souborů.</translation>
+    </message>
+</context>
+<context>
+    <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
         <translation>Nebyl nalezen žádný správce souborů.</translation>
@@ -718,6 +707,14 @@ Sekund počkej před záznamem??</translation>
     <message>
         <source>Do not record mouse cursor</source>
         <translation>Nenahrávat kurzor myši</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Audiokodek</translation>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>Cesta k videosekvenci</translation>
     </message>
 </context>
 <context>

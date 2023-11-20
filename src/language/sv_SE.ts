@@ -7,20 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSettingsDialog</name>
-    <message>
-        <source>Camera settings</source>
-        <translation>Kamerainställningar</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -57,14 +43,6 @@
 </context>
 <context>
     <name>QvkCameraWindow</name>
-    <message>
-        <source>Switch to Window</source>
-        <translation>Växla till fönsterläge</translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation>Växla till helskärmsläge</translation>
-    </message>
     <message>
         <source>Camera</source>
         <translation>Kamera</translation>
@@ -108,6 +86,17 @@
 </context>
 <context>
     <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Ingen filhanterare hittades.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Installera en filhanterare.</translation>
+    </message>
+</context>
+<context>
+    <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
         <translation>Ingen filhanterare hittades.</translation>
@@ -715,6 +704,14 @@
     <message>
         <source>Do not record mouse cursor</source>
         <translation>Spela inte in muspekaren</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Ljudkodek</translation>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>Videosökväg</translation>
     </message>
 </context>
 <context>

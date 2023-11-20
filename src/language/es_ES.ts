@@ -7,20 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Camera</source>
-        <translation>Cámara</translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSettingsDialog</name>
-    <message>
-        <source>Camera settings</source>
-        <translation>Configuración de la cámara</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -57,14 +43,6 @@
 </context>
 <context>
     <name>QvkCameraWindow</name>
-    <message>
-        <source>Switch to Window</source>
-        <translation>Cambiar a Ventana</translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation>Cambiar a Pantalla Completa</translation>
-    </message>
     <message>
         <source>Camera</source>
         <translation>Cámara</translation>
@@ -108,6 +86,17 @@
 </context>
 <context>
     <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Gestor de ficheros no encontrado.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Por favor, instale un gestor de ficheros.</translation>
+    </message>
+</context>
+<context>
+    <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
         <translation>Gestor de ficheros no encontrado.</translation>
@@ -715,6 +704,14 @@
     <message>
         <source>Do not record mouse cursor</source>
         <translation>No grabar el cursor del ratón</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Códec de audio</translation>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>Ruta del vídeo</translation>
     </message>
 </context>
 <context>

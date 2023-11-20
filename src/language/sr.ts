@@ -7,20 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSettingsDialog</name>
-    <message>
-        <source>Camera settings</source>
-        <translation>Подешавања камере</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -57,14 +43,6 @@
 </context>
 <context>
     <name>QvkCameraWindow</name>
-    <message>
-        <source>Switch to Window</source>
-        <translation>Промени на прозор</translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation>Промени на цео екран</translation>
-    </message>
     <message>
         <source>Camera</source>
         <translation>Kamera</translation>
@@ -108,6 +86,17 @@
 </context>
 <context>
     <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Претраживач датотека није пронађен</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Молим вас инсталирајте претраживач датотека</translation>
+    </message>
+</context>
+<context>
+    <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
         <translation>Претраживач датотека није пронађен</translation>
@@ -715,6 +704,14 @@
     <message>
         <source>Do not record mouse cursor</source>
         <translation>Немој снимати стрелицу</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Аудио кодек</translation>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>Видео пут</translation>
     </message>
 </context>
 <context>

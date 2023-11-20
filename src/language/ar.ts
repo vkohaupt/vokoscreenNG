@@ -7,20 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Camera</source>
-        <translation>الكاميرا</translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSettingsDialog</name>
-    <message>
-        <source>Camera settings</source>
-        <translation>اعدادات الكاميرا</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -57,14 +43,6 @@
 </context>
 <context>
     <name>QvkCameraWindow</name>
-    <message>
-        <source>Switch to Window</source>
-        <translation> أظهر النافذة</translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation>تغيير لملء الشاشة</translation>
-    </message>
     <message>
         <source>Camera</source>
         <translation>الكاميرا</translation>
@@ -108,6 +86,17 @@
 </context>
 <context>
     <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>لايمكن ايجاد اداراه الملفات </translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>الرجاء تنصيب اداره الملفات</translation>
+    </message>
+</context>
+<context>
+    <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
         <translation>لايمكن ايجاد اداراه الملفات </translation>
@@ -715,6 +704,14 @@
     <message>
         <source>Do not record mouse cursor</source>
         <translation>لا تسجل مؤشر الفأرة</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>ترميز الصوت</translation>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>مسار الفيديو</translation>
     </message>
 </context>
 <context>

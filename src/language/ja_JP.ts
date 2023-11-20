@@ -7,20 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Camera</source>
-        <translation>カメラ</translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSettingsDialog</name>
-    <message>
-        <source>Camera settings</source>
-        <translation>カメラの設定</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -57,14 +43,6 @@
 </context>
 <context>
     <name>QvkCameraWindow</name>
-    <message>
-        <source>Switch to Window</source>
-        <translation>ウィンドウ表示</translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation>全画面表示</translation>
-    </message>
     <message>
         <source>Camera</source>
         <translation>カメラ</translation>
@@ -108,6 +86,17 @@
 </context>
 <context>
     <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>ファイルマネージャーが見つかりません</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>ファイルマネージャーをインストールしてください</translation>
+    </message>
+</context>
+<context>
+    <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
         <translation>ファイルマネージャーが見つかりません</translation>
@@ -715,6 +704,14 @@
     <message>
         <source>Do not record mouse cursor</source>
         <translation>マウスカーソルを録画しない</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>音声コーデック</translation>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>ビデオ保存パス</translation>
     </message>
 </context>
 <context>

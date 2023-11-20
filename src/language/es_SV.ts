@@ -7,20 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Camera</source>
-        <translation>Cámara</translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSettingsDialog</name>
-    <message>
-        <source>Camera settings</source>
-        <translation>Opciones de cámara</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -57,14 +43,6 @@
 </context>
 <context>
     <name>QvkCameraWindow</name>
-    <message>
-        <source>Switch to Window</source>
-        <translation>Cambiar a ventana</translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation>Cambiar a pantalla completa</translation>
-    </message>
     <message>
         <source>Camera</source>
         <translation>Cámara</translation>
@@ -118,6 +96,17 @@
     </message>
 </context>
 <context>
+    <name>QvkImageFromTabs_wl</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>No se encontró administrador de archivos.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Porfavor instala un explorador de archivos.</translation>
+    </message>
+</context>
+<context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
@@ -149,7 +138,7 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>No se encontró administrador de archivos.</translation>
+        <translation>No se ha encontrado un administrador de archivos</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
@@ -312,7 +301,7 @@
     </message>
     <message>
         <source>Gray</source>
-        <translation>Gris</translation>
+        <translation>Tonos de Gris</translation>
     </message>
     <message>
         <source>Black-and-white</source>
@@ -715,6 +704,14 @@
     <message>
         <source>Do not record mouse cursor</source>
         <translation>No grabar el cursor del mouse</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Códec de audio</translation>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>Videopath</translation>
     </message>
 </context>
 <context>

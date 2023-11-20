@@ -7,20 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Camera</source>
-        <translation>Càmera</translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSettingsDialog</name>
-    <message>
-        <source>Camera settings</source>
-        <translation>Ajustaments de la càmera</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -57,14 +43,6 @@
 </context>
 <context>
     <name>QvkCameraWindow</name>
-    <message>
-        <source>Switch to Window</source>
-        <translation>Alterna a finestra</translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation>Alterna a pantalla completa</translation>
-    </message>
     <message>
         <source>Camera</source>
         <translation>Càmera</translation>
@@ -108,6 +86,17 @@
 </context>
 <context>
     <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>No s’ha trobat cap gestor de fitxers.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Instal·leu un gestor de fitxers.</translation>
+    </message>
+</context>
+<context>
+    <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
         <translation>No s’ha trobat cap gestor de fitxers.</translation>
@@ -715,6 +704,14 @@
     <message>
         <source>Do not record mouse cursor</source>
         <translation>No enregistris el cursor del ratolí</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Còdec de l&apos;àudio</translation>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>Camí del vídeo</translation>
     </message>
 </context>
 <context>

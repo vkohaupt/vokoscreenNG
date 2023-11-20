@@ -7,20 +7,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraController</name>
-    <message>
-        <source>Camera</source>
-        <translation>Камера</translation>
-    </message>
-</context>
-<context>
-    <name>QvkCameraSettingsDialog</name>
-    <message>
-        <source>Camera settings</source>
-        <translation>Налаштування камери</translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -57,14 +43,6 @@
 </context>
 <context>
     <name>QvkCameraWindow</name>
-    <message>
-        <source>Switch to Window</source>
-        <translation>Перемикнутися на режим вікна</translation>
-    </message>
-    <message>
-        <source>Switch to Fullscreen</source>
-        <translation>Перемикнутися на повний екран</translation>
-    </message>
     <message>
         <source>Camera</source>
         <translation>Камера</translation>
@@ -108,6 +86,17 @@
 </context>
 <context>
     <name>QvkImageFromTabs</name>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Не знайдено файлового менеджера</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Будь ласка, встановіть файловий менеджер.</translation>
+    </message>
+</context>
+<context>
+    <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
         <translation>Не знайдено файлового менеджера</translation>
@@ -715,6 +704,14 @@
     <message>
         <source>Do not record mouse cursor</source>
         <translation>Не записувати вказівник миші</translation>
+    </message>
+    <message>
+        <source>Audiocodec</source>
+        <translation>Авдіокодек</translation>
+    </message>
+    <message>
+        <source>Videopath</source>
+        <translation>Зберегти до теки</translation>
     </message>
 </context>
 <context>
