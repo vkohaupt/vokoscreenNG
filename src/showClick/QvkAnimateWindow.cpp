@@ -117,6 +117,7 @@ void QvkAnimateWindow::paintEvent( QPaintEvent *event )
 
     QPainter painter;
     painter.begin( this );
+    painterPixmap.setRenderHint( QPainter::Antialiasing, true );
     painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painter.drawPixmap( QPointF( 0, 0 ), pixmap );
     painter.end();
