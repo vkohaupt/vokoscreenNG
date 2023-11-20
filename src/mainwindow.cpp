@@ -1775,7 +1775,9 @@ QString QvkMainWindow::Pipeline_structured_output( QString pipeline )
 void QvkMainWindow::slot_Start()
 {
     if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  ) {
-        setWindowState( Qt::WindowMinimized );
+        if ( global::testWASAPI == false ) {
+            setWindowState( Qt::WindowMinimized );
+        }
     }
 
 #ifdef Q_OS_WIN
