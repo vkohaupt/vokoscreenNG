@@ -19,3 +19,6 @@ include(imageFromTabs/imageFromTabs_wl.pri)
 
 # Information
 include(information/information_wl.pri)
+
+# Countdown
+include(countdown/countdown_wl.pri)

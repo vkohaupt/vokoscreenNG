@@ -45,7 +45,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     qApp->setStyleSheet( streamCSS.readAll() );
     fileCSS.close();
 
-
     set_WindowTitle();
     ui->tabWidgetScreencast->setCurrentIndex( 0 );
     ui->tabWidgetSideBar->setCurrentIndex( 0 );
@@ -58,6 +57,10 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_Connects();
     set_check_all_Elements_available();
     vkContainerController_wl = new QvkContainerController_wl( ui );
+
+    vkCountdown_wl = new QvkCountdown_wl();
+    vkCountdown_wl->init();
+
     new QvkLicenses( ui->pushButtonLicense );
     new QvkImageFromTabs_wl( this );
 
@@ -353,6 +356,9 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 {
     ui->pushButtonStop->setEnabled( true );
 
+    vkCountdown_wl->startCountdown( sliderScreencastCountDown->value() );
+
+
     QStringList stringList;
     stringList << QString( "pipewiresrc fd=" ).append( vk_fd ).append( " path=" ).append( vk_path ).append( " do-timestamp=true" );
     stringList << "videoconvert";
@@ -413,6 +419,16 @@ void QvkMainWindow_wl::slot_portal_cancel( uint value )
 
 void QvkMainWindow_wl::set_SpezialSliders()
 {
+    sliderScreencastCountDown = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_10->insertWidget( 1, sliderScreencastCountDown );
+    sliderScreencastCountDown->setObjectName( "sliderScreencastCountDown" );
+    sliderScreencastCountDown->setTracking( true );
+    sliderScreencastCountDown->setMinimum( 0 );
+    sliderScreencastCountDown->setMaximum( 30 );
+    sliderScreencastCountDown->setValue( 0 );
+    sliderScreencastCountDown->setPageStep( 1 );
+    sliderScreencastCountDown->show();
+
     sliderFrames = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_slider_frames->insertWidget( 0, sliderFrames );
     sliderFrames->setObjectName( "sliderFrames" );

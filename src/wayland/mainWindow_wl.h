@@ -5,6 +5,7 @@
 #include "portal_wl.h"
 #include "QvkContainerController_wl.h"
 #include "QvkRegionChoise_wl.h"
+#include "QvkCountdown_wl.h"
 
 #include "QvkSpezialSlider.h"
 #include "QvkLogController.h"
@@ -31,7 +32,7 @@ public:
     Ui::formMainWindow_wl *ui;
     Portal_wl *portal_wl = new Portal_wl();
     QvkSpezialSlider *sliderFrames;
-
+    QvkSpezialSlider *sliderScreencastCountDown;
 
 private:
     QTranslator translator;
@@ -43,6 +44,7 @@ private:
     QStringList videoFormatsList;
     QFileSystemWatcher *videoFileSystemWatcher;
     QvkContainerController_wl *vkContainerController_wl;
+    QvkCountdown_wl *vkCountdown_wl;
 
     void set_LogController();
     void set_WindowTitle();
