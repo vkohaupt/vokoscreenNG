@@ -272,6 +272,9 @@ void QvkRegionChoise_wl::mouseReleaseEvent( QMouseEvent * event )
   repaint();
   setMask( pixmap.mask() );
 
+  // Unter Gnome wird "setMask( pixmap.mask() )" nicht ausgeführt.
+  // Selbst nach hunderten Tests ist nicht ersichtlich warum.
+  // Abhilfe schafft ein umschalten in den Fullscreen Modus und dann zurück in die Bereichsauswahl.
   ui->radioButtonScreencastFullscreen->click();
   ui->radioButtonScreencastArea->click();
 }
@@ -1459,8 +1462,6 @@ int QvkRegionChoise_wl::get_Y()
 
 qreal QvkRegionChoise_wl::myDevicePixelRatio( QScreen *m_screen )
 {
-  qDebug().noquote() << global::nameOutput << "QScreen::devicePixelRatio" << m_screen->devicePixelRatio();
-
   if ( m_screen->devicePixelRatio() == 1 ) {
         return 1;
   } else {
