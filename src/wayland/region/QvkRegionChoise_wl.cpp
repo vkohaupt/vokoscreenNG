@@ -271,6 +271,9 @@ void QvkRegionChoise_wl::mouseReleaseEvent( QMouseEvent * event )
 
   repaint();
   setMask( pixmap.mask() );
+
+  ui->radioButtonScreencastFullscreen->click();
+  ui->radioButtonScreencastArea->click();
 }
 
 
