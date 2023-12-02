@@ -92,6 +92,13 @@ void QvkRegionChoise_wl::closeEvent( QCloseEvent *event )
 }
 
 
+void QvkRegionChoise_wl::resizeEvent( QResizeEvent *event )
+{
+    screenWidth = width();
+    screenHeight = height();
+}
+
+
 void QvkRegionChoise_wl::set_HandleColorBackground( QColor color )
 {
     HandleColorBackground = color;

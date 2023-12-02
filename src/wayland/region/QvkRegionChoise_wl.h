@@ -32,6 +32,7 @@
 #include <QMouseEvent>
 #include <QEvent>
 #include <QKeyEvent>
+#include <QResizeEvent>
 
 class QvkRegionChoise_wl : public QWidget
 { 
@@ -150,6 +151,7 @@ protected:
   void keyPressEvent( QKeyEvent *event );
   void keyReleaseEvent( QKeyEvent *event );
   void closeEvent( QCloseEvent *event );
+  void resizeEvent( QResizeEvent *event );
 
 
 };
