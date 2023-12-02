@@ -332,7 +332,6 @@ void QvkMainWindow_wl::slot_start()
 
 QString QvkMainWindow_wl::get_Area_Videocrop()
 {
-
     QString videocrop = "";
     vkRegionChoise_wl->set_recordMode( true );
 
@@ -355,9 +354,7 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
 void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 {
     ui->pushButtonStop->setEnabled( true );
-
     vkCountdown_wl->startCountdown( sliderScreencastCountDown->value() );
-
 
     QStringList stringList;
     stringList << QString( "pipewiresrc fd=" ).append( vk_fd ).append( " path=" ).append( vk_path ).append( " do-timestamp=true" );
