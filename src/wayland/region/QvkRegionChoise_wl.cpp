@@ -72,8 +72,6 @@ void QvkRegionChoise_wl::slot_init()
     currentScreen = screen();
     showMaximized();
     hide();
-    screenWidth = currentScreen->size().width();
-    screenHeight = currentScreen->size().height();
 }
 
 
@@ -94,6 +92,7 @@ void QvkRegionChoise_wl::closeEvent( QCloseEvent *event )
 
 void QvkRegionChoise_wl::resizeEvent( QResizeEvent *event )
 {
+    Q_UNUSED(event)
     screenWidth = width();
     screenHeight = height();
 }
