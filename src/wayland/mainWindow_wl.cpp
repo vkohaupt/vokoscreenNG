@@ -224,6 +224,10 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->radioButtonScreencastWindow,     SIGNAL( clicked( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastArea,       SIGNAL( clicked( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setEnabled( bool ) ) );
 
+    connect( ui->radioButtonScreencastFullscreen, SIGNAL( clicked( bool ) ), ui->frame_area, SLOT( setDisabled( bool ) ) );
+    connect( ui->radioButtonScreencastWindow,     SIGNAL( clicked( bool ) ), ui->frame_area, SLOT( setDisabled( bool ) ) );
+    connect( ui->radioButtonScreencastArea,       SIGNAL( clicked( bool ) ), ui->frame_area, SLOT( setEnabled( bool ) ) );
+
     connect( portal_wl, SIGNAL( signal_portal_fd_path( QString, QString ) ), this, SLOT( slot_start_gst( QString, QString ) ) );
     connect( portal_wl, SIGNAL( signal_portal_cancel( uint ) ), this,              SLOT( slot_portal_cancel( uint ) ) );
 
@@ -329,7 +333,7 @@ void QvkMainWindow_wl::slot_start()
     portal_wl->requestScreenSharing( sourceType, mousecursorONOff );
 }
 
-
+/*
 QString QvkMainWindow_wl::get_Area_Videocrop()
 {
     QString videocrop = "";
@@ -346,6 +350,38 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
                        << vkRegionChoise_wl->screen()->manufacturer() + ","
                        << vkRegionChoise_wl->screen()->model() + ","
                        << QString::number( vkRegionChoise_wl->screen()->size().width() ) + "/" + QString::number( vkRegionChoise_wl->screen()->size().height() );
+
+    return videocrop;
+}
+*/
+QString QvkMainWindow_wl::get_Area_Videocrop()
+{
+    QString videocrop = "";
+    vkRegionChoise_wl->set_recordMode( true );
+    int divTop = 0;
+    int divBottom = 0;
+
+    if ( ui->toolButton_area_top->isChecked() == true ) {
+        divTop = screen()->size().height() - vkRegionChoise_wl->screenHeight;
+    }
+
+    if ( ui->toolButton_area_bottom->isChecked() == true ) {
+        divBottom = screen()->size().height() - vkRegionChoise_wl->screenHeight;
+    }
+
+    qDebug() << "--------------------------------" << screen()->size().height() << height() << divTop;
+
+    QString top    = QString::number( vkRegionChoise_wl->get_YRecordArea() + divTop );
+    QString right  = QString::number( vkRegionChoise_wl->screenSizeX() - ( vkRegionChoise_wl->get_XRecordArea() + vkRegionChoise_wl->get_WidthRecordArea() ) );
+    QString bottom = QString::number( vkRegionChoise_wl->screenSizeY() - ( vkRegionChoise_wl->get_YRecordArea() + vkRegionChoise_wl->get_HeightRecordArea() ) );
+    QString left   = QString::number( vkRegionChoise_wl->get_XRecordArea() );
+    videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
+
+    qDebug().noquote() << global::nameOutput << "Area crop from the screen"
+                       << vkRegionChoise_wl->screen()->name() + ","
+                       << vkRegionChoise_wl->screen()->manufacturer() + ","
+                       << vkRegionChoise_wl->screen()->model() + ","
+                       << QString::number( vkRegionChoise_wl->screen()->size().width() ) + "x" + QString::number( vkRegionChoise_wl->screen()->size().height() );
 
     return videocrop;
 }
@@ -498,6 +534,31 @@ void QvkMainWindow_wl::set_RegionChoice()
 {
     vkRegionChoise_wl = new QvkRegionChoise_wl( ui );
     connect( ui->radioButtonScreencastArea, SIGNAL( toggled( bool ) ), vkRegionChoise_wl, SLOT( setVisible( bool ) ) );
+
+    connect( ui->toolButton_area_top, &QPushButton::clicked, this, [=]() { ui->toolButton_area_top->setIcon( QIcon( ":/pictures/screencast/accept.png" ) );
+                                                                           ui->toolButton_area_right->setIcon( QIcon( "" ) );
+                                                                           ui->toolButton_area_bottom->setIcon( QIcon( "" ) );
+                                                                           ui->toolButton_area_left->setIcon( QIcon( "" ) );
+                                                                         } );
+
+    connect( ui->toolButton_area_right, &QPushButton::clicked, this, [=]() { ui->toolButton_area_right->setIcon( QIcon( ":/pictures/screencast/accept.png" ) );
+                                                                             ui->toolButton_area_bottom->setIcon( QIcon( "" ) );
+                                                                             ui->toolButton_area_left->setIcon( QIcon( "" ) );
+                                                                             ui->toolButton_area_top->setIcon( QIcon( "" ) );
+                                                                           } );
+
+    connect( ui->toolButton_area_bottom, &QPushButton::clicked, this, [=]() { ui->toolButton_area_bottom->setIcon( QIcon( ":/pictures/screencast/accept.png" ) );
+                                                                              ui->toolButton_area_left->setIcon( QIcon( "" ) );
+                                                                              ui->toolButton_area_top->setIcon( QIcon( "" ) );
+                                                                              ui->toolButton_area_right->setIcon( QIcon( "" ) );
+                                                                            } );
+
+    connect( ui->toolButton_area_left, &QPushButton::clicked, this, [=]() { ui->toolButton_area_left->setIcon( QIcon( ":/pictures/screencast/accept.png" ) );
+                                                                            ui->toolButton_area_top->setIcon( QIcon( "" ) );
+                                                                            ui->toolButton_area_right->setIcon( QIcon( "" ) );
+                                                                            ui->toolButton_area_bottom->setIcon( QIcon( "" ) );
+                                                                          } );
+
     vkRegionChoise_wl->slot_init();
 }
 
