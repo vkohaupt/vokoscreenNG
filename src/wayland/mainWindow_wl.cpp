@@ -84,6 +84,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->comboBoxAudioCodec->hide();
     ui->frame_cisco->hide();
     ui->line_cisco->hide();
+    ui->label_Upate_tab_2->hide();
 
     ui->radioButtonScreencastFullscreen->click();
 
