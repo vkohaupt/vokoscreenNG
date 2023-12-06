@@ -149,8 +149,6 @@ void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap 
             qDebug() << "test test" << bo; // Hahaha, ist true und geht nicht
         }
     });
-
-    qDebug() << "test-1 test-1" << bo;
 }
 
 

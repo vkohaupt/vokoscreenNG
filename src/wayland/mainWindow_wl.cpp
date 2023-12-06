@@ -361,6 +361,7 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
     vkRegionChoise_wl->set_recordMode( true );
     int divTop = 0;
     int divBottom = 0;
+    int divLeft = 0;
 
     if ( ui->toolButton_area_top->isChecked() == true ) {
         divTop = screen()->size().height() - vkRegionChoise_wl->screenHeight;
@@ -370,13 +371,15 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
         divBottom = screen()->size().height() - vkRegionChoise_wl->screenHeight;
     }
 
-    qDebug() << "--------------------------------" << screen()->size().height() << height() << divTop;
+    if ( ui->toolButton_area_left->isChecked() == true ) {
+        divLeft = screen()->size().width() - vkRegionChoise_wl->screenWidth;
+    }
 
     // +1 wird benötigt damit die blaue Linie nicht mit ausgeschnitten wird
     QString top    = QString::number( vkRegionChoise_wl->get_YRecordArea() + divTop + 1 );
     QString right  = QString::number( vkRegionChoise_wl->screenSizeX() + 1 - ( vkRegionChoise_wl->get_XRecordArea() + vkRegionChoise_wl->get_WidthRecordArea() ) );
     QString bottom = QString::number( vkRegionChoise_wl->screenSizeY() + 1 - ( vkRegionChoise_wl->get_YRecordArea() + vkRegionChoise_wl->get_HeightRecordArea() - divBottom ) );
-    QString left   = QString::number( vkRegionChoise_wl->get_XRecordArea() + 1 );
+    QString left   = QString::number( vkRegionChoise_wl->get_XRecordArea() + divLeft + 1 );
     videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
 
     qDebug().noquote() << global::nameOutput << "Area crop from the screen"
