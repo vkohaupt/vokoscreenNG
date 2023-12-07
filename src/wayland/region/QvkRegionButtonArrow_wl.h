@@ -27,26 +27,26 @@
 #include <QObject>
 
 class QvkRegionButtonArrow_wl : public QObject
-{ 
-Q_OBJECT
+{
+    Q_OBJECT
 public:
-  QvkRegionButtonArrow_wl();
-  virtual ~QvkRegionButtonArrow_wl();
-  enum degreeArrow { topMiddle=0, topRight=45, rightMiddle=90, bottomRight=135,
-                     bottomMiddel=180, bottomLeft=225, leftMiddel=270, topLeft=315 };
+    QvkRegionButtonArrow_wl();
+    virtual ~QvkRegionButtonArrow_wl();
+    enum degreeArrow { topMiddle=0, topRight=45, rightMiddle=90, bottomRight=135,
+                       bottomMiddel=180, bottomLeft=225, leftMiddel=270, topLeft=315 };
 
 private:
-  int penWidth = 2;
-  int penWidthHalf = penWidth/2;
-  int radius = 20;
-  int diameter = 2 * radius;
+    int penWidth = 2;
+    int penWidthHalf = penWidth/2;
+    int radius = 20;
+    int diameter = 2 * radius;
 
 
 public slots:
-  QPixmap getPixmapHandle(QColor color, QColor colorSelected, degreeArrow degree );
-  QPixmap getButton( QColor color );
-  QPixmap getArrow(degreeArrow degree , QColor colorSelected);
-  int getWithHalf();
+    QPixmap getPixmapHandle(QColor color, QColor colorSelected, degreeArrow degree );
+    QPixmap getButton( QColor color );
+    QPixmap getArrow(degreeArrow degree , QColor colorSelected);
+    int getWithHalf();
 
 
 private slots:

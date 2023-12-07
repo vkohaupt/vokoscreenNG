@@ -32,24 +32,24 @@
 #include <QIcon>
 
 QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow ):handlePressed(NoHandle),
-                                   handleUnderMouse(NoHandle),
-                                   HandleColorBackground( Qt::lightGray ),
-                                   HandleColorBackgroundSize( Qt::lightGray ),
-                                   HandleColorByMousePressed( Qt::lightGray ),
-                                   colorSelectedArrow( QColor( QString ( "#3DAEE9" ) ) ),
-                                   framePenWidth(4), // framePenWidth must be an even number
-                                   framePenHalf(framePenWidth/2),
-                                   radius(20),
-                                   diameter(radius*2),
-                                   penWidth(2),
-                                   penHalf(penWidth/2),
-                                   frame_X(200-framePenHalf),
-                                   frame_Y(200-framePenHalf),
-                                   frame_Width(320 + framePenWidth),
-                                   frame_height(200 + framePenWidth),
-                                   frame_min_width(320 + framePenWidth),
-                                   frame_min_height(200 + framePenWidth),
-                                   frameColor(Qt::lightGray)
+    handleUnderMouse(NoHandle),
+    HandleColorBackground( Qt::lightGray ),
+    HandleColorBackgroundSize( Qt::lightGray ),
+    HandleColorByMousePressed( Qt::lightGray ),
+    colorSelectedArrow( QColor( QString ( "#3DAEE9" ) ) ),
+    framePenWidth(4), // framePenWidth must be an even number
+    framePenHalf(framePenWidth/2),
+    radius(20),
+    diameter(radius*2),
+    penWidth(2),
+    penHalf(penWidth/2),
+    frame_X(200-framePenHalf),
+    frame_Y(200-framePenHalf),
+    frame_Width(320 + framePenWidth),
+    frame_height(200 + framePenWidth),
+    frame_min_width(320 + framePenWidth),
+    frame_min_height(200 + framePenWidth),
+    frameColor(Qt::lightGray)
 {
 
     ui = ui_formMainWindow;
@@ -121,10 +121,10 @@ void QvkRegionChoise_wl::set_HandleColorBackgroundSize( QColor color )
  */
 void QvkRegionChoise_wl::vk_setGeometry( int x, int y, int with, int height  )
 {
-  frame_X = x;
-  frame_Y = y;
-  frame_Width = with;
-  frame_height = height;
+    frame_X = x;
+    frame_Y = y;
+    frame_Width = with;
+    frame_height = height;
 }
 
 
@@ -171,45 +171,45 @@ void QvkRegionChoise_wl::paintEvent( QPaintEvent *event )
         painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
         painterPixmap.setRenderHint( QPainter::Antialiasing, true );
         HandleRecord( painterPixmap,
-                      frame_X - radius + penHalf,
-                      frame_Y - radius + penHalf,
-                        0 * 16,
-                      270 * 16 );
+                     frame_X - radius + penHalf,
+                     frame_Y - radius + penHalf,
+                     0 * 16,
+                     270 * 16 );
         HandleRecord( painterPixmap,
-                      frame_X + frame_Width/2 - radius + penHalf,
-                      frame_Y - radius + penHalf,
-                        0 * 16,
-                      180 * 16 );
+                     frame_X + frame_Width/2 - radius + penHalf,
+                     frame_Y - radius + penHalf,
+                     0 * 16,
+                     180 * 16 );
         HandleRecord( painterPixmap,
-                      frame_X + frame_Width - radius + penHalf,
-                      frame_Y - radius + penHalf,
-                      -90 * 16,
-                      270 * 16 );
+                     frame_X + frame_Width - radius + penHalf,
+                     frame_Y - radius + penHalf,
+                     -90 * 16,
+                     270 * 16 );
         HandleRecord( painterPixmap,
-                      frame_X + frame_Width - radius + penHalf,
-                      frame_Y + frame_height/2 - radius + penHalf,
-                      -90 * 16,
-                      180 * 16 );
+                     frame_X + frame_Width - radius + penHalf,
+                     frame_Y + frame_height/2 - radius + penHalf,
+                     -90 * 16,
+                     180 * 16 );
         HandleRecord( painterPixmap,
-                      frame_X + frame_Width - radius + penHalf,
-                      frame_Y + frame_height - radius + penHalf,
-                      -180 * 16,
-                       270 * 16 );
+                     frame_X + frame_Width - radius + penHalf,
+                     frame_Y + frame_height - radius + penHalf,
+                     -180 * 16,
+                     270 * 16 );
         HandleRecord( painterPixmap,
-                      frame_X + frame_Width/2 - radius + penHalf,
-                      frame_Y + frame_height - radius + penHalf,
-                         0 * 16,
-                      -180 * 16 );
+                     frame_X + frame_Width/2 - radius + penHalf,
+                     frame_Y + frame_height - radius + penHalf,
+                     0 * 16,
+                     -180 * 16 );
         HandleRecord( painterPixmap,
-                      frame_X - radius + penHalf,
-                      frame_Y + frame_height - radius + penHalf,
-                         0 * 16,
-                      -270 * 16 );
+                     frame_X - radius + penHalf,
+                     frame_Y + frame_height - radius + penHalf,
+                     0 * 16,
+                     -270 * 16 );
         HandleRecord( painterPixmap,
-                      frame_X - radius + penHalf,
-                      frame_Y + frame_height/2 - radius + penHalf,
-                      -90 * 16,
-                      -180 * 16 );
+                     frame_X - radius + penHalf,
+                     frame_Y + frame_height/2 - radius + penHalf,
+                     -90 * 16,
+                     -180 * 16 );
 
         drawFrame( painterPixmap );
 
@@ -239,16 +239,16 @@ void QvkRegionChoise_wl::mousePressEvent( QMouseEvent *event )
 
     switch ( handleUnderMouse )
     {
-      case NoHandle    : handlePressed = NoHandle;     break;
-      case TopLeft     : { handlePressed = TopLeft;      handleKeyPressed = TopLeft;      HandleSelected = TopLeft;      break; }
-      case TopMiddle   : { handlePressed = TopMiddle;    handleKeyPressed = TopMiddle;    HandleSelected = TopMiddle;    break; }
-      case TopRight    : { handlePressed = TopRight;     handleKeyPressed = TopRight;     HandleSelected = TopRight;     break; }
-      case RightMiddle : { handlePressed = RightMiddle;  handleKeyPressed = RightMiddle;  HandleSelected = RightMiddle;  break; }
-      case BottomRight : { handlePressed = BottomRight;  handleKeyPressed = BottomRight;  HandleSelected = BottomRight;  break; }
-      case BottomMiddle: { handlePressed = BottomMiddle; handleKeyPressed = BottomMiddle; HandleSelected = BottomMiddle; break; }
-      case BottomLeft  : { handlePressed = BottomLeft;   handleKeyPressed = BottomLeft;   HandleSelected = BottomLeft;   break; }
-      case LeftMiddle  : { handlePressed = LeftMiddle;   handleKeyPressed = LeftMiddle;   HandleSelected = LeftMiddle;   break; }
-      case Middle      : { handlePressed = Middle;       handleKeyPressed = Middle;       HandleSelected = Middle;       break; }
+    case NoHandle    : handlePressed = NoHandle;     break;
+    case TopLeft     : { handlePressed = TopLeft;      handleKeyPressed = TopLeft;      HandleSelected = TopLeft;      break; }
+    case TopMiddle   : { handlePressed = TopMiddle;    handleKeyPressed = TopMiddle;    HandleSelected = TopMiddle;    break; }
+    case TopRight    : { handlePressed = TopRight;     handleKeyPressed = TopRight;     HandleSelected = TopRight;     break; }
+    case RightMiddle : { handlePressed = RightMiddle;  handleKeyPressed = RightMiddle;  HandleSelected = RightMiddle;  break; }
+    case BottomRight : { handlePressed = BottomRight;  handleKeyPressed = BottomRight;  HandleSelected = BottomRight;  break; }
+    case BottomMiddle: { handlePressed = BottomMiddle; handleKeyPressed = BottomMiddle; HandleSelected = BottomMiddle; break; }
+    case BottomLeft  : { handlePressed = BottomLeft;   handleKeyPressed = BottomLeft;   HandleSelected = BottomLeft;   break; }
+    case LeftMiddle  : { handlePressed = LeftMiddle;   handleKeyPressed = LeftMiddle;   HandleSelected = LeftMiddle;   break; }
+    case Middle      : { handlePressed = Middle;       handleKeyPressed = Middle;       HandleSelected = Middle;       break; }
     }
 
     mous_delta_X_to_blueline = event->position().x() - frame_X;
@@ -269,20 +269,20 @@ void QvkRegionChoise_wl::mousePressEvent( QMouseEvent *event )
 
 void QvkRegionChoise_wl::mouseReleaseEvent( QMouseEvent * event )
 {
-  if( event->button() != Qt::LeftButton) {
-      return;
-  }
+    if( event->button() != Qt::LeftButton) {
+        return;
+    }
 
-  handlePressed = NoHandle;
+    handlePressed = NoHandle;
 
-  repaint();
-  setMask( pixmap.mask() );
+    repaint();
+    setMask( pixmap.mask() );
 
-  // Unter Gnome wird "setMask( pixmap.mask() )" nicht ausgeführt.
-  // Selbst nach hunderten Tests ist nicht ersichtlich warum.
-  // Abhilfe schafft ein umschalten in den Fullscreen Modus und dann zurück in die Bereichsauswahl.
-  ui->radioButtonScreencastFullscreen->click();
-  ui->radioButtonScreencastArea->click();
+    // Unter Gnome wird "setMask( pixmap.mask() )" nicht ausgeführt.
+    // Selbst nach hunderten Tests ist nicht ersichtlich warum.
+    // Abhilfe schafft ein umschalten in den Fullscreen Modus und dann zurück in die Bereichsauswahl.
+    ui->radioButtonScreencastFullscreen->click();
+    ui->radioButtonScreencastArea->click();
 }
 
 
@@ -311,42 +311,42 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
     {
         switch ( event->key() )
         {
-            case Qt::Key_Up   :  {
-                                    frame_Y = frame_Y - 1;
-                                    frame_height = frame_height + 1;
-                                    if ( frame_Y < 0 - framePenHalf ) {
-                                      frame_Y = frame_Y + 1;
-                                      frame_height = frame_height - 1;
-                                    }
-                                    break;
-                                 }
-            case Qt::Key_Down :  {
-                                    frame_Y = frame_Y + 1;
-                                    frame_height = frame_height - 1;
-                                    if ( frame_height < frame_min_height ) {
-                                        frame_Y = frame_Y - 1;
-                                        frame_height = frame_height + 1;
-                                    }
-                                    break;
-                                 }
-            case Qt::Key_Left  : {
-                                    frame_X = frame_X - 1;
-                                    frame_Width = frame_Width + 1;
-                                    if ( frame_X < 0 - framePenHalf ) {
-                                        frame_X = frame_X + 1;
-                                        frame_Width = frame_Width - 1;
-                                    }
-                                    break;
-                                 }
-            case Qt::Key_Right : {
-                                    frame_X = frame_X + 1;
-                                    frame_Width = frame_Width - 1;
-                                    if ( frame_Width < frame_min_width ) {
-                                        frame_X = frame_X - 1;
-                                        frame_Width = frame_Width + 1;
-                                    }
-                                    break;
-                                 }
+        case Qt::Key_Up   :  {
+            frame_Y = frame_Y - 1;
+            frame_height = frame_height + 1;
+            if ( frame_Y < 0 - framePenHalf ) {
+                frame_Y = frame_Y + 1;
+                frame_height = frame_height - 1;
+            }
+            break;
+        }
+        case Qt::Key_Down :  {
+            frame_Y = frame_Y + 1;
+            frame_height = frame_height - 1;
+            if ( frame_height < frame_min_height ) {
+                frame_Y = frame_Y - 1;
+                frame_height = frame_height + 1;
+            }
+            break;
+        }
+        case Qt::Key_Left  : {
+            frame_X = frame_X - 1;
+            frame_Width = frame_Width + 1;
+            if ( frame_X < 0 - framePenHalf ) {
+                frame_X = frame_X + 1;
+                frame_Width = frame_Width - 1;
+            }
+            break;
+        }
+        case Qt::Key_Right : {
+            frame_X = frame_X + 1;
+            frame_Width = frame_Width - 1;
+            if ( frame_Width < frame_min_width ) {
+                frame_X = frame_X - 1;
+                frame_Width = frame_Width + 1;
+            }
+            break;
+        }
         }
     }
 
@@ -354,24 +354,24 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
     {
         switch ( event->key() )
         {
-            case Qt::Key_Up   : {
-                                   frame_Y = frame_Y - 1;
-                                   frame_height = frame_height + 1;
-                                   if ( frame_Y < 0 - framePenHalf ) {
-                                     frame_Y = frame_Y + 1;
-                                     frame_height = frame_height - 1;
-                                   }
-                                   break;
-                                }
-            case Qt::Key_Down : {
-                                   frame_Y = frame_Y + 1;
-                                   frame_height = frame_height - 1;
-                                   if ( frame_height < frame_min_height ) {
-                                       frame_Y = frame_Y - 1;
-                                       frame_height = frame_height + 1;
-                                   }
-                                   break;
-                                }
+        case Qt::Key_Up   : {
+            frame_Y = frame_Y - 1;
+            frame_height = frame_height + 1;
+            if ( frame_Y < 0 - framePenHalf ) {
+                frame_Y = frame_Y + 1;
+                frame_height = frame_height - 1;
+            }
+            break;
+        }
+        case Qt::Key_Down : {
+            frame_Y = frame_Y + 1;
+            frame_height = frame_height - 1;
+            if ( frame_height < frame_min_height ) {
+                frame_Y = frame_Y - 1;
+                frame_height = frame_height + 1;
+            }
+            break;
+        }
         }
     }
 
@@ -379,38 +379,38 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
     {
         switch ( event->key() )
         {
-            case Qt::Key_Up   : {
-                                   frame_Y = frame_Y - 1;
-                                   frame_height = frame_height + 1;
-                                   if ( frame_Y < 0 - framePenHalf ) {
-                                     frame_Y = frame_Y + 1;
-                                     frame_height = frame_height - 1;
-                                   }
-                                   break;
-                                }
-            case Qt::Key_Down : {
-                                   frame_Y = frame_Y + 1;
-                                   frame_height = frame_height - 1;
-                                   if ( frame_height < frame_min_height ) {
-                                       frame_Y = frame_Y - 1;
-                                       frame_height = frame_height + 1;
-                                   }
-                                   break;
-                                }
-            case Qt::Key_Left : {
-                                   frame_Width = frame_Width - 1;
-                                   if ( frame_Width < frame_min_width ) {
-                                       frame_Width = frame_Width + 1;
-                                   }
-                                   break;
-                                }
-            case Qt::Key_Right :{
-                                   frame_Width = frame_Width + 1;
-                                   if ( ( frame_X + frame_Width - framePenHalf ) > screenWidth ) {
-                                       frame_Width = frame_Width - 1;
-                                   }
-                                   break;
-                                }
+        case Qt::Key_Up   : {
+            frame_Y = frame_Y - 1;
+            frame_height = frame_height + 1;
+            if ( frame_Y < 0 - framePenHalf ) {
+                frame_Y = frame_Y + 1;
+                frame_height = frame_height - 1;
+            }
+            break;
+        }
+        case Qt::Key_Down : {
+            frame_Y = frame_Y + 1;
+            frame_height = frame_height - 1;
+            if ( frame_height < frame_min_height ) {
+                frame_Y = frame_Y - 1;
+                frame_height = frame_height + 1;
+            }
+            break;
+        }
+        case Qt::Key_Left : {
+            frame_Width = frame_Width - 1;
+            if ( frame_Width < frame_min_width ) {
+                frame_Width = frame_Width + 1;
+            }
+            break;
+        }
+        case Qt::Key_Right :{
+            frame_Width = frame_Width + 1;
+            if ( ( frame_X + frame_Width - framePenHalf ) > screenWidth ) {
+                frame_Width = frame_Width - 1;
+            }
+            break;
+        }
         }
     }
 
@@ -418,20 +418,20 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
     {
         switch ( event->key() )
         {
-            case Qt::Key_Left : {
-                                   frame_Width = frame_Width - 1;
-                                   if ( frame_Width < frame_min_width ) {
-                                       frame_Width = frame_Width + 1;
-                                   }
-                                   break;
-                                }
-            case Qt::Key_Right :{
-                                   frame_Width = frame_Width + 1;
-                                   if ( ( frame_X + frame_Width - framePenHalf ) > screenWidth ) {
-                                       frame_Width = frame_Width - 1;
-                                   }
-                                   break;
-                                }
+        case Qt::Key_Left : {
+            frame_Width = frame_Width - 1;
+            if ( frame_Width < frame_min_width ) {
+                frame_Width = frame_Width + 1;
+            }
+            break;
+        }
+        case Qt::Key_Right :{
+            frame_Width = frame_Width + 1;
+            if ( ( frame_X + frame_Width - framePenHalf ) > screenWidth ) {
+                frame_Width = frame_Width - 1;
+            }
+            break;
+        }
         }
     }
 
@@ -439,34 +439,34 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
     {
         switch ( event->key() )
         {
-            case Qt::Key_Up   : {
-                                   frame_height = frame_height - 1;
-                                   if ( frame_height < frame_min_height ) {
-                                       frame_height = frame_height + 1;
-                                   }
-                                   break;
-                                }
-            case Qt::Key_Down : {
-                                   frame_height = frame_height + 1;
-                                   if ( frame_Y + frame_height - framePenHalf > screenHeight ) {
-                                       frame_height = frame_height - 1;
-                                   }
-                                   break;
-                                }
-            case Qt::Key_Left : {
-                                   frame_Width = frame_Width - 1;
-                                   if ( frame_Width < frame_min_width ) {
-                                       frame_Width = frame_Width + 1;
-                                   }
-                                   break;
-                                }
-            case Qt::Key_Right :{
-                                   frame_Width = frame_Width + 1;
-                                   if ( frame_X + frame_Width - framePenHalf > screenWidth ) {
-                                       frame_Width = frame_Width - 1;
-                                   }
-                                   break;
-                                }
+        case Qt::Key_Up   : {
+            frame_height = frame_height - 1;
+            if ( frame_height < frame_min_height ) {
+                frame_height = frame_height + 1;
+            }
+            break;
+        }
+        case Qt::Key_Down : {
+            frame_height = frame_height + 1;
+            if ( frame_Y + frame_height - framePenHalf > screenHeight ) {
+                frame_height = frame_height - 1;
+            }
+            break;
+        }
+        case Qt::Key_Left : {
+            frame_Width = frame_Width - 1;
+            if ( frame_Width < frame_min_width ) {
+                frame_Width = frame_Width + 1;
+            }
+            break;
+        }
+        case Qt::Key_Right :{
+            frame_Width = frame_Width + 1;
+            if ( frame_X + frame_Width - framePenHalf > screenWidth ) {
+                frame_Width = frame_Width - 1;
+            }
+            break;
+        }
         }
     }
 
@@ -474,59 +474,59 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
     {
         switch ( event->key() )
         {
-            case Qt::Key_Up   : {
-                                   frame_height = frame_height - 1;
-                                   if ( frame_height < frame_min_height ) {
-                                       frame_height = frame_height + 1;
-                                   }
-                                   break;
-                                }
-            case Qt::Key_Down : {
-                                   frame_height = frame_height + 1;
-                                   if ( frame_Y + frame_height - framePenHalf > screenHeight ) {
-                                       frame_height = frame_height - 1;
-                                   }
-                                   break;
-                                }
+        case Qt::Key_Up   : {
+            frame_height = frame_height - 1;
+            if ( frame_height < frame_min_height ) {
+                frame_height = frame_height + 1;
+            }
+            break;
         }
-     }
+        case Qt::Key_Down : {
+            frame_height = frame_height + 1;
+            if ( frame_Y + frame_height - framePenHalf > screenHeight ) {
+                frame_height = frame_height - 1;
+            }
+            break;
+        }
+        }
+    }
 
     if ( handleKeyPressed == BottomLeft )
     {
         switch ( event->key() )
         {
-            case Qt::Key_Up   :  {
-                                    frame_height = frame_height - 1;
-                                    if ( frame_height < frame_min_height ) {
-                                        frame_height = frame_height + 1;
-                                    }
-                                    break;
-                                 }
-            case Qt::Key_Down :  {
-                                    frame_height = frame_height + 1;
-                                    if ( frame_Y + frame_height - framePenHalf > screenHeight ) {
-                                        frame_height = frame_height - 1;
-                                    }
-                                    break;
-                                 }
-            case Qt::Key_Left  : {
-                                    frame_X = frame_X - 1;
-                                    frame_Width = frame_Width + 1;
-                                    if ( frame_X < 0 - framePenHalf ) {
-                                        frame_X = frame_X + 1;
-                                        frame_Width = frame_Width - 1;
-                                    }
-                                    break;
-                                 }
-            case Qt::Key_Right : {
-                                    frame_X = frame_X + 1;
-                                    frame_Width = frame_Width - 1;
-                                    if ( frame_Width < frame_min_width ) {
-                                        frame_X = frame_X - 1;
-                                        frame_Width = frame_Width + 1;
-                                    }
-                                    break;
-                                 }
+        case Qt::Key_Up   :  {
+            frame_height = frame_height - 1;
+            if ( frame_height < frame_min_height ) {
+                frame_height = frame_height + 1;
+            }
+            break;
+        }
+        case Qt::Key_Down :  {
+            frame_height = frame_height + 1;
+            if ( frame_Y + frame_height - framePenHalf > screenHeight ) {
+                frame_height = frame_height - 1;
+            }
+            break;
+        }
+        case Qt::Key_Left  : {
+            frame_X = frame_X - 1;
+            frame_Width = frame_Width + 1;
+            if ( frame_X < 0 - framePenHalf ) {
+                frame_X = frame_X + 1;
+                frame_Width = frame_Width - 1;
+            }
+            break;
+        }
+        case Qt::Key_Right : {
+            frame_X = frame_X + 1;
+            frame_Width = frame_Width - 1;
+            if ( frame_Width < frame_min_width ) {
+                frame_X = frame_X - 1;
+                frame_Width = frame_Width + 1;
+            }
+            break;
+        }
         }
     }
 
@@ -534,24 +534,24 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
     {
         switch ( event->key() )
         {
-            case Qt::Key_Left  : {
-                                    frame_X = frame_X - 1;
-                                    frame_Width = frame_Width + 1;
-                                    if ( frame_X < 0 - framePenHalf ) {
-                                        frame_X = frame_X + 1;
-                                        frame_Width = frame_Width - 1;
-                                    }
-                                    break;
-                                 }
-            case Qt::Key_Right : {
-                                    frame_X = frame_X + 1;
-                                    frame_Width = frame_Width - 1;
-                                    if ( frame_Width < frame_min_width ) {
-                                        frame_X = frame_X - 1;
-                                        frame_Width = frame_Width + 1;
-                                    }
-                                    break;
-                                 }
+        case Qt::Key_Left  : {
+            frame_X = frame_X - 1;
+            frame_Width = frame_Width + 1;
+            if ( frame_X < 0 - framePenHalf ) {
+                frame_X = frame_X + 1;
+                frame_Width = frame_Width - 1;
+            }
+            break;
+        }
+        case Qt::Key_Right : {
+            frame_X = frame_X + 1;
+            frame_Width = frame_Width - 1;
+            if ( frame_Width < frame_min_width ) {
+                frame_X = frame_X - 1;
+                frame_Width = frame_Width + 1;
+            }
+            break;
+        }
         }
     }
 
@@ -559,34 +559,34 @@ void QvkRegionChoise_wl::keyPressEvent( QKeyEvent * event )
     {
         switch ( event->key() )
         {
-            case Qt::Key_Left  : {
-                                    frame_X = frame_X - 1;
-                                    if (  frame_X + framePenHalf < 0 ) {
-                                        frame_X = frame_X + 1;
-                                    }
-                                    break;
-                                 }
-            case Qt::Key_Right : {
-                                    frame_X = frame_X + 1;
-                                    if ( frame_X + frame_Width - framePenHalf > screenWidth ) {
-                                        frame_X = frame_X - 1;
-                                    }
-                                    break;
-                                 }
-            case Qt::Key_Up    : {
-                                    frame_Y = frame_Y - 1;
-                                    if ( frame_Y + framePenHalf < 0 ) {
-                                        frame_Y = frame_Y + 1;
-                                    }
-                                    break;
-                                 }
-            case Qt::Key_Down  : {
-                                    frame_Y = frame_Y + 1;
-                                    if ( frame_Y + frame_height - framePenHalf > screenHeight ) {
-                                        frame_Y = frame_Y - 1;
-                                    }
-                                    break;
-                                 }
+        case Qt::Key_Left  : {
+            frame_X = frame_X - 1;
+            if (  frame_X + framePenHalf < 0 ) {
+                frame_X = frame_X + 1;
+            }
+            break;
+        }
+        case Qt::Key_Right : {
+            frame_X = frame_X + 1;
+            if ( frame_X + frame_Width - framePenHalf > screenWidth ) {
+                frame_X = frame_X - 1;
+            }
+            break;
+        }
+        case Qt::Key_Up    : {
+            frame_Y = frame_Y - 1;
+            if ( frame_Y + framePenHalf < 0 ) {
+                frame_Y = frame_Y + 1;
+            }
+            break;
+        }
+        case Qt::Key_Down  : {
+            frame_Y = frame_Y + 1;
+            if ( frame_Y + frame_height - framePenHalf > screenHeight ) {
+                frame_Y = frame_Y - 1;
+            }
+            break;
+        }
         }
     }
 
@@ -604,215 +604,215 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
 
     switch ( handlePressed )
     {
-      case NoHandle    : break;
-      case TopLeft     : { // Move
-                           frame_X = event->position().x() - mous_delta_X_to_blueline;
-                           frame_Y = event->position().y() - mous_delta_Y_to_blueline;
-                           frame_Width = old_Mouse_X - event->position().x() + old_Frame_Width;
-                           frame_height = old_Mouse_Y - event->position().y() + old_Frame_Height;
+    case NoHandle    : break;
+    case TopLeft     : { // Move
+        frame_X = event->position().x() - mous_delta_X_to_blueline;
+        frame_Y = event->position().y() - mous_delta_Y_to_blueline;
+        frame_Width = old_Mouse_X - event->position().x() + old_Frame_Width;
+        frame_height = old_Mouse_Y - event->position().y() + old_Frame_Height;
 
-                           // Limit min
-                           if ( frame_Width < frame_min_width ) {
-                             frame_X = old_Frame_X2 - frame_min_width;
-                             frame_Width = frame_min_width;
-                           }
+        // Limit min
+        if ( frame_Width < frame_min_width ) {
+            frame_X = old_Frame_X2 - frame_min_width;
+            frame_Width = frame_min_width;
+        }
 
-                           if ( frame_height < frame_min_height ) {
-                             frame_Y = old_Frame_Y2 - frame_min_height;
-                             frame_height = frame_min_height;
-                           }
+        if ( frame_height < frame_min_height ) {
+            frame_Y = old_Frame_Y2 - frame_min_height;
+            frame_height = frame_min_height;
+        }
 
-                           // Limit max
-                           if ( frame_Y <= 0 - framePenHalf ) {
-                             frame_Y = 0 - framePenHalf;
-                             frame_height = old_Frame_Y2 + framePenHalf;
-                           }
+        // Limit max
+        if ( frame_Y <= 0 - framePenHalf ) {
+            frame_Y = 0 - framePenHalf;
+            frame_height = old_Frame_Y2 + framePenHalf;
+        }
 
-                           if ( frame_X <= 0 - framePenHalf ) {
-                              frame_X = 0 - framePenHalf;
-                              frame_Width = old_Frame_X2 + framePenHalf;
-                           }
+        if ( frame_X <= 0 - framePenHalf ) {
+            frame_X = 0 - framePenHalf;
+            frame_Width = old_Frame_X2 + framePenHalf;
+        }
 
-                           break;
-                         }
-      case TopMiddle   : { // Move
-                           frame_Y = event->position().y() - mous_delta_Y_to_blueline;
-                           frame_height = old_Mouse_Y - event->position().y() + old_Frame_Height;
+        break;
+    }
+    case TopMiddle   : { // Move
+        frame_Y = event->position().y() - mous_delta_Y_to_blueline;
+        frame_height = old_Mouse_Y - event->position().y() + old_Frame_Height;
 
-                           // Limit min
-                           if ( frame_height < frame_min_height ) {
-                             frame_Y = old_Frame_Y2 - frame_min_height;
-                             frame_height = frame_min_height;
-                           }
+        // Limit min
+        if ( frame_height < frame_min_height ) {
+            frame_Y = old_Frame_Y2 - frame_min_height;
+            frame_height = frame_min_height;
+        }
 
-                           // Limit max
-                           if ( frame_Y <= 0 - framePenHalf ) {
-                             frame_Y = 0 - framePenHalf;
-                             frame_height = old_Frame_Y2 + framePenHalf;
-                           }
+        // Limit max
+        if ( frame_Y <= 0 - framePenHalf ) {
+            frame_Y = 0 - framePenHalf;
+            frame_height = old_Frame_Y2 + framePenHalf;
+        }
 
-                           break;
-                         }
-      case TopRight    : { // Move
-                           frame_Y = event->position().y() - mous_delta_Y_to_blueline;
-                           frame_Width = event->position().x() - old_Mouse_X + old_Frame_Width;
-                           frame_height = old_Mouse_Y - event->position().y() + old_Frame_Height;;
+        break;
+    }
+    case TopRight    : { // Move
+        frame_Y = event->position().y() - mous_delta_Y_to_blueline;
+        frame_Width = event->position().x() - old_Mouse_X + old_Frame_Width;
+        frame_height = old_Mouse_Y - event->position().y() + old_Frame_Height;;
 
-                           // Limit min
-                           if ( frame_Width < frame_min_width ) {
-                             frame_Width = frame_min_width;
-                           }
+        // Limit min
+        if ( frame_Width < frame_min_width ) {
+            frame_Width = frame_min_width;
+        }
 
-                           if ( frame_height < frame_min_height ) {
-                             frame_Y = old_Frame_Y2 - frame_min_height;
-                             frame_height = frame_min_height;
-                           }
+        if ( frame_height < frame_min_height ) {
+            frame_Y = old_Frame_Y2 - frame_min_height;
+            frame_height = frame_min_height;
+        }
 
-                           // Limit max
-                           if ( frame_Y <= 0 - framePenHalf ) {
-                             frame_Y = 0 - framePenHalf;
-                             frame_height = old_Frame_Y2 + framePenHalf;
-                           }
+        // Limit max
+        if ( frame_Y <= 0 - framePenHalf ) {
+            frame_Y = 0 - framePenHalf;
+            frame_height = old_Frame_Y2 + framePenHalf;
+        }
 
-                           if( ( frame_X + frame_Width - framePenHalf ) > screenWidth ) {
-                             frame_Width = screenWidth + framePenHalf - frame_X;
-                           }
+        if( ( frame_X + frame_Width - framePenHalf ) > screenWidth ) {
+            frame_Width = screenWidth + framePenHalf - frame_X;
+        }
 
-                           break;
-                         }
-      case RightMiddle : { // Move
-                           frame_Width = event->position().x() - old_Mouse_X + old_Frame_Width;
+        break;
+    }
+    case RightMiddle : { // Move
+        frame_Width = event->position().x() - old_Mouse_X + old_Frame_Width;
 
-                           // Limit min
-                           if ( frame_Width < frame_min_width ) {
-                             frame_Width = frame_min_width;
-                           }
+        // Limit min
+        if ( frame_Width < frame_min_width ) {
+            frame_Width = frame_min_width;
+        }
 
-                           // Limit max
-                           if( ( frame_X + frame_Width - framePenHalf ) > screenWidth ) {
-                             frame_Width = screenWidth + framePenHalf - frame_X;
-                           }
+        // Limit max
+        if( ( frame_X + frame_Width - framePenHalf ) > screenWidth ) {
+            frame_Width = screenWidth + framePenHalf - frame_X;
+        }
 
-                           break;
-                         }
-      case BottomRight : { // Move
-                           frame_Width = event->position().x() - old_Mouse_X + old_Frame_Width;
-                           frame_height = event->position().y() - old_Mouse_Y + old_Frame_Height;
+        break;
+    }
+    case BottomRight : { // Move
+        frame_Width = event->position().x() - old_Mouse_X + old_Frame_Width;
+        frame_height = event->position().y() - old_Mouse_Y + old_Frame_Height;
 
-                           // Limit min
-                           if ( frame_Width < frame_min_width ) {
-                             frame_Width = frame_min_width;
-                           }
+        // Limit min
+        if ( frame_Width < frame_min_width ) {
+            frame_Width = frame_min_width;
+        }
 
-                           if ( frame_height < frame_min_height ) {
-                             frame_height = frame_min_height;
-                           }
+        if ( frame_height < frame_min_height ) {
+            frame_height = frame_min_height;
+        }
 
-                           //Limit max
-                           if( ( frame_X + frame_Width - framePenHalf ) > screenWidth ) {
-                             frame_Width = screenWidth + framePenHalf - frame_X;
-                           }
+        //Limit max
+        if( ( frame_X + frame_Width - framePenHalf ) > screenWidth ) {
+            frame_Width = screenWidth + framePenHalf - frame_X;
+        }
 
-                           if( ( frame_Y + frame_height - framePenHalf ) > screenHeight ) {
-                             frame_height = screenHeight + framePenHalf - frame_Y;
-                           }
+        if( ( frame_Y + frame_height - framePenHalf ) > screenHeight ) {
+            frame_height = screenHeight + framePenHalf - frame_Y;
+        }
 
-                           break;
-                         }
-      case BottomMiddle: { // Move
-                           frame_height = event->position().y() - old_Mouse_Y + old_Frame_Height;
+        break;
+    }
+    case BottomMiddle: { // Move
+        frame_height = event->position().y() - old_Mouse_Y + old_Frame_Height;
 
-                           // Limit min
-                           if ( frame_height < frame_min_height ) {
-                             frame_height = frame_min_height;
-                           }
+        // Limit min
+        if ( frame_height < frame_min_height ) {
+            frame_height = frame_min_height;
+        }
 
-                           //Limit max
-                           if( ( frame_Y + frame_height - framePenHalf ) > screenHeight ) {
-                             frame_height = screenHeight + framePenHalf - frame_Y;
-                           }
+        //Limit max
+        if( ( frame_Y + frame_height - framePenHalf ) > screenHeight ) {
+            frame_height = screenHeight + framePenHalf - frame_Y;
+        }
 
-                           break;
-                         }
+        break;
+    }
     case BottomLeft    : {
-                           // Move
-                           frame_X = event->position().x() - mous_delta_X_to_blueline;
-                           frame_height = event->position().y() - old_Mouse_Y + old_Frame_Height;
-                           frame_Width = old_Mouse_X - event->position().x() + old_Frame_Width;
+        // Move
+        frame_X = event->position().x() - mous_delta_X_to_blueline;
+        frame_height = event->position().y() - old_Mouse_Y + old_Frame_Height;
+        frame_Width = old_Mouse_X - event->position().x() + old_Frame_Width;
 
-                           // Limit min
-                           if ( frame_Width < frame_min_width ) {
-                             frame_X = old_Frame_X2 - frame_min_width;
-                             frame_Width = frame_min_width;
-                           }
+        // Limit min
+        if ( frame_Width < frame_min_width ) {
+            frame_X = old_Frame_X2 - frame_min_width;
+            frame_Width = frame_min_width;
+        }
 
-                           if ( frame_height < frame_min_height ) {
-                             frame_height = frame_min_height;
-                           }
+        if ( frame_height < frame_min_height ) {
+            frame_height = frame_min_height;
+        }
 
-                           // Limit max
-                           if ( frame_X <= 0 - framePenHalf ) {
-                              frame_X = 0 - framePenHalf;
-                              frame_Width = old_Frame_X2 + framePenHalf;
-                           }
+        // Limit max
+        if ( frame_X <= 0 - framePenHalf ) {
+            frame_X = 0 - framePenHalf;
+            frame_Width = old_Frame_X2 + framePenHalf;
+        }
 
-                           if( ( frame_Y + frame_height - framePenHalf ) > screenHeight ) {
-                             frame_height = screenHeight + framePenHalf - frame_Y;
-                           }
+        if( ( frame_Y + frame_height - framePenHalf ) > screenHeight ) {
+            frame_height = screenHeight + framePenHalf - frame_Y;
+        }
 
-                           break;
-                         }
-      case LeftMiddle  : { // Move
-                           frame_X = event->position().x() - mous_delta_X_to_blueline;
-                           frame_Width = old_Mouse_X - event->position().x() + old_Frame_Width;
+        break;
+    }
+    case LeftMiddle  : { // Move
+        frame_X = event->position().x() - mous_delta_X_to_blueline;
+        frame_Width = old_Mouse_X - event->position().x() + old_Frame_Width;
 
-                           // Limit min
-                           if ( frame_Width < frame_min_width ) {
-                             frame_X = old_Frame_X2 - frame_min_width;
-                             frame_Width = frame_min_width;
-                           }
+        // Limit min
+        if ( frame_Width < frame_min_width ) {
+            frame_X = old_Frame_X2 - frame_min_width;
+            frame_Width = frame_min_width;
+        }
 
-                           // Limit max
-                           if ( frame_X <= 0 - framePenHalf ) {
-                              frame_X = 0 - framePenHalf;
-                              frame_Width = old_Frame_X2 + framePenHalf;
-                           }
+        // Limit max
+        if ( frame_X <= 0 - framePenHalf ) {
+            frame_X = 0 - framePenHalf;
+            frame_Width = old_Frame_X2 + framePenHalf;
+        }
 
-                           break;
-                         }
-      case Middle      : { // Move
-                           int deltaX = ( old_Frame_X2 - framePenHalf - frame_Width/2 ) - old_Mouse_X;
-                           int deltaY = ( old_Frame_Y2 - framePenHalf - frame_height/2 ) - old_Mouse_Y;
-                           frame_X = event->position().x() - frame_Width/2 + framePenHalf + deltaX;
-                           frame_Y = event->position().y() - frame_height/2 + framePenHalf + deltaY;
+        break;
+    }
+    case Middle      : { // Move
+        int deltaX = ( old_Frame_X2 - framePenHalf - frame_Width/2 ) - old_Mouse_X;
+        int deltaY = ( old_Frame_Y2 - framePenHalf - frame_height/2 ) - old_Mouse_Y;
+        frame_X = event->position().x() - frame_Width/2 + framePenHalf + deltaX;
+        frame_Y = event->position().y() - frame_height/2 + framePenHalf + deltaY;
 
-                           // Limit Top
-                           if ( frame_Y <= 0 - framePenHalf ) {
-                             frame_Y = 0 - framePenHalf;
-                           }
+        // Limit Top
+        if ( frame_Y <= 0 - framePenHalf ) {
+            frame_Y = 0 - framePenHalf;
+        }
 
-                           // Limit Left
-                           if ( frame_X <= 0 - framePenHalf ) {
-                             frame_X = 0 - framePenHalf;
-                           }
+        // Limit Left
+        if ( frame_X <= 0 - framePenHalf ) {
+            frame_X = 0 - framePenHalf;
+        }
 
-                           // Limit Right
-                           if( ( frame_X + frame_Width - framePenHalf ) > screenWidth ) {
-                               frame_X = screenWidth - frame_Width + framePenHalf;
-                           }
+        // Limit Right
+        if( ( frame_X + frame_Width - framePenHalf ) > screenWidth ) {
+            frame_X = screenWidth - frame_Width + framePenHalf;
+        }
 
-                           // Limit Bottom
-                           if( ( frame_Y + frame_height - framePenHalf ) > screenHeight ) {
-                               frame_Y = screenHeight - frame_height + framePenHalf;
-                           }
+        // Limit Bottom
+        if( ( frame_Y + frame_height - framePenHalf ) > screenHeight ) {
+            frame_Y = screenHeight - frame_height + framePenHalf;
+        }
 
-                           break;
-                         }
+        break;
+    }
     } // end switch
 
     if ( handlePressed != NoHandle ) {
-            repaint();
-            return;
+        repaint();
+        return;
     }
 
     QRect regionTopLeft( frame_X - radius - 1, frame_Y - radius - 1, diameter + 2, diameter + 2 );
@@ -862,10 +862,10 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
 
     QvkRegionButtonArrow buttonArrow;
     QRect regionBottomRight( frame_X + frame_Width - buttonArrow.getWithHalf(),
-                               frame_Y + frame_height - buttonArrow.getWithHalf(),
-                               buttonArrow.getWithHalf()*2,
-                               buttonArrow.getWithHalf()*2
-                              );
+                            frame_Y + frame_height - buttonArrow.getWithHalf(),
+                            buttonArrow.getWithHalf()*2,
+                            buttonArrow.getWithHalf()*2
+                            );
     if ( regionBottomRight.contains( event->pos() ) ) {
         QPixmap pixmap( ":/pictures/cursor/size_fdiag.png" );
         QCursor cursor( pixmap );
@@ -875,10 +875,10 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
     }
 
     QRect regionBottomMiddle( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
-                                frame_Y + frame_height - buttonArrow.getWithHalf(),
-                                buttonArrow.getWithHalf()*2,
-                                buttonArrow.getWithHalf()*2
-                               );
+                             frame_Y + frame_height - buttonArrow.getWithHalf(),
+                             buttonArrow.getWithHalf()*2,
+                             buttonArrow.getWithHalf()*2
+                             );
     if ( regionBottomMiddle.contains( event->pos() ) ) {
         QPixmap pixmap( ":/pictures/cursor/size_ver.png" );
         QCursor cursor( pixmap );
@@ -888,10 +888,10 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
     }
 
     QRect regionBottomLeft( frame_X - buttonArrow.getWithHalf(),
-                              frame_Y + frame_height - buttonArrow.getWithHalf(),
-                              buttonArrow.getWithHalf()*2,
-                              buttonArrow.getWithHalf()*2
-                            );
+                           frame_Y + frame_height - buttonArrow.getWithHalf(),
+                           buttonArrow.getWithHalf()*2,
+                           buttonArrow.getWithHalf()*2
+                           );
     if ( regionBottomLeft.contains( event->pos()) ) {
         QPixmap pixmap( ":/pictures/cursor/size_bdiag.png" );
         QCursor cursor( pixmap );
@@ -901,10 +901,10 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
     }
 
     QRect regionLeftMiddle( frame_X - buttonArrow.getWithHalf(),
-                              frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
-                              buttonArrow.getWithHalf()*2,
-                              buttonArrow.getWithHalf()*2
-                            );
+                           frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
+                           buttonArrow.getWithHalf()*2,
+                           buttonArrow.getWithHalf()*2
+                           );
     if ( regionLeftMiddle.contains( event->pos() ) ) {
         QPixmap pixmap( ":/pictures/cursor/size_hor.png" );
         QCursor cursor( pixmap );
@@ -924,24 +924,24 @@ void QvkRegionChoise_wl::printSize( QPainter &painter )
                              " x " +
                              QString::number( static_cast<int>( get_HeightRecordArea() / myDevicePixelRatio( currentScreen ) ) );
 
-  QFont font;
-  font.setPointSize( 14 );
-  painter.setFont( font );
+    QFont font;
+    font.setPointSize( 14 );
+    painter.setFont( font );
 
-  QFontMetrics fontMetrics( font );
-  pixelWidth = fontMetrics.horizontalAdvance( widthHeigtSize );
-  pixelHeight = fontMetrics.height();
-  QRect rect( frame_X + frame_Width/2 - pixelWidth/2 - 5,
-              frame_Y + frame_height/2 - pixelHeight/2 - 50,
-              pixelWidth + 10,
-              pixelHeight );
+    QFontMetrics fontMetrics( font );
+    pixelWidth = fontMetrics.horizontalAdvance( widthHeigtSize );
+    pixelHeight = fontMetrics.height();
+    QRect rect( frame_X + frame_Width/2 - pixelWidth/2 - 5,
+               frame_Y + frame_height/2 - pixelHeight/2 - 50,
+               pixelWidth + 10,
+               pixelHeight );
 
-  painter.setBrush( QBrush( Qt::lightGray, Qt::SolidPattern ) );
-  painter.setPen( QPen( Qt::black, 2 ) );
+    painter.setBrush( QBrush( Qt::lightGray, Qt::SolidPattern ) );
+    painter.setPen( QPen( Qt::black, 2 ) );
 
-  painter.drawRoundedRect( rect, 7, 7 );
+    painter.drawRoundedRect( rect, 7, 7 );
 
-  painter.drawText( rect, Qt::AlignCenter, widthHeigtSize );
+    painter.drawText( rect, Qt::AlignCenter, widthHeigtSize );
 }
 
 
@@ -953,9 +953,9 @@ void QvkRegionChoise_wl::drawFrame(QPainter &painter)
     QBrush brush( Qt::transparent, Qt::SolidPattern);
     painter.setBrush( brush );
     painter.drawRect( frame_X,
-                      frame_Y,
-                      frame_Width,
-                      frame_height);
+                     frame_Y,
+                     frame_Width,
+                     frame_height);
 }
 
 
@@ -974,17 +974,17 @@ QColor QvkRegionChoise_wl::get_FrameColor()
 void QvkRegionChoise_wl::HandleRecord( QPainter &painter, int x, int y, int startAngle, int spanAngle )
 {
     QBrush brush;
-      brush.setColor( Qt::darkGray );
-      brush.setStyle( Qt::SolidPattern );
+    brush.setColor( Qt::darkGray );
+    brush.setStyle( Qt::SolidPattern );
     painter.setBrush( brush );
     QPen pen;
-      pen.setColor( Qt::black );
-      pen.setWidth( penWidth );
+    pen.setColor( Qt::black );
+    pen.setWidth( penWidth );
     painter.setPen( pen );
     QRectF rectangle = QRectF( x,
-                               y,
-                               diameter,
-                               diameter );
+                              y,
+                              diameter,
+                              diameter );
 
     painter.drawPie( rectangle, startAngle, spanAngle );
 }
@@ -1009,8 +1009,8 @@ void QvkRegionChoise_wl::HandleTopLeft( QPainter &painter )
     }
 
     painter.drawPixmap( frame_X - radius,
-                        frame_Y - radius,
-                        buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.topLeft ) );
+                       frame_Y - radius,
+                       buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.topLeft ) );
 }
 
 
@@ -1028,16 +1028,16 @@ void QvkRegionChoise_wl::HandleTopLeftSize( QPainter &painter)
     pixelWidth = fontMetrics.horizontalAdvance( string );
     pixelHeight = fontMetrics.height() * 2;
     QRect rect( frame_X + radius,
-                frame_Y + radius,
-                pixelWidth,
-                pixelHeight );
+               frame_Y + radius,
+               pixelWidth,
+               pixelHeight );
 
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
     painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf + 1 ) +
-                                             "\n" +
-                                             "y:" + QString::number( frame_Y + framePenHalf + 1 ) );
+                                                "\n" +
+                                                "y:" + QString::number( frame_Y + framePenHalf + 1 ) );
 }
 
 
@@ -1060,8 +1060,8 @@ void QvkRegionChoise_wl::HandleTopMiddle( QPainter &painter)
     }
 
     painter.drawPixmap( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
-                        frame_Y - buttonArrow.getWithHalf(),
-                        buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.topMiddle ) );
+                       frame_Y - buttonArrow.getWithHalf(),
+                       buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.topMiddle ) );
 }
 
 
@@ -1079,9 +1079,9 @@ void QvkRegionChoise_wl::HandleTopMiddleSize( QPainter &painter )
     pixelWidth = fontMetrics.horizontalAdvance( string);
     pixelHeight = fontMetrics.height();
     QRect rect( frame_X + frame_Width/2 - pixelWidth/2,
-                frame_Y + radius + 5,
-                pixelWidth,
-                pixelHeight );
+               frame_Y + radius + 5,
+               pixelWidth,
+               pixelHeight );
 
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
@@ -1109,8 +1109,8 @@ void QvkRegionChoise_wl::HandleTopRight(QPainter &painter)
     }
 
     painter.drawPixmap( frame_X + frame_Width - buttonArrow.getWithHalf(),
-                        frame_Y - buttonArrow.getWithHalf(),
-                        buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.topRight ) );
+                       frame_Y - buttonArrow.getWithHalf(),
+                       buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.topRight ) );
 }
 
 
@@ -1128,16 +1128,16 @@ void QvkRegionChoise_wl::HandleTopRightSize( QPainter &painter )
     pixelWidth = fontMetrics.horizontalAdvance( string );
     pixelHeight = fontMetrics.height() * 2;
     QRect rect( frame_X + frame_Width - pixelWidth - radius,
-                frame_Y + radius,
-                pixelWidth,
-                pixelHeight );
+               frame_Y + radius,
+               pixelWidth,
+               pixelHeight );
 
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
     painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + frame_Width - framePenHalf ) +
-                                             "\n" +
-                                             "y:" + QString::number( frame_Y + framePenHalf + 1 ) );
+                                                "\n" +
+                                                "y:" + QString::number( frame_Y + framePenHalf + 1 ) );
 }
 
 
@@ -1160,8 +1160,8 @@ void QvkRegionChoise_wl::HandleRightMiddle( QPainter &painter )
     }
 
     painter.drawPixmap( frame_X + frame_Width - buttonArrow.getWithHalf(),
-                        frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
-                        buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.rightMiddle ) );
+                       frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
+                       buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.rightMiddle ) );
 }
 
 
@@ -1179,9 +1179,9 @@ void QvkRegionChoise_wl::HandleRightMiddleSize( QPainter &painter )
     pixelWidth = fontMetrics.horizontalAdvance( string );
     pixelHeight = fontMetrics.height();
     QRect rect( frame_X + frame_Width - pixelWidth - radius - 5,
-                frame_Y + frame_height/2 - pixelHeight/2,
-                pixelWidth,
-                pixelHeight );
+               frame_Y + frame_height/2 - pixelHeight/2,
+               pixelWidth,
+               pixelHeight );
 
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
@@ -1209,8 +1209,8 @@ void QvkRegionChoise_wl::HandleBottomRight( QPainter &painter )
     }
 
     painter.drawPixmap( frame_X + frame_Width - buttonArrow.getWithHalf(),
-                        frame_Y + frame_height - buttonArrow.getWithHalf(),
-                        buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.bottomRight ) );
+                       frame_Y + frame_height - buttonArrow.getWithHalf(),
+                       buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.bottomRight ) );
 }
 
 
@@ -1229,16 +1229,16 @@ void QvkRegionChoise_wl::HandleBottomRightSize( QPainter &painter )
     pixelWidth = fontMetrics.horizontalAdvance( string );
     pixelHeight = fontMetrics.height() * 2;
     QRect rect( frame_X + frame_Width - pixelWidth - radius,
-                frame_Y + frame_height - pixelHeight - radius,
-                pixelWidth,
-                pixelHeight );
+               frame_Y + frame_height - pixelHeight - radius,
+               pixelWidth,
+               pixelHeight );
 
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
     painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + frame_Width - framePenHalf ) +
-                                             "\n" +
-                                             "y:" + QString::number( frame_Y + frame_height - framePenHalf ) );
+                                                "\n" +
+                                                "y:" + QString::number( frame_Y + frame_height - framePenHalf ) );
 }
 
 
@@ -1262,8 +1262,8 @@ void QvkRegionChoise_wl::HandleBottomMiddle( QPainter &painter )
     }
 
     painter.drawPixmap( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
-                        frame_Y + frame_height - buttonArrow.getWithHalf(),
-                        buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.bottomMiddel ) );
+                       frame_Y + frame_height - buttonArrow.getWithHalf(),
+                       buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.bottomMiddel ) );
 }
 
 
@@ -1281,9 +1281,9 @@ void QvkRegionChoise_wl::HandleBottomMiddleSize(QPainter &painter )
     pixelWidth = fontMetrics.horizontalAdvance( string);
     pixelHeight = fontMetrics.height();
     QRect rect( frame_X + frame_Width/2 - pixelWidth/2,
-                frame_Y + frame_height - pixelHeight - radius - 5,
-                pixelWidth,
-                pixelHeight );
+               frame_Y + frame_height - pixelHeight - radius - 5,
+               pixelWidth,
+               pixelHeight );
 
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
@@ -1311,8 +1311,8 @@ void QvkRegionChoise_wl::HandleBottomLeft( QPainter &painter )
     }
 
     painter.drawPixmap( frame_X - buttonArrow.getWithHalf(),
-                        frame_Y + frame_height - buttonArrow.getWithHalf(),
-                        buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.bottomLeft ) );
+                       frame_Y + frame_height - buttonArrow.getWithHalf(),
+                       buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.bottomLeft ) );
 }
 
 
@@ -1330,16 +1330,16 @@ void QvkRegionChoise_wl::HandleBottomLeftSize( QPainter &painter )
     pixelWidth = fontMetrics.horizontalAdvance( string );
     pixelHeight = fontMetrics.height() * 2;
     QRect rect( frame_X + radius,
-                frame_Y + frame_height - pixelHeight - radius - 5,
-                pixelWidth,
-                pixelHeight );
+               frame_Y + frame_height - pixelHeight - radius - 5,
+               pixelWidth,
+               pixelHeight );
 
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
     painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf + 1 ) +
-                                             "\n" +
-                                             "y:" + QString::number( frame_Y + frame_height - framePenHalf ) );
+                                                "\n" +
+                                                "y:" + QString::number( frame_Y + frame_height - framePenHalf ) );
 }
 
 
@@ -1362,8 +1362,8 @@ void QvkRegionChoise_wl::HandleLeftMiddle( QPainter &painter )
     }
 
     painter.drawPixmap( frame_X - buttonArrow.getWithHalf(),
-                        frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
-                        buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.leftMiddel ) );
+                       frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
+                       buttonArrow.getPixmapHandle( color, colorSelected, buttonArrow.leftMiddel ) );
 }
 
 
@@ -1381,9 +1381,9 @@ void QvkRegionChoise_wl::HandleLeftMiddleSize( QPainter &painter )
     pixelWidth = fontMetrics.horizontalAdvance( string );
     pixelHeight = fontMetrics.height();
     QRect rect( frame_X + radius + 5,
-                frame_Y + frame_height/2 - pixelHeight/2,
-                pixelWidth,
-                pixelHeight );
+               frame_Y + frame_height/2 - pixelHeight/2,
+               pixelWidth,
+               pixelHeight );
 
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
@@ -1412,24 +1412,24 @@ void QvkRegionChoise_wl::HandleMiddle( QPainter &painter )
     }
 
     painter.drawPixmap( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
-                        frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
-                        buttonArrow.getButton( color) );
+                       frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
+                       buttonArrow.getButton( color) );
 
     painter.drawPixmap( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
-                        frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
-                        buttonArrow.getArrow( buttonArrow.degreeArrow::topMiddle, colorSelected ) );
+                       frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
+                       buttonArrow.getArrow( buttonArrow.degreeArrow::topMiddle, colorSelected ) );
 
     painter.drawPixmap( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
-                        frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
-                        buttonArrow.getArrow( buttonArrow.degreeArrow::rightMiddle, colorSelected ) );
+                       frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
+                       buttonArrow.getArrow( buttonArrow.degreeArrow::rightMiddle, colorSelected ) );
 
     painter.drawPixmap( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
-                        frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
-                        buttonArrow.getArrow( buttonArrow.degreeArrow::bottomMiddel, colorSelected ) );
+                       frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
+                       buttonArrow.getArrow( buttonArrow.degreeArrow::bottomMiddel, colorSelected ) );
 
     painter.drawPixmap( frame_X + frame_Width/2 - buttonArrow.getWithHalf(),
-                        frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
-                        buttonArrow.getArrow( buttonArrow.degreeArrow::leftMiddel, colorSelected ) );
+                       frame_Y + frame_height/2 - buttonArrow.getWithHalf(),
+                       buttonArrow.getArrow( buttonArrow.degreeArrow::leftMiddel, colorSelected ) );
 }
 
 
@@ -1451,11 +1451,11 @@ void QvkRegionChoise_wl::set_recordMode( bool value )
 
 qreal QvkRegionChoise_wl::myDevicePixelRatio( QScreen *m_screen )
 {
-  if ( m_screen->devicePixelRatio() == 1 ) {
+    if ( m_screen->devicePixelRatio() == 1 ) {
         return 1;
-  } else {
+    } else {
         return (qreal)qRound( m_screen->logicalDotsPerInch() / m_screen->physicalDotsPerInchX() * 100 ) / 100;
-  }
+    }
 }
 
 /**
@@ -1463,7 +1463,7 @@ qreal QvkRegionChoise_wl::myDevicePixelRatio( QScreen *m_screen )
  */
 int QvkRegionChoise_wl::get_width_from_window()
 {
-  return screenWidth * myDevicePixelRatio( currentScreen );
+    return screenWidth * myDevicePixelRatio( currentScreen );
 }
 
 /**
@@ -1471,7 +1471,7 @@ int QvkRegionChoise_wl::get_width_from_window()
  */
 int QvkRegionChoise_wl::get_height_from_window()
 {
-  return screenHeight * myDevicePixelRatio( currentScreen );
+    return screenHeight * myDevicePixelRatio( currentScreen );
 }
 
 
@@ -1480,7 +1480,7 @@ int QvkRegionChoise_wl::get_height_from_window()
  */
 int QvkRegionChoise_wl::get_XRecordArea()
 {
-  return ( frame_X + framePenWidth/2 ) * myDevicePixelRatio( currentScreen );
+    return ( frame_X + framePenWidth/2 ) * myDevicePixelRatio( currentScreen );
 }
 
 
