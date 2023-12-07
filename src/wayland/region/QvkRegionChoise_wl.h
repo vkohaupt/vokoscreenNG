@@ -40,8 +40,9 @@ Q_OBJECT
 public:
   QvkRegionChoise_wl( Ui_formMainWindow_wl *ui );
   virtual ~QvkRegionChoise_wl();
-  int get_X();
-  int get_Y();
+  int get_width_from_window();
+  int get_height_from_window();
+
   int get_XRecordArea();
   int get_YRecordArea();
   int get_WidthRecordArea();
@@ -55,10 +56,6 @@ public:
   int screenHeight = 400;
   QPixmap pixmap;
 
-  // int screenSizeX();
-  // int screenSizeY();
-  int get_width_from_window();
-  int get_height_from_window();
 
 
 public slots:

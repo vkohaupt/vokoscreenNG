@@ -1448,23 +1448,6 @@ void QvkRegionChoise_wl::set_recordMode( bool value )
     }
 }
 
-/**
- * Return x from window
- */
-int QvkRegionChoise_wl::get_X()
-{
-  return frame_X;
-}
-
-
-/**
- * Return y from window
- */
-int QvkRegionChoise_wl::get_Y()
-{
-  return  frame_Y;
-}
-
 
 qreal QvkRegionChoise_wl::myDevicePixelRatio( QScreen *m_screen )
 {
