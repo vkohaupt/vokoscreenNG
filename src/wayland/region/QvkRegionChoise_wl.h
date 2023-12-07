@@ -55,8 +55,10 @@ public:
   int screenHeight = 400;
   QPixmap pixmap;
 
-  int screenSizeX();
-  int screenSizeY();
+  // int screenSizeX();
+  // int screenSizeY();
+  int get_width_from_window();
+  int get_height_from_window();
 
 
 public slots:

@@ -1476,17 +1476,17 @@ qreal QvkRegionChoise_wl::myDevicePixelRatio( QScreen *m_screen )
 }
 
 /**
- * Returns the resolution width of the screen
+ * Returns the resolution width from the window
  */
-int QvkRegionChoise_wl::screenSizeX()
+int QvkRegionChoise_wl::get_width_from_window()
 {
   return screenWidth * myDevicePixelRatio( currentScreen );
 }
 
 /**
- * Returns the resolution height of the screen
+ * Returns the resolution height from the window
  */
-int QvkRegionChoise_wl::screenSizeY()
+int QvkRegionChoise_wl::get_height_from_window()
 {
   return screenHeight * myDevicePixelRatio( currentScreen );
 }

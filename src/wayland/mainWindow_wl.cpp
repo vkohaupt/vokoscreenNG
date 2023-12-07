@@ -382,8 +382,8 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
 
     // +1 wird benötigt damit die blaue Linie nicht mit ausgeschnitten wird
     QString top    = QString::number( vkRegionChoise_wl->get_YRecordArea() + divTop + 1 );
-    QString right  = QString::number( vkRegionChoise_wl->screenSizeX() + 1 - ( vkRegionChoise_wl->get_XRecordArea() + vkRegionChoise_wl->get_WidthRecordArea() - divRight ) );
-    QString bottom = QString::number( vkRegionChoise_wl->screenSizeY() + 1 - ( vkRegionChoise_wl->get_YRecordArea() + vkRegionChoise_wl->get_HeightRecordArea() - divBottom ) );
+    QString right  = QString::number( vkRegionChoise_wl->get_width_from_window()  + 1 - ( vkRegionChoise_wl->get_XRecordArea() + vkRegionChoise_wl->get_WidthRecordArea() - divRight ) );
+    QString bottom = QString::number( vkRegionChoise_wl->get_height_from_window() + 1 - ( vkRegionChoise_wl->get_YRecordArea() + vkRegionChoise_wl->get_HeightRecordArea() - divBottom ) );
     QString left   = QString::number( vkRegionChoise_wl->get_XRecordArea() + divLeft + 1 );
     videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
 
