@@ -1489,7 +1489,7 @@ int QvkRegionChoise_wl::get_XRecordArea()
  */
 int QvkRegionChoise_wl::get_YRecordArea()
 {
-    return ( frame_Y + framePenWidth/2 ) * myDevicePixelRatio( currentScreen );
+    return ( frame_Y + framePenWidth/2 + 1 ) * myDevicePixelRatio( currentScreen );
 }
 
 /**
@@ -1497,7 +1497,7 @@ int QvkRegionChoise_wl::get_YRecordArea()
  */
 int QvkRegionChoise_wl::get_WidthRecordArea()
 {
-    return ( frame_Width - framePenWidth + 1 ) * myDevicePixelRatio( currentScreen );
+    return ( frame_Width - framePenWidth - 1 ) * myDevicePixelRatio( currentScreen );
 }
 
 /**
@@ -1505,7 +1505,7 @@ int QvkRegionChoise_wl::get_WidthRecordArea()
  */
 int QvkRegionChoise_wl::get_HeightRecordArea()
 {
-    return ( frame_height - framePenWidth ) * myDevicePixelRatio( currentScreen );
+    return ( frame_height - framePenWidth - 1 ) * myDevicePixelRatio( currentScreen );
 }
 
 
