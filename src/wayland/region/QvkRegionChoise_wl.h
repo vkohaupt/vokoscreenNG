@@ -56,6 +56,8 @@ public:
     int screenHeight = 400;
     QPixmap pixmap;
 
+    qreal myDevicePixelRatio( QScreen *m_screen );
+
 
 public slots:
     void slot_areaReset();
@@ -137,7 +139,6 @@ private:
     QColor frameColor;
 
     int a = 0;
-    qreal myDevicePixelRatio( QScreen *m_screen );
 
 
 protected:

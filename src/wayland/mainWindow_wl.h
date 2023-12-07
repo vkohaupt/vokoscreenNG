@@ -62,8 +62,6 @@ private:
     QString get_Area_Videocrop();
     QString get_Muxer();
 
-    qreal myDevicePixelRatio( QScreen *m_screen );
-
 
 public Q_SLOTS:
 

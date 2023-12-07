@@ -106,7 +106,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             } else {
                 qDebug().noquote() << global::nameOutput << "Name from screen: " << screen.at(i)->name();
             }
-            qDebug().noquote() << global::nameOutput << "DevicePixelRatio:" << myDevicePixelRatio( screen.at(i) );
+            qDebug().noquote() << global::nameOutput << "DevicePixelRatio:" << vkRegionChoise_wl->myDevicePixelRatio( screen.at(i) );
             qDebug().noquote() << global::nameOutput << "Screen Resolution width :" << screen.at(i)->geometry().width();
             qDebug().noquote() << global::nameOutput << "Screen Resolution height :" << screen.at(i)->geometry().height();
             qDebug().noquote() << global::nameOutput << "Vertical refresh rate of the screen in Hz:" << screen.at(i)->refreshRate();
@@ -117,12 +117,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             qDebug().noquote() << global::nameOutput << "SerialNumber from screen: " << screen.at(i)->serialNumber();
         }
     }
-}
-
-
-qreal QvkMainWindow_wl::myDevicePixelRatio( QScreen *m_screen )
-{
-    return (qreal)qRound( m_screen->logicalDotsPerInch() / m_screen->physicalDotsPerInchX() * 100 ) / 100;
 }
 
 
@@ -334,27 +328,7 @@ void QvkMainWindow_wl::slot_start()
     portal_wl->requestScreenSharing( sourceType, mousecursorONOff );
 }
 
-/*
-QString QvkMainWindow_wl::get_Area_Videocrop()
-{
-    QString videocrop = "";
-    vkRegionChoise_wl->set_recordMode( true );
 
-    QString top    = QString::number( vkRegionChoise_wl->get_YRecordArea() );
-    QString right  = QString::number( vkRegionChoise_wl->screenSizeX() - ( vkRegionChoise_wl->get_XRecordArea() + vkRegionChoise_wl->get_WidthRecordArea() ) );
-    QString bottom = QString::number( vkRegionChoise_wl->screenSizeY() - ( vkRegionChoise_wl->get_YRecordArea() + vkRegionChoise_wl->get_HeightRecordArea() ) );
-    QString left   = QString::number( vkRegionChoise_wl->get_XRecordArea() );
-    videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
-
-    qDebug().noquote() << global::nameOutput << "Area crop from the screen"
-                       << vkRegionChoise_wl->screen()->name() + ","
-                       << vkRegionChoise_wl->screen()->manufacturer() + ","
-                       << vkRegionChoise_wl->screen()->model() + ","
-                       << QString::number( vkRegionChoise_wl->screen()->size().width() ) + "/" + QString::number( vkRegionChoise_wl->screen()->size().height() );
-
-    return videocrop;
-}
-*/
 QString QvkMainWindow_wl::get_Area_Videocrop()
 {
     QString videocrop = "";
@@ -365,26 +339,25 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
     int divLeft = 0;
 
     if ( ui->toolButton_area_top->isChecked() == true ) {
-        divTop = screen()->size().height() - vkRegionChoise_wl->screenHeight;
+        divTop = ( screen()->size().height() * vkRegionChoise_wl->myDevicePixelRatio( screen() ) ) - vkRegionChoise_wl->get_height_from_window();
     }
 
     if ( ui->toolButton_area_right->isChecked() == true ) {
-        divRight = screen()->size().width() - vkRegionChoise_wl->screenWidth;
+        divRight = ( screen()->size().width() * vkRegionChoise_wl->myDevicePixelRatio( screen() ) ) - vkRegionChoise_wl->get_width_from_window();
     }
 
     if ( ui->toolButton_area_bottom->isChecked() == true ) {
-        divBottom = screen()->size().height() - vkRegionChoise_wl->screenHeight;
+        divBottom = ( screen()->size().height() * vkRegionChoise_wl->myDevicePixelRatio( screen() ) ) - vkRegionChoise_wl->get_height_from_window();
     }
 
     if ( ui->toolButton_area_left->isChecked() == true ) {
-        divLeft = screen()->size().width() - vkRegionChoise_wl->screenWidth;
+        divLeft = ( screen()->size().width() * vkRegionChoise_wl->myDevicePixelRatio( screen() ) ) - vkRegionChoise_wl->get_width_from_window();
     }
 
-    // +1 wird benötigt damit die blaue Linie nicht mit ausgeschnitten wird
-    QString top    = QString::number( vkRegionChoise_wl->get_YRecordArea() + divTop + 1 );
-    QString right  = QString::number( vkRegionChoise_wl->get_width_from_window()  + 1 - ( vkRegionChoise_wl->get_XRecordArea() + vkRegionChoise_wl->get_WidthRecordArea() - divRight ) );
-    QString bottom = QString::number( vkRegionChoise_wl->get_height_from_window() + 1 - ( vkRegionChoise_wl->get_YRecordArea() + vkRegionChoise_wl->get_HeightRecordArea() - divBottom ) );
-    QString left   = QString::number( vkRegionChoise_wl->get_XRecordArea() + divLeft + 1 );
+    QString top    = QString::number( vkRegionChoise_wl->get_YRecordArea() + divTop );
+    QString right  = QString::number( vkRegionChoise_wl->get_width_from_window() - ( vkRegionChoise_wl->get_XRecordArea() + vkRegionChoise_wl->get_WidthRecordArea() - divRight ) );
+    QString bottom = QString::number( vkRegionChoise_wl->get_height_from_window() - ( vkRegionChoise_wl->get_YRecordArea() + vkRegionChoise_wl->get_HeightRecordArea() - divBottom ) );
+    QString left   = QString::number( vkRegionChoise_wl->get_XRecordArea() + divLeft );
     videocrop = "videocrop top=" + top + " " + "right=" + right + " " + "bottom=" + bottom + " " + "left=" + left;
 
     qDebug().noquote() << global::nameOutput << "Area crop from the screen"
