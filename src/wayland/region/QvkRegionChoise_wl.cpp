@@ -1451,11 +1451,15 @@ void QvkRegionChoise_wl::set_recordMode( bool value )
 
 qreal QvkRegionChoise_wl::myDevicePixelRatio( QScreen *m_screen )
 {
+/*
     if ( m_screen->devicePixelRatio() == 1 ) {
         return 1;
     } else {
         return (qreal)qRound( m_screen->logicalDotsPerInch() / m_screen->physicalDotsPerInchX() * 100 ) / 100;
     }
+*/
+    return (qreal)qRound( m_screen->logicalDotsPerInch() / m_screen->physicalDotsPerInchX() * 100 ) / 100;
+
 }
 
 /**
