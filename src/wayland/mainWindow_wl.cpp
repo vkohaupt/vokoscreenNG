@@ -108,6 +108,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             }
             qDebug().noquote() << global::nameOutput << "myDevicePixelRatio:" << vkRegionChoise_wl->myDevicePixelRatio( screen.at(i) );
             qDebug().noquote() << global::nameOutput << "QScreen::devicePixelRatio:" << screen.at(i)->devicePixelRatio();
+            qDebug().noquote() << global::nameOutput << "vkRegionChoise_wl->screen()->devicePixelRatio():" << vkRegionChoise_wl->screen()->devicePixelRatio();
             qDebug().noquote() << global::nameOutput << "Screen Resolution width :" << screen.at(i)->geometry().width();
             qDebug().noquote() << global::nameOutput << "Screen Resolution height :" << screen.at(i)->geometry().height();
             qDebug().noquote() << global::nameOutput << "Vertical refresh rate of the screen in Hz:" << screen.at(i)->refreshRate();

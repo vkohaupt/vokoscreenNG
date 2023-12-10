@@ -1451,15 +1451,17 @@ void QvkRegionChoise_wl::set_recordMode( bool value )
 
 qreal QvkRegionChoise_wl::myDevicePixelRatio( QScreen *m_screen )
 {
-/*
-    if ( m_screen->devicePixelRatio() == 1 ) {
-        return 1;
-    } else {
-        return (qreal)qRound( m_screen->logicalDotsPerInch() / m_screen->physicalDotsPerInchX() * 100 ) / 100;
-    }
-*/
-    return (qreal)qRound( m_screen->logicalDotsPerInch() / m_screen->physicalDotsPerInchX() * 100 ) / 100;
+    QString nameDesktop = qgetenv( "XDG_CURRENT_DESKTOP" ).toLower();
 
+    if ( nameDesktop.contains( "gnome" ) ) {
+        return m_screen->devicePixelRatio();
+    }
+
+    if ( nameDesktop.contains( "kde" ) ) {
+        return (qreal)qRound( m_screen->logicalDotsPerInchX() / m_screen->physicalDotsPerInchX() * 100 ) / 100;
+    }
+
+    return m_screen->devicePixelRatio();
 }
 
 /**
