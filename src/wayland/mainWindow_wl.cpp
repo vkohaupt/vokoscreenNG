@@ -45,6 +45,12 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     qApp->setStyleSheet( streamCSS.readAll() );
     fileCSS.close();
 
+    // Sidebar
+    connect( ui->toolButtonScreencast, &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(0); } );
+    connect( ui->toolButtonLog,        &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(1); } );
+    ui->tabWidgetSideBar->tabBar()->hide();
+    ui->toolButtonScreencast->click();
+
     set_WindowTitle();
     ui->tabWidgetScreencast->setCurrentIndex( 0 );
     ui->tabWidgetSideBar->setCurrentIndex( 0 );
