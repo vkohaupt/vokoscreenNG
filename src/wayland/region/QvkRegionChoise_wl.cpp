@@ -69,7 +69,6 @@ QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow 
 
 void QvkRegionChoise_wl::slot_init()
 {
-    currentScreen = screen();
     showMaximized();
     hide();
 }
@@ -920,9 +919,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
 
 void QvkRegionChoise_wl::printSize( QPainter &painter )
 {
-    QString widthHeigtSize = QString::number( static_cast<int>( get_WidthRecordArea() / myDevicePixelRatio( currentScreen ) ) ) +
+    QString widthHeigtSize = QString::number( static_cast<int>( get_WidthRecordArea() / myDevicePixelRatio() ) ) +
                              " x " +
-                             QString::number( static_cast<int>( get_HeightRecordArea() / myDevicePixelRatio( currentScreen ) ) );
+                             QString::number( static_cast<int>( get_HeightRecordArea() / myDevicePixelRatio() ) );
 
     QFont font;
     font.setPointSize( 14 );
@@ -1449,19 +1448,19 @@ void QvkRegionChoise_wl::set_recordMode( bool value )
 }
 
 
-qreal QvkRegionChoise_wl::myDevicePixelRatio( QScreen *m_screen )
+qreal QvkRegionChoise_wl::myDevicePixelRatio()
 {
     QString nameDesktop = qgetenv( "XDG_CURRENT_DESKTOP" ).toLower();
 
     if ( nameDesktop.contains( "gnome" ) ) {
-        return m_screen->devicePixelRatio();
+        return devicePixelRatio();
     }
 
     if ( nameDesktop.contains( "kde" ) ) {
-        return (qreal)qRound( m_screen->logicalDotsPerInchX() / m_screen->physicalDotsPerInchX() * 100 ) / 100;
+        return (qreal)qRound( screen()->logicalDotsPerInchX() / screen()->physicalDotsPerInchX() * 100 ) / 100;
     }
 
-    return m_screen->devicePixelRatio();
+    return screen()->devicePixelRatio();
 }
 
 /**
@@ -1469,7 +1468,7 @@ qreal QvkRegionChoise_wl::myDevicePixelRatio( QScreen *m_screen )
  */
 int QvkRegionChoise_wl::get_width_from_window()
 {
-    return ( screenWidth ) * myDevicePixelRatio( currentScreen );
+    return screenWidth * myDevicePixelRatio();
 }
 
 /**
@@ -1477,7 +1476,7 @@ int QvkRegionChoise_wl::get_width_from_window()
  */
 int QvkRegionChoise_wl::get_height_from_window()
 {
-    return ( screenHeight ) * myDevicePixelRatio( currentScreen );
+    return screenHeight * myDevicePixelRatio();
 }
 
 
@@ -1486,7 +1485,7 @@ int QvkRegionChoise_wl::get_height_from_window()
  */
 int QvkRegionChoise_wl::get_XRecordArea()
 {
-    return ( frame_X + framePenWidth/2 + 1 ) * myDevicePixelRatio( currentScreen );
+    return ( frame_X + framePenWidth/2 + 1 ) * myDevicePixelRatio();
 }
 
 
@@ -1495,7 +1494,7 @@ int QvkRegionChoise_wl::get_XRecordArea()
  */
 int QvkRegionChoise_wl::get_YRecordArea()
 {
-    return ( frame_Y + framePenWidth/2 + 1 ) * myDevicePixelRatio( currentScreen );
+    return ( frame_Y + framePenWidth/2 + 1 ) * myDevicePixelRatio();
 }
 
 /**
@@ -1503,7 +1502,7 @@ int QvkRegionChoise_wl::get_YRecordArea()
  */
 int QvkRegionChoise_wl::get_WidthRecordArea()
 {
-    return ( frame_Width - framePenWidth - 1 ) * myDevicePixelRatio( currentScreen );
+    return ( frame_Width - framePenWidth - 1 ) * myDevicePixelRatio();
 }
 
 /**
@@ -1511,7 +1510,7 @@ int QvkRegionChoise_wl::get_WidthRecordArea()
  */
 int QvkRegionChoise_wl::get_HeightRecordArea()
 {
-    return ( frame_height - framePenWidth - 1 ) * myDevicePixelRatio( currentScreen );
+    return ( frame_height - framePenWidth - 1 ) * myDevicePixelRatio();
 }
 
 

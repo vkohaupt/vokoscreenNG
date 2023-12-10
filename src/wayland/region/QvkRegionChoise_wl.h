@@ -51,12 +51,11 @@ public:
     void set_recordMode( bool value );
     void set_FrameColor( QColor color );
 
-    QScreen *currentScreen;
     int screenWidth = 400;
     int screenHeight = 400;
     QPixmap pixmap;
 
-    qreal myDevicePixelRatio( QScreen *m_screen );
+    qreal myDevicePixelRatio();
 
 
 public slots:

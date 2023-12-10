@@ -107,7 +107,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
                 qDebug().noquote() << global::nameOutput << "Name from screen: " << screen.at(i)->name();
             }
             qDebug().noquote() << global::nameOutput << "DevicePixelRatio:" << screen.at(i)->devicePixelRatio() << " (Normal displays is 1, Retina display is 2)";
-            qDebug().noquote() << global::nameOutput << "myDevicePixelRatio:" << vkRegionChoise_wl->myDevicePixelRatio( screen.at(i) );
+            qDebug().noquote() << global::nameOutput << "myDevicePixelRatio:" << vkRegionChoise_wl->myDevicePixelRatio();
             qDebug().noquote() << global::nameOutput << "Screen Resolution width :" << screen.at(i)->geometry().width();
             qDebug().noquote() << global::nameOutput << "Screen Resolution height :" << screen.at(i)->geometry().height();
             qDebug().noquote() << global::nameOutput << "Vertical refresh rate of the screen in Hz:" << screen.at(i)->refreshRate();
@@ -340,19 +340,19 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
     int divLeft = 0;
 
     if ( ui->toolButton_area_top->isChecked() == true ) {
-        divTop = ( screen()->size().height() * vkRegionChoise_wl->myDevicePixelRatio( screen() ) ) - vkRegionChoise_wl->get_height_from_window();
+        divTop = ( screen()->size().height() * vkRegionChoise_wl->myDevicePixelRatio() ) - vkRegionChoise_wl->get_height_from_window();
     }
 
     if ( ui->toolButton_area_right->isChecked() == true ) {
-        divRight = ( screen()->size().width() * vkRegionChoise_wl->myDevicePixelRatio( screen() ) ) - vkRegionChoise_wl->get_width_from_window();
+        divRight = ( screen()->size().width() * vkRegionChoise_wl->myDevicePixelRatio() ) - vkRegionChoise_wl->get_width_from_window();
     }
 
     if ( ui->toolButton_area_bottom->isChecked() == true ) {
-        divBottom = ( screen()->size().height() * vkRegionChoise_wl->myDevicePixelRatio( screen() ) ) - vkRegionChoise_wl->get_height_from_window();
+        divBottom = ( screen()->size().height() * vkRegionChoise_wl->myDevicePixelRatio() ) - vkRegionChoise_wl->get_height_from_window();
     }
 
     if ( ui->toolButton_area_left->isChecked() == true ) {
-        divLeft = ( screen()->size().width() * vkRegionChoise_wl->myDevicePixelRatio( screen() ) ) - vkRegionChoise_wl->get_width_from_window();
+        divLeft = ( screen()->size().width() * vkRegionChoise_wl->myDevicePixelRatio() ) - vkRegionChoise_wl->get_width_from_window();
     }
 
     QString top    = QString::number( vkRegionChoise_wl->get_YRecordArea() + divTop );
