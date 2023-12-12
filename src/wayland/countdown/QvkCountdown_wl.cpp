@@ -28,20 +28,29 @@
 #include <QIcon>
 #include <QDebug>
 #include <QMouseEvent>
+#include <QDialogButtonBox>
+#include <QPushButton>
+#include <QPixmap>
 
 QvkCountdown_wl::QvkCountdown_wl()
 {
-}
+//    setParent( parent );
+    //    setAttribute( Qt::WA_TranslucentBackground, true );
 
+    // Is needed only for the translated text
+/*    QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Abort, this);
+    buttonBox->hide();
+    QList<QPushButton *> list = buttonBox->findChildren<QPushButton *>();
+    cancelText = list.at(0)->text();
+    buttonBox->close();
+*/
+    //    vkCountdownWindow_wl->setWindowFlags( Qt::FramelessWindowHint );
+    //    connect( this, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
 
-QvkCountdown_wl::~QvkCountdown_wl()
-{
-}
-
-
-void QvkCountdown_wl::init()
-{
-    createCountdownWindow();
+    x = 0;
+    y = 0;
+    Width = 300;
+    Height = 300;
 
     timer = new QTimer( this );
     timer->setTimerType( Qt::PreciseTimer );
@@ -55,31 +64,17 @@ void QvkCountdown_wl::init()
 }
 
 
-void QvkCountdown_wl::createCountdownWindow()
+QvkCountdown_wl::~QvkCountdown_wl()
 {
-    vkCountdownWindow_wl = new QvkCountdownWindow_wl( this );
-    vkCountdownWindow_wl->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
-
-    connect( vkCountdownWindow_wl, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
-
-    x = 0;
-    y = 0;
-    Width = 300;
-    Height = 300;;
-
-    vkCountdownWindow_wl->x = 0;
-    vkCountdownWindow_wl->y = 0;
-    vkCountdownWindow_wl->Width = 300;
-    vkCountdownWindow_wl->Height = 300;;
 }
 
 
 void QvkCountdown_wl::startCountdown( int value )
 {
-    vkCountdownWindow_wl->setGeometry( x, y, Width, Height );
-    vkCountdownWindow_wl->show();
-    vkCountdownWindow_wl->countValue = value;
-    vkCountdownWindow_wl->gradValue = 0;
+    resize( Width, Height );
+    show();
+    countValue = value;
+    gradValue = 0;
 
     timer->start( 1000 );
     animationTimer->start( 40 );
@@ -89,14 +84,13 @@ void QvkCountdown_wl::startCountdown( int value )
 
 void QvkCountdown_wl::slot_updateTimer()
 {
-    vkCountdownWindow_wl->gradValue = 0;
-    vkCountdownWindow_wl->countValue--;
+    gradValue = 0;
+    countValue--;
 
-    if ( vkCountdownWindow_wl->countValue == 0 ) {
-        vkCountdownWindow_wl->setGeometry( x, y, 1, 1 );
-        vkCountdownWindow_wl->hide();
+    if ( countValue == 0 ) {
         timer->stop();
         animationTimer->stop();
+        hide();
         emit signal_countDownfinish( true );
     }
 }
@@ -104,14 +98,97 @@ void QvkCountdown_wl::slot_updateTimer()
 
 void QvkCountdown_wl::slot_updateAnimationTimer()
 {
-    vkCountdownWindow_wl->gradValue = vkCountdownWindow_wl->gradValue - 20;
-    vkCountdownWindow_wl->repaint();
+    gradValue = gradValue - 20;
+    repaint();
 }
 
 
-void QvkCountdown_wl::slot_cancel( bool value )
+void QvkCountdown_wl::paintEvent( QPaintEvent *event )
 {
-    timer->stop();
-    animationTimer->stop();
-    emit signal_countDownCancel( value);
+    (void)event;
+
+    QPixmap pixmap( 300 * devicePixelRatioF(), 300 * devicePixelRatioF() );
+    pixmap.fill( Qt::transparent );
+    pixmap.setDevicePixelRatio( devicePixelRatioF() );
+
+    QPainter painterPixmap;
+    painterPixmap.begin( &pixmap );
+    painterPixmap.setRenderHints( QPainter::Antialiasing, true );
+
+    QPen pen;
+    QBrush brush;
+    brush.setColor( Qt::darkGray );
+    brush.setStyle( Qt::SolidPattern );
+    pen.setWidth( 0 );
+    pen.setColor( Qt::darkGray );
+    painterPixmap.setBrush( brush );
+    painterPixmap.setPen( pen );
+    painterPixmap.setOpacity( 0.3 );
+    painterPixmap.drawPie( 0, 0, 300, 300, 90*16, gradValue*16 );
+
+    painterPixmap.setOpacity( 1.0 );
+    pen.setColor( Qt::darkGray );
+    pen.setWidth( 6 );
+    painterPixmap.setPen( pen );
+    brush.setStyle( Qt::NoBrush );
+    painterPixmap.setBrush( brush );
+    painterPixmap.drawEllipse( QPoint( width()/2, height()/2), 125-3, 125-3 );
+    painterPixmap.drawEllipse( QPoint( width()/2, height()/2), 100, 100 );
+    painterPixmap.drawLine( 0, height()/2, width(), height()/2 );
+    painterPixmap.drawLine( width()/2, 0, width()/2, height() );
+
+    int fontSize = 110;
+    QFont font;
+    font.setPointSize( fontSize );
+    painterPixmap.setFont( font );
+    painterPixmap.setPen( Qt::red );
+    QFontMetrics fontMetrics( font );
+    int fontWidth = fontMetrics.horizontalAdvance( QString::number( countValue ) );
+    painterPixmap.drawText( width()/2-fontWidth/2, height()/2+fontSize/2, QString::number( countValue ) );
+
+    //--------------------- Cancel button -------------------------------
+
+    fontSize = 14;
+    font.setPointSize( fontSize );
+    font.setBold( true);
+    QFontMetrics fontMetrics_1( font );
+    fontWidth = fontMetrics_1.horizontalAdvance( cancelText );
+
+    qreal x = width()/2 - (fontWidth+30)/2;
+    qreal y = 220;
+    qreal width = fontWidth + 30;
+    qreal height = 30;
+
+    brush.setColor( Qt::red );
+    brush.setStyle( Qt::SolidPattern );
+    painterPixmap.setBrush( brush );
+    pen.setWidth( 2 );
+    pen.setColor( Qt::black );
+    painterPixmap.setPen( pen );
+    rectCancel.setRect( x, y, width, height );
+    painterPixmap.drawRoundedRect( rectCancel, 10, 10 );
+
+    painterPixmap.setPen( Qt::white );
+    painterPixmap.setFont( font );
+    painterPixmap.drawText( rectCancel, Qt::AlignCenter, cancelText );
+
+    painterPixmap.end();
+
+    QPainter painter;
+    painter.begin( this );
+    painter.drawPixmap( QPointF( 0, 0 ), pixmap );
+    painter.end();
+
+//    setMask( pixmap.mask() );
+}
+
+
+void QvkCountdown_wl::mousePressEvent( QMouseEvent *event )
+{
+    if ( rectCancel.contains( event->pos() ) ) {
+        timer->stop();
+        animationTimer->stop();
+        hide();
+        emit signal_countDownCancel( true );
+    }
 }

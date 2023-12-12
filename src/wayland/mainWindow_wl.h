@@ -62,11 +62,16 @@ private:
     QString get_Area_Videocrop();
     QString get_Muxer();
 
+    QString m_fd;
+    QString m_path;
+
 
 public Q_SLOTS:
 
 
 private Q_SLOTS:
+    void slot_countDownfinish( bool bo );
+    void slot_pre_start( QString vk_fd, QString vk_path );
     void slot_start();
     void slot_stop();
     void slot_start_gst( QString vk_fd, QString vk_path );

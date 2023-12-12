@@ -60,12 +60,11 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     QvkInformation_wl *vkInformation = new QvkInformation_wl( this, ui );
     connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
     set_RegionChoice();
+    vkCountdown_wl = new QvkCountdown_wl();
     set_Connects();
     set_check_all_Elements_available();
     vkContainerController_wl = new QvkContainerController_wl( ui );
 
-    vkCountdown_wl = new QvkCountdown_wl();
-    vkCountdown_wl->init();
 
     new QvkLicenses( ui->pushButtonLicense );
     new QvkImageFromTabs_wl( this );
@@ -230,11 +229,19 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->radioButtonScreencastWindow,     SIGNAL( clicked( bool ) ), ui->frame_area, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastArea,       SIGNAL( clicked( bool ) ), ui->frame_area, SLOT( setEnabled( bool ) ) );
 
-    connect( portal_wl, SIGNAL( signal_portal_fd_path( QString, QString ) ), this, SLOT( slot_start_gst( QString, QString ) ) );
-    connect( portal_wl, SIGNAL( signal_portal_cancel( uint ) ), this,              SLOT( slot_portal_cancel( uint ) ) );
+    connect( portal_wl, SIGNAL( signal_portal_fd_path( QString, QString ) ), this, SLOT( slot_pre_start( QString, QString ) ) );
+    connect( portal_wl, SIGNAL( signal_portal_cancel( uint ) ),              this, SLOT( slot_portal_cancel( uint ) ) );
 
     connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise_wl, SLOT( slot_areaReset() ) );
     connect( ui->toolButtonFramesReset,         SIGNAL( clicked( bool ) ), this,              SLOT( slot_frames_Reset() ) );
+
+    connect( vkCountdown_wl, SIGNAL( signal_countDownCancel( bool ) ), ui->pushButtonStart, SLOT( setEnabled( bool ) ) );
+    connect( vkCountdown_wl, SIGNAL( signal_countDownCancel( bool ) ), ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
+    connect( vkCountdown_wl, SIGNAL( signal_countDownCancel( bool ) ), ui->radioButtonScreencastFullscreen, SLOT( setEnabled( bool ) ) );
+    connect( vkCountdown_wl, SIGNAL( signal_countDownCancel( bool ) ), ui->radioButtonScreencastWindow,     SLOT( setEnabled( bool ) ) );
+    connect( vkCountdown_wl, SIGNAL( signal_countDownCancel( bool ) ), ui->radioButtonScreencastArea,       SLOT( setEnabled( bool ) ) );
+    connect( vkCountdown_wl, SIGNAL( signal_countDownCancel( bool ) ), ui->tabVideo,                        SLOT( setEnabled( bool ) ) );
+    connect( vkCountdown_wl, SIGNAL( signal_countDownCancel( bool ) ), ui->frameVideoPath,                  SLOT( setEnabled( bool ) ) );
 }
 
 
@@ -377,10 +384,34 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
 }
 
 
+void QvkMainWindow_wl::slot_pre_start( QString vk_fd, QString vk_path )
+{
+    m_fd = vk_fd;
+    m_path = vk_path;
+    if ( sliderScreencastCountDown->value() > 0 ) {
+        qDebug() << "1111111111111111111111111111111111111111";
+        connect( vkCountdown_wl, SIGNAL( signal_countDownfinish( bool ) ), this, SLOT( slot_countDownfinish( bool ) ) );
+        vkCountdown_wl->startCountdown( sliderScreencastCountDown->value() );
+    } else {
+        qDebug() << "22222222222222222222222222222222222222222";
+        slot_start_gst( vk_fd, vk_path );
+    }
+}
+
+
+void QvkMainWindow_wl::slot_countDownfinish( bool bo )
+{
+    Q_UNUSED(bo)
+    qDebug() << "333333333333333333333333333333333333333333";
+    slot_start_gst( m_fd, m_path );
+}
+
+
 void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 {
+    qDebug() << "4444444444444444444444444444444444444444444";
+
     ui->pushButtonStop->setEnabled( true );
-    vkCountdown_wl->startCountdown( sliderScreencastCountDown->value() );
 
     QStringList stringList;
     stringList << QString( "pipewiresrc fd=" ).append( vk_fd ).append( " path=" ).append( vk_path ).append( " do-timestamp=true" );

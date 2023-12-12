@@ -24,8 +24,9 @@
 #define QVKCOUNTDOWN_WL_H
 
 #include <QWidget>
-
-#include "QvkCountdownWindow_wl.h"
+#include <QPainter>
+#include <QPaintEvent>
+#include <QMouseEvent>
 
 class QvkCountdown_wl: public QWidget
 {
@@ -33,31 +34,34 @@ class QvkCountdown_wl: public QWidget
 public:
     QvkCountdown_wl();
     virtual ~QvkCountdown_wl();
-    void init();
     void startCountdown(int value );
     int x;
     int y;
     int Width;
     int Height;
-
+    int countValue;
+    int gradValue;
     
+
 public slots:
 
 
 private:
-    QvkCountdownWindow_wl *vkCountdownWindow_wl;
-    void createCountdownWindow();
     QTimer *timer;
     QTimer *animationTimer;
+    int oldCountValue;
+    QString cancelText = "Cancel";
+    QRectF rectCancel;
 
 
 private slots:
     void slot_updateTimer();
     void slot_updateAnimationTimer();
-    void slot_cancel( bool value );
 
 
 protected:
+    void paintEvent( QPaintEvent *event );
+    void mousePressEvent(QMouseEvent *event);
 
 
 signals:
