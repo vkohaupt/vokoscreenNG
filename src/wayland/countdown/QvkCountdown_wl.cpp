@@ -37,11 +37,13 @@ QvkCountdown_wl::QvkCountdown_wl()
     setAttribute( Qt::WA_TranslucentBackground, true );
     setWindowFlags( Qt::FramelessWindowHint );
 
-    Width = 300;
-    Height = 300;
+    // drawWidth und drawHeight sind die zu zeichnende größen im Fenster
+    drawWidth = 300;
+    drawHeight = 300;
 
-    resize( Width, Height );
-    setFixedSize( QSize( Width, Height ) );
+//    resize( Width, Height );
+    showMaximized();
+//    setFixedSize( QSize( Width, Height ) );
 
     timer = new QTimer( this );
     timer->setTimerType( Qt::PreciseTimer );
@@ -91,9 +93,9 @@ void QvkCountdown_wl::slot_updateAnimationTimer()
 
 void QvkCountdown_wl::paintEvent( QPaintEvent *event )
 {
-    (void)event;
+    Q_UNUSED(event)
 
-    QPixmap pixmap( 300 * devicePixelRatioF(), 300 * devicePixelRatioF() );
+    QPixmap pixmap( width() * devicePixelRatioF(), height() * devicePixelRatioF() );
     pixmap.fill( Qt::transparent );
     pixmap.setDevicePixelRatio( devicePixelRatioF() );
 
@@ -110,7 +112,7 @@ void QvkCountdown_wl::paintEvent( QPaintEvent *event )
     painterPixmap.setBrush( brush );
     painterPixmap.setPen( pen );
     painterPixmap.setOpacity( 0.3 );
-    painterPixmap.drawPie( 0, 0, 300, 300, 90*16, gradValue*16 );
+    painterPixmap.drawPie( width()/2-drawWidth/2, height()/2-drawHeight/2, 300, 300, 90*16, gradValue*16 );
 
     painterPixmap.setOpacity( 1.0 );
     pen.setColor( Qt::darkGray );
@@ -118,10 +120,10 @@ void QvkCountdown_wl::paintEvent( QPaintEvent *event )
     painterPixmap.setPen( pen );
     brush.setStyle( Qt::NoBrush );
     painterPixmap.setBrush( brush );
-    painterPixmap.drawEllipse( QPoint( width()/2, height()/2), 125-3, 125-3 );
-    painterPixmap.drawEllipse( QPoint( width()/2, height()/2), 100, 100 );
-    painterPixmap.drawLine( 0, height()/2, width(), height()/2 );
-    painterPixmap.drawLine( width()/2, 0, width()/2, height() );
+    painterPixmap.drawEllipse( QPoint( width()/2, height()/2 ), 125-3, 125-3 );
+    painterPixmap.drawEllipse( QPoint( width()/2, height()/2 ), 100, 100 );
+    painterPixmap.drawLine( width()/2-drawWidth/2, height()/2, width()/2+drawWidth/2, height()/2 );
+    painterPixmap.drawLine( width()/2, height()/2-drawHeight/2, width()/2, height()/2+drawHeight/2 );
 
     int fontSize = 110;
     QFont font;
@@ -140,17 +142,16 @@ void QvkCountdown_wl::paintEvent( QPaintEvent *event )
     QFontMetrics fontMetrics_1( font );
     fontWidth = fontMetrics_1.horizontalAdvance( cancelText );
 
-    qreal x = width()/2 - (fontWidth+30)/2;
-    qreal y = 220;
-    qreal width = fontWidth + 30;
-    qreal height = 30;
-
     brush.setColor( Qt::red );
     brush.setStyle( Qt::SolidPattern );
     painterPixmap.setBrush( brush );
     pen.setWidth( 2 );
     pen.setColor( Qt::black );
     painterPixmap.setPen( pen );
+    qreal x = width()/2 - (fontWidth+30)/2;
+    qreal y = height()/2 + 75;
+    qreal width = fontWidth + 30;
+    qreal height = 30;
     rectCancel.setRect( x, y, width, height );
     painterPixmap.drawRoundedRect( rectCancel, 10, 10 );
 
@@ -176,4 +177,12 @@ void QvkCountdown_wl::mousePressEvent( QMouseEvent *event )
         animationTimer->stop();
         close();
     }
+}
+
+
+void QvkCountdown_wl::resizeEvent( QResizeEvent *event )
+{
+    Q_UNUSED(event)
+//    screenWidth = width();
+//    screenHeight = height();
 }

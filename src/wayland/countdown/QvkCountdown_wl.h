@@ -29,6 +29,7 @@
 #include <QMouseEvent>
 #include <QDialog>
 #include <QCloseEvent>
+#include <QResizeEvent>
 
 class QvkCountdown_wl: public QDialog
 {
@@ -36,8 +37,8 @@ class QvkCountdown_wl: public QDialog
 
 public:
     QvkCountdown_wl();
-    int Width;
-    int Height;
+    int drawWidth;
+    int drawHeight;
     int countValue;
     int gradValue;
     QTimer *timer;
@@ -61,6 +62,7 @@ protected:
     void paintEvent( QPaintEvent *event );
     void mousePressEvent(QMouseEvent *event);
     void closeEvent(QCloseEvent *);
+    void resizeEvent( QResizeEvent *event );
 
 
 signals:
