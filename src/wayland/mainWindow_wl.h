@@ -46,7 +46,6 @@ private:
     QStringList videoFormatsList;
     QFileSystemWatcher *videoFileSystemWatcher;
     QvkContainerController_wl *vkContainerController_wl;
-    QvkCountdown_wl *vkCountdown_wl;
 
     void set_LogController();
     void set_WindowTitle();
@@ -56,7 +55,6 @@ private:
     void set_Connects();
     void set_check_all_Elements_available();
     void set_RegionChoice();
-    void set_test_available_geometry();
 
     void messageBox( QString value );
 

@@ -60,7 +60,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     QvkInformation_wl *vkInformation = new QvkInformation_wl( this, ui );
     connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
     set_RegionChoice();
-    vkCountdown_wl = new QvkCountdown_wl();
     set_Connects();
     set_check_all_Elements_available();
     vkContainerController_wl = new QvkContainerController_wl( ui );
