@@ -27,29 +27,27 @@
 #include <QPainter>
 #include <QPaintEvent>
 #include <QMouseEvent>
+#include <QDialog>
+#include <QCloseEvent>
 
-class QvkCountdown_wl: public QWidget
+class QvkCountdown_wl: public QDialog
 {
     Q_OBJECT
+
 public:
     QvkCountdown_wl();
-    virtual ~QvkCountdown_wl();
-    void startCountdown(int value );
-    int x;
-    int y;
     int Width;
     int Height;
     int countValue;
     int gradValue;
-    
+    QTimer *timer;
+    QTimer *animationTimer;
+
 
 public slots:
 
 
 private:
-    QTimer *timer;
-    QTimer *animationTimer;
-    int oldCountValue;
     QString cancelText = "Cancel";
     QRectF rectCancel;
 
@@ -62,12 +60,11 @@ private slots:
 protected:
     void paintEvent( QPaintEvent *event );
     void mousePressEvent(QMouseEvent *event);
+    void closeEvent(QCloseEvent *);
 
 
 signals:
-    void signal_countDownfinish( bool value );
-    void signal_countdownBegin( bool value );
-    void signal_countDownCancel( bool value);
+    void signal_countDownCancel();
 
 };
 

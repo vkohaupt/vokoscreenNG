@@ -34,51 +34,31 @@
 
 QvkCountdown_wl::QvkCountdown_wl()
 {
-//    setParent( parent );
-    //    setAttribute( Qt::WA_TranslucentBackground, true );
+    setAttribute( Qt::WA_TranslucentBackground, true );
+    setWindowFlags( Qt::FramelessWindowHint );
 
-    // Is needed only for the translated text
-/*    QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Abort, this);
-    buttonBox->hide();
-    QList<QPushButton *> list = buttonBox->findChildren<QPushButton *>();
-    cancelText = list.at(0)->text();
-    buttonBox->close();
-*/
-    //    vkCountdownWindow_wl->setWindowFlags( Qt::FramelessWindowHint );
-    //    connect( this, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
-
-    x = 0;
-    y = 0;
     Width = 300;
     Height = 300;
 
+    resize( Width, Height );
+    setFixedSize( QSize( Width, Height ) );
+
     timer = new QTimer( this );
     timer->setTimerType( Qt::PreciseTimer );
+    timer->setInterval( 1000 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_updateTimer() ) );
 
     animationTimer = new QTimer( this );
     animationTimer->setTimerType( Qt::PreciseTimer );
+    animationTimer->setInterval( 40 );
     connect( animationTimer, SIGNAL( timeout() ), this, SLOT( slot_updateAnimationTimer() ) );
 
-    hide();
-}
-
-
-QvkCountdown_wl::~QvkCountdown_wl()
-{
-}
-
-
-void QvkCountdown_wl::startCountdown( int value )
-{
-    resize( Width, Height );
-    show();
-    countValue = value;
-    gradValue = 0;
-
-    timer->start( 1000 );
-    animationTimer->start( 40 );
-    emit signal_countdownBegin( true );
+    // Is needed only for the translated text
+    QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Abort, this);
+    buttonBox->hide();
+    QList<QPushButton *> list = buttonBox->findChildren<QPushButton *>();
+    cancelText = list.at(0)->text();
+    buttonBox->close();
 }
 
 
@@ -86,12 +66,19 @@ void QvkCountdown_wl::slot_updateTimer()
 {
     gradValue = 0;
     countValue--;
-
+    qDebug() << countValue;
     if ( countValue == 0 ) {
         timer->stop();
         animationTimer->stop();
-        hide();
-        emit signal_countDownfinish( true );
+        close();
+    }
+}
+
+
+void QvkCountdown_wl::closeEvent(QCloseEvent *)
+{
+    if ( countValue == 0 ) {
+        setResult( QDialog::Accepted );
     }
 }
 
@@ -178,8 +165,6 @@ void QvkCountdown_wl::paintEvent( QPaintEvent *event )
     painter.begin( this );
     painter.drawPixmap( QPointF( 0, 0 ), pixmap );
     painter.end();
-
-//    setMask( pixmap.mask() );
 }
 
 
@@ -188,7 +173,6 @@ void QvkCountdown_wl::mousePressEvent( QMouseEvent *event )
     if ( rectCancel.contains( event->pos() ) ) {
         timer->stop();
         animationTimer->stop();
-        hide();
-        emit signal_countDownCancel( true );
+        close();
     }
 }
