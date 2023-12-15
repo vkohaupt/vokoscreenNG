@@ -69,12 +69,12 @@ public Q_SLOTS:
 
 
 private Q_SLOTS:
-    void slot_pre_start( QString vk_fd, QString vk_path );
-    void slot_start();
-    void slot_stop();
-    void slot_start_gst( QString vk_fd, QString vk_path );
-    void slot_frames_Reset();
+    void slot_portal_start();
     void slot_portal_cancel( uint );
+    void slot_pre_start( QString vk_fd, QString vk_path );
+    void slot_start_gst( QString vk_fd, QString vk_path );
+    void slot_stop();
+    void slot_frames_Reset();
     void slot_newVideoPath();
     void slot_videoFileSystemWatcherSetNewPath();
 

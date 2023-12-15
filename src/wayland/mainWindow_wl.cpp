@@ -210,7 +210,7 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastArea,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabVideo,                        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoPath,                  SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                                SLOT( slot_start() ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                                SLOT( slot_portal_start() ) );
 
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), this,                                SLOT( slot_stop() ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonStop,                  SLOT( setEnabled( bool ) ) );
@@ -293,7 +293,7 @@ QString QvkMainWindow_wl::get_Muxer()
 }
 
 
-void QvkMainWindow_wl::slot_start()
+void QvkMainWindow_wl::slot_portal_start()
 {
     // https://flatpak.github.io/xdg-desktop-portal/portal-docs.html#gdbus-property-org-freedesktop-portal-ScreenCast.AvailableSourceTypes
     // Value 1 = MONITOR
