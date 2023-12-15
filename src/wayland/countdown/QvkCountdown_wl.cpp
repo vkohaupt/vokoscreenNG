@@ -41,9 +41,7 @@ QvkCountdown_wl::QvkCountdown_wl()
     drawWidth = 300;
     drawHeight = 300;
 
-//    resize( Width, Height );
     showMaximized();
-//    setFixedSize( QSize( Width, Height ) );
 
     timer = new QTimer( this );
     timer->setTimerType( Qt::PreciseTimer );
@@ -97,7 +95,6 @@ void QvkCountdown_wl::paintEvent( QPaintEvent *event )
 
     QPixmap pixmap( width() * devicePixelRatioF(), height() * devicePixelRatioF() );
     pixmap.fill( Qt::transparent );
-    pixmap.setDevicePixelRatio( devicePixelRatioF() );
 
     QPainter painterPixmap;
     painterPixmap.begin( &pixmap );
@@ -177,12 +174,4 @@ void QvkCountdown_wl::mousePressEvent( QMouseEvent *event )
         animationTimer->stop();
         close();
     }
-}
-
-
-void QvkCountdown_wl::resizeEvent( QResizeEvent *event )
-{
-    Q_UNUSED(event)
-//    screenWidth = width();
-//    screenHeight = height();
 }
