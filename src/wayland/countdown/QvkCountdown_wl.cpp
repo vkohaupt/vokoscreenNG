@@ -66,7 +66,6 @@ void QvkCountdown_wl::slot_updateTimer()
 {
     gradValue = 0;
     countValue--;
-    qDebug() << countValue;
     if ( countValue == 0 ) {
         timer->stop();
         animationTimer->stop();
