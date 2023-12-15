@@ -149,14 +149,14 @@ int main(int argc, char *argv[])
     QvkSettings vkSettingsGstDebug;
     QFileInfo fileInfo( vkSettingsGstDebug.getFileName() );
     QString pathAndFilename = fileInfo.absoluteFilePath();
-    qDebug() << "pathAndFilename:" << pathAndFilename;
+    //qDebug() << "pathAndFilename:" << pathAndFilename;
 
     QString pathToProfile = fileInfo.absolutePath();
-    qDebug() << "pathProfile" << pathToProfile;
+    //qDebug() << "pathProfile" << pathToProfile;
 
     QSettings setingsGstDebug( pathAndFilename, QSettings::IniFormat );
     QString debugLevel = setingsGstDebug.value( "sliderGstDebugLevel", "0" ).toString();
-    qDebug() << "debugLevel:" << debugLevel;
+    //qDebug() << "debugLevel:" << debugLevel;
 
     if ( debugLevel.contains( "0" ) == false ) {
         qputenv( "GST_DEBUG", debugLevel.toUtf8() );
