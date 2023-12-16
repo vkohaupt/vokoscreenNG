@@ -209,6 +209,8 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastArea,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabVideo,                        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoPath,                  SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frame_area,                      SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->toolButtonScreencastAreaReset,   SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                                SLOT( slot_portal_start() ) );
 
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), this,                                SLOT( slot_stop() ) );
@@ -219,6 +221,11 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->radioButtonScreencastArea,       SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->tabVideo,                        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->frameVideoPath,                  SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, &QPushButton::clicked, this, [=]() { if ( ui->radioButtonScreencastArea->isChecked() == true ) {
+            ui->frame_area->setEnabled( true );
+            ui->toolButtonFramesReset->setEnabled( true );
+        };
+    } );
 
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( clicked( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastWindow,     SIGNAL( clicked( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
@@ -461,6 +468,11 @@ void QvkMainWindow_wl::slot_portal_cancel( uint value )
     ui->radioButtonScreencastWindow->setEnabled( true );
     ui->radioButtonScreencastArea->setEnabled( true );
     ui->tabVideo->setEnabled( true );
+    ui->frameVideoPath->setEnabled( true );
+    if ( ui->radioButtonScreencastArea->isChecked() == true ) {
+       ui->frame_area->setEnabled( true );
+       ui->toolButtonScreencastAreaReset->setEnabled( true );
+    }
 }
 
 
