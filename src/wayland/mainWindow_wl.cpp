@@ -221,7 +221,8 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->radioButtonScreencastArea,       SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->tabVideo,                        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->frameVideoPath,                  SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, &QPushButton::clicked, this, [=]() { if ( ui->radioButtonScreencastArea->isChecked() == true ) {
+    connect( ui->pushButtonStop,  &QPushButton::clicked, this, [=]() {
+        if ( ui->radioButtonScreencastArea->isChecked() == true ) {
             ui->frame_area->setEnabled( true );
             ui->toolButtonFramesReset->setEnabled( true );
         };
