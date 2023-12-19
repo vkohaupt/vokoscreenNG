@@ -90,7 +90,7 @@ void Portal_wl::requestScreenSharing( int value, int mouseOnOff )
             qWarning() << "Couldn't get reply";
             qWarning() << "Error: " << reply.error().message();
         } else {
-            qDebug().noquote() << global::nameOutput << "Begin create portal session";
+            qDebug().noquote() << global::nameOutput << "1111111111 Begin create portal session";
 
             bool bo = QDBusConnection::sessionBus().connect( QString(),
                                                    reply.value().path(),
@@ -98,7 +98,7 @@ void Portal_wl::requestScreenSharing( int value, int mouseOnOff )
                                                    QLatin1String( "Response" ),
                                                    this,
                                                    SLOT( slot_gotCreateSessionResponse( uint, QVariantMap ) ) );
-            qDebug().noquote() << global::nameOutput << "QDBusConnection::sessionBus().connect: " << bo;
+            qDebug().noquote() << global::nameOutput << "2222222222 QDBusConnection::sessionBus().connect: " << bo;
         }
     });
 }
@@ -106,7 +106,7 @@ void Portal_wl::requestScreenSharing( int value, int mouseOnOff )
 
 void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap &results )
 {
-    qDebug().noquote() << global::nameOutput << "slot_gotCreateSessionResponse --Begin--";
+    qDebug().noquote() << global::nameOutput << "3333333333 slot_gotCreateSessionResponse --Begin--";
 
     if ( response != 0 ) {
         qWarning() << "Failed to create session: " << response;
@@ -125,13 +125,10 @@ void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap 
                              { QLatin1String("types"), (uint)Selection_Screen_Window_Area },
                              { QLatin1String("cursor_mode"), (uint)record_mouse_onOff },
                              { QLatin1String("handle_token"), getRequestToken() } };
-    qDebug().noquote() << global::nameOutput << "slot_gotCreateSessionResponse()" << message;
+    qDebug().noquote() << global::nameOutput << "4444444444 slot_gotCreateSessionResponse()" << message;
 
     QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
-    qDebug().noquote() << global::nameOutput << "slot_gotCreateSessionResponse()" << pendingCall.error();
-
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pendingCall);
-    qDebug().noquote() << global::nameOutput << "slot_gotCreateSessionResponse()" << watcher->error();
 
     bool bo = connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] (QDBusPendingCallWatcher *watcher) {
         QDBusPendingReply<QDBusObjectPath> reply = *watcher;
@@ -139,14 +136,14 @@ void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap 
             qDebug() << "Couldn't get reply";
             qDebug() << "Error: " << reply.error().message();
         } else {
-            qDebug().noquote() << global::nameOutput << "slot_gotCreateSessionResponse() into else" << "reply.value().path() :" << reply.value().path();
-            bool bo = QDBusConnection::sessionBus().connect(QString(),
-                                                reply.value().path(),
-                                                QLatin1String("org.freedesktop.portal.Request"),
-                                                QLatin1String("Response"),
-                                                this,
-                                                SLOT( slot_gotSelectSourcesResponse(uint,QVariantMap)));
-            qDebug() << "test test" << bo; // Hahaha, ist true und geht nicht
+            qDebug().noquote() << global::nameOutput << "5555555555 slot_gotCreateSessionResponse() into else" << "reply.value().path() :" << reply.value().path();
+            bool bo = QDBusConnection::sessionBus().connect("org.freedesktop.portal.Desktop",
+                                                            reply.value().path(),
+                                                            QLatin1String("org.freedesktop.portal.Request"),
+                                                            QLatin1String("Response"),
+                                                            this,
+                                                            SLOT( slot_gotSelectSourcesResponse(uint,QVariantMap)));
+            qDebug() << "8888888888 test test" << bo; // Hahaha, ist true und geht nicht
         }
     });
 }
@@ -156,7 +153,7 @@ void Portal_wl::slot_gotSelectSourcesResponse(uint response, const QVariantMap &
 {
     Q_UNUSED(results);
 
-    qDebug().noquote() << global::nameOutput << "Got response from portal SelectSources";
+    qDebug().noquote() << global::nameOutput << "9999999999 Got response from portal SelectSources";
 
     if (response != 0) {
         qWarning() << "Failed to select sources: " << response;

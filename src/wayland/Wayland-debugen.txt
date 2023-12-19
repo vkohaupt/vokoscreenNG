@@ -1,0 +1,4 @@
+
+https://dbus.freedesktop.org/doc/dbus-monitor.1.html
+Auf der Konsole:
+dbus-monitor --profile "type='signal',interface='org.freedesktop.portal.Request'"
