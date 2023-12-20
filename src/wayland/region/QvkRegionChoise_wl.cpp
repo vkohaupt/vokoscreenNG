@@ -279,9 +279,9 @@ void QvkRegionChoise_wl::mouseReleaseEvent( QMouseEvent * event )
 
     // Unter Gnome wird "setMask( pixmap.mask() )" nicht ausgeführt.
     // Selbst nach hunderten Tests ist nicht ersichtlich warum.
-    // Abhilfe schafft ein umschalten in den Fullscreen Modus und dann zurück in die Bereichsauswahl.
-    ui->radioButtonScreencastFullscreen->click();
-    ui->radioButtonScreencastArea->click();
+    // Abhilfe schafft ein umschalten mithilfe setVisible(false/true)
+    setVisible( false );
+    setVisible( true );
 }
 
 

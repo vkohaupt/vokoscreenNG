@@ -150,3 +150,16 @@ QToolButton#toolButton_magnifier_circle:checked {
 QToolButton#toolButton_magnifier_circle:checked:hover {
     border-image: url(:/pictures/css/magnifier/magnifier-circle-checked-hover.png);
 }
+
+
+
+QPushButton::hover{
+    border-width: 2px;
+    border-style: solid;
+    border-color: #3daee9;
+    border-radius: 4px;
+}
+
+QPushButton::disabled{
+    color: gray;
+}
