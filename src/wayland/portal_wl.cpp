@@ -74,12 +74,16 @@ void Portal_wl::requestScreenSharing( int value, int mouseOnOff )
     Selection_Screen_Window_Area = value;
     record_mouse_onOff = mouseOnOff;
 
-    QDBusMessage message = QDBusMessage::createMethodCall( QLatin1String( "org.freedesktop.portal.Desktop" ),
-                                                           QLatin1String( "/org/freedesktop/portal/desktop" ),
-                                                           QLatin1String( "org.freedesktop.portal.ScreenCast" ),
-                                                           QLatin1String( "CreateSession" ) );
+    if(!QDBusConnection::sessionBus().isConnected()) {
+        qCritical() << "Cannot connect to the D-Bus session bus!";
+    }
 
-    message << QVariantMap { { QLatin1String("session_handle_token"), getSessionToken() }, { QLatin1String( "handle_token" ), getRequestToken() } };
+    QDBusMessage message = QDBusMessage::createMethodCall( QLatin1StringView( "org.freedesktop.portal.Desktop" ),
+                                                           QLatin1StringView( "/org/freedesktop/portal/desktop" ),
+                                                           QLatin1StringView( "org.freedesktop.portal.ScreenCast" ),
+                                                           QLatin1StringView( "CreateSession" ) );
+
+    message << QVariantMap { { QLatin1StringView("session_handle_token"), getSessionToken() }, { QLatin1StringView( "handle_token" ), getRequestToken() } };
 
     QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall( message );
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher( pendingCall);
@@ -95,8 +99,8 @@ void Portal_wl::requestScreenSharing( int value, int mouseOnOff )
 
             bool bo = QDBusConnection::sessionBus().connect( QString(),
                                                    reply.value().path(),
-                                                   QLatin1String( "org.freedesktop.portal.Request" ),
-                                                   QLatin1String( "Response" ),
+                                                   QLatin1StringView( "org.freedesktop.portal.Request" ),
+                                                   QLatin1StringView( "Response" ),
                                                    this,
                                                    SLOT( slot_gotCreateSessionResponse( uint, QVariantMap ) ) );
             qDebug().noquote() << global::nameOutput << "2222222222 QDBusConnection::sessionBus().connect: " << bo;
@@ -114,18 +118,18 @@ void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap 
         return;
     }
 
-    QDBusMessage message = QDBusMessage::createMethodCall(QLatin1String("org.freedesktop.portal.Desktop"),
-                                                          QLatin1String("/org/freedesktop/portal/desktop"),
-                                                          QLatin1String("org.freedesktop.portal.ScreenCast"),
-                                                          QLatin1String("SelectSources"));
+    QDBusMessage message = QDBusMessage::createMethodCall(QLatin1StringView("org.freedesktop.portal.Desktop"),
+                                                          QLatin1StringView("/org/freedesktop/portal/desktop"),
+                                                          QLatin1StringView("org.freedesktop.portal.ScreenCast"),
+                                                          QLatin1StringView("SelectSources"));
 
-    m_session = results.value(QLatin1String("session_handle")).toString();
+    m_session = results.value(QLatin1StringView("session_handle")).toString();
 
     message << QVariant::fromValue(QDBusObjectPath(m_session))
-            << QVariantMap { { QLatin1String("multiple"), false},
-                             { QLatin1String("types"), (uint)Selection_Screen_Window_Area },
-                             { QLatin1String("cursor_mode"), (uint)record_mouse_onOff },
-                             { QLatin1String("handle_token"), getRequestToken() } };
+            << QVariantMap { { QLatin1StringView("multiple"), false},
+                             { QLatin1StringView("types"), (uint)Selection_Screen_Window_Area },
+                             { QLatin1StringView("cursor_mode"), (uint)record_mouse_onOff },
+                             { QLatin1StringView("handle_token"), getRequestToken() } };
     qDebug().noquote() << global::nameOutput << "4444444444 slot_gotCreateSessionResponse()" << message;
 
     QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
@@ -141,8 +145,8 @@ void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap 
             qDebug().noquote() << global::nameOutput << "5555555555 slot_gotCreateSessionResponse() into else" << "reply.value().path() :" << reply.value().path();
             bool bo = QDBusConnection::sessionBus().connect("org.freedesktop.portal.Desktop",
                                                             reply.value().path(),
-                                                            QLatin1String("org.freedesktop.portal.Request"),
-                                                            QLatin1String("Response"),
+                                                            QLatin1StringView("org.freedesktop.portal.Request"),
+                                                            QLatin1StringView("Response"),
                                                             this,
                                                             SLOT( slot_gotSelectSourcesResponse(uint,QVariantMap)));
             qDebug() << "8888888888 test test" << bo; // Hahaha, ist true und geht nicht
@@ -162,14 +166,14 @@ void Portal_wl::slot_gotSelectSourcesResponse(uint response, const QVariantMap &
         return;
     }
 
-    QDBusMessage message = QDBusMessage::createMethodCall(QLatin1String("org.freedesktop.portal.Desktop"),
-                                                          QLatin1String("/org/freedesktop/portal/desktop"),
-                                                          QLatin1String("org.freedesktop.portal.ScreenCast"),
-                                                          QLatin1String("Start"));
+    QDBusMessage message = QDBusMessage::createMethodCall(QLatin1StringView("org.freedesktop.portal.Desktop"),
+                                                          QLatin1StringView("/org/freedesktop/portal/desktop"),
+                                                          QLatin1StringView("org.freedesktop.portal.ScreenCast"),
+                                                          QLatin1StringView("Start"));
 
     message << QVariant::fromValue(QDBusObjectPath(m_session))
             << QString() // parent_window
-            << QVariantMap { { QLatin1String("handle_token"), getRequestToken() } };
+            << QVariantMap { { QLatin1StringView("handle_token"), getRequestToken() } };
 
     QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pendingCall);
@@ -183,8 +187,8 @@ void Portal_wl::slot_gotSelectSourcesResponse(uint response, const QVariantMap &
         } else {
             QDBusConnection::sessionBus().connect(QString(),
                                                 reply.value().path(),
-                                                QLatin1String("org.freedesktop.portal.Request"),
-                                                QLatin1String("Response"),
+                                                QLatin1StringView("org.freedesktop.portal.Request"),
+                                                QLatin1StringView("Response"),
                                                 this,
                                                 SLOT(slot_gotStartResponse(uint,QVariantMap)));
         }
@@ -205,13 +209,13 @@ void Portal_wl::slot_gotStartResponse(uint response, const QVariantMap &results)
         return;
     }
 
-    Streams streams = qdbus_cast<Streams>(results.value(QLatin1String("streams")));
+    Streams streams = qdbus_cast<Streams>(results.value(QLatin1StringView("streams")));
     Stream stream = streams.last();
 
-    QDBusMessage message = QDBusMessage::createMethodCall(QLatin1String("org.freedesktop.portal.Desktop"),
-                                                          QLatin1String("/org/freedesktop/portal/desktop"),
-                                                          QLatin1String("org.freedesktop.portal.ScreenCast"),
-                                                          QLatin1String("OpenPipeWireRemote"));
+    QDBusMessage message = QDBusMessage::createMethodCall(QLatin1StringView("org.freedesktop.portal.Desktop"),
+                                                          QLatin1StringView("/org/freedesktop/portal/desktop"),
+                                                          QLatin1StringView("org.freedesktop.portal.ScreenCast"),
+                                                          QLatin1StringView("OpenPipeWireRemote"));
 
     message << QVariant::fromValue(QDBusObjectPath(m_session)) << QVariantMap();
 
