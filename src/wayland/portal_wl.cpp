@@ -185,12 +185,12 @@ void Portal_wl::slot_gotSelectSourcesResponse(uint response, const QVariantMap &
             qWarning() << "Couldn't get reply";
             qWarning() << "Error: " << reply.error().message();
         } else {
-            QDBusConnection::sessionBus().connect(QString(),
-                                                reply.value().path(),
-                                                QLatin1StringView("org.freedesktop.portal.Request"),
-                                                QLatin1StringView("Response"),
-                                                this,
-                                                SLOT(slot_gotStartResponse(uint,QVariantMap)));
+            QDBusConnection::sessionBus().connect(QLatin1StringView("org.freedesktop.portal.Desktop"),
+                                                  reply.value().path(),
+                                                  QLatin1StringView("org.freedesktop.portal.Request"),
+                                                  QLatin1StringView("Response"),
+                                                  this,
+                                                  SLOT(slot_gotStartResponse(uint,QVariantMap)));
         }
     });
 }
