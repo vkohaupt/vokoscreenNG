@@ -15,6 +15,7 @@
 #include <QFileSystemWatcher>
 #include <QScreen>
 #include <QThread>
+#include <QTime>
 
 
 #include <gst/gst.h>
@@ -36,10 +37,10 @@ public:
     QvkSpezialSlider *sliderFrames;
     QvkSpezialSlider *sliderScreencastCountDown;
 
+
 private:
     QTranslator translator;
     QTranslator qtTranslator;
-
     QvkRegionChoise_wl *vkRegionChoise_wl;
     QvkLogController *vklogController;
     GstElement *pipeline = nullptr;
@@ -83,6 +84,7 @@ protected:
 
 signals:
     void signal_newVideoFilename( QString );
+    void signal_beginRecordTime( QString );
 
 
 };
