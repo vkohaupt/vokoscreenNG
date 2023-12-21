@@ -69,7 +69,6 @@ signals:
     void signal_portal_cancel( uint );
 
 
-
 };
 
 #endif // PORTAL_WL_H

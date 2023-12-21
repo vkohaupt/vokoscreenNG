@@ -97,12 +97,12 @@ void Portal_wl::requestScreenSharing( int value, int mouseOnOff )
         } else {
             qDebug().noquote() << global::nameOutput << "1111111111 Begin create portal session";
 
-            bool bo = QDBusConnection::sessionBus().connect( QString(),
-                                                   reply.value().path(),
-                                                   QLatin1StringView( "org.freedesktop.portal.Request" ),
-                                                   QLatin1StringView( "Response" ),
-                                                   this,
-                                                   SLOT( slot_gotCreateSessionResponse( uint, QVariantMap ) ) );
+            bool bo = QDBusConnection::sessionBus().connect(QLatin1StringView("org.freedesktop.portal.Desktop"),
+                                                            reply.value().path(),
+                                                            QLatin1StringView( "org.freedesktop.portal.Request" ),
+                                                            QLatin1StringView( "Response" ),
+                                                            this,
+                                                            SLOT( slot_gotCreateSessionResponse( uint, QVariantMap ) ) );
             qDebug().noquote() << global::nameOutput << "2222222222 QDBusConnection::sessionBus().connect: " << bo;
         }
     });
@@ -130,7 +130,7 @@ void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap 
                              { QLatin1StringView("types"), (uint)Selection_Screen_Window_Area },
                              { QLatin1StringView("cursor_mode"), (uint)record_mouse_onOff },
                              { QLatin1StringView("handle_token"), getRequestToken() } };
-    qDebug().noquote() << global::nameOutput << "4444444444 slot_gotCreateSessionResponse()" << message;
+    qDebug().noquote() << global::nameOutput << "4444444444 slot_gotCreateSessionResponse():" << message;
 
     QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pendingCall);
@@ -143,7 +143,7 @@ void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap 
             qDebug() << "Error: " << reply.error().message();
         } else {
             qDebug().noquote() << global::nameOutput << "5555555555 slot_gotCreateSessionResponse() into else" << "reply.value().path() :" << reply.value().path();
-            bool bo = QDBusConnection::sessionBus().connect("org.freedesktop.portal.Desktop",
+            bool bo = QDBusConnection::sessionBus().connect(QLatin1StringView("org.freedesktop.portal.Desktop"),
                                                             reply.value().path(),
                                                             QLatin1StringView("org.freedesktop.portal.Request"),
                                                             QLatin1StringView("Response"),
