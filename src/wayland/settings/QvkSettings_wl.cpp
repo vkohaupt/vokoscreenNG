@@ -38,7 +38,45 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *
 {
 }
 
-void QvkSettings_wl::saveAll( Ui_formMainWindow_wl *ui_mainwindow , QMainWindow *parent, bool log )
+void QvkSettings_wl::saveAll( Ui_formMainWindow_wl *ui_mainwindow , QMainWindow *parent )
 {
+    Q_UNUSED(parent);
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    settings.beginGroup( global::name + "_wl" );
+
+    settings.remove( "" );
+    settings.setValue( "Version", global::version );
+
+    QList<QCheckBox *> listCheckBox = ui_mainwindow->centralwidget->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ ) {
+        settings.setValue( listCheckBox.at(i)->objectName(), listCheckBox.at(i)->isChecked() );
+    }
+
+    QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralwidget->findChildren<QRadioButton *>();
+    for ( int i = 0; i < listRadiobuttons.count(); i++ ) {
+        settings.setValue( listRadiobuttons.at(i)->objectName(), listRadiobuttons.at(i)->isChecked() );
+    }
+
+    QList<QToolButton *> listToolButton = ui_mainwindow->centralwidget->findChildren<QToolButton *>();
+    for ( int i = 0; i < listToolButton.count(); i++ ) {
+        settings.setValue( listToolButton.at(i)->objectName(), listToolButton.at(i)->isChecked() );
+    }
+
+    QList<QComboBox *> listComboBox = ui_mainwindow->centralwidget->findChildren<QComboBox *>();
+    for ( int i = 0; i < listComboBox.count(); i++ ) {
+        settings.setValue( listComboBox.at(i)->objectName(), listComboBox.at(i)->currentText() );
+    }
+
+    QList<QSlider *> listSlider = ui_mainwindow->centralwidget->findChildren<QSlider *>();
+    for ( int i = 0; i < listSlider.count(); i++ ) {
+        settings.setValue( listSlider.at(i)->objectName(), listSlider.at(i)->value() );
+    }
+
+    QList<QLineEdit *> listLineEdit = ui_mainwindow->centralwidget->findChildren<QLineEdit *>();
+    for ( int i = 0; i < listLineEdit.count(); i++ ) {
+        settings.setValue( listLineEdit.at(i)->objectName(), listLineEdit.at(i)->text() );
+    }
+
+    settings.endGroup();
 }
 

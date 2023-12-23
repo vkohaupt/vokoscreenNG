@@ -37,7 +37,7 @@ public:
     QvkSettings_wl();
     virtual ~QvkSettings_wl();
     void readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *parent );
-    void saveAll( Ui_formMainWindow_wl *ui_mainwindow , QMainWindow *parent, bool log );
+    void saveAll( Ui_formMainWindow_wl *ui_mainwindow , QMainWindow *parent );
 
 
 public slots:
