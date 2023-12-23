@@ -22,3 +22,6 @@ include(information/information_wl.pri)
 
 # Countdown
 include(countdown/countdown_wl.pri)
+
+# Settings
+include(settings/settings_wl.pri)

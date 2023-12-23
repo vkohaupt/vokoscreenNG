@@ -3,6 +3,7 @@
 
 #include "ui_formMainWindow_wl.h"
 #include "portal_wl.h"
+#include "QvkSettings_wl.h"
 #include "QvkContainerController_wl.h"
 #include "QvkRegionChoise_wl.h"
 #include "QvkCountdown_wl.h"
@@ -39,6 +40,7 @@ public:
 
 
 private:
+    QvkSettings_wl vkSettings;
     QTranslator translator;
     QTranslator qtTranslator;
     QvkRegionChoise_wl *vkRegionChoise_wl;
