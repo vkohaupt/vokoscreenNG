@@ -89,14 +89,6 @@ void QvkRegionChoise_wl::closeEvent( QCloseEvent *event )
 }
 
 
-void QvkRegionChoise_wl::resizeEvent( QResizeEvent *event )
-{
-    Q_UNUSED(event)
-    screenWidth = width();
-    screenHeight = height();
-}
-
-
 void QvkRegionChoise_wl::set_HandleColorBackground( QColor color )
 {
     HandleColorBackground = color;
@@ -280,8 +272,19 @@ void QvkRegionChoise_wl::mouseReleaseEvent( QMouseEvent * event )
     // Unter Gnome wird "setMask( pixmap.mask() )" nicht ausgeführt.
     // Selbst nach hunderten Tests ist nicht ersichtlich warum.
     // Abhilfe schafft ein umschalten mithilfe setVisible(false/true)
-    setVisible( false );
-    setVisible( true );
+    // setVisible( false );
+    // setVisible( true );
+
+    // Oder ein resize, das Fenster flackert nicht bzw. zeigt keine Anzeichen einer Animation.
+    resize( width()-1, height()-1 );
+}
+
+
+void QvkRegionChoise_wl::resizeEvent( QResizeEvent *event )
+{
+    Q_UNUSED(event)
+    screenWidth = width();
+    screenHeight = height();
 }
 
 
