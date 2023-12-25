@@ -2,3 +2,9 @@
 https://dbus.freedesktop.org/doc/dbus-monitor.1.html
 Auf der Konsole:
 dbus-monitor --profile "type='signal',interface='org.freedesktop.portal.Request'"
+
+https://unix.stackexchange.com/questions/604258/what-is-d-bus-practically-useful-for
+Auf der Konsole:
+busctl introspect \
+    org.freedesktop.systemd1 \
+    /org/freedesktop/systemd1/unit/ssh_2eservice

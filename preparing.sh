@@ -10,13 +10,13 @@
 
 
 # Testen ob lupdate auf dem System vorhanden ist.
-progname=$(which lupdate-qt5)
+progname=$(which lupdate6)
 if [ $? = 0 ]; then
     echo
 else
-    kdialog --title "preparing.sh" --msgbox "lupdate-qt5 nicht auf System vorhanden. lupdate-qt5 ist bestandteil von Programmpacket libqt5-linguist"
-    echo "[preparing.sh] lupdate-qt5 nicht auf System vorhanden"
-    echo "[preparing.sh] lupdate-qt5 ist bestandteil von Programmpacket libqt5-linguist"
+    kdialog --title "preparing.sh" --msgbox "lupdate6 nicht auf System vorhanden. lupdate6 ist bestandteil von Programmpacket qt6-tools-linguist"
+    echo "[preparing.sh] lupdate6 nicht auf System vorhanden"
+    echo "[preparing.sh] lupdate6 ist bestandteil von Programmpacket qt6-tools-linguist"
     exit 1
 fi
 
@@ -35,7 +35,7 @@ fi
 echo ==============================
 echo Create vokoscreen-version-3.ts
 echo ==============================
-lupdate-qt5 -locations none -recursive ./src -ts src/vokoscreen-version-3.ts
+lupdate6 -locations none -recursive ./src -ts src/vokoscreen-version-3.ts
 
 echo =====================
 echo Remove language packs
