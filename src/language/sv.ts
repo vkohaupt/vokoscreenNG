@@ -713,6 +713,10 @@
         <source>Videopath</source>
         <translation>Videosökväg</translation>
     </message>
+    <message>
+        <source>CountDown</source>
+        <translation>Nedräkning</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

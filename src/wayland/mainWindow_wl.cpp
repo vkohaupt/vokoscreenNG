@@ -91,7 +91,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->line_cisco->hide();
     ui->label_Upate_tab_2->hide();
 
-    ui->radioButtonScreencastFullscreen->click();
+//    ui->radioButtonScreencastFullscreen->click();
 
     // Hide to time not needed tabs
     ui->tabWidgetScreencast->removeTab(1); // Audio
@@ -123,7 +123,9 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             qDebug().noquote() << global::nameOutput << "SerialNumber from screen: " << screen.at(i)->serialNumber();
         }
     }
-}
+
+    vkSettings.readAll( ui, this );
+ }
 
 
 QvkMainWindow_wl::~QvkMainWindow_wl()

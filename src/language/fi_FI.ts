@@ -713,6 +713,10 @@
         <source>Videopath</source>
         <translation>Videon polku</translation>
     </message>
+    <message>
+        <source>CountDown</source>
+        <translation>Lähtölaskenta</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

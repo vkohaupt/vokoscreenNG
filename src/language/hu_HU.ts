@@ -713,6 +713,10 @@
         <source>Videopath</source>
         <translation>Videó útvonala</translation>
     </message>
+    <message>
+        <source>CountDown</source>
+        <translation>Visszaszámlálás</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

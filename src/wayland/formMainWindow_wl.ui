@@ -150,7 +150,7 @@
           <item>
            <widget class="QTabWidget" name="tabWidgetScreencast">
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="iconSize">
              <size>
@@ -600,7 +600,7 @@
                     <item>
                      <widget class="QLabel" name="labelScreencastCountdownText">
                       <property name="text">
-                       <string>CountDown</string>
+                       <string>Countdown</string>
                       </property>
                      </widget>
                     </item>

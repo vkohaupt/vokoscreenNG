@@ -716,7 +716,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>CountDown</source>
+        <source>Countdown</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

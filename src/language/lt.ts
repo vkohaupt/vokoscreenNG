@@ -713,6 +713,10 @@
         <source>Videopath</source>
         <translation>Vaizdo įrašo kelias</translation>
     </message>
+    <message>
+        <source>CountDown</source>
+        <translation>Atvirkštinis skaičiavimas</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

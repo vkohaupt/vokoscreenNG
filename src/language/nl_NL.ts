@@ -713,6 +713,10 @@
         <source>Videopath</source>
         <translation>Videomap</translation>
     </message>
+    <message>
+        <source>CountDown</source>
+        <translation>Aftellen</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
