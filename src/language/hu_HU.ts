@@ -714,7 +714,7 @@
         <translation>Videó útvonala</translation>
     </message>
     <message>
-        <source>CountDown</source>
+        <source>Countdown</source>
         <translation>Visszaszámlálás</translation>
     </message>
 </context>

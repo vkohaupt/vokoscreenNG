@@ -1,136 +1,136 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nl_NL">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ru">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Выберите одно или несколько устройств</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Vensterrand verwijderen</translation>
+        <translation>Убрать рамку окна</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Verticaal spiegelen</translation>
+        <translation>Отразить по вертикали</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontaal spiegelen</translation>
+        <translation>Отразить по горизонтали</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Omkeren</translation>
+        <translation>Инвертировать</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grijs</translation>
+        <translation>Чёрно-белое в оттенках серого</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Zwart-wit</translation>
+        <translation>Чёрно-белое двухцветное</translation>
     </message>
     <message>
         <source>Switch to Window</source>
-        <translation>Vensterweergave</translation>
+        <translation>Переключиться в режим окна</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Schermvullende weergave</translation>
+        <translation>Переключиться в полноэкранный режим</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Камера</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Het instellen is voltooid.</translation>
+        <translation>Установка завершена успешно.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Sluit dit venster en herstart vokoscreenNG.</translation>
+        <translation>Закройте это окно и снова запустите vokoscreenNG.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Veel plezier met vokoscreenNG</translation>
+        <translation>Получайте удовольствие от vokoscreenNG</translation>
     </message>
 </context>
 <context>
     <name>QvkDirDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialoogvenster</translation>
+        <translation>Диалоговое окно</translation>
     </message>
 </context>
 <context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Выберите одно или несколько устройств</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Hulp</translation>
+        <translation>Справка</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Er is geen bestandsbeheerder aangetroffen.</translation>
+        <translation>Файловый менеджер не найден.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installeer een bestandsbeheerder.</translation>
+        <translation>Пожалуйста установите файловый менеджер.</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Er is geen bestandsbeheerder aangetroffen.</translation>
+        <translation>Файловый менеджер не найден</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installeer een bestandsbeheerder.</translation>
+        <translation>Пожалуйста установите файловый менеджер.</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Waarschuwing</translation>
+        <translation>Предупреждение</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>De opname kan niet worden gestart omdat er onvoldoende vrije schijfruimte is.</translation>
+        <translation>Запись не началась, недостаточно свободного места на диске.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Het vrijeschijfruimtelimiet is bereikt.</translation>
+        <translation>Достигнут предел свободного дискового пространства.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Vrijeschijfruimtelimiet</translation>
+        <translation>Предел свободного дискового пространства</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>Мегабайт</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>De opname is gestopt omdat er onvoldoende vrije schijfruimte is.</translation>
+        <translation>Запись остановлена, недостаточно свободного места на диске.</translation>
     </message>
 </context>
 <context>
@@ -138,341 +138,341 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>Er is geen bestandsbeheerder aangetroffen.</translation>
+        <translation>Файловый менеджер не найден</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installeer een bestandsbeheerder.</translation>
+        <translation>Пожалуйста установите файловый менеджер.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Broncode</translation>
+        <translation>Исходный код</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Website</translation>
+        <translation>Веб-сайт</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Vertalingen</translation>
+        <translation>Переводы</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Doneren</translation>
+        <translation>Пожертвовать</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
-        <translation>Broncode</translation>
+        <translation>Исходный код</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Website</translation>
+        <translation>Веб-сайт</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Vertalingen</translation>
+        <translation>Переводы</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Doneren</translation>
+        <translation>Пожертвовать</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Выберите одно или несколько устройств</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation>Область экрана</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation>Область экрана</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Er is geen bestandsbeheerder aangetroffen.</translation>
+        <translation>Файловый менеджер не найден.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installeer een bestandsbeheerder.</translation>
+        <translation>Пожалуйста установите файловый менеджер.</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Начать</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Остановить</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Приостановить</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Hervatten</translation>
+        <translation>Продолжить</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Afsluiten</translation>
+        <translation>Выход</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Камера</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Vergroting</translation>
+        <translation>Лупа</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Начать</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Остановить</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Приостановить</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Hervatten</translation>
+        <translation>Продолжить</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Afsluiten</translation>
+        <translation>Выход</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Камера</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Vergroting</translation>
+        <translation>Лупа</translation>
     </message>
 </context>
 <context>
     <name>QvkWASAPIController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Выберите одно или несколько устройств</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialoogvenster</translation>
+        <translation>Диалоговое окно</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontaal spiegelen</translation>
+        <translation>Отразить по горизонтали</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Verticaal spiegelen</translation>
+        <translation>Отразить по вертикали</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Omkeren</translation>
+        <translation>Инвертировать</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grijs</translation>
+        <translation>Чёрно-белое в оттенках серого</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Zwart-wit</translation>
+        <translation>Чёрно-белое двухцветное</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Vensterrand verwijderen</translation>
+        <translation>Убрать рамку окна</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Camera-instellingen</translation>
+        <translation>Параметры камеры</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation>Область экрана</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Standaardwaarden</translation>
+        <translation>Сбросить</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Vergroting</translation>
+        <translation>Лупа</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Aftellen</translation>
+        <translation>Обратный отсчёт</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videoformaat:</translation>
+        <translation>Размер видео:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Vrije schijfruimte:</translation>
+        <translation>Свободное место на диске:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informatie</translation>
+        <translation>Информация</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Opnametijd:</translation>
+        <translation>Время записи:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Audio</translation>
+        <translation>Звук</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>Кадры</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videocodec</translation>
+        <translation>Видеокодек</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formaat</translation>
+        <translation>Формат</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Audiocodec</translation>
+        <translation>Звуковой кодек</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Cursor verbergen</translation>
+        <translation>Не записывать указатель мыши</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Uur</translation>
+        <translation>Час</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minuut</translation>
+        <translation>Минута</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Tijdklok starten</translation>
+        <translation>Запустить таймер</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Opname stoppen na</translation>
+        <translation>Остановить запись после</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Uur</translation>
+        <translation>Часов</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minuten</translation>
+        <translation>Минут</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Seconden</translation>
+        <translation>Секунд</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videomap</translation>
+        <translation>Путь к видео:</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Vrijeschijfruimtelimiet</translation>
+        <translation>Предел свободного дискового пространства</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Tonen in systeemvak</translation>
+        <translation>Показывать значок в области уведомления</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Aantal seconden voordat opname start</translation>
+        <translation>Секунд до начала записи</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Controleren op updates</translation>
+        <translation>Проверить обновления</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hulp</translation>
+        <translation>Справка</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Video</translation>
+        <translation>Видео</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Beschikbaar</translation>
+        <translation>Доступно</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Niet beschikbaar</translation>
+        <translation>Недоступно</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Начать</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Остановить</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Приостановить</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Hervatten</translation>
+        <translation>Продолжить</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Afspelen</translation>
+        <translation>Воспроизвести</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Map</translation>
+        <translation>Папка</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Камера</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Omkeren</translation>
+        <translation>Инвертировать</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grijs</translation>
+        <translation>Чёрно-белое в оттенках серого</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -488,11 +488,11 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Recentste opname afspelen</translation>
+        <translation>Воспроизвести последнюю запись</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Map openen</translation>
+        <translation>Открыть папку</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
@@ -500,244 +500,244 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimaliseren zodra opname start</translation>
+        <translation>Сворачивать окно перед началом записи</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Geminimaliseerd starten</translation>
+        <translation>Запускать свёрнутым</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontaal spiegelen</translation>
+        <translation>Отразить по горизонтали</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Verticaal spiegelen</translation>
+        <translation>Отразить по вертикали</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Zwart-wit</translation>
+        <translation>Чёрно-белое двухцветное</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Vensterrand verwijderen</translation>
+        <translation>Убрать рамку окна</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Alle instellingen herstellen bij opnieuw opstarten</translation>
+        <translation>Сбросить все настройки при следующем запуске</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright en licentie uit beelden</translation>
+        <translation>Авторское право и лицензия на использование изображений</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>Мегабайт</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Screencast</translation>
+        <translation>Запись с экрана</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Speler</translation>
+        <translation>Проигрыватель</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Logboek</translation>
+        <translation>Журнал</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automatisch</translation>
+        <translation>Автоматически</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Afbeeldingen maken van tabbladen</translation>
+        <translation>Создать изображения вкладок </translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Licentie-informatie</translation>
+        <translation>Сведения о лицензии</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>AAN</translation>
+        <translation>Включить</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>UIT</translation>
+        <translation>Выключить</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Globale sneltoetsen</translation>
+        <translation>Глобальные комбинации клавиш</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>De sneltoetsen zijn toegewezen.</translation>
+        <translation>Назначенные комбинации клавиш.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>De sneltoets is niet of meer dan eens toegewezen.</translation>
+        <translation>Комбинация клавиш не назначена или назначена более одного раза.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Als de sneltoets wordt aangeduid als toegewezen maar niet werkt, dan is de sneltoets reeds in gebruik door een ander programma.</translation>
+        <translation>Отображение фактически не работающей комбинации клавиш в качестве использующейся означает, что она используется другой программой</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Schermfoto</translation>
+        <translation>Снимок</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Afbeeldingslocatie</translation>
+        <translation>Путь изображения</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Venster verbergen</translation>
+        <translation>Скрыть это окно</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Aantal seconden voordat opname start</translation>
+        <translation>Секунды ожидания перед записью</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Venster</translation>
+        <translation>Окно</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Schermvullend</translation>
+        <translation>Во весь экран</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright en licentie uit beelden</translation>
+        <translation>Авторское право и лицензия на использование изображений</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Afbeeldingen maken van tabbladen</translation>
+        <translation>Создать изображения вкладок </translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Licentie-informatie</translation>
+        <translation>Сведения о лицензии</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>AAN</translation>
+        <translation>Включить</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>UIT</translation>
+        <translation>Выключить</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Opnametijd:</translation>
+        <translation>Время записи:</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videoformaat:</translation>
+        <translation>Размер видео:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Vrije schijfruimte:</translation>
+        <translation>Свободное место на диске:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informatie</translation>
+        <translation>Информация</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Venster</translation>
+        <translation>Окно</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Schermvullend</translation>
+        <translation>Во весь экран</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation>Область экрана</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videocodec</translation>
+        <translation>Видеокодек</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>Кадры</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formaat</translation>
+        <translation>Формат</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Beschikbaar</translation>
+        <translation>Доступно</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Niet beschikbaar</translation>
+        <translation>Недоступно</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Начать</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Остановить</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Приостановить</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Hervatten</translation>
+        <translation>Продолжить</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Afspelen</translation>
+        <translation>Воспроизвести</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Map</translation>
+        <translation>Папка</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Cursor verbergen</translation>
+        <translation>Не записывать указатель мыши</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Audiocodec</translation>
+        <translation>Звуковой кодек</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videomap</translation>
+        <translation>Путь к видео:</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Aftellen</translation>
+        <translation>Обратный отсчёт</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright en licentie uit beelden</translation>
+        <translation>Авторское право и лицензия на использование изображений</translation>
     </message>
 </context>
 <context>
     <name>playerGST</name>
     <message>
         <source>Play</source>
-        <translation>Afspelen</translation>
+        <translation>Воспроизвести</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Приостановить</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Остановить</translation>
     </message>
 </context>
 </TS>

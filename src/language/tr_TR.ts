@@ -1,136 +1,136 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nl_NL">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="tr_TR">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Bir veya daha fazla aygıt seç</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Vensterrand verwijderen</translation>
+        <translation>Pencere çerçevesini kaldır</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Verticaal spiegelen</translation>
+        <translation>Dikey çevir</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontaal spiegelen</translation>
+        <translation>Yatay çevir</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Omkeren</translation>
+        <translation>Ters çevir</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grijs</translation>
+        <translation>Gri</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Zwart-wit</translation>
+        <translation>Siyah-ve-beyaz</translation>
     </message>
     <message>
         <source>Switch to Window</source>
-        <translation>Vensterweergave</translation>
+        <translation>Pencereye Geç</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Schermvullende weergave</translation>
+        <translation>Tam Ekrana Geç</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Kamera</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Het instellen is voltooid.</translation>
+        <translation>Kurulum başarılı oldu.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Sluit dit venster en herstart vokoscreenNG.</translation>
+        <translation>Bu pencereyi kapatın ve vokoscreenNG&apos;yi yeniden başlatın.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Veel plezier met vokoscreenNG</translation>
+        <translation>vokoscreenNG ile iyi eğlenceler</translation>
     </message>
 </context>
 <context>
     <name>QvkDirDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialoogvenster</translation>
+        <translation>Diyalog</translation>
     </message>
 </context>
 <context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Bir veya daha fazla aygıt seç</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Hulp</translation>
+        <translation>Yardım</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Er is geen bestandsbeheerder aangetroffen.</translation>
+        <translation>Dosya yöneticisi bulunamadı</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installeer een bestandsbeheerder.</translation>
+        <translation>Lütfen bir dosya yöneticisi yükleyin.</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Er is geen bestandsbeheerder aangetroffen.</translation>
+        <translation>Dosya yöneticisi bulunamadı</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installeer een bestandsbeheerder.</translation>
+        <translation>Lütfen bir dosya yöneticisi yükleyin.</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Waarschuwing</translation>
+        <translation>Uyarı</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>De opname kan niet worden gestart omdat er onvoldoende vrije schijfruimte is.</translation>
+        <translation>Kayıt başlatılmadı, yeterli boş disk alanı yok.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Het vrijeschijfruimtelimiet is bereikt.</translation>
+        <translation>Boş disk alanı sınırına ulaşıldı.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Vrijeschijfruimtelimiet</translation>
+        <translation>Boş disk alanı sınırı</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>Megabayt</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>De opname is gestopt omdat er onvoldoende vrije schijfruimte is.</translation>
+        <translation>Kayıt durduruldu, yeterli boş disk alanı yok.</translation>
     </message>
 </context>
 <context>
@@ -138,293 +138,293 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>Er is geen bestandsbeheerder aangetroffen.</translation>
+        <translation>Dosya yöneticisi bulunamadı</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installeer een bestandsbeheerder.</translation>
+        <translation>Lütfen bir dosya yöneticisi yükleyin.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Broncode</translation>
+        <translation>Kaynak kodu</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Website</translation>
+        <translation>Web Sayfası</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Vertalingen</translation>
+        <translation>Çeviriler</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Doneren</translation>
+        <translation>Bağış</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
-        <translation>Broncode</translation>
+        <translation>Kaynak kodu</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Website</translation>
+        <translation>Web Sayfası</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Vertalingen</translation>
+        <translation>Çeviriler</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Doneren</translation>
+        <translation>Bağış</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Bir veya daha fazla aygıt seç</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation>Bölge</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation>Bölge</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Er is geen bestandsbeheerder aangetroffen.</translation>
+        <translation>Dosya yöneticisi bulunamadı</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installeer een bestandsbeheerder.</translation>
+        <translation>Lütfen bir dosya yöneticisi yükleyin.</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Başlat</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Durdur</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Duraklat</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Hervatten</translation>
+        <translation>Devam</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Afsluiten</translation>
+        <translation>Çıkış</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Vergroting</translation>
+        <translation>Büyüt</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Başlat</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Durdur</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Duraklat</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Hervatten</translation>
+        <translation>Devam</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Afsluiten</translation>
+        <translation>Çıkış</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Vergroting</translation>
+        <translation>Büyüt</translation>
     </message>
 </context>
 <context>
     <name>QvkWASAPIController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Bir veya daha fazla aygıt seç</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialoogvenster</translation>
+        <translation>Diyalog</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontaal spiegelen</translation>
+        <translation>Yatay çevir</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Verticaal spiegelen</translation>
+        <translation>Dikey çevir</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Omkeren</translation>
+        <translation>Ters çevir</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grijs</translation>
+        <translation>Gri</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Zwart-wit</translation>
+        <translation>Siyah-ve-beyaz</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Vensterrand verwijderen</translation>
+        <translation>Pencere çerçevesini kaldır</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Camera-instellingen</translation>
+        <translation>Kamera ayarları</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation>Bölge</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Standaardwaarden</translation>
+        <translation>Sıfırla</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Vergroting</translation>
+        <translation>Büyüt</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Aftellen</translation>
+        <translation>Geri sayım</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videoformaat:</translation>
+        <translation>Video boyutu:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Vrije schijfruimte:</translation>
+        <translation>Boş disk alanı:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informatie</translation>
+        <translation>Bilgilendirme</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Opnametijd:</translation>
+        <translation>Kayıt Süresi:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Audio</translation>
+        <translation>Ses</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>Kare sayısı</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videocodec</translation>
+        <translation>Video çözücü</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formaat</translation>
+        <translation>Biçim</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Audiocodec</translation>
+        <translation>Ses çözücü</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Cursor verbergen</translation>
+        <translation>Fare imlecini kaydetme</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Uur</translation>
+        <translation>Saat</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minuut</translation>
+        <translation>Dakika</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Tijdklok starten</translation>
+        <translation>Zamanlayıcıyı başlat</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Opname stoppen na</translation>
+        <translation>Sonra kaydı durdur</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Uur</translation>
+        <translation>Saat</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minuten</translation>
+        <translation>Dakika</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Seconden</translation>
+        <translation>Saniye</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videomap</translation>
+        <translation>Video yolu</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Vrijeschijfruimtelimiet</translation>
+        <translation>Boş disk alanı sınırı</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Tonen in systeemvak</translation>
+        <translation>Sistem tepsisinde göster</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Aantal seconden voordat opname start</translation>
+        <translation>Kayıttan önce biraz bekle</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Controleren op updates</translation>
+        <translation>Güncellemeleri ara</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hulp</translation>
+        <translation>Yardım</translation>
     </message>
     <message>
         <source>Video</source>
@@ -432,47 +432,47 @@
     </message>
     <message>
         <source>Available</source>
-        <translation>Beschikbaar</translation>
+        <translation>Mevcut</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Niet beschikbaar</translation>
+        <translation>Mevcut değil</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Başlat</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Durdur</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Duraklat</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Hervatten</translation>
+        <translation>Devam</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Afspelen</translation>
+        <translation>Oynat</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Map</translation>
+        <translation>Klasör</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Omkeren</translation>
+        <translation>Ters çevir</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grijs</translation>
+        <translation>Gri</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -488,11 +488,11 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Recentste opname afspelen</translation>
+        <translation>Son kaydı oynat</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Map openen</translation>
+        <translation>Klasörü aç</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
@@ -500,244 +500,244 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimaliseren zodra opname start</translation>
+        <translation>Kayıt başladığında simge durumuna küçült</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Geminimaliseerd starten</translation>
+        <translation>Simge durumunda başlat</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontaal spiegelen</translation>
+        <translation>Yatay çevir</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Verticaal spiegelen</translation>
+        <translation>Dikey çevir</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Zwart-wit</translation>
+        <translation>Siyah-ve-beyaz</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Vensterrand verwijderen</translation>
+        <translation>Pencere çerçevesini kaldır</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Alle instellingen herstellen bij opnieuw opstarten</translation>
+        <translation>Bir sonraki başlangıçta tüm ayarları sıfırla</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright en licentie uit beelden</translation>
+        <translation>Resimlerin telif hakkı ve lisans</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>Megabyte</translation>
+        <translation>Megabayt</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Screencast</translation>
+        <translation>Ekran alıntılama</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Speler</translation>
+        <translation>Oynatıcı</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Logboek</translation>
+        <translation>Günlük</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automatisch</translation>
+        <translation>Otomatik olarak</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Afbeeldingen maken van tabbladen</translation>
+        <translation>Sekmelerin ekran görüntülerini kaydet</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Licentie-informatie</translation>
+        <translation>Lisans bilgisi</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>AAN</translation>
+        <translation>AÇ</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>UIT</translation>
+        <translation>KAPAT</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Globale sneltoetsen</translation>
+        <translation>Genel klavye kısayolları</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>De sneltoetsen zijn toegewezen.</translation>
+        <translation>Atanan kısayol tuşları.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>De sneltoets is niet of meer dan eens toegewezen.</translation>
+        <translation>Klavye kısayolu atanmamış veya birden fazla atanmış.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Als de sneltoets wordt aangeduid als toegewezen maar niet werkt, dan is de sneltoets reeds in gebruik door een ander programma.</translation>
+        <translation>Atanmış görünüyor ancak çalışmıyorsa başka bir program tarafından kullanılıyordur.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Schermfoto</translation>
+        <translation>Ekrançıktısı</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Afbeeldingslocatie</translation>
+        <translation>Resim yolu</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Venster verbergen</translation>
+        <translation>Bu pencereyi gizle</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Aantal seconden voordat opname start</translation>
+        <translation>Kayıttan önce geri say</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Venster</translation>
+        <translation>Pencere</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Schermvullend</translation>
+        <translation>Tam Ekran</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright en licentie uit beelden</translation>
+        <translation>Resimlerin telif hakkı ve lisans</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Afbeeldingen maken van tabbladen</translation>
+        <translation>Sekmelerin ekran görüntülerini kaydet</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Licentie-informatie</translation>
+        <translation>Lisans bilgisi</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>AAN</translation>
+        <translation>AÇ</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>UIT</translation>
+        <translation>KAPAT</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Opnametijd:</translation>
+        <translation>Kayıt Süresi:</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videoformaat:</translation>
+        <translation>Video boyutu:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Vrije schijfruimte:</translation>
+        <translation>Boş disk alanı:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informatie</translation>
+        <translation>Bilgilendirme</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Venster</translation>
+        <translation>Pencere</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Schermvullend</translation>
+        <translation>Tam Ekran</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation>Bölge</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videocodec</translation>
+        <translation>Video çözücü</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>Kare sayısı</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formaat</translation>
+        <translation>Biçim</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Beschikbaar</translation>
+        <translation>Mevcut</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Niet beschikbaar</translation>
+        <translation>Mevcut değil</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Başlat</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Durdur</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Duraklat</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Hervatten</translation>
+        <translation>Devam</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Afspelen</translation>
+        <translation>Oynat</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Map</translation>
+        <translation>Klasör</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Cursor verbergen</translation>
+        <translation>Fare imlecini kayıtta gösterme</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Audiocodec</translation>
+        <translation>Ses çözücü</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videomap</translation>
+        <translation>Video yolu</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Aftellen</translation>
+        <translation>Geri sayım</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright en licentie uit beelden</translation>
+        <translation>Resimlerin telif hakkı ve lisans</translation>
     </message>
 </context>
 <context>
     <name>playerGST</name>
     <message>
         <source>Play</source>
-        <translation>Afspelen</translation>
+        <translation>Oynat</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Duraklat</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Durdur</translation>
     </message>
 </context>
 </TS>

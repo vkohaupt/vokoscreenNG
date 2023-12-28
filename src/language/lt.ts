@@ -714,7 +714,7 @@
         <translation>Vaizdo įrašo kelias</translation>
     </message>
     <message>
-        <source>CountDown</source>
+        <source>Countdown</source>
         <translation>Atvirkštinis skaičiavimas</translation>
     </message>
 </context>

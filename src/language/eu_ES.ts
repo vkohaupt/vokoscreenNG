@@ -1,128 +1,128 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nl_NL">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="eu_ES">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Hautatu gailu bat edo gehiago</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Vensterrand verwijderen</translation>
+        <translation>Kendu leihoaren markoa</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Verticaal spiegelen</translation>
+        <translation>Irauli bertikalean</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontaal spiegelen</translation>
+        <translation>Irauli horizontalean</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Omkeren</translation>
+        <translation>Alderantzizkatu</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grijs</translation>
+        <translation>Grisa</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Zwart-wit</translation>
+        <translation>Zuri-beltza</translation>
     </message>
     <message>
         <source>Switch to Window</source>
-        <translation>Vensterweergave</translation>
+        <translation>Aldatu leihora</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Schermvullende weergave</translation>
+        <translation>Aldatu pantaila osora</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Kamera</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Het instellen is voltooid.</translation>
+        <translation>Konfigurazioa arrakastatsua izan da.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Sluit dit venster en herstart vokoscreenNG.</translation>
+        <translation>Itxi leiho hau eta hasi vokoscreenNG berriro.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Veel plezier met vokoscreenNG</translation>
+        <translation>Ondo pasa vokoscreenNG-rekin</translation>
     </message>
 </context>
 <context>
     <name>QvkDirDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialoogvenster</translation>
+        <translation>Elkarrizketa</translation>
     </message>
 </context>
 <context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Hautatu gailu bat edo gehiago</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Hulp</translation>
+        <translation>Laguntza</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Er is geen bestandsbeheerder aangetroffen.</translation>
+        <translation>Ez da fitxategi-arakatzailerik aurkitu</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installeer een bestandsbeheerder.</translation>
+        <translation>Instalatu fitxategi-arakatzaile bat.</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Er is geen bestandsbeheerder aangetroffen.</translation>
+        <translation>Ez da fitxategi-arakatzailerik aurkitu</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installeer een bestandsbeheerder.</translation>
+        <translation>Instalatu fitxategi-arakatzaile bat.</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Waarschuwing</translation>
+        <translation>Abisua</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>De opname kan niet worden gestart omdat er onvoldoende vrije schijfruimte is.</translation>
+        <translation>Grabazioa ez da hasi, ez dago nahikoa tokirik diskoan.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Het vrijeschijfruimtelimiet is bereikt.</translation>
+        <translation>Diskoaren espazio librea bukatu da.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Vrijeschijfruimtelimiet</translation>
+        <translation>Diskoaren espazio librearen muga</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -130,7 +130,7 @@
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>De opname is gestopt omdat er onvoldoende vrije schijfruimte is.</translation>
+        <translation>Grabazioa gelditu da, ez dago espazio libre nahikorik.</translation>
     </message>
 </context>
 <context>
@@ -138,397 +138,397 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>Er is geen bestandsbeheerder aangetroffen.</translation>
+        <translation>Ez da fitxategi arakatzailerik aurkitu</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installeer een bestandsbeheerder.</translation>
+        <translation>Instalatu fitxategi arakatzaile bat.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Broncode</translation>
+        <translation>Iturburu-kodea</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Website</translation>
+        <translation>Hasiera-orria</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Vertalingen</translation>
+        <translation>Itzulpenak</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Doneren</translation>
+        <translation>Eman dirua</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
-        <translation>Broncode</translation>
+        <translation>Iturburu-kodea</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Website</translation>
+        <translation>Hasiera-orria</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Vertalingen</translation>
+        <translation>Itzulpenak</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Doneren</translation>
+        <translation>Eman dirua</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Hautatu gailu bat edo gehiago</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation>Eremua</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation>Eremua</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Er is geen bestandsbeheerder aangetroffen.</translation>
+        <translation>Ez da fitxategi-arakatzailerik aurkitu</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installeer een bestandsbeheerder.</translation>
+        <translation>Instalatu fitxategi-arakatzaile bat.</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Hasi</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Gelditu</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Pausatu</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Hervatten</translation>
+        <translation>Jarraitu</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Afsluiten</translation>
+        <translation>irten</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Vergroting</translation>
+        <translation>Lupa</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Hasi</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Gelditu</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Pausatu</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Hervatten</translation>
+        <translation>Jarraitu</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Afsluiten</translation>
+        <translation>Irten</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Vergroting</translation>
+        <translation>Lupa</translation>
     </message>
 </context>
 <context>
     <name>QvkWASAPIController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Hautatu gailu bat edo gehiago</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialoogvenster</translation>
+        <translation>Elkarrizketa</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontaal spiegelen</translation>
+        <translation>Irauli horizontalean</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Verticaal spiegelen</translation>
+        <translation>Irauli bertikalean</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Omkeren</translation>
+        <translation>Alderantzizkatu</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grijs</translation>
+        <translation>Grisa</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Zwart-wit</translation>
+        <translation>Zuri-beltza</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Vensterrand verwijderen</translation>
+        <translation>Kendu leihoaren markoa</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Camera-instellingen</translation>
+        <translation>Kameraren ezarpenak</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation>Eremua</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Standaardwaarden</translation>
+        <translation>Berrezarri</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Vergroting</translation>
+        <translation>Lupa</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Aftellen</translation>
+        <translation>Atzera-kontua</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videoformaat:</translation>
+        <translation>Bideoaren tamaina:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Vrije schijfruimte:</translation>
+        <translation>Diskoko leku librea:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informatie</translation>
+        <translation>Informazioa</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Opnametijd:</translation>
+        <translation>Grabazio denbora:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Audio</translation>
+        <translation>Audioa</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>Fotogramak</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videocodec</translation>
+        <translation>Bideo-kodeka</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formaat</translation>
+        <translation>Formatua</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Audiocodec</translation>
+        <translation>Audio-kodeka</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Cursor verbergen</translation>
+        <translation>Ez grabatu saguaren erakuslea</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Uur</translation>
+        <translation>Ordu</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minuut</translation>
+        <translation>Minutu</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Tijdklok starten</translation>
+        <translation>Abiatu tenporizadorea</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Opname stoppen na</translation>
+        <translation>Gelditu grabazioa denbora honen ondoren</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Uur</translation>
+        <translation>Ordu</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minuten</translation>
+        <translation>Minutu</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Seconden</translation>
+        <translation>Segundo</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videomap</translation>
+        <translation>Bideoaren bidea</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Vrijeschijfruimtelimiet</translation>
+        <translation>Diskoaren espazio librearen muga</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Tonen in systeemvak</translation>
+        <translation>Erakutsi erretiluan</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Aantal seconden voordat opname start</translation>
+        <translation>Segundo hauen ondoren hasi grabatzen</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Controleren op updates</translation>
+        <translation>Begiratu eguneraketak</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hulp</translation>
+        <translation>Laguntza</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Video</translation>
+        <translation>Bideoa</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Beschikbaar</translation>
+        <translation>Eskuragarria</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Niet beschikbaar</translation>
+        <translation>Ez eskuragarria</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Hasi</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Gelditu</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Pausatu</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Hervatten</translation>
+        <translation>Jarraitu</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Afspelen</translation>
+        <translation>Erreproduzitu</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Map</translation>
+        <translation>Karpeta</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Kamera</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Omkeren</translation>
+        <translation>Alderantzizkatu</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grijs</translation>
+        <translation>Grisa</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
-        <translation>CTRL+SHIFT+F10</translation>
+        <translation>CTRL+MAIUS+F10</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F11</source>
-        <translation>CTRL+SHIFT+F11</translation>
+        <translation>CTRL+MAIUS+F11</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F12</source>
-        <translation>CTRL+SHIFT+F12</translation>
+        <translation>CTRL+MAIUS+F12</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Recentste opname afspelen</translation>
+        <translation>Erreproduzitu grabatutako azkena</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Map openen</translation>
+        <translation>Ireki karpeta</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation>CTRL+SHIFT+F8</translation>
+        <translation>CTRL+MAIUS+F8</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimaliseren zodra opname start</translation>
+        <translation>Minimizatu grabazioa hastean</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Geminimaliseerd starten</translation>
+        <translation>Abiatu minimizatuta</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontaal spiegelen</translation>
+        <translation>Irauli horizontalean</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Verticaal spiegelen</translation>
+        <translation>Irauli bertikalean</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Zwart-wit</translation>
+        <translation>Zuri-beltza</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Vensterrand verwijderen</translation>
+        <translation>Kendu leihoaren markoa</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Alle instellingen herstellen bij opnieuw opstarten</translation>
+        <translation>Leheneratu ezarpen guztiak abiatzen den hurrengoan</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright en licentie uit beelden</translation>
+        <translation>Irudien gaineko copyrighta eta lizentzia</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -536,208 +536,208 @@
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Screencast</translation>
+        <translation>Pantaila-grabazioa</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Speler</translation>
+        <translation>Erreproduzigailua</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Logboek</translation>
+        <translation>Erregistroa</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automatisch</translation>
+        <translation>Automatikoki</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Afbeeldingen maken van tabbladen</translation>
+        <translation>Sortu fitxen irudiak</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Licentie-informatie</translation>
+        <translation>Lizentziaren informazioa</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>AAN</translation>
+        <translation>PIZTU</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>UIT</translation>
+        <translation>ITZALI</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Globale sneltoetsen</translation>
+        <translation>Laster-teklak</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>De sneltoetsen zijn toegewezen.</translation>
+        <translation>Esleitutako laster-teklak</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>De sneltoets is niet of meer dan eens toegewezen.</translation>
+        <translation>Laster-tekla ez dago esleituta edo bat baino gehiago esleitu zaio.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Als de sneltoets wordt aangeduid als toegewezen maar niet werkt, dan is de sneltoets reeds in gebruik door een ander programma.</translation>
+        <translation>Esleituta agertzen bada baina ez badabil, beste programa batek erabiltzen du.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Schermfoto</translation>
+        <translation>Pantaila argazkia</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Afbeeldingslocatie</translation>
+        <translation>Irudi-bidea</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Venster verbergen</translation>
+        <translation>Ezkutatu leiho hau</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Aantal seconden voordat opname start</translation>
+        <translation>Segundo hauen ondoren hasi grabatzen</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Venster</translation>
+        <translation>Leihoa</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Schermvullend</translation>
+        <translation>Pantaila osoa</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright en licentie uit beelden</translation>
+        <translation>Irudien gaineko copyrighta eta lizentzia</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Afbeeldingen maken van tabbladen</translation>
+        <translation>Sortu fitxen irudiak</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Licentie-informatie</translation>
+        <translation>Lizentziaren informazioa</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>AAN</translation>
+        <translation>PIZTU</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>UIT</translation>
+        <translation>ITZALI</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Opnametijd:</translation>
+        <translation>Grabazio denbora:</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videoformaat:</translation>
+        <translation>Bideoaren tamaina:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Vrije schijfruimte:</translation>
+        <translation>Diskoko leku librea:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informatie</translation>
+        <translation>Informazioa</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Venster</translation>
+        <translation>Leihoa</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Schermvullend</translation>
+        <translation>Pantaila osoa</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation>Eremua</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videocodec</translation>
+        <translation>Bideo-kodeka</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>Fotogramak</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formaat</translation>
+        <translation>Formatua</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Beschikbaar</translation>
+        <translation>Eskuragarria</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Niet beschikbaar</translation>
+        <translation>Ez eskuragarria</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Hasi</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Gelditu</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Pausatu</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Hervatten</translation>
+        <translation>Jarraitu</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Afspelen</translation>
+        <translation>Erreproduzitu</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Map</translation>
+        <translation>Karpeta</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Cursor verbergen</translation>
+        <translation>Ez grabatu saguaren erakuslea</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Audiocodec</translation>
+        <translation>Audio-kodeka</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videomap</translation>
+        <translation>Bideoaren bidea</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Aftellen</translation>
+        <translation>Atzera-kontua</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright en licentie uit beelden</translation>
+        <translation>Irudien gaineko copyrighta eta lizentzia</translation>
     </message>
 </context>
 <context>
     <name>playerGST</name>
     <message>
         <source>Play</source>
-        <translation>Afspelen</translation>
+        <translation>Erreproduzitu</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Pausatu</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Gelditu</translation>
     </message>
 </context>
 </TS>

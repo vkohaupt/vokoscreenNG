@@ -1,128 +1,128 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nl_NL">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="pt_BR">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Selecione um ou mais dispositivos</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Vensterrand verwijderen</translation>
+        <translation>Remover moldura da janela</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Verticaal spiegelen</translation>
+        <translation>Girar na vertical</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontaal spiegelen</translation>
+        <translation>Girar na horizontal</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Omkeren</translation>
+        <translation>Inverter</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grijs</translation>
+        <translation>Cinzento</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Zwart-wit</translation>
+        <translation>Preto e branco</translation>
     </message>
     <message>
         <source>Switch to Window</source>
-        <translation>Vensterweergave</translation>
+        <translation>Mudar para Janela</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Schermvullende weergave</translation>
+        <translation>Alternar para Tela Cheia</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Câmera</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Het instellen is voltooid.</translation>
+        <translation>Instalação concluída com sucesso.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Sluit dit venster en herstart vokoscreenNG.</translation>
+        <translation>Feche esta Janela e Inicie o vokoscreenNG novamente.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Veel plezier met vokoscreenNG</translation>
+        <translation>Divirta-se com o vokoscreenNG!</translation>
     </message>
 </context>
 <context>
     <name>QvkDirDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialoogvenster</translation>
+        <translation>Diálogo</translation>
     </message>
 </context>
 <context>
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Selecione um ou mais dispositivos</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Hulp</translation>
+        <translation>Ajuda</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Er is geen bestandsbeheerder aangetroffen.</translation>
+        <translation>Nenhum gerenciador de arquivos encontrado.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installeer een bestandsbeheerder.</translation>
+        <translation>Por favor instale um gerenciador de arquivos.</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Er is geen bestandsbeheerder aangetroffen.</translation>
+        <translation>Nenhum gerenciador de arquivos encontrado.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installeer een bestandsbeheerder.</translation>
+        <translation>Por favor instale um gerenciador de arquivos.</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Waarschuwing</translation>
+        <translation>Aviso</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>De opname kan niet worden gestart omdat er onvoldoende vrije schijfruimte is.</translation>
+        <translation>A gravação não foi iniciada, não há espaço suficiente no disco.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Het vrijeschijfruimtelimiet is bereikt.</translation>
+        <translation>O limite de espaço livre em disco foi atingido.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Vrijeschijfruimtelimiet</translation>
+        <translation>Limite de espaço livre no disco</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -130,7 +130,7 @@
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>De opname is gestopt omdat er onvoldoende vrije schijfruimte is.</translation>
+        <translation>A gravação foi interrompida, não há espaço livre em disco.</translation>
     </message>
 </context>
 <context>
@@ -138,341 +138,341 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>Er is geen bestandsbeheerder aangetroffen.</translation>
+        <translation>Nenhum gerenciador de arquivos encontrado.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installeer een bestandsbeheerder.</translation>
+        <translation>Por favor instale um gerenciador de arquivos.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Broncode</translation>
+        <translation>Código-Fonte</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Website</translation>
+        <translation>Homepage</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Vertalingen</translation>
+        <translation>Traduções</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Doneren</translation>
+        <translation>Doações</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
-        <translation>Broncode</translation>
+        <translation>Código-Fonte</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Website</translation>
+        <translation>Homepage</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Vertalingen</translation>
+        <translation>Traduções</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Doneren</translation>
+        <translation>Doações</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Selecione um ou mais dispositivos</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation>Área</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation>Área</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Er is geen bestandsbeheerder aangetroffen.</translation>
+        <translation>Nenhum gerenciador de arquivos encontrado.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Installeer een bestandsbeheerder.</translation>
+        <translation>Por favor instale um gerenciador de arquivos.</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Iniciar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Parar</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Pausar</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Hervatten</translation>
+        <translation>Continuar</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Afsluiten</translation>
+        <translation>Sair</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Câmera</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Vergroting</translation>
+        <translation>Zoom</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Iniciar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Parar</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Pausar</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Hervatten</translation>
+        <translation>Continuar</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Afsluiten</translation>
+        <translation>Sair</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Câmera</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Vergroting</translation>
+        <translation>Zoom</translation>
     </message>
 </context>
 <context>
     <name>QvkWASAPIController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Selecione um ou mais dispositivos</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialoogvenster</translation>
+        <translation>Diálogo</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontaal spiegelen</translation>
+        <translation>Girar na horizontal</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Verticaal spiegelen</translation>
+        <translation>Girar na vertical</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Omkeren</translation>
+        <translation>Inverter</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grijs</translation>
+        <translation>Cinzento</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Zwart-wit</translation>
+        <translation>Preto e branco</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Vensterrand verwijderen</translation>
+        <translation>Remover moldura da janela</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Camera-instellingen</translation>
+        <translation>Configurações da câmera</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation>Área</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Standaardwaarden</translation>
+        <translation>Reiniciar</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Vergroting</translation>
+        <translation>Zoom</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Aftellen</translation>
+        <translation>Contagem Regressiva</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videoformaat:</translation>
+        <translation>Tamanho do vídeo:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Vrije schijfruimte:</translation>
+        <translation>Espaço disponível no disco:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informatie</translation>
+        <translation>Informação</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Opnametijd:</translation>
+        <translation>Tempo de gravação:</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Audio</translation>
+        <translation>Áudio</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>Quadros</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videocodec</translation>
+        <translation>Codec de vídeo </translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formaat</translation>
+        <translation>Formato</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Audiocodec</translation>
+        <translation>Codec de áudio</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Cursor verbergen</translation>
+        <translation>Não gravar o cursor do mouse</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Uur</translation>
+        <translation>Hora</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minuut</translation>
+        <translation>Minuto</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Tijdklok starten</translation>
+        <translation>Iniciar o cronômetro</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Opname stoppen na</translation>
+        <translation>Para gravação após</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>Uur</translation>
+        <translation>Horas</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>Minuten</translation>
+        <translation>Minutos</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>Seconden</translation>
+        <translation>Segundos</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videomap</translation>
+        <translation>Diretório do vídeo</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Vrijeschijfruimtelimiet</translation>
+        <translation>Limite de espaço livre no disco</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Tonen in systeemvak</translation>
+        <translation>Mostrar na área de notificação</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Aantal seconden voordat opname start</translation>
+        <translation>Espera em segundos antes de começar gravando</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Controleren op updates</translation>
+        <translation>Buscar atualizações</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Hulp</translation>
+        <translation>Ajuda</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Video</translation>
+        <translation>Vídeo</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Beschikbaar</translation>
+        <translation>Disponível</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Niet beschikbaar</translation>
+        <translation>Não disponível</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Iniciar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Parar</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Pausar</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Hervatten</translation>
+        <translation>Continuar</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Afspelen</translation>
+        <translation>Reproduzir</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Map</translation>
+        <translation>Pasta</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>Câmera</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Omkeren</translation>
+        <translation>Inverter</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Grijs</translation>
+        <translation>Cinzento</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
@@ -488,11 +488,11 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Recentste opname afspelen</translation>
+        <translation>Reproduzir a última gravação</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Map openen</translation>
+        <translation>Abrir pasta</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
@@ -500,35 +500,35 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimaliseren zodra opname start</translation>
+        <translation>Minimizar ao iniciar a gravação</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Geminimaliseerd starten</translation>
+        <translation>Iniciar minimizado</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Horizontaal spiegelen</translation>
+        <translation>Girar na horizontal</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Verticaal spiegelen</translation>
+        <translation>Girar na vertical</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Zwart-wit</translation>
+        <translation>Preto e branco</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Vensterrand verwijderen</translation>
+        <translation>Remover moldura da janela</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Alle instellingen herstellen bij opnieuw opstarten</translation>
+        <translation>Redefinir todas as configurações na próxima inicialização</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright en licentie uit beelden</translation>
+        <translation>Direitos autorais e licença das imagens</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -536,208 +536,208 @@
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Screencast</translation>
+        <translation>Captura de Tela</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Speler</translation>
+        <translation>Reprodutor</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Logboek</translation>
+        <translation>Log</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automatisch</translation>
+        <translation>Automaticamente</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Afbeeldingen maken van tabbladen</translation>
+        <translation>Criar imagens das abas</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Licentie-informatie</translation>
+        <translation>Infomações de Licença</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>AAN</translation>
+        <translation>LIGADO</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>UIT</translation>
+        <translation>DESLIGADO</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Globale sneltoetsen</translation>
+        <translation>Atalhos de teclado globais</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>De sneltoetsen zijn toegewezen.</translation>
+        <translation>Atalhos de teclado atribuídos</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>De sneltoets is niet of meer dan eens toegewezen.</translation>
+        <translation>Atalho de teclado não atribuído ou atribuído em duplicidade.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Als de sneltoets wordt aangeduid als toegewezen maar niet werkt, dan is de sneltoets reeds in gebruik door een ander programma.</translation>
+        <translation>Se o atalho foi atribuído, mas não funciona, ele pode estar sendo utilizado por outro programa.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Schermfoto</translation>
+        <translation>Captura instantânea</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Afbeeldingslocatie</translation>
+        <translation>Diretório da imagem</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Venster verbergen</translation>
+        <translation>Ocultar esta janela</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Aantal seconden voordat opname start</translation>
+        <translation>Aguarde segundos antes de gravar</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Venster</translation>
+        <translation>Janela</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Schermvullend</translation>
+        <translation>Tela cheia</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright en licentie uit beelden</translation>
+        <translation>Direitos autorais e licença das imagens</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Afbeeldingen maken van tabbladen</translation>
+        <translation>Criar imagens das abas</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Licentie-informatie</translation>
+        <translation>Infomações de Licença</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>AAN</translation>
+        <translation>LIGADO</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>UIT</translation>
+        <translation>DESLIGADO</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Opnametijd:</translation>
+        <translation>Tempo de gravação:</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Videoformaat:</translation>
+        <translation>Tamanho do vídeo:</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Vrije schijfruimte:</translation>
+        <translation>Espaço disponível no disco:</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informatie</translation>
+        <translation>Informação</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Venster</translation>
+        <translation>Janela</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Schermvullend</translation>
+        <translation>Tela cheia</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>Gebied</translation>
+        <translation>Área</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videocodec</translation>
+        <translation>Codec de vídeo </translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frames</translation>
+        <translation>Quadros</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formaat</translation>
+        <translation>Formato</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Beschikbaar</translation>
+        <translation>Disponível</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Niet beschikbaar</translation>
+        <translation>Não disponível</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Iniciar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Parar</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Pausar</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Hervatten</translation>
+        <translation>Continuar</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Afspelen</translation>
+        <translation>Reproduzir</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Map</translation>
+        <translation>Pasta</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Cursor verbergen</translation>
+        <translation>Não gravar o cursor do mouse</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Audiocodec</translation>
+        <translation>Codec de áudio</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videomap</translation>
+        <translation>Diretório do vídeo</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Aftellen</translation>
+        <translation>Contagem Regressiva</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright en licentie uit beelden</translation>
+        <translation>Direitos autorais e licença das imagens</translation>
     </message>
 </context>
 <context>
     <name>playerGST</name>
     <message>
         <source>Play</source>
-        <translation>Afspelen</translation>
+        <translation>Reproduzir</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Pausar</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Parar</translation>
     </message>
 </context>
 </TS>

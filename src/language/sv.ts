@@ -714,7 +714,7 @@
         <translation>Videosökväg</translation>
     </message>
     <message>
-        <source>CountDown</source>
+        <source>Countdown</source>
         <translation>Nedräkning</translation>
     </message>
 </context>

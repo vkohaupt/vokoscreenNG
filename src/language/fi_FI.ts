@@ -714,7 +714,7 @@
         <translation>Videon polku</translation>
     </message>
     <message>
-        <source>CountDown</source>
+        <source>Countdown</source>
         <translation>Lähtölaskenta</translation>
     </message>
 </context>

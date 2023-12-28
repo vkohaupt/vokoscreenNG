@@ -1,9 +1,9 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nl_NL">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="nl_BE">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Selecteer één of meer apparaten</translation>
     </message>
 </context>
 <context>
@@ -74,7 +74,7 @@
     <name>QvkDirectSoundController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Selecteer één of meer apparaten</translation>
     </message>
 </context>
 <context>
@@ -118,11 +118,11 @@
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Het vrijeschijfruimtelimiet is bereikt.</translation>
+        <translation>De vrije schijfruimte limiet is bereikt.</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Vrijeschijfruimtelimiet</translation>
+        <translation>Vrije schijfruimte limiet</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -184,7 +184,7 @@
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Selecteer één of meer apparaten</translation>
     </message>
 </context>
 <context>
@@ -216,15 +216,15 @@
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Pauzeren</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -247,15 +247,15 @@
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Pauze</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -278,7 +278,7 @@
     <name>QvkWASAPIController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
+        <translation>Selecteer één of meer apparaten</translation>
     </message>
 </context>
 <context>
@@ -313,7 +313,7 @@
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Camera-instellingen</translation>
+        <translation>Camera instellingen</translation>
     </message>
 </context>
 <context>
@@ -372,7 +372,7 @@
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Cursor verbergen</translation>
+        <translation>Muis cursor niet opnemen</translation>
     </message>
     <message>
         <source>Hour</source>
@@ -384,7 +384,7 @@
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Tijdklok starten</translation>
+        <translation>Timer starten</translation>
     </message>
     <message>
         <source>Stop recording after</source>
@@ -404,11 +404,11 @@
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videomap</translation>
+        <translation>Video map</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Vrijeschijfruimtelimiet</translation>
+        <translation>Vrije schijfruimte limiet</translation>
     </message>
     <message>
         <source>Show in systray</source>
@@ -440,15 +440,15 @@
     </message>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Pauzeren</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -488,7 +488,7 @@
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Recentste opname afspelen</translation>
+        <translation>Laatste opname afspelen</translation>
     </message>
     <message>
         <source>Open folder</source>
@@ -528,7 +528,7 @@
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright en licentie uit beelden</translation>
+        <translation>Copyright en licentie uit afbeeldingen</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -544,7 +544,7 @@
     </message>
     <message>
         <source>Log</source>
-        <translation>Logboek</translation>
+        <translation>Log</translation>
     </message>
     <message>
         <source>Automatically</source>
@@ -556,7 +556,7 @@
     </message>
     <message>
         <source>License information</source>
-        <translation>Licentie-informatie</translation>
+        <translation>Licentie informatie</translation>
     </message>
     <message>
         <source>ON</source>
@@ -572,7 +572,7 @@
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>De sneltoetsen zijn toegewezen.</translation>
+        <translation>Toegewezen sneltoetsen.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
@@ -584,7 +584,7 @@
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Schermfoto</translation>
+        <translation>Schermafbeelding</translation>
     </message>
     <message>
         <source>Imagepath</source>
@@ -604,14 +604,14 @@
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Schermvullend</translation>
+        <translation>Volledig scherm</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright en licentie uit beelden</translation>
+        <translation>Copyright en licentie uit afbeeldingen</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
@@ -619,7 +619,7 @@
     </message>
     <message>
         <source>License information</source>
-        <translation>Licentie-informatie</translation>
+        <translation>Licentie informatie</translation>
     </message>
     <message>
         <source>ON</source>
@@ -651,7 +651,7 @@
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Schermvullend</translation>
+        <translation>Volledig scherm</translation>
     </message>
     <message>
         <source>Area</source>
@@ -679,15 +679,15 @@
     </message>
     <message>
         <source>Start</source>
-        <translation>Starten</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Stop</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Pauze</translation>
     </message>
     <message>
         <source>Continue</source>
@@ -703,7 +703,7 @@
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Cursor verbergen</translation>
+        <translation>Muis cursor niet opnemen</translation>
     </message>
     <message>
         <source>Audiocodec</source>
@@ -711,7 +711,7 @@
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videomap</translation>
+        <translation>Video map</translation>
     </message>
     <message>
         <source>Countdown</source>
@@ -722,7 +722,7 @@
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright en licentie uit beelden</translation>
+        <translation>Copyright en licentie uit afbeeldingen</translation>
     </message>
 </context>
 <context>
@@ -733,11 +733,11 @@
     </message>
     <message>
         <source>Pause</source>
-        <translation>Onderbreken</translation>
+        <translation>Pauze</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stoppen</translation>
+        <translation>Stop</translation>
     </message>
 </context>
 </TS>
