@@ -135,7 +135,7 @@ void Portal_wl::slot_gotCreateSessionResponse( uint response, const QVariantMap 
     QDBusPendingCall pendingCall = QDBusConnection::sessionBus().asyncCall(message);
     QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(pendingCall);
 //    bool bo = connect(watcher, &QDBusPendingCallWatcher::finished, this, [=] (QDBusPendingCallWatcher *watcher)
-    bool bo = connect(watcher, &QDBusPendingCallWatcher::finished, this, [=]()
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [=]()
     {
         QDBusPendingReply<QDBusObjectPath> reply = *watcher;
         if (reply.isError()) {
