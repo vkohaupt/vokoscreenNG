@@ -42,14 +42,13 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralwidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadiobuttons.count(); i++ ) {
         // We have no settings-file(first start after install) but this object we want set as default.
-//        if ( ( listRadiobuttons.at(i)->objectName() == "radioButtonScreencastFullscreen" ) and
-//            ( settings.value( listRadiobuttons.at(i)->objectName(), true ).toBool() == true ) ) {
-//            listRadiobuttons.at(i)->click();
-//            continue;
-//        }
+        if ( ( listRadiobuttons.at(i)->objectName() == "radioButtonScreencastFullscreen" ) and
+            ( settings.value( listRadiobuttons.at(i)->objectName(), true ).toBool() == true ) ) {
+            listRadiobuttons.at(i)->click();
+            continue;
+        }
 
         if ( settings.value( listRadiobuttons.at(i)->objectName(), false ).toBool() == true ) {
-            qDebug() << "-----------------------------------" << listRadiobuttons.at(i)->objectName();
             listRadiobuttons.at(i)->click();
         }
     }

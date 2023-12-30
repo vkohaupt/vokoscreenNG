@@ -79,16 +79,6 @@ QvkRegionChoise_wl::~QvkRegionChoise_wl()
 }
 
 
-void QvkRegionChoise_wl::closeEvent( QCloseEvent *event )
-{
-    Q_UNUSED(event)
-    // Bereichsanzeige wird in der Fensterleiste geschloßen und es wird zum Vollbildmodus gewechselt
-    if ( ui->radioButtonScreencastArea->isChecked() == true ) {
-        ui->radioButtonScreencastFullscreen->click();
-    }
-}
-
-
 void QvkRegionChoise_wl::set_HandleColorBackground( QColor color )
 {
     HandleColorBackground = color;
