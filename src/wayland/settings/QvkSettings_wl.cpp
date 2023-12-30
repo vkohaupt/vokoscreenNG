@@ -39,6 +39,14 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.beginGroup( global::name + "_wl" );
 
+    QList<QToolButton *> listToolButton = ui_mainwindow->centralwidget->findChildren<QToolButton *>();
+    for ( int i = 0; i < listToolButton.count(); i++ ) {
+        // We found a setting, then we want set or not.
+        if ( settings.value( listToolButton.at(i)->objectName(), false ).toBool() == true ) {
+            listToolButton.at(i)->click();
+        }
+    }
+
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralwidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadiobuttons.count(); i++ ) {
         // We have no settings-file(first start after install) but this object we want set as default.
@@ -53,19 +61,19 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *
         }
     }
 
-    QList<QToolButton *> listToolButton = ui_mainwindow->centralwidget->findChildren<QToolButton *>();
-    for ( int i = 0; i < listToolButton.count(); i++ ) {
-        // We found a setting, then we want set or not.
-        if ( settings.value( listToolButton.at(i)->objectName(), false ).toBool() == true ) {
-            listToolButton.at(i)->click();
-        }
-    }
-
     QList<QCheckBox *> listCheckBox = ui_mainwindow->centralwidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
         // We found a setting, then we want set or not.
         if ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true ) {
             listCheckBox.at(i)->click();
+        }
+    }
+
+    QList<QSlider *> listSlider = ui_mainwindow->centralwidget->findChildren<QSlider *>();
+    for ( int i = 0; i < listSlider.count(); i++ ) {
+        QVariant variant = settings.value( listSlider.at(i)->objectName() );
+        if ( variant.isValid() ) {
+            listSlider.at(i)->setValue( variant.toInt() );
         }
     }
 
