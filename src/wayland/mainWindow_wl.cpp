@@ -20,6 +20,7 @@
 #include <QScreen>
 #include <QList>
 #include <QGuiApplication>
+#include <QDesktopServices>
 
 QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     : QMainWindow(parent, f)
@@ -244,6 +245,9 @@ void QvkMainWindow_wl::set_Connects()
 
     connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise_wl, SLOT( slot_areaReset() ) );
     connect( ui->toolButtonFramesReset,         SIGNAL( clicked( bool ) ), this,              SLOT( slot_frames_Reset() ) );
+
+    connect( ui->pushButton_log_openfolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_logFolder() ) );
+
 }
 
 
@@ -611,4 +615,22 @@ void QvkMainWindow_wl::slot_videoFileSystemWatcherSetNewPath()
         videoFileSystemWatcher->removePaths( videoFileSystemWatcher->directories() );
     }
     videoFileSystemWatcher->addPath( ui->lineEditVideoPath->text() );
+}
+
+
+void QvkMainWindow_wl::slot_logFolder()
+{
+    QUrl url( vklogController->get_logPath() );
+    QString path = url.adjusted( QUrl::RemoveFilename ).toString();
+
+    if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false ) {
+        QPixmap pixmap( ":/pictures/status/information.png" );
+        pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+
+        QMessageBox msgBox( this );
+        msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
+        msgBox.setWindowTitle( global::name + " " + global::version );
+        msgBox.setIconPixmap( pixmap );
+        msgBox.exec();
+    }
 }

@@ -78,6 +78,7 @@ private Q_SLOTS:
     void slot_frames_Reset();
     void slot_newVideoPath();
     void slot_videoFileSystemWatcherSetNewPath();
+    void slot_logFolder();
 
 
 protected:

@@ -181,6 +181,14 @@
         <source>Donate</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>No filemanager found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
