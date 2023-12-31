@@ -92,8 +92,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->line_cisco->hide();
     ui->label_Upate_tab_2->hide();
 
-//    ui->radioButtonScreencastFullscreen->click();
-
     // Hide to time not needed tabs
     ui->tabWidgetScreencast->removeTab(1); // Audio
 
