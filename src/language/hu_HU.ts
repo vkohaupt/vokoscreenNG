@@ -179,6 +179,14 @@
         <source>Donate</source>
         <translation>Adományozás</translation>
     </message>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Nem található fájlkezelő.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Kérjük, telepítsen egy fájlkezelőt.</translation>
+    </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>

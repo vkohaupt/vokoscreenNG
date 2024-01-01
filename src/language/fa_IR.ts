@@ -181,6 +181,14 @@
         <source>Donate</source>
         <translation>حمایت</translation>
     </message>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>برنامه مدیریت فایل پیدا نشد.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>لطفا برنامه یک برنامه مدیریت فایل نصب کنید.</translation>
+    </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>

@@ -179,6 +179,14 @@
         <source>Donate</source>
         <translation>Podporiť</translation>
     </message>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Nenašiel sa žiadny súborový manažér.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Inštalujte súborový manažér.</translation>
+    </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>

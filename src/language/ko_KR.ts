@@ -179,6 +179,14 @@
         <source>Donate</source>
         <translation>후원하기</translation>
     </message>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>파일 탐색기가 없습니다.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>파일탐색기를 설치해 주세요.</translation>
+    </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>

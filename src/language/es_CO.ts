@@ -181,6 +181,14 @@ El límite de espacio en disco se ha alcanzado.</translation>
         <source>Donate</source>
         <translation>Donar</translation>
     </message>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>No se encontró administrador de archivos</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Por favor, instale un administrador de archivos.</translation>
+    </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>

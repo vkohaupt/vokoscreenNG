@@ -179,6 +179,14 @@
         <source>Donate</source>
         <translation>Lahjoita</translation>
     </message>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Tiedostonhallintaa ei löytynyt.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Asenna tiedostonhallinta. </translation>
+    </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>

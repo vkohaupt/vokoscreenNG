@@ -182,6 +182,15 @@
         <source>Donate</source>
         <translation>Donirajte</translation>
     </message>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Upravitelj datoteka nije pronađen. 
+ </translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Molim instalirajte filemanager</translation>
+    </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>

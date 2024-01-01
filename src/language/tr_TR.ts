@@ -179,6 +179,14 @@
         <source>Donate</source>
         <translation>Bağış</translation>
     </message>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Dosya yöneticisi bulunamadı</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Lütfen bir dosya yöneticisi yükleyin.</translation>
+    </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>

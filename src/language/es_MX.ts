@@ -179,6 +179,14 @@
         <source>Donate</source>
         <translation>Donar</translation>
     </message>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>No se encontró el manejador de archivos.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Por favor, instale un manejador de archivos.</translation>
+    </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>

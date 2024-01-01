@@ -179,6 +179,14 @@
         <source>Donate</source>
         <translation>Donera</translation>
     </message>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Ingen filhanterare hittades.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Installera en filhanterare.</translation>
+    </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>

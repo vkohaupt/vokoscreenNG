@@ -179,6 +179,14 @@
         <source>Donate</source>
         <translation>Paaukoti</translation>
     </message>
+    <message>
+        <source>No filemanager found.</source>
+        <translation>Nerasta jokios failų tvarkytuvės.</translation>
+    </message>
+    <message>
+        <source>Please install a filemanager.</source>
+        <translation>Įdiekite failų tvarkytuvę.</translation>
+    </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
