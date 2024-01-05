@@ -160,6 +160,18 @@ QPushButton::hover{
     border-radius: 4px;
 }
 
-QPushButton::disabled{
+QPushButton#pushButtonStart::disabled{
     color: gray;
+}
+
+QPushButton#pushButtonStop::disabled{
+    color: gray;
+}
+
+QPushButton#pushButtonStart::enabled{
+    color: black;
+}
+
+QPushButton#pushButtonStop::enabled{
+    color: black;
 }
