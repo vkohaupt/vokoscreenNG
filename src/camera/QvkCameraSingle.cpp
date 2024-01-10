@@ -286,8 +286,18 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
 // 5. Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. OK
 // 6. Umschalten von frameless in den window mode und umgekehrt kein gezappel. OK
 #ifdef Q_OS_LINUX
-// On Linux we need no more windowflags.
-// In QvkCameraWindow::paintEvent() we set setMask() and all works fine.
+        // On KDE GNOME we need no more windowflags.
+        // In QvkCameraWindow::paintEvent() we set setMask() and all works fine.
+        // But not all Desktops(MATE) works fine, and we need explizit a FramelessWindowHint
+        if ( value == true ) {
+            vkCameraWindow->setWindowFlag( Qt::FramelessWindowHint, true );
+            qDebug().noquote() << global::nameOutput << "[Camera] Set window frameless";
+        }
+
+        if ( value == false ) {
+            vkCameraWindow->setWindowFlag( Qt::FramelessWindowHint, false );
+            qDebug().noquote() << global::nameOutput << "[Camera] Set window frame";
+        }
 #endif
 
         if ( checkBoxCameraOnOff->isChecked() == true ) {
