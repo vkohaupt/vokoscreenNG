@@ -77,6 +77,15 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *
         }
     }
 
+    QList<QComboBox *> listComboBox = ui_mainwindow->centralwidget->findChildren<QComboBox *>();
+    for ( int i = 0; i < listComboBox.count(); i++ ) {
+        QString valueText = settings.value( listComboBox.at(i)->objectName(), "" ).toString();
+        int valueInt = listComboBox.at(i)->findText( valueText );
+        if ( valueInt > -1 ) {
+            listComboBox.at(i)->setCurrentIndex( valueInt );
+        }
+    }
+
     settings.endGroup();
 }
 
