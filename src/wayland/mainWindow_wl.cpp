@@ -167,6 +167,9 @@ void QvkMainWindow_wl::set_system_info()
     qDebug().noquote() << global::nameOutput << gst_version_string();
 //    qDebug().noquote() << global::nameOutput << "PulseAudio library version:" << pa_get_library_version();
     qDebug().noquote() << global::nameOutput << "Operating system:" << QSysInfo::prettyProductName();
+    if ( QSysInfo::prettyProductName().contains( "Flatpak" ) ) {
+        isFlatpak = true;
+    }
     qDebug().noquote() << global::nameOutput << "CPU Architecture:" << QSysInfo::currentCpuArchitecture();
     qDebug().noquote() << global::nameOutput << "Count CPU:" << QThread::idealThreadCount();
     qDebug().noquote() << global::nameOutput << global::name << "running as:" << QGuiApplication::platformName() << "client";
@@ -191,7 +194,14 @@ void QvkMainWindow_wl::set_CornerWidget()
     list << ui->tabWidgetScreencast;
     list << ui->tabWidgetLog;
 
-    QPixmap pixmap( ":/pictures/cornerWidget/wayland.png" );
+    QString cornerPicture;
+    if ( isFlatpak == true ) {
+        cornerPicture = ":/pictures/cornerWidget/wayland.png";
+    } else {
+        cornerPicture = ":/pictures/cornerWidget/wayland.png";
+    }
+
+    QPixmap pixmap( cornerPicture );
     pixmap = pixmap.scaled( QSize( 48, 48 ), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
 
     for ( int i = 0; i < list.count(); i++ ) {

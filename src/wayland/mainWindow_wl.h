@@ -65,6 +65,8 @@ private:
     QString get_Area_Videocrop();
     QString get_Muxer();
 
+    bool isFlatpak = false;
+
 
 public Q_SLOTS:
 
