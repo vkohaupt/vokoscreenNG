@@ -66,7 +66,7 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 * Qt6 >= 6.5
 * pulseaudio
 * libwayland-client0
-* gstreamer >= 1.12.5
+* gstreamer >= 1.22.8
 * gstreamer-plugins-base
   - Audio: vorbis, opus
 * gstreamer-plugins-good
@@ -87,10 +87,10 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
   - Video: GIF
 
 #### Wayland
-* pipewire >= 0.3
-* gstreamer-plugin-pipewire(openSUSE) gstreamer1.0-pipewire(Debian) >= 0.3.24
-* xdg-desktop-portal >= 1.7.0
-* xdg-desktop-portal-(kde, gtk, ...) >= 1.7.0
+* pipewire >= 1.0.0
+* gstreamer-plugin-pipewire >= 1.0.0
+* xdg-desktop-portal >= 1.18.2
+* xdg-desktop-portal-(kde, gtk, gnome ...)
 
 ### Build requirements
 * pkgconfig
