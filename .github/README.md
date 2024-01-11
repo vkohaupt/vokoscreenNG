@@ -43,13 +43,13 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
   https://aka.ms/vs/16/release/vc_redist.x86.exe  
   
   Qt Online Installer https://www.qt.io/download-thank-you?os=windows
-    - Qt 5.15.2  
-      [+] MinGW 8.1.0 64-bit  
-      [+] Qt Network Authorization (Not sure if this is needed)  
+    - Qt 6.6.0
+      [+] MinGW 11.2.0 64-bit
+      [+] Qt Network Authorization
     - Developer and Designer Tools  
-      [+] Qt Creator 5.0.1 CDB Debugger Support  
+      [+] Qt Creator 12.0.1 CDB Debugger Support
       [+] Debugging Tools for Windows  
-      [+] MinGW 8.1.0 64-bit  
+      [+] MinGW 11.2.0 64-bit
     - openSSL 1.1.1 Toolkit  
       [+] openssl 64-bit binaries  
       
