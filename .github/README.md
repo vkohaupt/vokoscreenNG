@@ -63,10 +63,9 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 ## Linux
 ### Run-time requirements
 
-* Qt5 >= 5.9.4
-* Qt5 >= 5.14 (vokoscreenNG >= 3.1.0 pre alpha)
+* Qt6 >= 6.5
 * pulseaudio
-* libwayland-client0 (since vokoscreenNG 3.0.9)
+* libwayland-client0
 * gstreamer >= 1.12.5
 * gstreamer-plugins-base
   - Audio: vorbis, opus
@@ -86,9 +85,8 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
   - Player: x264
 * gstreamer-plugins-rs
   - Video: GIF
-    
 
-#### Wayland (vokoscreenNG >= 3.1.0)
+#### Wayland
 * pipewire >= 0.3
 * gstreamer-plugin-pipewire(openSUSE) gstreamer1.0-pipewire(Debian) >= 0.3.24
 * xdg-desktop-portal >= 1.7.0
@@ -96,19 +94,19 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 
 ### Build requirements
 * pkgconfig
-* libqt5-devel >= 5.14 (vokoscreenNG >= 3.1.0 pre alpha)
-* libqt5-linguist >= 5.14 (vokoscreenNG >= 3.1.0 pre alpha)
+* libqt6-devel >= 6.5
+* libqt6-linguist >= 6.5
 * libX11-devel
 * gstreamer-devel
-* libpulse-devel (vokoscreenNG >= 3.0.7)
-* wayland-devel (vokoscreenNG >= 3.0.9)
+* libpulse-devel
+* wayland-devel
 
 On Ubuntu these requirements can be satisfied by running `sudo apt install libgstreamer1.0-dev qt5-default qttools5-dev-tools libqt5x11extras5-dev qtmultimedia5-dev libqt5multimedia5-plugins libpulse-dev libwayland-dev`
 
 ### Build instructions
 1. `Download the source / clone the repo and cd into its directory`
 2. `cd src`
-3. `qmake`
+3. `qmake6`
 4. `make`
 
 ## Install packages
