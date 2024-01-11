@@ -37,15 +37,15 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 
 ## Windows 10 64-bit
 ### BuildRequires
-- Required from version 3.1.0
+- Required from version >= 4.0.0
 
   The Qt installer needs the 32 bit version of vc_redist.x86.exe  
   https://aka.ms/vs/16/release/vc_redist.x86.exe  
   
   Qt Online Installer https://www.qt.io/download-thank-you?os=windows
-    - Qt 6.6.0
-      [+] MinGW 11.2.0 64-bit
-      [+] Qt Network Authorization
+    - Qt 6.6.0__
+      [+] MinGW 11.2.0 64-bit__
+      [+] Qt Network Authorization__
     - Developer and Designer Tools  
       [+] Qt Creator 12.0.1 CDB Debugger Support
       [+] Debugging Tools for Windows  
