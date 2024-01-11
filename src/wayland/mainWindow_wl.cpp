@@ -196,7 +196,7 @@ void QvkMainWindow_wl::set_CornerWidget()
 
     QString cornerPicture;
     if ( isFlatpak == true ) {
-        cornerPicture = ":/pictures/cornerWidget/wayland.png";
+        cornerPicture = ":/pictures/cornerWidget/wayland-flatpak.png";
     } else {
         cornerPicture = ":/pictures/cornerWidget/wayland.png";
     }
