@@ -1260,12 +1260,21 @@ void QvkMainWindow::resizeEvent( QResizeEvent *event )
 
 void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
 {
+    QString cornerPicture;
+
 #ifdef Q_OS_LINUX
-    QPixmap pixmap( ":/pictures/cornerWidget/linux.png" );
+    if ( isFlatpak == true ) {
+       cornerPicture = ":/pictures/cornerWidget/linux-flatpak.png";
+    } else {
+       cornerPicture = ":/pictures/cornerWidget/linux.png";
+    }
+    QPixmap pixmap( cornerPicture );
 #endif
+
 #ifdef Q_OS_WIN
     QPixmap pixmap( ":/pictures/cornerWidget/windows.png" );
 #endif
+
     pixmap = pixmap.scaled( QSize( 48, 48 ), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
     QLabel *label = new QLabel();
     label->setPixmap( pixmap );
