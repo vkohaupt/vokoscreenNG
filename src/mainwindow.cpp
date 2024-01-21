@@ -1268,13 +1268,13 @@ void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
     } else {
        cornerPicture = ":/pictures/cornerWidget/linux.png";
     }
-    QPixmap pixmap( cornerPicture );
 #endif
 
 #ifdef Q_OS_WIN
-    QPixmap pixmap( ":/pictures/cornerWidget/windows.png" );
+    cornerPicture = ":/pictures/cornerWidget/windows.png";
 #endif
 
+    QPixmap pixmap( cornerPicture );
     pixmap = pixmap.scaled( QSize( 48, 48 ), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
     QLabel *label = new QLabel();
     label->setPixmap( pixmap );
