@@ -272,7 +272,7 @@ void QvkMainWindow_wl::slot_checkBoxCameraOnOff( bool bo )
         QString launch = "pipewiresrc ! jpegdec ! xvimagesink";
         pipelineCamera = gst_parse_launch( launch.toUtf8(), nullptr );
         gst_element_set_state( pipelineCamera, GST_STATE_PLAYING );
-        qDebug().noquote() << global::nameOutput << "[Camera]" << launch;
+        qDebug().noquote() << global::nameOutput << "[Camera] Start with:" << launch;
     } else {
         gst_element_set_state( pipelineCamera, GST_STATE_NULL );
         gst_object_unref ( pipelineCamera );
