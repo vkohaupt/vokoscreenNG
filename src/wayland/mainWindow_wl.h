@@ -46,6 +46,7 @@ private:
     QvkRegionChoise_wl *vkRegionChoise_wl;
     QvkLogController *vklogController;
     GstElement *pipeline = nullptr;
+    GstElement *pipelineCamera = nullptr;
     QStringList videoFormatsList;
     QFileSystemWatcher *videoFileSystemWatcher;
     QvkContainerController_wl *vkContainerController_wl;
@@ -81,6 +82,7 @@ private Q_SLOTS:
     void slot_newVideoPath();
     void slot_videoFileSystemWatcherSetNewPath();
     void slot_logFolder();
+    void slot_checkBoxCameraOnOff( bool bo );
 
 
 protected:

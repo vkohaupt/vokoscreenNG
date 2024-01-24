@@ -256,8 +256,28 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise_wl, SLOT( slot_areaReset() ) );
     connect( ui->toolButtonFramesReset,         SIGNAL( clicked( bool ) ), this,              SLOT( slot_frames_Reset() ) );
 
+
+    connect( ui->checkBoxCameraOnOff,           SIGNAL( clicked( bool ) ), this,              SLOT( slot_checkBoxCameraOnOff( bool ) ) );
+
+
+
     connect( ui->pushButton_log_openfolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_logFolder() ) );
 
+}
+
+
+void QvkMainWindow_wl::slot_checkBoxCameraOnOff( bool bo )
+{
+    if ( bo == true ) {
+        QString launch = "pipewiresrc ! jpegdec ! xvimagesink";
+        pipelineCamera = gst_parse_launch( launch.toUtf8(), nullptr );
+        gst_element_set_state( pipelineCamera, GST_STATE_PLAYING );
+        qDebug().noquote() << global::nameOutput << "[Camera]" << launch;
+    } else {
+        gst_element_set_state( pipelineCamera, GST_STATE_NULL );
+        gst_object_unref ( pipelineCamera );
+        qDebug().noquote() << global::nameOutput << "[Camera] stop";
+    }
 }
 
 

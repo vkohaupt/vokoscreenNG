@@ -1043,8 +1043,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>419</width>
-                     <height>376</height>
+                     <width>20</width>
+                     <height>98</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -1747,7 +1747,7 @@
              </attribute>
              <layout class="QVBoxLayout" name="verticalLayout_11">
               <item>
-               <widget class="QCheckBox" name="checkBox">
+               <widget class="QCheckBox" name="checkBoxCameraOnOff">
                 <property name="text">
                  <string>Camera</string>
                 </property>
