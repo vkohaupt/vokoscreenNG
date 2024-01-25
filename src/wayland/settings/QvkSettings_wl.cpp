@@ -36,6 +36,7 @@ QvkSettings_wl::~QvkSettings_wl(){}
 
 void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *parent )
 {
+    Q_UNUSED(parent)
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.beginGroup( global::name + "_wl" );
 
