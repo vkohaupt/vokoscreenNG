@@ -258,13 +258,9 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise_wl, SLOT( slot_areaReset() ) );
     connect( ui->toolButtonFramesReset,         SIGNAL( clicked( bool ) ), this,              SLOT( slot_frames_Reset() ) );
 
-
-    connect( ui->checkBoxCameraOnOff,           SIGNAL( clicked( bool ) ), this,              SLOT( slot_checkBoxCameraOnOff( bool ) ) );
-
-
+    connect( ui->checkBoxCameraOnOff, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkBoxCameraOnOff( bool ) ) );
 
     connect( ui->pushButton_log_openfolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_logFolder() ) );
-
 }
 
 
