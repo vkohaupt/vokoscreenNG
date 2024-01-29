@@ -1867,6 +1867,13 @@
                </widget>
               </item>
               <item>
+               <widget class="QCheckBox" name="checkBox">
+                <property name="text">
+                 <string notr="true">Interactive</string>
+                </property>
+               </widget>
+              </item>
+              <item>
                <spacer name="verticalSpacer_7">
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>
@@ -1969,7 +1976,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
