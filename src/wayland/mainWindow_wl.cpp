@@ -49,7 +49,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     // Sidebar
     connect( ui->toolButtonScreencast, &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(0); } );
     connect( ui->toolButtonCamera,     &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(1); } );
-    connect( ui->toolButtonLog,        &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(2); } );
+    connect( ui->toolButtonSnapshot,   &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(2); } );
+    connect( ui->toolButtonLog,        &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(3); } );
     ui->tabWidgetSideBar->tabBar()->hide();
     ui->toolButtonScreencast->click();
 
@@ -194,6 +195,7 @@ void QvkMainWindow_wl::set_CornerWidget()
     QList<QTabWidget *> list;
     list << ui->tabWidgetScreencast;
     list << ui->tabWidgetCamera;
+    list << ui->tabWidgetSnapshot;
     list << ui->tabWidgetLog;
 
     QString cornerPicture;
