@@ -28,6 +28,11 @@
 #include <QDBusReply>
 #include <QDBusObjectPath>
 #include <QVariantMap>
+#include <QDesktopServices>
+#include <QMessageBox>
+#include <QPixmap>
+#include <QUrl>
+#include <QFileInfo>
 // Snapshot
 
 
@@ -307,20 +312,41 @@ void QvkMainWindow_wl::slot_pushButton_snapshot( bool bo )
     QDBusReply<QDBusObjectPath> reply = i->call( "Screenshot", "", options );
 
     if( reply.isValid() ) {
-        bus.connect( "", reply.value().path(), "org.freedesktop.portal.Request", "Response", this, SLOT( slot_HandleResponse( uint, QVariantMap ) ) );
-        qDebug().noquote() << global::nameOutput << reply.value().path();
+        bus.connect( "", reply.value().path(), "org.freedesktop.portal.Request", "Response", this, SLOT( slot_handle_response_snapshot( uint, QVariantMap ) ) );
+        qDebug().noquote() << global::nameOutput << "[Snapshot]" << reply.value().path();
     } else {
-        qDebug().noquote() << global::nameOutput << "Something is wrong: " << reply.error();
+        qDebug().noquote() << global::nameOutput << "[Snapshot] Something is wrong: " << reply.error();
     }
 }
 
 
-void QvkMainWindow_wl::slot_HandleResponse( uint responseCode, QVariantMap results )
+void QvkMainWindow_wl::slot_handle_response_snapshot( uint responseCode, QVariantMap results )
 {
     if ( responseCode == 0 ) {
-        qDebug().noquote() << global::nameOutput << "User allowed us to take a screenshot! We can get it from " << results["uri"];
+        QUrl url( results["uri"].toString() );
+        QFileInfo fileInfo( url.toLocalFile() );
+        path_to_snapshot_folder = fileInfo.absolutePath();
+        disconnect( ui->pushButtonSnapshotOpenFolder, nullptr, nullptr, nullptr );
+        connect( ui->pushButtonSnapshotOpenFolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_path_to_snapshot_folder( bool ) ) );
+        qDebug().noquote() << global::nameOutput << "[Snapshot] User allowed us to take a screenshot! We can get it from" << url.toLocalFile();
     } else {
-        qDebug().noquote() << global::nameOutput << "Unable to take a screenshot" << results["uri"];
+        qDebug().noquote() << global::nameOutput << "[Snapshot] Unable to take a screenshot" << results["uri"];
+    }
+}
+
+
+void QvkMainWindow_wl::slot_path_to_snapshot_folder( bool bo )
+{
+    Q_UNUSED(bo)
+    if ( QDesktopServices::openUrl( QUrl( "file:///" + path_to_snapshot_folder, QUrl::TolerantMode ) ) == false ) {
+        QPixmap pixmap( ":/pictures/status/information.png" );
+        pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+
+        QMessageBox msgBox( this );
+        msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
+        msgBox.setWindowTitle( global::name + " " + global::version );
+        msgBox.setIconPixmap( pixmap );
+        msgBox.exec();
     }
 }
 

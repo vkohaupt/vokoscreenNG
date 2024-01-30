@@ -1078,8 +1078,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>419</width>
-                     <height>376</height>
+                     <width>20</width>
+                     <height>98</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -1902,7 +1902,7 @@
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_snapshot_open_folder">
+                 <widget class="QPushButton" name="pushButtonSnapshotOpenFolder">
                   <property name="text">
                    <string>Folder</string>
                   </property>

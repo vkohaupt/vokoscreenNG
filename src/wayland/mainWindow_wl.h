@@ -68,6 +68,8 @@ private:
 
     bool isFlatpak = false;
 
+    QString path_to_snapshot_folder;
+
 
 public Q_SLOTS:
 
@@ -82,9 +84,16 @@ private Q_SLOTS:
     void slot_newVideoPath();
     void slot_videoFileSystemWatcherSetNewPath();
     void slot_logFolder();
+
+    // Camera
     void slot_checkBoxCameraOnOff( bool bo );
+    // Camera
+
+    // Snapshot
     void slot_pushButton_snapshot( bool bo );
-    void slot_HandleResponse( uint responseCode, QVariantMap results );
+    void slot_handle_response_snapshot( uint responseCode, QVariantMap results );
+    void slot_path_to_snapshot_folder( bool bo );
+    // Snapshot
 
 
 protected:
