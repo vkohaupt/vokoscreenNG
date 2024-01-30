@@ -83,6 +83,8 @@ private Q_SLOTS:
     void slot_videoFileSystemWatcherSetNewPath();
     void slot_logFolder();
     void slot_checkBoxCameraOnOff( bool bo );
+    void slot_pushButton_snapshot( bool bo );
+    void slot_HandleResponse( uint responseCode, QVariantMap results );
 
 
 protected:

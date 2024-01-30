@@ -22,6 +22,15 @@
 #include <QGuiApplication>
 #include <QDesktopServices>
 
+// Snapshot
+#include <QDBusConnection>
+#include <QDBusInterface>
+#include <QDBusReply>
+#include <QDBusObjectPath>
+#include <QVariantMap>
+// Snapshot
+
+
 QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     : QMainWindow(parent, f)
     , ui(new Ui::formMainWindow_wl)
@@ -260,6 +269,8 @@ void QvkMainWindow_wl::set_Connects()
 
     connect( ui->checkBoxCameraOnOff, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkBoxCameraOnOff( bool ) ) );
 
+    connect( ui->pushButtonSnapshot, SIGNAL( clicked( bool ) ), this, SLOT( slot_pushButton_snapshot( bool ) ) );
+
     connect( ui->pushButton_log_openfolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_logFolder() ) );
 }
 
@@ -275,6 +286,41 @@ void QvkMainWindow_wl::slot_checkBoxCameraOnOff( bool bo )
         gst_element_set_state( pipelineCamera, GST_STATE_NULL );
         gst_object_unref ( pipelineCamera );
         qDebug().noquote() << global::nameOutput << "[Camera] stop";
+    }
+}
+
+
+void QvkMainWindow_wl::slot_pushButton_snapshot( bool bo )
+{
+    Q_UNUSED(bo)
+    // https://pythonhosted.org/txdbus/dbus_overview.html
+    // https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.Screenshot.html#
+    QDBusConnection bus = QDBusConnection::sessionBus();
+    QDBusInterface *i = new QDBusInterface("org.freedesktop.portal.Desktop", "/org/freedesktop/portal/desktop", "org.freedesktop.portal.Screenshot", bus, NULL);
+
+    QVariantMap options;
+    if ( ui->checkBox_snapshot_interactive->isChecked() == false ) {
+        options["interactive"] = false;
+    } else {
+        options["interactive"] = true;
+    }
+    QDBusReply<QDBusObjectPath> reply = i->call( "Screenshot", "", options );
+
+    if( reply.isValid() ) {
+        bus.connect( "", reply.value().path(), "org.freedesktop.portal.Request", "Response", this, SLOT( slot_HandleResponse( uint, QVariantMap ) ) );
+        qDebug().noquote() << global::nameOutput << reply.value().path();
+    } else {
+        qDebug().noquote() << global::nameOutput << "Something is wrong: " << reply.error();
+    }
+}
+
+
+void QvkMainWindow_wl::slot_HandleResponse( uint responseCode, QVariantMap results )
+{
+    if ( responseCode == 0 ) {
+        qDebug().noquote() << global::nameOutput << "User allowed us to take a screenshot! We can get it from " << results["uri"];
+    } else {
+        qDebug().noquote() << global::nameOutput << "Unable to take a screenshot" << results["uri"];
     }
 }
 
