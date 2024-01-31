@@ -4,11 +4,11 @@
 #
 #-------------------------------------------------
 
-equals(QT_MAJOR_VERSION, 6):!lessThan(QT_MINOR_VERSION, 5) {
+equals(QT_MAJOR_VERSION, 6):!lessThan(QT_MINOR_VERSION, 6) {
    # there is nothing to do
 } else {
     message("Cannot use Qt $${QT_VERSION}")
-    error( "Need minimum Qt 6.5" )
+    error( "Need minimum Qt 6.6" )
 exit
 }
 
