@@ -70,6 +70,10 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     QPixmap statusPixmap( statusIcon );
     painterPixmap.drawPixmap( width()-drawWindowWidth+10, height()-drawWindowHeight+64/2, 64, 64, statusPixmap );
 
+    QPixmap imagePixmap( image );
+    imagePixmap = imagePixmap.scaled( 300, 80, Qt::KeepAspectRatio, Qt::SmoothTransformation );
+    painterPixmap.drawPixmap( width()-drawWindowWidth+100, height()-drawWindowHeight+64/2, imagePixmap );
+
     painterPixmap.end();
 
     QPainter painter;
@@ -84,4 +88,10 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
 void QvkShowMessage_wl::set_StatusIcon( QString m_statusIcon )
 {
     statusIcon = m_statusIcon;
+}
+
+
+void QvkShowMessage_wl::set_Image( QString m_image )
+{
+    image = m_image;
 }

@@ -37,6 +37,8 @@ class QvkShowMessage_wl: public QDialog
 public:
     QvkShowMessage_wl();
     void set_StatusIcon( QString m_statusIcon );
+    void set_Image( QString m_image );
+
 
 
 public slots:
@@ -46,6 +48,7 @@ private:
     int drawWindowWidth;
     int drawWindowHeight;
     QString statusIcon;
+    QString image;
 
 
 private slots:

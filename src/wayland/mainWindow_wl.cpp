@@ -333,6 +333,7 @@ void QvkMainWindow_wl::slot_handle_response_snapshot( uint responseCode, QVarian
 
         QvkShowMessage_wl *vkShowMessage_wl = new QvkShowMessage_wl;
         vkShowMessage_wl->set_StatusIcon( ":/pictures/status/information.png" );
+        vkShowMessage_wl->set_Image( url.toLocalFile()  );
         vkShowMessage_wl->show();
 
     } else {
