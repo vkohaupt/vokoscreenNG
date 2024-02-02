@@ -28,7 +28,8 @@
 #include <QPaintEvent>
 #include <QMouseEvent>
 #include <QDialog>
-#include <QCloseEvent>
+#include <QTimer>
+#include <QPixmap>
 
 class QvkShowMessage_wl: public QDialog
 {
@@ -36,9 +37,10 @@ class QvkShowMessage_wl: public QDialog
 
 public:
     QvkShowMessage_wl();
+    void showMessage( QString text );
     void set_StatusIcon( QString m_statusIcon );
     void set_Image( QString m_image );
-
+    void set_timeOut( qreal value );
 
 
 public slots:
@@ -49,9 +51,16 @@ private:
     int drawWindowHeight;
     QString statusIcon;
     QString image;
+    QTimer *timer;
+    qreal degree = 0;
+    qreal degreeStep;
+    QPixmap pixmapDuration;
+    qreal timerInterval = 100;
+    qreal timeOut = 10000;
 
 
 private slots:
+    void slot_durationButton();
 
 
 protected:

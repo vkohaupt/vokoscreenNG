@@ -331,10 +331,11 @@ void QvkMainWindow_wl::slot_handle_response_snapshot( uint responseCode, QVarian
         connect( ui->pushButtonSnapshotOpenFolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_path_to_snapshot_folder( bool ) ) );
         qDebug().noquote() << global::nameOutput << "[Snapshot] User allowed us to take a screenshot! We can get it from" << url.toLocalFile();
 
-        QvkShowMessage_wl *vkShowMessage_wl = new QvkShowMessage_wl;
+        QvkShowMessage_wl *vkShowMessage_wl = new QvkShowMessage_wl();
         vkShowMessage_wl->set_StatusIcon( ":/pictures/status/information.png" );
-        vkShowMessage_wl->set_Image( url.toLocalFile()  );
-        vkShowMessage_wl->show();
+        vkShowMessage_wl->set_Image( url.toLocalFile() );
+        vkShowMessage_wl->set_timeOut( 10000 );
+        vkShowMessage_wl->showMessage( "" );
 
     } else {
         qDebug().noquote() << global::nameOutput << "[Snapshot] Unable to take a screenshot" << results["uri"];

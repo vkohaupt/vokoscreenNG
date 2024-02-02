@@ -39,9 +39,18 @@ QvkShowMessage_wl::QvkShowMessage_wl()
 
     // drawWindowWidth und drawWindowHeight sind die zu zeichnenden größen des Fenster
     drawWindowWidth = 300;
-    drawWindowHeight = 130;
+    drawWindowHeight = 160;
 
     showMaximized();
+
+    timer = new QTimer();
+    timer->setTimerType( Qt::PreciseTimer );
+    timer->setInterval( timerInterval );
+    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_durationButton() ) );
+//    slot_durationButton();
+
+    hide();
+
 }
 
 
@@ -74,6 +83,8 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     imagePixmap = imagePixmap.scaled( 300, 80, Qt::KeepAspectRatio, Qt::SmoothTransformation );
     painterPixmap.drawPixmap( width()-drawWindowWidth+100, height()-drawWindowHeight+64/2, imagePixmap );
 
+    painterPixmap.drawPixmap( width()-drawWindowWidth+250, height()-drawWindowHeight+10, pixmapDuration );
+
     painterPixmap.end();
 
     QPainter painter;
@@ -82,6 +93,14 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     painter.end();
 
     setMask( pixmap.mask() );
+}
+
+
+void QvkShowMessage_wl::showMessage( QString text )
+{
+    degreeStep = 360 / timeOut * timerInterval;
+    timer->start();
+    show();
 }
 
 
@@ -94,4 +113,52 @@ void QvkShowMessage_wl::set_StatusIcon( QString m_statusIcon )
 void QvkShowMessage_wl::set_Image( QString m_image )
 {
     image = m_image;
+}
+
+
+void QvkShowMessage_wl::set_timeOut( qreal value )
+{
+    timeOut = value;
+}
+
+
+void QvkShowMessage_wl::slot_durationButton()
+{
+
+    if ( underMouse() == true ) {
+        degree = degreeStep;
+    }
+
+    int h = 16;
+    QPixmap pixmap( h+2, h+2 );
+    pixmap.fill( Qt::transparent );
+
+    QPainter painter;
+    painter.begin( &pixmap );
+    painter.setRenderHints( QPainter::Antialiasing, true );
+    painter.setOpacity( 1.0 );
+
+    QPen pen;
+    pen.setColor( Qt::black );
+    pen.setWidth( 1 );
+    painter.setPen( pen );
+    painter.drawEllipse( QRectF( 1, 1, h, h ) );
+
+    pen.setColor( Qt::black );
+    pen.setWidth( 1 );
+    painter.setPen( pen );
+    QBrush brush;
+    brush.setStyle( Qt::SolidPattern );
+    brush.setColor( QString( "#3daee9" ) );
+    painter.setBrush( brush );
+    degree = degree - degreeStep;
+    painter.drawPie( 1, 1, h, h, 90*16, degree*16 );
+    painter.end();
+
+    pixmapDuration = pixmap;
+    repaint();
+
+    if ( degree <= -360 ) {
+        close();
+    }
 }
