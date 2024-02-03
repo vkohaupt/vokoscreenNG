@@ -39,7 +39,7 @@ QvkShowMessage_wl::QvkShowMessage_wl()
 
     // drawWindowWidth und drawWindowHeight sind die zu zeichnenden größen des Fenster
     drawWindowWidth = 300;
-    drawWindowHeight = 160;
+    drawWindowHeight = 180;
 
     showMaximized();
 
@@ -47,10 +47,6 @@ QvkShowMessage_wl::QvkShowMessage_wl()
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( timerInterval );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_durationButton() ) );
-//    slot_durationButton();
-
-    hide();
-
 }
 
 
@@ -76,14 +72,24 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     painterPixmap.setPen( pen );
     painterPixmap.drawRect( width()-drawWindowWidth, height()-drawWindowHeight, drawWindowWidth, drawWindowHeight );
 
+    // Titelzeile
+    brush.setColor( Qt::lightGray );
+    brush.setStyle( Qt::SolidPattern );
+    painterPixmap.fillRect( width()-drawWindowWidth, height()-drawWindowHeight, drawWindowWidth, 24, brush );
+    QPixmap logoPixmap( ":/pictures/logo/logo.png" );
+    logoPixmap = logoPixmap.scaled( 22, 22, Qt::KeepAspectRatio, Qt::SmoothTransformation );
+    painterPixmap.drawPixmap( width()-drawWindowWidth+1, height()-drawWindowHeight+1, logoPixmap );
+    painterPixmap.setPen( Qt::black );
+    painterPixmap.drawText( width()-drawWindowWidth+1+30, height()-drawWindowHeight+16, "Snapshot" );
+
     QPixmap statusPixmap( statusIcon );
-    painterPixmap.drawPixmap( width()-drawWindowWidth+10, height()-drawWindowHeight+64/2, 64, 64, statusPixmap );
+    painterPixmap.drawPixmap( width()-drawWindowWidth+10, height()-drawWindowHeight/2-64/2, 64, 64, statusPixmap );
 
     QPixmap imagePixmap( image );
-    imagePixmap = imagePixmap.scaled( 300, 80, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-    painterPixmap.drawPixmap( width()-drawWindowWidth+100, height()-drawWindowHeight+64/2, imagePixmap );
+    imagePixmap = imagePixmap.scaled( 350, 100, Qt::KeepAspectRatio, Qt::SmoothTransformation );
+    painterPixmap.drawPixmap( width()-drawWindowWidth+100, height()-drawWindowHeight+50, imagePixmap );
 
-    painterPixmap.drawPixmap( width()-drawWindowWidth+250, height()-drawWindowHeight+10, pixmapDuration );
+    painterPixmap.drawPixmap( width()-30, height()-drawWindowHeight+25, pixmapDuration );
 
     painterPixmap.end();
 
