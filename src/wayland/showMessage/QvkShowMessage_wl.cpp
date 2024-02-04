@@ -83,11 +83,11 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     painterPixmap.drawText( width()-drawWindowWidth+1+30, height()-drawWindowHeight+16, "Snapshot" );
 
     QPixmap statusPixmap( statusIcon );
-    painterPixmap.drawPixmap( width()-drawWindowWidth+10, height()-drawWindowHeight/2-64/2, 64, 64, statusPixmap );
+    painterPixmap.drawPixmap( width()-drawWindowWidth+10, height()-(drawWindowHeight-24)/2-64/2, 64, 64, statusPixmap );
 
     QPixmap imagePixmap( image );
     imagePixmap = imagePixmap.scaled( 350, 100, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-    painterPixmap.drawPixmap( width()-drawWindowWidth+100, height()-drawWindowHeight+50, imagePixmap );
+    painterPixmap.drawPixmap( width()-drawWindowWidth+100, height()-drawWindowHeight+70, imagePixmap );
 
     painterPixmap.drawPixmap( width()-30, height()-drawWindowHeight+25, pixmapDuration );
 
@@ -130,7 +130,6 @@ void QvkShowMessage_wl::set_timeOut( qreal value )
 
 void QvkShowMessage_wl::slot_durationButton()
 {
-
     if ( underMouse() == true ) {
         degree = degreeStep;
     }
