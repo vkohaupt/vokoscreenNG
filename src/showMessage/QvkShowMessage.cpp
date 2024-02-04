@@ -74,9 +74,9 @@ QvkShowMessage::QvkShowMessage()
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( timerInterval );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_durationButton() ) );
-    slot_durationButton();
+//    slot_durationButton();
 
-    hide();
+//    hide();
 }
 
 

@@ -75,7 +75,8 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     // Titelzeile
     brush.setColor( Qt::lightGray );
     brush.setStyle( Qt::SolidPattern );
-    painterPixmap.fillRect( width()-drawWindowWidth, height()-drawWindowHeight, drawWindowWidth, 24, brush );
+    int titelLineHeight = 24;
+    painterPixmap.fillRect( width()-drawWindowWidth, height()-drawWindowHeight, drawWindowWidth, titelLineHeight, brush );
     QPixmap logoPixmap( ":/pictures/logo/logo.png" );
     logoPixmap = logoPixmap.scaled( 22, 22, Qt::KeepAspectRatio, Qt::SmoothTransformation );
     painterPixmap.drawPixmap( width()-drawWindowWidth+1, height()-drawWindowHeight+1, logoPixmap );
@@ -83,7 +84,8 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     painterPixmap.drawText( width()-drawWindowWidth+1+30, height()-drawWindowHeight+16, "Snapshot" );
 
     QPixmap statusPixmap( statusIcon );
-    painterPixmap.drawPixmap( width()-drawWindowWidth+10, height()-(drawWindowHeight-24)/2-64/2, 64, 64, statusPixmap );
+    statusPixmap = statusPixmap.scaled( 64, 64, Qt::KeepAspectRatio, Qt::SmoothTransformation );
+    painterPixmap.drawPixmap( width()-drawWindowWidth+10, height()-(drawWindowHeight-titelLineHeight)/2-64/2, statusPixmap );
 
     QPixmap imagePixmap( image );
     imagePixmap = imagePixmap.scaled( 350, 100, Qt::KeepAspectRatio, Qt::SmoothTransformation );
