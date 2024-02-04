@@ -37,10 +37,6 @@ QvkShowMessage_wl::QvkShowMessage_wl()
     setAttribute( Qt::WA_TranslucentBackground, true );
     setWindowFlags( Qt::FramelessWindowHint );
 
-    // drawWindowWidth und drawWindowHeight sind die zu zeichnenden größen des Fenster
-    drawWindowWidth = 300;
-    drawWindowHeight = 180;
-
     showMaximized();
 
     timer = new QTimer();
@@ -62,37 +58,51 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     painterPixmap.setRenderHints( QPainter::Antialiasing, true );
     painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
 
+    // Begin Pixmap window. Hier wird alles gezeichnet und zum Schluß ins painterPixmap übertragen
+    drawWindowWidth = 300;
+    drawWindowHeight = 180;
+    QPixmap windowPixmap( drawWindowWidth, drawWindowHeight );
+    QPainter painterWindowPixmap;
+    painterWindowPixmap.begin( &windowPixmap );
+    painterWindowPixmap.setRenderHints( QPainter::Antialiasing, true );
+    painterWindowPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
     QPen pen;
     QBrush brush;
     brush.setColor( Qt::white );
     brush.setStyle( Qt::SolidPattern );
     pen.setWidth( 0 );
     pen.setColor( Qt::darkGray );
-    painterPixmap.setBrush( brush );
-    painterPixmap.setPen( pen );
-    painterPixmap.drawRect( width()-drawWindowWidth, height()-drawWindowHeight, drawWindowWidth, drawWindowHeight );
+    painterWindowPixmap.setBrush( brush );
+    painterWindowPixmap.setPen( pen );
+    painterWindowPixmap.drawRect( 0, 0, drawWindowWidth, drawWindowHeight );
 
     // Titelzeile
     brush.setColor( Qt::lightGray );
     brush.setStyle( Qt::SolidPattern );
     int titelLineHeight = 24;
-    painterPixmap.fillRect( width()-drawWindowWidth, height()-drawWindowHeight, drawWindowWidth, titelLineHeight, brush );
+    painterWindowPixmap.fillRect( 0, 0, drawWindowWidth, titelLineHeight, brush );
     QPixmap logoPixmap( ":/pictures/logo/logo.png" );
     logoPixmap = logoPixmap.scaled( 22, 22, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-    painterPixmap.drawPixmap( width()-drawWindowWidth+1, height()-drawWindowHeight+1, logoPixmap );
-    painterPixmap.setPen( Qt::black );
-    painterPixmap.drawText( width()-drawWindowWidth+1+30, height()-drawWindowHeight+16, "Snapshot" );
+    painterWindowPixmap.drawPixmap( 1, 1, logoPixmap );
+    painterWindowPixmap.setPen( Qt::black );
+    painterWindowPixmap.drawText( 1+30, 16, "Snapshot" );
 
     QPixmap statusPixmap( statusIcon );
     statusPixmap = statusPixmap.scaled( 64, 64, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-    painterPixmap.drawPixmap( width()-drawWindowWidth+10, height()-(drawWindowHeight-titelLineHeight)/2-64/2, statusPixmap );
+    painterWindowPixmap.drawPixmap( 10, (drawWindowHeight-titelLineHeight)/2 + titelLineHeight - 64/2, statusPixmap );
 
     QPixmap imagePixmap( image );
     imagePixmap = imagePixmap.scaled( 350, 100, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-    painterPixmap.drawPixmap( width()-drawWindowWidth+100, height()-drawWindowHeight+70, imagePixmap );
+    painterWindowPixmap.drawPixmap( 100, 70, imagePixmap );
 
-    painterPixmap.drawPixmap( width()-20, height()-drawWindowHeight+25, pixmapDuration );
+    painterWindowPixmap.drawPixmap( drawWindowWidth-20, 25, pixmapDuration );
 
+    painterWindowPixmap.end();
+    // End Pixmap window.
+
+    // Nun wird das fertige Fenster übetragen
+    int margin = 10; // Abstand zum Bildschirmrand
+    painterPixmap.drawPixmap( width()-drawWindowWidth-margin, height()-drawWindowHeight-margin, windowPixmap );
     painterPixmap.end();
 
     QPainter painter;
