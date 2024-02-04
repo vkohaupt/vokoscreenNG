@@ -89,7 +89,7 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     imagePixmap = imagePixmap.scaled( 350, 100, Qt::KeepAspectRatio, Qt::SmoothTransformation );
     painterPixmap.drawPixmap( width()-drawWindowWidth+100, height()-drawWindowHeight+70, imagePixmap );
 
-    painterPixmap.drawPixmap( width()-30, height()-drawWindowHeight+25, pixmapDuration );
+    painterPixmap.drawPixmap( width()-20, height()-drawWindowHeight+25, pixmapDuration );
 
     painterPixmap.end();
 
