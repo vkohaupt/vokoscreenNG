@@ -36,6 +36,7 @@ QvkShowMessage_wl::QvkShowMessage_wl()
 {
     setAttribute( Qt::WA_TranslucentBackground, true );
     setWindowFlags( Qt::FramelessWindowHint );
+    setMouseTracking( true );
 
     showMaximized();
 
@@ -87,6 +88,28 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     painterWindowPixmap.setPen( Qt::black );
     painterWindowPixmap.drawText( 1+30, 16, "Snapshot" );
 
+    // CloseButton in Titelzeile
+    QColor color;
+    if ( isOverCloseButton == true ) {
+        color = Qt::red;
+    } else {
+        color = Qt::white;
+    }
+    QPixmap pixmapCloseButton( titelLineHeight, titelLineHeight );
+    pixmapCloseButton.fill( Qt::transparent );
+    QPainter painterCloseButton;
+    painterCloseButton.begin( &pixmapCloseButton );
+    painterCloseButton.setRenderHints( QPainter::Antialiasing, true );
+    painterCloseButton.setRenderHint( QPainter::SmoothPixmapTransform, true );
+    pen.setColor( color );
+    pen.setWidth( 2 );
+    painterCloseButton.setPen( pen );
+    painterCloseButton.translate( 12, 12 );
+    painterCloseButton.rotate( 45 );
+    painterCloseButton.drawLine( -6,  0, 6, 0 ); // Horizontal
+    painterCloseButton.drawLine(  0, -6, 0, 6 ); // Vertikal
+    painterWindowPixmap.drawPixmap( drawWindowWidth-titelLineHeight, 0, pixmapCloseButton );
+    painterCloseButton.end();
     QPixmap statusPixmap( statusIcon );
     statusPixmap = statusPixmap.scaled( 64, 64, Qt::KeepAspectRatio, Qt::SmoothTransformation );
     painterWindowPixmap.drawPixmap( 10, (drawWindowHeight-titelLineHeight)/2 + titelLineHeight - 64/2, statusPixmap );
@@ -95,13 +118,12 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     imagePixmap = imagePixmap.scaled( 350, 100, Qt::KeepAspectRatio, Qt::SmoothTransformation );
     painterWindowPixmap.drawPixmap( 100, 70, imagePixmap );
 
-    painterWindowPixmap.drawPixmap( drawWindowWidth-20, 25, pixmapDuration );
+    painterWindowPixmap.drawPixmap( drawWindowWidth-20, 30, pixmapDuration );
 
     painterWindowPixmap.end();
     // End Pixmap window.
 
-    // Nun wird das fertige Fenster übetragen
-    int margin = 10; // Abstand zum Bildschirmrand
+    // Nun wird das fertige Fenster übertragen
     painterPixmap.drawPixmap( width()-drawWindowWidth-margin, height()-drawWindowHeight-margin, windowPixmap );
     painterPixmap.end();
 
@@ -114,8 +136,36 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
 }
 
 
+void QvkShowMessage_wl::mouseMoveEvent( QMouseEvent *event )
+{
+    if ( QRect( width()-margin-20, height()-margin-drawWindowHeight, 20, 20 ).contains( event->position().toPoint() ) == true ) {
+        isOverCloseButton = true;
+    } else {
+        isOverCloseButton = false;
+    }
+}
+
+
+void QvkShowMessage_wl::leaveEvent( QEvent *event )
+{
+    Q_UNUSED(event)
+    isOverCloseButton = false;
+}
+
+
+void QvkShowMessage_wl::mouseReleaseEvent( QMouseEvent *event )
+{
+    Q_UNUSED(event)
+    if ( isOverCloseButton == true ) {
+        timer->stop();
+        close();
+    }
+}
+
+
 void QvkShowMessage_wl::showMessage( QString text )
 {
+    Q_UNUSED(text)
     degreeStep = 360 / timeOut * timerInterval;
     timer->start();
     show();
@@ -176,6 +226,7 @@ void QvkShowMessage_wl::slot_durationButton()
     repaint();
 
     if ( degree <= -360 ) {
+        timer->stop();
         close();
     }
 }

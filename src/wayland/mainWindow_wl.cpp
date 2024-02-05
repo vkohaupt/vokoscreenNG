@@ -284,7 +284,7 @@ void QvkMainWindow_wl::set_Connects()
 void QvkMainWindow_wl::slot_checkBoxCameraOnOff( bool bo )
 {
     if ( bo == true ) {
-        QString launch = "pipewiresrc ! jpegdec ! xvimagesink";
+        QString launch = "pipewiresrc ! videoconvert ! xvimagesink";
         pipelineCamera = gst_parse_launch( launch.toUtf8(), nullptr );
         gst_element_set_state( pipelineCamera, GST_STATE_PLAYING );
         qDebug().noquote() << global::nameOutput << "[Camera] Start with:" << launch;

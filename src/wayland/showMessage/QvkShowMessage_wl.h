@@ -57,7 +57,8 @@ private:
     QPixmap pixmapDuration;
     qreal timerInterval = 100;
     qreal timeOut = 10000;
-
+    int margin = 10; // Abstand zum Bildschirmrand
+    bool isOverCloseButton = false;
 
 private slots:
     void slot_durationButton();
@@ -65,6 +66,9 @@ private slots:
 
 protected:
     void paintEvent( QPaintEvent *event );
+    void leaveEvent( QEvent *event );
+    void mouseMoveEvent( QMouseEvent *event );
+    void mouseReleaseEvent( QMouseEvent *event );
 
 
 signals:
