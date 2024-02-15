@@ -1855,7 +1855,7 @@
                  </font>
                 </property>
                 <property name="text">
-                 <string>Snapshot</string>
+                 <string notr="true">Snapshot</string>
                 </property>
                </widget>
               </item>
@@ -2007,7 +2007,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
