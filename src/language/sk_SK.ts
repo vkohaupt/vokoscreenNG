@@ -725,6 +725,10 @@
         <source>Countdown</source>
         <translation>Odpočítavanie</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>Kamera</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -727,6 +727,10 @@
         <source>Countdown</source>
         <translation>شمارنده</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>دوربین</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

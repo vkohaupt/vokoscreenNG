@@ -727,6 +727,10 @@
         <source>Countdown</source>
         <translation>Cuenta regresiva</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>Cámara</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

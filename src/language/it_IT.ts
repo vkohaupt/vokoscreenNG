@@ -725,6 +725,10 @@
         <source>Countdown</source>
         <translation>Avvio ritardo di</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>Webcam</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

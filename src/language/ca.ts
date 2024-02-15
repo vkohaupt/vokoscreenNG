@@ -725,6 +725,10 @@
         <source>Countdown</source>
         <translation>Compte enrere</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>Càmera</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

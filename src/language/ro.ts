@@ -725,6 +725,10 @@
         <source>Countdown</source>
         <translation>Numărătoare inversă</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>Cameră</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

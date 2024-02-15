@@ -725,6 +725,10 @@
         <source>Countdown</source>
         <translation>Contagem decrescente</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>Câmara</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

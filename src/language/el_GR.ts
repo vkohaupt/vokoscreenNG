@@ -725,6 +725,10 @@
         <source>Countdown</source>
         <translation>Αντίστροφη μέτρηση</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>Κάμερα</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

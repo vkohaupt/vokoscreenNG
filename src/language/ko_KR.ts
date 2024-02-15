@@ -725,6 +725,10 @@
         <source>Countdown</source>
         <translation>카운트다운</translation>
     </message>
+    <message>
+        <source>Camera</source>
+        <translation>카메라</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

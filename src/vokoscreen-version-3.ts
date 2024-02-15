@@ -731,6 +731,10 @@
         <source>Camera</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Snapshot</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>license</name>
