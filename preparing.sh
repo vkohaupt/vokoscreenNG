@@ -95,7 +95,6 @@ echo $array | sed "s/ /<\/file>\n<file>/g" >> screencast.qrc
 array="<file>"$( find ./ciscoOpenh264/* -name *.txt | cut -c 3- )"</file>"
 echo $array | sed "s/ /<\/file>\n<file>/g" >> screencast.qrc
 
-
 ################
 # language packs
 ################
@@ -105,6 +104,18 @@ sed -i 's/\.ts/.qm/g' screencast.qrc
 
 echo '</qresource>' >> screencast.qrc
 echo '</RCC>'  >> screencast.qrc
+
+
+echo =======================
+echo Create translations.pri
+echo =======================
+
+############################################
+# language packs write into translations.pri
+############################################
+array='TRANSLATIONS += '$( ls language/*.ts )
+echo $array >> translations.pri
+
 
 echo ==========
 echo Script end
