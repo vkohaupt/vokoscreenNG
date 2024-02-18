@@ -44,19 +44,27 @@ RESOURCES += screencast.qrc
 
 CONFIG += c++17
 
-isEmpty(QMAKE_LRELEASE) {
+#isEmpty(QMAKE_LRELEASE) {
   # Try invocation path of qmake for lrelease
   # NOTE: Usually from Qt Unified Installer
-  win32: QMAKE_LRELEASE = $$[QT_INSTALL_BINS]\lrelease.exe
-    else: QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
+# win32: QMAKE_LRELEASE = $$[QT_INSTALL_BINS]\lrelease.exe
+#    else: QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
     
   # As a last resort try to use lrelease from PATH
   # NOTE: Usually from a distro package
-  unix:!exists($$QMAKE_LRELEASE) {
-    QMAKE_LRELEASE = lrelease-qt5
-  }
-}    
-system($$QMAKE_LRELEASE language/*.ts)
+#  unix:!exists($$QMAKE_LRELEASE) {
+#    QMAKE_LRELEASE = lrelease-qt5
+#  }
+#}
+#system($$QMAKE_LRELEASE language/*.ts)
+
+unix:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
+unix:message($$QMAKE_LRELEASE)
+unix:system($$QMAKE_LRELEASE translations.pri)
+
+win32:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease.exe
+win32:message($$QMAKE_LRELEASE)
+win32:system($$QMAKE_LRELEASE translations.pri)
 
 # Clean target
 QMAKE_CLEAN += $$TARGET */*~

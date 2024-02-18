@@ -731,6 +731,10 @@
         <source>Camera</source>
         <translation>دوربین</translation>
     </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>عکس گرفتن فوری</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

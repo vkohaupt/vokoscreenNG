@@ -729,6 +729,10 @@
         <source>Camera</source>
         <translation>Kamera</translation>
     </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Momentinė kopija</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

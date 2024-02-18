@@ -729,6 +729,10 @@
         <source>Camera</source>
         <translation>الكاميرا</translation>
     </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>لقطة</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

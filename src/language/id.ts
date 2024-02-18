@@ -729,6 +729,10 @@
         <source>Camera</source>
         <translation>Kamera</translation>
     </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Jepret-gambar</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

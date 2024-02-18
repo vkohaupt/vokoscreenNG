@@ -729,6 +729,10 @@
         <source>Camera</source>
         <translation>Cameră</translation>
     </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Instantaneu</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
