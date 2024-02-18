@@ -136,7 +136,6 @@ QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
     MOV->add_AudioCodec( "lamemp3enc", "mp3" );
 
 
-#ifdef Q_OS_LINUX
     // Die Abfrage ist nötig damit GIF nicht im Tab erscheint
     // Das Paket gstreamer-plugins-rs enthält den gifencoder und wurde erstmals mit Gstreamer 1.18.0 veröffentlicht
     Container *GIF = Q_NULLPTR;
@@ -144,16 +143,12 @@ QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
         GIF = new Container( "gifenc", "gif" );
         GIF->add_VideoCodec( "gifenc", "gif" );
     }
-#endif
-
 
     Containers = new QList<Container*>;
     Containers->append( MKV );
-#ifdef Q_OS_LINUX
     if ( QString( gst_version_string() ) >= "GStreamer 1.18.0" ) {
         Containers->append( GIF );
     }
-#endif
     Containers->append( MP4 );
     Containers->append( WEBM );
     Containers->append( AVI );
