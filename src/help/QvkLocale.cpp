@@ -27,7 +27,7 @@ QvkLocale::QvkLocale()
 {
     vkDownload = new QvkDownloader( temporaryDirLocal.path() );
     connect( vkDownload, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_parse( QString ) ) );
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     vkDownload->doDownload( QUrl( "https://vokoscreen.volkoh.de/3.0/help/getLinuxDirs.php" ) );
 #endif
 #ifdef Q_OS_WIN

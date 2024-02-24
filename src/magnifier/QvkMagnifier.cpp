@@ -38,7 +38,7 @@ QvkMagnifier::QvkMagnifier()
     slot_magnifier200x200();
 
     resize( 2 * distanceX * factor, 2 * distanceY * factor );
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     setWindowFlags( Qt::X11BypassWindowManagerHint | Qt::WindowStaysOnTopHint );
 #endif
 #ifdef Q_OS_WIN
@@ -494,7 +494,7 @@ void QvkMagnifier::slot_mytimer()
         setPixmap( painterPixmap );
         setMagnifier();
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
         setMask( painterPixmap.mask() );
 #endif
 

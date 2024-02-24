@@ -98,7 +98,7 @@ QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
     Container *MKV = new Container( "matroskamux", "mkv" );
     MKV->add_VideoCodec( "openh264enc", "H.264" );
     MKV->add_VideoCodec( "vp8enc", "VP8");
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     if ( isFlatpak == false ) { MKV->add_VideoCodec( "x264enc", "x264"); }
 #endif
     MKV->add_AudioCodec( "vorbisenc", "vorbis" );
@@ -113,7 +113,7 @@ QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
 
     Container *AVI = new Container( "avimux", "avi" );
     AVI->add_VideoCodec( "openh264enc", "H.264" );
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     if ( isFlatpak == false ) { AVI->add_VideoCodec( "x264enc", "x264" ); }
 #endif
     AVI->add_VideoCodec( "vp8enc", "VP8" );
@@ -121,7 +121,7 @@ QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
 
     Container *MP4 = new Container( "mp4mux", "mp4" );
     MP4->add_VideoCodec( "openh264enc", "H.264" );
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     if ( isFlatpak == false ) { MP4->add_VideoCodec( "x264enc", "x264" ); }
 #endif
     MP4->add_AudioCodec( "lamemp3enc", "mp3" );
@@ -129,7 +129,7 @@ QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
 
     Container *MOV = new Container( "qtmux", "mov" );
     MOV->add_VideoCodec( "openh264enc", "H.264" );
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     if ( isFlatpak == false ) { MOV->add_VideoCodec( "x264enc", "x264" ); }
 #endif
     MOV->add_VideoCodec( "vp8enc", "VP8" );

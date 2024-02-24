@@ -14,7 +14,7 @@ void QvkVersion::slot_doDownload( bool checked )
         return;
     }
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     QNetworkRequest request( QUrl( "https://vokoscreen.volkoh.de/3.0/version/linux/VERSION" ) );
 #endif
 #ifdef Q_OS_WIN

@@ -27,7 +27,7 @@
 #include <QBitmap>
 
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
 QvkHaloWindow::QvkHaloWindow( QWidget *parent )
 {
     Q_UNUSED(parent)

@@ -68,7 +68,7 @@ void myMessageHandler( QtMsgType type, const QMessageLogContext &context, const 
     }
 
     // Output Logfile
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     QString eol = "\n";
 #endif
 #ifdef Q_OS_WIN

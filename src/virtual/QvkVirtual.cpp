@@ -9,7 +9,7 @@ QvkVirtual::QvkVirtual()
 }
 
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
 QString QvkVirtual::isVirtualMaschine()
 {
     QString maschine = "systemd-detect-virt not found";

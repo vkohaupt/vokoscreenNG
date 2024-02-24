@@ -25,7 +25,7 @@
 #include <QBitmap>
 #include <QDebug>
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
 #include <X11/Xutil.h>
 #endif
 
@@ -97,7 +97,7 @@ void QvkWinInfo::slot_mousePosition()
 }
 
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
 static listWinId getWindow( Atom prop )
 {
     listWinId listWId;

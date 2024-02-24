@@ -29,7 +29,7 @@
 #include <Windows.h>
 #endif
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
 #include<X11/Xlib.h>
 #include<stdio.h>
 #endif
@@ -60,7 +60,7 @@ void QvkGlobalMouse::slot_on( bool value )
 }
 
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
 void QvkGlobalMouse::slot_mousePressed()
 {
     Display* display;

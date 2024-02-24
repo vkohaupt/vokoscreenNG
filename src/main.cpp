@@ -29,7 +29,7 @@
 #include "mainwindow.h"
 #include "global.h"
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
 #include "mainWindow_wl.h"
 #include "QvkWaylandRoutines.h"
 #endif
@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
 
     // Initialize GStreamer
     // https://developer.gnome.org/gstreamer/stable/gst-running.html
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     QString separator;
     separator = ":";
 #endif
@@ -170,7 +170,7 @@ int main(int argc, char *argv[])
 
     gst_init (&argc, &argv);
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     if ( QvkWaylandRoutines::is_Wayland_Display_Available() == false ) {
         QvkMainWindow *w = new QvkMainWindow;
         w->show();

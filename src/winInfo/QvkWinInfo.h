@@ -27,7 +27,7 @@
 #include <QPainter>
 #include <QWidget>
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
 typedef QList<WId> listWinId;
 #endif
 

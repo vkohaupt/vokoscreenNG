@@ -29,7 +29,7 @@ QvkDirDialog::~QvkDirDialog()
 
 #endif
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
 QvkDirDialog::QvkDirDialog(QWidget *parent) : QDialog(parent), ui(new Ui::QvkDirDialog)
 {
     ui->setupUi(this);

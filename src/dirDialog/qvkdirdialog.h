@@ -29,7 +29,7 @@ protected:
 #endif
 
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
 namespace Ui {
 class QvkDirDialog;
 }

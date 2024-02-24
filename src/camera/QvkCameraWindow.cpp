@@ -140,7 +140,7 @@ void QvkCameraWindow::paintEvent( QPaintEvent *event )
     painter.drawPixmap( QPoint( 0, 0 ), pixmap );
     painter.end();
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     if ( checkBoxCameraWindowFrame->isChecked() == true ) {
         setMask( pixmap.mask() );
     } else {

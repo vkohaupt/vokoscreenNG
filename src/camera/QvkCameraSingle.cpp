@@ -255,7 +255,7 @@ QvkCameraSingle::~QvkCameraSingle()
 
 void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
 {
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     Q_UNUSED(value)
 #endif
 
@@ -285,7 +285,7 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
 // 4. Frameless Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. OK
 // 5. Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. OK
 // 6. Umschalten von frameless in den window mode und umgekehrt kein gezappel. OK
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
         // On KDE GNOME we need no more windowflags.
         // In QvkCameraWindow::paintEvent() we set setMask() and all works fine.
         // But not all Desktops(MATE) works fine, and we need explizit a FramelessWindowHint

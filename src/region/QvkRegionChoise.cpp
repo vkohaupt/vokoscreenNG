@@ -76,7 +76,7 @@ QvkRegionChoise::QvkRegionChoise( Ui_formMainWindow *ui_formMainWindow ):handleP
 
 void QvkRegionChoise::slot_init()
 {
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     if ( ui->comboBoxScreencastScreenArea->currentIndex() > -1 ) {
         int index = ui->comboBoxScreencastScreenArea->currentIndex();
         QList<QScreen *> screenList = QGuiApplication::screens();

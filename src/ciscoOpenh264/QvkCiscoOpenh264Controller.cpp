@@ -41,7 +41,7 @@ QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller( QString vk_pathWithSetti
     downloadFile = "http://ciscobinary.openh264.org/openh264-2.4.0-win64.dll.bz2";
 #endif
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     libopenh264_filename = "libopenh264.so";
     downloadFile = "http://ciscobinary.openh264.org/libopenh264-2.4.0-linux64.6.so.bz2";
 #endif

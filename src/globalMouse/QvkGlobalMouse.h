@@ -41,7 +41,7 @@ public slots:
 
 
 private:
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     int pressed = 0;
 #endif
 

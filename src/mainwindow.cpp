@@ -47,7 +47,7 @@
 #include "QvkSnapshot.h"
 #include "QvkPadsAndCaps.h"
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
   #include <pulse/pulseaudio.h>
   #include "QvkComposite.h"
 #endif
@@ -79,7 +79,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     soundEffect = new QSoundEffect();
 #endif
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     // Composite
     new QvkComposite( this );
 #endif
@@ -273,7 +273,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << "Country:" << QLocale::territoryToString( locale.territory() );
     qDebug().noquote() << global::nameOutput << "Qt:" << qVersion();
     qDebug().noquote() << global::nameOutput << gst_version_string();
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     qDebug().noquote() << global::nameOutput << "PulseAudio library version:" << pa_get_library_version();
 #endif
     qDebug().noquote() << global::nameOutput << "Virtual Maschine:" << vkVirtual->isVirtualMaschine();
@@ -286,7 +286,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     qDebug().noquote() << global::nameOutput << "CPU Architecture:" << QSysInfo::currentCpuArchitecture();
     qDebug().noquote() << global::nameOutput << "Count CPU:" << QThread::idealThreadCount();
     qDebug().noquote() << global::nameOutput << global::name << "running as:" << QGuiApplication::platformName() << "client";
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     qDebug().noquote() << global::nameOutput << global::name << "running on:" << qgetenv( "XDG_SESSION_TYPE" ).toLower();
 #endif
     qDebug().noquote() << global::nameOutput << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
@@ -334,7 +334,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonPlay,        SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastFullscreen, SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( slot_comboBoxScreencastScreenCountdown( bool ) ) );
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastWindow,     SLOT( setEnabled( bool ) ) );
 #endif
     connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastArea,       SLOT( setEnabled( bool ) ) );
@@ -369,7 +369,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonPause,       SLOT( setEnabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonPlay,        SLOT( setDisabled( bool ) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastFullscreen, SLOT( setDisabled( bool ) ) );
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastWindow,     SLOT( setDisabled( bool ) ) );
 #endif
     connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastArea,       SLOT( setDisabled( bool ) ) );
@@ -455,7 +455,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( vkAudioController->vkWASAPIController,      SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this, SLOT( slot_haveAudioDeviceSelected( bool ) ) );
 #endif
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     vkAudioController = new QvkAudioController( ui );
     connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this, SLOT( slot_haveAudioDeviceSelected( bool ) ) );
     vkAudioController->init();
@@ -610,7 +610,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkCiscoOpenh264Controller->showWaitDialog();
     vkCiscoOpenh264Controller->init();
 #endif
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     ui->line_cisco->hide();
     ui->frame_cisco->hide();
 #endif
@@ -620,7 +620,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
     vkSettings.readAll( ui, this );
     vkSettings.readAreaScreencast( vkRegionChoise );
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     vkSettings.readCamera( vkCameraController->cameraSingleList );
 #endif
     vkSettings.readSystrayAlternative( vkSystrayAlternative );
@@ -1009,7 +1009,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
         vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
         vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget->getColor() );
 
-        #ifdef Q_OS_LINUX
+        #ifdef Q_OS_UNIX
         for ( int index = 0; index < vkCameraController->cameraSingleList.count(); index++ ) {
             vkSettings.saveCamera( index,
                                    vkCameraController->cameraSingleList.at(index)->vkCameraWindow->geometry().x(),
@@ -1034,7 +1034,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 
     emit signal_close();
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     vkHalo->vkHaloWindow->close();
     vkMagnifierController->vkMagnifier->close();
 #endif
@@ -1057,7 +1057,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
  */
 void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
 {
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     if ( ui->radioButtonScreencastFullscreen->isChecked() == true ) {
         int index = ui->comboBoxScreencastScreen->currentIndex();
         QList<QScreen *> screen = QGuiApplication::screens();
@@ -1271,7 +1271,7 @@ void QvkMainWindow::vk_setCornerWidget( QTabWidget *tabWidget )
 {
     QString cornerPicture;
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     if ( isFlatpak == true ) {
        cornerPicture = ":/pictures/cornerWidget/linux-flatpak.png";
     } else {
@@ -1306,7 +1306,7 @@ bool QvkMainWindow::isAudioDeviceSelected()
 }
 
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
 QString QvkMainWindow::VK_getXimagesrc()
 {
     QString value = "";
@@ -1449,7 +1449,7 @@ QString QvkMainWindow::VK_scale()
         value = "videoscale ! video/x-raw, width=" + QString::number( width ) + ", height=" + QString::number( height )  + " !";
     }
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     if ( ui->radioButtonScreencastWindow->isChecked() == true ) {
         int modulo = 2;
         QRectF rect = vkWinInfo->windowGeometryWithoutFrame( vkWinInfo->getWinID() );
@@ -1485,7 +1485,7 @@ void QvkMainWindow::VK_gst_Elements_available()
     list << "bz2dec";
     list << "videocrop";
 #endif
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     list << "ximagesrc";
     list << "pulsesrc";
 #endif
@@ -1613,7 +1613,7 @@ void QvkMainWindow::slot_preStart()
          ( sliderScreencastCountDown->value() > 0 ) and
          ( vkAudioController->vkWASAPIController->wantCountdown == true ) )
 #endif
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and ( sliderScreencastCountDown->value() > 0 ) )
 #endif
     {
@@ -1675,7 +1675,7 @@ void QvkMainWindow::slot_preStart()
          ( sliderScreencastCountDown->value() > 0 ) and
          ( vkAudioController->vkWASAPIController->wantCountdown == true ) )
 #endif
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     if ( ( ui->radioButtonScreencastArea->isChecked() == true ) and ( sliderScreencastCountDown->value() > 0 ) )
 #endif
     {
@@ -1720,7 +1720,7 @@ void QvkMainWindow::slot_startCounter( bool value )
 }
 
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
 QString QvkMainWindow::VK_get_AudioSystem()
 {
     return "pulsesrc";
@@ -1775,7 +1775,7 @@ QString QvkMainWindow::Pipeline_structured_output( QString pipeline )
 {
     QString string;
     QString nl;
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     nl = "\\";
     string = pipeline.prepend( "gst-launch-1.0 -e " + nl + "\n    " );
 #endif
@@ -1809,7 +1809,7 @@ void QvkMainWindow::slot_Start()
         qDebug().noquote();
     }
 #endif
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     QThread::msleep( static_cast<unsigned long>( sliderSecondWaitBeforeRecording->value()) * 1000 );
     qDebug().noquote() << global::nameOutput << "SecondWaitBeforeRecording:" << sliderSecondWaitBeforeRecording->value();
     qDebug().noquote();
@@ -1843,7 +1843,7 @@ void QvkMainWindow::slot_Start()
     // Pipeline for one selected audiodevice
     if ( ( VK_getSelectedAudioDevice().count() == 1 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
     {
-        #ifdef Q_OS_LINUX
+        #ifdef Q_OS_UNIX
             VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(0) )
                                                    .append( " client-name=" ).append( global::nameOutput + "." + QString( VK_getSelectedAudioDeviceName().at(0) ).replace( " ", "-") );
             VK_PipelineList << "audio/x-raw, channels=2";
@@ -1910,7 +1910,7 @@ void QvkMainWindow::slot_Start()
 
         for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ )
         {
-            #ifdef Q_OS_LINUX
+            #ifdef Q_OS_UNIX
                 VK_PipelineList << VK_get_AudioSystem().append( " device=" ).append( VK_getSelectedAudioDevice().at(x) )
                                                        .append( " client-name=" ).append( global::nameOutput + "." + QString( VK_getSelectedAudioDeviceName().at(x) ).replace( " ", "-") );
                 VK_PipelineList << "audioconvert";
@@ -1988,7 +1988,7 @@ void QvkMainWindow::slot_Start()
     }
 #endif
 
-#ifdef Q_OS_LINUX
+#ifdef Q_OS_UNIX
     newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
     VK_PipelineList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
 #endif
