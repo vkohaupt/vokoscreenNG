@@ -100,7 +100,6 @@ QString QvkScreenManagerWindows::get_ScreenDeviceString( GstDevice *device )
         }
 
         launch_line = g_string_new( valuestr );
-
         g_free( valuestr );
       }
 
@@ -134,16 +133,17 @@ QStringList QvkScreenManagerWindows::get_all_Screen_Source_devices()
     QStringList stringList;
 
     monitor = gst_device_monitor_new();
-    caps = gst_caps_new_empty_simple( "audio/x-raw" );
-    gst_device_monitor_add_filter( monitor, "Audio/Source", caps );
-    bool isMonitorStart =  gst_device_monitor_start( monitor );
+    caps = gst_caps_new_empty_simple( "video/x-raw" );
+    gst_device_monitor_add_filter( monitor, "Source/Monitor", caps );
+    bool isMonitorStart = gst_device_monitor_start( monitor );
 
     list = gst_device_monitor_get_devices( monitor );
     for ( iterator = list; iterator; iterator = iterator->next ) {
         device = (GstDevice*)iterator->data;
         name = gst_device_get_display_name( device );
         stringDevice = get_ScreenDeviceString( device );
-        stringDevice.append( ":::" ).append( name ).append( ":::" ).append( "Source" );
+        stringDevice.append( ":::" ).append( name );
+        stringList.append( stringDevice );
     }
 
     if ( isMonitorStart == true ) {

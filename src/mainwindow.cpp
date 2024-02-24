@@ -52,6 +52,10 @@
   #include "QvkComposite.h"
 #endif
 
+#ifdef Q_OS_WIN
+  #include "QvkScreenManagerWindows.h"
+#endif
+
 QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                                 ui(new Ui::formMainWindow),
                                                 vkWinInfo(new QvkWinInfo)
@@ -557,6 +561,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( screenManager, SIGNAL( signal_screen_count_changed( QString, QString) ), this,                             SLOT( slot_screenCountChangedArea( QString, QString ) ) );
     connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged( int) ),   vkRegionChoise, SLOT( slot_init() ) );
     screenManager->init();
+
+
+    QvkScreenManagerWindows *screenManagerWindows = new QvkScreenManagerWindows();
+    qDebug() << "---------------------------" << screenManagerWindows->get_all_Screen_Source_devices();
 
     // *****************Begin Camera *********************************
     vkCameraController = new QvkCameraController(ui);

@@ -1,5 +1,5 @@
 /* vokoscreenNG - A desktop recorder
- * Copyright (C) 2017-2022 Volker Kohaupt
+ * Copyright (C) 2017-2024 Volker Kohaupt
  * 
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QVKWASAPIGSTREAMER_H
-#define QVKWASAPIGSTREAMER_H
+#ifndef QVKSCREENMANAGERWINDOWS_H
+#define QVKSCREENMANAGERWINDOWS_H
 
 #include <gst/gst.h>
 
