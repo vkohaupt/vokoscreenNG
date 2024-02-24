@@ -3,7 +3,7 @@ INCLUDEPATH += $$PWD
 
 CONFIG += c++11
 
-linux {
+unix{
     CONFIG   += link_pkgconfig
     PKGCONFIG += x11
 }
@@ -19,6 +19,6 @@ HEADERS += \
     $$PWD/qglobalshortcut.h
 
 win32: SOURCES += $$PWD/win/qglobalshortcut.cpp
-linux: SOURCES += $$PWD/x11/qglobalshortcut.cpp
+unix: SOURCES += $$PWD/x11/qglobalshortcut.cpp
 
 
