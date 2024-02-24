@@ -142,8 +142,12 @@ QStringList QvkScreenManagerWindows::get_all_Screen_Source_devices()
     for ( iterator = list; iterator; iterator = iterator->next ) {
         device = (GstDevice*)iterator->data;
         name = gst_device_get_display_name( device );
-        stringDevice = get_AudioDeviceString( device );
+        stringDevice = get_ScreenDeviceString( device );
         stringDevice.append( ":::" ).append( name ).append( ":::" ).append( "Source" );
+    }
+
+    if ( isMonitorStart == true ) {
+        gst_device_monitor_stop( monitor );
     }
 
     return stringList;
