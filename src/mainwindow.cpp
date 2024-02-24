@@ -1470,6 +1470,7 @@ void QvkMainWindow::VK_gst_Elements_available()
     QStringList list;
 #ifdef Q_OS_WIN
     list << "gdiscreencapsrc";
+    list << "d3d11screencapturesrc";
     list << "wasapisrc";
     list << "directsoundsrc";
     list << "bz2dec";
