@@ -34,7 +34,7 @@ QvkScreenManagerWindows::~QvkScreenManagerWindows()
 }
 
 
-QString QvkScreenManagerWindows::get_ScreenDeviceString( GstDevice *device )
+QString QvkScreenManagerWindows::get_ScreenDeviceHandle( GstDevice *device )
 {
   static const char *const ignored_propnames[] = { "name", "parent", "direction", "template", "caps", Q_NULLPTR };
   GString *launch_line = Q_NULLPTR;
@@ -90,8 +90,7 @@ QString QvkScreenManagerWindows::get_ScreenDeviceString( GstDevice *device )
       g_value_init( &pvalue, property->value_type );
       g_object_get_property( G_OBJECT( element ), property->name, &value );
       g_object_get_property( G_OBJECT( pureelement ), property->name, &pvalue );
-      if (gst_value_compare( &value, &pvalue ) != GST_VALUE_EQUAL )
-      {
+      if ( gst_value_compare( &value, &pvalue ) != GST_VALUE_EQUAL ) {
         gchar *valuestr = gst_value_serialize( &value );
         if ( !valuestr ) {
           GST_WARNING( "Could not serialize property %s:%s", GST_OBJECT_NAME( element ), property->name );
@@ -113,15 +112,16 @@ QString QvkScreenManagerWindows::get_ScreenDeviceString( GstDevice *device )
   gst_object_unref( GST_OBJECT( element ) );
   gst_object_unref( GST_OBJECT( pureelement ) );
 
-  QString string = "";
+  QString handle = "";
   if ( launch_line != Q_NULLPTR ) {
-    string = g_string_free( launch_line, FALSE );
+    handle = g_string_free( launch_line, FALSE );
   }
-  return string;
+
+  return handle;
 }
 
 
-QStringList QvkScreenManagerWindows::get_all_Screen_Source_devices()
+QStringList QvkScreenManagerWindows::get_all_Screen_devices()
 {
     GstDeviceMonitor *monitor;
     GstCaps *caps;
@@ -141,7 +141,7 @@ QStringList QvkScreenManagerWindows::get_all_Screen_Source_devices()
     for ( iterator = list; iterator; iterator = iterator->next ) {
         device = (GstDevice*)iterator->data;
         name = gst_device_get_display_name( device );
-        stringDevice = get_ScreenDeviceString( device );
+        stringDevice = get_ScreenDeviceHandle( device );
         stringDevice.append( ":::" ).append( name );
         stringList.append( stringDevice );
     }
