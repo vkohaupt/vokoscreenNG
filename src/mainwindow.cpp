@@ -562,9 +562,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged( int) ),   vkRegionChoise, SLOT( slot_init() ) );
     screenManager->init();
 
-
+#ifdef Q_OS_WIN
     QvkScreenManagerWindows *screenManagerWindows = new QvkScreenManagerWindows();
     qDebug() << "---------------------------" << screenManagerWindows->get_all_Screen_Source_devices();
+#endif
 
     // *****************Begin Camera *********************************
     vkCameraController = new QvkCameraController(ui);
