@@ -145,7 +145,9 @@ QStringList QvkWASAPIGstreamer::get_all_Audio_Source_devices()
         stringDevice = get_AudioDeviceString( device );
         stringDevice.append( ":::" ).append( name ).append( ":::" ).append( "Source" );
         if ( stringDevice.contains( ".") ) {
-          stringList.append( stringDevice );
+            if ( stringDevice.contains( "MMDEVAPI" ) == false ) {
+                stringList.append( stringDevice );
+            }
         }
     }
 
@@ -179,7 +181,9 @@ QStringList QvkWASAPIGstreamer::get_all_Audio_Playback_devices()
         stringDevice = get_AudioDeviceString( device );
         stringDevice.append( ":::" ).append( name ).append( ":::" ).append( "Playback" );
         if ( stringDevice.contains( ".") ) {
-          stringList.append( stringDevice );
+            if ( stringDevice.contains( "MMDEVAPI" ) == false ) {
+                stringList.append( stringDevice );
+            }
         }
     }
 

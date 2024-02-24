@@ -69,7 +69,7 @@ win32:system($$QMAKE_LRELEASE translations.pri)
 # Clean target
 QMAKE_CLEAN += $$TARGET */*~
 
-QMAKE_LFLAGS += -Wl,--as-needed
+unix:QMAKE_LFLAGS += -Wl,--as-needed
 
 unix:INSTALLER=$$(VOKOSCREENNG_INSTALLER)
 unix:contains(INSTALLER, "IFW" ){
