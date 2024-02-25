@@ -21,6 +21,7 @@
  */
 
 #include "QvkScreenManagerWindows.h"
+#include "global.h"
 
 #include <QDebug>
 
@@ -34,102 +35,13 @@ QvkScreenManagerWindows::~QvkScreenManagerWindows()
 }
 
 
-QString QvkScreenManagerWindows::get_ScreenDeviceHandle( GstDevice *device )
-{
-  static const char *const ignored_propnames[] = { "name", "parent", "direction", "template", "caps", Q_NULLPTR };
-  GString *launch_line = Q_NULLPTR;
-  GstElement *element;
-  GstElement *pureelement;
-  GParamSpec **properties, *property;
-  GValue value = G_VALUE_INIT;
-  GValue pvalue = G_VALUE_INIT;
-  guint i, number_of_properties;
-  GstElementFactory *factory;
-
-  element = gst_device_create_element( device, Q_NULLPTR );
-
-  if ( !element ) {
-    return Q_NULLPTR;
-  }
-
-  factory = gst_element_get_factory( element );
-  if ( !factory ) {
-    gst_object_unref( element );
-    return Q_NULLPTR;
-  }
-
-  if ( !gst_plugin_feature_get_name( factory ) ) {
-    gst_object_unref( element );
-    return Q_NULLPTR;
-  }
-
-  pureelement = gst_element_factory_create( factory, Q_NULLPTR );
-
-  properties = g_object_class_list_properties( G_OBJECT_GET_CLASS( element ), &number_of_properties );
-  if ( properties ) {
-    for ( i = 0; i < number_of_properties; i++ ) {
-      gint j;
-      gboolean ignore = FALSE;
-      property = properties[i];
-
-      if ( ( property->flags & G_PARAM_READWRITE ) != G_PARAM_READWRITE ) {
-        continue;
-      }
-
-      for ( j = 0; ignored_propnames[j]; j++ ) {
-        if ( !g_strcmp0( ignored_propnames[j], property->name ) ) {
-          ignore = TRUE;
-        }
-      }
-
-      if ( ignore ) {
-        continue;
-      }
-
-      g_value_init( &value, property->value_type );
-      g_value_init( &pvalue, property->value_type );
-      g_object_get_property( G_OBJECT( element ), property->name, &value );
-      g_object_get_property( G_OBJECT( pureelement ), property->name, &pvalue );
-      if ( gst_value_compare( &value, &pvalue ) != GST_VALUE_EQUAL ) {
-        gchar *valuestr = gst_value_serialize( &value );
-        if ( !valuestr ) {
-          GST_WARNING( "Could not serialize property %s:%s", GST_OBJECT_NAME( element ), property->name );
-          g_free( valuestr );
-          goto next;
-        }
-
-        launch_line = g_string_new( valuestr );
-        g_free( valuestr );
-      }
-
-    next:
-      g_value_unset( &value );
-      g_value_unset( &pvalue );
-    }
-    g_free( properties );
-  }
-
-  gst_object_unref( GST_OBJECT( element ) );
-  gst_object_unref( GST_OBJECT( pureelement ) );
-
-  QString handle = "";
-  if ( launch_line != Q_NULLPTR ) {
-    handle = g_string_free( launch_line, FALSE );
-  }
-
-  return handle;
-}
-
-
 QStringList QvkScreenManagerWindows::get_all_Screen_devices()
 {
     GstDeviceMonitor *monitor;
     GstCaps *caps;
     GstDevice *device;
-    gchar *name;
     GList *iterator = Q_NULLPTR;
     GList *list = Q_NULLPTR;
-    QString stringDevice;
     QStringList stringList;
 
     monitor = gst_device_monitor_new();
@@ -140,10 +52,20 @@ QStringList QvkScreenManagerWindows::get_all_Screen_devices()
     list = gst_device_monitor_get_devices( monitor );
     for ( iterator = list; iterator; iterator = iterator->next ) {
         device = (GstDevice*)iterator->data;
-        name = gst_device_get_display_name( device );
-        stringDevice = get_ScreenDeviceHandle( device );
-        stringDevice.append( ":::" ).append( name );
-        stringList.append( stringDevice );
+
+        // Ab hier properties
+        GstStructure *structure = gst_device_get_properties( device );
+
+        QString device_name = QString( gst_structure_get_string( structure, "device.name" ) );
+        device_name = device_name.replace( "\\", "").replace( ".", "" );
+
+        guint64 value;
+        gst_structure_get_uint64( structure, "device.hmonitor", &value );
+        QString device_handle = QString::number( value );
+
+        stringList << device_name + ":::" + device_handle;
+
+        qDebug().noquote() << global::nameOutput << gst_structure_to_string( structure );
     }
 
     if ( isMonitorStart == true ) {

@@ -34,7 +34,6 @@ class QvkScreenManagerWindows: public QObject
 public:
     QvkScreenManagerWindows();
     virtual ~QvkScreenManagerWindows();
-    QString get_ScreenDeviceHandle( GstDevice *device );
 
     
 public slots:

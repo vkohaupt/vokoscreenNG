@@ -564,7 +564,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 #ifdef Q_OS_WIN
     QvkScreenManagerWindows *screenManagerWindows = new QvkScreenManagerWindows();
-    qDebug() << "---------------------------" << screenManagerWindows->get_all_Screen_devices();
+    qDebug().noquote() << global::nameOutput << screenManagerWindows->get_all_Screen_devices();
+    qDebug();
 #endif
 
     // *****************Begin Camera *********************************
