@@ -27,6 +27,7 @@
 #include <QGuiApplication>
 #include <QScreen>
 #include <QToolButton>
+#include <QList>
 
 QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
 {
@@ -66,8 +67,8 @@ QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
                 QString name = screen.at(i)->name();
                 name = name.replace( "\\", "").replace( ".", "" );
                 if ( name == device_name ) {
-                    device_width = QString::number( screen.at(i)->geometry().width() );
-                    device_height = QString::number( screen.at(i)->geometry().height() );
+                    device_width = QString::number( screen.at(i)->size().width() );
+                    device_height = QString::number( screen.at(i)->size().height() );
                 }
             }
         }
