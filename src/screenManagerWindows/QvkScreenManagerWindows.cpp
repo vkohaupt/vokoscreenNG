@@ -49,7 +49,7 @@ QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
 
         // Ab hier properties
         GstStructure *structure = gst_device_get_properties( device );
-        listStructure = ( QStringList() << gst_structure_to_string( structure ) );
+        listStructure.append( gst_structure_to_string( structure ) );
 
         QString device_name = QString( gst_structure_get_string( structure, "device.name" ) );
         device_name = device_name.replace( "\\", "").replace( ".", "" );

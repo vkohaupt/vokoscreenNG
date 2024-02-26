@@ -565,12 +565,15 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 
 #ifdef Q_OS_WIN
-    // Siehe auch Zeile 1408 und weitere
     // siehe auch Zeile 1012 und weitere
+    // Siehe auch Zeile 1408 und weitere
+    // Siehe auch Zeole 1867 und weitere
     QvkScreenManagerWindows *screenManagerWindows = new QvkScreenManagerWindows( this );
     qDebug();
-    qDebug().noquote() << global::nameOutput << screenManagerWindows->get_screen_structure();
-    qDebug();
+    for ( int i = 0; i < screenManagerWindows->get_screen_structure().count(); i++ ) {
+        qDebug().noquote() << global::nameOutput << screenManagerWindows->get_screen_structure().at(i);
+        qDebug();
+    }
 
     QStringList allScreenDevices = screenManagerWindows->get_all_screen_devices();
     for( int i = 0; i < allScreenDevices.count(); i++ ) {
@@ -578,6 +581,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->comboBoxScreencastScreenArea->addItem( allScreenDevices.at(i).section( ":::", 0, 0 ), allScreenDevices.at(i).section( ":::", 1, 1 ) );
     }
 
+    connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged( int) ),   vkRegionChoise, SLOT( slot_init() ) );
 #endif
 
     // *****************Begin Camera *********************************
@@ -1430,11 +1434,10 @@ QString QvkMainWindow::VK_getXimagesrc()
     }
 
     if ( ui->radioButtonScreencastArea->isChecked() == true ) {
-        int screenNumber = ( ui->comboBoxScreencastScreenArea->currentIndex() );
         QStringList stringList;
-        stringList << "gdiscreencapsrc"
-                   << "monitor=" + QString::number( screenNumber )
-                   << "cursor=" + showPointer;
+        stringList << "d3d11screencapturesrc"
+                   << "monitor-handle=" + ui->comboBoxScreencastScreenArea->currentData().toString()
+                   << "show-cursor=" + showPointer;
         value = stringList.join( " " );
     }
 
