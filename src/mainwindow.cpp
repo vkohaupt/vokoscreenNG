@@ -1876,9 +1876,9 @@ void QvkMainWindow::slot_Start()
     if ( ui->radioButtonScreencastArea->isChecked() == true ) {
         QString top = QString::number( vkRegionChoise->getYRecordArea() );
         QString left = QString::number( vkRegionChoise->getXRecordArea() );
-        int int_right = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 2, 2 ).split( "=" ).at( 1 ).toInt() - vkRegionChoise->getWidth() - vkRegionChoise->getXRecordArea();
+        int int_right = ui->comboBoxScreencastScreenArea->currentText().section( " ", 2, 2 ).toInt() - vkRegionChoise->getWidth() - vkRegionChoise->getXRecordArea();
         QString right = QString::number( int_right );
-        int int_bottom = ui->comboBoxScreencastScreenArea->currentData().toString().section( " ", 3, 3 ).split( "=" ).at( 1 ).toInt() - vkRegionChoise->getHeight() - vkRegionChoise->getYRecordArea();
+        int int_bottom = ui->comboBoxScreencastScreenArea->currentText().section( " ", 4, 4 ).toInt() - vkRegionChoise->getHeight() - vkRegionChoise->getYRecordArea();
         QString bottom = QString::number( int_bottom );
         VK_PipelineList << QString( "videocrop " ) + "top=" + top + " " + "left=" + left + " " + "right=" + right + " " + "bottom=" + bottom;
     }
