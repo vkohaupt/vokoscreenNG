@@ -24,37 +24,32 @@
 #include "global.h"
 
 #include <QDebug>
+#include <QGuiApplication>
+#include <QScreen>
+#include <QToolButton>
 
-QvkScreenManagerWindows::QvkScreenManagerWindows()
-{
-}
-
-
-QvkScreenManagerWindows::~QvkScreenManagerWindows()
-{
-}
-
-
-QStringList QvkScreenManagerWindows::get_all_Screen_devices()
+QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
 {
     GstDeviceMonitor *monitor;
     GstCaps *caps;
     GstDevice *device;
     GList *iterator = Q_NULLPTR;
     GList *list = Q_NULLPTR;
-    QStringList stringList;
 
     monitor = gst_device_monitor_new();
     caps = gst_caps_new_empty_simple( "video/x-raw" );
     gst_device_monitor_add_filter( monitor, "Source/Monitor", caps );
     bool isMonitorStart = gst_device_monitor_start( monitor );
 
+    listStructure.clear();
+    listDevices.clear();
     list = gst_device_monitor_get_devices( monitor );
     for ( iterator = list; iterator; iterator = iterator->next ) {
         device = (GstDevice*)iterator->data;
 
         // Ab hier properties
         GstStructure *structure = gst_device_get_properties( device );
+        listStructure = ( QStringList() << gst_structure_to_string( structure ) );
 
         QString device_name = QString( gst_structure_get_string( structure, "device.name" ) );
         device_name = device_name.replace( "\\", "").replace( ".", "" );
@@ -63,14 +58,64 @@ QStringList QvkScreenManagerWindows::get_all_Screen_devices()
         gst_structure_get_uint64( structure, "device.hmonitor", &value );
         QString device_handle = QString::number( value );
 
-        stringList << device_name + ":::" + device_handle;
-
-        qDebug().noquote() << global::nameOutput << gst_structure_to_string( structure );
+        gst_structure_free( structure );
+        listDevices << device_name + ":::" + device_handle;
     }
 
     if ( isMonitorStart == true ) {
         gst_device_monitor_stop( monitor );
     }
 
-    return stringList;
+    QToolButton *toolButton = parent->findChild<QToolButton *>("toolButton_screen_name");
+    if ( toolButton != NULL ) {
+        connect( toolButton, SIGNAL( toggled( bool ) ), this, SLOT( slot_toolButton_toggled( bool ) ) );
+    }
+}
+
+
+QvkScreenManagerWindows::~QvkScreenManagerWindows()
+{
+}
+
+
+QStringList QvkScreenManagerWindows::get_all_screen_devices()
+{
+    return listDevices;
+}
+
+
+QStringList QvkScreenManagerWindows::get_screen_structure()
+{
+    return listStructure;
+}
+
+
+void QvkScreenManagerWindows::slot_toolButton_toggled( bool checked )
+{
+    QList<QScreen *> screenList = QGuiApplication::screens();
+
+    if ( checked == true ) {
+        labelList.clear();
+        for ( int i = 0; i < screenList.count(); i++ ) {
+            QLabel *label = new QLabel;
+            label->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
+            label->resize( 400, 200 );
+            label->move( screenList.at(i)->geometry().x(), screenList.at(i)->geometry().y() );
+
+            QFont font;
+            font.setPixelSize( 50 );
+            label->setFont( font );
+            label->setStyleSheet( "QLabel { background-color : orange; color : black; }" );
+
+            label->setAlignment( Qt::AlignCenter );
+            label->setText( screenList.at(i)->name().remove( "." ).remove( '\\' ) );
+            label->show();
+            labelList << label;
+        }
+    } else {
+        for ( int i = 0; i < labelList.count(); i++ ) {
+            labelList.at(i)->close();
+            labelList.at(i)->deleteLater();
+        }
+    }
 }

@@ -26,21 +26,30 @@
 #include <gst/gst.h>
 
 #include <QObject>
+#include <QStringList>
+#include <QLabel>
+#include <QList>
+#include <QMainWindow>
 
 class QvkScreenManagerWindows: public QObject
 {
     Q_OBJECT
 
 public:
-    QvkScreenManagerWindows();
+    QvkScreenManagerWindows( QMainWindow *parent );
     virtual ~QvkScreenManagerWindows();
+    QStringList get_screen_structure();
 
     
 public slots:
-    QStringList get_all_Screen_devices();
+    QStringList get_all_screen_devices();
+    void slot_toolButton_toggled( bool checked );
 
 
 private:
+    QStringList listStructure;
+    QStringList listDevices;
+    QList<QLabel *> labelList;
 
 
 private slots:

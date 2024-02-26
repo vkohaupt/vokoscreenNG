@@ -552,6 +552,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkContainerController = new QvkContainerController( ui );
     vkContainerController->init( isFlatpak );
 
+#ifdef Q_OS_UNIX
     QvkScreenManager *screenManager = new QvkScreenManager( this );
     // Fullscreen
     connect( screenManager, SIGNAL( signal_clear_widget() ),                          ui->comboBoxScreencastScreen, SLOT( clear() ) );
@@ -561,11 +562,22 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( screenManager, SIGNAL( signal_screen_count_changed( QString, QString) ), this,                             SLOT( slot_screenCountChangedArea( QString, QString ) ) );
     connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged( int) ),   vkRegionChoise, SLOT( slot_init() ) );
     screenManager->init();
+#endif
 
 #ifdef Q_OS_WIN
-    QvkScreenManagerWindows *screenManagerWindows = new QvkScreenManagerWindows();
-    qDebug().noquote() << global::nameOutput << screenManagerWindows->get_all_Screen_devices();
+    // Siehe auch Zeile 1408 und weitere
+    // siehe auch Zeile 1012 und weitere
+    QvkScreenManagerWindows *screenManagerWindows = new QvkScreenManagerWindows( this );
     qDebug();
+    qDebug().noquote() << global::nameOutput << screenManagerWindows->get_screen_structure();
+    qDebug();
+
+    QStringList allScreenDevices = screenManagerWindows->get_all_screen_devices();
+    for( int i = 0; i < allScreenDevices.count(); i++ ) {
+        ui->comboBoxScreencastScreen->addItem( allScreenDevices.at(i).section( ":::", 0, 0 ), allScreenDevices.at(i).section( ":::", 1, 1 ) );
+        ui->comboBoxScreencastScreenArea->addItem( allScreenDevices.at(i).section( ":::", 0, 0 ), allScreenDevices.at(i).section( ":::", 1, 1 ) );
+    }
+
 #endif
 
     // *****************Begin Camera *********************************
@@ -1000,10 +1012,10 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 #endif
 
         vkSettings.saveAll( ui, this, false );
-        vkSettings.saveAreaScreencast( vkRegionChoise->getXRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
-                                       vkRegionChoise->getYRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
-                                       vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
-                                       vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
+//        vkSettings.saveAreaScreencast( vkRegionChoise->getXRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
+//                                       vkRegionChoise->getYRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
+//                                       vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
+//                                       vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
         vkSettings.saveSystrayAlternative( vkSystrayAlternative->vkSystrayAlternativeWindow->x(),
                                            vkSystrayAlternative->vkSystrayAlternativeWindow->y() );
         vkSettings.savePlayerPathOpenFile( vkPlayerController->pathOpenFile );
@@ -1364,7 +1376,7 @@ QString QvkMainWindow::VK_getXimagesrc()
 }
 #endif
 
-
+/*
 #ifdef Q_OS_WIN
 QString QvkMainWindow::VK_getXimagesrc()
 {
@@ -1396,6 +1408,40 @@ QString QvkMainWindow::VK_getXimagesrc()
     return value;
 }
 #endif
+*/
+
+
+#ifdef Q_OS_WIN
+QString QvkMainWindow::VK_getXimagesrc()
+{
+    QString value;
+    QString showPointer = "true";
+
+    if( ui->checkBoxMouseCursorOnOff->checkState() == Qt::Checked ) {
+        showPointer = "false";
+    }
+
+    if( ui->radioButtonScreencastFullscreen->isChecked() == true ) {
+        QStringList stringList;
+        stringList << "d3d11screencapturesrc"
+                   << "monitor-handle=" + ui->comboBoxScreencastScreen->currentData().toString()
+                   << "show-cursor=" + showPointer;
+        value = stringList.join( " " );
+    }
+
+    if ( ui->radioButtonScreencastArea->isChecked() == true ) {
+        int screenNumber = ( ui->comboBoxScreencastScreenArea->currentIndex() );
+        QStringList stringList;
+        stringList << "gdiscreencapsrc"
+                   << "monitor=" + QString::number( screenNumber )
+                   << "cursor=" + showPointer;
+        value = stringList.join( " " );
+    }
+
+    return value;
+}
+#endif
+
 
 
 QString QvkMainWindow::VK_getCapsFilter()
