@@ -58,8 +58,22 @@ QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
         gst_structure_get_uint64( structure, "device.hmonitor", &value );
         QString device_handle = QString::number( value );
 
+        QString device_width;
+        QString device_height;
+        QList<QScreen *> screen = QGuiApplication::screens();
+        if ( !screen.empty() ) {
+            for ( int i = 0; i < screen.size(); i++ ) {
+                QString name = screen.at(i)->name();
+                name = name.replace( "\\", "").replace( ".", "" );
+                if ( name == device_name ) {
+                    device_width = QString::number( screen.at(i)->geometry().width() );
+                    device_height = QString::number( screen.at(i)->geometry().height() );
+                }
+            }
+        }
+
         gst_structure_free( structure );
-        listDevices << device_name + ":::" + device_handle;
+        listDevices << device_name + ":::" + device_handle + ":::" + device_width + ":::" + device_height;
     }
 
     if ( isMonitorStart == true ) {

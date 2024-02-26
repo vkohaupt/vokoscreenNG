@@ -577,8 +577,12 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     QStringList allScreenDevices = screenManagerWindows->get_all_screen_devices();
     for( int i = 0; i < allScreenDevices.count(); i++ ) {
-        ui->comboBoxScreencastScreen->addItem( allScreenDevices.at(i).section( ":::", 0, 0 ), allScreenDevices.at(i).section( ":::", 1, 1 ) );
-        ui->comboBoxScreencastScreenArea->addItem( allScreenDevices.at(i).section( ":::", 0, 0 ), allScreenDevices.at(i).section( ":::", 1, 1 ) );
+        QString name = allScreenDevices.at(i).section( ":::", 0, 0 );
+        QString handle = allScreenDevices.at(i).section( ":::", 1, 1 );
+        QString width = allScreenDevices.at(i).section( ":::", 2, 2 );
+        QString height = allScreenDevices.at(i).section( ":::", 3, 3 );
+        ui->comboBoxScreencastScreen->addItem( name + " : " + width + " x " + height, handle );
+        ui->comboBoxScreencastScreenArea->addItem( name + " : " + width + " x " + height, handle );
     }
 
     connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged( int) ),   vkRegionChoise, SLOT( slot_init() ) );
