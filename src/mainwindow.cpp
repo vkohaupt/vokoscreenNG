@@ -1384,40 +1384,6 @@ QString QvkMainWindow::VK_getXimagesrc()
 }
 #endif
 
-/*
-#ifdef Q_OS_WIN
-QString QvkMainWindow::VK_getXimagesrc()
-{
-    QString value;
-    QString showPointer = "true";
-
-    if( ui->checkBoxMouseCursorOnOff->checkState() == Qt::Checked ) {
-        showPointer = "false";
-    }
-
-    if( ui->radioButtonScreencastFullscreen->isChecked() == true ) {
-        int screenNumber = ( ui->comboBoxScreencastScreen->currentIndex() );
-        QStringList stringList;
-        stringList << "gdiscreencapsrc"
-                   << "monitor=" + QString::number( screenNumber )
-                   << "cursor=" + showPointer;
-        value = stringList.join( " " );
-    }
-
-    if ( ui->radioButtonScreencastArea->isChecked() == true ) {
-        int screenNumber = ( ui->comboBoxScreencastScreenArea->currentIndex() );
-        QStringList stringList;
-        stringList << "gdiscreencapsrc"
-                   << "monitor=" + QString::number( screenNumber )
-                   << "cursor=" + showPointer;
-        value = stringList.join( " " );
-    }
-
-    return value;
-}
-#endif
-*/
-
 
 #ifdef Q_OS_WIN
 QString QvkMainWindow::VK_getXimagesrc()
