@@ -567,7 +567,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #ifdef Q_OS_WIN
     // siehe auch Zeile 1012 und weitere
     // Siehe auch Zeile 1408 und weitere
-    // Siehe auch Zeile 1867 und weitere
+    // Siehe auch Zeile 1876 und weitere
     QvkScreenManagerWindows *screenManagerWindows = new QvkScreenManagerWindows( this );
     qDebug();
     for ( int i = 0; i < screenManagerWindows->get_screen_structure().count(); i++ ) {
