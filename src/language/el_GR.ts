@@ -729,10 +729,6 @@
         <source>Camera</source>
         <translation>Κάμερα</translation>
     </message>
-    <message>
-        <source>Snapshot</source>
-        <translation>Στιγμιότυπο</translation>
-    </message>
 </context>
 <context>
     <name>license</name>

@@ -114,7 +114,7 @@ echo =======================
 # language packs write into translations.pri
 ############################################
 array='TRANSLATIONS += '$( ls language/*.ts )
-echo $array >> translations.pri
+echo $array > translations.pri
 
 
 echo ==========

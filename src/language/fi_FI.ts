@@ -729,10 +729,6 @@
         <source>Camera</source>
         <translation>Kamera</translation>
     </message>
-    <message>
-        <source>Snapshot</source>
-        <translation>Valokuva</translation>
-    </message>
 </context>
 <context>
     <name>license</name>

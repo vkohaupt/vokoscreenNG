@@ -732,10 +732,6 @@ Sekund počkej před záznamem??</translation>
         <source>Camera</source>
         <translation>Kamera</translation>
     </message>
-    <message>
-        <source>Snapshot</source>
-        <translation>Momentka</translation>
-    </message>
 </context>
 <context>
     <name>license</name>

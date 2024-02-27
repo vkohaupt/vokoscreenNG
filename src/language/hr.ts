@@ -734,10 +734,6 @@
         <source>Camera</source>
         <translation>Kamera</translation>
     </message>
-    <message>
-        <source>Snapshot</source>
-        <translation>Snimak</translation>
-    </message>
 </context>
 <context>
     <name>license</name>

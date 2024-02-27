@@ -729,10 +729,6 @@
         <source>Camera</source>
         <translation>Камера</translation>
     </message>
-    <message>
-        <source>Snapshot</source>
-        <translation>Снимок</translation>
-    </message>
 </context>
 <context>
     <name>license</name>

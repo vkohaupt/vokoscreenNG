@@ -729,10 +729,6 @@
         <source>Camera</source>
         <translation>攝影機</translation>
     </message>
-    <message>
-        <source>Snapshot</source>
-        <translation>截圖</translation>
-    </message>
 </context>
 <context>
     <name>license</name>

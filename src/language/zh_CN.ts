@@ -729,10 +729,6 @@
         <source>Camera</source>
         <translation>摄像头</translation>
     </message>
-    <message>
-        <source>Snapshot</source>
-        <translation>截屏</translation>
-    </message>
 </context>
 <context>
     <name>license</name>
