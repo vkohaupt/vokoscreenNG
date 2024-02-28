@@ -37,7 +37,7 @@ QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller( QString vk_pathWithSetti
     ui = ui_mainwindow;
     pathWithSettingsFilename = vk_pathWithSettingsFilename;
 #ifdef Q_OS_WIN
-    libopenh264_filename = "libopenh264-6.dll";
+    libopenh264_filename = "openh264-6.dll";
     downloadFile = "http://ciscobinary.openh264.org/openh264-2.4.0-win64.dll.bz2";
 #endif
 
