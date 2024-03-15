@@ -604,10 +604,7 @@
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Vteřin počkej před nahráváním  - The best by me.
-Vteřin počkat před nahráváním??
-Sekund počkej před natáčením??
-Sekund počkej před záznamem??</translation>
+        <translation>Vteřin počkej před nahráváním</translation>
     </message>
     <message>
         <source>Window</source>

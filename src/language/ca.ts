@@ -484,15 +484,15 @@
     </message>
     <message>
         <source>CTRL+SHIFT+F10</source>
-        <translation>Ctrl+Majús.+F10</translation>
+        <translation>Ctrl+Maj.+F10</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F11</source>
-        <translation>Ctrl+Majús.+F11</translation>
+        <translation>Ctrl+Maj.+F11</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F12</source>
-        <translation>Ctrl+Majús.+F12</translation>
+        <translation>Ctrl+Maj.+F12</translation>
     </message>
     <message>
         <source>Play last record</source>
@@ -504,7 +504,7 @@
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
-        <translation>Ctrl+Majús.+F8</translation>
+        <translation>Ctrl+Maj.+F8</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
