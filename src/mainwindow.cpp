@@ -1020,10 +1020,10 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
 #endif
 
         vkSettings.saveAll( ui, this, false );
-//        vkSettings.saveAreaScreencast( vkRegionChoise->getXRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
-//                                       vkRegionChoise->getYRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
-//                                       vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
-//                                       vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
+        vkSettings.saveAreaScreencast( vkRegionChoise->getXRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
+                                       vkRegionChoise->getYRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
+                                       vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
+                                       vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
         vkSettings.saveSystrayAlternative( vkSystrayAlternative->vkSystrayAlternativeWindow->x(),
                                            vkSystrayAlternative->vkSystrayAlternativeWindow->y() );
         vkSettings.savePlayerPathOpenFile( vkPlayerController->pathOpenFile );
