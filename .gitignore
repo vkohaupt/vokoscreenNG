@@ -33,6 +33,9 @@ Makefile
 ui_*.h
 *.qm
 
+# javascript
+*.json
+
 # Linux/Unixes
 .*
 !.tx
