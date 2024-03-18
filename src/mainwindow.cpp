@@ -423,12 +423,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButton_log_openfolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_logFolder() ) );
 
     // Tab 1 Screen
-#ifdef Q_OS_WIN
-    ui->radioButtonScreencastWindow->setEnabled( false );
-    ui->radioButtonScreencastWindow->setVisible( false );
-    ui->help_screencast_window->setVisible( false );
-#endif
-
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled( bool ) ) );
 
@@ -575,6 +569,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         qDebug();
     }
 
+    connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged( int) ),   vkRegionChoise, SLOT( slot_init() ) );
+
     QStringList allScreenDevices = screenManagerWindows->get_all_screen_devices();
     for( int i = 0; i < allScreenDevices.count(); i++ ) {
         QString name = allScreenDevices.at(i).section( ":::", 0, 0 );
@@ -584,8 +580,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->comboBoxScreencastScreen->addItem( name + " : " + width + " x " + height, handle );
         ui->comboBoxScreencastScreenArea->addItem( name + " : " + width + " x " + height, handle );
     }
-
-    connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged( int) ),   vkRegionChoise, SLOT( slot_init() ) );
 #endif
 
     // *****************Begin Camera *********************************
@@ -715,6 +709,72 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
+}
+
+void QvkMainWindow::closeEvent( QCloseEvent *event )
+{
+    Q_UNUSED(event);
+
+    qDebug();
+    qDebug().noquote() << global::nameOutput << "QvkMainWindow::closeEvent Begin close";
+
+#ifdef Q_OS_WIN
+    if ( vkCiscoOpenh264Controller->isShowCiscoFinishDialog == false )
+    {
+#endif
+
+        vkSettings.saveAll( ui, this, false );
+        vkSettings.saveAreaScreencast( vkRegionChoise->getXRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
+                                       vkRegionChoise->getYRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
+                                       vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
+                                       vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio()
+                                     );
+        vkSettings.saveSystrayAlternative( vkSystrayAlternative->vkSystrayAlternativeWindow->x(),
+                                           vkSystrayAlternative->vkSystrayAlternativeWindow->y() );
+        vkSettings.savePlayerPathOpenFile( vkPlayerController->pathOpenFile );
+        vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
+        vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget->getColor() );
+
+#ifdef Q_OS_UNIX
+        for ( int index = 0; index < vkCameraController->cameraSingleList.count(); index++ ) {
+            vkSettings.saveCamera( index,
+                                  vkCameraController->cameraSingleList.at(index)->vkCameraWindow->geometry().x(),
+                                  vkCameraController->cameraSingleList.at(index)->vkCameraWindow->geometry().y() );
+        }
+#endif
+#ifdef Q_OS_WIN
+        for ( int index = 0; index < vkCameraController->cameraSingleList.count(); index++ ) {
+            vkSettings.saveCamera( index,
+                                  vkCameraController->cameraSingleList.at(index)->vkCameraWindow->pos().x(),
+                                  vkCameraController->cameraSingleList.at(index)->vkCameraWindow->pos().y() );
+        }
+#endif
+
+#ifdef Q_OS_WIN
+    }
+#endif
+
+    if ( vkShowClick->vkSpezialCheckbox->isChecked() == true ) {
+        emit vkShowClick->vkSpezialCheckbox->signal_clicked( false );
+    }
+
+    emit signal_close();
+
+#ifdef Q_OS_UNIX
+    vkHalo->vkHaloWindow->close();
+    vkMagnifierController->vkMagnifier->close();
+#endif
+
+    QList<QCheckBox *> listCheckBox = ui->centralWidget->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ ) {
+        if ( listCheckBox.at(i)->objectName().contains( "checkBoxCameraOnOff-" ) ) {
+            if ( listCheckBox.at(i)->isChecked() == true ) {
+                listCheckBox.at(i)->click();
+            }
+        }
+    }
+
+    qDebug().noquote() << global::nameOutput << "QvkMainWindow::closeEvent Clean closed";
 }
 
 
@@ -1007,72 +1067,6 @@ void QvkMainWindow::slot_setMaxFPS( int index )
 }
 
 
-void QvkMainWindow::closeEvent( QCloseEvent *event )
-{
-    Q_UNUSED(event);
-
-    qDebug();
-    qDebug().noquote() << global::nameOutput << "QvkMainWindow::closeEvent Begin close";
-
-#ifdef Q_OS_WIN
-    if ( vkCiscoOpenh264Controller->isShowCiscoFinishDialog == false )
-    {
-#endif
-
-        vkSettings.saveAll( ui, this, false );
-        vkSettings.saveAreaScreencast( vkRegionChoise->getXRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
-                                       vkRegionChoise->getYRecordArea() / vkRegionChoise->screen->devicePixelRatio(),
-                                       vkRegionChoise->getWidth() / vkRegionChoise->screen->devicePixelRatio(),
-                                       vkRegionChoise->getHeight() / vkRegionChoise->screen->devicePixelRatio() );
-        vkSettings.saveSystrayAlternative( vkSystrayAlternative->vkSystrayAlternativeWindow->x(),
-                                           vkSystrayAlternative->vkSystrayAlternativeWindow->y() );
-        vkSettings.savePlayerPathOpenFile( vkPlayerController->pathOpenFile );
-        vkSettings.saveHaloColor( vkHalo->vkHaloPreviewWidget->getColor() );
-        vkSettings.saveShowclickColor( vkShowClick->vkPreviewWidget->getColor() );
-
-        #ifdef Q_OS_UNIX
-        for ( int index = 0; index < vkCameraController->cameraSingleList.count(); index++ ) {
-            vkSettings.saveCamera( index,
-                                   vkCameraController->cameraSingleList.at(index)->vkCameraWindow->geometry().x(),
-                                   vkCameraController->cameraSingleList.at(index)->vkCameraWindow->geometry().y() );
-        }
-        #endif
-        #ifdef Q_OS_WIN
-        for ( int index = 0; index < vkCameraController->cameraSingleList.count(); index++ ) {
-            vkSettings.saveCamera( index,
-                                   vkCameraController->cameraSingleList.at(index)->vkCameraWindow->pos().x(),
-                                   vkCameraController->cameraSingleList.at(index)->vkCameraWindow->pos().y() );
-        }
-        #endif
-
-#ifdef Q_OS_WIN
-    }
-#endif
-
-    if ( vkShowClick->vkSpezialCheckbox->isChecked() == true ) {
-        emit vkShowClick->vkSpezialCheckbox->signal_clicked( false );
-    }
-
-    emit signal_close();
-
-#ifdef Q_OS_UNIX
-    vkHalo->vkHaloWindow->close();
-    vkMagnifierController->vkMagnifier->close();
-#endif
-
-    QList<QCheckBox *> listCheckBox = ui->centralWidget->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listCheckBox.count(); i++ ) {
-        if ( listCheckBox.at(i)->objectName().contains( "checkBoxCameraOnOff-" ) ) {
-           if ( listCheckBox.at(i)->isChecked() == true ) {
-               listCheckBox.at(i)->click();
-           }
-        }
-    }
-
-    qDebug().noquote() << global::nameOutput << "QvkMainWindow::closeEvent Clean closed";
-}
-
-
 /*
  * CountDown
  */
@@ -1145,7 +1139,6 @@ void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
     }
 #endif
 }
-
 
 
 void QvkMainWindow::slot_framesReset()
@@ -1399,6 +1392,14 @@ QString QvkMainWindow::VK_getXimagesrc()
         QStringList stringList;
         stringList << "d3d11screencapturesrc"
                    << "monitor-handle=" + ui->comboBoxScreencastScreen->currentData().toString()
+                   << "show-cursor=" + showPointer;
+        value = stringList.join( " " );
+    }
+
+    if ( ui->radioButtonScreencastWindow->isChecked() == true ) {
+        QStringList stringList;
+        stringList << "d3d11screencapturesrc"
+                   << "window-handle=" + QString::number( vkWinInfo->getWinID() )
                    << "show-cursor=" + showPointer;
         value = stringList.join( " " );
     }

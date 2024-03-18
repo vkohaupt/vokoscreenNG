@@ -1551,7 +1551,6 @@ qreal QvkRegionChoise::getXRecordArea()
 {
     qreal xReal = ( frame_X + framePenWidth/2 ) * screen->devicePixelRatio();
     int xInt = static_cast<int>( ( frame_X + framePenWidth/2 ) * screen->devicePixelRatio() );
-
     if ( xReal > xInt ) {
         xReal = xInt + 1;
     }
