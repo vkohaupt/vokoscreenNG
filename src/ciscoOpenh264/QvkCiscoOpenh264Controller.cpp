@@ -41,6 +41,7 @@ QvkCiscoOpenh264Controller::QvkCiscoOpenh264Controller( QString vk_pathWithSetti
 // !!!!!!!! Die Versionnummer kann man in Erfahrung bringen in dem man die GStreamer
 // !!!!!!!! openh264-6.dll in ein Texteditor lädt und darin nach der Versionsnummer
 // !!!!!!!! ausschau hält.
+// !!!!!!!! Oder man sucht in der gstopenh264.dll nach "version:", dahinter steht die Versionsnummer.
 #ifdef Q_OS_WIN
     libopenh264_filename = "openh264-6.dll";
     downloadFile = "http://ciscobinary.openh264.org/openh264-2.3.0-win64.dll.bz2";
