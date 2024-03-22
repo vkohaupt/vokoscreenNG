@@ -39,7 +39,6 @@ public:
     int y;
     int Width;
     int Height;
-    QvkCountdownWindow *vkCountdownWindow;
 
     
 public slots:
@@ -49,6 +48,7 @@ private:
     void createCountdownWindow();
     QTimer *timer;
     QTimer *animationTimer;
+    QvkCountdownWindow *vkCountdownWindow;
 
 
 private slots:

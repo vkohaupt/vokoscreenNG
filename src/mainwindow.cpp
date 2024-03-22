@@ -35,8 +35,10 @@
 #include <QComboBox>
 #include <QCheckBox>
 #include <QList>
-#include "mainwindow.h"
+#include <QScreen>
+#include <QGuiApplication>
 
+#include "mainwindow.h"
 #include "ui_formMainWindow.h"
 #include "QvkInformation.h"
 #include "global.h"
@@ -46,11 +48,6 @@
 #include "QvkVirtual.h"
 #include "QvkSnapshot.h"
 #include "QvkPadsAndCaps.h"
-
-
-// hinzugefügt
-#include <QScreen>
-#include <QGuiApplication>
 
 #ifdef Q_OS_UNIX
   #include <pulse/pulseaudio.h>
