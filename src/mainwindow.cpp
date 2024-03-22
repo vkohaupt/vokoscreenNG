@@ -47,6 +47,11 @@
 #include "QvkSnapshot.h"
 #include "QvkPadsAndCaps.h"
 
+
+// hinzugefügt
+#include <QScreen>
+#include <QGuiApplication>
+
 #ifdef Q_OS_UNIX
   #include <pulse/pulseaudio.h>
   #include "QvkComposite.h"
@@ -1101,41 +1106,48 @@ void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
 #endif
 
 #ifdef Q_OS_WIN
-    // Unter Windows muß der Index des Displays zur Anzege des Countdowns in unsorierter Reihenfolge bereitgestellt werden.
     if ( ui->radioButtonScreencastFullscreen->isChecked() == true ) {
         int index = 0;
         QString nameDisplay = ui->comboBoxScreencastScreen->currentText().section( ":", 0, 0 ).trimmed();
-        QList<QScreen *> screenList = QGuiApplication::screens(); // unsortiert
-        for ( int i=0; i < screenList.count(); i++ ) {
-            QString nameList = screenList.at(i)->name().remove( "." ).remove( "\\" ) ;
-            if ( nameDisplay == nameList )
-            {
+        QList<QScreen *> screenList = QGuiApplication::screens();
+        for ( int i = 0; i < screenList.count(); i++ ) {
+            QScreen *selectedScreen = screenList.at(i);
+            QString nameScreen = selectedScreen->name().remove( "." ).remove( "\\" ) ;
+            if ( nameDisplay == nameScreen ) {
                 index = i;
             }
         }
+        
+        QScreen *selectedScreen = screenList.at(index);
+        int left = static_cast<int>( selectedScreen->geometry().left() * selectedScreen->devicePixelRatio() );
+        int top = static_cast<int>( selectedScreen->geometry().top() * selectedScreen->devicePixelRatio() );
+        vkCountdown->x = left + selectedScreen->geometry().width() / 2 - ( vkCountdown->Width / 2 );
+        vkCountdown->y = top + selectedScreen->geometry().height() / 2 - ( vkCountdown->Height / 2 );
+    }
 
-        int left = static_cast<int>( screenList.at( index )->geometry().left() * screenList.at( index )->devicePixelRatio() );
-        int top = static_cast<int>( screenList.at( index )->geometry().top() * screenList.at( index )->devicePixelRatio() );
-        vkCountdown->x = left + screenList.at( index )->geometry().width() / 2 - ( vkCountdown->Width / 2 );
-        vkCountdown->y = top + screenList.at( index )->geometry().height() / 2 - ( vkCountdown->Height / 2 );
+    if ( ui->radioButtonScreencastWindow->isChecked() == true ) {
+        QScreen *screen = QGuiApplication::primaryScreen();
+        vkCountdown->x = ( screen->geometry().width() / 2 ) - ( vkCountdown->Width / 2 );
+        vkCountdown->y = ( screen->geometry().height() / 2 ) - ( vkCountdown->Height / 2 );
     }
 
     if ( ui->radioButtonScreencastArea->isChecked() == true ) {
         int index = 0;
         QString nameDisplay = ui->comboBoxScreencastScreenArea->currentText().section( ":", 0, 0 ).trimmed();
-        QList<QScreen *> screenList = QGuiApplication::screens(); // unsortiert
-        for ( int i=0; i < screenList.count(); i++ ) {
-            QString nameList = screenList.at(i)->name().remove( "." ).remove( "\\" ) ;
-            if ( nameDisplay == nameList )
-            {
+        QList<QScreen *> screenList = QGuiApplication::screens();
+        for ( int i = 0; i < screenList.count(); i++ ) {
+            QScreen *selectedScreen = screenList.at(i);
+            QString nameScreen = selectedScreen->name().remove( "." ).remove( "\\" ) ;
+            if ( nameDisplay == nameScreen ) {
                 index = i;
             }
         }
-        int left = static_cast<int>( screenList.at( index )->geometry().left() * screenList.at( index )->devicePixelRatio() );
-        int top = static_cast<int>( screenList.at( index )->geometry().top() * screenList.at( index )->devicePixelRatio() );
 
-        vkCountdown->x = left + screenList.at( index )->geometry().width() / 2 - ( vkCountdown->Width / 2 );
-        vkCountdown->y = top + screenList.at( index )->geometry().height() / 2 - ( vkCountdown->Height / 2 );
+        QScreen *selectedScreen = screenList.at(index);
+        int left = static_cast<int>( selectedScreen->geometry().left() * selectedScreen->devicePixelRatio() );
+        int top = static_cast<int>( selectedScreen->geometry().top() * selectedScreen->devicePixelRatio() );
+        vkCountdown->x = left + selectedScreen->geometry().width() / 2 - ( vkCountdown->Width / 2 );
+        vkCountdown->y = top + selectedScreen->geometry().height() / 2 - ( vkCountdown->Height / 2 );
     }
 #endif
 }
