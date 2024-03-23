@@ -156,6 +156,7 @@ void QvkRegionChoise::paintEvent( QPaintEvent *event )
         QPainter painterPixmap;
         painterPixmap.begin( &pixmap );
         painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
+        painterPixmap.setRenderHint( QPainter::Antialiasing, true );
         HandleTopLeft( painterPixmap );
         HandleTopMiddle( painterPixmap );
         HandleTopRight( painterPixmap );
@@ -185,6 +186,7 @@ void QvkRegionChoise::paintEvent( QPaintEvent *event )
         QPainter painterPixmap;
         painterPixmap.begin( &pixmap );
         painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
+        painterPixmap.setRenderHint( QPainter::Antialiasing, true );
         HandleRecord( painterPixmap,
                       frame_X - radius + penHalf,
                       frame_Y - radius + penHalf,
