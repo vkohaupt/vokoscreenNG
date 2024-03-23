@@ -27,8 +27,9 @@
 #include <QFontDatabase>
 #include <QFont>
 #include <QDialogButtonBox>
+#include <QDialog>
+#include <QAbstractButton>
 
-//QvkLicenses::QvkLicenses( Ui_formMainWindow *ui_mainwindow ) : ui( new Ui::license )
 QvkLicenses::QvkLicenses( QPushButton *pushButton ) : ui( new Ui::license )
 {
     ui->setupUi( this );
@@ -39,6 +40,12 @@ QvkLicenses::QvkLicenses( QPushButton *pushButton ) : ui( new Ui::license )
 
     connect( pushButton, SIGNAL( clicked( bool ) ), this, SLOT( show() ) );
     connect( ui->pushButtonClose, SIGNAL( clicked( bool ) ), this, SLOT( close() ) );
+
+    // Is needed only for the translated text
+    QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Close, this);
+    buttonBox->hide();
+    QList<QPushButton *> list = buttonBox->findChildren<QPushButton *>();
+    ui->pushButtonClose->setText( list.at(0)->text() );
 
     ui->label_dummy_1->hide();
     ui->label_dummy_2->hide();

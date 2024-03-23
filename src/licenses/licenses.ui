@@ -25,7 +25,7 @@
         <x>0</x>
         <y>0</y>
         <width>780</width>
-        <height>544</height>
+        <height>548</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -98,24 +98,12 @@
        <property name="text">
         <string notr="true"/>
        </property>
-       <property name="icon">
-        <iconset resource="../screencast.qrc">
-         <normaloff>:/pictures/screencast/exit.png</normaloff>:/pictures/screencast/exit.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>32</width>
-         <height>22</height>
-        </size>
-       </property>
       </widget>
      </item>
     </layout>
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../screencast.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
