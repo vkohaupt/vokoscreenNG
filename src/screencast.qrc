@@ -1,7 +1,6 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
 <file>pictures/camera/camera.png</file>
-<file>pictures/camera/on.png</file>
 <file>pictures/camera/window-circle-off.png</file>
 <file>pictures/camera/window-circle-on.png</file>
 <file>pictures/camera/window-ellipse-off.png</file>
