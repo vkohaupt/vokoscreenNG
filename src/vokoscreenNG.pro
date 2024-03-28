@@ -156,7 +156,7 @@ win32:include(playerGST/windows/playerWindows.pri)
 unix:include(playerGST/linux/playerLinux.pri)
 
 # screenManager
-include(screenManager/screenManager.pri)
+unix:include(screenManager/screenManager.pri)
 win32:include(screenManagerWindows/screenManagerWindows.pri)
 
 # licenses
