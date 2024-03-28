@@ -42,7 +42,6 @@
 #include "ui_formMainWindow.h"
 #include "QvkInformation.h"
 #include "global.h"
-#include "QvkScreenManager.h"
 #include "QvkImageFromTabs.h"
 #include "qvkdirdialog.h"
 #include "QvkVirtual.h"
@@ -50,6 +49,7 @@
 #include "QvkPadsAndCaps.h"
 
 #ifdef Q_OS_UNIX
+  #include "QvkScreenManager.h"
   #include <pulse/pulseaudio.h>
   #include "QvkComposite.h"
 #endif
@@ -224,7 +224,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderGstDebugLevel->show();
 
     vkSpezialCheckboxDarkMode = new QvkSpezialCheckbox();
-    connect( vkSpezialCheckboxDarkMode, SIGNAL( signal_clicked( bool ) ), this, SLOT( slot_darkMode( bool ) ) );
+    connect( vkSpezialCheckboxDarkMode, SIGNAL( signal_clicked(bool) ), this, SLOT( slot_darkMode(bool) ) );
     vkSpezialCheckboxDarkMode->setObjectName( "spezialCheckboxDarkMode" );
     vkSpezialCheckboxDarkMode->setMinimumHeight( 28 );
     vkSpezialCheckboxDarkMode->set_colorChecked( QColor( QString ( "#3DAEE9" ) ) );
@@ -237,7 +237,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->comboBox_shortcut_magnification->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 
     vklogController = new QvkLogController();
-    connect( vklogController, SIGNAL( signal_newLogText( QString ) ), this, SLOT( slot_textToGuiLog( QString ) ) );
+    connect( vklogController, SIGNAL( signal_newLogText(QString) ), this, SLOT( slot_textToGuiLog(QString) ) );
 
     setWindowTitle( global::name + " " + global::version );
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
@@ -263,7 +263,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkVirtual *vkVirtual = new QvkVirtual();
 
     QvkInformation *vkInformation = new QvkInformation( this, ui, sliderScreencastCountDown, sliderSecondWaitBeforeRecording );
-    connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
+    connect( this, SIGNAL( signal_newVideoFilename(QString) ), vkInformation, SLOT( slot_newVideoFilename(QString) ) );
 
     vkLimitDiskFreeSpace = new QvkLimitDiskFreeSpace( ui, sliderLimitOfFreeDiskSpace );
 
@@ -329,161 +329,161 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->toolButtonScreencast->click();
 
     // Bar for start, stop etc.
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonPause,       SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonContinue,    SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonPlay,        SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastFullscreen, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( slot_comboBoxScreencastScreenCountdown( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastWindow,     SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastArea,       SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxScreencastScreen,        SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelScreencastCountdownText,    SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), sliderScreencastCountDown, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameAudio,            SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelFrames,           SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameFrames,           SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelFormat,           SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxFormat,        SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->labelVideoCodec,       SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxVideoCodec,    SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this, SLOT( slot_IfStartAudioCodecWidgetsSetEnabled() ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoCodecx264,       SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoCodecOpenh264,   SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoCodecVp8,        SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoPath,        SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameLimitOfFreeDiskSpace, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameStartTime,        SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxStopRecordingAfter, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxMinimizedWhenRecordingStarts, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->checkBoxShowInSystray, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStart() ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setEnabled( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->pushButtonStart,       SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->pushButtonStop,        SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->pushButtonPause,       SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->pushButtonContinue,    SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->pushButtonPlay,        SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->radioButtonScreencastFullscreen, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this, SLOT( slot_comboBoxScreencastScreenCountdown(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->radioButtonScreencastWindow,     SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->radioButtonScreencastArea,       SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->comboBoxScreencastScreen,        SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->labelScreencastCountdownText,    SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), sliderScreencastCountDown, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameAudio,            SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->labelFrames,           SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameFrames,           SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->labelFormat,           SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->comboBoxFormat,        SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->labelVideoCodec,       SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->comboBoxVideoCodec,    SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this, SLOT( slot_IfStartAudioCodecWidgetsSetEnabled() ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameVideoCodecx264,       SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameVideoCodecOpenh264,   SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameVideoCodecVp8,        SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->checkBoxMouseCursorOnOff,SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameVideoPath,        SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameLimitOfFreeDiskSpace, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameStartTime,        SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->checkBoxStopRecordingAfter, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameStopRecordingAfter, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->checkBoxMinimizedWhenRecordingStarts, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->checkBoxShowInSystray, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this,                      SLOT( slot_preStart() ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->comboBoxScreencastScreenArea, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setEnabled(bool) ) );
 
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStop,        SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonStart,       SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonPause,       SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->pushButtonPlay,        SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastFullscreen, SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastWindow,     SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastArea,       SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxScreencastScreen,        SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelScreencastCountdownText,    SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), sliderScreencastCountDown, SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameAudio,            SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelFrames,           SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameFrames,           SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelFormat,           SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxFormat,        SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->labelVideoCodec,       SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxVideoCodec,    SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this, SLOT( slot_IfStopAudioCodecWidgetsSetDisabled() ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoCodecx264,      SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoCodecOpenh264,  SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoCodecVp8,       SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxMouseCursorOnOff,SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameVideoPath,        SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameLimitOfFreeDiskSpace, SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->frameStartTime,        SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxStopRecordingAfter, SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxMinimizedWhenRecordingStarts, SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->checkBoxShowInSystray, SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_preStop() ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,                      SLOT( slot_Stop() ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->pushButtonStop,        SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->pushButtonStart,       SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->pushButtonPause,       SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->pushButtonPlay,        SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->radioButtonScreencastFullscreen, SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->radioButtonScreencastWindow,     SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->radioButtonScreencastArea,       SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->comboBoxScreencastScreen,        SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->labelScreencastCountdownText,    SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), sliderScreencastCountDown, SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->frameAudio,            SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->labelFrames,           SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->frameFrames,           SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->labelFormat,           SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->comboBoxFormat,        SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->labelVideoCodec,       SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->comboBoxVideoCodec,    SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), this, SLOT( slot_IfStopAudioCodecWidgetsSetDisabled() ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->frameVideoCodecx264,      SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->frameVideoCodecOpenh264,  SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->frameVideoCodecVp8,       SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->checkBoxMouseCursorOnOff,SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->frameVideoPath,        SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->frameLimitOfFreeDiskSpace, SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->frameStartTime,        SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->checkBoxStopRecordingAfter, SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->checkBoxMinimizedWhenRecordingStarts, SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->checkBoxShowInSystray, SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), this,                      SLOT( slot_preStop() ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), this,                      SLOT( slot_Stop() ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop, &QPushButton::clicked, this, [=]() { lastButtonPressed = "start"; } );
 
-    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), this,                   SLOT( slot_Pause() ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonPause,    SLOT( hide() ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonContinue, SLOT( show() ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonStop,     SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), ui->pushButtonContinue, SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), this,                   SLOT( slot_Pause() ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), ui->pushButtonPause,    SLOT( hide() ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), ui->pushButtonContinue, SLOT( show() ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), ui->pushButtonStop,     SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), ui->pushButtonContinue, SLOT( setDisabled(bool) ) );
 
-    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), this,                   SLOT( slot_Continue() ) );
-    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonContinue, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonContinue, SLOT( hide() ) );
-    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonPause,    SLOT( show() ) );
-    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), ui->pushButtonStop,     SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), this,                   SLOT( slot_Continue() ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), ui->pushButtonContinue, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), ui->pushButtonContinue, SLOT( hide() ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), ui->pushButtonPause,    SLOT( show() ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), ui->pushButtonStop,     SLOT( setDisabled(bool) ) );
     ui->pushButtonContinue->hide();
 
-    connect( ui->pushButtonPlay,   SIGNAL( clicked( bool ) ), this,               SLOT( slot_Play() ) );
-    connect( ui->pushButtonPlayer, SIGNAL( clicked( bool ) ), vkPlayerController, SLOT( show() ) );
+    connect( ui->pushButtonPlay,   SIGNAL( clicked(bool) ), this,               SLOT( slot_Play() ) );
+    connect( ui->pushButtonPlayer, SIGNAL( clicked(bool) ), vkPlayerController, SLOT( show() ) );
 
-    connect( ui->pushButtonScreencastOpenfolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_Folder() ) );
+    connect( ui->pushButtonScreencastOpenfolder, SIGNAL( clicked(bool) ), this, SLOT( slot_Folder() ) );
 
     connect( ui->pushButtonScreencastSnapshot, &QPushButton::clicked, this, [=]() { lastButtonPressed = "snapshot"; } );
 
-    connect( ui->pushButton_log_openfolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_logFolder() ) );
+    connect( ui->pushButton_log_openfolder, SIGNAL( clicked(bool) ), this, SLOT( slot_logFolder() ) );
 
     // Tab 1 Screen
-    connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
-    connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled( bool ) ) );
+    connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled(bool) ) );
+    connect( ui->radioButtonScreencastFullscreen, SIGNAL( toggled(bool) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled(bool) ) );
 
-    connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreen, SLOT( setDisabled( bool ) ) );
-    connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled( bool ) ) );
-    connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
+    connect( ui->radioButtonScreencastWindow, SIGNAL( toggled(bool) ), ui->comboBoxScreencastScreen, SLOT( setDisabled(bool) ) );
+    connect( ui->radioButtonScreencastWindow, SIGNAL( toggled(bool) ), ui->comboBoxScreencastScreenArea, SLOT( setDisabled(bool) ) );
+    connect( ui->radioButtonScreencastWindow, SIGNAL( toggled(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled(bool) ) );
 
-    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( slot_init() ) );
-    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), vkRegionChoise, SLOT( setVisible( bool ) ) );
-    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreen, SLOT( setDisabled( bool ) ) );
-    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setEnabled( bool ) ) );
-    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled( bool ) ), ui->comboBoxScreencastScreenArea, SLOT( setEnabled( bool ) ) );
+    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled(bool) ), vkRegionChoise, SLOT( slot_init() ) );
+    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled(bool) ), vkRegionChoise, SLOT( setVisible(bool) ) );
+    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled(bool) ), ui->comboBoxScreencastScreen, SLOT( setDisabled(bool) ) );
+    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setEnabled(bool) ) );
+    connect( ui->radioButtonScreencastArea,   SIGNAL( toggled(bool) ), ui->comboBoxScreencastScreenArea, SLOT( setEnabled(bool) ) );
 
-    connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise, SLOT( slot_areaReset() ) );
+    connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked(bool) ), vkRegionChoise, SLOT( slot_areaReset() ) );
 
-    connect( ui->comboBoxScreencastScreen, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_setMaxFPS( int ) ) );
+    connect( ui->comboBoxScreencastScreen, SIGNAL( currentIndexChanged(int) ), this, SLOT( slot_setMaxFPS(int) ) );
 
-    connect( ui->radioButtonScreencastWindow, SIGNAL( toggled( bool ) ), this, SLOT( slot_disableShowclickHalo( bool ) ) );
+    connect( ui->radioButtonScreencastWindow, SIGNAL( toggled(bool) ), this, SLOT( slot_disableShowclickHalo(bool) ) );
 
     // Tab 2 Audio and Videocodec
 #ifdef Q_OS_WIN
     vkAudioController = new QvkAudioController( ui );
-    connect( vkAudioController->vkDirectSoundController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this, SLOT( slot_haveAudioDeviceSelected( bool ) ) );
-    connect( vkAudioController->vkWASAPIController,      SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this, SLOT( slot_haveAudioDeviceSelected( bool ) ) );
+    connect( vkAudioController->vkDirectSoundController, SIGNAL( signal_haveAudioDeviceSelected(bool) ), this, SLOT( slot_haveAudioDeviceSelected(bool) ) );
+    connect( vkAudioController->vkWASAPIController,      SIGNAL( signal_haveAudioDeviceSelected(bool) ), this, SLOT( slot_haveAudioDeviceSelected(bool) ) );
 #endif
 
 #ifdef Q_OS_UNIX
     vkAudioController = new QvkAudioController( ui );
-    connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), this, SLOT( slot_haveAudioDeviceSelected( bool ) ) );
+    connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected(bool) ), this, SLOT( slot_haveAudioDeviceSelected(bool) ) );
     vkAudioController->init();
 #endif
 
-    connect( ui->toolButtonFramesReset, SIGNAL( clicked( bool ) ), this, SLOT( slot_framesReset() ) );
+    connect( ui->toolButtonFramesReset, SIGNAL( clicked(bool) ), this, SLOT( slot_framesReset() ) );
 
-    connect( ui->comboBoxVideoCodec, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_videoCodecChanged( QString ) ) );
-    connect( ui->toolButtonx264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_x264Reset() ) );
-    connect( ui->toolButtonOpenh264Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_openh264Reset() ) );
-    connect( ui->toolButtonVP8Reset, SIGNAL( clicked( bool ) ), this, SLOT( slot_vp8Reset() ) );
+    connect( ui->comboBoxVideoCodec, SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_videoCodecChanged(QString) ) );
+    connect( ui->toolButtonx264Reset, SIGNAL( clicked(bool) ), this, SLOT( slot_x264Reset() ) );
+    connect( ui->toolButtonOpenh264Reset, SIGNAL( clicked(bool) ), this, SLOT( slot_openh264Reset() ) );
+    connect( ui->toolButtonVP8Reset, SIGNAL( clicked(bool) ), this, SLOT( slot_vp8Reset() ) );
 
-    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_currentTextChangedToGIF( QString ) ) );
+    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_currentTextChangedToGIF(QString) ) );
 
     // Tab 3 Time
-    connect( ui->checkBoxStartTime, SIGNAL( toggled( bool ) ), this, SLOT( slot_StartTimer( bool ) ) );
+    connect( ui->checkBoxStartTime, SIGNAL( toggled(bool) ), this, SLOT( slot_StartTimer(bool) ) );
     timerStartTimer = new QTimer();
     timerStartTimer->setTimerType( Qt::PreciseTimer );
     connect( timerStartTimer,       SIGNAL( timeout() ),           this,                SLOT( slot_startTime() ) );
-    connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     ui->pushButtonStart, SLOT( setHidden( bool ) ) );
-    connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     ui->labelScreencastCountdownText,  SLOT( setDisabled( bool ) ) );
-    connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),     sliderScreencastCountDown,         SLOT( setDisabled( bool ) ) );
+    connect( ui->checkBoxStartTime, SIGNAL( clicked(bool) ),     ui->pushButtonStart, SLOT( setHidden(bool) ) );
+    connect( ui->checkBoxStartTime, SIGNAL( clicked(bool) ),     ui->labelScreencastCountdownText,  SLOT( setDisabled(bool) ) );
+    connect( ui->checkBoxStartTime, SIGNAL( clicked(bool) ),     sliderScreencastCountDown,         SLOT( setDisabled(bool) ) );
 
-    connect( ui->checkBoxStopRecordingAfter, SIGNAL( toggled( bool ) ), ui->frameStopRecordingAfter, SLOT( setEnabled( bool ) ) );
+    connect( ui->checkBoxStopRecordingAfter, SIGNAL( toggled(bool) ), ui->frameStopRecordingAfter, SLOT( setEnabled(bool) ) );
     connect( timerStopRecordingAfter,        SIGNAL( timeout() ),       ui->pushButtonStop, SLOT( click() ) );
 
     // Tab 4 Misc
     videoFileSystemWatcher = new QFileSystemWatcher();
-    connect( ui->toolButtonVideoPath, SIGNAL( clicked( bool ) ),        this, SLOT( slot_newVideoPath() ) );
-    connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetNewPath() ) );
-    connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
-    connect( videoFileSystemWatcher,  SIGNAL( directoryChanged( const QString& ) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
+    connect( ui->toolButtonVideoPath, SIGNAL( clicked(bool) ),        this, SLOT( slot_newVideoPath() ) );
+    connect( ui->lineEditVideoPath,   SIGNAL( textChanged(QString) ), this, SLOT( slot_videoFileSystemWatcherSetNewPath() ) );
+    connect( ui->lineEditVideoPath,   SIGNAL( textChanged(QString) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
+    connect( videoFileSystemWatcher,  SIGNAL( directoryChanged(const QString&) ), this, SLOT( slot_videoFileSystemWatcherSetButtons() ) );
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
-    connect( ui->checkBoxGstreamerDebugLevel, SIGNAL( toggled( bool) ), this, SLOT( slot_GstreamerDebugLevel( bool ) ) );
-    connect( ui->pushButtonGstreamerDebugLevel, SIGNAL( clicked( bool ) ), this, SLOT( slot_GstreamerOpenFolder( bool ) ) );
-    connect( ui->checkBoxGstreamerDebugLevel, SIGNAL( clicked( bool ) ), this, SLOT( slot_GstreamerDebugLevelDialog( bool ) ) );
+    connect( ui->checkBoxGstreamerDebugLevel, SIGNAL( toggled(bool) ), this, SLOT( slot_GstreamerDebugLevel(bool) ) );
+    connect( ui->pushButtonGstreamerDebugLevel, SIGNAL( clicked(bool) ), this, SLOT( slot_GstreamerOpenFolder(bool) ) );
+    connect( ui->checkBoxGstreamerDebugLevel, SIGNAL( clicked(bool) ), this, SLOT( slot_GstreamerDebugLevelDialog(bool) ) );
 
     // ***************** showClick *****************************
     vkShowClick = new QvkShowClick();
@@ -509,13 +509,13 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
         vkSystray->init();
         connect( vkSystray,                 SIGNAL( signal_SystemtrayIsClose() ),                 this,      SLOT( close() ) );
-        connect( ui->checkBoxShowInSystray, SIGNAL( clicked( bool ) ),                            vkSystray, SLOT( setVisible( bool ) ) );
-        connect( vkGlobalShortcut,          SIGNAL( signal_shortcutSystray( QString, QString ) ), vkSystray, SLOT( slot_shortcutSystray( QString, QString ) ) );
+        connect( ui->checkBoxShowInSystray, SIGNAL( clicked(bool) ),                            vkSystray, SLOT( setVisible(bool) ) );
+        connect( vkGlobalShortcut,          SIGNAL( signal_shortcutSystray(QString,QString) ), vkSystray, SLOT( slot_shortcutSystray(QString,QString) ) );
         ui->frameShowInSystrayAlternative->hide();
         ui->toolButtonShowInSystrayAlternativeReset->hide();
     } else {
-        connect( ui->checkBoxShowInSystrayAlternative, SIGNAL( clicked( bool ) ), vkSystrayAlternative, SLOT( setVisible( bool ) ) );
-        connect( vkGlobalShortcut,          SIGNAL( signal_shortcutSystray( QString, QString ) ), vkSystrayAlternative, SLOT( slot_shortcutSystray( QString, QString ) ) );
+        connect( ui->checkBoxShowInSystrayAlternative, SIGNAL( clicked(bool) ), vkSystrayAlternative, SLOT( setVisible(bool) ) );
+        connect( vkGlobalShortcut,          SIGNAL( signal_shortcutSystray(QString,QString) ), vkSystrayAlternative, SLOT( slot_shortcutSystray(QString,QString) ) );
         ui->frameShowInSystray->hide();
     }
 
@@ -548,11 +548,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QvkScreenManager *screenManager = new QvkScreenManager( this );
     // Fullscreen
     connect( screenManager, SIGNAL( signal_clear_widget() ),                          ui->comboBoxScreencastScreen, SLOT( clear() ) );
-    connect( screenManager, SIGNAL( signal_screen_count_changed( QString, QString) ), this,                         SLOT( slot_screenCountChanged( QString, QString ) ) );
+    connect( screenManager, SIGNAL( signal_screen_count_changed(QString,QString) ), this, SLOT( slot_screenCountChanged(QString,QString) ) );
     // Area
     connect( screenManager, SIGNAL( signal_clear_widget() ),                          ui->comboBoxScreencastScreenArea, SLOT( clear() ) );
-    connect( screenManager, SIGNAL( signal_screen_count_changed( QString, QString) ), this,                             SLOT( slot_screenCountChangedArea( QString, QString ) ) );
-    connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged( int) ),   vkRegionChoise, SLOT( slot_init() ) );
+    connect( screenManager, SIGNAL( signal_screen_count_changed(QString,QString) ), this,                             SLOT( slot_screenCountChangedArea(QString,QString) ) );
+    connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged(int) ),   vkRegionChoise, SLOT( slot_init() ) );
     screenManager->init();
 #endif
 
@@ -616,7 +616,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         language = language.trimmed();
         ui->comboBoxLanguage->addItem( sortList.at(x), language );
     }
-    connect( ui->comboBoxLanguage, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_languageChanged( int ) ) );
+    connect( ui->comboBoxLanguage, SIGNAL( currentIndexChanged(int) ), this, SLOT( slot_languageChanged(int) ) );
 
 #ifdef Q_OS_WIN
     vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller(  vkSettings.getOpenh264ProfilePathWithFilename(), ui );
@@ -676,7 +676,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     openh264ProfileTest = false;
     if ( openh264ProfileTest == true ) {
         QvkPadsAndCaps *vkPadsAndCaps = new QvkPadsAndCaps;
-        connect( vkPadsAndCaps, SIGNAL( signal_openh264encProfile( QStringList ) ), this, SLOT( slot_comboBoxOpenh264Profile( QStringList ) ) );
+        connect( vkPadsAndCaps, SIGNAL( signal_openh264encProfile(QStringList) ), this, SLOT( slot_comboBoxOpenh264Profile(QStringList) ) );
         vkPadsAndCaps->pad_profile();
     } else {
         ui->label_61->setVisible( false );
@@ -1646,13 +1646,13 @@ void QvkMainWindow::slot_preStart()
 #endif
     {
         disconnect( vkCountdown, nullptr, nullptr, nullptr );
-        connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
+        connect( vkCountdown, SIGNAL( signal_countdownBegin(bool) ),  ui->pushButtonStop,  SLOT( setDisabled(bool) ) );
+        connect( vkCountdown, SIGNAL( signal_countdownBegin(bool) ),  ui->pushButtonPause, SLOT( setDisabled(bool) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish(bool) ), ui->pushButtonStop,  SLOT( setEnabled(bool) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish(bool) ), ui->pushButtonPause, SLOT( setEnabled(bool) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish(bool) ), this,                SLOT( slot_Start() ) );
         vkCountdown->startCountdown( sliderScreencastCountDown->value() );
-        connect( vkCountdown, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownCancel(bool) ), this, SLOT( slot_cancel(bool) ) );
         return;
     }
 
@@ -1669,24 +1669,24 @@ void QvkMainWindow::slot_preStart()
     if ( ( ui->radioButtonScreencastWindow->isChecked() == true ) and ( sliderScreencastCountDown->value() > 0 ) ) {
         disconnect( vkWinInfo, nullptr, nullptr, nullptr );
         disconnect( vkCountdown, nullptr, nullptr, nullptr );
-        connect( vkWinInfo,   SIGNAL( signal_windowChanged( bool ) ),   this,                SLOT( slot_startCounter( bool ) ) );
-        connect( vkWinInfo,   SIGNAL( signal_showCursor( bool ) ),      ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
-        connect( vkWinInfo,   SIGNAL( signal_showCursor( bool ) ),      ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
+        connect( vkWinInfo,   SIGNAL( signal_windowChanged(bool) ),   this,                SLOT( slot_startCounter(bool) ) );
+        connect( vkWinInfo,   SIGNAL( signal_showCursor(bool) ),      ui->pushButtonStop,  SLOT( setDisabled(bool) ) );
+        connect( vkWinInfo,   SIGNAL( signal_showCursor(bool) ),      ui->pushButtonPause, SLOT( setDisabled(bool) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish(bool) ), ui->pushButtonStop,  SLOT( setEnabled(bool) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish(bool) ), ui->pushButtonPause, SLOT( setEnabled(bool) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish(bool) ), this,                SLOT( slot_Start() ) );
         vkWinInfo->slot_start();
-        connect( vkCountdown, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownCancel(bool) ), this, SLOT( slot_cancel(bool) ) );
         return;
     }
 
     if ( ui->radioButtonScreencastWindow->isChecked() == true ) {
         disconnect( vkWinInfo, nullptr, nullptr, nullptr );
-        connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ),    ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
-        connect( vkWinInfo, SIGNAL( signal_showCursor( bool ) ),    ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
-        connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
-        connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
-        connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), this,                SLOT( slot_Start() ) );
+        connect( vkWinInfo, SIGNAL( signal_showCursor(bool) ),    ui->pushButtonStop,  SLOT( setDisabled(bool) ) );
+        connect( vkWinInfo, SIGNAL( signal_showCursor(bool) ),    ui->pushButtonPause, SLOT( setDisabled(bool) ) );
+        connect( vkWinInfo, SIGNAL( signal_windowChanged(bool) ), ui->pushButtonStop,  SLOT( setEnabled(bool) ) );
+        connect( vkWinInfo, SIGNAL( signal_windowChanged(bool) ), ui->pushButtonPause, SLOT( setEnabled(bool) ) );
+        connect( vkWinInfo, SIGNAL( signal_windowChanged(bool) ), this,                SLOT( slot_Start() ) );
         vkWinInfo->slot_start();
         return;
     }
@@ -1708,14 +1708,14 @@ void QvkMainWindow::slot_preStart()
 #endif
     {
         disconnect( vkCountdown, nullptr, nullptr, nullptr );
-        connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonStop,  SLOT( setDisabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countdownBegin( bool ) ),  ui->pushButtonPause, SLOT( setDisabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonStop,  SLOT( setEnabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), ui->pushButtonPause, SLOT( setEnabled( bool ) ) );
-        connect( vkCountdown, SIGNAL( signal_countDownfinish( bool ) ), this,                SLOT( slot_Start() ) );
+        connect( vkCountdown, SIGNAL( signal_countdownBegin(bool) ),  ui->pushButtonStop,  SLOT( setDisabled(bool) ) );
+        connect( vkCountdown, SIGNAL( signal_countdownBegin(bool) ),  ui->pushButtonPause, SLOT( setDisabled(bool) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish(bool) ), ui->pushButtonStop,  SLOT( setEnabled(bool) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish(bool) ), ui->pushButtonPause, SLOT( setEnabled(bool) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownfinish(bool) ), this,                SLOT( slot_Start() ) );
         vkRegionChoise->recordMode( true );
         vkCountdown->startCountdown( sliderScreencastCountDown->value() );
-        connect( vkCountdown, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
+        connect( vkCountdown, SIGNAL( signal_countDownCancel(bool) ), this, SLOT( slot_cancel(bool) ) );
         return;
     }
 
