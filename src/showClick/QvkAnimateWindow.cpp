@@ -42,7 +42,7 @@ QvkAnimateWindow::QvkAnimateWindow( QWidget *parent,
     setAttribute( Qt::WA_TranslucentBackground, true );
 
     resize( valueDiameter + 10, valueDiameter + 10 );
-    move( x / devicePixelRatioF() - ( width() / 2 ), y / devicePixelRatioF() - ( height() / 2 ) );
+    move( x  - ( width() / 2 ), y - ( height() / 2 ) );
 
     mouseButton = button;
     diameter = valueDiameter;
@@ -71,7 +71,7 @@ void QvkAnimateWindow::paintEvent( QPaintEvent *event )
 {
     Q_UNUSED(event);
 
-    QPixmap pixmap( height() * devicePixelRatioF(), width() * devicePixelRatioF() );
+    QPixmap pixmap( height(), width() );
     pixmap.fill( Qt::transparent );
 
     QPainter painterPixmap;

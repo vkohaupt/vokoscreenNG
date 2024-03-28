@@ -49,12 +49,13 @@ void QvkShowClick::setColorButtons()
 {
     QList<QHBoxLayout *> listLayaout = ui->gridLayout_showclick_color_pushButton->findChildren<QHBoxLayout *>();
     for ( int i = 0; i < listLayaout.count(); i++ ) {
+        QHBoxLayout *boxLayout = listLayaout.at(i);
         for ( int x = 0; x < 20; x++ ) {
-            if ( listLayaout.at(i)->objectName().section( "_", 2, 2 ) == QVariant::fromValue( Qt::GlobalColor(x) ).toString() ) {
+            if ( boxLayout->objectName().section( "_", 2, 2 ) == QVariant::fromValue( Qt::GlobalColor(x) ).toString() ) {
                 QvkPushButton *vkPushButton = new QvkPushButton( Qt::GlobalColor(x) );
                 vkPushButton->setObjectName( "PushButton_ShowClick_color_" + QVariant::fromValue( Qt::GlobalColor(x) ).toString() );
                 vkPushButton->setMaximumHeight( 23 );
-                listLayaout.at(i)->addWidget( vkPushButton );
+                boxLayout->addWidget( vkPushButton );
                 connect( vkPushButton, &QPushButton::clicked, this, [=]() { vkPreviewWidget->setColor( Qt::GlobalColor(x) ); } );
                 break;
             }
@@ -134,11 +135,14 @@ void QvkShowClick::setGlobalMouse()
 
 void QvkShowClick::slot_mousePressed( int x, int y, QString mouseButton )
 {
+    Q_UNUSED(x)
+    Q_UNUSED(y)
     QColor color;
     QList<QvkPushButton *> listPushButton = ui->centralWidget->findChildren<QvkPushButton *>();
     for ( int i = 0; i < listPushButton.count(); i++ ) {
-        if ( ( listPushButton.at(i)->underMouse() == true ) and ( listPushButton.at(i)->objectName().contains( "ShowClick_color" ) ) ) {
-            QString objectNameColor = listPushButton.at(i)->objectName().section( "_", 3, 3);
+        QPushButton *pushButton = listPushButton.at(i);
+        if ( ( pushButton->underMouse() == true ) and ( pushButton->objectName().contains( "ShowClick_color" ) ) ) {
+            QString objectNameColor = pushButton->objectName().section( "_", 3, 3);
             for ( int x = 0; x < 20; x++ ) {
                 if ( QVariant::fromValue( Qt::GlobalColor(x) ).toString().contains( objectNameColor ) ) {
                     color = Qt::GlobalColor(x);
@@ -151,8 +155,8 @@ void QvkShowClick::slot_mousePressed( int x, int y, QString mouseButton )
         }
     }
 
-    vk_x = x;
-    vk_y = y;
+    vk_x = QCursor::pos().x();
+    vk_y = QCursor::pos().y();
     vk_mouseButton = mouseButton;
     vk_color = color;
 
@@ -171,8 +175,8 @@ void QvkShowClick::slot_animateWindow()
     QColor color = vk_color;
 
     QvkAnimateWindow *vkAnimateWindow = new QvkAnimateWindow( this,
-                                                             x * devicePixelRatioF(),
-                                                             y * devicePixelRatioF(),
+                                                             x,
+                                                             y,
                                                              vkSpezialSliderShowtime->value() * 100,
                                                              mouseButton,
                                                              vkSpezialSliderDiameter->value(),
