@@ -48,6 +48,12 @@ QvkHelp::QvkHelp( Ui_formMainWindow *ui_mainwindow ) : uiHelp(new(Ui::help))
     ui = ui_mainwindow;
     uiHelp->setupUi( this );
 
+    // Is needed only for the translated text
+    QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Close, this );
+    buttonBox->hide();
+    QList<QPushButton *> list = buttonBox->findChildren<QPushButton *>();
+    uiHelp->pushButtonClose->setText( list.at(0)->text() );
+
     connect( uiHelp->pushButtonClose, SIGNAL( clicked( bool ) ), this, SLOT( close() ) );
 
     resize( 800, 600 );
