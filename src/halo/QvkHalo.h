@@ -69,7 +69,7 @@ private:
 
     void setToolButtonDefaultValues();
 
-
+    QScreen *screenOld;
 
 private slots:
     void slot_valueChanged_SpezialSlider_Diameter( int value );

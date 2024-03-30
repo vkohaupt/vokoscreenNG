@@ -33,7 +33,7 @@ QvkHaloWindow::QvkHaloWindow( QWidget *parent )
     Q_UNUSED(parent)
     setWindowFlags( Qt::X11BypassWindowManagerHint | Qt::WindowStaysOnTopHint );
     setAttribute( Qt::WA_TranslucentBackground, true );
-    resize ( 100, 100 );
+    resize( 100, 100 );
     setCursor( Qt::BlankCursor );
 }
 #endif
@@ -44,7 +44,7 @@ QvkHaloWindow::QvkHaloWindow( QWidget *parent )
     setParent( parent );
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
     setAttribute( Qt::WA_TranslucentBackground, true );
-    resize ( 100, 100 );
+    resize( 100, 100 );
     setCursor( Qt::BlankCursor );
 }
 #endif
@@ -58,7 +58,7 @@ void QvkHaloWindow::paintEvent( QPaintEvent *event )
 {
     Q_UNUSED(event);
 
-    QPixmap pixmap( 100 * devicePixelRatioF(), 100 * devicePixelRatioF() );
+    QPixmap pixmap( 100, 100 );
     pixmap.fill( Qt::transparent );
 
     QPainter painterPixmap;

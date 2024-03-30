@@ -193,6 +193,12 @@ void QvkHalo::timerEvent( QTimerEvent *event )
     }
 
     vkHaloWindow->move( QCursor::pos().x() - vkHaloWindow->diameter/2, QCursor::pos().y() - vkHaloWindow->diameter/2 );
+
+    if ( screenOld != vkHaloWindow->screen() ) {
+        screenOld = vkHaloWindow->screen();
+        vkHaloWindow->resize( 100, 100 );
+        vkHaloWindow->repaint();
+    }
 }
 
 
