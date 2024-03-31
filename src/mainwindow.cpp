@@ -560,14 +560,17 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // siehe auch Zeile 1012 und weitere
     // Siehe auch Zeile 1408 und weitere
     // Siehe auch Zeile 1876 und weitere
-    QvkScreenManagerWindows *screenManagerWindows = new QvkScreenManagerWindows( this );
     qDebug();
+    QvkScreenManagerWindows *screenManagerWindows = new QvkScreenManagerWindows( this );
     for ( int i = 0; i < screenManagerWindows->get_screen_structure().count(); i++ ) {
-        qDebug().noquote() << global::nameOutput << screenManagerWindows->get_screen_structure().at(i);
+        QStringList list = screenManagerWindows->get_screen_structure().at(i).split(",");
+        for ( int i = 0; i < list.count(); i++ ) {
+            qDebug().noquote() << global::nameOutput << list.at(i);
+        }
         qDebug();
     }
 
-    connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged( int) ),   vkRegionChoise, SLOT( slot_init() ) );
+    connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged(int) ), vkRegionChoise, SLOT( slot_init() ) );
 
     QStringList allScreenDevices = screenManagerWindows->get_all_screen_devices();
     for( int i = 0; i < allScreenDevices.count(); i++ ) {

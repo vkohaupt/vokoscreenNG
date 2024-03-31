@@ -116,7 +116,7 @@ int main(int argc, char *argv[])
     // qmake options example:
     // DEFINES+=FOR_MY_LINUX_INSTALLER
 #if defined( Q_OS_WIN ) || defined( FOR_MY_LINUX_INSTALLER )
-
+/*
     QvkSettings vkSettings;
     QFileInfo dirPathProfile( vkSettings.getFileName() );
     QString pathProfile = dirPathProfile.absolutePath();
@@ -143,7 +143,7 @@ int main(int argc, char *argv[])
     pathRegistry.append( pathProfile );
     pathRegistry.append( "/gstreamer.registry" );
     qputenv( "GST_REGISTRY_1_0", pathRegistry.toUtf8() );
-
+*/
 #endif
 
     // Gstreamer debug begin
