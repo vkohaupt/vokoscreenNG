@@ -27,7 +27,9 @@
 #include <QGuiApplication>
 #include <QScreen>
 #include <QToolButton>
+#include <QComboBox>
 #include <QList>
+#include <QPainter>
 
 QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
 {
@@ -59,19 +61,24 @@ QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
         gst_structure_get_uint64( structure, "device.hmonitor", &value );
         QString device_handle = QString::number( value );
 
-        QString device_width;
-        QString device_height;
-        QList<QScreen *> screen = QGuiApplication::screens();
-        if ( !screen.empty() ) {
-            for ( int i = 0; i < screen.size(); i++ ) {
-                QString name = screen.at(i)->name();
-                name = name.replace( "\\", "").replace( ".", "" );
-                if ( name == device_name ) {
-                    device_width = QString::number( screen.at(i)->size().width() );
-                    device_height = QString::number( screen.at(i)->size().height() );
-                }
-            }
-        }
+        gint valueRight;
+        gst_structure_get_int( structure, "display.coordinates.right", &valueRight );
+        int right = valueRight;
+
+        gint valueLeft;
+        gst_structure_get_int( structure, "display.coordinates.left", &valueLeft );
+        int left = valueLeft;
+
+        gint valueTop;
+        gst_structure_get_int( structure, "display.coordinates.top", &valueTop );
+        int top = valueTop;
+
+        gint valueBottom;
+        gst_structure_get_int( structure, "display.coordinates.bottom", &valueBottom );
+        int bottom = valueBottom;
+
+        QString device_width = QString::number( right - left );
+        QString device_height = QString::number( bottom - top );
 
         gst_structure_free( structure );
         listDevices << device_name + ":::" + device_handle + ":::" + device_width + ":::" + device_height;
@@ -108,29 +115,45 @@ QStringList QvkScreenManagerWindows::get_screen_structure()
 void QvkScreenManagerWindows::slot_toolButton_toggled( bool checked )
 {
     QList<QScreen *> screenList = QGuiApplication::screens();
-
     if ( checked == true ) {
         labelList.clear();
         for ( int i = 0; i < screenList.count(); i++ ) {
             QLabel *label = new QLabel;
             label->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip );
             label->resize( 400, 200 );
-            label->move( screenList.at(i)->geometry().x(), screenList.at(i)->geometry().y() );
+            QScreen *screen = screenList.at(i);
+            label->move( screen->geometry().x(), screen->geometry().y() );
 
             QFont font;
-            font.setPixelSize( 50 );
-            label->setFont( font );
             label->setStyleSheet( "QLabel { background-color : orange; color : black; }" );
 
-            label->setAlignment( Qt::AlignCenter );
-            label->setText( screenList.at(i)->name().remove( "." ).remove( '\\' ) );
+            QPixmap pixmap( 400, 200 );
+            pixmap.fill( Qt::transparent );
+            const QRect rec = QRect( 0, 0, 400, 200 );
+            QPainter *painter = new QPainter;
+            painter->begin( &pixmap );
+            painter->setPen( Qt::black );
+            font.setPixelSize( 12 );
+            painter->setFont( font );
+            painter->drawText( rec, Qt::AlignTop | Qt::AlignHCenter, global::name + " " + global::version );
+
+            font.setPixelSize( 50 );
+            painter->setFont( font );
+            // Screen name from gstreamer
+            painter->drawText( rec, Qt::AlignCenter,  get_all_screen_devices().at(i).section( ":::", 0, 0) );
+            painter->end();
+
+            label->setPixmap( pixmap );
+
+
             label->show();
             labelList << label;
         }
     } else {
         for ( int i = 0; i < labelList.count(); i++ ) {
-            labelList.at(i)->close();
-            labelList.at(i)->deleteLater();
+            QLabel *label = labelList.at(i);
+            label->close();
+            label->deleteLater();
         }
     }
 }
