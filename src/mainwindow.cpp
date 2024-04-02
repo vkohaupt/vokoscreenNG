@@ -229,7 +229,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSpezialCheckboxDarkMode->setMinimumHeight( 28 );
     vkSpezialCheckboxDarkMode->set_colorChecked( QColor( QString ( "#3DAEE9" ) ) );
     vkSpezialCheckboxDarkMode->set_colorUnChecked( QColor( QString ( "#3DAEE9" ) ) );
-    vkSpezialCheckboxDarkMode->set_waitBeforeTrigger( 300 );
+    vkSpezialCheckboxDarkMode->set_waitBeforeTrigger( 100 );
     ui->horizontalLayout_darkMode->insertWidget( 1, vkSpezialCheckboxDarkMode );
 
     ui->comboBox_shortcut_start->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
