@@ -1112,8 +1112,8 @@ void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
         }
         
         QScreen *selectedScreen = screenList.at(index);
-        int left = static_cast<int>( selectedScreen->geometry().left() * selectedScreen->devicePixelRatio() );
-        int top = static_cast<int>( selectedScreen->geometry().top() * selectedScreen->devicePixelRatio() );
+        int left = static_cast<int>( selectedScreen->geometry().left() );
+        int top = static_cast<int>( selectedScreen->geometry().top() );
         vkCountdown->x = left + selectedScreen->geometry().width() / 2 - ( vkCountdown->Width / 2 );
         vkCountdown->y = top + selectedScreen->geometry().height() / 2 - ( vkCountdown->Height / 2 );
     }
@@ -1137,8 +1137,8 @@ void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
         }
 
         QScreen *selectedScreen = screenList.at(index);
-        int left = static_cast<int>( selectedScreen->geometry().left() * selectedScreen->devicePixelRatio() );
-        int top = static_cast<int>( selectedScreen->geometry().top() * selectedScreen->devicePixelRatio() );
+        int left = static_cast<int>( selectedScreen->geometry().left() );
+        int top = static_cast<int>( selectedScreen->geometry().top() );
         vkCountdown->x = left + selectedScreen->geometry().width() / 2 - ( vkCountdown->Width / 2 );
         vkCountdown->y = top + selectedScreen->geometry().height() / 2 - ( vkCountdown->Height / 2 );
     }
