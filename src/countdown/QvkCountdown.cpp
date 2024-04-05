@@ -77,6 +77,7 @@ void QvkCountdown::createCountdownWindow()
 void QvkCountdown::startCountdown( int value )
 {
     vkCountdownWindow->setGeometry( x, y, Width, Height );
+    qDebug() << x << y;
     vkCountdownWindow->show();
     vkCountdownWindow->countValue = value;
     vkCountdownWindow->gradValue = 0;

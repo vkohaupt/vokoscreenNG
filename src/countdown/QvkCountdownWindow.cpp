@@ -48,13 +48,13 @@ void QvkCountdownWindow::paintEvent( QPaintEvent *event )
 {
   (void)event;
 
-    QPixmap pixmap( 300 * devicePixelRatioF(), 300 * devicePixelRatioF() );
+    QPixmap pixmap( 300, 300 );
     pixmap.fill( Qt::transparent );
-    pixmap.setDevicePixelRatio( devicePixelRatioF() );
 
     QPainter painterPixmap;
     painterPixmap.begin( &pixmap );
-    painterPixmap.setRenderHints( QPainter::Antialiasing, true );
+    painterPixmap.setRenderHint( QPainter::Antialiasing, true );
+    painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
 
     QPen pen;
     QBrush brush;
@@ -117,6 +117,8 @@ void QvkCountdownWindow::paintEvent( QPaintEvent *event )
 
     QPainter painter;
     painter.begin( this );
+    painter.setRenderHint( QPainter::Antialiasing, true );
+    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painter.drawPixmap( QPointF( 0, 0 ), pixmap );
     painter.end();
 
