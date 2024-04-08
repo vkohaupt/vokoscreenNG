@@ -48,13 +48,47 @@ QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
     listDevices.clear();
     list = gst_device_monitor_get_devices( monitor );
     for ( iterator = list; iterator; iterator = iterator->next ) {
+
+        QString stringStructure;
+
         device = (GstDevice*)iterator->data;
 
-        // Ab hier properties
-        GstStructure *structure = gst_device_get_properties( device );
-        listStructure.append( gst_structure_to_string( structure ) );
+        // From here caps
+        GstCaps *Caps = gst_device_get_caps( device );
+        GstStructure *structureCaps = gst_caps_get_structure( Caps, 0 );
+        stringStructure = "CAPS: " + QString( gst_structure_to_string( structureCaps ) ).replace(  ";", "," );
 
-        QString device_name = QString( gst_structure_get_string( structure, "device.name" ) );
+        if ( gst_structure_has_field( structureCaps, "format" ) ) {
+            const gchar *format = NULL;
+            format = gst_structure_get_string( structureCaps, "format" );
+            Q_UNUSED(format)
+        }
+
+        if ( gst_structure_has_field( structureCaps, "width" ) ) {
+            gint width = 0;
+            if ( gst_structure_get_int( structureCaps, "width", &width ) ) {
+                device_width = width;
+            }
+        }
+
+        if ( gst_structure_has_field( structureCaps, "height" ) ) {
+            gint height = 0;
+            if ( gst_structure_get_int( structureCaps, "height", &height ) ) {
+                device_height = height;
+            }
+        }
+
+
+        // From here properties
+        GstStructure *structure = gst_device_get_properties( device );
+        stringStructure.append( "PROPERTIES: " + QString( gst_structure_to_string( structure ) ) );
+        listStructure.append( stringStructure );
+
+        QString device_primary;
+        device_primary = QString( gst_structure_get_string( structure, "device.primary" ) );
+
+        QString device_name;
+        device_name = QString( gst_structure_get_string( structure, "device.name" ) );
         device_name = device_name.replace( "\\", "").replace( ".", "" );
 
         guint64 value;
@@ -64,24 +98,33 @@ QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
         gint valueRight;
         gst_structure_get_int( structure, "display.coordinates.right", &valueRight );
         int right = valueRight;
+        Q_UNUSED(right)
 
         gint valueLeft;
         gst_structure_get_int( structure, "display.coordinates.left", &valueLeft );
         int left = valueLeft;
+        Q_UNUSED(left)
 
         gint valueTop;
         gst_structure_get_int( structure, "display.coordinates.top", &valueTop );
         int top = valueTop;
+        Q_UNUSED(top)
 
         gint valueBottom;
         gst_structure_get_int( structure, "display.coordinates.bottom", &valueBottom );
         int bottom = valueBottom;
+        Q_UNUSED(bottom)
 
-        QString device_width = QString::number( right - left );
-        QString device_height = QString::number( bottom - top );
+        // Dies funktioniert auch
+        // QString device_width = QString::number( right - left );
+        // QString device_height = QString::number( bottom - top );
 
         gst_structure_free( structure );
-        listDevices << device_name + ":::" + device_handle + ":::" + device_width + ":::" + device_height;
+
+        listDevices << device_name + ":::" +
+                           device_handle + ":::" +
+                           QString::number( device_width ) + ":::" +
+                           QString::number( device_height );
     }
 
     if ( isMonitorStart == true ) {

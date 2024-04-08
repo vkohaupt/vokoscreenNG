@@ -90,11 +90,10 @@ void QvkRegionChoise::slot_init()
 #endif
 
 #ifdef Q_OS_WIN
-    // Für das anzeigen der Bereichsanzeige auf dem Bildschirm wird der Index aus einer unsortierten Liste benötigt.
     if ( ui->comboBoxScreencastScreenArea->currentIndex() > -1 ) {
         int index = 0;
         QString nameDisplay = ui->comboBoxScreencastScreenArea->currentText().section( ":", 0, 0 ).trimmed();
-        QList<QScreen *> screenList = QGuiApplication::screens(); // unsortiert
+        QList<QScreen *> screenList = QGuiApplication::screens();
         for ( int i=0; i < screenList.count(); i++ ) {
             QString nameList = screenList.at(i)->name().remove( "." ).remove( "\\" ) ;
             if ( nameDisplay == nameList ) {
