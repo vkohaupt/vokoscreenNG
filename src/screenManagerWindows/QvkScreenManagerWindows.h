@@ -51,8 +51,6 @@ private:
     QStringList listStructure;
     QStringList listDevices;
     QList<QLabel *> labelList;
-    gint device_width;
-    gint device_height;
 
 
 private slots:

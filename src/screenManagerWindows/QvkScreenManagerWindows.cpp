@@ -50,6 +50,8 @@ QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
     for ( iterator = list; iterator; iterator = iterator->next ) {
 
         QString stringStructure;
+        gint device_width;
+        gint device_height;
 
         device = (GstDevice*)iterator->data;
 
