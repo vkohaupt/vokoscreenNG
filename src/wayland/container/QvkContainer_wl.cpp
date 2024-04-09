@@ -2,6 +2,7 @@
 
 #include <QStringList>
 #include <QList>
+#include <QSysInfo>
 
 /*!
  * Hint:
@@ -91,7 +92,9 @@ QvkContainer_wl::QvkContainer_wl(QObject *parent) : QObject(parent)
     Container_wl *MKV = new Container_wl( "matroskamux", "mkv" );
     MKV->add_VideoCodec( "openh264enc", "H.264" );
     MKV->add_VideoCodec( "vp8enc", "VP8");
-    MKV->add_VideoCodec( "x264enc", "x264");
+    if ( QSysInfo::prettyProductName().contains( "Flatpak" ) == false ) {
+        MKV->add_VideoCodec( "x264enc", "x264");
+    }
     MKV->add_AudioCodec( "vorbisenc", "vorbis" );
     MKV->add_AudioCodec( "flacenc", "flac" );
     MKV->add_AudioCodec( "opusenc", "opus" );
@@ -104,19 +107,25 @@ QvkContainer_wl::QvkContainer_wl(QObject *parent) : QObject(parent)
 
     Container_wl *AVI = new Container_wl( "avimux", "avi" );
     AVI->add_VideoCodec( "openh264enc", "H.264" );
-    AVI->add_VideoCodec( "x264enc", "x264" );
+    if ( QSysInfo::prettyProductName().contains( "Flatpak" ) == false ) {
+        MKV->add_VideoCodec( "x264enc", "x264");
+    }
     AVI->add_VideoCodec( "vp8enc", "VP8" );
     AVI->add_AudioCodec( "lamemp3enc", "mp3" );
 
     Container_wl *MP4 = new Container_wl( "mp4mux", "mp4" );
     MP4->add_VideoCodec( "openh264enc", "H.264" );
-    MP4->add_VideoCodec( "x264enc", "x264" );
+    if ( QSysInfo::prettyProductName().contains( "Flatpak" ) == false ) {
+        MKV->add_VideoCodec( "x264enc", "x264");
+    }
     MP4->add_AudioCodec( "lamemp3enc", "mp3" );
     MP4->add_AudioCodec( "opusenc", "opus" );
 
     Container_wl *MOV = new Container_wl( "qtmux", "mov" );
     MOV->add_VideoCodec( "openh264enc", "H.264" );
-    MOV->add_VideoCodec( "x264enc", "x264" );
+    if ( QSysInfo::prettyProductName().contains( "Flatpak" ) == false ) {
+        MKV->add_VideoCodec( "x264enc", "x264");
+    }
     MOV->add_VideoCodec( "vp8enc", "VP8" );
     MOV->add_AudioCodec( "lamemp3enc", "mp3" );
 
