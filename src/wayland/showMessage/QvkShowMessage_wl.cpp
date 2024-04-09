@@ -51,12 +51,12 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
 {
     Q_UNUSED(event)
 
-    QPixmap pixmap( width() * devicePixelRatioF(), height() * devicePixelRatioF() );
+    QPixmap pixmap( width(), height() );
     pixmap.fill( Qt::transparent );
 
     QPainter painterPixmap;
     painterPixmap.begin( &pixmap );
-    painterPixmap.setRenderHints( QPainter::Antialiasing, true );
+    painterPixmap.setRenderHint( QPainter::Antialiasing, true );
     painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
 
     // Begin Pixmap window. Hier wird alles gezeichnet und zum Schluß ins painterPixmap übertragen
@@ -65,7 +65,7 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     QPixmap windowPixmap( drawWindowWidth, drawWindowHeight );
     QPainter painterWindowPixmap;
     painterWindowPixmap.begin( &windowPixmap );
-    painterWindowPixmap.setRenderHints( QPainter::Antialiasing, true );
+    painterWindowPixmap.setRenderHint( QPainter::Antialiasing, true );
     painterWindowPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
     QPen pen;
     QBrush brush;
@@ -99,7 +99,7 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     pixmapCloseButton.fill( Qt::transparent );
     QPainter painterCloseButton;
     painterCloseButton.begin( &pixmapCloseButton );
-    painterCloseButton.setRenderHints( QPainter::Antialiasing, true );
+    painterCloseButton.setRenderHint( QPainter::Antialiasing, true );
     painterCloseButton.setRenderHint( QPainter::SmoothPixmapTransform, true );
     pen.setColor( color );
     pen.setWidth( 2 );
@@ -129,6 +129,8 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
 
     QPainter painter;
     painter.begin( this );
+    painter.setRenderHint( QPainter::Antialiasing, true );
+    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painter.drawPixmap( QPointF( 0, 0 ), pixmap );
     painter.end();
 
@@ -202,7 +204,8 @@ void QvkShowMessage_wl::slot_durationButton()
 
     QPainter painter;
     painter.begin( &pixmap );
-    painter.setRenderHints( QPainter::Antialiasing, true );
+    painter.setRenderHint( QPainter::Antialiasing, true );
+    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painter.setOpacity( 1.0 );
 
     QPen pen;
