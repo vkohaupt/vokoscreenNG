@@ -19,18 +19,20 @@ void QvkSystrayAlternativeWindow::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event)
 
-    QPixmap pixmap( size.width() * devicePixelRatioF(), size.height() * devicePixelRatioF() );
+    QPixmap pixmap( size.width(), size.height() );
     pixmap.fill( Qt::transparent );
-    pixmap.setDevicePixelRatio( devicePixelRatioF() );
 
     QPainter painterPixmap;
     painterPixmap.begin( &pixmap );
-    painterPixmap.setRenderHints( QPainter::Antialiasing, true );
+    painterPixmap.setRenderHint( QPainter::Antialiasing, true );
+    painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painterPixmap.drawPixmap( 0, 0, picture );
     painterPixmap.end();
 
     QPainter painter;
     painter.begin( this );
+    painter.setRenderHint( QPainter::Antialiasing, true );
+    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painter.drawPixmap( QPointF( 0, 0 ), pixmap );
     painter.end();
 
