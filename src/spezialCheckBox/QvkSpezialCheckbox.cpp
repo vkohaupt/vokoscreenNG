@@ -12,7 +12,7 @@ QvkSpezialCheckbox::QvkSpezialCheckbox( QWidget *parent ) : QWidget( parent )
     setMinimumHeight( 34 );
     setMaximumWidth( 100 );
 
-    connect( this, SIGNAL( signal_clicked( bool ) ), this, SLOT( slot_setChecked( bool ) ) );
+    connect( this, SIGNAL( signal_clicked(bool) ), this, SLOT( slot_setChecked(bool) ) );
 }
 
 
@@ -72,7 +72,8 @@ void QvkSpezialCheckbox::paintEvent( QPaintEvent *event )
 {
     Q_UNUSED( event );
     QPainter painter( this );
-    painter.setRenderHints( QPainter::Antialiasing, true );
+    painter.setRenderHint( QPainter::Antialiasing, true );
+    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
 
     button_x = 2;
     button_y = 2;
@@ -159,13 +160,11 @@ void QvkSpezialCheckbox::paintChecked( QPainter &painter )
 
     if ( imageChecked.isNull() == false ) {
         QPixmap pixmap( imageChecked );
-        pixmap.setDevicePixelRatio( devicePixelRatioF() );
-        pixmap = pixmap.scaled( slider_height / 5 * 3 * devicePixelRatioF(), slider_height / 5 * 3 * devicePixelRatioF(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-        painter.drawPixmap( button_x + margin + ( ( slider_x - button_x - margin ) / 2 ) - ( pixmap.width() / 2 / devicePixelRatioF() ),
-                            button_y + margin + ( slider_height / 5 ),
-                            pixmap );
+        pixmap = pixmap.scaled( slider_height / 5 * 3, slider_height / 5 * 3, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+        painter.drawPixmap( button_x + margin + ( ( slider_x - button_x - margin ) / 2 ) - ( pixmap.width() / 2 ),
+                           button_y + margin + ( slider_height / 5 ),
+                           pixmap );
     }
-
 }
 
 
@@ -212,10 +211,9 @@ void QvkSpezialCheckbox::paintUnChecked( QPainter &painter )
 
     if ( imageChecked.isNull() == false ) {
         QPixmap pixmap( imageUnChecked );
-        pixmap.setDevicePixelRatio(  devicePixelRatioF() );
-        pixmap = pixmap.scaled( slider_height / 5 * 3 * devicePixelRatioF(),
-                                slider_height / 5 * 3 * devicePixelRatioF(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-        painter.drawPixmap( slider_x+slider_width + ( button_width - slider_x - slider_width) / 2 - pixmap.width() / 2 / devicePixelRatioF(),
+        pixmap = pixmap.scaled( slider_height / 5 * 3,
+                                slider_height / 5 * 3, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+        painter.drawPixmap( slider_x+slider_width + ( button_width - slider_x - slider_width) / 2 - pixmap.width() / 2,
                             button_y + margin + ( slider_height / 5 ),
                             pixmap );
     }
