@@ -25,6 +25,7 @@
 #include <QLoggingCategory>
 #include <QStyleFactory>
 #include <QSettings>
+#include <QFile>
 
 #include "mainwindow.h"
 #include "global.h"
@@ -116,34 +117,47 @@ int main(int argc, char *argv[])
     // qmake options example:
     // DEFINES+=FOR_MY_LINUX_INSTALLER
 #if defined( Q_OS_WIN ) || defined( FOR_MY_LINUX_INSTALLER )
-/*
+
     QvkSettings vkSettings;
     QFileInfo dirPathProfile( vkSettings.getFileName() );
     QString pathProfile = dirPathProfile.absolutePath();
     QString programPath = QDir::currentPath();
-
+/*
     // Die GStreamer plugins werden über die GST_PLUGIN_PATH_1_0 variable gefunden
     QString pluginPath;
     pluginPath.append( programPath );
-    pluginPath.append( separator ); // neu
-    pluginPath.append( programPath + "/gstreamer/gstreamer_lib" ); // neu
+    pluginPath.append( separator );
+    pluginPath.append( programPath + "/gstreamer/gstreamer_lib" );
     qputenv( "GST_PLUGIN_PATH_1_0", pluginPath.toUtf8() );
 
     // Der openh264 Codec wird über die PATH variable gefunden
     QString pathPath;
     pathPath.append( programPath );
-    pathPath.append( separator ); // neu
-    pathPath.append( programPath + "/gstreamer/gstreamer_bin" ); // neu
+    pathPath.append( separator );
+    pathPath.append( programPath + "/gstreamer/gstreamer_bin" );
     pathPath.append( separator );
     QFileInfo h264Profile( vkSettings.getOpenh264ProfilePathWithFilename() );
     pathPath.append( h264Profile.absolutePath() );
     qputenv( "PATH", pathPath.toUtf8() );
-
+*/
     QString pathRegistry;
     pathRegistry.append( pathProfile );
     pathRegistry.append( "/gstreamer.registry" );
     qputenv( "GST_REGISTRY_1_0", pathRegistry.toUtf8() );
-*/
+
+    // Registry löschen
+    QFile file;
+    file.setFileName( pathRegistry );
+    if ( file.exists() == true ) {
+        qDebug().noquote() << global::nameOutput << "File gstreamer.registry exists";
+        if ( file.remove() == true ) {
+            qDebug().noquote() << global::nameOutput << "File gstreamer.registry removed successfully";
+        } else {
+            qDebug().noquote() << global::nameOutput << "Unable to remove gstreamer.registry file";
+        }
+    } else {
+        qDebug().noquote() << global::nameOutput << "File gstreamer.registry not exists";
+    }
 #endif
 
     // Gstreamer debug begin
