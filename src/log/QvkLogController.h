@@ -39,11 +39,9 @@ public slots:
 
 
 signals:
-    void signal_newLogText( QString value );
 
 
 private slots:
-    void slot_addTextToGuiLog( QString value );
 
 
 private:

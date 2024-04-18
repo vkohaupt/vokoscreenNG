@@ -22,6 +22,7 @@
 
 #include "global.h"
 #include <QString>
+#include <QTextBrowser>
 
 namespace global
 {
@@ -30,4 +31,5 @@ namespace global
     QString nameOutput = "[" + name + "]";
     int showclickCounter = 0;
     bool testWASAPI = false;
+    QTextBrowser *textBrowserLog;
 }

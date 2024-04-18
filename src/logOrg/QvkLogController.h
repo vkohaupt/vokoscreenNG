@@ -20,15 +20,38 @@
  * --End_License--
  */
 
-#include <QString>
-#include <QTextBrowser>
+#ifndef QVKLOGCONTROLLER_H
+#define QVKLOGCONTROLLER_H
 
-namespace global
+#include <QObject>
+
+class QvkLogController : public QObject
 {
-    extern QString name;
-    extern QString nameOutput;
-    extern QString version;
-    extern int showclickCounter;
-    extern bool testWASAPI;
-    extern QTextBrowser *textBrowserLog;
-}
+    Q_OBJECT
+
+public:
+    QvkLogController();
+    virtual ~QvkLogController();
+    QString get_logPath();
+
+
+public slots:
+
+
+signals:
+    void signal_newLogText( QString value );
+
+
+private slots:
+    void slot_addTextToGuiLog( QString value );
+
+
+private:
+
+
+protected:
+
+
+};
+
+#endif

@@ -23,8 +23,10 @@
 #include <QMessageLogContext>
 #include <QString>
 #include <QStandardPaths>
+#include <QTime>
 #include <QDateTime>
 #include <QDir>
+#include <QLineEdit>
 #include <QByteArray>
 #include <QTextStream>
 #include <QFile>
@@ -33,6 +35,8 @@
 #include "QvkLogController.h"
 
 QFile logFile;
+QString path;
+QLineEdit *lineEdit_LOG;
 
 void myMessageHandler( QtMsgType type, const QMessageLogContext &context, const QString &msg )
 {
@@ -75,15 +79,15 @@ void myMessageHandler( QtMsgType type, const QMessageLogContext &context, const 
     stream << sMsg << eol;
     logFile.close();
 
-    // Output GUI
-    global::textBrowserLog->append( sMsg );
+    lineEdit_LOG->setText( sMsg );
 }
 
 
 QvkLogController::QvkLogController()
 {
-    QString stringDateTime = QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" );
-    QString path = QStandardPaths::writableLocation( QStandardPaths::AppConfigLocation );
+    QDateTime dateTime = QDateTime::currentDateTime();
+    QString stringDateTime = dateTime.toString( "yyyy-MM-dd_hh-mm-ss" );
+    path = QStandardPaths::writableLocation( QStandardPaths::AppConfigLocation );
 
     QString logFolderName = path + "/" + "log";
     if( !QDir( logFolderName ).exists() ) {
@@ -91,12 +95,20 @@ QvkLogController::QvkLogController()
     }
 
     logFile.setFileName( path + "/" + "log" + "/" + stringDateTime + ".log" );
+    lineEdit_LOG = new QLineEdit;
+    connect( lineEdit_LOG, SIGNAL( textChanged( const QString ) ), this, SLOT( slot_addTextToGuiLog( QString ) ) );
     qInstallMessageHandler( myMessageHandler );
 }
 
 
 QvkLogController::~QvkLogController()
 {
+}
+
+
+void QvkLogController::slot_addTextToGuiLog( QString value )
+{
+    emit signal_newLogText( value );
 }
 
 

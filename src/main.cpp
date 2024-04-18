@@ -29,6 +29,7 @@
 
 #include "mainwindow.h"
 #include "global.h"
+#include "QvkLogController.h"
 
 #ifdef Q_OS_UNIX
 #include "mainWindow_wl.h"
@@ -48,6 +49,10 @@ int main(int argc, char *argv[])
     QLoggingCategory::defaultCategory()->setEnabled( QtDebugMsg, true );
     QApplication::setStyle( QStyleFactory::create( "Fusion" ) );
     QApplication app(argc, argv);
+
+    global::textBrowserLog = new QTextBrowser;
+    QvkLogController *vklogController = new QvkLogController;
+    Q_UNUSED(vklogController)
 
     QString help;
     help.append( "\n" );
@@ -122,7 +127,7 @@ int main(int argc, char *argv[])
     QFileInfo dirPathProfile( vkSettings.getFileName() );
     QString pathProfile = dirPathProfile.absolutePath();
     QString programPath = QDir::currentPath();
-/*
+
     // Die GStreamer plugins werden über die GST_PLUGIN_PATH_1_0 variable gefunden
     QString pluginPath;
     pluginPath.append( programPath );
@@ -139,7 +144,7 @@ int main(int argc, char *argv[])
     QFileInfo h264Profile( vkSettings.getOpenh264ProfilePathWithFilename() );
     pathPath.append( h264Profile.absolutePath() );
     qputenv( "PATH", pathPath.toUtf8() );
-*/
+
     QString pathRegistry;
     pathRegistry.append( pathProfile );
     pathRegistry.append( "/gstreamer.registry" );

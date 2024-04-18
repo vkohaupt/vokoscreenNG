@@ -174,8 +174,6 @@ private:
 
 
 private slots:
-    void slot_textToGuiLog( QString value );
-
     void slot_preStart();
     void slot_Start();
     void slot_preStop();

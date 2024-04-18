@@ -74,6 +74,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->setupUi(this);
 
+    ui->verticalLayout_26->insertWidget( 0, global::textBrowserLog );
+
     oldPaletteDarkMode = qApp->palette();
 
 #ifdef Q_OS_WIN
@@ -235,9 +237,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->comboBox_shortcut_start->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     ui->comboBox_shortcut_pause->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     ui->comboBox_shortcut_magnification->view()->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-
-    vklogController = new QvkLogController();
-    connect( vklogController, SIGNAL( signal_newLogText(QString) ), this, SLOT( slot_textToGuiLog(QString) ) );
 
     setWindowTitle( global::name + " " + global::version );
     QIcon icon( QString::fromUtf8( ":/pictures/logo/logo.png" ) );
@@ -1047,12 +1046,6 @@ void QvkMainWindow::slot_haveAudioDeviceSelected( bool bo )
     } else {
         ui->labelInfoAudiocodec->setText( ui->comboBoxAudioCodec->currentText() );
     }
-}
-
-
-void QvkMainWindow::slot_textToGuiLog( QString value )
-{
-    ui->textBrowserLog->append( value );
 }
 
 
