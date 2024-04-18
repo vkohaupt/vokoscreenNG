@@ -80,12 +80,14 @@ int main(int argc, char *argv[])
              ( arguments.at(1) == "-h"     ) )
         {
             qDebug().resetFormat().noquote() << help;
+            delete vklogController;
             return 0;
         }
 
         if ( ( arguments.at(1) == "--version" ) or ( arguments.at(1) == "-v" ) )
         {
             qDebug().noquote() << global::name << global::version;
+            delete vklogController;
             return 0;
         }
 
@@ -102,6 +104,7 @@ int main(int argc, char *argv[])
             qDebug().noquote() << global::nameOutput << arguments.at(1) << "file not exists";
             qDebug().resetFormat().noquote() << help;
             qDebug();
+            delete vklogController;
             return 1;
         }
 
@@ -204,5 +207,6 @@ int main(int argc, char *argv[])
     QvkMainWindow *w = new QvkMainWindow;
     w->show();
 #endif
+    delete vklogController;
     return app.exec();
 }
