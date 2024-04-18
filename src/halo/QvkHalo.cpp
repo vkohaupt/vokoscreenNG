@@ -138,11 +138,13 @@ void QvkHalo::createColorButtons()
     QList<QHBoxLayout *> listLayaout = ui->gridLayout_halo_color_pushButton->findChildren<QHBoxLayout *>();
     for ( int i = 0; i < listLayaout.count(); i++ ) {
         for ( int x = 0; x < 20; x++ ) {
-            if ( listLayaout.at(i)->objectName().section( "_", 2, 2 ) == QVariant::fromValue( Qt::GlobalColor(x) ).toString() ) {
+            QHBoxLayout *boxLayout = listLayaout.at(i);
+            QVariant variant = QVariant::fromValue( Qt::GlobalColor(x) );
+            if ( boxLayout->objectName().section( "_", 2, 2 ) == variant.toString() ) {
                 QvkPushButton *vkPushButton = new QvkPushButton( Qt::GlobalColor(x) );
-                vkPushButton->setObjectName( "PushButton_Halo_color_" + QVariant::fromValue( Qt::GlobalColor(x) ).toString() );
+                vkPushButton->setObjectName( "PushButton_Halo_color_" + variant.toString() );
                 vkPushButton->setMaximumHeight( 23 );
-                listLayaout.at(i)->addWidget( vkPushButton );
+                boxLayout->addWidget( vkPushButton );
                 connect( vkPushButton, &QPushButton::clicked, this, [=]() { vkHaloPreviewWidget->setColor( Qt::GlobalColor(x) );
                                                                             vkHaloWindow->setColor( Qt::GlobalColor(x) );
                                                                            } );

@@ -126,7 +126,8 @@ void QvkSnapshot::slot_newImage()
             vkWinInfo->slot_start();
         } else {
             WId xid = vkMainWindow->vkWinInfo->getWinID();
-            QImage image = myScreen.at( ui->comboBoxScreencastScreen->currentIndex() )->grabWindow(xid).toImage();
+            QScreen *screen = myScreen.at( ui->comboBoxScreencastScreen->currentIndex() );
+            QImage image = screen->grabWindow(xid).toImage();
             bool bo = image.save( ui->lineEditSnapshotImagePath->text() + "/" + filename, ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
 
             if ( bo == false ) {
@@ -164,7 +165,8 @@ void QvkSnapshot::slot_newImage()
         int endx = vkMainWindow->vkRegionChoise->getWidth();
         int endy = vkMainWindow->vkRegionChoise->getHeight();
 
-        QImage image = myScreen.at( ui->comboBoxScreencastScreenArea->currentIndex() )->grabWindow(0).toImage();
+        QScreen *screen = myScreen.at( ui->comboBoxScreencastScreenArea->currentIndex() );
+        QImage image = screen->grabWindow(0).toImage();
 
         QImage copyImage = image.copy( startx, starty, endx, endy );
         bool bo = copyImage.save( ui->lineEditSnapshotImagePath->text() + "/" + filename, ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );

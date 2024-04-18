@@ -137,12 +137,13 @@ void QvkSystray::init()
 
     QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
     for ( int i = 0; i < listSpezialCheckbox.count(); i++ ) {
-        if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckboxShowclick" ) {
+        QvkSpezialCheckbox *vkSpezialCheckbox = listSpezialCheckbox.at(i);
+        if ( vkSpezialCheckbox->objectName() == "spezialCheckboxShowclick" ) {
             connect( listSpezialCheckbox.at(i), SIGNAL( signal_clicked( bool ) ), showclickAction, SLOT( setChecked( bool ) ) );
             connect( showclickAction,           SIGNAL( triggered( bool ) ),      listSpezialCheckbox.at(i), SLOT( slot_click() ) );
         }
 
-        if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckboxHalo" ) {
+        if ( vkSpezialCheckbox->objectName() == "spezialCheckboxHalo" ) {
             connect( listSpezialCheckbox.at(i), SIGNAL( signal_clicked( bool ) ), haloAction, SLOT( setChecked( bool ) ) );
             connect( haloAction,                SIGNAL( triggered( bool ) ),      listSpezialCheckbox.at(i), SLOT( slot_click() ) );
         }

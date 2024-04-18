@@ -35,7 +35,8 @@ QvkCountdownWindow::QvkCountdownWindow( QWidget *parent )
     QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Abort, this);
     buttonBox->hide();
     QList<QPushButton *> list = buttonBox->findChildren<QPushButton *>();
-    cancelText = list.at(0)->text();
+    QPushButton *pushButton = list.at(0);
+    cancelText = pushButton->text();
     show();
 }
 

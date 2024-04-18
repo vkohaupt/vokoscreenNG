@@ -51,9 +51,10 @@ void QvkShowClick::setColorButtons()
     for ( int i = 0; i < listLayaout.count(); i++ ) {
         QHBoxLayout *boxLayout = listLayaout.at(i);
         for ( int x = 0; x < 20; x++ ) {
-            if ( boxLayout->objectName().section( "_", 2, 2 ) == QVariant::fromValue( Qt::GlobalColor(x) ).toString() ) {
+            QVariant variant = QVariant::fromValue( Qt::GlobalColor(x) );
+            if ( boxLayout->objectName().section( "_", 2, 2 ) == variant.toString() ) {
                 QvkPushButton *vkPushButton = new QvkPushButton( Qt::GlobalColor(x) );
-                vkPushButton->setObjectName( "PushButton_ShowClick_color_" + QVariant::fromValue( Qt::GlobalColor(x) ).toString() );
+                vkPushButton->setObjectName( "PushButton_ShowClick_color_" + variant.toString() );
                 vkPushButton->setMaximumHeight( 23 );
                 boxLayout->addWidget( vkPushButton );
                 connect( vkPushButton, &QPushButton::clicked, this, [=]() { vkPreviewWidget->setColor( Qt::GlobalColor(x) ); } );
@@ -144,7 +145,8 @@ void QvkShowClick::slot_mousePressed( int x, int y, QString mouseButton )
         if ( ( pushButton->underMouse() == true ) and ( pushButton->objectName().contains( "ShowClick_color" ) ) ) {
             QString objectNameColor = pushButton->objectName().section( "_", 3, 3);
             for ( int x = 0; x < 20; x++ ) {
-                if ( QVariant::fromValue( Qt::GlobalColor(x) ).toString().contains( objectNameColor ) ) {
+                QVariant variant = QVariant::fromValue( Qt::GlobalColor(x) );
+                if ( variant.toString().contains( objectNameColor ) == true ) {
                     color = Qt::GlobalColor(x);
                     break;
                 }
