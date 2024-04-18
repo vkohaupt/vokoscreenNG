@@ -53,7 +53,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
     ui->setupUi( this );
 
-    global::textBrowserLog = new QTextBrowser;
     ui->verticalLayout_9->insertWidget( 0, global::textBrowserLog );
 
     QFile fileCSS( ":/pictures/css/css.qss" );
