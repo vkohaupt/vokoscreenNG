@@ -53,7 +53,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
     ui->setupUi( this );
 
-    set_LogController();
+    global::textBrowserLog = new QTextBrowser;
+    ui->verticalLayout_9->insertWidget( 0, global::textBrowserLog );
 
     QFile fileCSS( ":/pictures/css/css.qss" );
     fileCSS.open( QFile::ReadOnly | QFile::Text );
@@ -154,13 +155,6 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
     Q_UNUSED(event);
     vkRegionChoise_wl->close();
     vkSettings.saveAll( ui, this );
-}
-
-
-void QvkMainWindow_wl::set_LogController()
-{
-    vklogController = new QvkLogController();
-    connect( vklogController, SIGNAL( signal_newLogText( QString ) ), ui->textBrowserLog, SLOT( append( QString ) ) );
 }
 
 

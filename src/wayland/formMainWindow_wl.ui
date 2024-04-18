@@ -201,7 +201,7 @@
          <enum>QTabWidget::West</enum>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="tab_sidebar_screeancast">
          <attribute name="title">
@@ -1958,9 +1958,6 @@
              </attribute>
              <layout class="QVBoxLayout" name="verticalLayout_9">
               <item>
-               <widget class="QTextBrowser" name="textBrowserLog"/>
-              </item>
-              <item>
                <layout class="QHBoxLayout" name="horizontalLayout_12">
                 <item>
                  <spacer name="horizontalSpacer_6">
@@ -2007,7 +2004,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>

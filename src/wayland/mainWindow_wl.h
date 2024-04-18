@@ -51,7 +51,6 @@ private:
     QFileSystemWatcher *videoFileSystemWatcher;
     QvkContainerController_wl *vkContainerController_wl;
 
-    void set_LogController();
     void set_WindowTitle();
     void set_CornerWidget();
     void set_system_info();
