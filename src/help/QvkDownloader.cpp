@@ -27,7 +27,7 @@
 
 QvkDownloader::QvkDownloader( QString pathLocal , QObject *parent ) : QObject(parent)
 {
-    connect( &networkAccessManager, SIGNAL( finished( QNetworkReply* ) ), SLOT( slot_downloadFinished( QNetworkReply* ) ) );
+    connect( &networkAccessManager, SIGNAL( finished(QNetworkReply*) ), SLOT( slot_downloadFinished(QNetworkReply*) ) );
     tempPath = pathLocal;
 }
 

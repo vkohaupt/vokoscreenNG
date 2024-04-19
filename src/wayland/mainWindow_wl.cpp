@@ -76,8 +76,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_system_info();
     set_SpezialSliders();
     QvkInformation_wl *vkInformation = new QvkInformation_wl( this, ui );
-    connect( this, SIGNAL( signal_newVideoFilename( QString ) ), vkInformation, SLOT( slot_newVideoFilename( QString ) ) );
-    connect( this, SIGNAL( signal_beginRecordTime( QString ) ),  vkInformation, SLOT( slot_beginRecordTime( QString ) ) );
+    connect( this, SIGNAL( signal_newVideoFilename(QString) ), vkInformation, SLOT( slot_newVideoFilename(QString) ) );
+    connect( this, SIGNAL( signal_beginRecordTime(QString) ),  vkInformation, SLOT( slot_beginRecordTime(QString) ) );
     set_RegionChoice();
     set_Connects();
     set_check_all_Elements_available();
@@ -90,8 +90,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     // Misc
     videoFileSystemWatcher = new QFileSystemWatcher();
     ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
-    connect( ui->toolButtonVideoPath, SIGNAL( clicked( bool ) ),        this, SLOT( slot_newVideoPath() ) );
-    connect( ui->lineEditVideoPath,   SIGNAL( textChanged( QString ) ), this, SLOT( slot_videoFileSystemWatcherSetNewPath() ) );
+    connect( ui->toolButtonVideoPath, SIGNAL( clicked(bool) ),        this, SLOT( slot_newVideoPath() ) );
+    connect( ui->lineEditVideoPath,   SIGNAL( textChanged(QString) ), this, SLOT( slot_videoFileSystemWatcherSetNewPath() ) );
 
     // About
     ui->labelSourcecodeUrl->setText( "<a href='https://github.com/vkohaupt/vokoscreenNG'>" + tr( "Sourcecode" ) + "</a>" );
@@ -227,24 +227,24 @@ void QvkMainWindow_wl::set_CornerWidget()
 
 void QvkMainWindow_wl::set_Connects()
 {
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->pushButtonStart,                 SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastFullscreen, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastWindow,     SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->radioButtonScreencastArea,       SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->tabVideo,                        SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frameVideoPath,                  SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->frame_area,                      SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), ui->toolButtonScreencastAreaReset,   SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,                                SLOT( slot_portal_start() ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->pushButtonStart,                 SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->radioButtonScreencastFullscreen, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->radioButtonScreencastWindow,     SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->radioButtonScreencastArea,       SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->tabVideo,                        SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameVideoPath,                  SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_area,                      SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset,   SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this,                                SLOT( slot_portal_start() ) );
 
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), this,                                SLOT( slot_stop() ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonStop,                  SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->pushButtonStart,                 SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->radioButtonScreencastFullscreen, SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->radioButtonScreencastWindow,     SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->radioButtonScreencastArea,       SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->tabVideo,                        SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), ui->frameVideoPath,                  SLOT( setDisabled( bool ) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), this,                                SLOT( slot_stop() ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->pushButtonStop,                  SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->pushButtonStart,                 SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->radioButtonScreencastFullscreen, SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->radioButtonScreencastWindow,     SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->radioButtonScreencastArea,       SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->tabVideo,                        SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->frameVideoPath,                  SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop,  &QPushButton::clicked, this, [=]() {
         if ( ui->radioButtonScreencastArea->isChecked() == true ) {
             ui->frame_area->setEnabled( true );
@@ -252,25 +252,25 @@ void QvkMainWindow_wl::set_Connects()
         };
     } );
 
-    connect( ui->radioButtonScreencastFullscreen, SIGNAL( clicked( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
-    connect( ui->radioButtonScreencastWindow,     SIGNAL( clicked( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled( bool ) ) );
-    connect( ui->radioButtonScreencastArea,       SIGNAL( clicked( bool ) ), ui->toolButtonScreencastAreaReset, SLOT( setEnabled( bool ) ) );
+    connect( ui->radioButtonScreencastFullscreen, SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled(bool) ) );
+    connect( ui->radioButtonScreencastWindow,     SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled(bool) ) );
+    connect( ui->radioButtonScreencastArea,       SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setEnabled(bool) ) );
 
-    connect( ui->radioButtonScreencastFullscreen, SIGNAL( clicked( bool ) ), ui->frame_area, SLOT( setDisabled( bool ) ) );
-    connect( ui->radioButtonScreencastWindow,     SIGNAL( clicked( bool ) ), ui->frame_area, SLOT( setDisabled( bool ) ) );
-    connect( ui->radioButtonScreencastArea,       SIGNAL( clicked( bool ) ), ui->frame_area, SLOT( setEnabled( bool ) ) );
+    connect( ui->radioButtonScreencastFullscreen, SIGNAL( clicked(bool) ), ui->frame_area, SLOT( setDisabled(bool) ) );
+    connect( ui->radioButtonScreencastWindow,     SIGNAL( clicked(bool) ), ui->frame_area, SLOT( setDisabled(bool) ) );
+    connect( ui->radioButtonScreencastArea,       SIGNAL( clicked(bool) ), ui->frame_area, SLOT( setEnabled(bool) ) );
 
-    connect( portal_wl, SIGNAL( signal_portal_fd_path( QString, QString ) ), this, SLOT( slot_pre_start( QString, QString ) ) );
-    connect( portal_wl, SIGNAL( signal_portal_cancel( uint ) ),              this, SLOT( slot_portal_cancel( uint ) ) );
+    connect( portal_wl, SIGNAL( signal_portal_fd_path(QString,QString) ), this, SLOT( slot_pre_start(QString,QString) ) );
+    connect( portal_wl, SIGNAL( signal_portal_cancel(uint) ),              this, SLOT( slot_portal_cancel(uint) ) );
 
-    connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked( bool ) ), vkRegionChoise_wl, SLOT( slot_areaReset() ) );
-    connect( ui->toolButtonFramesReset,         SIGNAL( clicked( bool ) ), this,              SLOT( slot_frames_Reset() ) );
+    connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked(bool) ), vkRegionChoise_wl, SLOT( slot_areaReset() ) );
+    connect( ui->toolButtonFramesReset,         SIGNAL( clicked(bool) ), this,              SLOT( slot_frames_Reset() ) );
 
-    connect( ui->checkBoxCameraOnOff, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkBoxCameraOnOff( bool ) ) );
+    connect( ui->checkBoxCameraOnOff, SIGNAL( clicked(bool) ), this, SLOT( slot_checkBoxCameraOnOff(bool) ) );
 
-    connect( ui->pushButtonSnapshot, SIGNAL( clicked( bool ) ), this, SLOT( slot_pushButton_snapshot( bool ) ) );
+    connect( ui->pushButtonSnapshot, SIGNAL( clicked(bool) ), this, SLOT( slot_pushButton_snapshot(bool) ) );
 
-    connect( ui->pushButton_log_openfolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_logFolder() ) );
+    connect( ui->pushButton_log_openfolder, SIGNAL( clicked(bool) ), this, SLOT( slot_logFolder() ) );
 }
 
 
@@ -306,7 +306,7 @@ void QvkMainWindow_wl::slot_pushButton_snapshot( bool bo )
     QDBusReply<QDBusObjectPath> reply = i->call( "Screenshot", "", options );
 
     if( reply.isValid() ) {
-        bus.connect( "", reply.value().path(), "org.freedesktop.portal.Request", "Response", this, SLOT( slot_handle_response_snapshot( uint, QVariantMap ) ) );
+        bus.connect( "", reply.value().path(), "org.freedesktop.portal.Request", "Response", this, SLOT( slot_handle_response_snapshot(uint,QVariantMap) ) );
         qDebug().noquote() << global::nameOutput << "[Snapshot]" << reply.value().path();
     } else {
         qDebug().noquote() << global::nameOutput << "[Snapshot] Something is wrong: " << reply.error();
@@ -321,7 +321,7 @@ void QvkMainWindow_wl::slot_handle_response_snapshot( uint responseCode, QVarian
         QFileInfo fileInfo( url.toLocalFile() );
         path_to_snapshot_folder = fileInfo.absolutePath();
         disconnect( ui->pushButtonSnapshotOpenFolder, nullptr, nullptr, nullptr );
-        connect( ui->pushButtonSnapshotOpenFolder, SIGNAL( clicked( bool ) ), this, SLOT( slot_path_to_snapshot_folder( bool ) ) );
+        connect( ui->pushButtonSnapshotOpenFolder, SIGNAL( clicked(bool) ), this, SLOT( slot_path_to_snapshot_folder(bool) ) );
         qDebug().noquote() << global::nameOutput << "[Snapshot] User allowed us to take a screenshot! We can get it from" << url.toLocalFile();
 
         QvkShowMessage_wl *vkShowMessage_wl = new QvkShowMessage_wl();
@@ -669,7 +669,7 @@ void QvkMainWindow_wl::set_check_all_Elements_available()
 void QvkMainWindow_wl::set_RegionChoice()
 {
     vkRegionChoise_wl = new QvkRegionChoise_wl( ui );
-    connect( ui->radioButtonScreencastArea, SIGNAL( toggled( bool ) ), vkRegionChoise_wl, SLOT( setVisible( bool ) ) );
+    connect( ui->radioButtonScreencastArea, SIGNAL( toggled(bool) ), vkRegionChoise_wl, SLOT( setVisible(bool) ) );
 
     connect( ui->toolButton_area_top, &QPushButton::clicked, this, [=]() { ui->toolButton_area_top->setIcon( QIcon( ":/pictures/screencast/accept.png" ) );
                                                                            ui->toolButton_area_right->setIcon( QIcon( "" ) );

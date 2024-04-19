@@ -39,7 +39,7 @@ QvkInformation::QvkInformation( QvkMainWindow *vkMainWindow,
     sliderCountDown = slider_count_down;
     sliderSecondWaitBeforeRecording = slider_Second_Wait_Before_Recording;
 
-    connect( mainWindow, SIGNAL( destroyed( QObject* ) ), this, SLOT( slot_cleanup() ) );
+    connect( mainWindow, SIGNAL( destroyed(QObject*) ), this, SLOT( slot_cleanup() ) );
 
     ui->labelVideoSize->setText("");
     ui->labelFreeSize->setText("");
@@ -54,30 +54,30 @@ QvkInformation::QvkInformation( QvkMainWindow *vkMainWindow,
 
     // Recorded time
     elapsedTime = new QElapsedTimer();
-    connect( ui->pushButtonStart,    SIGNAL( clicked( bool ) ), this, SLOT( slot_timeFirstStart() ) );
-    connect( ui->pushButtonPause,    SIGNAL( clicked( bool ) ), this, SLOT( slot_summedTimeAfterPause() ) );
-    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), this, SLOT( slot_timeContinueStart() ) );
+    connect( ui->pushButtonStart,    SIGNAL( clicked(bool) ), this, SLOT( slot_timeFirstStart() ) );
+    connect( ui->pushButtonPause,    SIGNAL( clicked(bool) ), this, SLOT( slot_summedTimeAfterPause() ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), this, SLOT( slot_timeContinueStart() ) );
 
     timerRecord = new QTimer(this);
     timerRecord->setTimerType( Qt::PreciseTimer );
     timerRecord->setInterval( 1000 );
-    connect( ui->pushButtonStart,    SIGNAL( clicked( bool ) ), timerRecord, SLOT( start() ) );
+    connect( ui->pushButtonStart,    SIGNAL( clicked(bool) ), timerRecord, SLOT( start() ) );
     connect( timerRecord,            SIGNAL( timeout() ),       this,        SLOT( slot_displayRecordTime() ) );
-    connect( ui->pushButtonStop,     SIGNAL( clicked( bool ) ), timerRecord, SLOT( stop() ) );
-    connect( ui->pushButtonPause,    SIGNAL( clicked( bool ) ), timerRecord, SLOT( stop() ) );
-    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), timerRecord, SLOT( start() ) );
+    connect( ui->pushButtonStop,     SIGNAL( clicked(bool) ), timerRecord, SLOT( stop() ) );
+    connect( ui->pushButtonPause,    SIGNAL( clicked(bool) ), timerRecord, SLOT( stop() ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), timerRecord, SLOT( start() ) );
 
     // Update
     ui->label_Upate_tab_1->clear();
     ui->label_Upate_tab_4->clear();
-    connect( &version, SIGNAL( signal_newVersionAvailable( QString ) ), this, SLOT( slot_newVersionAvailable( QString ) ) );
-    connect( ui->checkBoxLookForUpdates, SIGNAL( toggled( bool ) ), &version, SLOT( slot_doDownload( bool ) ) );
+    connect( &version, SIGNAL( signal_newVersionAvailable(QString) ), this, SLOT( slot_newVersionAvailable(QString) ) );
+    connect( ui->checkBoxLookForUpdates, SIGNAL( toggled(bool) ), &version, SLOT( slot_doDownload(bool) ) );
 
     // Frames, Format, Codecs
-    connect( ui->comboBoxFormat,       SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_Format( QString ) ) );
-    connect( ui->comboBoxVideoCodec,   SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_Videocodec( QString ) ) );
-    connect( ui->comboBoxAudioCodec,   SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_Audiocodec( QString ) ) );
-    connect( mainWindow->sliderFrames, SIGNAL( valueChanged( int ) ),           this, SLOT( slot_Frames( int ) ) );
+    connect( ui->comboBoxFormat,       SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_Format(QString) ) );
+    connect( ui->comboBoxVideoCodec,   SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_Videocodec(QString) ) );
+    connect( ui->comboBoxAudioCodec,   SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_Audiocodec(QString) ) );
+    connect( mainWindow->sliderFrames, SIGNAL( valueChanged(int) ),           this, SLOT( slot_Frames(int) ) );
 
 }
 

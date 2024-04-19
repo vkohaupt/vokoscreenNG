@@ -18,8 +18,8 @@ QvkContainerController_wl::QvkContainerController_wl( Ui::formMainWindow_wl *Ui 
     set_audioencoder_to_available_or_unavailable();
 
     // GUI
-    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( const QString ) ), this, SLOT( slot_set_available_VideoCodecs_in_Combobox( const QString ) ) );
-    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged( const QString ) ), this, SLOT( slot_set_available_AudioCodecs_in_Combobox( const QString ) ) );
+    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_set_available_VideoCodecs_in_Combobox(QString) ) );
+    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_set_available_AudioCodecs_in_Combobox(QString) ) );
 
     set_available_muxer_in_ComboBox();
     set_available_formatVideoAudoicodec_in_tab();

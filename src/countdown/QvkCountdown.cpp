@@ -60,7 +60,7 @@ void QvkCountdown::createCountdownWindow()
     vkCountdownWindow = new QvkCountdownWindow( this );
     vkCountdownWindow->setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::ToolTip ); //With tooltip, no entry in Taskbar
 
-    connect( vkCountdownWindow, SIGNAL( signal_countDownCancel( bool ) ), this, SLOT( slot_cancel( bool ) ) );
+    connect( vkCountdownWindow, SIGNAL( signal_countDownCancel(bool) ), this, SLOT( slot_cancel(bool) ) );
 
     x = 0;
     y = 0;

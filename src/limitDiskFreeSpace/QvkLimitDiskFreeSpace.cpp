@@ -37,8 +37,8 @@ QvkLimitDiskFreeSpace::QvkLimitDiskFreeSpace( Ui_formMainWindow *ui_mainwindow, 
     timerStorageSize->setTimerType( Qt::PreciseTimer );
     timerStorageSize->setInterval( 1000 );
     connect( timerStorageSize, SIGNAL( timeout() ), this, SLOT( slot_storageMessagBoxByRecord() ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), timerStorageSize, SLOT( start() ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), timerStorageSize, SLOT( stop() ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), timerStorageSize, SLOT( start() ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), timerStorageSize, SLOT( stop() ) );
 }
 
 

@@ -54,7 +54,7 @@ QvkHelp::QvkHelp( Ui_formMainWindow *ui_mainwindow ) : uiHelp(new(Ui::help))
     QList<QPushButton *> list = buttonBox->findChildren<QPushButton *>();
     uiHelp->pushButtonClose->setText( list.at(0)->text() );
 
-    connect( uiHelp->pushButtonClose, SIGNAL( clicked( bool ) ), this, SLOT( close() ) );
+    connect( uiHelp->pushButtonClose, SIGNAL( clicked(bool) ), this, SLOT( close() ) );
 
     resize( 800, 600 );
     setWindowTitle( QString( tr( "Help") ) );
@@ -72,7 +72,7 @@ QvkHelp::QvkHelp( Ui_formMainWindow *ui_mainwindow ) : uiHelp(new(Ui::help))
     vk_helpPath = helpStringList.join( "/" ).append( "/");
 
     vkLocale = new QvkLocale();
-    connect( vkLocale, SIGNAL( signal_locale( QStringList) ), this, SLOT( slot_parse_locale( QStringList ) ) );
+    connect( vkLocale, SIGNAL( signal_locale(QStringList) ), this, SLOT( slot_parse_locale(QStringList) ) );
 
     vkDownloadHTML = new QvkDownloader( temporaryDirLocal.path() );
     vkDownloadFiles = new QvkDownloader( temporaryDirLocal.path() );
@@ -170,7 +170,7 @@ void QvkHelp::loadHTML( QString value )
     remotePath = fileInfo.path();
     remoteBasename = fileInfo.baseName();
     disconnect( vkDownloadHTML, nullptr, nullptr, nullptr );
-    connect( vkDownloadHTML, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_parseHTML( QString ) ) );
+    connect( vkDownloadHTML, SIGNAL( signal_fileDownloaded(QString) ), this, SLOT( slot_parseHTML(QString) ) );
     vkDownloadHTML->doDownload( value );
 }
 
@@ -246,7 +246,7 @@ void QvkHelp::slot_parseHTML( QString tempPathFileName )
             counter++;
             if ( counter == countFiles ) {
                 disconnect( vkDownloadFiles, nullptr, nullptr, nullptr );
-                connect( vkDownloadFiles, SIGNAL( signal_fileDownloaded( QString ) ), this, SLOT( slot_showHelp( QString ) ) );
+                connect( vkDownloadFiles, SIGNAL( signal_fileDownloaded(QString) ), this, SLOT( slot_showHelp(QString) ) );
             }
             vkDownloadFiles->doDownload( remotePath + "/" + fileForHTML );
             localFiles << tmpPath + + "/" + fileForHTML;

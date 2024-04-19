@@ -102,7 +102,7 @@ void Portal_wl::requestScreenSharing( int value, int mouseOnOff )
                                                             QLatin1StringView( "org.freedesktop.portal.Request" ),
                                                             QLatin1StringView( "Response" ),
                                                             this,
-                                                            SLOT( slot_gotCreateSessionResponse( uint, QVariantMap ) ) );
+                                                            SLOT( slot_gotCreateSessionResponse(uint,QVariantMap) ) );
             qDebug().noquote() << global::nameOutput << "2222222222 QDBusConnection::sessionBus().connect: " << bo;
         }
     });

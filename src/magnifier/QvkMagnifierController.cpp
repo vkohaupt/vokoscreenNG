@@ -36,7 +36,7 @@ QvkMagnifierController::QvkMagnifierController( Ui_formMainWindow *myui ) : vkMa
     sliderMagnificationSize->setMaximum( 4 );
     sliderMagnificationSize->setPageStep( 1 );
     sliderMagnificationSize->show();
-    connect( sliderMagnificationSize, SIGNAL( valueChanged( int ) ), vkMagnifier, SLOT( slot_setMagnifierChangedSize( int ) ) );
+    connect( sliderMagnificationSize, SIGNAL( valueChanged(int) ), vkMagnifier, SLOT( slot_setMagnifierChangedSize(int) ) );
 
     sliderMagnificationRectangle = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_rectangle->insertWidget( 0, sliderMagnificationRectangle );
@@ -56,17 +56,17 @@ QvkMagnifierController::QvkMagnifierController( Ui_formMainWindow *myui ) : vkMa
     sliderMagnificationElipse->setPageStep( 1 );
     sliderMagnificationElipse->show();
 
-    connect( ui->checkBoxMagnifier,         SIGNAL( clicked( bool ) ),     vkMagnifier, SLOT( slot_magnifierShow( bool ) ) );
-    connect( ui->checkBoxMagnifier,         SIGNAL( clicked( bool ) ),     this,        SLOT( slot_label_magnifier_on_screen_clear( bool ) ) );
-    connect( sliderMagnificationRectangle,  SIGNAL( valueChanged( int ) ), this,        SLOT( slot_valueChangedRectangle( int ) ) );
+    connect( ui->checkBoxMagnifier,         SIGNAL( clicked(bool) ),     vkMagnifier, SLOT( slot_magnifierShow(bool) ) );
+    connect( ui->checkBoxMagnifier,         SIGNAL( clicked(bool) ),     this,        SLOT( slot_label_magnifier_on_screen_clear(bool) ) );
+    connect( sliderMagnificationRectangle,  SIGNAL( valueChanged(int) ), this,        SLOT( slot_valueChangedRectangle(int) ) );
     sliderMagnificationRectangle->setValue( 2 );
-    connect( sliderMagnificationElipse,     SIGNAL( valueChanged( int ) ), this,        SLOT( slot_valueChangedElipse( int ) ) );
+    connect( sliderMagnificationElipse,     SIGNAL( valueChanged(int) ), this,        SLOT( slot_valueChangedElipse(int) ) );
 
-    connect( ui->toolButton_magnifier_rectangle, SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonRectangleClicked( bool ) ) );
-    connect( ui->toolButton_magnifier_elipse,    SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonElipseClicked( bool ) ) );
-    connect( ui->toolButton_magnifier_circle,    SIGNAL( clicked( bool ) ), this, SLOT( slot_toolButtonCircleClicked( bool ) ) );
+    connect( ui->toolButton_magnifier_rectangle, SIGNAL( clicked(bool) ), this, SLOT( slot_toolButtonRectangleClicked(bool) ) );
+    connect( ui->toolButton_magnifier_elipse,    SIGNAL( clicked(bool) ), this, SLOT( slot_toolButtonElipseClicked(bool) ) );
+    connect( ui->toolButton_magnifier_circle,    SIGNAL( clicked(bool) ), this, SLOT( slot_toolButtonCircleClicked(bool) ) );
 
-    connect( vkMagnifier, SIGNAL( signal_magnifier_on_screen( QScreen * ) ), this, SLOT( slot_magnifier_on_screen( QScreen * ) ) );
+    connect( vkMagnifier, SIGNAL( signal_magnifier_on_screen(QScreen*) ), this, SLOT( slot_magnifier_on_screen(QScreen*) ) );
 }
 
 

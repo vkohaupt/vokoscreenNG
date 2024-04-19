@@ -36,8 +36,8 @@ QvkLicenses::QvkLicenses( QPushButton *pushButton ) : ui( new Ui::license )
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
 
-    connect( pushButton, SIGNAL( clicked( bool ) ), this, SLOT( show() ) );
-    connect( ui->pushButtonClose, SIGNAL( clicked( bool ) ), this, SLOT( close() ) );
+    connect( pushButton, SIGNAL( clicked(bool) ), this, SLOT( show() ) );
+    connect( ui->pushButtonClose, SIGNAL( clicked(bool) ), this, SLOT( close() ) );
 
     // Is needed only for the translated text
     QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Close, this );

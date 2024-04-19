@@ -48,12 +48,12 @@ QvkInformation_wl::QvkInformation_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMai
     timerRecord->setTimerType( Qt::PreciseTimer );
     timerRecord->setInterval( 1000 );
     connect( timerRecord,            SIGNAL( timeout() ),       this,        SLOT( slot_displayRecordTime() ) );
-    connect( ui->pushButtonStop,     SIGNAL( clicked( bool ) ), timerRecord, SLOT( stop() ) );
+    connect( ui->pushButtonStop,     SIGNAL( clicked(bool) ), timerRecord, SLOT( stop() ) );
 
     // Frames, Format, Codecs
-    connect( ui->comboBoxFormat,       SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_Format( QString ) ) );
-    connect( ui->comboBoxVideoCodec,   SIGNAL( currentTextChanged( QString ) ), this, SLOT( slot_Videocodec( QString ) ) );
-    connect( mainWindow->sliderFrames, SIGNAL( valueChanged( int ) ),           this, SLOT( slot_Frames( int ) ) );
+    connect( ui->comboBoxFormat,       SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_Format(QString) ) );
+    connect( ui->comboBoxVideoCodec,   SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_Videocodec(QString) ) );
+    connect( mainWindow->sliderFrames, SIGNAL( valueChanged(int) ),           this, SLOT( slot_Frames(int) ) );
 }
 
 

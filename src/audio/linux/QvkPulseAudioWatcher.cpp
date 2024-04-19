@@ -42,8 +42,8 @@ QvkPulseAudioWatcher::QvkPulseAudioWatcher( Ui_formMainWindow *ui_mainwindow )
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( 3000 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_update() ) );
-    connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
-    connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
+    connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->labelAudioCodec,    SLOT( setEnabled(bool) ) );
+    connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->comboBoxAudioCodec, SLOT( setEnabled(bool) ) );
 }
 
 
@@ -98,7 +98,7 @@ void QvkPulseAudioWatcher::slot_update()
                 qDebug().noquote() << global::nameOutput << "[PulseAudio] Added:" << name << "Device:" << device;
 
                 QCheckBox *checkboxAudioDevice = new QCheckBox();
-                connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
+                connect( checkboxAudioDevice, SIGNAL( clicked(bool) ), this, SLOT( slot_audioDeviceSelected() ) );
                 checkboxAudioDevice->setText( name );
                 checkboxAudioDevice->setAccessibleName( device );
                 QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();

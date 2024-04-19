@@ -75,7 +75,7 @@ void QvkHalo::createSpezialSlider()
     vkSpezialSliderHole->setShowValue( false );
     vkSpezialSliderHole->setBigHandel( false );
     vkSpezialSliderHole->show();
-    connect( vkSpezialSliderHole, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Hole( int ) ) );
+    connect( vkSpezialSliderHole, SIGNAL( valueChanged(int) ), this, SLOT( slot_valueChanged_SpezialSlider_Hole(int) ) );
     vkSpezialSliderHole->setValue( holeDefault );
 
     vkSpezialSliderDiameter = new QvkSpezialSlider( Qt::Horizontal );
@@ -88,7 +88,7 @@ void QvkHalo::createSpezialSlider()
     vkSpezialSliderDiameter->setShowValue( false );
     vkSpezialSliderDiameter->setBigHandel( false );
     vkSpezialSliderDiameter->show();
-    connect( vkSpezialSliderDiameter, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Diameter( int ) ) );
+    connect( vkSpezialSliderDiameter, SIGNAL( valueChanged(int) ), this, SLOT( slot_valueChanged_SpezialSlider_Diameter(int) ) );
     vkSpezialSliderDiameter->setValue( diameterDefault );
 
     vkSpezialSliderOpacity = new QvkSpezialSlider( Qt::Horizontal );
@@ -101,7 +101,7 @@ void QvkHalo::createSpezialSlider()
     vkSpezialSliderOpacity->setShowValue( false );
     vkSpezialSliderOpacity->setBigHandel( false );
     vkSpezialSliderOpacity->show();
-    connect( vkSpezialSliderOpacity, SIGNAL( valueChanged( int ) ), this, SLOT( slot_valueChanged_SpezialSlider_Opacity( int ) ) );
+    connect( vkSpezialSliderOpacity, SIGNAL( valueChanged(int) ), this, SLOT( slot_valueChanged_SpezialSlider_Opacity(int) ) );
     vkSpezialSliderOpacity->setValue( opacityDefault );
 }
 
@@ -165,7 +165,7 @@ void QvkHalo::createSpezialCheckBox()
     vkSpezialCheckbox->set_imageUnChecked( ":/pictures/spezialCheckBox/off.png" );
     vkSpezialCheckbox->set_waitBeforeTrigger( 0 );
     ui->horizontalLayout_48->insertWidget( 1, vkSpezialCheckbox );
-    connect( vkSpezialCheckbox, SIGNAL( signal_clicked( bool ) ), this, SLOT( slot_haloOnOff( bool ) ) );
+    connect( vkSpezialCheckbox, SIGNAL( signal_clicked(bool) ), this, SLOT( slot_haloOnOff(bool) ) );
 }
 
 
