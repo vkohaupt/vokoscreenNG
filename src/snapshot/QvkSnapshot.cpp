@@ -122,7 +122,7 @@ void QvkSnapshot::slot_newImage()
             vkWinInfo = new QvkWinInfo;
             disconnect( vkWinInfo, nullptr, nullptr, nullptr );
             // The slot is triggered if no recording is running
-            connect( vkWinInfo, SIGNAL( signal_windowChanged( bool ) ), this, SLOT( slot_snapshotWindow( bool ) ) );
+            connect( vkWinInfo, SIGNAL( signal_windowChanged(bool) ), this, SLOT( slot_snapshotWindow(bool) ) );
             vkWinInfo->slot_start();
         } else {
             WId xid = vkMainWindow->vkWinInfo->getWinID();

@@ -3,7 +3,7 @@
 
 QvkVersion::QvkVersion()
 {
-    connect( &manager, SIGNAL( finished( QNetworkReply* ) ), SLOT( slot_downloadFinished( QNetworkReply* ) ) );
+    connect( &manager, SIGNAL( finished(QNetworkReply*) ), SLOT( slot_downloadFinished(QNetworkReply*) ) );
 }
 
 

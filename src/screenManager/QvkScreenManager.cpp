@@ -31,13 +31,13 @@
 
 QvkScreenManager::QvkScreenManager( QMainWindow *parent )
 {
-    connect( qApp, SIGNAL( screenAdded( QScreen* ) ),          this, SLOT( slot_screen_count_changed() ) );
-    connect( qApp, SIGNAL( screenRemoved( QScreen* ) ),        this, SLOT( slot_screen_count_changed() ) );
-    connect( qApp, SIGNAL( primaryScreenChanged( QScreen* ) ), this, SLOT( slot_screen_count_changed() ) );
+    connect( qApp, SIGNAL( screenAdded(QScreen*) ),          this, SLOT( slot_screen_count_changed() ) );
+    connect( qApp, SIGNAL( screenRemoved(QScreen*) ),        this, SLOT( slot_screen_count_changed() ) );
+    connect( qApp, SIGNAL( primaryScreenChanged(QScreen*) ), this, SLOT( slot_screen_count_changed() ) );
 
     QToolButton *toolButton = parent->findChild<QToolButton *>("toolButton_screen_name");
     if ( toolButton != NULL ) {
-        connect( toolButton, SIGNAL( toggled( bool ) ), this, SLOT( slot_toolButton_toggled( bool ) ) );
+        connect( toolButton, SIGNAL( toggled(bool) ), this, SLOT( slot_toolButton_toggled(bool) ) );
     }
 }
 
@@ -85,7 +85,7 @@ void QvkScreenManager::slot_screen_count_changed()
                     "height=" + Height;
 
             disconnect( screen.at(i), nullptr, nullptr, nullptr );
-            connect( screen.at(i), SIGNAL( geometryChanged( const QRect ) ), this, SLOT( slot_geometryChanged( const QRect ) ) );
+            connect( screen.at(i), SIGNAL( geometryChanged(QRect) ), this, SLOT( slot_geometryChanged(QRect) ) );
 
             emit signal_screen_count_changed( stringText, stringData );
         }

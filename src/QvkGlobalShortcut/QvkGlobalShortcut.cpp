@@ -35,37 +35,37 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
 
     shortcutStart = new QGlobalShortcut( this );
     connect( shortcutStart, SIGNAL( activated() ), this, SLOT( slot_startStop() ) );
-    connect( ui->checkBox_shortcut_start_strg,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_start_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_start_shift, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_start_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_start_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_start_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_start_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_start_clicked( bool ) ) );
-    connect( ui->comboBox_shortcut_start, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_start_currentIndexChanged( int ) ) );
+    connect( ui->checkBox_shortcut_start_strg,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_start_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_start_shift, SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_start_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_start_alt,   SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_start_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_start_meta,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_start_clicked(bool) ) );
+    connect( ui->comboBox_shortcut_start, SIGNAL( currentIndexChanged(int) ), this, SLOT( slot_checkbox_shortcut_start_currentIndexChanged( int ) ) );
     connect( ui->toolButton_shortcut_reset_start, SIGNAL( clicked() ), this, SLOT( slot_toolButton_shortcut_start_reset() ) );
 
     shortcutPause = new QGlobalShortcut( this );
     connect( shortcutPause, SIGNAL( activated() ), this, SLOT( slot_pauseContinue() ) );
-    connect( ui->checkBox_shortcut_pause_strg,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_pause_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_pause_shift, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_pause_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_pause_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_pause_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_pause_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_pause_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_pause_strg,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_pause_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_pause_shift, SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_pause_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_pause_alt,   SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_pause_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_pause_meta,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_pause_clicked(bool) ) );
     connect( ui->comboBox_shortcut_pause, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_pause_currentIndexChanged( int ) ) );
     connect( ui->toolButton_shortcut_reset_pause, SIGNAL( clicked() ), this, SLOT( slot_toolButton_shortcut_pause_reset() ) );
 
     shortcutMagnification = new QGlobalShortcut( this );
     connect( shortcutMagnification, SIGNAL( activated() ), ui->checkBoxMagnifier, SLOT( click() ) );
-    connect( ui->checkBox_shortcut_magnification_strg,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_magnification_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_magnification_shift, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_magnification_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_magnification_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_magnification_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_magnification_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_magnification_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_magnification_strg,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_magnification_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_magnification_shift, SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_magnification_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_magnification_alt,   SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_magnification_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_magnification_meta,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_magnification_clicked(bool) ) );
     connect( ui->comboBox_shortcut_magnification, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_magnification_currentIndexChanged( int ) ) );
     connect( ui->toolButton_shortcut_reset_magnification, SIGNAL( clicked() ), this, SLOT( slot_toolButton_shortcut_magnification_reset() ) );
 
     shortcutCamera = new QGlobalShortcut( this );
     connect( shortcutCamera, SIGNAL( activated() ), ui->checkBoxCameraOnOff, SLOT( click() ) );
-    connect( ui->checkBox_shortcut_camera_strg,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_camera_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_camera_shift, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_camera_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_camera_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_camera_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_camera_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_camera_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_camera_strg,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_camera_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_camera_shift, SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_camera_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_camera_alt,   SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_camera_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_camera_meta,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_camera_clicked(bool) ) );
     connect( ui->comboBox_shortcut_camera, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_camera_currentIndexChanged( int ) ) );
     connect( ui->toolButton_shortcut_reset_camera, SIGNAL( clicked() ), this, SLOT( slot_toolButton_shortcut_camera_reset() ) );
 
@@ -77,10 +77,10 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     }
     shortcutShowclick = new QGlobalShortcut( this );
     connect( shortcutShowclick, SIGNAL( activated() ), spezialCheckboxShowclick, SLOT( slot_click() ) );
-    connect( ui->checkBox_shortcut_showclick_strg,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_showclick_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_showclick_shift, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_showclick_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_showclick_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_showclick_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_showclick_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_showclick_clicked( bool ) ) );
+    connect( ui->checkBox_shortcut_showclick_strg,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_showclick_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_showclick_shift, SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_showclick_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_showclick_alt,   SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_showclick_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_showclick_meta,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_showclick_clicked(bool) ) );
     connect( ui->comboBox_shortcut_showclick, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_showclick_currentIndexChanged( int ) ) );
     connect( ui->toolButton_shortcut_reset_showclick, SIGNAL( clicked() ), this, SLOT( slot_toolButton_shortcut_showclick_reset() ) );
 
@@ -92,22 +92,22 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     }
     shortcutHalo = new QGlobalShortcut( this );
     connect( shortcutHalo, SIGNAL( activated() ), spezialCheckboxHalo, SLOT( slot_click() ) );
-    connect( ui->checkBox_shortcut_halo_strg,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_halo_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_halo_shift, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_halo_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_halo_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_halo_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_halo_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_halo_clicked( bool ) ) );
-    connect( ui->comboBox_shortcut_halo, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_halo_currentIndexChanged( int ) ) );
+    connect( ui->checkBox_shortcut_halo_strg,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_halo_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_halo_shift, SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_halo_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_halo_alt,   SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_halo_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_halo_meta,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_halo_clicked(bool) ) );
+    connect( ui->comboBox_shortcut_halo, SIGNAL( currentIndexChanged(int) ), this, SLOT( slot_checkbox_shortcut_halo_currentIndexChanged(int) ) );
     connect( ui->toolButton_shortcut_reset_halo, SIGNAL( clicked() ), this, SLOT( slot_toolButton_shortcut_halo_reset() ) );
 
-    connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ), this, SLOT( slot_setOrUnsetShortcut( bool ) ) );
+    connect( ui->checkBoxStartTime, SIGNAL( clicked(bool) ), this, SLOT( slot_setOrUnsetShortcut(bool) ) );
 
     shortcutSnapshot = new QGlobalShortcut( this );
     connect( shortcutSnapshot, SIGNAL( activated() ), ui->pushButtonScreencastSnapshot, SLOT( click() ) );
-    connect( ui->checkBox_shortcut_snapshot_strg,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_snapshot_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_snapshot_shift, SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_snapshot_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_snapshot_alt,   SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_snapshot_clicked( bool ) ) );
-    connect( ui->checkBox_shortcut_snapshot_meta,  SIGNAL( clicked( bool ) ), this, SLOT( slot_checkbox_shortcut_snapshot_clicked( bool ) ) );
-    connect( ui->comboBox_shortcut_snapshot, SIGNAL( currentIndexChanged( int ) ), this, SLOT( slot_checkbox_shortcut_snapshot_currentIndexChanged( int ) ) );
+    connect( ui->checkBox_shortcut_snapshot_strg,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_snapshot_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_snapshot_shift, SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_snapshot_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_snapshot_alt,   SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_snapshot_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_snapshot_meta,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_snapshot_clicked(bool) ) );
+    connect( ui->comboBox_shortcut_snapshot, SIGNAL( currentIndexChanged(int) ), this, SLOT( slot_checkbox_shortcut_snapshot_currentIndexChanged(int) ) );
     connect( ui->toolButton_shortcut_reset_snapshot, SIGNAL( clicked() ), this, SLOT( slot_toolButton_shortcut_snapshot_reset() ) );
 }
 

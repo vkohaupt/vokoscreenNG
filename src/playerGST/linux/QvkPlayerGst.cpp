@@ -112,7 +112,7 @@ void QvkPlayerGst::call_bus_message( GstBus *bus, GstMessage *message, gpointer 
 void QvkPlayerGst::init()
 {
     lineEdit_EOS = new QLineEdit;
-    connect( lineEdit_EOS, SIGNAL( textChanged( const QString ) ), this, SLOT( slot_EOS( QString ) ) );
+    connect( lineEdit_EOS, SIGNAL( textChanged(QString) ), this, SLOT( slot_EOS(QString) ) );
 
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );

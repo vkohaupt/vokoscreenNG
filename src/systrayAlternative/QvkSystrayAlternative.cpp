@@ -12,8 +12,8 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     ui = ui_mainwindow;
     sliderShowInSystrayAlternative = gui_sliderShowInSystrayAlternative;
 
-    connect( sliderShowInSystrayAlternative, SIGNAL( valueChanged( int ) ), this, SLOT( slot_resizeWindow( int ) ) );
-    connect( ui->toolButtonShowInSystrayAlternativeReset, SIGNAL( clicked( bool ) ), this, SLOT( slot_ShowInSystrayAlternativeReset( bool ) ) );
+    connect( sliderShowInSystrayAlternative, SIGNAL( valueChanged(int) ), this, SLOT( slot_resizeWindow(int) ) );
+    connect( ui->toolButtonShowInSystrayAlternativeReset, SIGNAL( clicked(bool) ), this, SLOT( slot_ShowInSystrayAlternativeReset(bool) ) );
 
     size = QSize( sliderShowInSystrayAlternative->value(), sliderShowInSystrayAlternative->value() );
 
@@ -79,61 +79,61 @@ QvkSystrayAlternative::QvkSystrayAlternative( QMainWindow *mainWindow, Ui_formMa
     exitAction->setIcon( QIcon( ":/pictures/systray/exit.png" ) );
     exitAction->setData( "Exit" );
 
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), startAction,    SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), stopAction,     SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), pauseAction,    SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), continueAction, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), continueAction, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), this,           SLOT( slot_setRecordIcon( bool ) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), startAction,    SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), stopAction,     SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), pauseAction,    SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), continueAction, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), continueAction, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this,           SLOT( slot_setRecordIcon(bool) ) );
 
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), startAction,    SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), stopAction,     SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), pauseAction,    SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), continueAction, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked( bool ) ), this,           SLOT( slot_setSystrayIcon( bool ) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), startAction,    SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), stopAction,     SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), pauseAction,    SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), continueAction, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), this,           SLOT( slot_setSystrayIcon(bool) ) );
 
-    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), startAction,    SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), stopAction,     SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), pauseAction,    SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), continueAction, SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked( bool ) ), this,           SLOT( slot_setPauseIcon( bool ) ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), startAction,    SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), stopAction,     SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), pauseAction,    SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), continueAction, SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), this,           SLOT( slot_setPauseIcon(bool) ) );
 
-    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), startAction,    SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), stopAction,     SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), pauseAction,    SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), continueAction, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonContinue, SIGNAL( clicked( bool ) ), this,           SLOT( slot_setRecordIcon( bool ) ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), startAction,    SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), stopAction,     SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), pauseAction,    SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), continueAction, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), this,           SLOT( slot_setRecordIcon(bool) ) );
 
-    connect( ui->checkBoxStartTime, SIGNAL( clicked( bool ) ),  startAction, SLOT( setDisabled( bool ) ) );
+    connect( ui->checkBoxStartTime, SIGNAL( clicked(bool) ),  startAction, SLOT( setDisabled(bool) ) );
 
-    connect( startAction,    SIGNAL( triggered( bool ) ), ui->pushButtonStart,    SLOT( click() ) );
-    connect( stopAction,     SIGNAL( triggered( bool ) ), ui->pushButtonStop,     SLOT( click() ) );
-    connect( pauseAction,    SIGNAL( triggered( bool ) ), ui->pushButtonPause,    SLOT( click() ) );
-    connect( continueAction, SIGNAL( triggered( bool ) ), ui->pushButtonContinue, SLOT( click() ) );
-    connect( snapshotAction, SIGNAL( triggered( bool ) ), ui->pushButtonSnapshotSnapshot, SLOT( click() ) );
-    connect( exitAction,     SIGNAL( triggered( bool ) ), this,                   SLOT( close() ) );
-    connect( exitAction,     SIGNAL( triggered( bool ) ), mainWindow,             SLOT( close() ) );
+    connect( startAction,    SIGNAL( triggered(bool) ), ui->pushButtonStart,    SLOT( click() ) );
+    connect( stopAction,     SIGNAL( triggered(bool) ), ui->pushButtonStop,     SLOT( click() ) );
+    connect( pauseAction,    SIGNAL( triggered(bool) ), ui->pushButtonPause,    SLOT( click() ) );
+    connect( continueAction, SIGNAL( triggered(bool) ), ui->pushButtonContinue, SLOT( click() ) );
+    connect( snapshotAction, SIGNAL( triggered(bool) ), ui->pushButtonSnapshotSnapshot, SLOT( click() ) );
+    connect( exitAction,     SIGNAL( triggered(bool) ), this,                   SLOT( close() ) );
+    connect( exitAction,     SIGNAL( triggered(bool) ), mainWindow,             SLOT( close() ) );
 
-    connect( ui->checkBoxCameraOnOff, SIGNAL( toggled( bool ) ),   cameraAction,            SLOT( setChecked( bool ) ) );
-    connect( cameraAction,            SIGNAL( triggered( bool ) ), ui->checkBoxCameraOnOff, SLOT( setChecked( bool ) ) );
-    connect( ui->comboBoxCamera,      SIGNAL( currentIndexChanged( int ) ), this,           SLOT( slot_currentIndexChanged( int ) ) );
+    connect( ui->checkBoxCameraOnOff, SIGNAL( toggled(bool) ),   cameraAction,            SLOT( setChecked(bool) ) );
+    connect( cameraAction,            SIGNAL( triggered(bool) ), ui->checkBoxCameraOnOff, SLOT( setChecked(bool) ) );
+    connect( ui->comboBoxCamera,      SIGNAL( currentIndexChanged(int) ), this,           SLOT( slot_currentIndexChanged(int) ) );
 
-    connect( ui->checkBoxMagnifier, SIGNAL( toggled( bool ) ),   magnifierAction, SLOT( setChecked( bool ) ) );
-    connect( magnifierAction,       SIGNAL( triggered( bool ) ), ui->checkBoxMagnifier, SLOT( click() ) );
+    connect( ui->checkBoxMagnifier, SIGNAL( toggled(bool) ),   magnifierAction, SLOT( setChecked(bool) ) );
+    connect( magnifierAction,       SIGNAL( triggered(bool) ), ui->checkBoxMagnifier, SLOT( click() ) );
 
     QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
     for ( int i = 0; i < listSpezialCheckbox.count(); i++ )
     {
         if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckboxShowclick" )
         {
-            connect( listSpezialCheckbox.at(i), SIGNAL( signal_clicked( bool ) ), showclickAction, SLOT( setChecked( bool ) ) );
-            connect( showclickAction,           SIGNAL( triggered( bool ) ),      listSpezialCheckbox.at(i), SLOT( slot_click() ) );
+            connect( listSpezialCheckbox.at(i), SIGNAL( signal_clicked(bool) ), showclickAction, SLOT( setChecked(bool) ) );
+            connect( showclickAction,           SIGNAL( triggered(bool) ),      listSpezialCheckbox.at(i), SLOT( slot_click() ) );
         }
 
         if ( listSpezialCheckbox.at(i)->objectName() == "spezialCheckboxHalo" )
         {
-            connect( listSpezialCheckbox.at(i), SIGNAL( signal_clicked( bool ) ), haloAction, SLOT( setChecked( bool ) ) );
-            connect( haloAction,                SIGNAL( triggered( bool ) ),      listSpezialCheckbox.at(i), SLOT( slot_click() ) );
+            connect( listSpezialCheckbox.at(i), SIGNAL( signal_clicked(bool) ), haloAction, SLOT( setChecked(bool) ) );
+            connect( haloAction,                SIGNAL( triggered(bool) ),      listSpezialCheckbox.at(i), SLOT( slot_click() ) );
         }
     }
 
