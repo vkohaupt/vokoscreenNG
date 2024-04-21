@@ -28,3 +28,6 @@ include(settings/settings_wl.pri)
 
 # ShowMessage
 include(showMessage/showMessage_wl.pri)
+
+# Camera
+include(camera/camera.pri)

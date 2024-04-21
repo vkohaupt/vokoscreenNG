@@ -201,7 +201,7 @@
          <enum>QTabWidget::West</enum>
         </property>
         <property name="currentIndex">
-         <number>3</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab_sidebar_screeancast">
          <attribute name="title">
@@ -1078,7 +1078,7 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>20</width>
+                     <width>98</width>
                      <height>98</height>
                     </rect>
                    </property>
