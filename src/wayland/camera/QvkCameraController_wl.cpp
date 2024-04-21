@@ -32,6 +32,8 @@
 #include <QCameraDevice>
 #include <QList>
 
+#include "gst/video/videooverlay.h"
+
 QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface )
 {
     ui = ui_surface;
@@ -92,6 +94,17 @@ void QvkCameraController_wl::get_allCameraDevices()
     }
 }
 
+void QvkCameraController_wl::set_winId( WId value )
+{
+    m_winID = value;
+}
+
+
+WId QvkCameraController_wl::get_winId()
+{
+    return m_winID;
+}
+
 
 void QvkCameraController_wl::slot_checkBoxCameraOnOff( bool bo )
 {
@@ -107,4 +120,22 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff( bool bo )
         gst_object_unref ( pipelineCamera );
         qDebug().noquote() << global::nameOutput << "[Camera] stop";
     }
+
+
+    pipeline  = gst_pipeline_new( "pipeline" );
+    pipewiresrc   = gst_element_factory_make( "pipewirerc", nullptr );
+    videoconvert = gst_element_factory_make( "videoconvert", nullptr );
+    waylandsink = gst_element_factory_make( "waylandsink", nullptr );
+
+    gst_bin_add_many( GST_BIN( pipeline ), pipewiresrc, videoconvert, waylandsink, nullptr );
+    gst_element_link( pipewiresrc, videoconvert  );
+    gst_element_link( videoconvert, waylandsink );
+    gst_video_overlay_set_window_handle( GST_VIDEO_OVERLAY( waylandsink ), get_winId() );
+
+    GstStateChangeReturn sret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
+    if ( sret == GST_STATE_CHANGE_FAILURE ) {
+        gst_element_set_state ( pipeline, GST_STATE_NULL );
+        gst_object_unref( pipeline );
+    }
+
 }
