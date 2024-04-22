@@ -20,55 +20,40 @@
  * --End_License--
  */
 
-#ifndef QVKCAMERACONTROLLER_H
-#define QVKCAMERACONTROLLER_H
+#ifndef QVKCAMERASINGLE_H
+#define QVKCAMERASINGLE_H
 
 #include "ui_formMainWindow_wl.h"
-
 #include "QvkSpezialSlider.h"
 #include "QvkCameraWindow_wl.h"
 
 #include <QObject>
 #include <QLabel>
-#include <QButtonGroup>
-#include <QList>
+#include <QRadioButton>
+#include <QToolButton>
+#include <QCheckBox>
+#include <QWidget>
+#include <QComboBox>
 
-#include "glib.h"
-#include <gst/gst.h>
-#include <gst/pbutils/pbutils.h>
-#include "gst/video/videooverlay.h"
 
-class QvkCameraController_wl : public QObject
+class QvkCameraSingle_wl : public QObject
 {
     Q_OBJECT
 
 public:
-    QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface );
-    virtual ~QvkCameraController_wl();
-    QvkCameraWindow_wl *vkCameraWindow_wl;
-    GstVideoOverlay *videoOverlay = nullptr;
+    QvkCameraSingle_wl( Ui_formMainWindow_wl *ui_surface );
+    virtual ~QvkCameraSingle_wl();
 
 
 public slots:
 
 
+private slots:
+
+
 private:
     Ui_formMainWindow_wl *ui;
-    GstElement *pipelineCamera = nullptr;
-    WId m_winID;
-    WId get_winId();
-    void set_winId( WId value );
-    void get_allCameraDevices();
-    QStringList listStructure;
-    QStringList listDevices;
-    GstElement *pipeline = nullptr;
-    GstElement *pipewiresrc = nullptr;
-    GstElement *videoconvert = nullptr;
-    GstElement *waylandsink = nullptr;
 
-
-private slots:
-    void slot_checkBoxCameraOnOff( bool bo );
 
 
 protected:

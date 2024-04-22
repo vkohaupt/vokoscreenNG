@@ -15,6 +15,7 @@ exit
 unix: QT += dbus
 QT += core gui widgets multimedia network
 # testlib // Achtung unter Windows öffnet sich damit die Konsole und qDebug() zeigt seine Ausgaben.
+QT += gui-private
 
 TARGET = vokoscreenNG
 TEMPLATE = app

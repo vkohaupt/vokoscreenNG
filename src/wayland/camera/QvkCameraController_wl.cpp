@@ -1,5 +1,5 @@
 ﻿/* vokoscreenNG - A desktop recorder
- * Copyright (C) 2017-2023 Volker Kohaupt
+ * Copyright (C) 2017-2024 Volker Kohaupt
  *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
@@ -32,12 +32,15 @@
 #include <QCameraDevice>
 #include <QList>
 
+#include "glib.h"
+#include <gst/gst.h>
+#include <gst/pbutils/pbutils.h>
 #include "gst/video/videooverlay.h"
 
 QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface )
 {
     ui = ui_surface;
-
+    get_allCameraDevices();
     connect( ui->checkBoxCameraOnOff, SIGNAL( clicked(bool) ), this, SLOT( slot_checkBoxCameraOnOff(bool) ) );
 }
 
@@ -53,9 +56,6 @@ void QvkCameraController_wl::get_allCameraDevices()
     GstDevice *device;
     GList *iterator = Q_NULLPTR;
     GList *list = Q_NULLPTR;
-
-    QStringList listStructure;
-    QStringList listDevices;
 
     monitor = gst_device_monitor_new();
     caps = gst_caps_new_empty_simple( "video/x-raw" );
@@ -76,14 +76,13 @@ void QvkCameraController_wl::get_allCameraDevices()
             stringStructure.append( "PROPERTIES: " + QString( gst_structure_to_string( structure ) ) );
             listStructure.append( stringStructure );
 
-            QString object_id;
-            object_id = QString( gst_structure_get_string( structure, "object.id" ) );
-
             QString camera_name;
             camera_name = QString( gst_structure_get_string( structure, "api.v4l2.cap.card" ) );
 
-            qDebug() << "---------------------------------------" << object_id << camera_name;
-            qDebug() << listStructure;
+            QString object_id;
+            object_id = QString( gst_structure_get_string( structure, "object.id" ) );
+
+            listStructure << camera_name + ":::" + object_id;
 
             gst_structure_free( structure );
         }
@@ -106,36 +105,35 @@ WId QvkCameraController_wl::get_winId()
 }
 
 
+#include <QGuiApplication>
+//#include <qpa/qplatformnativeinterface.h>
+//#include <gst/wayland/wayland.h>
 void QvkCameraController_wl::slot_checkBoxCameraOnOff( bool bo )
 {
     if ( bo == true ) {
-        get_allCameraDevices();
-//        QString launch = "pipewiresrc path=59 ! video/x-raw, width=160, height=120, framerate=10/1, format=I420 ! videoconvert ! xvimagesink";
-        QString launch = "pipewiresrc path=59 ! videoconvert ! waylandsink";
-        pipelineCamera = gst_parse_launch( launch.toUtf8(), nullptr );
-        gst_element_set_state( pipelineCamera, GST_STATE_PLAYING );
-        qDebug().noquote() << global::nameOutput << "[Camera] Start with:" << launch;
+//        vkCameraWindow_wl = new QvkCameraWindow_wl;
+//        vkCameraWindow_wl->show();
+//        set_winId( vkCameraWindow_wl->winId() );
+
+        pipeline  = gst_pipeline_new( "pipeline" );
+        pipewiresrc   = gst_element_factory_make( "pipewiresrc", nullptr );
+        videoconvert = gst_element_factory_make( "videoconvert", nullptr );
+        waylandsink = gst_element_factory_make( "xvimagesink", nullptr );
+//        waylandsink = gst_element_factory_make( "waylandsink", nullptr );
+
+        gst_bin_add_many( GST_BIN( pipeline ), pipewiresrc, videoconvert, waylandsink, nullptr );
+        gst_element_link( pipewiresrc, videoconvert  );
+        gst_element_link( videoconvert, waylandsink );
+//        gst_video_overlay_set_window_handle( GST_VIDEO_OVERLAY( waylandsink ), (guintptr)vkCameraWindow_wl->winId() );
+        g_object_set( G_OBJECT( pipewiresrc ), "path", "38", NULL );
+        GstStateChangeReturn sret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
+        if ( sret == GST_STATE_CHANGE_FAILURE ) {
+            gst_element_set_state ( pipeline, GST_STATE_NULL );
+            gst_object_unref( pipeline );
+        }
     } else {
-        gst_element_set_state( pipelineCamera, GST_STATE_NULL );
-        gst_object_unref ( pipelineCamera );
+        gst_element_set_state( pipeline, GST_STATE_NULL );
+        gst_object_unref ( pipeline );
         qDebug().noquote() << global::nameOutput << "[Camera] stop";
     }
-
-
-    pipeline  = gst_pipeline_new( "pipeline" );
-    pipewiresrc   = gst_element_factory_make( "pipewirerc", nullptr );
-    videoconvert = gst_element_factory_make( "videoconvert", nullptr );
-    waylandsink = gst_element_factory_make( "waylandsink", nullptr );
-
-    gst_bin_add_many( GST_BIN( pipeline ), pipewiresrc, videoconvert, waylandsink, nullptr );
-    gst_element_link( pipewiresrc, videoconvert  );
-    gst_element_link( videoconvert, waylandsink );
-    gst_video_overlay_set_window_handle( GST_VIDEO_OVERLAY( waylandsink ), get_winId() );
-
-    GstStateChangeReturn sret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
-    if ( sret == GST_STATE_CHANGE_FAILURE ) {
-        gst_element_set_state ( pipeline, GST_STATE_NULL );
-        gst_object_unref( pipeline );
-    }
-
 }
