@@ -137,7 +137,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         }
     }
 
-    vkSettings.readAll( ui, this );
+//    vkSettings.readAll( ui, this ); // Bitte wieder scharf schalten----------------------------------------------------------
  }
 
 

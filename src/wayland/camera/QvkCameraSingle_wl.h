@@ -35,13 +35,17 @@
 #include <QWidget>
 #include <QComboBox>
 
+#include "glib.h"
+#include <gst/gst.h>
+#include <gst/pbutils/pbutils.h>
+#include "gst/video/videooverlay.h"
 
 class QvkCameraSingle_wl : public QObject
 {
     Q_OBJECT
 
 public:
-    QvkCameraSingle_wl( Ui_formMainWindow_wl *ui_surface );
+    QvkCameraSingle_wl( Ui_formMainWindow_wl *ui_surface, QString device );
     virtual ~QvkCameraSingle_wl();
 
 
@@ -49,10 +53,17 @@ public slots:
 
 
 private slots:
+    void slot_checkBoxCameraOnOff( bool bo );
 
 
 private:
     Ui_formMainWindow_wl *ui;
+    GstElement *pipeline = nullptr;
+    GstElement *pipewiresrc = nullptr;
+    GstElement *videoconvert = nullptr;
+    GstElement *waylandsink = nullptr;
+    QString device_id;
+    QString device_name;
 
 
 

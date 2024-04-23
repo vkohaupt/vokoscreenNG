@@ -58,8 +58,7 @@ private:
     WId m_winID;
     WId get_winId();
     void set_winId( WId value );
-    void get_allCameraDevices();
-    QStringList listStructure;
+    QStringList get_allCameraDevices();
     QStringList listDevices;
     GstElement *pipeline = nullptr;
     GstElement *pipewiresrc = nullptr;
@@ -68,7 +67,6 @@ private:
 
 
 private slots:
-    void slot_checkBoxCameraOnOff( bool bo );
 
 
 protected:
