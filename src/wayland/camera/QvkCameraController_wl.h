@@ -59,10 +59,6 @@ private:
     void set_winId( WId value );
     QStringList get_allCameraDevices();
     QStringList listDevices;
-    GstElement *pipeline = nullptr;
-    GstElement *pipewiresrc = nullptr;
-    GstElement *videoconvert = nullptr;
-    GstElement *waylandsink = nullptr;
 
 
 private slots:

@@ -58,10 +58,10 @@ private slots:
 
 private:
     Ui_formMainWindow_wl *ui;
-    GstElement *pipeline = nullptr;
-    GstElement *pipewiresrc = nullptr;
-    GstElement *videoconvert = nullptr;
-    GstElement *videosink = nullptr;
+    GstElement *pipeline;
+    GstElement *pipewiresrc;
+    GstElement *videoconvert;
+    GstElement *videosink;;
     QString device_id;
     QString device_name;
 

@@ -60,16 +60,17 @@ QvkCameraController_wl::~QvkCameraController_wl()
 
 QStringList QvkCameraController_wl::get_allCameraDevices()
 {
-    GstDeviceMonitor *monitor = Q_NULLPTR;
-    GstCaps *caps = Q_NULLPTR;
-    GstDevice *device = Q_NULLPTR;
-    GList *iterator = Q_NULLPTR;
-    GList *list = Q_NULLPTR;
+    GstDeviceMonitor *monitor;
+    GstCaps *caps;
+    GstDevice *device;
+    GList *iterator;
+    GList *list;
 
     monitor = gst_device_monitor_new();
     caps = gst_caps_new_empty_simple( "video/x-raw" );
     gst_device_monitor_add_filter( monitor, "Video/Source", caps );
-    bool isMonitorStart = gst_device_monitor_start( monitor );
+    gst_caps_unref( caps );
+//    bool isMonitorStart = gst_device_monitor_start( monitor );
 
     listDevices.clear();
     list = gst_device_monitor_get_devices( monitor );
@@ -89,13 +90,13 @@ QStringList QvkCameraController_wl::get_allCameraDevices()
                 qDebug().noquote() << global::nameOutput << "[Camera]" << object_id << camera_name;
                 listDevices << object_id + ":::" + camera_name;
             }
-            gst_structure_free( structure );
         }
+        gst_structure_free( structure );
     }
 
-    if ( isMonitorStart == true ) {
-        gst_device_monitor_stop( monitor );
-    }
+//    if ( isMonitorStart == true ) {
+//        gst_device_monitor_stop( monitor );
+//    }
 
     return listDevices;
 }
