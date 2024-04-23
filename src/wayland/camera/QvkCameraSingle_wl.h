@@ -61,7 +61,7 @@ private:
     GstElement *pipeline = nullptr;
     GstElement *pipewiresrc = nullptr;
     GstElement *videoconvert = nullptr;
-    GstElement *waylandsink = nullptr;
+    GstElement *videosink = nullptr;
     QString device_id;
     QString device_name;
 

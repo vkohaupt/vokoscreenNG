@@ -63,21 +63,29 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff( bool bo )
 {
     if ( bo == true ) {
         //        vkCameraWindow_wl = new QvkCameraWindow_wl;
+        //        vkCameraWindow_wl.resize(320, 240);
         //        vkCameraWindow_wl->show();
         //        set_winId( vkCameraWindow_wl->winId() );
 
         pipeline  = gst_pipeline_new( "pipeline" );
-        pipewiresrc   = gst_element_factory_make( "pipewiresrc", nullptr );
-        videoconvert = gst_element_factory_make( "videoconvert", nullptr );
-        waylandsink = gst_element_factory_make( "xvimagesink", nullptr );
-        //        waylandsink = gst_element_factory_make( "waylandsink", nullptr );
 
-        gst_bin_add_many( GST_BIN( pipeline ), pipewiresrc, videoconvert, waylandsink, nullptr );
-        gst_element_link( pipewiresrc, videoconvert  );
-        gst_element_link( videoconvert, waylandsink );
-        //        gst_video_overlay_set_window_handle( GST_VIDEO_OVERLAY( waylandsink ), (guintptr)vkCameraWindow_wl->winId() );
-        g_object_set( G_OBJECT( pipewiresrc ), "path", device_id, NULL );
-        qDebug() << "--------------------------" << device_id;
+        pipewiresrc   = gst_element_factory_make( "pipewiresrc", nullptr );
+        g_object_set( G_OBJECT( pipewiresrc ), "target-object", device_id, NULL );
+
+        videoconvert = gst_element_factory_make( "videoconvert", nullptr );
+
+        videosink = gst_element_factory_make( "xvimagesink", nullptr );
+        // waylandsink = gst_element_factory_make( "waylandsink", nullptr );
+
+        gst_bin_add_many( GST_BIN( pipeline ), pipewiresrc, videoconvert, videosink, nullptr );
+        gst_element_link_many ( pipewiresrc, videoconvert, videosink, NULL );
+
+        // https://gstreamer.freedesktop.org/documentation/video/gstvideooverlay.html?gi-language=c
+        // gst_video_overlay_set_window_handle( GST_VIDEO_OVERLAY( waylandsink ), (guintptr)vkCameraWindow_wl->winId() );
+
+//        g_object_set( G_OBJECT( waylandsink ), "rotate-method", GST_VIDEO_ORIENTATION_90R, NULL );
+//        g_object_set( G_OBJECT( waylandsink ), "render-rectangle", "<10,10,100,100>", NULL );
+
         GstStateChangeReturn sret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
         if ( sret == GST_STATE_CHANGE_FAILURE ) {
             gst_element_set_state ( pipeline, GST_STATE_NULL );

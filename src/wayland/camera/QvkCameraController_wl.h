@@ -54,7 +54,6 @@ public slots:
 
 private:
     Ui_formMainWindow_wl *ui;
-    GstElement *pipelineCamera = nullptr;
     WId m_winID;
     WId get_winId();
     void set_winId( WId value );

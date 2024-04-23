@@ -42,8 +42,6 @@ QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface
 {
     ui = ui_surface;
 
-
-
     // Add Devices
     QStringList listDevices = get_allCameraDevices();
     for ( int i = 0; i < listDevices.count(); i++ ) {
@@ -62,9 +60,9 @@ QvkCameraController_wl::~QvkCameraController_wl()
 
 QStringList QvkCameraController_wl::get_allCameraDevices()
 {
-    GstDeviceMonitor *monitor;
-    GstCaps *caps;
-    GstDevice *device;
+    GstDeviceMonitor *monitor = Q_NULLPTR;
+    GstCaps *caps = Q_NULLPTR;
+    GstDevice *device = Q_NULLPTR;
     GList *iterator = Q_NULLPTR;
     GList *list = Q_NULLPTR;
 
@@ -77,18 +75,20 @@ QStringList QvkCameraController_wl::get_allCameraDevices()
     list = gst_device_monitor_get_devices( monitor );
     for ( iterator = list; iterator; iterator = iterator->next ) {
         device = (GstDevice*)iterator->data;
-
-        // From here properties
         GstStructure *structure = gst_device_get_properties( device );
         if ( structure != NULL ) {
-            QString object_id;
-            object_id = QString( gst_structure_get_string( structure, "object.id" ) );
+            QString device_api;
+            device_api = QString( gst_structure_get_string( structure, "device.api" ) );
+            if ( device_api == "v4l2") {
+                QString object_id;
+                // object_id = QString( gst_structure_get_string( structure, "object.id" ) );
+                object_id = QString( gst_structure_get_string( structure, "object.serial" ) );
 
-            QString camera_name;
-            camera_name = QString( gst_structure_get_string( structure, "api.v4l2.cap.card" ) );
-            qDebug() << object_id << camera_name;
-            listDevices << object_id + ":::" + camera_name;
-
+                QString camera_name;
+                camera_name = QString( gst_structure_get_string( structure, "api.v4l2.cap.card" ) );
+                qDebug().noquote() << global::nameOutput << "[Camera]" << object_id << camera_name;
+                listDevices << object_id + ":::" + camera_name;
+            }
             gst_structure_free( structure );
         }
     }
