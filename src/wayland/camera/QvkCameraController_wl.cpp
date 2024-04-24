@@ -56,6 +56,9 @@ QvkCameraController_wl::~QvkCameraController_wl()
 
 static gboolean my_bus_func( GstBus *bus, GstMessage *message, gpointer user_data )
 {
+    Q_UNUSED(bus)
+    Q_UNUSED(user_data)
+
     GstDevice *device;
 
     switch ( GST_MESSAGE_TYPE( message ) ) {
@@ -139,15 +142,10 @@ QStringList QvkCameraController_wl::get_allCameraDevices()
         device = (GstDevice*)iterator->data;
         GstStructure *structure = gst_device_get_properties( device );
         if ( structure != NULL ) {
-            QString device_api;
-            device_api = QString( gst_structure_get_string( structure, "device.api" ) );
+            QString device_api=  QString( gst_structure_get_string( structure, "device.api" ) );
             if ( device_api == "v4l2") {
-                QString object_id;
-                // object_id = QString( gst_structure_get_string( structure, "object.id" ) );
-                object_id = QString( gst_structure_get_string( structure, "object.serial" ) );
-
-                QString camera_name;
-                camera_name = QString( gst_structure_get_string( structure, "api.v4l2.cap.card" ) );
+                QString object_id = QString( gst_structure_get_string( structure, "object.serial" ) );
+                QString camera_name = QString( gst_structure_get_string( structure, "api.v4l2.cap.card" ) );
                 qDebug().noquote() << global::nameOutput << "[Camera]" << object_id << camera_name;
                 listDevices << object_id + ":::" + camera_name;
             }
