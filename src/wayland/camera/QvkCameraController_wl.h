@@ -50,16 +50,11 @@ public:
 
 
 public slots:
+    void slot_camera_added_or_removed(QString);
 
 
 private:
     Ui_formMainWindow_wl *ui;
-    WId m_winID;
-    WId get_winId();
-    void set_winId( WId value );
-    QStringList get_allCameraDevices();
-    QStringList listDevices;
-
     void test123();
 
 

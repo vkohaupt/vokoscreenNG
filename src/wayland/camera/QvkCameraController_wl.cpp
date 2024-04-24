@@ -32,6 +32,7 @@
 #include <QMediaDevices>
 #include <QCameraDevice>
 #include <QList>
+#include <QLineEdit>
 
 #include "glib.h"
 #include <gst/gst.h>
@@ -53,8 +54,8 @@ QvkCameraController_wl::~QvkCameraController_wl()
 {
 }
 
-
-static gboolean my_bus_func( GstBus *bus, GstMessage *message, gpointer user_data )
+QLineEdit *lineEdit;
+gboolean my_bus_func( GstBus *bus, GstMessage *message, gpointer user_data )
 {
     Q_UNUSED(bus)
     Q_UNUSED(user_data)
@@ -74,6 +75,7 @@ static gboolean my_bus_func( GstBus *bus, GstMessage *message, gpointer user_dat
                 QString camera_name = QString( gst_structure_get_string( structure, "api.v4l2.cap.card" ) );
                 qDebug().noquote() << global::nameOutput << "[Camera added:]" << object_id << camera_name;
                 // listDevices << object_id + ":::" + camera_name;
+                lineEdit->setText( object_id + ":::" + camera_name + ":::" + "added");
             }
         }
         gst_object_unref( device );
@@ -90,7 +92,7 @@ static gboolean my_bus_func( GstBus *bus, GstMessage *message, gpointer user_dat
                 QString object_id = QString( gst_structure_get_string( structure, "object.serial" ) );
                 QString camera_name = QString( gst_structure_get_string( structure, "api.v4l2.cap.card" ) );
                 qDebug().noquote() << global::nameOutput << "[Camera removed:]" << object_id << camera_name;
-                // listDevices << object_id + ":::" + camera_name;
+                lineEdit->setText( object_id + ":::" + camera_name + ":::" + "removed");
             }
         }
         gst_object_unref( device );
@@ -105,6 +107,9 @@ static gboolean my_bus_func( GstBus *bus, GstMessage *message, gpointer user_dat
 
 void QvkCameraController_wl::test123()
 {
+    lineEdit = new QLineEdit;
+    connect( lineEdit, SIGNAL( textChanged(QString) ), this, SLOT( slot_camera_added_or_removed(QString) ) );
+
     GstDeviceMonitor *monitor;
     GstBus *bus;
     GstCaps *caps;
@@ -122,51 +127,20 @@ void QvkCameraController_wl::test123()
 }
 
 
-QStringList QvkCameraController_wl::get_allCameraDevices()
+void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 {
-    GstDeviceMonitor *monitor;
-    GstCaps *caps;
-    GstDevice *device;
-    GList *iterator;
-    GList *list;
+    if ( device.contains( "added" ) ) {
+        new QvkCameraSingle_wl( ui, device );
+    }
 
-    monitor = gst_device_monitor_new();
-    caps = gst_caps_new_empty_simple( "video/x-raw" );
-    gst_device_monitor_add_filter( monitor, "Video/Source", caps );
-    gst_caps_unref( caps );
-    bool isMonitorStart = gst_device_monitor_start( monitor );
-
-    listDevices.clear();
-    list = gst_device_monitor_get_devices( monitor );
-    for ( iterator = list; iterator; iterator = iterator->next ) {
-        device = (GstDevice*)iterator->data;
-        GstStructure *structure = gst_device_get_properties( device );
-        if ( structure != NULL ) {
-            QString device_api=  QString( gst_structure_get_string( structure, "device.api" ) );
-            if ( device_api == "v4l2") {
-                QString object_id = QString( gst_structure_get_string( structure, "object.serial" ) );
-                QString camera_name = QString( gst_structure_get_string( structure, "api.v4l2.cap.card" ) );
-                qDebug().noquote() << global::nameOutput << "[Camera]" << object_id << camera_name;
-                listDevices << object_id + ":::" + camera_name;
+    if ( device.contains( "removed" ) ) {
+        QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>( "checkBoxCameraOnOff" );
+        for ( int i = 0; i < listCheckBox.count(); i++ ) {
+            QCheckBox *checkBox = listCheckBox.at(i);
+            if ( checkBox->accessibleName().section( ":::", 0, 0 ) == device.section( ":::", 0, 0 ) ) {
+                ui->layoutAllCameras->removeWidget( checkBox );
+                delete checkBox;
             }
         }
-        gst_structure_free( structure );
     }
-
-    if ( isMonitorStart == true ) {
-        gst_device_monitor_stop( monitor );
-    }
-
-    return listDevices;
-}
-
-void QvkCameraController_wl::set_winId( WId value )
-{
-    m_winID = value;
-}
-
-
-WId QvkCameraController_wl::get_winId()
-{
-    return m_winID;
 }
