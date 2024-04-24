@@ -1078,7 +1078,7 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>20</width>
+                     <width>98</width>
                      <height>98</height>
                     </rect>
                    </property>
@@ -1784,7 +1784,21 @@
               <item>
                <layout class="QGridLayout" name="gridLayout_3">
                 <item row="0" column="0">
-                 <layout class="QVBoxLayout" name="layoutAllCameras"/>
+                 <layout class="QVBoxLayout" name="layoutAllCameras">
+                  <item>
+                   <spacer name="verticalSpacer_6">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
                 </item>
                </layout>
               </item>
@@ -1991,7 +2005,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>

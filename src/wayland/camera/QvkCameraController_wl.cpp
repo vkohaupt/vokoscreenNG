@@ -45,8 +45,8 @@ QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface
     test123();
 
     // Am Ende ein spaceritem einfügen
-    QSpacerItem *spacerItem = new QSpacerItem( 100,100, QSizePolicy::Expanding, QSizePolicy::Expanding );
-    ui->layoutAllCameras->addItem( spacerItem );
+//    QSpacerItem *spacerItem = new QSpacerItem( 100,100, QSizePolicy::Expanding, QSizePolicy::Expanding );
+//    ui->layoutAllCameras->addItem( spacerItem );
 }
 
 

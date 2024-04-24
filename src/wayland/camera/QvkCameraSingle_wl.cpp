@@ -48,7 +48,7 @@ QvkCameraSingle_wl::QvkCameraSingle_wl( Ui_formMainWindow_wl *ui_surface, QStrin
     checkBoxCameraOnOff->setText( device_name );
     checkBoxCameraOnOff->setAccessibleName( device );
     checkBoxCameraOnOff->setObjectName( "checkBoxCameraOnOff" );
-    ui->layoutAllCameras->addWidget( checkBoxCameraOnOff );
+    ui->layoutAllCameras->insertWidget( 0, checkBoxCameraOnOff );
     connect( checkBoxCameraOnOff, SIGNAL( clicked(bool) ), this, SLOT( slot_checkBoxCameraOnOff(bool) ) );
 }
 
