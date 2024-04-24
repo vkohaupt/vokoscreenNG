@@ -41,12 +41,7 @@
 QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface )
 {
     ui = ui_surface;
-
-    // Add Devices
-    QStringList listDevices = get_allCameraDevices();
-    for ( int i = 0; i < listDevices.count(); i++ ) {
-        QvkCameraSingle_wl *vkCameraSingle_wl = new QvkCameraSingle_wl( ui, listDevices.at(i) );
-    }
+    test123();
 
     // Am Ende ein spaceritem einfügen
     QSpacerItem *spacerItem = new QSpacerItem( 100,100, QSizePolicy::Expanding, QSizePolicy::Expanding );
@@ -57,6 +52,72 @@ QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface
 QvkCameraController_wl::~QvkCameraController_wl()
 {
 }
+
+
+static gboolean my_bus_func( GstBus *bus, GstMessage *message, gpointer user_data )
+{
+    GstDevice *device;
+
+    switch ( GST_MESSAGE_TYPE( message ) ) {
+    case GST_MESSAGE_DEVICE_ADDED:
+    {
+        gst_message_parse_device_added( message, &device );
+
+        GstStructure *structure = gst_device_get_properties( device );
+        if ( structure != NULL ) {
+            QString device_api = QString( gst_structure_get_string( structure, "device.api" ) );
+            if ( device_api == "v4l2") {
+                QString object_id = QString( gst_structure_get_string( structure, "object.serial" ) );
+                QString camera_name = QString( gst_structure_get_string( structure, "api.v4l2.cap.card" ) );
+                qDebug().noquote() << global::nameOutput << "[Camera added:]" << object_id << camera_name;
+                // listDevices << object_id + ":::" + camera_name;
+            }
+        }
+        gst_object_unref( device );
+        break;
+    }
+    case GST_MESSAGE_DEVICE_REMOVED:
+    {
+        gst_message_parse_device_removed( message, &device );
+
+        GstStructure *structure = gst_device_get_properties( device );
+        if ( structure != NULL ) {
+            QString device_api = QString( gst_structure_get_string( structure, "device.api" ) );
+            if ( device_api == "v4l2") {
+                QString object_id = QString( gst_structure_get_string( structure, "object.serial" ) );
+                QString camera_name = QString( gst_structure_get_string( structure, "api.v4l2.cap.card" ) );
+                qDebug().noquote() << global::nameOutput << "[Camera removed:]" << object_id << camera_name;
+                // listDevices << object_id + ":::" + camera_name;
+            }
+        }
+        gst_object_unref( device );
+        break;
+    }
+    default:
+        break;
+    }
+    return G_SOURCE_CONTINUE;
+}
+
+
+void QvkCameraController_wl::test123()
+{
+    GstDeviceMonitor *monitor;
+    GstBus *bus;
+    GstCaps *caps;
+
+    monitor = gst_device_monitor_new();
+    bus = gst_device_monitor_get_bus( monitor );
+    gst_bus_add_watch( bus, my_bus_func, NULL );
+    gst_object_unref( bus );
+
+    caps = gst_caps_new_empty_simple( "video/x-raw" );
+    gst_device_monitor_add_filter( monitor, "Video/Source", caps );
+    gst_caps_unref( caps );
+
+    gst_device_monitor_start( monitor );
+}
+
 
 QStringList QvkCameraController_wl::get_allCameraDevices()
 {
@@ -70,7 +131,7 @@ QStringList QvkCameraController_wl::get_allCameraDevices()
     caps = gst_caps_new_empty_simple( "video/x-raw" );
     gst_device_monitor_add_filter( monitor, "Video/Source", caps );
     gst_caps_unref( caps );
-//    bool isMonitorStart = gst_device_monitor_start( monitor );
+    bool isMonitorStart = gst_device_monitor_start( monitor );
 
     listDevices.clear();
     list = gst_device_monitor_get_devices( monitor );
@@ -94,9 +155,9 @@ QStringList QvkCameraController_wl::get_allCameraDevices()
         gst_structure_free( structure );
     }
 
-//    if ( isMonitorStart == true ) {
-//        gst_device_monitor_stop( monitor );
-//    }
+    if ( isMonitorStart == true ) {
+        gst_device_monitor_stop( monitor );
+    }
 
     return listDevices;
 }

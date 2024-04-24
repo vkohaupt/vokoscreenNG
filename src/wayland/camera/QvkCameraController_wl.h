@@ -60,6 +60,8 @@ private:
     QStringList get_allCameraDevices();
     QStringList listDevices;
 
+    void test123();
+
 
 private slots:
 
