@@ -42,11 +42,7 @@
 QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface )
 {
     ui = ui_surface;
-    test123();
-
-    // Am Ende ein spaceritem einfügen
-//    QSpacerItem *spacerItem = new QSpacerItem( 100,100, QSizePolicy::Expanding, QSizePolicy::Expanding );
-//    ui->layoutAllCameras->addItem( spacerItem );
+    startCameraMonitoring();
 }
 
 
@@ -105,7 +101,7 @@ gboolean my_bus_func( GstBus *bus, GstMessage *message, gpointer user_data )
 }
 
 
-void QvkCameraController_wl::test123()
+void QvkCameraController_wl::startCameraMonitoring()
 {
     lineEdit = new QLineEdit;
     connect( lineEdit, SIGNAL( textChanged(QString) ), this, SLOT( slot_camera_added_or_removed(QString) ) );

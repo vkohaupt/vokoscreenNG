@@ -55,7 +55,7 @@ public slots:
 
 private:
     Ui_formMainWindow_wl *ui;
-    void test123();
+    void startCameraMonitoring();
 
 
 private slots:

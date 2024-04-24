@@ -43,47 +43,52 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *
     QList<QToolButton *> listToolButton = ui_mainwindow->centralwidget->findChildren<QToolButton *>();
     for ( int i = 0; i < listToolButton.count(); i++ ) {
         // We found a setting, then we want set or not.
-        if ( settings.value( listToolButton.at(i)->objectName(), false ).toBool() == true ) {
-            listToolButton.at(i)->click();
+        QToolButton *toolButton = listToolButton.at(i);
+        if ( settings.value( toolButton->objectName(), false ).toBool() == true ) {
+            toolButton->click();
         }
     }
 
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralwidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadiobuttons.count(); i++ ) {
+        QRadioButton *radioButton = listRadiobuttons.at(i);
         // We have no settings-file(first start after install) but this object we want set as default.
-        if ( ( listRadiobuttons.at(i)->objectName() == "radioButtonScreencastFullscreen" ) and
-            ( settings.value( listRadiobuttons.at(i)->objectName(), true ).toBool() == true ) ) {
-            listRadiobuttons.at(i)->click();
+        if ( ( radioButton->objectName() == "radioButtonScreencastFullscreen" ) and
+            ( settings.value( radioButton->objectName(), true ).toBool() == true ) ) {
+            radioButton->click();
             continue;
         }
 
-        if ( settings.value( listRadiobuttons.at(i)->objectName(), false ).toBool() == true ) {
-            listRadiobuttons.at(i)->click();
+        if ( settings.value( radioButton->objectName(), false ).toBool() == true ) {
+            radioButton->click();
         }
     }
 
     QList<QCheckBox *> listCheckBox = ui_mainwindow->centralwidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
         // We found a setting, then we want set or not.
-        if ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true ) {
-            listCheckBox.at(i)->click();
+        QCheckBox *checkBox = listCheckBox.at(i);
+        if ( settings.value( checkBox->objectName(), false ).toBool() == true ) {
+            checkBox->click();
         }
     }
 
     QList<QSlider *> listSlider = ui_mainwindow->centralwidget->findChildren<QSlider *>();
     for ( int i = 0; i < listSlider.count(); i++ ) {
-        QVariant variant = settings.value( listSlider.at(i)->objectName() );
+        QSlider *slider = listSlider.at(i);
+        QVariant variant = settings.value( slider->objectName() );
         if ( variant.isValid() ) {
-            listSlider.at(i)->setValue( variant.toInt() );
+            slider->setValue( variant.toInt() );
         }
     }
 
     QList<QComboBox *> listComboBox = ui_mainwindow->centralwidget->findChildren<QComboBox *>();
     for ( int i = 0; i < listComboBox.count(); i++ ) {
-        QString valueText = settings.value( listComboBox.at(i)->objectName(), "" ).toString();
-        int valueInt = listComboBox.at(i)->findText( valueText );
+        QComboBox *comboBox = listComboBox.at(i);
+        QString valueText = settings.value( comboBox->objectName(), "" ).toString();
+        int valueInt = comboBox->findText( valueText );
         if ( valueInt > -1 ) {
-            listComboBox.at(i)->setCurrentIndex( valueInt );
+            comboBox->setCurrentIndex( valueInt );
         }
     }
 
@@ -102,32 +107,38 @@ void QvkSettings_wl::saveAll( Ui_formMainWindow_wl *ui_mainwindow , QMainWindow 
 
     QList<QCheckBox *> listCheckBox = ui_mainwindow->centralwidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
-        settings.setValue( listCheckBox.at(i)->objectName(), listCheckBox.at(i)->isChecked() );
+        QCheckBox *checkBox = listCheckBox.at(i);
+        settings.setValue( checkBox->objectName(), checkBox->isChecked() );
     }
 
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralwidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadiobuttons.count(); i++ ) {
-        settings.setValue( listRadiobuttons.at(i)->objectName(), listRadiobuttons.at(i)->isChecked() );
+        QRadioButton *radioButton = listRadiobuttons.at(i);
+        settings.setValue( radioButton->objectName(), radioButton->isChecked() );
     }
 
     QList<QToolButton *> listToolButton = ui_mainwindow->centralwidget->findChildren<QToolButton *>();
     for ( int i = 0; i < listToolButton.count(); i++ ) {
-        settings.setValue( listToolButton.at(i)->objectName(), listToolButton.at(i)->isChecked() );
+        QToolButton *toolButton = listToolButton.at(i);
+        settings.setValue( toolButton->objectName(), toolButton->isChecked() );
     }
 
     QList<QComboBox *> listComboBox = ui_mainwindow->centralwidget->findChildren<QComboBox *>();
     for ( int i = 0; i < listComboBox.count(); i++ ) {
-        settings.setValue( listComboBox.at(i)->objectName(), listComboBox.at(i)->currentText() );
+        QComboBox *comboBox = listComboBox.at(i);
+        settings.setValue( comboBox->objectName(), comboBox->currentText() );
     }
 
     QList<QSlider *> listSlider = ui_mainwindow->centralwidget->findChildren<QSlider *>();
     for ( int i = 0; i < listSlider.count(); i++ ) {
-        settings.setValue( listSlider.at(i)->objectName(), listSlider.at(i)->value() );
+        QSlider *slider = listSlider.at(i);
+        settings.setValue( slider->objectName(), slider->value() );
     }
 
     QList<QLineEdit *> listLineEdit = ui_mainwindow->centralwidget->findChildren<QLineEdit *>();
     for ( int i = 0; i < listLineEdit.count(); i++ ) {
-        settings.setValue( listLineEdit.at(i)->objectName(), listLineEdit.at(i)->text() );
+        QLineEdit *lineEdit = listLineEdit.at(i);
+        settings.setValue( lineEdit->objectName(), lineEdit->text() );
     }
 
     settings.endGroup();
