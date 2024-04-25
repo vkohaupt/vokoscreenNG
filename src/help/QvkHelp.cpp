@@ -39,6 +39,7 @@
 #include <QTextDocument>
 #include <QFont>
 #include <QLocale>
+#include <QPixmap>
 
 /*
  * The remote HTML-file and the toolbutton have the same name.
