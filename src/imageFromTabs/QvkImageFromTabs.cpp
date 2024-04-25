@@ -25,6 +25,7 @@
 
 #include <QScreen>
 #include <QGuiApplication>
+#include <QCoreApplication>
 #include <QDebug>
 #include <QStandardPaths>
 #include <QPushButton>
@@ -34,6 +35,14 @@
 #include <QDesktopServices>
 #include <QBitmap>
 #include <QColor>
+#include <QToolButton>
+#include <QList>
+#include <QPixmap>
+#include <QMap>
+#include <QPainter>
+#include <QRectF>
+#include <QPen>
+#include <QPoint>
 
 QvkImageFromTabs::QvkImageFromTabs( QvkMainWindow *parent )
 {
@@ -63,7 +72,8 @@ void QvkImageFromTabs::slot_make_picture_from_tabs()
 
     QList<QToolButton *> listToolButton = myParent->ui->widgetSidbar->findChildren<QToolButton *>();
     for ( int i = 1; i < listToolButton.count(); i++ ) {
-        listToolButton.at(i)->click();
+        QToolButton *toolButton = listToolButton.at(i);
+        toolButton->click();
         for ( int y = 0; y < 30; y++ ) {
             QCoreApplication::processEvents();
             QThread::msleep( 20 );
@@ -71,7 +81,9 @@ void QvkImageFromTabs::slot_make_picture_from_tabs()
         slot_make_picture_from_tab();
     }
 
-    listToolButton.at(0)->click();
+
+    QToolButton *toolButton = listToolButton.at(0);
+    toolButton->click();
 
     if ( QDesktopServices::openUrl( QUrl( "file:///" + QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ), QUrl::TolerantMode ) ) == false ) {
         QPixmap pixmap( ":/pictures/status/information.png" );
@@ -95,11 +107,13 @@ void QvkImageFromTabs::slot_make_picture_from_tab()
     int sumScreenWidth = 0;
     QMap<int, QString> map;
     for ( int i = 0; i < screenList.count(); i++ ) {
-        sumScreenWidth = sumScreenWidth + screenList.at(i)->size().width();
-        map.insert( screenList.at(i)->size().height(), QString::number( screenList.at(i)->size().height() ) );
+        QScreen *screen = screenList.at(i);
+        sumScreenWidth = sumScreenWidth + screen->size().width();
+        map.insert( screen->size().height(), QString::number( screen->size().height() ) );
     }
 
-    QPixmap pixmapScreen( screenList.at(0)->grabWindow( 0, 0, 0, sumScreenWidth, map.values().last().toInt() ) );
+    QScreen *screen = screenList.at(0);
+    QPixmap pixmapScreen = screen->grabWindow( 0, 0, 0, sumScreenWidth, map.values().last().toInt() );
 
     int left = myParent->windowHandle()->frameMargins().left();
     int top = myParent->windowHandle()->frameMargins().top();
