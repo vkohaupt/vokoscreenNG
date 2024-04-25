@@ -217,7 +217,8 @@ void QvkMainWindow_wl::set_CornerWidget()
         QLabel *label = new QLabel();
         label->setPixmap( pixmap );
         label->setEnabled( false );
-        list.at( i )->setCornerWidget( label, Qt::TopRightCorner );
+        QTabWidget *tabWidget = list.at( i );
+        tabWidget->setCornerWidget( label, Qt::TopRightCorner );
     }
 }
 

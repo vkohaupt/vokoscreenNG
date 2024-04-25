@@ -8,8 +8,6 @@
 
 QvkContainerController_wl::QvkContainerController_wl( Ui::formMainWindow_wl *Ui )
 {
-//    Q_UNUSED(parent)
-
     ui = Ui;
     vkContainer_wl = new QvkContainer_wl;
 
