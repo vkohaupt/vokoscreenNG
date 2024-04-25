@@ -23,11 +23,22 @@
 #include "QvkHelp.h"
 #include "global.h"
 
+#include <QDialogButtonBox>
+#include <QPushButton>
 #include <QMessageBox>
-#include <QLabel>
-#include <QDir>
-#include <QTextDocument>
+#include <QList>
+#include <QIcon>
+#include <QStringList>
+#include <QToolButton>
 #include <QSettings>
+#include <QFileInfo>
+#include <QFile>
+#include <QTextStream>
+#include <QDir>
+#include <QIODevice>
+#include <QTextDocument>
+#include <QFont>
+#include <QLocale>
 
 /*
  * The remote HTML-file and the toolbutton have the same name.
@@ -80,9 +91,10 @@ QvkHelp::QvkHelp( Ui_formMainWindow *ui_mainwindow ) : uiHelp(new(Ui::help))
     QIcon iconHelp( ":/pictures/help/information.png" );
     QList<QToolButton *> listToolButton = ui->centralWidget->findChildren<QToolButton *>();
     for ( int i = 0; i < listToolButton.count(); i++ ) {
-        if ( listToolButton.at(i)->objectName().startsWith( "help_") ) {
-            listToolButton.at(i)->setIcon( iconHelp );
-            listToolButton.at(i)->installEventFilter( this );
+        QToolButton *toolButton = listToolButton.at(i);
+        if ( toolButton->objectName().startsWith( "help_") ) {
+            toolButton->setIcon( iconHelp );
+            toolButton->installEventFilter( this );
         }
     }
 }

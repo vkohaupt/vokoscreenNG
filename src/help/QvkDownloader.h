@@ -25,15 +25,11 @@
 
 #include <QObject>
 #include <QNetworkAccessManager>
-#include <QNetworkRequest>
 #include <QNetworkReply>
-#include <QFile>
-#include <QFileInfo>
-#include <QList>
-#include <QStringList>
-#include <QUrl>
-#include <QStandardPaths>
 #include <QVector>
+#include <QUrl>
+#include <QIODevice>
+
 
 class QvkDownloader : public QObject
 {

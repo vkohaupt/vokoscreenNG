@@ -30,10 +30,10 @@
 
 #include <QObject>
 #include <QTemporaryDir>
-
 #include <QMouseEvent>
 #include <QEvent>
-
+#include <QStringList>
+#include <QEvent>
 
 class QvkHelp: public QWidget
 {

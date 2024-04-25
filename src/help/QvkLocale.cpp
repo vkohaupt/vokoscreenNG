@@ -23,6 +23,10 @@
 #include "QvkLocale.h"
 #include "global.h"
 
+#include <QFile>
+#include <QIODevice>
+#include <QTextStream>
+
 QvkLocale::QvkLocale()
 {
     vkDownload = new QvkDownloader( temporaryDirLocal.path() );

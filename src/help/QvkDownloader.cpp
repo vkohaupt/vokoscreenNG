@@ -23,7 +23,17 @@
 #include "QvkDownloader.h"
 #include "global.h"
 
+#include <QObject>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QDateTime>
 #include <QSettings>
+#include <QByteArray>
+#include <QFileInfo>
+#include <QIODevice>
+#include <QFile>
+#include <QFileInfo>
+
 
 QvkDownloader::QvkDownloader( QString pathLocal , QObject *parent ) : QObject(parent)
 {

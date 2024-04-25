@@ -27,8 +27,7 @@
 
 #include <QObject>
 #include <QTemporaryDir>
-#include <QMainWindow>
-
+#include <QStringList>
 
 class QvkLocale: public QObject
 {
@@ -50,7 +49,7 @@ private:
 
 
 private slots:
-    void slot_parse(QString tempPathFileName );
+    void slot_parse( QString tempPathFileName );
 
 
 protected:
