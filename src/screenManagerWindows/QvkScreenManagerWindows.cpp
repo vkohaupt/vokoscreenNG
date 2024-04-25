@@ -135,7 +135,7 @@ QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
 
     QToolButton *toolButton = parent->findChild<QToolButton *>("toolButton_screen_name");
     if ( toolButton != NULL ) {
-        connect( toolButton, SIGNAL( toggled( bool ) ), this, SLOT( slot_toolButton_toggled( bool ) ) );
+        connect( toolButton, SIGNAL( toggled(bool) ), this, SLOT( slot_toolButton_toggled(bool) ) );
     }
 }
 
