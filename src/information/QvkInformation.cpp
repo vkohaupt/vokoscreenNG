@@ -26,8 +26,16 @@
 
 #include <QTimer>
 #include <QTime>
+#include <QElapsedTimer>
 #include <QStorageInfo>
 #include <QDebug>
+#include <QCheckBox>
+#include <QList>
+#include <QDir>
+#include <QStringList>
+#include <QIcon>
+#include <QFileInfo>
+
 
 QvkInformation::QvkInformation( QvkMainWindow *vkMainWindow,
                                 Ui_formMainWindow *ui_mainwindow,
@@ -105,7 +113,8 @@ void QvkInformation::slot_Audiocodec( QString value )
     bool bo = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
-        if ( listCheckBox.at(i)->checkState() == Qt::Checked ) {
+        QCheckBox *checkBox = listCheckBox.at(i);
+        if ( checkBox->checkState() == Qt::Checked ) {
             bo = true;
             break;
         }
