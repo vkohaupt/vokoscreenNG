@@ -30,4 +30,4 @@ include(settings/settings_wl.pri)
 include(showMessage/showMessage_wl.pri)
 
 # Camera
-include(camera/camera.pri)
+include(camera/camera_wl.pri)

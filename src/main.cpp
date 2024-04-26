@@ -40,8 +40,6 @@
 #include "QvkSettings.h"
 #endif
 
-
-
 #include <gst/gst.h>
 
 int main(int argc, char *argv[])
@@ -52,7 +50,6 @@ int main(int argc, char *argv[])
 
     global::textBrowserLog = new QTextBrowser;
     QvkLogController *vklogController = new QvkLogController;
-    Q_UNUSED(vklogController)
 
     QString help;
     help.append( "\n" );
