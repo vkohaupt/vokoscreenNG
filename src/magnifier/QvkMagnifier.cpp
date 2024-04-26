@@ -463,7 +463,7 @@ void QvkMagnifier::slot_mytimer()
                     return;
         }
 
-        QPixmap painterPixmap( pixmap.width() * factor, pixmap.height() * factor );
+        QPixmap painterPixmap( width(), height() );
         painterPixmap.fill( Qt::transparent );
 
         QPainter painter;
@@ -477,7 +477,7 @@ void QvkMagnifier::slot_mytimer()
                     painter.setClipPath( path );
         }
 
-        QPixmap pix = pixmap.scaled( painterPixmap.width(), painterPixmap.height(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+        QPixmap pix = pixmap.scaled( pixmap.width() * factor, pixmap.height() * factor, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
         painter.drawPixmap( QPoint( 0, 0 ), pix );
 
         QPen pen;
@@ -486,6 +486,11 @@ void QvkMagnifier::slot_mytimer()
         painter.setPen( pen );
         if ( ( isToolButtonElipse == true ) or ( isToolButtonCircle == true ) ) {
                     painter.drawEllipse( 0, 0, width(), height() );
+                    /*                    qDebug() << "pixmap:" << pixmap.width() << pixmap.height() \
+                             << "PainterPixmap:" << painterPixmap.width() << painterPixmap.height() \
+                             << "pix:" << pix.width() << pix.height()
+                             << "Widget:" << width() << height();
+*/
         } else {
                     painter.drawRect( 0, 0, width(), height() );
         }

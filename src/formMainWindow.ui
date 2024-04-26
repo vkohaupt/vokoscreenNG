@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>893</width>
-    <height>520</height>
+    <height>537</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -351,7 +351,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -1143,8 +1143,8 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>21</width>
-                      <height>18</height>
+                      <width>654</width>
+                      <height>275</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices"/>
@@ -2707,8 +2707,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>20</width>
-                   <height>98</height>
+                   <width>455</width>
+                   <height>387</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
