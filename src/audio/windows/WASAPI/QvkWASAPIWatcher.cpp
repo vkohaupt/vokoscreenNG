@@ -54,7 +54,8 @@ void QvkWASAPIWatcher::slot_update()
     QList<QCheckBox *> listCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
     QStringList stringListCheckBox;
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
-        stringListCheckBox << listCheckBox.at(i)->accessibleName();
+        QCheckBox *checkBox = listCheckBox.at(i);
+        stringListCheckBox << checkBox->accessibleName();
     }
 
     // Add new Device
@@ -92,10 +93,11 @@ void QvkWASAPIWatcher::slot_update()
     // Remove device
     if ( listDevices.count() < listCheckBox.count() ) {
         for ( int i = 0; i < listCheckBox.count(); i++ ) {
-            QString string = QString( listCheckBox.at(i)->accessibleName() );
+            QCheckBox *checkBox = listCheckBox.at(i);
+            QString string = QString( checkBox->accessibleName() );
             if ( listDeviceTyp.contains( string ) == false ) {
-                QString name = listCheckBox.at(i)->text();
-                QString device = listCheckBox.at(i)->accessibleName();
+                QString name = checkBox->text();
+                QString device = checkBox->accessibleName();
                 qDebug().noquote() << global::nameOutput << "[Audio WASAPI] Removed:" << name << "Device:" << device;
                 qDebug().noquote();
                 QString audioDevicePlug = "";

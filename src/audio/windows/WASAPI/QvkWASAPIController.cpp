@@ -132,7 +132,8 @@ void QvkWASAPIController::slot_runTestWASAPI( bool bo )
         QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
         int counter = 0;
         for ( int i = 0; i < listCheckBox.count(); i++ ) {
-            if ( listCheckBox.at(i)->isChecked() == true ) {
+            QCheckBox *checkBox = listCheckBox.at(i);
+            if ( checkBox->isChecked() == true ) {
                 counter++;
             }
         }
@@ -152,7 +153,8 @@ void QvkWASAPIController::slot_audioDeviceSelected()
     bool value = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
-        if ( listCheckBox.at(i)->checkState() == Qt::Checked ) {
+        QCheckBox *checkBox = listCheckBox.at(i);
+        if ( checkBox->checkState() == Qt::Checked ) {
             value = true;
             break;
         }
@@ -188,7 +190,8 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
     if ( header == "[Audio-device-removed]" ) {
         QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
         for ( int i = 0; i < listAudioDevices.count(); i++ ) {
-            if ( listAudioDevices.at(i)->accessibleName() == device ) {
+            QCheckBox *checkBox = listAudioDevices.at(i);
+            if ( checkBox->accessibleName() == device ) {
                 delete listAudioDevices.at(i);
                 listAudioDevices.removeAt(i);
             }
