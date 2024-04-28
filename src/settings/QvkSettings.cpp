@@ -204,186 +204,188 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     QList<QCheckBox *> listCheckBox = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ )
     {
+        QCheckBox *checkBox = listCheckBox.at(i);
+
         // We have no settings-file(first start after install) but this object we want set as default.
-        if ( ( listCheckBox.at(i)->objectName() == "checkBoxShowInSystray" ) and
-             ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) )
+        if ( ( checkBox->objectName() == "checkBoxShowInSystray" ) and
+             ( settings.value( checkBox->objectName(), true ).toBool() == true ) )
         {
-            listCheckBox.at(i)->click();
+            checkBox->click();
             continue;
         }
-        if ( ( listCheckBox.at(i)->objectName() == "checkBoxShowInSystray" ) and
-             ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == false ) )
+        if ( ( checkBox->objectName() == "checkBoxShowInSystray" ) and
+             ( settings.value( checkBox->objectName(), true ).toBool() == false ) )
         {
-            listCheckBox.at(i)->click();
-            listCheckBox.at(i)->click();
+            checkBox->click();
+            checkBox->click();
             continue;
         }
 
-        if ( ( listCheckBox.at(i)->objectName() == "checkBoxStartsMinimized" ) and
-             ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true ) )
+        if ( ( checkBox->objectName() == "checkBoxStartsMinimized" ) and
+             ( settings.value( checkBox->objectName(), false ).toBool() == true ) )
         {
             parent->showMinimized();
-            listCheckBox.at(i)->click();
+            checkBox->click();
             continue;
         }
 
-        if ( ( listCheckBox.at(i)->objectName().contains( "checkBoxLookForUpdates" ) ) and
-             ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) )
+        if ( ( checkBox->objectName().contains( "checkBoxLookForUpdates" ) ) and
+             ( settings.value( checkBox->objectName(), true ).toBool() == true ) )
         {
-            listCheckBox.at(i)->click();
+            checkBox->click();
             continue;
         }
 
-        if ( ( listCheckBox.at(i)->objectName().contains( "checkBoxShowInSystrayAlternative" ) ) and
-             ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) )
+        if ( ( checkBox->objectName().contains( "checkBoxShowInSystrayAlternative" ) ) and
+             ( settings.value( checkBox->objectName(), true ).toBool() == true ) )
         {
-            listCheckBox.at(i)->click();
+            checkBox->click();
             continue;
         }
 
-        if ( ( listCheckBox.at(i)->objectName().contains( "checkboxAudioDevice-" ) ) and
-             ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true ) )
+        if ( ( checkBox->objectName().contains( "checkboxAudioDevice-" ) ) and
+             ( settings.value( checkBox->objectName(), false ).toBool() == true ) )
         {
-            listCheckBox.at(i)->click();
+            checkBox->click();
             continue;
         }
 
-        if ( ( listCheckBox.at(i)->objectName().contains( "checkBoxSnapshotShowBallonInSystray" ) ) and
-             ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) )
+        if ( ( checkBox->objectName().contains( "checkBoxSnapshotShowBallonInSystray" ) ) and
+             ( settings.value( checkBox->objectName(), true ).toBool() == true ) )
         {
-            listCheckBox.at(i)->click();
+            checkBox->click();
             continue;
         }
 
-        if ( ( listCheckBox.at(i)->objectName().contains( "checkBoxGstreamerDebugLevel" ) ) and
-             ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true ) )
+        if ( ( checkBox->objectName().contains( "checkBoxGstreamerDebugLevel" ) ) and
+             ( settings.value( checkBox->objectName(), false ).toBool() == true ) )
         {
             continue;
         }
 
         //
-        if ( listCheckBox.at(i)->objectName().contains( "checkBox_shortcut" ) and
-           ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true ) )
+        if ( checkBox->objectName().contains( "checkBox_shortcut" ) and
+           ( settings.value( checkBox->objectName(), false ).toBool() == true ) )
         {
-            listCheckBox.at(i)->setChecked( true );
+            checkBox->setChecked( true );
             continue;
         }
 
         // Start/Stop
-        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_start_strg" ) {
-             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
-                 listCheckBox.at(i)->setChecked( true );
+        if ( checkBox->objectName() == "checkBox_shortcut_start_strg" ) {
+             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                 checkBox->setChecked( true );
                  continue;
              }
         }
-        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_start_shift" ) {
-             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
-                 listCheckBox.at(i)->setChecked( true );
+        if ( checkBox->objectName() == "checkBox_shortcut_start_shift" ) {
+             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                 checkBox->setChecked( true );
                  continue;
              }
         }
 
         // Pause/Continue
-        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_pause_strg" ) {
-             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
-                 listCheckBox.at(i)->setChecked( true );
+        if ( checkBox->objectName() == "checkBox_shortcut_pause_strg" ) {
+             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                 checkBox->setChecked( true );
                  continue;
              }
         }
-        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_pause_shift" ) {
-             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
-                 listCheckBox.at(i)->setChecked( true );
+        if ( checkBox->objectName() == "checkBox_shortcut_pause_shift" ) {
+             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                 checkBox->setChecked( true );
                  continue;
              }
         }
 
         // Magnification
-        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_magnification_strg" ) {
-             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
-                 listCheckBox.at(i)->setChecked( true );
+        if ( checkBox->objectName() == "checkBox_shortcut_magnification_strg" ) {
+             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                 checkBox->setChecked( true );
                  continue;
              }
         }
-        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_magnification_shift" ) {
-             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
-                 listCheckBox.at(i)->setChecked( true );
+        if ( checkBox->objectName() == "checkBox_shortcut_magnification_shift" ) {
+             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                 checkBox->setChecked( true );
                  continue;
              }
         }
 
         // Camera
-        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_camera_strg" ) {
-             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
-                 listCheckBox.at(i)->setChecked( true );
+        if ( checkBox->objectName() == "checkBox_shortcut_camera_strg" ) {
+             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                 checkBox->setChecked( true );
                  continue;
              }
         }
-        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_camera_shift" ) {
-             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
-                 listCheckBox.at(i)->setChecked( true );
+        if ( checkBox->objectName() == "checkBox_shortcut_camera_shift" ) {
+             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                 checkBox->setChecked( true );
                  continue;
              }
         }
 
         // Showclick
-        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_showclick_strg" ) {
-             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
-                 listCheckBox.at(i)->setChecked( true );
+        if ( checkBox->objectName() == "checkBox_shortcut_showclick_strg" ) {
+             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                 checkBox->setChecked( true );
                  continue;
              }
         }
-        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_showclick_shift" ) {
-             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
-                 listCheckBox.at(i)->setChecked( true );
+        if ( checkBox->objectName() == "checkBox_shortcut_showclick_shift" ) {
+             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                 checkBox->setChecked( true );
                  continue;
              }
         }
 
         // Halo
-        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_halo_strg" ) {
-             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
-                 listCheckBox.at(i)->setChecked( true );
+        if ( checkBox->objectName() == "checkBox_shortcut_halo_strg" ) {
+             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                 checkBox->setChecked( true );
                  continue;
              }
         }
-        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_halo_shift" ) {
-             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
-                 listCheckBox.at(i)->setChecked( true );
+        if ( checkBox->objectName() == "checkBox_shortcut_halo_shift" ) {
+             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                 checkBox->setChecked( true );
                  continue;
              }
         }
 
         // Snapshot
-        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_snapshot_strg" ) {
-             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
-                 listCheckBox.at(i)->setChecked( true );
+        if ( checkBox->objectName() == "checkBox_shortcut_snapshot_strg" ) {
+             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                 checkBox->setChecked( true );
                  continue;
              }
         }
-        if ( listCheckBox.at(i)->objectName() == "checkBox_shortcut_snapshot_shift" ) {
-             if ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) {
-                 listCheckBox.at(i)->setChecked( true );
+        if ( checkBox->objectName() == "checkBox_shortcut_snapshot_shift" ) {
+             if ( settings.value( checkBox->objectName(), true ).toBool() == true ) {
+                 checkBox->setChecked( true );
                  continue;
              }
         }
 
 
-        if ( ( listCheckBox.at(i)->objectName().contains( "checkBoxSnapshotHideBeforeRecording" ) ) and
-             ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) ) {
-            listCheckBox.at(i)->click();
+        if ( ( checkBox->objectName().contains( "checkBoxSnapshotHideBeforeRecording" ) ) and
+             ( settings.value( checkBox->objectName(), true ).toBool() == true ) ) {
+            checkBox->click();
             continue;
         }
 
-        if ( ( listCheckBox.at(i)->objectName().contains( "checkBoxGifLoop" ) ) and
-            ( settings.value( listCheckBox.at(i)->objectName(), true ).toBool() == true ) ) {
-            listCheckBox.at(i)->click();
+        if ( ( checkBox->objectName().contains( "checkBoxGifLoop" ) ) and
+            ( settings.value( checkBox->objectName(), true ).toBool() == true ) ) {
+            checkBox->click();
             continue;
         }
 
         // We found a setting, then we want set or not.
-        if ( settings.value( listCheckBox.at(i)->objectName(), false ).toBool() == true )
+        if ( settings.value( checkBox->objectName(), false ).toBool() == true )
         {
-            listCheckBox.at(i)->click();
+            checkBox->click();
         }
     }
 
