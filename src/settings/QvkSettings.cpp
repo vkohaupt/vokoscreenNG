@@ -392,26 +392,29 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     QList<QSlider *> listSlider = ui_mainwindow->centralWidget->findChildren<QSlider *>();
     for ( int i = 0; i < listSlider.count(); i++ )
     {
-        if ( listSlider.at(i)->objectName() == "sliderVideo" ) {
+        QSlider *slider = listSlider.at(i);
+
+        if ( slider->objectName() == "sliderVideo" ) {
             continue;
         }
 
-        if ( listSlider.at(i)->objectName() == "sliderGstDebugLevel" ) {
+        if ( slider->objectName() == "sliderGstDebugLevel" ) {
             continue;
         }
 
-        QVariant variant = settings.value( listSlider.at(i)->objectName() );
+        QVariant variant = settings.value( slider->objectName() );
         if ( variant.isValid() ) {
-            listSlider.at(i)->setValue( variant.toInt() );
+            slider->setValue( variant.toInt() );
         }
     }
 
     QList<QLineEdit *> listLineEdit = ui_mainwindow->centralWidget->findChildren<QLineEdit *>();
     for ( int i = 0; i < listLineEdit.count(); i++ ) {
-        if ( listLineEdit.at(i)->objectName().contains( "lineEdit" ) ) {
-            QString value = settings.value( listLineEdit.at(i)->objectName() ).toString();
+        QLineEdit *lineEdit = listLineEdit.at(i);
+        if ( lineEdit->objectName().contains( "lineEdit" ) ) {
+            QString value = settings.value( lineEdit->objectName() ).toString();
             if ( !value.isEmpty() ) {
-                listLineEdit.at(i)->setText( value );
+                lineEdit->setText( value );
             }
         }
     }
@@ -419,7 +422,8 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     // All TabWidget start with value=0, also if in Qt-Creator is the value an other
     QList<QTabWidget *> listTabWidget = ui_mainwindow->centralWidget->findChildren<QTabWidget *>();
     for ( int i = 0; i < listTabWidget.count(); i++ ) {
-        listTabWidget.at(i)->setCurrentIndex( 0 );
+        QTabWidget *tabWidget = listTabWidget.at(i);
+        tabWidget->setCurrentIndex( 0 );
 
         QvkSettings vkSettingsGstDebug;
         QFileInfo fileInfo( vkSettingsGstDebug.getFileName() );
@@ -434,49 +438,53 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
 
     QList<QToolButton *> listToolButton = ui_mainwindow->centralWidget->findChildren<QToolButton *>();
     for ( int i = 0; i < listToolButton.count(); i++ ) {
-        if ( listToolButton.at(i)->objectName().contains( "toolButtonMute" ) ) {
-            QString value = settings.value( listToolButton.at(i)->objectName() ).toString();
+        QToolButton *toolButton = listToolButton.at(i);
+
+        if ( toolButton->objectName().contains( "toolButtonMute" ) ) {
+            QString value = settings.value( toolButton->objectName() ).toString();
             if ( value == "audio-volume-muted") {
-                listToolButton.at(i)->click();
+                toolButton->click();
             }
         }
 
-        if ( listToolButton.at(i)->objectName().contains( "toolButton_camera_view" ) ) {
-            if ( settings.value( listToolButton.at(i)->objectName() ).toBool() == true ) {
-                listToolButton.at(i)->click();
+        if ( toolButton->objectName().contains( "toolButton_camera_view" ) ) {
+            if ( settings.value( toolButton->objectName() ).toBool() == true ) {
+                toolButton->click();
             }
         }
 
-        if ( listToolButton.at(i)->objectName().contains( "toolButton_magnifier" ) ) {
-            if ( settings.value( listToolButton.at(i)->objectName() ).toBool() == true ) {
-                listToolButton.at(i)->click();
+        if ( toolButton->objectName().contains( "toolButton_magnifier" ) ) {
+            if ( settings.value( toolButton->objectName() ).toBool() == true ) {
+                toolButton->click();
             }
         }
     }
 
     QList<QToolButton *> listToolButtonCameraView = ui_mainwindow->centralWidget->findChildren<QToolButton *>( "toolButton_camera_view_" );
     for ( int i = 0; i < listToolButtonCameraView.count(); i++ ) {
-        if ( listToolButtonCameraView.at(i)->objectName().contains( "toolButton_camera_view_Rectangle" ) ) {
-            if ( settings.value( listToolButtonCameraView.at(i)->objectName() ).toBool() == true ) {
-                listToolButton.at(i)->click();
+        QToolButton *toolButton = listToolButtonCameraView.at(i);
+        if ( toolButton->objectName().contains( "toolButton_camera_view_Rectangle" ) ) {
+            if ( settings.value( toolButton->objectName() ).toBool() == true ) {
+                toolButton->click();
             }
         }
-        if ( listToolButtonCameraView.at(i)->objectName().contains( "toolButton_camera_view_Ellipse" ) ) {
-            if ( settings.value( listToolButtonCameraView.at(i)->objectName() ).toBool() == true ) {
-                listToolButton.at(i)->click();
+        if ( toolButton->objectName().contains( "toolButton_camera_view_Ellipse" ) ) {
+            if ( settings.value( toolButton->objectName() ).toBool() == true ) {
+                toolButton->click();
             }
         }
-        if ( listToolButtonCameraView.at(i)->objectName().contains( "toolButton_camera_view_Circlee" ) ) {
-            if ( settings.value( listToolButtonCameraView.at(i)->objectName() ).toBool() == true ) {
-                listToolButtonCameraView.at(i)->click();
+        if ( toolButton->objectName().contains( "toolButton_camera_view_Circle" ) ) {
+            if ( settings.value( toolButton->objectName() ).toBool() == true ) {
+                toolButton->click();
             }
         }
     }
 
     QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui_mainwindow->centralWidget->findChildren<QvkSpezialCheckbox *>();
     for ( int i = 0; i < listSpezialCheckbox.count(); i++ ) {
-        if ( settings.value( listSpezialCheckbox.at(i)->objectName(), false ).toBool() == true ) {
-            emit listSpezialCheckbox.at(i)->signal_clicked( true );
+        QvkSpezialCheckbox *vkSpezialCheckbox = listSpezialCheckbox.at(i);
+        if ( settings.value( vkSpezialCheckbox->objectName(), false ).toBool() == true ) {
+            emit vkSpezialCheckbox->signal_clicked( true );
         }
     }
 }
