@@ -647,7 +647,7 @@ void QvkSettings::readSystrayAlternative( QvkSystrayAlternative *vkSystrayAltern
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     settings.beginGroup( "SystrayAlternative" );
-    vkSystrayAlternative->vkSystrayAlternativeWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
+    vkSystrayAlternative->vkSystrayAlternativeWindow->move( settings.value( "X", 30 ).toInt(), settings.value( "Y", 30 ).toInt() );
     settings.endGroup();
 }
 
