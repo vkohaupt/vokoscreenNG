@@ -29,6 +29,8 @@
 #include <QColor>
 #include <QDateTime>
 #include <QDir>
+#include <QCheckBox>
+#include <QList>
 
 QvkSettings::QvkSettings()
 {
@@ -66,8 +68,9 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     // Clear all settings if checkBoxResetAtNextStart is set
     QList<QCheckBox *> listCheckBoxReset = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBoxReset.count(); i++ ) {
-        if ( ( listCheckBoxReset.at(i)->objectName() == "checkBoxResetAtNextStart" ) and
-             ( settings.value( listCheckBoxReset.at(i)->objectName(), false ).toBool() == true ) )
+        QCheckBox *checkBox = listCheckBoxReset.at(i);
+        if ( ( checkBox->objectName() == "checkBoxResetAtNextStart" ) and
+             ( settings.value( checkBox->objectName(), false ).toBool() == true ) )
         {
             settings.clear();
         }
@@ -77,37 +80,38 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     QList<QComboBox *> listComboBoxShortcut = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
     for ( int i = 0; i < listComboBoxShortcut.count(); i++ )
     {
-        if ( listComboBoxShortcut.at(i)->objectName().contains( "comboBox_shortcut", Qt::CaseInsensitive ) == true )
+        QComboBox *comboBox = listComboBoxShortcut.at(i);
+        if ( comboBox->objectName().contains( "comboBox_shortcut", Qt::CaseInsensitive ) == true )
         {
-            listComboBoxShortcut.at(i)->blockSignals( true );
+            comboBox->blockSignals( true );
 
-            if ( listComboBoxShortcut.at(i)->objectName() == "comboBox_shortcut_start" ) {
-                QString valueText = settings.value( listComboBoxShortcut.at(i)->objectName(), "F10" ).toString();
-                listComboBoxShortcut.at(i)->setCurrentText( valueText );
+            if ( comboBox->objectName() == "comboBox_shortcut_start" ) {
+                QString valueText = settings.value( comboBox->objectName(), "F10" ).toString();
+                comboBox->setCurrentText( valueText );
             }
-            if ( listComboBoxShortcut.at(i)->objectName() == "comboBox_shortcut_pause" ) {
-                QString valueText = settings.value( listComboBoxShortcut.at(i)->objectName(), "F12" ).toString();
-                listComboBoxShortcut.at(i)->setCurrentText( valueText );
+            if ( comboBox->objectName() == "comboBox_shortcut_pause" ) {
+                QString valueText = settings.value( comboBox->objectName(), "F12" ).toString();
+                comboBox->setCurrentText( valueText );
             }
-            if ( listComboBoxShortcut.at(i)->objectName() == "comboBox_shortcut_magnification" ) {
-                QString valueText = settings.value( listComboBoxShortcut.at(i)->objectName(), "F9" ).toString();
-                listComboBoxShortcut.at(i)->setCurrentText( valueText );
+            if ( comboBox->objectName() == "comboBox_shortcut_magnification" ) {
+                QString valueText = settings.value( comboBox->objectName(), "F9" ).toString();
+                comboBox->setCurrentText( valueText );
             }
-            if ( listComboBoxShortcut.at(i)->objectName() == "comboBox_shortcut_camera" ) {
-                QString valueText = settings.value( listComboBoxShortcut.at(i)->objectName(), "F8" ).toString();
-                listComboBoxShortcut.at(i)->setCurrentText( valueText );
+            if ( comboBox->objectName() == "comboBox_shortcut_camera" ) {
+                QString valueText = settings.value( comboBox->objectName(), "F8" ).toString();
+                comboBox->setCurrentText( valueText );
             }
-            if ( listComboBoxShortcut.at(i)->objectName() == "comboBox_shortcut_showclick" ) {
-                QString valueText = settings.value( listComboBoxShortcut.at(i)->objectName(), "F7" ).toString();
-                listComboBoxShortcut.at(i)->setCurrentText( valueText );
+            if ( comboBox->objectName() == "comboBox_shortcut_showclick" ) {
+                QString valueText = settings.value( comboBox->objectName(), "F7" ).toString();
+                comboBox->setCurrentText( valueText );
             }
-            if ( listComboBoxShortcut.at(i)->objectName() == "comboBox_shortcut_halo" ) {
-                QString valueText = settings.value( listComboBoxShortcut.at(i)->objectName(), "F6" ).toString();
-                listComboBoxShortcut.at(i)->setCurrentText( valueText );
+            if ( comboBox->objectName() == "comboBox_shortcut_halo" ) {
+                QString valueText = settings.value( comboBox->objectName(), "F6" ).toString();
+                comboBox->setCurrentText( valueText );
             }
-            if ( listComboBoxShortcut.at(i)->objectName() == "comboBox_shortcut_snapshot" ) {
-                QString valueText = settings.value( listComboBoxShortcut.at(i)->objectName(), "F5" ).toString();
-                listComboBoxShortcut.at(i)->setCurrentText( valueText );
+            if ( comboBox->objectName() == "comboBox_shortcut_snapshot" ) {
+                QString valueText = settings.value( comboBox->objectName(), "F5" ).toString();
+                comboBox->setCurrentText( valueText );
             }
         }
     }
@@ -116,82 +120,84 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     QList<QComboBox *> listComboBox = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
     for ( int i = 0; i < listComboBox.count(); i++ )
     {
+        QComboBox *comboBox = listComboBox.at(i);
         // Language
-        if ( listComboBox.at(i)->objectName() == "comboBoxLanguage" ) {
+        if ( comboBox->objectName() == "comboBoxLanguage" ) {
             // listComboBox.at(i)->removeItem( 20 ); // Nur zum testen. Index muß zuvor ermittelt werden.
             int index;
 
             // Wird eine Sprache in den Settings gefunden, wird diese wenn in der ComboBox vorhanden gesetzt
-            QString valueText = settings.value( listComboBox.at(i)->objectName(), "" ).toString();
-            index = listComboBox.at(i)->findText( valueText );
+            QString valueText = settings.value( comboBox->objectName(), "" ).toString();
+            index = comboBox->findText( valueText );
             if ( index > -1 ) {
-                listComboBox.at(i)->setCurrentIndex( index );
+                comboBox->setCurrentIndex( index );
                 continue;
             }
 
             // Systemsprache ist in der Combobox nicht vorhanden, es wird "en" gesetzt
-            index = listComboBox.at(i)->findData( QLocale::system().name() );
+            index = comboBox->findData( QLocale::system().name() );
             if ( index == -1 ) {
-                int value = listComboBox.at(i)->findData( "en" );
-                listComboBox.at(i)->setCurrentIndex( value );
+                int value = comboBox->findData( "en" );
+                comboBox->setCurrentIndex( value );
                 continue;
             }
 
             // Systemsprache wird in der Combobox gesetzt wenn diese in der Combobox gefunden wird.
-            index = listComboBox.at(i)->findData( QLocale::system().name() );
+            index = comboBox->findData( QLocale::system().name() );
             if ( index > -1 ) {
-                listComboBox.at(i)->setCurrentIndex( index );
+                comboBox->setCurrentIndex( index );
             }
 
             continue;
         }
 
-        QString valueText = settings.value( listComboBox.at(i)->objectName(), "" ).toString();
-        int valueInt = listComboBox.at(i)->findText( valueText );
+        QString valueText = settings.value( comboBox->objectName(), "" ).toString();
+        int valueInt = comboBox->findText( valueText );
         if ( valueInt > -1 ) {
-            listComboBox.at(i)->setCurrentIndex( valueInt );
+            comboBox->setCurrentIndex( valueInt );
         }
     }
 
     // After set all comboBox values we set the shortcut ComboBox signals
     for ( int i = 0; i < listComboBoxShortcut.count(); i++ ) {
-        if ( listComboBoxShortcut.at(i)->objectName().contains( "comboBox_shortcut", Qt::CaseInsensitive ) == true ) {
-            listComboBoxShortcut.at(i)->blockSignals( false );
+        QComboBox *comboBox = listComboBoxShortcut.at(i);
+        if ( comboBox->objectName().contains( "comboBox_shortcut", Qt::CaseInsensitive ) == true ) {
+            comboBox->blockSignals( false );
         }
     }
 
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralWidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadiobuttons.count(); i++ )
     {
+        QRadioButton *radioButton = listRadiobuttons.at(i);
+
         // We have no settings-file(first start after install) but this object we want set as default.
-        if ( ( listRadiobuttons.at(i)->objectName() == "radioButtonScreencastFullscreen" ) and
-             ( settings.value( listRadiobuttons.at(i)->objectName(), true ).toBool() == true ) )
+        if ( ( radioButton->objectName() == "radioButtonScreencastFullscreen" ) and
+             ( settings.value( radioButton->objectName(), true ).toBool() == true ) )
         {
-            listRadiobuttons.at(i)->click();
+            radioButton->click();
             continue;
         }
 
         // We set WASAPI as default
-        if ( ( listRadiobuttons.at(i)->objectName() == "radioButtonWASAPI" ) and
-             ( settings.value( listRadiobuttons.at(i)->objectName(), false ).toBool() == false ) )
+        if ( ( radioButton->objectName() == "radioButtonWASAPI" ) and
+             ( settings.value( radioButton->objectName(), false ).toBool() == false ) )
         {
-            listRadiobuttons.at(i)->click();
+            radioButton->click();
             continue;
         }
 
-
-        if ( ( listRadiobuttons.at(i)->objectName() == "radioButton_cisco_on" ) and
-             ( settings.value( listRadiobuttons.at(i)->objectName(), true ).toBool() == true ) )
+        if ( ( radioButton->objectName() == "radioButton_cisco_on" ) and
+             ( settings.value( radioButton->objectName(), true ).toBool() == true ) )
         {
-            listRadiobuttons.at(i)->click();
+            radioButton->click();
             continue;
         }
 
-
-        bool value = settings.value( listRadiobuttons.at(i)->objectName(), false ).toBool();
+        bool value = settings.value( radioButton->objectName(), false ).toBool();
         if ( value == true )
         {
-            listRadiobuttons.at(i)->click();
+            radioButton->click();
         }
     }
 
