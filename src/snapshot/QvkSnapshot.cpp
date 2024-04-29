@@ -267,7 +267,8 @@ void QvkSnapshot::slot_snapshotWindow( bool )
     QThread::msleep( static_cast<unsigned long>( spezialSlider->value()) * 1000/10 );
 
     WId xid = vkWinInfo->activeWindow();
-    QImage image = myScreen.at( ui->comboBoxScreencastScreen->currentIndex() )->grabWindow(xid).toImage();
+    QScreen *screen = myScreen.at( ui->comboBoxScreencastScreen->currentIndex() );
+    QImage image = screen->grabWindow(xid).toImage();
     bool bo = image.save( ui->lineEditSnapshotImagePath->text() + "/" + filename, ui->comboBoxSnapshotImageFormats->currentText().toUtf8() );
 
     if ( bo == false ) {
