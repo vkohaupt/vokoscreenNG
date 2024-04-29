@@ -54,10 +54,11 @@ QvkCountdown_wl::QvkCountdown_wl()
     connect( animationTimer, SIGNAL( timeout() ), this, SLOT( slot_updateAnimationTimer() ) );
 
     // Is needed only for the translated text
-    QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Abort, this);
+    QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Abort, this );
     buttonBox->hide();
     QList<QPushButton *> list = buttonBox->findChildren<QPushButton *>();
-    cancelText = list.at(0)->text();
+    QPushButton *pushButton = list.at(0);
+    cancelText = pushButton->text();
     buttonBox->close();
 }
 

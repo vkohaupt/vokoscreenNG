@@ -47,7 +47,7 @@ QvkInformation_wl::QvkInformation_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMai
     timerRecord = new QTimer(this);
     timerRecord->setTimerType( Qt::PreciseTimer );
     timerRecord->setInterval( 1000 );
-    connect( timerRecord,            SIGNAL( timeout() ),       this,        SLOT( slot_displayRecordTime() ) );
+    connect( timerRecord,            SIGNAL( timeout() ),     this,        SLOT( slot_displayRecordTime() ) );
     connect( ui->pushButtonStop,     SIGNAL( clicked(bool) ), timerRecord, SLOT( stop() ) );
 
     // Frames, Format, Codecs
