@@ -512,43 +512,47 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
 
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralWidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadiobuttons.count(); i++ ) {
+        QRadioButton *radioButton = listRadiobuttons.at(i);
         if ( log == true ) {
-            qDebug().noquote() << global::nameOutput << listRadiobuttons.at(i)->objectName() << "=" << listRadiobuttons.at(i)->isChecked();
+            qDebug().noquote() << global::nameOutput << radioButton->objectName() << "=" << radioButton->isChecked();
         } else {
-            settings.setValue( listRadiobuttons.at(i)->objectName(), listRadiobuttons.at(i)->isChecked() );
+            settings.setValue( radioButton->objectName(), radioButton->isChecked() );
         }
     }
 
     QList<QCheckBox *> listCheckBox = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
-        if ( ( listCheckBox.at(i)->objectName() == "checkBoxStopRecordingAfter" ) or
-             ( listCheckBox.at(i)->objectName() == "checkBoxStartTime" ) )
+        QCheckBox *checkBox = listCheckBox.at(i);
+        if ( ( checkBox->objectName() == "checkBoxStopRecordingAfter" ) or
+             ( checkBox->objectName() == "checkBoxStartTime" ) )
         {
             // We do not save
         } else {
             if ( log == true ) {
-                qDebug().noquote() << global::nameOutput << listCheckBox.at(i)->objectName() << "=" << listCheckBox.at(i)->isChecked();
+                qDebug().noquote() << global::nameOutput << checkBox->objectName() << "=" << checkBox->isChecked();
             } else {
-                settings.setValue( listCheckBox.at(i)->objectName(), listCheckBox.at(i)->isChecked() );
+                settings.setValue( checkBox->objectName(), checkBox->isChecked() );
             }
         }
     }
 
     QList<QComboBox *> listComboBox = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
     for ( int i = 0; i < listComboBox.count(); i++ ) {
+        QComboBox *comboBox = listComboBox.at(i);
         if ( log == true ) {
-            qDebug().noquote() << global::nameOutput << listComboBox.at(i)->objectName() << "=" << listComboBox.at(i)->currentText();
+            qDebug().noquote() << global::nameOutput << comboBox->objectName() << "=" << comboBox->currentText();
         } else {
-            settings.setValue( listComboBox.at(i)->objectName(), listComboBox.at(i)->currentText() );
+            settings.setValue( comboBox->objectName(), comboBox->currentText() );
         }
     }
 
     QList<QSlider *> listSlider = ui_mainwindow->centralWidget->findChildren<QSlider *>();
     for ( int i = 0; i < listSlider.count(); i++ ) {
+        QSlider *slider = listSlider.at(i);
         if ( log == true ) {
-            qDebug().noquote() << global::nameOutput << listSlider.at(i)->objectName() << "=" << listSlider.at(i)->value();
+            qDebug().noquote() << global::nameOutput << slider->objectName() << "=" << slider->value();
         } else {
-            settings.setValue( listSlider.at(i)->objectName(), listSlider.at(i)->value() );
+            settings.setValue( slider->objectName(), slider->value() );
         }
     }
 
