@@ -654,12 +654,13 @@ void QvkSettings::saveCamera( int index, int x, int y )
     settings.endGroup();
 }
 
-void QvkSettings::readCamera( QList<QvkCameraSingle *> vkCameraSingle)
+void QvkSettings::readCamera( QList<QvkCameraSingle *> cameraSingleList )
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
-    for ( int index = 0; index < vkCameraSingle.count(); index++ ) {
-        settings.beginGroup( "Camera-" + QString::number( index ) );
-           vkCameraSingle.at( index )->vkCameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
+    for ( int i = 0; i < cameraSingleList.count(); i++ ) {
+        QvkCameraSingle *vkCameraSingle = cameraSingleList.at( i );
+        settings.beginGroup( "Camera-" + QString::number( i ) );
+           vkCameraSingle->vkCameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
         settings.endGroup();
     }
 }
