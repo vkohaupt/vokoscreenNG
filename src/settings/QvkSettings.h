@@ -34,6 +34,8 @@
 #include <QSettings>
 #include <QDebug>
 #include <QMainWindow>
+#include <QList>
+#include <QColor>
 
 class QvkSettings: public QObject
 { 

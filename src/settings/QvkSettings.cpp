@@ -24,6 +24,7 @@
 #include "global.h"
 #include "QvkSpezialCheckbox.h"
 
+#include <QSettings>
 #include <QFileInfo>
 #include <QMouseEvent>
 #include <QColor>
@@ -31,6 +32,12 @@
 #include <QDir>
 #include <QCheckBox>
 #include <QList>
+#include <QToolButton>
+#include <QLineEdit>
+#include <QSlider>
+#include <QRadioButton>
+#include <QComboBox>
+#include <QTabWidget>
 
 QvkSettings::QvkSettings()
 {
@@ -558,37 +565,40 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
 
     QList<QLineEdit *> listLineEdit = ui_mainwindow->centralWidget->findChildren<QLineEdit *>();
     for ( int i = 0; i < listLineEdit.count(); i++ ) {
-        if ( listLineEdit.at(i)->objectName().contains( "lineEdit" ) ) {
+        QLineEdit *lineEdit = listLineEdit.at(i);
+        if ( lineEdit->objectName().contains( "lineEdit" ) ) {
             if ( log == true ) {
-                qDebug().noquote() << global::nameOutput << listLineEdit.at(i)->objectName() << "=" << listLineEdit.at(i)->text();
+                qDebug().noquote() << global::nameOutput << lineEdit->objectName() << "=" << lineEdit->text();
             } else {
-                settings.setValue( listLineEdit.at(i)->objectName(), listLineEdit.at(i)->text() );
+                settings.setValue( lineEdit->objectName(), lineEdit->text() );
             }
         }
     }
 
     QList<QToolButton *> listToolButton = ui_mainwindow->centralWidget->findChildren<QToolButton *>();
     for ( int i = 0; i < listToolButton.count(); i++ ) {
-        if ( listToolButton.at(i)->objectName().contains( "toolButtonMute" ) ) {
-            if ( listToolButton.at(i)->isChecked() == true ) {
-                settings.setValue( listToolButton.at(i)->objectName(), "audio-volume-muted" );
+        QToolButton *toolButton = listToolButton.at(i);
+        if ( toolButton->objectName().contains( "toolButtonMute" ) ) {
+            if ( toolButton->isChecked() == true ) {
+                settings.setValue( toolButton->objectName(), "audio-volume-muted" );
             } else {
-                settings.setValue( listToolButton.at(i)->objectName(), "audio-volume-high" );
+                settings.setValue( toolButton->objectName(), "audio-volume-high" );
             }
         }
 
-        if ( listToolButton.at(i)->objectName().contains( "toolButton_camera_view" ) ) {
-            settings.setValue( listToolButton.at(i)->objectName(), listToolButton.at(i)->isChecked() );
+        if ( toolButton->objectName().contains( "toolButton_camera_view" ) ) {
+            settings.setValue( toolButton->objectName(), toolButton->isChecked() );
         }
 
-        if ( listToolButton.at(i)->objectName().contains( "toolButton_magnifier" ) ) {
-            settings.setValue( listToolButton.at(i)->objectName(), listToolButton.at(i)->isChecked() );
+        if ( toolButton->objectName().contains( "toolButton_magnifier" ) ) {
+            settings.setValue( toolButton->objectName(), toolButton->isChecked() );
         }
     }
 
     QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui_mainwindow->centralWidget->findChildren<QvkSpezialCheckbox *>();
     for ( int i = 0; i < listSpezialCheckbox.count(); i++ ) {
-        settings.setValue( listSpezialCheckbox.at(i)->objectName(), listSpezialCheckbox.at(i)->isChecked() );
+        QvkSpezialCheckbox *vkSpezialCheckbox = listSpezialCheckbox.at(i);
+        settings.setValue( vkSpezialCheckbox->objectName(), vkSpezialCheckbox->isChecked() );
     }
 }
 
@@ -649,7 +659,7 @@ void QvkSettings::readCamera( QList<QvkCameraSingle *> vkCameraSingle)
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     for ( int index = 0; index < vkCameraSingle.count(); index++ ) {
         settings.beginGroup( "Camera-" + QString::number( index ) );
-           vkCameraSingle.at( index )->vkCameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt()  );
+           vkCameraSingle.at( index )->vkCameraWindow->move( settings.value( "X", 0 ).toInt(), settings.value( "Y", 0 ).toInt() );
         settings.endGroup();
     }
 }
