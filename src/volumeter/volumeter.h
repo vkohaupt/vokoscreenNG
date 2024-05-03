@@ -6,14 +6,6 @@
 
 #include <QAudioSource>
 #include <QMediaDevices>
-
-#include <QComboBox>
-#include <QPushButton>
-#include <QSlider>
-#include <QWidget>
-
-#include <QPixmap>
-
 #include <QByteArray>
 #include <QScopedPointer>
 
