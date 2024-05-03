@@ -4,6 +4,7 @@
 #ifndef AUDIOINPUT_H
 #define AUDIOINPUT_H
 
+#include <QWidget>
 #include <QAudioSource>
 #include <QMediaDevices>
 #include <QByteArray>
