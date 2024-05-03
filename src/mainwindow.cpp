@@ -47,6 +47,7 @@
 #include "QvkVirtual.h"
 #include "QvkSnapshot.h"
 #include "QvkPadsAndCaps.h"
+#include "QvkVolumeterController.h"
 
 #ifdef Q_OS_UNIX
   #include "QvkScreenManager.h"
@@ -669,6 +670,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     }
 
     new QvkImageFromTabs( this );
+    new QvkVolumeterController(this);
 
     is_videoFolderExists_and_haveWritePermission();
 

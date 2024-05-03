@@ -22,11 +22,23 @@
 
 #include "global.h"
 #include "QvkVolumeterController.h"
+#include "volumeter.h"
+
+#include <QAudioDevice>
+#include <QMediaDevices>
 
 QvkVolumeterController::QvkVolumeterController( QvkMainWindow *myParent )
 {
     vkMainWindow = myParent;
     ui = vkMainWindow->ui;
+
+    QList<QAudioDevice> devices = QMediaDevices::audioInputs();
+    for ( int i = 0; i < devices.count(); i++ ) {
+        qDebug().noquote() << global::nameOutput << "[Volumeter]" << devices.at(i).description() << devices.at(i).id();
+    }
+
+    InputTest *inputTest = new InputTest( devices.at(1) );
+
 }
 
 

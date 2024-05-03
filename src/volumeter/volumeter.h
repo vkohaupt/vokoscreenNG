@@ -10,12 +10,12 @@
 #include <QByteArray>
 #include <QScopedPointer>
 
-class AudioInfo : public QIODevice
+class QvkQIODevice : public QIODevice
 {
     Q_OBJECT
 
 public:
-    AudioInfo(const QAudioFormat &format);
+    QvkQIODevice( const QAudioFormat &format );
 
     void start();
     void stop();
@@ -41,17 +41,15 @@ class InputTest : public QWidget
     Q_OBJECT
 
 public:
-    InputTest();
+    InputTest( QAudioDevice device );
 
 private:
 
 private slots:
 
 private:
-    QScopedPointer<AudioInfo> m_audioInfo;
+    QScopedPointer<QvkQIODevice> m_audioInfo;
     QScopedPointer<QAudioSource> m_audioInput;
-
-    QAudioDevice myDevice;
 
 };
 

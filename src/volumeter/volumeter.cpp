@@ -7,26 +7,26 @@
 #include <QAudioSource>
 #include <QDebug>
 
-AudioInfo::AudioInfo(const QAudioFormat &format) : m_format(format)
+QvkQIODevice::QvkQIODevice( const QAudioFormat &format ) : m_format(format)
 {
 }
 
-void AudioInfo::start()
+void QvkQIODevice::start()
 {
-    open(QIODevice::WriteOnly);
+    open( QIODevice::WriteOnly );
 }
 
-void AudioInfo::stop()
+void QvkQIODevice::stop()
 {
     close();
 }
 
-qint64 AudioInfo::readData( char *, qint64 )
+qint64 QvkQIODevice::readData( char *, qint64 )
 {
     return 0;
 }
 
-qreal AudioInfo::calculateLevel( const char *data, qint64 len ) const
+qreal QvkQIODevice::calculateLevel( const char *data, qint64 len ) const
 {
     const int channelBytes = m_format.bytesPerSample();
     const int sampleBytes = m_format.bytesPerFrame();
@@ -46,7 +46,7 @@ qreal AudioInfo::calculateLevel( const char *data, qint64 len ) const
     return maxValue;
 }
 
-qint64 AudioInfo::writeData(const char *data, qint64 len)
+qint64 QvkQIODevice::writeData(const char *data, qint64 len)
 {
     m_level = calculateLevel(data, len);
     emit levelChanged(m_level);
@@ -54,21 +54,15 @@ qint64 AudioInfo::writeData(const char *data, qint64 len)
     return len;
 }
 
-InputTest::InputTest()
+InputTest::InputTest( QAudioDevice device )
 {
-    QList<QAudioDevice> devices = QMediaDevices::audioInputs();
-    for ( int i = 0; i < devices.count(); i++ ) {
-        qDebug() << "Device: " << devices.at(i).description() << devices.at(i).id();
-    }
-    myDevice = devices.at(1);
-
     QAudioFormat format;
     format.setSampleRate(8000);
     format.setChannelCount(1);
     format.setSampleFormat(QAudioFormat::Int16);
 
-    m_audioInfo.reset( new AudioInfo(format));
-    m_audioInput.reset( new QAudioSource( myDevice, format ) );
+    m_audioInfo.reset( new QvkQIODevice( format ) );
+    m_audioInput.reset( new QAudioSource( device, format ) );
     m_audioInfo->start();
     m_audioInput->start( m_audioInfo.data() );
 }
