@@ -41,7 +41,6 @@ public:
 private:
     QvkMainWindow *vkMainWindow;
     Ui_formMainWindow *ui;
-    InputStart *inputStart;
 
 
 public slots:

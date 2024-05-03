@@ -46,12 +46,15 @@ QvkVolumeterController::QvkVolumeterController( QvkMainWindow *myParent )
 
 
     // Geräte ID vergleichen
-//    if ( devices.at(0).id() == list.at(0) ) {
-        qDebug() << "1111111111111111111111111111111111111111111111111111111111111" <<devices.at(0).id() << list.at(0);
-//    }
+    for ( int i = 0; i < listQCheckBox.count(); i++ ) {
+        for ( int x = 0; x < devices.count(); x++ ) {
+            QCheckBox *checkBox = listQCheckBox.at(i);
+            if ( checkBox->accessibleName() == devices.at(x).id() ) {
+                InputStart *inputStart = new InputStart( devices.at(x) );
 
-    inputStart = new InputStart( devices.at(1) );
-
+            }
+        }
+    }
 }
 
 
