@@ -38,7 +38,6 @@ qreal QvkQIODevice::calculateLevel( const char *data, qint64 len ) const
     for (int i = 0; i < numSamples; ++i) {
         for (int j = 0; j < m_format.channelCount(); ++j) {
             float value = m_format.normalizedSampleValue(ptr);
-
             maxValue = qMax(value, maxValue);
             ptr += channelBytes;
         }
@@ -54,7 +53,9 @@ qint64 QvkQIODevice::writeData(const char *data, qint64 len)
     return len;
 }
 
-InputTest::InputTest( QAudioDevice device )
+//----------------------------------------------------------
+
+InputStart::InputStart( QAudioDevice device )
 {
     QAudioFormat format;
     format.setSampleRate(8000);
@@ -65,4 +66,10 @@ InputTest::InputTest( QAudioDevice device )
     m_audioInput.reset( new QAudioSource( device, format ) );
     m_audioInfo->start();
     m_audioInput->start( m_audioInfo.data() );
+}
+
+void InputStart::stop()
+{
+    m_audioInput->stop();
+    m_audioInfo->stop();
 }

@@ -41,15 +41,16 @@ QvkVolumeterController::QvkVolumeterController( QvkMainWindow *myParent )
     QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
     for ( int i = 0; i < listQCheckBox.count(); i++ ) {
         QCheckBox *checkBox = listQCheckBox.at(i);
-        if ( checkBox->checkState() == Qt::Checked ) {
-            list << checkBox->accessibleName();
-        }
+        list << checkBox->accessibleName();
     }
 
+
     // Geräte ID vergleichen
+//    if ( devices.at(0).id() == list.at(0) ) {
+        qDebug() << "1111111111111111111111111111111111111111111111111111111111111" <<devices.at(0).id() << list.at(0);
+//    }
 
-
-    inputTest = new InputTest( devices.at(1) );
+    inputStart = new InputStart( devices.at(1) );
 
 }
 

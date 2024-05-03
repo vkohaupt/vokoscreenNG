@@ -36,19 +36,22 @@ private:
 };
 
 
-class InputTest : public QWidget
+class InputStart : public QObject
 {
     Q_OBJECT
 
 public:
-    InputTest( QAudioDevice device );
+    InputStart( QAudioDevice device );
     QScopedPointer<QvkQIODevice> m_audioInfo;
     QScopedPointer<QAudioSource> m_audioInput;
+    void stop();
 
 
 private:
 
+
 private slots:
+
 
 private:
 
