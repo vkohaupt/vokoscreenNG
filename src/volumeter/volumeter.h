@@ -42,14 +42,16 @@ class InputTest : public QWidget
 
 public:
     InputTest( QAudioDevice device );
+    QScopedPointer<QvkQIODevice> m_audioInfo;
+    QScopedPointer<QAudioSource> m_audioInput;
+
 
 private:
 
 private slots:
 
 private:
-    QScopedPointer<QvkQIODevice> m_audioInfo;
-    QScopedPointer<QAudioSource> m_audioInput;
+
 
 };
 

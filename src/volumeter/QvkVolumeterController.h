@@ -27,6 +27,7 @@
 
 #include "ui_formMainWindow.h"  // contains the GUI
 #include "mainwindow.h"         // contains the class QvkMainWindow
+#include "volumeter.h"
 
 class QvkVolumeterController : public QObject
 {
@@ -40,6 +41,7 @@ public:
 private:
     QvkMainWindow *vkMainWindow;
     Ui_formMainWindow *ui;
+    InputTest *inputTest;
 
 
 public slots:

@@ -22,10 +22,10 @@
 
 #include "global.h"
 #include "QvkVolumeterController.h"
-#include "volumeter.h"
 
 #include <QAudioDevice>
 #include <QMediaDevices>
+#include <QCheckBox>
 
 QvkVolumeterController::QvkVolumeterController( QvkMainWindow *myParent )
 {
@@ -37,7 +37,19 @@ QvkVolumeterController::QvkVolumeterController( QvkMainWindow *myParent )
         qDebug().noquote() << global::nameOutput << "[Volumeter]" << devices.at(i).description() << devices.at(i).id();
     }
 
-    InputTest *inputTest = new InputTest( devices.at(1) );
+    QStringList list;
+    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listQCheckBox.count(); i++ ) {
+        QCheckBox *checkBox = listQCheckBox.at(i);
+        if ( checkBox->checkState() == Qt::Checked ) {
+            list << checkBox->accessibleName();
+        }
+    }
+
+    // Geräte ID vergleichen
+
+
+    inputTest = new InputTest( devices.at(1) );
 
 }
 
