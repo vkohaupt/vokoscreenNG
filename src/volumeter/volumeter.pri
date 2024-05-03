@@ -1,5 +1,7 @@
 INCLUDEPATH += $$PWD
 DEPENDPATH  += $$PWD
-HEADERS     += $$PWD/volumeter.h
+HEADERS     += $$PWD/QvkVolumeterController.h \
+               $$PWD/volumeter.h
                    
-SOURCES     += $$PWD/volumeter.cpp
+SOURCES     += $$PWD/QvkVolumeterController.cpp \
+               $$PWD/volumeter.cpp
