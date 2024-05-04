@@ -46,5 +46,9 @@ QStringList QvkPulseAudioDevices::getAllDevices()
         list = s2.split( "---" );
     }
 
+    if ( list.contains( "" ) ) {
+        list.clear();
+    }
+
     return list;
 }

@@ -59,7 +59,7 @@ void QvkAudioController::getAllDevices()
     QStringList list;
     if ( QvkPulseAudioServer::isAvailable() ) {
         list << QvkPulseAudioDevices::getAllDevices();
-        if ( !list.contains( "" ) ) {
+        if ( !list.empty() ) {
             for ( int i = 0; i < list.count(); i++ ) {
                 QCheckBox *checkboxAudioDevice = new QCheckBox();
                 connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
