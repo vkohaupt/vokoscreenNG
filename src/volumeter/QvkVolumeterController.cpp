@@ -46,6 +46,7 @@ QvkVolumeterController::QvkVolumeterController( QvkMainWindow *myParent )
 
     QPushButton *pushButton = new QPushButton;
     pushButton->setText( "Vorschau" );
+    pushButton->setCheckable( true );
 
     // Geräte ID vergleichen
     for ( int i = 0; i < listQCheckBox.count(); i++ ) {
@@ -56,7 +57,13 @@ QvkVolumeterController::QvkVolumeterController( QvkMainWindow *myParent )
                 QLabel *label = new QLabel;
                 ui->verticalLayout_volumeter->addWidget( label );
                 connect( inputStart, SIGNAL( signal_level(qreal) ), label, SLOT( setNum(qreal) ) );
-                connect( pushButton, SIGNAL( clicked(bool) ), inputStart, SLOT( slot_stop() ) );
+                connect( pushButton, &QPushButton::clicked, this, [=]( bool bo ) {
+                    if ( bo == false ) {
+                        inputStart->slot_start();
+                    } else {
+                        inputStart->slot_stop();
+                    }
+                } );
             }
         }
     }

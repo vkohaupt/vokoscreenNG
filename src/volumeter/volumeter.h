@@ -44,6 +44,7 @@ public:
 public slots:
     void slot_levelChanged(qreal level);
     void slot_stop();
+    void slot_start();
 
 
 private:

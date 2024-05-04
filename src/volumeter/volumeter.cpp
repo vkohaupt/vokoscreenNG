@@ -68,6 +68,12 @@ InputStart::InputStart( QAudioDevice device )
     audioSource->start(vkQIODevice);
 }
 
+void InputStart::slot_start()
+{
+    vkQIODevice->start();
+    audioSource->start(vkQIODevice);
+}
+
 void InputStart::slot_stop()
 {
     vkQIODevice->stop();
