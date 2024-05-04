@@ -28,16 +28,6 @@ QvkMagnifierController::QvkMagnifierController( Ui_formMainWindow *myui ) : vkMa
 {
     ui = myui;
 
-    sliderMagnificationSize = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayoutMagnicationSize->insertWidget( 0, sliderMagnificationSize );
-    sliderMagnificationSize->setObjectName( "sliderMagnificationSize" );
-    sliderMagnificationSize->setTracking( true );
-    sliderMagnificationSize->setMinimum( 2 );
-    sliderMagnificationSize->setMaximum( 4 );
-    sliderMagnificationSize->setPageStep( 1 );
-    sliderMagnificationSize->show();
-    connect( sliderMagnificationSize, SIGNAL( valueChanged(int) ), vkMagnifier, SLOT( slot_setMagnifierChangedSize(int) ) );
-
     sliderMagnificationRectangle = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_rectangle->insertWidget( 0, sliderMagnificationRectangle );
     sliderMagnificationRectangle->setObjectName( "sliderMagnificationRectangle" );

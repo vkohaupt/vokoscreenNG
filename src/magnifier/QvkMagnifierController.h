@@ -55,7 +55,6 @@ private slots:
 private:
     QvkSpezialSlider *sliderMagnificationRectangle;
     QvkSpezialSlider *sliderMagnificationElipse;
-    QvkSpezialSlider *sliderMagnificationSize;
 
 
 protected:

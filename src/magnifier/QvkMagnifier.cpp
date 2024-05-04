@@ -58,13 +58,13 @@ QvkMagnifier::~QvkMagnifier()
 {
 }
 
-
+/*
 void QvkMagnifier::slot_setMagnifierChangedSize(int value )
 {
     factor = value;
     resize( 2 * distanceX * factor, 2 * distanceY * factor );
 }
-
+*/
 
 void QvkMagnifier::slot_magnifierShow( bool value )
 {
