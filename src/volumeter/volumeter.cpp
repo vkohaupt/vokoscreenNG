@@ -47,9 +47,8 @@ qreal QvkQIODevice::calculateLevel( const char *data, qint64 len ) const
 
 qint64 QvkQIODevice::writeData(const char *data, qint64 len)
 {
-    m_level = calculateLevel(data, len);
-    emit levelChanged(m_level);
-    qDebug() << m_level;
+    qreal m_level = calculateLevel( data, len );
+    emit signal_levelChanged( m_level );
     return len;
 }
 
@@ -62,14 +61,20 @@ InputStart::InputStart( QAudioDevice device )
     format.setChannelCount(1);
     format.setSampleFormat(QAudioFormat::Int16);
 
-    m_audioInfo.reset( new QvkQIODevice( format ) );
-    m_audioInput.reset( new QAudioSource( device, format ) );
-    m_audioInfo->start();
-    m_audioInput->start( m_audioInfo.data() );
+    vkQIODevice = new QvkQIODevice( format );
+    connect( vkQIODevice, SIGNAL( signal_levelChanged(qreal) ), this, SLOT( slot_levelChanged(qreal) ) );
+    audioSource = new QAudioSource( device, format );
+    vkQIODevice->start();
+    audioSource->start(vkQIODevice);
 }
 
 void InputStart::stop()
 {
-    m_audioInput->stop();
-    m_audioInfo->stop();
+    vkQIODevice->stop();
+    audioSource->stop();
+}
+
+void InputStart::slot_levelChanged( qreal level )
+{
+    emit signal_level( level );
 }

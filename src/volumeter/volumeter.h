@@ -20,19 +20,16 @@ public:
     void start();
     void stop();
 
-    qreal level() const { return m_level; }
-
     qint64 readData(char *data, qint64 maxlen) override;
     qint64 writeData(const char *data, qint64 len) override;
 
     qreal calculateLevel(const char *data, qint64 len) const;
 
 signals:
-    void levelChanged(qreal level);
+    void signal_levelChanged(qreal level);
 
 private:
     const QAudioFormat m_format;
-    qreal m_level = 0.0; // 0.0 <= m_level <= 1.0
 };
 
 
@@ -42,19 +39,25 @@ class InputStart : public QObject
 
 public:
     InputStart( QAudioDevice device );
-    QScopedPointer<QvkQIODevice> m_audioInfo;
-    QScopedPointer<QAudioSource> m_audioInput;
     void stop();
 
 
-private:
+public slots:
+    void slot_levelChanged(qreal level);
 
+
+private:
+    QvkQIODevice *vkQIODevice;
+    QAudioSource *audioSource;
 
 private slots:
 
 
 private:
 
+
+signals:
+    void signal_level( qreal );
 
 };
 
