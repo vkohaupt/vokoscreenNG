@@ -704,8 +704,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->label_translate->hide();
         ui->verticalLayout_7->removeItem( ui->verticalSpacer );
     }
-
-    ui->tabAudio->hide();
 }
 
 

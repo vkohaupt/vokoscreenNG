@@ -44,7 +44,6 @@ private:
     Ui_formMainWindow *ui;
     void getAllDevices();
     bool isAudioDeviceSelected();
-    void audioIconOnOff( bool state );
 
 
 private slots:

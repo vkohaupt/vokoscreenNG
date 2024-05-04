@@ -46,7 +46,6 @@ private:
     Ui_formMainWindow *ui;
     QTimer *timer;
     bool isAudioDeviceSelected();
-    void audioIconOnOff(bool state);
 
 
 private slots:
