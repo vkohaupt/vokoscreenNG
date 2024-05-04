@@ -44,10 +44,10 @@ QvkVolumeterController::QvkVolumeterController( QvkMainWindow *myParent )
         list << checkBox->accessibleName();
     }
 
+    QPushButton *pushButton = new QPushButton;
+    pushButton->setText( "Vorschau" );
 
     // Geräte ID vergleichen
-
-
     for ( int i = 0; i < listQCheckBox.count(); i++ ) {
         for ( int x = 0; x < devices.count(); x++ ) {
             QCheckBox *checkBox = listQCheckBox.at(i);
@@ -56,11 +56,11 @@ QvkVolumeterController::QvkVolumeterController( QvkMainWindow *myParent )
                 QLabel *label = new QLabel;
                 ui->verticalLayout_volumeter->addWidget( label );
                 connect( inputStart, SIGNAL( signal_level(qreal) ), label, SLOT( setNum(qreal) ) );
+                connect( pushButton, SIGNAL( clicked(bool) ), inputStart, SLOT( slot_stop() ) );
             }
         }
     }
-    QPushButton *pushButton = new QPushButton;
-    pushButton->setText( "Vorschau" );
+
     ui->verticalLayout_volumeter->addWidget( pushButton );
 }
 
