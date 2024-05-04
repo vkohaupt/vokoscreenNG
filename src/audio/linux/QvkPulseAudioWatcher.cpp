@@ -63,6 +63,9 @@ void QvkPulseAudioWatcher::slot_update()
 
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
     QStringList list = QvkPulseAudioDevices::getAllDevices();
+    if ( list.contains( "" ) ) {
+        return;
+    }
 
     QStringList stringListCheckBox;
     for ( int i = 0; i < listCheckBox.count(); i++ ) {

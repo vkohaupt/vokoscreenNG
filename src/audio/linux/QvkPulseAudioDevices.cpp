@@ -45,5 +45,6 @@ QStringList QvkPulseAudioDevices::getAllDevices()
         QString s2 = s1.left( QString::fromUtf8( ss ).length() - 3 );
         list = s2.split( "---" );
     }
+
     return list;
 }

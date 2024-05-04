@@ -50,13 +50,16 @@ void QvkAudioController::init()
     getAllDevices();
 }
 
+// systemctl --user stop pipewire.socket
+// systemctl --user start pipewire.socket
+
 
 void QvkAudioController::getAllDevices()
 {
     QStringList list;
     if ( QvkPulseAudioServer::isAvailable() ) {
         list << QvkPulseAudioDevices::getAllDevices();
-        if ( !list.empty() ) {
+        if ( !list.contains( "" ) ) {
             for ( int i = 0; i < list.count(); i++ ) {
                 QCheckBox *checkboxAudioDevice = new QCheckBox();
                 connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
