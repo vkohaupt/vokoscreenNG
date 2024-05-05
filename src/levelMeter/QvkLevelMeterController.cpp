@@ -26,6 +26,7 @@
 #include <QAudioDevice>
 #include <QMediaDevices>
 #include <QCheckBox>
+#include <QProgressBar>
 
 QvkLevelMeterController::QvkLevelMeterController( QvkMainWindow *myParent )
 {
@@ -44,31 +45,39 @@ QvkLevelMeterController::QvkLevelMeterController( QvkMainWindow *myParent )
         list << checkBox->accessibleName();
     }
 
-    QPushButton *pushButton = new QPushButton;
-    pushButton->setText( "Vorschau" );
-    pushButton->setCheckable( true );
-
     // Geräte ID vergleichen
     for ( int i = 0; i < listQCheckBox.count(); i++ ) {
         for ( int x = 0; x < devices.count(); x++ ) {
             QCheckBox *checkBox = listQCheckBox.at(i);
             if ( checkBox->accessibleName() == devices.at(x).id() ) {
                 InputStart *inputStart = new InputStart( devices.at(x) );
-                QLabel *label = new QLabel;
-                ui->verticalLayout_volumeter->addWidget( label );
-                connect( inputStart, SIGNAL( signal_level(qreal) ), label, SLOT( setNum(qreal) ) );
-                connect( pushButton, &QPushButton::clicked, this, [=]( bool bo ) {
+
+                QProgressBar *progressBar = new QProgressBar;
+                progressBar->setFixedWidth(160);
+                progressBar->setFixedHeight(8);
+                progressBar->setTextVisible( false);
+
+                QToolButton *toolButton = new QToolButton;
+                toolButton->setCheckable( true );
+                toolButton->setFixedSize( 16, 16 );
+
+                QHBoxLayout *hBoxLayout = new QHBoxLayout;
+                hBoxLayout->addWidget( toolButton );
+                hBoxLayout->addWidget( progressBar );
+                ui->verticalLayout_volumeter->addLayout( hBoxLayout );
+
+                connect( inputStart, SIGNAL( signal_level(int) ), progressBar, SLOT( setValue(int) ) );
+                connect( toolButton, &QToolButton::clicked, this, [=]( bool bo ) {
                     if ( bo == false ) {
-                        inputStart->slot_start();
-                    } else {
                         inputStart->slot_stop();
+                        progressBar->setValue(0);
+                    } else {
+                        inputStart->slot_start();
                     }
                 } );
             }
         }
     }
-
-    ui->verticalLayout_volumeter->addWidget( pushButton );
 }
 
 

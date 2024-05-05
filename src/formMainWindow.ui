@@ -14,7 +14,7 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_49">
+   <layout class="QHBoxLayout" name="horizontalLayout_49" stretch="0,0">
     <property name="spacing">
      <number>0</number>
     </property>
@@ -698,8 +698,8 @@
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>426</width>
-                        <height>79</height>
+                        <width>410</width>
+                        <height>72</height>
                        </rect>
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
@@ -2646,8 +2646,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>463</width>
-                   <height>417</height>
+                   <width>446</width>
+                   <height>414</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">

@@ -64,8 +64,6 @@ InputStart::InputStart( QAudioDevice device )
     vkQIODevice = new QvkQIODevice( format );
     connect( vkQIODevice, SIGNAL( signal_levelChanged(qreal) ), this, SLOT( slot_levelChanged(qreal) ) );
     audioSource = new QAudioSource( device, format );
-    vkQIODevice->start();
-    audioSource->start(vkQIODevice);
 }
 
 void InputStart::slot_start()
@@ -82,5 +80,5 @@ void InputStart::slot_stop()
 
 void InputStart::slot_levelChanged( qreal level )
 {
-    emit signal_level( level );
+    emit signal_level( level * 100 );
 }

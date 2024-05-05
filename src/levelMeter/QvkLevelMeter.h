@@ -58,7 +58,7 @@ private:
 
 
 signals:
-    void signal_level( qreal );
+    void signal_level( int );
 
 };
 
