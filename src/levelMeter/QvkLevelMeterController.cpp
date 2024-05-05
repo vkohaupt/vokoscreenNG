@@ -52,36 +52,32 @@ QvkLevelMeterController::QvkLevelMeterController( QvkMainWindow *myParent )
             if ( checkBox->accessibleName() == devices.at(x).id() ) {
                 InputStart *inputStart = new InputStart( devices.at(x) );
 
-                QProgressBar *progressBar = new QProgressBar;
-                progressBar->setFixedWidth(160);
-                progressBar->setFixedHeight(8);
-                progressBar->setTextVisible( false);
-
-                QToolButton *toolButton = new QToolButton;
-                toolButton->setCheckable( true );
-                toolButton->setFixedSize( 16, 16 );
-
-                QHBoxLayout *hBoxLayout = new QHBoxLayout;
-                hBoxLayout->addWidget( toolButton );
-                hBoxLayout->addWidget( progressBar );
-                ui->verticalLayout_volumeter->addLayout( hBoxLayout );
-
-                connect( inputStart, SIGNAL( signal_level(int) ), progressBar, SLOT( setValue(int) ) );
-                connect( toolButton, &QToolButton::clicked, this, [=]( bool bo ) {
-                    if ( bo == false ) {
-                        inputStart->slot_stop();
-                        progressBar->setValue(0);
-                    } else {
-                        inputStart->slot_start();
-                    }
-                } );
+                QList<QProgressBar *> listProgressBar = ui->centralWidget->findChildren<QProgressBar *>( "progressBarAudioDevice-" + QString::number(i) );
+                if ( !listProgressBar.empty() ) {
+                    QProgressBar *progressBar = listProgressBar.at(0);
+                    connect( inputStart, SIGNAL( signal_level(int) ), progressBar, SLOT( setValue(int) ) );
+                    connect( inputStart, SIGNAL( signal_level(int) ), progressBar, SLOT( update() ) );
+                    inputStart->slot_start();
+                }
             }
         }
     }
 
-//    test_gstreamer_level();
+    //    test_gstreamer_level();
 }
 
+
+/*
+                    connect( toolButton, &QToolButton::clicked, this, [=]( bool bo ) {
+                        if ( bo == false ) {
+                            inputStart->slot_stop();
+                            progressBar->setValue(0);
+                        } else {
+                            inputStart->slot_start();
+                        }
+                    } );
+
+*/
 
 QvkLevelMeterController::~QvkLevelMeterController()
 {

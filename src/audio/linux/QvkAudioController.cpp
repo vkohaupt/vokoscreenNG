@@ -25,6 +25,7 @@
 #include <QPainter>
 #include <QCheckBox>
 #include <QLabel>
+#include <QProgressBar>
 
 #include "QvkAudioController.h"
 #include "QvkPulseAudioWatcher.h"
@@ -63,11 +64,26 @@ void QvkAudioController::getAllDevices()
             for ( int i = 0; i < list.count(); i++ ) {
                 QCheckBox *checkboxAudioDevice = new QCheckBox();
                 connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
-                checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
+                checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ).left(40) );
                 checkboxAudioDevice->setAccessibleName( QString( list.at(i) ).section( ":::", 0, 0 ) );
                 checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( i ) );
                 checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
-                ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
+
+                QHBoxLayout *hBoxLayout = new QHBoxLayout; // Für Checkbox und Progressbar
+                hBoxLayout->setObjectName( "hBoxLayoutAudioDevice-" + QString::number( i ) );
+
+                QProgressBar *progressBar = new QProgressBar;
+                progressBar->setObjectName( "progressBarAudioDevice-" + QString::number( i ) );
+                progressBar->setFixedWidth(100);
+                progressBar->setFixedHeight(8);
+                progressBar->setTextVisible(false);
+                progressBar->setMinimum(0);
+                progressBar->setMaximum(10000);
+
+                hBoxLayout->addWidget( checkboxAudioDevice );
+                hBoxLayout->addWidget( progressBar );
+                ui->verticalLayoutAudioDevices->addLayout( hBoxLayout );
+
                 qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( list.at(i) ).section( ":::", 1, 1 ) << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 );
             }
             qDebug().noquote();

@@ -80,5 +80,5 @@ void InputStart::slot_stop()
 
 void InputStart::slot_levelChanged( qreal level )
 {
-    emit signal_level( level * 100 );
+    emit signal_level( level * 10000 );
 }
