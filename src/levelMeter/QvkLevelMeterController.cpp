@@ -79,7 +79,7 @@ QvkLevelMeterController::QvkLevelMeterController( QvkMainWindow *myParent )
         }
     }
 
-//    test123();
+    test123();
 }
 
 
@@ -156,7 +156,6 @@ void QvkLevelMeterController::test123()
   GstCaps *caps;
   GstBus *bus;
   guint watch_id;
-  GMainLoop *loop;
 
   caps = gst_caps_from_string ("audio/x-raw,channels=2");
 
@@ -187,15 +186,10 @@ void QvkLevelMeterController::test123()
   /* run synced and not as fast as we can */
   g_object_set (G_OBJECT (fakesink), "sync", TRUE, NULL);
 
-  bus = gst_element_get_bus (pipeline);
-  watch_id = gst_bus_add_watch (bus, message_handler, NULL);
+  bus = gst_pipeline_get_bus (GST_PIPELINE(pipeline));
+  gst_bus_add_watch( bus, &message_handler, nullptr);
 
   gst_element_set_state (pipeline, GST_STATE_PLAYING);
 
-  /* we need to run a GLib main loop to get the messages */
-  loop = g_main_loop_new (NULL, FALSE);
-  g_main_loop_run (loop);
-
   g_source_remove (watch_id);
-  g_main_loop_unref (loop);
 }
