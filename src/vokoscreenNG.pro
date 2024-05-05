@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-equals(QT_MAJOR_VERSION, 6):!lessThan(QT_MINOR_VERSION, 6) {
+equals(QT_MAJOR_VERSION, 6):!lessThan(QT_MINOR_VERSION, 4) {
    # there is nothing to do
 } else {
     message("Cannot use Qt $${QT_VERSION}")
@@ -218,4 +218,4 @@ include(padsAndCaps/padsAndCaps.pri)
 include(container/container.pri)
 
 # Volumeter
-include(volumeter/volumeter.pri)
+include(levelMeter/levelMeter.pri)

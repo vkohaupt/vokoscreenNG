@@ -27,15 +27,15 @@
 
 #include "ui_formMainWindow.h"  // contains the GUI
 #include "mainwindow.h"         // contains the class QvkMainWindow
-#include "volumeter.h"
+#include "QvkLevelMeter.h"
 
-class QvkVolumeterController : public QObject
+class QvkLevelMeterController : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit QvkVolumeterController( QvkMainWindow *myParent );
-    ~QvkVolumeterController();
+    explicit QvkLevelMeterController( QvkMainWindow *myParent );
+    ~QvkLevelMeterController();
 
 
 private:

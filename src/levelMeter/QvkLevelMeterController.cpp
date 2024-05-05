@@ -21,20 +21,20 @@
  */
 
 #include "global.h"
-#include "QvkVolumeterController.h"
+#include "QvkLevelMeterController.h"
 
 #include <QAudioDevice>
 #include <QMediaDevices>
 #include <QCheckBox>
 
-QvkVolumeterController::QvkVolumeterController( QvkMainWindow *myParent )
+QvkLevelMeterController::QvkLevelMeterController( QvkMainWindow *myParent )
 {
     vkMainWindow = myParent;
     ui = vkMainWindow->ui;
 
     QList<QAudioDevice> devices = QMediaDevices::audioInputs();
     for ( int i = 0; i < devices.count(); i++ ) {
-        qDebug().noquote() << global::nameOutput << "[Volumeter]" << devices.at(i).description() << devices.at(i).id();
+        qDebug().noquote() << global::nameOutput << "[Audio] [Levelmeter]" << devices.at(i).description() << devices.at(i).id();
     }
 
     QStringList list;
@@ -72,6 +72,6 @@ QvkVolumeterController::QvkVolumeterController( QvkMainWindow *myParent )
 }
 
 
-QvkVolumeterController::~QvkVolumeterController()
+QvkLevelMeterController::~QvkLevelMeterController()
 {
 }
