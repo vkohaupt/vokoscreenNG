@@ -41,6 +41,7 @@ public:
 private:
     QvkMainWindow *vkMainWindow;
     Ui_formMainWindow *ui;
+    void test123();
 
 
 public slots:
