@@ -41,7 +41,7 @@ public:
 private:
     QvkMainWindow *vkMainWindow;
     Ui_formMainWindow *ui;
-    void test123();
+    void test_gstreamer_level();
 
 
 public slots:
