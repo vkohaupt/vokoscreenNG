@@ -30,6 +30,7 @@
 #include <QLabel>
 #include <QSpacerItem>
 #include <QPainter>
+#include <QProgressBar>
 
 /*
  * QvkWatcherPlug monitoring only new or removed Audiodevices.
@@ -114,6 +115,7 @@ void QvkPulseAudioWatcher::slot_update()
     }
 
     // Remove device
+/*
     if ( list.count() < listCheckBox.count() ) {
         for ( int i = 0; i < listCheckBox.count(); i++ ) {
             if ( stringListAudio_Device.contains( listCheckBox.at(i)->accessibleName() ) == false ) {
@@ -123,6 +125,21 @@ void QvkPulseAudioWatcher::slot_update()
         }
         slot_audioDeviceSelected();
     }
+*/
+
+    if ( list.count() < listCheckBox.count() ) {
+        QList<QHBoxLayout *> listHBoxLayout = ui->scrollAreaAudioDevice->findChildren<QHBoxLayout *>();
+        QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
+        QList<QProgressBar *> listProgressBar = ui->scrollAreaAudioDevice->findChildren<QProgressBar *>();
+        qDebug() << listHBoxLayout;
+        qDebug() << listCheckBox;
+        qDebug() << listProgressBar;
+        for ( int i = 0; i < listHBoxLayout.count(); i++ ) {
+            QHBoxLayout *hBoxLayout = listHBoxLayout.at(i);
+        }
+    }
+
+
 
     if ( list.empty() and ( QvkPulseAudioServer::isAvailable() == false ) ) {
         // Remove SpacerItem

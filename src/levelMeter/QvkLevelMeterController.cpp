@@ -38,21 +38,23 @@ QvkLevelMeterController::QvkLevelMeterController( QvkMainWindow *myParent )
         qDebug().noquote() << global::nameOutput << "[Audio] [Levelmeter]" << devices.at(i).description() << devices.at(i).id();
     }
 
-    QStringList list;
-    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listQCheckBox.count(); i++ ) {
-        QCheckBox *checkBox = listQCheckBox.at(i);
-        list << checkBox->accessibleName();
-    }
-
     // Geräte ID vergleichen
+    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
     for ( int i = 0; i < listQCheckBox.count(); i++ ) {
         for ( int x = 0; x < devices.count(); x++ ) {
             QCheckBox *checkBox = listQCheckBox.at(i);
             if ( checkBox->accessibleName() == devices.at(x).id() ) {
                 InputStart *inputStart = new InputStart( devices.at(x) );
 
-                QList<QProgressBar *> listProgressBar = ui->centralWidget->findChildren<QProgressBar *>( "progressBarAudioDevice-" + QString::number(i) );
+                // Führende Null voranstellen
+                QString prefixNumber;
+                if ( i < 10 ) {
+                    prefixNumber = "0" + QString::number(i);
+                } else {
+                    prefixNumber = QString::number(i);
+                }
+
+                QList<QProgressBar *> listProgressBar = ui->centralWidget->findChildren<QProgressBar *>( "progressBarAudioDevice-" + prefixNumber );
                 if ( !listProgressBar.empty() ) {
                     QProgressBar *progressBar = listProgressBar.at(0);
                     connect( inputStart, SIGNAL( signal_level(int) ), progressBar, SLOT( setValue(int) ) );
