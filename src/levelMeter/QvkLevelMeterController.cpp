@@ -54,7 +54,6 @@ void QvkLevelMeterController::set_levelmeterOnProgressBar( QCheckBox *checkBox, 
 }
 
 
-
 static gboolean message_handler (GstBus * bus, GstMessage * message, gpointer data)
 {
     Q_UNUSED(bus)
