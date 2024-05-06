@@ -111,13 +111,13 @@ void QvkPulseAudioWatcher::slot_update()
                 ui->verticalLayoutAudioDevices->addLayout( hBoxLayout );
 
                 // Checkbox hinzufügen
-                QCheckBox *checkboxAudioDevice = new QCheckBox();
-                connect( checkboxAudioDevice, SIGNAL( clicked(bool) ), this, SLOT( slot_audioDeviceSelected() ) );
-                checkboxAudioDevice->setText( name );
-                checkboxAudioDevice->setAccessibleName( device );
-                checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + prefixNumber );
-                checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
-                hBoxLayout->addWidget( checkboxAudioDevice );
+                QCheckBox *checkBox = new QCheckBox();
+                connect( checkBox, SIGNAL( clicked(bool) ), this, SLOT( slot_audioDeviceSelected() ) );
+                checkBox->setText( name );
+                checkBox->setAccessibleName( device );
+                checkBox->setObjectName( "checkboxAudioDevice-" + prefixNumber );
+                checkBox->setToolTip( tr ( "Select one or more devices" ) );
+                hBoxLayout->addWidget( checkBox );
 
                 // Progressbar hinzufügen
                 QProgressBar *progressBar = new QProgressBar;
@@ -129,7 +129,11 @@ void QvkPulseAudioWatcher::slot_update()
                 progressBar->setMaximum(10000);
                 progressBar->setToolTip( name );
                 hBoxLayout->addWidget( progressBar );
-                QvkLevelMeterController::set_levelmeterOnProgressBar( checkboxAudioDevice, progressBar );
+
+                // levelmeter mit Widgets verbinden
+                qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( list.at(i) ).section( ":::", 1, 1 ) << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 );
+                QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
+                vkLevelMeterController->set_levelmeterOnProgressBar( checkBox, progressBar );
             }
         }
 

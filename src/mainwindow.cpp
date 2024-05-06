@@ -671,7 +671,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     new QvkImageFromTabs( this );
 #ifdef Q_OS_UNIX
-    new QvkLevelMeterController(this);
+//    new QvkLevelMeterController(this);
 #endif
 
     is_videoFolderExists_and_haveWritePermission();

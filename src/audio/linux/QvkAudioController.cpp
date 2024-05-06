@@ -32,6 +32,7 @@
 #include "QvkPulseAudioServer.h"
 #include "QvkPulseAudioDevices.h"
 #include "global.h"
+#include "QvkLevelMeterController.h"
 
 QvkAudioController::QvkAudioController( Ui_formMainWindow *ui_mainwindow )
 {
@@ -74,12 +75,12 @@ void QvkAudioController::getAllDevices()
                 QHBoxLayout *hBoxLayout = new QHBoxLayout; // Für Checkbox und Progressbar
                 hBoxLayout->setObjectName( "hBoxLayoutAudioDevice-" + prefixNumber );
 
-                QCheckBox *checkboxAudioDevice = new QCheckBox();
-                connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
-                checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ).left(45) );
-                checkboxAudioDevice->setAccessibleName( QString( list.at(i) ).section( ":::", 0, 0 ) );
-                checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + prefixNumber );
-                checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
+                QCheckBox *checkBox = new QCheckBox();
+                connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
+                checkBox->setText( QString( list.at(i) ).section( ":::", 1, 1 ).left(45) );
+                checkBox->setAccessibleName( QString( list.at(i) ).section( ":::", 0, 0 ) );
+                checkBox->setObjectName( "checkboxAudioDevice-" + prefixNumber );
+                checkBox->setToolTip( tr ( "Select one or more devices" ) );
 
                 QProgressBar *progressBar = new QProgressBar;
                 progressBar->setObjectName( "progressBarAudioDevice-" + prefixNumber );
@@ -90,11 +91,14 @@ void QvkAudioController::getAllDevices()
                 progressBar->setMaximum(10000);
                 progressBar->setToolTip( QString( list.at(i) ).section( ":::", 1, 1 ) );
 
-                hBoxLayout->addWidget( checkboxAudioDevice );
+                hBoxLayout->addWidget( checkBox );
                 hBoxLayout->addWidget( progressBar );
                 ui->verticalLayoutAudioDevices->addLayout( hBoxLayout );
 
                 qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( list.at(i) ).section( ":::", 1, 1 ) << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 );
+                QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
+                vkLevelMeterController->set_levelmeterOnProgressBar( checkBox, progressBar );
+
             }
             qDebug().noquote();
 
