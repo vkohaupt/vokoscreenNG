@@ -67,17 +67,13 @@ void QvkPulseAudioWatcher::slot_update()
 
     QStringList stringListCheckBox;
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
-        stringListCheckBox.append( listCheckBox.at(i)->accessibleName() );
+        QCheckBox *checkBox = listCheckBox.at(i);
+        stringListCheckBox.append( checkBox->accessibleName() );
     }
 
     QStringList stringListAudio_Device;
     for ( int i = 0; i < list.count(); i++ ) {
         stringListAudio_Device.append( list.at(i).section( ":::", 0, 0 ) );
-    }
-
-    QList<QLabel *> deleteLabel = ui->scrollAreaAudioDevice->findChildren<QLabel *>();
-    for ( int x = 0; x < deleteLabel.count(); x ++ ) {
-        delete deleteLabel.at(x);
     }
 
     // Add new Device
@@ -128,8 +124,6 @@ void QvkPulseAudioWatcher::slot_update()
             }
         }
     }
-
-
 
     if ( list.empty() and ( QvkPulseAudioServer::isAvailable() == false ) ) {
         // Remove SpacerItem
@@ -205,7 +199,8 @@ bool QvkPulseAudioWatcher::isAudioDeviceSelected()
     bool value = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
-        if ( listCheckBox.at(i)->checkState() == Qt::Checked ) {
+        QCheckBox *checkBox = listCheckBox.at(i);
+        if ( checkBox->checkState() == Qt::Checked ) {
             value = true;
             break;
         }
