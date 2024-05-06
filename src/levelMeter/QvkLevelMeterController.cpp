@@ -85,6 +85,23 @@ QvkLevelMeterController::~QvkLevelMeterController()
 {
 }
 
+
+void QvkLevelMeterController::set_levelmeterOnProgressBar( QCheckBox *checkBox, QProgressBar *progressBar )
+{
+    QList<QAudioDevice> devices = QMediaDevices::audioInputs();
+    for ( int i = 0; i < devices.count(); i++ ) {
+        QAudioDevice audioDevice = devices.at(i);
+        if ( audioDevice.id() == checkBox->accessibleName() ) {
+            InputStart *inputStart = new InputStart( devices.at(i) );
+            connect( inputStart, SIGNAL( signal_level(int) ), progressBar, SLOT( setValue(int) ) );
+            connect( inputStart, SIGNAL( signal_level(int) ), progressBar, SLOT( update() ) );
+            inputStart->slot_start();
+        }
+    }
+}
+
+
+
 static gboolean message_handler (GstBus * bus, GstMessage * message, gpointer data)
 {
     Q_UNUSED(bus)

@@ -31,6 +31,8 @@
 #include <QSpacerItem>
 #include <QPainter>
 #include <QProgressBar>
+#include "QvkLevelMeterController.h"
+
 
 /*
  * QvkWatcherPlug monitoring only new or removed Audiodevices.
@@ -87,27 +89,10 @@ void QvkPulseAudioWatcher::slot_update()
                 --i;
             }
         }
-/*
-        for ( int i = 0; i < stringListAudio_Device.count(); i++ ) {
-            if ( stringListCheckBox.contains( stringListAudio_Device.at(i) ) == false ) {
-                QString name = list.at(i).section( ":::", 1, 1 );
-                QString device = list.at(i).section( ":::", 0, 0 );
-                qDebug().noquote() << global::nameOutput << "[PulseAudio] Added:" << name << "Device:" << device;
 
-                QCheckBox *checkboxAudioDevice = new QCheckBox();
-                connect( checkboxAudioDevice, SIGNAL( clicked(bool) ), this, SLOT( slot_audioDeviceSelected() ) );
-                checkboxAudioDevice->setText( name );
-                checkboxAudioDevice->setAccessibleName( device );
-                QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-                checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( listAudioDevices.count() ) );
-                checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
-                ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
-            }
-        }
-*/
         for ( int i = 0; i < stringListAudio_Device.count(); i++ ) {
             if ( stringListCheckBox.contains( stringListAudio_Device.at(i) ) == false ) {
-                QString name = list.at(i).section( ":::", 1, 1 );
+                QString name = list.at(i).section( ":::", 1, 1 ).left(45);
                 QString device = list.at(i).section( ":::", 0, 0 );
                 qDebug().noquote() << global::nameOutput << "[PulseAudio] Added:" << name << "Device:" << device;
 
@@ -134,7 +119,7 @@ void QvkPulseAudioWatcher::slot_update()
                 checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
                 hBoxLayout->addWidget( checkboxAudioDevice );
 
-                // Pogressbar hinzufügen
+                // Progressbar hinzufügen
                 QProgressBar *progressBar = new QProgressBar;
                 progressBar->setObjectName( "progressBarAudioDevice-" + prefixNumber );
                 progressBar->setFixedWidth(130);
@@ -144,6 +129,7 @@ void QvkPulseAudioWatcher::slot_update()
                 progressBar->setMaximum(10000);
                 progressBar->setToolTip( name );
                 hBoxLayout->addWidget( progressBar );
+                QvkLevelMeterController::set_levelmeterOnProgressBar( checkboxAudioDevice, progressBar );
             }
         }
 

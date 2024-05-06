@@ -24,6 +24,7 @@
 #define QVKVOLUMETERCONTROLLER_H
 
 #include <QObject>
+#include <QProgressBar>
 
 #include "ui_formMainWindow.h"  // contains the GUI
 #include "mainwindow.h"         // contains the class QvkMainWindow
@@ -36,6 +37,7 @@ class QvkLevelMeterController : public QObject
 public:
     explicit QvkLevelMeterController( QvkMainWindow *myParent );
     ~QvkLevelMeterController();
+    static void set_levelmeterOnProgressBar( QCheckBox *checkBox, QProgressBar *progressBar );
 
 
 private:
