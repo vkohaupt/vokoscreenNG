@@ -71,15 +71,15 @@ void QvkAudioController::getAllDevices()
                     prefixNumber = QString::number(i);
                 }
 
+                QHBoxLayout *hBoxLayout = new QHBoxLayout; // Für Checkbox und Progressbar
+                hBoxLayout->setObjectName( "hBoxLayoutAudioDevice-" + prefixNumber );
+
                 QCheckBox *checkboxAudioDevice = new QCheckBox();
                 connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
                 checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ).left(45) );
                 checkboxAudioDevice->setAccessibleName( QString( list.at(i) ).section( ":::", 0, 0 ) );
                 checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + prefixNumber );
                 checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
-
-                QHBoxLayout *hBoxLayout = new QHBoxLayout; // Für Checkbox und Progressbar
-                hBoxLayout->setObjectName( "hBoxLayoutAudioDevice-" + prefixNumber );
 
                 QProgressBar *progressBar = new QProgressBar;
                 progressBar->setObjectName( "progressBarAudioDevice-" + prefixNumber );
