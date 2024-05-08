@@ -339,8 +339,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->radioButtonScreencastArea,       SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->comboBoxScreencastScreen,        SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->labelScreencastCountdownText,    SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), sliderScreencastCountDown, SLOT( setEnabled(bool) ) );
-//    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameAudio,            SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), sliderScreencastCountDown,           SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->scrollAreaAudioDevice,           SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->labelFrames,           SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameFrames,           SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->labelFormat,           SLOT( setEnabled(bool) ) );
@@ -372,8 +372,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->radioButtonScreencastArea,       SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->comboBoxScreencastScreen,        SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->labelScreencastCountdownText,    SLOT( setDisabled(bool) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), sliderScreencastCountDown, SLOT( setDisabled(bool) ) );
-//    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->frameAudio,            SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), sliderScreencastCountDown,           SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->scrollAreaAudioDevice,           SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->labelFrames,           SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->frameFrames,           SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->labelFormat,           SLOT( setDisabled(bool) ) );

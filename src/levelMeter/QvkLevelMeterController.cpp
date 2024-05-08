@@ -48,7 +48,7 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QVBoxLayout 
             qDebug().noquote() << global::nameOutput << "[Audio] [Levelmeter]" << devices.at(i).description() << devices.at(i).id();
 
             setObjectName( "progressBarAudioDevice-" + checkBox->objectName().right(2) );
-            setFixedHeight(8);
+            setFixedHeight(4);
             setTextVisible(false);
             setMinimum(0);
             setMaximum(10000);
