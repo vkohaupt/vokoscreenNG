@@ -466,7 +466,7 @@
                   <property name="sizeHint" stdset="0">
                    <size>
                     <width>20</width>
-                    <height>10</height>
+                    <height>5</height>
                    </size>
                   </property>
                  </spacer>
@@ -505,7 +505,7 @@
                   <property name="sizeHint" stdset="0">
                    <size>
                     <width>20</width>
-                    <height>10</height>
+                    <height>5</height>
                    </size>
                   </property>
                  </spacer>
@@ -680,8 +680,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>428</width>
-                     <height>121</height>
+                     <width>412</width>
+                     <height>114</height>
                     </rect>
                    </property>
                    <property name="accessibleName">
@@ -704,7 +704,7 @@
                 <property name="sizeHint" stdset="0">
                  <size>
                   <width>20</width>
-                  <height>10</height>
+                  <height>20</height>
                  </size>
                 </property>
                </spacer>
@@ -2615,8 +2615,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>463</width>
-                   <height>417</height>
+                   <width>446</width>
+                   <height>414</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -7118,7 +7118,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
