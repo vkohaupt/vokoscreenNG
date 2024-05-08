@@ -40,32 +40,6 @@ QvkDirectSoundController::~QvkDirectSoundController()
 {
 }
 
-/*
- * Set a new icon with a red cross
- */
-void QvkDirectSoundController::slot_audioIconOnOff( bool state )
-{
-    QIcon myIcon( ":/pictures/screencast/microphone.png" );
-    if ( state == false  ) {
-        QSize size = ui->tabWidgetScreencast->iconSize();
-        QPixmap workPixmap( myIcon.pixmap( size ) );
-        QPainter painter;
-        QPen pen;
-        painter.begin( &workPixmap );
-        pen.setColor( QString( "#3daee9" ) );
-        pen.setWidth( 2 );
-        painter.setPen( pen );
-        painter.drawLine ( 5, 5, size.width()-5, size.height()-5 );
-        painter.drawLine ( 5, size.height()-5, size.width()-5, 5 );
-        painter.end();
-        int index = ui->tabWidgetScreencast->indexOf( ui->tabAudio );
-        ui->tabWidgetScreencast->setTabIcon( index, workPixmap );
-    } else {
-        int index = ui->tabWidgetScreencast->indexOf( ui->tabAudio );
-        ui->tabWidgetScreencast->setTabIcon( index, myIcon );
-    }
-}
-
 
 void QvkDirectSoundController::init()
 {
@@ -136,7 +110,6 @@ void QvkDirectSoundController::slot_audioDeviceSelected()
             break;
         }
     }
-    slot_audioIconOnOff( value );
     emit signal_haveAudioDeviceSelected( value );
 }
 

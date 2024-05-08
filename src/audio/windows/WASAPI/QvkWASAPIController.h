@@ -53,7 +53,6 @@ private:
 
 private slots:
     void slot_pluggedInOutDevice( QString string );
-    void slot_audioIconOnOff( bool state );
 
 
 protected:
