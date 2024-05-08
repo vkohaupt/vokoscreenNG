@@ -30,21 +30,24 @@
 #include "ui_formMainWindow.h"  // contains the GUI
 #include "mainwindow.h"         // contains the class QvkMainWindow
 #include "QvkLevelMeter.h"
+#include "QvkLevelMeterController.h"
 
-class QvkLevelMeterController : public QObject
+class QvkLevelMeterController : public QProgressBar
 {
     Q_OBJECT
 
 public:
     explicit QvkLevelMeterController();
     ~QvkLevelMeterController();
-    void set_levelmeterOnProgressBar( QCheckBox *checkBox, QProgressBar *progressBar );
+    void add_ProgressBar( QCheckBox *checkBox, QVBoxLayout *layout );
+    void remove_ProgressBar();
 
 
 private:
     QvkMainWindow *vkMainWindow;
     Ui_formMainWindow *ui;
     void test_gstreamer_level();
+    InputStart *inputStart;
 
 
 public slots:

@@ -62,6 +62,7 @@ void QvkPulseAudioWatcher::start_monitor()
 
 void QvkPulseAudioWatcher::slot_update()
 {
+    timer->stop();
     ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft );
 
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
@@ -79,7 +80,9 @@ void QvkPulseAudioWatcher::slot_update()
     }
 
     // Add new Device
-    if ( list.count() > listCheckBox.count() ) {
+    QList<QVBoxLayout *> listVBoxLayout = ui->verticalLayoutAudioDevices->findChildren<QVBoxLayout *>();
+    if ( list.count() > listVBoxLayout.count() ) {
+
         // Remove SpacerItem
         for (int i = 0; i < ui->verticalLayoutAudioDevices->count(); ++i) {
             QLayoutItem *layoutItem = ui->verticalLayoutAudioDevices->itemAt(i);
@@ -92,22 +95,23 @@ void QvkPulseAudioWatcher::slot_update()
 
         for ( int i = 0; i < stringListAudio_Device.count(); i++ ) {
             if ( stringListCheckBox.contains( stringListAudio_Device.at(i) ) == false ) {
-                QString name = list.at(i).section( ":::", 1, 1 ).left(45);
+                QString name = list.at(i).section( ":::", 1, 1 );
                 QString device = list.at(i).section( ":::", 0, 0 );
                 qDebug().noquote() << global::nameOutput << "[PulseAudio] Added:" << name << "Device:" << device;
 
-                // Anzahl der Layouts ermitteln und ein Layout hinzufügen
-                QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-                int countLayouts = listAudioDevices.count();
-                // Führende Null voranstellen
+                // Freie Nummer(xx) 00, 01, 02, xx, 04, 05 usw. ermitteln und diese Nummer dem neuen Layout hinzufügen
+                QList<QVBoxLayout *> listVBoxLayout = ui->verticalLayoutAudioDevices->findChildren<QVBoxLayout *>();
+                int countLayouts = listVBoxLayout.last()->objectName().last(2).toInt();
+                countLayouts++;
                 QString prefixNumber;
                 if ( countLayouts < 10 ) {
                     prefixNumber = "0" + QString::number( countLayouts );
                 } else {
                     prefixNumber = QString::number( countLayouts );
                 }
-                QHBoxLayout *hBoxLayout = new QHBoxLayout; // Für Checkbox und Progressbar
-                hBoxLayout->setObjectName( "hBoxLayoutAudioDevice-" + prefixNumber );
+                QVBoxLayout *hBoxLayout = new QVBoxLayout; // Für Checkbox und Progressbar
+                hBoxLayout->setObjectName( "vBoxLayoutAudioDevice-" + prefixNumber );
+                hBoxLayout->setSpacing(0);
                 ui->verticalLayoutAudioDevices->addLayout( hBoxLayout );
 
                 // Checkbox hinzufügen
@@ -119,40 +123,48 @@ void QvkPulseAudioWatcher::slot_update()
                 checkBox->setToolTip( tr ( "Select one or more devices" ) );
                 hBoxLayout->addWidget( checkBox );
 
-                // Progressbar hinzufügen
-                QProgressBar *progressBar = new QProgressBar;
-                progressBar->setObjectName( "progressBarAudioDevice-" + prefixNumber );
-                progressBar->setFixedWidth(130);
-                progressBar->setFixedHeight(8);
-                progressBar->setTextVisible(false);
-                progressBar->setMinimum(0);
-                progressBar->setMaximum(10000);
-                progressBar->setToolTip( name );
-                hBoxLayout->addWidget( progressBar );
-
                 // levelmeter mit Widgets verbinden
                 qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( list.at(i) ).section( ":::", 1, 1 ) << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 );
                 QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
-                vkLevelMeterController->set_levelmeterOnProgressBar( checkBox, progressBar );
+                vkLevelMeterController->add_ProgressBar( checkBox, hBoxLayout );
             }
         }
 
         QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
         ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
+
         slot_audioDeviceSelected();
     }
 
     // Remove device
     if ( list.count() < listCheckBox.count() ) {
+        QString number; // Ist gleich 00, 01, 02, 03 usw.
         for ( int i = 0; i < listCheckBox.count(); i++ ) {
             QCheckBox *checkBox = listCheckBox.at(i);
+            number = checkBox->objectName().right(2);
             if ( stringListAudio_Device.contains( checkBox->accessibleName() ) == false ) {
-                QList<QHBoxLayout *> listHBoxLayout = ui->scrollAreaAudioDevice->findChildren<QHBoxLayout *>();
-                QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-                QList<QProgressBar *> listProgressBar = ui->scrollAreaAudioDevice->findChildren<QProgressBar *>();
-                delete listCheckBox.at(i);
-                delete listProgressBar.at(i);
-                delete listHBoxLayout.at(i);
+                QList<QvkLevelMeterController *> listProgressBar = ui->scrollAreaAudioDevice->findChildren<QvkLevelMeterController *>();
+                for ( int i = 0; i < listProgressBar.count(); i++ ) {
+                    QvkLevelMeterController *vkLevelMeterController = listProgressBar.at(i);
+                    if ( vkLevelMeterController->objectName().right(2) == number ) {
+
+                        qDebug().noquote() << global::nameOutput << "[Audio] Remove Widget" << checkBox->objectName() << checkBox->accessibleName();
+                        qDebug().noquote() << global::nameOutput << "[Audio] Remove Widget" << vkLevelMeterController->objectName();
+
+                        vkLevelMeterController->remove_ProgressBar();
+                        vkLevelMeterController->deleteLater();
+                    }
+                }
+                checkBox->deleteLater();
+
+                QList<QVBoxLayout *> listBoxLayout = ui->verticalLayoutAudioDevices->findChildren<QVBoxLayout *>();
+                for ( int i = 0; i < listBoxLayout.count(); i++ ) {
+                    QVBoxLayout *vBoxLayout = listBoxLayout.at(i);
+                    if ( vBoxLayout->objectName().right(2) == number ) {
+                        qDebug().noquote() << global::nameOutput << "[Audio] Remove Widget" << vBoxLayout->objectName();
+                        vBoxLayout->deleteLater();
+                    }
+                }
             }
         }
     }
@@ -217,6 +229,7 @@ void QvkPulseAudioWatcher::slot_update()
         slot_audioDeviceSelected();
     }
 
+    timer->start();
 }
 
 

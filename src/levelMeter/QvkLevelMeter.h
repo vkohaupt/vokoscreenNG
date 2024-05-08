@@ -25,6 +25,8 @@ public:
 
     qreal calculateLevel(const char *data, qint64 len) const;
 
+    QString myDevice;
+
 signals:
     void signal_levelChanged(qreal level);
 
@@ -38,7 +40,7 @@ class InputStart : public QObject
     Q_OBJECT
 
 public:
-    InputStart( QAudioDevice device );
+    InputStart(QAudioDevice device );
 
 
 public slots:
@@ -52,9 +54,6 @@ private:
     QAudioSource *audioSource;
 
 private slots:
-
-
-private:
 
 
 signals:

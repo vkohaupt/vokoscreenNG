@@ -72,32 +72,24 @@ void QvkAudioController::getAllDevices()
                     prefixNumber = QString::number(i);
                 }
 
-                QHBoxLayout *hBoxLayout = new QHBoxLayout; // Für Checkbox und Progressbar
-                hBoxLayout->setObjectName( "hBoxLayoutAudioDevice-" + prefixNumber );
+                QVBoxLayout *hBoxLayout = new QVBoxLayout; // Für Checkbox und Progressbar
+                hBoxLayout->setSpacing(0);
+                hBoxLayout->setObjectName( "vBoxLayoutAudioDevice-" + prefixNumber );
 
                 QCheckBox *checkBox = new QCheckBox();
                 connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
-                checkBox->setText( QString( list.at(i) ).section( ":::", 1, 1 ).left(45) );
+                checkBox->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
                 checkBox->setAccessibleName( QString( list.at(i) ).section( ":::", 0, 0 ) );
                 checkBox->setObjectName( "checkboxAudioDevice-" + prefixNumber );
                 checkBox->setToolTip( tr ( "Select one or more devices" ) );
 
-                QProgressBar *progressBar = new QProgressBar;
-                progressBar->setObjectName( "progressBarAudioDevice-" + prefixNumber );
-                progressBar->setFixedWidth(130);
-                progressBar->setFixedHeight(8);
-                progressBar->setTextVisible(false);
-                progressBar->setMinimum(0);
-                progressBar->setMaximum(10000);
-                progressBar->setToolTip( QString( list.at(i) ).section( ":::", 1, 1 ) );
-
                 hBoxLayout->addWidget( checkBox );
-                hBoxLayout->addWidget( progressBar );
                 ui->verticalLayoutAudioDevices->addLayout( hBoxLayout );
 
                 qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( list.at(i) ).section( ":::", 1, 1 ) << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 );
+
                 QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
-                vkLevelMeterController->set_levelmeterOnProgressBar( checkBox, progressBar );
+                vkLevelMeterController->add_ProgressBar( checkBox, hBoxLayout );
 
             }
             qDebug().noquote();
