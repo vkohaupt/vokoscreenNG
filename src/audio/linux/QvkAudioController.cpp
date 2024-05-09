@@ -82,6 +82,8 @@ void QvkAudioController::getAllDevices()
                 checkBox->setAccessibleName( QString( list.at(i) ).section( ":::", 0, 0 ) );
                 checkBox->setObjectName( "checkboxAudioDevice-" + prefixNumber );
                 checkBox->setToolTip( tr ( "Select one or more devices" ) );
+                checkBox->setIcon( QIcon( ":/pictures/screencast/microphone.png" ) );
+                checkBox->setIconSize( QSize( 16, 16 ) );
 
                 hBoxLayout->addWidget( checkBox );
                 ui->verticalLayoutAudioDevices->addLayout( hBoxLayout );

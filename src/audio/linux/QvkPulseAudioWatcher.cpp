@@ -121,6 +121,8 @@ void QvkPulseAudioWatcher::slot_update()
                 checkBox->setAccessibleName( device );
                 checkBox->setObjectName( "checkboxAudioDevice-" + prefixNumber );
                 checkBox->setToolTip( tr ( "Select one or more devices" ) );
+                checkBox->setIcon( QIcon( ":/pictures/screencast/microphone.png" ) );
+                checkBox->setIconSize( QSize( 16, 16 ) );
                 hBoxLayout->addWidget( checkBox );
 
                 // levelmeter mit Widgets verbinden
