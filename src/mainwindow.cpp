@@ -892,15 +892,16 @@ void QvkMainWindow::slot_disableShowclickHalo( bool bo )
 {
     QIcon myIcon( ":/pictures/showClick/vokoShowClick.png" );
 
+    if ( vkShowClick->vkSpezialCheckbox->isChecked() == true ) {
+        vkShowClick->vkSpezialCheckbox->slot_click();
+    }
+
+    if ( vkHalo->vkSpezialCheckbox->isChecked() == true ) {
+        vkHalo->vkSpezialCheckbox->slot_click();
+    }
+
     if ( bo == true  ) {
-        if ( vkShowClick->vkSpezialCheckbox->isChecked() == true ) {
-            vkShowClick->vkSpezialCheckbox->slot_click();
-        }
-
-        if ( vkHalo->vkSpezialCheckbox->isChecked() == true ) {
-            vkHalo->vkSpezialCheckbox->slot_click();
-        }
-
+        ui->toolButtonShowclick->setEnabled( false );
         QSize size = ui->tabWidgetShowClick->iconSize();
         QPixmap workPixmap( myIcon.pixmap( size ) );
         QPainter painter;
@@ -913,12 +914,9 @@ void QvkMainWindow::slot_disableShowclickHalo( bool bo )
         painter.drawLine ( 5, size.height()-5, size.width()-5, 5 );
         painter.end();
         ui->toolButtonShowclick->setIcon( workPixmap );
-        ui->tabWidgetShowClick->setTabIcon( 0, workPixmap );
-        ui->tab->setEnabled( false );
     } else {
-        ui->tab->setEnabled( true );
+        ui->toolButtonShowclick->setEnabled( true );
         ui->toolButtonShowclick->setIcon( myIcon );
-        ui->tabWidgetShowClick->setTabIcon( 0, myIcon );
     }
 }
 
