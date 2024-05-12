@@ -725,10 +725,6 @@
         <source>Countdown</source>
         <translation>Lähtölaskenta</translation>
     </message>
-    <message>
-        <source>Camera</source>
-        <translation>Kamera</translation>
-    </message>
 </context>
 <context>
     <name>license</name>

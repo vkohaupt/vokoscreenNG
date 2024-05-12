@@ -725,10 +725,6 @@
         <source>Countdown</source>
         <translation>Обратный отсчёт</translation>
     </message>
-    <message>
-        <source>Camera</source>
-        <translation>Камера</translation>
-    </message>
 </context>
 <context>
     <name>license</name>

@@ -725,10 +725,6 @@
         <source>Countdown</source>
         <translation>عدّ تنازلي</translation>
     </message>
-    <message>
-        <source>Camera</source>
-        <translation>الكاميرا</translation>
-    </message>
 </context>
 <context>
     <name>license</name>

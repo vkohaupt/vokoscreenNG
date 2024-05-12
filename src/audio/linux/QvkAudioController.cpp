@@ -85,11 +85,10 @@ void QvkAudioController::getAllDevices()
                 checkBox->setIconSize( QSize( 16, 16 ) );
 
                 if ( QString( list.at(i) ).section( ":::", 0, 0 ).contains( "monitor" ) ) {
-
+                    checkBox->setIcon( QIcon( ":/pictures/screencast/speaker.png" ) );
                 } else {
                     checkBox->setIcon( QIcon( ":/pictures/screencast/microphone.png" ) );
                 }
-
 
                 hBoxLayout->addWidget( checkBox );
                 ui->verticalLayoutAudioDevices->addLayout( hBoxLayout );

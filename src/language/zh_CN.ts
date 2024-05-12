@@ -725,10 +725,6 @@
         <source>Countdown</source>
         <translation>倒计时</translation>
     </message>
-    <message>
-        <source>Camera</source>
-        <translation>摄像头</translation>
-    </message>
 </context>
 <context>
     <name>license</name>

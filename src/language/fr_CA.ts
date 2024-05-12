@@ -725,10 +725,6 @@
         <source>Countdown</source>
         <translation>Décompte</translation>
     </message>
-    <message>
-        <source>Camera</source>
-        <translation>Caméra</translation>
-    </message>
 </context>
 <context>
     <name>license</name>
