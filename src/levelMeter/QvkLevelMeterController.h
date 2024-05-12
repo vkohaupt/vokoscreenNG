@@ -46,15 +46,16 @@ public:
 private:
     QvkMainWindow *vkMainWindow;
     Ui_formMainWindow *ui;
-    void test_gstreamer_level();
+    void test_gstreamer_level( QString device );
     InputStart *inputStart;
 
+    static gboolean message_handler(GstBus *bus, GstMessage *message, gpointer data );
 
 public slots:
 
 
 private slots:
-
+//    void slot_textChanged( QString value );
 
 protected:
 
