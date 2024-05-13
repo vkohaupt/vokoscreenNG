@@ -79,6 +79,11 @@ void QvkPulseAudioWatcher::slot_update()
         stringListAudio_Device.append( list.at(i).section( ":::", 0, 0 ) );
     }
 
+    QList<QLabel *> deleteLabel = ui->scrollAreaAudioDevice->findChildren<QLabel *>();
+    for ( int x = 0; x < deleteLabel.count(); x ++ ) {
+        delete deleteLabel.at(x);
+    }
+
     // Add new Device
     QList<QVBoxLayout *> listVBoxLayout = ui->verticalLayoutAudioDevices->findChildren<QVBoxLayout *>();
     if ( list.count() > listVBoxLayout.count() ) {
@@ -100,8 +105,11 @@ void QvkPulseAudioWatcher::slot_update()
                 qDebug().noquote() << global::nameOutput << "[PulseAudio] Added:" << name << "Device:" << device;
 
                 // Freie Nummer(xx) 00, 01, 02, xx, 04, 05 usw. ermitteln und diese Nummer dem neuen Layout hinzufügen
+                int countLayouts = -1;
                 QList<QVBoxLayout *> listVBoxLayout = ui->verticalLayoutAudioDevices->findChildren<QVBoxLayout *>();
-                int countLayouts = listVBoxLayout.last()->objectName().last(2).toInt();
+                if ( !listVBoxLayout.empty() ) {
+                    countLayouts = listVBoxLayout.last()->objectName().last(2).toInt();
+                }
                 countLayouts++;
                 QString prefixNumber;
                 if ( countLayouts < 10 ) {
