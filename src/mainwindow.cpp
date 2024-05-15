@@ -446,7 +446,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // Tab 2 Audio and Videocodec
 #ifdef Q_OS_WIN
     vkAudioController = new QvkAudioController( ui );
-//    connect( vkAudioController->vkDirectSoundController, SIGNAL( signal_haveAudioDeviceSelected(bool) ), this, SLOT( slot_haveAudioDeviceSelected(bool) ) );
     connect( vkAudioController->vkWASAPIController,      SIGNAL( signal_haveAudioDeviceSelected(bool) ), this, SLOT( slot_haveAudioDeviceSelected(bool) ) );
 #endif
 
@@ -1311,7 +1310,8 @@ bool QvkMainWindow::isAudioDeviceSelected()
     bool value = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
-        if ( listCheckBox.at(i)->checkState() == Qt::Checked ) {
+        QCheckBox *checkBox = listCheckBox.at(i);
+        if ( checkBox->checkState() == Qt::Checked ) {
             value = true;
             break;
         }
@@ -1870,37 +1870,23 @@ void QvkMainWindow::slot_Start()
         #endif
 
         #ifdef Q_OS_WIN
-//            if ( vkAudioController->radioButtonWASAPI->isChecked() )
-//            {
-                // Die folgende replace Zeile funktioniert bei den Kameras und Playback Geräte, bitte nicht löschen dies dient als Referenz
-                // asd.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
-                // Laut Dokumentation wird das was ersetzt wurde nicht nochmal ersetzt
-                QString strReplace = VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 );
-                strReplace.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
+            // Die folgende replace Zeile funktioniert bei den Kameras und Playback Geräte, bitte nicht löschen dies dient als Referenz
+            // asd.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
+            // Laut Dokumentation wird das was ersetzt wurde nicht nochmal ersetzt
+            QString strReplace = VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 );
+            strReplace.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
 
-                if ( VK_getSelectedAudioDevice().at(0).section( ":::", 1, 1 ) == "Playback" ) {
-                    VK_PipelineList << QString( "wasapi2src low-latency=true loopback=true device=" + strReplace );
-                } else {
-                    VK_PipelineList << QString( "wasapi2src low-latency=true device=" + strReplace );
-                }
-                VK_PipelineList << "audioconvert";
-                VK_PipelineList << "audiorate";
-                VK_PipelineList << "queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000";
-                VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
-                VK_PipelineList << "queue";
-                VK_PipelineList << "mux.";
-//            }
-
-//            if ( vkAudioController->radioButtonDirectSound->isChecked() ) {
-//                VK_PipelineList << QString( "directsoundsrc device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(0) + "'" );
-//                VK_PipelineList << "audio/x-raw, channels=2";
-//                VK_PipelineList << "audioconvert";
-//                VK_PipelineList << "audiorate";
-//                VK_PipelineList << "queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000";
-//                VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
-//                VK_PipelineList << "queue";
-//                VK_PipelineList << "mux.";
-//            }
+            if ( VK_getSelectedAudioDevice().at(0).section( ":::", 1, 1 ) == "Playback" ) {
+                VK_PipelineList << QString( "wasapi2src low-latency=true loopback=true device=" + strReplace );
+            } else {
+                VK_PipelineList << QString( "wasapi2src low-latency=true device=" + strReplace );
+            }
+            VK_PipelineList << "audioconvert";
+            VK_PipelineList << "audiorate";
+            VK_PipelineList << "queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000";
+            VK_PipelineList << ui->comboBoxAudioCodec->currentData().toString();
+            VK_PipelineList << "queue";
+            VK_PipelineList << "mux.";
         #endif
     }
 
@@ -1919,35 +1905,25 @@ void QvkMainWindow::slot_Start()
             #endif
 
             #ifdef Q_OS_WIN
-//                if ( vkAudioController->radioButtonWASAPI->isChecked() == true )
-//                {
-                    // Die folgende replace Zeile funktioniert bei den Kameras und Playback Geräte, bitte nicht löschen, dies dient als Referenz.
-                    // asd.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
-                    // Laut Dokumentation wird das was ersetzt wurde nicht nochmal ersetzt
-                    QString strReplace = VK_getSelectedAudioDevice().at(x).section( ":::", 0, 0 );
-                    strReplace.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
+                // Die folgende replace Zeile funktioniert bei den Kameras und Playback Geräte, bitte nicht löschen, dies dient als Referenz.
+                // asd.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
+                // Laut Dokumentation wird das was ersetzt wurde nicht nochmal ersetzt
+                QString strReplace = VK_getSelectedAudioDevice().at(x).section( ":::", 0, 0 );
+                strReplace.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
 
-                    if ( VK_getSelectedAudioDevice().at(x).section( ":::", 1, 1 ) == "Playback" ) {
-                        VK_PipelineList << QString( "wasapi2src low-latency=true loopback=true device=" ).append( strReplace );
-                        VK_PipelineList << "audioconvert";
-                        VK_PipelineList << "audioresample";
-                        VK_PipelineList << "queue";
-                        VK_PipelineList << "mix.";
-                    } else {
-                        VK_PipelineList << QString( "wasapi2src low-latency=true device=" ).append( strReplace );
-                        VK_PipelineList << "audioconvert";
-                        VK_PipelineList << "audioresample";
-                        VK_PipelineList << "queue";
-                        VK_PipelineList << "mix.";
-                    }
-//                }
-
-//                if ( vkAudioController->radioButtonDirectSound->isChecked() ) {
-//                    VK_PipelineList << QString( "directsoundsrc device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(x) + "'" );
-//                    VK_PipelineList << "audioconvert";
-//                    VK_PipelineList << "queue";
-//                    VK_PipelineList << "mix.";
-//                }
+                if ( VK_getSelectedAudioDevice().at(x).section( ":::", 1, 1 ) == "Playback" ) {
+                    VK_PipelineList << QString( "wasapi2src low-latency=true loopback=true device=" ).append( strReplace );
+                    VK_PipelineList << "audioconvert";
+                    VK_PipelineList << "audioresample";
+                    VK_PipelineList << "queue";
+                    VK_PipelineList << "mix.";
+                } else {
+                    VK_PipelineList << QString( "wasapi2src low-latency=true device=" ).append( strReplace );
+                    VK_PipelineList << "audioconvert";
+                    VK_PipelineList << "audioresample";
+                    VK_PipelineList << "queue";
+                    VK_PipelineList << "mix.";
+                }
             #endif
         }
         VK_PipelineList << "audiomixer name=mix";
@@ -1964,25 +1940,8 @@ void QvkMainWindow::slot_Start()
 
     QString newVideoFilename;
 #ifdef Q_OS_WIN
-//    if ( vkAudioController->radioButtonWASAPI->isChecked() == true ) {
-//        if ( VK_getSelectedAudioDevice().count() > 1 ) {
-//            if ( global::testWASAPI == true ) {
-//                newVideoFilename = global::name + "-" + "TEST_WASAPI" + "." + ui->comboBoxFormat->currentText();
-//                VK_PipelineList << "filesink location=\"" + wasapiTemporaryDir.path() + "/" + newVideoFilename + "\"";
-//            } else {
-//                newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
-//                VK_PipelineList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
-//            }
-//        } else {
-            newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
-            VK_PipelineList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
-//        }
-//    }
-
-//    if ( vkAudioController->radioButtonDirectSound->isChecked() == true ) {
-//        newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
-//        VK_PipelineList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
-//    }
+    newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
+    VK_PipelineList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
 #endif
 
 #ifdef Q_OS_UNIX

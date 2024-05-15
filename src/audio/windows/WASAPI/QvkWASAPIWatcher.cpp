@@ -36,9 +36,9 @@ QvkWASAPIWatcher::QvkWASAPIWatcher( Ui_formMainWindow *ui_mainwindow )
 
     timer = new QTimer( this );
     timer->setTimerType( Qt::PreciseTimer );
-    timer->setInterval( 6000 );
+    timer->setInterval( 3000 );
     // Der timer macht in Virtualbox starke Probleme. Fenster bekommt oft kein Input.
-//    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_update() ) );
+    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_update() ) );
 }
 
 QvkWASAPIWatcher::~QvkWASAPIWatcher()

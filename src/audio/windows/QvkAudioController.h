@@ -25,7 +25,6 @@
 
 #include "ui_formMainWindow.h"
 #include "WASAPI/QvkWASAPIController.h"
-//#include "DirectSound/QvkDirectSoundController.h"
 
 #include <QObject>
 
@@ -38,10 +37,7 @@ public:
     QvkAudioController( Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkAudioController();
     Ui_formMainWindow *ui;
-//    QRadioButton *radioButtonWASAPI;
-//    QRadioButton *radioButtonDirectSound;
     QvkWASAPIController *vkWASAPIController;
-//    QvkDirectSoundController *vkDirectSoundController;
 
 
 public slots:
@@ -51,8 +47,6 @@ private:
 
 
 private slots:
-//    void slot_WASAPI( bool value );
-//    void slot_DirectSound( bool value );
 
 
 protected:
