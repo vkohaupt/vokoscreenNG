@@ -1773,8 +1773,9 @@ QStringList QvkMainWindow::VK_getSelectedAudioDeviceName()
     QStringList list;
     QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
     for ( int i = 0; i < listQCheckBox.count(); i++ ) {
-        if ( listQCheckBox.at(i)->checkState() == Qt::Checked ) {
-            list << listQCheckBox.at(i)->text();
+        QCheckBox *checkBox = listQCheckBox.at(i);
+        if ( checkBox->checkState() == Qt::Checked ) {
+            list << checkBox->text();
         }
     }
     return list;
@@ -1786,8 +1787,9 @@ QStringList QvkMainWindow::VK_getSelectedAudioDevice()
     QStringList list;
     QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
     for ( int i = 0; i < listQCheckBox.count(); i++ ) {
-        if ( listQCheckBox.at(i)->checkState() == Qt::Checked ) {
-            list << listQCheckBox.at(i)->accessibleName();
+        QCheckBox *checkBox = listQCheckBox.at(i);
+        if ( checkBox->checkState() == Qt::Checked ) {
+            list << checkBox->accessibleName();
         }
     }
     return list;
@@ -1905,22 +1907,6 @@ void QvkMainWindow::slot_Start()
     // Pipeline for more as one audiodevice
     if ( ( VK_getSelectedAudioDevice().count() > 1 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
     {
-        // Geräte sortieren so das Playback Geräte zuerst erscheinen
-        #ifdef Q_OS_WIN
-            QStringList listDevices;
-            QStringList listSource;
-            QStringList listPlayer;
-            for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ ) {
-                if ( VK_getSelectedAudioDevice().at(x).section( ":::", 1, 1 ) == "Playback" ) {
-                    listPlayer << VK_getSelectedAudioDevice().at(x);
-                } else {
-                    listSource << VK_getSelectedAudioDevice().at(x);
-                }
-            }
-            listDevices << listSource;
-            listDevices << listPlayer;
-        #endif
-
         for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ )
         {
             #ifdef Q_OS_UNIX
@@ -1935,22 +1921,20 @@ void QvkMainWindow::slot_Start()
             #ifdef Q_OS_WIN
                 if ( vkAudioController->radioButtonWASAPI->isChecked() == true )
                 {
-                    if ( soundEffect->isPlaying() == false ) {
-                        soundEffect->setSource( QUrl::fromLocalFile( ":/sound/wasapi.wav" ) );
-                        soundEffect->setLoopCount( QSoundEffect::Infinite );
-                        soundEffect->setVolume( 0.0 );
-                        soundEffect->play();
-                        qDebug().noquote() << global::nameOutput << "[WASAPI] Soundeffect run";
-                    }
+                    // Die folgende replace Zeile funktioniert bei den Kameras und Playback Geräte, bitte nicht löschen, dies dient als Referenz.
+                    // asd.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
+                    // Laut Dokumentation wird das was ersetzt wurde nicht nochmal ersetzt
+                    QString strReplace = VK_getSelectedAudioDevice().at(x).section( ":::", 0, 0 );
+                    strReplace.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
 
-                    if ( listDevices.at(x).section( ":::", 1, 1 ) == "Playback" ) {
-                        VK_PipelineList << QString( "wasapisrc loopback=true low-latency=true role=multimedia device=" ).append( listDevices.at(x).section( ":::", 0, 0 ) );
+                    if ( VK_getSelectedAudioDevice().at(x).section( ":::", 1, 1 ) == "Playback" ) {
+                        VK_PipelineList << QString( "wasapi2src low-latency=true loopback=true device=" ).append( strReplace );
                         VK_PipelineList << "audioconvert";
                         VK_PipelineList << "audioresample";
                         VK_PipelineList << "queue";
                         VK_PipelineList << "mix.";
                     } else {
-                        VK_PipelineList << QString( "wasapisrc low-latency=true role=multimedia device=" ).append( listDevices.at(x).section( ":::", 0, 0 ) );
+                        VK_PipelineList << QString( "wasapi2src low-latency=true device=" ).append( strReplace );
                         VK_PipelineList << "audioconvert";
                         VK_PipelineList << "audioresample";
                         VK_PipelineList << "queue";
@@ -1959,7 +1943,7 @@ void QvkMainWindow::slot_Start()
                 }
 
                 if ( vkAudioController->radioButtonDirectSound->isChecked() ) {
-                    VK_PipelineList << QString( "directsoundsrc device-name=" ).append( "'" + listDevices.at(x) + "'" );
+                    VK_PipelineList << QString( "directsoundsrc device-name=" ).append( "'" + VK_getSelectedAudioDevice().at(x) + "'" );
                     VK_PipelineList << "audioconvert";
                     VK_PipelineList << "queue";
                     VK_PipelineList << "mix.";
