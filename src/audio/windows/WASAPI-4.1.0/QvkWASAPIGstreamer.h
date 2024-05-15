@@ -1,5 +1,5 @@
 /* vokoscreenNG - A desktop recorder
- * Copyright (C) 2017-2024 Volker Kohaupt
+ * Copyright (C) 2017-2022 Volker Kohaupt
  * 
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
@@ -39,12 +39,10 @@ public:
     
 public slots:
     QStringList get_all_Audio_Source_devices();
+    QStringList get_all_Audio_Playback_devices();
 
 
 private:
-    QStringList listStructureCaps;
-    QStringList listStructure;
-    QStringList listDevices;
 
 
 private slots:

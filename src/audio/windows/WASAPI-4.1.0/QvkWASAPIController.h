@@ -1,5 +1,5 @@
 /* vokoscreenNG - A desktop recorder
- * Copyright (C) 2017-2024 Volker Kohaupt
+ * Copyright (C) 2017-2022 Volker Kohaupt
  * 
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
@@ -20,41 +20,47 @@
  * --End_License--
  */
 
-#ifndef QVKWASAPIGSTREAMER_H
-#define QVKWASAPIGSTREAMER_H
+#ifndef QVKWASAPICONTROLLER_H
+#define QVKWASAPICONTROLLER_H
 
-#include <gst/gst.h>
+#include "ui_formMainWindow.h"
+#include "QvkWASAPIGstreamer.h"
+#include "QvkWASAPIWatcher.h"
 
 #include <QObject>
 
-class QvkWASAPIGstreamer: public QObject
+class QvkWASAPIController: public QObject
 {
     Q_OBJECT
 
 public:
-    QvkWASAPIGstreamer();
-    virtual ~QvkWASAPIGstreamer();
-    QString get_AudioDeviceString( GstDevice *device );
+    QvkWASAPIController(Ui_formMainWindow *ui_mainwindow);
+    virtual ~QvkWASAPIController();
+    void init();
+    void getAllDevices();
+    QvkWASAPIWatcher *vkWASAPIWatcher;
+    bool wantCountdown = true;
 
-    
+
 public slots:
-    QStringList get_all_Audio_Source_devices();
+    void slot_audioDeviceSelected();
+    void slot_runTestWASAPI( bool bo );
 
 
 private:
-    QStringList listStructureCaps;
-    QStringList listStructure;
-    QStringList listDevices;
+    Ui_formMainWindow *ui;
 
 
 private slots:
+    void slot_pluggedInOutDevice( QString string );
 
 
 protected:
-  
-  
+
+
 signals:
-    
+    void signal_haveAudioDeviceSelected( bool );
+
 };
 
 #endif

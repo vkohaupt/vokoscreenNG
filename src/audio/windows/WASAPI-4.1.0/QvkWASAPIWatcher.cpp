@@ -36,9 +36,8 @@ QvkWASAPIWatcher::QvkWASAPIWatcher( Ui_formMainWindow *ui_mainwindow )
 
     timer = new QTimer( this );
     timer->setTimerType( Qt::PreciseTimer );
-    timer->setInterval( 6000 );
-    // Der timer macht in Virtualbox starke Probleme. Fenster bekommt oft kein Input.
-//    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_update() ) );
+    timer->setInterval( 3000 );
+    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_update() ) );
 }
 
 QvkWASAPIWatcher::~QvkWASAPIWatcher()
@@ -50,6 +49,7 @@ void QvkWASAPIWatcher::slot_update()
     QvkWASAPIGstreamer vkWASAPIGstreamer;
     QStringList listDevices;
     listDevices << vkWASAPIGstreamer.get_all_Audio_Source_devices();
+    listDevices << vkWASAPIGstreamer.get_all_Audio_Playback_devices();
 
     QList<QCheckBox *> listCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
     QStringList stringListCheckBox;
@@ -66,7 +66,7 @@ void QvkWASAPIWatcher::slot_update()
                            + QString( listDevices.at(i) ).section( ":::", 2, 2 ) ;
             if ( stringListCheckBox.contains( device ) == false ) {
                 QString name = QString( listDevices.at(i) ).section( ":::", 1, 1 );
-                qDebug().noquote() << global::nameOutput << "[Audio WASAPI2] Added:" << name << "Device:" << device;
+                qDebug().noquote() << global::nameOutput << "[Audio WASAPI] Added:" << name << "Device:" << device;
                 QString audioDevicePlug = "";
                 audioDevicePlug.append( "[Audio-device-added]" );
                 audioDevicePlug.append( "---");
@@ -98,7 +98,7 @@ void QvkWASAPIWatcher::slot_update()
             if ( listDeviceTyp.contains( string ) == false ) {
                 QString name = checkBox->text();
                 QString device = checkBox->accessibleName();
-                qDebug().noquote() << global::nameOutput << "[Audio WASAPI2] Removed:" << name << "Device:" << device;
+                qDebug().noquote() << global::nameOutput << "[Audio WASAPI] Removed:" << name << "Device:" << device;
                 qDebug().noquote();
                 QString audioDevicePlug = "";
                 audioDevicePlug.append( "[Audio-device-removed]" );
