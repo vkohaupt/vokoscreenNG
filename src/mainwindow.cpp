@@ -1870,21 +1870,16 @@ void QvkMainWindow::slot_Start()
         #ifdef Q_OS_WIN
             if ( vkAudioController->radioButtonWASAPI->isChecked() )
             {
-                if ( VK_getSelectedAudioDevice().at(0).section( ":::", 1, 1 ) == "Playback" ) {
-                    soundEffect->setSource( QUrl::fromLocalFile( ":/sound/wasapi.wav" ) );
-                    soundEffect->setLoopCount( QSoundEffect::Infinite );
-                    soundEffect->setVolume( 0.0 );
-                    soundEffect->play();
-                    qDebug().noquote() << global::nameOutput << "[WASAPI] Soundeffect run";
-                    VK_PipelineList << QString( "wasapisrc loopback=true low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
-                } else {
-                    QString strReplace = "";
-                    strReplace = VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 );
+                // Die folgende replace Zeile funktioniert bei den Kameras und Playback Geräte, bitte nicht löschen dies dient als Referenz
+                // asd.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
+                // Laut Dokumentation wird das was ersetzt wurde nicht nochmal ersetzt
+                QString strReplace = "";
+                strReplace = VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 );
+                strReplace.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
 
-                    // Die fogende replace Zeile funktioniert bei den Kameras, bitte nicht löschen dies dient als Referenz
-                    // Laut Dokumentation wird das was ersetzt wurde nicht nochmal ersetzt
-                    // asd.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
-                    strReplace.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
+                if ( VK_getSelectedAudioDevice().at(0).section( ":::", 1, 1 ) == "Playback" ) {
+                    VK_PipelineList << QString( "wasapi2src low-latency=true loopback=true device=" + strReplace );
+                } else {
                     VK_PipelineList << QString( "wasapi2src low-latency=true device=" + strReplace );
                 }
                 VK_PipelineList << "audioconvert";
