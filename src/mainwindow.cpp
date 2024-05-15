@@ -1878,9 +1878,14 @@ void QvkMainWindow::slot_Start()
                     qDebug().noquote() << global::nameOutput << "[WASAPI] Soundeffect run";
                     VK_PipelineList << QString( "wasapisrc loopback=true low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
                 } else {
-//                    VK_PipelineList << QString( "wasapisrc low-latency=true role=multimedia device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
-//                    VK_PipelineList << QString( "wasapi2src low-latency=true device=" ).append( VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 ) );
-                    VK_PipelineList << QString( "wasapi2src low-latency=true device=\\\\\\\\\\\?\\\\SWD\\#MMDEVAPI\\#\\{0.0.1.00000000\\}.\\{2dd319ce-b622-4b87-b789-cc74e2b0d457\\}\\#\\{2eef81be-33fa-4800-9670-1cd474972c3f\\}" );
+                    QString strReplace = "";
+                    strReplace = VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 );
+
+                    // Die fogende replace Zeile funktioniert bei den Kameras, bitte nicht löschen dies dient als Referenz
+                    // Laut Dokumentation wird das was ersetzt wurde nicht nochmal ersetzt
+                    // asd.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
+                    strReplace.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
+                    VK_PipelineList << QString( "wasapi2src low-latency=true device=" + strReplace );
                 }
                 VK_PipelineList << "audioconvert";
                 VK_PipelineList << "audiorate";
