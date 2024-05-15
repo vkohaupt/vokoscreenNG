@@ -1873,8 +1873,7 @@ void QvkMainWindow::slot_Start()
                 // Die folgende replace Zeile funktioniert bei den Kameras und Playback Geräte, bitte nicht löschen dies dient als Referenz
                 // asd.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
                 // Laut Dokumentation wird das was ersetzt wurde nicht nochmal ersetzt
-                QString strReplace = "";
-                strReplace = VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 );
+                QString strReplace = VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 );
                 strReplace.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
 
                 if ( VK_getSelectedAudioDevice().at(0).section( ":::", 1, 1 ) == "Playback" ) {
