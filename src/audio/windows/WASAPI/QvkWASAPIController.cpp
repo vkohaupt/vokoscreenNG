@@ -73,7 +73,7 @@ void QvkWASAPIController::getAllDevices()
             checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
             ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
             ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
-            connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_runTestWASAPI( bool ) ) );
+//            connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_runTestWASAPI( bool ) ) );
             qDebug().noquote() << global::nameOutput << "[Audio WASAPI2] Found:" << QString( list.at(i) ).section( ":::", 1, 1 )
                                << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 )
                                << "Input/Output:" << QString( list.at(i) ).section( ":::", 2, 2 );
@@ -99,6 +99,7 @@ void QvkWASAPIController::getAllDevices()
  * Run WASAPI test
  * bool zeigt den Status der Checkbox an, ob es auf checked oder unchecked gesetzt wurde.
  */
+/*
 void QvkWASAPIController::slot_runTestWASAPI( bool bo )
 {
     if ( bo == true ) {
@@ -118,7 +119,7 @@ void QvkWASAPIController::slot_runTestWASAPI( bool bo )
         }
     }
 }
-
+*/
 
 void QvkWASAPIController::slot_audioDeviceSelected()
 {

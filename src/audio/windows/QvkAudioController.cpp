@@ -28,41 +28,45 @@ QvkAudioController::QvkAudioController( Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
 
-    radioButtonDirectSound = new QRadioButton();
-    radioButtonDirectSound->setObjectName( "radioButtonDirectSound" );
-    radioButtonDirectSound->setText( "DirectSound" );
+//    radioButtonDirectSound = new QRadioButton();
+//    radioButtonDirectSound->setObjectName( "radioButtonDirectSound" );
+//    radioButtonDirectSound->setText( "DirectSound" );
 
-    radioButtonWASAPI = new QRadioButton();
-    radioButtonWASAPI->setObjectName( "radioButtonWASAPI" );
-    radioButtonWASAPI->setText( "WASAPI" );
+//    radioButtonWASAPI = new QRadioButton();
+//    radioButtonWASAPI->setObjectName( "radioButtonWASAPI" );
+//    radioButtonWASAPI->setText( "WASAPI" );
 
-    QHBoxLayout *hBoxLayout = new QHBoxLayout;
-    ui->verticalLayout_4->insertLayout( 0, hBoxLayout );
-    hBoxLayout->addWidget( radioButtonDirectSound );
-    hBoxLayout->addWidget( radioButtonWASAPI );
-    QSpacerItem *spacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-    hBoxLayout->addSpacerItem( spacer );
+//    QHBoxLayout *hBoxLayout = new QHBoxLayout;
+//    ui->verticalLayout_4->insertLayout( 0, hBoxLayout );
+//    hBoxLayout->addWidget( radioButtonDirectSound );
+//    hBoxLayout->addWidget( radioButtonWASAPI );
+//    QSpacerItem *spacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+//    hBoxLayout->addSpacerItem( spacer );
 
     vkWASAPIController = new QvkWASAPIController( ui );
-    vkDirectSoundController = new QvkDirectSoundController( ui );
+//    vkDirectSoundController = new QvkDirectSoundController( ui );
 
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), radioButtonDirectSound, SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), radioButtonWASAPI,      SLOT( setEnabled( bool ) ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), radioButtonDirectSound, SLOT( setDisabled( bool ) ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), radioButtonWASAPI,      SLOT( setDisabled( bool ) ) );
+//    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), radioButtonDirectSound, SLOT( setEnabled( bool ) ) );
+//    connect( ui->pushButtonStart, SIGNAL( clicked( bool ) ), radioButtonWASAPI,      SLOT( setEnabled( bool ) ) );
+//    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), radioButtonDirectSound, SLOT( setDisabled( bool ) ) );
+//    connect( ui->pushButtonStop,  SIGNAL( clicked( bool ) ), radioButtonWASAPI,      SLOT( setDisabled( bool ) ) );
 
-    connect( radioButtonWASAPI,      SIGNAL( clicked( bool ) ), this, SLOT( slot_WASAPI( bool ) ) );
-    connect( radioButtonDirectSound, SIGNAL( clicked( bool ) ), this, SLOT( slot_DirectSound( bool ) ) );
+//    connect( radioButtonWASAPI,      SIGNAL( clicked( bool ) ), this, SLOT( slot_WASAPI( bool ) ) );
+//    connect( radioButtonDirectSound, SIGNAL( clicked( bool ) ), this, SLOT( slot_DirectSound( bool ) ) );
 
     vkWASAPIController->init();
-    vkDirectSoundController->init();
+//    vkDirectSoundController->init();
+    // alles neu
+    vkWASAPIController->getAllDevices();
+    vkWASAPIController->slot_audioDeviceSelected();
+    vkWASAPIController->vkWASAPIWatcher->timer->start();
 }
 
 
 QvkAudioController::~QvkAudioController()
 {
 }
-
+/*
 void QvkAudioController::slot_WASAPI( bool value )
 {
     Q_UNUSED(value);
@@ -79,7 +83,8 @@ void QvkAudioController::slot_WASAPI( bool value )
     vkWASAPIController->slot_audioDeviceSelected();
     vkWASAPIController->vkWASAPIWatcher->timer->start();
 }
-
+*/
+/*
 void QvkAudioController::slot_DirectSound( bool value )
 {
     Q_UNUSED(value);
@@ -96,3 +101,4 @@ void QvkAudioController::slot_DirectSound( bool value )
     vkDirectSoundController->slot_audioDeviceSelected();
     vkDirectSoundController->vkDirectSoundWatcher->timer->start();
 }
+*/
