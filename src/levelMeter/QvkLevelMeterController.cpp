@@ -40,7 +40,7 @@ QvkLevelMeterController::~QvkLevelMeterController()
 {
 }
 
-
+#ifdef Q_OS_UNIX
 void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QVBoxLayout *layout )
 {
     QList<QAudioDevice > devices = QMediaDevices::audioInputs();
@@ -66,6 +66,40 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QVBoxLayout 
         }
     }
 }
+#endif
+
+
+#ifdef Q_OS_WIN
+void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QVBoxLayout *layout )
+{
+
+    qDebug() << checkBox->objectName() << layout->objectName();
+
+    QList<QAudioDevice > devices = QMediaDevices::audioInputs();
+    for ( int i = 0; i < devices.count(); i++ ) {
+        QAudioDevice audioDevice = devices.at(i);
+//        if ( audioDevice.id() == checkBox->accessibleName() ) {
+        if ( checkBox->accessibleName().contains( audioDevice.id() ) == true )  {
+            qDebug().noquote() << global::nameOutput << "[Audio] [Levelmeter]" << devices.at(i).description() << devices.at(i).id();
+
+            setObjectName( "progressBarAudioDevice-" + checkBox->objectName().right(2) );
+            setFixedHeight(4);
+            setTextVisible(false);
+            setMinimum(0);
+            setMaximum(10000);
+            setToolTip(checkBox->text());
+
+            layout->addWidget( this );
+
+            inputStart = new InputStart( devices.at(i) );
+            connect( inputStart, SIGNAL( signal_level(int) ), this, SLOT( setValue(int) ) );
+            connect( inputStart, SIGNAL( signal_level(int) ), this, SLOT( update() ) );
+            inputStart->slot_start();
+        }
+    }
+}
+#endif
+
 
 void QvkLevelMeterController::remove_ProgressBar()
 {

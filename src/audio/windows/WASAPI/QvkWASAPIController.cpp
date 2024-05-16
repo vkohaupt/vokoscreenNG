@@ -22,14 +22,27 @@
 
 #include "QvkWASAPIController.h"
 #include "global.h"
+#include "QvkLevelMeterController.h"
 
 #include <QDebug>
 #include <QPainter>
 #include <QCheckBox>
 
+
+#include <QAudioDevice>
+#include<QMediaDevices>
+
 QvkWASAPIController::QvkWASAPIController(Ui_formMainWindow *ui_mainwindow)
 {
     ui = ui_mainwindow;
+
+
+    QList<QAudioDevice > devices = QMediaDevices::audioInputs();
+    for ( int i = 0; i < devices.count(); i++ ) {
+        QAudioDevice audioDevice = devices.at(i); {
+            qDebug() << "---------------------------------" << audioDevice.id() << audioDevice.description() << audioDevice.handle();
+        }
+    }
 }
 
 
@@ -63,21 +76,50 @@ void QvkWASAPIController::getAllDevices()
 
     if ( !list.empty() ) {
         for ( int i = 0; i < list.count(); i++ ) {
-            QCheckBox *checkboxAudioDevice = new QCheckBox();
-            checkboxAudioDevice->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
+
+            // Führende Null voranstellen
+            QString prefixNumber;
+            if ( i < 10 ) {
+                prefixNumber = "0" + QString::number(i);
+            } else {
+                prefixNumber = QString::number(i);
+            }
+
+            QVBoxLayout *hBoxLayout = new QVBoxLayout; // Für Checkbox und Progressbar
+            hBoxLayout->setSpacing(0);
+            hBoxLayout->setObjectName( "vBoxLayoutAudioDevice-" + prefixNumber );
+
+            QCheckBox *checkBox = new QCheckBox();
+            checkBox->setText( QString( list.at(i) ).section( ":::", 1, 1 ) );
             QString device = QString( list.at(i).section( ":::", 0, 0 ) );
             device.append( ":::" );
             device.append( QString( list.at(i).section( ":::", 2, 2 ) ) );
-            checkboxAudioDevice->setAccessibleName( device );
-            checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( i ) );
-            checkboxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
-            ui->verticalLayoutAudioDevices->addWidget( checkboxAudioDevice );
+            checkBox->setAccessibleName( device );
+            checkBox->setObjectName( "checkboxAudioDevice-" +prefixNumber  );
+            checkBox->setToolTip( tr ( "Select one or more devices" ) );
+
+            if ( list.at(i).section( ":::", 2, 2 ) == "Playback" ) {
+                checkBox->setIconSize( QSize( 13, 13 ) );
+                checkBox->setIcon( QIcon( ":/pictures/screencast/speaker.png" ) );
+            } else {
+                checkBox->setIconSize( QSize( 16, 16 ) );
+                checkBox->setIcon( QIcon( ":/pictures/screencast/microphone.png" ) );
+
+            }
+
+            ui->verticalLayoutAudioDevices->addWidget( checkBox );
             ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
             qDebug().noquote() << global::nameOutput << "[Audio WASAPI2] Found:" << QString( list.at(i) ).section( ":::", 1, 1 )
                                << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 )
                                << "Input/Output:" << QString( list.at(i) ).section( ":::", 2, 2 );
 
-            connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
+            connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
+
+            hBoxLayout->addWidget( checkBox );
+            ui->verticalLayoutAudioDevices->addLayout( hBoxLayout );
+
+            QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
+            vkLevelMeterController->add_ProgressBar( checkBox, hBoxLayout );
         }
         qDebug().noquote();
     } else {
@@ -100,7 +142,8 @@ void QvkWASAPIController::slot_audioDeviceSelected()
     bool value = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
-        if ( listCheckBox.at(i)->checkState() == Qt::Checked ) {
+        QCheckBox *checkBox = listCheckBox.at(i);
+        if ( checkBox->checkState() == Qt::Checked ) {
             value = true;
             break;
         }
