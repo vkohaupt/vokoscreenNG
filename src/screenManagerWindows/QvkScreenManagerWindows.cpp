@@ -42,7 +42,7 @@ QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
     monitor = gst_device_monitor_new();
     caps = gst_caps_new_empty_simple( "video/x-raw" );
     gst_device_monitor_add_filter( monitor, "Source/Monitor", caps );
-    bool isMonitorStart = gst_device_monitor_start( monitor );
+    //    bool isMonitorStart = gst_device_monitor_start( monitor );
 
     listStructure.clear();
     listDevices.clear();
@@ -80,58 +80,60 @@ QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
             }
         }
 
-
         // From here properties
         GstStructure *structure = gst_device_get_properties( device );
         stringStructure.append( "PROPERTIES: " + QString( gst_structure_to_string( structure ) ) );
         listStructure.append( stringStructure );
 
-        QString device_primary;
-        device_primary = QString( gst_structure_get_string( structure, "device.primary" ) );
+        QString device_api = QString( gst_structure_get_string( structure, "device.api" ) );
+        if ( device_api == "d3d11" ) {
+            QString device_primary;
+            device_primary = QString( gst_structure_get_string( structure, "device.primary" ) );
 
-        QString device_name;
-        device_name = QString( gst_structure_get_string( structure, "device.name" ) );
-        device_name = device_name.replace( "\\", "").replace( ".", "" );
+            QString device_name;
+            device_name = QString( gst_structure_get_string( structure, "device.name" ) );
+            device_name = device_name.replace( "\\", "").replace( ".", "" );
 
-        guint64 value;
-        gst_structure_get_uint64( structure, "device.hmonitor", &value );
-        QString device_handle = QString::number( value );
+            guint64 value;
+            gst_structure_get_uint64( structure, "device.hmonitor", &value );
+            QString device_handle = QString::number( value );
 
-        gint valueRight;
-        gst_structure_get_int( structure, "display.coordinates.right", &valueRight );
-        int right = valueRight;
-        Q_UNUSED(right)
+            gint valueRight;
+            gst_structure_get_int( structure, "display.coordinates.right", &valueRight );
+            int right = valueRight;
+            Q_UNUSED(right)
 
-        gint valueLeft;
-        gst_structure_get_int( structure, "display.coordinates.left", &valueLeft );
-        int left = valueLeft;
-        Q_UNUSED(left)
+            gint valueLeft;
+            gst_structure_get_int( structure, "display.coordinates.left", &valueLeft );
+            int left = valueLeft;
+            Q_UNUSED(left)
 
-        gint valueTop;
-        gst_structure_get_int( structure, "display.coordinates.top", &valueTop );
-        int top = valueTop;
-        Q_UNUSED(top)
+            gint valueTop;
+            gst_structure_get_int( structure, "display.coordinates.top", &valueTop );
+            int top = valueTop;
+            Q_UNUSED(top)
 
-        gint valueBottom;
-        gst_structure_get_int( structure, "display.coordinates.bottom", &valueBottom );
-        int bottom = valueBottom;
-        Q_UNUSED(bottom)
+            gint valueBottom;
+            gst_structure_get_int( structure, "display.coordinates.bottom", &valueBottom );
+            int bottom = valueBottom;
+            Q_UNUSED(bottom)
 
-        // Dies funktioniert auch
-        // QString device_width = QString::number( right - left );
-        // QString device_height = QString::number( bottom - top );
+            // Dies funktioniert auch
+            // QString device_width = QString::number( right - left );
+            // QString device_height = QString::number( bottom - top );
 
-        gst_structure_free( structure );
+            gst_structure_free( structure );
 
-        listDevices << device_name + ":::" +
-                           device_handle + ":::" +
-                           QString::number( device_width ) + ":::" +
-                           QString::number( device_height );
+            listDevices << device_name + ":::" +
+                               device_handle + ":::" +
+                               QString::number( device_width ) + ":::" +
+                               QString::number( device_height );
+        }
     }
 
-    if ( isMonitorStart == true ) {
-        gst_device_monitor_stop( monitor );
-    }
+    //    if ( isMonitorStart == true ) {
+    //        gst_device_monitor_stop( monitor );
+    //    }
 
     QToolButton *toolButton = parent->findChild<QToolButton *>("toolButton_screen_name");
     if ( toolButton != NULL ) {
