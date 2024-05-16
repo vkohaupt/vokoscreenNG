@@ -42,7 +42,6 @@ QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
     monitor = gst_device_monitor_new();
     caps = gst_caps_new_empty_simple( "video/x-raw" );
     gst_device_monitor_add_filter( monitor, "Source/Monitor", caps );
-    //    bool isMonitorStart = gst_device_monitor_start( monitor );
 
     listStructure.clear();
     listDevices.clear();
@@ -130,10 +129,6 @@ QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
                                QString::number( device_height );
         }
     }
-
-    //    if ( isMonitorStart == true ) {
-    //        gst_device_monitor_stop( monitor );
-    //    }
 
     QToolButton *toolButton = parent->findChild<QToolButton *>("toolButton_screen_name");
     if ( toolButton != NULL ) {
