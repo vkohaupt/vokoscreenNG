@@ -27,22 +27,18 @@
 #include <QDebug>
 #include <QPainter>
 #include <QCheckBox>
-
-
+#include <QLabel>
+#include <QStringList>
+#include <QVBoxLayout>
+#include <QIcon>
+#include <QSize>
+#include <QList>
 #include <QAudioDevice>
-#include<QMediaDevices>
+#include <QMediaDevices>
 
 QvkWASAPIController::QvkWASAPIController(Ui_formMainWindow *ui_mainwindow)
 {
     ui = ui_mainwindow;
-
-
-    QList<QAudioDevice > devices = QMediaDevices::audioInputs();
-    for ( int i = 0; i < devices.count(); i++ ) {
-        QAudioDevice audioDevice = devices.at(i); {
-            qDebug() << "---------------------------------" << audioDevice.id() << audioDevice.description() << audioDevice.handle();
-        }
-    }
 }
 
 
@@ -95,7 +91,7 @@ void QvkWASAPIController::getAllDevices()
             device.append( ":::" );
             device.append( QString( list.at(i).section( ":::", 2, 2 ) ) );
             checkBox->setAccessibleName( device );
-            checkBox->setObjectName( "checkboxAudioDevice-" +prefixNumber  );
+            checkBox->setObjectName( "checkboxAudioDevice-" + prefixNumber );
             checkBox->setToolTip( tr ( "Select one or more devices" ) );
 
             if ( list.at(i).section( ":::", 2, 2 ) == "Playback" ) {
@@ -104,7 +100,6 @@ void QvkWASAPIController::getAllDevices()
             } else {
                 checkBox->setIconSize( QSize( 16, 16 ) );
                 checkBox->setIcon( QIcon( ":/pictures/screencast/microphone.png" ) );
-
             }
 
             ui->verticalLayoutAudioDevices->addWidget( checkBox );
