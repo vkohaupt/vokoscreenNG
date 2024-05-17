@@ -564,9 +564,12 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     for ( int i = 0; i < screenManagerWindows->get_screen_structure().count(); i++ ) {
         QStringList list = screenManagerWindows->get_screen_structure().at(i).split(",");
         for ( int i = 0; i < list.count(); i++ ) {
-            qDebug().noquote() << global::nameOutput << list.at(i);
+            if ( !list.at(i).isEmpty() ) {
+                qDebug().noquote() << global::nameOutput << list.at(i);
+            } else {
+                qDebug();
+            }
         }
-        qDebug();
     }
 
     connect( ui->comboBoxScreencastScreenArea, SIGNAL( currentIndexChanged(int) ), vkRegionChoise, SLOT( slot_init() ) );

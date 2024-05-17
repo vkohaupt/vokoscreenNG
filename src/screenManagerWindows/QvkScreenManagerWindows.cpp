@@ -102,6 +102,7 @@ QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
             GstCaps *Caps = gst_device_get_caps( device );
             GstStructure *structureCaps = gst_caps_get_structure( Caps, 0 );
             stringStructure = "CAPS: " + QString( gst_structure_to_string( structureCaps ) ).replace(  ";", "," );
+            listStructure.append( stringStructure );
 
             if ( gst_structure_has_field( structureCaps, "format" ) ) {
                 const gchar *format = NULL;
