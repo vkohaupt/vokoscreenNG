@@ -149,6 +149,9 @@ void QvkWASAPIController::slot_audioDeviceSelected()
 
 void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
 {
+
+    qDebug() << "----------------------------" << string;
+
     QList<QLabel *> listLabel = ui->scrollAreaAudioDevice->findChildren<QLabel *>();
     for ( int i = 0; i < listLabel.count(); i++ ) {
         ui->verticalLayoutAudioDevices->removeWidget( listLabel.at(i) );
@@ -166,7 +169,17 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
         checkboxAudioDevice->setAccessibleName( device );
         QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
         checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( listAudioDevices.count() ) );
-        ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count()-1, checkboxAudioDevice );
+
+        if ( string.section( ":::", 1, 1 ) == "Playback" ) {
+            checkboxAudioDevice->setIconSize( QSize( 13, 13 ) );
+            checkboxAudioDevice->setIcon( QIcon( ":/pictures/screencast/speaker.png" ) );
+        }
+        if ( string.section( ":::", 1, 1 ) == "Source" ) {
+            checkboxAudioDevice->setIconSize( QSize( 16, 16 ) );
+            checkboxAudioDevice->setIcon( QIcon( ":/pictures/screencast/microphone.png" ) );
+        }
+
+        ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count(), checkboxAudioDevice );
         ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
     }
 

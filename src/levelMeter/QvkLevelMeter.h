@@ -8,7 +8,7 @@
 #include <QAudioSource>
 #include <QMediaDevices>
 #include <QByteArray>
-#include <QScopedPointer>
+//#include <QScopedPointer>
 
 class QvkQIODevice : public QIODevice
 {
