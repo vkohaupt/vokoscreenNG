@@ -54,38 +54,13 @@ QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
 
         device = (GstDevice*)iterator->data;
 
-        // From here caps
-        GstCaps *Caps = gst_device_get_caps( device );
-        GstStructure *structureCaps = gst_caps_get_structure( Caps, 0 );
-        stringStructure = "CAPS: " + QString( gst_structure_to_string( structureCaps ) ).replace(  ";", "," );
-
-        if ( gst_structure_has_field( structureCaps, "format" ) ) {
-            const gchar *format = NULL;
-            format = gst_structure_get_string( structureCaps, "format" );
-            Q_UNUSED(format)
-        }
-
-        if ( gst_structure_has_field( structureCaps, "width" ) ) {
-            gint width = 0;
-            if ( gst_structure_get_int( structureCaps, "width", &width ) ) {
-                device_width = width;
-            }
-        }
-
-        if ( gst_structure_has_field( structureCaps, "height" ) ) {
-            gint height = 0;
-            if ( gst_structure_get_int( structureCaps, "height", &height ) ) {
-                device_height = height;
-            }
-        }
-
-        // From here properties
+        // First we need the properties, and in this loop we read the caps
         GstStructure *structure = gst_device_get_properties( device );
-        stringStructure.append( "PROPERTIES: " + QString( gst_structure_to_string( structure ) ) );
-        listStructure.append( stringStructure );
-
         QString device_api = QString( gst_structure_get_string( structure, "device.api" ) );
         if ( device_api == "d3d11" ) {
+            stringStructure.append( "PROPERTIES: " + QString( gst_structure_to_string( structure ) ) );
+            listStructure.append( stringStructure );
+
             QString device_primary;
             device_primary = QString( gst_structure_get_string( structure, "device.primary" ) );
 
@@ -122,6 +97,31 @@ QvkScreenManagerWindows::QvkScreenManagerWindows( QMainWindow *parent )
             // QString device_height = QString::number( bottom - top );
 
             gst_structure_free( structure );
+
+            // Read the caps from the device
+            GstCaps *Caps = gst_device_get_caps( device );
+            GstStructure *structureCaps = gst_caps_get_structure( Caps, 0 );
+            stringStructure = "CAPS: " + QString( gst_structure_to_string( structureCaps ) ).replace(  ";", "," );
+
+            if ( gst_structure_has_field( structureCaps, "format" ) ) {
+                const gchar *format = NULL;
+                format = gst_structure_get_string( structureCaps, "format" );
+                Q_UNUSED(format)
+            }
+
+            if ( gst_structure_has_field( structureCaps, "width" ) ) {
+                gint width = 0;
+                if ( gst_structure_get_int( structureCaps, "width", &width ) ) {
+                    device_width = width;
+                }
+            }
+
+            if ( gst_structure_has_field( structureCaps, "height" ) ) {
+                gint height = 0;
+                if ( gst_structure_get_int( structureCaps, "height", &height ) ) {
+                    device_height = height;
+                }
+            }
 
             listDevices << device_name + ":::" +
                                device_handle + ":::" +
