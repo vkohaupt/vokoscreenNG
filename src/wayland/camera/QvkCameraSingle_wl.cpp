@@ -72,7 +72,7 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff( bool bo )
         pipeline  = gst_pipeline_new( "pipeline" );
 
         pipewiresrc   = gst_element_factory_make( "pipewiresrc", nullptr );
-        g_object_set( G_OBJECT( pipewiresrc ), "target-object", device_id, NULL );
+        g_object_set( G_OBJECT( pipewiresrc ), "target-object", device_id.toUtf8().constData(), NULL );
 
         videoconvert = gst_element_factory_make( "videoconvert", nullptr );
 
