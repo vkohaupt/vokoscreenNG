@@ -39,6 +39,9 @@
 #include <gst/pbutils/pbutils.h>
 #include "gst/video/videooverlay.h"
 
+QLineEdit *lineEditCameraWatch_wl;
+
+
 QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface )
 {
     ui = ui_surface;
@@ -50,7 +53,7 @@ QvkCameraController_wl::~QvkCameraController_wl()
 {
 }
 
-QLineEdit *lineEdit;
+
 gboolean my_bus_func( GstBus *bus, GstMessage *message, gpointer user_data )
 {
     Q_UNUSED(bus)
@@ -70,8 +73,7 @@ gboolean my_bus_func( GstBus *bus, GstMessage *message, gpointer user_data )
                 QString object_id = QString( gst_structure_get_string( structure, "object.serial" ) );
                 QString camera_name = QString( gst_structure_get_string( structure, "api.v4l2.cap.card" ) );
                 qDebug().noquote() << global::nameOutput << "[Camera added:]" << object_id << camera_name;
-                // listDevices << object_id + ":::" + camera_name;
-                lineEdit->setText( object_id + ":::" + camera_name + ":::" + "added");
+                lineEditCameraWatch_wl->setText( object_id + ":::" + camera_name + ":::" + "added");
             }
         }
         gst_object_unref( device );
@@ -88,7 +90,7 @@ gboolean my_bus_func( GstBus *bus, GstMessage *message, gpointer user_data )
                 QString object_id = QString( gst_structure_get_string( structure, "object.serial" ) );
                 QString camera_name = QString( gst_structure_get_string( structure, "api.v4l2.cap.card" ) );
                 qDebug().noquote() << global::nameOutput << "[Camera removed:]" << object_id << camera_name;
-                lineEdit->setText( object_id + ":::" + camera_name + ":::" + "removed");
+                lineEditCameraWatch_wl->setText( object_id + ":::" + camera_name + ":::" + "removed");
             }
         }
         gst_object_unref( device );
@@ -103,8 +105,8 @@ gboolean my_bus_func( GstBus *bus, GstMessage *message, gpointer user_data )
 
 void QvkCameraController_wl::startCameraMonitoring()
 {
-    lineEdit = new QLineEdit;
-    connect( lineEdit, SIGNAL( textChanged(QString) ), this, SLOT( slot_camera_added_or_removed(QString) ) );
+    lineEditCameraWatch_wl = new QLineEdit;
+    connect( lineEditCameraWatch_wl, SIGNAL( textChanged(QString) ), this, SLOT( slot_camera_added_or_removed(QString) ) );
 
     GstDeviceMonitor *monitor;
     GstBus *bus;
@@ -135,6 +137,9 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
             QCheckBox *checkBox = listCheckBox.at(i);
             if ( checkBox->accessibleName().section( ":::", 0, 0 ) == device.section( ":::", 0, 0 ) ) {
                 ui->layoutAllCameras->removeWidget( checkBox );
+                if ( checkBox->checkState() == Qt::Checked ) {
+                    checkBox->click();
+                }
                 delete checkBox;
             }
         }
