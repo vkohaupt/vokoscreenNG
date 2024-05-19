@@ -76,8 +76,8 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff( bool bo )
 
         videoconvert = gst_element_factory_make( "videoconvert", nullptr );
 
-        videosink = gst_element_factory_make( "xvimagesink", nullptr );
-        // waylandsink = gst_element_factory_make( "waylandsink", nullptr );
+        //videosink = gst_element_factory_make( "xvimagesink", nullptr );
+        videosink = gst_element_factory_make( "waylandsink", nullptr );
 
         gst_bin_add_many( GST_BIN( pipeline ), pipewiresrc, videoconvert, videosink, nullptr );
         gst_element_link_many ( pipewiresrc, videoconvert, videosink, NULL );
@@ -85,8 +85,8 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff( bool bo )
         // https://gstreamer.freedesktop.org/documentation/video/gstvideooverlay.html?gi-language=c
         // gst_video_overlay_set_window_handle( GST_VIDEO_OVERLAY( waylandsink ), (guintptr)vkCameraWindow_wl->winId() );
 
-//        g_object_set( G_OBJECT( waylandsink ), "rotate-method", GST_VIDEO_ORIENTATION_90R, NULL );
-//        g_object_set( G_OBJECT( waylandsink ), "render-rectangle", "<10,10,100,100>", NULL );
+//        g_object_set( G_OBJECT( videosink ), "rotate-method", GST_VIDEO_ORIENTATION_90R, NULL );
+//        g_object_set( G_OBJECT( videosink ), "render-rectangle", "<10,10,100,100>", NULL );
 
         GstStateChangeReturn sret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
         if ( sret == GST_STATE_CHANGE_FAILURE ) {
