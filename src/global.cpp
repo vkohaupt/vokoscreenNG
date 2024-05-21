@@ -23,6 +23,7 @@
 #include "global.h"
 #include <QString>
 #include <QTextBrowser>
+#include <QLineEdit>
 
 namespace global
 {
@@ -30,6 +31,7 @@ namespace global
     QString name = "vokoscreenNG";
     QString nameOutput = "[" + name + "]";
     int showclickCounter = 0;
-    bool testWASAPI = false;
     QTextBrowser *textBrowserLog;
+    bool testWASAPI = false;
+    QLineEdit *lineEditWASAPIWatcher;
 }

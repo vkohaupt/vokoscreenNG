@@ -36,8 +36,7 @@ class QvkWASAPIController: public QObject
 public:
     QvkWASAPIController(Ui_formMainWindow *ui_mainwindow);
     virtual ~QvkWASAPIController();
-    void init();
-    void getAllDevices();
+//    void getAllDevices();
     QvkWASAPIWatcher *vkWASAPIWatcher;
     bool wantCountdown = true;
 

@@ -20,29 +20,31 @@
  * --End_License--
  */
 
-#ifndef QVKWASAPIGSTREAMER_H
-#define QVKWASAPIGSTREAMER_H
+#ifndef QVKWASAPIWATCHER_H
+#define QVKWASAPIWATCHER_H
 
 #include <gst/gst.h>
-
+#include "ui_formMainWindow.h"
 #include <QObject>
+//#include <QTimer>
 
-class QvkWASAPIGstreamer: public QObject
+class QvkWASAPIWatcher: public QObject
 {
     Q_OBJECT
 
-public:
-    QvkWASAPIGstreamer();
-    virtual ~QvkWASAPIGstreamer();
-    QString get_AudioDeviceString( GstDevice *device );
 
-    
+public:
+    QvkWASAPIWatcher(Ui_formMainWindow *ui_mainwindow);
+    virtual ~QvkWASAPIWatcher();
+    void startWASAPIMonitoring();
+    static GstBusSyncReply my_WASAPI_func( GstBus *bus, GstMessage *message, gpointer user_data );
+
+
 public slots:
-    QStringList get_all_Audio_Source_devices();
-    QStringList get_all_Audio_Playback_devices();
 
 
 private:
+    Ui_formMainWindow *ui;
 
 
 private slots:
@@ -52,7 +54,8 @@ protected:
   
   
 signals:
-    
+
+
 };
 
 #endif

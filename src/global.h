@@ -22,6 +22,7 @@
 
 #include <QString>
 #include <QTextBrowser>
+#include <QLineEdit>
 
 namespace global
 {
@@ -31,4 +32,5 @@ namespace global
     extern int showclickCounter;
     extern bool testWASAPI;
     extern QTextBrowser *textBrowserLog;
+    extern QLineEdit *lineEditWASAPIWatcher;
 }

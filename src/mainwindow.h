@@ -35,7 +35,6 @@
 #include "QvkLimitDiskFreeSpace.h"
 #include "QvkSpezialSlider.h"
 #include "QvkSystrayAlternative.h"
-#include "QvkAudioController.h"
 #include "QvkShowClick.h"
 #include "QvkHalo.h"
 #include "QvkGlobalShortcut.h"
@@ -43,13 +42,17 @@
 #include "QvkContainerController.h"
 #include "QvkLicenses.h"
 
+#ifdef Q_OS_UNIX
+  #include "QvkAudioController.h"
+#endif
+
 #ifdef Q_OS_WIN
   #include "QvkCiscoOpenh264Controller.h"
+  #include "QvkWASAPIController.h"
 #endif
 
 #include <QMainWindow>
 #include <QFileSystemWatcher>
-#include <QSoundEffect>
 #include <QTranslator>
 #include <QShowEvent>
 #include <QCloseEvent>
@@ -73,7 +76,12 @@ public:
     QvkCountdown *vkCountdown;
     QvkRegionChoise *vkRegionChoise;
     QvkSystray *vkSystray;
+#ifdef Q_OS_UNIX
     QvkAudioController *vkAudioController;
+#endif
+#ifdef Q_OS_WIN
+    QvkWASAPIController *vkWASAPIController;
+#endif
     QvkSpezialSlider *sliderFrames;
     QvkMagnifierController *vkMagnifierController;
     QvkGlobalShortcut *vkGlobalShortcut;
@@ -126,7 +134,6 @@ private:
     QStringList VK_getSelectedAudioDevice();
     QStringList VK_getSelectedAudioDeviceName();
 
-
     QString get_x_From_Screen();
     QString get_y_From_Screen();
     QString get_width_From_Screen();
@@ -151,7 +158,6 @@ private:
     void checkVideoPath();
     bool isAudioDeviceSelected();
     QString Pipeline_structured_output( QString pipeline );
-    QSoundEffect *soundEffect;
     bool cancel = false;
     bool is_videoFolderExists_and_haveWritePermission();
     QPalette appPalette;

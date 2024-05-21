@@ -78,11 +78,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     oldPaletteDarkMode = qApp->palette();
 
-#ifdef Q_OS_WIN
-    // Only for Windows WASAPI
-    soundEffect = new QSoundEffect();
-#endif
-
 #ifdef Q_OS_UNIX
     // Composite
     new QvkComposite( this );
@@ -445,8 +440,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     // Tab 2 Audio and Videocodec
 #ifdef Q_OS_WIN
-    vkAudioController = new QvkAudioController( ui );
-    connect( vkAudioController->vkWASAPIController,      SIGNAL( signal_haveAudioDeviceSelected(bool) ), this, SLOT( slot_haveAudioDeviceSelected(bool) ) );
+    vkWASAPIController = new QvkWASAPIController( ui );
+    connect( vkWASAPIController, SIGNAL( signal_haveAudioDeviceSelected(bool) ), this, SLOT( slot_haveAudioDeviceSelected(bool) ) );
 #endif
 
 #ifdef Q_OS_UNIX
@@ -1637,7 +1632,7 @@ void QvkMainWindow::slot_preStart()
 #ifdef Q_OS_WIN
     if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and
          ( sliderScreencastCountDown->value() > 0 ) and
-         ( vkAudioController->vkWASAPIController->wantCountdown == true ) )
+         ( vkWASAPIController->wantCountdown == true ) )
 #endif
 #ifdef Q_OS_UNIX
     if ( ( ui->radioButtonScreencastFullscreen->isChecked() == true ) and ( sliderScreencastCountDown->value() > 0 ) )
@@ -1699,7 +1694,7 @@ void QvkMainWindow::slot_preStart()
 #ifdef Q_OS_WIN
     if ( ( ui->radioButtonScreencastArea->isChecked() == true ) and
          ( sliderScreencastCountDown->value() > 0 ) and
-         ( vkAudioController->vkWASAPIController->wantCountdown == true ) )
+         ( vkWASAPIController->wantCountdown == true ) )
 #endif
 #ifdef Q_OS_UNIX
     if ( ( ui->radioButtonScreencastArea->isChecked() == true ) and ( sliderScreencastCountDown->value() > 0 ) )
@@ -2037,11 +2032,7 @@ void QvkMainWindow::slot_Stop()
 Cancel:
 
 #ifdef Q_OS_WIN
-   if ( soundEffect->isPlaying() == true ) {
-      soundEffect->stop();
-      qDebug().noquote() << global::nameOutput << "[WASAPI] Soundeffect stop";
-   }
-   vkAudioController->vkWASAPIController->wantCountdown = true;
+   vkWASAPIController->wantCountdown = true;
    if ( global::testWASAPI == true ) {
        global::testWASAPI = false;
        ui->labelInfoRecordTime->setText( "00:00:00" );
