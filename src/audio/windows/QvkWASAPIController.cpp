@@ -87,7 +87,7 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
         QCheckBox *checkboxAudioDevice = new QCheckBox();
         connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
         checkboxAudioDevice->setText( name );
-        checkboxAudioDevice->setAccessibleName( device );
+        checkboxAudioDevice->setAccessibleName( string );
         QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
         checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( listAudioDevices.count() ) );
 
@@ -102,15 +102,18 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
 
         ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count(), checkboxAudioDevice );
         ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
+
+        qDebug().noquote() << global::nameOutput << "[Audio-device-added]" << name << device;
     }
 
     if ( action == "[Audio-device-removed]" ) {
         QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
         for ( int i = 0; i < listAudioDevices.count(); i++ ) {
             QCheckBox *checkBox = listAudioDevices.at(i);
-            if ( checkBox->accessibleName() == device ) {
+            if ( checkBox->accessibleName().section( ":::", 0, 0 ) == device ) {
                 delete checkBox;
                 listAudioDevices.removeAt(i);
+                qDebug().noquote() << global::nameOutput << "[Audio-device-removed]" << name << device;
             }
         }
         slot_audioDeviceSelected();

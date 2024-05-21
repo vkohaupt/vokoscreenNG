@@ -1873,8 +1873,7 @@ void QvkMainWindow::slot_Start()
             // Laut Dokumentation wird das was ersetzt wurde nicht nochmal ersetzt
             QString strReplace = VK_getSelectedAudioDevice().at(0).section( ":::", 0, 0 );
             strReplace.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
-
-            if ( VK_getSelectedAudioDevice().at(0).section( ":::", 1, 1 ) == "Playback" ) {
+            if ( VK_getSelectedAudioDevice().at(0).section( ":::", 2, 2 ) == "Playback" ) {
                 VK_PipelineList << QString( "wasapi2src low-latency=true loopback=true device=" + strReplace );
             } else {
                 VK_PipelineList << QString( "wasapi2src low-latency=true device=" + strReplace );
@@ -1909,7 +1908,7 @@ void QvkMainWindow::slot_Start()
                 QString strReplace = VK_getSelectedAudioDevice().at(x).section( ":::", 0, 0 );
                 strReplace.replace( "\\", "\\\\" ).replace( "?", "\\?" ).replace( "#", "\\#" ).replace( "{", "\\{" ).replace( "}", "\\}" );
 
-                if ( VK_getSelectedAudioDevice().at(x).section( ":::", 1, 1 ) == "Playback" ) {
+                if ( VK_getSelectedAudioDevice().at(x).section( ":::", 2, 2 ) == "Playback" ) {
                     VK_PipelineList << QString( "wasapi2src low-latency=true loopback=true device=" ).append( strReplace );
                     VK_PipelineList << "audioconvert";
                     VK_PipelineList << "audioresample";
