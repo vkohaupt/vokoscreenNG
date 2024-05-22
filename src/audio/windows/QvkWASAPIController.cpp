@@ -84,23 +84,41 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
     Q_UNUSED(api)
 
     if ( action == "[Audio-device-added]" ) {
-        QCheckBox *checkboxAudioDevice = new QCheckBox();
-        connect( checkboxAudioDevice, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
-        checkboxAudioDevice->setText( name );
-        checkboxAudioDevice->setAccessibleName( string );
+
+        // Layouts ermitteln in der eine CheckBox und eine CompressBar untergebracht ist.
+        QList<QVBoxLayout *> listVBoxLayout = ui->verticalLayoutAudioDevices->findChildren<QVBoxLayout *>();
+        int i =  listVBoxLayout.count();
+
+        QString prefixNumber;
+        if ( i < 10 ) {
+            prefixNumber = "0" + QString::number(i);
+        } else {
+            prefixNumber = QString::number(i);
+        }
+
+        QCheckBox *checkBox = new QCheckBox();
+        connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
+        checkBox->setText( name );
+        checkBox->setAccessibleName( string );
         QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-        checkboxAudioDevice->setObjectName( "checkboxAudioDevice-" + QString::number( listAudioDevices.count() ) );
+        checkBox->setObjectName( "checkboxAudioDevice-" + QString::number( listAudioDevices.count() ) );
 
         if ( type == "Playback" ) {
-            checkboxAudioDevice->setIconSize( QSize( 13, 13 ) );
-            checkboxAudioDevice->setIcon( QIcon( ":/pictures/screencast/speaker.png" ) );
+            checkBox->setIconSize( QSize( 13, 13 ) );
+            checkBox->setIcon( QIcon( ":/pictures/screencast/speaker.png" ) );
         }
         if ( type == "Source" ) {
-            checkboxAudioDevice->setIconSize( QSize( 16, 16 ) );
-            checkboxAudioDevice->setIcon( QIcon( ":/pictures/screencast/microphone.png" ) );
+            checkBox->setIconSize( QSize( 16, 16 ) );
+            checkBox->setIcon( QIcon( ":/pictures/screencast/microphone.png" ) );
         }
 
-        ui->verticalLayoutAudioDevices->insertWidget( ui->verticalLayoutAudioDevices->count(), checkboxAudioDevice );
+        // Neues layout zur aufnahme der CheckBox und CompressBar
+        QVBoxLayout *vBoxLayout = new QVBoxLayout; // Für Checkbox und Progressbar
+        vBoxLayout->setSpacing(0);
+        vBoxLayout->setObjectName( "vBoxLayoutAudioDevice-" + prefixNumber );
+        vBoxLayout->addWidget( checkBox );
+
+        ui->verticalLayoutAudioDevices->addLayout( vBoxLayout );
         ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
 
         qDebug().noquote() << global::nameOutput << "[Audio-device-added]" << name << device;

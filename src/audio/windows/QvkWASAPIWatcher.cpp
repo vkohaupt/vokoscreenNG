@@ -23,10 +23,7 @@
 #include "QvkWASAPIWatcher.h"
 #include "global.h"
 
-#include <QDebug>
-#include <QCheckBox>
-#include <QStringList>
-#include <QLineEdit>
+#include <QString>
 
 QvkWASAPIWatcher::QvkWASAPIWatcher( Ui_formMainWindow *ui_mainwindow )
 {
@@ -64,10 +61,8 @@ GstBusSyncReply QvkWASAPIWatcher::my_WASAPI_func( GstBus *bus, GstMessage *messa
                 type = "Source";
             }
             QString action = "[Audio-device-added]";
-
             global::lineEditWASAPIWatcher->setText( device + ":::" + name + ":::" + type + ":::" + api + ":::" + action );
         }
-
         gst_structure_free( structure );
         gst_object_unref( gstDevice );
         break;
@@ -75,7 +70,6 @@ GstBusSyncReply QvkWASAPIWatcher::my_WASAPI_func( GstBus *bus, GstMessage *messa
     case GST_MESSAGE_DEVICE_REMOVED:
     {
         GstDevice *gstDevice;
-
         gst_message_parse_device_removed( message, &gstDevice );
         GstStructure *structure = gst_device_get_properties( gstDevice );
         QString device = QString( gst_structure_get_string( structure, "device.id" ) );
@@ -90,7 +84,6 @@ GstBusSyncReply QvkWASAPIWatcher::my_WASAPI_func( GstBus *bus, GstMessage *messa
         }
         QString api  = QString( gst_structure_get_string( structure, "device.api" ) );
         QString action = "[Audio-device-removed]";
-
         global::lineEditWASAPIWatcher->setText( device + ":::" + name + ":::" + type + ":::" + api + ":::" + action );
         gst_structure_free( structure );
         gst_object_unref( gstDevice );
@@ -111,9 +104,7 @@ void QvkWASAPIWatcher::startWASAPIMonitoring()
     GstCaps *caps = gst_caps_new_empty_simple( "audio/x-raw" );
     gst_device_monitor_add_filter( monitor, "Audio/Source", caps );
     gst_caps_unref( caps );
-
     gst_bus_set_sync_handler( bus, (GstBusSyncHandler)my_WASAPI_func, this, NULL );
     gst_object_unref( bus );
-
     gst_device_monitor_start( monitor );
 }
