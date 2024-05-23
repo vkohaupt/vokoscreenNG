@@ -69,9 +69,6 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QVBoxLayout 
 #ifdef Q_OS_WIN
 void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QVBoxLayout *layout )
 {
-
-    qDebug() << checkBox->objectName() << layout->objectName();
-
     QList<QAudioDevice > devices = QMediaDevices::audioInputs();
     for ( int i = 0; i < devices.count(); i++ ) {
         QAudioDevice audioDevice = devices.at(i);
