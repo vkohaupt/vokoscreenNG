@@ -8,7 +8,6 @@
 #include <QAudioSource>
 #include <QMediaDevices>
 #include <QByteArray>
-//#include <QScopedPointer>
 
 class QvkQIODevice : public QIODevice
 {
@@ -41,12 +40,13 @@ class InputStart : public QObject
 
 public:
     InputStart(QAudioDevice device );
+    void slot_stop();
+    void slot_start();
 
 
 public slots:
     void slot_levelChanged(qreal level);
-    void slot_stop();
-    void slot_start();
+
 
 
 private:

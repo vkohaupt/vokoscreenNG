@@ -28,6 +28,9 @@
 #include "QvkWASAPIWatcher.h"
 
 #include <QObject>
+#include <QProgressBar>
+#include <QVBoxLayout>
+#include <QList>
 
 class QvkWASAPIController: public QObject
 {
@@ -36,7 +39,6 @@ class QvkWASAPIController: public QObject
 public:
     QvkWASAPIController(Ui_formMainWindow *ui_mainwindow);
     virtual ~QvkWASAPIController();
-//    void getAllDevices();
     QvkWASAPIWatcher *vkWASAPIWatcher;
     bool wantCountdown = true;
 
@@ -47,6 +49,11 @@ public slots:
 
 private:
     Ui_formMainWindow *ui;
+    QString get_number_removed_device( QString string );
+    QVBoxLayout *get_removed_vBoxLayout( QString indexNumber );
+    QProgressBar *get_removed_ProgressBar( QString indexNumber );
+    QCheckBox *get_removed_checkBox( QString indexNumber );
+//    QvkLevelMeterController *get_removed_LevelMeterController( QString indexNumber );
 
 
 private slots:

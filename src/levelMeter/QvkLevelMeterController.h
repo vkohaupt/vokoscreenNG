@@ -41,12 +41,12 @@ public:
     ~QvkLevelMeterController();
     void add_ProgressBar( QCheckBox *checkBox, QVBoxLayout *layout );
     void remove_ProgressBar();
+    InputStart *inputStart;
 
 
 private:
     QvkMainWindow *vkMainWindow;
     Ui_formMainWindow *ui;
-    InputStart *inputStart;
     static gboolean message_handler(GstBus *bus, GstMessage *message, gpointer data );
 
 public slots:

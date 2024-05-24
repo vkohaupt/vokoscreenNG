@@ -84,34 +84,54 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
     Q_UNUSED(api)
 
     if ( device == "" ) {
-        qDebug().noquote() << "Dies ist kein Device Return";
+        qDebug().noquote() << global::nameOutput << "[Audio] Device is empty -> return";
         return;
     }
 
     // Hier routine wenn Gerät schon vorhanden dann return;
-    QList<QCheckBox *> checkBoxList = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-
-
+    // Evtl. nicht nötig wenn zuvor der levelmeter gestoppt wurde
 
     if ( action == "[Audio-device-added]" ) {
 
-        // Layouts ermitteln in der eine CheckBox und eine CompressBar untergebracht ist.
+        // Freier Index(xx) 00, 01, 02, xx, 04, 05 usw. ermitteln und diesen Index dem neuen Layout, CheckBox und ProgressBar hinzufügen
         QList<QVBoxLayout *> listVBoxLayout = ui->verticalLayoutAudioDevices->findChildren<QVBoxLayout *>();
-        int i =  listVBoxLayout.count();
-
-        QString prefixNumber;
-        if ( i < 10 ) {
-            prefixNumber = "0" + QString::number(i);
+        QString indexNumber;
+        if ( listVBoxLayout.empty() ) {
+            indexNumber = "00";
+            qDebug().noquote() << global::nameOutput << "Index in List: List is empty" << "Count befor add:" << listVBoxLayout.count() << "New index:" << indexNumber ;
         } else {
-            prefixNumber = QString::number(i);
+            QStringList indexStringList;
+            for ( int i = 0; i < listVBoxLayout.count(); i++ ) {
+                QVBoxLayout *vBoxLayout = listVBoxLayout.at(i);
+                indexStringList << vBoxLayout->objectName().right(2);
+            }
+            // Max 30 Audio Geräte
+            for ( int x = 1; x < 30; x++ ) {
+                if ( x < 10 ) {
+                    indexNumber = "0" + QString::number(x);
+                } else {
+                    indexNumber = QString::number(x);
+                }
+                if ( indexStringList.contains(indexNumber) == false ) {
+                    break;
+                }
+            }
+            qDebug().noquote() << global::nameOutput << "Index in List" << indexStringList << "Count befor add:" << listVBoxLayout.count() << "New index:" << indexNumber ;
+
         }
+
+        // Neues layout für CheckBox und ProgressBar
+        QVBoxLayout *vBoxLayout = new QVBoxLayout; // Für Checkbox und Progressbar
+        vBoxLayout->setObjectName( "vBoxLayoutAudioDevice-" + indexNumber );
+        vBoxLayout->setSpacing(0);
 
         QCheckBox *checkBox = new QCheckBox();
         connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
         checkBox->setText( name );
         checkBox->setAccessibleName( string );
-        QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-        checkBox->setObjectName( "checkboxAudioDevice-" + QString::number( listAudioDevices.count() ) );
+        checkBox->setObjectName( "checkBoxAudioDevice-" + indexNumber );
+
+        vBoxLayout->addWidget( checkBox );
 
         if ( type == "Playback" ) {
             checkBox->setIconSize( QSize( 13, 13 ) );
@@ -122,14 +142,8 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
             checkBox->setIcon( QIcon( ":/pictures/screencast/microphone.png" ) );
         }
 
-        // Neues layout zur aufnahme der CheckBox und CompressBar
-        QVBoxLayout *vBoxLayout = new QVBoxLayout; // Für Checkbox und Progressbar
-        vBoxLayout->setSpacing(0);
-        vBoxLayout->setObjectName( "vBoxLayoutAudioDevice-" + prefixNumber );
-        vBoxLayout->addWidget( checkBox );
-
-//        QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
-//        vkLevelMeterController->add_ProgressBar( checkBox, vBoxLayout );
+        QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
+        vkLevelMeterController->add_ProgressBar( checkBox, vBoxLayout );
 
         ui->verticalLayoutAudioDevices->addLayout( vBoxLayout );
         ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
@@ -138,23 +152,27 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
     }
 
     if ( action == "[Audio-device-removed]" ) {
-        QList<QVBoxLayout *> listBoxLayout = ui->scrollAreaAudioDevice->findChildren<QVBoxLayout *>();
-        for ( int i = 0; i < listBoxLayout.count(); i++ ) {
-            QVBoxLayout *vBoxLayout = listBoxLayout.at(i);
-            if ( vBoxLayout->objectName().contains( "vBoxLayoutAudioDevice-" ) ) {
-                QList<QCheckBox *> checkBoxList = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-                for ( int x = 0; x < checkBoxList.count(); x++ ) {
-                    QCheckBox *checkBox = checkBoxList.at(x);
-                    if ( checkBox->accessibleName().section( ":::", 0, 0 ) == string.section( ":::", 0, 0 ) ) {
-                        qDebug().noquote() << global::nameOutput << "[Audio-device-removed]" << name << device;
-                        checkBox->deleteLater();
-                        //vBoxLayout->deleteLater();
-                        return;
-                    }
-                }
+        QString indexNumber = get_number_removed_device( string );
+        QVBoxLayout *vBoxLayout = get_removed_vBoxLayout( indexNumber );
+        QProgressBar *progressBar = get_removed_ProgressBar( indexNumber );
+        QCheckBox *checkBox = get_removed_checkBox( indexNumber );
+
+        QList<QvkLevelMeterController *> listProgressBar = ui->scrollAreaAudioDevice->findChildren<QvkLevelMeterController *>();
+        for ( int i = 0; i < listProgressBar.count(); i++ ) {
+            QvkLevelMeterController *vkLevelMeterController = listProgressBar.at(i);
+            if ( vkLevelMeterController->objectName().right(2) == indexNumber ) {
+                qDebug().noquote() << global::nameOutput << "[Audio-device-removed]" << name << device;
+                vkLevelMeterController->remove_ProgressBar();
+                vkLevelMeterController->deleteLater();
             }
         }
+
+//        checkBox->deleteLater();
+        delete checkBox;
+        ui->verticalLayoutAudioDevices->removeItem( vBoxLayout );
+        vBoxLayout->deleteLater();
     }
+}
 
 /*
         QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
@@ -182,4 +200,79 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
         }
     }
 */
+
+
+
+// Die CheckBox beinhaltet das Gerät das in der GUI entfernt werden soll.
+// Und jede Checkbox, BoxLayout und ProgressBar wurde ein gleicher eindeutiger Wert<indexNumber> an den Objectnamen hinzugefügt.
+// Beispiel  ....-00, ...-01, ...-02, ...-03 usw.
+QString QvkWASAPIController::get_number_removed_device( QString string )
+{
+    QString indexNumber = "";
+    QString device = string.section( ":::", 0, 0 );
+    QList<QCheckBox *> listQCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listQCheckBox.count(); i++ ) {
+        QCheckBox *checkBox = listQCheckBox.at(i);
+        if ( checkBox->accessibleName().section( ":::", 0, 0 ) == device ) {
+            indexNumber = checkBox->objectName().right(2);
+        }
+    }
+    return indexNumber;
 }
+
+
+QCheckBox *QvkWASAPIController::get_removed_checkBox( QString indexNumber )
+{
+    QCheckBox *returnCheckBox = NULL;
+    QList<QCheckBox *> list = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
+    for ( int i = 0; i < list.count(); i++  ) {
+        QCheckBox *checkBox = list.at(i);
+        if ( checkBox->objectName().contains( "checkBoxAudioDevice-" + indexNumber ) ) {
+            returnCheckBox = checkBox;
+        }
+    }
+    return returnCheckBox;
+}
+
+
+QVBoxLayout *QvkWASAPIController::get_removed_vBoxLayout( QString indexNumber )
+{
+    QVBoxLayout *returnVBoxLayout = NULL;
+    QList<QVBoxLayout *> list = ui->scrollAreaAudioDevice->findChildren<QVBoxLayout *>();
+    for ( int i = 0; i < list.count(); i++  ) {
+        QVBoxLayout *vBoxLayout = list.at(i);
+        if ( vBoxLayout->objectName().contains( "vBoxLayoutAudioDevice-" + indexNumber ) ) {
+            returnVBoxLayout = vBoxLayout;
+        }
+    }
+    return returnVBoxLayout;
+}
+
+
+QProgressBar *QvkWASAPIController::get_removed_ProgressBar( QString indexNumber )
+{
+    QProgressBar *returnProgressBar = NULL;
+    QList<QProgressBar *> list = ui->scrollAreaAudioDevice->findChildren<QProgressBar *>();
+    for ( int i = 0; i < list.count(); i++  ) {
+        QProgressBar *progressBar = list.at(i);
+        if ( progressBar->objectName().contains( "progressBarAudioDevice-" + indexNumber ) ) {
+            returnProgressBar = progressBar;
+        }
+    }
+    return returnProgressBar;
+}
+
+/*
+QvkLevelMeterController *QvkWASAPIController::get_removed_LevelMeterController( QString indexNumber )
+{
+    QvkLevelMeterController *returnLevelMeterController = NULL;
+    QList<QvkLevelMeterController *> list = findChildren<QvkLevelMeterController *>();
+    for ( int i = 0; i < list.count(); i++  ) {
+        QvkLevelMeterController *vkLevelMeterController = list.at(i);
+        if ( vkLevelMeterController->objectName().contains( "progressBarAudioDevice-" + indexNumber ) ) {
+            returnLevelMeterController = vkLevelMeterController;
+        }
+    }
+    return returnLevelMeterController;
+}
+*/
