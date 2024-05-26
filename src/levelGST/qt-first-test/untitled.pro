@@ -16,6 +16,37 @@ HEADERS += \
     mainwindow.h
 
 FORMS += \
-    mainwindow.ui
+    formMainWindow.ui
 
-#
+unix:CONFIG += link_pkgconfig
+unix:PKGCONFIG += gstreamer-1.0
+unix:PKGCONFIG += libpulse
+unix:PKGCONFIG += wayland-client
+unix:LIBS += -lpulse-simple
+unix:LIBS += -lX11
+
+# Player
+unix:PKGCONFIG += gstreamer-video-1.0
+unix:PKGCONFIG += gstreamer-pbutils-1.0
+unix:PKGCONFIG += glib-2.0
+
+win32:contains(QMAKE_HOST.arch, x86_64) {
+message("[vokoscreenNG] Create x86_64 build")
+RC_ICONS = vokoscreenNG.ico
+GStreamerDir=$$(GSTREAMER_1_0_ROOT_MSVC_X86_64)
+INCLUDEPATH += $${GStreamerDir}\include\gstreamer-1.0
+INCLUDEPATH += $${GStreamerDir}\include\glib-2.0
+INCLUDEPATH += $${GStreamerDir}\lib\glib-2.0\include
+INCLUDEPATH += $${GStreamerDir}\include
+LIBS += -L$${GStreamerDir}\bin
+LIBS += -L$${GStreamerDir}\lib\gstreamer-1.0
+LIBS += $${GStreamerDir}\lib\libgstreamer-1.0.dll.a
+LIBS += $${GStreamerDir}\lib\libgstvideo-1.0.dll.a
+LIBS += $${GStreamerDir}\lib\libgstpbutils-1.0.dll.a
+LIBS += $${GStreamerDir}\lib\libglib-2.0.dll.a
+LIBS += $${GStreamerDir}\lib\libgobject-2.0.dll.a
+LIBS += $${GStreamerDir}\lib\libbz2.dll.a
+}
+
+# Volumeter
+include(levelMeter/levelMeter.pri)

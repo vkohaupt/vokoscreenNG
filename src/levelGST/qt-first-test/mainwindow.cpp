@@ -1,14 +1,14 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "ui_formMainWindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
+QvkMainWindow::QvkMainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 }
 
-MainWindow::~MainWindow()
+QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
 }
