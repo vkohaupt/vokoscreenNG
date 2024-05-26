@@ -25,10 +25,8 @@
 
 #include <gst/gst.h>
 
-static gboolean
-message_handler (GstBus * bus, GstMessage * message, gpointer data)
+static gboolean message_handler (GstBus * bus, GstMessage * message, gpointer data)
 {
-
   if (message->type == GST_MESSAGE_ELEMENT) {
     const GstStructure *s = gst_message_get_structure (message);
     const gchar *name = gst_structure_get_name (s);
@@ -86,8 +84,7 @@ message_handler (GstBus * bus, GstMessage * message, gpointer data)
   return TRUE;
 }
 
-int
-main (int argc, char *argv[])
+int main (int argc, char *argv[])
 {
   GstElement *audiotestsrc, *audioconvert, *level, *fakesink;
   GstElement *pipeline;
