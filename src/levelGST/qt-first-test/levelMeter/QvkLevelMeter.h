@@ -32,6 +32,7 @@ class QvkLevelMeter : public QObject
 public:
     QvkLevelMeter();
     ~QvkLevelMeter();
+    void start( QString device );
 
 
 public slots:

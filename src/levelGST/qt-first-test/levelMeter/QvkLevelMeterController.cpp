@@ -21,6 +21,7 @@
  */
 
 #include "QvkLevelMeterController.h"
+#include "QvkLevelMeter.h"
 
 #include <QCheckBox>
 #include <QProgressBar>
@@ -37,7 +38,18 @@ QvkLevelMeterController::~QvkLevelMeterController()
 
 void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QVBoxLayout *layout )
 {
-
+    QString device = checkBox->accessibleName().section( ":::", 0, 0);
+    if ( checkBox->accessibleName().section( ":::", 0, 0 ) == "alsa_input.usb-046d_0809_A6307261-02.mono-fallback" ) {
+        setObjectName( "progressBarAudioDevice-" + checkBox->objectName().right(2) );
+        setFixedHeight(4);
+        setTextVisible(false);
+        setMinimum(0);
+        setMaximum(10000);
+        setToolTip(checkBox->text());
+        layout->addWidget( this );
+        QvkLevelMeter *vkLevelMeter = new QvkLevelMeter;
+        vkLevelMeter->start( device );
+    }
 }
 
 
