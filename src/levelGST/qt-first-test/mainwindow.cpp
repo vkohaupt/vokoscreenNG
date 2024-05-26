@@ -3,7 +3,7 @@
 
 QvkMainWindow::QvkMainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    , ui(new Ui::formMainWindow)
 {
     ui->setupUi(this);
 }

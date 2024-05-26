@@ -10,10 +10,12 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    global.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    global.h
 
 FORMS += \
     formMainWindow.ui
@@ -47,6 +49,9 @@ LIBS += $${GStreamerDir}\lib\libglib-2.0.dll.a
 LIBS += $${GStreamerDir}\lib\libgobject-2.0.dll.a
 LIBS += $${GStreamerDir}\lib\libbz2.dll.a
 }
+
+# audio linux
+unix:include(audio/linux/audioLinux.pri)
 
 # Volumeter
 include(levelMeter/levelMeter.pri)

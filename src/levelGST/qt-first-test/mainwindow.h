@@ -3,8 +3,10 @@
 
 #include <QMainWindow>
 
+#include "ui_formMainWindow.h"
+
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui { class QvkMainWindow; }
 QT_END_NAMESPACE
 
 class QvkMainWindow : public QMainWindow
@@ -16,7 +18,7 @@ public:
     ~QvkMainWindow();
 
 private:
-    Ui::MainWindow *ui;
-
+//    Ui::QvkMainWindow *ui;
+    Ui::formMainWindow *ui;
 };
 #endif // MAINWINDOW_H
