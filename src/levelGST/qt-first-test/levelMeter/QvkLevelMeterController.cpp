@@ -27,6 +27,7 @@
 #include <QCheckBox>
 #include <QProgressBar>
 #include <QLineEdit>
+#include <QVBoxLayout>
 
 QvkLevelMeterController::QvkLevelMeterController()
 {
@@ -64,6 +65,7 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QVBoxLayout 
         global::lineEdit_03 = new QLineEdit;
         global::lineEdit_03->setObjectName( "lineEdit_" + index );
         connect( global::lineEdit_03, SIGNAL( textChanged(QString) ), this, SLOT( slot_textChanged_03(QString) ) );
+        connect( global::lineEdit_03, SIGNAL( textChanged(QString) ), this, SLOT( update() ) );
     }
 
     setObjectName( "progressBarAudioDevice-" + checkBox->objectName().right(2) );
@@ -86,13 +88,22 @@ void QvkLevelMeterController::remove_ProgressBar()
 }
 
 
-
-void QvkLevelMeterController::slot_textChanged_01(QString string)
+void QvkLevelMeterController::slot_textChanged_00( QString string )
 {
-    setValue( string.toDouble() * 10000 );
+    setValue( string.toDouble() * 1000 );
 }
 
-void QvkLevelMeterController::slot_textChanged_02(QString string)
+void QvkLevelMeterController::slot_textChanged_01( QString string )
 {
-    setValue( string.toDouble() * 10000 );
+    setValue( string.toDouble() * 1000 );
+}
+
+void QvkLevelMeterController::slot_textChanged_02( QString string )
+{
+    setValue( string.toDouble() * 1000 );
+}
+
+void QvkLevelMeterController::slot_textChanged_03( QString string )
+{
+    setValue( string.toDouble() * 1000 );
 }

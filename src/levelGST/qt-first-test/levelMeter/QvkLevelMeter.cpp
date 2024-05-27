@@ -45,7 +45,6 @@ QvkLevelMeter::~QvkLevelMeter()
 static gboolean message_handler (GstBus * bus, GstMessage * message, gpointer data)
 {
     Q_UNUSED(bus)
-    Q_UNUSED(data)
 
     if (message->type == GST_MESSAGE_ELEMENT) {
         const GstStructure *s = gst_message_get_structure (message);
@@ -54,11 +53,11 @@ static gboolean message_handler (GstBus * bus, GstMessage * message, gpointer da
         if (strcmp (name, "level") == 0) {
             gint channels;
             GstClockTime endtime;
-            gdouble rms_dB; // peak_dB, decay_dB;
+            gdouble rms_dB;
             gdouble rms;
             const GValue *array_val;
             const GValue *value;
-            GValueArray *rms_arr;//, *peak_arr, *decay_arr;
+            GValueArray *rms_arr;
 
             if (!gst_structure_get_clock_time (s, "endtime", &endtime)) {
                 g_warning ("Could not parse endtime");
@@ -67,36 +66,19 @@ static gboolean message_handler (GstBus * bus, GstMessage * message, gpointer da
             // the values are packed into GValueArrays with the value per channel
             array_val = gst_structure_get_value (s, "rms");
             rms_arr = (GValueArray *) g_value_get_boxed (array_val);
-/*
-            array_val = gst_structure_get_value (s, "peak");
-            peak_arr = (GValueArray *) g_value_get_boxed (array_val);
 
-            array_val = gst_structure_get_value (s, "decay");
-            decay_arr = (GValueArray *) g_value_get_boxed (array_val);
-*/
             // we can get the number of channels as the length of any of the value arrays
             channels = rms_arr->n_values;
-            //g_print ("endtime: %" GST_TIME_FORMAT ", channels: %d\n", GST_TIME_ARGS (endtime), channels);
+
             for (gint i = 0; i < channels; ++i) {
 
-                //g_print ("channel %d\n", i);
                 value = g_value_array_get_nth (rms_arr, i);
                 rms_dB = g_value_get_double (value);
-/*
-                value = g_value_array_get_nth (peak_arr, i);
-                peak_dB = g_value_get_double (value);
 
-                value = g_value_array_get_nth (decay_arr, i);
-                decay_dB = g_value_get_double (value);
-                g_print ("    RMS: %f dB, peak: %f dB, decay: %f dB\n",
-                         rms_dB, peak_dB, decay_dB);
-*/
                 // converting from dB to normal gives us a value between 0.0 and 1.0
                 rms = pow (10, rms_dB / 20);
 
                 qint64 index = (qint64)data;
-                //g_print ("%i    normalized rms value: %f\n", index, rms);
-
                 if ( index == 0 ) {
                     global::lineEdit_00->setText( QString::number(rms) );
                 }
@@ -110,11 +92,9 @@ static gboolean message_handler (GstBus * bus, GstMessage * message, gpointer da
                     global::lineEdit_03->setText( QString::number(rms) );
                 }
             }
-            //g_print( "\n" );
         }
     }
-    // We handled the message we want, and ignored the ones we didn't want.
-    // So the core can unref the message for us.
+
     return TRUE;
 }
 

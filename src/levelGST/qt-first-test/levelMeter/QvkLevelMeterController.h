@@ -46,14 +46,15 @@ public:
 private:
     QvkMainWindow *vkMainWindow;
     Ui_formMainWindow *ui;
-//    static gboolean message_handler(GstBus *bus, GstMessage *message, gpointer data );
 
 public slots:
 
 
 private slots:
+    void slot_textChanged_00(QString string);
     void slot_textChanged_01(QString string);
     void slot_textChanged_02(QString string);
+    void slot_textChanged_03(QString string);
 
 
 protected:
