@@ -53,6 +53,8 @@ public slots:
 
 
 private slots:
+    void slot_textChanged_01(QString string);
+    void slot_textChanged_02(QString string);
 
 
 protected:

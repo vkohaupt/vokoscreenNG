@@ -21,10 +21,12 @@
  */
 
 #include "QvkLevelMeter.h"
+#include "global.h"
 
 #include <QDebug>
 #include <string.h>
 #include <math.h>
+
 
 #define GLIB_DISABLE_DEPRECATION_WARNINGS
 
@@ -91,9 +93,24 @@ static gboolean message_handler (GstBus * bus, GstMessage * message, gpointer da
 */
                 // converting from dB to normal gives us a value between 0.0 and 1.0
                 rms = pow (10, rms_dB / 20);
-                g_print ("%i    normalized rms value: %f\n", data, rms);
+
+                qint64 index = (qint64)data;
+                //g_print ("%i    normalized rms value: %f\n", index, rms);
+
+                if ( index == 0 ) {
+                    global::lineEdit_00->setText( QString::number(rms) );
+                }
+                if ( index == 1 ) {
+                    global::lineEdit_01->setText( QString::number(rms) );
+                }
+                if ( index == 2 ) {
+                    global::lineEdit_02->setText( QString::number(rms) );
+                }
+                if ( index == 3 ) {
+                    global::lineEdit_03->setText( QString::number(rms) );
+                }
             }
-            g_print( "\n" );
+            //g_print( "\n" );
         }
     }
     // We handled the message we want, and ignored the ones we didn't want.
@@ -141,10 +158,7 @@ void QvkLevelMeter::start( QString device, QString index )
 
     bus = gst_element_get_bus (pipeline);
 
-    //gpointer msg;
-    //msg = QString( index );
-
-    int msg = index.toInt();
+    gint64 msg = index.toInt();
     gst_bus_set_sync_handler( bus, (GstBusSyncHandler)message_handler, (gpointer)msg, NULL );
 
     gst_element_set_state (pipeline, GST_STATE_PLAYING);
