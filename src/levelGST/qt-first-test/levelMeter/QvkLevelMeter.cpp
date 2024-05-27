@@ -57,7 +57,6 @@ static gboolean message_handler (GstBus * bus, GstMessage * message, gpointer da
             const GValue *array_val;
             const GValue *value;
             GValueArray *rms_arr;//, *peak_arr, *decay_arr;
-            gint i;
 
             if (!gst_structure_get_clock_time (s, "endtime", &endtime)) {
                 g_warning ("Could not parse endtime");
@@ -76,7 +75,7 @@ static gboolean message_handler (GstBus * bus, GstMessage * message, gpointer da
             // we can get the number of channels as the length of any of the value arrays
             channels = rms_arr->n_values;
             //g_print ("endtime: %" GST_TIME_FORMAT ", channels: %d\n", GST_TIME_ARGS (endtime), channels);
-            for (i = 0; i < channels; ++i) {
+            for (gint i = 0; i < channels; ++i) {
 
                 //g_print ("channel %d\n", i);
                 value = g_value_array_get_nth (rms_arr, i);
@@ -92,8 +91,9 @@ static gboolean message_handler (GstBus * bus, GstMessage * message, gpointer da
 */
                 // converting from dB to normal gives us a value between 0.0 and 1.0
                 rms = pow (10, rms_dB / 20);
-                g_print ("    normalized rms value: %f\n", rms);
+                g_print ("%i    normalized rms value: %f\n", data, rms);
             }
+            g_print( "\n" );
         }
     }
     // We handled the message we want, and ignored the ones we didn't want.
@@ -101,7 +101,7 @@ static gboolean message_handler (GstBus * bus, GstMessage * message, gpointer da
     return TRUE;
 }
 
-void QvkLevelMeter::start( QString device )
+void QvkLevelMeter::start( QString device, QString index )
 {
     GstElement *audiotestsrc, *audioconvert, *level, *fakesink;
     GstElement *pipeline;
@@ -140,7 +140,12 @@ void QvkLevelMeter::start( QString device )
     g_object_set (G_OBJECT (fakesink), "sync", TRUE, NULL);
 
     bus = gst_element_get_bus (pipeline);
-    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)message_handler, this, NULL ); // neu
+
+    //gpointer msg;
+    //msg = QString( index );
+
+    int msg = index.toInt();
+    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)message_handler, (gpointer)msg, NULL );
 
     gst_element_set_state (pipeline, GST_STATE_PLAYING);
 }
