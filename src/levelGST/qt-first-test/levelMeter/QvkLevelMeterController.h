@@ -31,7 +31,6 @@
 #include "ui_formMainWindow.h"  // contains the GUI
 #include "mainwindow.h"         // contains the class QvkMainWindow
 #include "QvkLevelMeter.h"
-#include "QvkLevelMeterController.h"
 
 class QvkLevelMeterController : public QProgressBar
 {
