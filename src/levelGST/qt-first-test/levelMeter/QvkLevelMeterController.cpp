@@ -68,18 +68,20 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QVBoxLayout 
         connect( global::lineEdit_03, SIGNAL( textChanged(QString) ), this, SLOT( update() ) );
     }
 
-    setObjectName( "progressBarAudioDevice-" + checkBox->objectName().right(2) );
-    setFixedHeight(4);
-    setTextVisible(false);
-    setMinimum(0);
-    setMaximum(1000);
-    setToolTip(checkBox->text());
+    if ( index <= "07" ) {
+        setObjectName( "progressBarAudioDevice-" + checkBox->objectName().right(2) );
+        setFixedHeight(4);
+        setTextVisible(false);
+        setMinimum(0);
+        setMaximum(1000);
+        setToolTip(checkBox->text());
 
-    layout->addWidget( this );
+        layout->addWidget( this );
 
-    QvkLevelMeter *vkLevelMeter = new QvkLevelMeter;
-    QString device = checkBox->accessibleName().section( ":::", 0, 0);
-    vkLevelMeter->start( device, index );
+        QvkLevelMeter *vkLevelMeter = new QvkLevelMeter;
+        QString device = checkBox->accessibleName().section( ":::", 0, 0);
+        vkLevelMeter->start( device, index );
+    }
 }
 
 
