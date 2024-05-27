@@ -46,6 +46,7 @@ public:
 private:
     QvkMainWindow *vkMainWindow;
     Ui_formMainWindow *ui;
+    int maxSteps;
 
 public slots:
 

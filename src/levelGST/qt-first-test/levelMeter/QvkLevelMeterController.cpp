@@ -31,6 +31,7 @@
 
 QvkLevelMeterController::QvkLevelMeterController()
 {
+    maxSteps = 1000;
 }
 
 
@@ -73,7 +74,7 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QVBoxLayout 
         setFixedHeight(4);
         setTextVisible(false);
         setMinimum(0);
-        setMaximum(1000);
+        setMaximum(maxSteps);
         setToolTip(checkBox->text());
 
         layout->addWidget( this );
@@ -92,20 +93,20 @@ void QvkLevelMeterController::remove_ProgressBar()
 
 void QvkLevelMeterController::slot_textChanged_00( QString string )
 {
-    setValue( string.toDouble() * 1000 );
+    setValue( string.toDouble() * maxSteps );
 }
 
 void QvkLevelMeterController::slot_textChanged_01( QString string )
 {
-    setValue( string.toDouble() * 1000 );
+    setValue( string.toDouble() * maxSteps );
 }
 
 void QvkLevelMeterController::slot_textChanged_02( QString string )
 {
-    setValue( string.toDouble() * 1000 );
+    setValue( string.toDouble() * maxSteps );
 }
 
 void QvkLevelMeterController::slot_textChanged_03( QString string )
 {
-    setValue( string.toDouble() * 1000 );
+    setValue( string.toDouble() * maxSteps );
 }
