@@ -49,7 +49,13 @@ void QvkAudioController::init()
 {
     connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
     connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
+
+    global::listChildren = new QList<QLineEdit*>();
+
+
     getAllDevices();
+
+
 }
 
 // systemctl --user stop pipewire.socket
@@ -99,6 +105,9 @@ void QvkAudioController::getAllDevices()
 
                 QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
                 vkLevelMeterController->add_ProgressBar( checkBox, hBoxLayout );
+
+
+
 
             }
             qDebug().noquote();

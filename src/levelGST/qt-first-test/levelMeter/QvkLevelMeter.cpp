@@ -24,12 +24,12 @@
 #include "global.h"
 
 #include <QDebug>
+#include <QLineEdit>
+
 #include <string.h>
 #include <math.h>
 
-
 #define GLIB_DISABLE_DEPRECATION_WARNINGS
-
 #include <gst/gst.h>
 
 
@@ -73,18 +73,8 @@ static gboolean message_handler( GstBus * bus, GstMessage * message, gpointer da
                 rms = pow( 10, rms_dB / 20 );
 
                 qint64 index = (qint64)data;
-                if ( index == 0 ) {
-                    global::lineEdit_00->setText( QString::number(rms) );
-                }
-                if ( index == 1 ) {
-                    global::lineEdit_01->setText( QString::number(rms) );
-                }
-                if ( index == 2 ) {
-                    global::lineEdit_02->setText( QString::number(rms) );
-                }
-                if ( index == 3 ) {
-                    global::lineEdit_03->setText( QString::number(rms) );
-                }
+                QLineEdit *lineEdit = global::listChildren->at(index);
+                lineEdit->setText( QString::number(rms) );
             }
         }
     }

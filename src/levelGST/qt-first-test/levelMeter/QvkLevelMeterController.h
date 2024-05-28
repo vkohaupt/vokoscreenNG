@@ -27,6 +27,7 @@
 #include <QCheckBox>
 #include <QProgressBar>
 #include <QVBoxLayout>
+#include <QList>
 
 #include "ui_formMainWindow.h"  // contains the GUI
 #include "mainwindow.h"         // contains the class QvkMainWindow
@@ -48,14 +49,12 @@ private:
     Ui_formMainWindow *ui;
     int maxSteps;
 
+
 public slots:
 
 
 private slots:
-    void slot_textChanged_00(QString string);
-    void slot_textChanged_01(QString string);
-    void slot_textChanged_02(QString string);
-    void slot_textChanged_03(QString string);
+    void slot_textChanged( QString string );
 
 
 protected:

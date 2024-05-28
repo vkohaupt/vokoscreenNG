@@ -43,46 +43,26 @@ QvkLevelMeterController::~QvkLevelMeterController()
 void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QVBoxLayout *layout )
 {
     QString index = checkBox->objectName().right(2);
-    if ( index == "00" ) {
-        global::lineEdit_00 = new QLineEdit;
-        global::lineEdit_00->setObjectName( "lineEdit_" + index );
-        connect( global::lineEdit_00, SIGNAL( textChanged(QString) ), this, SLOT( slot_textChanged_00(QString) ) );
-        connect( global::lineEdit_00, SIGNAL( textChanged(QString) ), this, SLOT( update() ) );
-    }
-    if ( index == "01" ) {
-        global::lineEdit_01 = new QLineEdit;
-        global::lineEdit_01->setObjectName( "lineEdit_" + index );
-        connect( global::lineEdit_01, SIGNAL( textChanged(QString) ), this, SLOT( slot_textChanged_01(QString) ) );
-        connect( global::lineEdit_01, SIGNAL( textChanged(QString) ), this, SLOT( update() ) );
-    }
-    if ( index == "02" ) {
-        global::lineEdit_02 = new QLineEdit;
-        global::lineEdit_02->setObjectName( "lineEdit_" + index );
-        connect( global::lineEdit_02, SIGNAL( textChanged(QString) ), this, SLOT( slot_textChanged_02(QString) ) );
-        connect( global::lineEdit_02, SIGNAL( textChanged(QString) ), this, SLOT( update() ) );
 
-    }
-    if ( index == "03" ) {
-        global::lineEdit_03 = new QLineEdit;
-        global::lineEdit_03->setObjectName( "lineEdit_" + index );
-        connect( global::lineEdit_03, SIGNAL( textChanged(QString) ), this, SLOT( slot_textChanged_03(QString) ) );
-        connect( global::lineEdit_03, SIGNAL( textChanged(QString) ), this, SLOT( update() ) );
-    }
+    QLineEdit *lineEdit = new QLineEdit();
+    lineEdit->setObjectName( "lineEditLevelMeter_" + index );
+    global::listChildren->append( lineEdit );
 
-    if ( index <= "07" ) {
-        setObjectName( "progressBarAudioDevice-" + checkBox->objectName().right(2) );
-        setFixedHeight(4);
-        setTextVisible(false);
-        setMinimum(0);
-        setMaximum(maxSteps);
-        setToolTip(checkBox->text());
+    connect( lineEdit, SIGNAL( textChanged(QString) ), this, SLOT( slot_textChanged(QString) ) );
+    connect( lineEdit, SIGNAL( textChanged(QString) ), this, SLOT( update() ) );
 
-        layout->addWidget( this );
+    setObjectName( "progressBarAudioDevice-" + checkBox->objectName().right(2) );
+    setFixedHeight(4);
+    setTextVisible(false);
+    setMinimum(0);
+    setMaximum(maxSteps);
+    setToolTip(checkBox->text());
 
-        QvkLevelMeter *vkLevelMeter = new QvkLevelMeter;
-        QString device = checkBox->accessibleName().section( ":::", 0, 0);
-        vkLevelMeter->start( device, index );
-    }
+    layout->addWidget( this );
+
+    QvkLevelMeter *vkLevelMeter = new QvkLevelMeter;
+    QString device = checkBox->accessibleName().section( ":::", 0, 0);
+    vkLevelMeter->start( device, index );
 }
 
 
@@ -90,23 +70,7 @@ void QvkLevelMeterController::remove_ProgressBar()
 {
 }
 
-
-void QvkLevelMeterController::slot_textChanged_00( QString string )
-{
-    setValue( string.toDouble() * maxSteps );
-}
-
-void QvkLevelMeterController::slot_textChanged_01( QString string )
-{
-    setValue( string.toDouble() * maxSteps );
-}
-
-void QvkLevelMeterController::slot_textChanged_02( QString string )
-{
-    setValue( string.toDouble() * maxSteps );
-}
-
-void QvkLevelMeterController::slot_textChanged_03( QString string )
+void QvkLevelMeterController::slot_textChanged( QString string )
 {
     setValue( string.toDouble() * maxSteps );
 }

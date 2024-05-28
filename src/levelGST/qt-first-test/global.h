@@ -33,9 +33,15 @@ namespace global
     extern bool testWASAPI;
     extern QTextBrowser *textBrowserLog;
     extern QLineEdit *lineEditWASAPIWatcher;
-
+/*
     extern QLineEdit *lineEdit_00;
     extern QLineEdit *lineEdit_01;
     extern QLineEdit *lineEdit_02;
     extern QLineEdit *lineEdit_03;
+
+    extern QLineEdit *lineEdit_test;
+*/
+
+    extern QList<QLineEdit*> *listChildren;
+
 }
