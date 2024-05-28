@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QVKVOLUMETERCONTROLLER_H
-#define QVKVOLUMETERCONTROLLER_H
+#ifndef QVKLEVELMETERCONTROLLER_H
+#define QVKLEVELMETERCONTROLLER_H
 
 #include <QObject>
 #include <QCheckBox>
