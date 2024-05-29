@@ -716,6 +716,10 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
     qDebug();
     qDebug().noquote() << global::nameOutput << "QvkMainWindow::closeEvent Begin close";
 
+#ifdef Q_OS_UNIX
+//    vkAudioController->vkLevelMeterController->vkLevelMeter->stop();
+#endif
+
 #ifdef Q_OS_WIN
     if ( vkCiscoOpenh264Controller->isShowCiscoFinishDialog == false )
     {

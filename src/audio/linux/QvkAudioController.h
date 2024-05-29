@@ -27,6 +27,8 @@
 
 #include "ui_formMainWindow.h"
 
+#include "QvkLevelMeterController.h"
+
 class QvkAudioController: public QObject
 {
     Q_OBJECT
@@ -35,7 +37,7 @@ public:
     QvkAudioController( Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkAudioController();
     void init();
-
+    QvkLevelMeterController *vkLevelMeterController;
 
 public slots:
 

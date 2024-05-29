@@ -32,12 +32,12 @@
 #include "QvkPulseAudioServer.h"
 #include "QvkPulseAudioDevices.h"
 #include "global.h"
-#include "QvkLevelMeterController.h"
 
 QvkAudioController::QvkAudioController( Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
     ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
+    global::listChildren = new QList<QLineEdit*>();
 }
 
 
@@ -98,7 +98,7 @@ void QvkAudioController::getAllDevices()
 
                 qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( list.at(i) ).section( ":::", 1, 1 ) << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 );
 
-                QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
+                vkLevelMeterController = new QvkLevelMeterController;
                 vkLevelMeterController->add_ProgressBar( checkBox, hBoxLayout );
 
             }

@@ -216,6 +216,3 @@ include(padsAndCaps/padsAndCaps.pri)
 
 # Container
 include(container/container.pri)
-
-# Volumeter
-include(levelMeter/levelMeter.pri)

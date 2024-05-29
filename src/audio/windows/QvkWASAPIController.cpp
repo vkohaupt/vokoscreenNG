@@ -118,7 +118,6 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
                 }
             }
             qDebug().noquote() << global::nameOutput << "Index in List" << indexStringList << "Count befor add:" << listVBoxLayout.count() << "New index:" << indexNumber ;
-
         }
 
         // Neues layout für CheckBox und ProgressBar
