@@ -27,10 +27,7 @@
 #include <QCheckBox>
 #include <QProgressBar>
 #include <QVBoxLayout>
-#include <QList>
 
-#include "ui_formMainWindow.h"  // contains the GUI
-#include "mainwindow.h"         // contains the class QvkMainWindow
 #include "QvkLevelMeter.h"
 
 class QvkLevelMeterController : public QProgressBar
@@ -45,8 +42,6 @@ public:
 
 
 private:
-    QvkMainWindow *vkMainWindow;
-    Ui_formMainWindow *ui;
     int maxSteps;
 
 

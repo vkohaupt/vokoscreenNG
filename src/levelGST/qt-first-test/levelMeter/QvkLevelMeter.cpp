@@ -75,6 +75,7 @@ static gboolean message_handler( GstBus * bus, GstMessage * message, gpointer da
                 qint64 index = (qint64)data;
                 QLineEdit *lineEdit = global::listChildren->at(index);
                 lineEdit->setText( QString::number(rms) );
+                qDebug() << lineEdit->objectName();
             }
         }
     }

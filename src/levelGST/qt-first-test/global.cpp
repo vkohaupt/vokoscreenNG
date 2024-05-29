@@ -34,14 +34,5 @@ namespace global
     QTextBrowser *textBrowserLog;
     bool testWASAPI = false;
     QLineEdit *lineEditWASAPIWatcher;
-/*
-    QLineEdit *lineEdit_00;
-    QLineEdit *lineEdit_01;
-    QLineEdit *lineEdit_02;
-    QLineEdit *lineEdit_03;
-
-    QLineEdit *lineEdit_test;
-*/
     QList<QLineEdit*> *listChildren;
-
 }

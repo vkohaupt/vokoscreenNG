@@ -68,6 +68,7 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QVBoxLayout 
 
 void QvkLevelMeterController::remove_ProgressBar()
 {
+
 }
 
 void QvkLevelMeterController::slot_textChanged( QString string )
