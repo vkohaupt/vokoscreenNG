@@ -28,7 +28,6 @@
 #include <QDebug>
 #include <QCheckBox>
 #include <QLabel>
-#include <QSpacerItem>
 #include <QPainter>
 #include <QProgressBar>
 #include "QvkLevelMeterController.h"
@@ -63,7 +62,8 @@ void QvkPulseAudioWatcher::start_monitor()
 void QvkPulseAudioWatcher::slot_update()
 {
     timer->stop();
-    ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft );
+
+    ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
 
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
     QStringList list = QvkPulseAudioDevices::getAllDevices();
@@ -87,17 +87,6 @@ void QvkPulseAudioWatcher::slot_update()
     // Add new Device
     QList<QVBoxLayout *> listVBoxLayout = ui->verticalLayoutAudioDevices->findChildren<QVBoxLayout *>();
     if ( list.count() > listVBoxLayout.count() ) {
-
-        // Remove SpacerItem
-        for (int i = 0; i < ui->verticalLayoutAudioDevices->count(); ++i) {
-            QLayoutItem *layoutItem = ui->verticalLayoutAudioDevices->itemAt(i);
-            if ( layoutItem->spacerItem() ) {
-                ui->verticalLayoutAudioDevices->removeItem( layoutItem );
-                delete layoutItem;
-                --i;
-            }
-        }
-
         for ( int i = 0; i < stringListAudio_Device.count(); i++ ) {
             if ( stringListCheckBox.contains( stringListAudio_Device.at(i) ) == false ) {
                 QString name = list.at(i).section( ":::", 1, 1 );
@@ -140,9 +129,6 @@ void QvkPulseAudioWatcher::slot_update()
             }
         }
 
-        QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
-        ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
-
         slot_audioDeviceSelected();
     }
 
@@ -180,16 +166,6 @@ void QvkPulseAudioWatcher::slot_update()
     }
 
     if ( list.empty() and ( QvkPulseAudioServer::isAvailable() == false ) ) {
-        // Remove SpacerItem
-        for (int i = 0; i < ui->verticalLayoutAudioDevices->count(); ++i) {
-            QLayoutItem *layoutItem = ui->verticalLayoutAudioDevices->itemAt(i);
-            if ( layoutItem->spacerItem() ) {
-                ui->verticalLayoutAudioDevices->removeItem( layoutItem );
-                delete layoutItem;
-                --i;
-            }
-        }
-
         QList<QLabel *> deleteLabel = ui->verticalLayoutAudioDevices->findChildren<QLabel *>();
         for ( int x = 0; x < deleteLabel.count(); x ++ ) {
             delete deleteLabel.at(x);
@@ -210,16 +186,6 @@ void QvkPulseAudioWatcher::slot_update()
     }
 
     if ( list.empty() and ( QvkPulseAudioServer::isAvailable() == true ) ) {
-        // Remove SpacerItem
-        for (int i = 0; i < ui->verticalLayoutAudioDevices->count(); ++i) {
-            QLayoutItem *layoutItem = ui->verticalLayoutAudioDevices->itemAt(i);
-            if ( layoutItem->spacerItem() ) {
-                ui->verticalLayoutAudioDevices->removeItem( layoutItem );
-                delete layoutItem;
-                --i;
-            }
-        }
-
         QList<QLabel *> deleteLabel = ui->verticalLayoutAudioDevices->findChildren<QLabel *>();
         for ( int x = 0; x < deleteLabel.count(); x ++ ) {
             delete deleteLabel.at(x);

@@ -37,6 +37,7 @@
 QvkAudioController::QvkAudioController( Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
+    ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
 }
 
 
@@ -103,9 +104,6 @@ void QvkAudioController::getAllDevices()
             }
             qDebug().noquote();
 
-            QSpacerItem *verticalSpacerAudioDevices = new QSpacerItem( 20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding );
-            ui->verticalLayoutAudioDevices->addSpacerItem( verticalSpacerAudioDevices );
-
             QvkPulseAudioWatcher *vkPulseAudioWatcher = new QvkPulseAudioWatcher( ui );
             vkPulseAudioWatcher->start_monitor();
         } else {
@@ -122,6 +120,7 @@ void QvkAudioController::getAllDevices()
 
             QvkPulseAudioWatcher *vkPulseAudioWatcher = new QvkPulseAudioWatcher( ui );
             vkPulseAudioWatcher->start_monitor();
+            ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
         }
     } else {
         QLabel *label = new QLabel();
