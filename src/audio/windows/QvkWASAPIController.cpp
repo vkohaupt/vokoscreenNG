@@ -39,6 +39,7 @@
 QvkWASAPIController::QvkWASAPIController( Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
+    ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
     global::lineEditWASAPIWatcher = new QLineEdit;
     connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->labelAudioCodec,    SLOT( setEnabled(bool) ) );
     connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->comboBoxAudioCodec, SLOT( setEnabled(bool) ) );
@@ -144,9 +145,7 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
 
         QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
         vkLevelMeterController->add_ProgressBar( checkBox, vBoxLayout );
-
         ui->verticalLayoutAudioDevices->addLayout( vBoxLayout );
-        ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
 
         qDebug().noquote() << global::nameOutput << "[Audio-device-added]" << name << device;
     }
