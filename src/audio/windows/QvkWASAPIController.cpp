@@ -39,6 +39,9 @@
 QvkWASAPIController::QvkWASAPIController( Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
+
+    global::listChildren = new QList<QLineEdit*>();
+
     ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
     global::lineEditWASAPIWatcher = new QLineEdit;
     connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->labelAudioCodec,    SLOT( setEnabled(bool) ) );
@@ -89,9 +92,6 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
         return;
     }
 
-    // Hier routine wenn Gerät schon vorhanden dann return;
-    // Evtl. nicht nötig wenn zuvor der levelmeter gestoppt wurde
-
     if ( action == "[Audio-device-added]" ) {
 
         // Freier Index(xx) 00, 01, 02, xx, 04, 05 usw. ermitteln und diesen Index dem neuen Layout, CheckBox und ProgressBar hinzufügen
@@ -141,11 +141,9 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
             checkBox->setIconSize( QSize( 16, 16 ) );
             checkBox->setIcon( QIcon( ":/pictures/screencast/microphone.png" ) );
         }
-
         QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
         vkLevelMeterController->add_ProgressBar( checkBox, vBoxLayout );
         ui->verticalLayoutAudioDevices->addLayout( vBoxLayout );
-
         qDebug().noquote() << global::nameOutput << "[Audio-device-added]" << name << device;
     }
 
@@ -160,45 +158,16 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
             QvkLevelMeterController *vkLevelMeterController = listProgressBar.at(i);
             if ( vkLevelMeterController->objectName().right(2) == indexNumber ) {
                 qDebug().noquote() << global::nameOutput << "[Audio-device-removed]" << name << device;
-                vkLevelMeterController->remove_ProgressBar();
+                vkLevelMeterController->remove_ProgressBar( checkBox );
                 vkLevelMeterController->deleteLater();
             }
         }
 
-//        checkBox->deleteLater();
         delete checkBox;
         ui->verticalLayoutAudioDevices->removeItem( vBoxLayout );
         vBoxLayout->deleteLater();
     }
 }
-
-/*
-        QList<QCheckBox *> listAudioDevices = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-        for ( int i = 0; i < listAudioDevices.count(); i++ ) {
-            QCheckBox *checkBox = listAudioDevices.at(i);
-            if ( checkBox->accessibleName().section( ":::", 0, 0 ) == device ) {
-                delete checkBox;
-                listAudioDevices.removeAt(i);
-                qDebug().noquote() << global::nameOutput << "[Audio-device-removed]" << name << device;
-            }
-        }
-        slot_audioDeviceSelected();
-
-        if ( listAudioDevices.empty() ) {
-            QLabel *label = new QLabel();
-            label->setText( "WASAPI\n" );
-            label->setAlignment( Qt::AlignCenter );
-            ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter );
-            ui->verticalLayoutAudioDevices->addWidget( label );
-
-            QLabel *labelText = new QLabel();
-            labelText->setText( "No device found for audio recording." );
-            ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter );
-            ui->verticalLayoutAudioDevices->addWidget( labelText );
-        }
-    }
-*/
-
 
 
 // Die CheckBox beinhaltet das Gerät das in der GUI entfernt werden soll.
@@ -260,17 +229,3 @@ QProgressBar *QvkWASAPIController::get_removed_ProgressBar( QString indexNumber 
     return returnProgressBar;
 }
 
-/*
-QvkLevelMeterController *QvkWASAPIController::get_removed_LevelMeterController( QString indexNumber )
-{
-    QvkLevelMeterController *returnLevelMeterController = NULL;
-    QList<QvkLevelMeterController *> list = findChildren<QvkLevelMeterController *>();
-    for ( int i = 0; i < list.count(); i++  ) {
-        QvkLevelMeterController *vkLevelMeterController = list.at(i);
-        if ( vkLevelMeterController->objectName().contains( "progressBarAudioDevice-" + indexNumber ) ) {
-            returnLevelMeterController = vkLevelMeterController;
-        }
-    }
-    return returnLevelMeterController;
-}
-*/

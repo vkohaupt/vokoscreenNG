@@ -20,47 +20,36 @@
  * --End_License--
  */
 
-#ifndef QVKVOLUMETERCONTROLLER_H
-#define QVKVOLUMETERCONTROLLER_H
+#ifndef QVKLEVELMETER_H
+#define QVKLEVELMETER_H
 
 #include <QObject>
-#include <QCheckBox>
-#include <QProgressBar>
 
-#include "ui_formMainWindow.h"  // contains the GUI
-#include "mainwindow.h"         // contains the class QvkMainWindow
-#include "QvkLevelMeter.h"
-#include "QvkLevelMeterController.h"
+#include <gst/gst.h>
 
-class QvkLevelMeterController : public QProgressBar
+class QvkLevelMeter : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit QvkLevelMeterController();
-    ~QvkLevelMeterController();
-    void add_ProgressBar( QCheckBox *checkBox, QVBoxLayout *layout );
-    void remove_ProgressBar();
-    InputStart *inputStart;
+    QvkLevelMeter();
+    ~QvkLevelMeter();
+    void start(QString device, QString myname, QString index );
+    void stop();
+
+
+public slots:
 
 
 private:
-    QvkMainWindow *vkMainWindow;
-    Ui_formMainWindow *ui;
-    static gboolean message_handler(GstBus *bus, GstMessage *message, gpointer data );
-
-public slots:
+    GstElement *pipeline;
 
 
 private slots:
 
 
-protected:
-
-
 signals:
-
 
 };
 
-#endif
+#endif // QVKLEVELMETER_H

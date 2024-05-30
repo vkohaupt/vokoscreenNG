@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
- * Copyright (C) 2017-2022 Volker Kohaupt
- * 
+ * Copyright (C) 2017-2024 Volker Kohaupt
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -20,19 +20,44 @@
  * --End_License--
  */
 
-#include "global.h"
-#include <QString>
-#include <QTextBrowser>
-#include <QLineEdit>
+#ifndef QVKLEVELMETERCONTROLLER_H
+#define QVKLEVELMETERCONTROLLER_H
 
-namespace global
+#include <QObject>
+#include <QCheckBox>
+#include <QProgressBar>
+#include <QVBoxLayout>
+
+#include "QvkLevelMeter.h"
+
+class QvkLevelMeterController : public QProgressBar
 {
-    QString version = "4.2.0-beta-01";
-    QString name = "vokoscreenNG";
-    QString nameOutput = "[" + name + "]";
-    int showclickCounter = 0;
-    QTextBrowser *textBrowserLog;
-    bool testWASAPI = false;
-    QLineEdit *lineEditWASAPIWatcher;
-    QList<QLineEdit*> *listChildren;
-}
+    Q_OBJECT
+
+public:
+    explicit QvkLevelMeterController();
+    ~QvkLevelMeterController();
+    void add_ProgressBar( QCheckBox *checkBox, QVBoxLayout *layout );
+    void remove_ProgressBar(QCheckBox *checkBox);
+    QvkLevelMeter *vkLevelMeter;
+
+
+private:
+    int maxSteps;
+
+public slots:
+
+
+private slots:
+    void slot_textChanged( QString string );
+
+
+protected:
+
+
+signals:
+
+
+};
+
+#endif
