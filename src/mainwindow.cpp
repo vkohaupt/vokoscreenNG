@@ -717,7 +717,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
     qDebug().noquote() << global::nameOutput << "QvkMainWindow::closeEvent Begin close";
 
 #ifdef Q_OS_UNIX
-//    vkAudioController->vkLevelMeterController->vkLevelMeter->stop();
+    vkAudioController->vkLevelMeterController->vkLevelMeter->stop();
 #endif
 
 #ifdef Q_OS_WIN
