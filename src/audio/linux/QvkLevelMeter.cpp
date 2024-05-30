@@ -74,7 +74,6 @@ static gboolean message_handler( GstBus * bus, GstMessage * message, gpointer da
                 qint64 index = (qint64)data;
                 QLineEdit *lineEdit = global::listChildren->at(index);
                 lineEdit->setText( QString::number(rms) );
-//                qDebug() << lineEdit->objectName();
             }
         }
     }
@@ -82,7 +81,7 @@ static gboolean message_handler( GstBus * bus, GstMessage * message, gpointer da
     return TRUE;
 }
 
-void QvkLevelMeter::start( QString device, QString index )
+void QvkLevelMeter::start( QString device, QString myname, QString index )
 {
     GstElement *audiotestsrc, *audioconvert, *level, *fakesink;
     GstCaps *caps;
@@ -113,6 +112,9 @@ void QvkLevelMeter::start( QString device, QString index )
     }
 
     g_object_set( G_OBJECT( audiotestsrc ), "device", device.toUtf8().constData(), NULL );
+
+    QString m_name = "[vokoscreenNG] " + myname;
+    g_object_set( G_OBJECT( audiotestsrc ), "client-name", m_name.toUtf8().constData(), NULL );
 
     // make sure we'll get messages
     g_object_set( G_OBJECT( level ), "post-messages", TRUE, NULL );
