@@ -47,6 +47,7 @@
 #include "QvkVirtual.h"
 #include "QvkSnapshot.h"
 #include "QvkPadsAndCaps.h"
+#include <QvkLevelMeterController.h>
 
 #ifdef Q_OS_UNIX
   #include "QvkScreenManager.h"
@@ -717,7 +718,12 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
     qDebug().noquote() << global::nameOutput << "QvkMainWindow::closeEvent Begin close";
 
 #ifdef Q_OS_UNIX
-    vkAudioController->vkLevelMeterController->vkLevelMeter->stop();
+    QList<QvkLevelMeterController *> list = ui->scrollAreaAudioDevice->findChildren<QvkLevelMeterController *>();
+    for ( int i = 0; i < list.count(); i++ ) {
+        QvkLevelMeterController *vkLevelMeterController = list.at(i);
+        vkLevelMeterController->vkLevelMeter->stop();
+        qDebug().noquote() << global::nameOutput << "Stop levelmeter on:" << vkLevelMeterController->objectName();
+    }
 #endif
 
 #ifdef Q_OS_WIN
@@ -776,7 +782,7 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
         }
     }
 
-    qDebug().noquote() << global::nameOutput << "QvkMainWindow::closeEvent Clean closed";
+    qDebug().noquote() << global::nameOutput << "QvkMainWindow::closeEvent End close";
 }
 
 
