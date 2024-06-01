@@ -717,14 +717,14 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
     qDebug();
     qDebug().noquote() << global::nameOutput << "QvkMainWindow::closeEvent Begin close";
 
-#ifdef Q_OS_UNIX
+//#ifdef Q_OS_UNIX
     QList<QvkLevelMeterController *> list = ui->scrollAreaAudioDevice->findChildren<QvkLevelMeterController *>();
     for ( int i = 0; i < list.count(); i++ ) {
         QvkLevelMeterController *vkLevelMeterController = list.at(i);
         vkLevelMeterController->vkLevelMeter->stop();
         qDebug().noquote() << global::nameOutput << "Stop levelmeter on:" << vkLevelMeterController->objectName();
     }
-#endif
+//#endif
 
 #ifdef Q_OS_WIN
     if ( vkCiscoOpenh264Controller->isShowCiscoFinishDialog == false )
