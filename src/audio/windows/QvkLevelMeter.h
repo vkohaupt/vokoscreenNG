@@ -34,7 +34,7 @@ class QvkLevelMeter : public QObject
 public:
     QvkLevelMeter();
     ~QvkLevelMeter();
-    void start(QString device, QString myname, QString index );
+    void start(QString device, QString myname, QString index , QString SourceOrPlayback);
     void stop();
 
 

@@ -80,7 +80,7 @@ static gboolean message_handler( GstBus * bus, GstMessage * message, gpointer da
     return TRUE;
 }
 
-void QvkLevelMeter::start( QString device, QString myname, QString index )
+void QvkLevelMeter::start( QString device, QString myname, QString index, QString SourceOrPlayback )
 {
     GstElement *audiotestsrc, *audioconvert, *level, *fakesink;
     GstCaps *caps;
@@ -111,6 +111,10 @@ void QvkLevelMeter::start( QString device, QString myname, QString index )
     }
 
     g_object_set( G_OBJECT( audiotestsrc ), "device", device.toUtf8().constData(), NULL );
+
+    if ( SourceOrPlayback == "Playback" ) {
+        g_object_set( G_OBJECT( audiotestsrc ), "loopback", true, NULL );
+    }
 
     // make sure we'll get messages
     g_object_set( G_OBJECT( level ), "post-messages", TRUE, NULL );
