@@ -73,13 +73,6 @@
     </message>
 </context>
 <context>
-    <name>QvkDirectSoundController</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
@@ -281,13 +274,6 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>QvkWASAPIController</name>
-    <message>
-        <source>Select one or more devices</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

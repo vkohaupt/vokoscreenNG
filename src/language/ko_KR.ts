@@ -56,11 +56,11 @@
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>창을 닫고 vokoscreenNG를 다시 시작해 주세요.</translation>
+        <translation>이 창을 닫고 vokoscreenNG를 다시 시작해 주세요.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>vovkoscreenNG와 함께 즐겨요</translation>
+        <translation>vovkoscreenNG로 즐겨보세요</translation>
     </message>
 </context>
 <context>
@@ -88,7 +88,7 @@
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>파일 탐색기가 없습니다.</translation>
+        <translation>파일탐색기가 없습니다.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
@@ -99,7 +99,7 @@
     <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>파일 탐색기가 없습니다.</translation>
+        <translation>파일탐색기가 없습니다.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
@@ -138,7 +138,7 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>파일 탐색기가 없습니다.</translation>
+        <translation>파일탐색기가 없습니다.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
@@ -181,7 +181,7 @@
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>파일 탐색기가 없습니다.</translation>
+        <translation>파일탐색기가 없습니다.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
@@ -213,7 +213,7 @@
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>파일 탐색기가 없습니다.</translation>
+        <translation>파일탐색기가 없습니다.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
