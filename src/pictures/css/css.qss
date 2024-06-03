@@ -160,3 +160,7 @@ QPushButton::hover{
     border-radius: 4px;
 }
 
+
+QProgressBar::chunk{
+   background-color: #3daee9;
+}
