@@ -130,6 +130,7 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
         checkBox->setText( name );
         checkBox->setAccessibleName( string );
         checkBox->setObjectName( "checkBoxAudioDevice-" + indexNumber );
+        checkBox->setToolTip( tr ( "Select one or more devices" ) );
 
         vBoxLayout->addWidget( checkBox );
 
