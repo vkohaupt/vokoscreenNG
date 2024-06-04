@@ -851,10 +851,10 @@ void QvkMainWindow::changeEvent( QEvent *event )
     if ( event->type() == QEvent::LanguageChange ) {
         ui->retranslateUi(this);
 
-        ui->labelSourcecodeUrl->setText( "<a href='https://github.com/vkohaupt/vokoscreenNG'>" + tr( "Sourcecode" ) + "</a>" );
-        ui->labelWebSiteUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Homepage" ) + "</a>" );
-        ui->labelLanguageUrl->setText( "<a href='https://app.transifex.com/vkohaupt/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
-        ui->labelDonateUrl->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
+        ui->labelSourcecodeUrl->setText( "<a style=color:#3daee9 href='https://github.com/vkohaupt/vokoscreenNG'>" + tr( "Sourcecode" ) + "</a>" );
+        ui->labelWebSiteUrl->setText( "<a style=color:#3daee9; href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'>" + tr( "Homepage" ) + "</a>" );
+        ui->labelLanguageUrl->setText( "<a style=color:#3daee9; href='https://app.transifex.com/vkohaupt/vokoscreen/'>" + tr( "Translations" ) + "</a>" );
+        ui->labelDonateUrl->setText( "<a style=color:#3daee9; href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html'>" + tr( "Donate" ) + "</a>" );
 
         vkPlayerController->ui->retranslateUi( vkPlayerController );
         vkLicenses->ui->retranslateUi( vkLicenses );
