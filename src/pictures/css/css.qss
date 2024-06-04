@@ -161,6 +161,13 @@ QPushButton::hover{
 }
 
 
+
 QProgressBar::chunk{
    background-color: #3daee9;
+}
+
+
+
+QComboBox {
+    selection-background-color: #3daee9;
 }
