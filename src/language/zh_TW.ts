@@ -71,13 +71,6 @@
     </message>
 </context>
 <context>
-    <name>QvkDirectSoundController</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>選取一個或多個裝置</translation>
-    </message>
-</context>
-<context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
