@@ -1825,26 +1825,12 @@ QString QvkMainWindow::Pipeline_structured_output( QString pipeline )
 void QvkMainWindow::slot_Start()
 {
     if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true  ) {
-        if ( global::testWASAPI == false ) {
-            setWindowState( Qt::WindowMinimized );
-        }
+        setWindowState( Qt::WindowMinimized );
     }
 
-#ifdef Q_OS_WIN
-    if ( global::testWASAPI == true ) {
-        qDebug().noquote() << global::nameOutput << "Ignore SecondWaitBeforeRecording";
-        qDebug().noquote();
-    } else {
-        QThread::msleep( static_cast<unsigned long>( sliderSecondWaitBeforeRecording->value()) * 1000 );
-        qDebug().noquote() << global::nameOutput << "Accept SecondWaitBeforeRecording";
-        qDebug().noquote();
-    }
-#endif
-#ifdef Q_OS_UNIX
     QThread::msleep( static_cast<unsigned long>( sliderSecondWaitBeforeRecording->value()) * 1000 );
     qDebug().noquote() << global::nameOutput << "SecondWaitBeforeRecording:" << sliderSecondWaitBeforeRecording->value();
     qDebug().noquote();
-#endif
 
     QStringList VK_PipelineList;
     VK_PipelineList << VK_getXimagesrc();
@@ -2037,15 +2023,6 @@ void QvkMainWindow::slot_Stop()
     }
 
 Cancel:
-
-#ifdef Q_OS_WIN
-   vkWASAPIController->wantCountdown = true;
-   if ( global::testWASAPI == true ) {
-       global::testWASAPI = false;
-       ui->labelInfoRecordTime->setText( "00:00:00" );
-       ui->labelVideoSize->setText( "0" );
-   }
-#endif
 
     wantRecording = true;
 

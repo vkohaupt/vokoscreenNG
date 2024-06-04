@@ -32,7 +32,6 @@ namespace global
     QString nameOutput = "[" + name + "]";
     int showclickCounter = 0;
     QTextBrowser *textBrowserLog;
-    bool testWASAPI = false;
     QLineEdit *lineEditWASAPIWatcher;
     QList<QLineEdit*> *listChildren;
 }

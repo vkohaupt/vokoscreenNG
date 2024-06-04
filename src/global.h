@@ -30,7 +30,6 @@ namespace global
     extern QString nameOutput;
     extern QString version;
     extern int showclickCounter;
-    extern bool testWASAPI;
     extern QTextBrowser *textBrowserLog;
     extern QLineEdit *lineEditWASAPIWatcher;
     extern QList<QLineEdit*> *listChildren;
