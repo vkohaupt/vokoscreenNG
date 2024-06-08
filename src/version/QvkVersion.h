@@ -1,19 +1,17 @@
 #ifndef VERSION_H 
 #define VERSION_H
 
-#include <QCoreApplication>
+#include <QNetworkAccessManager>
 #include <QNetworkReply>
-#include <QTimer>
-#include <QDebug>
-#include <QDesktopServices>
-#include <QDir>
-#include <QSettings>
+#include <QList>
+
 
 class QvkVersion: public QObject
 {
     Q_OBJECT
 public:
     QvkVersion();
+
 
 public slots:
 

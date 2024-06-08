@@ -1,3 +1,6 @@
+#include <QNetworkRequest>
+#include <QUrl>
+
 #include "QvkVersion.h"
 #include "global.h"
 
