@@ -26,7 +26,6 @@
 #include <gst/gst.h>
 #include "ui_formMainWindow.h"
 #include <QObject>
-//#include <QTimer>
 
 class QvkWASAPIWatcher: public QObject
 {
