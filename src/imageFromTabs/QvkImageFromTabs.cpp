@@ -29,7 +29,6 @@
 #include <QDebug>
 #include <QStandardPaths>
 #include <QPushButton>
-#include <QTimer>
 #include <QThread>
 #include <QMessageBox>
 #include <QDesktopServices>
