@@ -32,7 +32,7 @@ QLineEdit *lineEdit_EOS;
 QvkPlayerGst::QvkPlayerGst()
 {
     vkPlayerGstDiscover = new QvkPlayerGstDiscover;
-    connect( vkPlayerGstDiscover, SIGNAL( signal_discover_quit( bool, bool ) ), this, SLOT( slot_discover_quit( bool, bool ) ) );
+    connect( vkPlayerGstDiscover, SIGNAL( signal_discover_quit(bool,bool) ), this, SLOT( slot_discover_quit(bool,bool) ) );
 }
 
 

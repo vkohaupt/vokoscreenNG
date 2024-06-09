@@ -79,11 +79,11 @@ void QvkPlayerController::init()
     vkPlayerGst = new QvkPlayerGst();
     vkPlayerGst->init();
 
-    connect( vkPlayerGst, SIGNAL( signal_EOS( QString ) ),        this, SLOT( slot_EOS( QString ) ) );
-    connect( vkPlayerGst, SIGNAL( signal_duration( qint64 ) ),    this, SLOT( slot_duration( qint64 ) ) );
-    connect( vkPlayerGst, SIGNAL( signal_currentTime( qint64 ) ), this, SLOT( slot_currentTime( qint64 ) ) );
-    connect( vkPlayerGst, SIGNAL( signal_mute( bool ) ),          this, SLOT( slot_mute_from_system( bool ) ) );
-    connect( vkPlayerGst, SIGNAL( signal_volume( qreal ) ),       this, SLOT( slot_volume_from_system( qreal ) ) );
+    connect( vkPlayerGst, SIGNAL( signal_EOS(QString) ),        this, SLOT( slot_EOS(QString) ) );
+    connect( vkPlayerGst, SIGNAL( signal_duration(qint64) ),    this, SLOT( slot_duration(qint64) ) );
+    connect( vkPlayerGst, SIGNAL( signal_currentTime(qint64) ), this, SLOT( slot_currentTime(qint64) ) );
+    connect( vkPlayerGst, SIGNAL( signal_mute(bool) ),          this, SLOT( slot_mute_from_system(bool) ) );
+    connect( vkPlayerGst, SIGNAL( signal_volume(qreal) ),       this, SLOT( slot_volume_from_system(qreal) ) );
 
     connect( ui->pushButtonPlay, SIGNAL( clicked() ),  this, SLOT( slot_pushButtonPlay() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked() ),  this, SLOT( slot_pushButtonStop() ) );
@@ -94,11 +94,11 @@ void QvkPlayerController::init()
 
     connect( ui->pushButtonOpenFile, SIGNAL( clicked() ), this, SLOT( slot_openFile() )  );
 
-    connect( sliderVideo, SIGNAL( sliderMoved( int ) ), this, SLOT( slot_sliderVideoMoved( int ) ) );
+    connect( sliderVideo, SIGNAL( sliderMoved(int) ), this, SLOT( slot_sliderVideoMoved(int) ) );
 
-    connect( ui->pushButtonMute, SIGNAL( clicked( bool ) ), this, SLOT( slot_mute_from_pushbutton( bool ) ) );
+    connect( ui->pushButtonMute, SIGNAL( clicked(bool) ), this, SLOT( slot_mute_from_pushbutton(bool) ) );
 
-    connect( sliderVolume, SIGNAL( sliderMoved( int ) ), this, SLOT( slot_volume_from_slider( int ) ) );
+    connect( sliderVolume, SIGNAL( sliderMoved(int) ), this, SLOT( slot_volume_from_slider(int) ) );
 
     timerHideMouse = new QTimer( this );
     timerHideMouse->setTimerType( Qt::PreciseTimer );
