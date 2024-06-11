@@ -73,7 +73,7 @@ void QvkAudioController::getAllDevices()
                     prefixNumber = QString::number(i);
                 }
 
-                QVBoxLayout *hBoxLayout = new QVBoxLayout; // Für Checkbox und Progressbar
+                QHBoxLayout *hBoxLayout = new QHBoxLayout; // Für Checkbox und Progressbar
                 hBoxLayout->setSpacing(0);
                 hBoxLayout->setObjectName( "vBoxLayoutAudioDevice-" + prefixNumber );
 

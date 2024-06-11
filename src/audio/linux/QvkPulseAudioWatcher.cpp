@@ -119,7 +119,7 @@ void QvkPulseAudioWatcher::slot_update()
                     qDebug().noquote() << global::nameOutput << "Index in List" << indexStringList << "Count befor add:" << listVBoxLayout.count() << "New index:" << indexNumber ;
                 }
 
-                QVBoxLayout *vBoxLayout = new QVBoxLayout; // Für Checkbox und Progressbar
+                QHBoxLayout *vBoxLayout = new QHBoxLayout; // Für Checkbox und Progressbar
                 vBoxLayout->setObjectName( "vBoxLayoutAudioDevice-" + indexNumber );
                 vBoxLayout->setSpacing(0);
                 ui->verticalLayoutAudioDevices->addLayout( vBoxLayout );

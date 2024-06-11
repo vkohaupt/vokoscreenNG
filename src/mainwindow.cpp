@@ -77,6 +77,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->verticalLayout_26->insertWidget( 0, global::textBrowserLog );
 
+    ui->verticalLayout_7->insertWidget( 2, ui->widget );
+
     oldPaletteDarkMode = qApp->palette();
 
 #ifdef Q_OS_UNIX
@@ -700,7 +702,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                       "Please help to translate your language on <b>" + transifex + "</b></p>");
     } else {
         ui->label_translate->hide();
-        ui->verticalLayout_7->removeItem( ui->verticalSpacer );
+        //ui->verticalLayout_7->removeItem( ui->verticalSpacer );
     }
 }
 

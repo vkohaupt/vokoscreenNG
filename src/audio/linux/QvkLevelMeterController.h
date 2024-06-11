@@ -37,7 +37,7 @@ class QvkLevelMeterController : public QProgressBar
 public:
     explicit QvkLevelMeterController();
     ~QvkLevelMeterController();
-    void add_ProgressBar( QCheckBox *checkBox, QVBoxLayout *layout );
+    void add_ProgressBar( QCheckBox *checkBox, QHBoxLayout *layout );
     void remove_ProgressBar(QCheckBox *checkBox);
     QvkLevelMeter *vkLevelMeter;
 
