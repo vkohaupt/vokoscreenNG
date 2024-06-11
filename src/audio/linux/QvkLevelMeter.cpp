@@ -69,7 +69,7 @@ static gboolean message_handler( GstBus * bus, GstMessage * message, gpointer da
                 rms_dB = g_value_get_double( value );
 
                 // converting from dB to normal gives us a value between 0.0 and 1.0
-                rms = pow( 10, rms_dB / 20 );
+                rms = pow( 10, rms_dB / 40 ); //rms = pow( 10, rms_dB / 20 )
 
                 qint64 index = (qint64)data;
                 QLineEdit *lineEdit = global::listChildren->at(index);

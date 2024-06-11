@@ -84,10 +84,9 @@ void QvkAudioController::getAllDevices()
                 checkBox->setAccessibleName( QString( list.at(i) ).section( ":::", 0, 0 ) );
                 checkBox->setObjectName( "checkboxAudioDevice-" + prefixNumber );
                 checkBox->setToolTip( tr ( "Select one or more devices" ) );
-                checkBox->setIconSize( QSize( 16, 16 ) );
 
                 if ( QString( list.at(i) ).section( ":::", 0, 0 ).contains( "monitor" ) ) {
-                    checkBox->setIconSize( QSize( 13, 13 ) );
+                    checkBox->setIconSize( QSize( 15, 15 ) );
                     checkBox->setIcon( QIcon( ":/pictures/screencast/speaker.png" ) );
                 } else {
                     checkBox->setIconSize( QSize( 16, 16 ) );

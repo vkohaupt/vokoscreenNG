@@ -52,12 +52,12 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QHBoxLayout 
     connect( lineEdit, SIGNAL( textChanged(QString) ), this, SLOT( update() ) );
 
     setObjectName( "progressBarAudioDevice-" + checkBox->objectName().right(2) );
-    setFixedHeight(10);
+    setFixedHeight(6);
     setTextVisible(false);
     setMinimum(0);
     setMaximum(maxSteps);
     setToolTip(checkBox->text());
-    setMaximumWidth( 50 );
+    setMaximumWidth( 100 );
 
     layout->addWidget( this );
 

@@ -649,7 +649,20 @@
                   </property>
                  </widget>
                 </item>
-                <item row="8" column="0" colspan="2">
+                <item row="0" column="1">
+                 <widget class="QComboBox" name="comboBoxScreencastScreen">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="sizeAdjustPolicy">
+                   <enum>QComboBox::AdjustToContents</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="8" column="0" colspan="3">
                  <widget class="QScrollArea" name="scrollAreaAudioDevice">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -677,7 +690,7 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>428</width>
+                     <width>458</width>
                      <height>192</height>
                     </rect>
                    </property>
@@ -693,19 +706,6 @@
                     </property>
                    </layout>
                   </widget>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QComboBox" name="comboBoxScreencastScreen">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="sizeAdjustPolicy">
-                   <enum>QComboBox::AdjustToContents</enum>
-                  </property>
                  </widget>
                 </item>
                </layout>
@@ -7165,7 +7165,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
