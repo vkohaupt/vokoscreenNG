@@ -85,7 +85,7 @@ void QvkPulseAudioWatcher::slot_update()
     }
 
     // Add new Device
-    QList<QVBoxLayout *> listVBoxLayout = ui->verticalLayoutAudioDevices->findChildren<QVBoxLayout *>();
+    QList<QHBoxLayout *> listVBoxLayout = ui->verticalLayoutAudioDevices->findChildren<QHBoxLayout *>();
     if ( list.count() > listVBoxLayout.count() ) {
         for ( int i = 0; i < stringListAudio_Device.count(); i++ ) {
             if ( stringListCheckBox.contains( stringListAudio_Device.at(i) ) == false ) {
@@ -94,7 +94,7 @@ void QvkPulseAudioWatcher::slot_update()
                 qDebug().noquote() << global::nameOutput << "[PulseAudio] Added:" << name << "Device:" << device;
 
                 // Freier Index(xx) 00, 01, 02, xx, 04, 05 usw. ermitteln und diesen Index dem neuen Layout, CheckBox und ProgressBar hinzufügen
-                QList<QVBoxLayout *> listVBoxLayout = ui->verticalLayoutAudioDevices->findChildren<QVBoxLayout *>();
+                QList<QHBoxLayout *> listVBoxLayout = ui->verticalLayoutAudioDevices->findChildren<QHBoxLayout *>();
                 QString indexNumber;
                 if ( listVBoxLayout.empty() ) {
                     indexNumber = "00";
@@ -102,7 +102,7 @@ void QvkPulseAudioWatcher::slot_update()
                 } else {
                     QStringList indexStringList;
                     for ( int i = 0; i < listVBoxLayout.count(); i++ ) {
-                        QVBoxLayout *vBoxLayout = listVBoxLayout.at(i);
+                        QHBoxLayout *vBoxLayout = listVBoxLayout.at(i);
                         indexStringList << vBoxLayout->objectName().right(2);
                     }
                     // Max 30 Audio Geräte
@@ -171,9 +171,9 @@ void QvkPulseAudioWatcher::slot_update()
                 }
                 checkBox->deleteLater();
 
-                QList<QVBoxLayout *> listBoxLayout = ui->verticalLayoutAudioDevices->findChildren<QVBoxLayout *>();
+                QList<QHBoxLayout *> listBoxLayout = ui->verticalLayoutAudioDevices->findChildren<QHBoxLayout *>();
                 for ( int i = 0; i < listBoxLayout.count(); i++ ) {
-                    QVBoxLayout *vBoxLayout = listBoxLayout.at(i);
+                    QHBoxLayout *vBoxLayout = listBoxLayout.at(i);
                     if ( vBoxLayout->objectName().right(2) == number ) {
                         qDebug().noquote() << global::nameOutput << "[Audio] Remove Widget" << vBoxLayout->objectName();
                         qDebug().noquote();

@@ -27,7 +27,7 @@
 #include <QCheckBox>
 #include <QProgressBar>
 #include <QLineEdit>
-#include <QVBoxLayout>
+#include <QHBoxLayout>
 
 QvkLevelMeterController::QvkLevelMeterController()
 {
@@ -56,13 +56,14 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QHBoxLayout 
     setTextVisible(false);
     setMinimum(0);
     setMaximum(maxSteps);
-    setToolTip(checkBox->text());
+//    setToolTip(checkBox->text());
+    setToolTip(checkBox->accessibleName());
     setMaximumWidth( 100 );
 
     layout->addWidget( this );
 
     vkLevelMeter = new QvkLevelMeter;
-    QString device = checkBox->accessibleName().section( ":::", 0, 0);
+    QString device = checkBox->accessibleName();
     QString name = checkBox->text();
     vkLevelMeter->start( device, name, index );
 }
