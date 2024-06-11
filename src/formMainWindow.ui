@@ -664,10 +664,7 @@
                    <enum>QFrame::NoFrame</enum>
                   </property>
                   <property name="horizontalScrollBarPolicy">
-                   <enum>Qt::ScrollBarAlwaysOff</enum>
-                  </property>
-                  <property name="sizeAdjustPolicy">
-                   <enum>QAbstractScrollArea::AdjustIgnored</enum>
+                   <enum>Qt::ScrollBarAsNeeded</enum>
                   </property>
                   <property name="widgetResizable">
                    <bool>true</bool>
@@ -687,7 +684,14 @@
                    <property name="accessibleName">
                     <string notr="true"/>
                    </property>
-                   <layout class="QVBoxLayout" name="verticalLayoutAudioDevices"/>
+                   <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                   </layout>
                   </widget>
                  </widget>
                 </item>
