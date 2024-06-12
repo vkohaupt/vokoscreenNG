@@ -78,7 +78,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->verticalLayout_26->insertWidget( 0, global::textBrowserLog );
 
     // Inhalt von tab Video in Tab 1 verschieben und Tab Video ausblenden
-    ui->verticalLayout_7->insertWidget( 2, ui->widget );
+    ui->verticalLayout_7->insertWidget( 4, ui->widget );
     ui->tabWidgetScreencast->removeTab(1);
 
     oldPaletteDarkMode = qApp->palette();
@@ -704,7 +704,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
                                       "Please help to translate your language on <b>" + transifex + "</b></p>");
     } else {
         ui->label_translate->hide();
-        //ui->verticalLayout_7->removeItem( ui->verticalSpacer );
     }
 }
 

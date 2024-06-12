@@ -398,7 +398,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -421,7 +421,7 @@
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_7">
               <property name="spacing">
-               <number>3</number>
+               <number>6</number>
               </property>
               <item>
                <layout class="QGridLayout" name="gridLayout_3">
@@ -431,6 +431,19 @@
                 <property name="verticalSpacing">
                  <number>3</number>
                 </property>
+                <item row="3" column="0" colspan="4">
+                 <widget class="QLabel" name="label_translate">
+                  <property name="text">
+                   <string notr="true">Translate</string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                  <property name="openExternalLinks">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
                 <item row="2" column="2">
                  <widget class="QToolButton" name="toolButtonScreencastAreaReset">
                   <property name="toolTip">
@@ -455,65 +468,6 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0">
-                 <widget class="QRadioButton" name="radioButtonScreencastArea">
-                  <property name="text">
-                   <string>Area</string>
-                  </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">buttonGroup</string>
-                  </attribute>
-                 </widget>
-                </item>
-                <item row="6" column="1">
-                 <spacer name="verticalSpacer_13">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeType">
-                   <enum>QSizePolicy::Maximum</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>5</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item row="2" column="3">
-                 <widget class="QToolButton" name="help_screencast_area">
-                  <property name="toolTip">
-                   <string>Help</string>
-                  </property>
-                  <property name="text">
-                   <string notr="true">Help</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="1">
-                 <spacer name="verticalSpacer">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeType">
-                   <enum>QSizePolicy::Maximum</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>5</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item row="2" column="1">
-                 <widget class="QComboBox" name="comboBoxScreencastScreenArea">
-                  <property name="sizeAdjustPolicy">
-                   <enum>QComboBox::AdjustToContents</enum>
-                  </property>
-                 </widget>
-                </item>
                 <item row="0" column="0">
                  <widget class="QRadioButton" name="radioButtonScreencastFullscreen">
                   <property name="text">
@@ -524,32 +478,35 @@
                   </attribute>
                  </widget>
                 </item>
-                <item row="8" column="3">
-                 <layout class="QVBoxLayout" name="verticalLayout_15">
-                  <item>
-                   <widget class="QToolButton" name="help_screencast_audio">
-                    <property name="toolTip">
-                     <string>Help</string>
-                    </property>
-                    <property name="text">
-                     <string notr="true">Help</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="verticalSpacer_28">
-                    <property name="orientation">
-                     <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>20</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
+                <item row="0" column="3">
+                 <widget class="QToolButton" name="help_screencast_fullscreen">
+                  <property name="toolTip">
+                   <string>Help</string>
+                  </property>
+                  <property name="text">
+                   <string notr="true">Help</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QComboBox" name="comboBoxScreencastScreen">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="sizeAdjustPolicy">
+                   <enum>QComboBox::AdjustToContents</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QComboBox" name="comboBoxScreencastScreenArea">
+                  <property name="sizeAdjustPolicy">
+                   <enum>QComboBox::AdjustToContents</enum>
+                  </property>
+                 </widget>
                 </item>
                 <item row="1" column="0">
                  <widget class="QRadioButton" name="radioButtonScreencastWindow">
@@ -561,27 +518,14 @@
                   </attribute>
                  </widget>
                 </item>
-                <item row="4" column="0" colspan="4">
-                 <widget class="Line" name="line_7">
-                  <property name="frameShadow">
-                   <enum>QFrame::Plain</enum>
-                  </property>
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                 </widget>
-                </item>
-                <item row="5" column="0" colspan="4">
-                 <widget class="QLabel" name="label_translate">
+                <item row="2" column="0">
+                 <widget class="QRadioButton" name="radioButtonScreencastArea">
                   <property name="text">
-                   <string notr="true">Translate</string>
+                   <string>Area</string>
                   </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                  <property name="openExternalLinks">
-                   <bool>true</bool>
-                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">buttonGroup</string>
+                  </attribute>
                  </widget>
                 </item>
                 <item row="0" column="2">
@@ -598,7 +542,111 @@
                   </property>
                  </widget>
                 </item>
-                <item row="10" column="0" colspan="4">
+                <item row="2" column="3">
+                 <widget class="QToolButton" name="help_screencast_area">
+                  <property name="toolTip">
+                   <string>Help</string>
+                  </property>
+                  <property name="text">
+                   <string notr="true">Help</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="Line" name="line_7">
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_34">
+                  <item>
+                   <widget class="QScrollArea" name="scrollAreaAudioDevice">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="accessibleName">
+                     <string notr="true"/>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <property name="horizontalScrollBarPolicy">
+                     <enum>Qt::ScrollBarAsNeeded</enum>
+                    </property>
+                    <property name="widgetResizable">
+                     <bool>true</bool>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                    </property>
+                    <widget class="QWidget" name="scrollAreaWidgetContentsAudioDevices">
+                     <property name="geometry">
+                      <rect>
+                       <x>0</x>
+                       <y>0</y>
+                       <width>456</width>
+                       <height>186</height>
+                      </rect>
+                     </property>
+                     <property name="accessibleName">
+                      <string notr="true"/>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                     </layout>
+                    </widget>
+                   </widget>
+                  </item>
+                  <item>
+                   <layout class="QVBoxLayout" name="verticalLayout_15">
+                    <property name="topMargin">
+                     <number>5</number>
+                    </property>
+                    <item>
+                     <widget class="QToolButton" name="help_screencast_audio">
+                      <property name="toolTip">
+                       <string>Help</string>
+                      </property>
+                      <property name="text">
+                       <string notr="true">Help</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="verticalSpacer_28">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </item>
+                <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_37">
                   <item>
                    <widget class="QLabel" name="labelAudioCodec">
@@ -638,75 +686,6 @@
                    </widget>
                   </item>
                  </layout>
-                </item>
-                <item row="0" column="3">
-                 <widget class="QToolButton" name="help_screencast_fullscreen">
-                  <property name="toolTip">
-                   <string>Help</string>
-                  </property>
-                  <property name="text">
-                   <string notr="true">Help</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QComboBox" name="comboBoxScreencastScreen">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="sizeAdjustPolicy">
-                   <enum>QComboBox::AdjustToContents</enum>
-                  </property>
-                 </widget>
-                </item>
-                <item row="8" column="0" colspan="3">
-                 <widget class="QScrollArea" name="scrollAreaAudioDevice">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="accessibleName">
-                   <string notr="true"/>
-                  </property>
-                  <property name="frameShape">
-                   <enum>QFrame::NoFrame</enum>
-                  </property>
-                  <property name="horizontalScrollBarPolicy">
-                   <enum>Qt::ScrollBarAsNeeded</enum>
-                  </property>
-                  <property name="widgetResizable">
-                   <bool>true</bool>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                  </property>
-                  <widget class="QWidget" name="scrollAreaWidgetContentsAudioDevices">
-                   <property name="geometry">
-                    <rect>
-                     <x>0</x>
-                     <y>0</y>
-                     <width>466</width>
-                     <height>209</height>
-                    </rect>
-                   </property>
-                   <property name="accessibleName">
-                    <string notr="true"/>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
-                    <property name="leftMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                   </layout>
-                  </widget>
-                 </widget>
                 </item>
                </layout>
               </item>
@@ -979,34 +958,10 @@
                 <property name="topMargin">
                  <number>10</number>
                 </property>
-                <item row="5" column="2" colspan="2">
-                 <widget class="QLabel" name="labelInfoFormat">
+                <item row="7" column="1">
+                 <widget class="QLabel" name="label_25">
                   <property name="text">
-                   <string notr="true"/>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="2">
-                 <widget class="QLabel" name="labelVideoSize">
-                  <property name="text">
-                   <string notr="true">0</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                  </property>
-                 </widget>
-                </item>
-                <item row="8" column="1">
-                 <widget class="QLabel" name="label_29">
-                  <property name="text">
-                   <string>Frames</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1">
-                 <widget class="QLabel" name="label_12">
-                  <property name="text">
-                   <string>Free disk space:</string>
+                   <string>Audiocodec</string>
                   </property>
                  </widget>
                 </item>
@@ -1017,10 +972,17 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="1">
-                 <widget class="QLabel" name="label_13">
+                <item row="5" column="2" colspan="2">
+                 <widget class="QLabel" name="labelInfoFormat">
                   <property name="text">
-                   <string>Video size:</string>
+                   <string notr="true"/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLabel" name="label_14">
+                  <property name="text">
+                   <string>Record Time:</string>
                   </property>
                  </widget>
                 </item>
@@ -1037,10 +999,55 @@
                   </property>
                  </spacer>
                 </item>
-                <item row="7" column="1">
-                 <widget class="QLabel" name="label_25">
+                <item row="7" column="2" colspan="2">
+                 <widget class="QLabel" name="labelInfoAudiocodec">
                   <property name="text">
-                   <string>Audiocodec</string>
+                   <string notr="true"/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="3">
+                 <widget class="QLabel" name="label_16">
+                  <property name="text">
+                   <string notr="true">KB</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1" colspan="3">
+                 <widget class="Line" name="line_3">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="3">
+                 <widget class="QLabel" name="label_15">
+                  <property name="text">
+                   <string notr="true">MB</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QLabel" name="label_12">
+                  <property name="text">
+                   <string>Free disk space:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="1">
+                 <widget class="QLabel" name="label_23">
+                  <property name="text">
+                   <string>Format</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2" colspan="2">
+                 <widget class="QLabel" name="labelInfoRecordTime">
+                  <property name="text">
+                   <string notr="true">00:00:00</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -1067,10 +1074,27 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="3">
-                 <widget class="QLabel" name="label_16">
+                <item row="8" column="1">
+                 <widget class="QLabel" name="label_29">
                   <property name="text">
-                   <string notr="true">KB</string>
+                   <string>Frames</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QLabel" name="labelVideoSize">
+                  <property name="text">
+                   <string notr="true">0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QLabel" name="label_13">
+                  <property name="text">
+                   <string>Video size:</string>
                   </property>
                  </widget>
                 </item>
@@ -1078,51 +1102,6 @@
                  <widget class="QLabel" name="labelInfoFrames">
                   <property name="text">
                    <string notr="true"/>
-                  </property>
-                 </widget>
-                </item>
-                <item row="5" column="1">
-                 <widget class="QLabel" name="label_23">
-                  <property name="text">
-                   <string>Format</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="3">
-                 <widget class="QLabel" name="label_15">
-                  <property name="text">
-                   <string notr="true">MB</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="7" column="2" colspan="2">
-                 <widget class="QLabel" name="labelInfoAudiocodec">
-                  <property name="text">
-                   <string notr="true"/>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="1" colspan="3">
-                 <widget class="Line" name="line_3">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QLabel" name="label_14">
-                  <property name="text">
-                   <string>Record Time:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="2" colspan="2">
-                 <widget class="QLabel" name="labelInfoRecordTime">
-                  <property name="text">
-                   <string notr="true">00:00:00</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -2662,7 +2641,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>469</width>
+                   <width>463</width>
                    <height>417</height>
                   </rect>
                  </property>
