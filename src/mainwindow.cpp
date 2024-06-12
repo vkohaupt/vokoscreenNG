@@ -77,7 +77,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
     ui->verticalLayout_26->insertWidget( 0, global::textBrowserLog );
 
+    // Inhalt von tab Video in Tab 1 verschieben und Tab Video ausblenden
     ui->verticalLayout_7->insertWidget( 2, ui->widget );
+    ui->tabWidgetScreencast->removeTab(1);
 
     oldPaletteDarkMode = qApp->palette();
 

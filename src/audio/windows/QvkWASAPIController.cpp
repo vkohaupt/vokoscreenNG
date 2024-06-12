@@ -135,7 +135,7 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
         vBoxLayout->addWidget( checkBox );
 
         if ( type == "Playback" ) {
-            checkBox->setIconSize( QSize( 13, 13 ) );
+            checkBox->setIconSize( QSize( 16, 16 ) );
             checkBox->setIcon( QIcon( ":/pictures/screencast/speaker.png" ) );
         }
         if ( type == "Source" ) {

@@ -398,7 +398,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -690,8 +690,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>458</width>
-                     <height>192</height>
+                     <width>466</width>
+                     <height>209</height>
                     </rect>
                    </property>
                    <property name="accessibleName">
@@ -2662,7 +2662,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>463</width>
+                   <width>469</width>
                    <height>417</height>
                   </rect>
                  </property>
@@ -7165,7 +7165,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
