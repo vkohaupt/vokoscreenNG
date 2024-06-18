@@ -571,7 +571,7 @@
                   <item>
                    <widget class="QScrollArea" name="scrollAreaAudioDevice">
                     <property name="sizePolicy">
-                     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                     <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                       <horstretch>0</horstretch>
                       <verstretch>0</verstretch>
                      </sizepolicy>
@@ -582,8 +582,14 @@
                     <property name="frameShape">
                      <enum>QFrame::NoFrame</enum>
                     </property>
+                    <property name="verticalScrollBarPolicy">
+                     <enum>Qt::ScrollBarAsNeeded</enum>
+                    </property>
                     <property name="horizontalScrollBarPolicy">
                      <enum>Qt::ScrollBarAsNeeded</enum>
+                    </property>
+                    <property name="sizeAdjustPolicy">
+                     <enum>QAbstractScrollArea::AdjustToContents</enum>
                     </property>
                     <property name="widgetResizable">
                      <bool>true</bool>
@@ -633,6 +639,9 @@
                      <spacer name="verticalSpacer_28">
                       <property name="orientation">
                        <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Expanding</enum>
                       </property>
                       <property name="sizeHint" stdset="0">
                        <size>

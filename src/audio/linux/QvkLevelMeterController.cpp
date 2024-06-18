@@ -26,7 +26,6 @@
 
 #include <QCheckBox>
 #include <QProgressBar>
-#include <QLineEdit>
 #include <QHBoxLayout>
 
 QvkLevelMeterController::QvkLevelMeterController()
@@ -44,7 +43,7 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QHBoxLayout 
 {
     QString index = checkBox->objectName().right(2);
 
-    QLineEdit *lineEdit = new QLineEdit();
+    lineEdit = new QLineEdit();
     lineEdit->setObjectName( "lineEditLevelMeter_" + index );
     global::listChildren->append( lineEdit );
 
@@ -58,7 +57,7 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QHBoxLayout 
     setMaximum(maxSteps);
 //    setToolTip(checkBox->text());
     setToolTip(checkBox->accessibleName());
-    setMaximumWidth( 100 );
+    setMaximumWidth( 160 );
 
     layout->addWidget( this );
 
@@ -71,13 +70,13 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QHBoxLayout 
 
 void QvkLevelMeterController::remove_ProgressBar( QCheckBox *checkBox )
 {
-    vkLevelMeter->stop();
-
     // Remove LineEdit
     for ( int i = 0; i < global::listChildren->count(); i++ ) {
-        QLineEdit *lineEdit = global::listChildren->at(i);
-        if ( lineEdit->objectName().right(2) == checkBox->objectName().right(2) ) {
+        QLineEdit *lineEdit_01 = global::listChildren->at(i);
+        if ( lineEdit_01->objectName().right(2) == checkBox->objectName().right(2) ) {
+            disconnect( lineEdit, nullptr, nullptr, nullptr );
             global::listChildren->removeAt(i);
+//            global::listChildren->squeeze(); // Speicher freigeben
         }
     }
 }
@@ -86,4 +85,12 @@ void QvkLevelMeterController::remove_ProgressBar( QCheckBox *checkBox )
 void QvkLevelMeterController::slot_textChanged( QString string )
 {
     setValue( string.toDouble() * maxSteps );
+
+//    qDebug() << objectName()
+//             << string.toDouble()* maxSteps
+//             << global::listChildren->at(2)->text()
+//             << global::listChildren->at(3)->text()
+//             << global::listChildren->count();;
+
+
 }
