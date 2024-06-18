@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>850</width>
-    <height>550</height>
+    <height>560</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -398,7 +398,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -593,8 +593,8 @@
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>456</width>
-                       <height>186</height>
+                       <width>464</width>
+                       <height>213</height>
                       </rect>
                      </property>
                      <property name="accessibleName">
@@ -603,6 +603,12 @@
                      <layout class="QVBoxLayout" name="verticalLayoutAudioDevices">
                       <property name="leftMargin">
                        <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>6</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>6</number>
                       </property>
                       <property name="bottomMargin">
                        <number>0</number>
@@ -614,7 +620,7 @@
                   <item>
                    <layout class="QVBoxLayout" name="verticalLayout_15">
                     <property name="topMargin">
-                     <number>5</number>
+                     <number>2</number>
                     </property>
                     <item>
                      <widget class="QToolButton" name="help_screencast_audio">
@@ -1188,9 +1194,6 @@
                     <property name="frameShape">
                      <enum>QFrame::NoFrame</enum>
                     </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Raised</enum>
-                    </property>
                     <layout class="QHBoxLayout" name="horizontalLayout_x264">
                      <property name="leftMargin">
                       <number>6</number>
@@ -1199,7 +1202,7 @@
                       <number>0</number>
                      </property>
                      <property name="rightMargin">
-                      <number>6</number>
+                      <number>0</number>
                      </property>
                      <property name="bottomMargin">
                       <number>0</number>
@@ -1326,9 +1329,6 @@
                     <property name="frameShape">
                      <enum>QFrame::NoFrame</enum>
                     </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Raised</enum>
-                    </property>
                     <layout class="QHBoxLayout" name="horizontalLayout_64">
                      <property name="leftMargin">
                       <number>6</number>
@@ -1337,7 +1337,7 @@
                       <number>0</number>
                      </property>
                      <property name="rightMargin">
-                      <number>6</number>
+                      <number>0</number>
                      </property>
                      <property name="bottomMargin">
                       <number>0</number>
@@ -1383,8 +1383,8 @@
                            </property>
                            <property name="maximumSize">
                             <size>
-                             <width>34</width>
-                             <height>34</height>
+                             <width>28</width>
+                             <height>28</height>
                             </size>
                            </property>
                            <property name="text">
@@ -1424,9 +1424,6 @@
                     <property name="frameShape">
                      <enum>QFrame::NoFrame</enum>
                     </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Raised</enum>
-                    </property>
                     <layout class="QHBoxLayout" name="horizontalLayout_62">
                      <property name="spacing">
                       <number>6</number>
@@ -1460,19 +1457,6 @@
                        </property>
                       </widget>
                      </item>
-                     <item>
-                      <spacer name="horizontalSpacer_53">
-                       <property name="orientation">
-                        <enum>Qt::Horizontal</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
                     </layout>
                    </widget>
                   </item>
@@ -1480,9 +1464,6 @@
                    <widget class="QFrame" name="frameVideoCodecVp8">
                     <property name="frameShape">
                      <enum>QFrame::NoFrame</enum>
-                    </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Raised</enum>
                     </property>
                     <layout class="QHBoxLayout" name="horizontalLayout_vp8">
                      <property name="leftMargin">
@@ -1492,12 +1473,12 @@
                       <number>0</number>
                      </property>
                      <property name="rightMargin">
-                      <number>6</number>
+                      <number>0</number>
                      </property>
                      <property name="bottomMargin">
                       <number>0</number>
                      </property>
-                     <item>
+                     <item alignment="Qt::AlignTop">
                       <widget class="QLabel" name="label_22">
                        <property name="maximumSize">
                         <size>
@@ -1516,7 +1497,7 @@
                        </property>
                       </widget>
                      </item>
-                     <item alignment="Qt::AlignVCenter">
+                     <item alignment="Qt::AlignTop">
                       <widget class="QToolButton" name="toolButtonVP8Reset">
                        <property name="toolTip">
                         <string>Reset</string>
@@ -2641,8 +2622,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>463</width>
-                   <height>417</height>
+                   <width>469</width>
+                   <height>427</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -7144,7 +7125,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>

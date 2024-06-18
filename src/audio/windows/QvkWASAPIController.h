@@ -29,7 +29,7 @@
 
 #include <QObject>
 #include <QProgressBar>
-#include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QList>
 
 class QvkWASAPIController: public QObject
@@ -50,7 +50,7 @@ public slots:
 private:
     Ui_formMainWindow *ui;
     QString get_number_removed_device( QString string );
-    QVBoxLayout *get_removed_vBoxLayout( QString indexNumber );
+    QHBoxLayout *get_removed_vBoxLayout( QString indexNumber );
     QProgressBar *get_removed_ProgressBar( QString indexNumber );
     QCheckBox *get_removed_checkBox( QString indexNumber );
 //    QvkLevelMeterController *get_removed_LevelMeterController( QString indexNumber );
