@@ -55,8 +55,7 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QHBoxLayout 
     setTextVisible(false);
     setMinimum(0);
     setMaximum(maxSteps);
-//    setToolTip(checkBox->text());
-    setToolTip(checkBox->accessibleName());
+    setToolTip(checkBox->text());
     setMaximumWidth( 160 );
 
     layout->addWidget( this );
@@ -76,7 +75,6 @@ void QvkLevelMeterController::remove_ProgressBar( QCheckBox *checkBox )
         if ( lineEdit_01->objectName().right(2) == checkBox->objectName().right(2) ) {
             disconnect( lineEdit, nullptr, nullptr, nullptr );
             global::listChildren->removeAt(i);
-//            global::listChildren->squeeze(); // Speicher freigeben
         }
     }
 }
@@ -85,12 +83,4 @@ void QvkLevelMeterController::remove_ProgressBar( QCheckBox *checkBox )
 void QvkLevelMeterController::slot_textChanged( QString string )
 {
     setValue( string.toDouble() * maxSteps );
-
-//    qDebug() << objectName()
-//             << string.toDouble()* maxSteps
-//             << global::listChildren->at(2)->text()
-//             << global::listChildren->at(3)->text()
-//             << global::listChildren->count();;
-
-
 }
