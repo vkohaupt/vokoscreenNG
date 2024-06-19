@@ -216,3 +216,6 @@ include(padsAndCaps/padsAndCaps.pri)
 
 # Container
 include(container/container.pri)
+
+# spezialProgressBarAudio
+include(spezialProgressBarAudio/spezialProgressBarAudio.pri)
