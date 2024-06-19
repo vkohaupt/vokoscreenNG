@@ -80,7 +80,7 @@ void QvkAudioController::getAllDevices()
 
                 QCheckBox *checkBox = new QCheckBox();
                 connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
-                checkBox->setText( QString( list.at(i) ).section( ":::", 1, 1 ).left(40) );
+//                checkBox->setText( QString( list.at(i) ).section( ":::", 1, 1 ).left(40) );
                 checkBox->setAccessibleName( QString( list.at(i) ).section( ":::", 0, 0 ) );
                 checkBox->setObjectName( "checkboxAudioDevice-" + prefixNumber );
                 checkBox->setToolTip( tr ( "Select one or more devices" ) );
@@ -100,6 +100,7 @@ void QvkAudioController::getAllDevices()
 
                 vkLevelMeterController = new QvkLevelMeterController;
                 vkLevelMeterController->add_ProgressBar( checkBox, hBoxLayout );
+                vkLevelMeterController->set_Text( QString( list.at(i) ).section( ":::", 1, 1 ) );
 
             }
             qDebug().noquote();

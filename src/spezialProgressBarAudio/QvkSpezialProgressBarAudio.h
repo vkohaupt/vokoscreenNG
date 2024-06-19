@@ -4,6 +4,7 @@
 
 #include <QProgressBar>
 #include <QPainter>
+#include <QPaintEvent>
 
 class QvkSpezialProgressBarAudio : public QProgressBar
 {
@@ -11,17 +12,18 @@ class QvkSpezialProgressBarAudio : public QProgressBar
 
 public:
     QvkSpezialProgressBarAudio(QProgressBar *parent = 0);
-;
+    void set_Text( QString text );
 
 
 public slots:
 
 
 protected:
-    void paintEvent(QPaintEvent *event) override;
+    void paintEvent( QPaintEvent *event ) override;
 
 
 private:
+    QString text;
 
 
 signals:

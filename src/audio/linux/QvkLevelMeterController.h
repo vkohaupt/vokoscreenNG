@@ -30,8 +30,9 @@
 #include <QLineEdit>
 
 #include "QvkLevelMeter.h"
+#include "QvkSpezialProgressBarAudio.h"
 
-class QvkLevelMeterController : public QProgressBar
+class QvkLevelMeterController : public QvkSpezialProgressBarAudio
 {
     Q_OBJECT
 

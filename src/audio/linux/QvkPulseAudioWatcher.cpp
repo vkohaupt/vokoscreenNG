@@ -127,7 +127,7 @@ void QvkPulseAudioWatcher::slot_update()
                 // Checkbox hinzufügen
                 QCheckBox *checkBox = new QCheckBox();
                 connect( checkBox, SIGNAL( clicked(bool) ), this, SLOT( slot_audioDeviceSelected() ) );
-                checkBox->setText( name );
+//                checkBox->setText( name );
                 checkBox->setAccessibleName( device );
                 checkBox->setObjectName( "checkboxAudioDevice-" + indexNumber );
                 checkBox->setToolTip( tr ( "Select one or more devices" ) );
@@ -139,6 +139,7 @@ void QvkPulseAudioWatcher::slot_update()
                 qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( listAllDevices.at(i) ).section( ":::", 1, 1 ) << "Device:" << QString( listAllDevices.at(i) ).section( ":::", 0, 0 );
                 QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
                 vkLevelMeterController->add_ProgressBar( checkBox, vBoxLayout );
+                vkLevelMeterController->set_Text( QString( listAllDevices.at(i) ).section( ":::", 1, 1 ) );
 
                 qDebug().noquote() << global::nameOutput << "[Audio] add Widget" << vBoxLayout->objectName();
                 qDebug().noquote() << global::nameOutput << "[Audio] add Widget" << checkBox->objectName() << checkBox->accessibleName();
