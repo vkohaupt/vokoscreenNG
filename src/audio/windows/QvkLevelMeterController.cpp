@@ -63,19 +63,18 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QHBoxLayout 
     QString device = checkBox->accessibleName().section( ":::", 0, 0);
     QString name = checkBox->accessibleName().section( ":::", 1, 1 );
     QString SourceOrPlayback = checkBox->accessibleName().section( ":::", 2, 2);
-    set_Text( name ); //------------------------------------------------------------------------------
+    set_Text( name );
     vkLevelMeter->start( device, name, index, SourceOrPlayback );
 }
 
 
-void QvkLevelMeterController::remove_ProgressBar( QCheckBox *checkBox )
+void QvkLevelMeterController::remove_LineEdit( QCheckBox *checkBox )
 {
-    vkLevelMeter->stop();
-
     // Remove LineEdit
     for ( int i = 0; i < global::listChildren->count(); i++ ) {
         QLineEdit *lineEdit = global::listChildren->at(i);
         if ( lineEdit->objectName().right(2) == checkBox->objectName().right(2) ) {
+            disconnect( lineEdit, nullptr, nullptr, nullptr );
             global::listChildren->removeAt(i);
         }
     }

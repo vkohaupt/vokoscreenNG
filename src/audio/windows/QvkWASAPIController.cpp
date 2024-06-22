@@ -127,7 +127,6 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
 
         QCheckBox *checkBox = new QCheckBox();
         connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
-//        checkBox->setText( name.left(50) );
         checkBox->setAccessibleName( string );
         checkBox->setObjectName( "checkBoxAudioDevice-" + indexNumber );
         checkBox->setToolTip( tr ( "Select one or more devices" ) );
@@ -160,8 +159,9 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
             if ( vkLevelMeterController->objectName().right(2) == indexNumber ) {
                 qDebug().noquote() << global::nameOutput << "[Audio-device-removed]" << name << device;
                 vkLevelMeterController->vkLevelMeter->stop();
-                vkLevelMeterController->remove_ProgressBar( checkBox );
+                vkLevelMeterController->remove_LineEdit( checkBox );
                 vkLevelMeterController->deleteLater();
+                break;
             }
         }
 
