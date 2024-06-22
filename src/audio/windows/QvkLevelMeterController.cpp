@@ -76,6 +76,7 @@ void QvkLevelMeterController::remove_LineEdit( QCheckBox *checkBox )
         if ( lineEdit->objectName().right(2) == checkBox->objectName().right(2) ) {
             disconnect( lineEdit, nullptr, nullptr, nullptr );
             global::listChildren->removeAt(i);
+            break;
         }
     }
 }

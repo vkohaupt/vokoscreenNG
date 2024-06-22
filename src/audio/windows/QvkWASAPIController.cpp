@@ -148,15 +148,15 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
     }
 
     if ( action == "[Audio-device-removed]" ) {
-        QString indexNumber = get_number_removed_device( string );
-        QHBoxLayout *vBoxLayout = get_removed_vBoxLayout( indexNumber );
-        QvkSpezialProgressBarAudio *progressBar = get_removed_ProgressBar( indexNumber );
-        QCheckBox *checkBox = get_removed_checkBox( indexNumber );
+        QString index = get_index_removed_device( string );
+        QHBoxLayout *vBoxLayout = get_removed_vBoxLayout( index );
+        QvkSpezialProgressBarAudio *progressBar = get_removed_ProgressBar( index );
+        QCheckBox *checkBox = get_removed_checkBox( index );
 
         QList<QvkLevelMeterController *> listProgressBar = ui->scrollAreaAudioDevice->findChildren<QvkLevelMeterController *>();
         for ( int i = 0; i < listProgressBar.count(); i++ ) {
             QvkLevelMeterController *vkLevelMeterController = listProgressBar.at(i);
-            if ( vkLevelMeterController->objectName().right(2) == indexNumber ) {
+            if ( vkLevelMeterController->objectName().right(2) == index ) {
                 qDebug().noquote() << global::nameOutput << "[Audio-device-removed]" << name << device;
                 vkLevelMeterController->vkLevelMeter->stop();
                 vkLevelMeterController->remove_LineEdit( checkBox );
@@ -175,57 +175,64 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
 // Die CheckBox beinhaltet das Gerät das in der GUI entfernt werden soll.
 // Und jede Checkbox, BoxLayout und ProgressBar wurde ein gleicher eindeutiger Wert<indexNumber> an den Objectnamen hinzugefügt.
 // Beispiel  ....-00, ...-01, ...-02, ...-03 usw.
-QString QvkWASAPIController::get_number_removed_device( QString string )
+QString QvkWASAPIController::get_index_removed_device( QString string )
 {
-    QString indexNumber = "";
+    QString index = "";
     QString device = string.section( ":::", 0, 0 );
     QList<QCheckBox *> listQCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
     for ( int i = 0; i < listQCheckBox.count(); i++ ) {
         QCheckBox *checkBox = listQCheckBox.at(i);
         if ( checkBox->accessibleName().section( ":::", 0, 0 ) == device ) {
-            indexNumber = checkBox->objectName().right(2);
+            index = checkBox->objectName().right(2);
+            break;
         }
     }
-    return indexNumber;
+    return index;
 }
 
 
-QCheckBox *QvkWASAPIController::get_removed_checkBox( QString indexNumber )
+QCheckBox *QvkWASAPIController::get_removed_checkBox( QString index )
 {
     QCheckBox *returnCheckBox = NULL;
     QList<QCheckBox *> list = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
     for ( int i = 0; i < list.count(); i++  ) {
         QCheckBox *checkBox = list.at(i);
-        if ( checkBox->objectName().contains( "checkBoxAudioDevice-" + indexNumber ) ) {
+        if ( checkBox->objectName().contains( "checkBoxAudioDevice-" + index ) ) {
+            qDebug().noquote() << global::nameOutput << "Removed widget:" << checkBox->objectName();
             returnCheckBox = checkBox;
+            break;
         }
     }
     return returnCheckBox;
 }
 
 
-QHBoxLayout *QvkWASAPIController::get_removed_vBoxLayout( QString indexNumber )
+QHBoxLayout *QvkWASAPIController::get_removed_vBoxLayout( QString index )
 {
     QHBoxLayout *returnVBoxLayout = NULL;
     QList<QHBoxLayout *> list = ui->scrollAreaAudioDevice->findChildren<QHBoxLayout *>();
     for ( int i = 0; i < list.count(); i++  ) {
         QHBoxLayout *vBoxLayout = list.at(i);
-        if ( vBoxLayout->objectName().contains( "vBoxLayoutAudioDevice-" + indexNumber ) ) {
+        if ( vBoxLayout->objectName().contains( "vBoxLayoutAudioDevice-" + index ) ) {
+            qDebug().noquote() << global::nameOutput << "Removed widget:" << vBoxLayout->objectName();
             returnVBoxLayout = vBoxLayout;
+            break;
         }
     }
     return returnVBoxLayout;
 }
 
 
-QvkSpezialProgressBarAudio *QvkWASAPIController::get_removed_ProgressBar( QString indexNumber )
+QvkSpezialProgressBarAudio *QvkWASAPIController::get_removed_ProgressBar( QString index )
 {
     QvkSpezialProgressBarAudio *returnProgressBar = NULL;
     QList<QvkSpezialProgressBarAudio *> list = ui->scrollAreaAudioDevice->findChildren<QvkSpezialProgressBarAudio *>();
     for ( int i = 0; i < list.count(); i++  ) {
         QvkSpezialProgressBarAudio *progressBar = list.at(i);
-        if ( progressBar->objectName().contains( "progressBarAudioDevice-" + indexNumber ) ) {
+        if ( progressBar->objectName().contains( "progressBarAudioDevice-" + index ) ) {
+            qDebug().noquote() << global::nameOutput << "Removed widget:" << progressBar->objectName();
             returnProgressBar = progressBar;
+            break;
         }
     }
     return returnProgressBar;

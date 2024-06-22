@@ -50,7 +50,7 @@ public slots:
 
 private:
     Ui_formMainWindow *ui;
-    QString get_number_removed_device( QString string );
+    QString get_index_removed_device( QString string );
     QHBoxLayout *get_removed_vBoxLayout( QString indexNumber );
     QvkSpezialProgressBarAudio *get_removed_ProgressBar( QString indexNumber );
     QCheckBox *get_removed_checkBox( QString indexNumber );
