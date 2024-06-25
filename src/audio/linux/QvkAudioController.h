@@ -45,7 +45,6 @@ public slots:
 private:
     Ui_formMainWindow *ui;
     void getAllDevices();
-    bool isAudioDeviceSelected();
 
 
 private slots:
