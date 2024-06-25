@@ -61,7 +61,7 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QHBoxLayout 
 
     vkLevelMeter = new QvkLevelMeter;
     QString device = checkBox->accessibleName();
-    QString name = checkBox->text();
+    QString name = checkBox->accessibleName();
     vkLevelMeter->start( device, name, index );
 }
 

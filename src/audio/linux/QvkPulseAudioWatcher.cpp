@@ -127,7 +127,6 @@ void QvkPulseAudioWatcher::slot_update()
                 // Checkbox hinzufügen
                 QCheckBox *checkBox = new QCheckBox();
                 connect( checkBox, SIGNAL( clicked(bool) ), this, SLOT( slot_audioDeviceSelected() ) );
-//                checkBox->setText( name );
                 checkBox->setAccessibleName( device );
                 checkBox->setObjectName( "checkboxAudioDevice-" + indexNumber );
                 checkBox->setToolTip( tr ( "Select one or more devices" ) );

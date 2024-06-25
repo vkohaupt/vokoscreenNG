@@ -44,8 +44,10 @@ public:
     QvkLevelMeter *vkLevelMeter;
     QLineEdit *lineEdit;
 
+
 private:
     int maxSteps;
+
 
 public slots:
 
