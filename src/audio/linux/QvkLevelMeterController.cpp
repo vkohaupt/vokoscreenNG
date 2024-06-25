@@ -50,12 +50,12 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QHBoxLayout 
     connect( lineEdit, SIGNAL( textChanged(QString) ), this, SLOT( slot_textChanged(QString) ) );
     connect( lineEdit, SIGNAL( textChanged(QString) ), this, SLOT( update() ) );
 
-    setObjectName( "progressBarAudioDevice-" + checkBox->objectName().right(2) );
+    setObjectName( "progressBarAudioDevice-" + index );
     setFixedHeight(18);
     setTextVisible(false);
     setMinimum(0);
     setMaximum(maxSteps);
-    setToolTip(checkBox->accessibleName());
+    setToolTip( "Index:" + index );
 
     layout->addWidget( this );
 
@@ -66,14 +66,15 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QHBoxLayout 
 }
 
 
-void QvkLevelMeterController::remove_ProgressBar( QCheckBox *checkBox )
+void QvkLevelMeterController::remove_LineEdit( QString index )
 {
     // Remove LineEdit
     for ( int i = 0; i < global::listChildren->count(); i++ ) {
-        QLineEdit *lineEdit_01 = global::listChildren->at(i);
-        if ( lineEdit_01->objectName().right(2) == checkBox->objectName().right(2) ) {
+        QLineEdit *lineEdit_1 = global::listChildren->at(i);
+        if ( lineEdit_1->objectName().right(2) == index ) {
             disconnect( lineEdit, nullptr, nullptr, nullptr );
             global::listChildren->removeAt(i);
+            break;
         }
     }
 }

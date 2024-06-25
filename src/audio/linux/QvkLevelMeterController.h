@@ -40,7 +40,7 @@ public:
     explicit QvkLevelMeterController();
     ~QvkLevelMeterController();
     void add_ProgressBar( QCheckBox *checkBox, QHBoxLayout *layout );
-    void remove_ProgressBar( QCheckBox *checkBox );
+    void remove_LineEdit( QString index );
     QvkLevelMeter *vkLevelMeter;
     QLineEdit *lineEdit;
 

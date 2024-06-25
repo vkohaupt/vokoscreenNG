@@ -153,21 +153,21 @@ void QvkPulseAudioWatcher::slot_update()
 
     // Remove device
     if ( listAllDevices.count() < listCheckBox.count() ) {
-        QString number; // Ist gleich 00, 01, 02, 03 usw.
+        QString index; // Ist gleich 00, 01, 02, 03 usw.
         for ( int i = 0; i < listCheckBox.count(); i++ ) {
             QCheckBox *checkBox = listCheckBox.at(i);
-            number = checkBox->objectName().right(2);
+            index = checkBox->objectName().right(2);
             if ( stringListAudio_Device.contains( checkBox->accessibleName() ) == false ) {
                 QList<QvkLevelMeterController *> listProgressBar = ui->scrollAreaAudioDevice->findChildren<QvkLevelMeterController *>();
                 for ( int i = 0; i < listProgressBar.count(); i++ ) {
                     QvkLevelMeterController *vkLevelMeterController = listProgressBar.at(i);
-                    if ( vkLevelMeterController->objectName().right(2) == number ) {
+                    if ( vkLevelMeterController->objectName().right(2) == index ) {
 
                         qDebug().noquote() << global::nameOutput << "[Audio] Remove Widget" << checkBox->objectName() << checkBox->accessibleName();
                         qDebug().noquote() << global::nameOutput << "[Audio] Remove Widget" << vkLevelMeterController->objectName();
 
                         vkLevelMeterController->vkLevelMeter->stop();
-                        vkLevelMeterController->remove_ProgressBar( checkBox);
+                        vkLevelMeterController->remove_LineEdit( index);
                         vkLevelMeterController->deleteLater();
                     }
                 }
@@ -176,7 +176,7 @@ void QvkPulseAudioWatcher::slot_update()
                 QList<QHBoxLayout *> listBoxLayout = ui->verticalLayoutAudioDevices->findChildren<QHBoxLayout *>();
                 for ( int i = 0; i < listBoxLayout.count(); i++ ) {
                     QHBoxLayout *vBoxLayout = listBoxLayout.at(i);
-                    if ( vBoxLayout->objectName().right(2) == number ) {
+                    if ( vBoxLayout->objectName().right(2) == index ) {
                         qDebug().noquote() << global::nameOutput << "[Audio] Remove Widget" << vBoxLayout->objectName();
                         qDebug().noquote();
                         vBoxLayout->deleteLater();
