@@ -62,3 +62,9 @@ void QvkSpezialProgressBarAudio::paintEvent( QPaintEvent *event )
 void QvkSpezialProgressBarAudio::set_Text( QString m_text ) {
     text = m_text;
 }
+
+
+QString QvkSpezialProgressBarAudio::get_Text()
+{
+    return text;
+}

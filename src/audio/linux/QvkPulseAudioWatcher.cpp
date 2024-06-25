@@ -89,7 +89,7 @@ void QvkPulseAudioWatcher::slot_update()
     if ( listAllDevices.count() > listVBoxLayout.count() ) {
         for ( int i = 0; i < stringListAudio_Device.count(); i++ ) {
             if ( stringListCheckBox.contains( stringListAudio_Device.at(i) ) == false ) {
-                QString name = listAllDevices.at(i).section( ":::", 1, 1 ).left(40);
+                QString name = listAllDevices.at(i).section( ":::", 1, 1 );
                 QString device = listAllDevices.at(i).section( ":::", 0, 0 );
                 qDebug().noquote() << global::nameOutput << "[PulseAudio] Added:" << name << "Device:" << device;
 
@@ -135,10 +135,10 @@ void QvkPulseAudioWatcher::slot_update()
                 vBoxLayout->addWidget( checkBox );
 
                 // levelmeter mit Widgets verbinden
-                qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( listAllDevices.at(i) ).section( ":::", 1, 1 ) << "Device:" << QString( listAllDevices.at(i) ).section( ":::", 0, 0 );
+                qDebug().noquote() << global::nameOutput << "[Audio] Found:" << name << "Device:" << device;
                 QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
-                vkLevelMeterController->add_ProgressBar( checkBox, vBoxLayout );
-                vkLevelMeterController->set_Text( QString( listAllDevices.at(i) ).section( ":::", 1, 1 ) );
+                vkLevelMeterController->add_ProgressBar( checkBox, vBoxLayout, name );
+                vkLevelMeterController->set_Text( name );
 
                 qDebug().noquote() << global::nameOutput << "[Audio] add Widget" << vBoxLayout->objectName();
                 qDebug().noquote() << global::nameOutput << "[Audio] add Widget" << checkBox->objectName() << checkBox->accessibleName();

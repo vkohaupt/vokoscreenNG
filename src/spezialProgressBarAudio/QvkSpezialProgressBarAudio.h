@@ -13,7 +13,7 @@ class QvkSpezialProgressBarAudio : public QProgressBar
 public:
     QvkSpezialProgressBarAudio(QProgressBar *parent = 0);
     void set_Text( QString text );
-
+    QString get_Text();
 
 public slots:
 

@@ -97,7 +97,7 @@ void QvkAudioController::getAllDevices()
                 qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( list.at(i) ).section( ":::", 1, 1 ) << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 );
 
                 vkLevelMeterController = new QvkLevelMeterController;
-                vkLevelMeterController->add_ProgressBar( checkBox, hBoxLayout );
+                vkLevelMeterController->add_ProgressBar( checkBox, hBoxLayout, QString( list.at(i) ).section( ":::", 1, 1 ) );
                 vkLevelMeterController->set_Text( QString( list.at(i) ).section( ":::", 1, 1 ) );
 
             }
