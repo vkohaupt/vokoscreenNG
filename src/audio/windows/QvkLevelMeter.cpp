@@ -86,8 +86,8 @@ static gboolean message_handler( GstBus * bus, GstMessage * message, gpointer da
                     QLineEdit *lineEdit = global::listChildren->at(x);
                     if ( lineEdit->objectName().right(2) == index ) {
                         lineEdit->setText( QString::number(rms) );
-                        printf( "%s  %f \n", index.toLatin1().data(), rms );
-                        fflush(stdout); // This will flush any pending printf output
+                        //printf( "%s  %f \n", index.toLatin1().data(), rms );
+                        //fflush(stdout); // This will flush any pending printf output
                         break;
                     }
                 }
