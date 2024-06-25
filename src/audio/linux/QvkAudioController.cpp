@@ -140,27 +140,6 @@ void QvkAudioController::getAllDevices()
     slot_audioDeviceSelected();
 }
 
-/*
-void QvkAudioController::slot_audioDeviceSelected()
-{
-    isAudioDeviceSelected();
-}
-
-
-bool QvkAudioController::isAudioDeviceSelected()
-{
-    bool value = false;
-    QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listCheckBox.count(); i++ ) {
-        QCheckBox *checkBox = listCheckBox.at(i);
-        if ( checkBox->checkState() == Qt::Checked ) {
-            value = true;
-            break;
-        }
-    }
-    return value;
-}
-*/
 
 void QvkAudioController::slot_audioDeviceSelected()
 {
