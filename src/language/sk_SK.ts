@@ -56,11 +56,11 @@
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Zatvorte okno a spustite vokoscreenNG opäť.</translation>
+        <translation>Zatvorte okno a znovu spustite vokoscreenNG</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Zabávajte sa s vokoscreenNG</translation>
+        <translation>Veľa zábavy s vokoscreenNG</translation>
     </message>
 </context>
 <context>
@@ -81,22 +81,22 @@
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Nenašiel sa žiadny súborový manažér.</translation>
+        <translation>Nenašiel sa správca súborov.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Inštalujte súborový manažér.</translation>
+        <translation>Prosím, nainštalujte správcu súborov.</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Nenašiel sa žiadny súborový manažér.</translation>
+        <translation>Nenašiel sa správca súborov.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Inštalujte súborový manažér.</translation>
+        <translation>Prosím, nainštalujte správcu súborov.</translation>
     </message>
 </context>
 <context>
@@ -131,11 +131,11 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>Nenašiel sa žiadny súborový manažér.</translation>
+        <translation>Nenašiel sa správca súborov.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Inštalujte súborový manažér.</translation>
+        <translation>Prosím, nainštalujte správcu súborov.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
@@ -174,11 +174,11 @@
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Nenašiel sa žiadny súborový manažér.</translation>
+        <translation>Nenašiel sa správca súborov.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Inštalujte súborový manažér.</translation>
+        <translation>Prosím, nainštalujte správcu súborov.</translation>
     </message>
 </context>
 <context>
@@ -206,11 +206,11 @@
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Nenašiel sa žiadny súborový manažér.</translation>
+        <translation>Nenašiel sa správca súborov.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Inštalujte súborový manažér.</translation>
+        <translation>Prosím, nainštalujte správcu súborov.</translation>
     </message>
 </context>
 <context>
@@ -361,7 +361,7 @@
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Kódek video</translation>
+        <translation>Videokodek</translation>
     </message>
     <message>
         <source>Format</source>
@@ -369,7 +369,7 @@
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Zvukový kódek</translation>
+        <translation>Audiokodek</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
@@ -461,7 +461,7 @@
     </message>
     <message>
         <source>Folder</source>
-        <translation>Priečinok - adresár</translation>
+        <translation>Priečinok</translation>
     </message>
     <message>
         <source>Camera</source>
@@ -493,7 +493,7 @@
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Otvoriť adresár - priečinok</translation>
+        <translation>Otvoriť priečinok</translation>
     </message>
     <message>
         <source>CTRL+SHIFT+F8</source>
@@ -529,7 +529,7 @@
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright a licencie obrázkov</translation>
+        <translation>Autorské práva a licencie obrázkov</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -569,7 +569,7 @@
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Globálne klávesnicove skratky</translation>
+        <translation>Globálne klávesové skratky</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
@@ -585,7 +585,7 @@
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Snímok obrazovky</translation>
+        <translation>Snímka obrazovky</translation>
     </message>
     <message>
         <source>Imagepath</source>
@@ -612,7 +612,7 @@
     <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright a licencie obrázkov</translation>
+        <translation>Autorské práva a licencie obrázkov</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
@@ -660,7 +660,7 @@
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Kódek video</translation>
+        <translation>Videokodek</translation>
     </message>
     <message>
         <source>Frames</source>
@@ -700,7 +700,7 @@
     </message>
     <message>
         <source>Folder</source>
-        <translation>Priečinok - adresár</translation>
+        <translation>Priečinok</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
@@ -708,7 +708,7 @@
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Zvukový kódek</translation>
+        <translation>Audiokodek</translation>
     </message>
     <message>
         <source>Videopath</source>
@@ -723,7 +723,7 @@
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright a licencie obrázkov</translation>
+        <translation>Autorské práva a licencie obrázkov</translation>
     </message>
 </context>
 <context>

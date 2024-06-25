@@ -581,7 +581,7 @@
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Ha a kijelölve jelenik meg, de nem működik, akkor egy másik program használja.</translation>
+        <translation>Ha kijelölve jelenik meg, de nem működik, akkor egy másik program használja.</translation>
     </message>
     <message>
         <source>Snapshot</source>
