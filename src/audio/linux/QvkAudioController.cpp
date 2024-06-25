@@ -65,6 +65,8 @@ void QvkAudioController::getAllDevices()
         list << QvkPulseAudioDevices::getAllDevices();
         if ( !list.empty() ) {
             for ( int i = 0; i < list.count(); i++ ) {
+                QString name = list.at(i).section( ":::", 1, 1 );
+                QString device = list.at(i).section( ":::", 0, 0 );
 
                 // Führende Null voranstellen
                 QString index;
@@ -79,7 +81,7 @@ void QvkAudioController::getAllDevices()
                 hBoxLayout->setObjectName( "vBoxLayoutAudioDevice-" + index );
                 QCheckBox *checkBox = new QCheckBox();
                 connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
-                checkBox->setAccessibleName( QString( list.at(i) ).section( ":::", 0, 0 ) );
+                checkBox->setAccessibleName( device );
                 checkBox->setObjectName( "checkboxAudioDevice-" + index );
                 checkBox->setToolTip( tr ( "Select one or more devices" ) );
 
@@ -94,11 +96,11 @@ void QvkAudioController::getAllDevices()
                 hBoxLayout->addWidget( checkBox );
                 ui->verticalLayoutAudioDevices->addLayout( hBoxLayout );
 
-                qDebug().noquote() << global::nameOutput << "[Audio] Found:" << QString( list.at(i) ).section( ":::", 1, 1 ) << "Device:" << QString( list.at(i) ).section( ":::", 0, 0 );
+                qDebug().noquote() << global::nameOutput << "[Audio] Found:" << name << "Device:" << device;
 
                 vkLevelMeterController = new QvkLevelMeterController;
-                vkLevelMeterController->add_ProgressBar( checkBox, hBoxLayout, QString( list.at(i) ).section( ":::", 1, 1 ) );
-                vkLevelMeterController->set_Text( QString( list.at(i) ).section( ":::", 1, 1 ) );
+                vkLevelMeterController->add_ProgressBar( checkBox, hBoxLayout, name );
+                vkLevelMeterController->set_Text( name );
 
             }
             qDebug().noquote();
