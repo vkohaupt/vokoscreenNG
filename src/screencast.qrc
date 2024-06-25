@@ -79,10 +79,8 @@
 <file>pictures/screencast/world.png</file>
 <file>pictures/screencast/strip.png</file>
 <file>pictures/screencast/monitor-sidebar.png</file>
-<file>pictures/screencast/undo-org.png</file>
 <file>pictures/screencast/shortcut.png</file>
 <file>pictures/screencast/night.png</file>
-<file>pictures/screencast/microphone-old.png</file>
 <file>pictures/screencast/accept.png</file>
 <file>pictures/screencast/help-about.png</file>
 <file>pictures/screencast/information.png</file>
@@ -97,7 +95,6 @@
 <file>pictures/screencast/strip-avi.png</file>
 <file>pictures/screencast/author.png</file>
 <file>pictures/screencast/speaker.png</file>
-<file>pictures/screencast/microphone-org.png</file>
 <file>pictures/screencast/screen-name.png</file>
 <file>pictures/screencast/microphone.png</file>
 <file>pictures/screencast/strip-mp4.png</file>
@@ -178,6 +175,7 @@
 <file>pictures/screencast/microphone.license</file>
 <file>pictures/screencast/world.license</file>
 <file>pictures/screencast/undo.license</file>
+<file>pictures/screencast/information.license</file>
 <file>pictures/showClick/sandglass.license</file>
 <file>pictures/showClick/halo.license</file>
 <file>pictures/showClick/cursor.license</file>
