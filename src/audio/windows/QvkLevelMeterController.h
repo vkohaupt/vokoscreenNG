@@ -27,6 +27,7 @@
 #include <QCheckBox>
 #include <QProgressBar>
 #include <QHBoxLayout>
+#include <QLineEdit>
 
 #include "QvkLevelMeter.h"
 #include "QvkSpezialProgressBarAudio.h"
@@ -39,9 +40,9 @@ public:
     explicit QvkLevelMeterController();
     ~QvkLevelMeterController();
     void add_ProgressBar( QCheckBox *checkBox, QHBoxLayout *layout );
-    void remove_LineEdit(QCheckBox *checkBox);
+    void remove_LineEdit( QString index );
     QvkLevelMeter *vkLevelMeter;
-
+    QLineEdit *lineEdit;
 
 private:
     int maxSteps;

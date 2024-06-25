@@ -74,6 +74,7 @@ void QvkWASAPIController::slot_audioDeviceSelected()
 
 void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
 {
+    qDebug() << "11111111111111111111111111111111111111111111111";
     QList<QLabel *> listLabel = ui->scrollAreaAudioDevice->findChildren<QLabel *>();
     for ( int i = 0; i < listLabel.count(); i++ ) {
         ui->verticalLayoutAudioDevices->removeWidget( listLabel.at(i) );
@@ -91,9 +92,9 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
         qDebug().noquote() << global::nameOutput << "[Audio] Device is empty -> return";
         return;
     }
+    qDebug() << "222222222222222222222222222222222222222222";
 
     if ( action == "[Audio-device-added]" ) {
-
         // Freier Index(xx) 00, 01, 02, xx, 04, 05 usw. ermitteln und diesen Index dem neuen Layout, CheckBox und ProgressBar hinzufügen
         QList<QFrame *> listVBoxLayout = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QFrame *>();
         QString index;
@@ -154,94 +155,40 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
     }
 
     if ( action == "[Audio-device-removed]" ) {
-        QString index = get_index_removed_device( string );
-        QHBoxLayout *vBoxLayout = get_removed_vBoxLayout( index );
-        QvkSpezialProgressBarAudio *progressBar = get_removed_ProgressBar( index );
-        QCheckBox *checkBox = get_removed_checkBox( index );
+        // Die CheckBox beinhaltet das Gerät das in der GUI entfernt werden soll.
+        // Und jede Checkbox, BoxLayout und ProgressBar wurde ein gleicher eindeutiger Wert<index> an den Objectnamen hinzugefügt.
+        // Beispiel  ....-00, ...-01, ...-02, ...-03 usw.
+        QString index;
+        QString device = string.section( ":::", 0, 0 );
+        QList<QCheckBox *> listQCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
+        for ( int i = 0; i < listQCheckBox.count(); i++ ) {
+            QCheckBox *checkBox = listQCheckBox.at(i);
+            if ( checkBox->accessibleName().section( ":::", 0, 0 ) == device ) {
+                index = checkBox->objectName().right(2);
+                break;
+            }
+        }
 
         QList<QvkLevelMeterController *> listProgressBar = ui->scrollAreaAudioDevice->findChildren<QvkLevelMeterController *>();
         for ( int i = 0; i < listProgressBar.count(); i++ ) {
             QvkLevelMeterController *vkLevelMeterController = listProgressBar.at(i);
+            //            vkLevelMeterController->vkLevelMeter->stop(); //----------------------------------
             if ( vkLevelMeterController->objectName().right(2) == index ) {
                 qDebug().noquote() << global::nameOutput << "[Audio-device-removed]" << name << device;
                 vkLevelMeterController->vkLevelMeter->stop();
-                vkLevelMeterController->remove_LineEdit( checkBox ); // Statt checkbox index verwenden
+                vkLevelMeterController->remove_LineEdit( index );
                 vkLevelMeterController->deleteLater();
                 break;
             }
         }
 
-
-//        delete checkBox;
-//        ui->verticalLayoutAudioDevices->removeItem( vBoxLayout );
-//        vBoxLayout->deleteLater();
-    }
-}
-
-
-// Die CheckBox beinhaltet das Gerät das in der GUI entfernt werden soll.
-// Und jede Checkbox, BoxLayout und ProgressBar wurde ein gleicher eindeutiger Wert<index> an den Objectnamen hinzugefügt.
-// Beispiel  ....-00, ...-01, ...-02, ...-03 usw.
-QString QvkWASAPIController::get_index_removed_device( QString string )
-{
-    QString index = "";
-    QString device = string.section( ":::", 0, 0 );
-    QList<QCheckBox *> listQCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listQCheckBox.count(); i++ ) {
-        QCheckBox *checkBox = listQCheckBox.at(i);
-        if ( checkBox->accessibleName().section( ":::", 0, 0 ) == device ) {
-            index = checkBox->objectName().right(2);
-            break;
+        QList<QFrame *> listFrame = ui->scrollAreaAudioDevice->findChildren<QFrame *>();
+        for ( int i = 0; i < listProgressBar.count(); i++ ) {
+            QFrame *frame = listFrame.at(i);
+            if ( frame->objectName().right(2) == index ) {
+                frame->deleteLater();
+                break;
+            }
         }
     }
-    return index;
 }
-
-
-QCheckBox *QvkWASAPIController::get_removed_checkBox( QString index )
-{
-    QCheckBox *returnCheckBox = NULL;
-    QList<QCheckBox *> list = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-    for ( int i = 0; i < list.count(); i++  ) {
-        QCheckBox *checkBox = list.at(i);
-        if ( checkBox->objectName().contains( "checkBoxAudioDevice-" + index ) ) {
-            qDebug().noquote() << global::nameOutput << "Removed widget:" << checkBox->objectName();
-            returnCheckBox = checkBox;
-            break;
-        }
-    }
-    return returnCheckBox;
-}
-
-
-QHBoxLayout *QvkWASAPIController::get_removed_vBoxLayout( QString index )
-{
-    QHBoxLayout *returnVBoxLayout = NULL;
-    QList<QHBoxLayout *> list = ui->scrollAreaAudioDevice->findChildren<QHBoxLayout *>();
-    for ( int i = 0; i < list.count(); i++  ) {
-        QHBoxLayout *vBoxLayout = list.at(i);
-        if ( vBoxLayout->objectName().contains( "vBoxLayoutAudioDevice-" + index ) ) {
-            qDebug().noquote() << global::nameOutput << "Removed widget:" << vBoxLayout->objectName();
-            returnVBoxLayout = vBoxLayout;
-            break;
-        }
-    }
-    return returnVBoxLayout;
-}
-
-
-QvkSpezialProgressBarAudio *QvkWASAPIController::get_removed_ProgressBar( QString index )
-{
-    QvkSpezialProgressBarAudio *returnProgressBar = NULL;
-    QList<QvkSpezialProgressBarAudio *> list = ui->scrollAreaAudioDevice->findChildren<QvkSpezialProgressBarAudio *>();
-    for ( int i = 0; i < list.count(); i++  ) {
-        QvkSpezialProgressBarAudio *progressBar = list.at(i);
-        if ( progressBar->objectName().contains( "progressBarAudioDevice-" + index ) ) {
-            qDebug().noquote() << global::nameOutput << "Removed widget:" << progressBar->objectName();
-            returnProgressBar = progressBar;
-            break;
-        }
-    }
-    return returnProgressBar;
-}
-

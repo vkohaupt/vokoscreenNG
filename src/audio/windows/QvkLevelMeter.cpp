@@ -70,9 +70,27 @@ static gboolean message_handler( GstBus * bus, GstMessage * message, gpointer da
                 // converting from dB to normal gives us a value between 0.0 and 1.0
                 rms = pow( 10, rms_dB / 20 );
 
-                qint64 index = (qint64)data;
-                QLineEdit *lineEdit = global::listChildren->at(index);
-                lineEdit->setText( QString::number(rms) );
+                qint64 indexData = (qint64)data;
+                QString index;
+                for ( int x = 0; x < global::listChildren->count(); x++ ) {
+                    if ( x < 10 ) {
+                        index = "0" + QString::number(indexData);
+                        break;
+                    } else {
+                        index = QString::number(indexData);
+                        break;
+                    }
+                }
+
+                for ( int x = 0; x < global::listChildren->count(); x++ ) {
+                    QLineEdit *lineEdit = global::listChildren->at(x);
+                    if ( lineEdit->objectName().right(2) == index ) {
+                        lineEdit->setText( QString::number(rms) );
+                        printf( "%s  %f \n", index.toLatin1().data(), rms );
+                        fflush(stdout); // This will flush any pending printf output
+                        break;
+                    }
+                }
             }
         }
     }

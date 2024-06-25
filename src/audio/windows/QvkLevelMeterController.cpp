@@ -44,7 +44,7 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QHBoxLayout 
 {
     QString index = checkBox->objectName().right(2);
 
-    QLineEdit *lineEdit = new QLineEdit();
+    lineEdit = new QLineEdit();
     lineEdit->setObjectName( "lineEditLevelMeter_" + index );
     global::listChildren->append( lineEdit );
 
@@ -64,16 +64,17 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QHBoxLayout 
     QString name = checkBox->accessibleName().section( ":::", 1, 1 );
     QString SourceOrPlayback = checkBox->accessibleName().section( ":::", 2, 2);
     set_Text( name );
+    setToolTip( "Index:" + index + "  " + device );
     vkLevelMeter->start( device, name, index, SourceOrPlayback );
 }
 
 
-void QvkLevelMeterController::remove_LineEdit( QCheckBox *checkBox )
+void QvkLevelMeterController::remove_LineEdit( QString index )
 {
     // Remove LineEdit
     for ( int i = 0; i < global::listChildren->count(); i++ ) {
-        QLineEdit *lineEdit = global::listChildren->at(i);
-        if ( lineEdit->objectName().right(2) == checkBox->objectName().right(2) ) {
+        QLineEdit *lineEdit_1 = global::listChildren->at(i);
+        if ( lineEdit_1->objectName().right(2) == index ) {
             disconnect( lineEdit, nullptr, nullptr, nullptr );
             global::listChildren->removeAt(i);
             break;
