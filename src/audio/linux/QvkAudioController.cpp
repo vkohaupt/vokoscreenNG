@@ -67,21 +67,20 @@ void QvkAudioController::getAllDevices()
             for ( int i = 0; i < list.count(); i++ ) {
 
                 // Führende Null voranstellen
-                QString prefixNumber;
+                QString index;
                 if ( i < 10 ) {
-                    prefixNumber = "0" + QString::number(i);
+                    index = "0" + QString::number(i);
                 } else {
-                    prefixNumber = QString::number(i);
+                    index = QString::number(i);
                 }
 
                 QHBoxLayout *hBoxLayout = new QHBoxLayout; // Für Checkbox und Progressbar
                 hBoxLayout->setSpacing(0);
-                hBoxLayout->setObjectName( "vBoxLayoutAudioDevice-" + prefixNumber );
-
+                hBoxLayout->setObjectName( "vBoxLayoutAudioDevice-" + index );
                 QCheckBox *checkBox = new QCheckBox();
                 connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
                 checkBox->setAccessibleName( QString( list.at(i) ).section( ":::", 0, 0 ) );
-                checkBox->setObjectName( "checkboxAudioDevice-" + prefixNumber );
+                checkBox->setObjectName( "checkboxAudioDevice-" + index );
                 checkBox->setToolTip( tr ( "Select one or more devices" ) );
 
                 if ( QString( list.at(i) ).section( ":::", 0, 0 ).contains( "monitor" ) ) {
@@ -153,7 +152,8 @@ bool QvkAudioController::isAudioDeviceSelected()
     bool value = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
-        if ( listCheckBox.at(i)->checkState() == Qt::Checked ) {
+        QCheckBox *checkBox = listCheckBox.at(i);
+        if ( checkBox->checkState() == Qt::Checked ) {
             value = true;
             break;
         }
