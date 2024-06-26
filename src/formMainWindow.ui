@@ -593,8 +593,8 @@
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>464</width>
-                       <height>213</height>
+                       <width>456</width>
+                       <height>196</height>
                       </rect>
                      </property>
                      <property name="accessibleName">
@@ -1192,7 +1192,7 @@
                   <property name="bottomMargin">
                    <number>0</number>
                   </property>
-                  <item>
+                  <item alignment="Qt::AlignTop">
                    <widget class="QFrame" name="frameVideoCodecx264">
                     <property name="frameShape">
                      <enum>QFrame::NoFrame</enum>
@@ -1285,7 +1285,7 @@
                        <item>
                         <layout class="QHBoxLayout" name="horizontalLayout_26">
                          <property name="spacing">
-                          <number>0</number>
+                          <number>6</number>
                          </property>
                          <item>
                           <widget class="QLabel" name="label_21">
@@ -1463,7 +1463,7 @@
                     </layout>
                    </widget>
                   </item>
-                  <item>
+                  <item alignment="Qt::AlignTop">
                    <widget class="QFrame" name="frameVideoCodecVp8">
                     <property name="frameShape">
                      <enum>QFrame::NoFrame</enum>
@@ -1481,7 +1481,7 @@
                      <property name="bottomMargin">
                       <number>0</number>
                      </property>
-                     <item alignment="Qt::AlignTop">
+                     <item>
                       <widget class="QLabel" name="label_22">
                        <property name="maximumSize">
                         <size>
@@ -2625,7 +2625,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>469</width>
+                   <width>463</width>
                    <height>427</height>
                   </rect>
                  </property>
