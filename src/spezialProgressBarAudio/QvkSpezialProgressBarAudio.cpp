@@ -44,7 +44,7 @@ void QvkSpezialProgressBarAudio::paintEvent( QPaintEvent *event )
         qreal w = width()-2*lineWidth;
         qreal m = maximum();
         qreal v = value();
-        painterPixmap.drawRect( lineWidth, height()-3, w/m*v, height() );
+        painterPixmap.drawRect( lineWidth, height()-4, w/m*v, height() );
 
         // Text
         pen.setColor( Qt::black );
