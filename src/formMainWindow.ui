@@ -398,7 +398,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="iconSize">
            <size>
@@ -1291,8 +1291,8 @@
                           <widget class="QLabel" name="label_21">
                            <property name="maximumSize">
                             <size>
-                             <width>34</width>
-                             <height>34</height>
+                             <width>28</width>
+                             <height>28</height>
                             </size>
                            </property>
                            <property name="text">
@@ -1374,7 +1374,7 @@
                        <item>
                         <layout class="QHBoxLayout" name="horizontalLayout_openh264">
                          <property name="spacing">
-                          <number>0</number>
+                          <number>6</number>
                          </property>
                          <item>
                           <widget class="QLabel" name="label_19">
@@ -1485,8 +1485,8 @@
                       <widget class="QLabel" name="label_22">
                        <property name="maximumSize">
                         <size>
-                         <width>34</width>
-                         <height>34</height>
+                         <width>28</width>
+                         <height>28</height>
                         </size>
                        </property>
                        <property name="text">
@@ -7128,7 +7128,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
