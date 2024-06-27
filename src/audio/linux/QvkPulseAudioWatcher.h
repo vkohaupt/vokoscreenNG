@@ -45,7 +45,6 @@ public slots:
 private:
     Ui_formMainWindow *ui;
     QTimer *timer;
-    bool isAudioDeviceSelected();
 
 
 private slots:

@@ -231,12 +231,6 @@ void QvkPulseAudioWatcher::slot_update()
 
 void QvkPulseAudioWatcher::slot_audioDeviceSelected()
 {
-    isAudioDeviceSelected();
-}
-
-
-bool QvkPulseAudioWatcher::isAudioDeviceSelected()
-{
     bool value = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
@@ -246,5 +240,5 @@ bool QvkPulseAudioWatcher::isAudioDeviceSelected()
             break;
         }
     }
-    return value;
+    emit signal_haveAudioDeviceSelected( value );
 }
