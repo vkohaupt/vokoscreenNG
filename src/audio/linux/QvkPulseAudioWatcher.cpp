@@ -95,10 +95,10 @@ void QvkPulseAudioWatcher::slot_update()
 
                 // Freier Index(xx) 00, 01, 02, xx, 04, 05 usw. ermitteln und diesen Index dem neuen Layout, CheckBox und ProgressBar hinzufügen
                 QList<QHBoxLayout *> listVBoxLayout = ui->verticalLayoutAudioDevices->findChildren<QHBoxLayout *>();
-                QString indexNumber;
+                QString index;
                 if ( listVBoxLayout.empty() ) {
-                    indexNumber = "00";
-                    qDebug().noquote() << global::nameOutput << "Index in List: List is empty" << "Count befor add:" << listVBoxLayout.count() << "New index:" << indexNumber ;
+                    index = "00";
+                    qDebug().noquote() << global::nameOutput << "Index in List: List is empty" << "Count befor add:" << listVBoxLayout.count() << "New index:" << index;
                 } else {
                     QStringList indexStringList;
                     for ( int i = 0; i < listVBoxLayout.count(); i++ ) {
@@ -108,19 +108,19 @@ void QvkPulseAudioWatcher::slot_update()
                     // Max 30 Audio Geräte
                     for ( int x = 1; x < 30; x++ ) {
                         if ( x < 10 ) {
-                            indexNumber = "0" + QString::number(x);
+                            index = "0" + QString::number(x);
                         } else {
-                            indexNumber = QString::number(x);
+                            index = QString::number(x);
                         }
-                        if ( indexStringList.contains(indexNumber) == false ) {
+                        if ( indexStringList.contains(index) == false ) {
                             break;
                         }
                     }
-                    qDebug().noquote() << global::nameOutput << "Index in List" << indexStringList << "Count befor add:" << listVBoxLayout.count() << "New index:" << indexNumber ;
+                    qDebug().noquote() << global::nameOutput << "Index in List" << indexStringList << "Count befor add:" << listVBoxLayout.count() << "New index:" << index;
                 }
 
                 QHBoxLayout *vBoxLayout = new QHBoxLayout; // Für Checkbox und Progressbar
-                vBoxLayout->setObjectName( "vBoxLayoutAudioDevice-" + indexNumber );
+                vBoxLayout->setObjectName( "vBoxLayoutAudioDevice-" + index );
                 vBoxLayout->setSpacing(0);
                 ui->verticalLayoutAudioDevices->addLayout( vBoxLayout );
 
@@ -128,7 +128,7 @@ void QvkPulseAudioWatcher::slot_update()
                 QCheckBox *checkBox = new QCheckBox();
                 connect( checkBox, SIGNAL( clicked(bool) ), this, SLOT( slot_audioDeviceSelected() ) );
                 checkBox->setAccessibleName( device );
-                checkBox->setObjectName( "checkboxAudioDevice-" + indexNumber );
+                checkBox->setObjectName( "checkboxAudioDevice-" + index );
                 checkBox->setToolTip( tr ( "Select one or more devices" ) );
                 checkBox->setIcon( QIcon( ":/pictures/screencast/microphone.png" ) );
                 checkBox->setIconSize( QSize( 16, 16 ) );
