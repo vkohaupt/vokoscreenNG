@@ -816,16 +816,11 @@ void QvkMainWindow::slot_darkMode( bool bo )
         for ( int i=0; i < widgetList.count(); i++ ) {
             widgetList.at(i)->setPalette( newPalette );
         }
-
-        // ScollArea muß seperat geändert werden
-        ui->scrollAreaWidgetContentsAudioDevices->setStyleSheet( "background-color: rgb( 60, 60, 60 ); color: rgb( 212, 212, 212 );" );
     } else {
         for ( int i=0; i < widgetList.count(); i++ ) {
             widgetList.at(i)->setPalette( oldPaletteDarkMode );
         }
-        ui->scrollAreaWidgetContentsAudioDevices->setStyleSheet( "background-color: rgb( 255, 255, 255 ); color: rgb( 0, 0, 0 );" );
     }
-
 }
 
 

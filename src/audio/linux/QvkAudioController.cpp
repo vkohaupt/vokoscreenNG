@@ -38,7 +38,6 @@ QvkAudioController::QvkAudioController( Ui_formMainWindow *ui_mainwindow )
     ui = ui_mainwindow;
     ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
     global::listChildren = new QList<QLineEdit*>();
-    ui->scrollAreaWidgetContentsAudioDevices->setStyleSheet( "background-color: white; " );
 }
 
 

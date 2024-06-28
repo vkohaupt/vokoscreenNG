@@ -171,10 +171,3 @@ QProgressBar::chunk{
 QComboBox {
     selection-background-color: #3daee9;
 }
-
-<!--
-QScrollArea #scrollAreaWidgetContentsAudioDevices {
-    background-color: white;
-}
--->
-
