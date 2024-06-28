@@ -17,18 +17,20 @@ void QvkSpezialProgressBarAudio::paintEvent( QPaintEvent *event )
 {
     Q_UNUSED( event );
 
-    QColor colorFont;
-    QColor colorBackground;
+    QColor colorFont = Qt::black;
+    QColor colorBackground = Qt::white;
+#ifdef Q_OS_UNIX
     QList<QvkSpezialCheckbox *> list = this->parent()->parent()->parent()->parent()->parent()->findChildren<QvkSpezialCheckbox *>();
+#endif
+#ifdef Q_OS_WIN
+    QList<QvkSpezialCheckbox *> list = this->parent()->parent()->parent()->parent()->parent()->parent()->findChildren<QvkSpezialCheckbox *>();
+#endif
     for ( int i = 0; i < list.count(); i++ ) {
         QvkSpezialCheckbox *vkSpezialCheckbox = list.at(i);
         if ( vkSpezialCheckbox->objectName() == "spezialCheckboxDarkMode" ) {
             if( vkSpezialCheckbox->isChecked() == true ) {
                 colorFont = Qt::white;
-                colorBackground = Qt::black;
-            } else {
-                colorFont = Qt::black;
-                colorBackground = Qt::white;
+                colorBackground = QColor( 60,  60,  60);
             }
         }
     }
