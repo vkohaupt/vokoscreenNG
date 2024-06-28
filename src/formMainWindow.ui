@@ -593,8 +593,8 @@
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>456</width>
-                       <height>196</height>
+                       <width>464</width>
+                       <height>213</height>
                       </rect>
                      </property>
                      <property name="accessibleName">
@@ -2625,7 +2625,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>463</width>
+                   <width>469</width>
                    <height>427</height>
                   </rect>
                  </property>

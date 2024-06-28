@@ -21,10 +21,22 @@ void QvkSpezialProgressBarAudio::paintEvent( QPaintEvent *event )
 {
     Q_UNUSED( event );
 
+    QColor colorFont;
+    QColor colorBackground;
+#ifdef Q_OS_UNIX
     QList<QScrollArea *> list = this->parent()->parent()->parent()->parent()->findChildren<QScrollArea *>();
-    QScrollArea *scrollArea = list.at(0);
-    QColor colorFont = scrollArea->palette().windowText().color();
-    QColor colorBackground = scrollArea->palette().window().color();
+#endif
+#ifdef Q_OS_WIN
+    QList<QScrollArea *> list = this->parent()->parent()->parent()->parent()->parent()->findChildren<QScrollArea *>();
+#endif
+    if ( !list.empty() ) {
+        QScrollArea *scrollArea = list.at(0);
+        colorFont = scrollArea->palette().windowText().color();
+        colorBackground = scrollArea->palette().window().color();
+    } else {
+        colorFont = Qt::black;
+        colorBackground = Qt::white;
+    }
 
     QPixmap pixmap( width(), height() );
     pixmap.fill( Qt::transparent );
@@ -40,7 +52,7 @@ void QvkSpezialProgressBarAudio::paintEvent( QPaintEvent *event )
 
         // Frame
         QPen pen;
-        pen.setColor( Qt::lightGray );
+        pen.setColor( colorBackground );
         pen.setStyle( Qt::SolidLine );
         pen.setWidth( lineWidth );
         painterPixmap.setPen( pen );
