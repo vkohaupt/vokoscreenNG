@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QCheckBox>
 #include <QList>
+#include <QScrollArea>
 
 
 
@@ -17,23 +18,10 @@ void QvkSpezialProgressBarAudio::paintEvent( QPaintEvent *event )
 {
     Q_UNUSED( event );
 
-    QColor colorFont = Qt::black;
-    QColor colorBackground = Qt::white;
-#ifdef Q_OS_UNIX
-    QList<QvkSpezialCheckbox *> list = this->parent()->parent()->parent()->parent()->parent()->findChildren<QvkSpezialCheckbox *>();
-#endif
-#ifdef Q_OS_WIN
-    QList<QvkSpezialCheckbox *> list = this->parent()->parent()->parent()->parent()->parent()->parent()->findChildren<QvkSpezialCheckbox *>();
-#endif
-    for ( int i = 0; i < list.count(); i++ ) {
-        QvkSpezialCheckbox *vkSpezialCheckbox = list.at(i);
-        if ( vkSpezialCheckbox->objectName() == "spezialCheckboxDarkMode" ) {
-            if( vkSpezialCheckbox->isChecked() == true ) {
-                colorFont = Qt::white;
-                colorBackground = QColor( 60,  60,  60);
-            }
-        }
-    }
+    QList<QScrollArea *> list = this->parent()->parent()->parent()->parent()->findChildren<QScrollArea *>();
+    QScrollArea *scrollArea = list.at(0);
+    QColor colorFont = scrollArea->palette().windowText().color();
+    QColor colorBackground = scrollArea->palette().window().color();
 
     QPixmap pixmap( width(), height() );
     pixmap.fill( Qt::transparent );
