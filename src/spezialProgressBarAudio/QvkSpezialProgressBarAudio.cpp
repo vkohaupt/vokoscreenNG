@@ -80,6 +80,8 @@ void QvkSpezialProgressBarAudio::paintEvent( QPaintEvent *event )
     }
 
     QPainter painter( this );
+    painter.setRenderHint( QPainter::Antialiasing, true );
+    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painter.drawPixmap( 0, 0, pixmap );
 }
 
