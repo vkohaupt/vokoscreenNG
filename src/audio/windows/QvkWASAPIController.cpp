@@ -33,8 +33,9 @@
 #include <QIcon>
 #include <QSize>
 #include <QList>
-#include <QAudioDevice>
-#include <QMediaDevices>
+#include <QLineEdit>
+#include <QFrame>
+
 
 QvkWASAPIController::QvkWASAPIController( Ui_formMainWindow *ui_mainwindow )
 {

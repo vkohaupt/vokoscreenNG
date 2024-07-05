@@ -29,9 +29,6 @@
 #include "QvkSpezialProgressBarAudio.h"
 
 #include <QObject>
-#include <QProgressBar>
-#include <QHBoxLayout>
-#include <QList>
 
 class QvkWASAPIController: public QObject
 {

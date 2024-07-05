@@ -25,7 +25,6 @@
 #include "global.h"
 
 #include <QCheckBox>
-#include <QProgressBar>
 #include <QLineEdit>
 #include <QHBoxLayout>
 
