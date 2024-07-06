@@ -398,7 +398,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <property name="iconSize">
            <size>
@@ -593,8 +593,8 @@
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>464</width>
-                       <height>213</height>
+                       <width>456</width>
+                       <height>196</height>
                       </rect>
                      </property>
                      <property name="accessibleName">
@@ -2290,36 +2290,22 @@
                 </property>
                </widget>
               </item>
+              <item row="14" column="2">
+               <widget class="QToolButton" name="help_screencast_deleteallsettings">
+                <property name="toolTip">
+                 <string>Help</string>
+                </property>
+                <property name="text">
+                 <string notr="true">Help</string>
+                </property>
+               </widget>
+              </item>
               <item row="14" column="0">
-               <layout class="QGridLayout" name="gridLayout_9" rowstretch="0,0,0" columnstretch="0,0,0">
-                <property name="leftMargin">
-                 <number>1</number>
+               <widget class="QCheckBox" name="checkBoxResetAtNextStart">
+                <property name="text">
+                 <string>Reset all settings at the next start</string>
                 </property>
-                <property name="verticalSpacing">
-                 <number>0</number>
-                </property>
-                <item row="2" column="2">
-                 <widget class="QToolButton" name="help_screencast_deleteallsettings">
-                  <property name="toolTip">
-                   <string>Help</string>
-                  </property>
-                  <property name="text">
-                   <string notr="true">Help</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0" colspan="2">
-                 <layout class="QHBoxLayout" name="horizontalLayout_13">
-                  <item>
-                   <widget class="QCheckBox" name="checkBoxResetAtNextStart">
-                    <property name="text">
-                     <string>Reset all settings at the next start</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-               </layout>
+               </widget>
               </item>
              </layout>
             </item>
@@ -2625,7 +2611,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>469</width>
+                   <width>463</width>
                    <height>427</height>
                   </rect>
                  </property>
@@ -7128,7 +7114,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>

@@ -160,6 +160,10 @@ QPushButton::hover{
     border-radius: 4px;
 }
 
+QPushButton::disabled{
+    color: gray;
+}
+
 
 
 QProgressBar::chunk{
