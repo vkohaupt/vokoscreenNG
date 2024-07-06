@@ -100,7 +100,7 @@ static gboolean message_handler( GstBus * bus, GstMessage * message, gpointer da
 
 void QvkLevelMeter::start( QString device, QString myname, QString index, QString SourceOrPlayback )
 {
-    GstElement *audiotestsrc, *audioconvert, *level, *fakesink;
+    GstElement *audiosrc, *audioconvert, *level, *fakesink;
     GstCaps *caps;
     GstBus *bus;
 
@@ -108,8 +108,8 @@ void QvkLevelMeter::start( QString device, QString myname, QString index, QStrin
 
     pipeline = gst_pipeline_new( NULL );
     g_assert (pipeline);
-    audiotestsrc = gst_element_factory_make( "wasapi2src", NULL );
-    g_assert (audiotestsrc);
+    audiosrc = gst_element_factory_make( "wasapi2src", NULL );
+    g_assert (audiosrc);
     audioconvert = gst_element_factory_make( "audioconvert", NULL );
     g_assert (audioconvert);
     level = gst_element_factory_make( "level", NULL );
@@ -117,9 +117,9 @@ void QvkLevelMeter::start( QString device, QString myname, QString index, QStrin
     fakesink = gst_element_factory_make( "fakesink", NULL );
     g_assert (fakesink);
 
-    gst_bin_add_many( GST_BIN( pipeline ), audiotestsrc, audioconvert, level, fakesink, NULL );
-    if ( !gst_element_link( audiotestsrc, audioconvert ) ) {
-        g_error( "Failed to link audiotestsrc and audioconvert" );
+    gst_bin_add_many( GST_BIN( pipeline ), audiosrc, audioconvert, level, fakesink, NULL );
+    if ( !gst_element_link( audiosrc, audioconvert ) ) {
+        g_error( "Failed to link audiosrc and audioconvert" );
     }
     if (!gst_element_link_filtered( audioconvert, level, caps ) ) {
         g_error( "Failed to link audioconvert and level" );
@@ -128,10 +128,10 @@ void QvkLevelMeter::start( QString device, QString myname, QString index, QStrin
         g_error( "Failed to link level and fakesink" );
     }
 
-    g_object_set( G_OBJECT( audiotestsrc ), "device", device.toUtf8().constData(), NULL );
+    g_object_set( G_OBJECT( audiosrc ), "device", device.toUtf8().constData(), NULL );
 
     if ( SourceOrPlayback == "Playback" ) {
-        g_object_set( G_OBJECT( audiotestsrc ), "loopback", true, NULL );
+        g_object_set( G_OBJECT( audiosrc ), "loopback", true, NULL );
     }
 
     // make sure we'll get messages
