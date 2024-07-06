@@ -72,14 +72,10 @@ static gboolean message_handler( GstBus * bus, GstMessage * message, gpointer da
 
                 qint64 indexData = (qint64)data;
                 QString index;
-                for ( int x = 0; x < global::listChildren->count(); x++ ) {
-                    if ( x < 10 ) {
-                        index = "0" + QString::number(indexData);
-                        break;
-                    } else {
-                        index = QString::number(indexData);
-                        break;
-                    }
+                if ( indexData < 10 ) {
+                    index = "0" + QString::number(indexData);
+                } else {
+                    index = QString::number(indexData);
                 }
 
                 for ( int x = 0; x < global::listChildren->count(); x++ ) {
