@@ -95,19 +95,20 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
 
     if ( action == "[Audio-device-added]" ) {
         // Freier Index(xx) 00, 01, 02, xx, 04, 05 usw. ermitteln und diesen Index dem neuen Layout, CheckBox und ProgressBar hinzufügen
-        QList<QFrame *> listVBoxLayout = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QFrame *>();
+        QList<QFrame *> listFrame = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QFrame *>();
         QString index;
-        if ( listVBoxLayout.empty() ) {
+        if ( listFrame.empty() ) {
             index = "00";
-            qDebug().noquote() << global::nameOutput << "Index in List: List is empty" << "Count befor add:" << listVBoxLayout.count() << "New index:" << index ;
+            qDebug().noquote() << global::nameOutput << "Index in List: List is empty" << "Count befor add:" << listFrame.count() << "New index:" << index ;
         } else {
             QStringList indexStringList;
-            for ( int i = 0; i < listVBoxLayout.count(); i++ ) {
-                QFrame *vBoxLayout = listVBoxLayout.at(i);
-                indexStringList << vBoxLayout->objectName().right(2);
+            for ( int i = 0; i < listFrame.count(); i++ ) {
+                QFrame *frame = listFrame.at(i);
+                indexStringList << frame->objectName().right(2);
             }
+
             // Max 30 Audio Geräte
-            for ( int x = 1; x < 30; x++ ) {
+            for ( int x = 0; x < 30; x++ ) {
                 if ( x < 10 ) {
                     index = "0" + QString::number(x);
                 } else {
@@ -117,14 +118,15 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
                     break;
                 }
             }
-            qDebug().noquote() << global::nameOutput << "Index in List" << indexStringList << "Count befor add:" << listVBoxLayout.count() << "New index:" << index ;
+
+            qDebug().noquote() << global::nameOutput << "Index in List" << indexStringList << "Count befor add:" << listFrame.count() << "New index:" << index ;
         }
 
         // Neues layout für CheckBox und ProgressBar
-        QHBoxLayout *vBoxLayout = new QHBoxLayout; // Für Checkbox und Progressbar
-        vBoxLayout->setObjectName( "vBoxLayoutAudioDevice-" + index );
-        vBoxLayout->setSpacing(0);
-        vBoxLayout->setContentsMargins( 0, 0, 0, 0 ); // neu
+        QHBoxLayout *layout = new QHBoxLayout; // Für Checkbox und Progressbar
+        layout->setObjectName( "vBoxLayoutAudioDevice-" + index );
+        layout->setSpacing(0);
+        layout->setContentsMargins( 0, 0, 0, 0 ); // neu
 
         QCheckBox *checkBox = new QCheckBox();
         connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
@@ -132,12 +134,12 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
         checkBox->setObjectName( "checkBoxAudioDevice-" + index );
         checkBox->setToolTip( tr ( "Select one or more devices" ) );
 
-        vBoxLayout->addWidget( checkBox );
+        layout->addWidget( checkBox );
 
         // Ein QFrame das ein layout und die ProgressBar aufnimmt
         QFrame *frame = new QFrame;
         frame->setObjectName( "frameAudioDevice-" + index );
-        frame->setLayout( vBoxLayout );
+        frame->setLayout( layout );
 
         if ( type == "Playback" ) {
             checkBox->setIconSize( QSize( 16, 16 ) );
@@ -148,14 +150,14 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
             checkBox->setIcon( QIcon( ":/pictures/screencast/microphone.png" ) );
         }
         QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
-        vkLevelMeterController->add_ProgressBar( checkBox, vBoxLayout );
+        vkLevelMeterController->add_ProgressBar( checkBox, layout );
         ui->verticalLayoutAudioDevices->addWidget( frame  );
         qDebug().noquote() << global::nameOutput << "[Audio-device-added]" << name << device;
     }
 
     if ( action == "[Audio-device-removed]" ) {
         // Die CheckBox beinhaltet das Gerät das in der GUI entfernt werden soll.
-        // Und jede Checkbox, BoxLayout und ProgressBar wurde ein gleicher eindeutiger Wert<index> an den Objectnamen hinzugefügt.
+        // Und jede Checkbox, BoxLayout, Frame und ProgressBar wurde ein gleicher eindeutiger Wert<index> an den Objectnamen hinzugefügt.
         // Beispiel  ....-00, ...-01, ...-02, ...-03 usw.
         QString index;
         QString device = string.section( ":::", 0, 0 );
