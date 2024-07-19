@@ -3134,7 +3134,7 @@
              </font>
             </property>
             <property name="toolTip">
-             <string>CTRL+SHIFT+F11</string>
+             <string>CTRL+SHIFT+F10</string>
             </property>
             <property name="text">
              <string>Stop</string>
@@ -7114,7 +7114,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
