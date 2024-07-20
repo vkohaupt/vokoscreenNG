@@ -45,7 +45,7 @@
     <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
-        <translation>Camera</translation>
+        <translation>الكاميرا</translation>
     </message>
 </context>
 <context>
@@ -67,14 +67,14 @@
     <name>QvkDirDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>الحوار</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Help</translation>
+        <translation>مساعدة</translation>
     </message>
 </context>
 <context>
@@ -103,11 +103,11 @@
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Warning</translation>
+        <translation>تحذير</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>The recording is not started, not enough free disk space.</translation>
+        <translation>تحذير لاتوجد مساحة كافية عليك حذف بعض الاشياء ليتم التسجيل.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
