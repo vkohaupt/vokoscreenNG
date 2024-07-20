@@ -476,18 +476,6 @@
         <translation>Grau</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F10</source>
-        <translation>STRG+UMSCHALT+F10</translation>
-    </message>
-    <message>
-        <source>CTRL+SHIFT+F11</source>
-        <translation>STRG+UMSCHALT+F11</translation>
-    </message>
-    <message>
-        <source>CTRL+SHIFT+F12</source>
-        <translation>STRG+UMSCHALT+F12</translation>
-    </message>
-    <message>
         <source>Play last record</source>
         <translation>Letzte Aufnahme abspielen</translation>
     </message>

@@ -476,18 +476,6 @@
         <translation>Gris</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F10</source>
-        <translation>Ctrl+Maj.+F10</translation>
-    </message>
-    <message>
-        <source>CTRL+SHIFT+F11</source>
-        <translation>Ctrl+Maj.+F11</translation>
-    </message>
-    <message>
-        <source>CTRL+SHIFT+F12</source>
-        <translation>Ctrl+Maj.+F12</translation>
-    </message>
-    <message>
         <source>Play last record</source>
         <translation>Reprodueix el darrer enregistrament</translation>
     </message>

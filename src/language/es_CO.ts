@@ -478,18 +478,6 @@ El límite de espacio en disco se ha alcanzado.</translation>
         <translation>Gris</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F10</source>
-        <translation>CTRL+SHIFT+F10</translation>
-    </message>
-    <message>
-        <source>CTRL+SHIFT+F11</source>
-        <translation>CTRL+SHIFT+F11</translation>
-    </message>
-    <message>
-        <source>CTRL+SHIFT+F12</source>
-        <translation>CTRL+SHIFT+F12</translation>
-    </message>
-    <message>
         <source>Play last record</source>
         <translation>Reproducir la última grabación</translation>
     </message>

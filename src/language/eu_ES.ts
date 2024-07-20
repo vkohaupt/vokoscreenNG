@@ -476,18 +476,6 @@
         <translation>Grisa</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F10</source>
-        <translation>CTRL+MAIUS+F10</translation>
-    </message>
-    <message>
-        <source>CTRL+SHIFT+F11</source>
-        <translation>CTRL+MAIUS+F11</translation>
-    </message>
-    <message>
-        <source>CTRL+SHIFT+F12</source>
-        <translation>CTRL+MAIUS+F12</translation>
-    </message>
-    <message>
         <source>Play last record</source>
         <translation>Erreproduzitu grabatutako azkena</translation>
     </message>

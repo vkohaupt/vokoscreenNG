@@ -476,18 +476,6 @@
         <translation>Cinza</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F10</source>
-        <translation>Ctrl+Shift+F10</translation>
-    </message>
-    <message>
-        <source>CTRL+SHIFT+F11</source>
-        <translation>Ctrl+Shift+F11</translation>
-    </message>
-    <message>
-        <source>CTRL+SHIFT+F12</source>
-        <translation>Ctrl+Shift+F12</translation>
-    </message>
-    <message>
         <source>Play last record</source>
         <translation>Executar a última gravação</translation>
     </message>

@@ -476,18 +476,6 @@
         <translation>Tonos de Gris</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F10</source>
-        <translation>CTRL+MAYUS+F10</translation>
-    </message>
-    <message>
-        <source>CTRL+SHIFT+F11</source>
-        <translation>CTRL+MAYUS+F11</translation>
-    </message>
-    <message>
-        <source>CTRL+SHIFT+F12</source>
-        <translation>CTRL+MAYUS+F12</translation>
-    </message>
-    <message>
         <source>Play last record</source>
         <translation>Reproducir la última grabación</translation>
     </message>

@@ -476,18 +476,6 @@
         <translation>Pilka</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F10</source>
-        <translation>VALD+LYG2+F10</translation>
-    </message>
-    <message>
-        <source>CTRL+SHIFT+F11</source>
-        <translation>VALD+LYG2+F11</translation>
-    </message>
-    <message>
-        <source>CTRL+SHIFT+F12</source>
-        <translation>VALD+LYG2+F12</translation>
-    </message>
-    <message>
         <source>Play last record</source>
         <translation>Groti paskiausią įrašą</translation>
     </message>

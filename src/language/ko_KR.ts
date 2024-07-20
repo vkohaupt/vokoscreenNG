@@ -476,18 +476,6 @@
         <translation>회색</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F10</source>
-        <translation>CTRL+SHIFT+F10</translation>
-    </message>
-    <message>
-        <source>CTRL+SHIFT+F11</source>
-        <translation>CTRL+SHIFT+F11</translation>
-    </message>
-    <message>
-        <source>CTRL+SHIFT+F12</source>
-        <translation>CTRL+SHIFT+F12</translation>
-    </message>
-    <message>
         <source>Play last record</source>
         <translation>마지막 녹화 재생</translation>
     </message>
