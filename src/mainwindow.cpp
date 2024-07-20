@@ -501,6 +501,13 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkSnapshot->init();
     vk_setCornerWidget( ui->tabWidgetSnapshot );
 
+//---------
+    // *****************Begin Camera *********************************
+    vkCameraController = new QvkCameraController(ui);
+    vk_setCornerWidget( ui->tabWidgetCamera );
+    // *****************End Camera ***********************************
+//----------
+
     // ***************** shortcut ******************************
     vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
     vk_setCornerWidget( ui->tabWidgetShortcut );
@@ -584,12 +591,12 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->comboBoxScreencastScreenArea->addItem( name + " : " + width + " x " + height, handle );
     }
 #endif
-
+/*
     // *****************Begin Camera *********************************
     vkCameraController = new QvkCameraController(ui);
     vk_setCornerWidget( ui->tabWidgetCamera );
     // *****************End Camera ***********************************
-
+*/
     // *****************Begin Log *********************************
     vk_setCornerWidget( ui->tabWidgetLog );
     // *****************End Log ***********************************
