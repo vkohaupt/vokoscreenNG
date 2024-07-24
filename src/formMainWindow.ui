@@ -3435,7 +3435,7 @@
                    <bool>false</bool>
                   </property>
                   <property name="toolTip">
-                   <string>CTRL+SHIFT+F8</string>
+                   <string notr="true">CTRL+SHIFT+F8</string>
                   </property>
                   <property name="text">
                    <string>Camera</string>

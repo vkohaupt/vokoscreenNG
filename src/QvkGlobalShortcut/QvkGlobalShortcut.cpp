@@ -33,6 +33,8 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
 
     ui = ui_mainwindow;
 
+    setObjectName( "QvkGlobalShortcut" );
+
     shortcutStart = new QGlobalShortcut( this );
     connect( shortcutStart, SIGNAL( activated() ), this, SLOT( slot_startStop() ) );
     connect( ui->checkBox_shortcut_start_strg,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_start_clicked(bool) ) );
@@ -61,19 +63,13 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
     connect( ui->toolButton_shortcut_reset_magnification, SIGNAL( clicked() ), this, SLOT( slot_toolButton_shortcut_magnification_reset() ) );
 
     shortcutCamera = new QGlobalShortcut( this );
-    QList<QCheckBox *> list = ui->centralWidget->findChildren<QCheckBox *>();
-    for ( int i = 0; i < list.count(); i++ ) {
-        QCheckBox *checkBox = list.at(i);
-        if ( checkBox->objectName().contains( "checkBoxCameraOnOff-" ) ) {
-            connect( shortcutCamera, SIGNAL( activated() ), checkBox, SLOT( click() ) );
-            connect( ui->checkBox_shortcut_camera_strg,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_camera_clicked(bool) ) );
-            connect( ui->checkBox_shortcut_camera_shift, SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_camera_clicked(bool) ) );
-            connect( ui->checkBox_shortcut_camera_alt,   SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_camera_clicked(bool) ) );
-            connect( ui->checkBox_shortcut_camera_meta,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_camera_clicked(bool) ) );
-            connect( ui->comboBox_shortcut_camera, SIGNAL( currentIndexChanged(int) ), this, SLOT( slot_checkbox_shortcut_camera_currentIndexChanged(int) ) );
-            connect( ui->toolButton_shortcut_reset_camera, SIGNAL( clicked() ), this, SLOT( slot_toolButton_shortcut_camera_reset() ) );
-        }
-    }
+    connect( shortcutCamera, SIGNAL( activated() ), this, SLOT( slot_checkbox_camera_click() ) );
+    connect( ui->checkBox_shortcut_camera_strg,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_camera_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_camera_shift, SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_camera_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_camera_alt,   SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_camera_clicked(bool) ) );
+    connect( ui->checkBox_shortcut_camera_meta,  SIGNAL( clicked(bool) ), this, SLOT( slot_checkbox_shortcut_camera_clicked(bool) ) );
+    connect( ui->comboBox_shortcut_camera, SIGNAL( currentIndexChanged(int) ), this, SLOT( slot_checkbox_shortcut_camera_currentIndexChanged(int) ) );
+    connect( ui->toolButton_shortcut_reset_camera, SIGNAL( clicked() ), this, SLOT( slot_toolButton_shortcut_camera_reset() ) );
 
     QList<QvkSpezialCheckbox *> listSpezialCheckboxShowclick = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
     for ( int i = 0; i < listSpezialCheckboxShowclick.count(); i++ ){
@@ -120,6 +116,29 @@ QvkGlobalShortcut::QvkGlobalShortcut(QMainWindow *mainWindow, Ui_formMainWindow 
 
 QvkGlobalShortcut::~QvkGlobalShortcut()
 {
+}
+
+
+void QvkGlobalShortcut::slot_checkbox_camera_click()
+{
+    QList<QCheckBox *> listCheckBox = ui->centralWidget->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ ) {
+        QCheckBox *checkBox = listCheckBox.at(i);
+        if ( checkBox->objectName().contains( "checkBoxCameraOnOff-" ) ) {
+            QString indexCheckBox = checkBox->objectName().right(2);
+            QList<QPushButton *> listPushButton = ui->centralWidget->findChildren<QPushButton *>();
+            for ( int x = 0; x < listPushButton.count(); x++ ) {
+                QPushButton *pushButton = listPushButton.at(x);
+                if ( pushButton->objectName().contains( "pushButtonShortcut-" ) ) {
+                    if ( pushButton->objectName().right(2) == indexCheckBox ) {
+                        if ( pushButton->isChecked() == true ) {
+                            checkBox->click();
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 
@@ -446,10 +465,21 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_camera_clicked( bool value )
 
         shortcutCamera->unsetShortcut();
         shortcutCamera->setShortcut( QKeySequence( shortcut ) );
+        ui->checkBoxCameraOnOff->setToolTip( shortcut );
 
-        QList<QCheckBox *> list = ui->centralWidget->findChildren<QCheckBox *>();
-        for ( int i = 0; i < list.count(); i++ ) {
-            QCheckBox *checkBox = list.at(i);
+        QList<QPushButton *> listPushButton = ui->centralWidget->findChildren<QPushButton *>();
+        for ( int i = 0; i < listPushButton.count(); i++ ) {
+            QPushButton *pushButton = listPushButton.at(i);
+            for ( int i = 0; i < listPushButton.count(); i++  ) {
+                if ( pushButton->objectName().contains( "pushButtonShortcut-" ) ) {
+                    pushButton->setText( shortcut );
+                }
+            }
+        }
+
+        QList<QCheckBox *> listCheckBox = ui->centralWidget->findChildren<QCheckBox *>();
+        for ( int i = 0; i < listCheckBox.count(); i++ ) {
+            QCheckBox *checkBox = listCheckBox.at(i);
             if ( checkBox->objectName().contains( "checkBoxCameraOnOff-" ) ) {
                 checkBox->setToolTip( shortcut );
             }

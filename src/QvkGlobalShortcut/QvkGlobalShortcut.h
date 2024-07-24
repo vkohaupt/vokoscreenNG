@@ -72,6 +72,8 @@ public slots:
     void slot_checkbox_shortcut_snapshot_currentIndexChanged( int value );
     void slot_toolButton_shortcut_snapshot_reset();
 
+    void slot_checkbox_camera_click();
+
 
 private:
     Ui_formMainWindow *ui;

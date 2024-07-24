@@ -51,7 +51,7 @@ public:
     QRadioButton *radioButtonCamera;
     QvkCameraWindow *vkCameraWindow;
     cameraSettingsDialog *vkCameraSettingsDialog;
-
+    QPushButton *pushButtonShortcut;
 
 public slots:
 
@@ -70,6 +70,7 @@ private slots:
     void slot_comboboxCameraResolutionsCurrentIndexChanged( int value );
     void slot_vkCameraSettingsDialogShow();
     void slot_switchToFullscreen();
+    void slot_pushButtonShortcut(bool value);
 
 
 private:
