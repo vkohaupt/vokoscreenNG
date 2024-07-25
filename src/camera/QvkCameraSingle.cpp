@@ -51,12 +51,14 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     QHBoxLayout *layoutCamera = new QHBoxLayout;
     layoutCamera->setObjectName( "layoutCamera-" + QString::number( 0 ) );
     QList<QVBoxLayout *> listQVBoxLayout = ui->centralWidget->findChildren<QVBoxLayout *>( "layoutAllCameras" );
-    listQVBoxLayout.at(0)->addLayout( layoutCamera );
+    QVBoxLayout *layout = listQVBoxLayout.at(0);
+    layout->addLayout( layoutCamera );
 
     QList<QRadioButton *> listRadioButton = ui->centralWidget->findChildren<QRadioButton *>();
     int counter = 0;
     for ( int i = 0; i < listRadioButton.count(); i++ ) {
-        if ( listRadioButton.at(i)->objectName().contains( "radioButtonCamera-" ) ) {
+        QRadioButton *radioButton = listRadioButton.at(i);
+        if ( radioButton->objectName().contains( "radioButtonCamera-" ) ) {
             counter++;
         }
     }
