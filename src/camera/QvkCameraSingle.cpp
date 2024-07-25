@@ -27,6 +27,8 @@
 
 #include <QDebug>
 #include <QMediaDevices>
+#include <QMediaCaptureSession>
+#include <QCamera>
 #include <QCameraDevice>
 #include <QCameraFormat>
 #include <QRadioButton>
@@ -41,6 +43,9 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QRectF>
+#include <QSpacerItem>
+#include <QVideoFrameFormat>
+#include <QVideoSink>
 
 QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m_cameraDevice )
 {
@@ -508,15 +513,17 @@ void QvkCameraSingle::slot_radioButtonCurrentCameraClicked( bool value )
     // Set text from current camera
     QList<QLabel *> listLabel = ui->centralWidget->findChildren<QLabel *>( "labelCurrentCamera" );
     if ( radioButtonCamera->isChecked() == true ) {
-        listLabel.at(0)->setText( checkBoxCameraOnOff->text() );
+        QLabel *label = listLabel.at(0);
+        label->setText( checkBoxCameraOnOff->text() );
     }
 
      // Hide widgetToolButton from other camera
     QList<QWidget *> listWidget = ui->centralWidget->findChildren<QWidget *>();
     if ( listWidget.empty() == false ) {
         for ( int i = 0; i < listWidget.count(); i++ ) {
-            if ( listWidget.at(i)->objectName().contains( "widgetToolButton-" ) ) {
-                listWidget.at(i)->hide();
+            QWidget *widget = listWidget.at(i);
+            if ( widget->objectName().contains( "widgetToolButton-" ) ) {
+                widget->hide();
             }
         }
     }
@@ -525,23 +532,24 @@ void QvkCameraSingle::slot_radioButtonCurrentCameraClicked( bool value )
     QList<QCheckBox *> listCheckBox = ui->centralWidget->findChildren<QCheckBox *>();
     if ( listCheckBox.empty() == false ) {
         for ( int i = 0; i < listCheckBox.count(); i++ ) {
-            if ( listCheckBox.at(i)->objectName().contains( "checkBoxCameraWindowFrame" ) ) {
-                listCheckBox.at(i)->hide();
+            QCheckBox *checkBox = listCheckBox.at(i);
+            if ( checkBox->objectName().contains( "checkBoxCameraWindowFrame" ) ) {
+                checkBox->hide();
             }
-            if ( listCheckBox.at(i)->objectName().contains( "checkBoxCameraMirrorVertical" ) ) {
-                listCheckBox.at(i)->hide();
+            if ( checkBox->objectName().contains( "checkBoxCameraMirrorVertical" ) ) {
+                checkBox->hide();
             }
-            if ( listCheckBox.at(i)->objectName().contains( "checkBoxCameraMirrorHorizontal" ) ) {
-                listCheckBox.at(i)->hide();
+            if ( checkBox->objectName().contains( "checkBoxCameraMirrorHorizontal" ) ) {
+                checkBox->hide();
             }
-            if ( listCheckBox.at(i)->objectName().contains( "checkBoxCameraInvert" ) ) {
-                listCheckBox.at(i)->hide();
+            if ( checkBox->objectName().contains( "checkBoxCameraInvert" ) ) {
+                checkBox->hide();
             }
-            if ( listCheckBox.at(i)->objectName().contains( "checkBoxCameraGray" ) ) {
-                listCheckBox.at(i)->hide();
+            if ( checkBox->objectName().contains( "checkBoxCameraGray" ) ) {
+                checkBox->hide();
             }
-            if ( listCheckBox.at(i)->objectName().contains( "checkBoxCameraMono" ) ) {
-                listCheckBox.at(i)->hide();
+            if ( checkBox->objectName().contains( "checkBoxCameraMono" ) ) {
+                checkBox->hide();
             }
         }
     }
@@ -550,11 +558,12 @@ void QvkCameraSingle::slot_radioButtonCurrentCameraClicked( bool value )
     QList<QvkSpezialSlider *> listSpezialSlider = ui->centralWidget->findChildren<QvkSpezialSlider *>();
     if ( listSpezialSlider.empty() == false ) {
         for ( int i = 0; i < listSpezialSlider.count(); i++ ) {
-            if ( listSpezialSlider.at(i)->objectName().contains( "sliderCameraWindowSize" ) ) {
-                listSpezialSlider.at(i)->hide();
+            QvkSpezialSlider *vkSpezialSlider = listSpezialSlider.at(i);
+            if ( vkSpezialSlider->objectName().contains( "sliderCameraWindowSize" ) ) {
+                vkSpezialSlider->hide();
             }
-            if ( listSpezialSlider.at(i)->objectName().contains( "sliderCameraWindowZoom" ) ) {
-                listSpezialSlider.at(i)->hide();
+            if ( vkSpezialSlider->objectName().contains( "sliderCameraWindowZoom" ) ) {
+                vkSpezialSlider->hide();
             }
         }
     }
@@ -562,8 +571,9 @@ void QvkCameraSingle::slot_radioButtonCurrentCameraClicked( bool value )
     QList<QLabel *> listLabelCameraWindowSize = ui->centralWidget->findChildren<QLabel *>();
     if ( listLabelCameraWindowSize.empty() == false ) {
         for ( int i = 0; i < listLabelCameraWindowSize.count(); i++ ) {
-            if ( listLabelCameraWindowSize.at(i)->objectName().contains( "labelCameraWindowSize" ) ) {
-                listLabelCameraWindowSize.at(i)->hide();
+            QLabel *label = listLabelCameraWindowSize.at(i);
+            if ( label->objectName().contains( "labelCameraWindowSize" ) ) {
+                label->hide();
             }
         }
     }
