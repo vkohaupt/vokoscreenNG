@@ -495,6 +495,16 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_camera_clicked( bool value )
         shortcutCamera->unsetShortcut();
         ui->checkBoxCameraOnOff->setToolTip( "None" );
         emit signal_shortcutSystray( "camera", "None" );
+
+        QList<QPushButton *> listPushButton = ui->centralWidget->findChildren<QPushButton *>();
+        for ( int i = 0; i < listPushButton.count(); i++ ) {
+            QPushButton *pushButton = listPushButton.at(i);
+            for ( int i = 0; i < listPushButton.count(); i++  ) {
+                if ( pushButton->objectName().contains( "pushButtonCameraShortcut-" ) ) {
+                    pushButton->setText( "None" );
+                }
+            }
+        }
         qDebug().noquote() << global::nameOutput << "Set global shortcut for Camera: None";
     }
 }
