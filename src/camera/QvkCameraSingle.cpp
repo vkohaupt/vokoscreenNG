@@ -117,7 +117,6 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     pushButtonShortcut = new QPushButton;
     pushButtonShortcut->setObjectName( "pushButtonCameraShortcut-" + QString::number( counter ) );
     pushButtonShortcut->setIcon( QIcon( ":/pictures/screencast/accept.png" ) );
-    pushButtonShortcut->setText( ui->checkBoxCameraOnOff->toolTip() );
     pushButtonShortcut->setCheckable( true );
     pushButtonShortcut->setChecked( true );
     pushButtonShortcut->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Preferred ); // Nur das Vertikale funktioniert
@@ -267,10 +266,8 @@ void QvkCameraSingle::slot_pushButtonShortcut( bool value )
 {
     if ( value == true ) {
         pushButtonShortcut->setIcon( QIcon( ":/pictures/screencast/accept.png" ) );
-        pushButtonShortcut->setText( ui->checkBoxCameraOnOff->toolTip() );
     } else {
         pushButtonShortcut->setIcon( QIcon( ":/pictures/screencast/missing.png" ) );
-        pushButtonShortcut->setText( ui->checkBoxCameraOnOff->toolTip() );
     }
 }
 
