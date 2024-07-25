@@ -494,6 +494,16 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             emit vkSpezialCheckbox->signal_clicked( true );
         }
     }
+
+    QList<QPushButton *> listPushButton = ui_mainwindow->centralWidget->findChildren<QPushButton *>();
+    for ( int i = 0; i < listPushButton.count(); i++ ) {
+        QPushButton *pushButton = listPushButton.at(i);
+        if ( pushButton->objectName().contains( "pushButtonCameraShortcut-" ) ) {
+            if ( settings.value( pushButton->objectName(), true ).toBool() == false ) {
+                   pushButton->click();
+            }
+        }
+    }
 }
 
 /*
@@ -599,6 +609,14 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
     for ( int i = 0; i < listSpezialCheckbox.count(); i++ ) {
         QvkSpezialCheckbox *vkSpezialCheckbox = listSpezialCheckbox.at(i);
         settings.setValue( vkSpezialCheckbox->objectName(), vkSpezialCheckbox->isChecked() );
+    }
+
+    QList<QPushButton *> listPushButton = ui_mainwindow->centralWidget->findChildren<QPushButton *>();
+    for ( int i = 0; i < listPushButton.count(); i++ ) {
+        QPushButton *pushButton = listPushButton.at(i);
+        if ( pushButton->objectName().contains( "pushButtonCameraShortcut-" ) ) {
+            settings.setValue( pushButton->objectName(), pushButton->isChecked() );
+        }
     }
 }
 

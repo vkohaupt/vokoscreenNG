@@ -116,11 +116,13 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     layoutCamera->addWidget( comboBoxCameraResolution );
 
     pushButtonShortcut = new QPushButton;
-    pushButtonShortcut->setObjectName( "pushButtonShortcut-" + QString::number( counter ) );
+    pushButtonShortcut->setObjectName( "pushButtonCameraShortcut-" + QString::number( counter ) );
     pushButtonShortcut->setIcon( QIcon( ":/pictures/screencast/accept.png" ) );
     pushButtonShortcut->setText( ui->checkBoxCameraOnOff->toolTip() );
     pushButtonShortcut->setCheckable( true );
     pushButtonShortcut->setChecked( true );
+    pushButtonShortcut->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Preferred ); // Nur das Vertikale funktioniert
+    pushButtonShortcut->updateGeometry();
     connect( pushButtonShortcut, SIGNAL( clicked(bool) ), this, SLOT( slot_pushButtonShortcut(bool) ) );
     layoutCamera->addWidget( pushButtonShortcut );
 
@@ -271,22 +273,6 @@ void QvkCameraSingle::slot_pushButtonShortcut( bool value )
         pushButtonShortcut->setIcon( QIcon( ":/pictures/screencast/missing.png" ) );
         pushButtonShortcut->setText( ui->checkBoxCameraOnOff->toolTip() );
     }
-
-    // Der Pushbutton hat nach dem checked eine kleinere Größe
-    // Diese muß nun wieder angepasst werden das es optisch besser aussieht
-    QList<int> listWidth;
-    QList<int> listHeight;
-    QList<QPushButton *> listPushButtonShortcut = ui->centralWidget->findChildren<QPushButton *>();
-    for ( int i = 0; i < listPushButtonShortcut.count(); i++ ) {
-        QPushButton *pushButton = listPushButtonShortcut.at(i);
-        if ( pushButton->objectName().contains( "pushButtonShortcut-" ) ) {
-            listWidth.append( pushButton->width() );
-            listHeight.append( pushButton->height() );
-        }
-    }
-    auto lw = std::minmax_element( listWidth.begin(), listWidth.end() );
-    auto lh = std::minmax_element( listHeight.begin(), listHeight.end() );
-    pushButtonShortcut->setMinimumSize( *lw.second, *lh.second );
 }
 
 

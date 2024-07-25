@@ -129,7 +129,7 @@ void QvkGlobalShortcut::slot_checkbox_camera_click()
             QList<QPushButton *> listPushButton = ui->centralWidget->findChildren<QPushButton *>();
             for ( int x = 0; x < listPushButton.count(); x++ ) {
                 QPushButton *pushButton = listPushButton.at(x);
-                if ( pushButton->objectName().contains( "pushButtonShortcut-" ) ) {
+                if ( pushButton->objectName().contains( "pushButtonCameraShortcut-" ) ) {
                     if ( pushButton->objectName().right(2) == indexCheckBox ) {
                         if ( pushButton->isChecked() == true ) {
                             checkBox->click();
@@ -471,7 +471,7 @@ void QvkGlobalShortcut::slot_checkbox_shortcut_camera_clicked( bool value )
         for ( int i = 0; i < listPushButton.count(); i++ ) {
             QPushButton *pushButton = listPushButton.at(i);
             for ( int i = 0; i < listPushButton.count(); i++  ) {
-                if ( pushButton->objectName().contains( "pushButtonShortcut-" ) ) {
+                if ( pushButton->objectName().contains( "pushButtonCameraShortcut-" ) ) {
                     pushButton->setText( shortcut );
                 }
             }
