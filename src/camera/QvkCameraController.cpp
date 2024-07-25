@@ -97,6 +97,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
     // Hide Widget if only one camera
     if ( camerasInfoList.count() == 1 ) {
         vkCameraSingle->radioButtonCamera->hide();
+        vkCameraSingle->pushButtonShortcut->hide();
         labelCurrentCamera->hide();
     }
 }
