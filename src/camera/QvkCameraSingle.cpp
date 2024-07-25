@@ -48,10 +48,9 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     cameraDevice = m_cameraDevice;
     qDebug().noquote() << global::nameOutput << "[Camera] Added:" << cameraDevice.description() << "Device:" << cameraDevice.id();
 
-    QList<QVBoxLayout *> listQVBoxLayout = ui->centralWidget->findChildren<QVBoxLayout *>( "layoutAllCameras" );
-
     QHBoxLayout *layoutCamera = new QHBoxLayout;
     layoutCamera->setObjectName( "layoutCamera-" + QString::number( 0 ) );
+    QList<QVBoxLayout *> listQVBoxLayout = ui->centralWidget->findChildren<QVBoxLayout *>( "layoutAllCameras" );
     listQVBoxLayout.at(0)->addLayout( layoutCamera );
 
     QList<QRadioButton *> listRadioButton = ui->centralWidget->findChildren<QRadioButton *>();
