@@ -119,6 +119,7 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     pushButtonShortcut->setIcon( QIcon( ":/pictures/screencast/accept.png" ) );
     pushButtonShortcut->setCheckable( true );
     pushButtonShortcut->setChecked( true );
+    pushButtonShortcut->setMinimumWidth( 110 );
     pushButtonShortcut->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Preferred ); // Nur das Vertikale funktioniert
     pushButtonShortcut->updateGeometry();
     connect( pushButtonShortcut, SIGNAL( clicked(bool) ), this, SLOT( slot_pushButtonShortcut(bool) ) );
