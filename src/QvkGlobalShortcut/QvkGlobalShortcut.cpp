@@ -134,6 +134,9 @@ void QvkGlobalShortcut::slot_checkbox_camera_click()
                         if ( pushButton->isChecked() == true ) {
                             checkBox->click();
                         }
+                        if ( ( pushButton->isChecked() == false ) and ( pushButton->isVisible() == false ) ) {
+                            checkBox->click();
+                        }
                     }
                 }
             }
