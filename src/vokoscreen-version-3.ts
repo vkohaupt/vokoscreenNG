@@ -486,10 +486,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F8</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Minimized when recording starts</source>
         <translation type="unfinished"></translation>
     </message>
