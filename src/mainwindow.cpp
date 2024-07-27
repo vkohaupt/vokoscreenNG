@@ -868,10 +868,15 @@ void QvkMainWindow::changeEvent( QEvent *event )
         vkSystrayAlternative->setMenuText();
 
         for ( int i = 0; i < vkCameraController->cameraSingleList.count(); i++ ) {
-            vkCameraController->cameraSingleList.at(i)->vkCameraSettingsDialog->ui->retranslateUi( vkCameraController->cameraSingleList.at(i)->vkCameraSettingsDialog );
+            QvkCameraSingle *vkCameraSingle = vkCameraController->cameraSingleList.at(i);
+            vkCameraSingle->vkCameraSettingsDialog->ui->retranslateUi( vkCameraSingle->vkCameraSettingsDialog );
+            vkCameraSingle->checkBoxCameraWindowFrame->setText( ui->checkBoxCameraWindowFrame->text() );
+            vkCameraSingle->checkBoxCameraMirrorHorizontal->setText( ui->checkBoxCameraMirrorHorizontal->text() );
+            vkCameraSingle->checkBoxCameraMirrorVertical->setText( ui->checkBoxCameraMirrorVertical->text() );
+            vkCameraSingle->checkBoxCameraInvert->setText( ui->checkBoxCameraInvert->text() );
+            vkCameraSingle->checkBoxCameraGray->setText( ui->checkBoxCameraGray->text() );
+            vkCameraSingle->checkBoxCameraMono->setText( ui->checkBoxCameraMono->text() );
         }
-
-
     } else {
         QWidget::changeEvent(event);
     }

@@ -52,6 +52,14 @@ public:
     QvkCameraWindow *vkCameraWindow;
     cameraSettingsDialog *vkCameraSettingsDialog;
     QPushButton *pushButtonShortcut;
+    QCheckBox *checkBoxCameraWindowFrame;
+    QCheckBox *checkBoxCameraMirrorHorizontal;
+    QCheckBox *checkBoxCameraMirrorVertical;
+    QCheckBox *checkBoxCameraInvert;
+    QCheckBox *checkBoxCameraGray;
+    QCheckBox *checkBoxCameraMono;
+
+
 
 public slots:
 
@@ -75,7 +83,6 @@ private slots:
 
 private:
     Ui_formMainWindow *ui;
-
     QCameraDevice cameraDevice;
     QCamera *camera = Q_NULLPTR;
     QMediaCaptureSession *captureSession;
@@ -91,12 +98,6 @@ private:
     QToolButton *toolButton_camera_view_rectangle;
     QToolButton *toolButton_camera_view_ellipse;
     QToolButton *toolButton_camera_view_circle;
-    QCheckBox *checkBoxCameraWindowFrame;
-    QCheckBox *checkBoxCameraMirrorHorizontal;
-    QCheckBox *checkBoxCameraMirrorVertical;
-    QCheckBox *checkBoxCameraInvert;
-    QCheckBox *checkBoxCameraGray;
-    QCheckBox *checkBoxCameraMono;
 
 
 protected:
