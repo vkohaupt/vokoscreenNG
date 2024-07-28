@@ -91,7 +91,6 @@ public:
     QvkCameraController *vkCameraController;
     bool wantRecording = true;
     bool isFlatpak = false;
-    void changeLanguageInSourcecode();
 
 
 private:
