@@ -171,7 +171,31 @@ QProgressBar::chunk{
 }
 
 
-
 QComboBox {
     selection-background-color: #3daee9;
 }
+
+/*
+QComboBox::hover {
+   border-width: 2px;
+   border-style: solid;
+   border-color: #3daee9;
+   border-radius: 4px;
+}
+
+QComboBox::down-arrow:button {
+    image: url(:/pictures/player/start.png);
+    width: 16;
+    height: 16;
+}
+
+QComboBox::down-arrow:disabled {
+    image: url(:/pictures/player/stop.png);
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 19;
+    height: 23;
+}
+*/
