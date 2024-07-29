@@ -153,20 +153,28 @@ QToolButton#toolButton_magnifier_circle:checked:hover {
 
 
 
-QPushButton::hover{
+QPushButton::hover {
     border-width: 2px;
     border-style: solid;
     border-color: #3daee9;
     border-radius: 4px;
 }
 
-QPushButton::disabled{
+QPushButton::disabled {
     color: gray;
 }
 
 
 
-QProgressBar::chunk{
+QToolButton::hover {
+    border-width: 2px;
+    border-style: solid;
+    border-color: #3daee9;
+    border-radius: 4px;
+}
+
+
+QProgressBar::chunk {
    background-color: #3daee9;
 }
 
