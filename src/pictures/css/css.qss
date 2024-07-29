@@ -38,7 +38,6 @@ QRadioButton::indicator:unchecked:hover:pressed {
 
 
 
-
 QCheckBox::indicator {
    background: none;
    width: 18;
@@ -79,7 +78,6 @@ QCheckBox::indicator:unchecked:hover:pressed {
 
 
 
-
 QToolButton#toolButton_magnifier_rectangle {
     background: none;
     width: 24;
@@ -101,7 +99,6 @@ QToolButton#toolButton_magnifier_rectangle:checked {
 QToolButton#toolButton_magnifier_rectangle:checked:hover {
     border-image: url(:/pictures/css/magnifier/magnifier-rectangle-checked-hover.png);
 }
-
 
 
 
@@ -174,9 +171,11 @@ QToolButton::hover {
 }
 
 
+
 QProgressBar::chunk {
    background-color: #3daee9;
 }
+
 
 
 QComboBox {
