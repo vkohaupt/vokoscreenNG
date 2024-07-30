@@ -99,6 +99,7 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     radioButtonCamera->setObjectName( "radioButtonCamera-" + QString::number( counter ) );
     radioButtonCamera->setAutoExclusive( true );
     connect( radioButtonCamera, SIGNAL( clicked(bool) ), this, SLOT( slot_radioButtonCurrentCameraClicked(bool) ) );
+
     checkBoxCameraOnOff = new QCheckBox;
     layoutCamera->addWidget( checkBoxCameraOnOff );
     checkBoxCameraOnOff->setText( cameraDevice.description() );
