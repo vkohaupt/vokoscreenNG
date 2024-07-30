@@ -170,6 +170,10 @@ QToolButton::hover {
     border-radius: 4px;
 }
 
+QToolButton::hover:checked {
+   background-color: lightgray;
+}
+
 
 
 QProgressBar::chunk {
