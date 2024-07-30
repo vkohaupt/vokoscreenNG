@@ -201,9 +201,15 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             continue;
         }
 
-        bool value = settings.value( radioButton->objectName(), false ).toBool();
-        if ( value == true )
+        if ( ( radioButton->objectName().contains( "radioButtonCamera-" ) ) and
+             ( settings.value( radioButton->objectName(), true ).toBool() == true ) )
         {
+            radioButton->click();
+            continue;
+        }
+
+        bool value = settings.value( radioButton->objectName(), false ).toBool();
+        if ( value == true ) {
             radioButton->click();
         }
     }
