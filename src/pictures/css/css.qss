@@ -85,18 +85,22 @@ QToolButton#toolButton_magnifier_rectangle {
 }
 
 QToolButton#toolButton_magnifier_rectangle {
+    border-width: 0px;
     border-image: url(:/pictures/css/magnifier/magnifier-rectangle-unchecked.png);
 }
 
 QToolButton#toolButton_magnifier_rectangle:hover {
+    border-width: 0px;
     border-image: url(:/pictures/css/magnifier/magnifier-rectangle-unchecked-hover.png);
 }
 
 QToolButton#toolButton_magnifier_rectangle:checked {
+    border-width: 0px;
     border-image: url(:/pictures/css/magnifier/magnifier-rectangle-checked.png);
 }
 
 QToolButton#toolButton_magnifier_rectangle:checked:hover {
+    border-width: 0px;
     border-image: url(:/pictures/css/magnifier/magnifier-rectangle-checked-hover.png);
 }
 
@@ -109,18 +113,22 @@ QToolButton#toolButton_magnifier_elipse {
 }
 
 QToolButton#toolButton_magnifier_elipse {
+    border-width: 0px;
     border-image: url(:/pictures/css/magnifier/magnifier-elipse-unchecked.png);
 }
 
 QToolButton#toolButton_magnifier_elipse:hover {
+    border-width: 0px;
     border-image: url(:/pictures/css/magnifier/magnifier-elipse-unchecked-hover.png);
 }
 
 QToolButton#toolButton_magnifier_elipse:checked {
+    border-width: 0px;
     border-image: url(:/pictures/css/magnifier/magnifier-elipse-checked.png);
 }
 
 QToolButton#toolButton_magnifier_elipse:checked:hover {
+    border-width: 0px;
     border-image: url(:/pictures/css/magnifier/magnifier-elipse-checked-hover.png);
 }
 
@@ -133,18 +141,22 @@ QToolButton#toolButton_magnifier_circle {
 }
 
 QToolButton#toolButton_magnifier_circle {
+    border-width: 0px;
     border-image: url(:/pictures/css/magnifier/magnifier-circle-unchecked.png);
 }
 
 QToolButton#toolButton_magnifier_circle:hover {
+    border-width: 0px;
     border-image: url(:/pictures/css/magnifier/magnifier-circle-unchecked-hover.png);
 }
 
 QToolButton#toolButton_magnifier_circle:checked {
+    border-width: 0px;
     border-image: url(:/pictures/css/magnifier/magnifier-circle-checked.png);
 }
 
 QToolButton#toolButton_magnifier_circle:checked:hover {
+    border-width: 0px;
     border-image: url(:/pictures/css/magnifier/magnifier-circle-checked-hover.png);
 }
 
