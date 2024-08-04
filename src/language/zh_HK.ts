@@ -1,129 +1,129 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="cs">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="zh_HK">
 <context>
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Zvolte jedno nebo více zařízení</translation>
+        <translation>選取一個或多個設備</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Odstranit rám okna</translation>
+        <translation>移除視窗邊框</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Překlopit svisle</translation>
+        <translation>垂直翻轉</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Překlopit vodorovně</translation>
+        <translation>橫向翻轉</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertovat</translation>
+        <translation>顏色反轉</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Černobíle</translation>
+        <translation>灰色</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Černo-bíle</translation>
+        <translation>黑白</translation>
     </message>
     <message>
         <source>Switch to Window</source>
-        <translation>Přepnout do okna</translation>
+        <translation>視窗模式</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Přepnout na celou obrazovku</translation>
+        <translation>全屏模式</translation>
     </message>
 </context>
 <context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>相機設備</translation>
     </message>
 </context>
 <context>
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Nastavení proběhlo úspěšně.</translation>
+        <translation>設定成功</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Zavřete toto okno a spusťte vokoscreenNG znovu.</translation>
+        <translation>關閉視窗並重新啟動</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Hezkou zábavu s vokoscreenNG</translation>
+        <translation>祝使用vokoscreenNG愉快</translation>
     </message>
 </context>
 <context>
     <name>QvkDirDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>對話框</translation>
     </message>
 </context>
 <context>
     <name>QvkHelp</name>
     <message>
         <source>Help</source>
-        <translation>Nápověda</translation>
+        <translation>幫助資訊</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Nebyl nalezen žádný správce souborů.</translation>
+        <translation>找不到檔案管理程式</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Nainstalujte správce souborů, prosím.</translation>
+        <translation>請安裝檔案管理程式</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Nebyl nalezen žádný správce souborů.</translation>
+        <translation>找不到檔案管理程式</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Nainstalujte správce souborů, prosím.</translation>
+        <translation>請安裝檔案管理程式</translation>
     </message>
 </context>
 <context>
     <name>QvkLimitDiskFreeSpace</name>
     <message>
         <source>Warning</source>
-        <translation>Varování</translation>
+        <translation>警告</translation>
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>Záznam nebyl spuštěn z důvodu nedostatku volného místa na disku.</translation>
+        <translation>磁碟容量不足，錄影無法開始</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
-        <translation>Bylo dosaženo limitu volného místa na disku.</translation>
+        <translation>已到達磁碟容量上限</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Limit volného místa na disku</translation>
+        <translation>磁碟容量上限</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>megabajty</translation>
+        <translation>MB</translation>
     </message>
     <message>
         <source>The recording was stopped, not enough free disk space.</source>
-        <translation>Záznam byl zastaven, na disku není volné místo.</translation>
+        <translation>磁碟容量不足，錄影無法開始</translation>
     </message>
 </context>
 <context>
@@ -131,598 +131,598 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>Nebyl nalezen žádný správce souborů.</translation>
+        <translation>找不到檔案管理程式</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Nainstalujte správce souborů, prosím.</translation>
+        <translation>請安裝檔案管理程式</translation>
     </message>
     <message>
         <source>Sourcecode</source>
-        <translation>Zdrojový kód</translation>
+        <translation>源代碼</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Domovská stránka</translation>
+        <translation>官方網頁</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Překlady</translation>
+        <translation>翻譯</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Přispět</translation>
+        <translation>捐款支持</translation>
     </message>
 </context>
 <context>
     <name>QvkMainWindow_wl</name>
     <message>
         <source>Sourcecode</source>
-        <translation>Zdrojový kód</translation>
+        <translation>源代碼</translation>
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Domovská stránka</translation>
+        <translation>官方網頁</translation>
     </message>
     <message>
         <source>Translations</source>
-        <translation>Překlady</translation>
+        <translation>翻譯</translation>
     </message>
     <message>
         <source>Donate</source>
-        <translation>Přispět</translation>
+        <translation>捐款支持</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Nebyl nalezen žádný správce souborů.</translation>
+        <translation>找不到檔案管理程式</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Nainstalujte správce souborů, prosím.</translation>
+        <translation>請安裝檔案管理程式</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Zvolte jedno nebo více zařízení</translation>
+        <translation>選取一個或多個設備</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise</name>
     <message>
         <source>Area</source>
-        <translation>Oblast</translation>
+        <translation>範圍</translation>
     </message>
 </context>
 <context>
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Oblast</translation>
+        <translation>範圍</translation>
     </message>
 </context>
 <context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Nebyl nalezen žádný správce souborů.</translation>
+        <translation>找不到檔案管理程式</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Nainstalujte správce souborů, prosím.</translation>
+        <translation>請安裝檔案管理程式</translation>
     </message>
 </context>
 <context>
     <name>QvkSystray</name>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>開始</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>停止</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pauza</translation>
+        <translation>暫停</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Pokračovat</translation>
+        <translation>繼續</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Odejít</translation>
+        <translation>退出</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>相機設備</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Zvětšení</translation>
+        <translation>縮放</translation>
     </message>
 </context>
 <context>
     <name>QvkSystrayAlternative</name>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>開始</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>停止</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pauza</translation>
+        <translation>暫停</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Pokračovat</translation>
+        <translation>繼續</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation>Odejít</translation>
+        <translation>退出</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>相機設備</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Zvětšení</translation>
+        <translation>縮放</translation>
     </message>
 </context>
 <context>
     <name>QvkWASAPIController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>Vybrat jedno nebo více zařízení</translation>
+        <translation>選取一個或多個設備</translation>
     </message>
 </context>
 <context>
     <name>cameraSettingsDialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>對話框</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Překlopit vodorovně</translation>
+        <translation>橫向翻轉</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Překlopit svisle</translation>
+        <translation>垂直翻轉</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertní</translation>
+        <translation>顏色反轉</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Černobíle</translation>
+        <translation>灰色</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Černo-bíle</translation>
+        <translation>黑白</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Odstranit rám okna</translation>
+        <translation>移除視窗邊框</translation>
     </message>
     <message>
         <source>Camera settings</source>
-        <translation>Nastavení kamery</translation>
+        <translation>相機設定</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow</name>
     <message>
         <source>Area</source>
-        <translation>Oblast</translation>
+        <translation>範圍</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>Resetovat</translation>
+        <translation>重置</translation>
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Zvětšení</translation>
+        <translation>縮放</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Odpočet</translation>
+        <translation>倒數計時</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Velikost videa:</translation>
+        <translation>影片大小：</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Volné místo na disku:</translation>
+        <translation>磁碟剩餘容量：</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informace</translation>
+        <translation>資訊</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Doba záznamu:</translation>
+        <translation>錄製時間：</translation>
     </message>
     <message>
         <source>Audio</source>
-        <translation>Zvuk</translation>
+        <translation>音訊</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Snímky</translation>
+        <translation>幀率</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videokodek</translation>
+        <translation>影像編碼</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formát</translation>
+        <translation>格式</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Audiokodek</translation>
+        <translation>音訊編碼</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Nezaznamenávat kurzor myši</translation>
+        <translation>不錄製鼠標</translation>
     </message>
     <message>
         <source>Hour</source>
-        <translation>Hodiny</translation>
+        <translation>小時</translation>
     </message>
     <message>
         <source>Minute</source>
-        <translation>Minuty</translation>
+        <translation>分鐘</translation>
     </message>
     <message>
         <source>Start the timer</source>
-        <translation>Spustit časovač</translation>
+        <translation>開始倒數</translation>
     </message>
     <message>
         <source>Stop recording after</source>
-        <translation>Ukončit záznam po</translation>
+        <translation>此時間後停止錄製</translation>
     </message>
     <message>
         <source>Hours</source>
-        <translation>hodinách</translation>
+        <translation>小時</translation>
     </message>
     <message>
         <source>Minutes</source>
-        <translation>minutách</translation>
+        <translation>分鐘</translation>
     </message>
     <message>
         <source>Seconds</source>
-        <translation>sekundách</translation>
+        <translation>秒</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videostopa</translation>
+        <translation>影片路徑</translation>
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Limit volného místa na disku</translation>
+        <translation>磁碟容量上限</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Zobrazit v liště</translation>
+        <translation>顯示在系統托盤</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
-        <translation>Prodleva spuštění záznamu v sekundách</translation>
+        <translation>開始錄製前倒數秒數</translation>
     </message>
     <message>
         <source>Look for updates</source>
-        <translation>Vyhledat aktualizace</translation>
+        <translation>檢查更新</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation>Nápověda</translation>
+        <translation>幫助資訊</translation>
     </message>
     <message>
         <source>Video</source>
-        <translation>Video</translation>
+        <translation>影片</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Dostupné</translation>
+        <translation>可用</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Nedostupné</translation>
+        <translation>不可用</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>開始</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>停止</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pauza</translation>
+        <translation>暫停</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Pokračovat</translation>
+        <translation>繼續</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Přehrát</translation>
+        <translation>播放</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Složka</translation>
+        <translation>資料夾</translation>
     </message>
     <message>
         <source>Camera</source>
-        <translation>Kamera</translation>
+        <translation>相機設備</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Invertovat</translation>
+        <translation>顏色反轉</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Černobíle</translation>
+        <translation>灰色</translation>
     </message>
     <message>
         <source>Play last record</source>
-        <translation>Přehrát poslední záznam</translation>
+        <translation>播放最後一個影片</translation>
     </message>
     <message>
         <source>Open folder</source>
-        <translation>Otevřít složku</translation>
+        <translation>開啟資料夾</translation>
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimalizovat začátkem záznamu</translation>
+        <translation>開始錄製時最小化</translation>
     </message>
     <message>
         <source>Starts minimized</source>
-        <translation>Spustit minimalizované</translation>
+        <translation>最小化啟動</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Překlopit vodorovně</translation>
+        <translation>橫向翻轉</translation>
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Překlopit svisle</translation>
+        <translation>垂直翻轉</translation>
     </message>
     <message>
         <source>Black-and-white</source>
-        <translation>Černo-bíle</translation>
+        <translation>黑白</translation>
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Odstranit rám okna</translation>
+        <translation>移除視窗邊框</translation>
     </message>
     <message>
         <source>Reset all settings at the next start</source>
-        <translation>Obnovit při dalším spuštění všechna nastavení</translation>
+        <translation>下次啟動時重置所有設定</translation>
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Autorská práva a licence k obrázkům</translation>
+        <translation>圖片的版權及授權條款</translation>
     </message>
     <message>
         <source>Megabyte</source>
-        <translation>megabajty</translation>
+        <translation>MB</translation>
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Záznam obrazovky</translation>
+        <translation>屏幕廣播</translation>
     </message>
     <message>
         <source>Player</source>
-        <translation>Přehrávač</translation>
+        <translation>播放器</translation>
     </message>
     <message>
         <source>Log</source>
-        <translation>Provozní záznam</translation>
+        <translation>日誌</translation>
     </message>
     <message>
         <source>Automatically</source>
-        <translation>Automaticky</translation>
+        <translation>自動</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Vytvořit snímky karet</translation>
+        <translation>創建圖像頁籤</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Informace o licenci</translation>
+        <translation>許可證訊息</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>ZAP</translation>
+        <translation>開</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>VYP</translation>
+        <translation>關</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Globální klávesové zkratky</translation>
+        <translation>全域快捷鍵</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Přiřazené klávesové zkratky.</translation>
+        <translation>設定快捷鍵</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Nepřiřazená nebo více než jednou přiřazená klávesová zkratka.</translation>
+        <translation>快捷鍵尚未設定或已重複設定</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Pokud je zobrazena jako přiřazená, ale nefunguje, používá ji jiný program.</translation>
+        <translation>若顯示已指定卻沒作用，表示已被其他程式佔用</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Momentka</translation>
+        <translation>截圖</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Složka pro snímky</translation>
+        <translation>圖片路徑</translation>
     </message>
     <message>
         <source>Hide this window</source>
-        <translation>Skrýt toto okno</translation>
+        <translation>隱藏視窗</translation>
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Prodleva spuštění záznamu v sekundách</translation>
+        <translation>開始錄製前倒數秒數</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Okno</translation>
+        <translation>視窗</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Celá obrazovka</translation>
+        <translation>全屏模式</translation>
     </message>
 </context>
 <context>
     <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Autorská práva a licence k obrázkům</translation>
+        <translation>圖片的版權及授權條款</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Vytvořit snímky karet</translation>
+        <translation>創建圖像頁籤</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Informace o licenci</translation>
+        <translation>許可證訊息</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>ZAP</translation>
+        <translation>開</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>VYP</translation>
+        <translation>關</translation>
     </message>
     <message>
         <source>Record Time:</source>
-        <translation>Doba záznamu:</translation>
+        <translation>錄製時間：</translation>
     </message>
     <message>
         <source>Video size:</source>
-        <translation>Velikost videa:</translation>
+        <translation>影片大小：</translation>
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Volné místo na disku:</translation>
+        <translation>磁碟剩餘容量：</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informace</translation>
+        <translation>資訊</translation>
     </message>
     <message>
         <source>Window</source>
-        <translation>Okno</translation>
+        <translation>視窗</translation>
     </message>
     <message>
         <source>Fullscreen</source>
-        <translation>Celá obrazovka</translation>
+        <translation>全屏模式</translation>
     </message>
     <message>
         <source>Area</source>
-        <translation>Oblast</translation>
+        <translation>範圍</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Videokodek</translation>
+        <translation>影像編碼</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Snímky</translation>
+        <translation>幀率</translation>
     </message>
     <message>
         <source>Format</source>
-        <translation>Formát</translation>
+        <translation>格式</translation>
     </message>
     <message>
         <source>Available</source>
-        <translation>Dostupné</translation>
+        <translation>可用</translation>
     </message>
     <message>
         <source>Not available</source>
-        <translation>Nedostupné</translation>
+        <translation>不可用</translation>
     </message>
     <message>
         <source>Start</source>
-        <translation>Start</translation>
+        <translation>開始</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>停止</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pauza</translation>
+        <translation>暫停</translation>
     </message>
     <message>
         <source>Continue</source>
-        <translation>Pokračovat</translation>
+        <translation>繼續</translation>
     </message>
     <message>
         <source>Play</source>
-        <translation>Přehrát</translation>
+        <translation>播放</translation>
     </message>
     <message>
         <source>Folder</source>
-        <translation>Složka</translation>
+        <translation>資料夾</translation>
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Nenahrávat kurzor myši</translation>
+        <translation>不錄製鼠標</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Audiokodek</translation>
+        <translation>音訊編碼</translation>
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videostopa</translation>
+        <translation>影片路徑</translation>
     </message>
     <message>
         <source>Countdown</source>
-        <translation>Odpočet</translation>
+        <translation>倒數計時</translation>
     </message>
 </context>
 <context>
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Autorská práva a licence k obrázkům</translation>
+        <translation>圖片的版權及授權條款</translation>
     </message>
 </context>
 <context>
     <name>playerGST</name>
     <message>
         <source>Play</source>
-        <translation>Přehrát</translation>
+        <translation>播放</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation>Pauza</translation>
+        <translation>暫停</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>停止</translation>
     </message>
 </context>
 </TS>

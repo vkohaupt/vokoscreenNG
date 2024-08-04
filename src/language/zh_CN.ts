@@ -484,10 +484,6 @@
         <translation>打开文件夹</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F8</source>
-        <translation>CTRL+SHIFT+F8</translation>
-    </message>
-    <message>
         <source>Minimized when recording starts</source>
         <translation>当录制开始时最小化</translation>
     </message>

@@ -484,10 +484,6 @@
         <translation>Abrir pasta</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F8</source>
-        <translation>Ctrl+Shift+F8</translation>
-    </message>
-    <message>
         <source>Minimized when recording starts</source>
         <translation>Minimizado no início da gravação</translation>
     </message>

@@ -484,10 +484,6 @@
         <translation>Ireki karpeta</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F8</source>
-        <translation>CTRL+MAIUS+F8</translation>
-    </message>
-    <message>
         <source>Minimized when recording starts</source>
         <translation>Minimizatu grabazioa hastean</translation>
     </message>

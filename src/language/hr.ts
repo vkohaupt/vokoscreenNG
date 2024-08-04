@@ -489,10 +489,6 @@
         <translation>Otvori mapu</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F8</source>
-        <translation>CTRL+SHIFT+F8</translation>
-    </message>
-    <message>
         <source>Minimized when recording starts</source>
         <translation>Minimizirano prilikom pokretanja snimanja</translation>
     </message>

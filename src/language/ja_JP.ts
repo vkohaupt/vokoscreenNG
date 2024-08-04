@@ -484,10 +484,6 @@
         <translation>フォルダーを開く</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F8</source>
-        <translation>CTRL+SHIFT+F8</translation>
-    </message>
-    <message>
         <source>Minimized when recording starts</source>
         <translation>録画開始時に最小化</translation>
     </message>

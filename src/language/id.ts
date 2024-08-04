@@ -484,10 +484,6 @@
         <translation>Buka folder</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F8</source>
-        <translation>CTRL+SHIFT+F8</translation>
-    </message>
-    <message>
         <source>Minimized when recording starts</source>
         <translation>Kecilkan ketika rekaman dimulai</translation>
     </message>

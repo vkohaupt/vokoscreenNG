@@ -484,10 +484,6 @@
         <translation>Apri cartella</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F8</source>
-        <translation>CTRL+SHIFT+F8</translation>
-    </message>
-    <message>
         <source>Minimized when recording starts</source>
         <translation>Ridotto a icona durante la registrazione</translation>
     </message>

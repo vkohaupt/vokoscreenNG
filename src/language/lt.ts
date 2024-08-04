@@ -484,10 +484,6 @@
         <translation>Atverti aplanką</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F8</source>
-        <translation>VALD+LYG2+F8</translation>
-    </message>
-    <message>
         <source>Minimized when recording starts</source>
         <translation>Prasidėjus įrašinėjimui, suskleisti</translation>
     </message>

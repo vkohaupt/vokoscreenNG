@@ -484,10 +484,6 @@
         <translation>폴더 열기</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F8</source>
-        <translation>CTRL+SHIFT+F8</translation>
-    </message>
-    <message>
         <source>Minimized when recording starts</source>
         <translation>녹화 시작할 때 창 최소화</translation>
     </message>

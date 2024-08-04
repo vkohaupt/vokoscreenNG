@@ -484,10 +484,6 @@
         <translation>Ouvrir le répertoire</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F8</source>
-        <translation>CTRL+SHIFT+F8</translation>
-    </message>
-    <message>
         <source>Minimized when recording starts</source>
         <translation>Minimiser au démarrage de l&apos;enregistrement</translation>
     </message>

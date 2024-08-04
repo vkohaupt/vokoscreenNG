@@ -486,10 +486,6 @@
         <translation>Abrir carpeta</translation>
     </message>
     <message>
-        <source>CTRL+SHIFT+F8</source>
-        <translation>Ctrl + Mayús + F8</translation>
-    </message>
-    <message>
         <source>Minimized when recording starts</source>
         <translation>Minimizar al empezar grabación</translation>
     </message>
