@@ -193,16 +193,17 @@ QProgressBar::chunk {
 }
 
 
-/*
+
 QComboBox {
     selection-background-color: #3daee9;
 }
 
 QComboBox::hover {
-   border-width: 2px;
-   border-style: solid;
-   border-color: #3daee9;
-   border-radius: 4px;
+    background-color: transparent;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #3daee9;
+    border-radius: 4px;
 }
 
 QComboBox::down-arrow:button {
@@ -222,4 +223,4 @@ QComboBox::drop-down {
     width: 19;
     height: 23;
 }
-*/
+
