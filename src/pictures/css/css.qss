@@ -193,12 +193,11 @@ QProgressBar::chunk {
 }
 
 
-
+/*
 QComboBox {
     selection-background-color: #3daee9;
 }
 
-/*
 QComboBox::hover {
    border-width: 2px;
    border-style: solid;
@@ -207,13 +206,15 @@ QComboBox::hover {
 }
 
 QComboBox::down-arrow:button {
-    image: url(:/pictures/player/start.png);
-    width: 16;
-    height: 16;
+    image: url(:/pictures/css/comboBox/comboBox-enabled.png);
+    width: 10;
+    height: 10;
 }
 
 QComboBox::down-arrow:disabled {
-    image: url(:/pictures/player/stop.png);
+    image: url(:/pictures/css/comboBox/comboBox-disabled.png);
+    width: 10;
+    height: 10;
 }
 
 QComboBox::drop-down {
