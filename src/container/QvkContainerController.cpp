@@ -310,7 +310,8 @@ void QvkContainerController::set_available_formatVideoAudoicodec_in_tab()
             QFrame *line = new QFrame();
             line->setObjectName( QStringLiteral( "line" ) );
             line->setFrameShape( QFrame::HLine );
-            line->setFrameShadow( QFrame::Sunken );
+            line->setFrameShadow( QFrame::Plain );
+            line->setStyleSheet( "color: rgb( 200, 200, 200 )" );
             ui->gridLayoutAvailable->addWidget( line, rowCount, x );
 
             QLabel *label = new QLabel;
