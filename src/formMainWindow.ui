@@ -2028,16 +2028,16 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButtonProfileLoad">
+                 <widget class="QPushButton" name="pushButtonProfileNew">
                   <property name="text">
-                   <string notr="true">Load</string>
+                   <string notr="true">New</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButtonProfileNew">
+                 <widget class="QPushButton" name="pushButtonProfileLoad">
                   <property name="text">
-                   <string notr="true">New</string>
+                   <string notr="true">Load</string>
                   </property>
                  </widget>
                 </item>
@@ -7162,7 +7162,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
