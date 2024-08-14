@@ -230,6 +230,12 @@ private slots:
     void slot_darkMode( bool bo );
 
 
+    void slot_profileSave(bool bo);
+    void slot_profileLoad(bool bo);
+    void slot_profileNew(bool bo);
+
+
+
 signals:
     void signal_close();
     void signal_newVideoFilename( QString );

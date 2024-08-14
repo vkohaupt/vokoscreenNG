@@ -705,6 +705,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     } else {
         ui->label_translate->hide();
     }
+
+    connect( ui->pushButtonProfileSave, SIGNAL( clicked(bool) ), this, SLOT( slot_profileSave(bool) ) );
+    connect( ui->pushButtonProfileLoad, SIGNAL( clicked(bool) ), this, SLOT( slot_profileLoad(bool) ) );
+    connect( ui->pushButtonProfileNew, SIGNAL( clicked(bool) ), this, SLOT( slot_profileNew(bool) ) );
 }
 
 
@@ -712,6 +716,75 @@ QvkMainWindow::~QvkMainWindow()
 {
     delete ui;
 }
+
+
+void QvkMainWindow::slot_profileSave(bool bo)
+{
+    QSettings profilSettings( "/home/vk/vokoscreenProfile.ini", QSettings::IniFormat );
+    profilSettings.beginGroup( global::name );
+
+    QList<QToolButton *> listToolButton = ui->centralWidget->findChildren<QToolButton *>();
+    for ( int i = 0; i < listToolButton.count(); i++ ) {
+        QToolButton *toolButton = listToolButton.at(i);
+        profilSettings.setValue( toolButton->objectName(), toolButton->isChecked() );
+    }
+
+    QList<QCheckBox *> listCheckBox = ui->centralWidget->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ ) {
+        QCheckBox *checkBox = listCheckBox.at(i);
+        profilSettings.setValue( checkBox->objectName(), checkBox->isChecked() );
+    }
+
+    profilSettings.endGroup();
+}
+
+
+void QvkMainWindow::slot_profileLoad(bool bo)
+{
+    Q_UNUSED(bo)
+    QSettings profilSettings( "/home/vk/vokoscreenProfile.ini", QSettings::IniFormat );
+    profilSettings.beginGroup( global::name );
+
+    QList<QToolButton *> listToolButton = ui->centralWidget->findChildren<QToolButton *>();
+    for ( int i = 0; i < listToolButton.count(); i++ ) {
+        QToolButton *toolButton = listToolButton.at(i);
+        QString value = profilSettings.value( toolButton->objectName() ).toString();
+        if ( value == "true" ) {
+            toolButton->click();
+        }
+    }
+
+    QList<QCheckBox *> listCheckBox = ui->centralWidget->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ ) {
+        QCheckBox *checkBox = listCheckBox.at(i);
+        bool value = profilSettings.value( checkBox->objectName() ).toBool();
+        if ( checkBox->isChecked() == value ) {
+            // make nothing
+        } else {
+            checkBox->click();
+        }
+    }
+
+
+    profilSettings.endGroup();
+}
+
+#include <QInputDialog>
+void QvkMainWindow::slot_profileNew(bool bo)
+{
+    Q_UNUSED(bo)
+    bool ok;
+    QString text = QInputDialog::getText(this,
+                                         "Input new profile name",
+                                         "Profile name:",
+                                         QLineEdit::Normal,
+                                         "",
+                                         &ok);
+    if ( ok && !text.isEmpty() ) {
+        ui->comboBoxProfile->addItem( text );
+    }
+}
+
 
 void QvkMainWindow::closeEvent( QCloseEvent *event )
 {
