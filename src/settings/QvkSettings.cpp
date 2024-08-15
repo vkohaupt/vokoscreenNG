@@ -569,6 +569,14 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
         }
     }
 
+    QList<QComboBox *> listComboBoxProfile = ui_mainwindow->centralWidget->findChildren<QComboBox *>( "comboBoxProfile" );
+    QComboBox *comboBoxProfile = listComboBoxProfile.at(0);
+    for ( int i = 0; i < comboBoxProfile->count(); i++ ) {
+        QString value = comboBoxProfile->itemText(i);
+        settings.setValue( comboBoxProfile->objectName() + "-" + QString::number(i), value );
+    }
+
+
     QList<QSlider *> listSlider = ui_mainwindow->centralWidget->findChildren<QSlider *>();
     for ( int i = 0; i < listSlider.count(); i++ ) {
         QSlider *slider = listSlider.at(i);
