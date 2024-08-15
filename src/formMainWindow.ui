@@ -398,7 +398,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -2022,15 +2022,43 @@
                 </item>
                 <item>
                  <widget class="QPushButton" name="pushButtonProfileSave">
+                  <property name="toolTip">
+                   <string notr="true">save</string>
+                  </property>
                   <property name="text">
-                   <string notr="true">Save</string>
+                   <string notr="true"/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="screencast.qrc">
+                    <normaloff>:/pictures/screencast/profile-save-1.png</normaloff>:/pictures/screencast/profile-save-1.png</iconset>
                   </property>
                  </widget>
                 </item>
                 <item>
                  <widget class="QPushButton" name="pushButtonProfileNew">
-                  <property name="text">
+                  <property name="toolTip">
                    <string notr="true">New</string>
+                  </property>
+                  <property name="text">
+                   <string notr="true"/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="screencast.qrc">
+                    <normaloff>:/pictures/screencast/profile-new.png</normaloff>:/pictures/screencast/profile-new.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButtonProfileDelete">
+                  <property name="toolTip">
+                   <string notr="true">Delete</string>
+                  </property>
+                  <property name="text">
+                   <string notr="true"/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="screencast.qrc">
+                    <normaloff>:/pictures/screencast/profile-delete.png</normaloff>:/pictures/screencast/profile-delete.png</iconset>
                   </property>
                  </widget>
                 </item>
@@ -2038,13 +2066,6 @@
                  <widget class="QPushButton" name="pushButtonProfileLoad">
                   <property name="text">
                    <string notr="true">Load</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="pushButtonProfileDelete">
-                  <property name="text">
-                   <string notr="true">Delete</string>
                   </property>
                  </widget>
                 </item>
@@ -7162,7 +7183,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
