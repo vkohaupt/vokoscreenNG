@@ -158,7 +158,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             continue;
         }
 
-        QString valueText = settings.value( comboBox->objectName(), "" ).toString();
+         QString valueText = settings.value( comboBox->objectName(), "" ).toString();
         int valueInt = comboBox->findText( valueText );
         if ( valueInt > -1 ) {
             comboBox->setCurrentIndex( valueInt );
@@ -172,6 +172,26 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             comboBox->blockSignals( false );
         }
     }
+
+    // Begin Profile auslesen
+    QList<QComboBox *> listComboBoxProfile = ui_mainwindow->centralWidget->findChildren<QComboBox *>( "comboBoxProfile" );
+    QComboBox *comboBoxProfile = listComboBoxProfile.at(0);
+    QStringList stringList = settings.allKeys();
+    QStringList result = stringList.filter( "comboBoxProfile-item" );
+    for ( int i = 0; i < result.count(); i++ ) {
+        QString string = settings.value( result.at(i) ).toString();
+        if ( string != "----------" ) {
+            comboBoxProfile->addItem( string );
+            qDebug() << i << string;
+        }
+    }
+
+    QString valueText = settings.value( comboBoxProfile->objectName(), "" ).toString();
+    int valueInt = comboBoxProfile->findText( valueText );
+    if ( valueInt > -1 ) {
+        comboBoxProfile->setCurrentIndex( valueInt );
+    }
+    // End Profile
 
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralWidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadiobuttons.count(); i++ )
@@ -573,7 +593,7 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
     QComboBox *comboBoxProfile = listComboBoxProfile.at(0);
     for ( int i = 0; i < comboBoxProfile->count(); i++ ) {
         QString value = comboBoxProfile->itemText(i);
-        settings.setValue( comboBoxProfile->objectName() + "-" + QString::number(i), value );
+        settings.setValue( comboBoxProfile->objectName() + "-item-" + QString::number(i), value );
     }
 
 
