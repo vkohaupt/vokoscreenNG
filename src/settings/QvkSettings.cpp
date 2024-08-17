@@ -186,7 +186,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         }
     }
 
-    // Das zuletzt benutzte Profil in der ComboBox setzen
+    // Das zuletzt benutzte Profil bzw. "----------" in der ComboBox setzen
     QString valueText = settings.value( comboBoxProfile->objectName(), "" ).toString();
     int valueInt = comboBoxProfile->findText( valueText );
     if ( valueInt > -1 ) {

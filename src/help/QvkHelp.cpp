@@ -126,6 +126,10 @@ bool QvkHelp::eventFilter(QObject *object, QEvent *event)
 {
     QToolButton *toolButton = qobject_cast<QToolButton *>(object);
 
+    if ( ( event->type() == QEvent::MouseButtonRelease ) and ( toolButton->isDown() == false ) ) {
+        return false;
+    }
+
     // Automatic language detection is set in combobox for the online help.
     if ( ( event->type() == QEvent::MouseButtonRelease ) and
          ( toolButton->isEnabled() == true ) and
