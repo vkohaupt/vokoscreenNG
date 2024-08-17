@@ -175,6 +175,7 @@ QPushButton::disabled {
 
 QPushButton::pressed {
     background-color: lightgray;
+    color: black;
 }
 
 
