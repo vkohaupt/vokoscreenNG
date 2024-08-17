@@ -69,8 +69,6 @@ private:
 
     QTemporaryDir temporaryDirLocal;
 
-    bool vk_mousePress = false;
-    bool vk_hoverLeave = false;
 
 private slots:
     void slot_parseHTML( QString tempPathFileName );
