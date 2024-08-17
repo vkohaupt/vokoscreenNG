@@ -179,6 +179,7 @@ QPushButton::pressed {
 }
 
 
+
 QToolButton::hover {
     border-width: 2px;
     border-style: solid;
