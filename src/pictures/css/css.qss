@@ -173,6 +173,9 @@ QPushButton::disabled {
     color: gray;
 }
 
+QPushButton::pressed {
+    background-color: lightgray;
+}
 
 
 QToolButton::hover {
@@ -183,7 +186,11 @@ QToolButton::hover {
 }
 
 QToolButton::hover:checked {
-   background-color: lightgray;
+    background-color: lightgray;
+}
+
+QToolButton::pressed {
+    background-color: lightgray;
 }
 
 
