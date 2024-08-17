@@ -173,7 +173,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         }
     }
 
-    // Begin Profile auslesen
+    // Begin Name der Profile aus vokoscreenNG.ini auslesen und in ComboBox übertragen
     QList<QComboBox *> listComboBoxProfile = ui_mainwindow->centralWidget->findChildren<QComboBox *>( "comboBoxProfile" );
     QComboBox *comboBoxProfile = listComboBoxProfile.at(0);
     QStringList stringList = settings.allKeys();
@@ -186,6 +186,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         }
     }
 
+    // Das zuletzt benutzte Profil in der ComboBox setzen
     QString valueText = settings.value( comboBoxProfile->objectName(), "" ).toString();
     int valueInt = comboBoxProfile->findText( valueText );
     if ( valueInt > -1 ) {
