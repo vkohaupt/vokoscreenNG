@@ -718,9 +718,15 @@ QvkMainWindow::~QvkMainWindow()
 }
 
 
-void QvkMainWindow::slot_profileSave(bool bo)
+void QvkMainWindow::slot_profileSave( bool bo )
 {
-    QSettings profilSettings( "/home/vk/vokoscreenProfile.ini", QSettings::IniFormat );
+    Q_UNUSED(bo)
+    QString profileName = ui->comboBoxProfile->currentText();
+    if ( profileName == "----------") {
+        return;
+    }
+
+    QSettings profilSettings( QSettings::IniFormat, QSettings::UserScope, global::name, profileName, Q_NULLPTR );
     profilSettings.beginGroup( global::name );
 
     QList<QToolButton *> listToolButton = ui->centralWidget->findChildren<QToolButton *>();
@@ -739,7 +745,7 @@ void QvkMainWindow::slot_profileSave(bool bo)
 }
 
 
-void QvkMainWindow::slot_profileLoad(bool bo)
+void QvkMainWindow::slot_profileLoad( bool bo )
 {
     Q_UNUSED(bo)
     QSettings profilSettings( "/home/vk/vokoscreenProfile.ini", QSettings::IniFormat );
