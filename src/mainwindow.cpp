@@ -706,11 +706,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->label_translate->hide();
     }
 
-    connect( ui->pushButtonProfileSave, SIGNAL( clicked(bool) ), this, SLOT( slot_profileSave(bool) ) );
-//    connect( ui->pushButtonProfileLoad, SIGNAL( clicked(bool) ), this, SLOT( slot_profileLoad(bool) ) );
-    connect( ui->pushButtonProfileNew, SIGNAL( clicked(bool) ), this, SLOT( slot_profileNew(bool) ) );
-    connect( ui->pushButtonProfileDelete, SIGNAL( clicked(bool) ), this, SLOT( slot_profileDelete(bool) ) );
-    connect( ui->comboBoxProfile, SIGNAL(currentIndexChanged(int) ), this, SLOT( slot_profileLoad(int) ) );
+    connect( ui->pushButtonProfileSave,   SIGNAL( clicked(bool) ),            this, SLOT( slot_profileSave(bool) ) );
+    connect( ui->pushButtonProfileNew,    SIGNAL( clicked(bool) ),            this, SLOT( slot_profileNew(bool) ) );
+    connect( ui->pushButtonProfileDelete, SIGNAL( clicked(bool) ),            this, SLOT( slot_profileDelete(bool) ) );
+    connect( ui->comboBoxProfile,         SIGNAL( currentIndexChanged(int) ), this, SLOT( slot_profileLoad(int) ) );
 }
 
 
