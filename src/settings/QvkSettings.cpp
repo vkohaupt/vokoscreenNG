@@ -182,7 +182,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         QString string = settings.value( result.at(i) ).toString();
         if ( string != "----------" ) {
             comboBoxProfile->addItem( string );
-            qDebug() << i << string;
+            qDebug().noquote() << global::nameOutput << "Profile name:" << string;
         }
     }
 
