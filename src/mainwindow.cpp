@@ -707,9 +707,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     }
 
     connect( ui->pushButtonProfileSave, SIGNAL( clicked(bool) ), this, SLOT( slot_profileSave(bool) ) );
-    connect( ui->pushButtonProfileLoad, SIGNAL( clicked(bool) ), this, SLOT( slot_profileLoad(bool) ) );
+//    connect( ui->pushButtonProfileLoad, SIGNAL( clicked(bool) ), this, SLOT( slot_profileLoad(bool) ) );
     connect( ui->pushButtonProfileNew, SIGNAL( clicked(bool) ), this, SLOT( slot_profileNew(bool) ) );
     connect( ui->pushButtonProfileDelete, SIGNAL( clicked(bool) ), this, SLOT( slot_profileDelete(bool) ) );
+    connect( ui->comboBoxProfile, SIGNAL(currentIndexChanged(int) ), this, SLOT( slot_profileLoad(int) ) );
 }
 
 
@@ -746,9 +747,9 @@ void QvkMainWindow::slot_profileSave( bool bo )
 }
 
 
-void QvkMainWindow::slot_profileLoad( bool bo )
+void QvkMainWindow::slot_profileLoad( int index )
 {
-    Q_UNUSED(bo)
+    Q_UNUSED(index)
     QString profileName = ui->comboBoxProfile->currentText();
     if ( profileName == "----------") {
         return;

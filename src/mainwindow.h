@@ -231,7 +231,7 @@ private slots:
 
 
     void slot_profileSave(bool bo);
-    void slot_profileLoad(bool bo);
+    void slot_profileLoad(int index);
     void slot_profileNew(bool bo);
     void slot_profileDelete(bool bo);
 

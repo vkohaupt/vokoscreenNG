@@ -968,20 +968,6 @@
                      </property>
                     </widget>
                    </item>
-                   <item>
-                    <widget class="QPushButton" name="pushButtonProfileLoad">
-                     <property name="toolTip">
-                      <string notr="true">Load</string>
-                     </property>
-                     <property name="text">
-                      <string notr="true"/>
-                     </property>
-                     <property name="icon">
-                      <iconset resource="screencast.qrc">
-                       <normaloff>:/pictures/screencast/profile-load.png</normaloff>:/pictures/screencast/profile-load.png</iconset>
-                     </property>
-                    </widget>
-                   </item>
                   </layout>
                  </widget>
                 </item>
