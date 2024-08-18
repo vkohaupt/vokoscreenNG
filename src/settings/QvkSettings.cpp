@@ -180,13 +180,13 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     QStringList result = stringList.filter( "comboBoxProfile-item" );
     for ( int i = 0; i < result.count(); i++ ) {
         QString string = settings.value( result.at(i) ).toString();
-        if ( string != "----------" ) {
+        if ( string != "--------------------" ) {
             comboBoxProfile->addItem( string );
             qDebug().noquote() << global::nameOutput << "Profile name:" << string;
         }
     }
 
-    // Das zuletzt benutzte Profil bzw. "----------" in der ComboBox setzen
+    // Das zuletzt benutzte Profil bzw. "--------------------" in der ComboBox setzen
     QString valueText = settings.value( comboBoxProfile->objectName(), "" ).toString();
     int valueInt = comboBoxProfile->findText( valueText );
     if ( valueInt > -1 ) {

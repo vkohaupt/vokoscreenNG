@@ -914,14 +914,14 @@
                       </size>
                      </property>
                      <property name="currentText">
-                      <string notr="true">----------</string>
+                      <string notr="true">--------------------</string>
                      </property>
                      <property name="sizeAdjustPolicy">
                       <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
                      </property>
                      <item>
                       <property name="text">
-                       <string notr="true">----------</string>
+                       <string notr="true">--------------------</string>
                       </property>
                      </item>
                     </widget>

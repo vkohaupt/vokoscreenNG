@@ -236,7 +236,6 @@ private slots:
     void slot_profileDelete(bool bo);
 
 
-
 signals:
     void signal_close();
     void signal_newVideoFilename( QString );
