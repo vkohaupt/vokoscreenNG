@@ -179,6 +179,7 @@ private:
 
     QString Profile;
     QString Profile_None = Profile.fill( '-', 20 );
+    void set_ToolButtonEnableDisable();
 
 
 private slots:
@@ -237,7 +238,6 @@ private slots:
     void slot_profileLoad(int index);
     void slot_profileNew(bool bo);
     void slot_profileDelete(bool bo);
-    void set_ToolButtonEnableDisable();
 
 
 signals:
