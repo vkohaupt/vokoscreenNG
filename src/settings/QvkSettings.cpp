@@ -172,28 +172,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             comboBox->blockSignals( false );
         }
     }
-/*
-    // Begin Name der Profile aus vokoscreenNG.ini auslesen und in ComboBox übertragen
-    QList<QComboBox *> listComboBoxProfile = ui_mainwindow->centralWidget->findChildren<QComboBox *>( "comboBoxProfile" );
-    QComboBox *comboBoxProfile = listComboBoxProfile.at(0);
-    QStringList stringList = settings.allKeys();
-    QStringList result = stringList.filter( "comboBoxProfile-item" );
-    for ( int i = 0; i < result.count(); i++ ) {
-        QString string = settings.value( result.at(i) ).toString();
-        if ( string != "--------------------" ) {
-            comboBoxProfile->addItem( string );
-            qDebug().noquote() << global::nameOutput << "Profile name:" << string;
-        }
-    }
 
-    // Das zuletzt benutzte Profil bzw. "--------------------" in der ComboBox setzen
-    QString valueText = settings.value( comboBoxProfile->objectName(), "" ).toString();
-    int valueInt = comboBoxProfile->findText( valueText );
-    if ( valueInt > -1 ) {
-        comboBoxProfile->setCurrentIndex( valueInt );
-    }
-    // End Profile
-*/
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralWidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadiobuttons.count(); i++ )
     {
@@ -589,17 +568,6 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
             settings.setValue( comboBox->objectName(), comboBox->currentText() );
         }
     }
-
-    QList<QComboBox *> listComboBoxProfile = ui_mainwindow->centralWidget->findChildren<QComboBox *>( "comboBoxProfile" );
-    QComboBox *comboBoxProfile = listComboBoxProfile.at(0);
-    settings.setValue( comboBoxProfile->objectName(), comboBoxProfile->currentText() );
-
-/*
-    for ( int i = 0; i < comboBoxProfile->count(); i++ ) {
-        QString value = comboBoxProfile->itemText(i);
-        settings.setValue( comboBoxProfile->objectName() + "-item-" + QString::number(i), value );
-    }
-*/
 
     QList<QSlider *> listSlider = ui_mainwindow->centralWidget->findChildren<QSlider *>();
     for ( int i = 0; i < listSlider.count(); i++ ) {
