@@ -172,7 +172,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             comboBox->blockSignals( false );
         }
     }
-
+/*
     // Begin Name der Profile aus vokoscreenNG.ini auslesen und in ComboBox übertragen
     QList<QComboBox *> listComboBoxProfile = ui_mainwindow->centralWidget->findChildren<QComboBox *>( "comboBoxProfile" );
     QComboBox *comboBoxProfile = listComboBoxProfile.at(0);
@@ -193,7 +193,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
         comboBoxProfile->setCurrentIndex( valueInt );
     }
     // End Profile
-
+*/
     QList<QRadioButton *> listRadiobuttons = ui_mainwindow->centralWidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadiobuttons.count(); i++ )
     {
@@ -592,11 +592,14 @@ void QvkSettings::saveAll(Ui_formMainWindow *ui_mainwindow , QMainWindow *parent
 
     QList<QComboBox *> listComboBoxProfile = ui_mainwindow->centralWidget->findChildren<QComboBox *>( "comboBoxProfile" );
     QComboBox *comboBoxProfile = listComboBoxProfile.at(0);
+    settings.setValue( comboBoxProfile->objectName(), comboBoxProfile->currentText() );
+
+/*
     for ( int i = 0; i < comboBoxProfile->count(); i++ ) {
         QString value = comboBoxProfile->itemText(i);
         settings.setValue( comboBoxProfile->objectName() + "-item-" + QString::number(i), value );
     }
-
+*/
 
     QList<QSlider *> listSlider = ui_mainwindow->centralWidget->findChildren<QSlider *>();
     for ( int i = 0; i < listSlider.count(); i++ ) {

@@ -808,9 +808,12 @@ void QvkMainWindow::slot_profileNew( bool bo )
                                          "",
                                          &ok);
     if ( ok && !profileName.isEmpty() ) {
-        ui->comboBoxProfile->addItem( profileName );
-        int index = ui->comboBoxProfile->findText( profileName );
-        ui->comboBoxProfile->setCurrentIndex( index );
+        ui->comboBoxProfile->blockSignals( true );
+          ui->comboBoxProfile->addItem( profileName );
+          int index = ui->comboBoxProfile->findText( profileName );
+          ui->comboBoxProfile->setCurrentIndex( index );
+          slot_profileSave( true );
+        ui->comboBoxProfile->blockSignals( false );
     }
 }
 
