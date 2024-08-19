@@ -633,6 +633,19 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->frame_cisco->hide();
 #endif
 
+
+    // Begin Profiles
+    QSettings profileSettings( QSettings::IniFormat, QSettings::UserScope, global::name, "profiles", Q_NULLPTR );
+    QStringList stringList = profileSettings.childGroups();
+    ui->comboBoxProfile->addItems( stringList );
+
+    connect( ui->pushButtonProfileNew,    SIGNAL( clicked(bool) ),            this, SLOT( slot_profileNew(bool) ) );
+    connect( ui->pushButtonProfileSave,   SIGNAL( clicked(bool) ),            this, SLOT( slot_profileSave(bool) ) );
+    connect( ui->pushButtonProfileDelete, SIGNAL( clicked(bool) ),            this, SLOT( slot_profileDelete(bool) ) );
+    connect( ui->comboBoxProfile,         SIGNAL( currentIndexChanged(int) ), this, SLOT( slot_profileLoad(int) ) );
+    // End Profiles
+
+
 #ifdef Q_OS_WIN
     vkSettings.readCamera( vkCameraController->cameraSingleList );
 #endif
@@ -705,11 +718,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     } else {
         ui->label_translate->hide();
     }
-
-    connect( ui->pushButtonProfileNew,    SIGNAL( clicked(bool) ),            this, SLOT( slot_profileNew(bool) ) );
-    connect( ui->pushButtonProfileSave,   SIGNAL( clicked(bool) ),            this, SLOT( slot_profileSave(bool) ) );
-    connect( ui->pushButtonProfileDelete, SIGNAL( clicked(bool) ),            this, SLOT( slot_profileDelete(bool) ) );
-    connect( ui->comboBoxProfile,         SIGNAL( currentIndexChanged(int) ), this, SLOT( slot_profileLoad(int) ) );
 }
 
 
