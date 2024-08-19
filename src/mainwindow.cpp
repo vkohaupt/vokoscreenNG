@@ -635,6 +635,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 
 
     // Begin Profiles
+    ui->comboBoxProfile->addItem( Profile_None );
+
     QSettings profileSettings( QSettings::IniFormat, QSettings::UserScope, global::name, "profiles", Q_NULLPTR );
     QStringList stringList = profileSettings.childGroups();
     ui->comboBoxProfile->addItems( stringList );
@@ -731,7 +733,7 @@ void QvkMainWindow::slot_profileSave( bool bo )
 {
     Q_UNUSED(bo)
     QString profileName = ui->comboBoxProfile->currentText();
-    if ( profileName == "--------------------" ) {
+    if ( profileName == Profile_None ) {
         return;
     }
 
@@ -758,7 +760,8 @@ void QvkMainWindow::slot_profileLoad( int index )
 {
     Q_UNUSED(index)
     QString profileName = ui->comboBoxProfile->currentText();
-    if ( profileName == "--------------------" ) {
+    if ( profileName == Profile_None ) {
+        set_ToolButtonEnableDisable();
         return;
     }
 
@@ -786,13 +789,16 @@ void QvkMainWindow::slot_profileLoad( int index )
     }
 
     profileSettings.endGroup();
+
+    set_ToolButtonEnableDisable();
+
 }
 
 
 void QvkMainWindow::slot_profileDelete( bool bo ) {
     Q_UNUSED(bo)
     QString profileName = ui->comboBoxProfile->currentText();
-    if ( profileName == "--------------------" ) {
+    if ( profileName == Profile_None ) {
         return;
     }
 
@@ -801,6 +807,8 @@ void QvkMainWindow::slot_profileDelete( bool bo ) {
 
     int index = ui->comboBoxProfile->findText( profileName );
     ui->comboBoxProfile->removeItem( index );
+
+    set_ToolButtonEnableDisable();
 }
 
 
@@ -822,6 +830,20 @@ void QvkMainWindow::slot_profileNew( bool bo )
           ui->comboBoxProfile->setCurrentIndex( index );
           slot_profileSave( true );
         ui->comboBoxProfile->blockSignals( false );
+        set_ToolButtonEnableDisable();
+    }
+}
+
+
+void QvkMainWindow::set_ToolButtonEnableDisable() {
+    if ( ui->comboBoxProfile->currentText() == Profile_None ) {
+        ui->pushButtonProfileDelete->setEnabled( false );
+        ui->pushButtonProfileSave->setEnabled( false );
+    }
+
+    if ( ui->comboBoxProfile->currentText() != Profile_None ) {
+        ui->pushButtonProfileDelete->setEnabled( true );
+        ui->pushButtonProfileSave->setEnabled( true );
     }
 }
 

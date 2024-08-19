@@ -914,20 +914,18 @@
                       </size>
                      </property>
                      <property name="currentText">
-                      <string notr="true">--------------------</string>
+                      <string notr="true"/>
                      </property>
                      <property name="sizeAdjustPolicy">
                       <enum>QComboBox::AdjustToMinimumContentsLengthWithIcon</enum>
                      </property>
-                     <item>
-                      <property name="text">
-                       <string notr="true">--------------------</string>
-                      </property>
-                     </item>
                     </widget>
                    </item>
                    <item>
                     <widget class="QPushButton" name="pushButtonProfileSave">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
                      <property name="toolTip">
                       <string notr="true">Save</string>
                      </property>
@@ -937,6 +935,12 @@
                      <property name="icon">
                       <iconset resource="screencast.qrc">
                        <normaloff>:/pictures/screencast/profile-save-1.png</normaloff>:/pictures/screencast/profile-save-1.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>20</width>
+                       <height>20</height>
+                      </size>
                      </property>
                     </widget>
                    </item>
@@ -952,10 +956,19 @@
                       <iconset resource="screencast.qrc">
                        <normaloff>:/pictures/screencast/profile-new.png</normaloff>:/pictures/screencast/profile-new.png</iconset>
                      </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>20</width>
+                       <height>20</height>
+                      </size>
+                     </property>
                     </widget>
                    </item>
                    <item>
                     <widget class="QPushButton" name="pushButtonProfileDelete">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
                      <property name="toolTip">
                       <string notr="true">Delete</string>
                      </property>
@@ -965,6 +978,12 @@
                      <property name="icon">
                       <iconset resource="screencast.qrc">
                        <normaloff>:/pictures/screencast/profile-delete.png</normaloff>:/pictures/screencast/profile-delete.png</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>20</width>
+                       <height>20</height>
+                      </size>
                      </property>
                     </widget>
                    </item>
@@ -7202,7 +7221,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
