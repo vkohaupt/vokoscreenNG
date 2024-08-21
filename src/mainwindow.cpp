@@ -48,6 +48,7 @@
 #include "QvkSnapshot.h"
 #include "QvkPadsAndCaps.h"
 #include <QvkLevelMeterController.h>
+#include "QvkSpezialCheckbox.h"
 
 #ifdef Q_OS_UNIX
   #include "QvkScreenManager.h"
@@ -750,6 +751,12 @@ void QvkMainWindow::slot_profileSave( bool bo )
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
         QCheckBox *checkBox = listCheckBox.at(i);
         profileSettings.setValue( checkBox->objectName(), checkBox->isChecked() );
+    }
+
+    QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
+    for ( int i = 0; i < listSpezialCheckbox.count(); i++ ) {
+        QvkSpezialCheckbox *spezialCheckbox = listSpezialCheckbox.at(i);
+        profileSettings.setValue( spezialCheckbox->objectName(), spezialCheckbox->isChecked() );
     }
 
     QList<QRadioButton *> listRadioButton = ui->centralWidget->findChildren<QRadioButton *>();
