@@ -807,8 +807,6 @@ void QvkMainWindow::slot_profileLoad( int index )
         }
     }
 
-
-
     QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
     for ( int i = 0; i < listSpezialCheckbox.count(); i++ ) {
         QvkSpezialCheckbox *spezialCheckbox = listSpezialCheckbox.at(i);
@@ -819,9 +817,6 @@ void QvkMainWindow::slot_profileLoad( int index )
             spezialCheckbox->slot_click();
         }
     }
-
-
-
 
     QList<QRadioButton *> listRadioButton = ui->centralWidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadioButton.count(); i++ ) {
