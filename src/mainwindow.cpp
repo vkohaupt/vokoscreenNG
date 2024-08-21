@@ -807,6 +807,22 @@ void QvkMainWindow::slot_profileLoad( int index )
         }
     }
 
+
+
+    QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
+    for ( int i = 0; i < listSpezialCheckbox.count(); i++ ) {
+        QvkSpezialCheckbox *spezialCheckbox = listSpezialCheckbox.at(i);
+        bool value = profileSettings.value( spezialCheckbox->objectName() ).toBool();
+        if ( spezialCheckbox->isChecked() == value ) {
+            // make nothing
+        } else {
+            spezialCheckbox->slot_click();
+        }
+    }
+
+
+
+
     QList<QRadioButton *> listRadioButton = ui->centralWidget->findChildren<QRadioButton *>();
     for ( int i = 0; i < listRadioButton.count(); i++ ) {
         QRadioButton *radioButton = listRadioButton.at(i);
@@ -818,9 +834,9 @@ void QvkMainWindow::slot_profileLoad( int index )
         }
     }
 
-    QList<QvkSpezialSlider *> vkSpezialSlider = ui->centralWidget->findChildren<QvkSpezialSlider *>();
-    for ( int i = 0; i < vkSpezialSlider.count(); i++ ) {
-        QvkSpezialSlider *spezialSlider = vkSpezialSlider.at(i);
+    QList<QvkSpezialSlider *> listSpezialSlider = ui->centralWidget->findChildren<QvkSpezialSlider *>();
+    for ( int i = 0; i < listSpezialSlider.count(); i++ ) {
+        QvkSpezialSlider *spezialSlider = listSpezialSlider.at(i);
         int value = profileSettings.value( spezialSlider->objectName() ).toInt();
         spezialSlider->setValue( value );
     }
