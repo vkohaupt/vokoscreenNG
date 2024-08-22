@@ -770,6 +770,12 @@ void QvkMainWindow::slot_profileSave( bool bo )
         profileSettings.setValue( spezialSlider->objectName(), spezialSlider->value() );
     }
 
+    QList<QComboBox *> listComboBox = ui->centralWidget->findChildren<QComboBox *>();
+    for ( int i = 0; i < listComboBox.count(); i++ ) {
+        QComboBox *comboBox = listComboBox.at(i);
+        profileSettings.setValue( comboBox->objectName(), comboBox->currentText() );
+    }
+
     profileSettings.endGroup();
 }
 

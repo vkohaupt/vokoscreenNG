@@ -158,7 +158,7 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             continue;
         }
 
-         QString valueText = settings.value( comboBox->objectName(), "" ).toString();
+        QString valueText = settings.value( comboBox->objectName(), "" ).toString();
         int valueInt = comboBox->findText( valueText );
         if ( valueInt > -1 ) {
             comboBox->setCurrentIndex( valueInt );
