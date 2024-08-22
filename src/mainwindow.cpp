@@ -629,25 +629,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkCiscoOpenh264Controller->showWaitDialog();
     vkCiscoOpenh264Controller->init();
 #endif
+
 #ifdef Q_OS_UNIX
     ui->line_cisco->hide();
     ui->frame_cisco->hide();
 #endif
-
-/*
-    // Begin Profiles
-    ui->comboBoxProfile->addItem( Profile_None );
-
-    QSettings profileSettings( QSettings::IniFormat, QSettings::UserScope, global::name, "profiles", Q_NULLPTR );
-    QStringList stringList = profileSettings.childGroups();
-    ui->comboBoxProfile->addItems( stringList );
-
-    connect( ui->pushButtonProfileNew,    SIGNAL( clicked(bool) ),            this, SLOT( slot_profileNew(bool) ) );
-    connect( ui->pushButtonProfileSave,   SIGNAL( clicked(bool) ),            this, SLOT( slot_profileSave(bool) ) );
-    connect( ui->pushButtonProfileDelete, SIGNAL( clicked(bool) ),            this, SLOT( slot_profileDelete(bool) ) );
-    connect( ui->comboBoxProfile,         SIGNAL( currentIndexChanged(int) ), this, SLOT( slot_profileLoad(int) ) );
-    // End Profiles
-*/
 
 #ifdef Q_OS_WIN
     vkSettings.readCamera( vkCameraController->cameraSingleList );
@@ -722,9 +708,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
         ui->label_translate->hide();
     }
 
-
-
-
     // Begin Profiles
     ui->comboBoxProfile->addItem( Profile_None );
 
@@ -737,8 +720,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QStringList stringList = profileSettings.childGroups();
     ui->comboBoxProfile->addItems( stringList );
     // End Profiles
-
-
 }
 
 
