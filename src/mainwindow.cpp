@@ -716,6 +716,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonProfileDelete, SIGNAL( clicked(bool) ),            this, SLOT( slot_profileDelete(bool) ) );
     connect( ui->comboBoxProfile,         SIGNAL( currentIndexChanged(int) ), this, SLOT( slot_profileLoad(int) ) );
 
+    // Jede childGroup ist ein Profil und wird aus der profiles.ini ausgelesen und in der Combobox eingetragen
     QSettings profileSettings( QSettings::IniFormat, QSettings::UserScope, global::name, "profiles", Q_NULLPTR );
     QStringList stringList = profileSettings.childGroups();
     ui->comboBoxProfile->addItems( stringList );
@@ -841,6 +842,15 @@ void QvkMainWindow::slot_profileLoad( int index )
         spezialSlider->setValue( value );
     }
 
+/*
+    QList<QComboBox *> listComboBox = ui->centralWidget->findChildren<QComboBox *>();
+    for ( int i = 0; i < listComboBox.count(); i++ ) {
+        QComboBox *comboBox = listComboBox.at(i);
+        QString string = profileSettings.value( comboBox->objectName() ).toString();
+        int index = comboBox->findText( string );
+        comboBox->setCurrentIndex( index );
+    }
+*/
     profileSettings.endGroup();
 
     set_ToolButtonEnableDisable();
