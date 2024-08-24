@@ -727,7 +727,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QList<QComboBox *> listComboBox = ui->centralWidget->findChildren<QComboBox *>( "comboBoxProfile" );
     QComboBox *comboBox = listComboBox.at(0);
     int index = comboBox->findText( profil );
-    comboBox->setCurrentIndex( index );
+    if ( index != -1 ) {
+        comboBox->setCurrentIndex( index );
+    }
     // End Profiles
 }
 
@@ -782,7 +784,9 @@ void QvkMainWindow::slot_profileSave( bool bo )
     QList<QComboBox *> listComboBox = ui->centralWidget->findChildren<QComboBox *>();
     for ( int i = 0; i < listComboBox.count(); i++ ) {
         QComboBox *comboBox = listComboBox.at(i);
-        profileSettings.setValue( comboBox->objectName(), comboBox->currentText() );
+        if ( comboBox->objectName() != "comboBoxProfile" ) {
+            profileSettings.setValue( comboBox->objectName(), comboBox->currentText() );
+        }
     }
 
     profileSettings.endGroup();
@@ -848,6 +852,18 @@ void QvkMainWindow::slot_profileLoad( int index )
         QvkSpezialSlider *spezialSlider = listSpezialSlider.at(i);
         int value = profileSettings.value( spezialSlider->objectName() ).toInt();
         spezialSlider->setValue( value );
+    }
+
+    QList<QComboBox *> listComboBox = ui->centralWidget->findChildren<QComboBox *>();
+    for ( int i = 0; i < listComboBox.count(); i++ ) {
+        QComboBox *comboBox = listComboBox.at(i);
+        if ( comboBox->objectName() != "comboBoxProfile" ) {
+            QString value = profileSettings.value( comboBox->objectName() ).toString();
+            int index = comboBox->findText( value );
+            if ( index != -1 ) {
+                comboBox->setCurrentIndex( index );
+            }
+        }
     }
 
     profileSettings.endGroup();
