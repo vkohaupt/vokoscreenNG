@@ -721,8 +721,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QStringList stringList = profileSettings.childGroups();
     ui->comboBoxProfile->addItems( stringList );
 
-    // Profile sind in der ComboBox vorhanden.
-    // Nun muß aus der vokoscreenNG.ini der abgespeicherte Profilname ausgelesen und das Profil geladen werden.
+    // Nun wird aus der vokoscreenNG.ini der abgespeicherte Profilname ausgelesen und das Profil geladen.
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     QString profil = settings.value( "comboBoxProfile" ).toString();
     QList<QComboBox *> listComboBox = ui->centralWidget->findChildren<QComboBox *>( "comboBoxProfile" );
