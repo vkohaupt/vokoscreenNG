@@ -720,6 +720,15 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     QSettings profileSettings( QSettings::IniFormat, QSettings::UserScope, global::name, "profiles", Q_NULLPTR );
     QStringList stringList = profileSettings.childGroups();
     ui->comboBoxProfile->addItems( stringList );
+
+    // Profile sind in der ComboBox vorhanden.
+    // Nun muß aus der vokoscreenNG.ini der abgespeicherte Profilname ausgelesen und das Profil geladen werden.
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QString profil = settings.value( "comboBoxProfile" ).toString();
+    QList<QComboBox *> listComboBox = ui->centralWidget->findChildren<QComboBox *>( "comboBoxProfile" );
+    QComboBox *comboBox = listComboBox.at(0);
+    int index = comboBox->findText( profil );
+    comboBox->setCurrentIndex( index );
     // End Profiles
 }
 
@@ -842,15 +851,6 @@ void QvkMainWindow::slot_profileLoad( int index )
         spezialSlider->setValue( value );
     }
 
-/*
-    QList<QComboBox *> listComboBox = ui->centralWidget->findChildren<QComboBox *>();
-    for ( int i = 0; i < listComboBox.count(); i++ ) {
-        QComboBox *comboBox = listComboBox.at(i);
-        QString string = profileSettings.value( comboBox->objectName() ).toString();
-        int index = comboBox->findText( string );
-        comboBox->setCurrentIndex( index );
-    }
-*/
     profileSettings.endGroup();
 
     set_ToolButtonEnableDisable();
