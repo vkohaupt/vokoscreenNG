@@ -14,7 +14,7 @@ assignees: ''
 * [ ] Are you familiar with https://www.mediawiki.org/wiki/How_to_report_a_bug ?
 
 **Wayland is experimental**
-This means that many functions are not available or incomplete, such as audio, Halo, global shortcuts, Showclick, camera.
+This means that many functions are not available such as audio, Halo, global shortcuts, Showclick, camera.
 
 **Describe the bug**
 A clear and concise description of what the bug is.
