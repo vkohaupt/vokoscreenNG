@@ -398,7 +398,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>0</number>
           </property>
           <property name="iconSize">
            <size>
@@ -934,7 +934,7 @@
                      </property>
                      <property name="icon">
                       <iconset resource="screencast.qrc">
-                       <normaloff>:/pictures/screencast/profile-save-1.png</normaloff>:/pictures/screencast/profile-save-1.png</iconset>
+                       <normaloff>:/pictures/screencast/profile-save.png</normaloff>:/pictures/screencast/profile-save.png</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
