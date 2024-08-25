@@ -818,11 +818,15 @@ void QvkMainWindow::slot_profileLoad( int index )
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
         QCheckBox *checkBox = listCheckBox.at(i);
         if ( checkBox->objectName() != "checkBoxGstreamerDebugLevel" ) {
-            bool value = profileSettings.value( checkBox->objectName() ).toBool();
-            if ( checkBox->isChecked() == value ) {
-                // make nothing
-            } else {
-                checkBox->click();
+            if ( checkBox->objectName() != "checkBoxStopRecordingAfter" ) {
+                if ( checkBox->objectName() != "checkBoxStartTime" ) {
+                    bool value = profileSettings.value( checkBox->objectName() ).toBool();
+                    if ( checkBox->isChecked() == value ) {
+                        // make nothing
+                    } else {
+                        checkBox->click();
+                    }
+                }
             }
         }
     }
