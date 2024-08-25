@@ -110,9 +110,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->line_cisco->hide();
     ui->label_Upate_tab_2->hide();
 
-    // Hide to time not needed tabs
-    ui->tabWidgetScreencast->removeTab(1); // Audio
-
     new QvkCameraController_wl( ui );
 
     QList<QScreen *> screen = QGuiApplication::screens();
@@ -229,7 +226,6 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->radioButtonScreencastFullscreen, SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->radioButtonScreencastWindow,     SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->radioButtonScreencastArea,       SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->tabVideo,                        SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameVideoPath,                  SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_area,                      SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset,   SLOT( setEnabled(bool) ) );
@@ -241,7 +237,6 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->radioButtonScreencastFullscreen, SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->radioButtonScreencastWindow,     SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->radioButtonScreencastArea,       SLOT( setDisabled(bool) ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->tabVideo,                        SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->frameVideoPath,                  SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop,  &QPushButton::clicked, this, [=]() {
         if ( ui->radioButtonScreencastArea->isChecked() == true ) {
@@ -491,7 +486,6 @@ void QvkMainWindow_wl::slot_pre_start( QString vk_fd, QString vk_path )
             ui->radioButtonScreencastFullscreen->setEnabled( true );
             ui->radioButtonScreencastWindow->setEnabled( true );
             ui->radioButtonScreencastArea->setEnabled( true );
-            ui->tabVideo->setEnabled( true );
             ui->frameVideoPath->setEnabled( true );
         }
     } else {
@@ -558,7 +552,6 @@ void QvkMainWindow_wl::slot_portal_cancel( uint value )
     ui->radioButtonScreencastFullscreen->setEnabled( true );
     ui->radioButtonScreencastWindow->setEnabled( true );
     ui->radioButtonScreencastArea->setEnabled( true );
-    ui->tabVideo->setEnabled( true );
     ui->frameVideoPath->setEnabled( true );
     if ( ui->radioButtonScreencastArea->isChecked() == true ) {
        ui->frame_area->setEnabled( true );

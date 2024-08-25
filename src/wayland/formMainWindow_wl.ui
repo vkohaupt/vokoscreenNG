@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>514</height>
+    <height>569</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -242,217 +242,34 @@
              <attribute name="title">
               <string notr="true"/>
              </attribute>
-             <layout class="QVBoxLayout" name="verticalLayout_8">
+             <layout class="QHBoxLayout" name="horizontalLayout_15">
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_7">
-                <property name="bottomMargin">
-                 <number>24</number>
-                </property>
                 <item>
                  <layout class="QGridLayout" name="gridLayout_2">
-                  <item row="6" column="0">
-                   <spacer name="verticalSpacer_3">
+                  <item row="5" column="3">
+                   <spacer name="horizontalSpacer_2">
                     <property name="orientation">
-                     <enum>Qt::Vertical</enum>
+                     <enum>Qt::Horizontal</enum>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
-                      <width>20</width>
-                      <height>40</height>
+                      <width>40</width>
+                      <height>20</height>
                      </size>
                     </property>
                    </spacer>
                   </item>
-                  <item row="2" column="4" rowspan="6">
-                   <layout class="QGridLayout" name="gridLayout_8">
-                    <property name="bottomMargin">
-                     <number>10</number>
+                  <item row="5" column="2">
+                   <widget class="QToolButton" name="toolButtonScreencastAreaReset">
+                    <property name="text">
+                     <string notr="true"/>
                     </property>
-                    <item row="4" column="0">
-                     <spacer name="verticalSpacer_22">
-                      <property name="orientation">
-                       <enum>Qt::Vertical</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>20</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item row="0" column="0" alignment="Qt::AlignHCenter">
-                     <widget class="QLabel" name="label_18">
-                      <property name="text">
-                       <string>Information</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="0">
-                     <layout class="QGridLayout" name="gridLayout_9">
-                      <property name="topMargin">
-                       <number>10</number>
-                      </property>
-                      <item row="2" column="3">
-                       <widget class="QLabel" name="label_30">
-                        <property name="text">
-                         <string notr="true">KB</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="8" column="1">
-                       <widget class="QLabel" name="label_29">
-                        <property name="text">
-                         <string>Frames</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="7" column="2" colspan="2">
-                       <widget class="QLabel" name="labelInfoAudiocodec">
-                        <property name="text">
-                         <string notr="true"/>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="1">
-                       <widget class="QLabel" name="label_19">
-                        <property name="text">
-                         <string>Free disk space:</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="7" column="1">
-                       <widget class="QLabel" name="label_27">
-                        <property name="text">
-                         <string>Audiocodec</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="8" column="2" colspan="2">
-                       <widget class="QLabel" name="labelInfoFrames">
-                        <property name="text">
-                         <string notr="true"/>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="5" column="1">
-                       <widget class="QLabel" name="label_31">
-                        <property name="text">
-                         <string>Format</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="0" column="1">
-                       <widget class="QLabel" name="label_33">
-                        <property name="text">
-                         <string>Record Time:</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="5" column="2" colspan="2">
-                       <widget class="QLabel" name="labelInfoFormat">
-                        <property name="text">
-                         <string notr="true"/>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="2" column="1">
-                       <widget class="QLabel" name="label_20">
-                        <property name="text">
-                         <string>Video size:</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="2" column="2">
-                       <widget class="QLabel" name="labelVideoSize">
-                        <property name="text">
-                         <string notr="true">0</string>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="6" column="1">
-                       <widget class="QLabel" name="label_28">
-                        <property name="text">
-                         <string>Videocodec</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="4" column="1" colspan="3">
-                       <widget class="Line" name="line_4">
-                        <property name="orientation">
-                         <enum>Qt::Horizontal</enum>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="0" column="2" colspan="2">
-                       <widget class="QLabel" name="labelInfoRecordTime">
-                        <property name="text">
-                         <string notr="true">00:00:00</string>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="3">
-                       <widget class="QLabel" name="label_32">
-                        <property name="text">
-                         <string notr="true">MB</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="1" column="2">
-                       <widget class="QLabel" name="labelFreeSize">
-                        <property name="minimumSize">
-                         <size>
-                          <width>40</width>
-                          <height>0</height>
-                         </size>
-                        </property>
-                        <property name="text">
-                         <string notr="true">0</string>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="6" column="2" colspan="2">
-                       <widget class="QLabel" name="labelInfoVideocodec">
-                        <property name="text">
-                         <string notr="true"/>
-                        </property>
-                       </widget>
-                      </item>
-                      <item row="9" column="2">
-                       <spacer name="verticalSpacer_5">
-                        <property name="orientation">
-                         <enum>Qt::Vertical</enum>
-                        </property>
-                        <property name="sizeHint" stdset="0">
-                         <size>
-                          <width>20</width>
-                          <height>40</height>
-                         </size>
-                        </property>
-                       </spacer>
-                      </item>
-                     </layout>
-                    </item>
-                    <item row="2" column="0" alignment="Qt::AlignHCenter">
-                     <widget class="QLabel" name="label_Upate_tab_2">
-                      <property name="text">
-                       <string notr="true">TextLabel</string>
-                      </property>
-                      <property name="openExternalLinks">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
+                    <property name="icon">
+                     <iconset resource="../screencast.qrc">
+                      <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                    </property>
+                   </widget>
                   </item>
                   <item row="5" column="1">
                    <widget class="QFrame" name="frame_area">
@@ -607,6 +424,28 @@
                     </layout>
                    </widget>
                   </item>
+                  <item row="0" column="0" colspan="5" alignment="Qt::AlignHCenter">
+                   <widget class="QLabel" name="label">
+                    <property name="font">
+                     <font>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string notr="true">vokoscreenNG Support on Wayland - Experimental State</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="0">
+                   <widget class="QRadioButton" name="radioButtonScreencastWindow">
+                    <property name="text">
+                     <string>Window</string>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">buttonGroup</string>
+                    </attribute>
+                   </widget>
+                  </item>
                   <item row="2" column="0" colspan="4">
                    <widget class="QFrame" name="frame_video_audio_on_off">
                     <property name="frameShape">
@@ -659,75 +498,6 @@
                     </layout>
                    </widget>
                   </item>
-                  <item row="0" column="0" colspan="6" alignment="Qt::AlignHCenter">
-                   <widget class="QLabel" name="label">
-                    <property name="font">
-                     <font>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string notr="true">vokoscreenNG Support on Wayland - Experimental State</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="7" column="0" colspan="4">
-                   <layout class="QHBoxLayout" name="horizontalLayout_10">
-                    <item>
-                     <widget class="QLabel" name="labelScreencastCountdownText">
-                      <property name="text">
-                       <string>Countdown</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <spacer name="horizontalSpacer_3">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>40</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                   </layout>
-                  </item>
-                  <item row="5" column="3">
-                   <spacer name="horizontalSpacer_2">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="4" column="0">
-                   <widget class="QRadioButton" name="radioButtonScreencastWindow">
-                    <property name="text">
-                     <string>Window</string>
-                    </property>
-                    <attribute name="buttonGroup">
-                     <string notr="true">buttonGroup</string>
-                    </attribute>
-                   </widget>
-                  </item>
-                  <item row="5" column="0">
-                   <widget class="QRadioButton" name="radioButtonScreencastArea">
-                    <property name="text">
-                     <string>Area</string>
-                    </property>
-                    <attribute name="buttonGroup">
-                     <string notr="true">buttonGroup</string>
-                    </attribute>
-                   </widget>
-                  </item>
                   <item row="3" column="0">
                    <widget class="QRadioButton" name="radioButtonScreencastFullscreen">
                     <property name="text">
@@ -741,21 +511,7 @@
                     </attribute>
                    </widget>
                   </item>
-                  <item row="6" column="1">
-                   <layout class="QHBoxLayout" name="horizontalLayout_6"/>
-                  </item>
-                  <item row="5" column="2">
-                   <widget class="QToolButton" name="toolButtonScreencastAreaReset">
-                    <property name="text">
-                     <string notr="true"/>
-                    </property>
-                    <property name="icon">
-                     <iconset resource="../screencast.qrc">
-                      <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="0" colspan="6" alignment="Qt::AlignHCenter">
+                  <item row="1" column="0" colspan="5" alignment="Qt::AlignHCenter">
                    <widget class="QLabel" name="label_6">
                     <property name="font">
                      <font>
@@ -767,153 +523,111 @@
                     </property>
                    </widget>
                   </item>
+                  <item row="5" column="0">
+                   <widget class="QRadioButton" name="radioButtonScreencastArea">
+                    <property name="text">
+                     <string>Area</string>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">buttonGroup</string>
+                    </attribute>
+                   </widget>
+                  </item>
                  </layout>
                 </item>
-               </layout>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="tabAudio">
-             <attribute name="icon">
-              <iconset resource="../screencast.qrc">
-               <normaloff>:/pictures/screencast/microphone.png</normaloff>:/pictures/screencast/microphone.png</iconset>
-             </attribute>
-             <attribute name="title">
-              <string notr="true"/>
-             </attribute>
-             <widget class="QComboBox" name="comboBoxAudioCodec">
-              <property name="geometry">
-               <rect>
-                <x>50</x>
-                <y>250</y>
-                <width>131</width>
-                <height>32</height>
-               </rect>
-              </property>
-              <property name="currentText">
-               <string notr="true"/>
-              </property>
-             </widget>
-             <widget class="QLabel" name="label_3">
-              <property name="geometry">
-               <rect>
-                <x>170</x>
-                <y>50</y>
-                <width>221</width>
-                <height>18</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string notr="true">Audio recording not implemented</string>
-              </property>
-             </widget>
-            </widget>
-            <widget class="QWidget" name="tabVideo">
-             <attribute name="icon">
-              <iconset resource="../screencast.qrc">
-               <normaloff>:/pictures/screencast/format-codec.png</normaloff>:/pictures/screencast/format-codec.png</iconset>
-             </attribute>
-             <attribute name="title">
-              <string notr="true"/>
-             </attribute>
-             <layout class="QVBoxLayout" name="verticalLayout_3">
-              <item>
-               <layout class="QGridLayout" name="gridLayout">
-                <item row="1" column="3">
-                 <spacer name="horizontalSpacer">
+                <item>
+                 <widget class="Line" name="line_2">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item row="2" column="2">
-                 <widget class="QComboBox" name="comboBoxVideoCodec">
-                  <property name="currentText">
-                   <string notr="true"/>
-                  </property>
                  </widget>
                 </item>
-                <item row="2" column="0">
-                 <layout class="QVBoxLayout" name="verticalLayout_6">
-                  <item alignment="Qt::AlignRight">
-                   <widget class="QLabel" name="labelVideoCodec">
+                <item>
+                 <layout class="QGridLayout" name="gridLayout">
+                  <item row="1" column="0" alignment="Qt::AlignRight">
+                   <widget class="QLabel" name="labelFormat">
                     <property name="text">
-                     <string>Videocodec</string>
+                     <string>Format</string>
                     </property>
                    </widget>
                   </item>
-                 </layout>
-                </item>
-                <item row="1" column="2">
-                 <widget class="QComboBox" name="comboBoxFormat">
-                  <property name="currentText">
-                   <string notr="true"/>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1" colspan="3">
-                 <layout class="QHBoxLayout" name="horizontalLayout_slider_frames">
-                  <item>
-                   <widget class="QToolButton" name="toolButtonFramesReset">
-                    <property name="text">
+                  <item row="1" column="3">
+                   <spacer name="horizontalSpacer">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                  <item row="0" column="0">
+                   <layout class="QHBoxLayout" name="horizontalLayout">
+                    <item alignment="Qt::AlignRight">
+                     <widget class="QLabel" name="labelFrames">
+                      <property name="text">
+                       <string>Frames</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item row="0" column="1" colspan="3">
+                   <layout class="QHBoxLayout" name="horizontalLayout_slider_frames">
+                    <item>
+                     <widget class="QToolButton" name="toolButtonFramesReset">
+                      <property name="text">
+                       <string notr="true"/>
+                      </property>
+                      <property name="icon">
+                       <iconset resource="../screencast.qrc">
+                        <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item row="2" column="2">
+                   <widget class="QComboBox" name="comboBoxVideoCodec">
+                    <property name="currentText">
                      <string notr="true"/>
                     </property>
-                    <property name="icon">
-                     <iconset resource="../screencast.qrc">
-                      <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                   </widget>
+                  </item>
+                  <item row="0" column="5">
+                   <layout class="QHBoxLayout" name="horizontalLayout_22">
+                    <item>
+                     <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
+                      <property name="text">
+                       <string>Do not record mouse cursor</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QComboBox" name="comboBoxFormat">
+                    <property name="currentText">
+                     <string notr="true"/>
                     </property>
                    </widget>
                   </item>
-                 </layout>
-                </item>
-                <item row="0" column="0">
-                 <layout class="QHBoxLayout" name="horizontalLayout">
-                  <item alignment="Qt::AlignRight">
-                   <widget class="QLabel" name="labelFrames">
-                    <property name="text">
-                     <string>Frames</string>
-                    </property>
-                   </widget>
+                  <item row="2" column="0">
+                   <layout class="QVBoxLayout" name="verticalLayout_6">
+                    <item alignment="Qt::AlignRight">
+                     <widget class="QLabel" name="labelVideoCodec">
+                      <property name="text">
+                       <string>Videocodec</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
                   </item>
-                 </layout>
-                </item>
-                <item row="1" column="0" alignment="Qt::AlignRight">
-                 <widget class="QLabel" name="labelFormat">
-                  <property name="text">
-                   <string>Format</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="0">
-                 <spacer name="verticalSpacer_2">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item row="4" column="0" colspan="4">
-                 <layout class="QHBoxLayout" name="horizontalLayout_22">
-                  <item>
-                   <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
-                    <property name="text">
-                     <string>Do not record mouse cursor</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_18">
+                  <item row="0" column="4">
+                   <spacer name="horizontalSpacer_11">
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
                     </property>
@@ -926,6 +640,259 @@
                    </spacer>
                   </item>
                  </layout>
+                </item>
+                <item>
+                 <widget class="Line" name="line_3">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_3">
+                  <item>
+                   <widget class="QComboBox" name="comboBoxAudioCodec">
+                    <property name="currentText">
+                     <string notr="true"/>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_10">
+                  <item>
+                   <widget class="QLabel" name="labelScreencastCountdownText">
+                    <property name="text">
+                     <string>Countdown</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_3">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="Line" name="line_5">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QGridLayout" name="gridLayout_8">
+                <property name="bottomMargin">
+                 <number>10</number>
+                </property>
+                <item row="4" column="0">
+                 <spacer name="verticalSpacer_22">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="0" column="0" alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="label_18">
+                  <property name="text">
+                   <string>Information</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <layout class="QGridLayout" name="gridLayout_9">
+                  <property name="topMargin">
+                   <number>10</number>
+                  </property>
+                  <item row="2" column="3">
+                   <widget class="QLabel" name="label_30">
+                    <property name="text">
+                     <string notr="true">KB</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="8" column="1">
+                   <widget class="QLabel" name="label_29">
+                    <property name="text">
+                     <string>Frames</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="7" column="2" colspan="2">
+                   <widget class="QLabel" name="labelInfoAudiocodec">
+                    <property name="text">
+                     <string notr="true"/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLabel" name="label_19">
+                    <property name="text">
+                     <string>Free disk space:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="7" column="1">
+                   <widget class="QLabel" name="label_27">
+                    <property name="text">
+                     <string>Audiocodec</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="8" column="2" colspan="2">
+                   <widget class="QLabel" name="labelInfoFrames">
+                    <property name="text">
+                     <string notr="true"/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="1">
+                   <widget class="QLabel" name="label_31">
+                    <property name="text">
+                     <string>Format</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLabel" name="label_33">
+                    <property name="text">
+                     <string>Record Time:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="5" column="2" colspan="2">
+                   <widget class="QLabel" name="labelInfoFormat">
+                    <property name="text">
+                     <string notr="true"/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QLabel" name="label_20">
+                    <property name="text">
+                     <string>Video size:</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="2">
+                   <widget class="QLabel" name="labelVideoSize">
+                    <property name="text">
+                     <string notr="true">0</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="1">
+                   <widget class="QLabel" name="label_28">
+                    <property name="text">
+                     <string>Videocodec</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="4" column="1" colspan="3">
+                   <widget class="Line" name="line_4">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="2" colspan="2">
+                   <widget class="QLabel" name="labelInfoRecordTime">
+                    <property name="text">
+                     <string notr="true">00:00:00</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="3">
+                   <widget class="QLabel" name="label_32">
+                    <property name="text">
+                     <string notr="true">MB</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QLabel" name="labelFreeSize">
+                    <property name="minimumSize">
+                     <size>
+                      <width>40</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string notr="true">0</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="6" column="2" colspan="2">
+                   <widget class="QLabel" name="labelInfoVideocodec">
+                    <property name="text">
+                     <string notr="true"/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="9" column="2">
+                   <spacer name="verticalSpacer_5">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+                <item row="2" column="0" alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="label_Upate_tab_2">
+                  <property name="text">
+                   <string notr="true">TextLabel</string>
+                  </property>
+                  <property name="openExternalLinks">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </item>
@@ -1079,7 +1046,7 @@
                      <x>0</x>
                      <y>0</y>
                      <width>421</width>
-                     <height>376</height>
+                     <height>431</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -2005,7 +1972,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
