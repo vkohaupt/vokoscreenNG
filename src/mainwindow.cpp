@@ -817,11 +817,13 @@ void QvkMainWindow::slot_profileLoad( int index )
     QList<QCheckBox *> listCheckBox = ui->centralWidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
         QCheckBox *checkBox = listCheckBox.at(i);
-        bool value = profileSettings.value( checkBox->objectName() ).toBool();
-        if ( checkBox->isChecked() == value ) {
-            // make nothing
-        } else {
-            checkBox->click();
+        if ( checkBox->objectName() != "checkBoxGstreamerDebugLevel" ) {
+            bool value = profileSettings.value( checkBox->objectName() ).toBool();
+            if ( checkBox->isChecked() == value ) {
+                // make nothing
+            } else {
+                checkBox->click();
+            }
         }
     }
 
