@@ -25,7 +25,7 @@ A clear and concise description of what the bug is.
 Before you copy the log, make a short recording (start,stop) and then copy the log.
 You can find the log by pressing the button at the bottom left.
 Now press the button at the bottom right.
-The file manager opens and you can see all the log files.
+The file manager opens and you can see the log files.
 To make the log complete, close vokoscreen.
 Paste now or attach log messages from vokoscreenNG log tab.
 (Text files saved as `.txt` or `.log` are accepted by GitHub as attachment uploads. `.zip` archives are also permitted.)
