@@ -260,15 +260,66 @@
                     </property>
                    </spacer>
                   </item>
-                  <item row="5" column="2">
-                   <widget class="QToolButton" name="toolButtonScreencastAreaReset">
+                  <item row="2" column="0" colspan="4">
+                   <widget class="QFrame" name="frame_video_audio_on_off">
+                    <property name="frameShape">
+                     <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_9">
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_3">
+                       <item>
+                        <widget class="QCheckBox" name="checkBox_Video">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="text">
+                          <string notr="true">Video</string>
+                         </property>
+                         <property name="checked">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QCheckBox" name="checkBox_Audio">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="text">
+                          <string notr="true">Audio</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <spacer name="horizontalSpacer_5">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>40</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="5" column="0">
+                   <widget class="QRadioButton" name="radioButtonScreencastArea">
                     <property name="text">
-                     <string notr="true"/>
+                     <string>Area</string>
                     </property>
-                    <property name="icon">
-                     <iconset resource="../screencast.qrc">
-                      <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
-                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">buttonGroup</string>
+                    </attribute>
                    </widget>
                   </item>
                   <item row="5" column="1">
@@ -321,41 +372,6 @@
                           </size>
                          </property>
                          <property name="checkable">
-                          <bool>true</bool>
-                         </property>
-                         <property name="autoExclusive">
-                          <bool>true</bool>
-                         </property>
-                        </widget>
-                       </item>
-                       <item row="2" column="1">
-                        <widget class="QToolButton" name="toolButton_area_bottom">
-                         <property name="maximumSize">
-                          <size>
-                           <width>23</width>
-                           <height>23</height>
-                          </size>
-                         </property>
-                         <property name="toolTip">
-                          <string notr="true">Taskbar is bottom</string>
-                         </property>
-                         <property name="text">
-                          <string notr="true"/>
-                         </property>
-                         <property name="icon">
-                          <iconset resource="../screencast.qrc">
-                           <normaloff>:/pictures/screencast/accept.png</normaloff>:/pictures/screencast/accept.png</iconset>
-                         </property>
-                         <property name="iconSize">
-                          <size>
-                           <width>23</width>
-                           <height>23</height>
-                          </size>
-                         </property>
-                         <property name="checkable">
-                          <bool>true</bool>
-                         </property>
-                         <property name="checked">
                           <bool>true</bool>
                          </property>
                          <property name="autoExclusive">
@@ -419,79 +435,40 @@
                          </property>
                         </widget>
                        </item>
-                      </layout>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                  <item row="0" column="0" colspan="5" alignment="Qt::AlignHCenter">
-                   <widget class="QLabel" name="label">
-                    <property name="font">
-                     <font>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string notr="true">vokoscreenNG Support on Wayland - Experimental State</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="4" column="0">
-                   <widget class="QRadioButton" name="radioButtonScreencastWindow">
-                    <property name="text">
-                     <string>Window</string>
-                    </property>
-                    <attribute name="buttonGroup">
-                     <string notr="true">buttonGroup</string>
-                    </attribute>
-                   </widget>
-                  </item>
-                  <item row="2" column="0" colspan="4">
-                   <widget class="QFrame" name="frame_video_audio_on_off">
-                    <property name="frameShape">
-                     <enum>QFrame::NoFrame</enum>
-                    </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Raised</enum>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_9">
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_3">
-                       <item>
-                        <widget class="QCheckBox" name="checkBox_Video">
-                         <property name="enabled">
-                          <bool>false</bool>
+                       <item row="2" column="1">
+                        <widget class="QToolButton" name="toolButton_area_bottom">
+                         <property name="maximumSize">
+                          <size>
+                           <width>23</width>
+                           <height>23</height>
+                          </size>
+                         </property>
+                         <property name="toolTip">
+                          <string notr="true">Taskbar is bottom</string>
                          </property>
                          <property name="text">
-                          <string notr="true">Video</string>
+                          <string notr="true"/>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="../screencast.qrc">
+                           <normaloff>:/pictures/screencast/accept.png</normaloff>:/pictures/screencast/accept.png</iconset>
+                         </property>
+                         <property name="iconSize">
+                          <size>
+                           <width>23</width>
+                           <height>23</height>
+                          </size>
+                         </property>
+                         <property name="checkable">
+                          <bool>true</bool>
                          </property>
                          <property name="checked">
                           <bool>true</bool>
                          </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QCheckBox" name="checkBox_Audio">
-                         <property name="enabled">
-                          <bool>false</bool>
-                         </property>
-                         <property name="text">
-                          <string notr="true">Audio</string>
+                         <property name="autoExclusive">
+                          <bool>true</bool>
                          </property>
                         </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer_5">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
                        </item>
                       </layout>
                      </item>
@@ -511,6 +488,28 @@
                     </attribute>
                    </widget>
                   </item>
+                  <item row="4" column="0">
+                   <widget class="QRadioButton" name="radioButtonScreencastWindow">
+                    <property name="text">
+                     <string>Window</string>
+                    </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">buttonGroup</string>
+                    </attribute>
+                   </widget>
+                  </item>
+                  <item row="0" column="0" colspan="5" alignment="Qt::AlignHCenter">
+                   <widget class="QLabel" name="label">
+                    <property name="font">
+                     <font>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string notr="true">vokoscreenNG Support on Wayland - Experimental State</string>
+                    </property>
+                   </widget>
+                  </item>
                   <item row="1" column="0" colspan="5" alignment="Qt::AlignHCenter">
                    <widget class="QLabel" name="label_6">
                     <property name="font">
@@ -523,14 +522,15 @@
                     </property>
                    </widget>
                   </item>
-                  <item row="5" column="0">
-                   <widget class="QRadioButton" name="radioButtonScreencastArea">
+                  <item row="5" column="2">
+                   <widget class="QToolButton" name="toolButtonScreencastAreaReset">
                     <property name="text">
-                     <string>Area</string>
+                     <string notr="true"/>
                     </property>
-                    <attribute name="buttonGroup">
-                     <string notr="true">buttonGroup</string>
-                    </attribute>
+                    <property name="icon">
+                     <iconset resource="../screencast.qrc">
+                      <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                    </property>
                    </widget>
                   </item>
                  </layout>
@@ -1972,7 +1972,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>

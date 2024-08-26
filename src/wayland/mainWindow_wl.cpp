@@ -241,7 +241,7 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStop,  &QPushButton::clicked, this, [=]() {
         if ( ui->radioButtonScreencastArea->isChecked() == true ) {
             ui->frame_area->setEnabled( true );
-            ui->toolButtonFramesReset->setEnabled( true );
+            ui->toolButtonScreencastAreaReset->setEnabled( true );
         };
     } );
 
