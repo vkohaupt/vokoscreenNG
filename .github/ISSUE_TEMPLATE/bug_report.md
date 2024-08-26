@@ -13,14 +13,20 @@ assignees: ''
 * [ ] Are you using the latest version of vokoscreenNG?
 * [ ] Are you familiar with https://www.mediawiki.org/wiki/How_to_report_a_bug ?
 
-**Wayland is experimental**
+**Wayland on Linux is experimental**
 This means that many features are currently not available, such as audio, halo, global keyboard shortcuts, showclick and camera.
+Please only write bug reports for existing functions.
+
 
 **Describe the bug**
 A clear and concise description of what the bug is.
 
 **Log messages**
 Before you copy the log, make a short recording (start,stop) and then copy the log.
+You can find the log by pressing the button at the bottom left.
+Now press the button at the bottom right.
+The file manager opens and you can see all the log files.
+To make the log complete, close vokoscreen.
 Paste now or attach log messages from vokoscreenNG log tab.
 (Text files saved as `.txt` or `.log` are accepted by GitHub as attachment uploads. `.zip` archives are also permitted.)
 
