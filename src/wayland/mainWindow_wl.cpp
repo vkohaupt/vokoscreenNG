@@ -558,6 +558,7 @@ void QvkMainWindow_wl::slot_portal_cancel( uint value )
     if ( ui->radioButtonScreencastArea->isChecked() == true ) {
        ui->frame_area->setEnabled( true );
        ui->toolButtonScreencastAreaReset->setEnabled( true );
+       ui->frame_video->setEnabled( true );
     }
 }
 
