@@ -50,19 +50,15 @@ public:
     explicit Portal_wl(QObject* parent = nullptr);
     virtual ~Portal_wl();
 
-//    void grabScreen(QScreen* screen, const QRect& rect = {});
-
 public slots:
     void startScreenCast(bool withCursor);
     void stopScreenCast();
 
 signals:
-    void screenGrabbed(QPixmap pixmap);
     void streamStarted(qint64 fd, QString path);
     void screenCastAborted();
 
 private slots:
-//    void handleScreenshotResponse(uint code, const QMap<QString, QVariant>& results);
     void handleCreateSessionResponse(uint response, const QVariantMap& results);
     void handleSelectSourcesResponse(uint response, const QVariantMap& results);
     void handleStartResponse(uint response, const QVariantMap& results);

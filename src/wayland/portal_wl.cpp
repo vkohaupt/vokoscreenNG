@@ -85,41 +85,7 @@ Portal_wl::~Portal_wl()
         delete mScreencastPortal;
     }
 }
-/*
-void Portal_wl::grabScreen(QScreen* screen, const QRect& rect)
-{
-    mScreenRect = screen->geometry();
 
-    if (!rect.isNull())
-    {
-        mScreenRect = rect.translated(mScreenRect.topLeft());
-    }
-
-    QDBusInterface screenshotPortal("org.freedesktop.portal.Desktop", "/org/freedesktop/portal/desktop", "org.freedesktop.portal.Screenshot");
-
-    if (screenshotPortal.isValid())
-    {
-        QMap<QString, QVariant> options;
-        options["handle_token"] = createRequestToken();
-        QDBusReply<QDBusObjectPath> reply = screenshotPortal.call("Screenshot", "", options);
-        QDBusObjectPath objectPath = reply.value();
-        QString path = objectPath.path();
-        QDBusConnection::sessionBus().connect(
-                            "",
-                            path,
-                            "org.freedesktop.portal.Request",
-                            "Response",
-                            "ua{sv}",
-                            this,
-                            SLOT(handleScreenshotResponse(uint,QMap<QString,QVariant>)));
-    }
-    else
-    {
-        qDebug() << "No valid screenshot portal";
-        emit screenGrabbed(QPixmap{});
-    }
-}
-*/
 void Portal_wl::startScreenCast(bool withCursor)
 {
     mWithCursor = withCursor;
@@ -173,28 +139,7 @@ void Portal_wl::stopScreenCast()
         }
     }
 }
-/*
-void Portal_wl::handleScreenshotResponse(uint code, const QMap<QString, QVariant>& results)
-{
-    QUrl uri(results["uri"].toUrl());
-    QFile file(uri.toLocalFile());
 
-    if (!file.exists())
-    {
-        qDebug() << "Screenshot image file does not exist";
-        emit screenGrabbed(QPixmap{});
-        return;
-    }
-
-    QPixmap pixmap{file.fileName()};
-    file.remove();
-
-    // cut requested screen
-    QPixmap screenshot = pixmap.copy(mScreenRect);
-
-    emit screenGrabbed(screenshot);
-}
-*/
 void Portal_wl::handleCreateSessionResponse(uint response, const QVariantMap& results)
 {
     if (response != 0)
