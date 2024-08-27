@@ -84,7 +84,7 @@ void Portal_wl::stopScreenCast()
     QDBusInterface portal( "org.freedesktop.portal.Desktop", mSession, "org.freedesktop.portal.Session" );
 
     if ( portal.isValid() ) {
-        const QDBusReply<void> reply = portal.call("Close");
+        const QDBusReply<void> reply = portal.call( "Close" );
 
         if ( !reply.isValid() ) {
             qWarning() << "Couldn't get reply to ScreenCast/Close";
@@ -103,7 +103,7 @@ void Portal_wl::handleCreateSessionResponse( uint response, const QVariantMap& r
         return;
     }
 
-    mSession = results.value("session_handle").toString();
+    mSession = results.value( "session_handle" ).toString();
 
     QDBusInterface* portal = screencastPortal();
 
@@ -162,7 +162,7 @@ void Portal_wl::handleSelectSourcesResponse( uint response, const QVariantMap& r
     QDBusConnection::sessionBus().connect("", mRequestPath + requestToken, "org.freedesktop.portal.Request", "Response", "ua{sv}", this,
                                           SLOT(handleStartResponse(uint,QMap<QString,QVariant>)));
 
-    const QDBusReply<QDBusObjectPath> reply = portal->call("Start", QDBusObjectPath(mSession), "", options);
+    const QDBusReply<QDBusObjectPath> reply = portal->call( "Start", QDBusObjectPath(mSession), "", options );
 
     if ( !reply.isValid() ) {
         qWarning() << "Couldn't get reply";
@@ -197,7 +197,7 @@ void Portal_wl::handleStartResponse( uint response, const QVariantMap& results )
 
     // Open PipeWire Remote
     QMap<QString, QVariant> options;
-    const QDBusReply<QDBusUnixFileDescriptor> reply = portal->call("OpenPipeWireRemote", QDBusObjectPath(mSession), options);
+    const QDBusReply<QDBusUnixFileDescriptor> reply = portal->call( "OpenPipeWireRemote", QDBusObjectPath(mSession), options );
 
     if ( !reply.isValid() ) {
         qWarning() << "Couldn't get reply";
@@ -206,15 +206,15 @@ void Portal_wl::handleStartResponse( uint response, const QVariantMap& results )
         return;
     }
 
-    const quint64 fd = reply.value().fileDescriptor();
-    const QString path = QString::number(stream.node_id);
+    const QString fd = QString::number( reply.value().fileDescriptor() );
+    const QString path = QString::number( stream.node_id );
 
-    emit signal_portal_fd_path( QString::number(fd), path );
+    emit signal_portal_fd_path( fd, path );
 }
 
 QDBusInterface* Portal_wl::screencastPortal()
 {
-    if (!mScreencastPortal) {
+    if ( !mScreencastPortal ) {
         mScreencastPortal = new QDBusInterface("org.freedesktop.portal.Desktop", "/org/freedesktop/portal/desktop",
                                                "org.freedesktop.portal.ScreenCast");
         mScreencastPortal->setParent(this);
