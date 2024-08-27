@@ -209,7 +209,7 @@ void Portal_wl::handleStartResponse( uint response, const QVariantMap& results )
     const quint64 fd = reply.value().fileDescriptor();
     const QString path = QString::number(stream.node_id);
 
-    emit streamStarted( fd, path );
+    emit signal_portal_fd_path( QString::number(fd), path );
 }
 
 QDBusInterface* Portal_wl::screencastPortal()

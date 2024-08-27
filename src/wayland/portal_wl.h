@@ -27,7 +27,7 @@ public slots:
     void stopScreenCast();
 
 signals:
-    void streamStarted(qint64 fd, QString path);
+    void signal_portal_fd_path(QString,QString);
     void screenCastAborted();
 
 private slots:
