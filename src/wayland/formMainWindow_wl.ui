@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>569</height>
+    <height>537</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -543,103 +543,124 @@
                  </widget>
                 </item>
                 <item>
-                 <layout class="QGridLayout" name="gridLayout">
-                  <item row="1" column="0" alignment="Qt::AlignRight">
-                   <widget class="QLabel" name="labelFormat">
-                    <property name="text">
-                     <string>Format</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="3">
-                   <spacer name="horizontalSpacer">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item row="0" column="0">
-                   <layout class="QHBoxLayout" name="horizontalLayout">
-                    <item alignment="Qt::AlignRight">
-                     <widget class="QLabel" name="labelFrames">
-                      <property name="text">
-                       <string>Frames</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item row="0" column="1" colspan="3">
-                   <layout class="QHBoxLayout" name="horizontalLayout_slider_frames">
-                    <item>
-                     <widget class="QToolButton" name="toolButtonFramesReset">
-                      <property name="text">
-                       <string notr="true"/>
-                      </property>
-                      <property name="icon">
-                       <iconset resource="../screencast.qrc">
-                        <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item row="2" column="2">
-                   <widget class="QComboBox" name="comboBoxVideoCodec">
-                    <property name="currentText">
-                     <string notr="true"/>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="5">
-                   <layout class="QHBoxLayout" name="horizontalLayout_22">
-                    <item>
-                     <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
-                      <property name="text">
-                       <string>Do not record mouse cursor</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item row="1" column="2">
-                   <widget class="QComboBox" name="comboBoxFormat">
-                    <property name="currentText">
-                     <string notr="true"/>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="0">
-                   <layout class="QVBoxLayout" name="verticalLayout_6">
-                    <item alignment="Qt::AlignRight">
-                     <widget class="QLabel" name="labelVideoCodec">
-                      <property name="text">
-                       <string>Videocodec</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item row="0" column="4">
-                   <spacer name="horizontalSpacer_11">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                 </layout>
+                 <widget class="QFrame" name="frame_video">
+                  <property name="frameShape">
+                   <enum>QFrame::NoFrame</enum>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_8">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <layout class="QGridLayout" name="gridLayout">
+                     <item row="1" column="0" alignment="Qt::AlignRight">
+                      <widget class="QLabel" name="labelFormat">
+                       <property name="text">
+                        <string>Format</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="3">
+                      <spacer name="horizontalSpacer">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item row="0" column="0">
+                      <layout class="QHBoxLayout" name="horizontalLayout">
+                       <item alignment="Qt::AlignRight">
+                        <widget class="QLabel" name="labelFrames">
+                         <property name="text">
+                          <string>Frames</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="0" column="1" colspan="3">
+                      <layout class="QHBoxLayout" name="horizontalLayout_slider_frames">
+                       <item>
+                        <widget class="QToolButton" name="toolButtonFramesReset">
+                         <property name="text">
+                          <string notr="true"/>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="../screencast.qrc">
+                           <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="2" column="2">
+                      <widget class="QComboBox" name="comboBoxVideoCodec">
+                       <property name="currentText">
+                        <string notr="true"/>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="5">
+                      <layout class="QHBoxLayout" name="horizontalLayout_22">
+                       <item>
+                        <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
+                         <property name="text">
+                          <string>Do not record mouse cursor</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="1" column="2">
+                      <widget class="QComboBox" name="comboBoxFormat">
+                       <property name="currentText">
+                        <string notr="true"/>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="0">
+                      <layout class="QVBoxLayout" name="verticalLayout_6">
+                       <item alignment="Qt::AlignRight">
+                        <widget class="QLabel" name="labelVideoCodec">
+                         <property name="text">
+                          <string>Videocodec</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="0" column="4">
+                      <spacer name="horizontalSpacer_11">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
                 </item>
                 <item>
                  <widget class="Line" name="line_3">
@@ -1046,7 +1067,7 @@
                      <x>0</x>
                      <y>0</y>
                      <width>421</width>
-                     <height>431</height>
+                     <height>518</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayoutAvailable">

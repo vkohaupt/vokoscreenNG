@@ -229,6 +229,7 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameVideoPath,                  SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_area,                      SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset,   SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_video,                     SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this,                                SLOT( slot_portal_start() ) );
 
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), this,                                SLOT( slot_stop() ) );
@@ -238,6 +239,7 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->radioButtonScreencastWindow,     SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->radioButtonScreencastArea,       SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->frameVideoPath,                  SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->frame_video,                     SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop,  &QPushButton::clicked, this, [=]() {
         if ( ui->radioButtonScreencastArea->isChecked() == true ) {
             ui->frame_area->setEnabled( true );
