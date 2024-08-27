@@ -424,7 +424,8 @@ void QvkMainWindow_wl::slot_portal_start()
         mousecursorONOff = 2;
     }
 
-    portal_wl->requestScreenSharing( sourceType, mousecursorONOff );
+    //portal_wl->requestScreenSharing( sourceType, mousecursorONOff );
+    portal_wl->startScreenCast(true);
 }
 
 

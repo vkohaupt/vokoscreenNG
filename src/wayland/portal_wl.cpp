@@ -173,7 +173,7 @@ void Portal_wl::stopScreenCast()
         }
     }
 }
-
+/*
 void Portal_wl::handleScreenshotResponse(uint code, const QMap<QString, QVariant>& results)
 {
     QUrl uri(results["uri"].toUrl());
@@ -194,7 +194,7 @@ void Portal_wl::handleScreenshotResponse(uint code, const QMap<QString, QVariant
 
     emit screenGrabbed(screenshot);
 }
-
+*/
 void Portal_wl::handleCreateSessionResponse(uint response, const QVariantMap& results)
 {
     if (response != 0)

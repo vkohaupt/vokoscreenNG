@@ -62,7 +62,7 @@ signals:
     void screenCastAborted();
 
 private slots:
-    void handleScreenshotResponse(uint code, const QMap<QString, QVariant>& results);
+//    void handleScreenshotResponse(uint code, const QMap<QString, QVariant>& results);
     void handleCreateSessionResponse(uint response, const QVariantMap& results);
     void handleSelectSourcesResponse(uint response, const QVariantMap& results);
     void handleStartResponse(uint response, const QVariantMap& results);
