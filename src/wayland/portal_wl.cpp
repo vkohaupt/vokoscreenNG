@@ -24,10 +24,8 @@
  * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 // #include "UBDesktopPortal.h"
 #include "portal_wl.h"
-
 
 #include <QDBusInterface>
 #include <QDBusReply>
@@ -36,12 +34,6 @@
 #include <QUrl>
 #include <QFile>
 #include <QPixmap>
-
-//#include "board/UBBoardView.h"
-//#include "core/UBApplication.h"
-//#include "core/UBApplicationController.h"
-//#include "desktop/UBDesktopAnnotationController.h"
-
 
 enum : uint { MONITOR = 1, WINDOW = 2, VIRTUAL = 4 } SourceType;
 enum : uint { HIDDEN = 1, EMBEDDED = 2, METADATA = 4 } CursorMode;
@@ -222,17 +214,11 @@ void Portal_wl::handleSelectSourcesResponse(uint response, const QVariantMap& re
         emit screenCastAborted();
         return;
     }
-
-    // Hide annotation drawing view in desktop mode so that portal dialog is topmost
-//    showGlassPane(false);
 }
 
 void Portal_wl::handleStartResponse(uint response, const QVariantMap& results)
 {
     Q_UNUSED(results);
-
-    // Show annotation drawing view in desktop mode after portal dialog was closed
-//    showGlassPane(true);
 
     if (response != 0)
     {
