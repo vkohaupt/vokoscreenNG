@@ -537,6 +537,12 @@
                 </item>
                 <item>
                  <widget class="Line" name="line_2">
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(200, 200, 200);</string>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Plain</enum>
+                  </property>
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
@@ -664,6 +670,12 @@
                 </item>
                 <item>
                  <widget class="Line" name="line_3">
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(200, 200, 200);</string>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Plain</enum>
+                  </property>
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
@@ -721,6 +733,12 @@
               </item>
               <item>
                <widget class="Line" name="line_5">
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(200, 200, 200);</string>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>
                 </property>
@@ -845,6 +863,12 @@
                   </item>
                   <item row="4" column="1" colspan="3">
                    <widget class="Line" name="line_4">
+                    <property name="styleSheet">
+                     <string notr="true">color: rgb(200, 200, 200);</string>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Plain</enum>
+                    </property>
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
                     </property>
@@ -1067,7 +1091,7 @@
                      <x>0</x>
                      <y>0</y>
                      <width>421</width>
-                     <height>518</height>
+                     <height>399</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayoutAvailable">

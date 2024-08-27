@@ -1,74 +1,82 @@
 /*
- * Copyright © 2016 Red Hat, Inc
+ * Copyright (C) 2015-2024 Département de l'Instruction Publique (DIP-SEM)
  *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2 of the License, or (at your option) any later version.
+ * Copyright (C) 2013 Open Education Foundation
  *
- * This library is distributed in the hope that it will be useful,
+ * Copyright (C) 2010-2013 Groupement d'Intérêt Public pour
+ * l'Education Numérique en Afrique (GIP ENA)
+ *
+ * This file is part of OpenBoard.
+ *
+ * OpenBoard is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3 of the License,
+ * with a specific linking exception for the OpenSSL project's
+ * "OpenSSL" library (or with modified versions of it that use the
+ * same license as the "OpenSSL" library).
+ *
+ * OpenBoard is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library. If not, see <http://www.gnu.org/licenses/>.
- *
- * Authors:
- *       Jan Grulich <jgrulich@redhat.com>
+ * You should have received a copy of the GNU General Public License
+ * along with OpenBoard. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PORTAL_WL_H
-#define PORTAL_WL_H
 
-#include <QFlags>
-#include <QLoggingCategory>
-#include <QMainWindow>
+#pragma once
+
+#include <QObject>
+#include <QRect>
 #include <QVariantMap>
+
+// forward
+class QDBusInterface;
+class QScreen;
 
 class Portal_wl : public QObject
 {
     Q_OBJECT
+
 public:
-    typedef struct {
+    typedef struct
+    {
         uint node_id;
         QVariantMap map;
     } Stream;
     typedef QList<Stream> Streams;
 
-    Portal_wl();
-    ~Portal_wl();
-    void requestScreenSharing( int value, int mouseOnOff );
+    explicit Portal_wl(QObject* parent = nullptr);
+    virtual ~Portal_wl();
 
+//    void grabScreen(QScreen* screen, const QRect& rect = {});
 
-public Q_SLOTS:
-    void slot_gotCreateSessionResponse(uint response, const QVariantMap &results);
-    void slot_gotSelectSourcesResponse(uint response, const QVariantMap &results);
-    void slot_gotStartResponse(uint response, const QVariantMap &results);
-
-
-private slots:
-
-
-private:
-    QString getSessionToken();
-    QString getRequestToken();
-
-    QString m_session;
-    uint m_sessionTokenCounter;
-    uint m_requestTokenCounter;
-
-    int Selection_Screen_Window_Area = 1;
-    int record_mouse_onOff;
-
-protected:
-
+public slots:
+    void startScreenCast(bool withCursor);
+    void stopScreenCast();
 
 signals:
-    void signal_portal_fd_path( QString, QString );
-    void signal_portal_cancel( uint );
+    void screenGrabbed(QPixmap pixmap);
+    void streamStarted(qint64 fd, QString path);
+    void screenCastAborted();
 
+private slots:
+    void handleScreenshotResponse(uint code, const QMap<QString, QVariant>& results);
+    void handleCreateSessionResponse(uint response, const QVariantMap& results);
+    void handleSelectSourcesResponse(uint response, const QVariantMap& results);
+    void handleStartResponse(uint response, const QVariantMap& results);
 
+private:
+    QDBusInterface* screencastPortal();
+    QString createSessionToken() const;
+    QString createRequestToken() const;
+
+private:
+    QRect mScreenRect;
+    bool mWithCursor{false};
+    QString mSession;
+    QString mRequestPath;
+    QString mRestoreToken;
+    QDBusInterface* mScreencastPortal{nullptr};
 };
-
-#endif // PORTAL_WL_H
