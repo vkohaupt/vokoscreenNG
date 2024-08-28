@@ -4,6 +4,12 @@
 #include <QDBusInterface>
 #include <QDBusReply>
 #include <QDBusUnixFileDescriptor>
+#include <QDBusArgument>
+#include <QDBusConnection>
+#include <QDBusObjectPath>
+#include <QMap>
+#include <QVariant>
+#include <QVariantMap>
 #include <QDebug>
 
 enum : uint { MONITOR = 1, WINDOW = 2, VIRTUAL = 4 } SourceType;

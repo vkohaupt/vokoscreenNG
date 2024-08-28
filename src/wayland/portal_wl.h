@@ -2,10 +2,8 @@
 #include <QObject>
 #include <QRect>
 #include <QVariantMap>
-
-// forward
-class QDBusInterface;
-class QScreen;
+#include <QList>
+#include <QDBusInterface>
 
 class Portal_wl : public QObject
 {
