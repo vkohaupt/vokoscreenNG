@@ -31,9 +31,9 @@ signals:
     void signal_portal_aborted();
 
 private slots:
-    void handleCreateSessionResponse(uint response, const QVariantMap& results);
-    void handleSelectSourcesResponse(uint response, const QVariantMap& results);
-    void handleStartResponse(uint response, const QVariantMap& results);
+    void slot_handleCreateSessionResponse(uint response, const QVariantMap& results);
+    void slot_handleSelectSourcesResponse(uint response, const QVariantMap& results);
+    void slot_handleStartResponse(uint response, const QVariantMap& results);
 
 private:
     QDBusInterface* screencastPortal();

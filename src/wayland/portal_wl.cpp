@@ -1,4 +1,5 @@
 #include "portal_wl.h"
+#include "global.h"
 
 #include <QDBusInterface>
 #include <QDBusReply>
@@ -63,7 +64,7 @@ void Portal_wl::slot_startScreenCast( int sourceType, bool withCursor )
     options["handle_token"] = requestToken;
 
     QDBusConnection::sessionBus().connect("", mRequestPath + requestToken, "org.freedesktop.portal.Request", "Response", "ua{sv}", this,
-                                          SLOT(handleCreateSessionResponse(uint,QMap<QString,QVariant>)));
+                                          SLOT(slot_handleCreateSessionResponse(uint,QMap<QString,QVariant>)));
 
     const QDBusReply<QDBusObjectPath> reply = portal->call("CreateSession", options);
 
@@ -95,7 +96,7 @@ void Portal_wl::slot_stopScreenCast()
     }
 }
 
-void Portal_wl::handleCreateSessionResponse( uint response, const QVariantMap& results )
+void Portal_wl::slot_handleCreateSessionResponse( uint response, const QVariantMap& results )
 {
     if ( response != 0 ) {
         qWarning() << "Failed to create session: " << response << results;
@@ -126,7 +127,7 @@ void Portal_wl::handleCreateSessionResponse( uint response, const QVariantMap& r
 
     // connect before call
     QDBusConnection::sessionBus().connect("", mRequestPath + requestToken, "org.freedesktop.portal.Request", "Response", "ua{sv}", this,
-                                          SLOT(handleSelectSourcesResponse(uint,QMap<QString,QVariant>)));
+                                          SLOT(slot_handleSelectSourcesResponse(uint,QMap<QString,QVariant>)));
 
     const QDBusReply<QDBusObjectPath> reply = portal->call("SelectSources", QDBusObjectPath(mSession), options);
 
@@ -138,7 +139,7 @@ void Portal_wl::handleCreateSessionResponse( uint response, const QVariantMap& r
     }
 }
 
-void Portal_wl::handleSelectSourcesResponse( uint response, const QVariantMap& results )
+void Portal_wl::slot_handleSelectSourcesResponse( uint response, const QVariantMap& results )
 {
     Q_UNUSED(results);
 
@@ -160,7 +161,7 @@ void Portal_wl::handleSelectSourcesResponse( uint response, const QVariantMap& r
     options["handle_token"] = requestToken;
 
     QDBusConnection::sessionBus().connect("", mRequestPath + requestToken, "org.freedesktop.portal.Request", "Response", "ua{sv}", this,
-                                          SLOT(handleStartResponse(uint,QMap<QString,QVariant>)));
+                                          SLOT(slot_handleStartResponse(uint,QMap<QString,QVariant>)));
 
     const QDBusReply<QDBusObjectPath> reply = portal->call( "Start", QDBusObjectPath(mSession), "", options );
 
@@ -172,13 +173,12 @@ void Portal_wl::handleSelectSourcesResponse( uint response, const QVariantMap& r
     }
 }
 
-void Portal_wl::handleStartResponse( uint response, const QVariantMap& results )
+void Portal_wl::slot_handleStartResponse( uint response, const QVariantMap& results )
 {
     Q_UNUSED(results);
 
     if ( response != 0 ) {
-        // The system Desktop dialog was canceled
-        qDebug() << "Failed to start or cancel dialog: " << response;
+        qDebug().noquote() << global::nameOutput << "Failed to start or cancel dialog: " << response;
         emit signal_portal_aborted();
         return;
     }
@@ -220,7 +220,7 @@ QDBusInterface* Portal_wl::screencastPortal()
         mScreencastPortal->setParent(this);
 
         mRequestPath = "/org/freedesktop/portal/desktop/request/" + mScreencastPortal->connection().baseService().remove(0, 1).replace('.', '_') + "/";
-        qDebug() << "request path" << mRequestPath;
+        qDebug().noquote() << global::nameOutput << "request path" << mRequestPath;
     }
 
     if ( mScreencastPortal->isValid() ) {
