@@ -255,8 +255,8 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->radioButtonScreencastWindow,     SIGNAL( clicked(bool) ), ui->frame_area, SLOT( setDisabled(bool) ) );
     connect( ui->radioButtonScreencastArea,       SIGNAL( clicked(bool) ), ui->frame_area, SLOT( setEnabled(bool) ) );
 
-    connect( portal_wl, SIGNAL( signal_portal_fd_path(QString,QString) ),  this, SLOT( slot_pre_start(QString,QString) ) );
-    connect( portal_wl, SIGNAL( signal_portal_aborted() ),             this, SLOT( slot_portal_aborted() ) );
+    connect( portal_wl, SIGNAL( signal_portal_fd_path(QString,QString) ), this, SLOT( slot_pre_start(QString,QString) ) );
+    connect( portal_wl, SIGNAL( signal_portal_aborted() ),                this, SLOT( slot_portal_aborted() ) );
 
     connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked(bool) ), vkRegionChoise_wl, SLOT( slot_areaReset() ) );
     connect( ui->toolButtonFramesReset,         SIGNAL( clicked(bool) ), this,              SLOT( slot_frames_Reset() ) );
