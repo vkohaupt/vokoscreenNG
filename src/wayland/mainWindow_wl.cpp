@@ -388,7 +388,6 @@ QString QvkMainWindow_wl::get_Muxer()
 
 void QvkMainWindow_wl::slot_portal_start()
 {
-    // https://flatpak.github.io/xdg-desktop-portal/portal-docs.html#gdbus-property-org-freedesktop-portal-ScreenCast.AvailableSourceTypes
     // Value 1 = MONITOR
     // Value 2 = WINDOW
     int sourceType = 1;
@@ -422,7 +421,7 @@ void QvkMainWindow_wl::slot_portal_start()
     }
 
     //portal_wl->requestScreenSharing( sourceType, mousecursorONOff );
-    portal_wl->startScreenCast( mousecursorONOff );
+    portal_wl->slot_startScreenCast( sourceType, mousecursorONOff );
 }
 
 

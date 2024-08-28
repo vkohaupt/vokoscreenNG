@@ -46,7 +46,7 @@ Portal_wl::~Portal_wl()
     }
 }
 
-void Portal_wl::startScreenCast( bool withCursor )
+void Portal_wl::slot_startScreenCast( int sourceType, bool withCursor )
 {
     mWithCursor = withCursor;
 
@@ -75,7 +75,7 @@ void Portal_wl::startScreenCast( bool withCursor )
     }
 }
 
-void Portal_wl::stopScreenCast()
+void Portal_wl::slot_stopScreenCast()
 {
     if ( mSession.isEmpty() ) {
         return;
