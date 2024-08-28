@@ -390,7 +390,7 @@ void QvkMainWindow_wl::slot_portal_start()
 {
     // Value 1 = MONITOR
     // Value 2 = WINDOW
-    int sourceType = 1;
+    uint sourceType = 1;
     if ( ui->radioButtonScreencastFullscreen->isChecked() ) {
         qDebug();
         qDebug().noquote() << global::nameOutput << "Start portal fullscreen";

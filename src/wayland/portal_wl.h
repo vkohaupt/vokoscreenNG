@@ -21,7 +21,7 @@ public:
     virtual ~Portal_wl();
 
 public slots:
-    void slot_startScreenCast( int sourceType, bool withCursor );
+    void slot_startScreenCast( uint sourceType, bool withCursor );
     void slot_stopScreenCast();
 
 signals:

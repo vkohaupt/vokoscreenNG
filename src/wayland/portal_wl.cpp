@@ -53,7 +53,7 @@ Portal_wl::~Portal_wl()
     }
 }
 
-void Portal_wl::slot_startScreenCast( int sourceType, bool withCursor )
+void Portal_wl::slot_startScreenCast( uint sourceType, bool withCursor )
 {
     mWithCursor = withCursor;
 
