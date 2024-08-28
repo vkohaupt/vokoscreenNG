@@ -70,8 +70,13 @@ void Portal_wl::slot_startScreenCast( uint sourceType, bool withCursor )
     options["session_handle_token"] = createSessionToken();
     options["handle_token"] = requestToken;
 
-    QDBusConnection::sessionBus().connect("", mRequestPath + requestToken, "org.freedesktop.portal.Request", "Response", "ua{sv}", this,
-                                          SLOT(slot_handleCreateSessionResponse(uint,QMap<QString,QVariant>)));
+    QDBusConnection::sessionBus().connect( "",
+                                           mRequestPath + requestToken,
+                                           "org.freedesktop.portal.Request",
+                                           "Response",
+                                           "ua{sv}",
+                                           this,
+                                           SLOT(slot_handleCreateSessionResponse(uint,QMap<QString,QVariant>)));
 
     const QDBusReply<QDBusObjectPath> reply = portal->call("CreateSession", options);
 
@@ -133,10 +138,15 @@ void Portal_wl::slot_handleCreateSessionResponse( uint response, const QVariantM
     }
 
     // connect before call
-    QDBusConnection::sessionBus().connect("", mRequestPath + requestToken, "org.freedesktop.portal.Request", "Response", "ua{sv}", this,
-                                          SLOT(slot_handleSelectSourcesResponse(uint,QMap<QString,QVariant>)));
+    QDBusConnection::sessionBus().connect( "",
+                                           mRequestPath + requestToken,
+                                           "org.freedesktop.portal.Request",
+                                           "Response",
+                                           "ua{sv}",
+                                           this,
+                                           SLOT(slot_handleSelectSourcesResponse(uint,QMap<QString,QVariant>)));
 
-    const QDBusReply<QDBusObjectPath> reply = portal->call("SelectSources", QDBusObjectPath(mSession), options);
+    const QDBusReply<QDBusObjectPath> reply = portal->call( "SelectSources", QDBusObjectPath(mSession), options );
 
     if ( !reply.isValid() ) {
         qWarning() << "Couldn't get reply";
@@ -167,8 +177,13 @@ void Portal_wl::slot_handleSelectSourcesResponse( uint response, const QVariantM
     QMap<QString, QVariant> options;
     options["handle_token"] = requestToken;
 
-    QDBusConnection::sessionBus().connect("", mRequestPath + requestToken, "org.freedesktop.portal.Request", "Response", "ua{sv}", this,
-                                          SLOT(slot_handleStartResponse(uint,QMap<QString,QVariant>)));
+    QDBusConnection::sessionBus().connect( "",
+                                           mRequestPath + requestToken,
+                                           "org.freedesktop.portal.Request",
+                                           "Response",
+                                           "ua{sv}",
+                                           this,
+                                           SLOT(slot_handleStartResponse(uint,QMap<QString,QVariant>)));
 
     const QDBusReply<QDBusObjectPath> reply = portal->call( "Start", QDBusObjectPath(mSession), "", options );
 
@@ -191,9 +206,9 @@ void Portal_wl::slot_handleStartResponse( uint response, const QVariantMap& resu
     }
 
     // save restore token
-    mRestoreToken = results.value("restore_token").toString();
+    mRestoreToken = results.value( "restore_token" ).toString();
 
-    const Streams streams = qdbus_cast<Streams>(results.value("streams"));
+    const Streams streams = qdbus_cast<Streams>( results.value( "streams" ) );
     const Stream stream = streams.last();
 
     QDBusInterface* portal = screencastPortal();
@@ -222,8 +237,9 @@ void Portal_wl::slot_handleStartResponse( uint response, const QVariantMap& resu
 QDBusInterface* Portal_wl::screencastPortal()
 {
     if ( !mScreencastPortal ) {
-        mScreencastPortal = new QDBusInterface("org.freedesktop.portal.Desktop", "/org/freedesktop/portal/desktop",
-                                               "org.freedesktop.portal.ScreenCast");
+        mScreencastPortal = new QDBusInterface( "org.freedesktop.portal.Desktop",
+                                                "/org/freedesktop/portal/desktop",
+                                                "org.freedesktop.portal.ScreenCast");
         mScreencastPortal->setParent(this);
 
         mRequestPath = "/org/freedesktop/portal/desktop/request/" + mScreencastPortal->connection().baseService().remove(0, 1).replace('.', '_') + "/";
@@ -243,7 +259,7 @@ QString Portal_wl::createSessionToken() const
     static int sessionTokenCounter = 0;
 
     sessionTokenCounter += 1;
-    return QString("vosess%1").arg(sessionTokenCounter);
+    return QString( "vosess%1" ).arg( sessionTokenCounter );
 
 }
 
@@ -252,5 +268,5 @@ QString Portal_wl::createRequestToken() const
     static int requestTokenCounter = 0;
 
     requestTokenCounter += 1;
-    return QString("voreq%1").arg(requestTokenCounter);
+    return QString( "voreq%1" ).arg( requestTokenCounter );
 }
