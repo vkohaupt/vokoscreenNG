@@ -551,10 +551,10 @@ void QvkMainWindow_wl::slot_portal_aborted()
     ui->radioButtonScreencastWindow->setEnabled( true );
     ui->radioButtonScreencastArea->setEnabled( true );
     ui->frameVideoPath->setEnabled( true );
+    ui->frame_video->setEnabled( true );
     if ( ui->radioButtonScreencastArea->isChecked() == true ) {
        ui->frame_area->setEnabled( true );
        ui->toolButtonScreencastAreaReset->setEnabled( true );
-       ui->frame_video->setEnabled( true );
     }
 }
 
