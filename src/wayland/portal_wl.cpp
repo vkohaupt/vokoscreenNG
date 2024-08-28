@@ -12,14 +12,10 @@
 #include <QVariantMap>
 #include <QDebug>
 
-enum : uint { MONITOR = 1, WINDOW = 2, VIRTUAL = 4 } SourceType;
-enum : uint { HIDDEN = 1, EMBEDDED = 2, METADATA = 4 } CursorMode;
-enum : uint { TRANSIENT = 0, APPLICATION = 1, PERSISTENT = 2 } PersistMode;
-
 Q_DECLARE_METATYPE(Portal_wl::Stream)
 Q_DECLARE_METATYPE(Portal_wl::Streams)
 
-const QDBusArgument &operator >> (const QDBusArgument &arg, Portal_wl::Stream &stream)
+const QDBusArgument &operator >> ( const QDBusArgument &arg, Portal_wl::Stream &stream )
 {
     arg.beginStructure();
     arg >> stream.node_id;
@@ -32,7 +28,7 @@ const QDBusArgument &operator >> (const QDBusArgument &arg, Portal_wl::Stream &s
         arg.beginMapEntry();
         arg >> key >> value;
         arg.endMapEntry();
-        stream.map.insert(key, value);
+        stream.map.insert( key, value );
     }
 
     arg.endMap();
@@ -42,7 +38,7 @@ const QDBusArgument &operator >> (const QDBusArgument &arg, Portal_wl::Stream &s
 }
 
 Portal_wl::Portal_wl( QObject* parent )
-    : QObject{parent}
+    : QObject{ parent }
 {
 }
 

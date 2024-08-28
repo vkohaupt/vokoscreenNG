@@ -45,4 +45,8 @@ private:
     QString mRequestPath;
     QString mRestoreToken;
     QDBusInterface* mScreencastPortal{nullptr};
+
+    enum : uint { MONITOR = 1, WINDOW = 2, VIRTUAL = 4 } SourceType;
+    enum : uint { HIDDEN = 1, EMBEDDED = 2, METADATA = 4 } CursorMode;
+    enum : uint { TRANSIENT = 0, APPLICATION = 1, PERSISTENT = 2 } PersistMode;
 };
