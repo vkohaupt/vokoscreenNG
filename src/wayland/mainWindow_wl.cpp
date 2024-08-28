@@ -246,6 +246,7 @@ void QvkMainWindow_wl::set_Connects()
             ui->toolButtonScreencastAreaReset->setEnabled( true );
         };
     } );
+    connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), portal_wl,                           SLOT( slot_stopScreenCast() ) );
 
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled(bool) ) );
     connect( ui->radioButtonScreencastWindow,     SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled(bool) ) );
@@ -256,7 +257,7 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->radioButtonScreencastArea,       SIGNAL( clicked(bool) ), ui->frame_area, SLOT( setEnabled(bool) ) );
 
     connect( portal_wl, SIGNAL( signal_portal_fd_path(QString,QString) ), this, SLOT( slot_pre_start(QString,QString) ) );
-    connect( portal_wl, SIGNAL( signal_portal_aborted() ),                this, SLOT( slot_portal_aborted() ) );
+    connect( portal_wl, SIGNAL( signal_portal_aborted() ),                this, SLOT( slot_portal_dialog_aborted() ) );
 
     connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked(bool) ), vkRegionChoise_wl, SLOT( slot_areaReset() ) );
     connect( ui->toolButtonFramesReset,         SIGNAL( clicked(bool) ), this,              SLOT( slot_frames_Reset() ) );
@@ -420,7 +421,6 @@ void QvkMainWindow_wl::slot_portal_start()
         mousecursorONOff = true;
     }
 
-    //portal_wl->requestScreenSharing( sourceType, mousecursorONOff );
     portal_wl->slot_startScreenCast( sourceType, mousecursorONOff );
 }
 
@@ -543,7 +543,7 @@ void QvkMainWindow_wl::slot_stop()
 }
 
 
-void QvkMainWindow_wl::slot_portal_aborted()
+void QvkMainWindow_wl::slot_portal_dialog_aborted()
 {
     ui->pushButtonStart->setEnabled( true );
     ui->pushButtonStop->setEnabled( false );

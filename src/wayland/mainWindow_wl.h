@@ -73,7 +73,7 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void slot_portal_start();
-    void slot_portal_aborted();
+    void slot_portal_dialog_aborted();
     void slot_pre_start( QString vk_fd, QString vk_path );
     void slot_start_gst( QString vk_fd, QString vk_path );
     void slot_stop();

@@ -17,7 +17,7 @@ public:
     } Stream;
     typedef QList<Stream> Streams;
 
-    explicit Portal_wl(QObject* parent = nullptr);
+    explicit Portal_wl( QObject* parent = nullptr );
     virtual ~Portal_wl();
 
 public slots:
@@ -39,12 +39,12 @@ private:
     QString createRequestToken() const;
 
 private:
-    bool mWithCursor{false};
+    bool mWithCursor = false;
     uint mSourcType;
     QString mSession;
     QString mRequestPath;
     QString mRestoreToken;
-    QDBusInterface* mScreencastPortal{nullptr};
+    QDBusInterface* mScreencastPortal = nullptr;
 
     enum : uint { MONITOR = 1, WINDOW = 2, VIRTUAL = 4 } SourceType;
     enum : uint { HIDDEN = 1, EMBEDDED = 2, METADATA = 4 } CursorMode;
