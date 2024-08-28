@@ -131,7 +131,7 @@ void Portal_wl::slot_handleCreateSessionResponse( uint response, const QVariantM
     options["types"] = mSourcType;
     options["cursor_mode"] = mWithCursor ? EMBEDDED : HIDDEN;
     options["handle_token"] = requestToken;
-    options["persist_mode"] = PERSISTENT;
+    options["persist_mode"] = TRANSIENT;
 
     if ( !mRestoreToken.isEmpty() ) {
         options["restore_token"] = mRestoreToken;
