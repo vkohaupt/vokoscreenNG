@@ -28,7 +28,7 @@ public slots:
 
 signals:
     void signal_portal_fd_path(QString,QString);
-    void screenCastAborted();
+    void signal_portal_aborted();
 
 private slots:
     void handleCreateSessionResponse(uint response, const QVariantMap& results);

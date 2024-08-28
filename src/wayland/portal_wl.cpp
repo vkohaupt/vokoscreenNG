@@ -70,7 +70,7 @@ void Portal_wl::startScreenCast( bool withCursor )
     if ( !reply.isValid() ) {
         qWarning() << "Couldn't get reply to ScreenCast/CreateSession";
         qWarning() << "Error: " << reply.error().message();
-        emit screenCastAborted();
+        emit signal_portal_aborted();
         return;
     }
 }
@@ -99,7 +99,7 @@ void Portal_wl::handleCreateSessionResponse( uint response, const QVariantMap& r
 {
     if ( response != 0 ) {
         qWarning() << "Failed to create session: " << response << results;
-        emit screenCastAborted();
+        emit signal_portal_aborted();
         return;
     }
 
@@ -133,7 +133,7 @@ void Portal_wl::handleCreateSessionResponse( uint response, const QVariantMap& r
     if ( !reply.isValid() ) {
         qWarning() << "Couldn't get reply";
         qWarning() << "Error: " << reply.error().message();
-        emit screenCastAborted();
+        emit signal_portal_aborted();
         return;
     }
 }
@@ -144,7 +144,7 @@ void Portal_wl::handleSelectSourcesResponse( uint response, const QVariantMap& r
 
     if ( response != 0 ) {
         qWarning() << "Failed to select sources: " << response;
-        emit screenCastAborted();
+        emit signal_portal_aborted();
         return;
     }
 
@@ -167,7 +167,7 @@ void Portal_wl::handleSelectSourcesResponse( uint response, const QVariantMap& r
     if ( !reply.isValid() ) {
         qWarning() << "Couldn't get reply";
         qWarning() << "Error: " << reply.error().message();
-        emit screenCastAborted();
+        emit signal_portal_aborted();
         return;
     }
 }
@@ -179,7 +179,7 @@ void Portal_wl::handleStartResponse( uint response, const QVariantMap& results )
     if ( response != 0 ) {
         // The system Desktop dialog was canceled
         qDebug() << "Failed to start or cancel dialog: " << response;
-        emit screenCastAborted();
+        emit signal_portal_aborted();
         return;
     }
 
@@ -202,7 +202,7 @@ void Portal_wl::handleStartResponse( uint response, const QVariantMap& results )
     if ( !reply.isValid() ) {
         qWarning() << "Couldn't get reply";
         qWarning() << "Error: " << reply.error().message();
-        emit screenCastAborted();
+        emit signal_portal_aborted();
         return;
     }
 
@@ -227,7 +227,7 @@ QDBusInterface* Portal_wl::screencastPortal()
         return mScreencastPortal;
     }
 
-    emit screenCastAborted();
+    emit signal_portal_aborted();
     return nullptr;
 }
 
