@@ -40,6 +40,7 @@ private:
 
 private:
     bool mWithCursor{false};
+    uint mSourcType;
     QString mSession;
     QString mRequestPath;
     QString mRestoreToken;

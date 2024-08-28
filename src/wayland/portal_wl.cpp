@@ -56,6 +56,7 @@ Portal_wl::~Portal_wl()
 void Portal_wl::slot_startScreenCast( uint sourceType, bool withCursor )
 {
     mWithCursor = withCursor;
+    mSourcType = sourceType;
 
     QDBusInterface* portal = screencastPortal();
 
@@ -122,7 +123,7 @@ void Portal_wl::slot_handleCreateSessionResponse( uint response, const QVariantM
     QString requestToken = createRequestToken();
     QMap<QString, QVariant> options;
     options["multiple"] = false;
-    options["types"] = MONITOR;
+    options["types"] = mSourcType;
     options["cursor_mode"] = mWithCursor ? EMBEDDED : HIDDEN;
     options["handle_token"] = requestToken;
     options["persist_mode"] = PERSISTENT;
