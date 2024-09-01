@@ -128,7 +128,7 @@ void QvkCountdown_wl::paintEvent( QPaintEvent *event )
     QFont font;
     font.setPointSize( fontSize );
     painterPixmap.setFont( font );
-    painterPixmap.setPen( Qt::red );
+    painterPixmap.setPen( QColor( QString ( "#3DAEE9" ) ) );
     QFontMetrics fontMetrics( font );
     int fontWidth = fontMetrics.horizontalAdvance( QString::number( countValue ) );
     painterPixmap.drawText( width()/2-fontWidth/2, height()/2+fontSize/2, QString::number( countValue ) );
@@ -141,7 +141,7 @@ void QvkCountdown_wl::paintEvent( QPaintEvent *event )
     QFontMetrics fontMetrics_1( font );
     fontWidth = fontMetrics_1.horizontalAdvance( cancelText );
 
-    brush.setColor( Qt::red );
+    brush.setColor( QColor( QString ( "#3DAEE9" ) ) );
     brush.setStyle( Qt::SolidPattern );
     painterPixmap.setBrush( brush );
     pen.setWidth( 2 );
