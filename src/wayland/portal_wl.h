@@ -21,7 +21,7 @@ public:
     virtual ~Portal_wl();
 
 public slots:
-    void slot_startScreenCast( uint sourceType, bool withCursor );
+    void slot_startScreenCast(uint,bool);
     void slot_stopScreenCast();
 
 signals:
@@ -39,7 +39,7 @@ private:
     QString createRequestToken() const;
 
 private:
-    bool mWithCursor = false;
+    bool mCursorModes = false;
     uint mSourcType;
     QString mSession;
     QString mRequestPath;
