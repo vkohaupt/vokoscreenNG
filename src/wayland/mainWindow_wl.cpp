@@ -486,6 +486,7 @@ void QvkMainWindow_wl::slot_pre_start( QString vk_fd, QString vk_path )
             ui->radioButtonScreencastWindow->setEnabled( true );
             ui->radioButtonScreencastArea->setEnabled( true );
             ui->frameVideoPath->setEnabled( true );
+            ui->frame_video->setEnabled( true );
         }
     } else {
         slot_start_gst( vk_fd, vk_path );
