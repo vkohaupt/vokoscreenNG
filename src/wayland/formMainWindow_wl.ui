@@ -201,7 +201,7 @@
          <enum>QTabWidget::West</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="tab_sidebar_screeancast">
          <attribute name="title">
@@ -1392,6 +1392,12 @@
               </item>
               <item>
                <widget class="Line" name="line_14">
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(200, 200, 200);</string>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
@@ -1874,6 +1880,12 @@
               </item>
               <item>
                <widget class="Line" name="line">
+                <property name="styleSheet">
+                 <string notr="true">color: rgb(200, 200, 200);</string>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Plain</enum>
+                </property>
                 <property name="orientation">
                  <enum>Qt::Horizontal</enum>
                 </property>
