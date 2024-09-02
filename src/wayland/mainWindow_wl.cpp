@@ -73,8 +73,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_WindowTitle();
     ui->tabWidgetScreencast->setCurrentIndex( 0 );
     ui->tabWidgetSideBar->setCurrentIndex( 0 );
-    set_CornerWidget();
     set_system_info();
+    set_CornerWidget();
     set_SpezialSliders();
     QvkInformation_wl *vkInformation = new QvkInformation_wl( this, ui );
     connect( this, SIGNAL( signal_newVideoFilename(QString) ), vkInformation, SLOT( slot_newVideoFilename(QString) ) );
