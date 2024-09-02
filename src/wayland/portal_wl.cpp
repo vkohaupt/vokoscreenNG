@@ -77,8 +77,8 @@ void Portal_wl::slot_startScreenCast( uint sourceType, bool withCursor )
     const QDBusReply<QDBusObjectPath> reply = portal->call("CreateSession", options);
 
     if ( !reply.isValid() ) {
-        qWarning() << "Couldn't get reply to ScreenCast/CreateSession";
-        qWarning() << "Error: " << reply.error().message();
+        qDebug().noquote() << global::nameOutput << "Couldn't get reply to ScreenCast/CreateSession";
+        qDebug().noquote() << global::nameOutput << "Error: " << reply.error().message();
         emit signal_portal_aborted();
         return;
     }
@@ -96,8 +96,8 @@ void Portal_wl::slot_stopScreenCast()
         const QDBusReply<void> reply = portal.call( "Close" );
 
         if ( !reply.isValid() ) {
-            qWarning() << "Couldn't get reply to ScreenCast/Close";
-            qWarning() << "Error: " << reply.error().message();
+            qDebug().noquote() << global::nameOutput << "Couldn't get reply to ScreenCast/Close";
+            qDebug().noquote() << global::nameOutput << "Error: " << reply.error().message();
             mSession.clear();
             return;
         }
@@ -107,7 +107,7 @@ void Portal_wl::slot_stopScreenCast()
 void Portal_wl::slot_handleCreateSessionResponse( uint response, const QVariantMap& results )
 {
     if ( response != 0 ) {
-        qWarning() << "Failed to create session: " << response << results;
+        qDebug().noquote() << global::nameOutput << "Failed to create session: " << response << results;
         emit signal_portal_aborted();
         return;
     }
@@ -145,8 +145,8 @@ void Portal_wl::slot_handleCreateSessionResponse( uint response, const QVariantM
     const QDBusReply<QDBusObjectPath> reply = portal->call( "SelectSources", QDBusObjectPath(mSession), options );
 
     if ( !reply.isValid() ) {
-        qWarning() << "Couldn't get reply";
-        qWarning() << "Error: " << reply.error().message();
+        qDebug().noquote() << global::nameOutput << "Couldn't get reply";
+        qDebug().noquote() << global::nameOutput << "Error: " << reply.error().message();
         emit signal_portal_aborted();
         return;
     }
@@ -157,7 +157,7 @@ void Portal_wl::slot_handleSelectSourcesResponse( uint response, const QVariantM
     Q_UNUSED(results);
 
     if ( response != 0 ) {
-        qWarning() << "Failed to select sources: " << response;
+        qDebug().noquote() << global::nameOutput << "Failed to select sources: " << response;
         emit signal_portal_aborted();
         return;
     }
@@ -184,8 +184,8 @@ void Portal_wl::slot_handleSelectSourcesResponse( uint response, const QVariantM
     const QDBusReply<QDBusObjectPath> reply = portal->call( "Start", QDBusObjectPath(mSession), "", options );
 
     if ( !reply.isValid() ) {
-        qWarning() << "Couldn't get reply";
-        qWarning() << "Error: " << reply.error().message();
+        qDebug().noquote() << global::nameOutput << "Couldn't get reply";
+        qDebug().noquote() << global::nameOutput << "Error: " << reply.error().message();
         emit signal_portal_aborted();
         return;
     }
@@ -218,8 +218,8 @@ void Portal_wl::slot_handleStartResponse( uint response, const QVariantMap& resu
     const QDBusReply<QDBusUnixFileDescriptor> reply = portal->call( "OpenPipeWireRemote", QDBusObjectPath(mSession), options );
 
     if ( !reply.isValid() ) {
-        qWarning() << "Couldn't get reply";
-        qWarning() << "Error: " << reply.error().message();
+        qDebug().noquote() << global::nameOutput << "Couldn't get reply";
+        qDebug().noquote() << global::nameOutput << "Error: " << reply.error().message();
         emit signal_portal_aborted();
         return;
     }
