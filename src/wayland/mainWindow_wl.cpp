@@ -37,6 +37,9 @@
 #include <QFileInfo>
 // Snapshot
 
+// Audio
+#include <pulse/pulseaudio.h>
+// Audio
 
 QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     : QMainWindow(parent, f)
@@ -169,7 +172,7 @@ void QvkMainWindow_wl::set_system_info()
     qDebug().noquote() << global::nameOutput << "Country:" << QLocale::territoryToString( locale.territory() );
     qDebug().noquote() << global::nameOutput << "Qt:" << qVersion();
     qDebug().noquote() << global::nameOutput << gst_version_string();
-//    qDebug().noquote() << global::nameOutput << "PulseAudio library version:" << pa_get_library_version();
+    qDebug().noquote() << global::nameOutput << "PulseAudio library version:" << pa_get_library_version();
     qDebug().noquote() << global::nameOutput << "Operating system:" << QSysInfo::prettyProductName();
     if ( QSysInfo::prettyProductName().contains( "Flatpak" ) ) {
         isFlatpak = true;
