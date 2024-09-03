@@ -104,8 +104,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->pushButtonContinue->hide();
     ui->pushButtonPlay->hide();
     ui->pushButtonScreencastOpenfolder->hide();
-    ui->frame_video_audio_on_off->hide();
-    ui->comboBoxAudioCodec->hide();
+    ui->help_screencast_audiocodec->hide();
+    ui->help_screencast_audio->hide();
     ui->frame_cisco->hide();
     ui->line_cisco->hide();
     ui->label_Upate_tab_2->hide();
