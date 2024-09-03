@@ -1,5 +1,5 @@
- /* vokoscreenNG - A desktop recorder
- * Copyright (C) 2017-2022 Volker Kohaupt
+/* vokoscreenNG - A desktop recorder
+ * Copyright (C) 2017-2024 Volker Kohaupt
  *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
@@ -20,42 +20,46 @@
  * --End_License--
  */
 
-#ifndef QVKAUDIOCONTROLLER_H
-#define QVKAUDIOCONTROLLER_H
+#ifndef QVKLEVELMETERCONTROLLER_WL_H
+#define QVKLEVELMETERCONTROLLER_WL_H
 
 #include <QObject>
+#include <QCheckBox>
+#include <QProgressBar>
+#include <QHBoxLayout>
+#include <QLineEdit>
 
-#include "ui_formMainWindow.h"
+#include "QvkLevelMeter_wl.h"
+#include "QvkSpezialProgressBarAudio.h"
 
-#include "QvkLevelMeterController.h"
-
-class QvkAudioController: public QObject
+class QvkLevelMeterController_wl : public QvkSpezialProgressBarAudio
 {
     Q_OBJECT
 
 public:
-    QvkAudioController(Ui_formMainWindow *ui_mainwindow );
-    virtual ~QvkAudioController();
-    void init();
-    QvkLevelMeterController *vkLevelMeterController;
+    explicit QvkLevelMeterController_wl();
+    ~QvkLevelMeterController_wl();
+    void add_ProgressBar( QCheckBox *checkBox, QHBoxLayout *layout , QString m_name );
+    void remove_LineEdit( QString index );
+    QvkLevelMeter_wl *vkLevelMeter;
+    QLineEdit *lineEdit;
+
+
+private:
+    int maxSteps;
+
 
 public slots:
 
 
-private:
-    Ui_formMainWindow *ui;
-    void getAllDevices();
-
-
 private slots:
-    void slot_audioDeviceSelected();
+    void slot_textChanged( QString string );
 
 
 protected:
 
 
 signals:
-    void signal_haveAudioDeviceSelected( bool );
 
 
 };

@@ -20,30 +20,30 @@
  * --End_License--
  */
 
-#ifndef QVKAUDIOCONTROLLER_H
-#define QVKAUDIOCONTROLLER_H
+#ifndef QVKAUDIOCONTROLLER_WL_H
+#define QVKAUDIOCONTROLLER_WL_H
 
 #include <QObject>
 
-#include "ui_formMainWindow.h"
+#include "ui_formMainWindow_wl.h"
 
-#include "QvkLevelMeterController.h"
+#include "QvkLevelMeterController_wl.h"
 
-class QvkAudioController: public QObject
+class QvkAudioController_wl: public QObject
 {
     Q_OBJECT
 
 public:
-    QvkAudioController(Ui_formMainWindow *ui_mainwindow );
-    virtual ~QvkAudioController();
+    QvkAudioController_wl( Ui_formMainWindow_wl *ui_mainwindow );
+    virtual ~QvkAudioController_wl();
     void init();
-    QvkLevelMeterController *vkLevelMeterController;
+    QvkLevelMeterController_wl *vkLevelMeterController;
 
 public slots:
 
 
 private:
-    Ui_formMainWindow *ui;
+    Ui_formMainWindow_wl *ui;
     void getAllDevices();
 
 

@@ -1,4 +1,4 @@
- /* vokoscreenNG - A desktop recorder
+/* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2022 Volker Kohaupt
  *
  * Author:
@@ -20,44 +20,37 @@
  * --End_License--
  */
 
-#ifndef QVKAUDIOCONTROLLER_H
-#define QVKAUDIOCONTROLLER_H
+#ifndef QVKPULSEAUDIODEVICES_WL_H
+#define QVKPULSEAUDIODEVICES_WL_H
 
 #include <QObject>
 
-#include "ui_formMainWindow.h"
-
-#include "QvkLevelMeterController.h"
-
-class QvkAudioController: public QObject
+class QvkPulseAudioDevices_wl: public QObject
 {
     Q_OBJECT
 
 public:
-    QvkAudioController(Ui_formMainWindow *ui_mainwindow );
-    virtual ~QvkAudioController();
-    void init();
-    QvkLevelMeterController *vkLevelMeterController;
+    QvkPulseAudioDevices_wl();
+    virtual ~QvkPulseAudioDevices_wl();
+    static QStringList getAllDevices();
+
 
 public slots:
 
 
 private:
-    Ui_formMainWindow *ui;
-    void getAllDevices();
 
 
 private slots:
-    void slot_audioDeviceSelected();
 
 
 protected:
 
 
 signals:
-    void signal_haveAudioDeviceSelected( bool );
 
 
 };
 
 #endif
+ 

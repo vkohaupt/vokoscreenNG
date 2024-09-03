@@ -27,13 +27,13 @@
 #include <QLabel>
 #include <QProgressBar>
 
-#include "QvkAudioController.h"
-#include "QvkPulseAudioWatcher.h"
-#include "QvkPulseAudioServer.h"
-#include "QvkPulseAudioDevices.h"
+#include "QvkAudioController_wl.h"
+#include "QvkPulseAudioWatcher_wl.h"
+#include "QvkPulseAudioServer_wl.h"
+#include "QvkPulseAudioDevices_wl.h"
 #include "global.h"
 
-QvkAudioController::QvkAudioController(Ui_formMainWindow *ui_mainwindow )
+QvkAudioController_wl::QvkAudioController_wl( Ui_formMainWindow_wl *ui_mainwindow )
 {
     ui = ui_mainwindow;
     ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
@@ -41,12 +41,12 @@ QvkAudioController::QvkAudioController(Ui_formMainWindow *ui_mainwindow )
 }
 
 
-QvkAudioController::~QvkAudioController()
+QvkAudioController_wl::~QvkAudioController_wl()
 {
 }
 
 
-void QvkAudioController::init()
+void QvkAudioController_wl::init()
 {
     connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
     connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
@@ -57,11 +57,11 @@ void QvkAudioController::init()
 // systemctl --user start pipewire.socket
 
 
-void QvkAudioController::getAllDevices()
+void QvkAudioController_wl::getAllDevices()
 {
     QStringList list;
-    if ( QvkPulseAudioServer::isAvailable() ) {
-        list << QvkPulseAudioDevices::getAllDevices();
+    if ( QvkPulseAudioServer_wl::isAvailable() ) {
+        list << QvkPulseAudioDevices_wl::getAllDevices();
         if ( !list.empty() ) {
             for ( int i = 0; i < list.count(); i++ ) {
                 QString name = list.at(i).section( ":::", 1, 1 );
@@ -97,14 +97,14 @@ void QvkAudioController::getAllDevices()
 
                 qDebug().noquote() << global::nameOutput << "[Audio] Found:" << name << "Device:" << device;
 
-                vkLevelMeterController = new QvkLevelMeterController;
+                vkLevelMeterController = new QvkLevelMeterController_wl;
                 vkLevelMeterController->add_ProgressBar( checkBox, hBoxLayout, name );
                 vkLevelMeterController->set_Text( name );
 
             }
             qDebug().noquote();
 
-            QvkPulseAudioWatcher *vkPulseAudioWatcher = new QvkPulseAudioWatcher( ui );
+            QvkPulseAudioWatcher_wl *vkPulseAudioWatcher = new QvkPulseAudioWatcher_wl( ui );
             vkPulseAudioWatcher->start_monitor();
         } else {
             QLabel *label = new QLabel();
@@ -118,7 +118,7 @@ void QvkAudioController::getAllDevices()
             ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter );
             ui->verticalLayoutAudioDevices->addWidget( labelText );
 
-            QvkPulseAudioWatcher *vkPulseAudioWatcher = new QvkPulseAudioWatcher( ui );
+            QvkPulseAudioWatcher_wl *vkPulseAudioWatcher = new QvkPulseAudioWatcher_wl( ui );
             vkPulseAudioWatcher->start_monitor();
             ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
         }
@@ -134,7 +134,7 @@ void QvkAudioController::getAllDevices()
         ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignCenter );
         ui->verticalLayoutAudioDevices->addWidget( labelText );
 
-        QvkPulseAudioWatcher *vkPulseAudioWatcher = new QvkPulseAudioWatcher( ui );
+        QvkPulseAudioWatcher_wl *vkPulseAudioWatcher = new QvkPulseAudioWatcher_wl( ui );
         vkPulseAudioWatcher->start_monitor();
     }
 
@@ -142,7 +142,7 @@ void QvkAudioController::getAllDevices()
 }
 
 
-void QvkAudioController::slot_audioDeviceSelected()
+void QvkAudioController_wl::slot_audioDeviceSelected()
 {
     bool value = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();

@@ -20,44 +20,35 @@
  * --End_License--
  */
 
-#ifndef QVKAUDIOCONTROLLER_H
-#define QVKAUDIOCONTROLLER_H
+#include <QDebug>
 
-#include <QObject>
+#include "QvkDevices_wl.h"
+#include "QvkPulseAudioDevices_wl.h"
+#include "QvkPulseAudioServer_wl.h"
 
-#include "ui_formMainWindow.h"
+QvkPulseAudioDevices_wl::QvkPulseAudioDevices_wl()
+{    
+}
 
-#include "QvkLevelMeterController.h"
 
-class QvkAudioController: public QObject
+QvkPulseAudioDevices_wl::~QvkPulseAudioDevices_wl()
 {
-    Q_OBJECT
-
-public:
-    QvkAudioController(Ui_formMainWindow *ui_mainwindow );
-    virtual ~QvkAudioController();
-    void init();
-    QvkLevelMeterController *vkLevelMeterController;
-
-public slots:
+}
 
 
-private:
-    Ui_formMainWindow *ui;
-    void getAllDevices();
+QStringList QvkPulseAudioDevices_wl::getAllDevices()
+{
+    QStringList list;
+    if ( QvkPulseAudioServer_wl::isAvailable() ) {
+        const char *ss = get_all_audio_devices_wl();
+        QString s1 = QString::fromUtf8( ss );
+        QString s2 = s1.left( QString::fromUtf8( ss ).length() - 3 );
+        list = s2.split( "---" );
+    }
 
+    if ( list.contains( "" ) ) {
+        list.clear();
+    }
 
-private slots:
-    void slot_audioDeviceSelected();
-
-
-protected:
-
-
-signals:
-    void signal_haveAudioDeviceSelected( bool );
-
-
-};
-
-#endif
+    return list;
+}

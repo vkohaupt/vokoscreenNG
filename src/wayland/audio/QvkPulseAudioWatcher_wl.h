@@ -1,6 +1,6 @@
- /* vokoscreenNG - A desktop recorder
+/* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2022 Volker Kohaupt
- *
+ * 
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -20,34 +20,35 @@
  * --End_License--
  */
 
-#ifndef QVKAUDIOCONTROLLER_H
-#define QVKAUDIOCONTROLLER_H
+#ifndef QVKPULSEAUDIOWATCHER_WL_H
+#define QVKPULSEAUDIOWATCHER_WL_H
+
+
+#include "ui_formMainWindow_wl.h"
 
 #include <QObject>
+#include <QTimer>
 
-#include "ui_formMainWindow.h"
-
-#include "QvkLevelMeterController.h"
-
-class QvkAudioController: public QObject
+class QvkPulseAudioWatcher_wl: public QObject
 {
     Q_OBJECT
 
+
 public:
-    QvkAudioController(Ui_formMainWindow *ui_mainwindow );
-    virtual ~QvkAudioController();
-    void init();
-    QvkLevelMeterController *vkLevelMeterController;
+    QvkPulseAudioWatcher_wl( Ui_formMainWindow_wl *ui_mainwindow_wl );
+    virtual ~QvkPulseAudioWatcher_wl();
+    void start_monitor();
 
 public slots:
 
 
 private:
-    Ui_formMainWindow *ui;
-    void getAllDevices();
+    Ui_formMainWindow_wl *ui;
+    QTimer *timer;
 
 
 private slots:
+    void slot_update();
     void slot_audioDeviceSelected();
 
 

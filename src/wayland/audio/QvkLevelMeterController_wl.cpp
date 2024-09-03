@@ -1,0 +1,86 @@
+﻿/* vokoscreenNG - A desktop recorder
+ * Copyright (C) 2017-2024 Volker Kohaupt
+ *
+ * Author:
+ *      Volker Kohaupt <vkohaupt@volkoh.de>
+ *
+ * This file is free software; you can redistribute it and/or modify
+ * it under the terms of version 2 of the GNU General Public License
+ * as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+ *
+ * --End_License--
+ */
+
+#include "QvkLevelMeterController_wl.h"
+#include "QvkLevelMeter_wl.h"
+#include "global.h"
+
+#include <QCheckBox>
+#include <QProgressBar>
+#include <QHBoxLayout>
+
+QvkLevelMeterController_wl::QvkLevelMeterController_wl()
+{
+    maxSteps = 1000;
+}
+
+
+QvkLevelMeterController_wl::~QvkLevelMeterController_wl()
+{
+}
+
+
+void QvkLevelMeterController_wl::add_ProgressBar( QCheckBox *checkBox, QHBoxLayout *layout, QString m_name )
+{
+    QString index = checkBox->objectName().right(2);
+
+    lineEdit = new QLineEdit();
+    lineEdit->setObjectName( "lineEditLevelMeter_" + index );
+    global::listChildren->append( lineEdit );
+
+    connect( lineEdit, SIGNAL( textChanged(QString) ), this, SLOT( slot_textChanged(QString) ) );
+    connect( lineEdit, SIGNAL( textChanged(QString) ), this, SLOT( update() ) );
+
+    setObjectName( "progressBarAudioDevice-" + index );
+    setFixedHeight(18);
+    setTextVisible(false);
+    setMinimum(0);
+    setMaximum(maxSteps);
+    setToolTip( "Index:" + index );
+
+    layout->addWidget( this );
+
+    vkLevelMeter = new QvkLevelMeter_wl;
+    QString device = checkBox->accessibleName();
+    QString name = m_name;
+    vkLevelMeter->start( device, name, index );
+}
+
+
+void QvkLevelMeterController_wl::remove_LineEdit( QString index )
+{
+    // Remove LineEdit
+    for ( int i = 0; i < global::listChildren->count(); i++ ) {
+        QLineEdit *lineEdit_1 = global::listChildren->at(i);
+        if ( lineEdit_1->objectName().right(2) == index ) {
+            disconnect( lineEdit, nullptr, nullptr, nullptr );
+            global::listChildren->removeAt(i);
+            break;
+        }
+    }
+}
+
+
+void QvkLevelMeterController_wl::slot_textChanged( QString string )
+{
+    setValue( string.toDouble() * maxSteps );
+}

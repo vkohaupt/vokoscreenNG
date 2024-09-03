@@ -3,6 +3,7 @@
 #include "QvkImageFromTabs_wl.h"
 #include "QvkShowMessage_wl.h"
 #include "QvkCameraController_wl.h"
+#include "QvkAudioController_wl.h"
 
 #include "global.h"
 #include "QvkLicenses.h"
@@ -86,6 +87,13 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_Connects();
     set_check_all_Elements_available();
     vkContainerController_wl = new QvkContainerController_wl( ui );
+
+
+
+    QvkAudioController_wl *vkAudioController = new QvkAudioController_wl( ui );
+    connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected(bool) ), this, SLOT( slot_haveAudioDeviceSelected(bool) ) );
+    vkAudioController->init();
+
 
 
     new QvkLicenses( ui->pushButtonLicense );

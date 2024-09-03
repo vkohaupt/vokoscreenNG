@@ -35,7 +35,7 @@ class QvkPulseAudioWatcher: public QObject
 
 
 public:
-    QvkPulseAudioWatcher( Ui_formMainWindow *ui_mainwindow );
+    QvkPulseAudioWatcher(Ui_formMainWindow *ui_mainwindow );
     virtual ~QvkPulseAudioWatcher();
     void start_monitor();
 

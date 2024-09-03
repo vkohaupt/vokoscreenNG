@@ -31,3 +31,6 @@ include(showMessage/showMessage_wl.pri)
 
 # Camera
 include(camera/camera_wl.pri)
+
+# Audio
+include(audio/audio_wl.pri)
