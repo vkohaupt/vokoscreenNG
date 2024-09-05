@@ -505,6 +505,34 @@ void QvkMainWindow_wl::slot_pre_start( QString vk_fd, QString vk_path )
 }
 
 
+QString QvkMainWindow_wl::Pipeline_structured_output( QString pipeline )
+{
+    QString string;
+    QString nl;
+
+    nl = "\\";
+    string = pipeline.prepend( "gst-launch-1.0 -e " + nl + "\n    " );
+
+    string = pipeline.replace( "mux.", "mux. " + nl + "\n   " );
+    string = pipeline.replace( "mix.", "mix. " + nl + "\n   " );
+    string = pipeline.replace( "!", nl + "\n        !" );
+    string.append( "\n" );
+    return string;
+}
+
+QStringList QvkMainWindow_wl::VK_getSelectedAudioDevice()
+{
+    QStringList list;
+    QList<QCheckBox *> listQCheckBox = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listQCheckBox.count(); i++ ) {
+        QCheckBox *checkBox = listQCheckBox.at(i);
+        if ( checkBox->checkState() == Qt::Checked ) {
+            list << checkBox->accessibleName();
+        }
+    }
+    return list;
+}
+
 void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 {
     ui->pushButtonStop->setEnabled( true );
@@ -516,13 +544,34 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     if ( ui->radioButtonScreencastArea->isChecked() ) { stringList << get_Area_Videocrop(); }
     stringList << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
     stringList << get_Videocodec_Encoder();
+    stringList << "queue";
+    stringList << "mux.";
+
+    // Pipeline for one selected audiodevice
+    if ( ( VK_getSelectedAudioDevice().count() == 1 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
+    {
+            stringList << "pulsesrc device=" + VK_getSelectedAudioDevice().at(0);
+            stringList << "audio/x-raw, channels=2";
+            stringList << "audioconvert";
+            stringList << "audiorate";
+            stringList << "queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000";
+            stringList << ui->comboBoxAudioCodec->currentData().toString();
+            stringList << "queue";
+            stringList << "mux.";
+    }
+
     stringList << get_Muxer();
 
     QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
     stringList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
 
     QString launch = stringList.join( " ! " );
+    launch = launch.replace( "mix. !", "mix." );
+    launch = launch.replace( "mux. !", "mux." );
     qDebug().noquote() << global::nameOutput << launch;
+    qDebug();
+    qDebug().noquote() << global::nameOutput << Pipeline_structured_output( launch );
+
 
     pipeline = gst_parse_launch( launch.toUtf8(), nullptr );
     gst_element_set_state( pipeline, GST_STATE_PLAYING );
@@ -530,6 +579,50 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     emit signal_beginRecordTime( QTime::currentTime().toString( "hh:mm:ss" ) );
     emit signal_newVideoFilename( newVideoFilename );
 }
+/*
+12:47:04 gst-launch-1.0 -e \
+    ximagesrc display-name=:0 use-damage=false show-pointer=true startx=0 starty=0 endx=1919 endy=1079 \
+        ! video/x-raw, framerate=25/1 \
+        ! videoconvert \
+        ! videorate \
+        ! queue max-size-bytes=1073741824 max-size-time=10000000000 max-size-buffers=1000 \
+        ! openh264enc qp-min=23 qp-max=23 usage-type=camera complexity=low multi-thread=4 slice-mode=auto \
+        ! h264parse \
+        ! queue \
+        ! mux. \
+    pulsesrc device=alsa_input.usb-046d_0809_A6307261-02.mono-fallback client-name=[vokoscreenNG]. \
+        ! audio/x-raw, channels=2 \
+        ! audioconvert \
+        ! audiorate \
+        ! queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000 \
+        ! vorbisenc \
+        ! queue \
+        ! mux. \
+    matroskamux name=mux writing-app=vokoscreenNG_4.3.0-beta-01 \
+        ! filesink location="/home/vk/Videos/vokoscreenNG-2024-09-04_12-47-04.mkv"
+
+
+13:03:30 [vokoscreenNG] Start record with: ximagesrc display-name=:0 use-damage=false show-pointer=true startx=0 starty=0 endx=1919 endy=1079
+ ! video/x-raw, framerate=25/1
+ ! videoconvert
+ ! videorate
+ ! queue max-size-bytes=1073741824 max-size-time=10000000000 max-size-buffers=1000
+ ! openh264enc qp-min=23 qp-max=23 usage-type=camera complexity=low multi-thread=4 slice-mode=auto
+ ! h264parse
+ ! queue
+ ! mux. pulsesrc device=alsa_input.usb-046d_0809_A6307261-02.mono-fallback client-name=[vokoscreenNG].
+ ! audio/x-raw, channels=2
+ ! audioconvert
+ ! audiorate
+ ! queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000
+ ! vorbisenc
+ ! queue
+ ! mux. matroskamux name=mux writing-app=vokoscreenNG_4.3.0-beta-01
+ ! filesink location="/home/vk/Videos/vokoscreenNG-2024-09-04_13-03-30.mkv"
+
+*/
+
+
 
 
 void QvkMainWindow_wl::slot_stop()

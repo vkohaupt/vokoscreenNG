@@ -48,6 +48,8 @@ private:
     QStringList videoFormatsList;
     QFileSystemWatcher *videoFileSystemWatcher;
     QvkContainerController_wl *vkContainerController_wl;
+    QStringList VK_getSelectedAudioDevice();
+    QString Pipeline_structured_output( QString pipeline );
 
     void set_WindowTitle();
     void set_CornerWidget();
