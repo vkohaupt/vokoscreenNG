@@ -550,14 +550,34 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     // Pipeline for one selected audiodevice
     if ( ( VK_getSelectedAudioDevice().count() == 1 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
     {
-            stringList << "pulsesrc device=" + VK_getSelectedAudioDevice().at(0);
-            stringList << "audio/x-raw, channels=2";
+        stringList << "pulsesrc device=" + VK_getSelectedAudioDevice().at(0);
+        stringList << "audio/x-raw, channels=2";
+        stringList << "audioconvert";
+        stringList << "audiorate";
+        stringList << "queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000";
+        stringList << ui->comboBoxAudioCodec->currentData().toString();
+        stringList << "queue";
+        stringList << "mux.";
+    }
+
+    // Pipeline for more as one audiodevice
+    if ( ( VK_getSelectedAudioDevice().count() > 1 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
+    {
+        for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ )
+        {
+            stringList << "pulsesrc device=" + VK_getSelectedAudioDevice().at(x);
             stringList << "audioconvert";
-            stringList << "audiorate";
-            stringList << "queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000";
-            stringList << ui->comboBoxAudioCodec->currentData().toString();
+            stringList << "audioresample";
             stringList << "queue";
-            stringList << "mux.";
+            stringList << "mix.";
+        }
+        stringList << "audiomixer name=mix";
+        stringList << "audioconvert";
+        stringList << "audiorate";
+        stringList << "queue";
+        stringList << ui->comboBoxAudioCodec->currentData().toString();
+        stringList << "queue";
+        stringList << "mux.";
     }
 
     stringList << get_Muxer();
@@ -579,61 +599,18 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     emit signal_beginRecordTime( QTime::currentTime().toString( "hh:mm:ss" ) );
     emit signal_newVideoFilename( newVideoFilename );
 }
-/*
-12:47:04 gst-launch-1.0 -e \
-    ximagesrc display-name=:0 use-damage=false show-pointer=true startx=0 starty=0 endx=1919 endy=1079 \
-        ! video/x-raw, framerate=25/1 \
-        ! videoconvert \
-        ! videorate \
-        ! queue max-size-bytes=1073741824 max-size-time=10000000000 max-size-buffers=1000 \
-        ! openh264enc qp-min=23 qp-max=23 usage-type=camera complexity=low multi-thread=4 slice-mode=auto \
-        ! h264parse \
-        ! queue \
-        ! mux. \
-    pulsesrc device=alsa_input.usb-046d_0809_A6307261-02.mono-fallback client-name=[vokoscreenNG]. \
-        ! audio/x-raw, channels=2 \
-        ! audioconvert \
-        ! audiorate \
-        ! queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000 \
-        ! vorbisenc \
-        ! queue \
-        ! mux. \
-    matroskamux name=mux writing-app=vokoscreenNG_4.3.0-beta-01 \
-        ! filesink location="/home/vk/Videos/vokoscreenNG-2024-09-04_12-47-04.mkv"
-
-
-13:03:30 [vokoscreenNG] Start record with: ximagesrc display-name=:0 use-damage=false show-pointer=true startx=0 starty=0 endx=1919 endy=1079
- ! video/x-raw, framerate=25/1
- ! videoconvert
- ! videorate
- ! queue max-size-bytes=1073741824 max-size-time=10000000000 max-size-buffers=1000
- ! openh264enc qp-min=23 qp-max=23 usage-type=camera complexity=low multi-thread=4 slice-mode=auto
- ! h264parse
- ! queue
- ! mux. pulsesrc device=alsa_input.usb-046d_0809_A6307261-02.mono-fallback client-name=[vokoscreenNG].
- ! audio/x-raw, channels=2
- ! audioconvert
- ! audiorate
- ! queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000
- ! vorbisenc
- ! queue
- ! mux. matroskamux name=mux writing-app=vokoscreenNG_4.3.0-beta-01
- ! filesink location="/home/vk/Videos/vokoscreenNG-2024-09-04_13-03-30.mkv"
-
-*/
-
-
 
 
 void QvkMainWindow_wl::slot_stop()
 {
     // send EOS to pipeline
     gst_element_send_event( pipeline, gst_event_new_eos() );
-
+qDebug() << "11111111111111111111111";
     // wait for the EOS to traverse the pipeline and is reported to the bus
     GstBus *bus = gst_element_get_bus( pipeline );
     gst_bus_timed_pop_filtered( bus, GST_CLOCK_TIME_NONE, GST_MESSAGE_EOS );
     gst_object_unref( bus );
+    qDebug() << "222222222222222222222222";
 
     gst_element_set_state( pipeline, GST_STATE_NULL );
     gst_object_unref ( pipeline );
