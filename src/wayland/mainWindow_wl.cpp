@@ -632,18 +632,23 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 
 void QvkMainWindow_wl::slot_stop()
 {
-    // send EOS to pipeline
-    gst_element_send_event( pipeline, gst_event_new_eos() );
-qDebug() << "11111111111111111111111";
-    // wait for the EOS to traverse the pipeline and is reported to the bus
-//    GstBus *bus = gst_element_get_bus( pipeline );
-//    gst_bus_timed_pop_filtered( bus, GST_CLOCK_TIME_NONE, GST_MESSAGE_EOS );
-//    gst_object_unref( bus );
-    qDebug() << "222222222222222222222222";
+    // wait for EOS
+    bool a = gst_element_send_event( pipeline, gst_event_new_eos() );
+    Q_UNUSED(a);
 
-    gst_element_set_state( pipeline, GST_STATE_NULL );
-    gst_object_unref ( pipeline );
+    GstClockTime timeout = 5 * GST_SECOND;
+    GstMessage *msg = gst_bus_timed_pop_filtered( GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
+    Q_UNUSED(msg);
 
+    GstStateChangeReturn ret ;
+    Q_UNUSED(ret);
+    ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
+    Q_UNUSED(ret);
+    ret = gst_element_set_state( pipeline, GST_STATE_READY );
+    Q_UNUSED(ret);
+    ret = gst_element_set_state( pipeline, GST_STATE_NULL );
+    Q_UNUSED(ret);
+    gst_object_unref( pipeline );
     qDebug().noquote() << global::nameOutput << "Stop record";
 
     if ( ui->radioButtonScreencastArea->isChecked() ) {
