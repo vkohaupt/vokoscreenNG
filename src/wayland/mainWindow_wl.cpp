@@ -541,6 +541,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     stringList << QString( "pipewiresrc fd=" ).append( vk_fd ).append( " path=" ).append( vk_path ).append( " do-timestamp=true" );
     stringList << "videoconvert";
     stringList << "videorate";
+    stringList << "queue max-size-bytes=1073741824 max-size-time=10000000000 max-size-buffers=1000";
     if ( ui->radioButtonScreencastArea->isChecked() ) { stringList << get_Area_Videocrop(); }
     stringList << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
     stringList << get_Videocodec_Encoder();
@@ -551,9 +552,9 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     if ( ( VK_getSelectedAudioDevice().count() == 1 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
     {
         stringList << "pulsesrc device=" + VK_getSelectedAudioDevice().at(0);
-        stringList << "audio/x-raw, channels=2";
         stringList << "audioconvert";
         stringList << "audiorate";
+        stringList << "audio/x-raw, channels=2";
         stringList << "queue max-size-bytes=1000000 max-size-time=10000000000 max-size-buffers=1000";
         stringList << ui->comboBoxAudioCodec->currentData().toString();
         stringList << "queue";
@@ -585,17 +586,6 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
     stringList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
 
-    QString launch = stringList.join( " ! " );
-    launch = launch.replace( "mix. !", "mix." );
-    launch = launch.replace( "mux. !", "mux." );
-    qDebug().noquote() << global::nameOutput << launch;
-    qDebug();
-    qDebug().noquote() << global::nameOutput << Pipeline_structured_output( launch );
-
-    pipeline = gst_parse_launch( launch.toUtf8(), nullptr );
-    gst_element_set_state( pipeline, GST_STATE_PLAYING );
-
-/*
     QString VK_Pipeline = stringList.join( " ! " );
     VK_Pipeline = VK_Pipeline.replace( "mix. !", "mix." );
     VK_Pipeline = VK_Pipeline.replace( "mux. !", "mux." );
@@ -624,7 +614,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
         gst_object_unref( pipeline );
         return;
     }
-*/
+
     emit signal_beginRecordTime( QTime::currentTime().toString( "hh:mm:ss" ) );
     emit signal_newVideoFilename( newVideoFilename );
 }
