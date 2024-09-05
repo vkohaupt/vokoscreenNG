@@ -592,10 +592,39 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     qDebug();
     qDebug().noquote() << global::nameOutput << Pipeline_structured_output( launch );
 
-
     pipeline = gst_parse_launch( launch.toUtf8(), nullptr );
     gst_element_set_state( pipeline, GST_STATE_PLAYING );
 
+/*
+    QString VK_Pipeline = stringList.join( " ! " );
+    VK_Pipeline = VK_Pipeline.replace( "mix. !", "mix." );
+    VK_Pipeline = VK_Pipeline.replace( "mux. !", "mux." );
+
+    qDebug();
+    qDebug().noquote() << global::nameOutput << "Free disk space at the beginning of the recording:" << ui->labelFreeSize->text() << "MB";
+    qDebug();
+    qDebug().noquote() << global::nameOutput << "Start record with:" << VK_Pipeline;
+    qDebug();
+    qDebug().noquote() << Pipeline_structured_output( VK_Pipeline );
+
+    QByteArray byteArray = VK_Pipeline.toUtf8();
+    const gchar *line = byteArray.constData();
+    GError *error = Q_NULLPTR;
+    pipeline = gst_parse_launch( line, &error );
+
+    // Start playing
+    GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
+    if ( ret == GST_STATE_CHANGE_FAILURE )   { qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
+    if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
+    if ( ret == GST_STATE_CHANGE_ASYNC )     { qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_ASYNC"   << "Returncode =" << ret;   } // 2
+    if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
+    if ( ret == GST_STATE_CHANGE_FAILURE )
+    {
+        qDebug().noquote() << global::name << "Unable to set the pipeline to the playing state.";
+        gst_object_unref( pipeline );
+        return;
+    }
+*/
     emit signal_beginRecordTime( QTime::currentTime().toString( "hh:mm:ss" ) );
     emit signal_newVideoFilename( newVideoFilename );
 }
@@ -607,9 +636,9 @@ void QvkMainWindow_wl::slot_stop()
     gst_element_send_event( pipeline, gst_event_new_eos() );
 qDebug() << "11111111111111111111111";
     // wait for the EOS to traverse the pipeline and is reported to the bus
-    GstBus *bus = gst_element_get_bus( pipeline );
-    gst_bus_timed_pop_filtered( bus, GST_CLOCK_TIME_NONE, GST_MESSAGE_EOS );
-    gst_object_unref( bus );
+//    GstBus *bus = gst_element_get_bus( pipeline );
+//    gst_bus_timed_pop_filtered( bus, GST_CLOCK_TIME_NONE, GST_MESSAGE_EOS );
+//    gst_object_unref( bus );
     qDebug() << "222222222222222222222222";
 
     gst_element_set_state( pipeline, GST_STATE_NULL );
