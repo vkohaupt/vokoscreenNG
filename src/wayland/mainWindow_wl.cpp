@@ -88,13 +88,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_check_all_Elements_available();
     vkContainerController_wl = new QvkContainerController_wl( ui );
 
-
-
     QvkAudioController_wl *vkAudioController = new QvkAudioController_wl( ui );
-    connect( vkAudioController, SIGNAL( signal_haveAudioDeviceSelected(bool) ), this, SLOT( slot_haveAudioDeviceSelected(bool) ) );
     vkAudioController->init();
-
-
 
     new QvkLicenses( ui->pushButtonLicense );
     new QvkImageFromTabs_wl( this );
