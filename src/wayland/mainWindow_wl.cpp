@@ -533,6 +533,46 @@ QStringList QvkMainWindow_wl::VK_getSelectedAudioDevice()
     return list;
 }
 
+//---------------------------------------------------------------------------------------------------
+GstBusSyncReply QvkMainWindow_wl::call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data )
+{
+    Q_UNUSED(bus);
+    Q_UNUSED(user_data)
+    switch (GST_MESSAGE_TYPE (message)) {
+        case GST_MESSAGE_ERROR:
+            qDebug().noquote() << global::nameOutput << "GST_MESSAGE_ERROR";
+            break;
+        case GST_MESSAGE_EOS:
+            qDebug().noquote() << global::nameOutput << "GST_MESSAGE_EOS";
+            break;
+        case GST_MESSAGE_DURATION_CHANGED:
+            qDebug().noquote() << global::nameOutput << "GST_MESSAGE_DURATION_CHANGED";
+            break;
+        case GST_MESSAGE_STEP_DONE:
+            qDebug().noquote() << global::nameOutput << "GST_MESSAGE_STEP_DONE";
+            break;
+        case GST_MESSAGE_TAG:
+            qDebug().noquote() << global::nameOutput << "GST_MESSAGE_TAG";
+            break;
+        case GST_MESSAGE_STATE_CHANGED:
+            //qDebug().noquote() << global::nameOutput << "GST_MESSAGE_STATE_CHANGED";
+            break;
+        case GST_MESSAGE_STREAM_START:
+            qDebug().noquote() << global::nameOutput << "GST_MESSAGE_STREAM_START";
+            break;
+        case GST_MESSAGE_APPLICATION:
+            {
+            qDebug().noquote() << global::nameOutput << "GST_MESSAGE_APPLICATION";
+            break;
+            }
+        default:
+            break;
+    }
+
+    return GST_BUS_PASS;
+}
+
+
 void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 {
     ui->pushButtonStop->setEnabled( true );
@@ -601,6 +641,10 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     const gchar *line = byteArray.constData();
     GError *error = Q_NULLPTR;
     pipeline = gst_parse_launch( line, &error );
+
+    static GstBus *bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
+    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, NULL );
+//    gst_object_unref( bus );
 
     // Start playing
     GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );

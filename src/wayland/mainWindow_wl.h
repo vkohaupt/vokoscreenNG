@@ -69,6 +69,8 @@ private:
 
     QString path_to_snapshot_folder;
 
+    static GstBusSyncReply call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data );
+
 
 public Q_SLOTS:
 
