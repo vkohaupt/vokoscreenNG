@@ -692,17 +692,13 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 
 void QvkMainWindow_wl::slot_stop()
 {
-    qDebug() << "Stop begin -----------";
     // wait for EOS
     bool a = gst_element_send_event( pipeline, gst_event_new_eos() );
     Q_UNUSED(a);
-    qDebug() << "Stop begin 1111111111111111";
 
     GstClockTime timeout = 5 * GST_SECOND;
     GstMessage *msg = gst_bus_timed_pop_filtered( GST_ELEMENT_BUS (pipeline), timeout, GST_MESSAGE_EOS );
     Q_UNUSED(msg);
-
-    qDebug() << "Stop begin 22222222222222";
 
     GstStateChangeReturn ret ;
     Q_UNUSED(ret);
@@ -720,9 +716,6 @@ void QvkMainWindow_wl::slot_stop()
        vkRegionChoise_wl->repaint();
        vkRegionChoise_wl->setMask( vkRegionChoise_wl->pixmap.mask() );
     }
-
-    qDebug() << "Stop end -----------";
-
 }
 
 

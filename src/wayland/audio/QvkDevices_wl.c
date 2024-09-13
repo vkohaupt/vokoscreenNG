@@ -232,7 +232,7 @@ const char *get_all_audio_devices_wl()
     static char s[4096];
     for(int i = 0; i < 4096; ++i) s[i] = 0;
 
-    if ( pa_get_devicelist(pa_input_devicelist, pa_output_devicelist) < 0 ) {
+    if ( pa_get_devicelist_wl(pa_input_devicelist, pa_output_devicelist) < 0 ) {
         fprintf(stderr, "failed to get device list\n");
         return s;
     }
