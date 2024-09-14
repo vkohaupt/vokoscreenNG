@@ -210,7 +210,7 @@ void QvkMainWindow_wl::get_system_info()
     qDebug().noquote() << global::nameOutput << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
     if ( qgetenv( "XDG_CURRENT_DESKTOP" ) == "KDE" ) {
         qDebug().noquote() << global::nameOutput << "KDE Plasmashell Version:" << get_Plasmashell_Version();
-        if ( get_Plasmashell_Version() >= "6.1.4" ) {
+        if ( get_Plasmashell_Version() >= "6.0.3" ) {
             ui->radioButtonScreencastFullscreen->setText( ui->radioButtonScreencastFullscreen->text() +
                                                           " / " +
                                                           ui->radioButtonScreencastArea->text() );
