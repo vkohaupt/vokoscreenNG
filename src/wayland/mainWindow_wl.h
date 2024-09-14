@@ -53,7 +53,6 @@ private:
 
     void set_WindowTitle();
     void set_CornerWidget();
-    void set_system_info();
     void set_SpezialSliders();
     void set_Connects();
     void set_check_all_Elements_available();
@@ -64,6 +63,8 @@ private:
     QString get_Videocodec_Encoder();
     QString get_Area_Videocrop();
     QString get_Muxer();
+    void get_system_info();
+    QString get_Plasmashell_Version();
 
     bool isFlatpak = false;
 

@@ -24,6 +24,7 @@
 #include <QList>
 #include <QGuiApplication>
 #include <QDesktopServices>
+#include <QProcess>
 
 // Snapshot
 #include <QDBusConnection>
@@ -77,7 +78,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_WindowTitle();
     ui->tabWidgetScreencast->setCurrentIndex( 0 );
     ui->tabWidgetSideBar->setCurrentIndex( 0 );
-    set_system_info();
+    get_system_info();
     set_CornerWidget();
     set_SpezialSliders();
     QvkInformation_wl *vkInformation = new QvkInformation_wl( this, ui );
@@ -157,6 +158,28 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 }
 
 
+QString QvkMainWindow_wl::get_Plasmashell_Version()
+{
+    QString version;
+
+    QString desktop = qgetenv( "XDG_CURRENT_DESKTOP" );
+    if ( desktop == "KDE") {
+        if ( QStandardPaths::findExecutable( "plasmashell" ) > "" ) {
+            QProcess process;
+            process.setProcessChannelMode( QProcess::MergedChannels );
+            process.start( "plasmashell",  QStringList() << "-v" );
+            if ( process.waitForFinished( 30000 ) ) {
+                QString text( process.readAll() );
+                version = text.trimmed();
+                version = version.section( " ", 1 );
+            }
+        }
+    }
+
+    return version;
+}
+
+
 void QvkMainWindow_wl::set_WindowTitle()
 {
     setWindowTitle( global::name + " " + global::version );
@@ -165,7 +188,7 @@ void QvkMainWindow_wl::set_WindowTitle()
 }
 
 
-void QvkMainWindow_wl::set_system_info()
+void QvkMainWindow_wl::get_system_info()
 {
     qDebug().noquote() << global::nameOutput << "Version:" << global::version;
     qDebug().noquote() << global::nameOutput << "Locale:" << QLocale::system().name();
@@ -185,6 +208,9 @@ void QvkMainWindow_wl::set_system_info()
     qDebug().noquote() << global::nameOutput << global::name << "running as:" << QGuiApplication::platformName() << "client";
     qDebug().noquote() << global::nameOutput << global::name << "running on:" << qgetenv( "XDG_SESSION_TYPE" ).toLower();
     qDebug().noquote() << global::nameOutput << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
+    if ( qgetenv( "XDG_CURRENT_DESKTOP" ) == "KDE" ) {
+        qDebug().noquote() << global::nameOutput << "KDE Plasmashell Version:" << get_Plasmashell_Version();
+    }
     qDebug().noquote() << global::nameOutput << "Icon-Theme:" << QIcon::themeName();
     qDebug().noquote() << global::nameOutput << "Styles:" << QStyleFactory::keys();
     qDebug().noquote() << global::nameOutput << "Qt-PluginsPath:     " << QLibraryInfo::path( QLibraryInfo::PluginsPath );
