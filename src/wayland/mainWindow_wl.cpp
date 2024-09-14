@@ -210,6 +210,14 @@ void QvkMainWindow_wl::get_system_info()
     qDebug().noquote() << global::nameOutput << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
     if ( qgetenv( "XDG_CURRENT_DESKTOP" ) == "KDE" ) {
         qDebug().noquote() << global::nameOutput << "KDE Plasmashell Version:" << get_Plasmashell_Version();
+        if ( get_Plasmashell_Version() >= "6.1.4" ) {
+            ui->radioButtonScreencastFullscreen->setText( ui->radioButtonScreencastFullscreen->text() +
+                                                          " / " +
+                                                          ui->radioButtonScreencastArea->text() );
+            ui->radioButtonScreencastArea->hide();
+            ui->frame_area->hide();
+            ui->toolButtonScreencastAreaReset->hide();
+        }
     }
     qDebug().noquote() << global::nameOutput << "Icon-Theme:" << QIcon::themeName();
     qDebug().noquote() << global::nameOutput << "Styles:" << QStyleFactory::keys();
