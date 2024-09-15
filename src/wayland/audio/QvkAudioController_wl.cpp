@@ -150,7 +150,10 @@ void QvkAudioController_wl::slot_audioDeviceSelected()
         QCheckBox *checkBox = listCheckBox.at(i);
         if ( checkBox->checkState() == Qt::Checked ) {
             value = true;
+            ui->labelInfoAudiocodec->setText( ui->comboBoxAudioCodec->currentText() );
             break;
+        } else {
+            ui->labelInfoAudiocodec->setText( "------" );
         }
     }
     emit signal_haveAudioDeviceSelected( value );
