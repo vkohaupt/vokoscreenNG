@@ -789,7 +789,7 @@ void QvkMainWindow_wl::set_SpezialSliders()
     sliderFrames->setObjectName( "sliderFrames" );
     sliderFrames->setTracking( true );
     sliderFrames->setMinimum( 10 );
-    sliderFrames->setMaximum( 144 );
+    sliderFrames->setMaximum( 60 );
     sliderFrames->setValue( 25 );
     sliderFrames->show();
 }
