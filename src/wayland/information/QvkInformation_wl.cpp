@@ -53,6 +53,7 @@ QvkInformation_wl::QvkInformation_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMai
     // Frames, Format, Codecs
     connect( ui->comboBoxFormat,       SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_Format(QString) ) );
     connect( ui->comboBoxVideoCodec,   SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_Videocodec(QString) ) );
+    connect( ui->comboBoxAudioCodec,   SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_Audiocodec(QString) ) );
     connect( mainWindow->sliderFrames, SIGNAL( valueChanged(int) ),           this, SLOT( slot_Frames(int) ) );
 }
 
@@ -94,6 +95,24 @@ void QvkInformation_wl::slot_Videocodec( QString value )
     ui->labelInfoVideocodec->setText( value );
 }
 
+void QvkInformation_wl::slot_Audiocodec( QString value )
+{
+    bool bo = false;
+    QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBox.count(); i++ ) {
+        QCheckBox *checkBox = listCheckBox.at(i);
+        if ( checkBox->checkState() == Qt::Checked ) {
+            bo = true;
+            break;
+        }
+    }
+
+    if ( bo == false ) {
+        ui->labelInfoAudiocodec->setText( "------" );
+    } else {
+        ui->labelInfoAudiocodec->setText( value );
+    }
+}
 
 void QvkInformation_wl::slot_Frames( int value )
 {

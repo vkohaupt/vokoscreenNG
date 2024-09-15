@@ -48,8 +48,8 @@ QvkAudioController_wl::~QvkAudioController_wl()
 
 void QvkAudioController_wl::init()
 {
-    connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->labelAudioCodec,    SLOT( setEnabled( bool ) ) );
-    connect( this, SIGNAL( signal_haveAudioDeviceSelected( bool ) ), ui->comboBoxAudioCodec, SLOT( setEnabled( bool ) ) );
+//    connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->labelAudioCodec,    SLOT( setEnabled(bool) ) );
+//    connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->comboBoxAudioCodec, SLOT( setEnabled(bool) ) );
     getAllDevices();
 }
 
@@ -79,7 +79,7 @@ void QvkAudioController_wl::getAllDevices()
                 hBoxLayout->setSpacing(0);
                 hBoxLayout->setObjectName( "vBoxLayoutAudioDevice-" + index );
                 QCheckBox *checkBox = new QCheckBox();
-                connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
+                connect( checkBox, SIGNAL( clicked(bool) ), this, SLOT( slot_audioDeviceSelected() ) );
                 checkBox->setAccessibleName( device );
                 checkBox->setObjectName( "checkboxAudioDevice-" + index );
                 checkBox->setToolTip( tr ( "Select one or more devices" ) );

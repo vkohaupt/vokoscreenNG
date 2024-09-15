@@ -45,8 +45,8 @@ QvkPulseAudioWatcher_wl::QvkPulseAudioWatcher_wl( Ui_formMainWindow_wl *ui_mainw
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( 3000 );
     connect( timer, SIGNAL( timeout() ), this, SLOT( slot_update() ) );
-    connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->labelAudioCodec,    SLOT( setEnabled(bool) ) );
-    connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->comboBoxAudioCodec, SLOT( setEnabled(bool) ) );
+//    connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->labelAudioCodec,    SLOT( setEnabled(bool) ) );
+//    connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->comboBoxAudioCodec, SLOT( setEnabled(bool) ) );
 }
 
 
