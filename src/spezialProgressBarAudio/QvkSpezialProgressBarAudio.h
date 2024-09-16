@@ -5,7 +5,6 @@
 #include <QProgressBar>
 #include <QPainter>
 #include <QPaintEvent>
-
 #include <QMouseEvent>
 
 class QvkSpezialProgressBarAudio : public QProgressBar
@@ -17,14 +16,13 @@ public:
     void set_Text( QString text );
     QString get_Text();
 
+
 public slots:
 
 
 protected:
     void paintEvent( QPaintEvent *event ) override;
-
-    void mouseReleaseEvent(QMouseEvent *event);
-
+    void mouseReleaseEvent( QMouseEvent *event );
 
 
 private:
