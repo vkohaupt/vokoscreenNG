@@ -95,3 +95,15 @@ QString QvkSpezialProgressBarAudio::get_Text()
 {
     return text;
 }
+
+
+void QvkSpezialProgressBarAudio::mouseReleaseEvent( QMouseEvent *event )
+{
+    if( event->button() == Qt::LeftButton) {
+        if ( event->type() == QMouseEvent::MouseButtonRelease ) {
+            if ( rect().contains( event->pos() ) ) {
+                emit signal_mouseReleaseEvent();
+            }
+        }
+    }
+}

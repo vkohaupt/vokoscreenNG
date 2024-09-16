@@ -6,6 +6,8 @@
 #include <QPainter>
 #include <QPaintEvent>
 
+#include <QMouseEvent>
+
 class QvkSpezialProgressBarAudio : public QProgressBar
 {
     Q_OBJECT
@@ -21,13 +23,16 @@ public slots:
 protected:
     void paintEvent( QPaintEvent *event ) override;
 
+    void mouseReleaseEvent(QMouseEvent *event);
+
+
 
 private:
     QString text;
 
 
 signals:
-
+    void signal_mouseReleaseEvent();
     
 };
 #endif
