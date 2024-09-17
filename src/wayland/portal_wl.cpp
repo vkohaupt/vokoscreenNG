@@ -49,7 +49,7 @@ Portal_wl::~Portal_wl()
     }
 }
 
-void Portal_wl::slot_startScreenCast( uint m_sourceType, bool m_cursorModes )
+void Portal_wl::slot_startScreenCast(uint m_sourceType, uint m_cursorModes )
 {
     mCursorModes = m_cursorModes;
     mSourcType = m_sourceType;
@@ -125,7 +125,7 @@ void Portal_wl::slot_handleCreateSessionResponse( uint response, const QVariantM
     QMap<QString, QVariant> options;
     options["multiple"] = false;
     options["types"] = mSourcType;
-    options["cursor_mode"] = mCursorModes ? EMBEDDED : HIDDEN;
+    options["cursor_mode"] = mCursorModes;
     options["handle_token"] = requestToken;
     options["persist_mode"] = TRANSIENT;
 

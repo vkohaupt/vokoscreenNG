@@ -453,15 +453,15 @@ void QvkMainWindow_wl::slot_portal_start()
         sourceType = 1;
     }
 
-    bool mousecursorONOff = false;
+    uint mousecursorONOff;
     if ( ui->checkBoxMouseCursorOnOff->isChecked() == true ) {
         qDebug().noquote() << global::nameOutput << "Mouse cursor is not recording";
-        mousecursorONOff = false;
+        mousecursorONOff = 1;
     }
 
     if ( ui->checkBoxMouseCursorOnOff->isChecked() == false ) {
         qDebug().noquote() << global::nameOutput << "Mouse cursor is recording";
-        mousecursorONOff = true;
+        mousecursorONOff = 2;
     }
 
     portal_wl->slot_startScreenCast( sourceType, mousecursorONOff );
