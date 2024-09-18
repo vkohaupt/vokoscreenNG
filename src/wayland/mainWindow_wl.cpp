@@ -453,7 +453,9 @@ void QvkMainWindow_wl::slot_portal_start()
         sourceType = 1;
     }
 
-    uint mousecursorONOff;
+    // Value 1 = HIDDEN;
+    // Value 2 = EMBEDDED;
+    uint mousecursorONOff = 2;
     if ( ui->checkBoxMouseCursorOnOff->isChecked() == true ) {
         qDebug().noquote() << global::nameOutput << "Mouse cursor is not recording";
         mousecursorONOff = 1;
