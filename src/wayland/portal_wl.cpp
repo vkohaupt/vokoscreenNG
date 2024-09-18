@@ -55,8 +55,8 @@ void Portal_wl::slot_startScreenCast(uint m_sourceType, uint m_cursorModes )
     mSourcType = m_sourceType;
 
     QDBusInterface* portal = screencastPortal();
-
     if ( !portal ) {
+        qDebug().noquote() << global::nameOutput << "Aborted in function: Portal_wl::slot_startScreenCast";
         return;
     }
 
@@ -115,8 +115,8 @@ void Portal_wl::slot_handleCreateSessionResponse( uint response, const QVariantM
     mSession = results.value( "session_handle" ).toString();
 
     QDBusInterface* portal = screencastPortal();
-
     if ( !portal ) {
+        qDebug().noquote() << global::nameOutput << "Aborted in function: Portal_wl::slot_handleCreateSessionResponse";
         return;
     }
 
@@ -163,8 +163,8 @@ void Portal_wl::slot_handleSelectSourcesResponse( uint response, const QVariantM
     }
 
     QDBusInterface* portal = screencastPortal();
-
     if ( !portal ) {
+        qDebug().noquote() << global::nameOutput << "Aborted in function: Portal_wl::slot_handleSelectSourcesResponse";
         return;
     }
 
@@ -208,8 +208,8 @@ void Portal_wl::slot_handleStartResponse( uint response, const QVariantMap& resu
     const Stream stream = streams.last();
 
     QDBusInterface* portal = screencastPortal();
-
     if ( !portal ) {
+        qDebug().noquote() << global::nameOutput << "Aborted in function: Portal_wl::slot_handleStartResponse";
         return;
     }
 
