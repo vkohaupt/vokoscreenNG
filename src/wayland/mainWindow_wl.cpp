@@ -429,7 +429,19 @@ QString QvkMainWindow_wl::get_Muxer()
     return value;
 }
 
-
+//------------------------------------------------
+//             pushButtonStart
+//                   |
+//            slot_portal_start
+//                   |
+//     portal_wl->slot_startScreenCast
+//                   |
+//           "Show Portal Dialog"
+//             |             |
+//          Accepted       Cancel
+//             |             |
+//      slot_pre_start  slot_portal_dialog_aborted
+//------------------------------------------------
 void QvkMainWindow_wl::slot_portal_start()
 {
     // Value 1 = MONITOR
