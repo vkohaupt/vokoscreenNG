@@ -441,6 +441,12 @@ QString QvkMainWindow_wl::get_Muxer()
 //          Accepted       Cancel
 //             |             |
 //      slot_pre_start  slot_portal_dialog_aborted
+//             |
+//         Countdown
+//          |     |
+//     Accepted Cancel
+//        |
+//
 //------------------------------------------------
 void QvkMainWindow_wl::slot_portal_start()
 {
@@ -545,7 +551,10 @@ void QvkMainWindow_wl::slot_pre_start( QString vk_fd, QString vk_path )
             ui->frameVideoPath->setEnabled( true );
             ui->frame_video->setEnabled( true );
             ui->frame_audio->setEnabled( true );
+
+            portal_wl->slot_stopScreenCast();
         }
+
     } else {
         slot_start_gst( vk_fd, vk_path );
     }
