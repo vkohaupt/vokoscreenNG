@@ -153,9 +153,22 @@ QvkMainWindow_wl::~QvkMainWindow_wl()
 void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 {
     Q_UNUSED(event);
+
+    qDebug();
+    qDebug().noquote() << global::nameOutput << "QvkMainWindow_wl::closeEvent Begin close";
+
+    QList<QvkLevelMeterController_wl *> list = ui->scrollAreaAudioDevice->findChildren<QvkLevelMeterController_wl *>();
+    for ( int i = 0; i < list.count(); i++ ) {
+        QvkLevelMeterController_wl *vkLevelMeterController = list.at(i);
+        vkLevelMeterController->vkLevelMeter->stop();
+        qDebug().noquote() << global::nameOutput << "Stop levelmeter on:" << vkLevelMeterController->objectName();
+    }
+
     ui->pushButtonStop->click();
     vkRegionChoise_wl->close();
     vkSettings.saveAll( ui, this );
+
+    qDebug().noquote() << global::nameOutput << "QvkMainWindow_wl::closeEvent End close";
 }
 
 
