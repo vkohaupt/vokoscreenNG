@@ -176,11 +176,20 @@ QString QvkMainWindow_wl::get_Plasmashell_Version()
 {
     QString version;
 
+    QString app;
+    if ( isFlatpak == true ) {
+        // https://stackoverflow.com/questions/71349174/what-is-the-right-way-to-give-flatpak-access-to-system-binaries
+        // https://wiki.archlinux.org/title/XDG_Base_Directory
+        app = "/run/host/usr/bin/plasmashell";
+    } else {
+        app = "plasmashell";
+    }
+
     QString desktop = qgetenv( "XDG_CURRENT_DESKTOP" );
     if ( desktop == "KDE") {
             QProcess process;
             process.setProcessChannelMode( QProcess::MergedChannels );
-            process.start( "plasmashell",  QStringList() << "-v" );
+            process.start( app,  QStringList() << "-v" );
             if ( process.waitForFinished( 30000 ) ) {
                 QString text( process.readAll() );
                 version = text.trimmed();
