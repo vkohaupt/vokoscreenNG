@@ -11,7 +11,7 @@ cp com.github.vkohaupt.vokoscreenNG.yml com.github.vkohaupt.vokoscreenNG/com.git
 cp vokoscreenNG.appdata.xml com.github.vkohaupt.vokoscreenNG/vokoscreenNG.appdata.xml
 cd com.github.vkohaupt.vokoscreenNG
 
-flatpak-builder build-dir com.github.vkohaupt.vokoscreenNG.yml
+#flatpak-builder build-dir com.github.vkohaupt.vokoscreenNG.yml
 flatpak-builder --user --install --force-clean build-dir com.github.vkohaupt.vokoscreenNG.yml
 flatpak run com.github.vkohaupt.vokoscreenNG
 
