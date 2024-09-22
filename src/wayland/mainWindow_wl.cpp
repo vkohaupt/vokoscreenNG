@@ -178,7 +178,6 @@ QString QvkMainWindow_wl::get_Plasmashell_Version()
 
     QString desktop = qgetenv( "XDG_CURRENT_DESKTOP" );
     if ( desktop == "KDE") {
-        if ( QStandardPaths::findExecutable( "plasmashell" ) > "" ) {
             QProcess process;
             process.setProcessChannelMode( QProcess::MergedChannels );
             process.start( "plasmashell",  QStringList() << "-v" );
@@ -187,7 +186,6 @@ QString QvkMainWindow_wl::get_Plasmashell_Version()
                 version = text.trimmed();
                 version = version.section( " ", 1 );
             }
-        }
     }
 
     return version;
