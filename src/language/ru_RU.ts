@@ -7,6 +7,13 @@
     </message>
 </context>
 <context>
+    <name>QvkAudioController_wl</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>ВыберитВыберите одно или несколько устройстве одно или несколько устройств</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -183,6 +190,13 @@
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>ВыберитВыберите одно или несколько устройстве одно или несколько устройств</translation>
+    </message>
+</context>
+<context>
+    <name>QvkPulseAudioWatcher_wl</name>
     <message>
         <source>Select one or more devices</source>
         <translation>ВыберитВыберите одно или несколько устройстве одно или несколько устройств</translation>
@@ -701,6 +715,10 @@
     <message>
         <source>Countdown</source>
         <translation>Обратный отсчёт</translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation>Справка</translation>
     </message>
 </context>
 <context>

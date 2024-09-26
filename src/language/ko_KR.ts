@@ -7,6 +7,13 @@
     </message>
 </context>
 <context>
+    <name>QvkAudioController_wl</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>1개 이상의 장치 선택</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
@@ -183,6 +190,13 @@
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
+    <message>
+        <source>Select one or more devices</source>
+        <translation>1개 이상의 장치 선택</translation>
+    </message>
+</context>
+<context>
+    <name>QvkPulseAudioWatcher_wl</name>
     <message>
         <source>Select one or more devices</source>
         <translation>1개 이상의 장치 선택</translation>
@@ -701,6 +715,10 @@
     <message>
         <source>Countdown</source>
         <translation>카운트다운</translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation>도움말</translation>
     </message>
 </context>
 <context>
