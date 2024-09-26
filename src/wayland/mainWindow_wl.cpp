@@ -181,6 +181,7 @@ QString QvkMainWindow_wl::get_Plasmashell_Version()
         // https://stackoverflow.com/questions/71349174/what-is-the-right-way-to-give-flatpak-access-to-system-binaries
         // https://wiki.archlinux.org/title/XDG_Base_Directory
         app = "/run/host/usr/bin/plasmashell";
+        //app = "flatpak-spawn";
     } else {
         app = "plasmashell";
     }
@@ -190,10 +191,13 @@ QString QvkMainWindow_wl::get_Plasmashell_Version()
             QProcess process;
             process.setProcessChannelMode( QProcess::MergedChannels );
             process.start( app,  QStringList() << "-v" );
+//            process.start( app,  QStringList() << "plasmashell" << "-v" );
+//            process.start( app, QStringList() << "--help" );
             if ( process.waitForFinished( 30000 ) ) {
+                qDebug() << "11111111111111111111111111111";
                 QString text( process.readAll() );
                 version = text.trimmed();
-                version = version.section( " ", 1 );
+//                version = version.section( " ", 1 );
             }
     }
 

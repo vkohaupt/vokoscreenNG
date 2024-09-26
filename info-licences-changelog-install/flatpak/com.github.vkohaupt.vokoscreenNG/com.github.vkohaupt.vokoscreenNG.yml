@@ -1,0 +1,42 @@
+app-id: com.github.vkohaupt.vokoscreenNG
+runtime: org.kde.Platform
+runtime-version: 6.6
+sdk: org.kde.Sdk
+command: vokoscreenNG
+rename-desktop-file: vokoscreenNG.desktop
+rename-appdata-file: vokoscreenNG.appdata.xml
+rename-icon: vokoscreenNG
+finish-args:
+  - --device=all
+  - --share=ipc
+  - --share=network
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=pulseaudio
+  - --filesystem=home
+  - --talk-name=org.kde.StatusNotifierWatcher
+
+modules:
+  - name: vokoscreenNG
+    buildsystem: qmake
+    subdir: src
+    post-install:
+      - install -Dm755 vokoscreenNG ${FLATPAK_DEST}/bin/vokoscreenNG
+      - install -Dm644 applications/vokoscreenNG.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/vokoscreenNG.png
+      - install -Dm644 applications/vokoscreenNG.desktop ${FLATPAK_DEST}/share/applications/vokoscreenNG.desktop
+      - install -Dm644 ../vokoscreenNG.appdata.xml ${FLATPAK_DEST}/share/metainfo/vokoscreenNG.appdata.xml
+#    sources:
+#      - type: git
+#        url: https://github.com/vkohaupt/vokoscreenNG.git
+#        tag: 3.0
+#        commit: 9bdc85afff5568f0f1620b8380783a7c203f7ba0
+#        x-checker-data:
+#          type: git
+#          tag-pattern: ^([\d.]+)$
+#      - type: file
+#        path: vokoscreenNG.appdata.xml
+    sources:
+       - type: dir
+         path: "/home/vk/Programmieren/vokoscreenNG/"
+       - type: file
+         path: vokoscreenNG.appdata.xml
