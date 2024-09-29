@@ -720,6 +720,34 @@
         <source>Help</source>
         <translation>ヘルプ</translation>
     </message>
+    <message>
+        <source>Invert</source>
+        <translation>ネガポジ反転</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>グレー</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>白黒</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>カメラ</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>垂直反転</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>水平反転</translation>
+    </message>
+    <message>
+        <source>Remove window frame</source>
+        <translation>ウィンドウ枠非表示</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

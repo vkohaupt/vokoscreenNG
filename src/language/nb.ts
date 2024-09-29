@@ -720,6 +720,34 @@
         <source>Help</source>
         <translation>Hjelp</translation>
     </message>
+    <message>
+        <source>Invert</source>
+        <translation>Invertere</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Grå</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>Svart-hvit</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Kamera</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>Snu vertikalt</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>Snu horisontalt</translation>
+    </message>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Fjern vindusramme</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

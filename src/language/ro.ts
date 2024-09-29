@@ -720,6 +720,34 @@
         <source>Help</source>
         <translation>Ajutor</translation>
     </message>
+    <message>
+        <source>Invert</source>
+        <translation>Inversare</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Gri</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>Alb-şi-negru</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Cameră</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>Răstoarnă pe vertical</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>Răstoarnă pe orizontal</translation>
+    </message>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Șterge frame-urile</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

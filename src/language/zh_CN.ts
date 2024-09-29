@@ -720,6 +720,34 @@
         <source>Help</source>
         <translation>帮助</translation>
     </message>
+    <message>
+        <source>Invert</source>
+        <translation>翻转</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>灰度</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>黑白</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>摄像头</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>纵向翻转</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>横向翻转</translation>
+    </message>
+    <message>
+        <source>Remove window frame</source>
+        <translation>移除窗口边框</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

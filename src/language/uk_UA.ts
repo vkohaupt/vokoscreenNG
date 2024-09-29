@@ -720,6 +720,34 @@
         <source>Help</source>
         <translation>Допомога</translation>
     </message>
+    <message>
+        <source>Invert</source>
+        <translation>Перевернути</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Сірий</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>У відтінках сірого</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Камера</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>Показати вертикально</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>Показати горизонтально</translation>
+    </message>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Прибрати рамку вікна</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

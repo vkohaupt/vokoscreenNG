@@ -720,6 +720,34 @@
         <source>Help</source>
         <translation>Ayuda</translation>
     </message>
+    <message>
+        <source>Invert</source>
+        <translation>Invertir</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Gris</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>Negro-y-blanco</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Camara</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>Voltear verticalmente</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>Voltear horizontalmente</translation>
+    </message>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Quitar marco de la ventana</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -720,6 +720,34 @@
         <source>Help</source>
         <translation>Βοήθεια</translation>
     </message>
+    <message>
+        <source>Invert</source>
+        <translation>Αντιστροφή</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Γκρι</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>Ασπρόμαυρη</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Κάμερα</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>Κάθετη περιστροφή</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>Οριζόντια περιστροφή</translation>
+    </message>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Αφαίρεσε το πλαίσιο παραθύρου</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

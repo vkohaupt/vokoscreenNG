@@ -720,6 +720,34 @@
         <source>Help</source>
         <translation>Nápověda</translation>
     </message>
+    <message>
+        <source>Invert</source>
+        <translation>Invertovat</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Černobíle</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>Černo-bíle</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Kamera</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>Překlopit svisle</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>Překlopit vodorovně</translation>
+    </message>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Odstranit rám okna</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

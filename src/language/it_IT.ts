@@ -720,6 +720,34 @@
         <source>Help</source>
         <translation>Aiuto</translation>
     </message>
+    <message>
+        <source>Invert</source>
+        <translation>Inverti</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Grigio</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>Bianco e nero</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Webcam</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>Capovolgi verticale</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>Capovolgi orizzontale</translation>
+    </message>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Rimuovi bordo finestra</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -720,6 +720,34 @@
         <source>Help</source>
         <translation>Помоћ</translation>
     </message>
+    <message>
+        <source>Invert</source>
+        <translation>Изокрени</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Сиво</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>Црно-бело</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Kamera</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>Окрени вертикално</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>Окрени хоризонтално</translation>
+    </message>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Уклони оквир прозора</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

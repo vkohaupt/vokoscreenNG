@@ -722,6 +722,34 @@
         <source>Help</source>
         <translation>راهنما</translation>
     </message>
+    <message>
+        <source>Invert</source>
+        <translation>معکوس کردن</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>خاکستری</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>سیاه و سفید</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>دوربین</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>عمودی چرخاندن</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>افقی چرخاندن</translation>
+    </message>
+    <message>
+        <source>Remove window frame</source>
+        <translation>حذف فریم دور پنچره</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

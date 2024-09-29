@@ -720,6 +720,34 @@
         <source>Help</source>
         <translation>Hulp</translation>
     </message>
+    <message>
+        <source>Invert</source>
+        <translation>Omkeren</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Grijs</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>Zwart-wit</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Camera</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>Verticaal spiegelen</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>Horizontaal spiegelen</translation>
+    </message>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Vensterrand verwijderen</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

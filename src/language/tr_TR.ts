@@ -720,6 +720,34 @@
         <source>Help</source>
         <translation>Yardım</translation>
     </message>
+    <message>
+        <source>Invert</source>
+        <translation>Ters çevir</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Gri</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>Siyah-ve-beyaz</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Kamera</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>Dikey çevir</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>Yatay çevir</translation>
+    </message>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Pencere çerçevesini kaldır</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

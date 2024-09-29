@@ -720,6 +720,34 @@
         <source>Help</source>
         <translation>Bantuan</translation>
     </message>
+    <message>
+        <source>Invert</source>
+        <translation>Balikan</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Abu - abu</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>Hitam-dan-putih</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Kamera</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>Putar ke arah vertikal</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>Putar ke arah horizontal</translation>
+    </message>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Hilangkan bingkai jendela</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

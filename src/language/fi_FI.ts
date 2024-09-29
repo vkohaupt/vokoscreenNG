@@ -720,6 +720,34 @@
         <source>Help</source>
         <translation>Ohje</translation>
     </message>
+    <message>
+        <source>Invert</source>
+        <translation>Käänteinen</translation>
+    </message>
+    <message>
+        <source>Gray</source>
+        <translation>Harmaa</translation>
+    </message>
+    <message>
+        <source>Black-and-white</source>
+        <translation>Mustavalkoinen</translation>
+    </message>
+    <message>
+        <source>Camera</source>
+        <translation>Kamera</translation>
+    </message>
+    <message>
+        <source>Flip vertical</source>
+        <translation>Käännä pystysuunnassa</translation>
+    </message>
+    <message>
+        <source>Flip horizontal</source>
+        <translation>Käännä vaakasuunnassa</translation>
+    </message>
+    <message>
+        <source>Remove window frame</source>
+        <translation>Poista ikkunakehys</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
