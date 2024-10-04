@@ -178,29 +178,40 @@ QString QvkMainWindow_wl::get_Plasmashell_Version()
 {
     QString version;
 
-    QString app;
     if ( isFlatpak == true ) {
         // https://stackoverflow.com/questions/71349174/what-is-the-right-way-to-give-flatpak-access-to-system-binaries
         // https://wiki.archlinux.org/title/XDG_Base_Directory
-        app = "/run/host/usr/bin/plasmashell";
-        //app = "flatpak-spawn";
-    } else {
-        app = "plasmashell";
-    }
 
-    QString desktop = qgetenv( "XDG_CURRENT_DESKTOP" );
-    if ( desktop == "KDE") {
+        QString app = "/run/host/usr/bin/plasmashell";
+        // QString app = "flatpak-spawn";
+
+        QString desktop = qgetenv( "XDG_CURRENT_DESKTOP" );
+        if ( desktop == "KDE") {
             QProcess process;
             process.setProcessChannelMode( QProcess::MergedChannels );
-            process.start( app,  QStringList() << "-v" );
-//            process.start( app,  QStringList() << "plasmashell" << "-v" );
-//            process.start( app, QStringList() << "--help" );
+            process.start( app, QStringList() << "-v" );
+            // process.start( app,  QStringList() << "plasmashell" << "-v" );
+            // process.start( app, QStringList() << "--help" );
             if ( process.waitForFinished( 30000 ) ) {
                 qDebug() << "11111111111111111111111111111";
                 QString text( process.readAll() );
                 version = text.trimmed();
-//                version = version.section( " ", 1 );
+                //                version = version.section( " ", 1 );
             }
+        }
+    } else {
+        QString desktop = qgetenv( "XDG_CURRENT_DESKTOP" );
+        QString app = "plasmashell";
+        if ( desktop == "KDE") {
+            QProcess process;
+            process.setProcessChannelMode( QProcess::MergedChannels );
+            process.start( app,  QStringList() << "-v" );
+            if ( process.waitForFinished( 30000 ) ) {
+                QString text( process.readAll() );
+                version = text.trimmed();
+                version = version.section( " ", 1 );
+            }
+        }
     }
 
     return version;
