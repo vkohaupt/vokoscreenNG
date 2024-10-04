@@ -179,25 +179,9 @@ QString QvkMainWindow_wl::get_Plasmashell_Version()
     QString version;
 
     if ( isFlatpak == true ) {
-        // https://stackoverflow.com/questions/71349174/what-is-the-right-way-to-give-flatpak-access-to-system-binaries
-        // https://wiki.archlinux.org/title/XDG_Base_Directory
-
-        QString app = "/run/host/usr/bin/plasmashell";
-        // QString app = "flatpak-spawn";
-
         QString desktop = qgetenv( "XDG_CURRENT_DESKTOP" );
         if ( desktop == "KDE") {
-            QProcess process;
-            process.setProcessChannelMode( QProcess::MergedChannels );
-            process.start( app, QStringList() << "-v" );
-            // process.start( app,  QStringList() << "plasmashell" << "-v" );
-            // process.start( app, QStringList() << "--help" );
-            if ( process.waitForFinished( 30000 ) ) {
-                qDebug() << "11111111111111111111111111111";
-                QString text( process.readAll() );
-                version = text.trimmed();
-                //                version = version.section( " ", 1 );
-            }
+            version = qgetenv( "KDE_SESSION_VERSION" );
         }
     } else {
         QString desktop = qgetenv( "XDG_CURRENT_DESKTOP" );
@@ -248,7 +232,7 @@ void QvkMainWindow_wl::get_system_info()
     qDebug().noquote() << global::nameOutput << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
     if ( qgetenv( "XDG_CURRENT_DESKTOP" ) == "KDE" ) {
         qDebug().noquote() << global::nameOutput << "KDE Plasmashell Version:" << get_Plasmashell_Version();
-        if ( get_Plasmashell_Version() >= "6.0.3" ) {
+        if ( get_Plasmashell_Version() >= "6" ) {
             ui->radioButtonScreencastFullscreen->setText( ui->radioButtonScreencastFullscreen->text() +
                                                           " / " +
                                                           ui->radioButtonScreencastArea->text() );
