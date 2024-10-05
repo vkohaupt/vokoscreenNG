@@ -204,6 +204,5 @@ int main(int argc, char *argv[])
     QvkMainWindow *w = new QvkMainWindow;
     w->show();
 #endif
-    delete vklogController;
     return app.exec();
 }
