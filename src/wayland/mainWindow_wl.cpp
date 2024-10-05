@@ -24,7 +24,6 @@
 #include <QList>
 #include <QGuiApplication>
 #include <QDesktopServices>
-#include <QProcess>
 
 // Snapshot
 #include <QDBusConnection>
