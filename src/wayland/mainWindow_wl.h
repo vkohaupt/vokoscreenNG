@@ -64,7 +64,7 @@ private:
     QString get_Area_Videocrop();
     QString get_Muxer();
     void get_system_info();
-    QString get_Plasmashell_Version();
+    QString get_KDE_Version();
 
     bool isFlatpak = false;
 

@@ -174,28 +174,13 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 }
 
 
-QString QvkMainWindow_wl::get_Plasmashell_Version()
+QString QvkMainWindow_wl::get_KDE_Version()
 {
     QString version;
 
-    if ( isFlatpak == true ) {
-        QString desktop = qgetenv( "XDG_CURRENT_DESKTOP" );
-        if ( desktop == "KDE") {
-            version = qgetenv( "KDE_SESSION_VERSION" );
-        }
-    } else {
-        QString desktop = qgetenv( "XDG_CURRENT_DESKTOP" );
-        QString app = "plasmashell";
-        if ( desktop == "KDE") {
-            QProcess process;
-            process.setProcessChannelMode( QProcess::MergedChannels );
-            process.start( app,  QStringList() << "-v" );
-            if ( process.waitForFinished( 30000 ) ) {
-                QString text( process.readAll() );
-                version = text.trimmed();
-                version = version.section( " ", 1 );
-            }
-        }
+    QString desktop = qgetenv( "XDG_CURRENT_DESKTOP" );
+    if ( desktop == "KDE") {
+        version = qgetenv( "KDE_SESSION_VERSION" );
     }
 
     return version;
@@ -231,8 +216,8 @@ void QvkMainWindow_wl::get_system_info()
     qDebug().noquote() << global::nameOutput << global::name << "running on:" << qgetenv( "XDG_SESSION_TYPE" ).toLower();
     qDebug().noquote() << global::nameOutput << "Desktop:" << qgetenv( "XDG_CURRENT_DESKTOP" );
     if ( qgetenv( "XDG_CURRENT_DESKTOP" ) == "KDE" ) {
-        qDebug().noquote() << global::nameOutput << "KDE Plasmashell Version:" << get_Plasmashell_Version();
-        if ( get_Plasmashell_Version() >= "6" ) {
+        qDebug().noquote() << global::nameOutput << "KDE Version:" << get_KDE_Version();
+        if ( get_KDE_Version() >= "6" ) {
             ui->radioButtonScreencastFullscreen->setText( ui->radioButtonScreencastFullscreen->text() +
                                                           " / " +
                                                           ui->radioButtonScreencastArea->text() );
