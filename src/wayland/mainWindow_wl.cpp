@@ -74,7 +74,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->tabWidgetSideBar->tabBar()->hide();
     ui->toolButtonScreencast->click();
 
-    ui->toolButtonCamera->hide();  // QvkCameraController_wl wurde auch deaktiviert ----------------------------
+//    ui->toolButtonCamera->hide();  // QvkCameraController_wl wurde auch deaktiviert ----------------------------
 
     set_WindowTitle();
     ui->tabWidgetScreencast->setCurrentIndex( 0 );
@@ -118,7 +118,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->line_cisco->hide();
     ui->label_Upate_tab_2->hide();
 
-//    new QvkCameraController_wl( ui ); //------------------------------------------------------------------------
+    new QvkCameraController_wl( ui ); //------------------------------------------------------------------------
 
     QList<QScreen *> screen = QGuiApplication::screens();
     if ( !screen.empty() ) {

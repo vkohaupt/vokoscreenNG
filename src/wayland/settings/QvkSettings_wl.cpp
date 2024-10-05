@@ -46,10 +46,10 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *
         QToolButton *toolButton = listToolButton.at(i);
         if ( settings.value( toolButton->objectName(), false ).toBool() == true ) {
             // Toolbutton on Sidebar not clicked
-            if ( ( toolButton->objectName() == "toolButtonScreencast" ) or
-                 ( toolButton->objectName() == "toolButtonSnapshot" ) or
-                 ( toolButton->objectName() == "toolButtonCamera" ) or
-                 ( toolButton->objectName() == "toolButtonLog" )
+            if ( ( toolButton->objectName() == ui_mainwindow->toolButtonScreencast->objectName() ) or
+                 ( toolButton->objectName() == ui_mainwindow->toolButtonSnapshot->objectName() ) or
+                 ( toolButton->objectName() == ui_mainwindow->toolButtonCamera->objectName() ) or
+                 ( toolButton->objectName() == ui_mainwindow->toolButtonLog->objectName() )
                  ) {
                 // do nothing
             } else {
@@ -62,7 +62,7 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *
     for ( int i = 0; i < listRadiobuttons.count(); i++ ) {
         QRadioButton *radioButton = listRadiobuttons.at(i);
         // We have no settings-file(first start after install) but this object we want set as default.
-        if ( ( radioButton->objectName() == "radioButtonScreencastFullscreen" ) and
+        if ( ( radioButton->objectName() == ui_mainwindow->radioButtonScreencastFullscreen->objectName() ) and
             ( settings.value( radioButton->objectName(), true ).toBool() == true ) ) {
             radioButton->click();
             continue;
