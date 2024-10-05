@@ -45,7 +45,16 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *
         // We found a setting, then we want set or not.
         QToolButton *toolButton = listToolButton.at(i);
         if ( settings.value( toolButton->objectName(), false ).toBool() == true ) {
-            toolButton->click();
+            // Toolbutton on Sidebar not clicked
+            if ( ( toolButton->objectName() == "toolButtonScreencast" ) or
+                 ( toolButton->objectName() == "toolButtonSnapshot" ) or
+                 ( toolButton->objectName() == "toolButtonCamera" ) or
+                 ( toolButton->objectName() == "toolButtonLog" )
+                 ) {
+                // do nothing
+            } else {
+                toolButton->click();
+            }
         }
     }
 
