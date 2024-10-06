@@ -114,7 +114,7 @@
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>Recording cannot be started. Please free up Disk Space.</translation>
+        <translation>Recording cannot start. Please free up Disk Space.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
@@ -308,7 +308,7 @@
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Flip Veritically</translation>
+        <translation>Flip Vertically</translation>
     </message>
     <message>
         <source>Invert</source>
@@ -527,7 +527,7 @@
     </message>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright &amp; Licenses from Images</translation>
+        <translation>Copyright and Licenses from Images</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -610,7 +610,7 @@
     <name>formMainWindow_wl</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright &amp; Licenses from Images</translation>
+        <translation>Copyright and Licenses from Images</translation>
     </message>
     <message>
         <source>Create images of tabs </source>
@@ -753,7 +753,7 @@
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright &amp; Licenses from Images</translation>
+        <translation>Copyright and Licenses from Images</translation>
     </message>
 </context>
 <context>
