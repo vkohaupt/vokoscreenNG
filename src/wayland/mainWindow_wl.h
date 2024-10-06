@@ -36,6 +36,7 @@ public:
     Portal_wl *portal_wl = new Portal_wl();
     QvkSpezialSlider *sliderFrames;
     QvkSpezialSlider *sliderScreencastCountDown;
+    QvkSpezialSlider *sliderSecondWaitBeforeRecording;
 
 
 private:

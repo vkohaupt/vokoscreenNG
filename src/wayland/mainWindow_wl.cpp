@@ -638,6 +638,10 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 {
     ui->pushButtonStop->setEnabled( true );
 
+    QThread::msleep( static_cast<unsigned long>( sliderSecondWaitBeforeRecording->value()) * 1000 );
+    qDebug().noquote() << global::nameOutput << "SecondWaitBeforeRecording:" << sliderSecondWaitBeforeRecording->value();
+    qDebug().noquote();
+
     QStringList stringList;
     stringList << QString( "pipewiresrc fd=" ).append( vk_fd ).append( " path=" ).append( vk_path ).append( " do-timestamp=true" );
     stringList << "videoconvert";
@@ -822,6 +826,15 @@ void QvkMainWindow_wl::set_SpezialSliders()
     sliderFrames->setMaximum( 60 );
     sliderFrames->setValue( 25 );
     sliderFrames->show();
+
+    sliderSecondWaitBeforeRecording = new QvkSpezialSlider( Qt::Horizontal );
+    ui->horizontalLayout_9->insertWidget( 1, sliderSecondWaitBeforeRecording );
+    sliderSecondWaitBeforeRecording->setObjectName( "sliderSecondWaitBeforeRecording" );
+    sliderSecondWaitBeforeRecording->setMinimum( 0 );
+    sliderSecondWaitBeforeRecording->setMaximum( 3 );
+    sliderSecondWaitBeforeRecording->setValue( 1 );
+    sliderSecondWaitBeforeRecording->setPageStep( 1 );
+    sliderSecondWaitBeforeRecording->show();
 }
 
 
