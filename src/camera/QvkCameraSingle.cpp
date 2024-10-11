@@ -514,7 +514,7 @@ void QvkCameraSingle::slot_radioButtonCurrentCameraClicked( bool value )
     QList<QLabel *> listLabel = ui->centralWidget->findChildren<QLabel *>( "labelCurrentCamera" );
     if ( radioButtonCamera->isChecked() == true ) {
         QLabel *label = listLabel.at(0);
-        label->setText( checkBoxCameraOnOff->text() );
+        label->setText( checkBoxCameraOnOff->text().remove( "&" ) );
     }
 
      // Hide widgetToolButton from other camera
