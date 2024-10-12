@@ -1,0 +1,9 @@
+ 
+
+
+flatpak run --branch=stable com.github.vkohaupt.vokoscreenNG
+flatpak run --branch=master com.github.vkohaupt.vokoscreenNG
+
+
+Löscht Profile von gelöschten Programme
+flatpak uninstall --unused --delete-data
