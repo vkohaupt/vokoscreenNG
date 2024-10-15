@@ -66,6 +66,7 @@ private:
     QString get_Muxer();
     void get_system_info();
     QString get_KDE_Version();
+    QString get_pipewire_version();
 
     bool isFlatpak = false;
 

@@ -24,6 +24,7 @@
 #include <QList>
 #include <QGuiApplication>
 #include <QDesktopServices>
+#include <QProcess>
 
 // Snapshot
 #include <QDBusConnection>
@@ -173,6 +174,38 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 }
 
 
+QString QvkMainWindow_wl::get_pipewire_version()
+{
+    if ( isFlatpak == true ) {
+        // Achtung!!!!!!!!!
+        // In com.github.vkohaupt.vokoscreenNG.yml muß filesystem=host gesetzt sein
+        QString app = "flatpak-spawn";
+        QString version = "";
+        QProcess process;
+        process.setProcessChannelMode( QProcess::MergedChannels );
+        process.start( app,  QStringList() << "/run/host/usr/bin/pipewire" << "--version" );
+        if ( process.waitForFinished( 30000 ) ) {
+            QString text( process.readAll() );
+            QStringList list = text.split( "\n" );
+            version = list.at(1).section( " ", 3 );
+        }
+        return version;
+    } else {
+        QString app = "pipewire";
+        QString version = "";
+        QProcess process;
+        process.setProcessChannelMode( QProcess::MergedChannels );
+        process.start( app,  QStringList() << "--version" );
+        if ( process.waitForFinished( 30000 ) ) {
+            QString text( process.readAll() );
+            QStringList list = text.split( "\n" );
+            version = list.at(1).section( " ", 3 );
+        }
+        return version;
+    }
+}
+
+
 QString QvkMainWindow_wl::get_KDE_Version()
 {
     QString version;
@@ -205,10 +238,11 @@ void QvkMainWindow_wl::get_system_info()
     qDebug().noquote() << global::nameOutput << "Qt:" << qVersion();
     qDebug().noquote() << global::nameOutput << gst_version_string();
     qDebug().noquote() << global::nameOutput << "PulseAudio library version:" << pa_get_library_version();
-    qDebug().noquote() << global::nameOutput << "Operating system:" << QSysInfo::prettyProductName();
     if ( QSysInfo::prettyProductName().contains( "Flatpak" ) ) {
         isFlatpak = true;
     }
+    qDebug().noquote() << global::nameOutput << "Pipewire version" << get_pipewire_version();
+    qDebug().noquote() << global::nameOutput << "Operating system:" << QSysInfo::prettyProductName();
     qDebug().noquote() << global::nameOutput << "CPU Architecture:" << QSysInfo::currentCpuArchitecture();
     qDebug().noquote() << global::nameOutput << "Count CPU:" << QThread::idealThreadCount();
     qDebug().noquote() << global::nameOutput << global::name << "running as:" << QGuiApplication::platformName() << "client";
