@@ -448,13 +448,13 @@ void QvkMainWindow_wl::slot_handle_response_snapshot( uint responseCode, QVarian
 
         QFile file( filePath_org );
         file.remove();
-
+/*
         QvkShowMessage_wl *vkShowMessage_wl = new QvkShowMessage_wl();
         vkShowMessage_wl->set_StatusIcon( ":/pictures/status/information.png" );
         vkShowMessage_wl->set_Image( filePath_new );
         vkShowMessage_wl->set_timeOut( 10000 );
         vkShowMessage_wl->showMessage( "" );
-
+*/
         qDebug().noquote() << global::nameOutput << "[Snapshot] Saved under:" << filePath_new;
     } else {
         qDebug().noquote() << global::nameOutput << "[Snapshot] Unable to take a screenshot" << results["uri"];
@@ -503,7 +503,7 @@ QString QvkMainWindow_wl::get_Videocodec_Encoder()
         list << "qp-max=23"; // + QString::number( sliderOpenh264->value() );
         list << "usage-type=camera"; // We need camera not screen. With screen and a fast sequence of images the video jerks.
         list << "complexity=low";
-        list << "multi-thread=" + QString::number( QThread::idealThreadCount() );
+        list << "multi-thread=" + QString::number( 0 );
         list << "slice-mode=auto"; // Number of slices equal to number of threads
         value = list.join( " " );
         value.append( " ! h264parse" );
