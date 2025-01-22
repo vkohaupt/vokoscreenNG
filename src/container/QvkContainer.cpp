@@ -111,14 +111,6 @@ QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
     WEBM->add_AudioCodec( "vorbisenc", "vorbis" );
     WEBM->add_AudioCodec( "opusenc", "opus" );
 
-    Container *AVI = new Container( "avimux", "avi" );
-    AVI->add_VideoCodec( "openh264enc", "H.264" );
-#ifdef Q_OS_UNIX
-    if ( isFlatpak == false ) { AVI->add_VideoCodec( "x264enc", "x264" ); }
-#endif
-    AVI->add_VideoCodec( "vp8enc", "VP8" );
-    AVI->add_AudioCodec( "lamemp3enc", "mp3" );
-
     Container *MP4 = new Container( "mp4mux", "mp4" );
     MP4->add_VideoCodec( "openh264enc", "H.264" );
 #ifdef Q_OS_UNIX
@@ -151,13 +143,11 @@ QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
     }
     Containers->append( MP4 );
     Containers->append( WEBM );
-    Containers->append( AVI );
-    Containers->append( MOV );
 }
 
 
 /*!
- * Return all supported container like mkv, avi, ... as QList.
+ * Return all supported container like mkv, webm, ... as QList.
  */
 QList<Container*> QvkContainer::get_Containers()
 {
@@ -211,7 +201,7 @@ QStringList QvkContainer::get_AllAudioEncoders()
  * QString value = "mkv" or "webm" or ...
  *
  * Return:
- * All supported video encoder like vp8enc, avienc, ... as QList
+ * All supported video encoder like vp8enc, openh264enc, ... as QList
  */
 QList<Container::VideoCodec> QvkContainer::get_VideoCodecs( QString suffix )
 {

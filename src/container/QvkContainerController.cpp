@@ -127,17 +127,11 @@ void QvkContainerController::set_available_muxer_in_ComboBox()
             if ( vkContainer->get_Containers().at(i)->get_Suffix() == "mkv" ){
                 icon = QIcon( ":/pictures/screencast/strip-mkv.png" );
             }
-            if ( vkContainer->get_Containers().at(i)->get_Suffix() == "avi" ){
-                icon = QIcon( ":/pictures/screencast/strip-avi.png" );
-            }
             if ( vkContainer->get_Containers().at(i)->get_Suffix() == "webm" ){
                 icon = QIcon( ":/pictures/screencast/strip-webm.png" );
             }
             if ( vkContainer->get_Containers().at(i)->get_Suffix() == "mp4" ){
                 icon = QIcon( ":/pictures/screencast/strip-mp4.png" );
-            }
-            if ( vkContainer->get_Containers().at(i)->get_Suffix() == "mov" ){
-                icon = QIcon( ":/pictures/screencast/strip-mov.png" );
             }
             if ( vkContainer->get_Containers().at(i)->get_Suffix() == "gif" ){
                 icon = QIcon( ":/pictures/screencast/strip-gif.png" );

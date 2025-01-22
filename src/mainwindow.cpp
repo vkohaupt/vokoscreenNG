@@ -1814,9 +1814,9 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
         list << "vp8enc";
         list << "min_quantizer=" + QString::number( sliderVp8->value() );
         list << "max_quantizer=" + QString::number( sliderVp8->value() );
-        list << "cpu-used=" + QString::number( QThread::idealThreadCount() );
+        list << "cpu-used=" + QString::number( 0 );
         list << "deadline=1000000";
-        list << "threads=" + QString::number( QThread::idealThreadCount() );
+        list << "threads=" + QString::number( 0 );
         value = list.join( " " );
     }
 

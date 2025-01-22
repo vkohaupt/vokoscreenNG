@@ -668,7 +668,7 @@
                        <item>
                         <widget class="QCheckBox" name="checkBoxSeparatedAudioTracks">
                          <property name="text">
-                          <string>Separated audio tracks</string>
+                          <string notr="true">Separated audio tracks</string>
                          </property>
                         </widget>
                        </item>
@@ -1639,7 +1639,7 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>449</width>
+                     <width>457</width>
                      <height>360</height>
                     </rect>
                    </property>
