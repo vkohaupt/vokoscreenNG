@@ -303,7 +303,7 @@ void QvkConvert_mkv_to_webm_wl::slot_convert_mkv_to_webm(bool)
 
 
 void QvkConvert_mkv_to_webm_wl::msgbox_mkv_to_webm() {
-    QString text = "Only videos with H264 codec and audio codec MP3 or Opus can convert.";
+    QString text = "Only videos with H.264 video codec and audio MP3 or Opus can convert.";
     qDebug().noquote() << global::nameOutput << "[Convert] " << "Convert failed";
     qDebug().noquote() << global::nameOutput << "[Convert] " << text;
 
