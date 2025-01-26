@@ -304,8 +304,8 @@ void QvkConvert_mkv_mp4_wl::slot_convert_mkv_to_mp4(bool)
 
 void QvkConvert_mkv_mp4_wl::msgbox_mkv_to_mp4() {
     QString text = "Only videos with H.264 video codec and audio MP3 or Opus can convert.";
-    qDebug().noquote() << global::nameOutput << "[Convert] " << "Convert failed";
-    qDebug().noquote() << global::nameOutput << "[Convert] " << text;
+    qDebug().noquote() << global::nameOutput << "[Convert]" << "Convert failed";
+    qDebug().noquote() << global::nameOutput << "[Convert]" << text;
 
     QMessageBox msgBox( ui->centralwidget );
     msgBox.setModal( true );

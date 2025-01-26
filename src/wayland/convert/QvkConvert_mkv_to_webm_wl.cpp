@@ -226,15 +226,28 @@ void QvkConvert_mkv_to_webm_wl::slot_convert_mkv_to_webm(bool)
             QFileInfo fileInfo( filePath );
             QString path = fileInfo.path();
 
+            // gst-launch-1.0 -ev filesrc location=/home/vk/Videos/Convert/vokoscreenNG-test.mkv
+            // ! matroskademux
+            // ! h264parse
+            // ! openh264dec
+            // ! queue
+            // ! videoconvert
+            // ! vp8enc cpu-used=4 min_quantizer=20 max_quantizer=20
+            // ! webmmux name=mux
+            // ! filesink location=test2.webm
             QString VK_Pipeline;
             if ( audio_codec == "" ) {
                 QString fileNameWEBM = fileInfo.baseName() + ".webm";
                 VK_Pipeline = "filesrc location=" +
                         filePath +
-                        " ! matroskademux ! h264parse ! queue ! mp4mux name=mux ! filesink location=" +
-                        path +
-                        "/" +
-                        fileNameWEBM;
+                        " ! matroskademux" +
+                        " ! h264parse" +
+                        " ! openh264dec" +
+                        " ! queue" +
+                        " ! videoconvert" +
+                        " ! vp8enc cpu-used=4 min_quantizer=20 max_quantizer=20" +
+                        " ! webmux name=mux" +
+                        " ! filesink location=" + path + "/" + fileNameWEBM;
             }
 
             // gst-launch-1.0 -e filesrc location=/home/vk/Videos/vokoscreenNG-mit-audio.mkv ! matroskademux name=demux
@@ -249,7 +262,7 @@ void QvkConvert_mkv_to_webm_wl::slot_convert_mkv_to_webm(bool)
                         path +
                         "/" +
                         fileNameWEBM + " "
-                                      "demux.video_0 ! queue ! h264parse ! mux." + " " +
+                        "demux.video_0 ! queue ! h264parse ! mux." + " " +
                         "demux.audio_0 ! queue ! mpegaudioparse ! mux.";
             }
 
@@ -304,8 +317,8 @@ void QvkConvert_mkv_to_webm_wl::slot_convert_mkv_to_webm(bool)
 
 void QvkConvert_mkv_to_webm_wl::msgbox_mkv_to_webm() {
     QString text = "Only videos with H.264 video codec and audio MP3 or Opus can convert.";
-    qDebug().noquote() << global::nameOutput << "[Convert] " << "Convert failed";
-    qDebug().noquote() << global::nameOutput << "[Convert] " << text;
+    qDebug().noquote() << global::nameOutput << "[Convert]" << "Convert failed";
+    qDebug().noquote() << global::nameOutput << "[Convert]" << text;
 
     QMessageBox msgBox( ui->centralwidget );
     msgBox.setModal( true );

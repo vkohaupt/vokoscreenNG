@@ -271,8 +271,8 @@ void QvkConvert_mkv_repair_wl::slot_convert_mkv_repair(bool)
 
 void QvkConvert_mkv_repair_wl::msgbox_mkv_repair() {
     QString text = "Only videos with H.264 video codec and audio MP3 or Opus can repair.";
-    qDebug().noquote() << global::nameOutput << "[Convert][Repair] " << "Repair failed";
-    qDebug().noquote() << global::nameOutput << "[Convert][Repair] " << text;
+    qDebug().noquote() << global::nameOutput << "[Convert][Repair]" << "Repair failed";
+    qDebug().noquote() << global::nameOutput << "[Convert][Repair]" << text;
 
     QMessageBox msgBox( ui->centralwidget );
     msgBox.setModal( true );

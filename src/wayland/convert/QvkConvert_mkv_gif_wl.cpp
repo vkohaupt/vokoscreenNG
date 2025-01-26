@@ -184,7 +184,7 @@ void QvkConvert_mkv_gif_wl::slot_convert_mkv_to_gif(bool)
         video_codec = "H264";
     }
 
-    qDebug().noquote() << global::nameOutput << "Detected video codec" << video_codec;
+    qDebug().noquote() << global::nameOutput << "[Convert] Detected video codec" << video_codec;
 
     if ( video_codec == "H264" ) {
         ui->toolButton_convert_dialog_mkv_to_gif->setDisabled( true );
@@ -251,8 +251,8 @@ void QvkConvert_mkv_gif_wl::slot_convert_mkv_to_gif(bool)
         }
     } else {
         QString text = "Only videos with H.264 video codec can convert.";
-        qDebug().noquote() << global::nameOutput << "[Convert] " << "Convert failed";
-        qDebug().noquote() << global::nameOutput << "[Convert] " << text;
+        qDebug().noquote() << global::nameOutput << "[Convert]" << "Convert failed";
+        qDebug().noquote() << global::nameOutput << "[Convert]" << text;
 
         QMessageBox msgBox( ui->centralwidget );
         msgBox.setModal( true );
