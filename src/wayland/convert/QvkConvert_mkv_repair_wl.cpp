@@ -234,12 +234,12 @@ void QvkConvert_mkv_repair_wl::slot_convert_mkv_repair(bool)
         //     ! filesink location=test2.mkv
         QString VK_Pipeline;
         QString fileNameRepair = fileInfo.baseName() + "_repair.mkv";
-        VK_Pipeline = "filesrc location=" +
-                filePath +
-                " ! matroskademux ! h264parse ! queue ! matroskamux ! filesink location=" +
-                path +
-                "/" +
-                fileNameRepair;
+        VK_Pipeline = "filesrc location=" + filePath +
+                " ! matroskademux" +
+                " ! h264parse" +
+                " ! queue" +
+                " ! matroskamux" +
+                " ! filesink location=" + path + "/" + fileNameRepair;
 
         qDebug().noquote() << global::nameOutput << VK_Pipeline;
 
