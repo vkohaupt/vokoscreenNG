@@ -229,12 +229,12 @@ void QvkConvert_mkv_mp4_wl::slot_convert_mkv_to_mp4(bool)
             QString VK_Pipeline;
             if ( audio_codec == "" ) {
                 QString fileNameMP4 = fileInfo.baseName() + ".mp4";
-                VK_Pipeline = "filesrc location=" +
-                        filePath +
-                        " ! matroskademux ! h264parse ! queue ! mp4mux name=mux ! filesink location=" +
-                        path +
-                        "/" +
-                        fileNameMP4;
+                VK_Pipeline = "filesrc location=" + filePath +
+                        " ! matroskademux" +
+                        " ! h264parse" +
+                        " ! queue" +
+                        " ! mp4mux name=mux" +
+                        " ! filesink location=" + path + "/" + fileNameMP4;
             }
 
             // gst-launch-1.0 -e filesrc location=/home/vk/Videos/vokoscreenNG-mit-audio.mkv ! matroskademux name=demux
@@ -243,13 +243,10 @@ void QvkConvert_mkv_mp4_wl::slot_convert_mkv_to_mp4(bool)
             // demux.audio_0 ! queue ! mpegaudioparse ! mux.
             if ( audio_codec == "MPEG" ) {
                 QString fileNameMP4 = fileInfo.baseName() + ".mp4";
-                VK_Pipeline = "filesrc location=" +
-                        filePath +
-                        " ! matroskademux name=demux mp4mux name=mux ! filesink location=" +
-                        path +
-                        "/" +
-                        fileNameMP4 + " "
-                                      "demux.video_0 ! queue ! h264parse ! mux." + " " +
+                VK_Pipeline = "filesrc location=" + filePath +
+                        " ! matroskademux name=demux mp4mux name=mux" +
+                        " ! filesink location=" + path + "/" + fileNameMP4 + " "
+                        "demux.video_0 ! queue ! h264parse ! mux." + " " +
                         "demux.audio_0 ! queue ! mpegaudioparse ! mux.";
             }
 
@@ -259,13 +256,11 @@ void QvkConvert_mkv_mp4_wl::slot_convert_mkv_to_mp4(bool)
             // demux.audio_0 ! queue ! opusparse ! mux.
             if ( audio_codec == "Opus" ) {
                 QString fileNameMP4 = fileInfo.baseName() + ".mp4";
-                VK_Pipeline = "filesrc location=" +
-                        filePath +
+                VK_Pipeline = "filesrc location=" + filePath +
                         " ! matroskademux name=demux mp4mux name=mux ! filesink location=" +
                         path +
                         "/" +
-                        fileNameMP4 +
-                        " "
+                        fileNameMP4 + " "
                         "demux.video_0 ! queue ! h264parse ! mux." + " " +
                         "demux.audio_0 ! queue ! opusparse ! mux.";
             }

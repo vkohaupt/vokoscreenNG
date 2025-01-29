@@ -216,8 +216,7 @@ void QvkConvert_mkv_gif_wl::slot_convert_mkv_to_gif(bool)
         // ! filesink location=test2.gif
         QString VK_Pipeline;
         QString fileNameGIF = fileInfo.baseName() + ".gif";
-        VK_Pipeline = "filesrc location=" +
-                filePath +
+        VK_Pipeline = "filesrc location=" + filePath +
                 " ! matroskademux" +
                 " ! h264parse" +
                 " ! openh264dec" +
