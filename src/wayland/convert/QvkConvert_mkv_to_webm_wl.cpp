@@ -245,8 +245,8 @@ void QvkConvert_mkv_to_webm_wl::slot_convert_mkv_to_webm(bool)
                         " ! openh264dec" +
                         " ! queue" +
                         " ! videoconvert" +
-                        " ! vp8enc cpu-used=4 min_quantizer=20 max_quantizer=20" +
-                        " ! webmux name=mux" +
+                        " ! vp8enc cpu-used=1 min_quantizer=20 max_quantizer=20" +
+                        " ! webmmux name=mux" +
                         " ! filesink location=" + path + "/" + fileNameWEBM;
             }
 
