@@ -257,10 +257,8 @@ void QvkConvert_mkv_mp4_wl::slot_convert_mkv_to_mp4(bool)
             if ( audio_codec == "Opus" ) {
                 QString fileNameMP4 = fileInfo.baseName() + ".mp4";
                 VK_Pipeline = "filesrc location=" + filePath +
-                        " ! matroskademux name=demux mp4mux name=mux ! filesink location=" +
-                        path +
-                        "/" +
-                        fileNameMP4 + " "
+                        " ! matroskademux name=demux mp4mux name=mux" +
+                        " ! filesink location=" + path + "/" + fileNameMP4 + " "
                         "demux.video_0 ! queue ! h264parse ! mux." + " " +
                         "demux.audio_0 ! queue ! opusparse ! mux.";
             }
