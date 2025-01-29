@@ -237,6 +237,12 @@ void QvkConvert_mkv_to_webm_wl::slot_convert_mkv_to_webm(bool)
             // ! filesink location=test2.webm
             QString VK_Pipeline;
             if ( audio_codec == "" ) {
+                QString countCPU;
+                if ( QThread::idealThreadCount() > 16 ) {
+                    countCPU = QString::number( 16 );
+                } else {
+                    countCPU = QString::number( QThread::idealThreadCount() );
+                }
                 QString fileNameWEBM = fileInfo.baseName() + ".webm";
                 VK_Pipeline = "filesrc location=" +
                         filePath +
@@ -245,8 +251,8 @@ void QvkConvert_mkv_to_webm_wl::slot_convert_mkv_to_webm(bool)
                         " ! openh264dec" +
                         " ! queue" +
                         " ! videoconvert" +
-                        " ! vp8enc cpu-used=1 min_quantizer=20 max_quantizer=20" +
-                        " ! webmmux name=mux" +
+                        " ! vp8enc cpu-used=" + countCPU + " min_quantizer=20 max_quantizer=20" +
+                        " ! webmmux" +
                         " ! filesink location=" + path + "/" + fileNameWEBM;
             }
 
@@ -260,6 +266,9 @@ void QvkConvert_mkv_to_webm_wl::slot_convert_mkv_to_webm(bool)
             GstBus *bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
             gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message_convert_webm, this, NULL );
             gst_object_unref( bus );
+
+            // Startet die Fortschrittanzeige in Prozent
+            //timer->start();
 
             // Start playing
             GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
