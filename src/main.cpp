@@ -156,9 +156,9 @@ int main(int argc, char *argv[])
     }
     // Gstreamer debug end
 
-    qputenv( "GST_DEBUG", "2" );
-    qputenv( "GST_DEBUG_FILE", "/home/vk/Videos/Convert/test.debug" );
-
+    // Ist zum debugen unter Wayland
+    // qputenv( "GST_DEBUG", "2" );
+    // qputenv( "GST_DEBUG_FILE", "/home/vk/Videos/Convert/test.debug" );
 
     gst_init (&argc, &argv);
 
