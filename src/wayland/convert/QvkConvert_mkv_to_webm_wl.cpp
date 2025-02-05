@@ -74,15 +74,45 @@ QvkConvert_mkv_to_webm_wl::~QvkConvert_mkv_to_webm_wl()
 
 void QvkConvert_mkv_to_webm_wl::slot_timer()
 {
+    QPalette palette_1 = ui->pushButton_convert_mkv_to_webm->palette();
+    palette_1.setColor( QPalette::Window, QColor( Qt::green ) );
+    ui->widget_convert_mkv_to_webm->setAutoFillBackground( true );
+    ui->widget_convert_mkv_to_webm->setPalette( palette_1 );
+
+    QPalette palette_2 = ui->label_convert_mkv_to_webm->palette();
+    palette_2.setColor( QPalette::Window, QColor( Qt::green ) );
+    ui->label_convert_mkv_to_webm->setAutoFillBackground( true );
+    ui->label_convert_mkv_to_webm->setPalette( palette_2 );
+
+    QPixmap pixmap( ui->label_convert_mkv_to_webm->width(), ui->label_convert_mkv_to_webm->height() );
+    pixmap.fill( Qt::transparent );
+
+    QPainter painter;
+    painter.begin( &pixmap );
+    if ( timer->interval() == 400 ) {
+        painter.drawText( 0, 14, "Please wait" );
+        timer->setInterval( 800 );
+    } else {
+        painter.drawText( 0, 14, "" );
+        timer->setInterval( 400 );
+    }
+    painter.end();
+
+    ui->label_convert_mkv_to_webm->setPixmap( pixmap );
+
+/*
     gint64 duration;
     gst_element_query_duration( pipeline, GST_FORMAT_TIME, &duration );
+    qDebug() << "----------------------------" << duration;
 
     gint64 currentTime;
     gst_element_query_position( pipeline, GST_FORMAT_TIME, &currentTime );
 
     qint64 prozent = 100 / ( duration / 1000 / 1000 / 1000 ) * ( currentTime / 1000 / 1000 / 1000 );
+    qDebug() << "----------------------------" << prozent;
 
     ui->label_convert_mkv_to_webm->setText( QString::number( prozent ) + " %" );
+*/
 }
 
 
@@ -210,12 +240,13 @@ void QvkConvert_mkv_to_webm_wl::slot_convert_mkv_to_webm(bool)
 
             // Hintergrundfarbe für Widget setzen
             QPalette palette_1 = ui->pushButton_convert_mkv_to_webm->palette();
-            palette_1.setColor( QPalette::Window, QColor( QColor( 239, 240, 241 ) ) );
-            ui->pushButton_convert_mkv_to_webm->setAutoFillBackground( true );
-            ui->pushButton_convert_mkv_to_webm->setPalette( palette_1 );
+            palette_1.setColor( QPalette::Window, QColor( Qt::green ) );
+            ui->widget_convert_mkv_to_webm->setAutoFillBackground( true );
+            ui->widget_convert_mkv_to_webm->setPalette( palette_1 );
+
             // Hintergrundfarbe für label setzen
             QPalette palette_2 = ui->label_convert_mkv_to_webm->palette();
-            palette_2.setColor( QPalette::Window, QColor( QColor( 239, 240, 241 ) ) );
+            palette_2.setColor( QPalette::Window, QColor( Qt::green ) );
             ui->label_convert_mkv_to_webm->setAutoFillBackground( true );
             ui->label_convert_mkv_to_webm->setPalette( palette_2 );
             ui->label_convert_mkv_to_webm->setText( "Please wait" );
@@ -268,7 +299,7 @@ void QvkConvert_mkv_to_webm_wl::slot_convert_mkv_to_webm(bool)
             gst_object_unref( bus );
 
             // Startet die Fortschrittanzeige in Prozent
-            //timer->start();
+            timer->start();
 
             // Start playing
             GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
