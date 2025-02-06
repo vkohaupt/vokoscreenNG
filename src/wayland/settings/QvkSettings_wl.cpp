@@ -101,6 +101,13 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *
         }
     }
 
+    QList<QLineEdit *> listLineEdit = ui_mainwindow->centralwidget->findChildren<QLineEdit *>( "lineEditVideoPath" );
+    for ( int i = 0; i < listLineEdit.count(); i++ ) {
+        QLineEdit *lineEdit = listLineEdit.at(i);
+        QString valueText = settings.value( lineEdit->objectName(), "" ).toString();
+        lineEdit->setText( valueText );
+    }
+
     settings.endGroup();
 }
 
