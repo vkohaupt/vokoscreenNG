@@ -23,6 +23,8 @@
 #include "QvkSettings_wl.h"
 #include "global.h"
 
+#include <QStandardPaths>
+
 QvkSettings_wl::QvkSettings_wl()
 {
     // Dient nur zum anlegen des Profils damit das log erstellt werden kann
@@ -105,7 +107,11 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *
     for ( int i = 0; i < listLineEdit.count(); i++ ) {
         QLineEdit *lineEdit = listLineEdit.at(i);
         QString valueText = settings.value( lineEdit->objectName(), "" ).toString();
-        lineEdit->setText( valueText );
+        if ( valueText > "" ) {
+            lineEdit->setText( valueText );
+        } else {
+            lineEdit->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
+        }
     }
 
     settings.endGroup();
