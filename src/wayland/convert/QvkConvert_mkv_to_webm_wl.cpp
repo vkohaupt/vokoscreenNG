@@ -287,6 +287,28 @@ void QvkConvert_mkv_to_webm_wl::slot_convert_mkv_to_webm(bool)
                         " ! filesink location=" + path + "/" + fileNameWEBM;
             }
 
+
+            // gst-launch-1.0 webmmux name=mux ! filesink location=newfile.webm
+            //    uridecodebin uri=file:///home/vk/Videos/Convert/vokoscreenNG-test.mkv name=demux
+            //    demux. ! videoconvert ! vp8enc cpu-used=4 min_quantizer=20 max_quantizer=20 ! queue ! mux.video_0
+            //    demux. ! audioconvert ! audiorate ! vorbisenc ! queue ! mux.audio_0
+
+            if ( ( audio_codec == "MPEG" ) or ( audio_codec == "Opus" ) ) {
+                QString countCPU;
+                if ( QThread::idealThreadCount() > 16 ) {
+                    countCPU = QString::number( 16 );
+                } else {
+                    countCPU = QString::number( QThread::idealThreadCount() );
+                }
+                QString fileNameWEBM = fileInfo.baseName() + ".webm";
+
+
+
+
+            }
+
+
+
             qDebug().noquote() << global::nameOutput << VK_Pipeline;
 
             QByteArray byteArray = VK_Pipeline.toUtf8();
