@@ -301,13 +301,11 @@ void QvkConvert_mkv_to_webm_wl::slot_convert_mkv_to_webm(bool)
                     countCPU = QString::number( QThread::idealThreadCount() );
                 }
                 QString fileNameWEBM = fileInfo.baseName() + ".webm";
-
-
-
-
+                VK_Pipeline = "webmmux name=mux ! filesink location=" + path + "/" + fileNameWEBM +
+                        " uridecodebin uri=file://" + filePath + " name=demux " +
+                        " demux. ! videoconvert ! vp8enc cpu-used=4 min_quantizer=20 max_quantizer=20 ! queue ! mux.video_0 " +
+                        " demux. ! audioconvert ! audiorate ! vorbisenc ! queue ! mux.audio_0 ";
             }
-
-
 
             qDebug().noquote() << global::nameOutput << VK_Pipeline;
 
