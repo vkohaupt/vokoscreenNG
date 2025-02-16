@@ -607,7 +607,7 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
         image = image.mirrored( true, false );
     }
 
-    if ( checkBoxCameraMirrorVertical->isChecked() == false ) {
+    if ( checkBoxCameraMirrorVertical->isChecked() == true ) {
         image = image.mirrored( false, true );
     }
 
