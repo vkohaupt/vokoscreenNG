@@ -107,8 +107,9 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     QvkAudioController_wl *vkAudioController = new QvkAudioController_wl( ui );
     vkAudioController->init();
 
-    connect( ui->toolButtonSeparatedAudioTracksReset, &QToolButton::clicked, this, [=]() { ui->checkBoxSeparatedAudioTracks->setCheckState( Qt::Unchecked); } );
-
+    connect( ui->toolButtonSeparatedAudioTracksReset, &QToolButton::clicked, this, [=]() {
+        ui->checkBoxSeparatedAudioTracks->setCheckState( Qt::Unchecked);
+    } );
 
     vkHelp = new QvkHelp_wl( ui );
     new QvkLicenses( ui->pushButtonLicense );
