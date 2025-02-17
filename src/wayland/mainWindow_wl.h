@@ -39,7 +39,6 @@ public:
     QvkSpezialSlider *sliderScreencastCountDown;
     QvkSpezialSlider *sliderSecondWaitBeforeRecording;
     QvkSpezialSlider *sliderOpenh264;
-    QvkSpezialSlider *sliderVp8;
     QvkSpezialSlider *sliderWaitBeforeSnapshot;
     QvkHelp_wl *vkHelp;
 
@@ -95,7 +94,6 @@ private Q_SLOTS:
     void slot_stop();
     void slot_frames_Reset();
     void slot_openh264Reset();
-    void slot_vp8Reset();
     void slot_newVideoPath();
     void slot_videoFileSystemWatcherSetNewPath();
     void slot_log_folder();

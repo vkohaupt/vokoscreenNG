@@ -385,7 +385,6 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked(bool) ), vkRegionChoise_wl, SLOT( slot_areaReset() ) );
     connect( ui->toolButtonFramesReset,         SIGNAL( clicked(bool) ), this,              SLOT( slot_frames_Reset() ) );
     connect( ui->toolButtonOpenh264Reset,       SIGNAL( clicked(bool) ), this, SLOT( slot_openh264Reset() ) );
-    connect( ui->toolButtonVP8Reset,            SIGNAL( clicked(bool) ), this, SLOT( slot_vp8Reset() ) );
 
     connect( ui->pushButtonSnapshot, SIGNAL( clicked(bool) ), this, SLOT( slot_snapshotHideBeforeRecording(bool) ) );
 
@@ -507,8 +506,8 @@ QString QvkMainWindow_wl::get_Videocodec_Encoder()
     if ( encoder == "openh264enc" ) {
         QStringList list;
         list << encoder;
-        list << "qp-min=23"; // + QString::number( sliderOpenh264->value() );
-        list << "qp-max=23"; // + QString::number( sliderOpenh264->value() );
+        list << "qp-min=" + QString::number( sliderOpenh264->value() );
+        list << "qp-max=" + QString::number( sliderOpenh264->value() );
         list << "usage-type=camera"; // We need camera not screen. With screen and a fast sequence of images the video jerks.
         list << "complexity=low";
         list << "multi-thread=" + QString::number( 0 );
@@ -517,29 +516,6 @@ QString QvkMainWindow_wl::get_Videocodec_Encoder()
         value.append( " ! h264parse" );
     }
 
-    if ( encoder == "vp8enc" ) {
-        QStringList list;
-        list << encoder;
-        list << "min_quantizer=20"; // + QString::number( sliderVp8->value() );
-        list << "max_quantizer=20";  // + QString::number( sliderVp8->value() );
-        list << "cpu-used=" + QString::number( QThread::idealThreadCount() );
-        list << "deadline=1000000";
-        list << "threads=" + QString::number( QThread::idealThreadCount() );
-        value = list.join( " " );
-    }
-
-    if ( encoder == "gifenc" ) {
-         QStringList list;
-         list << "gifenc";
-         list << "speed=30";
-         if ( ui->checkBoxGifLoop->isChecked() ) {
-             list << "repeat=-1";
-         } else {
-             list << "repeat=0";
-         }
-         value = list.join( " " );
-     }
-
     return value;
 }
 
@@ -547,19 +523,9 @@ QString QvkMainWindow_wl::get_Videocodec_Encoder()
 void QvkMainWindow_wl::slot_videoCodecChanged( QString codec )
 {
     ui->frameVideoCodecOpenh264->setVisible( false );
-    ui->frameVideoCodecVp8->setVisible( false );
-    ui->frameVideoCodecGIF->setVisible( false );
 
     if ( codec == "H.264" ) {
         ui->frameVideoCodecOpenh264->setVisible( true );
-    }
-
-    if ( codec == "VP8" ) {
-        ui->frameVideoCodecVp8->setVisible( true );
-    }
-
-    if ( codec == "gif" ) {
-        ui->frameVideoCodecGIF->setVisible( true );
     }
 }
 
@@ -1016,15 +982,6 @@ void QvkMainWindow_wl::set_SpezialSliders()
     sliderOpenh264->setValue( 23 );
     sliderOpenh264->show();
 
-    sliderVp8 = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_vp8->insertWidget( 1, sliderVp8 );
-    sliderVp8->setObjectName( "sliderVp8" );
-    sliderVp8->setTracking( true );
-    sliderVp8->setMinimum( 0 );
-    sliderVp8->setMaximum( 63 );
-    sliderVp8->setValue( 20 );
-    sliderVp8->show();
-
     sliderWaitBeforeSnapshot = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_59->insertWidget( 1, sliderWaitBeforeSnapshot );
     sliderWaitBeforeSnapshot->setObjectName( "sliderWaitBeforeSnapshot" );
@@ -1045,12 +1002,6 @@ void QvkMainWindow_wl::slot_frames_Reset()
 void QvkMainWindow_wl::slot_openh264Reset()
 {
     sliderOpenh264->setValue( 23 );
-}
-
-
-void QvkMainWindow_wl::slot_vp8Reset()
-{
-    sliderVp8->setValue( 20 );
 }
 
 
