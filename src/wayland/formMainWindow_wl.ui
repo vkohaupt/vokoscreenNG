@@ -261,7 +261,7 @@
           <item>
            <widget class="QTabWidget" name="tabWidgetScreencast">
             <property name="currentIndex">
-             <number>2</number>
+             <number>0</number>
             </property>
             <property name="iconSize">
              <size>
@@ -672,6 +672,20 @@
                         <widget class="QCheckBox" name="checkBoxSeparatedAudioTracks">
                          <property name="text">
                           <string notr="true">Separated audio tracks</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QToolButton" name="toolButtonSeparatedAudioTracksReset">
+                         <property name="toolTip">
+                          <string>Reset</string>
+                         </property>
+                         <property name="text">
+                          <string notr="true">...</string>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="../screencast.qrc">
+                           <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                          </property>
                         </widget>
                        </item>
@@ -3692,7 +3706,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
