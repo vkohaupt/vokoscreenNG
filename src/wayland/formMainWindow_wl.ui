@@ -1033,9 +1033,6 @@
                          <enum>QFrame::NoFrame</enum>
                         </property>
                         <layout class="QHBoxLayout" name="horizontalLayout_67">
-                         <property name="leftMargin">
-                          <number>6</number>
-                         </property>
                          <property name="topMargin">
                           <number>0</number>
                          </property>
@@ -1094,7 +1091,7 @@
                         </layout>
                        </widget>
                       </item>
-                      <item alignment="Qt::AlignTop">
+                      <item>
                        <widget class="QFrame" name="frameVideoCodecGIF">
                         <property name="frameShape">
                          <enum>QFrame::NoFrame</enum>
@@ -1141,9 +1138,6 @@
                          <enum>QFrame::NoFrame</enum>
                         </property>
                         <layout class="QHBoxLayout" name="horizontalLayout_vp8">
-                         <property name="leftMargin">
-                          <number>6</number>
-                         </property>
                          <property name="topMargin">
                           <number>0</number>
                          </property>
@@ -1192,6 +1186,36 @@
                      </layout>
                     </widget>
                    </item>
+                   <item row="2" column="3">
+                    <layout class="QVBoxLayout" name="verticalLayout_29">
+                     <item>
+                      <widget class="QToolButton" name="help_screencast_videocodec">
+                       <property name="toolTip">
+                        <string>Help</string>
+                       </property>
+                       <property name="text">
+                        <string notr="true">Help</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_11">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeType">
+                        <enum>QSizePolicy::Preferred</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>30</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </item>
                    <item row="1" column="1">
                     <widget class="QComboBox" name="comboBoxFormat">
                      <property name="sizeAdjustPolicy">
@@ -1199,10 +1223,30 @@
                      </property>
                     </widget>
                    </item>
+                   <item row="1" column="3">
+                    <widget class="QToolButton" name="help_screencast_format">
+                     <property name="toolTip">
+                      <string>Help</string>
+                     </property>
+                     <property name="text">
+                      <string notr="true">Help</string>
+                     </property>
+                    </widget>
+                   </item>
                    <item row="1" column="0" alignment="Qt::AlignLeft">
                     <widget class="QLabel" name="labelFormat">
                      <property name="text">
                       <string>Format</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="0" alignment="Qt::AlignLeft">
+                    <widget class="QLabel" name="labelFrames">
+                     <property name="text">
+                      <string>Frames</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1219,7 +1263,30 @@
                      </property>
                     </widget>
                    </item>
-                   <item row="0" column="1" colspan="2">
+                   <item row="0" column="3">
+                    <widget class="QToolButton" name="help_screencast_nomousecursor">
+                     <property name="toolTip">
+                      <string>Help</string>
+                     </property>
+                     <property name="text">
+                      <string notr="true">Help</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="2">
+                    <spacer name="horizontalSpacer_5">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item row="0" column="1">
                     <widget class="QFrame" name="frameFrames">
                      <property name="frameShape">
                       <enum>QFrame::NoFrame</enum>
@@ -1267,30 +1334,6 @@
                         </property>
                        </widget>
                       </item>
-                      <item>
-                       <spacer name="horizontalSpacer_42">
-                        <property name="orientation">
-                         <enum>Qt::Horizontal</enum>
-                        </property>
-                        <property name="sizeHint" stdset="0">
-                         <size>
-                          <width>40</width>
-                          <height>20</height>
-                         </size>
-                        </property>
-                       </spacer>
-                      </item>
-                      <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_23">
-                        <item>
-                         <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
-                          <property name="text">
-                           <string>Do not record mouse cursor</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </item>
                      </layout>
                     </widget>
                    </item>
@@ -1308,57 +1351,23 @@
                      </item>
                     </layout>
                    </item>
-                   <item row="1" column="2">
-                    <spacer name="horizontalSpacer_5">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="0" column="3">
-                    <widget class="QToolButton" name="help_screencast_nomousecursor">
-                     <property name="toolTip">
-                      <string>Help</string>
-                     </property>
-                     <property name="text">
-                      <string notr="true">Help</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="0" alignment="Qt::AlignLeft">
-                    <widget class="QLabel" name="labelFrames">
-                     <property name="text">
-                      <string>Frames</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="3" alignment="Qt::AlignTop">
-                    <widget class="QToolButton" name="help_screencast_videocodec">
-                     <property name="toolTip">
-                      <string>Help</string>
-                     </property>
-                     <property name="text">
-                      <string notr="true">Help</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="3">
-                    <widget class="QToolButton" name="help_screencast_format">
-                     <property name="toolTip">
-                      <string>Help</string>
-                     </property>
-                     <property name="text">
-                      <string notr="true">Help</string>
-                     </property>
+                   <item row="0" column="2">
+                    <widget class="QFrame" name="frame">
+                     <layout class="QHBoxLayout" name="horizontalLayout_3">
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <item>
+                       <widget class="QCheckBox" name="checkBoxMouseCursorOnOff">
+                        <property name="text">
+                         <string>Do not record mouse cursor</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
                     </widget>
                    </item>
                   </layout>
@@ -3706,7 +3715,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
