@@ -236,7 +236,7 @@
          <enum>QTabWidget::West</enum>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab_sidebar_screeancast">
          <attribute name="title">
@@ -261,7 +261,7 @@
           <item>
            <widget class="QTabWidget" name="tabWidgetScreencast">
             <property name="currentIndex">
-             <number>0</number>
+             <number>2</number>
             </property>
             <property name="iconSize">
              <size>
@@ -486,6 +486,9 @@
                       </item>
                       <item row="1" column="3">
                        <widget class="QToolButton" name="toolButtonScreencastAreaReset">
+                        <property name="toolTip">
+                         <string>Reset</string>
+                        </property>
                         <property name="text">
                          <string notr="true"/>
                         </property>
@@ -1459,6 +1462,26 @@
                        </property>
                       </widget>
                      </item>
+                     <item>
+                      <widget class="QToolButton" name="toolButtonVideoPathReset">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>24</height>
+                        </size>
+                       </property>
+                       <property name="toolTip">
+                        <string>Reset</string>
+                       </property>
+                       <property name="text">
+                        <string notr="true">...</string>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="../screencast.qrc">
+                         <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                       </property>
+                      </widget>
+                     </item>
                     </layout>
                    </widget>
                   </item>
@@ -1639,8 +1662,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>98</width>
-                     <height>98</height>
+                     <width>449</width>
+                     <height>366</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayoutAvailable">

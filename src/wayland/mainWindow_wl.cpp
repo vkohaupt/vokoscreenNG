@@ -113,9 +113,11 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
     // Misc
     videoFileSystemWatcher = new QFileSystemWatcher();
-    ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
     connect( ui->toolButtonVideoPath, SIGNAL( clicked(bool) ),        this, SLOT( slot_newVideoPath() ) );
     connect( ui->lineEditVideoPath,   SIGNAL( textChanged(QString) ), this, SLOT( slot_videoFileSystemWatcherSetNewPath() ) );
+    connect( ui->toolButtonVideoPathReset, &QToolButton::clicked, this, [=]() {
+        ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
+    } );
 
     // About
     ui->labelSourcecodeUrl->setText( "<a href='https://github.com/vkohaupt/vokoscreenNG'>" + tr( "Sourcecode" ) + "</a>" );
