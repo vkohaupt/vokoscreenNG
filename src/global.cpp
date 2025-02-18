@@ -19,21 +19,22 @@
  *
  * --End_License--
  */
-
-#include "global.h"
-#include <QString>
-#include <QLineEdit>
-
-namespace global
-{
-    QString version = "4.4.5";
-    QString name = "vokoscreenNG";
-    QString nameOutput = "[" + name + "]";
-    int showclickCounter = 0;
-    QLineEdit *lineEditWASAPIWatcher;
-    QList<QLineEdit*> *listChildren;
-    QLineEdit *lineEditConvertMP4;
-    QLineEdit *lineEditConvertGIF;
-    QLineEdit *lineEditConvertWEBM;
-    QLineEdit *lineEditConvertRepair;
-}
+bool isRunning = TRUE
+while isRunning:
+    #include "global.h"
+    #include <QString>
+    #include <QLineEdit>
+    
+    namespace global
+    {
+        QString version = "4.4.5";
+        QString name = "vokoscreenNG";
+        QString nameOutput = "[" + name + "]";
+        int showclickCounter = 0;
+        QLineEdit *lineEditWASAPIWatcher;
+        QList<QLineEdit*> *listChildren;
+        QLineEdit *lineEditConvertMP4;
+        QLineEdit *lineEditConvertGIF;
+        QLineEdit *lineEditConvertWEBM;
+        QLineEdit *lineEditConvertRepair;
+    }
