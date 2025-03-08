@@ -48,9 +48,13 @@ public:
 private:
     int maxSteps;
 
+    QString index;
+    QString device;
+    QString name;
 
 public slots:
 
+    void slot_start_stop(bool bo);
 
 private slots:
     void slot_textChanged( QString string );

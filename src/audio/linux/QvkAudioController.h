@@ -38,12 +38,13 @@ public:
     virtual ~QvkAudioController();
     void init();
     QvkLevelMeterController *vkLevelMeterController;
+    Ui_formMainWindow *ui;
+
 
 public slots:
 
 
 private:
-    Ui_formMainWindow *ui;
     void getAllDevices();
 
 

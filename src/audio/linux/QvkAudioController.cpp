@@ -101,6 +101,13 @@ void QvkAudioController::getAllDevices()
                 vkLevelMeterController->add_ProgressBar( checkBox, hBoxLayout, name );
                 vkLevelMeterController->set_Text( name );
 
+                QToolButton *toolButton = new QToolButton;
+                toolButton->setCheckable( true );
+                toolButton->setObjectName( "toolButtonOnOffProgressBar-" + index );
+                toolButton->setToolTip( "Index:" + index );
+                toolButton->setIcon( QIcon( ":/pictures/screencast/missing.png" ) );
+                hBoxLayout->addWidget( toolButton );
+                connect( toolButton, SIGNAL( clicked(bool) ), vkLevelMeterController, SLOT( slot_start_stop(bool) ) );
             }
             qDebug().noquote();
 
