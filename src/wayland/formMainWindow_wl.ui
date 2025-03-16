@@ -612,8 +612,8 @@
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>409</width>
-                          <height>116</height>
+                          <width>16</width>
+                          <height>16</height>
                          </rect>
                         </property>
                         <property name="accessibleName">
@@ -1252,7 +1252,7 @@
                      <item>
                       <widget class="QLabel" name="label_16">
                        <property name="text">
-                        <string>H.264</string>
+                        <string notr="true">H.264</string>
                        </property>
                       </widget>
                      </item>
@@ -1276,7 +1276,7 @@
                      <item>
                       <widget class="QLabel" name="label_17">
                        <property name="text">
-                        <string>mkv</string>
+                        <string notr="true">mkv</string>
                        </property>
                       </widget>
                      </item>
@@ -1604,8 +1604,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>449</width>
-                     <height>366</height>
+                     <width>20</width>
+                     <height>98</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -3634,7 +3634,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
