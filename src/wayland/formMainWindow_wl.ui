@@ -1106,30 +1106,7 @@
                        </property>
                       </widget>
                      </item>
-                     <item>
-                      <spacer name="verticalSpacer_11">
-                       <property name="orientation">
-                        <enum>Qt::Vertical</enum>
-                       </property>
-                       <property name="sizeType">
-                        <enum>QSizePolicy::Preferred</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>30</width>
-                         <height>40</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
                     </layout>
-                   </item>
-                   <item row="1" column="1">
-                    <widget class="QComboBox" name="comboBoxFormat">
-                     <property name="sizeAdjustPolicy">
-                      <enum>QComboBox::AdjustToContents</enum>
-                     </property>
-                    </widget>
                    </item>
                    <item row="1" column="3">
                     <widget class="QToolButton" name="help_screencast_format">
@@ -1158,16 +1135,6 @@
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="1" alignment="Qt::AlignTop">
-                    <widget class="QComboBox" name="comboBoxVideoCodec">
-                     <property name="sizeAdjustPolicy">
-                      <enum>QComboBox::AdjustToContents</enum>
-                     </property>
-                     <property name="minimumContentsLength">
-                      <number>14</number>
                      </property>
                     </widget>
                    </item>
@@ -1207,7 +1174,7 @@
                        <number>6</number>
                       </property>
                       <property name="leftMargin">
-                       <number>0</number>
+                       <number>6</number>
                       </property>
                       <property name="topMargin">
                        <number>0</number>
@@ -1245,20 +1212,6 @@
                      </layout>
                     </widget>
                    </item>
-                   <item row="2" column="0">
-                    <layout class="QVBoxLayout" name="verticalLayout_22">
-                     <property name="topMargin">
-                      <number>6</number>
-                     </property>
-                     <item alignment="Qt::AlignTop">
-                      <widget class="QLabel" name="labelVideoCodec">
-                       <property name="text">
-                        <string>Videocodec</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </item>
                    <item row="0" column="2">
                     <widget class="QFrame" name="frame">
                      <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -1276,6 +1229,64 @@
                        </widget>
                       </item>
                      </layout>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <layout class="QVBoxLayout" name="verticalLayout_28">
+                     <property name="leftMargin">
+                      <number>6</number>
+                     </property>
+                     <item>
+                      <widget class="QComboBox" name="comboBoxVideoCodec">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="sizeAdjustPolicy">
+                        <enum>QComboBox::AdjustToContents</enum>
+                       </property>
+                       <property name="minimumContentsLength">
+                        <number>14</number>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="label_16">
+                       <property name="text">
+                        <string>H.264</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="1" column="1">
+                    <layout class="QVBoxLayout" name="verticalLayout_30">
+                     <property name="leftMargin">
+                      <number>6</number>
+                     </property>
+                     <item>
+                      <widget class="QComboBox" name="comboBoxFormat">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
+                       <property name="sizeAdjustPolicy">
+                        <enum>QComboBox::AdjustToContents</enum>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="label_17">
+                       <property name="text">
+                        <string>mkv</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="labelVideoCodec">
+                     <property name="text">
+                      <string>Videocodec</string>
+                     </property>
                     </widget>
                    </item>
                   </layout>
@@ -3623,7 +3634,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
