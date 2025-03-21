@@ -87,6 +87,13 @@
     </message>
 </context>
 <context>
+    <name>QvkHelp_wl</name>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
@@ -752,6 +759,26 @@
     </message>
     <message>
         <source>Seconds wait before recording</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatically</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Convert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Repair</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>webm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GIF</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

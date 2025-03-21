@@ -316,7 +316,7 @@
     </message>
     <message>
         <source>Gray</source>
-        <translation>Cinza</translation>
+        <translation>Cinzento</translation>
     </message>
     <message>
         <source>Black-and-white</source>

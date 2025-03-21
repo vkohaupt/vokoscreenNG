@@ -21,19 +21,19 @@
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Putar ke arah vertikal</translation>
+        <translation>Putar secara vertikal</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Putar ke arah horizontal</translation>
+        <translation>Putar secara horizontal</translation>
     </message>
     <message>
         <source>Invert</source>
-        <translation>Balikan</translation>
+        <translation>Balikkan</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Abu - abu</translation>
+        <translation>Abu-abu</translation>
     </message>
     <message>
         <source>Black-and-white</source>
@@ -59,7 +59,7 @@
     <name>QvkCiscoFinishDialog</name>
     <message>
         <source>The setup was successful.</source>
-        <translation>Persiapan program sukses.</translation>
+        <translation>Persiapan program berhasil.</translation>
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
@@ -169,7 +169,7 @@
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Halaman muka</translation>
+        <translation>Beranda</translation>
     </message>
     <message>
         <source>Translations</source>
@@ -213,7 +213,7 @@
     <name>QvkRegionChoise_wl</name>
     <message>
         <source>Area</source>
-        <translation>Bidangluas</translation>
+        <translation>Area</translation>
     </message>
 </context>
 <context>
@@ -266,7 +266,7 @@
     </message>
     <message>
         <source>Stop</source>
-        <translation>Berhenti</translation>
+        <translation>Hentikan</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -274,7 +274,7 @@
     </message>
     <message>
         <source>Continue</source>
-        <translation>Lanjut</translation>
+        <translation>Lanjutkan</translation>
     </message>
     <message>
         <source>Exit</source>
@@ -535,7 +535,7 @@
     </message>
     <message>
         <source>Screencast</source>
-        <translation>RekamLayar</translation>
+        <translation>Rekam Layar</translation>
     </message>
     <message>
         <source>Player</source>
@@ -559,35 +559,35 @@
     </message>
     <message>
         <source>ON</source>
-        <translation>HIDUPKAN</translation>
+        <translation>HIDUP</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>MATIKAN</translation>
+        <translation>MATI</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
-        <translation>Tombol-pintas umum</translation>
+        <translation>Tombol pintasan umum</translation>
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Tombol pintas yang diterapkan.</translation>
+        <translation>Tombol pintasan yang diterapkan.</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Tombol pintas belum dipasang atau telah dipasang lebih dari sekali.</translation>
+        <translation>Tombol pintasan belum dipasang atau telah dipasang lebih dari sekali.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Apabila telah diterapkan namun tidak bekerja, bisa jadi sedang digunakan oleh program lain.</translation>
+        <translation>Apabila telah diterapkan namun tidak bekerja, kemungkinan sedang digunakan oleh program lain.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Jepret-gambar</translation>
+        <translation>Jepretan</translation>
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Jalursimpan-gambar</translation>
+        <translation>Jalur simpan gambar</translation>
     </message>
     <message>
         <source>Hide this window</source>
@@ -595,7 +595,7 @@
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>detik waktu tunggu prarekam</translation>
+        <translation>Detik waktu tunggu sebelum merekam</translation>
     </message>
     <message>
         <source>Window</source>
@@ -622,11 +622,11 @@
     </message>
     <message>
         <source>ON</source>
-        <translation>HIDUPKAN</translation>
+        <translation>HIDUP</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>MATIKAN</translation>
+        <translation>MATI</translation>
     </message>
     <message>
         <source>Record Time:</source>
@@ -638,7 +638,7 @@
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Ruang bebas diska:</translation>
+        <translation>Ruang bebas pada disk:</translation>
     </message>
     <message>
         <source>Information</source>
@@ -654,15 +654,15 @@
     </message>
     <message>
         <source>Area</source>
-        <translation>Bidangluas</translation>
+        <translation>Area</translation>
     </message>
     <message>
         <source>Videocodec</source>
-        <translation>Kodekvideo</translation>
+        <translation>Pengkodean video</translation>
     </message>
     <message>
         <source>Frames</source>
-        <translation>Frame</translation>
+        <translation>Bingkai</translation>
     </message>
     <message>
         <source>Format</source>
@@ -682,7 +682,7 @@
     </message>
     <message>
         <source>Stop</source>
-        <translation>Berhenti</translation>
+        <translation>Hentikan</translation>
     </message>
     <message>
         <source>Folder</source>
@@ -690,11 +690,11 @@
     </message>
     <message>
         <source>Do not record mouse cursor</source>
-        <translation>Jangan rekam kursor tetikus</translation>
+        <translation>Jangan rekam kursor mouse</translation>
     </message>
     <message>
         <source>Audiocodec</source>
-        <translation>Kodekaudio</translation>
+        <translation>Pengkodean suara</translation>
     </message>
     <message>
         <source>Videopath</source>
@@ -710,11 +710,11 @@
     </message>
     <message>
         <source>Invert</source>
-        <translation>Balikan</translation>
+        <translation>Balikkan</translation>
     </message>
     <message>
         <source>Gray</source>
-        <translation>Abu - abu</translation>
+        <translation>Abu-abu</translation>
     </message>
     <message>
         <source>Black-and-white</source>
@@ -726,11 +726,11 @@
     </message>
     <message>
         <source>Flip vertical</source>
-        <translation>Putar ke arah vertikal</translation>
+        <translation>Putar secara vertikal</translation>
     </message>
     <message>
         <source>Flip horizontal</source>
-        <translation>Putar ke arah horizontal</translation>
+        <translation>Putar secara horizontal</translation>
     </message>
     <message>
         <source>Remove window frame</source>
@@ -772,7 +772,7 @@
     </message>
     <message>
         <source>Stop</source>
-        <translation>Berhenti</translation>
+        <translation>Hentikan</translation>
     </message>
 </context>
 </TS>

@@ -114,7 +114,7 @@
     </message>
     <message>
         <source>The recording is not started, not enough free disk space.</source>
-        <translation>Grabación no iniciada, no tiene espacio en el disco duro</translation>
+        <translation>Grabación no iniciada, no tiene espacio en el disco duro.</translation>
     </message>
     <message>
         <source>The free disk space limit is reached.</source>
@@ -535,7 +535,7 @@
     </message>
     <message>
         <source>Screencast</source>
-        <translation>Grabaciones</translation>
+        <translation>Proyectar Pantalla</translation>
     </message>
     <message>
         <source>Player</source>
@@ -622,7 +622,7 @@
     </message>
     <message>
         <source>ON</source>
-        <translation>Inicio</translation>
+        <translation>Encender</translation>
     </message>
     <message>
         <source>OFF</source>
@@ -698,7 +698,7 @@
     </message>
     <message>
         <source>Videopath</source>
-        <translation>Videopath</translation>
+        <translation>Video Directorio</translation>
     </message>
     <message>
         <source>Countdown</source>
@@ -764,7 +764,7 @@
     <name>playerGST</name>
     <message>
         <source>Play</source>
-        <translation>Play</translation>
+        <translation>Reproducir </translation>
     </message>
     <message>
         <source>Pause</source>
