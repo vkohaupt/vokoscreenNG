@@ -85,6 +85,13 @@
     </message>
 </context>
 <context>
+    <name>QvkHelp_wl</name>
+    <message>
+        <source>Help</source>
+        <translation>Ajuda</translation>
+    </message>
+</context>
+<context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
@@ -751,6 +758,10 @@
     <message>
         <source>Seconds wait before recording</source>
         <translation>Segons d&apos;espera abans de l&apos;enregistrament</translation>
+    </message>
+    <message>
+        <source>Automatically</source>
+        <translation>Automàticament</translation>
     </message>
 </context>
 <context>

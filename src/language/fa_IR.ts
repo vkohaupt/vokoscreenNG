@@ -85,6 +85,13 @@
     </message>
 </context>
 <context>
+    <name>QvkHelp_wl</name>
+    <message>
+        <source>Help</source>
+        <translation>راهنما</translation>
+    </message>
+</context>
+<context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
@@ -753,6 +760,10 @@
     <message>
         <source>Seconds wait before recording</source>
         <translation>تعداد ثانیه‌هایی که باید قبل از شروع ضبط منتظر بمانید </translation>
+    </message>
+    <message>
+        <source>Automatically</source>
+        <translation>خودکار</translation>
     </message>
 </context>
 <context>

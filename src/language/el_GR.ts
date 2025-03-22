@@ -85,6 +85,13 @@
     </message>
 </context>
 <context>
+    <name>QvkHelp_wl</name>
+    <message>
+        <source>Help</source>
+        <translation>Βοήθεια</translation>
+    </message>
+</context>
+<context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
@@ -751,6 +758,10 @@
     <message>
         <source>Seconds wait before recording</source>
         <translation>Δευτερόλεπτα αναμονής πριν την έναρξη της εγγραφής</translation>
+    </message>
+    <message>
+        <source>Automatically</source>
+        <translation>αυτόματα</translation>
     </message>
 </context>
 <context>

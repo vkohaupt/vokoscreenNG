@@ -85,6 +85,13 @@
     </message>
 </context>
 <context>
+    <name>QvkHelp_wl</name>
+    <message>
+        <source>Help</source>
+        <translation>Ohje</translation>
+    </message>
+</context>
+<context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
@@ -751,6 +758,10 @@
     <message>
         <source>Seconds wait before recording</source>
         <translation>Odotusaika ennen tallennusta</translation>
+    </message>
+    <message>
+        <source>Automatically</source>
+        <translation>Automaattisesti</translation>
     </message>
 </context>
 <context>

@@ -85,6 +85,13 @@
     </message>
 </context>
 <context>
+    <name>QvkHelp_wl</name>
+    <message>
+        <source>Help</source>
+        <translation>Көмек</translation>
+    </message>
+</context>
+<context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
@@ -751,6 +758,10 @@
     <message>
         <source>Seconds wait before recording</source>
         <translation>Жазу алдында секунд күтеді</translation>
+    </message>
+    <message>
+        <source>Automatically</source>
+        <translation>Автоматты түрде</translation>
     </message>
 </context>
 <context>

@@ -85,6 +85,13 @@
     </message>
 </context>
 <context>
+    <name>QvkHelp_wl</name>
+    <message>
+        <source>Help</source>
+        <translation>Ayuda</translation>
+    </message>
+</context>
+<context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
@@ -753,6 +760,10 @@ El límite de espacio en disco se ha alcanzado.</translation>
     <message>
         <source>Seconds wait before recording</source>
         <translation>Segundos de espera antes de grabar</translation>
+    </message>
+    <message>
+        <source>Automatically</source>
+        <translation>Automáticamente</translation>
     </message>
 </context>
 <context>

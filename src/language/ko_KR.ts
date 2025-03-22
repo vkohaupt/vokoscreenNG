@@ -85,6 +85,13 @@
     </message>
 </context>
 <context>
+    <name>QvkHelp_wl</name>
+    <message>
+        <source>Help</source>
+        <translation>도움말</translation>
+    </message>
+</context>
+<context>
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
@@ -751,6 +758,10 @@
     <message>
         <source>Seconds wait before recording</source>
         <translation>몇 초 후 녹화 시작</translation>
+    </message>
+    <message>
+        <source>Automatically</source>
+        <translation>자동으로</translation>
     </message>
 </context>
 <context>
