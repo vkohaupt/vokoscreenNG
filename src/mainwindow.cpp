@@ -946,12 +946,15 @@ void QvkMainWindow::closeEvent( QCloseEvent *event )
     qDebug();
     qDebug().noquote() << global::nameOutput << "QvkMainWindow::closeEvent Begin close";
 
+    // Vorerst deaktiviert stürtzt beim speichern ab
+    /*
     QList<QvkLevelMeterController *> list = ui->scrollAreaAudioDevice->findChildren<QvkLevelMeterController *>();
     for ( int i = 0; i < list.count(); i++ ) {
         QvkLevelMeterController *vkLevelMeterController = list.at(i);
         vkLevelMeterController->vkLevelMeter->stop();
         qDebug().noquote() << global::nameOutput << "Stop levelmeter on:" << vkLevelMeterController->objectName();
     }
+    */
 
 #ifdef Q_OS_WIN
     if ( vkCiscoOpenh264Controller->isShowCiscoFinishDialog == false )
@@ -1307,12 +1310,12 @@ void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
 #ifdef Q_OS_UNIX
     if ( ui->radioButtonScreencastFullscreen->isChecked() == true ) {
         int index = ui->comboBoxScreencastScreen->currentIndex();
-        QList<QScreen *> screen = QGuiApplication::screens();
-        int left = static_cast<int>( screen.at( index )->geometry().left() * screen.at( index )->devicePixelRatio() );
-        int top = static_cast<int>( screen.at( index )->geometry().top() * screen.at( index )->devicePixelRatio() );
-
-        vkCountdown->x = left + screen.at( index )->geometry().width() / 2 - ( vkCountdown->Width / 2 );
-        vkCountdown->y = top + screen.at( index )->geometry().height() / 2 - ( vkCountdown->Height / 2 );
+        QList<QScreen *> screenList = QGuiApplication::screens();
+        QScreen *selectedScreen = screenList.at( index );
+        int left = selectedScreen->geometry().left();
+        int top = selectedScreen->geometry().top();
+        vkCountdown->x = left + selectedScreen->geometry().width() / 2 - ( vkCountdown->Width / 2 );
+        vkCountdown->y = top + selectedScreen->geometry().height() / 2 - ( vkCountdown->Height / 2 );
     }
 
     if ( ui->radioButtonScreencastWindow->isChecked() == true ) {
@@ -1323,12 +1326,12 @@ void QvkMainWindow::slot_comboBoxScreencastScreenCountdown( bool )
 
     if ( ui->radioButtonScreencastArea->isChecked() == true ) {
         int index = ui->comboBoxScreencastScreenArea->currentIndex();
-        QList<QScreen *> screen = QGuiApplication::screens();
-        int left = static_cast<int>( screen.at( index )->geometry().left() * screen.at( index )->devicePixelRatio() );
-        int top = static_cast<int>( screen.at( index )->geometry().top() * screen.at( index )->devicePixelRatio() );
-
-        vkCountdown->x = left + screen.at( index )->geometry().width() / 2 - ( vkCountdown->Width / 2 );
-        vkCountdown->y = top + screen.at( index )->geometry().height() / 2 - ( vkCountdown->Height / 2 );
+        QList<QScreen *> screenList = QGuiApplication::screens();
+        QScreen *selectedScreen = screenList.at( index );
+        int left = selectedScreen->geometry().left();
+        int top = selectedScreen->geometry().top();
+        vkCountdown->x = left + selectedScreen->geometry().width() / 2 - ( vkCountdown->Width / 2 );
+        vkCountdown->y = top + selectedScreen->geometry().height() / 2 - ( vkCountdown->Height / 2 );
     }
 #endif
 
