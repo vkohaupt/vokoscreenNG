@@ -36,8 +36,9 @@ public:
   virtual ~QvkRegionChoise();
   int getX();
   int getY();
-  qreal getHeight();
-  qreal getWidth();
+  int getHeight();
+//  qreal getWidth();
+  int getWidth();
   qreal getXRecordArea();
   qreal getYRecordArea();
 

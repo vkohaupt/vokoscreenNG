@@ -1001,9 +1001,16 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
 
 void QvkRegionChoise::printSize( QPainter &painter )
 {
-  QString widthHeigtSize = QString::number( static_cast<int>( getWidth()/screen->devicePixelRatio() ) ) +
+/*
+    QString widthHeigtSize = QString::number( static_cast<int>( getWidth()/screen->devicePixelRatio() ) ) +
                            " x " +
                            QString::number( static_cast<int>( getHeight()/screen->devicePixelRatio() ) );
+*/
+  QString widthHeigtSize = QString::number( static_cast<int>( getWidth() ) ) +
+                           " x " +
+                           QString::number( static_cast<int>( getHeight() ) );
+
+
 
   QFont font;
   font.setPointSize( 14 );
@@ -1576,9 +1583,7 @@ qreal QvkRegionChoise::getYRecordArea()
 }
 
 
-/**
- * Return height from record area
- */
+/*
 qreal QvkRegionChoise::getHeight()
 {
     qreal xReal =   ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * screen->devicePixelRatio();
@@ -1598,11 +1603,19 @@ qreal QvkRegionChoise::getHeight()
 
     return xReal;
 }
-
+*/
 
 /**
- * Return width from record Area
+ * Return height from record area
  */
+int QvkRegionChoise::getHeight()
+{
+    int yInt = ( frame_height - framePenWidth ) * screen->devicePixelRatio();
+    return yInt;
+}
+
+
+/*
 qreal QvkRegionChoise::getWidth()
 {
     qreal xReal = ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * screen->devicePixelRatio();
@@ -1621,6 +1634,16 @@ qreal QvkRegionChoise::getWidth()
 #endif
 
     return xReal;
+}
+*/
+
+/**
+ * Return width from record Area
+ */
+int QvkRegionChoise::getWidth()
+{
+    int xInt = ( frame_Width - framePenWidth ) * screen->devicePixelRatio();
+    return xInt;
 }
 
 
