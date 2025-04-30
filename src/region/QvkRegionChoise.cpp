@@ -1123,9 +1123,9 @@ void QvkRegionChoise::HandleTopLeftSize( QPainter &painter)
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf + 1 ) +
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( static_cast<int>(( frame_X + framePenHalf ) * screen->devicePixelRatio()) ) +
                                              "\n" +
-                                             "y:" + QString::number( frame_Y + framePenHalf + 1 ) );
+                                             "y:" + QString::number( static_cast<int>(( frame_Y + framePenHalf ) * screen->devicePixelRatio()) ) );
 }
 
 
@@ -1174,7 +1174,7 @@ void QvkRegionChoise::HandleTopMiddleSize( QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "y:" + QString::number( frame_Y + framePenHalf + 1 ) );
+    painter.drawText( rect, Qt::AlignCenter, "y:" + QString::number( static_cast<int>(( frame_Y + framePenHalf ) * screen->devicePixelRatio()) ) );
 }
 
 
@@ -1223,9 +1223,9 @@ void QvkRegionChoise::HandleTopRightSize( QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + frame_Width - framePenHalf ) +
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( static_cast<int>(( frame_X + frame_Width - framePenHalf ) * screen->devicePixelRatio() )) +
                                              "\n" +
-                                             "y:" + QString::number( frame_Y + framePenHalf + 1 ) );
+                                             "y:" + QString::number( static_cast<int>((frame_Y + framePenHalf ) * screen->devicePixelRatio()) ) );
 }
 
 
@@ -1274,7 +1274,7 @@ void QvkRegionChoise::HandleRightMiddleSize( QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + frame_Width - framePenHalf) );
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( static_cast<int>( (frame_X + frame_Width - framePenHalf ) * screen->devicePixelRatio()) ) );
 }
 
 
@@ -1324,9 +1324,9 @@ void QvkRegionChoise::HandleBottomRightSize( QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + frame_Width - framePenHalf ) +
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( static_cast<int>( ( frame_X + frame_Width - framePenHalf ) * screen->devicePixelRatio() ) ) +
                                              "\n" +
-                                             "y:" + QString::number( frame_Y + frame_height - framePenHalf ) );
+                                             "y:" + QString::number( static_cast<int>( ( frame_Y + frame_height - framePenHalf ) * screen->devicePixelRatio() ) ) );
 }
 
 
@@ -1376,7 +1376,7 @@ void QvkRegionChoise::HandleBottomMiddleSize(QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "y:" + QString::number( frame_Y + frame_height - framePenHalf ) );
+    painter.drawText( rect, Qt::AlignCenter, "y:" + QString::number( static_cast<int>( ( frame_Y + frame_height - framePenHalf ) * screen->devicePixelRatio() ) ) );
 }
 
 
@@ -1425,9 +1425,9 @@ void QvkRegionChoise::HandleBottomLeftSize( QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf + 1 ) +
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( static_cast<int>( ( frame_X + framePenHalf ) * screen->devicePixelRatio() ) ) +
                                              "\n" +
-                                             "y:" + QString::number( frame_Y + frame_height - framePenHalf ) );
+                                             "y:" + QString::number( static_cast<int>( ( frame_Y + frame_height - framePenHalf ) * screen->devicePixelRatio()) ));
 }
 
 
@@ -1476,7 +1476,7 @@ void QvkRegionChoise::HandleLeftMiddleSize( QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf + 1 ) );
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( static_cast<int>( ( frame_X + framePenHalf ) * screen->devicePixelRatio() ) ) );
 }
 
 
