@@ -1001,16 +1001,9 @@ void QvkRegionChoise::mouseMoveEvent( QMouseEvent *event )
 
 void QvkRegionChoise::printSize( QPainter &painter )
 {
-/*
-    QString widthHeigtSize = QString::number( static_cast<int>( getWidth()/screen->devicePixelRatio() ) ) +
-                           " x " +
-                           QString::number( static_cast<int>( getHeight()/screen->devicePixelRatio() ) );
-*/
   QString widthHeigtSize = QString::number( static_cast<int>( getWidth() ) ) +
                            " x " +
                            QString::number( static_cast<int>( getHeight() ) );
-
-
 
   QFont font;
   font.setPointSize( 14 );
@@ -1583,28 +1576,6 @@ qreal QvkRegionChoise::getYRecordArea()
 }
 
 
-/*
-qreal QvkRegionChoise::getHeight()
-{
-    qreal xReal =   ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * screen->devicePixelRatio();
-    int xInt = static_cast<int>( ( ( frame_Y + framePenWidth/2 ) + ( frame_height - framePenWidth ) ) * screen->devicePixelRatio() );
-
-    if ( xReal > xInt ) {
-        xReal = static_cast<int>( ( frame_height - framePenWidth ) * screen->devicePixelRatio() ) - 1;
-    } else {
-        xReal = static_cast<int>( ( frame_height - framePenWidth ) * screen->devicePixelRatio() );
-    }
-
-#ifdef Q_OS_WIN
-    if ( ( xReal + getYRecordArea() ) == screen->size().height() ) {
-      xReal-=2;
-    }
-#endif
-
-    return xReal;
-}
-*/
-
 /**
  * Return height from record area
  */
@@ -1614,28 +1585,6 @@ int QvkRegionChoise::getHeight()
     return yInt;
 }
 
-
-/*
-qreal QvkRegionChoise::getWidth()
-{
-    qreal xReal = ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * screen->devicePixelRatio();
-    int xInt = static_cast<int>( ( ( frame_X + framePenWidth/2 ) + ( frame_Width - framePenWidth ) ) * screen->devicePixelRatio() );
-
-    if ( xReal > xInt ) {
-        xReal = static_cast<int>( ( frame_Width - framePenWidth ) * screen->devicePixelRatio() ) - 1;
-    } else {
-        xReal = static_cast<int>( ( frame_Width - framePenWidth ) * screen->devicePixelRatio() );
-    }
-
-#ifdef Q_OS_WIN
-    if ( ( xReal + getXRecordArea() ) == screen->size().width() ) {
-      xReal-=2;
-    }
-#endif
-
-    return xReal;
-}
-*/
 
 /**
  * Return width from record Area
