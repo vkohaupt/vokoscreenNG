@@ -912,9 +912,9 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
 
 void QvkRegionChoise_wl::printSize( QPainter &painter )
 {
-    QString widthHeigtSize = QString::number( static_cast<int>( get_WidthRecordArea() / myDevicePixelRatio() ) ) +
+    QString widthHeigtSize = QString::number( static_cast<int>( get_WidthRecordArea() ) ) +
                              " x " +
-                             QString::number( static_cast<int>( get_HeightRecordArea() / myDevicePixelRatio() ) );
+                             QString::number( static_cast<int>( get_HeightRecordArea() ) );
 
     QFont font;
     font.setPointSize( 14 );
@@ -1027,9 +1027,13 @@ void QvkRegionChoise_wl::HandleTopLeftSize( QPainter &painter)
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf + 1 ) +
+/*    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf + 1 ) +
                                                 "\n" +
                                                 "y:" + QString::number( frame_Y + framePenHalf + 1 ) );
+*/
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( static_cast<int>(( frame_X + framePenHalf ) * devicePixelRatio()) ) +
+                                             "\n" +
+                                             "y:" + QString::number( static_cast<int>(( frame_Y + framePenHalf ) * devicePixelRatio()) ) );
 }
 
 
@@ -1078,7 +1082,9 @@ void QvkRegionChoise_wl::HandleTopMiddleSize( QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "y:" + QString::number( frame_Y + framePenHalf + 1 ) );
+//    painter.drawText( rect, Qt::AlignCenter, "y:" + QString::number( frame_Y + framePenHalf + 1 ) );
+    painter.drawText( rect, Qt::AlignCenter, "y:" + QString::number( static_cast<int>(( frame_Y + framePenHalf ) * devicePixelRatio()) ) );
+
 }
 
 
@@ -1127,9 +1133,9 @@ void QvkRegionChoise_wl::HandleTopRightSize( QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + frame_Width - framePenHalf ) +
-                                                "\n" +
-                                                "y:" + QString::number( frame_Y + framePenHalf + 1 ) );
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( static_cast<int>(( frame_X + frame_Width - framePenHalf ) * devicePixelRatio() )) +
+                                             "\n" +
+                                             "y:" + QString::number( static_cast<int>(( frame_Y + framePenHalf ) * devicePixelRatio() )) );
 }
 
 
@@ -1178,7 +1184,7 @@ void QvkRegionChoise_wl::HandleRightMiddleSize( QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + frame_Width - framePenHalf) );
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( static_cast<int>( ( frame_X + frame_Width - framePenHalf )* devicePixelRatio() ) ) );
 }
 
 
@@ -1228,9 +1234,9 @@ void QvkRegionChoise_wl::HandleBottomRightSize( QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + frame_Width - framePenHalf ) +
-                                                "\n" +
-                                                "y:" + QString::number( frame_Y + frame_height - framePenHalf ) );
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( static_cast<int>(( frame_X + frame_Width - framePenHalf ) * devicePixelRatio() )) +
+                                             "\n" +
+                                             "y:" + QString::number( static_cast<int>(( frame_Y + frame_height - framePenHalf ) * devicePixelRatio() )) );
 }
 
 
@@ -1280,7 +1286,7 @@ void QvkRegionChoise_wl::HandleBottomMiddleSize(QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "y:" + QString::number( frame_Y + frame_height - framePenHalf ) );
+    painter.drawText( rect, Qt::AlignCenter, "y:" + QString::number( static_cast<int>(( frame_Y + frame_height - framePenHalf ) * devicePixelRatio() )) );
 }
 
 
@@ -1329,9 +1335,9 @@ void QvkRegionChoise_wl::HandleBottomLeftSize( QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf + 1 ) +
-                                                "\n" +
-                                                "y:" + QString::number( frame_Y + frame_height - framePenHalf ) );
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( static_cast<int>(( frame_X + framePenHalf ) * devicePixelRatio() )) +
+                                             "\n" +
+                                             "y:" + QString::number( static_cast<int>(( frame_Y + frame_height - framePenHalf ) * devicePixelRatio() )) );
 }
 
 
@@ -1380,7 +1386,7 @@ void QvkRegionChoise_wl::HandleLeftMiddleSize( QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf + 1 ) );
+    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( static_cast<int>(( frame_X + framePenHalf ) * devicePixelRatio() )) );
 }
 
 
@@ -1495,7 +1501,7 @@ int QvkRegionChoise_wl::get_YRecordArea()
  */
 int QvkRegionChoise_wl::get_WidthRecordArea()
 {
-    return ( frame_Width - framePenWidth - 1 ) * myDevicePixelRatio();
+    return ( frame_Width - framePenWidth ) * myDevicePixelRatio();
 }
 
 /**
@@ -1503,7 +1509,7 @@ int QvkRegionChoise_wl::get_WidthRecordArea()
  */
 int QvkRegionChoise_wl::get_HeightRecordArea()
 {
-    return ( frame_height - framePenWidth - 1 ) * myDevicePixelRatio();
+    return ( frame_height - framePenWidth ) * myDevicePixelRatio();
 }
 
 
