@@ -166,8 +166,6 @@ void QvkCountdown_wl::paintEvent( QPaintEvent *event )
     painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painter.drawPixmap( QPointF( 0, 0 ), pixmap );
     painter.end();
-
-    setMask( pixmap.mask() );
 }
 
 
