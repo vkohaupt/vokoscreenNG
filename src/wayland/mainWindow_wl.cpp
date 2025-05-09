@@ -92,7 +92,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     } );
     ui->tabWidgetSideBar->tabBar()->hide();
 
-    ui->toolButtonCamera->hide();  // QvkCameraController_wl wurde auch deaktiviert ----------------------------
+//    ui->toolButtonCamera->hide();  // QvkCameraController_wl wurde auch deaktiviert ----------------------------
 
     set_WindowTitle();
     ui->tabWidgetScreencast->setCurrentIndex( 0 );
@@ -143,7 +143,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->line_cisco->hide();
     ui->label_Upate_tab_2->hide();
 
-//    new QvkCameraController_wl( ui ); //------------------------------------------------------------------------
+    new QvkCameraController_wl( ui ); //------------------------------------------------------------------------
     new QvkConvert_mkv_mp4_wl( this, ui );
     new QvkConvert_mkv_gif_wl( this, ui );
     new QvkConvert_mkv_to_webm_wl( this, ui );
@@ -301,6 +301,10 @@ void QvkMainWindow_wl::get_system_info()
             ui->radioButtonScreencastArea->hide();
             ui->frame_area->hide();
             ui->toolButtonScreencastAreaReset->hide();
+            ui->toolButton_area_top->hide();
+            ui->toolButton_area_right->hide();
+            ui->toolButton_area_bottom->hide();
+            ui->toolButton_area_left->hide();
         }
     }
     qDebug().noquote() << global::nameOutput << "Icon-Theme:" << QIcon::themeName();
