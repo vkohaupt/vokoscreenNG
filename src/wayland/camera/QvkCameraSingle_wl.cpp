@@ -63,6 +63,21 @@ QvkCameraSingle_wl::~QvkCameraSingle_wl()
 //#include <gst/wayland/wayland.h>
 void QvkCameraSingle_wl::slot_checkBoxCameraOnOff( bool bo )
 {
+    /*
+    // https://www.phoronix.com/news/Qt-6.5-Wayland-Native-Interface
+    auto waylandApp = qGuiApp->nativeInterface<QNativeInterface::QWaylandApplication>();
+    auto waylandWindow = window->nativeInterface<QNativeInterface::Private::QWaylandWindow>();
+    if (!waylandApp || !waylandWindow) {
+        return;
+    }
+    auto seat = waylandApp->seat();
+    auto surface = waylandWindow->surface();
+    if (!seat || !surface) {
+        return;
+    }
+    // do something with seat and surface
+    */
+
     if ( bo == true ) {
         //        vkCameraWindow_wl = new QvkCameraWindow_wl;
         //        vkCameraWindow_wl.resize(320, 240);
