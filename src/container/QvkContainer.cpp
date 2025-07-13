@@ -97,7 +97,6 @@ QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
 
     Container *MKV = new Container( "matroskamux", "mkv" );
     MKV->add_VideoCodec( "openh264enc", "H.264" );
-    MKV->add_VideoCodec( "vp8enc", "VP8");
 #ifdef Q_OS_UNIX
     if ( isFlatpak == false ) { MKV->add_VideoCodec( "x264enc", "x264"); }
 #endif
@@ -106,11 +105,6 @@ QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
     MKV->add_AudioCodec( "opusenc", "opus" );
     MKV->add_AudioCodec( "lamemp3enc", "mp3" );
 
-    Container *WEBM = new Container( "webmmux", "webm" );
-    WEBM->add_VideoCodec( "vp8enc", "VP8" );
-    WEBM->add_AudioCodec( "vorbisenc", "vorbis" );
-    WEBM->add_AudioCodec( "opusenc", "opus" );
-
     Container *MP4 = new Container( "mp4mux", "mp4" );
     MP4->add_VideoCodec( "openh264enc", "H.264" );
 #ifdef Q_OS_UNIX
@@ -118,15 +112,6 @@ QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
 #endif
     MP4->add_AudioCodec( "lamemp3enc", "mp3" );
     MP4->add_AudioCodec( "opusenc", "opus" );
-
-    Container *MOV = new Container( "qtmux", "mov" );
-    MOV->add_VideoCodec( "openh264enc", "H.264" );
-#ifdef Q_OS_UNIX
-    if ( isFlatpak == false ) { MOV->add_VideoCodec( "x264enc", "x264" ); }
-#endif
-    MOV->add_VideoCodec( "vp8enc", "VP8" );
-    MOV->add_AudioCodec( "lamemp3enc", "mp3" );
-
 
     // Die Abfrage ist nötig damit GIF nicht im Tab erscheint
     // Das Paket gstreamer-plugins-rs enthält den gifencoder und wurde erstmals mit Gstreamer 1.18.0 veröffentlicht
@@ -142,7 +127,6 @@ QvkContainer::QvkContainer(QObject *parent, bool isFlatpak ) : QObject(parent)
         Containers->append( GIF );
     }
     Containers->append( MP4 );
-    Containers->append( WEBM );
 }
 
 
