@@ -130,15 +130,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     sliderOpenh264->setValue( 23 );
     sliderOpenh264->show();
 
-    sliderVp8 = new QvkSpezialSlider( Qt::Horizontal );
-    ui->horizontalLayout_vp8->insertWidget( 1, sliderVp8 );
-    sliderVp8->setObjectName( "sliderVp8" );
-    sliderVp8->setTracking( true );
-    sliderVp8->setMinimum( 0 );
-    sliderVp8->setMaximum( 63 );
-    sliderVp8->setValue( 20 );
-    sliderVp8->show();
-
     sliderLimitOfFreeDiskSpace = new QvkSpezialSlider( Qt::Horizontal );
     ui->horizontalLayout_27->insertWidget( 2, sliderLimitOfFreeDiskSpace );
     sliderLimitOfFreeDiskSpace->setObjectName( "sliderLimitOfFreeDiskSpace" );
@@ -353,7 +344,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this, SLOT( slot_IfStartAudioCodecWidgetsSetEnabled() ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameVideoCodecx264,       SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameVideoCodecOpenh264,   SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameVideoCodecVp8,        SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->checkBoxMouseCursorOnOff,SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameVideoPath,        SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameLimitOfFreeDiskSpace, SLOT( setEnabled(bool) ) );
@@ -388,7 +378,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), this, SLOT( slot_IfStopAudioCodecWidgetsSetDisabled() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->frameVideoCodecx264,      SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->frameVideoCodecOpenh264,  SLOT( setDisabled(bool) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->frameVideoCodecVp8,       SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->checkBoxMouseCursorOnOff,SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->frameVideoPath,        SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->frameLimitOfFreeDiskSpace, SLOT( setDisabled(bool) ) );
@@ -474,7 +463,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->comboBoxVideoCodec, SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_videoCodecChanged(QString) ) );
     connect( ui->toolButtonx264Reset, SIGNAL( clicked(bool) ), this, SLOT( slot_x264Reset() ) );
     connect( ui->toolButtonOpenh264Reset, SIGNAL( clicked(bool) ), this, SLOT( slot_openh264Reset() ) );
-    connect( ui->toolButtonVP8Reset, SIGNAL( clicked(bool) ), this, SLOT( slot_vp8Reset() ) );
 
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_currentTextChangedToGIF(QString) ) );
 
@@ -1403,17 +1391,10 @@ void QvkMainWindow::slot_openh264Reset()
 }
 
 
-void QvkMainWindow::slot_vp8Reset()
-{
-    sliderVp8->setValue( 20 );
-}
-
-
 void QvkMainWindow::slot_videoCodecChanged( QString codec )
 {
     ui->frameVideoCodecx264->setVisible( false );
     ui->frameVideoCodecOpenh264->setVisible( false );
-    ui->frameVideoCodecVp8->setVisible( false );
     ui->frameVideoCodecGIF->setVisible( false );
 
     if ( codec == "x264" ) {
@@ -1422,10 +1403,6 @@ void QvkMainWindow::slot_videoCodecChanged( QString codec )
 
     if ( codec == "H.264" ) {
         ui->frameVideoCodecOpenh264->setVisible( true );
-    }
-
-    if ( codec == "VP8" ) {
-        ui->frameVideoCodecVp8->setVisible( true );
     }
 
     if ( codec == "gif" ) {
@@ -1810,17 +1787,6 @@ QString QvkMainWindow::Vk_get_Videocodec_Encoder()
             value.append( " ! video/x-h264, profile=" ).append( "\"" ).append( ui->comboBox_openh264_profile->currentText().append( "\"" ) );
         }
         value.append( " ! h264parse" );
-    }
-
-    if ( encoder == "vp8enc" ) {
-        QStringList list;
-        list << "vp8enc";
-        list << "min_quantizer=" + QString::number( sliderVp8->value() );
-        list << "max_quantizer=" + QString::number( sliderVp8->value() );
-        list << "cpu-used=" + QString::number( 0 );
-        list << "deadline=1000000";
-        list << "threads=" + QString::number( 0 );
-        value = list.join( " " );
     }
 
     if ( encoder == "gifenc" ) {

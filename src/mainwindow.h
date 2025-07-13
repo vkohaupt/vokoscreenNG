@@ -99,7 +99,6 @@ private:
     QvkSpezialSlider *sliderScreencastCountDown;
     QvkSpezialSlider *sliderX264;
     QvkSpezialSlider *sliderOpenh264;
-    QvkSpezialSlider *sliderVp8;
     QvkSpezialSlider *sliderLimitOfFreeDiskSpace;
     QvkSpezialSlider *sliderShowInSystrayAlternative;
     QvkSpezialSlider *sliderHour;
@@ -202,7 +201,6 @@ private slots:
     void slot_framesReset();
     void slot_x264Reset();
     void slot_openh264Reset();
-    void slot_vp8Reset();
 
     void slot_GstreamerDebugLevel( bool );
     void slot_GstreamerDebugLevelDialog( bool );
