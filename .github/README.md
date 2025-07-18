@@ -70,8 +70,7 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 * gstreamer-plugins-base
   - Audio: vorbis, opus
 * gstreamer-plugins-good
-  - Format: mkv, avi, webm, mp4, mov
-  - Video: vp8
+  - Format: mkv, mp4
   - Audio: flac
 * gstreamer-plugins-bad
   - Video: camera
