@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.github.vkohaupt.vokoscreenNG</id>
+  <name>vokoscreenNG</name>
+  <summary>Easy to use screencast creator</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0-only</project_license>
+  <description>
+    <p>
+      vokoscreenNG is a powerful screencast creator in many languages to record the screen, an area or a window. Recording of audio from multiple sources is supported. With the built-in camera support, you can make your video more personal.
+    </p>
+    <p>X11:</p>
+    <ul>
+      <li>Tools: Countdown, Snapshot, Systray, Magnifying glass, Timer, Showclick, Halo, Darkmode, Global keyboard shortcuts, Build-in Videoplayer, Camera</li>
+      <li>Format: mkv, gif, mp4</li>
+      <li>Video: H.264, gif</li>
+      <li>Audio: mp3, opus</li>
+    </ul>
+    <p>Wayland:</p>
+    <ul>
+      <li>Note: Vokoscreen for Wayland is a standalone development and has nothing to do with X11.</li>
+      <li>Tools: Countdown, Snapshot, Convert, Separated-audio-tracks</li>
+      <li>Format: mkv</li>
+      <li>Video: H.264</li>
+      <li>Audio: mp3, opus</li>
+      <li>After record you can convert into webm, gif or mp4.</li>
+      <li>Minimum run-time requirements: https://github.com/vkohaupt/vokoscreenNG?tab=readme-ov-file#wayland</li>
+    </ul>
+    <p>vokoscreenNG is a modern full replacement for vokoscreen, both written by Volker Kohaupt. The main difference is that vokoscreen uses ffmpeg as base, while vokoscreenNG has been rewritten from scratch and is based in GStreamer.</p>
+  </description>
+  <developer id="com.github.vkohaupt.vokoscreenNG">
+      <name>Volker Kohaupt</name>
+  </developer>
+  <url type="homepage">https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html</url>
+  <url type="bugtracker">https://github.com/vkohaupt/vokoscreenNG/issues</url>
+  <url type="donation">https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html</url>
+  <launchable type="desktop-id">vokoscreenNG.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-0.png</image>
+      <caption>Picture</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-1.png</image>
+      <caption>Picture</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-2.png</image>
+      <caption>Picture</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-3.png</image>
+      <caption>Picture</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-4.png</image>
+      <caption>Picture</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-5.png</image>
+      <caption>Picture</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-6.png</image>
+      <caption>Picture</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-7.png</image>
+      <caption>Picture</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-8.png</image>
+      <caption>Picture</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-9.png</image>
+      <caption>Picture</caption>
+    </screenshot>
+  </screenshots>
+  <content_rating type="oars-1.0" />
+  <releases>
+    <release version="4.6.1" date="2025-07-21"/>
+  </releases>
+</component>
