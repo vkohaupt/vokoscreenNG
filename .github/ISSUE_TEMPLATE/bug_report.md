@@ -30,6 +30,11 @@ To make the log complete, close vokoscreen.
 Paste now or attach log messages from vokoscreenNG log tab.
 (Text files saved as `.txt` or `.log` are accepted by GitHub as attachment uploads. `.zip` archives are also permitted.)
 
+or you find the log under\
+Linux: ~/.config/vokoscreenNG/log\
+Windows: C:/Users/<USER>/AppData/Local/vokoscreenNG/log/
+
+
 **To Reproduce**
 Steps to reproduce the behavior:
 1. Go to '...'
