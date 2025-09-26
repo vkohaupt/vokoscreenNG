@@ -20,6 +20,7 @@
  * --End_License--
  */
 
+#include "QvkLevelMeterController_wl.h"
 #include "QvkPulseAudioWatcher_wl.h"
 #include "QvkPulseAudioDevices_wl.h"
 #include "QvkPulseAudioServer_wl.h"
@@ -30,9 +31,6 @@
 #include <QLabel>
 #include <QPainter>
 #include <QProgressBar>
-
-#include "QvkLevelMeterController_wl.h"
-
 
 /*
  * QvkWatcherPlug monitoring only new or removed Audiodevices.
