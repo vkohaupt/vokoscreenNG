@@ -68,13 +68,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
     supportedImageFormats();
 
-
     ui->comboBoxVideoCodec->setVisible( false );
     ui->comboBoxFormat->setVisible( false );
-
-    // Inhalt von tab Video in Tab 1 verschieben und Tab Video ausblenden
-    ui->verticalLayout_8->insertWidget( 0, ui->widget );
-    ui->tabWidgetScreencast->removeTab(1);
 
     QFile fileCSS( ":/pictures/css/css.qss" );
     fileCSS.open( QFile::ReadOnly | QFile::Text );
