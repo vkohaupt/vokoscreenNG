@@ -31,7 +31,8 @@ Paste now or attach log messages from vokoscreenNG log tab.
 (Text files saved as `.txt` or `.log` are accepted by GitHub as attachment uploads. `.zip` archives are also permitted.)
 
 or you find the log under\
-Linux: ~/.config/vokoscreenNG/log\
+Flatpak: ~/.var/app/com.github.vkohaupt.vokoscreenNG/config/vokoscreenNG/log/\
+Linux: ~/.config/vokoscreenNG/log/\
 Windows: C:/Users/<USER>/AppData/Local/vokoscreenNG/log/
 
 
