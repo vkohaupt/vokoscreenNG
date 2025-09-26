@@ -21,7 +21,7 @@
  */
 
 #include "QvkRegionChoise_wl.h"
-#include "QvkRegionButtonArrow.h"
+#include "QvkRegionButtonArrow_wl.h"
 #include "global.h"
 
 #include <QDebug>
@@ -852,7 +852,7 @@ void QvkRegionChoise_wl::mouseMoveEvent( QMouseEvent *event )
         return;
     }
 
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QRect regionBottomRight( frame_X + frame_Width - buttonArrow.getWithHalf(),
                             frame_Y + frame_height - buttonArrow.getWithHalf(),
                             buttonArrow.getWithHalf()*2,
@@ -984,7 +984,7 @@ void QvkRegionChoise_wl::HandleRecord( QPainter &painter, int x, int y, int star
 
 void QvkRegionChoise_wl::HandleTopLeft( QPainter &painter )
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QColor color;
 
     if ( handlePressed == TopLeft ) {
@@ -1039,7 +1039,7 @@ void QvkRegionChoise_wl::HandleTopLeftSize( QPainter &painter)
 
 void QvkRegionChoise_wl::HandleTopMiddle( QPainter &painter)
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QColor color;
 
     if ( handlePressed == TopMiddle ) {
@@ -1090,7 +1090,7 @@ void QvkRegionChoise_wl::HandleTopMiddleSize( QPainter &painter )
 
 void QvkRegionChoise_wl::HandleTopRight(QPainter &painter)
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QColor color;
 
     if ( handlePressed == TopRight ) {
@@ -1141,7 +1141,7 @@ void QvkRegionChoise_wl::HandleTopRightSize( QPainter &painter )
 
 void QvkRegionChoise_wl::HandleRightMiddle( QPainter &painter )
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QColor color;
 
     if ( handlePressed == RightMiddle ) {
@@ -1190,7 +1190,7 @@ void QvkRegionChoise_wl::HandleRightMiddleSize( QPainter &painter )
 
 void QvkRegionChoise_wl::HandleBottomRight( QPainter &painter )
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QColor color;
 
     if ( handlePressed == BottomRight ) {
@@ -1214,7 +1214,7 @@ void QvkRegionChoise_wl::HandleBottomRight( QPainter &painter )
 
 void QvkRegionChoise_wl::HandleBottomRightSize( QPainter &painter )
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QFont font;
     font.setPointSize( 10 );
     painter.setFont( font );
@@ -1243,7 +1243,7 @@ void QvkRegionChoise_wl::HandleBottomRightSize( QPainter &painter )
 
 void QvkRegionChoise_wl::HandleBottomMiddle( QPainter &painter )
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QColor color;
 
     if ( handlePressed == BottomMiddle ) {
@@ -1292,7 +1292,7 @@ void QvkRegionChoise_wl::HandleBottomMiddleSize(QPainter &painter )
 
 void QvkRegionChoise_wl::HandleBottomLeft( QPainter &painter )
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QColor color;
 
     if ( handlePressed == BottomLeft ) {
@@ -1343,7 +1343,7 @@ void QvkRegionChoise_wl::HandleBottomLeftSize( QPainter &painter )
 
 void QvkRegionChoise_wl::HandleLeftMiddle( QPainter &painter )
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QColor color;
 
     if ( handlePressed == LeftMiddle ) {
@@ -1393,7 +1393,7 @@ void QvkRegionChoise_wl::HandleLeftMiddleSize( QPainter &painter )
 
 void QvkRegionChoise_wl::HandleMiddle( QPainter &painter )
 {
-    QvkRegionButtonArrow buttonArrow;
+    QvkRegionButtonArrow_wl buttonArrow;
     QColor color;
 
     if ( handlePressed == Middle ) {
