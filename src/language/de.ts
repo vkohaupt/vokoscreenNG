@@ -67,7 +67,7 @@
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Have fun with vokoscreenNG</translation>
+        <translation>Viel Spaß mit vokoscreenNG</translation>
     </message>
 </context>
 <context>
@@ -99,7 +99,7 @@
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Bitte installieren Sie einen Dateimanager.</translation>
+        <translation>Bitte installiere einen Dateimanager.</translation>
     </message>
 </context>
 <context>
@@ -110,7 +110,7 @@
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Bitte installieren Sie einen Dateimanager.</translation>
+        <translation>Bitte installiere einen Dateimanager.</translation>
     </message>
 </context>
 <context>
@@ -184,7 +184,7 @@
     </message>
     <message>
         <source>Donate</source>
-        <translation>Spende</translation>
+        <translation>Spenden</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
@@ -242,7 +242,7 @@
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stopp</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -262,7 +262,7 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lupe</translation>
+        <translation>Vergrößerung</translation>
     </message>
 </context>
 <context>
@@ -273,7 +273,7 @@
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stopp</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -293,7 +293,7 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lupe</translation>
+        <translation>Vergrößerung</translation>
     </message>
 </context>
 <context>
@@ -350,7 +350,7 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lupe</translation>
+        <translation>Vergrößerung</translation>
     </message>
     <message>
         <source>Countdown</source>
@@ -362,7 +362,7 @@
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Freier Plattenplatz:</translation>
+        <translation>Freier Speicherplatz:</translation>
     </message>
     <message>
         <source>Information</source>
@@ -466,7 +466,7 @@
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stopp</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -478,7 +478,7 @@
     </message>
     <message>
         <source>Play</source>
-        <translation>Play</translation>
+        <translation>Abspielen</translation>
     </message>
     <message>
         <source>Folder</source>
@@ -550,7 +550,7 @@
     </message>
     <message>
         <source>Log</source>
-        <translation>Log</translation>
+        <translation>Protokoll</translation>
     </message>
     <message>
         <source>Automatically</source>
@@ -645,7 +645,7 @@
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Freier Plattenplatz:</translation>
+        <translation>Freier Speicherplatz:</translation>
     </message>
     <message>
         <source>Information</source>
@@ -689,7 +689,7 @@
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stopp</translation>
     </message>
     <message>
         <source>Folder</source>
@@ -775,7 +775,7 @@
     <name>playerGST</name>
     <message>
         <source>Play</source>
-        <translation>Play</translation>
+        <translation>Abspielen</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -783,7 +783,7 @@
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stopp</translation>
     </message>
 </context>
 </TS>
