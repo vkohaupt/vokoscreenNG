@@ -408,6 +408,7 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->toolButtonOpenh264Reset,       SIGNAL( clicked(bool) ), this, SLOT( slot_openh264Reset() ) );
 
     connect( ui->pushButtonSnapshot, SIGNAL( clicked(bool) ), this, SLOT( slot_snapshotHideBeforeRecording(bool) ) );
+    connect( ui->pushButtonSnapshotOpenFolder, SIGNAL( clicked(bool) ), this, SLOT( slot_path_to_snapshot_folder(bool) ) );
 
     connect( ui->pushButton_log_openfolder, SIGNAL( clicked(bool) ), this, SLOT( slot_log_folder() ) );
 
@@ -461,8 +462,8 @@ void QvkMainWindow_wl::slot_handle_response_snapshot( uint responseCode, QVarian
         QFileInfo fileInfo( url.toLocalFile() );
         path_to_snapshot_folder = fileInfo.absolutePath();
         QString filePath_org = fileInfo.absoluteFilePath();
-        disconnect( ui->pushButtonSnapshotOpenFolder, nullptr, nullptr, nullptr );
-        connect( ui->pushButtonSnapshotOpenFolder, SIGNAL( clicked(bool) ), this, SLOT( slot_path_to_snapshot_folder(bool) ) );
+//        disconnect( ui->pushButtonSnapshotOpenFolder, nullptr, nullptr, nullptr );
+//        connect( ui->pushButtonSnapshotOpenFolder, SIGNAL( clicked(bool) ), this, SLOT( slot_path_to_snapshot_folder(bool) ) );
 
         QPixmap pixmap = QPixmap( filePath_org );
         QString filePath_new = path_to_snapshot_folder +
@@ -493,6 +494,11 @@ void QvkMainWindow_wl::slot_handle_response_snapshot( uint responseCode, QVarian
 void QvkMainWindow_wl::slot_path_to_snapshot_folder( bool bo )
 {
     Q_UNUSED(bo)
+
+    if ( path_to_snapshot_folder == "" ) {
+        path_to_snapshot_folder = QStandardPaths::writableLocation( QStandardPaths::PicturesLocation );
+    }
+
     if ( QDesktopServices::openUrl( QUrl( "file:///" + path_to_snapshot_folder, QUrl::TolerantMode ) ) == false ) {
         QPixmap pixmap( ":/pictures/status/information.png" );
         pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
