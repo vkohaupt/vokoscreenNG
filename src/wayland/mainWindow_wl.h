@@ -8,6 +8,7 @@
 #include "QvkRegionChoise_wl.h"
 #include "QvkCountdown_wl.h"
 #include "QvkHelp_wl.h"
+#include "QvkSystray_wl.h"
 
 #include "QvkSpezialSlider.h"
 #include "QvkLogController.h"
@@ -41,6 +42,7 @@ public:
     QvkSpezialSlider *sliderOpenh264;
     QvkSpezialSlider *sliderWaitBeforeSnapshot;
     QvkHelp_wl *vkHelp;
+    QvkSystray_wl *vkSystray;
 
 
 private:

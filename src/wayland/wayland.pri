@@ -40,3 +40,6 @@ include(convert/convert_wl.pri)
 
 # Help
 include(help/help_wl.pri)
+
+# Systray
+include(systray/systray_wl.pri)

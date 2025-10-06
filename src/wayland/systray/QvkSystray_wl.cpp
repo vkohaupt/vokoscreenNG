@@ -1,0 +1,267 @@
+/* vokoscreenNG - A desktop recorder
+ * Copyright (C) 2017-2022 Volker Kohaupt
+ * 
+ * Author:
+ *      Volker Kohaupt <vkohaupt@volkoh.de>
+ *
+ * This file is free software; you can redistribute it and/or modify
+ * it under the terms of version 2 of the GNU General Public License
+ * as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+ *
+ * --End_License--
+ */
+
+#include "QvkSystray_wl.h"
+#include "global.h"
+#include "QvkSpezialCheckbox.h"
+
+#include <QDebug>
+#include <QDesktopServices>
+
+QvkSystray_wl::QvkSystray_wl(Ui_formMainWindow_wl *ui_mainwindow )
+{
+    ui = ui_mainwindow;
+}
+
+
+QvkSystray_wl::~QvkSystray_wl()
+{
+}
+
+
+void QvkSystray_wl::init()
+{
+    QAction *titleAction = new QAction( this );
+    titleAction->setIcon( QIcon( ":pictures/systray/systray.png" ) );
+    titleAction->setText( global::name + " " + global::version );
+    titleAction->setEnabled( false );
+
+    startAction = new QAction( this );
+    startAction->setIcon( QIcon( ":pictures/player/start.png" ) );
+    startAction->setData( "Start" );
+
+    stopAction = new QAction( this );
+    stopAction->setIcon( QIcon( ":pictures/player/stop.png" ) );
+    stopAction->setData( "Stop" );
+    stopAction->setEnabled( false );
+
+    pauseAction = new QAction( this );
+    pauseAction->setIcon( QIcon( ":pictures/player/pause.png" ) );
+    pauseAction->setData( "Pause" );
+    pauseAction->setEnabled( false );
+
+    continueAction = new QAction( this );
+    continueAction->setIcon( QIcon( ":pictures/player/start.png" ) );
+    continueAction->setData( "Continue" );
+    continueAction->setEnabled( false );
+/*
+    cameraAction = new QAction( this );
+    cameraAction->setIcon( QIcon( ":pictures/systray/camera.png" ) );
+    cameraAction->setData( "Camera" );
+    cameraAction->setCheckable( true );
+    cameraAction->setEnabled( true );
+*/
+    snapshotAction = new QAction( this );
+    snapshotAction->setIcon( QIcon( ":pictures/systray/snapshot.png" ) );
+    snapshotAction->setText( "Snapshot" );
+    snapshotAction->setData( "Snapshot" );
+
+    exitAction = new QAction( this );
+    exitAction->setIcon( QIcon( ":pictures/systray/exit.png" ) );
+    exitAction->setData( "Exit" );
+
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), startAction,    SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), stopAction,     SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), pauseAction,    SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), continueAction, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), continueAction, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this,           SLOT( slot_setRecordIcon(bool) ) );
+
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), startAction,    SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), stopAction,     SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), pauseAction,    SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), continueAction, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), this,           SLOT( slot_setSystrayIcon(bool) ) );
+
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), startAction,    SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), stopAction,     SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), pauseAction,    SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), continueAction, SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), this,           SLOT( slot_setPauseIcon(bool) ) );
+
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), startAction,    SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), stopAction,     SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), pauseAction,    SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), continueAction, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), this,           SLOT( slot_setRecordIcon(bool) ) );
+
+//    connect( ui->checkBoxStartTime, SIGNAL( clicked(bool) ),  startAction, SLOT( setDisabled(bool) ) );
+
+    connect( startAction,    SIGNAL( triggered(bool) ), ui->pushButtonStart,    SLOT( click() ) );
+    connect( stopAction,     SIGNAL( triggered(bool) ), ui->pushButtonStop,     SLOT( click() ) );
+    connect( pauseAction,    SIGNAL( triggered(bool) ), ui->pushButtonPause,    SLOT( click() ) );
+    connect( continueAction, SIGNAL( triggered(bool) ), ui->pushButtonContinue, SLOT( click() ) );
+/*
+    connect( ui->checkBoxCameraOnOff, SIGNAL( toggled(bool) ),   cameraAction,            SLOT( setChecked(bool) ) );
+    connect( cameraAction,            SIGNAL( triggered(bool) ), ui->checkBoxCameraOnOff, SLOT( setChecked(bool) ) );
+    connect( ui->comboBoxCamera,      SIGNAL( currentIndexChanged(int) ), this,           SLOT( slot_currentIndexChanged(int) ) );
+*/
+
+/*
+    QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
+    for ( int i = 0; i < listSpezialCheckbox.count(); i++ ) {
+        QvkSpezialCheckbox *vkSpezialCheckbox = listSpezialCheckbox.at(i);
+        if ( vkSpezialCheckbox->objectName() == "spezialCheckboxShowclick" ) {
+            connect( listSpezialCheckbox.at(i), SIGNAL( signal_clicked(bool) ), showclickAction, SLOT( setChecked(bool) ) );
+            connect( showclickAction,           SIGNAL( triggered(bool) ),      listSpezialCheckbox.at(i), SLOT( slot_click() ) );
+        }
+
+        if ( vkSpezialCheckbox->objectName() == "spezialCheckboxHalo" ) {
+            connect( listSpezialCheckbox.at(i), SIGNAL( signal_clicked(bool) ), haloAction, SLOT( setChecked(bool) ) );
+            connect( haloAction,                SIGNAL( triggered(bool) ),      listSpezialCheckbox.at(i), SLOT( slot_click() ) );
+        }
+    }
+*/
+//    connect( snapshotAction, SIGNAL( triggered(bool) ), ui->pushButtonScreencastSnapshot, SLOT( click() ) );
+
+    menu = new QMenu();
+    menu->addAction( titleAction );
+    menu->addSeparator();
+    menu->addAction( startAction );
+    menu->addAction( stopAction );
+    menu->addAction( pauseAction );
+    menu->addAction( continueAction );
+    menu->addSeparator();
+//    menu->addAction( cameraAction );
+    menu->addAction( snapshotAction );
+    menu->addSeparator();
+    menu->addAction( exitAction );
+
+    setIcon( QIcon( ":/pictures/systray/systray.png" ) );
+    setContextMenu ( menu );
+    setToolTip( global::name );
+    show();
+
+    connect( exitAction, SIGNAL( triggered(bool) ), this, SLOT( slot_hide() ) );
+/*
+    if ( ui->checkBoxCameraOnOff->isEnabled() == false ){
+        cameraAction->setEnabled( false );
+    }
+*/
+    setMenuText();
+}
+
+
+void QvkSystray_wl::setMenuText()
+{
+    startAction->setText( tr( "Start" ) );
+    stopAction->setText( tr( "Stop" ) );
+    pauseAction->setText( tr( "Pause" ) );
+    continueAction->setText( tr( "Continue" ) );
+//    cameraAction->setText( tr( "Camera" ) );
+    exitAction->setText( tr( "Exit" ) );
+}
+
+
+// This slot need in this class
+void QvkSystray_wl::slot_hide()
+{
+    hide();
+    emit signal_SystemtrayIsClose();
+}
+
+
+void QvkSystray_wl::slot_closeSystray()
+{
+    hide();
+}
+
+
+void QvkSystray_wl::slot_setRecordIcon( bool )
+{
+    setIcon( QIcon( ":/pictures/systray/record.png" ) );
+}
+
+
+void QvkSystray_wl::slot_setSystrayIcon( bool )
+{
+    setIcon( QIcon( ":/pictures/systray/systray.png" ) );
+}
+
+
+void QvkSystray_wl::slot_setPauseIcon( bool )
+{
+    setIcon( QIcon( ":/pictures/systray/pause.png" ) );
+}
+
+/*
+void QvkSystray_wl::slot_currentIndexChanged( int index )
+{
+    if ( index > -1 ) {
+        cameraAction->setEnabled( true );
+    } else {
+        cameraAction->setEnabled( false );
+    }
+}
+*/
+
+void QvkSystray_wl::slot_shortcutSystray( QString device, QString shortcut )
+{
+    if ( device == "Start" ) {
+        startAction->setShortcutVisibleInContextMenu( true );
+        startAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ) {
+            startAction->setShortcutVisibleInContextMenu( false );
+        }
+        return;
+    }
+
+    if ( device == "Stop" ) {
+        stopAction->setShortcutVisibleInContextMenu( true );
+        stopAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ) {
+            stopAction->setShortcutVisibleInContextMenu( false );
+        }
+    }
+
+    if ( device == "Pause" ) {
+        pauseAction->setShortcutVisibleInContextMenu( true );
+        pauseAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ) {
+            pauseAction->setShortcutVisibleInContextMenu( false );
+        }
+    }
+
+    if ( device == "Continue" ) {
+        continueAction->setShortcutVisibleInContextMenu( true );
+        continueAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ) {
+            continueAction->setShortcutVisibleInContextMenu( false );
+        }
+    }
+/*
+    if ( device == "camera" ) {
+        cameraAction->setShortcutVisibleInContextMenu( true );
+        cameraAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ) {
+            cameraAction->setShortcutVisibleInContextMenu( false );
+        }
+    }
+*/
+    if ( device == "snapshot" ) {
+        snapshotAction->setShortcutVisibleInContextMenu( true );
+        snapshotAction->setShortcut( QKeySequence::fromString( shortcut ) );
+        if ( shortcut == "None" ) {
+            snapshotAction->setShortcutVisibleInContextMenu( false );
+        }
+    }
+}
