@@ -98,6 +98,7 @@ private Q_SLOTS:
     void slot_videoFileSystemWatcherSetNewPath();
     void slot_log_folder();
     void slot_log_refresh();
+    void slot_folder();
 
     // Snapshot
     void slot_snapshotHideBeforeRecording( bool bo );

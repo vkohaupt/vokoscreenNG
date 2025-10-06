@@ -376,6 +376,8 @@ void QvkMainWindow_wl::set_Connects()
     } );
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), portal_wl,                           SLOT( slot_stopScreenCast() ) );
 
+    connect( ui->pushButtonOpenfolder, SIGNAL( clicked(bool) ), this, SLOT( slot_folder() ) );
+
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled(bool) ) );
     connect( ui->radioButtonScreencastWindow,     SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled(bool) ) );
     connect( ui->radioButtonScreencastArea,       SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setEnabled(bool) ) );
@@ -1112,6 +1114,21 @@ void QvkMainWindow_wl::slot_videoFileSystemWatcherSetNewPath()
         videoFileSystemWatcher->removePaths( videoFileSystemWatcher->directories() );
     }
     videoFileSystemWatcher->addPath( ui->lineEditVideoPath->text() );
+}
+
+
+void QvkMainWindow_wl::slot_folder()
+{
+    if ( QDesktopServices::openUrl( QUrl( "file:///" + ui->lineEditVideoPath->text(), QUrl::TolerantMode ) ) == false ) {
+        QPixmap pixmap( ":/pictures/status/information.png" );
+        pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
+
+        QMessageBox msgBox( this );
+        msgBox.setText( tr( "No filemanager found." ) + "\n" + tr( "Please install a filemanager." ) );
+        msgBox.setWindowTitle( global::name + " " + global::version );
+        msgBox.setIconPixmap( pixmap );
+        msgBox.exec();
+    }
 }
 
 

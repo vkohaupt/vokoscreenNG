@@ -1618,7 +1618,7 @@
                      <x>0</x>
                      <y>0</y>
                      <width>480</width>
-                     <height>395</height>
+                     <height>377</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -2215,6 +2215,18 @@
                </size>
               </property>
              </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButtonOpenfolder">
+              <property name="font">
+               <font>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Folder</string>
+              </property>
+             </widget>
             </item>
            </layout>
           </item>
