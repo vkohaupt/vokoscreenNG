@@ -41,11 +41,11 @@
     </message>
     <message>
         <source>Switch to Window</source>
-        <translation>Auf Fenster umschalten</translation>
+        <translation>Zu Fenster wechseln</translation>
     </message>
     <message>
         <source>Switch to Fullscreen</source>
-        <translation>Auf Vollbild umschalten</translation>
+        <translation>Zum Vollbildmodus wechseln</translation>
     </message>
 </context>
 <context>
@@ -63,11 +63,11 @@
     </message>
     <message>
         <source>Close this window and start vokoscreenNG again.</source>
-        <translation>Schließe das Fenster  und starte vokoscreenNG erneut.</translation>
+        <translation>Schließe das Fenster und starte vokoscreenNG erneut.</translation>
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Have fun with vokoscreenNG</translation>
+        <translation>Viel Spaß mit vokoscreenNG</translation>
     </message>
 </context>
 <context>
@@ -99,7 +99,7 @@
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Bitte installieren Sie einen Dateimanager.</translation>
+        <translation>Bitte installiere einen Dateimanager.</translation>
     </message>
 </context>
 <context>
@@ -110,7 +110,7 @@
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Bitte installieren Sie einen Dateimanager.</translation>
+        <translation>Bitte installiere einen Dateimanager.</translation>
     </message>
 </context>
 <context>
@@ -129,7 +129,7 @@
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Grenze für freien Plattenplatz</translation>
+        <translation>Limit für freien Plattenplatz</translation>
     </message>
     <message>
         <source>Megabyte</source>
@@ -149,7 +149,7 @@
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Bitte installieren Sie einen Dateimanager.</translation>
+        <translation>Bitte installiere einen Dateimanager.</translation>
     </message>
     <message>
         <source>Sourcecode</source>
@@ -192,7 +192,7 @@
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Bitte installieren Sie einen Dateimanager.</translation>
+        <translation>Bitte installiere einen Dateimanager.</translation>
     </message>
 </context>
 <context>
@@ -231,7 +231,7 @@
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>Bitte installieren Sie einen Dateimanager.</translation>
+        <translation>Bitte installiere einen Dateimanager.</translation>
     </message>
 </context>
 <context>
@@ -242,7 +242,7 @@
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stopp</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -262,7 +262,7 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lupe</translation>
+        <translation>Vergrößerung</translation>
     </message>
 </context>
 <context>
@@ -273,7 +273,7 @@
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stopp</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -293,7 +293,7 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lupe</translation>
+        <translation>Vergrößerung</translation>
     </message>
 </context>
 <context>
@@ -350,7 +350,7 @@
     </message>
     <message>
         <source>Magnification</source>
-        <translation>Lupe</translation>
+        <translation>Vergrößerung</translation>
     </message>
     <message>
         <source>Countdown</source>
@@ -362,7 +362,7 @@
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Freier Plattenplatz:</translation>
+        <translation>Freier Speicherplatz:</translation>
     </message>
     <message>
         <source>Information</source>
@@ -430,11 +430,11 @@
     </message>
     <message>
         <source>Limit of free disk space</source>
-        <translation>Grenze für freien Plattenplatz</translation>
+        <translation>Limit für freien Speicherplatz</translation>
     </message>
     <message>
         <source>Show in systray</source>
-        <translation>Im Benachrichtigungsfeld anzeigen</translation>
+        <translation>In der Taskleiste anzeigen</translation>
     </message>
     <message>
         <source>Second wait before recording</source>
@@ -466,7 +466,7 @@
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stopp</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -478,7 +478,7 @@
     </message>
     <message>
         <source>Play</source>
-        <translation>Play</translation>
+        <translation>Abspielen</translation>
     </message>
     <message>
         <source>Folder</source>
@@ -506,7 +506,7 @@
     </message>
     <message>
         <source>Minimized when recording starts</source>
-        <translation>Minimiert beim Start der Aufzeichnung</translation>
+        <translation>Bei Aufnahmebeginn minimiert</translation>
     </message>
     <message>
         <source>Starts minimized</source>
@@ -558,19 +558,19 @@
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Erstelle Bilder von Tabs</translation>
+        <translation>Bilder von Tabs erstellen</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Lizenz Information</translation>
+        <translation>Lizenzinfos</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>Ein</translation>
+        <translation>EIN</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>Aus</translation>
+        <translation>AUS</translation>
     </message>
     <message>
         <source>Global keyboard shortcuts</source>
@@ -578,19 +578,19 @@
     </message>
     <message>
         <source>Assigned shortcut keys.</source>
-        <translation>Zugewiesene Tastenkombinationen.</translation>
+        <translation>Zugewiesene Tastenkombinationen</translation>
     </message>
     <message>
         <source>Keyboard shortcut not assigned or assigned more than once.</source>
-        <translation>Tastaturkürzel nicht zugewiesen oder mehrfach zugewiesen.</translation>
+        <translation>Tastenkombination nicht oder mehrfach zugewiesen.</translation>
     </message>
     <message>
         <source>If it shows assigned but does not work, it is being used by another program.</source>
-        <translation>Wenn es zugewiesen anzeigt, aber nicht funktioniert, wird es von einem anderen Programm verwendet.</translation>
+        <translation>Wenn es als zugewiesen angezeigt wird, aber nicht funktioniert, wird es von einem anderen Programm verwendet.</translation>
     </message>
     <message>
         <source>Snapshot</source>
-        <translation>Snapshot</translation>
+        <translation>Schnappschuss</translation>
     </message>
     <message>
         <source>Imagepath</source>
@@ -621,19 +621,19 @@
     </message>
     <message>
         <source>Create images of tabs </source>
-        <translation>Erstelle Bilder von Tabs</translation>
+        <translation>Bilder von Tabs erstellen</translation>
     </message>
     <message>
         <source>License information</source>
-        <translation>Lizenz Information</translation>
+        <translation>Lizenzinfos</translation>
     </message>
     <message>
         <source>ON</source>
-        <translation>Ein</translation>
+        <translation>EIN</translation>
     </message>
     <message>
         <source>OFF</source>
-        <translation>Aus</translation>
+        <translation>AUS</translation>
     </message>
     <message>
         <source>Record Time:</source>
@@ -645,7 +645,7 @@
     </message>
     <message>
         <source>Free disk space:</source>
-        <translation>Freier Plattenplatz:</translation>
+        <translation>Freier Speicherplatz:</translation>
     </message>
     <message>
         <source>Information</source>
@@ -689,7 +689,7 @@
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stopp</translation>
     </message>
     <message>
         <source>Folder</source>
@@ -757,7 +757,7 @@
     </message>
     <message>
         <source>Seconds wait before recording</source>
-        <translation>Sekunden warten, bevor die Aufnahme beginnt.</translation>
+        <translation>Sekunden vor der Aufnahme warten</translation>
     </message>
     <message>
         <source>Automatically</source>
@@ -768,14 +768,14 @@
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>Copyright und Lizenz von Bildern</translation>
+        <translation>Urheberrecht und Lizenz von Bildern</translation>
     </message>
 </context>
 <context>
     <name>playerGST</name>
     <message>
         <source>Play</source>
-        <translation>Play</translation>
+        <translation>Abspielen</translation>
     </message>
     <message>
         <source>Pause</source>
@@ -783,7 +783,7 @@
     </message>
     <message>
         <source>Stop</source>
-        <translation>Stop</translation>
+        <translation>Stopp</translation>
     </message>
 </context>
 </TS>
