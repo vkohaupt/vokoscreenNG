@@ -763,6 +763,14 @@
         <source>Automatically</source>
         <translation>Avtomatsko</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>Premor</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Nadaljuj</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

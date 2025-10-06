@@ -763,6 +763,14 @@
         <source>Automatically</source>
         <translation>Automatikusan</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>Szüneteltetés</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Folytatás</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

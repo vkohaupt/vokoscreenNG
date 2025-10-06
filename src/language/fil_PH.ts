@@ -763,6 +763,14 @@
         <source>Automatically</source>
         <translation>Kusa</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>Ihinto</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Ipagpatuloy</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

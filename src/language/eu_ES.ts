@@ -763,6 +763,14 @@
         <source>Automatically</source>
         <translation>Automatikoki</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pausatu</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Jarraitu</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -768,6 +768,14 @@
         <source>Automatically</source>
         <translation>Automatski</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pauza</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Nastavi</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

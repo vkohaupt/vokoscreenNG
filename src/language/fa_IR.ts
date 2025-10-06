@@ -765,6 +765,14 @@
         <source>Automatically</source>
         <translation>خودکار</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>وقفه</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>ادامه</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

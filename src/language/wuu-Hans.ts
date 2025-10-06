@@ -763,6 +763,14 @@
         <source>Automatically</source>
         <translation>自动的</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>暂停</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>继续</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

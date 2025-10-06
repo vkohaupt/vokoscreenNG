@@ -763,6 +763,14 @@
         <source>Automatically</source>
         <translation>تلقائيا</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>ألبِث</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>واصل</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

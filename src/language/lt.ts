@@ -763,6 +763,14 @@
         <source>Automatically</source>
         <translation>Automatiškai</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pristabdyti</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Tęsti</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

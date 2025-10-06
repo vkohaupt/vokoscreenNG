@@ -763,6 +763,14 @@
         <source>Automatically</source>
         <translation>αυτόματα</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>Παύση</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Συνέχιση</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

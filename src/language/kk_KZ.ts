@@ -763,6 +763,14 @@
         <source>Automatically</source>
         <translation>Автоматты түрде</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>Кідірту</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Жалғастыру</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

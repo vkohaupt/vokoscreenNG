@@ -763,6 +763,14 @@
         <source>Automatically</source>
         <translation>อัตโนมัติ</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>หยุดชั่วคราว</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>ดำเนินการต่อ</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

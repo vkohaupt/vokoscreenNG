@@ -763,6 +763,14 @@
         <source>Automatically</source>
         <translation>Automatisk</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>Anhollen</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Wiedermaken</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

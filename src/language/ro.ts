@@ -763,6 +763,14 @@
         <source>Automatically</source>
         <translation>Automat</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pauză</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Continuă</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

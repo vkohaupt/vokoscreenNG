@@ -763,6 +763,14 @@
         <source>Automatically</source>
         <translation>Secara otomatis</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>Jeda</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Lanjut</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

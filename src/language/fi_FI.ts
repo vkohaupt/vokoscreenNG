@@ -763,6 +763,14 @@
         <source>Automatically</source>
         <translation>Automaattisesti</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>Tauko</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Jatka</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

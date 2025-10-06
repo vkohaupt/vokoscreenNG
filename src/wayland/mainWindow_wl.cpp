@@ -693,6 +693,7 @@ void QvkMainWindow_wl::slot_pre_start( QString vk_fd, QString vk_path )
             ui->frameVideoPath->setEnabled( true );
             ui->frame_video->setEnabled( true );
             ui->frame_audio->setEnabled( true );
+            ui->frame_3->setEnabled( true );
 
             portal_wl->slot_stopScreenCast();
         }

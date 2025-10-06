@@ -763,6 +763,14 @@
         <source>Automatically</source>
         <translation>自動的に</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>一時停止</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>持続する</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

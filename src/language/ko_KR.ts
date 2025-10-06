@@ -763,6 +763,14 @@
         <source>Automatically</source>
         <translation>자동으로</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>일시정지</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>계속하기</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

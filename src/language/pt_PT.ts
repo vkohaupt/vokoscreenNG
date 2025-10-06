@@ -763,6 +763,14 @@
         <source>Automatically</source>
         <translation>Automaticamente</translation>
     </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pausa</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Continuar</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
