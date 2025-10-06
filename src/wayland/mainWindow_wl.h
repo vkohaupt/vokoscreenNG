@@ -99,6 +99,8 @@ private Q_SLOTS:
     void slot_log_folder();
     void slot_log_refresh();
     void slot_folder();
+    void slot_Pause();
+    void slot_Continue();
 
     // Snapshot
     void slot_snapshotHideBeforeRecording( bool bo );

@@ -361,6 +361,7 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), this,                                SLOT( slot_stop() ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->pushButtonStop,                  SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->pushButtonStart,                 SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->pushButtonPause,                 SLOT( setEnabled(bool) ) );// neu------
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->radioButtonScreencastFullscreen, SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->radioButtonScreencastWindow,     SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->radioButtonScreencastArea,       SLOT( setDisabled(bool) ) );
@@ -375,6 +376,19 @@ void QvkMainWindow_wl::set_Connects()
         };
     } );
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), portal_wl,                           SLOT( slot_stopScreenCast() ) );
+
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), this,                   SLOT( slot_Pause() ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), ui->pushButtonPause,    SLOT( hide() ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), ui->pushButtonContinue, SLOT( show() ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), ui->pushButtonStop,     SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), ui->pushButtonContinue, SLOT( setDisabled(bool) ) );
+
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), this,                   SLOT( slot_Continue() ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), ui->pushButtonContinue, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), ui->pushButtonContinue, SLOT( hide() ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), ui->pushButtonPause,    SLOT( show() ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), ui->pushButtonStop,     SLOT( setDisabled(bool) ) );
+    ui->pushButtonContinue->hide();
 
     connect( ui->pushButtonOpenfolder, SIGNAL( clicked(bool) ), this, SLOT( slot_folder() ) );
 
@@ -760,6 +774,7 @@ GstBusSyncReply QvkMainWindow_wl::call_bus_message( GstBus *bus, GstMessage *mes
 void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 {
     ui->pushButtonStop->setEnabled( true );
+    ui->pushButtonPause->setEnabled( true ); // Neu----------------------------------------------------------------
 
     QThread::msleep( static_cast<unsigned long>( sliderSecondWaitBeforeRecording->value()) * 1000 );
     qDebug().noquote() << global::nameOutput << "SecondWaitBeforeRecording:" << sliderSecondWaitBeforeRecording->value();
@@ -1146,5 +1161,43 @@ void QvkMainWindow_wl::slot_log_folder()
         msgBox.setWindowTitle( global::name + " " + global::version );
         msgBox.setIconPixmap( pixmap );
         msgBox.exec();
+    }
+}
+
+
+void QvkMainWindow_wl::slot_Pause()
+{
+    if ( ui->pushButtonStart->isEnabled() == false ) {
+        qDebug().noquote() << global::nameOutput << "Pause was clicked";
+        GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PAUSED );
+        if ( ret == GST_STATE_CHANGE_FAILURE )   { qDebug().noquote() << global::nameOutput << "Pause was clicked" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
+        if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug().noquote() << global::nameOutput << "Pause was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
+        if ( ret == GST_STATE_CHANGE_ASYNC )     { qDebug().noquote() << global::nameOutput << "Pause was clicked" << "GST_STATE_CHANGE_ASYNC" << "Returncode =" << ret;   }   // 2
+        if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "Pause was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
+
+        /* wait until it's up and running or failed */
+        if (gst_element_get_state (pipeline, NULL, NULL, -1) == GST_STATE_CHANGE_FAILURE) {
+          g_error ("Failed to go into PAUSED state");
+        }
+
+    }
+}
+
+
+void QvkMainWindow_wl::slot_Continue()
+{
+    if ( ( ui->pushButtonStart->isEnabled() == false ) and ( ui->pushButtonContinue->isEnabled() == true ) ) {
+        GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
+        if ( ret == GST_STATE_CHANGE_FAILURE )   { qDebug().noquote() << global::nameOutput << "Continue was clicked" << "GST_STATE_CHANGE_FAILURE" << "Returncode =" << ret;   } // 0
+        if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug().noquote() << global::nameOutput << "Continue was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
+        if ( ret == GST_STATE_CHANGE_ASYNC )     { qDebug().noquote() << global::nameOutput << "Continue was clicked" << "GST_STATE_CHANGE_ASYNC" << "Returncode =" << ret;   }   // 2
+        if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "Continue was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
+
+        /* wait until it's up and running or failed */
+        if (gst_element_get_state (pipeline, NULL, NULL, -1) == GST_STATE_CHANGE_FAILURE) {
+          g_error ("Failed to go into PLAYING state");
+        } else {
+            qDebug().noquote() << global::nameOutput << "Continue was clicked";
+        }
     }
 }
