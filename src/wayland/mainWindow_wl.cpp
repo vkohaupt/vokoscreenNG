@@ -361,7 +361,7 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), this,                                SLOT( slot_stop() ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->pushButtonStop,                  SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->pushButtonStart,                 SLOT( setDisabled(bool) ) );
-    connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->pushButtonPause,                 SLOT( setEnabled(bool) ) );// neu------
+    connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->pushButtonPause,                 SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->radioButtonScreencastFullscreen, SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->radioButtonScreencastWindow,     SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->radioButtonScreencastArea,       SLOT( setDisabled(bool) ) );
@@ -462,8 +462,6 @@ void QvkMainWindow_wl::slot_handle_response_snapshot( uint responseCode, QVarian
         QFileInfo fileInfo( url.toLocalFile() );
         path_to_snapshot_folder = fileInfo.absolutePath();
         QString filePath_org = fileInfo.absoluteFilePath();
-//        disconnect( ui->pushButtonSnapshotOpenFolder, nullptr, nullptr, nullptr );
-//        connect( ui->pushButtonSnapshotOpenFolder, SIGNAL( clicked(bool) ), this, SLOT( slot_path_to_snapshot_folder(bool) ) );
 
         QPixmap pixmap = QPixmap( filePath_org );
         QString filePath_new = path_to_snapshot_folder +
@@ -780,7 +778,7 @@ GstBusSyncReply QvkMainWindow_wl::call_bus_message( GstBus *bus, GstMessage *mes
 void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
 {
     ui->pushButtonStop->setEnabled( true );
-    ui->pushButtonPause->setEnabled( true ); // Neu----------------------------------------------------------------
+    ui->pushButtonPause->setEnabled( true );
 
     QThread::msleep( static_cast<unsigned long>( sliderSecondWaitBeforeRecording->value()) * 1000 );
     qDebug().noquote() << global::nameOutput << "SecondWaitBeforeRecording:" << sliderSecondWaitBeforeRecording->value();
