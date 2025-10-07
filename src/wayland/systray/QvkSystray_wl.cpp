@@ -104,8 +104,6 @@ void QvkSystray_wl::init()
     connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), continueAction, SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), this,           SLOT( slot_setRecordIcon(bool) ) );
 
-//    connect( ui->checkBoxStartTime, SIGNAL( clicked(bool) ),  startAction, SLOT( setDisabled(bool) ) );
-
     connect( startAction,    SIGNAL( triggered(bool) ), ui->pushButtonStart,    SLOT( click() ) );
     connect( stopAction,     SIGNAL( triggered(bool) ), ui->pushButtonStop,     SLOT( click() ) );
     connect( pauseAction,    SIGNAL( triggered(bool) ), ui->pushButtonPause,    SLOT( click() ) );
@@ -115,23 +113,7 @@ void QvkSystray_wl::init()
     connect( cameraAction,            SIGNAL( triggered(bool) ), ui->checkBoxCameraOnOff, SLOT( setChecked(bool) ) );
     connect( ui->comboBoxCamera,      SIGNAL( currentIndexChanged(int) ), this,           SLOT( slot_currentIndexChanged(int) ) );
 */
-
-/*
-    QList<QvkSpezialCheckbox *> listSpezialCheckbox = ui->centralWidget->findChildren<QvkSpezialCheckbox *>();
-    for ( int i = 0; i < listSpezialCheckbox.count(); i++ ) {
-        QvkSpezialCheckbox *vkSpezialCheckbox = listSpezialCheckbox.at(i);
-        if ( vkSpezialCheckbox->objectName() == "spezialCheckboxShowclick" ) {
-            connect( listSpezialCheckbox.at(i), SIGNAL( signal_clicked(bool) ), showclickAction, SLOT( setChecked(bool) ) );
-            connect( showclickAction,           SIGNAL( triggered(bool) ),      listSpezialCheckbox.at(i), SLOT( slot_click() ) );
-        }
-
-        if ( vkSpezialCheckbox->objectName() == "spezialCheckboxHalo" ) {
-            connect( listSpezialCheckbox.at(i), SIGNAL( signal_clicked(bool) ), haloAction, SLOT( setChecked(bool) ) );
-            connect( haloAction,                SIGNAL( triggered(bool) ),      listSpezialCheckbox.at(i), SLOT( slot_click() ) );
-        }
-    }
-*/
-//    connect( snapshotAction, SIGNAL( triggered(bool) ), ui->pushButtonScreencastSnapshot, SLOT( click() ) );
+    connect( snapshotAction, SIGNAL( triggered(bool) ), ui->pushButtonSnapshot, SLOT( click() ) );
 
     menu = new QMenu();
     menu->addAction( titleAction );
