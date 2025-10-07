@@ -217,6 +217,7 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
     ui->pushButtonStop->click();
     vkRegionChoise_wl->close();
     vkSettings.saveAll( ui, this );
+    vkSystray->deleteLater();
 
     qDebug().noquote() << global::nameOutput << "QvkMainWindow_wl::closeEvent End close";
 }
