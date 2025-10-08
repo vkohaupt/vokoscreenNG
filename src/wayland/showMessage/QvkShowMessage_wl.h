@@ -41,6 +41,7 @@ public:
     void set_StatusIcon( QString m_statusIcon );
     void set_Image( QString m_image );
     void set_timeOut( qreal value );
+    void set_folderPath( QString text );
 
 
 public slots:
@@ -59,6 +60,8 @@ private:
     qreal timeOut = 10000;
     int margin = 10; // Abstand zum Bildschirmrand
     bool isOverCloseButton = false;
+    QString folderPath;
+    bool isOverUrl = false;
 
 private slots:
     void slot_durationButton();

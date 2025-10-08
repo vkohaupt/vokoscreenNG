@@ -61,7 +61,7 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
 
     // Begin Pixmap window. Hier wird alles gezeichnet und zum Schluß ins painterPixmap übertragen
     drawWindowWidth = 300;
-    drawWindowHeight = 180;
+    drawWindowHeight = 130 + 24 ; // Inhalt Fenster + titelLineHeight
     QPixmap windowPixmap( drawWindowWidth, drawWindowHeight );
     QPainter painterWindowPixmap;
     painterWindowPixmap.begin( &windowPixmap );
@@ -110,15 +110,36 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     painterCloseButton.drawLine(  0, -6, 0, 6 ); // Vertikal
     painterWindowPixmap.drawPixmap( drawWindowWidth-titelLineHeight, 0, pixmapCloseButton );
     painterCloseButton.end();
+
+
+
+
+    // Url für Ordner Bilder
+    QPixmap pixmapUrl( drawWindowWidth - 60, 20 );
+    pixmapUrl.fill( Qt::transparent);
+    QPainter painterUrl;
+    painterUrl.begin( &pixmapUrl );
+    int fontSize = 11;
+    QFont font;
+    font.setPointSize( fontSize );
+    font.setUnderline( true );
+    painterUrl.setFont( font );
+    painterUrl.setPen( Qt::blue );
+    painterUrl.drawText( 30, 16, folderPath );
+    painterUrl.end();
+    painterWindowPixmap.drawPixmap( 30, 30, pixmapUrl );
+
+
+
     QPixmap statusPixmap( statusIcon );
-    statusPixmap = statusPixmap.scaled( 64, 64, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-    painterWindowPixmap.drawPixmap( 10, (drawWindowHeight-titelLineHeight)/2 + titelLineHeight - 64/2, statusPixmap );
+    statusPixmap = statusPixmap.scaled( 48, 48, Qt::KeepAspectRatio, Qt::SmoothTransformation );
+    painterWindowPixmap.drawPixmap( 10, (drawWindowHeight-titelLineHeight)/2 + titelLineHeight - 48/2, statusPixmap );
 
     QPixmap imagePixmap( image );
-    imagePixmap = imagePixmap.scaled( 350, 100, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-    painterWindowPixmap.drawPixmap( 100, 70, imagePixmap );
+    imagePixmap = imagePixmap.scaled( 300, 80, Qt::KeepAspectRatio, Qt::SmoothTransformation );
+    painterWindowPixmap.drawPixmap( 100, (drawWindowHeight-titelLineHeight)/2 + titelLineHeight - 48/2, imagePixmap );
 
-    painterWindowPixmap.drawPixmap( drawWindowWidth-20, 30, pixmapDuration );
+    painterWindowPixmap.drawPixmap( drawWindowWidth-30, 30, pixmapDuration );
 
     painterWindowPixmap.end();
     // End Pixmap window.
@@ -145,6 +166,12 @@ void QvkShowMessage_wl::mouseMoveEvent( QMouseEvent *event )
     } else {
         isOverCloseButton = false;
     }
+
+    if ( QRect( width()-margin-20, height()-margin-drawWindowHeight, 20, 20 ).contains( event->position().toPoint() ) == true ) {
+        isOverUrl = true;
+    } else {
+        isOverUrl = false;
+    }
 }
 
 
@@ -152,9 +179,11 @@ void QvkShowMessage_wl::leaveEvent( QEvent *event )
 {
     Q_UNUSED(event)
     isOverCloseButton = false;
+    isOverUrl = false;
 }
 
-
+#include<QDesktopServices>
+#include<QStandardPaths>
 void QvkShowMessage_wl::mouseReleaseEvent( QMouseEvent *event )
 {
     Q_UNUSED(event)
@@ -162,6 +191,17 @@ void QvkShowMessage_wl::mouseReleaseEvent( QMouseEvent *event )
         timer->stop();
         close();
     }
+
+    if ( isOverUrl == true ) {
+        const QString path = "file:///" + folderPath;
+        QDesktopServices::openUrl( QUrl( path, QUrl::TolerantMode) );
+    }
+}
+
+
+void QvkShowMessage_wl::set_folderPath( QString text )
+{
+    folderPath = text;
 }
 
 
