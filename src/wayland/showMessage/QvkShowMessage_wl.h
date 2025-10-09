@@ -23,13 +23,13 @@
 #ifndef QVKSHOWMESSAGE_WL_H
 #define QVKSHOWMESSAGE_WL_H
 
-#include <QWidget>
-#include <QPainter>
-#include <QPaintEvent>
-#include <QMouseEvent>
 #include <QDialog>
 #include <QTimer>
 #include <QPixmap>
+#include <QSize>
+#include <QPaintEvent>
+#include <QEvent>
+#include <QMouseEvent>
 
 class QvkShowMessage_wl: public QDialog
 {

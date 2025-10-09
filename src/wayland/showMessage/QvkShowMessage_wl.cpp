@@ -23,14 +23,21 @@
 #include "QvkShowMessage_wl.h"
 
 #include <QTimer>
-#include <QGuiApplication>
 #include <QScreen>
-#include <QIcon>
 #include <QDebug>
 #include <QMouseEvent>
-#include <QDialogButtonBox>
-#include <QPushButton>
 #include <QPixmap>
+#include <QDesktopServices>
+#include <QStandardPaths>
+#include <QEvent>
+#include <QPainter>
+#include <QPaintEvent>
+#include <QBrush>
+#include <QPen>
+#include <QColor>
+#include <QRect>
+#include <QRectF>
+#include <QFont>
 
 QvkShowMessage_wl::QvkShowMessage_wl()
 {
@@ -171,8 +178,11 @@ void QvkShowMessage_wl::mouseMoveEvent( QMouseEvent *event )
     int m_height = pixmapUrlSize.height();
     if ( QRect( m_x, m_y, m_with, m_height ).contains( event->position().toPoint() ) == true ) {
         isOverUrl = true;
+        QCursor cursor( Qt::PointingHandCursor );
+        setCursor( cursor );
     } else {
         isOverUrl = false;
+        unsetCursor();
     }
 }
 
@@ -184,8 +194,7 @@ void QvkShowMessage_wl::leaveEvent( QEvent *event )
     isOverUrl = false;
 }
 
-#include<QDesktopServices>
-#include<QStandardPaths>
+
 void QvkShowMessage_wl::mouseReleaseEvent( QMouseEvent *event )
 {
     Q_UNUSED(event)
