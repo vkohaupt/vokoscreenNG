@@ -59,8 +59,6 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     painterPixmap.setRenderHint( QPainter::Antialiasing, true );
     painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
 
-    int titelLineHeight = 24;
-
     // Begin Pixmap window. Hier wird alles gezeichnet und zum Schluß ins painterPixmap übertragen
     drawWindowWidth = 300;
     drawWindowHeight = 130 + titelLineHeight ; // Inhalt Fenster + titelLineHeight
@@ -112,25 +110,21 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     painterWindowPixmap.drawPixmap( drawWindowWidth-titelLineHeight, 0, pixmapCloseButton );
     painterCloseButton.end();
 
-
-
-
     // Url für Ordner Bilder
     QPixmap pixmapUrl( drawWindowWidth - 60, 20 );
-    pixmapUrl.fill( Qt::transparent);
+    pixmapUrl.fill( Qt::transparent );
+    pixmapUrlSize = pixmapUrl.size();
     QPainter painterUrl;
     painterUrl.begin( &pixmapUrl );
-    int fontSize = 11;
-    QFont font;
-    font.setPointSize( fontSize );
-    font.setUnderline( true );
-    painterUrl.setFont( font );
-    painterUrl.setPen( Qt::blue );
-    painterUrl.drawText( 30, 16, folderPath );
+      int fontSize = 11;
+      QFont font;
+      font.setPointSize( fontSize );
+      font.setUnderline( true );
+      painterUrl.setFont( font );
+      painterUrl.setPen( Qt::blue );
+      painterUrl.drawText( 30, 16, folderPath );
     painterUrl.end();
-    painterWindowPixmap.drawPixmap( 70, 30, pixmapUrl );
-
-
+    painterWindowPixmap.drawPixmap( 30, 30, pixmapUrl );
 
     QPixmap statusPixmap( statusIcon );
     int statusPixmapSize = 48;
@@ -163,13 +157,19 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
 
 void QvkShowMessage_wl::mouseMoveEvent( QMouseEvent *event )
 {
+    // Closebutton
     if ( QRect( width()-marginScreenEdge-20, height()-marginScreenEdge-drawWindowHeight, 20, 20 ).contains( event->position().toPoint() ) == true ) {
         isOverCloseButton = true;
     } else {
         isOverCloseButton = false;
     }
 
-    if ( QRect( width()-marginScreenEdge-20, height()-marginScreenEdge-drawWindowHeight, 20, 20 ).contains( event->position().toPoint() ) == true ) {
+    // Path to Folder
+    int m_x = width()-marginScreenEdge-drawWindowWidth+(drawWindowWidth-pixmapUrlSize.width())/2;
+    int m_y = height()-marginScreenEdge-drawWindowHeight+titelLineHeight+6;
+    int m_with = pixmapUrlSize.width();
+    int m_height = pixmapUrlSize.height();
+    if ( QRect( m_x, m_y, m_with, m_height ).contains( event->position().toPoint() ) == true ) {
         isOverUrl = true;
     } else {
         isOverUrl = false;

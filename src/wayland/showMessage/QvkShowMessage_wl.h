@@ -62,6 +62,8 @@ private:
     bool isOverCloseButton = false;
     QString folderPath;
     bool isOverUrl = false;
+    QSize pixmapUrlSize;
+    int titelLineHeight = 24;
 
 private slots:
     void slot_durationButton();
