@@ -58,7 +58,7 @@ private:
     QPixmap pixmapDuration;
     qreal timerInterval = 100;
     qreal timeOut = 10000;
-    int margin = 10; // Abstand zum Bildschirmrand
+    int marginScreenEdge = 10; // Abstand zum Bildschirmrand
     bool isOverCloseButton = false;
     QString folderPath;
     bool isOverUrl = false;

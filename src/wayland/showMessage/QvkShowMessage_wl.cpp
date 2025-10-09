@@ -59,9 +59,11 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     painterPixmap.setRenderHint( QPainter::Antialiasing, true );
     painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
 
+    int titelLineHeight = 24;
+
     // Begin Pixmap window. Hier wird alles gezeichnet und zum Schluß ins painterPixmap übertragen
     drawWindowWidth = 300;
-    drawWindowHeight = 130 + 24 ; // Inhalt Fenster + titelLineHeight
+    drawWindowHeight = 130 + titelLineHeight ; // Inhalt Fenster + titelLineHeight
     QPixmap windowPixmap( drawWindowWidth, drawWindowHeight );
     QPainter painterWindowPixmap;
     painterWindowPixmap.begin( &windowPixmap );
@@ -80,7 +82,6 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     // Titelzeile
     brush.setColor( Qt::lightGray );
     brush.setStyle( Qt::SolidPattern );
-    int titelLineHeight = 24;
     painterWindowPixmap.fillRect( 0, 0, drawWindowWidth, titelLineHeight, brush );
     QPixmap logoPixmap( ":/pictures/logo/logo.png" );
     logoPixmap = logoPixmap.scaled( 22, 22, Qt::KeepAspectRatio, Qt::SmoothTransformation );
@@ -127,25 +128,26 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     painterUrl.setPen( Qt::blue );
     painterUrl.drawText( 30, 16, folderPath );
     painterUrl.end();
-    painterWindowPixmap.drawPixmap( 30, 30, pixmapUrl );
+    painterWindowPixmap.drawPixmap( 70, 30, pixmapUrl );
 
 
 
     QPixmap statusPixmap( statusIcon );
-    statusPixmap = statusPixmap.scaled( 48, 48, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-    painterWindowPixmap.drawPixmap( 10, (drawWindowHeight-titelLineHeight)/2 + titelLineHeight - 48/2, statusPixmap );
+    int statusPixmapSize = 48;
+    statusPixmap = statusPixmap.scaled( statusPixmapSize, statusPixmapSize, Qt::KeepAspectRatio, Qt::SmoothTransformation );
+    painterWindowPixmap.drawPixmap( 20, (drawWindowHeight-titelLineHeight)/2 + titelLineHeight - statusPixmapSize/2, statusPixmap );
 
     QPixmap imagePixmap( image );
     imagePixmap = imagePixmap.scaled( 300, 80, Qt::KeepAspectRatio, Qt::SmoothTransformation );
-    painterWindowPixmap.drawPixmap( 100, (drawWindowHeight-titelLineHeight)/2 + titelLineHeight - 48/2, imagePixmap );
+    painterWindowPixmap.drawPixmap( 100, (drawWindowHeight-titelLineHeight)/2 + titelLineHeight - statusPixmapSize/2, imagePixmap );
 
-    painterWindowPixmap.drawPixmap( drawWindowWidth-30, 30, pixmapDuration );
+    painterWindowPixmap.drawPixmap( drawWindowWidth-pixmapDuration.size().width()-6, titelLineHeight+6, pixmapDuration );
 
     painterWindowPixmap.end();
     // End Pixmap window.
 
     // Nun wird das fertige Fenster übertragen
-    painterPixmap.drawPixmap( width()-drawWindowWidth-margin, height()-drawWindowHeight-margin, windowPixmap );
+    painterPixmap.drawPixmap( width()-drawWindowWidth-marginScreenEdge, height()-drawWindowHeight-marginScreenEdge, windowPixmap );
     painterPixmap.end();
 
     QPainter painter;
@@ -161,13 +163,13 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
 
 void QvkShowMessage_wl::mouseMoveEvent( QMouseEvent *event )
 {
-    if ( QRect( width()-margin-20, height()-margin-drawWindowHeight, 20, 20 ).contains( event->position().toPoint() ) == true ) {
+    if ( QRect( width()-marginScreenEdge-20, height()-marginScreenEdge-drawWindowHeight, 20, 20 ).contains( event->position().toPoint() ) == true ) {
         isOverCloseButton = true;
     } else {
         isOverCloseButton = false;
     }
 
-    if ( QRect( width()-margin-20, height()-margin-drawWindowHeight, 20, 20 ).contains( event->position().toPoint() ) == true ) {
+    if ( QRect( width()-marginScreenEdge-20, height()-marginScreenEdge-drawWindowHeight, 20, 20 ).contains( event->position().toPoint() ) == true ) {
         isOverUrl = true;
     } else {
         isOverUrl = false;
