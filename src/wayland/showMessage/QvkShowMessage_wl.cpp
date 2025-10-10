@@ -129,7 +129,10 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
       font.setUnderline( true );
       painterUrl.setFont( font );
       painterUrl.setPen( Qt::blue );
-      painterUrl.drawText( 30, 16, folderPath );
+      QString folder = tr( "Folder" );
+      QFontMetrics fontMetrics( font );
+      int textWidth = fontMetrics.horizontalAdvance( folder );
+      painterUrl.drawText( ( pixmapUrlSize.width()-textWidth )/2, 16, folder );
     painterUrl.end();
     painterWindowPixmap.drawPixmap( 30, 30, pixmapUrl );
 
