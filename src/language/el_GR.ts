@@ -224,6 +224,13 @@
     </message>
 </context>
 <context>
+    <name>QvkShowMessage_wl</name>
+    <message>
+        <source>Folder</source>
+        <translation>Φάκελος</translation>
+    </message>
+</context>
+<context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
@@ -294,6 +301,29 @@
     <message>
         <source>Magnification</source>
         <translation>Μεγένθυση</translation>
+    </message>
+</context>
+<context>
+    <name>QvkSystray_wl</name>
+    <message>
+        <source>Start</source>
+        <translation>Έναρξη</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Διακοπή</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Παύση</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Συνέχιση</translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation>Έξοδος</translation>
     </message>
 </context>
 <context>

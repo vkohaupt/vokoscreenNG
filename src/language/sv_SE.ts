@@ -224,6 +224,13 @@
     </message>
 </context>
 <context>
+    <name>QvkShowMessage_wl</name>
+    <message>
+        <source>Folder</source>
+        <translation>Mapp</translation>
+    </message>
+</context>
+<context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
@@ -294,6 +301,29 @@
     <message>
         <source>Magnification</source>
         <translation>Förstoringsglas</translation>
+    </message>
+</context>
+<context>
+    <name>QvkSystray_wl</name>
+    <message>
+        <source>Start</source>
+        <translation>Starta</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Stoppa</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Pausa</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Fortsätt</translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation>Avsluta</translation>
     </message>
 </context>
 <context>

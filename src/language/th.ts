@@ -224,6 +224,13 @@
     </message>
 </context>
 <context>
+    <name>QvkShowMessage_wl</name>
+    <message>
+        <source>Folder</source>
+        <translation>โฟลเดอร์</translation>
+    </message>
+</context>
+<context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
@@ -294,6 +301,29 @@
     <message>
         <source>Magnification</source>
         <translation>อัตราขยาย</translation>
+    </message>
+</context>
+<context>
+    <name>QvkSystray_wl</name>
+    <message>
+        <source>Start</source>
+        <translation>เริ่ม</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>หยุด</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>หยุดชั่วคราว</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>ดำเนินการต่อ</translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation>ออก</translation>
     </message>
 </context>
 <context>

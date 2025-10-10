@@ -226,6 +226,13 @@
     </message>
 </context>
 <context>
+    <name>QvkShowMessage_wl</name>
+    <message>
+        <source>Folder</source>
+        <translation>پوشه</translation>
+    </message>
+</context>
+<context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
@@ -296,6 +303,29 @@
     <message>
         <source>Magnification</source>
         <translation>بزرگنمایی</translation>
+    </message>
+</context>
+<context>
+    <name>QvkSystray_wl</name>
+    <message>
+        <source>Start</source>
+        <translation>شروع</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>پایان</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>وقفه</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>ادامه</translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation>خروج</translation>
     </message>
 </context>
 <context>

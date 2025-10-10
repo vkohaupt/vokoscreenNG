@@ -224,6 +224,13 @@
     </message>
 </context>
 <context>
+    <name>QvkShowMessage_wl</name>
+    <message>
+        <source>Folder</source>
+        <translation>Қалта</translation>
+    </message>
+</context>
+<context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
@@ -294,6 +301,29 @@
     <message>
         <source>Magnification</source>
         <translation>Үлкейту</translation>
+    </message>
+</context>
+<context>
+    <name>QvkSystray_wl</name>
+    <message>
+        <source>Start</source>
+        <translation>Бастау</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Тоқтату</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Кідірту</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Жалғастыру</translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation>Шығу</translation>
     </message>
 </context>
 <context>

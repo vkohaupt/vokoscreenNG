@@ -224,6 +224,13 @@
     </message>
 </context>
 <context>
+    <name>QvkShowMessage_wl</name>
+    <message>
+        <source>Folder</source>
+        <translation>Mappa</translation>
+    </message>
+</context>
+<context>
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
@@ -294,6 +301,29 @@
     <message>
         <source>Magnification</source>
         <translation>Nagyítás</translation>
+    </message>
+</context>
+<context>
+    <name>QvkSystray_wl</name>
+    <message>
+        <source>Start</source>
+        <translation>Indítás</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Megállítás</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>Szüneteltetés</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation>Folytatás</translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation>Kilépés</translation>
     </message>
 </context>
 <context>
