@@ -61,7 +61,6 @@ public slots:
 private slots:
     void slot_hide();
     void slot_setRecordIcon( bool );
-//    void slot_setSystrayIcon( bool );
     void slot_setPauseIcon( bool );
 //    void slot_currentIndexChanged( int index );
 
