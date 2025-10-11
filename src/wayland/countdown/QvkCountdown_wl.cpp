@@ -23,14 +23,22 @@
 #include "QvkCountdown_wl.h"
 
 #include <QTimer>
-#include <QGuiApplication>
-#include <QScreen>
-#include <QIcon>
-#include <QDebug>
-#include <QMouseEvent>
 #include <QDialogButtonBox>
+#include <QList>
 #include <QPushButton>
+#include <QDialog>
+#include <QCloseEvent>
+#include <QPaintEvent>
 #include <QPixmap>
+#include <QPainter>
+#include <QPen>
+#include <QBrush>
+#include <QPoint>
+#include <QFont>
+#include <QFontMetrics>
+#include <QColor>
+#include <QPointF>
+#include <QMouseEvent>
 
 QvkCountdown_wl::QvkCountdown_wl()
 {

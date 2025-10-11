@@ -23,11 +23,11 @@
 #ifndef QVKCOUNTDOWN_WL_H
 #define QVKCOUNTDOWN_WL_H
 
-#include <QWidget>
-#include <QPainter>
+#include <QDialog>
+#include <QTimer>
+#include <QRectF>
 #include <QPaintEvent>
 #include <QMouseEvent>
-#include <QDialog>
 #include <QCloseEvent>
 
 class QvkCountdown_wl: public QDialog
