@@ -28,6 +28,7 @@
 #include <QObject>
 #include <QSystemTrayIcon>
 #include <QMenu>
+#include <QAction>
 
 class QvkSystray_wl: public QSystemTrayIcon
 {

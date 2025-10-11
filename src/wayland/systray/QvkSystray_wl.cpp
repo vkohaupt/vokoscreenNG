@@ -25,7 +25,9 @@
 #include "QvkSpezialCheckbox.h"
 
 #include <QDebug>
-#include <QDesktopServices>
+#include <QAction>
+#include <QMenu>
+#include <QIcon>
 
 QvkSystray_wl::QvkSystray_wl(Ui_formMainWindow_wl *ui_mainwindow )
 {
