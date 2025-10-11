@@ -54,17 +54,24 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *
     for ( int i = 0; i < listToolButton.count(); i++ ) {
         // We found a setting, then we want set or not.
         QToolButton *toolButton = listToolButton.at(i);
+        // We have no settings-file(first start after install) but this object we want set as default.
+        if ( ( toolButton->objectName() == ui_mainwindow->toolButtonScreencast->objectName() ) and
+            ( settings.value( toolButton->objectName(), true ).toBool() == true ) ) {
+            toolButton->click();
+            continue;
+        }
+
+        if ( ( toolButton->objectName() == ui_mainwindow->toolButtonSnapshot->objectName() ) or
+             ( toolButton->objectName() == ui_mainwindow->toolButtonConvert->objectName() ) or
+             ( toolButton->objectName() == ui_mainwindow->toolButtonCamera->objectName() ) or
+             ( toolButton->objectName() == ui_mainwindow->toolButtonLog->objectName() )
+             ) {
+            ui_mainwindow->toolButtonScreencast->click();
+            continue;
+        }
+
         if ( settings.value( toolButton->objectName(), false ).toBool() == true ) {
-            // Toolbutton on Sidebar not clicked
-            if ( ( toolButton->objectName() == ui_mainwindow->toolButtonScreencast->objectName() ) or
-                 ( toolButton->objectName() == ui_mainwindow->toolButtonSnapshot->objectName() ) or
-                 ( toolButton->objectName() == ui_mainwindow->toolButtonCamera->objectName() ) or
-                 ( toolButton->objectName() == ui_mainwindow->toolButtonLog->objectName() )
-                 ) {
-                // do nothing
-            } else {
-                toolButton->click();
-            }
+            toolButton->click();
         }
     }
 

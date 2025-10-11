@@ -175,9 +175,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
     vkSettings.readAll( ui, this );
 
-    // Beim Start wird immer der selbe Tab geöffnet
-    ui->toolButtonScreencast->click();
-
     ui->widgetLanguageAndHelp->setVisible( false );
  }
 
