@@ -166,20 +166,18 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         }
     }
 
-    vkSettings.readAll( ui, this );
-
-    connect( ui->pushButton_log_refresh, SIGNAL( clicked(bool) ), this, SLOT( slot_log_refresh() ) );
-
-    // Beim Start wird immer der selbe Tab geöffnet
-    ui->toolButtonScreencast->click();
-
-    ui->widgetLanguageAndHelp->setVisible( false );
-
     vkSystray = new QvkSystray_wl( ui );
     if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
         vkSystray->init();
         connect( ui->checkBoxShowInSystray, SIGNAL( clicked(bool) ), vkSystray, SLOT( setVisible(bool) ) );
     }
+
+    vkSettings.readAll( ui, this );
+
+    // Beim Start wird immer der selbe Tab geöffnet
+    ui->toolButtonScreencast->click();
+
+    ui->widgetLanguageAndHelp->setVisible( false );
  }
 
 
@@ -310,9 +308,9 @@ void QvkMainWindow_wl::get_system_info()
         }
     }
     if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
-        qDebug().noquote() << global::nameOutput << "Systray: Is supported";
+        qDebug().noquote() << global::nameOutput << "Systray: Supported";
     } else {
-        qDebug().noquote() << global::nameOutput << "Systray: Is not supported";
+        qDebug().noquote() << global::nameOutput << "Systray: Not supported";
     }
     qDebug().noquote() << global::nameOutput << "Icon-Theme:" << QIcon::themeName();
     qDebug().noquote() << global::nameOutput << "Styles:" << QStyleFactory::keys();
@@ -423,9 +421,9 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonSnapshotOpenFolder, SIGNAL( clicked(bool) ), this, SLOT( slot_path_to_snapshot_folder(bool) ) );
 
     connect( ui->pushButton_log_openfolder, SIGNAL( clicked(bool) ), this, SLOT( slot_log_folder() ) );
+    connect( ui->pushButton_log_refresh,    SIGNAL( clicked(bool) ), this, SLOT( slot_log_refresh() ) );
 
     connect( ui->comboBoxVideoCodec, SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_videoCodecChanged(QString) ) );
-
 }
 
 
