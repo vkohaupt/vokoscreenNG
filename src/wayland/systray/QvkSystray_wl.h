@@ -25,10 +25,9 @@
 
 #include "ui_formMainWindow_wl.h"
 
-#include <QObject>
 #include <QSystemTrayIcon>
-#include <QMenu>
 #include <QAction>
+#include <QMenu>
 
 class QvkSystray_wl: public QSystemTrayIcon
 {
