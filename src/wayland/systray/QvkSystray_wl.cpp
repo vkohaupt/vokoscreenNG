@@ -83,7 +83,6 @@ void QvkSystray_wl::init()
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), stopAction,     SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), pauseAction,    SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), continueAction, SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), continueAction, SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this,           SLOT( slot_setRecordIcon(bool) ) );
 
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), startAction,    SLOT( setDisabled(bool) ) );
