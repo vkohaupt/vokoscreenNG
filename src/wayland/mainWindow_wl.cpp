@@ -309,6 +309,11 @@ void QvkMainWindow_wl::get_system_info()
             ui->toolButton_area_left->hide();
         }
     }
+    if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
+        qDebug().noquote() << global::nameOutput << "Systray: Is supported";
+    } else {
+        qDebug().noquote() << global::nameOutput << "Systray: Is not supported";
+    }
     qDebug().noquote() << global::nameOutput << "Icon-Theme:" << QIcon::themeName();
     qDebug().noquote() << global::nameOutput << "Styles:" << QStyleFactory::keys();
     qDebug().noquote() << global::nameOutput << "Qt-PluginsPath:     " << QLibraryInfo::path( QLibraryInfo::PluginsPath );
