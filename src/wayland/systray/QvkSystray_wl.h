@@ -38,28 +38,30 @@ public:
     virtual ~QvkSystray_wl();
     void init();
     QAction *startAction;
-    void setMenuText();
-
-    
-public slots:
-    void slot_closeSystray();
-
-
-private:
-    Ui_formMainWindow_wl *ui;
-    QMenu *menu;
     QAction *stopAction;
     QAction *pauseAction;
     QAction *continueAction;
+    void setMenuText();
+
+    
+private:
+    Ui_formMainWindow_wl *ui;
+    QMenu *menu;
+
     QAction *exitAction;
 //    QAction *cameraAction;
     QAction *snapshotAction;
 
 
+public slots:
+    void slot_closeSystray();
+    void slot_setSystrayIcon( bool );
+
+
 private slots:
     void slot_hide();
     void slot_setRecordIcon( bool );
-    void slot_setSystrayIcon( bool );
+//    void slot_setSystrayIcon( bool );
     void slot_setPauseIcon( bool );
 //    void slot_currentIndexChanged( int index );
 
