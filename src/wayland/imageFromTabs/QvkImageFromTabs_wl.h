@@ -27,6 +27,7 @@
 #include "mainWindow_wl.h"
 
 #include <QWindow>
+#include <QTimer>
 
 class QvkImageFromTabs_wl : public QWindow
 {

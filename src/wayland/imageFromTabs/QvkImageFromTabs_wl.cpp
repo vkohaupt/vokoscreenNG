@@ -23,19 +23,18 @@
 #include "global.h"
 #include "QvkImageFromTabs_wl.h"
 
-#include <QScreen>
-#include <QGuiApplication>
-#include <QDebug>
-#include <QStandardPaths>
-#include <QPushButton>
 #include <QTimer>
-#include <QThread>
-#include <QMessageBox>
-#include <QDesktopServices>
-#include <QBitmap>
-#include <QColor>
+#include <QPixmap>
+#include <QOverload>
+#include <QRect>
 #include <QPainter>
 #include <QPainterPath>
+#include <QRectF>
+#include <QFont>
+#include <QFontMetrics>
+#include <QStandardPaths>
+#include <QDesktopServices>
+#include <QMessageBox>
 
 QvkImageFromTabs_wl::QvkImageFromTabs_wl( QvkMainWindow_wl *parent )
 {

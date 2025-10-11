@@ -25,7 +25,11 @@
 #include <QTimer>
 #include <QTime>
 #include <QStorageInfo>
-#include <QDebug>
+#include <QList>
+#include <QCheckBox>
+#include <QDir>
+#include <QStringList>
+#include <QFileInfo>
 
 QvkInformation_wl::QvkInformation_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMainWindow_wl *ui_mainwindow )
 {

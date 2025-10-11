@@ -28,6 +28,7 @@
 #include "mainWindow_wl.h"
 
 #include <QWidget>
+#include <QTimer>
 
 class QvkInformation_wl: public QWidget
 {
