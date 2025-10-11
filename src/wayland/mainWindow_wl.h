@@ -14,11 +14,11 @@
 #include "QvkLogController.h"
 
 #include <QMainWindow>
+#include <QWidget>
 #include <QTranslator>
+#include <QStringList>
 #include <QFileSystemWatcher>
-#include <QScreen>
-#include <QThread>
-#include <QTime>
+#include <QCloseEvent>
 
 #include <gst/gst.h>
 

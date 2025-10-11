@@ -25,9 +25,15 @@
 #include "QvkFileDialog.h"
 
 #include <QDebug>
-#include <QStandardPaths>
-#include <QMessageBox>
+#include <QLineEdit>
+#include <QPalette>
+#include <QColor>
 #include <QTimer>
+#include <QStringList>
+#include <QStandardPaths>
+#include <QDialog>
+#include <QByteArray>
+#include <QMessageBox>
 
 QString convert_video_codec_mp4;
 QString convert_audio_codec_mp4;

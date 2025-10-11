@@ -27,6 +27,8 @@
 #include "mainWindow_wl.h"
 
 #include <QWidget>
+#include <QPalette>
+#include <QTimer>
 
 class QvkConvert_mkv_to_webm_wl: public QWidget
 {

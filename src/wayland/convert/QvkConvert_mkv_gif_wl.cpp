@@ -25,7 +25,14 @@
 #include "QvkFileDialog.h"
 
 #include <QDebug>
+#include <QLineEdit>
+#include <QPalette>
+#include <QColor>
+#include <QTimer>
+#include <QStringList>
 #include <QStandardPaths>
+#include <QDialog>
+#include <QByteArray>
 #include <QMessageBox>
 
 QString convert_video_codec_gif;

@@ -25,9 +25,16 @@
 #include "QvkFileDialog.h"
 
 #include <QDebug>
+#include <QLineEdit>
+#include <QPalette>
+#include <QColor>
+#include <QTimer>
+#include <QPixmap>
+#include <QPainter>
+#include <QStringList>
 #include <QStandardPaths>
 #include <QMessageBox>
-#include <QTimer>
+#include <QThread>
 
 QString convert_video_codec_webm;
 QString convert_audio_codec_webm;
