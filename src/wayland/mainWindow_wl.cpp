@@ -169,7 +169,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     vkSystray = new QvkSystray_wl( ui );
     if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
         vkSystray->init();
-        connect( ui->checkBoxShowInSystray, SIGNAL( clicked(bool) ), vkSystray, SLOT( setVisible(bool) ) );
+        connect( ui->checkBoxShowInSystray, SIGNAL( clicked(bool) ),              vkSystray, SLOT( setVisible(bool) ) );
+        connect( vkSystray,                 SIGNAL( signal_SystemtrayIsClose() ), this,      SLOT( close() ) );
     }
 
     vkSettings.readAll( ui, this );
