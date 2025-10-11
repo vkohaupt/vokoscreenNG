@@ -23,6 +23,14 @@
 #include "QvkSettings_wl.h"
 #include "global.h"
 
+#include <QSettings>
+#include <QList>
+#include <QToolButton>
+#include <QRadioButton>
+#include <QCheckBox>
+#include <QSlider>
+#include <QComboBox>
+#include <QLineEdit>
 #include <QStandardPaths>
 
 QvkSettings_wl::QvkSettings_wl()
