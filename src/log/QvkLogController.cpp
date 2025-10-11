@@ -20,14 +20,16 @@
  * --End_License--
  */
 
+#include <QFile>
 #include <QMessageLogContext>
 #include <QString>
-#include <QStandardPaths>
-#include <QDateTime>
-#include <QDir>
+#include <QTime>
 #include <QByteArray>
+#include <QIODevice>
 #include <QTextStream>
-#include <QFile>
+#include <QDateTime>
+#include <QStandardPaths>
+#include <QDir>
 
 #include <global.h>
 #include "QvkLogController.h"
