@@ -175,23 +175,11 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
     ui->widgetLanguageAndHelp->setVisible( false );
 
-
-
     vkSystray = new QvkSystray_wl( ui );
     if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
         vkSystray->init();
-        connect( vkSystray,                 SIGNAL( signal_SystemtrayIsClose() ),              this,      SLOT( close() ) );
-//        connect( ui->checkBoxShowInSystray, SIGNAL( clicked(bool) ),                           vkSystray, SLOT( setVisible(bool) ) );
-//        connect( vkGlobalShortcut,          SIGNAL( signal_shortcutSystray(QString,QString) ), vkSystray, SLOT( slot_shortcutSystray(QString,QString) ) );
-//        ui->frameShowInSystrayAlternative->hide();
-//        ui->toolButtonShowInSystrayAlternativeReset->hide();
-    } else {
-//        connect( ui->checkBoxShowInSystrayAlternative, SIGNAL( clicked(bool) ), vkSystrayAlternative, SLOT( setVisible(bool) ) );
-//        connect( vkGlobalShortcut,          SIGNAL( signal_shortcutSystray(QString,QString) ), vkSystrayAlternative, SLOT( slot_shortcutSystray(QString,QString) ) );
-//        ui->frameShowInSystray->hide();
+        connect( ui->checkBoxShowInSystray, SIGNAL( clicked(bool) ), vkSystray, SLOT( setVisible(bool) ) );
     }
-
-
  }
 
 
