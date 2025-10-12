@@ -161,6 +161,7 @@ void QvkShowMessage::showMessage( QString text )
     timer->start();
 
     show();
+    setVisible(true);
 }
 
 
