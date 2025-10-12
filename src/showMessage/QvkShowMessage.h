@@ -24,11 +24,14 @@
 #define QVKSHOWMESSAGE_H
 
 #include <QWidget>
-#include <QLabel>
+#include <QImage>
+#include <QIcon>
 #include <QCloseEvent>
-#include <QMouseEvent>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QLabel>
+#include <QScreen>
+#include <QTimer>
 
 class QvkShowMessage : public QWidget
 {
