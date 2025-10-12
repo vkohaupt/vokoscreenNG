@@ -3,6 +3,8 @@
 #define QVKFILEDIALOG_H
 
 #include <QFileDialog>
+#include <QWidget>
+#include <QObject>
 #include <QEvent>
 
 class QvkFileDialog : public QFileDialog

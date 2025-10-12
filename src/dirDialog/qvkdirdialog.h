@@ -1,11 +1,12 @@
 #ifndef QVKDIRDIALOG_H
 #define QVKDIRDIALOG_H
 
-#include <QDialog>
-#include <QModelIndex>
-#include <QFileSystemModel>
-
 #include <QFileDialog>
+#include <QWidget>
+#include <QDialog>
+#include <QStringList>
+#include <QFileSystemModel>
+#include <QModelIndex>
 
 #ifdef Q_OS_WIN
 namespace Ui {

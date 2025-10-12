@@ -2,16 +2,16 @@
 #include "ui_qvkdirdialog.h"
 
 #include <QDebug>
-#include <QFileSystemModel>
-#include <QTreeView>
-#include <QStandardItem>
-#include <QFileInfo>
+#include <QWidget>
+#include <QFileDialog>
 #include <QStandardPaths>
-#include <QListView>
+#include <QDialog>
+#include <QFileSystemModel>
+#include <QDir>
 #include <QList>
 #include <QAbstractButton>
-
-#include <QFileDialog>
+#include <QModelIndex>
+#include <QStandardPaths>
 
 #ifdef Q_OS_WIN
 QvkDirDialog::QvkDirDialog( QWidget *parent )
@@ -46,7 +46,8 @@ QvkDirDialog::QvkDirDialog(QWidget *parent) : QDialog(parent), ui(new Ui::QvkDir
     ui->treeView->setColumnWidth( 0, 500 );
     QList<QAbstractButton *> list = ui->buttonBox->buttons();
     for ( int i = 0; i < list.count(); i++ ) {
-        list.at(i)->setIcon( QIcon() );
+        QAbstractButton *abstractButton = list.at(i);
+        abstractButton->setIcon( QIcon() );
     }
 
     QModelIndex index = fileSystemModel->index( QStandardPaths::writableLocation( QStandardPaths::HomeLocation ) );
