@@ -23,6 +23,7 @@
 #include "QvkGlobalMouse.h"
 
 #include <QDebug>
+#include <QTimer>
 
 #ifdef Q_OS_WIN
 #include <QCursor>
