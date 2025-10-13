@@ -564,22 +564,6 @@ void QvkMainWindow_wl::slot_videoCodecChanged( QString codec )
 }
 
 
-QString QvkMainWindow_wl::get_Muxer()
-{
-    QString value = ui->comboBoxFormat->currentData().toString();
-    if ( ui->comboBoxFormat->currentData().toString() == "matroskamux" ) {
-        value = ui->comboBoxFormat->currentData().toString() + " name=mux writing-app=" + global::name + "_" + QString( global::version ).replace( " ", "_" );
-    } else {
-        value = ui->comboBoxFormat->currentData().toString() + " name=mux";
-    }
-
-    if ( ui->comboBoxFormat->currentData().toString() == "gifenc" ) {
-        value = "";
-    }
-
-    return value;
-}
-
 //------------------------------------------------
 //             pushButtonStart
 //                   |
@@ -855,7 +839,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
         }
     }
 
-    stringList << get_Muxer();
+    stringList << "matroskamux name=mux writing-app=" + global::name + "_" + QString( global::version ).replace( " ", "_" );
     stringList.removeAll( "" );
 
     QString newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();

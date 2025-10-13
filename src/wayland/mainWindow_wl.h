@@ -69,7 +69,6 @@ private:
 
     QString get_Videocodec_Encoder();
     QString get_Area_Videocrop();
-    QString get_Muxer();
     void get_system_info();
     QString get_KDE_Version();
     QString get_pipewire_version();
