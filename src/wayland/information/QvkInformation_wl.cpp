@@ -55,7 +55,6 @@ QvkInformation_wl::QvkInformation_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMai
     connect( ui->pushButtonStop,     SIGNAL( clicked(bool) ), timerRecord, SLOT( stop() ) );
 
     // Frames, Format, Codecs
-    connect( ui->comboBoxFormat,       SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_Format(QString) ) );
     connect( ui->comboBoxVideoCodec,   SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_Videocodec(QString) ) );
     connect( ui->comboBoxAudioCodec,   SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_Audiocodec(QString) ) );
     connect( mainWindow->sliderFrames, SIGNAL( valueChanged(int) ),           this, SLOT( slot_Frames(int) ) );
@@ -89,7 +88,6 @@ void QvkInformation_wl::slot_displayRecordTime()
 
 void QvkInformation_wl::slot_Format( QString value )
 {
-    ui->labelInfoFormat->setText( value );
     ui->labelInfoFrames->setText( QString::number( mainWindow->sliderFrames->value() ) );
 }
 

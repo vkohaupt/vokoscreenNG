@@ -1205,7 +1205,7 @@
                   <item row="5" column="2" colspan="2">
                    <widget class="QLabel" name="labelInfoFormat">
                     <property name="text">
-                     <string notr="true"/>
+                     <string notr="true">mkv</string>
                     </property>
                    </widget>
                   </item>
