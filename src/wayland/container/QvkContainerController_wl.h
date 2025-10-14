@@ -2,6 +2,7 @@
 #define QVKCONTAINERCONTROLLER_WL_H
 
 #include <QObject>
+#include <QString>
 
 #include "ui_formMainWindow_wl.h"
 #include "QvkContainer_wl.h"

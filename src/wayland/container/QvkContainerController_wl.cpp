@@ -1,9 +1,21 @@
 #include "QvkContainerController_wl.h"
 #include "global.h"
 
+#include <QString>
+#include <QStringList>
 #include <QDebug>
-#include <QLabel>
+#include <QList>
+#include <QIcon>
+#include <QPixmap>
 #include <QMessageBox>
+#include <Qt>
+#include <QLabel>
+#include <QLayoutItem>
+#include <QFrame>
+#include <QSize>
+#include <QSpacerItem>
+#include <QSizePolicy>
+
 #include <gst/gst.h>
 
 QvkContainerController_wl::QvkContainerController_wl( Ui::formMainWindow_wl *Ui )

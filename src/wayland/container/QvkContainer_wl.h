@@ -1,7 +1,10 @@
 #ifndef QVKCONTAINER_WL_H
 #define QVKCONTAINER_WL_H
 
+#include <QString>
 #include <QObject>
+#include <QList>
+#include <QStringList>
 
 class Container_wl
 {

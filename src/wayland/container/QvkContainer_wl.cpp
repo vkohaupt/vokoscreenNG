@@ -1,8 +1,9 @@
 #include "QvkContainer_wl.h"
 
+#include <QString>
+#include <QObject>
 #include <QStringList>
 #include <QList>
-#include <QSysInfo>
 
 /*!
  * Hint:
