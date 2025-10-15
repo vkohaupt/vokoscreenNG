@@ -988,7 +988,7 @@ void QvkMainWindow_wl::set_SpezialSliders()
     sliderFrames->setTracking( true );
     sliderFrames->setMinimum( 10 );
     sliderFrames->setMaximum( 60 );
-    sliderFrames->setValue( 25 );
+    sliderFrames->setValue( 0 );
     sliderFrames->show();
 
     sliderSecondWaitBeforeRecording = new QvkSpezialSlider( Qt::Horizontal );

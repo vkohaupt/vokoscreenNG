@@ -88,7 +88,8 @@ void QvkInformation_wl::slot_displayRecordTime()
 
 void QvkInformation_wl::slot_Format( QString value )
 {
-    Q_UNUSED(value)
+//    Q_UNUSED(value)
+    ui->labelInfoFormat->setText( value );
     ui->labelInfoFrames->setText( QString::number( mainWindow->sliderFrames->value() ) );
 }
 

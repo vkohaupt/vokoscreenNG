@@ -102,6 +102,17 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *
     QList<QSlider *> listSlider = ui_mainwindow->centralwidget->findChildren<QSlider *>();
     for ( int i = 0; i < listSlider.count(); i++ ) {
         QSlider *slider = listSlider.at(i);
+
+        if ( slider->objectName() == "sliderFrames" ) {
+            QVariant variant = settings.value( slider->objectName() );
+            if ( variant.isValid() ) {
+                slider->setValue( variant.toInt() );
+            } else {
+                slider->setValue( 25 );
+            }
+            continue;
+        }
+
         QVariant variant = settings.value( slider->objectName() );
         if ( variant.isValid() ) {
             slider->setValue( variant.toInt() );
