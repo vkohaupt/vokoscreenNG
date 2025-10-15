@@ -47,7 +47,6 @@ private slots:
     void slot_newVideoFilename( QString filename );
     void slot_displayRecordTime();
     void slot_beginRecordTime(QString m_beginTime);
-    void slot_Format( QString value );
     void slot_Videocodec( QString value );
     void slot_Audiocodec( QString value );
     void slot_Frames( int value );

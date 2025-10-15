@@ -86,18 +86,11 @@ void QvkInformation_wl::slot_displayRecordTime()
 }
 
 
-void QvkInformation_wl::slot_Format( QString value )
-{
-//    Q_UNUSED(value)
-    ui->labelInfoFormat->setText( value );
-    ui->labelInfoFrames->setText( QString::number( mainWindow->sliderFrames->value() ) );
-}
-
-
 void QvkInformation_wl::slot_Videocodec( QString value )
 {
     ui->labelInfoVideocodec->setText( value );
 }
+
 
 void QvkInformation_wl::slot_Audiocodec( QString value )
 {
@@ -117,6 +110,7 @@ void QvkInformation_wl::slot_Audiocodec( QString value )
         ui->labelInfoAudiocodec->setText( value );
     }
 }
+
 
 void QvkInformation_wl::slot_Frames( int value )
 {
