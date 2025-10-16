@@ -55,7 +55,6 @@ QvkInformation_wl::QvkInformation_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMai
     connect( ui->pushButtonStop,     SIGNAL( clicked(bool) ), timerRecord, SLOT( stop() ) );
 
     // Frames, Format, Codecs
-    connect( ui->comboBoxVideoCodec,   SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_Videocodec(QString) ) );
     connect( ui->comboBoxAudioCodec,   SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_Audiocodec(QString) ) );
     connect( mainWindow->sliderFrames, SIGNAL( valueChanged(int) ),           this, SLOT( slot_Frames(int) ) );
 }
@@ -83,12 +82,6 @@ void QvkInformation_wl::slot_displayRecordTime()
         ui->labelInfoRecordTime->setText( time.addMSecs( recordTime*1000 ).toString( "hh:mm:ss" ) );
         return;
     }
-}
-
-
-void QvkInformation_wl::slot_Videocodec( QString value )
-{
-    ui->labelInfoVideocodec->setText( value );
 }
 
 
