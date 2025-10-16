@@ -26,7 +26,6 @@ private:
 
 
 private slots:
-    void slot_set_available_VideoCodecs_in_Combobox( const QString suffix );
 
 
 signals:

@@ -69,7 +69,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     supportedImageFormats();
 
     ui->comboBoxVideoCodec->setVisible( false );
-    ui->comboBoxFormat->setVisible( false );
 
     QFile fileCSS( ":/pictures/css/css.qss" );
     fileCSS.open( QFile::ReadOnly | QFile::Text );

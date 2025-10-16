@@ -28,9 +28,6 @@ QvkContainerController_wl::QvkContainerController_wl( Ui::formMainWindow_wl *Ui 
     set_audioencoder_to_available_or_unavailable();
     set_available_AudioCodecs_in_Combobox();
 
-    // GUI
-    connect( ui->comboBoxFormat, SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_set_available_VideoCodecs_in_Combobox(QString) ) );
-
     set_available_formatVideoAudoicodec_in_tab();
 
     qDebug();
@@ -123,71 +120,6 @@ void QvkContainerController_wl::set_audioencoder_to_available_or_unavailable()
                     gst_object_unref( factory );
                 }
             }
-        }
-    }
-}
-
-
-/*
- * Insert Video encoder and Video name from container in Videocodec-Combobox
- */
-void QvkContainerController_wl::slot_set_available_VideoCodecs_in_Combobox( const QString suffix )
-{
-    ui->comboBoxVideoCodec->clear();
-    QList<Container_wl::VideoCodec_wl> list = vkContainer_wl->get_VideoCodecs( suffix  );
-    if ( !list.empty() ) {
-        qDebug();
-        qDebug().noquote() << global::nameOutput << "Format was changed, codecs are inserted:";
-        for ( int i = 0; i < list.count(); i++ ) {
-            if ( list.at(i).available == true ) {
-#ifdef Q_OS_WIN
-                if ( ui->radioButton_cisco_off->isChecked() and ( list.at(i).encoder == "openh264enc" ) ) {
-                    continue;
-                }
-#endif
-                GstElementFactory *factory = gst_element_factory_find( list.at(i).encoder.toLatin1() );
-                if ( !factory ) {
-                    qDebug().noquote() << global::nameOutput << "-" << list.at(i).encoder;
-                } else {
-                    QString message = global::nameOutput + " + " + list.at(i).encoder;
-                    GstElement *source = gst_element_factory_create( factory, "source" );
-                    if ( !source ) {
-                        message = global::nameOutput + " - " + list.at(i).encoder + " available but codec is missing";
-                    } else {
-                        ui->comboBoxVideoCodec->addItem( list.at(i).name, list.at(i).encoder );
-                        gst_object_unref( source );
-                    }
-
-                    qDebug().noquote() << message;
-                    gst_object_unref( factory );
-                }
-            }
-        }
-
-        if ( ui->comboBoxVideoCodec->count() == 0 )
-        {
-            QPixmap pixmap( ":/pictures/status/information.png" );
-            pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
-
-            QMessageBox messageBox;
-            messageBox.setIconPixmap( pixmap );
-            messageBox.setText( "<b>No videocodec found</b>" );
-
-            QString string;
-            string += "<center>Please install package</center><br>";
-            string += "gstreamer-plugins-base<br>";
-            string += "gstreamer-plugins-good<br>";
-            string += "gstreamer-plugins-bad<br>";
-            string += "gstreamer-plugins-ugly<br>";
-            string += "gstreamer-plugins-libav<br>";
-            messageBox.setInformativeText( string );
-            messageBox.exec();
-
-            ui->pushButtonStart->setEnabled( false );
-        }
-        else
-        {
-            ui->pushButtonStart->setEnabled( true );
         }
     }
 }
