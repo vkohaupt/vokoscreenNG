@@ -26,8 +26,7 @@ QvkContainerController_wl::QvkContainerController_wl( Ui::formMainWindow_wl *Ui 
     set_muxer_to_available_or_unavailable();
     set_videoencoder_to_available_or_unavailable();
     set_audioencoder_to_available_or_unavailable();
-
-    slot_set_available_AudioCodecs_in_Combobox();
+    set_available_AudioCodecs_in_Combobox();
 
     // GUI
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_set_available_VideoCodecs_in_Combobox(QString) ) );
@@ -212,7 +211,7 @@ void QvkContainerController_wl::slot_set_available_VideoCodecs_in_Combobox( cons
 /*
  * Insert audio-encoder and audio-name from container in audiocodec Combobox
  */
-void QvkContainerController_wl::slot_set_available_AudioCodecs_in_Combobox()
+void QvkContainerController_wl::set_available_AudioCodecs_in_Combobox()
 {
     ui->comboBoxAudioCodec->clear();
     QList<Container_wl::AudioCodec_wl> list = vkContainer_wl->get_AudioCodecs( "mkv" );
