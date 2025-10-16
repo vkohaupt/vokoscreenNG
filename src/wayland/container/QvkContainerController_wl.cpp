@@ -31,7 +31,6 @@ QvkContainerController_wl::QvkContainerController_wl( Ui::formMainWindow_wl *Ui 
     // GUI
     connect( ui->comboBoxFormat, SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_set_available_VideoCodecs_in_Combobox(QString) ) );
 
-    set_available_muxer_in_ComboBox();
     set_available_formatVideoAudoicodec_in_tab();
 
     qDebug();
@@ -124,20 +123,6 @@ void QvkContainerController_wl::set_audioencoder_to_available_or_unavailable()
                     gst_object_unref( factory );
                 }
             }
-        }
-    }
-}
-
-
-void QvkContainerController_wl::set_available_muxer_in_ComboBox()
-{
-    for ( int i = 0; i < vkContainer_wl->get_Containers().count(); i++ ) {
-        if ( vkContainer_wl->get_Containers().at(i)->get_Available() == true ) {
-            QIcon icon;
-            if ( vkContainer_wl->get_Containers().at(i)->get_Suffix() == "mkv" ){
-                icon = QIcon( ":/pictures/screencast/strip-mkv.png" );
-            }
-            ui->comboBoxFormat->addItem( icon, vkContainer_wl->get_Containers().at(i)->get_Suffix(), vkContainer_wl->get_Containers().at(i)->get_Muxer() );
         }
     }
 }

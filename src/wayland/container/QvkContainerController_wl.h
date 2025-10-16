@@ -19,7 +19,6 @@ private:
     Ui::formMainWindow_wl *ui;
     QvkContainer_wl *vkContainer_wl;
     void set_muxer_to_available_or_unavailable();
-    void set_available_muxer_in_ComboBox();
     void set_videoencoder_to_available_or_unavailable();
     void set_audioencoder_to_available_or_unavailable();
     void set_available_formatVideoAudoicodec_in_tab();

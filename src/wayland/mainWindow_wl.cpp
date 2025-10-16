@@ -533,21 +533,16 @@ void QvkMainWindow_wl::supportedImageFormats()
 QString QvkMainWindow_wl::get_Videocodec_Encoder()
 {
     QString value;
-    QString encoder = ui->comboBoxVideoCodec->currentData().toString();
-
-    if ( encoder == "openh264enc" ) {
-        QStringList list;
-        list << encoder;
-        list << "qp-min=" + QString::number( sliderOpenh264->value() );
-        list << "qp-max=" + QString::number( sliderOpenh264->value() );
-        list << "usage-type=camera"; // We need camera not screen. With screen and a fast sequence of images the video jerks.
-        list << "complexity=low";
-        list << "multi-thread=" + QString::number( 0 );
-        list << "slice-mode=auto"; // Number of slices equal to number of threads
-        value = list.join( " " );
-        value.append( " ! h264parse" );
-    }
-
+    QStringList list;
+    list << "openh264enc" ;
+    list << "qp-min=" + QString::number( sliderOpenh264->value() );
+    list << "qp-max=" + QString::number( sliderOpenh264->value() );
+    list << "usage-type=camera"; // We need camera not screen. With screen and a fast sequence of images the video jerks.
+    list << "complexity=low";
+    list << "multi-thread=" + QString::number( 0 );
+    list << "slice-mode=auto"; // Number of slices equal to number of threads
+    value = list.join( " " );
+    value.append( " ! h264parse" );
     return value;
 }
 
