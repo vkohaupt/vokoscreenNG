@@ -67,7 +67,6 @@ private:
 
     void messageBox( QString value );
 
-    QString get_Videocodec_Encoder();
     QString get_Area_Videocrop();
     void get_system_info();
     QString get_KDE_Version();

@@ -530,22 +530,6 @@ void QvkMainWindow_wl::supportedImageFormats()
 }
 
 
-QString QvkMainWindow_wl::get_Videocodec_Encoder()
-{
-    QString value;
-    QStringList list;
-    list << "openh264enc" ;
-    list << "qp-min=" + QString::number( sliderOpenh264->value() );
-    list << "qp-max=" + QString::number( sliderOpenh264->value() );
-    list << "usage-type=camera"; // We need camera not screen. With screen and a fast sequence of images the video jerks.
-    list << "complexity=low";
-    list << "multi-thread=" + QString::number( 0 );
-    list << "slice-mode=auto"; // Number of slices equal to number of threads
-    value = list.join( " " );
-    value.append( " ! h264parse" );
-    return value;
-}
-
 //------------------------------------------------
 //             pushButtonStart
 //                   |
@@ -694,6 +678,7 @@ QString QvkMainWindow_wl::Pipeline_structured_output( QString pipeline )
     return string;
 }
 
+
 QStringList QvkMainWindow_wl::VK_getSelectedAudioDevice()
 {
     QStringList list;
@@ -707,8 +692,8 @@ QStringList QvkMainWindow_wl::VK_getSelectedAudioDevice()
     return list;
 }
 
-QMessageBox *msgBox;
 
+QMessageBox *msgBox;
 //---------------------------------------------------------------------------------------------------
 GstBusSyncReply QvkMainWindow_wl::call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data )
 {
@@ -767,7 +752,19 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     stringList << "queue max-size-bytes=1073741824 max-size-time=10000000000 max-size-buffers=1000";
     if ( ui->radioButtonScreencastArea->isChecked() ) { stringList << get_Area_Videocrop(); }
     stringList << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
-    stringList << get_Videocodec_Encoder();
+
+    QString value;
+    QStringList list;
+    list << "openh264enc" ;
+    list << "qp-min=" + QString::number( sliderOpenh264->value() );
+    list << "qp-max=" + QString::number( sliderOpenh264->value() );
+    list << "usage-type=camera"; // We need camera not screen. With screen and a fast sequence of images the video jerks.
+    list << "complexity=low";
+    list << "multi-thread=" + QString::number( 0 );
+    list << "slice-mode=auto"; // Number of slices equal to number of threads
+    value = list.join( " " );
+    value.append( " ! h264parse" );
+    stringList << value;
 
     // Only if one or more audiodevice is selected
     if ( ( VK_getSelectedAudioDevice().count() > 0 ) and ( ui->comboBoxAudioCodec->count() > 0 ) ) {
@@ -787,7 +784,6 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
         stringList << "queue";
         stringList << "mux.";
     }
-
 
     // Pipeline for more as one audiodevice
     if ( ( VK_getSelectedAudioDevice().count() > 1 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
@@ -845,7 +841,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     GError *error = Q_NULLPTR;
     pipeline = gst_parse_launch( line, &error );
 
-    // Da ist iergendwo ein Bug, stürzt bei STOP ab
+    // Da ist irgendwo ein Bug, stürzt bei STOP ab
 //    GstBus *bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
 //    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, NULL );
 //    gst_object_unref( bus );
