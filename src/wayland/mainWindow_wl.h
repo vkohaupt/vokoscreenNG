@@ -110,8 +110,6 @@ private Q_SLOTS:
     void slot_path_to_snapshot_folder( bool bo );
     // Snapshot
 
-    void slot_videoCodecChanged( QString codec );
-
 
 protected:
     void closeEvent( QCloseEvent *event );

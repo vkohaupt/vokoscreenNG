@@ -420,8 +420,6 @@ void QvkMainWindow_wl::set_Connects()
 
     connect( ui->pushButton_log_openfolder, SIGNAL( clicked(bool) ), this, SLOT( slot_log_folder() ) );
     connect( ui->pushButton_log_refresh,    SIGNAL( clicked(bool) ), this, SLOT( slot_log_refresh() ) );
-
-    connect( ui->comboBoxVideoCodec, SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_videoCodecChanged(QString) ) );
 }
 
 
@@ -552,17 +550,6 @@ QString QvkMainWindow_wl::get_Videocodec_Encoder()
 
     return value;
 }
-
-
-void QvkMainWindow_wl::slot_videoCodecChanged( QString codec )
-{
-    ui->frameVideoCodecOpenh264->setVisible( false );
-
-    if ( codec == "H.264" ) {
-        ui->frameVideoCodecOpenh264->setVisible( true );
-    }
-}
-
 
 //------------------------------------------------
 //             pushButtonStart
