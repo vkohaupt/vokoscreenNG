@@ -803,6 +803,10 @@
         <source>Continue</source>
         <translation>Continuar</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Mostrar en bandeja del sistema</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

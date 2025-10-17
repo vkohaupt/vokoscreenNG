@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>كمل</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>بيّن في علبة النظام</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

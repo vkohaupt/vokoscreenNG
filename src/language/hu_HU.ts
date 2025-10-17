@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>Folytatás</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Megjelenítés a rendszertálca-ikonok közt</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

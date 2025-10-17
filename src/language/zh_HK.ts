@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>繼續</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>顯示在系統托盤</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>Jarraitu</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Erakutsi erretiluan</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

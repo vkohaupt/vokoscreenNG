@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>Hervatten</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Tonen in systeemvak</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

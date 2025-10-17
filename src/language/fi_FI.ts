@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>Jatka</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Näytä ilmoitusalueella</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

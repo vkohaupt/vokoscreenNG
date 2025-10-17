@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>Tęsti</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Rodyti sistemos dėkle</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

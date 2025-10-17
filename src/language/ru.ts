@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>Продолжить</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Показывать значок в области уведомления</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

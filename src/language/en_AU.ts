@@ -803,6 +803,10 @@
         <source>Continue</source>
         <translation>Continue</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Show in systray</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

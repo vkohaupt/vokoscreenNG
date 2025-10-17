@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>Devam</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Sistem tepsisinde göster</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

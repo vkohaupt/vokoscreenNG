@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>Ipagpatuloy</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Ipakita sa systray</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

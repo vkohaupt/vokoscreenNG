@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>계속하기</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>시스템 트레이에 표시하기</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

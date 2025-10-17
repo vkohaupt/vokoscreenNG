@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>Wiedermaken</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Im Systeemrebeet wiesen</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>Continuă</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Arată în tava de sistem</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

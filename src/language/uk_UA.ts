@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>Продовжити</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Показати значок на панелі</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

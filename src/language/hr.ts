@@ -806,6 +806,10 @@
         <source>Continue</source>
         <translation>Nastavi</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Prikaži u traci sustava </translation>
+    </message>
 </context>
 <context>
     <name>license</name>

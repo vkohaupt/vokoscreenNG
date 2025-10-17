@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>Continuar</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Mostrar no tabuleiro do sistema</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

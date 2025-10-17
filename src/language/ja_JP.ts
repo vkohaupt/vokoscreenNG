@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>持続する</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>システムトレイに表示</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

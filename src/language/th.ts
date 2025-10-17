@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>ดำเนินการต่อ</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>แสดงใน systray</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

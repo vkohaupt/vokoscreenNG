@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>Pokračovať</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Zobraziť v systémovom paneli</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

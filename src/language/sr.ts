@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>Настави</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Прикажи у &apos;&apos;systray&apos;&apos;</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

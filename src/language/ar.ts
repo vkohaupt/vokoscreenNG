@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>واصل</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>أظهِر البرنامج في مساحة التبليغ</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

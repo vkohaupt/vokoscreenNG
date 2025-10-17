@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>Fortsätt</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Visa i systemfältet</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

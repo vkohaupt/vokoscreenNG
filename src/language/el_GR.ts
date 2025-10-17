@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>Συνέχιση</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Εμφάνιση στην περιοχή ειδοποιήσεων</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

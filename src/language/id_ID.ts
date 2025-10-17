@@ -801,6 +801,10 @@
         <source>Continue</source>
         <translation>Lanjutkan</translation>
     </message>
+    <message>
+        <source>Show in systray</source>
+        <translation>Tampilkan di systray</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
