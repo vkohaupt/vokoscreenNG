@@ -3,7 +3,7 @@
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>اِختر جهازاً أو أكثر</translation>
+        <translation>إختر جهاز واحد أو أكثر</translation>
     </message>
 </context>
 <context>
@@ -806,7 +806,7 @@
     <name>license</name>
     <message>
         <source>Copyright and license from pictures</source>
-        <translation>حقوق الطبع والنشر والترخيص من الصور</translation>
+        <translation>حقوق النشر والترخيص من الصور</translation>
     </message>
 </context>
 <context>
