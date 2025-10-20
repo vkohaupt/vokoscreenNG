@@ -26,6 +26,7 @@
 #include <QBitmap>
 #include <QMouseEvent>
 #include <QEvent>
+#include <QEnterEvent>
 
 QvkPushButton::QvkPushButton( QColor valueColor)
 {
