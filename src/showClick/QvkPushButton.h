@@ -24,7 +24,10 @@
 #define QVKPUSHBUTTON_H
 
 #include <QPushButton>
+#include <QColor>
 #include <QEvent>
+#include <QPaintEvent>
+#include <QMouseEvent>
 
 class QvkPushButton: public QPushButton
 
@@ -49,11 +52,11 @@ private:
     bool mousePressed = false;
 
 protected:
-    void paintEvent( QPaintEvent *event ) override;
-    void enterEvent( QEvent *event ); // Qt6 want no override. Please test again.
-    void leaveEvent( QEvent *event ) override;
-    void mousePressEvent( QMouseEvent *event ) override;
-    void mouseReleaseEvent( QMouseEvent *event ) override;
+    void paintEvent( QPaintEvent *event );
+    void enterEvent( QEvent *event );
+    void leaveEvent( QEvent *event );
+    void mousePressEvent( QMouseEvent *event );
+    void mouseReleaseEvent( QMouseEvent *event );
 };
 
 #endif
