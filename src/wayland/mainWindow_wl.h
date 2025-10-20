@@ -62,7 +62,7 @@ private:
     void set_CornerWidget();
     void set_SpezialSliders();
     void set_Connects();
-    void set_check_all_Elements_available();
+    void set_check_screencast_elements_available();
     void set_RegionChoice();
 
     void messageBox( QString value );

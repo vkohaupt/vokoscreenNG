@@ -97,7 +97,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     connect( this, SIGNAL( signal_beginRecordTime(QString) ),  vkInformation, SLOT( slot_beginRecordTime(QString) ) );
     set_RegionChoice();
     set_Connects();
-    set_check_all_Elements_available();
+    set_check_screencast_elements_available();
     vkContainerController_wl = new QvkContainerController_wl( ui );
 
     QvkAudioController_wl *vkAudioController = new QvkAudioController_wl( ui );
@@ -1023,7 +1023,7 @@ void QvkMainWindow_wl::messageBox( QString value )
 }
 
 
-void QvkMainWindow_wl::set_check_all_Elements_available()
+void QvkMainWindow_wl::set_check_screencast_elements_available()
 {
     QStringList list;
     list << "pipewiresrc";
@@ -1040,7 +1040,7 @@ void QvkMainWindow_wl::set_check_all_Elements_available()
     list << "audiomixer";
     list << "videocrop";
 
-    qDebug().noquote() << global::nameOutput << "--- GStreamer elements ---";
+    qDebug().noquote() << global::nameOutput << "--- Screencast: GStreamer elements ---";
 
     for ( int i = 0; i < list.count(); i++ ) {
         GstElementFactory *factory = gst_element_factory_find( QString( list.at(i) ).toLatin1() );
