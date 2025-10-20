@@ -64,6 +64,7 @@ private:
     void set_Connects();
     void set_check_screencast_elements_available();
     void set_check_GIF_convert_elements_available();
+    void set_check_MP4_convert_elements_available();
 
     void set_RegionChoice();
 
