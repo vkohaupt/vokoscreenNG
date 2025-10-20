@@ -102,7 +102,6 @@ void QvkAudioController_wl::getAllDevices()
                 vkLevelMeterController = new QvkLevelMeterController_wl;
                 vkLevelMeterController->add_ProgressBar( checkBox, hBoxLayout, name );
                 vkLevelMeterController->set_Text( name );
-
             }
             qDebug().noquote();
 

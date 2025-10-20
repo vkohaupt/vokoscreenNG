@@ -145,7 +145,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     if ( !screen.empty() ) {
         for ( int i = 0; i < screen.size(); i++ ) {
             if ( screen.at(i)->name() == QGuiApplication::primaryScreen()->name() ) {
-                //qDebug();
                 qDebug().noquote() << global::nameOutput << "This screen is the primary screen: " << QGuiApplication::primaryScreen()->name();
             } else {
                 qDebug().noquote() << global::nameOutput << "Name from screen: " << screen.at(i)->name();
@@ -813,7 +812,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
             }
         }
     }
-// hier
+
     stringList << "matroskamux name=mux writing-app=" + global::name + "_" + QString( global::version ).replace( " ", "_" );
     stringList.removeAll( "" );
 
