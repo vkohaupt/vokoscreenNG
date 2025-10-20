@@ -98,6 +98,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_RegionChoice();
     set_Connects();
     set_check_screencast_elements_available();
+    set_check_GIF_convert_elements_available();
+
     vkContainerController_wl = new QvkContainerController_wl( ui );
 
     QvkAudioController_wl *vkAudioController = new QvkAudioController_wl( ui );
@@ -1055,6 +1057,31 @@ void QvkMainWindow_wl::set_check_screencast_elements_available()
     qDebug();
 }
 
+
+void QvkMainWindow_wl::set_check_GIF_convert_elements_available()
+{
+    QStringList list;
+    list << "matroskademux";
+    list << "h264parse";
+    list << "openh264dec";
+    list << "queue";
+    list << "videoconvert";
+    list << "gifenc";
+    list << "filesink";
+
+    qDebug().noquote() << global::nameOutput << "--- Convert GIF: GStreamer elements ---";
+
+    for ( int i = 0; i < list.count(); i++ ) {
+        GstElementFactory *factory = gst_element_factory_find( QString( list.at(i) ).toLatin1() );
+        if ( !factory ) {
+            qDebug().noquote() << global::nameOutput << "-" << list.at(i);
+        } else {
+            qDebug().noquote() << global::nameOutput << "+" << list.at(i);
+            gst_object_unref( factory );
+        }
+    }
+    qDebug();
+}
 
 void QvkMainWindow_wl::set_RegionChoice()
 {

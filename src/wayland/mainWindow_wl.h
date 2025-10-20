@@ -63,6 +63,8 @@ private:
     void set_SpezialSliders();
     void set_Connects();
     void set_check_screencast_elements_available();
+    void set_check_GIF_convert_elements_available();
+
     void set_RegionChoice();
 
     void messageBox( QString value );
