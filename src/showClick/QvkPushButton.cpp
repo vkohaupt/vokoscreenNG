@@ -126,7 +126,7 @@ void QvkPushButton::paintEvent( QPaintEvent *event )
 }
 
 
-void QvkPushButton::enterEvent( QEvent *event )
+void QvkPushButton::enterEvent( QEnterEvent *event )
 {
     Q_UNUSED(event);
     mouseHover = true;

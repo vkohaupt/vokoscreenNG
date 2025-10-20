@@ -28,6 +28,7 @@
 #include <QEvent>
 #include <QPaintEvent>
 #include <QMouseEvent>
+#include <QEnterEvent>
 
 class QvkPushButton: public QPushButton
 
@@ -53,7 +54,7 @@ private:
 
 protected:
     void paintEvent( QPaintEvent *event );
-    void enterEvent( QEvent *event );
+    void enterEvent( QEnterEvent *event );
     void leaveEvent( QEvent *event );
     void mousePressEvent( QMouseEvent *event );
     void mouseReleaseEvent( QMouseEvent *event );
