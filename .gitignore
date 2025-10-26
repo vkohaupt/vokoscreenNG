@@ -33,6 +33,9 @@ Makefile
 ui_*.h
 *.qm
 
+# Flatpak
+com.github.vkohaupt.vokoscreenNG
+
 # javascript
 *.json
 
