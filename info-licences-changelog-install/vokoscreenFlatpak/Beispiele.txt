@@ -19,5 +19,11 @@ flatpak list --app --columns=application,runtime
 flatpak run org.freedesktop.Sdk//23.08
 pkg-config --list-all
 
+
 flatpak run org.kde.Sdk//6.6
 pkg-config --list-all
+
+
+# Sorgt dafür das Binarys auf dem Host ausgeführt werden
+# Zum Beispiel pipewire --version
+flatpak override --user --talk-name=org.freedesktop.Flatpak com.github.vkohaupt.vokoscreenNG
