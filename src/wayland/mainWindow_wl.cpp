@@ -827,7 +827,6 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     VK_Pipeline = VK_Pipeline.replace( "mix. !", "mix." );
     VK_Pipeline = VK_Pipeline.replace( "mux. !", "mux." );
 
-    qDebug();
     qDebug().noquote() << global::nameOutput << "Free disk space at the beginning of the recording:" << ui->labelFreeSize->text() << "MB";
     qDebug();
     qDebug().noquote() << global::nameOutput << "Separated audio tracks:" << ui->checkBoxSeparatedAudioTracks->isChecked();
@@ -915,6 +914,7 @@ void QvkMainWindow_wl::slot_stop()
     Q_UNUSED(ret);
     gst_object_unref( pipeline );
     qDebug().noquote() << global::nameOutput << "Stop record";
+    qDebug().noquote() << global::nameOutput << "Free disk space at the end of the recording:" << ui->labelFreeSize->text() << "MB";
 
     if ( ui->radioButtonScreencastArea->isChecked() ) {
        vkRegionChoise_wl->set_recordMode( false );
