@@ -236,7 +236,7 @@
          <enum>QTabWidget::West</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="tab_sidebar_screeancast">
          <attribute name="title">
@@ -2867,6 +2867,17 @@
                    <widget class="QComboBox" name="comboBoxSnapshotImageFormats"/>
                   </item>
                   <item>
+                   <widget class="QToolButton" name="toolButtonSnapshotFormatsReset">
+                    <property name="text">
+                     <string notr="true">...</string>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="../screencast.qrc">
+                      <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
                    <spacer name="horizontalSpacer_26">
                     <property name="orientation">
                      <enum>Qt::Horizontal</enum>
@@ -3652,7 +3663,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
