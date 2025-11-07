@@ -705,7 +705,7 @@
                         <string>Reset</string>
                        </property>
                        <property name="text">
-                        <string notr="true">...</string>
+                        <string notr="true"/>
                        </property>
                        <property name="icon">
                         <iconset resource="../screencast.qrc">
@@ -1573,8 +1573,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>441</width>
-                     <height>360</height>
+                     <width>20</width>
+                     <height>98</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -2840,27 +2840,6 @@
               </item>
               <item>
                <layout class="QGridLayout" name="gridLayout">
-                <item row="4" column="0" colspan="2">
-                 <widget class="QCheckBox" name="checkBoxSnapshotHideBeforeRecording">
-                  <property name="text">
-                   <string>Hide this window</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="5" column="0" colspan="2">
-                 <widget class="QCheckBox" name="checkBox_snapshot_interactive">
-                  <property name="text">
-                   <string notr="true">Interactive</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="0">
-                 <widget class="QLabel" name="label_57">
-                  <property name="text">
-                   <string>Format</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="2" column="1">
                  <layout class="QHBoxLayout" name="horizontalLayout_44">
                   <item>
@@ -2868,8 +2847,11 @@
                   </item>
                   <item>
                    <widget class="QToolButton" name="toolButtonSnapshotFormatsReset">
+                    <property name="toolTip">
+                     <string>Reset</string>
+                    </property>
                     <property name="text">
-                     <string notr="true">...</string>
+                     <string notr="true"/>
                     </property>
                     <property name="icon">
                      <iconset resource="../screencast.qrc">
@@ -2892,6 +2874,20 @@
                   </item>
                  </layout>
                 </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_57">
+                  <property name="text">
+                   <string>Format</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="6" column="0" colspan="2">
+                 <widget class="QCheckBox" name="checkBox_snapshot_interactive">
+                  <property name="text">
+                   <string notr="true">Interactive</string>
+                  </property>
+                 </widget>
+                </item>
                 <item row="3" column="0" colspan="2">
                  <layout class="QHBoxLayout" name="horizontalLayout_59">
                   <item>
@@ -2900,6 +2896,44 @@
                      <string>Seconds wait before recording</string>
                     </property>
                    </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="4" column="0" colspan="2">
+                 <layout class="QHBoxLayout" name="horizontalLayout_24">
+                  <item>
+                   <widget class="QCheckBox" name="checkBoxSnapshotHideBeforeRecording">
+                    <property name="text">
+                     <string>Hide this window</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QToolButton" name="toolButtonSnapshotHideBeforeRecordingReset">
+                    <property name="toolTip">
+                     <string>Reset</string>
+                    </property>
+                    <property name="text">
+                     <string notr="true"/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="../screencast.qrc">
+                      <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_11">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
                   </item>
                  </layout>
                 </item>
@@ -3663,7 +3697,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
