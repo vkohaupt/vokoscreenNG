@@ -428,12 +428,11 @@ void QvkMainWindow_wl::slot_snapshotHideBeforeRecording( bool bo ) {
     if ( ui->checkBoxSnapshotHideBeforeRecording->isChecked() == true ) {
         qDebug().noquote() << global::nameOutput << "[Snapshot]" << "Hide this window is checked";
         showMinimized();
-        QvkSpezialSlider *spezialSlider = ui->centralwidget->findChild<QvkSpezialSlider *>( "sliderWaitBeforeSnapshot" );
-        QTimer::singleShot( spezialSlider->value() * 100, Qt::PreciseTimer, this, SLOT( slot_pushButton_snapshot() ) );
     } else {
         qDebug().noquote() << global::nameOutput << "[Snapshot]" << "Hide this window is not checked";
-        slot_pushButton_snapshot();
     }
+    QvkSpezialSlider *spezialSlider = ui->centralwidget->findChild<QvkSpezialSlider *>( "sliderWaitBeforeSnapshot" );
+    QTimer::singleShot( spezialSlider->value() * 100, Qt::PreciseTimer, this, SLOT( slot_pushButton_snapshot() ) );
 }
 
 
