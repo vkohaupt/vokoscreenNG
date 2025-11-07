@@ -421,6 +421,12 @@ void QvkMainWindow_wl::set_Connects()
         ui->comboBoxSnapshotImageFormats->setCurrentText( "png" ); } );
     connect( ui->toolButtonSnapshotHideBeforeRecordingReset, &QPushButton::clicked, this, [=]() {
         ui->checkBoxSnapshotHideBeforeRecording->setChecked( false ); } );
+    QvkSpezialSlider *spezialSlider = ui->centralwidget->findChild<QvkSpezialSlider *>( "sliderWaitBeforeSnapshot" );
+    connect( ui->toolButtonSnapshotSecondsWaitBeforeRecordingReset, &QPushButton::clicked, this, [=]() {
+        spezialSlider->setValue(4); } );
+
+
+
 
     connect( ui->pushButton_log_openfolder, SIGNAL( clicked(bool) ), this, SLOT( slot_log_folder() ) );
     connect( ui->pushButton_log_refresh,    SIGNAL( clicked(bool) ), this, SLOT( slot_log_refresh() ) );
