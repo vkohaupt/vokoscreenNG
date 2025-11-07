@@ -530,13 +530,6 @@ void QvkMainWindow_wl::supportedImageFormats()
     ui->comboBoxSnapshotImageFormats->setCurrentIndex( ui->comboBoxSnapshotImageFormats->findText( "png" ) );
 }
 
-/*
-void QvkMainWindow_wl::SnapshotImageFormatsReset()
-{
-
-}
-*/
-
 
 //------------------------------------------------
 //             pushButtonStart
