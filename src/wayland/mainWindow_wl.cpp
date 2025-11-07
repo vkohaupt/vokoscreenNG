@@ -420,7 +420,7 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->toolButtonSnapshotFormatsReset, &QPushButton::clicked, this, [=]() {
         ui->comboBoxSnapshotImageFormats->setCurrentText( "png" ); } );
     connect( ui->toolButtonSnapshotHideBeforeRecordingReset, &QPushButton::clicked, this, [=]() {
-        ui->checkBoxSnapshotHideBeforeRecording->setChecked( false ); ; } );
+        ui->checkBoxSnapshotHideBeforeRecording->setChecked( false ); } );
 
     connect( ui->pushButton_log_openfolder, SIGNAL( clicked(bool) ), this, SLOT( slot_log_folder() ) );
     connect( ui->pushButton_log_refresh,    SIGNAL( clicked(bool) ), this, SLOT( slot_log_refresh() ) );
