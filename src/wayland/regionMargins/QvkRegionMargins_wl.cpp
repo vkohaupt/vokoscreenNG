@@ -22,6 +22,11 @@
 
 #include "QvkRegionMargins_wl.h"
 
+/*
+ * QvkRegionMargins_wl determines four margins: left, top, right, and bottom,
+ * which describe the size of the borders around a window on the desktop.
+ */
+
 QvkRegionMargins_wl::QvkRegionMargins_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMainWindow_wl *ui_mainwindow )
 {
     mainWindow = vkMainWindow;
