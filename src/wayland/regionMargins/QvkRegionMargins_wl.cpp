@@ -39,6 +39,7 @@
 #include <QUrl>
 #include <QFileInfo>
 #include <QFile>
+#include <QDateTime>
 
 /*
  * QvkRegionMargins_wl determined four margins: left, top, right, and bottom,
