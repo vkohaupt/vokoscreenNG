@@ -22,8 +22,16 @@
 
 #include "QvkRegionMargins_wl.h"
 
+#include <QIcon>
+#include <QPaintEvent>
+#include <QResizeEvent>
+#include <QPalette>
+#include <QPainter>
+#include <QPen>
+#include <QPoint>
+
 /*
- * QvkRegionMargins_wl determines four margins: left, top, right, and bottom,
+ * QvkRegionMargins_wl determined four margins: left, top, right, and bottom,
  * which describe the size of the borders around a window on the desktop.
  */
 
@@ -31,6 +39,16 @@ QvkRegionMargins_wl::QvkRegionMargins_wl( QvkMainWindow_wl *vkMainWindow, Ui_for
 {
     mainWindow = vkMainWindow;
     ui = ui_mainwindow;
+
+    setWindowTitle( QString( tr( "AreaMargins") ) );
+
+    QIcon icon;
+    icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
+    setWindowIcon( icon );
+
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+    setAttribute( Qt::WA_TranslucentBackground, true );
+    setMouseTracking( true );
 }
 
 
@@ -43,6 +61,32 @@ void QvkRegionMargins_wl::paintEvent( QPaintEvent *event )
 {
     Q_UNUSED(event)
 
+    QImage image( screenWidth, screenHeight, QImage::Format_ARGB32_Premultiplied );
+    image.fill( Qt::transparent );
+
+    QPainter painterPixmap;
+    painterPixmap.begin( &image );
+    painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
+    QPen pen;
+    pen.setColor( Qt::red );
+    painterPixmap.setPen( pen );
+    painterPixmap.drawLine( 0, 0, width()-1, 0 );
+    painterPixmap.drawLine( width()-1, 0, width()-1, height()-1 );
+    painterPixmap.drawLine( width()-1, height()-1, 0, height()-1 );
+    painterPixmap.drawLine( 0, height()-1, 0, 0 );
+    painterPixmap.end();
+
+    pixmap = pixmap.fromImage( image );
+
+    QPainter painter;
+    painter.begin( this );
+    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
+    painter.drawPixmap( QPoint( 0, 0 ), pixmap );
+    painter.end();
+
+    setMask( pixmap.mask() );
+
+    qDebug() << "paintEvent";
 }
 
 
@@ -51,4 +95,5 @@ void QvkRegionMargins_wl::resizeEvent( QResizeEvent *event )
     Q_UNUSED(event)
     screenWidth = width();
     screenHeight = height();
+    qDebug() << "resizeEvent";
 }

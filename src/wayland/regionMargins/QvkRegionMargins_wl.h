@@ -27,6 +27,7 @@
 #include "mainWindow_wl.h"
 
 #include <QWidget>
+#include <QPixmap>
 #include <QPaintEvent>
 #include <QResizeEvent>
 
@@ -39,6 +40,8 @@ public:
     QvkMainWindow_wl *mainWindow;
     int screenWidth = 400;
     int screenHeight = 400;
+    QPixmap pixmap;
+
 
 public slots:
 

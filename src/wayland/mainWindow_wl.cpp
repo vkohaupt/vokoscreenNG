@@ -8,6 +8,7 @@
 #include "QvkConvert_mkv_gif_wl.h"
 #include "QvkConvert_mkv_to_webm_wl.h"
 #include "QvkConvert_mkv_repair_wl.h"
+#include "QvkRegionMargins_wl.h"
 
 #include "global.h"
 #include "QvkLicenses.h"
@@ -176,6 +177,11 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     vkSettings.readAll( ui, this );
 
     ui->widgetLanguageAndHelp->setVisible( false );
+
+
+    QvkRegionMargins_wl *vkRegionMargins_wl = new QvkRegionMargins_wl( this, ui );
+    connect( ui->checkBoxDesktopMargins, SIGNAL( clicked(bool) ), vkRegionMargins_wl, SLOT( setVisible(bool) ) );
+
  }
 
 
