@@ -8,6 +8,9 @@ SOURCES     += $$PWD/mainWindow_wl.cpp \
 
 FORMS       += $$PWD/formMainWindow_wl.ui
 
+# Area margins
+include(regionMargins/regionMargins_wl.pri)
+
 # Area
 include(region/regionselection_wl.pri)
 
