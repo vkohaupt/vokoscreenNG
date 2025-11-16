@@ -44,6 +44,8 @@ public:
 
 
 public slots:
+    void slot_pushButton_snapshot( bool bo );
+    void slot_handle_response_snapshot(  uint responseCode, QVariantMap results );
 
 
 private slots:
