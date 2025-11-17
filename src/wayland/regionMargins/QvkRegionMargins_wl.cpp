@@ -57,8 +57,8 @@ QvkRegionMargins_wl::QvkRegionMargins_wl( QvkMainWindow_wl *vkMainWindow, Ui_for
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
 
-    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
-    setAttribute( Qt::WA_TranslucentBackground, true );
+//    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+//    setAttribute( Qt::WA_TranslucentBackground, true );
     setMouseTracking( true );
 }
 
@@ -77,14 +77,20 @@ void QvkRegionMargins_wl::paintEvent( QPaintEvent *event )
 
     QPainter painterPixmap;
     painterPixmap.begin( &image );
-    painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
+    painterPixmap.setRenderHints( QPainter::SmoothPixmapTransform, true );
+    painterPixmap.setRenderHints( QPainter::Antialiasing, true );
     QPen pen;
     pen.setColor( Qt::red );
     painterPixmap.setPen( pen );
-    painterPixmap.drawLine( 0, 0, width()-1, 0 );
+/*    painterPixmap.drawLine( 0, 0, width()-1, 0 );
     painterPixmap.drawLine( width()-1, 0, width()-1, height()-1 );
     painterPixmap.drawLine( width()-1, height()-1, 0, height()-1 );
     painterPixmap.drawLine( 0, height()-1, 0, 0 );
+*/
+    QBrush brush;
+    brush.setColor(Qt::red);
+    brush.setStyle(Qt::SolidPattern);
+    painterPixmap.fillRect( 0, 0, width()-1, height()-1, brush );
     painterPixmap.end();
 
     pixmap = pixmap.fromImage( image );
@@ -93,6 +99,7 @@ void QvkRegionMargins_wl::paintEvent( QPaintEvent *event )
     painter.begin( this );
     painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painter.drawPixmap( QPoint( 0, 0 ), pixmap );
+
     painter.end();
 
     setMask( pixmap.mask() );
@@ -139,32 +146,72 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
     if ( responseCode == 0 ) {
         QUrl url( results["uri"].toString() );
         QFileInfo fileInfo( url.toLocalFile() );
-        QString path_to_snapshot_folder = fileInfo.absolutePath();
         QString filePath_org = fileInfo.absoluteFilePath();
 
         QPixmap pixmap = QPixmap( filePath_org );
-        QString filePath_new = path_to_snapshot_folder +
-                "/" +
-                global::name +
-                "-" +
-                QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss.zzz" ) +
-                "." +
-                ui->comboBoxSnapshotImageFormats->currentText().toUtf8();
-        pixmap.save( filePath_new );
+        pixmap.save("/home/vk/Bilder/testPixmap.png");
+
+        QImage image = pixmap.toImage();
+        image.save("/home/vk/Bilder/testImage.png");
+        for( int i = 0; i < image.height(); i++ ) {
+            QColor color = image.pixelColor( image.width()/2, i );
+            qDebug() << i << "color" << color;
+            if ( color == Qt::red ) {
+                qDebug() << i;
+            } else {
+                //qDebug() << "Invalid" << i;
+            }
+        }
 
         QFile file( filePath_org );
-        file.remove();
+//        file.remove();
 
-        QvkShowMessage_wl *vkShowMessage_wl = new QvkShowMessage_wl();
-        vkShowMessage_wl->set_StatusIcon( ":/pictures/status/information.png" );
-        vkShowMessage_wl->set_Image( filePath_new );
-        vkShowMessage_wl->set_timeOut( 10000 );
-        vkShowMessage_wl->showMessage( "" );
-        vkShowMessage_wl->set_folderPath( path_to_snapshot_folder );
-
-        qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Saved under:" << filePath_new;
+        qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] image size:" << image.size() << Qt::red;
     } else {
         qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Unable to take a screenshot" << results["uri"];
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
