@@ -24,7 +24,6 @@
 #define QVKREGIONMARGINS_WL_H
 
 #include "ui_formMainWindow_wl.h"
-#include "mainWindow_wl.h"
 
 #include <QWidget>
 #include <QPixmap>
@@ -35,9 +34,8 @@ class QvkRegionMargins_wl: public QWidget
 {
     Q_OBJECT
 public:
-    QvkRegionMargins_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMainWindow_wl *ui_mainwindow );
+    QvkRegionMargins_wl( Ui_formMainWindow_wl *ui_mainwindow );
     virtual ~QvkRegionMargins_wl();
-    QvkMainWindow_wl *mainWindow;
     int screenWidth = 400;
     int screenHeight = 400;
     QPixmap pixmap;

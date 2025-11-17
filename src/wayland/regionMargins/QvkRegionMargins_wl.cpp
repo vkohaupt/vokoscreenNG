@@ -46,9 +46,8 @@
  * which describe the size of the borders around a window on the desktop.
  */
 
-QvkRegionMargins_wl::QvkRegionMargins_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMainWindow_wl *ui_mainwindow )
+QvkRegionMargins_wl::QvkRegionMargins_wl(Ui_formMainWindow_wl *ui_mainwindow )
 {
-    mainWindow = vkMainWindow;
     ui = ui_mainwindow;
 
     setWindowTitle( QString( tr( "AreaMargins") ) );
@@ -57,9 +56,13 @@ QvkRegionMargins_wl::QvkRegionMargins_wl( QvkMainWindow_wl *vkMainWindow, Ui_for
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
     setWindowIcon( icon );
 
-//    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
-//    setAttribute( Qt::WA_TranslucentBackground, true );
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+    setAttribute( Qt::WA_TranslucentBackground, true );
     setMouseTracking( true );
+
+    showMaximized();
+    hide();
+
 }
 
 
@@ -99,7 +102,6 @@ void QvkRegionMargins_wl::paintEvent( QPaintEvent *event )
     painter.begin( this );
     painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painter.drawPixmap( QPoint( 0, 0 ), pixmap );
-
     painter.end();
 
     setMask( pixmap.mask() );
@@ -171,47 +173,3 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
         qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Unable to take a screenshot" << results["uri"];
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
