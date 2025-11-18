@@ -77,27 +77,24 @@ void QvkRegionMargins_wl::paintEvent( QPaintEvent *event )
 
     QPainter painterPixmap;
     painterPixmap.begin( &image );
-    painterPixmap.setRenderHints( QPainter::SmoothPixmapTransform, true );
-    painterPixmap.setRenderHints( QPainter::Antialiasing, true );
     QPen pen;
     pen.setColor( Qt::red );
     painterPixmap.setPen( pen );
-/*    painterPixmap.drawLine( 0, 0, width()-1, 0 );
+    painterPixmap.drawLine( 0, 0, width()-1, 0 );
     painterPixmap.drawLine( width()-1, 0, width()-1, height()-1 );
     painterPixmap.drawLine( width()-1, height()-1, 0, height()-1 );
     painterPixmap.drawLine( 0, height()-1, 0, 0 );
-*/
+/*
     QBrush brush;
     brush.setColor(Qt::red);
     brush.setStyle(Qt::SolidPattern);
     painterPixmap.fillRect( 0, 0, width()-1, height()-1, brush );
     painterPixmap.end();
-
+*/
     pixmap = pixmap.fromImage( image );
 
     QPainter painter;
     painter.begin( this );
-    painter.setRenderHint( QPainter::SmoothPixmapTransform, true );
     painter.drawPixmap( QPoint( 0, 0 ), pixmap );
     painter.end();
 
@@ -151,24 +148,23 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
         QFileInfo fileInfo( url.toLocalFile() );
         QString filePath_org = fileInfo.absoluteFilePath();
 
-        QPixmap pixmap = QPixmap( filePath_org );
-        QImage image = pixmap.toImage();
-        image.save("/home/vk/Bilder/testImage.png");
-        for( int i = 0; i < image.height(); i++ ) {
-            QColor color = image.pixelColor( image.width()/2, i );
-            qDebug() << i << "color" << color;
+        QImage image_1 = QImage( filePath_org );
+        image_1.save("/home/vk/Bilder/testImage.tiff", "tiff", 100);
+
+        QImage image_2 = QImage( "/home/vk/Bilder/testImage.tiff" );
+        for( int i = 0; i < image_2.height(); i++ ) {
+            QColor color = image_2.pixelColor( image_2.width()/2, i );
             if ( color == Qt::red ) {
-            //    qDebug() << i;
-            } else {
-                //qDebug() << "Invalid" << i;
+                qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Top margin:" << i;
+                break;
             }
         }
 
         QFile file( filePath_org );
         file.remove();
 
-        qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] image size:" << image.size() << Qt::red;
+        qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_handle_response_snapshot()";
     } else {
-        qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Unable to take a screenshot" << results["uri"];
+        qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_handle_response_snapshot() Unable to take a screenshot" << results["uri"];
     }
 }
