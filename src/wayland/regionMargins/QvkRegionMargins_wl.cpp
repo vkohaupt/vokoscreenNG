@@ -103,7 +103,7 @@ void QvkRegionMargins_wl::paintEvent( QPaintEvent *event )
 
     setMask( pixmap.mask() );
 
-    qDebug() << "paintEvent";
+    qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] paintEvent()";
 }
 
 
@@ -112,7 +112,7 @@ void QvkRegionMargins_wl::resizeEvent( QResizeEvent *event )
     Q_UNUSED(event)
     screenWidth = width();
     screenHeight = height();
-    qDebug() << "resizeEvent";
+    qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] resizeEvent()";
 }
 
 
@@ -122,7 +122,7 @@ void QvkRegionMargins_wl::slot_pushButton_singleShot( bool bo )
         QTimer::singleShot(1000, [this]() {
             slot_pushButton_snapshot(); });
     }
-    qDebug() << "slot_pushButton_singleShot";
+    qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_pushButton_singleShot()";
 }
 
 
@@ -137,9 +137,9 @@ void QvkRegionMargins_wl::slot_pushButton_snapshot()
 
         if( reply.isValid() ) {
             bus.connect( "", reply.value().path(), "org.freedesktop.portal.Request", "Response", this, SLOT( slot_handle_response_snapshot(uint,QVariantMap) ) );
-            qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl]" << reply.value().path();
+            qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_pushButton_snapshot()" << reply.value().path();
         } else {
-            qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Something is wrong: " << reply.error();
+            qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_pushButton_snapshot() Something is wrong: " << reply.error();
         }
 }
 
