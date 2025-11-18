@@ -143,6 +143,11 @@ void QvkRegionMargins_wl::slot_pushButton_snapshot()
 
 void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVariantMap results )
 {
+    int top = 0;
+    int right = 0;
+    int bottom = 0;
+    int left = 0;
+
     if ( responseCode == 0 ) {
         QUrl url( results["uri"].toString() );
         QFileInfo fileInfo( url.toLocalFile() );
@@ -155,7 +160,35 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
         for( int i = 0; i < image_2.height(); i++ ) {
             QColor color = image_2.pixelColor( image_2.width()/2, i );
             if ( color == Qt::red ) {
-                qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Top margin:" << i;
+                top = i;
+                qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Top margin:" << top;
+                break;
+            }
+        }
+
+        for( int i = image_2.width()-1; i > 0; i-- ) {
+             QColor color = image_2.pixelColor( i, image_2.height()/2 );
+             if ( color == Qt::red ) {
+                 right = image_2.width() - 1 - i;
+                 qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] right margin:" << right;
+                 break;
+             }
+         }
+
+        for( int i = image_2.height()-1; i > 0; i-- ) {
+             QColor color = image_2.pixelColor( image_2.width()/2, i );
+             if ( color == Qt::red ) {
+                 bottom = image_2.height() - 1 - i;
+                 qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] bottom margin:" << bottom;
+                 break;
+             }
+         }
+
+        for( int i = 0; i < image_2.width(); i++ ) {
+            QColor color = image_2.pixelColor( i, image_2.height()/2 );
+            if ( color == Qt::red ) {
+                left = i;
+                qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Left margin:" << left;
                 break;
             }
         }
