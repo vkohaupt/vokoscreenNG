@@ -84,13 +84,7 @@ void QvkRegionMargins_wl::paintEvent( QPaintEvent *event )
     painterPixmap.drawLine( width()-1, 0, width()-1, height()-1 );
     painterPixmap.drawLine( width()-1, height()-1, 0, height()-1 );
     painterPixmap.drawLine( 0, height()-1, 0, 0 );
-/*
-    QBrush brush;
-    brush.setColor(Qt::red);
-    brush.setStyle(Qt::SolidPattern);
-    painterPixmap.fillRect( 0, 0, width()-1, height()-1, brush );
-    painterPixmap.end();
-*/
+
     pixmap = pixmap.fromImage( image );
 
     QPainter painter;
@@ -116,8 +110,7 @@ void QvkRegionMargins_wl::resizeEvent( QResizeEvent *event )
 void QvkRegionMargins_wl::slot_pushButton_singleShot( bool bo )
 {
     if ( bo == true ) {
-        QTimer::singleShot(1000, [this]() {
-            slot_pushButton_snapshot(); });
+        QTimer::singleShot(1000, [this]() { slot_pushButton_snapshot(); });
     }
     qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_pushButton_singleShot()";
 }
@@ -143,22 +136,14 @@ void QvkRegionMargins_wl::slot_pushButton_snapshot()
 
 void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVariantMap results )
 {
-    int top = 0;
-    int right = 0;
-    int bottom = 0;
-    int left = 0;
-
     if ( responseCode == 0 ) {
         QUrl url( results["uri"].toString() );
         QFileInfo fileInfo( url.toLocalFile() );
         QString filePath_org = fileInfo.absoluteFilePath();
 
-        QImage image_1 = QImage( filePath_org );
-        image_1.save("/home/vk/Bilder/testImage.tiff", "tiff", 100);
-
-        QImage image_2 = QImage( "/home/vk/Bilder/testImage.tiff" );
-        for( int i = 0; i < image_2.height(); i++ ) {
-            QColor color = image_2.pixelColor( image_2.width()/2, i );
+        QImage image = QImage( filePath_org );
+        for( int i = 0; i < image.height(); i++ ) {
+            QColor color = image.pixelColor( image.width()/2, i );
             if ( color == Qt::red ) {
                 top = i;
                 qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Top margin:" << top;
@@ -166,26 +151,26 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
             }
         }
 
-        for( int i = image_2.width()-1; i > 0; i-- ) {
-             QColor color = image_2.pixelColor( i, image_2.height()/2 );
+        for( int i = image.width()-1; i > 0; i-- ) {
+             QColor color = image.pixelColor( i, image.height()/2 );
              if ( color == Qt::red ) {
-                 right = image_2.width() - 1 - i;
+                 right = image.width() - 1 - i;
                  qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] right margin:" << right;
                  break;
              }
          }
 
-        for( int i = image_2.height()-1; i > 0; i-- ) {
-             QColor color = image_2.pixelColor( image_2.width()/2, i );
+        for( int i = image.height()-1; i > 0; i-- ) {
+             QColor color = image.pixelColor( image.width()/2, i );
              if ( color == Qt::red ) {
-                 bottom = image_2.height() - 1 - i;
+                 bottom = image.height() - 1 - i;
                  qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] bottom margin:" << bottom;
                  break;
              }
          }
 
-        for( int i = 0; i < image_2.width(); i++ ) {
-            QColor color = image_2.pixelColor( i, image_2.height()/2 );
+        for( int i = 0; i < image.width(); i++ ) {
+            QColor color = image.pixelColor( i, image.height()/2 );
             if ( color == Qt::red ) {
                 left = i;
                 qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Left margin:" << left;
@@ -200,4 +185,28 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
     } else {
         qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_handle_response_snapshot() Unable to take a screenshot" << results["uri"];
     }
+}
+
+
+int QvkRegionMargins_wl::get_top()
+{
+    return top;
+}
+
+
+int QvkRegionMargins_wl::get_right()
+{
+    return right;
+}
+
+
+int QvkRegionMargins_wl::get_bottom()
+{
+    return bottom;
+}
+
+
+int QvkRegionMargins_wl::get_left()
+{
+    return left;
 }
