@@ -185,6 +185,8 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
     } else {
         qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_handle_response_snapshot() Unable to take a screenshot" << results["uri"];
     }
+
+    setVisible( false );
 }
 
 
