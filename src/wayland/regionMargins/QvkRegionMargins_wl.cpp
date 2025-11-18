@@ -40,6 +40,7 @@
 #include <QFileInfo>
 #include <QFile>
 #include <QDateTime>
+#include <QThread>
 
 /*
  * QvkRegionMargins_wl determined four margins: left, top, right, and bottom,
@@ -59,10 +60,6 @@ QvkRegionMargins_wl::QvkRegionMargins_wl(Ui_formMainWindow_wl *ui_mainwindow )
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
     setAttribute( Qt::WA_TranslucentBackground, true );
     setMouseTracking( true );
-
-    showMaximized();
-    hide();
-
 }
 
 
@@ -119,11 +116,18 @@ void QvkRegionMargins_wl::resizeEvent( QResizeEvent *event )
 }
 
 
-void QvkRegionMargins_wl::slot_pushButton_snapshot( bool bo )
+void QvkRegionMargins_wl::slot_pushButton_singleShot( bool bo )
 {
     if ( bo == true ) {
-        setVisible( true );
+        QTimer::singleShot(1000, [this]() {
+            slot_pushButton_snapshot(); });
+    }
+    qDebug() << "slot_pushButton_singleShot";
+}
 
+
+void QvkRegionMargins_wl::slot_pushButton_snapshot()
+{
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface *i = new QDBusInterface("org.freedesktop.portal.Desktop", "/org/freedesktop/portal/desktop", "org.freedesktop.portal.Screenshot", bus, NULL);
 
@@ -137,9 +141,6 @@ void QvkRegionMargins_wl::slot_pushButton_snapshot( bool bo )
         } else {
             qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Something is wrong: " << reply.error();
         }
-    } else {
-        setVisible( false );
-    }
 }
 
 
@@ -151,22 +152,20 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
         QString filePath_org = fileInfo.absoluteFilePath();
 
         QPixmap pixmap = QPixmap( filePath_org );
-        pixmap.save("/home/vk/Bilder/testPixmap.png");
-
         QImage image = pixmap.toImage();
         image.save("/home/vk/Bilder/testImage.png");
         for( int i = 0; i < image.height(); i++ ) {
             QColor color = image.pixelColor( image.width()/2, i );
             qDebug() << i << "color" << color;
             if ( color == Qt::red ) {
-                qDebug() << i;
+            //    qDebug() << i;
             } else {
                 //qDebug() << "Invalid" << i;
             }
         }
 
         QFile file( filePath_org );
-//        file.remove();
+        file.remove();
 
         qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] image size:" << image.size() << Qt::red;
     } else {

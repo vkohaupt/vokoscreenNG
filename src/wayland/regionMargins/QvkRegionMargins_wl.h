@@ -39,11 +39,12 @@ public:
     int screenWidth = 400;
     int screenHeight = 400;
     QPixmap pixmap;
+    void slot_pushButton_snapshot();
 
 
 public slots:
-    void slot_pushButton_snapshot( bool bo );
-    void slot_handle_response_snapshot(  uint responseCode, QVariantMap results );
+    void slot_handle_response_snapshot( uint responseCode, QVariantMap results );
+    void slot_pushButton_singleShot(bool bo);
 
 
 private slots:

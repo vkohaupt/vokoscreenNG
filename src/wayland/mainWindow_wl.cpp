@@ -179,7 +179,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->widgetLanguageAndHelp->setVisible( false );
 
     QvkRegionMargins_wl *vkRegionMargins_wl = new QvkRegionMargins_wl( ui );
-    connect( ui->checkBoxDesktopMargins, SIGNAL( clicked(bool) ), vkRegionMargins_wl, SLOT( slot_pushButton_snapshot(bool) ) );
+    connect( ui->checkBoxDesktopMargins, SIGNAL( clicked(bool) ), vkRegionMargins_wl, SLOT( setVisible(bool) ) );
+    connect( ui->checkBoxDesktopMargins, SIGNAL( clicked(bool) ), vkRegionMargins_wl, SLOT( slot_pushButton_singleShot(bool) ) );
  }
 
 
