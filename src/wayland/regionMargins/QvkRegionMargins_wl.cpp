@@ -62,7 +62,6 @@ QvkRegionMargins_wl::QvkRegionMargins_wl(Ui_formMainWindow_wl *ui_mainwindow )
     setMouseTracking( true );
 
     color = Qt::cyan;
-
 }
 
 
@@ -172,7 +171,6 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
 
         for( int i = image.height()-1; i > 0; i-- ) {
              QColor pixelColor = image.pixelColor( image.width()/2, i );
-//             qDebug() << i << pixelColor;// << QColor( Qt::red );
              if ( pixelColor == color ) {
                  bottom = image.height() - 1 - i;
                  qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] bottom margin:" << bottom;
@@ -190,7 +188,7 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
         }
 
         QFile file( filePath_org );
-        //file.remove();
+        file.remove();
 
         qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_handle_response_snapshot()" << size();
     } else {
