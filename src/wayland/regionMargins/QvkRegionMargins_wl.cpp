@@ -83,8 +83,19 @@ void QvkRegionMargins_wl::paintEvent( QPaintEvent *event )
     QBrush brush;
     brush.setColor( color );
     brush.setStyle(Qt::SolidPattern);
-    painterPixmap.fillRect( 0, 0, width(), height(), brush );
+    int lineWidth = 10;
+    painterPixmap.fillRect( 0, 0, width(), lineWidth, brush );
+    painterPixmap.fillRect( width()-lineWidth, 0, width(), height(), brush );
+    painterPixmap.fillRect( 0, height()-lineWidth, width(), height(), brush );
+    painterPixmap.fillRect( 0, 0, lineWidth, height()-lineWidth, brush );
+    painterPixmap.end();
+
 /*
+    QBrush brush;
+    brush.setColor( color );
+    brush.setStyle(Qt::SolidPattern);
+    painterPixmap.fillRect( 0, 0, width(), height(), brush );
+
     QPen pen;
     pen.setColor( color );
     painterPixmap.setPen( pen );
