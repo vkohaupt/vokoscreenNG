@@ -60,6 +60,9 @@ QvkRegionMargins_wl::QvkRegionMargins_wl(Ui_formMainWindow_wl *ui_mainwindow )
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
     setAttribute( Qt::WA_TranslucentBackground, true );
     setMouseTracking( true );
+
+    color = Qt::cyan;
+
 }
 
 
@@ -79,18 +82,18 @@ void QvkRegionMargins_wl::paintEvent( QPaintEvent *event )
     painterPixmap.begin( &image );
 
     QBrush brush;
-    brush.setColor(Qt::cyan);
+    brush.setColor( color );
     brush.setStyle(Qt::SolidPattern);
-    painterPixmap.fillRect( 0, 0, width()-1, height()-1, brush );
-
+    painterPixmap.fillRect( 0, 0, width(), height(), brush );
+/*
     QPen pen;
-    pen.setColor( Qt::cyan );
+    pen.setColor( color );
     painterPixmap.setPen( pen );
     painterPixmap.drawLine( 0, 0, width()-1, 0 );
     painterPixmap.drawLine( width()-1, 0, width()-1, height()-1 );
-    painterPixmap.drawLine( width()-2, height()-2, 0, height()-2 );
+    painterPixmap.drawLine( width()-1, height()-1, 0, height()-1 );
     painterPixmap.drawLine( 0, height()-1, 0, 0 );
-
+*/
     pixmap = pixmap.fromImage( image );
 
     QPainter painter;
@@ -143,8 +146,6 @@ void QvkRegionMargins_wl::slot_pushButton_snapshot()
 
 void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVariantMap results )
 {
-    QColor color = Qt::cyan;
-
     if ( responseCode == 0 ) {
         QUrl url( results["uri"].toString() );
         QFileInfo fileInfo( url.toLocalFile() );

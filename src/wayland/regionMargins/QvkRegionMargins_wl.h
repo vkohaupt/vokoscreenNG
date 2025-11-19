@@ -44,6 +44,7 @@ public:
     int get_bottom();
     int get_left();
 
+
 public slots:
     void slot_handle_response_snapshot( uint responseCode, QVariantMap results );
     void slot_pushButton_snapshot();
@@ -67,6 +68,7 @@ private:
     int right = 0;
     int bottom = 0;
     int left = 0;
+    QColor color;
 
 };
 
