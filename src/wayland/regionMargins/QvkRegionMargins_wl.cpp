@@ -61,7 +61,7 @@ QvkRegionMargins_wl::QvkRegionMargins_wl(Ui_formMainWindow_wl *ui_mainwindow )
     setAttribute( Qt::WA_TranslucentBackground, true );
     setMouseTracking( true );
 
-    color = Qt::cyan;
+    color = "#3DAEE9";
 }
 
 
