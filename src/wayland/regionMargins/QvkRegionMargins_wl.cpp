@@ -91,7 +91,7 @@ void QvkRegionMargins_wl::paintEvent( QPaintEvent *event )
     painterPixmap.fillRect( 0, 0, width(), lineWidth, brush );
     painterPixmap.fillRect( width()-lineWidth, 0, width(), height(), brush );
     painterPixmap.fillRect( 0, height()-lineWidth, width(), height(), brush );
-    painterPixmap.fillRect( 0, 0, lineWidth, height()-lineWidth, brush );
+    painterPixmap.fillRect( 0, 0, lineWidth, height(), brush );
     painterPixmap.end();
 
 /*
