@@ -41,6 +41,10 @@
 #include <QFile>
 #include <QDateTime>
 #include <QThread>
+#include <QImage>
+#include <QBrush>
+#include <QTimer>
+#include <QColor>
 
 /*
  * QvkRegionMargins_wl determined four margins: left, top, right, and bottom,

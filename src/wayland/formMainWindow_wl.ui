@@ -497,13 +497,6 @@
                         </spacer>
                        </item>
                        <item>
-                        <widget class="QCheckBox" name="checkBoxDesktopMargins">
-                         <property name="text">
-                          <string notr="true">DesktopMargins</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
                         <spacer name="horizontalSpacer_2">
                          <property name="orientation">
                           <enum>Qt::Horizontal</enum>
@@ -545,6 +538,13 @@
                    </widget>
                   </item>
                  </layout>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="checkBoxDesktopMargins">
+                  <property name="text">
+                   <string notr="true">DesktopMargins</string>
+                  </property>
+                 </widget>
                 </item>
                 <item>
                  <widget class="Line" name="line_2">
@@ -635,7 +635,7 @@
                           <x>0</x>
                           <y>0</y>
                           <width>401</width>
-                          <height>101</height>
+                          <height>71</height>
                          </rect>
                         </property>
                         <property name="accessibleName">
