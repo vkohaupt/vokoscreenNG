@@ -69,6 +69,7 @@ private:
     int bottom = 0;
     int left = 0;
     QColor color;
+    int lineWidth = 30;
 
 };
 

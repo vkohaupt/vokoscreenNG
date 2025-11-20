@@ -87,7 +87,6 @@ void QvkRegionMargins_wl::paintEvent( QPaintEvent *event )
     QBrush brush;
     brush.setColor( color );
     brush.setStyle(Qt::SolidPattern);
-    int lineWidth = 10;
     painterPixmap.fillRect( 0, 0, width(), lineWidth, brush );
     painterPixmap.fillRect( width()-lineWidth, 0, lineWidth, height(), brush );
     painterPixmap.fillRect( 0, height()-lineWidth, width(), lineWidth, brush );
@@ -175,19 +174,19 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
             }
         }
 
-        for( int i = image.width()-1; i > 0; i-- ) {
+        for( int i = image.width()/2; i < image.width(); i++ ) {
              QColor pixelColor = image.pixelColor( i, image.height()/2 );
              if ( pixelColor == color ) {
-                 right = image.width() - 1 - i;
+                 right = image.width() - i - lineWidth;
                  qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] right margin:" << right;
                  break;
              }
          }
 
-        for( int i = image.height()-1; i > 0; i-- ) {
+        for( int i = image.height()/2; i < image.height(); i++ ) {
              QColor pixelColor = image.pixelColor( image.width()/2, i );
              if ( pixelColor == color ) {
-                 bottom = image.height() - 1 - i;
+                 bottom = image.height() - i - lineWidth;
                  qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] bottom margin:" << bottom;
                  break;
              }
@@ -203,7 +202,7 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
         }
 
         QFile file( filePath_org );
-        file.remove();
+        //file.remove();
 
         qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_handle_response_snapshot()" << size();
     } else {
