@@ -164,6 +164,12 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
         QFileInfo fileInfo( url.toLocalFile() );
         QString filePath_org = fileInfo.absoluteFilePath();
 
+        /*
+         * Hinweis für alle Ränder
+         * Die Pixel werden von der Mitte zum Rand hin ausgwertet.
+         *
+         */
+
         QImage image = QImage( filePath_org );
         for( int i = image.height()/2; i > 0; i-- ) {
             QColor pixelColor = image.pixelColor( image.width()/2, i );
@@ -192,17 +198,17 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
              }
          }
 
-        for( int i = 0; i < image.width(); i++ ) {
+        for( int i = image.width()/2; i > 0; i-- ) {
             QColor pixelColor = image.pixelColor( i, image.height()/2 );
             if ( pixelColor == color ) {
-                left = i;
+                left = i + 1 - lineWidth;
                 qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Left margin:" << left;
                 break;
             }
         }
 
         QFile file( filePath_org );
-        //file.remove();
+        file.remove();
 
         qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_handle_response_snapshot()" << size();
     } else {
