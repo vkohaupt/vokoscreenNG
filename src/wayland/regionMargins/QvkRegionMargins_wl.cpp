@@ -165,10 +165,10 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
         QString filePath_org = fileInfo.absoluteFilePath();
 
         QImage image = QImage( filePath_org );
-        for( int i = 0; i < image.height(); i++ ) {
+        for( int i = image.height()/2; i > 0; i-- ) {
             QColor pixelColor = image.pixelColor( image.width()/2, i );
             if ( pixelColor == color ) {
-                top = i;
+                top = i + 1 - lineWidth;
                 qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Top margin:" << top;
                 break;
             }
