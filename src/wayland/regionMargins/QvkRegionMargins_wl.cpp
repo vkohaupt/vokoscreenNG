@@ -65,7 +65,9 @@ QvkRegionMargins_wl::QvkRegionMargins_wl(Ui_formMainWindow_wl *ui_mainwindow )
     setAttribute( Qt::WA_TranslucentBackground, true );
     setMouseTracking( true );
 
-    color = "#3DAEE9";
+    // Original vokoscreen color is "#3DAEE9"
+    // We'll choose a similar but not the same color.
+    color = "#5DAEE9";
 }
 
 
