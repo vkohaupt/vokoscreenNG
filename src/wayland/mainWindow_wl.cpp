@@ -8,7 +8,6 @@
 #include "QvkConvert_mkv_gif_wl.h"
 #include "QvkConvert_mkv_to_webm_wl.h"
 #include "QvkConvert_mkv_repair_wl.h"
-#include "QvkRegionMargins_wl.h"
 
 #include "global.h"
 #include "QvkLicenses.h"
@@ -96,6 +95,11 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     QvkInformation_wl *vkInformation = new QvkInformation_wl( this, ui );
     connect( this, SIGNAL( signal_newVideoFilename(QString) ), vkInformation, SLOT( slot_newVideoFilename(QString) ) );
     connect( this, SIGNAL( signal_beginRecordTime(QString) ),  vkInformation, SLOT( slot_beginRecordTime(QString) ) );
+
+    vkRegionMargins_wl = new QvkRegionMargins_wl( ui );
+    connect( ui->checkBoxDesktopMargins, SIGNAL( clicked(bool) ), vkRegionMargins_wl, SLOT( setVisible(bool) ) );
+    connect( ui->checkBoxDesktopMargins, SIGNAL( clicked(bool) ), vkRegionMargins_wl, SLOT( slot_singleShot(bool) ) );
+
     set_RegionChoice();
     set_Connects();
     set_check_screencast_elements_available();
@@ -178,9 +182,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
     ui->widgetLanguageAndHelp->setVisible( false );
 
-    QvkRegionMargins_wl *vkRegionMargins_wl = new QvkRegionMargins_wl( ui );
-    connect( ui->checkBoxDesktopMargins, SIGNAL( clicked(bool) ), vkRegionMargins_wl, SLOT( setVisible(bool) ) );
-    connect( ui->checkBoxDesktopMargins, SIGNAL( clicked(bool) ), vkRegionMargins_wl, SLOT( slot_pushButton_singleShot(bool) ) );
  }
 
 
@@ -369,7 +370,9 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_video,                     SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_audio,                     SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_3,                         SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this,                                SLOT( slot_portal_start() ) );
+//    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this,                                SLOT( slot_portal_start() ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this,                                SLOT( slot_area_margins_start() ) );
+    connect( vkRegionMargins_wl,  SIGNAL( signal_regionMargins() ), this,                       SLOT( slot_portal_start() ) );
 
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), this,                                SLOT( slot_stop() ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->pushButtonStop,                  SLOT( setEnabled(bool) ) );
@@ -563,6 +566,26 @@ void QvkMainWindow_wl::supportedImageFormats()
 //        |
 //
 //------------------------------------------------
+
+void QvkMainWindow_wl::slot_area_margins_start()
+{
+    if ( ui->radioButtonScreencastArea->isChecked() ) {
+        vkRegionMargins_wl->setVisible(true);
+        vkRegionMargins_wl->slot_singleShot(true);
+    }
+
+    if ( ui->radioButtonScreencastWindow->isChecked() ) {
+        slot_portal_start();
+    }
+
+    if ( ui->radioButtonScreencastFullscreen->isChecked() ) {
+        slot_portal_start();
+    }
+
+    qDebug().noquote() << global::nameOutput << "[QvkMainWindow_wl] slot_area_margins_start()";
+}
+
+
 void QvkMainWindow_wl::slot_portal_start()
 {
     // Value 1 = MONITOR
@@ -612,21 +635,10 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
     int divBottom = 0;
     int divLeft = 0;
 
-    if ( ui->toolButton_area_top->isChecked() == true ) {
-        divTop = ( screen()->size().height() * vkRegionChoise_wl->myDevicePixelRatio() ) - vkRegionChoise_wl->get_height_from_window();
-    }
-
-    if ( ui->toolButton_area_right->isChecked() == true ) {
-        divRight = ( screen()->size().width() * vkRegionChoise_wl->myDevicePixelRatio() ) - vkRegionChoise_wl->get_width_from_window();
-    }
-
-    if ( ui->toolButton_area_bottom->isChecked() == true ) {
-        divBottom = ( screen()->size().height() * vkRegionChoise_wl->myDevicePixelRatio() ) - vkRegionChoise_wl->get_height_from_window();
-    }
-
-    if ( ui->toolButton_area_left->isChecked() == true ) {
-        divLeft = ( screen()->size().width() * vkRegionChoise_wl->myDevicePixelRatio() ) - vkRegionChoise_wl->get_width_from_window();
-    }
+    divTop    = vkRegionMargins_wl->get_top();
+    divRight  = vkRegionMargins_wl->get_right();
+    divBottom = vkRegionMargins_wl->get_bottom();
+    divLeft   = vkRegionMargins_wl->get_left();
 
     QString top    = QString::number( vkRegionChoise_wl->get_YRecordArea() + divTop );
     QString right  = QString::number( vkRegionChoise_wl->get_width_from_window() - ( vkRegionChoise_wl->get_XRecordArea() + vkRegionChoise_wl->get_WidthRecordArea() - divRight ) );
@@ -638,7 +650,7 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
                        << vkRegionChoise_wl->screen()->name() + ","
                        << vkRegionChoise_wl->screen()->manufacturer() + ","
                        << vkRegionChoise_wl->screen()->model() + ","
-                       << QString::number( vkRegionChoise_wl->screen()->size().width() ) + "x" + QString::number( vkRegionChoise_wl->screen()->size().height() );
+                       << QString::number( vkRegionChoise_wl->screen()->size().width() ) + "x" + QString::number( vkRegionChoise_wl->screen()->size().height() ) + videocrop;
 
     return videocrop;
 }

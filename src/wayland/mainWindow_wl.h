@@ -9,6 +9,7 @@
 #include "QvkCountdown_wl.h"
 #include "QvkHelp_wl.h"
 #include "QvkSystray_wl.h"
+#include "QvkRegionMargins_wl.h"
 
 #include "QvkSpezialSlider.h"
 #include "QvkLogController.h"
@@ -57,6 +58,7 @@ private:
     QvkContainerController_wl *vkContainerController_wl;
     QStringList VK_getSelectedAudioDevice();
     QString Pipeline_structured_output( QString pipeline );
+    QvkRegionMargins_wl *vkRegionMargins_wl;
 
     void set_WindowTitle();
     void set_CornerWidget();
@@ -112,6 +114,8 @@ private Q_SLOTS:
     void slot_handle_response_snapshot( uint responseCode, QVariantMap results );
     void slot_path_to_snapshot_folder( bool bo );
     // Snapshot
+
+    void slot_area_margins_start();
 
 
 protected:

@@ -47,14 +47,15 @@ public:
 
 public slots:
     void slot_handle_response_snapshot( uint responseCode, QVariantMap results );
-    void slot_pushButton_snapshot();
-    void slot_pushButton_singleShot(bool bo);
+    void slot_snapshot();
+    void slot_singleShot(bool bo);
 
 
 private slots:
 
 
 signals:
+    void signal_regionMargins();
 
 
 protected:  

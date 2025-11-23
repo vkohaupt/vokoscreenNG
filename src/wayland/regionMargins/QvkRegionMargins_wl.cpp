@@ -131,17 +131,17 @@ void QvkRegionMargins_wl::resizeEvent( QResizeEvent *event )
 }
 
 
-void QvkRegionMargins_wl::slot_pushButton_singleShot( bool bo )
+void QvkRegionMargins_wl::slot_singleShot( bool bo )
 {
     if ( bo == true ) {
         showMaximized();
-        QTimer::singleShot(1000, [this]() { slot_pushButton_snapshot(); });
+        QTimer::singleShot(1000, [this]() { slot_snapshot(); });
     }
-    qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_pushButton_singleShot()";
+    qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_singleShot()";
 }
 
 
-void QvkRegionMargins_wl::slot_pushButton_snapshot()
+void QvkRegionMargins_wl::slot_snapshot()
 {
         QDBusConnection bus = QDBusConnection::sessionBus();
         QDBusInterface *i = new QDBusInterface("org.freedesktop.portal.Desktop", "/org/freedesktop/portal/desktop", "org.freedesktop.portal.Screenshot", bus, NULL);
@@ -152,7 +152,7 @@ void QvkRegionMargins_wl::slot_pushButton_snapshot()
 
         if( reply.isValid() ) {
             bus.connect( "", reply.value().path(), "org.freedesktop.portal.Request", "Response", this, SLOT( slot_handle_response_snapshot(uint,QVariantMap) ) );
-            qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_pushButton_snapshot()" << reply.value().path();
+            qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_snapshot()" << reply.value().path();
         } else {
             qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_pushButton_snapshot() Something is wrong: " << reply.error();
         }
@@ -218,6 +218,8 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
     }
 
     setVisible( false );
+
+    emit signal_regionMargins();
 }
 
 
