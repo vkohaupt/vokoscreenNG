@@ -245,6 +245,9 @@ void QvkRegionChoise_wl::mousePressEvent( QMouseEvent *event )
 
     clearMask();
     repaint();
+
+    // Siehe Hinweis in mouseReleaseEvent
+    resize( width()-1, height()-1 );
 }
 
 
@@ -265,8 +268,8 @@ void QvkRegionChoise_wl::mouseReleaseEvent( QMouseEvent * event )
     // setVisible( false );
     // setVisible( true );
 
-    // Oder ein resize, das Fenster flackert nicht bzw. zeigt keine Anzeichen einer Animation.
-    resize( width()-1, height()-1 );
+    // Oder ein resize, das Fenster flackert nicht bzw. zeigt keine Anzeichen einer Animation,
+    // wie bei setVisible(false/true)
     resize( width()+1, height()+1 );
 }
 
