@@ -97,8 +97,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     connect( this, SIGNAL( signal_beginRecordTime(QString) ),  vkInformation, SLOT( slot_beginRecordTime(QString) ) );
 
     vkRegionMargins_wl = new QvkRegionMargins_wl( ui );
-    connect( ui->checkBoxDesktopMargins, SIGNAL( clicked(bool) ), vkRegionMargins_wl, SLOT( setVisible(bool) ) );
-    connect( ui->checkBoxDesktopMargins, SIGNAL( clicked(bool) ), vkRegionMargins_wl, SLOT( slot_singleShot(bool) ) );
 
     set_RegionChoice();
     set_Connects();
@@ -305,10 +303,6 @@ void QvkMainWindow_wl::get_system_info()
             ui->radioButtonScreencastArea->hide();
             ui->frame_area->hide();
             ui->toolButtonScreencastAreaReset->hide();
-            ui->toolButton_area_top->hide();
-            ui->toolButton_area_right->hide();
-            ui->toolButton_area_bottom->hide();
-            ui->toolButton_area_left->hide();
         }
     }
     if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
@@ -1176,31 +1170,6 @@ void QvkMainWindow_wl::set_RegionChoice()
 {
     vkRegionChoise_wl = new QvkRegionChoise_wl( ui );
     connect( ui->radioButtonScreencastArea, SIGNAL( toggled(bool) ), vkRegionChoise_wl, SLOT( setVisible(bool) ) );
-
-    connect( ui->toolButton_area_top, &QPushButton::clicked, this, [=]() { ui->toolButton_area_top->setIcon( QIcon( ":/pictures/screencast/accept.png" ) );
-                                                                           ui->toolButton_area_right->setIcon( QIcon( "" ) );
-                                                                           ui->toolButton_area_bottom->setIcon( QIcon( "" ) );
-                                                                           ui->toolButton_area_left->setIcon( QIcon( "" ) );
-                                                                         } );
-
-    connect( ui->toolButton_area_right, &QPushButton::clicked, this, [=]() { ui->toolButton_area_right->setIcon( QIcon( ":/pictures/screencast/accept.png" ) );
-                                                                             ui->toolButton_area_bottom->setIcon( QIcon( "" ) );
-                                                                             ui->toolButton_area_left->setIcon( QIcon( "" ) );
-                                                                             ui->toolButton_area_top->setIcon( QIcon( "" ) );
-                                                                           } );
-
-    connect( ui->toolButton_area_bottom, &QPushButton::clicked, this, [=]() { ui->toolButton_area_bottom->setIcon( QIcon( ":/pictures/screencast/accept.png" ) );
-                                                                              ui->toolButton_area_left->setIcon( QIcon( "" ) );
-                                                                              ui->toolButton_area_top->setIcon( QIcon( "" ) );
-                                                                              ui->toolButton_area_right->setIcon( QIcon( "" ) );
-                                                                            } );
-
-    connect( ui->toolButton_area_left, &QPushButton::clicked, this, [=]() { ui->toolButton_area_left->setIcon( QIcon( ":/pictures/screencast/accept.png" ) );
-                                                                            ui->toolButton_area_top->setIcon( QIcon( "" ) );
-                                                                            ui->toolButton_area_right->setIcon( QIcon( "" ) );
-                                                                            ui->toolButton_area_bottom->setIcon( QIcon( "" ) );
-                                                                          } );
-
     vkRegionChoise_wl->slot_init();
 }
 
