@@ -267,6 +267,7 @@ void QvkRegionChoise_wl::mouseReleaseEvent( QMouseEvent * event )
 
     // Oder ein resize, das Fenster flackert nicht bzw. zeigt keine Anzeichen einer Animation.
     resize( width()-1, height()-1 );
+    resize( width()+1, height()+1 );
 }
 
 
