@@ -1031,10 +1031,6 @@ void QvkRegionChoise_wl::HandleTopLeftSize( QPainter &painter)
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-/*    painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( frame_X + framePenHalf + 1 ) +
-                                                "\n" +
-                                                "y:" + QString::number( frame_Y + framePenHalf + 1 ) );
-*/
     painter.drawText( rect, Qt::AlignCenter, "x:" + QString::number( static_cast<int>(( frame_X + framePenHalf ) * devicePixelRatio()) ) +
                                              "\n" +
                                              "y:" + QString::number( static_cast<int>(( frame_Y + framePenHalf ) * devicePixelRatio()) ) );
@@ -1086,9 +1082,7 @@ void QvkRegionChoise_wl::HandleTopMiddleSize( QPainter &painter )
     painter.setBrush( QBrush( HandleColorBackgroundSize, Qt::SolidPattern ) );
     painter.setPen( QPen( Qt::black, 2 ) );
     painter.drawRoundedRect( rect, 5, 5 );
-//    painter.drawText( rect, Qt::AlignCenter, "y:" + QString::number( frame_Y + framePenHalf + 1 ) );
     painter.drawText( rect, Qt::AlignCenter, "y:" + QString::number( static_cast<int>(( frame_Y + framePenHalf ) * devicePixelRatio()) ) );
-
 }
 
 
@@ -1488,7 +1482,6 @@ int QvkRegionChoise_wl::get_height_from_window()
  */
 int QvkRegionChoise_wl::get_XRecordArea()
 {
-//    return ( frame_X + framePenWidth/2 + 1 ) * myDevicePixelRatio();
     return ( frame_X + framePenWidth/2 ) * myDevicePixelRatio();
 }
 
@@ -1498,9 +1491,9 @@ int QvkRegionChoise_wl::get_XRecordArea()
  */
 int QvkRegionChoise_wl::get_YRecordArea()
 {
-//    return ( frame_Y + framePenWidth/2 + 1 ) * myDevicePixelRatio();
     return ( frame_Y + framePenWidth/2 ) * myDevicePixelRatio();
 }
+
 
 /**
  * Return width from record Area
@@ -1509,6 +1502,7 @@ int QvkRegionChoise_wl::get_WidthRecordArea()
 {
     return ( frame_Width - framePenWidth ) * myDevicePixelRatio();
 }
+
 
 /**
  * Return height from record area
