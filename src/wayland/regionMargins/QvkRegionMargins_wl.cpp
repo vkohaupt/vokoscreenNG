@@ -55,7 +55,7 @@ QvkRegionMargins_wl::QvkRegionMargins_wl(Ui_formMainWindow_wl *ui_mainwindow )
 {
     ui = ui_mainwindow;
 
-    setWindowTitle( QString( tr( "AreaMargins") ) );
+    setWindowTitle( QString( "AreaMargins") );
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );

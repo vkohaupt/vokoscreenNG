@@ -226,13 +226,6 @@
     </message>
 </context>
 <context>
-    <name>QvkRegionMargins_wl</name>
-    <message>
-        <source>AreaMargins</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>QvkShowMessage_wl</name>
     <message>
         <source>Folder</source>
