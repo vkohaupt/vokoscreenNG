@@ -192,3 +192,25 @@ void QvkSettings_wl::saveAll( Ui_formMainWindow_wl *ui_mainwindow , QMainWindow 
     settings.endGroup();
 }
 
+
+void QvkSettings_wl::saveAreaScreencast( qreal x, qreal y, qreal width, qreal height  )
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    settings.beginGroup( "AreaScreencast_wl" );
+    settings.setValue( "X", QVariant(x).toInt() );
+    settings.setValue( "Y", QVariant(y).toInt() );
+    settings.setValue( "Width", QVariant(width).toInt() );
+    settings.setValue( "Height", QVariant(height).toInt() );
+    settings.endGroup();
+}
+
+void QvkSettings_wl::readAreaScreencast( QvkRegionChoise_wl *vkRegionChoise )
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    settings.beginGroup( "AreaScreencast_wl" );
+    vkRegionChoise->setX( settings.value( "X", 200 ).toInt() );
+    vkRegionChoise->setY( settings.value( "Y", 200 ).toInt() );
+    vkRegionChoise->setWidth( settings.value( "Width", 320 ).toInt() );
+    vkRegionChoise->setHeight( settings.value( "Height", 200 ).toInt() );
+    settings.endGroup();
+}

@@ -49,6 +49,11 @@ public:
     int get_HeightRecordArea();
 
     void set_recordMode( bool value );
+    void setX( int x );
+    void setY( int y );
+    void setWidth( int width );
+    void setHeight( int height );
+
     void set_FrameColor( QColor color );
 
     int screenWidth = 400;

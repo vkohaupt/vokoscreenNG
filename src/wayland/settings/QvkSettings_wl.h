@@ -29,6 +29,7 @@
 #include <QMainWindow>
 
 #include "ui_formMainWindow_wl.h"
+#include "QvkRegionChoise_wl.h"
 
 class QvkSettings_wl: public QObject
 { 
@@ -38,6 +39,8 @@ public:
     virtual ~QvkSettings_wl();
     void readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *parent );
     void saveAll( Ui_formMainWindow_wl *ui_mainwindow , QMainWindow *parent );
+    void saveAreaScreencast( qreal x, qreal y, qreal width, qreal height );
+    void readAreaScreencast( QvkRegionChoise_wl *vkRegionChoise );
 
 
 public slots:

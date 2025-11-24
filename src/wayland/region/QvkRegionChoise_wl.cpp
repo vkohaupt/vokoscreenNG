@@ -1523,3 +1523,34 @@ void QvkRegionChoise_wl::slot_areaReset()
     repaint();
     setMask( pixmap.mask() );
 }
+
+
+void QvkRegionChoise_wl::setX( int x )
+{
+    frame_X = x - framePenHalf;
+    repaint();
+    update();
+}
+
+
+void QvkRegionChoise_wl::setY( int y )
+{
+    frame_Y = y - framePenHalf;
+    repaint();
+    update();
+}
+
+
+void QvkRegionChoise_wl::setWidth( int width )
+{
+    frame_Width = width + framePenWidth;
+    repaint();
+    update();
+}
+
+void QvkRegionChoise_wl::setHeight( int height )
+{
+    frame_height = height + framePenWidth;
+    repaint();
+    update();
+}
