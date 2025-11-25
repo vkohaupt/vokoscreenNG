@@ -193,6 +193,13 @@ void QvkSettings_wl::saveAll( Ui_formMainWindow_wl *ui_mainwindow , QMainWindow 
 }
 
 
+QString QvkSettings_wl::getFileName()
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    return settings.fileName();
+}
+
+
 void QvkSettings_wl::saveAreaScreencast( qreal x, qreal y, qreal width, qreal height  )
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );

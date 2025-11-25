@@ -320,8 +320,8 @@ void QvkMainWindow_wl::get_system_info()
     qDebug().noquote() << global::nameOutput << "Qt-PluginsPath:     " << QLibraryInfo::path( QLibraryInfo::PluginsPath );
     qDebug().noquote() << global::nameOutput << "Qt-TranslationsPath:" << QLibraryInfo::path( QLibraryInfo::TranslationsPath );
     qDebug().noquote() << global::nameOutput << "Qt-LibraryPath:     " << QLibraryInfo::path( QLibraryInfo::LibrariesPath );
-//    qDebug().noquote() << global::nameOutput << "Settings:" << vkSettings_wl.getFileName();
-    qDebug().noquote() << global::nameOutput << "Log:" << vkLogController->get_log_filePath();
+    qDebug().noquote() << global::nameOutput << "SettingsPath:" << vkSettings_wl.getFileName();
+    qDebug().noquote() << global::nameOutput << "LogPath:" << vkLogController->get_log_filePath();
     qDebug().noquote() << global::nameOutput << "Default Videopath:" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
 //    qDebug().noquote() << global::nameOutput << "User Videopath:" << vkSettings_wl.getVideoPath();
     qDebug().noquote();
@@ -878,7 +878,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
     if ( ret == GST_STATE_CHANGE_FAILURE )
     {
-        qDebug().noquote() << global::name << "Unable to set the pipeline to the playing state.";
+        qDebug().noquote() << global::nameOutput << "Unable to set the pipeline to the playing state.";
         gst_object_unref( pipeline );
         return;
     }
