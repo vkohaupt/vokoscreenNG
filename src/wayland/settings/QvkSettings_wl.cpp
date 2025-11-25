@@ -204,6 +204,7 @@ void QvkSettings_wl::saveAreaScreencast( qreal x, qreal y, qreal width, qreal he
     settings.endGroup();
 }
 
+
 void QvkSettings_wl::readAreaScreencast( QvkRegionChoise_wl *vkRegionChoise )
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );

@@ -47,7 +47,7 @@ public:
 
 
 private:
-    QvkSettings_wl vkSettings;
+    QvkSettings_wl vkSettings_wl;
     QTranslator translator;
     QTranslator qtTranslator;
     QvkRegionChoise_wl *vkRegionChoise_wl;

@@ -176,10 +176,10 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         connect( vkSystray,                 SIGNAL( signal_SystemtrayIsClose() ), this,      SLOT( close() ) );
     }
 
-    vkSettings.readAll( ui, this );
+    vkSettings_wl.readAll( ui, this );
+    vkSettings_wl.readAreaScreencast( vkRegionChoise_wl );
 
     ui->widgetLanguageAndHelp->setVisible( false );
-
  }
 
 
@@ -204,7 +204,12 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 
     ui->pushButtonStop->click();
     vkRegionChoise_wl->close();
-    vkSettings.saveAll( ui, this );
+    vkSettings_wl.saveAll( ui, this );
+    vkSettings_wl.saveAreaScreencast( vkRegionChoise_wl->get_XRecordArea() / vkRegionChoise_wl->screen()->devicePixelRatio(),
+                                      vkRegionChoise_wl->get_YRecordArea() / vkRegionChoise_wl->screen()->devicePixelRatio(),
+                                      vkRegionChoise_wl->get_WidthRecordArea() / vkRegionChoise_wl->screen()->devicePixelRatio(),
+                                      vkRegionChoise_wl->get_HeightRecordArea() / vkRegionChoise_wl->screen()->devicePixelRatio()
+                                      );
     vkSystray->deleteLater();
 
     qDebug().noquote() << global::nameOutput << "QvkMainWindow_wl::closeEvent End close";
@@ -315,10 +320,10 @@ void QvkMainWindow_wl::get_system_info()
     qDebug().noquote() << global::nameOutput << "Qt-PluginsPath:     " << QLibraryInfo::path( QLibraryInfo::PluginsPath );
     qDebug().noquote() << global::nameOutput << "Qt-TranslationsPath:" << QLibraryInfo::path( QLibraryInfo::TranslationsPath );
     qDebug().noquote() << global::nameOutput << "Qt-LibraryPath:     " << QLibraryInfo::path( QLibraryInfo::LibrariesPath );
-//    qDebug().noquote() << global::nameOutput << "Settings:" << vkSettings.getFileName();
+//    qDebug().noquote() << global::nameOutput << "Settings:" << vkSettings_wl.getFileName();
     qDebug().noquote() << global::nameOutput << "Log:" << vkLogController->get_log_filePath();
     qDebug().noquote() << global::nameOutput << "Default Videopath:" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
-//    qDebug().noquote() << global::nameOutput << "User Videopath:" << vkSettings.getVideoPath();
+//    qDebug().noquote() << global::nameOutput << "User Videopath:" << vkSettings_wl.getVideoPath();
     qDebug().noquote();
 }
 
