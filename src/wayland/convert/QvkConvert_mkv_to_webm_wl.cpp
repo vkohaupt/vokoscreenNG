@@ -379,7 +379,7 @@ typedef struct _CustomData
 // Print a tag in a human-readable format (name: value)
 static void print_tag_foreach( const GstTagList *tags, const gchar *tag, gpointer user_data )
 {
-    GValue val = { 0, };
+    GValue val = { 0, 0 };
     gchar *str;
     gint depth = GPOINTER_TO_INT( user_data );
 
