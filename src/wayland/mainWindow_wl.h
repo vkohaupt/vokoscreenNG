@@ -93,6 +93,7 @@ public Q_SLOTS:
 
 
 private Q_SLOTS:
+    void slot_pre_portal_start();
     void slot_portal_start();
     void slot_portal_dialog_aborted();
     void slot_pre_start( QString vk_fd, QString vk_path );
@@ -114,8 +115,6 @@ private Q_SLOTS:
     void slot_handle_response_snapshot( uint responseCode, QVariantMap results );
     void slot_path_to_snapshot_folder( bool bo );
     // Snapshot
-
-    void slot_area_margins_start();
 
 
 protected:

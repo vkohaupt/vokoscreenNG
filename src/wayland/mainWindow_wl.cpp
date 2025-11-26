@@ -370,7 +370,7 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_audio,                     SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_3,                         SLOT( setEnabled(bool) ) );
 //    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this,                                SLOT( slot_portal_start() ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this,                                SLOT( slot_area_margins_start() ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this,                                SLOT( slot_pre_portal_start() ) );
     connect( vkRegionMargins_wl,  SIGNAL( signal_regionMargins() ), this,                       SLOT( slot_portal_start() ) );
 
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), this,                                SLOT( slot_stop() ) );
@@ -545,9 +545,10 @@ void QvkMainWindow_wl::supportedImageFormats()
     ui->comboBoxSnapshotImageFormats->setCurrentIndex( ui->comboBoxSnapshotImageFormats->findText( "png" ) );
 }
 
-
 //------------------------------------------------
 //             pushButtonStart
+//                   |
+//            slot_pre_portal_start
 //                   |
 //            slot_portal_start
 //                   |
@@ -566,7 +567,7 @@ void QvkMainWindow_wl::supportedImageFormats()
 //
 //------------------------------------------------
 
-void QvkMainWindow_wl::slot_area_margins_start()
+void QvkMainWindow_wl::slot_pre_portal_start()
 {
     if ( ui->radioButtonScreencastArea->isChecked() ) {
         vkRegionMargins_wl->setVisible(true);
@@ -581,7 +582,7 @@ void QvkMainWindow_wl::slot_area_margins_start()
         slot_portal_start();
     }
 
-    qDebug().noquote() << global::nameOutput << "[QvkMainWindow_wl] slot_area_margins_start()";
+    qDebug().noquote() << global::nameOutput << "[QvkMainWindow_wl] slot_pre_portal_start()";
 }
 
 
