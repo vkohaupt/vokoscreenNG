@@ -966,11 +966,13 @@ void QvkMainWindow_wl::slot_portal_dialog_aborted()
        ui->toolButtonScreencastAreaReset->setEnabled( true );
     }
 
-    vkSystray->startAction->setEnabled(true);
-    vkSystray->stopAction->setEnabled(false);
-    vkSystray->pauseAction->setEnabled(false);
-    vkSystray->continueAction->setEnabled(false);
-    vkSystray->slot_setSystrayIcon(true);
+    if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
+        vkSystray->startAction->setEnabled(true);
+        vkSystray->stopAction->setEnabled(false);
+        vkSystray->pauseAction->setEnabled(false);
+        vkSystray->continueAction->setEnabled(false);
+        vkSystray->slot_setSystrayIcon(true);
+    }
 }
 
 
