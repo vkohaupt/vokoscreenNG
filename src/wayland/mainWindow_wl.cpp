@@ -69,7 +69,10 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     supportedImageFormats();
 
     QFile fileCSS( ":/pictures/css/css.qss" );
-    fileCSS.open( QFile::ReadOnly | QFile::Text );
+    bool boCSS = fileCSS.open( QFile::ReadOnly | QFile::Text );
+    if ( boCSS == false ) {
+        qDebug().noquote() << global::nameOutput << "Can not open" << fileCSS.fileName();
+    }
     QTextStream streamCSS( &fileCSS );
     qApp->setStyleSheet( streamCSS.readAll() );
     fileCSS.close();
@@ -219,7 +222,10 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 void QvkMainWindow_wl::slot_log_refresh()
 {
     QFile file( vkLogController->get_log_filePath() );
-    file.open( QIODevice::ReadOnly );
+    bool bo = file.open( QIODevice::ReadOnly );
+    if ( bo == false ) {
+        qDebug().noquote() << global::nameOutput << "Can not open" << file.fileName();
+    }
     QTextStream in( &file );
     ui->textBrowser->clear();
     ui->textBrowser->setText( in.readAll() );
