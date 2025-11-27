@@ -614,7 +614,6 @@ void QvkMainWindow_wl::slot_portal_start()
         qDebug().noquote() << global::nameOutput << "Start portal area";
         sourceType = 1;
     }
-    sourceType = 3;
 
     // Value 1 = HIDDEN;
     // Value 2 = EMBEDDED;
