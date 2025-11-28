@@ -732,7 +732,10 @@ QvkMainWindow::~QvkMainWindow()
 void QvkMainWindow::slot_log_refresh()
 {
     QFile file( vkLogController->get_log_filePath() );
-    file.open( QIODevice::ReadOnly );
+    bool bo = file.open( QIODevice::ReadOnly );
+    if ( bo == false ) {
+        qDebug().noquote() << global::nameOutput << "Can not open" << file.fileName();
+    }
     QTextStream in( &file );
     ui->textBrowser->clear();
     ui->textBrowser->setText( in.readAll() );
