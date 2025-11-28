@@ -72,7 +72,10 @@ void myMessageHandler( QtMsgType type, const QMessageLogContext &context, const 
 #ifdef Q_OS_WIN
     QString eol = "\r\n";
 #endif
-    logFile.open( QIODevice::WriteOnly | QIODevice::Append );
+    bool bo = logFile.open( QIODevice::WriteOnly | QIODevice::Append );
+    if ( bo == false ) {
+        qDebug().noquote() << global::nameOutput << "Can not open" << logFile.fileName();
+    }
     QTextStream stream( &logFile );
     stream << sMsg << eol;
     logFile.close();

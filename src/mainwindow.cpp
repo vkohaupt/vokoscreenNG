@@ -88,7 +88,11 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #endif
 
     QFile fileCSS( ":/pictures/css/css.qss" );
-    fileCSS.open( QFile::ReadOnly | QFile::Text );
+    bo = fileCSS.open( QFile::ReadOnly | QFile::Text );
+    if ( bo == false ) {
+        qDebug().noquote() << global::nameOutput << "Can not open" << fileCSS.fileName();
+    }
+
     QTextStream streamCSS( &fileCSS );
     qApp->setStyleSheet( streamCSS.readAll() );
     fileCSS.close();
