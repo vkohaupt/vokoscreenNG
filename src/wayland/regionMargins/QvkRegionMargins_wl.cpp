@@ -21,10 +21,10 @@
  */
 
 #include "QvkRegionMargins_wl.h"
-#include "QvkShowMessage_wl.h"
 #include "global.h"
 
 #include <QIcon>
+#include <QSize>
 #include <QPaintEvent>
 #include <QResizeEvent>
 #include <QPalette>
@@ -51,11 +51,11 @@
  * which describe the size of the borders around a window on the desktop.
  */
 
-QvkRegionMargins_wl::QvkRegionMargins_wl(Ui_formMainWindow_wl *ui_mainwindow )
+QvkRegionMargins_wl::QvkRegionMargins_wl( Ui_formMainWindow_wl *ui_mainwindow )
 {
     ui = ui_mainwindow;
 
-    setWindowTitle( QString( "AreaMargins") );
+    setWindowTitle( QString( "AreaMargins" ) );
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );

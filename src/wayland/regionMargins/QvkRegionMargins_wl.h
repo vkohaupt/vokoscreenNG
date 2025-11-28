@@ -27,8 +27,10 @@
 
 #include <QWidget>
 #include <QPixmap>
+#include <QVariantMap>
 #include <QPaintEvent>
 #include <QResizeEvent>
+#include <QColor>
 
 class QvkRegionMargins_wl: public QWidget
 {
