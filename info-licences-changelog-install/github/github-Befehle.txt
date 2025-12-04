@@ -1,0 +1,23 @@
+
+In welchem branch befinde ich mich:
+git status
+ 
+ 
+Clonen: 
+git clone --branch 3.0 https://github.com/vkohaupt/blabla123.git
+
+
+Committen:
+git add .
+git commit -m "Halli hallo"
+git push origin 3.0
+
+
+Tagging:
+git tag 4.7.2 -m "4.7.2"
+git push origin --tags
+
+
+Remove last commit:
+git reset --hard HEAD^
+git push origin -f
