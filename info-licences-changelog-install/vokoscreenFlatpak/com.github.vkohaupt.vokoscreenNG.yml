@@ -26,14 +26,14 @@ modules:
       - install -Dm644 applications/vokoscreenNG.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/vokoscreenNG.png
       - install -Dm644 applications/vokoscreenNG.desktop ${FLATPAK_DEST}/share/applications/vokoscreenNG.desktop
       - install -Dm644 ../vokoscreenNG.appdata.xml ${FLATPAK_DEST}/share/metainfo/vokoscreenNG.appdata.xml
-    sources:
-      - type: git
-        url: https://github.com/vkohaupt/vokoscreenNG.git
-        branch: 3.0
-      - type: file
-        path: vokoscreenNG.appdata.xml
 #    sources:
-#       - type: dir
-#         path: "/home/vk/Programmieren/vokoscreenNG/"
-#       - type: file
-#         path: vokoscreenNG.appdata.xml
+#      - type: git
+#        url: https://github.com/vkohaupt/vokoscreenNG.git
+#        branch: 3.0
+#      - type: file
+#        path: vokoscreenNG.appdata.xml
+    sources:
+       - type: dir
+         path: "/home/vk/Programmieren/vokoscreenNG/"
+       - type: file
+         path: vokoscreenNG.appdata.xml
