@@ -167,13 +167,10 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
         QString filePath_org = fileInfo.absoluteFilePath();
 
         if ( filePath_org > "" ) {
-
             /*
-         * Hinweis für alle Ränder
-         * Die Pixel werden von der Mitte zum Rand hin ausgwertet.
-         *
-         */
-            
+            * Hinweis für alle Ränder
+            * Die Pixel werden von der Mitte zum Rand hin ausgwertet.
+            */
             QImage image = QImage( filePath_org );
             for( int i = image.height()/2; i > 0; i-- ) {
                 QColor pixelColor = image.pixelColor( image.width()/2, i );
@@ -188,7 +185,7 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
                 QColor pixelColor = image.pixelColor( i, image.height()/2 );
                 if ( pixelColor == color ) {
                     right = image.width() - i - lineWidth;
-                    qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] right margin:" << right;
+                    qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Right margin:" << right;
                     break;
                 }
             }
@@ -197,7 +194,7 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
                 QColor pixelColor = image.pixelColor( image.width()/2, i );
                 if ( pixelColor == color ) {
                     bottom = image.height() - i - lineWidth;
-                    qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] bottom margin:" << bottom;
+                    qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Bottom margin:" << bottom;
                     break;
                 }
             }
