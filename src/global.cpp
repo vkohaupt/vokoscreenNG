@@ -26,7 +26,7 @@
 
 namespace global
 {
-    QString version = "4.7.3";
+    QString version = "4.7.4";
     QString name = "vokoscreenNG";
     QString nameOutput = "[" + name + "]";
     int showclickCounter = 0;
