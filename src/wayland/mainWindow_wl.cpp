@@ -491,27 +491,29 @@ void QvkMainWindow_wl::slot_handle_response_snapshot( uint responseCode, QVarian
         path_to_snapshot_folder = fileInfo.absolutePath();
         QString filePath_org = fileInfo.absoluteFilePath();
 
-        QPixmap pixmap = QPixmap( filePath_org );
-        QString filePath_new = path_to_snapshot_folder +
-                "/" +
-                global::name +
-                "-" +
-                QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss.zzz" ) +
-                "." +
-                ui->comboBoxSnapshotImageFormats->currentText().toUtf8();
-        pixmap.save( filePath_new );
+        if ( filePath_org > "" ) {
+            QPixmap pixmap = QPixmap( filePath_org );
+            QString filePath_new = path_to_snapshot_folder +
+                    "/" +
+                    global::name +
+                    "-" +
+                    QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss.zzz" ) +
+                    "." +
+                    ui->comboBoxSnapshotImageFormats->currentText().toUtf8();
+            pixmap.save( filePath_new );
 
-        QFile file( filePath_org );
-        file.remove();
+            QFile file( filePath_org );
+            file.remove();
 
-        QvkShowMessage_wl *vkShowMessage_wl = new QvkShowMessage_wl();
-        vkShowMessage_wl->set_StatusIcon( ":/pictures/status/information.png" );
-        vkShowMessage_wl->set_Image( filePath_new );
-        vkShowMessage_wl->set_timeOut( 10000 );
-        vkShowMessage_wl->showMessage( "" );
-        vkShowMessage_wl->set_folderPath( path_to_snapshot_folder );
+            QvkShowMessage_wl *vkShowMessage_wl = new QvkShowMessage_wl();
+            vkShowMessage_wl->set_StatusIcon( ":/pictures/status/information.png" );
+            vkShowMessage_wl->set_Image( filePath_new );
+            vkShowMessage_wl->set_timeOut( 10000 );
+            vkShowMessage_wl->showMessage( "" );
+            vkShowMessage_wl->set_folderPath( path_to_snapshot_folder );
 
-        qDebug().noquote() << global::nameOutput << "[Snapshot] Saved under:" << filePath_new;
+            qDebug().noquote() << global::nameOutput << "[Snapshot] Saved under:" << filePath_new;
+        }
     } else {
         qDebug().noquote() << global::nameOutput << "[Snapshot] Unable to take a screenshot" << results["uri"];
     }
