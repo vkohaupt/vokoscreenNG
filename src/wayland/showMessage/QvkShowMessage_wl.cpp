@@ -92,7 +92,8 @@ void QvkShowMessage_wl::paintEvent( QPaintEvent *event )
     logoPixmap = logoPixmap.scaled( 22, 22, Qt::KeepAspectRatio, Qt::SmoothTransformation );
     painterWindowPixmap.drawPixmap( 1, 1, logoPixmap );
     painterWindowPixmap.setPen( Qt::black );
-    painterWindowPixmap.drawText( 1+30, 16, "Snapshot" );
+//    painterWindowPixmap.drawText( 1+30, 16, "Snapshot" );
+    painterWindowPixmap.drawText( 1+30, 16, windowTitle );
 
     // CloseButton in Titelzeile
     QColor color;
@@ -237,6 +238,12 @@ void QvkShowMessage_wl::set_StatusIcon( QString m_statusIcon )
 void QvkShowMessage_wl::set_Image( QString m_image )
 {
     image = m_image;
+}
+
+
+void QvkShowMessage_wl::set_WindowTitle( QString title )
+{
+    windowTitle = title;
 }
 
 

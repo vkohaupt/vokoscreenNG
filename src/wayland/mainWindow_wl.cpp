@@ -510,6 +510,7 @@ void QvkMainWindow_wl::slot_handle_response_snapshot( uint responseCode, QVarian
             vkShowMessage_wl->set_Image( filePath_new );
             vkShowMessage_wl->set_timeOut( 10000 );
             vkShowMessage_wl->showMessage( "" );
+            vkShowMessage_wl->set_WindowTitle( "Snapshot" );
             vkShowMessage_wl->set_folderPath( path_to_snapshot_folder );
 
             qDebug().noquote() << global::nameOutput << "[Snapshot] Saved under:" << filePath_new;

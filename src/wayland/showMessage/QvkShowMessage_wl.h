@@ -42,6 +42,7 @@ public:
     void set_Image( QString m_image );
     void set_timeOut( qreal value );
     void set_folderPath( QString text );
+    void set_WindowTitle( QString title );
 
 
 public slots:
@@ -64,6 +65,8 @@ private:
     bool isOverUrl = false;
     QSize pixmapUrlSize;
     int titelLineHeight = 24;
+    QString windowTitle;
+
 
 private slots:
     void slot_durationButton();
