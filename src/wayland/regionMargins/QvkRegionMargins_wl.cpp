@@ -151,7 +151,7 @@ void QvkRegionMargins_wl::slot_snapshot()
         QDBusReply<QDBusObjectPath> reply = i->call( "Screenshot", "", options );
 
         if( reply.isValid() ) {
-            bus.connect( "", reply.value().path(), "org.freedesktop.portal.Request", "Response", this, SLOT( slot_handle_response_snapshot(uint,QVariantMap) ) );
+            bus.connect( "", reply.value().path(), "org.freedesktop.portal.Request", "Response", this, SLOT( slot_margins_response_snapshot(uint,QVariantMap) ) );
             qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_snapshot()" << reply.value().path();
         } else {
             qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_snapshot() Something is wrong: " << reply.error();
@@ -159,7 +159,7 @@ void QvkRegionMargins_wl::slot_snapshot()
 }
 
 
-void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVariantMap results )
+void QvkRegionMargins_wl::slot_margins_response_snapshot( uint responseCode, QVariantMap results )
 {
     if ( responseCode == 0 ) {
         QUrl url( results["uri"].toString() );
@@ -211,7 +211,7 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
             QFile file( filePath_org );
             file.remove();
 
-            qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_handle_response_snapshot()" << size();
+            qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_margins_response_snapshot()" << size();
 
             setVisible( false );
 
@@ -219,7 +219,7 @@ void QvkRegionMargins_wl::slot_handle_response_snapshot( uint responseCode, QVar
         }
     } else {
         setVisible( false );
-        qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_handle_response_snapshot() Unable to take a screenshot" << results["uri"];
+        qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_margins_response_snapshot() Unable to take a screenshot" << results["uri"];
     }
 
 }

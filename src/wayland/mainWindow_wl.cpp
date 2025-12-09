@@ -578,6 +578,8 @@ void QvkMainWindow_wl::supportedImageFormats()
 
 void QvkMainWindow_wl::slot_pre_portal_start()
 {
+    qDebug().noquote() << global::nameOutput << "[QvkMainWindow_wl] slot_pre_portal_start()";
+
     if ( ui->radioButtonScreencastArea->isChecked() ) {
         vkRegionMargins_wl->setVisible(true);
         vkRegionMargins_wl->slot_singleShot(true);
@@ -590,8 +592,6 @@ void QvkMainWindow_wl::slot_pre_portal_start()
     if ( ui->radioButtonScreencastFullscreen->isChecked() ) {
         slot_portal_start();
     }
-
-    qDebug().noquote() << global::nameOutput << "[QvkMainWindow_wl] slot_pre_portal_start()";
 }
 
 
