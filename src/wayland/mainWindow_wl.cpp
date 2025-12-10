@@ -375,7 +375,6 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_video,                     SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_audio,                     SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_3,                         SLOT( setEnabled(bool) ) );
-//    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this,                                SLOT( slot_portal_start() ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this,                                SLOT( slot_pre_portal_start() ) );
     connect( vkRegionMargins_wl,  SIGNAL( signal_regionMargins() ), this,                       SLOT( slot_portal_start() ) );
 
