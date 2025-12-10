@@ -375,6 +375,7 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_video,                     SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_audio,                     SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_3,                         SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, &QPushButton::clicked, this, [=]() { whatWasClicked = "pushButtonStart" ; } );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this,                                SLOT( slot_pre_portal_start() ) );
     connect( vkRegionMargins_wl,  SIGNAL( signal_regionMargins() ), this,                       SLOT( slot_portal_start() ) );
 
@@ -427,6 +428,7 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->toolButtonFramesReset,         SIGNAL( clicked(bool) ), this,              SLOT( slot_frames_Reset() ) );
     connect( ui->toolButtonOpenh264Reset,       SIGNAL( clicked(bool) ), this,              SLOT( slot_openh264Reset() ) );
 
+    connect( ui->pushButtonSnapshot, &QPushButton::clicked, this, [=]() { whatWasClicked = "pushButtonSnapshot" ; } );
     connect( ui->pushButtonSnapshot,           SIGNAL( clicked(bool) ), this, SLOT( slot_snapshotHideBeforeRecording(bool) ) );
     connect( ui->pushButtonSnapshotOpenFolder, SIGNAL( clicked(bool) ), this, SLOT( slot_path_to_snapshot_folder(bool) ) );
     connect( ui->toolButtonSnapshotFormatsReset, &QPushButton::clicked, this, [=]() {
@@ -490,29 +492,33 @@ void QvkMainWindow_wl::slot_handle_response_snapshot( uint responseCode, QVarian
         path_to_snapshot_folder = fileInfo.absolutePath();
         QString filePath_org = fileInfo.absoluteFilePath();
 
+        qDebug() << "" << whatWasClicked;
+
         if ( filePath_org > "" ) {
-            QPixmap pixmap = QPixmap( filePath_org );
-            QString filePath_new = path_to_snapshot_folder +
-                    "/" +
-                    global::name +
-                    "-" +
-                    QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss.zzz" ) +
-                    "." +
-                    ui->comboBoxSnapshotImageFormats->currentText().toUtf8();
-            pixmap.save( filePath_new );
+            if ( whatWasClicked == "pushButtonSnapshot" ) {
+                QPixmap pixmap = QPixmap( filePath_org );
+                QString filePath_new = path_to_snapshot_folder +
+                        "/" +
+                        global::name +
+                        "-" +
+                        QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss.zzz" ) +
+                        "." +
+                        ui->comboBoxSnapshotImageFormats->currentText().toUtf8();
+                pixmap.save( filePath_new );
 
-            QFile file( filePath_org );
-            file.remove();
+                QFile file( filePath_org );
+                file.remove();
 
-            QvkShowMessage_wl *vkShowMessage_wl = new QvkShowMessage_wl();
-            vkShowMessage_wl->set_StatusIcon( ":/pictures/status/information.png" );
-            vkShowMessage_wl->set_Image( filePath_new );
-            vkShowMessage_wl->set_timeOut( 10000 );
-            vkShowMessage_wl->showMessage( "" );
-            vkShowMessage_wl->set_WindowTitle( "Snapshot" );
-            vkShowMessage_wl->set_folderPath( path_to_snapshot_folder );
+                QvkShowMessage_wl *vkShowMessage_wl = new QvkShowMessage_wl();
+                vkShowMessage_wl->set_StatusIcon( ":/pictures/status/information.png" );
+                vkShowMessage_wl->set_Image( filePath_new );
+                vkShowMessage_wl->set_timeOut( 10000 );
+                vkShowMessage_wl->showMessage( "" );
+                vkShowMessage_wl->set_WindowTitle( "Snapshot" );
+                vkShowMessage_wl->set_folderPath( path_to_snapshot_folder );
 
-            qDebug().noquote() << global::nameOutput << "[Snapshot] Saved under:" << filePath_new;
+                qDebug().noquote() << global::nameOutput << "[Snapshot] Saved under:" << filePath_new;
+            }
         }
     } else {
         qDebug().noquote() << global::nameOutput << "[Snapshot] Unable to take a screenshot" << results["uri"];

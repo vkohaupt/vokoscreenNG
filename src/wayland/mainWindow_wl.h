@@ -88,6 +88,7 @@ private:
     void supportedImageFormats();
     // Snapshot
 
+    QString whatWasClicked;
 
 public Q_SLOTS:
 
