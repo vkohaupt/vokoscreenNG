@@ -167,61 +167,62 @@ void QvkRegionMargins_wl::slot_margins_response_snapshot( uint responseCode, QVa
         QString filePath_org = fileInfo.absoluteFilePath();
 
         if ( filePath_org > "" ) {
-            /*
+            if ( whatWasClicked == "pushButtonStart" ) {
+                /*
             * Hinweis für alle Ränder
             * Die Pixel werden von der Mitte zum Rand hin ausgwertet.
             */
-            QImage image = QImage( filePath_org );
-            for( int i = image.height()/2; i > 0; i-- ) {
-                QColor pixelColor = image.pixelColor( image.width()/2, i );
-                if ( pixelColor == color ) {
-                    top = i + 1 - lineWidth;
-                    qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Top margin:" << top;
-                    break;
+                QImage image = QImage( filePath_org );
+                for( int i = image.height()/2; i > 0; i-- ) {
+                    QColor pixelColor = image.pixelColor( image.width()/2, i );
+                    if ( pixelColor == color ) {
+                        top = i + 1 - lineWidth;
+                        qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Top margin:" << top;
+                        break;
+                    }
                 }
-            }
-            
-            for( int i = image.width()/2; i < image.width(); i++ ) {
-                QColor pixelColor = image.pixelColor( i, image.height()/2 );
-                if ( pixelColor == color ) {
-                    right = image.width() - i - lineWidth;
-                    qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Right margin:" << right;
-                    break;
-                }
-            }
-            
-            for( int i = image.height()/2; i < image.height(); i++ ) {
-                QColor pixelColor = image.pixelColor( image.width()/2, i );
-                if ( pixelColor == color ) {
-                    bottom = image.height() - i - lineWidth;
-                    qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Bottom margin:" << bottom;
-                    break;
-                }
-            }
-            
-            for( int i = image.width()/2; i > 0; i-- ) {
-                QColor pixelColor = image.pixelColor( i, image.height()/2 );
-                if ( pixelColor == color ) {
-                    left = i + 1 - lineWidth;
-                    qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Left margin:" << left;
-                    break;
-                }
-            }
-            
-            QFile file( filePath_org );
-            file.remove();
 
-            qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_margins_response_snapshot()" << size();
+                for( int i = image.width()/2; i < image.width(); i++ ) {
+                    QColor pixelColor = image.pixelColor( i, image.height()/2 );
+                    if ( pixelColor == color ) {
+                        right = image.width() - i - lineWidth;
+                        qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Right margin:" << right;
+                        break;
+                    }
+                }
 
-            setVisible( false );
+                for( int i = image.height()/2; i < image.height(); i++ ) {
+                    QColor pixelColor = image.pixelColor( image.width()/2, i );
+                    if ( pixelColor == color ) {
+                        bottom = image.height() - i - lineWidth;
+                        qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Bottom margin:" << bottom;
+                        break;
+                    }
+                }
 
-            emit signal_regionMargins();
+                for( int i = image.width()/2; i > 0; i-- ) {
+                    QColor pixelColor = image.pixelColor( i, image.height()/2 );
+                    if ( pixelColor == color ) {
+                        left = i + 1 - lineWidth;
+                        qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] Left margin:" << left;
+                        break;
+                    }
+                }
+
+                QFile file( filePath_org );
+                file.remove();
+
+                qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_margins_response_snapshot()" << size();
+
+                setVisible( false );
+
+                emit signal_regionMargins();
+            }
         }
     } else {
         setVisible( false );
         qDebug().noquote() << global::nameOutput << "[QvkRegionMargins_wl] slot_margins_response_snapshot() Unable to take a screenshot" << results["uri"];
     }
-
 }
 
 

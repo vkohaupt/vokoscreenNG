@@ -45,6 +45,7 @@ public:
     int get_right();
     int get_bottom();
     int get_left();
+    QString whatWasClicked;
 
 
 public slots:

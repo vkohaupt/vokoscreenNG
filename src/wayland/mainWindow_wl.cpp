@@ -375,7 +375,8 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_video,                     SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_audio,                     SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_3,                         SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStart, &QPushButton::clicked, this, [=]() { whatWasClicked = "pushButtonStart" ; } );
+    connect( ui->pushButtonStart, &QPushButton::clicked, vkRegionMargins_wl, [=]() { vkRegionMargins_wl->whatWasClicked = "pushButtonStart" ; } );
+    connect( ui->pushButtonStart, &QPushButton::clicked, this,               [=]() { whatWasClicked = "pushButtonStart" ; } );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this,                                SLOT( slot_pre_portal_start() ) );
     connect( vkRegionMargins_wl,  SIGNAL( signal_regionMargins() ), this,                       SLOT( slot_portal_start() ) );
 
@@ -428,7 +429,8 @@ void QvkMainWindow_wl::set_Connects()
     connect( ui->toolButtonFramesReset,         SIGNAL( clicked(bool) ), this,              SLOT( slot_frames_Reset() ) );
     connect( ui->toolButtonOpenh264Reset,       SIGNAL( clicked(bool) ), this,              SLOT( slot_openh264Reset() ) );
 
-    connect( ui->pushButtonSnapshot, &QPushButton::clicked, this, [=]() { whatWasClicked = "pushButtonSnapshot" ; } );
+    connect( ui->pushButtonSnapshot, &QPushButton::clicked, vkRegionMargins_wl, [=]() { vkRegionMargins_wl->whatWasClicked = "pushButtonSnapshot" ; } );
+    connect( ui->pushButtonSnapshot, &QPushButton::clicked, this,               [=]() { whatWasClicked = "pushButtonSnapshot" ; } );
     connect( ui->pushButtonSnapshot,           SIGNAL( clicked(bool) ), this, SLOT( slot_snapshotHideBeforeRecording(bool) ) );
     connect( ui->pushButtonSnapshotOpenFolder, SIGNAL( clicked(bool) ), this, SLOT( slot_path_to_snapshot_folder(bool) ) );
     connect( ui->toolButtonSnapshotFormatsReset, &QPushButton::clicked, this, [=]() {
@@ -438,9 +440,6 @@ void QvkMainWindow_wl::set_Connects()
     QvkSpezialSlider *spezialSlider = ui->centralwidget->findChild<QvkSpezialSlider *>( "sliderWaitBeforeSnapshot" );
     connect( ui->toolButtonSnapshotSecondsWaitBeforeRecordingReset, &QPushButton::clicked, this, [=]() {
         spezialSlider->setValue(4); } );
-
-
-
 
     connect( ui->pushButton_log_openfolder, SIGNAL( clicked(bool) ), this, SLOT( slot_log_folder() ) );
     connect( ui->pushButton_log_refresh,    SIGNAL( clicked(bool) ), this, SLOT( slot_log_refresh() ) );
