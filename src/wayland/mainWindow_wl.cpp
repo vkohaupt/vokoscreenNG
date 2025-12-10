@@ -492,8 +492,6 @@ void QvkMainWindow_wl::slot_handle_response_snapshot( uint responseCode, QVarian
         path_to_snapshot_folder = fileInfo.absolutePath();
         QString filePath_org = fileInfo.absoluteFilePath();
 
-        qDebug() << "" << whatWasClicked;
-
         if ( filePath_org > "" ) {
             if ( whatWasClicked == "pushButtonSnapshot" ) {
                 QPixmap pixmap = QPixmap( filePath_org );
