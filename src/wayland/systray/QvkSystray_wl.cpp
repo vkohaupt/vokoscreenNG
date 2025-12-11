@@ -132,7 +132,6 @@ void QvkSystray_wl::init()
     setIcon( QIcon( ":/pictures/systray/systray.png" ) );
     setContextMenu ( menu );
     setToolTip( global::name );
-    show();
 
     connect( exitAction, SIGNAL( triggered(bool) ), this, SLOT( slot_hide() ) );
 /*
