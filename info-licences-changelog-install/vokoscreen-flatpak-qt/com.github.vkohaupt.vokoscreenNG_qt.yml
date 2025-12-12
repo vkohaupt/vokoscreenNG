@@ -55,8 +55,8 @@ modules:
       - -DINSTALL_LIBDIR=/usr/lib/x86_64-linux-gnu
     sources:
       - type: archive
-        url: https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qtbase-everywhere-src-6.7.3.tar.xz
-        sha256: 8ccbb9ab055205ac76632c9eeddd1ed6fc66936fc56afc2ed0fd5d9e23da3097
+        url: https://download.qt.io/official_releases/qt/6.9/6.9.3/submodules/qtbase-everywhere-src-6.9.3.tar.xz
+        sha256: c5a1a2f660356ec081febfa782998ae5ddbc5925117e64f50e4be9cd45b8dc6e
     config-opts:
       - -DQT_DISABLE_RPATH=ON
       - -DBUILD_WITH_PCH=FALSE
@@ -68,23 +68,31 @@ modules:
     # cleanup-platform: /bin/lrelease,/bin/lupdate
     sources:
       - type: archive
-        url: https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qttools-everywhere-src-6.7.3.tar.xz
-        sha256: f03bb7df619cd9ac9dba110e30b7bcab5dd88eb8bdc9cc752563b4367233203f
+        url: https://download.qt.io/official_releases/qt/6.9/6.9.3/submodules/qttools-everywhere-src-6.9.3.tar.xz
+        sha256: 0cf7ab0e975fc57f5ce1375576a0a76e9ede25e6b01db3cf2339cd4d9750b4e9
 
   - name: qt6-shadertools
     buildsystem: cmake-ninja
     sources:
       - type: archive
-        url: https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qtshadertools-everywhere-src-6.7.3.tar.xz
-        sha256: 74e512798c7ddbda354a2d8d975211454bbabb47afb7e598892067a5828c0995
+        url: https://download.qt.io/official_releases/qt/6.9/6.9.3/submodules/qtshadertools-everywhere-src-6.9.3.tar.xz
+        sha256: 629804ee86a35503e4b616f9ab5175caef3da07bd771cf88a24da3b5d4284567
 
   - name: qt6-qtmultimedia
     buildsystem: cmake-ninja
     cleanup-platform: /bin
     sources:
       - type: archive
-        url: https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qtmultimedia-everywhere-src-6.7.3.tar.xz
-        sha256: 304d28b8e592435293893b0110d5f3534407604d1e04d8a0b0e5b34afe577303
+        url: https://download.qt.io/official_releases/qt/6.9/6.9.3/submodules/qtmultimedia-everywhere-src-6.9.3.tar.xz
+        sha256: a275bee7ea60c91851236acdf99d76b891da90f428b68f51fe332354f19b86f5
+
+  - name: qt6-qtwayland
+    buildsystem: cmake-ninja
+    cleanup-platform: /bin
+    sources:
+      - type: archive
+        url: https://download.qt.io/official_releases/qt/6.9/6.9.3/submodules/qtwayland-everywhere-src-6.9.3.tar.xz
+        sha256: e413d4bc9263e80a465761debf8cb8317aa6b01e814b20046a05258e6573dadd
 
   - name: vokoscreenNG
     buildsystem: qmake
