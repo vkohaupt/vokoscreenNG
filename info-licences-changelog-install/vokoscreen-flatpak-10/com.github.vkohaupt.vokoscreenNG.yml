@@ -25,8 +25,8 @@ modules:
 #      #- -D=x264=enabled
     sources:
       - type: archive
-        url: https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.26.8.tar.xz
-        sha256: ed3c687290dd4d0cc1681f6fb3f59c57c8cfc765fa22eba16a7d09566cc5c7e1
+        url: https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.26.8.tar.xz
+        sha256: 25c05be5eb0694bde3ecd3317516f5d0d6e4ad21125a5ebcf6fb644a4c92439f
   - name: vokoscreenNG
     buildsystem: qmake
     subdir: src
