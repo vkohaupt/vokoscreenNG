@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.github.vkohaupt.vokoscreenNG</id>
+  <name>vokoscreenNG</name>
+  <summary>Easy to use screencast creator</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0-only</project_license>
+  <description>
+    <p>
+      vokoscreenNG is a powerful screencast creator in many languages to record the screen, an area or a window (Linux only). Recording of audio from multiple sources is supported. With the built-in camera support, you can make your video more personal. Other tools such as systray, magnifying glass, countdown, timer, Showclick and Halo support will help you do a good job.
+    </p>
+    <p>
+      This program can save files in some formats and use some codecs for video  and audio:
+    </p>
+    <ul>
+      <li>Video: H.264, VP8</li>
+      <li>Audio: vorbis, flac, opus and mp3.</li>
+      <li>File: mkv, webm, avi, mp4 and mov.</li>
+    </ul>
+    <p>
+      vokoscreenNG is a modern full replacement for vokoscreen, both written by Volker Kohaupt. The main difference is that vokoscreen uses ffmpeg as base, while vokoscreenNG has been rewritten from scratch and is based in GStreamer.
+    </p>
+  </description>
+  <developer id="com.github.vkohaupt.vokoscreenNG">
+      <name>Volker Kohaupt</name>
+  </developer>
+  <url type="homepage">https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html</url>
+  <url type="bugtracker">https://github.com/vkohaupt/vokoscreenNG/issues</url>
+  <url type="donation">https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html</url>
+  <launchable type="desktop-id">vokoscreenNG.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-0.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-1.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-2.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-3.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-4.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-5.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-6.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-7.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-8.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vokoscreen.volkoh.de/3.0/picture/vokoscreenNG-9.png</image>
+    </screenshot>
+  </screenshots>
+  <content_rating type="oars-1.0" />
+  <releases>
+    <release version="4.3.0" date="2024-07-01"/>
+  </releases>
+</component>
