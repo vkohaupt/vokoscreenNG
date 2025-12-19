@@ -18,15 +18,64 @@ finish-args:
   - --talk-name=org.freedesktop.Flatpak
 
 modules:
+  - name: gstreamer-plugins-good
+    buildsystem: meson
+    config-opts:
+#      #- -Dauto_features=disabled
+#      - -Dximagesrc=enabled
+#      - -Dalpha=disabled
+#      - -Dapetag=disabled
+#      - -Daudiofx=disabled
+#      - -Daudioparsers=disabled
+#      - -Dauparse=disabled
+#      - -Dautodetect=disabled
+#      - -Davi=disabled
+#      - -Dcutter=disabled
+#      - -Ddeinterlace=disabled
+#      - -Ddtmf=disabled
+#      - -Deffectv=disabled
+#      - -Dequalizer=disabled
+#      - -Dflv=disabled
+#      - -Dgoom=disabled
+#      - -Dgoom2k1=disabled
+#      - -Dicydemux=disabled
+#      - -Did3demux=disabled
+#      - -Dimagefreeze=disabled
+#      - -Dinterleave=disabled
+#      - -Disomp4=disabled
+#      #- -Dalaw=disabled
+#      #- -Dmulaw=disabled
+#      - -Dlevel=enabled
+#      - -Dmatroska=enabled
+#      - -Dmonoscope=disabled
+#      - -Dmultifile=disabled
+#      - -Dmultipart=disabled
+#      - -Dreplaygain=disabled
+#      - -Drtp=disabled
+#      - -Drtpmanager=disabled
+    sources:
+      - type: archive
+        url: https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.26.8.tar.xz
+        sha256: 061e84efae31dfb4d96e4517659aca82bad9d5625b8f64d3290604385edd1d14
+
+  - name: gstreamer-plugins-ugly
+    buildsystem: meson
+    config-opts:
+    #----------
+    sources:
+      - type: archive
+        url: https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.26.8.tar.xz
+        sha256: ed3c687290dd4d0cc1681f6fb3f59c57c8cfc765fa22eba16a7d09566cc5c7e1
 
   - name: gstreamer-plugins-bad
     buildsystem: meson
     config-opts:
-#      #- -D=x264=enabled
+    #----------
     sources:
       - type: archive
         url: https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.26.8.tar.xz
         sha256: 25c05be5eb0694bde3ecd3317516f5d0d6e4ad21125a5ebcf6fb644a4c92439f
+
   - name: vokoscreenNG
     buildsystem: qmake
     subdir: src

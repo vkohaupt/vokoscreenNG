@@ -733,6 +733,37 @@ QStringList QvkMainWindow_wl::VK_getSelectedAudioDevice()
 }
 
 
+/*
+ * For my better understanding is this comment in german.
+ *
+ * Einige encoder, wie z.b x264, benötigen zum encodieren gerade Werte.
+ * Laut Dokumentation wird videoscale nur angewandt wenn sich die Quellauflösung zur Zielauflösung unterscheidet.
+ * Wird ein Bereich oder ein Fenster aufgenommen das ungerade Werte enthält wird diese mittels videoscale korrigiert.
+ * Für das Aufnehmen in einer Virtuellen Maschine die in einem Fenster läuft, wird die Vollbildaufnahme ebenfalls korrigiert.
+ */
+QString QvkMainWindow_wl::VK_scale()
+{
+    QString value = "";
+    int modulo = 2;
+
+    if ( ui->radioButtonScreencastArea->isChecked() == true ) {
+        int width = (int)vkRegionChoise_wl->get_WidthRecordArea();
+        int height = (int)vkRegionChoise_wl->get_HeightRecordArea();
+
+        if ( ( (int)vkRegionChoise_wl->get_WidthRecordArea() % modulo ) > 0 ) {
+            width = (int)vkRegionChoise_wl->get_WidthRecordArea() - ( (int)vkRegionChoise_wl->get_WidthRecordArea() % modulo ) + modulo;
+        }
+
+        if ( ( (int)vkRegionChoise_wl->get_HeightRecordArea() % modulo ) > 0 ) {
+            height = (int)vkRegionChoise_wl->get_HeightRecordArea() - ( (int)vkRegionChoise_wl->get_HeightRecordArea() % modulo ) + modulo;
+        }
+
+        value = "videoscale ! video/x-raw, width=" + QString::number( width ) + ", height=" + QString::number( height )  + " !";
+    }
+    return value;
+}
+
+
 QMessageBox *msgBox;
 //---------------------------------------------------------------------------------------------------
 GstBusSyncReply QvkMainWindow_wl::call_bus_message( GstBus *bus, GstMessage *message, gpointer user_data )
@@ -793,6 +824,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     if ( ui->radioButtonScreencastArea->isChecked() ) { stringList << get_Area_Videocrop(); }
     stringList << "video/x-raw, framerate=" + QString::number( sliderFrames->value() ) + "/1";
 
+/*
     QString value;
     QStringList list;
     list << "openh264enc" ;
@@ -804,6 +836,20 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     list << "slice-mode=auto"; // Number of slices equal to number of threads
     value = list.join( " " );
     value.append( " ! h264parse" );
+    stringList << value;
+*/
+
+    QString value;
+        QStringList list;
+        list << VK_scale();
+        list << "x264enc";
+        list << "qp-min=17"; //" + QString::number( sliderX264->value() );
+        list << "qp-max=17"; // + QString::number( sliderX264->value() );
+        list << "speed-preset=superfast";// + ui->comboBoxx264Preset->currentText();
+        list << "threads=" + QString::number( QThread::idealThreadCount() );
+        list.removeAll( "" );
+        value = list.join( " " );
+        value.append( " ! video/x-h264, profile=baseline" );// + ui->comboBoxx264Profile->currentText() );
     stringList << value;
 
     // Only if one or more audiodevice is selected
