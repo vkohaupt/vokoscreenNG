@@ -78,9 +78,6 @@ private:
     QString get_KDE_Version();
     QString get_pipewire_version();
 
-    QString VK_scale();
-
-
     bool isFlatpak = false;
 
     QString path_to_snapshot_folder;
