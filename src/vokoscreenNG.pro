@@ -45,20 +45,6 @@ RESOURCES += screencast.qrc
 
 CONFIG += c++17
 
-#isEmpty(QMAKE_LRELEASE) {
-  # Try invocation path of qmake for lrelease
-  # NOTE: Usually from Qt Unified Installer
-# win32: QMAKE_LRELEASE = $$[QT_INSTALL_BINS]\lrelease.exe
-#    else: QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
-    
-  # As a last resort try to use lrelease from PATH
-  # NOTE: Usually from a distro package
-#  unix:!exists($$QMAKE_LRELEASE) {
-#    QMAKE_LRELEASE = lrelease-qt5
-#  }
-#}
-#system($$QMAKE_LRELEASE language/*.ts)
-
 unix:QMAKE_LRELEASE = $$[QT_INSTALL_BINS]/lrelease
 unix:message($$QMAKE_LRELEASE)
 unix:system($$QMAKE_LRELEASE translations.pri)
@@ -79,6 +65,7 @@ unix:contains(INSTALLER, "IFW" ){
   message($$INSTALLER)
 }
 
+# GStreamer Linux
 unix:CONFIG += link_pkgconfig
 unix:PKGCONFIG += gstreamer-1.0
 unix:PKGCONFIG += libpulse
@@ -86,28 +73,26 @@ unix:PKGCONFIG += wayland-client
 unix:LIBS += -lpulse-simple
 unix:LIBS += -lX11
 
-# Player
+# Player Linux
 unix:PKGCONFIG += gstreamer-video-1.0
 unix:PKGCONFIG += gstreamer-pbutils-1.0
 unix:PKGCONFIG += glib-2.0
 
-win32:contains(QMAKE_HOST.arch, x86_64) {
-message("[vokoscreenNG] Create x86_64 build")
-RC_ICONS = vokoscreenNG.ico
-GStreamerDir=$$(GSTREAMER_1_0_ROOT_MSVC_X86_64)
-INCLUDEPATH += $${GStreamerDir}\include\gstreamer-1.0
-INCLUDEPATH += $${GStreamerDir}\include\glib-2.0
-INCLUDEPATH += $${GStreamerDir}\lib\glib-2.0\include
-INCLUDEPATH += $${GStreamerDir}\include
-LIBS += -L$${GStreamerDir}\bin
-LIBS += -L$${GStreamerDir}\lib\gstreamer-1.0
-LIBS += $${GStreamerDir}\lib\libgstreamer-1.0.dll.a
-LIBS += $${GStreamerDir}\lib\libgstvideo-1.0.dll.a
-LIBS += $${GStreamerDir}\lib\libgstpbutils-1.0.dll.a
-LIBS += $${GStreamerDir}\lib\libglib-2.0.dll.a
-LIBS += $${GStreamerDir}\lib\libgobject-2.0.dll.a
-LIBS += $${GStreamerDir}\lib\libbz2.dll.a
-}
+# GStreamer Windows
+win32:RC_ICONS = vokoscreenNG.ico
+win32:GStreamerDir=$$(GSTREAMER_1_0_ROOT_MSVC_X86_64)
+win32:INCLUDEPATH += $${GStreamerDir}\include\gstreamer-1.0
+win32:INCLUDEPATH += $${GStreamerDir}\include\glib-2.0
+win32:INCLUDEPATH += $${GStreamerDir}\lib\glib-2.0\include
+win32:INCLUDEPATH += $${GStreamerDir}\include
+win32:LIBS += -L$${GStreamerDir}\bin
+win32:LIBS += -L$${GStreamerDir}\lib\gstreamer-1.0
+win32:LIBS += $${GStreamerDir}\lib\libgstreamer-1.0.dll.a
+win32:LIBS += $${GStreamerDir}\lib\libgstvideo-1.0.dll.a
+win32:LIBS += $${GStreamerDir}\lib\libgstpbutils-1.0.dll.a
+win32:LIBS += $${GStreamerDir}\lib\libglib-2.0.dll.a
+win32:LIBS += $${GStreamerDir}\lib\libgobject-2.0.dll.a
+win32:LIBS += $${GStreamerDir}\lib\libbz2.dll.a
 
 # settings
 include(settings/settings.pri)
