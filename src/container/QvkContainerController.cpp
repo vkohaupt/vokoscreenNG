@@ -180,6 +180,7 @@ void QvkContainerController::slot_set_available_VideoCodecs_in_Combobox( const Q
 
         if ( ui->comboBoxVideoCodec->count() == 0 )
         {
+#ifdef Q_OS_UNIX
             QPixmap pixmap( ":/pictures/status/information.png" );
             pixmap = pixmap.scaled( 64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
 
@@ -196,7 +197,7 @@ void QvkContainerController::slot_set_available_VideoCodecs_in_Combobox( const Q
             string += "gstreamer-plugins-libav<br>";
             messageBox.setInformativeText( string );
             messageBox.exec();
-
+#endif
             ui->pushButtonStart->setEnabled( false );
         } else {
             ui->pushButtonStart->setEnabled( true );
