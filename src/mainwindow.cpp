@@ -80,6 +80,10 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     ui->verticalLayout_7->insertWidget( 4, ui->widget );
     ui->tabWidgetScreencast->removeTab(1);
 
+    ui->frameVideoCodecx264->setVisible( false );
+    ui->frameVideoCodecOpenh264->setVisible( false );
+    ui->frameVideoCodecGIF->setVisible( false );
+
     oldPaletteDarkMode = qApp->palette();
 
 #ifdef Q_OS_UNIX
