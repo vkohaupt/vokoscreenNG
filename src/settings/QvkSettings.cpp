@@ -72,17 +72,6 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
 
-    // Clear all settings if checkBoxResetAtNextStart is set
-    QList<QCheckBox *> listCheckBoxReset = ui_mainwindow->centralWidget->findChildren<QCheckBox *>();
-    for ( int i = 0; i < listCheckBoxReset.count(); i++ ) {
-        QCheckBox *checkBox = listCheckBoxReset.at(i);
-        if ( ( checkBox->objectName() == "checkBoxResetAtNextStart" ) and
-             ( settings.value( checkBox->objectName(), false ).toBool() == true ) )
-        {
-            settings.clear();
-        }
-    }
-
     // We want block the signals for shortcut ComboBox signals and set the default value
     QList<QComboBox *> listComboBoxShortcut = ui_mainwindow->centralWidget->findChildren<QComboBox *>();
     for ( int i = 0; i < listComboBoxShortcut.count(); i++ )
@@ -646,6 +635,14 @@ QString QvkSettings::getVideoPath()
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
     return settings.value( "lineEditVideoPath" ).toString();
 }
+
+
+QString QvkSettings::getPicturePath()
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    return settings.value( "lineEditSnapshotImagePath" ).toString();
+}
+
 
 void QvkSettings::saveAreaScreencast( qreal x, qreal y, qreal width, qreal height  )
 {

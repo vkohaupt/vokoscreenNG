@@ -67,6 +67,7 @@ public:
 
     QString getFileName();
     QString getVideoPath();
+    QString getPicturePath();
     QString getOpenh264ProfilePathWithFilename();
 
 
