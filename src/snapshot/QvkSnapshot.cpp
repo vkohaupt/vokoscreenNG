@@ -220,8 +220,7 @@ bool QvkSnapshot::is_imageFolderExists_and_haveWritePermission()
     }
 
     // Check write permission
-    QString filename;
-    filename = ui->lineEditSnapshotImagePath->text() + + "/vokoscreenNG-test-write.txt";
+    QString filename = ui->lineEditSnapshotImagePath->text() + "/vokoscreenNG-test-write.txt";
     bool value;
     QFileInfo fileInfo( filename );
     QFile file( filename );
@@ -254,7 +253,7 @@ bool QvkSnapshot::is_imageFolderExists_and_haveWritePermission()
                                         "4. Antivirus program prevents writing<br><br>" +
                                         "<b>Please fix the problem and restart vokoscreenNG<b>"
                                        );
-        messageBox->exec();
+        messageBox->show();
         value = false;
     }
     return value;
