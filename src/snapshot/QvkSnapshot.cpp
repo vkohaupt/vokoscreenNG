@@ -55,7 +55,6 @@ void QvkSnapshot::init()
     connect( ui->pushButtonSnapshotSnapshot,   SIGNAL( clicked() ), this, SLOT( slot_newImage() ) );
 
     supportedImageFormats();
-    is_imageFolderExists_and_haveWritePermission();
 }
 
 
@@ -74,6 +73,9 @@ void QvkSnapshot::supportedImageFormats()
 
 void QvkSnapshot::slot_newImage()
 {
+    if ( is_imageFolderExists_and_haveWritePermission() == false )
+    { return; }
+
     myScreen = QGuiApplication::screens();
     filename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss.zzz" ) + "." + ui->comboBoxSnapshotImageFormats->currentText().toUtf8();
 
@@ -205,20 +207,6 @@ void QvkSnapshot::slot_newImage()
 
 bool QvkSnapshot::is_imageFolderExists_and_haveWritePermission()
 {
-    // Create Folder if not exists
-    QDir dir( ui->lineEditSnapshotImagePath->text() );
-    if ( !dir.exists() ) {
-        // check of QStandardPaths::MoviesLocation
-        QDir dir( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
-        if ( !dir.exists() ) {
-            bool myBool = dir.mkpath( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
-            Q_UNUSED(myBool);
-        }
-        ui->lineEditSnapshotImagePath->setText( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
-    } else {
-        ui->lineEditSnapshotImagePath->setText( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
-    }
-
     // Check write permission
     QString filename = ui->lineEditSnapshotImagePath->text() + "/vokoscreenNG-test-write.txt";
     bool value;
@@ -247,11 +235,11 @@ bool QvkSnapshot::is_imageFolderExists_and_haveWritePermission()
         messageBox->setInformativeText( "vokoscreenNG can not create a picture on<br>" + \
                                         fileInfo.absolutePath() + "<br><br>" + \
                                         "<b>Possible Cause:</b><br>" +
-                                        "1. The folder does not exist<br>" +
-                                        "2. The folder is read-only<br>" +
-                                        "3. Operating system security settings<br>" +
+                                        "1. The folder is read-only<br>" +
+                                        "2. Operating system security settings<br>" +
+                                        "3. The folder does not exist<br>" +
                                         "4. Antivirus program prevents writing<br><br>" +
-                                        "<b>Please fix the problem and restart vokoscreenNG<b>"
+                                        "<b>Please fix the problem<b>"
                                        );
         messageBox->show();
         value = false;
