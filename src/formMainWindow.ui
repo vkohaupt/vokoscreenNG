@@ -324,7 +324,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <property name="iconSize">
        <size>
@@ -569,8 +569,8 @@
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>489</width>
-                       <height>192</height>
+                       <width>100</width>
+                       <height>30</height>
                       </rect>
                      </property>
                      <property name="accessibleName">
@@ -2627,8 +2627,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>495</width>
-                   <height>424</height>
+                   <width>98</width>
+                   <height>98</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">

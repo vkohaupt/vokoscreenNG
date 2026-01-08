@@ -38,6 +38,7 @@
 #include <QRadioButton>
 #include <QComboBox>
 #include <QTabWidget>
+#include <QStandardPaths>
 
 QvkSettings::QvkSettings()
 {
@@ -413,10 +414,19 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
     QList<QLineEdit *> listLineEdit = ui_mainwindow->centralWidget->findChildren<QLineEdit *>();
     for ( int i = 0; i < listLineEdit.count(); i++ ) {
         QLineEdit *lineEdit = listLineEdit.at(i);
-        if ( lineEdit->objectName().contains( "lineEdit" ) ) {
+        if ( lineEdit->objectName() == "lineEditSnapshotImagePath" ) {
             QString value = settings.value( lineEdit->objectName() ).toString();
             if ( !value.isEmpty() ) {
                 lineEdit->setText( value );
+            } else {
+                lineEdit->setText( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
+            }
+        } else {
+            if ( lineEdit->objectName().contains( "lineEdit" ) ) {
+                QString value = settings.value( lineEdit->objectName() ).toString();
+                if ( !value.isEmpty() ) {
+                    lineEdit->setText( value );
+                }
             }
         }
     }
