@@ -421,12 +421,12 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             } else {
                 lineEdit->setText( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
             }
-        } else {
-            if ( lineEdit->objectName().contains( "lineEdit" ) ) {
-                QString value = settings.value( lineEdit->objectName() ).toString();
-                if ( !value.isEmpty() ) {
-                    lineEdit->setText( value );
-                }
+            continue;
+        }
+        if ( lineEdit->objectName().contains( "lineEdit" ) ) {
+            QString value = settings.value( lineEdit->objectName() ).toString();
+            if ( !value.isEmpty() ) {
+                lineEdit->setText( value );
             }
         }
     }
