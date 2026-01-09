@@ -1295,7 +1295,8 @@ bool QvkMainWindow::is_videoFolderExists_and_haveWritePermission()
                                         "<b>Possible Cause:</b><br>" +
                                         "1. The folder is read-only<br>" +
                                         "2. Operating system security settings<br>" +
-                                        "3. Antivirus program prevents writing<br><br>" +
+                                        "3. The folder does not exist<br>" +
+                                        "4. Antivirus program prevents writing<br><br>" +
                                         "<b>Please fix the problem and restart vokoscreenNG<b>"
                                        );
         messageBox->exec();

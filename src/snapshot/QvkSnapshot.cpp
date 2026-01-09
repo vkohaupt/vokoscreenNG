@@ -239,7 +239,7 @@ bool QvkSnapshot::is_imageFolderExists_and_haveWritePermission()
                                         "2. Operating system security settings<br>" +
                                         "3. The folder does not exist<br>" +
                                         "4. Antivirus program prevents writing<br><br>" +
-                                        "<b>Please fix the problem<b>"
+                                        "<b>Please fix the problem and restart vokoscreenNG<b>"
                                        );
         messageBox->show();
         value = false;
