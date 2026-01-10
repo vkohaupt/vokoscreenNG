@@ -328,8 +328,30 @@ void QvkMainWindow_wl::get_system_info()
     qDebug().noquote() << global::nameOutput << "Qt-LibraryPath:     " << QLibraryInfo::path( QLibraryInfo::LibrariesPath );
     qDebug().noquote() << global::nameOutput << "SettingsPath:" << vkSettings_wl.getFileName();
     qDebug().noquote() << global::nameOutput << "LogPath:" << vkLogController->get_log_filePath();
+
+    // Clear all settings if checkBoxResetAtNextStart is set
+    QSettings setting( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QList<QCheckBox *> listCheckBoxReset = ui->centralwidget->findChildren<QCheckBox *>();
+    for ( int i = 0; i < listCheckBoxReset.count(); i++ ) {
+        QCheckBox *checkBox = listCheckBoxReset.at(i);
+        if ( ( checkBox->objectName() == "checkBoxResetAtNextStart" ) and
+             ( setting.value( checkBox->objectName(), false ).toBool() == true ) )
+        {
+            setting.clear();
+        }
+    }
     qDebug().noquote() << global::nameOutput << "Default Videopath:" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
-//    qDebug().noquote() << global::nameOutput << "User Videopath:" << vkSettings_wl.getVideoPath();
+    if ( vkSettings_wl.getVideoPath().isEmpty() == true ) {
+        qDebug().noquote() << global::nameOutput << "User Videopath:" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );;
+    } else {
+        qDebug().noquote() << global::nameOutput << "User Videopath:" << vkSettings_wl.getVideoPath();
+    }
+    qDebug().noquote() << global::nameOutput << "Default Picturepath:" << QStandardPaths::writableLocation( QStandardPaths::PicturesLocation );
+    if ( vkSettings_wl.getPicturePath().isEmpty() == true ) {
+        qDebug().noquote() << global::nameOutput << "User Picturepath:" << QStandardPaths::writableLocation( QStandardPaths::PicturesLocation );;
+    } else {
+        qDebug().noquote() << global::nameOutput << "User Picturepath:" << vkSettings_wl.getPicturePath();
+    }
     qDebug().noquote();
 }
 

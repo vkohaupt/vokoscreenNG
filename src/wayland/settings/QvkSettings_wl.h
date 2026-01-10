@@ -42,6 +42,8 @@ public:
     void saveAreaScreencast( qreal x, qreal y, qreal width, qreal height );
     void readAreaScreencast( QvkRegionChoise_wl *vkRegionChoise );
     QString getFileName();
+    QString getVideoPath();
+    QString getPicturePath();
 
 
 public slots:

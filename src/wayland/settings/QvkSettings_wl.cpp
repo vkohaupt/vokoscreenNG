@@ -200,6 +200,21 @@ QString QvkSettings_wl::getFileName()
 }
 
 
+QString QvkSettings_wl::getVideoPath()
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    return settings.value( "lineEditVideoPath" ).toString();
+}
+
+
+QString QvkSettings_wl::getPicturePath()
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    return settings.value( "lineEditSnapshotImagePath" ).toString();
+}
+
+
+
 void QvkSettings_wl::saveAreaScreencast( qreal x, qreal y, qreal width, qreal height  )
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
