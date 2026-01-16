@@ -123,9 +123,9 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
     // Misc
     videoFileSystemWatcher = new QFileSystemWatcher();
-    connect( ui->toolButtonVideoPath, SIGNAL( clicked(bool) ),        this, SLOT( slot_newVideoPath() ) );
-    connect( ui->lineEditVideoPath,   SIGNAL( textChanged(QString) ), this, SLOT( slot_videoFileSystemWatcherSetNewPath() ) );
-    connect( ui->toolButtonVideoPathReset, &QToolButton::clicked, this, [=]() {
+    connect( ui->toolButtonVideoPath, &QToolButton::clicked, this, [this](){ slot_newVideoPath();} );
+    connect( ui->lineEditVideoPath, &QLineEdit::textChanged, this, [this](){ slot_videoFileSystemWatcherSetNewPath();} );
+    connect( ui->toolButtonVideoPathReset, &QToolButton::clicked, this, [this]() {
         ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
     } );
 
@@ -175,8 +175,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     vkSystray = new QvkSystray_wl( ui );
     if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
         vkSystray->init();
-        connect( ui->checkBoxShowInSystray, SIGNAL( clicked(bool) ),              vkSystray, SLOT( setVisible(bool) ) );
-        connect( vkSystray,                 SIGNAL( signal_SystemtrayIsClose() ), this,      SLOT( close() ) );
+        connect( ui->checkBoxShowInSystray, &QCheckBox::clicked, vkSystray, [this](bool value){ vkSystray->setVisible(value);} );
+        connect( vkSystray, &QvkSystray_wl::signal_SystemtrayIsClose, vkSystray, [this](){ close();} );
     }
 
     vkSettings_wl.readAll( ui, this );
