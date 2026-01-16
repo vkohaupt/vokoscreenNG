@@ -40,13 +40,13 @@ public:
 
 
 public slots:
+    void slot_newVideoFilename(QString filename);
+    void slot_beginRecordTime(QString beginTime);
 
 
 private slots:
     void slot_StorageInfo();
-    void slot_newVideoFilename( QString filename );
     void slot_displayRecordTime();
-    void slot_beginRecordTime(QString m_beginTime);
     void slot_Audiocodec( QString value );
     void slot_Frames( int value );
 

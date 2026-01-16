@@ -44,19 +44,19 @@ QvkInformation_wl::QvkInformation_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMai
     timerStorageInfo = new QTimer(this);
     timerStorageInfo->setTimerType( Qt::PreciseTimer );
     timerStorageInfo->setInterval( 1000 );
-    connect( timerStorageInfo, SIGNAL( timeout() ), this, SLOT( slot_StorageInfo() ) );
+    connect( timerStorageInfo, &QTimer::timeout, this, [this](){slot_StorageInfo();} );
     timerStorageInfo->start();
 
     // Recorded time
     timerRecord = new QTimer(this);
     timerRecord->setTimerType( Qt::PreciseTimer );
     timerRecord->setInterval( 1000 );
-    connect( timerRecord,            SIGNAL( timeout() ),     this,        SLOT( slot_displayRecordTime() ) );
-    connect( ui->pushButtonStop,     SIGNAL( clicked(bool) ), timerRecord, SLOT( stop() ) );
+    connect( timerRecord,        &QTimer::timeout,      this, [this](){slot_displayRecordTime();} );
+    connect( ui->pushButtonStop, &QPushButton::clicked, this, [this](){timerRecord->stop();} );
 
     // Frames, Format, Codecs
-    connect( ui->comboBoxAudioCodec,   SIGNAL( currentTextChanged(QString) ), this, SLOT( slot_Audiocodec(QString) ) );
-    connect( mainWindow->sliderFrames, SIGNAL( valueChanged(int) ),           this, SLOT( slot_Frames(int) ) );
+    connect( ui->comboBoxAudioCodec,   &QComboBox::currentTextChanged,  this, [this](QString value){slot_Audiocodec(value);} );
+    connect( mainWindow->sliderFrames, &QvkSpezialSlider::valueChanged, this, [this](int value)    {slot_Frames(value);} );
 }
 
 
@@ -65,9 +65,9 @@ QvkInformation_wl::~QvkInformation_wl()
 }
 
 
-void QvkInformation_wl::slot_beginRecordTime( QString m_beginTime )
+void QvkInformation_wl::slot_beginRecordTime(QString beginTime )
 {
-    beginRecordTime = m_beginTime;
+    beginRecordTime = beginTime;
     timerRecord->start();
 }
 

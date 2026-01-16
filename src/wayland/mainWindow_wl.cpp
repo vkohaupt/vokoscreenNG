@@ -96,8 +96,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_CornerWidget();
     set_SpezialSliders();
     QvkInformation_wl *vkInformation = new QvkInformation_wl( this, ui );
-    connect( this, SIGNAL( signal_newVideoFilename(QString) ), vkInformation, SLOT( slot_newVideoFilename(QString) ) );
-    connect( this, SIGNAL( signal_beginRecordTime(QString) ),  vkInformation, SLOT( slot_beginRecordTime(QString) ) );
+    connect( this, &QvkMainWindow_wl::signal_newVideoFilename, vkInformation, [vkInformation](QString filename){ vkInformation->slot_newVideoFilename(filename); } );
+    connect( this, &QvkMainWindow_wl::signal_beginRecordTime,  vkInformation, [vkInformation](QString beginTime){ vkInformation->slot_beginRecordTime(beginTime); } );
 
     vkRegionMargins_wl = new QvkRegionMargins_wl( ui );
 

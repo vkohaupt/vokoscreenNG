@@ -123,8 +123,8 @@ protected:
 
 
 signals:
-    void signal_newVideoFilename( QString );
-    void signal_beginRecordTime( QString );
+    void signal_newVideoFilename(QString filename);
+    void signal_beginRecordTime(QString time);
 
 };
 

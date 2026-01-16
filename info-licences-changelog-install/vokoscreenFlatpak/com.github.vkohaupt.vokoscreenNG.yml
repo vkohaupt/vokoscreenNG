@@ -1,6 +1,6 @@
 app-id: com.github.vkohaupt.vokoscreenNG
 runtime: org.kde.Platform
-runtime-version: 6.9
+runtime-version: 6.6
 sdk: org.kde.Sdk
 command: vokoscreenNG
 rename-desktop-file: vokoscreenNG.desktop
