@@ -387,20 +387,20 @@ void QvkMainWindow_wl::set_CornerWidget()
 
 void QvkMainWindow_wl::set_Connects()
 {
-    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->pushButtonStart,                 SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->radioButtonScreencastFullscreen, SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->radioButtonScreencastWindow,     SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->radioButtonScreencastArea,       SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frameVideoPath,                  SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_area,                      SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset,   SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_video,                     SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_audio,                     SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->frame_3,                         SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStart, &QPushButton::clicked, vkRegionMargins_wl, [=]() { vkRegionMargins_wl->whatWasClicked = "pushButtonStart" ; } );
-    connect( ui->pushButtonStart, &QPushButton::clicked, this,               [=]() { whatWasClicked = "pushButtonStart" ; } );
-    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this,                                SLOT( slot_pre_portal_start() ) );
-    connect( vkRegionMargins_wl,  SIGNAL( signal_regionMargins() ), this,                       SLOT( slot_portal_start() ) );
+    connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){ui->pushButtonStart->setDisabled(true);});
+    connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){ui->radioButtonScreencastFullscreen->setDisabled(true);});
+    connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){ui->radioButtonScreencastWindow->setDisabled(true);});
+    connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){ui->radioButtonScreencastArea->setDisabled(true);});
+    connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){ui->frameVideoPath->setDisabled(true);});
+    connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){ui->frame_area->setDisabled(true);});
+    connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){ui->toolButtonScreencastAreaReset->setDisabled(true);});
+    connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){ui->frame_video->setDisabled(true);});
+    connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){ui->frame_audio->setDisabled(true);});
+    connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){ui->frame_3->setDisabled(true);});
+    connect(ui->pushButtonStart, &QPushButton::clicked, vkRegionMargins_wl, [=](){vkRegionMargins_wl->whatWasClicked = "pushButtonStart";});
+    connect(ui->pushButtonStart, &QPushButton::clicked, this,               [=](){whatWasClicked = "pushButtonStart";});
+    connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){slot_pre_portal_start();});
+    connect(vkRegionMargins_wl,  &QvkRegionMargins_wl::signal_regionMargins, this, [=](){slot_portal_start();});
 
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), this,                                SLOT( slot_stop() ) );
     connect( ui->pushButtonStop,  SIGNAL( clicked(bool) ), ui->pushButtonStop,                  SLOT( setEnabled(bool) ) );

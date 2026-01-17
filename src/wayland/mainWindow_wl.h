@@ -122,7 +122,7 @@ protected:
     void closeEvent( QCloseEvent *event );
 
 
-signals:
+Q_SIGNALS:
     void signal_newVideoFilename(QString filename);
     void signal_beginRecordTime(QString time);
 

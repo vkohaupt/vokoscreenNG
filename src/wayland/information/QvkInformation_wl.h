@@ -39,19 +39,19 @@ public:
     QvkMainWindow_wl *mainWindow;
 
 
-public slots:
+public Q_SLOTS:
     void slot_newVideoFilename(QString filename);
     void slot_beginRecordTime(QString beginTime);
 
 
-private slots:
+private Q_SLOTS:
     void slot_StorageInfo();
     void slot_displayRecordTime();
     void slot_Audiocodec( QString value );
     void slot_Frames( int value );
 
 
-signals:
+Q_SIGNALS:
 
 
 protected:  
