@@ -421,11 +421,11 @@ void QvkMainWindow_wl::set_Connects()
     });
     connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){portal_wl->slot_stopScreenCast();});
 
-    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), this,                   SLOT( slot_Pause() ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), ui->pushButtonPause,    SLOT( hide() ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), ui->pushButtonContinue, SLOT( show() ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), ui->pushButtonStop,     SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), ui->pushButtonContinue, SLOT( setDisabled(bool) ) );
+    connect(ui->pushButtonPause, &QPushButton::clicked, this, [=](){slot_Pause();});
+    connect(ui->pushButtonPause, &QPushButton::clicked, this, [=](){ui->pushButtonPause->hide();});
+    connect(ui->pushButtonPause, &QPushButton::clicked, this, [=](){ui->pushButtonContinue->show();});
+    connect(ui->pushButtonPause, &QPushButton::clicked, this, [=](){ui->pushButtonStop->setDisabled(true);});
+    connect(ui->pushButtonPause, &QPushButton::clicked, this, [=](){ui->pushButtonContinue->setEnabled(true);});
 
     connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), this,                   SLOT( slot_Continue() ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), ui->pushButtonContinue, SLOT( setEnabled(bool) ) );
@@ -1285,7 +1285,6 @@ void QvkMainWindow_wl::slot_Pause()
         if (gst_element_get_state (pipeline, NULL, NULL, -1) == GST_STATE_CHANGE_FAILURE) {
           g_error ("Failed to go into PAUSED state");
         }
-
     }
 }
 
