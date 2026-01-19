@@ -39,7 +39,7 @@
 QvkImageFromTabs_wl::QvkImageFromTabs_wl( QvkMainWindow_wl *parent )
 {
     myParent = parent;
-    connect( myParent->ui->pushButtonImages, SIGNAL( clicked() ), this, SLOT( slot_make_picture_from_tabs() ) );
+    connect( myParent->ui->pushButtonImages, &QPushButton::clicked, this, [=](){slot_make_picture_from_tabs();});
 }
 
 
@@ -56,8 +56,8 @@ void QvkImageFromTabs_wl::slot_make_picture_from_tabs()
 
     timer = new QTimer( this );
     timer->setTimerType( Qt::PreciseTimer );
-    connect( timer, &QTimer::timeout, this, QOverload<>::of( &QvkImageFromTabs_wl::slot_make_picture_from_tab ) );
-    connect( this, SIGNAL( signal_open_picture_folder() ), this, SLOT( slot_open_picture_folder() ) );
+    connect(timer, &QTimer::timeout, this, QOverload<>::of(&QvkImageFromTabs_wl::slot_make_picture_from_tab));
+    connect(this, &QvkImageFromTabs_wl::signal_open_picture_folder, this, [=](){slot_open_picture_folder();});
     timer->start( 600 );
 }
 
