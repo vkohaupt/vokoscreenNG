@@ -261,7 +261,7 @@
           <item>
            <widget class="QTabWidget" name="tabWidgetScreencast">
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="iconSize">
              <size>
@@ -1447,7 +1447,7 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>449</width>
+                     <width>441</width>
                      <height>360</height>
                     </rect>
                    </property>
@@ -3605,7 +3605,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>

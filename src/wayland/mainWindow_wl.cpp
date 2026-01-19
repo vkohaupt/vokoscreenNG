@@ -427,14 +427,14 @@ void QvkMainWindow_wl::set_Connects()
     connect(ui->pushButtonPause, &QPushButton::clicked, this, [=](){ui->pushButtonStop->setDisabled(true);});
     connect(ui->pushButtonPause, &QPushButton::clicked, this, [=](){ui->pushButtonContinue->setEnabled(true);});
 
-    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), this,                   SLOT( slot_Continue() ) );
-    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), ui->pushButtonContinue, SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), ui->pushButtonContinue, SLOT( hide() ) );
-    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), ui->pushButtonPause,    SLOT( show() ) );
-    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), ui->pushButtonStop,     SLOT( setDisabled(bool) ) );
+    connect(ui->pushButtonContinue, &QPushButton::clicked, this, [=](){slot_Continue();});
+    connect(ui->pushButtonContinue, &QPushButton::clicked, this, [=](){ui->pushButtonContinue->setDisabled(true);});
+    connect(ui->pushButtonContinue, &QPushButton::clicked, this, [=](){ui->pushButtonContinue->hide();});
+    connect(ui->pushButtonContinue, &QPushButton::clicked, this, [=](){ui->pushButtonPause->show();});
+    connect(ui->pushButtonContinue, &QPushButton::clicked, this, [=](){ui->pushButtonStop->setEnabled(true);});
     ui->pushButtonContinue->hide();
 
-    connect( ui->pushButtonOpenfolder, SIGNAL( clicked(bool) ), this, SLOT( slot_folder() ) );
+    connect(ui->pushButtonOpenfolder, &QPushButton::clicked, this, [=](){slot_folder();});
 
     connect( ui->radioButtonScreencastFullscreen, SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled(bool) ) );
     connect( ui->radioButtonScreencastWindow,     SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled(bool) ) );
