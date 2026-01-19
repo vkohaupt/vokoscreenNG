@@ -51,12 +51,12 @@ QvkInformation_wl::QvkInformation_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMai
     timerRecord = new QTimer(this);
     timerRecord->setTimerType( Qt::PreciseTimer );
     timerRecord->setInterval( 1000 );
-    connect( timerRecord,        &QTimer::timeout,      this, [this](){slot_displayRecordTime();} );
-    connect( ui->pushButtonStop, &QPushButton::clicked, this, [this](){timerRecord->stop();} );
+    connect(timerRecord,        &QTimer::timeout,      this, [this](){slot_displayRecordTime();});
+    connect(ui->pushButtonStop, &QPushButton::clicked, this, [this](){timerRecord->stop();});
 
     // Frames, Format, Codecs
-    connect( ui->comboBoxAudioCodec,   &QComboBox::currentTextChanged,  this, [this](QString value){slot_Audiocodec(value);} );
-    connect( mainWindow->sliderFrames, &QvkSpezialSlider::valueChanged, this, [this](int value)    {slot_Frames(value);} );
+    connect(ui->comboBoxAudioCodec,   &QComboBox::currentTextChanged,  this, [this](QString value){slot_Audiocodec(value);});
+    connect(mainWindow->sliderFrames, &QvkSpezialSlider::valueChanged, this, [this](int value)    {slot_Frames(value);});
 }
 
 
