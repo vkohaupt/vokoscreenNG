@@ -449,8 +449,8 @@ void QvkMainWindow_wl::set_Connects()
 
     connect(ui->pushButtonSnapshot, &QPushButton::clicked, vkRegionMargins_wl, [=](){vkRegionMargins_wl->whatWasClicked = "pushButtonSnapshot";});
     connect(ui->pushButtonSnapshot, &QPushButton::clicked, this,               [=](){whatWasClicked = "pushButtonSnapshot";});
-    connect( ui->pushButtonSnapshot,           SIGNAL( clicked(bool) ), this, SLOT( slot_snapshotHideBeforeRecording(bool) ) );
-    connect( ui->pushButtonSnapshotOpenFolder, SIGNAL( clicked(bool) ), this, SLOT( slot_path_to_snapshot_folder(bool) ) );
+    connect( ui->pushButtonSnapshot,           SIGNAL( clicked(bool) ), this, SLOT( slot_snapshotHideBeforeRecording() ) );
+    connect( ui->pushButtonSnapshotOpenFolder, SIGNAL( clicked(bool) ), this, SLOT( slot_path_to_snapshot_folder() ) );
     connect(ui->toolButtonSnapshotFormatsReset, &QPushButton::clicked, this, [=](){
         ui->comboBoxSnapshotImageFormats->setCurrentText("png");});
     connect(ui->toolButtonSnapshotHideBeforeRecordingReset, &QPushButton::clicked, this, [=](){
@@ -464,8 +464,7 @@ void QvkMainWindow_wl::set_Connects()
 }
 
 
-void QvkMainWindow_wl::slot_snapshotHideBeforeRecording( bool bo ) {
-    Q_UNUSED(bo)
+void QvkMainWindow_wl::slot_snapshotHideBeforeRecording() {
     if ( ui->checkBoxSnapshotHideBeforeRecording->isChecked() == true ) {
         qDebug().noquote() << global::nameOutput << "[Snapshot]" << "Hide this window is checked";
         showMinimized();
@@ -543,10 +542,8 @@ void QvkMainWindow_wl::slot_handle_response_snapshot( uint responseCode, QVarian
 }
 
 
-void QvkMainWindow_wl::slot_path_to_snapshot_folder( bool bo )
+void QvkMainWindow_wl::slot_path_to_snapshot_folder()
 {
-    Q_UNUSED(bo)
-
     if ( path_to_snapshot_folder == "" ) {
         path_to_snapshot_folder = QStandardPaths::writableLocation( QStandardPaths::PicturesLocation );
     }

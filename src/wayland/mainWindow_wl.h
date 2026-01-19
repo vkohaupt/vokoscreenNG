@@ -111,10 +111,10 @@ private Q_SLOTS:
     void slot_Continue();
 
     // Snapshot
-    void slot_snapshotHideBeforeRecording( bool bo );
+    void slot_snapshotHideBeforeRecording();
     void slot_pushButton_snapshot();
     void slot_handle_response_snapshot( uint responseCode, QVariantMap results );
-    void slot_path_to_snapshot_folder( bool bo );
+    void slot_path_to_snapshot_folder();
     // Snapshot
 
 
