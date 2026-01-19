@@ -461,7 +461,7 @@ void QvkMainWindow_wl::set_Connects()
         spezialSlider->setValue(4);});
 
     connect(ui->pushButton_log_openfolder, &QPushButton::clicked, this, [=](){slot_log_folder();});
-    connect(ui->pushButton_log_refresh, &QPushButton::clicked, this, [=](){slot_log_refresh();});
+    connect(ui->pushButton_log_refresh,    &QPushButton::clicked, this, [=](){slot_log_refresh();});
 }
 
 
