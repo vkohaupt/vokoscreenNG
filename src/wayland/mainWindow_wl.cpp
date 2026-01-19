@@ -436,13 +436,9 @@ void QvkMainWindow_wl::set_Connects()
 
     connect(ui->pushButtonOpenfolder, &QPushButton::clicked, this, [=](){slot_folder();});
 
-    connect( ui->radioButtonScreencastFullscreen, SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled(bool) ) );
-    connect( ui->radioButtonScreencastWindow,     SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setDisabled(bool) ) );
-    connect( ui->radioButtonScreencastArea,       SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setEnabled(bool) ) );
-
-    connect( ui->radioButtonScreencastFullscreen, SIGNAL( clicked(bool) ), ui->frame_area, SLOT( setDisabled(bool) ) );
-    connect( ui->radioButtonScreencastWindow,     SIGNAL( clicked(bool) ), ui->frame_area, SLOT( setDisabled(bool) ) );
-    connect( ui->radioButtonScreencastArea,       SIGNAL( clicked(bool) ), ui->frame_area, SLOT( setEnabled(bool) ) );
+    connect(ui->radioButtonScreencastFullscreen, &QRadioButton::clicked, this, [=](){ui->toolButtonScreencastAreaReset->setDisabled(true);});
+    connect(ui->radioButtonScreencastWindow,     &QRadioButton::clicked, this, [=](){ui->toolButtonScreencastAreaReset->setDisabled(true);});
+    connect(ui->radioButtonScreencastArea,       &QRadioButton::clicked, this, [=](){ui->toolButtonScreencastAreaReset->setEnabled(true);});
 
     connect( portal_wl, SIGNAL( signal_portal_fd_path(QString,QString) ), this, SLOT( slot_pre_start(QString,QString) ) );
     connect( portal_wl, SIGNAL( signal_portal_aborted() ),                this, SLOT( slot_portal_dialog_aborted() ) );
