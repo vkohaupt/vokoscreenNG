@@ -444,8 +444,8 @@ void QvkMainWindow_wl::set_Connects()
     connect(portal_wl, &Portal_wl::signal_portal_aborted, this, [=](){slot_portal_dialog_aborted();});
 
     connect(ui->toolButtonScreencastAreaReset, &QToolButton::clicked, this, [=](){vkRegionChoise_wl->slot_areaReset();});
-    connect(ui->toolButtonFramesReset,         &QToolButton::clicked, this, [=](){slot_frames_Reset();});
-    connect(ui->toolButtonOpenh264Reset,       &QToolButton::clicked, this, [=](){slot_openh264Reset();});
+    connect(ui->toolButtonFramesReset,         &QToolButton::clicked, this, [=](){sliderFrames->setValue(25);});
+    connect(ui->toolButtonOpenh264Reset,       &QToolButton::clicked, this, [=](){sliderOpenh264->setValue(23);});
 
     connect(ui->pushButtonSnapshot, &QPushButton::clicked, vkRegionMargins_wl, [=](){vkRegionMargins_wl->whatWasClicked = "pushButtonSnapshot";});
     connect(ui->pushButtonSnapshot, &QPushButton::clicked, this,               [=](){whatWasClicked = "pushButtonSnapshot";});
@@ -1052,18 +1052,6 @@ void QvkMainWindow_wl::set_SpezialSliders()
     sliderWaitBeforeSnapshot->setValue( 4 );
     sliderWaitBeforeSnapshot->setDecimalPoint( true );
     sliderWaitBeforeSnapshot->show();
-}
-
-
-void QvkMainWindow_wl::slot_frames_Reset()
-{
-    sliderFrames->setValue( 25 );
-}
-
-
-void QvkMainWindow_wl::slot_openh264Reset()
-{
-    sliderOpenh264->setValue( 23 );
 }
 
 
