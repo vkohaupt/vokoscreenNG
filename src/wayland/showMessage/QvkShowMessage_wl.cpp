@@ -50,7 +50,7 @@ QvkShowMessage_wl::QvkShowMessage_wl()
     timer = new QTimer();
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( timerInterval );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_durationButton() ) );
+    connect(timer, &QTimer::timeout, this, [=](){slot_durationButton();});
 }
 
 
