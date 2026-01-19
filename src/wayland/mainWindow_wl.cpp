@@ -96,8 +96,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_CornerWidget();
     set_SpezialSliders();
     QvkInformation_wl *vkInformation = new QvkInformation_wl( this, ui );
-    connect( this, &QvkMainWindow_wl::signal_newVideoFilename, vkInformation, [vkInformation](QString filename){ vkInformation->slot_newVideoFilename(filename); } );
-    connect( this, &QvkMainWindow_wl::signal_beginRecordTime,  vkInformation, [vkInformation](QString beginTime){ vkInformation->slot_beginRecordTime(beginTime); } );
+    connect(this, &QvkMainWindow_wl::signal_newVideoFilename, vkInformation, [vkInformation](QString filename){vkInformation->slot_newVideoFilename(filename);});
+    connect(this, &QvkMainWindow_wl::signal_beginRecordTime,  vkInformation, [vkInformation](QString beginTime){vkInformation->slot_beginRecordTime(beginTime);});
 
     vkRegionMargins_wl = new QvkRegionMargins_wl( ui );
 
@@ -440,8 +440,8 @@ void QvkMainWindow_wl::set_Connects()
     connect(ui->radioButtonScreencastWindow,     &QRadioButton::clicked, this, [=](){ui->toolButtonScreencastAreaReset->setDisabled(true);});
     connect(ui->radioButtonScreencastArea,       &QRadioButton::clicked, this, [=](){ui->toolButtonScreencastAreaReset->setEnabled(true);});
 
-    connect( portal_wl, SIGNAL( signal_portal_fd_path(QString,QString) ), this, SLOT( slot_pre_start(QString,QString) ) );
-    connect( portal_wl, SIGNAL( signal_portal_aborted() ),                this, SLOT( slot_portal_dialog_aborted() ) );
+    connect( portal_wl, &Portal_wl::signal_portal_fd_path, this, [=](QString vk_fd, QString vk_path){slot_pre_start(vk_fd,vk_path);});
+    connect( portal_wl, &Portal_wl::signal_portal_aborted, this, [=](){slot_portal_dialog_aborted();});
 
     connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked(bool) ), vkRegionChoise_wl, SLOT( slot_areaReset() ) );
     connect( ui->toolButtonFramesReset,         SIGNAL( clicked(bool) ), this,              SLOT( slot_frames_Reset() ) );
