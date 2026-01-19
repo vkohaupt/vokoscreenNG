@@ -54,12 +54,12 @@ QvkCountdown_wl::QvkCountdown_wl()
     timer = new QTimer( this );
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( 1000 );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_updateTimer() ) );
+    connect( timer, &QTimer::timeout, this, [=](){slot_updateTimer();});
 
     animationTimer = new QTimer( this );
     animationTimer->setTimerType( Qt::PreciseTimer );
     animationTimer->setInterval( 40 );
-    connect( animationTimer, SIGNAL( timeout() ), this, SLOT( slot_updateAnimationTimer() ) );
+    connect( animationTimer, &QTimer::timeout, this, [=](){slot_updateAnimationTimer();});
 
     // Is needed only for the translated text
     QDialogButtonBox *buttonBox = new QDialogButtonBox( QDialogButtonBox::Abort, this );
