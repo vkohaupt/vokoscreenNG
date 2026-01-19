@@ -440,24 +440,24 @@ void QvkMainWindow_wl::set_Connects()
     connect(ui->radioButtonScreencastWindow,     &QRadioButton::clicked, this, [=](){ui->toolButtonScreencastAreaReset->setDisabled(true);});
     connect(ui->radioButtonScreencastArea,       &QRadioButton::clicked, this, [=](){ui->toolButtonScreencastAreaReset->setEnabled(true);});
 
-    connect( portal_wl, &Portal_wl::signal_portal_fd_path, this, [=](QString vk_fd, QString vk_path){slot_pre_start(vk_fd,vk_path);});
-    connect( portal_wl, &Portal_wl::signal_portal_aborted, this, [=](){slot_portal_dialog_aborted();});
+    connect(portal_wl, &Portal_wl::signal_portal_fd_path, this, [=](QString vk_fd, QString vk_path){slot_pre_start(vk_fd,vk_path);});
+    connect(portal_wl, &Portal_wl::signal_portal_aborted, this, [=](){slot_portal_dialog_aborted();});
 
-    connect( ui->toolButtonScreencastAreaReset, SIGNAL( clicked(bool) ), vkRegionChoise_wl, SLOT( slot_areaReset() ) );
-    connect( ui->toolButtonFramesReset,         SIGNAL( clicked(bool) ), this,              SLOT( slot_frames_Reset() ) );
-    connect( ui->toolButtonOpenh264Reset,       SIGNAL( clicked(bool) ), this,              SLOT( slot_openh264Reset() ) );
+    connect(ui->toolButtonScreencastAreaReset, &QToolButton::clicked, this, [=](){vkRegionChoise_wl->slot_areaReset();});
+    connect(ui->toolButtonFramesReset,         &QToolButton::clicked, this, [=](){slot_frames_Reset();});
+    connect(ui->toolButtonOpenh264Reset,       &QToolButton::clicked, this, [=](){slot_openh264Reset();});
 
-    connect( ui->pushButtonSnapshot, &QPushButton::clicked, vkRegionMargins_wl, [=]() { vkRegionMargins_wl->whatWasClicked = "pushButtonSnapshot" ; } );
-    connect( ui->pushButtonSnapshot, &QPushButton::clicked, this,               [=]() { whatWasClicked = "pushButtonSnapshot" ; } );
+    connect(ui->pushButtonSnapshot, &QPushButton::clicked, vkRegionMargins_wl, [=](){vkRegionMargins_wl->whatWasClicked = "pushButtonSnapshot";});
+    connect(ui->pushButtonSnapshot, &QPushButton::clicked, this,               [=](){whatWasClicked = "pushButtonSnapshot";});
     connect( ui->pushButtonSnapshot,           SIGNAL( clicked(bool) ), this, SLOT( slot_snapshotHideBeforeRecording(bool) ) );
     connect( ui->pushButtonSnapshotOpenFolder, SIGNAL( clicked(bool) ), this, SLOT( slot_path_to_snapshot_folder(bool) ) );
-    connect( ui->toolButtonSnapshotFormatsReset, &QPushButton::clicked, this, [=]() {
-        ui->comboBoxSnapshotImageFormats->setCurrentText( "png" ); } );
-    connect( ui->toolButtonSnapshotHideBeforeRecordingReset, &QPushButton::clicked, this, [=]() {
-        ui->checkBoxSnapshotHideBeforeRecording->setChecked( false ); } );
+    connect(ui->toolButtonSnapshotFormatsReset, &QPushButton::clicked, this, [=](){
+        ui->comboBoxSnapshotImageFormats->setCurrentText("png");});
+    connect(ui->toolButtonSnapshotHideBeforeRecordingReset, &QPushButton::clicked, this, [=](){
+        ui->checkBoxSnapshotHideBeforeRecording->setChecked(false);});
     QvkSpezialSlider *spezialSlider = ui->centralwidget->findChild<QvkSpezialSlider *>( "sliderWaitBeforeSnapshot" );
-    connect( ui->toolButtonSnapshotSecondsWaitBeforeRecordingReset, &QPushButton::clicked, this, [=]() {
-        spezialSlider->setValue(4); } );
+    connect(ui->toolButtonSnapshotSecondsWaitBeforeRecordingReset, &QPushButton::clicked, this, [=](){
+        spezialSlider->setValue(4);});
 
     connect( ui->pushButton_log_openfolder, SIGNAL( clicked(bool) ), this, SLOT( slot_log_folder() ) );
     connect( ui->pushButton_log_refresh,    SIGNAL( clicked(bool) ), this, SLOT( slot_log_refresh() ) );
