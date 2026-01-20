@@ -43,11 +43,8 @@ QvkConvert_mkv_mp4_wl::QvkConvert_mkv_mp4_wl( QvkMainWindow_wl *vkMainWindow, Ui
     Q_UNUSED(vkMainWindow)
     ui = vk_ui;
     global::lineEditConvertMP4 = new QLineEdit;
-//    connect( global::lineEditConvertMP4, SIGNAL( textChanged(QString) ), this, SLOT( slot_lineEdit_Convert_eos_MP4(QString) ) );
-    connect(global::lineEditConvertMP4, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_MP4();} );
-//    connect( ui->toolButton_convert_dialog_mkv_to_mp4, SIGNAL( clicked(bool) ), this, SLOT( slot_convert_openfiledialog_mkv_to_mp4(bool) ) );
+    connect(global::lineEditConvertMP4, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_MP4();});
     connect(ui->toolButton_convert_dialog_mkv_to_mp4, &QToolButton::clicked, this, [=](){slot_convert_openfiledialog_mkv_to_mp4();});
-//    connect( ui->pushButton_convert_mkv_to_mp4, SIGNAL( clicked(bool) ), this, SLOT( slot_convert_mkv_to_mp4(bool) ) );
     connect(ui->pushButton_convert_mkv_to_mp4, &QPushButton::clicked, this, [=](){slot_convert_mkv_to_mp4();});
 
     // Hintergrundfarbe für Widget setzen
@@ -66,13 +63,11 @@ QvkConvert_mkv_mp4_wl::QvkConvert_mkv_mp4_wl( QvkMainWindow_wl *vkMainWindow, Ui
     paletteConvertWidget = ui->pushButton_convert_mkv_to_mp4->palette();
     paletteConvertLabel = ui->label_convert_mkv_to_mp4->palette();
 
-//    connect( ui->toolButton_convert_dialog_mkv_to_mp4, SIGNAL( clicked(bool) ), this, SLOT( slot_dicover_set_filePath(bool) ) );
     connect(ui->toolButton_convert_dialog_mkv_to_mp4, &QToolButton::clicked, this, [=](){slot_dicover_set_filePath();});
 
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( 200 );
-//    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_timer() ) );
     connect(timer, &QTimer::timeout, this, [=](){slot_timer();});
 }
 
