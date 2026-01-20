@@ -55,7 +55,7 @@ private:
 
 public slots:
     void slot_closeSystray();
-    void slot_setSystrayIcon( bool );
+    void slot_setSystrayIcon();
 
 
 private slots:

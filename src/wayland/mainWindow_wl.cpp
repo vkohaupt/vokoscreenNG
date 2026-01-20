@@ -1001,7 +1001,7 @@ void QvkMainWindow_wl::slot_portal_dialog_aborted()
         vkSystray->stopAction->setEnabled(false);
         vkSystray->pauseAction->setEnabled(false);
         vkSystray->continueAction->setEnabled(false);
-        vkSystray->slot_setSystrayIcon(true);
+        vkSystray->slot_setSystrayIcon();
     }
 }
 

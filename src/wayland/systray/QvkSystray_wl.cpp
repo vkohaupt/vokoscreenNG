@@ -87,11 +87,11 @@ void QvkSystray_wl::init()
     connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){continueAction->setDisabled(true);});
     connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){slot_setRecordIcon();});
 
-    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), startAction,    SLOT( setDisabled(bool) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), stopAction,     SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), pauseAction,    SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), continueAction, SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), this,           SLOT( slot_setSystrayIcon(bool) ) );
+    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){startAction->setEnabled(true);});
+    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){stopAction->setDisabled(true);});
+    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){pauseAction->setDisabled(true);});
+    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){continueAction->setDisabled(true);});
+    connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){slot_setSystrayIcon();});
 
     connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), startAction,    SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), stopAction,     SLOT( setEnabled(bool) ) );
@@ -103,7 +103,7 @@ void QvkSystray_wl::init()
     connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), stopAction,     SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), pauseAction,    SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), continueAction, SLOT( setEnabled(bool) ) );
-//    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), this,           SLOT( slot_setRecordIcon(bool) ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), this,           SLOT( slot_setRecordIcon() ) );
 
     connect( startAction,    SIGNAL( triggered(bool) ), ui->pushButtonStart,    SLOT( click() ) );
     connect( stopAction,     SIGNAL( triggered(bool) ), ui->pushButtonStop,     SLOT( click() ) );
@@ -174,7 +174,7 @@ void QvkSystray_wl::slot_setRecordIcon()
 }
 
 
-void QvkSystray_wl::slot_setSystrayIcon( bool )
+void QvkSystray_wl::slot_setSystrayIcon()
 {
     setIcon( QIcon( ":/pictures/systray/systray.png" ) );
 }
