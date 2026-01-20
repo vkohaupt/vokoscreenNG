@@ -43,10 +43,12 @@ QvkConvert_mkv_mp4_wl::QvkConvert_mkv_mp4_wl( QvkMainWindow_wl *vkMainWindow, Ui
     Q_UNUSED(vkMainWindow)
     ui = vk_ui;
     global::lineEditConvertMP4 = new QLineEdit;
-    connect( global::lineEditConvertMP4, SIGNAL( textChanged(QString) ), this, SLOT( slot_lineEdit_Convert_eos_MP4(QString) ) );
-
-    connect( ui->toolButton_convert_dialog_mkv_to_mp4, SIGNAL( clicked(bool) ), this, SLOT( slot_convert_openfiledialog_mkv_to_mp4(bool) ) );
-    connect( ui->pushButton_convert_mkv_to_mp4, SIGNAL( clicked(bool) ), this, SLOT( slot_convert_mkv_to_mp4(bool) ) );
+//    connect( global::lineEditConvertMP4, SIGNAL( textChanged(QString) ), this, SLOT( slot_lineEdit_Convert_eos_MP4(QString) ) );
+    connect(global::lineEditConvertMP4, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_MP4();} );
+//    connect( ui->toolButton_convert_dialog_mkv_to_mp4, SIGNAL( clicked(bool) ), this, SLOT( slot_convert_openfiledialog_mkv_to_mp4(bool) ) );
+    connect(ui->toolButton_convert_dialog_mkv_to_mp4, &QToolButton::clicked, this, [=](){slot_convert_openfiledialog_mkv_to_mp4();});
+//    connect( ui->pushButton_convert_mkv_to_mp4, SIGNAL( clicked(bool) ), this, SLOT( slot_convert_mkv_to_mp4(bool) ) );
+    connect(ui->pushButton_convert_mkv_to_mp4, &QPushButton::clicked, this, [=](){slot_convert_mkv_to_mp4();});
 
     // Hintergrundfarbe für Widget setzen
     QPalette palette_1 = ui->pushButton_convert_mkv_to_mp4->palette();
@@ -64,12 +66,14 @@ QvkConvert_mkv_mp4_wl::QvkConvert_mkv_mp4_wl( QvkMainWindow_wl *vkMainWindow, Ui
     paletteConvertWidget = ui->pushButton_convert_mkv_to_mp4->palette();
     paletteConvertLabel = ui->label_convert_mkv_to_mp4->palette();
 
-    connect( ui->toolButton_convert_dialog_mkv_to_mp4, SIGNAL( clicked(bool) ), this, SLOT( slot_dicover_set_filePath(bool) ) );
+//    connect( ui->toolButton_convert_dialog_mkv_to_mp4, SIGNAL( clicked(bool) ), this, SLOT( slot_dicover_set_filePath(bool) ) );
+    connect(ui->toolButton_convert_dialog_mkv_to_mp4, &QToolButton::clicked, this, [=](){slot_dicover_set_filePath();});
 
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( 200 );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_timer() ) );
+//    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_timer() ) );
+    connect(timer, &QTimer::timeout, this, [=](){slot_timer();});
 }
 
 
@@ -92,7 +96,7 @@ void QvkConvert_mkv_mp4_wl::slot_timer()
 }
 
 
-void QvkConvert_mkv_mp4_wl::slot_lineEdit_Convert_eos_MP4(QString)
+void QvkConvert_mkv_mp4_wl::slot_lineEdit_Convert_eos_MP4()
 {
     QPalette palette_1 = ui->pushButton_convert_mkv_to_mp4->palette();
     palette_1.setColor( QPalette::Window, QColor( Qt::green ) );
@@ -113,7 +117,7 @@ void QvkConvert_mkv_mp4_wl::slot_lineEdit_Convert_eos_MP4(QString)
 }
 
 
-void QvkConvert_mkv_mp4_wl::slot_convert_openfiledialog_mkv_to_mp4(bool)
+void QvkConvert_mkv_mp4_wl::slot_convert_openfiledialog_mkv_to_mp4()
 {
     //    QApplication::setDesktopSettingsAware( false );
 
@@ -185,7 +189,7 @@ GstBusSyncReply QvkConvert_mkv_mp4_wl::call_bus_message_convert_mp4( GstBus *bus
 }
 
 
-void QvkConvert_mkv_mp4_wl::slot_convert_mkv_to_mp4(bool)
+void QvkConvert_mkv_mp4_wl::slot_convert_mkv_to_mp4()
 {
     QString video_codec;
     if ( convert_video_codec_mp4.contains( "H264" ) ) {
@@ -505,7 +509,7 @@ static void on_finished_cb (GstDiscoverer * discoverer, CustomData * data)
 }
 
 
-void QvkConvert_mkv_mp4_wl::slot_dicover_set_filePath(bool)
+void QvkConvert_mkv_mp4_wl::slot_dicover_set_filePath()
 {
     slot_dicover_start( "file://" + ui->lineEdit_convert_mkv_to_mp4->text() );
 }

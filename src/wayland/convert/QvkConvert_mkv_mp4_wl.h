@@ -51,11 +51,11 @@ public slots:
 
 
 private slots:
-    void slot_convert_openfiledialog_mkv_to_mp4(bool);
-    void slot_convert_mkv_to_mp4(bool);
-    void slot_lineEdit_Convert_eos_MP4(QString);
+    void slot_convert_openfiledialog_mkv_to_mp4();
+    void slot_convert_mkv_to_mp4();
+    void slot_lineEdit_Convert_eos_MP4();
 
-    void slot_dicover_set_filePath(bool);
+    void slot_dicover_set_filePath();
     void slot_dicover_start( QString filePath );
 
     void slot_timer();
