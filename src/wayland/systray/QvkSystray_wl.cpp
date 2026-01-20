@@ -93,11 +93,11 @@ void QvkSystray_wl::init()
     connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){continueAction->setDisabled(true);});
     connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){slot_setSystrayIcon();});
 
-    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), startAction,    SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), stopAction,     SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), pauseAction,    SLOT( setEnabled(bool) ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), continueAction, SLOT( setDisabled(bool) ) );
-    connect( ui->pushButtonPause, SIGNAL( clicked(bool) ), this,           SLOT( slot_setPauseIcon(bool) ) );
+    connect(ui->pushButtonPause, &QPushButton::clicked, this, [=](){startAction->setDisabled(true);});
+    connect(ui->pushButtonPause, &QPushButton::clicked, this, [=](){stopAction->setDisabled(true);});
+    connect(ui->pushButtonPause, &QPushButton::clicked, this, [=](){pauseAction->setDisabled(true);});
+    connect(ui->pushButtonPause, &QPushButton::clicked, this, [=](){continueAction->setEnabled(true);});
+    connect(ui->pushButtonPause, &QPushButton::clicked, this, [=](){slot_setPauseIcon();});
 
     connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), startAction,    SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), stopAction,     SLOT( setDisabled(bool) ) );
@@ -180,7 +180,7 @@ void QvkSystray_wl::slot_setSystrayIcon()
 }
 
 
-void QvkSystray_wl::slot_setPauseIcon( bool )
+void QvkSystray_wl::slot_setPauseIcon()
 {
     setIcon( QIcon( ":/pictures/systray/pause.png" ) );
 }
