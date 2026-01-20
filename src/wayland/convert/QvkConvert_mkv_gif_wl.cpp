@@ -42,9 +42,9 @@ QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl( QvkMainWindow_wl *vkMainWindow, Ui
     Q_UNUSED(vkMainWindow)
     ui = vk_ui;
     global::lineEditConvertGIF = new QLineEdit;
-    connect( global::lineEditConvertGIF, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_gif();});
+    connect(global::lineEditConvertGIF, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_gif();});
     connect(ui->toolButton_convert_dialog_mkv_to_gif, &QToolButton::clicked, this, [=](){slot_convert_openfiledialog_mkv_to_gif();});
-    connect( ui->pushButton_convert_mkv_to_gif, &QPushButton::clicked, this, [=](){slot_convert_mkv_to_gif();});
+    connect(ui->pushButton_convert_mkv_to_gif, &QPushButton::clicked, this, [=](){slot_convert_mkv_to_gif();});
 
     // Hintergrundfarbe für Widget setzen
     QPalette palette_1 = ui->pushButton_convert_mkv_to_gif->palette();
