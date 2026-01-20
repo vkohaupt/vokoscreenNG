@@ -42,10 +42,9 @@ QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl( QvkMainWindow_wl *vkMainWindow, Ui
     Q_UNUSED(vkMainWindow)
     ui = vk_ui;
     global::lineEditConvertGIF = new QLineEdit;
-    connect( global::lineEditConvertGIF, SIGNAL( textChanged(QString) ), this, SLOT( slot_lineEdit_Convert_eos_gif(QString) ) );
-
-    connect( ui->toolButton_convert_dialog_mkv_to_gif, SIGNAL( clicked(bool) ), this, SLOT( slot_convert_openfiledialog_mkv_to_gif(bool) ) );
-    connect( ui->pushButton_convert_mkv_to_gif, SIGNAL( clicked(bool) ), this, SLOT( slot_convert_mkv_to_gif(bool) ) );
+    connect( global::lineEditConvertGIF, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_gif();});
+    connect(ui->toolButton_convert_dialog_mkv_to_gif, &QToolButton::clicked, this, [=](){slot_convert_openfiledialog_mkv_to_gif();});
+    connect( ui->pushButton_convert_mkv_to_gif, &QPushButton::clicked, this, [=](){slot_convert_mkv_to_gif();});
 
     // Hintergrundfarbe für Widget setzen
     QPalette palette_1 = ui->pushButton_convert_mkv_to_gif->palette();
@@ -63,12 +62,12 @@ QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl( QvkMainWindow_wl *vkMainWindow, Ui
     paletteConvertWidget = ui->pushButton_convert_mkv_to_gif->palette();
     paletteConvertLabel = ui->label_convert_mkv_to_gif->palette();
 
-    connect( ui->toolButton_convert_dialog_mkv_to_gif, SIGNAL( clicked(bool) ), this, SLOT( slot_dicover_set_filePath(bool) ) );
+    connect(ui->toolButton_convert_dialog_mkv_to_gif, &QToolButton::clicked, [=](){slot_dicover_set_filePath();});
 
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( 200 );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_timer() ) );
+    connect( timer, &QTimer::timeout, this, [=](){slot_timer();});
 }
 
 
@@ -91,7 +90,7 @@ void QvkConvert_mkv_gif_wl::slot_timer()
 }
 
 
-void QvkConvert_mkv_gif_wl::slot_lineEdit_Convert_eos_gif(QString)
+void QvkConvert_mkv_gif_wl::slot_lineEdit_Convert_eos_gif()
 {
     QPalette palette_1 = ui->pushButton_convert_mkv_to_gif->palette();
     palette_1.setColor( QPalette::Window, QColor( Qt::green ) );
@@ -112,7 +111,7 @@ void QvkConvert_mkv_gif_wl::slot_lineEdit_Convert_eos_gif(QString)
 }
 
 
-void QvkConvert_mkv_gif_wl::slot_convert_openfiledialog_mkv_to_gif(bool)
+void QvkConvert_mkv_gif_wl::slot_convert_openfiledialog_mkv_to_gif()
 {
     //    QApplication::setDesktopSettingsAware( false );
 
@@ -184,7 +183,7 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif( GstBus *bus
 }
 
 
-void QvkConvert_mkv_gif_wl::slot_convert_mkv_to_gif(bool)
+void QvkConvert_mkv_gif_wl::slot_convert_mkv_to_gif()
 {
     QString video_codec;
     if ( convert_video_codec_gif.contains( "H264" ) ) {
@@ -461,7 +460,7 @@ static void on_finished_cb (GstDiscoverer * discoverer, CustomData * data)
 }
 
 
-void QvkConvert_mkv_gif_wl::slot_dicover_set_filePath(bool)
+void QvkConvert_mkv_gif_wl::slot_dicover_set_filePath()
 {
     slot_dicover_start( "file://" + ui->lineEdit_convert_mkv_to_gif->text() );
 }
