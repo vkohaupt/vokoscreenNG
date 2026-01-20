@@ -105,16 +105,16 @@ void QvkSystray_wl::init()
     connect(ui->pushButtonContinue, &QPushButton::clicked, this, [=](){continueAction->setDisabled(true);});
     connect(ui->pushButtonContinue, &QPushButton::clicked, this, [=](){slot_setRecordIcon();});
 
-    connect( startAction,    SIGNAL( triggered(bool) ), ui->pushButtonStart,    SLOT( click() ) );
-    connect( stopAction,     SIGNAL( triggered(bool) ), ui->pushButtonStop,     SLOT( click() ) );
-    connect( pauseAction,    SIGNAL( triggered(bool) ), ui->pushButtonPause,    SLOT( click() ) );
-    connect( continueAction, SIGNAL( triggered(bool) ), ui->pushButtonContinue, SLOT( click() ) );
+    connect(startAction,    &QAction::triggered, this, [=](){ui->pushButtonStart->click();});
+    connect(stopAction,     &QAction::triggered, this, [=](){ui->pushButtonStop->click();});
+    connect(pauseAction,    &QAction::triggered, this, [=](){ui->pushButtonPause->click();});
+    connect(continueAction, &QAction::triggered, this, [=](){ui->pushButtonContinue->click();});
 /*
     connect( ui->checkBoxCameraOnOff, SIGNAL( toggled(bool) ),   cameraAction,            SLOT( setChecked(bool) ) );
     connect( cameraAction,            SIGNAL( triggered(bool) ), ui->checkBoxCameraOnOff, SLOT( setChecked(bool) ) );
     connect( ui->comboBoxCamera,      SIGNAL( currentIndexChanged(int) ), this,           SLOT( slot_currentIndexChanged(int) ) );
 */
-    connect( snapshotAction, SIGNAL( triggered(bool) ), ui->pushButtonSnapshot, SLOT( click() ) );
+    connect(snapshotAction, &QAction::triggered, this, [=](){ui->pushButtonSnapshot->click();});
 
     menu = new QMenu();
     menu->addAction( titleAction );
