@@ -113,9 +113,9 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     QvkAudioController_wl *vkAudioController = new QvkAudioController_wl( ui );
     vkAudioController->init();
 
-    connect( ui->toolButtonSeparatedAudioTracksReset, &QToolButton::clicked, this, [=]() {
+    connect(ui->toolButtonSeparatedAudioTracksReset, &QToolButton::clicked, this, [=](){
         ui->checkBoxSeparatedAudioTracks->setCheckState( Qt::Unchecked);
-    } );
+    });
 
     vkHelp = new QvkHelp_wl( ui );
     new QvkLicenses( ui->pushButtonLicense );
@@ -123,11 +123,11 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
     // Misc
     videoFileSystemWatcher = new QFileSystemWatcher();
-    connect( ui->toolButtonVideoPath, &QToolButton::clicked, this, [this](){ slot_newVideoPath();} );
-    connect( ui->lineEditVideoPath, &QLineEdit::textChanged, this, [this](){ slot_videoFileSystemWatcherSetNewPath();} );
-    connect( ui->toolButtonVideoPathReset, &QToolButton::clicked, this, [this]() {
+    connect(ui->toolButtonVideoPath, &QToolButton::clicked, this, [this](){slot_newVideoPath();});
+    connect(ui->lineEditVideoPath, &QLineEdit::textChanged, this, [this](){slot_videoFileSystemWatcherSetNewPath();});
+    connect(ui->toolButtonVideoPathReset, &QToolButton::clicked, this, [this](){
         ui->lineEditVideoPath->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
-    } );
+    });
 
     // About
     ui->labelSourcecodeUrl->setText( "<a href='https://github.com/vkohaupt/vokoscreenNG'>" + tr( "Sourcecode" ) + "</a>" );
@@ -175,8 +175,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     vkSystray = new QvkSystray_wl( ui );
     if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
         vkSystray->init();
-        connect( ui->checkBoxShowInSystray, &QCheckBox::clicked, vkSystray, [this](bool value){ vkSystray->setVisible(value);} );
-        connect( vkSystray, &QvkSystray_wl::signal_SystemtrayIsClose, vkSystray, [this](){ close();} );
+        connect(ui->checkBoxShowInSystray, &QCheckBox::clicked, vkSystray, [this](bool value){vkSystray->setVisible(value);});
+        connect(vkSystray, &QvkSystray_wl::signal_SystemtrayIsClose, vkSystray, [this](){close();});
     }
 
     vkSettings_wl.readAll( ui, this );
