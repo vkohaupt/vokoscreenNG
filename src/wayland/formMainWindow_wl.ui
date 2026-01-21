@@ -489,7 +489,7 @@
                           <x>0</x>
                           <y>0</y>
                           <width>401</width>
-                          <height>120</height>
+                          <height>116</height>
                          </rect>
                         </property>
                         <property name="accessibleName">
@@ -911,6 +911,13 @@
                      </size>
                     </property>
                    </spacer>
+                  </item>
+                  <item>
+                   <widget class="QToolButton" name="help_screencast_countdown">
+                    <property name="text">
+                     <string>Help</string>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </item>
