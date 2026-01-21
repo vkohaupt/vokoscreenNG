@@ -51,11 +51,11 @@ public slots:
 
 
 private slots:
-    void slot_convert_openfiledialog_mkv_to_webm(bool);
-    void slot_convert_mkv_to_webm(bool);
-    void slot_lineEdit_Convert_eos_WEBM(QString);
+    void slot_convert_openfiledialog_mkv_to_webm();
+    void slot_convert_mkv_to_webm();
+    void slot_lineEdit_Convert_eos_WEBM();
 
-    void slot_dicover_set_filePath(bool);
+    void slot_dicover_set_filePath();
     void slot_dicover_start( QString filePath );
 
     void slot_timer();

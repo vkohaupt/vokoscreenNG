@@ -44,10 +44,14 @@ QvkConvert_mkv_to_webm_wl::QvkConvert_mkv_to_webm_wl( QvkMainWindow_wl *vkMainWi
     Q_UNUSED(vkMainWindow)
     ui = vk_ui;
     global::lineEditConvertWEBM = new QLineEdit;
-    connect( global::lineEditConvertWEBM, SIGNAL( textChanged(QString) ), this, SLOT( slot_lineEdit_Convert_eos_WEBM(QString) ) );
+//    connect( global::lineEditConvertWEBM, SIGNAL( textChanged(QString) ), this, SLOT( slot_lineEdit_Convert_eos_WEBM(QString) ) );
+    connect(global::lineEditConvertWEBM, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_WEBM();});
 
-    connect( ui->toolButton_convert_dialog_mkv_to_webm, SIGNAL( clicked(bool) ), this, SLOT( slot_convert_openfiledialog_mkv_to_webm(bool) ) );
-    connect( ui->pushButton_convert_mkv_to_webm, SIGNAL( clicked(bool) ), this, SLOT( slot_convert_mkv_to_webm(bool) ) );
+//    connect( ui->toolButton_convert_dialog_mkv_to_webm, SIGNAL( clicked(bool) ), this, SLOT( slot_convert_openfiledialog_mkv_to_webm(bool) ) );
+    connect(ui->toolButton_convert_dialog_mkv_to_webm, &QToolButton::clicked, this, [=](){slot_convert_openfiledialog_mkv_to_webm();});
+
+//    connect( ui->pushButton_convert_mkv_to_webm, SIGNAL( clicked(bool) ), this, SLOT( slot_convert_mkv_to_webm(bool) ) );
+    connect(ui->pushButton_convert_mkv_to_webm, &QPushButton::clicked, this, [=](){slot_convert_mkv_to_webm();});
 
     // Hintergrundfarbe für Widget setzen
     QPalette palette_1 = ui->pushButton_convert_mkv_to_webm->palette();
@@ -65,12 +69,14 @@ QvkConvert_mkv_to_webm_wl::QvkConvert_mkv_to_webm_wl( QvkMainWindow_wl *vkMainWi
     paletteConvertWidget = ui->pushButton_convert_mkv_to_webm->palette();
     paletteConvertLabel = ui->label_convert_mkv_to_webm->palette();
 
-    connect( ui->toolButton_convert_dialog_mkv_to_webm, SIGNAL( clicked(bool) ), this, SLOT( slot_dicover_set_filePath(bool) ) );
+//    connect( ui->toolButton_convert_dialog_mkv_to_webm, SIGNAL( clicked(bool) ), this, SLOT( slot_dicover_set_filePath(bool) ) );
+    connect(ui->toolButton_convert_dialog_mkv_to_webm, &QToolButton::clicked, this, [=](){slot_dicover_set_filePath();});
 
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( 200 );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_timer() ) );
+//    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_timer() ) );
+    connect(timer, &QTimer::timeout, this, [=](){slot_timer();});
 }
 
 
@@ -123,7 +129,7 @@ void QvkConvert_mkv_to_webm_wl::slot_timer()
 }
 
 
-void QvkConvert_mkv_to_webm_wl::slot_lineEdit_Convert_eos_WEBM(QString)
+void QvkConvert_mkv_to_webm_wl::slot_lineEdit_Convert_eos_WEBM()
 {
     QPalette palette_1 = ui->pushButton_convert_mkv_to_webm->palette();
     palette_1.setColor( QPalette::Window, QColor( Qt::green ) );
@@ -144,7 +150,7 @@ void QvkConvert_mkv_to_webm_wl::slot_lineEdit_Convert_eos_WEBM(QString)
 }
 
 
-void QvkConvert_mkv_to_webm_wl::slot_convert_openfiledialog_mkv_to_webm(bool)
+void QvkConvert_mkv_to_webm_wl::slot_convert_openfiledialog_mkv_to_webm()
 {
     //    QApplication::setDesktopSettingsAware( false );
 
@@ -216,7 +222,7 @@ GstBusSyncReply QvkConvert_mkv_to_webm_wl::call_bus_message_convert_webm( GstBus
 }
 
 
-void QvkConvert_mkv_to_webm_wl::slot_convert_mkv_to_webm(bool)
+void QvkConvert_mkv_to_webm_wl::slot_convert_mkv_to_webm()
 {
     QString video_codec;
     if ( convert_video_codec_webm.contains( "H264" ) ) {
@@ -553,7 +559,7 @@ static void on_finished_cb (GstDiscoverer * discoverer, CustomData * data)
 }
 
 
-void QvkConvert_mkv_to_webm_wl::slot_dicover_set_filePath(bool)
+void QvkConvert_mkv_to_webm_wl::slot_dicover_set_filePath()
 {
     slot_dicover_start( "file://" + ui->lineEdit_convert_mkv_to_webm->text() );
 }
