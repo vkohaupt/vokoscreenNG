@@ -23,6 +23,7 @@
 #include "QvkLocale_wl.h"
 #include "global.h"
 
+#include <QUrl>
 #include <QFile>
 #include <QIODevice>
 #include <QTextStream>
@@ -30,7 +31,7 @@
 QvkLocale_wl::QvkLocale_wl()
 {
     vkDownload = new QvkDownloader_wl( temporaryDirLocal.path() );
-    connect( vkDownload, SIGNAL( signal_fileDownloaded(QString) ), this, SLOT( slot_parse(QString) ) );
+    connect(vkDownload, &QvkDownloader_wl::signal_fileDownloaded, this, [=](QString tempPathFileName){slot_parse(tempPathFileName);});
     vkDownload->doDownload( QUrl( "https://vokoscreen.volkoh.de/3.0/help/getLinuxDirs.php" ) );
     vkDownload->doDownload( QUrl( "https://vokoscreen.volkoh.de/3.0/help/getWaylandDirs.php" ) );
 }
