@@ -44,13 +44,8 @@ QvkConvert_mkv_to_webm_wl::QvkConvert_mkv_to_webm_wl( QvkMainWindow_wl *vkMainWi
     Q_UNUSED(vkMainWindow)
     ui = vk_ui;
     global::lineEditConvertWEBM = new QLineEdit;
-//    connect( global::lineEditConvertWEBM, SIGNAL( textChanged(QString) ), this, SLOT( slot_lineEdit_Convert_eos_WEBM(QString) ) );
     connect(global::lineEditConvertWEBM, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_WEBM();});
-
-//    connect( ui->toolButton_convert_dialog_mkv_to_webm, SIGNAL( clicked(bool) ), this, SLOT( slot_convert_openfiledialog_mkv_to_webm(bool) ) );
     connect(ui->toolButton_convert_dialog_mkv_to_webm, &QToolButton::clicked, this, [=](){slot_convert_openfiledialog_mkv_to_webm();});
-
-//    connect( ui->pushButton_convert_mkv_to_webm, SIGNAL( clicked(bool) ), this, SLOT( slot_convert_mkv_to_webm(bool) ) );
     connect(ui->pushButton_convert_mkv_to_webm, &QPushButton::clicked, this, [=](){slot_convert_mkv_to_webm();});
 
     // Hintergrundfarbe für Widget setzen
@@ -69,13 +64,11 @@ QvkConvert_mkv_to_webm_wl::QvkConvert_mkv_to_webm_wl( QvkMainWindow_wl *vkMainWi
     paletteConvertWidget = ui->pushButton_convert_mkv_to_webm->palette();
     paletteConvertLabel = ui->label_convert_mkv_to_webm->palette();
 
-//    connect( ui->toolButton_convert_dialog_mkv_to_webm, SIGNAL( clicked(bool) ), this, SLOT( slot_dicover_set_filePath(bool) ) );
     connect(ui->toolButton_convert_dialog_mkv_to_webm, &QToolButton::clicked, this, [=](){slot_dicover_set_filePath();});
 
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( 200 );
-//    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_timer() ) );
     connect(timer, &QTimer::timeout, this, [=](){slot_timer();});
 }
 
