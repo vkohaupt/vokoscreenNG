@@ -66,7 +66,7 @@ QvkHelp_wl::QvkHelp_wl( Ui_formMainWindow_wl *ui_mainwindow ) : uiHelp(new(Ui::h
     QList<QPushButton *> list = buttonBox->findChildren<QPushButton *>();
     uiHelp->pushButtonClose->setText( list.at(0)->text() );
 
-    connect( uiHelp->pushButtonClose, SIGNAL( clicked(bool) ), this, SLOT( close() ) );
+    connect(uiHelp->pushButtonClose, &QPushButton::clicked, this, [=](){close();});
 
     resize( 800, 600 );
     setWindowTitle( QString( tr( "Help") ) );
@@ -84,7 +84,7 @@ QvkHelp_wl::QvkHelp_wl( Ui_formMainWindow_wl *ui_mainwindow ) : uiHelp(new(Ui::h
     vk_helpPath = helpStringList.join( "/" ).append( "/");
 
     vkLocale = new QvkLocale_wl();
-    connect( vkLocale, SIGNAL( signal_locale(QStringList) ), this, SLOT( slot_parse_locale(QStringList) ) );
+    connect(vkLocale, &QvkLocale_wl::signal_locale, this, [=](QStringList list){slot_parse_locale(list);});
 
     vkDownloadHTML = new QvkDownloader_wl( temporaryDirLocal.path() );
     vkDownloadFiles = new QvkDownloader_wl( temporaryDirLocal.path() );
@@ -188,7 +188,7 @@ void QvkHelp_wl::loadHTML( QString value )
     remotePath = fileInfo.path();
     remoteBasename = fileInfo.baseName();
     disconnect( vkDownloadHTML, nullptr, nullptr, nullptr );
-    connect( vkDownloadHTML, SIGNAL( signal_fileDownloaded(QString) ), this, SLOT( slot_parseHTML(QString) ) );
+    connect(vkDownloadHTML, &QvkDownloader_wl::signal_fileDownloaded, this, [=](QString tempPathFileName){slot_parseHTML(tempPathFileName);});
     vkDownloadHTML->doDownload( value );
 }
 
@@ -264,7 +264,7 @@ void QvkHelp_wl::slot_parseHTML( QString tempPathFileName )
             counter++;
             if ( counter == countFiles ) {
                 disconnect( vkDownloadFiles, nullptr, nullptr, nullptr );
-                connect( vkDownloadFiles, SIGNAL( signal_fileDownloaded(QString) ), this, SLOT( slot_showHelp(QString) ) );
+                connect(vkDownloadFiles, &QvkDownloader_wl::signal_fileDownloaded, this, [=](QString tempPathFileName){slot_showHelp(tempPathFileName);});
             }
             vkDownloadFiles->doDownload( remotePath + "/" + fileForHTML );
             localFiles << tmpPath + + "/" + fileForHTML;
