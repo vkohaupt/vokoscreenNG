@@ -42,9 +42,7 @@ QvkPulseAudioWatcher_wl::QvkPulseAudioWatcher_wl( Ui_formMainWindow_wl *ui_mainw
     timer = new QTimer( this );
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( 3000 );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_update() ) );
-//    connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->labelAudioCodec,    SLOT( setEnabled(bool) ) );
-//    connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->comboBoxAudioCodec, SLOT( setEnabled(bool) ) );
+    connect(timer, &QTimer::timeout, this, [=](){slot_update();});
 }
 
 
@@ -125,7 +123,8 @@ void QvkPulseAudioWatcher_wl::slot_update()
 
                 // Checkbox hinzufügen
                 QCheckBox *checkBox = new QCheckBox();
-                connect( checkBox, SIGNAL( clicked(bool) ), this, SLOT( slot_audioDeviceSelected() ) );
+                connect(checkBox, &QCheckBox::clicked, this, [=](){slot_audioDeviceSelected();});
+
                 checkBox->setAccessibleName( device );
                 checkBox->setObjectName( "checkboxAudioDevice-" + index );
                 checkBox->setToolTip( tr ( "Select one or more devices" ) );
