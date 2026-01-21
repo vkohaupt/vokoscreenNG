@@ -37,10 +37,9 @@ QvkConvert_mkv_repair_wl::QvkConvert_mkv_repair_wl( QvkMainWindow_wl *vkMainWind
     Q_UNUSED(vkMainWindow)
     ui = vk_ui;
     global::lineEditConvertRepair = new QLineEdit;
-    connect( global::lineEditConvertRepair, SIGNAL( textChanged(QString) ), this, SLOT( slot_lineEdit_Convert_eos_repair(QString) ) );
-
-    connect( ui->toolButton_convert_dialog_mkv_repair, SIGNAL( clicked(bool) ), this, SLOT( slot_convert_openfiledialog_mkv_repair(bool) ) );
-    connect( ui->pushButton_convert_mkv_repair, SIGNAL( clicked(bool) ), this, SLOT( slot_convert_mkv_repair(bool) ) );
+    connect(global::lineEditConvertRepair, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_repair();});
+    connect(ui->toolButton_convert_dialog_mkv_repair, &QToolButton::clicked, this, [=](){slot_convert_openfiledialog_mkv_repair();});
+    connect(ui->pushButton_convert_mkv_repair, &QPushButton::clicked, this, [=](){slot_convert_mkv_repair();});
 
     // Hintergrundfarbe für Widget setzen
     QPalette palette_1 = ui->pushButton_convert_mkv_repair->palette();
@@ -58,12 +57,12 @@ QvkConvert_mkv_repair_wl::QvkConvert_mkv_repair_wl( QvkMainWindow_wl *vkMainWind
     paletteConvertWidget = ui->pushButton_convert_mkv_repair->palette();
     paletteConvertLabel = ui->label_convert_mkv_repair->palette();
 
-    connect( ui->toolButton_convert_dialog_mkv_repair, SIGNAL( clicked(bool) ), this, SLOT( slot_dicover_set_filePath(bool) ) );
+    connect(ui->toolButton_convert_dialog_mkv_repair, &QToolButton::clicked, this, [=](){slot_dicover_set_filePath();});
 
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
     timer->setInterval( 200 );
-    connect( timer, SIGNAL( timeout() ), this, SLOT( slot_timer() ) );
+    connect(timer, &QTimer::timeout, this, [=](){slot_timer();});
 }
 
 
@@ -86,7 +85,7 @@ void QvkConvert_mkv_repair_wl::slot_timer()
 }
 
 
-void QvkConvert_mkv_repair_wl::slot_lineEdit_Convert_eos_repair(QString)
+void QvkConvert_mkv_repair_wl::slot_lineEdit_Convert_eos_repair()
 {
     QPalette palette_1 = ui->pushButton_convert_mkv_repair->palette();
     palette_1.setColor( QPalette::Window, QColor( Qt::green ) );
@@ -107,7 +106,7 @@ void QvkConvert_mkv_repair_wl::slot_lineEdit_Convert_eos_repair(QString)
 }
 
 
-void QvkConvert_mkv_repair_wl::slot_convert_openfiledialog_mkv_repair(bool)
+void QvkConvert_mkv_repair_wl::slot_convert_openfiledialog_mkv_repair()
 {
     //    QApplication::setDesktopSettingsAware( false );
 
@@ -179,7 +178,7 @@ GstBusSyncReply QvkConvert_mkv_repair_wl::call_bus_message_convert_repair( GstBu
 }
 
 
-void QvkConvert_mkv_repair_wl::slot_convert_mkv_repair(bool)
+void QvkConvert_mkv_repair_wl::slot_convert_mkv_repair()
 {
     QString video_codec;
     if ( convert_video_repair.contains( "H264" ) ) {
@@ -473,7 +472,7 @@ static void on_finished_cb (GstDiscoverer * discoverer, CustomData * data)
 }
 
 
-void QvkConvert_mkv_repair_wl::slot_dicover_set_filePath(bool)
+void QvkConvert_mkv_repair_wl::slot_dicover_set_filePath()
 {
     slot_dicover_start( "file://" + ui->lineEdit_convert_mkv_repair->text() );
 }
