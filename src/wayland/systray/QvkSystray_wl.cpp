@@ -116,6 +116,8 @@ void QvkSystray_wl::init()
 */
     connect(snapshotAction, &QAction::triggered, this, [=](){ui->pushButtonSnapshot->click();});
 
+    connect(exitAction, &QAction::triggered, this, [=](){slot_hide();});
+
     menu = new QMenu();
     menu->addAction( titleAction );
     menu->addSeparator();
@@ -133,7 +135,6 @@ void QvkSystray_wl::init()
     setContextMenu ( menu );
     setToolTip( global::name );
 
-    connect( exitAction, SIGNAL( triggered(bool) ), this, SLOT( slot_hide() ) );
 /*
     if ( ui->checkBoxCameraOnOff->isEnabled() == false ){
         cameraAction->setEnabled( false );

@@ -250,7 +250,6 @@ QString Portal_wl::createSessionToken() const
 
     sessionTokenCounter += 1;
     return QString( "vokosess%1" ).arg( sessionTokenCounter );
-
 }
 
 QString Portal_wl::createRequestToken() const
