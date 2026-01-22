@@ -32,23 +32,35 @@
 #include <QComboBox>
 #include <QLineEdit>
 #include <QStandardPaths>
+#include <QDateTime>
 
 QvkSettings_wl::QvkSettings_wl()
 {
     // Dient nur zum anlegen des Profils damit das log erstellt werden kann
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
-    settings.beginGroup( global::name + "_wl");
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, globalName_wl, globalName_wl, Q_NULLPTR );
+    settings.beginGroup( globalName_wl );
     settings.setValue( "Version", global::version );
     settings.endGroup();
+
+    QDateTime time;
+    time.setMSecsSinceEpoch( QDateTime::currentDateTime().currentMSecsSinceEpoch() );
+    QSettings installSetting( QSettings::IniFormat, QSettings::UserScope, globalName_wl, QString( "InstallTime" ), Q_NULLPTR );
+    installSetting.beginGroup( globalName_wl );
+    if ( installSetting.value( "version", "0.0.0" ).toString() != global::version ) {
+        installSetting.setValue( "time", time.toString( "yyyy.MM.dd-hh:mm:ss:zzz" ) );
+        installSetting.setValue( "version", global::version );
+    }
+    installSetting.endGroup();
 }
+
 
 QvkSettings_wl::~QvkSettings_wl(){}
 
 void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *parent )
 {
     Q_UNUSED(parent)
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
-    settings.beginGroup( global::name + "_wl" );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, globalName_wl, globalName_wl, Q_NULLPTR );
+    settings.beginGroup( globalName_wl );
 
     QList<QToolButton *> listToolButton = ui_mainwindow->centralwidget->findChildren<QToolButton *>();
     for ( int i = 0; i < listToolButton.count(); i++ ) {
@@ -159,8 +171,8 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *
 void QvkSettings_wl::saveAll( Ui_formMainWindow_wl *ui_mainwindow , QMainWindow *parent )
 {
     Q_UNUSED(parent);
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
-    settings.beginGroup( global::name + "_wl" );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, globalName_wl, globalName_wl, Q_NULLPTR );
+    settings.beginGroup( globalName_wl );
 
     settings.remove( "" );
     settings.setValue( "Version", global::version );
@@ -207,29 +219,28 @@ void QvkSettings_wl::saveAll( Ui_formMainWindow_wl *ui_mainwindow , QMainWindow 
 
 QString QvkSettings_wl::getFileName()
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, globalName_wl, globalName_wl, Q_NULLPTR );
     return settings.fileName();
 }
 
 
 QString QvkSettings_wl::getVideoPath()
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, globalName_wl, globalName_wl, Q_NULLPTR );
     return settings.value( "lineEditVideoPath" ).toString();
 }
 
 
 QString QvkSettings_wl::getPicturePath()
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, globalName_wl, globalName_wl, Q_NULLPTR );
     return settings.value( "lineEditSnapshotImagePath" ).toString();
 }
 
 
-
 void QvkSettings_wl::saveAreaScreencast( qreal x, qreal y, qreal width, qreal height  )
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, globalName_wl, globalName_wl, Q_NULLPTR );
     settings.beginGroup( "AreaScreencast_wl" );
     settings.setValue( "X", QVariant(x).toInt() );
     settings.setValue( "Y", QVariant(y).toInt() );
@@ -241,7 +252,7 @@ void QvkSettings_wl::saveAreaScreencast( qreal x, qreal y, qreal width, qreal he
 
 void QvkSettings_wl::readAreaScreencast( QvkRegionChoise_wl *vkRegionChoise )
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, globalName_wl, globalName_wl, Q_NULLPTR );
     settings.beginGroup( "AreaScreencast_wl" );
     vkRegionChoise->setX( settings.value( "X", 200 ).toInt() );
     vkRegionChoise->setY( settings.value( "Y", 200 ).toInt() );

@@ -30,6 +30,7 @@
 #include "mainwindow.h"
 #include "global.h"
 #include "QvkLogController.h"
+#include "QvkLogController_wl.h"
 
 #ifdef Q_OS_UNIX
 #include "mainWindow_wl.h"
@@ -76,7 +77,16 @@ int main(int argc, char *argv[])
         }
     }
 
+#ifdef Q_OS_UNIX
+    if ( QvkWaylandRoutines::is_Wayland_Display_Available() == false ) {
+        new QvkLogController;
+    } else {
+        new QvkLogController_wl;
+    }
+#endif
+#ifdef Q_OS_WIN
     new QvkLogController;
+#endif
 
 #ifdef Q_OS_UNIX
     QString separator;
@@ -135,6 +145,56 @@ int main(int argc, char *argv[])
 
     // Gstreamer debug begin
     // Write Gstreamer debug level in a file
+#ifdef Q_OS_UNIX
+    if ( QvkWaylandRoutines::is_Wayland_Display_Available() == false ) {
+        QvkSettings vkSettingsGstDebug;
+        QFileInfo fileInfo( vkSettingsGstDebug.getFileName() );
+        QString pathAndFilename = fileInfo.absoluteFilePath();
+        //qDebug() << "pathAndFilename:" << pathAndFilename;
+
+        QString pathToProfile = fileInfo.absolutePath();
+        //qDebug() << "pathProfile" << pathToProfile;
+
+        QSettings setingsGstDebug( pathAndFilename, QSettings::IniFormat );
+        QString debugLevel = setingsGstDebug.value( "sliderGstDebugLevel", "0" ).toString();
+        //qDebug() << "debugLevel:" << debugLevel;
+
+        if ( debugLevel.contains( "0" ) == false ) {
+            qputenv( "GST_DEBUG", debugLevel.toUtf8() );
+            QString debugPathProfile;
+            debugPathProfile.append( pathToProfile );
+            debugPathProfile.append( "/GST-Debuglevel-" + debugLevel + ".txt" );
+            qputenv( "GST_DEBUG_FILE", debugPathProfile.toUtf8() );
+        }
+        // Gstreamer debug end
+    } else {
+        QvkSettings_wl vkSettingsGstDebug;
+        QFileInfo fileInfo( vkSettingsGstDebug.getFileName() );
+        QString pathAndFilename = fileInfo.absoluteFilePath();
+        //qDebug() << "pathAndFilename:" << pathAndFilename;
+
+        QString pathToProfile = fileInfo.absolutePath();
+        //qDebug() << "pathProfile" << pathToProfile;
+
+        QSettings setingsGstDebug( pathAndFilename, QSettings::IniFormat );
+        QString debugLevel = setingsGstDebug.value( "sliderGstDebugLevel", "0" ).toString();
+        //qDebug() << "debugLevel:" << debugLevel;
+
+        if ( debugLevel.contains( "0" ) == false ) {
+            qputenv( "GST_DEBUG", debugLevel.toUtf8() );
+            QString debugPathProfile;
+            debugPathProfile.append( pathToProfile );
+            debugPathProfile.append( "/GST-Debuglevel-" + debugLevel + ".txt" );
+            qputenv( "GST_DEBUG_FILE", debugPathProfile.toUtf8() );
+        }
+        // Gstreamer debug end
+
+        // Zum debugen unter Wayland
+        // qputenv( "GST_DEBUG", "5" );
+        // qputenv( "GST_DEBUG_FILE", "/home/vk/Videos/Convert/test.debug" );
+    }
+#endif
+#ifdef Q_OS_WIN
     QvkSettings vkSettingsGstDebug;
     QFileInfo fileInfo( vkSettingsGstDebug.getFileName() );
     QString pathAndFilename = fileInfo.absoluteFilePath();
@@ -159,6 +219,7 @@ int main(int argc, char *argv[])
     // Zum debugen unter Wayland
     // qputenv( "GST_DEBUG", "5" );
     // qputenv( "GST_DEBUG_FILE", "/home/vk/Videos/Convert/test.debug" );
+#endif
 
     gst_init (&argc, &argv);
 

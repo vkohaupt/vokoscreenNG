@@ -46,3 +46,6 @@ include(help/help_wl.pri)
 
 # Systray
 include(systray/systray_wl.pri)
+
+# Log
+include(log/log_wl.pri)

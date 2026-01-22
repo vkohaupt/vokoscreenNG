@@ -20,47 +20,35 @@
  * --End_License--
  */
 
-#ifndef QVKSETTINGS_WL_H
-#define QVKSETTINGS_WL_H
+#ifndef QVKLOGCONTROLLER_WL_H
+#define QVKLOGCONTROLLER_WL_H
 
 #include <QObject>
-#include <QSettings>
-#include <QDebug>
-#include <QMainWindow>
 
-#include "ui_formMainWindow_wl.h"
-#include "QvkRegionChoise_wl.h"
-#include "global.h"
-
-class QvkSettings_wl: public QObject
-{ 
+class QvkLogController_wl : public QObject
+{
     Q_OBJECT
-public:
-    QvkSettings_wl();
-    virtual ~QvkSettings_wl();
-    void readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *parent );
-    void saveAll( Ui_formMainWindow_wl *ui_mainwindow , QMainWindow *parent );
-    void saveAreaScreencast( qreal x, qreal y, qreal width, qreal height );
-    void readAreaScreencast( QvkRegionChoise_wl *vkRegionChoise );
-    QString getFileName();
-    QString getVideoPath();
-    QString getPicturePath();
 
-    QString globalName_wl = global::name + "_wl";
+public:
+    QvkLogController_wl();
+    virtual ~QvkLogController_wl();
+    QString get_log_filePath();
+
 
 public slots:
-
-
-private slots:
 
 
 signals:
 
 
-protected:  
+private slots:
 
 
 private:
+
+
+protected:
+
 
 };
 

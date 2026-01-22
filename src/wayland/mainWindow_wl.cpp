@@ -330,7 +330,7 @@ void QvkMainWindow_wl::get_system_info()
     qDebug().noquote() << global::nameOutput << "LogPath:" << vkLogController->get_log_filePath();
 
     // Clear all settings if checkBoxResetAtNextStart is set
-    QSettings setting( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    QSettings setting( QSettings::IniFormat, QSettings::UserScope, global::name + "_wl", global::name + "_wl", Q_NULLPTR );
     QList<QCheckBox *> listCheckBoxReset = ui->centralwidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBoxReset.count(); i++ ) {
         QCheckBox *checkBox = listCheckBoxReset.at(i);
