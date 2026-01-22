@@ -99,6 +99,12 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *
             checkBox->click();
             continue;
         }
+        // We have no settings-file(first start after install) but this object we want set as default.
+        if ( ( checkBox->objectName() == "checkBoxSnapshotShowBallonInSystray" ) and
+             ( settings.value( checkBox->objectName(), true ).toBool() == true ) ) {
+            checkBox->click();
+            continue;
+        }
         // We found a setting, then we want set or not.
         if ( settings.value( checkBox->objectName(), false ).toBool() == true ) {
             checkBox->click();
