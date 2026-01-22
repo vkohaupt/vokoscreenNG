@@ -115,8 +115,7 @@ void QvkSystray_wl::init()
     connect( ui->comboBoxCamera,      SIGNAL( currentIndexChanged(int) ), this,           SLOT( slot_currentIndexChanged(int) ) );
 */
     connect(snapshotAction, &QAction::triggered, this, [=](){ui->pushButtonSnapshot->click();});
-
-    connect(exitAction, &QAction::triggered, this, [=](){slot_hide();});
+    connect(exitAction,     &QAction::triggered, this, [=](){slot_hide();});
 
     menu = new QMenu();
     menu->addAction( titleAction );

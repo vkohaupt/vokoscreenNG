@@ -92,8 +92,14 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *
 
     QList<QCheckBox *> listCheckBox = ui_mainwindow->centralwidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
-        // We found a setting, then we want set or not.
         QCheckBox *checkBox = listCheckBox.at(i);
+        // We have no settings-file(first start after install) but this object we want set as default.
+        if ( ( checkBox->objectName() == "checkBoxShowInSystray" ) and
+             ( settings.value( checkBox->objectName(), true ).toBool() == true ) ) {
+            checkBox->click();
+            continue;
+        }
+        // We found a setting, then we want set or not.
         if ( settings.value( checkBox->objectName(), false ).toBool() == true ) {
             checkBox->click();
         }
