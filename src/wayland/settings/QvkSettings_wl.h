@@ -45,8 +45,10 @@ public:
     QString getFileName();
     QString getVideoPath();
     QString getPicturePath();
+    QString folderName_wl = global::name;
+    QString fileName_wl = global::name + "_wl";
+    QString groupName_wl = global::name + "_wl";
 
-    QString globalName_wl = global::name + "_wl";
 
 public slots:
 

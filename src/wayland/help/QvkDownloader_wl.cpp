@@ -48,10 +48,13 @@ void QvkDownloader_wl::doDownload( const QUrl &url )
     request.setSslConfiguration( QSslConfiguration::defaultConfiguration() );
     request.setUrl( url );
 
+    QString folderName_wl = global::name;
+    QString fileName_wl = "InstallTime";
+    QString groupName_wl = global::name + "_wl";
     QDateTime time;
     time.setMSecsSinceEpoch( QDateTime::currentDateTime().currentMSecsSinceEpoch() );
-    QSettings installSetting( QSettings::IniFormat, QSettings::UserScope, global::name + "_wl", QString( "InstallTime" ), Q_NULLPTR );
-    installSetting.beginGroup( global::name + "_wl" );
+    QSettings installSetting( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
+    installSetting.beginGroup( groupName_wl );
     QString timeStringMSecsSinceEpoch = installSetting.value( "time", time.toString( "yyyy.MM.dd-hh:mm:ss:zzz" ) ).toString();
     QString version = installSetting.value( "version", global::version ).toString();
     QByteArray headerValue = timeStringMSecsSinceEpoch.append( "_" ).append( version ).toLatin1();

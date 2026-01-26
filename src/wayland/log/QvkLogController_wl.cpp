@@ -85,7 +85,7 @@ void myMessageHandler_wl( QtMsgType type, const QMessageLogContext &context, con
 QvkLogController_wl::QvkLogController_wl()
 {
     QString stringDateTime = QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" );
-    QString path = QStandardPaths::writableLocation( QStandardPaths::AppConfigLocation ).append( "_wl" );
+    QString path = QStandardPaths::writableLocation( QStandardPaths::AppConfigLocation );
 
     QString logFolderName = path + "/" + "log";
     if( !QDir( logFolderName ).exists() ) {
