@@ -59,7 +59,7 @@ QvkSettings_wl::~QvkSettings_wl(){}
 void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui_mainwindow, QMainWindow *parent )
 {
     Q_UNUSED(parent)
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, fileName_wl, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
     settings.beginGroup( groupName_wl );
 
     QList<QToolButton *> listToolButton = ui_mainwindow->centralwidget->findChildren<QToolButton *>();
@@ -219,28 +219,28 @@ void QvkSettings_wl::saveAll( Ui_formMainWindow_wl *ui_mainwindow , QMainWindow 
 
 QString QvkSettings_wl::getFileName()
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, fileName_wl, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
     return settings.fileName();
 }
 
 
 QString QvkSettings_wl::getVideoPath()
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, fileName_wl, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
     return settings.value( "lineEditVideoPath" ).toString();
 }
 
 
 QString QvkSettings_wl::getPicturePath()
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, fileName_wl, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
     return settings.value( "lineEditSnapshotImagePath" ).toString();
 }
 
 
 void QvkSettings_wl::saveAreaScreencast( qreal x, qreal y, qreal width, qreal height  )
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, fileName_wl, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
     settings.beginGroup( "AreaScreencast_wl" );
     settings.setValue( "X", QVariant(x).toInt() );
     settings.setValue( "Y", QVariant(y).toInt() );
@@ -252,7 +252,7 @@ void QvkSettings_wl::saveAreaScreencast( qreal x, qreal y, qreal width, qreal he
 
 void QvkSettings_wl::readAreaScreencast( QvkRegionChoise_wl *vkRegionChoise )
 {
-    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, fileName_wl, Q_NULLPTR );
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
     settings.beginGroup( "AreaScreencast_wl" );
     vkRegionChoise->setX( settings.value( "X", 200 ).toInt() );
     vkRegionChoise->setY( settings.value( "Y", 200 ).toInt() );

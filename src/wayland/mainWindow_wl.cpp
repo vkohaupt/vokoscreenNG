@@ -330,21 +330,22 @@ void QvkMainWindow_wl::get_system_info()
     qDebug().noquote() << global::nameOutput << "LogPath:" << vkLogController_wl->get_log_filePath();
 
     // Clear all settings if checkBoxResetAtNextStart is set
-    QSettings setting( QSettings::IniFormat, QSettings::UserScope, global::name, global::name + "_wl", Q_NULLPTR );
+    QString folderName_wl = global::name;
+    QString fileName_wl = global::name + "_wl";
+    QString groupName_wl = global::name + "_wl";
+    QSettings setting( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
+    setting.beginGroup( groupName_wl );
     QList<QCheckBox *> listCheckBoxReset = ui->centralwidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBoxReset.count(); i++ ) {
         QCheckBox *checkBox = listCheckBoxReset.at(i);
         if ( ( checkBox->objectName() == "checkBoxResetAtNextStart" ) and
-             ( setting.value( checkBox->objectName(), false ).toBool() == true ) ) {
-            qDebug() << "1111111111111111111111111111111111111111111";
+             ( setting.value( checkBox->objectName(), false ).toBool() == true ) )
+        {
             setting.clear();
         }
-/*        if ( checkBox->objectName() == "checkBoxResetAtNextStart" ) {
-            qDebug() << "1111111111111111111111111111111111111111111";
-            setting.clear();
-        }*/
     }
-/*
+    setting.endGroup();
+
     qDebug().noquote() << global::nameOutput << "Default Videopath:" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
     if ( vkSettings_wl.getVideoPath().isEmpty() == true ) {
         qDebug().noquote() << global::nameOutput << "User Videopath:" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );;
@@ -358,7 +359,6 @@ void QvkMainWindow_wl::get_system_info()
         qDebug().noquote() << global::nameOutput << "User Picturepath:" << vkSettings_wl.getPicturePath();
     }
     qDebug().noquote();
-*/
 }
 
 
