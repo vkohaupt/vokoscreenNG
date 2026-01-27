@@ -221,7 +221,7 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 
 void QvkMainWindow_wl::slot_log_refresh()
 {
-    QFile file( vkLogController->get_log_filePath() );
+    QFile file( vkLogController_wl->get_log_filePath() );
     bool bo = file.open( QIODevice::ReadOnly );
     if ( bo == false ) {
         qDebug().noquote() << global::nameOutput << "Can not open" << file.fileName();
@@ -327,7 +327,7 @@ void QvkMainWindow_wl::get_system_info()
     qDebug().noquote() << global::nameOutput << "Qt-TranslationsPath:" << QLibraryInfo::path( QLibraryInfo::TranslationsPath );
     qDebug().noquote() << global::nameOutput << "Qt-LibraryPath:     " << QLibraryInfo::path( QLibraryInfo::LibrariesPath );
     qDebug().noquote() << global::nameOutput << "SettingsPath:" << vkSettings_wl.getFileName();
-    qDebug().noquote() << global::nameOutput << "LogPath:" << vkLogController->get_log_filePath();
+    qDebug().noquote() << global::nameOutput << "LogPath:" << vkLogController_wl->get_log_filePath();
 
     // Clear all settings if checkBoxResetAtNextStart is set
     QSettings setting( QSettings::IniFormat, QSettings::UserScope, global::name, global::name + "_wl", Q_NULLPTR );
@@ -335,11 +335,16 @@ void QvkMainWindow_wl::get_system_info()
     for ( int i = 0; i < listCheckBoxReset.count(); i++ ) {
         QCheckBox *checkBox = listCheckBoxReset.at(i);
         if ( ( checkBox->objectName() == "checkBoxResetAtNextStart" ) and
-             ( setting.value( checkBox->objectName(), false ).toBool() == true ) )
-        {
+             ( setting.value( checkBox->objectName(), false ).toBool() == true ) ) {
+            qDebug() << "1111111111111111111111111111111111111111111";
             setting.clear();
         }
+/*        if ( checkBox->objectName() == "checkBoxResetAtNextStart" ) {
+            qDebug() << "1111111111111111111111111111111111111111111";
+            setting.clear();
+        }*/
     }
+/*
     qDebug().noquote() << global::nameOutput << "Default Videopath:" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );
     if ( vkSettings_wl.getVideoPath().isEmpty() == true ) {
         qDebug().noquote() << global::nameOutput << "User Videopath:" << QStandardPaths::writableLocation( QStandardPaths::MoviesLocation );;
@@ -353,6 +358,7 @@ void QvkMainWindow_wl::get_system_info()
         qDebug().noquote() << global::nameOutput << "User Picturepath:" << vkSettings_wl.getPicturePath();
     }
     qDebug().noquote();
+*/
 }
 
 
@@ -1237,7 +1243,7 @@ void QvkMainWindow_wl::slot_folder()
 
 void QvkMainWindow_wl::slot_log_folder()
 {
-    QUrl url( vkLogController->get_log_filePath() );
+    QUrl url( vkLogController_wl->get_log_filePath() );
     QString path = url.adjusted( QUrl::RemoveFilename ).toString();
 
     if ( QDesktopServices::openUrl( QUrl( "file:///" + path, QUrl::TolerantMode ) ) == false ) {

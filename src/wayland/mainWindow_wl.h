@@ -12,7 +12,7 @@
 #include "QvkRegionMargins_wl.h"
 
 #include "QvkSpezialSlider.h"
-#include "QvkLogController.h"
+#include "QvkLogController_wl.h"
 
 #include <QMainWindow>
 #include <QWidget>
@@ -51,7 +51,7 @@ private:
     QTranslator translator;
     QTranslator qtTranslator;
     QvkRegionChoise_wl *vkRegionChoise_wl;
-    QvkLogController *vkLogController;
+    QvkLogController_wl *vkLogController_wl;
     GstElement *pipeline = nullptr;
     QStringList videoFormatsList;
     QFileSystemWatcher *videoFileSystemWatcher;
