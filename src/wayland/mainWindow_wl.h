@@ -10,9 +10,8 @@
 #include "QvkHelp_wl.h"
 #include "QvkSystray_wl.h"
 #include "QvkRegionMargins_wl.h"
-
-#include "QvkSpezialSlider.h"
 #include "QvkLogController_wl.h"
+#include "QvkSpezialSlider.h"
 
 #include <QMainWindow>
 #include <QWidget>

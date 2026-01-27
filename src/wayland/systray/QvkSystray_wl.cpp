@@ -22,7 +22,6 @@
 
 #include "QvkSystray_wl.h"
 #include "global.h"
-#include "QvkSpezialCheckbox.h"
 
 #include <QDebug>
 #include <QAction>
