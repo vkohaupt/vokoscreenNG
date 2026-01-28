@@ -30,12 +30,12 @@
 #include <QDir>
 #include <QStringList>
 #include <QFileInfo>
+#include <QPushButton>
 
 QvkInformation_wl::QvkInformation_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMainWindow_wl *ui_mainwindow )
 {
     mainWindow = vkMainWindow;
     ui = ui_mainwindow;
-    sliderCountDown = vkMainWindow->sliderScreencastCountDown;
     ui->labelVideoSize->setText("");
     ui->labelFreeSize->setText("");
     ui->labelInfoRecordTime->setText("00:00:00");
@@ -51,10 +51,10 @@ QvkInformation_wl::QvkInformation_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMai
     timerRecord = new QTimer(this);
     timerRecord->setTimerType( Qt::PreciseTimer );
     timerRecord->setInterval( 1000 );
-    connect(timerRecord,        &QTimer::timeout,      this, [this](){slot_displayRecordTime();});
-    connect(ui->pushButtonStop, &QPushButton::clicked, this, [this](){timerRecord->stop();});
-    connect( ui->pushButtonPause,    SIGNAL( clicked(bool) ), timerRecord, SLOT( stop() ) );
-    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), timerRecord, SLOT( start() ) );
+    connect(timerRecord,            &QTimer::timeout,      this, [=](){slot_displayRecordTime();});
+    connect(ui->pushButtonStop,     &QPushButton::clicked, this, [=](){timerRecord->stop();});
+    connect(ui->pushButtonPause,    &QPushButton::clicked, this, [=](){timerRecord->stop();});
+    connect(ui->pushButtonContinue, &QPushButton::clicked, this, [=](){timerRecord->start();});
 
     // Frames, Format, Codecs
     connect(ui->comboBoxAudioCodec,   &QComboBox::currentTextChanged,  this, [this](QString value){slot_Audiocodec(value);});

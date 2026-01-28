@@ -24,7 +24,6 @@
 #define QVKINFORMATION_WL_H
 
 #include "ui_formMainWindow_wl.h"
-#include "QvkSpezialSlider.h"
 #include "mainWindow_wl.h"
 
 #include <QWidget>
@@ -62,11 +61,7 @@ private:
     QString newVideoFilename = "";
     QTimer *timerStorageInfo;
     QTimer *timerRecord;
-    QString beginRecordTime;
-    QvkSpezialSlider *sliderCountDown;
     QString fileName = "";
-
-
     int sumTime = 0;
 
 };
