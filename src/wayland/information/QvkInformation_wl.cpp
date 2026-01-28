@@ -53,6 +53,8 @@ QvkInformation_wl::QvkInformation_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMai
     timerRecord->setInterval( 1000 );
     connect(timerRecord,        &QTimer::timeout,      this, [this](){slot_displayRecordTime();});
     connect(ui->pushButtonStop, &QPushButton::clicked, this, [this](){timerRecord->stop();});
+    connect( ui->pushButtonPause,    SIGNAL( clicked(bool) ), timerRecord, SLOT( stop() ) );
+    connect( ui->pushButtonContinue, SIGNAL( clicked(bool) ), timerRecord, SLOT( start() ) );
 
     // Frames, Format, Codecs
     connect(ui->comboBoxAudioCodec,   &QComboBox::currentTextChanged,  this, [this](QString value){slot_Audiocodec(value);});
@@ -67,21 +69,18 @@ QvkInformation_wl::~QvkInformation_wl()
 
 void QvkInformation_wl::slot_beginRecordTime(QString beginTime )
 {
-    beginRecordTime = beginTime;
+    Q_UNUSED(beginTime)
+    sumTime = 0;
     timerRecord->start();
 }
 
 
 void QvkInformation_wl::slot_displayRecordTime()
 {
-    if ( ui->pushButtonStop->isEnabled() == true ) {
-        QTime beginTime = QTime::fromString( beginRecordTime );
-        int recordTime = beginTime.secsTo( QTime::currentTime() );
-
-        QTime time( 0, 0, 0, 0 );
-        ui->labelInfoRecordTime->setText( time.addMSecs( recordTime*1000 ).toString( "hh:mm:ss" ) );
-        return;
-    }
+    QTime time( 0, 0, 0, 0 );
+    sumTime = sumTime + 1000;
+    ui->labelInfoRecordTime->setText( time.addMSecs( sumTime ).toString( "hh:mm:ss" ) );
+    return;
 }
 
 

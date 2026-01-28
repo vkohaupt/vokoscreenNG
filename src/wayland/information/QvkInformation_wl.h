@@ -67,6 +67,8 @@ private:
     QString fileName = "";
 
 
+    int sumTime = 0;
+
 };
 
 #endif
