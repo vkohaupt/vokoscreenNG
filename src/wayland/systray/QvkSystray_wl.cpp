@@ -79,19 +79,12 @@ void QvkSystray_wl::init()
     exitAction = new QAction( this );
     exitAction->setIcon( QIcon( ":pictures/systray/exit.png" ) );
     exitAction->setData( "Exit" );
-/*
-    connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){startAction->setDisabled(true);});
-    connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){stopAction->setEnabled(true);});
-    connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){pauseAction->setEnabled(true);});
-    connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){continueAction->setDisabled(true);});
-    connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){slot_setRecordIcon();});
-*/
+
     connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){startAction->setDisabled(true);});
     connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){stopAction->setDisabled(true);});
     connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){pauseAction->setDisabled(true);});
     connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){continueAction->setDisabled(true);});
     connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){slot_setSystrayIcon();});
-
 
     connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){startAction->setEnabled(true);});
     connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){stopAction->setDisabled(true);});

@@ -701,6 +701,11 @@ void QvkMainWindow_wl::slot_pre_start( QString vk_fd, QString vk_path )
         int ret = vkCountdown_wl.exec();
 
         if ( ret == QDialog::Accepted ) {
+            vkSystray->startAction->setDisabled(true);
+            vkSystray->stopAction->setEnabled(true);
+            vkSystray->pauseAction->setEnabled(true);
+            vkSystray->continueAction->setDisabled(true);
+            vkSystray->slot_setRecordIcon();
             slot_start_gst( vk_fd, vk_path );
         }
 
@@ -715,6 +720,12 @@ void QvkMainWindow_wl::slot_pre_start( QString vk_fd, QString vk_path )
             ui->frame_video->setEnabled( true );
             ui->frame_audio->setEnabled( true );
             ui->frame_3->setEnabled( true );
+
+            vkSystray->startAction->setEnabled(true);
+            vkSystray->stopAction->setDisabled(true);
+            vkSystray->pauseAction->setDisabled(true);
+            vkSystray->continueAction->setDisabled(true);
+            vkSystray->slot_setSystrayIcon();
 
             portal_wl->slot_stopScreenCast();
         }
