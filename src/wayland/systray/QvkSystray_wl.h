@@ -56,11 +56,11 @@ private:
 public slots:
     void slot_closeSystray();
     void slot_setSystrayIcon();
+    void slot_setRecordIcon();
 
 
 private slots:
     void slot_hide();
-    void slot_setRecordIcon();
     void slot_setPauseIcon();
 //    void slot_currentIndexChanged( int index );
 

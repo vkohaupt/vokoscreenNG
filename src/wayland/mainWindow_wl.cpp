@@ -721,7 +721,11 @@ void QvkMainWindow_wl::slot_pre_start( QString vk_fd, QString vk_path )
 
     } else {
         slot_start_gst( vk_fd, vk_path );
-    }
+        vkSystray->startAction->setDisabled(true);
+        vkSystray->stopAction->setEnabled(true);
+        vkSystray->pauseAction->setEnabled(true);
+        vkSystray->continueAction->setDisabled(true);
+        vkSystray->slot_setRecordIcon();    }
 }
 
 
