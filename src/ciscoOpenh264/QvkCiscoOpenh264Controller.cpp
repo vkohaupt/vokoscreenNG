@@ -169,7 +169,7 @@ void QvkCiscoOpenh264Controller::slot_showCiscoFinishDialog()
 
 void QvkCiscoOpenh264Controller::slot_pushButtonCiscoLicense()
 {
-    QFile file( ":/ciscoOpenh264/BINARY_LICENSE.txt" );
+    QFile file( ":/ciscoOpenh264/BINARY_LICENSE.txt1" );
     bool bo = file.open( QIODevice::ReadOnly );
     if ( bo == true ) {
         QTextStream textStream( &file );
@@ -199,7 +199,13 @@ void QvkCiscoOpenh264Controller::slot_pushButtonCiscoLicense()
         dialog->exec();
     } else {
         qDebug().noquote() << global::nameOutput << "Can not open:" << file.fileName();
+        QPixmap pixmap(":/pictures/status/warning.png");
+        pixmap = pixmap.scaled(64, 64, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+        QIcon icon(QString::fromUtf8(":/pictures/logo/logo.png"));
         QMessageBox msgBox;
+        msgBox.setWindowIcon(icon);
+        msgBox.setWindowTitle(global::name + " " + global::version);
+        msgBox.setIconPixmap(pixmap);
         msgBox.setText( "Can not open:\n" + file.fileName() );
         msgBox.exec();
     }
