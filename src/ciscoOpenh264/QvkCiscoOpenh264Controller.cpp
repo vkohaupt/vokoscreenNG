@@ -24,6 +24,7 @@
 #include <QDialog>
 #include <QThread>
 #include <QDialogButtonBox>
+#include <QMessageBox>
 
 #include "QvkCiscoOpenh264Controller.h"
 #include "QvkCiscoOpenh264Downloader.h"
@@ -168,32 +169,38 @@ void QvkCiscoOpenh264Controller::slot_showCiscoFinishDialog()
 
 void QvkCiscoOpenh264Controller::slot_pushButtonCiscoLicense()
 {
-   QFile file( ":/ciscoOpenh264/BINARY_LICENSE.txt" );
-   file.open( QIODevice::ReadOnly );
-   QTextStream textStream( &file );
-   textStream.setEncoding( QStringConverter::Utf8 );
+    QFile file( ":/ciscoOpenh264/BINARY_LICENSE.txt" );
+    bool bo = file.open( QIODevice::ReadOnly );
+    if ( bo == true ) {
+        QTextStream textStream( &file );
+        textStream.setEncoding( QStringConverter::Utf8 );
 
-   QDialog *dialog = new QDialog();
-   dialog->setWindowFlag( Qt::WindowContextHelpButtonHint, false );
-   dialog->resize( 600, 600 );
-   dialog->setWindowTitle( "Cisco licence" );
+        QDialog *dialog = new QDialog();
+        dialog->setWindowFlag( Qt::WindowContextHelpButtonHint, false );
+        dialog->resize( 600, 600 );
+        dialog->setWindowTitle( "Cisco licence" );
 
-   QBoxLayout *boxLayout = new QBoxLayout( QBoxLayout::TopToBottom );
-   dialog->setLayout( boxLayout );
+        QBoxLayout *boxLayout = new QBoxLayout( QBoxLayout::TopToBottom );
+        dialog->setLayout( boxLayout );
 
-   QTextBrowser *textBrowser = new QTextBrowser( dialog );
-   textBrowser->setContextMenuPolicy( Qt::NoContextMenu );
-   textBrowser->setTextInteractionFlags( Qt::NoTextInteraction );
-   textBrowser->append( textStream.readAll() );
-   textBrowser->moveCursor( QTextCursor::Start );
-   textBrowser->show();
+        QTextBrowser *textBrowser = new QTextBrowser( dialog );
+        textBrowser->setContextMenuPolicy( Qt::NoContextMenu );
+        textBrowser->setTextInteractionFlags( Qt::NoTextInteraction );
+        textBrowser->append( textStream.readAll() );
+        textBrowser->moveCursor( QTextCursor::Start );
+        textBrowser->show();
 
-   boxLayout->addWidget( textBrowser );
+        boxLayout->addWidget( textBrowser );
 
-   QDialogButtonBox buttonBox( QDialogButtonBox::Close );
-   connect( &buttonBox, &QDialogButtonBox::clicked, dialog, &QDialog::accept );
-   boxLayout->addWidget( &buttonBox );
+        QDialogButtonBox buttonBox( QDialogButtonBox::Close );
+        connect( &buttonBox, &QDialogButtonBox::clicked, dialog, &QDialog::accept );
+        boxLayout->addWidget( &buttonBox );
 
-   dialog->exec();
+        dialog->exec();
+    } else {
+        qDebug().noquote() << global::nameOutput << "Can not open:" << file.fileName();
+        QMessageBox msgBox;
+        msgBox.setText( "Can not open:\n" + file.fileName() );
+        msgBox.exec();
+    }
 }
-
