@@ -169,7 +169,7 @@ void QvkCiscoOpenh264Controller::slot_showCiscoFinishDialog()
 
 void QvkCiscoOpenh264Controller::slot_pushButtonCiscoLicense()
 {
-    QFile file( ":/ciscoOpenh264/BINARY_LICENSE.txt1" );
+    QFile file( ":/ciscoOpenh264/BINARY_LICENSE.txt" );
     bool bo = file.open( QIODevice::ReadOnly );
     if ( bo == true ) {
         QTextStream textStream( &file );
