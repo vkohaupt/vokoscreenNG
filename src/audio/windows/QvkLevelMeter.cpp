@@ -96,6 +96,7 @@ static gboolean message_handler( GstBus * bus, GstMessage * message, gpointer da
 
 void QvkLevelMeter::start( QString device, QString myname, QString index, QString SourceOrPlayback )
 {
+    Q_UNUSED(myname)
     GstElement *audiosrc, *audioconvert, *level, *fakesink;
     GstCaps *caps;
     GstBus *bus;
