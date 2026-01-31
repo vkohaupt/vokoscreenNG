@@ -74,7 +74,8 @@ void myMessageHandler_wl( QtMsgType type, const QMessageLogContext &context, con
 #endif
     bool bo = logFile_wl.open( QIODevice::WriteOnly | QIODevice::Append );
     if ( bo == false ) {
-        qDebug().noquote() << global::nameOutput << "Can not open" << logFile_wl.fileName();
+        qDebug().noquote() << sTime << global::nameOutput << "[myMessageHandler_wl] Can not open" << logFile_wl.fileName();
+        return;
     }
     QTextStream stream( &logFile_wl );
     stream << sMsg << eol;
