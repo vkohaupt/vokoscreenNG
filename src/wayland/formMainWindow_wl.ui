@@ -236,7 +236,7 @@
          <enum>QTabWidget::West</enum>
         </property>
         <property name="currentIndex">
-         <number>4</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab_sidebar_screeancast">
          <attribute name="title">
@@ -261,7 +261,7 @@
           <item>
            <widget class="QTabWidget" name="tabWidgetScreencast">
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <property name="iconSize">
              <size>
@@ -488,8 +488,8 @@
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>16</width>
-                          <height>26</height>
+                          <width>401</width>
+                          <height>116</height>
                          </rect>
                         </property>
                         <property name="accessibleName">
@@ -1461,8 +1461,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>20</width>
-                     <height>98</height>
+                     <width>441</width>
+                     <height>360</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -3619,7 +3619,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>

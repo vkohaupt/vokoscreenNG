@@ -476,6 +476,7 @@ void QvkMainWindow_wl::slot_snapshotHideBeforeRecording() {
     if ( ui->checkBoxSnapshotHideBeforeRecording->isChecked() == true ) {
         qDebug().noquote() << global::nameOutput << "[Snapshot]" << "Hide this window is checked";
         showMinimized();
+        hide();
     } else {
         qDebug().noquote() << global::nameOutput << "[Snapshot]" << "Hide this window is not checked";
     }
@@ -547,6 +548,8 @@ void QvkMainWindow_wl::slot_handle_response_snapshot( uint responseCode, QVarian
     } else {
         qDebug().noquote() << global::nameOutput << "[Snapshot] Unable to take a screenshot" << results["uri"];
     }
+
+    show();
 }
 
 
