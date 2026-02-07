@@ -70,7 +70,6 @@ protected:
   
 signals:
     void signal_SystemtrayIsClose();
-    void signal_test_123();
     
 };
 
