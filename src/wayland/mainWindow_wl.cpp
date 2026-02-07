@@ -744,8 +744,9 @@ void QvkMainWindow_wl::slot_pre_start( QString vk_fd, QString vk_path )
             vkSystray->stopAction->setEnabled(true);
             vkSystray->pauseAction->setEnabled(true);
             vkSystray->continueAction->setDisabled(true);
+            vkSystray->slot_setRecordIcon();
         }
-        vkSystray->slot_setRecordIcon();    }
+    }
 }
 
 
