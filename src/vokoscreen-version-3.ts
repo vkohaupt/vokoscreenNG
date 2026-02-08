@@ -807,6 +807,14 @@
         <source>Show in systray</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>license</name>

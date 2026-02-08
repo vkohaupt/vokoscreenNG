@@ -3,14 +3,14 @@
     <name>QvkAudioController</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>إختر جهاز واحد أو أكثر</translation>
+        <translation>اختر جهازًا واحدًا أو أكثر</translation>
     </message>
 </context>
 <context>
     <name>QvkAudioController_wl</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>اِختر جهازاً أو أكثر</translation>
+        <translation>اختر جهازًا واحدًا أو أكثر</translation>
     </message>
 </context>
 <context>
@@ -95,22 +95,22 @@
     <name>QvkImageFromTabs</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>لايمكن ايجاد اداراه الملفات </translation>
+        <translation>لا يمكن إيجاد مدير الملفات</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>الرجاء تنصيب اداره الملفات</translation>
+        <translation>الرجاء تثبيت مدير الملفات</translation>
     </message>
 </context>
 <context>
     <name>QvkImageFromTabs_wl</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>لايمكن ايجاد اداراه الملفات </translation>
+        <translation>لا يمكن إيجاد مدير الملفات</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>الرجاء تنصيب اداره الملفات</translation>
+        <translation>الرجاء تثبيت مدير الملفاتالرجاء تنصيب اداره الملفات</translation>
     </message>
 </context>
 <context>
@@ -145,11 +145,11 @@
     <message>
         <source>No filemanager found.</source>
         <extracomment>Display a MessageBox, if not found a filemanager.</extracomment>
-        <translation>لايمكن ايجاد اداراه الملفات </translation>
+        <translation>لا يمكن إيجاد مدير الملفات</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>الرجاء تنصيب اداره الملفات</translation>
+        <translation>الرجاء تثبيت مدير الملفاتالرجاء تنصيب اداره الملفات</translation>
     </message>
     <message>
         <source>Sourcecode</source>
@@ -188,25 +188,25 @@
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>لايمكن ايجاد اداراه الملفات </translation>
+        <translation>لا يمكن إيجاد مدير الملفات</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>الرجاء تنصيب اداره الملفات</translation>
+        <translation>الرجاء تثبيت مدير الملفات</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>اِختر جهازاً أو أكثر</translation>
+        <translation>اختر جهازًا واحدًا أو أكثر</translation>
     </message>
 </context>
 <context>
     <name>QvkPulseAudioWatcher_wl</name>
     <message>
         <source>Select one or more devices</source>
-        <translation>اِختر جهازاً أو أكثر</translation>
+        <translation>اختر جهازًا واحدًا أو أكثر</translation>
     </message>
 </context>
 <context>
@@ -234,11 +234,11 @@
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>لايمكن ايجاد اداراه الملفات </translation>
+        <translation>لا يمكن إيجاد مدير الملفات</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
-        <translation>الرجاء تنصيب اداره الملفات</translation>
+        <translation>الرجاء تثبيت مدير الملفات</translation>
     </message>
 </context>
 <context>
@@ -821,7 +821,7 @@
     </message>
     <message>
         <source>Pause</source>
-        <translation>ألبِث</translation>
+        <translation>إيقاف مؤقت</translation>
     </message>
     <message>
         <source>Stop</source>

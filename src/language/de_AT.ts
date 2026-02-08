@@ -17,7 +17,7 @@
     <name>QvkCameraSingle</name>
     <message>
         <source>Remove window frame</source>
-        <translation>Entferne Fensterrahmen</translation>
+        <translation>Fensterrahmen entfernen</translation>
     </message>
     <message>
         <source>Flip vertical</source>
@@ -67,7 +67,7 @@
     </message>
     <message>
         <source>Have fun with vokoscreenNG</source>
-        <translation>Have fun with vokoscreenNG</translation>
+        <translation>Viel Spaß mit vokoscreenNG</translation>
     </message>
 </context>
 <context>
@@ -361,7 +361,7 @@
     </message>
     <message>
         <source>Remove window frame</source>
-        <translation>Entferne Fensterrahmen</translation>
+        <translation>Fensterrahmen entfernen</translation>
     </message>
     <message>
         <source>Camera settings</source>
@@ -624,7 +624,7 @@
     </message>
     <message>
         <source>Imagepath</source>
-        <translation>Bilderpfad</translation>
+        <translation>Pfad für Bilder</translation>
     </message>
     <message>
         <source>Hide this window</source>
