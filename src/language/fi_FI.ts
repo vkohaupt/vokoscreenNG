@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Näytä ilmoitusalueella</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Nollaa kaikki asetukset seuraavalla käynnistyksellä</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Valokuva</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

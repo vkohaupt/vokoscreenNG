@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Erakutsi erretiluan</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Leheneratu ezarpen guztiak abiatzen den hurrengoan</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Pantaila argazkia</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

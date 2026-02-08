@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Rodyti sistemos dėkle</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Kito paleidimo metu atstatyti visus nustatymus</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Momentinė kopija</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

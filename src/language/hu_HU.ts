@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Megjelenítés a rendszertálca-ikonok közt</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>A következő indításkor állítsa vissza az összes beállítást</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Képernyőkép</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Жүйеде көрсетіңіз</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Келесі іске қосу кезінде барлық параметрлерді қалпына келтіріңіз</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Сурет</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

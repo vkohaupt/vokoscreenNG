@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>הצגה בשורת המערכת</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>איפוס כל ההגדרות בהפעלה הבאה</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>צילום מסך</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

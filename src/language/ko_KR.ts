@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>시스템 트레이에 표시하기</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>다음 시작시 모든 설정 초기화</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>스냅샷</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

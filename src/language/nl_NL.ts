@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Tonen in systeemvak</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Alle instellingen herstellen bij opnieuw opstarten</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Schermfoto</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

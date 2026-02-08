@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>ສະແດງໃນຖາດລະບົບ</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>ຣີເຊັດການຕັ້ງຄ່າທັງໝົດໃນການເປີດຄັ້ງຕໍ່ໄປ</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>ຖ່າຍພາບໜ້າຈໍ</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

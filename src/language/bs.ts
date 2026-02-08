@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Prikaži u sistemskoj traci</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Resetuj sve postavke pri sljedećem pokretanju</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Snimak ekrana</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Visa i systemfältet</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Återställ alla inställningar vid nästa programstart</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Ögonblicksbild</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

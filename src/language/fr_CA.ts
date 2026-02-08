@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Afficher dans la barre d&apos;état système</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Réinitialiser tous les paramètres au prochain démarrage</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Snapshot</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -810,6 +810,14 @@
         <source>Show in systray</source>
         <translation>Prikaži u traci sustava </translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Vrati sve postavke na sljedeći početak</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Snimak</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

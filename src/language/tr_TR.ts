@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Sistem tepsisinde göster</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Bir sonraki başlangıçta tüm ayarları sıfırla</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Ekrançıktısı</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -807,6 +807,14 @@
         <source>Show in systray</source>
         <translation>نمایش در systray</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>بازنشانی همه تنظیمات در شروع بعدی</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>عکس گرفتن فوری</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

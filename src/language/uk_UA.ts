@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Показати значок на панелі</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Скинути усі налаштування при наступному старті</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Знімок</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

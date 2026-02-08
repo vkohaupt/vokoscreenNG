@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Mostrar en bandeja del sistema</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Restablecer todas las configuraciones en el próximo inicio</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Captura</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

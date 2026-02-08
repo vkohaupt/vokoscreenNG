@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Show in System Tray</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Reset all settings when reopening</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Snapshots</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

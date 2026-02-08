@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Показывать значок в области уведомления</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Сбросить все настройки при следующем запуске</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Снимок</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>システムトレイに表示</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>次回起動時にすべての設定をリセットする</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>スナップショット</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

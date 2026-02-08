@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Εμφάνιση στην περιοχή ειδοποιήσεων</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Επαναφορά όλων των ρυθμίσεων στην επόμενη εκκίνηση</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Στιγμιότυπο</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Mostra nel vassoio di sistema</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Ripristina tutte le impostazioni al prossimo avvio</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Snapshot</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

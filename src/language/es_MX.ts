@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Mostrar en systray</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Redefinir la configuración en la siguiente grabación</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Captura de pantalla</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

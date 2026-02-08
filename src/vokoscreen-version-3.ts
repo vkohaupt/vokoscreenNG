@@ -815,6 +815,10 @@
         <source>Snapshot</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>license</name>

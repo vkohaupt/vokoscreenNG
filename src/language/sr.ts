@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Прикажи у &apos;&apos;systray&apos;&apos;</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Врати све на фабричка подешавања када следећи пут снимање почне </translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Снимак</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

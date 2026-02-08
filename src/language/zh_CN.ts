@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>系统托盘显示</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>下次启动时重置所有设置</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>截屏</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

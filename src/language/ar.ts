@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>أظهِر البرنامج في مساحة التبليغ</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>إعادة ضبط جميع الإعدادات في التشغيل القادم</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>لقطة</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

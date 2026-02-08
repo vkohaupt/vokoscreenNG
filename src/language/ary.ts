@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>بيّن في علبة النظام</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>إعادة ضبط جميع الإعدادات ملّي يعاود يخدم</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>لقطة ديال الشاشة</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

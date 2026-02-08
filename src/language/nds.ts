@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Im Systeemrebeet wiesen</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>All Instellens bi de anner Start torüggsetten</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Snappschööt</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

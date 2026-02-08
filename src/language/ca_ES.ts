@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Mostra a la safata del sistema</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Restableix tots els ajustaments en el proper inici</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Instantània</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

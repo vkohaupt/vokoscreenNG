@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Zobrazit v liště</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Obnovit při dalším spuštění všechna nastavení</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Momentka</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

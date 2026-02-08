@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Mostrar no tabuleiro do sistema</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Reinicializar todas as configurações no próximo início</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Instantâneo</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

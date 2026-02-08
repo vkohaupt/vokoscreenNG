@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Ipakita sa systray</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Ibalik sa orihinal na kalagayan sa susunod na pagsisimula</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Mabilis ng kuha</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

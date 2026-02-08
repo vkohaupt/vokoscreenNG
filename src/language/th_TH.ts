@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>แสดงในถาดระบบ</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>รีเซตเมื่อเริ่มโปรแกรมใหม่</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>จับภาพนิ่ง</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Pokaži v sistemski vrstici</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Ponastavi nastavitve ob naslednjem zagonu</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Posnetek</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

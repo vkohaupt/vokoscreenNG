@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Arată în tava de sistem</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Resetează setările la următoarea pornire</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Instantaneu</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

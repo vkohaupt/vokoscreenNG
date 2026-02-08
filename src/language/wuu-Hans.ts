@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>加至托盘</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>下次录制的辰光，重置所有东西</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>快照</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Vis i systemstatusfeltet</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Nullstille alle innstillinger ved neste oppstart</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Øyeblikksbilde</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

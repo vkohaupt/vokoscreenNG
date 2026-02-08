@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Afficher dans la zone de notification</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Remise à zéro de tous les paramètres au prochain redémarrage du logiciel.</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Instantané</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

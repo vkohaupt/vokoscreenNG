@@ -807,6 +807,14 @@ El límite de espacio en disco se ha alcanzado.</translation>
         <source>Show in systray</source>
         <translation>Mostrar en bandeja del sistema</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Reiniciar todos los ajustes en el siguiente inicio</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Captura</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

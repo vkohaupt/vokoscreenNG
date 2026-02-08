@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Pokazuj w panelu systemowym</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Zresetuj ustawienia przy następnym uruchomieniu</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Migawka</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

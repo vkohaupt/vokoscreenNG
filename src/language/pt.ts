@@ -805,6 +805,14 @@
         <source>Show in systray</source>
         <translation>Mostrar na barra de tarefas</translation>
     </message>
+    <message>
+        <source>Reset all settings at the next start</source>
+        <translation>Repor todas as configurações no próximo início</translation>
+    </message>
+    <message>
+        <source>Snapshot</source>
+        <translation>Instantâneo</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
