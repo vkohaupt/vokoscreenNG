@@ -442,6 +442,8 @@ void QvkMainWindow_wl::set_Connects()
     ui->pushButtonContinue->hide();
 
     connect(ui->pushButtonOpenfolder, &QPushButton::clicked, this, [=](){slot_folder();});
+    connect(ui->pushButtonSnapshot_2, &QPushButton::clicked, this, [=](){ui->pushButtonSnapshot->click();});
+    connect(ui->pushButtonSnapshotOpenFolder_2, &QPushButton::clicked, this, [=](){ui->pushButtonSnapshotOpenFolder->click();});
 
     connect(ui->radioButtonScreencastFullscreen, &QRadioButton::clicked, this, [=](){ui->toolButtonScreencastAreaReset->setDisabled(true);});
     connect(ui->radioButtonScreencastWindow,     &QRadioButton::clicked, this, [=](){ui->toolButtonScreencastAreaReset->setDisabled(true);});

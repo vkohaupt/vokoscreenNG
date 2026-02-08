@@ -511,6 +511,9 @@
                          <property name="bottomMargin">
                           <number>20</number>
                          </property>
+                         <item>
+                          <widget class="QWidget" name="widget" native="true"/>
+                         </item>
                         </layout>
                        </widget>
                       </widget>
@@ -2099,6 +2102,30 @@
               </property>
              </spacer>
             </item>
+            <item>
+             <widget class="QPushButton" name="pushButtonSnapshot_2">
+              <property name="font">
+               <font>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Snapshot</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButtonSnapshotOpenFolder_2">
+              <property name="font">
+               <font>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Folder</string>
+              </property>
+             </widget>
+            </item>
            </layout>
           </item>
          </layout>
@@ -2909,7 +2936,7 @@
                    </font>
                   </property>
                   <property name="text">
-                   <string notr="true">Snapshot</string>
+                   <string>Snapshot</string>
                   </property>
                  </widget>
                 </item>
