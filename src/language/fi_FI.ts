@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Valokuva</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Pienennä kun tallennus alkaa</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

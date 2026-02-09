@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Schermfoto</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Minimaliseren zodra opname start</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

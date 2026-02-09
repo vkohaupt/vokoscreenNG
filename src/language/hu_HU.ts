@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Képernyőkép</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Minimalizálás a rögzítés indításakor</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Snappschööt</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Lütt maakt, wenn Upteken begünnt</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

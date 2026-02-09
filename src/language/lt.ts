@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Momentinė kopija</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Prasidėjus įrašinėjimui, suskleisti</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>快照</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>开录辰光变至最小</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

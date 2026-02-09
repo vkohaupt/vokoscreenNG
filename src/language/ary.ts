@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>لقطة ديال الشاشة</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>كيتصغّر ملّي كيبدا التسجيل</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

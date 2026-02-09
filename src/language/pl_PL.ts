@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Migawka</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Zminimalizuj po rozpoczęniu nagrania</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

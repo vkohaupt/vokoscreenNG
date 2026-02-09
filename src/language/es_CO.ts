@@ -815,6 +815,10 @@ El límite de espacio en disco se ha alcanzado.</translation>
         <source>Snapshot</source>
         <translation>Captura</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Minimizar cuando inicie la grabación</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

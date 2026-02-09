@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Momentka</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Minimalizovat začátkem záznamu</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

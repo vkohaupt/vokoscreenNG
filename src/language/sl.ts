@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Posnetek</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Pomanjšaj, ko se snemanje začne</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

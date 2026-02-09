@@ -818,6 +818,10 @@
         <source>Snapshot</source>
         <translation>Snimak</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Minimizirano prilikom pokretanja snimanja</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

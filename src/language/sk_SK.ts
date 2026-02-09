@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Snímok obrazovky</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Minimalizovať pri štarte nahrávania</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

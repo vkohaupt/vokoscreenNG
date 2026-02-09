@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Snimak ekrana</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Minimiziraj kada snimanje počne</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

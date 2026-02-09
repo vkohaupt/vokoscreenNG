@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Снимак</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Vokoscreen минимизиран кад снимање почне</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

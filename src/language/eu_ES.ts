@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Pantaila argazkia</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Minimizatu grabazioa hastean</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

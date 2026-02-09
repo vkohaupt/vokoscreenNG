@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>จับภาพนิ่ง</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>ย่อหน้าต่างเมื่อเริ่มอัด</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

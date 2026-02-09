@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Foto</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Minimalkan jendela saat perekaman dimulai</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

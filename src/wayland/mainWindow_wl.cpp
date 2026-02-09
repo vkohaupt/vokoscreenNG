@@ -699,6 +699,14 @@ QString QvkMainWindow_wl::get_Area_Videocrop()
 
 void QvkMainWindow_wl::slot_pre_start( QString vk_fd, QString vk_path )
 {
+
+    if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true ) {
+        qDebug().noquote() << global::nameOutput << "[Screencast]" << "Minimized this window is checked";
+        showMinimized();
+    } else {
+        qDebug().noquote() << global::nameOutput << "[Screencast]" << "Minimized this window is not checked";
+    }
+
     if ( sliderScreencastCountDown->value() > 0 ) {
         QvkCountdown_wl vkCountdown_wl;
         vkCountdown_wl.timer->start();
@@ -728,7 +736,11 @@ void QvkMainWindow_wl::slot_pre_start( QString vk_fd, QString vk_path )
             ui->frame_video->setEnabled( true );
             ui->frame_audio->setEnabled( true );
             ui->frame_3->setEnabled( true );
-
+            if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true ) {
+                qDebug().noquote() << global::nameOutput << "[Screencast]" << "Minimized this window is checked";
+                hide();
+                show();
+            }
             if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
                 vkSystray->startAction->setEnabled(true);
                 vkSystray->stopAction->setDisabled(true);
@@ -1009,6 +1021,12 @@ void QvkMainWindow_wl::slot_stop()
        vkRegionChoise_wl->set_recordMode( false );
        vkRegionChoise_wl->repaint();
        vkRegionChoise_wl->setMask( vkRegionChoise_wl->pixmap.mask() );
+    }
+
+    if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true ) {
+        qDebug().noquote() << global::nameOutput << "[Screencast]" << "Minimized this window is checked";
+        hide();
+        show();
     }
 }
 

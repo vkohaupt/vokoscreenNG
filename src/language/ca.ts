@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Instantània</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Minimitza en iniciar l&apos;enregistrament</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

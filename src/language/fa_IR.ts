@@ -815,6 +815,10 @@
         <source>Snapshot</source>
         <translation>عکس گرفتن فوری</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>کوچک سازی هنگام شروع ضبط</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

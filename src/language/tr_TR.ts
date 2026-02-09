@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Ekrançıktısı</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Kayıt başladığında simge durumuna küçült</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>צילום מסך</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>ממוזער עם תחילת ההקלטה</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

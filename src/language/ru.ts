@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Снимок</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Сворачивать окно перед началом записи</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

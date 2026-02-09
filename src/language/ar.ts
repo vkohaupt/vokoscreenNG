@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>لقطة</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation> تصغير البرنامج عند بدأ التسجيل </translation>
+    </message>
 </context>
 <context>
     <name>license</name>

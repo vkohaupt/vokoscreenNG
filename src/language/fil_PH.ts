@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Mabilis ng kuha</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Paliitin kapag nagsimula ang pagtatala</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

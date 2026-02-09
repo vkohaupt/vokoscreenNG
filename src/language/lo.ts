@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>ຖ່າຍພາບໜ້າຈໍ</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>ຫຍໍ້ລົງເມື່ອເລີ່ມການບັນທຶກ</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

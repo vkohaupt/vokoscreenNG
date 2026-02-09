@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Сурет</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Жазу басталған кезде кішірейтіледі</translation>
+    </message>
 </context>
 <context>
     <name>license</name>

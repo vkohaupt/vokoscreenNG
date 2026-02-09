@@ -813,6 +813,10 @@
         <source>Snapshot</source>
         <translation>Στιγμιότυπο</translation>
     </message>
+    <message>
+        <source>Minimized when recording starts</source>
+        <translation>Ελαχιστοποίηση όταν ξεκινά η εγγραφή</translation>
+    </message>
 </context>
 <context>
     <name>license</name>
