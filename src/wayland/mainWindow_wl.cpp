@@ -313,7 +313,6 @@ void QvkMainWindow_wl::get_system_info()
                                                           " / " +
                                                           ui->radioButtonScreencastArea->text() );
             ui->radioButtonScreencastArea->hide();
-            ui->frame_area->hide();
             ui->toolButtonScreencastAreaReset->hide();
         }
     }
@@ -399,7 +398,6 @@ void QvkMainWindow_wl::set_Connects()
     connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){ui->radioButtonScreencastWindow->setDisabled(true);});
     connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){ui->radioButtonScreencastArea->setDisabled(true);});
     connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){ui->frameVideoPath->setDisabled(true);});
-    connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){ui->frame_area->setDisabled(true);});
     connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){ui->toolButtonScreencastAreaReset->setDisabled(true);});
     connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){ui->frame_video->setDisabled(true);});
     connect(ui->pushButtonStart, &QPushButton::clicked, this, [=](){ui->frame_audio->setDisabled(true);});
@@ -422,7 +420,6 @@ void QvkMainWindow_wl::set_Connects()
     connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){ui->frame_3->setEnabled(true);});
     connect(ui->pushButtonStop, &QPushButton::clicked, this, [=](){
         if (ui->radioButtonScreencastArea->isChecked() == true){
-            ui->frame_area->setEnabled(true);
             ui->toolButtonScreencastAreaReset->setEnabled(true);
         };
     });
@@ -731,7 +728,9 @@ void QvkMainWindow_wl::slot_pre_start( QString vk_fd, QString vk_path )
             ui->radioButtonScreencastFullscreen->setEnabled( true );
             ui->radioButtonScreencastWindow->setEnabled( true );
             ui->radioButtonScreencastArea->setEnabled( true );
-            ui->toolButtonScreencastAreaReset->setEnabled( true );
+            if ( ui->radioButtonScreencastArea->isChecked() == true ){
+                ui->toolButtonScreencastAreaReset->setEnabled( true );
+            }
             ui->frameVideoPath->setEnabled( true );
             ui->frame_video->setEnabled( true );
             ui->frame_audio->setEnabled( true );
@@ -1043,7 +1042,6 @@ void QvkMainWindow_wl::slot_portal_dialog_aborted()
     ui->frame_audio->setEnabled( true );
     ui->frame_3->setEnabled( true );
     if ( ui->radioButtonScreencastArea->isChecked() == true ) {
-       ui->frame_area->setEnabled( true );
        ui->toolButtonScreencastAreaReset->setEnabled( true );
     }
 
