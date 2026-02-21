@@ -49,7 +49,7 @@ GstBusSyncReply QvkWASAPIWatcher::my_WASAPI_func( GstBus *bus, GstMessage *messa
         GstStructure *structure = gst_device_get_properties( gstDevice );
         QString api = QString( gst_structure_get_string( structure, "device.api" ) );
         QString device_id = QString( gst_structure_get_string( structure, "device.id" ) );
-        if ( ( api == "wasapi2" ) and ( device_id.contains( "{.}" ) ) ) {
+        if ( ( api == "wasapi2" ) and ( device_id.contains( "}.{" ) ) ) {
             QString device = QString( gst_structure_get_string( structure, "device.id" ) );
             QString name = QString( gst_structure_get_string( structure, "wasapi2.device.description" ) );
             gboolean boolValue;
