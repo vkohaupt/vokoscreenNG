@@ -121,6 +121,7 @@ void QvkContainerController::set_audioencoder_to_available_or_unavailable()
 
 void QvkContainerController::set_available_muxer_in_ComboBox()
 {
+    ui->comboBoxFormat->clear(); // neu 24.02.2026
     for ( int i = 0; i < vkContainer->get_Containers().count(); i++ ) {
         if ( vkContainer->get_Containers().at(i)->get_Available() == true ) {
             QIcon icon;

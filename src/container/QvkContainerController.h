@@ -13,24 +13,24 @@ class QvkContainerController : public QObject
 public:
     QvkContainerController( Ui::formMainWindow *Ui );
     void init( bool isFlatpak );
+    void set_available_muxer_in_ComboBox();
 
     
 private:
     Ui::formMainWindow *ui;
     QvkContainer *vkContainer;
     void set_muxer_to_available_or_unavailable();
-    void set_available_muxer_in_ComboBox();
     void set_videoencoder_to_available_or_unavailable();
     void set_audioencoder_to_available_or_unavailable();
     void set_available_formatVideoAudoicodec_in_tab();
 
 
 private slots:
-    void slot_set_available_VideoCodecs_in_Combobox( const QString suffix );
     void slot_set_available_AudioCodecs_in_Combobox( const QString suffix );
 
 
 public slots:
+    void slot_set_available_VideoCodecs_in_Combobox( const QString suffix );
 
 
 signals:

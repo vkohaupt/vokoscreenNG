@@ -657,9 +657,14 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->comboBoxLanguage, SIGNAL( currentIndexChanged(int) ), this, SLOT( slot_languageChanged(int) ) );
 
 #ifdef Q_OS_WIN
-    vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller(  vkSettings.getOpenh264ProfilePathWithFilename(), ui );
+    vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller( vkSettings.getOpenh264ProfilePathWithFilename(), ui );
     vkCiscoOpenh264Controller->showWaitDialog();
     vkCiscoOpenh264Controller->init();
+    connect(vkCiscoOpenh264Controller, &QvkCiscoOpenh264Controller::signal_format_refresh, this, [=](){
+        QString a = ui->comboBoxFormat->currentText();
+        //vkContainerController->slot_set_available_VideoCodecs_in_Combobox(a);
+        vkContainerController->set_available_muxer_in_ComboBox();
+    });
 #endif
 
 #ifdef Q_OS_UNIX

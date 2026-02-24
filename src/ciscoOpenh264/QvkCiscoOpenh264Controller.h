@@ -68,6 +68,7 @@ protected:
 
 signals:
     void signal_ciscofile_now_downloded( bool );
+    void signal_format_refresh();
 
 };
 
