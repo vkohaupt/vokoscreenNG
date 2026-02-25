@@ -660,9 +660,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vkCiscoOpenh264Controller = new QvkCiscoOpenh264Controller( vkSettings.getOpenh264ProfilePathWithFilename(), ui );
     vkCiscoOpenh264Controller->showWaitDialog();
     vkCiscoOpenh264Controller->init();
-    connect(vkCiscoOpenh264Controller, &QvkCiscoOpenh264Controller::signal_format_refresh, this, [=](){
-        QString a = ui->comboBoxFormat->currentText();
-        //vkContainerController->slot_set_available_VideoCodecs_in_Combobox(a);
+    connect(vkCiscoOpenh264Controller, &QvkCiscoOpenh264Controller::signal_cisco_on_off, this, [=](){
         vkContainerController->set_available_muxer_in_ComboBox();
     });
 #endif

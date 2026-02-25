@@ -58,8 +58,6 @@ private slots:
     void slot_cisco_on( bool );
     void slot_cisco_off( bool );
     void slot_closeWaitDialog();
-
-
     void slot_downloadProgress( qint64 downloadedSize, qint64 fileSize );
 
 
@@ -68,7 +66,7 @@ protected:
 
 signals:
     void signal_ciscofile_now_downloded( bool );
-    void signal_format_refresh();
+    void signal_cisco_on_off();
 
 };
 
