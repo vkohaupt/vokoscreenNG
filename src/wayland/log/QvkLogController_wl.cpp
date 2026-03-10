@@ -20,8 +20,10 @@
  * --End_License--
  */
 
-#include <QFile>
 #include <QMessageLogContext>
+#include <QtLogging>
+#include <QtMessageHandler>
+#include <QFile>
 #include <QString>
 #include <QTime>
 #include <QByteArray>
