@@ -62,7 +62,6 @@ QvkContainerController_wl::QvkContainerController_wl( Ui::formMainWindow_wl *Ui 
 
 void QvkContainerController_wl::set_muxer_to_available_or_unavailable()
 {
-    qDebug().noquote() << global::nameOutput << "Formats, video- and audio codec are only for record, not for the player";
     qDebug().noquote() << global::nameOutput << "Video formats:";
     for ( int i = 0; i < vkContainer_wl->get_Containers().count(); i++ )
     {
