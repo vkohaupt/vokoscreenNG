@@ -38,15 +38,19 @@ QvkWaylandRoutines::~QvkWaylandRoutines()
 {}
 
 
-bool QvkWaylandRoutines::is_Wayland_Display_Available()
+bool QvkWaylandRoutines::is_Wayland_Display_Available(bool output)
 {
-    wl_display *display = wl_display_connect( Q_NULLPTR );
-    if ( display == Q_NULLPTR ) {
-        qDebug().noquote() << global::nameOutput << "Desktop session is a X11 session";
+    wl_display *display = wl_display_connect(Q_NULLPTR);
+    if(display == Q_NULLPTR){
+        if(output == true){
+            qDebug().noquote() << global::nameOutput << "Desktop session is a X11 session";
+        }
         return false;
     }
 
-    qDebug().noquote() << global::nameOutput << "Desktop session is a Wayland session";
-    wl_display_disconnect( display );
+    if(output == true){
+        qDebug().noquote() << global::nameOutput << "Desktop session is a Wayland session";
+    }
+    wl_display_disconnect(display);
     return true;
 }

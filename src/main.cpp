@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
     }
 
 #ifdef Q_OS_UNIX
-    if ( QvkWaylandRoutines::is_Wayland_Display_Available() == false ) {
+    if ( QvkWaylandRoutines::is_Wayland_Display_Available(false) == false ) {
         new QvkLogController;
     } else {
         new QvkLogController_wl;
@@ -146,7 +146,7 @@ int main(int argc, char *argv[])
     // Gstreamer debug begin
     // Write Gstreamer debug level in a file
 #ifdef Q_OS_UNIX
-    if ( QvkWaylandRoutines::is_Wayland_Display_Available() == false ) {
+    if ( QvkWaylandRoutines::is_Wayland_Display_Available(false) == false ) {
         QvkSettings vkSettingsGstDebug;
         QFileInfo fileInfo( vkSettingsGstDebug.getFileName() );
         QString pathAndFilename = fileInfo.absoluteFilePath();
@@ -224,7 +224,7 @@ int main(int argc, char *argv[])
     gst_init (&argc, &argv);
 
 #ifdef Q_OS_UNIX
-    if ( QvkWaylandRoutines::is_Wayland_Display_Available() == false ) {
+    if ( QvkWaylandRoutines::is_Wayland_Display_Available(true) == false ) {
         QvkMainWindow *w = new QvkMainWindow;
         w->show();
     } else {

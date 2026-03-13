@@ -36,7 +36,7 @@ class QvkWaylandRoutines : public QObject
 public:
     QvkWaylandRoutines( QWidget *parent = Q_NULLPTR );
     ~QvkWaylandRoutines();
-    static bool is_Wayland_Display_Available();
+    static bool is_Wayland_Display_Available(bool output);
 
 
 private:
