@@ -83,7 +83,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     connect( ui->toolButtonSnapshot,   &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(2); } );
     connect( ui->toolButtonConvert,    &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(3); } );
     connect( ui->toolButtonLog,        &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(4);
-        ui->pushButton_log_refresh->click();
+        slot_log_refresh();
     } );
     ui->tabWidgetSideBar->tabBar()->hide();
 
