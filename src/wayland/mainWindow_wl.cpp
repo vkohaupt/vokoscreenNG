@@ -221,16 +221,16 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 
 void QvkMainWindow_wl::slot_log_refresh()
 {
-    QFile file( vkLogController_wl->get_log_filePath() );
-    bool bo = file.open( QIODevice::ReadOnly );
-    if ( bo == false ) {
+    QFile file(vkLogController_wl->get_log_filePath());
+    bool bo = file.open(QIODevice::ReadOnly);
+    if(bo == false){
         qDebug().noquote() << global::nameOutput << "[QvkMainWindow_wl::slot_log_refresh] Can not open" << file.fileName();
         return;
     }
-    QTextStream in( &file );
+    QTextStream in(&file);
     ui->textBrowser->clear();
-    ui->textBrowser->setText( in.readAll() );
-    ui->textBrowser->moveCursor( QTextCursor::End ) ;
+    ui->textBrowser->append(in.readAll());
+    ui->textBrowser->moveCursor(QTextCursor::End);
     file.close();
 }
 
