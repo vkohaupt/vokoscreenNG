@@ -769,7 +769,8 @@ void QvkMainWindow::slot_log_refresh()
     QTextStream in( &file );
     ui->textBrowser->clear();
     ui->textBrowser->setText( in.readAll() );
-    ui->textBrowser->moveCursor( QTextCursor::End ) ;
+    ui->textBrowser->moveCursor( QTextCursor::End );
+    file.close();
 }
 
 
