@@ -763,7 +763,7 @@ void QvkMainWindow::slot_log_refresh()
 {
     QFile file(vkLogController->get_log_filePath());
     bool bo = file.open(QIODevice::ReadOnly);
-    if (bo == false){
+    if(bo == false){
         qDebug().noquote() << global::nameOutput << "Can not open" << file.fileName();
     }
 
