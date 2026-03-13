@@ -25,8 +25,7 @@
 
 #include <wayland-client.h>
 #include <QDebug>
-#include <QString>
-#include <QTime>
+
 
 QvkWaylandRoutines::QvkWaylandRoutines( QWidget *parent )
 {
