@@ -227,10 +227,18 @@ void QvkMainWindow_wl::slot_log_refresh()
         qDebug().noquote() << global::nameOutput << "[QvkMainWindow_wl::slot_log_refresh] Can not open" << file.fileName();
         return;
     }
+
     QTextStream in(&file);
     ui->textBrowser->clear();
-    ui->textBrowser->append(in.readAll());
-    ui->textBrowser->moveCursor(QTextCursor::End);
+    while(in.atEnd() == false){
+        QString string = in.readLine();
+        if(string.contains(" - ")){
+            ui->textBrowser->setTextColor(Qt::red);
+        }else{
+            ui->textBrowser->setTextColor(Qt::black);
+        }
+        ui->textBrowser->append(string);
+    }
     file.close();
 }
 

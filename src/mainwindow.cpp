@@ -766,10 +766,18 @@ void QvkMainWindow::slot_log_refresh()
     if (bo == false){
         qDebug().noquote() << global::nameOutput << "Can not open" << file.fileName();
     }
+
     QTextStream in(&file);
     ui->textBrowser->clear();
-    ui->textBrowser->append(in.readAll());
-    ui->textBrowser->moveCursor(QTextCursor::End);
+    while(in.atEnd() == false){
+        QString string = in.readLine();
+        if(string.contains(" - ")){
+            ui->textBrowser->setTextColor(Qt::red);
+        }else{
+            ui->textBrowser->setTextColor(Qt::black);
+        }
+        ui->textBrowser->append(string);
+    }
     file.close();
 }
 
