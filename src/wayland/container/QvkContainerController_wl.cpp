@@ -31,7 +31,8 @@ QvkContainerController_wl::QvkContainerController_wl( Ui::formMainWindow_wl *Ui 
     set_available_formatVideoAudoicodec_in_tab();
 
     qDebug();
-    qDebug().noquote() << global::nameOutput << "Video encoder:";
+    qDebug().noquote() << global::nameOutput << "--- Screencast: Video encoder ---";
+    qDebug().noquote() << global::nameOutput << "Symbols: (+) available, (-) not available";
     QStringList videoList = vkContainer_wl->get_AllVideoEncoders();
     for ( int i = 0; i < videoList.count(); i++ ) {
         QString encoder = videoList.at(i);
@@ -45,7 +46,8 @@ QvkContainerController_wl::QvkContainerController_wl( Ui::formMainWindow_wl *Ui 
     }
 
     qDebug();
-    qDebug().noquote() << global::nameOutput << "Audio encoder:";
+    qDebug().noquote() << global::nameOutput << "--- Screencast: Audio encoder ---";
+    qDebug().noquote() << global::nameOutput << "Symbols: (+) available, (-) not available";
     QStringList audioList = vkContainer_wl->get_AllAudioEncoders();
     for ( int i = 0; i < audioList.count(); i++ ) {
         QString encoder = audioList.at(i);
@@ -62,7 +64,8 @@ QvkContainerController_wl::QvkContainerController_wl( Ui::formMainWindow_wl *Ui 
 
 void QvkContainerController_wl::set_muxer_to_available_or_unavailable()
 {
-    qDebug().noquote() << global::nameOutput << "Video formats:";
+    qDebug().noquote() << global::nameOutput << "--- Screencast: Video formats ---";
+    qDebug().noquote() << global::nameOutput << "Symbols: (+) available, (-) not available";
     for ( int i = 0; i < vkContainer_wl->get_Containers().count(); i++ )
     {
         QString muxer = vkContainer_wl->get_Containers().at(i)->get_Muxer();

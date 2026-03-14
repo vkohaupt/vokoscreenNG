@@ -57,8 +57,6 @@ void QvkAudioController_wl::init()
 
 void QvkAudioController_wl::getAllDevices()
 {
-    qDebug().noquote();
-
     QStringList list;
     if ( QvkPulseAudioServer_wl::isAvailable() ) {
         list << QvkPulseAudioDevices_wl::getAllDevices();

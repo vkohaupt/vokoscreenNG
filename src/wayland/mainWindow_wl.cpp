@@ -104,11 +104,10 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_RegionChoice();
     set_Connects();
     set_check_screencast_elements_available();
+    vkContainerController_wl = new QvkContainerController_wl( ui );
     set_check_GIF_convert_elements_available();
     set_check_MP4_convert_elements_available();
     set_check_WEBM_convert_elements_available();
-
-    vkContainerController_wl = new QvkContainerController_wl( ui );
 
     QvkAudioController_wl *vkAudioController = new QvkAudioController_wl( ui );
     vkAudioController->init();
@@ -1177,7 +1176,9 @@ void QvkMainWindow_wl::set_check_GIF_convert_elements_available()
     list << "gifenc";
     list << "filesink";
 
+    qDebug();
     qDebug().noquote() << global::nameOutput << "--- Convert to GIF: GStreamer elements ---";
+    qDebug().noquote() << global::nameOutput << "Symbols: (+) available, (-) not available";
 
     for ( int i = 0; i < list.count(); i++ ) {
         GstElementFactory *factory = gst_element_factory_find( QString( list.at(i) ).toLatin1() );
@@ -1205,6 +1206,7 @@ void QvkMainWindow_wl::set_check_MP4_convert_elements_available()
     list << "opusparse";
 
     qDebug().noquote() << global::nameOutput << "--- Convert to MP4: GStreamer elements ---";
+    qDebug().noquote() << global::nameOutput << "Symbols: (+) available, (-) not available";
 
     for ( int i = 0; i < list.count(); i++ ) {
         GstElementFactory *factory = gst_element_factory_find( QString( list.at(i) ).toLatin1() );
@@ -1237,6 +1239,7 @@ void QvkMainWindow_wl::set_check_WEBM_convert_elements_available()
     list << "vorbisenc";
 
     qDebug().noquote() << global::nameOutput << "--- Convert to WEBM: GStreamer elements ---";
+    qDebug().noquote() << global::nameOutput << "Symbols: (+) available, (-) not available";
 
     for ( int i = 0; i < list.count(); i++ ) {
         GstElementFactory *factory = gst_element_factory_find( QString( list.at(i) ).toLatin1() );
