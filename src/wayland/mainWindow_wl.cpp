@@ -1147,6 +1147,7 @@ void QvkMainWindow_wl::set_check_screencast_elements_available()
     list << "videocrop";
 
     qDebug().noquote() << global::nameOutput << "--- Screencast: GStreamer elements ---";
+    qDebug().noquote() << global::nameOutput << "Symbols: (+) available, (-) not available";
 
     for ( int i = 0; i < list.count(); i++ ) {
         GstElementFactory *factory = gst_element_factory_find( QString( list.at(i) ).toLatin1() );
