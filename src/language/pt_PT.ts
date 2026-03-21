@@ -157,7 +157,7 @@
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Site</translation>
+        <translation>Página inicial</translation>
     </message>
     <message>
         <source>Translations</source>
@@ -165,7 +165,7 @@
     </message>
     <message>
         <source>Donate</source>
-        <translation>Faz uma doação</translation>
+        <translation>Fazer uma doação</translation>
     </message>
 </context>
 <context>
@@ -176,7 +176,7 @@
     </message>
     <message>
         <source>Homepage</source>
-        <translation>Site</translation>
+        <translation>Página inicial</translation>
     </message>
     <message>
         <source>Translations</source>
@@ -184,11 +184,11 @@
     </message>
     <message>
         <source>Donate</source>
-        <translation>Faz uma doação</translation>
+        <translation>Fazer uma doação</translation>
     </message>
     <message>
         <source>No filemanager found.</source>
-        <translation>Não foi encontrado nenhum gestor de ficheiros.</translation>
+        <translation>Não foi encontrado um gestor de ficheiros.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
@@ -234,7 +234,7 @@
     <name>QvkSnapshot</name>
     <message>
         <source>No filemanager found.</source>
-        <translation>Não foi encontrado nenhum gestor de ficheiros.</translation>
+        <translation>Não foi encontrado um gestor de ficheiros.</translation>
     </message>
     <message>
         <source>Please install a filemanager.</source>
