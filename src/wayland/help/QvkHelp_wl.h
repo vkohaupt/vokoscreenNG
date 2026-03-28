@@ -53,7 +53,6 @@ public slots:
 
   
 private:
-//    Ui_formMainWindow *ui;
     Ui_formMainWindow_wl *ui;
 
     QStringList toDownloadFiles = { ".png", ".svg", ".css", ".jpg" };

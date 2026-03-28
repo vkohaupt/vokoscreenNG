@@ -214,7 +214,10 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
                                       );
     vkSystray->deleteLater();
 
+    vkHelp->slot_cleanUp();
+
     qDebug().noquote() << global::nameOutput << "QvkMainWindow_wl::closeEvent End close";
+
 }
 
 
