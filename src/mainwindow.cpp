@@ -1767,6 +1767,7 @@ QString QvkMainWindow::VK_scale()
 
 void QvkMainWindow::VK_gst_Elements_available()
 {
+    qDebug().noquote() << global::nameOutput << "--- Screencast: GStreamer elements ---";
     qDebug().noquote() << global::nameOutput << "Symbols: (+) available, (-) not available";
     QStringList list;
 #ifdef Q_OS_WIN
