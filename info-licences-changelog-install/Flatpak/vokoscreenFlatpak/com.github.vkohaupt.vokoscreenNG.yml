@@ -18,29 +18,30 @@ finish-args:
   - --talk-name=org.freedesktop.Flatpak
 
 modules:
-  # gstreamer-plugins-good wird benötigt da in GStreamer 1.26.10 ximagesrc nicht vorhanden ist
+#   gstreamer-plugins-good wird benötigt da in GStreamer 1.26.10 ximagesrc nicht vorhanden ist
   - name: gstreamer-plugins-good
     buildsystem: meson
-    config-opts:
-      #- -D=x264=enabled
     sources:
       - type: archive
         url: https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.26.10.tar.xz
         sha256: 7beacb5daba3c6751ebc1c85017d9b1d6de64e24798125932c73c8b1dbeb3bc9
 
-  # Für das kompilieren von gstreamer-plugins-bad wird als runtime der openh264 codec benötigt
+#   Für das kompilieren von gstreamer-plugins-bad wird als runtime der openh264 codec benötigt
   - name: openh264
     buildsystem: meson
     sources:
       - type: git
         url: https://github.com/cisco/openh264.git
-        branch: v2.6.0
+        tag: v2.6.0
+        commit: 652bdb7719f30b52b08e506645a7322ff1b2cc6f
+        x-checker-data:
+          type: git
+          tag-pattern: ^([\d.]+)$
+#        branch: v2.6.0
 
-  # gstreamer-plugins-bad beinhaltet openh264enc
+#   gstreamer-plugins-bad beinhaltet openh264enc
   - name: gstreamer-plugins-bad
     buildsystem: meson
-    config-opts:
-      #- -D=openh264=enabled
     sources:
       - type: archive
         url: https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.26.10.tar.xz
