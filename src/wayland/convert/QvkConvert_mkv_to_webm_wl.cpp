@@ -481,6 +481,8 @@ static void on_discovered_cb (GstDiscoverer *discoverer, GstDiscovererInfo *info
     GstDiscovererStreamInfo *sinfo;
 
     uri = gst_discoverer_info_get_uri (info);
+    g_print ("[vokoscreenNG] Uri        '%s'\n", uri);
+
     result = gst_discoverer_info_get_result (info);
     switch (result) {
     case GST_DISCOVERER_URI_INVALID:
