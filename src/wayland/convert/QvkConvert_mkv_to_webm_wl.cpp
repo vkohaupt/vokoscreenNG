@@ -145,8 +145,6 @@ void QvkConvert_mkv_to_webm_wl::slot_lineEdit_Convert_eos_WEBM()
 
 void QvkConvert_mkv_to_webm_wl::slot_convert_openfiledialog_mkv_to_webm()
 {
-    //    QApplication::setDesktopSettingsAware( false );
-
     QString pathFile;
     QvkFileDialog vkFileDialog( this );
     QStringList list( { "video/x-matroska" } );
@@ -167,8 +165,6 @@ void QvkConvert_mkv_to_webm_wl::slot_convert_openfiledialog_mkv_to_webm()
             ui->label_convert_mkv_to_webm->setPalette( paletteConvertLabel );
         }
     }
-
-    //    QApplication::setDesktopSettingsAware( true );
 }
 
 int counterConvertWEBM = 0;

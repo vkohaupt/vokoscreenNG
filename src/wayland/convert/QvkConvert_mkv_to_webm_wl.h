@@ -43,6 +43,7 @@ typedef struct _CustomData
     GstDiscoverer *discoverer;
     GMainLoop *loop;
 } CustomData;
+
 //----------------------------------------- End discover ----------------------------------------------------------------------------
 
 
