@@ -379,8 +379,6 @@ void QvkConvert_mkv_to_webm_wl::print_tag_foreach( const GstTagList *tags, const
         str = gst_value_serialize( &val );
     }
 
-    //  g_print( "%*s%s: %s\n", 2 * depth, " ", gst_tag_get_nick (tag), str ); // Übersetzung
-    //  g_print( "[vokoscreenNG] %*s%s: %s\n", 2 * depth, " ", tag, str );  // English
     QString space;
     for(int x=1; x < 2*depth; x++){
         space.append(" ");
@@ -430,7 +428,6 @@ void QvkConvert_mkv_to_webm_wl::print_stream_info( GstDiscovererStreamInfo *info
 
     tags = gst_discoverer_stream_info_get_tags( info );
     if ( tags ) {
-        //        g_print( "[vokoscreenNG] %*sTags:\n", 2 * ( depth + 1 ), " " );
         QString space;
         for(int x=1; x < 2*(depth+1); x++){
             space.append(" ");
@@ -481,7 +478,6 @@ void QvkConvert_mkv_to_webm_wl::on_discovered_cb( GstDiscoverer *discoverer, Gst
     GstDiscovererStreamInfo *sinfo;
 
     uri = gst_discoverer_info_get_uri (info);
-    //    g_print ("[vokoscreenNG] Uri        '%s'\n", uri);
     qDebug().noquote();
     qDebug().noquote() << global::nameOutput << "[Discover] Uri" << uri;
 
@@ -531,7 +527,6 @@ void QvkConvert_mkv_to_webm_wl::on_discovered_cb( GstDiscoverer *discoverer, Gst
         gst_tag_list_foreach (tags, print_tag_foreach, GINT_TO_POINTER (1));
     }
 
-    //    g_print ("[vokoscreenNG] Seekable: %s\n", (gst_discoverer_info_get_seekable (info) ? "yes" : "no"));
     QString seekable;
     if( gst_discoverer_info_get_seekable(info) == true ){
         seekable = "yes";
@@ -546,7 +541,6 @@ void QvkConvert_mkv_to_webm_wl::on_discovered_cb( GstDiscoverer *discoverer, Gst
         return;
     }
 
-//    g_print ("[vokoscreenNG] Stream information:\n");
     qDebug().noquote() << global::nameOutput << "[Discover] Stream information:";
 
     print_topology(sinfo, 1);
