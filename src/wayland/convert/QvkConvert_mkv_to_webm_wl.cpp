@@ -376,9 +376,7 @@ void QvkConvert_mkv_to_webm_wl::print_tag_foreach( const GstTagList *tags, const
     }
 
     QString space;
-    for(int x=1; x < 2*depth; x++){
-        space.append(" ");
-    }
+    space.fill(' ', 2*depth);
     qDebug().noquote() << global::nameOutput << "[Discover]" << space << tag << ":" << str;
 
     QString m_tag = tag;
@@ -425,9 +423,7 @@ void QvkConvert_mkv_to_webm_wl::print_stream_info( GstDiscovererStreamInfo *info
     tags = gst_discoverer_stream_info_get_tags( info );
     if ( tags ) {
         QString space;
-        for(int x=1; x < 2*(depth+1); x++){
-            space.append(" ");
-        }
+        space.fill(' ', 2*(depth+1));
         qDebug().noquote() << global::nameOutput << "[Discover]" << space << "Tags:";
         gst_tag_list_foreach( tags, print_tag_foreach, GINT_TO_POINTER( depth + 2 ) );
     }
