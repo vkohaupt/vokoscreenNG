@@ -64,7 +64,7 @@ QvkConvert_mkv_to_webm_wl::QvkConvert_mkv_to_webm_wl( QvkMainWindow_wl *vkMainWi
     paletteConvertWidget = ui->pushButton_convert_mkv_to_webm->palette();
     paletteConvertLabel = ui->label_convert_mkv_to_webm->palette();
 
-    connect(ui->toolButton_convert_dialog_mkv_to_webm, &QToolButton::clicked, this, [=](){slot_dicover_set_filePath();});
+    connect(ui->toolButton_convert_dialog_mkv_to_webm, &QToolButton::clicked, this, [=](){slot_discover_set_filePath();});
 
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
@@ -550,13 +550,13 @@ void QvkConvert_mkv_to_webm_wl::on_finished_cb (GstDiscoverer * discoverer, Cust
 }
 
 
-void QvkConvert_mkv_to_webm_wl::slot_dicover_set_filePath()
+void QvkConvert_mkv_to_webm_wl::slot_discover_set_filePath()
 {
-    slot_dicover_start( "file://" + ui->lineEdit_convert_mkv_to_webm->text() );
+    slot_discover_start( "file://" + ui->lineEdit_convert_mkv_to_webm->text() );
 }
 
 
-void QvkConvert_mkv_to_webm_wl::slot_dicover_start( QString filePath )
+void QvkConvert_mkv_to_webm_wl::slot_discover_start( QString filePath )
 {
     CustomData data;
     GError *err = NULL;

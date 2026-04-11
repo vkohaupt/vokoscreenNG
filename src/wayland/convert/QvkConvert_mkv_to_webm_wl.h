@@ -78,8 +78,8 @@ private slots:
     void slot_convert_mkv_to_webm();
     void slot_lineEdit_Convert_eos_WEBM();
 
-    void slot_dicover_set_filePath();
-    void slot_dicover_start( QString filePath );
+    void slot_discover_set_filePath();
+    void slot_discover_start( QString filePath );
 
     void slot_timer();
 
