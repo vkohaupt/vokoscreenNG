@@ -375,9 +375,8 @@ void QvkConvert_mkv_to_webm_wl::print_tag_foreach( const GstTagList *tags, const
         str = gst_value_serialize( &val );
     }
 
-    QString space;
-    space.fill(' ', 2*depth);
-    qDebug().noquote() << global::nameOutput << "[Discover]" << space << tag << ":" << str;
+    QString space(2*depth, ' ');
+    qDebug().noquote().nospace() << global::nameOutput << "[Discover]" << space << tag << ": " << str;
 
     QString m_tag = tag;
     QString m_str = str;
@@ -411,9 +410,13 @@ void QvkConvert_mkv_to_webm_wl::print_stream_info( GstDiscovererStreamInfo *info
         gst_caps_unref( caps );
     }
 
-    g_print( "[vokoscreenNG] %*s%s: %s\n", 2 * depth, " ",
+/*    g_print( "[vokoscreenNG] %*s%s: %s\n", 2 * depth, " ",
              gst_discoverer_stream_info_get_stream_type_nick( info ),
              ( desc ? desc : "" ) );
+*/
+    const gchar *stream_info = gst_discoverer_stream_info_get_stream_type_nick(info);
+    QString space(2*depth, ' ');
+    qDebug().noquote().nospace() << global::nameOutput << "[Discover]" << space << stream_info << ": " << desc;
 
     if ( desc ) {
         g_free( desc );
@@ -422,9 +425,8 @@ void QvkConvert_mkv_to_webm_wl::print_stream_info( GstDiscovererStreamInfo *info
 
     tags = gst_discoverer_stream_info_get_tags( info );
     if ( tags ) {
-        QString space;
-        space.fill(' ', 2*(depth+1));
-        qDebug().noquote() << global::nameOutput << "[Discover]" << space << "Tags:";
+        QString space(2*(depth+1), ' ');
+        qDebug().noquote().nospace() << global::nameOutput << "[Discover]" << space << "Tags:";
         gst_tag_list_foreach( tags, print_tag_foreach, GINT_TO_POINTER( depth + 2 ) );
     }
 }
@@ -470,9 +472,6 @@ void QvkConvert_mkv_to_webm_wl::on_discovered_cb( GstDiscoverer *discoverer, Gst
     GstDiscovererStreamInfo *sinfo;
 
     uri = gst_discoverer_info_get_uri (info);
-    qDebug().noquote();
-    qDebug().noquote() << global::nameOutput << "[Discover] Uri" << uri;
-
     result = gst_discoverer_info_get_result (info);
     switch (result) {
     case GST_DISCOVERER_URI_INVALID:
@@ -499,7 +498,7 @@ void QvkConvert_mkv_to_webm_wl::on_discovered_cb( GstDiscoverer *discoverer, Gst
         break;
     }
     case GST_DISCOVERER_OK:
-        qDebug().noquote() << global::nameOutput << "[Discover] Uri OK";
+        qDebug().noquote().nospace() << global::nameOutput << "[Discover] Uri: " << uri;
         break;
     }
 
@@ -511,11 +510,11 @@ void QvkConvert_mkv_to_webm_wl::on_discovered_cb( GstDiscoverer *discoverer, Gst
     // If we got no error, show the retrieved information
     qint64 aa = gst_discoverer_info_get_duration(info);
     QString str = QString::asprintf("%" GST_TIME_FORMAT, GST_TIME_ARGS(aa));
-    qDebug().noquote() << global::nameOutput << "[Discover] Duration:" << str;
+    qDebug().noquote().nospace() << global::nameOutput << "[Discover] Duration: " << str;
 
     tags = gst_discoverer_info_get_tags (info);
     if (tags) {
-        qDebug().noquote() << global::nameOutput << "[Discover] Tags:";
+        qDebug().noquote().nospace() << global::nameOutput << "[Discover] Tags:";
         gst_tag_list_foreach (tags, print_tag_foreach, GINT_TO_POINTER (1));
     }
 
@@ -525,7 +524,7 @@ void QvkConvert_mkv_to_webm_wl::on_discovered_cb( GstDiscoverer *discoverer, Gst
     }else{
         seekable = "no";
     }
-    qDebug().noquote() << global::nameOutput << "[Discover] Seekable:" << seekable;
+    qDebug().noquote().nospace() << global::nameOutput << "[Discover] Seekable:" << seekable;
     qDebug().noquote();
 
     sinfo = gst_discoverer_info_get_stream_info(info);
@@ -533,7 +532,7 @@ void QvkConvert_mkv_to_webm_wl::on_discovered_cb( GstDiscoverer *discoverer, Gst
         return;
     }
 
-    qDebug().noquote() << global::nameOutput << "[Discover] Stream information:";
+    qDebug().noquote().nospace() << global::nameOutput << "[Discover] Stream information:";
 
     print_topology(sinfo, 1);
 
@@ -544,7 +543,7 @@ void QvkConvert_mkv_to_webm_wl::on_discovered_cb( GstDiscoverer *discoverer, Gst
 void QvkConvert_mkv_to_webm_wl::on_finished_cb (GstDiscoverer * discoverer, CustomData * data)
 {
     Q_UNUSED(discoverer)
-    qDebug().noquote() << global::nameOutput << "[Discover] finished";
+    qDebug().noquote().nospace() << global::nameOutput << "[Discover] finished";
     qDebug().noquote();
     g_main_loop_quit( data->loop );
 }
@@ -571,7 +570,7 @@ void QvkConvert_mkv_to_webm_wl::slot_discover_start( QString filePath )
     // Instantiate the Discoverer
     data.discoverer = gst_discoverer_new(5 * GST_SECOND, &err);
     if (!data.discoverer){
-        qDebug().noquote() << global::nameOutput << "[Discover] Error creating discoverer instance:" << err->message ;
+        qDebug().noquote().nospace() << global::nameOutput << "[Discover] Error creating discoverer instance:" << err->message ;
         g_clear_error (&err);
         //    return -1;
     }
@@ -585,7 +584,7 @@ void QvkConvert_mkv_to_webm_wl::slot_discover_start( QString filePath )
 
     // Add a request to process asynchronously the URI passed through the command line
     if (!gst_discoverer_discover_uri_async (data.discoverer, uri)) {
-        qDebug().noquote() << global::nameOutput << "[Discover] Failed to start discovering URI:" << uri;
+        qDebug().noquote().nospace() << global::nameOutput << "[Discover] Failed to start discovering URI:" << uri;
         g_object_unref(data.discoverer);
         //    return -1;
     }
