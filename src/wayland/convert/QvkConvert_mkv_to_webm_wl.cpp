@@ -566,38 +566,38 @@ void QvkConvert_mkv_to_webm_wl::slot_discover_start( QString filePath )
     gchar *uri = byteArray.data();
 
     // Initialize cumstom data structure
-    memset (&data, 0, sizeof (data));
+    memset(&data, 0, sizeof (data));
 
     // Instantiate the Discoverer
-    data.discoverer = gst_discoverer_new (5 * GST_SECOND, &err);
-    if (!data.discoverer) {
-        g_print ("[vokoscreenNG] Error creating discoverer instance: %s\n", err->message);
+    data.discoverer = gst_discoverer_new(5 * GST_SECOND, &err);
+    if (!data.discoverer){
+        qDebug().noquote() << global::nameOutput << "[Discover] Error creating discoverer instance:" << err->message ;
         g_clear_error (&err);
         //    return -1;
     }
 
     // Connect to the interesting signals
-    g_signal_connect (data.discoverer, "discovered", G_CALLBACK (on_discovered_cb), &data);
-    g_signal_connect (data.discoverer, "finished", G_CALLBACK (on_finished_cb), &data);
+    g_signal_connect(data.discoverer, "discovered", G_CALLBACK(on_discovered_cb), &data);
+    g_signal_connect(data.discoverer, "finished", G_CALLBACK(on_finished_cb), &data);
 
     // Start the discoverer process (nothing to do yet)
-    gst_discoverer_start (data.discoverer);
+    gst_discoverer_start(data.discoverer);
 
     // Add a request to process asynchronously the URI passed through the command line
     if (!gst_discoverer_discover_uri_async (data.discoverer, uri)) {
-        g_print ("[vokoscreenNG] Failed to start discovering URI '%s'\n", uri);
-        g_object_unref (data.discoverer);
+        qDebug().noquote() << global::nameOutput << "[Discover] Failed to start discovering URI:" << uri;
+        g_object_unref(data.discoverer);
         //    return -1;
     }
 
     // Create a GLib Main Loop and set it to run, so we can wait for the signals
-    data.loop = g_main_loop_new (NULL, FALSE);
-    g_main_loop_run (data.loop);
+    data.loop = g_main_loop_new(NULL, FALSE);
+    g_main_loop_run(data.loop);
 
     // Stop the discoverer process
-    gst_discoverer_stop (data.discoverer);
+    gst_discoverer_stop(data.discoverer);
 
     // Free resources
-    g_object_unref (data.discoverer);
-    g_main_loop_unref (data.loop);
+    g_object_unref(data.discoverer);
+    g_main_loop_unref(data.loop);
 }
