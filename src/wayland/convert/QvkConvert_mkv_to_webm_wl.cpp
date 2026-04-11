@@ -363,20 +363,9 @@ void QvkConvert_mkv_to_webm_wl::msgbox_mkv_to_webm() {
 }
 
 //----------------------------------------- Begin discover ----------------------------------------------------------------------------
-// https://github.com/GStreamer/gst-docs/blob/master/examples/tutorials/basic-tutorial-9.c
-#include <string.h>
-#include <gst/gst.h>
-#include <gst/pbutils/pbutils.h>
-
-// Structure to contain all our information, so we can pass it around
-typedef struct _CustomData
-{
-    GstDiscoverer *discoverer;
-    GMainLoop *loop;
-} CustomData;
 
 // Print a tag in a human-readable format (name: value)
-static void print_tag_foreach( const GstTagList *tags, const gchar *tag, gpointer user_data )
+void QvkConvert_mkv_to_webm_wl::print_tag_foreach( const GstTagList *tags, const gchar *tag, gpointer user_data )
 {
     GValue val = { 0, 0 };
     gchar *str;
@@ -391,7 +380,12 @@ static void print_tag_foreach( const GstTagList *tags, const gchar *tag, gpointe
     }
 
     //  g_print( "%*s%s: %s\n", 2 * depth, " ", gst_tag_get_nick (tag), str ); // Übersetzung
-    g_print( "[vokoscreenNG] %*s%s: %s\n", 2 * depth, " ", tag, str );  // English
+    //  g_print( "[vokoscreenNG] %*s%s: %s\n", 2 * depth, " ", tag, str );  // English
+    QString space;
+    for(int x=1; x < 2*depth; x++){
+        space.append(" ");
+    }
+    qDebug().noquote() << global::nameOutput << "[Discover]" << space << tag << ":" << str;
 
     QString m_tag = tag;
     QString m_str = str;
@@ -408,7 +402,7 @@ static void print_tag_foreach( const GstTagList *tags, const gchar *tag, gpointe
 }
 
 // Print information regarding a stream
-static void print_stream_info (GstDiscovererStreamInfo * info, gint depth)
+void QvkConvert_mkv_to_webm_wl::print_stream_info( GstDiscovererStreamInfo *info, gint depth )
 {
     gchar *desc = NULL;
     GstCaps *caps;
@@ -436,18 +430,24 @@ static void print_stream_info (GstDiscovererStreamInfo * info, gint depth)
 
     tags = gst_discoverer_stream_info_get_tags( info );
     if ( tags ) {
-        g_print( "[vokoscreenNG] %*sTags:\n", 2 * ( depth + 1 ), " " );
+        //        g_print( "[vokoscreenNG] %*sTags:\n", 2 * ( depth + 1 ), " " );
+        QString space;
+        for(int x=1; x < 2*(depth+1); x++){
+            space.append(" ");
+        }
+        qDebug().noquote() << global::nameOutput << "[Discover]" << space << "Tags:";
         gst_tag_list_foreach( tags, print_tag_foreach, GINT_TO_POINTER( depth + 2 ) );
     }
 }
 
 // Print information regarding a stream and its substreams, if any
-static void print_topology (GstDiscovererStreamInfo * info, gint depth)
+void QvkConvert_mkv_to_webm_wl::print_topology( GstDiscovererStreamInfo *info, gint depth )
 {
     GstDiscovererStreamInfo *next;
 
-    if (!info)
+    if (!info){
         return;
+    }
 
     print_stream_info (info, depth);
 
@@ -471,7 +471,7 @@ static void print_topology (GstDiscovererStreamInfo * info, gint depth)
 
 // This function is called every time the discoverer has information regarding
 // one of the URIs we provided.
-static void on_discovered_cb (GstDiscoverer *discoverer, GstDiscovererInfo *info, GError *err, CustomData *data)
+void QvkConvert_mkv_to_webm_wl::on_discovered_cb( GstDiscoverer *discoverer, GstDiscovererInfo *info, GError *err, CustomData *data )
 {
     Q_UNUSED(discoverer)
     Q_UNUSED(data)
@@ -481,7 +481,9 @@ static void on_discovered_cb (GstDiscoverer *discoverer, GstDiscovererInfo *info
     GstDiscovererStreamInfo *sinfo;
 
     uri = gst_discoverer_info_get_uri (info);
-    g_print ("[vokoscreenNG] Uri        '%s'\n", uri);
+    //    g_print ("[vokoscreenNG] Uri        '%s'\n", uri);
+    qDebug().noquote();
+    qDebug().noquote() << global::nameOutput << "[Discover] Uri" << uri;
 
     result = gst_discoverer_info_get_result (info);
     switch (result) {
@@ -509,7 +511,7 @@ static void on_discovered_cb (GstDiscoverer *discoverer, GstDiscovererInfo *info
         break;
     }
     case GST_DISCOVERER_OK:
-        g_print ("[vokoscreenNG] Discovered '%s'\n", uri);
+        qDebug().noquote() << global::nameOutput << "[Discover] Uri OK";
         break;
     }
 
@@ -519,37 +521,45 @@ static void on_discovered_cb (GstDiscoverer *discoverer, GstDiscovererInfo *info
     }
 
     // If we got no error, show the retrieved information
-
-    g_print( "\n[vokoscreenNG] Duration: %" GST_TIME_FORMAT "\n", GST_TIME_ARGS( gst_discoverer_info_get_duration( info ) ) );
+    qint64 aa = gst_discoverer_info_get_duration(info);
+    QString str = QString::asprintf("%" GST_TIME_FORMAT, GST_TIME_ARGS(aa));
+    qDebug().noquote() << global::nameOutput << "[Discover] Duration:" << str;
 
     tags = gst_discoverer_info_get_tags (info);
     if (tags) {
-        g_print ("[vokoscreenNG] Tags:\n");
+        qDebug().noquote() << global::nameOutput << "[Discover] Tags:";
         gst_tag_list_foreach (tags, print_tag_foreach, GINT_TO_POINTER (1));
     }
 
-    g_print ("[vokoscreenNG] Seekable: %s\n", (gst_discoverer_info_get_seekable (info) ? "yes" : "no"));
+    //    g_print ("[vokoscreenNG] Seekable: %s\n", (gst_discoverer_info_get_seekable (info) ? "yes" : "no"));
+    QString seekable;
+    if( gst_discoverer_info_get_seekable(info) == true ){
+        seekable = "yes";
+    }else{
+        seekable = "no";
+    }
+    qDebug().noquote() << global::nameOutput << "[Discover] Seekable:" << seekable;
+    qDebug().noquote();
 
-    g_print ("\n");
-
-    sinfo = gst_discoverer_info_get_stream_info (info);
-    if (!sinfo)
+    sinfo = gst_discoverer_info_get_stream_info(info);
+    if (!sinfo){
         return;
+    }
 
-    g_print ("[vokoscreenNG] Stream information:\n");
+//    g_print ("[vokoscreenNG] Stream information:\n");
+    qDebug().noquote() << global::nameOutput << "[Discover] Stream information:";
 
-    print_topology (sinfo, 1);
+    print_topology(sinfo, 1);
 
-    gst_discoverer_stream_info_unref (sinfo);
-
-    g_print ("\n");
+    gst_discoverer_stream_info_unref(sinfo);
 }
 
 // This function is called when the discoverer has finished examining all the URIs we provided.
-static void on_finished_cb (GstDiscoverer * discoverer, CustomData * data)
+void QvkConvert_mkv_to_webm_wl::on_finished_cb (GstDiscoverer * discoverer, CustomData * data)
 {
     Q_UNUSED(discoverer)
-    g_print( "[vokoscreenNG] Finished discovering\n\n" );
+    qDebug().noquote() << global::nameOutput << "[Discover] finished";
+    qDebug().noquote();
     g_main_loop_quit( data->loop );
 }
 
