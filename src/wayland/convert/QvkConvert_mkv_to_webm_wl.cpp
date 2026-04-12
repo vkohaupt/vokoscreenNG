@@ -66,7 +66,7 @@ QvkConvert_mkv_to_webm_wl::QvkConvert_mkv_to_webm_wl( QvkMainWindow_wl *vkMainWi
     paletteConvertWidget = ui->pushButton_convert_mkv_to_webm->palette();
     paletteConvertLabel = ui->label_convert_mkv_to_webm->palette();
 
-    connect(ui->toolButton_convert_dialog_mkv_to_webm, &QToolButton::clicked, this, [=](){slot_discover_set_filePath();});
+    connect(ui->toolButton_convert_dialog_mkv_to_webm, &QToolButton::clicked, this, [=](){slot_discover_start();});
 
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
@@ -546,18 +546,12 @@ void QvkConvert_mkv_to_webm_wl::on_finished_cb(GstDiscoverer * discoverer, Custo
 }
 
 
-void QvkConvert_mkv_to_webm_wl::slot_discover_set_filePath()
-{
-    slot_discover_start( "file://" + ui->lineEdit_convert_mkv_to_webm->text() );
-}
-
-
-void QvkConvert_mkv_to_webm_wl::slot_discover_start(QString filePath)
+void QvkConvert_mkv_to_webm_wl::slot_discover_start()
 {
     CustomData data;
     GError *err = NULL;
 
-    QString file = filePath;
+    QString file = "file://" + ui->lineEdit_convert_mkv_to_webm->text();
     QByteArray byteArray = file.toUtf8();
     gchar *uri = byteArray.data();
 
