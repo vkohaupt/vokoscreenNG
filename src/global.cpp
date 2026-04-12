@@ -34,6 +34,5 @@ namespace global
     QList<QLineEdit*> *listChildren;
     QLineEdit *lineEditConvertMP4;
     QLineEdit *lineEditConvertGIF;
-    QLineEdit *lineEditConvertWEBM;
     QLineEdit *lineEditConvertRepair;
 }

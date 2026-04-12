@@ -38,13 +38,15 @@
 
 QString convert_video_codec_webm;
 QString convert_audio_codec_webm;
+QLineEdit *lineEditConvertWEBM;
+int counterConvertWEBM = 0;
 
 QvkConvert_mkv_to_webm_wl::QvkConvert_mkv_to_webm_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMainWindow_wl *vk_ui )
 {
     Q_UNUSED(vkMainWindow)
     ui = vk_ui;
-    global::lineEditConvertWEBM = new QLineEdit;
-    connect(global::lineEditConvertWEBM, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_WEBM();});
+    lineEditConvertWEBM = new QLineEdit;
+    connect(lineEditConvertWEBM, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_WEBM();});
     connect(ui->toolButton_convert_dialog_mkv_to_webm, &QToolButton::clicked, this, [=](){slot_convert_openfiledialog_mkv_to_webm();});
     connect(ui->pushButton_convert_mkv_to_webm, &QPushButton::clicked, this, [=](){slot_convert_mkv_to_webm();});
 
@@ -167,7 +169,7 @@ void QvkConvert_mkv_to_webm_wl::slot_convert_openfiledialog_mkv_to_webm()
     }
 }
 
-int counterConvertWEBM = 0;
+
 GstBusSyncReply QvkConvert_mkv_to_webm_wl::call_bus_message_convert_webm( GstBus *bus, GstMessage *message, gpointer user_data )
 {
     Q_UNUSED(bus);
@@ -180,7 +182,7 @@ GstBusSyncReply QvkConvert_mkv_to_webm_wl::call_bus_message_convert_webm( GstBus
     case GST_MESSAGE_EOS: {
         qDebug().noquote() << global::nameOutput << "[Convert] GST_MESSAGE_EOS";
         counterConvertWEBM++;
-        global::lineEditConvertWEBM->setText( QString::number( counterConvertWEBM ) );
+        lineEditConvertWEBM->setText( QString::number( counterConvertWEBM ) );
         break;
     }
     case GST_MESSAGE_DURATION_CHANGED:
@@ -536,12 +538,11 @@ void QvkConvert_mkv_to_webm_wl::on_discovered_cb( GstDiscoverer *discoverer, Gst
 }
 
 // This function is called when the discoverer has finished examining all the URIs we provided.
-void QvkConvert_mkv_to_webm_wl::on_finished_cb (GstDiscoverer * discoverer, CustomData * data)
+void QvkConvert_mkv_to_webm_wl::on_finished_cb(GstDiscoverer * discoverer, CustomData * data)
 {
     Q_UNUSED(discoverer)
     qDebug().noquote().nospace() << global::nameOutput << "[Discover] finished";
-    qDebug().noquote();
-    g_main_loop_quit( data->loop );
+    g_main_loop_quit(data->loop);
 }
 
 
@@ -551,7 +552,7 @@ void QvkConvert_mkv_to_webm_wl::slot_discover_set_filePath()
 }
 
 
-void QvkConvert_mkv_to_webm_wl::slot_discover_start( QString filePath )
+void QvkConvert_mkv_to_webm_wl::slot_discover_start(QString filePath)
 {
     CustomData data;
     GError *err = NULL;
