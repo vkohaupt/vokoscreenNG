@@ -410,10 +410,6 @@ void QvkConvert_mkv_to_webm_wl::print_stream_info( GstDiscovererStreamInfo *info
         gst_caps_unref( caps );
     }
 
-/*    g_print( "[vokoscreenNG] %*s%s: %s\n", 2 * depth, " ",
-             gst_discoverer_stream_info_get_stream_type_nick( info ),
-             ( desc ? desc : "" ) );
-*/
     const gchar *stream_info = gst_discoverer_stream_info_get_stream_type_nick(info);
     QString space(2*depth, ' ');
     qDebug().noquote().nospace() << global::nameOutput << "[Discover]" << space << stream_info << ": " << desc;
@@ -475,16 +471,16 @@ void QvkConvert_mkv_to_webm_wl::on_discovered_cb( GstDiscoverer *discoverer, Gst
     result = gst_discoverer_info_get_result (info);
     switch (result) {
     case GST_DISCOVERER_URI_INVALID:
-        g_print ("[vokoscreenNG] Invalid URI '%s'\n", uri);
+        qDebug().noquote().nospace() << global::nameOutput << "[Discover] Invalid URI: " << uri;
         break;
     case GST_DISCOVERER_ERROR:
-        g_print ("[vokoscreenNG] Discoverer error: %s\n", err->message);
+        qDebug().noquote().nospace() << global::nameOutput << "[Discover] error: " << err->message;
         break;
     case GST_DISCOVERER_TIMEOUT:
-        g_print ("[vokoscreenNG] Timeout\n");
+        qDebug().noquote().nospace() << global::nameOutput << "[Discover] Timeout";
         break;
     case GST_DISCOVERER_BUSY:
-        g_print ("[vokoscreenNG] Busy\n");
+        qDebug().noquote().nospace() << global::nameOutput << "[Discover] Busy";
         break;
     case GST_DISCOVERER_MISSING_PLUGINS:{
         const GstStructure *s;
@@ -493,7 +489,7 @@ void QvkConvert_mkv_to_webm_wl::on_discovered_cb( GstDiscoverer *discoverer, Gst
         s = gst_discoverer_info_get_misc (info);
         str = gst_structure_to_string (s);
 
-        g_print ("[vokoscreenNG] Missing plugins: %s\n", str);
+        qDebug().noquote().nospace() << global::nameOutput << "[Discover] Missing plugins: " << str;
         g_free (str);
         break;
     }
@@ -503,7 +499,7 @@ void QvkConvert_mkv_to_webm_wl::on_discovered_cb( GstDiscoverer *discoverer, Gst
     }
 
     if (result != GST_DISCOVERER_OK) {
-        g_printerr ("[vokoscreenNG] This URI cannot be played\n");
+        qDebug().noquote().nospace() << global::nameOutput << "[Discover] This URI cannot be played";
         return;
     }
 
@@ -524,7 +520,7 @@ void QvkConvert_mkv_to_webm_wl::on_discovered_cb( GstDiscoverer *discoverer, Gst
     }else{
         seekable = "no";
     }
-    qDebug().noquote().nospace() << global::nameOutput << "[Discover] Seekable:" << seekable;
+    qDebug().noquote().nospace() << global::nameOutput << "[Discover] Seekable: " << seekable;
     qDebug().noquote();
 
     sinfo = gst_discoverer_info_get_stream_info(info);
