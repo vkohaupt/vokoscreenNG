@@ -37,13 +37,15 @@
 
 QString convert_video_codec_mp4;
 QString convert_audio_codec_mp4;
+QLineEdit *lineEditConvertMP4;
+int counterConvertMP4 = 0;
 
 QvkConvert_mkv_mp4_wl::QvkConvert_mkv_mp4_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMainWindow_wl *vk_ui )
 {
     Q_UNUSED(vkMainWindow)
     ui = vk_ui;
-    global::lineEditConvertMP4 = new QLineEdit;
-    connect(global::lineEditConvertMP4, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_MP4();});
+    lineEditConvertMP4 = new QLineEdit;
+    connect(lineEditConvertMP4, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_MP4();});
     connect(ui->toolButton_convert_dialog_mkv_to_mp4, &QToolButton::clicked, this, [=](){slot_convert_openfiledialog_mkv_to_mp4();});
     connect(ui->pushButton_convert_mkv_to_mp4, &QPushButton::clicked, this, [=](){slot_convert_mkv_to_mp4();});
 
@@ -140,7 +142,7 @@ void QvkConvert_mkv_mp4_wl::slot_convert_openfiledialog_mkv_to_mp4()
     //    QApplication::setDesktopSettingsAware( true );
 }
 
-int counterConvertMP4 = 0;
+
 GstBusSyncReply QvkConvert_mkv_mp4_wl::call_bus_message_convert_mp4( GstBus *bus, GstMessage *message, gpointer user_data )
 {
     Q_UNUSED(bus);
@@ -153,7 +155,7 @@ GstBusSyncReply QvkConvert_mkv_mp4_wl::call_bus_message_convert_mp4( GstBus *bus
     case GST_MESSAGE_EOS: {
         qDebug().noquote() << global::nameOutput << "[Convert] GST_MESSAGE_EOS";
         counterConvertMP4++;
-        global::lineEditConvertMP4->setText( QString::number( counterConvertMP4 ) );
+        lineEditConvertMP4->setText( QString::number( counterConvertMP4 ) );
         break;
     }
     case GST_MESSAGE_DURATION_CHANGED:
@@ -207,6 +209,9 @@ void QvkConvert_mkv_mp4_wl::slot_convert_mkv_to_mp4()
 
     qDebug().noquote() << global::nameOutput << "[Convert] Detected video codec:" << video_codec;
     qDebug().noquote() << global::nameOutput << "[Convert] Detected audio codec:" << audio_codec;
+
+    convert_video_codec_mp4 = "";
+    convert_audio_codec_mp4 = "";
 
     if ( video_codec == "H264" ) {
         if ( ( audio_codec == "" ) or ( audio_codec == "MPEG" ) or ( audio_codec == "Opus" ) ) {
@@ -315,20 +320,9 @@ void QvkConvert_mkv_mp4_wl::msgbox_mkv_to_mp4() {
 }
 
 //----------------------------------------- Begin discover ----------------------------------------------------------------------------
-// https://github.com/GStreamer/gst-docs/blob/master/examples/tutorials/basic-tutorial-9.c
-#include <string.h>
-#include <gst/gst.h>
-#include <gst/pbutils/pbutils.h>
-
-// Structure to contain all our information, so we can pass it around
-typedef struct _CustomData
-{
-    GstDiscoverer *discoverer;
-    GMainLoop *loop;
-} CustomData;
 
 // Print a tag in a human-readable format (name: value)
-static void print_tag_foreach( const GstTagList *tags, const gchar *tag, gpointer user_data )
+void QvkConvert_mkv_mp4_wl::print_tag_foreach( const GstTagList *tags, const gchar *tag, gpointer user_data )
 {
     GValue val = { 0, 0 };
     gchar *str;
@@ -360,7 +354,7 @@ static void print_tag_foreach( const GstTagList *tags, const gchar *tag, gpointe
 }
 
 // Print information regarding a stream
-static void print_stream_info (GstDiscovererStreamInfo * info, gint depth)
+void QvkConvert_mkv_mp4_wl::print_stream_info (GstDiscovererStreamInfo * info, gint depth)
 {
     gchar *desc = NULL;
     GstCaps *caps;
@@ -394,7 +388,7 @@ static void print_stream_info (GstDiscovererStreamInfo * info, gint depth)
 }
 
 // Print information regarding a stream and its substreams, if any
-static void print_topology (GstDiscovererStreamInfo * info, gint depth)
+void QvkConvert_mkv_mp4_wl::print_topology (GstDiscovererStreamInfo * info, gint depth)
 {
     GstDiscovererStreamInfo *next;
 
@@ -423,7 +417,7 @@ static void print_topology (GstDiscovererStreamInfo * info, gint depth)
 
 // This function is called every time the discoverer has information regarding
 // one of the URIs we provided.
-static void on_discovered_cb (GstDiscoverer *discoverer, GstDiscovererInfo *info, GError *err, CustomData *data)
+void QvkConvert_mkv_mp4_wl::on_discovered_cb (GstDiscoverer *discoverer, GstDiscovererInfo *info, GError *err, CustomDataMP4 *data)
 {
     Q_UNUSED(discoverer)
     Q_UNUSED(data)
@@ -496,7 +490,7 @@ static void on_discovered_cb (GstDiscoverer *discoverer, GstDiscovererInfo *info
 }
 
 // This function is called when the discoverer has finished examining all the URIs we provided.
-static void on_finished_cb (GstDiscoverer * discoverer, CustomData * data)
+void QvkConvert_mkv_mp4_wl::on_finished_cb (GstDiscoverer * discoverer, CustomDataMP4 *data)
 {
     Q_UNUSED(discoverer)
     g_print( "[vokoscreenNG] Finished discovering\n\n" );
@@ -512,7 +506,7 @@ void QvkConvert_mkv_mp4_wl::slot_dicover_set_filePath()
 
 void QvkConvert_mkv_mp4_wl::slot_dicover_start( QString filePath )
 {
-    CustomData data;
+    CustomDataMP4 data;
     GError *err = NULL;
 
     QString file = filePath;

@@ -237,6 +237,9 @@ void QvkConvert_mkv_to_webm_wl::slot_convert_mkv_to_webm()
     qDebug().noquote() << global::nameOutput << "[Convert] Detected video codec:" << video_codec;
     qDebug().noquote() << global::nameOutput << "[Convert] Detected audio codec:" << audio_codec;
 
+    convert_video_codec_webm = "";
+    convert_audio_codec_webm = "";
+
     if ( video_codec == "H264" ) {
         if ( ( audio_codec == "" ) or ( audio_codec == "MPEG" ) or ( audio_codec == "Opus" ) ) {
             ui->toolButton_convert_dialog_mkv_to_webm->setDisabled( true );
