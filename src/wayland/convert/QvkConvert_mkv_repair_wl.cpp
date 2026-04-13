@@ -24,10 +24,19 @@
 #include "QvkConvert_mkv_repair_wl.h"
 #include "QvkFileDialog.h"
 
+#include <QLineEdit>
+#include <QToolButton>
+#include <QPushButton>
+#include <QPalette>
+#include <QColor>
+#include <QTimer>
+#include <QStringList>
+#include <QFileInfo>
+#include <QByteArray>
+#include <QMessageBox>
 #include <QDebug>
 #include <QStandardPaths>
-#include <QMessageBox>
-#include <QTimer>
+#include <QDialog>
 
 QString convert_video_repair;
 QString convert_audio_repair;
@@ -108,8 +117,6 @@ void QvkConvert_mkv_repair_wl::slot_lineEdit_Convert_eos_repair()
 
 void QvkConvert_mkv_repair_wl::slot_convert_openfiledialog_mkv_repair()
 {
-    //    QApplication::setDesktopSettingsAware( false );
-
     QString pathFile;
     QvkFileDialog vkFileDialog( this );
     QStringList list( { "video/x-matroska" } );
@@ -130,8 +137,6 @@ void QvkConvert_mkv_repair_wl::slot_convert_openfiledialog_mkv_repair()
             ui->label_convert_mkv_repair->setPalette( paletteConvertLabel );
         }
     }
-
-    //    QApplication::setDesktopSettingsAware( true );
 }
 
 int counterConvertRepair = 0;
