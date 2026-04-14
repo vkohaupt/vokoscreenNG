@@ -31,6 +31,5 @@ namespace global
     extern int showclickCounter;
     extern QLineEdit *lineEditWASAPIWatcher;
     extern QList<QLineEdit*> *listChildren;
-//    extern QLineEdit *lineEditConvertGIF;
     extern QLineEdit *lineEditConvertRepair;
 }
