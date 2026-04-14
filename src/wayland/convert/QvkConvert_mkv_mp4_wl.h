@@ -59,8 +59,8 @@ public:
 private:
     static GstBusSyncReply call_bus_message_convert_mp4(GstBus *bus, GstMessage *message, gpointer user_data);
     static void print_tag_foreach(const GstTagList *tags, const gchar *tag, gpointer user_data);
-    static void print_stream_info(GstDiscovererStreamInfo * info, gint depth);
-    static void print_topology(GstDiscovererStreamInfo * info, gint depth);
+    static void print_stream_info(GstDiscovererStreamInfo *info, gint depth);
+    static void print_topology(GstDiscovererStreamInfo *info, gint depth);
     static void on_discovered_cb(GstDiscoverer *discoverer, GstDiscovererInfo *info, GError *err, CustomDataMP4 *data);
     static void on_finished_cb(GstDiscoverer *discoverer, CustomDataMP4 *data);
 
@@ -77,10 +77,7 @@ private slots:
     void slot_convert_openfiledialog_mkv_to_mp4();
     void slot_convert_mkv_to_mp4();
     void slot_lineEdit_Convert_eos_MP4();
-
-    void slot_dicover_set_filePath();
-    void slot_dicover_start( QString filePath );
-
+    void slot_dicover_start();
     void slot_timer();
 
 

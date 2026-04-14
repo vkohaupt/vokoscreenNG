@@ -65,7 +65,7 @@ QvkConvert_mkv_mp4_wl::QvkConvert_mkv_mp4_wl( QvkMainWindow_wl *vkMainWindow, Ui
     paletteConvertWidget = ui->pushButton_convert_mkv_to_mp4->palette();
     paletteConvertLabel = ui->label_convert_mkv_to_mp4->palette();
 
-    connect(ui->toolButton_convert_dialog_mkv_to_mp4, &QToolButton::clicked, this, [=](){slot_dicover_set_filePath();});
+    connect(ui->toolButton_convert_dialog_mkv_to_mp4, &QToolButton::clicked, this, [=](){slot_dicover_start();});
 
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
@@ -490,7 +490,7 @@ void QvkConvert_mkv_mp4_wl::on_discovered_cb (GstDiscoverer *discoverer, GstDisc
 }
 
 // This function is called when the discoverer has finished examining all the URIs we provided.
-void QvkConvert_mkv_mp4_wl::on_finished_cb (GstDiscoverer * discoverer, CustomDataMP4 *data)
+void QvkConvert_mkv_mp4_wl::on_finished_cb(GstDiscoverer *discoverer, CustomDataMP4 *data)
 {
     Q_UNUSED(discoverer)
     g_print( "[vokoscreenNG] Finished discovering\n\n" );
@@ -498,18 +498,12 @@ void QvkConvert_mkv_mp4_wl::on_finished_cb (GstDiscoverer * discoverer, CustomDa
 }
 
 
-void QvkConvert_mkv_mp4_wl::slot_dicover_set_filePath()
-{
-    slot_dicover_start( "file://" + ui->lineEdit_convert_mkv_to_mp4->text() );
-}
-
-
-void QvkConvert_mkv_mp4_wl::slot_dicover_start( QString filePath )
+void QvkConvert_mkv_mp4_wl::slot_dicover_start()
 {
     CustomDataMP4 data;
     GError *err = NULL;
 
-    QString file = filePath;
+    QString file = "file://" + ui->lineEdit_convert_mkv_to_mp4->text();
     QByteArray byteArray = file.toUtf8();
     gchar *uri = byteArray.data();
 
