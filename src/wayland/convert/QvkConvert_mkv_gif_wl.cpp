@@ -36,13 +36,15 @@
 #include <QMessageBox>
 
 QString convert_video_codec_gif;
+int counterConvertGIF = 0;
+QLineEdit *lineEditConvertGIF;
 
 QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMainWindow_wl *vk_ui )
 {
     Q_UNUSED(vkMainWindow)
     ui = vk_ui;
-    global::lineEditConvertGIF = new QLineEdit;
-    connect(global::lineEditConvertGIF, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_gif();});
+    lineEditConvertGIF = new QLineEdit;
+    connect(lineEditConvertGIF, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_gif();});
     connect(ui->toolButton_convert_dialog_mkv_to_gif, &QToolButton::clicked, this, [=](){slot_convert_openfiledialog_mkv_to_gif();});
     connect(ui->pushButton_convert_mkv_to_gif, &QPushButton::clicked, this, [=](){slot_convert_mkv_to_gif();});
 
@@ -113,8 +115,6 @@ void QvkConvert_mkv_gif_wl::slot_lineEdit_Convert_eos_gif()
 
 void QvkConvert_mkv_gif_wl::slot_convert_openfiledialog_mkv_to_gif()
 {
-    //    QApplication::setDesktopSettingsAware( false );
-
     QString pathFile;
     QvkFileDialog vkFileDialog( this );
     QStringList list( { "video/x-matroska" } );
@@ -135,11 +135,9 @@ void QvkConvert_mkv_gif_wl::slot_convert_openfiledialog_mkv_to_gif()
             ui->label_convert_mkv_to_gif->setPalette( paletteConvertLabel );
         }
     }
-
-    //    QApplication::setDesktopSettingsAware( true );
 }
 
-int counterConvertGIF = 0;
+
 GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif( GstBus *bus, GstMessage *message, gpointer user_data )
 {
     Q_UNUSED(bus);
@@ -152,7 +150,7 @@ GstBusSyncReply QvkConvert_mkv_gif_wl::call_bus_message_convert_gif( GstBus *bus
     case GST_MESSAGE_EOS: {
         qDebug().noquote() << global::nameOutput << "[Convert] GST_MESSAGE_EOS";
         counterConvertGIF++;
-        global::lineEditConvertGIF->setText( QString::number( counterConvertGIF ) );
+        lineEditConvertGIF->setText( QString::number( counterConvertGIF ) );
         break;
     }
     case GST_MESSAGE_DURATION_CHANGED:
