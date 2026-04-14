@@ -65,7 +65,7 @@ QvkConvert_mkv_mp4_wl::QvkConvert_mkv_mp4_wl( QvkMainWindow_wl *vkMainWindow, Ui
     paletteConvertWidget = ui->pushButton_convert_mkv_to_mp4->palette();
     paletteConvertLabel = ui->label_convert_mkv_to_mp4->palette();
 
-    connect(ui->toolButton_convert_dialog_mkv_to_mp4, &QToolButton::clicked, this, [=](){slot_dicover_start();});
+    connect(ui->toolButton_convert_dialog_mkv_to_mp4, &QToolButton::clicked, this, [=](){slot_discover_start();});
 
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
@@ -498,7 +498,7 @@ void QvkConvert_mkv_mp4_wl::on_finished_cb(GstDiscoverer *discoverer, CustomData
 }
 
 
-void QvkConvert_mkv_mp4_wl::slot_dicover_start()
+void QvkConvert_mkv_mp4_wl::slot_discover_start()
 {
     CustomDataMP4 data;
     GError *err = NULL;

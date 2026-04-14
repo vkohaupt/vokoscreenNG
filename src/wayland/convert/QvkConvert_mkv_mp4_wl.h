@@ -77,7 +77,7 @@ private slots:
     void slot_convert_openfiledialog_mkv_to_mp4();
     void slot_convert_mkv_to_mp4();
     void slot_lineEdit_Convert_eos_MP4();
-    void slot_dicover_start();
+    void slot_discover_start();
     void slot_timer();
 
 
