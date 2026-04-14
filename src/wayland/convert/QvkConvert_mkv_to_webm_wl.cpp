@@ -463,7 +463,7 @@ void QvkConvert_mkv_to_webm_wl::print_topology( GstDiscovererStreamInfo *info, g
 
 // This function is called every time the discoverer has information regarding
 // one of the URIs we provided.
-void QvkConvert_mkv_to_webm_wl::on_discovered_cb( GstDiscoverer *discoverer, GstDiscovererInfo *info, GError *err, CustomData *data )
+void QvkConvert_mkv_to_webm_wl::on_discovered_cb( GstDiscoverer *discoverer, GstDiscovererInfo *info, GError *err, CustomDataWEBM *data )
 {
     Q_UNUSED(discoverer)
     Q_UNUSED(data)
@@ -541,7 +541,7 @@ void QvkConvert_mkv_to_webm_wl::on_discovered_cb( GstDiscoverer *discoverer, Gst
 }
 
 // This function is called when the discoverer has finished examining all the URIs we provided.
-void QvkConvert_mkv_to_webm_wl::on_finished_cb(GstDiscoverer * discoverer, CustomData * data)
+void QvkConvert_mkv_to_webm_wl::on_finished_cb(GstDiscoverer * discoverer, CustomDataWEBM *data)
 {
     Q_UNUSED(discoverer)
     qDebug().noquote().nospace() << global::nameOutput << "[Discover] finished";
@@ -551,7 +551,7 @@ void QvkConvert_mkv_to_webm_wl::on_finished_cb(GstDiscoverer * discoverer, Custo
 
 void QvkConvert_mkv_to_webm_wl::slot_discover_start()
 {
-    CustomData data;
+    CustomDataWEBM data;
     GError *err = NULL;
 
     QString file = "file://" + ui->lineEdit_convert_mkv_to_webm->text();
