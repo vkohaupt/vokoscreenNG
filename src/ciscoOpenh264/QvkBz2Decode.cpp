@@ -53,7 +53,6 @@ gboolean QvkBz2Decode::func( GstBus *bus, GstMessage *msg, gpointer data )
         gst_message_parse_error( msg, &error, &debug );
         g_free( debug );
 
-        g_printerr( "Error: %s\n", error->message );
         qDebug().noquote() << global::nameOutput << "[QvkBz2Decode::func]" << error->message;
         g_error_free( error );
 
