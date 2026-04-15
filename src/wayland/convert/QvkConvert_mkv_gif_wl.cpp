@@ -64,7 +64,7 @@ QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl( QvkMainWindow_wl *vkMainWindow, Ui
     paletteConvertWidget = ui->pushButton_convert_mkv_to_gif->palette();
     paletteConvertLabel = ui->label_convert_mkv_to_gif->palette();
 
-    connect(ui->toolButton_convert_dialog_mkv_to_gif, &QToolButton::clicked, [=](){slot_dicover_start();});
+    connect(ui->toolButton_convert_dialog_mkv_to_gif, &QToolButton::clicked, [=](){slot_discover_start();});
 
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
@@ -445,7 +445,7 @@ void QvkConvert_mkv_gif_wl::on_finished_cb(GstDiscoverer *discoverer, CustomData
 }
 
 
-void QvkConvert_mkv_gif_wl::slot_dicover_start()
+void QvkConvert_mkv_gif_wl::slot_discover_start()
 {
     CustomDataGIF data;
     GError *err = NULL;

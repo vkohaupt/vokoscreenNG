@@ -31,6 +31,7 @@
 #include <QTimer>
 
 //----------------------------------------- Begin discover ----------------------------------------------------------------------------
+
 // https://github.com/GStreamer/gst-docs/blob/master/examples/tutorials/basic-tutorial-9.c
 #include <string.h>
 #include <gst/gst.h>
@@ -75,7 +76,7 @@ private slots:
     void slot_convert_openfiledialog_mkv_to_gif();
     void slot_convert_mkv_to_gif();
     void slot_lineEdit_Convert_eos_gif();
-    void slot_dicover_start();
+    void slot_discover_start();
     void slot_timer();
 
 

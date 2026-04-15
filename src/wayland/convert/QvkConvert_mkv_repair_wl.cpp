@@ -40,13 +40,16 @@
 
 QString convert_video_repair;
 QString convert_audio_repair;
+int counterConvertRepair = 0;
+QLineEdit *lineEditConvertRepair;
+
 
 QvkConvert_mkv_repair_wl::QvkConvert_mkv_repair_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMainWindow_wl *vk_ui )
 {
     Q_UNUSED(vkMainWindow)
     ui = vk_ui;
-    global::lineEditConvertRepair = new QLineEdit;
-    connect(global::lineEditConvertRepair, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_repair();});
+    lineEditConvertRepair = new QLineEdit;
+    connect(lineEditConvertRepair, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_repair();});
     connect(ui->toolButton_convert_dialog_mkv_repair, &QToolButton::clicked, this, [=](){slot_convert_openfiledialog_mkv_repair();});
     connect(ui->pushButton_convert_mkv_repair, &QPushButton::clicked, this, [=](){slot_convert_mkv_repair();});
 
@@ -66,7 +69,7 @@ QvkConvert_mkv_repair_wl::QvkConvert_mkv_repair_wl( QvkMainWindow_wl *vkMainWind
     paletteConvertWidget = ui->pushButton_convert_mkv_repair->palette();
     paletteConvertLabel = ui->label_convert_mkv_repair->palette();
 
-    connect(ui->toolButton_convert_dialog_mkv_repair, &QToolButton::clicked, this, [=](){slot_dicover_set_filePath();});
+    connect(ui->toolButton_convert_dialog_mkv_repair, &QToolButton::clicked, this, [=](){slot_discover_start();});
 
     timer = new QTimer;
     timer->setTimerType( Qt::PreciseTimer );
@@ -139,7 +142,7 @@ void QvkConvert_mkv_repair_wl::slot_convert_openfiledialog_mkv_repair()
     }
 }
 
-int counterConvertRepair = 0;
+
 GstBusSyncReply QvkConvert_mkv_repair_wl::call_bus_message_convert_repair( GstBus *bus, GstMessage *message, gpointer user_data )
 {
     Q_UNUSED(bus);
@@ -152,7 +155,7 @@ GstBusSyncReply QvkConvert_mkv_repair_wl::call_bus_message_convert_repair( GstBu
     case GST_MESSAGE_EOS: {
         qDebug().noquote() << global::nameOutput << "[Convert][Repair] GST_MESSAGE_EOS";
         counterConvertRepair++;
-        global::lineEditConvertRepair->setText( QString::number( counterConvertRepair ) );
+        lineEditConvertRepair->setText( QString::number( counterConvertRepair ) );
         break;
     }
     case GST_MESSAGE_DURATION_CHANGED:
@@ -288,20 +291,9 @@ void QvkConvert_mkv_repair_wl::msgbox_mkv_repair() {
 }
 
 //----------------------------------------- Begin discover ----------------------------------------------------------------------------
-// https://github.com/GStreamer/gst-docs/blob/master/examples/tutorials/basic-tutorial-9.c
-#include <string.h>
-#include <gst/gst.h>
-#include <gst/pbutils/pbutils.h>
-
-// Structure to contain all our information, so we can pass it around
-typedef struct _CustomData
-{
-    GstDiscoverer *discoverer;
-    GMainLoop *loop;
-} CustomData;
 
 // Print a tag in a human-readable format (name: value)
-static void print_tag_foreach( const GstTagList *tags, const gchar *tag, gpointer user_data )
+void QvkConvert_mkv_repair_wl::print_tag_foreach(const GstTagList *tags, const gchar *tag, gpointer user_data)
 {
     GValue val = { 0, 0 };
     gchar *str;
@@ -333,7 +325,7 @@ static void print_tag_foreach( const GstTagList *tags, const gchar *tag, gpointe
 }
 
 // Print information regarding a stream
-static void print_stream_info (GstDiscovererStreamInfo * info, gint depth)
+void QvkConvert_mkv_repair_wl::print_stream_info(GstDiscovererStreamInfo *info, gint depth)
 {
     gchar *desc = NULL;
     GstCaps *caps;
@@ -367,7 +359,7 @@ static void print_stream_info (GstDiscovererStreamInfo * info, gint depth)
 }
 
 // Print information regarding a stream and its substreams, if any
-static void print_topology (GstDiscovererStreamInfo * info, gint depth)
+void QvkConvert_mkv_repair_wl::print_topology(GstDiscovererStreamInfo *info, gint depth)
 {
     GstDiscovererStreamInfo *next;
 
@@ -396,7 +388,7 @@ static void print_topology (GstDiscovererStreamInfo * info, gint depth)
 
 // This function is called every time the discoverer has information regarding
 // one of the URIs we provided.
-static void on_discovered_cb (GstDiscoverer *discoverer, GstDiscovererInfo *info, GError *err, CustomData *data)
+void QvkConvert_mkv_repair_wl::on_discovered_cb(GstDiscoverer *discoverer, GstDiscovererInfo *info, GError *err, CustomDataREPAIR *data)
 {
     Q_UNUSED(discoverer)
     Q_UNUSED(data)
@@ -469,7 +461,7 @@ static void on_discovered_cb (GstDiscoverer *discoverer, GstDiscovererInfo *info
 }
 
 // This function is called when the discoverer has finished examining all the URIs we provided.
-static void on_finished_cb (GstDiscoverer * discoverer, CustomData * data)
+void QvkConvert_mkv_repair_wl::on_finished_cb(GstDiscoverer *discoverer, CustomDataREPAIR *data)
 {
     Q_UNUSED(discoverer)
     g_print( "[vokoscreenNG][Repair] Finished discovering\n\n" );
@@ -477,18 +469,12 @@ static void on_finished_cb (GstDiscoverer * discoverer, CustomData * data)
 }
 
 
-void QvkConvert_mkv_repair_wl::slot_dicover_set_filePath()
+void QvkConvert_mkv_repair_wl::slot_discover_start()
 {
-    slot_dicover_start( "file://" + ui->lineEdit_convert_mkv_repair->text() );
-}
-
-
-void QvkConvert_mkv_repair_wl::slot_dicover_start( QString filePath )
-{
-    CustomData data;
+    CustomDataREPAIR data;
     GError *err = NULL;
 
-    QString file = filePath;
+    QString file = "file://" + ui->lineEdit_convert_mkv_repair->text();
     QByteArray byteArray = file.toUtf8();
     gchar *uri = byteArray.data();
 
