@@ -176,14 +176,6 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             continue;
         }
 
-        // We set WASAPI as default
-        if ( ( radioButton->objectName() == "radioButtonWASAPI" ) and
-             ( settings.value( radioButton->objectName(), false ).toBool() == false ) )
-        {
-            radioButton->click();
-            continue;
-        }
-
         if ( ( radioButton->objectName() == "radioButton_cisco_on" ) and
              ( settings.value( radioButton->objectName(), true ).toBool() == true ) )
         {

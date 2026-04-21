@@ -95,20 +95,6 @@ void QvkRegionMargins_wl::paintEvent( QPaintEvent *event )
     painterPixmap.fillRect( 0, 0, lineWidth, height(), brush );
     painterPixmap.end();
 
-/*
-    QBrush brush;
-    brush.setColor( color );
-    brush.setStyle(Qt::SolidPattern);
-    painterPixmap.fillRect( 0, 0, width(), height(), brush );
-
-    QPen pen;
-    pen.setColor( color );
-    painterPixmap.setPen( pen );
-    painterPixmap.drawLine( 0, 0, width()-1, 0 );
-    painterPixmap.drawLine( width()-1, 0, width()-1, height()-1 );
-    painterPixmap.drawLine( width()-1, height()-1, 0, height()-1 );
-    painterPixmap.drawLine( 0, height()-1, 0, 0 );
-*/
     pixmap = pixmap.fromImage( image );
 
     QPainter painter;
