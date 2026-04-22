@@ -481,6 +481,9 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
 #ifdef Q_OS_WIN
     vkWASAPIController = new QvkWASAPIController( ui );
     connect( vkWASAPIController, SIGNAL( signal_haveAudioDeviceSelected(bool) ), this, SLOT( slot_haveAudioDeviceSelected(bool) ) );
+    connect( vkWASAPIController, &QvkWASAPIController::signal_newAudioDevice, this, [=](QCheckBox *checkBox){
+        vkSettings.readWASAPIAudioDevice(checkBox);
+    });
 #endif
 
 #ifdef Q_OS_UNIX

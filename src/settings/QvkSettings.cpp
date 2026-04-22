@@ -238,12 +238,21 @@ void QvkSettings::readAll( Ui_formMainWindow *ui_mainwindow, QMainWindow *parent
             continue;
         }
 
+#ifdef Q_OS_WIN
+        // WASAPI Geräte werden behandelt in der Funktion readWASAPIAudioDevice(QCheckBox *checkBox)
+        // Hier wird die Schleife unterbrochen damit zum Schluß nicht doch noch was gesetzt wird
+        if ( checkBox->objectName().contains( "checkboxAudioDevice-" ) ){
+            continue;
+        }
+#endif
+#ifdef Q_OS_UNIX
         if ( ( checkBox->objectName().contains( "checkboxAudioDevice-" ) ) and
              ( settings.value( checkBox->objectName(), false ).toBool() == true ) )
         {
             checkBox->click();
             continue;
         }
+#endif
 
         if ( ( checkBox->objectName().contains( "checkBoxSnapshotShowBallonInSystray" ) ) and
              ( settings.value( checkBox->objectName(), true ).toBool() == true ) )
@@ -760,4 +769,14 @@ void QvkSettings::readShowclickColor( QvkShowClick *vkShowClick )
     QColor color = settings.value( "Color", vkShowClick->colorDefault ).value<QColor>();
     vkShowClick->vkPreviewWidget->setColor( color );
     settings.endGroup();
+}
+
+
+void QvkSettings::readWASAPIAudioDevice(QCheckBox *checkBox)
+{
+    // checkBox->objectName() ist "checkboxAudioDevice-XX"
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, global::name, global::name, Q_NULLPTR );
+    if ( settings.value( checkBox->objectName(), false ).toBool() == true ) {
+        checkBox->click();
+    }
 }

@@ -65,6 +65,8 @@ public:
     void saveShowclickColor( QColor color );
     void readShowclickColor( QvkShowClick *vkShowClick );
 
+    void readWASAPIAudioDevice(QCheckBox *checkBox);
+
     QString getFileName();
     QString getVideoPath();
     QString getPicturePath();

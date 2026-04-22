@@ -29,6 +29,7 @@
 #include "QvkSpezialProgressBarAudio.h"
 
 #include <QObject>
+#include <QCheckBox>
 
 class QvkWASAPIController: public QObject
 {
@@ -58,6 +59,7 @@ protected:
 
 signals:
     void signal_haveAudioDeviceSelected( bool );
+    void signal_newAudioDevice(QCheckBox *checkBox);
 
 };
 

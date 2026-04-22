@@ -153,6 +153,8 @@ void QvkWASAPIController::slot_pluggedInOutDevice( QString string )
         vkLevelMeterController->add_ProgressBar( checkBox, layout );
         ui->verticalLayoutAudioDevices->addWidget( frame  );
         qDebug().noquote() << global::nameOutput << "[Audio-device-added]" << name << device;
+
+        emit signal_newAudioDevice(checkBox);
     }
 
     if ( action == "[Audio-device-removed]" ) {
