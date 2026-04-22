@@ -24,7 +24,6 @@
 #define QVKWASAPICONTROLLER_H
 
 #include "ui_formMainWindow.h"
-#include "QvkWASAPIGstreamer.h"
 #include "QvkWASAPIWatcher.h"
 #include "QvkSpezialProgressBarAudio.h"
 
