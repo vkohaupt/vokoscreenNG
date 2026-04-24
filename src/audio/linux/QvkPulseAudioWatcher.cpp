@@ -184,11 +184,11 @@ void QvkPulseAudioWatcher::slot_update()
             }
         }
     }
-
+qDebug() << "11111111111111111111111111111111111111111111111";
     if ( listAllDevices.empty() and ( QvkPulseAudioServer::isAvailable() == false ) ) {
         QList<QLabel *> deleteLabel = ui->verticalLayoutAudioDevices->findChildren<QLabel *>();
         for ( int x = 0; x < deleteLabel.count(); x ++ ) {
-            delete deleteLabel.at(x);
+            //delete deleteLabel.at(x);
         }
 
         QLabel *label = new QLabel();
@@ -204,7 +204,7 @@ void QvkPulseAudioWatcher::slot_update()
 
         slot_audioDeviceSelected();
     }
-
+qDebug() << "22222222222222222222222222222222222222222";
     if ( listAllDevices.empty() and ( QvkPulseAudioServer::isAvailable() == true ) ) {
         QList<QLabel *> deleteLabel = ui->verticalLayoutAudioDevices->findChildren<QLabel *>();
         for ( int x = 0; x < deleteLabel.count(); x ++ ) {

@@ -25,7 +25,7 @@
 
 #include "ui_formMainWindow_wl.h"
 #include "QvkSpezialSlider.h"
-#include "QvkCameraWindow_wl.h"
+#include "QvkCameraSurface_wl.h"
 
 #include <QObject>
 #include <QLabel>

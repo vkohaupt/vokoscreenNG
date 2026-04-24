@@ -24,11 +24,36 @@
 #include "QvkCameraWindow_wl.h"
 
 #include <QDebug>
+#include <QIcon>
+#include <QSize>
+#include <QPaintEvent>
 
 QvkCameraWindow_wl::QvkCameraWindow_wl()
 {
+    setWindowTitle( QString( tr( "Camera") ) );
+
+    QIcon icon;
+    icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );
+    setWindowIcon( icon );
+
+    setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
+    setAttribute( Qt::WA_TranslucentBackground, true );
+    setMouseTracking( true );
 }
 
 QvkCameraWindow_wl::~QvkCameraWindow_wl()
 {
+}
+
+
+void QvkCameraWindow_wl::slot_init()
+{
+    showMaximized();
+    hide();
+}
+
+
+void QvkCameraWindow_wl::paintEvent( QPaintEvent *event )
+{
+    (void)event;
 }

@@ -24,8 +24,6 @@
 #include "QvkCameraSingle_wl.h"
 #include "global.h"
 
-#include "QvkCameraSurface_wl.h"
-
 #include <QDebug>
 #include <QLayoutItem>
 #include <QVBoxLayout>
@@ -35,7 +33,6 @@
 #include <QCameraDevice>
 #include <QList>
 #include <QLineEdit>
-#include <QPushButton>
 
 #include "glib.h"
 #include <gst/gst.h>
@@ -49,11 +46,6 @@ QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface
 {
     ui = ui_surface;
     startCameraMonitoring();
-
-    connect(ui->pushButton, &QPushButton::clicked, this, [=](){
-        vkCameraSurface_wl = new QvkCameraSurface_wl();
-        vkCameraSurface_wl->show();
-    });
 }
 
 

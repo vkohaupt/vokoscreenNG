@@ -26,6 +26,7 @@
 #include <QObject>
 #include <QWidget>
 #include <QGuiApplication>
+#include <QPaintEvent>
 
 class QvkCameraWindow_wl : public QWidget
 {
@@ -42,12 +43,14 @@ private slots:
 
 
 public slots:
+    void slot_init();
 
 
 signals:
 
 
 protected:
+    void paintEvent( QPaintEvent *event );
 
 
 };

@@ -20,45 +20,51 @@
  * --End_License--
  */
 
-#ifndef QVKCAMERACONTROLLER_H
-#define QVKCAMERACONTROLLER_H
+#ifndef QVKCAMERASINGLE_H
+#define QVKCAMERASINGLE_H
 
 #include "ui_formMainWindow_wl.h"
-
 #include "QvkSpezialSlider.h"
-#include "QvkCameraSurface_wl.h"
+#include "QvkCameraWindow_wl.h"
 
 #include <QObject>
 #include <QLabel>
-#include <QButtonGroup>
-#include <QList>
+#include <QRadioButton>
+#include <QToolButton>
+#include <QCheckBox>
+#include <QWidget>
+#include <QComboBox>
 
 #include "glib.h"
 #include <gst/gst.h>
 #include <gst/pbutils/pbutils.h>
 #include "gst/video/videooverlay.h"
 
-class QvkCameraController_wl : public QObject
+class QvkCameraSingle_wl : public QObject
 {
     Q_OBJECT
 
 public:
-    QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface );
-    virtual ~QvkCameraController_wl();
-    QvkCameraSurface_wl *vkCameraSurface_wl;
-    GstVideoOverlay *videoOverlay = nullptr;
+    QvkCameraSingle_wl( Ui_formMainWindow_wl *ui_surface, QString device );
+    virtual ~QvkCameraSingle_wl();
 
 
 public slots:
-    void slot_camera_added_or_removed(QString);
+
+
+private slots:
+    void slot_checkBoxCameraOnOff( bool bo );
 
 
 private:
     Ui_formMainWindow_wl *ui;
-    void startCameraMonitoring();
+    GstElement *pipeline;
+    GstElement *pipewiresrc;
+    GstElement *videoconvert;
+    GstElement *videosink;;
+    QString device_id;
+    QString device_name;
 
-
-private slots:
 
 
 protected:

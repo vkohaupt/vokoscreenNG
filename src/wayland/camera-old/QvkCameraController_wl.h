@@ -26,7 +26,7 @@
 #include "ui_formMainWindow_wl.h"
 
 #include "QvkSpezialSlider.h"
-#include "QvkCameraSurface_wl.h"
+#include "QvkCameraWindow_wl.h"
 
 #include <QObject>
 #include <QLabel>
@@ -45,7 +45,7 @@ class QvkCameraController_wl : public QObject
 public:
     QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface );
     virtual ~QvkCameraController_wl();
-    QvkCameraSurface_wl *vkCameraSurface_wl;
+    QvkCameraWindow_wl *vkCameraWindow_wl;
     GstVideoOverlay *videoOverlay = nullptr;
 
 
