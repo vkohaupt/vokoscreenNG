@@ -20,36 +20,24 @@
  * --End_License--
  */
 
-#ifndef QVKCAMERASURFACE_WL_H
-#define QVKCAMERASURFACE_WL_H
+#ifndef QVKCAMERAWINDOW_WL_H
+#define QVKCAMERAWINDOW_WL_H
 
 #include <QObject>
 #include <QWidget>
 #include <QGuiApplication>
 #include <QPaintEvent>
-#include <QMouseEvent>
-#include <QPixmap>
 
-class QvkCameraSurface_wl : public QWidget
+class QvkCameraWindow_wl : public QWidget
 {
     Q_OBJECT
 public:
-    QvkCameraSurface_wl();
-    virtual ~QvkCameraSurface_wl();
-    void set_CameraImage(QPixmap pixmap);
+    QvkCameraWindow_wl();
+    virtual ~QvkCameraWindow_wl();
+
 
 private:
-    QPixmap pixmap;
-    int a = 0;
-    QPixmap cameraImage;
-    QPixmap get_CameraImage();
-    bool mousePressed = false;
-    int currentMouse_X = 0;
-    int currentMouse_Y = 0;
 
-
-    int inPicture_X;
-    int inPicture_Y;
 
 private slots:
 
@@ -57,18 +45,13 @@ private slots:
 public slots:
 
 
-
 signals:
 
 
 protected:
-    void paintEvent(QPaintEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
-    void mousePressEvent(QMouseEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
-//    void leaveEvent( QEvent *event );
-//    void keyPressEvent( QKeyEvent * event );
+    void paintEvent( QPaintEvent *event );
+
 
 };
 
-#endif // QVKCAMERASURFACE_WL_H
+#endif // QVKCAMERAWINDOW_WL_H
