@@ -44,12 +44,13 @@ private:
     QPixmap cameraImage;
     QPixmap get_CameraImage();
     bool mousePressed = false;
-    int currentMouse_X = 0;
-    int currentMouse_Y = 0;
+    int currentMouse_X = 200;
+    int currentMouse_Y = 200;
 
-
-    int inPicture_X;
-    int inPicture_Y;
+    int pressedInPicture_X;
+    int pressedInPicture_Y;
+    int imagePos_X;
+    int imagePos_Y;
 
 private slots:
 
