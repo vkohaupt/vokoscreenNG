@@ -21,7 +21,6 @@
  */
 
 #include "QvkCameraController_wl.h"
-#include "QvkCameraSingle_wl.h"
 #include "global.h"
 
 #include "QvkCameraSurface_wl.h"
@@ -41,6 +40,8 @@
 #include <gst/gst.h>
 #include <gst/pbutils/pbutils.h>
 #include "gst/video/videooverlay.h"
+
+#include <QCamera>
 
 QLineEdit *lineEditCameraWatch_wl;
 
@@ -135,8 +136,19 @@ void QvkCameraController_wl::startCameraMonitoring()
 
 void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 {
-    if ( device.contains( "added" ) ) {
-        new QvkCameraSingle_wl( ui, device );
+    if(device.contains("added")){
+        QCheckBox *checkBox = new QCheckBox;
+        checkBox->setText(device.section(":::", 1, 1 ));
+        checkBox->setObjectName(device.section(":::", 1, 1 ));
+        ui->layoutAllCameras->addWidget(checkBox);
+
+
+        const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
+        for (const QCameraDevice &cameraDevice : cameras) {
+            qDebug() << "mmmmmmmmmmmmmmmmmm" << cameraDevice.description();
+              QCamera *camera = new QCamera(cameraDevice);
+        }
+
     }
 
     if ( device.contains( "removed" ) ) {
