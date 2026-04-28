@@ -49,6 +49,7 @@ private:
     bool mousePressed = false;
     QRect imageRect;
     QPoint pointDiv;
+    bool mouseHover = false;
 
 private slots:
 

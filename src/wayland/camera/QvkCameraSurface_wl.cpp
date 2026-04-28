@@ -74,20 +74,20 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
     painterPixmap.begin(&image);
     {
         painterPixmap.setRenderHint(QPainter::SmoothPixmapTransform, true);
+        painterPixmap.setRenderHint(QPainter::Antialiasing, true);
         painterPixmap.drawPixmap(imageRect.x(),
                                  imageRect.y(),
                                  cameraImage);
 
-        if (underMouse() == true){
+        if (mouseHover == true){
             QPen pen(Qt::red, 3);
             pen.setJoinStyle(Qt::MiterJoin);
             painterPixmap.setPen(pen);
-            painterPixmap.drawRect(imageRect.x()+100,
-                                   imageRect.y()+100,
-                                   imageRect.width()-200,
-                                   imageRect.height()-200);
+            painterPixmap.drawEllipse(imageRect.x()+100,
+                                      imageRect.y()+100,
+                                      imageRect.width()-200,
+                                      imageRect.height()-200);
         }
-
 
         QPen pen(Qt::red, 3);
         pen.setJoinStyle(Qt::MiterJoin);
@@ -176,12 +176,16 @@ void QvkCameraSurface_wl::mouseReleaseEvent(QMouseEvent *event)
 // Mauzeiger tritt in das Objekt ein
 void QvkCameraSurface_wl::enterEvent(QEnterEvent *event)
 {
-
+    Q_UNUSED(event)
+    mouseHover = true;
+    repaint();
 }
 
 
 // Mauszeiger verläßt das Objekt
 void QvkCameraSurface_wl::leaveEvent(QEvent *event )
 {
-
+    Q_UNUSED(event)
+    mouseHover = false;
+    repaint();
 }
