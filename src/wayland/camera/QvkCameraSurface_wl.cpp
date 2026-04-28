@@ -30,6 +30,8 @@
 #include <QImage>
 #include <QPaintEvent>
 #include <QMouseEvent>
+#include <QEnterEvent>
+#include <QEvent>
 #include <QPainter>
 #include <QPixmap>
 #include <QPen>
@@ -76,6 +78,17 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
                                  imageRect.y(),
                                  cameraImage);
 
+        if (underMouse() == true){
+            QPen pen(Qt::red, 3);
+            pen.setJoinStyle(Qt::MiterJoin);
+            painterPixmap.setPen(pen);
+            painterPixmap.drawRect(imageRect.x()+100,
+                                   imageRect.y()+100,
+                                   imageRect.width()-200,
+                                   imageRect.height()-200);
+        }
+
+
         QPen pen(Qt::red, 3);
         pen.setJoinStyle(Qt::MiterJoin);
         painterPixmap.setPen(pen);
@@ -105,7 +118,7 @@ void QvkCameraSurface_wl::set_CameraImage(QPixmap pixmap)
     cameraImage = pixmap;
 }
 
-
+// Mausbutton wird gedrückt
 void QvkCameraSurface_wl::mousePressEvent(QMouseEvent *event)
 {
     Q_UNUSED(event)
@@ -126,6 +139,7 @@ void QvkCameraSurface_wl::mousePressEvent(QMouseEvent *event)
 }
 
 
+// Mauszeiger bewegt sich im Objekt
 void QvkCameraSurface_wl::mouseMoveEvent(QMouseEvent *event)
 {
     if(mousePressed == true){
@@ -139,6 +153,7 @@ void QvkCameraSurface_wl::mouseMoveEvent(QMouseEvent *event)
 }
 
 
+// Mausbutton wird lossgelassen
 void QvkCameraSurface_wl::mouseReleaseEvent(QMouseEvent *event)
 {
     Q_UNUSED(event)
@@ -155,4 +170,18 @@ void QvkCameraSurface_wl::mouseReleaseEvent(QMouseEvent *event)
     // Oder ein resize, das Fenster flackert nicht bzw. zeigt keine Anzeichen einer Animation,
     // wie bei setVisible(false/true)
     resize(width()+1, height()+1);
+}
+
+
+// Mauzeiger tritt in das Objekt ein
+void QvkCameraSurface_wl::enterEvent(QEnterEvent *event)
+{
+
+}
+
+
+// Mauszeiger verläßt das Objekt
+void QvkCameraSurface_wl::leaveEvent(QEvent *event )
+{
+
 }

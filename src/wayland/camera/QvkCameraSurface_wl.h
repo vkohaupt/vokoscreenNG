@@ -28,6 +28,8 @@
 #include <QGuiApplication>
 #include <QPaintEvent>
 #include <QMouseEvent>
+#include <QEnterEvent>
+#include <QEvent>
 #include <QPixmap>
 #include <QRect>
 #include <QPoint>
@@ -63,8 +65,8 @@ protected:
     void mouseMoveEvent(QMouseEvent *event);
     void mousePressEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
-//    void leaveEvent( QEvent *event );
-//    void keyPressEvent( QKeyEvent * event );
+    void enterEvent(QEnterEvent *event);
+    void leaveEvent(QEvent *event );
 
 };
 
