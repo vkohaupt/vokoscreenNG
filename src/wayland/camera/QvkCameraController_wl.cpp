@@ -42,9 +42,11 @@
 #include "gst/video/videooverlay.h"
 
 #include <QCamera>
+#include <QCameraDevice>
+#include <QMediaDevices>
+#include <QCheckBox>
 
 QLineEdit *lineEditCameraWatch_wl;
-
 
 QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface )
 {
@@ -142,13 +144,11 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         checkBox->setObjectName(device.section(":::", 1, 1 ));
         ui->layoutAllCameras->addWidget(checkBox);
 
-
         const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
         for (const QCameraDevice &cameraDevice : cameras) {
             qDebug() << "mmmmmmmmmmmmmmmmmm" << cameraDevice.description();
               QCamera *camera = new QCamera(cameraDevice);
         }
-
     }
 
     if ( device.contains( "removed" ) ) {
