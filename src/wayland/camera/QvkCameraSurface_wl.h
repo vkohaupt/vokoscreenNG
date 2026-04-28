@@ -29,6 +29,7 @@
 #include <QPaintEvent>
 #include <QMouseEvent>
 #include <QPixmap>
+#include <QRect>
 
 class QvkCameraSurface_wl : public QWidget
 {
@@ -51,6 +52,9 @@ private:
     int pressedInPicture_Y;
     int imagePos_X;
     int imagePos_Y;
+
+    QRect imageRect;
+
 
 private slots:
 

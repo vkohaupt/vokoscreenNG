@@ -51,6 +51,9 @@ QvkCameraSurface_wl::QvkCameraSurface_wl()
 
     QPixmap pixmap(QString::fromUtf8(":/pictures/logo/logo.png"));
     set_CameraImage(pixmap);
+
+    // imageRect beinhaltet den Standort x, y und die Abmaße Breite Höhe des Bildes
+    imageRect.setRect(200, 200, cameraImage.width(), cameraImage.height());
 }
 
 QvkCameraSurface_wl::~QvkCameraSurface_wl()
