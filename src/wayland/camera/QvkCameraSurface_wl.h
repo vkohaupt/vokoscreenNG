@@ -30,6 +30,7 @@
 #include <QMouseEvent>
 #include <QPixmap>
 #include <QRect>
+#include <QPointF>
 
 class QvkCameraSurface_wl : public QWidget
 {
@@ -44,16 +45,8 @@ private:
     int a = 0;
     QPixmap cameraImage;
     bool mousePressed = false;
-    //int currentMouse_X = 200;
-    //int currentMouse_Y = 200;
-
-    int pressedInPicture_X;
-    int pressedInPicture_Y;
-    int imagePos_X;
-    int imagePos_Y;
-
     QRect imageRect;
-
+    QPoint pointDiv;
 
 private slots:
 

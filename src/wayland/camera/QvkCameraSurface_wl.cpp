@@ -116,9 +116,8 @@ void QvkCameraSurface_wl::mousePressEvent(QMouseEvent *event)
 
     mousePressed = true;
 
-    // wird evtl. benötigt
-    pressedInPicture_X = event->position().x();
-    pressedInPicture_Y = event->position().y();
+    QPoint mousePos = event->position().toPoint();
+    pointDiv = mousePos - imageRect.topLeft();
 
     clearMask();
     repaint();
@@ -130,8 +129,11 @@ void QvkCameraSurface_wl::mousePressEvent(QMouseEvent *event)
 void QvkCameraSurface_wl::mouseMoveEvent(QMouseEvent *event)
 {
     if(mousePressed == true){
-        imageRect.setX(event->globalPosition().x());
-        imageRect.setY(event->globalPosition().y());
+        QPoint mousePos = event->position().toPoint();
+        imageRect.setRect(mousePos.x() - pointDiv.x(),
+                          mousePos.y() - pointDiv.y(),
+                          cameraImage.width(),
+                          cameraImage.height());
         repaint();
     }
 }
@@ -141,12 +143,6 @@ void QvkCameraSurface_wl::mouseReleaseEvent(QMouseEvent *event)
 {
     Q_UNUSED(event)
     mousePressed = false;
-
-
-    // wird evtl. benötigt
-    imagePos_X = event->x();
-    imagePos_Y = event->y();
-
 
     repaint();
     setMask(pixmap.mask());
