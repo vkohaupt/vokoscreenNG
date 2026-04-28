@@ -72,9 +72,9 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
     painterPixmap.begin(&image);
     {
         painterPixmap.setRenderHint(QPainter::SmoothPixmapTransform, true);
-        painterPixmap.drawPixmap(currentMouse_X-cameraImage.width()/2,
-                                 currentMouse_Y-cameraImage.height()/2,
-                                 get_CameraImage());
+        painterPixmap.drawPixmap(imageRect.x(),
+                                 imageRect.y(),
+                                 cameraImage);
 
         QPen pen(Qt::red, 3);
         pen.setJoinStyle(Qt::MiterJoin);
@@ -106,12 +106,6 @@ void QvkCameraSurface_wl::set_CameraImage(QPixmap pixmap)
 }
 
 
-QPixmap QvkCameraSurface_wl::get_CameraImage()
-{
-    return cameraImage;
-}
-
-
 void QvkCameraSurface_wl::mousePressEvent(QMouseEvent *event)
 {
     Q_UNUSED(event)
@@ -136,8 +130,8 @@ void QvkCameraSurface_wl::mousePressEvent(QMouseEvent *event)
 void QvkCameraSurface_wl::mouseMoveEvent(QMouseEvent *event)
 {
     if(mousePressed == true){
-        currentMouse_X = event->globalPosition().x();
-        currentMouse_Y = event->globalPosition().y();
+        imageRect.setX(event->globalPosition().x());
+        imageRect.setY(event->globalPosition().y());
         repaint();
     }
 }

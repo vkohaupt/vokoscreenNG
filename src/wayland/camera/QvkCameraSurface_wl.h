@@ -43,10 +43,9 @@ private:
     QPixmap pixmap;
     int a = 0;
     QPixmap cameraImage;
-    QPixmap get_CameraImage();
     bool mousePressed = false;
-    int currentMouse_X = 200;
-    int currentMouse_Y = 200;
+    //int currentMouse_X = 200;
+    //int currentMouse_Y = 200;
 
     int pressedInPicture_X;
     int pressedInPicture_Y;
