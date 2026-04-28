@@ -205,7 +205,6 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
     }
 
     ui->pushButtonStop->click();
-    vkRegionChoise_wl->close();
     vkSettings_wl.saveAll( ui, this );
     vkSettings_wl.saveAreaScreencast( vkRegionChoise_wl->get_XRecordArea() / vkRegionChoise_wl->screen()->devicePixelRatio(),
                                       vkRegionChoise_wl->get_YRecordArea() / vkRegionChoise_wl->screen()->devicePixelRatio(),

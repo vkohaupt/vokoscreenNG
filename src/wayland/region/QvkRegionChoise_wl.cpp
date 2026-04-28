@@ -62,6 +62,7 @@ QvkRegionChoise_wl::QvkRegionChoise_wl( Ui_formMainWindow_wl *ui_formMainWindow 
 
     setWindowFlags( Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint );
     setAttribute( Qt::WA_TranslucentBackground, true );
+    setAttribute(Qt::WA_QuitOnClose, false);
     setMouseTracking( true );
     set_FrameColor( QString( "#3DAEE9" ) );
 }

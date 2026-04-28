@@ -30,7 +30,7 @@
 #include <QMouseEvent>
 #include <QPixmap>
 #include <QRect>
-#include <QPointF>
+#include <QPoint>
 
 class QvkCameraSurface_wl : public QWidget
 {
