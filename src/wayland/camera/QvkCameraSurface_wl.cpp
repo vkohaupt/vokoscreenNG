@@ -109,16 +109,6 @@ QPixmap QvkCameraSurface_wl::get_CameraImage()
 }
 
 
-void QvkCameraSurface_wl::mouseMoveEvent(QMouseEvent *event)
-{
-    if(mousePressed == true){
-        currentMouse_X = event->globalPosition().x();
-        currentMouse_Y = event->globalPosition().y();
-        repaint();
-    }
-}
-
-
 void QvkCameraSurface_wl::mousePressEvent(QMouseEvent *event)
 {
     Q_UNUSED(event)
@@ -137,6 +127,16 @@ void QvkCameraSurface_wl::mousePressEvent(QMouseEvent *event)
     repaint();
     // Siehe Hinweis in mouseReleaseEvent
     resize(width()-1, height()-1);
+}
+
+
+void QvkCameraSurface_wl::mouseMoveEvent(QMouseEvent *event)
+{
+    if(mousePressed == true){
+        currentMouse_X = event->globalPosition().x();
+        currentMouse_Y = event->globalPosition().y();
+        repaint();
+    }
 }
 
 
