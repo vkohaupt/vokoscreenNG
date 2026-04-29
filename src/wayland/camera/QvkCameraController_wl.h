@@ -34,11 +34,6 @@
 #include <QList>
 #include <QVideoFrame>
 
-#include "glib.h"
-#include <gst/gst.h>
-#include <gst/pbutils/pbutils.h>
-#include "gst/video/videooverlay.h"
-
 class QvkCameraController_wl : public QObject
 {
     Q_OBJECT
@@ -47,7 +42,6 @@ public:
     QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface );
     virtual ~QvkCameraController_wl();
     QvkCameraSurface_wl *vkCameraSurface_wl;
-    GstVideoOverlay *videoOverlay = nullptr;
 
 
 public slots:
@@ -56,7 +50,6 @@ public slots:
 
 private:
     Ui_formMainWindow_wl *ui;
-    void startCameraMonitoring();
 
 
 private slots:

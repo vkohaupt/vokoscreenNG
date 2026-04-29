@@ -41,17 +41,16 @@
 #include <QMediaCaptureSession>
 #include <QCheckBox>
 
-#include "glib.h"
-#include <gst/gst.h>
-#include <gst/pbutils/pbutils.h>
-#include "gst/video/videooverlay.h"
-
-QLineEdit *lineEditCameraWatch_wl;
-
 QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface )
 {
     ui = ui_surface;
-    startCameraMonitoring();
+
+    QMediaDevices *mediaDevices = new QMediaDevices;
+    connect( mediaDevices, &QMediaDevices::videoInputsChanged, this, [=](){ qDebug() << "999999999999999999999"; });
+    // Trigger a videoInputsChanged
+    mediaDevices->videoInputsChanged();
+
+    // object_id + ":::" + camera_name + ":::" + "added" or removed
 }
 
 
@@ -60,83 +59,14 @@ QvkCameraController_wl::~QvkCameraController_wl()
 }
 
 
-gboolean my_bus_func( GstBus *bus, GstMessage *message, gpointer user_data )
-{
-    Q_UNUSED(bus)
-    Q_UNUSED(user_data)
-
-    GstDevice *device;
-
-    switch ( GST_MESSAGE_TYPE( message ) ) {
-    case GST_MESSAGE_DEVICE_ADDED:
-    {
-        gst_message_parse_device_added( message, &device );
-
-        GstStructure *structure = gst_device_get_properties( device );
-        if ( structure != NULL ) {
-            QString device_api = QString( gst_structure_get_string( structure, "device.api" ) );
-            if ( device_api == "v4l2") {
-                QString object_id = QString( gst_structure_get_string( structure, "object.serial" ) );
-                QString camera_name = QString( gst_structure_get_string( structure, "api.v4l2.cap.card" ) );
-                qDebug().noquote() << global::nameOutput << "[Camera added:]" << object_id << camera_name;
-                lineEditCameraWatch_wl->setText( object_id + ":::" + camera_name + ":::" + "added");
-            }
-        }
-        gst_object_unref( device );
-        break;
-    }
-    case GST_MESSAGE_DEVICE_REMOVED:
-    {
-        gst_message_parse_device_removed( message, &device );
-
-        GstStructure *structure = gst_device_get_properties( device );
-        if ( structure != NULL ) {
-            QString device_api = QString( gst_structure_get_string( structure, "device.api" ) );
-            if ( device_api == "v4l2") {
-                QString object_id = QString( gst_structure_get_string( structure, "object.serial" ) );
-                QString camera_name = QString( gst_structure_get_string( structure, "api.v4l2.cap.card" ) );
-                qDebug().noquote() << global::nameOutput << "[Camera removed:]" << object_id << camera_name;
-                lineEditCameraWatch_wl->setText( object_id + ":::" + camera_name + ":::" + "removed");
-            }
-        }
-        gst_object_unref( device );
-        break;
-    }
-    default:
-        break;
-    }
-    return G_SOURCE_CONTINUE;
-}
-
-
-void QvkCameraController_wl::startCameraMonitoring()
-{
-    lineEditCameraWatch_wl = new QLineEdit;
-    connect(lineEditCameraWatch_wl, &QLineEdit::textChanged, this, [=](QString text){slot_camera_added_or_removed(text);});
-
-    GstDeviceMonitor *monitor;
-    GstBus *bus;
-    GstCaps *caps;
-
-    monitor = gst_device_monitor_new();
-    bus = gst_device_monitor_get_bus( monitor );
-    gst_bus_add_watch( bus, my_bus_func, NULL );
-    gst_object_unref( bus );
-
-    caps = gst_caps_new_empty_simple( "video/x-raw" );
-    gst_device_monitor_add_filter( monitor, "Video/Source", caps );
-    gst_caps_unref( caps );
-
-    gst_device_monitor_start( monitor );
-}
-
-
 void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 {
     if(device.contains("added")){
         QCheckBox *checkBox = new QCheckBox;
         checkBox->setText(device.section(":::", 1, 1 ));
-        checkBox->setObjectName(device.section(":::", 1, 1 ));
+        checkBox->setObjectName(device.section(":::", 0, 0) + " " + device.section(":::", 1, 1 )); // ID + name
+//        qDebug() << "111111111111111111111111111111111111" << checkBox->objectName();
+        qDebug() << "111111111111111111111111111111111111" << device;
         ui->layoutAllCameras->addWidget(checkBox);
 
         connect(checkBox, &QCheckBox::clicked, this, [=](){
@@ -149,6 +79,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
                 for ( int x = 0; x < cameras.count(); x++ ){
                     QCameraDevice cameraDevice = cameras.at(x);
                     QCamera *camera = new QCamera(cameraDevice);
+                    qDebug() << "22222222222222222222222222222222222" << camera->cameraDevice().id();
 
                     QVideoSink *videoSink = new QVideoSink;
                     connect(videoSink,
