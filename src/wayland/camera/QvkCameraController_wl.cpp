@@ -44,6 +44,9 @@
 #include <QCamera>
 #include <QCameraDevice>
 #include <QMediaDevices>
+#include <QVideoSink>
+#include <QVideoFrame>
+#include <QMediaCaptureSession>
 #include <QCheckBox>
 
 QLineEdit *lineEditCameraWatch_wl;
@@ -56,7 +59,28 @@ QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface
     connect(ui->pushButton, &QPushButton::clicked, this, [=](){
         vkCameraSurface_wl = new QvkCameraSurface_wl();
         vkCameraSurface_wl->show();
+
+
+        const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
+        for (const QCameraDevice &cameraDevice : cameras){
+            QCamera *camera = new QCamera(cameraDevice);
+
+            QVideoSink *videoSink = new QVideoSink;
+            connect(videoSink, &QVideoSink::videoFrameChanged, this, [=](QVideoFrame videoFrame){signal_videoFrame(videoFrame);});
+
+            QMediaCaptureSession *captureSession = new QMediaCaptureSession;
+            captureSession->setCamera( camera );
+            captureSession->setVideoOutput( videoSink );
+
+            camera->start();
+        }
+
+        connect( this, SIGNAL(signal_videoFrame(QVideoFrame)), vkCameraSurface_wl, SLOT(slot_setCameraImage(QVideoFrame)) );
+
     });
+
+
+
 }
 
 
@@ -143,12 +167,6 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         checkBox->setText(device.section(":::", 1, 1 ));
         checkBox->setObjectName(device.section(":::", 1, 1 ));
         ui->layoutAllCameras->addWidget(checkBox);
-
-        const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
-        for (const QCameraDevice &cameraDevice : cameras) {
-            qDebug() << "mmmmmmmmmmmmmmmmmm" << cameraDevice.description();
-              QCamera *camera = new QCamera(cameraDevice);
-        }
     }
 
     if ( device.contains( "removed" ) ) {

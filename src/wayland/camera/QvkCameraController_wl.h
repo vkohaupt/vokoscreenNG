@@ -32,6 +32,7 @@
 #include <QLabel>
 #include <QButtonGroup>
 #include <QList>
+#include <QVideoFrame>
 
 #include "glib.h"
 #include <gst/gst.h>
@@ -65,6 +66,7 @@ protected:
 
 
 signals:
+    void signal_videoFrame(QVideoFrame videoFrame);
 
 
 };

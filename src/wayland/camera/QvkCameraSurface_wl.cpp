@@ -36,6 +36,7 @@
 #include <QPixmap>
 #include <QPen>
 #include <QPoint>
+#include <QVideoFrame>
 
 QvkCameraSurface_wl::QvkCameraSurface_wl()
 {
@@ -50,12 +51,6 @@ QvkCameraSurface_wl::QvkCameraSurface_wl()
     setAttribute(Qt::WA_QuitOnClose, false);
     setMouseTracking(true);
     showMaximized();
-
-    QPixmap pixmap(QString::fromUtf8(":/pictures/logo/logo.png"));
-    set_CameraImage(pixmap);
-
-    // imageRect beinhaltet den Standort x, y und die Abmaße Breite Höhe des Bildes
-    imageRect.setRect(200, 200, cameraImage.width(), cameraImage.height());
 }
 
 QvkCameraSurface_wl::~QvkCameraSurface_wl()
@@ -78,7 +73,7 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
         painterPixmap.drawPixmap(imageRect.x(),
                                  imageRect.y(),
                                  cameraImage);
-
+/*
         if (mouseHover == true){
             QPen pen(Qt::red, 3);
             pen.setJoinStyle(Qt::MiterJoin);
@@ -93,6 +88,7 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
         pen.setJoinStyle(Qt::MiterJoin);
         painterPixmap.setPen(pen);
         painterPixmap.drawRect(0, 0, width(), height());
+*/
     }
     painterPixmap.end();
 
@@ -113,10 +109,14 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
 }
 
 
-void QvkCameraSurface_wl::set_CameraImage(QPixmap pixmap)
+void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
 {
-    cameraImage = pixmap;
+    QImage image = videoFrame.toImage();
+    image = image.convertedTo( QImage::Format_ARGB32 );
+    cameraImage = pixmap.fromImage(image);
+    repaint();
 }
+
 
 // Mausbutton wird gedrückt
 void QvkCameraSurface_wl::mousePressEvent(QMouseEvent *event)

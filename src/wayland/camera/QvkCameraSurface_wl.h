@@ -33,6 +33,7 @@
 #include <QPixmap>
 #include <QRect>
 #include <QPoint>
+#include <QVideoFrame>
 
 class QvkCameraSurface_wl : public QWidget
 {
@@ -40,7 +41,6 @@ class QvkCameraSurface_wl : public QWidget
 public:
     QvkCameraSurface_wl();
     virtual ~QvkCameraSurface_wl();
-    void set_CameraImage(QPixmap pixmap);
 
 private:
     QPixmap pixmap;
@@ -55,7 +55,7 @@ private slots:
 
 
 public slots:
-
+    void slot_setCameraImage(QVideoFrame videoFrame);
 
 
 signals:
