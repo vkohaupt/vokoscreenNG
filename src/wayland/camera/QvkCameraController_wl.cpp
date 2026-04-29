@@ -52,30 +52,6 @@ QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface
 {
     ui = ui_surface;
     startCameraMonitoring();
-
-    connect(ui->pushButton, &QPushButton::clicked, this, [=](){
-        vkCameraSurface_wl = new QvkCameraSurface_wl();
-        vkCameraSurface_wl->show();
-
-        const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
-        for (const QCameraDevice &cameraDevice : cameras){
-            QCamera *camera = new QCamera(cameraDevice);
-
-            QVideoSink *videoSink = new QVideoSink;
-            connect(videoSink,
-                    &QVideoSink::videoFrameChanged,
-                    vkCameraSurface_wl,
-                    [this](QVideoFrame videoFrame){
-                vkCameraSurface_wl->slot_setCameraImage(videoFrame);
-            });
-
-            QMediaCaptureSession *captureSession = new QMediaCaptureSession;
-            captureSession->setCamera( camera );
-            captureSession->setVideoOutput( videoSink );
-
-            camera->start();
-        }
-    });
 }
 
 
@@ -162,6 +138,37 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         checkBox->setText(device.section(":::", 1, 1 ));
         checkBox->setObjectName(device.section(":::", 1, 1 ));
         ui->layoutAllCameras->addWidget(checkBox);
+
+        connect(checkBox, &QCheckBox::clicked, this, [=](){
+
+            if (checkBox->isChecked() == true){
+                vkCameraSurface_wl = new QvkCameraSurface_wl();
+                vkCameraSurface_wl->show();
+
+                const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
+                for ( int x = 0; x < cameras.count(); x++ ){
+                    QCameraDevice cameraDevice = cameras.at(x);
+                    QCamera *camera = new QCamera(cameraDevice);
+
+                    QVideoSink *videoSink = new QVideoSink;
+                    connect(videoSink,
+                            &QVideoSink::videoFrameChanged,
+                            vkCameraSurface_wl,
+                            [this](QVideoFrame videoFrame){
+                        vkCameraSurface_wl->slot_setCameraImage(videoFrame);
+                    });
+
+                    QMediaCaptureSession *captureSession = new QMediaCaptureSession;
+                    captureSession->setCamera( camera );
+                    captureSession->setVideoOutput( videoSink );
+
+                    camera->start();
+                }
+            }
+            if (checkBox->isChecked() == false){
+//                camera->stop();
+            }
+        });
     }
 
     if ( device.contains( "removed" ) ) {
