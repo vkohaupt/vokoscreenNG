@@ -30,17 +30,9 @@
 #include <QVBoxLayout>
 #include <QSpacerItem>
 #include <QFont>
-#include <QMediaDevices>
-#include <QCameraDevice>
 #include <QList>
 #include <QLineEdit>
 #include <QPushButton>
-
-#include "glib.h"
-#include <gst/gst.h>
-#include <gst/pbutils/pbutils.h>
-#include "gst/video/videooverlay.h"
-
 #include <QCamera>
 #include <QCameraDevice>
 #include <QMediaDevices>
@@ -48,6 +40,11 @@
 #include <QVideoFrame>
 #include <QMediaCaptureSession>
 #include <QCheckBox>
+
+#include "glib.h"
+#include <gst/gst.h>
+#include <gst/pbutils/pbutils.h>
+#include "gst/video/videooverlay.h"
 
 QLineEdit *lineEditCameraWatch_wl;
 
@@ -139,7 +136,7 @@ gboolean my_bus_func( GstBus *bus, GstMessage *message, gpointer user_data )
 void QvkCameraController_wl::startCameraMonitoring()
 {
     lineEditCameraWatch_wl = new QLineEdit;
-    connect( lineEditCameraWatch_wl, SIGNAL( textChanged(QString) ), this, SLOT( slot_camera_added_or_removed(QString) ) );
+    connect(lineEditCameraWatch_wl, &QLineEdit::textChanged, this, [=](QString text){slot_camera_added_or_removed(text);});
 
     GstDeviceMonitor *monitor;
     GstBus *bus;
