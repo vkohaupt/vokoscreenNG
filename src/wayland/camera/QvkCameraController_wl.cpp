@@ -60,13 +60,17 @@ QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface
         vkCameraSurface_wl = new QvkCameraSurface_wl();
         vkCameraSurface_wl->show();
 
-
         const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
         for (const QCameraDevice &cameraDevice : cameras){
             QCamera *camera = new QCamera(cameraDevice);
 
             QVideoSink *videoSink = new QVideoSink;
-            connect(videoSink, &QVideoSink::videoFrameChanged, this, [=](QVideoFrame videoFrame){signal_videoFrame(videoFrame);});
+            connect(videoSink,
+                    &QVideoSink::videoFrameChanged,
+                    vkCameraSurface_wl,
+                    [this](QVideoFrame videoFrame){
+                vkCameraSurface_wl->slot_setCameraImage(videoFrame);
+            });
 
             QMediaCaptureSession *captureSession = new QMediaCaptureSession;
             captureSession->setCamera( camera );
@@ -74,13 +78,7 @@ QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface
 
             camera->start();
         }
-
-        connect( this, SIGNAL(signal_videoFrame(QVideoFrame)), vkCameraSurface_wl, SLOT(slot_setCameraImage(QVideoFrame)) );
-
     });
-
-
-
 }
 
 
