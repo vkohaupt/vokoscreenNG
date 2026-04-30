@@ -20,9 +20,9 @@
  * --End_License--
  */
 
-#include "QvkCameraController_wl.h"
 #include "global.h"
-
+#include "QvkCameraController_wl.h"
+#include "QvkCameraWatcher_wl.h"
 #include "QvkCameraSurface_wl.h"
 
 #include <QDebug>
@@ -45,12 +45,7 @@ QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface
 {
     ui = ui_surface;
 
-    QMediaDevices *mediaDevices = new QMediaDevices;
-    connect( mediaDevices, &QMediaDevices::videoInputsChanged, this, [=](){ qDebug() << "999999999999999999999"; });
-    // Trigger a videoInputsChanged
-    mediaDevices->videoInputsChanged();
-
-    // object_id + ":::" + camera_name + ":::" + "added" or removed
+    QvkCameraWatcher_wl *vkCameraWatcher_wl = new QvkCameraWatcher_wl;
 }
 
 
@@ -58,7 +53,7 @@ QvkCameraController_wl::~QvkCameraController_wl()
 {
 }
 
-
+// Wird vom Watcher aufgerufen
 void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 {
     if(device.contains("added")){
