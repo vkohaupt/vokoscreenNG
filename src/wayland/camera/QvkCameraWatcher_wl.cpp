@@ -31,18 +31,11 @@
 
 QvkCameraWatcher_wl::QvkCameraWatcher_wl()
 {
-    /*
-    // Dies ist die Liste die im Endefeckt die Geräte beinhaltet
-    QList<QCameraDevice> camerasDevices = QMediaDevices::videoInputs();
-    for ( int x = 0; x < camerasDevices.count(); x++ ){
-        stringListDevices.append( camerasDevices.at(x).id() );
-        qDebug().noquote() << global::nameOutput << "[Camera] Added:" << camerasDevices.at(x).id();
-    }
-*/
     QMediaDevices *mediaDevices = new QMediaDevices;
     connect( mediaDevices, &QMediaDevices::videoInputsChanged, this, [=](){
 
         QList<QCameraDevice> devices = QMediaDevices::videoInputs();
+
         // Camera wurde hinzugefügt
         if(devices.count() > stringListDevices.count()){
             for(int i = 0; i < devices.count(); i++){
@@ -64,7 +57,6 @@ QvkCameraWatcher_wl::QvkCameraWatcher_wl()
     emit mediaDevices->videoInputsChanged();
 
     // object_id + ":::" + camera_name + ":::" + "added" or removed
-
 }
 
 
