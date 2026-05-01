@@ -27,27 +27,40 @@
 #include <QCameraDevice>
 #include <QMediaDevices>
 #include <QList>
+#include <QStringList>
 
 QvkCameraWatcher_wl::QvkCameraWatcher_wl()
 {
-
-    camerasDevices.clear();
-    qDebug() << "1111111111111111111111111111111" << camerasDevices.count();
-
+    /*
+    // Dies ist die Liste die im Endefeckt die Geräte beinhaltet
+    QList<QCameraDevice> camerasDevices = QMediaDevices::videoInputs();
+    for ( int x = 0; x < camerasDevices.count(); x++ ){
+        stringListDevices.append( camerasDevices.at(x).id() );
+        qDebug().noquote() << global::nameOutput << "[Camera] Added:" << camerasDevices.at(x).id();
+    }
+*/
     QMediaDevices *mediaDevices = new QMediaDevices;
     connect( mediaDevices, &QMediaDevices::videoInputsChanged, this, [=](){
 
         QList<QCameraDevice> devices = QMediaDevices::videoInputs();
         // Camera wurde hinzugefügt
-        if(devices.count() > camerasDevices.count() ){
-            camerasDevices.clear();
-            camerasDevices.append(devices);
-            qDebug() << "22222222222222222222222222222" << camerasDevices.count();
+        if(devices.count() > stringListDevices.count()){
+            for(int i = 0; i < devices.count(); i++){
+                QString id = devices.at(i).id();
+                QString description = devices.at(i).description();
+                if(!stringListDevices.contains(id)){
+                    stringListDevices.append(id);
+                    qDebug().noquote() << global::nameOutput << "[Camera] Added:" << description << "Device:" << id;
+                }
+            }
         }
 
-    });
+        if(devices.count() < stringListDevices.count() ){
+            qDebug().noquote() << global::nameOutput << "[Camera] Removed:";// << description << "Device:" << id;
+        }
 
-    // Trigger a videoInputsChanged
+        qDebug().noquote();
+    });
     emit mediaDevices->videoInputsChanged();
 
     // object_id + ":::" + camera_name + ":::" + "added" or removed
@@ -58,5 +71,3 @@ QvkCameraWatcher_wl::QvkCameraWatcher_wl()
 QvkCameraWatcher_wl::~QvkCameraWatcher_wl()
 {
 }
-
-

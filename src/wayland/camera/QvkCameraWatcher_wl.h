@@ -27,6 +27,7 @@
 #include <QCameraDevice>
 #include <QMediaDevices>
 #include <QList>
+#include <QStringList>
 
 class QvkCameraWatcher_wl : public QObject
 {
@@ -35,8 +36,8 @@ class QvkCameraWatcher_wl : public QObject
 public:
     QvkCameraWatcher_wl();
     virtual ~QvkCameraWatcher_wl();
+    QStringList stringListDevices;
 
-    QList<QCameraDevice> camerasDevices = QMediaDevices::videoInputs();
 
 public slots:
 
