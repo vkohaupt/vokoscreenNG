@@ -37,7 +37,7 @@ public:
     QvkCameraWatcher_wl();
     virtual ~QvkCameraWatcher_wl();
     QStringList stringListDevices;
-
+    void init();
 
 public slots:
 
@@ -52,7 +52,7 @@ protected:
 
 
 signals:
-
+    void signal_cameraChanged(QString string);
 
 };
 

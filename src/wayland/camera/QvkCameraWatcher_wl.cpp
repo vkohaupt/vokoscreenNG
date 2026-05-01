@@ -31,6 +31,15 @@
 
 QvkCameraWatcher_wl::QvkCameraWatcher_wl()
 {
+}
+
+
+QvkCameraWatcher_wl::~QvkCameraWatcher_wl()
+{
+}
+
+void QvkCameraWatcher_wl::init()
+{
     QMediaDevices *mediaDevices = new QMediaDevices;
     connect( mediaDevices, &QMediaDevices::videoInputsChanged, this, [=](){
 
@@ -44,6 +53,7 @@ QvkCameraWatcher_wl::QvkCameraWatcher_wl()
                 if(!stringListDevices.contains(id)){
                     stringListDevices.append(id);
                     qDebug().noquote() << global::nameOutput << "[Camera] Added:" << description << "Device:" << id;
+                    emit signal_cameraChanged( id + ":::" + description + ":::" + "added" );
                 }
             }
         }
@@ -57,9 +67,4 @@ QvkCameraWatcher_wl::QvkCameraWatcher_wl()
     emit mediaDevices->videoInputsChanged();
 
     // object_id + ":::" + camera_name + ":::" + "added" or removed
-}
-
-
-QvkCameraWatcher_wl::~QvkCameraWatcher_wl()
-{
 }
