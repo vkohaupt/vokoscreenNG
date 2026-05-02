@@ -113,3 +113,57 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         }
     }
 }
+
+/*
+void QvkCameraController_wl::slot_checkBoxCameraOnOff( bool value )
+{
+    // Camera starten
+    if ( value == true ) {
+        camera = new QCamera( cameraDevice );
+        connect( camera, SIGNAL( errorChanged() ), this, SLOT( slot_cameraError() ) );
+
+        // Format und Resolution von Widget ermitteln und anwenden
+        const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
+        for ( int i = 0; i < cameraFormatList.count(); i++ ) {
+            if ( cameraFormatList.at(i).pixelFormat() == comboBoxCameraVideoFormat->currentData() ) {
+                if ( cameraFormatList.at(i).resolution() == comboBoxCameraResolution->currentData() ) {
+                    camera->setCameraFormat( cameraFormatList.at(i) );
+                    QString width  = QString::number( cameraFormatList.at(i).resolution().width() );
+                    QString height = QString::number( cameraFormatList.at(i).resolution().height() );
+                    qDebug().noquote() << global::nameOutput
+                                       << "[Camera] Start with format:"
+                                       << cameraFormatList.at(i).pixelFormat()
+                                       << "and resolution:"
+                                       << width + "x" + height;
+                }
+            }
+        }
+
+        videoSink = new QVideoSink;
+        connect( videoSink, SIGNAL( videoFrameChanged( QVideoFrame ) ), this, SLOT( slot_videoFrameChanged( QVideoFrame ) ) );
+
+        vkCameraWindow->show();
+
+        captureSession = new QMediaCaptureSession;
+        captureSession->setCamera( camera );
+        captureSession->setVideoOutput( videoSink );
+
+        camera->start();
+    }
+
+    // Camera stopen
+    if ( value == false ) {
+        disconnect( videoSink );
+        delete videoSink;
+
+        camera->stop();
+        delete camera;
+        camera = Q_NULLPTR;
+
+        delete captureSession;
+
+        vkCameraWindow->hide();
+        qDebug().noquote() << global::nameOutput << "[Camera] Stop";
+    }
+}
+*/

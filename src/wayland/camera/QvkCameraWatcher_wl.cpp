@@ -40,6 +40,8 @@ QvkCameraWatcher_wl::~QvkCameraWatcher_wl()
 
 void QvkCameraWatcher_wl::init()
 {
+    // object_id + ":::" + camera_name + ":::" + "added" or removed
+
     QMediaDevices *mediaDevices = new QMediaDevices;
     connect( mediaDevices, &QMediaDevices::videoInputsChanged, this, [=](){
 
@@ -50,21 +52,45 @@ void QvkCameraWatcher_wl::init()
             for(int i = 0; i < devices.count(); i++){
                 QString id = devices.at(i).id();
                 QString description = devices.at(i).description();
-                if(!stringListDevices.contains(id)){
-                    stringListDevices.append(id);
+                QString id_and_description = id + ":::" + description;
+                if(!stringListDevices.contains(id_and_description)){
+                    stringListDevices.append(id_and_description);
                     qDebug().noquote() << global::nameOutput << "[Camera] Added:" << description << "Device:" << id;
                     emit signal_cameraChanged( id + ":::" + description + ":::" + "added" );
                 }
             }
+            return;
         }
 
-        if(devices.count() < stringListDevices.count() ){
-            qDebug().noquote() << global::nameOutput << "[Camera] Removed:";// << description << "Device:" << id;
+        // Camera wurde entfernt
+        // ID und description werden von devices in die StringListen tempID und tmpDescription transferiert
+        //
+        QStringList tmp;
+        for(int i = 0; i < devices.count(); i++){
+            tmp.append(devices.at(i).id() + ":::" + devices.at(i).description());
+        }
+
+        int index;
+        if(tmp.count() < stringListDevices.count()){
+            for(int i = 0; i < stringListDevices.count(); i++){
+                QString id_and_description = stringListDevices.at(i);
+                if(!tmp.contains(id_and_description)){
+                    // id_and_description wird nicht gefunden. In dem Fall ist es das gesuchte Gerät.
+                    QString id = id_and_description.section(":::", 0, 0);
+                    QString description = id_and_description.section(":::", 1, 1);
+                    qDebug().noquote() << global::nameOutput << "[Camera] Removed:" << description << "Device:" << id;
+                    emit signal_cameraChanged( id + ":::" + description + ":::" + "removed" );
+                    index = i;
+                    break;
+                }
+            }
+            if (!stringListDevices.empty()){
+                stringListDevices.removeAt(index);
+            }
         }
 
         qDebug().noquote();
     });
-    emit mediaDevices->videoInputsChanged();
 
-    // object_id + ":::" + camera_name + ":::" + "added" or removed
+    emit mediaDevices->videoInputsChanged();
 }
