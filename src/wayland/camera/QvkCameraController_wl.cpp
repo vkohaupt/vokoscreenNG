@@ -50,6 +50,7 @@ QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface
             &QvkCameraWatcher_wl::signal_cameraChanged,
             this,
             [this](QString device){slot_camera_added_or_removed(device);});
+
     vkCameraWatcher_wl->init();
 }
 
@@ -64,11 +65,10 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
     if(device.contains("added")){
         QCheckBox *checkBox = new QCheckBox;
         checkBox->setText(device.section(":::", 1, 1 ));
-        checkBox->setObjectName(device.section(":::", 0, 0)); // Objectname ist gleich die id
+        checkBox->setObjectName("checkBox_" + device.section(":::", 0, 0)); // Objectname ist gleich die id
         ui->layoutAllCameras->addWidget(checkBox);
 
         connect(checkBox, &QCheckBox::clicked, this, [=](){
-
             if (checkBox->isChecked() == true){
                 vkCameraSurface_wl = new QvkCameraSurface_wl();
                 vkCameraSurface_wl->show();
