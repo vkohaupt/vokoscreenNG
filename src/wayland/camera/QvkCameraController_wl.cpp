@@ -74,14 +74,14 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 }
 
 
-void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool value, QCheckBox *checkBoxCameraOnOff)
+void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *checkBoxCameraOnOff)
 {
-   if ( value == true ){
-       qDebug() << value << checkBoxCameraOnOff->objectName();
+   if ( checked == true ){
+       qDebug() << checked << checkBoxCameraOnOff->objectName();
    }
 
-   if ( value == false ){
-       qDebug() << value << checkBoxCameraOnOff->objectName();
+   if ( checked == false ){
+       qDebug() << checked << checkBoxCameraOnOff->objectName();
    }
 
 }
