@@ -53,7 +53,7 @@ private:
 
 private slots:
     void slot_camera_added_or_removed(QString);
-    void slot_checkBoxCameraOnOff(bool value, QCheckBox *checkBox);
+    void slot_checkBoxCameraOnOff(bool value, QCheckBox *checkBoxCameraOnOff);
 
 
 protected:
