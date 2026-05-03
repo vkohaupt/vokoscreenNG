@@ -49,8 +49,10 @@ QvkCameraSurface_wl::QvkCameraSurface_wl()
     setWindowFlags(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground, true);
     setAttribute(Qt::WA_QuitOnClose, false);
-    setMouseTracking(true);
     showMaximized();
+    setMouseTracking(true);
+    imageRect.setX(100);
+    imageRect.setY(100);
 }
 
 QvkCameraSurface_wl::~QvkCameraSurface_wl()
@@ -73,6 +75,8 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
         painterPixmap.drawPixmap(imageRect.x(),
                                  imageRect.y(),
                                  cameraImage);
+
+
 /*
         if (mouseHover == true){
             QPen pen(Qt::red, 3);
@@ -83,12 +87,12 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
                                       imageRect.width()-200,
                                       imageRect.height()-200);
         }
-
+*/
         QPen pen(Qt::red, 3);
         pen.setJoinStyle(Qt::MiterJoin);
         painterPixmap.setPen(pen);
         painterPixmap.drawRect(0, 0, width(), height());
-*/
+
     }
     painterPixmap.end();
 
@@ -111,9 +115,13 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
 
 void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
 {
-    QImage image = videoFrame.toImage();
-    image = image.convertedTo( QImage::Format_ARGB32 );
-    cameraImage = pixmap.fromImage(image);
+//    QImage image = videoFrame.toImage();
+//    image = image.convertedTo( QImage::Format_ARGB32 );
+//    cameraImage = pixmap.fromImage(image);
+//    QPixmap pixmap(QString::fromUtf8( ":/pictures/logo/logo.png"));
+//    cameraImage = pixmap;
+
+    cameraImage = pixmap.fromImage(videoFrame.toImage());
     repaint();
 }
 

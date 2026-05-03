@@ -33,6 +33,7 @@
 #include <QButtonGroup>
 #include <QList>
 #include <QVideoFrame>
+#include <QCamera>
 
 class QvkCameraController_wl : public QObject
 {
@@ -41,7 +42,7 @@ class QvkCameraController_wl : public QObject
 public:
     QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface );
     virtual ~QvkCameraController_wl();
-    QvkCameraSurface_wl *vkCameraSurface_wl;
+    QvkCameraSurface_wl *vkCameraSurface_wl = NULL;
 
 
 public slots:
@@ -49,7 +50,7 @@ public slots:
 
 private:
     Ui_formMainWindow_wl *ui;
-
+    QCamera *camera;
 
 private slots:
     void slot_camera_added_or_removed(QString);

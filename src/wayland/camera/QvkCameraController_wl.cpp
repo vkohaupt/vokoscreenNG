@@ -76,12 +76,44 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 
 void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *checkBoxCameraOnOff)
 {
-   if ( checked == true ){
-       qDebug() << checked << checkBoxCameraOnOff->objectName();
+    // Surface wird einmal angelegt für alle Cameras
+    if (vkCameraSurface_wl == NULL){
+        vkCameraSurface_wl = new QvkCameraSurface_wl();
+        vkCameraSurface_wl->show();
+        qDebug() << "CameraSurface wurde angelegt";
+    }
+
+    if ( checked == true ){
+       qDebug() << checked << checkBoxCameraOnOff->objectName().section("_", 1, 1);
+
+       const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
+       for ( int x = 0; x < cameras.count(); x++ ){
+           QCameraDevice cameraDevice = cameras.at(x);
+           if ( cameraDevice.id() == checkBoxCameraOnOff->objectName().section("_", 1, 1) ){
+               qDebug() << cameraDevice.id() << checkBoxCameraOnOff->objectName().section("_", 1, 1);
+               camera = new QCamera(cameraDevice);
+               QVideoSink *videoSink = new QVideoSink;
+               connect(videoSink,
+                       &QVideoSink::videoFrameChanged,
+                       vkCameraSurface_wl,
+                       [this](QVideoFrame videoFrame){
+                   vkCameraSurface_wl->slot_setCameraImage(videoFrame);
+               });
+
+               QMediaCaptureSession *captureSession = new QMediaCaptureSession;
+               captureSession->setCamera( camera );
+               captureSession->setVideoOutput( videoSink );
+               camera->start();
+           }
+       }
+
    }
 
    if ( checked == false ){
+       delete vkCameraSurface_wl;
+       vkCameraSurface_wl = NULL;
        qDebug() << checked << checkBoxCameraOnOff->objectName();
+       qDebug() << "CameraSurface wurde geschlossen";
    }
 
 }
