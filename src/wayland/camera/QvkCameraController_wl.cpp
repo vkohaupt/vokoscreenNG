@@ -59,7 +59,7 @@ QvkCameraController_wl::~QvkCameraController_wl()
 {
 }
 
-// Wird vom Watcher aufgerufen
+
 void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 {
     if(device.contains("added")){
@@ -68,7 +68,26 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         checkBox->setObjectName("checkBox_" + device.section(":::", 0, 0)); // Objectname ist gleich die id
         ui->layoutAllCameras->addWidget(checkBox);
 
-        connect(checkBox, &QCheckBox::clicked, this, [=](){
+        connect(checkBox, &QCheckBox::clicked, this, [=](bool value){
+            slot_checkBoxCameraOnOff(value, checkBox);});
+    }
+}
+
+
+void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool value, QCheckBox *checkBox)
+{
+   if ( value == true ){
+       qDebug() << value << checkBox->objectName();
+   }
+
+   if ( value == false ){
+       qDebug() << value << checkBox->objectName();
+   }
+
+}
+
+
+/*
             if (checkBox->isChecked() == true){
                 vkCameraSurface_wl = new QvkCameraSurface_wl();
                 vkCameraSurface_wl->show();
@@ -113,7 +132,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         }
     }
 }
-
+*/
 /*
 void QvkCameraController_wl::slot_checkBoxCameraOnOff( bool value )
 {
