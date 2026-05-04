@@ -105,11 +105,6 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
         painter.drawPixmap(QPoint(0, 0), pixmap);
     }
     painter.end();
-
-    if(a == 0){
-        setMask(pixmap.mask());
-        a++;
-    }
 }
 
 
@@ -123,6 +118,11 @@ void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
 
     cameraImage = pixmap.fromImage(videoFrame.toImage());
     repaint();
+
+    if(a == 0){
+        setMask(pixmap.mask());
+        a++;
+    }
 }
 
 
