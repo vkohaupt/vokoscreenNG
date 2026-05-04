@@ -118,7 +118,7 @@ void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
 
     cameraImage = pixmap.fromImage(videoFrame.toImage());
     repaint();
-
+qDebug() << "11111111111111111111111111111111111111111111111";
     if(a == 0){
         setMask(pixmap.mask());
         a++;
