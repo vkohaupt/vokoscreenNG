@@ -111,7 +111,7 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
         delete camera;
         camera = NULL;
 
-        vkCameraSurface_wl->close();
+        //vkCameraSurface_wl->close();
         delete vkCameraSurface_wl;
         vkCameraSurface_wl = NULL;
     }
