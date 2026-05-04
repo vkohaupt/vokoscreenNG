@@ -59,6 +59,7 @@ public slots:
 
 
 signals:
+    void signal_cameraSurfaceClose();
 
 
 protected:
@@ -68,6 +69,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event);
     void enterEvent(QEnterEvent *event);
     void leaveEvent(QEvent *event );
+    void closeEvent(QCloseEvent *event);
 
 };
 

@@ -60,6 +60,13 @@ QvkCameraSurface_wl::~QvkCameraSurface_wl()
 }
 
 
+void QvkCameraSurface_wl::closeEvent(QCloseEvent *event)
+{
+    Q_UNUSED(event);
+    emit signal_cameraSurfaceClose();
+}
+
+
 void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
@@ -118,7 +125,7 @@ void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
 
     cameraImage = pixmap.fromImage(videoFrame.toImage());
     repaint();
-qDebug() << "11111111111111111111111111111111111111111111111";
+
     if(a == 0){
         setMask(pixmap.mask());
         a++;
