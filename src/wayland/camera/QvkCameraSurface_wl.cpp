@@ -141,7 +141,8 @@ void QvkCameraSurface_wl::mousePressEvent(QMouseEvent *event)
     pointDiv = mousePos - imageRect.topLeft();
 
     clearMask();
-    repaint();
+    // Ein repaint wird nicht benötigt da das Videobild dauern neu aufgebaut wird
+
     // Siehe Hinweis in mouseReleaseEvent
     resize(width()-1, height()-1);
 }
@@ -167,8 +168,9 @@ void QvkCameraSurface_wl::mouseReleaseEvent(QMouseEvent *event)
     Q_UNUSED(event)
     mousePressed = false;
 
-    repaint();
+    // Ein repaint wird nicht benötigt da das Videobild dauern neu aufgebaut wird
     setMask(pixmap.mask());
+
     // Unter Gnome wird "setMask( pixmap.mask() )" nicht ausgeführt.
     // Selbst nach hunderten Tests ist nicht ersichtlich warum.
     // Abhilfe schafft ein umschalten mithilfe setVisible(false/true)
