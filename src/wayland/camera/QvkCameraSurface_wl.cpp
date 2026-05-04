@@ -186,7 +186,7 @@ void QvkCameraSurface_wl::enterEvent(QEnterEvent *event)
 {
     Q_UNUSED(event)
     mouseHover = true;
-    repaint();
+    // Ein repaint wird nicht benötigt da das Videobild dauern neu aufgebaut wird
 }
 
 
@@ -195,5 +195,5 @@ void QvkCameraSurface_wl::leaveEvent(QEvent *event )
 {
     Q_UNUSED(event)
     mouseHover = false;
-    repaint();
+    // Ein repaint wird nicht benötigt da das Videobild dauern neu aufgebaut wird
 }
