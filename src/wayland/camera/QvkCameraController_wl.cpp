@@ -111,7 +111,7 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
         delete camera;
         camera = NULL;
 
-        //vkCameraSurface_wl->close();
+        //Don´t make a vkCameraSurface_wl->close(). It is not good, if close the window from taskbar
         delete vkCameraSurface_wl;
         vkCameraSurface_wl = NULL;
     }
