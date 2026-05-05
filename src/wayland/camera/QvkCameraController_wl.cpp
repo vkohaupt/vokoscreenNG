@@ -98,6 +98,27 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
                     vkCameraSurface_wl->slot_setCameraImage(videoFrame);
                 });
 
+                const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
+                for ( int i = 0; i < cameraFormatList.count(); i++ ) {
+                    qDebug() << cameraFormatList.at(i).pixelFormat() << cameraFormatList.at(i).resolution();
+/*
+                    if ( cameraFormatList.at(i).pixelFormat() == comboBoxCameraVideoFormat->currentData() ) {
+                        if ( cameraFormatList.at(i).resolution() == comboBoxCameraResolution->currentData() ) {
+                            camera->setCameraFormat( cameraFormatList.at(i) );
+                            QString width  = QString::number( cameraFormatList.at(i).resolution().width() );
+                            QString height = QString::number( cameraFormatList.at(i).resolution().height() );
+                            qDebug().noquote() << global::nameOutput
+                                               << "[Camera] Start with format:"
+                                               << cameraFormatList.at(i).pixelFormat()
+                                               << "and resolution:"
+                                               << width + "x" + height;
+                        }
+                    }
+*/
+                }
+
+                camera->setCameraFormat(cameraFormatList.at(0));
+
                 QMediaCaptureSession *captureSession = new QMediaCaptureSession;
                 captureSession->setCamera( camera );
                 captureSession->setVideoOutput( videoSink );

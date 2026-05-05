@@ -82,8 +82,6 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
         painterPixmap.drawPixmap(imageRect.x(),
                                  imageRect.y(),
                                  cameraImage);
-
-
 /*
         if (mouseHover == true){
             QPen pen(Qt::red, 3);
@@ -94,12 +92,12 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
                                       imageRect.width()-200,
                                       imageRect.height()-200);
         }
-*/
+
         QPen pen(Qt::red, 3);
         pen.setJoinStyle(Qt::MiterJoin);
         painterPixmap.setPen(pen);
         painterPixmap.drawRect(0, 0, width(), height());
-
+*/
     }
     painterPixmap.end();
 
@@ -148,7 +146,7 @@ void QvkCameraSurface_wl::mousePressEvent(QMouseEvent *event)
     pointDiv = mousePos - imageRect.topLeft();
 
     clearMask();
-    // Ein repaint wird nicht benötigt da das Videobild dauern neu aufgebaut wird
+    // Ein repaint wird nicht benötigt da das Videobild immer wieder neu aufgebaut wird
 
     // Siehe Hinweis in mouseReleaseEvent
     resize(width()-1, height()-1);
@@ -175,7 +173,7 @@ void QvkCameraSurface_wl::mouseReleaseEvent(QMouseEvent *event)
     Q_UNUSED(event)
     mousePressed = false;
 
-    // Ein repaint wird nicht benötigt da das Videobild dauern neu aufgebaut wird
+    // Ein repaint wird nicht benötigt da das Videobild immer wieder neu aufgebaut wird
     setMask(pixmap.mask());
 
     // Unter Gnome wird "setMask( pixmap.mask() )" nicht ausgeführt.
@@ -195,7 +193,7 @@ void QvkCameraSurface_wl::enterEvent(QEnterEvent *event)
 {
     Q_UNUSED(event)
     mouseHover = true;
-    // Ein repaint wird nicht benötigt da das Videobild dauern neu aufgebaut wird
+    // Ein repaint wird nicht benötigt da das Videobild immer wieder neu aufgebaut wird
 }
 
 
@@ -204,5 +202,5 @@ void QvkCameraSurface_wl::leaveEvent(QEvent *event )
 {
     Q_UNUSED(event)
     mouseHover = false;
-    // Ein repaint wird nicht benötigt da das Videobild dauern neu aufgebaut wird
+    // Ein repaint wird nicht benötigt da das Videobild immer wieder neu aufgebaut wird
 }
