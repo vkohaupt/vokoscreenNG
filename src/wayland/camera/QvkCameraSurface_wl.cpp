@@ -37,6 +37,7 @@
 #include <QPen>
 #include <QPoint>
 #include <QVideoFrame>
+#include <QPainterPath>
 
 QvkCameraSurface_wl::QvkCameraSurface_wl()
 {
@@ -77,12 +78,20 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
     QPainter painterPixmap;
     painterPixmap.begin(&image);
     {
+        QPainterPath path;
+        path.addEllipse( imageRect.x(),
+                         imageRect.y(),
+                         cameraImage.width(),
+                         cameraImage.height());
+        painterPixmap.setClipPath(path);
+
+
         painterPixmap.setRenderHint(QPainter::SmoothPixmapTransform, true);
         painterPixmap.setRenderHint(QPainter::Antialiasing, true);
         painterPixmap.drawPixmap(imageRect.x(),
                                  imageRect.y(),
                                  cameraImage);
-/*
+        /*
         if (mouseHover == true){
             QPen pen(Qt::red, 3);
             pen.setJoinStyle(Qt::MiterJoin);
