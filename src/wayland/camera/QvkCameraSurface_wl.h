@@ -34,6 +34,7 @@
 #include <QRect>
 #include <QPoint>
 #include <QVideoFrame>
+#include <QToolButton>
 
 class QvkCameraSurface_wl : public QWidget
 {
@@ -42,14 +43,22 @@ public:
     QvkCameraSurface_wl();
     virtual ~QvkCameraSurface_wl();
 
-private:
+    void set_toolButtonRectangle(QToolButton *button);
+    void set_toolButtonElipse(QToolButton *button);
+    void set_toolButtonCircle(QToolButton *button);
+    QToolButton *toolButtonRectangle;
+    QToolButton *toolButtonElipse;
+    QToolButton *toolButtonCircle;
     QPixmap pixmap;
+
+private:
     int a = 0;
     QPixmap cameraImage;
     bool mousePressed = false;
     QRect imageRect;
     QPoint pointDiv;
     bool mouseHover = false;
+
 
 private slots:
 

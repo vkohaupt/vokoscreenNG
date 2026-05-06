@@ -38,6 +38,7 @@
 #include <QPoint>
 #include <QVideoFrame>
 #include <QPainterPath>
+#include <QToolButton>
 
 QvkCameraSurface_wl::QvkCameraSurface_wl()
 {
@@ -68,6 +69,24 @@ void QvkCameraSurface_wl::closeEvent(QCloseEvent *event)
 }
 
 
+void QvkCameraSurface_wl::set_toolButtonRectangle(QToolButton *button)
+{
+    toolButtonRectangle = button;
+}
+
+
+void QvkCameraSurface_wl::set_toolButtonElipse(QToolButton *button)
+{
+    toolButtonElipse = button;
+}
+
+
+void QvkCameraSurface_wl::set_toolButtonCircle(QToolButton *button)
+{
+    toolButtonCircle = button;
+}
+
+
 void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
@@ -78,35 +97,42 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
     QPainter painterPixmap;
     painterPixmap.begin(&image);
     {
-        QPainterPath path;
-        path.addEllipse( imageRect.x(),
-                         imageRect.y(),
-                         cameraImage.width(),
-                         cameraImage.height());
-        painterPixmap.setClipPath(path);
-
-
         painterPixmap.setRenderHint(QPainter::SmoothPixmapTransform, true);
         painterPixmap.setRenderHint(QPainter::Antialiasing, true);
+
+        //if(cameraWindowVievElipse == true){
+        if(toolButtonElipse->isChecked() == true){
+            QPainterPath path;
+            path.addEllipse( imageRect.x(),
+                             imageRect.y(),
+                             cameraImage.width(),
+                             cameraImage.height());
+            painterPixmap.setClipPath(path);
+        }
+
+        //if(cameraWindowVievCircle == true){
+        if(toolButtonCircle->isChecked() == true){
+            QPainterPath path;
+            path.addEllipse( imageRect.x() + (cameraImage.width() - cameraImage.height())/2,
+                             imageRect.y(),
+                             cameraImage.height(),
+                             cameraImage.height());
+            painterPixmap.setClipPath(path);
+        }
+
+        if(toolButtonRectangle->isChecked() == true){
+            QPainterPath path;
+            path.addRect( imageRect.x(),
+                          imageRect.y(),
+                          cameraImage.width(),
+                          cameraImage.height());
+            painterPixmap.setClipPath(path);
+        }
+
         painterPixmap.drawPixmap(imageRect.x(),
                                  imageRect.y(),
                                  cameraImage);
-        /*
-        if (mouseHover == true){
-            QPen pen(Qt::red, 3);
-            pen.setJoinStyle(Qt::MiterJoin);
-            painterPixmap.setPen(pen);
-            painterPixmap.drawEllipse(imageRect.x()+100,
-                                      imageRect.y()+100,
-                                      imageRect.width()-200,
-                                      imageRect.height()-200);
-        }
 
-        QPen pen(Qt::red, 3);
-        pen.setJoinStyle(Qt::MiterJoin);
-        painterPixmap.setPen(pen);
-        painterPixmap.drawRect(0, 0, width(), height());
-*/
     }
     painterPixmap.end();
 
@@ -116,6 +142,7 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
     painter.begin(this);
     {
         painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
+        painter.setRenderHint(QPainter::Antialiasing, true);
         painter.drawPixmap(QPoint(0, 0), pixmap);
     }
     painter.end();
@@ -124,11 +151,11 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
 
 void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
 {
-//    QImage image = videoFrame.toImage();
-//    image = image.convertedTo( QImage::Format_ARGB32 );
-//    cameraImage = pixmap.fromImage(image);
-//    QPixmap pixmap(QString::fromUtf8( ":/pictures/logo/logo.png"));
-//    cameraImage = pixmap;
+    //    QImage image = videoFrame.toImage();
+    //    image = image.convertedTo( QImage::Format_ARGB32 );
+    //    cameraImage = pixmap.fromImage(image);
+    //    QPixmap pixmap(QString::fromUtf8( ":/pictures/logo/logo.png"));
+    //    cameraImage = pixmap;
 
     cameraImage = pixmap.fromImage(videoFrame.toImage());
     repaint();

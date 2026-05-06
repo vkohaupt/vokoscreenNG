@@ -92,7 +92,29 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
     if (vkCameraSurface_wl == NULL){
         vkCameraSurface_wl = new QvkCameraSurface_wl();
         vkCameraSurface_wl->show();
+
         connect(vkCameraSurface_wl, &QvkCameraSurface_wl::signal_cameraSurfaceClose, this, [=](){checkBoxCameraOnOff->click();});
+
+        connect(ui->toolButton_camera_view_rectangle, &QToolButton::clicked, vkCameraSurface_wl, [=](){
+            vkCameraSurface_wl->clearMask(); // Durch clearMask werden alle Views sofort richtig dargestellt
+                                             // aber sie werden nicht maskiert
+            vkCameraSurface_wl->repaint();
+            vkCameraSurface_wl->setMask(vkCameraSurface_wl->pixmap.mask());
+        });
+        connect(ui->toolButton_camera_view_ellipse, &QToolButton::clicked, vkCameraSurface_wl, [=](){
+            vkCameraSurface_wl->clearMask();
+            vkCameraSurface_wl->repaint();
+            vkCameraSurface_wl->setMask(vkCameraSurface_wl->pixmap.mask());
+        });
+        connect(ui->toolButton_camera_view_circle, &QToolButton::clicked, vkCameraSurface_wl, [=](){
+            vkCameraSurface_wl->clearMask();
+            vkCameraSurface_wl->repaint();
+            vkCameraSurface_wl->setMask(vkCameraSurface_wl->pixmap.mask());
+        });
+
+        vkCameraSurface_wl->set_toolButtonRectangle(ui->toolButton_camera_view_rectangle);
+        vkCameraSurface_wl->set_toolButtonElipse(ui->toolButton_camera_view_ellipse);
+        vkCameraSurface_wl->set_toolButtonCircle(ui->toolButton_camera_view_circle);
     }
 
     if ( checked == true ){
@@ -132,8 +154,8 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
                 camera->setCameraFormat(cameraFormatList.at(0));
 
                 QMediaCaptureSession *captureSession = new QMediaCaptureSession;
-                captureSession->setCamera( camera );
-                captureSession->setVideoOutput( videoSink );
+                captureSession->setCamera(camera);
+                captureSession->setVideoOutput(videoSink);
                 camera->start();
             }
         }
