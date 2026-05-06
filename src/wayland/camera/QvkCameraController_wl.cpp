@@ -78,7 +78,6 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         QCheckBox *checkBoxCameraOnOff = new QCheckBox;
         checkBoxCameraOnOff->setText(device.section(":::", 1, 1 ));
         checkBoxCameraOnOff->setObjectName("checkBox_" + device.section(":::", 0, 0)); // Im ObjectName steckt die id
-//        ui->layoutAllCameras->addWidget(checkBoxCameraOnOff);
         ui->layoutAllCameras->insertWidget(0, checkBoxCameraOnOff);
 
         connect(checkBoxCameraOnOff, &QCheckBox::clicked, this, [=](bool value){
