@@ -143,11 +143,13 @@ void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
 // Mausbutton wird gedrückt
 void QvkCameraSurface_wl::mousePressEvent(QMouseEvent *event)
 {
-    Q_UNUSED(event)
-
     if(event->button() != Qt::LeftButton){
         return;
     }
+
+    QPixmap pixmap(":/pictures/cursor/size_all.png");
+    QCursor cursor(pixmap);
+    setCursor(cursor);
 
     mousePressed = true;
 
@@ -194,6 +196,8 @@ void QvkCameraSurface_wl::mouseReleaseEvent(QMouseEvent *event)
     // Oder ein resize, das Fenster flackert nicht bzw. zeigt keine Anzeichen einer Animation,
     // wie bei setVisible(false/true)
     resize(width()+1, height()+1);
+
+    unsetCursor();
 }
 
 
