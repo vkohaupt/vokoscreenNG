@@ -45,6 +45,18 @@ QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface
 {
     ui = ui_surface;
 
+    ui->checkBoxCameraOnOff->hide();
+    ui->comboBoxCamera->hide();
+    ui->comboBoxCameraResolution->hide();
+    ui->help_camera_camera->hide();
+    ui->label_camera_window_resize->hide();
+    ui->label_camera_window_zoom->hide();
+    ui->labelCameraWindowSize->hide();
+    ui->checkBoxCameraWindowFrame->hide();
+    ui->checkBoxCameraMono->hide();
+    ui->checkBoxCameraInvert->hide();
+    ui->checkBoxCameraGray->hide();
+
     QvkCameraWatcher_wl *vkCameraWatcher_wl = new QvkCameraWatcher_wl;
     connect(vkCameraWatcher_wl,
             &QvkCameraWatcher_wl::signal_cameraChanged,
@@ -66,7 +78,8 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         QCheckBox *checkBoxCameraOnOff = new QCheckBox;
         checkBoxCameraOnOff->setText(device.section(":::", 1, 1 ));
         checkBoxCameraOnOff->setObjectName("checkBox_" + device.section(":::", 0, 0)); // Im ObjectName steckt die id
-        ui->layoutAllCameras->addWidget(checkBoxCameraOnOff);
+//        ui->layoutAllCameras->addWidget(checkBoxCameraOnOff);
+        ui->layoutAllCameras->insertWidget(0, checkBoxCameraOnOff);
 
         connect(checkBoxCameraOnOff, &QCheckBox::clicked, this, [=](bool value){
             slot_checkBoxCameraOnOff(value, checkBoxCameraOnOff);});
