@@ -96,8 +96,7 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
         connect(vkCameraSurface_wl, &QvkCameraSurface_wl::signal_cameraSurfaceClose, this, [=](){checkBoxCameraOnOff->click();});
 
         connect(ui->toolButton_camera_view_rectangle, &QToolButton::clicked, vkCameraSurface_wl, [=](){
-            vkCameraSurface_wl->clearMask(); // Durch clearMask werden alle Views sofort richtig dargestellt
-                                             // aber sie werden nicht maskiert
+            vkCameraSurface_wl->clearMask();
             vkCameraSurface_wl->repaint();
             vkCameraSurface_wl->setMask(vkCameraSurface_wl->pixmap.mask());
         });
