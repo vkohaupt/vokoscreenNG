@@ -58,8 +58,8 @@ QvkCameraSurface_wl::QvkCameraSurface_wl()
     imageRect.setY(100);
 
     // Siehe Hinweis in mouseReleaseEvent
-    QTimer::singleShot(2000, this, [=](){slot_test_1();});
-    QTimer::singleShot(3000, this, [=](){slot_test_2();});
+    QTimer::singleShot(2000, this, [=](){slot_workaroundForGnome_1();});
+    QTimer::singleShot(3000, this, [=](){slot_workaroundForGnome_2();});
 }
 
 
@@ -67,15 +67,18 @@ QvkCameraSurface_wl::~QvkCameraSurface_wl()
 {
 }
 
-void QvkCameraSurface_wl::slot_test_1()
+
+void QvkCameraSurface_wl::slot_workaroundForGnome_1()
 {
     resize(width()-1, height()-1);
 }
 
-void QvkCameraSurface_wl::slot_test_2()
+
+void QvkCameraSurface_wl::slot_workaroundForGnome_2()
 {
     resize(width()+1, height()+1);
 }
+
 
 void QvkCameraSurface_wl::closeEvent(QCloseEvent *event)
 {
@@ -115,7 +118,6 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
         painterPixmap.setRenderHint(QPainter::SmoothPixmapTransform, true);
         painterPixmap.setRenderHint(QPainter::Antialiasing, true);
 
-        //if(cameraWindowVievElipse == true){
         if(toolButtonElipse->isChecked() == true){
             QPainterPath path;
             path.addEllipse( imageRect.x(),
@@ -125,7 +127,6 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
             painterPixmap.setClipPath(path);
         }
 
-        //if(cameraWindowVievCircle == true){
         if(toolButtonCircle->isChecked() == true){
             QPainterPath path;
             path.addEllipse( imageRect.x() + (cameraImage.width() - cameraImage.height())/2,
