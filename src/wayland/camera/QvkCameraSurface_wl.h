@@ -61,6 +61,8 @@ private:
 
 
 private slots:
+    void slot_test_1();
+    void slot_test_2();
 
 
 public slots:

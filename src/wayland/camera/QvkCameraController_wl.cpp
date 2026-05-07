@@ -133,7 +133,7 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
 
                 const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
                 for ( int i = 0; i < cameraFormatList.count(); i++ ) {
-                    qDebug() << cameraFormatList.at(i).pixelFormat() << cameraFormatList.at(i).resolution();
+                    //qDebug() << cameraFormatList.at(i).pixelFormat() << cameraFormatList.at(i).resolution();
 /*
                     if ( cameraFormatList.at(i).pixelFormat() == comboBoxCameraVideoFormat->currentData() ) {
                         if ( cameraFormatList.at(i).resolution() == comboBoxCameraResolution->currentData() ) {

@@ -39,6 +39,7 @@
 #include <QVideoFrame>
 #include <QPainterPath>
 #include <QToolButton>
+#include <QTimer>
 
 QvkCameraSurface_wl::QvkCameraSurface_wl()
 {
@@ -55,12 +56,26 @@ QvkCameraSurface_wl::QvkCameraSurface_wl()
     setMouseTracking(true);
     imageRect.setX(100);
     imageRect.setY(100);
+
+    // Siehe Hinweis in mouseReleaseEvent
+    QTimer::singleShot(2000, this, [=](){slot_test_1();});
+    QTimer::singleShot(3000, this, [=](){slot_test_2();});
 }
+
 
 QvkCameraSurface_wl::~QvkCameraSurface_wl()
 {
 }
 
+void QvkCameraSurface_wl::slot_test_1()
+{
+    resize(width()-1, height()-1);
+}
+
+void QvkCameraSurface_wl::slot_test_2()
+{
+    resize(width()+1, height()+1);
+}
 
 void QvkCameraSurface_wl::closeEvent(QCloseEvent *event)
 {
