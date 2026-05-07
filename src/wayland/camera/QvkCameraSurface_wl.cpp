@@ -40,6 +40,7 @@
 #include <QPainterPath>
 #include <QToolButton>
 #include <QTimer>
+#include <QCheckBox>
 
 QvkCameraSurface_wl::QvkCameraSurface_wl()
 {
@@ -105,6 +106,18 @@ void QvkCameraSurface_wl::set_toolButtonCircle(QToolButton *button)
 }
 
 
+void QvkCameraSurface_wl::set_checkBoxCameraMirrorHorizontal(QCheckBox *checkBox)
+{
+    checkBoxCameraMirrorHorizontal = checkBox;
+}
+
+
+void QvkCameraSurface_wl::set_checkBoxCameraMirrorVertical(QCheckBox *checkBox)
+{
+    checkBoxCameraMirrorVertical = checkBox;
+}
+
+
 void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
@@ -167,13 +180,18 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
 
 void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
 {
-    //    QImage image = videoFrame.toImage();
-    //    image = image.convertedTo( QImage::Format_ARGB32 );
-    //    cameraImage = pixmap.fromImage(image);
-    //    QPixmap pixmap(QString::fromUtf8( ":/pictures/logo/logo.png"));
-    //    cameraImage = pixmap;
+    QImage image = videoFrame.toImage();
+    image = image.convertedTo( QImage::Format_ARGB32 );
 
-    cameraImage = pixmap.fromImage(videoFrame.toImage());
+    if(checkBoxCameraMirrorHorizontal->isChecked() == true){
+        image = image.mirrored(true, false);
+    }
+
+    if(checkBoxCameraMirrorVertical->isChecked() == true){
+        image = image.mirrored(false, true);
+    }
+
+    cameraImage = pixmap.fromImage(image);
     repaint();
 
     if(a == 0){

@@ -114,6 +114,8 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
         vkCameraSurface_wl->set_toolButtonRectangle(ui->toolButton_camera_view_rectangle);
         vkCameraSurface_wl->set_toolButtonElipse(ui->toolButton_camera_view_ellipse);
         vkCameraSurface_wl->set_toolButtonCircle(ui->toolButton_camera_view_circle);
+        vkCameraSurface_wl->set_checkBoxCameraMirrorHorizontal(ui->checkBoxCameraMirrorHorizontal);
+        vkCameraSurface_wl->set_checkBoxCameraMirrorVertical(ui->checkBoxCameraMirrorVertical);
     }
 
     if ( checked == true ){

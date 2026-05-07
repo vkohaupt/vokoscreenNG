@@ -35,6 +35,7 @@
 #include <QPoint>
 #include <QVideoFrame>
 #include <QToolButton>
+#include <QCheckBox>
 
 class QvkCameraSurface_wl : public QWidget
 {
@@ -49,7 +50,14 @@ public:
     QToolButton *toolButtonRectangle;
     QToolButton *toolButtonElipse;
     QToolButton *toolButtonCircle;
+
+    void set_checkBoxCameraMirrorHorizontal(QCheckBox *checkBox);
+    void set_checkBoxCameraMirrorVertical(QCheckBox *checkBox);
+    QCheckBox *checkBoxCameraMirrorHorizontal;
+    QCheckBox *checkBoxCameraMirrorVertical;
+
     QPixmap pixmap;
+
 
 private:
     int a = 0;

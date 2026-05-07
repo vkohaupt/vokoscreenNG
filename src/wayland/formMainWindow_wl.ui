@@ -1445,7 +1445,7 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>441</width>
+                     <width>449</width>
                      <height>360</height>
                     </rect>
                    </property>
@@ -2485,7 +2485,7 @@
                       <item>
                        <widget class="QCheckBox" name="checkBoxCameraMirrorVertical">
                         <property name="enabled">
-                         <bool>false</bool>
+                         <bool>true</bool>
                         </property>
                         <property name="text">
                          <string>Flip vertical</string>
@@ -2511,7 +2511,7 @@
                       <item>
                        <widget class="QCheckBox" name="checkBoxCameraMirrorHorizontal">
                         <property name="enabled">
-                         <bool>false</bool>
+                         <bool>true</bool>
                         </property>
                         <property name="text">
                          <string>Flip horizontal</string>
@@ -3662,7 +3662,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>
