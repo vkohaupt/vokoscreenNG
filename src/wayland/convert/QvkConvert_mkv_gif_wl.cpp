@@ -39,9 +39,8 @@ QString convert_video_codec_gif;
 int counterConvertGIF = 0;
 QLineEdit *lineEditConvertGIF;
 
-QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMainWindow_wl *vk_ui )
+QvkConvert_mkv_gif_wl::QvkConvert_mkv_gif_wl( Ui_formMainWindow_wl *vk_ui )
 {
-    Q_UNUSED(vkMainWindow)
     ui = vk_ui;
     lineEditConvertGIF = new QLineEdit;
     connect(lineEditConvertGIF, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_gif();});

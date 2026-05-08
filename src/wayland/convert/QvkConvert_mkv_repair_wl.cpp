@@ -44,9 +44,8 @@ int counterConvertRepair = 0;
 QLineEdit *lineEditConvertRepair;
 
 
-QvkConvert_mkv_repair_wl::QvkConvert_mkv_repair_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMainWindow_wl *vk_ui )
+QvkConvert_mkv_repair_wl::QvkConvert_mkv_repair_wl( Ui_formMainWindow_wl *vk_ui )
 {
-    Q_UNUSED(vkMainWindow)
     ui = vk_ui;
     lineEditConvertRepair = new QLineEdit;
     connect(lineEditConvertRepair, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_repair();});

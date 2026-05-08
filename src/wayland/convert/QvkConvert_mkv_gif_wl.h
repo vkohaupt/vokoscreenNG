@@ -24,7 +24,6 @@
 #define QVKCONVERT_MKV_GIF_WL_H
 
 #include "ui_formMainWindow_wl.h"
-#include "mainWindow_wl.h"
 
 #include <QWidget>
 #include <QPalette>
@@ -51,9 +50,8 @@ class QvkConvert_mkv_gif_wl: public QWidget
 {
     Q_OBJECT
 public:
-    QvkConvert_mkv_gif_wl(QvkMainWindow_wl *vkMainWindow, Ui_formMainWindow_wl *vk_ui );
+    QvkConvert_mkv_gif_wl(Ui_formMainWindow_wl *vk_ui );
     virtual ~QvkConvert_mkv_gif_wl();
-    QvkMainWindow_wl *mainWindow;
 
 
 private:

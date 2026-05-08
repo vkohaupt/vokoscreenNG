@@ -140,9 +140,9 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
     vkCameraController_wl = new QvkCameraController_wl( ui );
     vkConvert_mkv_mp4_wl = new QvkConvert_mkv_mp4_wl( ui );
-    new QvkConvert_mkv_gif_wl( this, ui );
-    new QvkConvert_mkv_to_webm_wl( this, ui );
-    new QvkConvert_mkv_repair_wl( this, ui );
+    new QvkConvert_mkv_gif_wl( ui );
+    new QvkConvert_mkv_to_webm_wl( ui );
+    new QvkConvert_mkv_repair_wl( ui );
 
     QList<QScreen *> screen = QGuiApplication::screens();
     if ( !screen.empty() ) {

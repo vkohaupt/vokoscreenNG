@@ -41,9 +41,8 @@ QString convert_audio_codec_webm;
 QLineEdit *lineEditConvertWEBM;
 int counterConvertWEBM = 0;
 
-QvkConvert_mkv_to_webm_wl::QvkConvert_mkv_to_webm_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMainWindow_wl *vk_ui )
+QvkConvert_mkv_to_webm_wl::QvkConvert_mkv_to_webm_wl(Ui_formMainWindow_wl *vk_ui)
 {
-    Q_UNUSED(vkMainWindow)
     ui = vk_ui;
     lineEditConvertWEBM = new QLineEdit;
     connect(lineEditConvertWEBM, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_WEBM();});
