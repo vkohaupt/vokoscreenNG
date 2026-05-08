@@ -91,7 +91,6 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
     // Surface wird einmal angelegt für alle Cameras
     if (vkCameraSurface_wl == NULL){
         vkCameraSurface_wl = new QvkCameraSurface_wl();
-        vkCameraSurface_wl->show();
 
         connect(vkCameraSurface_wl, &QvkCameraSurface_wl::signal_cameraSurfaceClose, this, [=](){checkBoxCameraOnOff->click();});
 
@@ -158,6 +157,7 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
                 captureSession->setCamera(camera);
                 captureSession->setVideoOutput(videoSink);
                 camera->start();
+                vkCameraSurface_wl->show();
             }
         }
     }
@@ -168,8 +168,7 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
         camera = NULL;
 
         //Don´t make a vkCameraSurface_wl->close(). It is not good, if close the window from taskbar
-        delete vkCameraSurface_wl;
-        vkCameraSurface_wl = NULL;
+        vkCameraSurface_wl->hide();
     }
 }
 
