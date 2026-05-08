@@ -1,6 +1,9 @@
 #ifndef MAINWINDOW_WL_H
 #define MAINWINDOW_WL_H
 
+#include "QvkSpezialSlider.h"
+#include "QvkLicenses.h"
+
 #include "ui_formMainWindow_wl.h"
 #include "portal_wl.h"
 #include "QvkSettings_wl.h"
@@ -11,8 +14,9 @@
 #include "QvkSystray_wl.h"
 #include "QvkRegionMargins_wl.h"
 #include "QvkLogController_wl.h"
-#include "QvkSpezialSlider.h"
 #include "QvkInformation_wl.h"
+#include "QvkAudioController_wl.h"
+#include "QvkImageFromTabs_wl.h"
 
 #include <QMainWindow>
 #include <QWidget>
@@ -60,6 +64,9 @@ private:
     QString Pipeline_structured_output( QString pipeline );
     QvkRegionMargins_wl *vkRegionMargins_wl;
     QvkInformation_wl *vkInformation;
+    QvkAudioController_wl *vkAudioController;
+    QvkLicenses *vkLicenses;
+    QvkImageFromTabs_wl *vkImageFromTabs_wl;
 
     void set_WindowTitle();
     void set_CornerWidget();

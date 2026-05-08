@@ -36,10 +36,11 @@
 #include <QDesktopServices>
 #include <QMessageBox>
 
-QvkImageFromTabs_wl::QvkImageFromTabs_wl( QvkMainWindow_wl *parent )
+//QvkImageFromTabs_wl::QvkImageFromTabs_wl( QvkMainWindow_wl *parent )
+QvkImageFromTabs_wl::QvkImageFromTabs_wl( Ui_formMainWindow_wl *ui_mainwindow )
 {
-    myParent = parent;
-    connect( myParent->ui->pushButtonImages, &QPushButton::clicked, this, [=](){slot_make_picture_from_tabs();});
+    ui = ui_mainwindow;
+    connect( ui->pushButtonImages, &QPushButton::clicked, this, [=](){slot_make_picture_from_tabs();});
 }
 
 
@@ -49,7 +50,7 @@ QvkImageFromTabs_wl::~QvkImageFromTabs_wl()
 
 void QvkImageFromTabs_wl::slot_make_picture_from_tabs()
 {
-    myParent->ui->pushButtonImages->setEnabled( false );
+    ui->pushButtonImages->setEnabled( false );
 
     counterFile = 0;
     counter = 0;
@@ -64,22 +65,22 @@ void QvkImageFromTabs_wl::slot_make_picture_from_tabs()
 
 void QvkImageFromTabs_wl::slot_make_picture_from_tab()
 {
-    if ( counter >= myParent->ui->tabWidgetScreencast->tabBar()->count() ) {
+    if ( counter >= ui->tabWidgetScreencast->tabBar()->count() ) {
         timer->stop();
-        myParent->ui->pushButtonImages->setEnabled( true );
+        ui->pushButtonImages->setEnabled( true );
         emit signal_open_picture_folder();
         disconnect( this, NULL, NULL, NULL );
         return;
     }
 
-    myParent->ui->tabWidgetScreencast->setCurrentIndex( counter );
-    if ( myParent->ui->tabWidgetScreencast->tabBar()->isTabVisible( counter ) == true ) {
+    ui->tabWidgetScreencast->setCurrentIndex( counter );
+    if ( ui->tabWidgetScreencast->tabBar()->isTabVisible( counter ) == true ) {
         int titelBarHight = 32;
         counter++;
 
         // Grab window
         QPixmap windowPixmap;
-        windowPixmap = myParent->ui->centralwidget->grab();
+        windowPixmap = ui->centralwidget->grab();
 
         // The new size for the painter
         QRect rect( 0, 0, windowPixmap.width(), windowPixmap.height() + titelBarHight );
@@ -122,8 +123,8 @@ void QvkImageFromTabs_wl::slot_make_picture_from_tab()
         painter.end();
 
         pixmapImage.save( QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) + "/" + "vokoscreenNG-" + QString::number( counterFile++ ) + ".png" );
-        myParent->ui->label_save_image_path->setAlignment( Qt::AlignHCenter );
-        myParent->ui->label_save_image_path->setText( "Images saved in: " + QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
+        ui->label_save_image_path->setAlignment( Qt::AlignHCenter );
+        ui->label_save_image_path->setText( "Images saved in: " + QStandardPaths::writableLocation( QStandardPaths::PicturesLocation ) );
     }
 }
 

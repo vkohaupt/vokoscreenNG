@@ -1,15 +1,12 @@
 #include "mainWindow_wl.h"
-#include "QvkImageFromTabs_wl.h"
 #include "QvkShowMessage_wl.h"
 #include "QvkCameraController_wl.h"
-#include "QvkAudioController_wl.h"
 #include "QvkConvert_mkv_mp4_wl.h"
 #include "QvkConvert_mkv_gif_wl.h"
 #include "QvkConvert_mkv_to_webm_wl.h"
 #include "QvkConvert_mkv_repair_wl.h"
 
 #include "global.h"
-#include "QvkLicenses.h"
 #include "qvkdirdialog.h"
 #include "QvkFileDialog.h"
 
@@ -108,7 +105,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_check_MP4_convert_elements_available();
     set_check_WEBM_convert_elements_available();
 
-    QvkAudioController_wl *vkAudioController = new QvkAudioController_wl( ui );
+    vkAudioController = new QvkAudioController_wl( ui );
     vkAudioController->init();
 
     connect(ui->toolButtonSeparatedAudioTracksReset, &QToolButton::clicked, this, [=](){
@@ -116,8 +113,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     });
 
     vkHelp = new QvkHelp_wl( ui );
-    new QvkLicenses( ui->pushButtonLicense );
-    new QvkImageFromTabs_wl( this );
+    vkLicenses = new QvkLicenses( ui->pushButtonLicense );
+    vkImageFromTabs_wl = new QvkImageFromTabs_wl(ui);
 
     // Misc
     videoFileSystemWatcher = new QFileSystemWatcher();

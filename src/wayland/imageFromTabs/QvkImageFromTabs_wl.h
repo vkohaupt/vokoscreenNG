@@ -24,7 +24,6 @@
 #define QVKIMAGEFROMTABS_WL_H
 
 #include "ui_formMainWindow_wl.h"
-#include "mainWindow_wl.h"
 
 #include <QWindow>
 #include <QTimer>
@@ -34,7 +33,7 @@ class QvkImageFromTabs_wl : public QWindow
     Q_OBJECT
 
 public:
-    QvkImageFromTabs_wl( QvkMainWindow_wl *parent = 0 );
+    QvkImageFromTabs_wl(Ui_formMainWindow_wl *ui_mainwindow = 0 );
     virtual ~QvkImageFromTabs_wl();
 
 
@@ -55,7 +54,7 @@ protected:
 
 
 private:
-    QvkMainWindow_wl *myParent = Q_NULLPTR;
+    Ui_formMainWindow_wl *ui;
     int counterFile;
     int counter;
     QTimer *timer;
