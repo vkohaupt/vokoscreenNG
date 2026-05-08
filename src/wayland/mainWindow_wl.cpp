@@ -1,6 +1,5 @@
 #include "mainWindow_wl.h"
 #include "QvkShowMessage_wl.h"
-#include "QvkCameraController_wl.h"
 #include "QvkConvert_mkv_gif_wl.h"
 #include "QvkConvert_mkv_to_webm_wl.h"
 #include "QvkConvert_mkv_repair_wl.h"
@@ -139,7 +138,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->line_cisco->hide();
     ui->label_Upate_tab_2->hide();
 
-    new QvkCameraController_wl( ui ); //------------------------------------------------------------------------
+    vkCameraController_wl = new QvkCameraController_wl( ui );
     vkConvert_mkv_mp4_wl = new QvkConvert_mkv_mp4_wl( ui );
     new QvkConvert_mkv_gif_wl( this, ui );
     new QvkConvert_mkv_to_webm_wl( this, ui );
