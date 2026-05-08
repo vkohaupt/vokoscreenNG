@@ -36,7 +36,6 @@
 #include <QDesktopServices>
 #include <QMessageBox>
 
-//QvkImageFromTabs_wl::QvkImageFromTabs_wl( QvkMainWindow_wl *parent )
 QvkImageFromTabs_wl::QvkImageFromTabs_wl( Ui_formMainWindow_wl *ui_mainwindow )
 {
     ui = ui_mainwindow;
