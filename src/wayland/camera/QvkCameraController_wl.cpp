@@ -172,53 +172,6 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
     }
 }
 
-
-/*
-            if (checkBox->isChecked() == true){
-                vkCameraSurface_wl = new QvkCameraSurface_wl();
-                vkCameraSurface_wl->show();
-
-                const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
-                for ( int x = 0; x < cameras.count(); x++ ){
-                    QCameraDevice cameraDevice = cameras.at(x);
-                    if ( cameraDevice.id() == device.section(":::", 0, 0) ){
-                        QCamera *camera = new QCamera(cameraDevice);
-                        QVideoSink *videoSink = new QVideoSink;
-                        connect(videoSink,
-                                &QVideoSink::videoFrameChanged,
-                                vkCameraSurface_wl,
-                                [this](QVideoFrame videoFrame){
-                            vkCameraSurface_wl->slot_setCameraImage(videoFrame);
-                        });
-
-                        QMediaCaptureSession *captureSession = new QMediaCaptureSession;
-                        captureSession->setCamera( camera );
-                        captureSession->setVideoOutput( videoSink );
-                        camera->start();
-                    }
-                }
-            }
-            if (checkBox->isChecked() == false){
-                //camera->stop();
-            }
-        });
-    }
-
-    if ( device.contains( "removed" ) ) {
-        QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>( "checkBoxCameraOnOff" );
-        for ( int i = 0; i < listCheckBox.count(); i++ ) {
-            QCheckBox *checkBox = listCheckBox.at(i);
-            if ( checkBox->accessibleName().section( ":::", 0, 0 ) == device.section( ":::", 0, 0 ) ) {
-                ui->layoutAllCameras->removeWidget( checkBox );
-                if ( checkBox->checkState() == Qt::Checked ) {
-                    checkBox->click();
-                }
-                delete checkBox;
-            }
-        }
-    }
-}
-*/
 /*
 void QvkCameraController_wl::slot_checkBoxCameraOnOff( bool value )
 {
