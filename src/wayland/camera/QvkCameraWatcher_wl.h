@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QVKCAMERAWATCHER_H
-#define QVKCAMERAWATCHER_H
+#ifndef QVKCAMERAWATCHER_WL_H
+#define QVKCAMERAWATCHER_WL_H
 
 #include <QObject>
 #include <QCameraDevice>
