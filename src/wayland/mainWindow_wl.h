@@ -17,6 +17,7 @@
 #include "QvkInformation_wl.h"
 #include "QvkAudioController_wl.h"
 #include "QvkImageFromTabs_wl.h"
+#include "QvkConvert_mkv_mp4_wl.h"
 
 #include <QMainWindow>
 #include <QWidget>
@@ -48,6 +49,7 @@ public:
     QvkSpezialSlider *sliderWaitBeforeSnapshot;
     QvkHelp_wl *vkHelp;
     QvkSystray_wl *vkSystray;
+    QvkConvert_mkv_mp4_wl *vkConvert_mkv_mp4_wl;
 
 
 private:

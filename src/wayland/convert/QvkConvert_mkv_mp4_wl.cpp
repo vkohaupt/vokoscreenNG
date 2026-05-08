@@ -40,9 +40,8 @@ QString convert_audio_codec_mp4;
 QLineEdit *lineEditConvertMP4;
 int counterConvertMP4 = 0;
 
-QvkConvert_mkv_mp4_wl::QvkConvert_mkv_mp4_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMainWindow_wl *vk_ui )
+QvkConvert_mkv_mp4_wl::QvkConvert_mkv_mp4_wl( Ui_formMainWindow_wl *vk_ui )
 {
-    Q_UNUSED(vkMainWindow)
     ui = vk_ui;
     lineEditConvertMP4 = new QLineEdit;
     connect(lineEditConvertMP4, &QLineEdit::textChanged, this, [=](){slot_lineEdit_Convert_eos_MP4();});
