@@ -21,6 +21,7 @@
  */
 
 #include "QvkInformation_wl.h"
+#include "QvkSpezialSlider.h"
 
 #include <QTimer>
 #include <QTime>
@@ -32,9 +33,8 @@
 #include <QFileInfo>
 #include <QPushButton>
 
-QvkInformation_wl::QvkInformation_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMainWindow_wl *ui_mainwindow )
+QvkInformation_wl::QvkInformation_wl( Ui_formMainWindow_wl *ui_mainwindow )
 {
-    mainWindow = vkMainWindow;
     ui = ui_mainwindow;
     ui->labelVideoSize->setText("");
     ui->labelFreeSize->setText("");
@@ -58,7 +58,14 @@ QvkInformation_wl::QvkInformation_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMai
 
     // Frames, Format, Codecs
     connect(ui->comboBoxAudioCodec,   &QComboBox::currentTextChanged,  this, [this](QString value){slot_Audiocodec(value);});
-    connect(mainWindow->sliderFrames, &QvkSpezialSlider::valueChanged, this, [this](int value)    {slot_Frames(value);});
+
+    QList<QSlider *> listSlider = ui->centralwidget->findChildren<QSlider *>();
+    for ( int i = 0; i < listSlider.count(); i++ ) {
+        QSlider *slider = listSlider.at(i);
+        if ( slider->objectName() == "sliderFrames" ) {
+            connect(slider, &QvkSpezialSlider::valueChanged, this, [this](int value){slot_Frames(value);});
+        }
+    }
 }
 
 

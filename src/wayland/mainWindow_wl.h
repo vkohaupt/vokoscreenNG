@@ -12,6 +12,7 @@
 #include "QvkRegionMargins_wl.h"
 #include "QvkLogController_wl.h"
 #include "QvkSpezialSlider.h"
+#include "QvkInformation_wl.h"
 
 #include <QMainWindow>
 #include <QWidget>
@@ -58,6 +59,7 @@ private:
     QStringList VK_getSelectedAudioDevice();
     QString Pipeline_structured_output( QString pipeline );
     QvkRegionMargins_wl *vkRegionMargins_wl;
+    QvkInformation_wl *vkInformation;
 
     void set_WindowTitle();
     void set_CornerWidget();

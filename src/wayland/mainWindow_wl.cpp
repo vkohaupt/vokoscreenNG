@@ -1,5 +1,4 @@
 #include "mainWindow_wl.h"
-#include "QvkInformation_wl.h"
 #include "QvkImageFromTabs_wl.h"
 #include "QvkShowMessage_wl.h"
 #include "QvkCameraController_wl.h"
@@ -95,9 +94,9 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     get_system_info();
     set_CornerWidget();
     set_SpezialSliders();
-    QvkInformation_wl *vkInformation = new QvkInformation_wl( this, ui );
-    connect(this, &QvkMainWindow_wl::signal_newVideoFilename, vkInformation, [vkInformation](QString filename){vkInformation->slot_newVideoFilename(filename);});
-    connect(this, &QvkMainWindow_wl::signal_beginRecordTime,  vkInformation, [vkInformation](QString beginTime){vkInformation->slot_beginRecordTime(beginTime);});
+    vkInformation = new QvkInformation_wl( ui );
+    connect(this, &QvkMainWindow_wl::signal_newVideoFilename, vkInformation, [=](QString filename){vkInformation->slot_newVideoFilename(filename);});
+    connect(this, &QvkMainWindow_wl::signal_beginRecordTime,  vkInformation, [=](QString beginTime){vkInformation->slot_beginRecordTime(beginTime);});
 
     vkRegionMargins_wl = new QvkRegionMargins_wl( ui );
 

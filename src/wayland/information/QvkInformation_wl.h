@@ -24,7 +24,6 @@
 #define QVKINFORMATION_WL_H
 
 #include "ui_formMainWindow_wl.h"
-#include "mainWindow_wl.h"
 
 #include <QWidget>
 #include <QTimer>
@@ -33,9 +32,8 @@ class QvkInformation_wl: public QWidget
 {
     Q_OBJECT
 public:
-    QvkInformation_wl( QvkMainWindow_wl *vkMainWindow, Ui_formMainWindow_wl *ui_mainwindow );
+    QvkInformation_wl(Ui_formMainWindow_wl *ui_mainwindow );
     virtual ~QvkInformation_wl();
-    QvkMainWindow_wl *mainWindow;
 
 
 public Q_SLOTS:
