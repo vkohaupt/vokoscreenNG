@@ -757,14 +757,6 @@
         <translation>Kamera</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Dikey çevir</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Yatay çevir</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Kayıttan önce biraz bekle</translation>
     </message>

@@ -757,14 +757,6 @@
         <translation>Kamera</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Baliktarin ng patayo</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Ibaling ng pahalang</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Segundong hihintayin bago ang pagtatala</translation>
     </message>

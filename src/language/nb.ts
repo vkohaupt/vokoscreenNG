@@ -757,14 +757,6 @@
         <translation>Kamera</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Snu vertikalt</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Snu horisontalt</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Sekund venting før opptak</translation>
     </message>

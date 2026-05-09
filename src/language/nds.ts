@@ -757,14 +757,6 @@
         <translation>Kamera</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Vertikaal umdreihn</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Horizontaal umdreihn</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Wachttied in Sekünnen vör’m Upteknen</translation>
     </message>

@@ -757,14 +757,6 @@
         <translation>Kamera</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Vertikal spiegeln</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Horizontal spiegeln</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Sekunden vor der Aufnahme warten</translation>
     </message>

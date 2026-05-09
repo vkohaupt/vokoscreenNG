@@ -757,14 +757,6 @@
         <translation>Kamera</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Putar secara vertikal</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Putar secara horizontal</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Detik menunggu sebelum merekam</translation>
     </message>

@@ -757,14 +757,6 @@
         <translation>Kamera</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Překlopit svisle</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Překlopit vodorovně</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Prodleva spuštění záznamu v sekundách</translation>
     </message>

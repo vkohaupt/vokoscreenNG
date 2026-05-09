@@ -757,14 +757,6 @@
         <translation>Webcam</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Capovolgi verticale</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Capovolgi orizzontale</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Secondi di attesa prima di registrare</translation>
     </message>

@@ -757,14 +757,6 @@
         <translation>מצלמה</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>היפוך אנכי</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>היפוך אופקי</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>שניות לפני ההקלטה</translation>
     </message>

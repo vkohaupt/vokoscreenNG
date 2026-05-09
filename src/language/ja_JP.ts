@@ -757,14 +757,6 @@
         <translation>カメラ</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>垂直反転</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>水平反転</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>録画前の秒数</translation>
     </message>

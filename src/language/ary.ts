@@ -757,14 +757,6 @@
         <translation>الكاميرا</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>قلب للأعلى</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>قلب أفقي</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>ثانية ديال الإنتظار قبل التسجيل</translation>
     </message>

@@ -757,14 +757,6 @@
         <translation>Cameră</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Răstoarnă pe vertical</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Răstoarnă pe orizontal</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Secunde înainte să pornească înregistrarea</translation>
     </message>

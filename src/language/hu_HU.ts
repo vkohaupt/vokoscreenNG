@@ -757,14 +757,6 @@
         <translation>Kamera</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Függőleges fordítás</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Vízszintes fordítás</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Várakozás a rögzítés megkezdése előtt másodpercben</translation>
     </message>

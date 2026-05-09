@@ -757,14 +757,6 @@
         <translation>กล้อง</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>พลิกแนวตั้ง</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>พลิกแนวนอน</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Second wait before recording</translation>
     </message>

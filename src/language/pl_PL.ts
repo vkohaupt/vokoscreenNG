@@ -757,14 +757,6 @@
         <translation>Kamera</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Odwróć pionowo</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Odwróć poziomo</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Sekund do nagrania</translation>
     </message>

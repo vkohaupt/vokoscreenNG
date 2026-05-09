@@ -757,14 +757,6 @@
         <translation>Kamera</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Käännä pystysuunnassa</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Käännä vaakasuunnassa</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Sekuntia odotusta ennen tallennusta</translation>
     </message>

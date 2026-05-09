@@ -757,14 +757,6 @@
         <translation>Kamera</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Vänd vertikalt</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Vänd horisontellt</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Vänta x sekunder före inspelningsstart</translation>
     </message>

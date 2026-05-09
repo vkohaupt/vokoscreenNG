@@ -757,14 +757,6 @@
         <translation>Cámara</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Giro vertical</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Giro horizontal</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Segundo de espera antes de la grabación</translation>
     </message>

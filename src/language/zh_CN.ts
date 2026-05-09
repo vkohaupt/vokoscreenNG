@@ -757,14 +757,6 @@
         <translation>摄像头</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>纵向翻转</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>横向翻转</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>开始录制前等待秒数：</translation>
     </message>

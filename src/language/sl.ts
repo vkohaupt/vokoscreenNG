@@ -757,14 +757,6 @@
         <translation>Kamera</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Zrcali navpično</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Zrcali vodoravno</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Čas čakanja pred začetkom snemanja</translation>
     </message>

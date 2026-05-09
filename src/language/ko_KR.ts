@@ -757,14 +757,6 @@
         <translation>카메라</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>상하 뒤집기</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>좌우 뒤집기</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>몇 초 후 녹화 시작</translation>
     </message>

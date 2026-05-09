@@ -757,14 +757,6 @@
         <translation>Κάμερα</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Κάθετη περιστροφή</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Οριζόντια περιστροφή</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Δευτερόλεπτα αναμονής πριν την εγγραφή</translation>
     </message>

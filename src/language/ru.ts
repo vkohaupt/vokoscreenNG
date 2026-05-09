@@ -757,14 +757,6 @@
         <translation>Камера</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Отразить по вертикали</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Отразить по горизонтали</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Секунд до начала записи</translation>
     </message>

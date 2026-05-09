@@ -757,14 +757,6 @@
         <translation>Kamera</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Apversti vertikaliai</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Apversti horizontaliai</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Luktelėti sekundėlę prieš įrašinėjant</translation>
     </message>

@@ -759,14 +759,6 @@
         <translation>دوربین</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>عمودی چرخاندن</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>افقی چرخاندن</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>ثانیه صبر کن قبل از شروع ضبط</translation>
     </message>

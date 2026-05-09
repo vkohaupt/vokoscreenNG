@@ -757,14 +757,6 @@
         <translation>Камера</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation> Тігінен айналдыру</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Көлденең айналдыру</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Жазу алдында екінші рет күту</translation>
     </message>

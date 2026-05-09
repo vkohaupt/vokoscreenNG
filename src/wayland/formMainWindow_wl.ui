@@ -461,8 +461,8 @@
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>16</width>
-                          <height>26</height>
+                          <width>401</width>
+                          <height>116</height>
                          </rect>
                         </property>
                         <property name="accessibleName">
@@ -2374,14 +2374,14 @@
                        <number>0</number>
                       </property>
                       <item>
-                       <widget class="QToolButton" name="toolButtonCameraMirrorVertikal">
+                       <widget class="QToolButton" name="toolButtonCameraMirrorVertical">
                         <property name="text">
                          <string notr="true"/>
                         </property>
                         <property name="icon">
                          <iconset resource="../screencast.qrc">
-                          <normaloff>:/pictures/camera/flip-vertikal-off.png</normaloff>
-                          <normalon>:/pictures/camera/flip-vertikal-on.png</normalon>:/pictures/camera/flip-vertikal-off.png</iconset>
+                          <normaloff>:/pictures/camera/flip-vertical-off.png</normaloff>
+                          <normalon>:/pictures/camera/flip-vertical-on.png</normalon>:/pictures/camera/flip-vertical-off.png</iconset>
                         </property>
                         <property name="iconSize">
                          <size>
@@ -3536,7 +3536,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>

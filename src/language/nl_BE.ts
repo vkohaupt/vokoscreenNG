@@ -757,14 +757,6 @@
         <translation>Camera</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Verticaal spiegelen</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Horizontaal spiegelen</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Aantal seconden voordat opname start</translation>
     </message>

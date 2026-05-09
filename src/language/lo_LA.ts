@@ -757,14 +757,6 @@
         <translation>ກ້ອງຖ່າຍຮູບ</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>ປີ້ນແນວຕັ້ງ</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>ປີ້ນແນວນອນ</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>ລໍຖ້າກ່ອນບັນທຶກ (ວິນາທີ)</translation>
     </message>

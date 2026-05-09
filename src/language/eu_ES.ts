@@ -757,14 +757,6 @@
         <translation>Kamera</translation>
     </message>
     <message>
-        <source>Flip vertical</source>
-        <translation>Irauli bertikalean</translation>
-    </message>
-    <message>
-        <source>Flip horizontal</source>
-        <translation>Irauli horizontalean</translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation>Segundo hauen ondoren hasi grabatzen</translation>
     </message>
