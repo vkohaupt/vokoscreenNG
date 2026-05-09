@@ -52,7 +52,7 @@
            <string notr="true"/>
           </property>
           <property name="icon">
-           <iconset resource="../screencast.qrc">
+           <iconset>
             <normaloff>:/pictures/screencast/monitor.png</normaloff>:/pictures/screencast/monitor.png</iconset>
           </property>
           <property name="iconSize">
@@ -87,7 +87,7 @@
            <string notr="true"/>
           </property>
           <property name="icon">
-           <iconset resource="../screencast.qrc">
+           <iconset>
             <normaloff>:/pictures/camera/camera.png</normaloff>:/pictures/camera/camera.png</iconset>
           </property>
           <property name="iconSize">
@@ -122,7 +122,7 @@
            <string notr="true"/>
           </property>
           <property name="icon">
-           <iconset resource="../screencast.qrc">
+           <iconset>
             <normaloff>:/pictures/snapshot/snapshot.png</normaloff>:/pictures/snapshot/snapshot.png</iconset>
           </property>
           <property name="iconSize">
@@ -157,7 +157,7 @@
            <string notr="true"/>
           </property>
           <property name="icon">
-           <iconset resource="../screencast.qrc">
+           <iconset>
             <normaloff>:/pictures/screencast/convert.png</normaloff>:/pictures/screencast/convert.png</iconset>
           </property>
           <property name="iconSize">
@@ -192,7 +192,7 @@
            <string notr="true"/>
           </property>
           <property name="icon">
-           <iconset resource="../screencast.qrc">
+           <iconset>
             <normaloff>:/pictures/log/log.png</normaloff>:/pictures/log/log.png</iconset>
           </property>
           <property name="iconSize">
@@ -236,7 +236,7 @@
          <enum>QTabWidget::West</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab_sidebar_screeancast">
          <attribute name="title">
@@ -271,7 +271,7 @@
             </property>
             <widget class="QWidget" name="tabScreen">
              <attribute name="icon">
-              <iconset resource="../screencast.qrc">
+              <iconset>
                <normaloff>:/pictures/screencast/monitor.png</normaloff>:/pictures/screencast/monitor.png</iconset>
              </attribute>
              <attribute name="title">
@@ -338,7 +338,7 @@
                        <string notr="true"/>
                       </property>
                       <property name="icon">
-                       <iconset resource="../screencast.qrc">
+                       <iconset>
                         <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                       </property>
                      </widget>
@@ -462,7 +462,7 @@
                           <x>0</x>
                           <y>0</y>
                           <width>401</width>
-                          <height>116</height>
+                          <height>151</height>
                          </rect>
                         </property>
                         <property name="accessibleName">
@@ -555,7 +555,7 @@
                         <string notr="true"/>
                        </property>
                        <property name="icon">
-                        <iconset resource="../screencast.qrc">
+                        <iconset>
                          <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                        </property>
                       </widget>
@@ -653,7 +653,7 @@
                             <string notr="true"/>
                            </property>
                            <property name="pixmap">
-                            <pixmap resource="../screencast.qrc">:/pictures/screencast/compress.png</pixmap>
+                            <pixmap>:/pictures/screencast/compress.png</pixmap>
                            </property>
                            <property name="scaledContents">
                             <bool>true</bool>
@@ -669,7 +669,7 @@
                             <string notr="true"/>
                            </property>
                            <property name="icon">
-                            <iconset resource="../screencast.qrc">
+                            <iconset>
                              <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                            </property>
                           </widget>
@@ -738,7 +738,7 @@
                            <string notr="true"/>
                           </property>
                           <property name="icon">
-                           <iconset resource="../screencast.qrc">
+                           <iconset>
                             <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                           </property>
                          </widget>
@@ -1110,7 +1110,7 @@
             </widget>
             <widget class="QWidget" name="tabMisc">
              <attribute name="icon">
-              <iconset resource="../screencast.qrc">
+              <iconset>
                <normaloff>:/pictures/screencast/preferences-system.png</normaloff>:/pictures/screencast/preferences-system.png</iconset>
              </attribute>
              <attribute name="title">
@@ -1178,7 +1178,7 @@
                         <string notr="true">...</string>
                        </property>
                        <property name="icon">
-                        <iconset resource="../screencast.qrc">
+                        <iconset>
                          <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                        </property>
                       </widget>
@@ -1216,7 +1216,7 @@
                       <string notr="true"/>
                      </property>
                      <property name="pixmap">
-                      <pixmap resource="../screencast.qrc">:/pictures/screencast/world.png</pixmap>
+                      <pixmap>:/pictures/screencast/world.png</pixmap>
                      </property>
                      <property name="scaledContents">
                       <bool>true</bool>
@@ -1264,7 +1264,7 @@
                       <string notr="true"/>
                      </property>
                      <property name="pixmap">
-                      <pixmap resource="../screencast.qrc">:/pictures/screencast/information.png</pixmap>
+                      <pixmap>:/pictures/screencast/information.png</pixmap>
                      </property>
                      <property name="scaledContents">
                       <bool>true</bool>
@@ -1377,7 +1377,7 @@
             </widget>
             <widget class="QWidget" name="tabAvailable">
              <attribute name="icon">
-              <iconset resource="../screencast.qrc">
+              <iconset>
                <normaloff>:/pictures/screencast/supported-formats.png</normaloff>:/pictures/screencast/supported-formats.png</iconset>
              </attribute>
              <attribute name="title">
@@ -1445,8 +1445,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>449</width>
-                     <height>360</height>
+                     <width>20</width>
+                     <height>98</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -1489,7 +1489,7 @@
                      <string notr="true"/>
                     </property>
                     <property name="pixmap">
-                     <pixmap resource="../screencast.qrc">:/pictures/screencast/accept.png</pixmap>
+                     <pixmap>:/pictures/screencast/accept.png</pixmap>
                     </property>
                     <property name="scaledContents">
                      <bool>true</bool>
@@ -1535,7 +1535,7 @@
                      <string notr="true"/>
                     </property>
                     <property name="pixmap">
-                     <pixmap resource="../screencast.qrc">:/pictures/screencast/missing.png</pixmap>
+                     <pixmap>:/pictures/screencast/missing.png</pixmap>
                     </property>
                     <property name="scaledContents">
                      <bool>true</bool>
@@ -1613,7 +1613,7 @@
             </widget>
             <widget class="QWidget" name="tab">
              <attribute name="icon">
-              <iconset resource="../screencast.qrc">
+              <iconset>
                <normaloff>:/pictures/screencast/help-about.png</normaloff>:/pictures/screencast/help-about.png</iconset>
              </attribute>
              <attribute name="title">
@@ -1660,7 +1660,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="../screencast.qrc">:/pictures/screencast/author.png</pixmap>
+                   <pixmap>:/pictures/screencast/author.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -2144,7 +2144,7 @@
             </property>
             <widget class="QWidget" name="tabCamera">
              <attribute name="icon">
-              <iconset resource="../screencast.qrc">
+              <iconset>
                <normaloff>:/pictures/camera/camera.png</normaloff>:/pictures/camera/camera.png</iconset>
              </attribute>
              <attribute name="title">
@@ -2210,144 +2210,21 @@
                     <property name="verticalSpacing">
                      <number>9</number>
                     </property>
-                    <item row="4" column="0" colspan="3">
-                     <layout class="QHBoxLayout" name="horizontalLayout_65">
-                      <property name="spacing">
-                       <number>0</number>
+                    <item row="3" column="1">
+                     <spacer name="verticalSpacer_14">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
                       </property>
-                      <property name="leftMargin">
-                       <number>0</number>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Preferred</enum>
                       </property>
-                      <item>
-                       <widget class="QToolButton" name="toolButton_camera_view_rectangle">
-                        <property name="text">
-                         <string notr="true"/>
-                        </property>
-                        <property name="icon">
-                         <iconset resource="../screencast.qrc">
-                          <normaloff>:/pictures/camera/window-rectangle-off.png</normaloff>
-                          <normalon>:/pictures/camera/window-rectangle-on.png</normalon>:/pictures/camera/window-rectangle-off.png</iconset>
-                        </property>
-                        <property name="iconSize">
-                         <size>
-                          <width>34</width>
-                          <height>34</height>
-                         </size>
-                        </property>
-                        <property name="checkable">
-                         <bool>true</bool>
-                        </property>
-                        <property name="checked">
-                         <bool>true</bool>
-                        </property>
-                        <property name="autoExclusive">
-                         <bool>true</bool>
-                        </property>
-                        <property name="autoRaise">
-                         <bool>true</bool>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <spacer name="horizontalSpacer_35">
-                        <property name="orientation">
-                         <enum>Qt::Horizontal</enum>
-                        </property>
-                        <property name="sizeType">
-                         <enum>QSizePolicy::Preferred</enum>
-                        </property>
-                        <property name="sizeHint" stdset="0">
-                         <size>
-                          <width>40</width>
-                          <height>20</height>
-                         </size>
-                        </property>
-                       </spacer>
-                      </item>
-                      <item>
-                       <widget class="QToolButton" name="toolButton_camera_view_circle">
-                        <property name="text">
-                         <string notr="true"/>
-                        </property>
-                        <property name="icon">
-                         <iconset resource="../screencast.qrc">
-                          <normaloff>:/pictures/camera/window-circle-off.png</normaloff>
-                          <normalon>:/pictures/camera/window-circle-on.png</normalon>:/pictures/camera/window-circle-off.png</iconset>
-                        </property>
-                        <property name="iconSize">
-                         <size>
-                          <width>34</width>
-                          <height>34</height>
-                         </size>
-                        </property>
-                        <property name="checkable">
-                         <bool>true</bool>
-                        </property>
-                        <property name="autoExclusive">
-                         <bool>true</bool>
-                        </property>
-                        <property name="autoRaise">
-                         <bool>true</bool>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <spacer name="horizontalSpacer_36">
-                        <property name="orientation">
-                         <enum>Qt::Horizontal</enum>
-                        </property>
-                        <property name="sizeType">
-                         <enum>QSizePolicy::Preferred</enum>
-                        </property>
-                        <property name="sizeHint" stdset="0">
-                         <size>
-                          <width>40</width>
-                          <height>20</height>
-                         </size>
-                        </property>
-                       </spacer>
-                      </item>
-                      <item>
-                       <widget class="QToolButton" name="toolButton_camera_view_ellipse">
-                        <property name="text">
-                         <string notr="true"/>
-                        </property>
-                        <property name="icon">
-                         <iconset resource="../screencast.qrc">
-                          <normaloff>:/pictures/camera/window-ellipse-off.png</normaloff>
-                          <normalon>:/pictures/camera/window-ellipse-on.png</normalon>:/pictures/camera/window-ellipse-off.png</iconset>
-                        </property>
-                        <property name="iconSize">
-                         <size>
-                          <width>34</width>
-                          <height>34</height>
-                         </size>
-                        </property>
-                        <property name="checkable">
-                         <bool>true</bool>
-                        </property>
-                        <property name="autoExclusive">
-                         <bool>true</bool>
-                        </property>
-                        <property name="autoRaise">
-                         <bool>true</bool>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <spacer name="horizontalSpacer_37">
-                        <property name="orientation">
-                         <enum>Qt::Horizontal</enum>
-                        </property>
-                        <property name="sizeHint" stdset="0">
-                         <size>
-                          <width>40</width>
-                          <height>20</height>
-                         </size>
-                        </property>
-                       </spacer>
-                      </item>
-                     </layout>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
                     </item>
                     <item row="0" column="0" colspan="3">
                      <layout class="QHBoxLayout" name="horizontalLayout_64">
@@ -2398,74 +2275,160 @@
                       </item>
                      </layout>
                     </item>
-                    <item row="1" column="1" colspan="2">
-                     <layout class="QHBoxLayout" name="horizontalLayout_66">
+                    <item row="1" column="1">
+                     <spacer name="verticalSpacer_11">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Preferred</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item row="2" column="0" colspan="3">
+                     <layout class="QHBoxLayout" name="horizontalLayout_65">
+                      <property name="spacing">
+                       <number>0</number>
+                      </property>
                       <property name="leftMargin">
                        <number>0</number>
                       </property>
                       <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_45">
-                        <property name="spacing">
-                         <number>12</number>
+                       <widget class="QToolButton" name="toolButton_camera_view_rectangle">
+                        <property name="text">
+                         <string notr="true"/>
                         </property>
-                       </layout>
-                      </item>
-                      <item>
-                       <widget class="QLabel" name="labelCameraWindowSize">
-                        <property name="enabled">
+                        <property name="icon">
+                         <iconset>
+                          <normaloff>:/pictures/camera/window-rectangle-off.png</normaloff>
+                          <normalon>:/pictures/camera/window-rectangle-on.png</normalon>:/pictures/camera/window-rectangle-off.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>34</width>
+                          <height>34</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
                          <bool>true</bool>
                         </property>
-                        <property name="text">
-                         <string notr="true">---x---</string>
+                        <property name="checked">
+                         <bool>true</bool>
                         </property>
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoRaise">
+                         <bool>true</bool>
                         </property>
                        </widget>
                       </item>
-                     </layout>
-                    </item>
-                    <item row="5" column="0" colspan="3">
-                     <layout class="QHBoxLayout" name="horizontalLayout_42">
-                      <property name="leftMargin">
-                       <number>0</number>
-                      </property>
                       <item>
-                       <widget class="QCheckBox" name="checkBoxCameraWindowFrame">
-                        <property name="enabled">
-                         <bool>false</bool>
+                       <spacer name="horizontalSpacer_35">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
                         </property>
+                        <property name="sizeType">
+                         <enum>QSizePolicy::Preferred</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QToolButton" name="toolButton_camera_view_circle">
                         <property name="text">
-                         <string>Remove window frame</string>
+                         <string notr="true"/>
+                        </property>
+                        <property name="icon">
+                         <iconset>
+                          <normaloff>:/pictures/camera/window-circle-off.png</normaloff>
+                          <normalon>:/pictures/camera/window-circle-on.png</normalon>:/pictures/camera/window-circle-off.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>34</width>
+                          <height>34</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoRaise">
+                         <bool>true</bool>
                         </property>
                        </widget>
                       </item>
+                      <item>
+                       <spacer name="horizontalSpacer_36">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeType">
+                         <enum>QSizePolicy::Preferred</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QToolButton" name="toolButton_camera_view_ellipse">
+                        <property name="text">
+                         <string notr="true"/>
+                        </property>
+                        <property name="icon">
+                         <iconset>
+                          <normaloff>:/pictures/camera/window-ellipse-off.png</normaloff>
+                          <normalon>:/pictures/camera/window-ellipse-on.png</normalon>:/pictures/camera/window-ellipse-off.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>34</width>
+                          <height>34</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoRaise">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_37">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
                      </layout>
-                    </item>
-                    <item row="2" column="0">
-                     <widget class="QLabel" name="label_camera_window_zoom">
-                      <property name="minimumSize">
-                       <size>
-                        <width>34</width>
-                        <height>34</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>34</width>
-                        <height>34</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string notr="true"/>
-                      </property>
-                      <property name="pixmap">
-                       <pixmap resource="../screencast.qrc">:/pictures/systray/magnification.png</pixmap>
-                      </property>
-                      <property name="scaledContents">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
                     </item>
                     <item row="0" column="3" alignment="Qt::AlignTop">
                      <widget class="QToolButton" name="help_camera_camera">
@@ -2477,7 +2440,7 @@
                       </property>
                      </widget>
                     </item>
-                    <item row="7" column="0" colspan="3">
+                    <item row="4" column="0" colspan="3">
                      <layout class="QHBoxLayout" name="horizontalLayout_17">
                       <property name="leftMargin">
                        <number>0</number>
@@ -2532,152 +2495,6 @@
                        </spacer>
                       </item>
                      </layout>
-                    </item>
-                    <item row="2" column="1" colspan="2">
-                     <layout class="QHBoxLayout" name="horizontalLayout_zoom">
-                      <property name="spacing">
-                       <number>12</number>
-                      </property>
-                      <property name="leftMargin">
-                       <number>0</number>
-                      </property>
-                     </layout>
-                    </item>
-                    <item row="3" column="1">
-                     <spacer name="verticalSpacer_11">
-                      <property name="orientation">
-                       <enum>Qt::Vertical</enum>
-                      </property>
-                      <property name="sizeType">
-                       <enum>QSizePolicy::Preferred</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>20</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item row="1" column="0">
-                     <widget class="QLabel" name="label_camera_window_resize">
-                      <property name="enabled">
-                       <bool>true</bool>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>34</width>
-                        <height>34</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string notr="true"/>
-                      </property>
-                      <property name="pixmap">
-                       <pixmap resource="../screencast.qrc">:/pictures/camera/window-resize.png</pixmap>
-                      </property>
-                      <property name="scaledContents">
-                       <bool>true</bool>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="8" column="0" colspan="3">
-                     <layout class="QHBoxLayout" name="horizontalLayout_16">
-                      <property name="leftMargin">
-                       <number>0</number>
-                      </property>
-                      <item>
-                       <widget class="QCheckBox" name="checkBoxCameraInvert">
-                        <property name="enabled">
-                         <bool>false</bool>
-                        </property>
-                        <property name="text">
-                         <string>Invert</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <spacer name="horizontalSpacer_39">
-                        <property name="orientation">
-                         <enum>Qt::Horizontal</enum>
-                        </property>
-                        <property name="sizeType">
-                         <enum>QSizePolicy::Minimum</enum>
-                        </property>
-                        <property name="sizeHint" stdset="0">
-                         <size>
-                          <width>40</width>
-                          <height>20</height>
-                         </size>
-                        </property>
-                       </spacer>
-                      </item>
-                      <item>
-                       <widget class="QCheckBox" name="checkBoxCameraGray">
-                        <property name="enabled">
-                         <bool>false</bool>
-                        </property>
-                        <property name="text">
-                         <string>Gray</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <spacer name="horizontalSpacer_40">
-                        <property name="orientation">
-                         <enum>Qt::Horizontal</enum>
-                        </property>
-                        <property name="sizeType">
-                         <enum>QSizePolicy::Minimum</enum>
-                        </property>
-                        <property name="sizeHint" stdset="0">
-                         <size>
-                          <width>40</width>
-                          <height>20</height>
-                         </size>
-                        </property>
-                       </spacer>
-                      </item>
-                      <item>
-                       <widget class="QCheckBox" name="checkBoxCameraMono">
-                        <property name="enabled">
-                         <bool>false</bool>
-                        </property>
-                        <property name="text">
-                         <string>Black-and-white</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <spacer name="horizontalSpacer_34">
-                        <property name="orientation">
-                         <enum>Qt::Horizontal</enum>
-                        </property>
-                        <property name="sizeHint" stdset="0">
-                         <size>
-                          <width>40</width>
-                          <height>20</height>
-                         </size>
-                        </property>
-                       </spacer>
-                      </item>
-                     </layout>
-                    </item>
-                    <item row="6" column="1">
-                     <spacer name="verticalSpacer_14">
-                      <property name="orientation">
-                       <enum>Qt::Vertical</enum>
-                      </property>
-                      <property name="sizeType">
-                       <enum>QSizePolicy::Preferred</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>20</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
                     </item>
                    </layout>
                   </item>
@@ -2737,7 +2554,7 @@
             </property>
             <widget class="QWidget" name="tab_2">
              <attribute name="icon">
-              <iconset resource="../screencast.qrc">
+              <iconset>
                <normaloff>:/pictures/snapshot/snapshot.png</normaloff>:/pictures/snapshot/snapshot.png</iconset>
              </attribute>
              <attribute name="title">
@@ -2785,7 +2602,7 @@
                      <string notr="true"/>
                     </property>
                     <property name="icon">
-                     <iconset resource="../screencast.qrc">
+                     <iconset>
                       <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                     </property>
                    </widget>
@@ -2837,7 +2654,7 @@
                      <string notr="true"/>
                     </property>
                     <property name="icon">
-                     <iconset resource="../screencast.qrc">
+                     <iconset>
                       <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                     </property>
                    </widget>
@@ -2875,7 +2692,7 @@
                      <string notr="true"/>
                     </property>
                     <property name="icon">
-                     <iconset resource="../screencast.qrc">
+                     <iconset>
                       <normaloff>:/pictures/screencast/undo.png</normaloff>:/pictures/screencast/undo.png</iconset>
                     </property>
                    </widget>
@@ -2994,7 +2811,7 @@
             </property>
             <widget class="QWidget" name="tab_5">
              <attribute name="icon">
-              <iconset resource="../screencast.qrc">
+              <iconset>
                <normaloff>:/pictures/screencast/convert.png</normaloff>:/pictures/screencast/convert.png</iconset>
              </attribute>
              <attribute name="title">
@@ -3055,7 +2872,7 @@
                        <string notr="true"/>
                       </property>
                       <property name="icon">
-                       <iconset resource="../screencast.qrc">
+                       <iconset>
                         <normaloff>:/pictures/screencast/accept.png</normaloff>:/pictures/screencast/accept.png</iconset>
                       </property>
                      </widget>
@@ -3149,7 +2966,7 @@
                        <string notr="true"/>
                       </property>
                       <property name="icon">
-                       <iconset resource="../screencast.qrc">
+                       <iconset>
                         <normaloff>:/pictures/screencast/accept.png</normaloff>:/pictures/screencast/accept.png</iconset>
                       </property>
                      </widget>
@@ -3235,7 +3052,7 @@
                        <string notr="true"/>
                       </property>
                       <property name="icon">
-                       <iconset resource="../screencast.qrc">
+                       <iconset>
                         <normaloff>:/pictures/screencast/accept.png</normaloff>:/pictures/screencast/accept.png</iconset>
                       </property>
                      </widget>
@@ -3317,7 +3134,7 @@
                        <string notr="true"/>
                       </property>
                       <property name="icon">
-                       <iconset resource="../screencast.qrc">
+                       <iconset>
                         <normaloff>:/pictures/screencast/accept.png</normaloff>:/pictures/screencast/accept.png</iconset>
                       </property>
                      </widget>
@@ -3388,7 +3205,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="../screencast.qrc">:/pictures/convert/convertTo.png</pixmap>
+                   <pixmap>:/pictures/convert/convertTo.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -3431,7 +3248,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="../screencast.qrc">:/pictures/convert/convertTo.png</pixmap>
+                   <pixmap>:/pictures/convert/convertTo.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -3474,7 +3291,7 @@
                    <string notr="true"/>
                   </property>
                   <property name="pixmap">
-                   <pixmap resource="../screencast.qrc">:/pictures/convert/convertTo.png</pixmap>
+                   <pixmap>:/pictures/convert/convertTo.png</pixmap>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -3568,7 +3385,7 @@
             </property>
             <widget class="QWidget" name="tabLog">
              <attribute name="icon">
-              <iconset resource="../screencast.qrc">
+              <iconset>
                <normaloff>:/pictures/log/log.png</normaloff>:/pictures/log/log.png</iconset>
              </attribute>
              <attribute name="title">
@@ -3657,9 +3474,7 @@
    </layout>
   </widget>
  </widget>
- <resources>
-  <include location="../screencast.qrc"/>
- </resources>
+ <resources/>
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroup_2"/>

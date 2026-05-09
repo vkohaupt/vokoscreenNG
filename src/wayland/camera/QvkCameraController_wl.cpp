@@ -49,13 +49,6 @@ QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface
     ui->comboBoxCamera->hide();
     ui->comboBoxCameraResolution->hide();
     ui->help_camera_camera->hide();
-    ui->label_camera_window_resize->hide();
-    ui->label_camera_window_zoom->hide();
-    ui->labelCameraWindowSize->hide();
-    ui->checkBoxCameraWindowFrame->hide();
-    ui->checkBoxCameraMono->hide();
-    ui->checkBoxCameraInvert->hide();
-    ui->checkBoxCameraGray->hide();
 
     QvkCameraWatcher_wl *vkCameraWatcher_wl = new QvkCameraWatcher_wl;
     connect(vkCameraWatcher_wl,
