@@ -51,10 +51,11 @@ public:
     QToolButton *toolButtonElipse;
     QToolButton *toolButtonCircle;
 
-    void set_checkBoxCameraMirrorHorizontal(QCheckBox *checkBox);
     void set_checkBoxCameraMirrorVertical(QCheckBox *checkBox);
-    QCheckBox *checkBoxCameraMirrorHorizontal;
     QCheckBox *checkBoxCameraMirrorVertical;
+
+    void set_toolButtonCameraMirrorHorizontal(QToolButton *toolButton);
+    QToolButton *toolButtonCameraMirrorHorizontal;
 
     QPixmap pixmap;
 

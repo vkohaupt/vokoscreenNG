@@ -461,8 +461,8 @@
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>16</width>
-                          <height>26</height>
+                          <width>401</width>
+                          <height>116</height>
                          </rect>
                         </property>
                         <property name="accessibleName">
@@ -2472,16 +2472,6 @@
                        </spacer>
                       </item>
                       <item>
-                       <widget class="QCheckBox" name="checkBoxCameraMirrorHorizontal">
-                        <property name="enabled">
-                         <bool>true</bool>
-                        </property>
-                        <property name="text">
-                         <string>Flip horizontal</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
                        <widget class="QToolButton" name="toolButtonCameraMirrorHorizontal">
                         <property name="text">
                          <string/>
@@ -3503,7 +3493,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="buttonGroup_2"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>

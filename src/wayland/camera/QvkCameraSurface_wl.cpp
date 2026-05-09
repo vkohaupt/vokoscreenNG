@@ -106,9 +106,9 @@ void QvkCameraSurface_wl::set_toolButtonCircle(QToolButton *button)
 }
 
 
-void QvkCameraSurface_wl::set_checkBoxCameraMirrorHorizontal(QCheckBox *checkBox)
+void QvkCameraSurface_wl::set_toolButtonCameraMirrorHorizontal(QToolButton *toolButton)
 {
-    checkBoxCameraMirrorHorizontal = checkBox;
+    toolButtonCameraMirrorHorizontal = toolButton;
 }
 
 
@@ -183,7 +183,7 @@ void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
     QImage image = videoFrame.toImage();
     image = image.convertedTo( QImage::Format_ARGB32 );
 
-    if(checkBoxCameraMirrorHorizontal->isChecked() == true){
+    if(toolButtonCameraMirrorHorizontal->isChecked() == true){
         image = image.mirrored(true, false);
     }
 
