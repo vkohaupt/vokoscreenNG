@@ -2487,9 +2487,9 @@
                          <string/>
                         </property>
                         <property name="icon">
-                         <iconset>
-                          <normalon>:/pictures/camera/flip-horizontal-on.png</normalon>
-                         </iconset>
+                         <iconset resource="../screencast.qrc">
+                          <normaloff>:/pictures/camera/flip-horizontal-off.png</normaloff>
+                          <normalon>:/pictures/camera/flip-horizontal-on.png</normalon>:/pictures/camera/flip-horizontal-off.png</iconset>
                         </property>
                         <property name="iconSize">
                          <size>
