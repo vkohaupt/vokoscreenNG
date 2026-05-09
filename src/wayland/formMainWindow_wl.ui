@@ -461,8 +461,8 @@
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>401</width>
-                          <height>116</height>
+                          <width>16</width>
+                          <height>26</height>
                          </rect>
                         </property>
                         <property name="accessibleName">
@@ -2376,7 +2376,7 @@
                       <item>
                        <widget class="QToolButton" name="toolButtonCameraMirrorVertikal">
                         <property name="text">
-                         <string/>
+                         <string notr="true"/>
                         </property>
                         <property name="icon">
                          <iconset resource="../screencast.qrc">
@@ -2416,7 +2416,7 @@
                       <item>
                        <widget class="QToolButton" name="toolButtonCameraMirrorHorizontal">
                         <property name="text">
-                         <string/>
+                         <string notr="true"/>
                         </property>
                         <property name="icon">
                          <iconset resource="../screencast.qrc">
@@ -2509,6 +2509,9 @@
                        <widget class="QComboBox" name="comboBoxCameraResolution">
                         <property name="enabled">
                          <bool>false</bool>
+                        </property>
+                        <property name="currentText">
+                         <string notr="true"/>
                         </property>
                         <property name="sizeAdjustPolicy">
                          <enum>QComboBox::AdjustToContents</enum>
