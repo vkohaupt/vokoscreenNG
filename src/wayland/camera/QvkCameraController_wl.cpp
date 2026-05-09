@@ -71,7 +71,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         QCheckBox *checkBoxCameraOnOff = new QCheckBox;
         checkBoxCameraOnOff->setText(device.section(":::", 1, 1 ));
         checkBoxCameraOnOff->setObjectName("checkBoxCameraVideoID_" + device.section(":::", 0, 0)); // Im ObjectName steckt die id
-        ui->layoutAllCameras->insertWidget(0, checkBoxCameraOnOff);
+        ui->verticalLayout_3->insertWidget(0, checkBoxCameraOnOff);
 
         connect(checkBoxCameraOnOff, &QCheckBox::clicked, this, [=](bool value){
             slot_checkBoxCameraOnOff(value, checkBoxCameraOnOff);});
@@ -106,9 +106,8 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
         vkCameraSurface_wl->set_toolButtonRectangle(ui->toolButton_camera_view_rectangle);
         vkCameraSurface_wl->set_toolButtonElipse(ui->toolButton_camera_view_ellipse);
         vkCameraSurface_wl->set_toolButtonCircle(ui->toolButton_camera_view_circle);
-        vkCameraSurface_wl->set_checkBoxCameraMirrorVertical(ui->checkBoxCameraMirrorVertical);
-
         vkCameraSurface_wl->set_toolButtonCameraMirrorHorizontal(ui->toolButtonCameraMirrorHorizontal);
+        vkCameraSurface_wl->set_toolButtonCameraMirrorVertical(ui->toolButtonCameraMirrorVertikal);
 
     }
 

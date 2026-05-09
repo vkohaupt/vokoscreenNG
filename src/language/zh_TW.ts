@@ -49,6 +49,13 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSurface_wl</name>
+    <message>
+        <source>Camera</source>
+        <translation>攝影機</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
@@ -746,18 +753,6 @@
         <translation>求助</translation>
     </message>
     <message>
-        <source>Invert</source>
-        <translation>色彩反轉</translation>
-    </message>
-    <message>
-        <source>Gray</source>
-        <translation>灰色</translation>
-    </message>
-    <message>
-        <source>Black-and-white</source>
-        <translation>黑白</translation>
-    </message>
-    <message>
         <source>Camera</source>
         <translation>攝影機</translation>
     </message>
@@ -768,10 +763,6 @@
     <message>
         <source>Flip horizontal</source>
         <translation>水平翻轉</translation>
-    </message>
-    <message>
-        <source>Remove window frame</source>
-        <translation>移除視窗外框</translation>
     </message>
     <message>
         <source>Second wait before recording</source>

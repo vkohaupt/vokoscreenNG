@@ -49,6 +49,13 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSurface_wl</name>
+    <message>
+        <source>Camera</source>
+        <translation>カメラ</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
@@ -746,18 +753,6 @@
         <translation>ヘルプ</translation>
     </message>
     <message>
-        <source>Invert</source>
-        <translation>ネガポジ反転</translation>
-    </message>
-    <message>
-        <source>Gray</source>
-        <translation>グレー</translation>
-    </message>
-    <message>
-        <source>Black-and-white</source>
-        <translation>白黒</translation>
-    </message>
-    <message>
         <source>Camera</source>
         <translation>カメラ</translation>
     </message>
@@ -768,10 +763,6 @@
     <message>
         <source>Flip horizontal</source>
         <translation>水平反転</translation>
-    </message>
-    <message>
-        <source>Remove window frame</source>
-        <translation>ウィンドウ枠非表示</translation>
     </message>
     <message>
         <source>Second wait before recording</source>

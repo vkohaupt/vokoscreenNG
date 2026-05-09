@@ -2190,7 +2190,7 @@
                 <property name="sizeHint" stdset="0">
                  <size>
                   <width>20</width>
-                  <height>40</height>
+                  <height>20</height>
                  </size>
                 </property>
                </spacer>
@@ -2210,94 +2210,13 @@
                     <property name="verticalSpacing">
                      <number>9</number>
                     </property>
-                    <item row="3" column="1">
-                     <spacer name="verticalSpacer_14">
-                      <property name="orientation">
-                       <enum>Qt::Vertical</enum>
-                      </property>
-                      <property name="sizeType">
-                       <enum>QSizePolicy::Preferred</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>20</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item row="0" column="0" colspan="3">
-                     <layout class="QHBoxLayout" name="horizontalLayout_64">
-                      <property name="leftMargin">
-                       <number>0</number>
-                      </property>
-                      <item>
-                       <widget class="QCheckBox" name="checkBoxCameraOnOff">
-                        <property name="enabled">
-                         <bool>false</bool>
-                        </property>
-                        <property name="toolTip">
-                         <string notr="true">CTRL+SHIFT+F8</string>
-                        </property>
-                        <property name="text">
-                         <string>Camera</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QComboBox" name="comboBoxCamera">
-                        <property name="enabled">
-                         <bool>false</bool>
-                        </property>
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
-                        <property name="currentText">
-                         <string notr="true"/>
-                        </property>
-                        <property name="sizeAdjustPolicy">
-                         <enum>QComboBox::AdjustToContents</enum>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QComboBox" name="comboBoxCameraResolution">
-                        <property name="enabled">
-                         <bool>false</bool>
-                        </property>
-                        <property name="sizeAdjustPolicy">
-                         <enum>QComboBox::AdjustToContents</enum>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </item>
-                    <item row="1" column="1">
-                     <spacer name="verticalSpacer_11">
-                      <property name="orientation">
-                       <enum>Qt::Vertical</enum>
-                      </property>
-                      <property name="sizeType">
-                       <enum>QSizePolicy::Preferred</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>20</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item row="2" column="0" colspan="3">
+                    <item row="3" column="0" colspan="3">
                      <layout class="QHBoxLayout" name="horizontalLayout_65">
                       <property name="spacing">
                        <number>0</number>
                       </property>
                       <property name="leftMargin">
-                       <number>0</number>
+                       <number>5</number>
                       </property>
                       <item>
                        <widget class="QToolButton" name="toolButton_camera_view_rectangle">
@@ -2430,28 +2349,51 @@
                       </item>
                      </layout>
                     </item>
-                    <item row="0" column="3" alignment="Qt::AlignTop">
-                     <widget class="QToolButton" name="help_camera_camera">
-                      <property name="toolTip">
-                       <string>Help</string>
+                    <item row="4" column="1">
+                     <spacer name="verticalSpacer_14">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
                       </property>
-                      <property name="text">
-                       <string notr="true">Help</string>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Preferred</enum>
                       </property>
-                     </widget>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
                     </item>
-                    <item row="4" column="0" colspan="3">
+                    <item row="5" column="0" colspan="3">
                      <layout class="QHBoxLayout" name="horizontalLayout_17">
+                      <property name="spacing">
+                       <number>0</number>
+                      </property>
                       <property name="leftMargin">
                        <number>0</number>
                       </property>
                       <item>
-                       <widget class="QCheckBox" name="checkBoxCameraMirrorVertical">
-                        <property name="enabled">
+                       <widget class="QToolButton" name="toolButtonCameraMirrorVertikal">
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="../screencast.qrc">
+                          <normaloff>:/pictures/camera/flip-vertikal-off.png</normaloff>
+                          <normalon>:/pictures/camera/flip-vertikal-on.png</normalon>:/pictures/camera/flip-vertikal-off.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>46</width>
+                          <height>46</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
                          <bool>true</bool>
                         </property>
-                        <property name="text">
-                         <string>Flip vertical</string>
+                        <property name="autoRaise">
+                         <bool>true</bool>
                         </property>
                        </widget>
                       </item>
@@ -2509,6 +2451,104 @@
                        </spacer>
                       </item>
                      </layout>
+                    </item>
+                    <item row="2" column="1">
+                     <spacer name="verticalSpacer_11">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Preferred</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item row="0" column="0" colspan="3">
+                     <layout class="QHBoxLayout" name="horizontalLayout_64">
+                      <property name="leftMargin">
+                       <number>10</number>
+                      </property>
+                      <item>
+                       <widget class="QCheckBox" name="checkBoxCameraOnOff">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="toolTip">
+                         <string notr="true">CTRL+SHIFT+F8</string>
+                        </property>
+                        <property name="text">
+                         <string>Camera</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QComboBox" name="comboBoxCamera">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="currentText">
+                         <string notr="true"/>
+                        </property>
+                        <property name="sizeAdjustPolicy">
+                         <enum>QComboBox::AdjustToContents</enum>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QComboBox" name="comboBoxCameraResolution">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizeAdjustPolicy">
+                         <enum>QComboBox::AdjustToContents</enum>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item row="0" column="3" alignment="Qt::AlignTop">
+                     <widget class="QToolButton" name="help_camera_camera">
+                      <property name="toolTip">
+                       <string>Help</string>
+                      </property>
+                      <property name="text">
+                       <string notr="true">Help</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="0" colspan="3">
+                     <layout class="QVBoxLayout" name="verticalLayout_3">
+                      <property name="leftMargin">
+                       <number>10</number>
+                      </property>
+                     </layout>
+                    </item>
+                    <item row="1" column="3">
+                     <spacer name="verticalSpacer_15">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Preferred</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                     </spacer>
                     </item>
                    </layout>
                   </item>

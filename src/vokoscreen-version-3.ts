@@ -763,10 +763,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Flip horizontal</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Second wait before recording</source>
         <translation type="unfinished"></translation>
     </message>

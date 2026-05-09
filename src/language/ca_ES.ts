@@ -49,6 +49,13 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSurface_wl</name>
+    <message>
+        <source>Camera</source>
+        <translation>Càmera</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
@@ -746,18 +753,6 @@
         <translation>Ajuda</translation>
     </message>
     <message>
-        <source>Invert</source>
-        <translation>Invertida</translation>
-    </message>
-    <message>
-        <source>Gray</source>
-        <translation>Gris</translation>
-    </message>
-    <message>
-        <source>Black-and-white</source>
-        <translation>Blanc i negre</translation>
-    </message>
-    <message>
         <source>Camera</source>
         <translation>Càmera</translation>
     </message>
@@ -768,10 +763,6 @@
     <message>
         <source>Flip horizontal</source>
         <translation>Gir horitzontal</translation>
-    </message>
-    <message>
-        <source>Remove window frame</source>
-        <translation>Elimina el marc de la finestra</translation>
     </message>
     <message>
         <source>Second wait before recording</source>

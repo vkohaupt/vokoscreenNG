@@ -49,6 +49,13 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSurface_wl</name>
+    <message>
+        <source>Camera</source>
+        <translation>ກ້ອງ</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
@@ -746,18 +753,6 @@
         <translation>ຊ່ວຍເຫຼືອ</translation>
     </message>
     <message>
-        <source>Invert</source>
-        <translation>ປີ້ນສີ</translation>
-    </message>
-    <message>
-        <source>Gray</source>
-        <translation>ສີເທົາ</translation>
-    </message>
-    <message>
-        <source>Black-and-white</source>
-        <translation>ຂາວ-ດຳ</translation>
-    </message>
-    <message>
         <source>Camera</source>
         <translation>ກ້ອງ</translation>
     </message>
@@ -768,10 +763,6 @@
     <message>
         <source>Flip horizontal</source>
         <translation>ປີ້ນແນວນອນ</translation>
-    </message>
-    <message>
-        <source>Remove window frame</source>
-        <translation>ລຶບຂອບໜ້າຕ່າງອອກ</translation>
     </message>
     <message>
         <source>Second wait before recording</source>

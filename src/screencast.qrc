@@ -1,12 +1,14 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
 <file>pictures/camera/window-circle-on.png</file>
+<file>pictures/camera/flip-vertikal-on.png</file>
 <file>pictures/camera/window-rectangle-off.png</file>
 <file>pictures/camera/window-ellipse-on.png</file>
 <file>pictures/camera/camera-sidebar.png</file>
 <file>pictures/camera/window-resize.png</file>
 <file>pictures/camera/window-circle-off.png</file>
 <file>pictures/camera/window-ellipse-off.png</file>
+<file>pictures/camera/flip-vertikal-off.png</file>
 <file>pictures/camera/flip-horizontal-off.png</file>
 <file>pictures/camera/window-rectangle-on.png</file>
 <file>pictures/camera/flip-horizontal-on.png</file>

@@ -49,6 +49,13 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSurface_wl</name>
+    <message>
+        <source>Camera</source>
+        <translation>Kamera</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
@@ -746,18 +753,6 @@
         <translation>Nápověda</translation>
     </message>
     <message>
-        <source>Invert</source>
-        <translation>Invertovat</translation>
-    </message>
-    <message>
-        <source>Gray</source>
-        <translation>Šedý</translation>
-    </message>
-    <message>
-        <source>Black-and-white</source>
-        <translation>Černá a bílá</translation>
-    </message>
-    <message>
         <source>Camera</source>
         <translation>Kamera</translation>
     </message>
@@ -768,10 +763,6 @@
     <message>
         <source>Flip horizontal</source>
         <translation>Překlopit vodorovně</translation>
-    </message>
-    <message>
-        <source>Remove window frame</source>
-        <translation>Odstranit rám okna</translation>
     </message>
     <message>
         <source>Second wait before recording</source>

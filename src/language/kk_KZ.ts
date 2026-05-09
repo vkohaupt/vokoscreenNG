@@ -49,6 +49,13 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSurface_wl</name>
+    <message>
+        <source>Camera</source>
+        <translation>Камера</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
@@ -746,18 +753,6 @@
         <translation>Көмек</translation>
     </message>
     <message>
-        <source>Invert</source>
-        <translation>Айналдырып аудару</translation>
-    </message>
-    <message>
-        <source>Gray</source>
-        <translation>Сұр</translation>
-    </message>
-    <message>
-        <source>Black-and-white</source>
-        <translation>Қара-мен-ақ</translation>
-    </message>
-    <message>
         <source>Camera</source>
         <translation>Камера</translation>
     </message>
@@ -768,10 +763,6 @@
     <message>
         <source>Flip horizontal</source>
         <translation>Көлденең айналдыру</translation>
-    </message>
-    <message>
-        <source>Remove window frame</source>
-        <translation> Терезе жақтауын жою</translation>
     </message>
     <message>
         <source>Second wait before recording</source>

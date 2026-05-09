@@ -49,6 +49,13 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSurface_wl</name>
+    <message>
+        <source>Camera</source>
+        <translation>กล้อง</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
@@ -746,18 +753,6 @@
         <translation>ช่วยเหลือ</translation>
     </message>
     <message>
-        <source>Invert</source>
-        <translation>กลับด้าน</translation>
-    </message>
-    <message>
-        <source>Gray</source>
-        <translation>เกรย์</translation>
-    </message>
-    <message>
-        <source>Black-and-white</source>
-        <translation>ขาว-และ-ดำ</translation>
-    </message>
-    <message>
         <source>Camera</source>
         <translation>กล้อง</translation>
     </message>
@@ -768,10 +763,6 @@
     <message>
         <source>Flip horizontal</source>
         <translation>พลิกแนวนอน</translation>
-    </message>
-    <message>
-        <source>Remove window frame</source>
-        <translation>ลบเฟรมหน้าต่าง</translation>
     </message>
     <message>
         <source>Second wait before recording</source>

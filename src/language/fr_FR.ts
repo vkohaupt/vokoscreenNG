@@ -49,6 +49,13 @@
     </message>
 </context>
 <context>
+    <name>QvkCameraSurface_wl</name>
+    <message>
+        <source>Camera</source>
+        <translation>Caméra</translation>
+    </message>
+</context>
+<context>
     <name>QvkCameraWindow</name>
     <message>
         <source>Camera</source>
@@ -746,18 +753,6 @@
         <translation>Aide</translation>
     </message>
     <message>
-        <source>Invert</source>
-        <translation>Inverser</translation>
-    </message>
-    <message>
-        <source>Gray</source>
-        <translation>Gris</translation>
-    </message>
-    <message>
-        <source>Black-and-white</source>
-        <translation>Noir-et-blanc</translation>
-    </message>
-    <message>
         <source>Camera</source>
         <translation>Caméra</translation>
     </message>
@@ -768,10 +763,6 @@
     <message>
         <source>Flip horizontal</source>
         <translation>Retourner horizontalement</translation>
-    </message>
-    <message>
-        <source>Remove window frame</source>
-        <translation>Supprimer le cadre de la fenêtre </translation>
     </message>
     <message>
         <source>Second wait before recording</source>
