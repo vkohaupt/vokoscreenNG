@@ -8,6 +8,7 @@
 <file>pictures/camera/window-circle-off.png</file>
 <file>pictures/camera/window-ellipse-off.png</file>
 <file>pictures/camera/window-rectangle-on.png</file>
+<file>pictures/camera/flip-horizontal-on.png</file>
 <file>pictures/camera/camera.png</file>
 <file>pictures/convert/convertTo.png</file>
 <file>pictures/cornerWidget/linux-flatpak.png</file>
@@ -230,6 +231,7 @@
 <file>language/es_CO.qm</file>
 <file>language/es_ES.qm</file>
 <file>language/es_MX.qm</file>
+<file>language/es_PE.qm</file>
 <file>language/es_SV.qm</file>
 <file>language/es.qm</file>
 <file>language/es_VE.qm</file>
