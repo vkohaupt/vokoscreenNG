@@ -81,6 +81,33 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 
 void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *checkBoxCameraOnOff)
 {
+
+    // Disable all other cameras
+    if ( checked == true ){
+        QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
+        for ( int i = 0; i < listCheckBox.count(); i++ ) {
+            QCheckBox *checkBox = listCheckBox.at(i);
+            if ( checkBox->objectName().contains("checkBoxCameraVideoID_") ){
+                if ( checkBox->isChecked() == false ){
+                    checkBox->setDisabled(true);
+                }
+            }
+        }
+    }
+
+    // Enable all cameras
+    if ( checked == false ){
+        QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
+        for ( int i = 0; i < listCheckBox.count(); i++ ) {
+            QCheckBox *checkBox = listCheckBox.at(i);
+            if ( checkBox->objectName().contains("checkBoxCameraVideoID_") ){
+                if ( checkBox->isChecked() == false ){
+                    checkBox->setEnabled(true);
+                }
+            }
+        }
+    }
+
     // Surface wird einmal angelegt für alle Cameras
     if (vkCameraSurface_wl == NULL){
         vkCameraSurface_wl = new QvkCameraSurface_wl();
