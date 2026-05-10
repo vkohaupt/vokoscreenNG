@@ -4002,7 +4002,7 @@
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>61</width>
+                    <width>46</width>
                     <height>15</height>
                    </size>
                   </property>
@@ -4034,7 +4034,7 @@
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>61</width>
+                    <width>46</width>
                     <height>15</height>
                    </size>
                   </property>
@@ -4231,10 +4231,10 @@
               <item row="7" column="0" colspan="3">
                <layout class="QHBoxLayout" name="horizontalLayout_5">
                 <property name="spacing">
-                 <number>18</number>
+                 <number>12</number>
                 </property>
                 <property name="leftMargin">
-                 <number>14</number>
+                 <number>6</number>
                 </property>
                 <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
                  <widget class="QLabel" name="label_26">
@@ -4278,7 +4278,7 @@
                  <widget class="QLabel" name="label_32">
                   <property name="maximumSize">
                    <size>
-                    <width>61</width>
+                    <width>46</width>
                     <height>15</height>
                    </size>
                   </property>
