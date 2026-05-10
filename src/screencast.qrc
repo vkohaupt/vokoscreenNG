@@ -138,7 +138,11 @@
 <file>pictures/camera/window-circle-on.license</file>
 <file>pictures/camera/window-rectangle-off.license</file>
 <file>pictures/camera/window-ellipse-on.license</file>
+<file>pictures/camera/flip-horizontal-off.license</file>
 <file>pictures/camera/camera.license</file>
+<file>pictures/camera/flip-vertical-on.license</file>
+<file>pictures/camera/flip-vertical-off.license</file>
+<file>pictures/camera/flip-horizontal-on.license</file>
 <file>pictures/camera/window-circle-off.license</file>
 <file>pictures/cursor/size_hor.license</file>
 <file>pictures/cursor/size_all.license</file>
