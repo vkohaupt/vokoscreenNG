@@ -108,8 +108,8 @@ void QvkShowClick::setSpezialCheckBox()
 {
     vkSpezialCheckbox = new QvkSpezialCheckbox();
     vkSpezialCheckbox->setObjectName( "spezialCheckboxShowclick" );
-    vkSpezialCheckbox->set_colorChecked( Qt::darkGreen );
-    vkSpezialCheckbox->set_colorUnChecked( Qt::darkRed );
+    vkSpezialCheckbox->set_colorChecked( "#3DAEE9" );
+    vkSpezialCheckbox->set_colorUnChecked( "#3DAEE9" );
     vkSpezialCheckbox->set_imageChecked( ":/pictures/spezialCheckBox/on.png" );
     vkSpezialCheckbox->set_imageUnChecked( ":/pictures/spezialCheckBox/off.png" );
     vkSpezialCheckbox->set_waitBeforeTrigger( 0 );
