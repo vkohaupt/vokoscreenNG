@@ -81,7 +81,6 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 
 void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *checkBoxCameraOnOff)
 {
-
     // Disable all other cameras
     if ( checked == true ){
         QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
