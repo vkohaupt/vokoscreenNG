@@ -14,7 +14,7 @@ equals(QT_MAJOR_VERSION, 6):!lessThan(QT_MINOR_VERSION, 6) {
 }
 
 unix: QT += dbus
-QT += core gui widgets multimedia network
+QT += core gui widgets multimedia network svgwidgets
 # testlib // Achtung unter Windows öffnet sich damit die Konsole und qDebug() zeigt seine Ausgaben.
 
 TARGET = vokoscreenNG
