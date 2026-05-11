@@ -24,6 +24,7 @@
 #include "QvkCameraController_wl.h"
 #include "QvkCameraWatcher_wl.h"
 #include "QvkCameraSurface_wl.h"
+#include "QvkSettings_wl.h"
 
 #include <QDebug>
 #include <QLayoutItem>
@@ -110,6 +111,11 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
     // Surface wird einmal angelegt für alle Cameras
     if (vkCameraSurface_wl == NULL){
         vkCameraSurface_wl = new QvkCameraSurface_wl();
+
+        QvkSettings_wl vkSettings_wl;
+        QPoint point = vkSettings_wl.readCameraSurface();
+        vkCameraSurface_wl->imageRect.setX(point.x());
+        vkCameraSurface_wl->imageRect.setY(point.y());
 
         connect(vkCameraSurface_wl, &QvkCameraSurface_wl::signal_cameraSurfaceClose, this, [=](){checkBoxCameraOnOff->click();});
 
