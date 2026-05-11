@@ -236,6 +236,7 @@ void QvkCameraSurface_wl::mouseMoveEvent(QMouseEvent *event)
                           cameraImage.height());
 
         // Camerabild muß im Surface verbleiben und darf nicht darüber hinaus verschoben werden
+        // Der Kreis benötigt eine besondere Behandlung
         if(toolButtonCircle->isChecked() == true){
             if(imageRect.x() < (0-(imageRect.width()-imageRect.height())/2)){
                 imageRect.setX(0-(imageRect.width()-imageRect.height())/2);
@@ -246,11 +247,14 @@ void QvkCameraSurface_wl::mouseMoveEvent(QMouseEvent *event)
             if(imageRect.y() < 0){
                 imageRect.setY(0);
             };
-
+            if(imageRect.y() > (height()-imageRect.height())){
+                imageRect.setY(height()-imageRect.height());
+            }
             repaint();
             return;
         }
 
+        // Für das Rechteck und der Ellipse dient dies hier
         if(imageRect.x() < 0){
             imageRect.setX(0);
         };
@@ -263,7 +267,6 @@ void QvkCameraSurface_wl::mouseMoveEvent(QMouseEvent *event)
         if((imageRect.y() + imageRect.height()) > height()){
             imageRect.setY(height() - imageRect.height());
         }
-
         repaint();
     }
 }
