@@ -42,6 +42,8 @@ public:
     void saveAll( Ui_formMainWindow_wl *ui_mainwindow , QMainWindow *parent );
     void saveAreaScreencast( qreal x, qreal y, qreal width, qreal height );
     void readAreaScreencast( QvkRegionChoise_wl *vkRegionChoise );
+    void saveCameraSurface( qreal x, qreal y );
+    QPoint readCameraSurface();
     QString getFileName();
     QString getVideoPath();
     QString getPicturePath();

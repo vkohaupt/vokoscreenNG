@@ -57,13 +57,13 @@ public:
     QToolButton *toolButtonCameraMirrorVertical;
 
     QPixmap pixmap;
+    QRect imageRect;
 
 
 private:
     int a = 0;
     QPixmap cameraImage;
     bool mousePressed = false;
-    QRect imageRect;
     QPoint pointDiv;
     bool mouseHover = false;
 

@@ -260,3 +260,25 @@ void QvkSettings_wl::readAreaScreencast( QvkRegionChoise_wl *vkRegionChoise )
     vkRegionChoise->setHeight( settings.value( "Height", 200 ).toInt() );
     settings.endGroup();
 }
+
+
+void QvkSettings_wl::saveCameraSurface( qreal x, qreal y )
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
+    settings.beginGroup( "CameraSurface_wl" );
+    settings.setValue( "X", QVariant(x).toInt() );
+    settings.setValue( "Y", QVariant(y).toInt() );
+    settings.endGroup();
+}
+
+
+QPoint QvkSettings_wl::readCameraSurface()
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
+    settings.beginGroup( "CameraSurface_wl" );
+    int x = settings.value( "X", 200 ).toInt();
+    int y = settings.value( "Y", 200 ).toInt();
+    settings.endGroup();
+    QPoint point(x, y);
+    return point;
+}
