@@ -34,7 +34,7 @@ class QvkSystray_wl: public QSystemTrayIcon
     Q_OBJECT
 
 public:
-    QvkSystray_wl( Ui_formMainWindow_wl *ui_mainwindow );
+    QvkSystray_wl(Ui_formMainWindow_wl *ui_mainwindow);
     virtual ~QvkSystray_wl();
     void init();
     QAction *startAction;
