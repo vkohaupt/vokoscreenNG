@@ -234,6 +234,21 @@ void QvkCameraSurface_wl::mouseMoveEvent(QMouseEvent *event)
                           mousePos.y() - pointDiv.y(),
                           cameraImage.width(),
                           cameraImage.height());
+
+        // Camerabild muß im Surface verbleiben und darf nicht darüber hinaus
+        if(imageRect.x() < 0){
+            imageRect.setX(0);
+        };
+        if(imageRect.y() < 0){
+            imageRect.setY(0);
+        };
+        if((imageRect.x() + imageRect.width()) > width()){
+            imageRect.setX(width() - imageRect.width());
+        }
+        if((imageRect.y() + imageRect.height()) > height()){
+            imageRect.setY(height() - imageRect.height());
+        }
+
         repaint();
     }
 }
