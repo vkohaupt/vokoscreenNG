@@ -26,10 +26,16 @@
 
 #include <QDebug>
 #include <QDesktopServices>
+#include <QApplication>
+#include <QWidget>
 
 QvkSystray::QvkSystray(Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
+    
+    if (ui && ui->centralWidget) mainWindow = qobject_cast<QMainWindow*>(ui->centralWidget->window());
+
+    if (!mainWindow) mainWindow = qobject_cast<QMainWindow*>(QApplication::activeWindow());
 }
 
 
@@ -173,6 +179,8 @@ void QvkSystray::init()
     show();
 
     connect( exitAction, SIGNAL( triggered(bool) ), this, SLOT( slot_hide() ) );
+    
+    connect(this, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(slot_trayActivated(QSystemTrayIcon::ActivationReason)));
 
     if ( ui->checkBoxCameraOnOff->isEnabled() == false ){
         cameraAction->setEnabled( false );
@@ -308,6 +316,20 @@ void QvkSystray::slot_shortcutSystray( QString device, QString shortcut )
         snapshotAction->setShortcut( QKeySequence::fromString( shortcut ) );
         if ( shortcut == "None" ) {
             snapshotAction->setShortcutVisibleInContextMenu( false );
+        }
+    }
+}
+
+
+void QvkSystray::slot_trayActivated(QSystemTrayIcon::ActivationReason reason) {
+    if (reason == QSystemTrayIcon::Trigger) {
+        if (mainWindow) {
+            if (mainWindow->isVisible()) mainWindow->hide();
+            else {
+                mainWindow->showNormal();
+                mainWindow->activateWindow();
+                mainWindow->raise();
+            }
         }
     }
 }
