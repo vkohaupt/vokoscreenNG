@@ -48,6 +48,7 @@ public slots:
 private:
     Ui_formMainWindow *ui;
     QMenu *menu;
+    QMainWindow *mainWindow;
     QAction *stopAction;
     QAction *pauseAction;
     QAction *continueAction;
@@ -67,6 +68,7 @@ private slots:
     void slot_setPauseIcon( bool );
     void slot_currentIndexChanged( int index );
     void slot_shortcutSystray( QString device, QString shortcut );
+    void slot_trayActivated(QSystemTrayIcon::ActivationReason reason);
 
 
 protected:
