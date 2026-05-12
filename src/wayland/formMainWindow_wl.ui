@@ -1157,6 +1157,20 @@
                       </widget>
                      </item>
                      <item>
+                      <widget class="QLineEdit" name="lineEditBaseFilename">
+                       <property name="placeholderText"><string notr="true">vokoscreenNG</string></property>
+                       <property name="toolTip"><string>Base file name, default: vokoscreenNG</string></property>
+                       <property name="text"><string notr="true"/></property>
+                       <property name="readOnly"><bool>false</bool></property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QCheckBox" name="checkBoxAddDateTimeStampToFilename">
+                       <property name="toolTip"><string>Append date time to file name</string></property>
+                       <property name="enabled"><bool>true</bool></property>
+                      </widget>
+                     </item>
+                     <item>
                       <widget class="QToolButton" name="toolButtonVideoPath">
                        <property name="text">
                         <string notr="true">...</string>

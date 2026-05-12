@@ -386,6 +386,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), this,                      SLOT( slot_preStart() ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->comboBoxScreencastScreenArea, SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->toolButtonScreencastAreaReset, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->checkBoxAddDateTimeStampToFilename, SLOT( setEnabled(bool) ) );
+    connect( ui->pushButtonStart, SIGNAL( clicked(bool) ), ui->lineEditBaseFilename, SLOT( setEnabled(bool) ) );
 
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->pushButtonStop,        SLOT( setEnabled(bool) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->pushButtonStart,       SLOT( setDisabled(bool) ) );
@@ -415,6 +417,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->frameStartTime,        SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->checkBoxStopRecordingAfter, SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->checkBoxMinimizedWhenRecordingStarts, SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->checkBoxAddDateTimeStampToFilename, SLOT( setDisabled(bool) ) );
+    connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->lineEditBaseFilename, SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), ui->checkBoxShowInSystray, SLOT( setDisabled(bool) ) );
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), this,                      SLOT( slot_preStop() ) );
     connect( ui->pushButtonStop, SIGNAL( clicked(bool) ), this,                      SLOT( slot_Stop() ) );
@@ -2183,13 +2187,15 @@ void QvkMainWindow::slot_Start()
     VK_PipelineList.removeAll( "" );
 
     QString newVideoFilename;
-#ifdef Q_OS_WIN
-    newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
-    VK_PipelineList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
-#endif
 
-#ifdef Q_OS_UNIX
-    newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
+    QString baseFilename = ui->lineEditBaseFilename->text();
+    if (baseFilename.isEmpty()) baseFilename = global::name;
+
+    if (ui->checkBoxAddDateTimeStampToFilename->isChecked()) newVideoFilename = baseFilename + "-" + QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss") + "." + ui->comboBoxFormat->currentText();
+    else newVideoFilename = baseFilename + "." + ui->comboBoxFormat->currentText();
+
+#if defined(Q_OS_WIN) || defined(Q_OS_UNIX)
+    // newVideoFilename = global::name + "-" + QDateTime::currentDateTime().toString( "yyyy-MM-dd_hh-mm-ss" ) + "." + ui->comboBoxFormat->currentText();
     VK_PipelineList << "filesink location=\"" + ui->lineEditVideoPath->text() + "/" + newVideoFilename + "\"";
 #endif
 
