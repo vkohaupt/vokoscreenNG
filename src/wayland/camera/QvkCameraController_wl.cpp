@@ -148,7 +148,6 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
         for ( int x = 0; x < cameras.count(); x++ ){
             QCameraDevice cameraDevice = cameras.at(x);
             if ( cameraDevice.id() == checkBoxCameraOnOff->objectName().section("_", 1, 1) ){
-                qDebug() << cameraDevice.id() << checkBoxCameraOnOff->objectName().section("_", 1, 1);
                 camera = new QCamera(cameraDevice);
                 QVideoSink *videoSink = new QVideoSink;
                 connect(videoSink,
