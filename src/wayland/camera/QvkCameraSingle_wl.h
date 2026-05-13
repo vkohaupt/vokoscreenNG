@@ -14,9 +14,9 @@ class QvkCameraSingle_wl : public QWidget
 public:
     explicit QvkCameraSingle_wl(QWidget *parent = nullptr);
     ~QvkCameraSingle_wl();
+    Ui::QvkCameraSingle_wl *ui;
 
 private:
-    Ui::QvkCameraSingle_wl *ui;
 };
 
 #endif // QVKCAMERASINGLE_WL_H
