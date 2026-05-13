@@ -29,7 +29,6 @@
 
 #include "ui_QvkCameraSingle_wl.h"
 
-
 #include <QDebug>
 #include <QLayoutItem>
 #include <QVBoxLayout>
@@ -46,7 +45,6 @@
 #include <QVideoFrame>
 #include <QMediaCaptureSession>
 #include <QCheckBox>
-#include <QStringList>
 
 QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface )
 {
@@ -94,12 +92,12 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
             }
         }
 
-        // dann die dazugehörige Combobox ermitteln ...
-        QList<QComboBox *> listComboBox = ui->centralwidget->findChildren<QComboBox *>();
-        QComboBox *comboBox;
-        for(int i = 0; i < listComboBox.count(); i++) {
-            comboBox = listComboBox.at(i);
-            if(comboBox->objectName() == QString("comboBoxCameraFormatVideoID_" + device.section(":::", 0, 0))){
+        // dann die dazugehörige Combobox für die Formate ermitteln ...
+        QList<QComboBox *> listComboBoxFormat = ui->centralwidget->findChildren<QComboBox *>();
+        QComboBox *comboBoxFormat;
+        for(int i = 0; i < listComboBoxFormat.count(); i++) {
+            comboBoxFormat = listComboBoxFormat.at(i);
+            if(comboBoxFormat->objectName() == QString("comboBoxCameraFormatVideoID_" + device.section(":::", 0, 0))){
                 break;
             }
         }
@@ -107,8 +105,18 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         // und die Videoformate in die Combobox stellen ...
         for(int i = 0; i < cameraDevice.videoFormats().count(); i++){
             QString format = QVideoFrameFormat::pixelFormatToString(cameraDevice.videoFormats().at(i).pixelFormat()).toUpper();
-            if(comboBox->findText(format) == -1){
-                comboBox->addItem(format);
+            if(comboBoxFormat->findText(format) == -1){
+                comboBoxFormat->addItem(format);
+            }
+        }
+
+        // nun die ComboxBox für die Auflösungen ermitteln ...
+        QList<QComboBox *> listComboBoxResolution = ui->centralwidget->findChildren<QComboBox *>();
+        QComboBox *comboBoxResolution;
+        for(int i = 0; i < listComboBoxResolution.count(); i++) {
+            comboBoxResolution = listComboBoxResolution.at(i);
+            if(comboBoxResolution->objectName() == QString("comboBoxCameraResolutionVideoID_" + device.section(":::", 0, 0))){
+                break;
             }
         }
     }
