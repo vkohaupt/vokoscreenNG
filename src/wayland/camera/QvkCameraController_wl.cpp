@@ -40,6 +40,7 @@
 #include <QPushButton>
 #include <QCamera>
 #include <QCameraDevice>
+#include <QCameraFormat>
 #include <QMediaDevices>
 #include <QVideoSink>
 #include <QVideoFrame>
@@ -71,14 +72,45 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 {
     if(device.contains("added")){
         QvkCameraSingle_wl *vkCameraSingle_wl = new QvkCameraSingle_wl;
+        vkCameraSingle_wl->setObjectName("cameraSingleVideoID_" + device.section(":::", 0, 0)); // Im ObjectName steckt die id
         vkCameraSingle_wl->ui->checkBoxCamera->setText(device.section(":::", 1, 1 ));
         vkCameraSingle_wl->ui->checkBoxCamera->setObjectName("checkBoxCameraVideoID_" + device.section(":::", 0, 0));  // Im ObjectName steckt die id
-        vkCameraSingle_wl->setObjectName("cameraSingleVideoID_" + device.section(":::", 0, 0)); // Im ObjectName steckt die id
+
+        vkCameraSingle_wl->ui->comboBoxCameraFormat->setObjectName("comboBoxCameraFormatVideoID_" + device.section(":::", 0, 0));
+        vkCameraSingle_wl->ui->comboBoxCameraFormat->setDuplicatesEnabled(false);
+
+        vkCameraSingle_wl->ui->comboBoxCameraResolution->setObjectName("comboBoxCameraResolutionVideoID_" + device.section(":::", 0, 0));
+        vkCameraSingle_wl->ui->comboBoxCameraResolution->setDuplicatesEnabled(false);
+
         ui->verticalLayout_3->addWidget(vkCameraSingle_wl);
 
         connect(vkCameraSingle_wl->ui->checkBoxCamera, &QCheckBox::clicked, this, [=](bool value){
             slot_checkBoxCameraOnOff(value, vkCameraSingle_wl->ui->checkBoxCamera);});
+
+
+        // Nun werden die Formate einer Camera der ComboBox hinzugefügt
+        const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
+        for ( int x = 0; x < cameras.count(); x++ ){
+            QCameraDevice cameraDevice = cameras.at(x);
+            const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
+            for ( int i = 0; i < cameraFormatList.count(); i++ ) {
+                QString format = QVideoFrameFormat::pixelFormatToString(cameraDevice.videoFormats().at(i).pixelFormat()).toUpper();
+                vkCameraSingle_wl->ui->comboBoxCameraFormat->addItem(format);
+            }
+        }
     }
+/*
+    for ( int i = 0; i < cameraDevice.videoFormats().count(); i++ ) {
+        QString format = QVideoFrameFormat::pixelFormatToString( cameraDevice.videoFormats().at(i).pixelFormat() ).toUpper();
+        if ( comboBoxCameraVideoFormat->findText( format ) == -1 ) {
+            comboBoxCameraVideoFormat->addItem( format, cameraDevice.videoFormats().at(i).pixelFormat() ); // bei der Philips wird der Wert 17 für YUYV eingetragen und für JPEG der Wert 29
+            vkCameraSettingsDialog->ui->comboBoxCameraVideoFormat->addItem( format, cameraDevice.videoFormats().at(i).pixelFormat() );
+        }
+    }
+*/
+
+
+
 
     if(device.contains("removed")){
         QList<QvkCameraSingle_wl *> listCameraSingle = ui->centralwidget->findChildren<QvkCameraSingle_wl *>();

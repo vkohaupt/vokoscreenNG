@@ -28,7 +28,14 @@
      <item row="0" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="QComboBox" name="comboBoxFormat"/>
+        <widget class="QComboBox" name="comboBoxCameraFormat">
+         <property name="currentText">
+          <string notr="true"/>
+         </property>
+         <property name="duplicatesEnabled">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -37,7 +44,7 @@
        <item>
         <widget class="QCheckBox" name="checkBoxCamera">
          <property name="text">
-          <string>CheckBox</string>
+          <string notr="true">CheckBox</string>
          </property>
         </widget>
        </item>
@@ -46,7 +53,11 @@
      <item row="0" column="2">
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
-        <widget class="QComboBox" name="comboBoxResolution"/>
+        <widget class="QComboBox" name="comboBoxCameraResolution">
+         <property name="currentText">
+          <string notr="true"/>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
