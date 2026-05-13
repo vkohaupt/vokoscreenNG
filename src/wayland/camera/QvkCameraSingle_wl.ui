@@ -28,7 +28,7 @@
      <item row="0" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="QComboBox" name="comboBox"/>
+        <widget class="QComboBox" name="comboBoxFormat"/>
        </item>
       </layout>
      </item>
@@ -46,7 +46,7 @@
      <item row="0" column="2">
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
-        <widget class="QComboBox" name="comboBox_2"/>
+        <widget class="QComboBox" name="comboBoxResolution"/>
        </item>
       </layout>
      </item>
