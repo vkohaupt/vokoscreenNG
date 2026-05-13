@@ -77,6 +77,17 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         connect(checkBoxCameraOnOff, &QCheckBox::clicked, this, [=](bool value){
             slot_checkBoxCameraOnOff(value, checkBoxCameraOnOff);});
     }
+
+    if(device.contains("removed")){
+        QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
+        for(int i = 0; i < listCheckBox.count(); i++){
+            QCheckBox *checkBox = listCheckBox.at(i);
+            if(checkBox->objectName() == QString("checkBoxCameraVideoID_" + device.section(":::", 0, 0 ))){
+                 ui->verticalLayout_3->removeWidget(checkBox);
+                 checkBox->hide();
+            }
+        }
+    }
 }
 
 
