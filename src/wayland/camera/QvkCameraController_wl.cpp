@@ -106,7 +106,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         for(int i = 0; i < cameraDevice.videoFormats().count(); i++){
             QString format = QVideoFrameFormat::pixelFormatToString(cameraDevice.videoFormats().at(i).pixelFormat()).toUpper();
             if(comboBoxFormat->findText(format) == -1){
-                comboBoxFormat->addItem(format);
+                comboBoxFormat->addItem(format, cameraDevice.videoFormats().at(i).pixelFormat());
             }
         }
 
@@ -126,7 +126,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
             int height = cameraDevice.videoFormats().at(i).resolution().height();
             QString resolution = QString::number(width) + " x " + QString::number(height);
             if(comboBoxResolution->findText(resolution) == -1){
-                comboBoxResolution->addItem(resolution);
+                comboBoxResolution->addItem(resolution, cameraDevice.videoFormats().at(i).resolution());
             }
         }
     }
