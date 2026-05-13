@@ -119,6 +119,16 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
                 break;
             }
         }
+
+        // und die Auflösungen ermitteln und in die ComboBox stellen
+        for(int i = 0; i < cameraDevice.videoFormats().count(); i++){
+            int width = cameraDevice.videoFormats().at(i).resolution().width();
+            int height = cameraDevice.videoFormats().at(i).resolution().height();
+            QString resolution = QString::number(width) + " x " + QString::number(height);
+            if(comboBoxResolution->findText(resolution) == -1){
+                comboBoxResolution->addItem(resolution);
+            }
+        }
     }
 
     if(device.contains("removed")){
@@ -193,7 +203,6 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
         vkCameraSurface_wl->set_toolButtonCircle(ui->toolButton_camera_view_circle);
         vkCameraSurface_wl->set_toolButtonCameraMirrorHorizontal(ui->toolButtonCameraMirrorHorizontal);
         vkCameraSurface_wl->set_toolButtonCameraMirrorVertical(ui->toolButtonCameraMirrorVertical);
-
     }
 
     if ( checked == true ){
