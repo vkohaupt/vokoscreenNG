@@ -45,13 +45,13 @@ void QvkCameraWatcher_wl::init()
     QMediaDevices *mediaDevices = new QMediaDevices;
     connect( mediaDevices, &QMediaDevices::videoInputsChanged, this, [=](){
 
-        QList<QCameraDevice> devices = QMediaDevices::videoInputs();
+        QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
 
         // Camera wurde hinzugefügt
-        if(devices.count() > stringListDevices.count()){
-            for(int i = 0; i < devices.count(); i++){
-                QString id = devices.at(i).id();
-                QString description = devices.at(i).description();
+        if(cameras.count() > stringListDevices.count()){
+            for(int i = 0; i < cameras.count(); i++){
+                QString id = cameras.at(i).id();
+                QString description = cameras.at(i).description();
                 QString id_and_description = id + ":::" + description;
                 if(!stringListDevices.contains(id_and_description)){
                     stringListDevices.append(id_and_description);
@@ -66,8 +66,8 @@ void QvkCameraWatcher_wl::init()
         // ID und description werden von devices in die StringListen tempID und tmpDescription transferiert
         //
         QStringList tmp;
-        for(int i = 0; i < devices.count(); i++){
-            tmp.append(devices.at(i).id() + ":::" + devices.at(i).description());
+        for(int i = 0; i < cameras.count(); i++){
+            tmp.append(cameras.at(i).id() + ":::" + cameras.at(i).description());
         }
 
         int index;

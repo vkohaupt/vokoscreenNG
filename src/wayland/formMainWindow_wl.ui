@@ -236,7 +236,7 @@
          <enum>QTabWidget::West</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="tab_sidebar_screeancast">
          <attribute name="title">
@@ -1445,8 +1445,8 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>441</width>
-                     <height>360</height>
+                     <width>20</width>
+                     <height>98</height>
                     </rect>
                    </property>
                    <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -2507,9 +2507,6 @@
                       </item>
                       <item>
                        <widget class="QComboBox" name="comboBoxCameraResolution">
-                        <property name="enabled">
-                         <bool>false</bool>
-                        </property>
                         <property name="currentText">
                          <string notr="true"/>
                         </property>
