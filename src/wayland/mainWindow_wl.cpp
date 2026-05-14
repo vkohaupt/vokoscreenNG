@@ -164,6 +164,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             qDebug().noquote() << global::nameOutput << "SerialNumber from screen: " << screen.at(i)->serialNumber();
         }
     }
+    qDebug().noquote();
 
     vkSystray = new QvkSystray_wl( ui );
     if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {

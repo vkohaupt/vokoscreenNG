@@ -84,7 +84,7 @@ void QvkCameraSurface_wl::slot_workaroundForGnome_2()
 void QvkCameraSurface_wl::closeEvent(QCloseEvent *event)
 {
     Q_UNUSED(event);
-    emit signal_cameraSurfaceClose();
+//    emit signal_cameraSurfaceClose();
 }
 
 
