@@ -108,25 +108,26 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         // dann die dazugehörige Combobox für die Formate ermitteln ...
         QList<QComboBox *> listComboBoxFormat = ui->centralwidget->findChildren<QComboBox *>();
         QComboBox *comboBoxFormat;
-        for(int i = 0; i < listComboBoxFormat.count(); i++) {
+        for(int i = 0; i < listComboBoxFormat.count(); i++){
             comboBoxFormat = listComboBoxFormat.at(i);
             if(comboBoxFormat->objectName() == QString("comboBoxCameraFormatVideoID_" + device.section(":::", 0, 0))){
                 break;
             }
         }
 
-        // und die Videoformate in die Combobox stellen ...
+        // und die Videoformate wie zum Beispiel JPEG und YUYV in die Combobox stellen ...
         for(int i = 0; i < cameraDevice.videoFormats().count(); i++){
-            QString format = QVideoFrameFormat::pixelFormatToString(cameraDevice.videoFormats().at(i).pixelFormat()).toUpper();
+            QCameraFormat videoFormat = cameraDevice.videoFormats().at(i);
+            QString format = QVideoFrameFormat::pixelFormatToString(videoFormat.pixelFormat()).toUpper();
             if(comboBoxFormat->findText(format) == -1){
-                comboBoxFormat->addItem(format, cameraDevice.videoFormats().at(i).pixelFormat());
+                comboBoxFormat->addItem(format, videoFormat.pixelFormat());
             }
         }
 
         // nun die ComboxBox für die Auflösungen ermitteln ...
         QList<QComboBox *> listComboBoxResolution = ui->centralwidget->findChildren<QComboBox *>();
         QComboBox *comboBoxResolution;
-        for(int i = 0; i < listComboBoxResolution.count(); i++) {
+        for(int i = 0; i < listComboBoxResolution.count(); i++){
             comboBoxResolution = listComboBoxResolution.at(i);
             if(comboBoxResolution->objectName() == QString("comboBoxCameraResolutionVideoID_" + device.section(":::", 0, 0))){
                 break;
@@ -135,11 +136,12 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 
         // und die Auflösungen ermitteln und in die ComboBox stellen
         for(int i = 0; i < cameraDevice.videoFormats().count(); i++){
-            int width = cameraDevice.videoFormats().at(i).resolution().width();
-            int height = cameraDevice.videoFormats().at(i).resolution().height();
+            QCameraFormat videoFormat = cameraDevice.videoFormats().at(i);
+            int width = videoFormat.resolution().width();
+            int height = videoFormat.resolution().height();
             QString resolution = QString::number(width) + " x " + QString::number(height);
             if(comboBoxResolution->findText(resolution) == -1){
-                comboBoxResolution->addItem(resolution, cameraDevice.videoFormats().at(i).resolution());
+                comboBoxResolution->addItem(resolution, videoFormat.resolution());
             }
         }
     }
