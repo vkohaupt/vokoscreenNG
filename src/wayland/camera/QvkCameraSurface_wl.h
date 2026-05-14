@@ -71,6 +71,7 @@ private:
 private slots:
     void slot_workaroundForGnome_1();
     void slot_workaroundForGnome_2();
+    void slot_newImageRect(QImage image);
 
 
 public slots:

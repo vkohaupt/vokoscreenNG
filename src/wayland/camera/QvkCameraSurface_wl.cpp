@@ -118,6 +118,16 @@ void QvkCameraSurface_wl::set_toolButtonCameraMirrorVertical(QToolButton *toolBu
 }
 
 
+void QvkCameraSurface_wl::slot_newImageRect(QImage image)
+{
+    imageRect.setWidth(image.width());
+    imageRect.setHeight(image.height());
+    clearMask();
+    repaint();
+    setMask(pixmap.mask());
+}
+
+
 void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);

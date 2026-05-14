@@ -42,7 +42,7 @@
      <item row="0" column="0">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QCheckBox" name="checkBoxCamera">
+        <widget class="QCheckBox" name="checkBoxCameraOnOff">
          <property name="text">
           <string notr="true">CheckBox</string>
          </property>

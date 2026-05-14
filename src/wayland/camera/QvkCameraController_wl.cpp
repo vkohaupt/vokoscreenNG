@@ -72,24 +72,24 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
     if(device.contains("added")){
         QvkCameraSingle_wl *vkCameraSingle_wl = new QvkCameraSingle_wl;
         vkCameraSingle_wl->setObjectName("cameraSingleVideoID_" + device.section(":::", 0, 0)); // Im ObjectName steckt die id
-        vkCameraSingle_wl->ui->checkBoxCamera->setText(device.section(":::", 1, 1 ));
-        vkCameraSingle_wl->ui->checkBoxCamera->setObjectName("checkBoxCameraVideoID_" + device.section(":::", 0, 0));  // Im ObjectName steckt die id
+        vkCameraSingle_wl->ui->checkBoxCameraOnOff->setText(device.section(":::", 1, 1 ));
+        vkCameraSingle_wl->ui->checkBoxCameraOnOff->setObjectName("checkBoxCameraVideoID_" + device.section(":::", 0, 0));  // Im ObjectName steckt die id
         vkCameraSingle_wl->ui->comboBoxCameraFormat->setObjectName("comboBoxCameraFormatVideoID_" + device.section(":::", 0, 0));
         vkCameraSingle_wl->ui->comboBoxCameraResolution->setObjectName("comboBoxCameraResolutionVideoID_" + device.section(":::", 0, 0));
+        // CheckBox und die ComboBoxen für Format und Auflösung werden nun dem Surface hinzugefügt
         ui->verticalLayout_3->addWidget(vkCameraSingle_wl);
 
-        connect(vkCameraSingle_wl->ui->checkBoxCamera, &QCheckBox::clicked, this, [=](bool value){
-            slot_checkBoxCameraOnOff(value, vkCameraSingle_wl->ui->checkBoxCamera);});
-
+        connect(vkCameraSingle_wl->ui->checkBoxCameraOnOff, &QCheckBox::clicked, this, [=](bool value){
+            slot_checkBoxCameraOnOff(value, vkCameraSingle_wl->ui->checkBoxCameraOnOff);
+        });
 
         connect(vkCameraSingle_wl->ui->comboBoxCameraResolution, &QComboBox::currentIndexChanged, this, [=](int value){
             Q_UNUSED(value)
-            if(vkCameraSingle_wl->ui->checkBoxCamera->isChecked() == true){
-                vkCameraSingle_wl->ui->checkBoxCamera->click();
-                vkCameraSingle_wl->ui->checkBoxCamera->click();
+            if(vkCameraSingle_wl->ui->checkBoxCameraOnOff->isChecked() == true){
+                vkCameraSingle_wl->ui->checkBoxCameraOnOff->click();
+                vkCameraSingle_wl->ui->checkBoxCameraOnOff->click();
             }
         });
-
 
         // Nun werden die Formate einer Camera der ComboBox hinzugefügt
         // Zuerst die Camera mithilfe der ID suchen diese befindet sich in cameraDevice.id() ...
