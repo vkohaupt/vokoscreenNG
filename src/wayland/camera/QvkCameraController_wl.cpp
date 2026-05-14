@@ -227,6 +227,11 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
                 QMediaCaptureSession *captureSession = new QMediaCaptureSession;
                 captureSession->setCamera(camera);
                 captureSession->setVideoOutput(videoSink);
+                qDebug().noquote() << global::nameOutput
+                                   << "[Camera] Start with:"
+                                   << cameraDevice.id()
+                                   << cameraFormat.pixelFormat()
+                                   << cameraFormat.resolution();
                 camera->start();
                 vkCameraSurface_wl->show();
             }
@@ -237,6 +242,7 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
         camera->stop();
         delete camera;
         camera = NULL;
+        qDebug().noquote() << global::nameOutput << "[Camera] Stop";
 
         //Don´t make a vkCameraSurface_wl->close(). It is not good, if close the window from taskbar
         vkCameraSurface_wl->hide();
