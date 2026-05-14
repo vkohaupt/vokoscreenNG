@@ -43,8 +43,10 @@
 #include <QMediaDevices>
 #include <QVideoSink>
 #include <QVideoFrame>
+#include <QVideoFrameFormat>
 #include <QMediaCaptureSession>
 #include <QCheckBox>
+#include <QComboBox>
 
 QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface )
 {

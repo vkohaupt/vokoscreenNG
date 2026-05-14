@@ -29,11 +29,9 @@
 #include "QvkCameraSurface_wl.h"
 
 #include <QObject>
-#include <QLabel>
-#include <QButtonGroup>
-#include <QList>
-#include <QVideoFrame>
 #include <QCamera>
+#include <QCheckBox>
+#include <QVideoFrame>
 
 class QvkCameraController_wl : public QObject
 {
