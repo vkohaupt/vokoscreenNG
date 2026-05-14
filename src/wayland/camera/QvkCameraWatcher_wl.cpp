@@ -59,6 +59,7 @@ void QvkCameraWatcher_wl::init()
                     emit signal_cameraChanged( id + ":::" + description + ":::" + "added" );
                 }
             }
+            qDebug().noquote();
             return;
         }
 
