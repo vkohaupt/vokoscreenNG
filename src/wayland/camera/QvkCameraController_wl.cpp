@@ -81,6 +81,16 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         connect(vkCameraSingle_wl->ui->checkBoxCamera, &QCheckBox::clicked, this, [=](bool value){
             slot_checkBoxCameraOnOff(value, vkCameraSingle_wl->ui->checkBoxCamera);});
 
+
+        connect(vkCameraSingle_wl->ui->comboBoxCameraResolution, &QComboBox::currentIndexChanged, this, [=](int value){
+            Q_UNUSED(value)
+            if(vkCameraSingle_wl->ui->checkBoxCamera->isChecked() == true){
+                vkCameraSingle_wl->ui->checkBoxCamera->click();
+                vkCameraSingle_wl->ui->checkBoxCamera->click();
+            }
+        });
+
+
         // Nun werden die Formate einer Camera der ComboBox hinzugefügt
         // Zuerst die Camera mithilfe der ID suchen diese befindet sich in cameraDevice.id() ...
         const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
@@ -219,26 +229,24 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
                     vkCameraSurface_wl->slot_setCameraImage(videoFrame);
                 });
 
+
+                // ComboxBox für die Auflösungen ermitteln ...
+                QList<QComboBox *> listComboBoxResolution = ui->centralwidget->findChildren<QComboBox *>();
+                QComboBox *comboBoxResolution;
+                for(int i = 0; i < listComboBoxResolution.count(); i++){
+                    comboBoxResolution = listComboBoxResolution.at(i);
+                    if(comboBoxResolution->objectName() == QString("comboBoxCameraResolutionVideoID_" + checkBoxCameraOnOff->objectName().section("_", 1, 1))){
+                        break;
+                    }
+                }
                 const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
                 for ( int i = 0; i < cameraFormatList.count(); i++ ) {
-                    //qDebug() << cameraFormatList.at(i).pixelFormat() << cameraFormatList.at(i).resolution();
-                    /*
-                    if ( cameraFormatList.at(i).pixelFormat() == comboBoxCameraVideoFormat->currentData() ) {
-                        if ( cameraFormatList.at(i).resolution() == comboBoxCameraResolution->currentData() ) {
-                            camera->setCameraFormat( cameraFormatList.at(i) );
-                            QString width  = QString::number( cameraFormatList.at(i).resolution().width() );
-                            QString height = QString::number( cameraFormatList.at(i).resolution().height() );
-                            qDebug().noquote() << global::nameOutput
-                                               << "[Camera] Start with format:"
-                                               << cameraFormatList.at(i).pixelFormat()
-                                               << "and resolution:"
-                                               << width + "x" + height;
-                        }
+                    if(comboBoxResolution->currentData() == cameraFormatList.at(i).resolution()){
+                        qDebug() << "-----" << comboBoxResolution->currentData();
+                        camera->setCameraFormat(cameraFormatList.at(i));
+                        break;
                     }
-*/
                 }
-
-                camera->setCameraFormat(cameraFormatList.at(0));
 
                 QMediaCaptureSession *captureSession = new QMediaCaptureSession;
                 captureSession->setCamera(camera);
