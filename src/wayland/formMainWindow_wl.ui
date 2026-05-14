@@ -2228,6 +2228,9 @@
                     </item>
                     <item row="3" column="0" colspan="3">
                      <layout class="QVBoxLayout" name="verticalLayout_3">
+                      <property name="spacing">
+                       <number>7</number>
+                      </property>
                       <property name="leftMargin">
                        <number>6</number>
                       </property>
