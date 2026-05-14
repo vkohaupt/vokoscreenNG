@@ -49,6 +49,7 @@ public slots:
 private:
     Ui_formMainWindow_wl *ui;
     QCamera *camera = NULL;
+    void set_surface();
 
 
 private slots:

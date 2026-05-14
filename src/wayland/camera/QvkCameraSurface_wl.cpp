@@ -118,6 +118,7 @@ void QvkCameraSurface_wl::set_toolButtonCameraMirrorVertical(QToolButton *toolBu
 }
 
 
+// Wird benötigt damit die richtige größe beim umschalten des Bildes angzeigt wird
 void QvkCameraSurface_wl::set_newImageRect()
 {
     imageRect.setWidth(cameraImage.width());

@@ -71,7 +71,7 @@ void QvkCameraWatcher_wl::init()
             tmp.append(cameras.at(i).id() + ":::" + cameras.at(i).description());
         }
 
-        int index;
+        int index = 0;
         if(tmp.count() < stringListDevices.count()){
             for(int i = 0; i < stringListDevices.count(); i++){
                 QString id_and_description = stringListDevices.at(i);

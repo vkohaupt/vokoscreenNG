@@ -60,6 +60,8 @@ QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface
             this,
             [this](QString device){slot_camera_added_or_removed(device);});
 
+    set_surface();
+
     vkCameraWatcher_wl->init();
 }
 
@@ -107,7 +109,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 
         // dann die dazugehörige Combobox für die Formate ermitteln ...
         QList<QComboBox *> listComboBoxFormat = ui->centralwidget->findChildren<QComboBox *>();
-        QComboBox *comboBoxFormat;
+        QComboBox *comboBoxFormat = NULL;
         for(int i = 0; i < listComboBoxFormat.count(); i++){
             comboBoxFormat = listComboBoxFormat.at(i);
             if(comboBoxFormat->objectName() == QString("comboBoxCameraFormatVideoID_" + device.section(":::", 0, 0))){
@@ -126,7 +128,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 
         // nun die ComboxBox für die Auflösungen ermitteln ...
         QList<QComboBox *> listComboBoxResolution = ui->centralwidget->findChildren<QComboBox *>();
-        QComboBox *comboBoxResolution;
+        QComboBox *comboBoxResolution = NULL;
         for(int i = 0; i < listComboBoxResolution.count(); i++){
             comboBoxResolution = listComboBoxResolution.at(i);
             if(comboBoxResolution->objectName() == QString("comboBoxCameraResolutionVideoID_" + device.section(":::", 0, 0))){
@@ -186,39 +188,7 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
         }
     }
 
-    // Surface wird einmal angelegt für alle Cameras
-    if (vkCameraSurface_wl == NULL){
-        vkCameraSurface_wl = new QvkCameraSurface_wl();
-
-        QvkSettings_wl vkSettings_wl;
-        QPoint point = vkSettings_wl.readCameraSurface();
-        vkCameraSurface_wl->imageRect.setX(point.x());
-        vkCameraSurface_wl->imageRect.setY(point.y());
-
-        connect(vkCameraSurface_wl, &QvkCameraSurface_wl::signal_cameraSurfaceClose, this, [=](){checkBoxCameraOnOff->click();});
-
-        connect(ui->toolButton_camera_view_rectangle, &QToolButton::clicked, vkCameraSurface_wl, [=](){
-            vkCameraSurface_wl->clearMask();
-            vkCameraSurface_wl->repaint();
-            vkCameraSurface_wl->setMask(vkCameraSurface_wl->pixmap.mask());
-        });
-        connect(ui->toolButton_camera_view_ellipse, &QToolButton::clicked, vkCameraSurface_wl, [=](){
-            vkCameraSurface_wl->clearMask();
-            vkCameraSurface_wl->repaint();
-            vkCameraSurface_wl->setMask(vkCameraSurface_wl->pixmap.mask());
-        });
-        connect(ui->toolButton_camera_view_circle, &QToolButton::clicked, vkCameraSurface_wl, [=](){
-            vkCameraSurface_wl->clearMask();
-            vkCameraSurface_wl->repaint();
-            vkCameraSurface_wl->setMask(vkCameraSurface_wl->pixmap.mask());
-        });
-
-        vkCameraSurface_wl->set_toolButtonRectangle(ui->toolButton_camera_view_rectangle);
-        vkCameraSurface_wl->set_toolButtonElipse(ui->toolButton_camera_view_ellipse);
-        vkCameraSurface_wl->set_toolButtonCircle(ui->toolButton_camera_view_circle);
-        vkCameraSurface_wl->set_toolButtonCameraMirrorHorizontal(ui->toolButtonCameraMirrorHorizontal);
-        vkCameraSurface_wl->set_toolButtonCameraMirrorVertical(ui->toolButtonCameraMirrorVertical);
-    }
+    connect(vkCameraSurface_wl, &QvkCameraSurface_wl::signal_cameraSurfaceClose, this, [=](){checkBoxCameraOnOff->click();});
 
     if ( checked == true ){
         const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
@@ -236,7 +206,7 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
 
                 // ComboxBox für die Auflösungen ermitteln ...
                 QList<QComboBox *> listComboBoxResolution = ui->centralwidget->findChildren<QComboBox *>();
-                QComboBox *comboBoxResolution;
+                QComboBox *comboBoxResolution = NULL;
                 for(int i = 0; i < listComboBoxResolution.count(); i++){
                     comboBoxResolution = listComboBoxResolution.at(i);
                     if(comboBoxResolution->objectName() == QString("comboBoxCameraResolutionVideoID_" + checkBoxCameraOnOff->objectName().section("_", 1, 1))){
@@ -270,5 +240,41 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
 
         //Don´t make a vkCameraSurface_wl->close(). It is not good, if close the window from taskbar
         vkCameraSurface_wl->hide();
+    }
+}
+
+
+void QvkCameraController_wl::set_surface()
+{
+    // Surface wird einmal angelegt für alle Cameras
+    if (vkCameraSurface_wl == NULL){
+        vkCameraSurface_wl = new QvkCameraSurface_wl();
+
+        QvkSettings_wl vkSettings_wl;
+        QPoint point = vkSettings_wl.readCameraSurface();
+        vkCameraSurface_wl->imageRect.setX(point.x());
+        vkCameraSurface_wl->imageRect.setY(point.y());
+
+        connect(ui->toolButton_camera_view_rectangle, &QToolButton::clicked, vkCameraSurface_wl, [=](){
+            vkCameraSurface_wl->clearMask();
+            vkCameraSurface_wl->repaint();
+            vkCameraSurface_wl->setMask(vkCameraSurface_wl->pixmap.mask());
+        });
+        connect(ui->toolButton_camera_view_ellipse, &QToolButton::clicked, vkCameraSurface_wl, [=](){
+            vkCameraSurface_wl->clearMask();
+            vkCameraSurface_wl->repaint();
+            vkCameraSurface_wl->setMask(vkCameraSurface_wl->pixmap.mask());
+        });
+        connect(ui->toolButton_camera_view_circle, &QToolButton::clicked, vkCameraSurface_wl, [=](){
+            vkCameraSurface_wl->clearMask();
+            vkCameraSurface_wl->repaint();
+            vkCameraSurface_wl->setMask(vkCameraSurface_wl->pixmap.mask());
+        });
+
+        vkCameraSurface_wl->set_toolButtonRectangle(ui->toolButton_camera_view_rectangle);
+        vkCameraSurface_wl->set_toolButtonElipse(ui->toolButton_camera_view_ellipse);
+        vkCameraSurface_wl->set_toolButtonCircle(ui->toolButton_camera_view_circle);
+        vkCameraSurface_wl->set_toolButtonCameraMirrorHorizontal(ui->toolButtonCameraMirrorHorizontal);
+        vkCameraSurface_wl->set_toolButtonCameraMirrorVertical(ui->toolButtonCameraMirrorVertical);
     }
 }
