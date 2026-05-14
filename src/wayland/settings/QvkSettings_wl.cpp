@@ -102,6 +102,16 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui, QMainWindow *parent )
         }
     }
 
+    QList<QComboBox *> listComboBox = ui->centralwidget->findChildren<QComboBox *>();
+    for ( int i = 0; i < listComboBox.count(); i++ ) {
+        QComboBox *comboBox = listComboBox.at(i);
+        QString valueText = settings.value( comboBox->objectName(), "" ).toString();
+        int valueInt = comboBox->findText( valueText );
+        if ( valueInt > -1 ) {
+            comboBox->setCurrentIndex( valueInt );
+        }
+    }
+
     QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
     for ( int i = 0; i < listCheckBox.count(); i++ ) {
         QCheckBox *checkBox = listCheckBox.at(i);
@@ -140,16 +150,6 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui, QMainWindow *parent )
         QVariant variant = settings.value( slider->objectName() );
         if ( variant.isValid() ) {
             slider->setValue( variant.toInt() );
-        }
-    }
-
-    QList<QComboBox *> listComboBox = ui->centralwidget->findChildren<QComboBox *>();
-    for ( int i = 0; i < listComboBox.count(); i++ ) {
-        QComboBox *comboBox = listComboBox.at(i);
-        QString valueText = settings.value( comboBox->objectName(), "" ).toString();
-        int valueInt = comboBox->findText( valueText );
-        if ( valueInt > -1 ) {
-            comboBox->setCurrentIndex( valueInt );
         }
     }
 

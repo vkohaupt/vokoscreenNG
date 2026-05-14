@@ -86,7 +86,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         connect(vkCameraSingle_wl->ui->checkBoxCameraOnOff, &QCheckBox::clicked, this, [=](bool value){
             slot_checkBoxCameraOnOff(value, vkCameraSingle_wl->ui->checkBoxCameraOnOff);
         });
-/*
+
         connect(vkCameraSingle_wl->ui->comboBoxCameraResolution, &QComboBox::currentIndexChanged, this, [=](int value){
             Q_UNUSED(value)
             if(vkCameraSingle_wl->ui->checkBoxCameraOnOff->isChecked() == true){
@@ -95,7 +95,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
                 vkCameraSurface_wl->is_setNewImageRect = false;
             }
         });
-*/
+
         // Nun werden die Formate einer Camera der ComboBox hinzugefügt
         // Zuerst die Camera mithilfe der ID suchen diese befindet sich in cameraDevice.id() ...
         const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
