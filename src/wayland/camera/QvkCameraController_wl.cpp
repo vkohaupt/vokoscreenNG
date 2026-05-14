@@ -240,9 +240,11 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
 
     if ( checked == false ){
         camera->stop();
+        qDebug().noquote() << global::nameOutput
+                           << "[Camera] Stop:"
+                           << checkBoxCameraOnOff->objectName().section("_", 1, 1);
         delete camera;
         camera = NULL;
-        qDebug().noquote() << global::nameOutput << "[Camera] Stop";
 
         //Don´t make a vkCameraSurface_wl->close(). It is not good, if close the window from taskbar
         vkCameraSurface_wl->hide();
