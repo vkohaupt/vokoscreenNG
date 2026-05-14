@@ -188,8 +188,6 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
         }
     }
 
- //   connect(vkCameraSurface_wl, &QvkCameraSurface_wl::signal_cameraSurfaceClose, this, [=](){checkBoxCameraOnOff->click();});
-
     if ( checked == true ){
         const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
         for ( int x = 0; x < cameras.count(); x++ ){

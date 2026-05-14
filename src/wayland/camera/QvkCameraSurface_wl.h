@@ -81,7 +81,6 @@ public slots:
 
 
 signals:
-    void signal_cameraSurfaceClose();
 
 
 protected:
