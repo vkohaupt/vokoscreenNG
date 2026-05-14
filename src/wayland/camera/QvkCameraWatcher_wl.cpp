@@ -65,17 +65,16 @@ void QvkCameraWatcher_wl::init()
 
         // Camera wurde entfernt
         // ID und description werden von devices in die StringListen tempID und tmpDescription transferiert
-        //
-        QStringList tmp;
+        QStringList tmpList;
         for(int i = 0; i < cameras.count(); i++){
-            tmp.append(cameras.at(i).id() + ":::" + cameras.at(i).description());
+            tmpList.append(cameras.at(i).id() + ":::" + cameras.at(i).description());
         }
 
         int index = 0;
-        if(tmp.count() < stringListDevices.count()){
+        if(tmpList.count() < stringListDevices.count()){
             for(int i = 0; i < stringListDevices.count(); i++){
                 QString id_and_description = stringListDevices.at(i);
-                if(!tmp.contains(id_and_description)){
+                if(!tmpList.contains(id_and_description)){
                     // id_and_description wird nicht gefunden. In dem Fall ist es das gesuchte Gerät.
                     QString id = id_and_description.section(":::", 0, 0);
                     QString description = id_and_description.section(":::", 1, 1);
