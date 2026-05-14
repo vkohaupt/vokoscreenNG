@@ -88,6 +88,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
             if(vkCameraSingle_wl->ui->checkBoxCameraOnOff->isChecked() == true){
                 vkCameraSingle_wl->ui->checkBoxCameraOnOff->click();
                 vkCameraSingle_wl->ui->checkBoxCameraOnOff->click();
+                vkCameraSurface_wl->is_setNewImageRect = false;
             }
         });
 

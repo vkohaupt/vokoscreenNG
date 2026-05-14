@@ -118,13 +118,14 @@ void QvkCameraSurface_wl::set_toolButtonCameraMirrorVertical(QToolButton *toolBu
 }
 
 
-void QvkCameraSurface_wl::slot_newImageRect(QImage image)
+void QvkCameraSurface_wl::set_newImageRect()
 {
-    imageRect.setWidth(image.width());
-    imageRect.setHeight(image.height());
+    imageRect.setWidth(cameraImage.width());
+    imageRect.setHeight(cameraImage.height());
     clearMask();
     repaint();
     setMask(pixmap.mask());
+    is_setNewImageRect = true;
 }
 
 
@@ -202,6 +203,10 @@ void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
     }
 
     cameraImage = pixmap.fromImage(image);
+    if(is_setNewImageRect == false){
+        set_newImageRect();
+    }
+
     repaint();
 
     if(a == 0){

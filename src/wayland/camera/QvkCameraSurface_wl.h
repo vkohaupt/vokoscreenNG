@@ -56,8 +56,12 @@ public:
     QToolButton *toolButtonCameraMirrorHorizontal;
     QToolButton *toolButtonCameraMirrorVertical;
 
+
     QPixmap pixmap;
     QRect imageRect;
+
+    void set_newImageRect();
+    bool is_setNewImageRect = false;
 
 
 private:
@@ -67,11 +71,9 @@ private:
     QPoint pointDiv;
     bool mouseHover = false;
 
-
 private slots:
     void slot_workaroundForGnome_1();
     void slot_workaroundForGnome_2();
-    void slot_newImageRect(QImage image);
 
 
 public slots:
