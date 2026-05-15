@@ -62,7 +62,7 @@ public slots:
 private slots:
     void slot_hide();
     void slot_setPauseIcon();
-    void slot_cameraOnOff(bool bo);
+
 
 protected:
   
