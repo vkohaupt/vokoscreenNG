@@ -183,7 +183,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
         // Signal wird an Systray geschickt wenn Camera checked oder unchecked
         connect(vkCameraController_wl,
-                &QvkCameraController_wl::signal_forSystrayCamera,
+                &QvkCameraController_wl::signal_forSystrayCameraOnOff,
                 vkSystray,
                 [this](QCheckBox *checkBox){
             if(checkBox->isChecked() == true){
@@ -196,7 +196,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
         // Signal wird an Systray geschickt wenn eine Camera hinzugefügt wurde
         connect(vkCameraController_wl,
-                &QvkCameraController_wl::signal_forSystrayAddCamera,
+                &QvkCameraController_wl::signal_forSystrayCameraAdded,
                 vkSystray,
                 [this](QCheckBox *checkBox){
             vkSystray->cameraAction->setText(checkBox->text().left(30));

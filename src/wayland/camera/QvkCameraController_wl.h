@@ -62,8 +62,8 @@ protected:
 
 
 signals:
-    void signal_forSystrayCamera(QCheckBox *checkBoxCameraOnOff);
-    void signal_forSystrayAddCamera(QCheckBox *checkBox);
+    void signal_forSystrayCameraOnOff(QCheckBox *checkBoxCameraOnOff);
+    void signal_forSystrayCameraAdded(QCheckBox *checkBox);
 
 
 };
