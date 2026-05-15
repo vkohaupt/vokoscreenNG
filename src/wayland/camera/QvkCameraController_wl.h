@@ -61,7 +61,6 @@ protected:
 
 
 signals:
-    void signal_videoFrame(QVideoFrame videoFrame);
 
 
 };

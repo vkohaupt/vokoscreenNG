@@ -62,7 +62,6 @@ public slots:
 private slots:
     void slot_hide();
     void slot_setPauseIcon();
-//    void slot_currentIndexChanged( int index );
 
 
 protected:

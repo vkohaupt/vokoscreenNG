@@ -133,11 +133,6 @@ void QvkSystray_wl::init()
     setContextMenu ( menu );
     setToolTip( global::name );
 
-/*
-    if ( ui->checkBoxCameraOnOff->isEnabled() == false ){
-        cameraAction->setEnabled( false );
-    }
-*/
     setMenuText();
 }
 
@@ -183,14 +178,3 @@ void QvkSystray_wl::slot_setPauseIcon()
 {
     setIcon( QIcon( ":/pictures/systray/pause.png" ) );
 }
-
-/*
-void QvkSystray_wl::slot_currentIndexChanged( int index )
-{
-    if ( index > -1 ) {
-        cameraAction->setEnabled( true );
-    } else {
-        cameraAction->setEnabled( false );
-    }
-}
-*/

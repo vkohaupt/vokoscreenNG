@@ -983,37 +983,6 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     emit signal_newVideoFilename( newVideoFilename );
 }
 
-/*
-21:34:40 gst-launch-1.0 -e \
-    ximagesrc display-name=:0 use-damage=false show-pointer=true startx=0 starty=0 endx=1919 endy=1079 \
-        ! video/x-raw, framerate=25/1 \
-        ! videoconvert \
-        ! videorate \
-        ! queue max-size-bytes=1073741824 max-size-time=10000000000 max-size-buffers=1000 \
-        ! openh264enc qp-min=23 qp-max=23 usage-type=camera complexity=low multi-thread=4 slice-mode=auto \
-        ! h264parse \
-        ! queue \
-        ! mux. \
-    pulsesrc device=alsa_output.pci-0000_00_1b.0.analog-stereo.monitor client-name=[vokoscreenNG]. \
-        ! audioconvert \
-        ! audioresample \
-        ! queue \
-        ! mix. \
-    pulsesrc device=alsa_input.usb-046d_0809_A6307261-02.mono-fallback client-name=[vokoscreenNG]. \
-        ! audioconvert \
-        ! audioresample \
-        ! queue \
-        ! mix. \
-    audiomixer name=mix \
-        ! audioconvert \
-        ! audiorate \
-        ! queue \
-        ! vorbisenc \
-        ! queue \
-        ! mux. \
-    matroskamux name=mux writing-app=vokoscreenNG_4.3.0-beta-01 \
-        ! filesink location="/home/vk/Videos/vokoscreenNG-2024-09-05_21-34-40.mkv"
-*/
 
 void QvkMainWindow_wl::slot_stop()
 {
