@@ -28,6 +28,7 @@
 #include <QSystemTrayIcon>
 #include <QAction>
 #include <QMenu>
+#include <QCheckBox>
 
 class QvkSystray_wl: public QSystemTrayIcon
 {
@@ -43,6 +44,7 @@ public:
     QAction *continueAction;
     QAction *cameraAction;
     void setMenuText();
+    void set_newCameraMenu(QCheckBox *checkBoxOnOff);
 
     
 private:
@@ -69,7 +71,7 @@ protected:
   
 signals:
     void signal_SystemtrayIsClose();
-    void signal_cameraOnOff(bool);
+    void signal_cameraOnOff(QCheckBox *checkBoxOnOff);
 
 };
 

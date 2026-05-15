@@ -180,7 +180,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
                 show();
             }
         });
-
+/*
         // Signal wird an Systray geschickt wenn Camera checked oder unchecked
         connect(vkCameraController_wl,
                 &QvkCameraController_wl::signal_forSystrayCameraOnOff,
@@ -193,26 +193,25 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
                 vkSystray->cameraAction->setChecked(false);
             }
         });
-
+*/
         // Signal wird an Systray geschickt wenn eine Camera hinzugefügt wurde
         connect(vkCameraController_wl,
                 &QvkCameraController_wl::signal_forSystrayCameraAdded,
                 vkSystray,
                 [this](QCheckBox *checkBox){
-            vkSystray->cameraAction->setText(checkBox->text().left(30));
+            vkSystray->set_newCameraMenu(checkBox);
         });
 
         // Signal kommt von Systray
         connect(vkSystray,
                 &QvkSystray_wl::signal_cameraOnOff,
                 vkSystray,
-                [this](bool bo){
-            Q_UNUSED(bo)
+                [this](QCheckBox *checkBoxSystray){
             QCheckBox *checkBox = NULL;
             QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
             for(int i = 0; i < listCheckBox.count(); i++){
                 checkBox = listCheckBox.at(i);
-                if(checkBox->objectName().contains("checkBoxCameraVideoID_")){
+                if(checkBox->objectName() == checkBoxSystray->objectName()){
                     checkBox->click();
                     break;
                 }
