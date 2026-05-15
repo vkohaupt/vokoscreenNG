@@ -53,7 +53,16 @@ QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface
     ui = ui_surface;
 
     ui->help_camera_camera->hide();
+}
 
+
+QvkCameraController_wl::~QvkCameraController_wl()
+{
+}
+
+
+void QvkCameraController_wl::init()
+{
     QvkCameraWatcher_wl *vkCameraWatcher_wl = new QvkCameraWatcher_wl;
     connect(vkCameraWatcher_wl,
             &QvkCameraWatcher_wl::signal_cameraChanged,
@@ -63,11 +72,6 @@ QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface
     set_surface();
 
     vkCameraWatcher_wl->init();
-}
-
-
-QvkCameraController_wl::~QvkCameraController_wl()
-{
 }
 
 
@@ -87,6 +91,8 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
             slot_checkBoxCameraOnOff(value, vkCameraSingle_wl->ui->checkBoxCameraOnOff);
             emit signal_forSystrayCamera(vkCameraSingle_wl->ui->checkBoxCameraOnOff); //----------------------------------
         });
+
+        emit signal_forSystrayAddCamera(vkCameraSingle_wl->ui->checkBoxCameraOnOff);
 
         connect(vkCameraSingle_wl->ui->comboBoxCameraResolution, &QComboBox::currentIndexChanged, this, [=](int value){
             Q_UNUSED(value)

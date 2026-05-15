@@ -50,7 +50,7 @@ public:
     QvkSpezialSlider *sliderWaitBeforeSnapshot;
     QvkHelp_wl *vkHelp;
     QvkSystray_wl *vkSystray;
-    QvkCameraController_wl *vkCameraController_wl;
+    QvkCameraController_wl *vkCameraController_wl = NULL;
     QvkConvert_mkv_mp4_wl *vkConvert_mkv_mp4_wl;
 
 

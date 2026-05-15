@@ -139,7 +139,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->line_cisco->hide();
     ui->label_Upate_tab_2->hide();
 
-    vkCameraController_wl = new QvkCameraController_wl( ui );
     vkConvert_mkv_mp4_wl = new QvkConvert_mkv_mp4_wl( ui );
     new QvkConvert_mkv_gif_wl( ui );
     new QvkConvert_mkv_to_webm_wl( ui );
@@ -167,6 +166,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     }
     qDebug().noquote();
 
+    vkCameraController_wl = new QvkCameraController_wl( ui );
+
     vkSystray = new QvkSystray_wl( ui );
     if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
         vkSystray->init();
@@ -180,7 +181,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             }
         });
 
-        // Signal wird an Systray geschickt
+        // Signal wird an Systray geschickt wenn Camera checked oder unchecked
         connect(vkCameraController_wl,
                 &QvkCameraController_wl::signal_forSystrayCamera,
                 vkSystray,
@@ -191,6 +192,14 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             }else{
                 vkSystray->cameraAction->setChecked(false);
             }
+        });
+
+        // Signal wird an Systray geschickt wenn eine Camera hinzugefügt wurde
+        connect(vkCameraController_wl,
+                &QvkCameraController_wl::signal_forSystrayAddCamera,
+                vkSystray,
+                [this](QCheckBox *checkBox){
+            vkSystray->cameraAction->setText(checkBox->text().left(30));
         });
 
         // Signal kommt von Systray
@@ -210,6 +219,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             }
         });
     }
+
+    vkCameraController_wl->init();
 
     vkSettings_wl.readAll( ui, this );
     vkSettings_wl.readAreaScreencast( vkRegionChoise_wl );

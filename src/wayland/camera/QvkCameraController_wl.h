@@ -41,6 +41,7 @@ public:
     QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface );
     virtual ~QvkCameraController_wl();
     QvkCameraSurface_wl *vkCameraSurface_wl = NULL;
+    void init();
 
 
 public slots:
@@ -62,6 +63,7 @@ protected:
 
 signals:
     void signal_forSystrayCamera(QCheckBox *checkBoxCameraOnOff);
+    void signal_forSystrayAddCamera(QCheckBox *checkBox);
 
 
 };
