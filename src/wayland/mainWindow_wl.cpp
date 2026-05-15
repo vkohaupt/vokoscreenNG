@@ -26,6 +26,7 @@
 #include <QProcess>
 #include <QTimer>
 #include <QImageWriter>
+#include <QCheckBox>
 
 // Snapshot
 #include <QDBusConnection>
@@ -176,6 +177,33 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
                 show(); hide();
             }else{
                 show();
+            }
+        });
+
+        connect(vkCameraController_wl,
+                &QvkCameraController_wl::signal_forSystrayCamera,
+                vkSystray,
+                [this](QCheckBox *checkBox){
+            if(checkBox->isChecked() == true){
+                vkSystray->cameraAction->setChecked(true);
+                vkSystray->cameraAction->setText(checkBox->text().left(30));
+            }else{
+                vkSystray->cameraAction->setChecked(false);
+            }
+        });
+
+        connect(vkSystray,
+                &QvkSystray_wl::signal_cameraOnOff,
+                vkSystray,
+                [this](bool bo){
+            QCheckBox *checkBox = NULL;
+            QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
+            for(int i = 0; i < listCheckBox.count(); i++){
+                checkBox = listCheckBox.at(i);
+                if(checkBox->objectName().contains("checkBoxCameraVideoID_")){
+                    checkBox->click();
+                    break;
+                }
             }
         });
     }

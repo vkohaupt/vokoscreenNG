@@ -41,6 +41,7 @@ public:
     QAction *stopAction;
     QAction *pauseAction;
     QAction *continueAction;
+    QAction *cameraAction;
     void setMenuText();
 
     
@@ -49,7 +50,6 @@ private:
     QMenu *menu;
 
     QAction *exitAction;
-//    QAction *cameraAction;
     QAction *snapshotAction;
 
 
@@ -62,14 +62,15 @@ public slots:
 private slots:
     void slot_hide();
     void slot_setPauseIcon();
-
+    void slot_cameraOnOff(bool bo);
 
 protected:
   
   
 signals:
     void signal_SystemtrayIsClose();
-    
+    void signal_cameraOnOff(bool);
+
 };
 
 #endif

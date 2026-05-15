@@ -85,6 +85,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 
         connect(vkCameraSingle_wl->ui->checkBoxCameraOnOff, &QCheckBox::clicked, this, [=](bool value){
             slot_checkBoxCameraOnOff(value, vkCameraSingle_wl->ui->checkBoxCameraOnOff);
+            emit signal_forSystrayCamera(vkCameraSingle_wl->ui->checkBoxCameraOnOff); //----------------------------------
         });
 
         connect(vkCameraSingle_wl->ui->comboBoxCameraResolution, &QComboBox::currentIndexChanged, this, [=](int value){
