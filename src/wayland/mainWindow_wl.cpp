@@ -180,6 +180,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             }
         });
 
+        // Signal wird an Systray geschickt
         connect(vkCameraController_wl,
                 &QvkCameraController_wl::signal_forSystrayCamera,
                 vkSystray,
@@ -192,10 +193,12 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             }
         });
 
+        // Signal kommt von Systray
         connect(vkSystray,
                 &QvkSystray_wl::signal_cameraOnOff,
                 vkSystray,
                 [this](bool bo){
+            Q_UNUSED(bo)
             QCheckBox *checkBox = NULL;
             QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
             for(int i = 0; i < listCheckBox.count(); i++){
