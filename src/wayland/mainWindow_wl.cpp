@@ -214,6 +214,23 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             }
         });
 
+        // Enable all cameras wenn camera is unchecked
+        connect(vkCameraController_wl,
+                &QvkCameraController_wl::signal_forSystrayCameraOnOff,
+                vkSystray,
+                [this](QCheckBox *checkBox){
+            QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
+            for(int i = 0; i < listAction.count(); i++ ){
+                QAction *action = listAction.at(i);
+                if(checkBox->isChecked() == false){
+                    if(action->data().toString().contains("checkBoxCameraVideoID_") == true){
+                        action->setEnabled(true);
+                    }
+                }
+            }
+        });
+
+
         // Signal wird an Systray geschickt wenn eine Camera hinzugefügt wurde
         // OK funktioniert
         connect(vkCameraController_wl,
