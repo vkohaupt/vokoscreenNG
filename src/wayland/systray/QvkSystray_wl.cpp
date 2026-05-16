@@ -65,13 +65,7 @@ void QvkSystray_wl::init()
     continueAction->setIcon( QIcon( ":pictures/player/start.png" ) );
     continueAction->setData( "Continue" );
     continueAction->setEnabled( false );
-/*
-    cameraAction = new QAction( this );
-    cameraAction->setIcon( QIcon( ":pictures/systray/camera.png" ) );
-    cameraAction->setData( "Camera" );
-    cameraAction->setCheckable( true );
-    cameraAction->setEnabled( true );
-*/
+
     snapshotAction = new QAction( this );
     snapshotAction->setIcon( QIcon( ":pictures/systray/snapshot.png" ) );
     snapshotAction->setText( "Snapshot" );
@@ -164,7 +158,6 @@ void QvkSystray_wl::setMenuText()
 }
 
 
-// This slot need in this class
 void QvkSystray_wl::slot_hide()
 {
     hide();

@@ -230,7 +230,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             }
         });
 
-
         // Signal wird an Systray geschickt wenn eine Camera hinzugefügt wurde
         // OK funktioniert
         connect(vkCameraController_wl,
