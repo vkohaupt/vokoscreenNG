@@ -197,6 +197,23 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             }
         });
 
+        // Disable all other cameras wenn camera is checked
+        // Ok funktioniert
+        connect(vkCameraController_wl,
+                &QvkCameraController_wl::signal_forSystrayCameraOnOff,
+                vkSystray,
+                [this](QCheckBox *checkBox){
+            QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
+            for(int i = 0; i < listAction.count(); i++ ){
+                QAction *action = listAction.at(i);
+                if(checkBox->objectName() != action->data()){
+                    if(action->data().toString().contains("checkBoxCameraVideoID_") == true){
+                        action->setDisabled(true);
+                    }
+                }
+            }
+        });
+
         // Signal wird an Systray geschickt wenn eine Camera hinzugefügt wurde
         // OK funktioniert
         connect(vkCameraController_wl,
