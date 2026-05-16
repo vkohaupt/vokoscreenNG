@@ -109,12 +109,6 @@ void QvkSystray_wl::init()
     connect(stopAction,     &QAction::triggered, this, [=](){ui->pushButtonStop->click();});
     connect(pauseAction,    &QAction::triggered, this, [=](){ui->pushButtonPause->click();});
     connect(continueAction, &QAction::triggered, this, [=](){ui->pushButtonContinue->click();});
-/*
-    connect( ui->checkBoxCameraOnOff, SIGNAL( toggled(bool) ),   cameraAction,            SLOT( setChecked(bool) ) );
-    connect( cameraAction,            SIGNAL( triggered(bool) ), ui->checkBoxCameraOnOff, SLOT( setChecked(bool) ) );
-    connect( ui->comboBoxCamera,      SIGNAL( currentIndexChanged(int) ), this,           SLOT( slot_currentIndexChanged(int) ) );
-*/
-//    connect(cameraAction,   &QAction::triggered, this, [=](bool bo){emit signal_cameraOnOff(bo);});
 
     connect(snapshotAction, &QAction::triggered, this, [=](){ui->pushButtonSnapshot->click();});
     connect(exitAction,     &QAction::triggered, this, [=](){slot_hide();});
@@ -127,7 +121,6 @@ void QvkSystray_wl::init()
     menu->addAction( pauseAction );
     menu->addAction( continueAction );
     menu->addSeparator();
-//    menu->addAction( cameraAction );
     menu->addAction( snapshotAction );
     menu->addSeparator();
     menu->addAction( exitAction );
@@ -142,15 +135,22 @@ void QvkSystray_wl::init()
 
 void QvkSystray_wl::set_newCameraMenu(QCheckBox *checkBoxOnOff)
 {
-    cameraAction = new QAction( this );
-    cameraAction->setIcon( QIcon( ":pictures/systray/camera.png" ) );
-    cameraAction->setData( "Camera" );
-    cameraAction->setCheckable( true );
-    cameraAction->setEnabled( true );
+    cameraAction = new QAction(this);
+    cameraAction->setIcon(QIcon( ":pictures/systray/camera.png" ) );
+    cameraAction->setData(checkBoxOnOff->objectName());
+    cameraAction->setCheckable(true);
+    cameraAction->setEnabled(true);
     cameraAction->setText(checkBoxOnOff->text().left(30));
 
     menu->insertAction(snapshotAction, cameraAction );
-    connect(cameraAction,   &QAction::triggered, this, [=](bool bo){emit signal_cameraOnOff(checkBoxOnOff);});
+
+    connect(cameraAction,
+            &QAction::triggered,
+            this,
+            [=](bool bo){
+        Q_UNUSED(bo)
+        emit signal_cameraOnOff(checkBoxOnOff);
+    });
 }
 
 
@@ -160,7 +160,6 @@ void QvkSystray_wl::setMenuText()
     stopAction->setText( tr( "Stop" ) );
     pauseAction->setText( tr( "Pause" ) );
     continueAction->setText( tr( "Continue" ) );
-//    cameraAction->setText( tr( "Camera" ) );
     exitAction->setText( tr( "Exit" ) );
 }
 
