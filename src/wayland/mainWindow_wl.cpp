@@ -207,13 +207,20 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         });
 
         // Signal wird an Systray geschickt wenn eine Camera entfernt wurde
+        // Ok funktioniert
         connect(vkCameraController_wl,
                 &QvkCameraController_wl::signal_forSystrayCameraRemoved,
                 vkSystray,
                 [this](QString value){
-            //vkSystray->set_newCameraMenu(checkBox);
+            QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
+            for(int i = 0; i < listAction.count(); i++ ){
+                QAction *action = listAction.at(i);
+                if(value.section(":::", 0, 0) == action->data().toString().section("_", 1, 1)){
+                    action->deleteLater();
+                    break;
+                }
+            }
         });
-
 
         // Signal kommt von Systray
         // Ok funktioniert
