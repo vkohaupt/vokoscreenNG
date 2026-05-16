@@ -180,20 +180,23 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
                 show();
             }
         });
-/*
+
         // Camera checked oder unchecked muß nun an das richtige Menü im Systray gesendet werden
+        // Ok funktioniert
         connect(vkCameraController_wl,
                 &QvkCameraController_wl::signal_forSystrayCameraOnOff,
                 vkSystray,
                 [this](QCheckBox *checkBox){
-            if(checkBox->isChecked() == true){
-                vkSystray->cameraAction->setChecked(true);
-                vkSystray->cameraAction->setText(checkBox->text().left(30));
-            }else{
-                vkSystray->cameraAction->setChecked(false);
+            QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
+            for(int i = 0; i < listAction.count(); i++ ){
+                QAction *action = listAction.at(i);
+                if(checkBox->objectName() == action->data()){
+                    action->setChecked(checkBox->isChecked());
+                    break;
+                }
             }
         });
-*/
+
         // Signal wird an Systray geschickt wenn eine Camera hinzugefügt wurde
         // OK funktioniert
         connect(vkCameraController_wl,

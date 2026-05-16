@@ -136,13 +136,13 @@ void QvkSystray_wl::init()
 void QvkSystray_wl::set_newCameraMenu(QCheckBox *checkBoxOnOff)
 {
     cameraAction = new QAction(this);
-    cameraAction->setIcon(QIcon( ":pictures/systray/camera.png" ) );
+    cameraAction->setIcon(QIcon(":pictures/systray/camera.png"));
     cameraAction->setData(checkBoxOnOff->objectName());
     cameraAction->setCheckable(true);
     cameraAction->setEnabled(true);
     cameraAction->setText(checkBoxOnOff->text().left(30));
 
-    menu->insertAction(snapshotAction, cameraAction );
+    menu->insertAction(snapshotAction, cameraAction);
 
     connect(cameraAction,
             &QAction::triggered,
