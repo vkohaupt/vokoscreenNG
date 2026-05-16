@@ -162,6 +162,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
                 delete cameraSingle;
             }
         }
+        emit signal_forSystrayCameraRemoved(device);
     }
 }
 

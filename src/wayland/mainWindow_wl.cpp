@@ -203,8 +203,17 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
                 &QvkCameraController_wl::signal_forSystrayCameraAdded,
                 vkSystray,
                 [this](QCheckBox *checkBox){
-            vkSystray->set_newCameraMenu(checkBox);
+            vkSystray->set_cameraAdded(checkBox);
         });
+
+        // Signal wird an Systray geschickt wenn eine Camera entfernt wurde
+        connect(vkCameraController_wl,
+                &QvkCameraController_wl::signal_forSystrayCameraRemoved,
+                vkSystray,
+                [this](QString value){
+            //vkSystray->set_newCameraMenu(checkBox);
+        });
+
 
         // Signal kommt von Systray
         // Ok funktioniert

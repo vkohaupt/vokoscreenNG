@@ -44,7 +44,7 @@ public:
     QAction *continueAction;
     QAction *cameraAction;
     void setMenuText();
-    void set_newCameraMenu(QCheckBox *checkBoxOnOff);
+    void set_cameraAdded(QCheckBox *checkBoxOnOff);
 
     
 private:
