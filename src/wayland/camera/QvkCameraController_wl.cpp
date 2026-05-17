@@ -154,12 +154,11 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         }
     }
 
-    // Camera ist aktiv und wurde entfernt
     if(device.contains("removed")){
-        QCheckBox *checkBox = NULL;
+        // Camera ist aktiv und wurde entfernt
         QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
         for ( int i = 0; i < listCheckBox.count(); i++ ) {
-            checkBox = listCheckBox.at(i);
+            QCheckBox *checkBox = listCheckBox.at(i);
             QString str_1 = checkBox->objectName();
             QString str_2 = "checkBoxCameraVideoID_" + device.section(":::", 0, 0);
             if ( str_1 == str_2 ){
