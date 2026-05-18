@@ -252,6 +252,7 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
                                    << cameraFormat.pixelFormat()
                                    << cameraFormat.resolution();
                 camera->start();
+                vkCameraSurface_wl->show();
             }
         }
     }

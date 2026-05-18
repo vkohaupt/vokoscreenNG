@@ -194,13 +194,6 @@ void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
     QImage image = videoFrame.toImage();
     image = image.convertedTo( QImage::Format_ARGB32 );
 
-    // Dies ist der Philips geschuldet die nicht immer gleich ein Bild liefert
-    if(image.width() > 0){
-        show();
-    }else{
-        return;
-    }
-
     if(toolButtonCameraMirrorHorizontal->isChecked() == true){
         image = image.mirrored(true, false);
     }
