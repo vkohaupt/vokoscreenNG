@@ -220,7 +220,7 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
                         &QVideoSink::videoFrameChanged,
                         vkCameraSurface_wl,
                         [this](QVideoFrame videoFrame){
-                    vkCameraSurface_wl->slot_setCameraImage(videoFrame);
+                        vkCameraSurface_wl->slot_setCameraImage(videoFrame);
                 });
 
                 // ComboxBox für die Auflösungen ermitteln ...
@@ -252,7 +252,6 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
                                    << cameraFormat.pixelFormat()
                                    << cameraFormat.resolution();
                 camera->start();
-                vkCameraSurface_wl->show();
             }
         }
     }

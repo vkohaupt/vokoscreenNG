@@ -43,6 +43,7 @@ public:
     QvkCameraSurface_wl *vkCameraSurface_wl = NULL;
     void init();
 
+    QImage TESTimage;
 
 public slots:
 
