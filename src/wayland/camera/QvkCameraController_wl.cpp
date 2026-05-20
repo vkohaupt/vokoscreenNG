@@ -129,6 +129,15 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
             QString format = QVideoFrameFormat::pixelFormatToString(videoFormat.pixelFormat()).toUpper();
             if(comboBoxFormat->findText(format) == -1){
                 comboBoxFormat->addItem(format, videoFormat.pixelFormat());
+                // connect darf nur einmal durchlaufen werden
+                if(comboBoxFormat->count() == 1){
+                    connect(comboBoxFormat, &QComboBox::currentTextChanged, [=](){
+                        if ( vkCameraSingle_wl->ui->checkBoxCameraOnOff->isChecked() == true ){
+                            vkCameraSingle_wl->ui->checkBoxCameraOnOff->click();
+                            vkCameraSingle_wl->ui->checkBoxCameraOnOff->click();
+                        }
+                    });
+                }
             }
         }
 
