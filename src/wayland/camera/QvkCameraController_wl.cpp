@@ -247,10 +247,11 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
                 QCameraFormat cameraFormat;
                 for ( int i = 0; i < cameraFormatList.count(); i++ ) {
                     cameraFormat = cameraFormatList.at(i);
-                    if(comboBoxResolution->currentData() == cameraFormat.resolution()){
-                        camera->setCameraFormat(cameraFormat);
-                        break;
-                    }
+                    if(cameraFormat.pixelFormat() == comboBoxFormat->currentData())
+                        if(comboBoxResolution->currentData() == cameraFormat.resolution()){
+                            camera->setCameraFormat(cameraFormat);
+                            break;
+                        }
                 }
 
                 QMediaCaptureSession *captureSession = new QMediaCaptureSession;
