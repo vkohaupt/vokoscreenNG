@@ -223,6 +223,16 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
                         vkCameraSurface_wl->slot_setCameraImage(videoFrame);
                 });
 
+                // ComboxBox für die Formate YUYV JPEG etc. ermitteln ...
+                QList<QComboBox *> listComboBoxFormat = ui->centralwidget->findChildren<QComboBox *>();
+                QComboBox *comboBoxFormat = NULL;
+                for(int i = 0; i < listComboBoxFormat.count(); i++){
+                    comboBoxFormat = listComboBoxFormat.at(i);
+                    if(comboBoxFormat->objectName() == QString("comboBoxCameraFormatVideoID_" + checkBoxCameraOnOff->objectName().section("_", 1, 1))){
+                        break;
+                    }
+                }
+
                 // ComboxBox für die Auflösungen ermitteln ...
                 QList<QComboBox *> listComboBoxResolution = ui->centralwidget->findChildren<QComboBox *>();
                 QComboBox *comboBoxResolution = NULL;
