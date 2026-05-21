@@ -129,7 +129,6 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
                 break;
             }
         }
-
         // und die Videoformate wie zum Beispiel JPEG und YUYV in die Combobox stellen ...
         for(int i = 0; i < cameraDevice.videoFormats().count(); i++){
             QCameraFormat videoFormat = cameraDevice.videoFormats().at(i);
@@ -138,6 +137,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
                 comboBoxFormat->addItem(format, videoFormat.pixelFormat());
             }
         }
+
 
         // nun die ComboxBox für die Auflösungen ermitteln ...
         QList<QComboBox *> listComboBoxResolution = ui->centralwidget->findChildren<QComboBox *>();
@@ -148,7 +148,6 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
                 break;
             }
         }
-
         // und die Auflösungen ermitteln und in die ComboBox stellen
         for(int i = 0; i < cameraDevice.videoFormats().count(); i++){
             QCameraFormat videoFormat = cameraDevice.videoFormats().at(i);
@@ -160,6 +159,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
             }
         }
 
+
         // nun die ComboxBox für die FPS ermitteln ...
         QList<QComboBox *> listComboBoxFPS = ui->centralwidget->findChildren<QComboBox *>();
         QComboBox *comboBoxFPS = NULL;
@@ -168,6 +168,13 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
             if(comboBoxFPS->objectName() == QString("comboBoxCameraFPSVideoID_" + device.section(":::", 0, 0))){
                 break;
             }
+        }
+        // und die FPS ermitteln und in die ComboBox stellen
+        for(int i = 0; i < cameraDevice.videoFormats().count(); i++){
+            QCameraFormat videoFormat = cameraDevice.videoFormats().at(i);
+            QString minFPS = QString::number(videoFormat.minFrameRate());
+            QString maxFPS = QString::number(videoFormat.maxFrameRate());
+            comboBoxFPS->addItem(maxFPS);
         }
 
     }
