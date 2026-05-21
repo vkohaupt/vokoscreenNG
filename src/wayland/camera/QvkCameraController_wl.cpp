@@ -83,6 +83,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         vkCameraSingle_wl->ui->checkBoxCameraOnOff->setObjectName("checkBoxCameraVideoID_" + device.section(":::", 0, 0));  // Im ObjectName steckt die id
         vkCameraSingle_wl->ui->comboBoxCameraFormat->setObjectName("comboBoxCameraFormatVideoID_" + device.section(":::", 0, 0));
         vkCameraSingle_wl->ui->comboBoxCameraResolution->setObjectName("comboBoxCameraResolutionVideoID_" + device.section(":::", 0, 0));
+        vkCameraSingle_wl->ui->comboBoxCameraFPS->setObjectName("comboBoxCameraFPSVideoID_" + device.section(":::", 0, 0));
         // CheckBox und die ComboBoxen für Format und Auflösung werden nun der GUI hinzugefügt
         ui->verticalLayout_3->addWidget(vkCameraSingle_wl);
 
@@ -158,6 +159,17 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
                 comboBoxResolution->addItem(resolution, videoFormat.resolution());
             }
         }
+
+        // nun die ComboxBox für die FPS ermitteln ...
+        QList<QComboBox *> listComboBoxFPS = ui->centralwidget->findChildren<QComboBox *>();
+        QComboBox *comboBoxFPS = NULL;
+        for(int i = 0; i < listComboBoxFPS.count(); i++){
+            comboBoxFPS = listComboBoxFPS.at(i);
+            if(comboBoxFPS->objectName() == QString("comboBoxCameraFPSVideoID_" + device.section(":::", 0, 0))){
+                break;
+            }
+        }
+
     }
 
     if(device.contains("removed")){

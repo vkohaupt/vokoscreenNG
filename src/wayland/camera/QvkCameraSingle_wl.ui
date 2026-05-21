@@ -24,16 +24,13 @@
     <number>0</number>
    </property>
    <item>
-    <layout class="QGridLayout" name="gridLayout" columnstretch="4,1,1">
-     <item row="0" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <layout class="QGridLayout" name="gridLayout" columnstretch="4,1,1,0">
+     <item row="0" column="2">
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
-        <widget class="QComboBox" name="comboBoxCameraFormat">
+        <widget class="QComboBox" name="comboBoxCameraResolution">
          <property name="currentText">
           <string notr="true"/>
-         </property>
-         <property name="duplicatesEnabled">
-          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -50,14 +47,24 @@
        </item>
       </layout>
      </item>
-     <item row="0" column="2">
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item row="0" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="QComboBox" name="comboBoxCameraResolution">
+        <widget class="QComboBox" name="comboBoxCameraFormat">
          <property name="currentText">
           <string notr="true"/>
          </property>
+         <property name="duplicatesEnabled">
+          <bool>true</bool>
+         </property>
         </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="0" column="3">
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QComboBox" name="comboBoxCameraFPS"/>
        </item>
       </layout>
      </item>
