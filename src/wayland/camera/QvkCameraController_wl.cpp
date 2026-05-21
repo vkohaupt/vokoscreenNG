@@ -139,6 +139,32 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         }
 
 
+        /*
+        QVideoFrameFormat beinhaltet setFrameRate
+        // Beispiel:
+#include <QVideoFrame>
+#include <QVideoFrameFormat>
+#include <QSize>
+
+// 1. Definiere das Format (Auflösung: 1920x1080, Format: NV12)
+QVideoFrameFormat format(QSize(1920, 1080), QVideoFrameFormat::Format_NV12);
+
+// (Optional) Bildwiederholrate (Framerate) festlegen
+format.setFrameRate(60.0);
+
+// 2. Erstelle das QVideoFrame mit dem erstellten Format
+QVideoFrame videoFrame(format);
+
+QVideoframe wird am QVideoSink gesetzt
+
+
+// Abfragen der Frame-Eigenschaften
+int width = videoFrame.width();      // Ergebnis: 1920
+int height = videoFrame.height();    // Ergebnis: 1920
+
+*/
+
+
         // nun die ComboxBox für die Auflösungen ermitteln ...
         QList<QComboBox *> listComboBoxResolution = ui->centralwidget->findChildren<QComboBox *>();
         QComboBox *comboBoxResolution = NULL;
