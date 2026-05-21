@@ -287,7 +287,9 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
                                    << "[Camera] Start with:"
                                    << cameraDevice.id()
                                    << cameraFormat.pixelFormat()
-                                   << cameraFormat.resolution();
+                                   << cameraFormat.resolution()
+                                   << cameraFormat.minFrameRate()
+                                   << cameraFormat.maxFrameRate();
                 camera->start();
                 vkCameraSurface_wl->show();
             }
