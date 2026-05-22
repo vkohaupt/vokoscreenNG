@@ -152,7 +152,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
             }
         }
         // und die Auflösungen ermitteln und in die ComboBox stellen
-        for(int i = 0; i < cameraDevice.videoFormats().count(); i++){
+/*        for(int i = 0; i < cameraDevice.videoFormats().count(); i++){
             QCameraFormat videoFormat = cameraDevice.videoFormats().at(i);
             int width = videoFormat.resolution().width();
             int height = videoFormat.resolution().height();
@@ -160,6 +160,17 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
             if(comboBoxResolution->findText(resolution) == -1){
                 comboBoxResolution->addItem(resolution, videoFormat.resolution());
             }
+        }
+*/
+
+        for(int i = 0; i < cameraDevice.videoFormats().count(); i++){
+            QCameraFormat cameraFormat = cameraDevice.videoFormats().at(i);
+
+            // Format in QVariant konvertieren
+            QVariant variantData = QVariant::fromValue(cameraFormat);
+
+            // Eintrag zur ComboBox hinzufügen und das Variant-Objekt anhängen
+            comboBoxResolution->addItem("1920x1080 @ 60 FPS", variantData);
         }
 
 
@@ -270,18 +281,14 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
                         break;
                     }
                 }
-                // und hier die Auflösung auslesen
-                const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
+                // und hier die Auflösung aus der ComboBox lesen und an der Kamera setzen
                 QCameraFormat cameraFormat;
-                for ( int i = 0; i < cameraFormatList.count(); i++ ) {
-                    cameraFormat = cameraFormatList.at(i);
-                    if(cameraFormat.pixelFormat() == comboBoxPixelformat->currentData()){
-                        if(comboBoxResolution->currentData() == cameraFormat.resolution()){
-                            camera->setCameraFormat(cameraFormat);
-                            break;
-                        }
-                    }
+                QVariant variantData = comboBoxResolution->currentData();
+                if(variantData.canConvert<QCameraFormat>() == true){
+                    cameraFormat = variantData.value<QCameraFormat>();
+                    camera->setCameraFormat(cameraFormat);
                 }
+
 
                 QMediaCaptureSession *captureSession = new QMediaCaptureSession;
                 captureSession->setCamera(camera);
@@ -293,6 +300,7 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
                                    << cameraFormat.resolution()
                                    << cameraFormat.minFrameRate()
                                    << cameraFormat.maxFrameRate();
+
                 camera->start();
                 vkCameraSurface_wl->show();
             }
