@@ -78,6 +78,9 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 {
     if(device.contains("added")){
         QvkCameraSingle_wl *vkCameraSingle_wl = new QvkCameraSingle_wl;
+
+        vkCameraSingle_wl->ui->comboBoxCameraFPS->hide();
+
         vkCameraSingle_wl->setObjectName("cameraSingleVideoID_" + device.section(":::", 0, 0)); // Im ObjectName steckt die id
         vkCameraSingle_wl->ui->checkBoxCameraOnOff->setText(device.section(":::", 1, 1 ));
         vkCameraSingle_wl->ui->checkBoxCameraOnOff->setObjectName("checkBoxCameraVideoID_" + device.section(":::", 0, 0));  // Im ObjectName steckt die id

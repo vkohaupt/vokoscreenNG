@@ -29,6 +29,12 @@
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
         <widget class="QComboBox" name="comboBoxCameraFormat">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="currentText">
           <string notr="true"/>
          </property>
@@ -43,6 +49,12 @@
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
         <widget class="QComboBox" name="comboBoxCameraResolution">
+         <property name="minimumSize">
+          <size>
+           <width>110</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="currentText">
           <string notr="true"/>
          </property>
