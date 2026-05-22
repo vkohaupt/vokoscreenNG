@@ -84,7 +84,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         vkCameraSingle_wl->setObjectName("cameraSingleVideoID_" + device.section(":::", 0, 0)); // Im ObjectName steckt die id
         vkCameraSingle_wl->ui->checkBoxCameraOnOff->setText(device.section(":::", 1, 1 ));
         vkCameraSingle_wl->ui->checkBoxCameraOnOff->setObjectName("checkBoxCameraVideoID_" + device.section(":::", 0, 0));  // Im ObjectName steckt die id
-        vkCameraSingle_wl->ui->comboBoxCameraFormat->setObjectName("comboBoxCameraFormatVideoID_" + device.section(":::", 0, 0));
+        vkCameraSingle_wl->ui->comboBoxCameraPixelformat->setObjectName("comboBoxCameraPixelformatVideoID_" + device.section(":::", 0, 0));
         vkCameraSingle_wl->ui->comboBoxCameraResolution->setObjectName("comboBoxCameraResolutionVideoID_" + device.section(":::", 0, 0));
         vkCameraSingle_wl->ui->comboBoxCameraFPS->setObjectName("comboBoxCameraFPSVideoID_" + device.section(":::", 0, 0));
         // CheckBox und die ComboBoxen für Format und Auflösung werden nun der GUI hinzugefügt
@@ -122,7 +122,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         QComboBox *comboBoxFormat = NULL;
         for(int i = 0; i < listComboBoxFormat.count(); i++){
             comboBoxFormat = listComboBoxFormat.at(i);
-            if(comboBoxFormat->objectName() == QString("comboBoxCameraFormatVideoID_" + device.section(":::", 0, 0))){
+            if(comboBoxFormat->objectName() == QString("comboBoxCameraPixelformatVideoID_" + device.section(":::", 0, 0))){
                 connect(comboBoxFormat, &QComboBox::currentTextChanged, [=](){
                     if ( vkCameraSingle_wl->ui->checkBoxCameraOnOff->isChecked() == true ){
                         vkCameraSingle_wl->ui->checkBoxCameraOnOff->click();
@@ -256,7 +256,7 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
                 QComboBox *comboBoxFormat = NULL;
                 for(int i = 0; i < listComboBoxFormat.count(); i++){
                     comboBoxFormat = listComboBoxFormat.at(i);
-                    if(comboBoxFormat->objectName() == QString("comboBoxCameraFormatVideoID_" + checkBoxCameraOnOff->objectName().section("_", 1, 1))){
+                    if(comboBoxFormat->objectName() == QString("comboBoxCameraPixelformatVideoID_" + checkBoxCameraOnOff->objectName().section("_", 1, 1))){
                         break;
                     }
                 }
