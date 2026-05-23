@@ -296,12 +296,9 @@ void QvkCameraController_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *c
                     }
                 }
                 // und hier die Auflösung aus der ComboBox lesen und an der Kamera setzen
-                QCameraFormat cameraFormat;
                 QVariant variantData = comboBoxResolution->currentData();
-                if(variantData.canConvert<QCameraFormat>() == true){
-                    cameraFormat = variantData.value<QCameraFormat>();
-                    camera->setCameraFormat(cameraFormat);
-                }
+                QCameraFormat cameraFormat = variantData.value<QCameraFormat>();
+                camera->setCameraFormat(cameraFormat);
 
                 QMediaCaptureSession *captureSession = new QMediaCaptureSession;
                 captureSession->setCamera(camera);
