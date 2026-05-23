@@ -32,6 +32,7 @@
 #include <QCamera>
 #include <QCheckBox>
 #include <QVideoFrame>
+#include <QCameraDevice>
 
 class QvkCameraController_wl : public QObject
 {
@@ -51,6 +52,7 @@ private:
     Ui_formMainWindow_wl *ui;
     QCamera *camera = NULL;
     void set_surface();
+    void set_ResolutionOnComboBox(QString device, QCameraDevice cameraDevice);
 
 
 private slots:
