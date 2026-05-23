@@ -133,6 +133,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
                         // Ok funktioniert
                         vkCameraSingle_wl->ui->checkBoxCameraOnOff->click();
                         set_ResolutionOnComboBox(device, cameraDevice);
+                        vkCameraSurface_wl->is_setNewImageRect = false;
                         vkCameraSingle_wl->ui->checkBoxCameraOnOff->click();
                     }else{
                         // checkBoxCameraOnOff ist off
