@@ -100,9 +100,14 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         connect(vkCameraSingle_wl->ui->comboBoxCameraResolution, &QComboBox::currentIndexChanged, this, [=](int value){
             Q_UNUSED(value)
             if(vkCameraSingle_wl->ui->checkBoxCameraOnOff->isChecked() == true){
-                vkCameraSingle_wl->ui->checkBoxCameraOnOff->click();
+                // checkBoxCameraOnOff ist on
+                // Ok funktioniert
+                // Wenn von kleiner Auflösung auf sehr große Auflösung umgeschaltet wird
+                // sieht man den Kreis nicht da er ganz nach rechts aus dem Bildschirm rutscht
+                // Dieses Problem muß noch behoben werden
                 vkCameraSingle_wl->ui->checkBoxCameraOnOff->click();
                 vkCameraSurface_wl->is_setNewImageRect = false;
+                vkCameraSingle_wl->ui->checkBoxCameraOnOff->click();
             }
         });
 
