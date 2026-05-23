@@ -139,7 +139,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
                 comboBoxPixelformat->addItem(format, videoFormat.pixelFormat());
             }
         }
-        // Bei ändern des Pixelformat Auflösungen neu einlesen
+        // Wird das Pixelformat gewechselt wird die Auflösungen neu eingelesen
         connect(comboBoxPixelformat,
                 &QComboBox::currentTextChanged,
                 this,
