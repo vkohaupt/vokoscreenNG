@@ -217,9 +217,6 @@ void QvkCameraController_wl::set_ResolutionOnComboBox(QString device, QCameraDev
         }
     }
     comboBoxResolution->clear();
-//    comboBoxResolution->blockSignals(true);
-//    vkCameraSingle_wl->ui->checkBoxCameraOnOff->blockSignals(true);
-
 
     // dann die Auflösungen der Kamera ermitteln und in die ComboBox stellen
     for(int i = 0; i < cameraDevice.videoFormats().count(); i++){
@@ -235,9 +232,6 @@ void QvkCameraController_wl::set_ResolutionOnComboBox(QString device, QCameraDev
             }
         }
     }
-//    comboBoxResolution->blockSignals(false);
-//    vkCameraSingle_wl->ui->checkBoxCameraOnOff->blockSignals(false);
-
 }
 
 
