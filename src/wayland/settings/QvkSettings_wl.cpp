@@ -113,7 +113,7 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui, QMainWindow *parent )
         }
     }
     // Die Combobox für die Auflösung muß ganz zum Schluß aus den Settings gesetzt werden
-    // da diese abhänig vom Pixelformat eingelesen werden
+    // da diese abhängig vom Pixelformat eingelesen werden
     for ( int i = 0; i < listComboBox.count(); i++ ) {
         QComboBox *comboBox = listComboBox.at(i);
         if ( comboBox->objectName().contains("comboBoxCameraResolutionVideoID_" )){
