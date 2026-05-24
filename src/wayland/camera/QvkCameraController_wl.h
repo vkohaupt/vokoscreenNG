@@ -54,7 +54,7 @@ private:
     QCamera *camera = NULL;
     void set_surface();
     void set_ResolutionOnComboBox(QString device, QCameraDevice cameraDevice);
-//    QvkCameraSingle_wl *vkCameraSingle_wl;
+
 
 private slots:
     void slot_camera_added_or_removed(QString);
