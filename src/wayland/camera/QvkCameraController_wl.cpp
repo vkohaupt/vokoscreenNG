@@ -77,7 +77,7 @@ void QvkCameraController_wl::init()
 void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 {
     if(device.contains("added")){
-        vkCameraSingle_wl = new QvkCameraSingle_wl;
+        QvkCameraSingle_wl *vkCameraSingle_wl = new QvkCameraSingle_wl;
 
         vkCameraSingle_wl->ui->comboBoxCameraFPS->hide();
 
