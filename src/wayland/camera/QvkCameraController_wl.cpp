@@ -371,6 +371,8 @@ void QvkCameraController_wl::set_surface()
         vkCameraSurface_wl->set_toolButtonCircle(ui->toolButton_camera_view_circle);
         vkCameraSurface_wl->set_toolButtonCameraMirrorHorizontal(ui->toolButtonCameraMirrorHorizontal);
         vkCameraSurface_wl->set_toolButtonCameraMirrorVertical(ui->toolButtonCameraMirrorVertical);
+
+        vkCameraSurface_wl->hide();
     }
 }
 
