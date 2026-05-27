@@ -51,13 +51,6 @@
     </message>
 </context>
 <context>
-    <name>QvkCameraSingle_wl</name>
-    <message>
-        <source>Form</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>QvkCameraSurface_wl</name>
     <message>
         <source>Camera</source>
