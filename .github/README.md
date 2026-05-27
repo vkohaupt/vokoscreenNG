@@ -63,7 +63,7 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 ## Linux
 ### Run-time requirements
 
-* Qt6 >= 6.5
+* Qt6 >= 6.9
 * pulseaudio
 * libwayland-client0
 * gstreamer >= 1.22.8
@@ -93,8 +93,8 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 
 ### Build requirements
 * pkgconfig
-* libqt6-devel >= 6.5
-* libqt6-linguist >= 6.5
+* libqt6-devel >= 6.9
+* libqt6-linguist >= 6.9
 * libX11-devel
 * gstreamer-devel
 * libpulse-devel
