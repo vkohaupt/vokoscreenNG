@@ -195,11 +195,11 @@ void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
     image = image.convertedTo( QImage::Format_ARGB32 );
 
     if(toolButtonCameraMirrorHorizontal->isChecked() == true){
-        image = image.mirrored(true, false);
+        image = image.flipped(Qt::Horizontal);
     }
 
     if(toolButtonCameraMirrorVertical->isChecked() == true){
-        image = image.mirrored(false, true);
+        image = image.flipped(Qt::Vertical);
     }
 
     cameraImage = pixmap.fromImage(image);

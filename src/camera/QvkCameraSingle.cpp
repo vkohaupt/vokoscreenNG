@@ -604,11 +604,11 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
     image = image.convertedTo( QImage::Format_ARGB32 );
 
     if ( checkBoxCameraMirrorHorizontal->isChecked() == true ) {
-        image = image.mirrored( true, false );
+        image = image.flipped(Qt::Horizontal);
     }
 
     if ( checkBoxCameraMirrorVertical->isChecked() == true ) {
-        image = image.mirrored( false, true );
+        image = image.flipped(Qt::Vertical);
     }
 
     if ( checkBoxCameraInvert->isChecked() == true ) {

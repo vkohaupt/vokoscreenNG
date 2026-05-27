@@ -4,13 +4,13 @@
 #
 #-------------------------------------------------
 
-equals(QT_MAJOR_VERSION, 6):!lessThan(QT_MINOR_VERSION, 6) {
+equals(QT_MAJOR_VERSION, 6):!lessThan(QT_MINOR_VERSION, 9) {
    # there is nothing to do
 } else {
     message("Cannot use Qt $${QT_VERSION}")
 
     # Print error and exit .pro file
-    error( "Need minimum Qt 6.6" )
+    error( "Need minimum Qt 6.9" )
 }
 
 unix: QT += dbus
