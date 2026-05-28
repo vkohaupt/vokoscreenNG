@@ -51,10 +51,14 @@
 /*
  *
  *            QvkCameraController_wl
+ *    (Im Controller wird der Watcher und die
+ *     Instanzen jeder Camera mit Suface gemanagt)
  *                     |
  *         ------------------------
  *         |                      |
  * QvkCameraWatcher_wl   QvkCameraSingle_wl
+ *                       (Im Singel wird eine einzelne Camera und
+ *                        und ein einzelnes Surface gemanagt)
  *                                |
  *                       QvkCameraSurface_wl
  *
