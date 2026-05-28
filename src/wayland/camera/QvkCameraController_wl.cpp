@@ -52,7 +52,7 @@
  *
  *            QvkCameraController_wl
  *    (Im Controller wird der Watcher und die
- *     Instanzen jeder Camera mit Suface gemanagt)
+ *     Instanzen jeder Camera mit Surface gemanagt)
  *                     |
  *         ------------------------
  *         |                      |
