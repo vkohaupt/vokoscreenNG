@@ -48,6 +48,18 @@
 #include <QCheckBox>
 #include <QComboBox>
 
+/*
+ *
+ *            QvkCameraController_wl
+ *                     |
+ *         ------------------------
+ *         |                      |
+ * QvkCameraWatcher_wl   QvkCameraSingle_wl
+ *                                |
+ *                       QvkCameraSurface_wl
+ *
+ */
+
 QvkCameraController_wl::QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface )
 {
     ui = ui_surface;
