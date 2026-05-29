@@ -316,12 +316,6 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 
     vkHelp->slot_cleanUp();
 
-    if(vkCameraController_wl->vkCameraSurface_wl != NULL){
-        int x = vkCameraController_wl->vkCameraSurface_wl->imageRect.x();
-        int y = vkCameraController_wl->vkCameraSurface_wl->imageRect.y();
-        vkSettings_wl.saveCameraSurface(x, y);
-    }
-
     qDebug().noquote() << global::nameOutput << "QvkMainWindow_wl::closeEvent End close";
 
 }

@@ -15,6 +15,8 @@ public:
     explicit QvkCameraSingle_wl(QWidget *parent = nullptr);
     ~QvkCameraSingle_wl();
     Ui::QvkCameraSingle_wl *ui;
+    void set_objectName(QString device);
+
 
 private:
 };

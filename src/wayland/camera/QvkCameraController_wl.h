@@ -26,14 +26,10 @@
 #include "ui_formMainWindow_wl.h"
 
 #include "QvkSpezialSlider.h"
-#include "QvkCameraSurface_wl.h"
 #include "QvkCameraSingle_wl.h"
 
 #include <QObject>
-#include <QCamera>
 #include <QCheckBox>
-#include <QVideoFrame>
-#include <QCameraDevice>
 
 class QvkCameraController_wl : public QObject
 {
@@ -42,7 +38,6 @@ class QvkCameraController_wl : public QObject
 public:
     QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface );
     virtual ~QvkCameraController_wl();
-    QvkCameraSurface_wl *vkCameraSurface_wl = NULL;
     void init();
 
 
@@ -51,14 +46,10 @@ public slots:
 
 private:
     Ui_formMainWindow_wl *ui;
-    QCamera *camera = NULL;
-    void set_surface();
-    void set_ResolutionOnComboBox(QString device, QCameraDevice cameraDevice);
 
 
 private slots:
     void slot_camera_added_or_removed(QString);
-    void slot_checkBoxCameraOnOff(bool checked, QCheckBox *checkBoxCameraOnOff);
 
 
 protected:
