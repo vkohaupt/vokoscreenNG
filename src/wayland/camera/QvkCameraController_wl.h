@@ -40,13 +40,13 @@ public:
     virtual ~QvkCameraController_wl();
     void init();
     QvkCameraSingle_wl *vkCameraSingle_wl = NULL;
+    Ui_formMainWindow_wl *ui;
 
 
 public slots:
 
 
 private:
-    Ui_formMainWindow_wl *ui;
 
 
 private slots:

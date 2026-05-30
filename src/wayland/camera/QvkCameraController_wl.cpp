@@ -77,6 +77,7 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 {
     if(device.contains("added")){
         vkCameraSingle_wl = new QvkCameraSingle_wl;
+        vkCameraSingle_wl->set_GUIui(ui);
         vkCameraSingle_wl->set_objectName(device);
         ui->verticalLayout_3->addWidget(vkCameraSingle_wl);
         emit signal_forSystrayCameraAdded(vkCameraSingle_wl->ui->checkBoxCameraOnOff);

@@ -23,6 +23,8 @@
 #ifndef QVKCAMERASURFACE_WL_H
 #define QVKCAMERASURFACE_WL_H
 
+#include "ui_formMainWindow_wl.h"
+
 #include <QObject>
 #include <QWidget>
 #include <QGuiApplication>
@@ -50,12 +52,10 @@ public:
     QToolButton *toolButtonRectangle;
     QToolButton *toolButtonElipse;
     QToolButton *toolButtonCircle;
-
-    void set_toolButtonCameraMirrorVertical(QToolButton *toolButton);
-    void set_toolButtonCameraMirrorHorizontal(QToolButton *toolButton);
-    QToolButton *toolButtonCameraMirrorHorizontal;
-    QToolButton *toolButtonCameraMirrorVertical;
 */
+
+    void set_GUIui(Ui_formMainWindow_wl *ui);
+    Ui_formMainWindow_wl *GuiUi;
 
     QPixmap pixmap;
     QRect imageRect;

@@ -3,6 +3,8 @@
 
 #include "QvkCameraSurface_wl.h"
 
+#include "ui_formMainWindow_wl.h"
+
 #include <QString>
 #include <QWidget>
 #include <QCheckBox>
@@ -22,11 +24,13 @@ public:
     ~QvkCameraSingle_wl();
     Ui::QvkCameraSingle_wl *ui;
     void set_objectName(QString device);
-    QvkCameraSurface_wl *vkCameraSurface_wl = NULL;
+    void set_GUIui(Ui_formMainWindow_wl *ui);
 
 
 private:
     QCamera *camera = NULL;
+    QvkCameraSurface_wl *vkCameraSurface_wl = NULL;
+    Ui_formMainWindow_wl *GuiUi;
 
 
 private slots:

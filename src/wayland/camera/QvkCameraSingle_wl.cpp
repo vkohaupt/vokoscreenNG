@@ -48,11 +48,17 @@ QvkCameraSingle_wl::~QvkCameraSingle_wl()
 }
 
 
+void QvkCameraSingle_wl::set_GUIui(Ui_formMainWindow_wl *ui)
+{
+    GuiUi = ui;
+}
+
+
 void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *checkBoxCameraOnOff)
 {
     if ( checked == true ){
         vkCameraSurface_wl = new QvkCameraSurface_wl;
-
+        vkCameraSurface_wl->set_GUIui(GuiUi);
         const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
         for ( int x = 0; x < cameras.count(); x++ ){
             QCameraDevice cameraDevice = cameras.at(x);
@@ -76,7 +82,6 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
                 camera->start();
             }
         }
-
     }
 
     if ( checked == false ){

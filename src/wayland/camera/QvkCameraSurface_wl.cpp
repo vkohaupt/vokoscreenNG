@@ -68,6 +68,13 @@ QvkCameraSurface_wl::~QvkCameraSurface_wl()
 {
 }
 
+
+void QvkCameraSurface_wl::set_GUIui(Ui_formMainWindow_wl *ui)
+{
+    GuiUi = ui;
+}
+
+
 /*
 void QvkCameraSurface_wl::slot_workaroundForGnome_1()
 {
@@ -102,18 +109,6 @@ void QvkCameraSurface_wl::set_toolButtonElipse(QToolButton *button)
 void QvkCameraSurface_wl::set_toolButtonCircle(QToolButton *button)
 {
     toolButtonCircle = button;
-}
-
-
-void QvkCameraSurface_wl::set_toolButtonCameraMirrorHorizontal(QToolButton *toolButton)
-{
-    toolButtonCameraMirrorHorizontal = toolButton;
-}
-
-
-void QvkCameraSurface_wl::set_toolButtonCameraMirrorVertical(QToolButton *toolButton)
-{
-    toolButtonCameraMirrorVertical = toolButton;
 }
 
 
@@ -193,15 +188,15 @@ void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
 {
     QImage image = videoFrame.toImage();
     image = image.convertedTo( QImage::Format_ARGB32 );
-/*
-    if(toolButtonCameraMirrorHorizontal->isChecked() == true){
+
+    if(GuiUi->toolButtonCameraMirrorHorizontal->isChecked() == true){
         image = image.flipped(Qt::Horizontal);
     }
 
-    if(toolButtonCameraMirrorVertical->isChecked() == true){
+    if(GuiUi->toolButtonCameraMirrorVertical->isChecked() == true){
         image = image.flipped(Qt::Vertical);
     }
-*/
+
     cameraImage = pixmap.fromImage(image);
 /*
     if(is_setNewImageRect == false){
