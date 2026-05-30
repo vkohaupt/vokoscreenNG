@@ -55,8 +55,8 @@ QvkCameraSurface_wl::QvkCameraSurface_wl()
     setAttribute(Qt::WA_QuitOnClose, false);
     showMaximized();
     setMouseTracking(true);
-//    imageRect.setX(100);
-//    imageRect.setY(100);
+    imageRect.setX(100);
+    imageRect.setY(100);
 
     // Siehe Hinweis in mouseReleaseEvent
 //    QTimer::singleShot(2000, this, [=](){slot_workaroundForGnome_1();});
@@ -86,31 +86,7 @@ void QvkCameraSurface_wl::slot_workaroundForGnome_2()
 {
     resize(width()+1, height()+1);
 }
-
-
-void QvkCameraSurface_wl::closeEvent(QCloseEvent *event)
-{
-    Q_UNUSED(event);
-}
-
-
-void QvkCameraSurface_wl::set_toolButtonRectangle(QToolButton *button)
-{
-    toolButtonRectangle = button;
-}
-
-
-void QvkCameraSurface_wl::set_toolButtonElipse(QToolButton *button)
-{
-    toolButtonElipse = button;
-}
-
-
-void QvkCameraSurface_wl::set_toolButtonCircle(QToolButton *button)
-{
-    toolButtonCircle = button;
-}
-
+*/
 
 // Wird benötigt damit die richtige größe beim umschalten des Bildes angzeigt wird
 void QvkCameraSurface_wl::set_newImageRect()
@@ -123,7 +99,7 @@ void QvkCameraSurface_wl::set_newImageRect()
     is_setNewImageRect = true;
 }
 
-*/
+
 void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
@@ -136,8 +112,8 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
     {
         painterPixmap.setRenderHint(QPainter::SmoothPixmapTransform, true);
         painterPixmap.setRenderHint(QPainter::Antialiasing, true);
-/*
-        if(toolButtonElipse->isChecked() == true){
+
+        if(GuiUi->toolButton_camera_view_ellipse->isChecked() == true){
             QPainterPath path;
             path.addEllipse( imageRect.x(),
                              imageRect.y(),
@@ -146,7 +122,7 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
             painterPixmap.setClipPath(path);
         }
 
-        if(toolButtonCircle->isChecked() == true){
+        if(GuiUi->toolButton_camera_view_circle->isChecked() == true){
             QPainterPath path;
             path.addEllipse( imageRect.x() + (cameraImage.width() - cameraImage.height())/2,
                              imageRect.y(),
@@ -155,7 +131,7 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
             painterPixmap.setClipPath(path);
         }
 
-        if(toolButtonRectangle->isChecked() == true){
+        if(GuiUi->toolButton_camera_view_rectangle->isChecked() == true){
             QPainterPath path;
             path.addRect( imageRect.x(),
                           imageRect.y(),
@@ -163,7 +139,7 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
                           cameraImage.height());
             painterPixmap.setClipPath(path);
         }
-*/
+
         painterPixmap.drawPixmap(imageRect.x(),
                                  imageRect.y(),
                                  cameraImage);
@@ -198,21 +174,20 @@ void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
     }
 
     cameraImage = pixmap.fromImage(image);
-/*
+
     if(is_setNewImageRect == false){
         set_newImageRect();
     }
-*/
+
     repaint();
 
     if(a == 0){
         setMask(pixmap.mask());
         a++;
     }
-
 }
 
-/*
+
 // Mausbutton wird gedrückt
 void QvkCameraSurface_wl::mousePressEvent(QMouseEvent *event)
 {
@@ -249,7 +224,7 @@ void QvkCameraSurface_wl::mouseMoveEvent(QMouseEvent *event)
 
         // Camerabild muß im Surface verbleiben und darf nicht darüber hinaus verschoben werden
         // Der Kreis benötigt eine besondere Behandlung
-        if(toolButtonCircle->isChecked() == true){
+        if(GuiUi->toolButton_camera_view_circle->isChecked() == true){
             if(imageRect.x() < (0-(imageRect.width()-imageRect.height())/2)){
                 imageRect.setX(0-(imageRect.width()-imageRect.height())/2);
             }
@@ -323,4 +298,4 @@ void QvkCameraSurface_wl::leaveEvent(QEvent *event )
     mouseHover = false;
     // Ein repaint wird nicht benötigt da das Videobild immer wieder neu aufgebaut wird
 }
-*/
+

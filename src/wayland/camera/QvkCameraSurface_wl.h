@@ -45,23 +45,14 @@ class QvkCameraSurface_wl : public QWidget
 public:
     QvkCameraSurface_wl();
     virtual ~QvkCameraSurface_wl();
-/*
-    void set_toolButtonRectangle(QToolButton *button);
-    void set_toolButtonElipse(QToolButton *button);
-    void set_toolButtonCircle(QToolButton *button);
-    QToolButton *toolButtonRectangle;
-    QToolButton *toolButtonElipse;
-    QToolButton *toolButtonCircle;
-*/
-
-    void set_GUIui(Ui_formMainWindow_wl *ui);
     Ui_formMainWindow_wl *GuiUi;
+    void set_GUIui(Ui_formMainWindow_wl *ui);
 
     QPixmap pixmap;
     QRect imageRect;
 
-//    void set_newImageRect();
-//    bool is_setNewImageRect = false;
+    void set_newImageRect();
+    bool is_setNewImageRect = false;
 
 
 private:
@@ -85,12 +76,11 @@ signals:
 
 protected:
     void paintEvent(QPaintEvent *event);
-//    void mouseMoveEvent(QMouseEvent *event);
-//    void mousePressEvent(QMouseEvent *event);
-//    void mouseReleaseEvent(QMouseEvent *event);
-//    void enterEvent(QEnterEvent *event);
-//    void leaveEvent(QEvent *event );
-//    void closeEvent(QCloseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+    void mousePressEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    void enterEvent(QEnterEvent *event);
+    void leaveEvent(QEvent *event );
 
 };
 
