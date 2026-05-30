@@ -66,7 +66,8 @@ void QvkCameraController_wl::init()
     connect(vkCameraWatcher_wl,
             &QvkCameraWatcher_wl::signal_cameraChanged,
             this,
-            [this](QString device){slot_camera_added_or_removed(device);});
+            [this](QString device){slot_camera_added_or_removed(device);}
+    );
 
     vkCameraWatcher_wl->init();
 }
@@ -75,10 +76,16 @@ void QvkCameraController_wl::init()
 void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
 {
     if(device.contains("added")){
-        QvkCameraSingle_wl *vkCameraSingle_wl = new QvkCameraSingle_wl;
+        vkCameraSingle_wl = new QvkCameraSingle_wl;
         vkCameraSingle_wl->set_objectName(device);
         ui->verticalLayout_3->addWidget(vkCameraSingle_wl);
         emit signal_forSystrayCameraAdded(vkCameraSingle_wl->ui->checkBoxCameraOnOff);
+
+        connect( vkCameraSingle_wl,
+                 &QvkCameraSingle_wl::signal_checkBoxCameraOnOff,
+                 this,
+                 [=](bool checked){slot_disableEnableCameras(checked);}
+        );
     }
 
     if(device.contains("removed")){
@@ -104,5 +111,35 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
             }
         }
         emit signal_forSystrayCameraRemoved(device);
+    }
+}
+
+
+void QvkCameraController_wl::slot_disableEnableCameras(bool checked)
+{
+    // Disable all other cameras
+    if ( checked == true ){
+        QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
+        for ( int i = 0; i < listCheckBox.count(); i++ ) {
+            QCheckBox *checkBox = listCheckBox.at(i);
+            if ( checkBox->objectName().contains("checkBoxCameraVideoID_") ){
+                if ( checkBox->isChecked() == false ){
+                    checkBox->parentWidget()->setDisabled(true);
+                }
+            }
+        }
+    }
+
+    // Enable all cameras
+    if ( checked == false ){
+        QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
+        for ( int i = 0; i < listCheckBox.count(); i++ ) {
+            QCheckBox *checkBox = listCheckBox.at(i);
+            if ( checkBox->objectName().contains("checkBoxCameraVideoID_") ){
+                if ( checkBox->isChecked() == false ){
+                    checkBox->parentWidget()->setEnabled(true);
+                }
+            }
+        }
     }
 }

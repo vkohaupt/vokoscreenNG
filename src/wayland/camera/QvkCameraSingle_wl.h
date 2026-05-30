@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QCheckBox>
+#include <QVBoxLayout>
 
 namespace Ui {
 class QvkCameraSingle_wl;
@@ -17,14 +18,18 @@ public:
     ~QvkCameraSingle_wl();
     Ui::QvkCameraSingle_wl *ui;
     void set_objectName(QString device);
-    void slot_checkBoxCameraOnOff(bool value, QCheckBox *checkBox);
 
 
 private:
 
 
+private slots:
+    void slot_checkBoxCameraOnOff(bool value, QCheckBox *checkBox);
+
+
 signals:
     void signal_forSystrayCameraOnOff(QCheckBox *checkBox);
+    void signal_checkBoxCameraOnOff(bool value);
 
 };
 

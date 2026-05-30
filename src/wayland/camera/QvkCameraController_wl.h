@@ -46,10 +46,12 @@ public slots:
 
 private:
     Ui_formMainWindow_wl *ui;
+    QvkCameraSingle_wl *vkCameraSingle_wl = NULL;
 
 
 private slots:
     void slot_camera_added_or_removed(QString);
+    void slot_disableEnableCameras(bool checked);
 
 
 protected:

@@ -1,12 +1,13 @@
 #include "QvkCameraSingle_wl.h"
 #include "ui_QvkCameraSingle_wl.h"
 
+#include <QVBoxLayout>
+
 QvkCameraSingle_wl::QvkCameraSingle_wl(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::QvkCameraSingle_wl)
 {
     ui->setupUi(this);
-
 }
 
 
@@ -22,6 +23,7 @@ void QvkCameraSingle_wl::set_objectName(QString device)
     connect(ui->checkBoxCameraOnOff, &QCheckBox::clicked, this, [=](bool value){
         slot_checkBoxCameraOnOff(value, ui->checkBoxCameraOnOff);
         emit signal_forSystrayCameraOnOff(ui->checkBoxCameraOnOff);
+        emit signal_checkBoxCameraOnOff(value);
     });
 }
 
@@ -32,33 +34,7 @@ QvkCameraSingle_wl::~QvkCameraSingle_wl()
 }
 
 
-void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *checkBoxCameraOnOff)
+void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool value, QCheckBox *checkBox)
 {
-    qDebug() << "1111111111111111111111111111111111111111111111111111111111";
 
-    // Disable all other cameras
-    if ( checked == true ){
-        QList<QCheckBox *> listCheckBox = findChildren<QCheckBox *>();
-        for ( int i = 0; i < listCheckBox.count(); i++ ) {
-            QCheckBox *checkBox = listCheckBox.at(i);
-            if ( checkBox->objectName().contains("checkBoxCameraVideoID_") ){
-                if ( checkBox->isChecked() == false ){
-                    checkBox->setDisabled(true);
-                }
-            }
-        }
-    }
-
-    // Enable all cameras
-    if ( checked == false ){
-        QList<QCheckBox *> listCheckBox = findChildren<QCheckBox *>();
-        for ( int i = 0; i < listCheckBox.count(); i++ ) {
-            QCheckBox *checkBox = listCheckBox.at(i);
-            if ( checkBox->objectName().contains("checkBoxCameraVideoID_") ){
-                if ( checkBox->isChecked() == false ){
-                    checkBox->setEnabled(true);
-                }
-            }
-        }
-    }
 }
