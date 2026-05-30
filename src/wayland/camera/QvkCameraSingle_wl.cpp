@@ -1,7 +1,21 @@
+#include "global.h"
 #include "QvkCameraSingle_wl.h"
+#include "QvkCameraSurface_wl.h"
 #include "ui_QvkCameraSingle_wl.h"
 
-#include <QVBoxLayout>
+#include <QString>
+#include <QWidget>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QList>
+#include <QMediaDevices>
+#include <QCameraDevice>
+#include <QCameraFormat>
+#include <QVideoSink>
+#include <QVideoFrame>
+#include <QMediaCaptureSession>
+#include <QVariant>
+#include <QCamera>
 
 QvkCameraSingle_wl::QvkCameraSingle_wl(QWidget *parent) :
     QWidget(parent),
@@ -34,7 +48,45 @@ QvkCameraSingle_wl::~QvkCameraSingle_wl()
 }
 
 
-void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool value, QCheckBox *checkBox)
+void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *checkBoxCameraOnOff)
 {
+    if ( checked == true ){
+        vkCameraSurface_wl = new QvkCameraSurface_wl;
 
+        const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
+        for ( int x = 0; x < cameras.count(); x++ ){
+            QCameraDevice cameraDevice = cameras.at(x);
+            if ( cameraDevice.id() == checkBoxCameraOnOff->objectName().section("_", 1, 1) ){
+                camera = new QCamera(cameraDevice);
+                QVideoSink *videoSink = new QVideoSink;
+                connect(videoSink,
+                        &QVideoSink::videoFrameChanged,
+                        vkCameraSurface_wl,
+                        [=](QVideoFrame videoFrame){
+                    vkCameraSurface_wl->slot_setCameraImage(videoFrame);
+                });
+
+                QMediaCaptureSession *captureSession = new QMediaCaptureSession;
+                captureSession->setCamera(camera);
+                captureSession->setVideoOutput(videoSink);
+                qDebug().noquote() << global::nameOutput
+                                   << "[Camera] Start with:"
+                                   << cameraDevice.id();
+
+                camera->start();
+            }
+        }
+
+    }
+
+    if ( checked == false ){
+        camera->stop();
+        qDebug().noquote() << global::nameOutput
+                           << "[Camera] Stop:"
+                           << checkBoxCameraOnOff->objectName().section("_", 1, 1);
+        delete camera;
+        camera = NULL;
+        delete vkCameraSurface_wl;
+        vkCameraSurface_wl = NULL;
+    }
 }

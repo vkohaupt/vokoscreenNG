@@ -43,7 +43,7 @@ class QvkCameraSurface_wl : public QWidget
 public:
     QvkCameraSurface_wl();
     virtual ~QvkCameraSurface_wl();
-
+/*
     void set_toolButtonRectangle(QToolButton *button);
     void set_toolButtonElipse(QToolButton *button);
     void set_toolButtonCircle(QToolButton *button);
@@ -55,13 +55,13 @@ public:
     void set_toolButtonCameraMirrorHorizontal(QToolButton *toolButton);
     QToolButton *toolButtonCameraMirrorHorizontal;
     QToolButton *toolButtonCameraMirrorVertical;
-
+*/
 
     QPixmap pixmap;
     QRect imageRect;
 
-    void set_newImageRect();
-    bool is_setNewImageRect = false;
+//    void set_newImageRect();
+//    bool is_setNewImageRect = false;
 
 
 private:
@@ -72,8 +72,8 @@ private:
     bool mouseHover = false;
 
 private slots:
-    void slot_workaroundForGnome_1();
-    void slot_workaroundForGnome_2();
+//    void slot_workaroundForGnome_1();
+//    void slot_workaroundForGnome_2();
 
 
 public slots:
@@ -85,12 +85,12 @@ signals:
 
 protected:
     void paintEvent(QPaintEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
-    void mousePressEvent(QMouseEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
-    void enterEvent(QEnterEvent *event);
-    void leaveEvent(QEvent *event );
-    void closeEvent(QCloseEvent *event);
+//    void mouseMoveEvent(QMouseEvent *event);
+//    void mousePressEvent(QMouseEvent *event);
+//    void mouseReleaseEvent(QMouseEvent *event);
+//    void enterEvent(QEnterEvent *event);
+//    void leaveEvent(QEvent *event );
+//    void closeEvent(QCloseEvent *event);
 
 };
 

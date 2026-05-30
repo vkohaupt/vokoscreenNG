@@ -55,12 +55,12 @@ QvkCameraSurface_wl::QvkCameraSurface_wl()
     setAttribute(Qt::WA_QuitOnClose, false);
     showMaximized();
     setMouseTracking(true);
-    imageRect.setX(100);
-    imageRect.setY(100);
+//    imageRect.setX(100);
+//    imageRect.setY(100);
 
     // Siehe Hinweis in mouseReleaseEvent
-    QTimer::singleShot(2000, this, [=](){slot_workaroundForGnome_1();});
-    QTimer::singleShot(3000, this, [=](){slot_workaroundForGnome_2();});
+//    QTimer::singleShot(2000, this, [=](){slot_workaroundForGnome_1();});
+//    QTimer::singleShot(3000, this, [=](){slot_workaroundForGnome_2();});
 }
 
 
@@ -68,7 +68,7 @@ QvkCameraSurface_wl::~QvkCameraSurface_wl()
 {
 }
 
-
+/*
 void QvkCameraSurface_wl::slot_workaroundForGnome_1()
 {
     resize(width()-1, height()-1);
@@ -128,7 +128,7 @@ void QvkCameraSurface_wl::set_newImageRect()
     is_setNewImageRect = true;
 }
 
-
+*/
 void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
@@ -141,7 +141,7 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
     {
         painterPixmap.setRenderHint(QPainter::SmoothPixmapTransform, true);
         painterPixmap.setRenderHint(QPainter::Antialiasing, true);
-
+/*
         if(toolButtonElipse->isChecked() == true){
             QPainterPath path;
             path.addEllipse( imageRect.x(),
@@ -168,7 +168,7 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
                           cameraImage.height());
             painterPixmap.setClipPath(path);
         }
-
+*/
         painterPixmap.drawPixmap(imageRect.x(),
                                  imageRect.y(),
                                  cameraImage);
@@ -193,7 +193,7 @@ void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
 {
     QImage image = videoFrame.toImage();
     image = image.convertedTo( QImage::Format_ARGB32 );
-
+/*
     if(toolButtonCameraMirrorHorizontal->isChecked() == true){
         image = image.flipped(Qt::Horizontal);
     }
@@ -201,21 +201,23 @@ void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
     if(toolButtonCameraMirrorVertical->isChecked() == true){
         image = image.flipped(Qt::Vertical);
     }
-
+*/
     cameraImage = pixmap.fromImage(image);
+/*
     if(is_setNewImageRect == false){
         set_newImageRect();
     }
-
+*/
     repaint();
 
     if(a == 0){
         setMask(pixmap.mask());
         a++;
     }
+
 }
 
-
+/*
 // Mausbutton wird gedrückt
 void QvkCameraSurface_wl::mousePressEvent(QMouseEvent *event)
 {
@@ -326,3 +328,4 @@ void QvkCameraSurface_wl::leaveEvent(QEvent *event )
     mouseHover = false;
     // Ein repaint wird nicht benötigt da das Videobild immer wieder neu aufgebaut wird
 }
+*/
