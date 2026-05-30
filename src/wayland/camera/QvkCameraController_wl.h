@@ -39,6 +39,7 @@ public:
     QvkCameraController_wl( Ui_formMainWindow_wl *ui_surface );
     virtual ~QvkCameraController_wl();
     void init();
+    QvkCameraSingle_wl *vkCameraSingle_wl = NULL;
 
 
 public slots:
@@ -46,7 +47,6 @@ public slots:
 
 private:
     Ui_formMainWindow_wl *ui;
-    QvkCameraSingle_wl *vkCameraSingle_wl = NULL;
 
 
 private slots:

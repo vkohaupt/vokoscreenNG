@@ -183,7 +183,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         });
 
         // Camera checked oder unchecked muß nun an das richtige Menü im Systray gesendet werden
-        // Ok funktioniert -
+        // Ok funktioniert
         connect(vkCameraController_wl,
                 &QvkCameraController_wl::signal_forSystrayCameraOnOff,
                 vkSystray,
@@ -199,7 +199,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         });
 
         // Disable all other cameras wenn camera is checked
-        // Ok funktioniert -
+        // Ok funktioniert
         connect(vkCameraController_wl,
                 &QvkCameraController_wl::signal_forSystrayCameraOnOff,
                 vkSystray,
@@ -216,7 +216,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         });
 
         // Enable all cameras wenn camera is unchecked -
-        // OK funktioniert -
+        // OK funktioniert
         connect(vkCameraController_wl,
                 &QvkCameraController_wl::signal_forSystrayCameraOnOff,
                 vkSystray,
@@ -233,7 +233,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         });
 
         // Signal wird an Systray geschickt wenn eine Camera hinzugefügt wurde
-        // OK funktioniert -
+        // OK funktioniert
         connect(vkCameraController_wl,
                 &QvkCameraController_wl::signal_forSystrayCameraAdded,
                 vkSystray,
@@ -242,7 +242,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         });
 
         // Signal wird an Systray geschickt wenn eine Camera entfernt wurde
-        // Ok funktioniert -
+        // Ok funktioniert
         connect(vkCameraController_wl,
                 &QvkCameraController_wl::signal_forSystrayCameraRemoved,
                 vkSystray,
@@ -257,8 +257,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
             }
         });
 
-        // Signal kommt von Systray
-        // Ok funktioniert -
+        // Signal ON OFF kommt von Systray
+        // Ok funktioniert
         connect(vkSystray,
                 &QvkSystray_wl::signal_cameraOnOff,
                 vkSystray,

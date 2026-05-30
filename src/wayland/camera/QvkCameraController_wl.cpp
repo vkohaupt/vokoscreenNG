@@ -81,11 +81,21 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
         ui->verticalLayout_3->addWidget(vkCameraSingle_wl);
         emit signal_forSystrayCameraAdded(vkCameraSingle_wl->ui->checkBoxCameraOnOff);
 
+        // Kamera werden in der GUI disabled oder enabled
         connect( vkCameraSingle_wl,
                  &QvkCameraSingle_wl::signal_checkBoxCameraOnOff,
                  this,
                  [=](bool checked){slot_disableEnableCameras(checked);}
         );
+
+        // Kamera wird weitergeleitet an Systray
+        connect( vkCameraSingle_wl,
+                 &QvkCameraSingle_wl::signal_forSystrayCameraOnOff,
+                 this,
+                 [=](QCheckBox *checkBox){ emit signal_forSystrayCameraOnOff(checkBox);}
+        );
+
+
     }
 
     if(device.contains("removed")){
