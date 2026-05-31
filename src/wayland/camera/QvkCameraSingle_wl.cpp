@@ -22,6 +22,7 @@ QvkCameraSingle_wl::QvkCameraSingle_wl(QWidget *parent) :
     ui(new Ui::QvkCameraSingle_wl)
 {
     ui->setupUi(this);
+    ui->comboBoxCameraFPS->hide();
 }
 
 
@@ -71,13 +72,41 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
                         [=](QVideoFrame videoFrame){
                     vkCameraSurface_wl->slot_setCameraImage(videoFrame);
                 });
+/*
+                // ComboxBox für die Formate YUYV JPEG etc. ermitteln ...
+                QList<QComboBox *> listComboBoxPixelformat = GuiUi->centralwidget->findChildren<QComboBox *>();
+                QComboBox *comboBoxPixelformat = NULL;
+                for(int i = 0; i < listComboBoxPixelformat.count(); i++){
+                    comboBoxPixelformat = listComboBoxPixelformat.at(i);
+                    if(comboBoxPixelformat->objectName() == QString("comboBoxCameraPixelformatVideoID_" + checkBoxCameraOnOff->objectName().section("_", 1, 1))){
+                        break;
+                    }
+                }
+*/
+                // ComboxBox für die Auflösungen ermitteln ...
+                QList<QComboBox *> listComboBoxResolution = GuiUi->centralwidget->findChildren<QComboBox *>();
+                QComboBox *comboBoxResolution = NULL;
+                for(int i = 0; i < listComboBoxResolution.count(); i++){
+                    comboBoxResolution = listComboBoxResolution.at(i);
+                    if(comboBoxResolution->objectName() == QString("comboBoxCameraResolutionVideoID_" + checkBoxCameraOnOff->objectName().section("_", 1, 1))){
+                        break;
+                    }
+                }
+                // und hier die Auflösung aus der ComboBox lesen und an der Kamera setzen
+                QVariant variantData = comboBoxResolution->currentData();
+                QCameraFormat cameraFormat = variantData.value<QCameraFormat>();
+                camera->setCameraFormat(cameraFormat);
 
                 QMediaCaptureSession *captureSession = new QMediaCaptureSession;
                 captureSession->setCamera(camera);
                 captureSession->setVideoOutput(videoSink);
                 qDebug().noquote() << global::nameOutput
                                    << "[Camera] Start with:"
-                                   << cameraDevice.id();
+                                   << cameraDevice.id()
+                                   << cameraFormat.pixelFormat()
+                                   << cameraFormat.resolution()
+                                   << cameraFormat.minFrameRate()
+                                   << cameraFormat.maxFrameRate();
 
                 camera->start();
             }

@@ -30,6 +30,7 @@
 
 #include <QObject>
 #include <QCheckBox>
+#include <QCameraDevice>
 
 class QvkCameraController_wl : public QObject
 {
@@ -47,6 +48,7 @@ public slots:
 
 
 private:
+    void set_ResolutionOnComboBox(QString device, QCameraDevice cameraDevice);
 
 
 private slots:
