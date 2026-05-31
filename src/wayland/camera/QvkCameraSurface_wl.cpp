@@ -73,7 +73,7 @@ void QvkCameraSurface_wl::set_GUIui(Ui_formMainWindow_wl *ui)
 {
     GuiUi = ui;
 
-    // Beim anklicken der Toolbuttons muß die Maske neu gestetzt werden
+    // Beim anklicken der Toolbuttons muß die Maske neu gesetzt werden
     // ansonsten wird sie nicht immer übernommen.
     // Insbesondere wenn vor dem umschalten das Kamerabild angeklickt wurde.
     connect(GuiUi->toolButton_camera_view_rectangle,
