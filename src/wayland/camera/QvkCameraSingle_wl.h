@@ -10,6 +10,7 @@
 #include <QCheckBox>
 #include <QVBoxLayout>
 #include <QCamera>
+#include <QResizeEvent>
 
 namespace Ui {
 class QvkCameraSingle_wl;
@@ -40,6 +41,10 @@ private slots:
 signals:
     void signal_forSystrayCameraOnOff(QCheckBox *checkBox);
     void signal_checkBoxCameraOnOff(bool value);
+
+
+protected:
+    void resizeEvent(QResizeEvent *event);
 
 };
 

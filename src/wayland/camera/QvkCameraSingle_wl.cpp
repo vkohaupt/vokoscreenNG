@@ -16,6 +16,8 @@
 #include <QMediaCaptureSession>
 #include <QVariant>
 #include <QCamera>
+#include <QResizeEvent>
+
 
 QvkCameraSingle_wl::QvkCameraSingle_wl(QWidget *parent) :
     QWidget(parent),
@@ -122,5 +124,56 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
         camera = NULL;
         delete vkCameraSurface_wl;
         vkCameraSurface_wl = NULL;
+    }
+}
+
+
+void QvkCameraSingle_wl::resizeEvent(QResizeEvent *event)
+{
+    Q_UNUSED(event)
+    {
+        // In der Gui die ComboBoxen für die Auflösung auf eine gemeinsame Breite setzen
+        QList<QComboBox *> listComboBox;
+        QList<QComboBox *> listComboBoxAll = GuiUi->centralwidget->findChildren<QComboBox *>();
+        for(int i = 0; i < listComboBoxAll.count(); i++){
+            QComboBox *comboBoxResolution = listComboBoxAll.at(i);
+            if(comboBoxResolution->objectName().contains("comboBoxCameraResolutionVideoID_")){
+                listComboBox.append(comboBoxResolution);
+            }
+        }
+        int width = 0;
+        for(int i = 0; i < listComboBox.count(); i++){
+            QComboBox *comboBox = listComboBox.at(i);
+            if ( comboBox->width() > width ){
+                width = comboBox->width();
+            }
+        }
+        for(int i = 0; i < listComboBox.count(); i++){
+            QComboBox *comboBox = listComboBox.at(i);
+            comboBox->setMinimumWidth(width);
+        }
+    }
+
+    // In der Gui die ComboBoxen für das Pixelformat auf eine gemeinsame Breite setzen
+    {
+        QList<QComboBox *> listComboBox;
+        QList<QComboBox *> listComboBoxAll = GuiUi->centralwidget->findChildren<QComboBox *>();
+        for(int i = 0; i < listComboBoxAll.count(); i++){
+            QComboBox *comboBoxResolution = listComboBoxAll.at(i);
+            if(comboBoxResolution->objectName().contains("comboBoxCameraPixelformatVideoID_")){
+                listComboBox.append(comboBoxResolution);
+            }
+        }
+        int width = 0;
+        for(int i = 0; i < listComboBox.count(); i++){
+            QComboBox *comboBox = listComboBox.at(i);
+            if ( comboBox->width() > width ){
+                width = comboBox->width();
+            }
+        }
+        for(int i = 0; i < listComboBox.count(); i++){
+            QComboBox *comboBox = listComboBox.at(i);
+            comboBox->setMinimumWidth(width);
+        }
     }
 }
