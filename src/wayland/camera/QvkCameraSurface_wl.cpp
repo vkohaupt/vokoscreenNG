@@ -72,6 +72,25 @@ QvkCameraSurface_wl::~QvkCameraSurface_wl()
 void QvkCameraSurface_wl::set_GUIui(Ui_formMainWindow_wl *ui)
 {
     GuiUi = ui;
+
+    // Beim anklicken der Toolbuttons muß die Maske neu gestetzt werden
+    // ansonsten wird sie nicht immer übernommen.
+    // Insbesondere wenn vor dem umschalten das Kamerabild angeklickt wurde.
+    connect(GuiUi->toolButton_camera_view_rectangle,
+            &QToolButton::clicked,
+            this,
+            [=](){is_setNewImageRect=false;}
+    );
+    connect(GuiUi->toolButton_camera_view_circle,
+            &QToolButton::clicked,
+            this,
+            [=](){is_setNewImageRect=false;}
+    );
+    connect(GuiUi->toolButton_camera_view_ellipse,
+            &QToolButton::clicked,
+            this,
+            [=](){is_setNewImageRect=false;}
+    );
 }
 
 
@@ -180,11 +199,6 @@ void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
     }
 
     repaint();
-
-    if(a == 0){
-        setMask(pixmap.mask());
-        a++;
-    }
 }
 
 

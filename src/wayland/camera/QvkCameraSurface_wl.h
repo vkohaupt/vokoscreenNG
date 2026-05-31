@@ -56,7 +56,6 @@ public:
 
 
 private:
-    int a = 0;
     QPixmap cameraImage;
     bool mousePressed = false;
     QPoint pointDiv;
