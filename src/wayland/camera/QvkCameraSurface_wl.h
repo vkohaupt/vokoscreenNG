@@ -25,9 +25,7 @@
 
 #include "ui_formMainWindow_wl.h"
 
-#include <QObject>
 #include <QWidget>
-#include <QGuiApplication>
 #include <QPaintEvent>
 #include <QMouseEvent>
 #include <QEnterEvent>
@@ -36,8 +34,6 @@
 #include <QRect>
 #include <QPoint>
 #include <QVideoFrame>
-#include <QToolButton>
-#include <QCheckBox>
 
 class QvkCameraSurface_wl : public QWidget
 {
