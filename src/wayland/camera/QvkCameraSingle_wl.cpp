@@ -123,7 +123,8 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
                         vkCameraSurface_wl,
                         [=](QVideoFrame videoFrame){
                     QImage image = videoFrame.toImage();
-                    image = image.convertedTo( QImage::Format_ARGB32 );
+//                    image = image.convertedTo( QImage::Format_ARGB32 );
+                    image = image.convertedTo(QImage::Format_ARGB32_Premultiplied);
                     vkCameraSurface_wl->slot_setCameraImage(image);
                     // Bild von Kamera verfügbar.
                     // Timer für Hinweis das kein Bild vorhanden ist kann nun gestoppt werden
@@ -152,6 +153,7 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
     }
 
     if ( checked == false ){
+        timerNoImage->stop();
         camera->stop();
         qDebug().noquote() << global::nameOutput
                            << "[Camera] Stop:"
