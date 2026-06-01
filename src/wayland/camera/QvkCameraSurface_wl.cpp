@@ -166,7 +166,7 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
     }
     painterPixmap.end();
 
-    pixmap = pixmap.fromImage(image);
+    pixmap = QPixmap::fromImage(image);
 
     QPainter painter;
     painter.begin(this);
@@ -179,11 +179,8 @@ void QvkCameraSurface_wl::paintEvent(QPaintEvent *event)
 }
 
 
-void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
+void QvkCameraSurface_wl::slot_setCameraImage(QImage image)
 {
-    QImage image = videoFrame.toImage();
-    image = image.convertedTo( QImage::Format_ARGB32 );
-
     if(GuiUi->toolButtonCameraMirrorHorizontal->isChecked() == true){
         image = image.flipped(Qt::Horizontal);
     }
@@ -192,7 +189,7 @@ void QvkCameraSurface_wl::slot_setCameraImage(QVideoFrame videoFrame)
         image = image.flipped(Qt::Vertical);
     }
 
-    cameraImage = pixmap.fromImage(image);
+    cameraImage = QPixmap::fromImage(image);
 
     if(is_setNewImageRect == false){
         set_newImageRect();

@@ -63,7 +63,7 @@ private slots:
 
 
 public slots:
-    void slot_setCameraImage(QVideoFrame videoFrame);
+    void slot_setCameraImage(QImage image);
 
 
 signals:

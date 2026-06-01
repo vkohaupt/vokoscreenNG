@@ -85,6 +85,12 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
     if ( checked == true ){
         vkCameraSurface_wl = new QvkCameraSurface_wl;
         vkCameraSurface_wl->set_GUIui(GuiUi);
+
+        QImage image(100, 100, QImage::Format_ARGB32_Premultiplied);
+        image.fill(Qt::gray);
+        vkCameraSurface_wl->slot_setCameraImage(image);
+        vkCameraSurface_wl->is_setNewImageRect=false;
+
         const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
         for ( int x = 0; x < cameras.count(); x++ ){
             QCameraDevice cameraDevice = cameras.at(x);
@@ -95,7 +101,9 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
                         &QVideoSink::videoFrameChanged,
                         vkCameraSurface_wl,
                         [=](QVideoFrame videoFrame){
-                    vkCameraSurface_wl->slot_setCameraImage(videoFrame);
+                    QImage image = videoFrame.toImage();
+                    image = image.convertedTo( QImage::Format_ARGB32 );
+                    vkCameraSurface_wl->slot_setCameraImage(image);
                 });
 
                 // ComboxBox für die Auflösungen ermitteln ...
