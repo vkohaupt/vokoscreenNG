@@ -104,7 +104,7 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
 
         timerNoImage = new QTimer();
         timerNoImage->setTimerType( Qt::PreciseTimer );
-        timerNoImage->setInterval( 100 );
+        timerNoImage->setInterval( 20 );
         connect(timerNoImage, &QTimer::timeout, this, [=](){
             vkCameraSurface_wl->is_setNewImageRect=false;
             vkCameraSurface_wl->slot_setCameraImage(image);
