@@ -11,6 +11,7 @@
 #include <QVBoxLayout>
 #include <QCamera>
 #include <QResizeEvent>
+#include <QTimer>
 
 namespace Ui {
 class QvkCameraSingle_wl;
@@ -34,7 +35,7 @@ private:
     QCamera *camera = NULL;
     QvkCameraSurface_wl *vkCameraSurface_wl = NULL;
     Ui_formMainWindow_wl *GuiUi;
-
+    QTimer *timerNoImage;
 
 private slots:
     void slot_checkBoxCameraOnOff(bool checked, QCheckBox *checkBoxCameraOnOff);
@@ -43,6 +44,7 @@ private slots:
 signals:
     void signal_forSystrayCameraOnOff(QCheckBox *checkBox);
     void signal_checkBoxCameraOnOff(bool value);
+    void signal_ImageAvailable();
 
 
 protected:

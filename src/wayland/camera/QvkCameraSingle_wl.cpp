@@ -17,6 +17,7 @@
 #include <QVariant>
 #include <QCamera>
 #include <QResizeEvent>
+#include <QTimer>
 
 
 QvkCameraSingle_wl::QvkCameraSingle_wl(QWidget *parent) :
@@ -65,6 +66,13 @@ void QvkCameraSingle_wl::set_init(QString device)
             ui->checkBoxCameraOnOff->click();
         }
     });
+
+    connect(this,
+            &QvkCameraSingle_wl::signal_ImageAvailable,
+            this,
+            [=](){
+        timerNoImage->stop();
+    });
 }
 
 
@@ -86,10 +94,23 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
         vkCameraSurface_wl = new QvkCameraSurface_wl;
         vkCameraSurface_wl->set_GUIui(GuiUi);
 
-        QImage image(100, 100, QImage::Format_ARGB32_Premultiplied);
+        // ----- Für kein Bild ------
+        int width = ui->comboBoxCameraResolution->currentText().section(" ", 0, 0).toInt();
+        int height = ui->comboBoxCameraResolution->currentText().section(" ", 2, 2).toInt();
+        QImage image(width, height, QImage::Format_ARGB32_Premultiplied);
         image.fill(Qt::gray);
         vkCameraSurface_wl->slot_setCameraImage(image);
         vkCameraSurface_wl->is_setNewImageRect=false;
+
+        timerNoImage = new QTimer();
+        timerNoImage->setTimerType( Qt::PreciseTimer );
+        timerNoImage->setInterval( 100 );
+        connect(timerNoImage, &QTimer::timeout, this, [=](){
+            vkCameraSurface_wl->is_setNewImageRect=false;
+            vkCameraSurface_wl->slot_setCameraImage(image);
+        });
+        timerNoImage->start();
+        // ----- Für kein Bild ------
 
         const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
         for ( int x = 0; x < cameras.count(); x++ ){
@@ -104,6 +125,9 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
                     QImage image = videoFrame.toImage();
                     image = image.convertedTo( QImage::Format_ARGB32 );
                     vkCameraSurface_wl->slot_setCameraImage(image);
+                    // Bild von Kamera verfügbar.
+                    // Timer für Hinweis das kein Bild vorhanden ist kann nun gestoppt werden
+                    emit signal_ImageAvailable();
                 });
 
                 // Auflösung aus der ComboBox lesen und an der Kamera setzen
