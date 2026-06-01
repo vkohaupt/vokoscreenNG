@@ -46,8 +46,15 @@ void QvkCameraSingle_wl::set_init(QString device)
     connect(ui->comboBoxCameraPixelformat,
             &QComboBox::currentTextChanged,
             this,
-            [=](){set_ResolutionOnComboBox(ui->comboBoxCameraPixelformat->objectName().section("_", 1, 1));}
-    );
+            [=](){
+        if(ui->checkBoxCameraOnOff->isChecked() == true){
+            ui->checkBoxCameraOnOff->click();
+            set_ResolutionOnComboBox(ui->comboBoxCameraPixelformat->objectName().section("_", 1, 1));
+            ui->checkBoxCameraOnOff->click();
+        } else {
+            set_ResolutionOnComboBox(ui->comboBoxCameraPixelformat->objectName().section("_", 1, 1));
+        }
+    });
 }
 
 
