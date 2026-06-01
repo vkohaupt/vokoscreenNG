@@ -25,6 +25,7 @@ public:
     explicit QvkCameraSingle_wl(QWidget *parent = nullptr);
     ~QvkCameraSingle_wl();
     Ui::QvkCameraSingle_wl *ui;
+    QvkCameraSurface_wl *vkCameraSurface_wl = NULL;
     void set_init(QString device);
     void set_GUIui(Ui_formMainWindow_wl *ui);
     void set_PixelFormatOnComboBox(QString ID);
@@ -33,7 +34,6 @@ public:
 
 private:
     QCamera *camera = NULL;
-    QvkCameraSurface_wl *vkCameraSurface_wl = NULL;
     Ui_formMainWindow_wl *GuiUi;
     QTimer *timerNoImage;
 
