@@ -33,9 +33,10 @@ public:
 
 
 private:
-    QCamera *camera = NULL;
     Ui_formMainWindow_wl *GuiUi;
+    QCamera *camera = NULL;
     QTimer *timerNoImage;
+
 
 private slots:
     void slot_checkBoxCameraOnOff(bool checked, QCheckBox *checkBoxCameraOnOff);

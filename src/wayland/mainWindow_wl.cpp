@@ -313,6 +313,17 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
                                       vkRegionChoise_wl->get_WidthRecordArea() / vkRegionChoise_wl->screen()->devicePixelRatio(),
                                       vkRegionChoise_wl->get_HeightRecordArea() / vkRegionChoise_wl->screen()->devicePixelRatio()
                                       );
+
+    QList<QCheckBox *> listCheckBoxCamera = ui->centralwidget->findChildren<QCheckBox *>();
+    for(int i = 0; i < listCheckBoxCamera.count(); i++){
+        QCheckBox *checkBoxCamera = listCheckBoxCamera.at(i);
+        if(checkBoxCamera->objectName().contains("checkBoxCameraVideoID_")){
+            if(checkBoxCamera->isChecked() == true){
+                checkBoxCamera->click();
+            }
+        }
+    }
+
     vkSystray->deleteLater();
 
     vkHelp->slot_cleanUp();

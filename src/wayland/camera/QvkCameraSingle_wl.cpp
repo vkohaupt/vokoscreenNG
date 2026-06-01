@@ -92,20 +92,10 @@ void QvkCameraSingle_wl::set_GUIui(Ui_formMainWindow_wl *ui)
 
 void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *checkBoxCameraOnOff)
 {
+
     if ( checked == true ){
         vkCameraSurface_wl = new QvkCameraSurface_wl;
         vkCameraSurface_wl->set_GUIui(GuiUi);
-
-        // Beim stoppen der Kamera wird das surface in den Settings gespeichert
-        connect(vkCameraSurface_wl,
-                &QObject::destroyed,
-                this,
-                [=](){
-            int x = vkCameraSurface_wl->imageRect.x();
-            int y = vkCameraSurface_wl->imageRect.y();
-            QvkSettings_wl vkSettings_wl;
-            vkSettings_wl.saveCameraSurface(x, y);
-        });
 
         // ----- Für kein Bild ------
         int width = ui->comboBoxCameraResolution->currentText().section(" ", 0, 0).toInt();
@@ -166,6 +156,12 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
     }
 
     if ( checked == false ){
+        // Beim stoppen der Kamera wird das surface in den Settings gespeichert
+        int camera_surface_X = vkCameraSurface_wl->imageRect.x();
+        int camera_surface_Y = vkCameraSurface_wl->imageRect.y();
+        QvkSettings_wl vkSettings_wl;
+        vkSettings_wl.saveCameraSurface(camera_surface_X, camera_surface_Y);
+
         timerNoImage->stop();
 
         camera->stop();
