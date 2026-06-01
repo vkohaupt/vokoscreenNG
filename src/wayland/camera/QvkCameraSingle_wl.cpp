@@ -68,7 +68,7 @@ void QvkCameraSingle_wl::set_init(QString device)
     });
 
     connect(this,
-            &QvkCameraSingle_wl::signal_ImageAvailable,
+            &QvkCameraSingle_wl::signal_cameraImageAvailable,
             this,
             [=](){
         timerNoImage->stop();
@@ -127,7 +127,7 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
                     vkCameraSurface_wl->slot_setCameraImage(image);
                     // Bild von Kamera verfügbar.
                     // Timer für Hinweis das kein Bild vorhanden ist kann nun gestoppt werden
-                    emit signal_ImageAvailable();
+                    emit signal_cameraImageAvailable();
                 });
 
                 // Auflösung aus der ComboBox lesen und an der Kamera setzen

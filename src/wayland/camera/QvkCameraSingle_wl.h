@@ -44,7 +44,7 @@ private slots:
 signals:
     void signal_forSystrayCameraOnOff(QCheckBox *checkBox);
     void signal_checkBoxCameraOnOff(bool value);
-    void signal_ImageAvailable();
+    void signal_cameraImageAvailable();
 
 
 protected:
