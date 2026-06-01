@@ -42,6 +42,12 @@ void QvkCameraSingle_wl::set_objectName(QString device)
         emit signal_forSystrayCameraOnOff(ui->checkBoxCameraOnOff);
         emit signal_checkBoxCameraOnOff(value);
     });
+
+    connect(ui->comboBoxCameraPixelformat,
+            &QComboBox::currentTextChanged,
+            this,
+            [=](){set_ResolutionOnComboBox(ui->comboBoxCameraPixelformat->objectName().section("_", 1, 1));}
+    );
 }
 
 
@@ -74,17 +80,7 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
                         [=](QVideoFrame videoFrame){
                     vkCameraSurface_wl->slot_setCameraImage(videoFrame);
                 });
-/*
-                // ComboxBox für die Formate YUYV JPEG etc. ermitteln ...
-                QList<QComboBox *> listComboBoxPixelformat = GuiUi->centralwidget->findChildren<QComboBox *>();
-                QComboBox *comboBoxPixelformat = NULL;
-                for(int i = 0; i < listComboBoxPixelformat.count(); i++){
-                    comboBoxPixelformat = listComboBoxPixelformat.at(i);
-                    if(comboBoxPixelformat->objectName() == QString("comboBoxCameraPixelformatVideoID_" + checkBoxCameraOnOff->objectName().section("_", 1, 1))){
-                        break;
-                    }
-                }
-*/
+
                 // ComboxBox für die Auflösungen ermitteln ...
                 QList<QComboBox *> listComboBoxResolution = GuiUi->centralwidget->findChildren<QComboBox *>();
                 QComboBox *comboBoxResolution = NULL;
@@ -124,6 +120,64 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
         camera = NULL;
         delete vkCameraSurface_wl;
         vkCameraSurface_wl = NULL;
+    }
+}
+
+
+void QvkCameraSingle_wl::set_PixelFormatOnComboBox(QString ID)
+{
+    // Varibale ID enthält zum Beispiel folgenden Inhalt "/dev/video1"
+
+    // Zuerst die Camera mithilfe der ID suchen diese befindet sich in cameraDevice.id() ...
+    const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
+    QCameraDevice cameraDevice;
+    for(int x = 0; x < cameras.count(); x++){
+        cameraDevice = cameras.at(x);
+        if(cameraDevice.id() == ID){
+            break;
+        }
+    }
+
+    // und dann die Pixelformate wie zum Beispiel JPEG und YUYV in die Combobox stellen ...
+    for(int i = 0; i < cameraDevice.videoFormats().count(); i++){
+        QCameraFormat videoFormat = cameraDevice.videoFormats().at(i);
+        QString format = QVideoFrameFormat::pixelFormatToString(videoFormat.pixelFormat()).toUpper();
+        if(ui->comboBoxCameraPixelformat->findText(format) == -1){
+            ui->comboBoxCameraPixelformat->addItem(format, videoFormat.pixelFormat());
+        }
+    }
+}
+
+
+void QvkCameraSingle_wl::set_ResolutionOnComboBox(QString ID)
+{
+    // Varibale ID enthält zum Beispiel folgenden Inhalt "/dev/video1"
+
+    // Zuerst die Camera mithilfe der ID suchen diese befindet sich in cameraDevice.id() ...
+    const QList<QCameraDevice> cameras = QMediaDevices::videoInputs();
+    QCameraDevice cameraDevice;
+    for(int x = 0; x < cameras.count(); x++){
+        cameraDevice = cameras.at(x);
+        if(cameraDevice.id() == ID){
+            break;
+        }
+    }
+
+    ui->comboBoxCameraResolution->clear();
+
+    // dann die Auflösungen der Kamera ermitteln und in die ComboBox stellen
+    for(int i = 0; i < cameraDevice.videoFormats().count(); i++){
+        QCameraFormat cameraFormat = cameraDevice.videoFormats().at(i);
+        QString width = QString::number(cameraFormat.resolution().width());
+        QString height = QString::number(cameraFormat.resolution().height());
+        QString resolution = width + " x " + height;
+        QVariant variantData = QVariant::fromValue(cameraFormat);
+        cameraFormat = variantData.value<QCameraFormat>();
+        if(QVariant::fromValue(ui->comboBoxCameraPixelformat->currentData()) == cameraFormat.pixelFormat()){
+            if(ui->comboBoxCameraResolution->findText(resolution) == -1){
+                ui->comboBoxCameraResolution->addItem(resolution + " " + ui->comboBoxCameraPixelformat->currentText(), variantData);
+            }
+        }
     }
 }
 

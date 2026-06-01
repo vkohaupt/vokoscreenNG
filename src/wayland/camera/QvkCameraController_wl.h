@@ -48,7 +48,6 @@ public slots:
 
 
 private:
-    void set_ResolutionOnComboBox(QString device, QCameraDevice cameraDevice);
 
 
 private slots:
