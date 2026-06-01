@@ -28,7 +28,7 @@ QvkCameraSingle_wl::QvkCameraSingle_wl(QWidget *parent) :
 }
 
 
-void QvkCameraSingle_wl::set_objectName(QString device)
+void QvkCameraSingle_wl::set_init(QString device)
 {
     setObjectName("cameraSingleVideoID_" + device.section(":::", 0, 0)); // Im ObjectName steckt die id
     ui->checkBoxCameraOnOff->setText(device.section(":::", 1, 1 ));

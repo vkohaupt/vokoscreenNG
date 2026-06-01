@@ -80,7 +80,8 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
     if(device.contains("added")){
         vkCameraSingle_wl = new QvkCameraSingle_wl;
         vkCameraSingle_wl->set_GUIui(ui);
-        vkCameraSingle_wl->set_objectName(device);
+        vkCameraSingle_wl->set_init(device);
+        vkCameraSingle_wl->set_PixelFormatOnComboBox(device.section(":::", 0, 0));
         ui->verticalLayout_3->addWidget(vkCameraSingle_wl);
         emit signal_forSystrayCameraAdded(vkCameraSingle_wl->ui->checkBoxCameraOnOff);
 
@@ -98,8 +99,6 @@ void QvkCameraController_wl::slot_camera_added_or_removed( QString device )
                  [=](QCheckBox *checkBox){ emit signal_forSystrayCameraOnOff(checkBox);}
         );
 
-        vkCameraSingle_wl->set_PixelFormatOnComboBox(device.section(":::", 0, 0));
-        vkCameraSingle_wl->set_ResolutionOnComboBox(device.section(":::", 0, 0));
    }
 
     if(device.contains("removed")){

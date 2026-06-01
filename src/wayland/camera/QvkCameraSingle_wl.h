@@ -24,7 +24,7 @@ public:
     explicit QvkCameraSingle_wl(QWidget *parent = nullptr);
     ~QvkCameraSingle_wl();
     Ui::QvkCameraSingle_wl *ui;
-    void set_objectName(QString device);
+    void set_init(QString device);
     void set_GUIui(Ui_formMainWindow_wl *ui);
     void set_PixelFormatOnComboBox(QString ID);
     void set_ResolutionOnComboBox(QString ID);
