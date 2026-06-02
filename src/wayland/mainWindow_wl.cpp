@@ -311,6 +311,7 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
                                       vkRegionChoise_wl->get_HeightRecordArea() / vkRegionChoise_wl->screen()->devicePixelRatio()
                                       );
 
+    // Gespeichert in den Settings wird es siehe QvkCameraSingle_wl::slot_checkBoxCameraOnOff
     QList<QCheckBox *> listCheckBoxCameraOnOff = ui->centralwidget->findChildren<QCheckBox *>();
     for(int i = 0; i < listCheckBoxCameraOnOff.count(); i++){
         QCheckBox *checkBoxCameraOnOff = listCheckBoxCameraOnOff.at(i);
