@@ -20,7 +20,7 @@
 #include <QCamera>
 #include <QResizeEvent>
 #include <QTimer>
-
+#include <QPainter>
 
 QvkCameraSingle_wl::QvkCameraSingle_wl(QWidget *parent) :
     QWidget(parent),
@@ -101,7 +101,15 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
         int width = ui->comboBoxCameraResolution->currentText().section(" ", 0, 0).toInt();
         int height = ui->comboBoxCameraResolution->currentText().section(" ", 2, 2).toInt();
         QImage image(width, height, QImage::Format_ARGB32_Premultiplied);
-        image.fill(Qt::gray);
+        image.fill(Qt::lightGray);
+
+        QPainter painter(&image);
+        painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
+        painter.setRenderHint(QPainter::Antialiasing, true);
+        QImage imageBild(":/pictures/camera/camera.png");
+        imageBild = imageBild.scaled(height/2,height/2);
+        painter.drawImage(QPoint((width-imageBild.width())/2, (height-imageBild.width())/2), imageBild );
+
         vkCameraSurface_wl->slot_setCameraImage(image);
         vkCameraSurface_wl->is_setNewImageRect=false;
 
