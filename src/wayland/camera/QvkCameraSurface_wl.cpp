@@ -22,6 +22,7 @@
 
 #include "global.h"
 #include "QvkCameraSurface_wl.h"
+#include "QvkSettings_wl.h"
 
 #include <QDebug>
 #include <QIcon>
@@ -55,8 +56,12 @@ QvkCameraSurface_wl::QvkCameraSurface_wl()
     setAttribute(Qt::WA_QuitOnClose, false);
     showMaximized();
     setMouseTracking(true);
-    imageRect.setX(100);
-    imageRect.setY(100);
+
+    // Kamera surface x y einlesen
+    QvkSettings_wl vkSettings_wl;
+    QPoint point = vkSettings_wl.readCameraSurface();
+    imageRect.setX(point.x());
+    imageRect.setY(point.y());
 
     // Siehe Hinweis in mouseReleaseEvent
 //    QTimer::singleShot(2000, this, [=](){slot_workaroundForGnome_1();});

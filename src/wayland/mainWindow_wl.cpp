@@ -277,8 +277,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     vkSettings_wl.readAll( ui, this );
     vkSettings_wl.readAreaScreencast( vkRegionChoise_wl );
 
-    // Hint: Settings X und Y für die Camera werden in
-    // QvkCameraController_wl::slot_checkBoxCameraOnOff eingelesen
+    // Hint: Settings X und Y für die Camera werden eingelesen in
+    // QvkCameraSurface_wl::QvkCameraSurface_wl()
 
     ui->widgetLanguageAndHelp->setVisible( false );
 }
