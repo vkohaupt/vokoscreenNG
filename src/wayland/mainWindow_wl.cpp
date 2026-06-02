@@ -59,9 +59,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         qApp->installTranslator( &qtTranslator );
     }
 
-
-
-
     ui->setupUi( this );
 
     supportedImageFormats();
@@ -168,113 +165,113 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     qDebug().noquote();
 
     vkCameraController_wl = new QvkCameraController_wl( ui );
-
-    vkSystray = new QvkSystray_wl( ui );
-    if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
-        vkSystray->init();
-        connect(ui->checkBoxShowInSystray, &QCheckBox::clicked, vkSystray, [this](bool value){vkSystray->setVisible(value);});
-        connect(vkSystray, &QvkSystray_wl::signal_SystemtrayIsClose, vkSystray, [this](){show(); close();});
-        connect(vkSystray, &QSystemTrayIcon::activated, this, [=](){
-            if(isHidden() == false){
-                show(); hide();
-            }else{
-                show();
-            }
-        });
-
-        // Camera checked oder unchecked muß nun an das richtige Menü im Systray gesendet werden
-        // Ok funktioniert
-        connect(vkCameraController_wl,
-                &QvkCameraController_wl::signal_forSystrayCameraOnOff,
-                vkSystray,
-                [this](QCheckBox *checkBox){
-            QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
-            for(int i = 0; i < listAction.count(); i++ ){
-                QAction *action = listAction.at(i);
-                if(checkBox->objectName() == action->data()){
-                    action->setChecked(checkBox->isChecked());
-                    break;
+    {
+        vkSystray = new QvkSystray_wl( ui );
+        if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
+            vkSystray->init();
+            connect(ui->checkBoxShowInSystray, &QCheckBox::clicked, vkSystray, [this](bool value){vkSystray->setVisible(value);});
+            connect(vkSystray, &QvkSystray_wl::signal_SystemtrayIsClose, vkSystray, [this](){show(); close();});
+            connect(vkSystray, &QSystemTrayIcon::activated, this, [=](){
+                if(isHidden() == false){
+                    show(); hide();
+                }else{
+                    show();
                 }
-            }
-        });
+            });
 
-        // Disable all other cameras wenn camera is checked
-        // Ok funktioniert
-        connect(vkCameraController_wl,
-                &QvkCameraController_wl::signal_forSystrayCameraOnOff,
-                vkSystray,
-                [this](QCheckBox *checkBox){
-            QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
-            for(int i = 0; i < listAction.count(); i++ ){
-                QAction *action = listAction.at(i);
-                if(checkBox->objectName() != action->data()){
-                    if(action->data().toString().contains("checkBoxCameraVideoID_") == true){
-                        action->setDisabled(true);
+            // Camera checked oder unchecked muß nun an das richtige Menü im Systray gesendet werden
+            // Ok funktioniert
+            connect(vkCameraController_wl,
+                    &QvkCameraController_wl::signal_forSystrayCameraOnOff,
+                    vkSystray,
+                    [this](QCheckBox *checkBox){
+                QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
+                for(int i = 0; i < listAction.count(); i++ ){
+                    QAction *action = listAction.at(i);
+                    if(checkBox->objectName() == action->data()){
+                        action->setChecked(checkBox->isChecked());
+                        break;
                     }
                 }
-            }
-        });
+            });
 
-        // Enable all cameras wenn camera is unchecked -
-        // OK funktioniert
-        connect(vkCameraController_wl,
-                &QvkCameraController_wl::signal_forSystrayCameraOnOff,
-                vkSystray,
-                [this](QCheckBox *checkBox){
-            QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
-            for(int i = 0; i < listAction.count(); i++ ){
-                QAction *action = listAction.at(i);
-                if(checkBox->isChecked() == false){
-                    if(action->data().toString().contains("checkBoxCameraVideoID_") == true){
-                        action->setEnabled(true);
+            // Disable all other cameras wenn camera is checked
+            // Ok funktioniert
+            connect(vkCameraController_wl,
+                    &QvkCameraController_wl::signal_forSystrayCameraOnOff,
+                    vkSystray,
+                    [this](QCheckBox *checkBox){
+                QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
+                for(int i = 0; i < listAction.count(); i++ ){
+                    QAction *action = listAction.at(i);
+                    if(checkBox->objectName() != action->data()){
+                        if(action->data().toString().contains("checkBoxCameraVideoID_") == true){
+                            action->setDisabled(true);
+                        }
                     }
                 }
-            }
-        });
+            });
 
-        // Signal wird an Systray geschickt wenn eine Camera hinzugefügt wurde
-        // OK funktioniert
-        connect(vkCameraController_wl,
-                &QvkCameraController_wl::signal_forSystrayCameraAdded,
-                vkSystray,
-                [this](QCheckBox *checkBox){
-            vkSystray->set_cameraAdded(checkBox);
-        });
-
-        // Signal wird an Systray geschickt wenn eine Camera entfernt wurde
-        // Ok funktioniert
-        connect(vkCameraController_wl,
-                &QvkCameraController_wl::signal_forSystrayCameraRemoved,
-                vkSystray,
-                [this](QString value){
-            QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
-            for(int i = 0; i < listAction.count(); i++ ){
-                QAction *action = listAction.at(i);
-                if(value.section(":::", 0, 0) == action->data().toString().section("_", 1, 1)){
-                    action->deleteLater();
-                    break;
+            // Enable all cameras wenn camera is unchecked -
+            // OK funktioniert
+            connect(vkCameraController_wl,
+                    &QvkCameraController_wl::signal_forSystrayCameraOnOff,
+                    vkSystray,
+                    [this](QCheckBox *checkBox){
+                QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
+                for(int i = 0; i < listAction.count(); i++ ){
+                    QAction *action = listAction.at(i);
+                    if(checkBox->isChecked() == false){
+                        if(action->data().toString().contains("checkBoxCameraVideoID_") == true){
+                            action->setEnabled(true);
+                        }
+                    }
                 }
-            }
-        });
+            });
 
-        // Signal ON OFF kommt von Systray
-        // Ok funktioniert
-        connect(vkSystray,
-                &QvkSystray_wl::signal_cameraOnOff,
-                vkSystray,
-                [this](QCheckBox *checkBoxSystray){
-            QCheckBox *checkBox = NULL;
-            QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
-            for(int i = 0; i < listCheckBox.count(); i++){
-                checkBox = listCheckBox.at(i);
-                if(checkBox->objectName() == checkBoxSystray->objectName()){
-                    checkBox->click();
-                    break;
+            // Signal wird an Systray geschickt wenn eine Camera hinzugefügt wurde
+            // OK funktioniert
+            connect(vkCameraController_wl,
+                    &QvkCameraController_wl::signal_forSystrayCameraAdded,
+                    vkSystray,
+                    [this](QCheckBox *checkBox){
+                vkSystray->set_cameraAdded(checkBox);
+            });
+
+            // Signal wird an Systray geschickt wenn eine Camera entfernt wurde
+            // Ok funktioniert
+            connect(vkCameraController_wl,
+                    &QvkCameraController_wl::signal_forSystrayCameraRemoved,
+                    vkSystray,
+                    [this](QString value){
+                QList<QAction *> listAction = vkSystray->findChildren<QAction *>();
+                for(int i = 0; i < listAction.count(); i++ ){
+                    QAction *action = listAction.at(i);
+                    if(value.section(":::", 0, 0) == action->data().toString().section("_", 1, 1)){
+                        action->deleteLater();
+                        break;
+                    }
                 }
-            }
-        });
+            });
+
+            // Signal ON OFF kommt von Systray
+            // Ok funktioniert
+            connect(vkSystray,
+                    &QvkSystray_wl::signal_cameraOnOff,
+                    vkSystray,
+                    [this](QCheckBox *checkBoxSystray){
+                QCheckBox *checkBox = NULL;
+                QList<QCheckBox *> listCheckBox = ui->centralwidget->findChildren<QCheckBox *>();
+                for(int i = 0; i < listCheckBox.count(); i++){
+                    checkBox = listCheckBox.at(i);
+                    if(checkBox->objectName() == checkBoxSystray->objectName()){
+                        checkBox->click();
+                        break;
+                    }
+                }
+            });
+        }
     }
-
     vkCameraController_wl->init();
 
     vkSettings_wl.readAll( ui, this );
@@ -284,7 +281,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     // QvkCameraController_wl::slot_checkBoxCameraOnOff eingelesen
 
     ui->widgetLanguageAndHelp->setVisible( false );
- }
+}
 
 
 QvkMainWindow_wl::~QvkMainWindow_wl()
@@ -314,12 +311,12 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
                                       vkRegionChoise_wl->get_HeightRecordArea() / vkRegionChoise_wl->screen()->devicePixelRatio()
                                       );
 
-    QList<QCheckBox *> listCheckBoxCamera = ui->centralwidget->findChildren<QCheckBox *>();
-    for(int i = 0; i < listCheckBoxCamera.count(); i++){
-        QCheckBox *checkBoxCamera = listCheckBoxCamera.at(i);
-        if(checkBoxCamera->objectName().contains("checkBoxCameraVideoID_")){
-            if(checkBoxCamera->isChecked() == true){
-                checkBoxCamera->click();
+    QList<QCheckBox *> listCheckBoxCameraOnOff = ui->centralwidget->findChildren<QCheckBox *>();
+    for(int i = 0; i < listCheckBoxCameraOnOff.count(); i++){
+        QCheckBox *checkBoxCameraOnOff = listCheckBoxCameraOnOff.at(i);
+        if(checkBoxCameraOnOff->objectName().contains("checkBoxCameraVideoID_")){
+            if(checkBoxCameraOnOff->isChecked() == true){
+                checkBoxCameraOnOff->click();
             }
         }
     }
@@ -923,36 +920,36 @@ GstBusSyncReply QvkMainWindow_wl::call_bus_message( GstBus *bus, GstMessage *mes
     Q_UNUSED(bus);
     Q_UNUSED(user_data)
     switch (GST_MESSAGE_TYPE (message)) {
-        case GST_MESSAGE_ERROR:
-            qDebug().noquote() << global::nameOutput << "GST_MESSAGE_ERROR";
-            break;
-        case GST_MESSAGE_EOS:
-        {qDebug().noquote() << global::nameOutput << "GST_MESSAGE_EOS";
-            msgBox->setText("The document has been modified.");
-            msgBox->exec();
-            break; }
-        case GST_MESSAGE_DURATION_CHANGED:
-            qDebug().noquote() << global::nameOutput << "GST_MESSAGE_DURATION_CHANGED";
-            break;
-        case GST_MESSAGE_STEP_DONE:
-            qDebug().noquote() << global::nameOutput << "GST_MESSAGE_STEP_DONE";
-            break;
-        case GST_MESSAGE_TAG:
-            qDebug().noquote() << global::nameOutput << "GST_MESSAGE_TAG";
-            break;
-        case GST_MESSAGE_STATE_CHANGED:
-            //qDebug().noquote() << global::nameOutput << "GST_MESSAGE_STATE_CHANGED";
-            break;
-        case GST_MESSAGE_STREAM_START:
-            qDebug().noquote() << global::nameOutput << "GST_MESSAGE_STREAM_START";
-            break;
-        case GST_MESSAGE_APPLICATION:
-            {
-            qDebug().noquote() << global::nameOutput << "GST_MESSAGE_APPLICATION";
-            break;
-            }
-        default:
-            break;
+    case GST_MESSAGE_ERROR:
+        qDebug().noquote() << global::nameOutput << "GST_MESSAGE_ERROR";
+        break;
+    case GST_MESSAGE_EOS:
+    {qDebug().noquote() << global::nameOutput << "GST_MESSAGE_EOS";
+        msgBox->setText("The document has been modified.");
+        msgBox->exec();
+        break; }
+    case GST_MESSAGE_DURATION_CHANGED:
+        qDebug().noquote() << global::nameOutput << "GST_MESSAGE_DURATION_CHANGED";
+        break;
+    case GST_MESSAGE_STEP_DONE:
+        qDebug().noquote() << global::nameOutput << "GST_MESSAGE_STEP_DONE";
+        break;
+    case GST_MESSAGE_TAG:
+        qDebug().noquote() << global::nameOutput << "GST_MESSAGE_TAG";
+        break;
+    case GST_MESSAGE_STATE_CHANGED:
+        //qDebug().noquote() << global::nameOutput << "GST_MESSAGE_STATE_CHANGED";
+        break;
+    case GST_MESSAGE_STREAM_START:
+        qDebug().noquote() << global::nameOutput << "GST_MESSAGE_STREAM_START";
+        break;
+    case GST_MESSAGE_APPLICATION:
+    {
+        qDebug().noquote() << global::nameOutput << "GST_MESSAGE_APPLICATION";
+        break;
+    }
+    default:
+        break;
     }
 
     return GST_BUS_PASS;
@@ -1064,9 +1061,9 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     pipeline = gst_parse_launch( line, &error );
 
     // Da ist irgendwo ein Bug, stürzt bei STOP ab
-//    GstBus *bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
-//    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, NULL );
-//    gst_object_unref( bus );
+    //    GstBus *bus = gst_pipeline_get_bus( GST_PIPELINE ( pipeline ) );
+    //    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)call_bus_message, this, NULL );
+    //    gst_object_unref( bus );
 
     // Start playing
     GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
@@ -1109,9 +1106,9 @@ void QvkMainWindow_wl::slot_stop()
     qDebug().noquote() << global::nameOutput << "Free disk space at the end of the recording:" << ui->labelFreeSize->text() << "MB";
 
     if ( ui->radioButtonScreencastArea->isChecked() ) {
-       vkRegionChoise_wl->set_recordMode( false );
-       vkRegionChoise_wl->repaint();
-       vkRegionChoise_wl->setMask( vkRegionChoise_wl->pixmap.mask() );
+        vkRegionChoise_wl->set_recordMode( false );
+        vkRegionChoise_wl->repaint();
+        vkRegionChoise_wl->setMask( vkRegionChoise_wl->pixmap.mask() );
     }
 
     if ( ui->checkBoxMinimizedWhenRecordingStarts->isChecked() == true ) {
@@ -1134,7 +1131,7 @@ void QvkMainWindow_wl::slot_portal_dialog_aborted()
     ui->frame_audio->setEnabled( true );
     ui->frame_3->setEnabled( true );
     if ( ui->radioButtonScreencastArea->isChecked() == true ) {
-       ui->toolButtonScreencastAreaReset->setEnabled( true );
+        ui->toolButtonScreencastAreaReset->setEnabled( true );
     }
 
     if ( QSystemTrayIcon::isSystemTrayAvailable() == true ) {
@@ -1237,7 +1234,7 @@ void QvkMainWindow_wl::set_check_screencast_elements_available()
         if ( !factory ) {
             qDebug().noquote() << global::nameOutput << "-" << list.at(i);
             if ( list.at(i) == "pipewiresrc" ) {
-               messageBox( "gstreamer-plugin-pipewire" );
+                messageBox( "gstreamer-plugin-pipewire" );
             }
         } else {
             qDebug().noquote() << global::nameOutput << "+" << list.at(i);
@@ -1411,7 +1408,7 @@ void QvkMainWindow_wl::slot_Pause()
 
         /* wait until it's up and running or failed */
         if (gst_element_get_state (pipeline, NULL, NULL, -1) == GST_STATE_CHANGE_FAILURE) {
-          g_error ("Failed to go into PAUSED state");
+            g_error ("Failed to go into PAUSED state");
         }
     }
 }
@@ -1428,7 +1425,7 @@ void QvkMainWindow_wl::slot_Continue()
 
         /* wait until it's up and running or failed */
         if (gst_element_get_state (pipeline, NULL, NULL, -1) == GST_STATE_CHANGE_FAILURE) {
-          g_error ("Failed to go into PLAYING state");
+            g_error ("Failed to go into PLAYING state");
         } else {
             qDebug().noquote() << global::nameOutput << "Continue was clicked";
         }
