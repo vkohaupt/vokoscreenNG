@@ -106,9 +106,9 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
         QPainter painter(&image);
         painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
         painter.setRenderHint(QPainter::Antialiasing, true);
-        QImage imageBild(":/pictures/camera/camera.png");
-        imageBild = imageBild.scaled(height/2,height/2);
-        painter.drawImage(QPoint((width-imageBild.width())/2, (height-imageBild.width())/2), imageBild );
+        QImage imagePicture(":/pictures/camera/camera.png");
+        imagePicture = imagePicture.scaled(height/2,height/2);
+        painter.drawImage(QPoint((width-imagePicture.width())/2, (height-imagePicture.width())/2), imagePicture);
 
         vkCameraSurface_wl->slot_setCameraImage(image);
         vkCameraSurface_wl->is_setNewImageRect=false;
