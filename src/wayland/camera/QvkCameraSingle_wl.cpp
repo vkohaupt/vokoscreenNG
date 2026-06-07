@@ -35,6 +35,7 @@ void QvkCameraSingle_wl::set_init(QString device)
 {
     setObjectName("cameraSingleVideoID_" + device.section(":::", 0, 0)); // Im ObjectName steckt die id
     ui->checkBoxCameraOnOff->setText(device.section(":::", 1, 1 ));
+    ui->checkBoxCameraOnOff->setToolTip(device.section(":::", 0, 0 ));
     ui->checkBoxCameraOnOff->setObjectName("checkBoxCameraVideoID_" + device.section(":::", 0, 0));
     ui->comboBoxCameraPixelformat->setObjectName("comboBoxCameraPixelformatVideoID_" + device.section(":::", 0, 0));
     ui->comboBoxCameraResolution->setObjectName("comboBoxCameraResolutionVideoID_" + device.section(":::", 0, 0));
