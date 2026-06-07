@@ -93,7 +93,6 @@ void QvkCameraSingle_wl::set_GUIui(Ui_formMainWindow_wl *ui)
 
 void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *checkBoxCameraOnOff)
 {
-
     if ( checked == true ){
         vkCameraSurface_wl = new QvkCameraSurface_wl;
         vkCameraSurface_wl->set_GUIui(GuiUi);
