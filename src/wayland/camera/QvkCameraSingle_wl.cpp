@@ -30,8 +30,6 @@ QvkCameraSingle_wl::QvkCameraSingle_wl(QWidget *parent) :
     ui->comboBoxCameraFPS->hide();
 }
 
-#include <QBuffer>
-#include <QToolTip>
 void QvkCameraSingle_wl::set_init(QString device)
 {
     setObjectName("cameraSingleVideoID_" + device.section(":::", 0, 0)); // Im ObjectName steckt die id
