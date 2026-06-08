@@ -285,21 +285,7 @@ void QvkSettings_wl::saveCameraSurface(qreal x, qreal y, QString ID)
     settings.setValue( "Y", QVariant(y).toInt() );
     settings.endGroup();
 }
-/*
- * #include <QUrl>
-#include <QUrlQuery>
-#include <QDebug>
 
-QUrl url("https://example.com");
-QUrlQuery query;
-query.addQueryItem("q", "qt & c++");
-query.addQueryItem("sort", "date");
-
-url.setQuery(query);
-
-qDebug() << url.toString();
-// Ausgabe: "https://example.com?q=qt%20%26%20c%2B%2B&sort=date"
-*/
 
 QPoint QvkSettings_wl::readCameraSurface(QString ID)
 {
