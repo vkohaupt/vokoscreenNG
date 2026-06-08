@@ -94,7 +94,7 @@ void QvkCameraSingle_wl::set_GUIui(Ui_formMainWindow_wl *ui)
 void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *checkBoxCameraOnOff)
 {
     if ( checked == true ){
-        vkCameraSurface_wl = new QvkCameraSurface_wl;
+        vkCameraSurface_wl = new QvkCameraSurface_wl(checkBoxCameraOnOff->objectName().section("_", 1, 1));
         vkCameraSurface_wl->set_GUIui(GuiUi);
 
         // ----- Für kein Bild ------
@@ -168,7 +168,7 @@ void QvkCameraSingle_wl::slot_checkBoxCameraOnOff(bool checked, QCheckBox *check
         int camera_surface_X = vkCameraSurface_wl->imageRect.x();
         int camera_surface_Y = vkCameraSurface_wl->imageRect.y();
         QvkSettings_wl vkSettings_wl;
-        vkSettings_wl.saveCameraSurface(camera_surface_X, camera_surface_Y);
+        vkSettings_wl.saveCameraSurface(camera_surface_X, camera_surface_Y, checkBoxCameraOnOff->objectName().section("_", 1, 1));
 
         timerNoImage->stop();
 

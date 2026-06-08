@@ -276,20 +276,36 @@ void QvkSettings_wl::readAreaScreencast( QvkRegionChoise_wl *vkRegionChoise )
 }
 
 
-void QvkSettings_wl::saveCameraSurface( qreal x, qreal y )
+void QvkSettings_wl::saveCameraSurface(qreal x, qreal y, QString ID)
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
-    settings.beginGroup( "CameraSurface_wl" );
+    QByteArray a = QUrl::toPercentEncoding(ID);
+    settings.beginGroup( "CameraSurface_wl_" + a);
     settings.setValue( "X", QVariant(x).toInt() );
     settings.setValue( "Y", QVariant(y).toInt() );
     settings.endGroup();
 }
+/*
+ * #include <QUrl>
+#include <QUrlQuery>
+#include <QDebug>
 
+QUrl url("https://example.com");
+QUrlQuery query;
+query.addQueryItem("q", "qt & c++");
+query.addQueryItem("sort", "date");
 
-QPoint QvkSettings_wl::readCameraSurface()
+url.setQuery(query);
+
+qDebug() << url.toString();
+// Ausgabe: "https://example.com?q=qt%20%26%20c%2B%2B&sort=date"
+*/
+
+QPoint QvkSettings_wl::readCameraSurface(QString ID)
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
-    settings.beginGroup( "CameraSurface_wl" );
+    QByteArray a = QUrl::toPercentEncoding(ID);
+    settings.beginGroup( "CameraSurface_wl_" + a);
     int x = settings.value( "X", 200 ).toInt();
     int y = settings.value( "Y", 200 ).toInt();
     settings.endGroup();

@@ -39,7 +39,7 @@ class QvkCameraSurface_wl : public QWidget
 {
     Q_OBJECT
 public:
-    QvkCameraSurface_wl();
+    QvkCameraSurface_wl(QString ID);
     virtual ~QvkCameraSurface_wl();
     Ui_formMainWindow_wl *GuiUi;
     void set_GUIui(Ui_formMainWindow_wl *ui);

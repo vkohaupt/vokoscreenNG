@@ -43,7 +43,7 @@
 #include <QTimer>
 #include <QCheckBox>
 
-QvkCameraSurface_wl::QvkCameraSurface_wl()
+QvkCameraSurface_wl::QvkCameraSurface_wl(QString ID)
 {
     setWindowTitle(QString(tr("Camera")));
 
@@ -59,7 +59,7 @@ QvkCameraSurface_wl::QvkCameraSurface_wl()
 
     // Kamera surface x y einlesen
     QvkSettings_wl vkSettings_wl;
-    QPoint point = vkSettings_wl.readCameraSurface();
+    QPoint point = vkSettings_wl.readCameraSurface(ID);
     imageRect.setX(point.x());
     imageRect.setY(point.y());
 
