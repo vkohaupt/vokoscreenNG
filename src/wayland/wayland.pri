@@ -37,6 +37,7 @@ include(camera/camera_wl.pri)
 
 # Audio
 include(audio/audio_wl.pri)
+include(audiopipewire/audiopipewire.pri)
 
 # Convert
 include(convert/convert_wl.pri)
