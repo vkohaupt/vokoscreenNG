@@ -35,8 +35,8 @@ class QvkAudioPipewireWatcher: public QObject
 public:
     QvkAudioPipewireWatcher(Ui_formMainWindow *ui_mainwindow);
     virtual ~QvkAudioPipewireWatcher();
-    void startWASAPIMonitoring();
-    static GstBusSyncReply my_WASAPI_func( GstBus *bus, GstMessage *message, gpointer user_data );
+    void startAudioPipewireMonitoring();
+    static GstBusSyncReply my_AudioPipewire_func( GstBus *bus, GstMessage *message, gpointer user_data );
 
 
 public slots:

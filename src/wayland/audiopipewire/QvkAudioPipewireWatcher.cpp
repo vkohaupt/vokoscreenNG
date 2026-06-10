@@ -28,7 +28,7 @@
 QvkAudioPipewireWatcher::QvkAudioPipewireWatcher( Ui_formMainWindow *ui_mainwindow )
 {
     ui = ui_mainwindow;
-    startWASAPIMonitoring();
+    startAudioPipewireMonitoring();
 }
 
 
@@ -36,7 +36,7 @@ QvkAudioPipewireWatcher::~QvkAudioPipewireWatcher()
 {}
 
 
-GstBusSyncReply QvkAudioPipewireWatcher::my_WASAPI_func( GstBus *bus, GstMessage *message, gpointer user_data )
+GstBusSyncReply QvkAudioPipewireWatcher::my_AudioPipewire_func( GstBus *bus, GstMessage *message, gpointer user_data )
 {
     Q_UNUSED(bus)
     Q_UNUSED(user_data)
@@ -97,14 +97,14 @@ GstBusSyncReply QvkAudioPipewireWatcher::my_WASAPI_func( GstBus *bus, GstMessage
 }
 
 
-void QvkAudioPipewireWatcher::startWASAPIMonitoring()
+void QvkAudioPipewireWatcher::startAudioPipewireMonitoring()
 {
     GstDeviceMonitor *monitor = gst_device_monitor_new();
     GstBus *bus = gst_device_monitor_get_bus( monitor );
     GstCaps *caps = gst_caps_new_empty_simple( "audio/x-raw" );
     gst_device_monitor_add_filter( monitor, "Audio/Source", caps );
     gst_caps_unref( caps );
-    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)my_WASAPI_func, this, NULL );
+    gst_bus_set_sync_handler( bus, (GstBusSyncHandler)my_AudioPipewire_func, this, NULL );
     gst_object_unref( bus );
     gst_device_monitor_start( monitor );
 }
