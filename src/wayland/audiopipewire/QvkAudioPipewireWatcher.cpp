@@ -49,8 +49,8 @@ GstBusSyncReply QvkAudioPipewireWatcher::my_AudioPipewire_func(GstBus *bus, GstM
         GstStructure *structure = gst_device_get_properties( gstDevice );
         QString api = QString( gst_structure_get_string( structure, "device.api" ) );
         if ( api == "alsa" ) {
-            QString device = QString( gst_structure_get_string( structure, "object.serial" ) );
-            QString name = QString( gst_structure_get_string( structure, "node.description" ) );
+            QString deviceID = QString( gst_structure_get_string( structure, "object.serial" ) );
+            QString description = QString( gst_structure_get_string( structure, "node.description" ) );
             QString capture = QString( gst_structure_get_string( structure, "api.alsa.pcm.stream" ) );
             QString type;
             if( capture == "capture" ) {
@@ -59,7 +59,13 @@ GstBusSyncReply QvkAudioPipewireWatcher::my_AudioPipewire_func(GstBus *bus, GstM
                 type = "Playback";
             }
             QString action = "[Audio-device-added]";
-            global::lineEditWASAPIWatcher->setText( device + ":::" + name + ":::" + type + ":::" + api + ":::" + action );
+            QString device = QString( gst_structure_get_string( structure, "node.name" ) );
+            global::lineEditWASAPIWatcher->setText( deviceID + ":::" +
+                                                    description + ":::" +
+                                                    type + ":::" +
+                                                    api + ":::" +
+                                                    action + ":::" +
+                                                    device );
         }
         gst_structure_free( structure );
         gst_object_unref( gstDevice );
@@ -71,7 +77,7 @@ GstBusSyncReply QvkAudioPipewireWatcher::my_AudioPipewire_func(GstBus *bus, GstM
         gst_message_parse_device_removed( message, &gstDevice );
         GstStructure *structure = gst_device_get_properties( gstDevice );
         QString device = QString( gst_structure_get_string( structure, "device.id" ) );
-        QString name = QString( gst_structure_get_string( structure, "wasapi2.device.description" ) );
+        QString description = QString( gst_structure_get_string( structure, "wasapi2.device.description" ) );
         gboolean boolValue;
         gst_structure_get_boolean( structure, "wasapi2.device.loopback", &boolValue ) ;
         QString type;
@@ -82,7 +88,7 @@ GstBusSyncReply QvkAudioPipewireWatcher::my_AudioPipewire_func(GstBus *bus, GstM
         }
         QString api  = QString( gst_structure_get_string( structure, "device.api" ) );
         QString action = "[Audio-device-removed]";
-        global::lineEditWASAPIWatcher->setText( device + ":::" + name + ":::" + type + ":::" + api + ":::" + action );
+        global::lineEditWASAPIWatcher->setText( device + ":::" + description + ":::" + type + ":::" + api + ":::" + action );
         gst_structure_free( structure );
         gst_object_unref( gstDevice );
         break;

@@ -74,72 +74,35 @@ void QvkAudioPipewireController::slot_audioDeviceSelected()
 
 void QvkAudioPipewireController::slot_pluggedInOutDevice( QString string )
 {
-    QList<QLabel *> listLabel = ui->scrollAreaAudioDevice->findChildren<QLabel *>();
-    for ( int i = 0; i < listLabel.count(); i++ ) {
-        ui->verticalLayoutAudioDevices->removeWidget( listLabel.at(i) );
-        delete listLabel.at(i);
-    }
-
-    QString device = string.section( ":::", 0, 0 ); // DeviceID
-    QString name   = string.section( ":::", 1, 1 ); // Name
-    QString type   = string.section( ":::", 2, 2 ); // Microphone or speaker
-    QString api    = string.section( ":::", 3, 3 ); // WASAPI2
-    QString action = string.section( ":::", 4, 4 ); // Action: Added or removed
+    QString deviceID    = string.section( ":::", 0, 0 ); // DeviceID
+    QString description = string.section( ":::", 1, 1 ); // Beschreibung
+    QString type        = string.section( ":::", 2, 2 ); // Microphone or speaker
+    QString api         = string.section( ":::", 3, 3 ); // alsa
+    QString action      = string.section( ":::", 4, 4 ); // Action: Added or removed
+    QString device      = string.section( ":::", 5, 5 ); // DeviceName
     Q_UNUSED(api)
 
-    if ( device == "" ) {
-        qDebug().noquote() << global::nameOutput << "[Audio] Device is empty -> return";
+    if ( deviceID == "" ) {
+        qDebug().noquote() << global::nameOutput << "[Audio] DeviceID is empty -> return";
         return;
     }
 
     if ( action == "[Audio-device-added]" ) {
-        // Freier Index(xx) 00, 01, 02, xx, 04, 05 usw. ermitteln und diesen Index dem neuen Layout, CheckBox und ProgressBar hinzufügen
-        QList<QFrame *> listFrame = ui->scrollAreaWidgetContentsAudioDevices->findChildren<QFrame *>();
-        QString index;
-        if ( listFrame.empty() ) {
-            index = "00";
-            qDebug().noquote() << global::nameOutput << "Index in List: List is empty" << "Count befor add:" << listFrame.count() << "New index:" << index ;
-        } else {
-            QStringList indexStringList;
-            for ( int i = 0; i < listFrame.count(); i++ ) {
-                QFrame *frame = listFrame.at(i);
-                indexStringList << frame->objectName().right(2);
-            }
-
-            // Max 30 Audio Geräte
-            for ( int x = 0; x < 30; x++ ) {
-                if ( x < 10 ) {
-                    index = "0" + QString::number(x);
-                } else {
-                    index = QString::number(x);
-                }
-                if ( indexStringList.contains(index) == false ) {
-                    break;
-                }
-            }
-
-            qDebug().noquote() << global::nameOutput << "Index in List" << indexStringList << "Count befor add:" << listFrame.count() << "New index:" << index ;
-        }
-
         // Neues layout für CheckBox und ProgressBar
         QHBoxLayout *layout = new QHBoxLayout; // Für Checkbox und Progressbar
-        layout->setObjectName( "vBoxLayoutAudioDevice-" + index );
+        layout->setObjectName( "vBoxLayoutAudioDevice-" + device );
         layout->setSpacing(0);
-        layout->setContentsMargins( 0, 0, 0, 0 ); // neu
+        layout->setContentsMargins( 0, 0, 0, 0 );
 
         QCheckBox *checkBox = new QCheckBox();
         connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
         checkBox->setAccessibleName( string );
-        checkBox->setObjectName( "checkBoxAudioDevice-" + index );
+        checkBox->setObjectName( "checkBoxAudioDevice-" + device );
         checkBox->setToolTip( tr ( "Select one or more devices" ) );
-        checkBox->setText(name); // Neu
+        checkBox->setText(description);
+        checkBox->setToolTip(device);
 
         layout->addWidget( checkBox );
-
-        // Ein QFrame das ein layout und die ProgressBar aufnimmt
-        QFrame *frame = new QFrame;
-        frame->setObjectName( "frameAudioDevice-" + index );
-        frame->setLayout( layout );
 
         if ( type == "Playback" ) {
             checkBox->setIconSize( QSize( 16, 16 ) );
@@ -153,7 +116,7 @@ void QvkAudioPipewireController::slot_pluggedInOutDevice( QString string )
         //vkLevelMeterController->add_ProgressBar( checkBox, layout );
 //        ui->verticalLayoutAudioDevices->addWidget( frame  );
         ui->verticalLayoutAudioDevices->addWidget( checkBox ); // neu
-        qDebug().noquote() << global::nameOutput << "[Audio-device-added]" << name << device;
+        qDebug().noquote() << global::nameOutput << "[Audio-device-added]" << description << device;
 
         emit signal_newAudioDevice(checkBox);
     }
@@ -163,11 +126,11 @@ void QvkAudioPipewireController::slot_pluggedInOutDevice( QString string )
         // Und jede Checkbox, BoxLayout, Frame und ProgressBar wurde ein gleicher eindeutiger Wert<index> an den Objectnamen hinzugefügt.
         // Beispiel  ....-00, ...-01, ...-02, ...-03 usw.
         QString index;
-        QString device = string.section( ":::", 0, 0 );
+        QString deviceID = string.section( ":::", 0, 0 );
         QList<QCheckBox *> listQCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
         for ( int i = 0; i < listQCheckBox.count(); i++ ) {
             QCheckBox *checkBox = listQCheckBox.at(i);
-            if ( checkBox->accessibleName().section( ":::", 0, 0 ) == device ) {
+            if ( checkBox->accessibleName().section( ":::", 0, 0 ) == deviceID ) {
                 index = checkBox->objectName().right(2);
                 break;
             }
@@ -177,7 +140,7 @@ void QvkAudioPipewireController::slot_pluggedInOutDevice( QString string )
         for ( int i = 0; i < listProgressBar.count(); i++ ) {
             QvkLevelMeterController *vkLevelMeterController = listProgressBar.at(i);
             if ( vkLevelMeterController->objectName().right(2) == index ) {
-                qDebug().noquote() << global::nameOutput << "[Audio-device-removed]" << name << device;
+                qDebug().noquote() << global::nameOutput << "[Audio-device-removed]" << description << device;
                 vkLevelMeterController->vkLevelMeter->stop();
                 vkLevelMeterController->remove_LineEdit( index );
                 vkLevelMeterController->deleteLater();
