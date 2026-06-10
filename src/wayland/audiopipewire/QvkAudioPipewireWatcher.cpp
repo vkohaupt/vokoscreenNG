@@ -25,7 +25,7 @@
 
 #include <QString>
 
-QvkAudioPipewireWatcher::QvkAudioPipewireWatcher( Ui_formMainWindow *ui_mainwindow )
+QvkAudioPipewireWatcher::QvkAudioPipewireWatcher( Ui_formMainWindow_wl *ui_mainwindow )
 {
     ui = ui_mainwindow;
     startAudioPipewireMonitoring();
@@ -48,10 +48,12 @@ GstBusSyncReply QvkAudioPipewireWatcher::my_AudioPipewire_func( GstBus *bus, Gst
         gst_message_parse_device_added( message, &gstDevice );
         GstStructure *structure = gst_device_get_properties( gstDevice );
         QString api = QString( gst_structure_get_string( structure, "device.api" ) );
-        QString device_id = QString( gst_structure_get_string( structure, "device.id" ) );
-        if ( ( api == "wasapi2" ) and ( device_id.contains( "}.{" ) ) ) {
+//        QString device_id = QString( gst_structure_get_string( structure, "device.id" ) );
+//        if ( ( api == "wasapi2" ) and ( device_id.contains( "}.{" ) ) ) {
+        if ( api == "alsa" ) {
             QString device = QString( gst_structure_get_string( structure, "device.id" ) );
-            QString name = QString( gst_structure_get_string( structure, "wasapi2.device.description" ) );
+//            QString name = QString( gst_structure_get_string( structure, "wasapi2.device.description" ) );
+            QString name = QString( gst_structure_get_string( structure, "node.description" ) );
             gboolean boolValue;
             gst_structure_get_boolean( structure, "wasapi2.device.loopback", &boolValue ) ;
             QString type;
@@ -62,6 +64,7 @@ GstBusSyncReply QvkAudioPipewireWatcher::my_AudioPipewire_func( GstBus *bus, Gst
             }
             QString action = "[Audio-device-added]";
             global::lineEditWASAPIWatcher->setText( device + ":::" + name + ":::" + type + ":::" + api + ":::" + action );
+            qDebug() << "-----" << device + ":::" + name + ":::" + type + ":::" + api + ":::" + action;
         }
         gst_structure_free( structure );
         gst_object_unref( gstDevice );

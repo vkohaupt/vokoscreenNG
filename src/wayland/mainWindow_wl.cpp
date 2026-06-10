@@ -4,6 +4,8 @@
 #include "QvkConvert_mkv_to_webm_wl.h"
 #include "QvkConvert_mkv_repair_wl.h"
 
+#include "QvkAudioPipewireController.h"
+
 #include "global.h"
 #include "qvkdirdialog.h"
 #include "QvkFileDialog.h"
@@ -281,6 +283,9 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     // QvkCameraSurface_wl::QvkCameraSurface_wl()
 
     ui->widgetLanguageAndHelp->setVisible( false );
+
+
+    QvkAudioPipewireController *vkAudioPipewireController = new QvkAudioPipewireController(ui);
 }
 
 

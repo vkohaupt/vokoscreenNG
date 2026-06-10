@@ -36,7 +36,7 @@
 #include <QLineEdit>
 #include <QFrame>
 
-QvkAudioPipewireController::QvkAudioPipewireController( Ui_formMainWindow *ui_mainwindow )
+QvkAudioPipewireController::QvkAudioPipewireController(Ui_formMainWindow_wl *ui_mainwindow )
 {
     ui = ui_mainwindow;
 

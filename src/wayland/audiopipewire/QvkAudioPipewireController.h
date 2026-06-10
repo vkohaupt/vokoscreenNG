@@ -23,7 +23,7 @@
 #ifndef QVKAUDIOPIPEWIRE_H
 #define QVKAUDIOPIPEWIRE_H
 
-#include "ui_formMainWindow.h"
+#include "ui_formMainWindow_wl.h"
 #include "QvkAudioPipewireWatcher.h"
 //#include "QvkSpezialProgressBarAudio.h"
 
@@ -35,7 +35,7 @@ class QvkAudioPipewireController: public QObject
     Q_OBJECT
 
 public:
-    QvkAudioPipewireController(Ui_formMainWindow *ui_mainwindow);
+    QvkAudioPipewireController(Ui_formMainWindow_wl *ui_mainwindow);
     virtual ~QvkAudioPipewireController();
     QvkAudioPipewireWatcher *vkAudioPipewireWatcher;
     bool wantCountdown = true;
@@ -46,7 +46,7 @@ public slots:
 
 
 private:
-    Ui_formMainWindow *ui;
+    Ui_formMainWindow_wl *ui;
 
 
 private slots:

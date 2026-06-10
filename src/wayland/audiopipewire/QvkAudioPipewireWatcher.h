@@ -24,7 +24,7 @@
 #define QVKAUDIOPIPEWIREWATCHER_H
 
 #include <gst/gst.h>
-#include "ui_formMainWindow.h"
+#include "ui_formMainWindow_wl.h"
 #include <QObject>
 
 class QvkAudioPipewireWatcher: public QObject
@@ -33,7 +33,7 @@ class QvkAudioPipewireWatcher: public QObject
 
 
 public:
-    QvkAudioPipewireWatcher(Ui_formMainWindow *ui_mainwindow);
+    QvkAudioPipewireWatcher(Ui_formMainWindow_wl *ui_mainwindow);
     virtual ~QvkAudioPipewireWatcher();
     void startAudioPipewireMonitoring();
     static GstBusSyncReply my_AudioPipewire_func( GstBus *bus, GstMessage *message, gpointer user_data );
@@ -43,7 +43,7 @@ public slots:
 
 
 private:
-    Ui_formMainWindow *ui;
+    Ui_formMainWindow_wl *ui;
 
 
 private slots:
