@@ -51,16 +51,18 @@ GstBusSyncReply QvkAudioPipewireWatcher::my_AudioPipewire_func( GstBus *bus, Gst
 //        QString device_id = QString( gst_structure_get_string( structure, "device.id" ) );
 //        if ( ( api == "wasapi2" ) and ( device_id.contains( "}.{" ) ) ) {
         if ( api == "alsa" ) {
-            QString device = QString( gst_structure_get_string( structure, "device.id" ) );
+//            QString device = QString( gst_structure_get_string( structure, "device.id" ) );
+            QString device = QString( gst_structure_get_string( structure, "object.serial" ) );
 //            QString name = QString( gst_structure_get_string( structure, "wasapi2.device.description" ) );
             QString name = QString( gst_structure_get_string( structure, "node.description" ) );
-            gboolean boolValue;
-            gst_structure_get_boolean( structure, "wasapi2.device.loopback", &boolValue ) ;
+//            gboolean boolValue;
+//            gst_structure_get_boolean( structure, "wasapi2.device.loopback", &boolValue ) ;
+            QString capture = QString( gst_structure_get_string( structure, "api.alsa.pcm.stream" ) );
             QString type;
-            if( boolValue ) {
-                type = "Playback";
-            } else {
+            if( capture == "capture" ) {
                 type = "Source";
+            } else {
+                type = "Playback";
             }
             QString action = "[Audio-device-added]";
             global::lineEditWASAPIWatcher->setText( device + ":::" + name + ":::" + type + ":::" + api + ":::" + action );
@@ -105,6 +107,7 @@ void QvkAudioPipewireWatcher::startAudioPipewireMonitoring()
     GstDeviceMonitor *monitor = gst_device_monitor_new();
     GstBus *bus = gst_device_monitor_get_bus( monitor );
     GstCaps *caps = gst_caps_new_empty_simple( "audio/x-raw" );
+    // Wenn das Source weggelassen wird, werden alle Audiogeräte angezeigt
     gst_device_monitor_add_filter( monitor, "Audio/Source", caps );
     gst_caps_unref( caps );
     gst_bus_set_sync_handler( bus, (GstBusSyncHandler)my_AudioPipewire_func, this, NULL );
