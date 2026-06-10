@@ -104,8 +104,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_check_MP4_convert_elements_available();
     set_check_WEBM_convert_elements_available();
 
-    vkAudioController = new QvkAudioController_wl( ui );
-    vkAudioController->init();
+    //vkAudioController = new QvkAudioController_wl( ui );
+    //vkAudioController->init();
 
     connect(ui->toolButtonSeparatedAudioTracksReset, &QToolButton::clicked, this, [=](){
         ui->checkBoxSeparatedAudioTracks->setCheckState( Qt::Unchecked);
@@ -1001,7 +1001,8 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     // Pipeline for one selected audiodevice
     if ( ( VK_getSelectedAudioDevice().count() == 1 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
     {
-        stringList << "pulsesrc device=" + VK_getSelectedAudioDevice().at(0);
+//        stringList << "pulsesrc device=" + VK_getSelectedAudioDevice().at(0);
+        stringList << "pipewiresrc target-object=" + VK_getSelectedAudioDevice().at(0).section(":::", 0, 0);
         stringList << "audioconvert";
         stringList << "audiorate";
         stringList << "audio/x-raw, channels=2";

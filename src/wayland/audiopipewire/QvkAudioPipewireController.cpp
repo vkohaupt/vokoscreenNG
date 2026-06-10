@@ -132,6 +132,7 @@ void QvkAudioPipewireController::slot_pluggedInOutDevice( QString string )
         checkBox->setAccessibleName( string );
         checkBox->setObjectName( "checkBoxAudioDevice-" + index );
         checkBox->setToolTip( tr ( "Select one or more devices" ) );
+        checkBox->setText(name); // Neu
 
         layout->addWidget( checkBox );
 
@@ -148,11 +149,12 @@ void QvkAudioPipewireController::slot_pluggedInOutDevice( QString string )
             checkBox->setIconSize( QSize( 16, 16 ) );
             checkBox->setIcon( QIcon( ":/pictures/screencast/microphone.png" ) );
         }
-/*        QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
-        vkLevelMeterController->add_ProgressBar( checkBox, layout );
-        ui->verticalLayoutAudioDevices->addWidget( frame  );
+//        QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
+        //vkLevelMeterController->add_ProgressBar( checkBox, layout );
+//        ui->verticalLayoutAudioDevices->addWidget( frame  );
+        ui->verticalLayoutAudioDevices->addWidget( checkBox ); // neu
         qDebug().noquote() << global::nameOutput << "[Audio-device-added]" << name << device;
-*/
+
         emit signal_newAudioDevice(checkBox);
     }
 
