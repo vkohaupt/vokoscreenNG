@@ -1,6 +1,6 @@
- /* vokoscreenNG - A desktop recorder
- * Copyright (C) 2017-2022 Volker Kohaupt
- *
+/* vokoscreenNG - A desktop recorder
+ * Copyright (C) 2017-2026 Volker Kohaupt
+ * 
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -20,35 +20,45 @@
  * --End_License--
  */
 
-#ifndef QVKPULSEAUDIOSERVER_WL_H
-#define QVKPULSEAUDIOSERVER_WL_H
+#ifndef QVKAUDIOPIPEWIRE_H
+#define QVKAUDIOPIPEWIRE_H
+
+#include "ui_formMainWindow_wl.h"
+#include "QvkAudioPipewireWatcher_wl.h"
+//#include "QvkSpezialProgressBarAudio.h"
 
 #include <QObject>
+#include <QCheckBox>
 
-class QvkPulseAudioServer_wl: public QObject
+class QvkAudioPipewireController_wl: public QObject
 {
     Q_OBJECT
 
 public:
-    QvkPulseAudioServer_wl();
-    virtual ~QvkPulseAudioServer_wl();
-    static bool isAvailable();
+    QvkAudioPipewireController_wl(Ui_formMainWindow_wl *ui_mainwindow);
+    virtual ~QvkAudioPipewireController_wl();
+    QvkAudioPipewireWatcher *vkAudioPipewireWatcher;
+    bool wantCountdown = true;
 
 
 public slots:
+    void slot_audioDeviceSelected();
 
 
 private:
+    Ui_formMainWindow_wl *ui;
 
 
 private slots:
+    void slot_pluggedInOutDevice( QString string );
 
 
 protected:
 
 
 signals:
-
+    void signal_haveAudioDeviceSelected( bool );
+    void signal_newAudioDevice(QCheckBox *checkBox);
 
 };
 

@@ -3,8 +3,7 @@
 #include "QvkConvert_mkv_gif_wl.h"
 #include "QvkConvert_mkv_to_webm_wl.h"
 #include "QvkConvert_mkv_repair_wl.h"
-
-#include "QvkAudioPipewireController.h"
+#include "QvkAudioPipewireController_wl.h"
 
 #include "global.h"
 #include "qvkdirdialog.h"
@@ -285,7 +284,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->widgetLanguageAndHelp->setVisible( false );
 
 
-    QvkAudioPipewireController *vkAudioPipewireController = new QvkAudioPipewireController(ui);
+    QvkAudioPipewireController_wl *vkAudioPipewireController_wl = new QvkAudioPipewireController_wl(ui);
 }
 
 
@@ -300,14 +299,14 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 
     qDebug();
     qDebug().noquote() << global::nameOutput << "QvkMainWindow_wl::closeEvent Begin close";
-
+/*
     QList<QvkLevelMeterController_wl *> list = ui->scrollAreaAudioDevice->findChildren<QvkLevelMeterController_wl *>();
     for ( int i = 0; i < list.count(); i++ ) {
         QvkLevelMeterController_wl *vkLevelMeterController = list.at(i);
         vkLevelMeterController->vkLevelMeter->stop();
         qDebug().noquote() << global::nameOutput << "Stop levelmeter on:" << vkLevelMeterController->objectName();
     }
-
+*/
     ui->pushButtonStop->click();
     vkSettings_wl.saveAll( ui, this );
     vkSettings_wl.saveAreaScreencast( vkRegionChoise_wl->get_XRecordArea() / vkRegionChoise_wl->screen()->devicePixelRatio(),

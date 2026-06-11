@@ -20,7 +20,7 @@
  * --End_License--
  */
 
-#include "QvkAudioPipewireWatcher.h"
+#include "QvkAudioPipewireWatcher_wl.h"
 #include "global.h"
 
 #include <QString>

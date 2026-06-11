@@ -36,8 +36,7 @@ include(showMessage/showMessage_wl.pri)
 include(camera/camera_wl.pri)
 
 # Audio
-include(audio/audio_wl.pri)
-include(audiopipewire/audiopipewire.pri)
+include(audio/audiopipewire_wl.pri)
 
 # Convert
 include(convert/convert_wl.pri)

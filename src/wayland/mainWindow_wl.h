@@ -15,10 +15,10 @@
 #include "QvkRegionMargins_wl.h"
 #include "QvkLogController_wl.h"
 #include "QvkInformation_wl.h"
-#include "QvkAudioController_wl.h"
 #include "QvkImageFromTabs_wl.h"
 #include "QvkCameraController_wl.h"
 #include "QvkConvert_mkv_mp4_wl.h"
+#include "QvkAudioPipewireController_wl.h"
 
 #include <QMainWindow>
 #include <QWidget>
@@ -68,7 +68,7 @@ private:
     QString Pipeline_structured_output( QString pipeline );
     QvkRegionMargins_wl *vkRegionMargins_wl;
     QvkInformation_wl *vkInformation;
-    QvkAudioController_wl *vkAudioController;
+    QvkAudioPipewireController_wl *vkAudioController;
     QvkLicenses *vkLicenses;
     QvkImageFromTabs_wl *vkImageFromTabs_wl;
 

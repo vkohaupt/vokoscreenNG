@@ -20,7 +20,7 @@
  * --End_License--
  */
 
-#include "QvkAudioPipewireController.h"
+#include "QvkAudioPipewireController_wl.h"
 #include "global.h"
 //#include "QvkLevelMeterController.h"
 
@@ -36,7 +36,7 @@
 #include <QLineEdit>
 #include <QFrame>
 
-QvkAudioPipewireController::QvkAudioPipewireController(Ui_formMainWindow_wl *ui_mainwindow )
+QvkAudioPipewireController_wl::QvkAudioPipewireController_wl(Ui_formMainWindow_wl *ui_mainwindow )
 {
     ui = ui_mainwindow;
 
@@ -52,12 +52,12 @@ QvkAudioPipewireController::QvkAudioPipewireController(Ui_formMainWindow_wl *ui_
 }
 
 
-QvkAudioPipewireController::~QvkAudioPipewireController()
+QvkAudioPipewireController_wl::~QvkAudioPipewireController_wl()
 {
 }
 
 
-void QvkAudioPipewireController::slot_audioDeviceSelected()
+void QvkAudioPipewireController_wl::slot_audioDeviceSelected()
 {
     bool value = false;
     QList<QCheckBox *> listCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
@@ -72,7 +72,7 @@ void QvkAudioPipewireController::slot_audioDeviceSelected()
 }
 
 
-void QvkAudioPipewireController::slot_pluggedInOutDevice( QString string )
+void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
 {
     QString deviceID    = string.section( ":::", 0, 0 ); // DeviceID
     QString description = string.section( ":::", 1, 1 ); // Beschreibung
