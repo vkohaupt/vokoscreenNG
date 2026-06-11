@@ -25,18 +25,18 @@
 
 #include <QString>
 
-QvkAudioPipewireWatcher::QvkAudioPipewireWatcher( Ui_formMainWindow_wl *ui_mainwindow )
+QvkAudioPipewireWatcher_wl::QvkAudioPipewireWatcher_wl( Ui_formMainWindow_wl *ui_mainwindow )
 {
     ui = ui_mainwindow;
     startAudioPipewireMonitoring();
 }
 
 
-QvkAudioPipewireWatcher::~QvkAudioPipewireWatcher()
+QvkAudioPipewireWatcher_wl::~QvkAudioPipewireWatcher_wl()
 {}
 
 
-GstBusSyncReply QvkAudioPipewireWatcher::my_AudioPipewire_func(GstBus *bus, GstMessage *message, gpointer user_data)
+GstBusSyncReply QvkAudioPipewireWatcher_wl::my_AudioPipewire_func(GstBus *bus, GstMessage *message, gpointer user_data)
 {
     Q_UNUSED(bus)
     Q_UNUSED(user_data)
@@ -101,7 +101,7 @@ GstBusSyncReply QvkAudioPipewireWatcher::my_AudioPipewire_func(GstBus *bus, GstM
 }
 
 
-void QvkAudioPipewireWatcher::startAudioPipewireMonitoring()
+void QvkAudioPipewireWatcher_wl::startAudioPipewireMonitoring()
 {
     GstDeviceMonitor *monitor = gst_device_monitor_new();
     GstBus *bus = gst_device_monitor_get_bus( monitor );

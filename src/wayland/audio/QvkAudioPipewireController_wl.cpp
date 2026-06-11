@@ -47,7 +47,7 @@ QvkAudioPipewireController_wl::QvkAudioPipewireController_wl(Ui_formMainWindow_w
     connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->labelAudioCodec,    SLOT( setEnabled(bool) ) );
     connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->comboBoxAudioCodec, SLOT( setEnabled(bool) ) );
     connect( global::lineEditWASAPIWatcher, SIGNAL( textChanged(QString) ), this, SLOT( slot_pluggedInOutDevice(QString) ) );
-    vkAudioPipewireWatcher = new QvkAudioPipewireWatcher( ui );
+    vkAudioPipewireWatcher_wl = new QvkAudioPipewireWatcher_wl( ui );
     slot_audioDeviceSelected();
 }
 

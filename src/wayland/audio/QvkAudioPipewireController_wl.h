@@ -37,7 +37,7 @@ class QvkAudioPipewireController_wl: public QObject
 public:
     QvkAudioPipewireController_wl(Ui_formMainWindow_wl *ui_mainwindow);
     virtual ~QvkAudioPipewireController_wl();
-    QvkAudioPipewireWatcher *vkAudioPipewireWatcher;
+    QvkAudioPipewireWatcher_wl *vkAudioPipewireWatcher_wl;
     bool wantCountdown = true;
 
 

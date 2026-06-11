@@ -20,21 +20,22 @@
  * --End_License--
  */
 
-#ifndef QVKAUDIOPIPEWIREWATCHER_H
-#define QVKAUDIOPIPEWIREWATCHER_H
+#ifndef QVKAUDIOPIPEWIREWATCHER_WL_H
+#define QVKAUDIOPIPEWIREWATCHER_WL_H
 
 #include <gst/gst.h>
 #include "ui_formMainWindow_wl.h"
+
 #include <QObject>
 
-class QvkAudioPipewireWatcher: public QObject
+class QvkAudioPipewireWatcher_wl: public QObject
 {
     Q_OBJECT
 
 
 public:
-    QvkAudioPipewireWatcher(Ui_formMainWindow_wl *ui_mainwindow);
-    virtual ~QvkAudioPipewireWatcher();
+    QvkAudioPipewireWatcher_wl(Ui_formMainWindow_wl *ui_mainwindow);
+    virtual ~QvkAudioPipewireWatcher_wl();
     void startAudioPipewireMonitoring();
     static GstBusSyncReply my_AudioPipewire_func( GstBus *bus, GstMessage *message, gpointer user_data );
 
