@@ -111,7 +111,7 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
         checkBox->setObjectName( "checkBoxAudioDevice--" + device );
         checkBox->setToolTip( tr ( "Select one or more devices" ) );
         checkBox->setText(description);
-        checkBox->setToolTip(device);
+        checkBox->setToolTip(deviceID + " " + device);
 
         layout->addWidget( checkBox );
 
