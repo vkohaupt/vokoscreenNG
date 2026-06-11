@@ -59,9 +59,9 @@ QvkSettings_wl::~QvkSettings_wl(){}
 void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui, QMainWindow *parent )
 {
     Q_UNUSED(parent)
+    qDebug().noquote() << global::nameOutput << "[Settings] Begin read";
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
     settings.beginGroup( groupName_wl );
-
     QList<QToolButton *> listToolButton = ui->centralwidget->findChildren<QToolButton *>();
     for ( int i = 0; i < listToolButton.count(); i++ ) {
         // We found a setting, then we want set or not.
@@ -143,6 +143,7 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui, QMainWindow *parent )
         }
         // We found a setting, then we want set or not.
         if ( settings.value( checkBox->objectName(), false ).toBool() == true ) {
+            qDebug() << "-----" << checkBox->objectName();
             checkBox->click();
         }
     }
@@ -177,8 +178,8 @@ void QvkSettings_wl::readAll( Ui_formMainWindow_wl *ui, QMainWindow *parent )
             lineEdit->setText( QStandardPaths::writableLocation( QStandardPaths::MoviesLocation ) );
         }
     }
-
     settings.endGroup();
+    qDebug().noquote() << global::nameOutput << "[Settings] end read";
 }
 
 

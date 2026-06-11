@@ -103,8 +103,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     set_check_MP4_convert_elements_available();
     set_check_WEBM_convert_elements_available();
 
-    //vkAudioController = new QvkAudioController_wl( ui );
-    //vkAudioController->init();
+    QvkAudioPipewireController_wl *vkAudioPipewireController_wl = new QvkAudioPipewireController_wl(ui);
+    Q_UNUSED(vkAudioPipewireController_wl)
 
     connect(ui->toolButtonSeparatedAudioTracksReset, &QToolButton::clicked, this, [=](){
         ui->checkBoxSeparatedAudioTracks->setCheckState( Qt::Unchecked);
@@ -282,9 +282,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     // QvkCameraSurface_wl::QvkCameraSurface_wl()
 
     ui->widgetLanguageAndHelp->setVisible( false );
-
-
-    QvkAudioPipewireController_wl *vkAudioPipewireController_wl = new QvkAudioPipewireController_wl(ui);
 }
 
 

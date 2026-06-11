@@ -24,7 +24,6 @@
 #include "QvkCameraController_wl.h"
 #include "QvkCameraWatcher_wl.h"
 #include "QvkCameraSingle_wl.h"
-#include "QvkSettings_wl.h"
 
 #include "ui_QvkCameraSingle_wl.h"
 
