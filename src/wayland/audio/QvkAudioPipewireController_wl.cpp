@@ -101,14 +101,14 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
     if ( action == "[Audio-device-added]" ) {
         // Neues layout für CheckBox und ProgressBar
         QHBoxLayout *layout = new QHBoxLayout; // Für Checkbox und Progressbar
-        layout->setObjectName( "vBoxLayoutAudioDevice-" + device );
+        layout->setObjectName( "vBoxLayoutAudioDevice--" + device );
         layout->setSpacing(0);
         layout->setContentsMargins( 0, 0, 0, 0 );
 
         QCheckBox *checkBox = new QCheckBox();
         connect(checkBox, &QCheckBox::clicked, this, [=](){slot_audioDeviceSelected();});
         checkBox->setAccessibleName( string );
-        checkBox->setObjectName( "checkBoxAudioDevice-" + device );
+        checkBox->setObjectName( "checkBoxAudioDevice--" + device );
         checkBox->setToolTip( tr ( "Select one or more devices" ) );
         checkBox->setText(description);
         checkBox->setToolTip(device);
@@ -133,20 +133,18 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
     }
 
     if ( action == "[Audio-device-removed]" ) {
-        // Die CheckBox beinhaltet das Gerät das in der GUI entfernt werden soll.
-        // Und jede Checkbox, BoxLayout, Frame und ProgressBar wurde ein gleicher eindeutiger Wert<index> an den Objectnamen hinzugefügt.
-        // Beispiel  ....-00, ...-01, ...-02, ...-03 usw.
-        QString index;
-        QString deviceID = string.section( ":::", 0, 0 );
+        // Der CheckBox Objektname beinhaltet als Postfix das Gerät das in der GUI entfernt werden soll.
+        // Auch dem BoxLayout, Frame und ProgressBar wurde ein Postfix hinzugefügt.
         QList<QCheckBox *> listQCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
         for ( int i = 0; i < listQCheckBox.count(); i++ ) {
             QCheckBox *checkBox = listQCheckBox.at(i);
-            if ( checkBox->accessibleName().section( ":::", 0, 0 ) == deviceID ) {
-                index = checkBox->objectName().right(2);
+            qDebug() << checkBox->objectName();
+            if ( checkBox->objectName().section("--", 1, 1) == device ) {
+                ui->verticalLayoutAudioDevices->removeWidget(checkBox);
+                delete checkBox;
                 break;
             }
         }
-
         qDebug().noquote() << global::nameOutput << "[Audio-device-removed]" << description << device;
 
 /*
