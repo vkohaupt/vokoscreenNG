@@ -997,7 +997,6 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
     // Pipeline for one selected audiodevice
     if ( ( VK_getSelectedAudioDevice().count() == 1 ) and ( ui->comboBoxAudioCodec->count() > 0 ) )
     {
-//        stringList << "pulsesrc device=" + VK_getSelectedAudioDevice().at(0);
         stringList << "pipewiresrc target-object=" + VK_getSelectedAudioDevice().at(0).section(":::", 0, 0);
         stringList << "audioconvert";
         stringList << "audiorate";
@@ -1014,7 +1013,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
         if ( ui->checkBoxSeparatedAudioTracks->isChecked() == false ) {
             for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ )
             {
-                stringList << "pulsesrc device=" + VK_getSelectedAudioDevice().at(x);
+                stringList << "pipewiresrc target-object=" + VK_getSelectedAudioDevice().at(x).section(":::", 0, 0);
                 stringList << "audioconvert";
                 stringList << "audioresample";
                 stringList << "queue";
@@ -1029,7 +1028,7 @@ void QvkMainWindow_wl::slot_start_gst( QString vk_fd, QString vk_path )
             stringList << "mux.";
         } else {
             for ( int x = 0; x < VK_getSelectedAudioDevice().count(); x++ ) {
-                stringList << "pulsesrc device=" + VK_getSelectedAudioDevice().at(x);
+                stringList << "pipewiresrc target-object=" + VK_getSelectedAudioDevice().at(x).section(":::", 0, 0);
                 stringList << "audio/x-raw,channels=2";
                 stringList << "audioconvert";
                 stringList << "audioresample";
