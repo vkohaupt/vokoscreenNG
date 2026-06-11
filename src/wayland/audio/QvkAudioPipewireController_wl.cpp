@@ -138,7 +138,6 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
         QList<QCheckBox *> listQCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
         for ( int i = 0; i < listQCheckBox.count(); i++ ) {
             QCheckBox *checkBox = listQCheckBox.at(i);
-            qDebug() << checkBox->objectName();
             if ( checkBox->objectName().section("--", 1, 1) == device ) {
                 ui->verticalLayoutAudioDevices->removeWidget(checkBox);
                 delete checkBox;
