@@ -76,19 +76,24 @@ GstBusSyncReply QvkAudioPipewireWatcher_wl::my_AudioPipewire_func(GstBus *bus, G
         GstDevice *gstDevice;
         gst_message_parse_device_removed( message, &gstDevice );
         GstStructure *structure = gst_device_get_properties( gstDevice );
-        QString device = QString( gst_structure_get_string( structure, "device.id" ) );
-        QString description = QString( gst_structure_get_string( structure, "wasapi2.device.description" ) );
-        gboolean boolValue;
-        gst_structure_get_boolean( structure, "wasapi2.device.loopback", &boolValue ) ;
+        QString deviceID = QString( gst_structure_get_string( structure, "object.serial" ) );
+        QString description = QString( gst_structure_get_string( structure, "node.description" ) );
+        QString capture = QString( gst_structure_get_string( structure, "api.alsa.pcm.stream" ) );
         QString type;
-        if( boolValue ) {
-            type = "Playback";
-        } else {
+        if( capture == "capture" ) {
             type = "Source";
+        } else {
+            type = "Playback";
         }
-        QString api  = QString( gst_structure_get_string( structure, "device.api" ) );
+        QString api = QString( gst_structure_get_string( structure, "device.api" ) );
         QString action = "[Audio-device-removed]";
-        global::lineEditPipewireWatcher->setText( device + ":::" + description + ":::" + type + ":::" + api + ":::" + action );
+        QString device = QString( gst_structure_get_string( structure, "node.name" ) );
+        global::lineEditPipewireWatcher->setText( deviceID + ":::" +
+                                                  description + ":::" +
+                                                  type + ":::" +
+                                                  api + ":::" +
+                                                  action + ":::" +
+                                                  device );
         gst_structure_free( structure );
         gst_object_unref( gstDevice );
         break;

@@ -146,6 +146,9 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
                 break;
             }
         }
+
+        qDebug().noquote() << global::nameOutput << "[Audio-device-removed]" << description << device;
+
 /*
         QList<QvkLevelMeterController *> listProgressBar = ui->scrollAreaAudioDevice->findChildren<QvkLevelMeterController *>();
         for ( int i = 0; i < listProgressBar.count(); i++ ) {
