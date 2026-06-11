@@ -44,9 +44,20 @@ QvkAudioPipewireController_wl::QvkAudioPipewireController_wl(Ui_formMainWindow_w
 
     ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
     global::lineEditPipewireWatcher = new QLineEdit;
-    connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->labelAudioCodec,    SLOT( setEnabled(bool) ) );
-    connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->comboBoxAudioCodec, SLOT( setEnabled(bool) ) );
-    connect( global::lineEditPipewireWatcher, SIGNAL( textChanged(QString) ), this, SLOT( slot_pluggedInOutDevice(QString) ) );
+    connect(this,
+            &QvkAudioPipewireController_wl::signal_haveAudioDeviceSelected,
+            ui->labelAudioCodec,
+            [=](bool value){
+        ui->labelAudioCodec->setEnabled(value);
+        ui->comboBoxAudioCodec->setEnabled(value);
+        ui->checkBoxSeparatedAudioTracks->setEnabled(value);
+    });
+    connect(global::lineEditPipewireWatcher,
+            &QLineEdit::textChanged,
+            this,
+            [=](QString value){
+        slot_pluggedInOutDevice(value);
+    });
     vkAudioPipewireWatcher_wl = new QvkAudioPipewireWatcher_wl( ui );
     slot_audioDeviceSelected();
 }
