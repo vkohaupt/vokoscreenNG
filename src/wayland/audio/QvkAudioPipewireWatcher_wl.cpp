@@ -60,12 +60,12 @@ GstBusSyncReply QvkAudioPipewireWatcher_wl::my_AudioPipewire_func(GstBus *bus, G
             }
             QString action = "[Audio-device-added]";
             QString device = QString( gst_structure_get_string( structure, "node.name" ) );
-            global::lineEditWASAPIWatcher->setText( deviceID + ":::" +
-                                                    description + ":::" +
-                                                    type + ":::" +
-                                                    api + ":::" +
-                                                    action + ":::" +
-                                                    device );
+            global::lineEditPipewireWatcher->setText( deviceID + ":::" +
+                                                      description + ":::" +
+                                                      type + ":::" +
+                                                      api + ":::" +
+                                                      action + ":::" +
+                                                      device );
         }
         gst_structure_free( structure );
         gst_object_unref( gstDevice );
@@ -88,7 +88,7 @@ GstBusSyncReply QvkAudioPipewireWatcher_wl::my_AudioPipewire_func(GstBus *bus, G
         }
         QString api  = QString( gst_structure_get_string( structure, "device.api" ) );
         QString action = "[Audio-device-removed]";
-        global::lineEditWASAPIWatcher->setText( device + ":::" + description + ":::" + type + ":::" + api + ":::" + action );
+        global::lineEditPipewireWatcher->setText( device + ":::" + description + ":::" + type + ":::" + api + ":::" + action );
         gst_structure_free( structure );
         gst_object_unref( gstDevice );
         break;

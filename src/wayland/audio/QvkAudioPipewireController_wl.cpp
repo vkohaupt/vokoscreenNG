@@ -43,10 +43,10 @@ QvkAudioPipewireController_wl::QvkAudioPipewireController_wl(Ui_formMainWindow_w
     global::listChildren = new QList<QLineEdit*>();
 
     ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
-    global::lineEditWASAPIWatcher = new QLineEdit;
+    global::lineEditPipewireWatcher = new QLineEdit;
     connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->labelAudioCodec,    SLOT( setEnabled(bool) ) );
     connect( this, SIGNAL( signal_haveAudioDeviceSelected(bool) ), ui->comboBoxAudioCodec, SLOT( setEnabled(bool) ) );
-    connect( global::lineEditWASAPIWatcher, SIGNAL( textChanged(QString) ), this, SLOT( slot_pluggedInOutDevice(QString) ) );
+    connect( global::lineEditPipewireWatcher, SIGNAL( textChanged(QString) ), this, SLOT( slot_pluggedInOutDevice(QString) ) );
     vkAudioPipewireWatcher_wl = new QvkAudioPipewireWatcher_wl( ui );
     slot_audioDeviceSelected();
 }
@@ -95,7 +95,7 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
         layout->setContentsMargins( 0, 0, 0, 0 );
 
         QCheckBox *checkBox = new QCheckBox();
-        connect( checkBox, SIGNAL( clicked( bool ) ), this, SLOT( slot_audioDeviceSelected() ) );
+        connect(checkBox, &QCheckBox::clicked, this, [=](){slot_audioDeviceSelected();});
         checkBox->setAccessibleName( string );
         checkBox->setObjectName( "checkBoxAudioDevice-" + device );
         checkBox->setToolTip( tr ( "Select one or more devices" ) );

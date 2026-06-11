@@ -29,6 +29,7 @@ namespace global
     extern QString nameOutput;
     extern QString version;
     extern int showclickCounter;
-    extern QLineEdit *lineEditWASAPIWatcher;
+    extern QLineEdit *lineEditWASAPIWatcher;   // Windows
+    extern QLineEdit *lineEditPipewireWatcher; // Wayland
     extern QList<QLineEdit*> *listChildren;
 }
