@@ -20,8 +20,8 @@
  * --End_License--
  */
 
-#ifndef QVKAUDIOPIPEWIRE_H
-#define QVKAUDIOPIPEWIRE_H
+#ifndef QVKAUDIOPIPEWIRECONTROLLER_WL_H
+#define QVKAUDIOPIPEWIRECONTROLLER_WL_H
 
 #include "ui_formMainWindow_wl.h"
 #include "QvkAudioPipewireWatcher_wl.h"
