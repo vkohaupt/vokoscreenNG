@@ -257,10 +257,12 @@ void QvkSettings_wl::saveAreaScreencast( qreal x, qreal y, qreal width, qreal he
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
     settings.beginGroup( "AreaScreencast_wl" );
-    settings.setValue( "X", QVariant(x).toInt() );
-    settings.setValue( "Y", QVariant(y).toInt() );
-    settings.setValue( "Width", QVariant(width).toInt() );
-    settings.setValue( "Height", QVariant(height).toInt() );
+    {
+        settings.setValue( "X", QVariant(x).toInt() );
+        settings.setValue( "Y", QVariant(y).toInt() );
+        settings.setValue( "Width", QVariant(width).toInt() );
+        settings.setValue( "Height", QVariant(height).toInt() );
+    }
     settings.endGroup();
 }
 
@@ -269,10 +271,12 @@ void QvkSettings_wl::readAreaScreencast( QvkRegionChoise_wl *vkRegionChoise )
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
     settings.beginGroup( "AreaScreencast_wl" );
-    vkRegionChoise->setX( settings.value( "X", 200 ).toInt() );
-    vkRegionChoise->setY( settings.value( "Y", 200 ).toInt() );
-    vkRegionChoise->setWidth( settings.value( "Width", 320 ).toInt() );
-    vkRegionChoise->setHeight( settings.value( "Height", 200 ).toInt() );
+    {
+        vkRegionChoise->setX( settings.value( "X", 200 ).toInt() );
+        vkRegionChoise->setY( settings.value( "Y", 200 ).toInt() );
+        vkRegionChoise->setWidth( settings.value( "Width", 320 ).toInt() );
+        vkRegionChoise->setHeight( settings.value( "Height", 200 ).toInt() );
+    }
     settings.endGroup();
 }
 
@@ -282,8 +286,10 @@ void QvkSettings_wl::saveCameraSurface(qreal x, qreal y, QString ID)
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
     QByteArray a = QUrl::toPercentEncoding(ID);
     settings.beginGroup( "CameraSurface_wl_" + a);
-    settings.setValue( "X", QVariant(x).toInt() );
-    settings.setValue( "Y", QVariant(y).toInt() );
+    {
+        settings.setValue( "X", QVariant(x).toInt() );
+        settings.setValue( "Y", QVariant(y).toInt() );
+    }
     settings.endGroup();
 }
 
@@ -292,9 +298,13 @@ QPoint QvkSettings_wl::readCameraSurface(QString ID)
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
     QByteArray a = QUrl::toPercentEncoding(ID);
+    int x, y;
     settings.beginGroup( "CameraSurface_wl_" + a);
-    int x = settings.value( "X", 200 ).toInt();
-    int y = settings.value( "Y", 200 ).toInt();
+    {
+        x = settings.value( "X", 200 ).toInt();
+        y = settings.value( "Y", 200 ).toInt();
+    }
+    settings.endGroup();
     QPoint point(x, y);
     return point;
 }
