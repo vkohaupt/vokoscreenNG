@@ -17,11 +17,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QCheckBox" name="checkBox">
-       <property name="text">
-        <string>CheckBox</string>
-       </property>
-      </widget>
+      <widget class="QCheckBox" name="checkBoxAudioDevice"/>
      </item>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -29,7 +25,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="labelAudioDevice">
          <property name="maximumSize">
           <size>
            <width>16777215</width>
@@ -37,12 +33,12 @@
           </size>
          </property>
          <property name="text">
-          <string>TextLabel</string>
+          <string notr="true">TextLabel</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QProgressBar" name="progressBar">
+        <widget class="QProgressBar" name="progressBarAudioDevice">
          <property name="maximumSize">
           <size>
            <width>16777215</width>
