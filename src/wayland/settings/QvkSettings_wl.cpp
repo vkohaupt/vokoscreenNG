@@ -295,7 +295,21 @@ QPoint QvkSettings_wl::readCameraSurface(QString ID)
     settings.beginGroup( "CameraSurface_wl_" + a);
     int x = settings.value( "X", 200 ).toInt();
     int y = settings.value( "Y", 200 ).toInt();
-    settings.endGroup();
     QPoint point(x, y);
     return point;
+}
+
+
+bool QvkSettings_wl::readAudioDevice(QString device)
+{
+    QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
+    settings.beginGroup( groupName_wl );
+    {
+        if ( settings.value( device, false ).toBool() == true ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    settings.endGroup();
 }

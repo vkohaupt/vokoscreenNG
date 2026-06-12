@@ -22,6 +22,8 @@
 
 #include "QvkAudioPipewireController_wl.h"
 #include "global.h"
+#include "QvkSettings_wl.h"
+
 //#include "QvkLevelMeterController.h"
 
 #include <QDebug>
@@ -128,6 +130,12 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
 //        ui->verticalLayoutAudioDevices->addWidget( frame  );
         ui->verticalLayoutAudioDevices->addWidget( checkBox ); // neu
         qDebug().noquote() << global::nameOutput << "[Audio-device-added]" << description << device;
+
+        QvkSettings_wl vkSettings_wl;
+        bool bo = vkSettings_wl.readAudioDevice(checkBox->objectName());
+        if ( bo == true ){
+            checkBox->click();
+        }
 
         emit signal_newAudioDevice(checkBox);
     }

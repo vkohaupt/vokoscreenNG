@@ -44,6 +44,7 @@ public:
     void readAreaScreencast(QvkRegionChoise_wl *vkRegionChoise);
     void saveCameraSurface(qreal x, qreal y, QString ID);
     QPoint readCameraSurface(QString ID);
+    bool readAudioDevice(QString device);
     QString getFileName();
     QString getVideoPath();
     QString getPicturePath();

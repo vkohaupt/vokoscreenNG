@@ -281,6 +281,9 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     // Hint: Settings X und Y für die Camera werden eingelesen in
     // QvkCameraSurface_wl::QvkCameraSurface_wl()
 
+    // Hint: Settings für Audiogeräte werden hier eingelesen
+    // QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
+
     ui->widgetLanguageAndHelp->setVisible( false );
 }
 
