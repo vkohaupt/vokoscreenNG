@@ -242,14 +242,26 @@ QString QvkSettings_wl::getFileName()
 QString QvkSettings_wl::getVideoPath()
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
-    return settings.value( "lineEditVideoPath" ).toString();
+    QString value;
+    settings.beginGroup( groupName_wl );
+    {
+        value = settings.value( "lineEditVideoPath" ).toString();
+    }
+    settings.endGroup();
+    return value;
 }
 
 
 QString QvkSettings_wl::getPicturePath()
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
-    return settings.value( "lineEditSnapshotImagePath" ).toString();
+    QString value;
+    settings.beginGroup( groupName_wl );
+    {
+        value = settings.value( "lineEditSnapshotImagePath" ).toString();
+    }
+    settings.endGroup();
+    return value;
 }
 
 
