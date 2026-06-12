@@ -303,13 +303,15 @@ QPoint QvkSettings_wl::readCameraSurface(QString ID)
 bool QvkSettings_wl::readAudioDevice(QString device)
 {
     QSettings settings( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
+    bool bo;
     settings.beginGroup( groupName_wl );
     {
         if ( settings.value( device, false ).toBool() == true ) {
-            return true;
+            bo = true;
         } else {
-            return false;
+            bo = false;
         }
     }
     settings.endGroup();
+    return bo;
 }
