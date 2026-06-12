@@ -20,8 +20,9 @@
  * --End_License--
  */
 
-#include "QvkAudioPipewireController_wl.h"
 #include "global.h"
+#include "QvkAudioPipewireController_wl.h"
+#include "QvkAudioPipewireSingle_wl.h"
 #include "QvkSettings_wl.h"
 
 //#include "QvkLevelMeterController.h"
@@ -115,7 +116,14 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
         checkBox->setText(description);
         checkBox->setToolTip(deviceID + " " + device);
 
-        layout->addWidget( checkBox );
+
+        // Neu
+        QvkAudioPipewireSingle_wl *vkAudioPipewireSingle_wl = new QvkAudioPipewireSingle_wl();
+        ui->verticalLayoutAudioDevices->addWidget( vkAudioPipewireSingle_wl );
+        vkAudioPipewireSingle_wl->show();
+
+        //End Neu
+
 
         if ( type == "Playback" ) {
             checkBox->setIconSize( QSize( 16, 16 ) );
@@ -128,7 +136,8 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
 //        QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
         //vkLevelMeterController->add_ProgressBar( checkBox, layout );
 //        ui->verticalLayoutAudioDevices->addWidget( frame  );
-        ui->verticalLayoutAudioDevices->addWidget( checkBox ); // neu
+
+        ui->verticalLayoutAudioDevices->addWidget( checkBox );
         qDebug().noquote() << global::nameOutput << "[Audio-device-added]" << description << device;
 
         QvkSettings_wl vkSettings_wl;

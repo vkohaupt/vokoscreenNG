@@ -1,6 +1,5 @@
 
 #include "QvkSpezialProgressBarAudio.h"
-#include "QvkSpezialCheckbox.h"
 
 #include <QDebug>
 #include <QCheckBox>

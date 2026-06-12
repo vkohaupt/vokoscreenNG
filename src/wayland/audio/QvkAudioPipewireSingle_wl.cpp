@@ -6,6 +6,7 @@ QvkAudioPipewireSingle_wl::QvkAudioPipewireSingle_wl(QWidget *parent) :
     ui(new Ui::QvkAudioPipewireSingle_wl)
 {
     ui->setupUi(this);
+    show();
 }
 
 QvkAudioPipewireSingle_wl::~QvkAudioPipewireSingle_wl()
