@@ -23,7 +23,6 @@
 #include "global.h"
 #include "QvkAudioPipewireController_wl.h"
 #include "QvkAudioPipewireSingle_wl.h"
-#include "QvkSettings_wl.h"
 
 //#include "QvkLevelMeterController.h"
 
@@ -47,14 +46,6 @@ QvkAudioPipewireController_wl::QvkAudioPipewireController_wl(Ui_formMainWindow_w
 
     ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
     global::lineEditPipewireWatcher = new QLineEdit;
-    connect(this,
-            &QvkAudioPipewireController_wl::signal_haveAudioDeviceSelected,
-            ui->labelAudioCodec,
-            [=](bool value){
-        ui->labelAudioCodec->setEnabled(value);
-        ui->comboBoxAudioCodec->setEnabled(value);
-        ui->checkBoxSeparatedAudioTracks->setEnabled(value);
-    });
     connect(global::lineEditPipewireWatcher,
             &QLineEdit::textChanged,
             this,
@@ -62,7 +53,6 @@ QvkAudioPipewireController_wl::QvkAudioPipewireController_wl(Ui_formMainWindow_w
         slot_pluggedInOutDevice(value);
     });
     vkAudioPipewireWatcher_wl = new QvkAudioPipewireWatcher_wl( ui );
-    slot_audioDeviceSelected();
 }
 
 
@@ -82,7 +72,7 @@ void QvkAudioPipewireController_wl::slot_audioDeviceSelected()
             break;
         }
     }
-    emit signal_haveAudioDeviceSelected( value );
+    emit signal_haveAudioDeviceSelected( value ); //-----------------------
 }
 
 
@@ -102,51 +92,34 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
     }
 
     if ( action == "[Audio-device-added]" ) {
-        // Neues layout für CheckBox und ProgressBar
-        QHBoxLayout *layout = new QHBoxLayout; // Für Checkbox und Progressbar
-        layout->setObjectName( "vBoxLayoutAudioDevice--" + device );
-        layout->setSpacing(0);
-        layout->setContentsMargins( 0, 0, 0, 0 );
-
-        QCheckBox *checkBox = new QCheckBox();
-        connect(checkBox, &QCheckBox::clicked, this, [=](){slot_audioDeviceSelected();});
-        checkBox->setAccessibleName( string );
-        checkBox->setObjectName( "checkBoxAudioDevice--" + device );
-        checkBox->setToolTip( tr ( "Select one or more devices" ) );
-        checkBox->setText(description);
-        checkBox->setToolTip(deviceID + " " + device);
-
-
-        // Neu
         QvkAudioPipewireSingle_wl *vkAudioPipewireSingle_wl = new QvkAudioPipewireSingle_wl();
-        ui->verticalLayoutAudioDevices->addWidget( vkAudioPipewireSingle_wl );
-        vkAudioPipewireSingle_wl->show();
+        ui->verticalLayoutAudioDevices->addWidget(vkAudioPipewireSingle_wl);
+        vkAudioPipewireSingle_wl->init(string);
+        connect(vkAudioPipewireSingle_wl,
+                &QvkAudioPipewireSingle_wl::signal_haveAudioDeviceSelected,
+                this,
+                [=](bool value){
+            ui->labelAudioCodec->setEnabled(value);
+            ui->comboBoxAudioCodec->setEnabled(value);
+            ui->checkBoxSeparatedAudioTracks->setEnabled(value);
+            ui->toolButtonSeparatedAudioTracksReset->setEnabled(value);
+        });
+        connect(this,
+                &QvkAudioPipewireController_wl::signal_haveAudioDeviceSelected,
+                this,
+                [=](bool value){
+            ui->labelAudioCodec->setEnabled(value);
+            ui->comboBoxAudioCodec->setEnabled(value);
+            ui->checkBoxSeparatedAudioTracks->setEnabled(value);
+            ui->toolButtonSeparatedAudioTracksReset->setEnabled(value);
+        });
 
-        //End Neu
 
-
-        if ( type == "Playback" ) {
-            checkBox->setIconSize( QSize( 16, 16 ) );
-            checkBox->setIcon( QIcon( ":/pictures/screencast/speaker.png" ) );
-        }
-        if ( type == "Source" ) {
-            checkBox->setIconSize( QSize( 16, 16 ) );
-            checkBox->setIcon( QIcon( ":/pictures/screencast/microphone.png" ) );
-        }
-//        QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
+        //QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
         //vkLevelMeterController->add_ProgressBar( checkBox, layout );
-//        ui->verticalLayoutAudioDevices->addWidget( frame  );
+        //ui->verticalLayoutAudioDevices->addWidget( frame  );
 
-        ui->verticalLayoutAudioDevices->addWidget( checkBox );
         qDebug().noquote() << global::nameOutput << "[Audio-device-added]" << description << device;
-
-        QvkSettings_wl vkSettings_wl;
-        bool bo = vkSettings_wl.readAudioDevice(checkBox->objectName());
-        if ( bo == true ){
-            checkBox->click();
-        }
-
-        emit signal_newAudioDevice(checkBox);
     }
 
     if ( action == "[Audio-device-removed]" ) {
@@ -161,6 +134,7 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
                 break;
             }
         }
+
         qDebug().noquote() << global::nameOutput << "[Audio-device-removed]" << description << device;
 
 /*
@@ -186,4 +160,5 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
         }
 */
     }
+    slot_audioDeviceSelected();
 }

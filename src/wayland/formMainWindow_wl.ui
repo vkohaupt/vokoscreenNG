@@ -514,6 +514,9 @@
                      </property>
                      <item>
                       <widget class="QLabel" name="labelAudioCodec">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
                        <property name="text">
                         <string>Audiocodec</string>
                        </property>
@@ -521,6 +524,9 @@
                      </item>
                      <item>
                       <widget class="QComboBox" name="comboBoxAudioCodec">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
                        <property name="sizeAdjustPolicy">
                         <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
                        </property>
@@ -541,6 +547,9 @@
                      </item>
                      <item>
                       <widget class="QCheckBox" name="checkBoxSeparatedAudioTracks">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
                        <property name="text">
                         <string notr="true">Separated audio tracks</string>
                        </property>
@@ -548,6 +557,9 @@
                      </item>
                      <item>
                       <widget class="QToolButton" name="toolButtonSeparatedAudioTracksReset">
+                       <property name="enabled">
+                        <bool>false</bool>
+                       </property>
                        <property name="toolTip">
                         <string>Reset</string>
                        </property>

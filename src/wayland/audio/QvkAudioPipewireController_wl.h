@@ -50,16 +50,14 @@ private:
 
 
 private slots:
-    void slot_pluggedInOutDevice( QString string );
+    void slot_pluggedInOutDevice(QString string);
 
 
 protected:
 
 
 signals:
-    void signal_haveAudioDeviceSelected( bool );
-    void signal_newAudioDevice(QCheckBox *checkBox);
-
+    void signal_haveAudioDeviceSelected(bool);
 };
 
 #endif
