@@ -1,7 +1,9 @@
 #ifndef QVKAUDIOPIPEWIRESINGLE_WL_H
 #define QVKAUDIOPIPEWIRESINGLE_WL_H
 
+#include <QWidget>
 #include <QFrame>
+#include <QMouseEvent>
 
 #include "ui_formMainWindow_wl.h"
 
@@ -30,6 +32,10 @@ private:
 
 signals:
     void signal_haveAudioDeviceSelected(bool);
+
+
+protected:
+    void mouseReleaseEvent(QMouseEvent *event);
 
 };
 

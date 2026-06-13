@@ -65,3 +65,15 @@ void QvkAudioPipewireSingle_wl::init(QString string)
         ui->checkBoxAudioDevice->click();
     }
 }
+
+
+void QvkAudioPipewireSingle_wl::mouseReleaseEvent( QMouseEvent *event )
+{
+    if( event->button() == Qt::LeftButton) {
+        if ( event->type() == QMouseEvent::MouseButtonRelease ) {
+            if ( rect().contains( event->pos() ) ) {
+                ui->checkBoxAudioDevice->click();
+            }
+        }
+    }
+}
