@@ -72,7 +72,7 @@ void QvkAudioPipewireController_wl::slot_audioDeviceSelected()
             break;
         }
     }
-    emit signal_haveAudioDeviceSelected( value ); //-----------------------
+    emit signal_haveAudioDeviceSelected( value );
 }
 
 
@@ -85,14 +85,16 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
     QString action      = string.section( ":::", 4, 4 ); // Action: Added or removed
     QString device      = string.section( ":::", 5, 5 ); // DeviceName
     Q_UNUSED(api)
+    Q_UNUSED(type)
 
     if ( deviceID == "" ) {
         qDebug().noquote() << global::nameOutput << "[Audio] DeviceID is empty -> return";
         return;
     }
-
+    QvkAudioPipewireSingle_wl *vkAudioPipewireSingle_wl;
     if ( action == "[Audio-device-added]" ) {
-        QvkAudioPipewireSingle_wl *vkAudioPipewireSingle_wl = new QvkAudioPipewireSingle_wl();
+        vkAudioPipewireSingle_wl = new QvkAudioPipewireSingle_wl();
+        vkAudioPipewireSingle_wl->setObjectName("AudioPipewireSingle__" + device  );
         ui->verticalLayoutAudioDevices->addWidget(vkAudioPipewireSingle_wl);
         vkAudioPipewireSingle_wl->init(string);
         connect(vkAudioPipewireSingle_wl,

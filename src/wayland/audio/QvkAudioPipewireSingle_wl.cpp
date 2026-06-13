@@ -36,28 +36,32 @@ void QvkAudioPipewireSingle_wl::init(QString string)
     connect(ui->checkBoxAudioDevice,
             &QCheckBox::clicked,
             this,
-            [=](bool value){emit signal_haveAudioDeviceSelected(value);});
-    ui->checkBoxAudioDevice->setAccessibleName( string );
-    ui->checkBoxAudioDevice->setObjectName( "checkBoxAudioDevice--" + device );
-    ui->checkBoxAudioDevice->setToolTip( tr ( "Select one or more devices" ) );
+            [=](bool value){emit signal_haveAudioDeviceSelected(value);}
+    );
+
+    ui->checkBoxAudioDevice->setAccessibleName(string);
+    ui->checkBoxAudioDevice->setObjectName("checkBoxAudioDevice--" + device);
+    ui->checkBoxAudioDevice->setToolTip(tr("Select one or more devices"));
     ui->checkBoxAudioDevice->setText("");
     ui->checkBoxAudioDevice->setToolTip(deviceID + " " + device);
 
     ui->labelAudioDevice->setText(description);
     ui->labelAudioDevice->setToolTip(deviceID + " " + device);
 
-    if ( type == "Playback" ) {
-        ui->checkBoxAudioDevice->setIconSize( QSize( 16, 16 ) );
-        ui->checkBoxAudioDevice->setIcon( QIcon( ":/pictures/screencast/speaker.png" ) );
+    ui->progressBarAudioDevice->setToolTip(deviceID + " " + device);
+
+    if (type == "Playback"){
+        ui->checkBoxAudioDevice->setIconSize(QSize(16, 16));
+        ui->checkBoxAudioDevice->setIcon(QIcon(":/pictures/screencast/speaker.png"));
     }
-    if ( type == "Source" ) {
-        ui->checkBoxAudioDevice->setIconSize( QSize( 16, 16 ) );
-        ui->checkBoxAudioDevice->setIcon( QIcon( ":/pictures/screencast/microphone.png" ) );
+    if (type == "Source"){
+        ui->checkBoxAudioDevice->setIconSize(QSize(16, 16));
+        ui->checkBoxAudioDevice->setIcon(QIcon(":/pictures/screencast/microphone.png"));
     }
 
     QvkSettings_wl vkSettings_wl;
     bool bo = vkSettings_wl.readAudioDevice(ui->checkBoxAudioDevice->objectName());
-    if ( bo == true ){
+    if (bo == true){
         ui->checkBoxAudioDevice->click();
     }
 }
