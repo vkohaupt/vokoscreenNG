@@ -72,24 +72,17 @@ static gboolean message_handler(GstBus *bus, GstMessage *message, gpointer data)
 
                 // converting from dB to normal gives us a value between 0.0 and 1.0
                 rms = pow( 10, rms_dB / 20 );
-qDebug() << "000000000000000" << rms << (qint64)data;
-                qint64 indexData = (qint64)data;
-                QString index;
-                if ( indexData < 10 ) {
-                    index = "0" + QString::number(indexData);
-                } else {
-                    index = QString::number(indexData);
-                }
+                qDebug().noquote() << global::nameOutput << rms << (qint64)data;
 
-                for ( int x = 0; x < global::listChildren->count(); x++ ) {
-                    QLineEdit *lineEdit = global::listChildren->at(x);
-                    if ( lineEdit->objectName().right(2) == index ) {
-                        lineEdit->setText( QString::number(rms) );
+                //for ( int x = 0; x < global::listChildren->count(); x++ ) {
+                    //QLineEdit *lineEdit = global::listChildren->at(x);
+                    //if ( lineEdit->objectName().right(2) == index ) {
+                        //lineEdit->setText( QString::number(rms) );
                         //printf( "%s  %f \n", index.toLatin1().data(), rms );
                         //fflush(stdout); // This will flush any pending printf output
-                        break;
-                    }
-                }
+                        //break;
+                    //}
+                //}
             }
         }
     }
@@ -145,10 +138,13 @@ void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname, QStr
     gst_bus_set_sync_handler( bus, (GstBusSyncHandler)message_handler, (gpointer)msg, NULL );
 
     gst_element_set_state( pipeline, GST_STATE_PLAYING );
+    qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter] Start" << deviceID;
+
 }
 
 
 void QvkAudioPipewireLevelMeter_wl::stop()
 {
     gst_element_set_state( pipeline, GST_STATE_NULL );
+    qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter] Stop";
 }

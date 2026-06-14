@@ -5,6 +5,8 @@
 #include <QFrame>
 #include <QMouseEvent>
 
+#include "QvkAudioPipewireLevelMeter_wl.h"
+
 #include "ui_formMainWindow_wl.h"
 
 namespace Ui {
@@ -20,6 +22,7 @@ public:
     ~QvkAudioPipewireSingle_wl();
     void init(QString string);
     void set_GUIui(Ui_formMainWindow_wl *ui);
+    QvkAudioPipewireLevelMeter_wl *vkAudioPipewireLevelMeter_wl;
 
 
 public slots:

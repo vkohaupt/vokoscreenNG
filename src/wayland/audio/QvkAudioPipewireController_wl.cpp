@@ -121,25 +121,24 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
         //vkLevelMeterController->add_ProgressBar( checkBox, layout );
         //ui->verticalLayoutAudioDevices->addWidget( frame  );
 
-        qDebug().noquote() << global::nameOutput << "[Audio-device-added]" << description << device;
+        qDebug().noquote() << global::nameOutput << "[Audio][device added]" << description << device;
     }
 
     if ( action == "[Audio-device-removed]" ) {
-        // Der CheckBox Objektname beinhaltet als Postfix das Gerät das in der GUI entfernt werden soll.
-        // Auch dem BoxLayout, Frame und ProgressBar wurde ein Postfix hinzugefügt.
-        QList<QCheckBox *> listQCheckBox = ui->scrollAreaAudioDevice->findChildren<QCheckBox *>();
-        for ( int i = 0; i < listQCheckBox.count(); i++ ) {
-            QCheckBox *checkBox = listQCheckBox.at(i);
-            if ( checkBox->objectName().section("--", 1, 1) == device ) {
-                ui->verticalLayoutAudioDevices->removeWidget(checkBox);
-                delete checkBox;
+        QList<QvkAudioPipewireSingle_wl *> listQvkAudioPipewireSingle_wl = ui->scrollAreaAudioDevice->findChildren<QvkAudioPipewireSingle_wl *>();
+        for ( int i = 0; i < listQvkAudioPipewireSingle_wl.count(); i++ ) {
+            QvkAudioPipewireSingle_wl *vkAudioPipewireSingle_wl = listQvkAudioPipewireSingle_wl.at(i);
+            if ( vkAudioPipewireSingle_wl->objectName().section("__", 1, 1) == device ) {
+                vkAudioPipewireSingle_wl->vkAudioPipewireLevelMeter_wl->stop();
+                ui->verticalLayoutAudioDevices->removeWidget(vkAudioPipewireSingle_wl);
+                delete vkAudioPipewireSingle_wl;
                 break;
             }
         }
 
-        qDebug().noquote() << global::nameOutput << "[Audio-device-removed]" << description << device;
+        qDebug().noquote() << global::nameOutput << "[Audio][device removed]" << description << device;
 
-/*
+        /*
         QList<QvkLevelMeterController *> listProgressBar = ui->scrollAreaAudioDevice->findChildren<QvkLevelMeterController *>();
         for ( int i = 0; i < listProgressBar.count(); i++ ) {
             QvkLevelMeterController *vkLevelMeterController = listProgressBar.at(i);
