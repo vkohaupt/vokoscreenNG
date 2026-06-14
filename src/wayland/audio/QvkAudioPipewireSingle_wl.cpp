@@ -68,10 +68,11 @@ void QvkAudioPipewireSingle_wl::init(QString string)
         ui->checkBoxAudioDevice->setIcon(QIcon(":/pictures/screencast/microphone.png"));
     }
 
-
+if ( device == "alsa_input.usb-046d_0809_A6307261-02.mono-fallback" ){
     QvkAudioPipewireLevelMeter_wl *vkAudioPipewireLevelMeter_wl = new QvkAudioPipewireLevelMeter_wl;
-    vkAudioPipewireLevelMeter_wl->start(deviceID, "voko", "00");
-
+    // Für den dritten Parameter nehmen wir ebenfalls die deviceID da diese eindeutig ist.
+    vkAudioPipewireLevelMeter_wl->start(deviceID, "Levelmeter", deviceID);
+}
 
     QvkSettings_wl vkSettings_wl;
     bool bo = vkSettings_wl.readAudioDevice(ui->checkBoxAudioDevice->objectName());

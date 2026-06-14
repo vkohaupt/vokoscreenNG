@@ -43,7 +43,7 @@ QvkAudioPipewireLevelMeter_wl::~QvkAudioPipewireLevelMeter_wl()
 }
 
 
-static gboolean message_handler( GstBus * bus, GstMessage * message, gpointer data )
+static gboolean message_handler(GstBus *bus, GstMessage *message, gpointer data)
 {
     Q_UNUSED(bus)
 
@@ -72,7 +72,7 @@ static gboolean message_handler( GstBus * bus, GstMessage * message, gpointer da
 
                 // converting from dB to normal gives us a value between 0.0 and 1.0
                 rms = pow( 10, rms_dB / 20 );
-
+qDebug() << "000000000000000" << rms << (qint64)data;
                 qint64 indexData = (qint64)data;
                 QString index;
                 if ( indexData < 10 ) {
@@ -98,8 +98,8 @@ static gboolean message_handler( GstBus * bus, GstMessage * message, gpointer da
 }
 
 
-//void QvkAudioPipewireLevelMeter_wl::start( QString device, QString myname, QString index )
-void QvkAudioPipewireLevelMeter_wl::start( QString deviceID, QString myname, QString index )
+// Für den dritten Parameter index nehmen wir ebenfalls die deviceID da diese eindeutig ist.
+void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname, QString index)
 {
     GstElement *audiosrc, *audioconvert, *level, *fakesink;
     GstCaps *caps;
@@ -109,7 +109,6 @@ void QvkAudioPipewireLevelMeter_wl::start( QString deviceID, QString myname, QSt
 
     pipeline = gst_pipeline_new( NULL );
     g_assert (pipeline);
-//    audiosrc = gst_element_factory_make( "pulsesrc", NULL );
     audiosrc = gst_element_factory_make( "pipewiresrc", NULL );
     g_assert (audiosrc);
     audioconvert = gst_element_factory_make( "audioconvert", NULL );
@@ -130,10 +129,9 @@ void QvkAudioPipewireLevelMeter_wl::start( QString deviceID, QString myname, QSt
         g_error( "Failed to link level and fakesink" );
     }
 
-//    g_object_set( G_OBJECT( audiosrc ), "device", device.toUtf8().constData(), NULL );
     g_object_set( G_OBJECT( audiosrc ), "target-object", deviceID.toUtf8().constData(), NULL );
 
-    QString m_name = "[vokoscreenNG] " + myname;
+    QString m_name = myname;
     g_object_set( G_OBJECT( audiosrc ), "client-name", m_name.toUtf8().constData(), NULL );
 
     // make sure we'll get messages
