@@ -69,7 +69,7 @@ void QvkAudioPipewireSingle_wl::init(QString string)
 
 if ( device == "alsa_input.usb-046d_0809_A6307261-02.mono-fallback" ){
     vkAudioPipewireLevelMeter_wl = new QvkAudioPipewireLevelMeter_wl;
-    // Für den dritten Parameter nehmen wir ebenfalls die deviceID da diese eindeutig ist.
+    // Für den dritten Parameter wird ebenfalls die deviceID genommen da diese eindeutig ist.
     vkAudioPipewireLevelMeter_wl->start(deviceID, "Levelmeter", deviceID);
 }
 

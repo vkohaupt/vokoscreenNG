@@ -94,7 +94,7 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
     QvkAudioPipewireSingle_wl *vkAudioPipewireSingle_wl;
     if ( action == "[Audio-device-added]" ) {
         vkAudioPipewireSingle_wl = new QvkAudioPipewireSingle_wl();
-        vkAudioPipewireSingle_wl->setObjectName("AudioPipewireSingle__" + device  );
+        vkAudioPipewireSingle_wl->setObjectName("AudioPipewireSingle__" + deviceID  );
         ui->verticalLayoutAudioDevices->addWidget(vkAudioPipewireSingle_wl);
         vkAudioPipewireSingle_wl->init(string);
         connect(vkAudioPipewireSingle_wl,
@@ -128,7 +128,7 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
         QList<QvkAudioPipewireSingle_wl *> listQvkAudioPipewireSingle_wl = ui->scrollAreaAudioDevice->findChildren<QvkAudioPipewireSingle_wl *>();
         for ( int i = 0; i < listQvkAudioPipewireSingle_wl.count(); i++ ) {
             QvkAudioPipewireSingle_wl *vkAudioPipewireSingle_wl = listQvkAudioPipewireSingle_wl.at(i);
-            if ( vkAudioPipewireSingle_wl->objectName().section("__", 1, 1) == device ) {
+            if ( vkAudioPipewireSingle_wl->objectName().section("__", 1, 1) == deviceID ) {
                 vkAudioPipewireSingle_wl->vkAudioPipewireLevelMeter_wl->stop();
                 ui->verticalLayoutAudioDevices->removeWidget(vkAudioPipewireSingle_wl);
                 delete vkAudioPipewireSingle_wl;
