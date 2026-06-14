@@ -131,7 +131,7 @@ void QvkAudioPipewireLevelMeter_wl::start( QString deviceID, QString myname, QSt
     }
 
 //    g_object_set( G_OBJECT( audiosrc ), "device", device.toUtf8().constData(), NULL );
-    g_object_set( G_OBJECT( audiosrc ), "target-object=", deviceID.toUtf8().constData(), NULL );
+    g_object_set( G_OBJECT( audiosrc ), "target-object", deviceID.toUtf8().constData(), NULL );
 
     QString m_name = "[vokoscreenNG] " + myname;
     g_object_set( G_OBJECT( audiosrc ), "client-name", m_name.toUtf8().constData(), NULL );
