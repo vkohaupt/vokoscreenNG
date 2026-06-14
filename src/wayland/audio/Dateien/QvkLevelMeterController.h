@@ -39,16 +39,22 @@ class QvkLevelMeterController : public QvkSpezialProgressBarAudio
 public:
     explicit QvkLevelMeterController();
     ~QvkLevelMeterController();
-    void add_ProgressBar( QCheckBox *checkBox, QHBoxLayout *layout );
+    void add_ProgressBar( QCheckBox *checkBox, QHBoxLayout *layout , QString m_name );
     void remove_LineEdit( QString index );
     QvkLevelMeter *vkLevelMeter;
     QLineEdit *lineEdit;
 
+
 private:
     int maxSteps;
 
+    QString index;
+    QString device;
+    QString name;
+
 public slots:
 
+    void slot_start_stop(bool bo);
 
 private slots:
     void slot_textChanged( QString string );

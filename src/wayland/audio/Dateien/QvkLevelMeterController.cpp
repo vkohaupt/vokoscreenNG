@@ -25,8 +25,10 @@
 #include "global.h"
 
 #include <QCheckBox>
-#include <QLineEdit>
+#include <QProgressBar>
 #include <QHBoxLayout>
+
+#include <QToolButton>
 
 QvkLevelMeterController::QvkLevelMeterController()
 {
@@ -39,9 +41,9 @@ QvkLevelMeterController::~QvkLevelMeterController()
 }
 
 
-void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QHBoxLayout *layout )
+void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QHBoxLayout *layout, QString m_name )
 {
-    QString index = checkBox->objectName().right(2);
+    index = checkBox->objectName().right(2);
 
     lineEdit = new QLineEdit();
     lineEdit->setObjectName( "lineEditLevelMeter_" + index );
@@ -61,13 +63,25 @@ void QvkLevelMeterController::add_ProgressBar( QCheckBox *checkBox, QHBoxLayout 
     layout->addWidget( this );
 
     vkLevelMeter = new QvkLevelMeter;
-    QString device = checkBox->accessibleName().section( ":::", 0, 0);
-    QString name = checkBox->accessibleName().section( ":::", 1, 1 );
-    QString SourceOrPlayback = checkBox->accessibleName().section( ":::", 2, 2);
-    set_Text( name );
-    vkLevelMeter->start( device, name, index, SourceOrPlayback );
+    device = checkBox->accessibleName();
+    name = m_name;
 }
 
+
+void QvkLevelMeterController::slot_start_stop( bool bo )
+{
+    if ( bo == true ) {
+        vkLevelMeter->start( device, name, index );
+        QToolButton *listToolButton = this->parent()->findChild<QToolButton *>( "toolButtonOnOffProgressBar-" + index );
+        listToolButton->setIcon( QIcon( ":/pictures/screencast/accept.png" ) );
+    }
+
+    if ( bo == false ) {
+        vkLevelMeter->stop();
+        QToolButton *listToolButton = this->parent()->findChild<QToolButton *>( "toolButtonOnOffProgressBar-" + index );
+        listToolButton->setIcon( QIcon( ":/pictures/screencast/missing.png" ) );
+    }
+}
 
 void QvkLevelMeterController::remove_LineEdit( QString index )
 {

@@ -1,6 +1,14 @@
 #include "QvkAudioPipewireSingle_wl.h"
+#include "QvkAudioPipewireLevelMeter_wl.h"
 #include "ui_QvkAudioPipewireSingle_wl.h"
 #include "QvkSettings_wl.h"
+
+#include <QString>
+#include <QFrame>
+#include <QCheckBox>
+#include <QSize>
+#include <QIcon>
+#include <QMouseEvent>
 
 QvkAudioPipewireSingle_wl::QvkAudioPipewireSingle_wl(QWidget *parent) :
     QFrame(parent),
@@ -9,6 +17,7 @@ QvkAudioPipewireSingle_wl::QvkAudioPipewireSingle_wl(QWidget *parent) :
     ui->setupUi(this);
     show();
 }
+
 
 QvkAudioPipewireSingle_wl::~QvkAudioPipewireSingle_wl()
 {
