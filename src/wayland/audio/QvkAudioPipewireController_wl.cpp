@@ -131,7 +131,8 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
             if ( vkAudioPipewireSingle_wl->objectName().section("__", 1, 1) == deviceID ) {
                 vkAudioPipewireSingle_wl->vkAudioPipewireLevelMeter_wl->stop();
                 ui->verticalLayoutAudioDevices->removeWidget(vkAudioPipewireSingle_wl);
-                delete vkAudioPipewireSingle_wl;
+                vkAudioPipewireSingle_wl->vkAudioPipewireLevelMeter_wl->deleteLater();
+                vkAudioPipewireSingle_wl->deleteLater();
                 break;
             }
         }

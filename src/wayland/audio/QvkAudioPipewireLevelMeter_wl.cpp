@@ -131,6 +131,8 @@ void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname, QStr
     g_object_set( G_OBJECT( level ), "post-messages", TRUE, NULL );
     // run synced and not as fast as we can
     g_object_set( G_OBJECT( fakesink ), "sync", TRUE, NULL );
+    // Setzt den Intervall
+    g_object_set( G_OBJECT( level ), "interval", 100000000, NULL );
 
     bus = gst_element_get_bus (pipeline);
 
