@@ -25,7 +25,6 @@
 
 #include <QDebug>
 #include <QLineEdit>
-#include <QLineEdit>
 
 #include <string.h>
 #include <math.h>
@@ -43,7 +42,7 @@ QvkAudioPipewireLevelMeter_wl::~QvkAudioPipewireLevelMeter_wl()
 }
 
 
-static gboolean message_handler(GstBus *bus, GstMessage *message, gpointer data)
+gboolean QvkAudioPipewireLevelMeter_wl::message_handler(GstBus *bus, GstMessage *message, gpointer data)
 {
     Q_UNUSED(bus)
 
@@ -141,12 +140,13 @@ void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname, QStr
 
     gst_element_set_state( pipeline, GST_STATE_PLAYING );
     qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter] Start" << deviceID;
-
 }
 
 
 void QvkAudioPipewireLevelMeter_wl::stop()
 {
     gst_element_set_state( pipeline, GST_STATE_NULL );
+    gst_object_unref( pipeline );
+
     qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter] Stop";
 }
