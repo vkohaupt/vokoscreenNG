@@ -83,8 +83,11 @@ void QvkAudioPipewireSingle_wl::init(QString string)
     vkAudioPipewireLevelMeter_wl = new QvkAudioPipewireLevelMeter_wl;
     // Für den dritten Parameter wird ebenfalls die deviceID genommen da diese eindeutig ist.
     vkAudioPipewireLevelMeter_wl->start(deviceID, "Levelmeter", deviceID);
-    connect(GuiUi->meterStart, &QPushButton::clicked, this, [=](){vkAudioPipewireLevelMeter_wl->start(deviceID, "Levelmeter", deviceID);});
-    connect(GuiUi->meterStop, &QPushButton::clicked, this, [=](){vkAudioPipewireLevelMeter_wl->stop();});
+
+    GuiUi->meterStart->hide();
+    GuiUi->meterStop->hide();
+//    connect(GuiUi->meterStart, &QPushButton::clicked, this, [=](){vkAudioPipewireLevelMeter_wl->start(deviceID, "Levelmeter", deviceID);});
+//    connect(GuiUi->meterStop, &QPushButton::clicked, this, [=](){vkAudioPipewireLevelMeter_wl->stop();});
     //    GuiUi->meterStart->click();
 
 

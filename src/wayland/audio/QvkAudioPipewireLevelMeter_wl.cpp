@@ -42,7 +42,6 @@ QvkAudioPipewireLevelMeter_wl::~QvkAudioPipewireLevelMeter_wl()
 }
 
 
-//gboolean QvkAudioPipewireLevelMeter_wl::message_handler(GstBus *bus, GstMessage *message, gpointer data)
 gboolean QvkAudioPipewireLevelMeter_wl::message_handler(GstBus *bus, GstMessage *message, gpointer index)
 {
     Q_UNUSED(bus)
@@ -77,8 +76,11 @@ gboolean QvkAudioPipewireLevelMeter_wl::message_handler(GstBus *bus, GstMessage 
                     QLineEdit *lineEdit = global::listChildren->at(x);
                     if (lineEdit->objectName().section("_", 1, 1) == QString::number((qint64)index)){
                         lineEdit->setText( QString::number(rms) );
-                        //printf( "%s  %f \n", index.toLatin1().data(), rms );
-                        //fflush(stdout); // This will flush any pending printf output
+                        // Zum testen beibehalten
+                        //if ( QString::number((qint64)index) == "65"){
+                        //    printf( "%s  %f \n", QString::number((qint64)index).toLatin1().data(), rms );
+                        //    fflush(stdout); // This will flush any pending printf output
+                        //}
                         break;
                     }
                 }

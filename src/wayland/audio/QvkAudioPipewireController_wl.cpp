@@ -130,7 +130,7 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
 
                 QLineEdit *LineEdit = global::listChildren->at(i);
                 qDebug().noquote() << global::nameOutput << "[Audio] Remove" << LineEdit->objectName();
-                global::listChildren->remove(i);;
+                global::listChildren->removeAt(i);;
 
                 qDebug().noquote() << global::nameOutput << "[Audio][device removed]" << deviceID << description << device;
                 break;

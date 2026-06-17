@@ -34,6 +34,9 @@
    </property>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
      <item>
       <widget class="QCheckBox" name="checkBoxAudioDevice">
        <property name="text">
@@ -76,6 +79,31 @@
         </widget>
        </item>
       </layout>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButton">
+       <property name="maximumSize">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="text">
+        <string notr="true"/>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/pictures/screencast/accept.png</normalon>
+         <activeoff>:/pictures/screencast/missing.png</activeoff>
+        </iconset>
+       </property>
+       <property name="shortcut">
+        <string notr="true"/>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
