@@ -7,11 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>29</height>
+    <height>22</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Frame</string>
+  </property>
+  <property name="lineWidth">
+   <number>0</number>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="spacing">
@@ -61,7 +64,7 @@
          <property name="maximumSize">
           <size>
            <width>16777215</width>
-           <height>12</height>
+           <height>4</height>
           </size>
          </property>
          <property name="value">

@@ -44,7 +44,7 @@ public slots:
 
 private:
     GstElement *pipeline;
-    static gboolean message_handler(GstBus *bus, GstMessage *message, gpointer data);
+    static gboolean message_handler(GstBus *bus, GstMessage *message, gpointer index);
 
 
 private slots:

@@ -8,6 +8,7 @@
 #include <QSize>
 #include <QIcon>
 #include <QMouseEvent>
+#include <QLineEdit>
 
 QvkAudioPipewireSingle_wl::QvkAudioPipewireSingle_wl(QWidget *parent) :
     QFrame(parent),
@@ -67,11 +68,25 @@ void QvkAudioPipewireSingle_wl::init(QString string)
         ui->checkBoxAudioDevice->setIcon(QIcon(":/pictures/screencast/microphone.png"));
     }
 
-if ( device == "alsa_input.usb-046d_0809_A6307261-02.mono-fallback" ){
+
+    QLineEdit *lineEdit = new QLineEdit();
+    lineEdit->setObjectName( "lineEditLevelMeter_" + deviceID );
+    global::listChildren->append( lineEdit );
+
+    connect( lineEdit,
+             &QLineEdit::textChanged,
+             this,
+             [=](QString value){
+        ui->progressBarAudioDevice->setValue( value.toDouble() * 1000 );}
+    );
+
     vkAudioPipewireLevelMeter_wl = new QvkAudioPipewireLevelMeter_wl;
     // Für den dritten Parameter wird ebenfalls die deviceID genommen da diese eindeutig ist.
     vkAudioPipewireLevelMeter_wl->start(deviceID, "Levelmeter", deviceID);
-}
+    connect(GuiUi->meterStart, &QPushButton::clicked, this, [=](){vkAudioPipewireLevelMeter_wl->start(deviceID, "Levelmeter", deviceID);});
+    connect(GuiUi->meterStop, &QPushButton::clicked, this, [=](){vkAudioPipewireLevelMeter_wl->stop();});
+    //    GuiUi->meterStart->click();
+
 
     QvkSettings_wl vkSettings_wl;
     bool bo = vkSettings_wl.readAudioDevice(ui->checkBoxAudioDevice->objectName());

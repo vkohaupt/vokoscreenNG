@@ -2090,6 +2090,20 @@
              </spacer>
             </item>
             <item>
+             <widget class="QPushButton" name="meterStart">
+              <property name="text">
+               <string notr="true">Start</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="meterStop">
+              <property name="text">
+               <string notr="true">Stop</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QPushButton" name="pushButtonSnapshot_2">
               <property name="font">
                <font>

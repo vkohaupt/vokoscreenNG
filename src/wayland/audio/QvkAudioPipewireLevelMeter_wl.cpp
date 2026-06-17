@@ -42,7 +42,8 @@ QvkAudioPipewireLevelMeter_wl::~QvkAudioPipewireLevelMeter_wl()
 }
 
 
-gboolean QvkAudioPipewireLevelMeter_wl::message_handler(GstBus *bus, GstMessage *message, gpointer data)
+//gboolean QvkAudioPipewireLevelMeter_wl::message_handler(GstBus *bus, GstMessage *message, gpointer data)
+gboolean QvkAudioPipewireLevelMeter_wl::message_handler(GstBus *bus, GstMessage *message, gpointer index)
 {
     Q_UNUSED(bus)
 
@@ -71,17 +72,16 @@ gboolean QvkAudioPipewireLevelMeter_wl::message_handler(GstBus *bus, GstMessage 
 
                 // converting from dB to normal gives us a value between 0.0 and 1.0
                 rms = pow( 10, rms_dB / 20 );
-                qDebug().noquote() << global::nameOutput << rms << (qint64)data;
 
-                //for ( int x = 0; x < global::listChildren->count(); x++ ) {
-                    //QLineEdit *lineEdit = global::listChildren->at(x);
-                    //if ( lineEdit->objectName().right(2) == index ) {
-                        //lineEdit->setText( QString::number(rms) );
+                for ( int x = 0; x < global::listChildren->count(); x++ ) {
+                    QLineEdit *lineEdit = global::listChildren->at(x);
+                    if (lineEdit->objectName().section("_", 1, 1) == QString::number((qint64)index)){
+                        lineEdit->setText( QString::number(rms) );
                         //printf( "%s  %f \n", index.toLatin1().data(), rms );
                         //fflush(stdout); // This will flush any pending printf output
-                        //break;
-                    //}
-                //}
+                        break;
+                    }
+                }
             }
         }
     }
@@ -130,14 +130,16 @@ void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname, QStr
     g_object_set( G_OBJECT( level ), "post-messages", TRUE, NULL );
     // run synced and not as fast as we can
     g_object_set( G_OBJECT( fakesink ), "sync", TRUE, NULL );
-    // Setzt den Intervall
-    g_object_set( G_OBJECT( level ), "interval", 100000000, NULL );
+
+    // Setzt den Intervall. Acht Nullen sind ca. 15Aufrufe/Sekunde
+    //                      Sieben Nullen sind ca. 100Aufrufe/Sekunde
+    g_object_set( G_OBJECT( level ), "interval", 10000000, NULL );
 
     bus = gst_element_get_bus (pipeline);
 
     gint64 msg = index.toInt();
     gst_bus_set_sync_handler( bus, (GstBusSyncHandler)message_handler, (gpointer)msg, NULL );
-
+    gst_object_unref(bus);
     gst_element_set_state( pipeline, GST_STATE_PLAYING );
     qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter] Start" << deviceID;
 }
@@ -146,7 +148,5 @@ void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname, QStr
 void QvkAudioPipewireLevelMeter_wl::stop()
 {
     gst_element_set_state( pipeline, GST_STATE_NULL );
-    gst_object_unref( pipeline );
-
     qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter] Stop";
 }

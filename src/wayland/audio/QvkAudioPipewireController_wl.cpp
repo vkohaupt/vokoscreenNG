@@ -24,8 +24,6 @@
 #include "QvkAudioPipewireController_wl.h"
 #include "QvkAudioPipewireSingle_wl.h"
 
-//#include "QvkLevelMeterController.h"
-
 #include <QDebug>
 #include <QPainter>
 #include <QCheckBox>
@@ -94,6 +92,7 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
     QvkAudioPipewireSingle_wl *vkAudioPipewireSingle_wl;
     if ( action == "[Audio-device-added]" ) {
         vkAudioPipewireSingle_wl = new QvkAudioPipewireSingle_wl();
+        vkAudioPipewireSingle_wl->set_GUIui(ui);
         vkAudioPipewireSingle_wl->setObjectName("AudioPipewireSingle__" + deviceID  );
         ui->verticalLayoutAudioDevices->addWidget(vkAudioPipewireSingle_wl);
         vkAudioPipewireSingle_wl->init(string);
@@ -115,11 +114,6 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
             ui->checkBoxSeparatedAudioTracks->setEnabled(value);
             ui->toolButtonSeparatedAudioTracksReset->setEnabled(value);
         });
-
-
-        //QvkLevelMeterController *vkLevelMeterController = new QvkLevelMeterController;
-        //vkLevelMeterController->add_ProgressBar( checkBox, layout );
-        //ui->verticalLayoutAudioDevices->addWidget( frame  );
 
         qDebug().noquote() << global::nameOutput << "[Audio][device added]" << description << device;
     }
