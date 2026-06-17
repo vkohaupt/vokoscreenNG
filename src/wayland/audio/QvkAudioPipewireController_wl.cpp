@@ -127,34 +127,15 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
                 ui->verticalLayoutAudioDevices->removeWidget(vkAudioPipewireSingle_wl);
                 vkAudioPipewireSingle_wl->vkAudioPipewireLevelMeter_wl->deleteLater();
                 vkAudioPipewireSingle_wl->deleteLater();
+
+                QLineEdit *LineEdit = global::listChildren->at(i);
+                qDebug().noquote() << global::nameOutput << "[Audio] Remove" << LineEdit->objectName();
+                global::listChildren->remove(i);;
+
+                qDebug().noquote() << global::nameOutput << "[Audio][device removed]" << deviceID << description << device;
                 break;
             }
         }
-
-        qDebug().noquote() << global::nameOutput << "[Audio][device removed]" << description << device;
-
-        /*
-        QList<QvkLevelMeterController *> listProgressBar = ui->scrollAreaAudioDevice->findChildren<QvkLevelMeterController *>();
-        for ( int i = 0; i < listProgressBar.count(); i++ ) {
-            QvkLevelMeterController *vkLevelMeterController = listProgressBar.at(i);
-            if ( vkLevelMeterController->objectName().right(2) == index ) {
-                qDebug().noquote() << global::nameOutput << "[Audio-device-removed]" << description << device;
-                vkLevelMeterController->vkLevelMeter->stop();
-                vkLevelMeterController->remove_LineEdit( index );
-                vkLevelMeterController->deleteLater();
-                break;
-            }
-        }
-
-        QList<QFrame *> listFrame = ui->scrollAreaAudioDevice->findChildren<QFrame *>();
-        for ( int i = 0; i < listProgressBar.count(); i++ ) {
-            QFrame *frame = listFrame.at(i);
-            if ( frame->objectName().right(2) == index ) {
-                frame->deleteLater();
-                break;
-            }
-        }
-*/
     }
     slot_audioDeviceSelected();
 }

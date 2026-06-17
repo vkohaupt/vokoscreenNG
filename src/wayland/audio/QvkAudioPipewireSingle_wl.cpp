@@ -68,7 +68,6 @@ void QvkAudioPipewireSingle_wl::init(QString string)
         ui->checkBoxAudioDevice->setIcon(QIcon(":/pictures/screencast/microphone.png"));
     }
 
-
     QLineEdit *lineEdit = new QLineEdit();
     lineEdit->setObjectName( "lineEditLevelMeter_" + deviceID );
     global::listChildren->append( lineEdit );
@@ -79,6 +78,7 @@ void QvkAudioPipewireSingle_wl::init(QString string)
              [=](QString value){
         ui->progressBarAudioDevice->setValue( value.toDouble() * 1000 );}
     );
+
 
     vkAudioPipewireLevelMeter_wl = new QvkAudioPipewireLevelMeter_wl;
     // Für den dritten Parameter wird ebenfalls die deviceID genommen da diese eindeutig ist.
