@@ -98,6 +98,7 @@ void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname, QStr
     GstElement *audiosrc, *audioconvert, *level, *fakesink;
     GstCaps *caps;
     GstBus *bus;
+    m_deviceID = deviceID;
 
     caps = gst_caps_from_string( "audio/x-raw,channels=2" );
 
@@ -150,5 +151,5 @@ void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname, QStr
 void QvkAudioPipewireLevelMeter_wl::stop()
 {
     gst_element_set_state( pipeline, GST_STATE_NULL );
-    qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter] Stop";
+    qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter] Stop" << m_deviceID;
 }
