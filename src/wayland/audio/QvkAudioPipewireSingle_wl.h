@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QFrame>
 #include <QMouseEvent>
+#include <QShowEvent>
 
 #include "QvkAudioPipewireLevelMeter_wl.h"
 
@@ -39,6 +40,7 @@ signals:
 
 protected:
     void mouseReleaseEvent(QMouseEvent *event);
+    void showEvent(QShowEvent *event);
 
 };
 

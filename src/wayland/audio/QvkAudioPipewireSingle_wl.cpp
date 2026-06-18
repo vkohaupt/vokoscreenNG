@@ -103,14 +103,7 @@ void QvkAudioPipewireSingle_wl::init(QString string)
 
     vkAudioPipewireLevelMeter_wl = new QvkAudioPipewireLevelMeter_wl;
     // Für den dritten Parameter wird ebenfalls die deviceID genommen da diese eindeutig ist.
-    vkAudioPipewireLevelMeter_wl->start(deviceID, "Levelmeter", deviceID);
-
-    GuiUi->meterStart->hide();
-    GuiUi->meterStop->hide();
-    //    connect(GuiUi->meterStart, &QPushButton::clicked, this, [=](){vkAudioPipewireLevelMeter_wl->start(deviceID, "Levelmeter", deviceID);});
-    //    connect(GuiUi->meterStop, &QPushButton::clicked, this, [=](){vkAudioPipewireLevelMeter_wl->stop();});
-    //    GuiUi->meterStart->click();
-
+    //vkAudioPipewireLevelMeter_wl->start(deviceID, "Levelmeter", deviceID);
 
     QvkSettings_wl vkSettings_wl;
     bool bo = vkSettings_wl.readAudioDevice(ui->checkBoxAudioDevice->objectName());
@@ -130,3 +123,11 @@ void QvkAudioPipewireSingle_wl::mouseReleaseEvent( QMouseEvent *event )
         }
     }
 }
+
+
+void QvkAudioPipewireSingle_wl::showEvent(QShowEvent *event)
+{
+    Q_UNUSED(event)
+    ui->toolButtonAudioDevice->click();
+}
+

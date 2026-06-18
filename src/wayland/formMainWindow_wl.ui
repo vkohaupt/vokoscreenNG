@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>894</width>
+    <width>966</width>
     <height>541</height>
    </rect>
   </property>
@@ -461,7 +461,7 @@
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>445</width>
+                          <width>517</width>
                           <height>93</height>
                          </rect>
                         </property>
@@ -1451,7 +1451,7 @@
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>490</width>
+                     <width>562</width>
                      <height>395</height>
                     </rect>
                    </property>
@@ -2088,20 +2088,6 @@
                </size>
               </property>
              </spacer>
-            </item>
-            <item>
-             <widget class="QPushButton" name="meterStart">
-              <property name="text">
-               <string notr="true">Start</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="meterStop">
-              <property name="text">
-               <string notr="true">Stop</string>
-              </property>
-             </widget>
             </item>
             <item>
              <widget class="QPushButton" name="pushButtonSnapshot_2">
@@ -3514,7 +3500,7 @@
  </resources>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_2"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="buttonGroup_2"/>
  </buttongroups>
 </ui>
