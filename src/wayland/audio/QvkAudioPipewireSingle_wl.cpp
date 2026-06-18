@@ -63,6 +63,7 @@ void QvkAudioPipewireSingle_wl::init(QString string)
     ui->labelAudioDevice->setToolTip("ID: " + deviceID + " \n" + "Device: " + device);
 
     ui->progressBarAudioDevice->setObjectName(ui->progressBarAudioDevice->objectName() + "_" + deviceID);
+    ui->progressBarAudioDevice->setValue(0);
     ui->progressBarAudioDevice->setToolTip("ID: " + deviceID + " \n" + "Device: " + device);
 
     ui->toolButtonAudioDevice->setObjectName(ui->toolButtonAudioDevice->objectName() + "_" + deviceID);
