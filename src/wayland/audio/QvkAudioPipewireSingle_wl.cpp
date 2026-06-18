@@ -53,17 +53,17 @@ void QvkAudioPipewireSingle_wl::init(QString string)
     ui->checkBoxAudioDevice->setObjectName("checkBoxAudioDevice--" + device);
     ui->checkBoxAudioDevice->setToolTip(tr("Select one or more devices"));
     ui->checkBoxAudioDevice->setText("");
-    ui->checkBoxAudioDevice->setToolTip("ID:" + deviceID + " " + "Device:" + device);
+    ui->checkBoxAudioDevice->setToolTip("ID: " + deviceID + " \n" + "Device: " + device);
 
     ui->labelAudioDevice->setObjectName(ui->labelAudioDevice->objectName() + "_" + deviceID);
     if ( description.length() > 45 ){
         description = description.first(45);
     }
     ui->labelAudioDevice->setText(description);
-    ui->labelAudioDevice->setToolTip("ID:" + deviceID + " " + "Device:" + device);
+    ui->labelAudioDevice->setToolTip("ID: " + deviceID + " \n" + "Device: " + device);
 
     ui->progressBarAudioDevice->setObjectName(ui->progressBarAudioDevice->objectName() + "_" + deviceID);
-    ui->progressBarAudioDevice->setToolTip("ID:" + deviceID + " " + "Device:" + device);
+    ui->progressBarAudioDevice->setToolTip("ID: " + deviceID + " \n" + "Device: " + device);
 
     ui->toolButtonAudioDevice->setObjectName(ui->toolButtonAudioDevice->objectName() + "_" + deviceID);
     ui->toolButtonAudioDevice->setToolTip(ui->toolButtonAudioDevice->objectName());
