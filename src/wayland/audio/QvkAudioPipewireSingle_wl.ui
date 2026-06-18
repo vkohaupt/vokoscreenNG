@@ -101,10 +101,10 @@
         <string notr="true"/>
        </property>
        <property name="icon">
-        <iconset>
-         <normalon>:/pictures/screencast/accept.png</normalon>
-         <activeoff>:/pictures/screencast/missing.png</activeoff>
-        </iconset>
+        <iconset resource="../../screencast.qrc">
+         <normaloff>:/pictures/screencast/accept.png</normaloff>
+         <normalon>:/pictures/screencast/missing.png</normalon>
+         <selectedoff>:/pictures/screencast/missing.png</selectedoff>:/pictures/screencast/accept.png</iconset>
        </property>
        <property name="shortcut">
         <string notr="true"/>
@@ -121,6 +121,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../screencast.qrc"/>
+ </resources>
  <connections/>
 </ui>

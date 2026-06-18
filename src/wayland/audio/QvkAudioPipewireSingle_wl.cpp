@@ -73,7 +73,12 @@ void QvkAudioPipewireSingle_wl::init(QString string)
              [=](bool value){
         if ( value == true ){
             vkAudioPipewireLevelMeter_wl->stop();
-        };}
+        }
+        if ( value == false){
+            vkAudioPipewireLevelMeter_wl->start(deviceID, "Levelmeter", deviceID);
+        }
+
+        ;}
     );
 
     if (type == "Playback"){
