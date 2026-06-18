@@ -54,13 +54,17 @@ void QvkAudioPipewireSingle_wl::init(QString string)
     ui->checkBoxAudioDevice->setText("");
     ui->checkBoxAudioDevice->setToolTip(deviceID + " " + device);
 
+    ui->labelAudioDevice->setObjectName(ui->labelAudioDevice->objectName() + "_" + deviceID);
     if ( description.length() > 45 ){
         description = description.first(45);
     }
     ui->labelAudioDevice->setText(description);
     ui->labelAudioDevice->setToolTip(deviceID + " " + device);
 
+    ui->progressBarAudioDevice->setObjectName(ui->progressBarAudioDevice->objectName() + "_" + deviceID);
     ui->progressBarAudioDevice->setToolTip(deviceID + " " + device);
+
+    ui->toolButtonAudioDevice->setObjectName(ui->toolButtonAudioDevice->objectName() + "_" + deviceID);
 
     if (type == "Playback"){
         ui->checkBoxAudioDevice->setIconSize(QSize(16, 16));

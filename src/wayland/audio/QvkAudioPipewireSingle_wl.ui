@@ -90,7 +90,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QToolButton" name="toolButton">
+      <widget class="QToolButton" name="toolButtonAudioDevice">
        <property name="maximumSize">
         <size>
          <width>20</width>
