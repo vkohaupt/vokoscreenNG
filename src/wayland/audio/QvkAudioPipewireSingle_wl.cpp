@@ -66,6 +66,15 @@ void QvkAudioPipewireSingle_wl::init(QString string)
     ui->progressBarAudioDevice->setToolTip(deviceID + " " + device);
 
     ui->toolButtonAudioDevice->setObjectName(ui->toolButtonAudioDevice->objectName() + "_" + deviceID);
+    ui->toolButtonAudioDevice->setToolTip(ui->toolButtonAudioDevice->objectName());
+    connect( ui->toolButtonAudioDevice,
+             &QToolButton::clicked,
+             this,
+             [=](bool value){
+        if ( value == true ){
+            vkAudioPipewireLevelMeter_wl->stop();
+        };}
+    );
 
     if (type == "Playback"){
         ui->checkBoxAudioDevice->setIconSize(QSize(16, 16));
