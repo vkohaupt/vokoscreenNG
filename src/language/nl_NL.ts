@@ -7,7 +7,11 @@
     </message>
 </context>
 <context>
-    <name>QvkAudioController_wl</name>
+    <name>QvkAudioPipewireSingle_wl</name>
+    <message>
+        <source>Frame</source>
+        <translation>Frame</translation>
+    </message>
     <message>
         <source>Select one or more devices</source>
         <translation>Selecteer een of meerdere apparaten</translation>
@@ -204,13 +208,6 @@
 </context>
 <context>
     <name>QvkPulseAudioWatcher</name>
-    <message>
-        <source>Select one or more devices</source>
-        <translation>Selecteer een of meerdere apparaten</translation>
-    </message>
-</context>
-<context>
-    <name>QvkPulseAudioWatcher_wl</name>
     <message>
         <source>Select one or more devices</source>
         <translation>Selecteer een of meerdere apparaten</translation>

@@ -11,10 +11,6 @@
 <context>
     <name>QvkAudioPipewireSingle_wl</name>
     <message>
-        <source>Frame</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Select one or more devices</source>
         <translation type="unfinished"></translation>
     </message>
