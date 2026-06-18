@@ -34,13 +34,22 @@
    </property>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>6</number>
+     </property>
+     <property name="leftMargin">
+      <number>6</number>
+     </property>
      <property name="rightMargin">
-      <number>0</number>
+      <number>6</number>
      </property>
      <item>
       <widget class="QCheckBox" name="checkBoxAudioDevice">
        <property name="text">
         <string notr="true"/>
+       </property>
+       <property name="shortcut">
+        <string/>
        </property>
       </widget>
      </item>
@@ -102,6 +111,9 @@
        </property>
        <property name="checkable">
         <bool>true</bool>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
        </property>
       </widget>
      </item>

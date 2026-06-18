@@ -54,6 +54,9 @@ void QvkAudioPipewireSingle_wl::init(QString string)
     ui->checkBoxAudioDevice->setText("");
     ui->checkBoxAudioDevice->setToolTip(deviceID + " " + device);
 
+    if ( description.length() > 45 ){
+        description = description.first(45);
+    }
     ui->labelAudioDevice->setText(description);
     ui->labelAudioDevice->setToolTip(deviceID + " " + device);
 
@@ -86,8 +89,8 @@ void QvkAudioPipewireSingle_wl::init(QString string)
 
     GuiUi->meterStart->hide();
     GuiUi->meterStop->hide();
-//    connect(GuiUi->meterStart, &QPushButton::clicked, this, [=](){vkAudioPipewireLevelMeter_wl->start(deviceID, "Levelmeter", deviceID);});
-//    connect(GuiUi->meterStop, &QPushButton::clicked, this, [=](){vkAudioPipewireLevelMeter_wl->stop();});
+    //    connect(GuiUi->meterStart, &QPushButton::clicked, this, [=](){vkAudioPipewireLevelMeter_wl->start(deviceID, "Levelmeter", deviceID);});
+    //    connect(GuiUi->meterStop, &QPushButton::clicked, this, [=](){vkAudioPipewireLevelMeter_wl->stop();});
     //    GuiUi->meterStart->click();
 
 
