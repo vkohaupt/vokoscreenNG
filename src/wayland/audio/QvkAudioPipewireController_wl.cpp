@@ -89,6 +89,11 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
         qDebug().noquote() << global::nameOutput << "[Audio] DeviceID is empty -> return";
         return;
     }
+/*
+    if ((deviceID == "496") ){//or (deviceID == "747")){
+    } else
+        return;
+*/
     QvkAudioPipewireSingle_wl *vkAudioPipewireSingle_wl;
     if ( action == "[Audio-device-added]" ) {
         vkAudioPipewireSingle_wl = new QvkAudioPipewireSingle_wl();
@@ -130,7 +135,7 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
 
                 QLineEdit *LineEdit = global::listChildren->at(i);
                 qDebug().noquote() << global::nameOutput << "[Audio] Remove" << LineEdit->objectName();
-                global::listChildren->removeAt(i);;
+                global::listChildren->removeAt(i);
 
                 qDebug().noquote() << global::nameOutput << "[Audio][device removed]" << deviceID << description << device;
                 break;

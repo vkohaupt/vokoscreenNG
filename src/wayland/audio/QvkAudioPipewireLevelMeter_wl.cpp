@@ -25,6 +25,7 @@
 
 #include <QDebug>
 #include <QLineEdit>
+#include <QTime>
 
 #include <string.h>
 #include <math.h>
@@ -45,6 +46,36 @@ QvkAudioPipewireLevelMeter_wl::~QvkAudioPipewireLevelMeter_wl()
 gboolean QvkAudioPipewireLevelMeter_wl::message_handler(GstBus *bus, GstMessage *message, gpointer index)
 {
     Q_UNUSED(bus)
+
+    switch (GST_MESSAGE_TYPE (message)) {
+        case GST_MESSAGE_ERROR:
+            qDebug().noquote() << global::nameOutput << "GST_MESSAGE_ERROR";
+            break;
+        case GST_MESSAGE_EOS:
+            qDebug().noquote() << global::nameOutput;
+            break;
+        case GST_MESSAGE_DURATION_CHANGED:
+            break;
+        case GST_MESSAGE_STEP_DONE:
+            qDebug().noquote() << global::nameOutput << "MESSAGE_STEP_DONE";
+            break;
+        case GST_MESSAGE_TAG:
+            break;
+        case GST_MESSAGE_STATE_CHANGED:
+            {
+               //qDebug().noquote() << global::nameOutput << "11111111111111111111111111111111";
+            }
+            break;
+        case GST_MESSAGE_STREAM_START:
+            //qDebug().noquote() << global::nameOutput << "2222222222222222222222222222222222";
+            break;
+        case GST_MESSAGE_APPLICATION:
+            {
+                break;
+            }
+        default:
+            break;
+    }
 
     if ( message->type == GST_MESSAGE_ELEMENT ) {
         const GstStructure *s = gst_message_get_structure( message );
@@ -76,11 +107,13 @@ gboolean QvkAudioPipewireLevelMeter_wl::message_handler(GstBus *bus, GstMessage 
                     QLineEdit *lineEdit = global::listChildren->at(x);
                     if (lineEdit->objectName().section("_", 1, 1) == QString::number((qint64)index)){
                         lineEdit->setText( QString::number(rms) );
-                        // Zum testen beibehalten
-                        //if ( QString::number((qint64)index) == "65"){
-                        //    printf( "%s  %f \n", QString::number((qint64)index).toLatin1().data(), rms );
-                        //    fflush(stdout); // This will flush any pending printf output
-                        //}
+                        QTime current = QTime::currentTime();
+                        QString currentTime = current.toString();
+                        printf("%s %s  %f \n",
+                               currentTime.toLatin1().data(),
+                               QString::number((qint64)index).toLatin1().data(),
+                               rms);
+                        fflush(stdout);
                         break;
                     }
                 }
@@ -131,6 +164,7 @@ void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname, QStr
 
     // make sure we'll get messages
     g_object_set( G_OBJECT( level ), "post-messages", TRUE, NULL );
+
     // run synced and not as fast as we can
     g_object_set( G_OBJECT( fakesink ), "sync", TRUE, NULL );
 
@@ -143,13 +177,48 @@ void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname, QStr
     gint64 msg = index.toInt();
     gst_bus_set_sync_handler( bus, (GstBusSyncHandler)message_handler, (gpointer)msg, NULL );
     gst_object_unref(bus);
-    gst_element_set_state( pipeline, GST_STATE_PLAYING );
+
+    //gst_element_set_state( pipeline, GST_STATE_PLAYING );
+    GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
+    if ( ret == GST_STATE_CHANGE_FAILURE ){
+        qDebug().noquote()
+                << global::nameOutput
+                << "Start was clicked"
+                << "GST_STATE_CHANGE_FAILURE"
+                << "Returncode ="
+                << ret;
+    } // 0
+    if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
+    if ( ret == GST_STATE_CHANGE_ASYNC )     { qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_ASYNC"   << "Returncode =" << ret;   } // 2
+    if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
+    if ( ret == GST_STATE_CHANGE_FAILURE )   {
+        qDebug().noquote() << global::name << "Unable to set the pipeline to the playing state.";
+        gst_object_unref( pipeline );
+        return;
+    }
+
     qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter] Start" << deviceID;
 }
 
 
 void QvkAudioPipewireLevelMeter_wl::stop()
 {
-    gst_element_set_state( pipeline, GST_STATE_NULL );
-    qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter] Stop" << m_deviceID;
+    qDebug().noquote() << global::nameOutput << "[Audio][levelmeter]" << m_deviceID << "Stop is clicked";
+    GstState state; GstState pending;
+    gst_element_get_state(pipeline, &state, &pending, NULL);//GST_CLOCK_TIME_NONE);
+    if (state == GST_STATE_PLAYING){
+        qDebug().noquote() << global::nameOutput << "[Audio][levelmeter]" << m_deviceID << "State is PLAYING";
+        qDebug().noquote() << global::nameOutput << "[Audio][levelmeter]" << m_deviceID << "State wants to switch to NULL";
+        gst_element_set_state(pipeline, GST_STATE_NULL);
+        gst_element_get_state(pipeline, &state, &pending, GST_CLOCK_TIME_NONE);
+        if (state == GST_STATE_NULL){
+            qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter]" << m_deviceID << "State is NULL";
+            qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter]" << m_deviceID << "Stop";
+            //gst_object_unref(pipeline);
+        }
+    }
+    if (state == GST_STATE_PAUSED){
+        qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter]" << m_deviceID << "State is PAUSE";
+        gst_element_set_state(pipeline, GST_STATE_NULL);
+    }
 }
