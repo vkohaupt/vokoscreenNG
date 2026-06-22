@@ -178,24 +178,16 @@ void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname, QStr
     gst_bus_set_sync_handler( bus, (GstBusSyncHandler)message_handler, (gpointer)msg, NULL );
     gst_object_unref(bus);
 
-    //gst_element_set_state( pipeline, GST_STATE_PLAYING );
     GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
-    if ( ret == GST_STATE_CHANGE_FAILURE ){
-        qDebug().noquote()
-                << global::nameOutput
-                << "Start was clicked"
-                << "GST_STATE_CHANGE_FAILURE"
-                << "Returncode ="
-                << ret;
+    if (ret == GST_STATE_CHANGE_FAILURE){
+        QString value = "[Audio][levelmeter] GST_STATE_CHANGE_FAILURE Returncode =" + ret;
+        qDebug().noquote() << global::nameOutput << value;
+        gst_object_unref( pipeline );
+        return;
     } // 0
     if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
     if ( ret == GST_STATE_CHANGE_ASYNC )     { qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_ASYNC"   << "Returncode =" << ret;   } // 2
     if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
-    if ( ret == GST_STATE_CHANGE_FAILURE )   {
-        qDebug().noquote() << global::name << "Unable to set the pipeline to the playing state.";
-        gst_object_unref( pipeline );
-        return;
-    }
 
     qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter] Start" << deviceID;
 }
@@ -205,16 +197,15 @@ void QvkAudioPipewireLevelMeter_wl::stop()
 {
     qDebug().noquote() << global::nameOutput << "[Audio][levelmeter]" << m_deviceID << "Stop is clicked";
     GstState state; GstState pending;
-    gst_element_get_state(pipeline, &state, &pending, NULL);//GST_CLOCK_TIME_NONE);
+    gst_element_get_state(pipeline, &state, &pending, 1000000000);// 1 Millionen Nanosekunden sind eine Sekunde
     if (state == GST_STATE_PLAYING){
         qDebug().noquote() << global::nameOutput << "[Audio][levelmeter]" << m_deviceID << "State is PLAYING";
         qDebug().noquote() << global::nameOutput << "[Audio][levelmeter]" << m_deviceID << "State wants to switch to NULL";
         gst_element_set_state(pipeline, GST_STATE_NULL);
-        gst_element_get_state(pipeline, &state, &pending, GST_CLOCK_TIME_NONE);
+        gst_element_get_state(pipeline, &state, &pending, 1000000000);
         if (state == GST_STATE_NULL){
             qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter]" << m_deviceID << "State is NULL";
             qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter]" << m_deviceID << "Stop";
-            //gst_object_unref(pipeline);
         }
     }
     if (state == GST_STATE_PAUSED){
