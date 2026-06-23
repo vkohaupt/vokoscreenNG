@@ -42,10 +42,6 @@
 #include <QFileInfo>
 // Snapshot
 
-// Audio
-#include <pulse/pulseaudio.h>
-// Audio
-
 QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     : QMainWindow(parent, f)
     , ui(new Ui::formMainWindow_wl)
@@ -420,7 +416,6 @@ void QvkMainWindow_wl::get_system_info()
     qDebug().noquote() << global::nameOutput << "Country:" << QLocale::territoryToString( locale.territory() );
     qDebug().noquote() << global::nameOutput << "Qt:" << qVersion();
     qDebug().noquote() << global::nameOutput << gst_version_string();
-    qDebug().noquote() << global::nameOutput << "PulseAudio library version:" << pa_get_library_version();
     if ( QSysInfo::prettyProductName().contains( "Flatpak" ) ) {
         isFlatpak = true;
     }
@@ -1223,7 +1218,6 @@ void QvkMainWindow_wl::set_check_screencast_elements_available()
     list << "videorate";
     list << "queue";
     list << "h264parse";
-    list << "pulsesrc";
     list << "audioconvert";
     list << "audiorate";
     list << "audioresample";
