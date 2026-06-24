@@ -50,7 +50,7 @@ void QvkAudioPipewireSingle_wl::init(QString string)
 
     ui->checkBoxAudioDevice->setAccessibleName(string);
     // Hier wird das device mit "--" benötigt wegen Settings
-    ui->checkBoxAudioDevice->setObjectName("checkBoxAudioDevice--" + device);
+    ui->checkBoxAudioDevice->setObjectName(ui->checkBoxAudioDevice->objectName() + "--" + device);
     ui->checkBoxAudioDevice->setToolTip(tr("Select one or more devices"));
     ui->checkBoxAudioDevice->setText("");
     ui->checkBoxAudioDevice->setToolTip("ID: " + deviceID + " \n" + "Device: " + device);
