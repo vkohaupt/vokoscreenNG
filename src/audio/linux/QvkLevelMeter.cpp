@@ -65,7 +65,7 @@ static gboolean message_handler( GstBus * bus, GstMessage * message, gpointer da
             channels = rms_arr->n_values;
 
             for ( gint i = 0; i < channels; ++i ) {
-                value = g_value_array_get_nth( rms_arr, i );
+                value = rms_arr->values + i;
                 rms_dB = g_value_get_double( value );
 
                 // converting from dB to normal gives us a value between 0.0 and 1.0
