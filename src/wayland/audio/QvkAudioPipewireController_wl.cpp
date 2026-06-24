@@ -92,6 +92,11 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
 
     QvkAudioPipewireSingle_wl *vkAudioPipewireSingle_wl;
     if ( action == "[Audio-device-added]" ) {
+        qDebug().noquote() << global::nameOutput << "[Audio][Controller]"
+                           << deviceID
+                           << "Added:"
+                           << description
+                           << device;
         vkAudioPipewireSingle_wl = new QvkAudioPipewireSingle_wl();
         vkAudioPipewireSingle_wl->set_GUIui(ui);
         vkAudioPipewireSingle_wl->setObjectName("AudioPipewireSingle__" + deviceID  );
@@ -115,8 +120,6 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
             ui->checkBoxSeparatedAudioTracks->setEnabled(value);
             ui->toolButtonSeparatedAudioTracksReset->setEnabled(value);
         });
-
-        qDebug().noquote() << global::nameOutput << "[Audio][device added]" << description << device;
     }
 
     if ( action == "[Audio-device-removed]" ) {

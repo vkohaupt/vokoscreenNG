@@ -156,13 +156,21 @@ void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname, QStr
 
     GstStateChangeReturn ret = gst_element_set_state( pipeline, GST_STATE_PLAYING );
     if (ret == GST_STATE_CHANGE_FAILURE){
-        QString value = "[Audio][levelmeter] GST_STATE_CHANGE_FAILURE Returncode =" + ret;
-        qDebug().noquote() << global::nameOutput << value;
+        qDebug().noquote() << global::nameOutput
+                           << "[Audio][levelmeter]"
+                           << deviceID
+                           << "GST_STATE_CHANGE_FAILURE Returncode ="
+                           << ret;
         gst_object_unref( pipeline );
         return;
     } // 0
-    if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
-
+    if (ret == GST_STATE_CHANGE_SUCCESS){
+        qDebug().noquote() << global::nameOutput
+                           << "[Audio][LevelMeter]"
+                           << deviceID
+                           << "GST_STATE_CHANGE_SUCCESS Returncode ="
+                           << ret;
+    } // 1
     if (ret == GST_STATE_CHANGE_ASYNC){
         qDebug().noquote() << global::nameOutput
                            << "[Audio][LevelMeter]"
@@ -170,9 +178,15 @@ void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname, QStr
                            << "Start GST_STATE_CHANGE_ASYNC Returncode ="
                            << ret;
     } // 2
-    if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
+    if (ret == GST_STATE_CHANGE_NO_PREROLL){
+        qDebug().noquote() << global::nameOutput
+                           << "[Audio][LevelMeter]"
+                           << deviceID
+                           << "GST_STATE_CHANGE_NO_PREROLL Returncode ="
+                           << ret;
+    }// 3
+    qDebug().noquote();
 
-    qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter]" << deviceID << "Start";
 }
 
 
