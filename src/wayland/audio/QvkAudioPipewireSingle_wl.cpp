@@ -103,7 +103,7 @@ void QvkAudioPipewireSingle_wl::init(QString string)
 
     vkAudioPipewireLevelMeter_wl = new QvkAudioPipewireLevelMeter_wl;
     // Für den dritten Parameter wird ebenfalls die deviceID genommen da diese eindeutig ist.
-//    vkAudioPipewireLevelMeter_wl->start(deviceID, "Levelmeter", deviceID);
+    vkAudioPipewireLevelMeter_wl->start(deviceID, "Levelmeter", deviceID);
 
     QvkSettings_wl vkSettings_wl;
     bool bo = vkSettings_wl.readAudioDevice(ui->checkBoxAudioDevice->objectName());

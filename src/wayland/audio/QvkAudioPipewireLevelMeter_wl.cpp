@@ -46,37 +46,12 @@ QvkAudioPipewireLevelMeter_wl::~QvkAudioPipewireLevelMeter_wl()
 gboolean QvkAudioPipewireLevelMeter_wl::message_handler(GstBus *bus, GstMessage *message, gpointer index)
 {
     Q_UNUSED(bus)
-
-    switch (GST_MESSAGE_TYPE (message)) {
-        case GST_MESSAGE_ERROR:
-            qDebug().noquote() << global::nameOutput << "GST_MESSAGE_ERROR";
-            break;
-        case GST_MESSAGE_EOS:
-            qDebug().noquote() << global::nameOutput;
-            break;
-        case GST_MESSAGE_DURATION_CHANGED:
-            break;
-        case GST_MESSAGE_STEP_DONE:
-            qDebug().noquote() << global::nameOutput << "MESSAGE_STEP_DONE";
-            break;
-        case GST_MESSAGE_TAG:
-            break;
-        case GST_MESSAGE_STATE_CHANGED:
-            {
-               //qDebug().noquote() << global::nameOutput << "11111111111111111111111111111111";
-            }
-            break;
-        case GST_MESSAGE_STREAM_START:
-            //qDebug().noquote() << global::nameOutput << "2222222222222222222222222222222222";
-            break;
-        case GST_MESSAGE_APPLICATION:
-            {
-                break;
-            }
-        default:
-            break;
-    }
-
+    // Dies wird zum testen benötigt
+/*
+    // https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html?gi-language=c
+    printf("-------------------------%i\n", message->type);
+    fflush(stdout);
+*/
     if ( message->type == GST_MESSAGE_ELEMENT ) {
         const GstStructure *s = gst_message_get_structure( message );
         const gchar *name = gst_structure_get_name( s );
@@ -107,13 +82,14 @@ gboolean QvkAudioPipewireLevelMeter_wl::message_handler(GstBus *bus, GstMessage 
                     QLineEdit *lineEdit = global::listChildren->at(x);
                     if (lineEdit->objectName().section("_", 1, 1) == QString::number((qint64)index)){
                         lineEdit->setText( QString::number(rms) );
-                        QTime current = QTime::currentTime();
+                        // Dies wird zum testen benötigt
+                        /*QTime current = QTime::currentTime();
                         QString currentTime = current.toString();
                         printf("%s %s  %f \n",
                                currentTime.toLatin1().data(),
                                QString::number((qint64)index).toLatin1().data(),
                                rms);
-                        fflush(stdout);
+                        fflush(stdout);*/
                         break;
                     }
                 }

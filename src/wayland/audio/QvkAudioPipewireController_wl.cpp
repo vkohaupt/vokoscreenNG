@@ -89,11 +89,7 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
         qDebug().noquote() << global::nameOutput << "[Audio] DeviceID is empty -> return";
         return;
     }
-/*
-    if ((deviceID == "496") ){//or (deviceID == "747")){
-    } else
-        return;
-*/
+
     QvkAudioPipewireSingle_wl *vkAudioPipewireSingle_wl;
     if ( action == "[Audio-device-added]" ) {
         vkAudioPipewireSingle_wl = new QvkAudioPipewireSingle_wl();
@@ -128,8 +124,6 @@ void QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
         for ( int i = 0; i < listQvkAudioPipewireSingle_wl.count(); i++ ) {
             QvkAudioPipewireSingle_wl *vkAudioPipewireSingle_wl = listQvkAudioPipewireSingle_wl.at(i);
             if ( vkAudioPipewireSingle_wl->objectName().section("__", 1, 1) == deviceID ) {
-                vkAudioPipewireSingle_wl->vkAudioPipewireLevelMeter_wl->stop();
-                ui->verticalLayoutAudioDevices->removeWidget(vkAudioPipewireSingle_wl);
                 vkAudioPipewireSingle_wl->vkAudioPipewireLevelMeter_wl->deleteLater();
                 vkAudioPipewireSingle_wl->deleteLater();
 
