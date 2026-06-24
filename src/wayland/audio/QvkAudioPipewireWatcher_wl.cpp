@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2026 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -61,11 +61,11 @@ GstBusSyncReply QvkAudioPipewireWatcher_wl::my_AudioPipewire_func(GstBus *bus, G
             QString action = "[Audio-device-added]";
             QString device = QString( gst_structure_get_string( structure, "node.name" ) );
             global::lineEditAudioPipewireWatcher_wl->setText( deviceID + ":::" +
-                                                      description + ":::" +
-                                                      type + ":::" +
-                                                      api + ":::" +
-                                                      action + ":::" +
-                                                      device );
+                                                              description + ":::" +
+                                                              type + ":::" +
+                                                              api + ":::" +
+                                                              action + ":::" +
+                                                              device );
         }
         gst_structure_free( structure );
         gst_object_unref( gstDevice );
@@ -89,11 +89,11 @@ GstBusSyncReply QvkAudioPipewireWatcher_wl::my_AudioPipewire_func(GstBus *bus, G
         QString action = "[Audio-device-removed]";
         QString device = QString( gst_structure_get_string( structure, "node.name" ) );
         global::lineEditAudioPipewireWatcher_wl->setText( deviceID + ":::" +
-                                                  description + ":::" +
-                                                  type + ":::" +
-                                                  api + ":::" +
-                                                  action + ":::" +
-                                                  device );
+                                                          description + ":::" +
+                                                          type + ":::" +
+                                                          api + ":::" +
+                                                          action + ":::" +
+                                                          device );
         gst_structure_free( structure );
         gst_object_unref( gstDevice );
         break;
