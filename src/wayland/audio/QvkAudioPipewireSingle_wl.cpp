@@ -73,11 +73,11 @@ void QvkAudioPipewireSingle_wl::init(QString string)
              this,
              [=](bool value){
         if ( value == true ){
-            vkAudioPipewireLevelMeter_wl->stop();
-            ui->progressBarAudioDevice->setValue(0);
+            vkAudioPipewireLevelMeter_wl->start(deviceID, "Levelmeter", deviceID);
         }
         if ( value == false ){
-            vkAudioPipewireLevelMeter_wl->start(deviceID, "Levelmeter", deviceID);
+            vkAudioPipewireLevelMeter_wl->stop();
+            ui->progressBarAudioDevice->setValue(0);
         }}
     );
 

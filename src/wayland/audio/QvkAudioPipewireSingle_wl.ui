@@ -102,14 +102,16 @@
        </property>
        <property name="icon">
         <iconset resource="../../screencast.qrc">
-         <normaloff>:/pictures/screencast/accept.png</normaloff>
-         <normalon>:/pictures/screencast/missing.png</normalon>
-         <selectedoff>:/pictures/screencast/missing.png</selectedoff>:/pictures/screencast/accept.png</iconset>
+         <normaloff>:/pictures/screencast/missing.png</normaloff>
+         <normalon>:/pictures/screencast/accept.png</normalon>:/pictures/screencast/missing.png</iconset>
        </property>
        <property name="shortcut">
         <string notr="true"/>
        </property>
        <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="checked">
         <bool>true</bool>
        </property>
       </widget>
