@@ -66,9 +66,9 @@ void QvkAudioPipewireSingle_wl::init(QString string)
     ui->progressBarAudioDevice->setValue(0);
     ui->progressBarAudioDevice->setToolTip("ID: " + deviceID + " \n" + "Device: " + device);
 
-    ui->toolButtonAudioDevice->setObjectName(ui->toolButtonAudioDevice->objectName() + "_" + deviceID);
-    ui->toolButtonAudioDevice->setToolTip(ui->toolButtonAudioDevice->objectName());
-    connect( ui->toolButtonAudioDevice,
+    ui->toolButtonAudioLevelmeter->setObjectName(ui->toolButtonAudioLevelmeter->objectName() + "--" + device);
+    ui->toolButtonAudioLevelmeter->setToolTip(ui->toolButtonAudioLevelmeter->objectName());
+    connect( ui->toolButtonAudioLevelmeter,
              &QToolButton::clicked,
              this,
              [=](bool value){
