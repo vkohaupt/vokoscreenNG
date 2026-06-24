@@ -31,6 +31,6 @@ namespace global
     QString nameOutput = "[" + name + "]";
     int showclickCounter = 0;
     QLineEdit *lineEditWASAPIWatcher;
-    QLineEdit *lineEditPipewireWatcher;
+    QLineEdit *lineEditAudioPipewireWatcher_wl;
     QList<QLineEdit*> *listChildren;
 }

@@ -60,7 +60,7 @@ GstBusSyncReply QvkAudioPipewireWatcher_wl::my_AudioPipewire_func(GstBus *bus, G
             }
             QString action = "[Audio-device-added]";
             QString device = QString( gst_structure_get_string( structure, "node.name" ) );
-            global::lineEditPipewireWatcher->setText( deviceID + ":::" +
+            global::lineEditAudioPipewireWatcher_wl->setText( deviceID + ":::" +
                                                       description + ":::" +
                                                       type + ":::" +
                                                       api + ":::" +
@@ -88,7 +88,7 @@ GstBusSyncReply QvkAudioPipewireWatcher_wl::my_AudioPipewire_func(GstBus *bus, G
         QString api = QString( gst_structure_get_string( structure, "device.api" ) );
         QString action = "[Audio-device-removed]";
         QString device = QString( gst_structure_get_string( structure, "node.name" ) );
-        global::lineEditPipewireWatcher->setText( deviceID + ":::" +
+        global::lineEditAudioPipewireWatcher_wl->setText( deviceID + ":::" +
                                                   description + ":::" +
                                                   type + ":::" +
                                                   api + ":::" +

@@ -43,8 +43,8 @@ QvkAudioPipewireController_wl::QvkAudioPipewireController_wl(Ui_formMainWindow_w
     global::listChildren = new QList<QLineEdit*>();
 
     ui->verticalLayoutAudioDevices->setAlignment( Qt::AlignLeft | Qt::AlignTop );
-    global::lineEditPipewireWatcher = new QLineEdit;
-    connect(global::lineEditPipewireWatcher,
+    global::lineEditAudioPipewireWatcher_wl = new QLineEdit;
+    connect(global::lineEditAudioPipewireWatcher_wl,
             &QLineEdit::textChanged,
             this,
             [=](QString value){
