@@ -162,10 +162,17 @@ void QvkAudioPipewireLevelMeter_wl::start(QString deviceID, QString myname, QStr
         return;
     } // 0
     if ( ret == GST_STATE_CHANGE_SUCCESS )   { qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_SUCCESS" << "Returncode =" << ret;   } // 1
-    if ( ret == GST_STATE_CHANGE_ASYNC )     { qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_ASYNC"   << "Returncode =" << ret;   } // 2
+
+    if (ret == GST_STATE_CHANGE_ASYNC){
+        qDebug().noquote() << global::nameOutput
+                           << "[Audio][LevelMeter]"
+                           << deviceID
+                           << "Start GST_STATE_CHANGE_ASYNC Returncode ="
+                           << ret;
+    } // 2
     if ( ret == GST_STATE_CHANGE_NO_PREROLL ){ qDebug().noquote() << global::nameOutput << "Start was clicked" << "GST_STATE_CHANGE_NO_PREROLL" << "Returncode =" << ret; }// 3
 
-    qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter] Start" << deviceID;
+    qDebug().noquote() << global::nameOutput << "[Audio][LevelMeter]" << deviceID << "Start";
 }
 
 
