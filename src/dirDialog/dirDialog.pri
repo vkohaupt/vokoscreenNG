@@ -1,7 +1,7 @@
 INCLUDEPATH += $$PWD
 DEPENDPATH  += $$PWD
-HEADERS     += $$PWD/qvkdirdialog.h
+HEADERS     += $$PWD/QvkDirDialog.h
                
-SOURCES     += $$PWD/qvkdirdialog.cpp
+SOURCES     += $$PWD/QvkDirDialog.cpp
                
-FORMS       += $$PWD/qvkdirdialog.ui
+FORMS       += $$PWD/QvkDirDialog.ui

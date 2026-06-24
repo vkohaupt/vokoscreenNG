@@ -43,7 +43,7 @@
 #include "QvkInformation.h"
 #include "global.h"
 #include "QvkImageFromTabs.h"
-#include "qvkdirdialog.h"
+#include "QvkDirDialog.h"
 #include "QvkVirtual.h"
 #include "QvkSnapshot.h"
 #include "QvkPadsAndCaps.h"

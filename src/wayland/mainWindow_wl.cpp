@@ -6,7 +6,7 @@
 #include "QvkAudioPipewireController_wl.h"
 
 #include "global.h"
-#include "qvkdirdialog.h"
+#include "QvkDirDialog.h"
 #include "QvkFileDialog.h"
 
 #include <QStringList>

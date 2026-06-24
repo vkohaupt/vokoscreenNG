@@ -32,7 +32,7 @@
 #include "global.h"
 #include "QvkSnapshot.h"
 #include "QvkSpezialSlider.h"
-#include "qvkdirdialog.h"
+#include "QvkDirDialog.h"
 #include "QvkShowMessage.h"
 
 QvkSnapshot::QvkSnapshot( QvkMainWindow *myParent )

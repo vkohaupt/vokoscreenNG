@@ -1,5 +1,5 @@
-#include "qvkdirdialog.h"
-#include "ui_qvkdirdialog.h"
+#include "QvkDirDialog.h"
+#include "ui_QvkDirDialog.h"
 
 #include <QDebug>
 #include <QWidget>
