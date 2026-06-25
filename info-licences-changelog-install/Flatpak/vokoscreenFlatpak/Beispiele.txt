@@ -2,16 +2,24 @@
 flatpak info --show-permissions com.github.vkohaupt.vokoscreenNG
 
 
+# Rechte zurücksetzen die explizit gesetzt wurden
+flatpak override --reset com.github.vkohaupt.vokoscreenNG
+
+
 # Startet Programm aus branch stable oder master
 flatpak run --branch=stable com.github.vkohaupt.vokoscreenNG
 flatpak run --branch=master com.github.vkohaupt.vokoscreenNG
 
 
-flatpak uninstall com.github.vkohaupt.vokoscreenNG
 # Wenn zwei Versionen installiert sind wird abgefragt welche gelöscht werden soll
+flatpak uninstall com.github.vkohaupt.vokoscreenNG
 
 
-# Löscht Profile von gelöschten Programme
+# Löscht Profile und Programm
+flatpak uninstall --delete-data com.github.vkohaupt.vokoscreenNG
+
+
+# Löscht ungenutzte Laufzeitumgebungen
 flatpak uninstall --unused --delete-data
 
 
