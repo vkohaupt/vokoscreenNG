@@ -15,11 +15,11 @@ flatpak run --branch=master com.github.vkohaupt.vokoscreenNG
 flatpak uninstall com.github.vkohaupt.vokoscreenNG
 
 
-# Löscht Profile und Programm
+# Löscht Profil und Programm
 flatpak uninstall --delete-data com.github.vkohaupt.vokoscreenNG
 
 
-# Löscht ungenutzte Laufzeitumgebungen
+# Löscht ungenutzte Laufzeitumgebungen und Profile
 flatpak uninstall --unused --delete-data
 
 
@@ -28,8 +28,8 @@ flatpak list --app --columns=application,runtime
 
 
 # Unterstützung mit pkg-config auflisten
-flatpak run org.freedesktop.Sdk//23.08
-pkg-config --list-all
+1. flatpak run org.freedesktop.Sdk//23.08
+2. pkg-config --list-all
 
 
 flatpak run org.kde.Sdk//6.6
