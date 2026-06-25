@@ -1,3 +1,7 @@
+# Rechte auflisten
+flatpak info --show-permissions com.github.vkohaupt.vokoscreenNG
+
+
 # Startet Programm aus branch stable oder master
 flatpak run --branch=stable com.github.vkohaupt.vokoscreenNG
 flatpak run --branch=master com.github.vkohaupt.vokoscreenNG
