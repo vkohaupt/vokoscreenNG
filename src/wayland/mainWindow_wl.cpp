@@ -130,6 +130,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->help_screencast_nomousecursor->hide();
     ui->help_screencast_format->hide();
     ui->help_screencast_videocodec->hide();
+    ui->help_screencast_countdown->hide();
     ui->frame_cisco->hide();
     ui->line_cisco->hide();
     ui->label_Upate_tab_2->hide();
