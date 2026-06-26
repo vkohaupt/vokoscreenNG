@@ -43,7 +43,7 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
   https://aka.ms/vs/16/release/vc_redist.x86.exe  
   
   Qt Online Installer https://www.qt.io/download-thank-you?os=windows
-    - Qt 6.6.0  
+    - Qt 6.10.0  
       [+] MinGW 11.2.0 64-bit  
       [+] Qt Network Authorization  
     - Developer and Designer Tools  
@@ -53,8 +53,7 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
     - openSSL 1.1.1 Toolkit  
       [+] openssl 64-bit binaries  
       
-  https://gstreamer.freedesktop.org/data/pkg/windows/1.22.5/mingw/gstreamer-1.0-mingw-x86_64-1.22.5.msi  
-  https://gstreamer.freedesktop.org/data/pkg/windows/1.22.5/mingw/gstreamer-1.0-devel-mingw-x86_64-1.22.5.msi  
+  https://gstreamer.freedesktop.org/data/pkg/windows/1.28.1/msvc/gstreamer-1.0-msvc-x86_64-1.28.1.exe
 
 ### Environment
 * No additional entries 
