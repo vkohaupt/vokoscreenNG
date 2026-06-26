@@ -39,17 +39,17 @@ The License-header can be found here: https://github.com/vkohaupt/vokoscreenNG/b
 ### BuildRequires
 - Required from version >= 4.10.0
 
-  The Qt installer needs the 32 bit version of vc_redist.x86.exe  **obsolete**
-  https://aka.ms/vs/16/release/vc_redist.x86.exe  **obsolete**
+  The Qt installer needs the 32 bit version of vc_redist.x86.exe  **obsolete**__
+  https://aka.ms/vs/16/release/vc_redist.x86.exe  **obsolete**__
   
   Qt Online Installer https://www.qt.io/download-thank-you?os=windows
     - Qt 6.10.0  
-      [+] MinGW 11.2.0 64-bit  **obsolete**
+      [+] MinGW 11.2.0 64-bit  **obsolete**__
       [+] Qt Network Authorization  
     - Developer and Designer Tools  
       [+] Qt Creator 12.0.1 CDB Debugger Support
       [+] Debugging Tools for Windows  
-      [+] MinGW 11.2.0 64-bit  **obsolete**
+      [+] MinGW 11.2.0 64-bit  **obsolete**__
     - openSSL 1.1.1 Toolkit  
       [+] openssl 64-bit binaries  
       
