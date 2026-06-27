@@ -1,6 +1,6 @@
 /* vokoscreenNG - A desktop recorder
  * Copyright (C) 2017-2022 Volker Kohaupt
- * 
+ *
  * Author:
  *      Volker Kohaupt <vkohaupt@volkoh.de>
  *
@@ -35,6 +35,7 @@
 #include <QStringList>
 #include <QIcon>
 #include <QFileInfo>
+#include <QVersionNumber>
 
 
 QvkInformation::QvkInformation( QvkMainWindow *vkMainWindow,
@@ -137,7 +138,14 @@ void QvkInformation::slot_Frames( int value )
 void QvkInformation::slot_newVersionAvailable( QString update )
 {
     if ( ui->checkBoxLookForUpdates->isChecked() == true ) {
-        if ( global::version < update ) {
+        QVersionNumber versionLocal(global::version.section(".",0,0).toInt(),
+                                    global::version.section(".",1,1).toInt(),
+                                    global::version.section(".",2,2).toInt());
+        QVersionNumber versionRemote(update.section(".",0,0).toInt(),
+                                     update.section(".",1,1).toInt(),
+                                     update.section(".",2,2).toInt());
+
+        if (versionLocal < versionRemote){
             QString string = "New Version available: " + update;
             ui->label_Upate_tab_1->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-download.html'>" + string + "</a>" );
             ui->label_Upate_tab_4->setText( "<a href='https://linuxecke.volkoh.de/vokoscreen/vokoscreen-download.html'>" + string + "</a>" );
@@ -217,14 +225,14 @@ void QvkInformation::slot_StorageInfo()
 void QvkInformation::slot_displayRecordTime()
 {
 
-   if ( ( ui->pushButtonStop->isEnabled() == true ) and ( ui->checkBoxStartTime->checkState() == Qt::Checked ) ) {
-       QTime time( 0, 0, 0, 0 );
-       ui->labelInfoRecordTime->setText( time.addMSecs( elapsedTime->elapsed() + int_summed ).toString( "hh:mm:ss" ) );
-       return;
-   }
+    if ( ( ui->pushButtonStop->isEnabled() == true ) and ( ui->checkBoxStartTime->checkState() == Qt::Checked ) ) {
+        QTime time( 0, 0, 0, 0 );
+        ui->labelInfoRecordTime->setText( time.addMSecs( elapsedTime->elapsed() + int_summed ).toString( "hh:mm:ss" ) );
+        return;
+    }
 
-   if ( ui->pushButtonStop->isEnabled() == true ) {
-      QTime time( 0, 0, 0, 0 );
-      ui->labelInfoRecordTime->setText( time.addMSecs( elapsedTime->elapsed() + int_summed - sliderCountDown->value()*1000 - sliderSecondWaitBeforeRecording->value()*1000 ).toString( "hh:mm:ss" ) );
-   }
+    if ( ui->pushButtonStop->isEnabled() == true ) {
+        QTime time( 0, 0, 0, 0 );
+        ui->labelInfoRecordTime->setText( time.addMSecs( elapsedTime->elapsed() + int_summed - sliderCountDown->value()*1000 - sliderSecondWaitBeforeRecording->value()*1000 ).toString( "hh:mm:ss" ) );
+    }
 }
