@@ -1,11 +1,14 @@
-app-id: com.github.vkohaupt.vokoscreenNG
+id: com.github.vkohaupt.vokoscreenNG
 runtime: org.kde.Platform
 runtime-version: 6.10
 sdk: org.kde.Sdk
+base: io.qt.qtwebengine.BaseApp
+base-version: '6.10'
 command: vokoscreenNG
 rename-desktop-file: vokoscreenNG.desktop
 rename-appdata-file: vokoscreenNG.appdata.xml
 rename-icon: vokoscreenNG
+
 finish-args:
   - --device=all
   - --share=ipc
@@ -17,40 +20,48 @@ finish-args:
   - --talk-name=org.kde.StatusNotifierWatcher
   - --talk-name=org.freedesktop.Flatpak
   - --filesystem=xdg-run/pipewire-0
+  - --env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess
 
 modules:
 #   gstreamer-plugins-good wird benötigt da in GStreamer 1.26.10 ximagesrc nicht vorhanden ist
-  - name: gstreamer-plugins-good
-    buildsystem: meson
-    sources:
-      - type: archive
-        url: https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.26.10.tar.xz
-        sha256: 7beacb5daba3c6751ebc1c85017d9b1d6de64e24798125932c73c8b1dbeb3bc9
+#  - name: gstreamer-plugins-good
+#    buildsystem: meson
+#    sources:
+#      - type: archive
+#        url: https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.26.10.tar.xz
+#        sha256: 7beacb5daba3c6751ebc1c85017d9b1d6de64e24798125932c73c8b1dbeb3bc9
 
 #   Für das kompilieren von gstreamer-plugins-bad wird als runtime der openh264 codec benötigt
-  - name: openh264
-    buildsystem: meson
-    sources:
-      - type: git
-        url: https://github.com/cisco/openh264.git
-        tag: v2.6.0
-        commit: 652bdb7719f30b52b08e506645a7322ff1b2cc6f
-        x-checker-data:
-          type: git
-          tag-pattern: ^([\d.]+)$
+#  - name: openh264
+#    buildsystem: meson
+#    sources:
+#      - type: git
+#        url: https://github.com/cisco/openh264.git
+#        tag: v2.6.0
+#        commit: 652bdb7719f30b52b08e506645a7322ff1b2cc6f
+#        x-checker-data:
+#          type: git
+#          tag-pattern: ^([\d.]+)$
 #        branch: v2.6.0
 
 #   gstreamer-plugins-bad beinhaltet openh264enc
-  - name: gstreamer-plugins-bad
-    buildsystem: meson
-    sources:
-      - type: archive
-        url: https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.26.10.tar.xz
-        sha256: fec973dff512b507d9dcb5a828e04e061e52188f4d5989e953aed6a41beda437
+#  - name: gstreamer-plugins-bad
+#    buildsystem: meson
+#    sources:
+#      - type: archive
+#        url: https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.26.10.tar.xz
+#        sha256: fec973dff512b507d9dcb5a828e04e061e52188f4d5989e953aed6a41beda437
 
   - name: vokoscreenNG
     buildsystem: qmake
     subdir: src
+    build-options:
+      env:
+        QMAKEPATH: /app # WICHTIG: qmake Basis-Pfad setzen
+    config-opts:
+      - QMAKE_INCDIR+=/app/include/QtWebEngine # Header-Pfade hinzufügen
+      - QMAKE_INCDIR+=/app/include/QtWebEngineCore
+      - QMAKE_INCDIR+=/app/include/QtWebEngineWidgets
     post-install:
       - install -Dm755 vokoscreenNG ${FLATPAK_DEST}/bin/vokoscreenNG
       - install -Dm644 applications/vokoscreenNG.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/vokoscreenNG.png
