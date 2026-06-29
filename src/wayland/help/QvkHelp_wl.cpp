@@ -95,7 +95,7 @@ QvkHelp_wl::QvkHelp_wl( Ui_formMainWindow_wl *ui_mainwindow ) : uiHelp(new(Ui::h
     for ( int i = 0; i < listToolButton.count(); i++ ) {
         QToolButton *toolButton = listToolButton.at(i);
         if ( toolButton->objectName().startsWith( "help_") ) {
-            toolButton->setIcon( iconHelp );
+            //toolButton->setIcon( iconHelp );
             //toolButton->installEventFilter( this );
         }
     }

@@ -30,6 +30,10 @@ private:
     QString fileName;
     QUrl url;
 
+
+protected:
+    bool eventFilter(QObject *object, QEvent *ev) override;
+
 };
 
 #endif // QVKHELPBROWSER_WL_H

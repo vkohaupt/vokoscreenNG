@@ -6,6 +6,21 @@
 #include <QUrl>
 #include <QDialogButtonBox>
 
+/*
+ * The remote HTML-file and the toolbutton have the same name.
+ *
+ * Example:
+ * QToolbutton -> help_screencast_fullscreen
+ * Remote file -> help_screencast_fullscreen.html
+ *
+ * We write as snake_case, so the underline character is the separator.
+ * The first section is help, this we need for set for icon and installEventFilter, see constructor.
+ * The second section is the tab in the sidebar and the subdir on remote.
+ * The third section is the name from the function that we want help.
+ * See also QvkHelpBrowser_wl::eventFilter(QObject *object, QEvent *event)
+ * and void QvkHelpBrowser_wl::init()
+ */
+
 QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::QvkHelpBrowser_wl)
@@ -35,6 +50,26 @@ QvkHelpBrowser_wl::~QvkHelpBrowser_wl()
 }
 
 
+bool QvkHelpBrowser_wl::eventFilter(QObject *object, QEvent *event)
+{
+    QToolButton *toolButton = qobject_cast<QToolButton *>(object);
+    if ((event->type() == QEvent::MouseButtonRelease) and
+        (toolButton->isDown() == false)){
+        return false;
+    }
+
+    if ((event->type() == QEvent::MouseButtonRelease) and
+        (toolButton->isEnabled() == true)){
+        fileName = toolButton->objectName() + ".html";
+        url = path + fileName;
+        ui->webEngineView->setUrl(url);
+        ui->labelURL->setText(url.toString());
+        show();
+    }
+    return false;
+}
+
+
 void QvkHelpBrowser_wl::set_GuiUi(Ui_formMainWindow_wl *ui)
 {
     GuiUi = ui;
@@ -43,16 +78,14 @@ void QvkHelpBrowser_wl::set_GuiUi(Ui_formMainWindow_wl *ui)
 
 void QvkHelpBrowser_wl::init()
 {
-    connect(GuiUi->help_screencast_countdown,
-            &QToolButton::clicked,
-            this,
-            [=](){
-        fileName = GuiUi->help_screencast_countdown->objectName() + ".html";
-        url = path + fileName;
-        ui->webEngineView->setUrl(url);
-        ui->labelURL->setText(url.toString());
-        show();}
-    );
+    QList<QToolButton *> listToolButton = GuiUi->centralwidget->findChildren<QToolButton *>();
+    for (int i = 0; i < listToolButton.count(); i++){
+        QToolButton *toolButton = listToolButton.at(i);
+        if (toolButton->objectName().startsWith( "help_")){
+            toolButton->setIcon(QIcon(":/pictures/help/information.png"));
+            toolButton->installEventFilter(this);
+        }
+    }
 }
 
 
