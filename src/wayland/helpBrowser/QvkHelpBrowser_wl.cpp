@@ -76,7 +76,7 @@ void QvkHelpBrowser_wl::set_GuiUi(Ui_formMainWindow_wl *ui)
 }
 
 
-void QvkHelpBrowser_wl::init()
+void QvkHelpBrowser_wl::set_init()
 {
     QList<QToolButton *> listToolButton = GuiUi->centralwidget->findChildren<QToolButton *>();
     for (int i = 0; i < listToolButton.count(); i++){

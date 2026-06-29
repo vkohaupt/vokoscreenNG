@@ -111,7 +111,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     vkImageFromTabs_wl = new QvkImageFromTabs_wl(ui);
     vkHelpBrowser_wl = new QvkHelpBrowser_wl();
     vkHelpBrowser_wl->set_GuiUi(ui);
-    vkHelpBrowser_wl->init();
+    vkHelpBrowser_wl->set_init();
 
     // Misc
     videoFileSystemWatcher = new QFileSystemWatcher();

@@ -19,7 +19,7 @@ public:
     explicit QvkHelpBrowser_wl(QWidget *parent = nullptr);
     ~QvkHelpBrowser_wl();
     void set_GuiUi(Ui_formMainWindow_wl *ui);
-    void init();
+    void set_init();
     void set_close();
 
 
