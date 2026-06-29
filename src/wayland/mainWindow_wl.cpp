@@ -285,14 +285,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     // QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
 
     ui->widgetLanguageAndHelp->setVisible( false );
-
-/*
-    QWebEngineView *view = new QWebEngineView;
-     view->load(QUrl("https://vokoscreen.volkoh.de/3.0/help/de_DE/screencast/help_screencast_countdown.html"));
-     view->resize(1024, 750);
-     view->show();
-*/
-
 }
 
 
@@ -338,7 +330,7 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 
     vkHelp->slot_cleanUp();
 
-    vkHelpBrowser_wl->deleteLater();
+    vkHelpBrowser_wl->set_close();
 
     qDebug().noquote() << global::nameOutput << "QvkMainWindow_wl::closeEvent End close";
 

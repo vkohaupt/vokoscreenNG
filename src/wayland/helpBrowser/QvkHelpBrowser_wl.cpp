@@ -24,6 +24,8 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
     buttonBox->hide();
     QList<QPushButton *> list = buttonBox->findChildren<QPushButton *>();
     ui->pushButtonClose->setText(list.at(0)->text());
+
+    connect(ui->pushButtonClose, &QPushButton::clicked, this, [=](){close();});
 }
 
 
@@ -51,4 +53,11 @@ void QvkHelpBrowser_wl::init()
         ui->labelURL->setText(url.toString());
         show();}
     );
+}
+
+
+void QvkHelpBrowser_wl::set_close()
+{
+    close();
+    ui->webEngineView->setPage(nullptr);
 }

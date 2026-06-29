@@ -20,6 +20,7 @@ public:
     ~QvkHelpBrowser_wl();
     void set_GuiUi(Ui_formMainWindow_wl *ui);
     void init();
+    void set_close();
 
 
 private:
