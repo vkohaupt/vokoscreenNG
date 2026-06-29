@@ -338,6 +338,8 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
 
     vkHelp->slot_cleanUp();
 
+    vkHelpBrowser_wl->deleteLater();
+
     qDebug().noquote() << global::nameOutput << "QvkMainWindow_wl::closeEvent End close";
 
 }
