@@ -4,6 +4,8 @@
 #include "ui_formMainWindow_wl.h"
 
 #include <QWidget>
+#include <QString>
+#include <QUrl>
 
 namespace Ui {
 class QvkHelpBrowser_wl;
@@ -23,6 +25,9 @@ public:
 private:
     Ui::QvkHelpBrowser_wl *ui;
     Ui_formMainWindow_wl *GuiUi;
+    QString path;
+    QString fileName;
+    QUrl url;
 
 };
 
