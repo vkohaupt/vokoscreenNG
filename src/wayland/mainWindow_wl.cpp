@@ -28,6 +28,7 @@
 #include <QTimer>
 #include <QImageWriter>
 #include <QCheckBox>
+#include <QWebEngineView>
 
 // Snapshot
 #include <QDBusConnection>
@@ -130,7 +131,7 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->help_screencast_nomousecursor->hide();
     ui->help_screencast_format->hide();
     ui->help_screencast_videocodec->hide();
-    ui->help_screencast_countdown->hide();
+//    ui->help_screencast_countdown->hide();
     ui->frame_cisco->hide();
     ui->line_cisco->hide();
     ui->label_Upate_tab_2->hide();
@@ -282,6 +283,14 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     // QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
 
     ui->widgetLanguageAndHelp->setVisible( false );
+
+
+    QWebEngineView *view = new QWebEngineView;
+     view->load(QUrl("https://vokoscreen.volkoh.de/3.0/help/de_DE/screencast/help_screencast_countdown.html"));
+     view->resize(1024, 750);
+     view->show();
+
+
 }
 
 
