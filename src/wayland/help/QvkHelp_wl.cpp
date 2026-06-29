@@ -70,6 +70,7 @@ QvkHelp_wl::QvkHelp_wl( Ui_formMainWindow_wl *ui_mainwindow ) : uiHelp(new(Ui::h
 
     resize( 800, 600 );
     setWindowTitle( QString( tr( "Help") ) );
+    setAttribute(Qt::WA_QuitOnClose, false);
 
     QIcon icon;
     icon.addFile( QString::fromUtf8( ":/pictures/logo/logo.png" ), QSize(), QIcon::Normal, QIcon::Off );

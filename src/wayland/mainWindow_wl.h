@@ -19,6 +19,8 @@
 #include "QvkCameraController_wl.h"
 #include "QvkConvert_mkv_mp4_wl.h"
 #include "QvkAudioPipewireController_wl.h"
+#include "QvkHelpBrowser_wl.h"
+
 
 #include <QMainWindow>
 #include <QWidget>
@@ -52,6 +54,7 @@ public:
     QvkSystray_wl *vkSystray;
     QvkCameraController_wl *vkCameraController_wl = NULL;
     QvkConvert_mkv_mp4_wl *vkConvert_mkv_mp4_wl;
+    QvkHelpBrowser_wl *vkHelpBrowser_wl;
 
 
 private:

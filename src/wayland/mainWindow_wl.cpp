@@ -28,7 +28,6 @@
 #include <QTimer>
 #include <QImageWriter>
 #include <QCheckBox>
-#include <QWebEngineView>
 
 // Snapshot
 #include <QDBusConnection>
@@ -110,6 +109,9 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     vkHelp = new QvkHelp_wl( ui );
     vkLicenses = new QvkLicenses( ui->pushButtonLicense );
     vkImageFromTabs_wl = new QvkImageFromTabs_wl(ui);
+    vkHelpBrowser_wl = new QvkHelpBrowser_wl();
+    vkHelpBrowser_wl->set_GuiUi(ui);
+    vkHelpBrowser_wl->init();
 
     // Misc
     videoFileSystemWatcher = new QFileSystemWatcher();
@@ -284,12 +286,12 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
     ui->widgetLanguageAndHelp->setVisible( false );
 
-
+/*
     QWebEngineView *view = new QWebEngineView;
      view->load(QUrl("https://vokoscreen.volkoh.de/3.0/help/de_DE/screencast/help_screencast_countdown.html"));
      view->resize(1024, 750);
      view->show();
-
+*/
 
 }
 
