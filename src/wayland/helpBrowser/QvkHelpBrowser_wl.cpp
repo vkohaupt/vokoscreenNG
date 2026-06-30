@@ -28,7 +28,7 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
     ui->setupUi(this);
     setAttribute(Qt::WA_QuitOnClose, false);
     resize(800, 600);
-    path = "https://vokoscreen.volkoh.de/3.0/help/de_DE/screencast/";
+    path = "https://vokoscreen.volkoh.de/3.0/helpwayland/de_DE/screencast/";
 
     QIcon icon;
     icon.addFile(QString::fromUtf8(":/pictures/logo/logo.png"), QSize(), QIcon::Normal, QIcon::Off);
