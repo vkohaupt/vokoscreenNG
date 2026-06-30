@@ -899,6 +899,9 @@
                   </item>
                   <item>
                    <widget class="QToolButton" name="help_screencast_countdown">
+                    <property name="toolTip">
+                     <string>Help</string>
+                    </property>
                     <property name="text">
                      <string>Help</string>
                     </property>
@@ -1590,10 +1593,10 @@
                 <item>
                  <widget class="QToolButton" name="help_screencast_avalaible">
                   <property name="enabled">
-                   <bool>false</bool>
+                   <bool>true</bool>
                   </property>
                   <property name="toolTip">
-                   <string notr="true"/>
+                   <string>Help</string>
                   </property>
                   <property name="text">
                    <string notr="true">Help</string>

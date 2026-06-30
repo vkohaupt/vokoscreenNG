@@ -27,7 +27,7 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
 {
     ui->setupUi(this);
     setAttribute(Qt::WA_QuitOnClose, false);
-    resize(800, 600);
+    resize(800, 800);
     path = "https://vokoscreen.volkoh.de/3.0/helpwayland/de_DE/screencast/";
 
     QIcon icon;
@@ -83,6 +83,7 @@ void QvkHelpBrowser_wl::set_init()
         QToolButton *toolButton = listToolButton.at(i);
         if (toolButton->objectName().startsWith( "help_")){
             toolButton->setIcon(QIcon(":/pictures/help/information.png"));
+            toolButton->setIconSize(QSize(20,20));
             toolButton->installEventFilter(this);
         }
     }
