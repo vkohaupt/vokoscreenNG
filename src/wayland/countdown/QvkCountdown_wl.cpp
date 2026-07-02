@@ -110,8 +110,16 @@ void QvkCountdown_wl::paintEvent( QPaintEvent *event )
     painterPixmap.setRenderHint( QPainter::Antialiasing, true );
     painterPixmap.setRenderHint( QPainter::SmoothPixmapTransform, true );
 
+    // Hintergrund
     QPen pen;
     QBrush brush;
+    brush.setColor(Qt::white);
+    brush.setStyle(Qt::SolidPattern);
+    painterPixmap.setBrush(brush);
+    painterPixmap.setOpacity(0.3);
+    painterPixmap.drawEllipse(width()/2-drawWidth/2, height()/2-drawHeight/2, 300, 300);
+    // Hintergrund Ende
+
     brush.setColor( Qt::darkGray );
     brush.setStyle( Qt::SolidPattern );
     pen.setWidth( 0 );
@@ -136,7 +144,7 @@ void QvkCountdown_wl::paintEvent( QPaintEvent *event )
     QFont font;
     font.setPointSize( fontSize );
     painterPixmap.setFont( font );
-    painterPixmap.setPen( QColor( QString ( "#3DAEE9" ) ) );
+    painterPixmap.setPen(Qt::red);
     QFontMetrics fontMetrics( font );
     int fontWidth = fontMetrics.horizontalAdvance( QString::number( countValue ) );
     painterPixmap.drawText( width()/2-fontWidth/2, height()/2+fontSize/2, QString::number( countValue ) );

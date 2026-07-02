@@ -5,6 +5,8 @@
 #include <QToolButton>
 #include <QUrl>
 #include <QDialogButtonBox>
+#include <QAction>
+#include <QList>
 
 /*
  * The remote HTML-file and the toolbutton have the same name.
@@ -41,6 +43,9 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
     ui->pushButtonClose->setText(list.at(0)->text());
 
     connect(ui->pushButtonClose, &QPushButton::clicked, this, [=](){close();});
+
+    ui->webEngineView->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
+    // https://felgo.com/doc/qt/qtwebengine-webenginewidgets-simplebrowser-example/
 }
 
 
