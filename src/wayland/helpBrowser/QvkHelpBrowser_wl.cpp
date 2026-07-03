@@ -67,7 +67,9 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
     {
         QWebEnginePage *webEnginePage = ui->webEngineView->page();
         QString m_url = webEnginePage->url().toString();
-        qDebug().noquote() << global::nameOutput << "[Help] Load begin " << m_url;
+        if (m_url.contains("Wayland") == true){
+            qDebug().noquote() << global::nameOutput << "[Help] Load begin " << m_url;
+        }
     });
 
     connect(ui->webEngineView,
@@ -77,10 +79,15 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
     {
         QWebEnginePage *webEnginePage = ui->webEngineView->page();
         QString m_url = webEnginePage->url().toString();
-        if (value == true){
-            qDebug().noquote() << global::nameOutput << "[Help] Load finish" << m_url;
-        }else{
-            qDebug().noquote() << global::nameOutput << "[Help] Load error" << m_url;
+        if (m_url.contains("Wayland") == true){
+            if (value == true){
+                qDebug().noquote() << global::nameOutput << "[Help] Load finish" << m_url;
+                ui->webEngineView->page()->toPlainText([](const QString &text){
+                    qDebug().noquote() << global::nameOutput << "[Help] Content:" << text;
+                });
+            }else{
+                qDebug().noquote() << global::nameOutput << "[Help] Load error" << m_url;
+            }
         }
     });
 
@@ -108,7 +115,7 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
         ui->webEngineView->setUrl(QUrl("https://vokoscreen.volkoh.de/3.0/help/getLinuxDirs.php"));
     });
 
-    QTimer::singleShot(3000, this, [=](){
+    QTimer::singleShot(2000, this, [=](){
         ui->webEngineView->setUrl(QUrl("https://vokoscreen.volkoh.de/3.0/help/getWaylandDirs.php"));
     });
 }
