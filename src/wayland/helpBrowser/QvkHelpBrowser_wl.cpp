@@ -57,7 +57,7 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
     {
         QWebEnginePage *webEnginePage = ui->webEngineView->page();
         QString url = webEnginePage->url().toString();
-        qDebug().noquote() << global::nameOutput << "[Help] is load begin " << url;
+        qDebug().noquote() << global::nameOutput << "[Help] Load begin " << url;
     });
 
     connect(ui->webEngineView,
@@ -68,9 +68,9 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
         if (value == true){
             QWebEnginePage *webEnginePage = ui->webEngineView->page();
             QString url = webEnginePage->url().toString();
-            qDebug().noquote() << global::nameOutput << "[Help] is load finish" << url;
+            qDebug().noquote() << global::nameOutput << "[Help] Load finish" << url;
         }else{
-            qDebug().noquote() << global::nameOutput << "[Help] is not load error" << url;
+            qDebug().noquote() << global::nameOutput << "[Help] Load error" << url;
         }
     });
 
