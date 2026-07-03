@@ -6,6 +6,7 @@
 #include <QWidget>
 #include <QString>
 #include <QUrl>
+#include <QToolButton>
 
 namespace Ui {
 class QvkHelpBrowser_wl;
@@ -29,7 +30,7 @@ private:
     QString path;
     QString fileName;
     QUrl url;
-
+    QToolButton *m_toolButton;
 
 public slots:
 

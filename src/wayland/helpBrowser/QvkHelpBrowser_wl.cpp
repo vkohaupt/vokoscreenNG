@@ -146,6 +146,7 @@ bool QvkHelpBrowser_wl::eventFilter(QObject *object, QEvent *event)
     // HelpButton wurde gedrückt.
     // Automatscher Modus ist gleich index 0
     if ((event->type() == QEvent::MouseButtonRelease) and (toolButton->isEnabled() == true)){
+        m_toolButton = toolButton;
         QString language;
         if (GuiUi->comboBoxOnlineHelp->currentIndex() == 0){
             language = QLocale::system().name();
@@ -184,6 +185,22 @@ void QvkHelpBrowser_wl::set_init()
             toolButton->installEventFilter(this);
         }
     }
+
+    // Bei geöffnetem Fenster der Onlinehilfe die Sprache wechseln
+    connect(GuiUi->comboBoxOnlineHelp, &QComboBox::currentIndexChanged, this,
+            [=](int index){
+        Q_UNUSED(index)
+        if (this->isVisible() == true){
+            path.clear();
+            path.append("https://vokoscreen.volkoh.de/3.0/helpwayland/");
+            path.append(GuiUi->comboBoxOnlineHelp->currentText().section("(", 1, 1).removeLast());
+            path.append("/screencast/");
+            //fileName wird nicht extra zugewisen da der Dateiname schon bekannt ist.
+            url = path + fileName;
+            ui->webEngineView->setUrl(url);
+            ui->labelURL->setText(url.toString());
+        };
+    });
 }
 
 
