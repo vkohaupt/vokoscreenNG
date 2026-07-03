@@ -31,6 +31,9 @@ private:
     QUrl url;
 
 
+public slots:
+
+
 protected:
     bool eventFilter(QObject *object, QEvent *ev) override;
 

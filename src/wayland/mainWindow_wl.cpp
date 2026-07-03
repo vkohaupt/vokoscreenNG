@@ -136,6 +136,8 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
     ui->frame_cisco->hide();
     ui->line_cisco->hide();
     ui->label_Upate_tab_2->hide();
+//    ui->widgetLanguageAndHelp->setVisible( false );
+
 
     vkConvert_mkv_mp4_wl = new QvkConvert_mkv_mp4_wl( ui );
     new QvkConvert_mkv_gif_wl( ui );
@@ -282,8 +284,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
 
     // Hint: Settings für Audiogeräte werden hier eingelesen
     // QvkAudioPipewireController_wl::slot_pluggedInOutDevice( QString string )
-
-    ui->widgetLanguageAndHelp->setVisible( false );
 }
 
 

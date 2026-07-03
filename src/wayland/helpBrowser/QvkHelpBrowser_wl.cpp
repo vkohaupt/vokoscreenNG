@@ -6,10 +6,12 @@
 #include <QObject>
 #include <QWidget>
 #include <QString>
+#include <QStringList>
 #include <QIcon>
 #include <QSize>
 #include <QToolButton>
 #include <QPushButton>
+#include <QComboBox>
 #include <QUrl>
 #include <QDialogButtonBox>
 #include <QAction>
@@ -66,8 +68,8 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
             [=]()
     {
         QWebEnginePage *webEnginePage = ui->webEngineView->page();
-        QString m_url = webEnginePage->url().toString();
-        if (m_url.contains("Wayland") == true){
+        QString m_url = webEnginePage->url().toString().toLower();
+        if (m_url.contains("wayland") == true){
             qDebug().noquote() << global::nameOutput << "[Help] Load begin " << m_url;
         }
     });
@@ -82,8 +84,8 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
         if (m_url.contains("Wayland") == true){
             if (value == true){
                 qDebug().noquote() << global::nameOutput << "[Help] Load finish" << m_url;
-                ui->webEngineView->page()->toPlainText([](const QString &text){
-                    qDebug().noquote() << global::nameOutput << "[Help] Content:" << text;
+                ui->webEngineView->page()->toPlainText([this](const QString &text){
+                    GuiUi->comboBoxOnlineHelp->addItems(text.split(" "));
                 });
             }else{
                 qDebug().noquote() << global::nameOutput << "[Help] Load error" << m_url;
