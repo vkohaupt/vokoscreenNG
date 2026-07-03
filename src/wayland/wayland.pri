@@ -42,7 +42,6 @@ include(audio/audiopipewire_wl.pri)
 include(convert/convert_wl.pri)
 
 # Help
-include(help/help_wl.pri)
 include(helpBrowser/helpBrowser_wl.pri)
 
 # Systray

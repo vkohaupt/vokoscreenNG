@@ -10,7 +10,6 @@
 #include "QvkContainerController_wl.h"
 #include "QvkRegionChoise_wl.h"
 #include "QvkCountdown_wl.h"
-#include "QvkHelp_wl.h"
 #include "QvkSystray_wl.h"
 #include "QvkRegionMargins_wl.h"
 #include "QvkLogController_wl.h"
@@ -50,7 +49,6 @@ public:
     QvkSpezialSlider *sliderSecondWaitBeforeRecording;
     QvkSpezialSlider *sliderOpenh264;
     QvkSpezialSlider *sliderWaitBeforeSnapshot;
-//    QvkHelp_wl *vkHelp;
     QvkSystray_wl *vkSystray;
     QvkCameraController_wl *vkCameraController_wl = NULL;
     QvkConvert_mkv_mp4_wl *vkConvert_mkv_mp4_wl;

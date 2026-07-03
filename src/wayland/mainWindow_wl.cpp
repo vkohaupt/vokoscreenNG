@@ -106,7 +106,6 @@ QvkMainWindow_wl::QvkMainWindow_wl( QWidget *parent, Qt::WindowFlags f )
         ui->checkBoxSeparatedAudioTracks->setCheckState( Qt::Unchecked);
     });
 
-//    vkHelp = new QvkHelp_wl( ui );
     vkLicenses = new QvkLicenses( ui->pushButtonLicense );
     vkImageFromTabs_wl = new QvkImageFromTabs_wl(ui);
     vkHelpBrowser_wl = new QvkHelpBrowser_wl();
@@ -327,8 +326,6 @@ void QvkMainWindow_wl::closeEvent( QCloseEvent *event )
     }
 
     vkSystray->deleteLater();
-
-//    vkHelp->slot_cleanUp();
 
     vkHelpBrowser_wl->set_close();
 
