@@ -48,7 +48,6 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
     ui->setupUi(this);
     setAttribute(Qt::WA_QuitOnClose, false);
     resize(800, 800);
-    path = "https://vokoscreen.volkoh.de/3.0/helpwayland/de_DE/screencast/";
 
     QIcon icon;
     icon.addFile(QString::fromUtf8(":/pictures/logo/logo.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -80,13 +79,20 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
             [=](bool value)
     {
         QWebEnginePage *webEnginePage = ui->webEngineView->page();
-        QString m_url = webEnginePage->url().toString();
-        if (m_url.contains("Wayland") == true){
+        QString m_url = webEnginePage->url().toString().toLower();
+        if (m_url.contains("wayland") == true){
             if (value == true){
                 qDebug().noquote() << global::nameOutput << "[Help] Load finish" << m_url;
-                ui->webEngineView->page()->toPlainText([this](const QString &text){
-                    GuiUi->comboBoxOnlineHelp->addItems(text.split(" "));
-                });
+                if (m_url.contains("getwaylanddirs") == true ){
+                    ui->webEngineView->page()->toPlainText([this](const QString &text){
+                        QStringList list = text.split(" ");
+                        for (int i=0; i<list.count(); i++){
+                            QLocale locale(list.at(i));
+                            QString name = locale.nativeLanguageName() + " " + "(" + list.at(i) + ")";
+                            GuiUi->comboBoxOnlineHelp->addItem(name);
+                        }
+                    });
+                };
             }else{
                 qDebug().noquote() << global::nameOutput << "[Help] Load error" << m_url;
             }
@@ -137,8 +143,18 @@ bool QvkHelpBrowser_wl::eventFilter(QObject *object, QEvent *event)
         return false;
     }
 
-    if ((event->type() == QEvent::MouseButtonRelease) and
-            (toolButton->isEnabled() == true)){
+    if ((event->type() == QEvent::MouseButtonRelease) and (toolButton->isEnabled() == true)){
+        QString language;
+        if (GuiUi->comboBoxOnlineHelp->findText( "(" + QLocale::system().name() + ")", Qt::MatchEndsWith) > -1){
+            language = QLocale::system().name();
+        } else {
+            language = "en";
+        }
+
+        path.clear();
+        path.append("https://vokoscreen.volkoh.de/3.0/helpwayland/");
+        path.append(language);
+        path.append("/screencast/");
         fileName = toolButton->objectName() + ".html";
         url = path + fileName;
         ui->webEngineView->setUrl(url);
