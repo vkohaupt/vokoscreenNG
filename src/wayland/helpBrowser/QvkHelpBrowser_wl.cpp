@@ -186,14 +186,19 @@ void QvkHelpBrowser_wl::set_init()
     }
 
     // Bei geöffnetem Fenster der Onlinehilfe die Sprache wechseln
-    connect(GuiUi->comboBoxOnlineHelp, &QComboBox::currentIndexChanged, this,
-            [=](int index){
-        Q_UNUSED(index)
+    connect(GuiUi->comboBoxOnlineHelp, &QComboBox::currentIndexChanged, this, [=](int index){
         if (this->isVisible() == true){
-            path.clear();
-            path.append("https://vokoscreen.volkoh.de/3.0/helpwayland/");
-            path.append(GuiUi->comboBoxOnlineHelp->currentText().section("(", 1, 1).removeLast());
-            path.append("/screencast/");
+            if (index == 0){
+                path.clear();
+                path.append("https://vokoscreen.volkoh.de/3.0/helpwayland/");
+                path.append(QLocale::system().name());
+                path.append("/screencast/");
+            } else {
+                path.clear();
+                path.append("https://vokoscreen.volkoh.de/3.0/helpwayland/");
+                path.append(GuiUi->comboBoxOnlineHelp->currentText().section("(", 1, 1).removeLast());
+                path.append("/screencast/");
+            }
             //fileName wird nicht extra zugewisen da der Dateiname schon bekannt ist.
             url = path + fileName;
             ui->webEngineView->setUrl(url);
