@@ -1,3 +1,5 @@
+
+#include "global.h"
 #include "QvkHelpBrowser_wl.h"
 #include "ui_QvkHelpBrowser_wl.h"
 
@@ -7,6 +9,10 @@
 #include <QDialogButtonBox>
 #include <QAction>
 #include <QList>
+#include <QWebEngineView>
+#include <QWebEngineProfile>
+#include <QSettings>
+#include <QTimer>
 
 /*
  * The remote HTML-file and the toolbutton have the same name.
@@ -46,6 +52,31 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
 
     ui->webEngineView->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
     // https://felgo.com/doc/qt/qtwebengine-webenginewidgets-simplebrowser-example/
+
+    QString folderName_wl = global::name;
+    QString fileName_wl = "InstallTime";
+    QString groupName_wl = global::name;
+    QDateTime time;
+    time.setMSecsSinceEpoch(QDateTime::currentDateTime().currentMSecsSinceEpoch());
+    QSettings installSetting(QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR);
+    installSetting.beginGroup(groupName_wl);
+    QString timeStringMSecsSinceEpoch = installSetting.value("time", time.toString("yyyy.MM.dd-hh:mm:ss:zzz")).toString();
+    QString version = installSetting.value("version", global::version).toString();
+    QByteArray headerValue = timeStringMSecsSinceEpoch.append("_").append(version).toLatin1();
+    installSetting.endGroup();
+
+    // Die InstallTime.ini wird ausgelesen und im Log als UserAgent angezeigt
+    ui->webEngineView->page()->profile()->setHttpUserAgent(headerValue);
+
+    // Die getLinuxDirs.php und die getWaylandDirs.php werden im log nur angezeigt
+    // wenn man diese zeitlich versetzt aufruft
+    QTimer::singleShot(100, this, [=](){
+        ui->webEngineView->setUrl(QUrl("https://vokoscreen.volkoh.de/3.0/help/getLinuxDirs.php"));
+    });
+
+    QTimer::singleShot(3000, this, [=](){
+        ui->webEngineView->setUrl(QUrl("https://vokoscreen.volkoh.de/3.0/help/getWaylandDirs.php"));
+    });
 }
 
 
@@ -59,12 +90,12 @@ bool QvkHelpBrowser_wl::eventFilter(QObject *object, QEvent *event)
 {
     QToolButton *toolButton = qobject_cast<QToolButton *>(object);
     if ((event->type() == QEvent::MouseButtonRelease) and
-        (toolButton->isDown() == false)){
+            (toolButton->isDown() == false)){
         return false;
     }
 
     if ((event->type() == QEvent::MouseButtonRelease) and
-        (toolButton->isEnabled() == true)){
+            (toolButton->isEnabled() == true)){
         fileName = toolButton->objectName() + ".html";
         url = path + fileName;
         ui->webEngineView->setUrl(url);

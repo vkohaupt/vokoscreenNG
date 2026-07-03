@@ -50,15 +50,16 @@ void QvkDownloader_wl::doDownload( const QUrl &url )
 
     QString folderName_wl = global::name;
     QString fileName_wl = "InstallTime";
-    QString groupName_wl = global::name + "_wl";
+    QString groupName_wl = global::name;
     QDateTime time;
     time.setMSecsSinceEpoch( QDateTime::currentDateTime().currentMSecsSinceEpoch() );
     QSettings installSetting( QSettings::IniFormat, QSettings::UserScope, folderName_wl, fileName_wl, Q_NULLPTR );
     installSetting.beginGroup( groupName_wl );
     QString timeStringMSecsSinceEpoch = installSetting.value( "time", time.toString( "yyyy.MM.dd-hh:mm:ss:zzz" ) ).toString();
-    QString version = installSetting.value( "version", global::version ).toString();
+    QString version =                   installSetting.value( "version", global::version ).toString();
     QByteArray headerValue = timeStringMSecsSinceEpoch.append( "_" ).append( version ).toLatin1();
     installSetting.endGroup();
+
     request.setRawHeader( "User-Agent", headerValue );
     QNetworkReply *reply = networkAccessManager.get( request );
     listDownloads.append( reply );
