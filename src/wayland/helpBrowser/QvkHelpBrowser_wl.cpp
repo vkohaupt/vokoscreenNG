@@ -146,7 +146,6 @@ bool QvkHelpBrowser_wl::eventFilter(QObject *object, QEvent *event)
     // HelpButton wurde gedrückt.
     // Automatscher Modus ist gleich index 0
     if ((event->type() == QEvent::MouseButtonRelease) and (toolButton->isEnabled() == true)){
-        m_toolButton = toolButton;
         QString language;
         if (GuiUi->comboBoxOnlineHelp->currentIndex() == 0){
             language = QLocale::system().name();
