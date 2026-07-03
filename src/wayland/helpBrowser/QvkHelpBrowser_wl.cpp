@@ -143,12 +143,14 @@ bool QvkHelpBrowser_wl::eventFilter(QObject *object, QEvent *event)
         return false;
     }
 
+    // HelpButton wurde gedrückt.
+    // Automatscher Modus ist gleich index 0
     if ((event->type() == QEvent::MouseButtonRelease) and (toolButton->isEnabled() == true)){
         QString language;
-        if (GuiUi->comboBoxOnlineHelp->findText( "(" + QLocale::system().name() + ")", Qt::MatchEndsWith) > -1){
+        if (GuiUi->comboBoxOnlineHelp->currentIndex() == 0){
             language = QLocale::system().name();
         } else {
-            language = "en";
+            language = GuiUi->comboBoxOnlineHelp->currentText().section("(", 1, 1).removeLast();
         }
 
         path.clear();
