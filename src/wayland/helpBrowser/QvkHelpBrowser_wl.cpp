@@ -3,16 +3,26 @@
 #include "QvkHelpBrowser_wl.h"
 #include "ui_QvkHelpBrowser_wl.h"
 
+#include <QObject>
 #include <QWidget>
+#include <QString>
+#include <QIcon>
+#include <QSize>
 #include <QToolButton>
+#include <QPushButton>
 #include <QUrl>
 #include <QDialogButtonBox>
 #include <QAction>
 #include <QList>
-#include <QWebEngineView>
-#include <QWebEngineProfile>
 #include <QSettings>
 #include <QTimer>
+#include <QDateTime>
+#include <QByteArray>
+#include <QEvent>
+#include <QWebEngineView>
+#include <QWebEngineProfile>
+#include <QWebEnginePage>
+
 
 /*
  * The remote HTML-file and the toolbutton have the same name.
@@ -56,8 +66,8 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
             [=]()
     {
         QWebEnginePage *webEnginePage = ui->webEngineView->page();
-        QString url = webEnginePage->url().toString();
-        qDebug().noquote() << global::nameOutput << "[Help] Load begin " << url;
+        QString m_url = webEnginePage->url().toString();
+        qDebug().noquote() << global::nameOutput << "[Help] Load begin " << m_url;
     });
 
     connect(ui->webEngineView,
@@ -65,12 +75,12 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
             this,
             [=](bool value)
     {
+        QWebEnginePage *webEnginePage = ui->webEngineView->page();
+        QString m_url = webEnginePage->url().toString();
         if (value == true){
-            QWebEnginePage *webEnginePage = ui->webEngineView->page();
-            QString url = webEnginePage->url().toString();
-            qDebug().noquote() << global::nameOutput << "[Help] Load finish" << url;
+            qDebug().noquote() << global::nameOutput << "[Help] Load finish" << m_url;
         }else{
-            qDebug().noquote() << global::nameOutput << "[Help] Load error" << url;
+            qDebug().noquote() << global::nameOutput << "[Help] Load error" << m_url;
         }
     });
 
