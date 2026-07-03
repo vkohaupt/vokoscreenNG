@@ -50,6 +50,30 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
 
     connect(ui->pushButtonClose, &QPushButton::clicked, this, [=](){close();});
 
+    connect(ui->webEngineView,
+            &QWebEngineView::loadStarted,
+            this,
+            [=]()
+    {
+        QWebEnginePage *webEnginePage = ui->webEngineView->page();
+        QString url = webEnginePage->url().toString();
+        qDebug().noquote() << global::nameOutput << "[Help] is load begin " << url;
+    });
+
+    connect(ui->webEngineView,
+            &QWebEngineView::loadFinished,
+            this,
+            [=](bool value)
+    {
+        if (value == true){
+            QWebEnginePage *webEnginePage = ui->webEngineView->page();
+            QString url = webEnginePage->url().toString();
+            qDebug().noquote() << global::nameOutput << "[Help] is load finish" << url;
+        }else{
+            qDebug().noquote() << global::nameOutput << "[Help] is not load error" << url;
+        }
+    });
+
     ui->webEngineView->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
     // https://felgo.com/doc/qt/qtwebengine-webenginewidgets-simplebrowser-example/
 
