@@ -2,10 +2,13 @@
 #define QVKHELPBROWSER_WL_H
 
 #include "ui_formMainWindow_wl.h"
+#include "QvkWebEngineView_wl.h"
 
+#include <QObject>
 #include <QWidget>
 #include <QString>
 #include <QUrl>
+#include <QEvent>
 
 namespace Ui {
 class QvkHelpBrowser_wl;
@@ -22,8 +25,8 @@ public:
     void set_init();
     void set_close();
 
-
 private:
+    QvkWebEngineView_wl *vkWebEngineView_wl;
     Ui::QvkHelpBrowser_wl *ui;
     Ui_formMainWindow_wl *GuiUi;
     QString path;

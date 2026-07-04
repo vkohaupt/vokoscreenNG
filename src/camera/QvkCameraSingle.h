@@ -60,7 +60,6 @@ public:
     QCheckBox *checkBoxCameraMono;
 
 
-
 public slots:
 
 

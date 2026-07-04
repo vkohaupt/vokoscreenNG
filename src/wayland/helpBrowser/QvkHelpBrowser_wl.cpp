@@ -1,6 +1,7 @@
 
 #include "global.h"
 #include "QvkHelpBrowser_wl.h"
+#include "QvkWebEngineView_wl.h"
 #include "ui_QvkHelpBrowser_wl.h"
 
 #include <QObject>
@@ -25,6 +26,10 @@
 #include <QWebEngineProfile>
 #include <QWebEnginePage>
 
+#include <QMenu>
+#include <QContextMenuEvent>
+#include <QAction>
+
 
 /*
  * The remote HTML-file and the toolbutton have the same name.
@@ -46,6 +51,12 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
     ui(new Ui::QvkHelpBrowser_wl)
 {
     ui->setupUi(this);
+
+
+    vkWebEngineView_wl = new QvkWebEngineView_wl;
+    ui->verticalLayout->insertWidget(0, vkWebEngineView_wl);
+
+
     setAttribute(Qt::WA_QuitOnClose, false);
     resize(800, 800);
 
@@ -61,30 +72,30 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
 
     connect(ui->pushButtonClose, &QPushButton::clicked, this, [=](){close();});
 
-    connect(ui->webEngineView,
+    connect(vkWebEngineView_wl,
             &QWebEngineView::loadStarted,
             this,
             [=]()
     {
-        QWebEnginePage *webEnginePage = ui->webEngineView->page();
+        QWebEnginePage *webEnginePage = vkWebEngineView_wl->page();
         QString m_url = webEnginePage->url().toString().toLower();
         if (m_url.contains("wayland") == true){
             qDebug().noquote() << global::nameOutput << "[Help] Load begin " << m_url;
         }
     });
 
-    connect(ui->webEngineView,
+    connect(vkWebEngineView_wl,
             &QWebEngineView::loadFinished,
             this,
             [=](bool value)
     {
-        QWebEnginePage *webEnginePage = ui->webEngineView->page();
+        QWebEnginePage *webEnginePage = vkWebEngineView_wl->page();
         QString m_url = webEnginePage->url().toString().toLower();
         if (m_url.contains("wayland") == true){
             if (value == true){
                 qDebug().noquote() << global::nameOutput << "[Help] Load finish" << m_url;
                 if (m_url.contains("getwaylanddirs") == true ){
-                    ui->webEngineView->page()->toPlainText([this](const QString &text){
+                    vkWebEngineView_wl->page()->toPlainText([this](const QString &text){
                         QStringList list = text.split(" ");
                         for (int i=0; i<list.count(); i++){
                             QLocale locale(list.at(i));
@@ -99,7 +110,7 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
         }
     });
 
-    ui->webEngineView->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
+    //vkWebEngineView_wl->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
     // https://felgo.com/doc/qt/qtwebengine-webenginewidgets-simplebrowser-example/
 
     QString folderName_wl = global::name;
@@ -115,16 +126,16 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
     installSetting.endGroup();
 
     // Die InstallTime.ini wird ausgelesen und im Log als UserAgent angezeigt
-    ui->webEngineView->page()->profile()->setHttpUserAgent(headerValue);
+    vkWebEngineView_wl->page()->profile()->setHttpUserAgent(headerValue);
 
     // Die getLinuxDirs.php und die getWaylandDirs.php werden im log nur angezeigt
     // wenn man diese zeitlich versetzt aufruft
     QTimer::singleShot(100, this, [=](){
-        ui->webEngineView->setUrl(QUrl("https://vokoscreen.volkoh.de/3.0/help/getLinuxDirs.php"));
+        vkWebEngineView_wl->setUrl(QUrl("https://vokoscreen.volkoh.de/3.0/help/getLinuxDirs.php"));
     });
 
     QTimer::singleShot(2000, this, [=](){
-        ui->webEngineView->setUrl(QUrl("https://vokoscreen.volkoh.de/3.0/help/getWaylandDirs.php"));
+        vkWebEngineView_wl->setUrl(QUrl("https://vokoscreen.volkoh.de/3.0/help/getWaylandDirs.php"));
     });
 }
 
@@ -159,7 +170,7 @@ bool QvkHelpBrowser_wl::eventFilter(QObject *object, QEvent *event)
         path.append("/screencast/");
         fileName = toolButton->objectName() + ".html";
         url = path + fileName;
-        ui->webEngineView->setUrl(url);
+        vkWebEngineView_wl->setUrl(url);
         ui->labelURL->setText(url.toString());
         show();
     }
@@ -201,7 +212,7 @@ void QvkHelpBrowser_wl::set_init()
             }
             //fileName wird nicht extra zugewisen da der Dateiname schon bekannt ist.
             url = path + fileName;
-            ui->webEngineView->setUrl(url);
+            vkWebEngineView_wl->setUrl(url);
             ui->labelURL->setText(url.toString());
         };
     });
@@ -211,5 +222,5 @@ void QvkHelpBrowser_wl::set_init()
 void QvkHelpBrowser_wl::set_close()
 {
     close();
-    ui->webEngineView->setPage(nullptr);
+    vkWebEngineView_wl->setPage(nullptr);
 }
