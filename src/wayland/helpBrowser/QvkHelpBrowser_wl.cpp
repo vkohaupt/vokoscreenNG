@@ -191,8 +191,8 @@ bool QvkHelpBrowser_wl::eventFilter(QObject *object, QEvent *event)
         url = path + fileName;
 
         // Interzeptor für das aktuelle Profil registrieren
-        QvkInterceptor_wl *vkInterceptor = new QvkInterceptor_wl();
-        vkWebEngineView_wl->page()->profile()->setUrlRequestInterceptor(vkInterceptor);
+        QvkInterceptor_wl *vkInterceptor_wl = new QvkInterceptor_wl();
+        vkWebEngineView_wl->page()->profile()->setUrlRequestInterceptor(vkInterceptor_wl);
 
         vkWebEngineView_wl->setUrl(url);
         ui->labelURL->setText(url.toString());

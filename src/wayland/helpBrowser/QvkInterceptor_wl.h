@@ -15,11 +15,12 @@ public:
                 info.block(true);
             }
         }
-*/
+
         QString urlString = info.requestUrl().toString();
-        if (urlString.contains("validator.w3.org")) {
+        if (urlString.contains("meine seite.de")) {
             // Die Anfrage blockieren
             info.block(true);
         }
+*/
     }
 };
