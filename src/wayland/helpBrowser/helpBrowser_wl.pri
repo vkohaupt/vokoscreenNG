@@ -1,7 +1,8 @@
 INCLUDEPATH += $$PWD
 DEPENDPATH  += $$PWD
 HEADERS     += $$PWD/QvkHelpBrowser_wl.h \
-               $$PWD/QvkWebEngineView_wl.h
+               $$PWD/QvkWebEngineView_wl.h \
+               $$PWD/QvkInterceptor_wl.h
 
 SOURCES     += $$PWD/QvkHelpBrowser_wl.cpp \
                $$PWD/QvkWebEngineView_wl.cpp

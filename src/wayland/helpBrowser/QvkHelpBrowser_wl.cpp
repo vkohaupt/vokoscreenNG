@@ -3,6 +3,7 @@
 #include "QvkHelpBrowser_wl.h"
 #include "QvkWebEngineView_wl.h"
 #include "ui_QvkHelpBrowser_wl.h"
+#include "QvkInterceptor_wl.h"
 
 #include <QObject>
 #include <QWidget>
@@ -89,6 +90,24 @@ QvkHelpBrowser_wl::QvkHelpBrowser_wl(QWidget *parent) :
             this,
             [=](bool value)
     {
+        QString js = R"(
+            var images = document.querySelectorAll('img[src*="vcss-blue.png"], .ad-banner');
+            images.forEach(function(img) {
+                img.style.display = 'none';
+                // Alternativ: img.remove();
+            });
+        )";
+        vkWebEngineView_wl->page()->runJavaScript(js);
+
+        QString js1 = R"(
+            var images = document.querySelectorAll('img[src*="valid-html401.png"], .ad-banner');
+            images.forEach(function(img) {
+                img.style.display = 'none';
+                // Alternativ: img.remove();
+            });
+        )";
+        vkWebEngineView_wl->page()->runJavaScript(js1);
+
         QWebEnginePage *webEnginePage = vkWebEngineView_wl->page();
         QString m_url = webEnginePage->url().toString().toLower();
         if (m_url.contains("wayland") == true){
@@ -170,6 +189,11 @@ bool QvkHelpBrowser_wl::eventFilter(QObject *object, QEvent *event)
         path.append("/screencast/");
         fileName = toolButton->objectName() + ".html";
         url = path + fileName;
+
+        // Interzeptor für das aktuelle Profil registrieren
+        QvkInterceptor_wl *vkInterceptor = new QvkInterceptor_wl();
+        vkWebEngineView_wl->page()->profile()->setUrlRequestInterceptor(vkInterceptor);
+
         vkWebEngineView_wl->setUrl(url);
         ui->labelURL->setText(url.toString());
         show();
