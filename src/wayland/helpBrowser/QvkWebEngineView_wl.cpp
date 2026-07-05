@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QWebEngineView>
 #include <QContextMenuEvent>
+#include <QDesktopServices>
 
 QvkWebEngineView_wl::QvkWebEngineView_wl(QWidget *parent) : QWebEngineView(parent) {}
 
@@ -16,16 +17,17 @@ void QvkWebEngineView_wl::contextMenuEvent(QContextMenuEvent *event) {
     QMenu *menu = new QMenu(this);
 
     // 2. Eigene Menüpunkte hinzufügen (optional)
-    QAction *customAction = menu->addAction("There's nothing here.");
+    QAction *customAction = menu->addAction("Donate");
     connect(customAction, &QAction::triggered, this, []() {
-        qDebug() << "Eigener Menüpunkt geklickt!";
+        QString donate = "https://linuxecke.volkoh.de/vokoscreen/vokoscreen-donate.html";
+        qDebug() << QDesktopServices::openUrl(QUrl(donate));
     });
-
+/*
     QAction *customAction1 = menu->addAction("And there's nothing here either.");
     connect(customAction1, &QAction::triggered, this, []() {
         qDebug() << "Zweiter Menüpunkt geklickt!";
     });
-
+*/
     // 3. Menü anzeigen (an der Mausposition)
     menu->popup(event->globalPos());
 
