@@ -317,6 +317,7 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
         // On KDE GNOME we need no more windowflags.
         // In QvkCameraWindow::paintEvent() we set setMask() and all works fine.
         // But not all Desktops(MATE) works fine, and we need explizit a FramelessWindowHint
+/*
         if (value == true){
             Qt::WindowFlags flags;
             flags  = Qt::Window;
@@ -333,7 +334,7 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
             vkCameraWindow->setWindowFlags(flags);
             qDebug().noquote() << global::nameOutput << "[Camera] Set window frame";
         }
-
+*/
 #endif
 
         if ( checkBoxCameraOnOff->isChecked() == true ) {

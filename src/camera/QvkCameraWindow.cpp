@@ -152,6 +152,7 @@ void QvkCameraWindow::paintEvent( QPaintEvent *event )
         clearMask();
     }
 #endif
+
 }
 
 
