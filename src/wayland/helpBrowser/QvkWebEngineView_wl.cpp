@@ -16,9 +16,14 @@ void QvkWebEngineView_wl::contextMenuEvent(QContextMenuEvent *event) {
     QMenu *menu = new QMenu(this);
 
     // 2. Eigene Menüpunkte hinzufügen (optional)
-    QAction *customAction = menu->addAction("Mein eigener Eintrag");
+    QAction *customAction = menu->addAction("There's nothing here.");
     connect(customAction, &QAction::triggered, this, []() {
         qDebug() << "Eigener Menüpunkt geklickt!";
+    });
+
+    QAction *customAction1 = menu->addAction("And there's nothing here either.");
+    connect(customAction1, &QAction::triggered, this, []() {
+        qDebug() << "Zweiter Menüpunkt geklickt!";
     });
 
     // 3. Menü anzeigen (an der Mausposition)
