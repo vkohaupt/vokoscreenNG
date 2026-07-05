@@ -306,25 +306,34 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
         }
 #endif
 
-// 1. Automatischer Start des Kamerafenster nach Start von vokoscreenNG im Vordergrund. OK
+// 0. Automatischer Start des Kamerafenster frameless nach Start von vokoscreenNG im Vordergrund. Fehler--------
+// 1. Automatischer Start des Kamerafenster mit Titelzeile nach Start von vokoscreenNG im Vordergrund. OK
 // 2. Fenster nach umschalten mittels frameless im Vordergrund. OK
 // 3. Fenster beim einschalten der Kamera im Vordergrund. OK
 // 4. Frameless Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. OK
 // 5. Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. OK
-// 6. Umschalten von frameless in den window mode und umgekehrt kein gezappel. OK
+// 6. Umschalten von frameless in den window mode und umgekehrt kein gezappel. Fehler-----------------
 #ifdef Q_OS_UNIX
         // On KDE GNOME we need no more windowflags.
         // In QvkCameraWindow::paintEvent() we set setMask() and all works fine.
         // But not all Desktops(MATE) works fine, and we need explizit a FramelessWindowHint
-        if ( value == true ) {
-            vkCameraWindow->setWindowFlag( Qt::FramelessWindowHint, true );
+        if (value == true){
+            Qt::WindowFlags flags;
+            flags  = Qt::Window;
+            flags |= Qt::FramelessWindowHint;
+            flags |= Qt::WindowStaysOnTopHint;
+            vkCameraWindow->setWindowFlags(flags);
             qDebug().noquote() << global::nameOutput << "[Camera] Set window frameless";
         }
 
-        if ( value == false ) {
-            vkCameraWindow->setWindowFlag( Qt::FramelessWindowHint, false );
+        if (value == false){
+            Qt::WindowFlags flags;
+            flags  = Qt::Window;
+            flags |= Qt::WindowStaysOnTopHint;
+            vkCameraWindow->setWindowFlags(flags);
             qDebug().noquote() << global::nameOutput << "[Camera] Set window frame";
         }
+
 #endif
 
         if ( checkBoxCameraOnOff->isChecked() == true ) {

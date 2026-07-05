@@ -31,8 +31,13 @@ QvkCameraWindow::QvkCameraWindow( Ui_formMainWindow *ui_surface,
                                   QCheckBox *checkBox )
 {
     ui = ui_surface;
+
+    Qt::WindowFlags flags;
+    flags  = Qt::Window;
+    flags |= Qt::WindowStaysOnTopHint;
+    setWindowFlags(flags);
+
     checkBoxCameraWindowFrame = checkBox;
-    setWindowFlag( Qt::WindowStaysOnTopHint, true );
     setAttribute( Qt::WA_TranslucentBackground, true );
     setWindowIcon( QIcon( QString::fromUtf8( ":/pictures/logo/logo.png" ) ) );
     setWindowTitle( QString( tr( "Camera") ) + " " + global::version );
