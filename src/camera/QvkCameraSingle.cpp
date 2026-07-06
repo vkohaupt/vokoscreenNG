@@ -320,30 +320,20 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
         // But not all Desktops(MATE) works fine, and we need explizit a FramelessWindowHint
         QString currentDesktop = qgetenv( "XDG_CURRENT_DESKTOP" );
         if( currentDesktop.toLower() == QString( "Mate" ).toLower() ) {
+            if (value == true){
             Qt::WindowFlags flags;
             flags  = Qt::Window;
             flags |= Qt::FramelessWindowHint;
             flags |= Qt::WindowStaysOnTopHint;
             vkCameraWindow->setWindowFlags(flags);
-        }
-/*
-        if (value == true){
-            Qt::WindowFlags flags;
-            flags  = Qt::Window;
-            flags |= Qt::FramelessWindowHint;
-            flags |= Qt::WindowStaysOnTopHint;
-            vkCameraWindow->setWindowFlags(flags);
-            qDebug().noquote() << global::nameOutput << "[Camera] Set window frameless";
+            }else{
+                Qt::WindowFlags flags;
+                flags  = Qt::Window;
+                flags |= Qt::WindowStaysOnTopHint;
+                vkCameraWindow->setWindowFlags(flags);
+            }
         }
 
-        if (value == false){
-            Qt::WindowFlags flags;
-            flags  = Qt::Window;
-            flags |= Qt::WindowStaysOnTopHint;
-            vkCameraWindow->setWindowFlags(flags);
-            qDebug().noquote() << global::nameOutput << "[Camera] Set window frame";
-        }
-*/
 #endif
 
         if ( checkBoxCameraOnOff->isChecked() == true ) {
