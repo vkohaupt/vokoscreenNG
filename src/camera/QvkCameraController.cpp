@@ -49,6 +49,7 @@ QvkCameraController::QvkCameraController( Ui_formMainWindow *ui_surface )
     ui->checkBoxCameraInvert->hide();
     ui->checkBoxCameraGray->hide();
     ui->checkBoxCameraMono->hide();
+    ui->lineEditCameraTitle->hide();
 
     // SpacerItems aus GUI löschen
     for (int i = 0; i < ui->horizontalLayout_65->count(); ++i) {

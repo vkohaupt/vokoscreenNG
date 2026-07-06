@@ -39,6 +39,7 @@
 #include <QCheckBox>
 #include <QWidget>
 #include <QComboBox>
+#include <QLineEdit>
 
 
 class QvkCameraSingle : public QObject
@@ -58,6 +59,7 @@ public:
     QCheckBox *checkBoxCameraInvert;
     QCheckBox *checkBoxCameraGray;
     QCheckBox *checkBoxCameraMono;
+    QLineEdit *lineEditCameraTitle;
 
 
 public slots:

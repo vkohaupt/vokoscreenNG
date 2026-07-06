@@ -214,6 +214,22 @@ QvkCameraSingle::QvkCameraSingle( Ui_formMainWindow *ui_surface, QCameraDevice m
     connect( vkCameraWindow, SIGNAL( signal_cameraWindow_close(bool) ), checkBoxCameraOnOff, SLOT(click()) );
     connect( checkBoxCameraWindowFrame, SIGNAL( clicked(bool) ), this, SLOT( slot_cameraWindowFrameOnOff(bool) ) );
 
+
+
+    lineEditCameraTitle = new QLineEdit;
+    lineEditCameraTitle->setObjectName("lineEditCameraTitle-" + QString::number(counter));
+    lineEditCameraTitle->setText(vkCameraWindow->windowTitle());
+    lineEditCameraTitle->setAlignment(Qt::AlignHCenter);
+    ui->horizontalLayout_69->insertWidget(1, lineEditCameraTitle, 1);
+    connect(lineEditCameraTitle,
+            &QLineEdit::textChanged,
+            this,
+            [=](){
+        vkCameraWindow->setWindowTitle(lineEditCameraTitle->text());
+    });
+
+
+
     vkCameraSettingsDialog = new cameraSettingsDialog;
     connect( sliderCameraWindowSize, SIGNAL( rangeChanged(int,int) ), vkCameraSettingsDialog->dialog_sliderCameraWindowSize, SLOT( setRange(int,int) ) );
     connect( sliderCameraWindowSize, SIGNAL( valueChanged(int) ),      vkCameraSettingsDialog->dialog_sliderCameraWindowSize, SLOT( setValue(int) ) );
