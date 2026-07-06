@@ -603,6 +603,17 @@ void QvkCameraSingle::slot_radioButtonCurrentCameraClicked( bool value )
         }
     }
 
+    // Hide all LineEdit from other Camera
+    QList<QLineEdit *> listLineEditCameraTitle = ui->centralWidget->findChildren<QLineEdit *>();
+    if (listLineEditCameraTitle.empty() == false){
+        for (int i = 0; i < listLineEditCameraTitle.count(); i++){
+            QLineEdit *lineEdit = listLineEditCameraTitle.at(i);
+            if (lineEdit->objectName().contains("lineEditCameraTitle" )){
+                lineEdit->hide();
+            }
+        }
+    }
+
     // If the config emmpty the last camera is set
     radioButtonCamera->setChecked( true );
 
@@ -620,6 +631,7 @@ void QvkCameraSingle::slot_radioButtonCurrentCameraClicked( bool value )
     checkBoxCameraInvert->show();
     checkBoxCameraGray->show();
     checkBoxCameraMono->show();
+    lineEditCameraTitle->show();
 }
 
 
