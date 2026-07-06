@@ -288,12 +288,12 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
 
     if ( vkCameraWindow->isFullScreen() == false ) {
 
-// 1. Automatischer Start des Kamerafenster nach Start von vokoscreenNG im Vordergrund. OK
-// 2. Fenster nach umschalten mittels frameless im Vordergrund. OK
-// 3. Fenster beim einschalten der Kamera im Vordergrund. OK
-// 4. Frameless Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. OK
-// 5. Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. OK
-// 6. Umschalten von frameless in den window mode und umgekehrt kein gezappel. Fehler----------------------
+        // 1. Automatischer Start des Kamerafenster nach Start von vokoscreenNG im Vordergrund. OK
+        // 2. Fenster nach umschalten mittels frameless im Vordergrund. OK
+        // 3. Fenster beim einschalten der Kamera im Vordergrund. OK
+        // 4. Frameless Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. OK
+        // 5. Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. OK
+        // 6. Umschalten von frameless in den window mode und umgekehrt kein gezappel. Fehler----------------------
 #ifdef Q_OS_WIN
         if ( value == true ) {
             vkCameraWindow->setWindowFlag( Qt::FramelessWindowHint, true );
@@ -306,13 +306,13 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
         }
 #endif
 
-// 0. Automatischer Start des Kamerafenster frameless nach Start von vokoscreenNG im Vordergrund. Fehler--------
-// 1. Automatischer Start des Kamerafenster mit Titelzeile nach Start von vokoscreenNG im Vordergrund. OK
-// 2. Fenster nach umschalten mittels frameless im Vordergrund. OK
-// 3. Fenster beim einschalten der Kamera im Vordergrund. OK
-// 4. Frameless Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. OK
-// 5. Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. OK
-// 6. Umschalten von frameless in den window mode und umgekehrt kein gezappel. Fehler-----------------
+        // 0. Automatischer Start des Kamerafenster frameless nach Start von vokoscreenNG im Vordergrund. Fehler--------
+        // 1. Automatischer Start des Kamerafenster mit Titelzeile nach Start von vokoscreenNG im Vordergrund. OK
+        // 2. Fenster nach umschalten mittels frameless im Vordergrund. OK
+        // 3. Fenster beim einschalten der Kamera im Vordergrund. OK
+        // 4. Frameless Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. OK
+        // 5. Fenster wandert nach Neustart von vokoscreenNG nicht nach oben oder unten. OK
+        // 6. Umschalten von frameless in den window mode und umgekehrt kein gezappel. OK
 #ifdef Q_OS_UNIX
 
         // On KDE GNOME we need no more windowflags.
@@ -321,11 +321,11 @@ void QvkCameraSingle::slot_cameraWindowFrameOnOff( bool value )
         QString currentDesktop = qgetenv( "XDG_CURRENT_DESKTOP" );
         if( currentDesktop.toLower() == QString( "Mate" ).toLower() ) {
             if (value == true){
-            Qt::WindowFlags flags;
-            flags  = Qt::Window;
-            flags |= Qt::FramelessWindowHint;
-            flags |= Qt::WindowStaysOnTopHint;
-            vkCameraWindow->setWindowFlags(flags);
+                Qt::WindowFlags flags;
+                flags  = Qt::Window;
+                flags |= Qt::FramelessWindowHint;
+                flags |= Qt::WindowStaysOnTopHint;
+                vkCameraWindow->setWindowFlags(flags);
             }else{
                 Qt::WindowFlags flags;
                 flags  = Qt::Window;
@@ -388,8 +388,8 @@ void QvkCameraSingle::slot_comboboxCameraResolutionsCurrentIndexChanged( int val
     sliderCameraWindowZoom->setMaximum( comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() / 2 );
 
     if ( camera != Q_NULLPTR ) {
-            slot_checkBoxCameraOnOff( false );
-            slot_checkBoxCameraOnOff( true );
+        slot_checkBoxCameraOnOff( false );
+        slot_checkBoxCameraOnOff( true );
     }
 }
 
@@ -526,7 +526,7 @@ void QvkCameraSingle::slot_radioButtonCurrentCameraClicked( bool value )
         label->setText( checkBoxCameraOnOff->text().remove( "&" ) );
     }
 
-     // Hide widgetToolButton from other camera
+    // Hide widgetToolButton from other camera
     QList<QWidget *> listWidget = ui->centralWidget->findChildren<QWidget *>();
     if ( listWidget.empty() == false ) {
         for ( int i = 0; i < listWidget.count(); i++ ) {
@@ -640,10 +640,10 @@ void QvkCameraSingle::slot_videoFrameChanged( QVideoFrame videoFrame )
         qreal quotient = width / height;
         qreal minusPixel = sliderCameraWindowZoom->value();
         QImage image_zoom = image.copy( minusPixel,
-                                       minusPixel / quotient,
-                                       width - ( 2 * minusPixel ),
-                                       height - ( 2 * minusPixel / quotient )
-                                       );
+                                        minusPixel / quotient,
+                                        width - ( 2 * minusPixel ),
+                                        height - ( 2 * minusPixel / quotient )
+                                        );
         image = image_zoom.scaled( width, height, Qt::IgnoreAspectRatio, Qt::SmoothTransformation );
     }
     // Zoom end
