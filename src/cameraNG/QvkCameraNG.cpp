@@ -10,6 +10,7 @@ QvkCameraNG::QvkCameraNG(QWidget *parent, QCheckBox *m_checkBox_frame_OnOff) :
     ui->setupUi(this);
     setAttribute(Qt::WA_QuitOnClose, false);
     checkBox_frame_OnOff = m_checkBox_frame_OnOff;
+    m_parent = parent;
 
     if (checkBox_frame_OnOff->isChecked() == false){
         Qt::WindowFlags flags;
@@ -63,7 +64,9 @@ int QvkCameraNG::get_camera_window_y()
     }
     // Rahmen wird gesetzt
     if (checkBox_frame_OnOff->isChecked() == false){
-        y = geometry().y() - 31;
+        int pos_y = m_parent->topLevelWidget()->pos().y();
+        int geometry_y = m_parent->topLevelWidget()->geometry().y();
+        y = geometry().y() - (geometry_y - pos_y);
     }
     return y;
 }

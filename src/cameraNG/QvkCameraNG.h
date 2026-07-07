@@ -21,6 +21,7 @@ public:
 private:
     Ui::QvkCameraNG *ui;
     QCheckBox *checkBox_frame_OnOff;
+    QWidget *m_parent;
 
 };
 
