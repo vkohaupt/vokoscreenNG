@@ -759,7 +759,7 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect(ui->checkBox_Camera_OnOff,&QCheckBox::clicked, this, [=](bool value){
         if (value == true){
             if (vkCameraNG == NULL){
-                vkCameraNG = new QvkCameraNG(this, ui->checkBox_Frame_OnOff);
+                vkCameraNG = new QvkCameraNG(this);
                 vkCameraNG->show();
                 vkCameraNG->move(400, 400);
             }

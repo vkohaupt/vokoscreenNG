@@ -1,16 +1,25 @@
 #include "QvkCameraNG.h"
 #include "ui_QvkCameraNG.h"
 
+#include <QWidget>
 #include <QCheckBox>
+#include <QList>
 
-QvkCameraNG::QvkCameraNG(QWidget *parent, QCheckBox *m_checkBox_frame_OnOff) :
+QvkCameraNG::QvkCameraNG(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::QvkCameraNG)
 {
     ui->setupUi(this);
     setAttribute(Qt::WA_QuitOnClose, false);
-    checkBox_frame_OnOff = m_checkBox_frame_OnOff;
     m_parent = parent;
+
+    QList<QCheckBox *> listCheckBox = m_parent->topLevelWidget()->findChildren<QCheckBox *>();
+    for (int i = 0; i < listCheckBox.count(); i++){
+        QCheckBox *checkBox = listCheckBox.at(i);
+        if (checkBox->objectName() == "checkBox_Frame_OnOff"){
+            checkBox_frame_OnOff = checkBox;
+        }
+    }
 
     if (checkBox_frame_OnOff->isChecked() == false){
         Qt::WindowFlags flags;
@@ -36,13 +45,13 @@ QvkCameraNG::~QvkCameraNG()
 #ifdef Q_OS_UNIX
 int QvkCameraNG::get_camera_window_x()
 {
-    int x = this->geometry().x();
+    int x = geometry().x();
     return x;
 }
 
 int QvkCameraNG::get_camera_window_y()
 {
-    int y = this->geometry().y();
+    int y = geometry().y();
     return y;
 }
 #endif
