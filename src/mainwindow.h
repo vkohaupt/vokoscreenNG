@@ -41,7 +41,6 @@
 #include "QvkLogController.h"
 #include "QvkContainerController.h"
 #include "QvkLicenses.h"
-#include "QvkCameraNG.h"
 
 #ifdef Q_OS_UNIX
   #include "QvkAudioController.h"

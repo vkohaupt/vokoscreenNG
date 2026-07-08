@@ -348,6 +348,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     connect( ui->toolButtonLog,        &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(6);
         ui->pushButton_log_refresh->click();
     } );
+    connect( ui->toolButtonCameraOne,  &QToolButton::clicked, this, [=]() { ui->tabWidgetSideBar->setCurrentIndex(7); } );
+
     ui->tabWidgetSideBar->tabBar()->hide();
     ui->toolButtonScreencast->click();
 
@@ -544,6 +546,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // *****************End Camera ***********************************
 
     QvkCameraOneController *vkCameraOneController = new QvkCameraOneController(this);
+    //ui->toolButtonCameraOne->hide();
+
 
     // ***************** shortcut ******************************
     vkGlobalShortcut = new QvkGlobalShortcut( this, ui );

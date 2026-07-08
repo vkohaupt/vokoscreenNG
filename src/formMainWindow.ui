@@ -291,6 +291,41 @@
         </widget>
        </item>
        <item>
+        <widget class="QToolButton" name="toolButtonCameraOne">
+         <property name="minimumSize">
+          <size>
+           <width>110</width>
+           <height>56</height>
+          </size>
+         </property>
+         <property name="text">
+          <string notr="true"/>
+         </property>
+         <property name="icon">
+          <iconset resource="screencast.qrc">
+           <normaloff>:/pictures/camera/camera.png</normaloff>:/pictures/camera/camera.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>48</width>
+           <height>48</height>
+          </size>
+         </property>
+         <property name="shortcut">
+          <string/>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+         <property name="autoRaise">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer_16">
          <property name="orientation">
           <enum>Qt::Orientation::Vertical</enum>
@@ -324,7 +359,7 @@
        <enum>QTabWidget::TabPosition::West</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>7</number>
       </property>
       <property name="iconSize">
        <size>
@@ -2578,8 +2613,8 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>405</width>
-                   <height>418</height>
+                   <width>24</width>
+                   <height>100</height>
                   </rect>
                  </property>
                  <layout class="QGridLayout" name="gridLayoutAvailable">
@@ -3770,58 +3805,6 @@
                </layout>
               </item>
              </layout>
-            </item>
-            <item>
-             <widget class="QWidget" name="widget_2" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_74">
-               <item>
-                <spacer name="horizontalSpacer_47">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="QCheckBox" name="checkBox_Camera_OnOff">
-                 <property name="text">
-                  <string>Camera</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QCheckBox" name="checkBox_Frame_OnOff">
-                 <property name="toolTip">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string notr="true">Frame On/Off</string>
-                 </property>
-                 <property name="shortcut">
-                  <string notr="true"/>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_45">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </widget>
             </item>
             <item>
              <spacer name="verticalSpacer_7">
@@ -7193,9 +7176,74 @@
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Seite</string>
+       </attribute>
+       <widget class="QWidget" name="widget_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>260</y>
+          <width>676</width>
+          <height>37</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_74">
+         <item>
+          <spacer name="horizontalSpacer_47">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_Camera_OnOff">
+           <property name="text">
+            <string>Camera</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_Frame_OnOff">
+           <property name="toolTip">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string notr="true">Frame On/Off</string>
+           </property>
+           <property name="shortcut">
+            <string notr="true"/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_45">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </widget>
      </widget>
     </item>
    </layout>
+   <zorder>tabWidgetSideBar</zorder>
+   <zorder>widgetSidbar</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
