@@ -93,10 +93,6 @@ public:
     bool wantRecording = true;
     bool isFlatpak = false;
 
-    QvkCameraNG *vkCameraNG = NULL;
-    int cameraNG_X = 200;
-    int cameraNG_Y = 200;
-
 
 private:
     QvkShowClick *vkShowClick;

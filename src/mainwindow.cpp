@@ -49,7 +49,7 @@
 #include "QvkPadsAndCaps.h"
 #include <QvkLevelMeterController.h>
 #include "QvkSpezialCheckbox.h"
-#include "QvkCameraNG.h"
+#include "QvkCameraOneController.h"
 
 #ifdef Q_OS_UNIX
   #include "QvkScreenManager.h"
@@ -543,6 +543,8 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     vk_setCornerWidget( ui->tabWidgetCamera );
     // *****************End Camera ***********************************
 
+    QvkCameraOneController *vkCameraOneController = new QvkCameraOneController(this);
+
     // ***************** shortcut ******************************
     vkGlobalShortcut = new QvkGlobalShortcut( this, ui );
     vk_setCornerWidget( ui->tabWidgetShortcut );
@@ -753,42 +755,6 @@ QvkMainWindow::QvkMainWindow(QWidget *parent) : QMainWindow(parent),
     // End Profiles
 
     connect( ui->pushButton_log_refresh, SIGNAL( clicked(bool) ), this, SLOT( slot_log_refresh() ) );
-
-
-    // Camera ON/Off
-    connect(ui->checkBox_Camera_OnOff,&QCheckBox::clicked, this, [=](bool value){
-        if (value == true){
-            if (vkCameraNG == NULL){
-                vkCameraNG = new QvkCameraNG(this);
-                vkCameraNG->show();
-                vkCameraNG->move(400, 400);
-            }
-        }else{
-            if (vkCameraNG != NULL){
-                // Kein deletelater verwenden da die Fenster versetzt angezeigt werden
-                // wenn checkBox_Frame_OnOff getätigt wird
-                delete vkCameraNG;
-                vkCameraNG = NULL;
-            }
-        }
-    });
-
-    // Frame On/Off
-    connect(ui->checkBox_Frame_OnOff,
-            &QCheckBox
-            ::clicked,
-            this, [=](){
-        if(ui->checkBox_Camera_OnOff->isChecked() == true){
-            if (vkCameraNG != NULL){
-                cameraNG_X = vkCameraNG->get_camera_window_x();
-                cameraNG_Y = vkCameraNG->get_camera_window_y();
-                ui->checkBox_Camera_OnOff->click(); // Erster Klick zum entfernen des Fensters
-                ui->checkBox_Camera_OnOff->click(); // Zweiter Klick zum anzeigen des Fensters
-                vkCameraNG->move(cameraNG_X, cameraNG_Y);
-            }
-        }
-    });
-
 }
 
 
