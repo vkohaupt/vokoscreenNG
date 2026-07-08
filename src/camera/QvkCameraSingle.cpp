@@ -418,9 +418,7 @@ void QvkCameraSingle::slot_comboboxCameraResolutionsCurrentIndexChanged( int val
 void QvkCameraSingle::slot_comboboxCameraResolutionsInsertValues( int value )
 {
     Q_UNUSED(value)
-
-    disconnect( comboBoxCameraResolution, nullptr, nullptr, nullptr );
-
+    comboBoxCameraResolution->blockSignals(true);
     comboBoxCameraResolution->clear();
     vkCameraSettingsDialog->ui->comboBoxCameraResolution->clear();
     const QList<QCameraFormat> cameraFormatList = cameraDevice.videoFormats();
@@ -443,7 +441,7 @@ void QvkCameraSingle::slot_comboboxCameraResolutionsInsertValues( int value )
     vkCameraSettingsDialog->dialog_sliderCameraWindowZoom->setMaximum( comboBoxCameraResolution->currentText().section( "x", 1, 1 ).toInt() / 2 );
 
     connect( comboBoxCameraResolution, SIGNAL( currentIndexChanged(int) ), this, SLOT( slot_comboboxCameraResolutionsCurrentIndexChanged(int) ) );
-    connect( comboBoxCameraResolution,  SIGNAL( currentIndexChanged(int) ), vkCameraSettingsDialog->ui->comboBoxCameraResolution,  SLOT( setCurrentIndex(int) ) );
+    connect( comboBoxCameraResolution, SIGNAL( currentIndexChanged(int) ), vkCameraSettingsDialog->ui->comboBoxCameraResolution,  SLOT( setCurrentIndex(int) ) );
 }
 
 
