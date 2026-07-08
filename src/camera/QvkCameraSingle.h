@@ -61,7 +61,6 @@ public:
     QCheckBox *checkBoxCameraMono;
     QLineEdit *lineEditCameraTitle;
 
-    QList<QMetaObject::Connection> connections;
 
 public slots:
 
